@@ -1,0 +1,197 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import { marked } from 'marked';
+
+// Configure marked options
+marked.setOptions({
+  gfm: true, // GitHub Flavored Markdown
+  breaks: true // Convert line breaks to <br>
+});
+
+// Get all year directories
+const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2019', '2021', '2022', '2023', '2024', '2025'];
+
+// Get all posts with category 'now' from all year directories
+const nowPostsPromises = years.map(year => 
+  getCollection(year as any, ({ data }) => data.category === 'now')
+);
+
+const nowPostsArrays = await Promise.all(nowPostsPromises);
+const nowPosts = nowPostsArrays.flat() as CollectionEntry<'posts'>[];
+
+// Sort by date, most recent first
+const sortedNowPosts = nowPosts.sort((a, b) => 
+  b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+// Pre-render markdown content
+const renderedPosts = sortedNowPosts.map(post => ({
+  ...post,
+  renderedContent: post.body ? marked.parse(post.body) : null
+}));
+---
+
+<Layout 
+  title="Now - Sajal Choudhary" 
+  description="What I'm currently working on and thinking about"
+  currentPage="/now/"
+>
+  <div class="max-w-7xl mx-auto">
+    <header class="mb-12 px-6">
+      <div class="flex flex-col">
+        <h1 class="text-4xl font-bold mb-4">Now</h1>
+        <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
+          A snapshot of what I'm currently focused on, thinking about, and working towards.
+        </p>
+      </div>
+    </header>
+
+    <div class="px-6">
+      <div class="grid grid-cols-1 gap-12 py-12">
+        {renderedPosts.map((post) => (
+          <article class="card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
+            <div class="p-8">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400 tracking-wide">
+                  {post.data.pubDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </span>
+                <span class="text-sm font-semibold text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30">
+                  {post.data.category}
+                </span>
+              </div>
+
+              <h2 class="text-3xl font-bold mb-6 leading-tight text-left">
+                {post.data.title}
+              </h2>
+
+              {post.renderedContent && (
+                <div class="prose dark:prose-dark max-w-none">
+                  <div set:html={post.renderedContent} />
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .grid {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* Add a subtle divider between cards */
+  .grid > *:not(:last-child) {
+    position: relative;
+  }
+
+  .grid > *:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -1.5rem;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(229 231 235),
+      transparent
+    );
+  }
+
+  :global(.dark) .grid > *:not(:last-child)::after {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(55 65 81),
+      transparent
+    );
+  }
+
+  /* Ensure links are properly styled */
+  :global(.prose a) {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  :global(.prose a:hover) {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+  :global(.dark .prose a) {
+    color: #60a5fa;
+  }
+
+  :global(.dark .prose a:hover) {
+    color: #93c5fd;
+  }
+
+  /* Additional prose styles for better markdown rendering */
+  :global(.prose h1),
+  :global(.prose h2),
+  :global(.prose h3),
+  :global(.prose h4) {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+  }
+
+  :global(.prose ul),
+  :global(.prose ol) {
+    margin-top: 0.5em;
+    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+  }
+
+  :global(.prose li) {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
+
+  :global(.prose blockquote) {
+    margin: 1.5em 0;
+    padding-left: 1em;
+    border-left: 4px solid #e5e7eb;
+    font-style: italic;
+  }
+
+  :global(.dark .prose blockquote) {
+    border-left-color: #374151;
+  }
+
+  :global(.prose code) {
+    background-color: #f3f4f6;
+    padding: 0.2em 0.4em;
+    border-radius: 0.25em;
+    font-size: 0.875em;
+  }
+
+  :global(.dark .prose code) {
+    background-color: #1f2937;
+  }
+
+  :global(.prose pre) {
+    background-color: #f3f4f6;
+    padding: 1em;
+    border-radius: 0.5em;
+    overflow-x: auto;
+    margin: 1.5em 0;
+  }
+
+  :global(.dark .prose pre) {
+    background-color: #1f2937;
+  }
+</style> 
