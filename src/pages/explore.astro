@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Get all posts
+const allPosts = await getCollection('posts');
+
+// Get counts for different categories
+const notes = allPosts.filter(post => post.data.category === 'evergreen');
+const stories = allPosts.filter(post => post.data.category === 'stories');
+const poems = allPosts.filter(post => post.data.category === 'poems');
+const books = allPosts.filter(post => post.data.category === 'books');
+const nordletters = allPosts.filter(post => post.data.category === 'nordletter');
+---
+
+<Layout title="Explore | Astronautical Aperture" currentPage="explore">
+  <main class="container mx-auto px-4 py-8">
+    <header class="mb-16 text-center">
+      <h1 class="text-4xl font-bold mb-4">Explore</h1>
+      <p class="text-xl text-textSecondary dark:text-textSecondaryDark">
+        Discover various sections of the website.
+      </p>
+    </header>
+
+    <section class="space-y-12">
+      <!-- About Section -->
+      <article>
+        <a href="/about" class="group">
+          <div class="flex items-baseline gap-4">
+            <h2 class="text-xl font-medium group-hover:text-accent transition-colors">About</h2>
+            <p class="text-gray-600 dark:text-gray-300">Learn more about me and this website</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Now Section -->
+      <article>
+        <a href="/now" class="group">
+          <div class="flex items-baseline gap-4">
+            <h2 class="text-xl font-medium group-hover:text-accent transition-colors">Now</h2>
+            <p class="text-gray-600 dark:text-gray-300">What I'm currently working on and thinking about</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Notes Section -->
+      <article>
+        <a href="/notes" class="group">
+          <div class="flex items-baseline gap-4">
+            <h2 class="text-xl font-medium group-hover:text-accent transition-colors">Notes</h2>
+            <p class="text-gray-600 dark:text-gray-300">{notes.length} notes on various topics</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Stories Section -->
+      <article>
+        <a href="/stories" class="group">
+          <div class="flex items-baseline gap-4">
+            <h2 class="text-xl font-medium group-hover:text-accent transition-colors">Stories</h2>
+            <p class="text-gray-600 dark:text-gray-300">{stories.length} short stories and narratives</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Poems Section -->
+      <article>
+        <a href="/poems" class="group">
+          <div class="flex items-baseline gap-4">
+            <h2 class="text-xl font-medium group-hover:text-accent transition-colors">Poems</h2>
+            <p class="text-gray-600 dark:text-gray-300">{poems.length} poems and verses</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Books Section -->
+      <article>
+        <a href="/books" class="group">
+          <div class="flex items-baseline gap-4">
+            <h2 class="text-xl font-medium group-hover:text-accent transition-colors">Books</h2>
+            <p class="text-gray-600 dark:text-gray-300">{books.length} books I've written</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Nordletter Section -->
+      <article>
+        <a href="/nordletter" class="group">
+          <div class="flex items-baseline gap-4">
+            <h2 class="text-xl font-medium group-hover:text-accent transition-colors">Nordletter</h2>
+            <p class="text-gray-600 dark:text-gray-300">{nordletters.length} newsletter issues</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Tags Section -->
+      <article>
+        <a href="/tags" class="group">
+          <div class="flex items-baseline gap-4">
+            <h2 class="text-xl font-medium group-hover:text-accent transition-colors">Tags</h2>
+            <p class="text-gray-600 dark:text-gray-300">Browse content by topics and themes</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Contact Section -->
+      <article>
+        <a href="/contact" class="group">
+          <div class="flex items-baseline gap-4">
+            <h2 class="text-xl font-medium group-hover:text-accent transition-colors">Contact</h2>
+            <p class="text-gray-600 dark:text-gray-300">Get in touch with me</p>
+          </div>
+        </a>
+      </article>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+</style> 

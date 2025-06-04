@@ -1,0 +1,30 @@
+---
+import PostCard from './PostCard.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  posts: any[];
+  currentPage: string;
+}
+
+const { title, description, posts, currentPage } = Astro.props;
+---
+
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-2xl lg:max-w-4xl">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{title}</h1>
+    <p class="mt-2 text-lg leading-8 text-gray-600">{description}</p>
+    <div class="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
+      {posts.map((post) => (
+        <PostCard 
+          title={post.data.title}
+          description={post.data.description}
+          url={`/${currentPage}/${post.slug}`}
+          pubDate={new Date(post.data.pubDate)}
+          image={post.data.image}
+        />
+      ))}
+    </div>
+  </div>
+</div> 

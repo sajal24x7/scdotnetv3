@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// Try to get nordletter entries
+const nordletterEntries = await getCollection('nordletter');
+const count = nordletterEntries.length;
+---
+
+<Layout
+  title="Nordletter Test"
+  description="Testing nordletter collection"
+  currentPage="/nordletter/test/"
+>
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6">Nordletter Collection Test</h1>
+    
+    <p class="mb-4">Number of entries found: {count}</p>
+    
+    <ul class="space-y-4">
+      {nordletterEntries.map(entry => (
+        <li class="border-b border-borderColor dark:border-borderColorDark pb-4">
+          {entry.slug} - {entry.data.title} - {new Date(entry.data.pubDate).toLocaleDateString()}
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout> 

@@ -1,0 +1,92 @@
+---
+// src/components/Header.astro
+
+interface Props {
+    currentPage: string;
+}
+const { currentPage } = Astro.props;
+
+const navLinks = [
+    { href: '/about/', label: 'About Sajal' },
+    { href: '/notes/', label: 'Notes' },
+    { href: '/ephemera/', label: 'Ephemera' },
+    { href: '/nordletter/', label: 'NordLetter' },
+    { href: '/books/', label: 'Books' },
+    { href: '/stories/', label: 'Stories' },
+    { href: '/poems/', label: 'Poems' },
+    { href: '/explore/', label: 'Explore' },
+];
+---
+<header class="container mx-auto px-4 py-4 max-w-3xl">
+    <div class="flex justify-between items-center mb-3">
+        <!-- Logo on the left -->
+        <a href="/" class="flex items-center text-xl font-bold text-textPrimary hover:text-accent transition-colors py-2">
+            <img src="/logo/logo-sc.svg" alt="SC Logo" class="mr-3 h-14 w-auto transition-transform duration-300 dark:hidden" />
+            <img src="/logo/logo-sc-dark.svg" alt="SC Logo" class="mr-3 h-14 w-auto transition-transform duration-300 hidden dark:block" />
+        </a>
+        <!-- Navigation Links left aligned -->
+        <div class="flex flex-col items-start">
+            <div class="grid grid-cols-2 gap-x-24">
+                <div class="flex flex-col items-start">
+                    <a href="/about/" class="text-textSecondary hover:text-textPrimary transition-colors py-1.5 inline-block text-sm uppercase tracking-wide font-medium text-left">ABOUT SAJAL</a>
+                    <div class="flex gap-x-1 items-center py-1.5">
+                        <a href="/notes/" class="text-textSecondary hover:text-textPrimary transition-colors inline-block text-sm uppercase tracking-wide font-medium text-left">NOTES</a>
+                        <span class="text-textSecondary">&</span>
+                        <a href="/ephemera/" class="text-textSecondary hover:text-textPrimary transition-colors inline-block text-sm uppercase tracking-wide font-medium text-left">EPHEMERA</a>
+                    </div>
+                    <a href="/nordletter/" class="text-textSecondary hover:text-textPrimary transition-colors py-1.5 inline-block text-sm uppercase tracking-wide font-medium text-left">NORDLETTER</a>
+                </div>
+                <div class="flex flex-col items-start">
+                    <a href="/books/" class="text-textSecondary hover:text-textPrimary transition-colors py-1.5 inline-block text-sm uppercase tracking-wide font-medium text-left">BOOKS</a>
+                    <div class="flex gap-x-1 items-center py-1.5">
+                        <a href="/stories/" class="text-textSecondary hover:text-textPrimary transition-colors inline-block text-sm uppercase tracking-wide font-medium text-left">STORIES</a>
+                        <span class="text-textSecondary">&</span>
+                        <a href="/poems/" class="text-textSecondary hover:text-textPrimary transition-colors inline-block text-sm uppercase tracking-wide font-medium text-left">POEMS</a>
+                    </div>
+                    <a href="/explore/" class="text-textSecondary hover:text-textPrimary transition-colors py-1.5 inline-block text-sm uppercase tracking-wide font-medium text-left">EXPLORE</a>
+                </div>
+            </div>
+        </div>
+        <!-- Subscribe Links left aligned -->
+        <div class="flex flex-col items-start">
+            <a href="https://mastodon.social/@yourusername" class="group flex items-center transition-transform hover:scale-105 mb-2" rel="me">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="h-7 w-7">
+                    <path fill="#6364FF" d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61-1.433-.658-3.894-.935-6.451-.956h-.063c-2.557.021-5.016.298-6.45.956 0 0-2.843 1.272-2.843 5.61 0 .993-.019 2.181.012 3.441.103 4.243.778 8.425 4.701 9.463 1.81.479 3.362.579 4.612.51 2.268-.126 3.541-.809 3.541-.809l-.075-1.646s-1.621.511-3.441.449c-1.804-.062-3.707-.194-3.999-2.409a4.523 4.523 0 0 1-.04-.621s1.77.433 4.014.536c1.372.063 2.658-.08 3.965-.236 2.506-.299 4.688-1.843 4.962-3.254.434-2.223.398-5.424.398-5.424zm-3.353 5.59h-2.081V9.057c0-1.075-.452-1.62-1.357-1.62-1 0-1.501.647-1.501 1.927v2.791h-2.069V9.364c0-1.28-.501-1.927-1.501-1.927-.905 0-1.357.546-1.357 1.62v5.099H6.026V8.903c0-1.074.273-1.927.823-2.558.566-.631 1.307-.955 2.228-.955 1.065 0 1.872.409 2.405 1.228l.518.869.519-.869c.533-.819 1.34-1.228 2.405-1.228.92 0 1.662.324 2.228.955.549.631.822 1.484.822 2.558v5.253z"/>
+                </svg>
+                <span class="ml-2 hidden text-[#6364FF] font-medium sm:inline">Mastodon</span>
+            </a>
+            <a href="/rss.xml" class="group flex items-center transition-transform hover:scale-105 mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="h-7 w-7">
+                    <path fill="#F26522" d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.03 7.38 20 6.18 20C4.98 20 4 19.03 4 17.82c0-1.2.98-2.18 2.18-2.18m.03-5.45c4.74 0 8.58 3.84 8.58 8.58H17.4C17.4 12.95 12.45 8 6.63 8l-.42 2.19m.03-5.47c7.03 0 12.73 5.7 12.73 12.73h2.61c0-8.46-6.88-15.34-15.34-15.34L6.24 4.72z"/>
+                </svg>
+                <span class="ml-2 hidden text-[#F26522] font-medium sm:inline">Subscribe</span>
+            </a>
+            <a href="https://instagram.com/yourusername" class="group flex items-center transition-transform hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="h-7 w-7">
+                    <path fill="#E1306C" d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308 1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.332.013 7.052.072 5.773.131 4.548.385 3.465 1.468 2.382 2.551 2.128 3.776 2.069 5.055.013 8.332 0 8.741 0 12s.013 3.668.072 4.948c.059 1.279.313 2.504 1.396 3.587 1.083 1.083 2.308 1.337 3.587 1.396 1.279.059 1.688.072 4.948.072s3.668-.013 4.948-.072c1.279-.059 2.504-.313 3.587-1.396 1.083-1.083 1.337-2.308 1.396-3.587.059-1.279.072-1.688.072-4.948s-.013-3.668-.072-4.948c-.059-1.279-.313-2.504-1.396-3.587-1.083-1.083-2.308-1.337-3.587-1.396C15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0-2.88 1.44 1.44 0 0 0 0 2.88z"/>
+                </svg>
+                <span class="ml-2 hidden text-[#E1306C] font-medium sm:inline">Instagram</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<style>
+    /* Active state styling */
+    .font-semibold.text-accent {
+         border-bottom: 2px solid currentColor;
+    }
+    
+    /* Responsive styling */
+    @media (max-width: 640px) {
+        nav ul {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+        }
+        
+        .font-semibold.text-accent {
+            border-bottom: 2px solid currentColor;
+        }
+    }
+</style>

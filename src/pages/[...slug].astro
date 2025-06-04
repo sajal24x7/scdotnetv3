@@ -1,0 +1,153 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import { format } from 'date-fns';
+import type { CollectionEntry, ContentEntryMap } from 'astro:content';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+export async function getStaticPaths() {
+  // Get all year directories from content
+  const contentDir = path.join(process.cwd(), 'src/content');
+  const entries = await fs.readdir(contentDir, { withFileTypes: true });
+  const years = entries
+    .filter(entry => entry.isDirectory() && /^\d{4}$/.test(entry.name))
+    .map(entry => entry.name)
+    .sort();
+
+  // Get all posts from all collections
+  const allPosts = await Promise.all(years.map(year => getCollection(year as keyof ContentEntryMap)));
+  const posts = allPosts.flat().filter(entry => entry.data && entry.data.title);
+
+  return posts.map((entry) => {
+    const category = 'category' in entry.data && entry.data.category ? entry.data.category : 'notes';
+    return {
+      params: { slug: `${category}/${entry.slug}` },
+      props: { entry },
+    };
+  });
+}
+
+const [category, slug] = Astro.params.slug.split('/');
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const formattedDate = entry.data?.pubDate ? format(entry.data.pubDate, 'MMMM d, yyyy') : '';
+const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
+  ? format(entry.data.updatedDate, 'MMMM d, yyyy')
+  : null;
+---
+
+<Layout 
+  title={`${entry.data?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
+  description={entry.data?.description} 
+  currentPage={`/${category}/${entry.slug}/`}
+>
+  <article class="prose dark:prose-dark mx-auto">
+    <div class="mb-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+        <div>
+          <p class="text-sm text-textSecondary dark:text-textSecondaryDark">
+            {updatedDate ? `Last updated: ${updatedDate}` : `Published: ${formattedDate}`}
+          </p>
+        </div>
+        
+        <div class="mt-2 md:mt-0">
+          <span class="text-sm bg-borderColor dark:bg-borderColorDark px-2 py-1 rounded-md">
+            {category}
+          </span>
+        </div>
+      </div>
+      
+      {'image' in entry.data && entry.data.image && (
+        <div class="mb-6">
+          <img 
+            src={entry.data.image} 
+            alt={entry.data?.title ?? ''} 
+            class="rounded-lg w-full object-cover max-h-96"
+            loading="lazy"
+          />
+        </div>
+      )}
+      
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">{entry.data?.title ?? ''}</h1>
+      
+      {entry.data?.description && (
+        <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
+          {entry.data.description}
+        </p>
+      )}
+      
+      {'tags' in entry.data && Array.isArray(entry.data.tags) && entry.data.tags.length > 0 && (
+        <div class="mb-8">
+          <div class="flex flex-wrap gap-2">
+            {entry.data.tags.map((tag: string) => (
+              <a 
+                href={`/tags/${tag}/`} 
+                class="text-xs bg-borderColor dark:bg-borderColorDark px-2 py-1 rounded-md hover:bg-accent hover:text-white transition-colors"
+              >
+                #{tag}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+    
+    <div>
+      <Content />
+    </div>
+    
+    <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
+      <div class="flex justify-between">
+        <a href={`/${category}/`} class="text-accent hover:underline">← Back to {category.charAt(0).toUpperCase() + category.slice(1)}</a>
+        
+        <button 
+          id="shareButton" 
+          class="text-accent hover:underline flex items-center"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+          Share
+        </button>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<script>
+  // Share functionality
+  const shareButton = document.getElementById('shareButton');
+  
+  if (shareButton) {
+    shareButton.addEventListener('click', async () => {
+      const title = document.title;
+      const url = window.location.href;
+      
+      // Use Web Share API if available
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: title,
+            url: url
+          });
+        } catch (error) {
+          console.error('Error sharing:', error);
+        }
+      } else {
+        // Fallback to clipboard copy
+        try {
+          await navigator.clipboard.writeText(url);
+          alert('Link copied to clipboard!');
+        } catch (error) {
+          console.error('Failed to copy:', error);
+        }
+      }
+    });
+  }
+</script> 

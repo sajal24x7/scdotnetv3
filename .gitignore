@@ -1,0 +1,44 @@
+# build output
+dist/
+.output/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+.env.local
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+
+# R2 upload script configuration
+.r2_credentials
+
+# Large media files
+# Uncomment this section when you start using R2 in production
+# public/images/**/*.jpg
+# public/images/**/*.jpeg
+# public/images/**/*.png
+# public/images/**/*.gif
+# public/images/**/*.webp
+# public/images/**/*.mp4
+# public/images/**/*.mov
+# public/images/**/*.webm
+
+# Keep essential image files in git (icons, logos, etc)
+!public/images/icons/
+!public/images/logo.svg

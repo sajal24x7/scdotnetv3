@@ -1,0 +1,92 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tags: { [key: string]: number };
+  currentPage: string;
+}
+
+const { title, description, tags, currentPage } = Astro.props;
+
+// Get top 20 most used tags
+const sortedByCount = Object.entries(tags)
+  .sort(([, a], [, b]) => b - a)
+  .slice(0, 20);
+
+// Split into two columns
+const midPoint = Math.ceil(sortedByCount.length / 2);
+const leftColumn = sortedByCount.slice(0, midPoint);
+const rightColumn = sortedByCount.slice(midPoint);
+
+// Get all tags in alphabetical order and split into two columns
+const sortedAlphabetically = Object.entries(tags)
+  .sort(([a], [b]) => a.localeCompare(b));
+const alphaMidPoint = Math.ceil(sortedAlphabetically.length / 2);
+const alphaLeftColumn = sortedAlphabetically.slice(0, alphaMidPoint);
+const alphaRightColumn = sortedAlphabetically.slice(alphaMidPoint);
+---
+
+<div class="max-w-3xl mx-auto">
+  <header class="mb-12 px-6">
+    <div class="flex flex-col items-center">
+      <h1 class="text-4xl font-bold mb-4">{title}</h1>
+      <p class="text-xl text-textSecondary dark:text-textSecondaryDark text-center mb-4">
+        {description}
+      </p>
+    </div>
+  </header>
+
+  <div class="px-6">
+    <div class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 text-center">Most Used Tags</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-1 text-center">
+          {leftColumn.map(([tag, count]) => (
+            <a 
+              href={`${currentPage}/tags/${tag}/`} 
+              class="block text-sm uppercase tracking-wide hover:text-accent transition-colors"
+            >
+              {tag} ({count})
+            </a>
+          ))}
+        </div>
+        <div class="space-y-1 text-center">
+          {rightColumn.map(([tag, count]) => (
+            <a 
+              href={`${currentPage}/tags/${tag}/`} 
+              class="block text-sm uppercase tracking-wide hover:text-accent transition-colors"
+            >
+              {tag} ({count})
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold mb-6 text-center">All Tags</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-1 text-center">
+          {alphaLeftColumn.map(([tag, count]) => (
+            <a 
+              href={`${currentPage}/tags/${tag}/`} 
+              class="block text-sm uppercase tracking-wide hover:text-accent transition-colors"
+            >
+              {tag} ({count})
+            </a>
+          ))}
+        </div>
+        <div class="space-y-1 text-center">
+          {alphaRightColumn.map(([tag, count]) => (
+            <a 
+              href={`${currentPage}/tags/${tag}/`} 
+              class="block text-sm uppercase tracking-wide hover:text-accent transition-colors"
+            >
+              {tag} ({count})
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

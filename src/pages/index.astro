@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import FeaturedPost from '../components/FeaturedPost.astro';
+import PostCard from '../components/PostCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+// Get all posts
+const allPosts = await getCollection('posts');
+
+// Get evergreen posts for featured section
+const featuredNotes = allPosts
+  .filter(post => post.data.category === 'evergreen')
+  .sort((a, b) => {
+    const aDate = a.data.updatedDate || a.data.pubDate;
+    const bDate = b.data.updatedDate || b.data.pubDate;
+    return bDate.valueOf() - aDate.valueOf();
+  })
+  .slice(0, 3);
+
+// Get creative writing (stories and poems)
+const creativeWriting = allPosts
+  .filter(post => ['stories', 'poems'].includes(post.data.category))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 2);
+
+// Get a random post from available collections
+const getRandomPost = () => {
+  if (allPosts.length === 0) return null;
+  const randomIndex = Math.floor(Math.random() * allPosts.length);
+  const randomPost = allPosts[randomIndex];
+  return `/${randomPost.data.category}/${randomPost.slug}/`;
+};
+---
+
+<Layout title="Sajal Choudhary" currentPage="/">
+  <section class="mb-12">
+    <div class="py-8 mb-8">
+      <h1 class="text-4xl font-bold mb-4">Sajal Choudhary</h1>
+      <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-6">
+        An Indian writer living in Finland.
+      </p>
+      <div class="flex space-x-4">
+        <a 
+          href="/about/" 
+          class="px-6 py-2 bg-accent text-white rounded-md hover:bg-opacity-90 transition-all">
+          More About Me
+        </a>
+        <a 
+          href={getRandomPost() || '/'}
+          class="px-6 py-2 border border-accent text-accent dark:text-accent rounded-md hover:bg-opacity-10 hover:bg-accent transition-all">
+          Random Post
+        </a>
+      </div>
+    </div>
+
+    {featuredNotes.length > 0 && (
+      <div class="mb-12">
+        <div class="flex justify-between items-baseline mb-6">
+          <h2 class="text-2xl font-bold">From the Garden</h2>
+          <a href="/notes/" class="text-accent hover:underline">View All Notes →</a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          {featuredNotes.map((note) => (
+            <FeaturedPost 
+              title={note.data.title}
+              description={note.data.description}
+              url={`/notes/${note.slug}/`}
+              date={note.data.updatedDate || note.data.pubDate}
+              isUpdated={!!note.data.updatedDate}
+              stage={note.data.stage}
+            />
+          ))}
+        </div>
+      </div>
+    )}
+
+    {creativeWriting.length > 0 && (
+      <div class="mb-12">
+        <div class="flex justify-between items-baseline mb-6">
+          <h2 class="text-2xl font-bold">Creative Writing</h2>
+          <div class="space-x-4">
+            <a href="/stories/" class="text-accent hover:underline">Stories</a>
+            <a href="/poems/" class="text-accent hover:underline">Poems</a>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          {creativeWriting.map((item) => (
+            <PostCard 
+              title={item.data.title}
+              url={`/${item.data.category}/${item.slug}/`}
+              pubDate={item.data.pubDate}
+              image={item.data.image}
+            />
+          ))}
+        </div>
+      </div>
+    )}
+  </section>
+</Layout>

@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// Get all posts
+const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
+
+export async function getStaticPaths() {
+  // Get all unique tags
+  const tags = new Set<string>();
+  allPosts.forEach((post: CollectionEntry<'posts'>) => {
+    post.data.tags?.forEach((tag: string) => tags.add(tag));
+  });
+
+  // Create paths for each tag
+  return Array.from(tags).map(tag => ({
+    params: { tag },
+    props: { tag }
+  }));
+}
+
+const { tag } = Astro.props;
+
+// Filter posts by tag
+const taggedPosts = allPosts.filter((post: CollectionEntry<'posts'>) => 
+  post.data.tags?.includes(tag)
+);
+
+// Sort by publish date (newest first)
+const sortedPosts = taggedPosts.sort((a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => 
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout 
+  title={`#${tag} - Sajal Choudhary`} 
+  description={`Content tagged with #${tag}`}
+  currentPage={`/tags/${tag}/`}
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <header class="mb-16">
+      <h1 class="text-4xl font-bold mb-4">#{tag}</h1>
+      <p class="text-xl text-textSecondary dark:text-textSecondaryDark">
+        {sortedPosts.length} {sortedPosts.length === 1 ? 'item' : 'items'} tagged with #{tag}
+      </p>
+    </header>
+
+    <section class="space-y-12">
+      {sortedPosts.length === 0 ? (
+        <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
+          <p class="text-textSecondary dark:text-textSecondaryDark">No content found with this tag.</p>
+        </div>
+      ) : (
+        <div class="space-y-12">
+          {sortedPosts.map(post => (
+            <article>
+              <a href={`/${post.data.category}/${post.slug}/`} class="group">
+                <div class="flex items-baseline gap-4">
+                  <time class="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap">
+                    {new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                      day: 'numeric',
+                      month: 'short',
+                      year: 'numeric'
+                    })}
+                  </time>
+                  <h2 class="text-xl font-medium group-hover:text-accent transition-colors">
+                    {post.data.title}
+                  </h2>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      )}
+    </section>
+  </div>
+</Layout> 

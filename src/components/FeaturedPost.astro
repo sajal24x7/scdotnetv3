@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  url: string;
+  date: Date;
+  isUpdated: boolean;
+  stage?: 'fleeting' | 'seedling' | 'budding' | 'evergreen';
+  image?: string;
+}
+
+const { title, description, url, date, isUpdated, stage, image } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+}).format(date);
+
+const stageEmoji = {
+  fleeting: '💭',
+  seedling: '🌱',
+  budding: '🌿',
+  evergreen: '🌲',
+};
+---
+
+<article class="border border-borderColor dark:border-borderColorDark rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+  {image && (
+    <div class="aspect-video overflow-hidden">
+      <img 
+        src={image} 
+        alt={title}
+        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+  )}
+  <div class="p-5">
+    <div class="flex justify-between items-start mb-2">
+      {stage && (
+        <span class="text-sm text-textSecondary dark:text-textSecondaryDark" title={stage}>
+          {stageEmoji[stage]} {stage}
+        </span>
+      )}
+      <span class={"text-sm text-textSecondary dark:text-textSecondaryDark " + (!stage ? "w-full text-right" : "")}>
+        {isUpdated ? `Updated: ${formattedDate}` : formattedDate}
+      </span>
+    </div>
+    <h3 class="text-xl font-semibold mb-2 hover:text-accent transition-colors">
+      <a href={url} class="hover:text-accent transition-colors">
+        {title}
+      </a>
+    </h3>
+    {description && (
+      <p class="text-textSecondary dark:text-textSecondaryDark line-clamp-3">
+        {description}
+      </p>
+    )}
+  </div>
+</article> 

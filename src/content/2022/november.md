@@ -1,0 +1,250 @@
+---
+title: Do you trust me?
+category: blog
+description: >-
+  “If it were a dream”, he said, “would you spend it arguing what all this
+  means, or..”
+tags: []
+pubDate: 2022-01-30T18:30:00.000Z
+updatedDate: 2022-02-27T07:33:23.000Z
+image: >-
+  https://images.unsplash.com/photo-1487147264018-f937fba0c817?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDE1fHxwYWludHxlbnwwfHx8fDE2NDU5NDcxNzg&ixlib=rb-1.2.1&q=80&w=2000
+---
+
+_Thump!_
+
+I looked up. Some one had just put a whole new stack of files over the stack of files already present on my desk.
+
+I sighed.
+
+All I could see, without craning my neck, were files. Some new. Some old. All stuffed with papers that needed me to do something about them.
+
+_What?_
+
+Something.
+
+I sighed. I looked at the clock on the opposite wall. Nine-fifteen in the morning.
+
+I sighed.
+
+Fifteen minutes passed. My phone buzzed. I looked up from the file I had buried my head in. The momentarily lit screen on my phone told me I had received a text. I picked up the phone.
+
+“Good morning.”
+
+I smiled.
+
+Harsh and I had been together for the past six years. We had met at work. I pivoted, and decided that I wanted to pursue a career with the Government of India. He continued working where he was. He was in Germany now, and I at Kochi Customs.
+
+This distance was not new to us. True it had increased recently, but this distance had always been there. The only difference was that along with the distance we had a time difference between us as well.
+
+“Good morning” I texted back.
+
+“How are you doing today?”
+
+“Not particularly well” I replied.
+
+“Oh?”
+
+“Yep”
+
+And that was that.
+
+And that would be that for the next half an hour or so, till the man on the other end of the phone had finished going through his early morning rituals.
+
+At ten, I received the next text.
+
+“Listen. This might seem weird. But, do you have a desk phone?”
+
+It did seem weird. But weird _was_ normal. Weird was what we were.
+
+“No.”
+
+“So, if the commissioner wanted to reach you. How would he?”
+
+“There’s a phone in the department. I would get a call there.”
+
+“Oh”
+
+“Yep”
+
+“Why do you ask?” I said.
+
+“Nothing. Research.”
+
+“Oh.”
+
+“Oh yes. Catch you in a bit” he said.
+
+“TTYL”
+
+“Love you”
+
+“Love you more”
+
+I put the phone down and got back to the task at hand.
+
+At ten thirty, the phone in the section rang. It was the commissioner. I was needed.
+
+* * *
+
+I looked at the clock on the wall behind the secretary.
+
+Five past eleven.
+
+_This was supposed to be urgent!_
+
+I had been sitting in the waiting area for the past thirty minutes. The Commissioner’s office was on the fifth floor of the Customs building. The lift was out of order, and so I had to take the stairs. I did not enjoy taking stairs. I did not enjoy waiting.
+
+“He should be done in another five minutes” said the secretary.
+
+I nodded. Smiled, absently.
+
+The JC was just getting up as I entered the commissioner’s cabin.
+
+“Good morning sir!” I said.
+
+“Good morning Prerna” said the commissioner. “Take a seat”
+
+I did.
+
+A minute passed in silence while the JC gathered the files and left.
+
+_I did not like him._
+
+_“_ Yes. Where were we?” said the commissioner, not really needing an answer. He continued, “Yes. Miss Prerna, you are needed at the airport. Right away. Take this” he said, handing me a sealed envelop. “Hand it over to Ramanujan at the airport. He should have something for you.”
+
+It was not usual that I would be asked to escort packages like this. But, when the commissioner asked you to do something, you did.
+
+I took the envelop and got up to leave.
+
+“Also good job with the Custom's day event.”
+
+“Thank you sir”
+
+“Check with Sarla madam for the transport and escort details”
+
+“Ok sir” I said and left.
+
+* * *
+
+The official transport was a Toyota Innova. It was waiting as I reached the ground floor after picking up my belongings from my desk.
+
+Sarla madam had informed me there would be escort assigned for the journey.
+
+The man was sitting on the other side looking out the window as I opened the car door and got in.
+
+“Hello” he said, as I settled in my seat. The driver started the car.
+
+“Hello” I said. Something. My brain was telling me something. I pushed it back as I concentrated instead on finding a place for my bag, lunch box and the package.
+
+“How are you doing?” he said.
+
+That voice! It couldn't be.
+
+I looked up. It _was_ him. He had removed the sun glasses. And had that impish smile on.
+
+_But how?_
+
+“Hey! Are you ok? Say something!” he said.
+
+_You are supposed to be in Finland. This can not be happening. How the fuck is this happening?_
+
+I was having difficulty getting the words out of my mouth.
+
+I cried.
+
+“Hey! It's ok” he said.
+
+“But .. how?” I said.
+
+“Trust me” he said. I don't know how or when but I had slid into his arms. My head resting against his chest.
+
+“I love you” he said.
+
+“I love you more” I said.
+
+_But how?_
+
+* * *
+
+I recognised the plane. I had seen it on TV many times before.
+
+_What is happening?_
+
+The Innova had been joined by a motorcade of similar make and model cars as soon as we had left the Customs Office. The sirens were muted, but jarring still. We had cruised from the office to the airport in an hour. At no point did the motorcade stop, using an alternate entry at the airport to directly reach the tarmac. Now, we were standing at the tarmac, in front of the Air India One.
+
+_What is happening?_
+
+He took my hand in his. “Trust me” he said. Somehow that was enough.
+
+We walked past the security personnel, up the stairs and inside the plane. We turned left, past the many seating areas until we reached a cabin door.
+
+We entered. Harsh closed the door behind me.
+
+As I stood in the centre of the room, it felt as if the walls were closing down on me. As if everything would collapse and I would wake up from whatever this was.
+
+But then, I felt his hand on my arm. As real as anything could be.
+
+I returned back to the room. The walls back where they were supposed to be.
+
+_This. What is this? What are we doing? Is this a dream?_
+
+Harsh looked at me, keenly, as if he could read my mind, my thoughts.
+
+“If it were a dream”, he said, “would you spend it arguing what all this means, or..”
+
+He pulled me close, and kissed me.
+
+I found myself unable to respond those first few seconds. But then I found myself. I found him, his lips, his touch.
+
+_If it were a dream, I would rather be doing this._
+
+* * *
+
+I was woken up by the knocks on the cabin door. It took some time for me to find my feet. I found my clothes on the floor. I picked them up and put them on.
+
+The knock recurred.
+
+I was standing in the middle of the cabin. I could not see Harsh around. Maybe he had walked out?
+
+I reached for the door. It was locked. I pulled the latch.
+
+The steward was polite.
+
+“Madam Prime Minister, we would be landing in fifteen minutes.”
+
+I simply nodded and receded back into the cabin.
+
+_Madam Prime Minister?_
+
+I found myself pinching myself.
+
+I winced, as I shouldn't have. This had to be a dream. I should not have felt that. I should not be on this plane. I should not be called madam prime minister. I was no one's prime minister.
+
+It felt as if the walls were closing in on me. It felt as if the world would come crashing down unto me. But then I heard his voice.
+
+And I knew.
+
+Everything.
+
+* * *
+
+_Whatever I was, you are it now._
+
+_There are rules, of course. There are limits. But I found out I could be whoever I wanted to be. Whatever I wanted to do, was possible. There are rules, of course. There are limits. I can not be in two places at once, for example. Whenever I travel, I have to use whatever is available, a plane, a train, a bus._
+
+_I could be whatever I wanted to be, and I was._
+
+_I wish I had the time to talk to you, to explain to you. Everything. I had plans. Man did I have plans!_
+
+_But things changed._
+
+_I asked you to trust me, and you did!_
+
+_You can talk to me whenever you want, but I wish you wouldn't. I am gone now. I wish I had more time. I wish we had more time. I wanted to roam the world with you. I wish we had more time._
+
+_Whatever you need to know, you know it now._
+
+_This is your fight now._
+
+_I know you will win._

@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import TagPage from '../../../components/TagPage.astro';
+
+const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2019', '2021', '2022', '2024', '2025'];
+
+// Get all posts from year collections
+const allPosts = await Promise.all(years.map(year => getCollection(year)));
+const blogPosts = allPosts
+  .flat()
+  .filter(post => post.data.category === 'blog');
+
+// Count tags
+const tags = blogPosts.reduce((acc: Record<string, number>, post) => {
+  if (post.data.tags) {
+    post.data.tags.forEach((tag: string) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+    });
+  }
+  return acc;
+}, {} as Record<string, number>);
+---
+
+<Layout 
+  title="Blog Tags" 
+  description="Browse blog posts by tag" 
+  currentPage="/blog/"
+>
+  <div class="max-w-7xl mx-auto">
+    <div class="px-6">
+      <TagPage 
+        title="Blog Tags" 
+        description="Browse blog posts by tag"
+        tags={tags}
+        currentPage="/blog"
+      />
+    </div>
+  </div>
+</Layout> 

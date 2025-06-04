@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// Get all posts
+const allPosts = await getCollection('posts');
+
+// Get all unique tags and their counts
+const tagCounts = new Map<string, number>();
+allPosts.forEach(post => {
+  post.data.tags?.forEach(tag => {
+    tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+  });
+});
+
+// Convert to array and sort by count (descending)
+const sortedTags = Array.from(tagCounts.entries())
+  .sort((a, b) => b[1] - a[1]);
+
+const topTwentyTags = sortedTags.slice(0, 20);
+const allTags = Array.from(tagCounts.entries())
+  .sort((a, b) => a[0].localeCompare(b[0]));
+---
+
+<Layout 
+  title="Tags - Sajal Choudhary" 
+  description="All tags used in the content"
+  currentPage="/tags/"
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <header class="mb-16">
+      <h1 class="text-4xl font-bold mb-4">Tags</h1>
+    </header>
+
+    <section class="space-y-12">
+      <!-- Top Twenty Tags -->
+      <div>
+        <h2 class="text-2xl font-bold mb-8">Top Twenty Tags</h2>
+        <div class="grid grid-cols-2 gap-4">
+          {topTwentyTags.map(([tag, count]) => (
+            <a href={`/tags/${tag}/`} class="text-sm font-medium hover:text-accent transition-colors">
+              {tag.toUpperCase()} ({count})
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- All Tags -->
+      <div class="mt-48">
+        <h2 class="text-2xl font-bold mb-8">All Tags</h2>
+        <div class="grid grid-cols-2 gap-4">
+          {allTags.map(([tag, count]) => (
+            <a href={`/tags/${tag}/`} class="text-sm font-medium hover:text-accent transition-colors">
+              {tag.toUpperCase()} ({count})
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout> 

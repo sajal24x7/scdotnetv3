@@ -1,0 +1,151 @@
+---
+const { title, description, pubDate, category, image, link } = Astro.props;
+
+const formatDate = (date) => {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(new Date(date));
+};
+---
+
+<article class="card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
+  <div class="p-8 flex gap-8">
+    {image && (
+      <div class="flex-shrink-0 w-32 h-32 overflow-hidden rounded-full">
+        <img 
+          src={image} 
+          alt={title}
+          class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+        />
+      </div>
+    )}
+    
+    <div class="flex-grow text-left">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 tracking-wide">
+          {formatDate(pubDate)}
+        </span>
+        <span class="text-sm font-semibold text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30">
+          {category}
+        </span>
+      </div>
+
+      <h2 class="text-3xl font-bold mb-4 leading-tight text-left">
+        {link ? (
+          <a href={link} class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
+            {title}
+          </a>
+        ) : (
+          title
+        )}
+      </h2>
+
+      {category === 'micro' ? (
+        <div class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed text-left">
+          <slot />
+        </div>
+      ) : (
+        description && (
+          <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed text-left line-clamp-3">
+            {description}
+          </p>
+        )
+      )}
+    </div>
+  </div>
+</article>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Custom prose styles for micro posts */
+  :global(.prose) {
+    max-width: none;
+  }
+
+  :global(.prose p) {
+    margin-top: 0;
+    margin-bottom: 1.5em;
+  }
+
+  :global(.prose a) {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  :global(.prose a:hover) {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+  :global(.dark .prose a) {
+    color: #60a5fa;
+  }
+
+  :global(.dark .prose a:hover) {
+    color: #93c5fd;
+  }
+
+  /* Additional prose styles for better markdown rendering */
+  :global(.prose h1),
+  :global(.prose h2),
+  :global(.prose h3),
+  :global(.prose h4) {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+  }
+
+  :global(.prose ul),
+  :global(.prose ol) {
+    margin-top: 0.5em;
+    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+  }
+
+  :global(.prose li) {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
+
+  :global(.prose blockquote) {
+    margin: 1.5em 0;
+    padding-left: 1em;
+    border-left: 4px solid #e5e7eb;
+    font-style: italic;
+  }
+
+  :global(.dark .prose blockquote) {
+    border-left-color: #374151;
+  }
+
+  :global(.prose code) {
+    background-color: #f3f4f6;
+    padding: 0.2em 0.4em;
+    border-radius: 0.25em;
+    font-size: 0.875em;
+  }
+
+  :global(.dark .prose code) {
+    background-color: #1f2937;
+  }
+
+  :global(.prose pre) {
+    background-color: #f3f4f6;
+    padding: 1em;
+    border-radius: 0.5em;
+    overflow-x: auto;
+    margin: 1.5em 0;
+  }
+
+  :global(.dark .prose pre) {
+    background-color: #1f2937;
+  }
+</style> 

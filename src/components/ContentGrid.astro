@@ -1,0 +1,87 @@
+---
+import Card from './Card.astro';
+import { marked } from 'marked';
+
+const { posts } = Astro.props;
+
+// Configure marked options
+marked.setOptions({
+  gfm: true, // GitHub Flavored Markdown
+  breaks: true // Convert line breaks to <br>
+});
+
+// Pre-render markdown content
+const renderedPosts = posts.map(post => ({
+  ...post,
+  renderedContent: post.body ? marked.parse(post.body) : null
+}));
+---
+
+<div class="grid grid-cols-1 gap-12 py-12">
+  {renderedPosts.map((post) => (
+    <Card {...post.data}>
+      {post.renderedContent && (
+        <div class="prose dark:prose-dark max-w-none">
+          <div set:html={post.renderedContent} />
+        </div>
+      )}
+    </Card>
+  ))}
+</div>
+
+<style>
+  .grid {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* Add a subtle divider between cards */
+  .grid > *:not(:last-child) {
+    position: relative;
+  }
+
+  .grid > *:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -1.5rem;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(229 231 235),
+      transparent
+    );
+  }
+
+  :global(.dark) .grid > *:not(:last-child)::after {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(55 65 81),
+      transparent
+    );
+  }
+
+  /* Ensure links are properly styled */
+  :global(.prose a) {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  :global(.prose a:hover) {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+  :global(.dark .prose a) {
+    color: #60a5fa;
+  }
+
+  :global(.dark .prose a:hover) {
+    color: #93c5fd;
+  }
+</style> 
