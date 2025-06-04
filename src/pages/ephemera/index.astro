@@ -6,7 +6,7 @@ import { getAllPosts, transformPost } from '../../utils/content';
 // Get all posts and filter for ephemera
 const allPosts = await getAllPosts();
 const ephemera = allPosts
-  .filter(post => ['blog', 'micro', 'photo'].includes(post.data.category))
+  .filter(post => ['blog', 'micro', 'photo', 'til'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
 // Transform posts for the ContentGrid component

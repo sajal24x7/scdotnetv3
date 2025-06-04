@@ -1,0 +1,45 @@
+---
+title: "Git stash apply vs pop"
+description: "Understanding the difference between git stash apply and git stash pop commands"
+pubDate: 2024-03-21
+category: "til"
+tags: ["git", "version-control", "development"]
+---
+
+# Git stash apply vs pop
+
+Today I learned about the subtle but important difference between `git stash apply` and `git stash pop` commands.
+
+## The Difference
+
+- `git stash pop` removes the stash from the stash list after applying it
+- `git stash apply` keeps the stash in the stash list after applying it
+
+## When to Use Each
+
+### Use `git stash pop` when:
+- You're confident the changes will apply cleanly
+- You don't need to keep the stash for later use
+- You want to clean up your stash list
+
+### Use `git stash apply` when:
+- You want to try applying the changes without removing them from stash
+- You might need to apply the same stash to multiple branches
+- You're unsure if the changes will apply cleanly
+
+## Example
+
+```bash
+# Create a stash
+git stash save "WIP: feature changes"
+
+# Apply and remove from stash list
+git stash pop
+
+# OR apply but keep in stash list
+git stash apply
+```
+
+## Pro Tip
+
+If you're unsure about applying a stash, use `git stash apply` first. If everything works as expected, you can then manually drop the stash using `git stash drop`. This gives you a safety net in case something goes wrong during the application. 

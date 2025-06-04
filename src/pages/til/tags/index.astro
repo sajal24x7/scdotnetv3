@@ -7,12 +7,12 @@ const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2019', '2021', '
 
 // Get all posts from year collections
 const allPosts = await Promise.all(years.map(year => getCollection(year)));
-const ephemera = allPosts
+const tilPosts = allPosts
   .flat()
-  .filter(post => ['blog', 'micro', 'photo', 'til'].includes(post.data.category));
+  .filter(post => post.data.category === 'til');
 
 // Count tags
-const tags = ephemera.reduce((acc, post) => {
+const tags = tilPosts.reduce((acc, post) => {
   if (post.data.tags) {
     post.data.tags.forEach(tag => {
       acc[tag] = (acc[tag] || 0) + 1;
@@ -23,14 +23,14 @@ const tags = ephemera.reduce((acc, post) => {
 ---
 
 <Layout 
-  title="Ephemera Tags" 
-  description="Browse ephemera entries by tag" 
-  currentPage="/ephemera/"
+  title="TIL Tags" 
+  description="Browse TIL entries by tag" 
+  currentPage="/til/"
 >
   <TagPage 
-    title="Ephemera Tags" 
-    description="Browse blog posts, photos, and micro updates by tag"
+    title="TIL Tags" 
+    description="Browse technical learnings and notes by tag"
     tags={tags}
-    currentPage="/ephemera"
+    currentPage="/til"
   />
 </Layout> 
