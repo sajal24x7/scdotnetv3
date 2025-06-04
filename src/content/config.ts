@@ -16,7 +16,7 @@ const postsCollection = defineCollection({
     description: z.string().optional(),
     pubDate: dateSchema,
     updatedDate: dateSchema.optional(),
-    category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'stories', 'poems', 'books']),
+    category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'stories', 'poems', 'books', 'now']),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
   }),
