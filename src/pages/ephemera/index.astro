@@ -22,6 +22,9 @@ const transformedPosts = ephemera.map(post => ({
   body: post.body,
   render: post.render
 }));
+
+// Get unique categories
+const categories = [...new Set(ephemera.map(post => post.data.category))];
 ---
 
 <Layout 
@@ -36,6 +39,22 @@ const transformedPosts = ephemera.map(post => ({
         <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
           Blog posts, photos, and micro updates from my daily life.
         </p>
+        <div class="flex flex-wrap gap-3 mb-4">
+          <button 
+            class="category-filter active px-3 py-1.5 text-sm rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800/30 transition-colors duration-200"
+            data-category="all"
+          >
+            ALL
+          </button>
+          {categories.map(category => (
+            <button 
+              class="category-filter px-3 py-1.5 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              data-category={category}
+            >
+              {category.toUpperCase()}
+            </button>
+          ))}
+        </div>
         <a 
           href="/ephemera/tags" 
           class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
@@ -52,28 +71,38 @@ const transformedPosts = ephemera.map(post => ({
 </Layout>
 
 <script>
-  // JavaScript to handle the show all tags functionality
+  // JavaScript to handle category filtering
   document.addEventListener('DOMContentLoaded', () => {
-    const showAllTagsBtn = document.getElementById('show-all-tags-btn');
-    const additionalTags = document.getElementById('additional-tags');
-    
-    if (showAllTagsBtn && additionalTags) {
-      const totalTags = showAllTagsBtn.getAttribute('data-total-tags');
-      
-      showAllTagsBtn.addEventListener('click', () => {
-        // Toggle the visibility of additional tags
-        if (additionalTags.classList.contains('hidden')) {
-          // Show all tags
-          additionalTags.classList.remove('hidden');
-          additionalTags.classList.add('inline');
-          showAllTagsBtn.textContent = 'Hide additional tags';
-        } else {
-          // Hide additional tags
-          additionalTags.classList.add('hidden');
-          additionalTags.classList.remove('inline');
-          showAllTagsBtn.textContent = `Show all tags (${totalTags})`;
-        }
+    const filterButtons = document.querySelectorAll('.category-filter');
+    const posts = document.querySelectorAll('.card');
+
+    console.log('Found posts:', posts.length);
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active state of buttons
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active', 'bg-blue-100', 'dark:bg-blue-900/30', 'text-blue-600', 'dark:text-blue-400');
+          btn.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
+        });
+        button.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
+        button.classList.add('active', 'bg-blue-100', 'dark:bg-blue-900/30', 'text-blue-600', 'dark:text-blue-400');
+
+        const selectedCategory = button.getAttribute('data-category');
+        console.log('Selected category:', selectedCategory);
+
+        // Filter posts
+        posts.forEach(post => {
+          const postCategory = post.querySelector('.post-category')?.textContent?.trim().toLowerCase();
+          console.log('Post category:', postCategory, 'Element:', post.querySelector('.post-category'));
+          
+          if (selectedCategory === 'all' || postCategory === selectedCategory) {
+            (post as HTMLElement).style.display = 'block';
+          } else {
+            (post as HTMLElement).style.display = 'none';
+          }
+        });
       });
-    }
+    });
   });
 </script> 
