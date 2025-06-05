@@ -3,14 +3,17 @@ import Layout from '../../layouts/Layout.astro';
 import ContentGrid from '../../components/ContentGrid.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
-// Get all posts and filter for evergreen notes
+// Get all posts and filter for notes (evergreen and TIL)
 const allPosts = await getAllPosts();
-const evergreenPosts = allPosts
-  .filter(post => post.data.category === 'evergreen')
+const notesPosts = allPosts
+  .filter(post => ['evergreen', 'til'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
 // Transform posts for the ContentGrid component
-const transformedPosts = evergreenPosts.map(transformPost);
+const transformedPosts = notesPosts.map(transformPost);
+
+// Get unique categories
+const categories = [...new Set(notesPosts.map(post => post.data.category))];
 ---
 
 <Layout 
@@ -25,6 +28,22 @@ const transformedPosts = evergreenPosts.map(transformPost);
         <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
           Documentation and notes from my projects.
         </p>
+        <div class="flex flex-wrap gap-3 mb-4">
+          <button 
+            class="category-filter active px-3 py-1.5 text-sm rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800/30 transition-colors duration-200"
+            data-category="all"
+          >
+            ALL
+          </button>
+          {categories.map(category => (
+            <button 
+              class="category-filter px-3 py-1.5 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              data-category={category}
+            >
+              {category.toUpperCase()}
+            </button>
+          ))}
+        </div>
         <a 
           href="/notes/tags" 
           class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
@@ -38,4 +57,37 @@ const transformedPosts = evergreenPosts.map(transformPost);
       <ContentGrid posts={transformedPosts} />
     </div>
   </div>
-</Layout> 
+</Layout>
+
+<script>
+  // JavaScript to handle category filtering
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.category-filter');
+    const posts = document.querySelectorAll('.card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active state of buttons
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active', 'bg-blue-100', 'dark:bg-blue-900/30', 'text-blue-600', 'dark:text-blue-400');
+          btn.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
+        });
+        button.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
+        button.classList.add('active', 'bg-blue-100', 'dark:bg-blue-900/30', 'text-blue-600', 'dark:text-blue-400');
+
+        const selectedCategory = button.getAttribute('data-category');
+
+        // Filter posts
+        posts.forEach(post => {
+          const postCategory = post.querySelector('.post-category')?.textContent?.trim().toLowerCase();
+          
+          if (selectedCategory === 'all' || postCategory === selectedCategory) {
+            (post as HTMLElement).style.display = 'block';
+          } else {
+            (post as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script> 
