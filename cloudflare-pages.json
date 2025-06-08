@@ -1,9 +1,10 @@
 {
   "build": {
-    "command": "rm -rf node_modules package-lock.json && npm install && npm run build",
+    "command": "npm install @rollup/rollup-linux-x64-gnu --save-optional && npm run build",
     "directory": "dist",
     "environment": {
-      "NODE_VERSION": "20"
+      "NODE_VERSION": "20",
+      "NPM_CONFIG_INCLUDE": "optional"
     }
   }
 } 
