@@ -1,6 +1,6 @@
 {
   "build": {
-    "command": "npm run build",
+    "command": "rm -rf node_modules package-lock.json && npm install && npm run build",
     "directory": "dist",
     "environment": {
       "NODE_VERSION": "20"
