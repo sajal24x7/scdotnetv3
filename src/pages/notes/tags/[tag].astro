@@ -2,9 +2,10 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import ContentGrid from '../../../components/ContentGrid.astro';
+import { getYearDirectories } from '../../../utils/content';
 
 export async function getStaticPaths() {
-  const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2019', '2021', '2022', '2024', '2025'];
+  const years = getYearDirectories();
   const allPosts = await Promise.all(years.map(year => getCollection(year)));
   const evergreenPosts = allPosts
     .flat()
@@ -27,7 +28,7 @@ export async function getStaticPaths() {
 const { tag } = Astro.props;
 
 // Get all posts from year collections
-const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2019', '2021', '2022', '2024', '2025'];
+const years = getYearDirectories();
 const allPosts = await Promise.all(years.map(year => getCollection(year)));
 const taggedPosts = allPosts
   .flat()

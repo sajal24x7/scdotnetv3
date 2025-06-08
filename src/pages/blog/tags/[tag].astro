@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import ContentGrid from '../../../components/ContentGrid.astro';
+import { getYearDirectories } from '../../../utils/content';
 
 function isBlogPost(post: unknown): post is CollectionEntry<any> {
   return (
@@ -16,7 +17,7 @@ function isBlogPost(post: unknown): post is CollectionEntry<any> {
 }
 
 export async function getStaticPaths() {
-  const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2019', '2021', '2022', '2024', '2025'] as const;
+  const years = getYearDirectories();
   const allPosts = await Promise.all(years.map(year => getCollection(year)));
   const flatPosts = allPosts.flat();
   const blogPosts = flatPosts.filter(isBlogPost);
@@ -38,12 +39,11 @@ export async function getStaticPaths() {
 const { tag } = Astro.props;
 
 // Get all posts from year collections - redefine years for runtime
-const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2019', '2021', '2022', '2024', '2025'] as const;
-type Year = typeof years[number];
+const years = getYearDirectories();
 const allPosts = await Promise.all(years.map(year => getCollection(year)));
 const flatPosts = allPosts.flat();
 const taggedPosts = flatPosts.filter(
-  (post): post is CollectionEntry<Year> =>
+  (post): post is CollectionEntry<any> =>
     isBlogPost(post) &&
     Array.isArray((post as any).data.tags) &&
     (post as any).data.tags.includes(tag)

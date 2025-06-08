@@ -2,21 +2,15 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { format } from 'date-fns';
-import type { CollectionEntry, ContentEntryMap } from 'astro:content';
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import type { CollectionEntry } from 'astro:content';
+import { getYearDirectories } from '../utils/content';
 
 export async function getStaticPaths() {
   // Get all year directories from content
-  const contentDir = path.join(process.cwd(), 'src/content');
-  const entries = await fs.readdir(contentDir, { withFileTypes: true });
-  const years = entries
-    .filter(entry => entry.isDirectory() && /^\d{4}$/.test(entry.name))
-    .map(entry => entry.name)
-    .sort();
+  const years = getYearDirectories();
 
   // Get all posts from all collections
-  const allPosts = await Promise.all(years.map(year => getCollection(year as keyof ContentEntryMap)));
+  const allPosts = await Promise.all(years.map(year => getCollection(year as any)));
   const posts = allPosts.flat().filter(entry => entry.data && entry.data.title);
 
   return posts.map((entry) => {
