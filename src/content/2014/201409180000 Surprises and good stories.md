@@ -1,0 +1,33 @@
+---
+title: "Surprises, and good stories"
+slug: "surprises-and-good-stories"
+pubDate: 2014-09-18
+updatedDate: 2014-09-18
+category: blog
+tags: ["blog", "death note", "death note review", "life", "light", "novel", "novella", "post-apocalytic", "stephen king", "the mist", "thewalkingdead", "writing is", "writing tips", "yagami"]
+---
+# Surprises, and good stories
+
+[![Death Note](https://storage.sajalchoudhary.net/images/wordpress/2014/09/34457_death_note.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/34457_death_note.jpg)
+
+Before you begin, the following is bound to contain spoilers about Death Note the anime series, and The Mist.
+
+I finished up with Death Note yesterday, it came highly recommended by a friend, and rest assured it did not disappoint. I also watched The Mist, and before I began I had no idea it was based on a book, and after I was done, it felt like the fact had been staring at me from the very beginning. I don’t usually do reviews, this could be a _part-beginning_. Part-beginning because unlike conventional reviews, this would mostly be focusing, on the story, and telling-it part of the complete project/product.
+
+[From Wikipedia:](http://en.wikipedia.org/wiki/Death_Note) **Death Note**  _centers on[Light Yagami](http://en.wikipedia.org/wiki/Light_Yagami "Light Yagami"), a high school student who discovers a supernatural notebook that grants its user the ability to kill anyone whose name and face they know. The series follows Light’s subsequent attempts to create and rule a world [“cleansed of evil”](http://en.wikipedia.org/wiki/Utopia "Utopia") as [“God”](http://en.wikipedia.org/wiki/God_complex "God complex") using the notebook, and the efforts of a detective known as [L](http://en.wikipedia.org/wiki/L_\(Death_Note\) "L \(Death Note\)") to stop him._
+
+Death Note was ruthless. Yes, ruthless, unrelenting, and other such synonyms combined. There were two things in particular I loved about it. _The first thing_ was obvious from the very beginning: the absolute disregard to conventional storytelling. I mean the moment I began to root for a character, any character, it was killed off. Yes. Be it the dead FBI officer’s fiance, or eventually, the protagonist L to our antagonist Light. The series never really stepped off the pedal. Just when you began to root for a character, just when you thought, yeah, L/Light is winning, the other would bounce back. Killing off characters, well-thought, and developed characters is hard, believe me, I know but the rate at which the series kept killing characters, and introducing new ones, and at the same time, staying true to the central theme, was frankly unparalleled. I haven’t read, or seen, any such work. Okay, maybe Harry Potter, killed them at a healthy rate too.
+
+The second thing, was something I realised in the last episode. I mean it was there from the beginning, too, but the ugliness of it, is only made obvious in the last episode. Maybe it was because we were told about the antagonist/protagonist’s view from the very beginning. Maybe. Or maybe it was so obviously out in the open, that I did not really stop, took notice, and thought about it. Like if you lived in the mountains, the scenery, the air would be routine to you, but for somebody not from there, the scenery, the air would be divine.
+
+The corruption of character, the way the decay in Light’s character is shown, it was beautiful, really. There was this thing, I had read somewhere about heroes turning into the worst of villains. Also, there was Batman \(_You either die a hero or live long enough to see yourself become the villain._\) You do not really feel _that_ bad when Light is killing off the criminals, or even the other not so bad guys; but by the very end, when he gets desperate, and when really all he cares about is killing off the opposition, that’s when you realise the ugliness of it all.
+
+Enough with the death note. No, not really, go watch it if you haven’t yet. And once you’ve done that, come back and we’ll talk.
+
+[From Wikipedia:](http://en.wikipedia.org/wiki/The_Mist_\(film\))  _**The Mist**_ \(also known as _**Stephen King ’s The Mist**_\) is a 2007 American [science fiction](http://en.wikipedia.org/wiki/Science_fiction_film "Science fiction film") [horror film](http://en.wikipedia.org/wiki/Horror_film "Horror film") based on the 1980 [novella](http://en.wikipedia.org/wiki/Novella "Novella") [of the same name](http://en.wikipedia.org/wiki/The_Mist "The Mist") by [Stephen King](http://en.wikipedia.org/wiki/Stephen_King "Stephen King").
+
+I did not know it was a King adaptation to begin with but by the time it was finished I had no doubt\! I have not yet read the _novella._ I might at some point in the future, I’m not sure. The Mist talks about a lot of stuff, with monsters, and blood being the least of the interesting subjects. Seriously. And even though, it was an interesting study of human nature under stress, the part that really stood out for me was TWD’s Melissa McBride’s small part in the beginning, and end. I’m not sure if you’ve seen the movie/read the novel, or not, so again WARNING BIG FUCKING SPOILER COMING. In the climax, Melissa’s character is shown riding off in an army truck with her kids in tow, while our protagonist has shot his kids, and three other people who stuck with him through the shit-storm. There were only four bullets left, and so he did not shoot himself. Yes, that’s brave. You want to know why this incident is important to me? The thing is it isn’t; at least in isolation. At the beginning of the movie, Melissa’s character asks the people present in the store, to help her reach her kids. Nobody obliges. So, when she’s about to step out, on her own, she says, ‘You’ll all go through hell for this’
+
+And through hell they did go through. I’m not sure if it is in the book. I hope it is. Because it is one of those things, that you can not really plan when you are writing your first draft. It is the sort of thing that happens, when you’re editing the draft, and it seems like one of those awesome things you could do.
+
+P.S. I haven’t really written anything fresh for the week. Heck I haven’t even typed out the parts I have written on page. There is a reason to it. It was turning into a bit of a job. I had sort of begun to not want to do it. So, this is I don’t know an unwanted rest. Also, SURPRISE\! _\(Because it was in the title, but not in the post. Too lame?\)_

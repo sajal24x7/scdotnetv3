@@ -1,0 +1,11 @@
+---
+title: "Day Four: The Transporter"
+slug: "day-four-the-transporter"
+pubDate: 2014-03-16
+updatedDate: 2014-03-16
+category: blog
+tags: ["30 day challenge", "photography", "Uncategorized"]
+---
+# Day Four: The Transporter
+
+[![image](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1394992255878.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1394992255878.jpeg)

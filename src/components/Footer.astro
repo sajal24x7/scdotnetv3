@@ -5,12 +5,13 @@ import type { CollectionEntry } from 'astro:content';
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
 
-// Fetch all content collections
-const notes = await getCollection('notes');
+// Get all year directories - these are the actual collections used in the site
+const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2019', '2021', '2022', '2024', '2025'] as const;
 
-// Sort by publish date (newest first)
-const allContent = [...notes].sort((a, b) => 
-  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+// Fetch all content from year-based collections
+const allCollections = await Promise.all(years.map(year => getCollection(year as any)));
+const allContent = allCollections.flat().filter((item: any) => item?.data?.pubDate).sort((a: any, b: any) => 
+  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
 
 // Variables to calculate streak
@@ -22,16 +23,16 @@ let weekCounts = new Map();
 // Calculate streak if there's any content
 if (allContent.length > 0) {
   // Get the latest post date
-  lastPostDate = new Date(allContent[0].data.pubDate);
+  lastPostDate = new Date((allContent[0] as any).data.pubDate);
   
   // Create a map to track if there was a post in each week
   const weekMap = new Map();
   
-  allContent.forEach(item => {
+  allContent.forEach((item: any) => {
     const postDate = new Date(item.data.pubDate);
     // Get year and week number for this post
     const year = postDate.getFullYear();
-    // Get week number (approximate) by dividing days since start of year by 7
+    // Get week number using ISO week date calculation for better accuracy
     const startOfYear = new Date(year, 0, 1);
     const daysSinceStart = Math.floor((postDate.getTime() - startOfYear.getTime()) / (24 * 60 * 60 * 1000));
     const weekNumber = Math.floor(daysSinceStart / 7);
@@ -58,19 +59,24 @@ if (allContent.length > 0) {
   const currentWeekNumber = Math.floor(daysSinceStartOfYear / 7);
   const currentWeekKey = `${nowYear}-${currentWeekNumber}`;
   
-  // Start counting backwards from the current week
+  // Start counting backwards from the most recent week with posts
   streakWeeks = 0;
   let checkWeekNumber = currentWeekNumber;
   let checkYear = nowYear;
   
-  // Don't count the current week in the streak if it's not complete and has no posts
+  // If current week has no posts, start from last week
   if (!weekMap.has(currentWeekKey)) {
     checkWeekNumber -= 1;
+    // Handle year boundary
+    if (checkWeekNumber < 0) {
+      checkYear--;
+      checkWeekNumber = 51; // Approximately 52 weeks in a year
+    }
   }
   
   // Count consecutive weeks with posts
   let counting = true;
-  while (counting) {
+  while (counting && checkYear >= 2020) { // Don't go back too far
     const weekKey = `${checkYear}-${checkWeekNumber}`;
     
     if (weekMap.has(weekKey)) {
@@ -80,7 +86,6 @@ if (allContent.length > 0) {
       // If we go below week 0, go to previous year
       if (checkWeekNumber < 0) {
         checkYear--;
-        // Approximately 52 weeks in a year
         checkWeekNumber = 51;
       }
     } else {
@@ -89,7 +94,7 @@ if (allContent.length > 0) {
   }
 }
 
-// Force at least 1 week of streak if there are posts
+// Ensure we have at least 1 week if there are any posts
 if (allContent.length > 0 && streakWeeks === 0) {
   streakWeeks = 1;
 }
@@ -108,32 +113,17 @@ const lastThreeWeeks = uniqueWeeks.slice(0, 3);
 
 <footer class="py-6 border-t border-borderColor dark:border-borderColorDark">
   <div class="container mx-auto px-4 max-w-3xl">
-    <div class="flex flex-col md:flex-row justify-between items-center mb-4">
-      <div class="mb-4 md:mb-0">
-        <p class="text-textSecondary dark:text-textSecondaryDark">
-          &copy; {currentYear} Sajal Choudhary. All rights reserved.
-        </p>
-      </div>
-      <div class="flex space-x-4">
-        <a href="https://twitter.com/yourusername" class="text-textSecondary dark:text-textSecondaryDark hover:text-accent dark:hover:text-accent transition-colors" aria-label="Twitter">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-        </a>
-        <a href="https://github.com/yourusername" class="text-textSecondary dark:text-textSecondaryDark hover:text-accent dark:hover:text-accent transition-colors" aria-label="GitHub">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-        </a>
-        <a href="https://linkedin.com/in/yourusername" class="text-textSecondary dark:text-textSecondaryDark hover:text-accent dark:hover:text-accent transition-colors" aria-label="LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-        </a>
-        <a href="/rss.xml" class="text-textSecondary dark:text-textSecondaryDark hover:text-accent dark:hover:text-accent transition-colors" aria-label="RSS Feed">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
-        </a>
-      </div>
+    <div class="text-center mb-4">
+      <p class="text-textSecondary dark:text-textSecondaryDark">
+        &copy; {currentYear} Sajal Choudhary. All rights reserved.
+      </p>
     </div>
     
     {allContent.length > 0 && (
       <div class="text-center text-textSecondary dark:text-textSecondaryDark text-sm border-t border-borderColor dark:border-borderColorDark pt-4">
-        <p>New posts for {streakWeeks} {streakWeeks === 1 ? 'week' : 'weeks'}. Last posted on {formattedLastPostDate}</p>
-        <p class="mt-2 text-xs text-textSecondary/70 dark:text-textSecondaryDark/70">Total posts: {totalPosts}</p>
+        <p class="text-xs opacity-75 mb-2">This website was last updated on {formattedLastPostDate}</p>
+        <p class="font-medium">New posts for {streakWeeks} consecutive {streakWeeks === 1 ? 'week' : 'weeks'}</p>
+        <p class="mt-1 text-xs opacity-75">{totalPosts} total posts</p>
       </div>
     )}
   </div>

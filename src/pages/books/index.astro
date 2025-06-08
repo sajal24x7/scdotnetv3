@@ -1,84 +1,69 @@
 ---
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
-// Get all books sorted by publish date (newest first)
-const books: CollectionEntry<'books'>[] = await getCollection('books');
-const sortedBooks = books.sort((a, b) => 
-  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+// Book data - add new books here in reverse chronological order
+const books = [
+  {
+    year: 2024,
+    title: "A Year of Mornings",
+    subtitle: "Poems for Young Adults",
+    url: "/books/a-year-of-mornings/",
+    description: "A year of mornings is a collection of fifty love poems. It follows a young heart as it finds love, finds the strength to be in love and finally, finds the strength to let go.",
+    available: true
+  }
+  // Future books will be added here
+];
 ---
 
-<Layout title="Books - Sajal Choudhary" description="Books I've published and other recommendations" currentPage="/books/">
+<Layout title="Books - Sajal Choudhary" description="Books by Sajal Choudhary" currentPage="/books/">
   <div class="max-w-3xl mx-auto">
-    <header class="mb-10">
-      <h1 class="text-4xl font-bold mb-3">Books</h1>
-      <p class="text-xl text-textSecondary dark:text-textSecondaryDark">
-        Books I've published and other recommendations.
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold mb-6">Books by Sajal Choudhary</h1>
+      <p class="text-textSecondary dark:text-textSecondaryDark leading-relaxed">
+        Essays and other writing can be found throughout this site: 
+        <a href="/notes/" class="text-accent hover:underline">notes</a>, 
+        <a href="/blog/" class="text-accent hover:underline">blog posts</a>, 
+        <a href="/stories/" class="text-accent hover:underline">stories</a>, and 
+        <a href="/poems/" class="text-accent hover:underline">poems</a>.
       </p>
     </header>
 
     <section>
-      {sortedBooks.length === 0 ? (
-        <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
-          <p class="text-textSecondary dark:text-textSecondaryDark">No books listed yet. Check back soon!</p>
-        </div>
-      ) : (
-        <div class="grid md:grid-cols-2 gap-8">
-          {sortedBooks.map((book: CollectionEntry<'books'>) => (
-            <article class="border border-borderColor dark:border-borderColorDark rounded-lg overflow-hidden flex flex-col">
-              <div class="p-4 bg-borderColor/10 dark:bg-borderColorDark/20">
-                <img 
-                  src={book.data.coverImage} 
-                  alt={`Cover of ${book.data.title}`} 
-                  class="w-full aspect-[2/3] object-cover rounded-md shadow-md"
-                />
+      <div class="space-y-8">
+        {books.map((book) => (
+          <div class="border-b border-gray-200 dark:border-gray-700 pb-8 last:border-b-0">
+            <div class="flex flex-col md:flex-row md:items-start gap-6">
+              <!-- Year -->
+              <div class="flex-shrink-0">
+                <span class="text-2xl font-bold text-textSecondary dark:text-textSecondaryDark">
+                  {book.year}
+                </span>
               </div>
-              <div class="p-5 flex-grow flex flex-col">
-                <h3 class="text-xl font-bold mb-2">{book.data.title}</h3>
+
+              <!-- Book Details -->
+              <div class="flex-1">
+                <h2 class="text-xl font-bold mb-2">
+                  {book.available ? (
+                    <a href={book.url} class="text-accent hover:underline">
+                      <em>{book.title}</em>: {book.subtitle}
+                    </a>
+                  ) : (
+                    <span><em>{book.title}</em>: {book.subtitle}</span>
+                  )}
+                </h2>
                 
-                {book.data.description && (
-                  <p class="text-textSecondary dark:text-textSecondaryDark mb-4 flex-grow">
-                    {book.data.description}
+                {book.description && (
+                  <p class="text-textSecondary dark:text-textSecondaryDark leading-relaxed mb-4">
+                    {book.description}
                   </p>
                 )}
-                
-                <div class="space-y-3 mt-auto">
-                  <p class="text-sm text-textSecondary dark:text-textSecondaryDark">
-                    Published {new Date(book.data.pubDate).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                    })}
-                  </p>
-                  
-                  {book.data.buyLinks && book.data.buyLinks.length > 0 && (
-                    <div class="flex flex-wrap gap-2">
-                      {book.data.buyLinks.map((link: {name: string, url: string}) => (
-                        <a 
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="px-3 py-1 text-sm bg-accent text-white rounded-md hover:bg-opacity-90 transition-colors"
-                        >
-                          {link.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                  
-                  <a 
-                    href={`/books/${book.slug}/`}
-                    class="inline-block text-accent hover:underline mt-2"
-                  >
-                    Learn more →
-                  </a>
-                </div>
               </div>
-            </article>
-          ))}
-        </div>
-      )}
+            </div>
+          </div>
+        ))}
+      </div>
+
     </section>
+
   </div>
 </Layout> 

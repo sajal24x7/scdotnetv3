@@ -8,8 +8,8 @@ import type { CollectionEntry } from 'astro:content';
 // Get all posts
 const allPosts = await getCollection('posts');
 
-// Get evergreen posts for featured section
-const featuredNotes = allPosts
+// Get recent notes for featured section
+const recentNotes = allPosts
   .filter(post => post.data.category === 'evergreen')
   .sort((a, b) => {
     const aDate = a.data.updatedDate || a.data.pubDate;
@@ -22,7 +22,13 @@ const featuredNotes = allPosts
 const creativeWriting = allPosts
   .filter(post => ['stories', 'poems'].includes(post.data.category))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 2);
+  .slice(0, 3);
+
+// Get recent blog posts
+const recentBlogPosts = allPosts
+  .filter(post => post.data.category === 'blog')
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 
 // Get a random post from available collections
 const getRandomPost = () => {
@@ -34,67 +40,53 @@ const getRandomPost = () => {
 ---
 
 <Layout title="Sajal Choudhary" currentPage="/">
-  <section class="mb-12">
-    <div class="py-8 mb-8">
-      <h1 class="text-4xl font-bold mb-4">Sajal Choudhary</h1>
-      <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-6">
-        An Indian writer living in Finland.
-      </p>
-      <div class="flex space-x-4">
-        <a 
-          href="/about/" 
-          class="px-6 py-2 bg-accent text-white rounded-md hover:bg-opacity-90 transition-all">
-          More About Me
-        </a>
-        <a 
-          href={getRandomPost() || '/'}
-          class="px-6 py-2 border border-accent text-accent dark:text-accent rounded-md hover:bg-opacity-10 hover:bg-accent transition-all">
-          Random Post
-        </a>
+  <section class="max-w-4xl mx-auto">
+    <!-- Header Section -->
+    <div class="py-8 mb-12 border-b border-gray-200 dark:border-gray-700">
+      <h1 class="text-4xl font-bold mb-4">Hi! I'm Sajal.</h1>
+      
+      <div class="prose dark:prose-invert max-w-none mb-6">
+        <p>
+            I am the author of <a href="/books/a-year-of-mornings/">A Year of Mornings</a>, a collection of poems for young adults. I am also...
+        </p>
       </div>
-    </div>
 
-    {featuredNotes.length > 0 && (
-      <div class="mb-12">
-        <div class="flex justify-between items-baseline mb-6">
-          <h2 class="text-2xl font-bold">From the Garden</h2>
-          <a href="/notes/" class="text-accent hover:underline">View All Notes →</a>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6">
-          {featuredNotes.map((note) => (
-            <FeaturedPost 
-              title={note.data.title}
-              description={note.data.description}
-              url={`/notes/${note.slug}/`}
-              date={note.data.updatedDate || note.data.pubDate}
-              isUpdated={!!note.data.updatedDate}
-              stage={note.data.stage}
-            />
-          ))}
-        </div>
-      </div>
-    )}
-
-    {creativeWriting.length > 0 && (
-      <div class="mb-12">
-        <div class="flex justify-between items-baseline mb-6">
-          <h2 class="text-2xl font-bold">Creative Writing</h2>
-          <div class="space-x-4">
-            <a href="/stories/" class="text-accent hover:underline">Stories</a>
-            <a href="/poems/" class="text-accent hover:underline">Poems</a>
+    <!-- Directory/Footer Section -->
+    <div class="py-8 border-t border-gray-200 dark:border-gray-700">
+      <div class="prose dark:prose-invert max-w-none">
+        <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-4">
+          I've published various thoughts and experiments across different corners of the internet. 
+          Here's what's available on this website:
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-8 text-sm">
+          <div>
+            <h4 class="font-medium mb-2">Writing</h4>
+            <ul class="space-y-1 text-textSecondary dark:text-textSecondaryDark">
+              <li><a href="/notes/" class="hover:text-accent">Digital Garden</a></li>
+              <li><a href="/blog/" class="hover:text-accent">Blog Posts</a></li>
+              <li><a href="/stories/" class="hover:text-accent">Short Stories</a></li>
+              <li><a href="/poems/" class="hover:text-accent">Poems</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="font-medium mb-2">About</h4>
+            <ul class="space-y-1 text-textSecondary dark:text-textSecondaryDark">
+              <li><a href="/about/" class="hover:text-accent">About Me</a></li>
+              <li><a href="/now/" class="hover:text-accent">What I'm Doing Now</a></li>
+              <li><a href="/books/" class="hover:text-accent">What I'm Reading</a></li>
+              <li><a href="/contact/" class="hover:text-accent">Get In Touch</a></li>
+            </ul>
           </div>
         </div>
-        <div class="grid md:grid-cols-2 gap-6">
-          {creativeWriting.map((item) => (
-            <PostCard 
-              title={item.data.title}
-              url={`/${item.data.category}/${item.slug}/`}
-              pubDate={item.data.pubDate}
-              image={item.data.image}
-            />
-          ))}
-        </div>
+        
+        <p class="text-xs text-textSecondary dark:text-textSecondaryDark mt-8 pt-4 border-t border-gray-200 dark:border-gray-700">
+          If you're here because you're curious about my writing and thinking, 
+          I encourage you to start with my <a href="/notes/" class="hover:text-accent">digital garden</a>. 
+          Thanks for stopping by!
+        </p>
       </div>
-    )}
+    </div>
   </section>
 </Layout>
