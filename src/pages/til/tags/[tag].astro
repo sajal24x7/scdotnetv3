@@ -1,3 +1,4 @@
+---
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
@@ -51,6 +52,7 @@ const transformedPosts = taggedPosts.map(post => ({
   },
   body: post.body
 }));
+---
 
 <Layout 
   title={`TIL tagged with "${tag}"`}
