@@ -5,18 +5,18 @@ import Layout from '../../../layouts/Layout.astro';
 import ContentGrid from '../../../components/ContentGrid.astro';
 import { getYearDirectories } from '../../../utils/content';
 
-function isBlogPost(post: unknown): post is CollectionEntry<any> {
-  return (
-    typeof post === 'object' &&
-    post !== null &&
-    'data' in post &&
-    typeof (post as any).data === 'object' &&
-    (post as any).data !== null &&
-    (post as any).data.category === 'blog'
-  );
-}
-
 export async function getStaticPaths() {
+  function isBlogPost(post: unknown): post is CollectionEntry<any> {
+    return (
+      typeof post === 'object' &&
+      post !== null &&
+      'data' in post &&
+      typeof (post as any).data === 'object' &&
+      (post as any).data !== null &&
+      (post as any).data.category === 'blog'
+    );
+  }
+
   const years = getYearDirectories();
   const allPosts = await Promise.all(years.map(year => getCollection(year)));
   const flatPosts = allPosts.flat();
@@ -37,6 +37,18 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.props;
+
+// Redefine helper function for runtime
+function isBlogPost(post: unknown): post is CollectionEntry<any> {
+  return (
+    typeof post === 'object' &&
+    post !== null &&
+    'data' in post &&
+    typeof (post as any).data === 'object' &&
+    (post as any).data !== null &&
+    (post as any).data.category === 'blog'
+  );
+}
 
 // Get all posts from year collections - redefine years for runtime
 const years = getYearDirectories();

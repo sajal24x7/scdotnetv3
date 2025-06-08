@@ -3,10 +3,10 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
-// Get all posts
-const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
-
 export async function getStaticPaths() {
+  // Get all posts
+  const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
+  
   // Get all unique tags
   const tags = new Set<string>();
   allPosts.forEach((post: CollectionEntry<'posts'>) => {
@@ -21,6 +21,9 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.props;
+
+// Get all posts for runtime - redefine for component scope
+const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
 
 // Filter posts by tag
 const taggedPosts = allPosts.filter((post: CollectionEntry<'posts'>) => 
