@@ -8,7 +8,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://yourdomain.com',
   integrations: [
-    tailwind(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
     mdx(),
     sitemap(),
   ],

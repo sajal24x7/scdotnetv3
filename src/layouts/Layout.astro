@@ -104,6 +104,10 @@ const { title, description, currentPage } = Astro.props;
 		--color-border: 85, 75, 70;
 	}
 	
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+	
 	/* Add transitions for smooth color changes */
 	html, body {
 		transition: background-color 0.5s ease, color 0.3s ease;
@@ -119,10 +123,6 @@ const { title, description, currentPage } = Astro.props;
 		background-color: rgba(var(--color-bg-secondary), 0.7);
 		backdrop-filter: blur(10px);
 	}
-	
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
 	
 	/* Base styles */
 	html {
