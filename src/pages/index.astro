@@ -43,12 +43,41 @@ const getRandomPost = () => {
   <section class="max-w-4xl mx-auto">
     <!-- Header Section -->
     <div class="py-8 mb-12 border-b border-gray-200 dark:border-gray-700">
-      <h1 class="text-4xl font-bold mb-4">Hi! I'm Sajal.</h1>
+      <!-- Mobile: Centered profile -->
+      <div class="sm:hidden flex justify-center mb-8">
+        <img 
+          src="/profile/profile.jpeg" 
+          alt="Sajal Choudhary" 
+          class="w-32 h-32 rounded-full object-cover shadow-lg border-2 border-gray-200 dark:border-gray-600"
+        />
+      </div>
       
-      <div class="prose dark:prose-invert max-w-none mb-6">
-        <p>
-            I am the author of <a href="/books/a-year-of-mornings/">A Year of Mornings</a>, a collection of poems for young adults. I am also...
-        </p>
+      <!-- Desktop: Profile picture and content side by side -->
+      <div class="hidden sm:flex items-start gap-8 mb-6">
+        <img 
+          src="/profile/profile.jpeg" 
+          alt="Sajal Choudhary" 
+          class="w-40 h-40 rounded-full object-cover shadow-lg border-2 border-gray-200 dark:border-gray-600 flex-shrink-0"
+        />
+        <div class="flex-1">
+          <h1 class="text-4xl font-bold mb-4">Hi! I'm Sajal.</h1>
+          <div class="prose dark:prose-invert max-w-none">
+            <p>
+                I am the author of <a href="/books/a-year-of-mornings/">A Year of Mornings</a>, a collection of poems for young adults.
+                I work as an assistant consultant with TCS.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile: Just the heading and content -->
+      <div class="sm:hidden">
+        <h1 class="text-4xl font-bold mb-4 text-center">Hi! I'm Sajal.</h1>
+        <div class="prose dark:prose-invert max-w-none mb-6">
+          <p>
+              I am the author of <a href="/books/a-year-of-mornings/">A Year of Mornings</a>, a collection of poems for young adults. I am also...
+          </p>
+        </div>
       </div>
 
     <!-- Directory/Footer Section -->
