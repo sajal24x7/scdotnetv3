@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Filled circle background -->
-  <circle cx="40" cy="40" r="36" fill="#1A1A1A"/>
-  <!-- Overlapping SC in white -->
-  <text x="22" y="54" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" fill="#FFFFFF" opacity="0.95">S</text>
-  <text x="32" y="54" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" fill="#FFFFFF" opacity="0.95">C</text>
-</svg> 
