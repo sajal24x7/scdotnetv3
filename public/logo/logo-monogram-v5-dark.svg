@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shadow effect -->
+  <text x="24" y="56" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" fill="#666666" opacity="0.5">S</text>
+  <text x="34" y="56" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" fill="#666666" opacity="0.5">C</text>
+  <!-- Main overlapping SC -->
+  <text x="22" y="54" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" fill="#FFFFFF">S</text>
+  <text x="32" y="54" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" fill="#FFFFFF">C</text>
+</svg> 
