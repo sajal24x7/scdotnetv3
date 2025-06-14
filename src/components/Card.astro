@@ -11,9 +11,9 @@ const formatDate = (date) => {
 ---
 
 <article class="card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
-  <div class="p-8 flex gap-8">
+  <div class="p-4 sm:p-6 md:p-8 flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8">
     {image && (
-      <div class="flex-shrink-0 w-32 h-32 overflow-hidden rounded-full">
+      <div class="flex-shrink-0 w-full sm:w-32 h-48 sm:h-32 overflow-hidden rounded-lg sm:rounded-full">
         <img 
           src={image} 
           alt={title}
@@ -23,7 +23,7 @@ const formatDate = (date) => {
     )}
     
     <div class="flex-grow text-left">
-      <div class="flex items-center gap-3 mb-4">
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
         <span class="text-sm font-medium text-gray-500 dark:text-gray-400 tracking-wide">
           {formatDate(pubDate)}
         </span>
@@ -32,7 +32,7 @@ const formatDate = (date) => {
         </span>
       </div>
 
-      <h2 class="text-3xl font-bold mb-4 leading-tight text-left">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 leading-tight text-left">
         {link ? (
           <a href={link} class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
             {title}
@@ -43,12 +43,12 @@ const formatDate = (date) => {
       </h2>
 
       {category === 'micro' ? (
-        <div class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed text-left">
+        <div class="text-gray-600 dark:text-gray-300 text-base sm:text-lg leading-relaxed text-left">
           <slot />
         </div>
       ) : (
         description && (
-          <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed text-left line-clamp-3">
+          <p class="text-gray-600 dark:text-gray-300 text-base sm:text-lg leading-relaxed text-left line-clamp-3">
             {description}
           </p>
         )
