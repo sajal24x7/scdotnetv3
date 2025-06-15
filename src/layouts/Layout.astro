@@ -17,7 +17,8 @@ const { title, description, currentPage } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/logo/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/logo/logo-square-v2.svg" />
+		<link rel="icon" type="image/svg+xml" href="/logo/logo-square-v2-dark.svg" media="(prefers-color-scheme: dark)" />
 		<title>{title}</title>
 		<meta name="description" content={description || "A personal digital garden and blog"} />
 		<meta name="generator" content={Astro.generator} />

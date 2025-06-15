@@ -1,120 +1,123 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import FeaturedPost from '../components/FeaturedPost.astro';
-import PostCard from '../components/PostCard.astro';
-import type { CollectionEntry } from 'astro:content';
+import { getAllPosts } from '../utils/content';
+import { formatDate } from '../utils/date';
 
-// Get all posts
-const allPosts = await getCollection('posts');
-
-// Get recent notes for featured section
-const recentNotes = allPosts
-  .filter(post => post.data.category === 'evergreen')
-  .sort((a, b) => {
-    const aDate = a.data.updatedDate || a.data.pubDate;
-    const bDate = b.data.updatedDate || b.data.pubDate;
-    return bDate.valueOf() - aDate.valueOf();
-  })
-  .slice(0, 3);
-
-// Get creative writing (stories and poems)
-const creativeWriting = allPosts
-  .filter(post => ['stories', 'poems'].includes(post.data.category))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
-
-// Get recent blog posts
-const recentBlogPosts = allPosts
-  .filter(post => post.data.category === 'blog')
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
-
-// Get a random post from available collections
-const getRandomPost = () => {
-  if (allPosts.length === 0) return null;
-  const randomIndex = Math.floor(Math.random() * allPosts.length);
-  const randomPost = allPosts[randomIndex];
-  return `/${randomPost.data.category}/${randomPost.slug}/`;
-};
+const recentEphemeraPosts = (await getAllPosts())
+  .filter(post => ['blog', 'micro', 'photo'].includes(post.data.category))
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .slice(0, 5);
 ---
 
 <Layout title="Sajal Choudhary" currentPage="/">
-  <section class="max-w-4xl mx-auto">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Header Section -->
-    <div class="py-8 mb-12 border-b border-gray-200 dark:border-gray-700">
-      <!-- Mobile: Centered profile -->
-      <div class="sm:hidden flex justify-center mb-8">
+    <div class="py-8 mb-6">
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
         <img 
           src="/profile/profile.jpeg" 
           alt="Sajal Choudhary" 
-          class="w-32 h-32 rounded-full object-cover shadow-lg border-2 border-gray-200 dark:border-gray-600"
+          class="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover shadow-lg border-2 border-gray-200 dark:border-gray-600 flex-shrink-0"
         />
-      </div>
-      
-      <!-- Desktop: Profile picture and content side by side -->
-      <div class="hidden sm:flex items-start gap-8 mb-6">
-        <img 
-          src="/profile/profile.jpeg" 
-          alt="Sajal Choudhary" 
-          class="w-40 h-40 rounded-full object-cover shadow-lg border-2 border-gray-200 dark:border-gray-600 flex-shrink-0"
-        />
-        <div class="flex-1">
-          <h1 class="text-4xl font-bold mb-4">Hi! I'm Sajal.</h1>
+        <div class="text-center sm:text-left">
+          <h1 class="text-3xl sm:text-4xl font-bold mb-4">Hi, I'm Sajal.</h1>
           <div class="prose dark:prose-invert max-w-none">
-            <p>
-                I am the author of <a href="/books/a-year-of-mornings/">A Year of Mornings</a>, a collection of poems for young adults.
-                I work as an assistant consultant with TCS.
+            <p class="text-base sm:text-lg">
+              I am the author of <a href="/books/a-year-of-mornings/" class="text-accent hover:text-accent/80">A Year of Mornings (2024)</a>, a collection of poems for young adults.
+            </p>
+            <p class="text-base sm:text-lg mb-0">
+              In my day job, I work as an assistant consultant at TCS. 
             </p>
           </div>
         </div>
       </div>
-      
-      <!-- Mobile: Just the heading and content -->
-      <div class="sm:hidden">
-        <h1 class="text-4xl font-bold mb-4 text-center">Hi! I'm Sajal.</h1>
-        <div class="prose dark:prose-invert max-w-none mb-6">
-          <p>
-              I am the author of <a href="/books/a-year-of-mornings/">A Year of Mornings</a>, a collection of poems for young adults. I am also...
-          </p>
-        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="border-t border-black/10 dark:border-white/10 py-8">
+      <div class="prose dark:prose-invert max-w-none">
+        <h2 class="text-2xl font-bold mb-4">NordLetter</h2>
+        <p class="text-base mb-6">
+          I send out a newsletter once a week about living in Finland + five interesting things I've found on the open web.
+        </p>
+        
+        <form
+          class="flex flex-col sm:flex-row gap-3 max-w-md"
+          action="https://buttondown.com/api/emails/embed-subscribe/sajal24x7"
+          method="post"
+          target="popupwindow"
+          onsubmit="window.open('https://buttondown.com/sajal24x7', 'popupwindow')"
+        >
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+            class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+          <button
+            type="submit"
+            class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+          >
+            Subscribe
+          </button>
+        </form>
       </div>
+    </div>
+
+    <!-- Blog Section -->
+    <div class="py-8 border-t border-black/10 dark:border-white/10">
+      <div class="prose dark:prose-invert max-w-none">
+        <p class="text-base mb-6">
+          This is my home on the web. There are two main sections here: <a href="/notes/" class="hover:text-accent transition-colors">notes</a> and <a href="/ephemera/" class="hover:text-accent transition-colors">ephemera</a>.
+          Notes are things that would (I hope) stand the test of time. Ephemera are things that are in the moment.
+        </p>
+      </div>
+    </div>
+
+    <!-- Recent Ephemera Section -->
+    <div class="border-t border-black/10 dark:border-white/10 py-8">
+      <h2 class="text-2xl font-bold mb-6">Recent Ephemera</h2>
+      <div class="space-y-4">
+        {recentEphemeraPosts.map((post) => (
+          <div class="flex items-start gap-4">
+            <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+              {formatDate(post.data.pubDate)}
+            </time>
+            <a href={`/${post.data.category}/${post.slug}`} class="text-lg hover:text-blue-600 dark:hover:text-blue-400">
+              {post.data.title}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
 
     <!-- Directory/Footer Section -->
-    <div class="py-8 border-t border-gray-200 dark:border-gray-700">
+    <div class="py-8 border-t border-black/10 dark:border-white/10">
       <div class="prose dark:prose-invert max-w-none">
-        <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-4">
-          I've published various thoughts and experiments across different corners of the internet. 
-          Here's what's available on this website:
+        <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
+          I have written a lot of things on the internet since 2012. Here's a directory of what's available on this website.
         </p>
         
-        <div class="grid md:grid-cols-2 gap-8 text-sm">
+        <div>
+          <h4 class="font-medium mb-3 text-base">Basics</h4>
+          <ul class="space-y-2 text-textSecondary dark:text-textSecondaryDark">
+            <li><a href="/about/" class="hover:text-accent transition-colors">About Me</a></li>
+            <li><a href="/now/" class="hover:text-accent transition-colors">What I'm Doing Now</a></li>
+          </ul>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-8 text-sm mt-8">
           <div>
-            <h4 class="font-medium mb-2">Writing</h4>
-            <ul class="space-y-1 text-textSecondary dark:text-textSecondaryDark">
-              <li><a href="/notes/" class="hover:text-accent">Digital Garden</a></li>
-              <li><a href="/blog/" class="hover:text-accent">Blog Posts</a></li>
-              <li><a href="/stories/" class="hover:text-accent">Short Stories</a></li>
-              <li><a href="/poems/" class="hover:text-accent">Poems</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 class="font-medium mb-2">About</h4>
-            <ul class="space-y-1 text-textSecondary dark:text-textSecondaryDark">
-              <li><a href="/about/" class="hover:text-accent">About Me</a></li>
-              <li><a href="/now/" class="hover:text-accent">What I'm Doing Now</a></li>
-              <li><a href="/books/" class="hover:text-accent">What I'm Reading</a></li>
-              <li><a href="/contact/" class="hover:text-accent">Get In Touch</a></li>
+            <h4 class="font-medium mb-3 text-base">Writing</h4>
+            <ul class="space-y-2 text-textSecondary dark:text-textSecondaryDark">
+              <li><a href="/notes/" class="hover:text-accent transition-colors">Digital Garden</a></li>
+              <li><a href="/blog/" class="hover:text-accent transition-colors">Blog Posts</a></li>
+              <li><a href="/stories/" class="hover:text-accent transition-colors">Short Stories</a></li>
+              <li><a href="/poems/" class="hover:text-accent transition-colors">Poems</a></li>
             </ul>
           </div>
         </div>
-        
-        <p class="text-xs text-textSecondary dark:text-textSecondaryDark mt-8 pt-4 border-t border-gray-200 dark:border-gray-700">
-          If you're here because you're curious about my writing and thinking, 
-          I encourage you to start with my <a href="/notes/" class="hover:text-accent">digital garden</a>. 
-          Thanks for stopping by!
-        </p>
       </div>
     </div>
   </section>
