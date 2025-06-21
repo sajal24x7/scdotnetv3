@@ -57,10 +57,10 @@ export async function GET(context) {
         `
       };
     })),
-    // Add custom namespaces
-    customData: `
-      xmlns:newsletter="https://buttondown.email/ns/newsletter"
-      xmlns:media="http://search.yahoo.com/mrss/"
-    `
+    stylesheet: '/rss-style.xsl',
+    xmlns: {
+      newsletter: "https://buttondown.email/ns/newsletter",
+      media: "http://search.yahoo.com/mrss/"
+    }
   });
 } 

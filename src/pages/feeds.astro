@@ -1,0 +1,215 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getAllPosts, getYearDirectories } from '../utils/content';
+import { formatDate } from '../utils/date';
+import { getCollection } from 'astro:content';
+
+// Get recent posts for preview
+const allPosts = await getAllPosts();
+const sortedPosts = allPosts.sort((a, b) => 
+  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+const recentPosts = sortedPosts.slice(0, 5);
+
+// Get ephemeral posts (blog, micro, photo)
+const years = getYearDirectories();
+const allYearPosts = await Promise.all(years.map(year => getCollection(year as any)));
+const flatPosts = allYearPosts.flat() as any[];
+const ephemeralPosts = flatPosts.filter(post => 
+  ['blog', 'micro', 'photo'].includes(post.data.category)
+).sort((a, b) => 
+  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+const recentEphemeral = ephemeralPosts.slice(0, 5);
+
+// Get recent nordletter posts (they have nordletter category)
+const nordletterPosts = flatPosts.filter(post => 
+  post.data.category === 'nordletter'
+).sort((a, b) => 
+  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+).slice(0, 5);
+---
+
+<Layout 
+  title="RSS Feeds - Sajal Choudhary" 
+  description="Subscribe to RSS feeds for different types of content"
+  currentPage="/feeds/"
+>
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">RSS Feeds</h1>
+      <p class="text-xl text-textSecondary dark:text-textSecondaryDark max-w-2xl mx-auto">
+        Subscribe to different feeds based on your interests. All feeds are beautifully styled when viewed in your browser.
+      </p>
+    </div>
+
+    <!-- Main Feed - Hero -->
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-8 border border-gray-200 dark:border-gray-700">
+      <div class="flex items-center mb-6">
+        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-6">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold mb-2">Everything</h2>
+          <p class="text-textSecondary dark:text-textSecondaryDark text-lg">The complete feed with all my writing</p>
+        </div>
+      </div>
+      <p class="text-textSecondary dark:text-textSecondaryDark mb-6 text-lg leading-relaxed">
+        Get everything I publish - blog posts, stories, poems, micro updates, notes, and more. 
+        This is the main feed that includes all content from across the site.
+      </p>
+      
+      <!-- Recent Posts Preview -->
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold mb-3 text-textPrimary dark:text-textPrimaryDark">Recent Posts:</h3>
+        <div class="space-y-2">
+          {recentPosts.map(post => (
+            <div class="flex items-center justify-between py-2 px-3 bg-gray-50 dark:bg-gray-700 rounded-md">
+              <div class="flex-1 min-w-0">
+                <a href={`/${post.data.category}/${post.slug}/`} class="text-sm font-medium text-textPrimary dark:text-textPrimaryDark hover:text-blue-600 dark:hover:text-blue-400 truncate block">
+                  {post.data.title}
+                </a>
+                <p class="text-xs text-textSecondary dark:text-textSecondaryDark">
+                  {post.data.category} • {formatDate(post.data.pubDate)}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <a href="/rss.xml" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-lg font-medium">
+        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
+        </svg>
+        Subscribe to Everything
+      </a>
+    </div>
+
+    <!-- Alternative Feeds - One per row -->
+    <div class="space-y-6 mb-12">
+      <!-- Ephemera Feed -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center mr-4">
+            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-1">Ephemera</h3>
+            <p class="text-sm text-textSecondary dark:text-textSecondaryDark">Daily digital life</p>
+          </div>
+        </div>
+        <p class="text-textSecondary dark:text-textSecondaryDark mb-4">
+          Blog posts, micro updates, and photos - the everyday digital ephemera of life. 
+          Perfect if you want the more frequent, casual content.
+        </p>
+        
+        <!-- Recent Ephemeral Posts Preview -->
+        <div class="mb-4">
+          <h4 class="text-sm font-semibold mb-2 text-textPrimary dark:text-textPrimaryDark">Recent Ephemeral Posts:</h4>
+          <div class="space-y-1">
+            {recentEphemeral.map(post => (
+              <div class="flex items-center justify-between py-1 px-2 bg-green-50 dark:bg-green-900/20 rounded-sm">
+                <div class="flex-1 min-w-0">
+                  <a href={`/${post.data.category}/${post.slug}/`} class="text-xs font-medium text-textPrimary dark:text-textPrimaryDark hover:text-green-600 dark:hover:text-green-400 truncate block">
+                    {post.data.title}
+                  </a>
+                  <p class="text-xs text-textSecondary dark:text-textSecondaryDark">
+                    {post.data.category} • {formatDate(post.data.pubDate)}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <a href="/ephemera/rss.xml" class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
+          </svg>
+          Subscribe
+        </a>
+      </div>
+
+      <!-- NordLetter Feed -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mr-4">
+            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-1">NordLetter</h3>
+            <p class="text-sm text-textSecondary dark:text-textSecondaryDark">Weekly newsletter</p>
+          </div>
+        </div>
+        <p class="text-textSecondary dark:text-textSecondaryDark mb-4">
+          Curated weekly newsletter content with articles, discoveries, and reflections. 
+          A more thoughtful, less frequent update.
+        </p>
+        
+        <!-- Recent NordLetter Posts Preview -->
+        {nordletterPosts.length > 0 && (
+          <div class="mb-4">
+            <h4 class="text-sm font-semibold mb-2 text-textPrimary dark:text-textPrimaryDark">Recent NordLetter Posts:</h4>
+            <div class="space-y-1">
+              {nordletterPosts.map(post => (
+                <div class="flex items-center justify-between py-1 px-2 bg-purple-50 dark:bg-purple-900/20 rounded-sm">
+                  <div class="flex-1 min-w-0">
+                    <a href={`/${post.data.category}/${post.slug}/`} class="text-xs font-medium text-textPrimary dark:text-textPrimaryDark hover:text-purple-600 dark:hover:text-purple-400 truncate block">
+                      {post.data.title}
+                    </a>
+                    <p class="text-xs text-textSecondary dark:text-textSecondaryDark">
+                      {formatDate(post.data.pubDate)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <a href="/nordletter.xml" class="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
+          </svg>
+          Subscribe
+        </a>
+      </div>
+    </div>
+
+    <!-- About RSS Section -->
+    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800">
+      <h2 class="text-xl font-semibold mb-3 flex items-center">
+        <svg class="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+        </svg>
+        About RSS
+      </h2>
+      <p class="text-textSecondary dark:text-textSecondaryDark mb-4">
+        RSS (Really Simple Syndication) lets you follow websites in your favorite RSS reader. 
+        When I publish new content, it automatically appears in your reader - no need to check back manually.
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <a href="https://aboutfeeds.com/" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center px-3 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 rounded-full text-sm hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors">
+          Learn about RSS
+        </a>
+        <a href="https://feedly.com/" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center px-3 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 rounded-full text-sm hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors">
+          Try Feedly
+        </a>
+        <a href="https://netnewswire.com/" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center px-3 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 rounded-full text-sm hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors">
+          NetNewsWire
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout> 
