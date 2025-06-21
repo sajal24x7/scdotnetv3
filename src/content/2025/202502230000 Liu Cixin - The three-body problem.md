@@ -1,12 +1,16 @@
 ---
-title: "Liu, Cixin - The three-body problem"
-slug: "liu-cixin-the-three-body-problem"
-description: "The first book in the remembrance of earth's past series"
-pubDate: 2025-02-23
-updatedDate: 2025-02-23
-category: books
-tags: ["book-reviews", "Liu, Cixin", "three-body-problem", "sci-fi"]
-image: "https://storage.sajalchoudhary.net/images/2025/02/IMG_0005.jpeg"
+title: 'Liu, Cixin - The three-body problem'
+slug: liu-cixin-the-three-body-problem
+description: The first book in the remembrance of earth's past series
+pubDate: 2025-02-23T00:00:00.000Z
+updatedDate: 2025-02-23T00:00:00.000Z
+category: bookshelf
+tags:
+  - book-reviews
+  - 'Liu, Cixin'
+  - three-body-problem
+  - sci-fi
+image: 'https://storage.sajalchoudhary.net/images/2025/02/IMG_0005.jpeg'
 ---
 # Liu, Cixin - The three-body problem
 

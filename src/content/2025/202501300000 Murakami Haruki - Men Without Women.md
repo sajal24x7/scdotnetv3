@@ -1,12 +1,14 @@
 ---
-title: "Murakami, Haruki - Men Without Women"
-slug: "murakami-haruki-men-without-women"
-description: "I love the book, and the object that it is"
-pubDate: 2025-01-30
-updatedDate: 2025-01-30
-category: books
-tags: ["book-reviews", "murakami"]
-image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9445.jpeg"
+title: 'Murakami, Haruki - Men Without Women'
+slug: murakami-haruki-men-without-women
+description: 'I love the book, and the object that it is'
+pubDate: 2025-01-30T00:00:00.000Z
+updatedDate: 2025-01-30T00:00:00.000Z
+category: bookshelf
+tags:
+  - book-reviews
+  - murakami
+image: 'https://storage.sajalchoudhary.net/images/2025/01/IMG_9445.jpeg'
 ---
 # Murakami, Haruki - Men Without Women
 

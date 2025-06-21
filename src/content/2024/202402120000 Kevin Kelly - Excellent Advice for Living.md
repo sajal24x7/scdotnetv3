@@ -1,10 +1,11 @@
 ---
-title: "Kevin Kelly - Excellent Advice for Living"
-slug: "kevin-kelly-excellent-advice-for-living"
-pubDate: 2024-02-12
-updatedDate: 2024-12-24
-category: books
-tags: ["book-reviews"]
+title: Kevin Kelly - Excellent Advice for Living
+slug: kevin-kelly-excellent-advice-for-living
+pubDate: 2024-02-12T00:00:00.000Z
+updatedDate: 2024-12-24T00:00:00.000Z
+category: bookshelf
+tags:
+  - book-reviews
 ---
 # Kevin Kelly - Excellent Advice for Living
 

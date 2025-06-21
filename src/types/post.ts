@@ -2,7 +2,7 @@ export type Post = {
   title: string;
   description?: string;
   pubDate: Date;
-  category: 'evergreen' | 'blog' | 'micro' | 'photo' | 'nordletter' | 'stories' | 'poems' | 'books';
+  category: 'evergreen' | 'blog' | 'micro' | 'photo' | 'nordletter' | 'stories' | 'poems' | 'bookshelf';
   image?: string;
   content?: string;
   link?: string;

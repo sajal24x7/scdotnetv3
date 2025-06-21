@@ -1,12 +1,14 @@
 ---
-title: "Becky Chambers - Record of a Spaceborn Few"
-slug: "becky-chambers-record-of-a-spaceborn-few"
-description: "The third book in the wayfarer series"
-pubDate: 2024-12-24
-updatedDate: 2024-12-24
-category: books
-tags: ["book-reviews", "sci-fi"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8922.jpeg"
+title: Becky Chambers - Record of a Spaceborn Few
+slug: becky-chambers-record-of-a-spaceborn-few
+description: The third book in the wayfarer series
+pubDate: 2024-12-24T00:00:00.000Z
+updatedDate: 2024-12-24T00:00:00.000Z
+category: bookshelf
+tags:
+  - book-reviews
+  - sci-fi
+image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8922.jpeg'
 ---
 # Becky Chambers - Record of a Spaceborn Few
 

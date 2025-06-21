@@ -1,12 +1,16 @@
 ---
-title: "Black box thinking: The surprising truth about success - Matthew Syed"
-slug: "black-box-thinking-the-surprising-truth-about-success-matthew-syed"
-description: "This book talks about failures, how we treat them citing examples from industries ranging from aviation, healthcare, coding, cycling teams."
-pubDate: 2021-02-12
-updatedDate: 2024-12-24
-category: books
-tags: ["book-reviews"]
-image: "https://storage.sajalchoudhary.net/images/2021/02/Screenshot-2021-02-12-at-8.41.31-PM.png"
+title: 'Black box thinking: The surprising truth about success - Matthew Syed'
+slug: black-box-thinking-the-surprising-truth-about-success-matthew-syed
+description: >-
+  This book talks about failures, how we treat them citing examples from
+  industries ranging from aviation, healthcare, coding, cycling teams.
+pubDate: 2021-02-12T00:00:00.000Z
+updatedDate: 2024-12-24T00:00:00.000Z
+category: bookshelf
+tags:
+  - book-reviews
+image: >-
+  https://storage.sajalchoudhary.net/images/2021/02/Screenshot-2021-02-12-at-8.41.31-PM.png
 ---
 # Black box thinking: The surprising truth about success - Matthew Syed
 

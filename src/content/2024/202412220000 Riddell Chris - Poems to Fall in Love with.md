@@ -1,12 +1,14 @@
 ---
-title: "Riddell, Chris - Poems to Fall in Love with"
-slug: "riddell-chris-poems-to-fall-in-love-with"
-description: "An excellent collection of poetry on love with wonderful art"
-pubDate: 2024-12-22
-updatedDate: 2024-12-22
-category: books
-tags: ["book-reviews", "poems"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8915.jpeg"
+title: 'Riddell, Chris - Poems to Fall in Love with'
+slug: riddell-chris-poems-to-fall-in-love-with
+description: An excellent collection of poetry on love with wonderful art
+pubDate: 2024-12-22T00:00:00.000Z
+updatedDate: 2024-12-22T00:00:00.000Z
+category: bookshelf
+tags:
+  - book-reviews
+  - poems
+image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8915.jpeg'
 ---
 # Riddell, Chris - Poems to Fall in Love with
 

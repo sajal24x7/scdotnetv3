@@ -1,12 +1,16 @@
 ---
-title: "Cixin Liu - The dark forest"
-slug: "cixin-liu-the-dark-forest"
-description: "The second book in the three body problem series"
-pubDate: 2025-04-22
-updatedDate: 2025-04-22
-category: books
-tags: ["book-reviews", "three-body-problem", "Liu, Cixin"]
-image: "https://images.unsplash.com/photo-1483982258113-b72862e6cff6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGRhcmslMjBmb3Jlc3R8ZW58MHx8fHwxNzQ1MzQ4ODAyfDA&ixlib=rb-4.0.3&q=80&w=2000"
+title: Cixin Liu - The dark forest
+slug: cixin-liu-the-dark-forest
+description: The second book in the three body problem series
+pubDate: 2025-04-22T00:00:00.000Z
+updatedDate: 2025-04-22T00:00:00.000Z
+category: bookshelf
+tags:
+  - book-reviews
+  - three-body-problem
+  - 'Liu, Cixin'
+image: >-
+  https://images.unsplash.com/photo-1483982258113-b72862e6cff6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGRhcmslMjBmb3Jlc3R8ZW58MHx8fHwxNzQ1MzQ4ODAyfDA&ixlib=rb-4.0.3&q=80&w=2000
 ---
 # Cixin Liu - The dark forest
 

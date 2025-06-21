@@ -1,12 +1,14 @@
 ---
-title: "Chambers, Becky - The Galaxy, and the Ground Within"
-slug: "chambers-becky-the-galaxy-and-the-ground-within"
-description: "The fourth and final book in the wayfarer series"
-pubDate: 2025-01-10
-updatedDate: 2025-01-10
-category: books
-tags: ["book-reviews", "sci-fi"]
-image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9100.jpeg"
+title: 'Chambers, Becky - The Galaxy, and the Ground Within'
+slug: chambers-becky-the-galaxy-and-the-ground-within
+description: The fourth and final book in the wayfarer series
+pubDate: 2025-01-10T00:00:00.000Z
+updatedDate: 2025-01-10T00:00:00.000Z
+category: bookshelf
+tags:
+  - book-reviews
+  - sci-fi
+image: 'https://storage.sajalchoudhary.net/images/2025/01/IMG_9100.jpeg'
 ---
 # Chambers, Becky - The Galaxy, and the Ground Within
 
