@@ -9,6 +9,7 @@ interface Post {
     pubDate: Date;
     category: string;
     image?: string;
+    tags?: string[];
   };
   slug: string;
   body: string;
@@ -29,7 +30,7 @@ export async function getAllPosts(): Promise<Post[]> {
   const years = getYearDirectories();
   const allPosts = await Promise.all(years.map(async year => {
     const posts = await getCollection(year as any);
-    return posts.map(post => ({
+    return posts.map((post: any) => ({
       data: post.data,
       slug: post.slug,
       body: post.body,

@@ -1,0 +1,120 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getAllPosts } from '../../utils/content';
+import { formatDate } from '../../utils/date';
+
+// Get all posts and filter for bookshelf
+const allPosts = await getAllPosts();
+const bookshelfPosts = allPosts
+  .filter(post => post.data.category === 'bookshelf')
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+
+// Group posts by year
+const postsByYear = bookshelfPosts.reduce((acc, post) => {
+  const year = new Date(post.data.pubDate).getFullYear();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {} as Record<number, typeof bookshelfPosts>);
+
+// Get sorted years (newest first)
+const years = Object.keys(postsByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+
+
+---
+
+<Layout 
+  title="Bookshelf" 
+  description="Book reviews and reading notes organized by year" 
+  currentPage="/bookshelf/"
+>
+  <div class="max-w-4xl mx-auto px-6">
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold mb-4">Bookshelf</h1>
+      <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
+        Book reviews, reading notes, and thoughts on literature.
+      </p>
+      <a 
+        href="/bookshelf/tags" 
+        class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
+      >
+        View entries by tag
+      </a>
+    </header>
+
+    <!-- Books by Year -->
+    {years.map(year => (
+      <section class="mb-12 year-section" data-year={year}>
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span>{year}</span>
+          <span class="text-lg font-normal text-textSecondary dark:text-textSecondaryDark">
+            {postsByYear[year].length} book{postsByYear[year].length !== 1 ? 's' : ''}
+          </span>
+        </h2>
+        
+        <div class="space-y-8">
+          {postsByYear[year].map(post => (
+            <article 
+              class="book-entry border-b border-gray-200 dark:border-gray-700 pb-8 last:border-b-0"
+            >
+              <div class="flex flex-col md:flex-row gap-6">
+                <!-- Book Cover/Image -->
+                {post.data.image && (
+                  <div class="flex-shrink-0">
+                    <img 
+                      src={post.data.image} 
+                      alt={`Cover of ${post.data.title}`}
+                      class="w-24 h-32 md:w-20 md:h-28 object-cover rounded shadow-md"
+                    />
+                  </div>
+                )}
+                
+                <!-- Book Details -->
+                <div class="flex-1 min-w-0">
+                  <div class="mb-3">
+                    <h3 class="text-xl font-bold mb-2">
+                      <a 
+                        href={`/bookshelf/${post.slug}/`}
+                        class="text-accent hover:text-accent/80 transition-colors"
+                      >
+                        {post.data.title}
+                      </a>
+                    </h3>
+                    
+                    {post.data.description && (
+                      <p class="text-textSecondary dark:text-textSecondaryDark leading-relaxed mb-3">
+                        {post.data.description}
+                      </p>
+                    )}
+                    
+                    <div class="flex flex-wrap items-center gap-4 text-sm text-textSecondary dark:text-textSecondaryDark">
+                      <time datetime={post.data.pubDate.toISOString()}>
+                        {formatDate(post.data.pubDate)}
+                      </time>
+                      
+                      {post.data.tags && (
+                        <div class="flex flex-wrap gap-2">
+                          {post.data.tags.map((tag: string) => (
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-xs">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+
+
+</Layout> 
