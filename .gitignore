@@ -31,6 +31,9 @@ pnpm-debug.log*
 # obsidian vault
 src/content/.obsidian/
 
+# content backup
+src/content_backup_20250622_133446
+
 # Large media files
 # Uncomment this section when you start using R2 in production
 # public/images/**/*.jpg

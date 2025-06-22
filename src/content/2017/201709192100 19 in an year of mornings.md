@@ -1,0 +1,11 @@
+---
+title: "#19 in an year of mornings"
+slug: "19-in-an-year-of-mornings"
+pubDate: 2017-09-19T21:00:50
+updatedDate: 2024-04-28T15:45:36
+category: poems
+tags: ["poems", "yearOfMornings", "love"]
+---
+# #19 in an year of mornings
+
+![Beach morning, Côte d'Azur, France](https://storage.sajalchoudhary.net/images/wordpress/2017/09/019.jpg)
