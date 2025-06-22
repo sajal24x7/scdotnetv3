@@ -18,14 +18,12 @@ const { title, description, currentPage } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/logo/logo-square-v2.svg" />
-		<link rel="icon" type="image/svg+xml" href="/logo/logo-square-v2-dark.svg" media="(prefers-color-scheme: dark)" />
 		<title>{title}</title>
 		<meta name="description" content={description || "A personal digital garden and blog"} />
 		<meta name="generator" content={Astro.generator} />
 		
-		<!-- Preload logo images -->
-		<link rel="preload" href="/images/LogoLightMode.png" as="image" />
-		<link rel="preload" href="/images/LogoDarkMode.png" as="image" />
+		<!-- Preload logo image -->
+		<link rel="preload" href="/logo/logo-square-v2.svg" as="image" />
 		
 		<!-- Open Graph / Social Media -->
 		<meta property="og:title" content={title} />
@@ -33,8 +31,7 @@ const { title, description, currentPage } = Astro.props;
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={Astro.url} />
 		
-		<!-- Logo Switch Script - preloads logo based on theme -->
-		<script is:inline src="/logo-switch.js"></script>
+
 
 		<!-- Background color randomizer script -->
 		<script is:inline src="/bg-color-randomizer.js"></script>
