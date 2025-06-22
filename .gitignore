@@ -28,6 +28,9 @@ pnpm-debug.log*
 # R2 upload script configuration
 .r2_credentials
 
+# obsidian vault
+src/content/.obsidian/
+
 # Large media files
 # Uncomment this section when you start using R2 in production
 # public/images/**/*.jpg
