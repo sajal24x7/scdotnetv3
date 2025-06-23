@@ -6,8 +6,6 @@ updatedDate: 2024-01-28T11:05:59
 category: blog
 tags: ["fiction writing", "planning", "sixty-day-blog", "Uncategorized", "writing is", "writing tips", "#test"]
 ---
-# Why planning is important, but irrelevant
-
 I like having a faint bit of predictability in my work. a faint bit, though. I like knowing how things are going to pan out, sort of like knowing the destinations, even though the paths may vary. It is not a hard and fast rule this. Many a times I have ended up with almost the opposite of what I wanted to do. Still planning in advance helps.
 
 I have already talked about how I reached the figure of fifteen chapters and three parts for this book I’m writing. It helped, really it did. It helped getting the first couple of chapters underway. It helped knowing that I had to finish it in four days. It got a sort of momentum going.

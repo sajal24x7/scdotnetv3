@@ -6,8 +6,6 @@ updatedDate: 2016-06-04T21:23:41
 category: poems
 tags: ["poems", "I wish", "painter", "poem", "poet"]
 ---
-# Sometimes, I wish
-
 ![Friedrich_Bouterwek_-_Der_Maler_und_seine_Muse.jpg](https://storage.sajalchoudhary.net/images/wordpress/2016/06/friedrich_bouterwek_-_der_maler_und_seine_muse.jpg)Painter and his muse
 
 Sometimes, I wish I were a painter,  

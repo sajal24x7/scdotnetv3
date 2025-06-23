@@ -6,8 +6,6 @@ updatedDate: 2016-02-10T21:20:28
 category: blog
 tags: ["blog", "happiness", "happiness never lasts", "happy", "life", "life lessons"]
 ---
-# Why happiness never seems to last
-
 ![wp-1455119348052.jpeg](https://storage.sajalchoudhary.net/images/wordpress/2016/02/wp-1455119348052.jpeg)Not for long\!
 
 I **must** admit something here. Must, _yes_ , for if I consider my writing here something, an adjective if you may, it is honest. I don’t second guess anything I write. It is mostly a product of a single sitting, and when I get up, the post, the article, the essay, is complete. I consider this place, here, to be a sort of conversation I have with both myself, and the world at large. Now, the world is pretty large, and I get a mere fraction of it here, so mostly this place is about me, putting my ideas on paper.

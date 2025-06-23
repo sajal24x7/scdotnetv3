@@ -8,8 +8,6 @@ category: blog
 tags: ["essays"]
 image: "https://images.unsplash.com/photo-1517873569652-f231d7134909?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDIxfHx3cml0ZXxlbnwwfHx8fDE3MzM2OTE0OTJ8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Writing more vs less
-
 # Writing more is better. _Right?_
 
 But I love the elegance of [Steph](https://stephango.com), or [Derek](https://sive.rs) or [Craig](https://craigmod.com). I love the elegance of single word urls: <https://stephango.com/self-guarantee>.

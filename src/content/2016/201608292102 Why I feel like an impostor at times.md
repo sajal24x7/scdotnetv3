@@ -7,8 +7,6 @@ category: blog
 tags: ["writing is", "essays"]
 image: "https://images.unsplash.com/photo-1646650932143-3308b85aefd1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fGltcG9zdGVyfGVufDB8fHx8MTcxNDMxOTUwOXww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Why I feel like an impostor at times
-
 ![impostor.PNG](https://storage.sajalchoudhary.net/images/wordpress/2016/08/impostor.png)
 
 I think the problems began the day I paid for a domain, the blog was no longer going to be at “sajalchoudhary.wordpress.com”, I had paid to have the “wordpress” removed. And that changed things. This was not just going to be an interest any more, I was a writer now. I even changed up my bio to reflect the change. I also cooked up a facebook page to reinforce the same. That page incidentally has around hundred likes now, not that I have any clue as to how the people who got there, got there..\!

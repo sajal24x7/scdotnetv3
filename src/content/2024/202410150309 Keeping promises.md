@@ -7,8 +7,6 @@ category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/photo-1598724466259-4a0b16f853b5.jpeg"
 ---
-# Keeping promises
-
 Last week I did the 2024 equivalent of Googling myself, and asked [Copilot](https://en.wikipedia.org/wiki/Microsoft_Copilot)\(ChatGPT?\) - who is Sajal Choudhary?
 
 > Sajal Choudhary is a **writer and newsletter author** who shares his experiences of living in Finland, along with occasional short stories and poems. He writes a weekly newsletter where he reflects on various topics, ranging from personal growth to societal issues.  

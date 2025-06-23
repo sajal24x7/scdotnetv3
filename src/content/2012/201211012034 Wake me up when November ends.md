@@ -4,9 +4,8 @@ slug: "wake-me-up-when-november-ends"
 pubDate: 2012-11-01T20:34:45
 updatedDate: 2024-04-29T13:42:34
 category: blog
+tags: [“college”]
 ---
-# Wake me up, when November ends!
-
 The thing with rumors is, they can be true some times.
 
 The one doing the rounds these days is regarding the end semester examinations. It goes somewhat like this: ‘End-sems start November 16th’. Hence the need has arrived to go into hibernation for the month, half a month in pre-exam pressure, the rest in during-exam pressure\!

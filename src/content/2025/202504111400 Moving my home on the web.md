@@ -7,8 +7,6 @@ category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1734623044490-4bf667aafade?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDQzNzg2MjN8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Moving my home on the web
-
 I have recently been exposed to a bunch of new blogs - [Dragoncatcher the blog](https://www.robinsloan.com/lab/), [JEDDACP.COM](https://jeddacp.com/) and a bunch more. This all started when I read [Matt Webb's appearance on People and Blogs](https://manuelmoreale.com/pb-matt-webb). In the section about recommending some other blogs, Matt redirected to [his post of 10 recommendations](https://interconnected.org/home/2023/12/29/recommendations).
 
 I have written about my desire to move away from Ghost because of the inability to modify my theme in the base Ghost pro version earlier.

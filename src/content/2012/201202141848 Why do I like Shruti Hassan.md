@@ -4,10 +4,9 @@ slug: "why-do-i-like-shruti-hassan"
 pubDate: 2012-02-14T18:48:00
 updatedDate: 2024-04-29T12:27:30
 category: blog
+tags:[“fandom”]
 image: "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDR8fGZhbnxlbnwwfHx8fDE3MTQzOTM2NDF8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Why do I like Shruti Hassan?
-
 [![Why do I like Shruti Hassan?](https://storage.sajalchoudhary.net/images/wordpress/2012/02/dreamgirl-18.jpg?w=165)](https://storage.sajalchoudhary.net/images/wordpress/2012/02/dreamgirl-18.jpg)Why do I like Shruti Hassan?
 
 It was just one of those normal, routine struck days in my life, when I stumbled upon a very depressing yet intriguing fact. Well, as I just love sitting idle and thinking, I was doing about the same, the only thing different here was that I was also in the mean time, waiting. Not waiting for a hallucinatory girlfriend, but for my order. I was sitting in a ‘dhaba’. I was looking at the traffic on the road lost in the brightness of the sun and I was thinking, Why do people like people?

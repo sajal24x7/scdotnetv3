@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1733690577845-4f4641a456b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3MzY4NDUyOTl8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# The value of consistency
-
 I wrote about how [hard work trumps talent every time](__GHOST_URL__/hard-works-trumps-talent-every-time-2/). There is an additional element to it, of discipline and repetition.
 
 I was doing yoga today, like all mornings. There are things I can’t do yet, like being able to do forward fold, properly, in one smooth motion.

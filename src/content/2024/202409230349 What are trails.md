@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "walking", "trails"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6130.jpeg"
 ---
-# What are trails
-
 > What are trails but the paths others have walked upon.
 
 Like most games, there are two ways to play [Death Stranding](https://en.wikipedia.org/wiki/Death_Stranding):   

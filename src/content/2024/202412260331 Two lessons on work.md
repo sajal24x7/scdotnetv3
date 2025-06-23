@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "work"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/photo-1734327177128-ef59b0d9ded8.jpeg"
 ---
-# Two lessons on work
-
 When I joined TCS, all those years back, I started with a healthcare project. The company we worked for had DCs all across the world, including two in India. Or was it three?
 
 It does not matter. This is not about DCs.

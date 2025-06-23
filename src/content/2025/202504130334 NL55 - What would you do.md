@@ -8,8 +8,6 @@ category: nordletter
 tags: ["Nord Letter", "AI", "finland"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0884.jpeg"
 ---
-# NL55 - What would you do?
-
 Hello from the Iso Omena library's Aalto meeting room\! This is NordLetter \#55, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
 To follow the series, you can [subscribe here](__GHOST_URL__/#/portal/signup). A new nordletter will land in your inbox every sunday. Not a fan of newsletters? No problem\! You can read rrevious editions [here](__GHOST_URL__/nordletter/). You can also subscribe to the [RSS feed](__GHOST_URL__/nordletter/feed).

@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "writing is"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/photo-1659147554654-7a548884b60d.jpeg"
 ---
-# The stories we tell
-
 I was listening to [The New Yorker Fiction Podcast - Rebecca Makkai Reads Jhumpa Lahiri ](https://www.newyorker.com/podcast/fiction/rebecca-makkai-reads-jhumpa-lahiri)today. In this episode they were reading [The Third and Final Continent by Jhumpa Lahiri](https://www.newyorker.com/magazine/1999/06/21/the-third-and-final-continent) about an Indian immigrant who travels from Kolkata to the USA.
 
 It is a beautiful story and you should go read it. Or, listen to the podcast and have the story read to you.

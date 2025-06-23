@@ -6,6 +6,4 @@ updatedDate: 2014-03-31T10:34:00
 category: blog
 tags: ["30 day challenge", "photography", "Uncategorized"]
 ---
-# Day Nineteen: People
-
 [![image](https://storage.sajalchoudhary.net/images/wordpress/2014/04/wpid-wp-1396328679164.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2014/04/wpid-wp-1396328679164.jpeg)

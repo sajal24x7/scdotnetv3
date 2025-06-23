@@ -7,8 +7,6 @@ category: blog
 tags: ["blog", "AI", "openweb", "writing is", "reading"]
 image: "https://images.unsplash.com/photo-1461880234904-751a2f54f1c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fGdsb2JhbCUyMHdhcm1pbmd8ZW58MHx8fHwxNzQzMTA2NTk5fDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# How would the web work in an increasingly AI-fied world
-
 [Om - Has search become just a feature](https://om.co/2025/03/20/has-search-become-just-a-feature/):
 
 > The atomization of information is unfolding rapidly. Artificial intelligence doesn’t just search; it synthesizes, contextualizes, and presents information in a user’s preferred format. AI agents fetch needed information, distill it and deliver it without requiring users to visit individual webpages. The traditional web — with its banners, pop-ups, and paywalls — increasingly feels like a relic from a less sophisticated era.

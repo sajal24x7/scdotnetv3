@@ -6,8 +6,6 @@ updatedDate: 2016-04-19T21:02:53
 category: blog
 tags: ["blog", "first draft", "novel", "the end", "writing is"]
 ---
-# How it feels to finally finish that first draft
-
 ![firstdraft](https://storage.sajalchoudhary.net/images/wordpress/2016/04/wp-1461079906391.jpeg)
 
 If you asked me to describe the week that went by in a single word, I would say, ‘awesome’. But then, I use that word a little more often than oft needed. So, there’s that.

@@ -7,8 +7,6 @@ category: blog
 tags: ["blog", "travelog"]
 image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_7777-1.jpeg"
 ---
-# Visiting the Ashokan Pillar in Vaishali
-
 My hometown is in a village called Agarpur, in [Lalganj](https://en.wikipedia.org/wiki/Lalganj,_Bihar), in [Vaishali](https://en.wikipedia.org/wiki/Vaishali_district) district, in [Bihar](https://en.wikipedia.org/wiki/Bihar). Despite this, this was the first time I visited some places other than my home in Vaishali. I think that happens with places we call homes. 
 
 [Vaishali was an ancient metropolis](https://en.wikipedia.org/wiki/Vaishali_\(ancient_city\)), with importance in both Jain and Buddhist religions. Vaishali has one of the most well preserved [Ashokan pillars](https://en.wikipedia.org/wiki/Pillars_of_Ashoka), with a lion on top.

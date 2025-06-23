@@ -6,8 +6,6 @@ updatedDate: 2015-02-26T22:01:45
 category: blog
 tags: ["blog", "short stories", "stories", "walking", "writing is", "writing tips"]
 ---
-# Something about nothing!
-
 > Sometimes, nothing is supposed to mean anything. Sometimes, you do stuff just for the sake of doing stuff. Sometimes, it all falls into place.
 
 I wrote a story today, a short one, after what can safely be considered an eternity. Actually, I began yesterday, and finished today. It was weird for when I began I had nothing, but this one, single line:

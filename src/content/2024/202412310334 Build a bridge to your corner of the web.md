@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "web"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_7261.jpeg"
 ---
-# Build a bridge to your corner of the web
-
 I was not on the old Twitter \(just Twitter?\). I mean I was there, but not really posting there.
 
 Twitter used to be very good at this thing, where it was basically the customer care for a lot of these companies. These companies had other channels as well, but if you tagged them there, you may or may not get a response. If you tagged them on Twitter, or DM'd them, you would get a response. This is the reason why I had a Twitter account, to complaint, ask for support. And it used to work brilliantly. I got my lost Kindle back thanks to Twitter\!

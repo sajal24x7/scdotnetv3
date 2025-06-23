@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "work"]
 image: "https://images.unsplash.com/photo-1527525443983-6e60c75fff46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDl8fFRlYW18ZW58MHx8fHwxNzMyNzIwNDc0fDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Trusting people to do the work they were hired to do
-
 I graduated college in 2014 and joined TCS in October of the same year. The first two months after joining TCS were earmarked for training.
 
 There were two streams primarily, technical and non-technical training. The technical training was designed around Windows server technologies. The non-technical training was around communication skills primarily, managing others, and other similar things.

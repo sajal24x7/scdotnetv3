@@ -5,8 +5,6 @@ pubDate: 2016-08-31T21:56:25
 updatedDate: 2024-04-13T14:09:51
 category: blog
 ---
-# Things that I think about
-
 ![doodle-thinking](https://storage.sajalchoudhary.net/images/wordpress/2016/08/doodle-thinking.jpg)
 
 There are quite a few things that I worry about, no that does not _sound right_ , let me try again. There are quite a few things that I think about, a lot. Things that I keep getting back to, again, and again, and again.

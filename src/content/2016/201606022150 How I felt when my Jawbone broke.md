@@ -6,8 +6,6 @@ updatedDate: 2016-06-02T21:50:04
 category: blog
 tags: ["blog", "data", "fitness", "free", "jawbone", "step-counter", "tracking", "up2"]
 ---
-# How I felt when my Jawbone broke
-
 ![img_20160602_214538.jpg](https://storage.sajalchoudhary.net/images/wordpress/2016/06/img_20160602_214538.jpg)Broken\!
 
 I had bought a [Jawbone UP](https://jawbone.com/), back in November. Since then, the tracker was on my wrist 24×7 for most of the days. This Wednesday, after roughly six months of careful usage, the straps broke. The device came with a one year warranty, but apparently the warranty did not cover broken straps. I looked it up on Amazon, and there, I found that I was one of the lucky ones. Many had reported broken straps after a month of usage.

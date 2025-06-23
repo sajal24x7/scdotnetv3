@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "reading", "openweb"]
 image: "https://images.unsplash.com/photo-1623031345438-387dd3c45e9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fFJlYWR8ZW58MHx8fHwxNzM3OTY0ODAxfDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Why do I read more on the web
-
 I thought about this today, while I was reading something on NNW.
 
 To be honest, I have been thinking about this since I read the latest [Roden](https://craigmod.com/roden/099/) by Craig Mod. It was all over the place in the right sort of way, dense, packed with stuff. My kind of a post \(article? essay?\).

@@ -6,8 +6,6 @@ updatedDate: 2015-11-24T20:33:58
 category: blog
 tags: ["blog", "honesty", "writer", "writing is"]
 ---
-# On Honesty, Part-II
-
 ![honesty](https://storage.sajalchoudhary.net/images/wordpress/2015/11/honesty.png)
 
 Okay, so I messed up this weekend.

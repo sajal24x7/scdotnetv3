@@ -7,8 +7,6 @@ category: stories
 tags: ["stories"]
 image: "https://images.unsplash.com/photo-1569407616525-3df696e2cfde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDU4fHxibG9vZHxlbnwwfHx8fDE3MTQzMTk2Njh8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Was it blood or water?
-
 “Mmm…”
 
 “Mmmmm…”

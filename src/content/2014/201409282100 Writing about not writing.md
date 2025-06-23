@@ -6,8 +6,6 @@ updatedDate: 2014-09-28T21:00:00
 category: blog
 tags: ["blog", "edx", "novel", "writers block", "writing is"]
 ---
-# Writing about not writing
-
 [![writer's block](https://storage.sajalchoudhary.net/images/wordpress/2014/09/writerblock.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/writerblock.jpg)
 
 Before this, I sat in front of the monitor, staring at the almost completed sixth chapter of my work. I decided to give it half an hour, half an hour of pure, undisturbed, writing. I stared at the blinking cursor for the first couple of minutes; then I decided to give it a read, all that I had managed so far in the chapter. That took another fifteen or so minutes. Then I wrote a line, a line, looked at it for a while, and decided it will have to do.

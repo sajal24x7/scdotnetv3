@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "reading"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6066.jpeg"
 ---
-# The joy of reading
-
 I woke up a bit late today. I was a bit groggy as I went through the early morning rituals. I cooked my lunch, packed it. I went and took a shower. I ate my breakfast. I slipped on my shoes, put on my headphones, and left for work.
 
 I saw the metro leaving the station just as I came down the escalator. I could look at the HSL app to figure out when the next metro is due and leave accordingly, or at least know. But, to be honest, it has never been a big deal. The next metro arrives in 5 to 8 minutes. Today, as well, it wasn't.

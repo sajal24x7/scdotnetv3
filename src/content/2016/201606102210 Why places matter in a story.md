@@ -6,8 +6,6 @@ updatedDate: 2016-06-10T22:10:35
 category: blog
 tags: ["blog", "places", "settings", "story", "storytelling", "writing is"]
 ---
-# Why places matter in a story
-
 ![wp-1465576617960.jpeg](https://storage.sajalchoudhary.net/images/wordpress/2016/06/wp-1465576617960.jpeg)Decisions, decisions…\!
 
 So my sister left yesterday.

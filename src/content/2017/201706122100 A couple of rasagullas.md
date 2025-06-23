@@ -7,8 +7,6 @@ category: stories
 tags: ["stories"]
 image: "https://images.unsplash.com/photo-1509749837427-ac94a2553d0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGJ1c3xlbnwwfHx8fDE3MTQ4MDcxNDR8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# A couple of rasagullas
-
 The bus to Hajipur was late by an hour. It was nothing new, or in that matter, exceptional. The woman and her son got down. The road crumbled beneath their feet.
 
 _“Chaliye madam, badhte rahiye\!”_

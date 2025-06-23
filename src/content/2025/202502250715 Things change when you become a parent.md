@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "parenting", "mattdavella"]
 image: "https://images.unsplash.com/photo-1723444059774-743b0e6d19e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDd8fHx8fHx8fDE3NDA0NjcwNTB8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Things change when you become a parent
-
 I was watching this video last night.
 
 I don’t know what I expected when I started that video. Maybe I wanted to know how could I be more productive as a new dad myself. \(Fuck this need to be productive. Just live man\!\)

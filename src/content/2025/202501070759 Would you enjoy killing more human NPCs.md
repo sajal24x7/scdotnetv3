@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "gaming", "AI"]
 image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fEdhbWluZ3xlbnwwfHx8fDE3MzYyMzY3MzR8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Would you enjoy killing more human NPCs?
-
 [Nvidia’s AI NPCs can become your teammates now.](https://www.theverge.com/2025/1/6/24337949/nvidia-ace-ai-npcs-pubg-ally-teammate) This is coming in PUBG at some point. But, this or similar technology should proliferate so that it becomes par for the course for all games, or rather most AAA games.
 
 Imagine how much better career mode could be on FIFA. Just kidding, EA does not care about career mode.

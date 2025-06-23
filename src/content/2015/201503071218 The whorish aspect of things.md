@@ -6,8 +6,6 @@ updatedDate: 2015-03-07T12:18:28
 category: blog
 tags: ["blog", "facebook", "writing is", "writing tips"]
 ---
-# The whorish aspect of things
-
 [![Source: http://commons.wikimedia.org/wiki/File:Lautrec_the_sphinx_1898.jpg](https://storage.sajalchoudhary.net/images/wordpress/2015/03/prostitute-the-sphinx-1898.jpg?w=660)](https://storage.sajalchoudhary.net/images/wordpress/2015/03/prostitute-the-sphinx-1898.jpg)Source: http://commons.wikimedia.org/wiki/File:Lautrec\_the\_sphinx\_1898.jpg
 
 > You need to feed the body\! – _Many, many people, including yours truly_

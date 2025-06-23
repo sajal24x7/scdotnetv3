@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "death"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_3831.jpeg"
 ---
-# Losing someone
-
 My _nanaji_ passed away a couple of days back.
 
 He was the last of my surviving grand parents. It felt like the close of an era. Something lost forever. For the longest time, I had kept feeling that I needed to see him one last time. I had that fear. I was able to see him last year. I had gone and met him. He had looked somehow younger than his age. But that had been after a long time.

@@ -6,8 +6,6 @@ updatedDate: 2015-11-01T21:06:46
 category: blog
 tags: ["blog", "diwali", "minimalism", "nandan", "possessions", "stuff"]
 ---
-# On Possessions
-
 [![Possessions](https://storage.sajalchoudhary.net/images/wordpress/2015/11/img_20151031_102519.jpg?w=660)](https://storage.sajalchoudhary.net/images/wordpress/2015/11/img_20151031_102519.jpg)
 
 Today, _the day I begin writing this post that is_ , is a Saturday. The plan, you see, is, or rather was, to have finished writing the first draft of the current week’s post by this point. That, however, did not happen this time around. You see, the week started a little late for me; on a Wednesday. That, was because I was working over the weekend, and so, the time I get to think about what to write, was not there; but then again, in all fairness, this is a two week ritual, nothing written on stone.

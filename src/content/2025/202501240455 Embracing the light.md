@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "tech"]
 image: "https://images.unsplash.com/photo-1607027340690-37e80b0f1b31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE1fHxkYXJrJTIwbW9kZXxlbnwwfHx8fDE3Mzc2Njg1OTB8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Embracing the light
-
 I remember being very excited when the system wide dark mode came with iOS13/MacOS Mojave. I had wanted this for so long.
 
 As soon as it was out, I turned everything dark all the time. I was on non-OLED iPhone then, and the benefit of darkening the pixels, namely better battery life, would have been non-existent for me. And yet, it looked so damn cool. With iOS18 we got, tinting for app icons, which further made the experience better.

@@ -8,8 +8,6 @@ category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_8564.jpeg"
 ---
-# NL36 - Helsinki Christmas Market
-
 Hello from home in Matinkylä\! This is NordLetter \#36, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
 Previous editions can be found [here](__GHOST_URL__/nordletter/). You can reach out to me by replying on this mail or adding a comment on this. I am also [posting on Threads](https://www.threads.net/@sajal24x7?xmt=&ref=sajalchoudhary.net).

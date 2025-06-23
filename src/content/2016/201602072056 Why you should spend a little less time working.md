@@ -6,8 +6,6 @@ updatedDate: 2016-02-07T20:56:25
 category: blog
 tags: ["blog", "life", "stress", "travel", "work never ends"]
 ---
-# Why you should spend a little less time working
-
 ![Trippin](https://storage.sajalchoudhary.net/images/wordpress/2016/02/trippin.jpg)Work never ends\!
 
 There is this thing we do at work around lunch hour, wherein one of us \(_usually me_\) gets up, and says something along the lines of, ‘let’s get up, and go eat’, and someone else \(_let’s call them Mr. S/A_\) say something along the lines of, ‘give me five minutes to finish this super important thing off\!’

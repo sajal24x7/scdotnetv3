@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "AI"]
 image: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTczNDYwNzcyMnww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# The net good or bad of AI
-
 What is the net result of IA? Is it good or bad?
 
 I am thinking about it in the short term of course. No body knows what we can do with it in the long term.

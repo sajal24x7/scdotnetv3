@@ -7,8 +7,6 @@ category: blog
 tags: ["30 day challenge", "featured", "photography", "poem", "prose", "Uncategorized"]
 image: "https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395288979459.jpeg"
 ---
-# Day Seven: Questions
-
 [![image](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395288979459.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395288979459.jpeg)
 
 Is life all questions and no answers?  

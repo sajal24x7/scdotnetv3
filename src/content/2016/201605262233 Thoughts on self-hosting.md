@@ -6,8 +6,6 @@ updatedDate: 2016-05-26T22:33:41
 category: blog
 tags: ["blog", "hosting", "self-hosting", "wordpress", "writing is"]
 ---
-# Thoughts on self-hosting
-
 ![websites.png](https://storage.sajalchoudhary.net/images/wordpress/2016/05/websites.png)
 
 I was away for most of this week. Among other things, what kept me busy, was the thought of self-hosting my blog. I was thinking, reading, and researching.

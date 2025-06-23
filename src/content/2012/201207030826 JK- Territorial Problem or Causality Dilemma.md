@@ -4,11 +4,9 @@ slug: "jk-territorial-problem-or-causality-dilemma"
 pubDate: 2012-07-03T08:26:58
 updatedDate: 2024-04-29T13:18:09
 category: blog
-tags: ["essays"]
+tags: ["j&k"]
 image: "https://images.unsplash.com/photo-1614056965546-42fbe24eb36c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fGthc2htaXJ8ZW58MHx8fHwxNzE0Mzk2NjgwfDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# J&K- Territorial Problem or Causality Dilemma?
-
 **3rd July, 2012**
 
 The Hindu published the overview of the report submitted by the J&K Group of Interlocutors in May, 2012; it’s criticism and their clarification for the so called misinterpretation by the critics viz. Samajwadi Party, JD \(U\) etc and various religious groups referred to as ‘azadi’ groups. The report basically provides several opinions as to how the Kashmir issue could be solved. The report seems it might be instructive rather than suggestive.

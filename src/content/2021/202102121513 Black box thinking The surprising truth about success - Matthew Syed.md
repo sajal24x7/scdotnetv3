@@ -12,8 +12,6 @@ tags:
 image: >-
   https://storage.sajalchoudhary.net/images/2021/02/Screenshot-2021-02-12-at-8.41.31-PM.png
 ---
-# Black box thinking: The surprising truth about success - Matthew Syed
-
 I learnt about this [book](https://www.amazon.in/dp/B00PW634YQ/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1) on [**\#484** of the Tim Ferris show](https://tim.blog/2020/12/03/daniel-ek/), with [Daniel Ek](https://twitter.com/eldsjal), the CEO of Spotify.
 
 This book talks about failures, how we treat them citing examples from industries ranging from aviation, healthcare, coding, cycling teams. It talks about the psychology behind our attitudes to failure, and how we view it. It talks about how failures serve as the core building block for both marginal and evolutionary successes.

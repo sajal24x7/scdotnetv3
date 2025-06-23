@@ -4,10 +4,9 @@ slug: "what-is-the-difference-between-education-knowledge"
 pubDate: 2012-10-10T19:58:32
 updatedDate: 2024-04-29T13:34:44
 category: blog
-tags: ["education", "Learning", "essays"]
+tags: ["education", "Learning"]
 image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDd8fGVkdWNhdGlvbnxlbnwwfHx8fDE3MTQzOTc2MTR8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# What is the difference between Education & Knowledge?
 
 _It was a day, in every aspect as usual as one of my days could be. I was sitting in the metro with a couple of my friends not doing much other than cussing at the ridiculousness of the syllabus, the job scenario, the fact that the formidable ghissu batch of 2K10 EEE, DTU/DCE is not being traumatized by its teachers. It was then, that almost out of nowhere a certain_[ _individual_](http://en.wikipedia.org/wiki/Individual) _sat next to a friend. Then began a series of discussions between the two of them; I was neither a spectator nor a participant in them as I was at the time busy with ‘A Hitchhiker’s Guide to the Galaxy’ The journey continued, soon we were at Kashmere Gate, waiting to hop onto the next metro when the fore mentioned individual said to my friend, ‘What is the difference between Education & Knowledge?’ To this, my friend began to reply as I started towards the open gates of the now-arrived-and-waiting-to-depart Metro. Once in, the question really started to bug me know as I went into processing the event. The following post is a result of the _[_thought process_](http://en.wikipedia.org/wiki/Thought) _and also something I’ve strongly felt about, education._
 

@@ -6,8 +6,6 @@ updatedDate: 2024-01-30T18:30:08
 category: blog
 tags: ["fiction writing", "good days", "sixty-day-blog", "success", "tips", "Uncategorized", "writing is", "writing tips", "#test"]
 ---
-# Good Days, Bad Days
-
 There are days like, let’s say yesterday, when everything seems to be falling into place; the characters seem to be doing stuff on their own. There seem no boundaries, no restrictions to the world you’ve created. Once you start writing, the words just keep flowing, naturally and seamlessly. At each point in your story you see multiple ways to take the story forward and still know which one would be the right one.
 
 And then there are days, like let’s say, today, when nothing seems to be going your way. You are simply stuck, and can’t think of even one possible way out. Everything you write seems like trash. You feel like erasing it all somehow, and start fresh; but at the back of your mind you know, you can’t. It took so much of effort to walk down this one path, and there were no other paths in sight.

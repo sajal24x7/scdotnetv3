@@ -5,8 +5,6 @@ pubDate: 2025-02-15T23:09:28
 updatedDate: 2025-03-03T20:19:23
 category: blog
 ---
-# A year of mornings
-
 ![A year of mornings - Poems by Sajal](https://storage.sajalchoudhary.net/images/2025/02/NotionPress---Front---A-year-of-mornings-1.png)
 
   * **Release Date:** February 15, 2025

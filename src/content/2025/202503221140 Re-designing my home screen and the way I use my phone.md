@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "phone", "iphone", "apple"]
 image: "https://storage.sajalchoudhary.net/images/2025/03/Screenshot-2025-03-22-at-1.33.36-PM.png"
 ---
-# Re-designing my home screen and the way I use my phone
-
 I have a contentious relationship with my phone.
 
 This must not be news to any one. Most of us have similarly contentious relationships with our phones. We love to hate them, or hate to love them. Phones are our most personal devices. They are on our person all the time and if sometime we don't have our phones nearby, we get the jitters. \(\[\[202503072334 We are all addicted to our phones|We are all addicted to our phones\]\]\)

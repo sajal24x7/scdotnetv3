@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1666112835145-d79fc3f2e008?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGR5c29uJTIwc3BoZXJlfGVufDB8fHx8MTczNDg2NTY1M3ww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Advanced civilisations could be indistinguishable from nature
-
 The [Fermi paradox](https://en.wikipedia.org/wiki/Fermi_paradox) is about the lack of advanced space-faring civilisations we have come across \(none\) given that there are a lot of stars in the galaxy, which should have a lot of habitable planets surrounding those stars.
 
 There are a few solutions to this:

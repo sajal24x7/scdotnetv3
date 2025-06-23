@@ -8,8 +8,6 @@ category: blog
 tags: ["essays"]
 image: "https://storage.sajalchoudhary.net/images/2024/05/photo-1594605965522-16b488c9cd9f.jpeg"
 ---
-# Do what you want to!
-
 _“Whatever you do, make sure that you are not doing what your father, mother or society wishes you to do because you don’t want to end up where you don’t want to be”_
 
 I was talking to a friend the previous night, and as I said this, I realised the fallacy of the statement. 

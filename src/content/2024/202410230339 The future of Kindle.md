@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "reading"]
 image: "https://images.unsplash.com/photo-1529978567524-3dfb744b7769?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGtpbmRsZXxlbnwwfHx8fDE3Mjk2MjE3NDB8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# The future of Kindle
-
 Far too many times in the past, I was tempted to listen to [The Vergecast.](https://www.theverge.com/the-vergecast) I did not start before now. But then, [Amazon announced the new Kindles](https://www.theverge.com/2024/10/16/24271603/kindle-2024-colorsoft-scribe-paperwhite-specs-price-date) and [the vergecast had an episode with Panos Panay discussing these same Kindles.](https://www.youtube.com/watch?v=wz9X_Of93U0)
 
 I added the Vergecast to Overcast and started the download of the episode.

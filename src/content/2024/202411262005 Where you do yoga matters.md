@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "yoga", "pollution"]
 image: "https://images.unsplash.com/photo-1517363898874-737b62a7db91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxZT0dBfGVufDB8fHx8MTczMjY1MTQ0NHww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Where you do yoga matters
-
 The day I landed in Delhi, I had tears in my eyes. Not because I got emotional about being home after more than a year, but because of the pollution in Delhi.
 
 I was tearing up. I felt some irritation in my chest.

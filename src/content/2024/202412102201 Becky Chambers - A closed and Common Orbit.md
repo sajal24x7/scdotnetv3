@@ -8,8 +8,6 @@ tags:
   - book-reviews
 image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8676-2-1.jpeg'
 ---
-# Becky Chambers - A closed and Common Orbit
-
 I finished reading the second book in the Wayfarer series - A Closed and Common Orbit. The book follows the events in [The Long Way to a Small, Angry Planet](https://en.wikipedia.org/wiki/The_Long_Way_to_a_Small,_Angry_Planet). It does not however include the characters of the long way.
 
 We follow the AI Lovelace/Sidra as she gets on with life in a new body \(the kit\) outside of the ship she was supposed to reside on. Pepper, the tech from long way helps Lovelace along her journey, in figuring out her place in the world.

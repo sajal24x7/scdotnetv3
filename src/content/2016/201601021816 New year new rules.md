@@ -6,8 +6,6 @@ updatedDate: 2016-01-02T18:16:13
 category: blog
 tags: ["blog"]
 ---
-# New year, new rules!
-
 ![wp-1451738693582.jpeg](https://storage.sajalchoudhary.net/images/wordpress/2016/01/wp-1451738693582.jpeg)
 
 Okay, not really.

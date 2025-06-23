@@ -6,8 +6,6 @@ updatedDate: 2014-09-03T21:09:43
 category: blog
 tags: ["blog", "edx", "happiness", "happy", "hello world", "writing is"]
 ---
-# What makes me happy?
-
 \[youtube=http://youtu.be/04QJUpHi040\]
 
 Yupp, that’s me\!

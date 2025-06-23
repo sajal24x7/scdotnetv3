@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "politics"]
 image: "https://images.unsplash.com/photo-1585007600263-71228e40c8d1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxUcnVtcHxlbnwwfHx8fDE3MzczNDkyNTd8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# The next four years are going to be a drag
-
 I woke up today, opened NNW and had a familiar feeling sink in as I opened The Verge’s feed. Five or six posts were about things Mr. Trump had repealed or planned to repeal. Things repeated to [environment](https://www.theverge.com/2025/1/20/24345964/donald-trump-paris-climate-agreement-exit), to reduce [subsidies for EVs](https://www.theverge.com/2025/1/20/24347980/trump-ev-order-carbon-emission-rule), and so on. It was a similar situation at Wired. At Wired, there was also a piece on [Mr. Trump pardoning the rioters of Jan 6th.](https://www.wired.com/story/trump-pardons-proud-boys-enrique-tarrio-january-6/)
 
 I don’t care about [TikTok](https://www.theverge.com/2025/1/20/24348213/trump-tiktok-ban-executive-order-sale-delay-china). Let them sell it, shut it down. I don’t care. But I care about their environmental policies. You can’t ignore what the US does, it just is so damn big. Hence the dread.

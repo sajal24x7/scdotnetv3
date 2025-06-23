@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "ghost", "openweb"]
 image: "https://images.unsplash.com/photo-1590615370581-265ae19a053b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHxjb25uZWN0fGVufDB8fHx8MTc0MjQxMTI3M3ww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Maybe we should not have connected
-
 Ghost announced beta start for the social web. [I have thoughts about it, the product that it is, in its current state.](__GHOST_URL__/blog/ghost-post/)
 
 Kojima announced release date for DS2. I mentioned that in last week’s [NordLetter](__GHOST_URL__/nl51-holi-redux/).

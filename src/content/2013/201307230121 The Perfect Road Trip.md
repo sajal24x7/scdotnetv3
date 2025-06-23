@@ -4,9 +4,8 @@ slug: "the-perfect-road-trip"
 pubDate: 2013-07-23T01:21:30
 updatedDate: 2024-04-29T14:16:35
 category: blog
+tags: [“travel”]
 ---
-# The Perfect* Road Trip
-
 [![](https://storage.sajalchoudhary.net/images/wordpress/2013/07/argentina-road-trip.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2013/07/argentina-road-trip.jpg)Source: Google Images
 
 **“Traveling – It leaves you speechless, and then turns you into a storyteller”** – Ibn Battuta

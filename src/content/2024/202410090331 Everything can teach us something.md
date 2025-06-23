@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/photo-1728327509874-68aeaa84590c.jpeg"
 ---
-# Everything can teach us something
-
 I had a little tiff at work today. Nothing like how I used to get maybe an year or so earlier. Maybe two years earlier. I have grown since those days. It's true these things still affect me. I am not bulletproof in an emotional sense.
 
 Things said to me, permeate.

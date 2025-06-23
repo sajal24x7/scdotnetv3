@@ -4,11 +4,9 @@ slug: "the-gita-religion-and-dharma"
 pubDate: 2012-10-24T17:06:09
 updatedDate: 2024-04-29T13:37:28
 category: blog
-tags: ["Hinduism", "religion", "essays"]
+tags: ["Hinduism", "religion"]
 image: "https://images.unsplash.com/photo-1625580917212-e86139d26e1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGtyaXNobmF8ZW58MHx8fHwxNzE0Mzk3ODE0fDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# The Gita, Religion and Dharma
-
 I’m into the [_Bhagavat Gita_](http://en.wikipedia.org/wiki/Bhagavad_Gita).
 
 There was a realization, like always; which led to it. It was not a time-specific realization or for that matter an event-triggered realization. It was a rather general realization, something that I had thought over more than once earlier. It involved religion. During the recent Assam riots, I was having one of those ‘me’ moments during which I got to thinking about religion, faith whatever you wish to term it; more specifically I was thinking about Islam.

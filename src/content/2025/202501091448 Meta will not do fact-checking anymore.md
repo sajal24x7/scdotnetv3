@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "web"]
 image: "https://images.unsplash.com/photo-1636051028886-0059ad2383c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDR8fG1ldGF8ZW58MHx8fHwxNzM2NDEzOTYyfDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Meta will not do fact-checking anymore
-
 [Mark announced changes to way it does content moderation across Meta properties - IG, FB, Threads.](https://www.instagram.com/p/DEhf2uTJUs0/)
 
 The main announcement was a video from Zuckerberg, and then a [thread on Threads](https://www.threads.net/@zuck/post/DEhgYx4JbEG).

@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "parenting"]
 image: "https://images.unsplash.com/photo-1490633658548-02223374071a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fEJ8ZW58MHx8fHwxNzM3MDQzMzExfDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Parenting is full of contradictions
-
 Before the child is born, you take care of what you eat, only good things, no alcohol, healthy stuff - apples, almonds, less oil.
 
 Afterward, the child has phases - when they might put dirt in their mouth.

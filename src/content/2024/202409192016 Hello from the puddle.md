@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6011.jpeg"
 ---
-# Hello from the puddle
-
 There is a bridge painted in bright yellow which goes over this body of water. I walk over it every day. Today I took a picture of the water, and the life teeming in it. 
 
 It might not be pretty \(_I found it pretty_\).

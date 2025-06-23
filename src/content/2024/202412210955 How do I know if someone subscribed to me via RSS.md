@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "rss", "reading"]
 image: "https://images.unsplash.com/photo-1664904527535-79f003cc5ec9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8MTczNDgxODU1NHww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# How do I know if someone subscribed to me via RSS
-
 I love RSS. Ever since I've discovered it thanks to Net News Wire, I have moved a lot of my reading to it.
 
 Reading in NNW via RSS enabled me to delete the browser tab I had for reading. It also enabled me to expand my reading list. There are twenty five items in the list. One perpetual to-do item I have now is creating a blog-roll on my website.

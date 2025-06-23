@@ -7,8 +7,6 @@ category: blog
 tags: ["Azure", "Tech Notes"]
 image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fHNlcnZlciUyMGNvZGV8ZW58MHx8fHwxNzIxNzEyODUwfDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# How to handle dependencies in Bicep
-
 Bicep deploys resources in parallel. Which is what you might want as that is faster. However, there might be dependencies. I came across this while creating the environment needed for [this exercise](https://learn.microsoft.com/en-in/training/modules/configure-vnet-peering/6-simulation-peering). It was basically a lab on vnet-peering.  
 What I needed to create was this:
 

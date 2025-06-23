@@ -6,8 +6,6 @@ updatedDate: 2024-01-28T11:05:59
 category: poems
 tags: ["poem", "poetry", "sixty-day-blog", "spoken word", "spoken word poetry", "Uncategorized", "writing is", "#test"]
 ---
-# There was this boy in school
-
 There was this boy in school,
 
 his name was Yatin.

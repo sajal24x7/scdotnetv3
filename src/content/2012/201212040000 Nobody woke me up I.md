@@ -6,10 +6,6 @@ updatedDate: 2024-04-29T00:00:00
 category: blog
 tags: ["writing is"]
 ---
-# Nobody woke me up, I'm up any ways!
-
-[](http://arcumen.wordpress.com/2012/12/04/nobody-woke-me-up-im-up-any-ways/640px-love_coffee/)
-
 Ok, doesn’t exactly look like this\!
 
 Here in \[Delhi\]\([http://maps.google.com/maps?ll=28.61,77.23&spn=1.0,1.0&q=28.61,77.23](http://maps.google.com/maps?ll=28.61,77.23&spn=1.0,1.0&q=28.61,77.23) \(Delhi\)&t=h "Delhi"\) winters have finally arrived, and I happen to have a hot cup of coffee waiting for me back at the desktop table. Hence, this will be short; though the coffee won’t be the only reason keeping this one short.

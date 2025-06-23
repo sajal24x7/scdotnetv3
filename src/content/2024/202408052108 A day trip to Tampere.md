@@ -8,8 +8,6 @@ category: blog
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/08/IMG_5708-2-1.jpeg"
 ---
-# A day trip to Tampere
-
 Hello from my home in Matinkylä\! This is NordLetter \#19, a weekly newsletter on living and walking in Finland. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 
 If you enjoyed this, and know someone else who might, please consider forwarding this to them. It would help this grow and make me happy. 😄

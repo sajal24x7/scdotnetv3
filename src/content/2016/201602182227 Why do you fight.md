@@ -6,8 +6,6 @@ updatedDate: 2016-02-18T22:27:47
 category: blog
 tags: ["blog", "fight", "jnu", "life", "look", "think"]
 ---
-# Why do you fight?
-
 ![think](https://storage.sajalchoudhary.net/images/wordpress/2016/02/think.jpg)Stop and think\!
 
 There’s [this thing going on in my country right now](http://blogs.wsj.com/indiarealtime/2016/02/17/four-questions-google-users-are-asking-about-the-jnu-controversy/), maybe you’ve heard of it. It is not something I am proud of, of course. But I’ve been told not to write about it.

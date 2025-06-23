@@ -8,8 +8,6 @@ category: nordletter
 tags: ["Nord Letter", "AI", "attention", "openweb", "writing is"]
 image: "https://storage.sajalchoudhary.net/images/2025/02/IMG_9976-1.jpeg"
 ---
-# NL48 - Writing meet-ups
-
 Hello from my home in Matinkylä\! This is NordLetter \#48, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
 Previous editions can be found [here](__GHOST_URL__/nordletter/). You can reach out to me by replying on this mail or adding a comment on this. I am also posting on [Mastodon](https://mastodon.social/@sajal24x7).

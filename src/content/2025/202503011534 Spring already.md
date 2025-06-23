@@ -7,8 +7,6 @@ category: blog
 tags: ["blog", "walking", "spring"]
 image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_0103.jpeg"
 ---
-# Spring already?
-
 [We were down with flu these past few weeks,](__GHOST_URL__/nordletter/nl46-preparedness-day/) as was most of Helsinki/Espoo. Most people I work with had the symptoms over the past few weeks.
 
 One side-effect of falling sick is that I can't do some yoga in the morning or the walk in the evening.

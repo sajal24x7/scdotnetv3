@@ -7,8 +7,6 @@ category: blog
 tags: ["blog", "writing is", "openweb"]
 image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDR8fGhvbWV8ZW58MHx8fHwxNzQ1MDkxNTk5fDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# The reason why I want to move my home on the world
-
 The reason why I want to do this \([this being moving my home on the web](__GHOST_URL__/blog/moving-my-home-on-the-web/)\), is the same reason why I have little motivation to post on Threads/Mastodon/Bluesky. It is the same reason why [Dave wants to bring blogging and social media together](http://scripting.com/2025/04/19.html#a132828).
 
 I want all my stuff, all the things I write on the web, to exist on my blog, my website, my home on the web.

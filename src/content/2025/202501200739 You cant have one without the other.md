@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9238.jpeg"
 ---
-# You can’t have one without the other
-
 I went out for a walk today, same route, same time. The thing about walking in the cold air is it freshens you up. You can feel the air going inside your lungs. It wakes you up. Sure you’re cold when you begin, but soon your body warms up and then there is no cold.
 
 I love the winters here. I love the snow. I love the cold in general. It’s not ideal of course, but I will take cold over hot weather any day.

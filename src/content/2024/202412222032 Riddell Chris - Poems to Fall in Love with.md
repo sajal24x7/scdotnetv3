@@ -10,8 +10,6 @@ tags:
   - poems
 image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8915.jpeg'
 ---
-# Riddell, Chris - Poems to Fall in Love with
-
 This is an excellent collection of poetry on love with wonderful art by Chris Riddell. Some poems, specifically ‘If you are an ancient Egyptian pharaoh by Hera Lindsay Bird’ became more than their words thanks to Chris’s work.
 
 ![](https://storage.sajalchoudhary.net/images/2024/12/IMG_8902.jpeg)

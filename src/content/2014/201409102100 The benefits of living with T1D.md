@@ -6,8 +6,6 @@ updatedDate: 2024-09-10T19:53:09
 category: blog
 tags: ["blog", "diabetes", "health", "type 1 diabetes"]
 ---
-# The benefits of living with T1D
-
 [![t1d&me](https://storage.sajalchoudhary.net/images/wordpress/2014/09/t1dme-logo.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/t1dme-logo.jpg)
 
 It was a fine morning.

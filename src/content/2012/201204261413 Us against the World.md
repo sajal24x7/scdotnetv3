@@ -4,11 +4,9 @@ slug: "us-against-the-world"
 pubDate: 2012-04-26T14:13:55
 updatedDate: 2024-04-29T12:59:30
 category: poems
-tags: ["poems"]
+tags: ["love"]
 image: "https://storage.sajalchoudhary.net/images/2024/04/photo-1543280554-642953527bf5.jpeg"
 ---
-# Us against the World!
-
 _As the world stood crumbling,_
 
 _Ashes, fire, smoke, dust\!_

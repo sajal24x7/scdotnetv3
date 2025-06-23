@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "travel"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6390.jpeg"
 ---
-# A tale of two airlines
-
 I travelled to India on Wednesday aboard Finnair. I always use Finnair, but this was the best flight I had with them, which is not to say that the others were bad. Just that this was the most comfortable flight for me.
 
 ![](https://storage.sajalchoudhary.net/images/2024/10/IMG_6388.jpeg)

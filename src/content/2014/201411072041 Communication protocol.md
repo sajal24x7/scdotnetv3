@@ -6,8 +6,6 @@ updatedDate: 2014-11-07T20:41:00
 category: blog
 tags: ["blog", "conversations", "listening", "non-verbal", "talking", "verbal"]
 ---
-# Communication protocol
-
 [![image](https://storage.sajalchoudhary.net/images/wordpress/2014/11/wpid-first-communication-4fcd0126d49ea_hires.jpg?w=10)](https://storage.sajalchoudhary.net/images/wordpress/2014/11/wpid-first-communication-4fcd0126d49ea_hires.jpg)
 
 > “Do you have a blog?” I said.  

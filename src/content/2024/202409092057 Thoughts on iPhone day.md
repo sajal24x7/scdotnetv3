@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "apple"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/photo-1531554694128-c4c6665f59c2.jpeg"
 ---
-# Thoughts on iPhone day
-
 Apple announced new iPhones, new Apple Watches and new AirPods today. 
 
 Some thoughts. 

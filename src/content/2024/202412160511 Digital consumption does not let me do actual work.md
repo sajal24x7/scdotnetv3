@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "Learning"]
 image: "https://images.unsplash.com/photo-1670330964751-cdd17fb4e507?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE1fHxkb29tJTIwc2Nyb2xsaW5nfGVufDB8fHx8MTczNDI5MDM4Nnww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Digital consumption does not let me do actual work
-
 There are two types of people in the world - those who create and those who consume. Facebook, IG and the rest evolved from social networks to social media. They honed the product \(their algorithms\) to such a degree so as to get maximum engagement from their users. This is visible in Meta's user hostile decision to always default to the algorithmic 'For You' feed on Threads.
 
 When some of the smartest people in the world want you to get addicted to something, you will get addicted to it. And so many are. Doomscrolling is a thing. Ask someone what they saw after an hour spent scrolling, and they would not be able to reliably answer.

@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "AI", "LLM", "openweb"]
 image: "https://images.unsplash.com/photo-1733503711063-3427bff34612?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDEwNzE3MzJ8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Warming up to LLMs
-
 Outside of all the hype created by the techbros selling their AI products, there is a usefulness to the LLMs. I personally use Copilot whenever I need to. It’s free and uses ChatGPT in the backend. I don’t have high usage for the product, I am not using it as a coding companion or something. So it works.
 
 I asked Copilot to help me redesign or rather create the page for [a year of mornings](__GHOST_URL__/a-year-of-mornings/), my first book here on Ghost.

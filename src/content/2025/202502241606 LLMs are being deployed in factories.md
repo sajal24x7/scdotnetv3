@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "AI", "LLM"]
 image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxGYWN0b3JpZXN8ZW58MHx8fHwxNzQwNDEzMTYxfDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# LLMs are being deployed in factories
-
 I was a little surprised to read this today.
 
 [AI Assistants Join the Factory Floor](https://www.wired.com/story/ai-swaps-desk-work-for-the-factory-floor/)

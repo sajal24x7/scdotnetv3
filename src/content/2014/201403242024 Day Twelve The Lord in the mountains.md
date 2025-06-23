@@ -7,8 +7,6 @@ category: blog
 tags: ["30 day challenge", "featured", "Lord", "photography", "prose", "Uncategorized"]
 image: "https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395672580169.jpeg"
 ---
-# Day Twelve: The Lord in the mountains
-
 [![image](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395672580169.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395672580169.jpeg)
 
 He’s gone; the Lord  

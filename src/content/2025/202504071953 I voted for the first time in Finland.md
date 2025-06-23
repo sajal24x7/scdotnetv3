@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "elections", "democracy", "finland"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0830.jpeg"
 ---
-# I voted for the first time in Finland
-
 I participated in the [Finnish local elections](__GHOST_URL__/blog/elections-in-finland/) today. I went and voted for a candidate in both the municipal and county elections.
 
 Would I write about voting in the elections every time I do it?  

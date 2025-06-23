@@ -8,8 +8,6 @@ category: blog
 tags: ["Nord Letter", "finland", "writing is"]
 image: "https://storage.sajalchoudhary.net/images/2024/04/tempImageFm5RD9.gif"
 ---
-# Federating again
-
 Hello 👋 from the Iso Omena Library. 
 
 I'm here again. [It continues to be a beautiful inspiring place to sit in](__GHOST_URL__/nordletter/spring-is-here/). And so I am.

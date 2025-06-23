@@ -8,8 +8,6 @@ category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6409.jpeg"
 ---
-# NL31 - Going back home
-
 Hello from India\! I am sitting in a random room in Bangalore as I type this. This is NordLetter \#31, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
 Previous editions can be found [here](__GHOST_URL__/nordletter/). You can reach out to me by replying on this mail or adding a comment on this. I am also [posting on Threads](https://www.threads.net/@sajal24x7?xmt=&ref=sajalchoudhary.net).

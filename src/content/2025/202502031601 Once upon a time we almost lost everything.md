@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "cybercrime", "phishing", "security"]
 image: "https://images.unsplash.com/photo-1701724355618-55b0306ff6c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fFBoaXNoaW5nfGVufDB8fHx8MTczODU5ODQyMHww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Once upon a time, we almost lost everything
-
 I was talking to a friend after a long time yesterday.
 
 “What’s new?” I asked him after we were done with the initial chit-chat.

@@ -6,8 +6,6 @@ updatedDate: 2015-07-01T20:58:57
 category: blog
 tags: ["blog", "deadline", "shipping date", "writing is", "writing tips"]
 ---
-# Why I decided to set a shipping date for my book
-
 Well, I did say I might decide to explain what [this](http://sajalchoudhary.com/2015/06/09/lets-sail/) was all about. So, here it goes.
 
 [![wpid-wp-1433852244568.jpeg](https://storage.sajalchoudhary.net/images/wordpress/2015/06/wpid-wp-1433852244568.jpeg?w=225)](https://storage.sajalchoudhary.net/images/wordpress/2015/06/wpid-wp-1433852244568.jpeg)[![TIR](https://storage.sajalchoudhary.net/images/wordpress/2015/07/tir.png?w=254)](https://storage.sajalchoudhary.net/images/wordpress/2015/07/tir.png)

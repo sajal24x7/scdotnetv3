@@ -6,8 +6,6 @@ updatedDate: 2016-05-19T22:13:06
 category: blog
 tags: ["Uncategorized", "writer", "writing is", "writing tips"]
 ---
-# What does it take to be a writer?
-
 ![writer](https://storage.sajalchoudhary.net/images/wordpress/2016/05/writer.jpg)
 
 It can be pretty damning, [to promise something](https://sajalchoudhary.com/2016/05/17/post-a-day/), and not follow up on it, just a day later.

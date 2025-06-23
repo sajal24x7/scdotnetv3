@@ -7,8 +7,6 @@ category: blog
 tags: ["blog", "AI"]
 image: "https://images.unsplash.com/photo-1743945968054-088cff86a63a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDUwMTAwOTR8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# A tale of four chat bots
-
 I want to [move my home on the web](__GHOST_URL__/blog/moving-my-home-on-the-web/), from ghost to something I design and build myself.
 
 I mentioned at the end of the last post that I was excited. That this would be a great experiment. I would build this with ChatGPT by my side.

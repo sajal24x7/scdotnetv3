@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "AI", "work"]
 image: "https://images.unsplash.com/photo-1738830656378-c8f96e01ec50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3Mzg4NzA0NTR8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# The last work left in this world
-
 I was listening to a podcast and [walking](__GHOST_URL__/tag/walking/). The podcasters were talking about the future of work, what AI is good at and not. Whether there will be software developers in the world. And I had this thought: what if the only work that remained in the world was feeding training data to the AI.
 
 See, all these companies have spent a lot on AI. [Google expects to spend 75 billion on AI](https://www.theverge.com/news/606242/google-q4-2024-earnings), [Microsoft will spend 80 billion on AI](https://blogs.microsoft.com/on-the-issues/2025/01/03/the-golden-opportunity-for-american-ai/), [Open AI is planning to spend 500 billion - 125 billion per year](https://openai.com/index/announcing-the-stargate-project/) and others will be spending billions as well. That seems like a lot of money. They would want to get that back money. They are all investing this money.

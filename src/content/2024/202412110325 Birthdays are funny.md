@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/photo-1490126125528-a0c3b2998dcd.jpeg"
 ---
-# Birthdays are funny
-
 We start with celebrating the birthdays. The first birthday, then the fifth, the tenth and so on.
 
 The nature of the celebrations varies, of course. The baby does not care about the birthday to begin with. The baby does not know that it's their birthday which is being celebrated\!

@@ -6,8 +6,6 @@ updatedDate: 2014-09-29T21:00:51
 category: blog
 tags: ["blog", "edx", "grammar", "writing is", "writing tips"]
 ---
-# How important is grammar to a writer?
-
 _**[![good_grammar](https://storage.sajalchoudhary.net/images/wordpress/2014/09/good_grammar.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/good_grammar.jpg)**_
 
 _**The following was written in response to an edx assignment for a course I am part of. Shared as is.**_

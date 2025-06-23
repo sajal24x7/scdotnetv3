@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "writing is"]
 image: "https://images.unsplash.com/photo-1602212096437-d0af1ce0553e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHN0YXJzfGVufDB8fHx8MTczNTc3NTY3OXww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Rethinking what and how I write on this website
-
 # What do I write now
 
   * Things that I learned \(the source could be anything from books to articles\)

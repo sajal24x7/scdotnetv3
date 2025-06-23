@@ -8,8 +8,6 @@ category: blog
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/07/IMG_4778.jpeg"
 ---
-# Celebrating Annaprashan
-
 Hello from my home in Matinkylä\! This is NordLetter \#17, a weekly newsletter on living and walking in Finland. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 
 * * *

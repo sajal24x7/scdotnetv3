@@ -1,12 +1,11 @@
 ---
 title: "it's Teacher's Day!!"
-slug: "it-2012"
+slug: "teachers-day"
 pubDate: 2012-09-05T00:00:00
 updatedDate: 2024-04-29T00:00:00
 category: blog
+tags: [“teacher”]
 ---
-# it's Teacher's Day!!
-
 [![](https://storage.sajalchoudhary.net/images/wordpress/2012/09/dsc02775.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2012/09/dsc02775.jpg)
 
 _And then she said, “You’ll be the first one to answer the questions tomorrow”_  

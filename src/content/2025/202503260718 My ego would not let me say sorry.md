@@ -7,8 +7,6 @@ category: poems
 tags: ["poems"]
 image: "https://images.unsplash.com/photo-1522785375704-25fac21552fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxTb3JyeXxlbnwwfHx8fDE3NDI5NzM0Njd8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# My ego would not let me say sorry
-
 I messed up today.  
 I shouted at you.  
 I shouldn't have.  

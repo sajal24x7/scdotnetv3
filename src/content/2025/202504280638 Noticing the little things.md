@@ -7,8 +7,6 @@ category: blog
 tags: ["blog", "savya", "parenting"]
 image: "https://images.unsplash.com/photo-1744429523595-2c06b8611242?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDh8fHx8fHx8fDE3NDU4MjE5MjN8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Noticing the little things
-
 When Savya figured out moving on his own \(crawling\), the first thing he did was find out the little crumbs in the hidden corners of our home. He would go in the kitchen, put his chest close to the ground and drag things out which we did not even know existed.
 
 He has an inquisitiveness in him that I want to preserve no matter what. Being curious is a super power. All kids have it, and then along the way some lose it. Being curious and noticing things.

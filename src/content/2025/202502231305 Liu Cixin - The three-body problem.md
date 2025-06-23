@@ -12,8 +12,6 @@ tags:
   - sci-fi
 image: 'https://storage.sajalchoudhary.net/images/2025/02/IMG_0005.jpeg'
 ---
-# Liu, Cixin - The three-body problem
-
 How does one review a book?
 
 I had been wanting to read the [three-body problem since long](__GHOST_URL__/blog/reading-is-better-than-watching-movies/). I just was not able to get my hands on it, at the library. I got it on 27th Jan, but I was reading Murakami then. I was also reading 'The seven basic plots' in parallel. But that is not a book you read in parallel. And it is a seven hundred page book. I realised then, that some books are better read digitally, on the Kindle for example.

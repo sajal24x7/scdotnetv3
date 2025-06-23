@@ -6,8 +6,6 @@ updatedDate: 2016-01-24T21:47:49
 category: blog
 tags: ["blog", "competitive nature", "humanity", "life", "time"]
 ---
-# On the competitive aspect of things
-
 ![](http://www.thehelix.ie/wp-content/uploads/2015/08/competition-time-700x330-692x326.png)
 
 This is bound to get a little confusing, and complex because this is part of life, how I view life, and no matter how much you try to compartmentalize it, box it, label it, life always finds a way, to destroy the boxes, the boundaries, and to flow.

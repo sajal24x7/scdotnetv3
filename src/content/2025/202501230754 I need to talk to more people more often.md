@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "writing is"]
 image: "https://images.unsplash.com/photo-1737079567862-4ccc9433d443?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDEwfHx8fHx8fHwxNzM3NjE3NDgxfA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# I need to talk to more people, more often
-
 I am reading [Murakami](https://en.wikipedia.org/wiki/Haruki_Murakami)’s [Men without women](https://en.wikipedia.org/wiki/Men_Without_Women_\(Murakami_short_story_collection\)) right now. I feel like I had read it earlier.
 
 Men without women is a collection of stories. The story that I am reading now, Scheherazade, has made me almost sure that I’ve read this earlier. I remember this story. I do not remember the ones I had read before. But this one I remember earlier.

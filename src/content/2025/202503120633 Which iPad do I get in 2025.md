@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "apple", "ipad"]
 image: "https://images.unsplash.com/photo-1585770536735-27993a080586?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fElwYWR8ZW58MHx8fHwxNzQxNzA2NTYzfDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Which iPad do I get in 2025?
-
 This is the year to get an iPad. Finally.
 
 I published a book\!

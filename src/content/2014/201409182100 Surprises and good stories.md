@@ -6,8 +6,6 @@ updatedDate: 2014-09-18T21:00:05
 category: blog
 tags: ["blog", "death note", "death note review", "life", "light", "novel", "novella", "post-apocalytic", "stephen king", "the mist", "thewalkingdead", "writing is", "writing tips", "yagami"]
 ---
-# Surprises, and good stories
-
 [![Death Note](https://storage.sajalchoudhary.net/images/wordpress/2014/09/34457_death_note.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/34457_death_note.jpg)
 
 Before you begin, the following is bound to contain spoilers about Death Note the anime series, and The Mist.

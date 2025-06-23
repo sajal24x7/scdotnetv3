@@ -7,8 +7,6 @@ category: blog
 tags: ["blog", "prerna", "climate change"]
 image: "https://images.unsplash.com/photo-1533921482637-8e125577dde6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxnbG9iYWwlMjB3YXJtaW5nfGVufDB8fHx8MTc0MzEwNjU5OXww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Boiling frogs and global warming
-
 Have you read the story of the [boiling frog](https://en.wikipedia.org/wiki/Boiling_frog)?
 
 > If a frog is put it into boiling water, it would simply jump out. But if you put it in normal water and then boil it slowly, the frog would not realise the danger and will be cooked.

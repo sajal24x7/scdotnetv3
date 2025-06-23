@@ -6,8 +6,6 @@ updatedDate: 2014-09-25T21:00:00
 category: blog
 tags: ["blog", "democracy", "india", "indian politics", "politics", "vote"]
 ---
-# How democratic is our democracy?
-
 [![Democracy](https://storage.sajalchoudhary.net/images/wordpress/2014/09/blog-3.png)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/blog-3.png)
 
 > [Democracy ](http://en.wikipedia.org/wiki/Democracy)is a form of government in which all eligible citizens are meant to participate equally – either directly or, through elected representatives, indirectly – in the proposal, development and establishment of the laws by which their society is run- Wikipedia

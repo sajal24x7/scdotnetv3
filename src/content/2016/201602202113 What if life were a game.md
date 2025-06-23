@@ -6,8 +6,6 @@ updatedDate: 2016-02-20T21:13:20
 category: blog
 tags: ["blog", "gaming", "gita", "life", "life's a game", "reality", "religion", "universe", "virtual"]
 ---
-# What if life were a game?
-
 ![No-Mans-Sky-concept-art_8.jpg](https://storage.sajalchoudhary.net/images/wordpress/2016/02/no-mans-sky-concept-art_8.jpg)Life’s a game\!
 
 I read a post [today](http://www.theatlantic.com/technology/archive/2016/02/artificial-universe-no-mans-sky/463308/). It was about an AI created game-universe. Or something like that. It’s a nice post. Read it. The post ticked off a line of thought which I’ve tried to retrace. Hopefully, it’s going to sound a bit more lucid, out of my head.

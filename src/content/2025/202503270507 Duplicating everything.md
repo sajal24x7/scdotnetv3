@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "AI"]
 image: "https://images.unsplash.com/photo-1742654230443-7c19cb55cd46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDI5OTk5Mzd8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Duplicating everything
-
 I read this in Kevin Kelly's What Technology Wants:
 
 > The only worldwide relinquishment that seems to be working is the reduction of the nuclear weapon stockpile, which peaked at 65,000 units in 1986 and is now at 20,000. At the same time, the number of countries capable of making a nuclear weapon is increasing.

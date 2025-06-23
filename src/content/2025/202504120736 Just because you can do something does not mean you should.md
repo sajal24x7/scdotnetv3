@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "AI", "writing is"]
 image: "https://images.unsplash.com/photo-1551006097-61dd4a01d3e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI1fHxhcG9jYWx5cHNlfGVufDB8fHx8MTc0NDQ0MzMyOXww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Just because you can do something does not mean you should
-
 A writer's apocalypse quickly approaches. The LLMs might not be good enough right now, but given enough time and money, they would get good enough. They might one day be the best writers on the planet. It does not matter how long that takes. Eventually they will get there.
 
 See, as examples, [The Stochastic Parrot Sings Back - Hugh Howey](https://hughhowey.com/the-stochastic-parrot-sings-back/) and [The Prismatic Mind - Hugh Howey](https://hughhowey.com/the-prismatic-mind/) mentioned in [NL49](__GHOST_URL__/nordletter/nl49-how-does-a-city-form/). The LLMs can write some wonderful poetry right now\! There are of course many others using AI to unleash slop upon the world.

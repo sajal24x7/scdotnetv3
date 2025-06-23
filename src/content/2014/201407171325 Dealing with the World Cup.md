@@ -6,8 +6,6 @@ updatedDate: 2024-01-28T11:05:59
 category: blog
 tags: ["england", "fiction writing", "football", "germany", "sixty-day-blog", "Uncategorized", "world cup", "writing is", "writing tips", "#test"]
 ---
-# Dealing with the World Cup
-
 After a month long tournament, Germany came out on top with a one-goal win over Argentina \(or Messi, if you prefer\!\) Oh\! and in case you were in a cave in a remote island somewhere in the Pacific \(or the Atlantic\) I am talking about the football world cup.
 
 I love Germany. I do.

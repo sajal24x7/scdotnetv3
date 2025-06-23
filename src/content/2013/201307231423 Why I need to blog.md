@@ -4,13 +4,9 @@ slug: "why-i-need-to-blog"
 pubDate: 2013-07-23T14:23:11
 updatedDate: 2024-05-04T06:33:44
 category: blog
-tags: ["essays"]
+tags: ["writing-is"]
 image: "https://storage.sajalchoudhary.net/images/2024/05/blog-update.gif"
 ---
-# Why I need to blog
-
-Source: Google Images
-
 A little background might help here: I have been on a sort of leave from the [blog](http://arcumen.wordpress.com/), and no it was not self-imposed or disciplinarian in any sense. I just had a bad time, physically; and then there was the all familiar: [inertia](http://arcumen.wordpress.com/2013/07/03/a-little-something-called-inertia/).
 
 Even after deciding many-a-times to implement this habit, perhaps to blog with at least some sense of regularity, I wasn’t actually able to achieve any: regularity that is. So, this is me, trying to persuade myself, trying to inspire, stimulate myself by justifying [blogging](http://en.wikipedia.org/wiki/Blog) to myself.

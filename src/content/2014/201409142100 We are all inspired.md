@@ -6,8 +6,6 @@ updatedDate: 2024-10-06T10:20:07
 category: blog
 tags: ["blog", "novel", "novella", "post-apocalytic", "thewalkingdead", "writing is", "writing tips"]
 ---
-# We are all inspired!
-
 [![Inspire!](https://storage.sajalchoudhary.net/images/wordpress/2014/09/e607ed858b00d061966736b0b0817a02.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/e607ed858b00d061966736b0b0817a02.jpg)I was doing this thing on, and with [First Time Novelist](http://afirsttimenovelist.wordpress.com/), where I was posting stuff related to writing in general. At the end I’d put up a postscript stating my current progress on the novel. This is that post.
 
 There is this theme of generalisation that does go with post of this sort, something that I have an issue with. I don’t like generalisations. It just reduces all the conversations, the discussions, the complexities to a singularity, a generic statement. It sort of undos all the good work.

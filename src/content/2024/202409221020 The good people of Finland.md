@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "kindness"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/photo-1635402972344-a8402ea982b6.jpeg"
 ---
-# The good people of Finland
-
 I went to Iso Omena to sell my old iPhone today. I entered the store, took a number and waited. I was hoping the same person who gave me my new phone on Friday will take my phone today. I guess we all crave familiarity. Or at least I do. That must say something about me. Right? Psychologically?
 
 Anyway. 

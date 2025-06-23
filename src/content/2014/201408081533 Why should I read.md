@@ -6,8 +6,6 @@ updatedDate: 2024-01-28T11:05:59
 category: blog
 tags: ["fiction writing", "poem", "poetry", "reading", "sixty-day-blog", "Uncategorized", "writing is", "#test"]
 ---
-# Why should I read?
-
 We’ve been taught from a very early age to look for stuff when we read, you know stuff like morals, summaries, questions, answers. I remember being taught poems in Hindi, my mother tongue, the language I was most comfortable with. Taught, yes. I remember being taught the meaning of each word, each line. The funny thing is poems, and all art for that matter is not bound, physical in its nature\! It’s all-encompassing, transcendent sort of stuff. And it is upto you the viewer to derive the meaning of it. Its like that only. I’ve often been surprised by what people thought I meant to say in my poems. Sometimes they think of stuff I _could not_ have thought, and yet I wrote it\! Art is beautiful that way. And yet, I was taught poems, and stories and other stuff. We did not have the freedom to give our own answers, the answers mind you were dictated to us. Literature was taught as if it was history\!
 
 I was lucky though that my English teachers were not like that, or maybe they were all accommodating enough of a little kid who wanted to write his own answers, his own paragraphs. Some of the latter teachers had even encouraged it. I guess that was all the creativity I could get out at that time. There is one thing none of them told me to do: reading. I started reading very late. Very late. I grow jealous of those who’ve been reading since their school days. I guess it was partly my fault too. I was too happy reading the curriculum books again, and again. Perhaps the only kid who knew all the stories even before a single class had been held.

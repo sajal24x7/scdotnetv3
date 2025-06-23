@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "parenting", "savya"]
 image: "https://images.unsplash.com/photo-1735342623457-b683e0ba1c2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDZ8fHx8fHx8fDE3NDE1NDg2Nzh8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Sit on the floor with your child and play
-
 It was match day yesterday \(Sunday\) United vs Arsenal. There was one other match going on in Dubai. But I’m not here to talk about matches. United could have won, but didn’t. I am more than happy with a point.
 
 The thing that Savya loves to do, is take a remote, go to the TV and smack the living shit out of the pixels.

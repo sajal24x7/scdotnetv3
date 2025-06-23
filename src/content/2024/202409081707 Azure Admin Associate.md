@@ -8,8 +8,6 @@ category: blog
 tags: ["Tech Notes", "Azure"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/Screenshot-2024-09-08-at-8.05.34-PM.png"
 ---
-# Azure Admin Associate
-
 One of [my goals for this year](__GHOST_URL__/now/) was to get the Azure Administrator Associate certificate. On the 3rd September, I sat for the exam and passed. 😀
 
 On my back from the exam centre, all I did was laugh. I felt relieved. I felt joyous. This was a long time coming. I had started preparing for this exam back in April. It took spending three to four hours each weekend at the library and an hour the rest of the days. It took doing that consistently for the last three or so months, with a couple of breaks in between owing to bad health. We had a bout of cough-cold-fever in the house around May.

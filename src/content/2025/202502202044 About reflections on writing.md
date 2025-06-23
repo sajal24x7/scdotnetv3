@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "work", "writing is"]
 image: "https://images.unsplash.com/photo-1739992115892-36453a241b5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDh8fHx8fHx8fDE3NDAwODM5MTV8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# About reflections on writing
-
 I love reading people talk about the craft of writing. I love reading people who have been doing this since long. I came across [Dave](http://scripting.com/), courtesy of one such post.
 
 It speaks to my beliefs on the value of [consistent effort](__GHOST_URL__/blog/the-value-of-consistency/) and how [hard work trumps talent every time](__GHOST_URL__/hard-works-trumps-talent-every-time-2/).

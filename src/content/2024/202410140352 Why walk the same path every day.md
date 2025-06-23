@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "walking"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6297.jpeg"
 ---
-# Why walk the same path every day
-
 Each day, around six or seven, after dinner, I leave the flat and go for my walk.
 
 I leave the apartment building from the main road side. I take a left, walk parallel to the road for a bit and then take another left, down a walkway, which meets another road only for walking or cycling and the start of my almost five kilometer walk.

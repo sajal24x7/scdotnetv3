@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8659-1.jpeg"
 ---
-# Building furniture
-
 Finland celebrated its 107th Independence Day on Friday. It is a public holiday in Finland, which made this a long weekend.
 
 Coincidentally, Ikea delivered the Billy bookshelf I had ordered from them on Saturday. 

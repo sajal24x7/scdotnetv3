@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "apple", "iphone", "AI"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0796-1.jpeg"
 ---
-# The three places where I noticed Apple Intelligence
-
 iOS 18.4 on Monday \(31st March\), with it came Apple Intelligence in additional languages and regions, including support in English \(India\), as prophesied earlier in [NL53](__GHOST_URL__/nordletter/nl53-my-own-writing-meetup/).
 
 After upgrading, I was greeted with a prompt about Apple Intelligence. I had hoped there would be a walkthrough of the places where Apple Intelligence, but there was none. Instead, in any app that supports it, I get prompts about what features the app supports, like Apple Intelligence in Numbers, Pages, etc.

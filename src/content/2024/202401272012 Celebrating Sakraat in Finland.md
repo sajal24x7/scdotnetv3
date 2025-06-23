@@ -8,8 +8,6 @@ category: blog
 tags: ["sakraat", "Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/01/53164A75-2BF0-415B-8A82-8C0C5DF411B0_1_105_c.jpeg"
 ---
-# Celebrating Sakraat in Finland
-
 Sometimes I wonder if anyone would find this useful. Does it server any purpose? Does it help anyone?
 
 Then I remind myself, I write for two people: _me_ and _you_.

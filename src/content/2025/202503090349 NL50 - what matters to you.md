@@ -8,8 +8,6 @@ category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_0130.jpeg"
 ---
-# NL50 - what matters to you
-
 Hello from my home in Matinkylä\! This is NordLetter \#50. Each week I share some of the interesting things I found on the web. And I have been doing that for 50 consecutive weeks. That is a good streak.
 
 Previous editions can be found [here](__GHOST_URL__/nordletter/). You can reach out to me by replying on this mail or adding a comment on this. I am also posting on [Mastodon](https://mastodon.social/@sajal24x7).

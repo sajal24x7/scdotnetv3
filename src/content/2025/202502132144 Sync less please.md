@@ -8,8 +8,6 @@ category: blog
 tags: ["reading", "netnewswire", "openweb"]
 image: "https://images.unsplash.com/photo-1662553739062-3c2570008adc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyfHxTeW5jfGVufDB8fHx8MTczOTQ4Mjk5Nnww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Sync less, please?
-
 I wish Net News Wire had a feature where in I could dictate the frequency of its updates.
 
 This is how I read these days, compulsively, almost exclusively on NNW. I have a few feeds I follow. These feeds get updated through the day and night. Whenever I pick up NNW, it auto-updates.

@@ -8,8 +8,6 @@ category: blog
 tags: ["Nord Letter", "oitta"]
 image: "https://storage.sajalchoudhary.net/images/2024/06/IMG_3673-1.jpeg"
 ---
-# Postcard from Oitta
-
 Hello from my home in Matinkylä\! This is _NordLetter_ \#11, a weekly newsletter on living and walking in Finland. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 
 * * *

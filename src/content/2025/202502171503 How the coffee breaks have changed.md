@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "phone", "breaks"]
 image: "https://images.unsplash.com/photo-1739715642309-04ea662522eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDZ8fHx8fHx8fDE3Mzk4MDQ0NTV8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# How the coffee breaks have changed
-
 There are two factors here:
 
   1. The people I go on coffee breaks with, mostly talk about things I’m not interested in. Things either related to work or investing.

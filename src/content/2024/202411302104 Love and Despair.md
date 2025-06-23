@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "reading"]
 image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_8536.jpeg"
 ---
-# Love and Despair
-
 I read Pablo Neruda's twenty love poems and a song of despair. 
 
 I wanted something out of this book. I did not go in just wanting to read it, and see what comes of it.

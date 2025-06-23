@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "phone", "addiction"]
 image: "https://images.unsplash.com/photo-1619016984222-c074da4e7deb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxQaG9uZSUyMGFkZGljdHxlbnwwfHx8fDE3NDEzODU1MTd8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# We are all addicted to our phones
-
 It’s easier to see it in others, of course. One can have a holier than thou attitude.
 
 > You peasants\! Spending time on socials. While, I, I am cognisant of how I spend my time and on what\!

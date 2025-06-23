@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "temu", "prerna"]
 image: "https://images.unsplash.com/photo-1721618878234-1086729bc513?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNvZmElMjBjb3ZlcnxlbnwwfHx8fDE3NDM2MjIyNjF8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Temu as a form of soft power
-
 I had ordered a bunch of stuff from [Temu](https://www.temu.com). I don't often do that, or, rather as often as some other people I know. The main brush on my Roborock S8 had broken, and I needed to get a replacement. That was the primary requirement. I first looked at the replacement part on [Gigantti](https://www.gigantti.fi) and [Power](https://www.power.fi), but as expected they were too costly. Somehow I got the idea to check for replacement on Temu, and I found a full set of replacement parts \(main brush + brush + filter + mop\) selling for a third of the cost of just the main brush.
 
 Temu requires a minimum order of 25 euros, so I had to add some other things which I did not need, per se. I ordered a cover for my sofa, and a tissue paper stand.

@@ -6,8 +6,6 @@ updatedDate: 2016-05-01T22:17:37
 category: blog
 tags: ["blog", "life", "standing still", "writing is"]
 ---
-# Why standing still is scary
-
 ![Standing still](https://storage.sajalchoudhary.net/images/wordpress/2016/05/2a0b291e39db5ef70e9964697549f878.jpg)Standing still
 
 There is this weird state that I am in, right now.

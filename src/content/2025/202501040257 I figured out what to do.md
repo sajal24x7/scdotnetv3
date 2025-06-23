@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "writing is", "ghost"]
 image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9052.jpeg"
 ---
-# I figured out what to do
-
 I figured out what to do. Yesterday, was me thinking out loud about how to write on this website. I had originally wanted to edit the post before it went live, with details about what I planned to do.
 
 I did not figure out what to do yesterday.

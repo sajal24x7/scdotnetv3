@@ -6,8 +6,6 @@ updatedDate: 2024-04-28T15:31:00
 category: blog
 tags: ["love", "poems", "yearOfMornings"]
 ---
-# #58 in an year of mornings
-
 ![058.jpg](https://storage.sajalchoudhary.net/images/wordpress/2017/10/058.jpg)
 
 She says:

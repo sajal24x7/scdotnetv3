@@ -7,8 +7,6 @@ category: blog
 tags: ["blog", "microsoft", "AI"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_1130.jpeg"
 ---
-# Attending the Global AI Bootcamp in Helsinki
-
 I attended the [Global AI Bootcamp](https://globalai.community/badges/88df1dfa-8a1d-4203-80cc-7993a2320d21/) at the Microsoft office in Espoo on the 23rd April. It was a good session, centred around understanding and building agents. These sessions have been happening around the world in March, but here in Finland it was arranged in April.
 
 The Microsoft office is located at Keilalahdentie 2, in one of the three towers, Tieto and Fortum also have their offices here.

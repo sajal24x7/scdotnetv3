@@ -7,8 +7,6 @@ category: bookshelf
 tags:
   - book-reviews
 ---
-# Kevin Kelly - Excellent Advice for Living
-
 This is an excellent gift for someone. 
 
 This is a very short book with some wonderful ideas or advices. I finished it in a day. 

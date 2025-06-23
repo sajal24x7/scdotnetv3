@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "marshmallow test", "parenting"]
 image: "https://images.unsplash.com/photo-1597326585512-f5d2216dcf0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDExfHxNYXJzaG1hbGxvd3xlbnwwfHx8fDE3Mzk1MTk2NDB8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# About the marshmallow experiment
-
 A good early measure of whether a child will be successful in life is if they are able to delay gratification. Most famously this was tested in the [marshmallow experiment](https://en.wikipedia.org/wiki/Stanford_marshmallow_experiment).
 
 From the wiki:

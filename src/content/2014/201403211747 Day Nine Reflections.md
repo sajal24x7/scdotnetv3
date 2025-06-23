@@ -6,8 +6,6 @@ updatedDate: 2014-03-21T17:47:39
 category: blog
 tags: ["30 day challenge", "literature", "photography", "poem", "prose", "Uncategorized"]
 ---
-# Day Nine: Reflections
-
 [![image](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395404145679.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395404145679.jpeg)
 
 What do you do when you see your reflection;  

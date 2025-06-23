@@ -7,8 +7,6 @@ category: nordletter
 tags: ["Nord Letter", "finland", "paivakoti", "AI"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_1140.jpeg"
 ---
-# NL57 - Some things should be free
-
 Hello from my home in Matinkylä\! This is NordLetter \#57, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
 To follow the series, you can [subscribe here](__GHOST_URL__/#/portal/signup). A new NordLetter will land in your inbox every Sunday. Not a fan of newsletters? No problem\! You can read previous editions [here](__GHOST_URL__/nordletter/). You can also subscribe to the [RSS feed](__GHOST_URL__/nordletter/feed).

@@ -6,8 +6,6 @@ updatedDate: 2015-04-04T19:32:36
 category: blog
 tags: ["blog", "parenting", "parents", "truth"]
 ---
-# Children, and truth
-
 [![Children, and truth](https://storage.sajalchoudhary.net/images/wordpress/2015/04/yelling-parents-hurt-kids.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2015/04/yelling-parents-hurt-kids.jpg)
 
 It was all fairly routine.

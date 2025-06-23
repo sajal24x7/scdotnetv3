@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "social media", "apps", "app store"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0879.jpeg"
 ---
-# I want to share little ephemeral messages with my family
-
 I want to be able to share little videos and photos directly with my family. I don't want a video call. I don't want a group chat. I just want a simple app where I can leave ephemeral messages for my family.
 
 * * *

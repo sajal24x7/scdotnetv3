@@ -6,8 +6,6 @@ updatedDate: 2014-11-19T08:15:34
 category: blog
 tags: ["blog", "decisions", "hard decisions"]
 ---
-# Decisions decisions!
-
 > How do you decide between what you have and what you want?
 
 I talked to my brain today. Really, I did. I have no idea what it said. Gibberish mostly. This was also the first time it had tried that. Gibberish that is, usually its one of the only things in the world that sort of makes any sense. But not this time.  

@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "AI"]
 image: "https://images.unsplash.com/photo-1498831624351-bb3e382fe091?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHx3b3JsZCUyMGtub3dsZWRnZXxlbnwwfHx8fDE3Mjg1MDU1MTV8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# The custodian for all human knowledge
-
 I was watching Bill Gates' new documentary - [What Next](https://www.netflix.com/title/81609333) on Netflix today. The first episode, perhaps unsurprisingly was about AI. It was on a whole, a well-rounded, hopeful take on AI.
 
 There were two sections which jumped out at me.

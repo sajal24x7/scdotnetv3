@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "writing is", "hope"]
 image: "https://images.unsplash.com/photo-1687985826611-80b714011d0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQwfHxzY2klMjBmaXxlbnwwfHx8fDE3Mjc4OTIwNjB8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Science fiction does not have to be dystopian in order to be interesting
-
 t is easy of course. Dystopias provide better opportunities for conflict. It is easier to imagine villains. People preying on other people. People wanting power. And after they get the power, misusing them. Think [Mad Max](https://en.wikipedia.org/wiki/Mad_Max).
 
 I think it's lazy. Maybe not lazy, just something that has been done many times before.

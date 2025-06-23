@@ -6,8 +6,6 @@ updatedDate: 2015-03-24T12:12:01
 category: blog
 tags: ["blog", "life", "motivation", "writing is", "writing tips"]
 ---
-# All the motivation you need!
-
 [![Motivation](https://storage.sajalchoudhary.net/images/wordpress/2015/03/motivation-is-inside-you1.jpg?w=660)](https://storage.sajalchoudhary.net/images/wordpress/2015/03/motivation-is-inside-you1.jpg)
 
 > “You are going to make an awesome Dad\!” she said.

@@ -6,8 +6,6 @@ updatedDate: 2024-01-28T11:05:58
 category: blog
 tags: ["fiction writing", "length", "sixty-day-blog", "tips", "Uncategorized", "wordlimit", "writing is", "#test"]
 ---
-# Why I do not write long stuff here!
-
 Because if I did, I won’t.
 
 Blog, that is.

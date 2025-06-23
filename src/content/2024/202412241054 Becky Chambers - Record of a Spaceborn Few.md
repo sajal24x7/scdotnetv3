@@ -10,8 +10,6 @@ tags:
   - sci-fi
 image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8922.jpeg'
 ---
-# Becky Chambers - Record of a Spaceborn Few
-
 This is the third book in the Wayfarer series. Becky continues to explore further people and stories in this universe. This time concentrating on the Fleet, the descendants of the first humans who left a dying planet.
 
 After [a closed and common orbit](__GHOST_URL__/becky-chambers-a-closed-and-common-orbit/) which was written from the POV of two characters, this one is from the POV of 4-5 characters from the fleet. That made it a little harder to follow, in the beginning. And even, a little bit through the middle.

@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "writing is"]
 image: "https://images.unsplash.com/photo-1543726969-a1da85a6d334?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHN0b3JpZXN8ZW58MHx8fHwxNzI5MzcwMjE0fDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# How to tell stories
-
 I had recently watched [Ctrl \(control\) on Netflix](https://en.wikipedia.org/wiki/CTRL_\(film\)) this past week. I had heard some rave reviews about it. It is directed by Mr. Motwane. Which is all to say, I went into it with high hopes.
 
 The movie is shot in a way similar to that episode in Modern Family where Claire thinks Hailey had gotten married in Vegas. Everything _mostly_ happens on a laptop. Being the techie I am, all through the movie, I kept saying, no, no, _hell no_. But Ananya's character did give this stupid AI thing root access to her laptop. Bad things happened.

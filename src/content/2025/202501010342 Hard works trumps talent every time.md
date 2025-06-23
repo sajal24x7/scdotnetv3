@@ -7,8 +7,6 @@ updatedDate: 2025-01-01T03:42:30
 category: blog
 image: "https://storage.sajalchoudhary.net/images/2024/12/2022-04-06-112-.jpeg"
 ---
-# Hard works trumps talent every time
-
 When I was in tenth, because that’s when it starts, I was told, all I had to do was study hard till twelfth, get into a good college, and that would be it.
 
 Just till twelfth. Get into a good college.

@@ -4,11 +4,9 @@ slug: "what-is-justice"
 pubDate: 2012-02-28T18:06:52
 updatedDate: 2024-04-29T12:35:40
 category: blog
-tags: ["justice", "essays"]
+tags: ["justice"]
 image: "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGp1c3RpY2V8ZW58MHx8fHwxNzE0Mzk0MTIwfDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# What is Justice?
-
 _So, what is Justice?_
 
 _How, how do you define it?_

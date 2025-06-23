@@ -8,8 +8,6 @@ category: blog
 tags: ["nostalgia", "essays", "photos"]
 image: "https://storage.sajalchoudhary.net/images/wordpress/2014/01/wpid-img_20140109_220150.jpg"
 ---
-# Photographic memory
-
 My first memories of being captured, on a photo film that is, consist of me being rushed to the terrace, followed by a change of clothes and a brief touch up, which is followed by introduction of two more kids almost the same age and then one of my brothers clicking the picture. That was around a decade back, more or less. How times have changed\!
 
 The first camera dad bought was a Kodak. It was silver-grey in colour with one of the fancy shutters, drag it to the left and the camera lens will present itself. It came with a tripod, which I somehow never managed to fasten to the camera. There was this timer option which, well in those days, was not common. There was no zoom option however. You couldn’t waste the reel on pictures of sunflowers or bugs or drops of water, either. Each reel meant thirty two pictures, thirty five if you were lucky. Hence each frame had to be perfect.

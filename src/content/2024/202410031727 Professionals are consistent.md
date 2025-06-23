@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "writing is"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6184.jpeg"
 ---
-# Professionals are consistent
-
 Professionals show up, each time whenever needed.
 
 Consistency is key. You can have a bad day, sure. But still you must show up. You must fulfil the promise.

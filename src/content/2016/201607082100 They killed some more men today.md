@@ -7,8 +7,6 @@ category: poems
 tags: ["poems"]
 image: "https://images.unsplash.com/photo-1497098478417-d823ef2eed8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxidXJuJTIwYm9va3xlbnwwfHx8fDE3MTQzNzc1NjN8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# They killed some more men today
-
 ![they_killed_some_more_men](https://storage.sajalchoudhary.net/images/wordpress/2016/07/they_killed_some_more_men.jpg)
 
 **They** killed some more men today,  

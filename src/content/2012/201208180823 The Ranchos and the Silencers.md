@@ -4,9 +4,8 @@ slug: "the-ranchos-and-the-silencers"
 pubDate: 2012-08-18T08:23:42
 updatedDate: 2024-04-29T13:21:06
 category: blog
+tags: [“college-life”]
 ---
-# The Ranchos and the Silencers
-
 So, the results came out a while back.
 
 Though, there was a bit of surprise involved yet it might prove to be the best thing to have happened in the past four semesters. It was bad. But then, it got me thinking, thinking about the _Rancho_ s and the _Silencer_ s.

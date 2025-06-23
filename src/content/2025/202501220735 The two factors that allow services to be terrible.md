@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "messaging", "meta"]
 image: "https://images.unsplash.com/photo-1719204718581-5c95889c8ec9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDl8fE1lc3NhZ2luZ3xlbnwwfHx8fDE3Mzc1MzEyOTV8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# The two factors that allow services to be terrible
-
 From Pluralistic: [Enshittification isn’t caused by venture capital](https://pluralistic.net/2025/01/20/capitalist-unrealism/),
 
 > These are the two factors that make services terrible: captive users, and no constraints. If your users can't leave, and if you face no consequences for making them miserable \(not solely their departure to a competitor, but also fines, criminal charges, worker revolts, and guerrilla warfare with interoperators\), then you have the means, motive and opportunity to turn your service into a giant pile of shit.

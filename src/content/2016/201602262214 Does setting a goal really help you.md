@@ -6,8 +6,6 @@ updatedDate: 2016-02-26T22:14:32
 category: blog
 tags: ["blog", "goal-setting", "goals", "life", "running"]
 ---
-# Does setting a goal really help you?
-
 ![8535316836_f9998457f0_b](https://storage.sajalchoudhary.net/images/wordpress/2016/02/8535316836_f9998457f0_b.jpg)
 
 I run.

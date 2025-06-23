@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "reading"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0941.jpeg"
 ---
-# Reading children’s books
-
 We got a ton of children’s books \(15\) issued from the library. We had issued five the last time around. 
 
 ![](https://storage.sajalchoudhary.net/images/2025/04/IMG_0936.jpeg)

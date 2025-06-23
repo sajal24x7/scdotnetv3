@@ -8,8 +8,6 @@ category: blog
 tags: ["Nord Letter", "Tallinn"]
 image: "https://storage.sajalchoudhary.net/images/2024/06/IMG_7859-1.jpeg"
 ---
-# Trek to Tallinn
-
 Hello from my home in Matinkylä\! This is NordLetter \#13, a weekly newsletter on living and walking in Finland. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 
 * * *

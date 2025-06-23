@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "work"]
 image: "https://images.unsplash.com/photo-1591622778887-83445831b63d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fEdsdWV8ZW58MHx8fHwxNzM2MzIzNzcwfDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# About glue work
-
 One of the problems with managing a bunch of people is figuring out who is doing what. Tasks can be tracked through Jira boards or tickets locked in SNOW. But how do you track the things that are not on the board? Does that make those tasks not important?
 
 There is a word for tasks of this nature: glue work. The extra work that one does to ensure things run smoothly. The things that no one asks for. Like cleaning up resources when they are not in use, like updating SOPs when processes change, like creating documentation in the first place.

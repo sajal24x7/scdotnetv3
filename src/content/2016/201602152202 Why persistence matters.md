@@ -6,8 +6,6 @@ updatedDate: 2016-02-15T22:02:36
 category: blog
 tags: ["blog", "life", "persistence", "writing is"]
 ---
-# Why persistence matters
-
 ![persistence](https://storage.sajalchoudhary.net/images/wordpress/2016/02/persistence.jpg)The persistent ant\!
 
 Something happened yesterday. Something interesting. But before I tell you what that thing was.., like always, here’s a little back story.

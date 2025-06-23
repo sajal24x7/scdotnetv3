@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "finland", "elections"]
 image: "https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGZpbmxhbmR8ZW58MHx8fHwxNzQzODgzMDk3fDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Elections in Finland
-
 There are five types of elections in Finland:
 
   1. Elections for president \(national level\)

@@ -6,8 +6,6 @@ updatedDate: 2016-01-20T21:03:13
 category: blog
 tags: ["love", "blog", "girlfriend", "honesty", "letter", "life", "relationship", "trust"]
 ---
-# Letters to an imaginary girlfriend : Two
-
 ![wp-1453303926261.jpeg](https://storage.sajalchoudhary.net/images/wordpress/2016/01/wp-1453303926261.jpeg)
 
 Hi love,

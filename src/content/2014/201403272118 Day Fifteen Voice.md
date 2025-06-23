@@ -6,8 +6,6 @@ updatedDate: 2014-03-27T21:18:56
 category: blog
 tags: ["30 day challenge", "golden temple", "language", "photography", "poem", "prose", "religion", "thoughts"]
 ---
-# Day Fifteen: Voice
-
 [![The Voice](https://storage.sajalchoudhary.net/images/wordpress/2014/03/dsc07387.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/dsc07387.jpg)At the Golden Temple, Amritsar.
 
 Why did we invent language?

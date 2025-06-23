@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "writing is", "yoga", "health"]
 image: "https://images.unsplash.com/photo-1744144501177-5666f17e190c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDR8fHx8fHx8fDE3NDQ5MDU2NTF8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# We need to learn the technique in the beginning and then leave it behind
-
 This principle is a common one I believe. It cuts across many seemingly dissimilar domains: health, yoga, writing.
 
 We were watching [Journey to cure](https://journeytocure.com) today \(It is available on Amazon Prime in the US, UK, Ireland, etc. The US VPN did not work. The UK one did.\) In it Dr. Jha said this, in terms of the work he does, and the teaching he imparts.

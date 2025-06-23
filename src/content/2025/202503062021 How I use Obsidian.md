@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "obisidian", "note-taking", "writing is"]
 image: "https://images.unsplash.com/photo-1655448985613-3d16697a7250?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE2fHxvYnNpZGlhbnxlbnwwfHx8fDE3NDEyOTI0MTN8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# How I use Obsidian
-
 The first time I read [Kepano's - How I use Obsidian](https://stephango.com/vault), I thought, great, but not for me.
 
 The second time I read [Kepano's - How I use Obsidian](https://stephango.com/vault) was yesterday. And yesterday, was also the day I overhauled my vault. Not completely, I need to add the category property to all the notes.

@@ -6,6 +6,4 @@ updatedDate: 2024-04-28T15:44:45
 category: blog
 tags: ["love", "poems", "yearOfMornings"]
 ---
-# #22 in an year of mornings
-
 ![022.jpg](https://storage.sajalchoudhary.net/images/wordpress/2017/09/022.jpg)

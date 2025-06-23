@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "AI"]
 image: "https://images.unsplash.com/photo-1705825859829-e594eb06ab49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxzaXJpfGVufDB8fHx8MTcyODMyMjQ5MHww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# A world full of agents
-
 The first time I came across this concept of agents was when the [Zoom CEO was on Decoder](https://www.theverge.com/2024/6/3/24168733/zoom-ceo-ai-clones-digital-twins-videoconferencing-decoder-interview). It was a little difficult to understand Eric Yuan at times, but the conversation was very enjoyable.
 
 Eric's vision was that of a world filled with agents. Agents trained on my data, but with different personalities. Or, trained for different tasks.

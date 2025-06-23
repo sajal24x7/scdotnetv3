@@ -4,11 +4,9 @@ slug: "the-living-sounds"
 pubDate: 2012-09-01T17:28:59
 updatedDate: 2024-04-29T13:38:24
 category: blog
-tags: ["music", "essays"]
+tags: ["music"]
 image: "https://storage.sajalchoudhary.net/images/2024/04/dsc02774.jpg"
 ---
-# The Living Sounds
-
 Ripples of waves travelling through a medium seemingly so very empty; basic yet prevalent. Nature speaks through sounds, all sorts of it. Long before the dawn and long after the dusk of mankind sound will linger. Instruments will be conceived, notes written, music produced; sounds will endure.
 
 One of the fondest childhood memories revolve around a particular kind of sound. I used to live in Laxmi Nagar in those times. During the summer times, all sorts of merchants used to visit the lanes and bylanes. They all had their own characteristic voices, styles of luring their customers. The flute sellers were characteristically melodic in this respect. On a bamboo, they’d sort of place the flutes as if they were quills of a porcupine. With this bamboo placed on their shoulders and a flute to their lips, they’ll move around the lanes; the Pied Pipers of their own little Hamelins\! Some would play Bollywood tunes, others just some other tunes; both had quite a hypnotizing effect on me as a kid.

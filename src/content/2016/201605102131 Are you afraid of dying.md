@@ -6,8 +6,6 @@ updatedDate: 2016-05-10T21:31:42
 category: blog
 tags: ["blog", "death", "life", "truth"]
 ---
-# Are you afraid of dying?
-
 ![are you afraid of dying.jpg](https://storage.sajalchoudhary.net/images/wordpress/2016/05/are-you-afraid-of-dying.jpg)
 
 > Are you afraid of dying, my friend?

@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "organize"]
 image: "https://images.unsplash.com/photo-1587831968842-d3ea13fb7281?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ0fHxvcmdhbml6ZXxlbnwwfHx8fDE3NDQxMzgzNzF8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Organizing the things in our life
-
 Life happens.
 
 As it happens, we accumulate things, artifacts, things we create, things we buy, things we get. Some of this is, digital. Some is things outside our computers. When it comes to finding these things, we are dependent on search, or our memories.

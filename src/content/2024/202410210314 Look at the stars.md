@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6354.jpeg"
 ---
-# Look at the stars
-
 I was walking through the nature trail the other night. It was dark, and there were no lights. Just the light from the stars in the sky. And I thought how different life would have been if we did not have lights at night.
 
 How would you feel if you woke up at night in a forest?

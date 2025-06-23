@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGFwcHMlMjBib3NzfGVufDB8fHx8MTczNDcyNjc4NHww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# No pity for the bosses
-
 Here's the thing. The reason why people don't support taxing the rich is this: we all hope to be rich one day. We all have that hope. Even though none of us will ever become rich. We imagine ourselves as rich, and think, no I would not want to be taxed. I want to keep all the money\!
 
 When I had started working, or even now, a couple of years back, when I heard of workers trying to unionise at Apple, or Amazon, I used to think, why would these people not let Apple \(or Amazon\) do the work. I believed the company line.

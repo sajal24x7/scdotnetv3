@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "climate change"]
 image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDU2fHxlYXJ0aHxlbnwwfHx8fDE3Mjg1OTM0MDF8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Who will advocate for the future
-
 I continued watching Bill Gates' documentary - [What Next](https://www.netflix.com/title/81609333) on Netflix. The next episode after AI, was about misinformation, followed by climate change.
 
 Climate change is truly one of the greatest threats of our time. The running format of this show, is that Bill sits with a group of people and then they talk about whatever the point is. In this episode, Bill sat with a group of young people/activists\(?\). One of these young people seems pissed, and rightly so about the state of the affairs. And the fact that we are doing too little. And in the end, it will be too little, too late.

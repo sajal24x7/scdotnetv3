@@ -10,8 +10,6 @@ tags:
   - murakami
 image: 'https://storage.sajalchoudhary.net/images/2025/01/IMG_9445.jpeg'
 ---
-# Murakami, Haruki - Men Without Women
-
 # Few things about the thing that is this book
 
 I finished reading \(re-reading?\) 'Men without women' today. Before I talk about the book, I want to talk about the object that this book is, the thing I held in my hands.

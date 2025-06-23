@@ -8,8 +8,6 @@ category: blog
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/07/IMG_5349-1.jpeg"
 ---
-# Nature trails - Nuuksio and Pihlajasaari
-
 Hello from my home in Matinkylä\! This is NordLetter \#18, a weekly newsletter on living and walking in Finland. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 
 * * *

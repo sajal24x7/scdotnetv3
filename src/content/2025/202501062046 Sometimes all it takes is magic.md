@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "writing is"]
 image: "https://images.unsplash.com/photo-1475738384599-8cf3db232ffa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ0fHxtYWdpY3xlbnwwfHx8fDE3MzYxOTYzODV8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Sometimes all it takes is magic
-
 I read [Hugh Howey's](https://hughhowey.com) [Writing Insights](https://hughhowey.com/writing-insights-part-one-becoming-a-writer/) series recently. I wrote about it too - about [when to write](__GHOST_URL__/blog/when-to-write/).
 
 One insight that he had at the very beginning was about who a successful writer is:

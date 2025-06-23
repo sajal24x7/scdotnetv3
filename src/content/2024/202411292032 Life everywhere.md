@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1688406107329-4b4537173519?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDh8fHZpbmVzJTIwcnVpbnN8ZW58MHx8fHwxNzMyOTEyMjk0fDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Life everywhere
-
 [The cosmos is teeming with complex organic molecules](https://www.quantamagazine.org/the-cosmos-teems-with-complex-organic-molecules-20241113/), the building block of carbon-based life.
 
 > Everywhere we look, space seems to teem with biology’s raw materials. Saturn’s moon Titan has lakes of liquid methane and ethane that are made of organic molecules, as are its hydrocarbon sand dunes. Organic molecules called tholins are probably responsible for Pluto’s reddish blush. Veritable zoos of extraterrestrial organics are found in meteorites. Organic dust drifts between the stars and rains down on Saturn from its rings.

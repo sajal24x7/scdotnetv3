@@ -6,8 +6,6 @@ updatedDate: 2015-03-21T20:38:14
 category: blog
 tags: ["blog", "therapeutic writing", "writing is"]
 ---
-# The therapeutic act of writing
-
 [![Writing](https://storage.sajalchoudhary.net/images/wordpress/2015/03/hand-writing-dave-king.jpg?w=1000)](https://storage.sajalchoudhary.net/images/wordpress/2015/03/hand-writing-dave-king.jpg)
 
 > “What I do” she said,” is that whenever I am in a shitty mood, okay, shitty might be an understatement, but still. Whenever I am in a shitty mood, I take a blank piece of paper, and write, furiously. Then, once done, I tear it to bits, and sleep”  

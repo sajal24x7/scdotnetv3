@@ -8,8 +8,6 @@ category: blog
 tags: ["essays", "typography", "design"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/photo-1618411463178-9591ef1965bf.jpeg"
 ---
-# Basics of typography
-
 # /a brief overview
 
 Good typography does a lot. It conveys emotion, a sense of time and place. It ties into how we design things. For readability, usability and so on. It might not be something that one can specify, and point and say this is why it works. But when it's not there, you know something is off.

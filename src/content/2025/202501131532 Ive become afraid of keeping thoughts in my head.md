@@ -7,8 +7,6 @@ updatedDate: 2025-01-13T15:32:06
 category: blog
 image: "https://images.unsplash.com/photo-1616595707129-de9953028c19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fFRoaW5raW5nfGVufDB8fHx8MTczNjc4MjMxMXww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# I’ve become afraid of keeping thoughts in my head
-
 Has this happened with you before?  
 You think of something.  
 You are not able to act on that something, in my case write it down somewhere.  

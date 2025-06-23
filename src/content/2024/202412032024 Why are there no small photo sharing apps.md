@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/photo-1649489903954-cf99452166aa.jpeg"
 ---
-# Why are there no small photo sharing apps
-
 "You can see the Hudson from here", she said.  
 I could. I thought. 'Yes' I said.  
 "That's what I keep on doing these days", she said.  

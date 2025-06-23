@@ -7,8 +7,6 @@ category: blog
 tags: ["writing is", "essays"]
 image: "https://storage.sajalchoudhary.net/images/2024/06/capture.png"
 ---
-# Life, Death & Priorities
-
 There was a moment, between when I had picked up my luggage, and when I began looking for a cab, that I felt this sense of loss, this sadness. I had just returned from one of the four or so trips I need in a year to function. I was back in the city. I was home. And yet, I could not shake this feeling of entrapment\!
 
 This happened this past Sunday. And a moment was all I had, to feel anything, as the rest of the time was spent trying to catch the last metro before it left the exchange station, which happened a couple of times during the journey.

@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "psychology"]
 image: "https://images.unsplash.com/photo-1513171920216-2640b288471b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHxjb252ZXJzYXRpb24lMjBmb3VyJTIwcGVvcGxlfGVufDB8fHx8MTczNDM4Mzg0M3ww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# We can have a fun conversation with max four people
-
 [After celebrating a birthday](__GHOST_URL__/nordletter/nl38-the-families-we-make/) in Leppävaara, we had taken the 520 to get back home. The four of us were sitting around the middle of the bus, chatting, laughing. The four of us, and Savya, who was mostly getting fussy, chatting and laughing.
 
 We were a bit loud. Nitin remarked at one point that we had turned this into our drawing room. No body says anything in Finland, they stare daggers at you. I did not notice anyone, others had though.

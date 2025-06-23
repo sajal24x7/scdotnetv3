@@ -9,8 +9,6 @@ category: poems
 tags: ["poems"]
 image: "https://images.unsplash.com/photo-1451471016731-e963a8588be8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHNpc3RlcnxlbnwwfHx8fDE3MTQ4MDQxNzF8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Was I a good brother to you
-
 Was I a good brother to you?  
 You needed me,  
 But was I there?  

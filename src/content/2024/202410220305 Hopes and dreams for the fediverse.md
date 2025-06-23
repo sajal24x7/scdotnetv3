@@ -8,8 +8,6 @@ category: blog
 tags: ["essays", "writing is", "fediverse"]
 image: "https://images.unsplash.com/photo-1706265399459-1fe07a0c9f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDc1fHxjb25uZWN0ZWQlMjBkZXZpY2VzfGVufDB8fHx8MTcyOTU0NzA4Mnww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Hopes and dreams for the fediverse
-
 I started this note in September. Almost a month has passed since I started thinking about this.
 
 The original impetus for this idea was because [Ghost had decided to build Activitypub support.](https://activitypub.ghost.org) This website is built on Ghost, and as I wrote [then](__GHOST_URL__/nordletter/federating-again/), when it was announced:

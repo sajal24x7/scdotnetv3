@@ -7,8 +7,6 @@ category: blog
 tags: ["30 day challenge", "featured", "photography", "prose", "Uncategorized"]
 image: "https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395848789304.jpeg"
 ---
-# Day Fourteen: The Hungry Man/Dog
-
 [![image](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395848789304.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395848789304.jpeg)
 
 He looked hungry.  

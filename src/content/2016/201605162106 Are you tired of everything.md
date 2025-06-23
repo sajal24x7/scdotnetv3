@@ -6,8 +6,6 @@ updatedDate: 2016-05-16T21:06:51
 category: blog
 tags: ["blog", "happiness", "happy", "life", "tired"]
 ---
-# Are you tired of everything?
-
 ![wp-1463412872715.jpeg](https://storage.sajalchoudhary.net/images/wordpress/2016/05/wp-1463412872715.jpeg)
 
 > Life’s hard.

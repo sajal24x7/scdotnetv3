@@ -6,8 +6,6 @@ updatedDate: 2016-02-03T21:00:53
 category: blog
 tags: ["blog", "google docs", "lifehacker", "writing is", "writing tips"]
 ---
-# On writing : the numbers
-
 ![graph](https://storage.sajalchoudhary.net/images/wordpress/2016/02/graph.png)word count v/s date : courtesy of the infamous sheet, and google
 
 When I had begun here originally, I had imagined this to be a place where I would talk mostly about writing, and then, as an add-on, a little bit of other stuff. I mean all you have to do is hover the mouse pointer over the blog menu, and you see “[on writing](https://sajalchoudhary.com/category/blog/on-writing/)” and “[everything else](https://sajalchoudhary.com/category/blog/everything-else/)” as the prominent sub-items displayed there. That also reminds me that I need to revisit the menus, given the times I’m living in, the idea of putting videos out there does not make much sense now. I’m a writer for god’s sake\! Or maybe I will do that once I’ve reached the 100 post mark. But getting back to the point of this paragraph, I was supposed to be writing mostly about writing, and it made sense, as the past had shown me, that that’s where I got most of my likes and follows from.

@@ -6,6 +6,4 @@ updatedDate: 2024-04-28T15:46:34
 category: poems
 tags: ["poems", "love", "yearOfMornings"]
 ---
-# #16 in an year of mornings
-
 ![Beach morning, Côte d'Azur, France](https://storage.sajalchoudhary.net/images/wordpress/2017/09/016.jpg)

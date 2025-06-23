@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6137.jpeg"
 ---
-# Everything in nature that is born, dies
-
 > Everything in nature that is born, dies.
 
 I was walking today and I noticed a lot of brown plants on the trail today. Which is not to say that it started happening today. **_I noticed it today_**. And then I could not stop noticing it. From the tall grass in the stream to the tall brown grass on the beach.

@@ -6,8 +6,6 @@ updatedDate: 2015-03-05T11:35:56
 category: blog
 tags: ["blog", "imagination", "science fiction", "the human connection", "writing is", "writing tips"]
 ---
-# The Human Connection
-
 > The unimaginable is usually imaginable….
 
 For a long time, whenever I used to read something on the lines of “..and unimaginable horrors fell upon them..” I used to scoff. People used the term ‘unimaginable’ a little too lightly. Then, I began reading science-fiction, mostly [Asimov](http://en.wikipedia.org/wiki/Isaac_Asimov), that happened after a reader compared me to him. I had to read his work to know. Where was the similarity? I started with I, robot. I was smitten. I ended up finishing the entire [robot series](http://en.wikipedia.org/wiki/Robot_series_\(Asimov\)). It was awesome.

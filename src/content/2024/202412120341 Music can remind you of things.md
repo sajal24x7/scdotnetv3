@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "music"]
 image: "https://images.unsplash.com/photo-1637048131240-a9517d582735?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGhlYWRwaG9uZXMlMjBtZXRyb3xlbnwwfHx8fDE3MzM5NDE4ODR8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Music can remind you of things
-
 Here's what I do.
 
 I get up, do yoga, take a shower, eat, put my headphones on, kiss Prerna good-bye and then walk to the metro. While I'm walking to the metro I am listening to ATP.

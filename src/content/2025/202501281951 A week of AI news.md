@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "AI"]
 image: "https://images.unsplash.com/photo-1736196074922-9db5970da336?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDd8fHx8fHx8fDE3MzgwOTI4OTJ8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# A week of AI news
-
 Last week, was another big week for AI. It feels like every week is a big week for AI news.
 
 [OpenAI announced operator, its agentic system that can do things on the web](https://www.wired.com/story/openai-sets-chatgpt-loose-on-the-web/). Which spurred a bunch of existential dread and many many articles.

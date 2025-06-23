@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "writing is", "ghost"]
 image: "https://images.unsplash.com/photo-1734009589019-7c557c4e7e11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDEyfHx8fHx8fHwxNzM2MDIzMDU5fA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# I do not know what to do
-
 These are the moments, when I feel like the only thing that would give me peace, is having my own website. Using Hugo, or Jekyll. The problem I think would be around the newsletter. I had self-hosted ghost for a bit on [LighSail](https://docs.aws.amazon.com/lightsail/latest/userguide/what-is-amazon-lightsail.html). Sending emails was the thing I could not solve, and the reason I had started with [Ghost Pro](https://ghost.org/pricing/).
 
 I just wish they would allow custom themes with the starter plan.

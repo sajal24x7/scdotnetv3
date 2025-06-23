@@ -8,8 +8,6 @@ category: blog
 tags: ["Nord Letter", "helsinki"]
 image: "https://storage.sajalchoudhary.net/images/2024/05/IMG_2731.jpeg"
 ---
-# Life happens + iPads galore
-
 Hello from Helsinki\! This is Nord Letter \#7. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 
 Seven editions in, it feels like a good time to define [this](__GHOST_URL__/nordletter/). What this is and isn't.

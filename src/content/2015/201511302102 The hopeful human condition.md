@@ -6,8 +6,6 @@ updatedDate: 2015-11-30T21:02:41
 category: blog
 tags: ["blog", "cosmos", "humanity", "science fiction", "the human condition", "Uncategorized"]
 ---
-# The hopeful human condition
-
 ![2079435_deeper-still_jfxeaqbh63vorhnrwcs4oomcjqoxpy7q62c4u66siw3t6qwph3oq_790x445](https://storage.sajalchoudhary.net/images/wordpress/2015/11/2079435_deeper-still_jfxeaqbh63vorhnrwcs4oomcjqoxpy7q62c4u66siw3t6qwph3oq_790x445.jpg)
 
 There are days, when, you question things, not the good things, no… you question yourself, and your doings…

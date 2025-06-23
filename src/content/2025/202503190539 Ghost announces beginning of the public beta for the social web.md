@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "writing is", "fediverse", "openweb", "ghost"]
 image: "https://images.unsplash.com/photo-1726065235239-b20b88d43eea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDIzNjk1Mzd8&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Ghost announces beginning of the public beta for the social web
-
 [Ghost announced public beta start](https://activitypub.ghost.org/social-web-beta/) for [Fediverse support](https://activitypub.ghost.org) yesterday. I have been following their journey for a while now. [I was eagerly awaiting this release](__GHOST_URL__/essays/hopes-and-dreams-for-the-fediverse/). I had signed up to be included in their earlier beta, but I did not get in. Which might have been for the best.
 
 Naturally, I enabled support for the feature right away. After, going through the [documentation](https://ghost.org/help/social-web/?ref=activitypub.ghost.org) obviously. The documentation goes through what this feature is and isn't.

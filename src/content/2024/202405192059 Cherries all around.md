@@ -8,8 +8,6 @@ category: blog
 tags: ["Nord Letter", "finland"]
 image: "https://storage.sajalchoudhary.net/images/2024/05/IMG_3148.jpeg"
 ---
-# Cherries all around
-
 Hello from Helsinki\! This is NordLetter \#8. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 
 Spring/summer is in full swing here. As evidenced by the fact that we were out on both Saturday and Sunday. On Saturday, we were at the Folklore 2024 organised by Suomi-Intia-Seura. On Sunday, we visited the [Roihuvuori Cherry Park](https://www.myhelsinki.fi/en/see-and-do/sights/roihuvuori-cherry-park-kirsikkapuisto) in Helsinki.

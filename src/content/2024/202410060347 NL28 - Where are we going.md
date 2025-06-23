@@ -8,8 +8,6 @@ category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6204-1.jpeg"
 ---
-# NL28 - Where are we going
-
 Hello from the Iso Omena Library\! Iso means 'big' and Omena means 'apple' from Finnish to English. Go [Duo](https://www.duolingo.com) I guess\!
 
 This is NordLetter \#28, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.

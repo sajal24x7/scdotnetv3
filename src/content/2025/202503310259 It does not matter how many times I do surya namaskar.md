@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "yoga"]
 image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fFlvZ2F8ZW58MHx8fHwxNzQzMzY0MDUwfDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# It does not matter how many times I do surya namaskar
-
 Today was the first session for Jha sir’s Vihangam Vidya Yoga. It goes on for the next 10 days. Prerna had registered for it. We were listening to the first session together.
 
 Sometime in the middle of the session, Jha sir talked about people counting the number of surya namaskars they do. He said once you are surya, it does not matter how many surya namaskars you do.

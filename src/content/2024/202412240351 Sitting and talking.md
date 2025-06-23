@@ -8,8 +8,6 @@ category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1516789892567-2a5f37fd9656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxiYXIlMjBmcmllbmRzfGVufDB8fHx8MTczNDk3OTIzOHww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Sitting and talking
-
 There was this thing we used to do back in college. And for years after, while we got busy with our jobs.
 
 Once a month, we would meet, the five of us. It could be Sarthak's place or mine. We would either go out to eat, or order in. Then during college days we would play Counter Strike. Later, we grew out of CS. Though some of us still want to get back to shooting the others across the map of [De Dust](https://counterstrike.fandom.com/wiki/Dust).

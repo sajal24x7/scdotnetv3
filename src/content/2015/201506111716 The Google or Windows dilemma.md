@@ -6,8 +6,6 @@ updatedDate: 2015-06-11T17:16:18
 category: blog
 tags: ["blog", "docs", "google", "microsoft", "tech", "windows", "word"]
 ---
-# The Google or Windows dilemma
-
 It is weird for me that I have been obsessing over something as _trivial_ , and **permanent** thing like the coming of Windows 10. It is weirder that I am actually writing about it.
 
 See, I don’t write about tech, hadn’t thought that I ever will; but heck, here I am\! I have, though, consumed tech, and so, I think, the progression sort of does make sense.

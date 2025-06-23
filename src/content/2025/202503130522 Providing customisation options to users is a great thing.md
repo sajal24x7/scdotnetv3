@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "obsidian", "writing is", "apple", "choice"]
 image: "https://storage.sajalchoudhary.net/images/2025/03/Screenshot-2025-03-12-at-11.04.06-PM.png"
 ---
-# Providing customisation options to users is a great thing
-
 The option to change things, order things, filter things per user choice is an important and valuable thing.
 
 This same principle can be applied in multiple contexts. Some examples:

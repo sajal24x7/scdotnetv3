@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "obsidian"]
 image: "https://images.unsplash.com/photo-1461773518188-b3e86f98242f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDMxfHx3cml0ZXxlbnwwfHx8fDE3MzM2OTE1MDF8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Notes on obsidian
-
 # Mobile
 
 I use Obsidian mobile. A lot. Almost every day.

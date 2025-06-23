@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "reading"]
 image: "https://images.unsplash.com/photo-1509177532812-b41c8305705a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDM1fHxyZWFkfGVufDB8fHx8MTcyOTAxNjk3NHww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# The problem with read-it-later apps
-
 I read, a lot. Not as much as I want. But enough.
 
 I read while travelling. I read in the breaks I take at work. I read while waiting for something. I read while I'm sitting on the loo. This last one I am not so proud of.

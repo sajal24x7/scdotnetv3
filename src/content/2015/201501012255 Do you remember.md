@@ -6,8 +6,6 @@ updatedDate: 2024-05-04T07:25:47
 category: blog
 tags: ["love", "poems", "poem", "rains", "remember"]
 ---
-# Do you remember?
-
 Do you remember the plains my love?  
 Do you remember the rains my love?
 

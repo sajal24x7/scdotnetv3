@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "search", "openweb"]
 image: "https://images.unsplash.com/photo-1594663653925-365bcbf7ef86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDIxfHxTZWFyY2h8ZW58MHx8fHwxNzM4Njk4Nzg1fDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Should you pay for search?
-
 There are two ideas or thoughts here.
 
 # 1\. Some things are common good/public utilities.

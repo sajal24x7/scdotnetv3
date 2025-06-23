@@ -8,8 +8,6 @@ category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9046.jpeg"
 ---
-# NL41 - A happy new year
-
 Hello and happy new year\! I am still in Matinkylä and this is still NordLetter. This is edition \#41 of NordLetter, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
 Previous editions can be found [here](__GHOST_URL__/nordletter/). You can reach out to me by replying on this mail or adding a comment on this. I am also posting on [Threads](https://www.threads.net/@sajal24x7?xmt=&ref=sajalchoudhary.net) and [Mastodon](https://mastodon.social/@sajal24x7).

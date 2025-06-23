@@ -6,8 +6,6 @@ updatedDate: 2015-11-15T22:09:22
 category: blog
 tags: ["love", "blog", "freedom", "girlfriend", "letter", "life", "relationship"]
 ---
-# Letters to an imaginary girlfriend : One
-
 [![](https://storage.sajalchoudhary.net/images/wordpress/2015/11/wpid-note151115_12-jpg.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2015/11/wpid-note151115_12-jpg.jpeg)
 
 _Hi love_ ,

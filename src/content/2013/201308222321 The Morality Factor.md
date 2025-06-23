@@ -5,11 +5,9 @@ description: "Daneel’s issue was with the scientific slowdown, the decline in 
 pubDate: 2013-08-22T23:21:05
 updatedDate: 2024-05-04T06:40:30
 category: blog
-tags: ["degradation", "eve teasing", "india", "morality", "ogling", "social values", "essays"]
+tags: ["degradation", "eve teasing", "india", "morality", "ogling", "social values"]
 image: "https://storage.sajalchoudhary.net/images/2024/05/animal.jpg"
 ---
-# The Morality Factor
-
 “The Empire is deteriorating” says [R. Daneel Olivaw](http://en.wikipedia.org/wiki/R._Daneel_Olivaw) to Hari Seldon in [‘Prelude to the Foundation’](http://en.wikipedia.org/wiki/Prelude_to_Foundation). Not in the exact same words I think, but I’m pretty sure about the zest.
 
 I think the same applies to us. Not so much in a word-to-word fashion as in a metaphorical fashion; after all that story was set many thousands of years into the future on an imaginary planet.

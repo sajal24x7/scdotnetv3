@@ -7,6 +7,4 @@ category: blog
 tags: ["yearOfMornings", "poems"]
 image: "https://storage.sajalchoudhary.net/images/2024/01/082-1536x1536.jpg"
 ---
-# #82 in an year of mornings
-
 ![082.jpg](https://storage.sajalchoudhary.net/images/wordpress/2017/11/082.jpg)

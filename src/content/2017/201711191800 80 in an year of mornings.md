@@ -6,6 +6,4 @@ updatedDate: 2024-04-20T10:28:05
 category: poems
 tags: ["poems", "yearOfMornings"]
 ---
-# #80 in an year of mornings
-
 ![080.jpg](https://storage.sajalchoudhary.net/images/wordpress/2017/11/080.jpg)

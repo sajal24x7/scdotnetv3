@@ -6,8 +6,6 @@ updatedDate: 2015-07-24T21:00:00
 category: blog
 tags: ["blog", "ideas", "writer", "writing is", "writing tips"]
 ---
-# The idea of being a writer
-
 [![Wish I had clicked a picture!](https://storage.sajalchoudhary.net/images/wordpress/2015/07/wpid-sketch2459622-e1437709106343.png?w=656)](https://storage.sajalchoudhary.net/images/wordpress/2015/07/wpid-sketch2459622-e1437709106343.png)Wish I had clicked a picture\!
 
 I am in love with the idea of being a writer, the image.

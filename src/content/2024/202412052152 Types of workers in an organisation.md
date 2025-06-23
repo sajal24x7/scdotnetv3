@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "work"]
 image: "https://images.unsplash.com/photo-1503423571797-2d2bb372094a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxjdWJpY2xlc3xlbnwwfHx8fDE3MzM0MzU0NDJ8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
-# Types of workers in an organisation
-
 There exist archetypes of people around us in an organisation. Everyone to an extent is a mix of some of these archetypes. There might be some who map exactly with the archetypes. But not many.
 
 Far more common, I think, is that we start of as an archetype but we evolve.

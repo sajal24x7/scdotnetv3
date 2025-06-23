@@ -8,8 +8,6 @@ category: blog
 tags: ["blog", "books", "design"]
 image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9437.jpeg"
 ---
-# Designing a book
-
 I am reading Murakami’s Men without women, hardcover.
 
 Usually, all books have the same design, on top of the page, you would have the name of the book and the author. While at the bottom, you would have the page number.
