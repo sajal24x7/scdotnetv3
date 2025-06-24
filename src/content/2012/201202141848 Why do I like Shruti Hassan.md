@@ -4,7 +4,7 @@ slug: "why-do-i-like-shruti-hassan"
 pubDate: 2012-02-14T18:48:00
 updatedDate: 2024-04-29T12:27:30
 category: blog
-tags:[“fandom”]
+tags: [“fandom”]
 image: "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDR8fGZhbnxlbnwwfHx8fDE3MTQzOTM2NDF8MA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
 [![Why do I like Shruti Hassan?](https://storage.sajalchoudhary.net/images/wordpress/2012/02/dreamgirl-18.jpg?w=165)](https://storage.sajalchoudhary.net/images/wordpress/2012/02/dreamgirl-18.jpg)Why do I like Shruti Hassan?
