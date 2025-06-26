@@ -3,12 +3,10 @@ title: "Day Seven: Questions"
 slug: "day-seven-questions"
 pubDate: 2014-03-19T21:45:00
 updatedDate: 2014-03-19T21:45:00
-category: blog
-tags: ["30 day challenge", "featured", "photography", "poem", "prose", "Uncategorized"]
+category: poem
+tags: ["30 day challenge", "photography"]
 image: "https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395288979459.jpeg"
 ---
-[![image](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395288979459.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395288979459.jpeg)
-
 Is life all questions and no answers?  
 And do the answers even matter?  
 Aren’t questions all that propel us?  
