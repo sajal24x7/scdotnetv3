@@ -4,12 +4,13 @@ import Layout from '../../layouts/Layout.astro';
 // Book data - add new books here in reverse chronological order
 const books = [
   {
-    year: 2024,
+    year: 2025,
     title: "A Year of Mornings",
     subtitle: "Poems for Young Adults",
     url: "/books/a-year-of-mornings/",
     description: "A year of mornings is a collection of fifty love poems. It follows a young heart as it finds love, finds the strength to be in love and finally, finds the strength to let go.",
-    available: true
+    available: true,
+    coverImage: "/books/01-ayom.jpg"
   }
   // Future books will be added here
 ];
@@ -39,6 +40,17 @@ const books = [
                   {book.year}
                 </span>
               </div>
+
+              <!-- Book Cover (if available) -->
+              {book.coverImage && (
+                <div class="flex-shrink-0">
+                  <img 
+                    src={book.coverImage} 
+                    alt={`${book.title} cover`}
+                    class="w-24 h-auto rounded-lg shadow-md border border-gray-200 dark:border-gray-600"
+                  />
+                </div>
+              )}
 
               <!-- Book Details -->
               <div class="flex-1">
