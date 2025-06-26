@@ -3,7 +3,7 @@ title: "Sometimes, I wish"
 slug: "sometimes-i-wish"
 pubDate: 2016-06-04T21:23:41
 updatedDate: 2016-06-04T21:23:41
-category: poems
+category: poem
 tags: ["poems", "I wish", "painter", "poem", "poet"]
 ---
 ![Friedrich_Bouterwek_-_Der_Maler_und_seine_Muse.jpg](https://storage.sajalchoudhary.net/images/wordpress/2016/06/friedrich_bouterwek_-_der_maler_und_seine_muse.jpg)Painter and his muse
