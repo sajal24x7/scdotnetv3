@@ -3,7 +3,7 @@ title: "Why build walls?"
 slug: "why-build-walls"
 pubDate: 2016-06-03T20:06:55
 updatedDate: 2016-06-03T20:06:55
-category: poems
+category: poem
 tags: ["poems", "fear", "mind", "poem", "soul", "walls"]
 ---
 ![wall-1087955_960_720](https://storage.sajalchoudhary.net/images/wordpress/2016/06/wall-1087955_960_720.jpg)

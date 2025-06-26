@@ -3,7 +3,7 @@ title: "There was this boy in school"
 slug: "there-was-this-boy-in-school"
 pubDate: 2014-07-18T08:31:59
 updatedDate: 2024-01-28T11:05:59
-category: poems
+category: poem
 tags: ["poem", "poetry", "sixty-day-blog", "spoken word", "spoken word poetry", "Uncategorized", "writing is", "#test"]
 ---
 There was this boy in school,
