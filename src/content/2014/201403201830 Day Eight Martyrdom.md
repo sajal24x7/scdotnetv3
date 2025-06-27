@@ -3,7 +3,7 @@ title: "Day Eight: Martyrdom"
 slug: "day-eight-martyrdom"
 pubDate: 2014-03-20T18:30:34
 updatedDate: 2014-03-20T18:30:34
-category: blog
+category: poem
 tags: ["30 day challenge", "martyrdom", "photography", "poem"]
 image: “https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395319901695.jpeg” 
 ---

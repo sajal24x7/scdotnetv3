@@ -3,11 +3,10 @@ title: "Day Nine: Reflections"
 slug: "day-nine-reflections"
 pubDate: 2014-03-21T17:47:39
 updatedDate: 2014-03-21T17:47:39
-category: blog
+category: poem
 tags: ["30 day challenge", "literature", "photography", "poem", "prose", "Uncategorized"]
+image: “https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395404145679.jpeg”
 ---
-[![image](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395404145679.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395404145679.jpeg)
-
 What do you do when you see your reflection;  
 Not in the water, or a mirror either. But  
 In a person.  
