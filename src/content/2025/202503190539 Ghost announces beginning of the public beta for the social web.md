@@ -2,8 +2,8 @@
 title: "Ghost announces beginning of the public beta for the social web"
 slug: "ghost-announces-beginning-of-the-public-beta-for-the-social-web"
 description: "Public beta for fediverse support is live now"
-pubDate: 2025-03-19T05:39:31
-updatedDate: 2025-03-22T09:39:24
+pubDate: 2025-03-19T05:39:31+02:00
+updatedDate: 2025-03-22T09:39:24+02:00
 category: blog
 tags: ["blog", "writing is", "fediverse", "openweb", "ghost"]
 image: "https://images.unsplash.com/photo-1726065235239-b20b88d43eea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDIzNjk1Mzd8&ixlib=rb-4.0.3&q=80&w=2000"

@@ -1,8 +1,8 @@
 ---
 title: "Sometimes, I wish"
 slug: "sometimes-i-wish"
-pubDate: 2016-06-04T21:23:41
-updatedDate: 2016-06-04T21:23:41
+pubDate: 2016-06-04T21:23:41+03:00
+updatedDate: 2016-06-04T21:23:41+03:00
 category: poem
 tags: ["poems", "I wish", "painter", "poem", "poet"]
 ---

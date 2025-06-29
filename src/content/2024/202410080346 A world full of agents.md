@@ -2,8 +2,8 @@
 title: "A world full of agents"
 slug: "a-world-full-of-agents"
 description: "Hey Siri fetch me a glass of water!"
-pubDate: 2024-10-08T03:46:39
-updatedDate: 2024-10-08T03:46:38
+pubDate: 2024-10-08T03:46:39+03:00
+updatedDate: 2024-10-08T03:46:38+03:00
 category: blog
 tags: ["blog", "AI"]
 image: "https://images.unsplash.com/photo-1705825859829-e594eb06ab49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxzaXJpfGVufDB8fHx8MTcyODMyMjQ5MHww&ixlib=rb-4.0.3&q=80&w=2000"

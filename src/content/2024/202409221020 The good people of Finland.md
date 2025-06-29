@@ -2,8 +2,8 @@
 title: "The good people of Finland"
 slug: "the-good-people-of-finland"
 description: "About going to sell my phone and unexpected kindness"
-pubDate: 2024-09-22T10:20:56
-updatedDate: 2024-09-22T10:23:26
+pubDate: 2024-09-22T10:20:56+03:00
+updatedDate: 2024-09-22T10:23:26+03:00
 category: blog
 tags: ["blog", "kindness"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/photo-1635402972344-a8402ea982b6.jpeg"

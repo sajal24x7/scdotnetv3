@@ -1,8 +1,8 @@
 ---
 title: "How I felt when my Jawbone broke"
 slug: "how-i-felt-when-my-jawbone-broke"
-pubDate: 2016-06-02T21:50:04
-updatedDate: 2016-06-02T21:50:04
+pubDate: 2016-06-02T21:50:04+03:00
+updatedDate: 2016-06-02T21:50:04+03:00
 category: blog
 tags: ["blog", "data", "fitness", "free", "jawbone", "step-counter", "tracking", "up2"]
 ---

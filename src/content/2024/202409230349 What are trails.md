@@ -2,8 +2,8 @@
 title: "What are trails"
 slug: "what-are-trails"
 description: "But paths other have walked upon"
-pubDate: 2024-09-23T03:49:50
-updatedDate: 2024-09-23T03:49:49
+pubDate: 2024-09-23T03:49:50+03:00
+updatedDate: 2024-09-23T03:49:49+03:00
 category: blog
 tags: ["blog", "walking", "trails"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6130.jpeg"

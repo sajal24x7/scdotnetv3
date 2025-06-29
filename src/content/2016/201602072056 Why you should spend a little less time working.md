@@ -1,8 +1,8 @@
 ---
 title: "Why you should spend a little less time working"
 slug: "why-you-should-spend-a-little-less-time-working"
-pubDate: 2016-02-07T20:56:25
-updatedDate: 2016-02-07T20:56:25
+pubDate: 2016-02-07T20:56:25+02:00
+updatedDate: 2016-02-07T20:56:25+02:00
 category: blog
 tags: ["blog", "life", "stress", "travel", "work never ends"]
 ---

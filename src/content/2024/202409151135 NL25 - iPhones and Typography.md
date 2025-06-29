@@ -2,8 +2,8 @@
 title: "NL25 - iPhones and Typography"
 slug: "nl25-iphones-and-typography"
 description: "iPhone 16 launch event + learn about typefaces and fonts"
-pubDate: 2024-09-15T11:35:42
-updatedDate: 2024-09-15T11:35:42
+pubDate: 2024-09-15T11:35:42+03:00
+updatedDate: 2024-09-15T11:35:42+03:00
 category: nordletter
 tags: ["Nord Letter", "apple"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6033.jpeg"

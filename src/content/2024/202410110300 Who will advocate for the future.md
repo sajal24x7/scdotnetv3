@@ -2,8 +2,8 @@
 title: "Who will advocate for the future"
 slug: "who-will-advocate-for-the-future"
 description: "Leave a better world than you found"
-pubDate: 2024-10-11T03:00:32
-updatedDate: 2024-10-11T03:00:37
+pubDate: 2024-10-11T03:00:32+03:00
+updatedDate: 2024-10-11T03:00:37+03:00
 category: blog
 tags: ["blog", "climate change"]
 image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDU2fHxlYXJ0aHxlbnwwfHx8fDE3Mjg1OTM0MDF8MA&ixlib=rb-4.0.3&q=80&w=2000"

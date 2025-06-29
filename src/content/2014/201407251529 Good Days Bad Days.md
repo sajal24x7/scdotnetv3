@@ -1,8 +1,8 @@
 ---
 title: "Good Days, Bad Days"
 slug: "good-days-bad-days"
-pubDate: 2014-07-25T15:29:51
-updatedDate: 2024-01-30T18:30:08
+pubDate: 2014-07-25T15:29:51+03:00
+updatedDate: 2024-01-30T18:30:08+02:00
 category: blog
 tags: ["fiction writing", "good days", "sixty-day-blog", "success", "tips", "Uncategorized", "writing is", "writing tips", "#test"]
 ---

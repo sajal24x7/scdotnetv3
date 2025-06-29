@@ -1,8 +1,8 @@
 ---
 title: "Thoughts on self-hosting"
 slug: "thoughts-on-self-hosting"
-pubDate: 2016-05-26T22:33:41
-updatedDate: 2016-05-26T22:33:41
+pubDate: 2016-05-26T22:33:41+03:00
+updatedDate: 2016-05-26T22:33:41+03:00
 category: blog
 tags: ["blog", "hosting", "self-hosting", "wordpress", "writing is"]
 ---

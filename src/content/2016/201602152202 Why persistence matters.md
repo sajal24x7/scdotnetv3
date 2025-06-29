@@ -1,8 +1,8 @@
 ---
 title: "Why persistence matters"
 slug: "why-persistence-matters"
-pubDate: 2016-02-15T22:02:36
-updatedDate: 2016-02-15T22:02:36
+pubDate: 2016-02-15T22:02:36+02:00
+updatedDate: 2016-02-15T22:02:36+02:00
 category: blog
 tags: ["blog", "life", "persistence", "writing is"]
 ---

@@ -2,8 +2,8 @@
 title: "Things change when you become a parent"
 slug: "things-change-when-you-become-a-parent"
 description: "Life goes on"
-pubDate: 2025-02-25T07:15:59
-updatedDate: 2025-02-25T07:16:33
+pubDate: 2025-02-25T07:15:59+02:00
+updatedDate: 2025-02-25T07:16:33+02:00
 category: blog
 tags: ["blog", "parenting", "mattdavella"]
 image: "https://images.unsplash.com/photo-1723444059774-743b0e6d19e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDd8fHx8fHx8fDE3NDA0NjcwNTB8&ixlib=rb-4.0.3&q=80&w=2000"

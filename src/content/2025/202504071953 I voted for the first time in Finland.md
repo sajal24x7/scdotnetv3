@@ -2,8 +2,8 @@
 title: "I voted for the first time in Finland"
 slug: "i-voted-for-the-first-time-in-finland"
 description: "In the municipal + county elections of 2025"
-pubDate: 2025-04-07T19:53:57
-updatedDate: 2025-04-07T19:53:57
+pubDate: 2025-04-07T19:53:57+03:00
+updatedDate: 2025-04-07T19:53:57+03:00
 category: blog
 tags: ["blog", "elections", "democracy", "finland"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0830.jpeg"

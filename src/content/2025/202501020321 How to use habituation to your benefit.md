@@ -2,8 +2,8 @@
 title: "How to use habituation to your benefit"
 slug: "how-to-use-habituation-to-your-benefit"
 description: "Recognise. Breaks in good. No breaks in bad."
-pubDate: 2025-01-02T03:21:30
-updatedDate: 2025-01-02T03:21:35
+pubDate: 2025-01-02T03:21:30+02:00
+updatedDate: 2025-01-02T03:21:35+02:00
 category: blog
 tags: ["blog", "psychology"]
 image: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fHVzZWR8ZW58MHx8fHwxNzM1NzM2OTgxfDA&ixlib=rb-4.0.3&q=80&w=2000"

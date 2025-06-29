@@ -1,8 +1,8 @@
 ---
 title: "Communication protocol"
 slug: "communication-protocol"
-pubDate: 2014-11-07T20:41:00
-updatedDate: 2014-11-07T20:41:00
+pubDate: 2014-11-07T20:41:00+02:00
+updatedDate: 2014-11-07T20:41:00+02:00
 category: blog
 tags: ["blog", "conversations", "listening", "non-verbal", "talking", "verbal"]
 ---

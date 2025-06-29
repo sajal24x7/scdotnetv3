@@ -1,8 +1,8 @@
 ---
 title: "New year, new rules!"
 slug: "new-year-new-rules"
-pubDate: 2016-01-02T18:16:13
-updatedDate: 2016-01-02T18:16:13
+pubDate: 2016-01-02T18:16:13+02:00
+updatedDate: 2016-01-02T18:16:13+02:00
 category: blog
 tags: ["blog"]
 ---

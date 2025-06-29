@@ -2,8 +2,8 @@
 title: "A case for being kinder to others"
 slug: "a-case-for-being-kinder-to-others"
 description: "About Fundamental Attribution Error + Be kinder"
-pubDate: 2024-07-11T17:37:37
-updatedDate: 2024-07-11T17:37:37
+pubDate: 2024-07-11T17:37:37+03:00
+updatedDate: 2024-07-11T17:37:37+03:00
 category: blog
 tags: ["essays", "psychology"]
 image: "https://images.unsplash.com/photo-1607110217074-f70b1947a9e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGtpbmR8ZW58MHx8fHwxNzIwNzE5NDA4fDA&ixlib=rb-4.0.3&q=80&w=2000"

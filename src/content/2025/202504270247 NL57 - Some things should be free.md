@@ -1,8 +1,8 @@
 ---
 title: "NL57 - Some things should be free"
 slug: "nl57-some-things-should-be-free"
-pubDate: 2025-04-27T02:47:41
-updatedDate: 2025-04-27T02:47:41
+pubDate: 2025-04-27T02:47:41+03:00
+updatedDate: 2025-04-27T02:47:41+03:00
 category: nordletter
 tags: ["Nord Letter", "finland", "paivakoti", "AI"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_1140.jpeg"

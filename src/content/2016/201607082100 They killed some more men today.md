@@ -1,8 +1,8 @@
 ---
 title: "They killed some more men today"
 slug: "they-killed-some-more-men-today"
-pubDate: 2016-07-08T21:00:26
-updatedDate: 2024-04-29T07:59:45
+pubDate: 2016-07-08T21:00:26+03:00
+updatedDate: 2024-04-29T07:59:45+03:00
 category: poem
 tags: ["poems"]
 image: "https://images.unsplash.com/photo-1497098478417-d823ef2eed8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxidXJuJTIwYm9va3xlbnwwfHx8fDE3MTQzNzc1NjN8MA&ixlib=rb-4.0.3&q=80&w=2000"

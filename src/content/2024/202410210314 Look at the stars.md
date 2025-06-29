@@ -2,8 +2,8 @@
 title: "Look at the stars"
 slug: "look-at-the-stars"
 description: "Look at the sun"
-pubDate: 2024-10-21T03:14:23
-updatedDate: 2024-10-21T03:14:23
+pubDate: 2024-10-21T03:14:23+03:00
+updatedDate: 2024-10-21T03:14:23+03:00
 category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6354.jpeg"

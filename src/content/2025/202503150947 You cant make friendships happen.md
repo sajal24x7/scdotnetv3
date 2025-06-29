@@ -1,8 +1,8 @@
 ---
 title: "You can’t make friendships happen"
 slug: "you-cant-make-friendships-happen"
-pubDate: 2025-03-15T09:47:00
-updatedDate: 2025-03-16T09:48:02
+pubDate: 2025-03-15T09:47:00+02:00
+updatedDate: 2025-03-16T09:48:02+02:00
 category: blog
 tags: ["blog", "friendships"]
 image: "https://images.unsplash.com/photo-1536010305525-f7aa0834e2c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDd8fEZyaWVuZHN8ZW58MHx8fHwxNzQyMTE4NDAwfDA&ixlib=rb-4.0.3&q=80&w=2000"

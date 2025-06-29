@@ -1,8 +1,8 @@
 ---
 title: "#35 in an year of mornings"
 slug: "35-in-an-year-of-mornings"
-pubDate: 2017-10-05T21:00:31
-updatedDate: 2024-04-28T15:40:48
+pubDate: 2017-10-05T21:00:31+03:00
+updatedDate: 2024-04-28T15:40:48+03:00
 category: blog
 tags: ["love", "poems", "yearOfMornings"]
 ---

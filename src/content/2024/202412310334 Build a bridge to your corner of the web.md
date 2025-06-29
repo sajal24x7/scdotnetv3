@@ -2,8 +2,8 @@
 title: "Build a bridge to your corner of the web"
 slug: "build-a-bridge-to-your-corner-of-the-web"
 description: "Self host"
-pubDate: 2024-12-31T03:34:58
-updatedDate: 2024-12-31T03:34:57
+pubDate: 2024-12-31T03:34:58+02:00
+updatedDate: 2024-12-31T03:34:57+02:00
 category: blog
 tags: ["blog", "web"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_7261.jpeg"

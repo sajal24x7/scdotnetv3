@@ -2,8 +2,8 @@
 title: "Digital consumption does not let me do actual work"
 slug: "digital-consumption-does-not-let-me-do-actual-work"
 description: "It affects my ability to focus and remember"
-pubDate: 2024-12-16T05:11:10
-updatedDate: 2024-12-16T05:11:10
+pubDate: 2024-12-16T05:11:10+02:00
+updatedDate: 2024-12-16T05:11:10+02:00
 category: blog
 tags: ["blog", "Learning"]
 image: "https://images.unsplash.com/photo-1670330964751-cdd17fb4e507?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE1fHxkb29tJTIwc2Nyb2xsaW5nfGVufDB8fHx8MTczNDI5MDM4Nnww&ixlib=rb-4.0.3&q=80&w=2000"

@@ -2,8 +2,8 @@
 title: "The last work left in this world"
 slug: "the-last-work-left-in-this-world"
 description: "Train the models!"
-pubDate: 2025-02-06T19:52:44
-updatedDate: 2025-02-06T19:52:44
+pubDate: 2025-02-06T19:52:44+02:00
+updatedDate: 2025-02-06T19:52:44+02:00
 category: blog
 tags: ["blog", "AI", "work"]
 image: "https://images.unsplash.com/photo-1738830656378-c8f96e01ec50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3Mzg4NzA0NTR8&ixlib=rb-4.0.3&q=80&w=2000"

@@ -1,8 +1,8 @@
 ---
 title: "Day Eleven: Washed"
 slug: "day-eleven-washed"
-pubDate: 2014-03-23T21:07:00
-updatedDate: 2014-03-23T21:07:00
+pubDate: 2014-03-23T21:07:00+02:00
+updatedDate: 2014-03-23T21:07:00+02:00
 category: blog
 tags: ["30 day challenge", "photography", "Uncategorized"]
 ---

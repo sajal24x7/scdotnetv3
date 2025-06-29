@@ -1,8 +1,8 @@
 ---
 title: "Day Nine: Reflections"
 slug: "day-nine-reflections"
-pubDate: 2014-03-21T17:47:39
-updatedDate: 2014-03-21T17:47:39
+pubDate: 2014-03-21T17:47:39+02:00
+updatedDate: 2014-03-21T17:47:39+02:00
 category: blog
 tags: ["30 day challenge", "literature", "photography", "poem", "prose", "Uncategorized"]
 ---

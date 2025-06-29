@@ -1,8 +1,8 @@
 ---
 title: "What does it take to be a writer?"
 slug: "what-does-it-take-to-be-a-writer"
-pubDate: 2016-05-19T22:13:06
-updatedDate: 2016-05-19T22:13:06
+pubDate: 2016-05-19T22:13:06+03:00
+updatedDate: 2016-05-19T22:13:06+03:00
 category: blog
 tags: ["Uncategorized", "writer", "writing is", "writing tips"]
 ---

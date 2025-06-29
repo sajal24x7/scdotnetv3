@@ -1,8 +1,8 @@
 ---
 title: Becky Chambers - A closed and Common Orbit
 slug: becky-chambers-a-closed-and-common-orbit
-pubDate: 2024-12-10T22:01:50
-updatedDate: 2024-12-10T22:07:51
+pubDate: 2024-12-10T22:01:50+02:00
+updatedDate: 2024-12-10T22:07:51+02:00
 category: bookshelf
 tags:
   - book-reviews

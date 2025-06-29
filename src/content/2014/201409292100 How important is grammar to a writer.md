@@ -1,8 +1,8 @@
 ---
 title: "How important is grammar to a writer?"
 slug: "how-important-is-grammar-to-a-writer"
-pubDate: 2014-09-29T21:00:51
-updatedDate: 2014-09-29T21:00:51
+pubDate: 2014-09-29T21:00:51+03:00
+updatedDate: 2014-09-29T21:00:51+03:00
 category: blog
 tags: ["blog", "edx", "grammar", "writing is", "writing tips"]
 ---

@@ -1,8 +1,8 @@
 ---
 title: "Day Two: The Lone Patch"
 slug: "day-two-the-lone-patch"
-pubDate: 2014-03-14T20:44:41
-updatedDate: 2014-03-14T20:44:41
+pubDate: 2014-03-14T20:44:41+02:00
+updatedDate: 2014-03-14T20:44:41+02:00
 category: poem
 tags: ["30 day challenge", "photography"]
 image: ”https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1394810174041.jpeg”

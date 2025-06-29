@@ -2,8 +2,8 @@
 title: "The problem with read-it-later apps"
 slug: "the-problem-with-read-it-later-apps"
 description: "It feels like stripping character from the web"
-pubDate: 2024-10-16T03:40:20
-updatedDate: 2024-10-16T03:40:20
+pubDate: 2024-10-16T03:40:20+03:00
+updatedDate: 2024-10-16T03:40:20+03:00
 category: blog
 tags: ["blog", "reading"]
 image: "https://images.unsplash.com/photo-1509177532812-b41c8305705a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDM1fHxyZWFkfGVufDB8fHx8MTcyOTAxNjk3NHww&ixlib=rb-4.0.3&q=80&w=2000"

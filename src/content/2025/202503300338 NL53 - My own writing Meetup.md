@@ -2,8 +2,8 @@
 title: "NL53 - My own writing Meetup"
 slug: "nl53-my-own-writing-meetup"
 description: "Happening on 6th April + smart homes suck as do smart TVs"
-pubDate: 2025-03-30T03:38:56
-updatedDate: 2025-03-30T03:38:55
+pubDate: 2025-03-30T03:38:56+03:00
+updatedDate: 2025-03-30T03:38:55+03:00
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_0542.jpeg"

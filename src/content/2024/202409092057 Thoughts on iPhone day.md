@@ -2,8 +2,8 @@
 title: "Thoughts on iPhone day"
 slug: "thoughts-on-iphone-day"
 description: "2024 edition"
-pubDate: 2024-09-09T20:57:00
-updatedDate: 2024-09-11T18:32:18
+pubDate: 2024-09-09T20:57:00+03:00
+updatedDate: 2024-09-11T18:32:18+03:00
 category: blog
 tags: ["blog", "apple"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/photo-1531554694128-c4c6665f59c2.jpeg"

@@ -1,8 +1,8 @@
 ---
 title: "Why planning is important, but irrelevant"
 slug: "why-planning-is-important-but-irrelevant"
-pubDate: 2014-07-23T08:40:24
-updatedDate: 2024-01-28T11:05:59
+pubDate: 2014-07-23T08:40:24+03:00
+updatedDate: 2024-01-28T11:05:59+02:00
 category: blog
 tags: ["fiction writing", "planning", "sixty-day-blog", "Uncategorized", "writing is", "writing tips", "#test"]
 ---

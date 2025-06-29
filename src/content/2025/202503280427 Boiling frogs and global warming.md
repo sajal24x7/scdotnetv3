@@ -1,8 +1,8 @@
 ---
 title: "Boiling frogs and global warming"
 slug: "boiling-frogs-and-global-warming"
-pubDate: 2025-03-28T04:27:26
-updatedDate: 2025-03-28T04:27:25
+pubDate: 2025-03-28T04:27:26+02:00
+updatedDate: 2025-03-28T04:27:25+02:00
 category: blog
 tags: ["blog", "prerna", "climate change"]
 image: "https://images.unsplash.com/photo-1533921482637-8e125577dde6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxnbG9iYWwlMjB3YXJtaW5nfGVufDB8fHx8MTc0MzEwNjU5OXww&ixlib=rb-4.0.3&q=80&w=2000"

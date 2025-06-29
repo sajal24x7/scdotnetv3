@@ -2,8 +2,8 @@
 title: "The custodian for all human knowledge"
 slug: "the-custodian-for-all-human-knowledge"
 description: "AIs trained on the web make the web a worse place"
-pubDate: 2024-10-10T03:25:49
-updatedDate: 2024-10-10T03:25:49
+pubDate: 2024-10-10T03:25:49+03:00
+updatedDate: 2024-10-10T03:25:49+03:00
 category: blog
 tags: ["blog", "AI"]
 image: "https://images.unsplash.com/photo-1498831624351-bb3e382fe091?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHx3b3JsZCUyMGtub3dsZWRnZXxlbnwwfHx8fDE3Mjg1MDU1MTV8MA&ixlib=rb-4.0.3&q=80&w=2000"

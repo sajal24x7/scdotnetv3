@@ -1,8 +1,8 @@
 ---
 title: "Day TwentyOne: Sentinels of the Border"
 slug: "day-twentyone-sentinels-of-the-border"
-pubDate: 2014-04-02T20:55:26
-updatedDate: 2014-04-02T20:55:26
+pubDate: 2014-04-02T20:55:26+03:00
+updatedDate: 2014-04-02T20:55:26+03:00
 category: blog
 tags: ["30 day challenge", "photography", "Uncategorized"]
 ---

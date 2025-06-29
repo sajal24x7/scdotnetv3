@@ -2,8 +2,8 @@
 title: "NL26 - Spectacular Solar Punk"
 slug: "nl26-spectacular-solar-punk"
 description: "iPhone reviews + reading becky chambers"
-pubDate: 2024-09-22T03:00:34
-updatedDate: 2024-09-22T03:00:33
+pubDate: 2024-09-22T03:00:34+03:00
+updatedDate: 2024-09-22T03:00:33+03:00
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6071-1.jpeg"

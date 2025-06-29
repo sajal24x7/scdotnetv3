@@ -2,8 +2,8 @@
 title: "Reading is better than watching movies"
 slug: "reading-is-better-than-watching-movies"
 description: "If it’s the same story"
-pubDate: 2025-02-21T07:36:29
-updatedDate: 2025-02-21T07:36:29
+pubDate: 2025-02-21T07:36:29+02:00
+updatedDate: 2025-02-21T07:36:29+02:00
 category: blog
 tags: ["blog", "reading", "movies"]
 image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fE1vdmllc3xlbnwwfHx8fDE3NDAxMjMzNDd8MA&ixlib=rb-4.0.3&q=80&w=2000"

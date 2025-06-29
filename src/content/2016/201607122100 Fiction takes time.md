@@ -1,8 +1,8 @@
 ---
 title: "Fiction takes time"
 slug: "fiction-takes-time"
-pubDate: 2016-07-12T21:00:11
-updatedDate: 2024-04-29T07:55:50
+pubDate: 2016-07-12T21:00:11+03:00
+updatedDate: 2024-04-29T07:55:50+03:00
 category: blog
 tags: ["writing is", "essays"]
 image: "https://images.unsplash.com/photo-1592819695396-064b9572a660?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDd8fHdyaXRpbmd8ZW58MHx8fHwxNzE0Mzc3MzM5fDA&ixlib=rb-4.0.3&q=80&w=2000"

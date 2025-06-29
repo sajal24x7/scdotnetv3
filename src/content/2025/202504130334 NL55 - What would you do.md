@@ -2,8 +2,8 @@
 title: "NL55 - What would you do?"
 slug: "nl55-what-would-you-do"
 description: "Teenagers + AI can be a partner + Meta doing Meta things + Love Death and Robots!"
-pubDate: 2025-04-13T03:34:55
-updatedDate: 2025-04-13T03:34:54
+pubDate: 2025-04-13T03:34:55+03:00
+updatedDate: 2025-04-13T03:34:54+03:00
 category: nordletter
 tags: ["Nord Letter", "AI", "finland"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0884.jpeg"

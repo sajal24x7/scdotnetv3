@@ -2,8 +2,8 @@
 title: "The three types of code I write"
 slug: "the-three-types-of-code-i-write"
 description: "slapdash, scrappy and production-grade"
-pubDate: 2025-02-08T21:04:26
-updatedDate: 2025-02-08T21:04:26
+pubDate: 2025-02-08T21:04:26+02:00
+updatedDate: 2025-02-08T21:04:26+02:00
 category: blog
 tags: ["blog", "Tech Notes"]
 image: "https://images.unsplash.com/photo-1564865878688-9a244444042a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNvZGV8ZW58MHx8fHwxNzM5MDAyODUzfDA&ixlib=rb-4.0.3&q=80&w=2000"

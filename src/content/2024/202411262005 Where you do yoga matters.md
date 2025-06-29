@@ -2,8 +2,8 @@
 title: "Where you do yoga matters"
 slug: "where-you-do-yoga-matters"
 description: "Or, the poisonous Delhi air sucks ass"
-pubDate: 2024-11-26T20:05:26
-updatedDate: 2024-11-26T20:05:26
+pubDate: 2024-11-26T20:05:26+02:00
+updatedDate: 2024-11-26T20:05:26+02:00
 category: blog
 tags: ["blog", "yoga", "pollution"]
 image: "https://images.unsplash.com/photo-1517363898874-737b62a7db91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxZT0dBfGVufDB8fHx8MTczMjY1MTQ0NHww&ixlib=rb-4.0.3&q=80&w=2000"

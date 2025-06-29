@@ -1,8 +1,8 @@
 ---
 title: "Noticing the little things"
 slug: "noticing-the-little-things"
-pubDate: 2025-04-28T06:38:07
-updatedDate: 2025-04-28T06:38:07
+pubDate: 2025-04-28T06:38:07+03:00
+updatedDate: 2025-04-28T06:38:07+03:00
 category: blog
 tags: ["blog", "savya", "parenting"]
 image: "https://images.unsplash.com/photo-1744429523595-2c06b8611242?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDh8fHx8fHx8fDE3NDU4MjE5MjN8&ixlib=rb-4.0.3&q=80&w=2000"

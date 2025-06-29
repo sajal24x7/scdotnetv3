@@ -1,8 +1,8 @@
 ---
 title: "The Living Sounds"
 slug: "the-living-sounds"
-pubDate: 2012-09-01T17:28:59
-updatedDate: 2024-04-29T13:38:24
+pubDate: 2012-09-01T17:28:59+03:00
+updatedDate: 2024-04-29T13:38:24+03:00
 category: blog
 tags: ["music"]
 image: "https://storage.sajalchoudhary.net/images/2024/04/dsc02774.jpg"

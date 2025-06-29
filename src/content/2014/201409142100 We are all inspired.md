@@ -1,8 +1,8 @@
 ---
 title: "We are all inspired!"
 slug: "we-are-all-inspired"
-pubDate: 2014-09-14T21:00:00
-updatedDate: 2024-10-06T10:20:07
+pubDate: 2014-09-14T21:00:00+03:00
+updatedDate: 2024-10-06T10:20:07+03:00
 category: blog
 tags: ["blog", "novel", "novella", "post-apocalytic", "thewalkingdead", "writing is", "writing tips"]
 ---

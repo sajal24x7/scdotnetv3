@@ -2,8 +2,8 @@
 title: "Would you enjoy killing more human NPCs?"
 slug: "would-you-enjoy-killing-more-human-npcs"
 description: "Nvidia’s AI NPCs can become your allies"
-pubDate: 2025-01-07T07:59:23
-updatedDate: 2025-01-07T07:59:23
+pubDate: 2025-01-07T07:59:23+02:00
+updatedDate: 2025-01-07T07:59:23+02:00
 category: blog
 tags: ["blog", "gaming", "AI"]
 image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fEdhbWluZ3xlbnwwfHx8fDE3MzYyMzY3MzR8MA&ixlib=rb-4.0.3&q=80&w=2000"

@@ -2,8 +2,8 @@
 title: "Everything in nature that is born, dies"
 slug: "everything-in-nature-that-is-born-dies"
 description: "Life is what happens in the middle"
-pubDate: 2024-09-24T05:08:17
-updatedDate: 2024-09-24T05:08:17
+pubDate: 2024-09-24T05:08:17+03:00
+updatedDate: 2024-09-24T05:08:17+03:00
 category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6137.jpeg"
