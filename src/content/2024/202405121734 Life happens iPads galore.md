@@ -2,8 +2,8 @@
 title: "Life happens + iPads galore"
 slug: "life-happens-ipads-galore"
 description: "Nord Letter #7 - Meeting people + Food + iPads"
-pubDate: 2024-05-12T17:34:26
-updatedDate: 2024-07-07T20:04:36
+pubDate: 2024-05-12T17:34:26+03:00
+updatedDate: 2024-07-07T20:04:36+03:00
 category: blog
 tags: ["Nord Letter", "helsinki"]
 image: "https://storage.sajalchoudhary.net/images/2024/05/IMG_2731.jpeg"

@@ -2,8 +2,8 @@
 title: "What is an iPhone"
 slug: "what-is-an-iphone"
 description: "Answer - a computer"
-pubDate: 2024-09-30T06:35:32
-updatedDate: 2024-09-30T06:35:31
+pubDate: 2024-09-30T06:35:32+03:00
+updatedDate: 2024-09-30T06:35:31+03:00
 category: blog
 tags: ["blog", "apple"]
 image: "https://images.unsplash.com/photo-1493163950639-25d052809253?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ2fHxpcGhvbmV8ZW58MHx8fHwxNzI3NjMyNzc0fDA&ixlib=rb-4.0.3&q=80&w=2000"

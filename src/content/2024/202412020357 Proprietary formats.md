@@ -2,8 +2,8 @@
 title: "Proprietary formats"
 slug: "proprietary-formats"
 description: "A day spent copy pasting from Notes to Markdown"
-pubDate: 2024-12-02T03:57:28
-updatedDate: 2024-12-02T03:57:27
+pubDate: 2024-12-02T03:57:28+02:00
+updatedDate: 2024-12-02T03:57:27+02:00
 category: blog
 tags: ["blog", "tech"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/photo-1597740985671-2a8a3b80502e.jpeg"

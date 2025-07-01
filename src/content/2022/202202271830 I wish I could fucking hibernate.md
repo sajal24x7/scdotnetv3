@@ -1,8 +1,8 @@
 ---
 title: "I wish I could fucking hibernate!"
 slug: "i-wish-i-could-fucking-hibernate"
-pubDate: 2022-02-27T18:30:00
-updatedDate: 2024-06-09T20:15:46
+pubDate: 2022-02-27T18:30:00+02:00
+updatedDate: 2024-06-09T20:15:46+03:00
 category: story
 tags: ["stories"]
 image: "https://images.unsplash.com/photo-1515005177773-3397ccbbb265?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDI1fHxmcm96ZW58ZW58MHx8fHwxNjQ1OTQzMjIw&ixlib=rb-1.2.1&q=80&w=2000"

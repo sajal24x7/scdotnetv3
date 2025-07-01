@@ -2,8 +2,8 @@
 title: "The stories we tell"
 slug: "the-stories-we-tell"
 description: "Of a place and a time"
-pubDate: 2024-10-07T03:10:40
-updatedDate: 2024-10-07T03:10:39
+pubDate: 2024-10-07T03:10:40+03:00
+updatedDate: 2024-10-07T03:10:39+03:00
 category: blog
 tags: ["blog", "writing is"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/photo-1659147554654-7a548884b60d.jpeg"

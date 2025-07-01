@@ -2,8 +2,8 @@
 title: "NL46 - Preparedness Day"
 slug: "nl46-preparedness-day"
 description: "Fighting flu + smaller AI models + timeline apps"
-pubDate: 2025-02-09T03:58:10
-updatedDate: 2025-02-09T03:58:09
+pubDate: 2025-02-09T03:58:10+02:00
+updatedDate: 2025-02-09T03:58:09+02:00
 category: nordletter
 tags: ["Nord Letter", "AI"]
 image: "https://storage.sajalchoudhary.net/images/2025/02/IMG_9569.jpeg"

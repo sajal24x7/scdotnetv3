@@ -1,8 +1,8 @@
 ---
 title: "Day Seven: Questions"
 slug: "day-seven-questions"
-pubDate: 2014-03-19T21:45:00
-updatedDate: 2014-03-19T21:45:00
+pubDate: 2014-03-19T21:45:00+02:00
+updatedDate: 2014-03-19T21:45:00+02:00
 category: poem
 tags: ["30 day challenge", "photography"]
 image: "https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395288979459.jpeg"

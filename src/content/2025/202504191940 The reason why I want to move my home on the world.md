@@ -1,8 +1,8 @@
 ---
 title: "The reason why I want to move my home on the world"
 slug: "the-reason-why-i-want-to-move-my-home-on-the-world"
-pubDate: 2025-04-19T19:40:25
-updatedDate: 2025-04-19T19:40:25
+pubDate: 2025-04-19T19:40:25+03:00
+updatedDate: 2025-04-19T19:40:25+03:00
 category: blog
 tags: ["blog", "writing is", "openweb"]
 image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDR8fGhvbWV8ZW58MHx8fHwxNzQ1MDkxNTk5fDA&ixlib=rb-4.0.3&q=80&w=2000"

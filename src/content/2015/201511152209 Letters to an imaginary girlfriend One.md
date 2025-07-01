@@ -1,8 +1,8 @@
 ---
 title: "Letters to an imaginary girlfriend : One"
 slug: "letters-to-an-imaginary-girlfriend-one"
-pubDate: 2015-11-15T22:09:22
-updatedDate: 2015-11-15T22:09:22
+pubDate: 2015-11-15T22:09:22+02:00
+updatedDate: 2015-11-15T22:09:22+02:00
 category: blog
 tags: ["love", "blog", "freedom", "girlfriend", "letter", "life", "relationship"]
 ---

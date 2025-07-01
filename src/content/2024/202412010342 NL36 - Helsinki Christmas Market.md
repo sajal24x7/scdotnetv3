@@ -2,8 +2,8 @@
 title: "NL36 - Helsinki Christmas Market"
 slug: "nl36-helsinki-christmas-market"
 description: "Two fun videos + two business concepts + something about rats"
-pubDate: 2024-12-01T03:42:56
-updatedDate: 2024-12-01T03:42:56
+pubDate: 2024-12-01T03:42:56+02:00
+updatedDate: 2024-12-01T03:42:56+02:00
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_8564.jpeg"

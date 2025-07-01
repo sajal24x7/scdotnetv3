@@ -2,8 +2,8 @@
 title: "NL50 - what matters to you"
 slug: "nl50-what-matters-to-you"
 description: "A year of mornings available everywhere now + EV for the masses + new Apple stuff"
-pubDate: 2025-03-09T03:49:00
-updatedDate: 2025-03-09T03:49:00
+pubDate: 2025-03-09T03:49:00+02:00
+updatedDate: 2025-03-09T03:49:00+02:00
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_0130.jpeg"

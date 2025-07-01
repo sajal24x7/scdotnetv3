@@ -1,8 +1,8 @@
 ---
 title: "Moving my home on the web"
 slug: "moving-my-home-on-the-web"
-pubDate: 2025-04-11T14:00:54
-updatedDate: 2025-04-11T14:00:54
+pubDate: 2025-04-11T14:00:54+03:00
+updatedDate: 2025-04-11T14:00:54+03:00
 category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1734623044490-4bf667aafade?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDQzNzg2MjN8&ixlib=rb-4.0.3&q=80&w=2000"

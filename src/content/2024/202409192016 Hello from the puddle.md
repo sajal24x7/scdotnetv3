@@ -2,8 +2,8 @@
 title: "Hello from the puddle"
 slug: "hello-from-the-puddle"
 description: "Nature"
-pubDate: 2024-09-19T20:16:52
-updatedDate: 2024-09-19T20:16:52
+pubDate: 2024-09-19T20:16:52+03:00
+updatedDate: 2024-09-19T20:16:52+03:00
 category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6011.jpeg"

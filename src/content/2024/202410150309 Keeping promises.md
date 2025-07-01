@@ -1,8 +1,8 @@
 ---
 title: "Keeping promises"
 slug: "keeping-promises"
-pubDate: 2024-10-15T03:09:45
-updatedDate: 2024-10-15T12:53:46
+pubDate: 2024-10-15T03:09:45+03:00
+updatedDate: 2024-10-15T12:53:46+03:00
 category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/photo-1598724466259-4a0b16f853b5.jpeg"

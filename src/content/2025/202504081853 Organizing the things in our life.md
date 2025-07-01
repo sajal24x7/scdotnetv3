@@ -2,8 +2,8 @@
 title: "Organizing the things in our life"
 slug: "organizing-the-things-in-our-life"
 description: "The value of knowing where things are"
-pubDate: 2025-04-08T18:53:31
-updatedDate: 2025-04-12T07:52:53
+pubDate: 2025-04-08T18:53:31+03:00
+updatedDate: 2025-04-12T07:52:53+03:00
 category: blog
 tags: ["blog", "organize"]
 image: "https://images.unsplash.com/photo-1587831968842-d3ea13fb7281?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ0fHxvcmdhbml6ZXxlbnwwfHx8fDE3NDQxMzgzNzF8MA&ixlib=rb-4.0.3&q=80&w=2000"

@@ -1,8 +1,8 @@
 ---
 title: "Everything withers away"
 slug: "everything-withers-away"
-pubDate: 2016-01-31T21:00:41
-updatedDate: 2016-01-31T21:00:41
+pubDate: 2016-01-31T21:00:41+02:00
+updatedDate: 2016-01-31T21:00:41+02:00
 category: blog
 tags: ["love", "poems", "everything withers away", "life", "poem", "time", "withering"]
 ---

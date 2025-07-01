@@ -2,8 +2,8 @@
 title: "NL33 - The human condition"
 slug: "nl33-the-human-condition"
 description: "Curing cancer + e-Vitara + President of the USA"
-pubDate: 2024-11-10T18:41:01
-updatedDate: 2024-11-10T18:41:01
+pubDate: 2024-11-10T18:41:01+02:00
+updatedDate: 2024-11-10T18:41:01+02:00
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_7466.jpeg"

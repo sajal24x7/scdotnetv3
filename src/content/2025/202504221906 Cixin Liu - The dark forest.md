@@ -2,8 +2,8 @@
 title: Cixin Liu - The dark forest
 slug: cixin-liu-the-dark-forest
 description: The second book in the three body problem series
-pubDate: 2025-04-22T19:06:54
-updatedDate: 2025-04-22T19:06:54
+pubDate: 2025-04-22T19:06:54+03:00
+updatedDate: 2025-04-22T19:06:54+03:00
 category: bookshelf
 tags:
   - book-reviews

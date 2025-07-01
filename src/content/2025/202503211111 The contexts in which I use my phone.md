@@ -2,8 +2,8 @@
 title: "The contexts in which I use my phone"
 slug: "the-contexts-in-which-i-use-my-phone"
 description: "Thinking about phone usage + productivity"
-pubDate: 2025-03-21T11:11:00
-updatedDate: 2025-03-22T11:12:07
+pubDate: 2025-03-21T11:11:00+02:00
+updatedDate: 2025-03-22T11:12:07+02:00
 category: blog
 tags: ["blog", "phone", "mindfulness", "productivity"]
 image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fHBob25lfGVufDB8fHx8MTc0MjY0MTg1Nnww&ixlib=rb-4.0.3&q=80&w=2000"

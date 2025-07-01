@@ -2,8 +2,8 @@
 title: "NL39 - Feels like Christmas"
 slug: "nl39-feels-like-christmas"
 description: "Delhi Rasoi + decaying internet + bad Spotify + solar probe"
-pubDate: 2024-12-22T03:13:22
-updatedDate: 2024-12-22T03:13:21
+pubDate: 2024-12-22T03:13:22+02:00
+updatedDate: 2024-12-22T03:13:21+02:00
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8796.jpeg"

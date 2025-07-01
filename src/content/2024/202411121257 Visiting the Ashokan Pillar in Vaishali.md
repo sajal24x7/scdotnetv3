@@ -1,8 +1,8 @@
 ---
 title: "Visiting the Ashokan Pillar in Vaishali"
 slug: "visiting-the-ashokan-pillar-in-vaishali"
-pubDate: 2024-11-12T12:57:59
-updatedDate: 2024-11-12T12:57:59
+pubDate: 2024-11-12T12:57:59+02:00
+updatedDate: 2024-11-12T12:57:59+02:00
 category: blog
 tags: ["blog", "travelog"]
 image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_7777-1.jpeg"

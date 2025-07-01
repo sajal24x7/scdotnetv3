@@ -2,8 +2,8 @@
 title: "Trek to Tallinn"
 slug: "trek-to-tallinn"
 description: "Nord Letter #13 - Tallinn + bits around managing teams better"
-pubDate: 2024-06-23T21:37:53
-updatedDate: 2024-07-07T16:05:06
+pubDate: 2024-06-23T21:37:53+03:00
+updatedDate: 2024-07-07T16:05:06+03:00
 category: blog
 tags: ["Nord Letter", "Tallinn"]
 image: "https://storage.sajalchoudhary.net/images/2024/06/IMG_7859-1.jpeg"

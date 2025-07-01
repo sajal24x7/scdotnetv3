@@ -2,8 +2,8 @@
 title: "Why do I read more on the web"
 slug: "why-do-i-read-more-on-the-web"
 description: "The phone, that’s the answer."
-pubDate: 2025-01-27T08:14:14
-updatedDate: 2025-01-27T08:14:14
+pubDate: 2025-01-27T08:14:14+02:00
+updatedDate: 2025-01-27T08:14:14+02:00
 category: blog
 tags: ["blog", "reading", "openweb"]
 image: "https://images.unsplash.com/photo-1623031345438-387dd3c45e9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fFJlYWR8ZW58MHx8fHwxNzM3OTY0ODAxfDA&ixlib=rb-4.0.3&q=80&w=2000"

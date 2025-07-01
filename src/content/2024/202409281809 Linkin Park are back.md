@@ -2,8 +2,8 @@
 title: "Linkin Park are back"
 slug: "linkin-park-are-back"
 description: "The emptiness machine"
-pubDate: 2024-09-28T18:09:04
-updatedDate: 2024-09-28T18:09:04
+pubDate: 2024-09-28T18:09:04+03:00
+updatedDate: 2024-09-28T18:09:04+03:00
 category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHJvY2slMjBtdXNpY3xlbnwwfHx8fDE3Mjc1NDY4OTl8MA&ixlib=rb-4.0.3&q=80&w=2000"

@@ -1,8 +1,8 @@
 ---
 title: "The therapeutic act of writing"
 slug: "the-therapeutic-act-of-writing"
-pubDate: 2015-03-21T20:38:14
-updatedDate: 2015-03-21T20:38:14
+pubDate: 2015-03-21T20:38:14+02:00
+updatedDate: 2015-03-21T20:38:14+02:00
 category: blog
 tags: ["blog", "therapeutic writing", "writing is"]
 ---

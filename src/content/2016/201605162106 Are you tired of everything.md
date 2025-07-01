@@ -1,8 +1,8 @@
 ---
 title: "Are you tired of everything?"
 slug: "are-you-tired-of-everything"
-pubDate: 2016-05-16T21:06:51
-updatedDate: 2016-05-16T21:06:51
+pubDate: 2016-05-16T21:06:51+03:00
+updatedDate: 2016-05-16T21:06:51+03:00
 category: blog
 tags: ["blog", "happiness", "happy", "life", "tired"]
 ---

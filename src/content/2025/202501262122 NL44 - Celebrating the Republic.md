@@ -2,8 +2,8 @@
 title: "NL44 - Celebrating the Republic"
 slug: "nl44-celebrating-the-republic"
 description: "Republic Day at the embassy + OpenAI announces Operator + Trumps first few orders + some life lessons"
-pubDate: 2025-01-26T21:22:31
-updatedDate: 2025-02-08T20:28:27
+pubDate: 2025-01-26T21:22:31+02:00
+updatedDate: 2025-02-08T20:28:27+02:00
 category: nordletter
 tags: ["Nord Letter", "AI", "celebrations"]
 image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9361.jpeg"

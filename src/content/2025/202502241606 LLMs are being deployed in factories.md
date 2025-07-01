@@ -2,8 +2,8 @@
 title: "LLMs are being deployed in factories"
 slug: "llms-are-being-deployed-in-factories"
 description: "How does that make you feel?"
-pubDate: 2025-02-24T16:06:39
-updatedDate: 2025-02-24T16:06:39
+pubDate: 2025-02-24T16:06:39+02:00
+updatedDate: 2025-02-24T16:06:39+02:00
 category: blog
 tags: ["blog", "AI", "LLM"]
 image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxGYWN0b3JpZXN8ZW58MHx8fHwxNzQwNDEzMTYxfDA&ixlib=rb-4.0.3&q=80&w=2000"

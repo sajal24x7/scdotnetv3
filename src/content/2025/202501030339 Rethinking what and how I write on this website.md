@@ -2,8 +2,8 @@
 title: "Rethinking what and how I write on this website"
 slug: "rethinking-what-and-how-i-write-on-this-website"
 description: "How to add a linkblog here and about how I categorise things"
-pubDate: 2025-01-03T03:39:41
-updatedDate: 2025-01-03T20:14:16
+pubDate: 2025-01-03T03:39:41+02:00
+updatedDate: 2025-01-03T20:14:16+02:00
 category: blog
 tags: ["blog", "writing is"]
 image: "https://images.unsplash.com/photo-1602212096437-d0af1ce0553e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHN0YXJzfGVufDB8fHx8MTczNTc3NTY3OXww&ixlib=rb-4.0.3&q=80&w=2000"
