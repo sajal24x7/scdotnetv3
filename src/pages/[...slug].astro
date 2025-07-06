@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 
   // Get all posts from all collections
   const allPosts = await Promise.all(years.map(year => getCollection(year as any)));
-  const posts = allPosts.flat().filter(entry => entry.data && entry.data.title);
+  const posts = allPosts.flat().filter(entry => entry.data);
 
   return posts.map((entry) => {
     const category = 'category' in entry.data && entry.data.category ? entry.data.category : 'notes';
@@ -34,10 +34,15 @@ const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
 
 // Construct the current post URL
 const currentPostUrl = `/${category}/${entry.slug}/`;
+
+// Generate a fallback title for posts without titles (like micro posts)
+const pageTitle = entry.data?.title 
+  ? `${entry.data.title} - ${category.charAt(0).toUpperCase() + category.slice(1)}`
+  : `${category.charAt(0).toUpperCase() + category.slice(1)} - ${formattedDate}`;
 ---
 
 <Layout 
-  title={`${entry.data?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
+  title={pageTitle}
   description={entry.data?.description} 
   currentPage={currentPostUrl}
 >
@@ -72,7 +77,9 @@ const currentPostUrl = `/${category}/${entry.slug}/`;
         </div>
       )}
       
-      <h1 class="text-3xl md:text-4xl font-bold mb-4">{entry.data?.title ?? ''}</h1>
+      {entry.data?.title && (
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">{entry.data.title}</h1>
+      )}
       
       {entry.data?.description && (
         <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
