@@ -7,6 +7,9 @@ description: >-
 pubDate: 2021-02-12T15:13:38+02:00
 updatedDate: 2024-12-24T11:08:03+02:00
 category: bookshelf
+startDate: 2021-01-28T00:00:00+02:00
+endDate: 2021-02-12T00:00:00+02:00
+format: ebook
 tags:
   - book-reviews
 image: >-

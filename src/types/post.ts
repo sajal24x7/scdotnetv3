@@ -6,4 +6,8 @@ export type Post = {
   image?: string;
   content?: string;
   link?: string;
+  // Bookshelf-specific fields
+  startDate?: Date;
+  endDate?: Date;
+  format?: 'ebook' | 'softcover' | 'hardcover' | 'audio';
 }; 
