@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import { format } from 'date-fns';
 import type { CollectionEntry } from 'astro:content';
 import { getYearDirectories } from '../utils/content';
+import { formatDateWithTime } from '../utils/dateFormat';
 
 export async function getStaticPaths() {
   // Get all year directories from content
@@ -26,9 +27,9 @@ const [category, slug] = Astro.params.slug.split('/');
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-const formattedDate = entry.data?.pubDate ? format(entry.data.pubDate, 'MMMM d, yyyy') : '';
+const formattedDate = entry.data?.pubDate ? formatDateWithTime(entry.data.pubDate) : '';
 const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
-  ? format(entry.data.updatedDate, 'MMMM d, yyyy')
+  ? formatDateWithTime(entry.data.updatedDate)
   : null;
 ---
 
@@ -42,7 +43,7 @@ const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
       <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
         <div>
           <p class="text-sm text-textSecondary dark:text-textSecondaryDark">
-            {updatedDate ? `Last updated: ${updatedDate}` : `Published: ${formattedDate}`}
+            {updatedDate ? `Last updated on ${updatedDate}` : `Published on ${formattedDate}`}
           </p>
         </div>
         

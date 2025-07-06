@@ -1,4 +1,6 @@
 ---
+import { formatDateWithTime } from '../utils/dateFormat';
+
 interface Props {
   title?: string;
   content: string;
@@ -9,11 +11,7 @@ interface Props {
 
 const { title, content, url, pubDate, link } = Astro.props;
 
-const formattedDate = new Intl.DateTimeFormat('en-US', {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric',
-}).format(pubDate);
+const formattedDate = formatDateWithTime(pubDate);
 
 // Truncate content for preview
 const MAX_CONTENT_LENGTH = 280; // Twitter-like character limit

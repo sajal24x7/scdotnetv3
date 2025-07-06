@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { formatDateWithTime } from '../utils/dateFormat';
 
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
@@ -100,11 +101,7 @@ if (allContent.length > 0 && streakWeeks === 0) {
 }
 
 // Format the last post date
-const formattedLastPostDate = lastPostDate ? new Intl.DateTimeFormat('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-}).format(lastPostDate) : 'Never';
+const formattedLastPostDate = lastPostDate ? formatDateWithTime(lastPostDate) : 'Never';
 
 // Debug info for weeks
 const uniqueWeeks = [...weekCounts.keys()].sort().reverse();

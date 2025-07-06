@@ -1,0 +1,11 @@
+---
+title: "Day Thirteen: Fall"
+slug: "day-thirteen-fall"
+pubDate: 2014-03-25T21:08:47+02:00
+updatedDate: 2014-03-25T21:08:47+02:00
+category: blog
+tags: ["30 day challenge", "photography", "Uncategorized"]
+---
+[![image](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-13957618120971.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-13957618120971.jpeg)
+
+My infatuation with the university campus knows no bounds\!
