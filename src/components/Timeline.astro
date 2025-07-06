@@ -24,17 +24,24 @@ const renderedPosts = await Promise.all(
     const data = post.data as {
       title?: string;
       pubDate: Date;
+      category?: string;
     };
+    
+    // Construct the post URL
+    const postUrl = `/${data.category || 'notes'}/${post.slug}/`;
+    
     return (
       <article class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-700">
         <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-200 dark:bg-gray-700"></div>
         <div class="mb-2">
           <time class="text-sm text-gray-500 dark:text-gray-400">
-            {new Date(data.pubDate).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}
+            <a href={postUrl} class="text-accent hover:text-accent/80 transition-colors">
+              {new Date(data.pubDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </a>
           </time>
         </div>
         <div class="prose dark:prose-invert max-w-none">

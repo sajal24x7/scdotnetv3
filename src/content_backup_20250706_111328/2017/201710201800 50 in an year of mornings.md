@@ -1,9 +1,0 @@
----
-title: "#50 in an year of mornings"
-slug: "50-in-an-year-of-mornings"
-pubDate: 2017-10-20T18:00:46+03:00
-updatedDate: 2024-04-28T15:35:22+03:00
-category: blog
-tags: ["love", "poems", "yearOfMornings"]
----
-![050.jpg](https://storage.sajalchoudhary.net/images/wordpress/2017/10/050.jpg)

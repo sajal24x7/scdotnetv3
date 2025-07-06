@@ -31,19 +31,26 @@ const formattedDate = entry.data?.pubDate ? formatDateWithTime(entry.data.pubDat
 const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
   ? formatDateWithTime(entry.data.updatedDate)
   : null;
+
+// Construct the current post URL
+const currentPostUrl = `/${category}/${entry.slug}/`;
 ---
 
 <Layout 
   title={`${entry.data?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
   description={entry.data?.description} 
-  currentPage={`/${category}/${entry.slug}/`}
+  currentPage={currentPostUrl}
 >
   <article class="prose dark:prose-dark mx-auto">
     <div class="mb-8">
       <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
         <div>
           <p class="text-sm text-textSecondary dark:text-textSecondaryDark">
-            {updatedDate ? `Last updated on ${updatedDate}` : `Published on ${formattedDate}`}
+            {updatedDate ? (
+              <>Last updated on <a href={currentPostUrl} class="text-accent hover:text-accent/80 transition-colors">{updatedDate}</a></>
+            ) : (
+              <>Published on <a href={currentPostUrl} class="text-accent hover:text-accent/80 transition-colors">{formattedDate}</a></>
+            )}
           </p>
         </div>
         

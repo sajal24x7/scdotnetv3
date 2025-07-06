@@ -93,7 +93,12 @@ const years = Object.keys(postsByYear)
                     
                     <div class="flex flex-wrap items-center gap-4 text-sm text-textSecondary dark:text-textSecondaryDark">
                       <time datetime={post.data.pubDate.toISOString()}>
-                        {formatDate(post.data.pubDate)}
+                        <a 
+                          href={`/bookshelf/${post.slug}/`}
+                          class="text-accent hover:text-accent/80 transition-colors"
+                        >
+                          {formatDate(post.data.pubDate)}
+                        </a>
                       </time>
                       
                       {post.data.tags && (

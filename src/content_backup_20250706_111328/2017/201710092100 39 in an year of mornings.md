@@ -1,9 +1,0 @@
----
-title: "#39 in an year of mornings"
-slug: "39-in-an-year-of-mornings"
-pubDate: 2017-10-09T21:00:16+03:00
-updatedDate: 2024-04-28T15:39:35+03:00
-category: blog
-tags: ["love", "poems", "yearOfMornings"]
----
-![039.jpg](https://storage.sajalchoudhary.net/images/wordpress/2017/10/039.jpg)

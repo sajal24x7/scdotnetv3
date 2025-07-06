@@ -110,7 +110,9 @@ const recentEphemeraPosts = (await getAllPosts())
         {recentEphemeraPosts.map((post) => (
           <div class="flex items-start gap-4">
             <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-              {formatDate(post.data.pubDate)}
+              <a href={`/${post.data.category}/${post.slug}`} class="text-accent hover:text-accent/80 transition-colors">
+                {formatDate(post.data.pubDate)}
+              </a>
             </time>
             <a href={`/${post.data.category}/${post.slug}`} class="text-lg hover:text-blue-600 dark:hover:text-blue-400">
               {post.data.title}
