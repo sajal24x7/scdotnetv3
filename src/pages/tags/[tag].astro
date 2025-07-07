@@ -61,13 +61,11 @@ const sortedPosts = taggedPosts.sort((a: CollectionEntry<'posts'>, b: Collection
               <a href={`/${post.data.category}/${post.slug}/`} class="group">
                 <div class="flex items-baseline gap-4">
                   <time class="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap">
-                    <span class="text-accent hover:text-accent/80 transition-colors">
-                      {new Date(post.data.pubDate).toLocaleDateString('en-US', {
-                        day: 'numeric',
-                        month: 'short',
-                        year: 'numeric'
-                      })}
-                    </span>
+                    {new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                      day: 'numeric',
+                      month: 'short',
+                      year: 'numeric'
+                    })}
                   </time>
                   <h2 class="text-xl font-medium group-hover:text-accent transition-colors">
                     {post.data.title}

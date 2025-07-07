@@ -19,10 +19,6 @@ const postsCollection = defineCollection({
     category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'now', 'til']),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
-    // Bookshelf-specific fields
-    startDate: dateSchema.optional(),
-    endDate: dateSchema.optional(),
-    format: z.enum(['ebook', 'softcover', 'hardcover', 'audio']).optional(),
   }),
 });
 

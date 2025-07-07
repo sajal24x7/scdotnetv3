@@ -1,10 +1,12 @@
 ---
-import { formatDateWithTime } from '../utils/dateFormat';
-
 const { title, description, pubDate, category, image, link } = Astro.props;
 
 const formatDate = (date) => {
-  return formatDateWithTime(date);
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(new Date(date));
 };
 ---
 
@@ -23,13 +25,7 @@ const formatDate = (date) => {
     <div class="flex-grow text-left">
       <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
         <span class="text-sm font-medium text-gray-500 dark:text-gray-400 tracking-wide">
-          {link ? (
-            <a href={link} class="text-accent hover:text-accent/80 transition-colors">
-              {formatDate(pubDate)}
-            </a>
-          ) : (
-            formatDate(pubDate)
-          )}
+          {formatDate(pubDate)}
         </span>
         <span class="post-category text-sm font-semibold text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30">
           {category}

@@ -4,9 +4,6 @@ slug: kevin-kelly-excellent-advice-for-living
 pubDate: 2024-02-12T10:46:00
 updatedDate: 2024-12-24T10:52:55
 category: bookshelf
-startDate: 2024-02-11T00:00:00+02:00
-endDate: 2024-02-12T00:00:00+02:00
-format: softcover
 tags:
   - book-reviews
 ---

@@ -6,7 +6,7 @@ import { getAllPosts, transformPost } from '../../utils/content';
 // Get all posts and filter for poems
 const allPosts = await getAllPosts();
 const poems = allPosts
-  .filter(post => post.data.category === 'poem')
+  .filter(post => post.data.category === 'poems')
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
 // Transform posts for the ContentGrid component

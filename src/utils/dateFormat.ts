@@ -18,29 +18,6 @@ export function formatDate(
 }
 
 /**
- * Format a date with time for display (e.g., "April 28, 2025 at 06:38")
- * 
- * @param date The date to format
- * @returns Formatted date string with time
- */
-export function formatDateWithTime(date: Date | string): string {
-  const dateObj = typeof date === 'string' ? new Date(date) : date;
-  const dateStr = new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }).format(dateObj);
-  
-  const timeStr = new Intl.DateTimeFormat('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false
-  }).format(dateObj);
-  
-  return `${dateStr} at ${timeStr}`;
-}
-
-/**
  * Format a date as a relative time from now (e.g., "2 days ago")
  * 
  * @param date The date to format

@@ -5,9 +5,6 @@ description: The first book in the remembrance of earth's past series
 pubDate: 2025-02-23T13:05:04
 updatedDate: 2025-02-23T13:05:04
 category: bookshelf
-startDate: 2025-02-11T00:00:00+02:00
-endDate: 2025-02-23T00:00:00+02:00
-format: softcover
 tags:
   - book-reviews
   - 'Liu, Cixin'
