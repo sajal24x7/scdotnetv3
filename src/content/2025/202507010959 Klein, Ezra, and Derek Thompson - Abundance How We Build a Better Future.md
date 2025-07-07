@@ -9,6 +9,7 @@ tags:
 startDate: 2025-07-01T09:59:00+03:00
 endDate: 2025-07-06T18:00:00+03:00
 format: audio
+image: “https://upload.wikimedia.org/wikipedia/en/3/32/Cover_of_Abundance_Klein_2025.jpg” 
 ---
 This book did not turn out to be how I had imagined it would be. Maybe by looking at the title, maybe by looking at the cover, I was hoping for it to be a description of a future world achieved by technology, a future of abundance, of steps humanity might take to get there. Perhaps, I was hoping for a non-fiction version of  [Kim Stanley Robinson’s -The Ministry For The Future](https://g.co/kgs/xeL8P6S).
 
