@@ -1,8 +1,8 @@
 ---
 title: "Writing about not writing"
 slug: "writing-about-not-writing"
-pubDate: 2014-09-28T21:00:00+03:00
-updatedDate: 2014-09-28T21:00:00+03:00
+pubDate: 2014-09-28T21:00:00
+updatedDate: 2014-09-28T21:00:00
 category: blog
 tags: ["blog", "edx", "novel", "writers block", "writing is"]
 ---

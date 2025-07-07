@@ -1,8 +1,8 @@
 ---
 title: "How democratic is our democracy?"
 slug: "how-democratic-is-our-democracy"
-pubDate: 2014-09-25T21:00:00+03:00
-updatedDate: 2014-09-25T21:00:00+03:00
+pubDate: 2014-09-25T21:00:00
+updatedDate: 2014-09-25T21:00:00
 category: blog
 tags: ["blog", "democracy", "india", "indian politics", "politics", "vote"]
 ---

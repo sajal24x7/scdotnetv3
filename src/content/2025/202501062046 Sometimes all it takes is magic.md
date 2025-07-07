@@ -2,8 +2,8 @@
 title: "Sometimes all it takes is magic"
 slug: "sometimes-all-it-takes-is-magic"
 description: "Sometimes magic is working harder than imagined possible"
-pubDate: 2025-01-06T20:46:56+02:00
-updatedDate: 2025-01-06T20:46:56+02:00
+pubDate: 2025-01-06T20:46:56
+updatedDate: 2025-01-06T20:46:56
 category: blog
 tags: ["blog", "writing is"]
 image: "https://images.unsplash.com/photo-1475738384599-8cf3db232ffa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ0fHxtYWdpY3xlbnwwfHx8fDE3MzYxOTYzODV8MA&ixlib=rb-4.0.3&q=80&w=2000"

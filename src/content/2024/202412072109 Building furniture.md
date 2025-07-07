@@ -2,8 +2,8 @@
 title: "Building furniture"
 slug: "building-furniture"
 description: "A traditional Ikea holiday"
-pubDate: 2024-12-07T21:09:00+02:00
-updatedDate: 2024-12-07T23:09:21+02:00
+pubDate: 2024-12-07T21:09:00
+updatedDate: 2024-12-07T23:09:21
 category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8659-1.jpeg"

@@ -34,40 +34,6 @@ const transformedPosts = nordletterPosts.map(transformPost);
       </div>
     </header>
 
-    <!-- Newsletter Signup Form -->
-    <div class="mb-12 px-6">
-      <div class="max-w-2xl mx-auto">
-        <div class="prose dark:prose-invert max-w-none">
-          <h2 class="text-2xl font-bold mb-4">NordLetter</h2>
-          <p class="text-base mb-6">
-            I send out a newsletter once a week about living in Finland + five interesting things I've found on the open web.
-          </p>
-          
-          <form
-            class="flex flex-col sm:flex-row gap-3 max-w-md"
-            action="https://buttondown.com/api/emails/embed-subscribe/sajal24x7"
-            method="post"
-            target="popupwindow"
-            onsubmit="window.open('https://buttondown.com/sajal24x7', 'popupwindow')"
-          >
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-              class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-            <button
-              type="submit"
-              class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-
     <div class="px-6">
       <ContentGrid posts={transformedPosts} />
     </div>

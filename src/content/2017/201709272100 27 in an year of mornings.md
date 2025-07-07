@@ -1,8 +1,8 @@
 ---
 title: "#27 in an year of mornings"
 slug: "27-in-an-year-of-mornings"
-pubDate: 2017-09-27T21:00:55+03:00
-updatedDate: 2024-04-28T15:43:18+03:00
+pubDate: 2017-09-27T21:00:55
+updatedDate: 2024-04-28T15:43:18
 category: blog
 tags: ["love", "poems", "yearOfMornings"]
 ---

@@ -2,8 +2,8 @@
 title: "About the Pareto principle"
 slug: "about-the-pareto-principle"
 description: "And the value of putting in the work"
-pubDate: 2025-03-05T21:54:00+02:00
-updatedDate: 2025-03-05T22:05:17+02:00
+pubDate: 2025-03-05T21:54:00
+updatedDate: 2025-03-05T22:05:17
 category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1741082212669-4566cf0077f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDEyMTIxMjJ8&ixlib=rb-4.0.3&q=80&w=2000"

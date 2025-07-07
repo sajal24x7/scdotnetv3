@@ -2,8 +2,8 @@
 title: "We are all addicted to our phones"
 slug: "we-are-all-addicted-to-our-phones"
 description: "And a few rules I have"
-pubDate: 2025-03-07T21:55:00+02:00
-updatedDate: 2025-03-07T22:13:12+02:00
+pubDate: 2025-03-07T21:55:00
+updatedDate: 2025-03-07T22:13:12
 category: blog
 tags: ["blog", "phone", "addiction"]
 image: "https://images.unsplash.com/photo-1619016984222-c074da4e7deb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxQaG9uZSUyMGFkZGljdHxlbnwwfHx8fDE3NDEzODU1MTd8MA&ixlib=rb-4.0.3&q=80&w=2000"

@@ -1,8 +1,8 @@
 ---
 title: "it's Teacher's Day!!"
 slug: "teachers-day"
-pubDate: 2012-09-05T00:00:00+03:00
-updatedDate: 2024-04-29T00:00:00+03:00
+pubDate: 2012-09-05T00:00:00
+updatedDate: 2024-04-29T00:00:00
 category: blog
 tags: [“teacher”]
 ---

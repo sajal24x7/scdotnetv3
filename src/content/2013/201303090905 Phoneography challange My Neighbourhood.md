@@ -1,8 +1,8 @@
 ---
 title: "Phoneography challange: My Neighbourhood"
 slug: "phoneography-challange-my-neighbourhood"
-pubDate: 2013-03-09T09:05:25+02:00
-updatedDate: 2024-04-29T14:12:12+03:00
+pubDate: 2013-03-09T09:05:25
+updatedDate: 2024-04-29T14:12:12
 category: photo
 tags: [“phone”]
 ---

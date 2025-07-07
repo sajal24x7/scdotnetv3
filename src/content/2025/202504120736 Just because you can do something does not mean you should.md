@@ -2,8 +2,8 @@
 title: "Just because you can do something does not mean you should"
 slug: "just-because-you-can-do-something-does-not-mean-you-should"
 description: "A writer's apocalypse approaches"
-pubDate: 2025-04-12T07:36:18+03:00
-updatedDate: 2025-04-12T07:40:59+03:00
+pubDate: 2025-04-12T07:36:18
+updatedDate: 2025-04-12T07:40:59
 category: blog
 tags: ["blog", "AI", "writing is"]
 image: "https://images.unsplash.com/photo-1551006097-61dd4a01d3e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI1fHxhcG9jYWx5cHNlfGVufDB8fHx8MTc0NDQ0MzMyOXww&ixlib=rb-4.0.3&q=80&w=2000"

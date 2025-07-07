@@ -2,8 +2,8 @@
 title: "Maybe we should not have connected"
 slug: "maybe-we-should-not-have-connected"
 description: "Mixing DS2, Mastodon and Fediverse"
-pubDate: 2025-03-20T06:18:48+02:00
-updatedDate: 2025-03-20T06:18:48+02:00
+pubDate: 2025-03-20T06:18:48
+updatedDate: 2025-03-20T06:18:48
 category: blog
 tags: ["blog", "ghost", "openweb"]
 image: "https://images.unsplash.com/photo-1590615370581-265ae19a053b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHxjb25uZWN0fGVufDB8fHx8MTc0MjQxMTI3M3ww&ixlib=rb-4.0.3&q=80&w=2000"

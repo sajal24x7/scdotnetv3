@@ -1,8 +1,8 @@
 ---
 title: "Why should I read?"
 slug: "why-should-i-read"
-pubDate: 2014-08-08T15:33:49+03:00
-updatedDate: 2024-01-28T11:05:59+02:00
+pubDate: 2014-08-08T15:33:49
+updatedDate: 2024-01-28T11:05:59
 category: blog
 tags: ["fiction writing", "poem", "poetry", "reading", "sixty-day-blog", "Uncategorized", "writing is", "#test"]
 ---

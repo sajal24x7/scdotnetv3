@@ -1,8 +1,8 @@
 ---
 title: Kevin Kelly - Excellent Advice for Living
 slug: kevin-kelly-excellent-advice-for-living
-pubDate: 2024-02-12T10:46:00+02:00
-updatedDate: 2024-12-24T10:52:55+02:00
+pubDate: 2024-02-12T10:46:00
+updatedDate: 2024-12-24T10:52:55
 category: bookshelf
 tags:
   - book-reviews

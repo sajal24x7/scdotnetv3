@@ -2,8 +2,8 @@
 title: "The net good or bad of AI"
 slug: "the-net-good-or-bad-of-ai"
 description: "Balancing the perceived benefits against the harms"
-pubDate: 2024-12-19T11:29:23+02:00
-updatedDate: 2024-12-19T11:29:23+02:00
+pubDate: 2024-12-19T11:29:23
+updatedDate: 2024-12-19T11:29:23
 category: blog
 tags: ["blog", "AI"]
 image: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTczNDYwNzcyMnww&ixlib=rb-4.0.3&q=80&w=2000"

@@ -2,8 +2,8 @@
 title: "A day trip to Tampere"
 slug: "a-day-trip-to-tampere"
 description: "Nord Letter #19 - Tampere + foundations for a good life"
-pubDate: 2024-08-05T21:08:14+03:00
-updatedDate: 2024-08-20T15:57:05+03:00
+pubDate: 2024-08-05T21:08:14
+updatedDate: 2024-08-20T15:57:05
 category: blog
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/08/IMG_5708-2-1.jpeg"

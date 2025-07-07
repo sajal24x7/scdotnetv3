@@ -2,8 +2,8 @@
 title: "NL24 - Certified and it feels so good"
 slug: "nl24-certified-and-it-feels-so-good"
 description: "Azure goals + Apple's DMA compliance"
-pubDate: 2024-09-08T18:53:50+03:00
-updatedDate: 2024-09-16T17:59:27+03:00
+pubDate: 2024-09-08T18:53:50
+updatedDate: 2024-09-16T17:59:27
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_5995-1.jpeg"

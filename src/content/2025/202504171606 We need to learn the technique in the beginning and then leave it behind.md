@@ -2,8 +2,8 @@
 title: "We need to learn the technique in the beginning and then leave it behind"
 slug: "we-need-to-learn-the-technique-in-the-beginning-and-then-leave-it-behind"
 description: "Don't think too much about the rules"
-pubDate: 2025-04-17T16:06:57+03:00
-updatedDate: 2025-04-17T16:06:57+03:00
+pubDate: 2025-04-17T16:06:57
+updatedDate: 2025-04-17T16:06:57
 category: blog
 tags: ["blog", "writing is", "yoga", "health"]
 image: "https://images.unsplash.com/photo-1744144501177-5666f17e190c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDR8fHx8fHx8fDE3NDQ5MDU2NTF8&ixlib=rb-4.0.3&q=80&w=2000"

@@ -2,8 +2,8 @@
 title: "Notes on obsidian"
 slug: "notes-on-obsidian"
 description: "Some things which do not work"
-pubDate: 2024-12-09T03:08:43+02:00
-updatedDate: 2024-12-09T03:08:42+02:00
+pubDate: 2024-12-09T03:08:43
+updatedDate: 2024-12-09T03:08:42
 category: blog
 tags: ["blog", "obsidian"]
 image: "https://images.unsplash.com/photo-1461773518188-b3e86f98242f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDMxfHx3cml0ZXxlbnwwfHx8fDE3MzM2OTE1MDF8MA&ixlib=rb-4.0.3&q=80&w=2000"

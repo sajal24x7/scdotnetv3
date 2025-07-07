@@ -1,8 +1,8 @@
 ---
 title: "Birth, death and everything in between"
 slug: "birth-death-and-everything-in-between"
-pubDate: 2016-07-11T20:47:03+03:00
-updatedDate: 2024-04-29T07:57:21+03:00
+pubDate: 2016-07-11T20:47:03
+updatedDate: 2024-04-29T07:57:21
 category: blog
 tags: ["love", "poems", "death", "life"]
 image: "https://images.unsplash.com/photo-1518281420975-50db6e5d0a97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fGxpZmV8ZW58MHx8fHwxNzE0Mzc3NDMyfDA&ixlib=rb-4.0.3&q=80&w=2000"

@@ -2,8 +2,8 @@
 title: "Hopes and dreams for the fediverse"
 slug: "hopes-and-dreams-for-the-fediverse"
 description: "Interop everywhere"
-pubDate: 2024-10-22T03:05:31+03:00
-updatedDate: 2024-10-27T08:28:39+02:00
+pubDate: 2024-10-22T03:05:31
+updatedDate: 2024-10-27T08:28:39
 category: blog
 tags: ["essays", "writing is", "fediverse"]
 image: "https://images.unsplash.com/photo-1706265399459-1fe07a0c9f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDc1fHxjb25uZWN0ZWQlMjBkZXZpY2VzfGVufDB8fHx8MTcyOTU0NzA4Mnww&ixlib=rb-4.0.3&q=80&w=2000"

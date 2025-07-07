@@ -1,8 +1,8 @@
 ---
 title: "What is the difference between Education & Knowledge?"
 slug: "what-is-the-difference-between-education-knowledge"
-pubDate: 2012-10-10T19:58:32+03:00
-updatedDate: 2024-04-29T13:34:44+03:00
+pubDate: 2012-10-10T19:58:32
+updatedDate: 2024-04-29T13:34:44
 category: blog
 tags: ["education", "Learning"]
 image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDd8fGVkdWNhdGlvbnxlbnwwfHx8fDE3MTQzOTc2MTR8MA&ixlib=rb-4.0.3&q=80&w=2000"

@@ -1,8 +1,8 @@
 ---
 title: "The Gita, Religion and Dharma"
 slug: "the-gita-religion-and-dharma"
-pubDate: 2012-10-24T17:06:09+03:00
-updatedDate: 2024-04-29T13:37:28+03:00
+pubDate: 2012-10-24T17:06:09
+updatedDate: 2024-04-29T13:37:28
 category: blog
 tags: ["Hinduism", "religion"]
 image: "https://images.unsplash.com/photo-1625580917212-e86139d26e1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGtyaXNobmF8ZW58MHx8fHwxNzE0Mzk3ODE0fDA&ixlib=rb-4.0.3&q=80&w=2000"

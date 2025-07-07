@@ -1,8 +1,8 @@
 ---
 title: "Why I do not write long stuff here!"
 slug: "why-i-do-not-write-long-stuff-here"
-pubDate: 2014-07-12T06:05:31+03:00
-updatedDate: 2024-01-28T11:05:58+02:00
+pubDate: 2014-07-12T06:05:31
+updatedDate: 2024-01-28T11:05:58
 category: blog
 tags: ["fiction writing", "length", "sixty-day-blog", "tips", "Uncategorized", "wordlimit", "writing is", "#test"]
 ---

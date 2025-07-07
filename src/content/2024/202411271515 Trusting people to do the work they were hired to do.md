@@ -2,8 +2,8 @@
 title: "Trusting people to do the work they were hired to do"
 slug: "trusting-people-to-do-the-work-they-were-hired-to-do"
 description: "Curb micro-management"
-pubDate: 2024-11-27T15:15:32+02:00
-updatedDate: 2024-11-27T15:15:32+02:00
+pubDate: 2024-11-27T15:15:32
+updatedDate: 2024-11-27T15:15:32
 category: blog
 tags: ["blog", "work"]
 image: "https://images.unsplash.com/photo-1527525443983-6e60c75fff46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDl8fFRlYW18ZW58MHx8fHwxNzMyNzIwNDc0fDA&ixlib=rb-4.0.3&q=80&w=2000"

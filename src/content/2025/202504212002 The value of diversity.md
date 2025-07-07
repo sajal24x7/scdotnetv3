@@ -1,8 +1,8 @@
 ---
 title: "The value of diversity"
 slug: "the-value-of-diversity"
-pubDate: 2025-04-21T20:02:58+03:00
-updatedDate: 2025-04-21T20:02:58+03:00
+pubDate: 2025-04-21T20:02:58
+updatedDate: 2025-04-21T20:02:58
 category: blog
 tags: ["blog", "diversity"]
 image: "https://images.unsplash.com/photo-1579736170791-e7ce1a38e203?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fERpdmVyc2V8ZW58MHx8fHwxNzQ1MjY1NzQzfDA&ixlib=rb-4.0.3&q=80&w=2000"

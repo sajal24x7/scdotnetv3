@@ -2,8 +2,8 @@
 title: "NL41 - A happy new year"
 slug: "nl41-a-happy-new-year"
 description: "Most things are still the same + AI roundups + good things that happened in 2024"
-pubDate: 2025-01-05T03:51:06+02:00
-updatedDate: 2025-01-05T03:51:05+02:00
+pubDate: 2025-01-05T03:51:06
+updatedDate: 2025-01-05T03:51:05
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9046.jpeg"

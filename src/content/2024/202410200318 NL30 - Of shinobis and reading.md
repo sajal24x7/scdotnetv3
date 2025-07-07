@@ -2,8 +2,8 @@
 title: "NL30 - Of shinobis and reading"
 slug: "nl30-of-shinobis-and-reading"
 description: "Visiting Restaurant Shinobi + Reading on devices and the web"
-pubDate: 2024-10-20T03:18:52+03:00
-updatedDate: 2024-10-20T03:18:52+03:00
+pubDate: 2024-10-20T03:18:52
+updatedDate: 2024-10-20T03:18:52
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6320-1.jpeg"

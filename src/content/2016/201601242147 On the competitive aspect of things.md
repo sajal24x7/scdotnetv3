@@ -1,8 +1,8 @@
 ---
 title: "On the competitive aspect of things"
 slug: "on-the-competitive-aspect-of-things"
-pubDate: 2016-01-24T21:47:49+02:00
-updatedDate: 2016-01-24T21:47:49+02:00
+pubDate: 2016-01-24T21:47:49
+updatedDate: 2016-01-24T21:47:49
 category: blog
 tags: ["blog", "competitive nature", "humanity", "life", "time"]
 ---

@@ -1,8 +1,8 @@
 ---
 title: "All the motivation you need!"
 slug: "all-the-motivation-you-need"
-pubDate: 2015-03-24T12:12:01+02:00
-updatedDate: 2015-03-24T12:12:01+02:00
+pubDate: 2015-03-24T12:12:01
+updatedDate: 2015-03-24T12:12:01
 category: blog
 tags: ["blog", "life", "motivation", "writing is", "writing tips"]
 ---

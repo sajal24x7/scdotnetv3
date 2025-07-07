@@ -1,8 +1,8 @@
 ---
 title: "#67 in an year of mornings"
 slug: "67-in-an-year-of-mornings"
-pubDate: 2017-11-06T18:00:30+02:00
-updatedDate: 2024-04-28T15:16:52+03:00
+pubDate: 2017-11-06T18:00:30
+updatedDate: 2024-04-28T15:16:52
 category: poem
 tags: ["poems", "yearOfMornings"]
 ---

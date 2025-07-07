@@ -2,8 +2,8 @@
 title: "I figured out what to do"
 slug: "i-figured-out-what-to-do"
 description: "How to write here"
-pubDate: 2025-01-04T02:57:18+02:00
-updatedDate: 2025-01-04T02:57:17+02:00
+pubDate: 2025-01-04T02:57:18
+updatedDate: 2025-01-04T02:57:17
 category: blog
 tags: ["blog", "writing is", "ghost"]
 image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9052.jpeg"

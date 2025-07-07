@@ -2,8 +2,8 @@
 title: "A tale of two airlines"
 slug: "a-tale-of-two-airlines"
 description: "Finnair good. SpiceJet shit."
-pubDate: 2024-10-26T03:03:23+03:00
-updatedDate: 2024-10-26T03:03:23+03:00
+pubDate: 2024-10-26T03:03:23
+updatedDate: 2024-10-26T03:03:23
 category: blog
 tags: ["blog", "travel"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6390.jpeg"

@@ -1,8 +1,8 @@
 ---
 title: "Five Seconds of Life: 1. The trip"
 slug: "five-seconds-of-life-1-the-trip"
-pubDate: 2014-09-08T21:00:02+03:00
-updatedDate: 2014-09-08T21:00:02+03:00
+pubDate: 2014-09-08T21:00:02
+updatedDate: 2014-09-08T21:00:02
 category: blog
 tags: ["blog", "dehradun", "mussorie", "road trip", "trip", "video"]
 ---

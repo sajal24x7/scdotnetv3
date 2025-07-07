@@ -2,8 +2,8 @@
 title: "NL45 - Good food, good life"
 slug: "nl45-good-food-good-life"
 description: "Finland's PR changes + VPNs + Why are so many people wearing glasses now + a succinct take on AI"
-pubDate: 2025-02-02T03:59:20+02:00
-updatedDate: 2025-02-08T20:28:16+02:00
+pubDate: 2025-02-02T03:59:20
+updatedDate: 2025-02-08T20:28:16
 category: nordletter
 tags: ["Nord Letter", "AI", "food"]
 image: "https://storage.sajalchoudhary.net/images/2025/02/IMG_9563.jpeg"

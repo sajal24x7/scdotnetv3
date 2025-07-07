@@ -1,8 +1,8 @@
 ---
 title: "Day Fourteen: The Hungry Man/Dog"
 slug: "day-fourteen-the-hungry-mandog"
-pubDate: 2014-03-26T21:37:07+02:00
-updatedDate: 2014-03-26T21:37:07+02:00
+pubDate: 2014-03-26T21:37:07
+updatedDate: 2014-03-26T21:37:07
 category: blog
 tags: ["30 day challenge", "featured", "photography", "prose", "Uncategorized"]
 image: "https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395848789304.jpeg"

@@ -1,8 +1,8 @@
 ---
 title: "Us against the World!"
 slug: "us-against-the-world"
-pubDate: 2012-04-26T14:13:55+03:00
-updatedDate: 2024-04-29T12:59:30+03:00
+pubDate: 2012-04-26T14:13:55
+updatedDate: 2024-04-29T12:59:30
 category: poem
 tags: ["love"]
 image: "https://storage.sajalchoudhary.net/images/2024/04/photo-1543280554-642953527bf5.jpeg"

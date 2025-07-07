@@ -1,8 +1,8 @@
 ---
 title: "All new technology needs to be tested out in the world"
 slug: "all-new-technology-needs-to-be-tested-out-in-the-world"
-pubDate: 2025-04-01T20:30:08+03:00
-updatedDate: 2025-04-01T20:30:08+03:00
+pubDate: 2025-04-01T20:30:08
+updatedDate: 2025-04-01T20:30:08
 category: blog
 tags: ["blog", "tech"]
 image: "https://images.unsplash.com/photo-1742228896964-83f6327740ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDl8fHx8fHx8fDE3NDM1Mzc2NDd8&ixlib=rb-4.0.3&q=80&w=2000"

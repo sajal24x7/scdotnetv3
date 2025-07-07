@@ -1,8 +1,8 @@
 ---
 title: "The Google or Windows dilemma"
 slug: "the-google-or-windows-dilemma"
-pubDate: 2015-06-11T17:16:18+03:00
-updatedDate: 2015-06-11T17:16:18+03:00
+pubDate: 2015-06-11T17:16:18
+updatedDate: 2015-06-11T17:16:18
 category: blog
 tags: ["blog", "docs", "google", "microsoft", "tech", "windows", "word"]
 ---

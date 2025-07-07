@@ -2,8 +2,8 @@
 title: "Photographic memory"
 slug: "photographic-memory"
 description: "My first memories of being captured, on a photo film that is, consist of me being rushed to the terrace, followed by a change of clothes and a brief touch up, which is followed by introduction of two more kids almost the same age and then one of my brothers clicking the picture."
-pubDate: 2014-01-09T22:04:12+02:00
-updatedDate: 2024-05-04T06:52:06+03:00
+pubDate: 2014-01-09T22:04:12
+updatedDate: 2024-05-04T06:52:06
 category: blog
 tags: ["nostalgia", "photography"]
 image: "https://storage.sajalchoudhary.net/images/wordpress/2014/01/wpid-img_20140109_220150.jpg"

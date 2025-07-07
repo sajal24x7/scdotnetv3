@@ -1,8 +1,8 @@
 ---
 title: "Mistakes we make!"
 slug: "mistakes-we-make"
-pubDate: 2012-12-08T13:05:11+02:00
-updatedDate: 2024-04-29T14:04:15+03:00
+pubDate: 2012-12-08T13:05:11
+updatedDate: 2024-04-29T14:04:15
 category: blog
 tags: ["mistakes"]
 image: "https://images.unsplash.com/photo-1624137461186-b1e0196b8702?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fGV4cGVjdGF0aW9ufGVufDB8fHx8MTcxNDM5OTQxN3ww&ixlib=rb-4.0.3&q=80&w=2000"

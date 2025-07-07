@@ -2,8 +2,8 @@
 title: "Do what you want to!"
 slug: "do-what-you-want-to"
 description: "Whatever you do, make sure that you are not doing what your father, mother or society wishes you to do because you don’t want to end up where you don’t want to be"
-pubDate: 2014-07-08T15:57:30+03:00
-updatedDate: 2024-05-04T06:56:50+03:00
+pubDate: 2014-07-08T15:57:30
+updatedDate: 2024-05-04T06:56:50
 category: blog
 tags: ["essays"]
 image: "https://storage.sajalchoudhary.net/images/2024/05/photo-1594605965522-16b488c9cd9f.jpeg"
