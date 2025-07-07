@@ -4,6 +4,9 @@ slug: becky-chambers-a-closed-and-common-orbit
 pubDate: 2024-12-10T22:01:50
 updatedDate: 2024-12-10T22:07:51
 category: bookshelf
+startDate: 2024-12-06T00:00:00+02:00
+endDate: 2024-12-10T00:00:00+02:00
+format: hardcover
 tags:
   - book-reviews
 image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8676-2-1.jpeg'

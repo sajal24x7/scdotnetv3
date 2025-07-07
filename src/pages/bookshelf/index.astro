@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getAllPosts } from '../../utils/content';
-import { formatDate } from '../../utils/date';
+import { formatDateOnly } from '../../utils/date';
 
 // Get all posts and filter for bookshelf
 const allPosts = await getAllPosts();
@@ -24,6 +24,11 @@ const years = Object.keys(postsByYear)
   .map(Number)
   .sort((a, b) => b - a);
 
+// Helper function to format book format
+const formatBookFormat = (format: string | undefined) => {
+  if (!format) return null;
+  return format.charAt(0).toUpperCase() + format.slice(1);
+};
 
 ---
 
@@ -91,13 +96,47 @@ const years = Object.keys(postsByYear)
                       </p>
                     )}
                     
-                    <div class="flex flex-wrap items-center gap-4 text-sm text-textSecondary dark:text-textSecondaryDark">
-                      <time datetime={post.data.pubDate.toISOString()}>
-                        {formatDate(post.data.pubDate)}
-                      </time>
+                    <div class="flex flex-col gap-2 text-sm text-textSecondary dark:text-textSecondaryDark">
+                      {/* Format */}
+                      {(post.data as any).format && (
+                        <span class="flex items-center gap-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                          </svg>
+                          {formatBookFormat((post.data as any).format)}
+                        </span>
+                      )}
+                      
+                      {/* Reading Dates */}
+                      <div class="flex flex-wrap gap-4">
+                        {(post.data as any).startDate && (
+                          <span class="flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                              <line x1="16" y1="2" x2="16" y2="6"></line>
+                              <line x1="8" y1="2" x2="8" y2="6"></line>
+                              <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            Started: {formatDateOnly((post.data as any).startDate)}
+                          </span>
+                        )}
+                        
+                        {(post.data as any).endDate && (
+                          <span class="flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                              <line x1="16" y1="2" x2="16" y2="6"></line>
+                              <line x1="8" y1="2" x2="8" y2="6"></line>
+                              <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            Finished: {formatDateOnly((post.data as any).endDate)}
+                          </span>
+                        )}
+                      </div>
                       
                       {post.data.tags && (
-                        <div class="flex flex-wrap gap-2">
+                        <div class="flex flex-wrap gap-2 mt-2">
                           {post.data.tags.map((tag: string) => (
                             <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-xs">
                               {tag}

@@ -1,4 +1,6 @@
 ---
+import { formatDateWithTime } from '../utils/dateFormat';
+
 interface Props {
   title: string;
   description?: string;
@@ -11,11 +13,7 @@ interface Props {
 
 const { title, description, url, date, isUpdated, stage, image } = Astro.props;
 
-const formattedDate = new Intl.DateTimeFormat('en-US', {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric',
-}).format(date);
+const formattedDate = formatDateWithTime(date);
 
 const stageEmoji = {
   fleeting: '💭',
@@ -43,7 +41,9 @@ const stageEmoji = {
         </span>
       )}
       <span class={"text-sm text-textSecondary dark:text-textSecondaryDark " + (!stage ? "w-full text-right" : "")}>
-        {isUpdated ? `Updated: ${formattedDate}` : formattedDate}
+        <a href={url} class="text-accent hover:text-accent/80 transition-colors">
+          {isUpdated ? `Updated on ${formattedDate}` : formattedDate}
+        </a>
       </span>
     </div>
     <h3 class="text-xl font-semibold mb-2 hover:text-accent transition-colors">
