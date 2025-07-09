@@ -3,8 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getAllPosts } from '../utils/content';
 import { formatDate } from '../utils/date';
 
-const recentEphemeraPosts = (await getAllPosts())
-  .filter(post => ['blog', 'micro', 'photo'].includes(post.data.category))
+const recentPosts = (await getAllPosts())
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
   .slice(0, 5);
 ---
@@ -103,11 +102,11 @@ const recentEphemeraPosts = (await getAllPosts())
       </div>
     </div>
 
-    <!-- Recent Ephemera Section -->
+    <!-- Recent Posts Section -->
     <div class="border-t border-black/10 dark:border-white/10 py-8">
-      <h2 class="text-2xl font-bold mb-6">Recent Ephemera</h2>
+      <h2 class="text-2xl font-bold mb-6">Recent Posts</h2>
       <div class="space-y-4">
-        {recentEphemeraPosts.map((post) => (
+        {recentPosts.map((post) => (
           <div class="flex items-start gap-4">
             <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
               <a href={`/${post.data.category}/${post.slug}`} class="text-accent hover:text-accent/80 transition-colors">
