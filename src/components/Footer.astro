@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { formatDateWithTime } from '../utils/dateFormat';
+import Search from './Search.astro';
 
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
@@ -110,6 +111,11 @@ const lastThreeWeeks = uniqueWeeks.slice(0, 3);
 
 <footer class="py-6 border-t border-borderColor dark:border-borderColorDark">
   <div class="container mx-auto px-4 max-w-3xl">
+    <!-- Search Component -->
+    <div class="mb-8">
+      <Search />
+    </div>
+    
     <!-- Social Media Icons -->
     <div class="flex justify-center items-center space-x-4 mb-6">
       <!-- Mastodon -->
