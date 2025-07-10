@@ -21,104 +21,58 @@ if (allPosts.length > 0) {
   });
 }
 
-function searchPosts(query: string) {
-  console.log('searchPosts called with:', query);
-  if (!query || query.length < 2) {
-    return [];
-  }
+// Removed old searchPosts function - using inline logic that matches test-search page
 
-  query = query.toLowerCase().trim();
+// Test the same logic that works on test-search page
+let searchResults: { post: any, score: number }[] = [];
+
+if (searchQuery && searchQuery.length >= 2) {
+  const query = searchQuery.toLowerCase().trim();
+  console.log('Processing search for:', query);
   
-  // Check for tag-specific search (tag:ai)
-  const tagSearchMatch = query.match(/^tag:(.+)$/);
-  if (tagSearchMatch) {
-    const tagQuery = tagSearchMatch[1];
-    console.log('Tag search detected. Looking for tag:', tagQuery);
+  // Check if it's a tag search
+  if (query.startsWith('tag:')) {
+    const tagQuery = query.substring(4); // Remove 'tag:' prefix
+    console.log('Tag search for:', tagQuery);
     
-    const tagResults = allPosts
+    searchResults = allPosts
       .filter(post => {
-        const hasTags = post.data.tags && post.data.tags.length > 0;
-        console.log(`Post "${post.data.title}" has tags:`, post.data.tags);
+        if (!post.data.tags || post.data.tags.length === 0) return false;
         
-        if (!hasTags) return false;
-        
-        const match = post.data.tags.some(tag => {
-          const lowerTag = tag.toLowerCase();
-          const lowerQuery = tagQuery.toLowerCase();
-          const isMatch = lowerTag === lowerQuery || 
-                 lowerTag.startsWith(lowerQuery + '-') || 
-                 lowerTag.startsWith(lowerQuery + ' ') ||
-                 lowerTag.endsWith('-' + lowerQuery) ||
-                 lowerTag.endsWith(' ' + lowerQuery) ||
-                 lowerTag.includes(' ' + lowerQuery + ' ') ||
-                 lowerTag.includes('-' + lowerQuery + '-');
-          
-          if (isMatch) {
-            console.log(`✅ Match found: "${lowerTag}" matches "${lowerQuery}"`);
+        const hasMatch = post.data.tags.some(tag => {
+          const match = tag.toLowerCase() === tagQuery;
+          if (match) {
+            console.log(`Found match: "${tag}" for query "${tagQuery}"`);
           }
-          return isMatch;
+          return match;
         });
         
-        return match;
+        return hasMatch;
       })
       .map(post => ({ post, score: 100 }));
-    
-    console.log(`Tag search results: ${tagResults.length} posts found`);
-    return tagResults;
+  } else {
+    // Regular search
+    searchResults = allPosts
+      .filter(post => {
+        const title = post.data.title?.toLowerCase() || '';
+        const category = post.data.category?.toLowerCase() || '';
+        const description = post.data.description?.toLowerCase() || '';
+        const tags = post.data.tags || [];
+        
+        return title.includes(query) || 
+               category.includes(query) ||
+               description.includes(query) ||
+               tags.some(tag => tag.toLowerCase().includes(query));
+      })
+      .map(post => ({ post, score: 50 }));
   }
   
-  // Regular search with scoring (excluding body for now)
-  const results: { post: any, score: number }[] = [];
-  
-  allPosts.forEach(post => {
-    let score = 0;
-    const title = post.data.title?.toLowerCase() || '';
-    const tags = post.data.tags || [];
-    const category = post.data.category?.toLowerCase() || '';
-    const description = post.data.description?.toLowerCase() || '';
-    
-    // Tag matches (highest priority)
-    const exactTagMatch = tags.some(tag => tag.toLowerCase() === query);
-    const partialTagMatch = tags.some(tag => tag.toLowerCase().includes(query));
-    
-    if (exactTagMatch) {
-      score += 100;
-    } else if (partialTagMatch) {
-      score += 80;
-    }
-    
-    // Title matches (high priority)
-    if (title === query) {
-      score += 60;
-    } else if (title.includes(query)) {
-      score += 40;
-    }
-    
-    // Description matches
-    if (description.includes(query)) {
-      score += 30;
-    }
-    
-    // Category matches
-    if (category.includes(query)) {
-      score += 20;
-    }
-    
-    if (score > 0) {
-      results.push({ post, score });
-    }
-  });
-  
-  // Sort by score (highest first), then by date (newest first)
-  return results.sort((a, b) => {
-    if (b.score !== a.score) {
-      return b.score - a.score;
-    }
-    return new Date(b.post.data.pubDate).getTime() - new Date(a.post.data.pubDate).getTime();
-  });
+  // Sort by date (newest first)
+  searchResults.sort((a, b) => 
+    new Date(b.post.data.pubDate).getTime() - new Date(a.post.data.pubDate).getTime()
+  );
 }
 
-const searchResults = searchPosts(searchQuery);
 console.log('Final search results:', searchResults.length);
 console.log('===================');
 ---
