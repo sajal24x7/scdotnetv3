@@ -1,5 +1,6 @@
 ---
 // src/components/Header.astro
+import Search from './Search.astro';
 
 interface Props {
     currentPage: string;
@@ -99,6 +100,11 @@ const navLinks = [
                 </svg>
             </a>
         </div>
+    </div>
+    
+    <!-- Search Component (below navigation) -->
+    <div class="mt-6 border-t border-borderColor dark:border-borderColorDark pt-6">
+      <Search />
     </div>
 
 </header>
