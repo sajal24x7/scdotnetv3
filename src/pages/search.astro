@@ -9,6 +9,8 @@ const allPosts = await getAllPosts();
 // Debug information
 console.log('=== SEARCH DEBUG ===');
 console.log('Raw search query:', searchQuery);
+console.log('URL:', Astro.url.href);
+console.log('Search params:', Astro.url.searchParams.toString());
 console.log('Total posts loaded:', allPosts.length);
 if (allPosts.length > 0) {
   console.log('Sample post structure:', {
