@@ -6,7 +6,21 @@ import { formatDate } from '../utils/date';
 const searchQuery = Astro.url.searchParams.get('q') || '';
 const allPosts = await getAllPosts();
 
+// Debug information
+console.log('=== SEARCH DEBUG ===');
+console.log('Raw search query:', searchQuery);
+console.log('Total posts loaded:', allPosts.length);
+if (allPosts.length > 0) {
+  console.log('Sample post structure:', {
+    title: allPosts[0].data.title,
+    category: allPosts[0].data.category,
+    tags: allPosts[0].data.tags,
+    hasSlug: !!allPosts[0].slug
+  });
+}
+
 function searchPosts(query: string) {
+  console.log('searchPosts called with:', query);
   if (!query || query.length < 2) {
     return [];
   }
@@ -17,20 +31,38 @@ function searchPosts(query: string) {
   const tagSearchMatch = query.match(/^tag:(.+)$/);
   if (tagSearchMatch) {
     const tagQuery = tagSearchMatch[1];
-    return allPosts
-      .filter(post => post.data.tags?.some(tag => {
-        const lowerTag = tag.toLowerCase();
-        const lowerQuery = tagQuery.toLowerCase();
-        // Exact match or word-boundary match (prevents "ai" from matching "rains")
-        return lowerTag === lowerQuery || 
-               lowerTag.startsWith(lowerQuery + '-') || 
-               lowerTag.startsWith(lowerQuery + ' ') ||
-               lowerTag.endsWith('-' + lowerQuery) ||
-               lowerTag.endsWith(' ' + lowerQuery) ||
-               lowerTag.includes(' ' + lowerQuery + ' ') ||
-               lowerTag.includes('-' + lowerQuery + '-');
-      }))
+    console.log('Tag search detected. Looking for tag:', tagQuery);
+    
+    const tagResults = allPosts
+      .filter(post => {
+        const hasTags = post.data.tags && post.data.tags.length > 0;
+        console.log(`Post "${post.data.title}" has tags:`, post.data.tags);
+        
+        if (!hasTags) return false;
+        
+        const match = post.data.tags.some(tag => {
+          const lowerTag = tag.toLowerCase();
+          const lowerQuery = tagQuery.toLowerCase();
+          const isMatch = lowerTag === lowerQuery || 
+                 lowerTag.startsWith(lowerQuery + '-') || 
+                 lowerTag.startsWith(lowerQuery + ' ') ||
+                 lowerTag.endsWith('-' + lowerQuery) ||
+                 lowerTag.endsWith(' ' + lowerQuery) ||
+                 lowerTag.includes(' ' + lowerQuery + ' ') ||
+                 lowerTag.includes('-' + lowerQuery + '-');
+          
+          if (isMatch) {
+            console.log(`✅ Match found: "${lowerTag}" matches "${lowerQuery}"`);
+          }
+          return isMatch;
+        });
+        
+        return match;
+      })
       .map(post => ({ post, score: 100 }));
+    
+    console.log(`Tag search results: ${tagResults.length} posts found`);
+    return tagResults;
   }
   
   // Regular search with scoring (excluding body for now)
@@ -85,6 +117,8 @@ function searchPosts(query: string) {
 }
 
 const searchResults = searchPosts(searchQuery);
+console.log('Final search results:', searchResults.length);
+console.log('===================');
 ---
 
 <Layout title={searchQuery ? `Search results for "${searchQuery}"` : "Search"} currentPage="search">
