@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { formatDateWithTime } from '../utils/dateFormat';
-import SearchModal from './SearchModal.astro';
+import SearchButton from './SearchButton.astro';
 
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
@@ -115,7 +115,7 @@ const lastThreeWeeks = uniqueWeeks.slice(0, 3);
     <div class="flex justify-center items-center space-x-4 mb-6">
       <!-- Search -->
       <div class="group flex items-center">
-        <SearchModal />
+        <SearchButton />
       </div>
       
       <!-- Mastodon -->
