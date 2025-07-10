@@ -1,0 +1,43 @@
+---
+import { getAllPosts } from '../utils/content';
+const allPosts = await getAllPosts();
+---
+
+<div class="search-container mb-8">
+  <input 
+    type="text" 
+    id="search-input"
+    placeholder="Search posts..." 
+    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg"
+  />
+  <div id="search-results" class="mt-4 hidden"></div>
+</div>
+
+<script define:vars={{ allPosts }}>
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    if (query.length < 2) {
+      searchResults.classList.add('hidden');
+      return;
+    }
+    
+    const results = allPosts.filter(post => 
+      post.data.title?.toLowerCase().includes(query) ||
+      post.body?.toLowerCase().includes(query) ||
+      post.data.tags?.some(tag => tag.toLowerCase().includes(query))
+    );
+    
+    if (results.length > 0) {
+      searchResults.innerHTML = results.slice(0, 5).map(post => 
+        `<a href="/${post.data.category}/${post.slug}/" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+          <h3 class="font-semibold">${post.data.title || 'Untitled'}</h3>
+          <p class="text-sm text-gray-600">${post.data.category}</p>
+        </a>`
+      ).join('');
+      searchResults.classList.remove('hidden');
+    }
+  });
+</script>
