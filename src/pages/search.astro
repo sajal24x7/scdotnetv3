@@ -33,14 +33,15 @@ function searchPosts(query: string) {
       .map(post => ({ post, score: 100 }));
   }
   
-  // Regular search with scoring
+  // Regular search with scoring (excluding body for now)
   const results: { post: any, score: number }[] = [];
   
   allPosts.forEach(post => {
     let score = 0;
     const title = post.data.title?.toLowerCase() || '';
-    const body = post.body?.toLowerCase() || '';
     const tags = post.data.tags || [];
+    const category = post.data.category?.toLowerCase() || '';
+    const description = post.data.description?.toLowerCase() || '';
     
     // Tag matches (highest priority)
     const exactTagMatch = tags.some(tag => tag.toLowerCase() === query);
@@ -59,13 +60,13 @@ function searchPosts(query: string) {
       score += 40;
     }
     
-    // Body content matches (lower priority)
-    if (body.includes(query)) {
-      score += 10;
+    // Description matches
+    if (description.includes(query)) {
+      score += 30;
     }
     
     // Category matches
-    if (post.data.category?.toLowerCase().includes(query)) {
+    if (category.includes(query)) {
       score += 20;
     }
     
