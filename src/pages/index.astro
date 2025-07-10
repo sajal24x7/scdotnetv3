@@ -3,8 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getAllPosts } from '../utils/content';
 import { formatDate } from '../utils/date';
 
-const recentEphemeraPosts = (await getAllPosts())
-  .filter(post => ['blog', 'micro', 'photo'].includes(post.data.category))
+const recentPosts = (await getAllPosts())
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
   .slice(0, 5);
 ---
@@ -103,18 +102,21 @@ const recentEphemeraPosts = (await getAllPosts())
       </div>
     </div>
 
-    <!-- Recent Ephemera Section -->
+    <!-- Recent Posts Section -->
     <div class="border-t border-black/10 dark:border-white/10 py-8">
-      <h2 class="text-2xl font-bold mb-6">Recent Ephemera</h2>
+      <h2 class="text-2xl font-bold mb-6">Recent Posts</h2>
       <div class="space-y-4">
-        {recentEphemeraPosts.map((post) => (
+        {recentPosts.map((post) => (
           <div class="flex items-start gap-4">
             <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
               {formatDate(post.data.pubDate)}
             </time>
-            <a href={`/${post.data.category}/${post.slug}`} class="text-lg hover:text-blue-600 dark:hover:text-blue-400">
-              {post.data.title}
-            </a>
+            <div class="flex-1 min-w-0">
+              <a href={`/${post.data.category}/${post.slug}`} class="text-lg hover:text-blue-600 dark:hover:text-blue-400 block">
+                {post.data.title}
+                <span class="text-sm text-gray-400 dark:text-gray-500 font-normal ml-2">· {post.data.category}</span>
+              </a>
+            </div>
           </div>
         ))}
       </div>

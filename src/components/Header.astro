@@ -1,5 +1,6 @@
 ---
 // src/components/Header.astro
+import SearchModal from './SearchModal.astro';
 
 interface Props {
     currentPage: string;
@@ -99,6 +100,11 @@ const navLinks = [
                 </svg>
             </a>
         </div>
+    </div>
+    
+    <!-- Search Modal Trigger (top right corner) -->
+    <div class="absolute top-4 right-4">
+      <SearchModal />
     </div>
 
 </header>
