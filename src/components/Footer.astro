@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { formatDateWithTime } from '../utils/dateFormat';
+import SearchModal from './SearchModal.astro';
 
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
@@ -112,6 +113,11 @@ const lastThreeWeeks = uniqueWeeks.slice(0, 3);
   <div class="container mx-auto px-4 max-w-3xl">
     <!-- Social Media Icons -->
     <div class="flex justify-center items-center space-x-4 mb-6">
+      <!-- Search -->
+      <div class="group flex items-center">
+        <SearchModal />
+      </div>
+      
       <!-- Mastodon -->
       <a href="https://mastodon.social/@sajal24x7" class="group flex items-center transition-transform hover:scale-105" rel="me" aria-label="Follow on Mastodon" target="_blank" rel="noopener noreferrer">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="h-6 w-6">
