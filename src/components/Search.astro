@@ -7,7 +7,7 @@ const allPosts = await getAllPosts();
   <input 
     type="text" 
     id="search-input"
-    placeholder="Search posts..." 
+    placeholder="Search posts or try 'tag:ai'..." 
     class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg"
   />
   <div id="search-results" class="mt-4 hidden"></div>
@@ -17,27 +17,98 @@ const allPosts = await getAllPosts();
   const searchInput = document.getElementById('search-input');
   const searchResults = document.getElementById('search-results');
   
-  searchInput.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase();
+  function searchPosts(query) {
+    const originalQuery = query;
+    query = query.toLowerCase().trim();
+    
     if (query.length < 2) {
-      searchResults.classList.add('hidden');
-      return;
+      return [];
     }
     
-    const results = allPosts.filter(post => 
-      post.data.title?.toLowerCase().includes(query) ||
-      post.body?.toLowerCase().includes(query) ||
-      post.data.tags?.some(tag => tag.toLowerCase().includes(query))
-    );
+    // Check for tag-specific search (tag:ai)
+    const tagSearchMatch = query.match(/^tag:(.+)$/);
+    if (tagSearchMatch) {
+      const tagQuery = tagSearchMatch[1];
+      return allPosts
+        .filter(post => post.data.tags?.some(tag => 
+          tag.toLowerCase().includes(tagQuery)
+        ))
+        .map(post => ({ post, score: 100 })); // High score for exact tag searches
+    }
     
+    // Regular search with scoring
+    const results = [];
+    
+    allPosts.forEach(post => {
+      let score = 0;
+      const title = post.data.title?.toLowerCase() || '';
+      const body = post.body?.toLowerCase() || '';
+      const tags = post.data.tags || [];
+      
+      // Tag matches (highest priority)
+      const exactTagMatch = tags.some(tag => tag.toLowerCase() === query);
+      const partialTagMatch = tags.some(tag => tag.toLowerCase().includes(query));
+      
+      if (exactTagMatch) {
+        score += 100;
+      } else if (partialTagMatch) {
+        score += 80;
+      }
+      
+      // Title matches (high priority)
+      if (title === query) {
+        score += 60;
+      } else if (title.includes(query)) {
+        score += 40;
+      }
+      
+      // Body content matches (lower priority)
+      if (body.includes(query)) {
+        score += 10;
+      }
+      
+      // Category matches
+      if (post.data.category?.toLowerCase().includes(query)) {
+        score += 20;
+      }
+      
+      if (score > 0) {
+        results.push({ post, score });
+      }
+    });
+    
+    // Sort by score (highest first), then by date (newest first)
+    return results.sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+      return new Date(b.post.data.pubDate) - new Date(a.post.data.pubDate);
+    });
+  }
+  
+  function displayResults(results) {
     if (results.length > 0) {
-      searchResults.innerHTML = results.slice(0, 5).map(post => 
-        `<a href="/${post.data.category}/${post.slug}/" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-          <h3 class="font-semibold">${post.data.title || 'Untitled'}</h3>
-          <p class="text-sm text-gray-600">${post.data.category}</p>
-        </a>`
-      ).join('');
+      searchResults.innerHTML = results.slice(0, 5).map(({ post, score }) => {
+        const tags = post.data.tags || [];
+        const tagBadges = tags.slice(0, 3).map(tag => 
+          `<span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full mr-1">${tag}</span>`
+        ).join('');
+        
+        return `<a href="/${post.data.category}/${post.slug}/" class="block p-3 hover:bg-gray-100 dark:hover:bg-gray-700 border-b border-gray-200 dark:border-gray-600 last:border-b-0">
+          <h3 class="font-semibold mb-1">${post.data.title || 'Untitled'}</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">${post.data.category}</p>
+          ${tags.length > 0 ? `<div class="mb-1">${tagBadges}</div>` : ''}
+        </a>`;
+      }).join('');
       searchResults.classList.remove('hidden');
+    } else {
+      searchResults.classList.add('hidden');
     }
+  }
+  
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value;
+    const results = searchPosts(query);
+    displayResults(results);
   });
 </script>
