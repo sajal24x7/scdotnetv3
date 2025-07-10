@@ -6,55 +6,38 @@ import { formatDate } from '../utils/date';
 const searchQuery = Astro.url.searchParams.get('q') || '';
 const allPosts = await getAllPosts();
 
-// Search functionality for blog posts
+// Very simple search - debugging version
+const searchResults = [];
 
-// Removed old searchPosts function - using inline logic that matches test-search page
-
-// Test the same logic that works on test-search page
-let searchResults: { post: any, score: number }[] = [];
-
-if (searchQuery && searchQuery.length >= 2) {
+if (searchQuery) {
   const query = searchQuery.toLowerCase().trim();
   
-  // Check if it's a tag search
-  if (query.startsWith('tag:')) {
-    const tagQuery = query.substring(4); // Remove 'tag:' prefix
-    
-    searchResults = allPosts
-      .filter(post => {
-        if (!post.data.tags || post.data.tags.length === 0) return false;
-        
-        const hasMatch = post.data.tags.some(tag => {
-          return tag.toLowerCase() === tagQuery;
-        });
-        
-        return hasMatch;
-      })
-      .map(post => ({ post, score: 100 }));
-  } else {
-    // Regular search
-    searchResults = allPosts
-      .filter(post => {
-        const title = post.data.title?.toLowerCase() || '';
-        const category = post.data.category?.toLowerCase() || '';
-        const description = post.data.description?.toLowerCase() || '';
-        const tags = post.data.tags || [];
-        
-        return title.includes(query) || 
-               category.includes(query) ||
-               description.includes(query) ||
-               tags.some(tag => tag.toLowerCase().includes(query));
-      })
-      .map(post => ({ post, score: 50 }));
+  // For debugging - let's just find posts with "ai" in tags
+  if (query === 'tag:ai' || query === 'ai') {
+    for (let i = 0; i < allPosts.length; i++) {
+      const post = allPosts[i];
+      if (post.data.tags) {
+        for (let j = 0; j < post.data.tags.length; j++) {
+          const tag = post.data.tags[j];
+          if (tag.toLowerCase() === 'ai') {
+            searchResults.push({ post, score: 100 });
+            break;
+          }
+        }
+      }
+    }
   }
-  
-  // Sort by date (newest first)
-  searchResults.sort((a, b) => 
-    new Date(b.post.data.pubDate).getTime() - new Date(a.post.data.pubDate).getTime()
-  );
 }
 
-// Search completed
+// Debug info
+const debugInfo = {
+  searchQuery,
+  allPostsCount: allPosts.length,
+  searchResultsCount: searchResults.length,
+  queryLength: searchQuery.length,
+  trimmedQuery: searchQuery.toLowerCase().trim(),
+  samplePostTags: allPosts.length > 0 ? allPosts[0].data.tags : 'no posts'
+};
 ---
 
 <Layout title={searchQuery ? `Search results for "${searchQuery}"` : "Search"} currentPage="search">
@@ -82,6 +65,20 @@ if (searchQuery && searchQuery.length >= 2) {
         </div>
       </form>
       
+      <!-- Debug Info -->
+      <div class="mb-6 p-4 bg-gray-100 dark:bg-gray-800 rounded text-sm">
+        <h3 class="font-bold mb-2">Debug Info:</h3>
+        <pre>{JSON.stringify(debugInfo, null, 2)}</pre>
+        
+        <h4 class="font-bold mt-4 mb-2">Sample Posts with Tags:</h4>
+        {allPosts.slice(0, 5).map(post => (
+          <div class="mb-2 p-2 bg-white dark:bg-gray-700 rounded">
+            <div><strong>{post.data.title}</strong></div>
+            <div>Tags: {post.data.tags ? post.data.tags.join(', ') : 'No tags'}</div>
+          </div>
+        ))}
+      </div>
+
       <!-- Search Results Info -->
       {searchQuery && (
         <div class="text-gray-600 dark:text-gray-400">
