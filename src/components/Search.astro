@@ -29,10 +29,15 @@ const allPosts = await getAllPosts();
   const searchButton = document.getElementById('search-button');
   const searchResults = document.getElementById('search-results');
   
-  function performSearch() {
+  function performSearch(forceSearch = false) {
     const query = searchInput.value.toLowerCase().trim();
     
-    if (query.length < 2) {
+    if (query.length < 2 && !forceSearch) {
+      searchResults.classList.add('hidden');
+      return;
+    }
+    
+    if (query.length === 0) {
       searchResults.classList.add('hidden');
       return;
     }
@@ -76,13 +81,28 @@ const allPosts = await getAllPosts();
       }).join('');
       searchResults.classList.remove('hidden');
     } else {
-      searchResults.innerHTML = `<div class="p-4 text-center text-gray-600 dark:text-gray-400">No results found for "${query}"</div>`;
+      searchResults.innerHTML = `<div class="p-4 text-center text-gray-600 dark:text-gray-400">
+        <div class="mb-2">No results found for "<strong>${query}</strong>"</div>
+        <div class="text-sm">Try searching for "AI", "blog", or "tag:ai"</div>
+      </div>`;
       searchResults.classList.remove('hidden');
     }
   }
   
   searchInput.addEventListener('input', performSearch);
-  searchButton.addEventListener('click', performSearch);
+  
+  searchButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Add visual feedback
+    searchButton.textContent = 'Searching...';
+    setTimeout(() => {
+      searchButton.textContent = 'Search';
+    }, 300);
+    
+    performSearch(true); // Force search even with short queries
+  });
+  
   searchInput.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
