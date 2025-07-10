@@ -1,6 +1,5 @@
 ---
 // src/components/Header.astro
-import SearchModal from './SearchModal.astro';
 
 interface Props {
     currentPage: string;
@@ -79,7 +78,7 @@ const navLinks = [
                 </div>
             </div>
         </div>
-        <!-- Social Icons on the right (only 3 icons for desktop) -->
+        <!-- Social Icons on the right -->
         <div class="flex flex-col items-end space-y-1">
             <!-- Mastodon -->
             <a href="https://mastodon.social/@sajal24x7" class="group flex items-center transition-transform hover:scale-105" rel="me" aria-label="Follow on Mastodon" target="_blank" rel="noopener noreferrer">
@@ -101,12 +100,6 @@ const navLinks = [
             </a>
         </div>
     </div>
-    
-    <!-- Search Modal Trigger (top right corner) -->
-    <div class="absolute top-4 right-4">
-      <SearchModal />
-    </div>
-
 </header>
 
 <style>
