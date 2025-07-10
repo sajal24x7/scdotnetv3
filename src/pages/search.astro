@@ -6,20 +6,7 @@ import { formatDate } from '../utils/date';
 const searchQuery = Astro.url.searchParams.get('q') || '';
 const allPosts = await getAllPosts();
 
-// Debug information
-console.log('=== SEARCH DEBUG ===');
-console.log('Raw search query:', searchQuery);
-console.log('URL:', Astro.url.href);
-console.log('Search params:', Astro.url.searchParams.toString());
-console.log('Total posts loaded:', allPosts.length);
-if (allPosts.length > 0) {
-  console.log('Sample post structure:', {
-    title: allPosts[0].data.title,
-    category: allPosts[0].data.category,
-    tags: allPosts[0].data.tags,
-    hasSlug: !!allPosts[0].slug
-  });
-}
+// Search functionality for blog posts
 
 // Removed old searchPosts function - using inline logic that matches test-search page
 
@@ -28,23 +15,17 @@ let searchResults: { post: any, score: number }[] = [];
 
 if (searchQuery && searchQuery.length >= 2) {
   const query = searchQuery.toLowerCase().trim();
-  console.log('Processing search for:', query);
   
   // Check if it's a tag search
   if (query.startsWith('tag:')) {
     const tagQuery = query.substring(4); // Remove 'tag:' prefix
-    console.log('Tag search for:', tagQuery);
     
     searchResults = allPosts
       .filter(post => {
         if (!post.data.tags || post.data.tags.length === 0) return false;
         
         const hasMatch = post.data.tags.some(tag => {
-          const match = tag.toLowerCase() === tagQuery;
-          if (match) {
-            console.log(`Found match: "${tag}" for query "${tagQuery}"`);
-          }
-          return match;
+          return tag.toLowerCase() === tagQuery;
         });
         
         return hasMatch;
@@ -73,8 +54,7 @@ if (searchQuery && searchQuery.length >= 2) {
   );
 }
 
-console.log('Final search results:', searchResults.length);
-console.log('===================');
+// Search completed
 ---
 
 <Layout title={searchQuery ? `Search results for "${searchQuery}"` : "Search"} currentPage="search">
