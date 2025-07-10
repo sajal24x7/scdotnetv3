@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getAllPosts } from '../utils/content';
+import { formatDate } from '../utils/date';
+
+const searchQuery = Astro.url.searchParams.get('q') || '';
+const allPosts = await getAllPosts();
+
+function searchPosts(query: string) {
+  if (!query || query.length < 2) {
+    return [];
+  }
+
+  query = query.toLowerCase().trim();
+  
+  // Check for tag-specific search (tag:ai)
+  const tagSearchMatch = query.match(/^tag:(.+)$/);
+  if (tagSearchMatch) {
+    const tagQuery = tagSearchMatch[1];
+    return allPosts
+      .filter(post => post.data.tags?.some(tag => {
+        const lowerTag = tag.toLowerCase();
+        const lowerQuery = tagQuery.toLowerCase();
+        // Exact match or word-boundary match (prevents "ai" from matching "rains")
+        return lowerTag === lowerQuery || 
+               lowerTag.startsWith(lowerQuery + '-') || 
+               lowerTag.startsWith(lowerQuery + ' ') ||
+               lowerTag.endsWith('-' + lowerQuery) ||
+               lowerTag.endsWith(' ' + lowerQuery) ||
+               lowerTag.includes(' ' + lowerQuery + ' ') ||
+               lowerTag.includes('-' + lowerQuery + '-');
+      }))
+      .map(post => ({ post, score: 100 }));
+  }
+  
+  // Regular search with scoring
+  const results: { post: any, score: number }[] = [];
+  
+  allPosts.forEach(post => {
+    let score = 0;
+    const title = post.data.title?.toLowerCase() || '';
+    const body = post.body?.toLowerCase() || '';
+    const tags = post.data.tags || [];
+    
+    // Tag matches (highest priority)
+    const exactTagMatch = tags.some(tag => tag.toLowerCase() === query);
+    const partialTagMatch = tags.some(tag => tag.toLowerCase().includes(query));
+    
+    if (exactTagMatch) {
+      score += 100;
+    } else if (partialTagMatch) {
+      score += 80;
+    }
+    
+    // Title matches (high priority)
+    if (title === query) {
+      score += 60;
+    } else if (title.includes(query)) {
+      score += 40;
+    }
+    
+    // Body content matches (lower priority)
+    if (body.includes(query)) {
+      score += 10;
+    }
+    
+    // Category matches
+    if (post.data.category?.toLowerCase().includes(query)) {
+      score += 20;
+    }
+    
+    if (score > 0) {
+      results.push({ post, score });
+    }
+  });
+  
+  // Sort by score (highest first), then by date (newest first)
+  return results.sort((a, b) => {
+    if (b.score !== a.score) {
+      return b.score - a.score;
+    }
+    return new Date(b.post.data.pubDate).getTime() - new Date(a.post.data.pubDate).getTime();
+  });
+}
+
+const searchResults = searchPosts(searchQuery);
+---
+
+<Layout title={searchQuery ? `Search results for "${searchQuery}"` : "Search"} currentPage="search">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Search Header -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold mb-4">Search</h1>
+      
+      <!-- Search Form -->
+      <form method="GET" action="/search" class="mb-6">
+        <div class="flex gap-3">
+          <input
+            type="text"
+            name="q"
+            value={searchQuery}
+            placeholder="Search posts or try 'tag:ai'..."
+            class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+          <button
+            type="submit"
+            class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+          >
+            Search
+          </button>
+        </div>
+      </form>
+      
+      <!-- Search Results Info -->
+      {searchQuery && (
+        <div class="text-gray-600 dark:text-gray-400">
+          {searchResults.length > 0 ? (
+            <p>Found {searchResults.length} result{searchResults.length !== 1 ? 's' : ''} for "<strong>{searchQuery}</strong>"</p>
+          ) : (
+            <p>No results found for "<strong>{searchQuery}</strong>"</p>
+          )}
+        </div>
+      )}
+    </div>
+
+    <!-- Search Results -->
+    {searchQuery && searchResults.length > 0 && (
+      <div class="space-y-6">
+        {searchResults.map(({ post, score }) => (
+          <article class="border-b border-gray-200 dark:border-gray-700 pb-6">
+            <div class="flex items-start gap-4">
+              <time 
+                datetime={post.data.pubDate.toISOString()} 
+                class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap pt-1"
+              >
+                {formatDate(post.data.pubDate)}
+              </time>
+              <div class="flex-1 min-w-0">
+                <h2 class="text-xl font-semibold mb-2">
+                  <a 
+                    href={`/${post.data.category}/${post.slug}/`} 
+                    class="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    {post.data.title || 'Untitled'}
+                  </a>
+                </h2>
+                
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-sm text-gray-500 dark:text-gray-400">
+                    {post.data.category}
+                  </span>
+                  {post.data.tags && post.data.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-1">
+                      {post.data.tags.slice(0, 3).map(tag => (
+                        <span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                      {post.data.tags.length > 3 && (
+                        <span class="text-xs text-gray-500 dark:text-gray-400">
+                          +{post.data.tags.length - 3} more
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
+                
+                {post.data.description && (
+                  <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-3">
+                    {post.data.description}
+                  </p>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    )}
+
+    <!-- No Results State -->
+    {searchQuery && searchResults.length === 0 && (
+      <div class="text-center py-12">
+        <div class="text-gray-400 mb-4">
+          <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">No results found</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          Try adjusting your search terms or browse the content below.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-2 justify-center">
+          <a href="/notes/" class="text-blue-600 dark:text-blue-400 hover:underline">Browse Notes</a>
+          <a href="/ephemera/" class="text-blue-600 dark:text-blue-400 hover:underline">Browse Ephemera</a>
+          <a href="/blog/" class="text-blue-600 dark:text-blue-400 hover:underline">Browse Blog</a>
+        </div>
+      </div>
+    )}
+
+    <!-- Empty State (No Search Query) -->
+    {!searchQuery && (
+      <div class="text-center py-12">
+        <div class="text-gray-400 mb-4">
+          <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">Search the site</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          Enter a search term above to find posts by title, content, or tags.
+        </p>
+        <p class="text-sm text-gray-500 dark:text-gray-500">
+          Try searching for topics like "AI", "technology", or use "tag:ai" for tag-specific searches.
+        </p>
+      </div>
+    )}
+  </div>
+</Layout>
