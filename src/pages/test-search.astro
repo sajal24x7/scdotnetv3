@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getAllPosts } from '../utils/content';
+
+const allPosts = await getAllPosts();
+
+// Find posts with AI tags
+const aiPosts = allPosts.filter(post => 
+  post.data.tags?.some(tag => tag.toLowerCase() === 'ai')
+);
+---
+
+<Layout title="Search Test" currentPage="test">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold mb-4">Search Debug Test</h1>
+    
+    <div class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">Stats:</h2>
+      <ul class="space-y-2">
+        <li><strong>Total posts loaded:</strong> {allPosts.length}</li>
+        <li><strong>Posts with AI tags:</strong> {aiPosts.length}</li>
+      </ul>
+    </div>
+
+    {allPosts.length > 0 && (
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">Sample Post Structure:</h2>
+        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded text-sm overflow-auto">
+{JSON.stringify({
+  title: allPosts[0].data.title,
+  category: allPosts[0].data.category,
+  tags: allPosts[0].data.tags,
+  slug: allPosts[0].slug,
+  hasData: !!allPosts[0].data,
+  hasBody: !!allPosts[0].body
+}, null, 2)}
+        </pre>
+      </div>
+    )}
+
+    {aiPosts.length > 0 && (
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">Posts with AI tags:</h2>
+        <div class="space-y-4">
+          {aiPosts.slice(0, 5).map(post => (
+            <div class="border border-gray-200 dark:border-gray-700 p-4 rounded">
+              <h3 class="font-semibold">{post.data.title}</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Category: {post.data.category} | Tags: {post.data.tags?.join(', ')}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">Manual Tag Search Test:</h2>
+      
+      {(() => {
+        const query = 'ai';
+        const results = allPosts.filter(post => 
+          post.data.tags?.some(tag => {
+            const lowerTag = tag.toLowerCase();
+            const lowerQuery = query.toLowerCase();
+            return lowerTag === lowerQuery;
+          })
+        );
+        
+        return (
+          <div>
+            <p><strong>Search for "ai":</strong> {results.length} results</p>
+            {results.slice(0, 3).map(post => (
+              <div class="mt-2 p-2 bg-gray-50 dark:bg-gray-800 rounded">
+                <div class="font-medium">{post.data.title}</div>
+                <div class="text-sm text-gray-600 dark:text-gray-400">
+                  Tags: {post.data.tags?.join(', ')}
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+      })()}
+    </div>
+
+  </div>
+</Layout>
