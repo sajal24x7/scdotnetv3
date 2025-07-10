@@ -1,6 +1,5 @@
 ---
 // src/components/Header.astro
-import SearchButton from './SearchButton.astro';
 
 interface Props {
     currentPage: string;
@@ -79,12 +78,8 @@ const navLinks = [
                 </div>
             </div>
         </div>
-        <!-- Action Icons on the right (Search + Social Icons) -->
+        <!-- Social Icons on the right -->
         <div class="flex flex-col items-end space-y-1">
-            <!-- Search -->
-            <div class="group flex items-center">
-                <SearchButton />
-            </div>
             <!-- Mastodon -->
             <a href="https://mastodon.social/@sajal24x7" class="group flex items-center transition-transform hover:scale-105" rel="me" aria-label="Follow on Mastodon" target="_blank" rel="noopener noreferrer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="h-5 w-5">
