@@ -45,6 +45,10 @@ const navLinks = [
                     <a href="/books/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-xs uppercase tracking-wide font-medium text-left">BOOKS</a>
                     <a href="/nordletter/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-xs uppercase tracking-wide font-medium text-left">NORDLETTER</a>
                     <a href="/feeds/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-xs uppercase tracking-wide font-medium text-left">FEEDS</a>
+                    <!-- Search for mobile -->
+                    <div class="py-0.5">
+                        <SearchModal />
+                    </div>
                 </div>
             </div>
         </div>
@@ -79,8 +83,12 @@ const navLinks = [
                 </div>
             </div>
         </div>
-        <!-- Social Icons on the right (only 3 icons for desktop) -->
+        <!-- Action Icons on the right (Search + Social Icons) -->
         <div class="flex flex-col items-end space-y-1">
+            <!-- Search -->
+            <div class="group flex items-center">
+                <SearchModal />
+            </div>
             <!-- Mastodon -->
             <a href="https://mastodon.social/@sajal24x7" class="group flex items-center transition-transform hover:scale-105" rel="me" aria-label="Follow on Mastodon" target="_blank" rel="noopener noreferrer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="h-5 w-5">
@@ -101,12 +109,6 @@ const navLinks = [
             </a>
         </div>
     </div>
-    
-    <!-- Search Modal Trigger (top right corner) -->
-    <div class="absolute top-4 right-4">
-      <SearchModal />
-    </div>
-
 </header>
 
 <style>
