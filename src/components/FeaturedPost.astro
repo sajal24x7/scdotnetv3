@@ -1,4 +1,6 @@
 ---
+import { formatDateWithTime } from '../utils/dateFormat';
+
 interface Props {
   title: string;
   description?: string;
@@ -11,11 +13,7 @@ interface Props {
 
 const { title, description, url, date, isUpdated, stage, image } = Astro.props;
 
-const formattedDate = new Intl.DateTimeFormat('en-US', {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric',
-}).format(date);
+const formattedDate = formatDateWithTime(date);
 
 const stageEmoji = {
   fleeting: '💭',

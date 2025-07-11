@@ -1,12 +1,10 @@
 ---
+import { formatDateWithTime } from '../utils/dateFormat';
+
 const { title, description, pubDate, category, image, link } = Astro.props;
 
 const formatDate = (date) => {
-  return new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  }).format(new Date(date));
+  return formatDateWithTime(date);
 };
 ---
 

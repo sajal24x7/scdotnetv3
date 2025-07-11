@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { format } from 'date-fns';
+import { formatDateWithTime } from '../utils/dateFormat';
 import type { CollectionEntry } from 'astro:content';
 import { getYearDirectories } from '../utils/content';
 
@@ -26,9 +26,9 @@ const [category, slug] = Astro.params.slug.split('/');
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-const formattedDate = entry.data?.pubDate ? format(entry.data.pubDate, 'MMMM d, yyyy') : '';
+const formattedDate = entry.data?.pubDate ? formatDateWithTime(entry.data.pubDate) : '';
 const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
-  ? format(entry.data.updatedDate, 'MMMM d, yyyy')
+  ? formatDateWithTime(entry.data.updatedDate)
   : null;
 ---
 

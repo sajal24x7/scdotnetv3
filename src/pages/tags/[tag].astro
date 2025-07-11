@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { formatDateWithTime } from '../../utils/dateFormat';
 
 export async function getStaticPaths() {
   // Get all posts
@@ -61,11 +62,7 @@ const sortedPosts = taggedPosts.sort((a: CollectionEntry<'posts'>, b: Collection
               <a href={`/${post.data.category}/${post.slug}/`} class="group">
                 <div class="flex items-baseline gap-4">
                   <time class="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap">
-                    {new Date(post.data.pubDate).toLocaleDateString('en-US', {
-                      day: 'numeric',
-                      month: 'short',
-                      year: 'numeric'
-                    })}
+                    {formatDateWithTime(post.data.pubDate)}
                   </time>
                   <h2 class="text-xl font-medium group-hover:text-accent transition-colors">
                     {post.data.title}

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { formatDateWithTime } from '../../utils/dateFormat';
 
 // Try to get nordletter entries
 const nordletterEntries = await getCollection('nordletter');
@@ -20,7 +21,7 @@ const count = nordletterEntries.length;
     <ul class="space-y-4">
       {nordletterEntries.map(entry => (
         <li class="border-b border-borderColor dark:border-borderColorDark pb-4">
-          {entry.slug} - {entry.data.title} - {new Date(entry.data.pubDate).toLocaleDateString()}
+          {entry.slug} - {entry.data.title} - {formatDateWithTime(entry.data.pubDate)}
         </li>
       ))}
     </ul>
