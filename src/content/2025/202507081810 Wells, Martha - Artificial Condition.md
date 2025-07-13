@@ -3,7 +3,7 @@ title: "Wells, Martha - Artificial Condition"
 slug: "wells-martha-artificial-condition"
 pubDate: 2025-07-11T18:26:14+03:00
 updatedDate: 2025-07-11T18:26:14+03:00
-category: blog
+category: bookshelf
 tags: 
   - sci-fi
   - murderbot
