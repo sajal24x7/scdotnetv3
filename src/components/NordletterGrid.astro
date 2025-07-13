@@ -35,10 +35,10 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseI
                 </div>
               )}
               <div class="nordletter-content">
-                <h3 class="nordletter-title">{post.data.title}</h3>
                 <time class="nordletter-date" datetime={post.data.pubDate.toISOString()}>
                   {formatDateWithoutYear(post.data.pubDate)}
                 </time>
+                <h3 class="nordletter-title">{post.data.title}</h3>
               </div>
             </a>
           </article>
