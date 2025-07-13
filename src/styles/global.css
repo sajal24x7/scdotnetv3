@@ -5,11 +5,19 @@
   --random-link-color: inherit; /* Default link color */
   --link-color: #0066cc; /* Blue link color for light mode */
   --hr-color: #666666; /* Darker color for horizontal rules in light mode */
+  --hover-preview-bg: #ffffff; /* Background color for hover preview */
+  --hover-preview-border: #e0e0e0; /* Border color for hover preview */
+  --hover-preview-shadow: rgba(0, 0, 0, 0.1); /* Shadow color for hover preview */
+  --hover-preview-text: #333333; /* Text color for hover preview */
 }
 
 .dark {
   --link-color: #4d9fff; /* Lighter blue for dark mode */
   --hr-color: #444444; /* Darker color for horizontal rules in dark mode */
+  --hover-preview-bg: #2a2a2a; /* Dark background for hover preview */
+  --hover-preview-border: #404040; /* Dark border for hover preview */
+  --hover-preview-shadow: rgba(0, 0, 0, 0.3); /* Darker shadow for hover preview */
+  --hover-preview-text: #e0e0e0; /* Light text for hover preview */
 }
 
 /* Horizontal rule styling */
@@ -55,4 +63,183 @@ a.icon-link.random-underline span {
     text-decoration: none;
     padding-bottom: 2px;
   }
+}
+
+/* Hover Preview Styles */
+.hover-preview {
+  position: absolute;
+  z-index: 1000;
+  max-width: 400px;
+  width: 380px;
+  max-height: 500px;
+  background: var(--hover-preview-bg);
+  border: 1px solid var(--hover-preview-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px var(--hover-preview-shadow);
+  padding: 20px;
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: var(--hover-preview-text);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  overflow-y: auto;
+  backdrop-filter: blur(8px);
+}
+
+.hover-preview.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.hover-preview-header {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--hover-preview-border);
+}
+
+.hover-preview-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: var(--hover-preview-text);
+}
+
+.hover-preview-meta {
+  font-size: 0.8em;
+  color: var(--hover-preview-text);
+  opacity: 0.7;
+  margin: 0;
+}
+
+.hover-preview-content {
+  overflow: hidden;
+  position: relative;
+}
+
+.hover-preview-content h1,
+.hover-preview-content h2,
+.hover-preview-content h3,
+.hover-preview-content h4,
+.hover-preview-content h5,
+.hover-preview-content h6 {
+  margin: 0.5em 0 0.25em 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--hover-preview-text);
+}
+
+.hover-preview-content p {
+  margin: 0.5em 0;
+  color: var(--hover-preview-text);
+}
+
+.hover-preview-content ul,
+.hover-preview-content ol {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+}
+
+.hover-preview-content li {
+  margin: 0.25em 0;
+}
+
+.hover-preview-content a {
+  color: var(--link-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.hover-preview-content a:hover {
+  border-bottom-color: var(--link-color);
+}
+
+.hover-preview-content blockquote {
+  margin: 0.5em 0;
+  padding: 0.5em 1em;
+  border-left: 3px solid var(--link-color);
+  background: var(--hover-preview-bg);
+  opacity: 0.9;
+}
+
+.hover-preview-content code {
+  background: var(--hover-preview-border);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.hover-preview-content pre {
+  background: var(--hover-preview-border);
+  padding: 1em;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 0.5em 0;
+}
+
+.hover-preview-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: var(--hover-preview-text);
+  opacity: 0.7;
+}
+
+.hover-preview-error {
+  color: #ff6b6b;
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+}
+
+/* Custom scrollbar for hover preview */
+.hover-preview::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hover-preview::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hover-preview::-webkit-scrollbar-thumb {
+  background: var(--hover-preview-border);
+  border-radius: 3px;
+}
+
+.hover-preview::-webkit-scrollbar-thumb:hover {
+  background: var(--link-color);
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .hover-preview {
+    max-width: 90vw;
+    width: 90vw;
+    max-height: 60vh;
+    left: 5vw !important;
+    right: 5vw !important;
+    transform: translateY(10px) !important;
+  }
+  
+  .hover-preview.visible {
+    transform: translateY(0) !important;
+  }
+}
+
+/* Prevent hover preview on touch devices */
+@media (hover: none) {
+  .hover-preview {
+    display: none;
+  }
+}
+
+/* Link styling for hover preview capable links */
+a[data-hover-preview] {
+  cursor: pointer;
+  position: relative;
 } 

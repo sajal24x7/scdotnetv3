@@ -1,0 +1,373 @@
+/**
+ * Hover Preview System
+ * Inspired by Obsidian's hover preview functionality
+ * Shows a preview of linked content when hovering over internal links
+ */
+
+class HoverPreview {
+  constructor() {
+    this.previewElement = null;
+    this.activeLink = null;
+    this.showTimeout = null;
+    this.hideTimeout = null;
+    this.cache = new Map();
+    this.isInitialized = false;
+    
+    // Configuration
+    this.config = {
+      showDelay: 300,
+      hideDelay: 100,
+      maxContentLength: 800,
+      enablePrefetch: true,
+      prefetchDelay: 1000
+    };
+    
+    this.init();
+  }
+  
+  init() {
+    if (this.isInitialized) return;
+    
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => this.setupEventListeners());
+    } else {
+      this.setupEventListeners();
+    }
+    
+    this.isInitialized = true;
+  }
+  
+  setupEventListeners() {
+    // Create preview element
+    this.createPreviewElement();
+    
+    // Set up event delegation for all links
+    document.body.addEventListener('mouseover', (e) => this.handleMouseOver(e));
+    document.body.addEventListener('mouseout', (e) => this.handleMouseOut(e));
+    document.body.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+    
+    // Handle clicks to close preview
+    document.addEventListener('click', (e) => {
+      if (!this.previewElement.contains(e.target)) {
+        this.hidePreview();
+      }
+    });
+    
+    // Handle scroll to hide preview
+    window.addEventListener('scroll', () => this.hidePreview());
+    
+    // Handle resize to hide preview
+    window.addEventListener('resize', () => this.hidePreview());
+  }
+  
+  createPreviewElement() {
+    this.previewElement = document.createElement('div');
+    this.previewElement.className = 'hover-preview';
+    this.previewElement.innerHTML = `
+      <div class="hover-preview-header">
+        <h3 class="hover-preview-title"></h3>
+        <p class="hover-preview-meta"></p>
+      </div>
+      <div class="hover-preview-content"></div>
+    `;
+    
+    // Prevent preview from hiding when hovering over it
+    this.previewElement.addEventListener('mouseover', () => {
+      this.clearHideTimeout();
+    });
+    
+    this.previewElement.addEventListener('mouseout', () => {
+      this.scheduleHide();
+    });
+    
+    document.body.appendChild(this.previewElement);
+  }
+  
+  handleMouseOver(e) {
+    const link = e.target.closest('a');
+    if (!link || !this.isInternalLink(link)) return;
+    
+    this.activeLink = link;
+    this.clearHideTimeout();
+    
+    // Schedule preview show
+    this.showTimeout = setTimeout(() => {
+      this.showPreview(link);
+    }, this.config.showDelay);
+  }
+  
+  handleMouseOut(e) {
+    const link = e.target.closest('a');
+    if (!link || link !== this.activeLink) return;
+    
+    this.clearShowTimeout();
+    this.scheduleHide();
+  }
+  
+  handleMouseMove(e) {
+    if (!this.previewElement || !this.previewElement.classList.contains('visible')) return;
+    
+    this.positionPreview(e);
+  }
+  
+  isInternalLink(link) {
+    const href = link.getAttribute('href');
+    if (!href) return false;
+    
+    // Check if it's an internal link (starts with /, __GHOST_URL__, or is relative)
+    return href.startsWith('/') || 
+           href.includes('__GHOST_URL__') || 
+           (!href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel'));
+  }
+  
+  async showPreview(link) {
+    if (!link) return;
+    
+    const href = this.normalizeUrl(link.getAttribute('href'));
+    const title = link.textContent.trim() || link.getAttribute('title') || 'Loading...';
+    
+    // Show loading state
+    this.previewElement.querySelector('.hover-preview-title').textContent = title;
+    this.previewElement.querySelector('.hover-preview-meta').textContent = 'Loading...';
+    this.previewElement.querySelector('.hover-preview-content').innerHTML = 
+      '<div class="hover-preview-loading">Loading preview...</div>';
+    
+    this.previewElement.classList.add('visible');
+    
+    try {
+      const content = await this.fetchContent(href);
+      if (content && this.activeLink === link) {
+        this.displayContent(content);
+      }
+    } catch (error) {
+      console.warn('Failed to load preview:', error);
+      if (this.activeLink === link) {
+        this.previewElement.querySelector('.hover-preview-content').innerHTML = 
+          '<div class="hover-preview-error">Failed to load preview</div>';
+      }
+    }
+  }
+  
+  normalizeUrl(href) {
+    // Handle __GHOST_URL__ placeholders
+    if (href.includes('__GHOST_URL__')) {
+      href = href.replace('__GHOST_URL__', '');
+    }
+    
+    // Ensure it starts with /
+    if (!href.startsWith('/')) {
+      href = '/' + href;
+    }
+    
+    return href;
+  }
+  
+  async fetchContent(url) {
+    // Check cache first
+    if (this.cache.has(url)) {
+      return this.cache.get(url);
+    }
+    
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Failed to fetch');
+      
+      const html = await response.text();
+      const content = this.parseContent(html, url);
+      
+      // Cache the result
+      this.cache.set(url, content);
+      
+      return content;
+    } catch (error) {
+      console.warn('Error fetching content:', error);
+      return null;
+    }
+  }
+  
+  parseContent(html, url) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    
+    // Extract title from various sources
+    let title = doc.querySelector('h1')?.textContent?.trim() ||
+                doc.querySelector('title')?.textContent?.trim() ||
+                doc.querySelector('meta[property="og:title"]')?.getAttribute('content') ||
+                'Untitled';
+    
+    // Extract meta information
+    const publishDate = doc.querySelector('meta[property="article:published_time"]')?.getAttribute('content') ||
+                       doc.querySelector('time')?.getAttribute('datetime') ||
+                       doc.querySelector('.date')?.textContent?.trim();
+    
+    const description = doc.querySelector('meta[name="description"]')?.getAttribute('content') ||
+                       doc.querySelector('meta[property="og:description"]')?.getAttribute('content');
+    
+    // Extract main content
+    let content = '';
+    const contentSelectors = [
+      'main',
+      'article',
+      '.post-content',
+      '.content',
+      '.entry-content',
+      '.post-body',
+      '.article-content'
+    ];
+    
+    let contentElement = null;
+    for (const selector of contentSelectors) {
+      contentElement = doc.querySelector(selector);
+      if (contentElement) break;
+    }
+    
+    if (!contentElement) {
+      // Fallback to body but remove header, nav, footer, aside
+      contentElement = doc.body;
+      if (contentElement) {
+        const elementsToRemove = contentElement.querySelectorAll('header, nav, footer, aside, .header, .nav, .footer, .sidebar');
+        elementsToRemove.forEach(el => el.remove());
+      }
+    }
+    
+    if (contentElement) {
+      // Clean up the content
+      const clone = contentElement.cloneNode(true);
+      
+      // Remove unwanted elements
+      const unwantedSelectors = [
+        'script', 'style', 'noscript', 'iframe', 'video', 'audio',
+        '.social-share', '.comments', '.author-bio', '.related-posts',
+        '.navigation', '.pagination', '.breadcrumbs', '.tags'
+      ];
+      
+      unwantedSelectors.forEach(selector => {
+        clone.querySelectorAll(selector).forEach(el => el.remove());
+      });
+      
+      // Get text content and truncate if needed
+      const textContent = clone.textContent.trim();
+      if (textContent.length > this.config.maxContentLength) {
+        content = textContent.substring(0, this.config.maxContentLength) + '...';
+      } else {
+        content = textContent;
+      }
+      
+      // Try to preserve some HTML structure for better formatting
+      const htmlContent = clone.innerHTML;
+      if (htmlContent.length < this.config.maxContentLength * 1.5) {
+        content = htmlContent;
+      }
+    }
+    
+    return {
+      title,
+      url,
+      publishDate,
+      description,
+      content: content || description || 'No content available'
+    };
+  }
+  
+  displayContent(contentData) {
+    const titleElement = this.previewElement.querySelector('.hover-preview-title');
+    const metaElement = this.previewElement.querySelector('.hover-preview-meta');
+    const contentElement = this.previewElement.querySelector('.hover-preview-content');
+    
+    titleElement.textContent = contentData.title;
+    
+    // Format meta information
+    let metaText = '';
+    if (contentData.publishDate) {
+      const date = new Date(contentData.publishDate);
+      metaText = date.toLocaleDateString();
+    }
+    if (contentData.description) {
+      metaText += (metaText ? ' • ' : '') + contentData.description;
+    }
+    metaElement.textContent = metaText;
+    
+    // Display content
+    if (contentData.content.includes('<')) {
+      // HTML content
+      contentElement.innerHTML = contentData.content;
+    } else {
+      // Plain text - convert to paragraphs
+      const paragraphs = contentData.content.split('\n\n')
+        .filter(p => p.trim())
+        .map(p => `<p>${p.trim()}</p>`)
+        .join('');
+      contentElement.innerHTML = paragraphs;
+    }
+  }
+  
+  positionPreview(e) {
+    if (!this.previewElement || !this.previewElement.classList.contains('visible')) return;
+    
+    const rect = this.previewElement.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    
+    let left = e.clientX + 15;
+    let top = e.clientY + 15;
+    
+    // Adjust horizontal position
+    if (left + rect.width > viewportWidth) {
+      left = e.clientX - rect.width - 15;
+    }
+    
+    // Adjust vertical position
+    if (top + rect.height > viewportHeight) {
+      top = e.clientY - rect.height - 15;
+    }
+    
+    // Ensure preview stays within viewport
+    left = Math.max(10, Math.min(left, viewportWidth - rect.width - 10));
+    top = Math.max(10, Math.min(top, viewportHeight - rect.height - 10));
+    
+    this.previewElement.style.left = left + 'px';
+    this.previewElement.style.top = top + 'px';
+  }
+  
+  hidePreview() {
+    if (this.previewElement) {
+      this.previewElement.classList.remove('visible');
+    }
+    this.activeLink = null;
+    this.clearTimeouts();
+  }
+  
+  scheduleHide() {
+    this.hideTimeout = setTimeout(() => {
+      this.hidePreview();
+    }, this.config.hideDelay);
+  }
+  
+  clearShowTimeout() {
+    if (this.showTimeout) {
+      clearTimeout(this.showTimeout);
+      this.showTimeout = null;
+    }
+  }
+  
+  clearHideTimeout() {
+    if (this.hideTimeout) {
+      clearTimeout(this.hideTimeout);
+      this.hideTimeout = null;
+    }
+  }
+  
+  clearTimeouts() {
+    this.clearShowTimeout();
+    this.clearHideTimeout();
+  }
+}
+
+// Initialize the hover preview system
+window.addEventListener('load', () => {
+  new HoverPreview();
+});
+
+// Export for potential external use
+window.HoverPreview = HoverPreview;
