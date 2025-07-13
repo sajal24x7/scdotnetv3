@@ -147,7 +147,7 @@ class HoverPreview {
   handleMouseMove(e) {
     if (!this.previewElement || !this.previewElement.classList.contains('visible')) return;
     
-    this.positionPreview(e);
+    this.positionPreview(this.activeLink);
   }
   
   isInternalLink(link) {
@@ -192,6 +192,7 @@ class HoverPreview {
       </div>
     `;
     this.previewElement.classList.add('visible');
+    this.positionPreview(link);
     
     try {
       const content = await this.fetchContent(href);
@@ -249,6 +250,7 @@ class HoverPreview {
     this.previewElement.className = 'hover-preview external-link';
     this.previewElement.innerHTML = externalPreviewContent;
     this.previewElement.classList.add('visible');
+    this.positionPreview(link);
   }
   
   normalizeUrl(href) {
@@ -382,32 +384,42 @@ class HoverPreview {
     `;
   }
   
-  positionPreview(e) {
-    if (!this.previewElement || !this.previewElement.classList.contains('visible')) return;
+  positionPreview(link) {
+    if (!this.previewElement || !this.activeLink) return;
     
-    const rect = this.previewElement.getBoundingClientRect();
+    const linkRect = this.activeLink.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     
-    let left = e.clientX + 15;
-    let top = e.clientY + 15;
+    // Set initial position to calculate dimensions
+    this.previewElement.style.left = '0px';
+    this.previewElement.style.top = '0px';
+    this.previewElement.style.visibility = 'hidden';
+    this.previewElement.style.opacity = '1';
     
-    // Adjust horizontal position
-    if (left + rect.width > viewportWidth) {
-      left = e.clientX - rect.width - 15;
+    // Force layout to get accurate dimensions
+    const previewRect = this.previewElement.getBoundingClientRect();
+    
+    // Calculate position (show above the link like a tooltip)
+    let left = linkRect.left + linkRect.width / 2 - previewRect.width / 2;
+    let top = linkRect.top - previewRect.height - 10;
+    
+    // Adjust if preview goes off screen horizontally
+    if (left < 10) left = 10;
+    if (left + previewRect.width > viewportWidth - 10) {
+      left = viewportWidth - previewRect.width - 10;
     }
     
-    // Adjust vertical position
-    if (top + rect.height > viewportHeight) {
-      top = e.clientY - rect.height - 15;
+    // If preview goes above viewport, show it below the link
+    if (top < 10) {
+      top = linkRect.bottom + 10;
     }
     
-    // Ensure preview stays within viewport
-    left = Math.max(10, Math.min(left, viewportWidth - rect.width - 10));
-    top = Math.max(10, Math.min(top, viewportHeight - rect.height - 10));
-    
+    // Final positioning
     this.previewElement.style.left = left + 'px';
     this.previewElement.style.top = top + 'px';
+    this.previewElement.style.visibility = 'visible';
+    this.previewElement.style.opacity = '0'; // Reset for transition
   }
   
   hidePreview() {

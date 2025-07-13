@@ -67,11 +67,11 @@ a.icon-link.random-underline span {
 
 /* Hover Preview Styles */
 .hover-preview {
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   max-width: 400px;
   width: 380px;
-  max-height: 500px;
+  max-height: 300px;
   background: var(--hover-preview-bg);
   border: 1px solid var(--hover-preview-border);
   border-radius: 8px;
