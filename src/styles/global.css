@@ -239,13 +239,14 @@ a.icon-link.random-underline span {
 }
 
 /* Link styling for hover preview capable links (only in specific content areas) */
-.prose a, .post-content a, .content a, .entry-content a, .article-content a {
+.prose a, article.prose a, .post-content a, .content a, .entry-content a, .article-content a {
   cursor: pointer;
   position: relative;
 }
 
 /* Internal link styling - light blue (only in specific content areas) */
 .prose a[href^="/"], .prose a[href*="__GHOST_URL__"],
+article.prose a[href^="/"], article.prose a[href*="__GHOST_URL__"],
 .post-content a[href^="/"], .post-content a[href*="__GHOST_URL__"],
 .content a[href^="/"], .content a[href*="__GHOST_URL__"],
 .entry-content a[href^="/"], .entry-content a[href*="__GHOST_URL__"],
@@ -257,6 +258,7 @@ a.icon-link.random-underline span {
 }
 
 .prose a[href^="/"]:hover, .prose a[href*="__GHOST_URL__"]:hover,
+article.prose a[href^="/"]:hover, article.prose a[href*="__GHOST_URL__"]:hover,
 .post-content a[href^="/"]:hover, .post-content a[href*="__GHOST_URL__"]:hover,
 .content a[href^="/"]:hover, .content a[href*="__GHOST_URL__"]:hover,
 .entry-content a[href^="/"]:hover, .entry-content a[href*="__GHOST_URL__"]:hover,
@@ -267,6 +269,7 @@ a.icon-link.random-underline span {
 
 /* External link styling - violet (only in specific content areas) */
 .prose a[href^="http"]:not([href*="__GHOST_URL__"]),
+article.prose a[href^="http"]:not([href*="__GHOST_URL__"]),
 .post-content a[href^="http"]:not([href*="__GHOST_URL__"]),
 .content a[href^="http"]:not([href*="__GHOST_URL__"]),
 .entry-content a[href^="http"]:not([href*="__GHOST_URL__"]),
@@ -278,6 +281,7 @@ a.icon-link.random-underline span {
 }
 
 .prose a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+article.prose a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
 .post-content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
 .content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
 .entry-content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
@@ -288,6 +292,7 @@ a.icon-link.random-underline span {
 
 /* Dark mode adjustments (only in specific content areas) */
 .dark .prose a[href^="/"], .dark .prose a[href*="__GHOST_URL__"],
+.dark article.prose a[href^="/"], .dark article.prose a[href*="__GHOST_URL__"],
 .dark .post-content a[href^="/"], .dark .post-content a[href*="__GHOST_URL__"],
 .dark .content a[href^="/"], .dark .content a[href*="__GHOST_URL__"],
 .dark .entry-content a[href^="/"], .dark .entry-content a[href*="__GHOST_URL__"],
@@ -297,6 +302,7 @@ a.icon-link.random-underline span {
 }
 
 .dark .prose a[href^="/"]:hover, .dark .prose a[href*="__GHOST_URL__"]:hover,
+.dark article.prose a[href^="/"]:hover, .dark article.prose a[href*="__GHOST_URL__"]:hover,
 .dark .post-content a[href^="/"]:hover, .dark .post-content a[href*="__GHOST_URL__"]:hover,
 .dark .content a[href^="/"]:hover, .dark .content a[href*="__GHOST_URL__"]:hover,
 .dark .entry-content a[href^="/"]:hover, .dark .entry-content a[href*="__GHOST_URL__"]:hover,
@@ -306,6 +312,7 @@ a.icon-link.random-underline span {
 }
 
 .dark .prose a[href^="http"]:not([href*="__GHOST_URL__"]),
+.dark article.prose a[href^="http"]:not([href*="__GHOST_URL__"]),
 .dark .post-content a[href^="http"]:not([href*="__GHOST_URL__"]),
 .dark .content a[href^="http"]:not([href*="__GHOST_URL__"]),
 .dark .entry-content a[href^="http"]:not([href*="__GHOST_URL__"]),
@@ -315,6 +322,7 @@ a.icon-link.random-underline span {
 }
 
 .dark .prose a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+.dark article.prose a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
 .dark .post-content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
 .dark .content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
 .dark .entry-content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,

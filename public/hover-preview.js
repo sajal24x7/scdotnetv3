@@ -49,7 +49,9 @@ class HoverPreview {
       '.post-content',
       '.content',
       '.entry-content',
-      '.article-content'
+      '.article-content',
+      'article.prose',
+      '.prose-content'
     ];
     
     let contentContainers = [];
@@ -117,7 +119,9 @@ class HoverPreview {
       '.post-content',
       '.content',
       '.entry-content',
-      '.article-content'
+      '.article-content',
+      'article.prose',
+      '.prose-content'
     ];
     
     const isInContentArea = contentSelectors.some(selector => {
