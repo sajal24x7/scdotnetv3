@@ -44,77 +44,61 @@
   /* Hover tooltip styles */
   .hover-tooltip {
     position: fixed;
-    background: rgba(0, 0, 0, 0.95);
-    color: white;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    max-width: 300px;
-    z-index: 1000;
-    pointer-events: none;
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.2s ease, transform 0.2s ease;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
   }
 
   .hover-tooltip.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  :global(.dark) .hover-tooltip {
-    background: rgba(255, 255, 255, 0.95);
-    color: #1a1a1a;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    display: block !important;
   }
 
   /* Internal link preview */
-  .internal-preview {
-    border-left: 3px solid #3b82f6;
-    padding-left: 12px;
+  .hover-tooltip .internal-preview {
+    border-left: 3px solid #3b82f6 !important;
+    padding-left: 12px !important;
   }
 
-  .internal-preview .title {
-    font-weight: 600;
-    color: #3b82f6;
-    margin-bottom: 4px;
+  .hover-tooltip .internal-preview .title {
+    font-weight: 600 !important;
+    color: #3b82f6 !important;
+    margin-bottom: 4px !important;
+    font-size: 14px !important;
+  }
+  
+  :global(.dark) .hover-tooltip .internal-preview .title {
+    color: #60a5fa !important;
   }
 
-  .internal-preview .category {
-    font-size: 12px;
-    opacity: 0.8;
-  }
-
-  :global(.dark) .internal-preview .title {
-    color: #60a5fa;
+  .hover-tooltip .internal-preview .description {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    margin-top: 4px !important;
+    opacity: 0.8 !important;
   }
 
   /* External link preview */
-  .external-preview {
-    border-left: 3px solid #8b5cf6;
-    padding-left: 12px;
+  .hover-tooltip .external-preview {
+    border-left: 3px solid #8b5cf6 !important;
+    padding-left: 12px !important;
   }
 
-  .external-preview .url {
-    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-    font-size: 12px;
-    color: #8b5cf6;
-    word-break: break-all;
-    margin-bottom: 6px;
+  .hover-tooltip .external-preview .url {
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace !important;
+    font-size: 12px !important;
+    color: #8b5cf6 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+    margin-bottom: 6px !important;
+    line-height: 1.4 !important;
   }
 
-  .external-preview .action {
-    font-size: 12px;
-    color: #8b5cf6;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  :global(.dark) .external-preview .url,
-  :global(.dark) .external-preview .action {
-    color: #a78bfa;
+  :global(.dark) .hover-tooltip .external-preview .url {
+    color: #a78bfa !important;
   }
 </style>
 
@@ -167,29 +151,42 @@
         });
       });
       
-      console.log(`Processed ${document.querySelectorAll('.prose a[data-internal], .prose a[data-external]').length} links`);
+
     }
     
     function showTooltip(event, href, isInternal) {
       let content = '';
       
       if (isInternal) {
-        // Internal link preview
+        // Internal link preview - get data from attributes
         const cleanHref = href.replace('__GHOST_URL__', '');
         const urlParts = cleanHref.replace(/^\//, '').split('/');
         
         let title = 'Internal Link';
-        let category = '';
+        let description = '';
         
         if (urlParts.length >= 2) {
-          category = urlParts[0];
           title = urlParts[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
+        
+        // Check if the link has preview data
+        const linkElement = event.target.closest('a');
+        if (linkElement) {
+          const dataTitle = linkElement.getAttribute('data-title');
+          const dataDescription = linkElement.getAttribute('data-description');
+          
+          if (dataTitle) {
+            title = dataTitle;
+          }
+          if (dataDescription) {
+            description = dataDescription;
+          }
         }
         
         content = `
           <div class="internal-preview">
             <div class="title">${title}</div>
-            <div class="category">Category: ${category}</div>
+            ${description ? `<div class="description">${description}</div>` : ''}
           </div>
         `;
       } else {
@@ -197,23 +194,67 @@
         content = `
           <div class="external-preview">
             <div class="url">${href}</div>
-            <div class="action">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M7 17l9.2-9.2M17 17V7H7"/>
-              </svg>
-              Open in new tab
-            </div>
           </div>
         `;
       }
       
       tooltip.innerHTML = content;
+      
+      // Apply inline styles with light/dark mode awareness
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      
+      if (isDarkMode) {
+        tooltip.style.background = 'rgba(0, 0, 0, 0.95)';
+        tooltip.style.color = 'white';
+        tooltip.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+        tooltip.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+      } else {
+        tooltip.style.background = 'rgba(255, 255, 255, 0.95)';
+        tooltip.style.color = '#1a1a1a';
+        tooltip.style.border = '1px solid rgba(0, 0, 0, 0.1)';
+        tooltip.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+      }
+      
+      tooltip.style.padding = '12px 16px';
+      tooltip.style.borderRadius = '8px';
+      tooltip.style.fontSize = '14px';
+      tooltip.style.zIndex = '9999';
+      tooltip.style.pointerEvents = 'none';
+      
+      // Set different widths for internal vs external links
+      if (isInternal) {
+        tooltip.style.maxWidth = '300px';
+        tooltip.style.minWidth = '150px';
+      } else {
+        tooltip.style.maxWidth = '400px';
+        tooltip.style.minWidth = '100px';
+      }
+      
       tooltip.classList.add('visible');
+      
+      // Force show with inline styles to ensure it appears
+      tooltip.style.display = 'block';
+      tooltip.style.opacity = '1';
+      tooltip.style.transform = 'translateY(0)';
+      
       updateTooltipPosition(event);
+      
+      
     }
     
     function hideTooltip() {
       tooltip.classList.remove('visible');
+      
+      // Force hide with inline styles to ensure it disappears
+      tooltip.style.opacity = '0';
+      tooltip.style.transform = 'translateY(-10px)';
+      
+      // Clear the timeout to hide after a short delay
+      setTimeout(() => {
+        if (!tooltip.classList.contains('visible')) {
+          tooltip.style.display = 'none';
+        }
+      }, 200);
     }
     
     function updateTooltipPosition(event) {
@@ -240,6 +281,8 @@
       tooltip.style.left = left + 'px';
       tooltip.style.top = top + 'px';
     }
+    
+
     
     // Initialize on DOM ready
     if (document.readyState === 'loading') {
