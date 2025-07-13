@@ -3,14 +3,15 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { formatDateWithTime } from '../../utils/dateFormat';
+import { getAllPosts } from '../../utils/content';
 
 export async function getStaticPaths() {
   // Get all posts
-  const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
+  const allPosts = await getAllPosts();
   
   // Get all unique tags
   const tags = new Set<string>();
-  allPosts.forEach((post: CollectionEntry<'posts'>) => {
+  allPosts.forEach(post => {
     post.data.tags?.forEach((tag: string) => tags.add(tag));
   });
 
@@ -23,37 +24,92 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.props;
 
-// Get all posts for runtime - redefine for component scope
-const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
+// Get category filter from URL params
+const category = Astro.url.searchParams.get('category');
 
-// Filter posts by tag
-const taggedPosts = allPosts.filter((post: CollectionEntry<'posts'>) => 
-  post.data.tags?.includes(tag)
-);
+// Get all posts for runtime - redefine for component scope
+const allPosts = await getAllPosts();
+
+// Filter posts by tag and optionally by category
+const taggedPosts = allPosts.filter(post => {
+  if (!post.data.tags?.includes(tag)) return false;
+  
+  if (category) {
+    if (category === 'ephemera') {
+      return ['blog', 'micro', 'photo', 'til'].includes(post.data.category);
+    }
+    return post.data.category === category;
+  }
+  
+  return true;
+});
 
 // Sort by publish date (newest first)
-const sortedPosts = taggedPosts.sort((a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => 
+const sortedPosts = taggedPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+// Get display title based on category
+const getTitle = () => {
+  if (category === 'ephemera') return `#${tag} in Ephemera`;
+  if (category) return `#${tag} in ${category.charAt(0).toUpperCase() + category.slice(1)}`;
+  return `#${tag}`;
+};
+
+const getDescription = () => {
+  if (category === 'ephemera') return `Blog posts, photos, and micro updates tagged with #${tag}`;
+  if (category) return `${category.charAt(0).toUpperCase() + category.slice(1)} content tagged with #${tag}`;
+  return `Content tagged with #${tag}`;
+};
+
+// Get back link
+const getBackLink = () => {
+  return category ? `/tags/?category=${category}` : '/tags/';
+};
+
+const getBackText = () => {
+  if (category === 'ephemera') return '← Back to Ephemera tags';
+  if (category) return `← Back to ${category.charAt(0).toUpperCase() + category.slice(1)} tags`;
+  return '← Back to all tags';
+};
 ---
 
 <Layout 
-  title={`#${tag} - Sajal Choudhary`} 
-  description={`Content tagged with #${tag}`}
+  title={`${getTitle()} - Sajal Choudhary`} 
+  description={getDescription()}
   currentPage={`/tags/${tag}/`}
 >
   <div class="max-w-2xl mx-auto px-4">
     <header class="mb-16">
-      <h1 class="text-4xl font-bold mb-4">#{tag}</h1>
+      <h1 class="text-4xl font-bold mb-4">{getTitle()}</h1>
+      <div class="flex flex-col gap-2 mb-4">
+        <a 
+          href={getBackLink()} 
+          class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
+        >
+          {getBackText()}
+        </a>
+        {category && (
+          <a 
+            href={`/tags/${tag}/`} 
+            class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
+          >
+            View all #{tag} posts
+          </a>
+        )}
+      </div>
       <p class="text-xl text-textSecondary dark:text-textSecondaryDark">
         {sortedPosts.length} {sortedPosts.length === 1 ? 'item' : 'items'} tagged with #{tag}
+        {category && ` in ${category === 'ephemera' ? 'ephemera' : category}`}
       </p>
     </header>
 
     <section class="space-y-12">
       {sortedPosts.length === 0 ? (
         <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
-          <p class="text-textSecondary dark:text-textSecondaryDark">No content found with this tag.</p>
+          <p class="text-textSecondary dark:text-textSecondaryDark">
+            No content found with this tag{category ? ` in ${category}` : ''}.
+          </p>
         </div>
       ) : (
         <div class="space-y-12">

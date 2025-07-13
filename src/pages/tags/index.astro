@@ -1,13 +1,27 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { getAllPosts } from '../../utils/content';
+
+// Get category filter from URL params
+const category = Astro.url.searchParams.get('category');
 
 // Get all posts
-const allPosts = await getCollection('posts');
+const allPosts = await getAllPosts();
 
-// Get all unique tags and their counts
+// Filter posts by category if specified
+const filteredPosts = category 
+  ? allPosts.filter(post => {
+      if (category === 'ephemera') {
+        return ['blog', 'micro', 'photo', 'til'].includes(post.data.category);
+      }
+      return post.data.category === category;
+    })
+  : allPosts;
+
+// Get all unique tags and their counts from filtered posts
 const tagCounts = new Map<string, number>();
-allPosts.forEach(post => {
+filteredPosts.forEach(post => {
   post.data.tags?.forEach(tag => {
     tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
   });
@@ -20,42 +34,82 @@ const sortedTags = Array.from(tagCounts.entries())
 const topTwentyTags = sortedTags.slice(0, 20);
 const allTags = Array.from(tagCounts.entries())
   .sort((a, b) => a[0].localeCompare(b[0]));
+
+// Generate tag URL with category filter if needed
+const getTagUrl = (tag: string) => {
+  return category ? `/tags/${tag}/?category=${category}` : `/tags/${tag}/`;
+};
+
+// Get display title based on category
+const getTitle = () => {
+  if (category === 'ephemera') return 'Ephemera Tags';
+  if (category) return `${category.charAt(0).toUpperCase() + category.slice(1)} Tags`;
+  return 'Tags';
+};
+
+const getDescription = () => {
+  if (category === 'ephemera') return 'Tags used in blog posts, photos, and micro updates';
+  if (category) return `Tags used in ${category} content`;
+  return 'All tags used in the content';
+};
 ---
 
 <Layout 
-  title="Tags - Sajal Choudhary" 
-  description="All tags used in the content"
+  title={`${getTitle()} - Sajal Choudhary`}
+  description={getDescription()}
   currentPage="/tags/"
 >
   <div class="max-w-2xl mx-auto px-4">
     <header class="mb-16">
-      <h1 class="text-4xl font-bold mb-4">Tags</h1>
+      <h1 class="text-4xl font-bold mb-4">{getTitle()}</h1>
+      {category && (
+        <div class="mb-4">
+          <a 
+            href="/tags/" 
+            class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
+          >
+            ← View all tags
+          </a>
+        </div>
+      )}
     </header>
 
     <section class="space-y-12">
-      <!-- Top Twenty Tags -->
-      <div>
-        <h2 class="text-2xl font-bold mb-8">Top Twenty Tags</h2>
-        <div class="grid grid-cols-2 gap-4">
-          {topTwentyTags.map(([tag, count]) => (
-            <a href={`/tags/${tag}/`} class="text-sm font-medium hover:text-accent transition-colors">
-              {tag.toUpperCase()} ({count})
-            </a>
-          ))}
+      {sortedTags.length === 0 ? (
+        <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
+          <p class="text-textSecondary dark:text-textSecondaryDark">
+            No tags found{category ? ` in ${category}` : ''}.
+          </p>
         </div>
-      </div>
+      ) : (
+        <>
+          {/* Top Twenty Tags */}
+          {topTwentyTags.length > 0 && (
+            <div>
+              <h2 class="text-2xl font-bold mb-8">Top Twenty Tags</h2>
+              <div class="grid grid-cols-2 gap-4">
+                {topTwentyTags.map(([tag, count]) => (
+                  <a href={getTagUrl(tag)} class="text-sm font-medium hover:text-accent transition-colors">
+                    {tag.toUpperCase()} ({count})
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
 
-      <!-- All Tags -->
-      <div class="mt-48">
-        <h2 class="text-2xl font-bold mb-8">All Tags</h2>
-        <div class="grid grid-cols-2 gap-4">
-          {allTags.map(([tag, count]) => (
-            <a href={`/tags/${tag}/`} class="text-sm font-medium hover:text-accent transition-colors">
-              {tag.toUpperCase()} ({count})
-            </a>
-          ))}
-        </div>
-      </div>
+          {/* All Tags */}
+          <div class="mt-48">
+            <h2 class="text-2xl font-bold mb-8">All Tags</h2>
+            <div class="grid grid-cols-2 gap-4">
+              {allTags.map(([tag, count]) => (
+                <a href={getTagUrl(tag)} class="text-sm font-medium hover:text-accent transition-colors">
+                  {tag.toUpperCase()} ({count})
+                </a>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </section>
   </div>
 </Layout> 
