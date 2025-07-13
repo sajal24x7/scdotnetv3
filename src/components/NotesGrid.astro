@@ -35,7 +35,7 @@ const renderedPosts = posts.map(post => ({
 <style>
   .notes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1rem;
     width: 100%;
     max-width: 1400px;
@@ -43,20 +43,28 @@ const renderedPosts = posts.map(post => ({
     padding: 0;
   }
 
-  /* Mobile adjustments */
+  /* Mobile adjustments - 3+ items per row */
   @media (max-width: 768px) {
     .notes-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 0.75rem;
       max-width: none;
       padding: 0 1rem;
     }
   }
 
+  /* Small mobile adjustments - still allow 3+ items on very small screens */
+  @media (max-width: 480px) {
+    .notes-grid {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.5rem;
+    }
+  }
+
   /* Tablet adjustments */
   @media (min-width: 768px) and (max-width: 1024px) {
     .notes-grid {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 0.875rem;
     }
   }
@@ -64,8 +72,16 @@ const renderedPosts = posts.map(post => ({
   /* Desktop adjustments */
   @media (min-width: 1024px) {
     .notes-grid {
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1rem;
+    }
+  }
+
+  /* Large desktop - allow more columns */
+  @media (min-width: 1400px) {
+    .notes-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
     }
   }
 

@@ -82,11 +82,11 @@ const formatDate = (date) => {
   }
 
   .card-content {
-    padding: 1rem;
+    padding: 0.875rem;
   }
 
   .card-image {
-    margin: -1rem -1rem 1rem -1rem;
+    margin: -0.875rem -0.875rem 0.875rem -0.875rem;
     aspect-ratio: 16/9;
     overflow: hidden;
   }
@@ -106,12 +106,12 @@ const formatDate = (date) => {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     flex-wrap: wrap;
   }
 
   .card-date {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #6b7280;
     font-weight: 500;
   }
@@ -121,15 +121,16 @@ const formatDate = (date) => {
   }
 
   .card-category {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: #3b82f6;
     background: #eff6ff;
-    padding: 0.2rem 0.6rem;
+    padding: 0.15rem 0.5rem;
     border-radius: 9999px;
     border: 1px solid #dbeafe;
+    white-space: nowrap;
   }
 
   :global(.dark) .card-category {
@@ -139,7 +140,7 @@ const formatDate = (date) => {
   }
 
   .card-title {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 700;
     line-height: 1.3;
     margin-bottom: 0.5rem;
@@ -154,6 +155,7 @@ const formatDate = (date) => {
     text-decoration: none;
     color: inherit;
     transition: color 0.2s ease;
+    display: block;
   }
 
   .card-link:hover {
@@ -166,7 +168,7 @@ const formatDate = (date) => {
 
   .card-description {
     color: #4b5563;
-    line-height: 1.5;
+    line-height: 1.4;
   }
 
   :global(.dark) .card-description {
@@ -174,7 +176,7 @@ const formatDate = (date) => {
   }
 
   .description-text {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -189,8 +191,9 @@ const formatDate = (date) => {
 
   :global(.prose p) {
     margin-top: 0;
-    margin-bottom: 0.75em;
-    font-size: 0.9rem;
+    margin-bottom: 0.5em;
+    font-size: 0.85rem;
+    line-height: 1.4;
   }
 
   :global(.prose a) {
@@ -217,28 +220,31 @@ const formatDate = (date) => {
   :global(.prose h2),
   :global(.prose h3),
   :global(.prose h4) {
-    margin-top: 1.5em;
+    margin-top: 1em;
     margin-bottom: 0.5em;
     font-weight: 600;
+    font-size: 0.9rem;
   }
 
   :global(.prose ul),
   :global(.prose ol) {
     margin-top: 0.5em;
-    margin-bottom: 1.5em;
-    padding-left: 1.5em;
+    margin-bottom: 1em;
+    padding-left: 1.2em;
   }
 
   :global(.prose li) {
-    margin-top: 0.25em;
-    margin-bottom: 0.25em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    font-size: 0.85rem;
   }
 
   :global(.prose blockquote) {
-    margin: 1.5em 0;
-    padding-left: 1em;
-    border-left: 4px solid #e5e7eb;
+    margin: 1em 0;
+    padding-left: 0.8em;
+    border-left: 3px solid #e5e7eb;
     font-style: italic;
+    font-size: 0.85rem;
   }
 
   :global(.dark .prose blockquote) {
@@ -247,9 +253,9 @@ const formatDate = (date) => {
 
   :global(.prose code) {
     background-color: #f3f4f6;
-    padding: 0.2em 0.4em;
-    border-radius: 0.25em;
-    font-size: 0.875em;
+    padding: 0.15em 0.3em;
+    border-radius: 0.2em;
+    font-size: 0.8em;
   }
 
   :global(.dark .prose code) {
@@ -258,32 +264,77 @@ const formatDate = (date) => {
 
   :global(.prose pre) {
     background-color: #f3f4f6;
-    padding: 1em;
-    border-radius: 0.5em;
+    padding: 0.8em;
+    border-radius: 0.4em;
     overflow-x: auto;
-    margin: 1.5em 0;
+    margin: 1em 0;
+    font-size: 0.8em;
   }
 
   :global(.dark .prose pre) {
     background-color: #1f2937;
   }
 
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
+  /* Responsive adjustments for smaller cards */
+  @media (max-width: 480px) {
     .card-content {
-      padding: 0.875rem;
+      padding: 0.75rem;
     }
 
     .card-image {
-      margin: -0.875rem -0.875rem 0.875rem -0.875rem;
+      margin: -0.75rem -0.75rem 0.75rem -0.75rem;
     }
 
     .card-title {
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     .card-meta {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-date {
+      font-size: 0.7rem;
+    }
+
+    .card-category {
+      font-size: 0.6rem;
+      padding: 0.1rem 0.4rem;
+    }
+
+    .description-text {
+      font-size: 0.8rem;
+      -webkit-line-clamp: 2;
+    }
+  }
+
+  /* Medium screen adjustments */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .card-title {
+      font-size: 1.05rem;
+    }
+
+    .description-text {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Large screen adjustments */
+  @media (min-width: 1024px) {
+    .card-content {
+      padding: 1rem;
+    }
+
+    .card-image {
+      margin: -1rem -1rem 1rem -1rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+    }
+
+    .description-text {
+      font-size: 0.9rem;
     }
   }
 </style> 
