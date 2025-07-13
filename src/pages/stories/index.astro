@@ -18,24 +18,119 @@ const transformedPosts = stories.map(transformPost);
   description="Short stories and fiction" 
   currentPage="/stories/"
 >
-  <div class="max-w-7xl mx-auto">
-    <header class="mb-12 px-6">
-      <div class="flex flex-col">
-        <h1 class="text-4xl font-bold mb-4">Stories</h1>
-        <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
+  <div class="stories-container">
+    <header class="stories-header">
+      <div class="header-content">
+        <h1 class="stories-title">Stories</h1>
+        <p class="stories-description">
           Short stories and fiction pieces.
         </p>
-        <a 
-          href="/stories/tags" 
-          class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
-        >
-          View entries by tag
-        </a>
+        <div class="stories-count">
+          {transformedPosts.length} {transformedPosts.length === 1 ? 'story' : 'stories'}
+        </div>
       </div>
     </header>
 
-    <div class="px-6">
+    <main class="stories-main">
       <ContentGrid posts={transformedPosts} />
-    </div>
+    </main>
   </div>
 </Layout>
+
+<style>
+  .stories-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+  }
+
+  .stories-header {
+    padding: 1.5rem 0 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1.5rem;
+  }
+
+  :global(.dark) .stories-header {
+    border-bottom-color: #374151;
+  }
+
+  .header-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .stories-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+
+  :global(.dark) .stories-title {
+    color: #f9fafb;
+  }
+
+  .stories-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :global(.dark) .stories-description {
+    color: #9ca3af;
+  }
+
+  .stories-count {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #8b5cf6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  :global(.dark) .stories-count {
+    color: #a78bfa;
+  }
+
+  .stories-main {
+    padding-bottom: 2rem;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .stories-container {
+      padding: 0 0.25rem;
+    }
+
+    .stories-header {
+      padding: 1rem 0 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .stories-title {
+      font-size: 2rem;
+    }
+
+    .stories-description {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .stories-main {
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .stories-title {
+      font-size: 2.25rem;
+    }
+  }
+</style>
