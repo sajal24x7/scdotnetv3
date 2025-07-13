@@ -1,0 +1,144 @@
+---
+import { formatDate } from '../utils/dateFormat';
+
+const { posts } = Astro.props;
+---
+
+<div class="nordletter-grid">
+  {posts.map((post) => (
+    <article class="nordletter-item">
+      <a href={`/${post.slug}/`} class="nordletter-link">
+        {post.data.image && (
+          <div class="nordletter-image">
+            <img 
+              src={post.data.image} 
+              alt={post.data.title}
+              loading="lazy"
+            />
+          </div>
+        )}
+        <div class="nordletter-content">
+          <h2 class="nordletter-title">{post.data.title}</h2>
+          <time class="nordletter-date" datetime={post.data.pubDate.toISOString()}>
+            {formatDate(post.data.pubDate)}
+          </time>
+        </div>
+      </a>
+    </article>
+  ))}
+</div>
+
+<style>
+  .nordletter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  @media (min-width: 768px) {
+    .nordletter-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .nordletter-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .nordletter-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  .nordletter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .nordletter-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .nordletter-link:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+
+  .nordletter-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: #f3f4f6;
+    flex-shrink: 0;
+  }
+
+  .nordletter-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .nordletter-link:hover .nordletter-image img {
+    transform: scale(1.05);
+  }
+
+  .nordletter-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nordletter-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    color: #1f2937;
+    transition: color 0.2s ease;
+  }
+
+  .nordletter-link:hover .nordletter-title {
+    color: #3b82f6;
+  }
+
+  .nordletter-date {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 400;
+  }
+
+  /* Dark mode styles */
+  :global(.dark) .nordletter-title {
+    color: #f9fafb;
+  }
+
+  :global(.dark) .nordletter-link:hover .nordletter-title {
+    color: #60a5fa;
+  }
+
+  :global(.dark) .nordletter-date {
+    color: #9ca3af;
+  }
+
+  :global(.dark) .nordletter-image {
+    background: #374151;
+  }
+</style>
