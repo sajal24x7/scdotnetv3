@@ -45,8 +45,6 @@ class HoverPreview {
     
     // Get content containers where hover previews should work
     const contentSelectors = [
-      'main',
-      'article', 
       '.prose',
       '.post-content',
       '.content',
@@ -115,8 +113,6 @@ class HoverPreview {
     
     // Check if link is within a content area
     const contentSelectors = [
-      'main',
-      'article', 
       '.prose',
       '.post-content',
       '.content',

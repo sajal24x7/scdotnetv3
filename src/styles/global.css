@@ -238,18 +238,18 @@ a.icon-link.random-underline span {
   }
 }
 
-/* Link styling for hover preview capable links (only in content areas) */
-.prose a, main a, article a, .post-content a, .content a {
+/* Link styling for hover preview capable links (only in specific content areas) */
+.prose a, .post-content a, .content a, .entry-content a, .article-content a {
   cursor: pointer;
   position: relative;
 }
 
-/* Internal link styling - light blue (only in content areas) */
+/* Internal link styling - light blue (only in specific content areas) */
 .prose a[href^="/"], .prose a[href*="__GHOST_URL__"],
-main a[href^="/"], main a[href*="__GHOST_URL__"],
-article a[href^="/"], article a[href*="__GHOST_URL__"],
 .post-content a[href^="/"], .post-content a[href*="__GHOST_URL__"],
-.content a[href^="/"], .content a[href*="__GHOST_URL__"] {
+.content a[href^="/"], .content a[href*="__GHOST_URL__"],
+.entry-content a[href^="/"], .entry-content a[href*="__GHOST_URL__"],
+.article-content a[href^="/"], .article-content a[href*="__GHOST_URL__"] {
   color: #0066cc;
   text-decoration: underline;
   text-decoration-color: rgba(0, 102, 204, 0.3);
@@ -257,20 +257,20 @@ article a[href^="/"], article a[href*="__GHOST_URL__"],
 }
 
 .prose a[href^="/"]:hover, .prose a[href*="__GHOST_URL__"]:hover,
-main a[href^="/"]:hover, main a[href*="__GHOST_URL__"]:hover,
-article a[href^="/"]:hover, article a[href*="__GHOST_URL__"]:hover,
 .post-content a[href^="/"]:hover, .post-content a[href*="__GHOST_URL__"]:hover,
-.content a[href^="/"]:hover, .content a[href*="__GHOST_URL__"]:hover {
+.content a[href^="/"]:hover, .content a[href*="__GHOST_URL__"]:hover,
+.entry-content a[href^="/"]:hover, .entry-content a[href*="__GHOST_URL__"]:hover,
+.article-content a[href^="/"]:hover, .article-content a[href*="__GHOST_URL__"]:hover {
   color: #0052a3;
   text-decoration-color: rgba(0, 82, 163, 0.6);
 }
 
-/* External link styling - violet (only in content areas) */
+/* External link styling - violet (only in specific content areas) */
 .prose a[href^="http"]:not([href*="__GHOST_URL__"]),
-main a[href^="http"]:not([href*="__GHOST_URL__"]),
-article a[href^="http"]:not([href*="__GHOST_URL__"]),
 .post-content a[href^="http"]:not([href*="__GHOST_URL__"]),
-.content a[href^="http"]:not([href*="__GHOST_URL__"]) {
+.content a[href^="http"]:not([href*="__GHOST_URL__"]),
+.entry-content a[href^="http"]:not([href*="__GHOST_URL__"]),
+.article-content a[href^="http"]:not([href*="__GHOST_URL__"]) {
   color: #7c3aed;
   text-decoration: underline;
   text-decoration-color: rgba(124, 58, 237, 0.3);
@@ -278,47 +278,47 @@ article a[href^="http"]:not([href*="__GHOST_URL__"]),
 }
 
 .prose a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
-main a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
-article a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
 .post-content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
-.content a[href^="http"]:not([href*="__GHOST_URL__"]):hover {
+.content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+.entry-content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+.article-content a[href^="http"]:not([href*="__GHOST_URL__"]):hover {
   color: #6d28d9;
   text-decoration-color: rgba(109, 40, 217, 0.6);
 }
 
-/* Dark mode adjustments (only in content areas) */
+/* Dark mode adjustments (only in specific content areas) */
 .dark .prose a[href^="/"], .dark .prose a[href*="__GHOST_URL__"],
-.dark main a[href^="/"], .dark main a[href*="__GHOST_URL__"],
-.dark article a[href^="/"], .dark article a[href*="__GHOST_URL__"],
 .dark .post-content a[href^="/"], .dark .post-content a[href*="__GHOST_URL__"],
-.dark .content a[href^="/"], .dark .content a[href*="__GHOST_URL__"] {
+.dark .content a[href^="/"], .dark .content a[href*="__GHOST_URL__"],
+.dark .entry-content a[href^="/"], .dark .entry-content a[href*="__GHOST_URL__"],
+.dark .article-content a[href^="/"], .dark .article-content a[href*="__GHOST_URL__"] {
   color: #60a5fa;
   text-decoration-color: rgba(96, 165, 250, 0.3);
 }
 
 .dark .prose a[href^="/"]:hover, .dark .prose a[href*="__GHOST_URL__"]:hover,
-.dark main a[href^="/"]:hover, .dark main a[href*="__GHOST_URL__"]:hover,
-.dark article a[href^="/"]:hover, .dark article a[href*="__GHOST_URL__"]:hover,
 .dark .post-content a[href^="/"]:hover, .dark .post-content a[href*="__GHOST_URL__"]:hover,
-.dark .content a[href^="/"]:hover, .dark .content a[href*="__GHOST_URL__"]:hover {
+.dark .content a[href^="/"]:hover, .dark .content a[href*="__GHOST_URL__"]:hover,
+.dark .entry-content a[href^="/"]:hover, .dark .entry-content a[href*="__GHOST_URL__"]:hover,
+.dark .article-content a[href^="/"]:hover, .dark .article-content a[href*="__GHOST_URL__"]:hover {
   color: #93c5fd;
   text-decoration-color: rgba(147, 197, 253, 0.6);
 }
 
 .dark .prose a[href^="http"]:not([href*="__GHOST_URL__"]),
-.dark main a[href^="http"]:not([href*="__GHOST_URL__"]),
-.dark article a[href^="http"]:not([href*="__GHOST_URL__"]),
 .dark .post-content a[href^="http"]:not([href*="__GHOST_URL__"]),
-.dark .content a[href^="http"]:not([href*="__GHOST_URL__"]) {
+.dark .content a[href^="http"]:not([href*="__GHOST_URL__"]),
+.dark .entry-content a[href^="http"]:not([href*="__GHOST_URL__"]),
+.dark .article-content a[href^="http"]:not([href*="__GHOST_URL__"]) {
   color: #a78bfa;
   text-decoration-color: rgba(167, 139, 250, 0.3);
 }
 
 .dark .prose a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
-.dark main a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
-.dark article a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
 .dark .post-content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
-.dark .content a[href^="http"]:not([href*="__GHOST_URL__"]):hover {
+.dark .content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+.dark .entry-content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+.dark .article-content a[href^="http"]:not([href*="__GHOST_URL__"]):hover {
   color: #c4b5fd;
   text-decoration-color: rgba(196, 181, 253, 0.6);
 }
