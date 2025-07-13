@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ContentGrid from '../../components/ContentGrid.astro';
+import NotesGrid from '../../components/NotesGrid.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for notes (evergreen and TIL)
@@ -9,7 +9,7 @@ const notesPosts = allPosts
   .filter(post => ['evergreen', 'til'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-// Transform posts for the ContentGrid component
+// Transform posts for the NotesGrid component
 const transformedPosts = notesPosts.map(transformPost);
 ---
 
@@ -32,7 +32,7 @@ const transformedPosts = notesPosts.map(transformPost);
     </header>
 
     <main class="notes-main">
-      <ContentGrid posts={transformedPosts} />
+      <NotesGrid posts={transformedPosts} />
     </main>
   </div>
 </Layout>
