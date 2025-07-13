@@ -18,7 +18,7 @@ const renderedPosts = posts.map(post => ({
 }));
 ---
 
-<div class="grid grid-cols-1 gap-12 py-12">
+<div class="content-grid">
   {renderedPosts.map((post) => (
     <Card {...post.data}>
       {post.renderedContent && (
@@ -33,39 +33,39 @@ const renderedPosts = posts.map(post => ({
 <LinkHoverEffect />
 
 <style>
-  .grid {
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
     width: 100%;
-    max-width: 1440px;
+    max-width: 1400px;
     margin: 0 auto;
+    padding: 0;
   }
 
-  /* Add a subtle divider between cards */
-  .grid > *:not(:last-child) {
-    position: relative;
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      padding: 0;
+    }
   }
 
-  .grid > *:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    bottom: -1.5rem;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgb(229 231 235),
-      transparent
-    );
+  /* Tablet adjustments */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .content-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.875rem;
+    }
   }
 
-  :global(.dark) .grid > *:not(:last-child)::after {
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgb(55 65 81),
-      transparent
-    );
+  /* Desktop adjustments */
+  @media (min-width: 1024px) {
+    .content-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1rem;
+    }
   }
 
   /* Ensure links are properly styled */
