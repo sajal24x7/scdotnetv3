@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LinkHoverEffect from '../components/LinkHoverEffect.astro';
+---
+
+<Layout 
+  title="Test Hover Effects" 
+  description="Test page for URL hover effects"
+  currentPage="/test-hover/"
+>
+  <article class="prose dark:prose-dark mx-auto">
+    <h1>Test Hover Effects</h1>
+    
+    <p>This page tests the URL hover effects. Links should have permanent colors and show tooltips on hover.</p>
+    
+    <h2>Internal Links (Blue)</h2>
+    <p>These should be <span style="color: #3b82f6;">blue</span> and show post previews on hover:</p>
+    
+    <ul>
+      <li><a href="/blog/hard-works-trumps-talent-every-time/">Hard work trumps talent every time</a></li>
+      <li><a href="/nordletter/nl62-a-short-trip-to-porkkalanniemi/">NordLetter #62</a></li>
+      <li><a href="/about/">About page</a></li>
+    </ul>
+    
+    <h2>External Links (Purple)</h2>
+    <p>These should be <span style="color: #8b5cf6;">purple</span> and show URL + link-out button on hover:</p>
+    
+    <ul>
+      <li><a href="https://maggieappleton.com/metaphor-books">Maggie Appleton's metaphor books</a></li>
+      <li><a href="https://notes.andymatuschak.org/About_these_notes">Andy Matuschak's notes</a></li>
+      <li><a href="https://github.com">GitHub</a></li>
+    </ul>
+    
+    <h2>Mixed in Text</h2>
+    <p>Some text with an <a href="/blog/hard-works-trumps-talent-every-time/">internal link</a> and an <a href="https://example.com">external link</a> in the same paragraph.</p>
+    
+    <p><strong>Expected behavior:</strong></p>
+    <ul>
+      <li>Internal links should be <span style="color: #3b82f6;">blue</span> immediately</li>
+      <li>External links should be <span style="color: #8b5cf6;">purple</span> immediately</li>
+      <li>Hovering should show appropriate tooltips</li>
+      <li>Check browser console for "Initializing link hover effects..." message</li>
+    </ul>
+  </article>
+</Layout>
+
+<LinkHoverEffect /> 
