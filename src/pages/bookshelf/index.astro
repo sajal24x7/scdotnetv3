@@ -329,11 +329,12 @@ const years = Object.keys(postsByYear)
   /* Mobile adjustments */
   @media (max-width: 768px) {
     .bookshelf-container {
-      padding: 0 0.25rem;
+      max-width: none;
+      padding: 0;
     }
 
     .bookshelf-header {
-      padding: 1rem 0 0.75rem;
+      padding: 1rem 1rem 0.75rem;
       margin-bottom: 1rem;
     }
 
@@ -348,6 +349,7 @@ const years = Object.keys(postsByYear)
 
     .year-section {
       margin-bottom: 1.5rem;
+      padding: 0 1rem;
     }
 
     .year-title {

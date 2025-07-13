@@ -68,6 +68,14 @@ const renderedPosts = posts.map(post => ({
     );
   }
 
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .grid {
+      max-width: none;
+      padding: 0 1rem;
+    }
+  }
+
   /* Ensure links are properly styled */
   :global(.prose a) {
     color: #3b82f6;
