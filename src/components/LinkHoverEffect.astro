@@ -1,5 +1,10 @@
 ---
 // Simple, reliable link hover effects component
+import { generateContentPreviews, escapeHtml } from '../utils/contentPreview';
+
+// Generate content previews at build time
+const contentPreviews = await generateContentPreviews();
+const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
 ---
 
 <style>
@@ -102,9 +107,12 @@
   }
 </style>
 
-<script>
+<script define:vars={{ previewsJson }}>
   function initLinkHoverEffects() {
     console.log('Initializing link hover effects...');
+    
+    // Parse build-time content previews
+    const contentPreviews = JSON.parse(previewsJson);
     
     // Create tooltip element
     const tooltip = document.createElement('div');
@@ -131,6 +139,17 @@
           if (isInternal) {
             link.setAttribute('data-internal', '');
             link.removeAttribute('data-external');
+            
+            // Add content preview data for internal links
+            const cleanHref = href.replace('__GHOST_URL__', '');
+            const preview = contentPreviews[cleanHref];
+            
+            if (preview) {
+              link.setAttribute('data-title', preview.title);
+              if (preview.description) {
+                link.setAttribute('data-description', preview.description);
+              }
+            }
           } else {
             link.setAttribute('data-external', '');
             link.removeAttribute('data-internal');
