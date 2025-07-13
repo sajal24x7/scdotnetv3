@@ -2,6 +2,7 @@
  * Hover Preview System
  * Inspired by Obsidian's hover preview functionality
  * Shows a preview of linked content when hovering over internal links
+ * Shows URL and external link icon for external links
  */
 
 class HoverPreview {
@@ -86,7 +87,7 @@ class HoverPreview {
   
   handleMouseOver(e) {
     const link = e.target.closest('a');
-    if (!link || !this.isInternalLink(link)) return;
+    if (!link || (!this.isInternalLink(link) && !this.isExternalLink(link))) return;
     
     this.activeLink = link;
     this.clearHideTimeout();
@@ -121,8 +122,23 @@ class HoverPreview {
            (!href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel'));
   }
   
+  isExternalLink(link) {
+    const href = link.getAttribute('href');
+    if (!href) return false;
+    
+    // Check if it's an external link (starts with http/https but not same domain)
+    return (href.startsWith('http://') || href.startsWith('https://')) && 
+           !href.includes(window.location.hostname);
+  }
+  
   async showPreview(link) {
     if (!link) return;
+    
+    // Handle external links differently
+    if (this.isExternalLink(link)) {
+      this.showExternalPreview(link);
+      return;
+    }
     
     const href = this.normalizeUrl(link.getAttribute('href'));
     const title = link.textContent.trim() || link.getAttribute('title') || 'Loading...';
@@ -147,6 +163,54 @@ class HoverPreview {
           '<div class="hover-preview-error">Failed to load preview</div>';
       }
     }
+  }
+  
+  showExternalPreview(link) {
+    const href = link.getAttribute('href');
+    
+    // Parse the URL to extract domain and path
+    let domain = '';
+    let path = '';
+    
+    try {
+      const url = new URL(href);
+      domain = url.hostname;
+      path = url.pathname + url.search + url.hash;
+      
+      // Remove 'www.' prefix if present
+      if (domain.startsWith('www.')) {
+        domain = domain.substring(4);
+      }
+    } catch (e) {
+      // Fallback if URL parsing fails
+      domain = href;
+      path = '';
+    }
+    
+    // External link icon SVG
+    const externalIcon = `
+      <svg class="hover-preview-external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+        <polyline points="15,3 21,3 21,9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+    `;
+    
+    // Create external preview content
+    const externalPreviewContent = `
+      <div class="hover-preview-external">
+        ${externalIcon}
+        <div class="hover-preview-external-url">
+          <div class="hover-preview-external-domain">${domain}</div>
+          ${path ? `<div class="hover-preview-external-path">${path}</div>` : ''}
+        </div>
+      </div>
+    `;
+    
+    // Set up the preview element for external links
+    this.previewElement.className = 'hover-preview external-link';
+    this.previewElement.innerHTML = externalPreviewContent;
+    this.previewElement.classList.add('visible');
   }
   
   normalizeUrl(href) {
@@ -271,6 +335,18 @@ class HoverPreview {
   }
   
   displayContent(contentData) {
+    // Ensure we have the correct structure for internal links
+    this.previewElement.className = 'hover-preview';
+    if (!this.previewElement.querySelector('.hover-preview-header')) {
+      this.previewElement.innerHTML = `
+        <div class="hover-preview-header">
+          <h3 class="hover-preview-title"></h3>
+          <p class="hover-preview-meta"></p>
+        </div>
+        <div class="hover-preview-content"></div>
+      `;
+    }
+    
     const titleElement = this.previewElement.querySelector('.hover-preview-title');
     const metaElement = this.previewElement.querySelector('.hover-preview-meta');
     const contentElement = this.previewElement.querySelector('.hover-preview-content');
@@ -333,6 +409,8 @@ class HoverPreview {
   hidePreview() {
     if (this.previewElement) {
       this.previewElement.classList.remove('visible');
+      // Reset to default preview class
+      this.previewElement.className = 'hover-preview';
     }
     this.activeLink = null;
     this.clearTimeouts();

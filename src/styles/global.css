@@ -242,4 +242,45 @@ a.icon-link.random-underline span {
 a[data-hover-preview] {
   cursor: pointer;
   position: relative;
+}
+
+/* External link preview styles */
+.hover-preview.external-link {
+  max-width: 300px;
+  width: auto;
+  min-width: 200px;
+  max-height: 120px;
+  padding: 12px 16px;
+}
+
+.hover-preview-external {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9em;
+  color: var(--hover-preview-text);
+}
+
+.hover-preview-external-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+.hover-preview-external-url {
+  word-break: break-all;
+  line-height: 1.4;
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.hover-preview-external-domain {
+  font-weight: 500;
+  color: var(--hover-preview-text);
+}
+
+.hover-preview-external-path {
+  opacity: 0.8;
+  font-size: 0.85em;
 } 
