@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry, ContentEntryMap } from 'astro:content';
 import { formatDateWithTime } from '../utils/dateFormat';
+import LinkHoverEffect from './LinkHoverEffect.astro';
 
 interface Props {
   posts: CollectionEntry<keyof ContentEntryMap>[];
@@ -41,4 +42,6 @@ const renderedPosts = await Promise.all(
       </article>
     );
   })}
-</div> 
+</div>
+
+<LinkHoverEffect /> 

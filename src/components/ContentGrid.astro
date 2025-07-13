@@ -1,6 +1,7 @@
 ---
 import Card from './Card.astro';
 import { marked } from 'marked';
+import LinkHoverEffect from './LinkHoverEffect.astro';
 
 const { posts } = Astro.props;
 
@@ -28,6 +29,8 @@ const renderedPosts = posts.map(post => ({
     </Card>
   ))}
 </div>
+
+<LinkHoverEffect />
 
 <style>
   .grid {

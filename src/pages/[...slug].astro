@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import { formatDateWithTime } from '../utils/dateFormat';
 import type { CollectionEntry } from 'astro:content';
 import { getYearDirectories } from '../utils/content';
+import LinkHoverEffect from '../components/LinkHoverEffect.astro';
 
 export async function getStaticPaths() {
   // Get all year directories from content
@@ -113,6 +114,8 @@ const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
     </div>
   </article>
 </Layout>
+
+<LinkHoverEffect />
 
 <script>
   // Share functionality

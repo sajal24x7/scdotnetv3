@@ -1,0 +1,304 @@
+---
+// Component for handling link hover effects
+---
+
+<style>
+  /* Link hover tooltip styles */
+  .link-tooltip {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    max-width: 320px;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .link-tooltip.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .dark .link-tooltip {
+    background: rgba(255, 255, 255, 0.9);
+    color: #1a1a1a;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  /* Internal link preview styles */
+  .internal-link-preview {
+    border-left: 3px solid #3b82f6;
+    padding-left: 12px;
+  }
+
+  .internal-link-preview h3 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #3b82f6;
+  }
+
+  .internal-link-preview p {
+    margin: 0;
+    line-height: 1.4;
+    color: #888;
+  }
+
+  .dark .internal-link-preview h3 {
+    color: #60a5fa;
+  }
+
+  .dark .internal-link-preview p {
+    color: #aaa;
+  }
+
+  /* External link preview styles */
+  .external-link-preview {
+    border-left: 3px solid #8b5cf6;
+    padding-left: 12px;
+  }
+
+  .external-link-preview .url {
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    font-size: 13px;
+    color: #8b5cf6;
+    word-break: break-all;
+    margin-bottom: 8px;
+  }
+
+  .external-link-preview .link-out {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: #8b5cf6;
+    text-decoration: none;
+  }
+
+  .external-link-preview .link-out svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .dark .external-link-preview .url {
+    color: #a78bfa;
+  }
+
+  .dark .external-link-preview .link-out {
+    color: #a78bfa;
+  }
+
+  /* Link styling within prose */
+  :global(.prose a[data-internal]) {
+    color: #3b82f6 !important;
+    text-decoration: none;
+  }
+
+  :global(.prose a[data-internal]:hover) {
+    color: #2563eb !important;
+    text-decoration: underline;
+  }
+
+  :global(.dark .prose a[data-internal]) {
+    color: #60a5fa !important;
+  }
+
+  :global(.dark .prose a[data-internal]:hover) {
+    color: #93c5fd !important;
+  }
+
+  :global(.prose a[data-external]) {
+    color: #8b5cf6 !important;
+    text-decoration: none;
+  }
+
+  :global(.prose a[data-external]:hover) {
+    color: #7c3aed !important;
+    text-decoration: underline;
+  }
+
+  :global(.dark .prose a[data-external]) {
+    color: #a78bfa !important;
+  }
+
+  :global(.dark .prose a[data-external]:hover) {
+    color: #c4b5fd !important;
+  }
+</style>
+
+<script>
+  class LinkHoverEffect {
+    constructor() {
+      this.tooltip = null;
+      this.init();
+    }
+
+    init() {
+      this.createTooltip();
+      this.setupEventListeners();
+    }
+
+    createTooltip() {
+      this.tooltip = document.createElement('div');
+      this.tooltip.className = 'link-tooltip';
+      document.body.appendChild(this.tooltip);
+    }
+
+    setupEventListeners() {
+      // Only target links within prose elements
+      document.addEventListener('mouseover', (e) => {
+        const target = e.target;
+        if (target.tagName === 'A' && target.closest('.prose')) {
+          this.handleLinkHover(target, e);
+        }
+      });
+
+      document.addEventListener('mouseout', (e) => {
+        const target = e.target;
+        if (target.tagName === 'A' && target.closest('.prose')) {
+          this.hideTooltip();
+        }
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (this.tooltip.classList.contains('show')) {
+          this.updateTooltipPosition(e);
+        }
+      });
+    }
+
+    async handleLinkHover(link, event) {
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      const isInternal = this.isInternalLink(href);
+      
+      // Add data attributes for styling
+      if (isInternal) {
+        link.setAttribute('data-internal', '');
+        link.removeAttribute('data-external');
+      } else {
+        link.setAttribute('data-external', '');
+        link.removeAttribute('data-internal');
+      }
+
+      if (isInternal) {
+        await this.showInternalLinkPreview(href, event);
+      } else {
+        this.showExternalLinkPreview(href, event);
+      }
+    }
+
+    isInternalLink(href) {
+      // Check if it's a relative link or matches the current domain
+      return href.startsWith('/') || 
+             href.includes('__GHOST_URL__') || 
+             href.includes(window.location.hostname);
+    }
+
+    async showInternalLinkPreview(href, event) {
+      // Convert __GHOST_URL__ to actual path
+      const cleanHref = href.replace('__GHOST_URL__', '');
+      
+      try {
+        // Extract category and slug from URL
+        const urlParts = cleanHref.replace(/^\//, '').split('/');
+        if (urlParts.length >= 2) {
+          const [category, slug] = urlParts;
+          
+          // Fetch post content - we'll implement this API endpoint
+          const response = await fetch(`/api/post-preview?category=${category}&slug=${slug}`);
+          if (response.ok) {
+            const postData = await response.json();
+            this.showTooltip(this.createInternalPreview(postData), event);
+          } else {
+            // Fallback if API fails
+            this.showTooltip(this.createInternalPreviewFallback(cleanHref), event);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching post preview:', error);
+        this.showTooltip(this.createInternalPreviewFallback(cleanHref), event);
+      }
+    }
+
+    createInternalPreview(postData) {
+      return `
+        <div class="internal-link-preview">
+          <h3>${postData.title}</h3>
+          <p>${postData.excerpt}</p>
+        </div>
+      `;
+    }
+
+    createInternalPreviewFallback(href) {
+      return `
+        <div class="internal-link-preview">
+          <h3>Internal Link</h3>
+          <p>${href}</p>
+        </div>
+      `;
+    }
+
+    showExternalLinkPreview(href, event) {
+      const content = `
+        <div class="external-link-preview">
+          <div class="url">${href}</div>
+          <a href="${href}" target="_blank" rel="noopener noreferrer" class="link-out">
+            Open in new tab
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
+      `;
+      this.showTooltip(content, event);
+    }
+
+    showTooltip(content, event) {
+      this.tooltip.innerHTML = content;
+      this.tooltip.classList.add('show');
+      this.updateTooltipPosition(event);
+    }
+
+    updateTooltipPosition(event) {
+      const tooltipRect = this.tooltip.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      
+      let left = event.clientX + 10;
+      let top = event.clientY - tooltipRect.height - 10;
+      
+      // Adjust if tooltip goes off-screen
+      if (left + tooltipRect.width > viewportWidth) {
+        left = event.clientX - tooltipRect.width - 10;
+      }
+      
+      if (top < 0) {
+        top = event.clientY + 10;
+      }
+      
+      this.tooltip.style.left = left + 'px';
+      this.tooltip.style.top = top + 'px';
+    }
+
+    hideTooltip() {
+      if (this.tooltip) {
+        this.tooltip.classList.remove('show');
+      }
+    }
+  }
+
+  // Initialize when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    new LinkHoverEffect();
+  });
+</script> 
