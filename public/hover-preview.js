@@ -16,10 +16,10 @@ class HoverPreview {
     
     // Configuration
     this.config = {
-      showDelay: 300,
+      showDelay: 150,  // Reduced from 300ms
       hideDelay: 100,
-      maxContentLength: 800,
-      enablePrefetch: true,
+      maxContentLength: 400,  // Reduced from 800
+      enablePrefetch: false,  // Disabled for better performance
       prefetchDelay: 1000
     };
     
@@ -143,12 +143,16 @@ class HoverPreview {
     const href = this.normalizeUrl(link.getAttribute('href'));
     const title = link.textContent.trim() || link.getAttribute('title') || 'Loading...';
     
-    // Show loading state
-    this.previewElement.querySelector('.hover-preview-title').textContent = title;
-    this.previewElement.querySelector('.hover-preview-meta').textContent = 'Loading...';
-    this.previewElement.querySelector('.hover-preview-content').innerHTML = 
-      '<div class="hover-preview-loading">Loading preview...</div>';
-    
+    // Show loading state immediately
+    this.previewElement.className = 'hover-preview internal-link';
+    this.previewElement.innerHTML = `
+      <div class="hover-preview-header">
+        <h3 class="hover-preview-title">${title}</h3>
+      </div>
+      <div class="hover-preview-content">
+        <div class="hover-preview-loading">Loading preview...</div>
+      </div>
+    `;
     this.previewElement.classList.add('visible');
     
     try {
@@ -159,8 +163,14 @@ class HoverPreview {
     } catch (error) {
       console.warn('Failed to load preview:', error);
       if (this.activeLink === link) {
-        this.previewElement.querySelector('.hover-preview-content').innerHTML = 
-          '<div class="hover-preview-error">Failed to load preview</div>';
+        this.previewElement.innerHTML = `
+          <div class="hover-preview-header">
+            <h3 class="hover-preview-title">${title}</h3>
+          </div>
+          <div class="hover-preview-content">
+            <div class="hover-preview-error">Failed to load preview</div>
+          </div>
+        `;
       }
     }
   }
@@ -168,23 +178,16 @@ class HoverPreview {
   showExternalPreview(link) {
     const href = link.getAttribute('href');
     
-    // Parse the URL to extract domain and path
-    let domain = '';
-    let path = '';
+    // Show the full URL for external links
+    let displayUrl = href;
     
+    // Clean up the URL display slightly
     try {
       const url = new URL(href);
-      domain = url.hostname;
-      path = url.pathname + url.search + url.hash;
-      
-      // Remove 'www.' prefix if present
-      if (domain.startsWith('www.')) {
-        domain = domain.substring(4);
-      }
+      displayUrl = href;
     } catch (e) {
       // Fallback if URL parsing fails
-      domain = href;
-      path = '';
+      displayUrl = href;
     }
     
     // External link icon SVG
@@ -200,10 +203,7 @@ class HoverPreview {
     const externalPreviewContent = `
       <div class="hover-preview-external">
         ${externalIcon}
-        <div class="hover-preview-external-url">
-          <div class="hover-preview-external-domain">${domain}</div>
-          ${path ? `<div class="hover-preview-external-path">${path}</div>` : ''}
-        </div>
+        <div class="hover-preview-external-url">${displayUrl}</div>
       </div>
     `;
     
@@ -327,55 +327,21 @@ class HoverPreview {
     
     return {
       title,
-      url,
-      publishDate,
-      description,
-      content: content || description || 'No content available'
+      content: content || 'No content available'
     };
   }
   
   displayContent(contentData) {
     // Ensure we have the correct structure for internal links
-    this.previewElement.className = 'hover-preview';
-    if (!this.previewElement.querySelector('.hover-preview-header')) {
-      this.previewElement.innerHTML = `
-        <div class="hover-preview-header">
-          <h3 class="hover-preview-title"></h3>
-          <p class="hover-preview-meta"></p>
-        </div>
-        <div class="hover-preview-content"></div>
-      `;
-    }
+    this.previewElement.className = 'hover-preview internal-link';
     
-    const titleElement = this.previewElement.querySelector('.hover-preview-title');
-    const metaElement = this.previewElement.querySelector('.hover-preview-meta');
-    const contentElement = this.previewElement.querySelector('.hover-preview-content');
-    
-    titleElement.textContent = contentData.title;
-    
-    // Format meta information
-    let metaText = '';
-    if (contentData.publishDate) {
-      const date = new Date(contentData.publishDate);
-      metaText = date.toLocaleDateString();
-    }
-    if (contentData.description) {
-      metaText += (metaText ? ' • ' : '') + contentData.description;
-    }
-    metaElement.textContent = metaText;
-    
-    // Display content
-    if (contentData.content.includes('<')) {
-      // HTML content
-      contentElement.innerHTML = contentData.content;
-    } else {
-      // Plain text - convert to paragraphs
-      const paragraphs = contentData.content.split('\n\n')
-        .filter(p => p.trim())
-        .map(p => `<p>${p.trim()}</p>`)
-        .join('');
-      contentElement.innerHTML = paragraphs;
-    }
+    // Clean preview without metadata
+    this.previewElement.innerHTML = `
+      <div class="hover-preview-header">
+        <h3 class="hover-preview-title">${contentData.title || 'Untitled'}</h3>
+      </div>
+      <div class="hover-preview-content">${contentData.content || 'No preview available'}</div>
+    `;
   }
   
   positionPreview(e) {
