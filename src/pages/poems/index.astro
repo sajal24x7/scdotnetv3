@@ -45,9 +45,9 @@ const transformedPosts = poems.map(transformPost);
 
 <style>
   .poems-container {
-    max-width: 1400px;
+    max-width: 1800px;
     margin: 0 auto;
-    padding: 0 0.5rem;
+    padding: 0 2rem;
   }
 
   .poems-header {
@@ -137,8 +137,37 @@ const transformedPosts = poems.map(transformPost);
 
   /* Tablet adjustments */
   @media (min-width: 768px) and (max-width: 1024px) {
+    .poems-container {
+      max-width: 95vw;
+      padding: 0 1.5rem;
+    }
+
     .poems-title {
       font-size: 2.25rem;
+    }
+  }
+
+  /* Desktop adjustments */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    .poems-container {
+      max-width: 90vw;
+      padding: 0 2rem;
+    }
+  }
+
+  /* Large desktop adjustments */
+  @media (min-width: 1440px) and (max-width: 1920px) {
+    .poems-container {
+      max-width: 85vw;
+      padding: 0 2.5rem;
+    }
+  }
+
+  /* Extra large screens */
+  @media (min-width: 1920px) {
+    .poems-container {
+      max-width: 80vw;
+      padding: 0 3rem;
     }
   }
 </style>

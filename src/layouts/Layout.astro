@@ -61,7 +61,7 @@ const { title, description, currentPage } = Astro.props;
 	<body class="min-h-screen text-textPrimary dark:text-textPrimaryDark transition-all duration-500">
 		<div class="flex flex-col min-h-screen">
 			<Header currentPage={currentPage} />
-			<main class="container mx-auto px-4 py-8 flex-grow max-w-3xl relative z-10">
+			<main class="flex-grow relative z-10 py-8">
 				<slot />
 			</main>
 			<Footer />
