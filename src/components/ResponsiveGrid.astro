@@ -38,7 +38,7 @@ const renderedPosts = posts.map(post => ({
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1800px;
     margin: 0 auto;
     padding: 0;
   }
@@ -58,22 +58,38 @@ const renderedPosts = posts.map(post => ({
     .responsive-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
+      max-width: 95vw;
+      margin: 0 auto;
     }
   }
 
-  /* Desktop and up - fixed 3 columns */
-  @media (min-width: 1024px) {
+  /* Desktop - 3 columns */
+  @media (min-width: 1024px) and (max-width: 1440px) {
     .responsive-grid {
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
+      max-width: 90vw;
+      margin: 0 auto;
     }
   }
 
-  /* Large desktop - still 3 columns but with more gap */
-  @media (min-width: 1400px) {
+  /* Large desktop - 3 columns with more space */
+  @media (min-width: 1440px) and (max-width: 1920px) {
     .responsive-grid {
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
+      max-width: 85vw;
+      margin: 0 auto;
+    }
+  }
+
+  /* Extra large screens - 4 columns */
+  @media (min-width: 1920px) {
+    .responsive-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem;
+      max-width: 80vw;
+      margin: 0 auto;
     }
   }
 
