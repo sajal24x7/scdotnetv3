@@ -1,15 +1,15 @@
 ---
 title: "NL62 - A short trip to Porkkalanniemi"
 slug: "nl62-a-short-trip-to-porkkalanniemi"
-pubDate: 2025-07-12T23:31:05+03:00
-updatedDate: 2025-07-12T23:31:05+03:00
+pubDate: 2025-07-13T06:30:05+03:00
+updatedDate: 2025-07-13T06:30:05+03:00
 category: nordletter
 tags: 
   - finland
   - ai
   - browsers
   - gmail
-
+image: "https://storage.sajalchoudhary.net/images/2025/07/nl62-2.jpeg"
 ---
 Hello from my home in Matinkylä! This is NordLetter #62, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
