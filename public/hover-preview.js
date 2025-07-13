@@ -43,10 +43,34 @@ class HoverPreview {
     // Create preview element
     this.createPreviewElement();
     
-    // Set up event delegation for all links
-    document.body.addEventListener('mouseover', (e) => this.handleMouseOver(e));
-    document.body.addEventListener('mouseout', (e) => this.handleMouseOut(e));
-    document.body.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+    // Get content containers where hover previews should work
+    const contentSelectors = [
+      'main',
+      'article', 
+      '.prose',
+      '.post-content',
+      '.content',
+      '.entry-content',
+      '.article-content'
+    ];
+    
+    let contentContainers = [];
+    contentSelectors.forEach(selector => {
+      const elements = document.querySelectorAll(selector);
+      contentContainers.push(...elements);
+    });
+    
+    // If no specific content containers found, fall back to document body
+    if (contentContainers.length === 0) {
+      contentContainers = [document.body];
+    }
+    
+    // Add event listeners to each content container
+    contentContainers.forEach(container => {
+      container.addEventListener('mouseover', (e) => this.handleMouseOver(e));
+      container.addEventListener('mouseout', (e) => this.handleMouseOut(e));
+      container.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+    });
     
     // Handle clicks to close preview
     document.addEventListener('click', (e) => {
@@ -88,6 +112,24 @@ class HoverPreview {
   handleMouseOver(e) {
     const link = e.target.closest('a');
     if (!link || (!this.isInternalLink(link) && !this.isExternalLink(link))) return;
+    
+    // Check if link is within a content area
+    const contentSelectors = [
+      'main',
+      'article', 
+      '.prose',
+      '.post-content',
+      '.content',
+      '.entry-content',
+      '.article-content'
+    ];
+    
+    const isInContentArea = contentSelectors.some(selector => {
+      const container = link.closest(selector);
+      return container !== null;
+    });
+    
+    if (!isInContentArea) return;
     
     this.activeLink = link;
     this.clearHideTimeout();

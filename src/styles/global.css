@@ -238,55 +238,87 @@ a.icon-link.random-underline span {
   }
 }
 
-/* Link styling for hover preview capable links */
-a[data-hover-preview] {
+/* Link styling for hover preview capable links (only in content areas) */
+.prose a, main a, article a, .post-content a, .content a {
   cursor: pointer;
   position: relative;
 }
 
-/* Internal link styling - light blue */
-a[href^="/"], a[href*="__GHOST_URL__"] {
+/* Internal link styling - light blue (only in content areas) */
+.prose a[href^="/"], .prose a[href*="__GHOST_URL__"],
+main a[href^="/"], main a[href*="__GHOST_URL__"],
+article a[href^="/"], article a[href*="__GHOST_URL__"],
+.post-content a[href^="/"], .post-content a[href*="__GHOST_URL__"],
+.content a[href^="/"], .content a[href*="__GHOST_URL__"] {
   color: #0066cc;
   text-decoration: underline;
   text-decoration-color: rgba(0, 102, 204, 0.3);
   text-underline-offset: 2px;
 }
 
-a[href^="/"]:hover, a[href*="__GHOST_URL__"]:hover {
+.prose a[href^="/"]:hover, .prose a[href*="__GHOST_URL__"]:hover,
+main a[href^="/"]:hover, main a[href*="__GHOST_URL__"]:hover,
+article a[href^="/"]:hover, article a[href*="__GHOST_URL__"]:hover,
+.post-content a[href^="/"]:hover, .post-content a[href*="__GHOST_URL__"]:hover,
+.content a[href^="/"]:hover, .content a[href*="__GHOST_URL__"]:hover {
   color: #0052a3;
   text-decoration-color: rgba(0, 82, 163, 0.6);
 }
 
-/* External link styling - violet */
-a[href^="http"]:not([href*="__GHOST_URL__"]) {
+/* External link styling - violet (only in content areas) */
+.prose a[href^="http"]:not([href*="__GHOST_URL__"]),
+main a[href^="http"]:not([href*="__GHOST_URL__"]),
+article a[href^="http"]:not([href*="__GHOST_URL__"]),
+.post-content a[href^="http"]:not([href*="__GHOST_URL__"]),
+.content a[href^="http"]:not([href*="__GHOST_URL__"]) {
   color: #7c3aed;
   text-decoration: underline;
   text-decoration-color: rgba(124, 58, 237, 0.3);
   text-underline-offset: 2px;
 }
 
-a[href^="http"]:not([href*="__GHOST_URL__"]):hover {
+.prose a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+main a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+article a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+.post-content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+.content a[href^="http"]:not([href*="__GHOST_URL__"]):hover {
   color: #6d28d9;
   text-decoration-color: rgba(109, 40, 217, 0.6);
 }
 
-/* Dark mode adjustments */
-.dark a[href^="/"], .dark a[href*="__GHOST_URL__"] {
+/* Dark mode adjustments (only in content areas) */
+.dark .prose a[href^="/"], .dark .prose a[href*="__GHOST_URL__"],
+.dark main a[href^="/"], .dark main a[href*="__GHOST_URL__"],
+.dark article a[href^="/"], .dark article a[href*="__GHOST_URL__"],
+.dark .post-content a[href^="/"], .dark .post-content a[href*="__GHOST_URL__"],
+.dark .content a[href^="/"], .dark .content a[href*="__GHOST_URL__"] {
   color: #60a5fa;
   text-decoration-color: rgba(96, 165, 250, 0.3);
 }
 
-.dark a[href^="/"]:hover, .dark a[href*="__GHOST_URL__"]:hover {
+.dark .prose a[href^="/"]:hover, .dark .prose a[href*="__GHOST_URL__"]:hover,
+.dark main a[href^="/"]:hover, .dark main a[href*="__GHOST_URL__"]:hover,
+.dark article a[href^="/"]:hover, .dark article a[href*="__GHOST_URL__"]:hover,
+.dark .post-content a[href^="/"]:hover, .dark .post-content a[href*="__GHOST_URL__"]:hover,
+.dark .content a[href^="/"]:hover, .dark .content a[href*="__GHOST_URL__"]:hover {
   color: #93c5fd;
   text-decoration-color: rgba(147, 197, 253, 0.6);
 }
 
-.dark a[href^="http"]:not([href*="__GHOST_URL__"]) {
+.dark .prose a[href^="http"]:not([href*="__GHOST_URL__"]),
+.dark main a[href^="http"]:not([href*="__GHOST_URL__"]),
+.dark article a[href^="http"]:not([href*="__GHOST_URL__"]),
+.dark .post-content a[href^="http"]:not([href*="__GHOST_URL__"]),
+.dark .content a[href^="http"]:not([href*="__GHOST_URL__"]) {
   color: #a78bfa;
   text-decoration-color: rgba(167, 139, 250, 0.3);
 }
 
-.dark a[href^="http"]:not([href*="__GHOST_URL__"]):hover {
+.dark .prose a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+.dark main a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+.dark article a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+.dark .post-content a[href^="http"]:not([href*="__GHOST_URL__"]):hover,
+.dark .content a[href^="http"]:not([href*="__GHOST_URL__"]):hover {
   color: #c4b5fd;
   text-decoration-color: rgba(196, 181, 253, 0.6);
 }
