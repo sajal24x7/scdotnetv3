@@ -18,7 +18,7 @@ const renderedPosts = posts.map(post => ({
 }));
 ---
 
-<div class="stories-grid">
+<div class="responsive-grid">
   {renderedPosts.map((post) => (
     <Card {...post.data}>
       {post.renderedContent && (
@@ -33,7 +33,7 @@ const renderedPosts = posts.map(post => ({
 <LinkHoverEffect />
 
 <style>
-  .stories-grid {
+  .responsive-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
@@ -45,7 +45,7 @@ const renderedPosts = posts.map(post => ({
 
   /* Mobile adjustments - single column */
   @media (max-width: 768px) {
-    .stories-grid {
+    .responsive-grid {
       grid-template-columns: 1fr;
       gap: 1rem;
       max-width: none;
@@ -55,7 +55,7 @@ const renderedPosts = posts.map(post => ({
 
   /* Tablet adjustments - 2 columns */
   @media (min-width: 768px) and (max-width: 1024px) {
-    .stories-grid {
+    .responsive-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
     }
@@ -63,7 +63,7 @@ const renderedPosts = posts.map(post => ({
 
   /* Desktop and up - fixed 3 columns */
   @media (min-width: 1024px) {
-    .stories-grid {
+    .responsive-grid {
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
@@ -71,7 +71,7 @@ const renderedPosts = posts.map(post => ({
 
   /* Large desktop - still 3 columns but with more gap */
   @media (min-width: 1400px) {
-    .stories-grid {
+    .responsive-grid {
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
     }

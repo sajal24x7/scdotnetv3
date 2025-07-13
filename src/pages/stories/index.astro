@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ContentGrid from '../../components/ContentGrid.astro';
+import ResponsiveGrid from '../../components/ResponsiveGrid.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for stories
@@ -9,7 +9,7 @@ const stories = allPosts
   .filter(post => post.data.category === 'story')
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-// Transform posts for the ContentGrid component
+// Transform posts for the ResponsiveGrid component
 const transformedPosts = stories.map(transformPost);
 ---
 
@@ -38,7 +38,7 @@ const transformedPosts = stories.map(transformPost);
     </header>
 
     <main class="stories-main">
-      <ContentGrid posts={transformedPosts} />
+      <ResponsiveGrid posts={transformedPosts} />
     </main>
   </div>
 </Layout>
