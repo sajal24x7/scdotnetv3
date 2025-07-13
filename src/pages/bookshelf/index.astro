@@ -41,6 +41,12 @@ const years = Object.keys(postsByYear)
       <div class="bookshelf-count">
         {bookshelfPosts.length} {bookshelfPosts.length === 1 ? 'book' : 'books'}
       </div>
+      <a 
+        href="/bookshelf/tags" 
+        class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
+      >
+        View entries by tag
+      </a>
     </header>
 
     <!-- Books by Year -->
@@ -160,6 +166,7 @@ const years = Object.keys(postsByYear)
     color: #8b5cf6;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin-bottom: 1rem;
   }
 
   :global(.dark) .bookshelf-count {
