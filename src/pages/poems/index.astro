@@ -18,15 +18,18 @@ const transformedPosts = poems.map(transformPost);
   description="Poetry and verse" 
   currentPage="/poems/"
 >
-  <div class="max-w-7xl mx-auto">
-    <header class="mb-12 px-6">
-      <div class="flex flex-col">
-        <h1 class="text-4xl font-bold mb-4">Poems</h1>
-        <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
+  <div class="poems-container">
+    <header class="poems-header">
+      <div class="header-content">
+        <h1 class="poems-title">Poems</h1>
+        <p class="poems-description">
           Poetry and verse from my collections.
         </p>
+        <div class="poems-count">
+          {transformedPosts.length} {transformedPosts.length === 1 ? 'poem' : 'poems'}
+        </div>
         <a 
-          href="/poems/tags" 
+          href="/tags/?category=poem" 
           class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
         >
           View entries by tag
@@ -34,8 +37,108 @@ const transformedPosts = poems.map(transformPost);
       </div>
     </header>
 
-    <div class="px-6">
+    <main class="poems-main">
       <ContentGrid posts={transformedPosts} />
-    </div>
+    </main>
   </div>
 </Layout>
+
+<style>
+  .poems-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+  }
+
+  .poems-header {
+    padding: 1.5rem 0 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1.5rem;
+  }
+
+  :global(.dark) .poems-header {
+    border-bottom-color: #374151;
+  }
+
+  .header-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .poems-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+
+  :global(.dark) .poems-title {
+    color: #f9fafb;
+  }
+
+  .poems-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :global(.dark) .poems-description {
+    color: #9ca3af;
+  }
+
+  .poems-count {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #8b5cf6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  :global(.dark) .poems-count {
+    color: #a78bfa;
+  }
+
+  .poems-main {
+    padding-bottom: 2rem;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .poems-container {
+      max-width: none;
+      padding: 0;
+    }
+
+    .poems-header {
+      padding: 1rem 1rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .poems-title {
+      font-size: 2rem;
+    }
+
+    .poems-description {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .poems-main {
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .poems-title {
+      font-size: 2.25rem;
+    }
+  }
+</style>

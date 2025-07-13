@@ -3,7 +3,7 @@ title: "The goal with yoga"
 slug: "the-goal-with-yoga"
 pubDate: 2025-07-13T12:19:43+03:00
 updatedDate: 2025-07-13T12:19:43+03:00
-category: blog
+category: evergreen
 tags:
   - yoga
 

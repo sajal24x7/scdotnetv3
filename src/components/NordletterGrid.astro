@@ -1,0 +1,190 @@
+---
+import { formatDateWithoutYear } from '../utils/dateFormat';
+
+const { posts } = Astro.props;
+
+// Group posts by year
+const postsByYear = posts.reduce((acc, post) => {
+  const year = post.data.pubDate.getFullYear();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
+
+// Sort years in descending order
+const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
+---
+
+<div class="nordletter-container">
+  {sortedYears.map((year) => (
+    <section class="year-section">
+      <h2 class="year-headline">{year}</h2>
+      <div class="nordletter-grid">
+        {postsByYear[year].map((post) => (
+          <article class="nordletter-item">
+            <a href={post.data.link} class="nordletter-link">
+              {post.data.image && (
+                <div class="nordletter-image">
+                  <img 
+                    src={post.data.image} 
+                    alt={post.data.title}
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <div class="nordletter-content">
+                <time class="nordletter-date" datetime={post.data.pubDate.toISOString()}>
+                  {formatDateWithoutYear(post.data.pubDate)}
+                </time>
+                <h3 class="nordletter-title">{post.data.title}</h3>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+</div>
+
+<style>
+  .nordletter-container {
+    padding: 2rem 0;
+  }
+
+  .year-section {
+    margin-bottom: 4rem;
+  }
+
+  .year-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .year-headline {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 2rem 0;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .nordletter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .nordletter-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .nordletter-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .nordletter-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  .nordletter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .nordletter-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .nordletter-link:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+
+  .nordletter-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: #f3f4f6;
+    flex-shrink: 0;
+  }
+
+  .nordletter-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .nordletter-link:hover .nordletter-image img {
+    transform: scale(1.05);
+  }
+
+  .nordletter-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nordletter-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    color: #1f2937;
+    transition: color 0.2s ease;
+  }
+
+  .nordletter-link:hover .nordletter-title {
+    color: #3b82f6;
+  }
+
+  .nordletter-date {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 400;
+  }
+
+  /* Dark mode styles */
+  :global(.dark) .year-headline {
+    color: #f9fafb;
+    border-bottom-color: #374151;
+  }
+
+  :global(.dark) .nordletter-title {
+    color: #f9fafb;
+  }
+
+  :global(.dark) .nordletter-link:hover .nordletter-title {
+    color: #60a5fa;
+  }
+
+  :global(.dark) .nordletter-date {
+    color: #9ca3af;
+  }
+
+  :global(.dark) .nordletter-image {
+    background: #374151;
+  }
+</style>

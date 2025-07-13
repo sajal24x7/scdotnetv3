@@ -18,7 +18,7 @@ const renderedPosts = posts.map(post => ({
 }));
 ---
 
-<div class="grid grid-cols-1 gap-12 py-12">
+<div class="notes-grid">
   {renderedPosts.map((post) => (
     <Card {...post.data}>
       {post.renderedContent && (
@@ -33,46 +33,39 @@ const renderedPosts = posts.map(post => ({
 <LinkHoverEffect />
 
 <style>
-  .grid {
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-  }
-
-  /* Add a subtle divider between cards */
-  .grid > *:not(:last-child) {
-    position: relative;
-  }
-
-  .grid > *:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    bottom: -1.5rem;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgb(229 231 235),
-      transparent
-    );
-  }
-
-  :global(.dark) .grid > *:not(:last-child)::after {
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgb(55 65 81),
-      transparent
-    );
+    padding: 0;
   }
 
   /* Mobile adjustments */
   @media (max-width: 768px) {
-    .grid {
+    .notes-grid {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
       max-width: none;
       padding: 0 1rem;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .notes-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.875rem;
+    }
+  }
+
+  /* Desktop adjustments */
+  @media (min-width: 1024px) {
+    .notes-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1rem;
     }
   }
 
@@ -95,4 +88,4 @@ const renderedPosts = posts.map(post => ({
   :global(.dark .prose a:hover) {
     color: #93c5fd;
   }
-</style> 
+</style>

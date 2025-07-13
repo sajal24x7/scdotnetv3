@@ -3,14 +3,15 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { formatDateWithTime } from '../../utils/dateFormat';
+import { getAllPosts } from '../../utils/content';
 
 export async function getStaticPaths() {
   // Get all posts
-  const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
+  const allPosts = await getAllPosts();
   
   // Get all unique tags
   const tags = new Set<string>();
-  allPosts.forEach((post: CollectionEntry<'posts'>) => {
+  allPosts.forEach(post => {
     post.data.tags?.forEach((tag: string) => tags.add(tag));
   });
 
@@ -23,28 +24,56 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.props;
 
-// Get all posts for runtime - redefine for component scope
-const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
+// Get all posts
+const allPosts = await getAllPosts();
 
 // Filter posts by tag
-const taggedPosts = allPosts.filter((post: CollectionEntry<'posts'>) => 
-  post.data.tags?.includes(tag)
-);
+const taggedPosts = allPosts.filter(post => {
+  return post.data.tags?.includes(tag);
+});
 
 // Sort by publish date (newest first)
-const sortedPosts = taggedPosts.sort((a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => 
+const sortedPosts = taggedPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+// Group posts by category for client-side filtering
+const postsByCategory = new Map<string, typeof sortedPosts>();
+
+// Initialize with all posts
+postsByCategory.set('all', sortedPosts);
+
+// Process each category
+const categories = ['blog', 'bookshelf', 'ephemera', 'notes', 'nordletter', 'til', 'micro', 'story', 'poem'];
+
+categories.forEach(category => {
+  const categoryPosts = sortedPosts.filter(post => {
+    if (category === 'ephemera') {
+      return ['blog', 'micro', 'photo', 'til'].includes(post.data.category);
+    }
+    return post.data.category === category;
+  });
+  
+  postsByCategory.set(category, categoryPosts);
+});
 ---
 
 <Layout 
-  title={`#${tag} - Sajal Choudhary`} 
-  description={`Content tagged with #${tag}`}
+  title={`Posts tagged "${tag}" - Sajal Choudhary`} 
+  description={`All posts tagged with "${tag}"`}
   currentPage={`/tags/${tag}/`}
 >
   <div class="max-w-2xl mx-auto px-4">
     <header class="mb-16">
-      <h1 class="text-4xl font-bold mb-4">#{tag}</h1>
+      <h1 class="text-4xl font-bold mb-4">Posts tagged with #{tag}</h1>
+      <div class="flex flex-col gap-2 mb-4">
+        <a 
+          href="/tags/" 
+          class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
+        >
+          ← All tags
+        </a>
+      </div>
       <p class="text-xl text-textSecondary dark:text-textSecondaryDark">
         {sortedPosts.length} {sortedPosts.length === 1 ? 'item' : 'items'} tagged with #{tag}
       </p>
@@ -53,7 +82,9 @@ const sortedPosts = taggedPosts.sort((a: CollectionEntry<'posts'>, b: Collection
     <section class="space-y-12">
       {sortedPosts.length === 0 ? (
         <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
-          <p class="text-textSecondary dark:text-textSecondaryDark">No content found with this tag.</p>
+          <p class="text-textSecondary dark:text-textSecondaryDark">
+            No content found with this tag.
+          </p>
         </div>
       ) : (
         <div class="space-y-12">
@@ -75,4 +106,84 @@ const sortedPosts = taggedPosts.sort((a: CollectionEntry<'posts'>, b: Collection
       )}
     </section>
   </div>
+
+  <script define:vars={{ postsByCategory: Object.fromEntries(postsByCategory), tag }}>
+    // Handle category filtering based on URL parameters
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const category = urlParams.get('category');
+      
+      if (category && postsByCategory[category]) {
+      // Update page title and description
+      const title = document.querySelector('h1');
+      const description = document.querySelector('header p');
+      
+      if (category === 'ephemera') {
+        title.textContent = `Posts tagged "${tag}" in Ephemera`;
+        description.textContent = `All ephemera posts tagged with "${tag}"`;
+      } else {
+        const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+        title.textContent = `Posts tagged "${tag}" in ${categoryName}`;
+        description.textContent = `All ${category} posts tagged with "${tag}"`;
+      }
+      
+      // Update breadcrumb links
+      const breadcrumbContainer = document.querySelector('header .flex');
+      breadcrumbContainer.innerHTML = `
+        <a href="/tags/" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200">
+          ← All tags
+        </a>
+        <a href="/tags/?category=${category}" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200">
+          ← ${category === 'ephemera' ? 'Ephemera' : category.charAt(0).toUpperCase() + category.slice(1)} tags
+        </a>
+        <a href="/tags/${tag}/" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200">
+          View all #${tag} posts
+        </a>
+      `;
+      
+      // Filter and display only category-specific posts
+      const categoryPosts = postsByCategory[category];
+      
+      // Update post count
+      const postCount = document.querySelector('header p');
+      postCount.textContent = `${categoryPosts.length} ${categoryPosts.length === 1 ? 'item' : 'items'} tagged with #${tag} in ${category === 'ephemera' ? 'ephemera' : category}`;
+      
+      // Update posts display
+      const section = document.querySelector('section');
+      
+      if (categoryPosts.length === 0) {
+        section.innerHTML = `
+          <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
+            <p class="text-textSecondary dark:text-textSecondaryDark">
+              No content found with this tag in ${category}.
+            </p>
+          </div>
+        `;
+      } else {
+        const postsHtml = categoryPosts.map(post => `
+          <article>
+            <a href="/${post.data.category}/${post.slug}/" class="group">
+              <div class="flex items-baseline gap-4">
+                <time class="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap">
+                  ${new Date(post.data.pubDate).toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                  })}
+                </time>
+                <h2 class="text-xl font-medium group-hover:text-accent transition-colors">
+                  ${post.data.title}
+                </h2>
+              </div>
+            </a>
+          </article>
+        `).join('');
+        
+        section.innerHTML = `<div class="space-y-12">${postsHtml}</div>`;
+        }
+      }
+    });
+  </script>
 </Layout> 
