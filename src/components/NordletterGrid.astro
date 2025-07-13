@@ -24,7 +24,7 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseI
       <div class="nordletter-grid">
         {postsByYear[year].map((post) => (
           <article class="nordletter-item">
-            <a href={`/${post.slug}/`} class="nordletter-link">
+            <a href={post.data.link} class="nordletter-link">
               {post.data.image && (
                 <div class="nordletter-image">
                   <img 
