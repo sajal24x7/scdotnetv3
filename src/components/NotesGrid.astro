@@ -35,8 +35,8 @@ const renderedPosts = posts.map(post => ({
 <style>
   .notes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
@@ -61,27 +61,27 @@ const renderedPosts = posts.map(post => ({
     }
   }
 
-  /* Tablet adjustments */
+  /* Tablet adjustments - 2 columns */
   @media (min-width: 768px) and (max-width: 1024px) {
     .notes-grid {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.875rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
     }
   }
 
-  /* Desktop adjustments */
+  /* Desktop and up - fixed 3 columns */
   @media (min-width: 1024px) {
     .notes-grid {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
   }
 
-  /* Large desktop - allow more columns */
+  /* Large desktop - still 3 columns but with more gap */
   @media (min-width: 1400px) {
     .notes-grid {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
     }
   }
 
