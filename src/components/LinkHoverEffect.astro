@@ -152,50 +152,64 @@
       document.body.appendChild(this.tooltip);
     }
 
-    setupEventListeners() {
-      // Only target links within prose elements
-      document.addEventListener('mouseover', (e) => {
-        const target = e.target;
-        if (target.tagName === 'A' && target.closest('.prose')) {
-          this.handleLinkHover(target, e);
-        }
-      });
+      setupEventListeners() {
+    // First, classify all links when page loads
+    this.classifyAllLinks();
 
-      document.addEventListener('mouseout', (e) => {
-        const target = e.target;
-        if (target.tagName === 'A' && target.closest('.prose')) {
-          this.hideTooltip();
-        }
-      });
-
-      document.addEventListener('mousemove', (e) => {
-        if (this.tooltip.classList.contains('show')) {
-          this.updateTooltipPosition(e);
-        }
-      });
-    }
-
-    async handleLinkHover(link, event) {
-      const href = link.getAttribute('href');
-      if (!href) return;
-
-      const isInternal = this.isInternalLink(href);
-      
-      // Add data attributes for styling
-      if (isInternal) {
-        link.setAttribute('data-internal', '');
-        link.removeAttribute('data-external');
-      } else {
-        link.setAttribute('data-external', '');
-        link.removeAttribute('data-internal');
+    // Only target links within prose elements
+    document.addEventListener('mouseover', (e) => {
+      const target = e.target;
+      if (target.tagName === 'A' && target.closest('.prose')) {
+        this.handleLinkHover(target, e);
       }
+    });
 
-      if (isInternal) {
-        await this.showInternalLinkPreview(href, event);
-      } else {
-        this.showExternalLinkPreview(href, event);
+    document.addEventListener('mouseout', (e) => {
+      const target = e.target;
+      if (target.tagName === 'A' && target.closest('.prose')) {
+        this.hideTooltip();
       }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (this.tooltip.classList.contains('show')) {
+        this.updateTooltipPosition(e);
+      }
+    });
+  }
+
+  classifyAllLinks() {
+    const proseElements = document.querySelectorAll('.prose');
+    proseElements.forEach(prose => {
+      const links = prose.querySelectorAll('a[href]');
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href) {
+          const isInternal = this.isInternalLink(href);
+          if (isInternal) {
+            link.setAttribute('data-internal', '');
+            link.removeAttribute('data-external');
+          } else {
+            link.setAttribute('data-external', '');
+            link.removeAttribute('data-internal');
+          }
+        }
+      });
+    });
+  }
+
+      async handleLinkHover(link, event) {
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    const isInternal = this.isInternalLink(href);
+    
+    if (isInternal) {
+      await this.showInternalLinkPreview(href, event);
+    } else {
+      this.showExternalLinkPreview(href, event);
     }
+  }
 
     isInternalLink(href) {
       // Check if it's a relative link or matches the current domain
@@ -204,31 +218,13 @@
              href.includes(window.location.hostname);
     }
 
-    async showInternalLinkPreview(href, event) {
-      // Convert __GHOST_URL__ to actual path
-      const cleanHref = href.replace('__GHOST_URL__', '');
-      
-      try {
-        // Extract category and slug from URL
-        const urlParts = cleanHref.replace(/^\//, '').split('/');
-        if (urlParts.length >= 2) {
-          const [category, slug] = urlParts;
-          
-          // Fetch post content - we'll implement this API endpoint
-          const response = await fetch(`/api/post-preview?category=${category}&slug=${slug}`);
-          if (response.ok) {
-            const postData = await response.json();
-            this.showTooltip(this.createInternalPreview(postData), event);
-          } else {
-            // Fallback if API fails
-            this.showTooltip(this.createInternalPreviewFallback(cleanHref), event);
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching post preview:', error);
-        this.showTooltip(this.createInternalPreviewFallback(cleanHref), event);
-      }
-    }
+      async showInternalLinkPreview(href, event) {
+    // Convert __GHOST_URL__ to actual path
+    const cleanHref = href.replace('__GHOST_URL__', '');
+    
+    // For now, just show a simple preview without API call
+    this.showTooltip(this.createInternalPreviewFallback(cleanHref), event);
+  }
 
     createInternalPreview(postData) {
       return `
@@ -239,14 +235,31 @@
       `;
     }
 
-    createInternalPreviewFallback(href) {
+      createInternalPreviewFallback(href) {
+    // Extract title from URL path
+    const urlParts = href.replace(/^\//, '').split('/');
+    let title = 'Internal Link';
+    
+    if (urlParts.length >= 2) {
+      const [category, slug] = urlParts;
+      // Convert slug to readable title
+      title = slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+      
       return `
         <div class="internal-link-preview">
-          <h3>Internal Link</h3>
-          <p>${href}</p>
+          <h3>${title}</h3>
+          <p>Category: ${category}</p>
         </div>
       `;
     }
+    
+    return `
+      <div class="internal-link-preview">
+        <h3>${title}</h3>
+        <p>${href}</p>
+      </div>
+    `;
+  }
 
     showExternalLinkPreview(href, event) {
       const content = `

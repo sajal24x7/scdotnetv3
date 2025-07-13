@@ -1,12 +1,18 @@
 import { getCollection } from 'astro:content';
 
-export async function GET({ url }) {
-  const searchParams = new URLSearchParams(url.search);
-  const category = searchParams.get('category');
-  const slug = searchParams.get('slug');
+export async function GET(context) {
+  const url = new URL(context.request.url);
+  const category = url.searchParams.get('category');
+  const slug = url.searchParams.get('slug');
+
+  // Debug logging
+  console.log('API Request params:', { category, slug, search: url.search });
 
   if (!category || !slug) {
-    return new Response(JSON.stringify({ error: 'Missing category or slug' }), {
+    return new Response(JSON.stringify({ 
+      error: 'Missing category or slug', 
+      received: { category, slug, search: url.search }
+    }), {
       status: 400,
       headers: { 'Content-Type': 'application/json' }
     });
