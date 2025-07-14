@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import CircularGrid from '../../components/CircularGrid.astro';
+import ContentGrid from '../../components/ContentGrid.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for nordletter
@@ -9,13 +9,13 @@ const nordletterPosts = allPosts
   .filter(post => post.data.category === 'nordletter')
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-// Transform posts for the CircularGrid component
+// Transform posts for the ContentGrid component
 const transformedPosts = nordletterPosts.map(transformPost);
 ---
 
 <Layout 
   title="Nordletter (New Layout)" 
-  description="Monthly newsletter about life in the Nordics - New Circular Layout" 
+  description="Monthly newsletter about life in the Nordics - Horizontal Layout" 
   currentPage="/new-nordletter/"
 >
   <div class="max-w-7xl mx-auto">
@@ -23,11 +23,11 @@ const transformedPosts = nordletterPosts.map(transformPost);
       <div class="flex flex-col">
         <h1 class="text-4xl font-bold mb-4">Nordletter (New Layout)</h1>
         <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
-          A weekly newsletter on living in Finland + 5 things from the web.
-          <strong>This page uses the new AdaptiveCard component with circular layout.</strong>
+          Monthly newsletter about life in the Nordics.
+          <strong>This page uses the horizontal card layout like the main branch.</strong>
         </p>
         <div class="layout-info mb-6">
-          <span class="layout-badge">Circular Layout</span>
+          <span class="layout-badge">Horizontal Layout</span>
           <a 
             href="/nordletter/" 
             class="compare-link"
@@ -36,32 +36,17 @@ const transformedPosts = nordletterPosts.map(transformPost);
           </a>
         </div>
         
-        <form
-          class="flex flex-col sm:flex-row gap-3 max-w-md"
-          action="https://buttondown.com/api/emails/embed-subscribe/sajal24x7"
-          method="post"
-          target="popupwindow"
-          onsubmit="window.open('https://buttondown.com/sajal24x7', 'popupwindow')"
+        <a 
+          href="/nordletter/tags" 
+          class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
         >
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-            class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-          <button
-            type="submit"
-            class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
-          >
-            Subscribe
-          </button>
-        </form>
+          View entries by tag
+        </a>
       </div>
     </header>
 
     <div class="px-6">
-      <CircularGrid posts={transformedPosts} />
+      <ContentGrid posts={transformedPosts} />
     </div>
   </div>
 </Layout>
