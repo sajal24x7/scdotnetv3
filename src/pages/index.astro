@@ -9,7 +9,7 @@ const recentPosts = (await getAllPosts())
 ---
 
 <Layout title="Sajal Choudhary" currentPage="/">
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="home-container">
     <!-- Header Section -->
     <div class="py-8 mb-6">
       <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
@@ -150,5 +150,53 @@ const recentPosts = (await getAllPosts())
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </Layout>
+
+<style>
+  .home-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .home-container {
+      max-width: none;
+      padding: 0 1rem;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .home-container {
+      max-width: 95vw;
+      padding: 0 1.5rem;
+    }
+  }
+
+  /* Desktop adjustments */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    .home-container {
+      max-width: 90vw;
+      padding: 0 2rem;
+    }
+  }
+
+  /* Large desktop adjustments */
+  @media (min-width: 1440px) and (max-width: 1920px) {
+    .home-container {
+      max-width: 85vw;
+      padding: 0 2.5rem;
+    }
+  }
+
+  /* Extra large screens */
+  @media (min-width: 1920px) {
+    .home-container {
+      max-width: 80vw;
+      padding: 0 3rem;
+    }
+  }
+</style>

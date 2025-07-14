@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ContentGrid from '../../components/ContentGrid.astro';
-import { getAllPosts, transformPost } from '../../utils/content';
+import EphemeraLayout from '../../components/EphemeraLayout.astro';
+import { getAllPosts } from '../../utils/content';
 
 // Get all posts and filter for ephemera
 const allPosts = await getAllPosts();
@@ -9,7 +9,7 @@ const ephemera = allPosts
   .filter(post => ['blog', 'micro', 'photo'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-// Transform posts for the ContentGrid component
+// Transform posts for the EphemeraLayout component
 const transformedPosts = ephemera.map(post => ({
   data: {
     title: post.data.title,
@@ -17,7 +17,8 @@ const transformedPosts = ephemera.map(post => ({
     pubDate: post.data.pubDate,
     category: post.data.category,
     image: post.data.image,
-    link: `/${post.data.category}/${post.slug}/`
+    link: `/${post.data.category}/${post.slug}/`,
+    tags: post.data.tags || []
   },
   body: post.body,
   render: post.render
@@ -49,7 +50,7 @@ const transformedPosts = ephemera.map(post => ({
     </header>
 
     <main class="ephemera-main">
-      <ContentGrid posts={transformedPosts} />
+      <EphemeraLayout posts={transformedPosts} />
     </main>
   </div>
 </Layout>
