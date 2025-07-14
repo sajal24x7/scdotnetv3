@@ -112,6 +112,44 @@ const renderedPosts = posts.map(post => ({
     }
   }
 
+  /* Debug info - shows current breakpoint */
+  .masonry-grid::before {
+    content: "Screen: 5+ columns (1400px+)";
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+  }
+
+  @media (max-width: 1400px) {
+    .masonry-grid::before {
+      content: "Screen: 4 columns (1100px-1400px)";
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .masonry-grid::before {
+      content: "Screen: 3 columns (900px-1100px)";
+    }
+  }
+
+  @media (max-width: 900px) {
+    .masonry-grid::before {
+      content: "Screen: 2 columns (768px-900px)";
+    }
+  }
+
+  @media (max-width: 768px) {
+    .masonry-grid::before {
+      content: "Screen: 1 column (<768px)";
+    }
+  }
+
   /* Ensure links are properly styled */
   :global(.prose a) {
     color: #3b82f6;
