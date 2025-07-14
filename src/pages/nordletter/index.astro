@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import NordletterGrid from '../../components/NordletterGrid.astro';
+import CircularGrid from '../../components/CircularGrid.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for nordletter
@@ -9,7 +9,7 @@ const nordletterPosts = allPosts
   .filter(post => post.data.category === 'nordletter')
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-// Transform posts for the NordletterGrid component
+// Transform posts for the CircularGrid component
 const transformedPosts = nordletterPosts.map(transformPost);
 ---
 
@@ -57,7 +57,7 @@ const transformedPosts = nordletterPosts.map(transformPost);
     </header>
 
     <div class="px-6">
-      <NordletterGrid posts={transformedPosts} />
+      <CircularGrid posts={transformedPosts} />
     </div>
   </div>
 </Layout> 

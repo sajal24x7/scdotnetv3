@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import NotesGrid from '../../components/NotesGrid.astro';
+import MasonryGrid from '../../components/MasonryGrid.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for notes (evergreen and TIL)
@@ -9,7 +9,7 @@ const notesPosts = allPosts
   .filter(post => ['evergreen', 'til'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-// Transform posts for the NotesGrid component
+// Transform posts for the MasonryGrid component
 const transformedPosts = notesPosts.map(transformPost);
 ---
 
@@ -38,7 +38,7 @@ const transformedPosts = notesPosts.map(transformPost);
     </header>
 
     <main class="notes-main">
-      <NotesGrid posts={transformedPosts} />
+      <MasonryGrid posts={transformedPosts} />
     </main>
   </div>
 </Layout>

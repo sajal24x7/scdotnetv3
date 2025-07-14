@@ -1,0 +1,120 @@
+---
+import { marked } from 'marked';
+import LinkHoverEffect from './LinkHoverEffect.astro';
+import AdaptiveCard from './AdaptiveCard.astro';
+
+interface Props {
+  posts: any[];
+}
+
+const { posts } = Astro.props;
+
+// Configure marked options
+marked.setOptions({
+  gfm: true, // GitHub Flavored Markdown
+  breaks: true // Convert line breaks to <br>
+});
+
+// Pre-render markdown content
+const renderedPosts = posts.map(post => ({
+  ...post,
+  renderedContent: post.body ? marked.parse(post.body) : null
+}));
+---
+
+<div class="feed-grid">
+  {renderedPosts.map((post) => (
+    <div class="feed-item">
+      <AdaptiveCard 
+        title={post.data.title}
+        description={post.data.description}
+        pubDate={post.data.pubDate}
+        category={post.data.category}
+        image={post.data.image}
+        link={post.data.link}
+        layout="feed"
+      >
+        {post.renderedContent && (
+          <div class="prose dark:prose-dark max-w-none">
+            <div set:html={post.renderedContent} />
+          </div>
+        )}
+      </AdaptiveCard>
+    </div>
+  ))}
+</div>
+
+<LinkHoverEffect />
+
+<style>
+  .feed-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .feed-item {
+    width: 100%;
+  }
+
+  /* Add a subtle divider between cards */
+  .feed-item:not(:last-child) {
+    position: relative;
+  }
+
+  .feed-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(229 231 235),
+      transparent
+    );
+  }
+
+  :global(.dark) .feed-item:not(:last-child)::after {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(55 65 81),
+      transparent
+    );
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .feed-grid {
+      max-width: none;
+      padding: 0 1rem;
+      gap: 1.5rem;
+    }
+  }
+
+  /* Ensure links are properly styled */
+  :global(.prose a) {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  :global(.prose a:hover) {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+  :global(.dark .prose a) {
+    color: #60a5fa;
+  }
+
+  :global(.dark .prose a:hover) {
+    color: #93c5fd;
+  }
+</style>
