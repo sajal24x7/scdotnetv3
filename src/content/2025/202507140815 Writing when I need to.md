@@ -3,7 +3,7 @@ title: "Writing when I need to"
 slug: "writing-when-i-need-to"
 pubDate: 2025-07-14T08:16:39+03:00
 updatedDate: 2025-07-14T08:16:39+03:00
-category: blog
+category: micro
 tags:
   - writing
 
