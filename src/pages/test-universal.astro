@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import UniversalGrid from '../components/UniversalGrid.astro';
+import UnifiedCard from '../components/UnifiedCard.astro';
+import { getAllPosts, transformPost } from '../utils/content';
+
+// Get all posts for testing
+const allPosts = await getAllPosts();
+const transformedPosts = allPosts.map(transformPost);
+
+// Create test data for different content types
+const testNotes = transformedPosts.filter(post => ['evergreen', 'til'].includes(post.data.category)).slice(0, 6);
+const testEphemera = transformedPosts.filter(post => ['blog', 'stories', 'poems'].includes(post.data.category)).slice(0, 4);
+const testNewsletter = transformedPosts.filter(post => post.data.category === 'nordletter').slice(0, 8);
+const testBooks = [
+  {
+    data: {
+      title: "A Year of Mornings",
+      subtitle: "A collection of poems",
+      author: "Sajal Choudhary",
+      pubDate: new Date('2025-01-01'),
+      category: 'book',
+      image: '/books/01-ayom.jpg',
+      link: '/books/a-year-of-mornings/'
+    }
+  },
+  {
+    data: {
+      title: "Sample Book 2",
+      subtitle: "Another collection",
+      author: "Author Name",
+      pubDate: new Date('2024-12-01'),
+      category: 'book',
+      image: '/books/01-ayom.jpg',
+      link: '#'
+    }
+  }
+];
+---
+
+<Layout title="Universal Components Test" currentPage="/test-universal/">
+  <div class="test-container">
+    <h1 class="text-3xl font-bold mb-8">Universal Components Test</h1>
+    
+    <!-- Masonry Layout Test (Notes) -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Masonry Layout - Notes</h2>
+      <UniversalGrid layout="masonry" variant="note" posts={testNotes}>
+        <UnifiedCard 
+          slot="card"
+          variant="note"
+          title="Test Note"
+          description="This is a test note with masonry layout"
+          pubDate={new Date()}
+          category="note"
+        />
+      </UniversalGrid>
+    </section>
+
+    <!-- Feed Layout Test (Ephemera) -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Feed Layout - Ephemera</h2>
+      <UniversalGrid layout="feed" variant="ephemera" posts={testEphemera}>
+        <UnifiedCard 
+          slot="card"
+          variant="ephemera"
+          title="Test Ephemera"
+          description="This is a test ephemera with feed layout"
+          pubDate={new Date()}
+          category="ephemera"
+        />
+      </UniversalGrid>
+    </section>
+
+    <!-- Grid Layout Test (Newsletter) -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Grid Layout - Newsletter</h2>
+      <UniversalGrid layout="grid" variant="newsletter" posts={testNewsletter}>
+        <UnifiedCard 
+          slot="card"
+          variant="newsletter"
+          title="Test Newsletter"
+          description="This is a test newsletter with grid layout"
+          pubDate={new Date()}
+          category="newsletter"
+          image="/books/01-ayom.jpg"
+        />
+      </UniversalGrid>
+    </section>
+
+    <!-- Library Layout Test (Books) -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Library Layout - Books</h2>
+      <UniversalGrid layout="library" variant="book" posts={testBooks}>
+        <UnifiedCard 
+          slot="card"
+          variant="book"
+          title="Test Book"
+          subtitle="A test book"
+          author="Test Author"
+          pubDate={new Date()}
+          category="book"
+          image="/books/01-ayom.jpg"
+        />
+      </UniversalGrid>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .test-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  section {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  :global(.dark) section {
+    border-color: #374151;
+  }
+</style>

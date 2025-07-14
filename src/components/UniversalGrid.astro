@@ -1,0 +1,258 @@
+---
+import type { LayoutVariant, CardVariant, MetadataPosition } from '../utils/designTokens';
+import { designTokens } from '../utils/designTokens';
+
+interface Props {
+  layout: LayoutVariant;
+  variant: CardVariant;
+  posts: any[];
+  metadata?: MetadataPosition;
+  gap?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
+
+const { 
+  layout, 
+  variant, 
+  posts, 
+  metadata = 'top',
+  gap = 'md',
+  className = ''
+} = Astro.props;
+
+// Get breakpoint configuration based on layout
+const getBreakpointConfig = (layout: LayoutVariant) => {
+  return designTokens.breakpoints[layout];
+};
+
+// Get grid class based on layout
+const getGridClass = (layout: LayoutVariant) => {
+  switch (layout) {
+    case 'masonry':
+      return 'masonry-grid';
+    case 'feed':
+      return 'feed-layout';
+    case 'grid':
+      return 'grid-layout';
+    case 'library':
+      return 'library-grid';
+    default:
+      return 'default-grid';
+  }
+};
+
+// Get gap class
+const getGapClass = (gap: string) => {
+  switch (gap) {
+    case 'sm':
+      return 'gap-sm';
+    case 'lg':
+      return 'gap-lg';
+    default:
+      return 'gap-md';
+  }
+};
+
+const breakpointConfig = getBreakpointConfig(layout);
+const gridClass = getGridClass(layout);
+const gapClass = getGapClass(gap);
+---
+
+<div class={`universal-grid ${gridClass} ${gapClass} ${className}`}>
+  {posts.map((post) => (
+    <div class="grid-item">
+      <slot name="card">
+        <!-- Default card rendering if no slot is provided -->
+        <div class="default-card">
+          <h3>{post.data?.title || post.title}</h3>
+          <p>{post.data?.description || post.description}</p>
+        </div>
+      </slot>
+    </div>
+  ))}
+</div>
+
+<style>
+  /* Base grid styles */
+  .universal-grid {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .grid-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    width: 100%;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    transform-origin: top center;
+  }
+
+  .grid-item.filtered-out {
+    opacity: 0;
+    transform: scale(0.8);
+    position: absolute;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Gap variations */
+  .gap-sm {
+    column-gap: 0.25rem;
+  }
+
+  .gap-md {
+    column-gap: 0.5rem;
+  }
+
+  .gap-lg {
+    column-gap: 1rem;
+  }
+
+  /* Masonry Layout (like Maggie's garden) */
+  .masonry-grid {
+    column-count: 3;
+    column-gap: 0.5rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 1rem auto;
+    position: relative;
+  }
+
+  @media (max-width: 1100px) {
+    .masonry-grid {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .masonry-grid {
+      column-count: 1;
+    }
+  }
+
+  /* Feed Layout (like Maggie's smidgeons) */
+  .feed-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 800px minmax(0, 1fr);
+    gap: 2rem;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .feed-layout .grid-item {
+    grid-column: 2;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .feed-layout {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .feed-layout .grid-item {
+      grid-column: 1;
+    }
+  }
+
+  /* Grid Layout (like current Nordletter) */
+  .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1024px) {
+    .grid-layout {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .grid-layout {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .grid-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Library Grid (like Maggie's library) */
+  .library-grid {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1024px) {
+    .library-grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .library-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .library-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Default grid fallback */
+  .default-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .universal-grid {
+      max-width: none;
+      padding: 0 1rem;
+    }
+
+    .masonry-grid {
+      column-gap: 0.25rem;
+    }
+
+    .grid-layout {
+      gap: 0.75rem;
+    }
+
+    .library-grid {
+      gap: 0.75rem;
+    }
+  }
+
+  /* Dark mode support */
+  :global(.dark) .grid-item {
+    /* Dark mode styles if needed */
+  }
+</style>
