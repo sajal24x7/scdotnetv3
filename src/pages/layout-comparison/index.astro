@@ -1,0 +1,328 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MasonryGrid from '../../components/MasonryGrid.astro';
+import FeedGrid from '../../components/FeedGrid.astro';
+import CircularGrid from '../../components/CircularGrid.astro';
+import { getAllPosts, transformPost } from '../../utils/content';
+
+// Get sample posts for each category
+const allPosts = await getAllPosts();
+
+// Sample posts for each layout (limit to 6 each for comparison)
+const notesPosts = allPosts
+  .filter(post => ['evergreen', 'til'].includes(post.data.category))
+  .slice(0, 6)
+  .map(transformPost);
+
+const ephemeraPosts = allPosts
+  .filter(post => ['blog', 'micro', 'photo'].includes(post.data.category))
+  .slice(0, 6)
+  .map(post => ({
+    data: {
+      title: post.data.title,
+      description: post.data.description,
+      pubDate: post.data.pubDate,
+      category: post.data.category,
+      image: post.data.image,
+      link: `/${post.data.category}/${post.slug}/`
+    },
+    body: post.body,
+    render: post.render
+  }));
+
+const nordletterPosts = allPosts
+  .filter(post => post.data.category === 'nordletter')
+  .slice(0, 6)
+  .map(transformPost);
+---
+
+<Layout 
+  title="Layout Comparison" 
+  description="Compare different layout styles using the new AdaptiveCard component" 
+  currentPage="/layout-comparison/"
+>
+  <div class="comparison-container">
+    <header class="comparison-header">
+      <h1 class="comparison-title">Layout Comparison</h1>
+      <p class="comparison-description">
+        Compare the three different layout styles using the new unified AdaptiveCard component.
+        Each layout has a distinct visual identity while using the same underlying component.
+      </p>
+    </header>
+
+    <div class="layouts-grid">
+      <!-- Masonry Layout -->
+      <section class="layout-section">
+        <div class="layout-header">
+          <h2 class="layout-title">Masonry Layout</h2>
+          <span class="layout-badge masonry">Masonry</span>
+          <p class="layout-description">
+            Uses CSS column-count for true masonry effect. Perfect for notes and documentation.
+          </p>
+        </div>
+        <div class="layout-content">
+          <MasonryGrid posts={notesPosts} />
+        </div>
+      </section>
+
+      <!-- Feed Layout -->
+      <section class="layout-section">
+        <div class="layout-header">
+          <h2 class="layout-title">Feed Layout</h2>
+          <span class="layout-badge feed">Feed</span>
+          <p class="layout-description">
+            Single column layout with subtle dividers. Ideal for chronological content like blog posts.
+          </p>
+        </div>
+        <div class="layout-content">
+          <FeedGrid posts={ephemeraPosts} />
+        </div>
+      </section>
+
+      <!-- Circular Layout -->
+      <section class="layout-section">
+        <div class="layout-header">
+          <h2 class="layout-title">Circular Layout</h2>
+          <span class="layout-badge circular">Circular</span>
+          <p class="layout-description">
+            Circular images with centered text. Great for newsletters and featured content.
+          </p>
+        </div>
+        <div class="layout-content">
+          <CircularGrid posts={nordletterPosts} />
+        </div>
+      </section>
+    </div>
+
+    <div class="comparison-footer">
+      <h3 class="footer-title">Key Benefits</h3>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <h4>Unified Component</h4>
+          <p>One AdaptiveCard component handles all layouts with consistent styling</p>
+        </div>
+        <div class="benefit-item">
+          <h4>Responsive Design</h4>
+          <p>Images and text resize based on screen size with mobile optimization</p>
+        </div>
+        <div class="benefit-item">
+          <h4>Visual Identity</h4>
+          <p>Each section maintains distinct visual identity while using the same component</p>
+        </div>
+        <div class="benefit-item">
+          <h4>Easy Maintenance</h4>
+          <p>Single component to maintain instead of multiple specialized components</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .comparison-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .comparison-header {
+    text-align: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 3rem;
+  }
+
+  :global(.dark) .comparison-header {
+    border-bottom-color: #374151;
+  }
+
+  .comparison-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: #111827;
+  }
+
+  :global(.dark) .comparison-title {
+    color: #f9fafb;
+  }
+
+  .comparison-description {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  :global(.dark) .comparison-description {
+    color: #9ca3af;
+  }
+
+  .layouts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .layout-section {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+  }
+
+  :global(.dark) .layout-section {
+    border-color: #374151;
+    background: #1f2937;
+  }
+
+  .layout-header {
+    padding: 2rem;
+    border-bottom: 1px solid #e5e7eb;
+    background: #f9fafb;
+  }
+
+  :global(.dark) .layout-header {
+    border-bottom-color: #374151;
+    background: #111827;
+  }
+
+  .layout-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+
+  :global(.dark) .layout-title {
+    color: #f9fafb;
+  }
+
+  .layout-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .layout-badge.masonry {
+    background: #10b981;
+  }
+
+  .layout-badge.feed {
+    background: #f59e0b;
+  }
+
+  .layout-badge.circular {
+    background: #8b5cf6;
+  }
+
+  .layout-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+
+  :global(.dark) .layout-description {
+    color: #9ca3af;
+  }
+
+  .layout-content {
+    padding: 2rem;
+  }
+
+  .comparison-footer {
+    margin-top: 4rem;
+    padding: 2rem;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  :global(.dark) .comparison-footer {
+    border-top-color: #374151;
+  }
+
+  .footer-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #111827;
+    text-align: center;
+  }
+
+  :global(.dark) .footer-title {
+    color: #f9fafb;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .benefit-item {
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f9fafb;
+  }
+
+  :global(.dark) .benefit-item {
+    border-color: #374151;
+    background: #111827;
+  }
+
+  .benefit-item h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+
+  :global(.dark) .benefit-item h4 {
+    color: #f9fafb;
+  }
+
+  .benefit-item p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+
+  :global(.dark) .benefit-item p {
+    color: #9ca3af;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .comparison-container {
+      padding: 0 0.5rem;
+    }
+
+    .comparison-title {
+      font-size: 2rem;
+    }
+
+    .comparison-description {
+      font-size: 1rem;
+    }
+
+    .layout-header {
+      padding: 1.5rem;
+    }
+
+    .layout-content {
+      padding: 1rem;
+    }
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

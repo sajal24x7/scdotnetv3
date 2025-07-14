@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FeedGrid from '../../components/FeedGrid.astro';
+import { getAllPosts, transformPost } from '../../utils/content';
+
+// Get all posts and filter for ephemera
+const allPosts = await getAllPosts();
+const ephemera = allPosts
+  .filter(post => ['blog', 'micro', 'photo'].includes(post.data.category))
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+
+// Transform posts for the FeedGrid component
+const transformedPosts = ephemera.map(post => ({
+  data: {
+    title: post.data.title,
+    description: post.data.description,
+    pubDate: post.data.pubDate,
+    category: post.data.category,
+    image: post.data.image,
+    link: `/${post.data.category}/${post.slug}/`
+  },
+  body: post.body,
+  render: post.render
+}));
+---
+
+<Layout 
+  title="Ephemera (New Layout)" 
+  description="Blog posts, photos, and micro updates - New Feed Layout" 
+  currentPage="/new-ephemera/"
+>
+  <div class="ephemera-container">
+    <header class="ephemera-header">
+      <div class="header-content">
+        <h1 class="ephemera-title">Ephemera (New Layout)</h1>
+        <p class="ephemera-description">
+          Blog posts, photos, and micro updates from my daily life.
+          <strong>This page uses the new AdaptiveCard component with feed layout.</strong>
+        </p>
+        <div class="ephemera-count">
+          {transformedPosts.length} {transformedPosts.length === 1 ? 'post' : 'posts'}
+        </div>
+        <div class="layout-info">
+          <span class="layout-badge">Feed Layout</span>
+          <a 
+            href="/ephemera/" 
+            class="compare-link"
+          >
+            ← Compare with old layout
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="ephemera-main">
+      <FeedGrid posts={transformedPosts} />
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .ephemera-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+  }
+
+  .ephemera-header {
+    padding: 1.5rem 0 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1.5rem;
+  }
+
+  :global(.dark) .ephemera-header {
+    border-bottom-color: #374151;
+  }
+
+  .header-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .ephemera-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+
+  :global(.dark) .ephemera-title {
+    color: #f9fafb;
+  }
+
+  .ephemera-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :global(.dark) .ephemera-description {
+    color: #9ca3af;
+  }
+
+  .ephemera-count {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #8b5cf6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  :global(.dark) .ephemera-count {
+    color: #a78bfa;
+  }
+
+  .layout-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .layout-badge {
+    background: #f59e0b;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .compare-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+
+  .compare-link:hover {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+  :global(.dark) .compare-link {
+    color: #60a5fa;
+  }
+
+  :global(.dark) .compare-link:hover {
+    color: #93c5fd;
+  }
+
+  .ephemera-main {
+    padding-bottom: 2rem;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .ephemera-container {
+      max-width: none;
+      padding: 0;
+    }
+
+    .ephemera-header {
+      padding: 1rem 1rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .ephemera-title {
+      font-size: 2rem;
+    }
+
+    .ephemera-description {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .ephemera-main {
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .ephemera-title {
+      font-size: 2.25rem;
+    }
+  }
+</style>
