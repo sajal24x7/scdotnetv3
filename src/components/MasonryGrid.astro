@@ -49,7 +49,7 @@ const renderedPosts = posts.map(post => ({
 
 <style>
   .masonry-grid {
-    column-count: 3;
+    column-count: 5;
     column-gap: 1rem;
     width: 100%;
     max-width: 1400px;
@@ -82,7 +82,21 @@ const renderedPosts = posts.map(post => ({
   }
 
   /* Responsive breakpoints */
+  @media (max-width: 1400px) {
+    .masonry-grid {
+      column-count: 4;
+      column-gap: 1rem;
+    }
+  }
+
   @media (max-width: 1100px) {
+    .masonry-grid {
+      column-count: 3;
+      column-gap: 0.75rem;
+    }
+  }
+
+  @media (max-width: 900px) {
     .masonry-grid {
       column-count: 2;
       column-gap: 0.75rem;
