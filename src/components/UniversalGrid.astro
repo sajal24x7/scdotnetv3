@@ -168,28 +168,29 @@ const gapClass = getGapClass(gap);
   /* Grid Layout (like current Nordletter) */
   .grid-layout {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
   }
 
-  @media (max-width: 1024px) {
+  @media (min-width: 768px) {
     .grid-layout {
       grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 1024px) {
     .grid-layout {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
-  @media (max-width: 640px) {
+  @media (min-width: 1280px) {
     .grid-layout {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(5, 1fr);
     }
   }
 

@@ -363,6 +363,12 @@ const cardClass = getCardClass(variant);
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .card-newsletter:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
   }
 
   .card-newsletter .card-image {
@@ -386,6 +392,25 @@ const cardClass = getCardClass(variant);
     transform: scale(1.05);
   }
 
+  .card-newsletter .card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0;
+  }
+
+  .card-newsletter .card-meta {
+    margin-bottom: 0;
+  }
+
+  .card-newsletter .card-date {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 400;
+  }
+
   .card-newsletter .card-title {
     font-size: 1rem;
     font-weight: 600;
@@ -397,6 +422,69 @@ const cardClass = getCardClass(variant);
 
   .card-newsletter:hover .card-title {
     color: #3b82f6;
+  }
+
+  /* Responsive sizing for newsletter cards */
+  @media (min-width: 768px) {
+    .card-newsletter .card-image {
+      width: 140px;
+      height: 140px;
+    }
+    
+    .card-newsletter .card-title {
+      font-size: 1.1rem;
+    }
+    
+    .card-newsletter .card-date {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .card-newsletter .card-image {
+      width: 160px;
+      height: 160px;
+    }
+    
+    .card-newsletter .card-title {
+      font-size: 1.2rem;
+    }
+    
+    .card-newsletter .card-date {
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .card-newsletter .card-image {
+      width: 180px;
+      height: 180px;
+    }
+    
+    .card-newsletter .card-title {
+      font-size: 1.3rem;
+    }
+    
+    .card-newsletter .card-date {
+      font-size: 1.1rem;
+    }
+  }
+
+  /* Dark mode styles for newsletter */
+  :global(.dark) .card-newsletter .card-title {
+    color: #f9fafb;
+  }
+
+  :global(.dark) .card-newsletter:hover .card-title {
+    color: #60a5fa;
+  }
+
+  :global(.dark) .card-newsletter .card-date {
+    color: #9ca3af;
+  }
+
+  :global(.dark) .card-newsletter .card-image {
+    background: #374151;
   }
 
   /* Book variant styles */

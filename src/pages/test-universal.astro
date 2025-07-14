@@ -76,15 +76,16 @@ const testBooks = [
     <section class="mb-12">
       <h2 class="text-2xl font-semibold mb-4">Grid Layout - Newsletter</h2>
       <UniversalGrid layout="grid" variant="newsletter" posts={testNewsletter}>
-        <UnifiedCard 
-          slot="card"
-          variant="newsletter"
-          title="Test Newsletter"
-          description="This is a test newsletter with grid layout"
-          pubDate={new Date()}
-          category="newsletter"
-          image="/books/01-ayom.jpg"
-        />
+        {testNewsletter.map((post) => (
+          <UnifiedCard 
+            slot="card"
+            variant="newsletter"
+            title={post.data.title}
+            pubDate={post.data.pubDate}
+            image={post.data.image || "/books/01-ayom.jpg"}
+            link={post.data.link}
+          />
+        ))}
       </UniversalGrid>
     </section>
 

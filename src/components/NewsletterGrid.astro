@@ -1,0 +1,86 @@
+---
+import { formatDateWithoutYear } from '../utils/dateFormat';
+import UniversalGrid from './UniversalGrid.astro';
+import UnifiedCard from './UnifiedCard.astro';
+
+const { posts } = Astro.props;
+
+// Group posts by year
+const postsByYear = posts.reduce((acc, post) => {
+  const year = post.data.pubDate.getFullYear();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
+
+// Sort years in descending order
+const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
+---
+
+<div class="newsletter-container">
+  {sortedYears.map((year) => (
+    <section class="year-section">
+      <h2 class="year-headline">{year}</h2>
+      <UniversalGrid layout="grid" variant="newsletter" posts={postsByYear[year]}>
+        {postsByYear[year].map((post) => (
+          <UnifiedCard 
+            slot="card"
+            variant="newsletter"
+            title={post.data.title}
+            pubDate={post.data.pubDate}
+            image={post.data.image}
+            link={post.data.link}
+          />
+        ))}
+      </UniversalGrid>
+    </section>
+  ))}
+</div>
+
+<style>
+  .newsletter-container {
+    padding: 2rem 0;
+  }
+
+  .year-section {
+    margin-bottom: 4rem;
+  }
+
+  .year-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .year-headline {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 2rem 0;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  /* Dark mode styles */
+  :global(.dark) .year-headline {
+    color: #f9fafb;
+    border-bottom-color: #374151;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .newsletter-container {
+      padding: 1rem 0;
+    }
+
+    .year-section {
+      margin-bottom: 2rem;
+    }
+
+    .year-headline {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+</style>
