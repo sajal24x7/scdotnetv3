@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ContentGrid from '../../components/ContentGrid.astro';
+import AdaptiveCard from '../../components/AdaptiveCard.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for nordletter
@@ -9,7 +9,7 @@ const nordletterPosts = allPosts
   .filter(post => post.data.category === 'nordletter')
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-// Transform posts for the ContentGrid component
+// Transform posts for the AdaptiveCard component
 const transformedPosts = nordletterPosts.map(transformPost);
 ---
 
@@ -35,7 +35,19 @@ const transformedPosts = nordletterPosts.map(transformPost);
     </header>
 
     <div class="px-6">
-      <ContentGrid posts={transformedPosts} />
+      <div class="grid grid-cols-1 gap-12 py-12">
+        {transformedPosts.map((post) => (
+          <AdaptiveCard 
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            category={post.data.category}
+            image={post.data.image}
+            link={post.data.link}
+            layout="horizontal"
+          />
+        ))}
+      </div>
     </div>
   </div>
 </Layout> 

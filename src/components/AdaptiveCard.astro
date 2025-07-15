@@ -8,7 +8,7 @@ interface Props {
   category: string;
   image?: string;
   link?: string;
-  layout?: 'masonry' | 'feed' | 'circular';
+  layout?: 'masonry' | 'feed' | 'circular' | 'horizontal';
   body?: string;
 }
 
@@ -38,6 +38,8 @@ const getCardClasses = () => {
       return `${baseClasses} feed-card`;
     case 'circular':
       return `${baseClasses} circular-card`;
+    case 'horizontal':
+      return `${baseClasses} horizontal-card`;
     default:
       return baseClasses;
   }
@@ -49,6 +51,8 @@ const getImageClasses = () => {
       return "circular-image";
     case 'feed':
       return "feed-image";
+    case 'horizontal':
+      return "horizontal-image";
     default:
       return "masonry-image";
   }
@@ -185,6 +189,95 @@ const getImageClasses = () => {
 
   .circular-card:hover .circular-image img {
     transform: scale(1.05);
+  }
+
+  /* Horizontal layout styles (like main branch Card.astro) */
+  .horizontal-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #f3f4f6;
+  }
+
+  .horizontal-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: scale(1.01);
+  }
+
+  :global(.dark) .horizontal-card {
+    background: #1f2937;
+    border-color: #374151;
+  }
+
+  .horizontal-card .card-content {
+    padding: 1rem 1.5rem 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .horizontal-card .card-content {
+      padding: 1.5rem 2rem 2rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .horizontal-card .card-content {
+      padding: 2rem 2rem 2rem;
+    }
+  }
+
+  .horizontal-image {
+    flex-shrink: 0;
+    width: 100%;
+    height: 12rem;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f3f4f6;
+  }
+
+  @media (min-width: 640px) {
+    .horizontal-image {
+      width: 8rem;
+      height: 8rem;
+      border-radius: 50%;
+    }
+  }
+
+  .horizontal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .horizontal-card:hover .horizontal-image img {
+    transform: scale(1.05);
+  }
+
+  .horizontal-card .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .horizontal-card .card-content {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+
+    .horizontal-card .card-body {
+      flex-grow: 1;
+      text-align: left;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .horizontal-card .card-content {
+      gap: 2rem;
+    }
   }
 
   /* Image styles */
