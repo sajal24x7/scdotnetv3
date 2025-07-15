@@ -2,8 +2,8 @@
 title: "Duplicating everything"
 slug: "duplicating-everything"
 description: "Stop re-doing everything"
-pubDate: 2025-03-27T05:07:09+02:00
-updatedDate: 2025-03-27T05:07:08+02:00
+pubDate: 2025-03-27T05:07:09
+updatedDate: 2025-03-27T05:07:08
 category: blog
 tags: ["blog", "AI"]
 image: "https://images.unsplash.com/photo-1742654230443-7c19cb55cd46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDI5OTk5Mzd8&ixlib=rb-4.0.3&q=80&w=2000"

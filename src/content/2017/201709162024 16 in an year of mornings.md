@@ -1,8 +1,8 @@
 ---
 title: "#16 in an year of mornings"
 slug: "16-in-an-year-of-mornings"
-pubDate: 2017-09-16T20:24:47+03:00
-updatedDate: 2024-04-28T15:46:34+03:00
+pubDate: 2017-09-16T20:24:47
+updatedDate: 2024-04-28T15:46:34
 category: poem
 tags: ["poems", "love", "yearOfMornings"]
 ---

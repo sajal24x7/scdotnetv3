@@ -2,8 +2,8 @@
 title: "NL49 - how does a city form"
 slug: "nl49-how-does-a-city-form"
 description: "Kindle bad + AI poet + chip designer + good bye Finland"
-pubDate: 2025-03-02T03:25:00+02:00
-updatedDate: 2025-03-02T05:55:17+02:00
+pubDate: 2025-03-02T03:25:00
+updatedDate: 2025-03-02T05:55:17
 category: nordletter
 tags: ["Nord Letter", "AI", "kindle"]
 image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_0100.jpeg"

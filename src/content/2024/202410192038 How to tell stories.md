@@ -2,8 +2,8 @@
 title: "How to tell stories"
 slug: "how-to-tell-stories"
 description: "Stories need to surprise"
-pubDate: 2024-10-19T20:38:28+03:00
-updatedDate: 2024-10-19T20:38:28+03:00
+pubDate: 2024-10-19T20:38:28
+updatedDate: 2024-10-19T20:38:28
 category: blog
 tags: ["blog", "writing is"]
 image: "https://images.unsplash.com/photo-1543726969-a1da85a6d334?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHN0b3JpZXN8ZW58MHx8fHwxNzI5MzcwMjE0fDA&ixlib=rb-4.0.3&q=80&w=2000"

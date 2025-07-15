@@ -1,8 +1,8 @@
 ---
 title: "On Honesty, Part-II"
 slug: "on-honesty-part-ii"
-pubDate: 2015-11-24T20:33:58+02:00
-updatedDate: 2015-11-24T20:33:58+02:00
+pubDate: 2015-11-24T20:33:58
+updatedDate: 2015-11-24T20:33:58
 category: blog
 tags: ["blog", "honesty", "writer", "writing is"]
 ---

@@ -2,8 +2,8 @@
 title: "The next four years are going to be a drag"
 slug: "the-next-four-years-are-going-to-be-a-drag"
 description: "Spent in dread"
-pubDate: 2025-01-21T07:38:29+02:00
-updatedDate: 2025-01-21T07:38:29+02:00
+pubDate: 2025-01-21T07:38:29
+updatedDate: 2025-01-21T07:38:29
 category: blog
 tags: ["blog", "politics"]
 image: "https://images.unsplash.com/photo-1585007600263-71228e40c8d1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxUcnVtcHxlbnwwfHx8fDE3MzczNDkyNTd8MA&ixlib=rb-4.0.3&q=80&w=2000"

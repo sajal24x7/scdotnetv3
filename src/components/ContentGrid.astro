@@ -1,6 +1,7 @@
 ---
 import Card from './Card.astro';
 import { marked } from 'marked';
+import LinkHoverEffect from './LinkHoverEffect.astro';
 
 const { posts } = Astro.props;
 
@@ -29,10 +30,12 @@ const renderedPosts = posts.map(post => ({
   ))}
 </div>
 
+<LinkHoverEffect />
+
 <style>
   .grid {
     width: 100%;
-    max-width: 1440px;
+    max-width: 1400px;
     margin: 0 auto;
   }
 
@@ -63,6 +66,14 @@ const renderedPosts = posts.map(post => ({
       rgb(55 65 81),
       transparent
     );
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .grid {
+      max-width: none;
+      padding: 0 1rem;
+    }
   }
 
   /* Ensure links are properly styled */

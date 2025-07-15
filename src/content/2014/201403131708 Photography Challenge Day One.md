@@ -1,8 +1,8 @@
 ---
 title: "Photography Challenge: Day One"
 slug: "photography-challenge-day-one"
-pubDate: 2014-03-13T17:08:47+02:00
-updatedDate: 2024-05-04T06:52:53+03:00
+pubDate: 2014-03-13T17:08:47
+updatedDate: 2024-05-04T06:52:53
 category: photo
 tags: ["30 day challenge", "photography"]
 image: "https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1394723640207.jpeg"

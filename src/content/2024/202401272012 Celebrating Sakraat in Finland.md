@@ -2,8 +2,8 @@
 title: "Celebrating Sakraat in Finland"
 slug: "celebrating-sakraat-in-finland"
 description: "Nord Letter #1 - Celebrating Sakraat + What is art"
-pubDate: 2024-01-27T20:12:57+02:00
-updatedDate: 2024-07-07T20:10:16+03:00
+pubDate: 2024-01-27T20:12:57
+updatedDate: 2024-07-07T20:10:16
 category: blog
 tags: ["sakraat", "Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/01/53164A75-2BF0-415B-8A82-8C0C5DF411B0_1_105_c.jpeg"

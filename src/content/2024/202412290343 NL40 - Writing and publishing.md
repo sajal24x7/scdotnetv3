@@ -2,8 +2,8 @@
 title: "NL40 - Writing and publishing"
 slug: "nl40-writing-and-publishing"
 description: "Playing TT at Vox + Car makers merging + paper passports might die"
-pubDate: 2024-12-29T03:43:05+02:00
-updatedDate: 2024-12-29T03:43:05+02:00
+pubDate: 2024-12-29T03:43:05
+updatedDate: 2024-12-29T03:43:05
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8967.jpeg"

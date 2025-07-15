@@ -2,8 +2,8 @@
 title: "Love and Despair"
 slug: "love-and-despair"
 description: "Reading poems"
-pubDate: 2024-11-30T21:04:00+02:00
-updatedDate: 2024-11-30T22:05:23+02:00
+pubDate: 2024-11-30T21:04:00
+updatedDate: 2024-11-30T22:05:23
 category: blog
 tags: ["blog", "reading"]
 image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_8536.jpeg"

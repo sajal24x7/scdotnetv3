@@ -1,8 +1,8 @@
 ---
 title: "Spring already?"
 slug: "spring-already"
-pubDate: 2025-03-01T15:34:55+02:00
-updatedDate: 2025-03-01T15:34:55+02:00
+pubDate: 2025-03-01T15:34:55
+updatedDate: 2025-03-01T15:34:55
 category: blog
 tags: ["blog", "walking", "spring"]
 image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_0103.jpeg"

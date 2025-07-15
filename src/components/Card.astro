@@ -8,37 +8,31 @@ const formatDate = (date) => {
 };
 ---
 
-<article class="card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
-  <div class="p-4 sm:p-6 md:p-8 flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8">
+<article class="card">
+  <div class="card-content">
     {image && (
-      <div class="flex-shrink-0 w-full sm:w-32 h-48 sm:h-32 overflow-hidden rounded-lg sm:rounded-full">
+      <div class="card-image">
         <img 
           src={image} 
           alt={title}
-          class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          class="image"
         />
       </div>
     )}
     
-    <div class="flex-grow text-left">
-      <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 tracking-wide">
-          {link ? (
-            <a href={link} class="text-accent hover:text-accent/80 transition-colors">
-              {formatDate(pubDate)}
-            </a>
-          ) : (
-            formatDate(pubDate)
-          )}
-        </span>
-        <span class="post-category text-sm font-semibold text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30">
+    <div class="card-body">
+      <div class="card-meta">
+        <time class="card-date" datetime={pubDate.toISOString()}>
+          {formatDate(pubDate)}
+        </time>
+        <span class="post-category card-category">
           {category}
         </span>
       </div>
 
-      <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 leading-tight text-left">
+      <h2 class="card-title">
         {link ? (
-          <a href={link} class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
+          <a href={link} class="card-link">
             {title}
           </a>
         ) : (
@@ -46,26 +40,146 @@ const formatDate = (date) => {
         )}
       </h2>
 
-      {category === 'micro' ? (
-        <div class="text-gray-600 dark:text-gray-300 text-base sm:text-lg leading-relaxed text-left">
+      <div class="card-description">
+        {category === 'micro' ? (
           <slot />
-        </div>
-      ) : (
-        description && (
-          <p class="text-gray-600 dark:text-gray-300 text-base sm:text-lg leading-relaxed text-left line-clamp-3">
-            {description}
-          </p>
-        )
-      )}
+        ) : (
+          description && (
+            <p class="description-text">
+              {description}
+            </p>
+          )
+        )}
+      </div>
     </div>
   </div>
 </article>
 
 <style>
   .card {
-    display: flex;
-    flex-direction: column;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: fit-content;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+
+  :global(.dark) .card {
+    background: #1f2937;
+    border-color: #374151;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  :global(.dark) .card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+
+  .card-image {
+    margin: -1rem -1rem 1rem -1rem;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+
+  .image {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover .image {
+    transform: scale(1.05);
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .card-date {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  :global(.dark) .card-date {
+    color: #9ca3af;
+  }
+
+  .card-category {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #3b82f6;
+    background: #eff6ff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid #dbeafe;
+  }
+
+  :global(.dark) .card-category {
+    color: #60a5fa;
+    background: #1e3a8a;
+    border-color: #3b82f6;
+  }
+
+  .card-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+
+  :global(.dark) .card-title {
+    color: #f9fafb;
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+
+  .card-link:hover {
+    color: #3b82f6;
+  }
+
+  :global(.dark) .card-link:hover {
+    color: #60a5fa;
+  }
+
+  .card-description {
+    color: #4b5563;
+    line-height: 1.5;
+  }
+
+  :global(.dark) .card-description {
+    color: #d1d5db;
+  }
+
+  .description-text {
+    font-size: 0.9rem;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   /* Custom prose styles for micro posts */
@@ -75,7 +189,8 @@ const formatDate = (date) => {
 
   :global(.prose p) {
     margin-top: 0;
-    margin-bottom: 1.5em;
+    margin-bottom: 0.75em;
+    font-size: 0.9rem;
   }
 
   :global(.prose a) {
@@ -151,5 +266,24 @@ const formatDate = (date) => {
 
   :global(.dark .prose pre) {
     background-color: #1f2937;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .card-content {
+      padding: 0.875rem;
+    }
+
+    .card-image {
+      margin: -0.875rem -0.875rem 0.875rem -0.875rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+    }
+
+    .card-meta {
+      margin-bottom: 0.5rem;
+    }
   }
 </style> 

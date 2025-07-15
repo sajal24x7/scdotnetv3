@@ -1,8 +1,8 @@
 ---
 title: "Attending the Global AI Bootcamp in Helsinki"
 slug: "attending-the-global-ai-bootcamp-in-helsinki"
-pubDate: 2025-04-24T06:45:53+03:00
-updatedDate: 2025-04-24T06:45:53+03:00
+pubDate: 2025-04-24T06:45:53
+updatedDate: 2025-04-24T06:45:53
 category: blog
 tags: ["blog", "microsoft", "AI"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_1130.jpeg"

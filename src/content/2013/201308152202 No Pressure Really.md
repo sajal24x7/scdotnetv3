@@ -1,8 +1,8 @@
 ---
 title: "No Pressure, Really!"
 slug: "no-pressure-really"
-pubDate: 2013-08-15T22:02:27+03:00
-updatedDate: 2024-05-04T06:37:28+03:00
+pubDate: 2013-08-15T22:02:27
+updatedDate: 2024-05-04T06:37:28
 category: blog
 tags: ["college", “education”, “pressure”]
 image: "https://images.unsplash.com/photo-1700735779767-58d53b6dde8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDM0fHxwcmVzc3VyZSUyMGNvb2tlcnxlbnwwfHx8fDE3MTQ4MDQ2MzF8MA&ixlib=rb-4.0.3&q=80&w=2000"

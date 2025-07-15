@@ -2,8 +2,8 @@
 title: "How do I know if someone subscribed to me via RSS"
 slug: "how-do-i-know-if-someone-subscribed-to-me-via-rss"
 description: "Fans everywhere. Fans nowhere."
-pubDate: 2024-12-21T09:55:00+02:00
-updatedDate: 2024-12-24T10:39:02+02:00
+pubDate: 2024-12-21T09:55:00
+updatedDate: 2024-12-24T10:39:02
 category: blog
 tags: ["blog", "rss", "reading"]
 image: "https://images.unsplash.com/photo-1664904527535-79f003cc5ec9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8MTczNDgxODU1NHww&ixlib=rb-4.0.3&q=80&w=2000"

@@ -1,8 +1,8 @@
 ---
 title: "How to handle dependencies in Bicep"
 slug: "how-to-handle-dependencies-in-bicep"
-pubDate: 2024-07-23T05:34:23+03:00
-updatedDate: 2024-07-23T08:23:36+03:00
+pubDate: 2024-07-23T05:34:23
+updatedDate: 2024-07-23T08:23:36
 category: blog
 tags: ["Azure", "Tech Notes"]
 image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fHNlcnZlciUyMGNvZGV8ZW58MHx8fHwxNzIxNzEyODUwfDA&ixlib=rb-4.0.3&q=80&w=2000"

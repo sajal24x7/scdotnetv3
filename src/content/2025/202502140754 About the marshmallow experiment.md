@@ -2,8 +2,8 @@
 title: "About the marshmallow experiment"
 slug: "about-the-marshmallow-experiment"
 description: "And the value of providing kids with a good environment growing up"
-pubDate: 2025-02-14T07:54:20+02:00
-updatedDate: 2025-02-14T07:54:20+02:00
+pubDate: 2025-02-14T07:54:20
+updatedDate: 2025-02-14T07:54:20
 category: blog
 tags: ["blog", "marshmallow test", "parenting"]
 image: "https://images.unsplash.com/photo-1597326585512-f5d2216dcf0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDExfHxNYXJzaG1hbGxvd3xlbnwwfHx8fDE3Mzk1MTk2NDB8MA&ixlib=rb-4.0.3&q=80&w=2000"

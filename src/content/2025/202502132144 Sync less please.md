@@ -2,8 +2,8 @@
 title: "Sync less, please?"
 slug: "sync-less-please"
 description: "About reading on NNW"
-pubDate: 2025-02-13T21:44:19+02:00
-updatedDate: 2025-02-13T21:44:19+02:00
+pubDate: 2025-02-13T21:44:19
+updatedDate: 2025-02-13T21:44:19
 category: blog
 tags: ["reading", "netnewswire", "openweb"]
 image: "https://images.unsplash.com/photo-1662553739062-3c2570008adc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyfHxTeW5jfGVufDB8fHx8MTczOTQ4Mjk5Nnww&ixlib=rb-4.0.3&q=80&w=2000"

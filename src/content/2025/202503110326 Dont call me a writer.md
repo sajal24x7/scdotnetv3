@@ -2,8 +2,8 @@
 title: "Don’t call me a writer!"
 slug: "dont-call-me-a-writer"
 description: "I hate the spotlight"
-pubDate: 2025-03-11T03:26:53+02:00
-updatedDate: 2025-03-11T03:26:52+02:00
+pubDate: 2025-03-11T03:26:53
+updatedDate: 2025-03-11T03:26:52
 category: blog
 tags: ["blog", "writing is", "speaking"]
 image: "https://images.unsplash.com/photo-1615754890634-69ac8bca7189?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDh8fFNwb3RsaWdodHxlbnwwfHx8fDE3NDE2Mzc3NjV8MA&ixlib=rb-4.0.3&q=80&w=2000"

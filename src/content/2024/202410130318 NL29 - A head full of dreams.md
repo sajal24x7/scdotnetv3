@@ -2,8 +2,8 @@
 title: "NL29 - A head full of dreams"
 slug: "nl29-a-head-full-of-dreams"
 description: "Writing every day + AI + Metaverse"
-pubDate: 2024-10-13T03:18:03+03:00
-updatedDate: 2024-10-13T03:18:03+03:00
+pubDate: 2024-10-13T03:18:03
+updatedDate: 2024-10-13T03:18:03
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6277.jpeg"

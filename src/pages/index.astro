@@ -59,7 +59,7 @@ const recentPosts = (await getAllPosts())
         </div>
       </div>
     </div>
-    
+
     <!-- Newsletter Section -->
     <div class="border-t border-black/10 dark:border-white/10 py-8">
       <div class="prose dark:prose-invert max-w-none">
@@ -109,9 +109,7 @@ const recentPosts = (await getAllPosts())
         {recentPosts.map((post) => (
           <div class="flex items-start gap-4">
             <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-              <a href={`/${post.data.category}/${post.slug}`} class="text-accent hover:text-accent/80 transition-colors">
-                {formatDate(post.data.pubDate)}
-              </a>
+              {formatDate(post.data.pubDate)}
             </time>
             <div class="flex-1 min-w-0">
               <a href={`/${post.data.category}/${post.slug}`} class="text-lg hover:text-blue-600 dark:hover:text-blue-400 block">

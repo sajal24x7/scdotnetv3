@@ -1,8 +1,8 @@
 ---
 title: "Life, Death & Priorities"
 slug: "life-death-priorities"
-pubDate: 2016-06-29T21:27:09+03:00
-updatedDate: 2024-06-01T11:43:50+03:00
+pubDate: 2016-06-29T21:27:09
+updatedDate: 2024-06-01T11:43:50
 category: blog
 tags: ["writing is", "essays"]
 image: "https://storage.sajalchoudhary.net/images/2024/06/capture.png"

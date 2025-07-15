@@ -2,12 +2,9 @@
 title: Becky Chambers - Record of a Spaceborn Few
 slug: becky-chambers-record-of-a-spaceborn-few
 description: The third book in the wayfarer series
-pubDate: 2024-12-24T10:54:13+02:00
-updatedDate: 2024-12-24T10:54:13+02:00
+pubDate: 2024-12-24T10:54:13
+updatedDate: 2024-12-24T10:54:13
 category: bookshelf
-startDate: 2024-12-20T00:00:00+02:00
-endDate: 2024-12-24T00:00:00+02:00
-format: hardcover
 tags:
   - book-reviews
   - sci-fi

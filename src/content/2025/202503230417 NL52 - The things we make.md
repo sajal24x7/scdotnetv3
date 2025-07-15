@@ -2,8 +2,8 @@
 title: "NL52 - The things we make"
 slug: "nl52-the-things-we-make"
 description: "Apple rumours + Learn some AI python"
-pubDate: 2025-03-23T04:17:30+02:00
-updatedDate: 2025-03-23T04:17:29+02:00
+pubDate: 2025-03-23T04:17:30
+updatedDate: 2025-03-23T04:17:29
 category: nordletter
 tags: ["Nord Letter", "waste", "compassion"]
 image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_20140320_123300451.jpg"

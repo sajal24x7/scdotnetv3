@@ -1,8 +1,8 @@
 ---
 title: "Day Seventeen: Tarmac"
 slug: "day-seventeen-tarmac"
-pubDate: 2014-03-29T21:27:08+02:00
-updatedDate: 2014-03-29T21:27:08+02:00
+pubDate: 2014-03-29T21:27:08
+updatedDate: 2014-03-29T21:27:08
 category: blog
 tags: ["30 day challenge", "photography", "Uncategorized"]
 ---

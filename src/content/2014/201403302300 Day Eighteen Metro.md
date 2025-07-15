@@ -1,8 +1,8 @@
 ---
 title: "Day Eighteen: Metro"
 slug: "day-eighteen-metro"
-pubDate: 2014-03-30T23:00:05+03:00
-updatedDate: 2014-03-30T23:00:05+03:00
+pubDate: 2014-03-30T23:00:05
+updatedDate: 2014-03-30T23:00:05
 category: blog
 tags: ["30 day challenge", "photography", "Uncategorized"]
 ---

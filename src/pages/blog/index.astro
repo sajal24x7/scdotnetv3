@@ -18,15 +18,18 @@ const transformedPosts = blogPosts.map(transformPost);
   description="Long-form thoughts and articles" 
   currentPage="/blog/"
 >
-  <div class="max-w-7xl mx-auto">
-    <header class="mb-12 px-6">
-      <div class="flex flex-col">
-        <h1 class="text-4xl font-bold mb-4">Blog</h1>
-        <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
+  <div class="blog-container">
+    <header class="blog-header">
+      <div class="header-content">
+        <h1 class="blog-title">Blog</h1>
+        <p class="blog-description">
           Long-form thoughts, tutorials, and articles.
         </p>
+        <div class="blog-count">
+          {transformedPosts.length} {transformedPosts.length === 1 ? 'post' : 'posts'}
+        </div>
         <a 
-          href="/blog/tags" 
+          href="/tags/?category=blog" 
           class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
         >
           View entries by tag
@@ -34,8 +37,108 @@ const transformedPosts = blogPosts.map(transformPost);
       </div>
     </header>
 
-    <div class="px-6">
+    <main class="blog-main">
       <ContentGrid posts={transformedPosts} />
-    </div>
+    </main>
   </div>
-</Layout> 
+</Layout>
+
+<style>
+  .blog-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+  }
+
+  .blog-header {
+    padding: 1.5rem 0 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1.5rem;
+  }
+
+  :global(.dark) .blog-header {
+    border-bottom-color: #374151;
+  }
+
+  .header-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .blog-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+
+  :global(.dark) .blog-title {
+    color: #f9fafb;
+  }
+
+  .blog-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :global(.dark) .blog-description {
+    color: #9ca3af;
+  }
+
+  .blog-count {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #8b5cf6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  :global(.dark) .blog-count {
+    color: #a78bfa;
+  }
+
+  .blog-main {
+    padding-bottom: 2rem;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .blog-container {
+      max-width: none;
+      padding: 0;
+    }
+
+    .blog-header {
+      padding: 1rem 1rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .blog-title {
+      font-size: 2rem;
+    }
+
+    .blog-description {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-main {
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .blog-title {
+      font-size: 2.25rem;
+    }
+  }
+</style> 

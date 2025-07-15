@@ -2,15 +2,15 @@
 title: Cixin Liu - The dark forest
 slug: cixin-liu-the-dark-forest
 description: The second book in the three body problem series
-pubDate: 2025-04-22T19:06:54+03:00
-updatedDate: 2025-04-22T19:06:54+03:00
+pubDate: 2025-04-22T19:06:54
+updatedDate: 2025-04-22T19:06:54
 category: bookshelf
-startDate: 2025-04-06T00:00:00+03:00
-endDate: 2025-04-22T00:00:00+03:00
-format: hardcover
 tags:
+  - book-reviews
   - three-body-problem
-image: https://images.unsplash.com/photo-1483982258113-b72862e6cff6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGRhcmslMjBmb3Jlc3R8ZW58MHx8fHwxNzQ1MzQ4ODAyfDA&ixlib=rb-4.0.3&q=80&w=2000
+  - 'Liu, Cixin'
+image: >-
+  https://images.unsplash.com/photo-1483982258113-b72862e6cff6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGRhcmslMjBmb3Jlc3R8ZW58MHx8fHwxNzQ1MzQ4ODAyfDA&ixlib=rb-4.0.3&q=80&w=2000
 ---
 This is the second book in Cixin Liu's [Three Body Problem](__GHOST_URL__/liu-cixin-the-three-body-problem/). I had read the first one back in February. Since then, I embarked on a couple of long books - Kevin Kelly's What Technology Wants and this one. I am yet to finish What Technology Wants. I renewed my loan of that book many times, returned it, and then loaned it again. I will finish it soon though.
 

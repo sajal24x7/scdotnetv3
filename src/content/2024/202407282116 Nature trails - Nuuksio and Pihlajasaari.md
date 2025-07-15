@@ -2,8 +2,8 @@
 title: "Nature trails - Nuuksio and Pihlajasaari"
 slug: "nature-trails-nuuksio-and-pihlajasaari"
 description: "Nord Letter #18 - Nature trails + Beating procrastination"
-pubDate: 2024-07-28T21:16:24+03:00
-updatedDate: 2024-08-20T15:57:41+03:00
+pubDate: 2024-07-28T21:16:24
+updatedDate: 2024-08-20T15:57:41
 category: blog
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/07/IMG_5349-1.jpeg"

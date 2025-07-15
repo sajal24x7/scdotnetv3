@@ -2,8 +2,8 @@
 title: "Birthdays are funny"
 slug: "birthdays-are-funny"
 description: "Another year around the sun! Yay!"
-pubDate: 2024-12-11T03:25:58+02:00
-updatedDate: 2024-12-11T03:25:57+02:00
+pubDate: 2024-12-11T03:25:58
+updatedDate: 2024-12-11T03:25:57
 category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/photo-1490126125528-a0c3b2998dcd.jpeg"

@@ -2,8 +2,8 @@
 title: "What would you do without me?"
 slug: "what-would-you-do-without-me"
 description: "Remarry (Bad jokes and me)"
-pubDate: 2025-04-14T19:08:41+03:00
-updatedDate: 2025-04-14T19:08:41+03:00
+pubDate: 2025-04-14T19:08:41
+updatedDate: 2025-04-14T19:08:41
 category: blog
 tags: ["blog", "prerna"]
 image: "https://images.unsplash.com/photo-1743052864032-2363b7e67bf7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDN8fHx8fHx8fDE3NDQ2NTc2OTl8&ixlib=rb-4.0.3&q=80&w=2000"

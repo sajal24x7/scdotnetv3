@@ -1,8 +1,8 @@
 ---
 title: "Something about nothing!"
 slug: "something-about-nothing"
-pubDate: 2015-02-26T22:01:45+02:00
-updatedDate: 2015-02-26T22:01:45+02:00
+pubDate: 2015-02-26T22:01:45
+updatedDate: 2015-02-26T22:01:45
 category: blog
 tags: ["blog", "short stories", "stories", "walking", "writing is", "writing tips"]
 ---

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ContentGrid from '../../components/ContentGrid.astro';
+import NotesGrid from '../../components/NotesGrid.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for notes (evergreen and TIL)
@@ -9,11 +9,8 @@ const notesPosts = allPosts
   .filter(post => ['evergreen', 'til'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-// Transform posts for the ContentGrid component
+// Transform posts for the NotesGrid component
 const transformedPosts = notesPosts.map(transformPost);
-
-// Get unique categories
-const categories = [...new Set(notesPosts.map(post => post.data.category))];
 ---
 
 <Layout 
@@ -21,31 +18,18 @@ const categories = [...new Set(notesPosts.map(post => post.data.category))];
   description="Documentation and notes" 
   currentPage="/notes/"
 >
-  <div class="max-w-7xl mx-auto">
-    <header class="mb-12 px-6">
-      <div class="flex flex-col">
-        <h1 class="text-4xl font-bold mb-4">Notes</h1>
-        <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
-          Documentation and notes from my projects.
+  <div class="notes-container">
+    <header class="notes-header">
+      <div class="header-content">
+        <h1 class="notes-title">Notes</h1>
+        <p class="notes-description">
+          A collection of documentation, notes, and explorations from my projects and learning.
         </p>
-        <div class="flex flex-wrap gap-3 mb-4">
-          <button 
-            class="category-filter active px-3 py-1.5 text-sm rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800/30 transition-colors duration-200"
-            data-category="all"
-          >
-            ALL
-          </button>
-          {categories.map(category => (
-            <button 
-              class="category-filter px-3 py-1.5 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-              data-category={category}
-            >
-              {category.toUpperCase()}
-            </button>
-          ))}
+        <div class="notes-count">
+          {transformedPosts.length} {transformedPosts.length === 1 ? 'note' : 'notes'}
         </div>
         <a 
-          href="/notes/tags" 
+          href="/tags/?category=notes" 
           class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
         >
           View entries by tag
@@ -53,41 +37,108 @@ const categories = [...new Set(notesPosts.map(post => post.data.category))];
       </div>
     </header>
 
-    <div class="px-6">
-      <ContentGrid posts={transformedPosts} />
-    </div>
+    <main class="notes-main">
+      <NotesGrid posts={transformedPosts} />
+    </main>
   </div>
 </Layout>
 
-<script>
-  // JavaScript to handle category filtering
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.category-filter');
-    const posts = document.querySelectorAll('.card');
+<style>
+  .notes-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+  }
 
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Update active state of buttons
-        filterButtons.forEach(btn => {
-          btn.classList.remove('active', 'bg-blue-100', 'dark:bg-blue-900/30', 'text-blue-600', 'dark:text-blue-400');
-          btn.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
-        });
-        button.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
-        button.classList.add('active', 'bg-blue-100', 'dark:bg-blue-900/30', 'text-blue-600', 'dark:text-blue-400');
+  .notes-header {
+    padding: 1.5rem 0 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1.5rem;
+  }
 
-        const selectedCategory = button.getAttribute('data-category');
+  :global(.dark) .notes-header {
+    border-bottom-color: #374151;
+  }
 
-        // Filter posts
-        posts.forEach(post => {
-          const postCategory = post.querySelector('.post-category')?.textContent?.trim().toLowerCase();
-          
-          if (selectedCategory === 'all' || postCategory === selectedCategory) {
-            (post as HTMLElement).style.display = 'block';
-          } else {
-            (post as HTMLElement).style.display = 'none';
-          }
-        });
-      });
-    });
-  });
-</script> 
+  .header-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .notes-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+
+  :global(.dark) .notes-title {
+    color: #f9fafb;
+  }
+
+  .notes-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :global(.dark) .notes-description {
+    color: #9ca3af;
+  }
+
+  .notes-count {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #8b5cf6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  :global(.dark) .notes-count {
+    color: #a78bfa;
+  }
+
+  .notes-main {
+    padding-bottom: 2rem;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .notes-container {
+      max-width: none;
+      padding: 0;
+    }
+
+    .notes-header {
+      padding: 1rem 1rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .notes-title {
+      font-size: 2rem;
+    }
+
+    .notes-description {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .notes-main {
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .notes-title {
+      font-size: 2.25rem;
+    }
+  }
+</style> 

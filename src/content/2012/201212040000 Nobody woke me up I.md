@@ -1,8 +1,8 @@
 ---
 title: "Nobody woke me up, I'm up any ways!"
 slug: "nobody-woke-me-up-i"
-pubDate: 2012-12-04T00:00:00+02:00
-updatedDate: 2024-04-29T00:00:00+03:00
+pubDate: 2012-12-04T00:00:00
+updatedDate: 2024-04-29T00:00:00
 category: blog
 tags: ["writing is"]
 ---

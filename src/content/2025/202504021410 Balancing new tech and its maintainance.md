@@ -1,8 +1,8 @@
 ---
 title: "Balancing new tech and its maintainance"
 slug: "balancing-new-tech-and-its-maintainance"
-pubDate: 2025-04-02T14:10:26+03:00
-updatedDate: 2025-04-02T14:10:26+03:00
+pubDate: 2025-04-02T14:10:26
+updatedDate: 2025-04-02T14:10:26
 category: blog
 tags: ["blog", "tech"]
 image: "https://images.unsplash.com/photo-1741879080222-b9b5f20b3333?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDF8fHx8fHx8fDE3NDM2MDI1NDJ8&ixlib=rb-4.0.3&q=80&w=2000"

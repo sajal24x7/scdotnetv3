@@ -2,8 +2,8 @@
 title: "Re-designing my home screen and the way I use my phone"
 slug: "re-designing-my-home-screen-and-the-way-i-use-my-phone"
 description: "Focus modes + Shortcuts magic"
-pubDate: 2025-03-22T11:40:04+02:00
-updatedDate: 2025-03-22T11:40:04+02:00
+pubDate: 2025-03-22T11:40:04
+updatedDate: 2025-03-22T11:40:04
 category: blog
 tags: ["blog", "phone", "iphone", "apple"]
 image: "https://storage.sajalchoudhary.net/images/2025/03/Screenshot-2025-03-22-at-1.33.36-PM.png"

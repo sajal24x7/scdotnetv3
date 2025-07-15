@@ -2,8 +2,8 @@
 title: "We can have a fun conversation with max four people"
 slug: "we-can-have-a-fun-conversation-with-max-four-people"
 description: "Shakespeare got it"
-pubDate: 2024-12-17T03:28:00+02:00
-updatedDate: 2024-12-17T03:27:59+02:00
+pubDate: 2024-12-17T03:28:00
+updatedDate: 2024-12-17T03:27:59
 category: blog
 tags: ["blog", "psychology"]
 image: "https://images.unsplash.com/photo-1513171920216-2640b288471b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHxjb252ZXJzYXRpb24lMjBmb3VyJTIwcGVvcGxlfGVufDB8fHx8MTczNDM4Mzg0M3ww&ixlib=rb-4.0.3&q=80&w=2000"

@@ -2,8 +2,8 @@
 title: "Federating again"
 slug: "federating-again"
 description: "Nord Letter #5 - Ghost Activitypub + Information Flow"
-pubDate: 2024-04-28T14:47:09+03:00
-updatedDate: 2024-07-07T20:07:15+03:00
+pubDate: 2024-04-28T14:47:09
+updatedDate: 2024-07-07T20:07:15
 category: blog
 tags: ["Nord Letter", "finland", "writing is"]
 image: "https://storage.sajalchoudhary.net/images/2024/04/tempImageFm5RD9.gif"

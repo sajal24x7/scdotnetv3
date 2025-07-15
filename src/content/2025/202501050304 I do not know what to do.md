@@ -2,8 +2,8 @@
 title: "I do not know what to do"
 slug: "i-do-not-know-what-to-do"
 description: "Part #3 of what to do and how to post my damn links"
-pubDate: 2025-01-05T03:04:56+02:00
-updatedDate: 2025-01-05T03:04:55+02:00
+pubDate: 2025-01-05T03:04:56
+updatedDate: 2025-01-05T03:04:55
 category: blog
 tags: ["blog", "writing is", "ghost"]
 image: "https://images.unsplash.com/photo-1734009589019-7c557c4e7e11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDEyfHx8fHx8fHwxNzM2MDIzMDU5fA&ixlib=rb-4.0.3&q=80&w=2000"

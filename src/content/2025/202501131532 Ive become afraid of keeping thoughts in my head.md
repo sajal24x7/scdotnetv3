@@ -2,8 +2,8 @@
 title: "I’ve become afraid of keeping thoughts in my head"
 slug: "ive-become-afraid-of-keeping-thoughts-in-my-head"
 description: "The consequence of thinking while writing"
-pubDate: 2025-01-13T15:32:06+02:00
-updatedDate: 2025-01-13T15:32:06+02:00
+pubDate: 2025-01-13T15:32:06
+updatedDate: 2025-01-13T15:32:06
 category: blog
 image: "https://images.unsplash.com/photo-1616595707129-de9953028c19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fFRoaW5raW5nfGVufDB8fHx8MTczNjc4MjMxMXww&ixlib=rb-4.0.3&q=80&w=2000"
 ---

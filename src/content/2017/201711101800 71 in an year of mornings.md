@@ -1,8 +1,8 @@
 ---
 title: "#71 in an year of mornings"
 slug: "71-in-an-year-of-mornings"
-pubDate: 2017-11-10T18:00:08+02:00
-updatedDate: 2024-04-28T15:05:36+03:00
+pubDate: 2017-11-10T18:00:08
+updatedDate: 2024-04-28T15:05:36
 category: blog
 tags: ["love", "poems", "yearOfMornings"]
 ---

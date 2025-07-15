@@ -2,12 +2,9 @@
 title: 'Chambers, Becky - The Galaxy, and the Ground Within'
 slug: chambers-becky-the-galaxy-and-the-ground-within
 description: The fourth and final book in the wayfarer series
-pubDate: 2025-01-10T20:15:50+02:00
-updatedDate: 2025-01-10T20:15:50+02:00
+pubDate: 2025-01-10T20:15:50
+updatedDate: 2025-01-10T20:15:50
 category: bookshelf
-startDate: 2025-01-05T00:00:00+02:00
-endDate: 2025-01-10T00:00:00+02:00
-format: ebook
 tags:
   - book-reviews
   - sci-fi

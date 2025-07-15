@@ -1,8 +1,8 @@
 ---
 title: "What makes me happy?"
 slug: "what-makes-me-happy"
-pubDate: 2014-09-03T21:09:43+03:00
-updatedDate: 2014-09-03T21:09:43+03:00
+pubDate: 2014-09-03T21:09:43
+updatedDate: 2014-09-03T21:09:43
 category: blog
 tags: ["blog", "edx", "happiness", "happy", "hello world", "writing is"]
 ---
