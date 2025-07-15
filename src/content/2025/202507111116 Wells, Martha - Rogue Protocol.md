@@ -8,6 +8,9 @@ tags:
   - murderbot
   - sci-fi
   - wells, martha
+startDate: 2025-07-11T09:31:00+03:00
+endDate: 2025-07-15T21:00:00+03:00
+format: audio
 ---
 Book 1 - [All systems red](https://sajalchoudhary.net/bookshelf/wells-martha-all-systems-red/) 
 Book 2 - [Artificial Condition](https://sajalchoudhary.net/bookshelf/wells-martha-artificial-condition/)
