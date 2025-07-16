@@ -56,22 +56,22 @@ if (title && breadcrumbItems.length > 0) {
 }
 ---
 
-<nav aria-label="Breadcrumb" class="mb-6">
-  <ol class="flex flex-wrap items-center space-x-1 text-sm">
+<nav aria-label="Breadcrumb" class="mb-4">
+  <ol class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
     {breadcrumbItems.map((item, index) => (
       <li class="flex items-center">
         {index > 0 && (
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            width="16" 
-            height="16" 
+            width="12" 
+            height="12" 
             viewBox="0 0 24 24" 
             fill="none" 
             stroke="currentColor" 
-            stroke-width="2" 
+            stroke-width="1.5" 
             stroke-linecap="round" 
             stroke-linejoin="round" 
-            class="mx-2 text-textSecondary dark:text-textSecondaryDark"
+            class="mx-1 text-gray-400 dark:text-gray-500"
           >
             <polyline points="9,18 15,12 9,6"></polyline>
           </svg>
@@ -79,7 +79,7 @@ if (title && breadcrumbItems.length > 0) {
         
         {item.isCurrent ? (
           <span 
-            class="text-textPrimary dark:text-textPrimaryDark font-medium"
+            class="text-gray-900 dark:text-gray-100 font-medium"
             aria-current="page"
           >
             {item.label}
@@ -87,7 +87,7 @@ if (title && breadcrumbItems.length > 0) {
         ) : (
           <a 
             href={item.href} 
-            class="text-textSecondary dark:text-textSecondaryDark hover:text-textPrimary dark:hover:text-textPrimaryDark transition-colors duration-200 hover:underline"
+            class="hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-150"
           >
             {item.label}
           </a>
