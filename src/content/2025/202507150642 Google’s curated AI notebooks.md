@@ -3,7 +3,7 @@ title: "Google’s curated AI notebooks"
 slug: "googles-curated-ai-notebooks"
 pubDate: 2025-07-16T11:08:25+03:00
 updatedDate: 2025-07-16T11:08:25+03:00
-category: blog
+category: micro
 tags:
   - ai
   - google
