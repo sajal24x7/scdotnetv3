@@ -55,4 +55,20 @@ a.icon-link.random-underline span {
     text-decoration: none;
     padding-bottom: 2px;
   }
+}
+
+/* Disable hover effects for elements with no-hover class */
+a.no-hover {
+  text-decoration: none !important;
+}
+
+a.no-hover:hover {
+  text-decoration: none !important;
+}
+
+/* Disable hover effects on mobile devices for no-hover class */
+@media (hover: none) {
+  a.no-hover {
+    text-decoration: none !important;
+  }
 } 
