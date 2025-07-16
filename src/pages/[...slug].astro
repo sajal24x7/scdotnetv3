@@ -31,6 +31,23 @@ const formattedDate = entry.data?.pubDate ? formatDateWithTime(entry.data.pubDat
 const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
   ? formatDateWithTime(entry.data.updatedDate)
   : null;
+
+// Function to map category names to their correct URL paths
+function getCategoryUrl(category: string): string {
+  const categoryMap: Record<string, string> = {
+    'story': 'stories',
+    'poem': 'poems',
+    'blog': 'blog',
+    'micro': 'micro',
+    'notes': 'notes',
+    'bookshelf': 'bookshelf',
+    'nordletter': 'nordletter',
+    'evergreen': 'evergreen',
+    'til': 'til'
+  };
+  
+  return categoryMap[category] || category;
+}
 ---
 
 <Layout 
@@ -40,18 +57,10 @@ const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
 >
   <article class="prose dark:prose-dark mx-auto">
     <div class="mb-8">
-      <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
-        <div>
-          <p class="text-sm text-textSecondary dark:text-textSecondaryDark">
-            {updatedDate ? `Last updated: ${updatedDate}` : `Published: ${formattedDate}`}
-          </p>
-        </div>
-        
-        <div class="mt-2 md:mt-0">
-          <span class="text-sm bg-borderColor dark:bg-borderColorDark px-2 py-1 rounded-md">
-            {category}
-          </span>
-        </div>
+      <div class="flex items-center gap-2 mb-4">
+        <a href={`/${getCategoryUrl(category)}/`} class="text-sm text-accent no-hover-effect">
+          {category}
+        </a>
       </div>
       
       {'image' in entry.data && entry.data.image && (
@@ -65,7 +74,11 @@ const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
         </div>
       )}
       
-      <h1 class="text-3xl md:text-4xl font-bold mb-4">{entry.data?.title ?? ''}</h1>
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">{entry.data?.title ?? ''}</h1>
+      
+      <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
+        {updatedDate ? `Last updated: ${updatedDate}` : `Published: ${formattedDate}`}
+      </p>
       
       {entry.data?.description && (
         <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-8">

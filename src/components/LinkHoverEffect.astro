@@ -128,6 +128,9 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
           const href = link.getAttribute('href');
           if (!href) return;
           
+          // Skip links with no-hover-effect class
+          if (link.classList.contains('no-hover-effect')) return;
+          
           // Determine if link is internal or external
           const isInternal = href.startsWith('/') || 
                            href.includes('__GHOST_URL__') || 
