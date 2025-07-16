@@ -1,0 +1,98 @@
+---
+interface Props {
+  currentPath: string;
+  title?: string;
+}
+
+const { currentPath, title } = Astro.props;
+
+// Parse the current path to create breadcrumb items
+const pathSegments = currentPath.split('/').filter(segment => segment.length > 0);
+const breadcrumbItems = [];
+
+// Always start with Home
+breadcrumbItems.push({
+  label: 'Home',
+  href: '/',
+  isCurrent: pathSegments.length === 0
+});
+
+// Build breadcrumb items from path segments
+let currentHref = '';
+for (let i = 0; i < pathSegments.length; i++) {
+  const segment = pathSegments[i];
+  currentHref += `/${segment}`;
+  
+  // Format the label (capitalize first letter, replace hyphens/underscores with spaces)
+  let label = segment
+    .replace(/[-_]/g, ' ')
+    .replace(/\b\w/g, l => l.toUpperCase());
+  
+  // Special handling for common paths
+  if (segment === 'about') label = 'About Sajal';
+  if (segment === 'notes') label = 'Notes';
+  if (segment === 'ephemera') label = 'Ephemera';
+  if (segment === 'nordletter') label = 'NordLetter';
+  if (segment === 'books') label = 'Books';
+  if (segment === 'stories') label = 'Stories';
+  if (segment === 'poems') label = 'Poems';
+  if (segment === 'feeds') label = 'Feeds';
+  if (segment === 'tags') label = 'Tags';
+  if (segment === 'til') label = 'TIL';
+  if (segment === 'micro') label = 'Micro';
+  if (segment === 'bookshelf') label = 'Bookshelf';
+  if (segment === 'blog') label = 'Blog';
+  
+  breadcrumbItems.push({
+    label,
+    href: currentHref,
+    isCurrent: i === pathSegments.length - 1
+  });
+}
+
+// If we have a custom title for the current page, use it
+if (title && breadcrumbItems.length > 0) {
+  breadcrumbItems[breadcrumbItems.length - 1].label = title;
+}
+---
+
+<nav aria-label="Breadcrumb" class="mb-6">
+  <ol class="flex flex-wrap items-center space-x-1 text-sm">
+    {breadcrumbItems.map((item, index) => (
+      <li class="flex items-center">
+        {index > 0 && (
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="16" 
+            height="16" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            class="mx-2 text-textSecondary dark:text-textSecondaryDark"
+          >
+            <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+        )}
+        
+        {item.isCurrent ? (
+          <span 
+            class="text-textPrimary dark:text-textPrimaryDark font-medium"
+            aria-current="page"
+          >
+            {item.label}
+          </span>
+        ) : (
+          <a 
+            href={item.href} 
+            class="text-textSecondary dark:text-textSecondaryDark hover:text-textPrimary dark:hover:text-textPrimaryDark transition-colors duration-200 hover:underline"
+          >
+            {item.label}
+          </a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

@@ -37,6 +37,7 @@ const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
   title={`${entry.data?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
   description={entry.data?.description} 
   currentPage={`/${category}/${entry.slug}/`}
+  showBreadcrumbs={true}
 >
   <article class="prose dark:prose-dark mx-auto">
     <div class="mb-8">
