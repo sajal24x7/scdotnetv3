@@ -1,95 +1,101 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ProfileHero from '../components/ui/ProfileHero.astro';
+import BookShowcase from '../components/ui/BookShowcase.astro';
+import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
+import FourSectionLayout from '../components/layout/FourSectionLayout.astro';
 import { getAllPosts } from '../utils/content';
 import { formatDate } from '../utils/date';
 
 const recentPosts = (await getAllPosts())
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
   .slice(0, 5);
+
+// Get counts for different sections
+const allPosts = await getAllPosts();
+const notesCount = allPosts.filter(post => post.data.category === 'evergreen').length;
+const ephemeraCount = allPosts.filter(post => ['blog', 'micro', 'photo', 'til'].includes(post.data.category)).length;
+const storiesCount = allPosts.filter(post => post.data.category === 'story').length;
+const poemsCount = allPosts.filter(post => post.data.category === 'poem').length;
+
+const sections = [
+  {
+    title: "Notes",
+    description: "Documentation and notes that stand the test of time.",
+    link: "/notes/",
+    linkText: "Browse notes",
+    count: notesCount,
+    countLabel: "note",
+    icon: "📝"
+  },
+  {
+    title: "Ephemera", 
+    description: "Blog posts, photos, and micro updates from daily life.",
+    link: "/ephemera/",
+    linkText: "Browse ephemera",
+    count: ephemeraCount,
+    countLabel: "post",
+    icon: "📸"
+  },
+  {
+    title: "Stories",
+    description: "Short stories and fiction pieces.",
+    link: "/stories/",
+    linkText: "Browse stories", 
+    count: storiesCount,
+    countLabel: "story",
+    icon: "📚"
+  },
+  {
+    title: "Poems",
+    description: "Poetry and verse from my collections.",
+    link: "/poems/",
+    linkText: "Browse poems",
+    count: poemsCount,
+    countLabel: "poem",
+    icon: "✍️"
+  }
+];
 ---
 
 <Layout title="Sajal Choudhary" currentPage="/">
   <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Header Section -->
-    <div class="py-8 mb-6">
-      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
-        <img 
-          src="/profile/profile.jpeg" 
-          alt="Sajal Choudhary" 
-          class="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover shadow-lg border-2 border-gray-200 dark:border-gray-600 flex-shrink-0"
-        />
-        <div class="text-center sm:text-left">
-          <h1 class="text-3xl sm:text-4xl font-bold mb-4">Hi, I'm Sajal.</h1>
-          <div class="prose dark:prose-invert max-w-none">
-            <p class="text-base sm:text-lg">
-              I am the author of <a href="/books/a-year-of-mornings/" class="text-accent hover:text-accent/80">A Year of Mornings (2025)</a>, a collection of poems for young adults.
-            </p>
-            <p class="text-base sm:text-lg mb-0">
-              In my day job, I work as an assistant consultant at TCS. 
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Profile Hero Section -->
+    <ProfileHero 
+      name="Sajal Choudhary"
+      title="Hi, I'm Sajal."
+      description=""
+      imageSrc="/profile/profile.jpeg"
+      imageAlt="Sajal Choudhary"
+      bookLink="/books/a-year-of-mornings/"
+      bookTitle="A Year of Mornings (2025)"
+      jobDescription="In my day job, I work as an assistant consultant at TCS."
+    />
 
     <!-- Featured Book Section -->
-    <div class="border-t border-black/10 dark:border-white/10 py-8">
-      <div class="flex flex-col lg:flex-row items-start gap-8">
-        <!-- Book Cover -->
-        <div class="flex-shrink-0">
-          <img 
-            src="/books/01-ayom.jpg" 
-            alt="A Year of Mornings by Sajal Choudhary cover image"
-            class="w-32 h-auto lg:w-40 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600"
-          />
-        </div>
-        
-        <!-- Book Details -->
-        <div class="flex-1">
-          <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Out now!</p>
-          <h2 class="text-2xl font-bold mb-3">
-            <a href="/books/a-year-of-mornings/" class="text-accent hover:text-accent/80 transition-colors">
-              A Year of Mornings
-            </a>
-          </h2>
-          <p class="text-base text-gray-700 dark:text-gray-300 mb-4">
-            A collection of fifty love poems that follows a young heart as it finds love, 
-            finds the strength to be in love and finally, finds the strength to let go.
-          </p>
-        </div>
-      </div>
-    </div>
+    <BookShowcase 
+      bookTitle="A Year of Mornings"
+      bookLink="/books/a-year-of-mornings/"
+      bookCoverSrc="/books/01-ayom.jpg"
+      bookCoverAlt="A Year of Mornings by Sajal Choudhary cover image"
+      bookDescription="A collection of fifty love poems that follows a young heart as it finds love, finds the strength to be in love and finally, finds the strength to let go."
+      status="Out now!"
+    />
 
     <!-- Newsletter Section -->
+    <NewsletterSignup />
+
+    <!-- Four Section Layout -->
     <div class="border-t border-black/10 dark:border-white/10 py-8">
-      <div class="prose dark:prose-invert max-w-none">
-        <h2 class="text-2xl font-bold mb-4">NordLetter</h2>
-        <p class="text-base mb-6">
-          I send out a newsletter once a week about living in Finland + five interesting things I've found on the open web.
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold mb-4">Explore My Work</h2>
+        <p class="text-gray-600 dark:text-gray-400">
+          This is my home on the web. There are two main sections here: <a href="/notes/" class="hover:text-accent transition-colors">notes</a> and <a href="/ephemera/" class="hover:text-accent transition-colors">ephemera</a>.
+          Notes are things that would (I hope) stand the test of time. Ephemera are things that are in the moment.
         </p>
-        
-        <form
-          class="flex flex-col sm:flex-row gap-3 max-w-md"
-          action="https://buttondown.com/api/emails/embed-subscribe/sajal24x7"
-          method="post"
-          target="popupwindow"
-          onsubmit="window.open('https://buttondown.com/sajal24x7', 'popupwindow')"
-        >
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-            class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-          <button
-            type="submit"
-            class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
-          >
-            Subscribe
-          </button>
-        </form>
       </div>
+      
+      <FourSectionLayout sections={sections} />
     </div>
 
     <!-- Blog Section -->

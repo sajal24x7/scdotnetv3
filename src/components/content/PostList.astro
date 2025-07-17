@@ -1,0 +1,131 @@
+---
+import { formatDate } from '../../utils/date';
+
+interface Props {
+  posts: any[];
+  mode?: 'grid' | 'list' | 'timeline';
+  showCategory?: boolean;
+  showDate?: boolean;
+  showDescription?: boolean;
+  maxPosts?: number;
+}
+
+const { 
+  posts, 
+  mode = 'list', 
+  showCategory = true, 
+  showDate = true, 
+  showDescription = false,
+  maxPosts 
+} = Astro.props;
+
+const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
+
+const getModeClasses = () => {
+  switch (mode) {
+    case 'grid':
+      return 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+    case 'timeline':
+      return 'space-y-8';
+    default:
+      return 'space-y-4';
+  }
+};
+
+const getPostClasses = () => {
+  switch (mode) {
+    case 'grid':
+      return 'group border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 hover:shadow-md';
+    case 'timeline':
+      return 'relative pl-8 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-accent before:rounded-full';
+    default:
+      return 'group';
+  }
+};
+---
+
+<div class={getModeClasses()}>
+  {displayPosts.map((post) => (
+    <article class={getPostClasses()}>
+      <a href={`/${post.data.category}/${post.slug}/`} class="block">
+        {mode === 'grid' && (
+          <div class="mb-3">
+            {post.data.image && (
+              <img 
+                src={post.data.image} 
+                alt={post.data.title}
+                class="w-full h-48 object-cover rounded-lg mb-3"
+              />
+            )}
+          </div>
+        )}
+        
+        <div class="space-y-2">
+          {showDate && (
+            <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500 dark:text-gray-400 block">
+              {formatDate(post.data.pubDate)}
+            </time>
+          )}
+          
+          <h3 class="text-lg font-semibold group-hover:text-accent transition-colors">
+            {post.data.title}
+          </h3>
+          
+          {showDescription && post.data.description && (
+            <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
+              {post.data.description}
+            </p>
+          )}
+          
+          {showCategory && (
+            <div class="flex items-center gap-2 mt-2">
+              <span class="text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded-full">
+                {post.data.category}
+              </span>
+              {post.data.tags && post.data.tags.length > 0 && (
+                <span class="text-xs text-gray-500 dark:text-gray-400">
+                  {post.data.tags.slice(0, 2).join(', ')}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      </a>
+    </article>
+  ))}
+</div>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Timeline specific styles */
+  .relative.pl-8::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+  }
+  
+  /* Grid hover effects */
+  .group:hover {
+    transform: translateY(-1px);
+  }
+  
+  /* Dark mode adjustments */
+  :global(.dark) .group {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  
+  :global(.dark) .group:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+</style> 

@@ -48,3 +48,7 @@ src/content_backup_20250622_133446
 # Keep essential image files in git (icons, logos, etc)
 !public/images/icons/
 !public/images/logo.svg
+
+# Documentation files (refactoring documentation)
+REFACTORING_DOCUMENTATION.md
+REFACTORING_SUMMARY.md

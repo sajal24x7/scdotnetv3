@@ -1,0 +1,118 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  showBackButton?: boolean;
+  backUrl?: string;
+  actions?: any[];
+  layout?: 'centered' | 'left-aligned';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { 
+  title, 
+  description, 
+  showBackButton = false, 
+  backUrl = '/',
+  actions = [],
+  layout = 'left-aligned',
+  size = 'md'
+} = Astro.props;
+
+const sizeClasses = {
+  sm: {
+    title: 'text-2xl font-bold',
+    description: 'text-sm text-gray-600 dark:text-gray-400 mt-2',
+    container: 'mb-6'
+  },
+  md: {
+    title: 'text-3xl font-bold',
+    description: 'text-base text-gray-600 dark:text-gray-400 mt-3',
+    container: 'mb-8'
+  },
+  lg: {
+    title: 'text-4xl font-bold',
+    description: 'text-lg text-gray-600 dark:text-gray-400 mt-4',
+    container: 'mb-10'
+  }
+};
+
+const layoutClasses = {
+  'centered': 'text-center',
+  'left-aligned': 'text-left'
+};
+---
+
+<header class={`${sizeClasses[size].container} ${layoutClasses[layout]}`}>
+  <div class="flex items-start justify-between">
+    <div class="flex-1">
+      {showBackButton && (
+        <a 
+          href={backUrl} 
+          class="inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 mb-4 transition-colors"
+        >
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back
+        </a>
+      )}
+      
+      <h1 class={`${sizeClasses[size].title} text-textPrimary`}>
+        {title}
+      </h1>
+      
+      {description && (
+        <p class={`${sizeClasses[size].description} max-w-2xl`}>
+          {description}
+        </p>
+      )}
+    </div>
+    
+    {actions.length > 0 && (
+      <div class="flex items-center gap-3 ml-6">
+        {actions.map((action) => (
+          <a 
+            href={action.href} 
+            class={`inline-flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+              action.primary 
+                ? 'bg-accent text-white hover:bg-accent-dark shadow-md hover:shadow-lg' 
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+            }`}
+          >
+            {action.icon && (
+              <span class="mr-2" set:html={action.icon} />
+            )}
+            {action.label}
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</header>
+
+<style>
+  /* Smooth transitions */
+  .inline-flex {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  /* Hover effects */
+  .inline-flex:hover {
+    transform: translateY(-1px);
+  }
+  
+  /* Back button hover */
+  a:hover svg {
+    transform: translateX(-2px);
+  }
+  
+  /* Dark mode adjustments */
+  :global(.dark) .bg-accent {
+    background-color: var(--color-accent);
+  }
+  
+  :global(.dark) .bg-accent-dark {
+    background-color: var(--color-accent-dark, #1a5f7a);
+  }
+</style> 

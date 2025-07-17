@@ -1,0 +1,185 @@
+---
+import Card from '../Card.astro';
+import { marked } from 'marked';
+import LinkHoverEffect from '../LinkHoverEffect.astro';
+
+interface Props {
+  posts: any[];
+  layout?: 'grid' | 'list' | 'masonry';
+  columns?: 1 | 2 | 3 | 4;
+  gap?: 'sm' | 'md' | 'lg' | 'xl';
+  showDividers?: boolean;
+}
+
+const { 
+  posts, 
+  layout = 'grid', 
+  columns = 1, 
+  gap = 'lg', 
+  showDividers = true 
+} = Astro.props;
+
+// Configure marked options
+marked.setOptions({
+  gfm: true, // GitHub Flavored Markdown
+  breaks: true // Convert line breaks to <br>
+});
+
+// Pre-render markdown content
+const renderedPosts = posts.map(post => ({
+  ...post,
+  renderedContent: post.body ? marked.parse(post.body) : null
+}));
+
+// Generate responsive grid classes
+const getGridClasses = () => {
+  const gapClasses = {
+    sm: 'gap-4',
+    md: 'gap-6', 
+    lg: 'gap-8',
+    xl: 'gap-12'
+  };
+
+  const columnClasses = {
+    1: 'grid-cols-1',
+    2: 'grid-cols-1 md:grid-cols-2',
+    3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+    4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+  };
+
+  return `${columnClasses[columns]} ${gapClasses[gap]}`;
+};
+---
+
+<div class={`grid ${getGridClasses()} py-8`}>
+  {renderedPosts.map((post, index) => (
+    <div class={layout === 'masonry' ? 'break-inside-avoid' : ''}>
+      <Card {...post.data}>
+        {post.renderedContent && (
+          <div class="prose dark:prose-dark max-w-none">
+            <div set:html={post.renderedContent} />
+          </div>
+        )}
+      </Card>
+    </div>
+  ))}
+</div>
+
+<LinkHoverEffect />
+
+<style>
+  .grid {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Add a subtle divider between cards */
+  {showDividers && `
+  .grid > *:not(:last-child) {
+    position: relative;
+  }
+
+  .grid > *:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -1.5rem;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(229 231 235),
+      transparent
+    );
+  }
+
+  :global(.dark) .grid > *:not(:last-child)::after {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(55 65 81),
+      transparent
+    );
+  }
+  `}
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .grid {
+      max-width: none;
+      padding: 0 1rem;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .grid {
+      max-width: 1200px;
+    }
+  }
+
+  /* Large screen adjustments */
+  @media (min-width: 1024px) {
+    .grid {
+      max-width: 1400px;
+    }
+  }
+
+  /* Masonry layout */
+  {layout === 'masonry' && `
+  .grid {
+    column-count: 1;
+    column-gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .grid {
+      column-count: 2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid {
+      column-count: 3;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .grid {
+      column-count: 4;
+    }
+  }
+  `}
+
+  /* Ensure links are properly styled */
+  :global(.prose a) {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  :global(.prose a:hover) {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+  :global(.dark .prose a) {
+    color: #60a5fa;
+  }
+
+  :global(.dark .prose a:hover) {
+    color: #93c5fd;
+  }
+
+  /* Card hover effects */
+  :global(.card:hover) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  :global(.dark .card:hover) {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  }
+</style> 

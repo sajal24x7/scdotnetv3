@@ -1,0 +1,49 @@
+---
+interface Props {
+  name: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  bookLink?: string;
+  bookTitle?: string;
+  jobDescription?: string;
+}
+
+const { 
+  name, 
+  title, 
+  description, 
+  imageSrc, 
+  imageAlt, 
+  bookLink, 
+  bookTitle, 
+  jobDescription 
+} = Astro.props;
+---
+
+<div class="py-8 mb-6">
+  <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
+    <img 
+      src={imageSrc} 
+      alt={imageAlt} 
+      class="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover shadow-lg border-2 border-gray-200 dark:border-gray-600 flex-shrink-0"
+    />
+    <div class="text-center sm:text-left">
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">{title}</h1>
+      <div class="prose dark:prose-invert max-w-none">
+        <p class="text-base sm:text-lg">
+          {description}
+          {bookLink && bookTitle && (
+            <> I am the author of <a href={bookLink} class="text-accent hover:text-accent/80">{bookTitle}</a>, a collection of poems for young adults.</>
+          )}
+        </p>
+        {jobDescription && (
+          <p class="text-base sm:text-lg mb-0">
+            {jobDescription}
+          </p>
+        )}
+      </div>
+    </div>
+  </div>
+</div> 
