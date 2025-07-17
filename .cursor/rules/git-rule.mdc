@@ -1,0 +1,7 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+When I ask to git commit, you have to push to remote also.
+Always create a new branch when working on a new feature.

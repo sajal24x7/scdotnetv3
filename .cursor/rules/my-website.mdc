@@ -1,0 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+My blog has these categories - 'evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'now', 'til'.
+
+Content collection is stored in year folders. Never use constants to get the collection, instead get the list of years from the content folder and then get content from there.
