@@ -1,12 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import NotesGrid from '../../components/NotesGrid.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
-// Get all posts and filter for notes (evergreen and TIL)
+// Get all posts and filter for notes (evergreen only - TILs moved to ephemera)
 const allPosts = await getAllPosts();
 const notesPosts = allPosts
-  .filter(post => ['evergreen', 'til'].includes(post.data.category))
+  .filter(post => post.data.category === 'evergreen')
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
 // Transform posts for the NotesGrid component
@@ -19,23 +20,25 @@ const transformedPosts = notesPosts.map(transformPost);
   currentPage="/notes/"
 >
   <div class="notes-container">
-    <header class="notes-header">
-      <div class="header-content">
-        <h1 class="notes-title">Notes</h1>
-        <p class="notes-description">
-          A collection of documentation, notes, and explorations from my projects and learning.
-        </p>
-        <div class="notes-count">
-          {transformedPosts.length} {transformedPosts.length === 1 ? 'note' : 'notes'}
-        </div>
-        <a 
-          href="/tags/?category=notes" 
-          class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
-        >
-          View entries by tag
-        </a>
-      </div>
-    </header>
+    <PageHeader 
+      title="Notes"
+      description="A collection of documentation, notes, and explorations from my projects and learning."
+      layout="centered"
+      size="lg"
+    />
+    
+    <div class="notes-count mb-6 text-center">
+      {transformedPosts.length} {transformedPosts.length === 1 ? 'note' : 'notes'}
+    </div>
+    
+    <div class="text-center mb-6">
+      <a 
+        href="/tags/?category=notes" 
+        class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
+      >
+        View entries by tag
+      </a>
+    </div>
 
     <main class="notes-main">
       <NotesGrid posts={transformedPosts} />
@@ -50,55 +53,12 @@ const transformedPosts = notesPosts.map(transformPost);
     padding: 0 0.5rem;
   }
 
-  .notes-header {
-    padding: 1.5rem 0 1rem;
-    text-align: center;
-    border-bottom: 1px solid #e5e7eb;
-    margin-bottom: 1.5rem;
-  }
-
-  :global(.dark) .notes-header {
-    border-bottom-color: #374151;
-  }
-
-  .header-content {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .notes-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
-    color: #111827;
-  }
-
-  :global(.dark) .notes-title {
-    color: #f9fafb;
-  }
-
-  .notes-description {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #6b7280;
-    margin-bottom: 1rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  :global(.dark) .notes-description {
-    color: #9ca3af;
-  }
-
   .notes-count {
     font-size: 0.875rem;
     font-weight: 500;
     color: #8b5cf6;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 1rem;
   }
 
   :global(.dark) .notes-count {
@@ -116,29 +76,8 @@ const transformedPosts = notesPosts.map(transformPost);
       padding: 0;
     }
 
-    .notes-header {
-      padding: 1rem 1rem 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .notes-title {
-      font-size: 2rem;
-    }
-
-    .notes-description {
-      font-size: 0.95rem;
-      margin-bottom: 0.75rem;
-    }
-
     .notes-main {
       padding-bottom: 1.5rem;
-    }
-  }
-
-  /* Tablet adjustments */
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .notes-title {
-      font-size: 2.25rem;
     }
   }
 </style> 

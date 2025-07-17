@@ -8,11 +8,11 @@ export async function GET(context) {
   // Get all year directories
   const years = getYearDirectories();
   
-  // Get all posts from year collections and filter for ephemera (blog, micro, photo)
+  // Get all posts from year collections and filter for ephemera (blog, micro, photo, til)
   const allPosts = await Promise.all(years.map(year => getCollection(year)));
   const flatPosts = allPosts.flat();
   const ephemera = flatPosts.filter(post => 
-    ['blog', 'micro', 'photo'].includes(post.data.category)
+    ['blog', 'micro', 'photo', 'til'].includes(post.data.category)
   );
   
   // Sort by publish date (newest first)
