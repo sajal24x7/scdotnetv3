@@ -1,0 +1,7 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+This is a Macbook Air. Create scripts in python or other compatible languages, use zsh or bash commands where needed.
+The git directory is under astronautical-aperture. All astro code is under this site.

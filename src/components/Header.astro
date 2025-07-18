@@ -1,0 +1,54 @@
+---
+// src/components/Header.astro
+import SocialLinks from './navigation/SocialLinks.astro';
+import NavigationMenu from './navigation/NavigationMenu.astro';
+
+interface Props {
+    currentPage: string;
+}
+const { currentPage } = Astro.props;
+---
+<header class="container mx-auto px-4 py-4 max-w-3xl">
+    <!-- Mobile: Logo and Navigation in same row -->
+    <div class="flex justify-between items-start mb-3 sm:hidden">
+        <!-- Logo on the left -->
+        <a href="/" class="flex items-center text-xl font-bold text-textPrimary hover:text-accent transition-colors py-2">
+            <img src="/logo/logo-square-v2.svg" alt="Sajal Logo" class="mr-3 h-16 w-16 transition-transform duration-300" />
+        </a>
+        
+        <!-- Navigation on the right (two-column grid) -->
+        <NavigationMenu currentPage={currentPage} layout="mobile" />
+    </div>
+
+    <!-- Desktop: Three column layout -->
+    <div class="hidden sm:flex justify-between items-center mb-2">
+        <!-- Logo on the left -->
+        <a href="/" class="flex items-center text-xl font-bold text-textPrimary hover:text-accent transition-colors py-1">
+            <img src="/logo/logo-square-v2.svg" alt="Sajal Logo" class="mr-3 h-20 w-20 transition-transform duration-300" />
+        </a>
+        <!-- Navigation Links center -->
+        <NavigationMenu currentPage={currentPage} layout="desktop" />
+        <!-- Social Icons on the right -->
+        <SocialLinks layout="vertical" size="md" />
+    </div>
+</header>
+
+<style>
+    /* Active state styling */
+    .font-semibold.text-accent {
+         border-bottom: 2px solid currentColor;
+    }
+    
+    /* Responsive styling */
+    @media (max-width: 640px) {
+        nav ul {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+        }
+        
+        .font-semibold.text-accent {
+            border-bottom: 2px solid currentColor;
+        }
+    }
+</style>

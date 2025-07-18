@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProfileHero from '../components/ui/ProfileHero.astro';
+import BookShowcase from '../components/ui/BookShowcase.astro';
+import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
+import FourSectionLayout from '../components/layout/FourSectionLayout.astro';
+import { getAllPosts } from '../utils/content';
+import { formatDate } from '../utils/date';
+
+const recentPosts = (await getAllPosts())
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .slice(0, 5);
+
+// Get counts for different sections
+const allPosts = await getAllPosts();
+const notesCount = allPosts.filter(post => post.data.category === 'evergreen').length;
+const ephemeraCount = allPosts.filter(post => ['blog', 'micro', 'photo', 'til'].includes(post.data.category)).length;
+const storiesCount = allPosts.filter(post => post.data.category === 'story').length;
+const poemsCount = allPosts.filter(post => post.data.category === 'poem').length;
+
+const sections = [
+  {
+    title: "Notes",
+    description: "Documentation and notes that stand the test of time.",
+    link: "/notes/",
+    linkText: "Browse notes",
+    count: notesCount,
+    countLabel: "note",
+    icon: "📝"
+  },
+  {
+    title: "Ephemera", 
+    description: "Blog posts, photos, and micro updates from daily life.",
+    link: "/ephemera/",
+    linkText: "Browse ephemera",
+    count: ephemeraCount,
+    countLabel: "post",
+    icon: "📸"
+  },
+  {
+    title: "Stories",
+    description: "Short stories and fiction pieces.",
+    link: "/stories/",
+    linkText: "Browse stories", 
+    count: storiesCount,
+    countLabel: "story",
+    icon: "📚"
+  },
+  {
+    title: "Poems",
+    description: "Poetry and verse from my collections.",
+    link: "/poems/",
+    linkText: "Browse poems",
+    count: poemsCount,
+    countLabel: "poem",
+    icon: "✍️"
+  }
+];
+---
+
+<Layout title="Sajal Choudhary" currentPage="/">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Profile Hero Section -->
+    <ProfileHero 
+      name="Sajal Choudhary"
+      title="Hi, I'm Sajal."
+      description=""
+      imageSrc="/profile/profile.jpeg"
+      imageAlt="Sajal Choudhary"
+      bookLink="/books/a-year-of-mornings/"
+      bookTitle="A Year of Mornings (2025)"
+      jobDescription="In my day job, I work as an assistant consultant at TCS."
+    />
+
+    <!-- Featured Book Section -->
+    <BookShowcase 
+      bookTitle="A Year of Mornings"
+      bookLink="/books/a-year-of-mornings/"
+      bookCoverSrc="/books/01-ayom.jpg"
+      bookCoverAlt="A Year of Mornings by Sajal Choudhary cover image"
+      bookDescription="A collection of fifty love poems that follows a young heart as it finds love, finds the strength to be in love and finally, finds the strength to let go."
+      status="Out now!"
+    />
+
+    <!-- Newsletter Section -->
+    <NewsletterSignup />
+
+    <!-- Four Section Layout -->
+    <div class="border-t border-black/10 dark:border-white/10 py-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold mb-4">Explore My Work</h2>
+        <p class="text-gray-600 dark:text-gray-400">
+          This is my home on the web. There are two main sections here: <a href="/notes/" class="hover:text-accent transition-colors">notes</a> and <a href="/ephemera/" class="hover:text-accent transition-colors">ephemera</a>.
+          Notes are things that would (I hope) stand the test of time. Ephemera are things that are in the moment.
+        </p>
+      </div>
+      
+      <FourSectionLayout sections={sections} />
+    </div>
+
+    <!-- Blog Section -->
+    <div class="py-8 border-t border-black/10 dark:border-white/10">
+      <div class="prose dark:prose-invert max-w-none">
+        <p class="text-base mb-6">
+          This is my home on the web. There are two main sections here: <a href="/notes/" class="hover:text-accent transition-colors">notes</a> and <a href="/ephemera/" class="hover:text-accent transition-colors">ephemera</a>.
+          Notes are things that would (I hope) stand the test of time. Ephemera are things that are in the moment.
+        </p>
+      </div>
+    </div>
+
+    <!-- Recent Posts Section -->
+    <div class="border-t border-black/10 dark:border-white/10 py-8">
+      <h2 class="text-2xl font-bold mb-6">Recent Posts</h2>
+      <div class="space-y-4">
+        {recentPosts.map((post) => (
+          <div class="flex items-start gap-4">
+            <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+              {formatDate(post.data.pubDate)}
+            </time>
+            <div class="flex-1 min-w-0">
+              <a href={`/${post.data.category}/${post.slug}`} class="text-lg hover:text-blue-600 dark:hover:text-blue-400 block">
+                {post.data.title}
+                <span class="text-sm text-gray-400 dark:text-gray-500 font-normal ml-2">· {post.data.category}</span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Directory/Footer Section -->
+    <div class="py-8 border-t border-black/10 dark:border-white/10">
+      <div class="prose dark:prose-invert max-w-none">
+        <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
+          I have written a lot of things on the internet since 2012. Here's a directory of what's available on this website.
+        </p>
+        
+        <div>
+          <h4 class="font-medium mb-3 text-base">Basics</h4>
+          <ul class="space-y-2 text-textSecondary dark:text-textSecondaryDark">
+            <li><a href="/about/" class="hover:text-accent transition-colors">About Me</a></li>
+            <li><a href="/now/" class="hover:text-accent transition-colors">What I'm Doing Now</a></li>
+          </ul>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-8 text-sm mt-8">
+          <div>
+            <h4 class="font-medium mb-3 text-base">Writing</h4>
+            <ul class="space-y-2 text-textSecondary dark:text-textSecondaryDark">
+              <li><a href="/notes/" class="hover:text-accent transition-colors">Digital Garden</a></li>
+              <li><a href="/blog/" class="hover:text-accent transition-colors">Blog Posts</a></li>
+              <li><a href="/stories/" class="hover:text-accent transition-colors">Short Stories</a></li>
+              <li><a href="/poems/" class="hover:text-accent transition-colors">Poems</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

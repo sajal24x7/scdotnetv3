@@ -1,0 +1,45 @@
+---
+interface Props {
+  bookTitle: string;
+  bookLink: string;
+  bookCoverSrc: string;
+  bookCoverAlt: string;
+  bookDescription: string;
+  status?: string;
+}
+
+const { 
+  bookTitle, 
+  bookLink, 
+  bookCoverSrc, 
+  bookCoverAlt, 
+  bookDescription, 
+  status = "Out now!" 
+} = Astro.props;
+---
+
+<div class="border-t border-black/10 dark:border-white/10 py-8">
+  <div class="flex flex-col lg:flex-row items-start gap-8">
+    <!-- Book Cover -->
+    <div class="flex-shrink-0">
+      <img 
+        src={bookCoverSrc} 
+        alt={bookCoverAlt}
+        class="w-32 h-auto lg:w-40 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600"
+      />
+    </div>
+    
+    <!-- Book Details -->
+    <div class="flex-1">
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">{status}</p>
+      <h2 class="text-2xl font-bold mb-3">
+        <a href={bookLink} class="text-accent hover:text-accent/80 transition-colors">
+          {bookTitle}
+        </a>
+      </h2>
+      <p class="text-base text-gray-700 dark:text-gray-300 mb-4">
+        {bookDescription}
+      </p>
+    </div>
+  </div>
+</div> 

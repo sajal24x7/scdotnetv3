@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+When making changes to any content (src/content) directory make sure you take a backup before making any changes.

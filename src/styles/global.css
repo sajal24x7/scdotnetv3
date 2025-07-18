@@ -1,0 +1,74 @@
+/* Global styles for astronautical-aperture */
+
+/* Custom Variables */
+:root {
+  --random-link-color: inherit; /* Default link color */
+  --link-color: #0066cc; /* Blue link color for light mode */
+  --hr-color: #666666; /* Darker color for horizontal rules in light mode */
+}
+
+.dark {
+  --link-color: #4d9fff; /* Lighter blue for dark mode */
+  --hr-color: #444444; /* Darker color for horizontal rules in dark mode */
+}
+
+/* Horizontal rule styling */
+hr {
+  border: none;
+  border-top: 1px solid var(--hr-color);
+  margin: 1.5rem 0;
+}
+
+/* Basic links styling */
+a {
+  color: var(--link-color);
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color 0.3s ease, color 0.3s ease;
+}
+
+/* Random colored underline effect on hover */
+a.random-underline {
+  text-decoration: underline;
+  text-decoration-color: var(--random-link-color);
+  text-decoration-thickness: 0.15em; /* Slightly thicker for bold effect */
+  font-weight: 500;
+}
+
+/* Special links that have icons/SVGs */
+a.icon-link.random-underline span {
+  text-decoration: underline;
+  text-decoration-color: var(--random-link-color);
+}
+
+/* Make sure underlines render properly across browsers */
+@supports (text-underline-offset: 0.15em) {
+  a.random-underline {
+    text-underline-offset: 0.15em;
+  }
+}
+
+/* Fallback for browsers that don't support modern text decoration properties */
+@supports not (text-decoration-color: var(--random-link-color)) {
+  a.random-underline {
+    border-bottom: 2px solid var(--random-link-color);
+    text-decoration: none;
+    padding-bottom: 2px;
+  }
+}
+
+/* Disable hover effects for elements with no-hover class */
+a.no-hover {
+  text-decoration: none !important;
+}
+
+a.no-hover:hover {
+  text-decoration: none !important;
+}
+
+/* Disable hover effects on mobile devices for no-hover class */
+@media (hover: none) {
+  a.no-hover {
+    text-decoration: none !important;
+  }
+} 

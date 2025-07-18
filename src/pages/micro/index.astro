@@ -1,0 +1,144 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContentGrid from '../../components/ContentGrid.astro';
+import { getAllPosts, transformPost } from '../../utils/content';
+
+// Get all posts and filter for micro
+const allPosts = await getAllPosts();
+const microPosts = allPosts
+  .filter(post => post.data.category === 'micro')
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+
+// Transform posts for the ContentGrid component
+const transformedPosts = microPosts.map(transformPost);
+---
+
+<Layout 
+  title="Micro" 
+  description="Short thoughts, links, and updates" 
+  currentPage="/micro/"
+>
+  <div class="micro-container">
+    <header class="micro-header">
+      <div class="header-content">
+        <h1 class="micro-title">Micro</h1>
+        <p class="micro-description">
+          Short thoughts, interesting links, and brief updates—similar to tweets or status updates.
+        </p>
+        <div class="micro-count">
+          {transformedPosts.length} {transformedPosts.length === 1 ? 'post' : 'posts'}
+        </div>
+        <a 
+          href="/tags/?category=micro" 
+          class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
+        >
+          View entries by tag
+        </a>
+      </div>
+    </header>
+
+    <main class="micro-main">
+      <ContentGrid posts={transformedPosts} />
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .micro-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+  }
+
+  .micro-header {
+    padding: 1.5rem 0 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1.5rem;
+  }
+
+  :global(.dark) .micro-header {
+    border-bottom-color: #374151;
+  }
+
+  .header-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .micro-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+
+  :global(.dark) .micro-title {
+    color: #f9fafb;
+  }
+
+  .micro-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :global(.dark) .micro-description {
+    color: #9ca3af;
+  }
+
+  .micro-count {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #8b5cf6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  :global(.dark) .micro-count {
+    color: #a78bfa;
+  }
+
+  .micro-main {
+    padding-bottom: 2rem;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .micro-container {
+      max-width: none;
+      padding: 0;
+    }
+
+    .micro-header {
+      padding: 1rem 1rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .micro-title {
+      font-size: 2rem;
+    }
+
+    .micro-description {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .micro-main {
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .micro-title {
+      font-size: 2.25rem;
+    }
+  }
+</style> 

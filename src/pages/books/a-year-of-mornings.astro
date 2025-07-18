@@ -1,0 +1,226 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="A Year of Mornings - Sajal Choudhary" currentPage="/books/a-year-of-mornings/">
+  <div class="max-w-4xl mx-auto">
+    <!-- Book Header -->
+    <div class="mb-8">
+      <div class="flex flex-col md:flex-row md:items-start gap-8 mb-8">
+        <!-- Book Cover -->
+        <div class="flex-shrink-0">
+          <img 
+            src="/books/01-ayom.jpg" 
+            alt="A Year of Mornings - Book Cover"
+            class="w-48 h-auto rounded-lg shadow-lg border border-gray-200 dark:border-gray-600"
+          />
+        </div>
+
+        <!-- Book Details -->
+        <div class="flex-1">
+          <div class="mb-6">
+            <ul class="text-sm text-textSecondary dark:text-textSecondaryDark space-y-1">
+              <li><strong>Publication:</strong> February 15, 2025</li>
+              <li><strong>Format:</strong> E-book & Print</li>
+              <li><strong>Genre:</strong> Poetry</li>
+              <li><strong>Audience:</strong> Young Adults</li>
+            </ul>
+          </div>
+
+          <!-- Purchase Links -->
+          <div class="space-y-3">
+            <a 
+              href="https://www.amazon.com/year-mornings-poems-young-adults-ebook/dp/B0DTFRPLY5?ref_=ast_author_dp"
+              target="_blank"
+              class="inline-block px-6 py-3 bg-accent text-white rounded-md hover:bg-opacity-90 transition-all font-medium">
+              Available on Amazon
+            </a>
+            <p class="text-sm text-textSecondary dark:text-textSecondaryDark">
+              Also available through your local library's digital collection
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Title Section -->
+      <div class="border-b border-gray-200 dark:border-gray-700 pb-8">
+        <h1 class="text-4xl font-bold mb-2">A Year of Mornings</h1>
+        <h2 class="text-xl text-textSecondary dark:text-textSecondaryDark mb-4">Poems for Young Adults</h2>
+        <p class="text-lg">Sajal Choudhary</p>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="mb-8">
+      <nav class="border-b border-gray-200 dark:border-gray-700">
+        <ul class="flex space-x-8 text-sm">
+          <li><a href="#about" class="py-2 border-b-2 border-accent text-accent font-medium">About the Book</a></li>
+          <li><a href="#excerpts" class="py-2 text-textSecondary dark:text-textSecondaryDark hover:text-accent">Sample Poems</a></li>
+          <li><a href="#reviews" class="py-2 text-textSecondary dark:text-textSecondaryDark hover:text-accent">Reviews</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- About the Book Section -->
+    <section id="about" class="mb-12">
+      <div class="prose dark:prose-invert max-w-none">
+        <h3 class="text-2xl font-bold mb-6">About the Book</h3>
+        
+        <p class="text-lg leading-relaxed mb-6">
+          <strong>A collection of poems that captures the quiet revelations found in everyday moments, 
+          written for young adults navigating the complexities of growing up in an interconnected world.</strong>
+        </p>
+
+        <p class="leading-relaxed mb-4">
+          In <em>A Year of Mornings</em>, each poem serves as a small window into the universal experiences 
+          of youth: the weight of expectations, the beauty of small discoveries, the ache of change, 
+          and the hope that emerges with each new day. Written from the perspective of an immigrant 
+          author who has found home in multiple places, these poems speak to anyone who has ever 
+          felt caught between worlds—whether those are geographical, cultural, or simply the space 
+          between who you were and who you're becoming.
+        </p>
+
+        <p class="leading-relaxed mb-4">
+          The collection moves through themes of identity, belonging, family, friendship, and the 
+          quiet moments of self-discovery that happen in the early hours of the day. From the 
+          frost-covered windows of a Finnish winter to memories of childhood in India, from the 
+          anxiety of social media to the comfort of morning tea, these poems find the profound 
+          in the mundane.
+        </p>
+
+        <p class="leading-relaxed mb-6">
+          <em>A Year of Mornings</em> is both a love letter to the liminal spaces of young adulthood 
+          and a gentle reminder that growth often happens in the quietest moments, when we're 
+          barely paying attention.
+        </p>
+
+        <blockquote class="border-l-4 border-accent pl-6 italic text-textSecondary dark:text-textSecondaryDark">
+          "These poems capture the texture of modern young adulthood with remarkable sensitivity 
+          and insight. Choudhary has created something both intimate and universal."
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Sample Poems Section -->
+    <section id="excerpts" class="mb-12">
+      <h3 class="text-2xl font-bold mb-6">Sample Poems</h3>
+      
+      <div class="space-y-8">
+        <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg">
+          <h4 class="font-bold mb-4">6:47 AM</h4>
+          <div class="font-mono text-sm leading-relaxed whitespace-pre-line">The world outside is still sleeping,
+but I am here with my thoughts
+and the steam rising from my cup.
+
+This is the hour before
+the notifications begin,
+before the day demands
+its accounting of productivity.
+
+In this pocket of silence,
+I remember who I am
+without the performance.</div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg">
+          <h4 class="font-bold mb-4">Distance</h4>
+          <div class="font-mono text-sm leading-relaxed whitespace-pre-line">My mother's voice travels
+7,000 kilometers in three seconds,
+asking if I'm eating enough vegetables.
+
+The lag between question and answer
+contains multitudes:
+visa applications, winter coats,
+the taste of home cooked food,
+and the weight of choices
+that led me here.</div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg">
+          <h4 class="font-bold mb-4">Integration</h4>
+          <div class="font-mono text-sm leading-relaxed whitespace-pre-line">They ask where I'm "really" from
+and I want to say:
+from the space between languages,
+from the intersection of cultures,
+from the morning light that looks
+the same in every country
+but feels different
+on different skin.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="mb-12">
+      <h3 class="text-2xl font-bold mb-6">What Readers Are Saying</h3>
+      
+      <div class="space-y-6">
+        <blockquote class="border-l-4 border-accent pl-6">
+          <p class="italic mb-2">
+            "These poems speak directly to the experience of being young in today's world. 
+            Choudhary captures the beauty and difficulty of finding yourself with remarkable honesty."
+          </p>
+          <cite class="text-sm text-textSecondary dark:text-textSecondaryDark">— Early Reader</cite>
+        </blockquote>
+
+        <blockquote class="border-l-4 border-accent pl-6">
+          <p class="italic mb-2">
+            "A Year of Mornings feels like having a conversation with a wise friend who 
+            understands the complexity of modern young adulthood. Beautifully written and deeply moving."
+          </p>
+          <cite class="text-sm text-textSecondary dark:text-textSecondaryDark">— Poetry Reader</cite>
+        </blockquote>
+
+        <blockquote class="border-l-4 border-accent pl-6">
+          <p class="italic mb-2">
+            "The immigrant experience is captured with such nuance and grace. These poems 
+            will resonate with anyone who has ever felt between worlds."
+          </p>
+          <cite class="text-sm text-textSecondary dark:text-textSecondaryDark">— Book Reviewer</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <div class="bg-gray-50 dark:bg-gray-900 p-8 rounded-lg text-center">
+      <h3 class="text-xl font-bold mb-4">Get Your Copy</h3>
+      <p class="text-textSecondary dark:text-textSecondaryDark mb-6">
+        <em>A Year of Mornings</em> is available as an e-book and through digital library services.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://www.amazon.com/year-mornings-poems-young-adults-ebook/dp/B0DTFRPLY5?ref_=ast_author_dp"
+          target="_blank"
+          class="px-8 py-3 bg-accent text-white rounded-md hover:bg-opacity-90 transition-all font-medium">
+          Buy on Amazon
+        </a>
+        <a 
+          href="/contact/"
+          class="px-8 py-3 border border-accent text-accent rounded-md hover:bg-accent hover:bg-opacity-10 transition-all font-medium">
+          Questions? Get in Touch
+        </a>
+      </div>
+    </div>
+
+    <!-- Back to Books -->
+    <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+      <a href="/books/" class="text-accent hover:underline">← Back to Books</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Smooth scrolling for navigation tabs
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script> 

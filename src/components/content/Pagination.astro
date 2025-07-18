@@ -1,0 +1,162 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  baseUrl: string;
+  showFirstLast?: boolean;
+  showPrevNext?: boolean;
+  maxVisible?: number;
+}
+
+const { 
+  currentPage, 
+  totalPages, 
+  baseUrl, 
+  showFirstLast = true, 
+  showPrevNext = true,
+  maxVisible = 5
+} = Astro.props;
+
+// Calculate visible page numbers
+const getVisiblePages = () => {
+  const pages: (number | string)[] = [];
+  const halfVisible = Math.floor(maxVisible / 2);
+  
+  let start = Math.max(1, currentPage - halfVisible);
+  let end = Math.min(totalPages, start + maxVisible - 1);
+  
+  // Adjust start if we're near the end
+  if (end - start + 1 < maxVisible) {
+    start = Math.max(1, end - maxVisible + 1);
+  }
+  
+  // Add first page and ellipsis if needed
+  if (start > 1) {
+    pages.push(1);
+    if (start > 2) {
+      pages.push('...');
+    }
+  }
+  
+  // Add visible pages
+  for (let i = start; i <= end; i++) {
+    pages.push(i);
+  }
+  
+  // Add last page and ellipsis if needed
+  if (end < totalPages) {
+    if (end < totalPages - 1) {
+      pages.push('...');
+    }
+    pages.push(totalPages);
+  }
+  
+  return pages;
+};
+
+const visiblePages = getVisiblePages();
+
+const getPageUrl = (page: number) => {
+  if (page === 1) {
+    return baseUrl;
+  }
+  return `${baseUrl}page/${page}/`;
+};
+---
+
+{totalPages > 1 && (
+  <nav class="flex items-center justify-center space-x-1" aria-label="Pagination">
+    {showFirstLast && currentPage > 1 && (
+      <a 
+        href={baseUrl} 
+        class="px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+        aria-label="Go to first page"
+      >
+        First
+      </a>
+    )}
+    
+    {showPrevNext && currentPage > 1 && (
+      <a 
+        href={currentPage === 2 ? baseUrl : getPageUrl(currentPage - 1)} 
+        class="px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+        aria-label="Go to previous page"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+    )}
+    
+    {visiblePages.map((page, index) => (
+      page === '...' ? (
+        <span class="px-3 py-2 text-sm text-gray-400 dark:text-gray-600">
+          ...
+        </span>
+      ) : (
+        <a 
+          href={getPageUrl(page as number)} 
+          class={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+            page === currentPage
+              ? 'bg-accent text-white shadow-md'
+              : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+          }`}
+          aria-label={`Go to page ${page}`}
+          aria-current={page === currentPage ? 'page' : undefined}
+        >
+          {page}
+        </a>
+      )
+    ))}
+    
+    {showPrevNext && currentPage < totalPages && (
+      <a 
+        href={getPageUrl(currentPage + 1)} 
+        class="px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+        aria-label="Go to next page"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    )}
+    
+    {showFirstLast && currentPage < totalPages && (
+      <a 
+        href={getPageUrl(totalPages)} 
+        class="px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+        aria-label="Go to last page"
+      >
+        Last
+      </a>
+    )}
+  </nav>
+)}
+
+<style>
+  /* Smooth transitions */
+  a {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  /* Hover effects */
+  a:hover {
+    transform: translateY(-1px);
+  }
+  
+  /* Active state */
+  .bg-accent {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Dark mode adjustments */
+  :global(.dark) .bg-accent {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Focus states for accessibility */
+  a:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+</style> 

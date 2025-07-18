@@ -1,0 +1,83 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContentGrid from '../../components/ContentGrid.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
+import { getAllPosts, transformPost } from '../../utils/content';
+
+// Get all posts and filter for stories
+const allPosts = await getAllPosts();
+const stories = allPosts
+  .filter(post => post.data.category === 'story')
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+
+// Transform posts for the ContentGrid component
+const transformedPosts = stories.map(transformPost);
+---
+
+<Layout 
+  title="Stories" 
+  description="Short stories and fiction" 
+  currentPage="/stories/"
+>
+  <div class="stories-container">
+    <PageHeader 
+      title="Stories"
+      description="Short stories and fiction pieces."
+      layout="centered"
+      size="lg"
+    />
+    
+    <div class="stories-count mb-6 text-center">
+      {transformedPosts.length} {transformedPosts.length === 1 ? 'story' : 'stories'}
+    </div>
+    
+    <div class="text-center mb-6">
+      <a 
+        href="/tags/?category=story" 
+        class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
+      >
+        View entries by tag
+      </a>
+    </div>
+
+    <main class="stories-main">
+      <ContentGrid posts={transformedPosts} />
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .stories-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+  }
+
+  .stories-count {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #8b5cf6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  :global(.dark) .stories-count {
+    color: #a78bfa;
+  }
+
+  .stories-main {
+    padding-bottom: 2rem;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .stories-container {
+      max-width: none;
+      padding: 0;
+    }
+
+    .stories-main {
+      padding-bottom: 1.5rem;
+    }
+  }
+</style>

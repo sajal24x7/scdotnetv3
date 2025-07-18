@@ -1,0 +1,204 @@
+{
+  "main": {
+    "id": "eabc7866825bc180",
+    "type": "split",
+    "children": [
+      {
+        "id": "f83d61215d8b8c72",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fb581853111c1677",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d4b82678b5d0f39e",
+    "type": "split",
+    "children": [
+      {
+        "id": "b3a5b1f6776361f6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "716cd86a29cef966",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabeticalReverse",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "File explorer"
+            }
+          },
+          {
+            "id": "0226b615fe00009d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "523ddcf2cd0c28cf",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f55f7181fb3b5765",
+    "type": "split",
+    "children": [
+      {
+        "id": "06238c493e329fa0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1613e6f9743c8fba",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "2025/202504250307 Tribes.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 202504250307 Tribes"
+            }
+          },
+          {
+            "id": "8502ee21179a83f7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "2025/202504250307 Tribes.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 202504250307 Tribes"
+            }
+          },
+          {
+            "id": "33a1012ebb8ed15c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7d92d54b24bdee1c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2025/202504250307 Tribes.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 202504250307 Tribes"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "fb581853111c1677",
+  "lastOpenFiles": [
+    "2025/202507181024 Zero sum thinking answers America’s response to Deepseek.md",
+    "2025/202507181254 Seth Godin on tasks and projects.md",
+    "2025/202507181254 Seth Godin on tasks and projects.txt",
+    "2025/202504051958 Elections in Finland 2.md",
+    "2025/202504030342 Temu as a form of soft power 2.md",
+    "2025/202501010342 Hard works trumps talent every time 2.md",
+    "2025/202507122238 NL62 - A short trip to Porkkalanniemi 2.md",
+    "2025/202502152309 A year of mornings 2.md",
+    "2025/202504071953 I voted for the first time in Finland 2.md",
+    "2025/202507161526 Mixed format books.md",
+    "2025/202507161111 How to save markdown documents using Apple shortcuts.md",
+    "2025/202507152311.md",
+    "2025/202507151800 Hugh Howey’s routine.md",
+    "2025/202507150642 Google’s curated AI notebooks.md",
+    "2025/202507111116 Wells, Martha - Rogue Protocol.md",
+    "2025/202507111116 Wells, Martha - Rogue Protocol.txt",
+    "2025/202507152108 Cursor coded this website for me. I was not happy..md",
+    "2025/202507140815 Writing when I need to.md",
+    "2025/202507091431 The goal with yoga.md",
+    "2025/202507081810 Wells, Martha - Artificial Condition.md",
+    "2025/202507081810 Wells, Martha - Artificial Condition.txt",
+    "2025/202507122238 NL62 - A short trip to Porkkalanniemi.md",
+    "2025/202507122238 NL62 - A short trip to Porkkalanniemi.txt",
+    "2025/202507111120 About AI browsers.md",
+    "2025/202507110704 Average age of cars in Finland is 14 years.md",
+    "2025/202507051859 NL61 - NYC IV.md",
+    "2025/202507050811.md",
+    "2025/202507020958 Homes can’t be considered both an investment and affordable enough for everyone to own.md",
+    "2025/202507011326 Tolls are a way to pay for content in the AI era on the web.txt",
+    "2025/202506282147 NL60.md",
+    "2025/202506241124 Using AI right now.md",
+    "2025/202507051859 NL61 - NYC IV.txt",
+    "2025/202507050811.txt",
+    "2025/202507011326 Tolls are a way to pay for content in the AI era on the web 2.txt"
+  ]
+}
