@@ -1,0 +1,22 @@
+---
+import Card from './Card.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  url: string;
+  pubDate: Date;
+  image?: string;
+}
+
+const { title, description, url, pubDate, image } = Astro.props;
+---
+
+<Card 
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="blog"
+  image={image}
+  link={url}
+/> 
