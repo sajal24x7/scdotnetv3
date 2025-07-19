@@ -1,0 +1,12 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rectangular border for favicon -->
+  <rect x="0" y="0" width="64" height="64" fill="#333333" />
+  
+  <!-- "SC" initials in a modern, clean font with light color for contrast -->
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-family="'Arial', sans-serif" font-size="32" fill="#F0F0F0">
+    SC
+  </text>
+  
+  <!-- Subtle border for definition in favicon -->
+  <rect x="1" y="1" width="62" height="62" stroke="#666666" stroke-width="2" />
+</svg> 
