@@ -1,6 +1,7 @@
 ---
-title: "NL29 - A head full of dreams"
-slug: "nl29-a-head-full-of-dreams"
+title: "A head full of dreams"
+edition: 29
+slug: "a-head-full-of-dreams"
 description: "Writing every day + AI + Metaverse"
 pubDate: 2024-10-13T03:18:03
 updatedDate: 2024-10-13T03:18:03

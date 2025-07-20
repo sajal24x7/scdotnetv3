@@ -1,6 +1,7 @@
 ---
-title: "NL24 - Certified and it feels so good"
-slug: "nl24-certified-and-it-feels-so-good"
+title: "Certified and it feels so good"
+edition: 24
+slug: "certified-and-it-feels-so-good"
 description: "Azure goals + Apple's DMA compliance"
 pubDate: 2024-09-08T18:53:50
 updatedDate: 2024-09-16T17:59:27

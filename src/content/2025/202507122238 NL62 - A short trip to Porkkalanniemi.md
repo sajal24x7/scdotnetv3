@@ -1,6 +1,7 @@
 ---
-title: "NL62 - A short trip to Porkkalanniemi"
-slug: "nl62-a-short-trip-to-porkkalanniemi"
+title: "A short trip to Porkkalanniemi"
+edition: 62
+slug: "a-short-trip-to-porkkalanniemi"
 pubDate: 2025-07-13T06:30:05+03:00
 updatedDate: 2025-07-13T06:30:05+03:00
 category: nordletter
@@ -118,6 +119,6 @@ This would be a welcome addition.
 
 ---
 
-If you enjoyed reading this, and know someone else who might, please consider forwarding this to them. It would help this grow and make me happy. 😄
+If you enjoyed reading this, and know someone else who might, please consider forwarding this to them. It would help this grow and make me happy. ��
 
 Until next week.

@@ -1,6 +1,7 @@
 ---
-title: "NL48 - Writing meet-ups"
-slug: "nl48-writing-meet-ups"
+title: "Writing meet-ups"
+edition: 48
+slug: "writing-meet-ups"
 description: "Shutup and write + 2 opposite views on where the society is going + save your attention"
 pubDate: 2025-02-23T03:30:45
 updatedDate: 2025-02-23T03:30:44

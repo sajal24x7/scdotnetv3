@@ -1,6 +1,7 @@
 ---
-title: "NL36 - Helsinki Christmas Market"
-slug: "nl36-helsinki-christmas-market"
+title: "Helsinki Christmas Market"
+edition: 36
+slug: "helsinki-christmas-market"
 description: "Two fun videos + two business concepts + something about rats"
 pubDate: 2024-12-01T03:42:56
 updatedDate: 2024-12-01T03:42:56

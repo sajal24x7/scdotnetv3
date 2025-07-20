@@ -1,6 +1,7 @@
 ---
-title: "NL26 - Spectacular Solar Punk"
-slug: "nl26-spectacular-solar-punk"
+title: "Spectacular Solar Punk"
+edition: 26
+slug: "spectacular-solar-punk"
 description: "iPhone reviews + reading becky chambers"
 pubDate: 2024-09-22T03:00:34
 updatedDate: 2024-09-22T03:00:33

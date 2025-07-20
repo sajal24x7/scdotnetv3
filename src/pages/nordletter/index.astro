@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import NordletterGrid from '../../components/NordletterGrid.astro';
-import { getAllPosts, transformPost } from '../../utils/content';
+import { getAllPosts, transformPost, cleanNordletterTitle, getEditionDisplay } from '../../utils/content';
 
 // Get all posts and filter for nordletter
 const allPosts = await getAllPosts();
@@ -9,8 +9,18 @@ const nordletterPosts = allPosts
   .filter(post => post.data.category === 'nordletter')
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-// Transform posts for the NordletterGrid component
-const transformedPosts = nordletterPosts.map(transformPost);
+// Transform posts for the NordletterGrid component and add edition information
+const transformedPosts = nordletterPosts.map(post => {
+  const transformed = transformPost(post);
+  return {
+    ...transformed,
+    data: {
+      ...transformed.data,
+      title: cleanNordletterTitle(transformed.data.title),
+      editionDisplay: getEditionDisplay(transformed.data.edition, post.data.pubDate, post.data.title, post.slug)
+    }
+  };
+});
 ---
 
 <Layout 

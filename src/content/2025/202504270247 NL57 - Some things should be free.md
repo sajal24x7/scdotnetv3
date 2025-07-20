@@ -1,6 +1,7 @@
 ---
-title: "NL57 - Some things should be free"
-slug: "nl57-some-things-should-be-free"
+title: "Some things should be free"
+edition: 57
+slug: "some-things-should-be-free"
 pubDate: 2025-04-27T02:47:41
 updatedDate: 2025-04-27T02:47:41
 category: nordletter

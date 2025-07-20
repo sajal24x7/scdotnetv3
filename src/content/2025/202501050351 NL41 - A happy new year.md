@@ -1,6 +1,7 @@
 ---
-title: "NL41 - A happy new year"
-slug: "nl41-a-happy-new-year"
+title: "A happy new year"
+edition: 41
+slug: "a-happy-new-year"
 description: "Most things are still the same + AI roundups + good things that happened in 2024"
 pubDate: 2025-01-05T03:51:06
 updatedDate: 2025-01-05T03:51:05

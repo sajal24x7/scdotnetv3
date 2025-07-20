@@ -1,6 +1,7 @@
 ---
-title: I miss walking
-slug: i-miss-walking
+title: "I miss walking"
+edition: 2
+slug: "i-miss-walking"
 description: "Nord Letter #2 - Walking"
 pubDate: 2024-02-03T18:35:15
 updatedDate: 2024-07-07T20:09:41

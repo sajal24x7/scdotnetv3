@@ -1,6 +1,7 @@
 ---
-title: Federating again
-slug: federating-again
+title: "Federating again"
+edition: 5
+slug: "federating-again"
 description: "Nord Letter #5 - Ghost Activitypub + Information Flow"
 pubDate: 2024-04-28T14:47:09
 updatedDate: 2024-07-07T20:07:15

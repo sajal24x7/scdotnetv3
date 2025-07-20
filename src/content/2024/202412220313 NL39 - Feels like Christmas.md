@@ -1,6 +1,7 @@
 ---
-title: "NL39 - Feels like Christmas"
-slug: "nl39-feels-like-christmas"
+title: "Feels like Christmas"
+edition: 39
+slug: "feels-like-christmas"
 description: "Delhi Rasoi + decaying internet + bad Spotify + solar probe"
 pubDate: 2024-12-22T03:13:22
 updatedDate: 2024-12-22T03:13:21

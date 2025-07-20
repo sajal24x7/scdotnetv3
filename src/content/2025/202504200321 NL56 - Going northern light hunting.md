@@ -1,6 +1,7 @@
 ---
-title: "NL56 - Going northern light hunting"
-slug: "nl56-going-northern-light-hunting"
+title: "Going northern light hunting"
+edition: 56
+slug: "going-northern-light-hunting"
 description: "And a bunch of AI use cases + Zuck shot himself in the foot"
 pubDate: 2025-04-20T03:21:32
 updatedDate: 2025-04-20T03:21:31

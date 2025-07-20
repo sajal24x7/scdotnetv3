@@ -1,6 +1,7 @@
 ---
-title: "NL25 - iPhones and Typography"
-slug: "nl25-iphones-and-typography"
+title: "iPhones and Typography"
+edition: 25
+slug: "iphones-and-typography"
 description: "iPhone 16 launch event + learn about typefaces and fonts"
 pubDate: 2024-09-15T11:35:42
 updatedDate: 2024-09-15T11:35:42

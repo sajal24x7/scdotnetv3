@@ -1,6 +1,7 @@
 ---
-title: "NL49 - how does a city form"
-slug: "nl49-how-does-a-city-form"
+title: "how does a city form"
+edition: 49
+slug: "how-does-a-city-form"
 description: "Kindle bad + AI poet + chip designer + good bye Finland"
 pubDate: 2025-03-02T03:25:00
 updatedDate: 2025-03-02T05:55:17

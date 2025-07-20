@@ -1,6 +1,7 @@
 ---
-title: "NL46 - Preparedness Day"
-slug: "nl46-preparedness-day"
+title: "Preparedness Day"
+edition: 46
+slug: "preparedness-day"
 description: "Fighting flu + smaller AI models + timeline apps"
 pubDate: 2025-02-09T03:58:10
 updatedDate: 2025-02-09T03:58:09

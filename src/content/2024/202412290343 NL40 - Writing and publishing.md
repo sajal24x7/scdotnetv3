@@ -1,6 +1,7 @@
 ---
-title: "NL40 - Writing and publishing"
-slug: "nl40-writing-and-publishing"
+title: "Writing and publishing"
+edition: 40
+slug: "writing-and-publishing"
 description: "Playing TT at Vox + Car makers merging + paper passports might die"
 pubDate: 2024-12-29T03:43:05
 updatedDate: 2024-12-29T03:43:05

@@ -1,6 +1,7 @@
 ---
-title: "NL37 - Before and after"
-slug: "nl37-before-and-after"
+title: "Before and after"
+edition: 37
+slug: "before-and-after"
 description: "Sinitarra + who owns your words + Intel drama"
 pubDate: 2024-12-08T03:12:16
 updatedDate: 2024-12-08T03:12:16

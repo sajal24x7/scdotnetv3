@@ -35,9 +35,9 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseI
                 </div>
               )}
               <div class="nordletter-content">
-                <time class="nordletter-date" datetime={post.data.pubDate.toISOString()}>
-                  {formatDateWithoutYear(post.data.pubDate)}
-                </time>
+                <div class="nordletter-edition">
+                  {post.data.editionDisplay || `${post.data.edition || 'N/A'} - ${formatDateWithoutYear(post.data.pubDate)}`}
+                </div>
                 <h3 class="nordletter-title">{post.data.title}</h3>
               </div>
             </a>
@@ -147,6 +147,13 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseI
     gap: 0.5rem;
   }
 
+  .nordletter-edition {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+  }
+
   .nordletter-title {
     font-size: 1rem;
     font-weight: 600;
@@ -181,6 +188,10 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseI
   }
 
   :global(.dark) .nordletter-date {
+    color: #9ca3af;
+  }
+
+  :global(.dark) .nordletter-edition {
     color: #9ca3af;
   }
 

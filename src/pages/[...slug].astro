@@ -12,10 +12,10 @@ export async function getStaticPaths() {
 
   // Get all posts from all collections
   const allPosts = await Promise.all(years.map(year => getCollection(year as any)));
-  const posts = allPosts.flat().filter(entry => entry.data && entry.data.title);
+  const posts = allPosts.flat().filter(entry => (entry.data as any) && (entry.data as any).title);
 
   return posts.map((entry) => {
-    const category = 'category' in entry.data && entry.data.category ? entry.data.category : 'notes';
+    const category = 'category' in (entry.data as any) && (entry.data as any).category ? (entry.data as any).category : 'notes';
     return {
       params: { slug: `${category}/${entry.slug}` },
       props: { entry },
@@ -24,12 +24,12 @@ export async function getStaticPaths() {
 }
 
 const [category, slug] = Astro.params.slug.split('/');
-const { entry } = Astro.props;
+const { entry } = Astro.props as { entry: CollectionEntry<'2024' | '2025'> };
 const { Content } = await entry.render();
 
-const formattedDate = entry.data?.pubDate ? formatDateWithTime(entry.data.pubDate) : '';
-const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
-  ? formatDateWithTime(entry.data.updatedDate)
+const formattedDate = (entry.data as any)?.pubDate ? formatDateWithTime((entry.data as any).pubDate) : '';
+const updatedDate = 'updatedDate' in (entry.data as any) && (entry.data as any).updatedDate
+  ? formatDateWithTime((entry.data as any).updatedDate)
   : null;
 
 // Function to map category names to their correct URL paths
@@ -51,8 +51,8 @@ function getCategoryUrl(category: string): string {
 ---
 
 <Layout 
-  title={`${entry.data?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
-  description={entry.data?.description} 
+  title={`${(entry.data as any)?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
+  description={(entry.data as any)?.description} 
   currentPage={`/${category}/${entry.slug}/`}
 >
   <article class="prose dark:prose-dark mx-auto">
@@ -63,43 +63,62 @@ function getCategoryUrl(category: string): string {
         </a>
       </div>
       
-      {'image' in entry.data && entry.data.image && (
+      {'image' in (entry.data as any) && (entry.data as any).image && (
         <div class="mb-6">
           <img 
-            src={entry.data.image} 
-            alt={entry.data?.title ?? ''} 
+            src={(entry.data as any).image} 
+            alt={(entry.data as any)?.title ?? ''} 
             class="rounded-lg w-full object-cover max-h-96"
             loading="lazy"
           />
         </div>
       )}
       
-      <h1 class="text-3xl md:text-4xl font-bold mb-2">{entry.data?.title ?? ''}</h1>
-      
-      <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
-        {updatedDate ? `Last updated: ${updatedDate}` : `Published: ${formattedDate}`}
-      </p>
-      
-      {entry.data?.description && (
-        <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
-          {entry.data.description}
-        </p>
-      )}
-      
-      {'tags' in entry.data && Array.isArray(entry.data.tags) && entry.data.tags.length > 0 && (
-        <div class="mb-8">
-          <div class="flex flex-wrap gap-2">
-            {entry.data.tags.map((tag: string) => (
-              <a 
-                href={`/tags/${tag}/`} 
-                class="text-xs bg-borderColor dark:bg-borderColorDark px-2 py-1 rounded-md hover:bg-accent hover:text-white transition-colors"
-              >
-                #{tag}
-              </a>
-            ))}
+      <div class="text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">{(entry.data as any)?.title ?? ''}</h1>
+        
+        {category === 'nordletter' && 'edition' in (entry.data as any) && (entry.data as any).edition && (
+          <div class="flex justify-center items-center gap-4 mb-4">
+            <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                Letter: {(entry.data as any).edition}
+              </span>
+            </div>
+            <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                Posted on {updatedDate ? updatedDate : formattedDate}
+              </span>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+        
+        {category !== 'nordletter' && (
+          <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
+            {updatedDate ? `Last updated: ${updatedDate}` : `Published: ${formattedDate}`}
+          </p>
+        )}
+        
+        {(entry.data as any)?.description && (
+          <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
+            {(entry.data as any).description}
+          </p>
+        )}
+        
+        {'tags' in (entry.data as any) && Array.isArray((entry.data as any).tags) && (entry.data as any).tags.length > 0 && (
+          <div class="mb-8 flex justify-center">
+            <div class="flex flex-wrap gap-2 justify-center">
+              {(entry.data as any).tags.map((tag: string) => (
+                <a 
+                  href={`/tags/${tag}/`} 
+                  class="text-xs bg-borderColor dark:bg-borderColorDark px-2 py-1 rounded-md hover:bg-accent hover:text-white transition-colors"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
     
     <div>

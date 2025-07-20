@@ -1,6 +1,7 @@
 ---
-title: "NL38 - The families we make"
-slug: "nl38-the-families-we-make"
+title: "The families we make"
+edition: 38
+slug: "the-families-we-make"
 description: "2 hopeful things + electric cars might last longer + the age of average + one more thing about AI"
 pubDate: 2024-12-15T03:56:45
 updatedDate: 2024-12-15T19:22:39

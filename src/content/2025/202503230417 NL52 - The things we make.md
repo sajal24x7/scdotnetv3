@@ -1,6 +1,7 @@
 ---
-title: "NL52 - The things we make"
-slug: "nl52-the-things-we-make"
+title: "The things we make"
+edition: 52
+slug: "the-things-we-make"
 description: "Apple rumours + Learn some AI python"
 pubDate: 2025-03-23T04:17:30
 updatedDate: 2025-03-23T04:17:29

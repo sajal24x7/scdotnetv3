@@ -1,6 +1,7 @@
 ---
-title: A day trip to Tampere
-slug: a-day-trip-to-tampere
+title: "A day trip to Tampere"
+edition: 19
+slug: "a-day-trip-to-tampere"
 description: "Nord Letter #19 - Tampere + foundations for a good life"
 pubDate: 2024-08-05T21:08:14
 updatedDate: 2024-08-20T15:57:05

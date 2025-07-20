@@ -19,6 +19,7 @@ const postsCollection = defineCollection({
     category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'now', 'til']),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
+    edition: z.number().optional(),
   }),
 });
 
@@ -29,6 +30,7 @@ const nordletterCollection = defineCollection({
     title: z.string(),
     pubDate: dateSchema,
     description: z.string().optional(),
+    edition: z.number().optional(),
   }),
 });
 

@@ -1,6 +1,7 @@
 ---
-title: Cherries all around
-slug: cherries-all-around
+title: "Cherries all around"
+edition: 8
+slug: "cherries-all-around"
 description: "Nord Letter #8 - Folklore'24 + Roihuvuori Cherry Park + AI"
 pubDate: 2024-05-19T20:59:00
 updatedDate: 2024-07-07T20:02:40

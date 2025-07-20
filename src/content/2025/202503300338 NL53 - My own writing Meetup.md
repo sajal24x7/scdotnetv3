@@ -1,6 +1,7 @@
 ---
-title: "NL53 - My own writing Meetup"
-slug: "nl53-my-own-writing-meetup"
+title: "My own writing Meetup"
+edition: 53
+slug: "my-own-writing-meetup"
 description: "Happening on 6th April + smart homes suck as do smart TVs"
 pubDate: 2025-03-30T03:38:56
 updatedDate: 2025-03-30T03:38:55

@@ -1,6 +1,7 @@
 ---
-title: "NL33 - The human condition"
-slug: "nl33-the-human-condition"
+title: "The human condition"
+edition: 33
+slug: "the-human-condition"
 description: "Curing cancer + e-Vitara + President of the USA"
 pubDate: 2024-11-10T18:41:01
 updatedDate: 2024-11-10T18:41:01

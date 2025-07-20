@@ -1,6 +1,7 @@
 ---
-title: "NL31 - Going back home"
-slug: "nl31-going-back-home"
+title: "Going back home"
+edition: 31
+slug: "going-back-home"
 description: "Trip to India"
 pubDate: 2024-10-27T09:04:21
 updatedDate: 2024-10-27T09:04:21

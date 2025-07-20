@@ -1,6 +1,7 @@
 ---
-title: "NL50 - what matters to you"
-slug: "nl50-what-matters-to-you"
+title: "what matters to you"
+edition: 50
+slug: "what-matters-to-you"
 description: "A year of mornings available everywhere now + EV for the masses + new Apple stuff"
 pubDate: 2025-03-09T03:49:00
 updatedDate: 2025-03-09T03:49:00

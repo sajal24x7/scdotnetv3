@@ -1,6 +1,7 @@
 ---
-title: "NL28 - Where are we going"
-slug: "nl28-where-are-we-going"
+title: "Where are we going"
+edition: 28
+slug: "where-are-we-going"
 description: "More iPhone (camera) reviews + AI future"
 pubDate: 2024-10-06T03:47:27
 updatedDate: 2024-10-06T03:47:27

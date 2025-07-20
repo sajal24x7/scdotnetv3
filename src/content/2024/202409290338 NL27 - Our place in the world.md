@@ -1,6 +1,7 @@
 ---
-title: "NL27 - Our place in the world"
-slug: "nl27-our-place-in-the-world"
+title: "Our place in the world"
+edition: 27
+slug: "our-place-in-the-world"
 description: "Linkin Park are back + what is our place in this world"
 pubDate: 2024-09-29T03:38:40
 updatedDate: 2024-09-29T03:38:39
