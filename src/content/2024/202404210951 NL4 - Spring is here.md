@@ -1,12 +1,13 @@
 ---
-title: "Spring is here"
-slug: "spring-is-here"
+title: Spring is here
+slug: spring-is-here
 description: "Nord Letter #4 - Communal spaces @Iso Omena library"
 pubDate: 2024-04-21T09:51:43
 updatedDate: 2024-07-07T20:08:37
-category: blog
-tags: ["Nord Letter", "library"]
-image: "https://storage.sajalchoudhary.net/images/2024/04/IMG_2028-1-1.jpeg"
+category: nordletter
+tags:
+  - library
+image: https://storage.sajalchoudhary.net/images/2024/04/IMG_2028-1-1.jpeg
 ---
 Hello from the [Iso Omena Library](https://helmet.finna.fi/OrganisationInfo/Home#84834)\! It's a beautiful library with plenty of books and places to sit. It inspires, this place.
 

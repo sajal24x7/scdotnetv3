@@ -1,12 +1,15 @@
 ---
-title: "Life happens + iPads galore"
-slug: "life-happens-ipads-galore"
+title: Life happens + iPads galore
+slug: life-happens-ipads-galore
 description: "Nord Letter #7 - Meeting people + Food + iPads"
 pubDate: 2024-05-12T17:34:26
 updatedDate: 2024-07-07T20:04:36
-category: blog
-tags: ["Nord Letter", "helsinki"]
-image: "https://storage.sajalchoudhary.net/images/2024/05/IMG_2731.jpeg"
+category: nordletter
+tags:
+  - helsinki
+  - ipad
+  - apple
+image: https://storage.sajalchoudhary.net/images/2024/05/IMG_2731.jpeg
 ---
 Hello from Helsinki\! This is Nord Letter \#7. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 
