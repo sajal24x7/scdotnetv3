@@ -29,8 +29,13 @@ const transformedPosts = ephemera.map(post => ({
   title="Ephemera" 
   description="Blog posts, photos, and micro updates" 
   currentPage="/ephemera/"
+  pageWrapper={{
+    maxWidth: '7xl',
+    padding: 'none',
+    centered: true,
+    className: 'px-2'
+  }}
 >
-  <div class="ephemera-container">
     <PageHeader 
       title="Ephemera"
       description="Blog posts, photos, and micro updates from my daily life."
@@ -54,7 +59,6 @@ const transformedPosts = ephemera.map(post => ({
     <main class="ephemera-main">
       <ContentGrid posts={transformedPosts} />
     </main>
-  </div>
 </Layout>
 
 <style>

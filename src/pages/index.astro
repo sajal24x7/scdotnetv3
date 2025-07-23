@@ -58,8 +58,16 @@ const sections = [
 ];
 ---
 
-<Layout title="Sajal Choudhary" currentPage="/">
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<Layout 
+  title="Sajal Choudhary" 
+  currentPage="/"
+  pageWrapper={{
+    maxWidth: '4xl',
+    padding: 'md',
+    centered: true,
+    className: 'sm:px-6 lg:px-8'
+  }}
+>
     <!-- Profile Hero Section -->
     <ProfileHero 
       name="Sajal Choudhary"
@@ -156,5 +164,4 @@ const sections = [
         </div>
       </div>
     </div>
-  </section>
 </Layout>

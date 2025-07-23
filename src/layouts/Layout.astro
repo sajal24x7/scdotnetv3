@@ -1,15 +1,22 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import PageWrapper from '../components/layout/PageWrapper.astro';
 import '../styles/global.css';
 
 interface Props {
 	title: string;
 	description?: string;
 	currentPage: string;
+	pageWrapper?: {
+		maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
+		padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+		centered?: boolean;
+		className?: string;
+	};
 }
 
-const { title, description, currentPage } = Astro.props;
+const { title, description, currentPage, pageWrapper = {} } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -61,8 +68,15 @@ const { title, description, currentPage } = Astro.props;
 	<body class="min-h-screen text-textPrimary dark:text-textPrimaryDark transition-all duration-500">
 		<div class="flex flex-col min-h-screen">
 			<Header currentPage={currentPage} />
-			<main class="container mx-auto px-4 py-8 flex-grow max-w-3xl relative z-10">
-				<slot />
+			<main class="flex-grow relative z-10">
+				<PageWrapper 
+					maxWidth={pageWrapper.maxWidth || '3xl'}
+					padding={pageWrapper.padding || 'md'}
+					centered={pageWrapper.centered !== false}
+					className={pageWrapper.className || ''}
+				>
+					<slot />
+				</PageWrapper>
 			</main>
 			<Footer />
 		</div>
