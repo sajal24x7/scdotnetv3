@@ -16,66 +16,69 @@ const books = [
 ];
 ---
 
-<Layout title="Books - Sajal Choudhary" description="Books by Sajal Choudhary" currentPage="/books/">
-  <div class="max-w-3xl mx-auto">
-    <header class="mb-12">
-      <h1 class="text-4xl font-bold mb-6">Books by Sajal Choudhary</h1>
-      <p class="text-textSecondary dark:text-textSecondaryDark leading-relaxed">
-        Essays and other writing can be found throughout this site: 
-        <a href="/notes/" class="text-accent hover:underline">notes</a>, 
-        <a href="/blog/" class="text-accent hover:underline">blog posts</a>, 
-        <a href="/stories/" class="text-accent hover:underline">stories</a>, and 
-        <a href="/poems/" class="text-accent hover:underline">poems</a>.
-      </p>
-    </header>
+<Layout title="Books - Sajal Choudhary" description="Books by Sajal Choudhary" currentPage="/books/"
+  pageWrapper={{
+    maxWidth: '3xl',
+    padding: 'md',
+    centered: true
+  }}
+>
+  <header class="mb-12">
+    <h1 class="text-4xl font-bold mb-6">Books by Sajal Choudhary</h1>
+    <p class="text-textSecondary dark:text-textSecondaryDark leading-relaxed">
+      Essays and other writing can be found throughout this site: 
+      <a href="/notes/" class="text-accent hover:underline">notes</a>, 
+      <a href="/blog/" class="text-accent hover:underline">blog posts</a>, 
+      <a href="/stories/" class="text-accent hover:underline">stories</a>, and 
+      <a href="/poems/" class="text-accent hover:underline">poems</a>.
+    </p>
+  </header>
 
-    <section>
-      <div class="space-y-8">
-        {books.map((book) => (
-          <div class="border-b border-gray-200 dark:border-gray-700 pb-8 last:border-b-0">
-            <div class="flex flex-col md:flex-row md:items-start gap-6">
-              <!-- Year -->
+  <section>
+    <div class="space-y-8">
+      {books.map((book) => (
+        <div class="border-b border-gray-200 dark:border-gray-700 pb-8 last:border-b-0">
+          <div class="flex flex-col md:flex-row md:items-start gap-6">
+            {/* Year */}
+            <div class="flex-shrink-0">
+              <span class="text-2xl font-bold text-textSecondary dark:text-textSecondaryDark">
+                {book.year}
+              </span>
+            </div>
+
+            {/* Book Cover (if available) */}
+            {book.coverImage && (
               <div class="flex-shrink-0">
-                <span class="text-2xl font-bold text-textSecondary dark:text-textSecondaryDark">
-                  {book.year}
-                </span>
+                <img 
+                  src={book.coverImage} 
+                  alt={`${book.title} cover`}
+                  class="w-24 h-auto rounded-lg shadow-md border border-gray-200 dark:border-gray-600"
+                />
               </div>
+            )}
 
-              <!-- Book Cover (if available) -->
-              {book.coverImage && (
-                <div class="flex-shrink-0">
-                  <img 
-                    src={book.coverImage} 
-                    alt={`${book.title} cover`}
-                    class="w-24 h-auto rounded-lg shadow-md border border-gray-200 dark:border-gray-600"
-                  />
-                </div>
-              )}
-
-              <!-- Book Details -->
-              <div class="flex-1">
-                <h2 class="text-xl font-bold mb-2">
-                  {book.available ? (
-                    <a href={book.url} class="text-accent hover:underline">
-                      <em>{book.title}</em>: {book.subtitle}
-                    </a>
-                  ) : (
-                    <span><em>{book.title}</em>: {book.subtitle}</span>
-                  )}
-                </h2>
-                
-                {book.description && (
-                  <p class="text-textSecondary dark:text-textSecondaryDark leading-relaxed mb-4">
-                    {book.description}
-                  </p>
+            {/* Book Details */}
+            <div class="flex-1">
+              <h2 class="text-xl font-bold mb-2">
+                {book.available ? (
+                  <a href={book.url} class="text-accent hover:underline">
+                    <em>{book.title}</em>: {book.subtitle}
+                  </a>
+                ) : (
+                  <span><em>{book.title}</em>: {book.subtitle}</span>
                 )}
-              </div>
+              </h2>
+              
+              {book.description && (
+                <p class="text-textSecondary dark:text-textSecondaryDark leading-relaxed mb-4">
+                  {book.description}
+                </p>
+              )}
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
+    </div>
 
-    </section>
-
-  </div>
+  </section>
 </Layout> 
