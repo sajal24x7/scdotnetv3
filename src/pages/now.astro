@@ -38,8 +38,13 @@ const renderedPosts = sortedNowPosts.map(post => ({
   title="Now - Sajal Choudhary" 
   description="What I'm currently working on and thinking about"
   currentPage="/now/"
+  pageWrapper={{
+    maxWidth: '7xl',
+    padding: 'none',
+    centered: true,
+    className: 'px-6'
+  }}
 >
-  <div class="max-w-7xl mx-auto">
     <header class="mb-12 px-6">
       <div class="flex flex-col">
         <h1 class="text-4xl font-bold mb-4">Now</h1>
@@ -77,7 +82,6 @@ const renderedPosts = sortedNowPosts.map(post => ({
         ))}
       </div>
     </div>
-  </div>
 </Layout>
 
 <style>

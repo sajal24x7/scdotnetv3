@@ -1,0 +1,41 @@
+---
+interface Props {
+  columns?: number | { sm?: number; md?: number; lg?: number; xl?: number };
+  gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+  className?: string;
+}
+
+const { 
+  columns = 1, 
+  gap = 'md', 
+  className = '' 
+} = Astro.props;
+
+const gapClasses = {
+  none: 'gap-0',
+  sm: 'gap-2',
+  md: 'gap-4',
+  lg: 'gap-6',
+  xl: 'gap-8'
+};
+
+// Handle responsive columns
+let gridClasses = 'grid';
+if (typeof columns === 'number') {
+  gridClasses += ` grid-cols-1 md:grid-cols-${columns}`;
+} else {
+  // Handle responsive object
+  const { sm = 1, md = 2, lg = 3, xl = 4 } = columns;
+  gridClasses += ` grid-cols-1`;
+  if (sm > 1) gridClasses += ` sm:grid-cols-${sm}`;
+  if (md > 1) gridClasses += ` md:grid-cols-${md}`;
+  if (lg > 1) gridClasses += ` lg:grid-cols-${lg}`;
+  if (xl > 1) gridClasses += ` xl:grid-cols-${xl}`;
+}
+
+const containerClasses = `${gridClasses} ${gapClasses[gap]} ${className}`.trim();
+---
+
+<div class={containerClasses}>
+  <slot />
+</div> 

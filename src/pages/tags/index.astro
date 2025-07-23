@@ -57,53 +57,57 @@ categories.forEach(category => {
   title="Tags - Sajal Choudhary"
   description="All tags used in the content"
   currentPage="/tags/"
+  pageWrapper={{
+    maxWidth: '2xl',
+    padding: 'md',
+    centered: true,
+    className: 'px-4'
+  }}
 >
-  <div class="max-w-2xl mx-auto px-4">
-    <header class="mb-16">
-      <h1 class="text-4xl font-bold mb-4">Tags</h1>
-      <p class="text-textSecondary dark:text-textSecondaryDark">
-        A collection of all tags used across my blog, photos, and micro updates.
-      </p>
-    </header>
+  <header class="mb-16">
+    <h1 class="text-4xl font-bold mb-4">Tags</h1>
+    <p class="text-textSecondary dark:text-textSecondaryDark">
+      A collection of all tags used across my blog, photos, and micro updates.
+    </p>
+  </header>
 
-    <section class="space-y-12">
-      {sortedTags.length === 0 ? (
-        <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
-          <p class="text-textSecondary dark:text-textSecondaryDark">
-            No tags found.
-          </p>
-        </div>
-      ) : (
-        <>
-          {/* Top Twenty Tags */}
-          {topTwentyTags.length > 0 && (
-            <div>
-              <h2 class="text-2xl font-bold mb-8">Top Twenty Tags</h2>
-              <div class="grid grid-cols-2 gap-4">
-                {topTwentyTags.map(([tag, count]) => (
-                  <a href={`/tags/${tag}/`} class="text-sm font-medium hover:text-accent transition-colors">
-                    {tag.toUpperCase()} ({count})
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* All Tags */}
-          <div class="mt-48">
-            <h2 class="text-2xl font-bold mb-8">All Tags</h2>
+  <section class="space-y-12">
+    {sortedTags.length === 0 ? (
+      <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
+        <p class="text-textSecondary dark:text-textSecondaryDark">
+          No tags found.
+        </p>
+      </div>
+    ) : (
+      <>
+        {/* Top Twenty Tags */}
+        {topTwentyTags.length > 0 && (
+          <div>
+            <h2 class="text-2xl font-bold mb-8">Top Twenty Tags</h2>
             <div class="grid grid-cols-2 gap-4">
-              {allTags.map(([tag, count]) => (
+              {topTwentyTags.map(([tag, count]) => (
                 <a href={`/tags/${tag}/`} class="text-sm font-medium hover:text-accent transition-colors">
                   {tag.toUpperCase()} ({count})
                 </a>
               ))}
             </div>
           </div>
-        </>
-      )}
-    </section>
-  </div>
+        )}
+
+        {/* All Tags */}
+        <div class="mt-48">
+          <h2 class="text-2xl font-bold mb-8">All Tags</h2>
+          <div class="grid grid-cols-2 gap-4">
+            {allTags.map(([tag, count]) => (
+              <a href={`/tags/${tag}/`} class="text-sm font-medium hover:text-accent transition-colors">
+                {tag.toUpperCase()} ({count})
+              </a>
+            ))}
+          </div>
+        </div>
+      </>
+    )}
+  </section>
 
   <script define:vars={{ tagsByCategory: Object.fromEntries(tagsByCategory) }}>
     // Handle category filtering based on URL parameters
@@ -130,7 +134,7 @@ categories.forEach(category => {
       backLink.className = 'mb-4';
       backLink.innerHTML = `
         <a href="/tags/" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200">
-          ← View all tags
+           View all tags
         </a>
       `;
       title.parentNode.insertBefore(backLink, title.nextSibling);

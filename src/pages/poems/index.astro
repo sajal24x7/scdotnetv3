@@ -18,8 +18,13 @@ const transformedPosts = poems.map(transformPost);
   title="Poems" 
   description="Poetry and verse" 
   currentPage="/poems/"
+  pageWrapper={{
+    maxWidth: '7xl',
+    padding: 'none',
+    centered: true,
+    className: 'px-2'
+  }}
 >
-  <div class="poems-container">
     <PageHeader 
       title="Poems"
       description="Poetry and verse from my collections."
@@ -43,7 +48,6 @@ const transformedPosts = poems.map(transformPost);
     <main class="poems-main">
       <ContentGrid posts={transformedPosts} />
     </main>
-  </div>
 </Layout>
 
 <style>

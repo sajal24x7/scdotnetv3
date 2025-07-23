@@ -44,7 +44,7 @@ const { title, currentPage } = Astro.props;
     </head>
     <body class="bg-background text-textPrimary transition-colors duration-200 ease-in-out">
         <Header currentPage={currentPage} />
-        <main class="container mx-auto px-4 py-8 max-w-3xl"> {/* Adjust max-width as needed */}
+        <main class="container mx-auto px-4 py-8 max-w-3xl flex-grow"> {/* Adjust max-width as needed */}
             <slot /> {/* Page content will be injected here */}
         </main>
         <Footer />

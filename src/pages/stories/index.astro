@@ -18,8 +18,13 @@ const transformedPosts = stories.map(transformPost);
   title="Stories" 
   description="Short stories and fiction" 
   currentPage="/stories/"
+  pageWrapper={{
+    maxWidth: '7xl',
+    padding: 'none',
+    centered: true,
+    className: 'px-2'
+  }}
 >
-  <div class="stories-container">
     <PageHeader 
       title="Stories"
       description="Short stories and fiction pieces."
@@ -43,7 +48,6 @@ const transformedPosts = stories.map(transformPost);
     <main class="stories-main">
       <ContentGrid posts={transformedPosts} />
     </main>
-  </div>
 </Layout>
 
 <style>

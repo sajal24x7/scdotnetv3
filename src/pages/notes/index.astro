@@ -18,8 +18,13 @@ const transformedPosts = notesPosts.map(transformPost);
   title="Notes" 
   description="Documentation and notes" 
   currentPage="/notes/"
+  pageWrapper={{
+    maxWidth: '7xl',
+    padding: 'none',
+    centered: true,
+    className: 'px-2'
+  }}
 >
-  <div class="notes-container">
     <PageHeader 
       title="Notes"
       description="A collection of documentation, notes, and explorations from my projects and learning."
@@ -43,7 +48,6 @@ const transformedPosts = notesPosts.map(transformPost);
     <main class="notes-main">
       <NotesGrid posts={transformedPosts} />
     </main>
-  </div>
 </Layout>
 
 <style>

@@ -5,6 +5,7 @@ import { formatDateWithTime } from '../utils/dateFormat';
 import type { CollectionEntry } from 'astro:content';
 import { getYearDirectories } from '../utils/content';
 import LinkHoverEffect from '../components/LinkHoverEffect.astro';
+import ProseWrapper from '../components/layout/ProseWrapper.astro';
 
 export async function getStaticPaths() {
   // Get all year directories from content
@@ -12,24 +13,26 @@ export async function getStaticPaths() {
 
   // Get all posts from all collections
   const allPosts = await Promise.all(years.map(year => getCollection(year as any)));
-  const posts = allPosts.flat().filter(entry => (entry.data as any) && (entry.data as any).title);
+  const posts = allPosts.flat().filter(entry => (entry as CollectionEntry<any>).data && (entry as CollectionEntry<any>).data.title);
 
   return posts.map((entry) => {
-    const category = 'category' in (entry.data as any) && (entry.data as any).category ? (entry.data as any).category : 'notes';
+    const e = entry as CollectionEntry<any>;
+    const category = 'category' in e.data && e.data.category ? e.data.category : 'notes';
     return {
-      params: { slug: `${category}/${entry.slug}` },
-      props: { entry },
+      params: { slug: `${category}/${e.slug}` },
+      props: { entry: e },
     };
   });
 }
 
-const [category, slug] = Astro.params.slug.split('/');
-const { entry } = Astro.props as { entry: CollectionEntry<'2024' | '2025'> };
+const slugParam = Astro.params.slug as string;
+const [category, slug] = slugParam.split('/');
+const entry = (Astro.props as { entry: CollectionEntry<any> }).entry;
 const { Content } = await entry.render();
 
-const formattedDate = (entry.data as any)?.pubDate ? formatDateWithTime((entry.data as any).pubDate) : '';
-const updatedDate = 'updatedDate' in (entry.data as any) && (entry.data as any).updatedDate
-  ? formatDateWithTime((entry.data as any).updatedDate)
+const formattedDate = entry.data?.pubDate ? formatDateWithTime(entry.data.pubDate) : '';
+const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
+  ? formatDateWithTime(entry.data.updatedDate)
   : null;
 
 // Function to map category names to their correct URL paths
@@ -51,100 +54,102 @@ function getCategoryUrl(category: string): string {
 ---
 
 <Layout 
-  title={`${(entry.data as any)?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
-  description={(entry.data as any)?.description} 
-  currentPage={`/${category}/${entry.slug}/`}
+  title={`${entry.data?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
+  description={entry.data?.description} 
+  currentPage={`/${category}/${slug}/`}
 >
-  <article class="prose dark:prose-dark mx-auto">
-    <div class="mb-8">
-      <div class="flex items-center gap-2 mb-4">
-        <a href={`/${getCategoryUrl(category)}/`} class="text-sm text-accent no-hover-effect">
-          {category}
-        </a>
-      </div>
-      
-      {'image' in (entry.data as any) && (entry.data as any).image && (
-        <div class="mb-6">
-          <img 
-            src={(entry.data as any).image} 
-            alt={(entry.data as any)?.title ?? ''} 
-            class="rounded-lg w-full object-cover max-h-96"
-            loading="lazy"
-          />
+  <ProseWrapper>
+    <article>
+      <div class="mb-8">
+        <div class="flex items-center gap-2 mb-4">
+          <a href={`/${getCategoryUrl(category)}/`} class="text-sm text-accent no-hover-effect">
+            {category}
+          </a>
         </div>
-      )}
+        
+        {'image' in entry.data && entry.data.image && (
+          <div class="mb-6">
+            <img 
+              src={entry.data.image} 
+              alt={entry.data?.title ?? ''} 
+              class="rounded-lg w-full object-cover max-h-96"
+              loading="lazy"
+            />
+          </div>
+        )}
+        
+        <div class="text-center">
+          <h1 class="text-3xl md:text-4xl font-bold mb-2">{entry.data?.title ?? ''}</h1>
+          
+          {category === 'nordletter' && 'edition' in entry.data && entry.data.edition && (
+            <div class="flex justify-center items-center gap-4 mb-4">
+              <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Letter: {entry.data.edition}
+                </span>
+              </div>
+              <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Posted on {updatedDate ? updatedDate : formattedDate}
+                </span>
+              </div>
+            </div>
+          )}
+          
+          {category !== 'nordletter' && (
+            <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
+              {updatedDate ? `Last updated: ${updatedDate}` : `Published: ${formattedDate}`}
+            </p>
+          )}
+          
+          {entry.data?.description && (
+            <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
+              {entry.data.description}
+            </p>
+          )}
+          
+          {'tags' in entry.data && Array.isArray(entry.data.tags) && entry.data.tags.length > 0 && (
+            <div class="mb-8 flex justify-center">
+              <div class="flex flex-wrap gap-2 justify-center">
+                {entry.data.tags.map((tag: string) => (
+                  <a 
+                    href={`/tags/${tag}/`} 
+                    class="text-xs bg-borderColor dark:bg-borderColorDark px-2 py-1 rounded-md hover:bg-accent hover:text-white transition-colors"
+                  >
+                    {tag}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
       
-      <div class="text-center">
-        <h1 class="text-3xl md:text-4xl font-bold mb-2">{(entry.data as any)?.title ?? ''}</h1>
-        
-        {category === 'nordletter' && 'edition' in (entry.data as any) && (entry.data as any).edition && (
-          <div class="flex justify-center items-center gap-4 mb-4">
-            <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
-              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Letter: {(entry.data as any).edition}
-              </span>
-            </div>
-            <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
-              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Posted on {updatedDate ? updatedDate : formattedDate}
-              </span>
-            </div>
-          </div>
-        )}
-        
-        {category !== 'nordletter' && (
-          <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
-            {updatedDate ? `Last updated: ${updatedDate}` : `Published: ${formattedDate}`}
-          </p>
-        )}
-        
-        {(entry.data as any)?.description && (
-          <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
-            {(entry.data as any).description}
-          </p>
-        )}
-        
-        {'tags' in (entry.data as any) && Array.isArray((entry.data as any).tags) && (entry.data as any).tags.length > 0 && (
-          <div class="mb-8 flex justify-center">
-            <div class="flex flex-wrap gap-2 justify-center">
-              {(entry.data as any).tags.map((tag: string) => (
-                <a 
-                  href={`/tags/${tag}/`} 
-                  class="text-xs bg-borderColor dark:bg-borderColorDark px-2 py-1 rounded-md hover:bg-accent hover:text-white transition-colors"
-                >
-                  {tag}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
+      <div>
+        <Content />
       </div>
-    </div>
-    
-    <div>
-      <Content />
-    </div>
-    
-    <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
-      <div class="flex justify-between">
-        <a href={`/${category}/`} class="text-accent hover:underline">← Back to {category.charAt(0).toUpperCase() + category.slice(1)}</a>
-        
-        <button 
-          id="shareButton" 
-          class="text-accent hover:underline flex items-center"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
-            <circle cx="18" cy="5" r="3"></circle>
-            <circle cx="6" cy="12" r="3"></circle>
-            <circle cx="18" cy="19" r="3"></circle>
-            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-          </svg>
-          Share
-        </button>
+      
+      <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
+        <div class="flex justify-between">
+          <a href={`/${category}/`} class="text-accent hover:underline">← Back to {category.charAt(0).toUpperCase() + category.slice(1)}</a>
+          
+          <button 
+            id="shareButton" 
+            class="text-accent hover:underline flex items-center"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+            Share
+          </button>
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
+  </ProseWrapper>
 </Layout>
 
 <LinkHoverEffect />
