@@ -1,5 +1,5 @@
 # Obsidian
-.obsidian/
+src/content/.obsidian
 
 # Dependencies
 node_modules/
