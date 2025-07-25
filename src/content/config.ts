@@ -20,6 +20,7 @@ const postsCollection = defineCollection({
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
     edition: z.number().optional(),
+    format: z.string().optional(),
   }),
 });
 

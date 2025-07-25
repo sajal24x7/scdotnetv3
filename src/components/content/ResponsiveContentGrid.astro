@@ -51,7 +51,7 @@ const getGridClasses = () => {
 };
 ---
 
-<div class={`grid ${getGridClasses()} py-8`}>
+<div class={`grid ${getGridClasses()}`}>
   {renderedPosts.map((post, index) => (
     <div class={layout === 'masonry' ? 'break-inside-avoid' : ''}>
       <Card {...post.data}>
@@ -75,7 +75,6 @@ const getGridClasses = () => {
   }
 
   /* Add a subtle divider between cards */
-  {showDividers && `
   .grid > *:not(:last-child) {
     position: relative;
   }
@@ -103,13 +102,11 @@ const getGridClasses = () => {
       transparent
     );
   }
-  `}
 
   /* Mobile adjustments */
   @media (max-width: 768px) {
     .grid {
       max-width: none;
-      padding: 0 1rem;
     }
   }
 
@@ -127,31 +124,26 @@ const getGridClasses = () => {
     }
   }
 
-  /* Masonry layout */
-  {layout === 'masonry' && `
-  .grid {
+  /* Masonry layout (static, not conditional) */
+  .masonry {
     column-count: 1;
     column-gap: 2rem;
   }
-
   @media (min-width: 768px) {
-    .grid {
+    .masonry {
       column-count: 2;
     }
   }
-
   @media (min-width: 1024px) {
-    .grid {
+    .masonry {
       column-count: 3;
     }
   }
-
   @media (min-width: 1280px) {
-    .grid {
+    .masonry {
       column-count: 4;
     }
   }
-  `}
 
   /* Ensure links are properly styled */
   :global(.prose a) {
@@ -159,16 +151,13 @@ const getGridClasses = () => {
     text-decoration: none;
     transition: color 0.2s;
   }
-
   :global(.prose a:hover) {
     color: #2563eb;
     text-decoration: underline;
   }
-
   :global(.dark .prose a) {
     color: #60a5fa;
   }
-
   :global(.dark .prose a:hover) {
     color: #93c5fd;
   }
@@ -178,7 +167,6 @@ const getGridClasses = () => {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
-
   :global(.dark .card:hover) {
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
   }

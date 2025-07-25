@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/202406092014 Postcard from Oitta.md",
+                "file": "2024/202404131427 Home.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "202406092014 Postcard from Oitta"
+              "title": "202404131427 Home"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "about",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -170,6 +170,10 @@
   },
   "active": "fb581853111c1677",
   "lastOpenFiles": [
+    "2024/202404170522 Now.md",
+    "2024/202404131427 Home.md",
+    "2024/202404210951 NL4 - Spring is here.md",
+    "2024/202406092014 Postcard from Oitta.md",
     "2025/202507251348 Cursor launches bugbot.md",
     "2025/202507250815 iPad gets closer to the Mac.md",
     "2025/202507231420 Hugh writes about hope.md",
@@ -181,11 +185,8 @@
     "2024/202405092020 Was I a good brother to you.md",
     "2024/202405051842 NL6 - Hyvä Vappu.md",
     "2024/202404281447 NL5 - Federating again.md",
-    "2024/202404210951 NL4 - Spring is here.md",
     "2024/202402031835 NL2 - I miss walking.md",
     "2024/202402142200 NL3 - Year One.md",
-    "2024/202404170522 Now.md",
-    "2024/202404131427 Home.md",
     "2024/202402121046 Kevin Kelly - Excellent Advice for Living.md",
     "2024/202401272012 NL1 - Celebrating Sakraat in Finland.md",
     "2024/202412290343 NL40 - Writing and publishing.md",
@@ -196,7 +197,6 @@
     "2025/202506231350 India is mapping urban heat vulnerability down to the building level.txt",
     "2025/202507181300 Om Malik on the effects of automating everything.md",
     "2025/202507181559 About Perplexity's new AI browser.md",
-    "2025/202507181024 Zero sum thinking answers America’s response to Deepseek.md",
     "2025/202507181254 Seth Godin on tasks and projects.txt",
     "2025/202507111116 Wells, Martha - Rogue Protocol.txt",
     "2025/202507081810 Wells, Martha - Artificial Condition.txt",

@@ -8,6 +8,7 @@ interface Props {
   showDate?: boolean;
   showDescription?: boolean;
   maxPosts?: number;
+  compact?: boolean;
 }
 
 const { 
@@ -16,7 +17,8 @@ const {
   showCategory = true, 
   showDate = true, 
   showDescription = false,
-  maxPosts 
+  maxPosts,
+  compact = false
 } = Astro.props;
 
 const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
@@ -46,7 +48,7 @@ const getPostClasses = () => {
 
 <div class={getModeClasses()}>
   {displayPosts.map((post) => (
-    <article class={getPostClasses()}>
+    <article class={compact ? 'compact-card' : getPostClasses()}>
       <a href={`/${post.data.category}/${post.slug}/`} class="block">
         {mode === 'grid' && (
           <div class="mb-3">
@@ -61,33 +63,43 @@ const getPostClasses = () => {
         )}
         
         <div class="space-y-2">
-          {showDate && (
-            <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500 dark:text-gray-400 block">
-              {formatDate(post.data.pubDate)}
-            </time>
-          )}
-          
-          <h3 class="text-lg font-semibold group-hover:text-accent transition-colors">
-            {post.data.title}
-          </h3>
-          
-          {showDescription && post.data.description && (
-            <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
-              {post.data.description}
-            </p>
-          )}
-          
-          {showCategory && (
-            <div class="flex items-center gap-2 mt-2">
+          {compact ? (
+            <div class="flex items-center gap-2">
               <span class="text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded-full">
                 {post.data.category}
               </span>
-              {post.data.tags && post.data.tags.length > 0 && (
-                <span class="text-xs text-gray-500 dark:text-gray-400">
-                  {post.data.tags.slice(0, 2).join(', ')}
-                </span>
-              )}
+              <h3 class="text-base font-semibold group-hover:text-accent transition-colors">
+                {post.data.title}
+              </h3>
             </div>
+          ) : (
+            <>
+              {showDate && (
+                <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500 dark:text-gray-400 block">
+                  {formatDate(post.data.pubDate)}
+                </time>
+              )}
+              <h3 class="text-lg font-semibold group-hover:text-accent transition-colors">
+                {post.data.title}
+              </h3>
+              {showDescription && post.data.description && (
+                <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
+                  {post.data.description}
+                </p>
+              )}
+              {showCategory && (
+                <div class="flex items-center gap-2 mt-2">
+                  <span class="text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded-full">
+                    {post.data.category}
+                  </span>
+                  {post.data.tags && post.data.tags.length > 0 && (
+                    <span class="text-xs text-gray-500 dark:text-gray-400">
+                      {post.data.tags.slice(0, 2).join(', ')}
+                    </span>
+                  )}
+                </div>
+              )}
+            </>
           )}
         </div>
       </a>
@@ -127,5 +139,30 @@ const getPostClasses = () => {
   
   :global(.dark) .group:hover {
     background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Compact card style for ephemera feed */
+  .compact-card {
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.5rem;
+    transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    cursor: pointer;
+  }
+  .compact-card:hover {
+    border-color: #a78bfa;
+    box-shadow: 0 4px 16px 0 rgba(136, 58, 234, 0.08);
+    background: #fafaff;
+  }
+  :global(.dark) .compact-card {
+    background: #18181b;
+    border-color: #27272a;
+  }
+  :global(.dark) .compact-card:hover {
+    border-color: #a78bfa;
+    background: #232336;
   }
 </style> 

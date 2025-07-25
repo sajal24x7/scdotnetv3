@@ -19,25 +19,25 @@ const {
 ---
 
 <div class="border-t border-black/10 dark:border-white/10 py-8">
-  <div class="flex flex-col lg:flex-row items-start gap-8">
+  <div class="flex flex-col lg:flex-row items-start gap-4 md:gap-8">
     <!-- Book Cover -->
-    <div class="flex-shrink-0">
+    <div class="flex-shrink-0 w-full lg:w-auto">
       <img 
         src={bookCoverSrc} 
         alt={bookCoverAlt}
-        class="w-32 h-auto lg:w-40 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600"
+        class="w-full max-w-xs mx-auto lg:w-40 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600"
       />
     </div>
     
     <!-- Book Details -->
-    <div class="flex-1">
+    <div class="flex-1 text-center lg:text-left">
       <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">{status}</p>
-      <h2 class="text-2xl font-bold mb-3">
+      <h2 class="text-xl md:text-2xl font-bold mb-3">
         <a href={bookLink} class="text-accent hover:text-accent/80 transition-colors">
           {bookTitle}
         </a>
       </h2>
-      <p class="text-base text-gray-700 dark:text-gray-300 mb-4">
+      <p class="text-sm md:text-base text-gray-700 dark:text-gray-300 mb-4">
         {bookDescription}
       </p>
     </div>

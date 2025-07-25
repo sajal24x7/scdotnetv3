@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 import { readdirSync } from 'fs';
 import { join } from 'path';
 
-interface Post {
+export interface Post {
   data: {
     title?: string;
     description?: string;
@@ -12,6 +12,7 @@ interface Post {
     tags?: string[];
     edition?: number | string;
     editionDisplay?: string;
+    format?: string;
   };
   slug: string;
   body: string;
