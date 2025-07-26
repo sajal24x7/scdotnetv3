@@ -4,6 +4,10 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
       colors: {
         // Light Theme
         bgLight: 'rgb(var(--color-bg))',
@@ -24,6 +28,7 @@ export default {
         DEFAULT: {
           css: {
             color: theme('colors.textPrimary'),
+            fontFamily: theme('fontFamily.sans').join(', '),
             a: {
               color: theme('colors.accent'),
               '&:hover': {
@@ -32,21 +37,27 @@ export default {
             },
             h1: {
               color: theme('colors.textPrimary'),
+              fontFamily: theme('fontFamily.serif').join(', '),
             },
             h2: {
               color: theme('colors.textPrimary'),
+              fontFamily: theme('fontFamily.serif').join(', '),
             },
             h3: {
               color: theme('colors.textPrimary'),
+              fontFamily: theme('fontFamily.serif').join(', '),
             },
             h4: {
               color: theme('colors.textPrimary'),
+              fontFamily: theme('fontFamily.serif').join(', '),
             },
             h5: {
               color: theme('colors.textPrimary'),
+              fontFamily: theme('fontFamily.serif').join(', '),
             },
             h6: {
               color: theme('colors.textPrimary'),
+              fontFamily: theme('fontFamily.serif').join(', '),
             },
             strong: {
               color: theme('colors.textPrimary'),
@@ -65,6 +76,7 @@ export default {
         dark: {
           css: {
             color: theme('colors.textPrimaryDark'),
+            fontFamily: theme('fontFamily.sans').join(', '),
             a: {
               color: theme('colors.accent'),
               '&:hover': {
@@ -73,21 +85,27 @@ export default {
             },
             h1: {
               color: theme('colors.textPrimaryDark'),
+              fontFamily: theme('fontFamily.serif').join(', '),
             },
             h2: {
               color: theme('colors.textPrimaryDark'),
+              fontFamily: theme('fontFamily.serif').join(', '),
             },
             h3: {
               color: theme('colors.textPrimaryDark'),
+              fontFamily: theme('fontFamily.serif').join(', '),
             },
             h4: {
               color: theme('colors.textPrimaryDark'),
+              fontFamily: theme('fontFamily.serif').join(', '),
             },
             h5: {
               color: theme('colors.textPrimaryDark'),
+              fontFamily: theme('fontFamily.serif').join(', '),
             },
             h6: {
               color: theme('colors.textPrimaryDark'),
+              fontFamily: theme('fontFamily.serif').join(', '),
             },
             strong: {
               color: theme('colors.textPrimaryDark'),

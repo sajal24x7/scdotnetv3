@@ -1,5 +1,14 @@
 /* Global styles for astronautical-aperture */
 
+/* Font Family Declarations */
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+}
+
 /* Custom Variables */
 :root {
   --random-link-color: inherit; /* Default link color */

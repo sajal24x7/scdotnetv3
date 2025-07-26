@@ -21,6 +21,11 @@ const { title, currentPage } = Astro.props;
         <meta name="generator" content={Astro.generator} />
         <title>{title} | Sajal Choudhary</title>
 
+        {/* Google Fonts */}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
         {/* Initial script to prevent FOUC (Flash of Unstyled Content) for theme */}
         <script is:inline>
             const theme = (() => {
@@ -42,7 +47,7 @@ const { title, currentPage } = Astro.props;
             window.localStorage.setItem('theme', theme);
         </script>
     </head>
-    <body class="bg-background text-textPrimary transition-colors duration-200 ease-in-out">
+    <body class="bg-background text-textPrimary transition-colors duration-200 ease-in-out font-sans">
         <Header currentPage={currentPage} />
         <main class="container mx-auto px-4 py-8 max-w-3xl flex-grow"> {/* Adjust max-width as needed */}
             <slot /> {/* Page content will be injected here */}

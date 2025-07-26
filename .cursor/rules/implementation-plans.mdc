@@ -1,7 +1,7 @@
 ---
 description: Guidelines for writing feature implementation plans
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 # Feature Implementation Plan Standards
 
