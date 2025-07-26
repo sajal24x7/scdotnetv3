@@ -127,7 +127,7 @@ const allPages = [
 ];
 ---
 
-<footer class="py-6 border-t border-borderColor dark:border-borderColorDark">
+<footer class="py-6 border-t border-gray-300 dark:border-gray-600">
   <div class="container mx-auto px-4 max-w-6xl">
     <!-- Mobile Layout: Stacked -->
     <div class="block lg:hidden">
@@ -249,7 +249,7 @@ const allPages = [
     </div>
     
     {allContent.length > 0 && (
-      <div class="text-center text-textSecondary dark:text-textSecondaryDark text-sm border-t border-borderColor dark:border-borderColorDark pt-4 mt-6">
+      <div class="text-center text-textSecondary dark:text-textSecondaryDark text-sm pt-4 mt-6">
         <p class="text-xs opacity-75 mb-2">This website was last updated on {formattedLastPostDate}</p>
         <p class="font-medium">New posts for {streakWeeks} consecutive {streakWeeks === 1 ? 'week' : 'weeks'}</p>
         <p class="mt-1 text-xs opacity-75">{totalPosts} total posts</p>
