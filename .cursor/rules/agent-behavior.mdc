@@ -31,3 +31,5 @@ For Substantial Features and Changes:
 - `implementation-plans` - When creating feature implementation plans
 - `date-handling` - When working with dates in documentation
 - `cursor-rules-location` - When creating or organizing cursor rules
+- `when-writing-code` - When starting to write code, import this first
+- `typescript` - When working with typescript

@@ -22,17 +22,20 @@ const {
 } = Astro.props;
 ---
 
-<div class="py-8 mb-6">
-  <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
+<div class="py-12 mb-8">
+  <div class="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12">
+    <!-- Larger circular photo on the left -->
     <img 
       src={imageSrc} 
       alt={imageAlt} 
-      class="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover shadow-lg border-2 border-gray-200 dark:border-gray-600 flex-shrink-0"
+      class="w-56 h-56 sm:w-72 sm:h-72 rounded-full object-cover shadow-lg flex-shrink-0"
     />
-    <div class="text-center sm:text-left">
-      <h1 class="text-3xl sm:text-4xl font-bold mb-4">{title}</h1>
+    
+    <!-- Bio and newsletter signup on the right -->
+    <div class="text-center sm:text-left flex-1">
+      <h1 class="text-2xl sm:text-3xl font-bold mb-4">{title}</h1>
       <div class="prose dark:prose-invert max-w-none">
-        <p class="text-base sm:text-lg">
+        <p class="text-base sm:text-lg leading-relaxed">
           {description}
           {bookLink && bookTitle && (
             <> I am the author of <a href={bookLink} class="text-accent hover:text-accent/80">{bookTitle}</a>, a collection of poems for young adults.</>

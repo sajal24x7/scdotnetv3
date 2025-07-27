@@ -1,0 +1,22 @@
+---
+description: Rules specific to my website
+globs: 
+alwaysApply: false
+---
+
+# About the website
+My website has these content buckets with the listed categories making up the bucket:
+1. Notes - evergreen, now
+2. Ephemera - micro, blog, photo, til
+3. Fiction - poem, story
+4. Newsletter - nordletter
+5. Bookshelf - bookshelf
+
+The content collection is stored in year folders under src/content. Never use constants to get the collection, instead get the list of years from the content folder and then get content from there.
+
+# About scripts
+Create scripts to do mass updates, etc. in python when needed, use zsh or bash commands where needed.
+
+# Git related
+Keep commit messages to 20 words or less.
+Always create a new branch when working on a new feature.
