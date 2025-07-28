@@ -1,5 +1,6 @@
 # Obsidian
-src/content/.obsidian
+src/content/.obsidian/
+src/content/.obsidian/workspace.json
 
 # Dependencies
 node_modules/

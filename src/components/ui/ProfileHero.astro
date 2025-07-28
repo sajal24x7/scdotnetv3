@@ -2,7 +2,7 @@
 interface Props {
   name: string;
   title: string;
-  description: string;
+  description?: string;
   imageSrc: string;
   imageAlt: string;
   bookLink?: string;
@@ -13,7 +13,7 @@ interface Props {
 const { 
   name, 
   title, 
-  description, 
+  description = "I was born in Bihar.<br /> I moved to Delhi as a child and lived most of my life there.<br /> I am now living in Finland with my wife and child.<br />I work as a platform engineer with an IT consultancy company.",
   imageSrc, 
   imageAlt, 
   bookLink, 
@@ -35,12 +35,13 @@ const {
     <div class="text-center sm:text-left flex-1">
       <h1 class="text-2xl sm:text-3xl font-bold mb-4">{title}</h1>
       <div class="prose dark:prose-invert max-w-none">
-        <p class="text-base sm:text-lg leading-relaxed">
-          {description}
-          {bookLink && bookTitle && (
-            <> I am the author of <a href={bookLink} class="text-accent hover:text-accent/80">{bookTitle}</a>, a collection of poems for young adults.</>
-          )}
+        <p class="text-base sm:text-lg leading-relaxed" set:html={description}>
         </p>
+        {bookLink && bookTitle && (
+          <p class="text-base sm:text-lg leading-relaxed">
+            I am the author of <a href={bookLink} class="text-accent hover:text-accent/80">{bookTitle}</a>, a collection of poems for young adults.
+          </p>
+        )}
         {jobDescription && (
           <p class="text-base sm:text-lg mb-0">
             {jobDescription}
