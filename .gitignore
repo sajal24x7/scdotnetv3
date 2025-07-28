@@ -105,3 +105,9 @@ Thumbs.db
 
 # docs
 documentation/
+
+# Tech notes folder
+./30-TechNotes/
+
+# Backup folder
+src/content_backup_20250728_212307/

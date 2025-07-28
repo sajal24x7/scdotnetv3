@@ -1,0 +1,16 @@
+---
+title: VMware not possible to forward only auth logs to splunk
+slug: vmware-not-possible-to-forward-only-auth-logs-to-splunk
+pubDate: '2024-06-27T13:02:00+03:00'
+updatedDate: '2024-06-27T13:02:00+03:00'
+category: til
+tags:
+- vmware
+---
+
+We can either forward all logs to splunk. Or no logs. 
+
+
+---
+# references:
+[Configuring syslog on ESXi (broadcom.com)](https://knowledge.broadcom.com/external/article/318939/configuring-syslog-on-esxi.html)

@@ -1,0 +1,17 @@
+---
+title: Powershell search ad for a user
+slug: powershell-search-ad-for-a-user
+pubDate: '2022-10-07T19:01:00+03:00'
+updatedDate: '2022-10-07T19:01:00+03:00'
+category: til
+tags: []
+---
+
+
+```
+$ADFilter = "*345" #anything which has 345 at end
+Get-ADUser -Server $Domain -Filter { SamAccountName -like $ADFilter } -Properties *
+```
+
+---
+references:

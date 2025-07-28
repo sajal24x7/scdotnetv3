@@ -1,0 +1,25 @@
+---
+title: Run powershell command as scheduled task
+slug: run-powershell-command-as-scheduled-task
+pubDate: '2024-07-08T12:01:00+03:00'
+updatedDate: '2024-07-08T12:01:00+03:00'
+category: til
+tags:
+- powershell
+---
+
+
+Define action as:
+
+```text
+# Action as:
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+# Arguments as : -Command &{} 
+-command &{get-process >> c:\fso\ServiceProcessBios.txt; get-service | where{$_.Status -eq ‘Running’} >> c:\fso\ServiceProcessBios.txt; Get-WmiObject Win32_bios >> c:\fso\ServiceProcessBios.txt}
+
+```
+
+---
+# references:
+[Use Scheduled Tasks to Run PowerShell Commands on Windows - Scripting Blog [archived] (microsoft.com)](https://devblogs.microsoft.com/scripting/use-scheduled-tasks-to-run-powershell-commands-on-windows/)
