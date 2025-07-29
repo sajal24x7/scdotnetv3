@@ -1,0 +1,18 @@
+---
+title: "dcpromo fails with access denied error"
+slug: "dcpromo-fails-with-access-denied-error"
+pubDate: 2025-07-29T21:39:48+03:00
+updatedDate: 2025-07-29T21:39:48+03:00
+category: TIL
+tags:
+  - windows
+  - ad
+
+---
+This can happen during demotion.
+
+1. Check that the computer object - prevent object from accidental deletion is not ticked on.
+2. The second thing is to check the GPO > Default domain policy > Windows settings > Security Settings > Local Policies > User Right Assignment > Enable computer and user accounts to be trusted for delegation. Add the Administrator in it . Then run `gpupdate`.
+
+---
+# references:

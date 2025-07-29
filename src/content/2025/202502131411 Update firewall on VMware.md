@@ -1,0 +1,27 @@
+---
+title: "Update firewall on VMware"
+slug: "update-firewall-on-vmware"
+pubDate: 2025-07-29T21:42:15+03:00
+updatedDate: 2025-07-29T21:42:15+03:00
+category: 
+tags:
+  - "#vmware"
+  - "#powershell"
+
+---
+ipaddress is a string so can not have multiple items in one go. So need to loop for allowed IP addresses as a [PowerShell Arrays](#), if many.
+
+In case Ip already exists in rule, it gives error: `InnerText: Ip address already exist.EsxCLI.CLIFault.summary`
+
+```
+$arguments = $EsxCli.network.firewall.ruleset.allowedip.add.CreateArgs()
+$arguments.rulesetid = $Service
+$arguments.ipaddress = $IP
+$EsxCli.network.firewall.ruleset.allowedip.add.Invoke($arguments)
+```
+
+
+
+---
+# references:
+[The ESXi host must configure the firewall to restrict access to services running on the host.](https://www.stigviewer.com/stig/vmware_vsphere_8.0_esxi/2023-10-11/finding/V-258794)
