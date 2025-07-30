@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2025/202507261119 NL64 - A lazy day.md",
+                "file": "2025/202507181300 Om Malik on the effects of automating everything.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "202507261119 NL64 - A lazy day"
+              "title": "202507181300 Om Malik on the effects of automating everything"
             }
           }
         ]
@@ -170,8 +170,16 @@
   },
   "active": "fb581853111c1677",
   "lastOpenFiles": [
-    "2025/202507281107 AI HUDs instead of copilots.md",
+    "2025/202507181559 About Perplexity's new AI browser.md",
+    "2025/202507221344 Powershell set atrributes for AD groups.md",
+    "2025/202507231420 Hugh writes about hope.md",
+    "2025/202507250815 iPad gets closer to the Mac.md",
+    "2025/202507251348 Cursor launches bugbot.md",
     "2025/202507280759 Paul Graham on good writing.md",
+    "2025/202507281107 AI HUDs instead of copilots.md",
+    "2025/202507281527 Update esxi with required version of vmware tools.md",
+    "2025/202507300651 Study mode in ChatGPT.md",
+    "2025/202507261119 NL64 - A lazy day.md",
     "til.md",
     "2022/202209261324 Cscript.exe is not recognised.md",
     "2024/202404121246 Azure Netapp Files.md",
@@ -188,14 +196,6 @@
     "2022/202209261247 Remove vmware tools.md",
     "2022/202208022152 CloudFormation Basics.md",
     "2022/202208022255 High Availability vs Fault Tolerance vs Disaster Recovery.md",
-    "2024/202408041224 Azure Monitoring.md",
-    "2023/202307131654 Powershell pass variables to Invoke-Command.md",
-    "2024/202404011414 Authentication and Authorization.md",
-    "2024/202401301312 Event viewer logs location.md",
-    "2024/202409161236 Disable SMBv1 on Windows.md",
-    "2023/202303281614 Winsocket reset.md",
-    "2022/202208012316 AWS VPC Basics.md",
-    "2022/202204271232 Windows unable to take RDP.md",
     "2023",
     "2025/202507131109 NL63 - A day trip to Turku.txt",
     "2025/202507261119 NL64 - A lazy day.txt",

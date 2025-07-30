@@ -3,7 +3,7 @@ title: "Find paths longer than 260 characters"
 slug: "find-paths-longer-than-260-characters"
 pubDate: 2025-07-29T21:40:06+03:00
 updatedDate: 2025-07-29T21:40:06+03:00
-category: TIL
+category: til
 tags:
   - "#windows"
 
