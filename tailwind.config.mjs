@@ -6,7 +6,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['Playfair Display', 'ui-serif', 'Georgia', 'serif'],
+        serif: ['Bitter', 'ui-serif', 'Georgia', 'serif'],
       },
       colors: {
         // Light Theme
