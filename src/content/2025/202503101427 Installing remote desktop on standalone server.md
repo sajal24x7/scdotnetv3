@@ -4,7 +4,7 @@ slug: "installing-remote-desktop-on-standalone-server"
 pubDate: 2025-07-29T21:40:49+03:00
 updatedDate: 2025-07-29T21:40:49+03:00
 category: til
-tags: 
+tags:
   - windows
 ---
 Basically install Remote Desktop Session Host role.
