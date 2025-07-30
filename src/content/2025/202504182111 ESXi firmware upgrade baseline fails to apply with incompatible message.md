@@ -1,8 +1,8 @@
 ---
 title: "ESXi firmware upgrade baseline fails to apply with incompatible message"
 slug: "esxi-firmware-upgrade-baseline-fails-to-apply-with-incompatible-message"
-pubDate: 2025-07-29T21:39:37+03:00
-updatedDate: 2025-07-29T21:39:37+03:00
+pubDate: 2025-04-18T21:39:37+03:00
+updatedDate: 2025-04-18T21:39:37+03:00
 category: til
 tags:
   - vmware

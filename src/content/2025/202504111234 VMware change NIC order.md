@@ -1,8 +1,8 @@
 ---
 title: "VMware change NIC order"
 slug: "vmware-change-nic-order"
-pubDate: 2025-07-29T21:40:00+03:00
-updatedDate: 2025-07-29T21:40:00+03:00
+pubDate: 2025-04-11T12:40:00+03:00
+updatedDate: 2025-04-11T12:40:00+03:00
 category: til
 tags:
   - "#cisco"

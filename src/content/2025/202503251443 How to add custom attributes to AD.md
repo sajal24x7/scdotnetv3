@@ -1,8 +1,8 @@
 ---
 title: "How to add custom attributes to AD"
 slug: "how-to-add-custom-attributes-to-ad"
-pubDate: 2025-07-29T21:40:33+03:00
-updatedDate: 2025-07-29T21:40:33+03:00
+pubDate: 2025-03-25T14:40:33+03:00
+updatedDate: 2025-03-25T14:40:33+03:00
 category: til
 tags:
   - ad
