@@ -3,7 +3,7 @@ title: "Windows how to check firewall logs"
 slug: "windows-how-to-check-firewall-logs"
 pubDate: 2025-07-29T21:41:56+03:00
 updatedDate: 2025-07-29T21:41:56+03:00
-category: 
+category: til
 tags:
   - "#Firewall"
   - "#windows"
