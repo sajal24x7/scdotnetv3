@@ -6,7 +6,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['IBM Plex Serif', 'ui-serif', 'Georgia', 'serif'],
       },
       colors: {
         // Light Theme
