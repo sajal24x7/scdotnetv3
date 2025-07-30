@@ -1,8 +1,8 @@
 ---
 title: "About system volume information"
 slug: "about-system-volume-information"
-pubDate: 2025-07-29T21:41:45+03:00
-updatedDate: 2025-07-29T21:41:45+03:00
+pubDate: 2025-02-18T11:41:45+03:00
+updatedDate: 2025-02-18T11:41:45+03:00
 category: til
 tags:
   - "#windows"

@@ -1,8 +1,8 @@
 ---
 title: "AD Database files location"
 slug: "ad-database-files-location"
-pubDate: 2025-07-29T21:41:26+03:00
-updatedDate: 2025-07-29T21:41:26+03:00
+pubDate: 2025-02-26T13:41:26+03:00
+updatedDate: 2025-02-26T13:41:26+03:00
 category: til
 tags:
   - "#ad"

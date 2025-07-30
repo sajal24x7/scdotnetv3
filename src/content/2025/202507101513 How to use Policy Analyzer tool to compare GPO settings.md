@@ -1,8 +1,8 @@
 ---
 title: "How to use Policy Analyzer tool to compare GPO settings"
 slug: "how-to-use-policy-analyzer-tool-to-compare-gpo-settings"
-pubDate: 2025-07-29T21:38:27+03:00
-updatedDate: 2025-07-29T21:38:27+03:00
+pubDate: 2025-07-10T15:38:27+03:00
+updatedDate: 2025-07-10T15:38:27+03:00
 category: til
 tags:
   - windows

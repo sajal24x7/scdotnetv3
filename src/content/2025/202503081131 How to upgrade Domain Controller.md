@@ -1,8 +1,8 @@
 ---
 title: "How to upgrade Domain Controller"
 slug: "how-to-upgrade-domain-controller"
-pubDate: 2025-07-29T21:41:01+03:00
-updatedDate: 2025-07-29T21:41:01+03:00
+pubDate: 2025-03-08T11:41:01+03:00
+updatedDate: 2025-03-08T11:41:01+03:00
 category: til
 tags:
   - windows

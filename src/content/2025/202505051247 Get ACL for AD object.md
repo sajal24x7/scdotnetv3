@@ -1,8 +1,8 @@
 ---
 title: "Get ACL for AD object"
 slug: "get-acl-for-ad-object"
-pubDate: 2025-07-29T21:39:14+03:00
-updatedDate: 2025-07-29T21:39:14+03:00
+pubDate: 2025-05-05T12:39:14+03:00
+updatedDate: 2025-05-05T12:39:14+03:00
 category: til
 tags:
   - powershell

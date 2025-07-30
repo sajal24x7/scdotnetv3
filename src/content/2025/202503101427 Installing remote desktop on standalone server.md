@@ -1,11 +1,11 @@
 ---
 title: "Installing remote desktop on standalone server"
 slug: "installing-remote-desktop-on-standalone-server"
-pubDate: 2025-07-29T21:40:49+03:00
-updatedDate: 2025-07-29T21:40:49+03:00
+pubDate: 2025-03-10T14:40:49+03:00
+updatedDate: 2025-03-10T14:40:49+03:00
 category: til
-tags: 
-
+tags:
+  - windows
 ---
 Basically install Remote Desktop Session Host role.
 Note: Might require 2 reboots: 1 after role install, 1 for licensing to look OK on the server.

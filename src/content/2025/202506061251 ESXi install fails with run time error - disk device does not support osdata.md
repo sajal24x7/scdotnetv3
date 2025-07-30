@@ -1,8 +1,8 @@
 ---
 title: "ESXi install fails with run time error - disk device does not support osdata"
 slug: "esxi-install-fails-with-run-time-error-disk-device-does-not-support-osdata"
-pubDate: 2025-07-29T21:38:41+03:00
-updatedDate: 2025-07-29T21:38:41+03:00
+pubDate: 2025-06-06T12:38:41+03:00
+updatedDate: 2025-06-06T12:38:41+03:00
 category: til
 tags:
   - vmware
