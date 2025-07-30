@@ -3,7 +3,7 @@ title: "Install drivers on esxi using vibs"
 slug: "install-drivers-on-esxi-using-vibs"
 pubDate: 2025-07-29T21:38:59+03:00
 updatedDate: 2025-07-29T21:38:59+03:00
-category: TIL
+category: til
 tags:
   - "#vmware"
   - "#hp"

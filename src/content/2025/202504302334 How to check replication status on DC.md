@@ -3,7 +3,7 @@ title: "How to check replication status on DC"
 slug: "how-to-check-replication-status-on-dc"
 pubDate: 2025-07-29T21:39:20+03:00
 updatedDate: 2025-07-29T21:39:20+03:00
-category: TIL
+category: til
 tags:
   - powershell
   - ad

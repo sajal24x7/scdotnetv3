@@ -3,7 +3,7 @@ title: "How to upgrade Domain Controller"
 slug: "how-to-upgrade-domain-controller"
 pubDate: 2025-07-29T21:41:01+03:00
 updatedDate: 2025-07-29T21:41:01+03:00
-category: TIL
+category: til
 tags:
   - windows
   - ad

@@ -3,7 +3,7 @@ title: "How to add custom attributes to AD"
 slug: "how-to-add-custom-attributes-to-ad"
 pubDate: 2025-07-29T21:40:33+03:00
 updatedDate: 2025-07-29T21:40:33+03:00
-category: TIL
+category: til
 tags:
   - ad
   - windows

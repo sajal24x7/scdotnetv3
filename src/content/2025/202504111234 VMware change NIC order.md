@@ -3,7 +3,7 @@ title: "VMware change NIC order"
 slug: "vmware-change-nic-order"
 pubDate: 2025-07-29T21:40:00+03:00
 updatedDate: 2025-07-29T21:40:00+03:00
-category: TIL
+category: til
 tags:
   - "#cisco"
   - "#vmware"

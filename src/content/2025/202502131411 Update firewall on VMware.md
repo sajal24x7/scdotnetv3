@@ -3,7 +3,7 @@ title: "Update firewall on VMware"
 slug: "update-firewall-on-vmware"
 pubDate: 2025-07-29T21:42:15+03:00
 updatedDate: 2025-07-29T21:42:15+03:00
-category: 
+category: til
 tags:
   - "#vmware"
   - "#powershell"

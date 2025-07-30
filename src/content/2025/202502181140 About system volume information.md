@@ -3,7 +3,7 @@ title: "About system volume information"
 slug: "about-system-volume-information"
 pubDate: 2025-07-29T21:41:45+03:00
 updatedDate: 2025-07-29T21:41:45+03:00
-category: 
+category: til
 tags:
   - "#windows"
   - "#powershell"

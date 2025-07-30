@@ -3,7 +3,7 @@ title: "Set ACL using CLI"
 slug: "set-acl-using-cli"
 pubDate: 2025-07-29T21:40:41+03:00
 updatedDate: 2025-07-29T21:40:41+03:00
-category: TIL
+category: til
 tags:
   - "#powershell"
   - windows

@@ -3,7 +3,7 @@ title: "Configure PDC with authoritative Time source"
 slug: "configure-pdc-with-authoritative-time-source"
 pubDate: 2025-07-29T21:40:26+03:00
 updatedDate: 2025-07-29T21:40:26+03:00
-category: TIL
+category: til
 tags:
   - ad
   - windows
