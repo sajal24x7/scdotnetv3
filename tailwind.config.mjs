@@ -5,8 +5,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Inter Variable', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Merriweather', 'ui-serif', 'Georgia', 'serif'],
       },
       colors: {
         // Light Theme
@@ -24,11 +24,14 @@ export default {
         textSecondaryDark: 'rgb(var(--color-text-secondary))',
         borderColorDark: 'rgb(var(--color-border))',
       },
-      typography: (theme) => ({
+                  typography: (theme) => ({
         DEFAULT: {
           css: {
             color: theme('colors.textPrimary'),
             fontFamily: theme('fontFamily.sans').join(', '),
+            maxWidth: '65ch', /* Optimal line length for reading */
+            lineHeight: '1.6',
+            fontSize: 'var(--text-normal)',
             a: {
               color: theme('colors.accent'),
               '&:hover': {

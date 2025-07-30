@@ -179,7 +179,7 @@ const allPages = [
       <div class="mb-6">
         <div class="grid grid-cols-2 gap-x-8 gap-y-2">
           {allPages.map((page) => (
-            <a href={page.href} class="text-textSecondary dark:text-textSecondaryDark hover:text-textPrimary dark:hover:text-textPrimaryDark transition-colors text-sm">
+            <a href={page.href} class="text-textSecondary dark:text-textSecondaryDark hover:text-textPrimary dark:hover:text-textPrimaryDark transition-colors text-normal">
               {page.label}
             </a>
           ))}
@@ -235,7 +235,7 @@ const allPages = [
       <!-- Right Side: Pages in Two Columns -->
       <div class="grid grid-cols-2 gap-x-12 gap-y-2">
         {allPages.map((page) => (
-          <a href={page.href} class="text-textSecondary dark:text-textSecondaryDark hover:text-textPrimary dark:hover:text-textPrimaryDark transition-colors text-sm">
+          <a href={page.href} class="text-textSecondary dark:text-textSecondaryDark hover:text-textPrimary dark:hover:text-textPrimaryDark transition-colors text-normal">
             {page.label}
           </a>
         ))}
@@ -250,10 +250,10 @@ const allPages = [
     </div>
     
     {allContent.length > 0 && (
-      <div class="text-center text-textSecondary dark:text-textSecondaryDark text-sm pt-4 mt-6">
-        <p class="text-xs opacity-75 mb-2">This website was last updated on {formattedLastPostDate}</p>
+              <div class="text-center text-textSecondary dark:text-textSecondaryDark text-normal pt-4 mt-6">
+        <p class="text-small opacity-75 mb-2">This website was last updated on {formattedLastPostDate}</p>
         <p class="font-medium">New posts for {streakWeeks} consecutive {streakWeeks === 1 ? 'week' : 'weeks'}</p>
-        <p class="mt-1 text-xs opacity-75">{totalPosts} total posts</p>
+        <p class="mt-1 text-small opacity-75">{totalPosts} total posts</p>
       </div>
     )}
   </div>

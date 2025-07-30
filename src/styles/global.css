@@ -2,11 +2,52 @@
 
 /* Font Family Declarations */
 body {
-  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--text-normal);
+  line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Merriweather', ui-serif, Georgia, serif;
+  line-height: 1.2;
+}
+
+/* Fluid Typography for Headings */
+h1 {
+  font-size: var(--text-huge);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: var(--text-large);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--text-large);
+  font-weight: 500;
+}
+
+h4, h5, h6 {
+  font-size: var(--text-normal);
+  font-weight: 500;
+}
+
+/* Fluid Typography Utility Classes */
+.text-small {
+  font-size: var(--text-small);
+}
+
+.text-normal {
+  font-size: var(--text-normal);
+}
+
+.text-large {
+  font-size: var(--text-large);
+}
+
+.text-huge {
+  font-size: var(--text-huge);
 }
 
 /* Custom Variables */
@@ -14,6 +55,12 @@ h1, h2, h3, h4, h5, h6 {
   --random-link-color: inherit; /* Default link color */
   --link-color: #0066cc; /* Blue link color for light mode */
   --hr-color: #666666; /* Darker color for horizontal rules in light mode */
+  
+  /* Fluid Typography Variables */
+  --text-small: clamp(0.875rem, 2vw, 1rem);
+  --text-normal: clamp(1rem, 2.5vw, 1.125rem);
+  --text-large: clamp(1.25rem, 4vw, 1.5rem);
+  --text-huge: clamp(2rem, 8vw, 3rem);
 }
 
 .dark {
@@ -33,7 +80,16 @@ a {
   color: var(--link-color);
   text-decoration-thickness: 0.1em;
   text-underline-offset: 0.15em;
-  transition: text-decoration-color 0.3s ease, color 0.3s ease;
+  transition: text-decoration-color 0.3s ease, color 0.3s ease, font-weight 0.2s ease;
+}
+
+/* Smooth hover effects for headings */
+h1, h2, h3, h4, h5, h6 {
+  transition: font-weight 0.2s ease;
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+  font-weight: 700;
 }
 
 /* Random colored underline effect on hover */

@@ -14,9 +14,9 @@ const {
 } = Astro.props;
 
 const sizeClasses = {
-  sm: 'text-sm px-3 py-2',
-  md: 'text-base px-4 py-3',
-  lg: 'text-lg px-6 py-4'
+  sm: 'text-small px-3 py-2',
+  md: 'text-normal px-4 py-3',
+  lg: 'text-large px-6 py-4'
 };
 ---
 
@@ -42,7 +42,7 @@ const sizeClasses = {
   <!-- Search results container (hidden by default) -->
   <div id="search-results" class="absolute z-50 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg hidden">
     <div class="p-4">
-      <div class="text-sm text-gray-500 dark:text-gray-400">Search results will appear here...</div>
+      <div class="text-small text-gray-500 dark:text-gray-400">Search results will appear here...</div>
     </div>
   </div>
 </div>
@@ -102,7 +102,7 @@ const sizeClasses = {
       searchResults.classList.remove('hidden');
       searchResults.innerHTML = `
         <div class="p-4">
-          <div class="text-sm text-gray-500 dark:text-gray-400">
+          <div class="text-small text-gray-500 dark:text-gray-400">
             Search functionality coming soon...
           </div>
         </div>

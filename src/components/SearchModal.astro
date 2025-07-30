@@ -16,7 +16,7 @@ const allPosts = await getAllPosts();
   <div class="relative w-full max-w-2xl mx-auto bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
     <!-- Header -->
     <div class="flex items-center justify-between p-4 border-b border-gray-200/50 dark:border-gray-700/50">
-      <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Search Posts</h2>
+      <h2 class="text-large font-semibold text-gray-900 dark:text-gray-100">Search Posts</h2>
       <button 
         id="close-search" 
         class="w-8 h-8 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center justify-center transition-colors"
@@ -40,12 +40,12 @@ const allPosts = await getAllPosts();
           autocomplete="off"
         />
         <div class="absolute right-3 top-3 text-gray-400">
-          <kbd class="px-2 py-1 text-xs bg-gray-200 dark:bg-gray-700 rounded">⌘K</kbd>
+          <kbd class="px-2 py-1 text-small bg-gray-200 dark:bg-gray-700 rounded">⌘K</kbd>
         </div>
       </div>
       
       <!-- Search Tips -->
-      <div class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+      <div class="mt-2 text-small text-gray-600 dark:text-gray-400">
         <span class="inline-block mr-4">💡 Try: "AI", "productivity", or "tag:coding"</span>
       </div>
     </div>
@@ -184,7 +184,7 @@ const allPosts = await getAllPosts();
         const tags = post.data.tags || [];
         const tagBadges = tags.slice(0, 3).map(tag => {
           const isHighlighted = tag.toLowerCase().includes(query) || query.startsWith('tag:');
-          return `<span class="inline-block ${isHighlighted ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 ring-1 ring-blue-300 dark:ring-blue-700' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'} text-xs px-2 py-1 rounded-full mr-1 mb-1">${tag}</span>`;
+          return `<span class="inline-block ${isHighlighted ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 ring-1 ring-blue-300 dark:ring-blue-700' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'} text-small px-2 py-1 rounded-full mr-1 mb-1">${tag}</span>`;
         }).join('');
         
         const relevanceIndicator = post.relevanceScore >= 100 ? '🏷️' : 
@@ -195,11 +195,11 @@ const allPosts = await getAllPosts();
           <div class="flex items-start justify-between">
             <div class="flex-1">
               <div class="flex items-center gap-2 mb-1">
-                <span class="text-sm">${relevanceIndicator}</span>
+                <span class="text-small">${relevanceIndicator}</span>
                 <h3 class="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">${post.data.title || 'Untitled'}</h3>
               </div>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 capitalize">${post.data.category}</p>
-              ${post.data.description ? `<p class="text-sm text-gray-500 dark:text-gray-500 mb-2 line-clamp-2">${post.data.description}</p>` : ''}
+              <p class="text-small text-gray-600 dark:text-gray-400 mb-2 capitalize">${post.data.category}</p>
+              ${post.data.description ? `<p class="text-small text-gray-500 dark:text-gray-500 mb-2 line-clamp-2">${post.data.description}</p>` : ''}
               ${tags.length > 0 ? `<div class="flex flex-wrap">${tagBadges}</div>` : ''}
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-blue-500 transition-colors flex-shrink-0 mt-1">
@@ -216,7 +216,7 @@ const allPosts = await getAllPosts();
             <path d="m21 21-4.35-4.35"></path>
           </svg>
           <div class="mb-2">No results found for "<strong>${query}</strong>"</div>
-          <div class="text-sm space-y-1">
+          <div class="text-small space-y-1">
             <div>💡 Try searching for "AI", "productivity", or "coding"</div>
             <div>🏷️ Use "tag:ai" for exact tag matches</div>
           </div>

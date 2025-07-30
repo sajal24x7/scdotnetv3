@@ -65,35 +65,35 @@ const getPostClasses = () => {
         <div class="space-y-2">
           {compact ? (
             <div class="flex items-center gap-2">
-              <span class="text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded-full">
+              <span class="text-small font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded-full">
                 {post.data.category}
               </span>
-              <h3 class="text-base font-semibold group-hover:text-accent transition-colors">
+              <h3 class="text-normal font-semibold group-hover:text-accent transition-colors">
                 {post.data.title}
               </h3>
             </div>
           ) : (
             <>
               {showDate && (
-                <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500 dark:text-gray-400 block">
+                <time datetime={post.data.pubDate.toISOString()} class="text-small text-gray-500 dark:text-gray-400 block">
                   {formatDate(post.data.pubDate)}
                 </time>
               )}
-              <h3 class="text-lg font-semibold group-hover:text-accent transition-colors">
+              <h3 class="text-large font-semibold group-hover:text-accent transition-colors">
                 {post.data.title}
               </h3>
               {showDescription && post.data.description && (
-                <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
+                <p class="text-gray-600 dark:text-gray-400 text-normal line-clamp-2">
                   {post.data.description}
                 </p>
               )}
               {showCategory && (
                 <div class="flex items-center gap-2 mt-2">
-                  <span class="text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded-full">
+                  <span class="text-small font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded-full">
                     {post.data.category}
                   </span>
                   {post.data.tags && post.data.tags.length > 0 && (
-                    <span class="text-xs text-gray-500 dark:text-gray-400">
+                    <span class="text-small text-gray-500 dark:text-gray-400">
                       {post.data.tags.slice(0, 2).join(', ')}
                     </span>
                   )}

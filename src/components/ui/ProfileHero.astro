@@ -33,12 +33,12 @@ const {
     
     <!-- Bio and newsletter signup on the right -->
     <div class="text-center sm:text-left flex-1">
-      <h1 class="text-2xl sm:text-3xl font-bold mb-4">{title}</h1>
+      <h1 class="text-huge font-bold mb-4">{title}</h1>
       <div class="prose dark:prose-invert max-w-none">
-        <p class="text-base sm:text-lg leading-relaxed !text-base sm:!text-lg" set:html={description}>
+        <p class="text-normal leading-relaxed" set:html={description}>
         </p>
         {jobDescription && (
-          <p class="text-base sm:text-lg mb-0">
+          <p class="text-normal mb-0">
             {jobDescription}
           </p>
         )}
