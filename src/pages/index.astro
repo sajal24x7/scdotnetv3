@@ -8,7 +8,7 @@ import ResponsiveContentGrid from '../components/content/ResponsiveContentGrid.a
 import PostList from '../components/content/PostList.astro';
 import BookList from '../components/content/BookList.astro';
 import FictionGrid from '../components/content/FictionGrid.astro';
-import { getAllPosts } from '../utils/content';
+import { getAllPosts, transformPost } from '../utils/content';
 import { formatDate } from '../utils/date';
 
 // Get all posts
@@ -18,7 +18,8 @@ const allPosts = await getAllPosts();
 const recentNotes = allPosts
   .filter(post => post.data.category === 'evergreen')
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
-  .slice(0, 8);
+  .slice(0, 8)
+  .map(transformPost);
 
 // Ephemera posts (blog, micro, photo, til categories)
 const ephemeraPosts = allPosts

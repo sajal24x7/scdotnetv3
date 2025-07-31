@@ -12,7 +12,7 @@ const { posts, maxPosts } = Astro.props;
 const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
 ---
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
   {displayPosts.map((post) => (
     <article class="fiction-card">
       <a href={`/${post.data.category}/${post.slug}/`} class="block">
