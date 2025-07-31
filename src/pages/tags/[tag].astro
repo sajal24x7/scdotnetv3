@@ -44,13 +44,13 @@ const postsByCategory = new Map<string, typeof sortedPosts>();
 postsByCategory.set('all', sortedPosts);
 
 // Process each category
-const categories = ['blog', 'bookshelf', 'ephemera', 'notes', 'nordletter', 'til', 'micro', 'story', 'poem'];
+const categories = ['blog', 'bookshelf', 'stream', 'garden', 'nordletter', 'til', 'micro', 'story', 'poem'];
 
 categories.forEach(category => {
   const categoryPosts = sortedPosts.filter(post => {
-    if (category === 'ephemera') {
-      return ['blog', 'micro', 'photo', 'til'].includes(post.data.category);
-    }
+      if (category === 'stream') {
+    return ['blog', 'micro', 'photo'].includes(post.data.category);
+  }
     return post.data.category === category;
   });
   
@@ -118,9 +118,9 @@ categories.forEach(category => {
       const title = document.querySelector('h1');
       const description = document.querySelector('header p');
       
-      if (category === 'ephemera') {
-        title.textContent = `Posts tagged "${tag}" in Ephemera`;
-        description.textContent = `All ephemera posts tagged with "${tag}"`;
+      if (category === 'stream') {
+        title.textContent = `Posts tagged "${tag}" in Stream`;
+        description.textContent = `All stream posts tagged with "${tag}"`;
       } else {
         const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
         title.textContent = `Posts tagged "${tag}" in ${categoryName}`;
@@ -134,7 +134,7 @@ categories.forEach(category => {
           ← All tags
         </a>
         <a href="/tags/?category=${category}" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200">
-          ← ${category === 'ephemera' ? 'Ephemera' : category.charAt(0).toUpperCase() + category.slice(1)} tags
+          ← ${category === 'stream' ? 'Stream' : category.charAt(0).toUpperCase() + category.slice(1)} tags
         </a>
         <a href="/tags/${tag}/" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200">
           View all #${tag} posts

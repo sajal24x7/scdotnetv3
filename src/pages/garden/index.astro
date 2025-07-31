@@ -4,20 +4,20 @@ import NotesGrid from '../../components/NotesGrid.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
-// Get all posts and filter for notes (evergreen only - TILs moved to ephemera)
+// Get all posts and filter for garden (evergreen, til, and now)
 const allPosts = await getAllPosts();
-const notesPosts = allPosts
-  .filter(post => post.data.category === 'evergreen')
+const gardenPosts = allPosts
+  .filter(post => ['evergreen', 'til', 'now'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
 // Transform posts for the NotesGrid component
-const transformedPosts = notesPosts.map(transformPost);
+const transformedPosts = gardenPosts.map(transformPost);
 ---
 
 <Layout 
-  title="Notes" 
-  description="Documentation and notes" 
-  currentPage="/notes/"
+  title="Garden" 
+  description="Documentation, notes, and explorations" 
+  currentPage="/garden/"
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'none',
@@ -26,38 +26,38 @@ const transformedPosts = notesPosts.map(transformPost);
   }}
 >
     <PageHeader 
-      title="Notes"
+      title="Garden"
       description="A collection of documentation, notes, and explorations from my projects and learning."
       layout="centered"
       size="lg"
     />
     
-    <div class="notes-count mb-6 text-center">
+    <div class="garden-count mb-6 text-center">
       {transformedPosts.length} {transformedPosts.length === 1 ? 'note' : 'notes'}
     </div>
     
     <div class="text-center mb-6">
       <a 
-        href="/tags/?category=notes" 
+        href="/tags/?category=garden" 
         class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
       >
         View entries by tag
       </a>
     </div>
 
-    <main class="notes-main">
+    <main class="garden-main">
       <NotesGrid posts={transformedPosts} />
     </main>
 </Layout>
 
 <style>
-  .notes-container {
+  .garden-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 0.5rem;
   }
 
-  .notes-count {
+  .garden-count {
     font-size: 0.875rem;
     font-weight: 500;
     color: #8b5cf6;
@@ -65,22 +65,22 @@ const transformedPosts = notesPosts.map(transformPost);
     letter-spacing: 0.05em;
   }
 
-  :global(.dark) .notes-count {
+  :global(.dark) .garden-count {
     color: #a78bfa;
   }
 
-  .notes-main {
+  .garden-main {
     padding-bottom: 2rem;
   }
 
   /* Mobile adjustments */
   @media (max-width: 768px) {
-    .notes-container {
+    .garden-container {
       max-width: none;
       padding: 0;
     }
 
-    .notes-main {
+    .garden-main {
       padding-bottom: 1.5rem;
     }
   }

@@ -29,13 +29,13 @@ const tagsByCategory = new Map<string, Array<[string, number]>>();
 tagsByCategory.set('all', sortedTags);
 
 // Process each category
-const categories = ['blog', 'bookshelf', 'ephemera', 'notes', 'nordletter', 'til', 'micro', 'story', 'poem'];
+const categories = ['blog', 'bookshelf', 'stream', 'garden', 'nordletter', 'til', 'micro', 'story', 'poem'];
 
 categories.forEach(category => {
   const categoryPosts = allPosts.filter(post => {
-    if (category === 'ephemera') {
-      return ['blog', 'micro', 'photo', 'til'].includes(post.data.category);
-    }
+      if (category === 'stream') {
+    return ['blog', 'micro', 'photo'].includes(post.data.category);
+  }
     return post.data.category === category;
   });
   
@@ -120,8 +120,8 @@ categories.forEach(category => {
       const title = document.querySelector('h1');
       const description = document.querySelector('header p');
       
-      if (category === 'ephemera') {
-        title.textContent = 'Ephemera Tags';
+      if (category === 'stream') {
+        title.textContent = 'Stream Tags';
         description.textContent = 'Tags used in blog posts, photos, and micro updates';
       } else {
         const categoryName = category.charAt(0).toUpperCase() + category.slice(1);

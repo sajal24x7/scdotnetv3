@@ -4,14 +4,14 @@ import ContentGrid from '../../components/ContentGrid.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
-// Get all posts and filter for ephemera (including TILs)
+// Get all posts and filter for stream (blog, micro, and photo)
 const allPosts = await getAllPosts();
-const ephemera = allPosts
-  .filter(post => ['blog', 'micro', 'photo', 'til'].includes(post.data.category))
+const stream = allPosts
+  .filter(post => ['blog', 'micro', 'photo'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
 // Transform posts for the ContentGrid component
-const transformedPosts = ephemera.map(post => ({
+const transformedPosts = stream.map(post => ({
   data: {
     title: post.data.title,
     description: post.data.description,
@@ -26,9 +26,9 @@ const transformedPosts = ephemera.map(post => ({
 ---
 
 <Layout 
-  title="Ephemera" 
+  title="Stream" 
   description="Blog posts, photos, and micro updates" 
-  currentPage="/ephemera/"
+  currentPage="/stream/"
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'none',
@@ -37,38 +37,38 @@ const transformedPosts = ephemera.map(post => ({
   }}
 >
     <PageHeader 
-      title="Ephemera"
+      title="Stream"
       description="Blog posts, photos, and micro updates from my daily life."
       layout="centered"
       size="lg"
     />
     
-    <div class="ephemera-count mb-6 text-center">
+    <div class="stream-count mb-6 text-center">
       {transformedPosts.length} {transformedPosts.length === 1 ? 'post' : 'posts'}
     </div>
     
     <div class="text-center mb-6">
       <a 
-        href="/tags/?category=ephemera" 
+        href="/tags/?category=stream" 
         class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
       >
         View entries by tag
       </a>
     </div>
 
-    <main class="ephemera-main">
+    <main class="stream-main">
       <ContentGrid posts={transformedPosts} />
     </main>
 </Layout>
 
 <style>
-  .ephemera-container {
+  .stream-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 0.5rem;
   }
 
-  .ephemera-count {
+  .stream-count {
     font-size: 0.875rem;
     font-weight: 500;
     color: #8b5cf6;
@@ -76,22 +76,22 @@ const transformedPosts = ephemera.map(post => ({
     letter-spacing: 0.05em;
   }
 
-  :global(.dark) .ephemera-count {
+  :global(.dark) .stream-count {
     color: #a78bfa;
   }
 
-  .ephemera-main {
+  .stream-main {
     padding-bottom: 2rem;
   }
 
   /* Mobile adjustments */
   @media (max-width: 768px) {
-    .ephemera-container {
+    .stream-container {
       max-width: none;
       padding: 0;
     }
 
-    .ephemera-main {
+    .stream-main {
       padding-bottom: 1.5rem;
     }
   }

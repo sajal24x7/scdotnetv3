@@ -11,16 +11,16 @@ const sortedPosts = allPosts.sort((a, b) =>
 );
 const recentPosts = sortedPosts.slice(0, 15); // Show more posts
 
-// Get ephemeral posts (blog, micro, photo)
+// Get stream posts (blog, micro, photo)
 const years = getYearDirectories();
 const allYearPosts = await Promise.all(years.map(year => getCollection(year as any)));
 const flatPosts = allYearPosts.flat() as any[];
-const ephemeralPosts = flatPosts.filter(post => 
+const streamPosts = flatPosts.filter(post => 
   ['blog', 'micro', 'photo'].includes(post.data.category)
 ).sort((a, b) => 
   new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
-const recentEphemeral = ephemeralPosts.slice(0, 5);
+const recentStream = streamPosts.slice(0, 5);
 
 // Get recent nordletter posts (they have nordletter category)
 const nordletterPosts = flatPosts.filter(post => 
@@ -52,11 +52,25 @@ const nordletterPosts = flatPosts.filter(post =>
         Everything
       </a>
       
-      <a href="/ephemera/rss.xml" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm">
+      <a href="/garden/rss.xml" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm">
+        <svg class="w-4 h-4 mr-2 opacity-60" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
+        </svg>
+        Garden
+      </a>
+      
+      <a href="/stream/rss.xml" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm">
         <svg class="w-4 h-4 mr-2 opacity-60" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
         </svg>
-        Ephemera
+        Stream
+      </a>
+      
+      <a href="/prose/rss.xml" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm">
+        <svg class="w-4 h-4 mr-2 opacity-60" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
+        </svg>
+        Prose
       </a>
       
       <a href="/nordletter.xml" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm">

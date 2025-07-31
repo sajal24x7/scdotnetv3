@@ -8,22 +8,22 @@ export async function GET(context) {
   // Get all year directories
   const years = getYearDirectories();
   
-  // Get all posts from year collections and filter for ephemera (blog, micro, photo, til)
+  // Get all posts from year collections and filter for stream (blog, micro, photo)
   const allPosts = await Promise.all(years.map(year => getCollection(year)));
   const flatPosts = allPosts.flat();
-  const ephemera = flatPosts.filter(post => 
-    ['blog', 'micro', 'photo', 'til'].includes(post.data.category)
+  const stream = flatPosts.filter(post => 
+    ['blog', 'micro', 'photo'].includes(post.data.category)
   );
   
   // Sort by publish date (newest first)
-  const sortedPosts = ephemera.sort((a, b) => 
+  const sortedPosts = stream.sort((a, b) => 
     new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
   );
   
   // Generate the RSS feed
   return rss({
-    title: 'Sajal Choudhary - Ephemera',
-    description: 'A collection of blog posts, micro updates, and photos - the everyday digital ephemera of life.',
+    title: 'Sajal Choudhary - Stream',
+    description: 'A collection of blog posts, micro updates, and photos - the everyday digital stream of life.',
     site: context.site,
     items: await Promise.all(sortedPosts.map(async (item) => {
       // Render the content body to HTML

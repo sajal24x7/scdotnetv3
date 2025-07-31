@@ -13,13 +13,12 @@ const {
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about/', label: 'About Sajal' },
-  { href: '/notes/', label: 'Notes' },
-  { href: '/ephemera/', label: 'Ephemera' },
+  { href: '/about/', label: 'About' },
+  { href: '/garden/', label: 'Garden' },
+  { href: '/stream/', label: 'Stream' },
   { href: '/nordletter/', label: 'NordLetter' },
   { href: '/books/', label: 'Books' },
-  { href: '/stories/', label: 'Stories' },
-  { href: '/poems/', label: 'Poems' },
+  { href: '/prose/', label: 'Prose' },
   { href: '/feeds/', label: 'Feeds' },
 ];
 
@@ -34,22 +33,14 @@ const isActive = (href: string) => {
   <div class="pt-2">
     <div class="grid grid-cols-2 gap-x-4">
       <div class="flex flex-col items-start space-y-0.5">
-        <a href="/about/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-small uppercase tracking-wide font-medium text-left">ABOUT SAJAL</a>
-        <div class="flex gap-x-1 items-center py-0.5">
-          <a href="/notes/" class="text-textSecondary hover:text-textPrimary transition-colors inline-block text-small uppercase tracking-wide font-medium text-left">NOTES</a>
-          <span class="text-textSecondary text-small">&</span>
-          <a href="/ephemera/" class="text-textSecondary hover:text-textPrimary transition-colors inline-block text-small uppercase tracking-wide font-medium text-left">EPHEMERA</a>
-        </div>
-        <div class="flex gap-x-1 items-center py-0.5">
-          <a href="/stories/" class="text-textSecondary hover:text-textPrimary transition-colors inline-block text-small uppercase tracking-wide font-medium text-left">STORIES</a>
-          <span class="text-textSecondary text-small">&</span>
-          <a href="/poems/" class="text-textSecondary hover:text-textPrimary transition-colors inline-block text-small uppercase tracking-wide font-medium text-left">POEMS</a>
-        </div>
+        <a href="/about/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-small uppercase tracking-wide font-medium text-left">ABOUT</a>
+        <a href="/garden/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-small uppercase tracking-wide font-medium text-left">GARDEN</a>
+        <a href="/stream/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-small uppercase tracking-wide font-medium text-left">STREAM</a>
       </div>
       <div class="flex flex-col items-start space-y-0.5">
         <a href="/books/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-small uppercase tracking-wide font-medium text-left">BOOKS</a>
+        <a href="/prose/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-small uppercase tracking-wide font-medium text-left">PROSE</a>
         <a href="/nordletter/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-small uppercase tracking-wide font-medium text-left">NORDLETTER</a>
-        <a href="/feeds/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-small uppercase tracking-wide font-medium text-left">FEEDS</a>
       </div>
     </div>
   </div>
@@ -57,22 +48,14 @@ const isActive = (href: string) => {
   <div class="flex flex-col items-start">
     <div class="grid grid-cols-2 gap-x-20">
       <div class="flex flex-col items-start">
-        <a href="/about/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-normal uppercase tracking-wide font-medium text-left">ABOUT SAJAL</a>
-        <div class="flex gap-x-1 items-center py-0.5">
-          <a href="/notes/" class="text-textSecondary hover:text-textPrimary transition-colors inline-block text-normal uppercase tracking-wide font-medium text-left">NOTES</a>
-          <span class="text-textSecondary">&</span>
-          <a href="/ephemera/" class="text-textSecondary hover:text-textPrimary transition-colors inline-block text-normal uppercase tracking-wide font-medium text-left">EPHEMERA</a>
-        </div>
-        <div class="flex gap-x-1 items-center py-0.5">
-          <a href="/stories/" class="text-textSecondary hover:text-textPrimary transition-colors inline-block text-normal uppercase tracking-wide font-medium text-left">STORIES</a>
-          <span class="text-textSecondary">&</span>
-          <a href="/poems/" class="text-textSecondary hover:text-textPrimary transition-colors inline-block text-normal uppercase tracking-wide font-medium text-left">POEMS</a>
-        </div>
+        <a href="/about/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-normal uppercase tracking-wide font-medium text-left">ABOUT</a>
+        <a href="/garden/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-normal uppercase tracking-wide font-medium text-left">GARDEN</a>
+        <a href="/stream/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-normal uppercase tracking-wide font-medium text-left">STREAM</a>
       </div>
       <div class="flex flex-col items-start">
         <a href="/books/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-normal uppercase tracking-wide font-medium text-left">BOOKS</a>
+        <a href="/prose/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-normal uppercase tracking-wide font-medium text-left">PROSE</a>
         <a href="/nordletter/" class="text-textPrimary hover:text-textPrimary transition-colors py-0.5 inline-block text-normal uppercase tracking-wide font-medium text-left">NORDLETTER</a>
-        <a href="/feeds/" class="text-textSecondary hover:text-textPrimary transition-colors py-0.5 inline-block text-normal uppercase tracking-wide font-medium text-left">FEEDS</a>
       </div>
     </div>
   </div>

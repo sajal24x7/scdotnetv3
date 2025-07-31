@@ -14,16 +14,16 @@ import { formatDate } from '../utils/date';
 // Get all posts
 const allPosts = await getAllPosts();
 
-// Recent notes (evergreen category)
-const recentNotes = allPosts
-  .filter(post => post.data.category === 'evergreen')
+// Recent garden posts (evergreen, til, now categories)
+const recentGarden = allPosts
+  .filter(post => ['evergreen', 'til', 'now'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
   .slice(0, 8)
   .map(transformPost);
 
-// Ephemera posts (blog, micro, photo, til categories)
-const ephemeraPosts = allPosts
-  .filter(post => ['blog', 'micro', 'photo', 'til'].includes(post.data.category))
+// Stream posts (blog, micro, photo categories)
+const streamPosts = allPosts
+  .filter(post => ['blog', 'micro', 'photo'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
   .slice(0, 8);
 
@@ -33,8 +33,8 @@ const recentBooks = allPosts
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
   .slice(0, 8);
 
-// Recent fiction posts (poems and stories combined)
-const recentFiction = allPosts
+// Recent prose posts (poems and stories combined)
+const recentProse = allPosts
   .filter(post => ['poem', 'story'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
   .slice(0, 8);
@@ -85,14 +85,14 @@ const sections = [
   <HomeTwoRowGrid>
     <ResponsiveContentGrid
       slot="topLeft"
-      posts={recentNotes}
+      posts={recentGarden}
       columns={2}
       layout="grid"
       gap="md"
     />
     <PostList
       slot="topRight"
-      posts={ephemeraPosts}
+      posts={streamPosts}
       mode="list"
       showCategory={true}
       compact={true}
@@ -100,7 +100,7 @@ const sections = [
     />
     <FictionGrid
       slot="bottomLeft"
-      posts={recentFiction}
+      posts={recentProse}
       maxPosts={8}
     />
     <BookList

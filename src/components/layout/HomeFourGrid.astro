@@ -4,19 +4,19 @@
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] md:grid-rows-2 gap-6 md:gap-8 w-full">
-  <!-- Top left: Notes grid (wider) -->
+  <!-- Top left: Garden grid (wider) -->
   <div class="bg-white dark:bg-zinc-900 rounded-lg shadow p-4 flex flex-col min-h-[200px] md:col-start-1 md:row-start-1 md:border-r md:border-black/10 dark:md:border-white/10">
     <slot name="topLeft" />
   </div>
-  <!-- Top right: Ephemera feed (narrower) -->
+  <!-- Top right: Stream feed (narrower) -->
   <div class="bg-white dark:bg-zinc-900 rounded-lg shadow p-4 flex flex-col min-h-[200px] md:col-start-2 md:row-start-1">
     <slot name="topRight" />
   </div>
-  <!-- Bottom left: Bookshelf (narrower, matches ephemera feed) -->
+  <!-- Bottom left: Bookshelf (narrower, matches stream feed) -->
   <div class="bg-white dark:bg-zinc-900 rounded-lg shadow p-4 flex flex-col min-h-[200px] md:col-start-2 md:row-start-2">
     <slot name="bottomLeft" />
   </div>
-  <!-- Bottom right: Poems/stories (wider, matches notes grid) -->
+  <!-- Bottom right: Prose (wider, matches garden grid) -->
   <div class="bg-white dark:bg-zinc-900 rounded-lg shadow p-4 flex flex-col min-h-[200px] md:col-start-1 md:row-start-2 md:border-l md:border-black/10 dark:md:border-white/10">
     <slot name="bottomRight" />
   </div>

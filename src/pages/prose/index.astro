@@ -4,20 +4,20 @@ import ContentGrid from '../../components/ContentGrid.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
-// Get all posts and filter for stories
+// Get all posts and filter for prose (stories and poems)
 const allPosts = await getAllPosts();
-const stories = allPosts
-  .filter(post => post.data.category === 'story')
+const prose = allPosts
+  .filter(post => ['story', 'poem'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
 // Transform posts for the ContentGrid component
-const transformedPosts = stories.map(transformPost);
+const transformedPosts = prose.map(transformPost);
 ---
 
 <Layout 
-  title="Stories" 
-  description="Short stories and fiction" 
-  currentPage="/stories/"
+  title="Prose" 
+  description="Stories and poems" 
+  currentPage="/prose/"
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'none',
@@ -26,38 +26,38 @@ const transformedPosts = stories.map(transformPost);
   }}
 >
     <PageHeader 
-      title="Stories"
-      description="Short stories and fiction pieces."
+      title="Prose"
+      description="Stories and poems from my collections."
       layout="centered"
       size="lg"
     />
     
-    <div class="stories-count mb-6 text-center">
-      {transformedPosts.length} {transformedPosts.length === 1 ? 'story' : 'stories'}
+    <div class="prose-count mb-6 text-center">
+      {transformedPosts.length} {transformedPosts.length === 1 ? 'piece' : 'pieces'}
     </div>
     
     <div class="text-center mb-6">
       <a 
-        href="/tags/?category=story" 
+        href="/tags/?category=prose" 
         class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
       >
         View entries by tag
       </a>
     </div>
 
-    <main class="stories-main">
+    <main class="prose-main">
       <ContentGrid posts={transformedPosts} />
     </main>
 </Layout>
 
 <style>
-  .stories-container {
+  .prose-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 0.5rem;
   }
 
-  .stories-count {
+  .prose-count {
     font-size: 0.875rem;
     font-weight: 500;
     color: #8b5cf6;
@@ -65,22 +65,22 @@ const transformedPosts = stories.map(transformPost);
     letter-spacing: 0.05em;
   }
 
-  :global(.dark) .stories-count {
+  :global(.dark) .prose-count {
     color: #a78bfa;
   }
 
-  .stories-main {
+  .prose-main {
     padding-bottom: 2rem;
   }
 
   /* Mobile adjustments */
   @media (max-width: 768px) {
-    .stories-container {
+    .prose-container {
       max-width: none;
       padding: 0;
     }
 
-    .stories-main {
+    .prose-main {
       padding-bottom: 1.5rem;
     }
   }
