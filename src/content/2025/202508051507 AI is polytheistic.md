@@ -1,6 +1,6 @@
 ---
-title: "AU is polytheistic"
-slug: "au-is-polytheistic"
+title: "AI is polytheistic"
+slug: "ai-is-polytheistic"
 pubDate: 2025-08-05T15:08:21+03:00
 updatedDate: 2025-08-05T15:08:21+03:00
 category: micro
