@@ -1,5 +1,4 @@
 ---
-title: "Ford reveals breakthrough process for lower priced EVs"
 slug: "ford-reveals-breakthrough-process-for-lower-priced-evs"
 pubDate: 2025-08-12T13:39:06+03:00
 updatedDate: 2025-08-12T13:39:06+03:00
