@@ -55,7 +55,7 @@ const isMainActive = (key: string) => {
 };
 ---
 
-<div class="w-full bg-white dark:bg-gray-900">
+<div class="w-full">
   <!-- Name Header Row -->
   <div class="border-b border-gray-200 dark:border-gray-700">
     <div class="container mx-auto px-4 max-w-6xl">
@@ -78,8 +78,8 @@ const isMainActive = (key: string) => {
             href={item.href}
             class={`px-6 py-4 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
               isMainActive(item.key)
-                ? 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white border-b-2 border-blue-600'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+                ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white border-b-2 border-blue-600'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50'
             }`}
           >
             {item.label}
@@ -91,7 +91,7 @@ const isMainActive = (key: string) => {
 
   <!-- Secondary Navigation Row (only shown when Garden or Stream is active) -->
   {activeMainSection && (activeMainSection === 'garden' || activeMainSection === 'stream') && (
-    <nav class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <nav class="border-b border-gray-200 dark:border-gray-700">
       <div class="container mx-auto px-4 max-w-6xl">
         <div class="flex items-center">
           {secondaryNavItems[activeMainSection].map((item) => (
@@ -99,8 +99,8 @@ const isMainActive = (key: string) => {
               href={item.href}
               class={`px-6 py-4 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
                 isActive(item.href)
-                  ? 'bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-b-2 border-blue-600'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white dark:hover:bg-gray-900'
+                  ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-b-2 border-blue-600'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50'
               }`}
             >
               {item.label}
