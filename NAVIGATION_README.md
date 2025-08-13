@@ -29,16 +29,17 @@ When a user navigates to **Garden** or **Stream**, a secondary navigation bar au
 ## How It Works
 
 ### Desktop Experience
-1. **Main Navigation Row**: Always visible at the top with logo and main navigation items
-2. **Secondary Navigation Row**: Appears automatically when in Garden or Stream sections
-3. **Active States**: Current section is highlighted with accent color and border
-4. **Hover Effects**: Smooth transitions and visual feedback
+1. **Name Header Row**: "Sajal Choudhary" displayed prominently in serif font
+2. **Primary Navigation Row**: Main navigation items with consistent spacing and styling
+3. **Secondary Navigation Row**: Appears automatically when in Garden or Stream sections
+4. **Active States**: Current section is highlighted with background color and blue border
+5. **Hover Effects**: Smooth transitions and visual feedback
 
 ### Mobile Experience
-1. **Hamburger Menu**: Collapsible navigation for mobile devices
-2. **Responsive Layout**: Optimized for small screens
+1. **Consistent Layout**: Same navigation structure across all devices
+2. **Responsive Design**: Optimized for small screens with identical styling
 3. **Touch-Friendly**: Large touch targets and clear visual hierarchy
-4. **Progressive Disclosure**: Secondary navigation appears within the mobile menu
+4. **Clean Interface**: No hamburger menu, direct access to all navigation
 
 ## Technical Implementation
 
@@ -50,7 +51,7 @@ When a user navigates to **Garden** or **Stream**, a secondary navigation bar au
 ### Key Features
 - **Automatic Active State Detection**: Based on current page path
 - **Responsive Design**: Built with Tailwind CSS
-- **Client-Side JavaScript**: For mobile menu functionality
+- **Clean HTML Structure**: No JavaScript required for basic functionality
 - **Accessibility**: Proper ARIA labels and keyboard navigation
 
 ### File Structure
