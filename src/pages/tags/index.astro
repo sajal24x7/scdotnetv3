@@ -116,7 +116,7 @@ categories.forEach(category => {
       const category = urlParams.get('category');
       
       if (category && tagsByCategory[category]) {
-      // Update page title and description
+        // Update page title and description
       const title = document.querySelector('h1');
       const description = document.querySelector('header p');
       
@@ -186,6 +186,7 @@ categories.forEach(category => {
         `;
         }
       }
+      // If no category parameter, leave the page as is with default "Tags" title
     });
   </script>
 </Layout> 
