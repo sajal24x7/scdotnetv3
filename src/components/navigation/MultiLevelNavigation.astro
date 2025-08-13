@@ -50,7 +50,7 @@ const getActiveMainSection = () => {
   // Check for individual post categories that belong to stream
   if (currentPage.startsWith('/blog/') || 
       currentPage.startsWith('/micro/') || 
-      currentPage.startsWith('/photo/')) return 'stream';
+      currentPage.startsWith('/photos/')) return 'stream';
   
   // Check for tags pages - show garden navigation by default
   if (currentPage.startsWith('/tags/')) return 'garden';
@@ -88,7 +88,7 @@ const getActiveSubsection = () => {
   // Check for stream subsections
   if (currentPage.startsWith('/blog/')) return '/blog/';
   if (currentPage.startsWith('/micro/')) return '/micro/';
-  if (currentPage.startsWith('/photo/')) return '/photos/';
+  if (currentPage.startsWith('/photos/')) return '/photos/';
   
   return null;
 };
