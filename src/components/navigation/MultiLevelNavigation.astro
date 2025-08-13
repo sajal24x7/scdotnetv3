@@ -126,15 +126,15 @@ const activeSubsection = getActiveSubsection();
         const primaryNav = document.querySelector('nav a[href="/' + mainSection + '/"]');
         if (primaryNav) {
           // Remove active state from current active item
-          const currentActive = document.querySelector('nav a.border-b-2');
+          const currentActive = document.querySelector('nav a.bg-gray-100\\/80, nav a.dark\\:bg-gray-800\\/80');
           if (currentActive) {
-            currentActive.classList.remove('bg-gray-100/80', 'dark:bg-gray-800/80', 'text-gray-900', 'dark:text-white', 'border-b-2', 'border-blue-600', 'shadow-sm');
+            currentActive.classList.remove('bg-gray-100/80', 'dark:bg-gray-800/80', 'text-gray-900', 'dark:text-white', 'shadow-sm');
             currentActive.classList.add('text-gray-600', 'dark:text-gray-400');
           }
           
           // Add active state to the correct section
           primaryNav.classList.remove('text-gray-600', 'dark:text-gray-400');
-          primaryNav.classList.add('bg-gray-100/80', 'dark:bg-gray-800/80', 'text-gray-900', 'dark:text-white', 'border-b-2', 'border-blue-600', 'shadow-sm');
+          primaryNav.classList.add('bg-gray-100/80', 'dark:bg-gray-800/80', 'text-gray-900', 'dark:text-white', 'shadow-sm');
         }
         
         // Update secondary navigation highlighting if subsection exists
@@ -159,7 +159,7 @@ const activeSubsection = getActiveSubsection();
   <!-- Name Header Row -->
   <div class="border-b border-gray-200 dark:border-gray-700">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="py-3">
+      <div class="py-3 pl-6">
         <a href="/" class="inline-block">
           <h1 class="text-2xl font-bold text-gray-900 dark:text-white font-serif tracking-tight">
             Sajal Choudhary
@@ -178,7 +178,7 @@ const activeSubsection = getActiveSubsection();
             href={item.href}
             class={`px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors duration-200 rounded-t-lg mx-1 first:ml-0 last:mr-0 ${
               isMainActive(item.key)
-                ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white border-b-2 border-blue-600 shadow-sm'
+                ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white shadow-sm'
                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50 hover:shadow-sm'
             }`}
           >
@@ -199,7 +199,7 @@ const activeSubsection = getActiveSubsection();
               href={item.href}
               class={`px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors duration-200 rounded-t-lg mx-1 first:ml-0 last:mr-0 ${
                 (isActive(item.href) || (activeSubsection && activeSubsection === item.href))
-                  ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-b-2 border-blue-600 shadow-sm'
+                  ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white shadow-sm'
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50 hover:shadow-sm'
               }`}
             >
@@ -228,8 +228,8 @@ const activeSubsection = getActiveSubsection();
   }
   
   /* Active state styling */
-  nav a.border-b-2 {
-    margin-bottom: -1px;
+  nav a {
+    border-radius: 8px 8px 0 0;
   }
   
   /* Hover effects */
