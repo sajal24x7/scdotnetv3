@@ -6,6 +6,8 @@ interface Props {
 
 const { currentPage, layout = 'desktop' } = Astro.props;
 
+
+
 // Main navigation items
 const mainNavItems = [
   { href: '/about/', label: 'About', key: 'about' },
@@ -17,17 +19,17 @@ const mainNavItems = [
 // Secondary navigation items for each main section
 const secondaryNavItems = {
   garden: [
-    { href: '/garden/evergreen/', label: 'Evergreen' },
-    { href: '/garden/til/', label: 'TIL' },
-    { href: '/garden/bookshelf/', label: 'Bookshelf' },
-    { href: '/garden/notes/', label: 'Notes' },
-    { href: '/garden/stories/', label: 'Stories' },
-    { href: '/garden/poems/', label: 'Poems' },
+    { href: '/evergreen/', label: 'Evergreen' },
+    { href: '/til/', label: 'TIL' },
+    { href: '/bookshelf/', label: 'Bookshelf' },
+    { href: '/notes/', label: 'Notes' },
+    { href: '/stories/', label: 'Stories' },
+    { href: '/poems/', label: 'Poems' },
   ],
   stream: [
-    { href: '/stream/blog/', label: 'Blog' },
-    { href: '/stream/micro/', label: 'Micro' },
-    { href: '/stream/photos/', label: 'Photos' },
+    { href: '/blog/', label: 'Blog' },
+    { href: '/micro/', label: 'Micro' },
+    { href: '/photos/', label: 'Photos' },
   ],
 };
 
@@ -43,14 +45,17 @@ const getActiveMainSection = () => {
   if (currentPage.startsWith('/evergreen/') || 
       currentPage.startsWith('/til/') || 
       currentPage.startsWith('/bookshelf/') || 
-      currentPage.startsWith('/notes/')) return 'garden';
+      currentPage.startsWith('/notes/') ||
+      currentPage.startsWith('/stories/') ||
+      currentPage.startsWith('/poems/')) return 'garden';
   
   // Check for individual post categories that belong to stream
   if (currentPage.startsWith('/blog/') || 
       currentPage.startsWith('/micro/') || 
-      currentPage.startsWith('/photo/') || 
-      currentPage.startsWith('/story/') || 
-      currentPage.startsWith('/poem/')) return 'stream';
+      currentPage.startsWith('/photo/')) return 'stream';
+  
+  // Check for tags pages - show garden navigation by default
+  if (currentPage.startsWith('/tags/')) return 'garden';
   
   // Check for other sections
   if (currentPage.startsWith('/about/')) return 'about';
@@ -76,17 +81,17 @@ const isMainActive = (key: string) => {
 // Get the specific subsection that's active for highlighting
 const getActiveSubsection = () => {
   // Check for garden subsections
-  if (currentPage.startsWith('/evergreen/')) return '/garden/evergreen/';
-  if (currentPage.startsWith('/til/')) return '/garden/til/';
-  if (currentPage.startsWith('/bookshelf/')) return '/garden/bookshelf/';
-  if (currentPage.startsWith('/notes/')) return '/garden/notes/';
-  if (currentPage.startsWith('/story/')) return '/garden/stories/';
-  if (currentPage.startsWith('/poem/')) return '/garden/poems/';
+  if (currentPage.startsWith('/evergreen/')) return '/evergreen/';
+  if (currentPage.startsWith('/til/')) return '/til/';
+  if (currentPage.startsWith('/bookshelf/')) return '/bookshelf/';
+  if (currentPage.startsWith('/notes/')) return '/notes/';
+  if (currentPage.startsWith('/stories/')) return '/stories/';
+  if (currentPage.startsWith('/poems/')) return '/poems/';
   
   // Check for stream subsections
-  if (currentPage.startsWith('/blog/')) return '/stream/blog/';
-  if (currentPage.startsWith('/micro/')) return '/stream/micro/';
-  if (currentPage.startsWith('/photo/')) return '/stream/photos/';
+  if (currentPage.startsWith('/blog/')) return '/blog/';
+  if (currentPage.startsWith('/micro/')) return '/micro/';
+  if (currentPage.startsWith('/photo/')) return '/photos/';
   
   return null;
 };
@@ -95,6 +100,37 @@ const activeSubsection = getActiveSubsection();
 ---
 
 <div class="w-full">
+  <script>
+    // Handle category filtering for tags pages and update navigation
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const category = urlParams.get('category');
+      
+      if (category && window.location.pathname.startsWith('/tags/')) {
+        // Determine which main section this category belongs to
+        let mainSection = 'garden'; // default
+        
+        if (['stream', 'blog', 'micro', 'photo'].includes(category)) {
+          mainSection = 'stream';
+        }
+        
+        // Update the primary navigation highlighting
+        const primaryNav = document.querySelector('nav a[href="/' + mainSection + '/"]');
+        if (primaryNav) {
+          // Remove active state from current active item
+          const currentActive = document.querySelector('nav a.border-b-2');
+          if (currentActive) {
+            currentActive.classList.remove('bg-gray-100/80', 'dark:bg-gray-800/80', 'text-gray-900', 'dark:text-white', 'border-b-2', 'border-blue-600');
+            currentActive.classList.add('text-gray-600', 'dark:text-gray-400');
+          }
+          
+          // Add active state to the correct section
+          primaryNav.classList.remove('text-gray-600', 'dark:text-gray-400');
+          primaryNav.classList.add('bg-gray-100/80', 'dark:bg-gray-800/80', 'text-gray-900', 'dark:text-white', 'border-b-2', 'border-blue-600');
+        }
+      }
+    });
+  </script>
   <!-- Name Header Row -->
   <div class="border-b border-gray-200 dark:border-gray-700">
     <div class="container mx-auto px-4 max-w-6xl">
