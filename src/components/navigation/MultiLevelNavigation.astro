@@ -72,6 +72,26 @@ const isActive = (href: string) => {
 const isMainActive = (key: string) => {
   return activeMainSection === key;
 };
+
+// Get the specific subsection that's active for highlighting
+const getActiveSubsection = () => {
+  // Check for garden subsections
+  if (currentPage.startsWith('/evergreen/')) return '/garden/evergreen/';
+  if (currentPage.startsWith('/til/')) return '/garden/til/';
+  if (currentPage.startsWith('/bookshelf/')) return '/garden/bookshelf/';
+  if (currentPage.startsWith('/notes/')) return '/garden/notes/';
+  
+  // Check for stream subsections
+  if (currentPage.startsWith('/blog/')) return '/stream/blog/';
+  if (currentPage.startsWith('/micro/')) return '/stream/micro/';
+  if (currentPage.startsWith('/photo/')) return '/stream/photos/';
+  if (currentPage.startsWith('/story/')) return '/stream/stories/';
+  if (currentPage.startsWith('/poem/')) return '/stream/poems/';
+  
+  return null;
+};
+
+const activeSubsection = getActiveSubsection();
 ---
 
 <div class="w-full">
@@ -117,7 +137,7 @@ const isMainActive = (key: string) => {
             <a
               href={item.href}
               class={`px-6 py-4 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
-                isActive(item.href)
+                (isActive(item.href) || (activeSubsection && activeSubsection === item.href))
                   ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-b-2 border-blue-600'
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50'
               }`}
