@@ -31,18 +31,37 @@ const secondaryNavItems = {
   ],
 };
 
-// Determine which main section is active
+// Determine which main section is active - improved logic for post pages
 const getActiveMainSection = () => {
+  // Check for garden section (including all subdirectories and posts)
   if (currentPage.startsWith('/garden/')) return 'garden';
+  
+  // Check for stream section (including all subdirectories and posts)
   if (currentPage.startsWith('/stream/')) return 'stream';
+  
+  // Check for individual post categories that belong to garden
+  if (currentPage.startsWith('/evergreen/') || 
+      currentPage.startsWith('/til/') || 
+      currentPage.startsWith('/bookshelf/') || 
+      currentPage.startsWith('/notes/')) return 'garden';
+  
+  // Check for individual post categories that belong to stream
+  if (currentPage.startsWith('/blog/') || 
+      currentPage.startsWith('/micro/') || 
+      currentPage.startsWith('/photo/') || 
+      currentPage.startsWith('/story/') || 
+      currentPage.startsWith('/poem/')) return 'stream';
+  
+  // Check for other sections
   if (currentPage.startsWith('/about/')) return 'about';
   if (currentPage.startsWith('/nordletter/')) return 'nordletter';
+  
   return null;
 };
 
 const activeMainSection = getActiveMainSection();
 
-// Check if a link is active
+// Check if a link is active - improved logic for post pages
 const isActive = (href: string) => {
   if (href === '/' && currentPage === '/') return true;
   if (href !== '/' && currentPage.startsWith(href)) return true;
@@ -89,7 +108,7 @@ const isMainActive = (key: string) => {
     </div>
   </nav>
 
-  <!-- Secondary Navigation Row (only shown when Garden or Stream is active) -->
+  <!-- Secondary Navigation Row (persistent for Garden and Stream sections) -->
   {activeMainSection && (activeMainSection === 'garden' || activeMainSection === 'stream') && (
     <nav class="border-b border-gray-200 dark:border-gray-700">
       <div class="container mx-auto px-4 max-w-6xl">
