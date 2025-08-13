@@ -22,7 +22,6 @@ const secondaryNavItems = {
     { href: '/evergreen/', label: 'Evergreen' },
     { href: '/til/', label: 'TIL' },
     { href: '/bookshelf/', label: 'Bookshelf' },
-    { href: '/notes/', label: 'Notes' },
     { href: '/stories/', label: 'Stories' },
     { href: '/poems/', label: 'Poems' },
   ],
@@ -45,7 +44,6 @@ const getActiveMainSection = () => {
   if (currentPage.startsWith('/evergreen/') || 
       currentPage.startsWith('/til/') || 
       currentPage.startsWith('/bookshelf/') || 
-      currentPage.startsWith('/notes/') ||
       currentPage.startsWith('/stories/') ||
       currentPage.startsWith('/poems/')) return 'garden';
   
@@ -84,7 +82,6 @@ const getActiveSubsection = () => {
   if (currentPage.startsWith('/evergreen/')) return '/evergreen/';
   if (currentPage.startsWith('/til/')) return '/til/';
   if (currentPage.startsWith('/bookshelf/')) return '/bookshelf/';
-  if (currentPage.startsWith('/notes/')) return '/notes/';
   if (currentPage.startsWith('/stories/')) return '/stories/';
   if (currentPage.startsWith('/poems/')) return '/poems/';
   
@@ -109,10 +106,21 @@ const activeSubsection = getActiveSubsection();
       if (category && window.location.pathname.startsWith('/tags/')) {
         // Determine which main section this category belongs to
         let mainSection = 'garden'; // default
+        let subsection = null;
         
         if (['stream', 'blog', 'micro', 'photo'].includes(category)) {
           mainSection = 'stream';
         }
+        
+        // Map category to subsection for highlighting
+        if (category === 'til') subsection = '/til/';
+        else if (category === 'evergreen') subsection = '/evergreen/';
+        else if (category === 'bookshelf') subsection = '/bookshelf/';
+        else if (category === 'stories') subsection = '/stories/';
+        else if (category === 'poems') subsection = '/poems/';
+        else if (category === 'blog') subsection = '/blog/';
+        else if (category === 'micro') subsection = '/micro/';
+        else if (category === 'photo') subsection = '/photos/';
         
         // Update the primary navigation highlighting
         const primaryNav = document.querySelector('nav a[href="/' + mainSection + '/"]');
@@ -120,13 +128,30 @@ const activeSubsection = getActiveSubsection();
           // Remove active state from current active item
           const currentActive = document.querySelector('nav a.border-b-2');
           if (currentActive) {
-            currentActive.classList.remove('bg-gray-100/80', 'dark:bg-gray-800/80', 'text-gray-900', 'dark:text-white', 'border-b-2', 'border-blue-600');
+            currentActive.classList.remove('bg-gray-100/80', 'dark:bg-gray-800/80', 'text-gray-900', 'dark:text-white', 'border-b-2', 'border-blue-600', 'shadow-sm');
             currentActive.classList.add('text-gray-600', 'dark:text-gray-400');
           }
           
           // Add active state to the correct section
           primaryNav.classList.remove('text-gray-600', 'dark:text-gray-400');
-          primaryNav.classList.add('bg-gray-100/80', 'dark:bg-gray-800/80', 'text-gray-900', 'dark:text-white', 'border-b-2', 'border-blue-600');
+          primaryNav.classList.add('bg-gray-100/80', 'dark:bg-gray-800/80', 'text-gray-900', 'dark:text-white', 'border-b-2', 'border-blue-600', 'shadow-sm');
+        }
+        
+        // Update secondary navigation highlighting if subsection exists
+        if (subsection) {
+          const secondaryNav = document.querySelector('nav a[href="' + subsection + '"]');
+          if (secondaryNav) {
+            // Remove active state from current secondary active item
+            const currentSecondaryActive = document.querySelector('nav a.bg-white\\/80, nav a.dark\\:bg-gray-900\\/80');
+            if (currentSecondaryActive) {
+              currentSecondaryActive.classList.remove('bg-white/80', 'dark:bg-gray-900/80', 'text-gray-900', 'dark:text-white', 'border-b-2', 'border-blue-600', 'shadow-sm');
+              currentSecondaryActive.classList.add('text-gray-600', 'dark:text-gray-400');
+            }
+            
+            // Add active state to the correct subsection
+            secondaryNav.classList.remove('text-gray-600', 'dark:text-gray-400');
+            secondaryNav.classList.add('bg-white/80', 'dark:bg-gray-900/80', 'text-gray-900', 'dark:text-white', 'border-b-2', 'border-blue-600', 'shadow-sm');
+          }
         }
       }
     });
@@ -147,14 +172,14 @@ const activeSubsection = getActiveSubsection();
   <!-- Primary Navigation Row -->
   <nav class="border-b border-gray-200 dark:border-gray-700">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="flex items-center">
+      <div class="flex items-center overflow-x-auto scrollbar-hide">
         {mainNavItems.map((item) => (
           <a
             href={item.href}
-            class={`px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
+            class={`px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors duration-200 rounded-t-lg mx-1 first:ml-0 last:mr-0 ${
               isMainActive(item.key)
-                ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white border-b-2 border-blue-600'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50'
+                ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white border-b-2 border-blue-600 shadow-sm'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50 hover:shadow-sm'
             }`}
           >
             {item.label}
@@ -168,14 +193,14 @@ const activeSubsection = getActiveSubsection();
   {activeMainSection && (activeMainSection === 'garden' || activeMainSection === 'stream') && (
     <nav class="border-b border-gray-200 dark:border-gray-700">
       <div class="container mx-auto px-4 max-w-6xl">
-        <div class="flex items-center">
+        <div class="flex items-center overflow-x-auto scrollbar-hide">
           {secondaryNavItems[activeMainSection].map((item) => (
             <a
               href={item.href}
-              class={`px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
+              class={`px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors duration-200 rounded-t-lg mx-1 first:ml-0 last:mr-0 ${
                 (isActive(item.href) || (activeSubsection && activeSubsection === item.href))
-                  ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-b-2 border-blue-600'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50'
+                  ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-b-2 border-blue-600 shadow-sm'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50 hover:shadow-sm'
               }`}
             >
               {item.label}
@@ -210,6 +235,30 @@ const activeSubsection = getActiveSubsection();
   /* Hover effects */
   nav a:hover {
     transition: all 0.2s ease-in-out;
+  }
+  
+  /* Hide scrollbar for horizontal scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Smooth scrolling for mobile */
+  .overflow-x-auto {
+    scroll-behavior: smooth;
+  }
+  
+  /* Enhanced shadows and transitions */
+  nav a {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  nav a:hover {
+    transform: translateY(-1px);
   }
   
   /* Responsive adjustments */
