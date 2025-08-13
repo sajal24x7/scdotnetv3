@@ -1,0 +1,211 @@
+---
+interface Props {
+  currentPage: string;
+  layout?: 'mobile' | 'desktop';
+}
+
+const { currentPage, layout = 'desktop' } = Astro.props;
+
+// Main navigation items
+const mainNavItems = [
+  { href: '/about/', label: 'About', key: 'about' },
+  { href: '/garden/', label: 'Garden', key: 'garden' },
+  { href: '/stream/', label: 'Stream', key: 'stream' },
+  { href: '/nordletter/', label: 'Nordletter', key: 'nordletter' },
+];
+
+// Secondary navigation items for each main section
+const secondaryNavItems = {
+  garden: [
+    { href: '/garden/evergreen/', label: 'Evergreen' },
+    { href: '/garden/til/', label: 'TIL' },
+    { href: '/garden/bookshelf/', label: 'Bookshelf' },
+    { href: '/garden/notes/', label: 'Notes' },
+  ],
+  stream: [
+    { href: '/stream/blog/', label: 'Blog' },
+    { href: '/stream/micro/', label: 'Micro' },
+    { href: '/stream/photos/', label: 'Photos' },
+    { href: '/stream/stories/', label: 'Stories' },
+    { href: '/stream/poems/', label: 'Poems' },
+  ],
+};
+
+// Determine which main section is active
+const getActiveMainSection = () => {
+  if (currentPage.startsWith('/garden/')) return 'garden';
+  if (currentPage.startsWith('/stream/')) return 'stream';
+  if (currentPage.startsWith('/about/')) return 'about';
+  if (currentPage.startsWith('/nordletter/')) return 'nordletter';
+  return null;
+};
+
+const activeMainSection = getActiveMainSection();
+
+// Check if a link is active
+const isActive = (href: string) => {
+  if (href === '/' && currentPage === '/') return true;
+  if (href !== '/' && currentPage.startsWith(href)) return true;
+  return false;
+};
+
+// Check if a main nav item is active
+const isMainActive = (key: string) => {
+  return activeMainSection === key;
+};
+---
+
+<div class="w-full">
+  <!-- Main Navigation Row -->
+  <nav class="border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="flex items-center text-large font-bold text-textPrimary hover:text-accent transition-colors py-4">
+          <img src="/logo/logo-square-v2.svg" alt="Sajal Logo" class="mr-3 h-12 w-12 transition-transform duration-300" />
+        </a>
+        
+        <!-- Main Navigation Items -->
+        <div class="hidden md:flex items-center space-x-8">
+          {mainNavItems.map((item) => (
+            <a
+              href={item.href}
+              class={`py-4 px-2 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
+                isMainActive(item.key)
+                  ? 'text-accent border-b-2 border-accent'
+                  : 'text-textSecondary hover:text-textPrimary'
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-button"
+          class="md:hidden p-2 text-textSecondary hover:text-textPrimary transition-colors"
+          aria-label="Toggle mobile menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Secondary Navigation Row (only shown when Garden or Stream is active) -->
+  {activeMainSection && (activeMainSection === 'garden' || activeMainSection === 'stream') && (
+    <nav class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex items-center space-x-8 overflow-x-auto">
+          {secondaryNavItems[activeMainSection].map((item) => (
+            <a
+              href={item.href}
+              class={`py-3 px-2 text-sm font-medium whitespace-nowrap transition-colors duration-200 ${
+                isActive(item.href)
+                  ? 'text-accent border-b-2 border-accent'
+                  : 'text-textSecondary hover:text-textPrimary'
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+  )}
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4 py-4">
+      <!-- Main Navigation Items -->
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        {mainNavItems.map((item) => (
+          <a
+            href={item.href}
+            class={`py-3 px-4 text-sm font-medium uppercase tracking-wide text-center rounded-lg transition-colors duration-200 ${
+              isMainActive(item.key)
+                ? 'bg-accent text-white'
+                : 'bg-gray-100 dark:bg-gray-800 text-textSecondary hover:text-textPrimary'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+      
+      <!-- Secondary Navigation Items (if Garden or Stream is active) -->
+      {activeMainSection && (activeMainSection === 'garden' || activeMainSection === 'stream') && (
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+          <h3 class="text-xs font-semibold text-textSecondary uppercase tracking-wide mb-3">
+            {activeMainSection === 'garden' ? 'Garden' : 'Stream'} Sections
+          </h3>
+          <div class="grid grid-cols-2 gap-3">
+            {secondaryNavItems[activeMainSection].map((item) => (
+              <a
+                href={item.href}
+                class={`py-2 px-3 text-sm text-center rounded-lg transition-colors duration-200 ${
+                  isActive(item.href)
+                    ? 'bg-accent text-white'
+                    : 'bg-gray-100 dark:bg-gray-800 text-textSecondary hover:text-textPrimary'
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mobile menu toggle functionality
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
+
+<style>
+  /* Custom scrollbar for secondary navigation */
+  .overflow-x-auto::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 2px;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+  
+  /* Dark mode scrollbar */
+  .dark .overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #4b5563;
+  }
+  
+  .dark .overflow-x-auto::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+</style>
