@@ -21,13 +21,13 @@ const secondaryNavItems = {
     { href: '/garden/til/', label: 'TIL' },
     { href: '/garden/bookshelf/', label: 'Bookshelf' },
     { href: '/garden/notes/', label: 'Notes' },
+    { href: '/garden/stories/', label: 'Stories' },
+    { href: '/garden/poems/', label: 'Poems' },
   ],
   stream: [
     { href: '/stream/blog/', label: 'Blog' },
     { href: '/stream/micro/', label: 'Micro' },
     { href: '/stream/photos/', label: 'Photos' },
-    { href: '/stream/stories/', label: 'Stories' },
-    { href: '/stream/poems/', label: 'Poems' },
   ],
 };
 
@@ -80,13 +80,13 @@ const getActiveSubsection = () => {
   if (currentPage.startsWith('/til/')) return '/garden/til/';
   if (currentPage.startsWith('/bookshelf/')) return '/garden/bookshelf/';
   if (currentPage.startsWith('/notes/')) return '/garden/notes/';
+  if (currentPage.startsWith('/story/')) return '/garden/stories/';
+  if (currentPage.startsWith('/poem/')) return '/garden/poems/';
   
   // Check for stream subsections
   if (currentPage.startsWith('/blog/')) return '/stream/blog/';
   if (currentPage.startsWith('/micro/')) return '/stream/micro/';
   if (currentPage.startsWith('/photo/')) return '/stream/photos/';
-  if (currentPage.startsWith('/story/')) return '/stream/stories/';
-  if (currentPage.startsWith('/poem/')) return '/stream/poems/';
   
   return null;
 };
@@ -98,7 +98,7 @@ const activeSubsection = getActiveSubsection();
   <!-- Name Header Row -->
   <div class="border-b border-gray-200 dark:border-gray-700">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="py-4">
+      <div class="py-3">
         <a href="/" class="inline-block">
           <h1 class="text-2xl font-bold text-gray-900 dark:text-white font-serif tracking-tight">
             Sajal Choudhary
@@ -115,7 +115,7 @@ const activeSubsection = getActiveSubsection();
         {mainNavItems.map((item) => (
           <a
             href={item.href}
-            class={`px-6 py-4 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
+            class={`px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
               isMainActive(item.key)
                 ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white border-b-2 border-blue-600'
                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50'
@@ -136,7 +136,7 @@ const activeSubsection = getActiveSubsection();
           {secondaryNavItems[activeMainSection].map((item) => (
             <a
               href={item.href}
-              class={`px-6 py-4 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
+              class={`px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
                 (isActive(item.href) || (activeSubsection && activeSubsection === item.href))
                   ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-b-2 border-blue-600'
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50'
@@ -159,7 +159,7 @@ const activeSubsection = getActiveSubsection();
   
   /* Ensure consistent dimensions */
   nav a {
-    min-height: 48px;
+    min-height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
