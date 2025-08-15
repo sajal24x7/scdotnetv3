@@ -5,7 +5,8 @@ pubDate: 2025-08-15T12:59:11+03:00
 updatedDate: 2025-08-15T12:59:11+03:00
 category: micro
 tags: 
-
+  - writing
+  - publishing
 ---
 [Everything I Know about Self-Publishing by Kevin Kelly](https://kk.org/thetechnium/everything-i-know-about-self-publishing/)
 
