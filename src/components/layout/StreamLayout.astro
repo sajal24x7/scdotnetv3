@@ -36,69 +36,69 @@ const isMicroContent = (category: string) => category === 'micro';
 <div class="stream-layout">
   <!-- Desktop: 3-column layout -->
   <div class="stream-desktop">
-    <!-- Left sidebar: Empty on desktop (metadata will be inline) -->
+    <!-- Left sidebar: Metadata (aligned with content) -->
     <div class="stream-sidebar-left">
-      <!-- This space is intentionally left for potential future use -->
+      <!-- Metadata containers will be positioned to align with posts -->
     </div>
     
-    <!-- Center content -->
+    <!-- Center content with inline metadata positioning -->
     <div class="stream-content">
       {renderedPosts.map((post) => (
-        <article class="stream-post">
-          <div class="stream-post-header">
+        <div class="stream-post-row">
+          <!-- Metadata for this specific post -->
+          <div class="stream-post-metadata">
             <div class="stream-metadata">
               <time class="stream-date" datetime={post.data.pubDate.toISOString()}>
                 {formatDate(post.data.pubDate)}
               </time>
-              <div class="stream-meta-divider">•</div>
               <span class="stream-category">
                 {post.data.category}
               </span>
               {post.data.tags && post.data.tags.length > 0 && (
-                <>
-                  <div class="stream-meta-divider">•</div>
-                  <div class="stream-tags-inline">
-                    {post.data.tags.map((tag: string) => (
-                      <a href={`/tags/${tag.toLowerCase()}/`} class="stream-tag-link">
-                        #{tag}
-                      </a>
-                    ))}
-                  </div>
-                </>
+                <div class="stream-tags-sidebar">
+                  {post.data.tags.map((tag: string) => (
+                    <a href={`/tags/${tag.toLowerCase()}/`} class="stream-tag-link">
+                      #{tag}
+                    </a>
+                  ))}
+                </div>
               )}
             </div>
           </div>
           
-          <div class="stream-post-content">
-            {!isMicroContent(post.data.category) && post.data.title && (
-              <h2 class="stream-title">
-                <a href={post.data.link} class="stream-title-link">
-                  {post.data.title}
-                </a>
-              </h2>
-            )}
-            
-            <div class="stream-body">
-              {post.data.category === 'micro' ? (
-                <div class="prose dark:prose-dark max-w-none" set:html={post.renderedContent || post.body} />
-              ) : (
-                post.data.description && (
-                  <p class="stream-description">
-                    {post.data.description}
-                  </p>
-                )
+          <!-- Post content -->
+          <article class="stream-post">
+            <div class="stream-post-content">
+              {!isMicroContent(post.data.category) && post.data.title && (
+                <h2 class="stream-title">
+                  <a href={post.data.link} class="stream-title-link">
+                    {post.data.title}
+                  </a>
+                </h2>
+              )}
+              
+              <div class="stream-body">
+                {post.data.category === 'micro' ? (
+                  <div class="prose dark:prose-dark max-w-none" set:html={post.renderedContent || post.body} />
+                ) : (
+                  post.data.description && (
+                    <p class="stream-description">
+                      {post.data.description}
+                    </p>
+                  )
+                )}
+              </div>
+              
+              {!isMicroContent(post.data.category) && (
+                <div class="stream-read-more">
+                  <a href={post.data.link} class="read-more-link">
+                    Read more →
+                  </a>
+                </div>
               )}
             </div>
-            
-            {!isMicroContent(post.data.category) && (
-              <div class="stream-read-more">
-                <a href={post.data.link} class="read-more-link">
-                  Read more →
-                </a>
-              </div>
-            )}
-          </div>
-        </article>
+          </article>
+        </div>
       ))}
     </div>
     
@@ -201,14 +201,15 @@ const isMicroContent = (category: string) => category === 'micro';
   @media (min-width: 1024px) {
     .stream-desktop {
       display: grid;
-      grid-template-columns: 1fr 2fr 300px;
+      grid-template-columns: 1fr 300px;
       gap: 2rem;
       padding: 0 1rem;
     }
   }
 
   .stream-sidebar-left {
-    /* Reserved for future use */
+    /* This is now empty - metadata is handled within each post row */
+    display: none;
   }
 
   .stream-content {
@@ -221,33 +222,54 @@ const isMicroContent = (category: string) => category === 'micro';
     height: fit-content;
   }
 
-  /* Post styling */
-  .stream-post {
+  /* Post row styling */
+  .stream-post-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
     border-bottom: 1px solid #e5e7eb;
     padding-bottom: 2rem;
     margin-bottom: 2rem;
   }
 
-  .stream-post:last-child {
+  .stream-post-row:last-child {
     border-bottom: none;
     margin-bottom: 0;
   }
 
-  :global(.dark) .stream-post {
+  :global(.dark) .stream-post-row {
     border-bottom-color: #374151;
   }
 
-  .stream-post-header {
-    margin-bottom: 1rem;
+  @media (max-width: 1023px) {
+    .stream-post-row {
+      display: block;
+    }
+    
+    .stream-post-metadata {
+      display: none;
+    }
+  }
+
+  .stream-post {
+    /* Border and spacing now handled by stream-post-row */
+  }
+
+
+
+  .stream-post-metadata {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
   }
 
   .stream-metadata {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.75rem;
     font-size: 0.875rem;
     color: #6b7280;
+    text-align: right;
   }
 
   :global(.dark) .stream-metadata {
@@ -258,13 +280,7 @@ const isMicroContent = (category: string) => category === 'micro';
     font-weight: 500;
   }
 
-  .stream-meta-divider {
-    color: #d1d5db;
-  }
 
-  :global(.dark) .stream-meta-divider {
-    color: #4b5563;
-  }
 
   .stream-category {
     font-weight: 600;
@@ -284,6 +300,13 @@ const isMicroContent = (category: string) => category === 'micro';
     border-color: #3b82f6;
   }
 
+  .stream-tags-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: flex-end;
+  }
+
   .stream-tags-inline {
     display: flex;
     gap: 0.5rem;
@@ -294,7 +317,8 @@ const isMicroContent = (category: string) => category === 'micro';
     color: #8b5cf6;
     text-decoration: none;
     transition: color 0.2s;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
   }
 
   .stream-tag-link:hover {
@@ -308,6 +332,29 @@ const isMicroContent = (category: string) => category === 'micro';
 
   :global(.dark) .stream-tag-link:hover {
     color: #c4b5fd;
+  }
+
+  .stream-tags-sidebar .stream-tag-link {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+    background: #f3f4f6;
+    border-radius: 0.25rem;
+    border: 1px solid #e5e7eb;
+  }
+
+  .stream-tags-sidebar .stream-tag-link:hover {
+    background: #ede9fe;
+    border-color: #a78bfa;
+  }
+
+  :global(.dark) .stream-tags-sidebar .stream-tag-link {
+    background: #1f2937;
+    border-color: #374151;
+  }
+
+  :global(.dark) .stream-tags-sidebar .stream-tag-link:hover {
+    background: #2d1b69;
+    border-color: #6d28d9;
   }
 
   .stream-title {
