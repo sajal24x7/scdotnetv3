@@ -5,10 +5,10 @@ import LinkHoverEffect from '../LinkHoverEffect.astro';
 
 interface Props {
   posts: any[];
-  contentType?: 'evergreen' | 'til' | 'bookshelf' | 'stories' | 'poems';
+  contentType?: 'evergreen' | 'til' | 'bookshelf' | 'stories' | 'poems' | 'mixed';
 }
 
-const { posts, contentType = 'evergreen' } = Astro.props;
+const { posts, contentType = 'mixed' } = Astro.props;
 
 // Configure marked options
 marked.setOptions({
@@ -23,7 +23,26 @@ const renderedPosts = posts.map(post => ({
 }));
 
 // Content type specific styling classes
-const getContentTypeClasses = (type: string) => {
+const getContentTypeClasses = (type: string, category?: string) => {
+  // If mixed content type, determine from individual post category
+  if (type === 'mixed' && category) {
+    switch (category) {
+      case 'evergreen':
+        return 'evergreen-card';
+      case 'til':
+        return 'til-card';
+      case 'bookshelf':
+        return 'bookshelf-card';
+      case 'story':
+        return 'stories-card';
+      case 'poem':
+        return 'poems-card';
+      default:
+        return 'default-card';
+    }
+  }
+  
+  // Use provided content type
   switch (type) {
     case 'evergreen':
       return 'evergreen-card';
@@ -43,7 +62,7 @@ const getContentTypeClasses = (type: string) => {
 
 <div class="garden-grid">
   {renderedPosts.map((post) => (
-    <div class={`garden-card-wrapper ${getContentTypeClasses(contentType)}`}>
+    <div class={`garden-card-wrapper ${getContentTypeClasses(contentType, post.data.category)}`}>
       <Card {...post.data}>
         {post.renderedContent && (
           <div class="prose dark:prose-dark max-w-none">
