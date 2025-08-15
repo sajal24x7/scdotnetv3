@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ContentGrid from '../../components/ContentGrid.astro';
+import StreamLayout from '../../components/layout/StreamLayout.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for micro
@@ -33,17 +33,11 @@ const transformedPosts = microPosts.map(transformPost);
       <div class="micro-count">
         {transformedPosts.length} {transformedPosts.length === 1 ? 'post' : 'posts'}
       </div>
-      <a 
-        href="/tags/?category=micro" 
-        class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
-      >
-        View entries by tag
-      </a>
     </div>
   </header>
 
   <main class="micro-main">
-    <ContentGrid posts={transformedPosts} />
+    <StreamLayout posts={transformedPosts} />
   </main>
 </Layout>
 

@@ -1,0 +1,537 @@
+---
+import { formatDateWithTime } from '../../utils/dateFormat';
+import TagSidebar from './TagSidebar.astro';
+import { marked } from 'marked';
+
+interface Props {
+  posts: any[];
+}
+
+const { posts } = Astro.props;
+
+// Configure marked options
+marked.setOptions({
+  gfm: true, // GitHub Flavored Markdown
+  breaks: true // Convert line breaks to <br>
+});
+
+// Pre-render markdown content for posts
+const renderedPosts = posts.map(post => ({
+  ...post,
+  renderedContent: post.body ? marked.parse(post.body) : null
+}));
+
+// Extract all unique tags from posts
+const allTags = [...new Set(renderedPosts.flatMap(post => post.data.tags || []))].sort();
+
+// Format date function
+const formatDate = (date: Date) => {
+  return formatDateWithTime(date);
+};
+
+// Check if content is micro type
+const isMicroContent = (category: string) => category === 'micro';
+---
+
+<div class="stream-layout">
+  <!-- Desktop: 3-column layout -->
+  <div class="stream-desktop">
+    <!-- Left sidebar: Empty on desktop (metadata will be inline) -->
+    <div class="stream-sidebar-left">
+      <!-- This space is intentionally left for potential future use -->
+    </div>
+    
+    <!-- Center content -->
+    <div class="stream-content">
+      {renderedPosts.map((post) => (
+        <article class="stream-post">
+          <div class="stream-post-header">
+            <div class="stream-metadata">
+              <time class="stream-date" datetime={post.data.pubDate.toISOString()}>
+                {formatDate(post.data.pubDate)}
+              </time>
+              <div class="stream-meta-divider">•</div>
+              <span class="stream-category">
+                {post.data.category}
+              </span>
+              {post.data.tags && post.data.tags.length > 0 && (
+                <>
+                  <div class="stream-meta-divider">•</div>
+                  <div class="stream-tags-inline">
+                    {post.data.tags.map((tag: string) => (
+                      <a href={`/tags/${tag.toLowerCase()}/`} class="stream-tag-link">
+                        #{tag}
+                      </a>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+          
+          <div class="stream-post-content">
+            {!isMicroContent(post.data.category) && post.data.title && (
+              <h2 class="stream-title">
+                <a href={post.data.link} class="stream-title-link">
+                  {post.data.title}
+                </a>
+              </h2>
+            )}
+            
+            <div class="stream-body">
+              {post.data.category === 'micro' ? (
+                <div class="prose dark:prose-dark max-w-none" set:html={post.renderedContent || post.body} />
+              ) : (
+                post.data.description && (
+                  <p class="stream-description">
+                    {post.data.description}
+                  </p>
+                )
+              )}
+            </div>
+            
+            {!isMicroContent(post.data.category) && (
+              <div class="stream-read-more">
+                <a href={post.data.link} class="read-more-link">
+                  Read more →
+                </a>
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+    
+    <!-- Right sidebar: Tags -->
+    <div class="stream-sidebar-right">
+      <TagSidebar tags={allTags} />
+    </div>
+  </div>
+  
+  <!-- Mobile: Single column with horizontal tags -->
+  <div class="stream-mobile">
+    <!-- Mobile tags at top -->
+    <div class="stream-mobile-tags">
+      <div class="mobile-tags-container">
+        <h3 class="mobile-tags-title">Tags</h3>
+        <div class="mobile-tags-scroll">
+          {allTags.map((tag) => (
+            <a href={`/tags/${tag.toLowerCase()}/`} class="mobile-tag-link">
+              #{tag}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile content -->
+    <div class="stream-mobile-content">
+      {renderedPosts.map((post) => (
+        <article class="stream-mobile-post">
+          <div class="stream-mobile-post-content">
+            {!isMicroContent(post.data.category) && post.data.title && (
+              <h2 class="stream-mobile-title">
+                <a href={post.data.link} class="stream-title-link">
+                  {post.data.title}
+                </a>
+              </h2>
+            )}
+            
+            <div class="stream-mobile-body">
+              {post.data.category === 'micro' ? (
+                <div class="prose dark:prose-dark max-w-none" set:html={post.renderedContent || post.body} />
+              ) : (
+                post.data.description && (
+                  <p class="stream-description">
+                    {post.data.description}
+                  </p>
+                )
+              )}
+            </div>
+            
+            {!isMicroContent(post.data.category) && (
+              <div class="stream-read-more">
+                <a href={post.data.link} class="read-more-link">
+                  Read more →
+                </a>
+              </div>
+            )}
+          </div>
+          
+          <!-- Mobile metadata after content -->
+          <div class="stream-mobile-metadata">
+            <time class="stream-date" datetime={post.data.pubDate.toISOString()}>
+              {formatDate(post.data.pubDate)}
+            </time>
+            <div class="stream-meta-divider">•</div>
+            <span class="stream-category">
+              {post.data.category}
+            </span>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <>
+                <div class="stream-meta-divider">•</div>
+                <div class="stream-tags-inline">
+                  {post.data.tags.map((tag: string) => (
+                    <a href={`/tags/${tag.toLowerCase()}/`} class="stream-tag-link">
+                      #{tag}
+                    </a>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .stream-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* Desktop Layout */
+  .stream-desktop {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .stream-desktop {
+      display: grid;
+      grid-template-columns: 1fr 2fr 300px;
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+  }
+
+  .stream-sidebar-left {
+    /* Reserved for future use */
+  }
+
+  .stream-content {
+    padding: 0;
+  }
+
+  .stream-sidebar-right {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+  }
+
+  /* Post styling */
+  .stream-post {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .stream-post:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  :global(.dark) .stream-post {
+    border-bottom-color: #374151;
+  }
+
+  .stream-post-header {
+    margin-bottom: 1rem;
+  }
+
+  .stream-metadata {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+
+  :global(.dark) .stream-metadata {
+    color: #9ca3af;
+  }
+
+  .stream-date {
+    font-weight: 500;
+  }
+
+  .stream-meta-divider {
+    color: #d1d5db;
+  }
+
+  :global(.dark) .stream-meta-divider {
+    color: #4b5563;
+  }
+
+  .stream-category {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #3b82f6;
+    background: #eff6ff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid #dbeafe;
+    font-size: 0.75rem;
+  }
+
+  :global(.dark) .stream-category {
+    color: #60a5fa;
+    background: #1e3a8a;
+    border-color: #3b82f6;
+  }
+
+  .stream-tags-inline {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stream-tag-link {
+    color: #8b5cf6;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 0.8rem;
+  }
+
+  .stream-tag-link:hover {
+    color: #7c3aed;
+    text-decoration: underline;
+  }
+
+  :global(.dark) .stream-tag-link {
+    color: #a78bfa;
+  }
+
+  :global(.dark) .stream-tag-link:hover {
+    color: #c4b5fd;
+  }
+
+  .stream-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    color: #111827;
+  }
+
+  :global(.dark) .stream-title {
+    color: #f9fafb;
+  }
+
+  .stream-title-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+
+  .stream-title-link:hover {
+    color: #3b82f6;
+  }
+
+  :global(.dark) .stream-title-link:hover {
+    color: #60a5fa;
+  }
+
+  .stream-description {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  :global(.dark) .stream-description {
+    color: #d1d5db;
+  }
+
+  .stream-body {
+    margin-bottom: 1rem;
+  }
+
+  .read-more-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .read-more-link:hover {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+  :global(.dark) .read-more-link {
+    color: #60a5fa;
+  }
+
+  :global(.dark) .read-more-link:hover {
+    color: #93c5fd;
+  }
+
+  /* Mobile Layout */
+  .stream-mobile {
+    display: block;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 1024px) {
+    .stream-mobile {
+      display: none;
+    }
+  }
+
+  .stream-mobile-tags {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  :global(.dark) .stream-mobile-tags {
+    border-bottom-color: #374151;
+  }
+
+  .mobile-tags-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #111827;
+  }
+
+  :global(.dark) .mobile-tags-title {
+    color: #f9fafb;
+  }
+
+  .mobile-tags-scroll {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+  }
+
+  .mobile-tags-scroll::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .mobile-tags-scroll::-webkit-scrollbar-track {
+    background: #f3f4f6;
+  }
+
+  .mobile-tags-scroll::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 2px;
+  }
+
+  :global(.dark) .mobile-tags-scroll::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+
+  :global(.dark) .mobile-tags-scroll::-webkit-scrollbar-thumb {
+    background: #4b5563;
+  }
+
+  .mobile-tag-link {
+    color: #8b5cf6;
+    text-decoration: none;
+    transition: color 0.2s;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+    background: #f3f4f6;
+    border-radius: 0.375rem;
+    border: 1px solid #e5e7eb;
+  }
+
+  .mobile-tag-link:hover {
+    color: #7c3aed;
+    background: #ede9fe;
+    border-color: #a78bfa;
+  }
+
+  :global(.dark) .mobile-tag-link {
+    color: #a78bfa;
+    background: #1f2937;
+    border-color: #374151;
+  }
+
+  :global(.dark) .mobile-tag-link:hover {
+    color: #c4b5fd;
+    background: #2d1b69;
+    border-color: #6d28d9;
+  }
+
+  .stream-mobile-post {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stream-mobile-post:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  :global(.dark) .stream-mobile-post {
+    border-bottom-color: #374151;
+  }
+
+  .stream-mobile-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    color: #111827;
+  }
+
+  :global(.dark) .stream-mobile-title {
+    color: #f9fafb;
+  }
+
+  .stream-mobile-metadata {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+
+  :global(.dark) .stream-mobile-metadata {
+    border-top-color: #374151;
+    color: #9ca3af;
+  }
+
+  /* Prose styling for micro content */
+  :global(.prose) {
+    max-width: none;
+  }
+
+  :global(.prose p) {
+    margin-top: 0;
+    margin-bottom: 0.75em;
+  }
+
+  :global(.prose a) {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  :global(.prose a:hover) {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+  :global(.dark .prose a) {
+    color: #60a5fa;
+  }
+
+  :global(.dark .prose a:hover) {
+    color: #93c5fd;
+  }
+</style>
