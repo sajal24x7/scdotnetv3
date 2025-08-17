@@ -37,15 +37,12 @@ const sizeClasses = {
   }
 };
 
-const layoutClasses = {
-  'centered': 'text-center',
-  'left-aligned': 'text-left'
-};
+// Layout is now handled conditionally in the template
 ---
 
-<header class={`${sizeClasses[size].container} ${layoutClasses[layout]}`}>
-  <div class="flex items-start justify-between">
-    <div class="flex-1">
+<header class={`${sizeClasses[size].container}`}>
+  {layout === 'centered' ? (
+    <div class="text-center">
       {showBackButton && (
         <a 
           href={backUrl} 
@@ -63,32 +60,78 @@ const layoutClasses = {
       </h1>
       
       {description && (
-        <p class={`${sizeClasses[size].description} max-w-2xl`}>
+        <p class={`${sizeClasses[size].description} mx-auto max-w-2xl`}>
           {description}
         </p>
       )}
+      
+      {actions.length > 0 && (
+        <div class="flex items-center justify-center gap-3 mt-4">
+          {actions.map((action) => (
+            <a 
+              href={action.href} 
+              class={`inline-flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                action.primary 
+                  ? 'bg-accent text-white hover:bg-accent-dark shadow-md hover:shadow-lg' 
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+              }`}
+            >
+              {action.icon && (
+                <span class="mr-2" set:html={action.icon} />
+              )}
+              {action.label}
+            </a>
+          ))}
+        </div>
+      )}
     </div>
-    
-    {actions.length > 0 && (
-      <div class="flex items-center gap-3 ml-6">
-        {actions.map((action) => (
+  ) : (
+    <div class="flex items-start justify-between">
+      <div class="flex-1">
+        {showBackButton && (
           <a 
-            href={action.href} 
-            class={`inline-flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-              action.primary 
-                ? 'bg-accent text-white hover:bg-accent-dark shadow-md hover:shadow-lg' 
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-            }`}
+            href={backUrl} 
+            class="inline-flex items-center text-small text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 mb-4 transition-colors"
           >
-            {action.icon && (
-              <span class="mr-2" set:html={action.icon} />
-            )}
-            {action.label}
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back
           </a>
-        ))}
+        )}
+        
+        <h1 class={`${sizeClasses[size].title} text-textPrimary`}>
+          {title}
+        </h1>
+        
+        {description && (
+          <p class={`${sizeClasses[size].description} max-w-2xl`}>
+            {description}
+          </p>
+        )}
       </div>
-    )}
-  </div>
+      
+      {actions.length > 0 && (
+        <div class="flex items-center gap-3 ml-6">
+          {actions.map((action) => (
+            <a 
+              href={action.href} 
+              class={`inline-flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                action.primary 
+                  ? 'bg-accent text-white hover:bg-accent-dark shadow-md hover:shadow-lg' 
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+              }`}
+            >
+              {action.icon && (
+                <span class="mr-2" set:html={action.icon} />
+              )}
+              {action.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  )}
 </header>
 
 <style>

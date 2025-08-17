@@ -52,6 +52,7 @@ export function transformPost(post: Post) {
       pubDate: post.data.pubDate,
       category: post.data.category,
       image: post.data.image,
+      tags: post.data.tags,
       edition: post.data.edition,
       editionDisplay: post.data.editionDisplay,
       link: `/${post.data.category}/${post.slug}/`

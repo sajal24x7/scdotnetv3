@@ -10,19 +10,8 @@ const stream = allPosts
   .filter(post => ['blog', 'micro', 'photo'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-// Transform posts for the ContentGrid component
-const transformedPosts = stream.map(post => ({
-  data: {
-    title: post.data.title,
-    description: post.data.description,
-    pubDate: post.data.pubDate,
-    category: post.data.category,
-    image: post.data.image,
-    link: `/${post.data.category}/${post.slug}/`
-  },
-  body: post.body,
-  render: post.render
-}));
+// Transform posts for the StreamLayout component
+const transformedPosts = stream.map(transformPost);
 ---
 
 <Layout 
