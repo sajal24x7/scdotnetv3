@@ -1,4 +1,6 @@
 ---
+import SocialLinks from './SocialLinks.astro';
+
 interface Props {
   currentPage: string;
   layout?: 'mobile' | 'desktop';
@@ -156,51 +158,59 @@ const activeSubsection = getActiveSubsection();
       }
     });
   </script>
-  <!-- Name Header Row -->
-  <div class="border-b border-gray-200 dark:border-gray-700">
+  <!-- Header: Name and Socials -->
+  <div>
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="py-3 pl-6">
-        <a href="/" class="inline-block">
-          <h1 class="text-2xl font-bold text-gray-900 dark:text-white font-serif tracking-tight">
-            Sajal Choudhary
-          </h1>
-        </a>
+      <div class="name-social-row py-4">
+        <!-- Site Name -->
+        <div class="header-name">
+          <a href="/" class="inline-block">
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white font-serif tracking-tight">
+              Sajal Choudhary
+            </h1>
+          </a>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="header-socials">
+          <SocialLinks layout="horizontal" size="sm" />
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Primary Navigation Row -->
-  <nav class="border-b border-gray-200 dark:border-gray-700">
+  <div>
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="flex items-center overflow-x-auto scrollbar-hide">
+      <nav class="primary-nav-row py-0.5">
         {mainNavItems.map((item) => (
           <a
             href={item.href}
-            class={`px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors duration-200 rounded-t-lg mx-1 first:ml-0 last:mr-0 ${
+            class={`px-3 py-0.5 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
               isMainActive(item.key)
-                ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white shadow-sm'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50 hover:shadow-sm'
+                ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50'
             }`}
           >
             {item.label}
           </a>
         ))}
-      </div>
+      </nav>
     </div>
-  </nav>
+  </div>
 
   <!-- Secondary Navigation Row (persistent for Garden and Stream sections) -->
   {activeMainSection && (activeMainSection === 'garden' || activeMainSection === 'stream') && (
-    <nav class="border-b border-gray-200 dark:border-gray-700">
+    <nav>
       <div class="container mx-auto px-4 max-w-6xl">
-        <div class="flex items-center overflow-x-auto scrollbar-hide">
+        <div class="secondary-nav-row py-0.5">
           {secondaryNavItems[activeMainSection].map((item) => (
             <a
               href={item.href}
-              class={`px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors duration-200 rounded-t-lg mx-1 first:ml-0 last:mr-0 ${
+              class={`px-3 py-0.5 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
                 (isActive(item.href) || (activeSubsection && activeSubsection === item.href))
-                  ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white shadow-sm'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50 hover:shadow-sm'
+                  ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50'
               }`}
             >
               {item.label}
@@ -261,11 +271,81 @@ const activeSubsection = getActiveSubsection();
     transform: translateY(-1px);
   }
   
+  /* Name and Socials Row */
+  .name-social-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .header-name {
+    flex-shrink: 0;
+  }
+  
+  .header-socials {
+    flex-shrink: 0;
+  }
+  
+  /* Primary Navigation Row */
+  .primary-nav-row {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .primary-nav-row::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Secondary Navigation Row */
+  .secondary-nav-row {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .secondary-nav-row::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .container {
       padding-left: 1rem;
       padding-right: 1rem;
+    }
+    
+    /* Mobile adjustments */
+    .name-social-row {
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+    
+    .header-name {
+      margin-right: 1rem;
+    }
+    
+    .primary-nav-row {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 0.125rem;
+    }
+    
+    .secondary-nav-row {
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      gap: 0.125rem;
+    }
+    
+    nav {
+      width: 100%;
     }
     
     nav a {

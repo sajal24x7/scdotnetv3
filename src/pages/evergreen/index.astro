@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import NotesGrid from '../../components/NotesGrid.astro';
+import GardenGrid from '../../components/layout/GardenGrid.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
@@ -46,7 +46,7 @@ const transformedPosts = evergreenPosts.map(transformPost);
     </div>
 
     <main class="evergreen-main">
-      <NotesGrid posts={transformedPosts} />
+      <GardenGrid posts={transformedPosts} contentType="evergreen" />
     </main>
 </Layout>
 

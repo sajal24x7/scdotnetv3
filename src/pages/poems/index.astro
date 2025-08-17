@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ContentGrid from '../../components/ContentGrid.astro';
+import GardenGrid from '../../components/layout/GardenGrid.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
@@ -46,7 +46,7 @@ const transformedPosts = poems.map(transformPost);
     </div>
 
     <main class="poems-main">
-      <ContentGrid posts={transformedPosts} />
+      <GardenGrid posts={transformedPosts} contentType="poems" />
     </main>
 </Layout>
 

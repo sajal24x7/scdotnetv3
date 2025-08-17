@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ContentGrid from '../../components/ContentGrid.astro';
+import StreamLayout from '../../components/layout/StreamLayout.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
@@ -10,19 +10,8 @@ const stream = allPosts
   .filter(post => ['blog', 'micro', 'photo'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-// Transform posts for the ContentGrid component
-const transformedPosts = stream.map(post => ({
-  data: {
-    title: post.data.title,
-    description: post.data.description,
-    pubDate: post.data.pubDate,
-    category: post.data.category,
-    image: post.data.image,
-    link: `/${post.data.category}/${post.slug}/`
-  },
-  body: post.body,
-  render: post.render
-}));
+// Transform posts for the StreamLayout component
+const transformedPosts = stream.map(transformPost);
 ---
 
 <Layout 
@@ -47,17 +36,8 @@ const transformedPosts = stream.map(post => ({
       {transformedPosts.length} {transformedPosts.length === 1 ? 'post' : 'posts'}
     </div>
     
-    <div class="text-center mb-6">
-      <a 
-        href="/tags/?category=stream" 
-        class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
-      >
-        View entries by tag
-      </a>
-    </div>
-
     <main class="stream-main">
-      <ContentGrid posts={transformedPosts} />
+      <StreamLayout posts={transformedPosts} />
     </main>
 </Layout>
 
