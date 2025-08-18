@@ -7,7 +7,6 @@ category: micro
 tags:
   - photosynthesis
   - green-tech
-
 ---
 [Can We Harness Light Like Nature for a New Era of Green Chemistry? - Slashdot](https://science.slashdot.org/story/25/08/17/0011242/can-we-harness-light-like-nature-for-a-new-era-of-green-chemistry?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
