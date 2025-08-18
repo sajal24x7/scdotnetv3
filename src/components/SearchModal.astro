@@ -1,6 +1,14 @@
 ---
 import { getAllPosts } from '../utils/content';
-const allPosts = await getAllPosts();
+
+let allPosts = [];
+try {
+  allPosts = await getAllPosts();
+  console.log('Successfully loaded posts:', allPosts.length);
+} catch (error) {
+  console.error('Error loading posts:', error);
+  allPosts = [];
+}
 ---
 
 <!-- Search Modal -->
@@ -65,12 +73,24 @@ const allPosts = await getAllPosts();
 </div>
 
 <script define:vars={{ allPosts }}>
+  console.log('SearchModal script loaded');
+  console.log('All posts:', allPosts);
+  
   const searchTriggers = document.querySelectorAll('.search-trigger');
+  console.log('Found search triggers:', searchTriggers.length);
+  
   const searchModal = document.getElementById('search-modal');
   const closeSearch = document.getElementById('close-search');
   const modalSearchInput = document.getElementById('modal-search-input');
   const modalSearchResults = document.getElementById('modal-search-results');
   
+  console.log('Search modal elements:', {
+    searchModal: !!searchModal,
+    closeSearch: !!closeSearch,
+    modalSearchInput: !!modalSearchInput,
+    modalSearchResults: !!modalSearchResults
+  });
+
   // Open modal
   function openSearchModal() {
     searchModal.classList.remove('hidden');

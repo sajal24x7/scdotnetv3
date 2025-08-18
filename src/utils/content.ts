@@ -30,17 +30,34 @@ export function getYearDirectories(): string[] {
 
 // Get all posts from year collections
 export async function getAllPosts(): Promise<Post[]> {
-  const years = getYearDirectories();
-  const allPosts = await Promise.all(years.map(async year => {
-    const posts = await getCollection(year as any);
-    return posts.map((post: any) => ({
-      data: post.data,
-      slug: post.slug,
-      body: post.body,
-      render: post.render
+  try {
+    const years = getYearDirectories();
+    console.log('Found year directories:', years);
+    
+    const allPosts = await Promise.all(years.map(async year => {
+      try {
+        console.log(`Loading posts from year ${year}`);
+        const posts = await getCollection(year as any);
+        console.log(`Loaded ${posts.length} posts from year ${year}`);
+        return posts.map((post: any) => ({
+          data: post.data,
+          slug: post.slug,
+          body: post.body,
+          render: post.render
+        }));
+      } catch (error) {
+        console.error(`Error loading posts from year ${year}:`, error);
+        return [];
+      }
     }));
-  }));
-  return allPosts.flat() as Post[];
+    
+    const flattenedPosts = allPosts.flat() as Post[];
+    console.log(`Total posts loaded: ${flattenedPosts.length}`);
+    return flattenedPosts;
+  } catch (error) {
+    console.error('Error in getAllPosts:', error);
+    return [];
+  }
 }
 
 // Transform post for ContentGrid component

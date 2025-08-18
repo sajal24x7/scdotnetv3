@@ -1,5 +1,6 @@
 ---
 import SocialLinks from './SocialLinks.astro';
+import SearchButton from '../SearchButton.astro';
 
 interface Props {
   currentPage: string;
@@ -174,6 +175,10 @@ const activeSubsection = getActiveSubsection();
         <!-- Social Links -->
         <div class="header-socials">
           <SocialLinks layout="horizontal" size="sm" />
+          <!-- Search Button -->
+          <div class="ml-4">
+            <SearchButton />
+          </div>
         </div>
       </div>
     </div>
