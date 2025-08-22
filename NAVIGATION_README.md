@@ -14,9 +14,9 @@ This project now features a responsive, multi-level navigation system inspired b
 When a user navigates to **About**, **Garden**, or **Stream**, a secondary navigation bar automatically appears below the main navigation:
 
 #### About Subcategories:
-- Sajal
 - Colophon
-- RSS
+- Now
+- Feeds
 
 #### Garden Subcategories:
 - Evergreen
@@ -101,9 +101,9 @@ const mainNavItems = [
 // Secondary navigation items
 const secondaryNavItems = {
   about: [
-    { href: '/sajal/', label: 'Sajal' },
     { href: '/colophon/', label: 'Colophon' },
-    { href: '/feeds/', label: 'RSS' },
+    { href: '/now/', label: 'Now' },
+    { href: '/feeds/', label: 'Feeds' },
   ],
   garden: [
     { href: '/garden/evergreen/', label: 'Evergreen' },
