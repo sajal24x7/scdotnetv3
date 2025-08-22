@@ -5,13 +5,18 @@ This project now features a responsive, multi-level navigation system inspired b
 ## Features
 
 ### Main Navigation
-- **About** - Single level navigation
+- **About** - Triggers secondary navigation with subcategories
 - **Garden** - Triggers secondary navigation with subcategories
 - **Stream** - Triggers secondary navigation with subcategories  
 - **Nordletter** - Single level navigation
 
 ### Secondary Navigation
-When a user navigates to **Garden** or **Stream**, a secondary navigation bar automatically appears below the main navigation:
+When a user navigates to **About**, **Garden**, or **Stream**, a secondary navigation bar automatically appears below the main navigation:
+
+#### About Subcategories:
+- Sajal
+- Colophon
+- Feeds
 
 #### Garden Subcategories:
 - Evergreen
@@ -31,7 +36,7 @@ When a user navigates to **Garden** or **Stream**, a secondary navigation bar au
 ### Desktop Experience
 1. **Name Header Row**: "Sajal Choudhary" displayed prominently in serif font
 2. **Primary Navigation Row**: Main navigation items with consistent spacing and styling
-3. **Secondary Navigation Row**: Appears automatically when in Garden or Stream sections
+3. **Secondary Navigation Row**: Appears automatically when in About, Garden, or Stream sections
 4. **Active States**: Current section is highlighted with background color and blue border
 5. **Hover Effects**: Smooth transitions and visual feedback
 
@@ -95,6 +100,11 @@ const mainNavItems = [
 
 // Secondary navigation items
 const secondaryNavItems = {
+  about: [
+    { href: '/sajal/', label: 'Sajal' },
+    { href: '/colophon/', label: 'Colophon' },
+    { href: '/feeds/', label: 'Feeds' },
+  ],
   garden: [
     { href: '/garden/evergreen/', label: 'Evergreen' },
     // ... more items
@@ -142,7 +152,7 @@ Potential improvements for the navigation system:
 ## Troubleshooting
 
 ### Common Issues
-1. **Secondary navigation not appearing**: Check that the current page path matches the expected patterns
+1. **Secondary navigation not appearing**: Check that the current page path matches the expected patterns for About, Garden, or Stream sections
 2. **Mobile menu not working**: Ensure JavaScript is enabled and the component is properly loaded
 3. **Styling issues**: Verify Tailwind CSS is properly configured
 

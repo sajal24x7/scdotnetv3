@@ -20,6 +20,11 @@ const mainNavItems = [
 
 // Secondary navigation items for each main section
 const secondaryNavItems = {
+  about: [
+    { href: '/sajal/', label: 'Sajal' },
+    { href: '/colophon/', label: 'Colophon' },
+    { href: '/feeds/', label: 'Feeds' },
+  ],
   garden: [
     { href: '/evergreen/', label: 'Evergreen' },
     { href: '/til/', label: 'TIL' },
@@ -36,11 +41,19 @@ const secondaryNavItems = {
 
 // Determine which main section is active - improved logic for post pages
 const getActiveMainSection = () => {
+  // Check for about section (including all subdirectories and pages)
+  if (currentPage.startsWith('/about/')) return 'about';
+  
   // Check for garden section (including all subdirectories and posts)
   if (currentPage.startsWith('/garden/')) return 'garden';
   
   // Check for stream section (including all subdirectories and posts)
   if (currentPage.startsWith('/stream/')) return 'stream';
+  
+  // Check for individual post categories that belong to about
+  if (currentPage.startsWith('/sajal/') || 
+      currentPage.startsWith('/colophon/') || 
+      currentPage.startsWith('/feeds/')) return 'about';
   
   // Check for individual post categories that belong to garden
   if (currentPage.startsWith('/evergreen/') || 
@@ -58,7 +71,6 @@ const getActiveMainSection = () => {
   if (currentPage.startsWith('/tags/')) return 'garden';
   
   // Check for other sections
-  if (currentPage.startsWith('/about/')) return 'about';
   if (currentPage.startsWith('/nordletter/')) return 'nordletter';
   
   return null;
@@ -80,6 +92,11 @@ const isMainActive = (key: string) => {
 
 // Get the specific subsection that's active for highlighting
 const getActiveSubsection = () => {
+  // Check for about subsections
+  if (currentPage.startsWith('/sajal/')) return '/sajal/';
+  if (currentPage.startsWith('/colophon/')) return '/colophon/';
+  if (currentPage.startsWith('/feeds/')) return '/feeds/';
+  
   // Check for garden subsections
   if (currentPage.startsWith('/evergreen/')) return '/evergreen/';
   if (currentPage.startsWith('/til/')) return '/til/';
@@ -112,10 +129,15 @@ const activeSubsection = getActiveSubsection();
         
         if (['stream', 'blog', 'micro', 'photo'].includes(category)) {
           mainSection = 'stream';
+        } else if (['about', 'sajal', 'colophon', 'feeds'].includes(category)) {
+          mainSection = 'about';
         }
         
         // Map category to subsection for highlighting
-        if (category === 'til') subsection = '/til/';
+        if (category === 'sajal') subsection = '/sajal/';
+        else if (category === 'colophon') subsection = '/colophon/';
+        else if (category === 'feeds') subsection = '/feeds/';
+        else if (category === 'til') subsection = '/til/';
         else if (category === 'evergreen') subsection = '/evergreen/';
         else if (category === 'bookshelf') subsection = '/bookshelf/';
         else if (category === 'stories') subsection = '/stories/';
@@ -199,8 +221,8 @@ const activeSubsection = getActiveSubsection();
     </div>
   </div>
 
-  <!-- Secondary Navigation Row (persistent for Garden and Stream sections) -->
-  {activeMainSection && (activeMainSection === 'garden' || activeMainSection === 'stream') && (
+  <!-- Secondary Navigation Row (persistent for About, Garden and Stream sections) -->
+  {activeMainSection && (activeMainSection === 'about' || activeMainSection === 'garden' || activeMainSection === 'stream') && (
     <nav>
       <div class="container mx-auto px-4 max-w-6xl">
         <div class="secondary-nav-row py-0.5">

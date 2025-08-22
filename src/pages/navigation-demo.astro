@@ -35,9 +35,9 @@ import MultiLevelNavigation from '../components/navigation/MultiLevelNavigation.
         <div>
           <h3 class="text-lg font-medium text-textPrimary mb-2">Main Navigation</h3>
           <ul class="space-y-2 text-textSecondary">
-            <li>• <strong>About</strong> - Single level navigation</li>
-            <li>• <strong>Garden</strong> - Shows secondary navigation with: Evergreen, TIL, Bookshelf, Notes</li>
-            <li>• <strong>Stream</strong> - Shows secondary navigation with: Blog, Micro, Photos, Stories, Poems</li>
+            <li>• <strong>About</strong> - Shows secondary navigation with: Sajal, Colophon, Feeds</li>
+            <li>• <strong>Garden</strong> - Shows secondary navigation with: Evergreen, TIL, Bookshelf, Stories, Poems</li>
+            <li>• <strong>Stream</strong> - Shows secondary navigation with: Blog, Micro, Photos</li>
             <li>• <strong>Nordletter</strong> - Single level navigation</li>
           </ul>
         </div>
@@ -58,7 +58,7 @@ import MultiLevelNavigation from '../components/navigation/MultiLevelNavigation.
     <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 mb-8">
       <h2 class="text-2xl font-semibold text-textPrimary mb-4">Try the Navigation</h2>
       <p class="text-textSecondary mb-4">
-        Click on any navigation item above to see how the secondary navigation works. The secondary navigation will appear below the main navigation when you're in the Garden or Stream sections.
+        Click on any navigation item above to see how the secondary navigation works. The secondary navigation will appear below the main navigation when you're in the About, Garden, or Stream sections.
       </p>
       <div class="flex flex-wrap gap-4">
         <a href="/garden/" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
@@ -93,7 +93,7 @@ import MultiLevelNavigation from '../components/navigation/MultiLevelNavigation.
           <h3 class="text-lg font-medium text-textPrimary mb-2">Navigation Logic</h3>
           <ul class="space-y-2 text-textSecondary text-sm">
             <li>• Main navigation always visible</li>
-            <li>• Secondary navigation appears for Garden/Stream</li>
+            <li>• Secondary navigation appears for About/Garden/Stream</li>
             <li>• Active states based on current page path</li>
             <li>• Mobile-first responsive design</li>
           </ul>
