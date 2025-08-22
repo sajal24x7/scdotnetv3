@@ -12,7 +12,7 @@ const { currentPage, layout = 'desktop' } = Astro.props;
 
 // Main navigation items
 const mainNavItems = [
-  { href: '/sajal/', label: 'About', key: 'about' },
+  { href: '/about/', label: 'About', key: 'about' },
   { href: '/garden/', label: 'Garden', key: 'garden' },
   { href: '/stream/', label: 'Stream', key: 'stream' },
   { href: '/nordletter/', label: 'Nordletter', key: 'nordletter' },
@@ -21,8 +21,9 @@ const mainNavItems = [
 // Secondary navigation items for each main section
 const secondaryNavItems = {
   about: [
+    { href: '/sajal/', label: 'Sajal' },
     { href: '/colophon/', label: 'Colophon' },
-    { href: '/feeds/', label: 'Feeds' },
+    { href: '/feeds/', label: 'RSS' },
   ],
   garden: [
     { href: '/evergreen/', label: 'Evergreen' },
@@ -41,7 +42,7 @@ const secondaryNavItems = {
 // Determine which main section is active - improved logic for post pages
 const getActiveMainSection = () => {
   // Check for about section (including all subdirectories and pages)
-  if (currentPage.startsWith('/sajal/')) return 'about';
+  if (currentPage.startsWith('/about/')) return 'about';
   
   // Check for garden section (including all subdirectories and posts)
   if (currentPage.startsWith('/garden/')) return 'garden';
@@ -92,6 +93,7 @@ const isMainActive = (key: string) => {
 // Get the specific subsection that's active for highlighting
 const getActiveSubsection = () => {
   // Check for about subsections
+  if (currentPage.startsWith('/sajal/')) return '/sajal/';
   if (currentPage.startsWith('/colophon/')) return '/colophon/';
   if (currentPage.startsWith('/feeds/')) return '/feeds/';
   
@@ -127,12 +129,13 @@ const activeSubsection = getActiveSubsection();
         
         if (['stream', 'blog', 'micro', 'photo'].includes(category)) {
           mainSection = 'stream';
-        } else if (['about', 'colophon', 'feeds'].includes(category)) {
+        } else if (['about', 'sajal', 'colophon', 'feeds'].includes(category)) {
           mainSection = 'about';
         }
         
         // Map category to subsection for highlighting
-        if (category === 'colophon') subsection = '/colophon/';
+        if (category === 'sajal') subsection = '/sajal/';
+        else if (category === 'colophon') subsection = '/colophon/';
         else if (category === 'feeds') subsection = '/feeds/';
         else if (category === 'til') subsection = '/til/';
         else if (category === 'evergreen') subsection = '/evergreen/';

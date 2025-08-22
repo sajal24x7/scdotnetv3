@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="About - Sajal Choudhary" 
+  description="Learn more about Sajal Choudhary and this website" 
+  currentPage="/about/"
+  pageWrapper={{
+    maxWidth: '4xl',
+    padding: 'md',
+    centered: true
+  }}
+>
+  <div class="prose dark:prose-dark mx-auto">
+    <h1>About</h1>
+    
+    <p class="text-lg mb-8">
+      Welcome to my digital garden. This is where I share my thoughts, experiences, and the things I'm learning. 
+      Explore the different sections below to learn more about me, this website, and how to stay connected.
+    </p>
+    
+    <!-- About Sections Grid -->
+    <div class="grid md:grid-cols-3 gap-6 my-12">
+      <!-- Sajal Section -->
+      <div class="border border-borderColor dark:border-borderColorDark rounded-lg p-6 hover:shadow-lg transition-shadow">
+        <div class="text-center mb-4">
+          <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <span class="text-2xl">👤</span>
+          </div>
+          <h2 class="text-xl font-semibold">Sajal</h2>
+        </div>
+        <p class="text-textSecondary dark:text-textSecondaryDark mb-4">
+          Learn about my personal background, interests, writing philosophy, and journey in the digital world.
+        </p>
+        <a href="/sajal/" class="inline-flex items-center text-accent hover:text-accent/80 transition-colors">
+          Learn more about me
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+      
+      <!-- Colophon Section -->
+      <div class="border border-borderColor dark:border-borderColorDark rounded-lg p-6 hover:shadow-lg transition-shadow">
+        <div class="text-center mb-4">
+          <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <span class="text-2xl">🛠️</span>
+          </div>
+          <h2 class="text-xl font-semibold">Colophon</h2>
+        </div>
+        <p class="text-textSecondary dark:text-textSecondaryDark mb-4">
+          Technical details about how this website is built, the technologies used, and the story behind it.
+        </p>
+        <a href="/colophon/" class="inline-flex items-center text-accent hover:text-accent/80 transition-colors">
+          View technical details
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+      
+      <!-- RSS Section -->
+      <div class="border border-borderColor dark:border-borderColorDark rounded-lg p-6 hover:shadow-lg transition-shadow">
+        <div class="text-center mb-4">
+          <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
+            <span class="text-2xl">📡</span>
+          </div>
+          <h2 class="text-xl font-semibold">RSS</h2>
+        </div>
+        <p class="text-textSecondary dark:text-textSecondaryDark mb-4">
+          Subscribe to RSS feeds for different types of content and stay updated with new posts.
+        </p>
+        <a href="/feeds/" class="inline-flex items-center text-accent hover:text-accent/80 transition-colors">
+          View all feeds
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Quick Overview -->
+    <div class="bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6 mt-8">
+      <h2 class="text-xl font-semibold mb-4">Quick Overview</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-medium mb-2">What This Is</h3>
+          <p class="text-sm text-textSecondary dark:text-textSecondaryDark">
+            A personal website and digital garden where I share my writing, thoughts, and experiences. 
+            It's built to be a space for learning, reflection, and connection.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-medium mb-2">What You'll Find</h3>
+          <p class="text-sm text-textSecondary dark:text-textSecondaryDark">
+            Personal stories, technical insights, book reviews, creative writing, and thoughts on 
+            technology, creativity, and life. All organized in a way that makes sense to me and hopefully to you too.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Navigation Help -->
+    <div class="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+      <h3 class="text-lg font-medium text-blue-900 dark:text-blue-100 mb-2">Navigation Tip</h3>
+      <p class="text-blue-800 dark:text-blue-200 text-sm">
+        Use the secondary navigation above to quickly jump between the different About sections. 
+        The current section will be highlighted to show where you are.
+      </p>
+    </div>
+  </div>
+</Layout>
