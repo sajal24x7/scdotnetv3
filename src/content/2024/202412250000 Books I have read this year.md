@@ -1,6 +1,6 @@
 ---
 title: "Books I've read this year"
-slug: "books-i"
+slug: "books-ive-read-this-year-2024"
 description: "16 - that's the number"
 pubDate: 2024-12-25T00:00:00
 updatedDate: 2024-12-25T00:00:00
