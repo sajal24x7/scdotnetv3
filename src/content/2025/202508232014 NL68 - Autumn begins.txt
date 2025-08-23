@@ -1,0 +1,99 @@
+---
+title: "Autumn begins"
+slug: "nl68-autumn-begins"
+edition: 68
+image: https://storage.sajalchoudhary.net/images/2025/08/nl68-1.jpeg
+pubDate: 2025-08-23T22:35:47+03:00
+updatedDate: 2025-08-23T22:35:47+03:00
+category: nordletter
+tags:
+  - range
+  - reading
+  - india-day
+
+---
+Hello from my home in Matinkylä, where the falling temperatures signal the start of autumn. This is NordLetter #68, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
+
+To follow the series, you can [subscribe here](https://sajalchoudhary.net/nordletter/). A new NordLetter will land in your inbox every Sunday. Not a fan of newsletters? No problem! You can read previous editions [here](https://sajalchoudhary.net/nordletter/). You can also subscribe to the [RSS feed](https://sajalchoudhary.net/feeds).
+
+You can reach out to me by replying on this mail or adding a comment on this. I am also posting on [Mastodon](https://mastodon.social/@sajal24x7).
+
+---
+
+I [performed at India Day](https://youtu.be/NtdUtqg6ddY?si=QlXgYnOsJYch2rkO) last Sunday. It was awesome! And yet, something that seems positively momentous can become routine just after the fact.
+
+It's the way of life.
+
+It's important to remind ourselves of the awesome things we do. This is my reminder.
+
+---
+
+I finished reading Range this week. It was my kind of non-fiction book. It gave me a few things to think about. Mostly around [[202508191718 Analogical thinking|analogical thinking]] and [[202508191028 How to learn effectively|How to learn effectively]]. The thesis of the book is that early specialisation is not a good idea, that to be successful one should have a range of experiences. 
+
+---
+
+Do you journal?
+
+I read [Derek Sivers write about the benefits of journaling recently](https://sive.rs/dj). My daily notes in Obsidian served as a task list before that. A time-stamped list of things I did. It still is that at work. I find there's use in that, especially, around the appraisal season. It's important to have this list somewhere, otherwise we forget and remember only the most recent things. 
+
+Anyway. 
+
+After reading this, I transformed my personal Obsidian daily note. I started journaling more resolutely. Every night, before I go to sleep, I take time to sit and write about my day, about the things I did, about the things I'm feeling and so on. It is not structured. It is free-form. It is freeing.
+
+I also read someone recently mention that with the advent of AI, the more detailed your notes, the better records could be fed into the AI to create your facsimile.
+
+---
+
+On our walk I saw this beautiful rainbow. 
+
+![Rainbow](https://storage.sajalchoudhary.net/images/2025/08/nl68-1.jpeg)
+
+Don't be so busy with things that you can not take time to appreciate the beauty around you. Consider this as a reminder.
+
+---
+
+## /five things to share
+
+### 1. [The End of Handwriting by Angela Watercutter](https://www.wired.com/story/the-end-of-handwriting/)
+
+> When so much of that thinking can be offloaded to AI, going analog begins to look like one of the only ways to test comprehension, fairness be damned. After all, previous kinds of technology—like graphing calculators—also forced teachers to make kids write things out longhand. Literally showing one’s work, in writing, became the way students evinced that they understood what the machines did. As AI creeps into schoolwork, handwriting won’t die so much as, once again, provide proof of life.
+
+I have not handwritten anything since I left college. Till that point we were writing mostly on paper.
+
+I did not have beautiful handwriting. I prefer typing to writing. The ideas matter.
+
+### 2. [ChatGPT launched cheaper Go subscription in India](https://help.openai.com/en/articles/11989085-what-is-chatgpt-go) 
+
+> ChatGPT Go is a new, low-cost subscription plan that provides expanded access to ChatGPT’s most popular features at an affordable price.
+
+### 3. [Denmark Ending Letter Deliveries Is a Sign of the Digital Times - Slashdot by](https://tech.slashdot.org/story/25/08/21/1928230/denmark-ending-letter-deliveries-is-a-sign-of-the-digital-times?utm_source=rss1.0mainlinkanon&utm_medium=feed) 
+
+> As PostNord prepares to cease letter deliveries, 1,500 of its red post boxes are being removed from Danish streets.
+
+This just reads sad.
+
+I was a bit surprised when I had physical letters arrive fairly consistently here in Finland. For most things, I still do. Posti delivers those letters here.
+
+> The Danish government has embraced a "digital by default" policy, and for more than a decade correspondence with the public has been carried out electronically. "We are facing this natural evolution of a digitalized society, earlier than maybe some other countries," Mr Pedersen explains. "In Denmark, we are maybe five or 10 years ahead."
+
+Maybe we are five or 10 years behind Denmark.
+
+### 4. [Sunny Days Are Warm: Why LinkedIn Rewards Mediocrity by Elliot Smith](https://www.elliotcsmith.com/linkedin-toxic-mediocrity/)
+
+> So what should someone do? Honestly, the best approach is to remember that LinkedIn is a website owned by Microsoft, trying to make money for Microsoft, based on time spent on the site. Nothing you post there is going to change your career. Doing work that matters might. Drawing attention to that might. Go for depth over frequency.
+
+I had read or heard LinkedIn’s CEO say that our goal is to get you off the app. That you come to LinkedIn when you want to get a job. You come, you search, you find a job and then you leave.
+
+That does not seem like what they want now. They want you to buy premium or show you ads.
+
+### 5. [Pluralistic: Zuckermuskian solipsism (18 Aug 2025) – Pluralistic: Daily links from Cory Doctorow by Author Cory Doctorow](https://pluralistic.net/2025/08/18/seeing-like-a-billionaire/)
+
+> Billionaires have to be solopsists, or at least, selective solipsists, who don't really believe in the humanity of the people who create their wealth and whom they wield their power over. This has always been clear, but the idea that we can replace our social connections with chatbots erases any doubt.
+
+Billionaires just don't think we're real.
+
+---
+
+If you enjoyed reading this, and know someone else who might, please consider forwarding this to them. It would help this grow and make me happy. 😄
+
+Until next week.
