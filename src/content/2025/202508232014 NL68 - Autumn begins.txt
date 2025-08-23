@@ -3,8 +3,8 @@ title: "Autumn begins"
 slug: "nl68-autumn-begins"
 edition: 68
 image: https://storage.sajalchoudhary.net/images/2025/08/nl68-1.jpeg
-pubDate: 2025-08-23T22:35:47+03:00
-updatedDate: 2025-08-23T22:35:47+03:00
+pubDate: 2025-08-24T06:35:47+03:00
+updatedDate: 2025-08-24T06:35:47+03:00
 category: nordletter
 tags:
   - range
