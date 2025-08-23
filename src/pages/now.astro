@@ -1,9 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
+import { getAllPosts } from '../utils/content';
 import Layout from '../layouts/Layout.astro';
 import { marked } from 'marked';
-import { formatDateWithTime } from '../utils/dateFormat';
+import { formatDate } from '../utils/dateFormat';
+import PageHeader from '../components/layout/PageHeader.astro';
+import ProseWrapper from '../components/layout/ProseWrapper.astro';
 
 // Configure marked options
 marked.setOptions({
@@ -11,27 +12,20 @@ marked.setOptions({
   breaks: true // Convert line breaks to <br>
 });
 
-// Get all year directories
-const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2019', '2021', '2022', '2023', '2024', '2025'];
-
-// Get all posts with category 'now' from all year directories
-const nowPostsPromises = years.map(year => 
-  getCollection(year as any, ({ data }) => data.category === 'now')
-);
-
-const nowPostsArrays = await Promise.all(nowPostsPromises);
-const nowPosts = nowPostsArrays.flat() as CollectionEntry<'posts'>[];
-
-// Sort by date, most recent first
-const sortedNowPosts = nowPosts.sort((a, b) => 
-  b.data.pubDate.getTime() - a.data.pubDate.getTime()
-);
+// Get all posts dynamically across year folders and filter to category 'now'
+const allPosts = await getAllPosts();
+const sortedNowPosts = allPosts
+  .filter(post => post.data.category === 'now')
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 // Pre-render markdown content
 const renderedPosts = sortedNowPosts.map(post => ({
   ...post,
   renderedContent: post.body ? marked.parse(post.body) : null
 }));
+
+const latestPost = renderedPosts[0];
+const earlierPosts = renderedPosts.slice(1);
 ---
 
 <Layout 
@@ -42,45 +36,68 @@ const renderedPosts = sortedNowPosts.map(post => ({
     maxWidth: '7xl',
     padding: 'none',
     centered: true,
-    className: 'px-6'
+    className: 'px-2'
   }}
 >
-    <header class="mb-12 px-6">
-      <div class="flex flex-col">
-        <h1 class="text-4xl font-bold mb-4">Now</h1>
-        <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
-          A snapshot of what I'm currently focused on, thinking about, and working towards.
-        </p>
-      </div>
-    </header>
+    <PageHeader 
+      title="Now" 
+      description="A snapshot of what I'm currently focused on, thinking about, and working towards."
+      layout="centered"
+      size="lg"
+    />
 
     <div class="px-6">
       <div class="grid grid-cols-1 gap-12 py-12">
-        {renderedPosts.map((post) => (
-          <article class="card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
+        {latestPost ? (
+          <article class="card bg-transparent dark:bg-transparent rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
             <div class="p-8">
               <div class="flex items-center gap-3 mb-4">
                 <span class="text-sm font-medium text-gray-500 dark:text-gray-400 tracking-wide">
-                  {formatDateWithTime(post.data.pubDate)}
+                  {formatDate(latestPost.data.pubDate)}
                 </span>
                 <span class="text-sm font-semibold text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30">
-                  {post.data.category}
+                  {latestPost.data.category}
                 </span>
               </div>
 
-              <h2 class="text-3xl font-bold mb-6 leading-tight text-left">
-                {post.data.title}
-              </h2>
-
-              {post.renderedContent && (
-                <div class="prose dark:prose-dark max-w-none">
-                  <div set:html={post.renderedContent} />
-                </div>
+              {latestPost.renderedContent && (
+                <ProseWrapper maxWidth="full">
+                  <div set:html={latestPost.renderedContent} />
+                </ProseWrapper>
               )}
             </div>
           </article>
-        ))}
+        ) : (
+          <p class="text-gray-600 dark:text-gray-400">No updates yet.</p>
+        )}
       </div>
+
+      {earlierPosts.length > 0 && (
+        <section class="mt-4 mb-16">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">Earlier updates</h3>
+          <div class="space-y-3">
+            {earlierPosts.map((post) => (
+              <details class="group border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-transparent dark:bg-transparent">
+                <summary class="flex items-center cursor-pointer select-none px-4 py-3 text-left">
+                  <div class="flex items-center gap-3">
+                    <span class="inline-block text-gray-400 transition-transform group-open:rotate-90">▶</span>
+                    <span class="text-xs font-medium text-gray-500 dark:text-gray-400 tracking-wide whitespace-nowrap">
+                      {formatDate(post.data.pubDate)}
+                    </span>
+                  </div>
+                </summary>
+                <div class="px-4 pb-4">
+                  {post.renderedContent && (
+                    <ProseWrapper maxWidth="full" className="mt-2">
+                      <div set:html={post.renderedContent} />
+                    </ProseWrapper>
+                  )}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
 </Layout>
 
