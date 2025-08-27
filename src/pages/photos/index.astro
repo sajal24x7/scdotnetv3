@@ -30,7 +30,8 @@ const transformedPosts = photoPosts.map(transformPost);
       description="Photo posts and visual content from my photography and travels."
       layout="centered"
       size="lg"
-    />
+      maxWidth="7xl"
+      />
     
     <div class="photos-count mb-6 text-center">
       {transformedPosts.length} {transformedPosts.length === 1 ? 'photo post' : 'photo posts'}

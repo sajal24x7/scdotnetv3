@@ -7,6 +7,7 @@ interface Props {
   actions?: any[];
   layout?: 'centered' | 'left-aligned';
   size?: 'sm' | 'md' | 'lg';
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
 }
 
 const { 
@@ -16,7 +17,8 @@ const {
   backUrl = '/',
   actions = [],
   layout = 'left-aligned',
-  size = 'md'
+  size = 'md',
+  maxWidth = '2xl'
 } = Astro.props;
 
 const sizeClasses = {
@@ -35,6 +37,20 @@ const sizeClasses = {
     description: 'text-large text-gray-600 dark:text-gray-400 mt-4',
     container: 'mb-10'
   }
+};
+
+const maxWidthClasses = {
+  sm: 'max-w-sm',
+  md: 'max-w-md',
+  lg: 'max-w-lg',
+  xl: 'max-w-xl',
+  '2xl': 'max-w-2xl',
+  '3xl': 'max-w-3xl',
+  '4xl': 'max-w-4xl',
+  '5xl': 'max-w-5xl',
+  '6xl': 'max-w-6xl',
+  '7xl': 'max-w-7xl',
+  full: 'max-w-full'
 };
 
 // Layout is now handled conditionally in the template
@@ -60,7 +76,7 @@ const sizeClasses = {
       </h1>
       
       {description && (
-        <p class={`${sizeClasses[size].description} mx-auto max-w-2xl`}>
+        <p class={`${sizeClasses[size].description} mx-auto ${maxWidthClasses[maxWidth]}`}>
           {description}
         </p>
       )}
@@ -73,7 +89,7 @@ const sizeClasses = {
               class={`inline-flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
                 action.primary 
                   ? 'bg-accent text-white hover:bg-accent-dark shadow-md hover:shadow-lg' 
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:text-gray-700'
               }`}
             >
               {action.icon && (
@@ -105,7 +121,7 @@ const sizeClasses = {
         </h1>
         
         {description && (
-          <p class={`${sizeClasses[size].description} max-w-2xl`}>
+          <p class={`${sizeClasses[size].description} ${maxWidthClasses[maxWidth]}`}>
             {description}
           </p>
         )}
@@ -119,7 +135,7 @@ const sizeClasses = {
               class={`inline-flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
                 action.primary 
                   ? 'bg-accent text-white hover:bg-accent-dark shadow-md hover:shadow-lg' 
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:text-gray-700'
               }`}
             >
               {action.icon && (
