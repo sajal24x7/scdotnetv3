@@ -204,7 +204,7 @@ const activeSubsection = getActiveSubsection();
           {mainNavItems.map((item, index) => (
             <a
               href={item.href}
-              class={`px-3 py-0.5 text-sm font-bold uppercase tracking-wide transition-colors duration-200 ${
+              class={`px-3 py-0.25 text-sm font-bold uppercase tracking-wide transition-colors duration-200 ${
                 index < mainNavItems.length - 1 ? 'border-r' : ''
               } border-b ${
                 isMainActive(item.key)
@@ -228,7 +228,7 @@ const activeSubsection = getActiveSubsection();
             {secondaryNavItems[activeMainSection].map((item, index) => (
               <a
                 href={item.href}
-                class={`px-3 py-0.5 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
+                class={`px-3 py-0.25 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
                   index < secondaryNavItems[activeMainSection].length - 1 ? 'border-r' : ''
                 } border-b ${
                   (isActive(item.href) || (activeSubsection && activeSubsection === item.href))
@@ -257,7 +257,7 @@ const activeSubsection = getActiveSubsection();
   
   /* Ensure consistent dimensions */
   nav a {
-    min-height: 40px;
+    min-height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -266,7 +266,7 @@ const activeSubsection = getActiveSubsection();
   
   /* Active state styling */
   nav a {
-    border-radius: 8px 8px 0 0;
+    border-radius: 0;
   }
 
   /* (reverted) */
