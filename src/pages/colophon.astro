@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
 ---
 
 <Layout 
@@ -12,12 +13,14 @@ import Layout from '../layouts/Layout.astro';
     centered: true
   }}
 >
+  <PageHeader 
+    title="Colophon"
+    description="This page contains technical details about how this website is built and maintained."
+    layout="centered"
+    size="lg"
+  />
+  
   <div class="prose dark:prose-dark mx-auto">
-    <h1>Colophon</h1>
-    
-    <p class="text-lg mb-6">
-      This page contains technical details about how this website is built and maintained.
-    </p>
     
     <div class="grid md:grid-cols-2 gap-8 my-8">
       <div class="border border-borderColor dark:border-borderColorDark rounded-lg p-6">

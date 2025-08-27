@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
 import { formatDateWithTime } from '../../utils/dateFormat';
 import { getAllPosts } from '../../utils/content';
 
@@ -62,22 +63,28 @@ categories.forEach(category => {
   title={`Posts tagged "${tag}" - Sajal Choudhary`} 
   description={`All posts tagged with "${tag}"`}
   currentPage={`/tags/${tag}/`}
+  pageWrapper={{
+    maxWidth: '2xl',
+    padding: 'md',
+    centered: true,
+    className: 'px-4'
+  }}
 >
-  <div class="max-w-2xl mx-auto px-4">
-    <header class="mb-16">
-      <h1 class="text-4xl font-bold mb-4">Posts tagged with #{tag}</h1>
-      <div class="flex flex-col gap-2 mb-4">
-        <a 
-          href="/tags/" 
-          class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
-        >
-          ← All tags
-        </a>
-      </div>
-      <p class="text-xl text-textSecondary dark:text-textSecondaryDark">
-        {sortedPosts.length} {sortedPosts.length === 1 ? 'item' : 'items'} tagged with #{tag}
-      </p>
-    </header>
+  <PageHeader 
+    title={`Posts tagged with #${tag}`}
+    description={`${sortedPosts.length} ${sortedPosts.length === 1 ? 'item' : 'items'} tagged with #${tag}`}
+    layout="centered"
+    size="lg"
+  />
+  
+  <div class="mb-6 text-center">
+    <a 
+      href="/tags/" 
+      class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
+    >
+      ← All tags
+    </a>
+  </div>
 
     <section class="space-y-12">
       {sortedPosts.length === 0 ? (

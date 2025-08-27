@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
 import NordletterGrid from '../../components/NordletterGrid.astro';
 import { getAllPosts, transformPost, cleanNordletterTitle, getEditionDisplay } from '../../utils/content';
 
@@ -34,42 +35,45 @@ const transformedPosts = nordletterPosts.map(post => {
     className: 'px-6'
   }}
 >
-  <header class="mb-12 px-6">
-    <div class="flex flex-col">
-      <h1 class="text-4xl font-bold mb-4">Nordletter</h1>
-      <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
-        A weekly newsletter on living in Finland + 5 things from the web.
-      </p>
-      <a 
-        href="/tags/?category=nordletter" 
-        class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 mb-6 block"
+  <PageHeader 
+    title="Nordletter"
+    description="A weekly newsletter on living in Finland + 5 things from the web."
+    layout="centered"
+    size="lg"
+  />
+  
+  <div class="px-6 mb-6">
+    <a 
+      href="/tags/?category=nordletter" 
+      class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 block text-center"
+    >
+      View entries by tag
+    </a>
+  </div>
+  
+  <div class="px-6 mb-8">
+    <form
+      class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+      action="https://buttondown.com/api/emails/embed-subscribe/sajal24x7"
+      method="post"
+      target="popupwindow"
+      onsubmit="window.open('https://buttondown.com/sajal24x7', 'popupwindow')"
+    >
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+        class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      />
+      <button
+        type="submit"
+        class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
       >
-        View entries by tag
-      </a>
-      
-      <form
-        class="flex flex-col sm:flex-row gap-3 max-w-md"
-        action="https://buttondown.com/api/emails/embed-subscribe/sajal24x7"
-        method="post"
-        target="popupwindow"
-        onsubmit="window.open('https://buttondown.com/sajal24x7', 'popupwindow')"
-      >
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-          class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        />
-        <button
-          type="submit"
-          class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
-        >
-          Subscribe
-        </button>
-      </form>
-    </div>
-  </header>
+        Subscribe
+      </button>
+    </form>
+  </div>
 
   <div class="px-6">
     <NordletterGrid posts={transformedPosts} />

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
 
 // Book data - add new books here in reverse chronological order
 const books = [
@@ -23,15 +24,12 @@ const books = [
     centered: true
   }}
 >
-  <header class="mb-12">
-    <h1 class="text-4xl font-bold mb-6">Books by Sajal Choudhary</h1>
-    <p class="text-textSecondary dark:text-textSecondaryDark leading-relaxed">
-      Essays and other writing can be found throughout this site: 
-      <a href="/garden/" class="text-accent hover:underline">garden</a>, 
-      <a href="/blog/" class="text-accent hover:underline">blog posts</a>, 
-      <a href="/prose/" class="text-accent hover:underline">prose</a>.
-    </p>
-  </header>
+  <PageHeader 
+    title="Books by Sajal Choudhary"
+    description="Essays and other writing can be found throughout this site: garden, blog posts, prose."
+    layout="centered"
+    size="lg"
+  />
 
   <section>
     <div class="space-y-8">

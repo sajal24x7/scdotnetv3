@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/layout/PageHeader.astro';
 import { getAllPosts } from '../../utils/content';
 
 // Get all posts
@@ -64,12 +65,12 @@ categories.forEach(category => {
     className: 'px-4'
   }}
 >
-  <header class="mb-16">
-    <h1 class="text-4xl font-bold mb-4">Tags</h1>
-    <p class="text-textSecondary dark:text-textSecondaryDark">
-      A collection of all tags used across my blog, photos, and micro updates.
-    </p>
-  </header>
+  <PageHeader 
+    title="Tags"
+    description="A collection of all tags used across my blog, photos, and micro updates."
+    layout="centered"
+    size="lg"
+  />
 
   <section class="space-y-12">
     {sortedTags.length === 0 ? (

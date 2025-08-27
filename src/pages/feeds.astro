@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
 import { getAllPosts, getYearDirectories } from '../utils/content';
 import { formatDate } from '../utils/date';
 import { getCollection } from 'astro:content';
@@ -34,15 +35,20 @@ const nordletterPosts = flatPosts.filter(post =>
   title="RSS Feeds - Sajal Choudhary" 
   description="Subscribe to RSS feeds for different types of content"
   currentPage="/feeds/"
+  pageWrapper={{
+    maxWidth: '4xl',
+    padding: 'md',
+    centered: true
+  }}
 >
-  <div class="max-w-4xl mx-auto px-4 py-12">
-    <div class="text-center mb-12">
-      <h1 class="text-4xl font-bold mb-4">RSS Feeds</h1>
-      <p class="text-xl text-textSecondary dark:text-textSecondaryDark max-w-2xl mx-auto">
-        Subscribe to different feeds based on your interests. All feeds are beautifully styled when viewed in your browser.
-      </p>
-    </div>
+  <PageHeader 
+    title="RSS Feeds"
+    description="Subscribe to different feeds based on your interests. All feeds are beautifully styled when viewed in your browser."
+    layout="centered"
+    size="lg"
+  />
 
+  <div class="max-w-4xl mx-auto">
     <!-- Feed Buttons -->
     <div class="flex flex-wrap justify-center gap-4 mb-8">
       <a href="/rss.xml" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm">

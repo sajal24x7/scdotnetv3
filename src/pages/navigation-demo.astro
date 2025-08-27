@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
 import MultiLevelNavigation from '../components/navigation/MultiLevelNavigation.astro';
 ---
 
@@ -21,12 +22,12 @@ import MultiLevelNavigation from '../components/navigation/MultiLevelNavigation.
 
   <!-- Content Area -->
   <div class="container mx-auto max-w-6xl py-8">
-    <div class="text-center mb-8">
-      <h1 class="text-4xl font-bold text-textPrimary mb-4">Navigation Demo</h1>
-      <p class="text-lg text-textSecondary max-w-2xl mx-auto">
-        This page demonstrates the new multi-level navigation system. Try clicking on different navigation items to see the secondary navigation appear.
-      </p>
-    </div>
+    <PageHeader 
+      title="Navigation Demo"
+      description="This page demonstrates the new multi-level navigation system. Try clicking on different navigation items to see the secondary navigation appear."
+      layout="centered"
+      size="lg"
+    />
 
     <!-- Navigation Instructions -->
     <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
