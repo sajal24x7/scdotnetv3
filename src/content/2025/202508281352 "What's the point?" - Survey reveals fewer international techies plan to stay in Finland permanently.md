@@ -1,5 +1,5 @@
 ---
-title: ""What's the point?" - Survey reveals fewer international techies plan to stay in Finland permanently"
+title: Survey reveals fewer international techies plan to stay in Finland permanently
 slug: "whats-the-point-survey-reveals-fewer-international-techies-plan-to-stay-in-finland-permanently"
 pubDate: 2025-08-28T13:53:47+03:00
 updatedDate: 2025-08-28T13:53:47+03:00
