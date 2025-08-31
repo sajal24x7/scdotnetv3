@@ -95,4 +95,18 @@ export function formatRelativeTime(date: Date | string): string {
     const years = Math.floor(diffInSeconds / year);
     return `${years} ${years === 1 ? 'year' : 'years'} ago`;
   }
+}
+
+/**
+ * Format a date as Month Year (e.g., "August 2025")
+ * 
+ * @param date The date to format
+ * @returns Formatted date string in Month Year format
+ */
+export function formatMonthYear(date: Date | string): string {
+  const dateObj = typeof date === 'string' ? new Date(date) : date;
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    year: 'numeric'
+  }).format(dateObj);
 } 

@@ -17,6 +17,7 @@ const postsCollection = defineCollection({
     pubDate: dateSchema,
     updatedDate: dateSchema.optional(),
     category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'now', 'til']),
+    status: z.enum(['active', 'done']).optional().default('active'),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
     edition: z.number().optional(),

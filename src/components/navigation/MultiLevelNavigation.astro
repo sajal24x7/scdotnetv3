@@ -24,6 +24,7 @@ const secondaryNavItems = {
   about: [
     { href: '/colophon/', label: 'Colophon' },
     { href: '/now/', label: 'Now' },
+    { href: '/done/', label: 'Done' },
     { href: '/feeds/', label: 'Feeds' },
   ],
   garden: [
@@ -55,6 +56,7 @@ const getActiveMainSection = () => {
   if (currentPage.startsWith('/sajal/') || 
       currentPage.startsWith('/colophon/') || 
       currentPage.startsWith('/now/') ||
+      currentPage.startsWith('/done/') ||
       currentPage.startsWith('/feeds/')) return 'about';
   
   // Check for individual post categories that belong to garden
@@ -99,6 +101,7 @@ const getActiveSubsection = () => {
   if (currentPage.startsWith('/sajal/')) return '/sajal/';
   if (currentPage.startsWith('/colophon/')) return '/colophon/';
   if (currentPage.startsWith('/now/')) return '/now/';
+  if (currentPage.startsWith('/done/')) return '/done/';
   if (currentPage.startsWith('/feeds/')) return '/feeds/';
   
   // Check for garden subsections
