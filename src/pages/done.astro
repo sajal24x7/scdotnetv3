@@ -12,26 +12,28 @@ marked.setOptions({
   breaks: true // Convert line breaks to <br>
 });
 
-// Get all posts dynamically across year folders and filter to category 'now' and status 'active' (or undefined for backward compatibility)
+// Get all posts dynamically across year folders and filter to category 'now' and status 'done'
 const allPosts = await getAllPosts();
-const activeNowPosts = allPosts
-  .filter(post => post.data.category === 'now' && (!post.data.status || post.data.status === 'active'))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const doneNowPosts = allPosts
+  .filter(post => post.data.category === 'now' && post.data.status === 'done')
+  .sort((a, b) => {
+    // Sort by updatedDate (end date) descending, fallback to pubDate if no updatedDate
+    const aDate = a.data.updatedDate || a.data.pubDate;
+    const bDate = b.data.updatedDate || b.data.pubDate;
+    return bDate.getTime() - aDate.getTime();
+  });
 
 // Pre-render markdown content
-const renderedPosts = activeNowPosts.map(post => ({
+const renderedPosts = doneNowPosts.map(post => ({
   ...post,
   renderedContent: post.body ? marked.parse(post.body) : null
 }));
-
-const latestPost = renderedPosts[0];
-const earlierPosts = renderedPosts.slice(1);
 ---
 
 <Layout 
-  title="Now - Sajal Choudhary" 
-  description="What I'm currently working on and thinking about"
-  currentPage="/now/"
+  title="Done - Sajal Choudhary" 
+  description="Completed tasks and projects that were previously in progress"
+  currentPage="/done/"
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'none',
@@ -40,8 +42,8 @@ const earlierPosts = renderedPosts.slice(1);
   }}
 >
     <PageHeader 
-      title="Now" 
-      description="A snapshot of what I'm currently focused on, thinking about, and working towards."
+      title="Done" 
+      description="Completed tasks and projects that were previously in progress. These represent milestones achieved and goals accomplished."
       layout="centered"
       size="lg"
       maxWidth="7xl"
@@ -49,54 +51,36 @@ const earlierPosts = renderedPosts.slice(1);
 
     <div class="text-center mb-8">
       <p class="text-gray-600 dark:text-gray-400">
-        View <a href="/done/" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">completed tasks</a> here.
+        View <a href="/now/" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">current tasks</a> here.
       </p>
     </div>
 
     <div class="px-6">
-      <div class="grid grid-cols-1 gap-12 py-12">
-        {latestPost ? (
-          <article class="card bg-transparent dark:bg-transparent rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
-            <div class="p-8">
-              <div class="mb-6">
-                <time class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                  {formatMonthYear(latestPost.data.pubDate)}
-                </time>
-              </div>
-
-              {latestPost.renderedContent && (
-                <ProseWrapper maxWidth="full">
-                  <div set:html={latestPost.renderedContent} />
-                </ProseWrapper>
-              )}
-            </div>
-          </article>
-        ) : (
-          <p class="text-gray-600 dark:text-gray-400">No active updates yet.</p>
-        )}
-      </div>
-
-      {earlierPosts.length > 0 && (
-        <section class="mt-4 mb-16">
-          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">Earlier updates</h3>
-          <div class="space-y-8">
-            {earlierPosts.map((post) => (
-              <article class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-transparent dark:bg-transparent p-6">
-                <div class="mb-4">
+      {renderedPosts.length > 0 ? (
+        <div class="grid grid-cols-1 gap-8 py-12">
+          {renderedPosts.map((post) => (
+            <article class="card bg-transparent dark:bg-transparent rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
+              <div class="p-8">
+                <div class="mb-6">
                   <time class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                    {formatMonthYear(post.data.pubDate)}
+                    {formatMonthYear(post.data.updatedDate || post.data.pubDate)}
                   </time>
                 </div>
-                
+
                 {post.renderedContent && (
                   <ProseWrapper maxWidth="full">
                     <div set:html={post.renderedContent} />
                   </ProseWrapper>
                 )}
-              </article>
-            ))}
-          </div>
-        </section>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="py-12 text-center">
+          <p class="text-gray-600 dark:text-gray-400 text-lg">No completed tasks yet.</p>
+          <p class="text-gray-500 dark:text-gray-500 mt-2">Check the <a href="/now/" class="text-blue-600 dark:text-blue-400 hover:underline">Now page</a> to see what's currently in progress.</p>
+        </div>
       )}
     </div>
 </Layout>
@@ -116,7 +100,7 @@ const earlierPosts = renderedPosts.slice(1);
   .grid > *:not(:last-child)::after {
     content: '';
     position: absolute;
-    bottom: -1.5rem;
+    bottom: -1rem;
     left: 0;
     right: 0;
     height: 1px;
@@ -212,4 +196,4 @@ const earlierPosts = renderedPosts.slice(1);
   :global(.dark .prose pre) {
     background-color: #1f2937;
   }
-</style> 
+</style>

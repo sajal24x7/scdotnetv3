@@ -7,7 +7,9 @@ export interface Post {
     title?: string;
     description?: string;
     pubDate: Date;
+    updatedDate?: Date;
     category: string;
+    status?: string;
     image?: string;
     tags?: string[];
     edition?: number | string;
