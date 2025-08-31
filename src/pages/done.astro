@@ -65,6 +65,11 @@ const renderedPosts = doneNowPosts.map(post => ({
                   <time class="text-lg font-semibold text-gray-700 dark:text-gray-300">
                     {formatMonthYear(post.data.updatedDate || post.data.pubDate)}
                   </time>
+                  {post.data.title && (
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mt-3">
+                      {post.data.title}
+                    </h2>
+                  )}
                 </div>
 
                 {post.renderedContent && (
