@@ -1,8 +1,8 @@
 ---
 title: "Publish my poetry collection"
 slug: "publish-my-poetry-collection"
-pubDate: 2025-08-31T21:31:15+03:00
-updatedDate: 2025-08-31T21:31:15+03:00
+pubDate: 2025-09-01T17:41:49+00:00
+updatedDate: 2025-09-01T17:41:49+00:00
 category:  now
 status: done
 ---

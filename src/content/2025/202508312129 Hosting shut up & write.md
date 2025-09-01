@@ -1,8 +1,8 @@
 ---
 title: "Hosting shut up & write"
 slug: "hosting-shut-up-write"
-pubDate: 2025-08-31T21:30:57+03:00
-updatedDate: 2025-08-31T21:30:57+03:00
+pubDate: 2025-09-01T17:41:49+00:00
+updatedDate: 2025-09-01T17:41:49+00:00
 category:  now
 status: active
 ---

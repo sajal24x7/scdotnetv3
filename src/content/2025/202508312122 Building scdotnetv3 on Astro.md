@@ -1,8 +1,8 @@
 ---
 title: "Building scdotnetv3 on Astro"
 slug: "building-scdotnetv3-on-astro"
-pubDate: 2025-08-31T21:31:34+03:00
-updatedDate: 2025-08-31T21:31:34+03:00
+pubDate: 2025-09-01T17:41:49+00:00
+updatedDate: 2025-09-01T17:41:49+00:00
 category: now
 status: active
 ---
