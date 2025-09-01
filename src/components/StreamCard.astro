@@ -71,12 +71,12 @@ const isMicroContent = (category: string) => category === 'micro';
       )}
       
       <div class="stream-card-meta">
-        <span class="stream-category">
-          {category}
-        </span>
         <a href={link} class="stream-date-link">
           <TimeDisplay date={pubDate} category={category} className="stream-date" />
         </a>
+        <span class="stream-category">
+          {category}
+        </span>
         {tags && tags.length > 0 && (
           <div class="stream-tags">
             {tags.map((tag: string) => (
