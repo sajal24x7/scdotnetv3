@@ -1,11 +1,7 @@
 ---
-import { formatDateWithTime } from '../utils/dateFormat';
+import RelativeTime from './RelativeTime.astro';
 
 const { title, description, pubDate, category, image, link } = Astro.props;
-
-const formatDate = (date) => {
-  return formatDateWithTime(date);
-};
 ---
 
 <article class="card">
@@ -21,15 +17,6 @@ const formatDate = (date) => {
     )}
     
     <div class="card-body">
-      <div class="card-meta">
-        <time class="card-date" datetime={pubDate.toISOString()}>
-          {formatDate(pubDate)}
-        </time>
-        <span class="post-category card-category">
-          {category}
-        </span>
-      </div>
-
       <h2 class="card-title prose">
         {link ? (
           <a href={link} class="card-link">
@@ -50,6 +37,13 @@ const formatDate = (date) => {
             </p>
           )
         )}
+      </div>
+
+      <div class="card-meta">
+        <span class="post-category card-category">
+          {category}
+        </span>
+        <RelativeTime date={pubDate} className="card-date" />
       </div>
     </div>
   </div>
