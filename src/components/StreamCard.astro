@@ -217,6 +217,16 @@ const isMicroContent = (category: string) => category === 'micro';
     border-top-color: #374151;
   }
 
+  /* Mobile: display metadata in a single row */
+  @media (max-width: 768px) {
+    .stream-card-meta {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+  }
+
   .stream-category {
     font-weight: 600;
     text-transform: uppercase;
