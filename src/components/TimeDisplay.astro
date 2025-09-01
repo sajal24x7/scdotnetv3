@@ -1,5 +1,6 @@
 ---
-import { formatRelativeTime, formatDateWithTime, formatMonthYear } from '../utils/dateFormat';
+import { formatDistanceToNow } from 'date-fns';
+import { formatDateWithTime, formatMonthYear } from '../utils/dateFormat';
 
 interface Props {
   date: Date | string;
@@ -32,7 +33,7 @@ const getTimeFormat = () => {
 
 const timeFormat = getTimeFormat();
 const displayTime = timeFormat === 'relative' 
-  ? formatRelativeTime(date)
+  ? formatDistanceToNow(new Date(date), { addSuffix: true })
   : timeFormat === 'month-year'
   ? formatMonthYear(date)
   : formatDateWithTime(date);
