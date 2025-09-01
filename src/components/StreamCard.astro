@@ -1,0 +1,303 @@
+---
+import TimeDisplay from './TimeDisplay.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  pubDate: Date;
+  category: string;
+  image?: string;
+  link: string;
+  tags?: string[];
+  body?: string;
+  renderedContent?: string;
+}
+
+const { 
+  title, 
+  description, 
+  pubDate, 
+  category, 
+  image, 
+  link, 
+  tags = [], 
+  body,
+  renderedContent 
+} = Astro.props;
+
+// Check if content is micro type
+const isMicroContent = (category: string) => category === 'micro';
+---
+
+<article class="stream-card">
+  <div class="stream-card-content">
+    {image && (
+      <div class="stream-card-image">
+        <img 
+          src={image} 
+          alt={title || 'Post image'}
+          class="stream-image"
+        />
+      </div>
+    )}
+    
+    <div class="stream-card-body">
+      {!isMicroContent(category) && title && (
+        <h2 class="stream-card-title">
+          <a href={link} class="stream-title-link">
+            {title}
+          </a>
+        </h2>
+      )}
+      
+      <div class="stream-card-description">
+        {category === 'micro' ? (
+          <div class="prose dark:prose-dark max-w-none" set:html={renderedContent || body} />
+        ) : (
+          description && (
+            <p class="stream-description">
+              {description}
+            </p>
+          )
+        )}
+      </div>
+      
+      {!isMicroContent(category) && (
+        <div class="stream-read-more">
+          <a href={link} class="read-more-link">
+            Read more →
+          </a>
+        </div>
+      )}
+      
+      <div class="stream-card-meta">
+        <span class="stream-category">
+          {category}
+        </span>
+        <TimeDisplay date={pubDate} category={category} className="stream-date" />
+        {tags && tags.length > 0 && (
+          <div class="stream-tags">
+            {tags.map((tag: string) => (
+              <a href={`/tags/${tag.toLowerCase()}/`} class="stream-tag-link">
+                #{tag}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  .stream-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: fit-content;
+  }
+
+  .stream-card:hover {
+    border-color: #a78bfa;
+    box-shadow: 0 4px 16px 0 rgba(136, 58, 234, 0.08);
+    background: #fafaff;
+  }
+
+  :global(.dark) .stream-card {
+    background: #1f2937;
+    border-color: #374151;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  :global(.dark) .stream-card:hover {
+    border-color: #a78bfa;
+    box-shadow: 0 4px 16px 0 rgba(136, 58, 234, 0.08);
+    background: #232336;
+  }
+
+  .stream-card-content {
+    padding: 1rem;
+  }
+
+  .stream-card-image {
+    margin: -1rem -1rem 1rem -1rem;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+
+  .stream-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .stream-card:hover .stream-image {
+    transform: scale(1.05);
+  }
+
+  .stream-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .stream-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    color: #111827;
+  }
+
+  :global(.dark) .stream-card-title {
+    color: #f9fafb;
+  }
+
+  .stream-title-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+
+  .stream-title-link:hover {
+    color: #3b82f6;
+  }
+
+  :global(.dark) .stream-title-link:hover {
+    color: #60a5fa;
+  }
+
+  .stream-description {
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  :global(.dark) .stream-description {
+    color: #d1d5db;
+  }
+
+  .read-more-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    align-self: flex-start;
+  }
+
+  .read-more-link:hover {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+  :global(.dark) .read-more-link {
+    color: #60a5fa;
+  }
+
+  :global(.dark) .read-more-link:hover {
+    color: #93c5fd;
+  }
+
+  .stream-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f3f4f6;
+  }
+
+  :global(.dark) .stream-card-meta {
+    border-top-color: #374151;
+  }
+
+  .stream-category {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #3b82f6;
+    background: #eff6ff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid #dbeafe;
+    font-size: 0.75rem;
+    align-self: flex-start;
+  }
+
+  :global(.dark) .stream-category {
+    color: #60a5fa;
+    background: #1e3a8a;
+    border-color: #3b82f6;
+  }
+
+  .stream-date {
+    font-weight: 500;
+    color: #8b5cf6;
+    font-family: monospace;
+    font-size: 0.875rem;
+  }
+
+  :global(.dark) .stream-date {
+    color: #a78bfa;
+  }
+
+  .stream-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stream-tag-link {
+    color: #8b5cf6;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .stream-tag-link:hover {
+    color: #7c3aed;
+    text-decoration: underline;
+  }
+
+  :global(.dark) .stream-tag-link {
+    color: #a78bfa;
+  }
+
+  :global(.dark) .stream-tag-link:hover {
+    color: #c4b5fd;
+  }
+
+  /* Prose styling for micro content */
+  :global(.prose) {
+    max-width: none;
+  }
+
+  :global(.prose p) {
+    margin-top: 0;
+    margin-bottom: 0.75em;
+  }
+
+  :global(.prose a) {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  :global(.prose a:hover) {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+  :global(.dark .prose a) {
+    color: #60a5fa;
+  }
+
+  :global(.dark .prose a:hover) {
+    color: #93c5fd;
+  }
+</style>

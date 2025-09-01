@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import StreamLayout from '../../components/layout/StreamLayout.astro';
+import StreamGrid from '../../components/layout/StreamGrid.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
@@ -10,7 +10,7 @@ const stream = allPosts
   .filter(post => ['blog', 'micro', 'photo'].includes(post.data.category))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-// Transform posts for the StreamLayout component
+// Transform posts for the StreamGrid component
 const transformedPosts = stream.map(transformPost);
 ---
 
@@ -38,7 +38,7 @@ const transformedPosts = stream.map(transformPost);
     </div>
     
     <main class="stream-main">
-      <StreamLayout posts={transformedPosts} />
+      <StreamGrid posts={transformedPosts} />
     </main>
 </Layout>
 
