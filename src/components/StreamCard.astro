@@ -249,26 +249,28 @@ const isMicroContent = (category: string) => category === 'micro';
   .stream-date-link {
     text-decoration: none;
     transition: all 0.2s ease;
+    color: #3b82f6;
+    font-weight: 500;
+  }
+
+  .stream-date-link:hover {
+    color: #2563eb;
+    text-decoration: underline;
   }
 
   .stream-date {
     font-weight: 500;
-    color: #8b5cf6;
+    color: inherit;
     font-family: monospace;
     font-size: 0.875rem;
   }
 
-  .stream-date-link:hover .stream-date {
-    color: #7c3aed;
-    text-decoration: underline;
+  :global(.dark) .stream-date-link {
+    color: #60a5fa;
   }
 
-  :global(.dark) .stream-date {
-    color: #a78bfa;
-  }
-
-  :global(.dark) .stream-date-link:hover .stream-date {
-    color: #c4b5fd;
+  :global(.dark) .stream-date-link:hover {
+    color: #93c5fd;
   }
 
   .stream-tags {
