@@ -1,0 +1,63 @@
+---
+import { formatRelativeTime, formatDateWithTime } from '../utils/dateFormat';
+
+interface Props {
+  date: Date | string;
+  category?: string;
+  className?: string;
+  showTime?: boolean;
+  format?: 'relative' | 'detailed' | 'auto';
+}
+
+const { 
+  date, 
+  category = '', 
+  className = '', 
+  showTime = true,
+  format = 'auto'
+} = Astro.props;
+
+// Determine which format to use
+const getTimeFormat = () => {
+  if (format === 'relative') return 'relative';
+  if (format === 'detailed') return 'detailed';
+  
+  // Auto format based on category
+  const gardenCategories = ['evergreen', 'til', 'bookshelf', 'story', 'poem'];
+  const isGardenContent = gardenCategories.includes(category);
+  
+  return isGardenContent ? 'relative' : 'detailed';
+};
+
+const timeFormat = getTimeFormat();
+const displayTime = timeFormat === 'relative' 
+  ? formatRelativeTime(date)
+  : formatDateWithTime(date);
+
+const isRelative = timeFormat === 'relative';
+---
+
+<time 
+  class={`time-display ${className}`} 
+  datetime={typeof date === 'string' ? date : date.toISOString()}
+  title={isRelative ? formatDateWithTime(date) : undefined}
+>
+  {displayTime}
+</time>
+
+<style>
+  .time-display {
+    font-size: var(--text-small);
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  :global(.dark) .time-display {
+    color: #9ca3af;
+  }
+
+  /* Hover effect for relative times to show full date */
+  .time-display[title]:hover {
+    cursor: help;
+  }
+</style>

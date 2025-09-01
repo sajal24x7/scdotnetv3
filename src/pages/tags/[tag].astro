@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
-import { formatDateWithTime } from '../../utils/dateFormat';
+import TimeDisplay from '../../components/TimeDisplay.astro';
 import { getAllPosts } from '../../utils/content';
 
 export async function getStaticPaths() {
@@ -100,9 +100,11 @@ categories.forEach(category => {
             <article>
               <a href={`/${post.data.category}/${post.slug}/`} class="group">
                 <div class="flex items-baseline gap-4">
-                  <time class="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap">
-                    {formatDateWithTime(post.data.pubDate)}
-                  </time>
+                  <TimeDisplay 
+                    date={post.data.pubDate} 
+                    category={post.data.category} 
+                    className="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap"
+                  />
                   <h2 class="text-xl font-medium group-hover:text-accent transition-colors">
                     {post.data.title}
                   </h2>

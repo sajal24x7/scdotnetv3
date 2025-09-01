@@ -1,5 +1,5 @@
 ---
-import { formatDateWithTime } from '../../utils/dateFormat';
+import TimeDisplay from '../TimeDisplay.astro';
 import TagSidebar from './TagSidebar.astro';
 import { marked } from 'marked';
 
@@ -40,9 +40,7 @@ const allTags = Object.keys(tagCounts).sort((a, b) => {
 
 
 // Format date function
-const formatDate = (date: Date) => {
-  return formatDateWithTime(date);
-};
+
 
 // Check if content is micro type
 const isMicroContent = (category: string) => category === 'micro';
@@ -64,9 +62,11 @@ const isMicroContent = (category: string) => category === 'micro';
           <div class="stream-post-metadata">
             <div class="stream-metadata">
               <a href={post.data.link} class="stream-date-link">
-                <time class="stream-date" datetime={post.data.pubDate.toISOString()}>
-                  {formatDate(post.data.pubDate)}
-                </time>
+                <TimeDisplay 
+                  date={post.data.pubDate} 
+                  category={post.data.category} 
+                  className="stream-date"
+                />
               </a>
               <span class="stream-category">
                 {post.data.category}
@@ -164,9 +164,11 @@ const isMicroContent = (category: string) => category === 'micro';
           <!-- Mobile metadata after content -->
           <div class="stream-mobile-metadata">
             <a href={post.data.link} class="stream-date-link">
-              <time class="stream-date" datetime={post.data.pubDate.toISOString()}>
-                {formatDate(post.data.pubDate)}
-              </time>
+              <TimeDisplay 
+                date={post.data.pubDate} 
+                category={post.data.category} 
+                className="stream-date"
+              />
             </a>
             <div class="stream-meta-divider">•</div>
             <span class="stream-category">

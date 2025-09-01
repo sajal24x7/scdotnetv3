@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { formatDateWithTime } from '../utils/dateFormat';
+import TimeDisplay from '../components/TimeDisplay.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getYearDirectories } from '../utils/content';
 import LinkHoverEffect from '../components/LinkHoverEffect.astro';
@@ -30,10 +30,7 @@ const [category, slug] = slugParam.split('/');
 const entry = (Astro.props as { entry: CollectionEntry<any> }).entry;
 const { Content } = await entry.render();
 
-const formattedDate = entry.data?.pubDate ? formatDateWithTime(entry.data.pubDate) : '';
-const updatedDate = 'updatedDate' in entry.data && entry.data.updatedDate
-  ? formatDateWithTime(entry.data.updatedDate)
-  : null;
+const hasUpdatedDate = 'updatedDate' in entry.data && entry.data.updatedDate;
 
 // Function to map category names to their correct URL paths
 function getCategoryUrl(category: string): string {
@@ -90,7 +87,7 @@ function getCategoryUrl(category: string): string {
               </div>
               <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
                 <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Posted on {updatedDate ? updatedDate : formattedDate}
+                  Posted on <TimeDisplay date={hasUpdatedDate ? entry.data.updatedDate : entry.data.pubDate} category={category} format="detailed" />
                 </span>
               </div>
             </div>
@@ -98,7 +95,11 @@ function getCategoryUrl(category: string): string {
           
           {category !== 'nordletter' && (
             <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
-              {updatedDate ? `Last updated: ${updatedDate}` : `Published: ${formattedDate}`}
+              {hasUpdatedDate ? (
+                <>Last updated: <TimeDisplay date={entry.data.updatedDate} category={category} format="detailed" /></>
+              ) : (
+                <>Published: <TimeDisplay date={entry.data.pubDate} category={category} format="detailed" /></>
+              )}
             </p>
           )}
           

@@ -1,5 +1,5 @@
 ---
-import RelativeTime from './RelativeTime.astro';
+import TimeDisplay from './TimeDisplay.astro';
 
 const { title, description, pubDate, category, image, link } = Astro.props;
 ---
@@ -43,7 +43,7 @@ const { title, description, pubDate, category, image, link } = Astro.props;
         <span class="post-category card-category">
           {category}
         </span>
-        <RelativeTime date={pubDate} className="card-date" />
+        <TimeDisplay date={pubDate} category={category} className="card-date" />
       </div>
     </div>
   </div>
