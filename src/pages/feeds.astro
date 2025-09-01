@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
 import { getAllPosts, getYearDirectories } from '../utils/content';
-import { formatDate } from '../utils/date';
+import TimeDisplay from '../components/TimeDisplay.astro';
 import { getCollection } from 'astro:content';
 
 // Get recent posts for preview (more posts for the main section)
@@ -95,9 +95,11 @@ const nordletterPosts = flatPosts.filter(post =>
       <div class="space-y-4">
         {recentPosts.map((post) => (
           <div class="flex items-start gap-4 py-3 border-b border-borderColor dark:border-borderColorDark last:border-b-0">
-            <time datetime={post.data.pubDate.toISOString()} class="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap font-mono">
-              {formatDate(post.data.pubDate)}
-            </time>
+            <TimeDisplay 
+              date={post.data.pubDate} 
+              category={post.data.category} 
+              className="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap font-mono"
+            />
             <div class="flex-1 min-w-0">
               <a href={`/${post.data.category}/${post.slug}/`} class="text-lg font-medium hover:text-accent transition-colors block">
                 {post.data.title}

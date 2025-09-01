@@ -1,12 +1,12 @@
 ---
-import { formatRelativeTime, formatDateWithTime } from '../utils/dateFormat';
+import { formatRelativeTime, formatDateWithTime, formatMonthYear } from '../utils/dateFormat';
 
 interface Props {
   date: Date | string;
   category?: string;
   className?: string;
   showTime?: boolean;
-  format?: 'relative' | 'detailed' | 'auto';
+  format?: 'relative' | 'detailed' | 'month-year' | 'auto';
 }
 
 const { 
@@ -21,6 +21,7 @@ const {
 const getTimeFormat = () => {
   if (format === 'relative') return 'relative';
   if (format === 'detailed') return 'detailed';
+  if (format === 'month-year') return 'month-year';
   
   // Auto format based on category
   const gardenCategories = ['evergreen', 'til', 'bookshelf', 'story', 'poem'];
@@ -32,6 +33,8 @@ const getTimeFormat = () => {
 const timeFormat = getTimeFormat();
 const displayTime = timeFormat === 'relative' 
   ? formatRelativeTime(date)
+  : timeFormat === 'month-year'
+  ? formatMonthYear(date)
   : formatDateWithTime(date);
 
 const isRelative = timeFormat === 'relative';
