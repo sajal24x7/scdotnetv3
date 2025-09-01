@@ -23,9 +23,6 @@ const renderedPosts = activeNowPosts.map(post => ({
   ...post,
   renderedContent: post.body ? marked.parse(post.body) : null
 }));
-
-const latestPost = renderedPosts[0];
-const earlierPosts = renderedPosts.slice(1);
 ---
 
 <Layout 
@@ -55,55 +52,36 @@ const earlierPosts = renderedPosts.slice(1);
 
     <div class="px-6">
       <div class="grid grid-cols-1 gap-12 py-12">
-        {latestPost ? (
-          <article class="card bg-transparent dark:bg-transparent rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
-            <div class="p-8">
-              <div class="mb-6">
-                <TimeDisplay 
-                  date={latestPost.data.pubDate} 
-                  category="now" 
-                  format="month-year"
-                  className="text-lg font-semibold text-gray-700 dark:text-gray-300"
-                />
-              </div>
-
-              {latestPost.renderedContent && (
-                <ProseWrapper maxWidth="full">
-                  <div set:html={latestPost.renderedContent} />
-                </ProseWrapper>
-              )}
-            </div>
-          </article>
-        ) : (
-          <p class="text-gray-600 dark:text-gray-400">No active updates yet.</p>
-        )}
-      </div>
-
-      {earlierPosts.length > 0 && (
-        <section class="mt-4 mb-16">
-          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">Earlier updates</h3>
-          <div class="space-y-8">
-            {earlierPosts.map((post) => (
-              <article class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-transparent dark:bg-transparent p-6">
-                <div class="mb-4">
+        {renderedPosts.length > 0 ? (
+          renderedPosts.map((post) => (
+            <article class="card bg-transparent dark:bg-transparent rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
+              <div class="p-8">
+                <div class="mb-6">
                   <TimeDisplay 
                     date={post.data.pubDate} 
                     category="now" 
                     format="month-year"
                     className="text-lg font-semibold text-gray-700 dark:text-gray-300"
                   />
+                  {post.data.title && (
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mt-3">
+                      {post.data.title}
+                    </h2>
+                  )}
                 </div>
-                
+
                 {post.renderedContent && (
                   <ProseWrapper maxWidth="full">
                     <div set:html={post.renderedContent} />
                   </ProseWrapper>
                 )}
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
+              </div>
+            </article>
+          ))
+        ) : (
+          <p class="text-gray-600 dark:text-gray-400">No active updates yet.</p>
+        )}
+      </div>
     </div>
 </Layout>
 
