@@ -7,7 +7,6 @@ category: evergreen
 tags:
   - algorithm
   - ai
-
 ---
 In order to maximise engagement, algorithms figured out that incendiary things drive more engagement, so they promoted that content.
 

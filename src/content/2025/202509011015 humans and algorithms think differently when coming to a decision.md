@@ -8,7 +8,6 @@ tags:
   - algorithm
   - ai
   - thinking
-
 ---
 Humans take one or two factors into consideration when deciding on something. These factors may be reached by further subconscious factors.
 
