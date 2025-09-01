@@ -33,7 +33,7 @@ const getTimeFormat = () => {
 
 const timeFormat = getTimeFormat();
 const displayTime = timeFormat === 'relative' 
-  ? formatDistanceToNow(new Date(date), { addSuffix: true })
+  ? formatDistanceToNow(new Date(date), { addSuffix: true }).replace(/^./, str => str.toUpperCase())
   : timeFormat === 'month-year'
   ? formatMonthYear(date)
   : formatDateWithTime(date);
