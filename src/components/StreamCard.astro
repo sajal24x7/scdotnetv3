@@ -74,12 +74,14 @@ const isMicroContent = (category: string) => category === 'micro';
         <span class="stream-category">
           {category}
         </span>
-        <TimeDisplay date={pubDate} category={category} className="stream-date" />
+        <a href={link} class="stream-date-link">
+          <TimeDisplay date={pubDate} category={category} className="stream-date" />
+        </a>
         {tags && tags.length > 0 && (
           <div class="stream-tags">
             {tags.map((tag: string) => (
               <a href={`/tags/${tag.toLowerCase()}/`} class="stream-tag-link">
-                #{tag}
+                {tag.toUpperCase()}
               </a>
             ))}
           </div>
@@ -234,6 +236,11 @@ const isMicroContent = (category: string) => category === 'micro';
     border-color: #3b82f6;
   }
 
+  .stream-date-link {
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
   .stream-date {
     font-weight: 500;
     color: #8b5cf6;
@@ -241,8 +248,17 @@ const isMicroContent = (category: string) => category === 'micro';
     font-size: 0.875rem;
   }
 
+  .stream-date-link:hover .stream-date {
+    color: #7c3aed;
+    text-decoration: underline;
+  }
+
   :global(.dark) .stream-date {
     color: #a78bfa;
+  }
+
+  :global(.dark) .stream-date-link:hover .stream-date {
+    color: #c4b5fd;
   }
 
   .stream-tags {
