@@ -1,5 +1,6 @@
 ---
 import TimeDisplay from './TimeDisplay.astro';
+import CategoryDisplay from './CategoryDisplay.astro';
 
 interface Props {
   title?: string;
@@ -74,9 +75,7 @@ const isMicroContent = (category: string) => category === 'micro';
         <a href={link} class="stream-date-link">
           <TimeDisplay date={pubDate} category={category} className="stream-date" />
         </a>
-        <span class="stream-category">
-          {category}
-        </span>
+        <CategoryDisplay category={category} className="stream-category" />
         {tags && tags.length > 0 && (
           <div class="stream-tags">
             {tags.map((tag: string) => (
@@ -227,24 +226,7 @@ const isMicroContent = (category: string) => category === 'micro';
     }
   }
 
-  .stream-category {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #3b82f6;
-    background: #eff6ff;
-    padding: 0.2rem 0.6rem;
-    border-radius: 9999px;
-    border: 1px solid #dbeafe;
-    font-size: 0.75rem;
-    align-self: flex-start;
-  }
 
-  :global(.dark) .stream-category {
-    color: #60a5fa;
-    background: #1e3a8a;
-    border-color: #3b82f6;
-  }
 
   .stream-date-link {
     text-decoration: none;

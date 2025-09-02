@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
 import { getAllPosts, getYearDirectories } from '../utils/content';
 import TimeDisplay from '../components/TimeDisplay.astro';
+import CategoryDisplay from '../components/CategoryDisplay.astro';
 import { getCollection } from 'astro:content';
 
 // Get recent posts for preview (more posts for the main section)
@@ -105,9 +106,7 @@ const nordletterPosts = flatPosts.filter(post =>
                 {post.data.title}
               </a>
               <div class="flex items-center gap-2 mt-1">
-                <span class="text-xs px-2 py-1 bg-bgSecondary dark:bg-bgSecondaryDark rounded-full text-textSecondary dark:text-textSecondaryDark">
-                  {post.data.category}
-                </span>
+                <CategoryDisplay category={post.data.category} />
                 {(post.data as any).tags && (post.data as any).tags.slice(0, 2).map((tag: string) => (
                   <span class="text-xs text-textSecondary dark:text-textSecondaryDark">
                     #{tag}

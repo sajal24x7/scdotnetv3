@@ -1,5 +1,6 @@
 ---
 import TimeDisplay from '../TimeDisplay.astro';
+import CategoryDisplay from '../CategoryDisplay.astro';
 
 interface Props {
   posts: any[];
@@ -65,9 +66,7 @@ const getPostClasses = () => {
         <div class="space-y-2">
           {compact ? (
             <div class="flex items-center gap-2">
-              <span class="text-small font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded-full">
-                {post.data.category}
-              </span>
+              <CategoryDisplay category={post.data.category} />
               <h3 class="text-normal font-semibold group-hover:text-accent transition-colors">
                 {post.data.title}
               </h3>
@@ -91,9 +90,7 @@ const getPostClasses = () => {
               )}
               {showCategory && (
                 <div class="flex items-center gap-2 mt-2">
-                  <span class="text-small font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded-full">
-                    {post.data.category}
-                  </span>
+                  <CategoryDisplay category={post.data.category} />
                   {post.data.tags && post.data.tags.length > 0 && (
                     <span class="text-small text-gray-500 dark:text-gray-400">
                       {post.data.tags.slice(0, 2).join(', ')}
