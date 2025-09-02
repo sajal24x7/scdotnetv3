@@ -63,7 +63,7 @@ const getContentTypeClasses = (type: string, category?: string) => {
 <div class="garden-grid">
   {renderedPosts.map((post) => (
     <div class={`garden-card-wrapper ${getContentTypeClasses(contentType, post.data.category)}`}>
-      <Card {...post.data}>
+      <Card {...post.data} tags={post.data.tags}>
         {post.renderedContent && (
           <div class="prose dark:prose-dark max-w-none">
             <div set:html={post.renderedContent} />

@@ -67,7 +67,7 @@ const allTags = Object.keys(tagCounts).sort((a, b) => {
               {post.data.tags && post.data.tags.length > 0 && (
                 <div class="stream-grid-tags-sidebar">
                   {post.data.tags.map((tag: string) => (
-                    <a href={`/tags/${tag.toLowerCase()}/`} class="stream-grid-tag-link">
+                    <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
                       {tag.toUpperCase()}
                     </a>
                   ))}
@@ -266,30 +266,35 @@ const allTags = Object.keys(tagCounts).sort((a, b) => {
     justify-content: flex-end;
   }
 
-  .stream-grid-tag-link {
+  .tag {
+    display: inline-block;
     color: #8b5cf6;
     text-decoration: none;
-    transition: color 0.2s;
-    font-size: 0.8rem;
-    padding: 0.2rem 0.5rem;
-    background: #f3f4f6;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #8b5cf6;
     border-radius: 0.25rem;
-    border: 1px solid #e5e7eb;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: transparent;
+    white-space: nowrap;
   }
 
-  .stream-grid-tag-link:hover {
-    background: #ede9fe;
+  .tag:hover {
+    color: #7c3aed;
+    border-color: #7c3aed;
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  :global(.dark) .tag {
+    color: #a78bfa;
     border-color: #a78bfa;
   }
 
-  :global(.dark) .stream-grid-tag-link {
-    background: #1f2937;
-    border-color: #374151;
-  }
-
-  :global(.dark) .stream-grid-tag-link:hover {
-    background: #2d1b69;
-    border-color: #6d28d9;
+  :global(.dark) .tag:hover {
+    color: #c4b5fd;
+    border-color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.1);
   }
 
   /* Mobile Layout */

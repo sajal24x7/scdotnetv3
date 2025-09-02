@@ -80,7 +80,7 @@ const isMicroContent = (category: string) => category === 'micro';
         {tags && tags.length > 0 && (
           <div class="stream-tags">
             {tags.map((tag: string) => (
-              <a href={`/tags/${tag.toLowerCase()}/`} class="stream-tag-link">
+              <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
                 {tag.toUpperCase()}
               </a>
             ))}
@@ -279,25 +279,35 @@ const isMicroContent = (category: string) => category === 'micro';
     flex-wrap: wrap;
   }
 
-  .stream-tag-link {
+  .tag {
+    display: inline-block;
     color: #8b5cf6;
     text-decoration: none;
-    transition: color 0.2s;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #8b5cf6;
+    border-radius: 0.25rem;
     font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: transparent;
     white-space: nowrap;
   }
 
-  .stream-tag-link:hover {
+  .tag:hover {
     color: #7c3aed;
-    text-decoration: underline;
+    border-color: #7c3aed;
+    background: rgba(139, 92, 246, 0.05);
   }
 
-  :global(.dark) .stream-tag-link {
+  :global(.dark) .tag {
     color: #a78bfa;
+    border-color: #a78bfa;
   }
 
-  :global(.dark) .stream-tag-link:hover {
+  :global(.dark) .tag:hover {
     color: #c4b5fd;
+    border-color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.1);
   }
 
   /* Prose styling for micro content */

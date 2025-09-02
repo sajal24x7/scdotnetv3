@@ -1,7 +1,7 @@
 ---
 import TimeDisplay from './TimeDisplay.astro';
 
-const { title, description, pubDate, category, image, link } = Astro.props;
+const { title, description, pubDate, category, image, link, tags } = Astro.props;
 ---
 
 <article class="card">
@@ -45,6 +45,16 @@ const { title, description, pubDate, category, image, link } = Astro.props;
         </span>
         <TimeDisplay date={pubDate} category={category} className="card-date" />
       </div>
+      
+      {tags && tags.length > 0 && (
+        <div class="card-tags">
+          {tags.map((tag: string) => (
+            <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
+              {tag.toUpperCase()}
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   </div>
 </article>
@@ -263,6 +273,44 @@ const { title, description, pubDate, category, image, link } = Astro.props;
 
   :global(.dark .prose pre) {
     background-color: #1f2937;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .tag {
+    display: inline-block;
+    color: #8b5cf6;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #8b5cf6;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: transparent;
+    white-space: nowrap;
+  }
+
+  .tag:hover {
+    color: #7c3aed;
+    border-color: #7c3aed;
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  :global(.dark) .tag {
+    color: #a78bfa;
+    border-color: #a78bfa;
+  }
+
+  :global(.dark) .tag:hover {
+    color: #c4b5fd;
+    border-color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.1);
   }
 
   /* Mobile adjustments */

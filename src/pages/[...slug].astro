@@ -114,10 +114,10 @@ function getCategoryUrl(category: string): string {
               <div class="flex flex-wrap gap-2 justify-center">
                 {entry.data.tags.map((tag: string) => (
                   <a 
-                    href={`/tags/${tag}/`} 
-                    class="text-xs bg-borderColor dark:bg-borderColorDark px-2 py-1 rounded-md hover:bg-accent hover:text-white transition-colors"
+                    href={`/tags/${tag.toLowerCase()}/`} 
+                    class="tag"
                   >
-                    {tag}
+                    {tag.toUpperCase()}
                   </a>
                 ))}
               </div>
@@ -185,4 +185,37 @@ function getCategoryUrl(category: string): string {
       }
     });
   }
-</script> 
+</script>
+
+<style>
+  .tag {
+    display: inline-block;
+    color: #8b5cf6;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #8b5cf6;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: transparent;
+    white-space: nowrap;
+  }
+
+  .tag:hover {
+    color: #7c3aed;
+    border-color: #7c3aed;
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  :global(.dark) .tag {
+    color: #a78bfa;
+    border-color: #a78bfa;
+  }
+
+  :global(.dark) .tag:hover {
+    color: #c4b5fd;
+    border-color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.1);
+  }
+</style> 

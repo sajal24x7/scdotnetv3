@@ -39,6 +39,15 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseI
                   {post.data.editionDisplay || `${post.data.edition || 'N/A'} - ${formatDateWithoutYear(post.data.pubDate)}`}
                 </div>
                 <h3 class="nordletter-title">{post.data.title}</h3>
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <div class="nordletter-tags">
+                    {post.data.tags.map((tag: string) => (
+                      <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
+                        {tag.toUpperCase()}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </a>
           </article>
@@ -197,5 +206,44 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseI
 
   :global(.dark) .nordletter-image {
     background: #374151;
+  }
+
+  .nordletter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    color: #8b5cf6;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #8b5cf6;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: transparent;
+    white-space: nowrap;
+  }
+
+  .tag:hover {
+    color: #7c3aed;
+    border-color: #7c3aed;
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  :global(.dark) .tag {
+    color: #a78bfa;
+    border-color: #a78bfa;
+  }
+
+  :global(.dark) .tag:hover {
+    color: #c4b5fd;
+    border-color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.1);
   }
 </style>
