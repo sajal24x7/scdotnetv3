@@ -79,6 +79,9 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
             {tag.toUpperCase()} ({tagCounts[tag]})
           </a>
         ))}
+        <button class="show-less-btn" data-target={componentId}>
+          Show less ←
+        </button>
       </div>
     )}
   </div>
@@ -138,7 +141,8 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
     background: rgba(167, 139, 250, 0.1);
   }
 
-  .show-more-btn {
+  .show-more-btn,
+  .show-less-btn {
     background: none;
     border: 1px solid #8b5cf6;
     color: #8b5cf6;
@@ -151,18 +155,21 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
     white-space: nowrap;
   }
 
-  .show-more-btn:hover {
+  .show-more-btn:hover,
+  .show-less-btn:hover {
     color: #7c3aed;
     border-color: #7c3aed;
     background: rgba(139, 92, 246, 0.05);
   }
 
-  :global(.dark) .show-more-btn {
+  :global(.dark) .show-more-btn,
+  :global(.dark) .show-less-btn {
     color: #a78bfa;
     border-color: #a78bfa;
   }
 
-  :global(.dark) .show-more-btn:hover {
+  :global(.dark) .show-more-btn:hover,
+  :global(.dark) .show-less-btn:hover {
     color: #c4b5fd;
     border-color: #c4b5fd;
     background: rgba(167, 139, 250, 0.1);
@@ -207,15 +214,19 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
         const targetId = this.getAttribute('data-target');
         const hiddenTags = document.getElementById(`${targetId}-hidden`);
         
-        if (hiddenTags.style.display === 'none') {
-          // Show all tags
-          hiddenTags.style.display = 'flex';
-          this.textContent = 'Show less ←';
-        } else {
-          // Hide extra tags
-          hiddenTags.style.display = 'none';
-          this.textContent = 'Show more →';
-        }
+        // Show all tags
+        hiddenTags.style.display = 'flex';
+      });
+    });
+
+    // Add event listeners to all show less buttons
+    document.querySelectorAll('.show-less-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const hiddenTags = document.getElementById(`${targetId}-hidden`);
+        
+        // Hide extra tags
+        hiddenTags.style.display = 'none';
       });
     });
   });
