@@ -1,6 +1,5 @@
 ---
 import TimeDisplay from '../TimeDisplay.astro';
-import TagSidebar from './TagSidebar.astro';
 import { marked } from 'marked';
 
 interface Props {
@@ -21,21 +20,7 @@ const renderedPosts = posts.map(post => ({
   renderedContent: post.body ? marked.parse(post.body) : null
 }));
 
-// Extract all unique tags from posts for this specific page, sorted by frequency
-const tagCounts = {};
-renderedPosts.forEach(post => {
-  if (post.data.tags) {
-    post.data.tags.forEach(tag => {
-      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-    });
-  }
-});
 
-// Sort tags by frequency (most used first), then alphabetically for ties
-const allTags = Object.keys(tagCounts).sort((a, b) => {
-  const countDiff = tagCounts[b] - tagCounts[a];
-  return countDiff !== 0 ? countDiff : a.localeCompare(b);
-});
 
 
 
@@ -119,10 +104,7 @@ const isMicroContent = (category: string) => category === 'micro';
       ))}
     </div>
     
-    <!-- Right sidebar: Tags -->
-    <div class="stream-sidebar-right">
-      <TagSidebar tags={allTags} />
-    </div>
+
   </div>
   
   <!-- Mobile: Single column -->
@@ -208,7 +190,7 @@ const isMicroContent = (category: string) => category === 'micro';
   @media (min-width: 1024px) {
     .stream-desktop {
       display: grid;
-      grid-template-columns: 1fr 300px;
+      grid-template-columns: 200px 1fr;
       gap: 2rem;
       padding: 0 1rem;
     }
@@ -223,35 +205,7 @@ const isMicroContent = (category: string) => category === 'micro';
     padding: 0;
   }
 
-  .stream-sidebar-right {
-    position: sticky;
-    top: 2rem;
-    height: fit-content;
-    max-height: calc(100vh - 4rem);
-    overflow-y: auto;
-    scrollbar-width: thin;
-  }
 
-  .stream-sidebar-right::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  .stream-sidebar-right::-webkit-scrollbar-track {
-    background: #f3f4f6;
-  }
-
-  .stream-sidebar-right::-webkit-scrollbar-thumb {
-    background: #d1d5db;
-    border-radius: 2px;
-  }
-
-  :global(.dark) .stream-sidebar-right::-webkit-scrollbar-track {
-    background: #1f2937;
-  }
-
-  :global(.dark) .stream-sidebar-right::-webkit-scrollbar-thumb {
-    background: #4b5563;
-  }
 
   /* Post row styling */
   .stream-post-row {
