@@ -216,6 +216,8 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
         
         // Show all tags
         hiddenTags.style.display = 'flex';
+        // Hide the show more button
+        this.style.display = 'none';
       });
     });
 
@@ -224,9 +226,14 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
       button.addEventListener('click', function() {
         const targetId = this.getAttribute('data-target');
         const hiddenTags = document.getElementById(`${targetId}-hidden`);
+        const showMoreBtn = document.querySelector(`[data-target="${targetId}"].show-more-btn`);
         
         // Hide extra tags
         hiddenTags.style.display = 'none';
+        // Show the show more button again
+        if (showMoreBtn) {
+          showMoreBtn.style.display = 'inline-block';
+        }
       });
     });
   });
