@@ -4,9 +4,9 @@
 ---
 
 <!-- Top row: Garden (wider) | Stream (narrower) -->
-<div class="grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-6 md:gap-8 w-full mb-8">
+<div class="grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-6 md:gap-8 w-full mb-12">
   <div class="flex flex-col min-h-[200px]">
-    <div class="mb-4">
+    <div class="mb-6">
       <a href="/garden/" class="text-large font-semibold text-gray-900 dark:text-gray-100 hover:text-accent transition-colors inline-flex items-center gap-2">
         Garden
         <span class="text-sm">→</span>
@@ -18,7 +18,7 @@
     <slot name="topLeft" />
   </div>
   <div class="flex flex-col min-h-[200px]">
-    <div class="mb-4">
+    <div class="mb-6">
       <a href="/stream/" class="text-large font-semibold text-gray-900 dark:text-gray-100 hover:text-accent transition-colors inline-flex items-center gap-2">
         Stream
         <span class="text-sm">→</span>
@@ -34,7 +34,7 @@
 <!-- Bottom row: Prose (wider) | Bookshelf (narrower) -->
 <div class="grid grid-cols-1 md:grid-cols-[0.7fr_1.3fr] gap-6 md:gap-8 w-full">
   <div class="flex flex-col min-h-[200px]">
-    <div class="mb-4">
+    <div class="mb-6">
       <a href="/bookshelf/" class="text-large font-semibold text-gray-900 dark:text-gray-100 hover:text-accent transition-colors inline-flex items-center gap-2">
         Bookshelf
         <span class="text-sm">→</span>
@@ -46,7 +46,7 @@
     <slot name="bottomRight" /> <!-- Bookshelf (narrower, left) -->
   </div>
   <div class="flex flex-col min-h-[200px]">
-    <div class="mb-4">
+    <div class="mb-6">
       <a href="/prose/" class="text-large font-semibold text-gray-900 dark:text-gray-100 hover:text-accent transition-colors inline-flex items-center gap-2">
         Prose
         <span class="text-sm">→</span>
@@ -62,7 +62,18 @@
 <style>
   @media (max-width: 768px) {
     .grid {
-      gap: 1rem;
+      gap: 1.5rem;
+    }
+    
+    /* Ensure consistent spacing on mobile */
+    .flex.flex-col {
+      margin-bottom: 0;
+    }
+    
+    /* Remove any potential border artifacts */
+    .flex.flex-col > div {
+      border: none;
+      box-shadow: none;
     }
   }
 </style> 
