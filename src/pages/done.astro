@@ -2,7 +2,7 @@
 import { getAllPosts } from '../utils/content';
 import Layout from '../layouts/Layout.astro';
 import { marked } from 'marked';
-import TimeDisplay from '../components/TimeDisplay.astro';
+import { formatDateRange } from '../utils/dateFormat';
 import PageHeader from '../components/layout/PageHeader.astro';
 import ProseWrapper from '../components/layout/ProseWrapper.astro';
 
@@ -62,12 +62,12 @@ const renderedPosts = doneNowPosts.map(post => ({
             <article class="card bg-transparent dark:bg-transparent rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
               <div class="p-8">
                 <div class="mb-6">
-                  <TimeDisplay 
-                    date={post.data.updatedDate || post.data.pubDate} 
-                    category="now" 
-                    format="month-year"
-                    className="text-lg font-semibold text-gray-700 dark:text-gray-300"
-                  />
+                  <time 
+                    class="text-lg font-semibold text-gray-700 dark:text-gray-300"
+                    datetime={post.data.updatedDate || post.data.pubDate}
+                  >
+                    {formatDateRange(post.data.pubDate, post.data.updatedDate || post.data.pubDate)}
+                  </time>
                   {post.data.title && (
                     <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mt-3">
                       {post.data.title}
