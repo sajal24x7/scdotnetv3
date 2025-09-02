@@ -64,46 +64,45 @@ const { tags, title = "Tags" } = Astro.props;
     display: inline-block;
     color: #8b5cf6;
     text-decoration: none;
-    padding: 0.2rem 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #8b5cf6;
     border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
     transition: all 0.2s ease;
-    border: 1px solid #e5e7eb;
-    font-size: 0.8rem;
-    line-height: 1.4;
-    background: #f3f4f6;
+    background: transparent;
     white-space: nowrap;
   }
 
   .tag-item:hover {
     color: #7c3aed;
-    background: #ede9fe;
-    border-color: #a78bfa;
+    border-color: #7c3aed;
+    background: rgba(139, 92, 246, 0.05);
   }
 
   :global(.dark) .tag-item {
     color: #a78bfa;
-    background: #1f2937;
-    border-color: #374151;
+    border-color: #a78bfa;
   }
 
   :global(.dark) .tag-item:hover {
     color: #c4b5fd;
-    background: #2d1b69;
-    border-color: #6d28d9;
+    border-color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.1);
   }
 
   /* Active state for current tag */
   .tag-item.active {
-    color: #8b5cf6;
-    background: #ede9fe;
-    border-color: #a78bfa;
+    color: #7c3aed;
+    border-color: #7c3aed;
+    background: rgba(139, 92, 246, 0.1);
     font-weight: 500;
   }
 
   :global(.dark) .tag-item.active {
-    color: #a78bfa;
-    background: #2d1b69;
-    border-color: #6d28d9;
+    color: #c4b5fd;
+    border-color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.15);
   }
 
   /* Responsive adjustments */

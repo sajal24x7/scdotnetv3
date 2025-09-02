@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
+import PopularTags from '../../components/PopularTags.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for stories
@@ -37,14 +38,7 @@ const transformedPosts = stories.map(transformPost);
       {transformedPosts.length} {transformedPosts.length === 1 ? 'story' : 'stories'}
     </div>
     
-    <div class="text-center mb-6">
-      <a 
-        href="/tags/?category=story" 
-        class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
-      >
-        View entries by tag
-      </a>
-    </div>
+    <PopularTags category="story" />
 
     <main class="stories-main">
       <GardenGrid posts={transformedPosts} contentType="stories" />

@@ -1,0 +1,185 @@
+---
+import { getAllPosts } from '../../utils/content';
+
+interface Props {
+  category: string;
+  title?: string;
+  maxTags?: number;
+}
+
+const { category, title = "Popular Tags", maxTags = 10 } = Astro.props;
+
+// Get all posts and filter by category
+const allPosts = await getAllPosts();
+let filteredPosts = allPosts;
+
+// Handle special cases for categories that include multiple subcategories
+if (category === 'garden') {
+  filteredPosts = allPosts.filter(post => 
+    ['evergreen', 'til', 'bookshelf', 'story', 'poem'].includes(post.data.category)
+  );
+} else if (category === 'prose') {
+  filteredPosts = allPosts.filter(post => 
+    ['story', 'poem'].includes(post.data.category)
+  );
+} else {
+  filteredPosts = allPosts.filter(post => post.data.category === category);
+}
+
+// Extract and count tags from filtered posts
+const tagCounts: Record<string, number> = {};
+filteredPosts.forEach(post => {
+  if (post.data.tags) {
+    post.data.tags.forEach(tag => {
+      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+    });
+  }
+});
+
+// Sort tags by frequency (most used first), then alphabetically for ties
+const popularTags = Object.keys(tagCounts)
+  .sort((a, b) => {
+    const countDiff = tagCounts[b] - tagCounts[a];
+    return countDiff !== 0 ? countDiff : a.localeCompare(b);
+  })
+  .slice(0, maxTags);
+---
+
+{popularTags.length > 0 && (
+  <div class="popular-tags">
+    <h3 class="popular-tags-title">{title}</h3>
+    <div class="popular-tags-grid">
+      {popularTags.map((tag) => (
+        <a 
+          href={`/tags/${tag.toLowerCase()}/`} 
+          class="popular-tag"
+          title={`${tagCounts[tag]} ${tagCounts[tag] === 1 ? 'post' : 'posts'}`}
+        >
+          {tag.toUpperCase()}
+        </a>
+      ))}
+    </div>
+  </div>
+)}
+
+<style>
+  .popular-tags {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  :global(.dark) .popular-tags {
+    background: #1f2937;
+    border-color: #374151;
+  }
+
+  .popular-tags-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #111827;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+  }
+
+  :global(.dark) .popular-tags-title {
+    color: #f9fafb;
+    border-bottom-color: #374151;
+  }
+
+  .popular-tags-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+    max-width: 100%;
+  }
+
+  /* Responsive grid adjustments */
+  @media (min-width: 640px) {
+    .popular-tags-grid {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 0.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .popular-tags-grid {
+      grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .popular-tags-grid {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .popular-tags-grid {
+      grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    }
+  }
+
+  .popular-tag {
+    display: inline-block;
+    color: #8b5cf6;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #8b5cf6;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: transparent;
+    white-space: nowrap;
+    text-align: center;
+    min-height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .popular-tag:hover {
+    color: #7c3aed;
+    border-color: #7c3aed;
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  :global(.dark) .popular-tag {
+    color: #a78bfa;
+    border-color: #a78bfa;
+  }
+
+  :global(.dark) .popular-tag:hover {
+    color: #c4b5fd;
+    border-color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.1);
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    .popular-tags {
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .popular-tags-title {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .popular-tags-grid {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .popular-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.4rem;
+      min-height: 1.75rem;
+    }
+  }
+</style>
