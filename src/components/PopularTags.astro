@@ -5,9 +5,10 @@ interface Props {
   category: string;
   title?: string;
   maxTags?: number;
+  showMore?: boolean;
 }
 
-const { category, title = "Popular Tags", maxTags = 10 } = Astro.props;
+const { category, title = "Tagged with:", maxTags = 10, showMore = true } = Astro.props;
 
 // Get all posts and filter by category
 const allPosts = await getAllPosts();
@@ -37,93 +38,73 @@ filteredPosts.forEach(post => {
 });
 
 // Sort tags by frequency (most used first), then alphabetically for ties
-const popularTags = Object.keys(tagCounts)
+const allSortedTags = Object.keys(tagCounts)
   .sort((a, b) => {
     const countDiff = tagCounts[b] - tagCounts[a];
     return countDiff !== 0 ? countDiff : a.localeCompare(b);
-  })
-  .slice(0, maxTags);
+  });
+
+const popularTags = allSortedTags.slice(0, maxTags);
+const hasMoreTags = allSortedTags.length > maxTags;
 ---
 
 {popularTags.length > 0 && (
-  <div class="popular-tags">
-    <h3 class="popular-tags-title">{title}</h3>
-    <div class="popular-tags-grid">
+  <div class="tagged-with">
+    <h3 class="tagged-with-title">{title}</h3>
+    <div class="tagged-with-list">
       {popularTags.map((tag) => (
         <a 
           href={`/tags/${tag.toLowerCase()}/`} 
-          class="popular-tag"
-          title={`${tagCounts[tag]} ${tagCounts[tag] === 1 ? 'post' : 'posts'}`}
+          class="tagged-with-item"
         >
-          {tag.toUpperCase()}
+          {tag.toUpperCase()} ({tagCounts[tag]})
         </a>
       ))}
+      {hasMoreTags && showMore && (
+        <button class="show-more-btn" onclick="toggleMoreTags(this)">
+          Show more →
+        </button>
+      )}
     </div>
+    {hasMoreTags && showMore && (
+      <div class="hidden-tags" style="display: none;">
+        {allSortedTags.slice(maxTags).map((tag) => (
+          <a 
+            href={`/tags/${tag.toLowerCase()}/`} 
+            class="tagged-with-item"
+          >
+            {tag.toUpperCase()} ({tagCounts[tag]})
+          </a>
+        ))}
+      </div>
+    )}
   </div>
 )}
 
 <style>
-  .popular-tags {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
+  .tagged-with {
     margin-bottom: 2rem;
   }
 
-  :global(.dark) .popular-tags {
-    background: #1f2937;
-    border-color: #374151;
-  }
-
-  .popular-tags-title {
-    font-size: 1.125rem;
+  .tagged-with-title {
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     color: #111827;
-    border-bottom: 2px solid #e5e7eb;
-    padding-bottom: 0.5rem;
   }
 
-  :global(.dark) .popular-tags-title {
+  :global(.dark) .tagged-with-title {
     color: #f9fafb;
-    border-bottom-color: #374151;
   }
 
-  .popular-tags-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 0.75rem;
-    max-width: 100%;
+  .tagged-with-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
   }
 
-  /* Responsive grid adjustments */
-  @media (min-width: 640px) {
-    .popular-tags-grid {
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 0.5rem;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .popular-tags-grid {
-      grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .popular-tags-grid {
-      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .popular-tags-grid {
-      grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-    }
-  }
-
-  .popular-tag {
+  .tagged-with-item {
     display: inline-block;
     color: #8b5cf6;
     text-decoration: none;
@@ -135,51 +116,95 @@ const popularTags = Object.keys(tagCounts)
     transition: all 0.2s ease;
     background: transparent;
     white-space: nowrap;
-    text-align: center;
-    min-height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
-  .popular-tag:hover {
+  .tagged-with-item:hover {
     color: #7c3aed;
     border-color: #7c3aed;
     background: rgba(139, 92, 246, 0.05);
   }
 
-  :global(.dark) .popular-tag {
+  :global(.dark) .tagged-with-item {
     color: #a78bfa;
     border-color: #a78bfa;
   }
 
-  :global(.dark) .popular-tag:hover {
+  :global(.dark) .tagged-with-item:hover {
     color: #c4b5fd;
     border-color: #c4b5fd;
     background: rgba(167, 139, 250, 0.1);
   }
 
+  .show-more-btn {
+    background: none;
+    border: 1px solid #8b5cf6;
+    color: #8b5cf6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .show-more-btn:hover {
+    color: #7c3aed;
+    border-color: #7c3aed;
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  :global(.dark) .show-more-btn {
+    color: #a78bfa;
+    border-color: #a78bfa;
+  }
+
+  :global(.dark) .show-more-btn:hover {
+    color: #c4b5fd;
+    border-color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.1);
+  }
+
+  .hidden-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
   /* Mobile adjustments */
   @media (max-width: 640px) {
-    .popular-tags {
-      padding: 1rem;
+    .tagged-with {
       margin-bottom: 1.5rem;
     }
 
-    .popular-tags-title {
-      font-size: 1rem;
-      margin-bottom: 0.75rem;
+    .tagged-with-title {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
     }
 
-    .popular-tags-grid {
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 0.5rem;
-    }
-
-    .popular-tag {
+    .tagged-with-item {
       font-size: 0.7rem;
       padding: 0.2rem 0.4rem;
-      min-height: 1.75rem;
+    }
+
+    .show-more-btn {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.4rem;
     }
   }
 </style>
+
+<script>
+  function toggleMoreTags(button) {
+    const hiddenTags = button.parentElement.parentElement.querySelector('.hidden-tags');
+    if (hiddenTags.style.display === 'none') {
+      hiddenTags.style.display = 'flex';
+      button.textContent = 'Show less ←';
+    } else {
+      hiddenTags.style.display = 'none';
+      button.textContent = 'Show more →';
+    }
+  }
+</script>
