@@ -1,27 +1,215 @@
 ---
-import Tag from './Tag.astro';
+import { getAllPosts } from '../utils/content';
 
 interface Props {
-  tags: string[];
-  className?: string;
+  category: string;
+  title?: string;
+  maxTags?: number;
+  showMore?: boolean;
 }
 
-const { tags, className = '' } = Astro.props;
+const { category, title = "Tagged with:", maxTags = 10, showMore = true } = Astro.props;
+
+// Get all posts and filter by category
+const allPosts = await getAllPosts();
+let filteredPosts = allPosts;
+
+// Handle special cases for categories that include multiple subcategories
+if (category === 'garden') {
+  filteredPosts = allPosts.filter(post => 
+    ['evergreen', 'til', 'bookshelf', 'story', 'poem'].includes(post.data.category)
+  );
+} else if (category === 'prose') {
+  filteredPosts = allPosts.filter(post => 
+    ['story', 'poem'].includes(post.data.category)
+  );
+} else {
+  filteredPosts = allPosts.filter(post => post.data.category === category);
+}
+
+// Extract and count tags from filtered posts
+const tagCounts: Record<string, number> = {};
+filteredPosts.forEach(post => {
+  if (post.data.tags) {
+    post.data.tags.forEach(tag => {
+      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+    });
+  }
+});
+
+// Sort tags by frequency (most used first), then alphabetically for ties
+const allSortedTags = Object.keys(tagCounts)
+  .sort((a, b) => {
+    const countDiff = tagCounts[b] - tagCounts[a];
+    return countDiff !== 0 ? countDiff : a.localeCompare(b);
+  });
+
+const popularTags = allSortedTags.slice(0, maxTags);
+const hasMoreTags = allSortedTags.length > maxTags;
 ---
 
-{tags && tags.length > 0 && (
-  <div class={`tag-list ${className}`}>
-    {tags.map((tag: string) => (
-      <Tag tag={tag} />
-    ))}
+{popularTags.length > 0 && (
+  <div class="tagged-with">
+    <h3 class="tagged-with-title">{title}</h3>
+    <div class="tagged-with-list">
+      {popularTags.map((tag) => (
+        <a 
+          href={`/tags/${tag.toLowerCase()}/`} 
+          class="tagged-with-item"
+        >
+          {tag.toUpperCase()} ({tagCounts[tag]})
+        </a>
+      ))}
+      {hasMoreTags && showMore && (
+        <button class="show-more-btn" onclick="toggleMoreTags(this)">
+          Show more →
+        </button>
+      )}
+    </div>
+    {hasMoreTags && showMore && (
+      <div class="hidden-tags" style="display: none;">
+        {allSortedTags.slice(maxTags).map((tag) => (
+          <a 
+            href={`/tags/${tag.toLowerCase()}/`} 
+            class="tagged-with-item"
+          >
+            {tag.toUpperCase()} ({tagCounts[tag]})
+          </a>
+        ))}
+      </div>
+    )}
   </div>
 )}
 
 <style>
-  .tag-list {
+  .tagged-with {
+    margin-bottom: 2rem;
+  }
+
+  .tagged-with-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #111827;
+  }
+
+  :global(.dark) .tagged-with-title {
+    color: #f9fafb;
+  }
+
+  .tagged-with-list {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     align-items: center;
   }
+
+  .tagged-with-item {
+    display: inline-block;
+    color: #8b5cf6;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #8b5cf6;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: transparent;
+    white-space: nowrap;
+  }
+
+  .tagged-with-item:hover {
+    color: #7c3aed;
+    border-color: #7c3aed;
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  :global(.dark) .tagged-with-item {
+    color: #a78bfa;
+    border-color: #a78bfa;
+  }
+
+  :global(.dark) .tagged-with-item:hover {
+    color: #c4b5fd;
+    border-color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.1);
+  }
+
+  .show-more-btn {
+    background: none;
+    border: 1px solid #8b5cf6;
+    color: #8b5cf6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .show-more-btn:hover {
+    color: #7c3aed;
+    border-color: #7c3aed;
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  :global(.dark) .show-more-btn {
+    color: #a78bfa;
+    border-color: #a78bfa;
+  }
+
+  :global(.dark) .show-more-btn:hover {
+    color: #c4b5fd;
+    border-color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.1);
+  }
+
+  .hidden-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    .tagged-with {
+      margin-bottom: 1.5rem;
+    }
+
+    .tagged-with-title {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagged-with-item {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.4rem;
+    }
+
+    .show-more-btn {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.4rem;
+    }
+  }
 </style>
+
+<script>
+  function toggleMoreTags(button) {
+    const container = button.closest('.tagged-with');
+    const hiddenTags = container.querySelector('.hidden-tags');
+    const visibleTags = container.querySelector('.tagged-with-list');
+    
+    if (hiddenTags.style.display === 'none') {
+      // Show all tags
+      hiddenTags.style.display = 'flex';
+      button.textContent = 'Show less ←';
+    } else {
+      // Hide extra tags
+      hiddenTags.style.display = 'none';
+      button.textContent = 'Show more →';
+    }
+  }
+</script>

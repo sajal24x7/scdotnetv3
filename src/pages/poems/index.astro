@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
-import PopularTags from '../../components/PopularTags.astro';
+import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for poems
@@ -38,7 +38,7 @@ const transformedPosts = poems.map(transformPost);
       {transformedPosts.length} {transformedPosts.length === 1 ? 'poem' : 'poems'}
     </div>
     
-    <PopularTags category="poem" />
+    <TagList category="poem" />
 
     <main class="poems-main">
       <GardenGrid posts={transformedPosts} contentType="poems" />
