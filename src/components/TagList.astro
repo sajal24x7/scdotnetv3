@@ -46,10 +46,13 @@ const allSortedTags = Object.keys(tagCounts)
 
 const popularTags = allSortedTags.slice(0, maxTags);
 const hasMoreTags = allSortedTags.length > maxTags;
+
+// Generate unique ID for this component instance
+const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
 {popularTags.length > 0 && (
-  <div class="tagged-with">
+  <div class="tagged-with" id={componentId}>
     <h3 class="tagged-with-title">{title}</h3>
     <div class="tagged-with-list">
       {popularTags.map((tag) => (
@@ -61,13 +64,13 @@ const hasMoreTags = allSortedTags.length > maxTags;
         </a>
       ))}
       {hasMoreTags && showMore && (
-        <button class="show-more-btn" onclick="toggleMoreTags(this)">
+        <button class="show-more-btn" data-target={componentId}>
           Show more →
         </button>
       )}
     </div>
     {hasMoreTags && showMore && (
-      <div class="hidden-tags" style="display: none;">
+      <div class="hidden-tags" id={`${componentId}-hidden`} style="display: none;">
         {allSortedTags.slice(maxTags).map((tag) => (
           <a 
             href={`/tags/${tag.toLowerCase()}/`} 
@@ -197,19 +200,23 @@ const hasMoreTags = allSortedTags.length > maxTags;
 </style>
 
 <script>
-  function toggleMoreTags(button) {
-    const container = button.closest('.tagged-with');
-    const hiddenTags = container.querySelector('.hidden-tags');
-    const visibleTags = container.querySelector('.tagged-with-list');
-    
-    if (hiddenTags.style.display === 'none') {
-      // Show all tags
-      hiddenTags.style.display = 'flex';
-      button.textContent = 'Show less ←';
-    } else {
-      // Hide extra tags
-      hiddenTags.style.display = 'none';
-      button.textContent = 'Show more →';
-    }
-  }
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add event listeners to all show more buttons
+    document.querySelectorAll('.show-more-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const hiddenTags = document.getElementById(`${targetId}-hidden`);
+        
+        if (hiddenTags.style.display === 'none') {
+          // Show all tags
+          hiddenTags.style.display = 'flex';
+          this.textContent = 'Show less ←';
+        } else {
+          // Hide extra tags
+          hiddenTags.style.display = 'none';
+          this.textContent = 'Show more →';
+        }
+      });
+    });
+  });
 </script>
