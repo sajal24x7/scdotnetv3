@@ -63,7 +63,7 @@ const renderedPosts = doneNowPosts.map(post => ({
               <div class="p-8">
                 <div class="mb-6">
                   <time 
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-300"
+                    class="text-base font-semibold text-gray-700 dark:text-gray-300"
                     datetime={post.data.updatedDate || post.data.pubDate}
                   >
                     {formatDateRange(post.data.pubDate, post.data.updatedDate || post.data.pubDate)}
