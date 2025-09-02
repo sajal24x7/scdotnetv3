@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
+import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 
@@ -54,6 +55,8 @@ const years = Object.keys(postsByYear)
   <div class="bookshelf-count mb-6 text-center">
     {bookshelfPosts.length} {bookshelfPosts.length === 1 ? 'book' : 'books'}
   </div>
+
+  <TagList category="bookshelf" />
 
   {/* Books by Year */}
   {years.map(year => (
