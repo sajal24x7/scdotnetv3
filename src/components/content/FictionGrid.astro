@@ -47,7 +47,7 @@ const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
 
 <style>
   .fiction-card {
-    border: 1px solid #e5e7eb;
+    border: 1px solid transparent;
     background: #fff;
     border-radius: 0.5rem;
     padding: 1rem;
@@ -63,7 +63,7 @@ const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
   }
   :global(.dark) .fiction-card {
     background: #18181b;
-    border-color: #27272a;
+    border-color: transparent;
   }
   :global(.dark) .fiction-card:hover {
     border-color: #a78bfa;
