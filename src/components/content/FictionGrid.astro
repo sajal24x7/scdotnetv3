@@ -1,5 +1,6 @@
 ---
 import type { Post } from '../../utils/content';
+import CategoryDisplay from '../CategoryDisplay.astro';
 
 interface Props {
   posts: Post[];
@@ -27,9 +28,7 @@ const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
             </div>
           )}
           <div class="flex items-center gap-2 mb-2">
-            <span class="text-small font-medium text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900 px-2 py-1 rounded-full">
-              {post.data.category}
-            </span>
+            <CategoryDisplay category={post.data.category} />
           </div>
           <h3 class="text-normal font-semibold group-hover:text-accent transition-colors line-clamp-2">
             {post.data.title}
