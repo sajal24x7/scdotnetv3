@@ -32,41 +32,39 @@ const isMicroContent = (category: string) => category === 'micro';
 ---
 
 <div class="stream-layout">
-  <!-- Desktop: 3-column layout -->
+  <!-- Desktop: 2-column layout -->
   <div class="stream-desktop">
-    <!-- Left sidebar: Metadata (aligned with content) -->
+    <!-- Left column: Metadata -->
     <div class="stream-sidebar-left">
-      <!-- Metadata containers will be positioned to align with posts -->
+      {renderedPosts.map((post) => (
+        <div class="stream-post-metadata">
+          <a href={post.data.link} class="stream-date-link">
+            <TimeDisplay 
+              date={post.data.pubDate} 
+              category={post.data.category} 
+              className="stream-date"
+            />
+          </a>
+          <span class="stream-category">
+            {post.data.category}
+          </span>
+          {post.data.tags && post.data.tags.length > 0 && (
+            <div class="stream-tags-sidebar">
+              {post.data.tags.map((tag: string) => (
+                <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
+                  {tag.toUpperCase()}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
     </div>
     
-    <!-- Center content with inline metadata positioning -->
+    <!-- Right column: Content -->
     <div class="stream-content">
       {renderedPosts.map((post) => (
         <article class="stream-post-row">
-          <!-- Post metadata at the top -->
-          <div class="stream-post-metadata">
-            <a href={post.data.link} class="stream-date-link">
-              <TimeDisplay 
-                date={post.data.pubDate} 
-                category={post.data.category} 
-                className="stream-date"
-              />
-            </a>
-            <span class="stream-category">
-              {post.data.category}
-            </span>
-            {post.data.tags && post.data.tags.length > 0 && (
-              <div class="stream-tags-inline">
-                {post.data.tags.map((tag: string) => (
-                  <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
-                    {tag.toUpperCase()}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-          
-          <!-- Post content -->
           <div class="stream-post-content">
             {!isMicroContent(post.data.category) && post.data.title && (
               <h2 class="stream-title">
@@ -99,8 +97,6 @@ const isMicroContent = (category: string) => category === 'micro';
         </article>
       ))}
     </div>
-    
-
   </div>
   
   <!-- Mobile: Single column -->
@@ -185,14 +181,23 @@ const isMicroContent = (category: string) => category === 'micro';
 
   @media (min-width: 1024px) {
     .stream-desktop {
-      display: block;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
       padding: 0 1rem;
     }
   }
 
   .stream-sidebar-left {
-    /* This is now empty - metadata is handled within each post row */
-    display: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (max-width: 1023px) {
+    .stream-sidebar-left {
+      display: none;
+    }
   }
 
   .stream-content {
@@ -227,12 +232,12 @@ const isMicroContent = (category: string) => category === 'micro';
 
   .stream-post-metadata {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 0.75rem;
-    margin-bottom: 1rem;
     font-size: 0.875rem;
     color: #6b7280;
-    flex-wrap: wrap;
+    text-align: right;
+    padding-right: 1rem;
   }
 
   :global(.dark) .stream-post-metadata {
@@ -291,10 +296,13 @@ const isMicroContent = (category: string) => category === 'micro';
     border-color: #3b82f6;
   }
 
-  .stream-tags-inline {
+  .stream-tags-sidebar {
     display: flex;
+    flex-direction: row;
     gap: 0.5rem;
+    align-items: flex-end;
     flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   .tag {
