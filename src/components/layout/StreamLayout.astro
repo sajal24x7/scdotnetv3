@@ -42,65 +42,61 @@ const isMicroContent = (category: string) => category === 'micro';
     <!-- Center content with inline metadata positioning -->
     <div class="stream-content">
       {renderedPosts.map((post) => (
-        <div class="stream-post-row">
-          <!-- Metadata for this specific post -->
+        <article class="stream-post-row">
+          <!-- Post metadata at the top -->
           <div class="stream-post-metadata">
-            <div class="stream-metadata">
-              <a href={post.data.link} class="stream-date-link">
-                <TimeDisplay 
-                  date={post.data.pubDate} 
-                  category={post.data.category} 
-                  className="stream-date"
-                />
-              </a>
-              <span class="stream-category">
-                {post.data.category}
-              </span>
-              {post.data.tags && post.data.tags.length > 0 && (
-                <div class="stream-tags-sidebar">
-                  {post.data.tags.map((tag: string) => (
-                    <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
-                      {tag.toUpperCase()}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
+            <a href={post.data.link} class="stream-date-link">
+              <TimeDisplay 
+                date={post.data.pubDate} 
+                category={post.data.category} 
+                className="stream-date"
+              />
+            </a>
+            <span class="stream-category">
+              {post.data.category}
+            </span>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="stream-tags-inline">
+                {post.data.tags.map((tag: string) => (
+                  <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
+                    {tag.toUpperCase()}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
           
           <!-- Post content -->
-          <article class="stream-post">
-            <div class="stream-post-content">
-              {!isMicroContent(post.data.category) && post.data.title && (
-                <h2 class="stream-title">
-                  <a href={post.data.link} class="stream-title-link">
-                    {post.data.title}
-                  </a>
-                </h2>
-              )}
-              
-              <div class="stream-body">
-                {post.data.category === 'micro' ? (
-                  <div class="prose dark:prose-dark max-w-none" set:html={post.renderedContent || post.body} />
-                ) : (
-                  post.data.description && (
-                    <p class="stream-description">
-                      {post.data.description}
-                    </p>
-                  )
-                )}
-              </div>
-              
-              {!isMicroContent(post.data.category) && (
-                <div class="stream-read-more">
-                  <a href={post.data.link} class="read-more-link">
-                    Read more →
-                  </a>
-                </div>
+          <div class="stream-post-content">
+            {!isMicroContent(post.data.category) && post.data.title && (
+              <h2 class="stream-title">
+                <a href={post.data.link} class="stream-title-link">
+                  {post.data.title}
+                </a>
+              </h2>
+            )}
+            
+            <div class="stream-body">
+              {post.data.category === 'micro' ? (
+                <div class="prose dark:prose-dark max-w-none" set:html={post.renderedContent || post.body} />
+              ) : (
+                post.data.description && (
+                  <p class="stream-description">
+                    {post.data.description}
+                  </p>
+                )
               )}
             </div>
-          </article>
-        </div>
+            
+            {!isMicroContent(post.data.category) && (
+              <div class="stream-read-more">
+                <a href={post.data.link} class="read-more-link">
+                  Read more →
+                </a>
+              </div>
+            )}
+          </div>
+        </article>
       ))}
     </div>
     
@@ -189,9 +185,7 @@ const isMicroContent = (category: string) => category === 'micro';
 
   @media (min-width: 1024px) {
     .stream-desktop {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 2rem;
+      display: block;
       padding: 0 1rem;
     }
   }
@@ -209,9 +203,6 @@ const isMicroContent = (category: string) => category === 'micro';
 
   /* Post row styling */
   .stream-post-row {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 2rem;
     border-bottom: 1px solid #e5e7eb;
     padding-bottom: 2rem;
     margin-bottom: 2rem;
@@ -226,15 +217,7 @@ const isMicroContent = (category: string) => category === 'micro';
     border-bottom-color: #374151;
   }
 
-  @media (max-width: 1023px) {
-    .stream-post-row {
-      display: block;
-    }
-    
-    .stream-post-metadata {
-      display: none;
-    }
-  }
+
 
   .stream-post {
     /* Border and spacing now handled by stream-post-row */
@@ -244,20 +227,15 @@ const isMicroContent = (category: string) => category === 'micro';
 
   .stream-post-metadata {
     display: flex;
-    justify-content: flex-end;
-    padding-right: 1rem;
-  }
-
-  .stream-metadata {
-    display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 0.75rem;
+    margin-bottom: 1rem;
     font-size: 0.875rem;
     color: #6b7280;
-    text-align: right;
+    flex-wrap: wrap;
   }
 
-  :global(.dark) .stream-metadata {
+  :global(.dark) .stream-post-metadata {
     color: #9ca3af;
   }
 
@@ -311,15 +289,6 @@ const isMicroContent = (category: string) => category === 'micro';
     color: #60a5fa;
     background: #1e3a8a;
     border-color: #3b82f6;
-  }
-
-  .stream-tags-sidebar {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    justify-content: flex-end;
   }
 
   .stream-tags-inline {
