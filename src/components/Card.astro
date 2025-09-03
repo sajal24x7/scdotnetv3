@@ -45,15 +45,7 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
         <TimeDisplay date={pubDate} category={category} className="card-date" />
       </div>
       
-      {tags && tags.length > 0 && (
-        <div class="card-tags">
-          {tags.map((tag: string) => (
-            <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
-              {tag.toUpperCase()}
-            </a>
-          ))}
-        </div>
-      )}
+
     </div>
   </div>
 </article>
@@ -144,30 +136,19 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
     position: relative;
     text-decoration: none;
     color: inherit;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
   }
 
-  /* Yellow highlight hover effect for card links */
-  .card-link::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 0.3em;
-    background-color: #fbbf24; /* Yellow highlight color */
-    bottom: 0;
-    left: 0;
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.3s ease-in-out;
-    z-index: -1;
+  .card-link:hover {
+    background-color: rgba(255, 235, 59, 0.3); /* Yellow highlight on hover */
+    color: inherit !important;
   }
 
-  .card-link:hover::before {
-    transform: scaleY(1);
-  }
-
-  /* Dark mode yellow highlight for card links */
-  :global(.dark) .card-link::before {
-    background-color: #f59e0b; /* Slightly darker yellow for dark mode */
+  /* Dark mode hover effect for card links */
+  :global(.dark) .card-link:hover {
+    background-color: #1E40AF; /* Blue highlight on hover in dark mode */
+    color: inherit !important;
   }
 
   .card-description {
@@ -222,16 +203,7 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
     color: inherit !important; /* Ensure text color doesn't change */
   }
 
-  /* Exclude card titles from highlight effect */
-  :global(.prose .card-link) {
-    background-color: transparent !important;
-    color: inherit !important;
-    padding: 0 !important;
-  }
 
-  :global(.prose .card-link:hover) {
-    background-color: transparent !important;
-  }
 
   /* Additional prose styles for better markdown rendering */
   :global(.prose h1),
