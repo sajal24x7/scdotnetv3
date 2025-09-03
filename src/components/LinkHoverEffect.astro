@@ -10,7 +10,7 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
 <style>
   /* Persistent yellow highlight for all prose links (manuelmoreale.com style) */
   :global(.prose a) {
-    background-color: #FCEE0C; /* Aureolin - lighter yellow like manuelmoreale.com */
+    background-color: rgba(255, 235, 59, 0.3); /* Subtle yellow highlight */
     color: inherit;
     text-decoration: none;
     padding: 0 2px;
@@ -19,7 +19,7 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
 
   /* Darker yellow highlight on hover */
   :global(.prose a:hover) {
-    background-color: #FFD700; /* Gold - darker yellow for hover */
+    background-color: rgba(255, 235, 59, 0.5); /* Slightly darker yellow on hover */
   }
 
   /* Darker blue highlight for dark mode */
@@ -65,13 +65,13 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
   /* Link preview styling with updated colors */
   .hover-tooltip .internal-preview,
   .hover-tooltip .external-preview {
-    border-left: 3px solid #FCEE0C !important;
+    border-left: 3px solid rgba(255, 235, 59, 0.8) !important;
     padding-left: 12px !important;
   }
 
   .hover-tooltip .internal-preview .title {
     font-weight: 600 !important;
-    color: #FCEE0C !important;
+    color: rgba(255, 235, 59, 0.8) !important;
     margin-bottom: 4px !important;
     font-size: 14px !important;
   }
@@ -90,7 +90,7 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
   .hover-tooltip .external-preview .url {
     font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace !important;
     font-size: 12px !important;
-    color: #FCEE0C !important;
+    color: rgba(255, 235, 59, 0.8) !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     hyphens: auto !important;
