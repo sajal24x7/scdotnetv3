@@ -8,42 +8,35 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
 ---
 
 <style>
-  /* Permanent link colors for internal links (blue) */
-  :global(.prose a[data-internal]) {
-    color: #3b82f6 !important;
+  /* Yellow highlight effect for all prose links */
+  :global(.prose a) {
+    position: relative;
     text-decoration: none;
+    color: inherit;
   }
 
-  :global(.prose a[data-internal]:hover) {
-    color: #2563eb !important;
-    text-decoration: underline;
+  /* Yellow highlight hover effect for prose links */
+  :global(.prose a::before) {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0.3em;
+    background-color: #fbbf24; /* Yellow highlight color */
+    bottom: 0;
+    left: 0;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease-in-out;
+    z-index: -1;
   }
 
-  :global(.dark .prose a[data-internal]) {
-    color: #60a5fa !important;
+  :global(.prose a:hover::before) {
+    transform: scaleY(1);
   }
 
-  :global(.dark .prose a[data-internal]:hover) {
-    color: #93c5fd !important;
-  }
-
-  /* Permanent link colors for external links (purple) */
-  :global(.prose a[data-external]) {
-    color: #8b5cf6 !important;
-    text-decoration: none;
-  }
-
-  :global(.prose a[data-external]:hover) {
-    color: #7c3aed !important;
-    text-decoration: underline;
-  }
-
-  :global(.dark .prose a[data-external]) {
-    color: #a78bfa !important;
-  }
-
-  :global(.dark .prose a[data-external]:hover) {
-    color: #c4b5fd !important;
+  /* Dark mode yellow highlight for prose links */
+  :global(.dark .prose a::before) {
+    background-color: #f59e0b; /* Slightly darker yellow for dark mode */
   }
 
   /* Hover tooltip styles */
@@ -61,21 +54,22 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
     display: block !important;
   }
 
-  /* Internal link preview */
-  .hover-tooltip .internal-preview {
-    border-left: 3px solid #3b82f6 !important;
+  /* Link preview styling with yellow accent */
+  .hover-tooltip .internal-preview,
+  .hover-tooltip .external-preview {
+    border-left: 3px solid #fbbf24 !important;
     padding-left: 12px !important;
   }
 
   .hover-tooltip .internal-preview .title {
     font-weight: 600 !important;
-    color: #3b82f6 !important;
+    color: #fbbf24 !important;
     margin-bottom: 4px !important;
     font-size: 14px !important;
   }
   
   :global(.dark) .hover-tooltip .internal-preview .title {
-    color: #60a5fa !important;
+    color: #f59e0b !important;
   }
 
   .hover-tooltip .internal-preview .description {
@@ -85,16 +79,10 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
     opacity: 0.8 !important;
   }
 
-  /* External link preview */
-  .hover-tooltip .external-preview {
-    border-left: 3px solid #8b5cf6 !important;
-    padding-left: 12px !important;
-  }
-
   .hover-tooltip .external-preview .url {
     font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace !important;
     font-size: 12px !important;
-    color: #8b5cf6 !important;
+    color: #fbbf24 !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     hyphens: auto !important;
@@ -103,7 +91,7 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
   }
 
   :global(.dark) .hover-tooltip .external-preview .url {
-    color: #a78bfa !important;
+    color: #f59e0b !important;
   }
 </style>
 
@@ -131,18 +119,14 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
           // Skip links with no-hover-effect class
           if (link.classList.contains('no-hover-effect')) return;
           
-          // Determine if link is internal or external
+          // Determine if link is internal or external for tooltip purposes
           const isInternal = href.startsWith('/') || 
                            href.includes('__GHOST_URL__') || 
                            href.includes(window.location.hostname) ||
                            href.includes('sajalchoudhary.net');
           
-          // Apply permanent attributes for styling
+          // Add content preview data for internal links (for tooltips only)
           if (isInternal) {
-            link.setAttribute('data-internal', '');
-            link.removeAttribute('data-external');
-            
-            // Add content preview data for internal links
             let cleanHref = href.replace('__GHOST_URL__', '');
             
             // Extract path from full domain URLs
@@ -167,9 +151,6 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
                 link.setAttribute('data-description', preview.description);
               }
             }
-          } else {
-            link.setAttribute('data-external', '');
-            link.removeAttribute('data-internal');
           }
           
           // Add hover events

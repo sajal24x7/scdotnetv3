@@ -92,34 +92,35 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
   font-weight: 700;
 }
 
-/* Random colored underline effect on hover */
-a.random-underline {
-  text-decoration: underline;
-  text-decoration-color: var(--random-link-color);
-  text-decoration-thickness: 0.15em; /* Slightly thicker for bold effect */
-  font-weight: 500;
+/* Yellow highlight effect for navigation links */
+nav a {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
 }
 
-/* Special links that have icons/SVGs */
-a.icon-link.random-underline span {
-  text-decoration: underline;
-  text-decoration-color: var(--random-link-color);
+/* Yellow highlight hover effect */
+nav a::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 0.3em;
+  background-color: #fbbf24; /* Yellow highlight color */
+  bottom: 0;
+  left: 0;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease-in-out;
+  z-index: -1;
 }
 
-/* Make sure underlines render properly across browsers */
-@supports (text-underline-offset: 0.15em) {
-  a.random-underline {
-    text-underline-offset: 0.15em;
-  }
+nav a:hover::before {
+  transform: scaleY(1);
 }
 
-/* Fallback for browsers that don't support modern text decoration properties */
-@supports not (text-decoration-color: var(--random-link-color)) {
-  a.random-underline {
-    border-bottom: 2px solid var(--random-link-color);
-    text-decoration: none;
-    padding-bottom: 2px;
-  }
+/* Dark mode yellow highlight */
+.dark nav a::before {
+  background-color: #f59e0b; /* Slightly darker yellow for dark mode */
 }
 
 /* Disable hover effects for elements with no-hover class */
