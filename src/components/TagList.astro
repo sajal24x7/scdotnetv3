@@ -23,6 +23,10 @@ if (category === 'garden') {
   filteredPosts = allPosts.filter(post => 
     ['story', 'poem'].includes(post.data.category)
   );
+} else if (category === 'stream') {
+  filteredPosts = allPosts.filter(post => 
+    ['blog', 'micro', 'photo'].includes(post.data.category)
+  );
 } else {
   filteredPosts = allPosts.filter(post => post.data.category === category);
 }

@@ -1,7 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import StreamGrid from '../../components/layout/StreamGrid.astro';
+import StreamLayout from '../../components/layout/StreamLayout.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
+import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for stream (blog, micro, and photo)
@@ -37,8 +38,13 @@ const transformedPosts = stream.map(transformPost);
       {transformedPosts.length} {transformedPosts.length === 1 ? 'post' : 'posts'}
     </div>
     
+    <!-- TagList for mobile and desktop -->
+    <div class="stream-taglist">
+      <TagList category="stream" title="Tagged with:" />
+    </div>
+    
     <main class="stream-main">
-      <StreamGrid posts={transformedPosts} />
+      <StreamLayout posts={transformedPosts} />
     </main>
 </Layout>
 
@@ -65,6 +71,10 @@ const transformedPosts = stream.map(transformPost);
     padding-bottom: 2rem;
   }
 
+  .stream-taglist {
+    margin-bottom: 2rem;
+  }
+
   /* Mobile adjustments */
   @media (max-width: 768px) {
     .stream-container {
@@ -74,6 +84,10 @@ const transformedPosts = stream.map(transformPost);
 
     .stream-main {
       padding-bottom: 1.5rem;
+    }
+
+    .stream-taglist {
+      margin-bottom: 1.5rem;
     }
   }
 </style> 
