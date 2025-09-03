@@ -1,5 +1,6 @@
 ---
 import SocialLinks from './SocialLinks.astro';
+import HoverEffect from '../HoverEffect.astro';
 
 interface Props {
   currentPage: string;
@@ -204,20 +205,22 @@ const activeSubsection = getActiveSubsection();
         
         <!-- Primary Navigation Row (moved between name and socials) -->
         <nav class="primary-nav-row py-0.5">
-          {mainNavItems.map((item, index) => (
-            <a
-              href={item.href}
-              class={`px-3 py-0.25 text-sm font-bold uppercase tracking-wide transition-colors duration-200 ${
-                index < mainNavItems.length - 1 ? 'border-r' : ''
-              } border-b ${
-                isMainActive(item.key)
-                  ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white border-gray-900 dark:border-white'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50 border-gray-600 dark:border-gray-400'
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
+          <HoverEffect>
+            {mainNavItems.map((item, index) => (
+              <a
+                href={item.href}
+                class={`px-3 py-0.25 text-sm font-bold uppercase tracking-wide transition-colors duration-200 ${
+                  index < mainNavItems.length - 1 ? 'border-r' : ''
+                } border-b ${
+                  isMainActive(item.key)
+                    ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white border-gray-900 dark:border-white'
+                    : 'text-gray-600 dark:text-gray-400 border-gray-600 dark:border-gray-400'
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </HoverEffect>
         </nav>
 
         <!-- Social Links -->
@@ -228,20 +231,22 @@ const activeSubsection = getActiveSubsection();
         <!-- Secondary Navigation Row (persistent for About, Garden and Stream sections) -->
         {activeMainSection && (activeMainSection === 'about' || activeMainSection === 'garden' || activeMainSection === 'stream') && (
           <nav class="secondary-nav-row py-0.5 secondary-in-grid">
-            {secondaryNavItems[activeMainSection].map((item, index) => (
-              <a
-                href={item.href}
-                class={`px-3 py-0.25 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
-                  index < secondaryNavItems[activeMainSection].length - 1 ? 'border-r' : ''
-                } border-b ${
-                  (isActive(item.href) || (activeSubsection && activeSubsection === item.href))
-                    ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-gray-900 dark:border-white'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50 border-gray-600 dark:border-gray-400'
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
+            <HoverEffect>
+              {secondaryNavItems[activeMainSection].map((item, index) => (
+                <a
+                  href={item.href}
+                  class={`px-3 py-0.25 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
+                    index < secondaryNavItems[activeMainSection].length - 1 ? 'border-r' : ''
+                  } border-b ${
+                    (isActive(item.href) || (activeSubsection && activeSubsection === item.href))
+                      ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-gray-900 dark:border-white'
+                      : 'text-gray-600 dark:text-gray-400 border-gray-600 dark:border-gray-400'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </HoverEffect>
           </nav>
         )}
       </div>

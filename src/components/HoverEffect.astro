@@ -1,0 +1,43 @@
+---
+// Reusable hover effect component for consistent yellow/blue highlights
+// Usage: <HoverEffect><a href="/link">Link text</a></HoverEffect>
+---
+
+<slot />
+
+<style>
+  /* Consistent hover effects for all links */
+  :global(.hover-effect a) {
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+  }
+
+  /* Light mode: Yellow highlight on hover */
+  :global(.hover-effect a:hover) {
+    background-color: rgba(255, 235, 59, 0.3);
+    color: inherit !important;
+  }
+
+  /* Dark mode: Blue highlight on hover */
+  :global(.dark .hover-effect a:hover) {
+    background-color: #1E40AF;
+    color: inherit !important;
+  }
+
+  /* Exclude certain elements from hover effect */
+  :global(.hover-effect a[href*="/tags/"]),
+  :global(.hover-effect a[href*="/category/"]),
+  :global(.hover-effect .no-hover-effect) {
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+
+  :global(.hover-effect a[href*="/tags/"]:hover),
+  :global(.hover-effect a[href*="/category/"]:hover),
+  :global(.hover-effect .no-hover-effect:hover) {
+    background-color: transparent !important;
+  }
+</style>

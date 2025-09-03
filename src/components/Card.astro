@@ -1,6 +1,7 @@
 ---
 import TimeDisplay from './TimeDisplay.astro';
 import CategoryDisplay from './CategoryDisplay.astro';
+import HoverEffect from './HoverEffect.astro';
 
 const { title, description, pubDate, category, image, link, tags } = Astro.props;
 ---
@@ -20,9 +21,11 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
     <div class="card-body">
       <h2 class="card-title prose">
         {link ? (
-          <a href={link} class="card-link">
-            {title}
-          </a>
+          <HoverEffect>
+            <a href={link} class="card-link">
+              {title}
+            </a>
+          </HoverEffect>
         ) : (
           title
         )}
@@ -133,22 +136,8 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
   }
 
   .card-link {
-    position: relative;
     text-decoration: none;
     color: inherit;
-    background-color: transparent;
-    transition: background-color 0.2s ease;
-  }
-
-  .card-link:hover {
-    background-color: rgba(255, 235, 59, 0.3); /* Yellow highlight on hover */
-    color: inherit !important;
-  }
-
-  /* Dark mode hover effect for card links */
-  :global(.dark) .card-link:hover {
-    background-color: #1E40AF; /* Blue highlight on hover in dark mode */
-    color: inherit !important;
   }
 
   .card-description {

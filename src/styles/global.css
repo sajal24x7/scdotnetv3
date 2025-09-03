@@ -92,26 +92,7 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
   font-weight: 700;
 }
 
-/* Consistent hover effect for navigation links */
-nav a {
-  position: relative;
-  text-decoration: none;
-  color: inherit;
-  background-color: transparent;
-  transition: background-color 0.2s ease;
-}
 
-/* Yellow highlight hover effect */
-nav a:hover {
-  background-color: rgba(255, 235, 59, 0.3); /* Yellow highlight on hover */
-  color: inherit !important;
-}
-
-/* Dark mode blue highlight */
-.dark nav a:hover {
-  background-color: #1E40AF; /* Blue highlight on hover in dark mode */
-  color: inherit !important;
-}
 
 /* Disable hover effects for elements with no-hover class */
 a.no-hover {
