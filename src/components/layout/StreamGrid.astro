@@ -1,6 +1,7 @@
 ---
 import StreamCard from '../StreamCard.astro';
 import TimeDisplay from '../TimeDisplay.astro';
+import CategoryDisplay from '../CategoryDisplay.astro';
 import { marked } from 'marked';
 
 interface Props {
@@ -46,9 +47,7 @@ const renderedPosts = posts.map(post => ({
                   className="stream-grid-date"
                 />
               </a>
-              <span class="stream-grid-category">
-                {post.data.category}
-              </span>
+              <CategoryDisplay category={post.data.category} className="stream-grid-category" />
               {post.data.tags && post.data.tags.length > 0 && (
                 <div class="stream-grid-tags-sidebar">
                   {post.data.tags.map((tag: string) => (
@@ -193,23 +192,7 @@ const renderedPosts = posts.map(post => ({
     color: #c4b5fd;
   }
 
-  .stream-grid-category {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #3b82f6;
-    background: #eff6ff;
-    padding: 0.2rem 0.6rem;
-    border-radius: 9999px;
-    border: 1px solid #dbeafe;
-    font-size: 0.75rem;
-  }
 
-  :global(.dark) .stream-grid-category {
-    color: #60a5fa;
-    background: #1e3a8a;
-    border-color: #3b82f6;
-  }
 
   .stream-grid-tags-sidebar {
     display: flex;

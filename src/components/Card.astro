@@ -1,5 +1,6 @@
 ---
 import TimeDisplay from './TimeDisplay.astro';
+import CategoryDisplay from './CategoryDisplay.astro';
 
 const { title, description, pubDate, category, image, link, tags } = Astro.props;
 ---
@@ -40,9 +41,7 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
       </div>
 
       <div class="card-meta">
-        <span class="post-category card-category">
-          {category}
-        </span>
+        <CategoryDisplay category={category} className="card-category" />
         <TimeDisplay date={pubDate} category={category} className="card-date" />
       </div>
       
@@ -127,23 +126,7 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
     color: #9ca3af;
   }
 
-  .card-category {
-    font-size: var(--text-small);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #3b82f6;
-    background: #eff6ff;
-    padding: 0.2rem 0.6rem;
-    border-radius: 9999px;
-    border: 1px solid #dbeafe;
-  }
 
-  :global(.dark) .card-category {
-    color: #60a5fa;
-    background: #1e3a8a;
-    border-color: #3b82f6;
-  }
 
   .card-title {
     font-size: var(--text-large);

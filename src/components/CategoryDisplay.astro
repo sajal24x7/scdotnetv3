@@ -1,0 +1,44 @@
+---
+interface Props {
+  category: string;
+  className?: string;
+}
+
+const { category, className = '' } = Astro.props;
+---
+
+<span class={`category-display ${className}`}>
+  {category.toLowerCase()}
+</span>
+
+<style>
+  .category-display {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+    color: #ca8a04;
+    background: transparent;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid #eab308;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  :global(.dark) .category-display {
+    color: #fbbf24;
+    border-color: #f59e0b;
+  }
+
+  .category-display:hover {
+    background: rgba(234, 179, 8, 0.05);
+    border-color: #ca8a04;
+  }
+
+  :global(.dark) .category-display:hover {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: #f59e0b;
+  }
+</style>
