@@ -10,7 +10,7 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
 <style>
   /* Persistent yellow highlight for all prose links (manuelmoreale.com style) */
   :global(.prose a) {
-    background-color: #FFFF00; /* Pure yellow - manuelmoreale.com color */
+    background-color: #FCEE0C; /* Aureolin - lighter yellow like manuelmoreale.com */
     color: inherit;
     text-decoration: none;
     padding: 0 2px;
@@ -22,13 +22,13 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
     background-color: #FFD700; /* Gold - darker yellow for hover */
   }
 
-  /* Dark mode adjustments */
+  /* Cyberpunk blue highlight for dark mode */
   :global(.dark .prose a) {
-    background-color: #FFFF00; /* Keep same yellow in dark mode */
+    background-color: #03D8F3; /* Vivid Sky Blue - cyberpunk blue */
   }
 
   :global(.dark .prose a:hover) {
-    background-color: #FFD700; /* Keep same gold in dark mode */
+    background-color: #00BFFF; /* Deep Sky Blue - darker cyberpunk blue for hover */
   }
 
   /* Hover tooltip styles */
@@ -46,22 +46,22 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
     display: block !important;
   }
 
-  /* Link preview styling with manuelmoreale.com yellow accent */
+  /* Link preview styling with updated colors */
   .hover-tooltip .internal-preview,
   .hover-tooltip .external-preview {
-    border-left: 3px solid #FFFF00 !important;
+    border-left: 3px solid #FCEE0C !important;
     padding-left: 12px !important;
   }
 
   .hover-tooltip .internal-preview .title {
     font-weight: 600 !important;
-    color: #FFFF00 !important;
+    color: #FCEE0C !important;
     margin-bottom: 4px !important;
     font-size: 14px !important;
   }
   
   :global(.dark) .hover-tooltip .internal-preview .title {
-    color: #FFFF00 !important;
+    color: #03D8F3 !important;
   }
 
   .hover-tooltip .internal-preview .description {
@@ -74,7 +74,7 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
   .hover-tooltip .external-preview .url {
     font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace !important;
     font-size: 12px !important;
-    color: #FFFF00 !important;
+    color: #FCEE0C !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     hyphens: auto !important;
@@ -83,7 +83,12 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
   }
 
   :global(.dark) .hover-tooltip .external-preview .url {
-    color: #FFFF00 !important;
+    color: #03D8F3 !important;
+  }
+
+  :global(.dark) .hover-tooltip .internal-preview,
+  :global(.dark) .hover-tooltip .external-preview {
+    border-left: 3px solid #03D8F3 !important;
   }
 </style>
 

@@ -394,7 +394,7 @@ const { post, isMicroContent } = Astro.props;
 
   /* Persistent yellow highlight for prose links in stream posts (manuelmoreale.com style) */
   :global(.prose a) {
-    background-color: #FFFF00; /* Pure yellow - manuelmoreale.com color */
+    background-color: #FCEE0C; /* Aureolin - lighter yellow like manuelmoreale.com */
     color: inherit;
     text-decoration: none;
     padding: 0 2px;
@@ -406,10 +406,10 @@ const { post, isMicroContent } = Astro.props;
   }
 
   :global(.dark .prose a) {
-    background-color: #FFFF00; /* Keep same yellow in dark mode */
+    background-color: #03D8F3; /* Vivid Sky Blue - cyberpunk blue */
   }
 
   :global(.dark .prose a:hover) {
-    background-color: #FFD700; /* Keep same gold in dark mode */
+    background-color: #00BFFF; /* Deep Sky Blue - darker cyberpunk blue for hover */
   }
 </style>
