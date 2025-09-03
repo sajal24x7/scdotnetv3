@@ -20,6 +20,7 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
   /* Darker yellow highlight on hover */
   :global(.prose a:hover) {
     background-color: rgba(255, 235, 59, 0.5); /* Slightly darker yellow on hover */
+    color: inherit !important; /* Ensure text color doesn't change */
   }
 
   /* Darker blue highlight for dark mode */
@@ -29,6 +30,7 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
 
   :global(.dark .prose a:hover) {
     background-color: #1D4ED8; /* Blue-700 - slightly lighter for hover */
+    color: inherit !important; /* Ensure text color doesn't change */
   }
 
   /* Exclude tags and category links from highlight effect */

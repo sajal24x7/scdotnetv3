@@ -140,6 +140,7 @@ const renderedPosts = doneNowPosts.map(post => ({
 
   :global(.prose a:hover) {
     background-color: rgba(255, 235, 59, 0.5); /* Slightly darker yellow on hover */
+    color: inherit !important; /* Ensure text color doesn't change */
   }
 
   :global(.dark .prose a) {
@@ -148,6 +149,7 @@ const renderedPosts = doneNowPosts.map(post => ({
 
   :global(.dark .prose a:hover) {
     background-color: #1D4ED8; /* Blue-700 - slightly lighter for hover */
+    color: inherit !important; /* Ensure text color doesn't change */
   }
 
   /* Exclude tags and category links from highlight effect */

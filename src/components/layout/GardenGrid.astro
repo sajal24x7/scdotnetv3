@@ -162,6 +162,7 @@ const getContentTypeClasses = (type: string, category?: string) => {
 
   :global(.prose a:hover) {
     background-color: rgba(255, 235, 59, 0.5); /* Slightly darker yellow on hover */
+    color: inherit !important; /* Ensure text color doesn't change */
   }
 
   :global(.dark .prose a) {
@@ -170,6 +171,7 @@ const getContentTypeClasses = (type: string, category?: string) => {
 
   :global(.dark .prose a:hover) {
     background-color: #1D4ED8; /* Blue-700 - slightly lighter for hover */
+    color: inherit !important; /* Ensure text color doesn't change */
   }
 
   /* Exclude card titles from highlight effect */
