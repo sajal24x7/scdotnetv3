@@ -143,11 +143,27 @@ const renderedPosts = doneNowPosts.map(post => ({
   }
 
   :global(.dark .prose a) {
-    background-color: #03D8F3; /* Vivid Sky Blue - cyberpunk blue */
+    background-color: #1E40AF; /* Blue-800 - darker blue that works with white text */
   }
 
   :global(.dark .prose a:hover) {
-    background-color: #00BFFF; /* Deep Sky Blue - darker cyberpunk blue for hover */
+    background-color: #1D4ED8; /* Blue-700 - slightly lighter for hover */
+  }
+
+  /* Exclude tags and category links from highlight effect */
+  :global(.prose a[href*="/tags/"]),
+  :global(.prose a[href*="/category/"]),
+  :global(.prose .tag),
+  :global(.prose .category-link) {
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+
+  :global(.prose a[href*="/tags/"]:hover),
+  :global(.prose a[href*="/category/"]:hover),
+  :global(.prose .tag:hover),
+  :global(.prose .category-link:hover) {
+    background-color: transparent !important;
   }
 
   /* Additional prose styles for better markdown rendering */

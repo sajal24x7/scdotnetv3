@@ -165,10 +165,21 @@ const getContentTypeClasses = (type: string, category?: string) => {
   }
 
   :global(.dark .prose a) {
-    background-color: #03D8F3; /* Vivid Sky Blue - cyberpunk blue */
+    background-color: #1E40AF; /* Blue-800 - darker blue that works with white text */
   }
 
   :global(.dark .prose a:hover) {
-    background-color: #00BFFF; /* Deep Sky Blue - darker cyberpunk blue for hover */
+    background-color: #1D4ED8; /* Blue-700 - slightly lighter for hover */
+  }
+
+  /* Exclude card titles from highlight effect */
+  :global(.prose .card-link) {
+    background-color: transparent !important;
+    color: inherit !important;
+    padding: 0 !important;
+  }
+
+  :global(.prose .card-link:hover) {
+    background-color: transparent !important;
   }
 </style>

@@ -22,13 +22,29 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
     background-color: #FFD700; /* Gold - darker yellow for hover */
   }
 
-  /* Cyberpunk blue highlight for dark mode */
+  /* Darker blue highlight for dark mode */
   :global(.dark .prose a) {
-    background-color: #03D8F3; /* Vivid Sky Blue - cyberpunk blue */
+    background-color: #1E40AF; /* Blue-800 - darker blue that works with white text */
   }
 
   :global(.dark .prose a:hover) {
-    background-color: #00BFFF; /* Deep Sky Blue - darker cyberpunk blue for hover */
+    background-color: #1D4ED8; /* Blue-700 - slightly lighter for hover */
+  }
+
+  /* Exclude tags and category links from highlight effect */
+  :global(.prose a[href*="/tags/"]),
+  :global(.prose a[href*="/category/"]),
+  :global(.prose .tag),
+  :global(.prose .category-link) {
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+
+  :global(.prose a[href*="/tags/"]:hover),
+  :global(.prose a[href*="/category/"]:hover),
+  :global(.prose .tag:hover),
+  :global(.prose .category-link:hover) {
+    background-color: transparent !important;
   }
 
   /* Hover tooltip styles */
@@ -61,7 +77,7 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
   }
   
   :global(.dark) .hover-tooltip .internal-preview .title {
-    color: #03D8F3 !important;
+    color: #1E40AF !important;
   }
 
   .hover-tooltip .internal-preview .description {
@@ -83,12 +99,12 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
   }
 
   :global(.dark) .hover-tooltip .external-preview .url {
-    color: #03D8F3 !important;
+    color: #1E40AF !important;
   }
 
   :global(.dark) .hover-tooltip .internal-preview,
   :global(.dark) .hover-tooltip .external-preview {
-    border-left: 3px solid #03D8F3 !important;
+    border-left: 3px solid #1E40AF !important;
   }
 </style>
 
