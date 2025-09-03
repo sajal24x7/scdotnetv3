@@ -77,22 +77,24 @@ const renderedPosts = posts.map(post => ({
   }
 
   /* Ensure links are properly styled */
+  /* Persistent yellow highlight for prose links (manuelmoreale.com style) */
   :global(.prose a) {
-    color: #3b82f6;
+    background-color: #FFFF00; /* Pure yellow - manuelmoreale.com color */
+    color: inherit;
     text-decoration: none;
-    transition: color 0.2s;
+    padding: 0 2px;
+    transition: background-color 0.2s ease;
   }
 
   :global(.prose a:hover) {
-    color: #2563eb;
-    text-decoration: underline;
+    background-color: #FFD700; /* Gold - darker yellow for hover */
   }
 
   :global(.dark .prose a) {
-    color: #60a5fa;
+    background-color: #FFFF00; /* Keep same yellow in dark mode */
   }
 
   :global(.dark .prose a:hover) {
-    color: #93c5fd;
+    background-color: #FFD700; /* Keep same gold in dark mode */
   }
 </style> 
