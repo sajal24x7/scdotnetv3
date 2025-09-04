@@ -9,6 +9,11 @@ tags:
   - book-reviews
   - sci-fi
 image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8922.jpeg'
+author: "Becky Chambers"
+bookStatus: "read"
+startedReading: "2024-12-24T10:54:00+03:00"
+finishedReading: "2024-12-24T10:54:00+03:00"
+bookCover: "https://books.google.com/books/content?id=oTU0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 ---
 This is the third book in the Wayfarer series. Becky continues to explore further people and stories in this universe. This time concentrating on the Fleet, the descendants of the first humans who left a dying planet.
 

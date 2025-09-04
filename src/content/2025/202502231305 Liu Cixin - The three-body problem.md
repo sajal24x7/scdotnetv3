@@ -11,6 +11,12 @@ tags:
   - three-body-problem
   - sci-fi
 image: 'https://storage.sajalchoudhary.net/images/2025/02/IMG_0005.jpeg'
+author: "Liu Cixin"
+series: "Remembrance of Earth's Past"
+bookStatus: "read"
+startedReading: "2025-02-23T13:05:00+03:00"
+finishedReading: "2025-02-23T13:05:00+03:00"
+bookCover: "https://books.google.com/books/content?id=oTU0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 ---
 How does one review a book?
 
