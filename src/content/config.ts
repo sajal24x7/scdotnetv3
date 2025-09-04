@@ -22,6 +22,14 @@ const postsCollection = defineCollection({
     image: z.string().optional(),
     edition: z.number().optional(),
     format: z.string().optional(),
+    // Book-specific metadata
+    author: z.string().optional(),
+    series: z.string().optional().default('none'),
+    startedReading: dateSchema.optional(),
+    finishedReading: dateSchema.optional(),
+    bookStatus: z.enum(['reading', 'read']).optional(),
+    bookCover: z.string().optional(), // Different from main image for bookshelf display
+    postImage: z.string().optional(), // Optional image for individual post pages
   }),
 });
 

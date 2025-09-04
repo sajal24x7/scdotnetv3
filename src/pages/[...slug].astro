@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import TimeDisplay from '../components/TimeDisplay.astro';
+import BookCard from '../components/BookCard.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getYearDirectories } from '../utils/content';
 import LinkHoverEffect from '../components/LinkHoverEffect.astro';
@@ -64,7 +65,32 @@ function getCategoryUrl(category: string): string {
           </a>
         </div>
         
-        {'image' in entry.data && entry.data.image && (
+        {/* Handle different image types for bookshelf posts */}
+        {category === 'bookshelf' && ('postImage' in entry.data && entry.data.postImage) && (
+          <div class="mb-6">
+            <img 
+              src={entry.data.postImage} 
+              alt={`${entry.data?.title ?? ''} - personal photo`} 
+              class="rounded-lg w-full object-cover max-h-96"
+              loading="lazy"
+            />
+          </div>
+        )}
+        
+        {/* Fallback to regular image for non-bookshelf or when no postImage */}
+        {category !== 'bookshelf' && 'image' in entry.data && entry.data.image && (
+          <div class="mb-6">
+            <img 
+              src={entry.data.image} 
+              alt={entry.data?.title ?? ''} 
+              class="rounded-lg w-full object-cover max-h-96"
+              loading="lazy"
+            />
+          </div>
+        )}
+        
+        {/* Fallback for bookshelf posts without postImage */}
+        {category === 'bookshelf' && !('postImage' in entry.data && entry.data.postImage) && 'image' in entry.data && entry.data.image && (
           <div class="mb-6">
             <img 
               src={entry.data.image} 
@@ -77,6 +103,17 @@ function getCategoryUrl(category: string): string {
         
         <div class="text-center">
           <h1 class="text-3xl md:text-4xl font-bold mb-2">{entry.data?.title ?? ''}</h1>
+          
+          {/* Book metadata for bookshelf posts */}
+          {category === 'bookshelf' && (
+            <div class="book-metadata-section mb-6">
+              <BookCard 
+                {...entry.data}
+                isPostPage={true}
+                link={undefined}
+              />
+            </div>
+          )}
           
           {category === 'nordletter' && 'edition' in entry.data && entry.data.edition && (
             <div class="flex justify-center items-center gap-4 mb-4">
@@ -217,5 +254,20 @@ function getCategoryUrl(category: string): string {
     color: #c4b5fd;
     border-color: #c4b5fd;
     background: rgba(167, 139, 250, 0.1);
+  }
+
+  .book-metadata-section {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .book-metadata-section :global(.book-card) {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+  }
+
+  :global(.dark) .book-metadata-section :global(.book-card) {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-color: #374151;
   }
 </style> 
