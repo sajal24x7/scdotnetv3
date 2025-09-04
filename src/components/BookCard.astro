@@ -10,8 +10,7 @@ interface BookCardProps {
   finishedReading?: Date | string;
   bookStatus?: 'reading' | 'read';
   bookCover?: string;
-  postImage?: string;
-  image?: string; // Fallback image
+  image?: string; // Hero image for post pages
   description?: string;
   pubDate: Date | string;
   category: string;
@@ -29,7 +28,7 @@ const {
   finishedReading, 
   bookStatus, 
   bookCover, 
-  postImage,
+  image,
   description, 
   pubDate, 
   category, 
@@ -39,11 +38,11 @@ const {
 } = Astro.props;
 
 // Determine which image to use
-// For bookshelf: use bookCover, fallback to postImage, then image
-// For post page: use postImage, fallback to bookCover, then image
+// For bookshelf: use bookCover, fallback to image
+// For post page: use image, fallback to bookCover
 const displayImage = isPostPage 
-  ? (postImage || bookCover || image) 
-  : (bookCover || postImage || image);
+  ? (image || bookCover) 
+  : (bookCover || image);
 
 // Format dates
 const formatDate = (date: Date | string | undefined) => {

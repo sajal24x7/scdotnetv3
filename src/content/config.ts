@@ -28,8 +28,7 @@ const postsCollection = defineCollection({
     startedReading: dateSchema.optional(),
     finishedReading: dateSchema.optional(),
     bookStatus: z.enum(['reading', 'read']).optional(),
-    bookCover: z.string().optional(), // Different from main image for bookshelf display
-    postImage: z.string().optional(), // Optional image for individual post pages
+    bookCover: z.string().optional(), // Book cover image for bookshelf display
   }),
 });
 
