@@ -114,17 +114,10 @@ const transformBook = (book: any) => ({
     }
   }
 
-  /* Large tablet: 3 columns */
+  /* Large tablet and desktop: 2 columns for better readability */
   @media (min-width: 1024px) {
     .book-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  /* Desktop: 4 columns */
-  @media (min-width: 1280px) {
-    .book-grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
