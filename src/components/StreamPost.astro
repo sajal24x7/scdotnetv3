@@ -183,24 +183,26 @@ const { post, isMicroContent } = Astro.props;
   .stream-date-link {
     text-decoration: none;
     transition: all 0.2s ease;
-  }
-
-  .stream-date {
-    font-weight: 500;
     color: #8b5cf6;
-    font-family: monospace;
+    font-weight: 500;
   }
 
-  .stream-date-link:hover .stream-date {
+  .stream-date-link:hover {
     color: #7c3aed;
     text-decoration: underline;
   }
 
-  :global(.dark) .stream-date {
+  .stream-date {
+    font-weight: 500;
+    color: inherit;
+    font-family: monospace;
+  }
+
+  :global(.dark) .stream-date-link {
     color: #a78bfa;
   }
 
-  :global(.dark) .stream-date-link:hover .stream-date {
+  :global(.dark) .stream-date-link:hover {
     color: #c4b5fd;
   }
 
