@@ -11,6 +11,12 @@ tags:
   - book-reviews
 image: >-
   https://storage.sajalchoudhary.net/images/2021/02/Screenshot-2021-02-12-at-8.41.31-PM.png
+author: "Matthew Syed"
+series: none
+bookStatus: "read"
+startedReading: "2021-02-12T15:13:00+03:00"
+finishedReading: "2021-02-12T15:13:00+03:00"
+bookCover: "https://books.google.com/books/content?id=oTU0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 ---
 I learnt about this [book](https://www.amazon.in/dp/B00PW634YQ/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1) on [**\#484** of the Tim Ferris show](https://tim.blog/2020/12/03/daniel-ek/), with [Daniel Ek](https://twitter.com/eldsjal), the CEO of Spotify.
 

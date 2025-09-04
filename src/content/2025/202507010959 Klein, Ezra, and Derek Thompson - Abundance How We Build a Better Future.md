@@ -10,6 +10,12 @@ startDate: 2025-07-01T09:59:00+03:00
 endDate: 2025-07-06T18:00:00+03:00
 format: audio
 image: "http://books.google.com/books/publisher/content?id=kMNHEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE73GJw9Ej_EWfK9NOPvYJjS8aDvPY9lq1h52vjDL5YzW7p0qiXrFVCDPaBJVreR8DLau0gDsDaSxdpexNwMA7snGGSJ_jpE9YxVNIjU2JhmpHmmmJddXJBegTf1s9DFBKgt3v1so&source=gbs_api"
+author: "Ezra Klein and Derek Thompson"
+series: none
+bookStatus: "read"
+startedReading: "2025-07-01T09:59:00+03:00"
+finishedReading: "2025-07-01T09:59:00+03:00"
+bookCover: "https://books.google.com/books/content?id=oTU0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 ---
 This book did not turn out to be how I had imagined it would be. Maybe by looking at the title, maybe by looking at the cover, I was hoping for it to be a description of a future world achieved by technology, a future of abundance, of steps humanity might take to get there. Perhaps, I was hoping for a non-fiction version of  [Kim Stanley Robinson's -The Ministry For The Future](https://g.co/kgs/xeL8P6S).
 

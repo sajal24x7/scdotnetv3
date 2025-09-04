@@ -8,11 +8,13 @@ tags:
   - sci-fi
   - murderbot
   - wells, martha
-startDate: 2025-07-08T09:59:00+03:00
-endDate: 2025-07-11T18:26:14+03:00
+author: "Martha Wells"
+series: "The Murderbot Diaries"
+startedReading: 2025-07-08T09:59:00+03:00
+finishedReading: 2025-07-11T18:26:14+03:00
+bookStatus: "read"
+bookCover: "https://books.google.com/books/content?id=oTU0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 format: audio
-state: read
-image: "https://books.google.com/books/content?id=oTU0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 ---
 This is the second book in Martha Wells' [The Murderbot Diaries](https://en.wikipedia.org/wiki/The_Murderbot_Diaries) series. 
 

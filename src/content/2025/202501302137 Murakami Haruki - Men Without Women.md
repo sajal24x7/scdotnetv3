@@ -9,6 +9,12 @@ tags:
   - book-reviews
   - murakami
 image: 'https://storage.sajalchoudhary.net/images/2025/01/IMG_9445.jpeg'
+author: "Murakami Haruki"
+series: none
+bookStatus: "read"
+startedReading: "2025-01-30T21:37:00+03:00"
+finishedReading: "2025-01-30T21:37:00+03:00"
+bookCover: "https://books.google.com/books/content?id=oTU0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 ---
 # Few things about the thing that is this book
 

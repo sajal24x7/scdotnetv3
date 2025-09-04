@@ -6,6 +6,12 @@ updatedDate: 2024-12-24T10:52:55
 category: bookshelf
 tags:
   - book-reviews
+author: "Kevin Kelly"
+series: "none"
+startedReading: 2024-02-12T10:46:00
+finishedReading: 2024-02-12T10:46:00
+bookStatus: "read"
+bookCover: "https://books.google.com/books/content?id=oTU0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 ---
 This is an excellent gift for someone. 
 

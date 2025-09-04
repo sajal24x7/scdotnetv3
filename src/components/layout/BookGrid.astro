@@ -1,0 +1,153 @@
+---
+import BookCard from '../BookCard.astro';
+
+interface Props {
+  books: any[];
+  showCurrentlyReading?: boolean;
+}
+
+const { books, showCurrentlyReading = true } = Astro.props;
+
+// Separate books by status
+const currentlyReading = books.filter(book => book.data.bookStatus === 'reading');
+const readBooks = books.filter(book => book.data.bookStatus === 'read' || !book.data.bookStatus);
+
+// Transform books for BookCard component
+const transformBook = (book: any) => ({
+  ...book.data,
+  link: book.slug ? `/bookshelf/${book.slug}/` : undefined
+});
+---
+
+<div class="book-grid-container">
+  {showCurrentlyReading && currentlyReading.length > 0 && (
+    <section class="currently-reading-section">
+      <h2 class="section-title">
+        <span>Currently Reading</span>
+        <span class="section-count">
+          {currentlyReading.length} book{currentlyReading.length !== 1 ? 's' : ''}
+        </span>
+      </h2>
+      
+      <div class="book-grid currently-reading-grid">
+        {currentlyReading.map((book) => (
+          <div class="book-card-wrapper">
+            <BookCard {...transformBook(book)} />
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {readBooks.length > 0 && (
+    <div class="book-grid read-books-grid">
+      {readBooks.map((book) => (
+        <div class="book-card-wrapper">
+          <BookCard {...transformBook(book)} />
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
+<style>
+  .book-grid-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .currently-reading-section,
+  .read-books-section {
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #111827;
+  }
+
+  :global(.dark) .section-title {
+    color: #f9fafb;
+  }
+
+  .section-count {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #6b7280;
+  }
+
+  :global(.dark) .section-count {
+    color: #9ca3af;
+  }
+
+  .book-grid {
+    display: grid;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  /* Mobile: 1 column */
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Small tablet: 2 columns */
+  @media (min-width: 640px) {
+    .book-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Large tablet and desktop: 2 columns for better readability */
+  @media (min-width: 1024px) {
+    .book-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .book-card-wrapper {
+    /* Just a container - don't interfere with BookCard's internal layout */
+  }
+
+  /* Currently reading books get special styling */
+  .currently-reading-grid .book-card-wrapper :global(.book-card) {
+    border-color: #f59e0b;
+    background: #fffbeb;
+  }
+
+  :global(.dark) .currently-reading-grid .book-card-wrapper :global(.book-card) {
+    background: #1f2937;
+    border-color: #f59e0b;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 639px) {
+    .book-grid {
+      gap: 1rem;
+    }
+
+    .currently-reading-section,
+    .read-books-section {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .book-grid {
+      gap: 1.25rem;
+    }
+  }
+</style>

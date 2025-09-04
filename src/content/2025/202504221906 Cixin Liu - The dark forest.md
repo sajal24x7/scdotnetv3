@@ -11,6 +11,12 @@ tags:
   - 'Liu, Cixin'
 image: >-
   https://images.unsplash.com/photo-1483982258113-b72862e6cff6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGRhcmslMjBmb3Jlc3R8ZW58MHx8fHwxNzQ1MzQ4ODAyfDA&ixlib=rb-4.0.3&q=80&w=2000
+author: "Cixin Liu"
+series: "Remembrance of Earth's Past"
+bookStatus: "read"
+startedReading: "2025-04-22T19:06:00+03:00"
+finishedReading: "2025-04-22T19:06:00+03:00"
+bookCover: "https://books.google.com/books/content?id=oTU0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 ---
 This is the second book in Cixin Liu's [Three Body Problem](__GHOST_URL__/liu-cixin-the-three-body-problem/). I had read the first one back in February. Since then, I embarked on a couple of long books - Kevin Kelly's What Technology Wants and this one. I am yet to finish What Technology Wants. I renewed my loan of that book many times, returned it, and then loaned it again. I will finish it soon though.
 
