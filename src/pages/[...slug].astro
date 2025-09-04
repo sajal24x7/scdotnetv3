@@ -77,8 +77,20 @@ function getCategoryUrl(category: string): string {
           </div>
         )}
         
-        {/* Fallback to regular image for non-bookshelf or when no postImage */}
-        {category !== 'bookshelf' && 'image' in entry.data && entry.data.image && (
+        {/* Fallback to bookCover for bookshelf posts without postImage */}
+        {category === 'bookshelf' && !('postImage' in entry.data && entry.data.postImage) && ('bookCover' in entry.data && entry.data.bookCover) && (
+          <div class="mb-6">
+            <img 
+              src={entry.data.bookCover} 
+              alt={`${entry.data?.title ?? ''} - book cover`} 
+              class="rounded-lg w-full object-cover max-h-96"
+              loading="lazy"
+            />
+          </div>
+        )}
+        
+        {/* Fallback to regular image for bookshelf posts */}
+        {category === 'bookshelf' && !('postImage' in entry.data && entry.data.postImage) && !('bookCover' in entry.data && entry.data.bookCover) && ('image' in entry.data && entry.data.image) && (
           <div class="mb-6">
             <img 
               src={entry.data.image} 
@@ -89,8 +101,8 @@ function getCategoryUrl(category: string): string {
           </div>
         )}
         
-        {/* Fallback for bookshelf posts without postImage */}
-        {category === 'bookshelf' && !('postImage' in entry.data && entry.data.postImage) && 'image' in entry.data && entry.data.image && (
+        {/* Regular image for non-bookshelf posts */}
+        {category !== 'bookshelf' && ('image' in entry.data && entry.data.image) && (
           <div class="mb-6">
             <img 
               src={entry.data.image} 
