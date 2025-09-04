@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import BookGrid from '../../components/layout/BookGrid.astro';
+import BookCard from '../../components/BookCard.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
 import TagList from '../../components/TagList.astro';
 import { getAllPosts } from '../../utils/content';
@@ -57,24 +58,27 @@ const readBooksCount = bookshelfPosts.filter(book => book.data.bookStatus === 'r
     maxWidth="7xl"
   />
   
-  <div class="bookshelf-stats mb-6 text-center">
-    <div class="stat-item">
-      <span class="stat-number">{totalBooks}</span>
-      <span class="stat-label">Total Books</span>
-    </div>
-    {currentlyReadingCount > 0 && (
-      <div class="stat-item">
-        <span class="stat-number">{currentlyReadingCount}</span>
-        <span class="stat-label">Currently Reading</span>
-      </div>
-    )}
-    <div class="stat-item">
-      <span class="stat-number">{readBooksCount}</span>
-      <span class="stat-label">Read</span>
-    </div>
-  </div>
 
   <TagList category="bookshelf" />
+
+  {/* Currently Reading Hero Section */}
+  {currentlyReadingCount > 0 && (
+    <section class="currently-reading-hero">
+      <div class="hero-content">
+        <h2 class="hero-title">Currently Reading</h2>
+        <p class="hero-subtitle">{currentlyReadingCount} book{currentlyReadingCount !== 1 ? 's' : ''} in progress</p>
+      </div>
+      <div class="hero-books">
+        {bookshelfPosts
+          .filter(book => book.data.bookStatus === 'reading')
+          .map((book) => (
+            <div class="hero-book-card">
+              <BookCard {...book.data} link={book.slug ? `/bookshelf/${book.slug}/` : undefined} />
+            </div>
+          ))}
+      </div>
+    </section>
+  )}
 
   {/* Books by Year */}
   {years.map(year => (
@@ -129,42 +133,63 @@ const readBooksCount = bookshelfPosts.filter(book => book.data.bookStatus === 'r
     color: #9ca3af;
   }
 
-  .bookshelf-stats {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+  .currently-reading-hero {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border: 1px solid #f59e0b;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0 3rem 0;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+  }
+
+  :global(.dark) .currently-reading-hero {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border-color: #f59e0b;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+  }
+
+  .hero-content {
+    text-align: center;
     margin-bottom: 2rem;
-    flex-wrap: wrap;
   }
 
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-  }
-
-  .stat-number {
+  .hero-title {
     font-size: 2rem;
     font-weight: 800;
     color: #f59e0b;
-    line-height: 1;
+    margin: 0 0 0.5rem 0;
   }
 
-  :global(.dark) .stat-number {
+  :global(.dark) .hero-title {
     color: #fbbf24;
   }
 
-  .stat-label {
-    font-size: 0.875rem;
-    font-weight: 500;
+  .hero-subtitle {
+    font-size: 1rem;
     color: #6b7280;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    margin: 0;
   }
 
-  :global(.dark) .stat-label {
+  :global(.dark) .hero-subtitle {
     color: #9ca3af;
+  }
+
+  .hero-books {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .hero-books {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .hero-book-card {
+    /* Just a container */
   }
 
   .year-section {
@@ -213,17 +238,18 @@ const readBooksCount = bookshelfPosts.filter(book => book.data.bookStatus === 'r
       margin-bottom: 0.75rem;
     }
 
-    .bookshelf-stats {
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
+
+    .currently-reading-hero {
+      padding: 1.5rem;
+      margin: 1.5rem 0 2rem 0;
     }
 
-    .stat-number {
+    .hero-title {
       font-size: 1.5rem;
     }
 
-    .stat-label {
-      font-size: 0.8rem;
+    .hero-books {
+      gap: 1rem;
     }
 
     .year-section {
