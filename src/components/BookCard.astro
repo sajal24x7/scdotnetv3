@@ -175,10 +175,11 @@ const pubDateFormatted = formatDate(pubDate);
   }
 
   .book-card-content {
-    display: flex;
-    flex-direction: row;
+    display: flex !important;
+    flex-direction: row !important;
     height: 100%;
     min-height: 200px;
+    width: 100%;
   }
 
   .book-cover {
@@ -373,8 +374,10 @@ const pubDateFormatted = formatDate(pubDate);
   /* Mobile adjustments - keep 2-column layout but adjust proportions */
   @media (max-width: 768px) {
     .book-card-content {
-      flex-direction: row; /* Keep horizontal layout */
+      display: flex !important;
+      flex-direction: row !important; /* Keep horizontal layout */
       min-height: 180px;
+      width: 100%;
     }
 
     .book-cover {
