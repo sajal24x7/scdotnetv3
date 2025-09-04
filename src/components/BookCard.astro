@@ -1,6 +1,4 @@
 ---
-import TimeDisplay from './TimeDisplay.astro';
-import CategoryDisplay from './CategoryDisplay.astro';
 
 interface BookCardProps {
   title: string;
@@ -15,6 +13,7 @@ interface BookCardProps {
   pubDate: Date | string;
   category: string;
   link?: string;
+  format?: string;
   // For individual post pages
   isPostPage?: boolean;
 }
@@ -32,6 +31,7 @@ const {
   pubDate, 
   category, 
   link, 
+  format,
   isPostPage = false
 } = Astro.props;
 
@@ -126,7 +126,9 @@ const pubDateFormatted = formatDate(pubDate);
       </div>
 
       <div class="book-meta">
-        <TimeDisplay date={pubDate} category={category} className="book-date" />
+        {format && (
+          <span class="book-format">{format.toUpperCase()}</span>
+        )}
       </div>
       
     </div>
@@ -312,14 +314,34 @@ const pubDateFormatted = formatDate(pubDate);
     flex-wrap: wrap;
   }
 
-  .book-date {
+  .book-format {
+    display: inline-block;
     font-size: 0.75rem;
-    color: #6b7280;
-    font-weight: 500;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #ca8a04;
+    background: transparent;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid #eab308;
+    white-space: nowrap;
+    transition: all 0.2s ease;
   }
 
-  :global(.dark) .book-date {
-    color: #9ca3af;
+  :global(.dark) .book-format {
+    color: #fbbf24;
+    border-color: #f59e0b;
+  }
+
+  .book-format:hover {
+    background: rgba(234, 179, 8, 0.05);
+    border-color: #ca8a04;
+  }
+
+  :global(.dark) .book-format:hover {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: #f59e0b;
   }
 
 
