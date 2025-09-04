@@ -15,7 +15,6 @@ interface BookCardProps {
   pubDate: Date | string;
   category: string;
   link?: string;
-  tags?: string[];
   // For individual post pages
   isPostPage?: boolean;
 }
@@ -33,7 +32,6 @@ const {
   pubDate, 
   category, 
   link, 
-  tags,
   isPostPage = false
 } = Astro.props;
 
@@ -132,15 +130,6 @@ const pubDateFormatted = formatDate(pubDate);
         <TimeDisplay date={pubDate} category={category} className="book-date" />
       </div>
       
-      {tags && tags.length > 0 && (
-        <div class="book-tags">
-          {tags.map((tag: string) => (
-            <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
-              {tag.toUpperCase()}
-            </a>
-          ))}
-        </div>
-      )}
     </div>
   </div>
 </article>
@@ -334,42 +323,6 @@ const pubDateFormatted = formatDate(pubDate);
     color: #9ca3af;
   }
 
-  .book-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tag {
-    display: inline-block;
-    color: #f59e0b;
-    text-decoration: none;
-    padding: 0.25rem 0.5rem;
-    border: 1px solid #f59e0b;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    background: transparent;
-    white-space: nowrap;
-  }
-
-  .tag:hover {
-    color: #d97706;
-    border-color: #d97706;
-    background: rgba(245, 158, 11, 0.05);
-  }
-
-  :global(.dark) .tag {
-    color: #fbbf24;
-    border-color: #fbbf24;
-  }
-
-  :global(.dark) .tag:hover {
-    color: #f59e0b;
-    border-color: #f59e0b;
-    background: rgba(251, 191, 36, 0.1);
-  }
 
   /* Mobile adjustments - keep 2-column layout but adjust proportions */
   @media (max-width: 768px) {

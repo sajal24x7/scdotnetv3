@@ -15,8 +15,7 @@ const readBooks = books.filter(book => book.data.bookStatus === 'read' || !book.
 // Transform books for BookCard component
 const transformBook = (book: any) => ({
   ...book.data,
-  link: book.slug ? `/books/${book.slug}/` : undefined,
-  tags: book.data.tags || []
+  link: book.slug ? `/bookshelf/${book.slug}/` : undefined
 });
 ---
 
