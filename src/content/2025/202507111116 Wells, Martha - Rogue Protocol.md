@@ -8,14 +8,12 @@ tags:
   - murderbot
   - sci-fi
   - wells, martha
-startDate: 2025-07-11T09:31:00+03:00
-endDate: 2025-07-15T21:00:00+03:00
 format: audio
 author: "Martha Wells"
 series: "The Murderbot Diaries"
 bookStatus: "read"
-startedReading: "2025-07-11T11:16:00+03:00"
-finishedReading: "2025-07-11T11:16:00+03:00"
+startedReading: "2025-07-11T09:31:00+03:00"
+finishedReading: "2025-07-15T21:00:00+03:00"
 bookCover: "https://books.google.com/books/content?id=oTU0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 ---
 Book 1 - [All systems red](https://sajalchoudhary.net/bookshelf/wells-martha-all-systems-red/) 

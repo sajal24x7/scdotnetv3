@@ -11,14 +11,10 @@
             "id": "fb581853111c1677",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2025/202508232004 Now.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "202508232004 Now"
+              "title": "New tab"
             }
           }
         ]
@@ -53,12 +49,12 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "about",
+                "query": "[\"category\":now]",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabeticalReverse"
               },
               "icon": "lucide-search",
               "title": "Search"
@@ -74,7 +70,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -94,7 +91,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2025/202504250307 Tribes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +100,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 202504250307 Tribes"
+              "title": "Backlinks"
             }
           },
           {
@@ -113,12 +109,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2025/202504250307 Tribes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 202504250307 Tribes"
+              "title": "Outgoing links"
             }
           },
           {
@@ -129,7 +124,7 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true,
-                "showSearch": false,
+                "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-tags",
@@ -142,21 +137,21 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2025/202504250307 Tribes.md",
+                "file": "2024/202404170522 Now.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 202504250307 Tribes"
+              "title": "Outline of 202404170522 Now"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -170,43 +165,43 @@
       "zk-prefixer:Create new unique note": false
     }
   },
-  "active": "716cd86a29cef966",
+  "active": "0226b615fe00009d",
   "lastOpenFiles": [
-    "2025/202508241346 Emotional Agents.md",
-    "2025/202508232014 NL68 - Autumn begins.md",
-    "2025/202508232014 NL68 - Autumn begins.txt",
-    "2025/202508230757 Record Solar Growth Keeps China's CO2 Falling in First Half of 2025.md",
-    "2025/202508230757 Record Solar Growth Keeps China's CO2 Falling in First Half of 2025.txt",
-    "2025/202508230811 Europe is losing.md",
-    "2025/202508181017 Can We Harness Light Like Nature for a New Era of Green Chemistry.md",
-    "2025/202508191314 Should AI flatter us, fix us, or just inform us.md",
-    "2025/202508220800 Majority of the organisations are not seeing any monetary benefits from deploying AI.md",
+    "2025/202509021738 Children of Time.md",
+    "2025/202509021145 The future of AI hardware isn’t one device — it’s an entire ecosystem.md",
+    "2025/202509010734 How to resist everyday temptations.md",
+    "2025/202509011021 Algorithms affect what we post on the socials.md",
+    "2025/202509011015 humans and algorithms think differently when coming to a decision.md",
+    "2025/202508301558 Children wrote to Moominvalley and Tove Jansson replied.txt",
     "2025/202508232004 Now.md",
-    "2024/202410300649 Bimba.md",
-    "2024/202412250000 Books I have read this year.md",
-    "2025/202501010342 Hard works trumps talent every time.md",
-    "2025/202507181300 Om Malik on the effects of automating everything.md",
-    "2025/202507310721 About AI models being used for vulnerability scanning.md",
-    "2025/202507181559 About Perplexity's new AI browser.md",
-    "2025/202507221344 Powershell set atrributes for AD groups.md",
-    "2025/202507231420 Hugh writes about hope.md",
-    "2025/202507250815 iPad gets closer to the Mac.md",
-    "2025/202507251348 Cursor launches bugbot.md",
-    "2025/202507280759 Paul Graham on good writing.md",
-    "2025/202507281107 AI HUDs instead of copilots.md",
-    "2025/202507281527 Update esxi with required version of vmware tools.md",
-    "2025/202507300651 Study mode in ChatGPT.md",
-    "2025/202507261119 NL64 - A lazy day.md",
-    "til.md",
-    "2022/202209261324 Cscript.exe is not recognised.md",
-    "2024/202404121246 Azure Netapp Files.md",
+    "2025/202508232004%20Now.md",
+    "2025/202508312129 Hosting shut up & write.md",
+    "2025/202508312128 Azure.md",
+    "2025/202508312127 Publish my poetry collection.md",
+    "2025/202508312124 Raise Savya.md",
+    "2025/202508312123 Yoga.md",
+    "2025/202508312122 Building scdotnetv3 on Astro.md",
+    "2025/202508310741 The destination for AI interfaces is Do What I Mean.md",
+    "2025/202508301558 Children wrote to Moominvalley and Tove Jansson replied.md",
+    "Untitled.base",
+    "2024/202404170522 Now.md",
+    "2025/202508302123 AZ 104.md",
+    "2025/202508302121 Building this website on Astro.md",
+    "2025/202508220800 Majority of the organisations are not seeing any monetary benefits from deploying AI.md",
+    "now.md",
+    "2025/202508301125 The keyboard shortcuts I use in Obsidian.md",
+    "2025/202508291331 Configure mobile quick action on Obsidian.md",
+    "2025/202508291326 Murakami on the moment he became a novelist.md",
+    "2025/202508291312 Ethan Mollick on Mass Intelligence.md",
+    "2025/202508281913 Why China Builds Faster Than the Rest of the World.md",
+    "2025/202508281352 Survey reveals fewer international techies plan to stay in Finland permanently.md",
+    "2025/202508232014 NL68 - Autumn begins.txt",
+    "2025/202508230757 Record Solar Growth Keeps China's CO2 Falling in First Half of 2025.txt",
     "2023",
     "2025/202507131109 NL63 - A day trip to Turku.txt",
     "2025/202507261119 NL64 - A lazy day.txt",
     "2025/202506231350 India is mapping urban heat vulnerability down to the building level.txt",
     "2025/202507181254 Seth Godin on tasks and projects.txt",
-    "2025/202507111116 Wells, Martha - Rogue Protocol.txt",
-    "2025/202507081810 Wells, Martha - Artificial Condition.txt",
-    "2025/202507122238 NL62 - A short trip to Porkkalanniemi.txt"
+    "2025/202507111116 Wells, Martha - Rogue Protocol.txt"
   ]
 }
