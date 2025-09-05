@@ -1,0 +1,57 @@
+---
+import BookCard from './BookCard.astro';
+
+interface Props {
+  books: any[];
+}
+
+const { books } = Astro.props;
+
+// Transform books for BookCard component
+const transformBook = (book: any) => ({
+  ...book.data,
+  link: book.slug ? `/bookshelf/${book.slug}/` : undefined
+});
+---
+
+<div class="book-grid">
+  {books.map((book) => (
+    <BookCard {...transformBook(book)} />
+  ))}
+</div>
+
+<style>
+  .book-grid {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  /* Mobile: 1 column */
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Small tablet: 2 columns */
+  @media (min-width: 640px) {
+    .book-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Large tablet and desktop: 3 columns */
+  @media (min-width: 1024px) {
+    .book-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Very large screens: 3 columns with max width */
+  @media (min-width: 1280px) {
+    .book-grid {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+</style>

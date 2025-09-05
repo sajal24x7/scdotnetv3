@@ -1,0 +1,326 @@
+---
+import { Image } from 'astro:assets';
+
+interface BookCardProps {
+  title: string;
+  author?: string;
+  series?: string;
+  startedReading?: Date | string;
+  finishedReading?: Date | string;
+  bookStatus?: 'reading' | 'read';
+  bookCover?: string;
+  pubDate: Date | string;
+  link?: string;
+  format?: string;
+}
+
+const { 
+  title, 
+  author, 
+  series, 
+  startedReading, 
+  finishedReading, 
+  bookStatus, 
+  bookCover, 
+  image,
+  pubDate, 
+  link, 
+  format
+} = Astro.props;
+
+// Use bookCover if available, otherwise fall back to image
+const coverImage = bookCover || image;
+
+// Format dates
+const formatDate = (date: Date | string | undefined) => {
+  if (!date) return null;
+  const dateObj = typeof date === 'string' ? new Date(date) : date;
+  return dateObj.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'short', 
+    day: 'numeric' 
+  });
+};
+
+const startedDate = formatDate(startedReading);
+const finishedDate = formatDate(finishedReading);
+---
+
+<article class="book-card">
+  <div class="book-content">
+    <div class="book-cover">
+      {coverImage ? (
+        bookCover ? (
+          <Image
+            src={`/images/bookshelf/${bookCover}`}
+            alt={`${title} book cover`}
+            width={120}
+            height={180}
+            class="cover-image"
+          />
+        ) : (
+          <img
+            src={image}
+            alt={`${title} book cover`}
+            class="cover-image"
+          />
+        )
+      ) : (
+        <div class="cover-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+        </div>
+      )}
+    </div>
+    
+    <div class="book-info">
+      <div class="book-header">
+        {series && (
+          <div class="book-series">{series}</div>
+        )}
+        
+        <h3 class="book-title">
+          {link ? (
+            <a href={link} class="book-link">{title}</a>
+          ) : (
+            title
+          )}
+        </h3>
+        
+        {author && (
+          <div class="book-author">by {author}</div>
+        )}
+      </div>
+
+      <div class="book-dates">
+        {startedDate && (
+          <div class="book-date">
+            <span class="date-label">Started:</span>
+            <span class="date-value">{startedDate}</span>
+          </div>
+        )}
+        
+        {finishedDate && (
+          <div class="book-date">
+            <span class="date-label">Finished:</span>
+            <span class="date-value">{finishedDate}</span>
+          </div>
+        )}
+      </div>
+
+      <div class="book-meta">
+        {format && (
+          <span class="book-format">{format}</span>
+        )}
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  .book-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+
+  .book-card:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  :global(.dark) .book-card {
+    background: #1f2937;
+    border-color: #374151;
+  }
+
+  :global(.dark) .book-card:hover {
+    border-color: #4b5563;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .book-content {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .book-cover {
+    flex-shrink: 0;
+    width: 80px;
+    height: 120px;
+    background: #f9fafb;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.dark) .book-cover {
+    background: #111827;
+  }
+
+  .cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cover-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    background: #f3f4f6;
+  }
+
+  :global(.dark) .cover-placeholder {
+    color: #6b7280;
+    background: #374151;
+  }
+
+  .book-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .book-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .book-series {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  :global(.dark) .book-series {
+    color: #9ca3af;
+  }
+
+  .book-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+    color: #111827;
+  }
+
+  :global(.dark) .book-title {
+    color: #f9fafb;
+  }
+
+  .book-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .book-link:hover {
+    color: #3b82f6;
+  }
+
+  .book-author {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  :global(.dark) .book-author {
+    color: #9ca3af;
+  }
+
+  .book-dates {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: auto;
+  }
+
+  .book-date {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .date-label {
+    color: #6b7280;
+    font-weight: 500;
+    min-width: 50px;
+  }
+
+  :global(.dark) .date-label {
+    color: #9ca3af;
+  }
+
+  .date-value {
+    color: #374151;
+    font-weight: 500;
+  }
+
+  :global(.dark) .date-value {
+    color: #d1d5db;
+  }
+
+  .book-meta {
+    margin-top: 0.5rem;
+  }
+
+  .book-format {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  :global(.dark) .book-format {
+    color: #9ca3af;
+    background: #374151;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    .book-content {
+      padding: 0.75rem;
+      gap: 0.75rem;
+    }
+
+    .book-cover {
+      width: 60px;
+      height: 90px;
+    }
+
+    .book-title {
+      font-size: 0.875rem;
+    }
+
+    .book-author {
+      font-size: 0.8rem;
+    }
+
+    .book-date {
+      font-size: 0.7rem;
+    }
+
+    .date-label {
+      min-width: 40px;
+    }
+  }
+</style>
