@@ -38,9 +38,23 @@ const {
 // Determine which image to use
 // For bookshelf: use bookCover, fallback to image
 // For post page: use image, fallback to bookCover
-const displayImage = isPostPage 
+let displayImage = isPostPage 
   ? (image || bookCover) 
   : (bookCover || image);
+
+// If it's a local image path, import it properly
+let importedImage = null;
+if (displayImage && !displayImage.startsWith('http') && !displayImage.startsWith('/')) {
+  try {
+    // Import the image from src directory
+    const imagePath = displayImage.replace('/images/', '');
+    importedImage = await import(`../../images/${imagePath}`);
+    displayImage = importedImage.default;
+  } catch (e) {
+    // If import fails, use the original path
+    console.warn(`Could not import image: ${displayImage}`);
+  }
+}
 
 // Format dates
 const formatDate = (date: Date | string | undefined) => {
