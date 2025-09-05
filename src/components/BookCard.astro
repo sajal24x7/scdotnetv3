@@ -34,18 +34,8 @@ const {
 // Use bookCover for the book cover image (always local)
 let displayImage = bookCover;
 
-// Import local book cover image for Astro Image component
-if (displayImage) {
-  try {
-    // Import the image from src directory
-    const imagePath = displayImage.replace('/images/', '');
-    const importedImage = await import(`../../images/${imagePath}`);
-    displayImage = importedImage.default;
-  } catch (e) {
-    // If import fails, use the original path
-    console.warn(`Could not import image: ${displayImage}`);
-  }
-}
+// For now, we'll use a regular img tag since dynamic imports are causing issues
+// TODO: Implement proper image import when adding more book covers
 
 // Format dates
 const formatDate = (date: Date | string | undefined) => {
@@ -67,11 +57,9 @@ const pubDateFormatted = formatDate(pubDate);
   <div class="book-card-content">
     {displayImage && (
       <div class="book-cover">
-        <Image
-          src={displayImage}
+        <img
+          src={`/images/${displayImage}`}
           alt={`${title} book cover`}
-          width={160}
-          height={240}
           class="cover-image"
         />
       </div>
