@@ -38,9 +38,16 @@ const {
 // Determine which image to use
 // For bookshelf: use bookCover, fallback to image
 // For post page: use image, fallback to bookCover
-const displayImage = isPostPage 
+let displayImage = isPostPage 
   ? (image || bookCover) 
   : (bookCover || image);
+
+// If bookCover is provided and it's a relative path, prepend /images/bookshelf/
+if (bookCover && !bookCover.startsWith('http') && !bookCover.startsWith('/')) {
+  displayImage = `/images/bookshelf/${bookCover}`;
+} else if (bookCover && bookCover.startsWith('/bookshelf/')) {
+  displayImage = `/images${bookCover}`;
+}
 
 // Format dates
 const formatDate = (date: Date | string | undefined) => {
@@ -95,14 +102,6 @@ const pubDateFormatted = formatDate(pubDate);
           </div>
         )}
 
-        {bookStatus && (
-          <div class="book-detail">
-            <span class="detail-label">Status:</span>
-            <span class={`detail-value status-${bookStatus}`}>
-              {bookStatus === 'reading' ? 'Currently Reading' : 'Read'}
-            </span>
-          </div>
-        )}
 
         {startedDate && (
           <div class="book-detail">
@@ -271,15 +270,6 @@ const pubDateFormatted = formatDate(pubDate);
     color: #9ca3af;
   }
 
-  .status-reading {
-    color: #f59e0b;
-    font-weight: 600;
-  }
-
-  .status-read {
-    color: #10b981;
-    font-weight: 600;
-  }
 
   .book-description {
     margin-top: 0.75rem;

@@ -18,15 +18,18 @@ const bookshelfPosts = allPosts
   });
 
 // Group books by year based on finished reading date or pub date
-const booksByYear = bookshelfPosts.reduce((acc, book) => {
-  const date = book.data.finishedReading || book.data.pubDate;
-  const year = new Date(date).getFullYear();
-  if (!acc[year]) {
-    acc[year] = [];
-  }
-  acc[year].push(book);
-  return acc;
-}, {} as Record<number, typeof bookshelfPosts>);
+// Exclude currently reading books from yearly sections
+const booksByYear = bookshelfPosts
+  .filter(book => book.data.bookStatus !== 'reading')
+  .reduce((acc, book) => {
+    const date = book.data.finishedReading || book.data.pubDate;
+    const year = new Date(date).getFullYear();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(book);
+    return acc;
+  }, {} as Record<number, typeof bookshelfPosts>);
 
 // Get sorted years (newest first)
 const years = Object.keys(booksByYear)
@@ -61,18 +64,21 @@ const readBooksCount = bookshelfPosts.filter(book => book.data.bookStatus === 'r
 
   <TagList category="bookshelf" />
 
-  {/* Currently Reading Hero Section */}
+  {/* Currently Reading Section */}
   {currentlyReadingCount > 0 && (
-    <section class="currently-reading-hero">
-      <div class="hero-content">
-        <h2 class="hero-title">Currently Reading</h2>
-        <p class="hero-subtitle">{currentlyReadingCount} book{currentlyReadingCount !== 1 ? 's' : ''} in progress</p>
-      </div>
-      <div class="hero-books">
+    <section class="currently-reading-section">
+      <h2 class="section-title">
+        <span>Currently Reading</span>
+        <span class="section-count">
+          {currentlyReadingCount} book{currentlyReadingCount !== 1 ? 's' : ''}
+        </span>
+      </h2>
+      
+      <div class="book-grid">
         {bookshelfPosts
           .filter(book => book.data.bookStatus === 'reading')
           .map((book) => (
-            <div class="hero-book-card">
+            <div class="book-card-wrapper">
               <BookCard {...book.data} link={book.slug ? `/bookshelf/${book.slug}/` : undefined} />
             </div>
           ))}
@@ -90,7 +96,7 @@ const readBooksCount = bookshelfPosts.filter(book => book.data.bookStatus === 'r
         </span>
       </h2>
       
-      <BookGrid books={booksByYear[year]} showCurrentlyReading={true} />
+      <BookGrid books={booksByYear[year]} showCurrentlyReading={false} />
     </section>
   ))}
 </Layout>
@@ -133,63 +139,61 @@ const readBooksCount = bookshelfPosts.filter(book => book.data.bookStatus === 'r
     color: #9ca3af;
   }
 
-  .currently-reading-hero {
-    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-    border: 1px solid #f59e0b;
-    border-radius: 16px;
-    padding: 2rem;
-    margin: 2rem 0 3rem 0;
-    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
-  }
-
-  :global(.dark) .currently-reading-hero {
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-    border-color: #f59e0b;
-    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
-  }
-
-  .hero-content {
-    text-align: center;
+  .currently-reading-section {
     margin-bottom: 2rem;
   }
 
-  .hero-title {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #f59e0b;
-    margin: 0 0 0.5rem 0;
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #111827;
   }
 
-  :global(.dark) .hero-title {
-    color: #fbbf24;
+  :global(.dark) .section-title {
+    color: #f9fafb;
   }
 
-  .hero-subtitle {
+  .section-count {
     font-size: 1rem;
+    font-weight: 500;
     color: #6b7280;
-    margin: 0;
   }
 
-  :global(.dark) .hero-subtitle {
+  :global(.dark) .section-count {
     color: #9ca3af;
   }
 
-  .hero-books {
+  .book-grid {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
+    width: 100%;
   }
 
-  @media (min-width: 768px) {
-    .hero-books {
+  /* Mobile: 1 column */
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Small tablet: 2 columns */
+  @media (min-width: 640px) {
+    .book-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  .hero-book-card {
-    /* Just a container */
+  /* Large tablet and desktop: 2 columns for better readability */
+  @media (min-width: 1024px) {
+    .book-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .book-card-wrapper {
+    /* Just a container - don't interfere with BookCard's internal layout */
   }
 
   .year-section {
@@ -239,16 +243,16 @@ const readBooksCount = bookshelfPosts.filter(book => book.data.bookStatus === 'r
     }
 
 
-    .currently-reading-hero {
-      padding: 1.5rem;
-      margin: 1.5rem 0 2rem 0;
+    .currently-reading-section {
+      margin-bottom: 1.5rem;
     }
 
-    .hero-title {
-      font-size: 1.5rem;
+    .section-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
     }
 
-    .hero-books {
+    .book-grid {
       gap: 1rem;
     }
 

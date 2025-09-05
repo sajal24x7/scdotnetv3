@@ -116,16 +116,6 @@ const transformBook = (book: any) => ({
     /* Just a container - don't interfere with BookCard's internal layout */
   }
 
-  /* Currently reading books get special styling */
-  .currently-reading-grid .book-card-wrapper :global(.book-card) {
-    border-color: #f59e0b;
-    background: #fffbeb;
-  }
-
-  :global(.dark) .currently-reading-grid .book-card-wrapper :global(.book-card) {
-    background: #1f2937;
-    border-color: #f59e0b;
-  }
 
   /* Mobile adjustments */
   @media (max-width: 639px) {
