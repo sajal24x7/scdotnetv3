@@ -33,13 +33,13 @@ const {
 const imagePath = bookCover ? `/images/bookshelf/${bookCover}` : null;
 
 // Debug logging
-if (bookCover) {
-  console.log('BookCard Debug:', {
-    bookCover,
-    imagePath,
-    title
-  });
-}
+console.log('BookCard Debug:', {
+  bookCover,
+  bookCoverType: typeof bookCover,
+  bookCoverLength: bookCover?.length,
+  imagePath,
+  title
+});
 
 // Format dates
 const formatDate = (date: Date | string | undefined) => {
