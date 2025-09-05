@@ -37,8 +37,8 @@ let displayImage = bookCover;
 // Import local book cover image for Astro Image component
 if (displayImage) {
   try {
-    // Import the image from src directory
-    const importedImage = await import(`../../images/${displayImage}`);
+    // Import the image from src/images/bookshelf directory
+    const importedImage = await import(`../../images/bookshelf/${displayImage}`);
     const imageSrc = importedImage.default;
     
     // Use getImage to process the imported image

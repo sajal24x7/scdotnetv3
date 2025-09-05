@@ -11,7 +11,7 @@ author: Tchaikovsky, Adrian
 series: "Children of Time - Book #1"
 bookStatus: "reading"
 startedReading: 2025-09-02T22:45:58+03:00
-bookCover: "../images/bookshelf/202509-children-of-time.jpg"
+bookCover: "202509-children-of-time.jpg"
 ---
 
 # Notes
