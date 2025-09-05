@@ -32,6 +32,15 @@ const {
 // Construct the image path for the book cover
 const imagePath = bookCover ? `/images/bookshelf/${bookCover}` : null;
 
+// Debug logging
+if (bookCover) {
+  console.log('BookCard Debug:', {
+    bookCover,
+    imagePath,
+    title
+  });
+}
+
 // Format dates
 const formatDate = (date: Date | string | undefined) => {
   if (!date) return null;
@@ -50,13 +59,21 @@ const pubDateFormatted = formatDate(pubDate);
 
 <article class="book-card">
   <div class="book-card-content">
-    {imagePath && (
+    {imagePath ? (
       <div class="book-cover">
         <img
           src={imagePath}
           alt={`${title} book cover`}
           class="cover-image"
+          onerror="console.error('Image failed to load:', this.src)"
         />
+        <div style="font-size: 10px; color: red; margin-top: 5px;">
+          Debug: {imagePath}
+        </div>
+      </div>
+    ) : (
+      <div class="book-cover" style="background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+        <div style="color: #666; font-size: 12px;">No image</div>
       </div>
     )}
     
