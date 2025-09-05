@@ -9,40 +9,23 @@ interface Props {
 
 const { books, showCurrentlyReading = true, sectionTitle } = Astro.props;
 
-// Separate books by status
-const currentlyReading = books.filter(book => book.data.bookStatus === 'reading');
-const readBooks = books.filter(book => book.data.bookStatus === 'read' || !book.data.bookStatus);
-
 // Transform books for BookCard component
 const transformBook = (book: any) => ({
   ...book.data,
   link: book.slug ? `/bookshelf/${book.slug}/` : undefined
 });
+
+// If showCurrentlyReading is true, filter for currently reading books
+// Otherwise, display all books as-is (for yearly sections)
+const displayBooks = showCurrentlyReading 
+  ? books.filter(book => book.data.bookStatus === 'reading')
+  : books;
 ---
 
 <div class="book-grid-container">
-  {showCurrentlyReading && currentlyReading.length > 0 && (
-    <section class="currently-reading-section">
-      <h2 class="section-title">
-        <span>{sectionTitle || 'Currently Reading'}</span>
-        <span class="section-count">
-          {currentlyReading.length} book{currentlyReading.length !== 1 ? 's' : ''}
-        </span>
-      </h2>
-      
-      <div class="book-grid currently-reading-grid">
-        {currentlyReading.map((book) => (
-          <div class="book-card-wrapper">
-            <BookCard {...transformBook(book)} />
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {readBooks.length > 0 && (
-    <div class="book-grid read-books-grid">
-      {readBooks.map((book) => (
+  {displayBooks.length > 0 && (
+    <div class="book-grid">
+      {displayBooks.map((book) => (
         <div class="book-card-wrapper">
           <BookCard {...transformBook(book)} />
         </div>
@@ -57,35 +40,6 @@ const transformBook = (book: any) => ({
     max-width: 1400px;
     margin: 0 auto;
     padding: 0;
-  }
-
-  .currently-reading-section,
-  .read-books-section {
-    margin-bottom: 3rem;
-  }
-
-  .section-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: #111827;
-  }
-
-  :global(.dark) .section-title {
-    color: #f9fafb;
-  }
-
-  .section-count {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #6b7280;
-  }
-
-  :global(.dark) .section-count {
-    color: #9ca3af;
   }
 
   .book-grid {
@@ -122,16 +76,6 @@ const transformBook = (book: any) => ({
   @media (max-width: 639px) {
     .book-grid {
       gap: 1rem;
-    }
-
-    .currently-reading-section,
-    .read-books-section {
-      margin-bottom: 2rem;
-    }
-
-    .section-title {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
     }
   }
 

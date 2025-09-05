@@ -66,7 +66,16 @@ const readBooksCount = bookshelfPosts.filter(book => book.data.bookStatus === 'r
 
   {/* Currently Reading Section */}
   {currentlyReadingCount > 0 && (
-    <BookGrid books={bookshelfPosts.filter(book => book.data.bookStatus === 'reading')} showCurrentlyReading={true} sectionTitle="Currently Reading" />
+    <section class="currently-reading-section">
+      <h2 class="section-title">
+        <span>Currently Reading</span>
+        <span class="section-count">
+          {currentlyReadingCount} book{currentlyReadingCount !== 1 ? 's' : ''}
+        </span>
+      </h2>
+      
+      <BookGrid books={bookshelfPosts.filter(book => book.data.bookStatus === 'reading')} showCurrentlyReading={true} />
+    </section>
   )}
 
   {/* Books by Year */}
@@ -122,6 +131,33 @@ const readBooksCount = bookshelfPosts.filter(book => book.data.bookStatus === 'r
     color: #9ca3af;
   }
 
+  .currently-reading-section {
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #111827;
+  }
+
+  :global(.dark) .section-title {
+    color: #f9fafb;
+  }
+
+  .section-count {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #6b7280;
+  }
+
+  :global(.dark) .section-count {
+    color: #9ca3af;
+  }
 
   .year-section {
     margin-bottom: 2rem;
