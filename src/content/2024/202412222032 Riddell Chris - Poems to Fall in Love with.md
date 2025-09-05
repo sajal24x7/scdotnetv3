@@ -14,7 +14,6 @@ series: none
 bookStatus: "read"
 startedReading: "2024-12-22T20:32:00+03:00"
 finishedReading: "2024-12-22T20:32:00+03:00"
-bookCover: "https://books.google.com/books/content?id=oTU0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 ---
 This is an excellent collection of poetry on love with wonderful art by Chris Riddell. Some poems, specifically ‘If you are an ancient Egyptian pharaoh by Hera Lindsay Bird’ became more than their words thanks to Chris’s work.
 

@@ -12,7 +12,6 @@ series: "The Murderbot Diaries"
 startedReading: 2025-07-07T09:31:00+03:00
 finishedReading: 2025-07-08T18:00:00+03:00
 bookStatus: "read"
-bookCover: "https://books.google.com/books/content?id=oTU0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 format: audio
 ---
 This is the first book in the Murderbot series. And a nice change of pace from [Death's End by Cixin Liu](https://sajalchoudhary.net/bookshelf/cixin-liu-the-dark-forest/) which was the last fiction book I read.
