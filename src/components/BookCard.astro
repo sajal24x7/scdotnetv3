@@ -38,16 +38,9 @@ const {
 // Determine which image to use
 // For bookshelf: use bookCover, fallback to image
 // For post page: use image, fallback to bookCover
-let displayImage = isPostPage 
+const displayImage = isPostPage 
   ? (image || bookCover) 
   : (bookCover || image);
-
-// If bookCover is provided and it's a relative path, prepend /images/bookshelf/
-if (bookCover && !bookCover.startsWith('http') && !bookCover.startsWith('/')) {
-  displayImage = `/images/bookshelf/${bookCover}`;
-} else if (bookCover && bookCover.startsWith('/bookshelf/')) {
-  displayImage = `/images${bookCover}`;
-}
 
 // Format dates
 const formatDate = (date: Date | string | undefined) => {

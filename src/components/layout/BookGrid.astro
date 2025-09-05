@@ -4,9 +4,10 @@ import BookCard from '../BookCard.astro';
 interface Props {
   books: any[];
   showCurrentlyReading?: boolean;
+  sectionTitle?: string;
 }
 
-const { books, showCurrentlyReading = true } = Astro.props;
+const { books, showCurrentlyReading = true, sectionTitle } = Astro.props;
 
 // Separate books by status
 const currentlyReading = books.filter(book => book.data.bookStatus === 'reading');
@@ -23,7 +24,7 @@ const transformBook = (book: any) => ({
   {showCurrentlyReading && currentlyReading.length > 0 && (
     <section class="currently-reading-section">
       <h2 class="section-title">
-        <span>Currently Reading</span>
+        <span>{sectionTitle || 'Currently Reading'}</span>
         <span class="section-count">
           {currentlyReading.length} book{currentlyReading.length !== 1 ? 's' : ''}
         </span>
