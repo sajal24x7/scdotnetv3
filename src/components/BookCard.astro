@@ -9,14 +9,11 @@ interface BookCardProps {
   finishedReading?: Date | string;
   bookStatus?: 'reading' | 'read';
   bookCover?: string;
-  image?: string; // Hero image for post pages
   description?: string;
   pubDate: Date | string;
   category: string;
   link?: string;
   format?: string;
-  // For individual post pages
-  isPostPage?: boolean;
 }
 
 const { 
@@ -27,34 +24,23 @@ const {
   finishedReading, 
   bookStatus, 
   bookCover, 
-  image,
   description, 
   pubDate, 
   category, 
   link, 
-  format,
-  isPostPage = false
+  format
 } = Astro.props;
 
-// Determine which image to use
-// For bookshelf: use bookCover, fallback to image
-// For post page: use image, fallback to bookCover
-let displayImage = isPostPage 
-  ? (image || bookCover) 
-  : (bookCover || image);
+// Use bookCover for the book cover image (always local)
+let displayImage = bookCover;
 
-// Import local book cover images for Astro Image component
-// Cloudflare URLs and other external URLs will use regular img tag
-let importedImage = null;
-let isLocalImage = false;
-
-if (displayImage && !displayImage.startsWith('http')) {
+// Import local book cover image for Astro Image component
+if (displayImage) {
   try {
     // Import the image from src directory
     const imagePath = displayImage.replace('/images/', '');
-    importedImage = await import(`../../images/${imagePath}`);
+    const importedImage = await import(`../../images/${imagePath}`);
     displayImage = importedImage.default;
-    isLocalImage = true;
   } catch (e) {
     // If import fails, use the original path
     console.warn(`Could not import image: ${displayImage}`);
@@ -81,21 +67,13 @@ const pubDateFormatted = formatDate(pubDate);
   <div class="book-card-content">
     {displayImage && (
       <div class="book-cover">
-        {isLocalImage ? (
-          <Image
-            src={displayImage}
-            alt={`${title} book cover`}
-            width={160}
-            height={240}
-            class="cover-image"
-          />
-        ) : (
-          <img
-            src={displayImage}
-            alt={`${title} book cover`}
-            class="cover-image"
-          />
-        )}
+        <Image
+          src={displayImage}
+          alt={`${title} book cover`}
+          width={160}
+          height={240}
+          class="cover-image"
+        />
       </div>
     )}
     
