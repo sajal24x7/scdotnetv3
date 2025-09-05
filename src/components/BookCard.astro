@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 
 interface BookCardProps {
   title: string;
@@ -42,7 +43,7 @@ let displayImage = isPostPage
   ? (image || bookCover) 
   : (bookCover || image);
 
-// If it's a local image path, import it properly
+// If it's a local image path, import it properly for Astro Image component
 let importedImage = null;
 if (displayImage && !displayImage.startsWith('http') && !displayImage.startsWith('/')) {
   try {
@@ -76,9 +77,11 @@ const pubDateFormatted = formatDate(pubDate);
   <div class="book-card-content">
     {displayImage && (
       <div class="book-cover">
-        <img 
-          src={displayImage} 
+        <Image
+          src={displayImage}
           alt={`${title} book cover`}
+          width={160}
+          height={240}
           class="cover-image"
         />
       </div>
