@@ -10,7 +10,6 @@ interface BookCardProps {
   finishedReading?: Date | string;
   bookStatus?: 'reading' | 'read';
   bookCover?: string;
-  image?: string;
   pubDate: Date | string;
   link?: string;
   format?: string;
@@ -24,14 +23,13 @@ const {
   finishedReading, 
   bookStatus, 
   bookCover, 
-  image,
   pubDate, 
   link, 
   format
 } = Astro.props;
 
-// Use bookCover if available, otherwise fall back to image
-const coverImage = bookCover || image;
+// Only use bookCover for bookshelf display
+const coverImage = bookCover;
 
 // Get the imported image for local book covers
 const importedCoverImage = bookCover ? getBookCoverImage(bookCover) : null;
@@ -54,22 +52,14 @@ const finishedDate = formatDate(finishedReading);
 <article class="book-card">
   <div class="book-content">
     <div class="book-cover">
-      {coverImage ? (
-        importedCoverImage ? (
-          <Image
-            src={importedCoverImage}
-            alt={`${title} book cover`}
-            width={120}
-            height={180}
-            class="cover-image"
-          />
-        ) : (
-          <img
-            src={image}
-            alt={`${title} book cover`}
-            class="cover-image"
-          />
-        )
+      {coverImage && importedCoverImage ? (
+        <Image
+          src={importedCoverImage}
+          alt={`${title} book cover`}
+          width={120}
+          height={180}
+          class="cover-image"
+        />
       ) : (
         <div class="cover-placeholder">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
