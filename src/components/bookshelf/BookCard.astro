@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 
 interface BookCardProps {
   title: string;
@@ -51,21 +50,11 @@ const finishedDate = formatDate(finishedReading);
   <div class="book-content">
     <div class="book-cover">
       {coverImage ? (
-        bookCover ? (
-          <Image
-            src={`/images/bookshelf/${bookCover}`}
-            alt={`${title} book cover`}
-            width={120}
-            height={180}
-            class="cover-image"
-          />
-        ) : (
-          <img
-            src={image}
-            alt={`${title} book cover`}
-            class="cover-image"
-          />
-        )
+        <img
+          src={bookCover ? `/images/bookshelf/${bookCover}` : image}
+          alt={`${title} book cover`}
+          class="cover-image"
+        />
       ) : (
         <div class="cover-placeholder">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
