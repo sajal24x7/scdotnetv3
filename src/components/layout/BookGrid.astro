@@ -10,28 +10,10 @@ interface Props {
 const { books, showCurrentlyReading = true, sectionTitle } = Astro.props;
 
 // Transform books for BookCard component
-const transformBook = (book: any) => {
-  console.log('BookGrid Debug - Original book data:', {
-    bookCover: book.data.bookCover,
-    bookCoverType: typeof book.data.bookCover,
-    bookCoverLength: book.data.bookCover?.length,
-    title: book.data.title
-  });
-  
-  const transformed = {
-    ...book.data,
-    link: book.slug ? `/bookshelf/${book.slug}/` : undefined
-  };
-  
-  console.log('BookGrid Debug - Transformed data:', {
-    bookCover: transformed.bookCover,
-    bookCoverType: typeof transformed.bookCover,
-    bookCoverLength: transformed.bookCover?.length,
-    title: transformed.title
-  });
-  
-  return transformed;
-};
+const transformBook = (book: any) => ({
+  ...book.data,
+  link: book.slug ? `/bookshelf/${book.slug}/` : undefined
+});
 
 // If showCurrentlyReading is true, filter for currently reading books
 // Otherwise, display all books as-is (for yearly sections)
