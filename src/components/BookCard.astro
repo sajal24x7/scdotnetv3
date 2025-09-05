@@ -43,14 +43,18 @@ let displayImage = isPostPage
   ? (image || bookCover) 
   : (bookCover || image);
 
-// Import local image for Astro Image component
+// Import local book cover images for Astro Image component
+// Cloudflare URLs and other external URLs will use regular img tag
 let importedImage = null;
-if (displayImage) {
+let isLocalImage = false;
+
+if (displayImage && !displayImage.startsWith('http')) {
   try {
     // Import the image from src directory
     const imagePath = displayImage.replace('/images/', '');
     importedImage = await import(`../../images/${imagePath}`);
     displayImage = importedImage.default;
+    isLocalImage = true;
   } catch (e) {
     // If import fails, use the original path
     console.warn(`Could not import image: ${displayImage}`);
@@ -77,13 +81,21 @@ const pubDateFormatted = formatDate(pubDate);
   <div class="book-card-content">
     {displayImage && (
       <div class="book-cover">
-        <Image
-          src={displayImage}
-          alt={`${title} book cover`}
-          width={160}
-          height={240}
-          class="cover-image"
-        />
+        {isLocalImage ? (
+          <Image
+            src={displayImage}
+            alt={`${title} book cover`}
+            width={160}
+            height={240}
+            class="cover-image"
+          />
+        ) : (
+          <img
+            src={displayImage}
+            alt={`${title} book cover`}
+            class="cover-image"
+          />
+        )}
       </div>
     )}
     
