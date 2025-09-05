@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 
 interface BookCardProps {
   title: string;
@@ -34,8 +34,26 @@ const {
 // Use bookCover for the book cover image (always local)
 let displayImage = bookCover;
 
-// For now, we'll use a regular img tag since dynamic imports are causing issues
-// TODO: Implement proper image import when adding more book covers
+// Import local book cover image for Astro Image component
+if (displayImage) {
+  try {
+    // Import the image from src directory
+    const importedImage = await import(`../../images/${displayImage}`);
+    const imageSrc = importedImage.default;
+    
+    // Use getImage to process the imported image
+    const optimizedImage = await getImage({
+      src: imageSrc,
+      width: 160,
+      height: 240,
+    });
+    
+    displayImage = optimizedImage;
+  } catch (e) {
+    // If import fails, use the original path
+    console.warn(`Could not import image: ${displayImage}`, e);
+  }
+}
 
 // Format dates
 const formatDate = (date: Date | string | undefined) => {
@@ -57,8 +75,8 @@ const pubDateFormatted = formatDate(pubDate);
   <div class="book-card-content">
     {displayImage && (
       <div class="book-cover">
-        <img
-          src={`/images/${displayImage}`}
+        <Image
+          src={displayImage}
           alt={`${title} book cover`}
           class="cover-image"
         />
