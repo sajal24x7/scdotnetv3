@@ -1,7 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { readdirSync } from 'fs';
 import { join } from 'path';
-import { image } from 'astro:content';
 
 // Define a custom date schema that accepts both Date objects and ISO date strings
 const dateSchema = z.union([
@@ -29,7 +28,7 @@ const postsCollection = defineCollection({
     startedReading: dateSchema.optional(),
     finishedReading: dateSchema.optional(),
     bookStatus: z.enum(['reading', 'read']).optional(),
-    bookCover: image().optional(), // Book cover image for bookshelf display
+    bookCover: z.string().optional(), // Book cover image for bookshelf display
   }),
 });
 

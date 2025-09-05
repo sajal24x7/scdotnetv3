@@ -1,6 +1,4 @@
 ---
-import { Image, getImage } from "astro:assets";
-
 interface BookCardProps {
   title: string;
   author?: string;
@@ -8,7 +6,7 @@ interface BookCardProps {
   startedReading?: Date | string;
   finishedReading?: Date | string;
   bookStatus?: 'reading' | 'read';
-  bookCover?: any; // This will be an ImageMetadata object from content collections
+  bookCover?: string;
   description?: string;
   pubDate: Date | string;
   category: string;
@@ -31,15 +29,8 @@ const {
   format
 } = Astro.props;
 
-// Process the book cover image using Astro's image optimization
-let optimizedImage = null;
-if (bookCover) {
-  optimizedImage = await getImage({
-    src: bookCover,
-    width: 160,
-    height: 240,
-  });
-}
+// Construct the image path for the book cover
+const imagePath = bookCover ? `/images/bookshelf/${bookCover}` : null;
 
 // Format dates
 const formatDate = (date: Date | string | undefined) => {
@@ -59,10 +50,10 @@ const pubDateFormatted = formatDate(pubDate);
 
 <article class="book-card">
   <div class="book-card-content">
-    {optimizedImage && (
+    {imagePath && (
       <div class="book-cover">
-        <Image
-          src={optimizedImage}
+        <img
+          src={imagePath}
           alt={`${title} book cover`}
           class="cover-image"
         />
