@@ -37,22 +37,6 @@ const hasUpdatedDate = 'updatedDate' in entry.data && entry.data.updatedDate;
 // Find backlinks for this post
 const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || '');
 
-// Function to map category names to their correct URL paths
-function getCategoryUrl(category: string): string {
-  const categoryMap: Record<string, string> = {
-    'story': 'stories',
-    'poem': 'poems',
-    'blog': 'blog',
-    'micro': 'micro',
-    'notes': 'garden',
-    'bookshelf': 'bookshelf',
-    'nordletter': 'nordletter',
-    'evergreen': 'garden',
-    'til': 'garden'
-  };
-  
-  return categoryMap[category] || category;
-}
 ---
 
 <Layout 
@@ -63,11 +47,6 @@ function getCategoryUrl(category: string): string {
   <ProseWrapper>
     <article>
       <div class="mb-8">
-        <div class="flex items-center gap-2 mb-4">
-          <a href={`/${getCategoryUrl(category)}/`} class="text-sm text-accent no-hover-effect">
-            {category}
-          </a>
-        </div>
         
         {/* Hero image for all posts */}
         {'image' in entry.data && entry.data.image && (
