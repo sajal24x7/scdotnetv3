@@ -1,4 +1,6 @@
 ---
+import CategoryDisplay from './CategoryDisplay.astro';
+
 interface Props {
   backlinks: {
     slug: string;
@@ -22,8 +24,8 @@ const { backlinks } = Astro.props;
             <div class="backlink-header">
               <h4 class="backlink-title">
                 <a href={backlink.slug}>{backlink.title}</a>
+                <CategoryDisplay category={backlink.category} className="backlink-category" />
               </h4>
-              <span class="backlink-category">{backlink.category}</span>
             </div>
             {backlink.description && (
               <p class="backlink-description">{backlink.description}</p>
