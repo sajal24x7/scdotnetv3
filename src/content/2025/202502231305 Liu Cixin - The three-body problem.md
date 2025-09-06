@@ -10,7 +10,7 @@ tags:
   - 'Liu, Cixin'
   - three-body-problem
   - sci-fi
-image: 'https://storage.sajalchoudhary.net/images/2025/02/IMG_0005.jpeg'
+bookCover: 'the-three-body-problem.jpg'
 author: "Liu Cixin"
 series: "Remembrance of Earth's Past"
 bookStatus: "read"

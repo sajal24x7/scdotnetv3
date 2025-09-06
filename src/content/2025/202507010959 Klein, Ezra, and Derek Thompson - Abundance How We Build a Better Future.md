@@ -9,7 +9,7 @@ tags:
 startDate: 2025-07-01T09:59:00+03:00
 endDate: 2025-07-06T18:00:00+03:00
 format: audio
-image: "http://books.google.com/books/publisher/content?id=kMNHEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE73GJw9Ej_EWfK9NOPvYJjS8aDvPY9lq1h52vjDL5YzW7p0qiXrFVCDPaBJVreR8DLau0gDsDaSxdpexNwMA7snGGSJ_jpE9YxVNIjU2JhmpHmmmJddXJBegTf1s9DFBKgt3v1so&source=gbs_api"
+bookCover: 'abundance.jpg'
 author: "Ezra Klein and Derek Thompson"
 series: none
 bookStatus: "read"

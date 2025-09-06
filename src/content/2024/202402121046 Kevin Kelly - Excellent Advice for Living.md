@@ -11,6 +11,7 @@ series: "none"
 startedReading: 2024-02-12T10:46:00
 finishedReading: 2024-02-12T10:46:00
 bookStatus: "read"
+bookCover: 'excellent-advice-for-living.jpg'
 ---
 This is an excellent gift for someone. 
 

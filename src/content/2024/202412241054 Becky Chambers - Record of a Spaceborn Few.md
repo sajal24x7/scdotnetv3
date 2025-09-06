@@ -8,7 +8,7 @@ category: bookshelf
 tags:
   - book-reviews
   - sci-fi
-image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8922.jpeg'
+bookCover: 'record-of-a-spaceborn-few.jpg'
 author: "Becky Chambers"
 bookStatus: "read"
 startedReading: "2024-12-24T10:54:00+03:00"

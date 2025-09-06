@@ -8,7 +8,7 @@ category: bookshelf
 tags:
   - book-reviews
   - poems
-image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8915.jpeg'
+bookCover: 'poems-to-fall-in-love-with.jpg'
 author: "Chris Riddell"
 series: none
 bookStatus: "read"

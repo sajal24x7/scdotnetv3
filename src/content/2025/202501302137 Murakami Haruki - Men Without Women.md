@@ -8,7 +8,7 @@ category: bookshelf
 tags:
   - book-reviews
   - murakami
-image: 'https://storage.sajalchoudhary.net/images/2025/01/IMG_9445.jpeg'
+bookCover: 'men-without-women.jpg'
 author: "Murakami Haruki"
 series: none
 bookStatus: "read"

@@ -8,7 +8,7 @@ category: bookshelf
 tags:
   - book-reviews
   - sci-fi
-image: 'https://storage.sajalchoudhary.net/images/2025/01/IMG_9100.jpeg'
+bookCover: 'the-galaxy-and-the-ground-within.jpg'
 author: "Becky Chambers"
 bookStatus: "read"
 startedReading: "2025-01-10T20:15:00+03:00"

@@ -9,8 +9,7 @@ tags:
   - book-reviews
   - three-body-problem
   - 'Liu, Cixin'
-image: >-
-  https://images.unsplash.com/photo-1483982258113-b72862e6cff6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGRhcmslMjBmb3Jlc3R8ZW58MHx8fHwxNzQ1MzQ4ODAyfDA&ixlib=rb-4.0.3&q=80&w=2000
+bookCover: 'the-dark-forest.jpg'
 author: "Cixin Liu"
 series: "Remembrance of Earth's Past"
 bookStatus: "read"

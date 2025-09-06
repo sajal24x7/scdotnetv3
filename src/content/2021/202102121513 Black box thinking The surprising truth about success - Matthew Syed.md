@@ -9,8 +9,7 @@ updatedDate: 2024-12-24T11:08:03
 category: bookshelf
 tags:
   - book-reviews
-image: >-
-  https://storage.sajalchoudhary.net/images/2021/02/Screenshot-2021-02-12-at-8.41.31-PM.png
+bookCover: 'black-box-thinking.jpg'
 author: "Matthew Syed"
 series: none
 bookStatus: "read"
