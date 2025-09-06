@@ -30,35 +30,32 @@ export async function findBacklinks(currentPostSlug: string, currentPostTitle: s
     // Skip the current post itself
     if (post.slug === currentPostSlug) continue;
     
-    // Get the post content
-    const { Content } = await post.render();
-    const content = await Content();
-    
-    // Convert content to string for searching
-    const contentString = content.toString();
-    
-    // Check if this post links to the current post
-    // Look for various link patterns that might reference the current post
-    const linkPatterns = [
-      // Direct slug references
-      new RegExp(`\\[([^\\]]+)\\]\\(/${currentPostSlug}/\\)`, 'gi'),
-      new RegExp(`\\[([^\\]]+)\\]\\(/${currentPostSlug}\\)`, 'gi'),
-      // Title references in markdown links
-      new RegExp(`\\[([^\\]]+)\\]\\([^)]*${currentPostSlug}[^)]*\\)`, 'gi'),
-      // Plain text references to the title (case insensitive)
-      new RegExp(`\\b${currentPostTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi'),
-      // References to the slug in plain text
-      new RegExp(`\\b${currentPostSlug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi'),
-    ];
-    
-    let hasReference = false;
-    for (const pattern of linkPatterns) {
-      if (pattern.test(contentString)) {
-        hasReference = true;
-        break;
+    try {
+      // Get the raw content without rendering
+      const contentString = post.body;
+      
+      // Check if this post links to the current post
+      // Look for various link patterns that might reference the current post
+      const linkPatterns = [
+        // Direct slug references
+        new RegExp(`\\[([^\\]]+)\\]\\(/${currentPostSlug}/\\)`, 'gi'),
+        new RegExp(`\\[([^\\]]+)\\]\\(/${currentPostSlug}\\)`, 'gi'),
+        // Title references in markdown links
+        new RegExp(`\\[([^\\]]+)\\]\\([^)]*${currentPostSlug}[^)]*\\)`, 'gi'),
+        // Plain text references to the title (case insensitive)
+        new RegExp(`\\b${currentPostTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi'),
+        // References to the slug in plain text
+        new RegExp(`\\b${currentPostSlug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi'),
+      ];
+      
+      let hasReference = false;
+      for (const pattern of linkPatterns) {
+        if (pattern.test(contentString)) {
+          hasReference = true;
+          break;
+        }
       }
-    }
-    
+      
       if (hasReference) {
         backlinks.push({
           slug: `/${post.data.category}/${post.slug}/`,
@@ -66,14 +63,12 @@ export async function findBacklinks(currentPostSlug: string, currentPostTitle: s
           description: post.data.description || ''
         });
       }
+    } catch (error) {
+      // Skip posts that can't be processed
+      console.warn(`Could not process post ${post.slug}:`, error);
+      continue;
+    }
   }
-  
-  // Sort backlinks by publication date (newest first)
-  backlinks.sort((a, b) => {
-    // We'll need to get the actual post data to sort by date
-    // For now, just return them in the order found
-    return 0;
-  });
   
   return backlinks;
 }
@@ -99,12 +94,8 @@ export async function findBacklinksComprehensive(currentPostSlug: string, curren
     if (post.slug === currentPostSlug) continue;
     
     try {
-      // Get the post content
-      const { Content } = await post.render();
-      const content = await Content();
-      
-      // Convert content to string for searching
-      const contentString = content.toString();
+      // Get the raw content without rendering
+      const contentString = post.body;
       
       // Check if this post links to the current post
       // Look for various link patterns that might reference the current post
@@ -136,8 +127,8 @@ export async function findBacklinksComprehensive(currentPostSlug: string, curren
         });
       }
     } catch (error) {
-      // Skip posts that can't be rendered
-      console.warn(`Could not render post ${post.slug}:`, error);
+      // Skip posts that can't be processed
+      console.warn(`Could not process post ${post.slug}:`, error);
       continue;
     }
   }
