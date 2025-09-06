@@ -78,14 +78,6 @@ categories.forEach(category => {
     maxWidth="7xl"
   />
   
-  <div class="mb-6 text-center">
-    <a 
-      href="/tags/" 
-      class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
-    >
-      ← All tags
-    </a>
-  </div>
 
     <section class="space-y-12">
       {sortedPosts.length === 0 ? (
@@ -137,19 +129,6 @@ categories.forEach(category => {
         description.textContent = `All ${category} posts tagged with "${tag}"`;
       }
       
-      // Update breadcrumb links
-      const breadcrumbContainer = document.querySelector('header .flex');
-      breadcrumbContainer.innerHTML = `
-        <a href="/tags/" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200">
-          ← All tags
-        </a>
-        <a href="/tags/?category=${category}" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200">
-          ← ${category === 'stream' ? 'Stream' : category.charAt(0).toUpperCase() + category.slice(1)} tags
-        </a>
-        <a href="/tags/${tag}/" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200">
-          View all #${tag} posts
-        </a>
-      `;
       
       // Filter and display only category-specific posts
       const categoryPosts = postsByCategory[category];
