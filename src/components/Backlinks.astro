@@ -1,9 +1,13 @@
 ---
+import Card from './Card.astro';
+
 interface Props {
   backlinks: {
     slug: string;
     title: string;
     description: string;
+    category: string;
+    pubDate: Date;
   }[];
 }
 
@@ -16,25 +20,15 @@ const { backlinks } = Astro.props;
       <h3>{backlinks.length} Backlinks</h3>
       <div class="backlink-grid">
         {backlinks.map((backlink) => (
-          <article class="backlink-card">
-            <div class="card-content">
-              <div class="card-body">
-                <h2 class="card-title">
-                  <a href={backlink.slug} class="card-link">
-                    {backlink.title}
-                  </a>
-                </h2>
-                
-                <div class="card-description">
-                  {backlink.description && (
-                    <p class="description-text">
-                      {backlink.description}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
-          </article>
+          <div class="backlink-card-wrapper">
+            <Card 
+              title={backlink.title}
+              description=""
+              category={backlink.category}
+              pubDate={backlink.pubDate}
+              link={backlink.slug}
+            />
+          </div>
         ))}
       </div>
     </div>

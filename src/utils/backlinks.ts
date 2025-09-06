@@ -6,6 +6,8 @@ export interface Backlink {
   slug: string;
   title: string;
   description: string;
+  category: string;
+  pubDate: Date;
 }
 
 /**
@@ -60,7 +62,9 @@ export async function findBacklinks(currentPostSlug: string, currentPostTitle: s
         backlinks.push({
           slug: `/${post.data.category}/${post.slug}/`,
           title: post.data.title || 'Untitled',
-          description: post.data.description || ''
+          description: post.data.description || '',
+          category: post.data.category,
+          pubDate: post.data.pubDate
         });
       }
     } catch (error) {
@@ -123,7 +127,9 @@ export async function findBacklinksComprehensive(currentPostSlug: string, curren
         backlinks.push({
           slug: `/${post.data.category}/${post.slug}/`,
           title: post.data.title || 'Untitled',
-          description: post.data.description || ''
+          description: post.data.description || '',
+          category: post.data.category,
+          pubDate: post.data.pubDate
         });
       }
     } catch (error) {
