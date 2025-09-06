@@ -16,12 +16,25 @@ const { backlinks } = Astro.props;
       <h3>{backlinks.length} Backlinks</h3>
       <div class="backlink-grid">
         {backlinks.map((backlink) => (
-          <a href={backlink.slug} class="backlink-card">
-            <div>
-              <h4>{backlink.title}</h4>
-              <span>{backlink.description}</span>
+          <article class="backlink-card">
+            <div class="card-content">
+              <div class="card-body">
+                <h2 class="card-title">
+                  <a href={backlink.slug} class="card-link">
+                    {backlink.title}
+                  </a>
+                </h2>
+                
+                <div class="card-description">
+                  {backlink.description && (
+                    <p class="description-text">
+                      {backlink.description}
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
-          </a>
+          </article>
         ))}
       </div>
     </div>
