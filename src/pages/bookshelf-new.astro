@@ -98,15 +98,15 @@ const readBooksCount = completedBooks.length;
 
 <style>
   .bookshelf-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 0 0.5rem;
   }
 
   .bookshelf-header {
     text-align: center;
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
     border-bottom: 1px solid #e5e7eb;
   }
 
@@ -149,11 +149,14 @@ const readBooksCount = completedBooks.length;
 
   .stat {
     font-size: 0.875rem;
-    color: #6b7280;
+    font-weight: 500;
+    color: #f59e0b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   :global(.dark) .stat {
-    color: #9ca3af;
+    color: #fbbf24;
   }
 
   .stat strong {
@@ -168,13 +171,14 @@ const readBooksCount = completedBooks.length;
   .bookshelf-content {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
+    padding-bottom: 2rem;
   }
 
   .section {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .section-title {
