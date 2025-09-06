@@ -6,6 +6,8 @@ import type { CollectionEntry } from 'astro:content';
 import { getYearDirectories } from '../utils/content';
 import LinkHoverEffect from '../components/LinkHoverEffect.astro';
 import ProseWrapper from '../components/layout/ProseWrapper.astro';
+import Backlinks from '../components/Backlinks.astro';
+import { findBacklinksComprehensive } from '../utils/backlinks';
 
 export async function getStaticPaths() {
   // Get all year directories from content
@@ -31,6 +33,9 @@ const entry = (Astro.props as { entry: CollectionEntry<any> }).entry;
 const { Content } = await entry.render();
 
 const hasUpdatedDate = 'updatedDate' in entry.data && entry.data.updatedDate;
+
+// Find backlinks for this post
+const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || '');
 
 // Function to map category names to their correct URL paths
 function getCategoryUrl(category: string): string {
@@ -150,6 +155,9 @@ function getCategoryUrl(category: string): string {
           </button>
         </div>
       </div>
+      
+      <!-- Backlinks Section -->
+      <Backlinks backlinks={backlinks} />
     </article>
   </ProseWrapper>
 </Layout>
@@ -218,6 +226,72 @@ function getCategoryUrl(category: string): string {
     color: #c4b5fd;
     border-color: #c4b5fd;
     background: rgba(167, 139, 250, 0.1);
+  }
+
+  /* Backlinks styling */
+  .backlink-container {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgb(var(--color-border));
+  }
+
+  .backlink-container h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: rgb(var(--color-text-primary));
+  }
+
+  .backlink-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .backlink-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid rgb(var(--color-border));
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: rgb(var(--color-text-primary));
+    background: rgba(var(--color-bg-secondary), 0.5);
+    transition: all 0.2s ease;
+  }
+
+  .backlink-card:hover {
+    background: rgba(var(--color-bg-secondary), 0.8);
+    border-color: rgb(var(--color-accent));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .backlink-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    color: rgb(var(--color-text-primary));
+    line-height: 1.4;
+  }
+
+  .backlink-card span {
+    font-size: 0.875rem;
+    color: rgb(var(--color-text-secondary));
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  :global(.dark) .backlink-card {
+    background: rgba(var(--color-bg-secondary), 0.3);
+  }
+
+  :global(.dark) .backlink-card:hover {
+    background: rgba(var(--color-bg-secondary), 0.6);
   }
 
 </style> 

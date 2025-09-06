@@ -1,0 +1,46 @@
+---
+interface Props {
+  growthStage: "budding" | "evergreen" | "seedling" | "fleeting";
+  size?: string;
+}
+
+const { growthStage, size = "24" } = Astro.props;
+
+const getGrowthIcon = (stage: string) => {
+  switch (stage) {
+    case "budding":
+      return "🌱";
+    case "evergreen":
+      return "🌲";
+    case "seedling":
+      return "🌿";
+    case "fleeting":
+      return "🍃";
+    default:
+      return "📝";
+  }
+};
+
+const getGrowthColor = (stage: string) => {
+  switch (stage) {
+    case "budding":
+      return "text-green-600 dark:text-green-400";
+    case "evergreen":
+      return "text-green-800 dark:text-green-300";
+    case "seedling":
+      return "text-green-500 dark:text-green-500";
+    case "fleeting":
+      return "text-yellow-600 dark:text-yellow-400";
+    default:
+      return "text-gray-600 dark:text-gray-400";
+  }
+};
+---
+
+<span 
+  class={`inline-flex items-center ${getGrowthColor(growthStage)}`}
+  style={`font-size: ${size}px;`}
+  title={`Growth stage: ${growthStage}`}
+>
+  {getGrowthIcon(growthStage)}
+</span>
