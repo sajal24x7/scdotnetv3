@@ -8,11 +8,12 @@
     "npm": ">=10.0.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build || true",
+    "dev": "npm run generate-covers && astro dev",
+    "start": "npm run generate-covers && astro dev",
+    "build": "npm run generate-covers && astro build || true",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate-covers": "node scripts/generate-book-covers.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.0",

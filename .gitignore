@@ -112,3 +112,6 @@ documentation/
 
 # Backup folder
 src/content_backup_20250728_212307/
+
+# Generated book covers file
+src/utils/bookCovers.ts
