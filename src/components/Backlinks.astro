@@ -1,12 +1,9 @@
 ---
-import GrowthIcon from "./GrowthIcon.astro";
-
 interface Props {
   backlinks: {
     slug: string;
     title: string;
     description: string;
-    growthStage?: string;
   }[];
 }
 
@@ -20,14 +17,6 @@ const { backlinks } = Astro.props;
       <div class="backlink-grid">
         {backlinks.map((backlink) => (
           <a href={backlink.slug} class="backlink-card">
-            {backlink.growthStage && (
-              <GrowthIcon
-                growthStage={
-                  backlink.growthStage as "budding" | "evergreen" | "seedling" | "fleeting"
-                }
-                size="24"
-              />
-            )}
             <div>
               <h4>{backlink.title}</h4>
               <span>{backlink.description}</span>

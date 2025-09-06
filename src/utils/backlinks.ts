@@ -6,7 +6,6 @@ export interface Backlink {
   slug: string;
   title: string;
   description: string;
-  growthStage?: string;
 }
 
 /**
@@ -60,14 +59,13 @@ export async function findBacklinks(currentPostSlug: string, currentPostTitle: s
       }
     }
     
-    if (hasReference) {
-      backlinks.push({
-        slug: `/${post.data.category}/${post.slug}/`,
-        title: post.data.title || 'Untitled',
-        description: post.data.description || '',
-        growthStage: post.data.stage || post.data.growthStage
-      });
-    }
+      if (hasReference) {
+        backlinks.push({
+          slug: `/${post.data.category}/${post.slug}/`,
+          title: post.data.title || 'Untitled',
+          description: post.data.description || ''
+        });
+      }
   }
   
   // Sort backlinks by publication date (newest first)
@@ -134,8 +132,7 @@ export async function findBacklinksComprehensive(currentPostSlug: string, curren
         backlinks.push({
           slug: `/${post.data.category}/${post.slug}/`,
           title: post.data.title || 'Untitled',
-          description: post.data.description || '',
-          growthStage: post.data.stage || post.data.growthStage
+          description: post.data.description || ''
         });
       }
     } catch (error) {
