@@ -285,19 +285,32 @@ const finishedDate = formatDate(finishedReading);
 
   .book-format {
     display: inline-block;
-    font-size: var(--text-small);
-    font-weight: 500;
-    color: #6b7280;
-    background: #f3f4f6;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+    color: #ca8a04;
+    background: transparent;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid #eab308;
+    white-space: nowrap;
+    transition: all 0.2s ease;
   }
 
   :global(.dark) .book-format {
-    color: #9ca3af;
-    background: #374151;
+    color: #fbbf24;
+    border-color: #f59e0b;
+  }
+
+  .book-format:hover {
+    background: rgba(234, 179, 8, 0.05);
+    border-color: #ca8a04;
+  }
+
+  :global(.dark) .book-format:hover {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: #f59e0b;
   }
 
   /* Mobile adjustments */
