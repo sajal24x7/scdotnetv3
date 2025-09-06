@@ -18,20 +18,21 @@ const { backlinks } = Astro.props;
   <section class="backlink-container">
     <div class="inner-container">
       <h3>{backlinks.length} Backlinks</h3>
-      <div class="backlink-card">
-        {backlinks.map((backlink, index) => (
-          <div class="backlink-item">
-            <div class="backlink-header">
-              <h4 class="backlink-title">
-                <a href={backlink.slug}>{backlink.title}</a>
-                <CategoryDisplay category={backlink.category} className="backlink-category" />
-              </h4>
-            </div>
-            {backlink.description && (
-              <p class="backlink-description">{backlink.description}</p>
-            )}
-            {index < backlinks.length - 1 && <div class="backlink-divider"></div>}
-          </div>
+      <div class="backlink-list">
+        {backlinks.map((backlink) => (
+          <article class="backlink-item">
+            <a href={backlink.slug} class="backlink-link">
+              <div class="backlink-content">
+                <div class="backlink-header">
+                  <CategoryDisplay category={backlink.category} />
+                  <h4 class="backlink-title">{backlink.title}</h4>
+                </div>
+                {backlink.description && (
+                  <p class="backlink-description">{backlink.description}</p>
+                )}
+              </div>
+            </a>
+          </article>
         ))}
       </div>
     </div>
