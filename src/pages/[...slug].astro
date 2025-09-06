@@ -250,7 +250,7 @@ function getCategoryUrl(category: string): string {
 
   .backlink-item {
     border: 1px solid #e5e7eb;
-    background: #fff;
+    background: #fff !important;
     border-radius: 0.5rem;
     padding: 1rem 1.25rem;
     transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
@@ -261,17 +261,17 @@ function getCategoryUrl(category: string): string {
   .backlink-item:hover {
     border-color: #a78bfa;
     box-shadow: 0 4px 16px 0 rgba(136, 58, 234, 0.08);
-    background: #fafaff;
+    background: #fafaff !important;
   }
 
   :global(.dark) .backlink-item {
-    background: #18181b;
+    background: #18181b !important;
     border-color: #27272a;
   }
 
   :global(.dark) .backlink-item:hover {
     border-color: #a78bfa;
-    background: #232336;
+    background: #232336 !important;
   }
 
   .backlink-link {
@@ -290,7 +290,7 @@ function getCategoryUrl(category: string): string {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   .backlink-title {
@@ -300,6 +300,8 @@ function getCategoryUrl(category: string): string {
     color: #111827;
     line-height: 1.4;
     transition: color 0.2s ease;
+    flex: 1;
+    min-width: 0;
   }
 
   .backlink-item:hover .backlink-title {
@@ -333,10 +335,13 @@ function getCategoryUrl(category: string): string {
 
     .backlink-header {
       gap: 0.5rem;
+      flex-wrap: wrap;
     }
 
     .backlink-title {
       font-size: 0.875rem;
+      flex: 1;
+      min-width: 200px;
     }
   }
 
