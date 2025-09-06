@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import BookGrid from '../components/bookshelf/BookGrid.astro';
+import TagList from '../components/TagList.astro';
 import { getAllPosts } from '../utils/content';
 
 // Get all posts and filter for bookshelf
@@ -34,10 +35,8 @@ const years = Object.keys(booksByYear)
   .map(Number)
   .sort((a, b) => b - a);
 
-// Calculate stats
+// Calculate total books count
 const totalBooks = bookshelfPosts.length;
-const currentlyReadingCount = currentlyReading.length;
-const readBooksCount = completedBooks.length;
 ---
 
 <Layout 
@@ -57,26 +56,21 @@ const readBooksCount = completedBooks.length;
       <p class="bookshelf-description">
         A collection of books I've read and am currently reading, organized by year.
       </p>
-      <div class="bookshelf-stats">
-        <span class="stat">
-          <strong>{totalBooks}</strong> total books
-        </span>
-        <span class="stat">
-          <strong>{currentlyReadingCount}</strong> currently reading
-        </span>
-        <span class="stat">
-          <strong>{readBooksCount}</strong> completed
-        </span>
-      </div>
     </header>
+
+    <div class="bookshelf-count mb-6 text-center">
+      {totalBooks} {totalBooks === 1 ? 'book' : 'books'}
+    </div>
+    
+    <TagList category="bookshelf" />
 
     <main class="bookshelf-content">
       {/* Currently Reading Section */}
-      {currentlyReadingCount > 0 && (
+      {currentlyReading.length > 0 && (
         <section class="section">
           <h2 class="section-title">
             Currently Reading
-            <span class="section-count">({currentlyReadingCount})</span>
+            <span class="section-count">({currentlyReading.length})</span>
           </h2>
           <BookGrid books={currentlyReading} />
         </section>
@@ -140,14 +134,7 @@ const readBooksCount = completedBooks.length;
     color: #9ca3af;
   }
 
-  .bookshelf-stats {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .stat {
+  .bookshelf-count {
     font-size: 0.875rem;
     font-weight: 500;
     color: #f59e0b;
@@ -155,17 +142,8 @@ const readBooksCount = completedBooks.length;
     letter-spacing: 0.05em;
   }
 
-  :global(.dark) .stat {
+  :global(.dark) .bookshelf-count {
     color: #fbbf24;
-  }
-
-  .stat strong {
-    color: #111827;
-    font-weight: 600;
-  }
-
-  :global(.dark) .stat strong {
-    color: #f9fafb;
   }
 
   .bookshelf-content {
