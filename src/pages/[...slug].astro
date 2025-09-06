@@ -248,52 +248,52 @@ function getCategoryUrl(category: string): string {
     gap: 0.5rem;
   }
 
-  .backlink-item {
+  .backlink-container .backlink-item {
     border: 1px solid #e5e7eb;
-    background: #fff !important;
+    background-color: #ffffff;
     border-radius: 0.5rem;
     padding: 1rem 1.25rem;
-    transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+    transition: box-shadow 0.2s, border-color 0.2s, background-color 0.2s;
     box-shadow: 0 1px 2px rgba(0,0,0,0.02);
     cursor: pointer;
   }
 
-  .backlink-item:hover {
+  .backlink-container .backlink-item:hover {
     border-color: #a78bfa;
     box-shadow: 0 4px 16px 0 rgba(136, 58, 234, 0.08);
-    background: #fafaff !important;
+    background-color: #fafaff;
   }
 
-  :global(.dark) .backlink-item {
-    background: #18181b !important;
+  :global(.dark) .backlink-container .backlink-item {
+    background-color: #18181b;
     border-color: #27272a;
   }
 
-  :global(.dark) .backlink-item:hover {
+  :global(.dark) .backlink-container .backlink-item:hover {
     border-color: #a78bfa;
-    background: #232336 !important;
+    background-color: #232336;
   }
 
-  .backlink-link {
+  .backlink-container .backlink-link {
     text-decoration: none;
     color: inherit;
     display: block;
   }
 
-  .backlink-content {
+  .backlink-container .backlink-content {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .backlink-header {
+  .backlink-container .backlink-header {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     flex-wrap: nowrap;
   }
 
-  .backlink-title {
+  .backlink-container .backlink-title {
     font-size: 1rem;
     font-weight: 600;
     margin: 0;
@@ -304,41 +304,41 @@ function getCategoryUrl(category: string): string {
     min-width: 0;
   }
 
-  .backlink-item:hover .backlink-title {
+  .backlink-container .backlink-item:hover .backlink-title {
     color: #3b82f6;
   }
 
-  :global(.dark) .backlink-title {
+  :global(.dark) .backlink-container .backlink-title {
     color: #f9fafb;
   }
 
-  :global(.dark) .backlink-item:hover .backlink-title {
+  :global(.dark) .backlink-container .backlink-item:hover .backlink-title {
     color: #60a5fa;
   }
 
-  .backlink-description {
+  .backlink-container .backlink-description {
     font-size: 0.875rem;
     color: #4b5563;
     line-height: 1.5;
     margin: 0;
   }
 
-  :global(.dark) .backlink-description {
+  :global(.dark) .backlink-container .backlink-description {
     color: #d1d5db;
   }
 
   /* Mobile adjustments */
   @media (max-width: 768px) {
-    .backlink-item {
+    .backlink-container .backlink-item {
       padding: 0.875rem 1rem;
     }
 
-    .backlink-header {
+    .backlink-container .backlink-header {
       gap: 0.5rem;
       flex-wrap: wrap;
     }
 
-    .backlink-title {
+    .backlink-container .backlink-title {
       font-size: 0.875rem;
       flex: 1;
       min-width: 200px;
