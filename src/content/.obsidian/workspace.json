@@ -11,10 +11,14 @@
             "id": "fb581853111c1677",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "2025/202508151811 Range.md",
+                "mode": "source",
+                "source": true
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "202508151811 Range"
             }
           }
         ]
@@ -49,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "[\"category\":now]",
+                "query": "[\"category\":bookshelf]",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -91,6 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "2025/202508151811 Range.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +105,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for 202508151811 Range"
             }
           },
           {
@@ -109,11 +114,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "2025/202508151811 Range.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from 202508151811 Range"
             }
           },
           {
@@ -137,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024/202404170522 Now.md",
+                "file": "2025/202508151811 Range.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 202404170522 Now"
+              "title": "Outline of 202508151811 Range"
             }
           }
         ],
@@ -165,8 +171,14 @@
       "zk-prefixer:Create new unique note": false
     }
   },
-  "active": "0226b615fe00009d",
+  "active": "fb581853111c1677",
   "lastOpenFiles": [
+    "2025/202509081049 Walk away or dance.md",
+    "2025/202509081047 Bringing goodwill to the conversation.md",
+    "2025/202509071950 VW announces ID. Cross.md",
+    "2025/202509021738 Children of Time.md",
+    "2024/202404170522 Now.md",
+    "2025/202508151811 Range.md",
     "2025/202508301144 NL69.md",
     "2025/202509062039 NL70.md",
     "2025/202509060953 Anthropic to pay $1.5 billion to authors in landmark AI settlement.md",
@@ -174,7 +186,6 @@
     "2025/202509040721 Americans are Being Conditioned to Accept Delayed Elections.md",
     "2025/202509030734 Write more.md",
     "2025/202509021955 Hungry Worms Could Help Solve Plastic Pollution.md",
-    "2025/202509021738 Children of Time.md",
     "2025/202509021145 The future of AI hardware isn’t one device — it’s an entire ecosystem.md",
     "2025/202509010734 How to resist everyday temptations.md",
     "2025/202509011021 Algorithms affect what we post on the socials.md",
@@ -189,12 +200,7 @@
     "2025/202508312123 Yoga.md",
     "2025/202508312122 Building scdotnetv3 on Astro.md",
     "2025/202508310741 The destination for AI interfaces is Do What I Mean.md",
-    "2025/202508301558 Children wrote to Moominvalley and Tove Jansson replied.md",
     "Untitled.base",
-    "2024/202404170522 Now.md",
-    "2025/202508302123 AZ 104.md",
-    "2025/202508302121 Building this website on Astro.md",
-    "2025/202508220800 Majority of the organisations are not seeing any monetary benefits from deploying AI.md",
     "2025/202508232014 NL68 - Autumn begins.txt",
     "2025/202508230757 Record Solar Growth Keeps China's CO2 Falling in First Half of 2025.txt",
     "2023",
