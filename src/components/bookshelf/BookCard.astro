@@ -72,7 +72,7 @@ const finishedDate = formatDate(finishedReading);
     
     <div class="book-info">
       <div class="book-header">
-        {series && (
+        {series && series !== 'none' && (
           <div class="book-series">{series}</div>
         )}
         
