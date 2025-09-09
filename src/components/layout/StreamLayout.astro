@@ -1,5 +1,5 @@
 ---
-import StreamPost from '../StreamPost.astro';
+import PostItem from '../PostItem.astro';
 import { marked } from 'marked';
 
 interface Props {
@@ -33,7 +33,7 @@ const isMicroContent = (category: string) => category === 'micro';
 
 <div class="stream-layout">
   {renderedPosts.map((post) => (
-    <StreamPost post={post} isMicroContent={isMicroContent} />
+    <PostItem post={post} isMicroContent={isMicroContent} />
   ))}
 </div>
 
@@ -84,7 +84,7 @@ const isMicroContent = (category: string) => category === 'micro';
   }
 
   /* Post row styling */
-  .stream-post-row {
+  .post-item-row {
     display: grid;
     grid-template-columns: 200px 1fr;
     gap: 2rem;
@@ -93,32 +93,32 @@ const isMicroContent = (category: string) => category === 'micro';
     margin-bottom: 2rem;
   }
 
-  .stream-post-row:last-child {
+  .post-item-row:last-child {
     border-bottom: none;
     margin-bottom: 0;
   }
 
-  :global(.dark) .stream-post-row {
+  :global(.dark) .post-item-row {
     border-bottom-color: #374151;
   }
 
   @media (max-width: 1023px) {
-    .stream-post-row {
+    .post-item-row {
       display: block;
     }
     
-    .stream-post-metadata {
+    .post-item-metadata {
       display: none;
     }
   }
 
-  .stream-post {
-    /* Border and spacing now handled by stream-post-row */
+  .post-item {
+    /* Border and spacing now handled by post-item-row */
   }
 
 
 
-  .stream-post-metadata {
+  .post-item-metadata {
     display: flex;
     justify-content: flex-end;
     padding-right: 1rem;

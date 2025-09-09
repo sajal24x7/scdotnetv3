@@ -10,11 +10,11 @@ interface Props {
 const { post, isMicroContent } = Astro.props;
 ---
 
-<article class="stream-post">
+<article class="post-item">
   <!-- Desktop: 2-column layout -->
-  <div class="stream-post-desktop">
+  <div class="post-item-desktop">
     <!-- Left column: Metadata -->
-    <div class="stream-post-metadata">
+    <div class="post-item-metadata">
       <a href={post.data.link} class="stream-date-link">
         <TimeDisplay 
           date={post.data.pubDate} 
@@ -35,7 +35,7 @@ const { post, isMicroContent } = Astro.props;
     </div>
     
     <!-- Right column: Content -->
-    <div class="stream-post-content">
+    <div class="post-item-content">
       {!isMicroContent(post.data.category) && post.data.title && (
         <h2 class="stream-title">
           <a href={post.data.link} class="stream-title-link">
@@ -67,8 +67,8 @@ const { post, isMicroContent } = Astro.props;
   </div>
   
   <!-- Mobile: Single column with inline metadata -->
-  <div class="stream-post-mobile">
-    <div class="stream-post-content">
+  <div class="post-item-mobile">
+    <div class="post-item-content">
       {!isMicroContent(post.data.category) && post.data.title && (
         <h2 class="stream-mobile-title">
           <a href={post.data.link} class="stream-title-link">
@@ -126,28 +126,28 @@ const { post, isMicroContent } = Astro.props;
 </article>
 
 <style>
-  .stream-post {
+  .post-item {
     border-bottom: 1px solid #e5e7eb;
     padding-bottom: 2rem;
     margin-bottom: 2rem;
   }
 
-  .stream-post:last-child {
+  .post-item:last-child {
     border-bottom: none;
     margin-bottom: 0;
   }
 
-  :global(.dark) .stream-post {
+  :global(.dark) .post-item {
     border-bottom-color: #374151;
   }
 
   /* Desktop Layout */
-  .stream-post-desktop {
+  .post-item-desktop {
     display: none;
   }
 
   @media (min-width: 1024px) {
-    .stream-post-desktop {
+    .post-item-desktop {
       display: grid;
       grid-template-columns: 200px 1fr;
       gap: 2rem;
@@ -155,18 +155,18 @@ const { post, isMicroContent } = Astro.props;
   }
 
   /* Mobile Layout */
-  .stream-post-mobile {
+  .post-item-mobile {
     display: block;
   }
 
   @media (min-width: 1024px) {
-    .stream-post-mobile {
+    .post-item-mobile {
       display: none;
     }
   }
 
   /* Metadata styling */
-  .stream-post-metadata {
+  .post-item-metadata {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -176,7 +176,7 @@ const { post, isMicroContent } = Astro.props;
     padding-right: 1rem;
   }
 
-  :global(.dark) .stream-post-metadata {
+  :global(.dark) .post-item-metadata {
     color: #9ca3af;
   }
 

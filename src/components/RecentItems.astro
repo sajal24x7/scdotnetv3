@@ -1,5 +1,5 @@
 ---
-import StreamPost from './StreamPost.astro';
+import PostItem from './PostItem.astro';
 import { marked } from 'marked';
 
 interface Props {
@@ -33,7 +33,7 @@ const isMicroContent = (category: string) => category === 'micro';
   
   <div class="recent-items-list">
     {renderedPosts.map((post) => (
-      <StreamPost post={post} isMicroContent={isMicroContent} />
+      <PostItem post={post} isMicroContent={isMicroContent} />
     ))}
   </div>
 </div>
@@ -64,17 +64,17 @@ const isMicroContent = (category: string) => category === 'micro';
   }
 
   /* Ensure proper spacing between items */
-  .recent-items-list :global(.stream-post) {
+  .recent-items-list :global(.post-item) {
     margin-bottom: 0;
   }
 
-  .recent-items-list :global(.stream-post:not(:last-child)) {
+  .recent-items-list :global(.post-item:not(:last-child)) {
     border-bottom: 1px solid #e5e7eb;
     padding-bottom: 2rem;
     margin-bottom: 2rem;
   }
 
-  :global(.dark) .recent-items-list :global(.stream-post:not(:last-child)) {
+  :global(.dark) .recent-items-list :global(.post-item:not(:last-child)) {
     border-bottom-color: #374151;
   }
 

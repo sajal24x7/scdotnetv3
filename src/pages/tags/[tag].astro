@@ -138,9 +138,9 @@ categories.forEach(category => {
           // For now, we'll show a simple list since we can't easily transform posts in the browser
           // In a real implementation, you might want to pre-render all category views
           const postsHtml = categoryPosts.map(post => `
-            <article class="stream-post">
-              <div class="stream-post-desktop">
-                <div class="stream-post-metadata">
+            <article class="post-item">
+              <div class="post-item-desktop">
+                <div class="post-item-metadata">
                   <a href="/${post.data.category}/${post.slug}/" class="stream-date-link">
                     <time class="stream-date">
                       ${new Date(post.data.pubDate).toLocaleDateString('en-US', { 
@@ -157,7 +157,7 @@ categories.forEach(category => {
                     `<a href="/tags/${tag.toLowerCase()}/" class="tag">${tag.toUpperCase()}</a>`
                   ).join('') : ''}
                 </div>
-                <div class="stream-post-content">
+                <div class="post-item-content">
                   <h2 class="stream-title">
                     <a href="/${post.data.category}/${post.slug}/" class="stream-title-link">
                       ${post.data.title}
