@@ -71,8 +71,8 @@ categories.forEach(category => {
   }}
 >
   <PageHeader 
-    title={`Things from the garden and the stream related to ${tag}`}
-    description={`${sortedPosts.length} ${sortedPosts.length === 1 ? 'item' : 'items'} tagged with #${tag}`}
+    title={tag}
+    description={`Things from the garden and the stream related to ${tag}`}
     layout="centered"
     size="lg"
     maxWidth="7xl"
@@ -121,12 +121,12 @@ categories.forEach(category => {
       const description = document.querySelector('header p');
       
       if (category === 'stream') {
-        title.textContent = `Things from the garden and the stream related to ${tag}`;
-        description.textContent = `All stream posts tagged with "${tag}"`;
+        title.textContent = tag;
+        description.textContent = `Things from the garden and the stream related to ${tag}`;
       } else {
         const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
-        title.textContent = `Things from the garden and the stream related to ${tag}`;
-        description.textContent = `All ${category} posts tagged with "${tag}"`;
+        title.textContent = tag;
+        description.textContent = `Things from the garden and the stream related to ${tag}`;
       }
       
       
