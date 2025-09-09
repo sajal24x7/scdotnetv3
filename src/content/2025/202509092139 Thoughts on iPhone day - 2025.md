@@ -27,7 +27,9 @@ I guess Apple does not consider ProMotion to be a Pro feature. Which should have
 
 iPhone Air had me getting up and paying attention for the first time during the event. It looks good. It feels like Apple is innovating. It looks so damn good.
 
-I did not care about the one camera lens till the iPhone Pros rolled on. That orange looks so damn good! All back cameras are 48 MP now. That would be great when I get my Pro a couple of years from now. And the fact that it is unibody now. 
+I did not care about the one camera lens till the iPhone Pros rolled on. That orange looks so damn good! If the move to Aluminium unibody means brighter colours in the future I am all for it!
+
+All back cameras are 48 MP now. That would be great when I get my Pro a couple of years from now. 
 
 All the phones are getting Ceramic Shield v2 now. 
 
