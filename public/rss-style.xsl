@@ -111,6 +111,17 @@
             .post-meta-divider {
               color: #4b5563;
             }
+            
+            .back-link-text {
+              color: #77a3ff;
+              border-color: rgba(119, 163, 255, 0.3);
+              background: rgba(119, 163, 255, 0.05);
+            }
+            
+            .back-link-text:hover {
+              background: rgba(119, 163, 255, 0.1);
+              border-color: #77a3ff;
+            }
           }
           
           * {
@@ -158,6 +169,31 @@
             color: rgb(var(--color-text-secondary));
             line-height: 1.6;
             margin-bottom: 1.5rem;
+          }
+          
+          .back-link {
+            margin-top: 1rem;
+          }
+          
+          .back-link-text {
+            display: inline-flex;
+            align-items: center;
+            color: rgb(var(--color-accent));
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(var(--color-accent), 0.3);
+            border-radius: 6px;
+            background: rgba(var(--color-accent), 0.05);
+            transition: all 0.2s ease;
+          }
+          
+          .back-link-text:hover {
+            background: rgba(var(--color-accent), 0.1);
+            border-color: rgb(var(--color-accent));
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
           }
           
           .rss-info {
@@ -529,6 +565,9 @@
           <div class="header">
             <h1><xsl:value-of select="rss/channel/title"/></h1>
             <p class="description"><xsl:value-of select="rss/channel/description"/></p>
+            <div class="back-link">
+              <a href="https://sajalchoudhary.net" class="back-link-text">← Go back to sajalchoudhary.net</a>
+            </div>
           </div>
           
           <div class="rss-info">
@@ -543,6 +582,9 @@
             <p style="margin-top: 1rem;">
               Visit <a href="https://aboutfeeds.com/" target="_blank" rel="noopener">About Feeds</a> to get started with newsreaders and subscribing. It's free.
             </p>
+            <div class="back-link" style="margin-top: 1rem;">
+              <a href="https://sajalchoudhary.net" class="back-link-text">← Go back to sajalchoudhary.net</a>
+            </div>
           </div>
           
           <div class="content">
