@@ -71,7 +71,7 @@ categories.forEach(category => {
   }}
 >
   <PageHeader 
-    title={tag}
+    title={`<span class="tag-display">${tag.toUpperCase()}</span>`}
     description={`Things from the garden and the stream related to ${tag}`}
     layout="centered"
     size="lg"
@@ -121,11 +121,11 @@ categories.forEach(category => {
       const description = document.querySelector('header p');
       
       if (category === 'stream') {
-        title.textContent = tag;
+        title.innerHTML = `<span class="tag-display">${tag.toUpperCase()}</span>`;
         description.textContent = `Things from the garden and the stream related to ${tag}`;
       } else {
         const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
-        title.textContent = tag;
+        title.innerHTML = `<span class="tag-display">${tag.toUpperCase()}</span>`;
         description.textContent = `Things from the garden and the stream related to ${tag}`;
       }
       
@@ -175,4 +175,23 @@ categories.forEach(category => {
       }
     });
   </script>
+
+  <style>
+    .tag-display {
+      display: inline-block;
+      color: #8b5cf6;
+      padding: 0.25rem 0.5rem;
+      border: 1px solid #8b5cf6;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: transparent;
+      white-space: nowrap;
+    }
+
+    :global(.dark) .tag-display {
+      color: #a78bfa;
+      border-color: #a78bfa;
+    }
+  </style>
 </Layout> 
