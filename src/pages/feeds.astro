@@ -74,12 +74,6 @@ const nordletterPosts = flatPosts.filter(post =>
         Stream
       </a>
       
-      <a href="/prose/rss.xml" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm">
-        <svg class="w-4 h-4 mr-2 opacity-60" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
-        </svg>
-        Prose
-      </a>
       
       <a href="/nordletter.xml" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm">
         <svg class="w-4 h-4 mr-2 opacity-60" fill="currentColor" viewBox="0 0 20 20">
@@ -95,21 +89,51 @@ const nordletterPosts = flatPosts.filter(post =>
       <h2 class="text-2xl font-bold mb-8">Recent Posts</h2>
       <div class="space-y-4">
         {recentPosts.map((post) => (
-          <div class="flex items-start gap-4 py-3 border-b border-borderColor dark:border-borderColorDark last:border-b-0">
-            <TimeDisplay 
-              date={post.data.pubDate} 
-              category={post.data.category} 
-              className="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap font-mono"
-            />
-            <div class="flex-1 min-w-0">
-              <a href={`/${post.data.category}/${post.slug}/`} class="text-lg font-medium hover:text-accent transition-colors block">
+          <div class="feeds-post-item">
+            <!-- Desktop Layout -->
+            <div class="feeds-post-desktop">
+              <TimeDisplay 
+                date={post.data.pubDate} 
+                category={post.data.category} 
+                className="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap font-mono"
+                format="detailed"
+              />
+              <div class="flex-1 min-w-0">
+                <a href={`/${post.data.category}/${post.slug}/`} class="text-lg font-medium hover:text-accent transition-colors block">
+                  {post.data.title}
+                </a>
+                <div class="flex items-center gap-2 mt-1">
+                  <CategoryDisplay category={post.data.category} />
+                  {(post.data as any).tags && (post.data as any).tags.slice(0, 2).map((tag: string) => (
+                    <span class="feeds-tag">
+                      {tag.toUpperCase()}
+                    </span>
+                  ))}
+                </div>
+                {post.data.description && (
+                  <p class="text-textSecondary dark:text-textSecondaryDark text-sm mt-2 line-clamp-2">
+                    {post.data.description}
+                  </p>
+                )}
+              </div>
+            </div>
+            
+            <!-- Mobile Layout -->
+            <div class="feeds-post-mobile">
+              <a href={`/${post.data.category}/${post.slug}/`} class="feeds-mobile-title">
                 {post.data.title}
               </a>
-              <div class="flex items-center gap-2 mt-1">
+              <TimeDisplay 
+                date={post.data.pubDate} 
+                category={post.data.category} 
+                className="feeds-mobile-time"
+                format="detailed"
+              />
+              <div class="feeds-mobile-meta">
                 <CategoryDisplay category={post.data.category} />
                 {(post.data as any).tags && (post.data as any).tags.slice(0, 2).map((tag: string) => (
-                  <span class="text-xs text-textSecondary dark:text-textSecondaryDark">
-                    #{tag}
+                  <span class="feeds-tag">
+                    {tag.toUpperCase()}
                   </span>
                 ))}
               </div>
@@ -152,4 +176,118 @@ const nordletterPosts = flatPosts.filter(post =>
       </div>
     </div>
   </div>
-</Layout> 
+</Layout>
+
+<style>
+  /* Feeds post item styling */
+  .feeds-post-item {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .feeds-post-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  :global(.dark) .feeds-post-item {
+    border-bottom-color: #374151;
+  }
+
+  /* Desktop Layout */
+  .feeds-post-desktop {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  /* Mobile Layout */
+  .feeds-post-mobile {
+    display: none;
+  }
+
+  .feeds-mobile-title {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .feeds-mobile-title:hover {
+    color: #3b82f6;
+  }
+
+  :global(.dark) .feeds-mobile-title {
+    color: #f9fafb;
+  }
+
+  :global(.dark) .feeds-mobile-title:hover {
+    color: #60a5fa;
+  }
+
+  .feeds-mobile-time {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-family: monospace;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  :global(.dark) .feeds-mobile-time {
+    color: #9ca3af;
+  }
+
+  .feeds-mobile-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+
+  .feeds-tag {
+    display: inline-block;
+    color: #8b5cf6;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #8b5cf6;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: transparent;
+    white-space: nowrap;
+  }
+
+  .feeds-tag:hover {
+    color: #7c3aed;
+    border-color: #7c3aed;
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  :global(.dark) .feeds-tag {
+    color: #a78bfa;
+    border-color: #a78bfa;
+  }
+
+  :global(.dark) .feeds-tag:hover {
+    color: #c4b5fd;
+    border-color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.1);
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .feeds-post-desktop {
+      display: none;
+    }
+
+    .feeds-post-mobile {
+      display: block;
+    }
+  }
+</style> 
