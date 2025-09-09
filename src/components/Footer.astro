@@ -93,20 +93,20 @@ const formattedLastPostDate = lastPostDate ? formatDateWithTime(lastPostDate) : 
 // Footer page links removed; footer now only shows copyright and stats
 ---
 
-<footer class="py-6 border-t border-gray-600 dark:border-gray-400">
+<footer class="py-6 border-t border-gray-600 dark:border-gray-400 bg-black text-white">
   <div class="container mx-auto px-4 max-w-6xl">
 
     <!-- Copyright and Stats (same for both layouts) -->
     <div class="text-center mt-6">
-      <p class="text-textSecondary dark:text-textSecondaryDark">
+      <p class="text-gray-300">
         &copy; {currentYear} Sajal Choudhary. All rights reserved.
       </p>
     </div>
     
     {allContent.length > 0 && (
-      <div class="text-center text-textSecondary dark:text-textSecondaryDark text-normal pt-4 mt-6">
+      <div class="text-center text-gray-300 text-normal pt-4 mt-6">
         <p class="text-small opacity-75 mb-2">This website was last updated on {formattedLastPostDate}</p>
-        <p class="font-medium">New posts for {streakWeeks} consecutive {streakWeeks === 1 ? 'week' : 'weeks'}</p>
+        <p class="font-medium">New posts for <span class="text-orange-500">{streakWeeks}</span> consecutive {streakWeeks === 1 ? 'week' : 'weeks'}</p>
         <p class="mt-1 text-small opacity-75">{totalPosts} total posts</p>
       </div>
     )}
