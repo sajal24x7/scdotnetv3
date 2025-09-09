@@ -4,23 +4,13 @@ import sanitizeHtml from 'sanitize-html';
 import { marked } from 'marked';
 
 export async function GET(context) {
-  // Set up filter tag for newsletter content
-  const NEWSLETTER_TAG = 'newsletter';
+  // Get all collections
+  const allCollections = await getCollection('posts');
   
-  // Get all blog posts that have the newsletter tag
-  const blogPosts = await getCollection('blog', (entry) => {
-    return entry.data.tags && entry.data.tags.includes(NEWSLETTER_TAG);
-  });
-
-  // Get all notes that have the newsletter tag
-  const notes = await getCollection('notes', (entry) => {
-    return entry.data.tags && entry.data.tags.includes(NEWSLETTER_TAG);
-  });
-  
-  // Combine and sort newsletter content by publish date (newest first)
-  const newsletterContent = [...blogPosts, ...notes].sort((a, b) => 
-    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-  );
+  // Filter for nordletter content
+  const newsletterContent = allCollections
+    .filter(entry => entry.data.category === 'nordletter')
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   
   // Extract the site URL from the Astro context
   const site = context.site.toString();
@@ -44,7 +34,7 @@ export async function GET(context) {
       }
       
       return {
-        link: `/${item.collection}/${item.slug}/`,
+        link: `/${item.slug}/`,
         title: item.data.title,
         description: item.data.description || '',
         content,
@@ -52,8 +42,8 @@ export async function GET(context) {
         categories: item.data.tags || [],
         // Add custom namespace elements for better newsletter features
         customData: `
-          <media:content url="${site}${item.data.image}" medium="image" />
-          <newsletter:issue>${item.data.issueNumber || 1}</newsletter:issue>
+          ${item.data.image ? `<media:content url="${site}${item.data.image}" medium="image" />` : ''}
+          <newsletter:issue>${item.data.edition || 1}</newsletter:issue>
         `
       };
     })),
