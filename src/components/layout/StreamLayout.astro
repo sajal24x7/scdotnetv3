@@ -33,7 +33,7 @@ const isMicroContent = (category: string) => category === 'micro';
 
 <div class="stream-layout">
   {renderedPosts.map((post) => (
-    <PostItem post={post} isMicroContent={isMicroContent} />
+    <PostItem post={post} isMicroContent={isMicroContent} showFullContent={true} />
   ))}
 </div>
 

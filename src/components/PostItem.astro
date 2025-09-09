@@ -5,9 +5,10 @@ import CategoryDisplay from './CategoryDisplay.astro';
 interface Props {
   post: any;
   isMicroContent: (category: string) => boolean;
+  showFullContent?: boolean;
 }
 
-const { post, isMicroContent } = Astro.props;
+const { post, isMicroContent, showFullContent = true } = Astro.props;
 ---
 
 <article class="post-item">
@@ -45,7 +46,7 @@ const { post, isMicroContent } = Astro.props;
       )}
       
       <div class="stream-body">
-        {post.data.category === 'micro' ? (
+        {post.data.category === 'micro' && showFullContent ? (
           <div class="prose dark:prose-dark max-w-none" set:html={post.renderedContent || post.body} />
         ) : (
           post.data.description && (
@@ -78,7 +79,7 @@ const { post, isMicroContent } = Astro.props;
       )}
       
       <div class="stream-mobile-body">
-        {post.data.category === 'micro' ? (
+        {post.data.category === 'micro' && showFullContent ? (
           <div class="prose dark:prose-dark max-w-none" set:html={post.renderedContent || post.body} />
         ) : (
           post.data.description && (

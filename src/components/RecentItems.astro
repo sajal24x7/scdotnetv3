@@ -6,9 +6,10 @@ interface Props {
   posts: any[];
   title?: string;
   showTitle?: boolean;
+  showFullContent?: boolean;
 }
 
-const { posts, title = "Recent Items", showTitle = true } = Astro.props;
+const { posts, title = "Recent Items", showTitle = true, showFullContent = true } = Astro.props;
 
 // Configure marked options for micro content
 marked.setOptions({
@@ -33,7 +34,7 @@ const isMicroContent = (category: string) => category === 'micro';
   
   <div class="recent-items-list">
     {renderedPosts.map((post) => (
-      <PostItem post={post} isMicroContent={isMicroContent} />
+      <PostItem post={post} isMicroContent={isMicroContent} showFullContent={showFullContent} />
     ))}
   </div>
 </div>
