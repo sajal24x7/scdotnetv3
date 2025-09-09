@@ -527,18 +527,16 @@
                     <a href="{link}" class="post-date-link">
                       <xsl:value-of select="substring(pubDate, 1, 16)"/>
                     </a>
-                    <xsl:if test="category">
+                    <xsl:if test="category[1]">
                       <div class="post-categories">
-                        <xsl:for-each select="category">
-                          <span class="category-tag">
-                            <xsl:value-of select="."/>
-                          </span>
-                        </xsl:for-each>
+                        <span class="category-tag">
+                          <xsl:value-of select="category[1]"/>
+                        </span>
                       </div>
                     </xsl:if>
-                    <xsl:if test="category">
+                    <xsl:if test="category[position() > 1]">
                       <div class="post-tags-sidebar">
-                        <xsl:for-each select="category">
+                        <xsl:for-each select="category[position() > 1]">
                           <a href="/tags/{translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')}/" class="tag">
                             <xsl:value-of select="translate(., 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
                           </a>
@@ -585,19 +583,17 @@
                       <xsl:value-of select="substring(pubDate, 1, 16)"/>
                     </a>
                     <div class="post-meta-divider">•</div>
-                    <xsl:if test="category">
+                    <xsl:if test="category[1]">
                       <div class="post-categories">
-                        <xsl:for-each select="category">
-                          <span class="category-tag">
-                            <xsl:value-of select="."/>
-                          </span>
-                        </xsl:for-each>
+                        <span class="category-tag">
+                          <xsl:value-of select="category[1]"/>
+                        </span>
                       </div>
                     </xsl:if>
-                    <xsl:if test="category">
+                    <xsl:if test="category[position() > 1]">
                       <div class="post-meta-divider">•</div>
                       <div class="post-tags-inline">
-                        <xsl:for-each select="category">
+                        <xsl:for-each select="category[position() > 1]">
                           <a href="/tags/{translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')}/" class="tag">
                             <xsl:value-of select="translate(., 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
                           </a>

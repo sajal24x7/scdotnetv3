@@ -44,7 +44,7 @@ export async function GET(context) {
         description: item.data.description || '',
         content,
         pubDate: item.data.pubDate,
-        categories: item.data.tags || [],
+        categories: [item.data.category, ...(item.data.tags || [])],
         // Add custom namespace elements for better newsletter features
         customData: `
           ${item.data.image ? `<media:content url="${item.data.image}" medium="image" />` : ''}

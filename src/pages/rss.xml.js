@@ -56,7 +56,7 @@ export async function GET(context) {
         description: item.data.description || '',
         content,
         pubDate: item.data.pubDate,
-        categories: item.data.tags || [],
+        categories: [item.data.category, ...(item.data.tags || [])],
         author: 'sajal@sajalchoudhary.net (Sajal Choudhary)',
         // Add custom namespace elements for better RSS features
         customData: item.data.image ? `
