@@ -36,3 +36,5 @@ The 16 Pro, scratches very easily. I have more scratches on my screen now than I
 They improved break resistance in the 16 Pro, but made it more scratch prone. I don’t know if it was a good choice.
 
 The other interesting thing was the lanyards. I have seen the nurses in hospitals here carry their phones that way. They have beautiful, hand-crafted lanyards. But the Apple ones maybe nice too.
+
+One final thing, perhaps the only relevant piece of news for me - the new versions of the OSes arrive on 15th September.
