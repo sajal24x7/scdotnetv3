@@ -2,6 +2,40 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <xsl:output method="html" encoding="UTF-8" indent="yes"/>
   
+  <!-- Date formatting template -->
+  <xsl:template name="format-date">
+    <xsl:param name="date-string"/>
+    <xsl:variable name="year" select="substring($date-string, 1, 4)"/>
+    <xsl:variable name="month" select="substring($date-string, 6, 2)"/>
+    <xsl:variable name="day" select="substring($date-string, 9, 2)"/>
+    <xsl:variable name="time" select="substring($date-string, 12, 5)"/>
+    
+    <xsl:variable name="month-name">
+      <xsl:choose>
+        <xsl:when test="$month = '01'">January</xsl:when>
+        <xsl:when test="$month = '02'">February</xsl:when>
+        <xsl:when test="$month = '03'">March</xsl:when>
+        <xsl:when test="$month = '04'">April</xsl:when>
+        <xsl:when test="$month = '05'">May</xsl:when>
+        <xsl:when test="$month = '06'">June</xsl:when>
+        <xsl:when test="$month = '07'">July</xsl:when>
+        <xsl:when test="$month = '08'">August</xsl:when>
+        <xsl:when test="$month = '09'">September</xsl:when>
+        <xsl:when test="$month = '10'">October</xsl:when>
+        <xsl:when test="$month = '11'">November</xsl:when>
+        <xsl:when test="$month = '12'">December</xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    
+    <xsl:value-of select="$month-name"/>
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="number($day)"/>
+    <xsl:text>, </xsl:text>
+    <xsl:value-of select="$year"/>
+    <xsl:text> at </xsl:text>
+    <xsl:value-of select="$time"/>
+  </xsl:template>
+
   <xsl:template match="/">
     <html lang="en">
       <head>
@@ -239,6 +273,7 @@
             color: #6b7280;
             text-align: right;
             padding-right: 1rem;
+            align-items: flex-end;
           }
           
           .post-date-link {
@@ -383,7 +418,7 @@
             border-top: 1px solid #f3f4f6;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
             font-size: 0.875rem;
             color: #6b7280;
@@ -525,7 +560,9 @@
                   <!-- Left column: Metadata -->
                   <div class="post-metadata">
                     <a href="{link}" class="post-date-link">
-                      <xsl:value-of select="substring(pubDate, 1, 16)"/>
+                      <xsl:call-template name="format-date">
+                        <xsl:with-param name="date-string" select="pubDate"/>
+                      </xsl:call-template>
                     </a>
                     <xsl:if test="category[1]">
                       <div class="post-categories">
@@ -580,9 +617,10 @@
                   <!-- Mobile metadata after content -->
                   <div class="post-mobile-metadata">
                     <a href="{link}" class="post-date-link">
-                      <xsl:value-of select="substring(pubDate, 1, 16)"/>
+                      <xsl:call-template name="format-date">
+                        <xsl:with-param name="date-string" select="pubDate"/>
+                      </xsl:call-template>
                     </a>
-                    <div class="post-meta-divider">•</div>
                     <xsl:if test="category[1]">
                       <div class="post-categories">
                         <span class="category-tag">
@@ -591,7 +629,6 @@
                       </div>
                     </xsl:if>
                     <xsl:if test="category[position() > 1]">
-                      <div class="post-meta-divider">•</div>
                       <div class="post-tags-inline">
                         <xsl:for-each select="category[position() > 1]">
                           <a href="/tags/{translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')}/" class="tag">
