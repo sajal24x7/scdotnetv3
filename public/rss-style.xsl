@@ -456,7 +456,7 @@
             border-top: 1px solid #f3f4f6;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.5rem;
             flex-wrap: wrap;
             font-size: 0.875rem;
             color: #6b7280;
@@ -662,6 +662,7 @@
                       </xsl:call-template>
                     </a>
                     <xsl:if test="category[1]">
+                      <div class="post-meta-divider">•</div>
                       <div class="post-categories">
                         <span class="category-tag">
                           <xsl:value-of select="category[1]"/>
@@ -669,6 +670,7 @@
                       </div>
                     </xsl:if>
                     <xsl:if test="category[position() > 1]">
+                      <div class="post-meta-divider">•</div>
                       <div class="post-tags-inline">
                         <xsl:for-each select="category[position() > 1]">
                           <a href="/tags/{translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')}/" class="tag">
