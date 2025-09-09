@@ -31,6 +31,52 @@
               --color-border: 85, 75, 70;
               --color-accent-bg: 30, 41, 59;
             }
+            
+            .post-metadata {
+              color: #9ca3af;
+            }
+            
+            .post-date-link {
+              color: #a78bfa;
+            }
+            
+            .post-date-link:hover {
+              color: #c4b5fd;
+            }
+            
+            .tag {
+              color: #a78bfa;
+              border-color: #a78bfa;
+            }
+            
+            .tag:hover {
+              color: #c4b5fd;
+              border-color: #c4b5fd;
+              background: rgba(167, 139, 250, 0.1);
+            }
+            
+            .category-tag {
+              color: #fbbf24;
+              border-color: #f59e0b;
+            }
+            
+            .category-tag:hover {
+              background: rgba(245, 158, 11, 0.1);
+              border-color: #f59e0b;
+            }
+            
+            .post-description {
+              color: #d1d5db;
+            }
+            
+            .post-mobile-metadata {
+              border-top-color: #374151;
+              color: #9ca3af;
+            }
+            
+            .post-meta-divider {
+              color: #4b5563;
+            }
           }
           
           * {
@@ -143,17 +189,14 @@
           
           .post {
             margin-bottom: 2rem;
-            padding: 1.5rem;
+            padding: 0;
             border-bottom: 1px solid rgb(var(--color-border));
-            background: rgba(var(--color-bg-secondary), 0.5);
-            border-radius: 8px;
+            background: transparent;
             transition: all 0.2s ease;
           }
           
           .post:hover {
-            background: rgba(var(--color-bg-secondary), 0.8);
             transform: translateY(-1px);
-            box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.1);
           }
           
           .post:last-child {
@@ -161,19 +204,98 @@
             margin-bottom: 0;
           }
           
+          /* Desktop Layout */
+          .post-desktop {
+            display: none;
+          }
+          
+          @media (min-width: 1024px) {
+            .post-desktop {
+              display: grid;
+              grid-template-columns: 200px 1fr;
+              gap: 2rem;
+              padding: 1.5rem 0;
+            }
+          }
+          
+          /* Mobile Layout */
+          .post-mobile {
+            display: block;
+            padding: 1.5rem 0;
+          }
+          
+          @media (min-width: 1024px) {
+            .post-mobile {
+              display: none;
+            }
+          }
+          
+          /* Metadata styling */
+          .post-metadata {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: right;
+            padding-right: 1rem;
+          }
+          
+          .post-date-link {
+            text-decoration: none;
+            transition: all 0.2s ease;
+            color: #8b5cf6;
+            font-weight: 500;
+          }
+          
+          .post-date-link:hover {
+            color: #7c3aed;
+            text-decoration: underline;
+          }
+          
+          .post-tags-sidebar {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+          }
+          
+          .tag {
+            display: inline-block;
+            color: #8b5cf6;
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid #8b5cf6;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            background: transparent;
+            white-space: nowrap;
+          }
+          
+          .tag:hover {
+            color: #7c3aed;
+            border-color: #7c3aed;
+            background: rgba(139, 92, 246, 0.05);
+          }
+          
+          /* Content styling */
           .post-title {
-            font-size: 1.375rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
             color: rgb(var(--color-text-primary));
             text-decoration: none;
-            margin-bottom: 0.75rem;
             display: block;
             transition: color 0.2s ease;
-            line-height: 1.4;
           }
           
           .post-title:hover {
-            color: rgb(var(--color-accent));
+            color: #3b82f6;
           }
           
           .post-meta {
@@ -190,6 +312,8 @@
             align-items: center;
             gap: 0.25rem;
             font-weight: 500;
+            color: #8b5cf6;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
           }
           
           .post-categories {
@@ -198,23 +322,33 @@
           }
           
           .category-tag {
-            background: rgba(var(--color-accent), 0.1);
-            color: rgb(var(--color-accent));
-            padding: 0.125rem 0.5rem;
-            border-radius: 4px;
+            display: inline-block;
             font-size: 0.75rem;
-            font-weight: 500;
-            border: 1px solid rgba(var(--color-accent), 0.2);
+            font-weight: 600;
+            text-transform: lowercase;
+            letter-spacing: 0.05em;
+            color: #ca8a04;
+            background: transparent;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            border: 1px solid #eab308;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+          }
+          
+          .category-tag:hover {
+            background: rgba(234, 179, 8, 0.05);
+            border-color: #ca8a04;
           }
           
           .post-description {
-            color: rgb(var(--color-text-secondary));
-            line-height: 1.7;
+            color: #4b5563;
+            line-height: 1.6;
             margin-bottom: 1rem;
           }
           
           .read-more {
-            color: rgb(var(--color-accent));
+            color: #3b82f6;
             text-decoration: none;
             font-weight: 500;
             margin-top: 1rem;
@@ -223,9 +357,46 @@
           }
           
           .read-more:hover {
+            color: #2563eb;
             text-decoration: underline;
-            text-decoration-thickness: 2px;
-            text-underline-offset: 3px;
+          }
+          
+          /* Mobile specific styling */
+          .post-mobile-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+            color: rgb(var(--color-text-primary));
+            text-decoration: none;
+            display: block;
+            transition: color 0.2s ease;
+          }
+          
+          .post-mobile-title:hover {
+            color: #3b82f6;
+          }
+          
+          .post-mobile-metadata {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #f3f4f6;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            font-size: 0.875rem;
+            color: #6b7280;
+          }
+          
+          .post-meta-divider {
+            color: #d1d5db;
+          }
+          
+          .post-tags-inline {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
           }
           
           .footer {
@@ -245,6 +416,16 @@
           
           .footer a:hover {
             text-decoration: underline;
+          }
+          
+          @media (max-width: 1024px) {
+            .post-desktop {
+              display: none;
+            }
+            
+            .post-mobile {
+              display: block;
+            }
           }
           
           @media (max-width: 640px) {
@@ -272,14 +453,10 @@
               gap: 0.5rem;
             }
             
-            .post-meta {
+            .post-mobile-metadata {
               flex-direction: column;
               align-items: flex-start;
               gap: 0.5rem;
-            }
-            
-            .post {
-              padding: 1rem;
             }
           }
           
@@ -343,36 +520,92 @@
             
             <xsl:for-each select="rss/channel/item">
               <article class="post">
-                <a href="{link}" class="post-title">
-                  <xsl:value-of select="title"/>
-                </a>
-                
-                <div class="post-meta">
-                  <div class="post-date">
-                    <svg class="icon" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
-                    </svg>
-                    <xsl:value-of select="substring(pubDate, 1, 16)"/>
+                <!-- Desktop Layout -->
+                <div class="post-desktop">
+                  <!-- Left column: Metadata -->
+                  <div class="post-metadata">
+                    <a href="{link}" class="post-date-link">
+                      <xsl:value-of select="substring(pubDate, 1, 16)"/>
+                    </a>
+                    <xsl:if test="category">
+                      <div class="post-categories">
+                        <xsl:for-each select="category">
+                          <span class="category-tag">
+                            <xsl:value-of select="."/>
+                          </span>
+                        </xsl:for-each>
+                      </div>
+                    </xsl:if>
+                    <xsl:if test="category">
+                      <div class="post-tags-sidebar">
+                        <xsl:for-each select="category">
+                          <a href="/tags/{translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')}/" class="tag">
+                            <xsl:value-of select="translate(., 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
+                          </a>
+                        </xsl:for-each>
+                      </div>
+                    </xsl:if>
                   </div>
                   
-                  <xsl:if test="category">
-                    <div class="post-categories">
-                      <xsl:for-each select="category">
-                        <span class="category-tag">
-                          <xsl:value-of select="."/>
-                        </span>
-                      </xsl:for-each>
-                    </div>
-                  </xsl:if>
+                  <!-- Right column: Content -->
+                  <div class="post-content">
+                    <a href="{link}" class="post-title">
+                      <xsl:value-of select="title"/>
+                    </a>
+                    
+                    <xsl:if test="description and description != ''">
+                      <div class="post-description">
+                        <xsl:value-of select="description"/>
+                      </div>
+                    </xsl:if>
+                    
+                    <a href="{link}" class="read-more">Read more →</a>
+                  </div>
                 </div>
                 
-                <xsl:if test="description and description != ''">
-                  <div class="post-description">
-                    <xsl:value-of select="description"/>
+                <!-- Mobile Layout -->
+                <div class="post-mobile">
+                  <div class="post-content">
+                    <a href="{link}" class="post-mobile-title">
+                      <xsl:value-of select="title"/>
+                    </a>
+                    
+                    <xsl:if test="description and description != ''">
+                      <div class="post-description">
+                        <xsl:value-of select="description"/>
+                      </div>
+                    </xsl:if>
+                    
+                    <a href="{link}" class="read-more">Read more →</a>
                   </div>
-                </xsl:if>
-                
-                <a href="{link}" class="read-more">Read full post →</a>
+                  
+                  <!-- Mobile metadata after content -->
+                  <div class="post-mobile-metadata">
+                    <a href="{link}" class="post-date-link">
+                      <xsl:value-of select="substring(pubDate, 1, 16)"/>
+                    </a>
+                    <div class="post-meta-divider">•</div>
+                    <xsl:if test="category">
+                      <div class="post-categories">
+                        <xsl:for-each select="category">
+                          <span class="category-tag">
+                            <xsl:value-of select="."/>
+                          </span>
+                        </xsl:for-each>
+                      </div>
+                    </xsl:if>
+                    <xsl:if test="category">
+                      <div class="post-meta-divider">•</div>
+                      <div class="post-tags-inline">
+                        <xsl:for-each select="category">
+                          <a href="/tags/{translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')}/" class="tag">
+                            <xsl:value-of select="translate(., 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
+                          </a>
+                        </xsl:for-each>
+                      </div>
+                    </xsl:if>
+                  </div>
+                </div>
               </article>
             </xsl:for-each>
           </div>
