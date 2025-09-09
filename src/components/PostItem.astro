@@ -21,6 +21,7 @@ const { post, isMicroContent, showFullContent = true } = Astro.props;
           date={post.data.pubDate} 
           category={post.data.category} 
           className="stream-date"
+          format="detailed"
         />
       </a>
       <CategoryDisplay category={post.data.category} className="stream-category" />
@@ -37,7 +38,7 @@ const { post, isMicroContent, showFullContent = true } = Astro.props;
     
     <!-- Right column: Content -->
     <div class="post-item-content">
-      {!isMicroContent(post.data.category) && post.data.title && (
+      {post.data.title && (
         <h2 class="stream-title">
           <a href={post.data.link} class="stream-title-link">
             {post.data.title}
@@ -70,7 +71,7 @@ const { post, isMicroContent, showFullContent = true } = Astro.props;
   <!-- Mobile: Single column with inline metadata -->
   <div class="post-item-mobile">
     <div class="post-item-content">
-      {!isMicroContent(post.data.category) && post.data.title && (
+      {post.data.title && (
         <h2 class="stream-mobile-title">
           <a href={post.data.link} class="stream-title-link">
             {post.data.title}
@@ -106,6 +107,7 @@ const { post, isMicroContent, showFullContent = true } = Astro.props;
           date={post.data.pubDate} 
           category={post.data.category} 
           className="stream-date"
+          format="detailed"
         />
       </a>
       <div class="stream-meta-divider">•</div>
