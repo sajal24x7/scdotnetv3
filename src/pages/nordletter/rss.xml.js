@@ -2,7 +2,7 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
 import { marked } from 'marked';
-import { getYearDirectories } from '../utils/content';
+import { getYearDirectories } from '../../utils/content';
 
 export async function GET(context) {
   // Get all year directories
