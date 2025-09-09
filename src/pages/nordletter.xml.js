@@ -2,13 +2,18 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
 import { marked } from 'marked';
+import { getYearDirectories } from '../utils/content';
 
 export async function GET(context) {
-  // Get all collections
-  const allCollections = await getCollection('posts');
+  // Get all year directories
+  const years = getYearDirectories();
   
-  // Filter for nordletter content
-  const newsletterContent = allCollections
+  // Get all posts from year collections
+  const allPosts = await Promise.all(years.map(year => getCollection(year)));
+  const flatPosts = allPosts.flat();
+  
+  // Filter for nordletter content and sort by publish date (newest first)
+  const newsletterContent = flatPosts
     .filter(entry => entry.data.category === 'nordletter')
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   
@@ -34,7 +39,7 @@ export async function GET(context) {
       }
       
       return {
-        link: `/${item.slug}/`,
+        link: `/nordletter/${item.slug}/`,
         title: item.data.title,
         description: item.data.description || '',
         content,
@@ -42,7 +47,7 @@ export async function GET(context) {
         categories: item.data.tags || [],
         // Add custom namespace elements for better newsletter features
         customData: `
-          ${item.data.image ? `<media:content url="${site}${item.data.image}" medium="image" />` : ''}
+          ${item.data.image ? `<media:content url="${item.data.image}" medium="image" />` : ''}
           <newsletter:issue>${item.data.edition || 1}</newsletter:issue>
         `
       };
