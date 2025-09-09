@@ -229,10 +229,10 @@ const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || ''
 
   .backlink-container .backlink-item {
     border: 1px solid #e5e7eb;
-    background-color: #ffffff;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(250, 250, 255, 0.8) 100%);
     border-radius: 0.5rem;
     padding: 1rem 1.25rem;
-    transition: box-shadow 0.2s, border-color 0.2s, background-color 0.2s;
+    transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
     box-shadow: 0 1px 2px rgba(0,0,0,0.02);
     cursor: pointer;
   }
@@ -240,17 +240,17 @@ const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || ''
   .backlink-container .backlink-item:hover {
     border-color: #a78bfa;
     box-shadow: 0 4px 16px 0 rgba(136, 58, 234, 0.08);
-    background-color: #fafaff;
+    background: linear-gradient(135deg, rgba(250, 250, 255, 0.95) 0%, rgba(245, 245, 255, 0.9) 100%);
   }
 
   :global(.dark) .backlink-container .backlink-item {
-    background-color: #18181b;
+    background: linear-gradient(135deg, rgba(24, 24, 27, 0.9) 0%, rgba(35, 35, 54, 0.8) 100%);
     border-color: #27272a;
   }
 
   :global(.dark) .backlink-container .backlink-item:hover {
     border-color: #a78bfa;
-    background-color: #232336;
+    background: linear-gradient(135deg, rgba(35, 35, 54, 0.95) 0%, rgba(45, 45, 70, 0.9) 100%);
   }
 
   .backlink-container .backlink-link {
