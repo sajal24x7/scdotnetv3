@@ -637,8 +637,6 @@
                         <xsl:value-of select="description"/>
                       </div>
                     </xsl:if>
-                    
-                    <a href="{link}" class="read-more">Read more →</a>
                   </div>
                 </div>
                 
@@ -654,8 +652,6 @@
                         <xsl:value-of select="description"/>
                       </div>
                     </xsl:if>
-                    
-                    <a href="{link}" class="read-more">Read more →</a>
                   </div>
                   
                   <!-- Mobile metadata after content -->
