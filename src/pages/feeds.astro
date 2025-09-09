@@ -1,9 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
-import { getAllPosts, getYearDirectories } from '../utils/content';
-import TimeDisplay from '../components/TimeDisplay.astro';
-import CategoryDisplay from '../components/CategoryDisplay.astro';
+import RecentItems from '../components/RecentItems.astro';
+import { getAllPosts, getYearDirectories, transformPost } from '../utils/content';
 import { getCollection } from 'astro:content';
 
 // Get recent posts for preview (more posts for the main section)
@@ -13,23 +12,8 @@ const sortedPosts = allPosts.sort((a, b) =>
 );
 const recentPosts = sortedPosts.slice(0, 15); // Show more posts
 
-// Get stream posts (blog, micro, photo)
-const years = getYearDirectories();
-const allYearPosts = await Promise.all(years.map(year => getCollection(year as any)));
-const flatPosts = allYearPosts.flat() as any[];
-const streamPosts = flatPosts.filter(post => 
-  ['blog', 'micro', 'photo'].includes(post.data.category)
-).sort((a, b) => 
-  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-);
-const recentStream = streamPosts.slice(0, 5);
-
-// Get recent nordletter posts (they have nordletter category)
-const nordletterPosts = flatPosts.filter(post => 
-  post.data.category === 'nordletter'
-).sort((a, b) => 
-  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-).slice(0, 5);
+// Transform posts for the RecentItems component
+const transformedRecentPosts = recentPosts.map(transformPost);
 ---
 
 <Layout 
@@ -92,36 +76,7 @@ const nordletterPosts = flatPosts.filter(post =>
 
     <!-- Recent Posts Section -->
     <div class="border-t border-borderColor dark:border-borderColorDark pt-12">
-      <h2 class="text-2xl font-bold mb-8">Recent Posts</h2>
-      <div class="space-y-4">
-        {recentPosts.map((post) => (
-          <div class="flex items-start gap-4 py-3 border-b border-borderColor dark:border-borderColorDark last:border-b-0">
-            <TimeDisplay 
-              date={post.data.pubDate} 
-              category={post.data.category} 
-              className="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap font-mono"
-            />
-            <div class="flex-1 min-w-0">
-              <a href={`/${post.data.category}/${post.slug}/`} class="text-lg font-medium hover:text-accent transition-colors block">
-                {post.data.title}
-              </a>
-              <div class="flex items-center gap-2 mt-1">
-                <CategoryDisplay category={post.data.category} />
-                {(post.data as any).tags && (post.data as any).tags.slice(0, 2).map((tag: string) => (
-                  <span class="text-xs text-textSecondary dark:text-textSecondaryDark">
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-              {post.data.description && (
-                <p class="text-textSecondary dark:text-textSecondaryDark text-sm mt-2 line-clamp-2">
-                  {post.data.description}
-                </p>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
+      <RecentItems posts={transformedRecentPosts} title="Recent Posts" />
     </div>
 
     <!-- About RSS Section -->

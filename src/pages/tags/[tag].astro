@@ -3,8 +3,8 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
-import TimeDisplay from '../../components/TimeDisplay.astro';
-import { getAllPosts } from '../../utils/content';
+import RecentItems from '../../components/RecentItems.astro';
+import { getAllPosts, transformPost } from '../../utils/content';
 
 export async function getStaticPaths() {
   // Get all posts
@@ -37,6 +37,9 @@ const taggedPosts = allPosts.filter(post => {
 const sortedPosts = taggedPosts.sort((a, b) => 
   b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+// Transform posts for the RecentItems component
+const transformedPosts = sortedPosts.map(transformPost);
 
 // Group posts by category for client-side filtering
 const postsByCategory = new Map<string, typeof sortedPosts>();
@@ -81,31 +84,14 @@ categories.forEach(category => {
   
 
     <section class="space-y-12">
-      {sortedPosts.length === 0 ? (
+      {transformedPosts.length === 0 ? (
         <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
           <p class="text-textSecondary dark:text-textSecondaryDark">
             No content found with this tag.
           </p>
         </div>
       ) : (
-        <div class="space-y-12">
-          {sortedPosts.map(post => (
-            <article>
-              <a href={`/${post.data.category}/${post.slug}/`} class="group">
-                <div class="flex items-baseline gap-4">
-                  <TimeDisplay 
-                    date={post.data.pubDate} 
-                    category={post.data.category} 
-                    className="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap"
-                  />
-                  <h2 class="text-xl font-medium group-hover:text-accent transition-colors">
-                    {post.data.title}
-                  </h2>
-                </div>
-              </a>
-            </article>
-          ))}
-        </div>
+        <RecentItems posts={transformedPosts} showTitle={false} />
       )}
     </section>
   </div>
@@ -117,61 +103,73 @@ categories.forEach(category => {
       const category = urlParams.get('category');
       
       if (category && postsByCategory[category]) {
-      // Update page title and description
-      const title = document.querySelector('h1');
-      const description = document.querySelector('header p');
-      
-      if (category === 'stream') {
-        title.innerHTML = `<span class="tag-display">${tag.toUpperCase()}</span>`;
-        description.textContent = `Things from the garden and the stream related to ${tag}`;
-      } else {
-        const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
-        title.innerHTML = `<span class="tag-display">${tag.toUpperCase()}</span>`;
-        description.textContent = `Things from the garden and the stream related to ${tag}`;
-      }
-      
-      
-      // Filter and display only category-specific posts
-      const categoryPosts = postsByCategory[category];
-      
-      // Update post count
-      const postCount = document.querySelector('header p');
-      postCount.textContent = `${categoryPosts.length} ${categoryPosts.length === 1 ? 'item' : 'items'} tagged with #${tag} in ${category === 'ephemera' ? 'ephemera' : category}`;
-      
-      // Update posts display
-      const section = document.querySelector('section');
-      
-      if (categoryPosts.length === 0) {
-        section.innerHTML = `
-          <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
-            <p class="text-textSecondary dark:text-textSecondaryDark">
-              No content found with this tag in ${category}.
-            </p>
-          </div>
-        `;
-      } else {
-        const postsHtml = categoryPosts.map(post => `
-          <article>
-            <a href="/${post.data.category}/${post.slug}/" class="group">
-              <div class="flex items-baseline gap-4">
-                <time class="text-sm text-textSecondary dark:text-textSecondaryDark whitespace-nowrap">
-                  ${new Date(post.data.pubDate).toLocaleDateString('en-US', { 
-                    year: 'numeric', 
-                    month: 'short', 
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                  })}
-                </time>
-                <h2 class="text-xl font-medium group-hover:text-accent transition-colors">
-                  ${post.data.title}
-                </h2>
-              </div>
-            </a>
-          </article>
-        `).join('');
+        // Update page title and description
+        const title = document.querySelector('h1');
+        const description = document.querySelector('header p');
         
-        section.innerHTML = `<div class="space-y-12">${postsHtml}</div>`;
+        if (category === 'stream') {
+          title.innerHTML = `<span class="tag-display">${tag.toUpperCase()}</span>`;
+          description.textContent = `Things from the garden and the stream related to ${tag}`;
+        } else {
+          const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+          title.innerHTML = `<span class="tag-display">${tag.toUpperCase()}</span>`;
+          description.textContent = `Things from the garden and the stream related to ${tag}`;
+        }
+        
+        // Filter and display only category-specific posts
+        const categoryPosts = postsByCategory[category];
+        
+        // Update post count
+        const postCount = document.querySelector('header p');
+        postCount.textContent = `${categoryPosts.length} ${categoryPosts.length === 1 ? 'item' : 'items'} tagged with #${tag} in ${category === 'ephemera' ? 'ephemera' : category}`;
+        
+        // Update posts display
+        const section = document.querySelector('section');
+        
+        if (categoryPosts.length === 0) {
+          section.innerHTML = `
+            <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
+              <p class="text-textSecondary dark:text-textSecondaryDark">
+                No content found with this tag in ${category}.
+              </p>
+            </div>
+          `;
+        } else {
+          // For now, we'll show a simple list since we can't easily transform posts in the browser
+          // In a real implementation, you might want to pre-render all category views
+          const postsHtml = categoryPosts.map(post => `
+            <article class="stream-post">
+              <div class="stream-post-desktop">
+                <div class="stream-post-metadata">
+                  <a href="/${post.data.category}/${post.slug}/" class="stream-date-link">
+                    <time class="stream-date">
+                      ${new Date(post.data.pubDate).toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      })}
+                    </time>
+                  </a>
+                  <span class="stream-category">${post.data.category}</span>
+                  ${post.data.tags ? post.data.tags.map(tag => 
+                    `<a href="/tags/${tag.toLowerCase()}/" class="tag">${tag.toUpperCase()}</a>`
+                  ).join('') : ''}
+                </div>
+                <div class="stream-post-content">
+                  <h2 class="stream-title">
+                    <a href="/${post.data.category}/${post.slug}/" class="stream-title-link">
+                      ${post.data.title}
+                    </a>
+                  </h2>
+                  ${post.data.description ? `<p class="stream-description">${post.data.description}</p>` : ''}
+                </div>
+              </div>
+            </article>
+          `).join('');
+          
+          section.innerHTML = `<div class="recent-items"><div class="recent-items-list">${postsHtml}</div></div>`;
         }
       }
     });

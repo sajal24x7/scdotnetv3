@@ -1,0 +1,92 @@
+---
+import StreamPost from './StreamPost.astro';
+import { marked } from 'marked';
+
+interface Props {
+  posts: any[];
+  title?: string;
+  showTitle?: boolean;
+}
+
+const { posts, title = "Recent Items", showTitle = true } = Astro.props;
+
+// Configure marked options for micro content
+marked.setOptions({
+  gfm: true, // GitHub Flavored Markdown
+  breaks: true // Convert line breaks to <br>
+});
+
+// Pre-render markdown content for posts
+const renderedPosts = posts.map(post => ({
+  ...post,
+  renderedContent: post.body ? marked.parse(post.body) : null
+}));
+
+// Check if content is micro type
+const isMicroContent = (category: string) => category === 'micro';
+---
+
+<div class="recent-items">
+  {showTitle && (
+    <h2 class="recent-items-title">{title}</h2>
+  )}
+  
+  <div class="recent-items-list">
+    {renderedPosts.map((post) => (
+      <StreamPost post={post} isMicroContent={isMicroContent} />
+    ))}
+  </div>
+</div>
+
+<style>
+  .recent-items {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .recent-items-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #111827;
+    text-align: center;
+  }
+
+  :global(.dark) .recent-items-title {
+    color: #f9fafb;
+  }
+
+  .recent-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Ensure proper spacing between items */
+  .recent-items-list :global(.stream-post) {
+    margin-bottom: 0;
+  }
+
+  .recent-items-list :global(.stream-post:not(:last-child)) {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  :global(.dark) .recent-items-list :global(.stream-post:not(:last-child)) {
+    border-bottom-color: #374151;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .recent-items {
+      padding: 0 0.5rem;
+    }
+
+    .recent-items-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+  }
+</style>
