@@ -70,13 +70,14 @@ categories.forEach(category => {
     className: 'px-4'
   }}
 >
-  <PageHeader 
-    title={`<span class="tag-display">${tag.toUpperCase()}</span>`}
-    description={`Things from the garden and the stream related to ${tag}`}
-    layout="centered"
-    size="lg"
-    maxWidth="7xl"
-  />
+  <header class="text-center mb-10">
+    <h1 class="text-huge font-bold text-textPrimary">
+      <span class="tag-display">{tag.toUpperCase()}</span>
+    </h1>
+    <p class="text-large text-gray-600 dark:text-gray-400 mt-4 mx-auto max-w-7xl">
+      Things from the garden and the stream related to {tag}
+    </p>
+  </header>
   
 
     <section class="space-y-12">
@@ -180,13 +181,14 @@ categories.forEach(category => {
     .tag-display {
       display: inline-block;
       color: #8b5cf6;
-      padding: 0.25rem 0.5rem;
+      padding: 0.5rem 1rem;
       border: 1px solid #8b5cf6;
-      border-radius: 0.25rem;
-      font-size: 0.75rem;
-      font-weight: 500;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+      font-weight: 600;
       background: transparent;
       white-space: nowrap;
+      letter-spacing: 0.05em;
     }
 
     :global(.dark) .tag-display {
