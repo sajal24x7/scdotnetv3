@@ -5,25 +5,27 @@
   <!-- Date formatting template -->
   <xsl:template name="format-date">
     <xsl:param name="date-string"/>
-    <xsl:variable name="year" select="substring($date-string, 1, 4)"/>
-    <xsl:variable name="month" select="substring($date-string, 6, 2)"/>
-    <xsl:variable name="day" select="substring($date-string, 9, 2)"/>
-    <xsl:variable name="time" select="substring($date-string, 12, 5)"/>
+    
+    <!-- Parse RFC 2822 format: "Mon, 08 Sep 2025 17:52:00 GMT" -->
+    <xsl:variable name="day" select="substring($date-string, 6, 2)"/>
+    <xsl:variable name="month-str" select="substring($date-string, 9, 3)"/>
+    <xsl:variable name="year" select="substring($date-string, 13, 4)"/>
+    <xsl:variable name="time" select="substring($date-string, 18, 5)"/>
     
     <xsl:variable name="month-name">
       <xsl:choose>
-        <xsl:when test="$month = '01'">January</xsl:when>
-        <xsl:when test="$month = '02'">February</xsl:when>
-        <xsl:when test="$month = '03'">March</xsl:when>
-        <xsl:when test="$month = '04'">April</xsl:when>
-        <xsl:when test="$month = '05'">May</xsl:when>
-        <xsl:when test="$month = '06'">June</xsl:when>
-        <xsl:when test="$month = '07'">July</xsl:when>
-        <xsl:when test="$month = '08'">August</xsl:when>
-        <xsl:when test="$month = '09'">September</xsl:when>
-        <xsl:when test="$month = '10'">October</xsl:when>
-        <xsl:when test="$month = '11'">November</xsl:when>
-        <xsl:when test="$month = '12'">December</xsl:when>
+        <xsl:when test="$month-str = 'Jan'">January</xsl:when>
+        <xsl:when test="$month-str = 'Feb'">February</xsl:when>
+        <xsl:when test="$month-str = 'Mar'">March</xsl:when>
+        <xsl:when test="$month-str = 'Apr'">April</xsl:when>
+        <xsl:when test="$month-str = 'May'">May</xsl:when>
+        <xsl:when test="$month-str = 'Jun'">June</xsl:when>
+        <xsl:when test="$month-str = 'Jul'">July</xsl:when>
+        <xsl:when test="$month-str = 'Aug'">August</xsl:when>
+        <xsl:when test="$month-str = 'Sep'">September</xsl:when>
+        <xsl:when test="$month-str = 'Oct'">October</xsl:when>
+        <xsl:when test="$month-str = 'Nov'">November</xsl:when>
+        <xsl:when test="$month-str = 'Dec'">December</xsl:when>
       </xsl:choose>
     </xsl:variable>
     
