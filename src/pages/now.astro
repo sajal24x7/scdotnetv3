@@ -122,24 +122,7 @@ const renderedPosts = activeNowPosts.map(post => ({
   }
 
   /* Ensure links are properly styled */
-  :global(.prose a) {
-    color: #3b82f6;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  :global(.prose a:hover) {
-    color: #2563eb;
-    text-decoration: underline;
-  }
-
-  :global(.dark .prose a) {
-    color: #60a5fa;
-  }
-
-  :global(.dark .prose a:hover) {
-    color: #93c5fd;
-  }
+  /* Prose links now use global styling */
 
   /* Additional prose styles for better markdown rendering */
   :global(.prose h1),

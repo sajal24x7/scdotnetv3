@@ -46,6 +46,14 @@ const { title, description, currentPage, pageWrapper = {} } = Astro.props;
 		
 		<!-- Random link underline color script -->
 		<script is:inline src="/random-link-colors.js"></script>
+		<script is:inline>
+			// Ensure random colors are applied even if the main script loads late
+			setTimeout(() => {
+				if (typeof window !== 'undefined' && window.randomLinkColors) {
+					window.randomLinkColors();
+				}
+			}, 100);
+		</script>
 		
 		<!-- Theme Script (to avoid FOUC - Flash of Unstyled Content) -->
 		<script is:inline>

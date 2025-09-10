@@ -207,15 +207,8 @@ const isMicroContent = (category: string) => category === 'micro';
 
 
   .stream-date-link {
-    text-decoration: none;
-    transition: all 0.2s ease;
-    color: #3b82f6;
+    /* Date links now use global styling */
     font-weight: 500;
-  }
-
-  .stream-date-link:hover {
-    color: #2563eb;
-    text-decoration: underline;
   }
 
   .stream-date {
@@ -223,14 +216,6 @@ const isMicroContent = (category: string) => category === 'micro';
     color: inherit;
     font-family: monospace;
     font-size: 0.875rem;
-  }
-
-  :global(.dark) .stream-date-link {
-    color: #60a5fa;
-  }
-
-  :global(.dark) .stream-date-link:hover {
-    color: #93c5fd;
   }
 
   .stream-tags {
@@ -271,22 +256,5 @@ const isMicroContent = (category: string) => category === 'micro';
     margin-bottom: 0.75em;
   }
 
-  :global(.prose a) {
-    color: #3b82f6;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  :global(.prose a:hover) {
-    color: #2563eb;
-    text-decoration: underline;
-  }
-
-  :global(.dark .prose a) {
-    color: #60a5fa;
-  }
-
-  :global(.dark .prose a:hover) {
-    color: #93c5fd;
-  }
+  /* Prose links now use global styling */
 </style>

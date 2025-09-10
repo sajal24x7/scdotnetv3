@@ -77,18 +77,30 @@ hr {
 
 /* Basic links styling - simplified approach */
 a {
-  color: inherit;
+  color: inherit !important;
   text-decoration: underline;
-  text-decoration-color: var(--random-link-color);
+  text-decoration-color: var(--random-link-color, #0066cc);
   text-decoration-thickness: 0.15em;
   text-underline-offset: 0.2em;
-  transition: text-decoration-color 0.3s ease;
+  transition: text-decoration-color 0.3s ease, filter 0.2s ease;
 }
 
-/* Hover effect - change underline color */
+/* Ensure links have underlines even before random colors are applied */
+a:not(.no-underline):not(.nav-area a):not(header a):not(footer a) {
+  text-decoration: underline !important;
+}
+
+/* Hover effect - brighten the link */
 a:hover {
-  text-decoration-color: var(--random-link-color);
   filter: brightness(1.2);
+}
+
+/* Ensure random underline class works */
+a.random-underline {
+  text-decoration: underline !important;
+  text-decoration-color: var(--random-link-color) !important;
+  text-decoration-thickness: 0.15em !important;
+  text-underline-offset: 0.2em !important;
 }
 
 /* Smooth hover effects for headings */
