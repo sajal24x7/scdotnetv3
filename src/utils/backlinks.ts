@@ -38,16 +38,17 @@ export async function findBacklinks(currentPostSlug: string, currentPostTitle: s
       
       // Check if this post links to the current post
       // Look for various link patterns that might reference the current post
+      const escapedSlug = currentPostSlug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const linkPatterns = [
         // Direct slug references
-        new RegExp(`\\[([^\\]]+)\\]\\(/${currentPostSlug}/\\)`, 'gi'),
-        new RegExp(`\\[([^\\]]+)\\]\\(/${currentPostSlug}\\)`, 'gi'),
+        new RegExp(`\\[([^\\]]+)\\]\\(/${escapedSlug}/\\)`, 'gi'),
+        new RegExp(`\\[([^\\]]+)\\]\\(/${escapedSlug}\\)`, 'gi'),
         // Title references in markdown links
-        new RegExp(`\\[([^\\]]+)\\]\\([^)]*${currentPostSlug}[^)]*\\)`, 'gi'),
+        new RegExp(`\\[([^\\]]+)\\]\\([^)]*${escapedSlug}[^)]*\\)`, 'gi'),
         // Plain text references to the title (case insensitive)
         new RegExp(`\\b${currentPostTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi'),
         // References to the slug in plain text
-        new RegExp(`\\b${currentPostSlug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi'),
+        new RegExp(`\\b${escapedSlug}\\b`, 'gi'),
       ];
       
       let hasReference = false;
@@ -103,16 +104,17 @@ export async function findBacklinksComprehensive(currentPostSlug: string, curren
       
       // Check if this post links to the current post
       // Look for various link patterns that might reference the current post
+      const escapedSlug = currentPostSlug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const linkPatterns = [
         // Direct slug references in markdown links
-        new RegExp(`\\[([^\\]]+)\\]\\(/${currentPostSlug}/\\)`, 'gi'),
-        new RegExp(`\\[([^\\]]+)\\]\\(/${currentPostSlug}\\)`, 'gi'),
+        new RegExp(`\\[([^\\]]+)\\]\\(/${escapedSlug}/\\)`, 'gi'),
+        new RegExp(`\\[([^\\]]+)\\]\\(/${escapedSlug}\\)`, 'gi'),
         // Title references in markdown links
-        new RegExp(`\\[([^\\]]+)\\]\\([^)]*${currentPostSlug}[^)]*\\)`, 'gi'),
+        new RegExp(`\\[([^\\]]+)\\]\\([^)]*${escapedSlug}[^)]*\\)`, 'gi'),
         // Plain text references to the title (case insensitive)
         new RegExp(`\\b${currentPostTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi'),
         // References to the slug in plain text
-        new RegExp(`\\b${currentPostSlug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi'),
+        new RegExp(`\\b${escapedSlug}\\b`, 'gi'),
       ];
       
       let hasReference = false;
