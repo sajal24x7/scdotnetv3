@@ -31,6 +31,7 @@ function applyRandomColors() {
     link.style.setProperty('--random-link-color', randomColor);
     link.classList.add('random-underline');
     console.log('Applied color', randomColor, 'to link:', link.textContent?.substring(0, 30));
+    console.log('Link computed style:', window.getComputedStyle(link).textDecorationColor);
   });
 }
 
