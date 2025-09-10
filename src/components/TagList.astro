@@ -116,67 +116,24 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
 
   .tagged-with-item {
     display: inline-block;
-    color: #8b5cf6;
-    text-decoration: none;
     padding: 0.25rem 0.5rem;
-    border: 1px solid #8b5cf6;
     border-radius: 0.25rem;
     font-size: 0.75rem;
     font-weight: 500;
-    transition: all 0.2s ease;
-    background: transparent;
     white-space: nowrap;
-  }
-
-  .tagged-with-item:hover {
-    color: #7c3aed;
-    border-color: #7c3aed;
-    background: rgba(139, 92, 246, 0.05);
-  }
-
-  :global(.dark) .tagged-with-item {
-    color: #a78bfa;
-    border-color: #a78bfa;
-  }
-
-  :global(.dark) .tagged-with-item:hover {
-    color: #c4b5fd;
-    border-color: #c4b5fd;
-    background: rgba(167, 139, 250, 0.1);
+    /* Color, border, and hover styles now handled by global CSS */
   }
 
   .show-more-btn,
   .show-less-btn {
     background: none;
-    border: 1px solid #8b5cf6;
-    color: #8b5cf6;
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
     font-size: 0.75rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s ease;
     white-space: nowrap;
-  }
-
-  .show-more-btn:hover,
-  .show-less-btn:hover {
-    color: #7c3aed;
-    border-color: #7c3aed;
-    background: rgba(139, 92, 246, 0.05);
-  }
-
-  :global(.dark) .show-more-btn,
-  :global(.dark) .show-less-btn {
-    color: #a78bfa;
-    border-color: #a78bfa;
-  }
-
-  :global(.dark) .show-more-btn:hover,
-  :global(.dark) .show-less-btn:hover {
-    color: #c4b5fd;
-    border-color: #c4b5fd;
-    background: rgba(167, 139, 250, 0.1);
+    /* Color, border, and hover styles now handled by global CSS */
   }
 
   .hidden-tags {

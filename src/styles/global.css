@@ -86,7 +86,7 @@ a {
 }
 
 /* Ensure links have underlines even before random colors are applied */
-a:not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(.tag):not(.category-display) {
+a:not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(.tag):not(.category-display):not(.tagged-with-item):not(.show-more-btn):not(.show-less-btn):not(.tag-item) {
   text-decoration: underline !important;
 }
 
@@ -180,7 +180,11 @@ a.no-underline {
 }
 
 /* Override for tag elements - restore original purple styling */
-.tag {
+.tag,
+.tagged-with-item,
+.show-more-btn,
+.show-less-btn,
+.tag-item {
   color: #8b5cf6 !important;
   text-decoration: none !important;
   border: 1px solid #8b5cf6 !important;
@@ -188,21 +192,47 @@ a.no-underline {
   transition: all 0.2s ease !important;
 }
 
-.tag:hover {
+.tag:hover,
+.tagged-with-item:hover,
+.show-more-btn:hover,
+.show-less-btn:hover,
+.tag-item:hover {
   color: #7c3aed !important;
   border-color: #7c3aed !important;
   background: rgba(139, 92, 246, 0.05) !important;
 }
 
-:global(.dark) .tag {
+:global(.dark) .tag,
+:global(.dark) .tagged-with-item,
+:global(.dark) .show-more-btn,
+:global(.dark) .show-less-btn,
+:global(.dark) .tag-item {
   color: #a78bfa !important;
   border-color: #a78bfa !important;
 }
 
-:global(.dark) .tag:hover {
+:global(.dark) .tag:hover,
+:global(.dark) .tagged-with-item:hover,
+:global(.dark) .show-more-btn:hover,
+:global(.dark) .show-less-btn:hover,
+:global(.dark) .tag-item:hover {
   color: #c4b5fd !important;
   border-color: #c4b5fd !important;
   background: rgba(167, 139, 250, 0.1) !important;
+}
+
+/* Active state for tag items */
+.tag-item.active {
+  color: #7c3aed !important;
+  border-color: #7c3aed !important;
+  background: rgba(139, 92, 246, 0.1) !important;
+  font-weight: 500 !important;
+}
+
+:global(.dark) .tag-item.active {
+  color: #c4b5fd !important;
+  border-color: #c4b5fd !important;
+  background: rgba(167, 139, 250, 0.15) !important;
 }
 
 /* Override for category display elements - restore original amber styling */

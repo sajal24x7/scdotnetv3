@@ -23,7 +23,7 @@ const boldColors = [
 
 // Apply random color to all links immediately
 function applyRandomColors() {
-  const links = document.querySelectorAll('a:not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(.tag):not(.category-display)');
+  const links = document.querySelectorAll('a:not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(.tag):not(.category-display):not(.tagged-with-item):not(.show-more-btn):not(.show-less-btn):not(.tag-item)');
   console.log('Applying random colors to', links.length, 'links');
   
   links.forEach(link => {

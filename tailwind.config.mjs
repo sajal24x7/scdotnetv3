@@ -43,7 +43,7 @@ export default {
                 filter: 'brightness(1.2)',
               },
               // Exclude tags and categories from general link styling
-              '&.tag, &.category-display': {
+              '&.tag, &.category-display, &.tagged-with-item, &.show-more-btn, &.show-less-btn, &.tag-item': {
                 color: 'inherit !important',
                 textDecoration: 'none !important',
               },
@@ -101,7 +101,7 @@ export default {
                 filter: 'brightness(1.2)',
               },
               // Exclude tags and categories from general link styling
-              '&.tag, &.category-display': {
+              '&.tag, &.category-display, &.tagged-with-item, &.show-more-btn, &.show-less-btn, &.tag-item': {
                 color: 'inherit !important',
                 textDecoration: 'none !important',
               },
