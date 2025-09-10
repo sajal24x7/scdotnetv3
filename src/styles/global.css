@@ -95,10 +95,9 @@ a:hover {
   filter: brightness(1.2);
 }
 
-/* Ensure random underline class works - this overrides the default blue */
+/* Random underline class - color is set directly by JavaScript */
 a.random-underline {
   text-decoration: underline !important;
-  text-decoration-color: var(--random-link-color) !important;
   text-decoration-thickness: 0.15em !important;
   text-underline-offset: 0.2em !important;
 }
@@ -114,10 +113,9 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
 
 /* Random colored underline effect - removed duplicate, handled above */
 
-/* Special links that have icons/SVGs */
+/* Special links that have icons/SVGs - color set by JavaScript */
 a.icon-link.random-underline span {
   text-decoration: underline;
-  text-decoration-color: var(--random-link-color);
 }
 
 /* Make sure underlines render properly across browsers */
@@ -128,9 +126,9 @@ a.icon-link.random-underline span {
 }
 
 /* Fallback for browsers that don't support modern text decoration properties */
-@supports not (text-decoration-color: var(--random-link-color)) {
+@supports not (text-decoration-color: #0066cc) {
   a.random-underline {
-    border-bottom: 2px solid var(--random-link-color);
+    border-bottom: 2px solid;
     text-decoration: none;
     padding-bottom: 2px;
   }

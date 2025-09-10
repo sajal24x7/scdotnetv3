@@ -35,7 +35,7 @@ export default {
             a: {
               color: 'inherit !important',
               textDecoration: 'underline',
-              textDecorationColor: 'var(--random-link-color, #0066cc)',
+              textDecorationColor: '#0066cc', // Default blue, overridden by JavaScript
               textDecorationThickness: '0.15em',
               textUnderlineOffset: '0.2em',
               transition: 'text-decoration-color 0.3s ease, filter 0.2s ease',
@@ -93,7 +93,7 @@ export default {
             a: {
               color: 'inherit !important',
               textDecoration: 'underline',
-              textDecorationColor: 'var(--random-link-color, #0066cc)',
+              textDecorationColor: '#0066cc', // Default blue, overridden by JavaScript
               textDecorationThickness: '0.15em',
               textUnderlineOffset: '0.2em',
               transition: 'text-decoration-color 0.3s ease, filter 0.2s ease',
