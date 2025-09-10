@@ -42,6 +42,11 @@ export default {
               '&:hover': {
                 filter: 'brightness(1.2)',
               },
+              // Exclude tags and categories from general link styling
+              '&.tag, &.category-display': {
+                color: 'inherit !important',
+                textDecoration: 'none !important',
+              },
             },
             h1: {
               color: theme('colors.textPrimary'),
@@ -94,6 +99,11 @@ export default {
               transition: 'text-decoration-color 0.3s ease, filter 0.2s ease',
               '&:hover': {
                 filter: 'brightness(1.2)',
+              },
+              // Exclude tags and categories from general link styling
+              '&.tag, &.category-display': {
+                color: 'inherit !important',
+                textDecoration: 'none !important',
               },
             },
             h1: {

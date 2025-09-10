@@ -86,7 +86,7 @@ a {
 }
 
 /* Ensure links have underlines even before random colors are applied */
-a:not(.no-underline):not(.nav-area a):not(header a):not(footer a) {
+a:not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(.tag):not(.category-display) {
   text-decoration: underline !important;
 }
 
@@ -177,6 +177,56 @@ footer a,
 /* Disable underlines for specific link types */
 a.no-underline {
   text-decoration: none !important;
+}
+
+/* Override for tag elements - restore original purple styling */
+.tag {
+  color: #8b5cf6 !important;
+  text-decoration: none !important;
+  border: 1px solid #8b5cf6 !important;
+  background: transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+.tag:hover {
+  color: #7c3aed !important;
+  border-color: #7c3aed !important;
+  background: rgba(139, 92, 246, 0.05) !important;
+}
+
+:global(.dark) .tag {
+  color: #a78bfa !important;
+  border-color: #a78bfa !important;
+}
+
+:global(.dark) .tag:hover {
+  color: #c4b5fd !important;
+  border-color: #c4b5fd !important;
+  background: rgba(167, 139, 250, 0.1) !important;
+}
+
+/* Override for category display elements - restore original amber styling */
+.category-display {
+  color: #ca8a04 !important;
+  text-decoration: none !important;
+  border: 1px solid #eab308 !important;
+  background: transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+.category-display:hover {
+  background: rgba(234, 179, 8, 0.05) !important;
+  border-color: #ca8a04 !important;
+}
+
+:global(.dark) .category-display {
+  color: #fbbf24 !important;
+  border-color: #f59e0b !important;
+}
+
+:global(.dark) .category-display:hover {
+  background: rgba(245, 158, 11, 0.1) !important;
+  border-color: #f59e0b !important;
 }
 
 /* Disable underlines on mobile devices for no-hover class */
