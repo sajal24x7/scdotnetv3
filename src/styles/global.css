@@ -75,12 +75,20 @@ hr {
   margin: 1.5rem 0;
 }
 
-/* Basic links styling */
+/* Basic links styling - simplified approach */
 a {
-  color: var(--link-color);
-  text-decoration-thickness: 0.1em;
-  text-underline-offset: 0.15em;
-  transition: text-decoration-color 0.3s ease, color 0.3s ease, font-weight 0.2s ease;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--random-link-color);
+  text-decoration-thickness: 0.15em;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 0.3s ease;
+}
+
+/* Hover effect - change underline color */
+a:hover {
+  text-decoration-color: var(--random-link-color);
+  filter: brightness(1.2);
 }
 
 /* Smooth hover effects for headings */
@@ -132,6 +140,34 @@ a.no-hover:hover {
 }
 
 /* Disable hover effects on mobile devices for no-hover class */
+@media (hover: none) {
+  a.no-hover {
+    text-decoration: none !important;
+  }
+}
+
+/* Override classes for specific areas */
+/* Header and footer areas - no underlines */
+header a,
+footer a,
+.nav-area a {
+  text-decoration: none !important;
+}
+
+/* Navigation active state - persistent underline only on active items */
+.nav-active {
+  text-decoration: underline !important;
+  text-decoration-color: var(--random-link-color) !important;
+  text-decoration-thickness: 0.15em !important;
+  text-underline-offset: 0.2em !important;
+}
+
+/* Disable underlines for specific link types */
+a.no-underline {
+  text-decoration: none !important;
+}
+
+/* Disable underlines on mobile devices for no-hover class */
 @media (hover: none) {
   a.no-hover {
     text-decoration: none !important;

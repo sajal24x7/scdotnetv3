@@ -33,9 +33,14 @@ export default {
             lineHeight: '1.6',
             fontSize: 'var(--text-normal)',
             a: {
-              color: theme('colors.accent'),
+              color: 'inherit',
+              textDecoration: 'underline',
+              textDecorationColor: 'var(--random-link-color)',
+              textDecorationThickness: '0.15em',
+              textUnderlineOffset: '0.2em',
+              transition: 'text-decoration-color 0.3s ease',
               '&:hover': {
-                color: theme('colors.accent'),
+                filter: 'brightness(1.2)',
               },
             },
             h1: {
@@ -81,9 +86,14 @@ export default {
             color: theme('colors.textPrimaryDark'),
             fontFamily: theme('fontFamily.sans').join(', '),
             a: {
-              color: theme('colors.accent'),
+              color: 'inherit',
+              textDecoration: 'underline',
+              textDecorationColor: 'var(--random-link-color)',
+              textDecorationThickness: '0.15em',
+              textUnderlineOffset: '0.2em',
+              transition: 'text-decoration-color 0.3s ease',
               '&:hover': {
-                color: theme('colors.accent'),
+                filter: 'brightness(1.2)',
               },
             },
             h1: {

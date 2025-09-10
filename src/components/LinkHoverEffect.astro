@@ -8,43 +8,8 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
 ---
 
 <style>
-  /* Permanent link colors for internal links (blue) */
-  :global(.prose a[data-internal]) {
-    color: #3b82f6 !important;
-    text-decoration: none;
-  }
-
-  :global(.prose a[data-internal]:hover) {
-    color: #2563eb !important;
-    text-decoration: underline;
-  }
-
-  :global(.dark .prose a[data-internal]) {
-    color: #60a5fa !important;
-  }
-
-  :global(.dark .prose a[data-internal]:hover) {
-    color: #93c5fd !important;
-  }
-
-  /* Permanent link colors for external links (purple) */
-  :global(.prose a[data-external]) {
-    color: #8b5cf6 !important;
-    text-decoration: none;
-  }
-
-  :global(.prose a[data-external]:hover) {
-    color: #7c3aed !important;
-    text-decoration: underline;
-  }
-
-  :global(.dark .prose a[data-external]) {
-    color: #a78bfa !important;
-  }
-
-  :global(.dark .prose a[data-external]:hover) {
-    color: #c4b5fd !important;
-  }
+  /* Links now use global styling with persistent underlines */
+  /* Internal and external links inherit text color and use random underline colors */
 
   /* Hover tooltip styles */
   .hover-tooltip {

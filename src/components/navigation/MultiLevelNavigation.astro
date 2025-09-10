@@ -203,7 +203,7 @@ const activeSubsection = getActiveSubsection();
         </div>
         
         <!-- Primary Navigation Row (moved between name and socials) -->
-        <nav class="primary-nav-row py-0.5">
+        <nav class="primary-nav-row py-0.5 nav-area">
           {mainNavItems.map((item, index) => (
             <a
               href={item.href}
@@ -211,7 +211,7 @@ const activeSubsection = getActiveSubsection();
                 index < mainNavItems.length - 1 ? 'border-r' : ''
               } border-b ${
                 isMainActive(item.key)
-                  ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white border-gray-900 dark:border-white'
+                  ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white border-gray-900 dark:border-white nav-active'
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50 border-gray-600 dark:border-gray-400'
               }`}
             >
@@ -227,7 +227,7 @@ const activeSubsection = getActiveSubsection();
 
         <!-- Secondary Navigation Row (persistent for About, Garden and Stream sections) -->
         {activeMainSection && (activeMainSection === 'about' || activeMainSection === 'garden' || activeMainSection === 'stream') && (
-          <nav class="secondary-nav-row py-0.5 secondary-in-grid">
+          <nav class="secondary-nav-row py-0.5 secondary-in-grid nav-area">
             {secondaryNavItems[activeMainSection].map((item, index) => (
               <a
                 href={item.href}
@@ -235,7 +235,7 @@ const activeSubsection = getActiveSubsection();
                   index < secondaryNavItems[activeMainSection].length - 1 ? 'border-r' : ''
                 } border-b ${
                   (isActive(item.href) || (activeSubsection && activeSubsection === item.href))
-                    ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-gray-900 dark:border-white'
+                    ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-gray-900 dark:border-white nav-active'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50 border-gray-600 dark:border-gray-400'
                 }`}
               >
