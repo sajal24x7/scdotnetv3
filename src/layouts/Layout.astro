@@ -132,6 +132,47 @@ const { title, description, currentPage, pageWrapper = {} } = Astro.props;
 	body {
 		background-size: cover;
 		background-attachment: fixed;
+		/* Fallback gradient background in case JavaScript doesn't load */
+		background: linear-gradient(135deg, rgba(255, 200, 200, 1) 0%, rgba(255, 210, 180, 0.8) 50%, rgba(255, 230, 210, 0.9) 100%) !important;
+	}
+	
+	.dark body {
+		background: linear-gradient(135deg, rgba(80, 50, 50, 1) 0%, rgba(90, 60, 40, 0.8) 50%, rgba(100, 70, 50, 0.9) 100%) !important;
+	}
+	
+	/* Override any Tailwind background classes on body */
+	body.bg-white,
+	body.bg-gray-50,
+	body.bg-gray-100,
+	body.bg-slate-50,
+	body.bg-zinc-50,
+	body.bg-neutral-50,
+	body.bg-stone-50,
+	body.bg-background {
+		background: linear-gradient(135deg, rgba(255, 200, 200, 1) 0%, rgba(255, 210, 180, 0.8) 50%, rgba(255, 230, 210, 0.9) 100%) !important;
+	}
+	
+	.dark body.bg-gray-800,
+	.dark body.bg-gray-900,
+	.dark body.bg-slate-800,
+	.dark body.bg-slate-900,
+	.dark body.bg-zinc-800,
+	.dark body.bg-zinc-900,
+	.dark body.bg-neutral-800,
+	.dark body.bg-neutral-900,
+	.dark body.bg-stone-800,
+	.dark body.bg-stone-900,
+	.dark body.bg-background {
+		background: linear-gradient(135deg, rgba(80, 50, 50, 1) 0%, rgba(90, 60, 40, 0.8) 50%, rgba(100, 70, 50, 0.9) 100%) !important;
+	}
+	
+	/* Universal body background override - highest specificity */
+	html body {
+		background: linear-gradient(135deg, rgba(255, 200, 200, 1) 0%, rgba(255, 210, 180, 0.8) 50%, rgba(255, 230, 210, 0.9) 100%) !important;
+	}
+	
+	.dark html body {
+		background: linear-gradient(135deg, rgba(80, 50, 50, 1) 0%, rgba(90, 60, 40, 0.8) 50%, rgba(100, 70, 50, 0.9) 100%) !important;
 	}
 	
 	/* Make content card backgrounds semi-transparent with gradient */

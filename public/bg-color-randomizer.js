@@ -1,5 +1,47 @@
 // bg-color-randomizer.js - Generates random gradient backgrounds on page load
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('Background color randomizer loaded');
+  
+  // Add a small delay to ensure all styles are loaded
+  setTimeout(() => {
+    applyRandomGradient();
+  }, 100);
+  
+  // Watch for any changes to the body element and reapply gradients
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        console.log('Body class changed, reapplying gradient');
+        setTimeout(() => {
+          applyRandomGradient();
+        }, 50);
+      }
+    });
+  });
+  
+  const body = document.querySelector('body');
+  if (body) {
+    observer.observe(body, { attributes: true, attributeFilter: ['class'] });
+  }
+});
+
+// Also run on window load to ensure it works even if DOMContentLoaded already fired
+window.addEventListener('load', function() {
+  console.log('Window loaded, applying gradient');
+  setTimeout(() => {
+    applyRandomGradient();
+  }, 200);
+});
+
+function applyRandomGradient() {
+  // Add a style tag to override any conflicting styles
+  let styleTag = document.getElementById('gradient-override');
+  if (!styleTag) {
+    styleTag = document.createElement('style');
+    styleTag.id = 'gradient-override';
+    document.head.appendChild(styleTag);
+  }
+  
   // Define an array of gradient definitions (each containing 2-3 colors for smooth gradients)
   const gradientDefinitions = [
     {
@@ -56,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Randomly select a gradient definition
   const selectedGradient = gradientDefinitions[Math.floor(Math.random() * gradientDefinitions.length)];
+  console.log('Selected gradient:', selectedGradient.name);
   
   // Set the CSS variable for background color (using first color for compatibility)
   document.documentElement.style.setProperty('--color-bg', selectedGradient.light[0]);
@@ -73,7 +116,20 @@ document.addEventListener('DOMContentLoaded', function() {
       applyGradientBackground(selectedGradient.light, selectedGradient.dark);
     }
   });
-});
+  
+  // Inject CSS to override any conflicting styles
+  const lightGradient = `linear-gradient(135deg, rgba(${selectedGradient.light[0]}, 1) 0%, rgba(${selectedGradient.light[1]}, 0.8) 50%, rgba(${selectedGradient.light[2]}, 0.9) 100%)`;
+  const darkGradient = `linear-gradient(135deg, rgba(${selectedGradient.dark[0]}, 1) 0%, rgba(${selectedGradient.dark[1]}, 0.8) 50%, rgba(${selectedGradient.dark[2]}, 0.9) 100%)`;
+  
+  styleTag.textContent = `
+    html body {
+      background: ${lightGradient} !important;
+    }
+    .dark html body {
+      background: ${darkGradient} !important;
+    }
+  `;
+}
 
 // Function to apply a gradient background using gradient definitions
 function applyGradientBackground(lightColors, darkColors) {
@@ -96,21 +152,33 @@ function applyGradientBackground(lightColors, darkColors) {
     )
   `;
   
-  // Apply gradient to the body element
+  console.log('Applying gradient - Light mode:', lightGradient);
+  console.log('Applying gradient - Dark mode:', darkGradient);
+  
+  // Apply gradient to the body element with !important to override any other styles
   const body = document.querySelector('body');
   if (body) {
+    // Remove any existing background classes that might conflict
+    body.classList.remove('bg-white', 'bg-gray-50', 'bg-gray-100', 'bg-slate-50', 'bg-zinc-50', 'bg-neutral-50', 'bg-stone-50', 'bg-gray-800', 'bg-gray-900', 'bg-slate-800', 'bg-slate-900', 'bg-zinc-800', 'bg-zinc-900', 'bg-neutral-800', 'bg-neutral-900', 'bg-stone-800', 'bg-stone-900', 'bg-background');
+    
     if (document.documentElement.classList.contains('dark')) {
-      body.style.background = darkGradient;
+      body.style.setProperty('background', darkGradient, 'important');
     } else {
-      body.style.background = lightGradient;
+      body.style.setProperty('background', lightGradient, 'important');
     }
+    
+    console.log('Applied gradient to body element');
+  } else {
+    console.error('Body element not found');
   }
   
   // Also apply a subtle texture overlay for depth
   if (body) {
-    body.style.backgroundImage = document.documentElement.classList.contains('dark') 
+    const backgroundImage = document.documentElement.classList.contains('dark') 
       ? `${darkGradient}, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.03' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E")`
       : `${lightGradient}, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.02' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E")`;
-    body.style.backgroundBlendMode = 'normal, overlay';
+    
+    body.style.setProperty('background-image', backgroundImage, 'important');
+    body.style.setProperty('background-blend-mode', 'normal, overlay', 'important');
   }
 } 
