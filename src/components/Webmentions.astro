@@ -1,0 +1,285 @@
+---
+// Webmentions component to display webmentions from webmention.io
+interface Props {
+  url: string;
+  className?: string;
+}
+
+const { url, className = '' } = Astro.props;
+---
+
+<div class={`webmentions ${className}`}>
+  <h3 class="webmentions-title">Webmentions</h3>
+  <div id="webmentions-container" class="webmentions-container">
+    <div class="webmentions-loading">Loading webmentions...</div>
+  </div>
+</div>
+
+<script>
+  // Webmention.io API endpoint
+  const WEBMENTION_IO_API = 'https://webmention.io/api/mentions.jf2';
+  
+  // Get the current page URL
+  const currentUrl = window.location.href;
+  
+  // Fetch webmentions from webmention.io
+  async function fetchWebmentions() {
+    try {
+      const response = await fetch(`${WEBMENTION_IO_API}?target=${encodeURIComponent(currentUrl)}`);
+      const data = await response.json();
+      
+      if (data.children && data.children.length > 0) {
+        displayWebmentions(data.children);
+      } else {
+        showNoWebmentions();
+      }
+    } catch (error) {
+      console.error('Error fetching webmentions:', error);
+      showError();
+    }
+  }
+  
+  // Display webmentions
+  function displayWebmentions(webmentions) {
+    const container = document.getElementById('webmentions-container');
+    if (!container) return;
+    
+    // Group webmentions by type
+    const likes = webmentions.filter(wm => wm['wm-property'] === 'like-of');
+    const reposts = webmentions.filter(wm => wm['wm-property'] === 'repost-of');
+    const replies = webmentions.filter(wm => wm['wm-property'] === 'in-reply-to');
+    const mentions = webmentions.filter(wm => wm['wm-property'] === 'mention-of');
+    
+    let html = '';
+    
+    // Display likes
+    if (likes.length > 0) {
+      html += `<div class="webmentions-section">
+        <h4 class="webmentions-section-title">❤️ ${likes.length} ${likes.length === 1 ? 'like' : 'likes'}</h4>
+        <div class="webmentions-list">`;
+      likes.forEach(like => {
+        html += createWebmentionHTML(like, 'like');
+      });
+      html += '</div></div>';
+    }
+    
+    // Display reposts
+    if (reposts.length > 0) {
+      html += `<div class="webmentions-section">
+        <h4 class="webmentions-section-title">🔄 ${reposts.length} ${reposts.length === 1 ? 'repost' : 'reposts'}</h4>
+        <div class="webmentions-list">`;
+      reposts.forEach(repost => {
+        html += createWebmentionHTML(repost, 'repost');
+      });
+      html += '</div></div>';
+    }
+    
+    // Display replies
+    if (replies.length > 0) {
+      html += `<div class="webmentions-section">
+        <h4 class="webmentions-section-title">💬 ${replies.length} ${replies.length === 1 ? 'reply' : 'replies'}</h4>
+        <div class="webmentions-list">`;
+      replies.forEach(reply => {
+        html += createWebmentionHTML(reply, 'reply');
+      });
+      html += '</div></div>';
+    }
+    
+    // Display mentions
+    if (mentions.length > 0) {
+      html += `<div class="webmentions-section">
+        <h4 class="webmentions-section-title">📝 ${mentions.length} ${mentions.length === 1 ? 'mention' : 'mentions'}</h4>
+        <div class="webmentions-list">`;
+      mentions.forEach(mention => {
+        html += createWebmentionHTML(mention, 'mention');
+      });
+      html += '</div></div>';
+    }
+    
+    container.innerHTML = html;
+  }
+  
+  // Create HTML for individual webmention
+  function createWebmentionHTML(webmention, type) {
+    const author = webmention.author || {};
+    const name = author.name || 'Anonymous';
+    const url = author.url || webmention.url || '#';
+    const photo = author.photo || '/logo/logo-square-v2.svg';
+    const published = webmention.published ? new Date(webmention.published).toLocaleDateString() : '';
+    const content = webmention.content ? webmention.content.text || webmention.content.html : '';
+    
+    return `
+      <div class="webmention webmention-${type}">
+        <div class="webmention-avatar">
+          <img src="${photo}" alt="${name}" loading="lazy" />
+        </div>
+        <div class="webmention-content">
+          <div class="webmention-header">
+            <a href="${url}" class="webmention-author" target="_blank" rel="noopener noreferrer">${name}</a>
+            ${published ? `<span class="webmention-date">${published}</span>` : ''}
+          </div>
+          ${content ? `<div class="webmention-text">${content}</div>` : ''}
+        </div>
+      </div>
+    `;
+  }
+  
+  // Show no webmentions message
+  function showNoWebmentions() {
+    const container = document.getElementById('webmentions-container');
+    if (!container) return;
+    container.innerHTML = '<div class="webmentions-empty">No webmentions yet. Be the first to mention this post!</div>';
+  }
+  
+  // Show error message
+  function showError() {
+    const container = document.getElementById('webmentions-container');
+    if (!container) return;
+    container.innerHTML = '<div class="webmentions-error">Unable to load webmentions at this time.</div>';
+  }
+  
+  // Load webmentions when the page loads
+  document.addEventListener('DOMContentLoaded', fetchWebmentions);
+</script>
+
+<style>
+  .webmentions {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgb(var(--color-border));
+  }
+
+  .webmentions-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgb(var(--color-text-secondary));
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .webmentions-container {
+    min-height: 2rem;
+  }
+
+  .webmentions-loading,
+  .webmentions-empty,
+  .webmentions-error {
+    text-align: center;
+    color: rgb(var(--color-text-secondary));
+    font-style: italic;
+    padding: 1rem;
+  }
+
+  .webmentions-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .webmentions-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .webmentions-section-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgb(var(--color-text-primary));
+    margin-bottom: 0.75rem;
+  }
+
+  .webmentions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .webmention {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background-color: rgb(var(--color-bg-secondary));
+    border: 1px solid rgb(var(--color-border));
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .webmention:hover {
+    border-color: rgb(var(--color-accent));
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .webmention-avatar {
+    flex-shrink: 0;
+  }
+
+  .webmention-avatar img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .webmention-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .webmention-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .webmention-author {
+    font-weight: 600;
+    color: rgb(var(--color-text-primary));
+    text-decoration: none;
+  }
+
+  .webmention-author:hover {
+    color: rgb(var(--color-accent));
+  }
+
+  .webmention-date {
+    font-size: 0.75rem;
+    color: rgb(var(--color-text-secondary));
+  }
+
+  .webmention-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: rgb(var(--color-text-primary));
+  }
+
+  /* Dark mode adjustments */
+  :global(.dark) .webmention {
+    background-color: rgba(var(--color-bg-secondary), 0.7);
+    border-color: rgb(var(--color-border));
+  }
+
+  :global(.dark) .webmention:hover {
+    border-color: rgb(var(--color-accent));
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .webmentions {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+    }
+
+    .webmention {
+      padding: 0.625rem;
+      gap: 0.625rem;
+    }
+
+    .webmention-avatar img {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .webmention-header {
+      flex-wrap: wrap;
+    }
+  }
+</style>

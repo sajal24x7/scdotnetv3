@@ -7,6 +7,8 @@ import { getYearDirectories } from '../utils/content';
 import LinkHoverEffect from '../components/LinkHoverEffect.astro';
 import ProseWrapper from '../components/layout/ProseWrapper.astro';
 import Backlinks from '../components/Backlinks.astro';
+import SyndicationLinks from '../components/SyndicationLinks.astro';
+import Webmentions from '../components/Webmentions.astro';
 import { findBacklinksComprehensive } from '../utils/backlinks';
 
 export async function getStaticPaths() {
@@ -37,6 +39,9 @@ const hasUpdatedDate = 'updatedDate' in entry.data && entry.data.updatedDate;
 // Find backlinks for this post
 const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || '');
 
+// Get canonical URL for microformats
+const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
+
 ---
 
 <Layout 
@@ -45,7 +50,14 @@ const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || ''
   currentPage={`/${category}/${slug}/`}
 >
   <ProseWrapper>
-    <article>
+    <article class="h-entry">
+      <!-- Hidden microformat data -->
+      <a href={canonicalUrl} class="u-url" style="display: none;"></a>
+      <div class="p-author h-card" style="display: none;">
+        <a class="p-name u-url" href="https://sajalchoudhary.net">Sajal Choudhary</a>
+        <a class="u-url" href="https://sajalchoudhary.net">https://sajalchoudhary.net</a>
+      </div>
+      
       <div class="mb-8">
         
         {/* Hero image for all posts */}
@@ -61,7 +73,7 @@ const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || ''
         )}
         
         <div class="text-center">
-          <h1 class="text-3xl md:text-4xl font-bold mb-2">{entry.data?.title ?? ''}</h1>
+          <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{entry.data?.title ?? ''}</h1>
           
           {category === 'nordletter' && 'edition' in entry.data && entry.data.edition && (
             <div class="flex justify-center items-center gap-4 mb-4">
@@ -81,15 +93,15 @@ const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || ''
           {category !== 'nordletter' && (
             <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
               {hasUpdatedDate ? (
-                <>Last updated: <TimeDisplay date={entry.data.updatedDate} category={category} format="detailed" /></>
+                <>Last updated: <time class="dt-updated" datetime={entry.data.updatedDate.toISOString()}><TimeDisplay date={entry.data.updatedDate} category={category} format="detailed" /></time></>
               ) : (
-                <>Published: <TimeDisplay date={entry.data.pubDate} category={category} format="detailed" /></>
+                <>Published: <time class="dt-published" datetime={entry.data.pubDate.toISOString()}><TimeDisplay date={entry.data.pubDate} category={category} format="detailed" /></time></>
               )}
             </p>
           )}
           
           {entry.data?.description && (
-            <p class="text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
+            <p class="p-summary text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
               {entry.data.description}
             </p>
           )}
@@ -111,7 +123,7 @@ const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || ''
         </div>
       </div>
       
-      <div>
+      <div class="e-content">
         <Content />
       </div>
       
@@ -137,6 +149,12 @@ const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || ''
       
       <!-- Backlinks Section -->
       <Backlinks backlinks={backlinks} />
+      
+      <!-- Syndication Links Section -->
+      <SyndicationLinks syndicationUrls={entry.data?.syndicationUrls || []} />
+      
+      <!-- Webmentions Section -->
+      <Webmentions url={canonicalUrl} />
     </article>
   </ProseWrapper>
 </Layout>

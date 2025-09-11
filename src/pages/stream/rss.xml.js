@@ -43,6 +43,9 @@ export async function GET(context) {
         content = item.data.description || '';
       }
       
+      // Create hashtags from tags for social media
+      const hashtags = (item.data.tags || []).map(tag => `#${tag}`).join(' ');
+      
       return {
         link: `/${item.data.category}/${item.slug}/`,
         title: item.data.title || 'Untitled',
@@ -51,10 +54,13 @@ export async function GET(context) {
         pubDate: item.data.pubDate,
         categories: [item.data.category, ...(item.data.tags || [])],
         author: 'sajal@sajalchoudhary.net (Sajal Choudhary)',
-        customData: item.data.image ? `
-          <media:content url="${item.data.image}" medium="image" />
-          <media:thumbnail url="${item.data.image}" />
-        ` : ''
+        customData: `
+          ${item.data.image ? `
+            <media:content url="${item.data.image}" medium="image" />
+            <media:thumbnail url="${item.data.image}" />
+          ` : ''}
+          <syndication:hashtags>${hashtags}</syndication:hashtags>
+        `
       };
     })),
     stylesheet: '/rss-style.xsl',
