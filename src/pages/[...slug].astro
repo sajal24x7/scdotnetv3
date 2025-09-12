@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import BridgyLayout from '../layouts/BridgyLayout.astro';
 import TimeDisplay from '../components/TimeDisplay.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getYearDirectories } from '../utils/content';
@@ -36,6 +37,10 @@ const { Content } = await entry.render();
 
 const hasUpdatedDate = 'updatedDate' in entry.data && entry.data.updatedDate;
 
+// Check if this is a Bridgy request (server-side detection)
+const userAgent = Astro.request.headers.get('user-agent') || '';
+const isBridgy = userAgent.includes('brid.gy') || userAgent.includes('bridgy') || userAgent.includes('Bridgy');
+
 // Find backlinks for this post
 const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || '');
 
@@ -44,11 +49,67 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
 
 ---
 
-<Layout 
-  title={`${entry.data?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
-  description={entry.data?.description} 
-  currentPage={`/${category}/${slug}/`}
->
+{isBridgy ? (
+  <!-- Bridgy-optimized lightweight version -->
+  <BridgyLayout 
+    title={`${entry.data?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
+    description={entry.data?.description} 
+    currentPage={`/${category}/${slug}/`}
+  >
+    <article class="h-entry">
+      <!-- Hidden microformat data for Bridgy -->
+      <a href={canonicalUrl} class="u-url hidden"></a>
+      <div class="p-author h-card hidden">
+        <a class="p-name u-url" href="https://sajalchoudhary.net">Sajal Choudhary</a>
+        <a class="u-url" href="https://sajalchoudhary.net">https://sajalchoudhary.net</a>
+      </div>
+      
+      <!-- Post Title -->
+      <h1 class="p-name">{entry.data?.title ?? ''}</h1>
+      
+      <!-- Post Description -->
+      {entry.data?.description && (
+        <p class="p-summary">{entry.data.description}</p>
+      )}
+      
+      <!-- Tags (if any) -->
+      {'tags' in entry.data && Array.isArray(entry.data.tags) && entry.data.tags.length > 0 && (
+        <div class="tags">
+          {entry.data.tags.map((tag: string) => (
+            <span class="tag">#{tag}</span>
+          ))}
+        </div>
+      )}
+      
+      <!-- Post Content (minimal for Bridgy) -->
+      <div class="e-content">
+        <p><strong>Read the full post:</strong> <a href={canonicalUrl}>{canonicalUrl}</a></p>
+        <p>Published: {entry.data.pubDate.toLocaleDateString()}</p>
+      </div>
+      
+      <!-- Backlinks (simplified for Bridgy) -->
+      {backlinks.length > 0 && (
+        <div class="backlinks">
+          <h3>Related Posts ({backlinks.length})</h3>
+          {backlinks.slice(0, 5).map((backlink) => (
+            <div class="backlink-item">
+              <a href={backlink.slug} class="backlink-link">{backlink.title}</a>
+            </div>
+          ))}
+          {backlinks.length > 5 && (
+            <p><a href={canonicalUrl} class="backlink-link">View all {backlinks.length} related posts</a></p>
+          )}
+        </div>
+      )}
+    </article>
+  </BridgyLayout>
+) : (
+  <!-- Full version for regular users -->
+  <Layout 
+    title={`${entry.data?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
+    description={entry.data?.description} 
+    currentPage={`/${category}/${slug}/`}
+  >
   <ProseWrapper>
     <article class="h-entry">
       <!-- Hidden microformat data -->
@@ -346,3 +407,5 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
   }
 
 </style> 
+
+)}

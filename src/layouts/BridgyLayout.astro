@@ -1,0 +1,72 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+	currentPage: string;
+}
+
+const { title, description, currentPage } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/logo/logo-square-v2.svg" />
+		<title>{title}</title>
+		<meta name="description" content={description || "A personal digital garden and blog"} />
+		
+		<!-- Open Graph / Social Media -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description || "A personal digital garden and blog"} />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content={Astro.url} />
+		
+		<!-- Webmention Discovery -->
+		<link rel="webmention" href="https://webmention.io/sajalchoudhary.net/webmention" />
+		<link rel="pingback" href="https://webmention.io/sajalchoudhary.net/xmlrpc" />
+		
+		<!-- Bridgy-specific meta tags -->
+		<meta name="bridgy-omit" content="true" />
+		<meta name="bridgy-content" content="title,description,backlinks" />
+		
+		<!-- Minimal CSS for Bridgy -->
+		<style>
+			body {
+				font-family: system-ui, sans-serif;
+				line-height: 1.6;
+				max-width: 65ch;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+				color: #333;
+				background: #fff;
+			}
+			.h-entry { margin-bottom: 2rem; }
+			.p-name { font-size: 2rem; font-weight: bold; margin-bottom: 1rem; color: #000; }
+			.p-summary { font-size: 1.2rem; color: #666; margin-bottom: 1.5rem; }
+			.e-content { margin-bottom: 2rem; }
+			.e-content p { margin-bottom: 1rem; }
+			.e-content a { color: #0066cc; text-decoration: underline; }
+			.backlinks { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee; }
+			.backlinks h3 { font-size: 1.1rem; margin-bottom: 1rem; color: #333; }
+			.backlink-item { margin-bottom: 0.5rem; }
+			.backlink-link { color: #0066cc; text-decoration: none; }
+			.backlink-link:hover { text-decoration: underline; }
+			.hidden { display: none; }
+			.tags { margin: 1rem 0; }
+			.tag { 
+				display: inline-block; 
+				background: #f0f0f0; 
+				padding: 0.25rem 0.5rem; 
+				margin: 0.25rem; 
+				border-radius: 0.25rem; 
+				font-size: 0.875rem; 
+				color: #666;
+			}
+		</style>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

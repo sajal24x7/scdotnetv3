@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import BridgyLayout from '../layouts/BridgyLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+import { getYearDirectories } from '../utils/content';
+import { findBacklinksComprehensive } from '../utils/backlinks';
+
+export async function getStaticPaths() {
+  // Get all year directories from content
+  const years = getYearDirectories();
+
+  // Get all posts from all collections
+  const allPosts = await Promise.all(years.map(year => getCollection(year as any)));
+  const posts = allPosts.flat().filter(entry => (entry as CollectionEntry<any>).data && (entry as CollectionEntry<any>).data.title);
+
+  return posts.map((entry) => {
+    const e = entry as CollectionEntry<any>;
+    const category = 'category' in e.data && e.data.category ? e.data.category : 'notes';
+    return {
+      params: { slug: `${category}/${e.slug}` },
+      props: { entry: e },
+    };
+  });
+}
+
+const slugParam = Astro.params.slug as string;
+const [category, slug] = slugParam.split('/');
+const entry = (Astro.props as { entry: CollectionEntry<any> }).entry;
+
+// Find backlinks for this post (limit to 10 for Bridgy)
+const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || '');
+const limitedBacklinks = backlinks.slice(0, 10);
+
+// Get canonical URL for microformats
+const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
+
+---
+
+<BridgyLayout 
+  title={`${entry.data?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
+  description={entry.data?.description} 
+  currentPage={`/${category}/${slug}/`}
+>
+  <article class="h-entry">
+    <!-- Hidden microformat data for Bridgy -->
+    <a href={canonicalUrl} class="u-url hidden"></a>
+    <div class="p-author h-card hidden">
+      <a class="p-name u-url" href="https://sajalchoudhary.net">Sajal Choudhary</a>
+      <a class="u-url" href="https://sajalchoudhary.net">https://sajalchoudhary.net</a>
+    </div>
+    
+    <!-- Post Title -->
+    <h1 class="p-name">{entry.data?.title ?? ''}</h1>
+    
+    <!-- Post Description -->
+    {entry.data?.description && (
+      <p class="p-summary">{entry.data.description}</p>
+    )}
+    
+    <!-- Tags (if any) -->
+    {'tags' in entry.data && Array.isArray(entry.data.tags) && entry.data.tags.length > 0 && (
+      <div class="tags">
+        {entry.data.tags.map((tag: string) => (
+          <span class="tag">#{tag}</span>
+        ))}
+      </div>
+    )}
+    
+    <!-- Post Content (minimal for Bridgy) -->
+    <div class="e-content">
+      <p><strong>Read the full post:</strong> <a href={canonicalUrl}>{canonicalUrl}</a></p>
+      <p>Published: {entry.data.pubDate.toLocaleDateString()}</p>
+    </div>
+    
+    <!-- Backlinks (simplified for Bridgy) -->
+    {limitedBacklinks.length > 0 && (
+      <div class="backlinks">
+        <h3>Related Posts ({backlinks.length})</h3>
+        {limitedBacklinks.map((backlink) => (
+          <div class="backlink-item">
+            <a href={backlink.slug} class="backlink-link">{backlink.title}</a>
+          </div>
+        ))}
+        {backlinks.length > 10 && (
+          <p><a href={canonicalUrl} class="backlink-link">View all {backlinks.length} related posts</a></p>
+        )}
+      </div>
+    )}
+  </article>
+</BridgyLayout>
