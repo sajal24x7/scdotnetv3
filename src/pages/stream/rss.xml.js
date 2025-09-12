@@ -46,14 +46,11 @@ export async function GET(context) {
       // Create hashtags from tags for social media
       const hashtags = (item.data.tags || []).map(tag => `#${tag}`).join(' ');
       
-      // For Bridgy syndication, send only title + description + link (no full content)
-      const syndicationContent = item.data.description || item.data.title || 'Read more on my website';
-      
       return {
         link: `/${item.data.category}/${item.slug}/`,
         title: item.data.title || 'Untitled',
         description: item.data.description || '',
-        content: syndicationContent, // Only send description, not full content
+        content,
         pubDate: item.data.pubDate,
         categories: [item.data.category, ...(item.data.tags || [])],
         author: 'sajal@sajalchoudhary.net (Sajal Choudhary)',
