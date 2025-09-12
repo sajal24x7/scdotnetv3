@@ -1,0 +1,243 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getAllPosts } from '../utils/content';
+
+const allPosts = await getAllPosts();
+---
+
+<Layout title="Search" description="Search through all posts and content" currentPage="search">
+  <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+    <div class="container mx-auto px-4 py-8">
+      <!-- Search Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          Search Posts
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400">
+          Find exactly what you're looking for across all content
+        </p>
+      </div>
+
+      <!-- Search Input -->
+      <div class="max-w-2xl mx-auto mb-8">
+        <div class="relative">
+          <input 
+            type="text" 
+            id="search-input"
+            placeholder="Search posts, try 'tag:ai' for tag search..." 
+            class="w-full px-6 py-4 text-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-lg"
+            autocomplete="off"
+            autofocus
+          />
+          <div class="absolute right-4 top-4 text-gray-400">
+            <kbd class="px-3 py-1 text-sm bg-gray-200 dark:bg-gray-700 rounded">⌘K</kbd>
+          </div>
+        </div>
+        
+        <!-- Search Tips -->
+        <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 text-center">
+          <span class="inline-block mr-6">💡 Try: "AI", "productivity", or "tag:coding"</span>
+          <span class="inline-block">🏷️ Use "tag:ai" for exact tag matches</span>
+        </div>
+      </div>
+
+      <!-- Search Results -->
+      <div id="search-results" class="max-w-4xl mx-auto">
+        <!-- Default state -->
+        <div class="text-center py-16 text-gray-500 dark:text-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 opacity-50">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <p class="text-xl">Start typing to search through posts...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script define:vars={{ allPosts }}>
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  
+  // Enhanced search function
+  function performSearch() {
+    const query = searchInput.value.toLowerCase().trim();
+    
+    if (query.length === 0) {
+      searchResults.innerHTML = `
+        <div class="text-center py-16 text-gray-500 dark:text-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 opacity-50">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <p class="text-xl">Start typing to search through posts...</p>
+        </div>
+      `;
+      return;
+    }
+    
+    if (query.length < 2) {
+      searchResults.innerHTML = `
+        <div class="text-center py-8 text-gray-500 dark:text-gray-400">
+          <p class="text-lg">Type at least 2 characters to search...</p>
+        </div>
+      `;
+      return;
+    }
+    
+    let results = [];
+    let priorityResults = [];
+    
+    // Tag search with exact match
+    if (query.startsWith('tag:')) {
+      const tagQuery = query.substring(4);
+      results = allPosts.filter(post => {
+        if (!post.data.tags) return false;
+        return post.data.tags.some(tag => tag.toLowerCase() === tagQuery);
+      });
+    } else {
+      // Enhanced search with tag priority
+      allPosts.forEach(post => {
+        const title = post.data.title?.toLowerCase() || '';
+        const category = post.data.category?.toLowerCase() || '';
+        const description = post.data.description?.toLowerCase() || '';
+        const tags = post.data.tags || [];
+        
+        let relevanceScore = 0;
+        let hasMatch = false;
+        
+        // Tag matches get highest priority (score: 100)
+        const tagMatch = tags.some(tag => tag.toLowerCase().includes(query));
+        if (tagMatch) {
+          relevanceScore += 100;
+          hasMatch = true;
+        }
+        
+        // Title matches get high priority (score: 50)
+        if (title.includes(query)) {
+          relevanceScore += 50;
+          hasMatch = true;
+        }
+        
+        // Category matches get medium priority (score: 25)
+        if (category.includes(query)) {
+          relevanceScore += 25;
+          hasMatch = true;
+        }
+        
+        // Description matches get lower priority (score: 10)
+        if (description.includes(query)) {
+          relevanceScore += 10;
+          hasMatch = true;
+        }
+        
+        if (hasMatch) {
+          results.push({ ...post, relevanceScore });
+        }
+      });
+      
+      // Sort by relevance score (highest first)
+      results.sort((a, b) => b.relevanceScore - a.relevanceScore);
+    }
+    
+    if (results.length > 0) {
+      searchResults.innerHTML = `
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+            Search Results
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400">
+            Found ${results.length} result${results.length === 1 ? '' : 's'} for "<strong>${query}</strong>"
+          </p>
+        </div>
+        <div class="space-y-4">
+          ${results.map(post => {
+            const tags = post.data.tags || [];
+            const tagBadges = tags.slice(0, 3).map(tag => {
+              const isHighlighted = tag.toLowerCase().includes(query) || query.startsWith('tag:');
+              return `<span class="inline-block ${isHighlighted ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 ring-1 ring-blue-300 dark:ring-blue-700' : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'} text-sm px-3 py-1 rounded-full mr-2 mb-2">${tag}</span>`;
+            }).join('');
+            
+            const relevanceIndicator = post.relevanceScore >= 100 ? '🏷️' : 
+                                      post.relevanceScore >= 50 ? '📝' : 
+                                      post.relevanceScore >= 25 ? '📁' : '💬';
+            
+            return `
+              <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-shadow">
+                <a href="/${post.data.category}/${post.slug}/" class="block p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors group">
+                  <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-3 mb-2">
+                        <span class="text-lg">${relevanceIndicator}</span>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          ${post.data.title || 'Untitled'}
+                        </h3>
+                      </div>
+                      <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 capitalize font-medium">
+                        ${post.data.category}
+                      </p>
+                      ${post.data.description ? `<p class="text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">${post.data.description}</p>` : ''}
+                      ${tags.length > 0 ? `<div class="flex flex-wrap">${tagBadges}</div>` : ''}
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-blue-500 transition-colors flex-shrink-0 mt-1">
+                      <path d="m9 18 6-6-6-6"/>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    } else {
+      searchResults.innerHTML = `
+        <div class="text-center py-16 text-gray-500 dark:text-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 opacity-50">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <div class="mb-4">
+            <h3 class="text-xl font-semibold mb-2">No results found</h3>
+            <p class="text-lg">No posts found for "<strong>${query}</strong>"</p>
+          </div>
+          <div class="text-sm space-y-2">
+            <div>💡 Try searching for "AI", "productivity", or "coding"</div>
+            <div>🏷️ Use "tag:ai" for exact tag matches</div>
+          </div>
+        </div>
+      `;
+    }
+  }
+  
+  // Event listeners
+  searchInput.addEventListener('input', performSearch);
+  
+  // Keyboard shortcuts
+  document.addEventListener('keydown', (e) => {
+    // Cmd+K or Ctrl+K to focus search
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+  
+  // Enter to navigate to first result
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const firstResult = searchResults.querySelector('a');
+      if (firstResult) {
+        window.location.href = firstResult.href;
+      }
+    }
+  });
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

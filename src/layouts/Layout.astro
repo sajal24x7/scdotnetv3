@@ -2,7 +2,6 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PageWrapper from '../components/layout/PageWrapper.astro';
-import SearchModal from '../components/SearchModal.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -59,6 +58,17 @@ const { title, description, currentPage, pageWrapper = {} } = Astro.props;
 			}, 100);
 		</script>
 		
+		<!-- Global search shortcut -->
+		<script is:inline>
+			// Global keyboard shortcut for search (Cmd+K or Ctrl+K)
+			document.addEventListener('keydown', (e) => {
+				if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+					e.preventDefault();
+					window.location.href = '/search';
+				}
+			});
+		</script>
+		
 		<!-- Theme Script (to avoid FOUC - Flash of Unstyled Content) -->
 		<script is:inline>
 			// Auto-detect dark mode based on system preference only
@@ -93,9 +103,6 @@ const { title, description, currentPage, pageWrapper = {} } = Astro.props;
 			</main>
 			<Footer />
 		</div>
-		
-		<!-- Search Modal -->
-		<SearchModal />
 	</body>
 </html>
 
