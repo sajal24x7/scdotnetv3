@@ -53,6 +53,9 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
     <article class="h-entry">
       <!-- Hidden microformat data -->
       <a href={canonicalUrl} class="u-url" style="display: none;"></a>
+      {entry.data?.bridgyOmit && (
+        <a href={canonicalUrl} class="u-bridgy-omit-link" style="display: none;"></a>
+      )}
       <div class="p-author h-card" style="display: none;">
         <a class="p-name u-url" href="https://sajalchoudhary.net">Sajal Choudhary</a>
         <a class="u-url" href="https://sajalchoudhary.net">https://sajalchoudhary.net</a>
