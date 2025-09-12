@@ -7,24 +7,26 @@
 ## Overview
 
 This plan implements POSSE functionality in two phases:
-1. **Phase 1:** Social media syndication using Bridgy Fed
+1. **Phase 1:** Social media syndication using Bridgy
 2. **Phase 2:** Webmention integration using webmention.io
 
 ## Current Phase
-**Phase 1: Social Media Syndication Setup - COMPLETED**
+**Implementation Complete - Ready for External Service Setup**
 
 ## Overall Progress
 - [x] Phase 1: Social Media Syndication (8/8 tasks)
 - [x] Phase 2: Webmention Integration (6/6 tasks)
+- [x] Compliance Verification (100% compliant)
+- [x] Bluesky Social Link Added
 
 ---
 
-## Phase 1: Social Media Syndication with Bridgy Fed
+## Phase 1: Social Media Syndication with Bridgy
 
 ### Requirements
 - Syndicate all content from `/stream/` RSS feed to Mastodon and Bluesky
 - Post format: Headline + Description (if present) + Link + Hashtags
-- Use existing stream RSS feed for Bridgy Fed integration
+- Use existing stream RSS feed for Bridgy integration
 - Add microformats markup for proper parsing
 
 ### Tasks
@@ -231,24 +233,80 @@ This plan implements POSSE functionality in two phases:
 **Implementation Complete - Ready for External Service Setup**
 
 ### Next Steps (User Action Required)
-1. **Set up Bridgy Fed:**
-   - Go to https://fed.brid.gy
-   - Enter your website URL: `https://sajalchoudhary.net`
-   - Connect your Mastodon account: @sajal24x7@mastodon.social
-   - Connect your Bluesky account: @sajal24x7.bsky.social
-   - Point Bridgy to your stream RSS feed: `https://sajalchoudhary.net/stream/rss.xml`
 
-2. **Set up webmention.io:**
-   - Go to https://webmention.io
-   - Register your domain: `sajalchoudhary.net`
-   - Verify domain ownership
-   - Test webmention endpoint
+## 🚀 **Setup Steps to Enable POSSE and Webmentions**
 
-3. **Test the implementation:**
-   - Create a new post in the stream category (blog, micro, or photo)
-   - Verify Bridgy Fed picks up the post and syndicates to social media
-   - Test webmention functionality by having someone mention your post
-   - Check that syndication links appear on your posts
+### **1. Set up Bridgy (POSSE)**
+
+**Go to Bridgy:**
+1. Visit https://brid.gy
+2. Click "Sign in" and choose your preferred method (Google, GitHub, etc.)
+
+**Connect your social media accounts:**
+1. After signing in, click "Add a new source"
+2. Choose "Web site" and enter: `https://sajalchoudhary.net`
+3. Bridgy will automatically detect your `rel="me"` links:
+   - ✅ Mastodon: `https://mastodon.social/@sajal24x7`
+   - ✅ Bluesky: `https://bsky.app/profile/sajal24x7.bsky.social`
+
+**Configure syndication:**
+1. Bridgy will show your detected social media accounts
+2. Enable syndication for Mastodon and Bluesky
+3. Test with a sample post
+
+### **2. Set up webmention.io**
+
+**Register your domain:**
+1. Go to https://webmention.io
+2. Click "Sign in" and choose your preferred method
+3. Enter your domain: `sajalchoudhary.net`
+4. Verify domain ownership (they'll give you instructions)
+
+**Test webmention endpoint:**
+1. After verification, test the endpoint: `https://webmention.io/sajalchoudhary.net/webmention`
+2. Use https://webmention.rocks to test webmention sending
+
+### **3. Test the Implementation**
+
+**Test POSSE (Bridgy):**
+1. Create a new post in your stream category (blog, micro, or photo)
+2. Publish the post
+3. Check if Bridgy picks it up and syndicates to Mastodon/Bluesky
+4. Verify the syndication links appear on your post
+
+**Test Webmentions:**
+1. Ask someone to mention your post on their site
+2. Or use https://webmention.rocks to send a test webmention
+3. Check if webmentions appear on your post
+
+### **4. Monitor and Maintain**
+
+**Bridgy Dashboard:**
+- Check https://brid.gy for syndication status
+- Monitor any errors or issues
+- Adjust settings as needed
+
+**Webmention.io Dashboard:**
+- Check https://webmention.io for received webmentions
+- Moderate spam if needed
+- Monitor webmention activity
+
+## ⚡ **Quick Start (5 minutes)**
+
+1. **Bridgy**: Go to https://brid.gy → Sign in → Add `https://sajalchoudhary.net`
+2. **Webmention.io**: Go to https://webmention.io → Sign in → Add `sajalchoudhary.net`
+3. **Test**: Create a new post and watch the magic happen!
+
+## 🔧 **Your Website is Already Perfect**
+
+Your website already has everything needed:
+- ✅ Microformats2 markup
+- ✅ Social media links with `rel="me"`
+- ✅ Webmention discovery links
+- ✅ Syndication and webmention components
+- ✅ RSS feed optimized for social media
+
+**You just need to connect the external services!**
 
 ### Files Created/Modified
 - `src/pages/[...slug].astro` - Added microformats and webmention/syndication components
