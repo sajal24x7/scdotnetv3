@@ -10,10 +10,11 @@
   "scripts": {
     "dev": "npm run generate-covers && astro dev",
     "start": "npm run generate-covers && astro dev",
-    "build": "npm run generate-covers && astro build || true",
+    "build": "npm run generate-covers && npm run fetch-webmentions && astro build || true",
     "preview": "astro preview",
     "astro": "astro",
-    "generate-covers": "node scripts/generate-book-covers.js"
+    "generate-covers": "node scripts/generate-book-covers.js",
+    "fetch-webmentions": "node scripts/fetch-webmentions.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.0",
