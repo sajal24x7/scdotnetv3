@@ -1,6 +1,7 @@
 ---
 import TimeDisplay from './TimeDisplay.astro';
 import CategoryDisplay from './CategoryDisplay.astro';
+import SyndicationLinks from './SyndicationLinks.astro';
 
 interface Props {
   title?: string;
@@ -12,18 +13,20 @@ interface Props {
   tags?: string[];
   body?: string;
   renderedContent?: string;
+  syndicationUrls?: string[];
 }
 
-const { 
-  title, 
-  description, 
-  pubDate, 
-  category, 
-  image, 
-  link, 
-  tags = [], 
+const {
+  title,
+  description,
+  pubDate,
+  category,
+  image,
+  link,
+  tags = [],
   body,
-  renderedContent 
+  renderedContent,
+  syndicationUrls = []
 } = Astro.props;
 
 // Check if content is micro type
@@ -84,6 +87,9 @@ const isMicroContent = (category: string) => category === 'micro';
               </a>
             ))}
           </div>
+        )}
+        {syndicationUrls && syndicationUrls.length > 0 && (
+          <SyndicationLinks syndicationUrls={syndicationUrls} className="stream-syndication" />
         )}
       </div>
     </div>
@@ -245,4 +251,52 @@ const isMicroContent = (category: string) => category === 'micro';
   }
 
   /* Prose links now use global styling */
+
+  /* Syndication links styling within stream cards */
+  :global(.stream-syndication) {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f3f4f6;
+  }
+
+  :global(.dark) :global(.stream-syndication) {
+    border-top-color: #374151;
+  }
+
+  :global(.stream-syndication .syndication-title) {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    color: #6b7280;
+  }
+
+  :global(.dark) :global(.stream-syndication .syndication-title) {
+    color: #9ca3af;
+  }
+
+  :global(.stream-syndication .syndication-list) {
+    gap: 0.5rem;
+  }
+
+  :global(.stream-syndication .syndication-link) {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 0.25rem;
+  }
+
+  /* Mobile adjustments for syndication in stream cards */
+  @media (max-width: 768px) {
+    :global(.stream-syndication) {
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+    }
+
+    :global(.stream-syndication .syndication-title) {
+      font-size: 0.6875rem;
+    }
+
+    :global(.stream-syndication .syndication-link) {
+      padding: 0.1875rem 0.375rem;
+      font-size: 0.6875rem;
+    }
+  }
 </style>

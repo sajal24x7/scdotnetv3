@@ -95,6 +95,8 @@ Defined in `src/content/config.ts`:
 - **Problem-solving**: For substantial features, act as Socratic dialogue partner
 - **Implementation plans**: Create detailed plans before coding major features
 - **TypeScript**: Use strict types, proper error handling, avoid `any`
+- Always create a new feature/bug-fix branch when working on a new feature or bug fix etc.
+- Keep commit messages to 20 words or less.
 
 ### Content Handling
 - Content collections are dynamically created from year directories

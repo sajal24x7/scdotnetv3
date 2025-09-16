@@ -1,13 +1,16 @@
 ---
-title: "Thoughts on iPhone day - 2025"
-slug: "thoughts-on-iphone-day-2025"
-pubDate: 2025-09-09T21:47:57+03:00
-updatedDate: 2025-09-09T21:47:57+03:00
+title: Thoughts on iPhone day - 2025
+slug: thoughts-on-iphone-day-2025
+pubDate: 2025-09-09T18:47:57.000Z
+updatedDate: 2025-09-09T18:47:57.000Z
 category: blog
 tags:
   - iphone
   - apple
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115215414637181556'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lyxxkntdxp23'
+  - 'https://www.threads.com/@sajal24x7/post/DOrHR1NjVu_'
 ---
 Hello, iPhone Day. The [2024 edition](https://sajalchoudhary.net/blog/thoughts-on-iphone-day/) here.
 

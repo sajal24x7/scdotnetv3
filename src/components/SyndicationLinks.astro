@@ -24,9 +24,12 @@ if (syndicationUrls.length === 0) {
       if (url.includes('mastodon.social') || url.includes('mastodon.')) {
         platform = 'Mastodon';
         icon = '🐘';
-      } else if (url.includes('bsky.social') || url.includes('bluesky.')) {
+      } else if (url.includes('bsky.app') || url.includes('bsky.social') || url.includes('bluesky.')) {
         platform = 'Bluesky';
         icon = '🦋';
+      } else if (url.includes('threads.net') || url.includes('threads.')) {
+        platform = 'Threads';
+        icon = '🧵';
       } else if (url.includes('twitter.com') || url.includes('x.com')) {
         platform = 'Twitter/X';
         icon = '🐦';

@@ -15,6 +15,7 @@ export interface Post {
     edition?: number | string;
     editionDisplay?: string;
     format?: string;
+    syndicationUrls?: string[];
   };
   slug: string;
   body: string;
@@ -57,6 +58,7 @@ export function transformPost(post: Post) {
       tags: post.data.tags,
       edition: post.data.edition,
       editionDisplay: post.data.editionDisplay,
+      syndicationUrls: post.data.syndicationUrls,
       link: `/${post.data.category}/${post.slug}/`
     },
     body: post.body,

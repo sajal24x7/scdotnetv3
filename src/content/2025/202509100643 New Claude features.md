@@ -1,13 +1,16 @@
 ---
-title: "New Claude features"
-slug: "new-claude-features"
-pubDate: 2025-09-10T06:57:19+03:00
-updatedDate: 2025-09-10T06:57:19+03:00
+title: New Claude features
+slug: new-claude-features
+pubDate: 2025-09-10T03:57:19.000Z
+updatedDate: 2025-09-10T03:57:19.000Z
 category: micro
 tags:
   - claude
   - anthropic
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115215414735784437'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lyxxkoqvoh24'
+  - 'https://www.threads.com/@sajal24x7/post/DOrHSdcDTWH'
 ---
 [My review of Claude’s new Code Interpreter, released under a very confusing name by Simon Willison](https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#atom-everything)
 

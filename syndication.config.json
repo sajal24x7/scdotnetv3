@@ -1,0 +1,65 @@
+{
+  "platforms": {
+    "mastodon": {
+      "name": "Mastodon",
+      "maxLength": 500,
+      "includeImages": true,
+      "includeHashtags": true,
+      "includeLink": true,
+      "linkText": "Read more",
+      "icon": "🐘"
+    },
+    "bluesky": {
+      "name": "Bluesky",
+      "maxLength": 300,
+      "includeImages": true,
+      "includeHashtags": true,
+      "includeLink": true,
+      "linkText": "Read more",
+      "icon": "🦋"
+    },
+    "threads": {
+      "name": "Threads",
+      "maxLength": 500,
+      "includeImages": true,
+      "includeHashtags": true,
+      "includeLink": true,
+      "linkText": "Link in bio or visit",
+      "icon": "🧵"
+    }
+  },
+  "streamCategories": [
+    "blog",
+    "micro",
+    "photo"
+  ],
+  "defaults": {
+    "includeLink": true,
+    "includeHashtags": true,
+    "maxHashtags": 3,
+    "excerptLength": 200,
+    "createBackups": false
+  },
+  "rateLimits": {
+    "mastodon": {
+      "requests": 300,
+      "windowMs": 300000,
+      "comment": "300 requests per 5 minutes"
+    },
+    "bluesky": {
+      "requests": 100,
+      "windowMs": 60000,
+      "comment": "100 requests per minute (conservative)"
+    },
+    "threads": {
+      "requests": 250,
+      "windowMs": 3600000,
+      "comment": "250 requests per hour"
+    }
+  },
+  "dryRun": {
+    "enabled": false,
+    "logPosts": true,
+    "saveFormattedContent": false
+  }
+}

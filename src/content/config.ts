@@ -30,7 +30,6 @@ const postsCollection = defineCollection({
     bookStatus: z.enum(['reading', 'read']).optional(),
     bookCover: z.string().optional(), // Book cover image for bookshelf display
     // POSSE syndication metadata
-    syndicate: z.array(z.enum(['mastodon', 'bluesky', 'twitter'])).optional(),
     syndicationUrls: z.array(z.string()).optional(), // URLs where content was syndicated
   }),
 });

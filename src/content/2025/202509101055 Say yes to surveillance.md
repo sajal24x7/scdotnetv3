@@ -1,14 +1,17 @@
 ---
-title: "Say yes to surveillance"
-slug: "say-yes-to-surveillance"
-pubDate: 2025-09-10T11:02:44+03:00
-updatedDate: 2025-09-10T11:02:44+03:00
+title: Say yes to surveillance
+slug: say-yes-to-surveillance
+pubDate: 2025-09-10T08:02:44.000Z
+updatedDate: 2025-09-10T08:02:44.000Z
 category: micro
 tags:
   - surveillance
   - ideas
   - privacy
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115215414796958959'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lyxxkpxiob2l'
+  - 'https://www.threads.com/@sajal24x7/post/DOrHS9IjaH6'
 ---
 [State Surveillance by Hugh Howey](https://hughhowey.com/state-surveillance/)
 
