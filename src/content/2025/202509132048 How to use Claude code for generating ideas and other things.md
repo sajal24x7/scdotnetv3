@@ -1,13 +1,16 @@
 ---
-title: "How to use Claude code for generating ideas and other things"
-slug: "how-to-use-claude-code-for-generating-ideas-and-other-things"
-pubDate: 2025-09-13T20:52:27+03:00
-updatedDate: 2025-09-13T20:52:27+03:00
+title: How to use Claude code for generating ideas and other things
+slug: how-to-use-claude-code-for-generating-ideas-and-other-things
+pubDate: 2025-09-13T17:52:27.000Z
+updatedDate: 2025-09-13T17:52:27.000Z
 category: micro
 tags:
   - claude
   - anthropic
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115221284366576198'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lz2kxvcj632o'
+  - 'https://www.threads.com/@sajal24x7/post/DOtw9z3j1X0'
 ---
 [What I think about when I think about Claude Code](https://interconnected.org/home/2025/09/12/claude)
 

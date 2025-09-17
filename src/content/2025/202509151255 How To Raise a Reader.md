@@ -1,13 +1,16 @@
 ---
-title: "How To Raise a Reader"
-slug: "how-to-raise-a-reader"
-pubDate: 2025-09-15T12:56:28+03:00
-updatedDate: 2025-09-15T12:56:28+03:00
+title: How To Raise a Reader
+slug: how-to-raise-a-reader
+pubDate: 2025-09-15T09:56:28.000Z
+updatedDate: 2025-09-15T09:56:28.000Z
 category: micro
 tags:
   - parenting
   - reading
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115221284855887311'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lz2ky4f4bg2w'
+  - 'https://www.threads.com/@sajal24x7/post/DOtw-1GD_xO'
 ---
 [How To Raise a Reader in an Age of Digital Distraction by ](https://lithub.com/how-to-raise-a-reader-in-an-age-of-digital-distraction/)
 

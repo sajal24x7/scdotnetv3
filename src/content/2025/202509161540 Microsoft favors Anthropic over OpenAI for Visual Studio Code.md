@@ -1,15 +1,18 @@
 ---
-title: "Microsoft favors Anthropic over OpenAI for Visual Studio Code"
-slug: "microsoft-favors-anthropic-over-openai-for-visual-studio-code"
-pubDate: 2025-09-16T15:44:07+03:00
-updatedDate: 2025-09-16T15:44:07+03:00
+title: Microsoft favors Anthropic over OpenAI for Visual Studio Code
+slug: microsoft-favors-anthropic-over-openai-for-visual-studio-code
+pubDate: 2025-09-16T12:44:07.000Z
+updatedDate: 2025-09-16T12:44:07.000Z
 category: micro
 tags:
   - openai
   - chatgpt
   - claude
   - msft
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115221285734918034'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lz2kyj223z26'
+  - 'https://www.threads.com/@sajal24x7/post/DOtxAYYD6wB'
 ---
 [Microsoft favors Anthropic over OpenAI for Visual Studio Code by Tom Warren](https://www.theverge.com/report/778641/microsoft-visual-studio-code-anthropic-claude-4)
 

@@ -1,14 +1,17 @@
 ---
-title: "mothers and sons"
-slug: "mothers-and-sons"
-pubDate: 2025-09-16T12:52:14+03:00
-updatedDate: 2025-09-16T12:52:14+03:00
+title: mothers and sons
+slug: mothers-and-sons
+pubDate: 2025-09-16T09:52:14.000Z
+updatedDate: 2025-09-16T09:52:14.000Z
 category: micro
 tags:
   - mother
   - stories
   - writing
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115221285290889221'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lz2kycmoup2l'
+  - 'https://www.threads.com/@sajal24x7/post/DOtw_hoD3t0'
 ---
 [Why Are There So Few Books About Mothers and Sons?](https://lithub.com/why-are-there-so-few-books-about-mothers-and-sons/)
 

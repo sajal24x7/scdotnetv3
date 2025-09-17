@@ -1,12 +1,15 @@
 ---
-title: "Mastodon will have quote posts soon"
-slug: "mastodon-will-have-quote-posts-soon"
-pubDate: 2025-09-13T19:41:03+03:00
-updatedDate: 2025-09-13T19:41:03+03:00
+title: Mastodon will have quote posts soon
+slug: mastodon-will-have-quote-posts-soon
+pubDate: 2025-09-13T16:41:03.000Z
+updatedDate: 2025-09-13T16:41:03.000Z
 category: micro
 tags:
   - mastodon
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115221283837159337'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lz2kxntboj2y'
+  - 'https://www.threads.com/@sajal24x7/post/DOtw831j3j1'
 ---
 
 [Mastodon is bringing quote posts to the fediverse by Emma Roth](https://www.theverge.com/news/777067/mastodon-quote-posts-fediverse-launch)
