@@ -1,0 +1,103 @@
+name: Syndicate Content
+
+on:
+  # Run after successful deployment
+  repository_dispatch:
+    types: [deploy-success]
+
+  # Manual trigger for testing/catch-up
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run in dry-run mode (no actual posting)'
+        required: false
+        default: 'false'
+        type: boolean
+      days_back:
+        description: 'Number of days back to check for posts'
+        required: false
+        default: '7'
+        type: string
+
+jobs:
+  syndicate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Need full history to commit back changes
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Run syndication
+        env:
+          # Mastodon credentials
+          MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+          MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
+
+          # Bluesky credentials
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+
+          # Threads credentials
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+
+          # Configuration
+          SYNDICATION_DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          SYNDICATION_DAYS_BACK: ${{ github.event.inputs.days_back || '7' }}
+        run: node scripts/syndicate-content.js
+
+      - name: Commit syndication updates
+        run: |
+          # Check if there are any changes to commit
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          # Add all changed files
+          git add .
+
+          # Commit with message
+          git commit -m "Update syndication URLs
+
+          🤖 Generated with GitHub Actions
+
+          Co-Authored-By: github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+
+          # Push changes back to main branch
+          git push origin main
+
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Syndication workflow failed',
+              body: `The syndication workflow failed on ${new Date().toISOString()}.
+
+              **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+              Please check the logs and fix any issues.`,
+              labels: ['bug', 'automation']
+            })

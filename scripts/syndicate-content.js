@@ -28,6 +28,7 @@ import { RateLimiter } from './lib/utils/rate-limiter.js';
 const PLATFORMS = ['mastodon', 'bluesky', 'threads'];
 const STREAM_CATEGORIES = ['blog', 'micro', 'photo'];
 const DRY_RUN = process.env.SYNDICATION_DRY_RUN === 'true';
+const DAYS_BACK = parseInt(process.env.SYNDICATION_DAYS_BACK || '7', 10);
 
 /**
  * Simple implementation to get all posts from year directories
@@ -92,12 +93,12 @@ function needsSyndication(post) {
     return false;
   }
 
-  // Only syndicate posts from the last 7 days
+  // Only syndicate posts from the last X days (configurable)
   const cutoffDate = new Date();
-  cutoffDate.setDate(cutoffDate.getDate() - 7); // 7 days ago
+  cutoffDate.setDate(cutoffDate.getDate() - DAYS_BACK);
 
   if (post.data.pubDate < cutoffDate) {
-    return false; // Skip posts older than 7 days
+    return false; // Skip posts older than configured days
   }
 
   // Simple rule: if we don't have URLs for all 3 platforms, syndicate
@@ -200,6 +201,8 @@ async function syndicateContent() {
   if (DRY_RUN) {
     console.log('🧪 Running in DRY RUN mode - no actual posting will occur');
   }
+
+  console.log(`📅 Checking posts from the last ${DAYS_BACK} days`);
 
   try {
     // Get all posts
