@@ -1,14 +1,17 @@
 ---
-title: "Politics guides AI models output"
-slug: "politics-guides-ai-models-output"
-pubDate: 2025-09-18T11:10:06+03:00
-updatedDate: 2025-09-18T11:10:06+03:00
+title: Politics guides AI models output
+slug: politics-guides-ai-models-output
+pubDate: 2025-09-18T08:10:06.000Z
+updatedDate: 2025-09-18T08:10:06.000Z
 category: micro
 tags:
   - deepseek
   - ai
   - china
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115224302576849057'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lz3vugl6dq2k'
+  - 'https://www.threads.com/@sajal24x7/post/DOvIzwfCgZ1'
 ---
 [DeepSeek Writes Less-Secure Code For Groups China Disfavors - Slashdot](https://slashdot.org/story/25/09/17/2123211/deepseek-writes-less-secure-code-for-groups-china-disfavors?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
