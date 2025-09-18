@@ -1,66 +1,83 @@
-// bg-color-randomizer.js - Generates random pastel backgrounds on page load
+// bg-color-randomizer.js - Generates random backgrounds on page load using your custom color palette
 document.addEventListener('DOMContentLoaded', function() {
-  // Define an array of bolder pastel colors (RGB values)
-  const pastelColors = [
-    '255, 200, 200', // Bolder Pink
-    '200, 255, 200', // Bolder Green
-    '200, 200, 255', // Bolder Blue
-    '255, 255, 180', // Bolder Yellow
-    '255, 200, 255', // Bolder Purple
-    '180, 255, 255', // Bolder Cyan
-    '255, 210, 180', // Bolder Orange
-    '210, 255, 210', // Bolder Mint
-    '255, 230, 210', // Bolder Seashell
-    '230, 255, 240', // Bolder Mint Cream
-    '215, 235, 255', // Bolder Alice Blue
-    '255, 245, 180', // Bolder Beige
-    '255, 225, 180', // Bolder Old Lace
-    '255, 220, 200', // Bolder Linen
-    '255, 225, 200'  // Bolder Antique White
+  // Your custom color palette (HSL values converted to RGB)
+  const lightColors = [
+    '209, 237, 252', // hsl(203, 100%, 87%)
+    '229, 236, 248', // hsl(225, 75%, 90%)
+    '244, 222, 245', // hsl(284, 54%, 89%)
+    '252, 209, 244', // hsl(323, 100%, 90%)
+    '252, 218, 229', // hsl(344, 98%, 92%)
+    '254, 218, 184', // hsl(16, 97%, 92%)
+    '252, 245, 184', // hsl(38, 96%, 90%)
+    '232, 242, 204', // hsl(78, 44%, 87%)
+    '191, 231, 207', // hsl(137, 50%, 84%)
+    '151, 219, 204', // hsl(158, 66%, 77%)
+    '174, 219, 219', // hsl(178, 37%, 81%)
+    '232, 236, 248', // hsl(245, 45%, 89%)
+    '247, 209, 252'  // hsl(284, 100%, 90%)
   ];
 
-  // Randomly select a color from the array
-  const randomColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
-  
+  // Dark mode colors - subtle grays with hints of the original color (iPhone Pro style)
+  const darkColors = [
+    '45, 47, 51',    // Blue-gray hint
+    '45, 45, 52',    // Periwinkle-gray hint
+    '50, 45, 52',    // Purple-gray hint
+    '52, 45, 50',    // Magenta-gray hint
+    '52, 47, 48',    // Pink-gray hint
+    '52, 48, 45',    // Orange-gray hint
+    '52, 52, 45',    // Yellow-gray hint
+    '48, 52, 45',    // Green-gray hint
+    '45, 52, 48',    // Emerald-gray hint
+    '45, 52, 50',    // Teal-gray hint
+    '45, 50, 52',    // Cyan-gray hint
+    '47, 45, 52',    // Blue-purple-gray hint
+    '50, 45, 52'     // Violet-gray hint
+  ];
+
+  // Randomly select colors from the appropriate palette
+  const isDarkMode = document.documentElement.classList.contains('dark') ||
+                     window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  const colors = isDarkMode ? darkColors : lightColors;
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
   // Select a second color for the gradient (ensuring it's different from the first)
   let secondColor;
   do {
-    secondColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
+    secondColor = colors[Math.floor(Math.random() * colors.length)];
   } while (secondColor === randomColor);
-  
+
   // Set the CSS variable for background color
   document.documentElement.style.setProperty('--color-bg', randomColor);
-  
-  // For dark mode, create darker versions of the selected colors
-  const darkModeColor = createDarkerVersion(randomColor);
-  const darkModeSecondColor = createDarkerVersion(secondColor);
+
+  // Get the corresponding dark mode colors
+  const darkModeColor = isDarkMode ? randomColor : darkColors[lightColors.indexOf(randomColor)];
+  const darkModeSecondColor = isDarkMode ? secondColor : darkColors[lightColors.indexOf(secondColor)];
   
   // Create and apply the gradient background
   applyGradientBackground(randomColor, secondColor, darkModeColor, darkModeSecondColor);
   
   // Listen for theme changes and update colors accordingly
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    const lightColor = lightColors[lightColors.indexOf(randomColor)] || lightColors[0];
+    const lightColor2 = lightColors[lightColors.indexOf(secondColor)] || lightColors[1];
+    const darkColor = darkColors[lightColors.indexOf(randomColor)] || darkColors[0];
+    const darkColor2 = darkColors[lightColors.indexOf(secondColor)] || darkColors[1];
+
     if (event.matches) {
-      document.documentElement.style.setProperty('--color-bg', darkModeColor);
-      applyGradientBackground(darkModeColor, darkModeSecondColor, darkModeColor, darkModeSecondColor);
+      document.documentElement.style.setProperty('--color-bg', darkColor);
+      applyGradientBackground(darkColor, darkColor2, darkColor, darkColor2);
     } else {
-      document.documentElement.style.setProperty('--color-bg', randomColor);
-      applyGradientBackground(randomColor, secondColor, darkModeColor, darkModeSecondColor);
+      document.documentElement.style.setProperty('--color-bg', lightColor);
+      applyGradientBackground(lightColor, lightColor2, darkColor, darkColor2);
     }
   });
 });
 
-// Function to create a darker version of a color for dark mode
+// Function to create a darker version of a color for dark mode (no longer needed with predefined dark colors)
+// Keeping for compatibility
 function createDarkerVersion(rgbString) {
-  const rgbValues = rgbString.split(',').map(num => parseInt(num.trim(), 10));
-  
-  // Make the color darker by reducing each RGB component, but keep more saturation
-  const darkerValues = rgbValues.map(value => {
-    // Convert to a darker shade, but maintain more saturation
-    return Math.max(Math.floor(value * 0.35), 35);
-  });
-  
-  return darkerValues.join(', ');
+  return rgbString; // Not used anymore, but keeping for compatibility
 }
 
 // Function to apply a gradient background
