@@ -1,13 +1,16 @@
 ---
-title: "Writing a poem can freeze time"
-slug: "writing-a-poem-can-freeze-time"
-pubDate: 2025-09-18T13:49:14+03:00
-updatedDate: 2025-09-18T13:49:14+03:00
+title: Writing a poem can freeze time
+slug: writing-a-poem-can-freeze-time
+pubDate: 2025-09-18T10:49:14.000Z
+updatedDate: 2025-09-18T10:49:14.000Z
 category: micro
 tags:
   - writing
   - poems
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115224920099287992'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lz46na6epf2m'
+  - 'https://www.threads.com/@sajal24x7/post/DOvax8FiplS'
 ---
 [How Writing Poetry Can Freeze Time](https://lithub.com/how-writing-poetry-can-freeze-time/)
 
