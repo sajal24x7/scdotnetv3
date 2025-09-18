@@ -75,31 +75,50 @@ hr {
   margin: 1.5rem 0;
 }
 
-/* Basic links styling - simplified approach */
+/* Manuel Moreale inspired link styles */
 a {
-  color: inherit !important;
-  text-decoration: underline;
-  text-decoration-color: #0066cc; /* Default blue fallback */
-  text-decoration-thickness: 0.15em;
-  text-underline-offset: 0.2em;
-  transition: text-decoration-color 0.3s ease, filter 0.2s ease;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-/* Ensure links have underlines even before random colors are applied */
-a:not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(.tag):not(.category-display):not(.tagged-with-item):not(.show-more-btn):not(.show-less-btn):not(.tag-item) {
-  text-decoration: underline !important;
+/* Prose links - persistent subtle highlighting */
+.prose a {
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(255, 200, 0, 0.3) 50%, rgba(255, 200, 0, 0.3) 100%);
+  background-size: 100% 100%;
+  padding: 0.1em 0.2em;
+  margin: -0.1em -0.2em;
+  border-radius: 0.2em;
+  transition: background 0.3s ease;
+  text-decoration: none !important;
 }
 
-/* Hover effect - brighten the link */
-a:hover {
-  filter: brightness(1.2);
+.prose a:hover {
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(255, 200, 0, 0.5) 50%, rgba(255, 200, 0, 0.5) 100%);
+  text-decoration: none !important;
 }
 
-/* Random underline class - color is set directly by JavaScript */
-a.random-underline {
-  text-decoration: underline !important;
-  text-decoration-thickness: 0.15em !important;
-  text-underline-offset: 0.2em !important;
+/* Dark mode prose links */
+.dark .prose a {
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(255, 200, 0, 0.15) 50%, rgba(255, 200, 0, 0.15) 100%);
+  text-decoration: none !important;
+}
+
+.dark .prose a:hover {
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(255, 200, 0, 0.25) 50%, rgba(255, 200, 0, 0.25) 100%);
+  text-decoration: none !important;
+}
+
+/* Non-prose links - hover effect only (exclude navigation, header, footer, etc.) */
+a:not(.prose a):not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(nav a):not(.tag):not(.category-display):not(.tagged-with-item):not(.show-more-btn):not(.show-less-btn):not(.tag-item):hover {
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(255, 200, 0, 0.2) 50%, rgba(255, 200, 0, 0.2) 100%);
+  padding: 0.1em 0.2em;
+  margin: -0.1em -0.2em;
+  border-radius: 0.2em;
+}
+
+.dark a:not(.prose a):not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(nav a):not(.tag):not(.category-display):not(.tagged-with-item):not(.show-more-btn):not(.show-less-btn):not(.tag-item):hover {
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(255, 200, 0, 0.1) 50%, rgba(255, 200, 0, 0.1) 100%);
 }
 
 /* Smooth hover effects for headings */
@@ -111,27 +130,34 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
   font-weight: 700;
 }
 
-/* Random colored underline effect - removed duplicate, handled above */
-
-/* Special links that have icons/SVGs - color set by JavaScript */
-a.icon-link.random-underline span {
-  text-decoration: underline;
+/* Link exceptions - no highlighting for these */
+.no-underline,
+.nav-area a,
+header a,
+footer a,
+nav a,
+.tag,
+.category-display,
+.tagged-with-item,
+.show-more-btn,
+.show-less-btn,
+.tag-item {
+  background: none !important;
 }
 
-/* Make sure underlines render properly across browsers */
-@supports (text-underline-offset: 0.15em) {
-  a.random-underline {
-    text-underline-offset: 0.15em;
-  }
-}
-
-/* Fallback for browsers that don't support modern text decoration properties */
-@supports not (text-decoration-color: #0066cc) {
-  a.random-underline {
-    border-bottom: 2px solid;
-    text-decoration: none;
-    padding-bottom: 2px;
-  }
+/* Prevent hover highlighting effects while preserving existing styles */
+.no-underline:hover,
+.nav-area a:hover,
+header a:hover,
+footer a:hover,
+nav a:hover,
+.tag:hover,
+.category-display:hover,
+.tagged-with-item:hover,
+.show-more-btn:hover,
+.show-less-btn:hover,
+.tag-item:hover {
+  background: none !important;
 }
 
 /* Disable hover effects for elements with no-hover class */
