@@ -84,7 +84,7 @@ a {
 
 /* Prose links - persistent subtle highlighting */
 .prose a {
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(255, 200, 0, 0.3) 50%, rgba(255, 200, 0, 0.3) 100%);
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(139, 92, 246, 0.4) 50%, rgba(139, 92, 246, 0.4) 100%);
   background-size: 100% 100%;
   padding: 0.1em 0.2em;
   margin: -0.1em -0.2em;
@@ -94,31 +94,31 @@ a {
 }
 
 .prose a:hover {
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(255, 200, 0, 0.5) 50%, rgba(255, 200, 0, 0.5) 100%);
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(139, 92, 246, 0.6) 50%, rgba(139, 92, 246, 0.6) 100%);
   text-decoration: none !important;
 }
 
 /* Dark mode prose links */
 .dark .prose a {
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(255, 200, 0, 0.15) 50%, rgba(255, 200, 0, 0.15) 100%);
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(139, 92, 246, 0.4) 50%, rgba(139, 92, 246, 0.4) 100%);
   text-decoration: none !important;
 }
 
 .dark .prose a:hover {
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(255, 200, 0, 0.25) 50%, rgba(255, 200, 0, 0.25) 100%);
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(139, 92, 246, 0.6) 50%, rgba(139, 92, 246, 0.6) 100%);
   text-decoration: none !important;
 }
 
 /* Non-prose links - hover effect only (exclude navigation, header, footer, etc.) */
 a:not(.prose a):not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(nav a):not(.tag):not(.category-display):not(.tagged-with-item):not(.show-more-btn):not(.show-less-btn):not(.tag-item):hover {
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(255, 200, 0, 0.2) 50%, rgba(255, 200, 0, 0.2) 100%);
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(139, 92, 246, 0.3) 50%, rgba(139, 92, 246, 0.3) 100%);
   padding: 0.1em 0.2em;
   margin: -0.1em -0.2em;
   border-radius: 0.2em;
 }
 
 .dark a:not(.prose a):not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(nav a):not(.tag):not(.category-display):not(.tagged-with-item):not(.show-more-btn):not(.show-less-btn):not(.tag-item):hover {
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(255, 200, 0, 0.1) 50%, rgba(255, 200, 0, 0.1) 100%);
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(139, 92, 246, 0.3) 50%, rgba(139, 92, 246, 0.3) 100%);
 }
 
 /* Smooth hover effects for headings */
