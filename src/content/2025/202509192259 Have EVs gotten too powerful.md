@@ -1,12 +1,15 @@
 ---
-title: "Have EVs gotten too powerful"
-slug: "have-evs-gotten-too-powerful"
-pubDate: 2025-09-19T23:04:38+03:00
-updatedDate: 2025-09-19T23:04:38+03:00
+title: Have EVs gotten too powerful
+slug: have-evs-gotten-too-powerful
+pubDate: 2025-09-19T20:04:38.000Z
+updatedDate: 2025-09-19T20:04:38.000Z
 category: micro
 tags:
   - electric-cars
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115244193947549749'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lzeqjxfvbh2m'
+  - 'https://www.threads.com/@sajal24x7/post/DO4LuP2Dxpu'
 ---
 [EVs Have Gotten Too Powerful by Jason Barlow](https://www.wired.com/story/evs-have-gotten-too-powerful/)
 
