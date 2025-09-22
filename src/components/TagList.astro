@@ -60,15 +60,15 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
     <h3 class="tagged-with-title">{title}</h3>
     <div class="tagged-with-list">
       {popularTags.map((tag) => (
-        <a 
-          href={`/tags/${tag.toLowerCase()}/`} 
-          class="tagged-with-item"
+        <a
+          href={`/tags/${tag.toLowerCase()}/`}
+          class="tagged-with-item tag-chip"
         >
           {tag.toUpperCase()} ({tagCounts[tag]})
         </a>
       ))}
       {hasMoreTags && showMore && (
-        <button class="show-more-btn" data-target={componentId}>
+        <button class="show-more-btn tag-chip" data-target={componentId}>
           Show more →
         </button>
       )}
@@ -76,14 +76,14 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
     {hasMoreTags && showMore && (
       <div class="hidden-tags" id={`${componentId}-hidden`} style="display: none;">
         {allSortedTags.slice(maxTags).map((tag) => (
-          <a 
-            href={`/tags/${tag.toLowerCase()}/`} 
-            class="tagged-with-item"
+          <a
+            href={`/tags/${tag.toLowerCase()}/`}
+            class="tagged-with-item tag-chip"
           >
             {tag.toUpperCase()} ({tagCounts[tag]})
           </a>
         ))}
-        <button class="show-less-btn" data-target={componentId}>
+        <button class="show-less-btn tag-chip" data-target={componentId}>
           Show less ←
         </button>
       </div>
@@ -187,7 +187,7 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
       button.addEventListener('click', function() {
         const targetId = this.getAttribute('data-target');
         const hiddenTags = document.getElementById(`${targetId}-hidden`);
-        const showMoreBtn = document.querySelector(`[data-target="${targetId}"].show-more-btn`);
+        const showMoreBtn = document.querySelector<HTMLElement>(`[data-target="${targetId}"].show-more-btn`);
         
         // Hide extra tags
         hiddenTags.style.display = 'none';

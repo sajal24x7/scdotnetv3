@@ -113,9 +113,9 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
             <div class="mb-8 flex justify-center">
               <div class="flex flex-wrap gap-2 justify-center">
                 {entry.data.tags.map((tag: string) => (
-                  <a 
-                    href={`/tags/${tag.toLowerCase()}/`} 
-                    class="tag"
+                  <a
+                    href={`/tags/${tag.toLowerCase()}/`}
+                    class="tag tag-chip"
                   >
                     {tag.toUpperCase()}
                   </a>
@@ -199,34 +199,16 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
 <style>
   .tag {
     display: inline-block;
-    color: #8b5cf6;
-    text-decoration: none;
     padding: 0.25rem 0.5rem;
-    border: 1px solid #8b5cf6;
     border-radius: 0.25rem;
     font-size: 0.75rem;
     font-weight: 500;
-    transition: all 0.2s ease;
-    background: transparent;
     white-space: nowrap;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
   }
 
-  .tag:hover {
-    color: #7c3aed;
-    border-color: #7c3aed;
-    background: rgba(139, 92, 246, 0.05);
-  }
-
-  :global(.dark) .tag {
-    color: #a78bfa;
-    border-color: #a78bfa;
-  }
-
-  :global(.dark) .tag:hover {
-    color: #c4b5fd;
-    border-color: #c4b5fd;
-    background: rgba(167, 139, 250, 0.1);
-  }
+  /* Visual states provided by shared tag-chip utility */
 
   /* Backlinks styling */
   .backlink-container {

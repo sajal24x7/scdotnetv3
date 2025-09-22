@@ -6,9 +6,10 @@ interface Props {
 
 const { tag, href } = Astro.props;
 const tagHref = href || `/tags/${tag.toLowerCase()}/`;
+const classes = 'tag tag-chip';
 ---
 
-<a href={tagHref} class="tag">
+<a href={tagHref} class={classes}>
   {tag.toUpperCase()}
 </a>
 
