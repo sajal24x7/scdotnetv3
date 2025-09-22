@@ -1,285 +1,231 @@
 /* Global styles for astronautical-aperture */
 
-/* Font Family Declarations */
-body {
-  font-family: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
-  font-size: var(--text-normal);
-  line-height: 1.6;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Merriweather', ui-serif, Georgia, serif;
-  line-height: 1.2;
-}
+@layer base {
+  :root {
+    --random-link-color: currentColor;
+    --link-highlight: rgba(139, 92, 246, 0.35);
+    --link-highlight-hover: rgba(139, 92, 246, 0.6);
+    --hr-color: #666666;
 
-/* Fluid Typography for Headings */
-h1 {
-  font-size: var(--text-huge);
-  font-weight: 600;
-}
+    --tag-color-rgb: 139, 92, 246;
+    --tag-hover-rgb: 124, 58, 237;
+    --tag-dark-color-rgb: 167, 139, 250;
+    --tag-dark-hover-rgb: 196, 181, 253;
 
-h2 {
-  font-size: var(--text-large);
-  font-weight: 600;
-}
+    --category-color-rgb: 202, 138, 4;
+    --category-border-rgb: 234, 179, 8;
+    --category-dark-color-rgb: 251, 191, 36;
+    --category-dark-border-rgb: 245, 158, 11;
 
-h3 {
-  font-size: var(--text-large);
-  font-weight: 500;
-}
+    --text-small: clamp(0.875rem, 2vw, 1rem);
+    --text-normal: clamp(1rem, 2.5vw, 1.125rem);
+    --text-large: clamp(1.25rem, 4vw, 1.5rem);
+    --text-huge: clamp(2rem, 8vw, 3rem);
+  }
 
-h4, h5, h6 {
-  font-size: var(--text-normal);
-  font-weight: 500;
-}
+  .dark {
+    --link-highlight: rgba(167, 139, 250, 0.35);
+    --link-highlight-hover: rgba(167, 139, 250, 0.6);
+    --hr-color: #444444;
+  }
 
-/* Fluid Typography Utility Classes */
-.text-small {
-  font-size: var(--text-small);
-}
+  body {
+    font-family: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-size: var(--text-normal);
+    line-height: 1.6;
+  }
 
-.text-normal {
-  font-size: var(--text-normal);
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Merriweather', ui-serif, Georgia, serif;
+    line-height: 1.2;
+    transition: font-weight 0.2s ease;
+  }
 
-.text-large {
-  font-size: var(--text-large);
-}
+  h1 {
+    font-size: var(--text-huge);
+    font-weight: 600;
+  }
 
-.text-huge {
-  font-size: var(--text-huge);
-}
+  h2 {
+    font-size: var(--text-large);
+    font-weight: 600;
+  }
 
-/* Custom Variables */
-:root {
-  --random-link-color: inherit; /* Default link color */
-  --link-color: #0066cc; /* Blue link color for light mode */
-  --hr-color: #666666; /* Darker color for horizontal rules in light mode */
-  
-  /* Fluid Typography Variables */
-  --text-small: clamp(0.875rem, 2vw, 1rem);
-  --text-normal: clamp(1rem, 2.5vw, 1.125rem);
-  --text-large: clamp(1.25rem, 4vw, 1.5rem);
-  --text-huge: clamp(2rem, 8vw, 3rem);
-}
+  h3 {
+    font-size: var(--text-large);
+    font-weight: 500;
+  }
 
-.dark {
-  --link-color: #4d9fff; /* Lighter blue for dark mode */
-  --hr-color: #444444; /* Darker color for horizontal rules in dark mode */
-}
+  h4,
+  h5,
+  h6 {
+    font-size: var(--text-normal);
+    font-weight: 500;
+  }
 
-/* Horizontal rule styling */
-hr {
-  border: none;
-  border-top: 1px solid var(--hr-color);
-  margin: 1.5rem 0;
-}
+  h1:hover,
+  h2:hover,
+  h3:hover,
+  h4:hover,
+  h5:hover,
+  h6:hover {
+    font-weight: 700;
+  }
 
-/* Manuel Moreale inspired link styles */
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
+  hr {
+    border: none;
+    border-top: 1px solid var(--hr-color);
+    margin: 1.5rem 0;
+  }
 
-/* Prose links - persistent subtle highlighting */
-.prose a {
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(139, 92, 246, 0.4) 50%, rgba(139, 92, 246, 0.4) 100%);
-  background-size: 100% 100%;
-  padding: 0.1em 0.2em;
-  margin: -0.1em -0.2em;
-  border-radius: 0.2em;
-  transition: background 0.3s ease;
-  text-decoration: none !important;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease, background-color 0.2s ease, text-decoration-color 0.2s ease;
+  }
 
-.prose a:hover {
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(139, 92, 246, 0.6) 50%, rgba(139, 92, 246, 0.6) 100%);
-  text-decoration: none !important;
-}
+  header a,
+  footer a,
+  .nav-area a {
+    text-decoration: none;
+  }
 
-/* Dark mode prose links */
-.dark .prose a {
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(139, 92, 246, 0.4) 50%, rgba(139, 92, 246, 0.4) 100%);
-  text-decoration: none !important;
-}
+  .nav-active {
+    text-decoration: underline;
+    text-decoration-color: var(--random-link-color);
+    text-decoration-thickness: 0.15em;
+    text-underline-offset: 0.2em;
+  }
 
-.dark .prose a:hover {
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(139, 92, 246, 0.6) 50%, rgba(139, 92, 246, 0.6) 100%);
-  text-decoration: none !important;
-}
+  .no-underline {
+    text-decoration: none;
+  }
 
-/* Non-prose links - hover effect only (exclude navigation, header, footer, etc.) */
-a:not(.prose a):not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(nav a):not(.tag):not(.category-display):not(.tagged-with-item):not(.show-more-btn):not(.show-less-btn):not(.tag-item):hover {
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(139, 92, 246, 0.3) 50%, rgba(139, 92, 246, 0.3) 100%);
-  padding: 0.1em 0.2em;
-  margin: -0.1em -0.2em;
-  border-radius: 0.2em;
-}
+  a.no-hover,
+  a.no-hover:hover {
+    text-decoration: none;
+  }
 
-.dark a:not(.prose a):not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(nav a):not(.tag):not(.category-display):not(.tagged-with-item):not(.show-more-btn):not(.show-less-btn):not(.tag-item):hover {
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(139, 92, 246, 0.3) 50%, rgba(139, 92, 246, 0.3) 100%);
-}
-
-/* Smooth hover effects for headings */
-h1, h2, h3, h4, h5, h6 {
-  transition: font-weight 0.2s ease;
-}
-
-h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
-  font-weight: 700;
-}
-
-/* Link exceptions - no highlighting for these */
-.no-underline,
-.nav-area a,
-header a,
-footer a,
-nav a,
-.tag,
-.category-display,
-.tagged-with-item,
-.show-more-btn,
-.show-less-btn,
-.tag-item {
-  background: none !important;
-}
-
-/* Prevent hover highlighting effects while preserving existing styles */
-.no-underline:hover,
-.nav-area a:hover,
-header a:hover,
-footer a:hover,
-nav a:hover,
-.tag:hover,
-.category-display:hover,
-.tagged-with-item:hover,
-.show-more-btn:hover,
-.show-less-btn:hover,
-.tag-item:hover {
-  background: none !important;
-}
-
-/* Disable hover effects for elements with no-hover class */
-a.no-hover {
-  text-decoration: none !important;
-}
-
-a.no-hover:hover {
-  text-decoration: none !important;
-}
-
-/* Disable hover effects on mobile devices for no-hover class */
-@media (hover: none) {
-  a.no-hover {
-    text-decoration: none !important;
+  @media (hover: none) {
+    a.no-hover {
+      text-decoration: none;
+    }
   }
 }
 
-/* Override classes for specific areas */
-/* Header and footer areas - no underlines */
-header a,
-footer a,
-.nav-area a {
-  text-decoration: none !important;
-}
-
-/* Navigation active state - persistent underline only on active items */
-.nav-active {
-  text-decoration: underline !important;
-  text-decoration-color: var(--random-link-color) !important;
-  text-decoration-thickness: 0.15em !important;
-  text-underline-offset: 0.2em !important;
-}
-
-/* Disable underlines for specific link types */
-a.no-underline {
-  text-decoration: none !important;
-}
-
-/* Override for tag elements - restore original purple styling */
-.tag,
-.tagged-with-item,
-.show-more-btn,
-.show-less-btn,
-.tag-item {
-  color: #8b5cf6 !important;
-  text-decoration: none !important;
-  border: 1px solid #8b5cf6 !important;
-  background: transparent !important;
-  transition: all 0.2s ease !important;
-}
-
-.tag:hover,
-.tagged-with-item:hover,
-.show-more-btn:hover,
-.show-less-btn:hover,
-.tag-item:hover {
-  color: #7c3aed !important;
-  border-color: #7c3aed !important;
-  background: rgba(139, 92, 246, 0.05) !important;
-}
-
-:global(.dark) .tag,
-:global(.dark) .tagged-with-item,
-:global(.dark) .show-more-btn,
-:global(.dark) .show-less-btn,
-:global(.dark) .tag-item {
-  color: #a78bfa !important;
-  border-color: #a78bfa !important;
-}
-
-:global(.dark) .tag:hover,
-:global(.dark) .tagged-with-item:hover,
-:global(.dark) .show-more-btn:hover,
-:global(.dark) .show-less-btn:hover,
-:global(.dark) .tag-item:hover {
-  color: #c4b5fd !important;
-  border-color: #c4b5fd !important;
-  background: rgba(167, 139, 250, 0.1) !important;
-}
-
-/* Active state for tag items */
-.tag-item.active {
-  color: #7c3aed !important;
-  border-color: #7c3aed !important;
-  background: rgba(139, 92, 246, 0.1) !important;
-  font-weight: 500 !important;
-}
-
-:global(.dark) .tag-item.active {
-  color: #c4b5fd !important;
-  border-color: #c4b5fd !important;
-  background: rgba(167, 139, 250, 0.15) !important;
-}
-
-/* Override for category display elements - restore original amber styling */
-.category-display {
-  color: #ca8a04 !important;
-  text-decoration: none !important;
-  border: 1px solid #eab308 !important;
-  background: transparent !important;
-  transition: all 0.2s ease !important;
-}
-
-.category-display:hover {
-  background: rgba(234, 179, 8, 0.05) !important;
-  border-color: #ca8a04 !important;
-}
-
-:global(.dark) .category-display {
-  color: #fbbf24 !important;
-  border-color: #f59e0b !important;
-}
-
-:global(.dark) .category-display:hover {
-  background: rgba(245, 158, 11, 0.1) !important;
-  border-color: #f59e0b !important;
-}
-
-/* Disable underlines on mobile devices for no-hover class */
-@media (hover: none) {
-  a.no-hover {
-    text-decoration: none !important;
+@layer components {
+  .link-hover {
+    color: inherit;
+    text-decoration: none;
+    padding: 0.1em 0.2em;
+    margin: -0.1em -0.2em;
+    border-radius: 0.2em;
+    transition: background 0.2s ease;
   }
-} 
+
+  .link-hover:hover {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 55%,
+      var(--link-highlight-hover) 55%,
+      var(--link-highlight-hover) 100%
+    );
+  }
+
+  .tag-chip,
+  .tag-chip:visited {
+    color: rgb(var(--tag-color-rgb));
+    border: 1px solid rgb(var(--tag-color-rgb));
+    background: transparent;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .tag-chip:hover {
+    color: rgb(var(--tag-hover-rgb));
+    border-color: rgb(var(--tag-hover-rgb));
+    background-color: rgba(var(--tag-color-rgb), 0.08);
+  }
+
+  .dark .tag-chip,
+  .dark .tag-chip:visited {
+    color: rgb(var(--tag-dark-color-rgb));
+    border-color: rgb(var(--tag-dark-color-rgb));
+  }
+
+  .dark .tag-chip:hover {
+    color: rgb(var(--tag-dark-hover-rgb));
+    border-color: rgb(var(--tag-dark-hover-rgb));
+    background-color: rgba(var(--tag-dark-color-rgb), 0.12);
+  }
+
+  .tag-chip-active,
+  .tag-item.active,
+  .tagged-with-item.active {
+    color: rgb(var(--tag-hover-rgb));
+    border-color: rgb(var(--tag-hover-rgb));
+    background-color: rgba(var(--tag-color-rgb), 0.16);
+    font-weight: 600;
+  }
+
+  .dark .tag-chip-active,
+  .dark .tag-item.active,
+  .dark .tagged-with-item.active {
+    color: rgb(var(--tag-dark-hover-rgb));
+    border-color: rgb(var(--tag-dark-hover-rgb));
+    background-color: rgba(var(--tag-dark-color-rgb), 0.2);
+  }
+
+  .category-chip,
+  .category-chip:visited {
+    color: rgb(var(--category-color-rgb));
+    border: 1px solid rgb(var(--category-border-rgb));
+    background: transparent;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .category-chip:hover {
+    border-color: rgb(var(--category-color-rgb));
+    background-color: rgba(var(--category-border-rgb), 0.12);
+  }
+
+  .dark .category-chip,
+  .dark .category-chip:visited {
+    color: rgb(var(--category-dark-color-rgb));
+    border-color: rgb(var(--category-dark-border-rgb));
+  }
+
+  .dark .category-chip:hover {
+    border-color: rgb(var(--category-dark-border-rgb));
+    background-color: rgba(var(--category-dark-border-rgb), 0.18);
+  }
+}
+
+@layer utilities {
+  .text-small {
+    font-size: var(--text-small);
+  }
+
+  .text-normal {
+    font-size: var(--text-normal);
+  }
+
+  .text-large {
+    font-size: var(--text-large);
+  }
+
+  .text-huge {
+    font-size: var(--text-huge);
+  }
+}
