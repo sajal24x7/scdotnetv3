@@ -34,7 +34,7 @@ These guidelines consolidate how the site should evolve without disrupting the c
 - Accessibility: add skip-to-content link, `nav`/`main` landmarks, `aria-current` on active links, and focus-visible styles.
 
 ### Technical
-- Layout: consolidate on `src/layouts/Layout.astro`. Deprecate `BaseLayout.astro` or migrate anything unique from it, then remove.
+- Layout: consolidate on `src/layouts/Layout.astro` as the single shell; audit and migrate any future unique bits there.
 - Theme/Fouc: use a single theme strategy. Apply the class before paint (same inline script everywhere) and add a proper toggle (persisted with `localStorage`).
 - SEO: add canonical URL; fix `og:url` to use a string URL; add JSON-LD for articles; enable `@astrojs/sitemap`; add `robots.txt`; ensure a custom `404` page exists.
 - Feeds: factor duplicate RSS logic into `src/utils/rss.ts` so section feeds only provide filters and titles.

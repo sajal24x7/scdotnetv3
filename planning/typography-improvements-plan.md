@@ -12,10 +12,12 @@ This plan implements modern typography improvements based on the Claude Typograp
 - Enhanced loading optimization
 - Improved reading experience
 
+> **Note:** Layout-related work now lives in `src/layouts/Layout.astro` after retiring the older base layout file.
+
 ## Phase 1: Variable Fonts Implementation
 
 ### P1.1 Update Google Fonts Links
-- [x] **File**: `src/layouts/BaseLayout.astro`
+- [x] **File**: `src/layouts/Layout.astro`
 - [x] **Change**: Replace current font links with variable font versions
 - [x] **Details**: 
   - Update Inter font to variable version with full weight range
@@ -51,7 +53,7 @@ This plan implements modern typography improvements based on the Claude Typograp
 ## Phase 3: Performance Optimizations
 
 ### P3.1 Font Loading Optimization
-- [x] **File**: `src/layouts/BaseLayout.astro`
+- [x] **File**: `src/layouts/Layout.astro`
 - [x] **Change**: Add font preconnect and display optimizations
 - [x] **Details**:
   - Ensure preconnect links are properly configured
@@ -138,7 +140,7 @@ This plan implements modern typography improvements based on the Claude Typograp
 ## Completed Tasks
 
 ### P1.1 Update Google Fonts Links ✅
-**Files Modified**: `src/layouts/BaseLayout.astro`
+**Files Modified**: `src/layouts/Layout.astro`
 **Changes Made**:
 - Updated Inter font to variable version with full weight range (100-900)
 - Updated Montserrat font to variable version with full weight range (100-900)
@@ -168,7 +170,7 @@ This plan implements modern typography improvements based on the Claude Typograp
 - Maintained proper spacing and readability
 
 ### P3.1 Font Loading Optimization ✅
-**Files Modified**: `src/layouts/BaseLayout.astro`
+**Files Modified**: `src/layouts/Layout.astro`
 **Changes Made**:
 - Preconnect links were already properly configured
 - Variable fonts provide better loading performance
@@ -250,7 +252,7 @@ This plan implements modern typography improvements based on the Claude Typograp
 
 ### P4.6 Header Font Update ✅
 **Files Modified**:
-- `src/layouts/BaseLayout.astro`
+- `src/layouts/Layout.astro`
 - `tailwind.config.mjs`
 - `src/styles/global.css`
 
