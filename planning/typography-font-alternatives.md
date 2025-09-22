@@ -85,7 +85,7 @@
 
 ### Option 1: Playfair Display (Recommended)
 ```html
-<!-- In BaseLayout.astro -->
+<!-- In Layout.astro -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@8..144,100..900&family=Playfair+Display:opsz,wght@8..144,400;500;600;700&display=swap" rel="stylesheet">
 ```
 

@@ -1,12 +1,15 @@
 ---
-title: "Data centers in space"
-slug: "data-centers-in-space"
-pubDate: 2025-09-20T18:49:14+03:00
-updatedDate: 2025-09-20T18:49:14+03:00
+title: Data centers in space
+slug: data-centers-in-space
+pubDate: 2025-09-20T15:49:14.000Z
+updatedDate: 2025-09-20T15:49:14.000Z
 category: micro
 tags:
   - datacenter
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115244194395321069'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lzeqk5rzin2l'
+  - 'https://www.threads.com/@sajal24x7/post/DO4LvCOD9ri'
 ---
 [Big Tech Dreams of Putting Data Centers in Space by Sophie Hurwitz](https://www.wired.com/story/data-centers-gobble-earths-resources-what-if-we-took-them-to-space-instead/)
 
