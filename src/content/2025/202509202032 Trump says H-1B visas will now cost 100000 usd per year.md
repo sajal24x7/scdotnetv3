@@ -1,13 +1,16 @@
 ---
-title: "Trump says H-1B visas will now cost 100000 usd per year"
-slug: "trump-says-h-1b-visas-will-now-cost-100000-usd-per-year"
-pubDate: 2025-09-22T23:29:30+03:00
-updatedDate: 2025-09-22T23:29:30+03:00
+title: Trump says H-1B visas will now cost 100000 usd per year
+slug: trump-says-h-1b-visas-will-now-cost-100000-usd-per-year
+pubDate: 2025-09-22T20:29:30.000Z
+updatedDate: 2025-09-22T20:29:30.000Z
 category: micro
 tags:
   - usa
   - visa
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115249851482993784'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lzhawpsdmw2w'
+  - 'https://www.threads.com/@sajal24x7/post/DO6wYSsCMdH'
 ---
 [Trump says H-1B visas will now cost $100,000 per-year by Terrence O'Brien](https://www.theverge.com/news/782251/trump-h-1b-skilled-worker-visas-cost-100000)
 
