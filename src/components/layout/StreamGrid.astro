@@ -2,6 +2,7 @@
 import StreamCard from '../StreamCard.astro';
 import TimeDisplay from '../TimeDisplay.astro';
 import CategoryDisplay from '../CategoryDisplay.astro';
+import Tag from '../Tag.astro';
 import { marked } from 'marked';
 
 interface Props {
@@ -51,9 +52,7 @@ const renderedPosts = posts.map(post => ({
               {post.data.tags && post.data.tags.length > 0 && (
                 <div class="stream-grid-tags-sidebar">
                   {post.data.tags.map((tag: string) => (
-                    <a href={`/tags/${tag.toLowerCase()}/`} class="tag tag-chip">
-                      {tag.toUpperCase()}
-                    </a>
+                    <Tag tag={tag} />
                   ))}
                 </div>
               )}
@@ -202,19 +201,6 @@ const renderedPosts = posts.map(post => ({
     flex-wrap: wrap;
     justify-content: flex-end;
   }
-
-  .tag {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    background: transparent;
-    white-space: nowrap;
-  }
-
-  /* Tag colors and hover behavior are provided by the tag-chip utility */
 
   /* Mobile Layout */
   .stream-grid-mobile {

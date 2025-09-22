@@ -10,6 +10,7 @@ import Backlinks from '../components/Backlinks.astro';
 import SyndicationLinks from '../components/SyndicationLinks.astro';
 import Webmentions from '../components/Webmentions.astro';
 import { findBacklinksComprehensive } from '../utils/backlinks';
+import Tag from '../components/Tag.astro';
 
 export async function getStaticPaths() {
   // Get all year directories from content
@@ -113,12 +114,7 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
             <div class="mb-8 flex justify-center">
               <div class="flex flex-wrap gap-2 justify-center">
                 {entry.data.tags.map((tag: string) => (
-                  <a
-                    href={`/tags/${tag.toLowerCase()}/`}
-                    class="tag tag-chip"
-                  >
-                    {tag.toUpperCase()}
-                  </a>
+                  <Tag tag={tag} />
                 ))}
               </div>
             </div>
@@ -197,19 +193,6 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
 </script>
 
 <style>
-  .tag {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    white-space: nowrap;
-    text-decoration: none;
-    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-  }
-
-  /* Visual states provided by shared tag-chip utility */
-
   /* Backlinks styling */
   .backlink-container {
     margin-top: 3rem;

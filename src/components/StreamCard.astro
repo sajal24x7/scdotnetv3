@@ -2,6 +2,7 @@
 import TimeDisplay from './TimeDisplay.astro';
 import CategoryDisplay from './CategoryDisplay.astro';
 import SyndicationLinks from './SyndicationLinks.astro';
+import Tag from './Tag.astro';
 
 interface Props {
   title?: string;
@@ -82,9 +83,7 @@ const isMicroContent = (category: string) => category === 'micro';
         {tags && tags.length > 0 && (
           <div class="stream-tags">
             {tags.map((tag: string) => (
-              <a href={`/tags/${tag.toLowerCase()}/`} class="tag tag-chip">
-                {tag.toUpperCase()}
-              </a>
+              <Tag tag={tag} />
             ))}
           </div>
         )}
@@ -228,16 +227,6 @@ const isMicroContent = (category: string) => category === 'micro';
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
-  }
-
-  .tag {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    white-space: nowrap;
-    /* Color, border, and hover styles now handled by global CSS */
   }
 
   /* Prose styling for micro content */

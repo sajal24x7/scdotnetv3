@@ -1,26 +1,50 @@
 ---
-interface Props {
-  tag: string;
-  href?: string;
+import type { HTMLAttributes } from 'astro/types';
+
+type TagAttributes = HTMLAttributes<'a'> & HTMLAttributes<'span'>;
+
+interface Props extends TagAttributes {
+    tag: string;
+    href?: string;
+    label?: string;
+    uppercase?: boolean;
+    prefix?: string;
+    suffix?: string;
+    isActive?: boolean;
+    as?: 'a' | 'span';
+    class?: string;
+    className?: string;
 }
 
-const { tag, href } = Astro.props;
-const tagHref = href || `/tags/${tag.toLowerCase()}/`;
-const classes = 'tag tag-chip';
+const {
+    tag,
+    href,
+    label,
+    uppercase = true,
+    prefix = '',
+    suffix = '',
+    isActive = false,
+    as,
+    class: classAttr = '',
+    className = '',
+    ...rest
+} = Astro.props as Props & Record<string, any>;
+
+const elementTag: 'a' | 'span' = as ?? (href ? 'a' : 'span');
+const computedHref = elementTag === 'a' ? href ?? `/tags/${tag.toLowerCase()}/` : undefined;
+const classes = ['tag', 'tag-chip', isActive ? 'tag-chip-active' : '', classAttr || className]
+    .filter(Boolean)
+    .join(' ');
+const baseLabel = label ?? tag;
+const displayLabel = `${prefix}${uppercase ? baseLabel.toUpperCase() : baseLabel}${suffix}`;
 ---
 
-<a href={tagHref} class={classes}>
-  {tag.toUpperCase()}
-</a>
-
-<style>
-  .tag {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    white-space: nowrap;
-    /* Color, border, and hover styles now handled by global CSS */
-  }
-</style>
+{elementTag === 'a' ? (
+    <a href={computedHref} class={classes} {...rest}>
+        {displayLabel}
+    </a>
+) : (
+    <span class={classes} {...rest}>
+        {displayLabel}
+    </span>
+)}
