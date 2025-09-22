@@ -12,7 +12,7 @@ const { tags, title = "Tags" } = Astro.props;
     <h3 class="tag-sidebar-title">{title}</h3>
     <div class="tag-list">
       {tags.map((tag) => (
-        <a href={`/tags/${tag.toLowerCase()}/`} class="tag-item">
+        <a href={`/tags/${tag.toLowerCase()}/`} class="tag-item tag-chip">
           {tag.toUpperCase()}
         </a>
       ))}

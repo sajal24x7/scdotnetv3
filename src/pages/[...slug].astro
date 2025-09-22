@@ -113,9 +113,9 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
             <div class="mb-8 flex justify-center">
               <div class="flex flex-wrap gap-2 justify-center">
                 {entry.data.tags.map((tag: string) => (
-                  <a 
-                    href={`/tags/${tag.toLowerCase()}/`} 
-                    class="tag"
+                  <a
+                    href={`/tags/${tag.toLowerCase()}/`}
+                    class="tag tag-chip"
                   >
                     {tag.toUpperCase()}
                   </a>
