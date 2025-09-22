@@ -1,6 +1,6 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2025-09-22T15:50:11.196Z
-// Found 16 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, artificial-condition.jpg, black-box-thinking.jpg, children-of-time.jpg, excellent-advice-for-living.jpg, men-without-women.jpg, nexus.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-three-body-problem.jpg
+// Generated on: 2025-09-22T20:15:57.761Z
+// Found 17 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, artificial-condition.jpg, black-box-thinking.jpg, children-of-time.jpg, excellent-advice-for-living.jpg, men-without-women.jpg, nexus.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-mysterious-affair-at-styles.jpg, the-three-body-problem.jpg
 
 import a_closed_and_common_orbit_jpg from '../images/bookshelf/a-closed-and-common-orbit.jpg';
 import abundance_jpg from '../images/bookshelf/abundance.jpg';
@@ -17,6 +17,7 @@ import record_of_a_spaceborn_few_jpg from '../images/bookshelf/record-of-a-space
 import rogue_protocol_jpg from '../images/bookshelf/rogue-protocol.jpg';
 import the_dark_forest_jpg from '../images/bookshelf/the-dark-forest.jpg';
 import the_galaxy_and_the_ground_within_jpg from '../images/bookshelf/the-galaxy-and-the-ground-within.jpg';
+import the_mysterious_affair_at_styles_jpg from '../images/bookshelf/the-mysterious-affair-at-styles.jpg';
 import the_three_body_problem_jpg from '../images/bookshelf/the-three-body-problem.jpg';
 
 export const bookCoverImages: Record<string, any> = {
@@ -35,6 +36,7 @@ export const bookCoverImages: Record<string, any> = {
   'rogue-protocol.jpg': rogue_protocol_jpg,
   'the-dark-forest.jpg': the_dark_forest_jpg,
   'the-galaxy-and-the-ground-within.jpg': the_galaxy_and_the_ground_within_jpg,
+  'the-mysterious-affair-at-styles.jpg': the_mysterious_affair_at_styles_jpg,
   'the-three-body-problem.jpg': the_three_body_problem_jpg
 };
 
@@ -42,4 +44,4 @@ export function getBookCoverImage(filename: string) {
   return bookCoverImages[filename];
 }
 
-export type BookCoverFilename = 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'all-systems-red.jpg' | 'artificial-condition.jpg' | 'black-box-thinking.jpg' | 'children-of-time.jpg' | 'excellent-advice-for-living.jpg' | 'men-without-women.jpg' | 'nexus.jpg' | 'poems-to-fall-in-love-with.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'rogue-protocol.jpg' | 'the-dark-forest.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-three-body-problem.jpg';
+export type BookCoverFilename = 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'all-systems-red.jpg' | 'artificial-condition.jpg' | 'black-box-thinking.jpg' | 'children-of-time.jpg' | 'excellent-advice-for-living.jpg' | 'men-without-women.jpg' | 'nexus.jpg' | 'poems-to-fall-in-love-with.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'rogue-protocol.jpg' | 'the-dark-forest.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-mysterious-affair-at-styles.jpg' | 'the-three-body-problem.jpg';
