@@ -75,7 +75,7 @@ Serif fonts can be tricky on mobile - they need to be readable at small sizes wh
 
 ### Option 1: Source Serif Pro (Recommended)
 ```html
-<!-- In BaseLayout.astro -->
+<!-- In Layout.astro -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@8..144,100..900&family=Source+Serif+Pro:opsz,wght@8..144,400;500;600;700&display=swap" rel="stylesheet">
 ```
 

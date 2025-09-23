@@ -5,9 +5,10 @@ interface Props {
 }
 
 const { category, className = '' } = Astro.props;
+const classes = ['category-display', 'category-chip', className].filter(Boolean).join(' ');
 ---
 
-<span class={`category-display ${className}`}>
+<span class={classes}>
   {category.toLowerCase()}
 </span>
 

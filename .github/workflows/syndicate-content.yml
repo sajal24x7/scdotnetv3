@@ -22,6 +22,8 @@ on:
 jobs:
   syndicate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -29,7 +31,6 @@ jobs:
         with:
           # Need full history to commit back changes
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_PAT }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

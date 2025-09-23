@@ -1,8 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
-import PageHeader from '../../components/layout/PageHeader.astro';
-import TagList from '../../components/TagList.astro';
+import SectionLanding from '../../layouts/SectionLanding.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for garden (evergreen, til, bookshelf, stories, poems)
@@ -27,7 +26,7 @@ const transformedPosts = gardenPosts.map(transformPost);
   }}
   allPosts={allPosts}
 >
-    <PageHeader 
+    <SectionLanding
       title="Garden"
       description="A collection of evergreen notes, learning, books, stories, and poems from my projects and explorations."
       layout="centered"
@@ -42,42 +41,7 @@ const transformedPosts = gardenPosts.map(transformPost);
     <TagList category="garden" posts={allPosts} />
 
     <main class="garden-main">
+      
       <GardenGrid posts={transformedPosts} />
-    </main>
+    </SectionLanding>
 </Layout>
-
-<style>
-  .garden-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 0.5rem;
-  }
-
-  .garden-count {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #8b5cf6;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  :global(.dark) .garden-count {
-    color: #a78bfa;
-  }
-
-  .garden-main {
-    padding-bottom: 2rem;
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .garden-container {
-      max-width: none;
-      padding: 0;
-    }
-
-    .garden-main {
-      padding-bottom: 1.5rem;
-    }
-  }
-</style> 
