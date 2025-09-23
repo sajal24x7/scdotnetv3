@@ -76,7 +76,8 @@ class SearchModalElement extends HTMLElement {
     };
 
     private handleBackdropClick = (event: Event) => {
-        if (event.target === this) {
+        const target = event.target as HTMLElement | null;
+        if (target === this || target?.dataset.searchOverlay === 'true') {
             this.closeModal();
         }
     };

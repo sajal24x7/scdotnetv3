@@ -46,7 +46,7 @@ class TagListElement extends HTMLElement {
         }
 
         hiddenContainer.hidden = false;
-        trigger.classList.add('hidden');
+        trigger.hidden = true;
         trigger.setAttribute('aria-expanded', 'true');
 
         const focusable = hiddenContainer.querySelector<HTMLElement>('[data-action="show-less"]');
@@ -65,7 +65,7 @@ class TagListElement extends HTMLElement {
 
         const showMoreButton = this.querySelector<HTMLElement>(`[data-action="show-more"][data-hidden-id="${CSS.escape(hiddenId)}"]`);
         if (showMoreButton) {
-            showMoreButton.classList.remove('hidden');
+            showMoreButton.hidden = false;
             showMoreButton.setAttribute('aria-expanded', 'false');
             showMoreButton.focus();
         }

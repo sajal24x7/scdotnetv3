@@ -105,8 +105,12 @@ const layoutClasses = {
   {socialLinks.map((link) => (
     link.isSearch ? (
       <button 
+        type="button"
         class="search-trigger group flex items-center transition-transform hover:scale-105"
         aria-label="Search"
+        aria-haspopup="dialog"
+        aria-controls="search-modal"
+        data-search-modal="global-search"
       >
         <div class={sizeClasses[size]} set:html={link.icon} />
         {showLabels && (

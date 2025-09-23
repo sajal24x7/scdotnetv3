@@ -1,5 +1,6 @@
 ---
 import SocialLinks from './SocialLinks.astro';
+import multiLevelNavigationIslandScript from '../islands/multi-level-navigation-island.ts?url';
 
 interface Props {
   currentPage: string;
@@ -7,8 +8,6 @@ interface Props {
 }
 
 const { currentPage, layout = 'desktop' } = Astro.props;
-
-
 
 // Main navigation items (ordered): Garden | Stream | Nordletter | Books | About
 const mainNavItems = [
@@ -83,6 +82,17 @@ const getActiveMainSection = () => {
 
 const activeMainSection = getActiveMainSection();
 
+const mainActiveClasses = 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white border-gray-900 dark:border-white nav-active shadow-sm';
+const mainInactiveClasses = 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50 border-gray-600 dark:border-gray-400';
+const secondaryActiveClasses = 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-gray-900 dark:border-white nav-active shadow-sm border-b-2 border-blue-600';
+const secondaryInactiveClasses = 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50 border-gray-600 dark:border-gray-400';
+const sectionsWithSecondary = ['about', 'garden', 'stream'] as const;
+const secondaryNavEntries = sectionsWithSecondary.map((section) => ({
+  section,
+  items: secondaryNavItems[section] ?? []
+}));
+
+
 // Check if a link is active - improved logic for post pages
 const isActive = (href: string) => {
   if (href === '/' && currentPage === '/') return true;
@@ -122,72 +132,7 @@ const getActiveSubsection = () => {
 const activeSubsection = getActiveSubsection();
 ---
 
-<div class="w-full">
-  <script>
-    // Handle category filtering for tags pages and update navigation
-    document.addEventListener('DOMContentLoaded', function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const category = urlParams.get('category');
-      
-      if (category && window.location.pathname.startsWith('/tags/')) {
-        // Determine which main section this category belongs to
-        let mainSection = 'garden'; // default
-        let subsection = null;
-        
-        if (['stream', 'blog', 'micro', 'photo'].includes(category)) {
-          mainSection = 'stream';
-        } else if (['about', 'sajal', 'colophon', 'now', 'feeds'].includes(category)) {
-          mainSection = 'about';
-        }
-        
-        // Map category to subsection for highlighting
-        if (category === 'sajal') subsection = '/sajal/';
-        else if (category === 'colophon') subsection = '/colophon/';
-        else if (category === 'now') subsection = '/now/';
-        else if (category === 'feeds') subsection = '/feeds/';
-        else if (category === 'til') subsection = '/til/';
-        else if (category === 'evergreen') subsection = '/evergreen/';
-        else if (category === 'bookshelf') subsection = '/bookshelf/';
-        else if (category === 'stories') subsection = '/stories/';
-        else if (category === 'poems') subsection = '/poems/';
-        else if (category === 'blog') subsection = '/blog/';
-        else if (category === 'micro') subsection = '/micro/';
-        else if (category === 'photo') subsection = '/photos/';
-        
-        // Update the primary navigation highlighting
-        const primaryNav = document.querySelector('nav a[href="/' + mainSection + '/"]');
-        if (primaryNav) {
-          // Remove active state from current active item
-          const currentActive = document.querySelector('nav a.bg-gray-100\\/80, nav a.dark\\:bg-gray-800\\/80');
-          if (currentActive) {
-            currentActive.classList.remove('bg-gray-100/80', 'dark:bg-gray-800/80', 'text-gray-900', 'dark:text-white', 'shadow-sm');
-            currentActive.classList.add('text-gray-600', 'dark:text-gray-400');
-          }
-          
-          // Add active state to the correct section
-          primaryNav.classList.remove('text-gray-600', 'dark:text-gray-400');
-          primaryNav.classList.add('bg-gray-100/80', 'dark:bg-gray-800/80', 'text-gray-900', 'dark:text-white', 'shadow-sm');
-        }
-        
-        // Update secondary navigation highlighting if subsection exists
-        if (subsection) {
-          const secondaryNav = document.querySelector('nav a[href="' + subsection + '"]');
-          if (secondaryNav) {
-            // Remove active state from current secondary active item
-            const currentSecondaryActive = document.querySelector('nav a.bg-white\\/80, nav a.dark\\:bg-gray-900\\/80');
-            if (currentSecondaryActive) {
-              currentSecondaryActive.classList.remove('bg-white/80', 'dark:bg-gray-900/80', 'text-gray-900', 'dark:text-white', 'border-b-2', 'border-blue-600', 'shadow-sm');
-              currentSecondaryActive.classList.add('text-gray-600', 'dark:text-gray-400');
-            }
-            
-            // Add active state to the correct subsection
-            secondaryNav.classList.remove('text-gray-600', 'dark:text-gray-400');
-            secondaryNav.classList.add('bg-white/80', 'dark:bg-gray-900/80', 'text-gray-900', 'dark:text-white', 'border-b-2', 'border-blue-600', 'shadow-sm');
-          }
-        }
-      }
-    });
-  </script>
+<multi-level-navigation class="w-full block">
   <!-- Header: Name and Socials -->
   <div>
     <div class="container mx-auto px-4 max-w-6xl">
@@ -207,12 +152,15 @@ const activeSubsection = getActiveSubsection();
           {mainNavItems.map((item, index) => (
             <a
               href={item.href}
+              data-main-key={item.key}
+              data-active-class={mainActiveClasses}
+              data-inactive-class={mainInactiveClasses}
               class={`px-3 py-0.25 text-sm font-bold uppercase tracking-wide transition-colors duration-200 ${
                 index < mainNavItems.length - 1 ? 'border-r' : ''
               } border-b ${
                 isMainActive(item.key)
-                  ? 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white border-gray-900 dark:border-white nav-active'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50 border-gray-600 dark:border-gray-400'
+                  ? mainActiveClasses
+                  : mainInactiveClasses
               }`}
             >
               {item.label}
@@ -226,31 +174,43 @@ const activeSubsection = getActiveSubsection();
         </div>
 
         <!-- Secondary Navigation Row (persistent for About, Garden and Stream sections) -->
-        {activeMainSection && (activeMainSection === 'about' || activeMainSection === 'garden' || activeMainSection === 'stream') && (
-          <nav class="secondary-nav-row py-0.5 secondary-in-grid nav-area">
-            {secondaryNavItems[activeMainSection].map((item, index) => (
-              <a
-                href={item.href}
-                class={`px-3 py-0.25 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
-                  index < secondaryNavItems[activeMainSection].length - 1 ? 'border-r' : ''
-                } border-b ${
-                  (isActive(item.href) || (activeSubsection && activeSubsection === item.href))
-                    ? 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-gray-900 dark:border-white nav-active'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50 border-gray-600 dark:border-gray-400'
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        )}
+        <div class="secondary-in-grid nav-area">
+          {secondaryNavEntries.map(({ section, items }) => (
+            <nav
+              data-secondary-nav
+              data-section={section}
+              class="secondary-nav-row py-0.5"
+              hidden={section !== activeMainSection}
+            >
+              {items.map((item, index) => (
+                <a
+                  href={item.href}
+                  data-secondary-href={item.href}
+                  data-active-class={secondaryActiveClasses}
+                  data-inactive-class={secondaryInactiveClasses}
+                  class={`px-3 py-0.25 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
+                    index < items.length - 1 ? 'border-r' : ''
+                  } border-b ${
+                    (isActive(item.href) || (activeSubsection && activeSubsection === item.href))
+                      ? secondaryActiveClasses
+                      : secondaryInactiveClasses
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          ))}
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Primary Navigation Row moved above between name and socials -->
 
-</div>
+</multi-level-navigation>
+
+<script type="module" src={multiLevelNavigationIslandScript}></script>
 
 <style>
   /* Guardian-style typography */
@@ -350,6 +310,10 @@ const activeSubsection = getActiveSubsection();
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
+  }
+
+  .secondary-nav-row[hidden] {
+    display: none;
   }
   
   .secondary-nav-row::-webkit-scrollbar {

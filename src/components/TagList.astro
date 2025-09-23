@@ -1,6 +1,7 @@
 ---
 import { getAllPosts } from '../utils/content';
 import type { Post } from '../utils/content';
+import tagListIslandScript from './islands/tag-list-island.ts?url';
 
 interface Props {
   category: string;
@@ -60,11 +61,11 @@ const popularTags = allSortedTags.slice(0, maxTags);
 const hasMoreTags = allSortedTags.length > maxTags;
 
 // Generate unique ID for this component instance
-const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
+const componentId = `taglist-${Math.random().toString(36).slice(2, 11)}`;
 ---
 
 {popularTags.length > 0 && (
-  <div class="tagged-with" id={componentId}>
+  <tag-list class="tagged-with" id={componentId}>
     <h3 class="tagged-with-title">{title}</h3>
     <div class="tagged-with-list">
       {popularTags.map((tag) => (
@@ -76,13 +77,20 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
         </a>
       ))}
       {hasMoreTags && showMore && (
-        <button class="show-more-btn tag-chip" data-target={componentId}>
+        <button
+          type="button"
+          class="show-more-btn tag-chip"
+          data-action="show-more"
+          data-hidden-id={`${componentId}-hidden`}
+          aria-expanded="false"
+          aria-controls={`${componentId}-hidden`}
+        >
           Show more →
         </button>
       )}
     </div>
     {hasMoreTags && showMore && (
-      <div class="hidden-tags" id={`${componentId}-hidden`} style="display: none;">
+      <div class="hidden-tags" id={`${componentId}-hidden`} hidden>
         {allSortedTags.slice(maxTags).map((tag) => (
           <a
             href={`/tags/${tag.toLowerCase()}/`}
@@ -91,16 +99,23 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
             {tag.toUpperCase()} ({tagCounts[tag]})
           </a>
         ))}
-        <button class="show-less-btn tag-chip" data-target={componentId}>
+        <button
+          type="button"
+          class="show-less-btn tag-chip"
+          data-action="show-less"
+          data-hidden-id={`${componentId}-hidden`}
+          aria-controls={`${componentId}-hidden`}
+        >
           Show less ←
         </button>
       </div>
     )}
-  </div>
+  </tag-list>
 )}
 
 <style>
   .tagged-with {
+    display: block;
     margin-bottom: 2rem;
   }
 
@@ -152,6 +167,10 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
     margin-top: 0.5rem;
   }
 
+  .hidden-tags[hidden] {
+    display: none !important;
+  }
+
   /* Mobile adjustments */
   @media (max-width: 640px) {
     .tagged-with {
@@ -175,38 +194,4 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
   }
 </style>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const showMoreButtons = document.querySelectorAll<HTMLButtonElement>('.show-more-btn');
-    showMoreButtons.forEach(button => {
-      button.addEventListener('click', (event) => {
-        const targetButton = event.currentTarget as HTMLButtonElement | null;
-        if (!targetButton) return;
-        const targetId = targetButton.getAttribute('data-target');
-        if (!targetId) return;
-        const hiddenTags = document.getElementById(`${targetId}-hidden`) as HTMLElement | null;
-        if (!hiddenTags) return;
-
-        hiddenTags.style.display = 'flex';
-        targetButton.style.display = 'none';
-      });
-    });
-
-    const showLessButtons = document.querySelectorAll<HTMLButtonElement>('.show-less-btn');
-    showLessButtons.forEach(button => {
-      button.addEventListener('click', (event) => {
-        const targetButton = event.currentTarget as HTMLButtonElement | null;
-        if (!targetButton) return;
-        const targetId = targetButton.getAttribute('data-target');
-        if (!targetId) return;
-        const hiddenTags = document.getElementById(`${targetId}-hidden`) as HTMLElement | null;
-        if (!hiddenTags) return;
-        const showMoreBtn = document.querySelector<HTMLButtonElement>(`[data-target="${targetId}"].show-more-btn`);
-        hiddenTags.style.display = 'none';
-        if (showMoreBtn) {
-          showMoreBtn.style.display = 'inline-block';
-        }
-      });
-    });
-  });
-</script>
+<script type="module" src={tagListIslandScript}></script>

@@ -106,13 +106,9 @@ class MultiLevelNavigationElement extends HTMLElement {
         const secondaryNavs = this.querySelectorAll<HTMLElement>('[data-secondary-nav]');
         secondaryNavs.forEach((nav) => {
             const section = nav.dataset.section ?? '';
-            if (section === targetMain) {
-                nav.classList.remove('hidden');
-                this.updateSecondaryLinks(nav, targetSubsection);
-            } else {
-                nav.classList.add('hidden');
-                this.updateSecondaryLinks(nav, null);
-            }
+            const isTargetSection = section === targetMain;
+            nav.toggleAttribute('hidden', !isTargetSection);
+            this.updateSecondaryLinks(nav, isTargetSection ? targetSubsection : null);
         });
     }
 
