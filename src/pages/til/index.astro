@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
-import PageHeader from '../../components/layout/PageHeader.astro';
+import SectionLanding from '../../layouts/SectionLanding.astro';
 import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
@@ -15,9 +15,9 @@ const tilPosts = allPosts
 const transformedPosts = tilPosts.map(transformPost);
 ---
 
-<Layout 
-  title="Today I Learned" 
-  description="Quick notes about things I've learned while working with various technologies, tools, and systems" 
+<Layout
+  title="Today I Learned"
+  description="Quick notes about things I've learned while working with various technologies, tools, and systems"
   currentPage="/til/"
   pageWrapper={{
     maxWidth: '7xl',
@@ -25,8 +25,9 @@ const transformedPosts = tilPosts.map(transformPost);
     centered: true,
     className: 'px-2'
   }}
+  allPosts={allPosts}
 >
-    <PageHeader 
+    <SectionLanding
       title="Today I Learned"
       description="Quick notes about things I've learned while working with various technologies, tools, and systems."
       layout="centered"
@@ -38,45 +39,9 @@ const transformedPosts = tilPosts.map(transformPost);
       {transformedPosts.length} {transformedPosts.length === 1 ? 'note' : 'notes'}
     </div>
     
-    <TagList category="til" />
+    <TagList category="til" posts={allPosts} />
 
     <main class="til-main">
       <GardenGrid posts={transformedPosts} contentType="til" />
-    </main>
+    </SectionLanding>
 </Layout>
-
-<style>
-  .til-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 0.5rem;
-  }
-
-  .til-count {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #8b5cf6;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  :global(.dark) .til-count {
-    color: #a78bfa;
-  }
-
-  .til-main {
-    padding-bottom: 2rem;
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .til-container {
-      max-width: none;
-      padding: 0;
-    }
-
-    .til-main {
-      padding-bottom: 1.5rem;
-    }
-  }
-</style> 

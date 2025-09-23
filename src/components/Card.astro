@@ -1,6 +1,7 @@
 ---
 import TimeDisplay from './TimeDisplay.astro';
 import CategoryDisplay from './CategoryDisplay.astro';
+import Tag from './Tag.astro';
 
 const { title, description, pubDate, category, image, link, tags } = Astro.props;
 ---
@@ -20,7 +21,7 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
     <div class="card-body">
       <h2 class="card-title prose">
         {link ? (
-          <a href={link} class="card-link">
+          <a href={link} class="card-link link-hover">
             {title}
           </a>
         ) : (
@@ -48,9 +49,7 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
       {tags && tags.length > 0 && (
         <div class="card-tags">
           {tags.map((tag: string) => (
-            <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
-              {tag.toUpperCase()}
-            </a>
+            <Tag tag={tag} />
           ))}
         </div>
       )}
@@ -236,16 +235,6 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 0.75rem;
-  }
-
-  .tag {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    white-space: nowrap;
-    /* Color, border, and hover styles now handled by global CSS */
   }
 
   /* Mobile adjustments */

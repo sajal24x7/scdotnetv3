@@ -16,8 +16,8 @@ const recentPosts = sortedPosts.slice(0, 15); // Show more posts
 const transformedRecentPosts = recentPosts.map(transformPost);
 ---
 
-<Layout 
-  title="RSS Feeds - Sajal Choudhary" 
+<Layout
+  title="RSS Feeds - Sajal Choudhary"
   description="Subscribe to RSS feeds for different types of content"
   currentPage="/feeds/"
   pageWrapper={{
@@ -25,6 +25,7 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     padding: 'md',
     centered: true
   }}
+  allPosts={allPosts}
 >
   <PageHeader 
     title="RSS Feeds"

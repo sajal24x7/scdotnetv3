@@ -16,6 +16,11 @@ export interface Post {
     editionDisplay?: string;
     format?: string;
     syndicationUrls?: string[];
+    author?: string;
+    bookStatus?: string;
+    bookCover?: string;
+    startedReading?: Date | string;
+    finishedReading?: Date | string;
   };
   slug: string;
   body: string;
@@ -31,19 +36,37 @@ export function getYearDirectories(): string[] {
     .sort();
 }
 
+let cachedPosts: Post[] | null = null;
+let cachedPostsPromise: Promise<Post[]> | null = null;
+
 // Get all posts from year collections
 export async function getAllPosts(): Promise<Post[]> {
-  const years = getYearDirectories();
-  const allPosts = await Promise.all(years.map(async year => {
-    const posts = await getCollection(year as any);
-    return posts.map((post: any) => ({
-      data: post.data,
-      slug: post.slug,
-      body: post.body,
-      render: post.render
-    }));
-  }));
-  return allPosts.flat() as Post[];
+  if (cachedPosts) {
+    return cachedPosts;
+  }
+
+  if (!cachedPostsPromise) {
+    cachedPostsPromise = (async () => {
+      const years = getYearDirectories();
+      const allPosts = await Promise.all(years.map(async year => {
+        const posts = await getCollection(year as any);
+        return posts.map((post: any) => ({
+          data: post.data,
+          slug: post.slug,
+          body: post.body,
+          render: post.render
+        }));
+      }));
+      cachedPosts = allPosts.flat() as Post[];
+      return cachedPosts;
+    })();
+  }
+
+  const posts = await cachedPostsPromise;
+  if (!cachedPosts) {
+    cachedPosts = posts;
+  }
+  return posts;
 }
 
 // Transform post for ContentGrid component

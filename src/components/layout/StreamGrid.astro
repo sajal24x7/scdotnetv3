@@ -3,6 +3,7 @@ import StreamCard from '../StreamCard.astro';
 import TimeDisplay from '../TimeDisplay.astro';
 import CategoryDisplay from '../CategoryDisplay.astro';
 import { parseMarkdown } from '../../utils/markdown';
+import Tag from '../Tag.astro';
 
 interface Props {
   posts: any[];
@@ -34,10 +35,10 @@ const renderedPosts = posts.map(post => ({
           <!-- Metadata for this specific post -->
           <div class="stream-grid-post-metadata">
             <div class="stream-grid-metadata">
-              <a href={post.data.link} class="stream-grid-date-link">
-                <TimeDisplay 
-                  date={post.data.pubDate} 
-                  category={post.data.category} 
+              <a href={post.data.link} class="stream-grid-date-link link-hover">
+                <TimeDisplay
+                  date={post.data.pubDate}
+                  category={post.data.category}
                   className="stream-grid-date"
                 />
               </a>
@@ -45,9 +46,7 @@ const renderedPosts = posts.map(post => ({
               {post.data.tags && post.data.tags.length > 0 && (
                 <div class="stream-grid-tags-sidebar">
                   {post.data.tags.map((tag: string) => (
-                    <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
-                      {tag.toUpperCase()}
-                    </a>
+                    <Tag tag={tag} />
                   ))}
                 </div>
               )}
@@ -195,37 +194,6 @@ const renderedPosts = posts.map(post => ({
     align-items: flex-end;
     flex-wrap: wrap;
     justify-content: flex-end;
-  }
-
-  .tag {
-    display: inline-block;
-    color: #8b5cf6;
-    text-decoration: none;
-    padding: 0.25rem 0.5rem;
-    border: 1px solid #8b5cf6;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    background: transparent;
-    white-space: nowrap;
-  }
-
-  .tag:hover {
-    color: #7c3aed;
-    border-color: #7c3aed;
-    background: rgba(139, 92, 246, 0.05);
-  }
-
-  :global(.dark) .tag {
-    color: #a78bfa;
-    border-color: #a78bfa;
-  }
-
-  :global(.dark) .tag:hover {
-    color: #c4b5fd;
-    border-color: #c4b5fd;
-    background: rgba(167, 139, 250, 0.1);
   }
 
   /* Mobile Layout */

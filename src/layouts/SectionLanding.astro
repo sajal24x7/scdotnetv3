@@ -1,0 +1,161 @@
+---
+import PageHeader from '../components/layout/PageHeader.astro';
+import TagList from '../components/TagList.astro';
+
+interface Props {
+    title: string;
+    description?: string;
+    countText?: string;
+    layout?: 'centered' | 'left-aligned';
+    headerSize?: 'sm' | 'md' | 'lg';
+    headerMaxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
+    tagCategory?: string;
+    tagTitle?: string;
+    tagMaxTags?: number;
+    tagShowMore?: boolean;
+    tagWrapperClass?: string;
+    tagListSpacing?: string;
+    contentClass?: string;
+    contentPadding?: string;
+    wrapperClass?: string;
+    countAlignment?: 'left' | 'center' | 'right';
+    countClass?: string;
+}
+
+const {
+    title,
+    description,
+    countText,
+    layout = 'centered',
+    headerSize = 'lg',
+    headerMaxWidth = '7xl',
+    tagCategory,
+    tagTitle,
+    tagMaxTags,
+    tagShowMore,
+    tagWrapperClass = '',
+    tagListSpacing,
+    contentClass = '',
+    contentPadding,
+    wrapperClass = '',
+    countAlignment = 'center',
+    countClass = ''
+} = Astro.props as Props;
+
+const alignmentClasses = {
+    left: 'text-left',
+    center: 'text-center',
+    right: 'text-right'
+} as const;
+
+const countAlignmentClass = alignmentClasses[countAlignment] ?? alignmentClasses.center;
+const hasTagListSlot = Astro.slots.has('tagList');
+const hasBeforeContentSlot = Astro.slots.has('beforeContent');
+const hasAfterCountSlot = Astro.slots.has('afterCount');
+---
+<section class={`section-landing ${wrapperClass}`.trim()}>
+    <PageHeader
+        title={title}
+        description={description}
+        layout={layout}
+        size={headerSize}
+        maxWidth={headerMaxWidth}
+    />
+
+    {countText && (
+        <p class={`section-count mb-6 ${countAlignmentClass} ${countClass}`.trim()}>
+            {countText}
+        </p>
+    )}
+
+    {hasAfterCountSlot && (
+        <div class="section-after-count">
+            <slot name="afterCount" />
+        </div>
+    )}
+
+    {hasTagListSlot ? (
+        <div
+            class={`section-taglist ${tagWrapperClass}`.trim()}
+            style={tagListSpacing ? `--section-taglist-margin: ${tagListSpacing};` : undefined}
+        >
+            <slot name="tagList" />
+        </div>
+    ) : (
+        tagCategory && (
+            <div
+                class={`section-taglist ${tagWrapperClass}`.trim()}
+                style={tagListSpacing ? `--section-taglist-margin: ${tagListSpacing};` : undefined}
+            >
+                <TagList
+                    category={tagCategory}
+                    title={tagTitle}
+                    maxTags={tagMaxTags}
+                    showMore={tagShowMore}
+                />
+            </div>
+        )
+    )}
+
+    {hasBeforeContentSlot && (
+        <div class="section-before-content">
+            <slot name="beforeContent" />
+        </div>
+    )}
+
+    <main
+        class={`section-content ${contentClass}`.trim()}
+        style={contentPadding ? `--section-content-padding: ${contentPadding};` : undefined}
+    >
+        <slot />
+    </main>
+</section>
+
+<style>
+    .section-count {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #8b5cf6;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    :global(.dark) .section-count {
+        color: #a78bfa;
+    }
+
+    .section-taglist {
+        margin-bottom: var(--section-taglist-margin, 2rem);
+    }
+
+    .section-content {
+        padding-bottom: var(--section-content-padding, 2rem);
+    }
+
+    .section-after-count {
+        margin-bottom: 1.5rem;
+    }
+
+    .section-before-content {
+        margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+        .section-content {
+            padding-bottom: var(--section-content-padding-mobile, 1.5rem);
+        }
+
+        .section-taglist {
+            margin-bottom: var(--section-taglist-margin-mobile, 1.5rem);
+        }
+
+        .section-after-count {
+            margin-bottom: 1.25rem;
+        }
+
+        .section-before-content {
+            margin-bottom: 1.5rem;
+        }
+    }
+</style>
+

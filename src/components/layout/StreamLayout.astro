@@ -134,13 +134,8 @@ const isMicroContent = (category: string) => category === 'micro';
   .stream-date-link {
     text-decoration: none;
     transition: all 0.2s ease;
-    color: #8b5cf6;
+    color: inherit;
     font-weight: 500;
-  }
-
-  .stream-date-link:hover {
-    color: #7c3aed;
-    text-decoration: underline;
   }
 
   .stream-date {
@@ -157,13 +152,7 @@ const isMicroContent = (category: string) => category === 'micro';
     color: #4b5563;
   }
 
-  :global(.dark) .stream-date-link {
-    color: #a78bfa;
-  }
-
-  :global(.dark) .stream-date-link:hover {
-    color: #c4b5fd;
-  }
+  /* Hover and dark-mode link colors are handled by shared utilities */
 
 
 
@@ -186,10 +175,7 @@ const isMicroContent = (category: string) => category === 'micro';
 
   .tag {
     display: inline-block;
-    color: #8b5cf6;
-    text-decoration: none;
     padding: 0.25rem 0.5rem;
-    border: 1px solid #8b5cf6;
     border-radius: 0.25rem;
     font-size: 0.75rem;
     font-weight: 500;
@@ -198,22 +184,7 @@ const isMicroContent = (category: string) => category === 'micro';
     white-space: nowrap;
   }
 
-  .tag:hover {
-    color: #7c3aed;
-    border-color: #7c3aed;
-    background: rgba(139, 92, 246, 0.05);
-  }
-
-  :global(.dark) .tag {
-    color: #a78bfa;
-    border-color: #a78bfa;
-  }
-
-  :global(.dark) .tag:hover {
-    color: #c4b5fd;
-    border-color: #c4b5fd;
-    background: rgba(167, 139, 250, 0.1);
-  }
+  /* Tag colors and hover behavior are provided by the tag-chip utility */
 
   .stream-title {
     font-size: 1.5rem;
@@ -233,13 +204,7 @@ const isMicroContent = (category: string) => category === 'micro';
     transition: color 0.2s ease;
   }
 
-  .stream-title-link:hover {
-    color: #3b82f6;
-  }
-
-  :global(.dark) .stream-title-link:hover {
-    color: #60a5fa;
-  }
+  /* Stream title hover styling now handled by link-hover utility */
 
   .stream-description {
     color: #4b5563;
@@ -256,22 +221,10 @@ const isMicroContent = (category: string) => category === 'micro';
   }
 
   .read-more-link {
-    color: #3b82f6;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.2s;
+    transition: color 0.2s ease;
   }
 
-  .read-more-link:hover {
-    color: #2563eb;
-    text-decoration: underline;
-  }
-
-  :global(.dark) .read-more-link {
-    color: #60a5fa;
-  }
-
-  :global(.dark) .read-more-link:hover {
-    color: #93c5fd;
-  }
+  /* Read more links inherit interactive styling from link-hover */
 </style>
