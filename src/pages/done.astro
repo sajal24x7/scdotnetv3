@@ -1,16 +1,10 @@
 ---
 import { getAllPosts } from '../utils/content';
 import Layout from '../layouts/Layout.astro';
-import { marked } from 'marked';
 import { formatDateRange } from '../utils/dateFormat';
 import PageHeader from '../components/layout/PageHeader.astro';
 import ProseWrapper from '../components/layout/ProseWrapper.astro';
-
-// Configure marked options
-marked.setOptions({
-  gfm: true, // GitHub Flavored Markdown
-  breaks: true // Convert line breaks to <br>
-});
+import { parseMarkdown } from '../utils/markdown';
 
 // Get all posts dynamically across year folders and filter to category 'now' and status 'done'
 const allPosts = await getAllPosts();
@@ -26,7 +20,7 @@ const doneNowPosts = allPosts
 // Pre-render markdown content
 const renderedPosts = doneNowPosts.map(post => ({
   ...post,
-  renderedContent: post.body ? marked.parse(post.body) : null
+  renderedContent: post.body ? parseMarkdown(post.body) : null
 }));
 ---
 
