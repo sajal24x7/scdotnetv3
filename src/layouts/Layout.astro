@@ -3,21 +3,23 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PageWrapper from '../components/layout/PageWrapper.astro';
 import SearchModal from '../components/SearchModal.astro';
+import type { Post } from '../utils/content';
 import '../styles/global.css';
 
 interface Props {
-	title: string;
-	description?: string;
-	currentPage: string;
-	pageWrapper?: {
-		maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
-		padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
-		centered?: boolean;
-		className?: string;
-	};
+        title: string;
+        description?: string;
+        currentPage: string;
+        pageWrapper?: {
+                maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
+                padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+                centered?: boolean;
+                className?: string;
+        };
+        allPosts?: Post[];
 }
 
-const { title, description, currentPage, pageWrapper = {} } = Astro.props;
+const { title, description, currentPage, pageWrapper = {}, allPosts } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -92,8 +94,8 @@ const { title, description, currentPage, pageWrapper = {} } = Astro.props;
 			<Footer />
 		</div>
 		
-		<!-- Search Modal -->
-		<SearchModal />
+                <!-- Search Modal -->
+                <SearchModal posts={allPosts} />
 	</body>
 </html>
 

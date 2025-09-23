@@ -25,8 +25,8 @@ const renderedPosts = activeNowPosts.map(post => ({
 }));
 ---
 
-<Layout 
-  title="Now - Sajal Choudhary" 
+<Layout
+  title="Now - Sajal Choudhary"
   description="What I'm currently working on and thinking about"
   currentPage="/now/"
   pageWrapper={{
@@ -35,6 +35,7 @@ const renderedPosts = activeNowPosts.map(post => ({
     centered: true,
     className: 'px-2'
   }}
+  allPosts={allPosts}
 >
     <PageHeader 
       title="Now" 

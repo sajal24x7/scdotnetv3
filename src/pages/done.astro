@@ -26,12 +26,13 @@ const doneNowPosts = allPosts
 // Pre-render markdown content
 const renderedPosts = doneNowPosts.map(post => ({
   ...post,
-  renderedContent: post.body ? marked.parse(post.body) : null
+  renderedContent: post.body ? marked.parse(post.body) : null,
+  endDate: post.data.updatedDate || post.data.pubDate
 }));
 ---
 
-<Layout 
-  title="Done - Sajal Choudhary" 
+<Layout
+  title="Done - Sajal Choudhary"
   description="Completed tasks and projects that were previously in progress"
   currentPage="/done/"
   pageWrapper={{
@@ -40,6 +41,7 @@ const renderedPosts = doneNowPosts.map(post => ({
     centered: true,
     className: 'px-2'
   }}
+  allPosts={allPosts}
 >
     <PageHeader 
       title="Done" 
@@ -62,11 +64,11 @@ const renderedPosts = doneNowPosts.map(post => ({
             <article class="card bg-transparent dark:bg-transparent rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
               <div class="p-8">
                 <div class="mb-6">
-                  <time 
+                  <time
                     class="text-base font-semibold text-gray-700 dark:text-gray-300"
-                    datetime={post.data.updatedDate || post.data.pubDate}
+                    datetime={post.endDate.toISOString()}
                   >
-                    {formatDateRange(post.data.pubDate, post.data.updatedDate || post.data.pubDate)}
+                    {formatDateRange(post.data.pubDate, post.endDate)}
                   </time>
                   {post.data.title && (
                     <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mt-3">

@@ -14,9 +14,9 @@ const tilPosts = allPosts
 const transformedPosts = tilPosts.map(transformPost);
 ---
 
-<Layout 
-  title="Today I Learned" 
-  description="Quick notes about things I've learned while working with various technologies, tools, and systems" 
+<Layout
+  title="Today I Learned"
+  description="Quick notes about things I've learned while working with various technologies, tools, and systems"
   currentPage="/til/"
   pageWrapper={{
     maxWidth: '7xl',
@@ -24,13 +24,23 @@ const transformedPosts = tilPosts.map(transformPost);
     centered: true,
     className: 'px-2'
   }}
+  allPosts={allPosts}
 >
     <SectionLanding
       title="Today I Learned"
       description="Quick notes about things I've learned while working with various technologies, tools, and systems."
-      countText={`${transformedPosts.length} ${transformedPosts.length === 1 ? 'note' : 'notes'}`}
-      tagCategory="til"
-    >
+      layout="centered"
+      size="lg"
+      maxWidth="7xl"
+    />
+    
+    <div class="til-count mb-6 text-center">
+      {transformedPosts.length} {transformedPosts.length === 1 ? 'note' : 'notes'}
+    </div>
+    
+    <TagList category="til" posts={allPosts} />
+
+    <main class="til-main">
       <GardenGrid posts={transformedPosts} contentType="til" />
     </SectionLanding>
 </Layout>

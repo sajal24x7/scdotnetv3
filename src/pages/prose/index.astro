@@ -14,9 +14,9 @@ const prose = allPosts
 const transformedPosts = prose.map(transformPost);
 ---
 
-<Layout 
-  title="Prose" 
-  description="Stories and poems" 
+<Layout
+  title="Prose"
+  description="Stories and poems"
   currentPage="/prose/"
   pageWrapper={{
     maxWidth: '7xl',
@@ -24,13 +24,24 @@ const transformedPosts = prose.map(transformPost);
     centered: true,
     className: 'px-2'
   }}
+  allPosts={allPosts}
 >
     <SectionLanding
       title="Prose"
       description="Stories and poems from my collections."
-      countText={`${transformedPosts.length} ${transformedPosts.length === 1 ? 'piece' : 'pieces'}`}
-      tagCategory="prose"
-    >
+      layout="centered"
+      size="lg"
+      maxWidth="7xl"
+    />
+    
+    <div class="prose-count mb-6 text-center">
+      {transformedPosts.length} {transformedPosts.length === 1 ? 'piece' : 'pieces'}
+    </div>
+    
+    <TagList category="prose" posts={allPosts} />
+
+    <main class="prose-main">
+      
       <ContentGrid posts={transformedPosts} />
     </SectionLanding>
 </Layout>

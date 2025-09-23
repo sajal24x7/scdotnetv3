@@ -1,6 +1,13 @@
 ---
 import { getAllPosts } from '../utils/content';
-const allPosts = await getAllPosts();
+import type { Post } from '../utils/content';
+
+interface Props {
+  posts?: Post[];
+}
+
+const { posts } = Astro.props as Props;
+const allPosts = posts ?? await getAllPosts();
 // Force rebuild - search page removed
 ---
 

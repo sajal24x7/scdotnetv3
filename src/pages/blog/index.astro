@@ -14,9 +14,9 @@ const blogPosts = allPosts
 const transformedPosts = blogPosts.map(transformPost);
 ---
 
-<Layout 
-  title="Blog" 
-  description="Long-form thoughts and articles" 
+<Layout
+  title="Blog"
+  description="Long-form thoughts and articles"
   currentPage="/blog/"
   pageWrapper={{
     maxWidth: '7xl',
@@ -24,13 +24,26 @@ const transformedPosts = blogPosts.map(transformPost);
     centered: true,
     className: 'px-2'
   }}
+  allPosts={allPosts}
 >
     <SectionLanding
       title="Blog"
       description="Long-form thoughts, tutorials, and articles."
-      countText={`${transformedPosts.length} ${transformedPosts.length === 1 ? 'post' : 'posts'}`}
-      tagCategory="blog"
-    >
+      layout="centered"
+      size="lg"
+      maxWidth="7xl"
+    />
+    
+    <div class="blog-count mb-6 text-center">
+      {transformedPosts.length} {transformedPosts.length === 1 ? 'post' : 'posts'}
+    </div>
+
+    <!-- TagList for mobile and desktop -->
+    <div class="blog-taglist">
+      <TagList category="blog" title="Tagged with:" posts={allPosts} />
+    </div>
+
+    <main class="blog-main">
       <StreamLayout posts={transformedPosts} />
     </SectionLanding>
 </Layout>
