@@ -1,8 +1,8 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
-import { marked } from 'marked';
 import { getYearDirectories } from '../../utils/content';
+import { parseMarkdown } from '../../utils/markdown';
 
 export async function GET(context) {
   // Get all year directories
@@ -30,9 +30,9 @@ export async function GET(context) {
       const { Content } = await item.render();
       let content;
       
-      // If it's a string, parse it with marked
+      // If it's a string, parse it with the shared markdown helper
       if (typeof item.body === 'string') {
-        content = sanitizeHtml(marked.parse(item.body));
+        content = sanitizeHtml(parseMarkdown(item.body));
       } else {
         // For rendered components, we'll just use the description
         content = item.data.description || '';
