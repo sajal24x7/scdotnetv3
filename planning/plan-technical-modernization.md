@@ -8,8 +8,8 @@
 - Remove duplication, centralize helpers, improve SEO/feeds/search/index, and keep JS footprint small.
 
 ### Tasks
-- [ ] P1.1 Deprecate `BaseLayout.astro`
-  - Audit differences with `Layout.astro`; port any unique head/meta/theme bits; remove unused scripts.
+- [x] P1.1 Consolidate layout shell
+  - Retired the extra base layout file and folded required head/meta/theme logic into `Layout.astro`.
 - [ ] P1.2 Centralize RSS generation
   - Create `src/utils/rss.ts` with a function `buildFeed({ title, description, site, items })` and sanitizer logic.
   - Update `rss.xml.js`, `stream/rss.xml.js`, `prose/rss.xml.js`, `garden/rss.xml.js`, `nordletter.xml.js` to use the helper.

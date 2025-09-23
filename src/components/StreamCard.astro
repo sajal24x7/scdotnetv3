@@ -2,6 +2,7 @@
 import TimeDisplay from './TimeDisplay.astro';
 import CategoryDisplay from './CategoryDisplay.astro';
 import SyndicationLinks from './SyndicationLinks.astro';
+import Tag from './Tag.astro';
 
 interface Props {
   title?: string;
@@ -48,7 +49,7 @@ const isMicroContent = (category: string) => category === 'micro';
     <div class="stream-card-body">
       {!isMicroContent(category) && title && (
         <h2 class="stream-card-title">
-          <a href={link} class="stream-title-link">
+          <a href={link} class="stream-title-link link-hover">
             {title}
           </a>
         </h2>
@@ -68,23 +69,21 @@ const isMicroContent = (category: string) => category === 'micro';
       
       {!isMicroContent(category) && (
         <div class="stream-read-more">
-          <a href={link} class="read-more-link">
+          <a href={link} class="read-more-link link-hover">
             Read more →
           </a>
         </div>
       )}
-      
+
       <div class="stream-card-meta">
-        <a href={link} class="stream-date-link">
+        <a href={link} class="stream-date-link link-hover">
           <TimeDisplay date={pubDate} category={category} className="stream-date" />
         </a>
         <CategoryDisplay category={category} className="stream-category" />
         {tags && tags.length > 0 && (
           <div class="stream-tags">
             {tags.map((tag: string) => (
-              <a href={`/tags/${tag.toLowerCase()}/`} class="tag">
-                {tag.toUpperCase()}
-              </a>
+              <Tag tag={tag} />
             ))}
           </div>
         )}
@@ -228,16 +227,6 @@ const isMicroContent = (category: string) => category === 'micro';
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
-  }
-
-  .tag {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    white-space: nowrap;
-    /* Color, border, and hover styles now handled by global CSS */
   }
 
   /* Prose styling for micro content */
