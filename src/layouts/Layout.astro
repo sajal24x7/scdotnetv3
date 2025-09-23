@@ -20,7 +20,7 @@ interface Props {
         allPosts?: Post[];
 }
 
-const { title, description, currentPage, pageWrapper = {}, allPosts } = Astro.props as Props;
+const { title, description, currentPage, pageWrapper = {} } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -96,8 +96,7 @@ const { title, description, currentPage, pageWrapper = {}, allPosts } = Astro.pr
 		</div>
 		
                 <!-- Search Modal -->
-                <SearchModal posts={allPosts} />
+                <SearchModal />
 		<LinkHoverEffect />
 	</body>
 </html>
-

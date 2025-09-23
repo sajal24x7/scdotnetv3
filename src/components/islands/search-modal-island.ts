@@ -24,6 +24,18 @@ const MIN_CHARS_TEMPLATE = `
     </div>
 `;
 
+const LOADING_TEMPLATE = `
+    <div class="p-4 text-center text-gray-500 dark:text-gray-400">
+        Loading search index...
+    </div>
+`;
+
+const ERROR_TEMPLATE = `
+    <div class="p-4 text-center text-red-500 dark:text-red-400">
+        Unable to load search index. Please try again later.
+    </div>
+`;
+
 function highlightTag(tag: string, query: string, isTagSearch: boolean): string {
     const normalizedQuery = query.toLowerCase();
     const isHighlighted = isTagSearch || tag.toLowerCase().includes(normalizedQuery);
@@ -44,7 +56,9 @@ class SearchModalElement extends HTMLElement {
     private closeButton: HTMLElement | null = null;
     private inputElement: HTMLInputElement | null = null;
     private resultsContainer: HTMLElement | null = null;
-    private indexElement: HTMLScriptElement | null = null;
+    private indexUrl: string = '/search-index.json';
+    private loadingPromise: Promise<SearchPost[] | null> | null = null;
+    private isIndexLoaded = false;
 
     private handleTriggerClick = (event: Event) => {
         event.preventDefault();
@@ -60,7 +74,7 @@ class SearchModalElement extends HTMLElement {
         if (!this.inputElement) {
             return;
         }
-        this.performSearch(this.inputElement.value);
+        void this.performSearch(this.inputElement.value);
     };
 
     private handleInputKeydown = (event: KeyboardEvent) => {
@@ -100,8 +114,7 @@ class SearchModalElement extends HTMLElement {
         this.closeButton = this.querySelector('[data-search-close]');
         this.inputElement = this.querySelector('[data-search-input]');
         this.resultsContainer = this.querySelector('[data-search-results]');
-        this.indexElement = this.querySelector('script[data-search-index]');
-        this.posts = this.parseIndex();
+        this.indexUrl = this.dataset.searchIndexUrl || this.indexUrl;
 
         this.renderDefaultState();
         this.attachTriggerListeners();
@@ -119,21 +132,6 @@ class SearchModalElement extends HTMLElement {
         this.inputElement?.removeEventListener('keydown', this.handleInputKeydown);
         this.removeEventListener('click', this.handleBackdropClick);
         window.removeEventListener('keydown', this.handleGlobalKeydown);
-    }
-
-    private parseIndex(): SearchPost[] {
-        if (!this.indexElement) {
-            return [];
-        }
-
-        try {
-            const text = this.indexElement.textContent || '[]';
-            const parsed = JSON.parse(text) as SearchPost[];
-            return Array.isArray(parsed) ? parsed : [];
-        } catch (error) {
-            console.error('Search index parsing failed', error);
-            return [];
-        }
     }
 
     private attachTriggerListeners() {
@@ -166,6 +164,7 @@ class SearchModalElement extends HTMLElement {
         document.body.style.overflow = 'hidden';
         this.setAttribute('aria-hidden', 'false');
         this.isOpen = true;
+        void this.ensureIndexLoaded();
 
         window.setTimeout(() => {
             this.inputElement?.focus();
@@ -206,6 +205,18 @@ class SearchModalElement extends HTMLElement {
         }
     }
 
+    private renderLoadingState() {
+        if (this.resultsContainer) {
+            this.resultsContainer.innerHTML = LOADING_TEMPLATE;
+        }
+    }
+
+    private renderErrorState() {
+        if (this.resultsContainer) {
+            this.resultsContainer.innerHTML = ERROR_TEMPLATE;
+        }
+    }
+
     private renderNoResultsState(query: string) {
         if (!this.resultsContainer) {
             return;
@@ -226,7 +237,57 @@ class SearchModalElement extends HTMLElement {
         `;
     }
 
-    private performSearch(rawQuery: string) {
+    private async ensureIndexLoaded() {
+        if (this.isIndexLoaded) {
+            return;
+        }
+
+        if (!this.loadingPromise) {
+            this.loadingPromise = this.loadIndex();
+        }
+
+        const posts = await this.loadingPromise;
+        if (Array.isArray(posts)) {
+            this.posts = posts;
+            this.isIndexLoaded = true;
+        }
+    }
+
+    private async loadIndex(): Promise<SearchPost[] | null> {
+        try {
+            const response = await fetch(this.indexUrl, {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to load search index: ${response.status}`);
+            }
+
+            const data = await response.json();
+            if (!Array.isArray(data)) {
+                return [];
+            }
+
+            return data.map((entry: SearchPost) => ({
+                slug: entry.slug,
+                data: {
+                    title: entry.data?.title,
+                    description: entry.data?.description,
+                    category: entry.data?.category,
+                    tags: entry.data?.tags ?? []
+                }
+            }));
+        } catch (error) {
+            console.error('Search index fetch failed', error);
+            return null;
+        } finally {
+            this.loadingPromise = null;
+        }
+    }
+
+    private async performSearch(rawQuery: string) {
         if (!this.resultsContainer) {
             return;
         }
@@ -240,6 +301,16 @@ class SearchModalElement extends HTMLElement {
 
         if (query.length < 2 && !query.startsWith('tag:')) {
             this.renderMinCharsState();
+            return;
+        }
+
+        if (!this.isIndexLoaded) {
+            this.renderLoadingState();
+            await this.ensureIndexLoaded();
+        }
+
+        if (!this.isIndexLoaded) {
+            this.renderErrorState();
             return;
         }
 

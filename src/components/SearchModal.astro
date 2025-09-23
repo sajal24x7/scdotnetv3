@@ -1,25 +1,12 @@
 ---
-import { getAllPosts } from '../utils/content';
-import type { Post } from '../utils/content';
 import searchModalIslandScript from './islands/search-modal-island.ts?url';
 
 interface Props {
-  posts?: Post[];
+    searchIndexUrl?: string;
 }
 
-const { posts } = Astro.props as Props;
-const allPosts = posts ?? await getAllPosts();
+const { searchIndexUrl = '/search-index.json' } = Astro.props as Props;
 const modalId = 'global-search';
-const searchIndex = allPosts.map((post) => ({
-  slug: post.slug,
-  data: {
-    title: post.data.title,
-    description: post.data.description,
-    category: post.data.category,
-    tags: post.data.tags ?? []
-  }
-}));
-const searchIndexJson = JSON.stringify(searchIndex);
 ---
 
 <!-- Search Modal -->
@@ -28,11 +15,11 @@ const searchIndexJson = JSON.stringify(searchIndex);
   class="fixed inset-0 z-50 hidden items-center justify-center p-4"
   style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"
   data-modal-id={modalId}
+  data-search-index-url={searchIndexUrl}
   role="dialog"
   aria-modal="true"
   aria-hidden="true"
 >
-  <script type="application/json" data-search-index set:html={searchIndexJson}></script>
   <!-- Background overlay -->
   <div class="absolute inset-0 bg-black/20 dark:bg-black/40" data-search-overlay="true"></div>
   
