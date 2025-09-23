@@ -10,7 +10,6 @@ format: ebook
 author: " Jonathan Rioux "
 bookStatus: "reading"
 startedReading: 2025-09-23T11:25:22+03:00
-bookCover: 
 ---
 
 Started reading
