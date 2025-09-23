@@ -1,114 +1,32 @@
 ---
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 import { formatDateWithTime } from '../utils/dateFormat';
+import { getPostActivitySummary } from '../utils/postStats';
 
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
 
-// Get all year directories - these are the actual collections used in the site
-const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2019', '2021', '2022', '2024', '2025'] as const;
-
-// Fetch all content from year-based collections
-const allCollections = await Promise.all(years.map(year => getCollection(year as any)));
-const allContent = allCollections.flat().filter((item: any) => item?.data?.pubDate).sort((a: any, b: any) => 
-  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-);
-
-// Variables to calculate streak
-let streakWeeks = 0;
-let lastPostDate = null;
-let totalPosts = allContent.length;
-let weekCounts = new Map();
-
-// Calculate streak if there's any content
-if (allContent.length > 0) {
-  // Get the latest post date
-  lastPostDate = new Date((allContent[0] as any).data.pubDate);
-  
-  // Create a map to track if there was a post in each week
-  const weekMap = new Map();
-  
-  allContent.forEach((item: any) => {
-    const postDate = new Date(item.data.pubDate);
-    // Get year and week number for this post
-    const year = postDate.getFullYear();
-    // Get week number using ISO week date calculation for better accuracy
-    const startOfYear = new Date(year, 0, 1);
-    const daysSinceStart = Math.floor((postDate.getTime() - startOfYear.getTime()) / (24 * 60 * 60 * 1000));
-    const weekNumber = Math.floor(daysSinceStart / 7);
-    
-    // Create a unique key for this week
-    const weekKey = `${year}-${weekNumber}`;
-    
-    // Count posts per week
-    if (weekCounts.has(weekKey)) {
-      weekCounts.set(weekKey, weekCounts.get(weekKey) + 1);
-    } else {
-      weekCounts.set(weekKey, 1);
-    }
-    
-    // Mark that this week has content
-    weekMap.set(weekKey, true);
-  });
-  
-  // Now calculate consecutive weeks starting from the most recent post
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  const currentStartOfYear = new Date(currentYear, 0, 1);
-  const currentDaysSinceStart = Math.floor((currentDate.getTime() - currentStartOfYear.getTime()) / (24 * 60 * 60 * 1000));
-  const currentWeekNumber = Math.floor(currentDaysSinceStart / 7);
-  
-  // Start from the current week and go backwards to count consecutive weeks
-  let checkYear = currentYear;
-  let checkWeek = currentWeekNumber;
-  
-  // Count consecutive weeks with posts
-  while (true) {
-    const weekKey = `${checkYear}-${checkWeek}`;
-    
-    if (weekMap.has(weekKey)) {
-      streakWeeks++;
-      
-      // Move to previous week
-      checkWeek--;
-      if (checkWeek < 0) {
-        // Go to previous year, last week
-        checkYear--;
-        // Calculate number of weeks in the previous year
-        const prevYearStart = new Date(checkYear, 0, 1);
-        const prevYearEnd = new Date(checkYear + 1, 0, 1);
-        const prevYearDays = Math.floor((prevYearEnd.getTime() - prevYearStart.getTime()) / (24 * 60 * 60 * 1000));
-        checkWeek = Math.floor(prevYearDays / 7) - 1;
-      }
-    } else {
-      break;
-    }
-  }
-}
-
-// Format the last post date for display
-const formattedLastPostDate = lastPostDate ? formatDateWithTime(lastPostDate) : '';
+const { latestPostDate, streakWeeks, totalPosts } = await getPostActivitySummary();
+const hasPosts = totalPosts > 0;
+const formattedLastPostDate = latestPostDate ? formatDateWithTime(latestPostDate) : '';
 
 // Footer page links removed; footer now only shows copyright and stats
 ---
 
 <footer class="py-6 border-t border-gray-600 dark:border-gray-400 bg-black text-white">
-  <div class="container mx-auto px-4 max-w-6xl">
-    
-    {allContent.length > 0 && (
-      <div class="text-center text-gray-300 text-normal pt-4">
-        <p class="text-small opacity-75 mb-2">This website was last updated on {formattedLastPostDate}</p>
-        <p class="font-medium">New posts for <span class="text-orange-500">{streakWeeks}</span> consecutive {streakWeeks === 1 ? 'week' : 'weeks'}</p>
-        <p class="mt-1 text-small opacity-75">{totalPosts} total posts</p>
-      </div>
-    )}
+    <div class="container mx-auto px-4 max-w-6xl">
+        {hasPosts && (
+            <div class="text-center text-gray-300 text-normal pt-4">
+                <p class="text-small opacity-75 mb-2">This website was last updated on {formattedLastPostDate}</p>
+                <p class="font-medium">New posts for <span class="text-orange-500">{streakWeeks}</span> consecutive {streakWeeks === 1 ? 'week' : 'weeks'}</p>
+                <p class="mt-1 text-small opacity-75">{totalPosts} total posts</p>
+            </div>
+        )}
 
-    <!-- Copyright moved to the end -->
-    <div class="text-center mt-6">
-      <p class="text-gray-300 text-sm">
-        &copy; {currentYear} Sajal Choudhary. All rights reserved.
-      </p>
+        <!-- Copyright moved to the end -->
+        <div class="text-center mt-6">
+            <p class="text-gray-300 text-sm">
+                &copy; {currentYear} Sajal Choudhary. All rights reserved.
+            </p>
+        </div>
     </div>
-  </div>
 </footer>
