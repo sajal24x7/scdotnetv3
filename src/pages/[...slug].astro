@@ -4,7 +4,6 @@ import Layout from '../layouts/Layout.astro';
 import TimeDisplay from '../components/TimeDisplay.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getYearDirectories } from '../utils/content';
-import LinkHoverEffect from '../components/LinkHoverEffect.astro';
 import ProseWrapper from '../components/layout/ProseWrapper.astro';
 import Backlinks from '../components/Backlinks.astro';
 import SyndicationLinks from '../components/SyndicationLinks.astro';
@@ -146,5 +145,3 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
     </article>
   </ProseWrapper>
 </Layout>
-
-<LinkHoverEffect />

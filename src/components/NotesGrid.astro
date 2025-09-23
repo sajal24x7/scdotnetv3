@@ -1,6 +1,5 @@
 ---
 import Card from './Card.astro';
-import LinkHoverEffect from './LinkHoverEffect.astro';
 import { parseMarkdown } from '../utils/markdown';
 
 const { posts } = Astro.props;
@@ -24,7 +23,6 @@ const renderedPosts = posts.map(post => ({
   ))}
 </div>
 
-<LinkHoverEffect />
 
 <style>
   .notes-grid {

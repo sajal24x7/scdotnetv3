@@ -1,10 +1,7 @@
 ---
-// Simple, reliable link hover effects component
-import { generateContentPreviews, escapeHtml } from '../utils/contentPreview';
+import { getContentPreviewsJson } from '../data/contentPreviewStore';
 
-// Generate content previews at build time
-const contentPreviews = await generateContentPreviews();
-const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
+const previewsJson = await getContentPreviewsJson();
 ---
 
 <style>
@@ -73,314 +70,335 @@ const previewsJson = JSON.stringify(Object.fromEntries(contentPreviews));
 </style>
 
 <script define:vars={{ previewsJson }}>
-  function initLinkHoverEffects() {
-    // Parse build-time content previews
-    const contentPreviews = JSON.parse(previewsJson);
-    
-    // Create tooltip element
-    const tooltip = document.createElement('div');
-    tooltip.className = 'hover-tooltip';
-    document.body.appendChild(tooltip);
-    
-    // Classify and setup all links
-    function setupLinks() {
-      const proseElements = document.querySelectorAll('.prose');
-      
-      proseElements.forEach(prose => {
-        const links = prose.querySelectorAll('a[href]');
-        
-        links.forEach(link => {
-          const href = link.getAttribute('href');
-          if (!href) return;
-          
-          // Skip links with no-hover-effect class
-          if (link.classList.contains('no-hover-effect')) return;
-          
-          // Determine if link is internal or external
-          const isInternal = href.startsWith('/') || 
-                           href.includes('__GHOST_URL__') || 
-                           href.includes(window.location.hostname) ||
-                           href.includes('sajalchoudhary.net');
-          
-          // Apply permanent attributes for styling
-          if (isInternal) {
-            link.setAttribute('data-internal', '');
-            link.removeAttribute('data-external');
-            
-            // Add content preview data for internal links
-            let cleanHref = href.replace('__GHOST_URL__', '');
-            
-            // Extract path from full domain URLs
-            if (cleanHref.includes('sajalchoudhary.net')) {
-              try {
-                const url = new URL(cleanHref);
-                cleanHref = url.pathname;
-              } catch (e) {
-                // If URL parsing fails, try to extract path manually
-                const match = cleanHref.match(/sajalchoudhary\.net(\/.*)/);
-                if (match) {
-                  cleanHref = match[1];
+    (function () {
+        const PREVIEW_KEY = '__SC_LINK_PREVIEWS__';
+        const STATE_KEY = '__SC_LINK_HOVER_STATE__';
+
+        const parsedPreviews = JSON.parse(previewsJson);
+        const existing = window[PREVIEW_KEY];
+        const previewMap = existing instanceof Map ? existing : new Map();
+
+        if (!(existing instanceof Map)) {
+            window[PREVIEW_KEY] = previewMap;
+        }
+
+        for (const [path, preview] of Object.entries(parsedPreviews)) {
+            previewMap.set(path, preview);
+        }
+
+        const defaultState = {
+            processed: new WeakSet(),
+            initialized: false
+        };
+        const state = window[STATE_KEY] || defaultState;
+
+        if (!state.processed) {
+            state.processed = new WeakSet();
+        }
+
+        state.scheduled = state.scheduled || false;
+        window[STATE_KEY] = state;
+
+        const ensureTooltip = () => {
+            if (state.tooltip && document.body.contains(state.tooltip)) {
+                return state.tooltip;
+            }
+
+            if (!document.body) {
+                return null;
+            }
+
+            const tooltip = document.createElement('div');
+            tooltip.className = 'hover-tooltip';
+            tooltip.style.display = 'none';
+            tooltip.style.position = 'fixed';
+            tooltip.style.pointerEvents = 'none';
+            document.body.appendChild(tooltip);
+            state.tooltip = tooltip;
+            return tooltip;
+        };
+
+        const tooltip = ensureTooltip();
+        const processedLinks = state.processed;
+
+        if (!tooltip) {
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    ensureTooltip();
+                }, { once: true });
+            }
+            return;
+        }
+
+        const setTooltipTheme = () => {
+            const isDarkMode = document.documentElement.classList.contains('dark');
+
+            if (isDarkMode) {
+                tooltip.style.background = 'rgba(0, 0, 0, 0.95)';
+                tooltip.style.color = 'white';
+                tooltip.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+                tooltip.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                tooltip.style.background = 'rgba(255, 255, 255, 0.95)';
+                tooltip.style.color = '#1a1a1a';
+                tooltip.style.border = '1px solid rgba(0, 0, 0, 0.1)';
+                tooltip.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+            }
+
+            tooltip.style.padding = '12px 16px';
+            tooltip.style.borderRadius = '8px';
+            tooltip.style.fontSize = '14px';
+            tooltip.style.zIndex = '9999';
+        };
+
+        const renderInternalPreview = (title, description) => {
+            tooltip.replaceChildren();
+
+            const container = document.createElement('div');
+            container.className = 'internal-preview';
+
+            const titleEl = document.createElement('div');
+            titleEl.className = 'title';
+            titleEl.textContent = title;
+            container.appendChild(titleEl);
+
+            if (description) {
+                const descriptionEl = document.createElement('div');
+                descriptionEl.className = 'description';
+                descriptionEl.textContent = description;
+                container.appendChild(descriptionEl);
+            }
+
+            tooltip.appendChild(container);
+        };
+
+        const renderExternalPreview = (href) => {
+            tooltip.replaceChildren();
+
+            const container = document.createElement('div');
+            container.className = 'external-preview';
+
+            const urlEl = document.createElement('div');
+            urlEl.className = 'url';
+            urlEl.textContent = href;
+            container.appendChild(urlEl);
+
+            tooltip.appendChild(container);
+        };
+
+        let hideTimeout;
+
+        const hideTooltip = () => {
+            tooltip.classList.remove('visible');
+            tooltip.style.opacity = '0';
+            tooltip.style.transform = 'translateY(-10px)';
+
+            clearTimeout(hideTimeout);
+            hideTimeout = window.setTimeout(() => {
+                if (!tooltip.classList.contains('visible')) {
+                    tooltip.style.display = 'none';
                 }
-              }
+            }, 200);
+        };
+
+        const updateTooltipPosition = (event, isInternal) => {
+            const viewportWidth = window.innerWidth;
+            const tooltipWidth = isInternal ? 300 : 400;
+            const tooltipHeight = 80;
+
+            let left = event.clientX + 10;
+            let top = event.clientY - tooltipHeight - 10;
+
+            if (left + tooltipWidth > viewportWidth - 10) {
+                left = event.clientX - tooltipWidth - 10;
             }
-            
-            const preview = contentPreviews[cleanHref];
-            
+
+            if (top < 10) {
+                top = event.clientY + 10;
+            }
+
+            if (left < 10) {
+                left = 10;
+            }
+
+            tooltip.style.left = `${left}px`;
+            tooltip.style.top = `${top}px`;
+        };
+
+        const normalizeHref = (href) => {
+            if (!href) {
+                return '';
+            }
+
+            let cleanHref = href.replace('__GHOST_URL__', '');
+
+            if (cleanHref.includes('sajalchoudhary.net') || cleanHref.startsWith('http')) {
+                try {
+                    const url = new URL(cleanHref, window.location.origin);
+                    cleanHref = url.pathname;
+                } catch (error) {
+                    const match = cleanHref.match(/sajalchoudhary\.net(\/.*)/);
+                    if (match) {
+                        cleanHref = match[1];
+                    }
+                }
+            }
+
+            if (!cleanHref.startsWith('/')) {
+                cleanHref = `/${cleanHref.replace(/^\/*/, '')}`;
+            }
+
+            const withTrailingSlash = cleanHref.endsWith('/') ? cleanHref : `${cleanHref}/`;
+            return withTrailingSlash;
+        };
+
+        const applyPreviewData = (link) => {
+            const href = link.getAttribute('href');
+            if (!href) {
+                return;
+            }
+
+            const normalized = normalizeHref(href);
+            const preview = previewMap.get(normalized) || previewMap.get(normalized.replace(/\/$/, ''));
+
             if (preview) {
-              link.setAttribute('data-title', preview.title);
-              if (preview.description) {
-                link.setAttribute('data-description', preview.description);
-              }
+                if (preview.title) {
+                    link.setAttribute('data-title', preview.title);
+                }
+                if (preview.description) {
+                    link.setAttribute('data-description', preview.description);
+                }
             }
-          } else {
-            link.setAttribute('data-external', '');
-            link.removeAttribute('data-internal');
-          }
-          
-          // Add hover events
-          link.addEventListener('mouseenter', function(e) {
-            showTooltip(e, href, isInternal);
-          });
-          
-          link.addEventListener('mouseleave', function() {
-            hideTooltip();
-          });
-          
-          link.addEventListener('mousemove', function(e) {
-            updateTooltipPosition(e, isInternal);
-          });
-        });
-      });
-      
+        };
 
-    }
-    
-    function showTooltip(event, href, isInternal) {
-      let content = '';
-      
-      if (isInternal) {
-        // Internal link preview - get data from attributes
-        let cleanHref = href.replace('__GHOST_URL__', '');
-        
-        // Extract path from full domain URLs
-        if (cleanHref.includes('sajalchoudhary.net')) {
-          try {
-            const url = new URL(cleanHref);
-            cleanHref = url.pathname;
-          } catch (e) {
-            // If URL parsing fails, try to extract path manually
-            const match = cleanHref.match(/sajalchoudhary\.net(\/.*)/);
-            if (match) {
-              cleanHref = match[1];
+        const isInternalHref = (href) => {
+            if (!href) {
+                return false;
             }
-          }
-        }
-        
-        const urlParts = cleanHref.replace(/^\//, '').split('/');
-        
-        let title = 'Internal Link';
-        let description = '';
-        
-        if (urlParts.length >= 2) {
-          title = urlParts[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        }
-        
-        // Check if the link has preview data
-        const linkElement = event.target.closest('a');
-        let hasPreviewData = false;
-        
-        if (linkElement) {
-          const dataTitle = linkElement.getAttribute('data-title');
-          const dataDescription = linkElement.getAttribute('data-description');
-          
-          if (dataTitle) {
-            title = dataTitle;
-            hasPreviewData = true;
-          }
-          if (dataDescription) {
-            description = dataDescription;
-            hasPreviewData = true;
-          }
-        }
-        
-        // If no preview data found, fall back to showing the URL
-        if (!hasPreviewData) {
-          content = `
-            <div class="external-preview">
-              <div class="url">${href}</div>
-            </div>
-          `;
+
+            if (href.startsWith('/')) {
+                return true;
+            }
+
+            if (href.includes('__GHOST_URL__')) {
+                return true;
+            }
+
+            try {
+                const url = new URL(href, window.location.origin);
+                return url.hostname === window.location.hostname || url.hostname === 'sajalchoudhary.net';
+            } catch (error) {
+                return false;
+            }
+        };
+
+        const showTooltip = (event, link, isInternal) => {
+            clearTimeout(hideTimeout);
+            setTooltipTheme();
+
+            if (isInternal) {
+                const dataTitle = link.getAttribute('data-title');
+                const dataDescription = link.getAttribute('data-description');
+
+                if (!dataTitle && !dataDescription) {
+                    renderExternalPreview(link.href || link.getAttribute('href') || '');
+                } else {
+                    const fallbackTitle = link.textContent ? link.textContent.trim() : 'Internal Link';
+                    renderInternalPreview(dataTitle || fallbackTitle, dataDescription || '');
+                }
+
+                tooltip.style.maxWidth = '300px';
+                tooltip.style.minWidth = '150px';
+            } else {
+                renderExternalPreview(link.href || link.getAttribute('href') || '');
+                tooltip.style.maxWidth = '400px';
+                tooltip.style.minWidth = '100px';
+            }
+
+            tooltip.classList.add('visible');
+            tooltip.style.display = 'block';
+            tooltip.style.opacity = '1';
+            tooltip.style.transform = 'translateY(0)';
+
+            updateTooltipPosition(event, isInternal);
+        };
+
+        const handleLink = (link) => {
+            if (processedLinks.has(link)) {
+                return;
+            }
+
+            processedLinks.add(link);
+
+            const href = link.getAttribute('href');
+            if (!href || link.classList.contains('no-hover-effect')) {
+                return;
+            }
+
+            const isInternal = isInternalHref(href);
+
+            if (isInternal) {
+                link.setAttribute('data-internal', '');
+                link.removeAttribute('data-external');
+                applyPreviewData(link);
+            } else {
+                link.setAttribute('data-external', '');
+                link.removeAttribute('data-internal');
+            }
+
+            link.addEventListener('mouseenter', (event) => {
+                showTooltip(event, link, isInternal);
+            });
+
+            link.addEventListener('mouseleave', () => {
+                hideTooltip();
+            });
+
+            link.addEventListener('mousemove', (event) => {
+                updateTooltipPosition(event, isInternal);
+            });
+        };
+
+        const setupLinks = () => {
+            const proseElements = document.querySelectorAll('.prose');
+
+            proseElements.forEach((prose) => {
+                const links = prose.querySelectorAll('a[href]');
+                links.forEach(handleLink);
+            });
+        };
+
+        const scheduleSetup = () => {
+            if (state.scheduled) {
+                return;
+            }
+
+            state.scheduled = true;
+
+            requestAnimationFrame(() => {
+                state.scheduled = false;
+                setupLinks();
+            });
+        };
+
+        if (!state.initialized) {
+            state.initialized = true;
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', scheduleSetup, { once: true });
+            } else {
+                scheduleSetup();
+            }
+
+            window.addEventListener('load', scheduleSetup);
+
+            const observer = new MutationObserver(scheduleSetup);
+            observer.observe(document.body, { childList: true, subtree: true });
+            state.observer = observer;
+
+            document.addEventListener('astro:after-swap', scheduleSetup);
         } else {
-          content = `
-            <div class="internal-preview">
-              <div class="title">${title}</div>
-              ${description ? `<div class="description">${description}</div>` : ''}
-            </div>
-          `;
+            scheduleSetup();
         }
-      } else {
-        // External link preview
-        content = `
-          <div class="external-preview">
-            <div class="url">${href}</div>
-          </div>
-        `;
-      }
-      
-      tooltip.innerHTML = content;
-      
-      // Apply inline styles with light/dark mode awareness
-      const isDarkMode = document.documentElement.classList.contains('dark');
-      
-      if (isDarkMode) {
-        tooltip.style.background = 'rgba(0, 0, 0, 0.95)';
-        tooltip.style.color = 'white';
-        tooltip.style.border = '1px solid rgba(255, 255, 255, 0.1)';
-        tooltip.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
-      } else {
-        tooltip.style.background = 'rgba(255, 255, 255, 0.95)';
-        tooltip.style.color = '#1a1a1a';
-        tooltip.style.border = '1px solid rgba(0, 0, 0, 0.1)';
-        tooltip.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
-      }
-      
-      tooltip.style.padding = '12px 16px';
-      tooltip.style.borderRadius = '8px';
-      tooltip.style.fontSize = '14px';
-      tooltip.style.zIndex = '9999';
-      tooltip.style.pointerEvents = 'none';
-      
-      // Set different widths for internal vs external links
-      if (isInternal) {
-        tooltip.style.maxWidth = '300px';
-        tooltip.style.minWidth = '150px';
-      } else {
-        tooltip.style.maxWidth = '400px';
-        tooltip.style.minWidth = '100px';
-      }
-      
-      tooltip.classList.add('visible');
-      
-      // Force show with inline styles to ensure it appears
-      tooltip.style.display = 'block';
-      tooltip.style.opacity = '1';
-      tooltip.style.transform = 'translateY(0)';
-      
-      updateTooltipPosition(event, isInternal);
-      
-      
-    }
-    
-    function hideTooltip() {
-      console.log('=== HIDING TOOLTIP ===');
-      tooltip.classList.remove('visible');
-      
-      // Force hide with inline styles to ensure it disappears
-      tooltip.style.opacity = '0';
-      tooltip.style.transform = 'translateY(-10px)';
-      
-      console.log('Set tooltip opacity: 0, transform: translateY(-10px)');
-      
-      // Clear the timeout to hide after a short delay
-      setTimeout(() => {
-        if (!tooltip.classList.contains('visible')) {
-          tooltip.style.display = 'none';
-          console.log('Tooltip hidden after timeout');
-        }
-      }, 200);
-    }
-    
-    function updateTooltipPosition(event, isInternal) {
-      console.log('=== UPDATING TOOLTIP POSITION ===');
-      console.log('Mouse position:', { clientX: event.clientX, clientY: event.clientY });
-      
-      // Force proper positioning styles first
-      tooltip.style.position = 'fixed';
-      tooltip.style.zIndex = '9999';
-      
-      // Use approximate dimensions (no need for getBoundingClientRect which is problematic)
-      const tooltipWidth = isInternal ? 300 : 400;  // Use our configured widths
-      const tooltipHeight = 80; // Approximate height
-      
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
-      
-      console.log('Using dimensions:', { width: tooltipWidth, height: tooltipHeight });
-      console.log('Viewport:', { width: viewportWidth, height: viewportHeight });
-      
-      let left = event.clientX + 10;
-      let top = event.clientY - tooltipHeight - 10;
-      
-      console.log('Initial position:', { left, top });
-      
-      // Keep tooltip within viewport
-      if (left + tooltipWidth > viewportWidth - 10) {
-        left = event.clientX - tooltipWidth - 10;
-        console.log('Adjusted left for viewport:', left);
-      }
-      
-      if (top < 10) {
-        top = event.clientY + 10;
-        console.log('Adjusted top for viewport:', top);
-      }
-      
-      if (left < 10) {
-        left = 10;
-        console.log('Adjusted left minimum:', left);
-      }
-      
-      // Set position directly
-      tooltip.style.left = left + 'px';
-      tooltip.style.top = top + 'px';
-      
-      console.log('Final position set:', { left: left + 'px', top: top + 'px' });
-      
-      // Force a repaint
-      tooltip.offsetHeight;
-      
-      // Check if it's actually visible now
-      const rect = tooltip.getBoundingClientRect();
-      console.log('Tooltip now at:', { 
-        x: rect.x, 
-        y: rect.y, 
-        visible: rect.y >= 0 && rect.y < viewportHeight 
-      });
-    }
-    
-
-    
-    // Initialize with multiple triggers to ensure it runs properly
-    let isInitialized = false;
-    
-    function safeSetupLinks() {
-      if (isInitialized) return;
-      
-      const proseElements = document.querySelectorAll('.prose');
-      if (proseElements.length === 0) {
-        // If no prose elements found, try again after a short delay
-        setTimeout(safeSetupLinks, 100);
-        return;
-      }
-      
-      setupLinks();
-      isInitialized = true;
-      console.log('Link hover effects initialized successfully');
-    }
-    
-    // Multiple initialization triggers
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', safeSetupLinks);
-    } else {
-      safeSetupLinks();
-    }
-    
-    // Backup initialization after page load
-    window.addEventListener('load', safeSetupLinks);
-    
-    // Additional trigger for Astro hydration
-    setTimeout(safeSetupLinks, 500);
-  }
-  
-  // Run the initialization
-  initLinkHoverEffects();
-</script> 
+    })();
+</script>

@@ -1,6 +1,5 @@
 ---
 import Card from '../Card.astro';
-import LinkHoverEffect from '../LinkHoverEffect.astro';
 import { parseMarkdown } from '../../utils/markdown';
 
 interface Props {
@@ -68,7 +67,6 @@ const getContentTypeClasses = (type: string, category?: string) => {
   ))}
 </div>
 
-<LinkHoverEffect />
 
 <style>
   .garden-grid {
