@@ -39,9 +39,9 @@ const years = Object.keys(booksByYear)
 const totalBooks = bookshelfPosts.length;
 ---
 
-<Layout 
-  title="Bookshelf" 
-  description="Books I've read and am currently reading" 
+<Layout
+  title="Bookshelf"
+  description="Books I've read and am currently reading"
   currentPage="/bookshelf/"
   pageWrapper={{
     maxWidth: '6xl',
@@ -49,6 +49,7 @@ const totalBooks = bookshelfPosts.length;
     centered: true,
     className: 'px-4'
   }}
+  allPosts={allPosts}
 >
   <div class="bookshelf-container">
     <header class="bookshelf-header">
@@ -62,7 +63,7 @@ const totalBooks = bookshelfPosts.length;
       {totalBooks} {totalBooks === 1 ? 'book' : 'books'}
     </div>
     
-    <TagList category="bookshelf" />
+    <TagList category="bookshelf" posts={allPosts} />
 
     <main class="bookshelf-content">
       {/* Currently Reading Section */}

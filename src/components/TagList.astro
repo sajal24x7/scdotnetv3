@@ -1,17 +1,25 @@
 ---
 import { getAllPosts } from '../utils/content';
+import type { Post } from '../utils/content';
 
 interface Props {
   category: string;
   title?: string;
   maxTags?: number;
   showMore?: boolean;
+  posts?: Post[];
 }
 
-const { category, title = "Tagged with:", maxTags = 10, showMore = true } = Astro.props;
+const {
+  category,
+  title = "Tagged with:",
+  maxTags = 10,
+  showMore = true,
+  posts
+} = Astro.props as Props;
 
 // Get all posts and filter by category
-const allPosts = await getAllPosts();
+const allPosts = posts ?? await getAllPosts();
 let filteredPosts = allPosts;
 
 // Handle special cases for categories that include multiple subcategories
@@ -168,30 +176,34 @@ const componentId = `taglist-${Math.random().toString(36).substr(2, 9)}`;
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Add event listeners to all show more buttons
-    document.querySelectorAll('.show-more-btn').forEach(button => {
-      button.addEventListener('click', function() {
-        const targetId = this.getAttribute('data-target');
-        const hiddenTags = document.getElementById(`${targetId}-hidden`);
-        
-        // Show all tags
+  document.addEventListener('DOMContentLoaded', function () {
+    const showMoreButtons = document.querySelectorAll<HTMLButtonElement>('.show-more-btn');
+    showMoreButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const targetButton = event.currentTarget as HTMLButtonElement | null;
+        if (!targetButton) return;
+        const targetId = targetButton.getAttribute('data-target');
+        if (!targetId) return;
+        const hiddenTags = document.getElementById(`${targetId}-hidden`) as HTMLElement | null;
+        if (!hiddenTags) return;
+
         hiddenTags.style.display = 'flex';
-        // Hide the show more button
-        this.style.display = 'none';
+        targetButton.style.display = 'none';
       });
     });
 
-    // Add event listeners to all show less buttons
-    document.querySelectorAll('.show-less-btn').forEach(button => {
-      button.addEventListener('click', function() {
-        const targetId = this.getAttribute('data-target');
-        const hiddenTags = document.getElementById(`${targetId}-hidden`);
-        const showMoreBtn = document.querySelector(`[data-target="${targetId}"].show-more-btn`);
-        
-        // Hide extra tags
+    const showLessButtons = document.querySelectorAll<HTMLButtonElement>('.show-less-btn');
+    showLessButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const targetButton = event.currentTarget as HTMLButtonElement | null;
+        if (!targetButton) return;
+        const targetId = targetButton.getAttribute('data-target');
+        if (!targetId) return;
+        const hiddenTags = document.getElementById(`${targetId}-hidden`) as HTMLElement | null;
+        if (!hiddenTags) return;
+        const showMoreBtn = document.querySelector<HTMLButtonElement>(`[data-target="${targetId}"].show-more-btn`);
+
         hiddenTags.style.display = 'none';
-        // Show the show more button again
         if (showMoreBtn) {
           showMoreBtn.style.display = 'inline-block';
         }

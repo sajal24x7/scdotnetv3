@@ -15,9 +15,9 @@ const prose = allPosts
 const transformedPosts = prose.map(transformPost);
 ---
 
-<Layout 
-  title="Prose" 
-  description="Stories and poems" 
+<Layout
+  title="Prose"
+  description="Stories and poems"
   currentPage="/prose/"
   pageWrapper={{
     maxWidth: '7xl',
@@ -25,6 +25,7 @@ const transformedPosts = prose.map(transformPost);
     centered: true,
     className: 'px-2'
   }}
+  allPosts={allPosts}
 >
     <PageHeader 
       title="Prose"
@@ -38,7 +39,7 @@ const transformedPosts = prose.map(transformPost);
       {transformedPosts.length} {transformedPosts.length === 1 ? 'piece' : 'pieces'}
     </div>
     
-    <TagList category="prose" />
+    <TagList category="prose" posts={allPosts} />
 
     <main class="prose-main">
       <ContentGrid posts={transformedPosts} />

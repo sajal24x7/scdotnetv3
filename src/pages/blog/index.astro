@@ -15,9 +15,9 @@ const blogPosts = allPosts
 const transformedPosts = blogPosts.map(transformPost);
 ---
 
-<Layout 
-  title="Blog" 
-  description="Long-form thoughts and articles" 
+<Layout
+  title="Blog"
+  description="Long-form thoughts and articles"
   currentPage="/blog/"
   pageWrapper={{
     maxWidth: '7xl',
@@ -25,6 +25,7 @@ const transformedPosts = blogPosts.map(transformPost);
     centered: true,
     className: 'px-2'
   }}
+  allPosts={allPosts}
 >
     <PageHeader 
       title="Blog"
@@ -40,7 +41,7 @@ const transformedPosts = blogPosts.map(transformPost);
 
     <!-- TagList for mobile and desktop -->
     <div class="blog-taglist">
-      <TagList category="blog" title="Tagged with:" />
+      <TagList category="blog" title="Tagged with:" posts={allPosts} />
     </div>
 
     <main class="blog-main">

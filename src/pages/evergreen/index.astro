@@ -15,9 +15,9 @@ const evergreenPosts = allPosts
 const transformedPosts = evergreenPosts.map(transformPost);
 ---
 
-<Layout 
-  title="Evergreen - Sajal Choudhary" 
-  description="Evergreen documentation and knowledge base" 
+<Layout
+  title="Evergreen - Sajal Choudhary"
+  description="Evergreen documentation and knowledge base"
   currentPage="/evergreen/"
   pageWrapper={{
     maxWidth: '7xl',
@@ -25,6 +25,7 @@ const transformedPosts = evergreenPosts.map(transformPost);
     centered: true,
     className: 'px-2'
   }}
+  allPosts={allPosts}
 >
     <PageHeader 
       title="Evergreen"
@@ -38,7 +39,7 @@ const transformedPosts = evergreenPosts.map(transformPost);
       {transformedPosts.length} {transformedPosts.length === 1 ? 'evergreen note' : 'evergreen notes'}
     </div>
     
-    <TagList category="evergreen" />
+    <TagList category="evergreen" posts={allPosts} />
 
     <main class="evergreen-main">
       <GardenGrid posts={transformedPosts} contentType="evergreen" />

@@ -25,9 +25,9 @@ const transformedPosts = nordletterPosts.map(post => {
 });
 ---
 
-<Layout 
-  title="Nordletter" 
-  description="Monthly newsletter about life in the Nordics" 
+<Layout
+  title="Nordletter"
+  description="Monthly newsletter about life in the Nordics"
   currentPage="/nordletter/"
   pageWrapper={{
     maxWidth: '7xl',
@@ -35,6 +35,7 @@ const transformedPosts = nordletterPosts.map(post => {
     centered: true,
     className: 'px-6'
   }}
+  allPosts={allPosts}
 >
   <PageHeader 
     title="Nordletter"
@@ -45,7 +46,7 @@ const transformedPosts = nordletterPosts.map(post => {
   />
   
   <div class="px-6 mb-6">
-    <TagList category="nordletter" />
+    <TagList category="nordletter" posts={allPosts} />
   </div>
   
   <div class="px-6 mb-8">

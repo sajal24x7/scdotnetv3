@@ -15,9 +15,9 @@ const poems = allPosts
 const transformedPosts = poems.map(transformPost);
 ---
 
-<Layout 
-  title="Poems" 
-  description="Poetry and verse" 
+<Layout
+  title="Poems"
+  description="Poetry and verse"
   currentPage="/poems/"
   pageWrapper={{
     maxWidth: '7xl',
@@ -25,6 +25,7 @@ const transformedPosts = poems.map(transformPost);
     centered: true,
     className: 'px-2'
   }}
+  allPosts={allPosts}
 >
     <PageHeader 
       title="Poems"
@@ -38,7 +39,7 @@ const transformedPosts = poems.map(transformPost);
       {transformedPosts.length} {transformedPosts.length === 1 ? 'poem' : 'poems'}
     </div>
     
-    <TagList category="poem" />
+    <TagList category="poem" posts={allPosts} />
 
     <main class="poems-main">
       <GardenGrid posts={transformedPosts} contentType="poems" />

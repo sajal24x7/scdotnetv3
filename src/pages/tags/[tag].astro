@@ -62,8 +62,8 @@ categories.forEach(category => {
 });
 ---
 
-<Layout 
-  title={`Posts tagged "${tag}" - Sajal Choudhary`} 
+<Layout
+  title={`Posts tagged "${tag}" - Sajal Choudhary`}
   description={`All posts tagged with "${tag}"`}
   currentPage={`/tags/${tag}/`}
   pageWrapper={{
@@ -72,6 +72,7 @@ categories.forEach(category => {
     centered: true,
     className: 'px-4'
   }}
+  allPosts={allPosts}
 >
   <header class="text-center mb-10">
     <h1 class="text-huge font-bold text-textPrimary">

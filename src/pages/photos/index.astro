@@ -15,9 +15,9 @@ const photoPosts = allPosts
 const transformedPosts = photoPosts.map(transformPost);
 ---
 
-<Layout 
-  title="Photos - Sajal Choudhary" 
-  description="Photo posts and visual content" 
+<Layout
+  title="Photos - Sajal Choudhary"
+  description="Photo posts and visual content"
   currentPage="/photos/"
   pageWrapper={{
     maxWidth: '7xl',
@@ -25,6 +25,7 @@ const transformedPosts = photoPosts.map(transformPost);
     centered: true,
     className: 'px-2'
   }}
+  allPosts={allPosts}
 >
     <PageHeader 
       title="Photos"
@@ -40,7 +41,7 @@ const transformedPosts = photoPosts.map(transformPost);
 
     <!-- TagList for mobile and desktop -->
     <div class="photos-taglist">
-      <TagList category="photo" title="Tagged with:" />
+      <TagList category="photo" title="Tagged with:" posts={allPosts} />
     </div>
     
     <main class="photos-main">
