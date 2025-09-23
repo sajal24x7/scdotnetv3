@@ -5,10 +5,10 @@ Create reusable layout components similar to Maggie Appleton's site structure to
 ## Current State Analysis
 
 ### Existing Layout Structure
-- **BaseLayout.astro**: Basic layout with `container mx-auto px-4 py-8 max-w-3xl`
-- **Layout.astro**: More comprehensive layout with `container mx-auto px-4 py-8 flex-grow max-w-3xl`
+- **Layout.astro**: Primary layout with `container mx-auto px-4 py-8 flex-grow max-w-3xl`
 - **PageHeader.astro**: Header component with title, description, and actions
 - **FourSectionLayout.astro**: Grid layout for sections
+- _Legacy base layout markup was retired; Layout.astro now acts as the single shared wrapper._
 
 ### Current CSS Classes Used
 - `container mx-auto px-4 py-8 max-w-3xl` - Main content container
@@ -48,15 +48,15 @@ Create reusable layout components similar to Maggie Appleton's site structure to
 
 ### Phase 2: Update Existing Layouts
 
-#### P2.1 Update BaseLayout.astro
+#### P2.1 Update Layout.astro
 - Replace hardcoded container classes with PageWrapper
 - Maintain current visual appearance
 - Add props for customization
 
-#### P2.2 Update Layout.astro
-- Replace hardcoded container classes with PageWrapper
+#### P2.2 Audit Other Layout Wrappers
+- Review remaining templates for hardcoded container classes
+- Replace any duplicated patterns with PageWrapper or ProseWrapper
 - Maintain current visual appearance
-- Add props for customization
 
 ### Phase 3: Update Page Templates
 
@@ -197,7 +197,7 @@ const proseClasses = `prose dark:prose-invert ${maxWidthClasses[maxWidth]} ${cen
 ### Migration Strategy
 
 1. **Create components first** - Build all layout components
-2. **Update layouts** - Modify BaseLayout and Layout.astro
+2. **Update layouts** - Ensure Layout.astro and related templates share the new wrappers
 3. **Update pages one by one** - Start with index.astro, then blog, notes, etc.
 4. **Test each change** - Ensure visual consistency
 5. **Final validation** - Complete site testing

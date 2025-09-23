@@ -9,7 +9,9 @@ import ProseWrapper from '../components/layout/ProseWrapper.astro';
 import Backlinks from '../components/Backlinks.astro';
 import SyndicationLinks from '../components/SyndicationLinks.astro';
 import Webmentions from '../components/Webmentions.astro';
-import { findBacklinksComprehensive } from '../utils/backlinks';
+import { findBacklinksComprehensive } from '../utils/backlinks';    
+import ShareButton from '../components/ShareButton.astro';
+import Tag from '../components/Tag.astro';
 
 export async function getStaticPaths() {
   // Get all year directories from content
@@ -113,12 +115,7 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
             <div class="mb-8 flex justify-center">
               <div class="flex flex-wrap gap-2 justify-center">
                 {entry.data.tags.map((tag: string) => (
-                  <a 
-                    href={`/tags/${tag.toLowerCase()}/`} 
-                    class="tag"
-                  >
-                    {tag.toUpperCase()}
-                  </a>
+                  <Tag tag={tag} />
                 ))}
               </div>
             </div>
@@ -134,19 +131,7 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
         <div class="flex justify-between">
           <a href={`/${category}/`} class="text-accent hover:underline">← Back to {category.charAt(0).toUpperCase() + category.slice(1)}</a>
           
-          <button 
-            id="shareButton" 
-            class="text-accent hover:underline flex items-center"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
-              <circle cx="18" cy="5" r="3"></circle>
-              <circle cx="6" cy="12" r="3"></circle>
-              <circle cx="18" cy="19" r="3"></circle>
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-            </svg>
-            Share
-          </button>
+          <ShareButton title={entry.data?.title ?? ''} url={canonicalUrl} />
         </div>
       </div>
       
@@ -163,69 +148,3 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
 </Layout>
 
 <LinkHoverEffect />
-
-<script>
-  // Share functionality
-  const shareButton = document.getElementById('shareButton');
-  
-  if (shareButton) {
-    shareButton.addEventListener('click', async () => {
-      const title = document.title;
-      const url = window.location.href;
-      
-      // Use Web Share API if available
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: title,
-            url: url
-          });
-        } catch (error) {
-          console.error('Error sharing:', error);
-        }
-      } else {
-        // Fallback to clipboard copy
-        try {
-          await navigator.clipboard.writeText(url);
-          alert('Link copied to clipboard!');
-        } catch (error) {
-          console.error('Failed to copy:', error);
-        }
-      }
-    });
-  }
-</script>
-
-<style>
-  .tag {
-    display: inline-block;
-    color: #8b5cf6;
-    text-decoration: none;
-    padding: 0.25rem 0.5rem;
-    border: 1px solid #8b5cf6;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    background: transparent;
-    white-space: nowrap;
-  }
-
-  .tag:hover {
-    color: #7c3aed;
-    border-color: #7c3aed;
-    background: rgba(139, 92, 246, 0.05);
-  }
-
-  :global(.dark) .tag {
-    color: #a78bfa;
-    border-color: #a78bfa;
-  }
-
-  :global(.dark) .tag:hover {
-    color: #c4b5fd;
-    border-color: #c4b5fd;
-    background: rgba(167, 139, 250, 0.1);
-  }
-
-</style>
