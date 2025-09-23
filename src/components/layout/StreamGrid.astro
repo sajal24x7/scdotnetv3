@@ -2,7 +2,7 @@
 import StreamCard from '../StreamCard.astro';
 import TimeDisplay from '../TimeDisplay.astro';
 import CategoryDisplay from '../CategoryDisplay.astro';
-import { marked } from 'marked';
+import { parseMarkdown } from '../../utils/markdown';
 
 interface Props {
   posts: any[];
@@ -10,16 +10,10 @@ interface Props {
 
 const { posts } = Astro.props;
 
-// Configure marked options
-marked.setOptions({
-  gfm: true, // GitHub Flavored Markdown
-  breaks: true // Convert line breaks to <br>
-});
-
 // Pre-render markdown content for posts
 const renderedPosts = posts.map(post => ({
   ...post,
-  renderedContent: post.body ? marked.parse(post.body) : null
+  renderedContent: post.body ? parseMarkdown(post.body) : null
 }));
 
 

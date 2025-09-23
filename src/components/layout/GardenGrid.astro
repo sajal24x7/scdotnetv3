@@ -1,7 +1,7 @@
 ---
 import Card from '../Card.astro';
-import { marked } from 'marked';
 import LinkHoverEffect from '../LinkHoverEffect.astro';
+import { parseMarkdown } from '../../utils/markdown';
 
 interface Props {
   posts: any[];
@@ -10,16 +10,10 @@ interface Props {
 
 const { posts, contentType = 'mixed' } = Astro.props;
 
-// Configure marked options
-marked.setOptions({
-  gfm: true, // GitHub Flavored Markdown
-  breaks: true // Convert line breaks to <br>
-});
-
 // Pre-render markdown content
 const renderedPosts = posts.map(post => ({
   ...post,
-  renderedContent: post.body ? marked.parse(post.body) : null
+  renderedContent: post.body ? parseMarkdown(post.body) : null
 }));
 
 // Content type specific styling classes
