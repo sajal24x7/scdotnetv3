@@ -1,8 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
-import PageHeader from '../../components/layout/PageHeader.astro';
-import TagList from '../../components/TagList.astro';
+import SectionLanding from '../../layouts/SectionLanding.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for TIL posts
@@ -26,57 +25,12 @@ const transformedPosts = tilPosts.map(transformPost);
     className: 'px-2'
   }}
 >
-    <PageHeader 
+    <SectionLanding
       title="Today I Learned"
       description="Quick notes about things I've learned while working with various technologies, tools, and systems."
-      layout="centered"
-      size="lg"
-      maxWidth="7xl"
-    />
-    
-    <div class="til-count mb-6 text-center">
-      {transformedPosts.length} {transformedPosts.length === 1 ? 'note' : 'notes'}
-    </div>
-    
-    <TagList category="til" />
-
-    <main class="til-main">
+      countText={`${transformedPosts.length} ${transformedPosts.length === 1 ? 'note' : 'notes'}`}
+      tagCategory="til"
+    >
       <GardenGrid posts={transformedPosts} contentType="til" />
-    </main>
+    </SectionLanding>
 </Layout>
-
-<style>
-  .til-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 0.5rem;
-  }
-
-  .til-count {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #8b5cf6;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  :global(.dark) .til-count {
-    color: #a78bfa;
-  }
-
-  .til-main {
-    padding-bottom: 2rem;
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .til-container {
-      max-width: none;
-      padding: 0;
-    }
-
-    .til-main {
-      padding-bottom: 1.5rem;
-    }
-  }
-</style> 

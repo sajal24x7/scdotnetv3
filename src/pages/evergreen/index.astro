@@ -1,8 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
-import PageHeader from '../../components/layout/PageHeader.astro';
-import TagList from '../../components/TagList.astro';
+import SectionLanding from '../../layouts/SectionLanding.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all evergreen posts
@@ -26,46 +25,12 @@ const transformedPosts = evergreenPosts.map(transformPost);
     className: 'px-2'
   }}
 >
-    <PageHeader 
+    <SectionLanding
       title="Evergreen"
       description="Timeless documentation and knowledge that remains relevant over time."
-      layout="centered"
-      size="lg"
-      maxWidth="7xl"
-    />
-    
-    <div class="evergreen-count mb-6 text-center">
-      {transformedPosts.length} {transformedPosts.length === 1 ? 'evergreen note' : 'evergreen notes'}
-    </div>
-    
-    <TagList category="evergreen" />
-
-    <main class="evergreen-main">
+      countText={`${transformedPosts.length} ${transformedPosts.length === 1 ? 'evergreen note' : 'evergreen notes'}`}
+      tagCategory="evergreen"
+    >
       <GardenGrid posts={transformedPosts} contentType="evergreen" />
-    </main>
+    </SectionLanding>
 </Layout>
-
-<style>
-  .evergreen-count {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #8b5cf6;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  :global(.dark) .evergreen-count {
-    color: #a78bfa;
-  }
-
-  .evergreen-main {
-    padding-bottom: 2rem;
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .evergreen-main {
-      padding-bottom: 1.5rem;
-    }
-  }
-</style>
