@@ -1,5 +1,10 @@
 import typography from '@tailwindcss/typography';
 
+const proseHighlight =
+  'linear-gradient(to bottom, transparent 0%, transparent 55%, var(--link-highlight) 55%, var(--link-highlight) 100%)';
+const proseHighlightHover =
+  'linear-gradient(to bottom, transparent 0%, transparent 55%, var(--link-highlight-hover) 55%, var(--link-highlight-hover) 100%)';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -50,7 +55,13 @@ export default {
         const proseLink = {
           color: 'inherit',
           textDecoration: 'none',
-          transition: 'color 0.2s ease',
+          borderRadius: '0.25em',
+          padding: '0.1em 0.2em',
+          margin: '-0.1em -0.2em',
+          backgroundImage: proseHighlight,
+          backgroundSize: '100% 100%',
+          backgroundRepeat: 'no-repeat',
+          transition: 'background 0.2s ease, color 0.2s ease',
         };
 
         const proseLinkFocus = {
@@ -75,6 +86,7 @@ export default {
               a: proseLink,
               'a:hover': {
                 color: 'inherit',
+                backgroundImage: proseHighlightHover,
               },
               'a:focus': {
                 color: 'inherit',
@@ -82,7 +94,10 @@ export default {
               'a:visited': {
                 color: 'inherit',
               },
-              'a:focus-visible': proseLinkFocus,
+              'a:focus-visible': {
+                ...proseLinkFocus,
+                backgroundImage: proseHighlightHover,
+              },
               h1: {
                 ...serifHeading,
                 fontSize: 'var(--text-huge)',
@@ -139,6 +154,7 @@ export default {
               a: proseLink,
               'a:hover': {
                 color: 'inherit',
+                backgroundImage: proseHighlightHover,
               },
               'a:focus': {
                 color: 'inherit',
@@ -146,7 +162,10 @@ export default {
               'a:visited': {
                 color: 'inherit',
               },
-              'a:focus-visible': proseLinkFocus,
+              'a:focus-visible': {
+                ...proseLinkFocus,
+                backgroundImage: proseHighlightHover,
+              },
               h1: {
                 ...serifHeading,
                 color: theme('colors.textPrimaryDark'),

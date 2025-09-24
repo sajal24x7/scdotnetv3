@@ -49,7 +49,7 @@ const isMicroContent = (category: string) => category === 'micro';
     <div class="stream-card-body">
       {!isMicroContent(category) && title && (
         <h2 class="stream-card-title">
-          <a href={link} class="stream-title-link">
+          <a href={link} class="stream-title-link link-hover">
             {title}
           </a>
         </h2>
@@ -69,14 +69,14 @@ const isMicroContent = (category: string) => category === 'micro';
       
       {!isMicroContent(category) && (
         <div class="stream-read-more">
-          <a href={link} class="read-more-link">
+          <a href={link} class="read-more-link link-hover">
             Read more →
           </a>
         </div>
       )}
 
       <div class="stream-card-meta">
-        <a href={link} class="stream-date-link">
+        <a href={link} class="stream-date-link link-hover">
           <TimeDisplay date={pubDate} category={category} className="stream-date" />
         </a>
         <CategoryDisplay category={category} className="stream-category" />

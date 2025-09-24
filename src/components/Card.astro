@@ -21,7 +21,7 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
     <div class="card-body">
       <h2 class="card-title prose">
         {link ? (
-          <a href={link} class="card-link">
+          <a href={link} class="card-link link-hover">
             {title}
           </a>
         ) : (

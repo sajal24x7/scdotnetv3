@@ -7,7 +7,7 @@
 - Normalized done-page timeline entries to guarantee valid `endDate` values, preventing the static build from crashing on undefined timestamps.
 - Segmented link-hover preview data by category so each section only prefetches the summaries it needs, keeping tooltip payloads lean after the API refactor.
 - Extracted a shared `layout-boundary` helper and Tailwind `max-w-layout` token so garden, stream, and bookshelf grids reuse the centered 1400px shell instead of duplicating styles.
-- Simplified inline anchor styling so global CSS keeps links underline-free while inheriting the default text color in light and dark modes.
+- Restored inline link highlighting while keeping global CSS underline-free and inheriting the default text color in both light and dark modes.
 
 ## Planned Changes
 1. Refactor `ShareButton` into a dedicated Astro/TypeScript island so event wiring lives in a module with predictable lifecycle hooks instead of inline scripts.
