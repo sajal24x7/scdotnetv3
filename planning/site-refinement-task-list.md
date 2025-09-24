@@ -9,10 +9,10 @@
 - Extracted a shared `layout-boundary` helper and Tailwind `max-w-layout` token so garden, stream, and bookshelf grids reuse the centered 1400px shell instead of duplicating styles.
 - Restored inline link highlighting while keeping global CSS underline-free and inheriting the default text color in both light and dark modes.
 - Refactored the ShareButton into a reusable island powered by a dedicated TypeScript module so client lifecycle and event wiring are managed outside inline scripts.
+- Required every TagList consumer to supply the posts collection so the component reuses upstream loaders instead of issuing its own `getAllPosts()` call.
 
 ## Planned Changes
-1. Require parents to provide post collections (or summaries) to `TagList`, eliminating redundant `getAllPosts()` fetches and keeping tag counts in sync with upstream loaders.
-2. Pre-render per-tag/category slices so tag detail pages ship static HTML rather than mutating headings and article lists via client scripts.
-3. Extend `SectionLanding` props/slots to cover stream and garden needs (counts, tag pickers) so section pages stop wrapping the layout with bespoke markup.
-4. Replace the hand-rolled Nordletter signup form with the shared `NewsletterSignup` component to fix nested form-control markup and consolidate styling.
-5. Centralize category filtering helpers (e.g., `getPostsByCategory`) so home, garden, and stream routes no longer duplicate filter arrays and sort logic.
+1. Pre-render per-tag/category slices so tag detail pages ship static HTML rather than mutating headings and article lists via client scripts.
+2. Extend `SectionLanding` props/slots to cover stream and garden needs (counts, tag pickers) so section pages stop wrapping the layout with bespoke markup.
+3. Replace the hand-rolled Nordletter signup form with the shared `NewsletterSignup` component to fix nested form-control markup and consolidate styling.
+4. Centralize category filtering helpers (e.g., `getPostsByCategory`) so home, garden, and stream routes no longer duplicate filter arrays and sort logic.

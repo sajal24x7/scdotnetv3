@@ -1,6 +1,7 @@
 ---
 import PageHeader from '../components/layout/PageHeader.astro';
 import TagList from '../components/TagList.astro';
+import type { Post } from '../utils/content';
 
 interface Props {
     title: string;
@@ -13,6 +14,7 @@ interface Props {
     tagTitle?: string;
     tagMaxTags?: number;
     tagShowMore?: boolean;
+    tagPosts?: Post[];
     tagWrapperClass?: string;
     tagListSpacing?: string;
     contentClass?: string;
@@ -33,6 +35,7 @@ const {
     tagTitle,
     tagMaxTags,
     tagShowMore,
+    tagPosts,
     tagWrapperClass = '',
     tagListSpacing,
     contentClass = '',
@@ -52,6 +55,10 @@ const countAlignmentClass = alignmentClasses[countAlignment] ?? alignmentClasses
 const hasTagListSlot = Astro.slots.has('tagList');
 const hasBeforeContentSlot = Astro.slots.has('beforeContent');
 const hasAfterCountSlot = Astro.slots.has('afterCount');
+
+if (!hasTagListSlot && tagCategory && !tagPosts) {
+    throw new Error('SectionLanding requires the `tagPosts` prop when rendering the default TagList.');
+}
 ---
 <section class={`section-landing ${wrapperClass}`.trim()}>
     <PageHeader
@@ -92,6 +99,7 @@ const hasAfterCountSlot = Astro.slots.has('afterCount');
                     title={tagTitle}
                     maxTags={tagMaxTags}
                     showMore={tagShowMore}
+                    posts={tagPosts}
                 />
             </div>
         )
