@@ -71,22 +71,90 @@ export async function getAllPosts(): Promise<Post[]> {
 
 // Transform post for ContentGrid component
 export function transformPost(post: Post) {
-  return {
-    data: {
-      title: post.data.title,
-      description: post.data.description,
-      pubDate: post.data.pubDate,
-      category: post.data.category,
-      image: post.data.image,
-      tags: post.data.tags,
-      edition: post.data.edition,
-      editionDisplay: post.data.editionDisplay,
-      syndicationUrls: post.data.syndicationUrls,
-      link: `/${post.data.category}/${post.slug}/`
-    },
-    body: post.body,
-    render: post.render
-  };
+    return {
+        data: {
+            title: post.data.title,
+            description: post.data.description,
+            pubDate: post.data.pubDate,
+            category: post.data.category,
+            image: post.data.image,
+            tags: post.data.tags,
+            edition: post.data.edition,
+            editionDisplay: post.data.editionDisplay,
+            syndicationUrls: post.data.syndicationUrls,
+            link: `/${post.data.category}/${post.slug}/`
+        },
+        body: post.body,
+        render: post.render
+    };
+}
+
+export const CATEGORY_FILTERS = {
+    gardenHighlights: ['evergreen', 'til', 'now'],
+    stream: ['blog', 'micro', 'photo'],
+    streamHighlights: ['blog', 'micro'],
+    bookshelf: ['bookshelf'],
+    prose: ['poem', 'story'],
+    garden: ['evergreen', 'til', 'bookshelf', 'story', 'poem']
+} as const;
+
+export type CategoryFilterKey = keyof typeof CATEGORY_FILTERS;
+
+type CategoryFilter = CategoryFilterKey | ReadonlyArray<string> | string;
+
+interface CategoryFilterOptions {
+    limit?: number;
+}
+
+function isCategoryFilterKey(value: string): value is CategoryFilterKey {
+    return Object.prototype.hasOwnProperty.call(CATEGORY_FILTERS, value);
+}
+
+function resolveCategoryList(filter: CategoryFilter): ReadonlyArray<string> {
+    if (Array.isArray(filter)) {
+        return filter;
+    }
+
+    if (typeof filter === 'string' && isCategoryFilterKey(filter)) {
+        return CATEGORY_FILTERS[filter];
+    }
+
+    return [filter as string];
+}
+
+function getPostTimestamp(post: Post): number {
+    const pubDate = post.data.pubDate;
+    if (!pubDate) {
+        return 0;
+    }
+
+    if (pubDate instanceof Date) {
+        return pubDate.getTime();
+    }
+
+    return new Date(pubDate).getTime();
+}
+
+export function getPostsByCategory(posts: Post[], filter: CategoryFilter, options: CategoryFilterOptions = {}): Post[] {
+    const categories = resolveCategoryList(filter);
+
+    if (categories.length === 0) {
+        return [];
+    }
+
+    const categorySet = new Set(categories);
+    const filtered = posts
+        .filter(post => {
+            const category = post.data.category;
+            return Boolean(category) && categorySet.has(category);
+        })
+        .sort((a, b) => getPostTimestamp(b) - getPostTimestamp(a));
+
+    if (typeof options.limit === 'number') {
+        return filtered.slice(0, options.limit);
+    }
+
+    return filtered;
 }
 
 /**
