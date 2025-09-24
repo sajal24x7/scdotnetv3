@@ -130,7 +130,7 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
       
       <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
         <div class="flex justify-between">
-          <a href={`/${category}/`} class="text-accent hover:underline">← Back to {category.charAt(0).toUpperCase() + category.slice(1)}</a>
+          <a href={`/${category}/`} class="link-inline text-accent">← Back to {category.charAt(0).toUpperCase() + category.slice(1)}</a>
           
           <ShareButton title={entry.data?.title ?? ''} url={canonicalUrl} />
         </div>

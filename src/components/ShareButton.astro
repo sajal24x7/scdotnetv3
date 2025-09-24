@@ -16,7 +16,7 @@ const {
 } = Astro.props as Props;
 
 const buttonId = `share-button-${Math.random().toString(36).slice(2, 10)}`;
-const baseClass = 'text-accent hover:underline flex items-center';
+const baseClass = 'link-inline text-accent flex items-center';
 const classes = className ? `${baseClass} ${className}` : baseClass;
 ---
 <button
