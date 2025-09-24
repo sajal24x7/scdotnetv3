@@ -3,7 +3,7 @@ import { getAllPosts } from '../utils/content';
 import Layout from '../layouts/Layout.astro';
 import TimeDisplay from '../components/TimeDisplay.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
-import ProseWrapper from '../components/layout/ProseWrapper.astro';
+import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import { parseMarkdown } from '../utils/markdown';
 
 // Get all posts dynamically across year folders and filter to category 'now' and status 'active' (or undefined for backward compatibility)
@@ -68,9 +68,9 @@ const renderedPosts = activeNowPosts.map(post => ({
                 </div>
 
                 {post.renderedContent && (
-                  <ProseWrapper maxWidth="full">
+                  <LayoutContainer prose maxWidth="full">
                     <div set:html={post.renderedContent} />
-                  </ProseWrapper>
+                  </LayoutContainer>
                 )}
               </div>
             </article>

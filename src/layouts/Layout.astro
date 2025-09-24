@@ -1,7 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import PageWrapper from '../components/layout/PageWrapper.astro';
+import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import SearchModal from '../components/SearchModal.astro';
 import LinkHoverEffect from '../components/LinkHoverEffect.astro';
 import type { Post } from '../utils/content';
@@ -12,10 +12,15 @@ interface Props {
         description?: string;
         currentPage: string;
         pageWrapper?: {
+                as?: keyof HTMLElementTagNameMap;
                 maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
                 padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+                paddingScale?: 'page' | 'container';
                 centered?: boolean;
+                container?: boolean;
                 className?: string;
+                prose?: boolean;
+                proseSize?: 'sm' | 'base' | 'lg' | 'xl';
         };
         allPosts?: Post[];
         enableSearchModal?: boolean;
@@ -93,14 +98,19 @@ const {
                 <div class="flex flex-col min-h-screen">
                         <Header currentPage={currentPage} enableSearch={enableSearchModal} />
                         <main class="flex-grow relative z-10">
-                                <PageWrapper
+                                <LayoutContainer
+                                        as={pageWrapper.as || 'div'}
+                                        container={pageWrapper.container !== false}
                                         maxWidth={pageWrapper.maxWidth || '3xl'}
                                         padding={pageWrapper.padding || 'md'}
+                                        paddingScale={pageWrapper.paddingScale || 'page'}
                                         centered={pageWrapper.centered !== false}
-					className={pageWrapper.className || ''}
-				>
-					<slot />
-				</PageWrapper>
+                                        prose={pageWrapper.prose === true}
+                                        proseSize={pageWrapper.proseSize || 'base'}
+                                        className={pageWrapper.className || ''}
+                                >
+                                        <slot />
+                                </LayoutContainer>
 			</main>
 			<Footer />
 		</div>

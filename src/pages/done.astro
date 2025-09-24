@@ -3,7 +3,7 @@ import { getAllPosts, type Post } from '../utils/content';
 import Layout from '../layouts/Layout.astro';
 import { formatDateRange } from '../utils/dateFormat';
 import PageHeader from '../components/layout/PageHeader.astro';
-import ProseWrapper from '../components/layout/ProseWrapper.astro';
+import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import { parseMarkdown } from '../utils/markdown';
 
 // Get all posts dynamically across year folders and filter to category 'now' and status 'done'
@@ -84,9 +84,9 @@ const renderedPosts: DonePost[] = doneNowPosts.map(post => {
                 </div>
 
                 {post.renderedContent && (
-                  <ProseWrapper maxWidth="full">
+                  <LayoutContainer prose maxWidth="full">
                     <div set:html={post.renderedContent} />
-                  </ProseWrapper>
+                  </LayoutContainer>
                 )}
               </div>
             </article>
