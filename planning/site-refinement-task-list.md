@@ -13,6 +13,7 @@
 - Pre-rendered tag detail pages for each category slice so the markup ships statically without relying on client-side DOM mutations for filtered views.
 - Extended SectionLanding with count variants, configurable tag list props, and a dedicated count slot so stream and garden sections can rely on the layout without bespoke wrappers.
 - Replaced the Nordletter signup form with the shared `NewsletterSignup` component so the embed uses consistent markup and styling across the site.
+- Centralized category filtering helpers so home, garden, and stream routes reuse shared category groups and sort logic.
 
 ## Planned Changes
-1. Centralize category filtering helpers (e.g., `getPostsByCategory`) so home, garden, and stream routes no longer duplicate filter arrays and sort logic.
+- _(None yet)_

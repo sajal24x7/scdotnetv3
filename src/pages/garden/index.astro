@@ -2,13 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import { getAllPosts, transformPost } from '../../utils/content';
+import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/content';
 
 // Get all posts and filter for garden (evergreen, til, bookshelf, stories, poems)
 const allPosts = await getAllPosts();
-const gardenPosts = allPosts
-  .filter(post => ['evergreen', 'til', 'bookshelf', 'story', 'poem'].includes(post.data.category))
-  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+const gardenPosts = getPostsByCategory(allPosts, 'garden');
 
 // Transform posts for the GardenGrid component
 const transformedPosts = gardenPosts.map(transformPost);
