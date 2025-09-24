@@ -1,5 +1,5 @@
 ---
-import { getAllPosts } from '../utils/content';
+import { getAllPosts, type Post } from '../utils/content';
 import Layout from '../layouts/Layout.astro';
 import { formatDateRange } from '../utils/dateFormat';
 import PageHeader from '../components/layout/PageHeader.astro';
@@ -18,10 +18,21 @@ const doneNowPosts = allPosts
   });
 
 // Pre-render markdown content
-const renderedPosts = doneNowPosts.map(post => ({
-  ...post,
-  renderedContent: post.body ? parseMarkdown(post.body) : null
-}));
+type DonePost = Post & {
+  endDate: Date;
+  renderedContent: string | null;
+};
+
+const renderedPosts: DonePost[] = doneNowPosts.map(post => {
+  const rawEndDate = post.data.updatedDate ?? post.data.pubDate;
+  const endDate = rawEndDate instanceof Date ? rawEndDate : new Date(rawEndDate);
+
+  return {
+    ...post,
+    endDate,
+    renderedContent: post.body ? parseMarkdown(post.body) : null
+  };
+});
 ---
 
 <Layout
