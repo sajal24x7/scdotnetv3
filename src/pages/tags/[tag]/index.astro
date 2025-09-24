@@ -1,0 +1,43 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import TagDetailPage from '../../../components/tag/TagDetailPage.astro';
+import { getAllPosts } from '../../../utils/content';
+import { getTagPageData, type TagPageData } from '../../../utils/tagPages';
+
+export async function getStaticPaths() {
+    const tagPages = await getTagPageData();
+    return tagPages.map(page => ({
+        params: { tag: page.tag },
+        props: page
+    }));
+}
+
+const { tag, transformedPosts, categorySlices, totalCount } = Astro.props as TagPageData;
+const allPosts = await getAllPosts();
+
+const pageTitle = `Posts tagged "${tag}" - Sajal Choudhary`;
+const pageDescription = `All posts tagged with "${tag}"`;
+const currentPage = `/tags/${tag}/`;
+---
+
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    currentPage={currentPage}
+    pageWrapper={{
+        maxWidth: '7xl',
+        padding: 'md',
+        centered: true,
+        className: 'px-4'
+    }}
+    allPosts={allPosts}
+    enableSearchModal
+    enableLinkHoverEffect
+>
+    <TagDetailPage
+        tag={tag}
+        posts={transformedPosts}
+        totalCount={totalCount}
+        categorySlices={categorySlices}
+    />
+</Layout>
