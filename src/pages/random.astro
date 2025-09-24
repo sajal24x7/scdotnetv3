@@ -26,8 +26,11 @@ if (randomEntry) {
 return Astro.redirect(redirectUrl);
 ---
 
-<Layout title="Redirecting..." currentPage="/random">
+<Layout title="Redirecting..." currentPage="/random"
+  enableSearchModal
+  enableLinkHoverEffect
+>
   <div class="flex items-center justify-center min-h-[50vh]">
     <p>Redirecting to a random post...</p>
   </div>
-</Layout> 
+</Layout>
