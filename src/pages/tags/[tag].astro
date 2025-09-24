@@ -142,7 +142,7 @@ categories.forEach(category => {
             <article class="post-item">
               <div class="post-item-desktop">
                 <div class="post-item-metadata">
-                  <a href="/${post.data.category}/${post.slug}/" class="stream-date-link link-hover">
+                  <a href="/${post.data.category}/${post.slug}/" class="stream-date-link">
                     <time class="stream-date">
                       ${new Date(post.data.pubDate).toLocaleDateString('en-US', { 
                         year: 'numeric', 
@@ -160,7 +160,7 @@ categories.forEach(category => {
                 </div>
                 <div class="post-item-content">
                   <h2 class="stream-title">
-                    <a href="/${post.data.category}/${post.slug}/" class="stream-title-link link-hover">
+                    <a href="/${post.data.category}/${post.slug}/" class="stream-title-link">
                       ${post.data.title}
                     </a>
                   </h2>

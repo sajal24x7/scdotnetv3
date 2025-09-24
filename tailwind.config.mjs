@@ -1,16 +1,4 @@
 import typography from '@tailwindcss/typography';
-import plugin from 'tailwindcss/plugin';
-
-const proseHighlight = 'linear-gradient(to bottom, transparent 0%, transparent 55%, var(--link-highlight) 55%, var(--link-highlight) 100%)';
-const proseHighlightHover = 'linear-gradient(to bottom, transparent 0%, transparent 55%, var(--link-highlight-hover) 55%, var(--link-highlight-hover) 100%)';
-const inlineLinkBase = {
-  color: 'inherit',
-  textDecoration: 'none',
-  borderRadius: '0.25em',
-  padding: '0.1em 0.2em',
-  margin: '-0.1em -0.2em',
-  transition: 'background 0.2s ease, color 0.2s ease',
-};
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -59,6 +47,17 @@ export default {
           lineHeight: '1.25',
         };
 
+        const proseLink = {
+          color: 'inherit',
+          textDecoration: 'none',
+          transition: 'color 0.2s ease',
+        };
+
+        const proseLinkFocus = {
+          outline: '2px solid rgb(var(--color-accent))',
+          outlineOffset: '2px',
+        };
+
         return {
           DEFAULT: {
             css: {
@@ -73,14 +72,17 @@ export default {
               '--tw-prose-bold': theme('colors.textPrimary'),
               '--tw-prose-quotes': theme('colors.textSecondary'),
               '--tw-prose-hr': theme('colors.borderColor'),
-              a: {
-                ...inlineLinkBase,
-                backgroundImage: proseHighlight,
-                backgroundSize: '100% 100%',
-              },
+              a: proseLink,
               'a:hover': {
-                backgroundImage: proseHighlightHover,
+                color: 'inherit',
               },
+              'a:focus': {
+                color: 'inherit',
+              },
+              'a:visited': {
+                color: 'inherit',
+              },
+              'a:focus-visible': proseLinkFocus,
               h1: {
                 ...serifHeading,
                 fontSize: 'var(--text-huge)',
@@ -134,14 +136,17 @@ export default {
               '--tw-prose-bold': theme('colors.textPrimaryDark'),
               '--tw-prose-quotes': theme('colors.textSecondaryDark'),
               '--tw-prose-hr': theme('colors.borderColorDark'),
-              a: {
-                ...inlineLinkBase,
-                backgroundImage: proseHighlight,
-                backgroundSize: '100% 100%',
-              },
+              a: proseLink,
               'a:hover': {
-                backgroundImage: proseHighlightHover,
+                color: 'inherit',
               },
+              'a:focus': {
+                color: 'inherit',
+              },
+              'a:visited': {
+                color: 'inherit',
+              },
+              'a:focus-visible': proseLinkFocus,
               h1: {
                 ...serifHeading,
                 color: theme('colors.textPrimaryDark'),
@@ -195,40 +200,5 @@ export default {
       },
     },
   },
-  plugins: [
-    typography,
-    plugin(({ addComponents }) => {
-      addComponents({
-        '.link-inline': inlineLinkBase,
-        '.link-inline:hover': {
-          backgroundImage: proseHighlightHover,
-          backgroundSize: '100% 100%',
-        },
-        '.link-inline:focus-visible': {
-          outline: '2px solid rgb(var(--color-accent))',
-          outlineOffset: '2px',
-          backgroundImage: proseHighlight,
-          backgroundSize: '100% 100%',
-        },
-        '.link-hover': {
-          color: 'inherit',
-          textDecoration: 'none',
-          borderRadius: '0.25em',
-          padding: '0.1em 0.2em',
-          margin: '-0.1em -0.2em',
-          transition: 'background 0.2s ease',
-        },
-        '.link-hover:hover': {
-          backgroundImage: proseHighlightHover,
-          backgroundSize: '100% 100%',
-        },
-        '.link-hover:focus-visible': {
-          outline: '2px solid rgb(var(--color-accent))',
-          outlineOffset: '2px',
-          backgroundImage: proseHighlight,
-          backgroundSize: '100% 100%',
-        },
-      });
-    }),
-  ],
+  plugins: [typography],
 };

@@ -17,7 +17,7 @@ const { post, isMicroContent, showFullContent = true } = Astro.props;
   <div class="post-item-desktop">
     <!-- Left column: Metadata -->
     <div class="post-item-metadata">
-      <a href={post.data.link} class="stream-date-link link-hover">
+      <a href={post.data.link} class="stream-date-link">
         <TimeDisplay
           date={post.data.pubDate}
           category={post.data.category}
@@ -39,7 +39,7 @@ const { post, isMicroContent, showFullContent = true } = Astro.props;
     <div class="post-item-content">
       {post.data.title && (
         <h2 class="stream-title">
-          <a href={post.data.link} class="stream-title-link link-hover">
+          <a href={post.data.link} class="stream-title-link">
             {post.data.title}
           </a>
         </h2>
@@ -59,7 +59,7 @@ const { post, isMicroContent, showFullContent = true } = Astro.props;
       
       {!isMicroContent(post.data.category) && (
         <div class="stream-read-more">
-          <a href={post.data.link} class="read-more-link link-hover">
+          <a href={post.data.link} class="read-more-link">
             Read more →
           </a>
         </div>
@@ -72,7 +72,7 @@ const { post, isMicroContent, showFullContent = true } = Astro.props;
     <div class="post-item-content">
       {post.data.title && (
         <h2 class="stream-mobile-title">
-          <a href={post.data.link} class="stream-title-link link-hover">
+          <a href={post.data.link} class="stream-title-link">
             {post.data.title}
           </a>
         </h2>
@@ -92,7 +92,7 @@ const { post, isMicroContent, showFullContent = true } = Astro.props;
       
       {!isMicroContent(post.data.category) && (
         <div class="stream-read-more">
-          <a href={post.data.link} class="read-more-link link-hover">
+          <a href={post.data.link} class="read-more-link">
             Read more →
           </a>
         </div>
@@ -101,7 +101,7 @@ const { post, isMicroContent, showFullContent = true } = Astro.props;
     
     <!-- Mobile metadata after content -->
     <div class="stream-mobile-metadata">
-      <a href={post.data.link} class="stream-date-link link-hover">
+      <a href={post.data.link} class="stream-date-link">
         <TimeDisplay
           date={post.data.pubDate}
           category={post.data.category}

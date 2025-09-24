@@ -21,7 +21,7 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
     <div class="card-body">
       <h2 class="card-title prose">
         {link ? (
-          <a href={link} class="card-link link-hover">
+          <a href={link} class="card-link">
             {title}
           </a>
         ) : (
@@ -140,7 +140,7 @@ const { title, description, pubDate, category, image, link, tags } = Astro.props
   }
 
   .card-link {
-    /* Links now inherit color and have persistent underlines from global CSS */
+    /* Card links rely on global link styling for color and decoration */
   }
 
   .card-description {
