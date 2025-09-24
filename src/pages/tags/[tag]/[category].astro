@@ -1,0 +1,65 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import TagDetailPage from '../../../components/tag/TagDetailPage.astro';
+import { getAllPosts } from '../../../utils/content';
+import { getTagPageData, type TagPageData } from '../../../utils/tagPages';
+
+export async function getStaticPaths() {
+    const tagPages = await getTagPageData();
+    const paths: Array<{ params: { tag: string; category: string }; props: TagPageData & { activeCategory: string } }> = [];
+
+    for (const page of tagPages) {
+        for (const slice of page.categorySlices) {
+            paths.push({
+                params: { tag: page.tag, category: slice.key },
+                props: { ...page, activeCategory: slice.key }
+            });
+        }
+    }
+
+    return paths;
+}
+
+const { tag, categorySlices, totalCount, activeCategory } = Astro.props as TagPageData & {
+    activeCategory: string;
+};
+
+const slice = categorySlices.find(entry => entry.key === activeCategory);
+
+if (!slice) {
+    throw new Error(`Category "${activeCategory}" not found for tag "${tag}".`);
+}
+
+const allPosts = await getAllPosts();
+
+const includeDetails = slice.includeLabels.length > 1
+    ? ` (${slice.includeLabels.join(', ')})`
+    : '';
+const itemLabel = slice.count === 1 ? 'item' : 'items';
+const pageTitle = `${slice.label} posts tagged "${tag}" - Sajal Choudhary`;
+const pageDescription = `${slice.count} ${itemLabel} tagged with "${tag}" in ${slice.label}${includeDetails}.`;
+const currentPage = `/tags/${tag}/${activeCategory}/`;
+---
+
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    currentPage={currentPage}
+    pageWrapper={{
+        maxWidth: '7xl',
+        padding: 'md',
+        centered: true,
+        className: 'px-4'
+    }}
+    allPosts={allPosts}
+    enableSearchModal
+    enableLinkHoverEffect
+>
+    <TagDetailPage
+        tag={tag}
+        posts={slice.transformedPosts}
+        totalCount={totalCount}
+        categorySlices={categorySlices}
+        activeCategory={activeCategory}
+    />
+</Layout>

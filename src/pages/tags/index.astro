@@ -144,12 +144,13 @@ categories.forEach(category => {
       `;
       title.parentNode.insertBefore(backLink, title.nextSibling);
       
-      // Update tag links to include category parameter
+      // Update tag links to include category path segment
       const tagLinks = document.querySelectorAll('a[href^="/tags/"]');
       tagLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href && href !== '/tags/') {
-          link.setAttribute('href', href + `?category=${category}`);
+          const normalized = href.endsWith('/') ? href : `${href}/`;
+          link.setAttribute('href', `${normalized}${category}/`);
         }
       });
       
@@ -163,8 +164,8 @@ categories.forEach(category => {
         // Update top twenty tags
         const topTwentyContainer = document.querySelector('.grid.grid-cols-2.gap-4');
         if (topTwentyContainer && topTwenty.length > 0) {
-          topTwentyContainer.innerHTML = topTwenty.map(([tag, count]) => 
-            `<a href="/tags/${tag}/?category=${category}" class="text-sm font-medium hover:text-accent transition-colors">
+          topTwentyContainer.innerHTML = topTwenty.map(([tag, count]) =>
+            `<a href="/tags/${tag}/${category}/" class="text-sm font-medium hover:text-accent transition-colors">
               ${tag.toUpperCase()} (${count})
             </a>`
           ).join('');
@@ -173,8 +174,8 @@ categories.forEach(category => {
         // Update all tags
         const allTagsContainer = document.querySelectorAll('.grid.grid-cols-2.gap-4')[1];
         if (allTagsContainer) {
-          allTagsContainer.innerHTML = allCategoryTags.map(([tag, count]) => 
-            `<a href="/tags/${tag}/?category=${category}" class="text-sm font-medium hover:text-accent transition-colors">
+          allTagsContainer.innerHTML = allCategoryTags.map(([tag, count]) =>
+            `<a href="/tags/${tag}/${category}/" class="text-sm font-medium hover:text-accent transition-colors">
               ${tag.toUpperCase()} (${count})
             </a>`
           ).join('');
