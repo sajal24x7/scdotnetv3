@@ -14,6 +14,7 @@
 - Extended SectionLanding with count variants, configurable tag list props, and a dedicated count slot so stream and garden sections can rely on the layout without bespoke wrappers.
 - Replaced the Nordletter signup form with the shared `NewsletterSignup` component so the embed uses consistent markup and styling across the site.
 - Centralized category filtering helpers so home, garden, and stream routes reuse shared category groups and sort logic.
+- Added a skip navigation link, landmark id, and `aria-current` attributes so keyboard and screen reader users can bypass the header and understand active navigation states.
 
 ## Planned Changes
 - _(None yet)_
