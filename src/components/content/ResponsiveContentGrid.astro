@@ -44,7 +44,7 @@ const getGridClasses = () => {
 };
 ---
 
-<div class={`grid ${getGridClasses()}`}>
+<div class={`grid ${getGridClasses()} layout-boundary`}>
   {renderedPosts.map((post, index) => (
     <div class={layout === 'masonry' ? 'break-inside-avoid' : ''}>
       <Card {...post.data}>
@@ -60,12 +60,6 @@ const getGridClasses = () => {
 
 
 <style>
-  .grid {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
   /* Add a subtle divider between cards */
   .grid > *:not(:last-child) {
     position: relative;
@@ -106,13 +100,6 @@ const getGridClasses = () => {
   @media (min-width: 768px) and (max-width: 1024px) {
     .grid {
       max-width: 1200px;
-    }
-  }
-
-  /* Large screen adjustments */
-  @media (min-width: 1024px) {
-    .grid {
-      max-width: 1400px;
     }
   }
 

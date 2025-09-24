@@ -30,6 +30,8 @@
     --link-highlight-hover: rgba(139, 92, 246, 0.6);
     --hr-color: #666666;
 
+    --layout-max-width: 87.5rem;
+
     --tag-color-rgb: 139, 92, 246;
     --tag-hover-rgb: 124, 58, 237;
     --tag-dark-color-rgb: 167, 139, 250;
@@ -414,6 +416,10 @@
 }
 
 @layer components {
+  .layout-boundary {
+    @apply w-full max-w-layout mx-auto;
+  }
+
   .link-hover {
     color: inherit;
     text-decoration: none;

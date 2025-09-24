@@ -20,7 +20,7 @@ const renderedPosts = posts.map(post => ({
 
 ---
 
-<div class="stream-grid-layout">
+<div class="stream-grid-layout layout-boundary">
   <!-- Desktop: 3-column layout -->
   <div class="stream-grid-desktop">
     <!-- Left sidebar: Metadata (aligned with content) -->
@@ -78,12 +78,6 @@ const renderedPosts = posts.map(post => ({
 </div>
 
 <style>
-  .stream-grid-layout {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0;
-  }
-
   /* Desktop Layout */
   .stream-grid-desktop {
     display: none;
