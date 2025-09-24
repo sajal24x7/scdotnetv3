@@ -1,4 +1,8 @@
 ---
+import { getContentPreviewCategories } from '../data/contentPreviewStore';
+
+const previewCategories = await getContentPreviewCategories();
+const previewCategoriesJson = JSON.stringify(previewCategories);
 ---
 
 <style>
@@ -66,11 +70,13 @@
   }
 </style>
 
+
 <script is:inline>
     (function () {
         const PREVIEW_KEY = '__SC_LINK_PREVIEWS__';
         const STATE_KEY = '__SC_LINK_HOVER_STATE__';
-        const PREVIEWS_URL = '/api/link-previews.json';
+        const PREVIEW_BASE_URL = '/api/link-previews';
+        const AVAILABLE_SEGMENTS = new Set(JSON.parse('{previewCategoriesJson}'));
 
         const existing = window[PREVIEW_KEY];
         const previewMap = existing instanceof Map ? existing : new Map();
@@ -94,64 +100,16 @@
         state.scheduled = state.scheduled || false;
         state.prefetched = state.prefetched || false;
         state.currentLink = state.currentLink || null;
+        state.loadedSegments = state.loadedSegments instanceof Set ? state.loadedSegments : new Set();
+        state.pendingSegments = state.pendingSegments instanceof Set ? state.pendingSegments : new Set();
+        state.segmentFetches = state.segmentFetches instanceof Map ? state.segmentFetches : new Map();
+        state.prefetchScheduled = state.prefetchScheduled === true;
         window[STATE_KEY] = state;
 
-        let fetchPromise = null;
-
-        const ensurePreviewsLoaded = async () => {
-            if (previewMap.size > 0) {
-                return previewMap;
-            }
-
-            if (!fetchPromise) {
-                fetchPromise = fetch(PREVIEWS_URL, {
-                    headers: {
-                        Accept: 'application/json'
-                    }
-                })
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error(`Failed to load link previews: ${response.status}`);
-                        }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        if (data && typeof data === 'object') {
-                            for (const [path, preview] of Object.entries(data)) {
-                                previewMap.set(path, preview);
-                            }
-                        }
-                        return previewMap;
-                    })
-                    .catch((error) => {
-                        console.error('Link preview fetch failed', error);
-                        return previewMap;
-                    })
-                    .finally(() => {
-                        fetchPromise = null;
-                    });
-            }
-
-            return fetchPromise;
-        };
-
-        const ensurePreviewsLoadedSoon = () => {
-            if (previewMap.size > 0 || fetchPromise) {
-                return;
-            }
-
-            const idle = window.requestIdleCallback;
-            if (typeof idle === 'function') {
-                idle(() => {
-                    void ensurePreviewsLoaded();
-                }, { timeout: 2000 });
-                return;
-            }
-
-            window.setTimeout(() => {
-                void ensurePreviewsLoaded();
-            }, 1500);
-        };
+        const processedLinks = state.processed;
+        const loadedSegments = state.loadedSegments;
+        const pendingSegments = state.pendingSegments;
+        const segmentFetches = state.segmentFetches;
 
         const ensureTooltip = () => {
             if (state.tooltip && document.body.contains(state.tooltip)) {
@@ -173,7 +131,6 @@
         };
 
         const tooltip = ensureTooltip();
-        const processedLinks = state.processed;
 
         if (!tooltip) {
             if (document.readyState === 'loading') {
@@ -286,6 +243,10 @@
                 return '';
             }
 
+            if (href.startsWith('#')) {
+                return '';
+            }
+
             let cleanHref = href.replace('__GHOST_URL__', '');
 
             if (cleanHref.includes('sajalchoudhary.net') || cleanHref.startsWith('http')) {
@@ -308,44 +269,130 @@
             return withTrailingSlash;
         };
 
+        const getSegmentFromPath = (path) => {
+            if (!path) {
+                return '';
+            }
+
+            const parts = path.split('/').filter(Boolean);
+            return parts.length > 0 ? parts[0] : '';
+        };
+
+        const ensureSegmentPreviewsLoaded = async (segment) => {
+            if (!segment || loadedSegments.has(segment) || !AVAILABLE_SEGMENTS.has(segment)) {
+                loadedSegments.add(segment);
+                return previewMap;
+            }
+
+            let fetchPromise = segmentFetches.get(segment);
+
+            if (!fetchPromise) {
+                const url = `${PREVIEW_BASE_URL}/${encodeURIComponent(segment)}.json`;
+
+                fetchPromise = fetch(url, {
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(`Failed to load link previews for ${segment}: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        if (data && typeof data === 'object') {
+                            for (const [path, preview] of Object.entries(data)) {
+                                previewMap.set(path, preview);
+                            }
+                        }
+                        loadedSegments.add(segment);
+                        return previewMap;
+                    })
+                    .catch((error) => {
+                        console.error('Link preview fetch failed', segment, error);
+                        loadedSegments.add(segment);
+                        return previewMap;
+                    })
+                    .finally(() => {
+                        segmentFetches.delete(segment);
+                    });
+
+                segmentFetches.set(segment, fetchPromise);
+            }
+
+            return fetchPromise;
+        };
+
+        const scheduleSegmentPrefetch = () => {
+            if (state.prefetchScheduled || pendingSegments.size === 0) {
+                return;
+            }
+
+            state.prefetchScheduled = true;
+
+            const runPrefetch = () => {
+                state.prefetchScheduled = false;
+
+                const segmentsToLoad = Array.from(pendingSegments);
+                pendingSegments.clear();
+
+                segmentsToLoad.forEach((segment) => {
+                    if (!loadedSegments.has(segment)) {
+                        void ensureSegmentPreviewsLoaded(segment);
+                    }
+                });
+            };
+
+            const idle = window.requestIdleCallback;
+
+            if (typeof idle === 'function') {
+                idle(runPrefetch, { timeout: 2000 });
+                return;
+            }
+
+            window.setTimeout(runPrefetch, 1500);
+        };
+
         const applyPreviewData = (link) => {
             const href = link.getAttribute('href');
             if (!href) {
                 return;
             }
 
-            const normalized = normalizeHref(href);
-            const fallback = normalized.replace(/\/$/, '');
+            const normalized = link.dataset.previewPath || normalizeHref(href);
+            if (!normalized) {
+                return;
+            }
 
-            const assignPreview = (preview) => {
-                if (!preview) {
-                    return;
-                }
+            const fallback = link.dataset.previewFallback || normalized.replace(/\/$/, '');
+            const preview = previewMap.get(normalized) || previewMap.get(fallback);
 
-                if (preview.title) {
-                    link.setAttribute('data-title', preview.title);
-                }
-                if (preview.description) {
-                    link.setAttribute('data-description', preview.description);
-                }
+            if (!preview) {
+                return;
+            }
 
-                if (state.tooltip && state.tooltip.classList.contains('visible') && state.currentLink === link) {
-                    const titleText = preview.title || (link.textContent ? link.textContent.trim() : 'Internal Link');
-                    const descriptionText = preview.description || '';
-                    setTooltipTheme();
-                    renderInternalPreview(titleText, descriptionText);
-                }
-            };
+            if (preview.title) {
+                link.setAttribute('data-title', preview.title);
+            }
+            if (preview.description) {
+                link.setAttribute('data-description', preview.description);
+            }
 
-            const existingPreview = previewMap.get(normalized) || previewMap.get(fallback);
-
-            if (existingPreview) {
-                assignPreview(existingPreview);
+            if (state.tooltip && state.tooltip.classList.contains('visible') && state.currentLink === link) {
+                const titleText = preview.title || (link.textContent ? link.textContent.trim() : 'Internal Link');
+                const descriptionText = preview.description || '';
+                setTooltipTheme();
+                renderInternalPreview(titleText, descriptionText);
             }
         };
 
         const isInternalHref = (href) => {
             if (!href) {
+                return false;
+            }
+
+            if (href.startsWith('#')) {
                 return false;
             }
 
@@ -374,14 +421,22 @@
                 const dataTitle = link.getAttribute('data-title');
                 const dataDescription = link.getAttribute('data-description');
                 const fallbackTitle = link.textContent ? link.textContent.trim() : 'Internal Link';
+                const segment = link.dataset.previewSegment || '';
 
-                if (!dataTitle && !dataDescription) {
+                if (!segment || !AVAILABLE_SEGMENTS.has(segment)) {
+                    renderInternalPreview(dataTitle || fallbackTitle, dataDescription || '');
+                } else if (!dataTitle && !dataDescription) {
                     renderInternalPreview(fallbackTitle, 'Loading preview…');
-                    void ensurePreviewsLoaded().then(() => {
+                    void ensureSegmentPreviewsLoaded(segment).then(() => {
                         applyPreviewData(link);
                     });
                 } else {
                     renderInternalPreview(dataTitle || fallbackTitle, dataDescription || '');
+                    if (!loadedSegments.has(segment)) {
+                        void ensureSegmentPreviewsLoaded(segment).then(() => {
+                            applyPreviewData(link);
+                        });
+                    }
                 }
 
                 tooltip.style.maxWidth = '300px';
@@ -408,20 +463,38 @@
             processedLinks.add(link);
 
             const href = link.getAttribute('href');
-            if (!href || link.classList.contains('no-hover-effect')) {
+            if (!href || href.startsWith('#') || link.classList.contains('no-hover-effect')) {
                 return;
             }
 
             const isInternal = isInternalHref(href);
 
             if (isInternal) {
+                const normalized = normalizeHref(href);
+                if (!normalized) {
+                    return;
+                }
+
+                const fallback = normalized.replace(/\/$/, '');
+                const segment = getSegmentFromPath(normalized);
+
+                link.dataset.previewPath = normalized;
+                link.dataset.previewFallback = fallback;
+
+                if (segment) {
+                    link.dataset.previewSegment = segment;
+                } else {
+                    delete link.dataset.previewSegment;
+                }
+
+                if (segment && AVAILABLE_SEGMENTS.has(segment) && !loadedSegments.has(segment)) {
+                    pendingSegments.add(segment);
+                    scheduleSegmentPrefetch();
+                }
+
+                applyPreviewData(link);
                 link.setAttribute('data-internal', '');
                 link.removeAttribute('data-external');
-                if (!state.prefetched) {
-                    state.prefetched = true;
-                    ensurePreviewsLoadedSoon();
-                }
-                applyPreviewData(link);
             } else {
                 link.setAttribute('data-external', '');
                 link.removeAttribute('data-internal');
@@ -483,3 +556,4 @@
         }
     })();
 </script>
+
