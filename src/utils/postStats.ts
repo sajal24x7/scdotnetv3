@@ -51,7 +51,7 @@ export function calculatePostActivitySummary(posts: Post[] | undefined | null): 
     }
 
     const latestPostDate = validDates[0];
-    const streakWeeks = calculateStreak(weekKeys);
+    const streakWeeks = calculateStreak(latestPostDate, weekKeys);
 
     return {
         totalPosts: validDates.length,
@@ -61,15 +61,14 @@ export function calculatePostActivitySummary(posts: Post[] | undefined | null): 
     };
 }
 
-function calculateStreak(weekKeys: Set<string>): number {
+function calculateStreak(latestPostDate: Date, weekKeys: Set<string>): number {
     if (weekKeys.size === 0) {
         return 0;
     }
 
     let streak = 0;
-    const now = new Date();
-    let year = now.getFullYear();
-    let week = getWeekIndex(now);
+    let year = latestPostDate.getFullYear();
+    let week = getWeekIndex(latestPostDate);
 
     while (true) {
         const key = `${year}-${week}`;
@@ -100,7 +99,7 @@ function getWeeksInYear(year: number): number {
     const start = new Date(year, 0, 1);
     const end = new Date(year + 1, 0, 1);
     const days = Math.floor((end.getTime() - start.getTime()) / MS_IN_DAY);
-    return Math.floor(days / 7);
+    return Math.floor((days + 6) / 7);
 }
 
 function buildWeekKey(date: Date): string {
