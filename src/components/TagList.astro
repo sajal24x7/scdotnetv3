@@ -1,5 +1,4 @@
 ---
-import { getAllPosts } from '../utils/content';
 import type { Post } from '../utils/content';
 import tagListIslandScript from './islands/tag-list-island.ts?url';
 
@@ -8,7 +7,7 @@ interface Props {
   title?: string;
   maxTags?: number;
   showMore?: boolean;
-  posts?: Post[];
+  posts: Post[];
 }
 
 const {
@@ -19,8 +18,11 @@ const {
   posts
 } = Astro.props as Props;
 
-// Get all posts and filter by category
-const allPosts = posts ?? await getAllPosts();
+if (!posts) {
+  throw new Error('TagList requires the `posts` prop to be provided by the parent component.');
+}
+
+const allPosts = posts;
 let filteredPosts = allPosts;
 
 // Handle special cases for categories that include multiple subcategories
