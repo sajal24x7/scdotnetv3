@@ -1,4 +1,6 @@
 ---
+import shareButtonIslandScript from './ShareButton.client.ts?url';
+
 interface Props {
     title?: string;
     url?: string;
@@ -14,16 +16,14 @@ const {
     class: className = '',
     copiedMessage = 'Link copied to clipboard!'
 } = Astro.props as Props;
-
-const buttonId = `share-button-${Math.random().toString(36).slice(2, 10)}`;
 const baseClass =
     'flex items-center cursor-pointer appearance-none bg-transparent border-0 p-0 text-textPrimary dark:text-textPrimaryDark transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--color-accent))]';
 const classes = className ? `${baseClass} ${className}` : baseClass;
 ---
 <button
     type="button"
-    id={buttonId}
     class={classes}
+    data-share-button
     data-share-title={title ?? ''}
     data-share-url={url ?? ''}
     data-copied-message={copiedMessage}
@@ -49,40 +49,4 @@ const classes = className ? `${baseClass} ${className}` : baseClass;
     {text}
 </button>
 
-<script>
-    const scriptElement = document.currentScript;
-    const shareButton = scriptElement?.previousElementSibling;
-
-    if (shareButton instanceof HTMLButtonElement) {
-        shareButton.addEventListener('click', async () => {
-            const shareTitle = shareButton.dataset.shareTitle || document.title;
-            const shareUrl = shareButton.dataset.shareUrl || window.location.href;
-            const fallbackMessage = shareButton.dataset.copiedMessage || 'Link copied to clipboard!';
-
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: shareTitle,
-                        url: shareUrl
-                    });
-                    return;
-                } catch (error) {
-                    console.error('Error sharing:', error);
-                }
-            }
-
-            if (navigator.clipboard && shareUrl) {
-                try {
-                    await navigator.clipboard.writeText(shareUrl);
-                    if (fallbackMessage) {
-                        alert(fallbackMessage);
-                    }
-                } catch (error) {
-                    console.error('Failed to copy:', error);
-                }
-            } else {
-                console.warn('Share and clipboard APIs are unavailable in this browser.');
-            }
-        });
-    }
-</script>
+<script type="module" src={shareButtonIslandScript}></script>

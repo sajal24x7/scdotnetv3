@@ -8,11 +8,11 @@
 - Segmented link-hover preview data by category so each section only prefetches the summaries it needs, keeping tooltip payloads lean after the API refactor.
 - Extracted a shared `layout-boundary` helper and Tailwind `max-w-layout` token so garden, stream, and bookshelf grids reuse the centered 1400px shell instead of duplicating styles.
 - Restored inline link highlighting while keeping global CSS underline-free and inheriting the default text color in both light and dark modes.
+- Refactored the ShareButton into a reusable island powered by a dedicated TypeScript module so client lifecycle and event wiring are managed outside inline scripts.
 
 ## Planned Changes
-1. Refactor `ShareButton` into a dedicated Astro/TypeScript island so event wiring lives in a module with predictable lifecycle hooks instead of inline scripts.
-2. Require parents to provide post collections (or summaries) to `TagList`, eliminating redundant `getAllPosts()` fetches and keeping tag counts in sync with upstream loaders.
-3. Pre-render per-tag/category slices so tag detail pages ship static HTML rather than mutating headings and article lists via client scripts.
-4. Extend `SectionLanding` props/slots to cover stream and garden needs (counts, tag pickers) so section pages stop wrapping the layout with bespoke markup.
-5. Replace the hand-rolled Nordletter signup form with the shared `NewsletterSignup` component to fix nested form-control markup and consolidate styling.
-6. Centralize category filtering helpers (e.g., `getPostsByCategory`) so home, garden, and stream routes no longer duplicate filter arrays and sort logic.
+1. Require parents to provide post collections (or summaries) to `TagList`, eliminating redundant `getAllPosts()` fetches and keeping tag counts in sync with upstream loaders.
+2. Pre-render per-tag/category slices so tag detail pages ship static HTML rather than mutating headings and article lists via client scripts.
+3. Extend `SectionLanding` props/slots to cover stream and garden needs (counts, tag pickers) so section pages stop wrapping the layout with bespoke markup.
+4. Replace the hand-rolled Nordletter signup form with the shared `NewsletterSignup` component to fix nested form-control markup and consolidate styling.
+5. Centralize category filtering helpers (e.g., `getPostsByCategory`) so home, garden, and stream routes no longer duplicate filter arrays and sort logic.
