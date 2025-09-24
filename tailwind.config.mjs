@@ -39,6 +39,9 @@ export default {
         'category-dark': '#fbbf24',
         'category-dark-border': '#f59e0b',
       },
+      maxWidth: {
+        layout: 'var(--layout-max-width)',
+      },
       typography: (theme) => {
         const serifHeading = {
           color: theme('colors.textPrimary'),

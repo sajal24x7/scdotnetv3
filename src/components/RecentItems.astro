@@ -21,7 +21,7 @@ const renderedPosts = posts.map(post => ({
 const isMicroContent = (category: string) => category === 'micro';
 ---
 
-<div class="recent-items">
+<div class="recent-items layout-boundary px-2 md:px-4">
   {showTitle && (
     <h2 class="recent-items-title">{title}</h2>
   )}
@@ -34,12 +34,6 @@ const isMicroContent = (category: string) => category === 'micro';
 </div>
 
 <style>
-  .recent-items {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
   .recent-items-title {
     font-size: 1.5rem;
     font-weight: 700;
@@ -75,10 +69,6 @@ const isMicroContent = (category: string) => category === 'micro';
 
   /* Mobile adjustments */
   @media (max-width: 768px) {
-    .recent-items {
-      padding: 0 0.5rem;
-    }
-
     .recent-items-title {
       font-size: 1.25rem;
       margin-bottom: 1rem;

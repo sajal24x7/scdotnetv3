@@ -25,19 +25,13 @@ const renderedPosts = posts.map(post => ({
 const isMicroContent = (category: string) => category === 'micro';
 ---
 
-<div class="stream-layout">
+<div class="stream-layout layout-boundary px-4">
   {renderedPosts.map((post) => (
     <PostItem post={post} isMicroContent={isMicroContent} showFullContent={true} />
   ))}
 </div>
 
 <style>
-  .stream-layout {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
   .stream-sidebar-left {
     /* This is now empty - metadata is handled within each post row */
     display: none;

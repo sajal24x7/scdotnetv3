@@ -53,7 +53,7 @@ const totalBooks = bookshelfPosts.length;
   enableSearchModal
   enableLinkHoverEffect
 >
-  <div class="bookshelf-container">
+  <div class="bookshelf-container layout-boundary px-0 py-4 sm:px-2 sm:py-0">
     <header class="bookshelf-header">
       <h1 class="bookshelf-title">Bookshelf</h1>
       <p class="bookshelf-description">
@@ -94,12 +94,6 @@ const totalBooks = bookshelfPosts.length;
 </Layout>
 
 <style>
-  .bookshelf-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 0.5rem;
-  }
-
   .bookshelf-header {
     text-align: center;
     margin-bottom: 2rem;
@@ -182,10 +176,6 @@ const totalBooks = bookshelfPosts.length;
 
   /* Mobile adjustments */
   @media (max-width: 640px) {
-    .bookshelf-container {
-      padding: 1rem 0;
-    }
-
     .bookshelf-header {
       margin-bottom: 2rem;
     }

@@ -11,7 +11,7 @@ const renderedPosts = posts.map(post => ({
 }));
 ---
 
-<div class="grid grid-cols-1 gap-12 py-12">
+<div class="grid grid-cols-1 gap-12 py-12 layout-boundary max-w-none md:max-w-layout px-4 md:px-0">
   {renderedPosts.map((post) => (
     <Card {...post.data}>
       {post.renderedContent && (
@@ -25,12 +25,6 @@ const renderedPosts = posts.map(post => ({
 
 
 <style>
-  .grid {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
   /* Add a subtle divider between cards */
   .grid > *:not(:last-child) {
     position: relative;
@@ -58,14 +52,6 @@ const renderedPosts = posts.map(post => ({
       rgb(55 65 81),
       transparent
     );
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .grid {
-      max-width: none;
-      padding: 0 1rem;
-    }
   }
 
   /* Ensure links are properly styled */
