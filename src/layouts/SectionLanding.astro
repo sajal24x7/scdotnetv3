@@ -9,7 +9,10 @@ interface Props {
     countText?: string;
     layout?: 'centered' | 'left-aligned';
     headerSize?: 'sm' | 'md' | 'lg';
+    size?: 'sm' | 'md' | 'lg';
     headerMaxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
+    maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
+    countVariant?: 'accent' | 'plain';
     tagCategory?: string;
     tagTitle?: string;
     tagMaxTags?: number;
@@ -17,8 +20,10 @@ interface Props {
     tagPosts?: Post[];
     tagWrapperClass?: string;
     tagListSpacing?: string;
+    tagListSpacingMobile?: string;
     contentClass?: string;
     contentPadding?: string;
+    contentPaddingMobile?: string;
     wrapperClass?: string;
     countAlignment?: 'left' | 'center' | 'right';
     countClass?: string;
@@ -30,7 +35,10 @@ const {
     countText,
     layout = 'centered',
     headerSize = 'lg',
+    size,
     headerMaxWidth = '7xl',
+    maxWidth,
+    countVariant = 'accent',
     tagCategory,
     tagTitle,
     tagMaxTags,
@@ -38,12 +46,17 @@ const {
     tagPosts,
     tagWrapperClass = '',
     tagListSpacing,
+    tagListSpacingMobile,
     contentClass = '',
     contentPadding,
+    contentPaddingMobile,
     wrapperClass = '',
     countAlignment = 'center',
     countClass = ''
 } = Astro.props as Props;
+
+const resolvedHeaderSize = size ?? headerSize;
+const resolvedHeaderMaxWidth = maxWidth ?? headerMaxWidth;
 
 const alignmentClasses = {
     left: 'text-left',
@@ -55,24 +68,44 @@ const countAlignmentClass = alignmentClasses[countAlignment] ?? alignmentClasses
 const hasTagListSlot = Astro.slots.has('tagList');
 const hasBeforeContentSlot = Astro.slots.has('beforeContent');
 const hasAfterCountSlot = Astro.slots.has('afterCount');
+const hasCountSlot = Astro.slots.has('count');
 
 if (!hasTagListSlot && tagCategory && !tagPosts) {
     throw new Error('SectionLanding requires the `tagPosts` prop when rendering the default TagList.');
 }
+
+const countVariantClasses = {
+    accent: 'section-count--accent',
+    plain: 'section-count--plain'
+} as const;
+
+const countVariantClass = countVariantClasses[countVariant] ?? countVariantClasses.accent;
+
+const tagListStyle = [
+    tagListSpacing ? `--section-taglist-margin: ${tagListSpacing};` : undefined,
+    tagListSpacingMobile ? `--section-taglist-margin-mobile: ${tagListSpacingMobile};` : undefined
+].filter(Boolean).join(' ');
+
+const contentStyle = [
+    contentPadding ? `--section-content-padding: ${contentPadding};` : undefined,
+    contentPaddingMobile ? `--section-content-padding-mobile: ${contentPaddingMobile};` : undefined
+].filter(Boolean).join(' ');
+
+const shouldRenderCount = hasCountSlot || Boolean(countText);
 ---
 <section class={`section-landing ${wrapperClass}`.trim()}>
     <PageHeader
         title={title}
         description={description}
         layout={layout}
-        size={headerSize}
-        maxWidth={headerMaxWidth}
+        size={resolvedHeaderSize}
+        maxWidth={resolvedHeaderMaxWidth}
     />
 
-    {countText && (
-        <p class={`section-count mb-6 ${countAlignmentClass} ${countClass}`.trim()}>
-            {countText}
-        </p>
+    {shouldRenderCount && (
+        <div class={`section-count ${countVariantClass} ${countAlignmentClass} ${countClass}`.trim()}>
+            {hasCountSlot ? <slot name="count" /> : countText}
+        </div>
     )}
 
     {hasAfterCountSlot && (
@@ -84,7 +117,7 @@ if (!hasTagListSlot && tagCategory && !tagPosts) {
     {hasTagListSlot ? (
         <div
             class={`section-taglist ${tagWrapperClass}`.trim()}
-            style={tagListSpacing ? `--section-taglist-margin: ${tagListSpacing};` : undefined}
+            style={tagListStyle || undefined}
         >
             <slot name="tagList" />
         </div>
@@ -92,7 +125,7 @@ if (!hasTagListSlot && tagCategory && !tagPosts) {
         tagCategory && (
             <div
                 class={`section-taglist ${tagWrapperClass}`.trim()}
-                style={tagListSpacing ? `--section-taglist-margin: ${tagListSpacing};` : undefined}
+                style={tagListStyle || undefined}
             >
                 <TagList
                     category={tagCategory}
@@ -113,7 +146,7 @@ if (!hasTagListSlot && tagCategory && !tagPosts) {
 
     <main
         class={`section-content ${contentClass}`.trim()}
-        style={contentPadding ? `--section-content-padding: ${contentPadding};` : undefined}
+        style={contentStyle || undefined}
     >
         <slot />
     </main>
@@ -121,6 +154,10 @@ if (!hasTagListSlot && tagCategory && !tagPosts) {
 
 <style>
     .section-count {
+        margin-bottom: var(--section-count-margin, 1.5rem);
+    }
+
+    .section-count--accent {
         font-size: 0.875rem;
         font-weight: 500;
         color: #8b5cf6;
@@ -128,8 +165,20 @@ if (!hasTagListSlot && tagCategory && !tagPosts) {
         letter-spacing: 0.05em;
     }
 
-    :global(.dark) .section-count {
+    :global(.dark) .section-count--accent {
         color: #a78bfa;
+    }
+
+    .section-count--plain {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1f2937;
+        text-transform: none;
+        letter-spacing: normal;
+    }
+
+    :global(.dark) .section-count--plain {
+        color: #f9fafb;
     }
 
     .section-taglist {
@@ -149,6 +198,10 @@ if (!hasTagListSlot && tagCategory && !tagPosts) {
     }
 
     @media (max-width: 768px) {
+        .section-count {
+            margin-bottom: var(--section-count-margin-mobile, 1.25rem);
+        }
+
         .section-content {
             padding-bottom: var(--section-content-padding-mobile, 1.5rem);
         }

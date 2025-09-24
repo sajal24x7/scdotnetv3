@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for TIL posts
@@ -13,6 +12,8 @@ const tilPosts = allPosts
 
 // Transform posts for the ContentGrid component
 const transformedPosts = tilPosts.map(transformPost);
+const noteCount = transformedPosts.length;
+const noteCountText = `${noteCount} ${noteCount === 1 ? 'note' : 'notes'}`;
 ---
 
 <Layout
@@ -33,17 +34,14 @@ const transformedPosts = tilPosts.map(transformPost);
       title="Today I Learned"
       description="Quick notes about things I've learned while working with various technologies, tools, and systems."
       layout="centered"
-      size="lg"
-      maxWidth="7xl"
-    />
-    
-    <div class="til-count mb-6 text-center">
-      {transformedPosts.length} {transformedPosts.length === 1 ? 'note' : 'notes'}
-    </div>
-    
-    <TagList category="til" posts={allPosts} />
-
-    <main class="til-main">
+      headerSize="lg"
+      headerMaxWidth="7xl"
+      countText={noteCountText}
+      countVariant="plain"
+      tagCategory="til"
+      tagPosts={allPosts}
+      contentClass="til-main"
+    >
       <GardenGrid posts={transformedPosts} contentType="til" />
     </SectionLanding>
-</Layout>
+  </Layout>

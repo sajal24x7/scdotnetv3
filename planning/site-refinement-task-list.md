@@ -11,8 +11,8 @@
 - Refactored the ShareButton into a reusable island powered by a dedicated TypeScript module so client lifecycle and event wiring are managed outside inline scripts.
 - Required every TagList consumer to supply the posts collection so the component reuses upstream loaders instead of issuing its own `getAllPosts()` call.
 - Pre-rendered tag detail pages for each category slice so the markup ships statically without relying on client-side DOM mutations for filtered views.
+- Extended SectionLanding with count variants, configurable tag list props, and a dedicated count slot so stream and garden sections can rely on the layout without bespoke wrappers.
 
 ## Planned Changes
-1. Extend `SectionLanding` props/slots to cover stream and garden needs (counts, tag pickers) so section pages stop wrapping the layout with bespoke markup.
-2. Replace the hand-rolled Nordletter signup form with the shared `NewsletterSignup` component to fix nested form-control markup and consolidate styling.
-3. Centralize category filtering helpers (e.g., `getPostsByCategory`) so home, garden, and stream routes no longer duplicate filter arrays and sort logic.
+1. Replace the hand-rolled Nordletter signup form with the shared `NewsletterSignup` component to fix nested form-control markup and consolidate styling.
+2. Centralize category filtering helpers (e.g., `getPostsByCategory`) so home, garden, and stream routes no longer duplicate filter arrays and sort logic.
