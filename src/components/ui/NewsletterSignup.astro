@@ -6,27 +6,41 @@ interface Props {
   targetUrl?: string;
   placeholder?: string;
   buttonText?: string;
+  showCopy?: boolean;
+  wrapperClass?: string;
+  formClass?: string;
 }
 
-const { 
+const {
   title = "NordLetter",
   description = "I send out a newsletter once a week about living in Finland + five interesting things I've found on the open web.",
   actionUrl = "https://buttondown.com/api/emails/embed-subscribe/sajal24x7",
   targetUrl = "https://buttondown.com/sajal24x7",
   placeholder = "Enter your email",
-  buttonText = "Subscribe"
+  buttonText = "Subscribe",
+  showCopy = true,
+  wrapperClass = "",
+  formClass = ""
 } = Astro.props;
+
+const outerClasses = ["py-8", wrapperClass].filter(Boolean).join(" ");
+const formClasses = [
+  "flex flex-col sm:flex-row gap-3 max-w-md",
+  formClass
+].filter(Boolean).join(" ");
 ---
 
-<div class="py-8">
+<div class={outerClasses}>
   <div class="prose dark:prose-invert max-w-none">
-    <h2 class="text-large font-bold mb-4">{title}</h2>
-    <p class="text-normal mb-6">
-      {description}
-    </p>
-    
+    {showCopy && title && <h2 class="text-large font-bold mb-4">{title}</h2>}
+    {showCopy && description && (
+      <p class="text-normal mb-6">
+        {description}
+      </p>
+    )}
+
     <form
-      class="flex flex-col sm:flex-row gap-3 max-w-md"
+      class={formClasses}
       action={actionUrl}
       method="post"
       target="popupwindow"
@@ -47,4 +61,4 @@ const {
       </button>
     </form>
   </div>
-</div> 
+</div>

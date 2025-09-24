@@ -12,7 +12,7 @@
 - Required every TagList consumer to supply the posts collection so the component reuses upstream loaders instead of issuing its own `getAllPosts()` call.
 - Pre-rendered tag detail pages for each category slice so the markup ships statically without relying on client-side DOM mutations for filtered views.
 - Extended SectionLanding with count variants, configurable tag list props, and a dedicated count slot so stream and garden sections can rely on the layout without bespoke wrappers.
+- Replaced the Nordletter signup form with the shared `NewsletterSignup` component so the embed uses consistent markup and styling across the site.
 
 ## Planned Changes
-1. Replace the hand-rolled Nordletter signup form with the shared `NewsletterSignup` component to fix nested form-control markup and consolidate styling.
-2. Centralize category filtering helpers (e.g., `getPostsByCategory`) so home, garden, and stream routes no longer duplicate filter arrays and sort logic.
+1. Centralize category filtering helpers (e.g., `getPostsByCategory`) so home, garden, and stream routes no longer duplicate filter arrays and sort logic.
