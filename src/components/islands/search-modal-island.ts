@@ -153,6 +153,14 @@ class SearchModalElement extends HTMLElement {
         this.triggers = [];
     }
 
+    public open() {
+        this.openModal();
+    }
+
+    public close() {
+        this.closeModal();
+    }
+
     private openModal() {
         if (this.isOpen) {
             return;
