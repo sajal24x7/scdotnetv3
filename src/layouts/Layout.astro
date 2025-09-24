@@ -18,19 +18,28 @@ interface Props {
                 className?: string;
         };
         allPosts?: Post[];
+        enableSearchModal?: boolean;
+        enableLinkHoverEffect?: boolean;
 }
 
-const { title, description, currentPage, pageWrapper = {} } = Astro.props as Props;
+const {
+        title,
+        description,
+        currentPage,
+        pageWrapper = {},
+        enableSearchModal = false,
+        enableLinkHoverEffect = false,
+} = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/logo/logo-square-v2.svg" />
-		<title>{title}</title>
-		<meta name="description" content={description || "A personal digital garden and blog"} />
+        <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link rel="icon" type="image/svg+xml" href="/logo/logo-square-v2.svg" />
+                <title>{title}</title>
+                <meta name="description" content={description || "A personal digital garden and blog"} />
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- Preload logo image -->
@@ -61,32 +70,33 @@ const { title, description, currentPage, pageWrapper = {} } = Astro.props as Pro
 		
 		
 		<!-- Theme Script (to avoid FOUC - Flash of Unstyled Content) -->
-		<script is:inline>
-			// Auto-detect dark mode based on system preference only
-			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				document.documentElement.classList.add('dark');
-			} else {
-				document.documentElement.classList.remove('dark');
-			}
-			
-			// Listen for system theme changes
-			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-				if (event.matches) {
-					document.documentElement.classList.add('dark');
-				} else {
-					document.documentElement.classList.remove('dark');
-				}
-			});
-		</script>
-	</head>
-	<body class="min-h-screen text-textPrimary dark:text-textPrimaryDark transition-all duration-500">
-		<div class="flex flex-col min-h-screen">
-			<Header currentPage={currentPage} />
-			<main class="flex-grow relative z-10">
-				<PageWrapper 
-					maxWidth={pageWrapper.maxWidth || '3xl'}
-					padding={pageWrapper.padding || 'md'}
-					centered={pageWrapper.centered !== false}
+                <script is:inline>
+                        // Auto-detect dark mode based on system preference only
+                        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                                document.documentElement.classList.add('dark');
+                        } else {
+                                document.documentElement.classList.remove('dark');
+                        }
+
+                        // Listen for system theme changes
+                        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+                                if (event.matches) {
+                                        document.documentElement.classList.add('dark');
+                                } else {
+                                        document.documentElement.classList.remove('dark');
+                                }
+                        });
+                </script>
+                {Astro.slots.has('head') && <slot name="head" />}
+        </head>
+        <body class="min-h-screen text-textPrimary dark:text-textPrimaryDark transition-all duration-500">
+                <div class="flex flex-col min-h-screen">
+                        <Header currentPage={currentPage} enableSearch={enableSearchModal} />
+                        <main class="flex-grow relative z-10">
+                                <PageWrapper
+                                        maxWidth={pageWrapper.maxWidth || '3xl'}
+                                        padding={pageWrapper.padding || 'md'}
+                                        centered={pageWrapper.centered !== false}
 					className={pageWrapper.className || ''}
 				>
 					<slot />
@@ -95,8 +105,7 @@ const { title, description, currentPage, pageWrapper = {} } = Astro.props as Pro
 			<Footer />
 		</div>
 		
-                <!-- Search Modal -->
-                <SearchModal />
-		<LinkHoverEffect />
-	</body>
+                {enableSearchModal && <SearchModal />}
+                {enableLinkHoverEffect && <LinkHoverEffect />}
+        </body>
 </html>

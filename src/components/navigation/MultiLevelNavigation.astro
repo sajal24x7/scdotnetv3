@@ -5,9 +5,10 @@ import multiLevelNavigationIslandScript from '../islands/multi-level-navigation-
 interface Props {
   currentPage: string;
   layout?: 'mobile' | 'desktop';
+  enableSearch?: boolean;
 }
 
-const { currentPage, layout = 'desktop' } = Astro.props;
+const { currentPage, layout = 'desktop', enableSearch = false } = Astro.props as Props;
 
 // Main navigation items (ordered): Garden | Stream | Nordletter | Books | About
 const mainNavItems = [
@@ -170,7 +171,7 @@ const activeSubsection = getActiveSubsection();
 
         <!-- Social Links -->
         <div class="header-socials">
-          <SocialLinks layout="horizontal" size="sm" />
+          <SocialLinks layout="horizontal" size="sm" enableSearch={enableSearch} />
         </div>
 
         <!-- Secondary Navigation Row (persistent for About, Garden and Stream sections) -->

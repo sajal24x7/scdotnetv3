@@ -4,14 +4,16 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
   showLabels?: boolean;
   showOnlyEssential?: boolean;
+  enableSearch?: boolean;
 }
 
-const { 
-  layout = 'vertical', 
-  size = 'md', 
+const {
+  layout = 'vertical',
+  size = 'md',
   showLabels = false,
-  showOnlyEssential = false
-} = Astro.props;
+  showOnlyEssential = false,
+  enableSearch = false
+} = Astro.props as Props;
 
 const allSocialLinks = [
   {
@@ -85,9 +87,13 @@ const allSocialLinks = [
 ];
 
 // Filter social links based on showOnlyEssential prop
-const socialLinks = showOnlyEssential 
+const baseLinks = showOnlyEssential
   ? allSocialLinks.filter(link => link.isEssential)
   : allSocialLinks;
+
+const socialLinks = enableSearch
+  ? baseLinks
+  : baseLinks.filter(link => !link.isSearch);
 
 const sizeClasses = {
   sm: 'h-4 w-4',
