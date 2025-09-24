@@ -13,6 +13,7 @@ const gardenPosts = allPosts
 
 // Transform posts for the GardenGrid component
 const transformedPosts = gardenPosts.map(transformPost);
+const noteCountText = `${transformedPosts.length} ${transformedPosts.length === 1 ? 'note' : 'notes'}`;
 ---
 
 <Layout
@@ -33,16 +34,11 @@ const transformedPosts = gardenPosts.map(transformPost);
       layout="centered"
       size="lg"
       maxWidth="7xl"
-    />
-    
-    <div class="garden-count mb-6 text-center">
-      {transformedPosts.length} {transformedPosts.length === 1 ? 'note' : 'notes'}
-    </div>
-    
-    <TagList category="garden" posts={allPosts} />
+      countText={noteCountText}
+      contentClass="garden-main"
+    >
+      <TagList slot="tagList" category="garden" posts={allPosts} />
 
-    <main class="garden-main">
-      
       <GardenGrid posts={transformedPosts} />
     </SectionLanding>
 </Layout>
