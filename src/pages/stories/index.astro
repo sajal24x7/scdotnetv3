@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for stories
@@ -13,6 +12,8 @@ const stories = allPosts
 
 // Transform posts for the ContentGrid component
 const transformedPosts = stories.map(transformPost);
+const storyCount = transformedPosts.length;
+const storyCountText = `${storyCount} ${storyCount === 1 ? 'story' : 'stories'}`;
 ---
 
 <Layout
@@ -33,18 +34,14 @@ const transformedPosts = stories.map(transformPost);
       title="Stories"
       description="Short stories and fiction pieces."
       layout="centered"
-      size="lg"
-      maxWidth="7xl"
-    />
-    
-    <div class="stories-count mb-6 text-center">
-      {transformedPosts.length} {transformedPosts.length === 1 ? 'story' : 'stories'}
-    </div>
-    
-    <TagList category="story" posts={allPosts} />
-
-    <main class="stories-main">
-    
+      headerSize="lg"
+      headerMaxWidth="7xl"
+      countText={storyCountText}
+      countVariant="plain"
+      tagCategory="story"
+      tagPosts={allPosts}
+      contentClass="stories-main"
+    >
       <GardenGrid posts={transformedPosts} contentType="stories" />
     </SectionLanding>
-</Layout>
+  </Layout>

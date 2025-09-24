@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for garden (evergreen, til, bookshelf, stories, poems)
@@ -34,13 +33,13 @@ const noteCountText = `${transformedPosts.length} ${transformedPosts.length === 
       title="Garden"
       description="A collection of evergreen notes, learning, books, stories, and poems from my projects and explorations."
       layout="centered"
-      size="lg"
-      maxWidth="7xl"
+      headerSize="lg"
+      headerMaxWidth="7xl"
       countText={noteCountText}
+      tagCategory="garden"
+      tagPosts={allPosts}
       contentClass="garden-main"
     >
-      <TagList slot="tagList" category="garden" posts={allPosts} />
-
       <GardenGrid posts={transformedPosts} />
     </SectionLanding>
-</Layout>
+  </Layout>

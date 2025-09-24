@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import ContentGrid from '../../components/ContentGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for prose (stories and poems)
@@ -13,6 +12,8 @@ const prose = allPosts
 
 // Transform posts for the ContentGrid component
 const transformedPosts = prose.map(transformPost);
+const pieceCount = transformedPosts.length;
+const pieceCountText = `${pieceCount} ${pieceCount === 1 ? 'piece' : 'pieces'}`;
 ---
 
 <Layout
@@ -33,18 +34,14 @@ const transformedPosts = prose.map(transformPost);
       title="Prose"
       description="Stories and poems from my collections."
       layout="centered"
-      size="lg"
-      maxWidth="7xl"
-    />
-    
-    <div class="prose-count mb-6 text-center">
-      {transformedPosts.length} {transformedPosts.length === 1 ? 'piece' : 'pieces'}
-    </div>
-    
-    <TagList category="prose" posts={allPosts} />
-
-    <main class="prose-main">
-      
+      headerSize="lg"
+      headerMaxWidth="7xl"
+      countText={pieceCountText}
+      countVariant="plain"
+      tagCategory="prose"
+      tagPosts={allPosts}
+      contentClass="prose-main"
+    >
       <ContentGrid posts={transformedPosts} />
     </SectionLanding>
-</Layout>
+  </Layout>

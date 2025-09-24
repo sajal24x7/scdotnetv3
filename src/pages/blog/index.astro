@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import StreamLayout from '../../components/layout/StreamLayout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for blog
@@ -13,6 +12,8 @@ const blogPosts = allPosts
 
 // Transform posts for the ContentGrid component
 const transformedPosts = blogPosts.map(transformPost);
+const postCount = transformedPosts.length;
+const postCountText = `${postCount} ${postCount === 1 ? 'post' : 'posts'}`;
 ---
 
 <Layout
@@ -33,20 +34,14 @@ const transformedPosts = blogPosts.map(transformPost);
       title="Blog"
       description="Long-form thoughts, tutorials, and articles."
       layout="centered"
-      size="lg"
-      maxWidth="7xl"
-    />
-    
-    <div class="blog-count mb-6 text-center">
-      {transformedPosts.length} {transformedPosts.length === 1 ? 'post' : 'posts'}
-    </div>
-
-    <!-- TagList for mobile and desktop -->
-    <div class="blog-taglist">
-      <TagList category="blog" title="Tagged with:" posts={allPosts} />
-    </div>
-
-    <main class="blog-main">
+      headerSize="lg"
+      headerMaxWidth="7xl"
+      countText={postCountText}
+      countVariant="plain"
+      tagCategory="blog"
+      tagTitle="Tagged with:"
+      tagPosts={allPosts}
+    >
       <StreamLayout posts={transformedPosts} />
     </SectionLanding>
-</Layout>
+  </Layout>

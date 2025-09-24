@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import StreamLayout from '../../components/layout/StreamLayout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all photo posts
@@ -13,6 +12,8 @@ const photoPosts = allPosts
 
 // Transform posts for the StreamLayout component
 const transformedPosts = photoPosts.map(transformPost);
+const postCount = transformedPosts.length;
+const postCountText = `${postCount} ${postCount === 1 ? 'photo post' : 'photo posts'}`;
 ---
 
 <Layout
@@ -33,20 +34,14 @@ const transformedPosts = photoPosts.map(transformPost);
       title="Photos"
       description="Photo posts and visual content from my photography and travels."
       layout="centered"
-      size="lg"
-      maxWidth="7xl"
-      />
-    
-    <div class="photos-count mb-6 text-center">
-      {transformedPosts.length} {transformedPosts.length === 1 ? 'photo post' : 'photo posts'}
-    </div>
-
-    <!-- TagList for mobile and desktop -->
-    <div class="photos-taglist">
-      <TagList category="photo" title="Tagged with:" posts={allPosts} />
-    </div>
-    
-    <main class="photos-main">
+      headerSize="lg"
+      headerMaxWidth="7xl"
+      countText={postCountText}
+      countVariant="plain"
+      tagCategory="photo"
+      tagTitle="Tagged with:"
+      tagPosts={allPosts}
+    >
       <StreamLayout posts={transformedPosts} />
     </SectionLanding>
-</Layout>
+  </Layout>

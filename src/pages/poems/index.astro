@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for poems
@@ -13,6 +12,8 @@ const poems = allPosts
 
 // Transform posts for the ContentGrid component
 const transformedPosts = poems.map(transformPost);
+const poemCount = transformedPosts.length;
+const poemCountText = `${poemCount} ${poemCount === 1 ? 'poem' : 'poems'}`;
 ---
 
 <Layout
@@ -33,18 +34,14 @@ const transformedPosts = poems.map(transformPost);
       title="Poems"
       description="Poetry and verse from my collections."
       layout="centered"
-      size="lg"
-      maxWidth="7xl"
-    />
-    
-    <div class="poems-count mb-6 text-center">
-      {transformedPosts.length} {transformedPosts.length === 1 ? 'poem' : 'poems'}
-    </div>
-    
-    <TagList category="poem" posts={allPosts} />
-
-    <main class="poems-main">
-      
+      headerSize="lg"
+      headerMaxWidth="7xl"
+      countText={poemCountText}
+      countVariant="plain"
+      tagCategory="poem"
+      tagPosts={allPosts}
+      contentClass="poems-main"
+    >
       <GardenGrid posts={transformedPosts} contentType="poems" />
     </SectionLanding>
-</Layout>
+  </Layout>

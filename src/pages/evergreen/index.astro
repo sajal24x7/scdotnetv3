@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all evergreen posts
@@ -13,6 +12,8 @@ const evergreenPosts = allPosts
 
 // Transform posts for the NotesGrid component
 const transformedPosts = evergreenPosts.map(transformPost);
+const postCount = transformedPosts.length;
+const postCountText = `${postCount} ${postCount === 1 ? 'evergreen note' : 'evergreen notes'}`;
 ---
 
 <Layout
@@ -33,17 +34,13 @@ const transformedPosts = evergreenPosts.map(transformPost);
       title="Evergreen"
       description="Timeless documentation and knowledge that remains relevant over time."
       layout="centered"
-      size="lg"
-      maxWidth="7xl"
-    />
-    
-    <div class="evergreen-count mb-6 text-center">
-      {transformedPosts.length} {transformedPosts.length === 1 ? 'evergreen note' : 'evergreen notes'}
-    </div>
-    
-    <TagList category="evergreen" posts={allPosts} />
-
-    <main class="evergreen-main">
+      headerSize="lg"
+      headerMaxWidth="7xl"
+      countText={postCountText}
+      countVariant="plain"
+      tagCategory="evergreen"
+      tagPosts={allPosts}
+    >
       <GardenGrid posts={transformedPosts} contentType="evergreen" />
     </SectionLanding>
-</Layout>
+  </Layout>

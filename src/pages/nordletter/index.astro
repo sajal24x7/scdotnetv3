@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import NordletterGrid from '../../components/NordletterGrid.astro';
-import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost, cleanNordletterTitle, getEditionDisplay } from '../../utils/content';
 
 // Get all posts and filter for nordletter
@@ -43,32 +42,19 @@ const transformedPosts = nordletterPosts.map(post => {
     title="Nordletter"
     description="A weekly newsletter on living in Finland + 5 things from the web."
     layout="centered"
-    size="lg"
-    maxWidth="7xl"
-  />
-  
-  <div class="px-6 mb-6">
-    <TagList category="nordletter" posts={allPosts} />
-  </div>
-  
-  <div class="px-6 mb-8">
-    <form
-      class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-      action="https://buttondown.com/api/emails/embed-subscribe/sajal24x7"
-      method="post"
-      target="popupwindow"
-      onsubmit="window.open('https://buttondown.com/sajal24x7', 'popupwindow')"
-    >
-      <input
-        type="email"
-        name="email"
-        placeholder="Enter your email"
-        required
-        class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-      />
-      <button
-        type="submit"
-        class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+    headerSize="lg"
+    headerMaxWidth="7xl"
+    tagCategory="nordletter"
+    tagPosts={allPosts}
+    tagWrapperClass="px-6 mb-6"
+  >
+    <div slot="beforeContent" class="px-6 mb-8">
+      <form
+        class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+        action="https://buttondown.com/api/emails/embed-subscribe/sajal24x7"
+        method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://buttondown.com/sajal24x7', 'popupwindow')"
       >
         <input
           type="email"
