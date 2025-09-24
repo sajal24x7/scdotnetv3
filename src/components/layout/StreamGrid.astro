@@ -156,27 +156,20 @@ const renderedPosts = posts.map(post => ({
   }
 
   .stream-grid-date-link {
+    color: inherit;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: color 0.2s ease;
   }
 
   .stream-grid-date {
     font-weight: 500;
-    color: #8b5cf6;
+    color: inherit;
     font-family: monospace;
   }
 
-  .stream-grid-date-link:hover .stream-grid-date {
-    color: #7c3aed;
-    text-decoration: underline;
-  }
-
-  :global(.dark) .stream-grid-date {
-    color: #a78bfa;
-  }
-
-  :global(.dark) .stream-grid-date-link:hover .stream-grid-date {
-    color: #c4b5fd;
+  .stream-grid-date-link:hover .stream-grid-date,
+  .stream-grid-date-link:focus .stream-grid-date {
+    color: inherit;
   }
 
 

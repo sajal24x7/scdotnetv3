@@ -183,9 +183,53 @@
   }
 
   .prose a {
-    color: rgb(var(--color-accent));
+    color: inherit;
     font-weight: 500;
-    text-decoration: underline;
+    text-decoration: none;
+    border-radius: 0.25em;
+    padding: 0.1em 0.2em;
+    margin: -0.1em -0.2em;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 55%,
+      var(--link-highlight) 55%,
+      var(--link-highlight) 100%
+    );
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .prose a:hover {
+    color: inherit;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 55%,
+      var(--link-highlight-hover) 55%,
+      var(--link-highlight-hover) 100%
+    );
+  }
+
+  .prose a:focus {
+    color: inherit;
+  }
+
+  .prose a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 55%,
+      var(--link-highlight-hover) 55%,
+      var(--link-highlight-hover) 100%
+    );
+  }
+
+  .prose a:visited {
+    color: inherit;
   }
 
   .prose ul,
@@ -267,79 +311,22 @@
   a {
     color: inherit;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: color 0.2s ease;
   }
 
-  .prose a {
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 50%,
-      rgba(139, 92, 246, 0.4) 50%,
-      rgba(139, 92, 246, 0.4) 100%
-    );
-    background-size: 100% 100%;
-    padding: 0.1em 0.2em;
-    margin: -0.1em -0.2em;
-    border-radius: 0.2em;
-    transition: background 0.3s ease;
-    text-decoration: none !important;
+  a:visited {
+    color: inherit;
   }
 
-  .prose a:hover {
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 50%,
-      rgba(139, 92, 246, 0.6) 50%,
-      rgba(139, 92, 246, 0.6) 100%
-    );
-    text-decoration: none !important;
+  a:hover,
+  a:focus {
+    color: inherit;
+    text-decoration: none;
   }
 
-  .dark .prose a {
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 50%,
-      rgba(139, 92, 246, 0.4) 50%,
-      rgba(139, 92, 246, 0.4) 100%
-    );
-    text-decoration: none !important;
-  }
-
-  .dark .prose a:hover {
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 50%,
-      rgba(139, 92, 246, 0.6) 50%,
-      rgba(139, 92, 246, 0.6) 100%
-    );
-    text-decoration: none !important;
-  }
-
-  a:not(.prose a):not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(nav a):not(.tag):not(.tag-chip):not(.category-display):not(.category-chip):not(.tagged-with-item):not(.show-more-btn):not(.show-less-btn):not(.tag-item):hover {
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 50%,
-      rgba(139, 92, 246, 0.3) 50%,
-      rgba(139, 92, 246, 0.3) 100%
-    );
-    padding: 0.1em 0.2em;
-    margin: -0.1em -0.2em;
-    border-radius: 0.2em;
-  }
-
-  .dark a:not(.prose a):not(.no-underline):not(.nav-area a):not(header a):not(footer a):not(nav a):not(.tag):not(.tag-chip):not(.category-display):not(.category-chip):not(.tagged-with-item):not(.show-more-btn):not(.show-less-btn):not(.tag-item):hover {
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 50%,
-      rgba(139, 92, 246, 0.3) 50%,
-      rgba(139, 92, 246, 0.3) 100%
-    );
+  a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
   }
 
   h1:hover,
@@ -349,38 +336,6 @@
   h5:hover,
   h6:hover {
     font-weight: 700;
-  }
-
-  .no-underline,
-  .nav-area a,
-  header a,
-  footer a,
-  nav a,
-  .tag,
-  .tag-chip,
-  .category-display,
-  .category-chip,
-  .tagged-with-item,
-  .show-more-btn,
-  .show-less-btn,
-  .tag-item {
-    background: none !important;
-  }
-
-  .no-underline:hover,
-  .nav-area a:hover,
-  header a:hover,
-  footer a:hover,
-  nav a:hover,
-  .tag:hover,
-  .tag-chip:hover,
-  .category-display:hover,
-  .category-chip:hover,
-  .tagged-with-item:hover,
-  .show-more-btn:hover,
-  .show-less-btn:hover,
-  .tag-item:hover {
-    background: none !important;
   }
 
   a.no-hover {
@@ -397,21 +352,11 @@
     }
   }
 
-  header a,
-  footer a,
-  .nav-area a {
-    text-decoration: none !important;
-  }
-
   .nav-active {
     text-decoration: underline !important;
     text-decoration-color: var(--random-link-color) !important;
     text-decoration-thickness: 0.15em !important;
     text-underline-offset: 0.2em !important;
-  }
-
-  a.no-underline {
-    text-decoration: none !important;
   }
 }
 
@@ -423,13 +368,16 @@
   .link-hover {
     color: inherit;
     text-decoration: none;
+    border-radius: 0.25em;
     padding: 0.1em 0.2em;
     margin: -0.1em -0.2em;
-    border-radius: 0.2em;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease;
+    background-repeat: no-repeat;
   }
 
-  .link-hover:hover {
+  .link-hover:hover,
+  .link-hover:focus-visible {
+    color: inherit;
     background-image: linear-gradient(
       to bottom,
       transparent 0%,
@@ -437,6 +385,16 @@
       var(--link-highlight-hover) 55%,
       var(--link-highlight-hover) 100%
     );
+    background-size: 100% 100%;
+  }
+
+  .link-hover:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+
+  .link-hover:visited {
+    color: inherit;
   }
 
   .tag-chip,

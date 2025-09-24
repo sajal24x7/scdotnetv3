@@ -1,7 +1,9 @@
 import typography from '@tailwindcss/typography';
 
-const proseHighlight = 'linear-gradient(to bottom, transparent 0%, transparent 55%, var(--link-highlight) 55%, var(--link-highlight) 100%)';
-const proseHighlightHover = 'linear-gradient(to bottom, transparent 0%, transparent 55%, var(--link-highlight-hover) 55%, var(--link-highlight-hover) 100%)';
+const proseHighlight =
+  'linear-gradient(to bottom, transparent 0%, transparent 55%, var(--link-highlight) 55%, var(--link-highlight) 100%)';
+const proseHighlightHover =
+  'linear-gradient(to bottom, transparent 0%, transparent 55%, var(--link-highlight-hover) 55%, var(--link-highlight-hover) 100%)';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -50,6 +52,23 @@ export default {
           lineHeight: '1.25',
         };
 
+        const proseLink = {
+          color: 'inherit',
+          textDecoration: 'none',
+          borderRadius: '0.25em',
+          padding: '0.1em 0.2em',
+          margin: '-0.1em -0.2em',
+          backgroundImage: proseHighlight,
+          backgroundSize: '100% 100%',
+          backgroundRepeat: 'no-repeat',
+          transition: 'background 0.2s ease, color 0.2s ease',
+        };
+
+        const proseLinkFocus = {
+          outline: '2px solid rgb(var(--color-accent))',
+          outlineOffset: '2px',
+        };
+
         return {
           DEFAULT: {
             css: {
@@ -64,17 +83,19 @@ export default {
               '--tw-prose-bold': theme('colors.textPrimary'),
               '--tw-prose-quotes': theme('colors.textSecondary'),
               '--tw-prose-hr': theme('colors.borderColor'),
-              a: {
-                color: 'inherit',
-                textDecoration: 'none',
-                borderRadius: '0.25em',
-                padding: '0.1em 0.2em',
-                margin: '-0.1em -0.2em',
-                backgroundImage: proseHighlight,
-                backgroundSize: '100% 100%',
-                transition: 'background 0.2s ease, color 0.2s ease',
-              },
+              a: proseLink,
               'a:hover': {
+                color: 'inherit',
+                backgroundImage: proseHighlightHover,
+              },
+              'a:focus': {
+                color: 'inherit',
+              },
+              'a:visited': {
+                color: 'inherit',
+              },
+              'a:focus-visible': {
+                ...proseLinkFocus,
                 backgroundImage: proseHighlightHover,
               },
               h1: {
@@ -130,17 +151,19 @@ export default {
               '--tw-prose-bold': theme('colors.textPrimaryDark'),
               '--tw-prose-quotes': theme('colors.textSecondaryDark'),
               '--tw-prose-hr': theme('colors.borderColorDark'),
-              a: {
-                color: 'inherit',
-                textDecoration: 'none',
-                borderRadius: '0.25em',
-                padding: '0.1em 0.2em',
-                margin: '-0.1em -0.2em',
-                backgroundImage: proseHighlight,
-                backgroundSize: '100% 100%',
-                transition: 'background 0.2s ease, color 0.2s ease',
-              },
+              a: proseLink,
               'a:hover': {
+                color: 'inherit',
+                backgroundImage: proseHighlightHover,
+              },
+              'a:focus': {
+                color: 'inherit',
+              },
+              'a:visited': {
+                color: 'inherit',
+              },
+              'a:focus-visible': {
+                ...proseLinkFocus,
                 backgroundImage: proseHighlightHover,
               },
               h1: {

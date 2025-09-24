@@ -16,7 +16,8 @@ const {
 } = Astro.props as Props;
 
 const buttonId = `share-button-${Math.random().toString(36).slice(2, 10)}`;
-const baseClass = 'text-accent hover:underline flex items-center';
+const baseClass =
+    'flex items-center cursor-pointer appearance-none bg-transparent border-0 p-0 text-textPrimary dark:text-textPrimaryDark transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--color-accent))]';
 const classes = className ? `${baseClass} ${className}` : baseClass;
 ---
 <button
