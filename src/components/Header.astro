@@ -4,10 +4,11 @@ import MultiLevelNavigation from './navigation/MultiLevelNavigation.astro';
 
 interface Props {
     currentPage: string;
+    enableSearch?: boolean;
 }
-const { currentPage } = Astro.props;
+const { currentPage, enableSearch = false } = Astro.props as Props;
 ---
 
 <header class="w-full">
-    <MultiLevelNavigation currentPage={currentPage} />
+    <MultiLevelNavigation currentPage={currentPage} enableSearch={enableSearch} />
 </header>

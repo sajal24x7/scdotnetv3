@@ -1,7 +1,4 @@
 ---
-import { getContentPreviewsJson } from '../data/contentPreviewStore';
-
-const previewsJson = await getContentPreviewsJson();
 ---
 
 <style>
@@ -69,12 +66,12 @@ const previewsJson = await getContentPreviewsJson();
   }
 </style>
 
-<script define:vars={{ previewsJson }}>
+<script is:inline>
     (function () {
         const PREVIEW_KEY = '__SC_LINK_PREVIEWS__';
         const STATE_KEY = '__SC_LINK_HOVER_STATE__';
+        const PREVIEWS_URL = '/api/link-previews.json';
 
-        const parsedPreviews = JSON.parse(previewsJson);
         const existing = window[PREVIEW_KEY];
         const previewMap = existing instanceof Map ? existing : new Map();
 
@@ -82,13 +79,11 @@ const previewsJson = await getContentPreviewsJson();
             window[PREVIEW_KEY] = previewMap;
         }
 
-        for (const [path, preview] of Object.entries(parsedPreviews)) {
-            previewMap.set(path, preview);
-        }
-
         const defaultState = {
             processed: new WeakSet(),
-            initialized: false
+            initialized: false,
+            currentLink: null,
+            prefetched: false
         };
         const state = window[STATE_KEY] || defaultState;
 
@@ -97,7 +92,66 @@ const previewsJson = await getContentPreviewsJson();
         }
 
         state.scheduled = state.scheduled || false;
+        state.prefetched = state.prefetched || false;
+        state.currentLink = state.currentLink || null;
         window[STATE_KEY] = state;
+
+        let fetchPromise = null;
+
+        const ensurePreviewsLoaded = async () => {
+            if (previewMap.size > 0) {
+                return previewMap;
+            }
+
+            if (!fetchPromise) {
+                fetchPromise = fetch(PREVIEWS_URL, {
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(`Failed to load link previews: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        if (data && typeof data === 'object') {
+                            for (const [path, preview] of Object.entries(data)) {
+                                previewMap.set(path, preview);
+                            }
+                        }
+                        return previewMap;
+                    })
+                    .catch((error) => {
+                        console.error('Link preview fetch failed', error);
+                        return previewMap;
+                    })
+                    .finally(() => {
+                        fetchPromise = null;
+                    });
+            }
+
+            return fetchPromise;
+        };
+
+        const ensurePreviewsLoadedSoon = () => {
+            if (previewMap.size > 0 || fetchPromise) {
+                return;
+            }
+
+            const idle = window.requestIdleCallback;
+            if (typeof idle === 'function') {
+                idle(() => {
+                    void ensurePreviewsLoaded();
+                }, { timeout: 2000 });
+                return;
+            }
+
+            window.setTimeout(() => {
+                void ensurePreviewsLoaded();
+            }, 1500);
+        };
 
         const ensureTooltip = () => {
             if (state.tooltip && document.body.contains(state.tooltip)) {
@@ -199,6 +253,8 @@ const previewsJson = await getContentPreviewsJson();
                     tooltip.style.display = 'none';
                 }
             }, 200);
+
+            state.currentLink = null;
         };
 
         const updateTooltipPosition = (event, isInternal) => {
@@ -259,15 +315,32 @@ const previewsJson = await getContentPreviewsJson();
             }
 
             const normalized = normalizeHref(href);
-            const preview = previewMap.get(normalized) || previewMap.get(normalized.replace(/\/$/, ''));
+            const fallback = normalized.replace(/\/$/, '');
 
-            if (preview) {
+            const assignPreview = (preview) => {
+                if (!preview) {
+                    return;
+                }
+
                 if (preview.title) {
                     link.setAttribute('data-title', preview.title);
                 }
                 if (preview.description) {
                     link.setAttribute('data-description', preview.description);
                 }
+
+                if (state.tooltip && state.tooltip.classList.contains('visible') && state.currentLink === link) {
+                    const titleText = preview.title || (link.textContent ? link.textContent.trim() : 'Internal Link');
+                    const descriptionText = preview.description || '';
+                    setTooltipTheme();
+                    renderInternalPreview(titleText, descriptionText);
+                }
+            };
+
+            const existingPreview = previewMap.get(normalized) || previewMap.get(fallback);
+
+            if (existingPreview) {
+                assignPreview(existingPreview);
             }
         };
 
@@ -295,15 +368,19 @@ const previewsJson = await getContentPreviewsJson();
         const showTooltip = (event, link, isInternal) => {
             clearTimeout(hideTimeout);
             setTooltipTheme();
+            state.currentLink = link;
 
             if (isInternal) {
                 const dataTitle = link.getAttribute('data-title');
                 const dataDescription = link.getAttribute('data-description');
+                const fallbackTitle = link.textContent ? link.textContent.trim() : 'Internal Link';
 
                 if (!dataTitle && !dataDescription) {
-                    renderExternalPreview(link.href || link.getAttribute('href') || '');
+                    renderInternalPreview(fallbackTitle, 'Loading preview…');
+                    void ensurePreviewsLoaded().then(() => {
+                        applyPreviewData(link);
+                    });
                 } else {
-                    const fallbackTitle = link.textContent ? link.textContent.trim() : 'Internal Link';
                     renderInternalPreview(dataTitle || fallbackTitle, dataDescription || '');
                 }
 
@@ -340,6 +417,10 @@ const previewsJson = await getContentPreviewsJson();
             if (isInternal) {
                 link.setAttribute('data-internal', '');
                 link.removeAttribute('data-external');
+                if (!state.prefetched) {
+                    state.prefetched = true;
+                    ensurePreviewsLoadedSoon();
+                }
                 applyPreviewData(link);
             } else {
                 link.setAttribute('data-external', '');
