@@ -1,7 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import PageWrapper from '../components/layout/PageWrapper.astro';
+import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import SearchModal from '../components/SearchModal.astro';
 import LinkHoverEffect from '../components/LinkHoverEffect.astro';
 import type { Post } from '../utils/content';
@@ -12,25 +12,39 @@ interface Props {
         description?: string;
         currentPage: string;
         pageWrapper?: {
+                as?: keyof HTMLElementTagNameMap;
                 maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
                 padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+                paddingScale?: 'page' | 'container';
                 centered?: boolean;
+                container?: boolean;
                 className?: string;
+                prose?: boolean;
+                proseSize?: 'sm' | 'base' | 'lg' | 'xl';
         };
         allPosts?: Post[];
+        enableSearchModal?: boolean;
+        enableLinkHoverEffect?: boolean;
 }
 
-const { title, description, currentPage, pageWrapper = {} } = Astro.props as Props;
+const {
+        title,
+        description,
+        currentPage,
+        pageWrapper = {},
+        enableSearchModal = false,
+        enableLinkHoverEffect = false,
+} = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/logo/logo-square-v2.svg" />
-		<title>{title}</title>
-		<meta name="description" content={description || "A personal digital garden and blog"} />
+        <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link rel="icon" type="image/svg+xml" href="/logo/logo-square-v2.svg" />
+                <title>{title}</title>
+                <meta name="description" content={description || "A personal digital garden and blog"} />
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- Preload logo image -->
@@ -61,42 +75,47 @@ const { title, description, currentPage, pageWrapper = {} } = Astro.props as Pro
 		
 		
 		<!-- Theme Script (to avoid FOUC - Flash of Unstyled Content) -->
-		<script is:inline>
-			// Auto-detect dark mode based on system preference only
-			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				document.documentElement.classList.add('dark');
-			} else {
-				document.documentElement.classList.remove('dark');
-			}
-			
-			// Listen for system theme changes
-			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-				if (event.matches) {
-					document.documentElement.classList.add('dark');
-				} else {
-					document.documentElement.classList.remove('dark');
-				}
-			});
-		</script>
-	</head>
-	<body class="min-h-screen text-textPrimary dark:text-textPrimaryDark transition-all duration-500">
-		<div class="flex flex-col min-h-screen">
-			<Header currentPage={currentPage} />
-			<main class="flex-grow relative z-10">
-				<PageWrapper 
-					maxWidth={pageWrapper.maxWidth || '3xl'}
-					padding={pageWrapper.padding || 'md'}
-					centered={pageWrapper.centered !== false}
-					className={pageWrapper.className || ''}
-				>
-					<slot />
-				</PageWrapper>
+                <script is:inline>
+                        // Auto-detect dark mode based on system preference only
+                        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                                document.documentElement.classList.add('dark');
+                        } else {
+                                document.documentElement.classList.remove('dark');
+                        }
+
+                        // Listen for system theme changes
+                        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+                                if (event.matches) {
+                                        document.documentElement.classList.add('dark');
+                                } else {
+                                        document.documentElement.classList.remove('dark');
+                                }
+                        });
+                </script>
+                {Astro.slots.has('head') && <slot name="head" />}
+        </head>
+        <body class="min-h-screen text-textPrimary dark:text-textPrimaryDark transition-all duration-500">
+                <div class="flex flex-col min-h-screen">
+                        <Header currentPage={currentPage} enableSearch={enableSearchModal} />
+                        <main class="flex-grow relative z-10">
+                                <LayoutContainer
+                                        as={pageWrapper.as || 'div'}
+                                        container={pageWrapper.container !== false}
+                                        maxWidth={pageWrapper.maxWidth || '3xl'}
+                                        padding={pageWrapper.padding || 'md'}
+                                        paddingScale={pageWrapper.paddingScale || 'page'}
+                                        centered={pageWrapper.centered !== false}
+                                        prose={pageWrapper.prose === true}
+                                        proseSize={pageWrapper.proseSize || 'base'}
+                                        className={pageWrapper.className || ''}
+                                >
+                                        <slot />
+                                </LayoutContainer>
 			</main>
 			<Footer />
 		</div>
 		
-                <!-- Search Modal -->
-                <SearchModal />
-		<LinkHoverEffect />
-	</body>
+                {enableSearchModal && <SearchModal />}
+                {enableLinkHoverEffect && <LinkHoverEffect />}
+        </body>
 </html>

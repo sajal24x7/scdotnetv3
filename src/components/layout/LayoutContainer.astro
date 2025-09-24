@@ -1,0 +1,76 @@
+---
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
+  padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+  paddingScale?: 'page' | 'container';
+  centered?: boolean;
+  container?: boolean;
+  prose?: boolean;
+  proseSize?: 'sm' | 'base' | 'lg' | 'xl';
+  className?: string;
+}
+
+const {
+  as = 'div',
+  maxWidth = '6xl',
+  padding = 'none',
+  paddingScale = 'page',
+  centered = true,
+  container = false,
+  prose = false,
+  proseSize = 'base',
+  className = ''
+} = Astro.props as Props;
+
+const maxWidthClasses = {
+  sm: 'max-w-sm',
+  md: 'max-w-md',
+  lg: 'max-w-lg',
+  xl: 'max-w-xl',
+  '2xl': 'max-w-2xl',
+  '3xl': 'max-w-3xl',
+  '4xl': 'max-w-4xl',
+  '5xl': 'max-w-5xl',
+  '6xl': 'max-w-6xl',
+  '7xl': 'max-w-7xl',
+  full: 'max-w-full'
+} as const;
+
+const paddingMaps = {
+  page: {
+    none: '',
+    sm: 'px-4 py-4',
+    md: 'px-6 py-8',
+    lg: 'px-8 py-12',
+    xl: 'px-10 py-16'
+  },
+  container: {
+    none: '',
+    sm: 'px-2 py-4',
+    md: 'px-4 py-8',
+    lg: 'px-6 py-12',
+    xl: 'px-8 py-16'
+  }
+} as const;
+
+const paddingClass = padding === 'none' ? '' : paddingMaps[paddingScale][padding];
+
+const classes = [
+  container ? 'container' : '',
+  centered ? 'mx-auto' : '',
+  maxWidthClasses[maxWidth],
+  paddingClass,
+  prose ? 'prose dark:prose-invert' : '',
+  prose && proseSize !== 'base' ? `prose-${proseSize}` : '',
+  className
+]
+  .filter(Boolean)
+  .join(' ');
+
+const Tag = as;
+---
+
+<Tag class={classes}>
+  <slot />
+</Tag>
