@@ -41,7 +41,8 @@
   - Wrapped stream listings in the shared twelve-column grid with dedicated main (cols 1-8) and optional sticky sidebar (cols 9-12) slots for metadata and filters.
 - [x] Adjust `PostItem` component spacing to harmonize with new column gutters.
   - Replaced hard-coded clamps with inherited twelve-column spacing tokens so borders, metadata rows, and body copy follow the shared grid gaps across stream contexts.
-- [ ] Verify sticky sidebar behavior (if used) functions within twelve-column grid constraints.
+- [x] Verify sticky sidebar behavior (if used) functions within twelve-column grid constraints.
+  - Ensured the stream grid aligns items to the start so the sidebar retains its sticky positioning within the twelve-column template across browsers.
 
 ## 5. Nordletter (`/nordletter`)
 - [ ] Rework `NordletterGrid` so issues span three columns by default on desktop, with optional six-column highlights.
