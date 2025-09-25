@@ -10,14 +10,8 @@ import { getAllPosts, getPostsByCategory, transformPost } from '../utils/content
 // Get all posts
 const allPosts = await getAllPosts();
 
-// Build a list of the most recent posts across all categories
-const sortedPosts = [...allPosts].sort((a, b) => {
-  const aTime = new Date(a.data.pubDate).getTime();
-  const bTime = new Date(b.data.pubDate).getTime();
-  return bTime - aTime;
-});
-
-const recentPostsRaw = sortedPosts.slice(0, 8);
+// Build a list of the most recent stream posts across the unified categories
+const recentPostsRaw = getPostsByCategory(allPosts, 'stream', { limit: 8 });
 const recentPosts = recentPostsRaw.map(transformPost);
 
 // Collect featured stories that lean on long-form writing and visuals

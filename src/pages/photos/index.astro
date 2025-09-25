@@ -2,13 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import StreamLayout from '../../components/layout/StreamLayout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import { getAllPosts, transformPost } from '../../utils/content';
+import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/content';
 
 // Get all photo posts
 const allPosts = await getAllPosts();
-const photoPosts = allPosts
-  .filter(post => post.data.category === 'photo')
-  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+const photoPosts = getPostsByCategory(allPosts, 'photo');
 
 // Transform posts for the StreamLayout component
 const transformedPosts = photoPosts.map(transformPost);
