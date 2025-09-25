@@ -94,62 +94,66 @@ const contentStyle = [
 const shouldRenderCount = hasCountSlot || Boolean(countText);
 ---
 <section class={`section-landing ${wrapperClass}`.trim()}>
-    <PageHeader
-        title={title}
-        description={description}
-        layout={layout}
-        size={resolvedHeaderSize}
-        maxWidth={resolvedHeaderMaxWidth}
-    />
-
-    {shouldRenderCount && (
-        <div class={`section-count ${countVariantClass} ${countAlignmentClass} ${countClass}`.trim()}>
-            {hasCountSlot ? <slot name="count" /> : countText}
+    <div class="section-landing__grid twelve-grid">
+        <div class="section-header grid-span-full">
+            <PageHeader
+                title={title}
+                description={description}
+                layout={layout}
+                size={resolvedHeaderSize}
+                maxWidth={resolvedHeaderMaxWidth}
+            />
         </div>
-    )}
 
-    {hasAfterCountSlot && (
-        <div class="section-after-count">
-            <slot name="afterCount" />
-        </div>
-    )}
+        {shouldRenderCount && (
+            <div class={`section-count grid-span-full ${countVariantClass} ${countAlignmentClass} ${countClass}`.trim()}>
+                {hasCountSlot ? <slot name="count" /> : countText}
+            </div>
+        )}
 
-    {hasTagListSlot ? (
-        <div
-            class={`section-taglist ${tagWrapperClass}`.trim()}
-            style={tagListStyle || undefined}
-        >
-            <slot name="tagList" />
-        </div>
-    ) : (
-        tagCategory && (
+        {hasAfterCountSlot && (
+            <div class="section-after-count grid-span-full">
+                <slot name="afterCount" />
+            </div>
+        )}
+
+        {hasTagListSlot ? (
             <div
-                class={`section-taglist ${tagWrapperClass}`.trim()}
+                class={`section-taglist grid-span-full ${tagWrapperClass}`.trim()}
                 style={tagListStyle || undefined}
             >
-                <TagList
-                    category={tagCategory}
-                    title={tagTitle}
-                    maxTags={tagMaxTags}
-                    showMore={tagShowMore}
-                    posts={tagPosts}
-                />
+                <slot name="tagList" />
             </div>
-        )
-    )}
+        ) : (
+            tagCategory && (
+                <div
+                    class={`section-taglist grid-span-full ${tagWrapperClass}`.trim()}
+                    style={tagListStyle || undefined}
+                >
+                    <TagList
+                        category={tagCategory}
+                        title={tagTitle}
+                        maxTags={tagMaxTags}
+                        showMore={tagShowMore}
+                        posts={tagPosts}
+                    />
+                </div>
+            )
+        )}
 
-    {hasBeforeContentSlot && (
-        <div class="section-before-content">
-            <slot name="beforeContent" />
-        </div>
-    )}
+        {hasBeforeContentSlot && (
+            <div class="section-before-content grid-span-full">
+                <slot name="beforeContent" />
+            </div>
+        )}
 
-    <main
-        class={`section-content ${contentClass}`.trim()}
-        style={contentStyle || undefined}
-    >
-        <slot />
-    </main>
+        <main
+            class={`section-content grid-span-full ${contentClass}`.trim()}
+            style={contentStyle || undefined}
+        >
+            <slot />
+        </main>
+    </div>
 </section>
 
 <style>
