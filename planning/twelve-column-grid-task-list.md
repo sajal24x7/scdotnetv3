@@ -3,7 +3,11 @@
 > Status tracking document for aligning the site to the unified twelve-column grid. Check off each item once the work ships.
 
 ## 1. Foundation & Shared Infrastructure
-- [ ] Audit existing layout wrappers (`LayoutContainer`, section wrappers) to confirm responsive breakpoint usage and identify conflicts with twelve-column grid introduction.
+- [x] Audit existing layout wrappers (`LayoutContainer`, section wrappers) to confirm responsive breakpoint usage and identify conflicts with twelve-column grid introduction.
+  - `LayoutContainer` currently leans on Tailwind's `container` utility and enumerated `max-w-*` tokens, defaulting to a `3xl` width inside the global layout. Introducing the twelve-column shell will require swapping in an explicit grid container (e.g., `mx-auto grid grid-cols-12`) and leaving `container` opt-in for legacy templates so spacing doesn't double up.
+  - `SectionWrapper` and `GridWrapper` exclusively manage padding/margin scales and ad-hoc column counts. They do not enforce gutters, so they can remain as lightweight spacing helpers once the parent grid owns column flow; however, both need optional hooks to consume shared gap tokens supplied by the grid utilities.
+  - Home-specific wrappers (`HomeTwoRowGrid`, `HomeFourGrid`, `FourSectionLayout`, `StreamGrid`) hard-code bespoke column ratios and inline media queries. These will conflict with a unified twelve-column span system and should be retired in favor of declarative span props when the new utilities land.
+  - `StreamLayout`, `GardenGrid`, and `TagSidebar` embed custom CSS grid templates (`grid-template-columns`, fixed pixel widths) that bypass Tailwind breakpoints. Each will need a rewrite to express spans via the common twelve-column classes so sticky sidebars and metadata columns inherit consistent gutters.
 - [ ] Define shared twelve-column CSS grid utilities (e.g., Tailwind classes, custom utility) and document usage in layout guidelines.
 - [ ] Update global `Layout` component to expose the twelve-column grid container, ensuring mobile fallback to single-column remains intact.
 - [ ] Verify no regressions on global spacing, gutters, and max-width behavior after enabling the new grid container.
