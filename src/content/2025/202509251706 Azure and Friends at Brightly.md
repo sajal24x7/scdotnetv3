@@ -1,15 +1,18 @@
 ---
-title: "Azure and Friends at Brightly"
-slug: "azure-and-friends-at-brightly"
-pubDate: 2025-09-25T22:57:52+03:00
-updatedDate: 2025-09-25T22:57:52+03:00
+title: Azure and Friends at Brightly
+slug: azure-and-friends-at-brightly
+pubDate: 2025-09-25T19:57:52.000Z
+updatedDate: 2025-09-25T19:57:52.000Z
 category: blog
 tags:
   - brightly
   - azure-and-friends
   - meetup
   - azure
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115266709149151253'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lzoqipesl22f'
+  - 'https://www.threads.com/@sajal24x7/post/DPCbAQbEYoP'
 ---
 It was my first time at the Brightly office. It was my first Azure and Friends event as well. The Brightly office is on the fifth floor of this oldish building, right next to a beautiful Esplanadi park, a little distance from the Central Railway Station.
 
