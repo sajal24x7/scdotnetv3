@@ -1,6 +1,6 @@
 class TagListElement extends HTMLElement {
-    private handleClick = (event: Event) => {
-        const target = event.target as HTMLElement | null;
+    handleClick = (event) => {
+        const target = event.target;
         if (!target) {
             return;
         }
@@ -10,7 +10,7 @@ class TagListElement extends HTMLElement {
             return;
         }
 
-        const actionElement = target.closest<HTMLElement>('[data-action]');
+        const actionElement = target.closest('[data-action]');
         if (!actionElement) {
             return;
         }
@@ -39,33 +39,37 @@ class TagListElement extends HTMLElement {
         this.removeEventListener('click', this.handleClick);
     }
 
-    private showHiddenTags(hiddenId: string, trigger: HTMLElement) {
-        const hiddenContainer = this.querySelector<HTMLElement>(`#${CSS.escape(hiddenId)}`);
+    showHiddenTags(hiddenId, trigger) {
+        const hiddenContainer = this.querySelector(`#${CSS.escape(hiddenId)}`);
         if (!hiddenContainer) {
             return;
         }
 
         hiddenContainer.hidden = false;
         trigger.hidden = true;
+        trigger.style.display = 'none';
+        trigger.setAttribute('aria-hidden', 'true');
         trigger.setAttribute('aria-expanded', 'true');
 
-        const focusable = hiddenContainer.querySelector<HTMLElement>('[data-action="show-less"]');
+        const focusable = hiddenContainer.querySelector('[data-action="show-less"]');
         if (focusable) {
             focusable.focus();
         }
     }
 
-    private hideHiddenTags(hiddenId: string) {
-        const hiddenContainer = this.querySelector<HTMLElement>(`#${CSS.escape(hiddenId)}`);
+    hideHiddenTags(hiddenId) {
+        const hiddenContainer = this.querySelector(`#${CSS.escape(hiddenId)}`);
         if (!hiddenContainer) {
             return;
         }
 
         hiddenContainer.hidden = true;
 
-        const showMoreButton = this.querySelector<HTMLElement>(`[data-action="show-more"][data-hidden-id="${CSS.escape(hiddenId)}"]`);
+        const showMoreButton = this.querySelector(`[data-action="show-more"][data-hidden-id="${CSS.escape(hiddenId)}"]`);
         if (showMoreButton) {
             showMoreButton.hidden = false;
+            showMoreButton.style.removeProperty('display');
+            showMoreButton.removeAttribute('aria-hidden');
             showMoreButton.setAttribute('aria-expanded', 'false');
             showMoreButton.focus();
         }
@@ -75,3 +79,5 @@ class TagListElement extends HTMLElement {
 if (!customElements.get('tag-list')) {
     customElements.define('tag-list', TagListElement);
 }
+
+export {};
