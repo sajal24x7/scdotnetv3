@@ -21,7 +21,7 @@
   - `index.astro` now assigns grid spans to the about, book showcase, stream, and featured sections, keeping newsletter signup and featured rail pinned to columns 9-12 on desktop while collapsing to single-column on small screens.
 - [x] Power "Recently" and stream feeds with the shared `getAllPosts` → `getPostsByCategory` → `transformPost` pipeline so data sourcing matches the rest of the site.
   - Home "Recently" rail and blog, micro, photo stream routes now rely on `getPostsByCategory` for consistent filtering and ordering.
-- [ ] Support a hard-coded list of featured slugs that resolve to post metadata via `getAllPosts`, allowing manual curation without bespoke data fetches.
+- [x] Support a hard-coded list of featured slugs that resolve to post metadata via `getAllPosts`, allowing manual curation without bespoke data fetches.
 - [ ] Ensure micro posts in the stream respect full-content display while fitting within the new column spans.
 - [ ] Validate responsive behavior across breakpoints and adjust spacing/typography as needed.
 

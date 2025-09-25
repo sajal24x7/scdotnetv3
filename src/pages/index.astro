@@ -4,11 +4,14 @@ import BookShowcase from '../components/ui/BookShowcase.astro';
 import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
 import RecentItems from '../components/RecentItems.astro';
 import FeaturedPosts from '../components/content/FeaturedPosts.astro';
+import { FEATURED_POST_SLUGS } from '../data/featuredPostSlugs';
 import { getAllPosts, getPostsByCategory, transformPost } from '../utils/content';
+import type { Post } from '../utils/content';
 
 
 // Get all posts
 const allPosts = await getAllPosts();
+const postsBySlug = new Map(allPosts.map((post) => [post.slug, post] as const));
 
 // Build a list of the most recent stream posts across the unified categories
 const recentPostsRaw = getPostsByCategory(allPosts, 'stream', { limit: 8 });
@@ -17,18 +20,31 @@ const recentPosts = recentPostsRaw.map(transformPost);
 // Collect featured stories that lean on long-form writing and visuals
 const featuredSource = getPostsByCategory(allPosts, ['evergreen', 'story', 'poem', 'blog'], { limit: 12 });
 const recentSlugs = new Set(recentPostsRaw.map((post) => post.slug));
-const prioritizedFeatured = featuredSource
-  .filter((post) => !recentSlugs.has(post.slug))
-  .sort((a, b) => {
-    const aHasImage = a.data?.image ? 1 : 0;
-    const bHasImage = b.data?.image ? 1 : 0;
-    if (aHasImage !== bHasImage) {
-      return bHasImage - aHasImage;
+
+const curatedFeatured = FEATURED_POST_SLUGS.reduce<Post[]>((acc, slug) => {
+    const post = postsBySlug.get(slug);
+    if (post && !recentSlugs.has(post.slug)) {
+        acc.push(post);
     }
-    const aTime = new Date(a.data.pubDate).getTime();
-    const bTime = new Date(b.data.pubDate).getTime();
-    return bTime - aTime;
-  });
+    return acc;
+}, []);
+
+const curatedSlugs = new Set(curatedFeatured.map((post) => post.slug));
+
+const fallbackFeatured = featuredSource
+    .filter((post) => !recentSlugs.has(post.slug) && !curatedSlugs.has(post.slug))
+    .sort((a, b) => {
+        const aHasImage = a.data?.image ? 1 : 0;
+        const bHasImage = b.data?.image ? 1 : 0;
+        if (aHasImage !== bHasImage) {
+            return bHasImage - aHasImage;
+        }
+        const aTime = new Date(a.data.pubDate).getTime();
+        const bTime = new Date(b.data.pubDate).getTime();
+        return bTime - aTime;
+    });
+
+const prioritizedFeatured = [...curatedFeatured, ...fallbackFeatured];
 
 const featuredPosts = prioritizedFeatured.slice(0, 6).map(transformPost);
 ---
