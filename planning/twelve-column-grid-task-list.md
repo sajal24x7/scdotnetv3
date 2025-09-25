@@ -13,7 +13,8 @@
   - Documented usage patterns in `planning/site-improvement-guidelines.md` under the UI/UX section.
 - [x] Update global `Layout` component to expose the twelve-column grid container, ensuring mobile fallback to single-column remains intact.
   - Wrapped the main slot with the shared `.twelve-grid` shell and added configurable gap/padding hooks so every route inherits the new structure by default.
-- [ ] Verify no regressions on global spacing, gutters, and max-width behavior after enabling the new grid container.
+- [x] Verify no regressions on global spacing, gutters, and max-width behavior after enabling the new grid container.
+  - Adjusted grid span and start utilities to default to full-width on narrow viewports, keeping gutters and max-width behavior stable before desktop breakpoints.
 
 - [ ] Remove legacy grid components (`HomeTwoRowGrid`, redundant sections) per latest direction; confirm hero, book promo, about + Nordletter sign-up, and unified stream layout remain.
 - [ ] Rebuild home page sections using twelve-column spans: book hero (12 cols), about copy (cols 1-8) with embedded Nordletter signup (cols 9-12), and stream feed (cols 1-8) with featured stories rail (cols 9-12).
