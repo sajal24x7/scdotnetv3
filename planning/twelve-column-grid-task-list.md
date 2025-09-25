@@ -24,7 +24,8 @@
 - [x] Support a hard-coded list of featured slugs that resolve to post metadata via `getAllPosts`, allowing manual curation without bespoke data fetches.
 - [x] Ensure micro posts in the stream respect full-content display while fitting within the new column spans.
   - Reworked `PostItem` to span twelve-column gutters while keeping micro entries rendered from full Markdown content across stream surfaces.
-- [ ] Validate responsive behavior across breakpoints and adjust spacing/typography as needed.
+- [x] Validate responsive behavior across breakpoints and adjust spacing/typography as needed.
+  - Updated `RecentItems`, `FeaturedPosts`, and `PostItem` to rely on fluid typography tokens, shared grid gaps, and CSS variables so spacing and contrast stay consistent from mobile through desktop.
 
 ## 3. Garden Family Pages (`/garden`, `/evergreen`, `/til`, `/poems`, `/stories`)
 - [ ] Refactor `GardenGrid` to sit inside the shared twelve-column parent with default card spans of three columns on desktop.
