@@ -22,6 +22,13 @@ const postsCollection = defineCollection({
     image: z.string().optional(),
     edition: z.number().optional(),
     format: z.string().optional(),
+    layout: z.object({
+      span: z.union([
+        z.literal(3),
+        z.literal(6),
+        z.literal(12)
+      ]).optional()
+    }).optional(),
     // Book-specific metadata
     author: z.string().optional(),
     series: z.string().optional().default('none'),

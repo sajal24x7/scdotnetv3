@@ -29,7 +29,8 @@
 
 ## 3. Garden Family Pages (`/garden`, `/evergreen`, `/til`, `/poems`, `/stories`)
 - [x] Refactor `GardenGrid` to sit inside the shared twelve-column parent with default card spans of three columns on desktop.
-- [ ] Provide overrides for featured cards to span six or twelve columns where applicable.
+- [x] Provide overrides for featured cards to span six or twelve columns where applicable.
+  - Added optional `layout.span` frontmatter to support six- and twelve-column garden features, with `GardenGrid` mapping spans to shared grid classes.
 - [ ] Align tag and count headers to full-width rows within `SectionLanding`.
 - [ ] Confirm mobile layout collapses to single-column while preserving card order.
 

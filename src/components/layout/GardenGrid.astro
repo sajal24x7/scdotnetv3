@@ -51,10 +51,24 @@ const getContentTypeClasses = (type: string, category?: string) => {
       return 'default-card';
   }
 };
+
+const getSpanClass = (post: any) => {
+  const span = post?.data?.layout?.span;
+
+  if (span === 6) {
+    return 'grid-span-6';
+  }
+
+  if (span === 12) {
+    return 'grid-span-12';
+  }
+
+  return 'grid-span-3';
+};
 ---
 
 {renderedPosts.map((post) => (
-    <div class={`garden-card grid-span-3 ${getContentTypeClasses(contentType, post.data.category)}`}>
+    <div class={`garden-card ${getSpanClass(post)} ${getContentTypeClasses(contentType, post.data.category)}`}>
         <Card {...post.data} tags={post.data.tags}>
             {post.renderedContent && (
                 <div class="prose dark:prose-dark max-w-none">
