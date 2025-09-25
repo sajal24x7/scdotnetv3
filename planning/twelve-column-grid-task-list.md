@@ -33,7 +33,8 @@
   - Added optional `layout.span` frontmatter to support six- and twelve-column garden features, with `GardenGrid` mapping spans to shared grid classes.
 - [x] Align tag and count headers to full-width rows within `SectionLanding`.
   - Wrapped SectionLanding metadata rows in the shared twelve-column grid so count badges, custom slots, and tag lists span the full template width before content renders.
-- [ ] Confirm mobile layout collapses to single-column while preserving card order.
+- [x] Confirm mobile layout collapses to single-column while preserving card order.
+  - Enforced row-based auto-flow on the twelve-column utility and constrained garden cards with `min-width: 0` so mobile breakpoints render items one per row without reordering.
 
 ## 4. Stream Family Pages (`/stream`, `/blog`, `/micro`, `/photos`)
 - [ ] Update `StreamLayout` to map metadata/filters to sidebar spans (cols 9-12) and main content to cols 1-8.
