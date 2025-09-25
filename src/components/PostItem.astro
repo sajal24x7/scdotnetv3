@@ -94,22 +94,22 @@ const hasTags = tags.length > 0;
 <style>
   .post-item {
     border-bottom: 1px solid rgb(var(--color-border));
-    padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
-    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    padding-bottom: calc(var(--post-item-spacing, var(--grid-row-gap)) / 2);
+    margin-bottom: 0;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    row-gap: clamp(1rem, 3vw, 1.75rem);
+    row-gap: calc(var(--post-item-spacing, var(--grid-row-gap)) / 2);
   }
 
   .post-item:last-child {
     border-bottom: none;
-    margin-bottom: 0;
+    padding-bottom: 0;
   }
 
   .post-item-body {
     display: flex;
     flex-direction: column;
-    gap: clamp(0.75rem, 2vw, 1.25rem);
+    gap: calc(var(--post-item-spacing, var(--grid-row-gap)) / 3);
   }
 
   .stream-title {
@@ -126,11 +126,11 @@ const hasTags = tags.length > 0;
   }
 
   .stream-body {
-    margin-bottom: 0.5rem;
+    margin-bottom: calc(var(--post-item-spacing, var(--grid-row-gap)) / 6);
   }
 
   .stream-read-more {
-    margin-top: 0.5rem;
+    margin-top: calc(var(--post-item-spacing, var(--grid-row-gap)) / 6);
   }
 
   .post-item-meta {
@@ -139,19 +139,19 @@ const hasTags = tags.length > 0;
   }
 
   .post-item-meta-mobile {
-    margin-top: 0.5rem;
-    padding-top: 1rem;
+    margin-top: 0;
+    padding-top: calc(var(--post-item-spacing, var(--grid-row-gap)) / 2);
     border-top: 1px solid rgb(var(--color-border));
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: calc(var(--post-item-spacing, var(--grid-row-gap)) / 4);
     flex-wrap: wrap;
   }
 
   .post-item-meta-desktop {
     display: none;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: calc(var(--post-item-spacing, var(--grid-row-gap)) / 3);
     text-align: right;
   }
 

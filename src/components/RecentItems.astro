@@ -56,12 +56,7 @@ const isMicroContent = (category: string) => category === 'micro';
   }
 
   .recent-items-list :global(.post-item) {
-    margin-bottom: 0;
-  }
-
-  .recent-items-list :global(.post-item:not(:last-child)) {
-    border-bottom: 1px solid rgb(var(--color-border));
-    padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    --post-item-spacing: clamp(1.5rem, 4vw, 2.5rem);
   }
 
   @media (min-width: 48rem) {
