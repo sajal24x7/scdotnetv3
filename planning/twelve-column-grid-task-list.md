@@ -22,7 +22,8 @@
 - [x] Power "Recently" and stream feeds with the shared `getAllPosts` → `getPostsByCategory` → `transformPost` pipeline so data sourcing matches the rest of the site.
   - Home "Recently" rail and blog, micro, photo stream routes now rely on `getPostsByCategory` for consistent filtering and ordering.
 - [x] Support a hard-coded list of featured slugs that resolve to post metadata via `getAllPosts`, allowing manual curation without bespoke data fetches.
-- [ ] Ensure micro posts in the stream respect full-content display while fitting within the new column spans.
+- [x] Ensure micro posts in the stream respect full-content display while fitting within the new column spans.
+  - Reworked `PostItem` to span twelve-column gutters while keeping micro entries rendered from full Markdown content across stream surfaces.
 - [ ] Validate responsive behavior across breakpoints and adjust spacing/typography as needed.
 
 ## 3. Garden Family Pages (`/garden`, `/evergreen`, `/til`, `/poems`, `/stories`)
