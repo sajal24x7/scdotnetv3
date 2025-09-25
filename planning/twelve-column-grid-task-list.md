@@ -37,7 +37,8 @@
   - Enforced row-based auto-flow on the twelve-column utility and constrained garden cards with `min-width: 0` so mobile breakpoints render items one per row without reordering.
 
 ## 4. Stream Family Pages (`/stream`, `/blog`, `/micro`, `/photos`)
-- [ ] Update `StreamLayout` to map metadata/filters to sidebar spans (cols 9-12) and main content to cols 1-8.
+- [x] Update `StreamLayout` to map metadata/filters to sidebar spans (cols 9-12) and main content to cols 1-8.
+  - Wrapped stream listings in the shared twelve-column grid with dedicated main (cols 1-8) and optional sticky sidebar (cols 9-12) slots for metadata and filters.
 - [ ] Adjust `PostItem` component spacing to harmonize with new column gutters.
 - [ ] Verify sticky sidebar behavior (if used) functions within twelve-column grid constraints.
 
