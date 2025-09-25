@@ -2,63 +2,23 @@
 import CategoryDisplay from '../CategoryDisplay.astro';
 import TimeDisplay from '../TimeDisplay.astro';
 import Tag from '../Tag.astro';
-import { getAllPosts, transformPost } from '../../utils/content';
 import { parseMarkdown } from '../../utils/markdown';
 
-interface FeaturedEntry {
-  slug: string;
-  href?: string;
-  title?: string;
-  description?: string;
-  image?: string;
-  tags?: string[];
-}
-
-interface Props {
-  featuredEntries: FeaturedEntry[];
-  title?: string;
-}
-
-type TransformedPost = ReturnType<typeof transformPost>;
+type TransformPost = typeof import('../../utils/content')['transformPost'];
+type TransformedPost = ReturnType<TransformPost>;
 type FeaturedPost = TransformedPost & { renderedContent: string | null };
 
-const { featuredEntries = [], title = 'Featured' } = Astro.props;
+interface Props {
+    posts?: TransformedPost[];
+    title?: string;
+}
 
-const allPosts = await getAllPosts();
-const postsBySlug = new Map(
-  allPosts.map((post) => {
-    const transformed = transformPost(post);
-    return [post.slug, transformed];
-  })
-);
+const { posts = [], title = 'Featured' }: Props = Astro.props;
 
-const renderedPosts: FeaturedPost[] = featuredEntries
-  .map((entry) => {
-    const basePost = postsBySlug.get(entry.slug);
-    if (!basePost) {
-      return null;
-    }
-
-    const mergedPost: TransformedPost = {
-      ...basePost,
-      data: {
-        ...basePost.data,
-        ...(entry.title ? { title: entry.title } : {}),
-        ...(entry.description ? { description: entry.description } : {}),
-        ...(entry.image ? { image: entry.image } : {}),
-        ...(entry.tags ? { tags: entry.tags } : {}),
-        link: entry.href ?? basePost.data.link
-      }
-    };
-
-    const postWithContent: FeaturedPost = {
-      ...mergedPost,
-      renderedContent: mergedPost.body ? parseMarkdown(mergedPost.body) : null
-    };
-
-    return postWithContent;
-  })
-  .filter((post): post is FeaturedPost => Boolean(post));
+const renderedPosts: FeaturedPost[] = posts.map(post => ({
+    ...post,
+    renderedContent: post.body ? parseMarkdown(post.body) : null
+}));
 ---
 
 {renderedPosts.length > 0 && (
