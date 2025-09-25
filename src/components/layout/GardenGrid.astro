@@ -53,55 +53,27 @@ const getContentTypeClasses = (type: string, category?: string) => {
 };
 ---
 
-<div class="garden-grid layout-boundary px-2 md:px-0">
-  {renderedPosts.map((post) => (
-    <div class={`garden-card-wrapper ${getContentTypeClasses(contentType, post.data.category)}`}>
-      <Card {...post.data} tags={post.data.tags}>
-        {post.renderedContent && (
-          <div class="prose dark:prose-dark max-w-none">
-            <div set:html={post.renderedContent} />
-          </div>
-        )}
-      </Card>
+{renderedPosts.map((post) => (
+    <div class={`garden-card grid-span-3 ${getContentTypeClasses(contentType, post.data.category)}`}>
+        <Card {...post.data} tags={post.data.tags}>
+            {post.renderedContent && (
+                <div class="prose dark:prose-dark max-w-none">
+                    <div set:html={post.renderedContent} />
+                </div>
+            )}
+        </Card>
     </div>
-  ))}
-</div>
+))}
 
 
 <style>
-  .garden-grid {
-    display: grid;
-    /* Mobile: 2 columns */
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  /* Tablet: 3 columns */
-  @media (min-width: 768px) {
-    .garden-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-  }
-
-  /* Desktop: 4 columns */
-  @media (min-width: 1024px) {
-    .garden-grid {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-    }
-  }
-
-  /* Extra large screens: still 4 columns but with more gap */
-  @media (min-width: 1280px) {
-    .garden-grid {
-      gap: 2rem;
-    }
-  }
-
-  .garden-card-wrapper {
+  .garden-card {
     display: flex;
     flex-direction: column;
+  }
+
+  .garden-card :global(.card) {
+    height: 100%;
   }
 
   /* Content type specific styling */
@@ -126,15 +98,8 @@ const getContentTypeClasses = (type: string, category?: string) => {
   }
 
   /* Apply accent colors to cards */
-  .garden-card-wrapper :global(.card:hover) {
+  .garden-card :global(.card:hover) {
     border-color: var(--card-accent, #a78bfa);
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 767px) {
-    .garden-grid {
-      gap: 0.75rem;
-    }
   }
 
   /* Ensure proper prose styling */
