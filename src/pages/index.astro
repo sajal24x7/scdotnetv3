@@ -2,37 +2,41 @@
 import Layout from '../layouts/Layout.astro';
 import BookShowcase from '../components/ui/BookShowcase.astro';
 import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
-import HomeTwoRowGrid from '../components/layout/HomeTwoRowGrid.astro';
-import ResponsiveContentGrid from '../components/content/ResponsiveContentGrid.astro';
-import PostList from '../components/content/PostList.astro';
-import BookList from '../components/content/BookList.astro';
-import FictionGrid from '../components/content/FictionGrid.astro';
+import RecentItems from '../components/RecentItems.astro';
+import FeaturedPosts from '../components/content/FeaturedPosts.astro';
 import { getAllPosts, getPostsByCategory, transformPost } from '../utils/content';
 
 
 // Get all posts
 const allPosts = await getAllPosts();
 
-// Recent garden posts (evergreen, til, now categories)
-const recentGarden = getPostsByCategory(allPosts, 'gardenHighlights', { limit: 8 }).map(transformPost);
+// Build a list of the most recent posts across all categories
+const sortedPosts = [...allPosts].sort((a, b) => {
+  const aTime = new Date(a.data.pubDate).getTime();
+  const bTime = new Date(b.data.pubDate).getTime();
+  return bTime - aTime;
+});
 
-// Stream posts (blog, micro, photo categories)
-const streamPosts = getPostsByCategory(allPosts, 'stream', { limit: 8 });
+const recentPostsRaw = sortedPosts.slice(0, 8);
+const recentPosts = recentPostsRaw.map(transformPost);
 
-// Recent bookshelf posts
-const recentBooks = getPostsByCategory(allPosts, 'bookshelf', { limit: 8 });
+// Collect featured stories that lean on long-form writing and visuals
+const featuredSource = getPostsByCategory(allPosts, ['evergreen', 'story', 'poem', 'blog'], { limit: 12 });
+const recentSlugs = new Set(recentPostsRaw.map((post) => post.slug));
+const prioritizedFeatured = featuredSource
+  .filter((post) => !recentSlugs.has(post.slug))
+  .sort((a, b) => {
+    const aHasImage = a.data?.image ? 1 : 0;
+    const bHasImage = b.data?.image ? 1 : 0;
+    if (aHasImage !== bHasImage) {
+      return bHasImage - aHasImage;
+    }
+    const aTime = new Date(a.data.pubDate).getTime();
+    const bTime = new Date(b.data.pubDate).getTime();
+    return bTime - aTime;
+  });
 
-// Recent prose posts (poems and stories combined)
-const recentProse = getPostsByCategory(allPosts, 'prose', { limit: 8 });
-
-const sections = [
-  {
-    title: "Recent Posts",
-    description: "Latest thoughts and writings",
-    href: "/blog/",
-    posts: getPostsByCategory(allPosts, 'streamHighlights', { limit: 6 })
-  }
-];
+const featuredPosts = prioritizedFeatured.slice(0, 6).map(transformPost);
 ---
 
 <Layout
@@ -76,7 +80,7 @@ const sections = [
     </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
     <BookShowcase
       bookTitle="A Year of Mornings"
       bookLink="/books/a-year-of-mornings/"
@@ -87,33 +91,11 @@ const sections = [
     <NewsletterSignup />
   </div>
 
-  <HomeTwoRowGrid>
-    <ResponsiveContentGrid
-      slot="topLeft"
-      posts={recentGarden}
-      columns={2}
-      layout="grid"
-      gap="md"
-    />
-    <PostList
-      slot="topRight"
-      posts={streamPosts}
-      mode="list"
-      showCategory={true}
-      compact={true}
-      maxPosts={8}
-    />
-    <FictionGrid
-      slot="bottomLeft"
-      posts={recentProse}
-      maxPosts={8}
-    />
-    <BookList
-      slot="bottomRight"
-      posts={recentBooks}
-      maxPosts={8}
-    />
-  </HomeTwoRowGrid>
+  <section class="mb-16">
+    <RecentItems posts={recentPosts} title="Recently" />
+  </section>
 
-  <div class="py-12"></div>
+  <section class="mb-16">
+    <FeaturedPosts posts={featuredPosts} title="Featured" />
+  </section>
 </Layout>
