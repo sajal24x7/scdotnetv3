@@ -17,7 +17,8 @@
   - Adjusted grid span and start utilities to default to full-width on narrow viewports, keeping gutters and max-width behavior stable before desktop breakpoints.
 
 - [x] Remove legacy grid components (`HomeTwoRowGrid`, redundant sections) per latest direction; confirm hero, book promo, about + Nordletter sign-up, and unified stream layout remain.
-- [ ] Rebuild home page sections using twelve-column spans: book hero (12 cols), about copy (cols 1-8) with embedded Nordletter signup (cols 9-12), and stream feed (cols 1-8) with featured stories rail (cols 9-12).
+- [x] Rebuild home page sections using twelve-column spans: book hero (12 cols), about copy (cols 1-8) with embedded Nordletter signup (cols 9-12), and stream feed (cols 1-8) with featured stories rail (cols 9-12).
+  - `index.astro` now assigns grid spans to the about, book showcase, stream, and featured sections, keeping newsletter signup and featured rail pinned to columns 9-12 on desktop while collapsing to single-column on small screens.
 - [ ] Power "Recently" and stream feeds with the shared `getAllPosts` → `getPostsByCategory` → `transformPost` pipeline so data sourcing matches the rest of the site.
 - [ ] Support a hard-coded list of featured slugs that resolve to post metadata via `getAllPosts`, allowing manual curation without bespoke data fetches.
 - [ ] Ensure micro posts in the stream respect full-content display while fitting within the new column spans.
