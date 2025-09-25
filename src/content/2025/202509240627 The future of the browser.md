@@ -1,13 +1,16 @@
 ---
-title: "The future of the browser"
-slug: "the-future-of-the-browser"
-pubDate: 2025-09-24T06:30:05+03:00
-updatedDate: 2025-09-24T06:30:05+03:00
+title: The future of the browser
+slug: the-future-of-the-browser
+pubDate: 2025-09-24T03:30:05.000Z
+updatedDate: 2025-09-24T03:30:05.000Z
 category: micro
 tags:
   - ai
   - browsers
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115265260161842416'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lzo3vrdmai2w'
+  - 'https://www.threads.com/@sajal24x7/post/DPBw1GnDQNM'
 ---
 [Microsoft’s AI CEO on the future of the browser by Tom Warren](https://www.theverge.com/tech/783795/microsoft-ai-ceo-mustafa-suleyman-future-of-browser-interview-notepad)
 

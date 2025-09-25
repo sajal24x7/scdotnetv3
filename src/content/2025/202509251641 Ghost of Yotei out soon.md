@@ -1,13 +1,16 @@
 ---
-title: "Ghost of Yotei out soon"
-slug: "ghost-of-yotei-out-soon"
-pubDate: 2025-09-25T16:49:23+03:00
-updatedDate: 2025-09-25T16:49:23+03:00
+title: Ghost of Yotei out soon
+slug: ghost-of-yotei-out-soon
+pubDate: 2025-09-25T13:49:23.000Z
+updatedDate: 2025-09-25T13:49:23.000Z
 category: micro
 tags:
   - playstation
   - ghost-of-yotei
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115265260592000900'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lzo3vxidor24'
+  - 'https://www.threads.com/@sajal24x7/post/DPBw13bDcwA'
 ---
 
 [Ghost of Yōtei is exactly the kind of game PlayStation needs by Andrew Webster](https://www.theverge.com/games/784888/ghost-of-yotei-review-ps5)
