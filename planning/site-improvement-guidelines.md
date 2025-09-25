@@ -27,6 +27,7 @@ These guidelines consolidate how the site should evolve without disrupting the c
 
 ### UI/UX
 - Layout wrappers: use `PageWrapper` and `ProseWrapper` consistently to keep widths predictable. Keep current max-widths to avoid layout shift.
+- Twelve-column grid: wrap sections in the shared `.twelve-grid` utility, defaulting to single-column on small screens and 12 spans from `48rem` up. Adjust spacing via `.grid-gap-tight|loose` and padding via `.grid-pad-narrow|wide|none`; apply `.grid-span-*` and `.grid-start-*` helpers to place content without redefining templates.
 - Header/nav: primary nav should reflect the buckets. If expanding items (e.g., add `Tags`, `Feeds`), gate behind a flag to avoid visual changes by default.
 - Search: keep modal approach; add keyboard navigation and ARIA attributes (`role="dialog"`, `aria-modal="true"`, labelled controls).
 - Typography: keep current defaults. Optionally offer an opt-in variant using Montserrat for headings (user preference) gated behind a CSS class to avoid global change.

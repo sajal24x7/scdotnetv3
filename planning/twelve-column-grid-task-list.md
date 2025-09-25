@@ -8,7 +8,9 @@
   - `SectionWrapper` and `GridWrapper` exclusively manage padding/margin scales and ad-hoc column counts. They do not enforce gutters, so they can remain as lightweight spacing helpers once the parent grid owns column flow; however, both need optional hooks to consume shared gap tokens supplied by the grid utilities.
   - Home-specific wrappers (`HomeTwoRowGrid`, `HomeFourGrid`, `FourSectionLayout`, `StreamGrid`) hard-code bespoke column ratios and inline media queries. These will conflict with a unified twelve-column span system and should be retired in favor of declarative span props when the new utilities land.
   - `StreamLayout`, `GardenGrid`, and `TagSidebar` embed custom CSS grid templates (`grid-template-columns`, fixed pixel widths) that bypass Tailwind breakpoints. Each will need a rewrite to express spans via the common twelve-column classes so sticky sidebars and metadata columns inherit consistent gutters.
-- [ ] Define shared twelve-column CSS grid utilities (e.g., Tailwind classes, custom utility) and document usage in layout guidelines.
+- [x] Define shared twelve-column CSS grid utilities (e.g., Tailwind classes, custom utility) and document usage in layout guidelines.
+  - Added `.twelve-grid`, span/start helpers, and gap/padding tokens to `src/styles/global.css` alongside root spacing variables.
+  - Documented usage patterns in `planning/site-improvement-guidelines.md` under the UI/UX section.
 - [ ] Update global `Layout` component to expose the twelve-column grid container, ensuring mobile fallback to single-column remains intact.
 - [ ] Verify no regressions on global spacing, gutters, and max-width behavior after enabling the new grid container.
 
