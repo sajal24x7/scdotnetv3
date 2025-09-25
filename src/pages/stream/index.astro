@@ -8,7 +8,7 @@ import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/cont
 const allPosts = await getAllPosts();
 const stream = getPostsByCategory(allPosts, 'stream');
 
-// Transform posts for the StreamGrid component
+// Transform posts for the StreamLayout component
 const transformedPosts = stream.map(transformPost);
 const postCount = transformedPosts.length;
 const postCountText = `${postCount} ${postCount === 1 ? 'post' : 'posts'}`;

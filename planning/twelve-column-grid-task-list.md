@@ -16,7 +16,7 @@
 - [x] Verify no regressions on global spacing, gutters, and max-width behavior after enabling the new grid container.
   - Adjusted grid span and start utilities to default to full-width on narrow viewports, keeping gutters and max-width behavior stable before desktop breakpoints.
 
-- [ ] Remove legacy grid components (`HomeTwoRowGrid`, redundant sections) per latest direction; confirm hero, book promo, about + Nordletter sign-up, and unified stream layout remain.
+- [x] Remove legacy grid components (`HomeTwoRowGrid`, redundant sections) per latest direction; confirm hero, book promo, about + Nordletter sign-up, and unified stream layout remain.
 - [ ] Rebuild home page sections using twelve-column spans: book hero (12 cols), about copy (cols 1-8) with embedded Nordletter signup (cols 9-12), and stream feed (cols 1-8) with featured stories rail (cols 9-12).
 - [ ] Power "Recently" and stream feeds with the shared `getAllPosts` → `getPostsByCategory` → `transformPost` pipeline so data sourcing matches the rest of the site.
 - [ ] Support a hard-coded list of featured slugs that resolve to post metadata via `getAllPosts`, allowing manual curation without bespoke data fetches.
