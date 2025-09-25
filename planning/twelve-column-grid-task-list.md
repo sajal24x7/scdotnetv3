@@ -11,7 +11,8 @@
 - [x] Define shared twelve-column CSS grid utilities (e.g., Tailwind classes, custom utility) and document usage in layout guidelines.
   - Added `.twelve-grid`, span/start helpers, and gap/padding tokens to `src/styles/global.css` alongside root spacing variables.
   - Documented usage patterns in `planning/site-improvement-guidelines.md` under the UI/UX section.
-- [ ] Update global `Layout` component to expose the twelve-column grid container, ensuring mobile fallback to single-column remains intact.
+- [x] Update global `Layout` component to expose the twelve-column grid container, ensuring mobile fallback to single-column remains intact.
+  - Wrapped the main slot with the shared `.twelve-grid` shell and added configurable gap/padding hooks so every route inherits the new structure by default.
 - [ ] Verify no regressions on global spacing, gutters, and max-width behavior after enabling the new grid container.
 
 - [ ] Remove legacy grid components (`HomeTwoRowGrid`, redundant sections) per latest direction; confirm hero, book promo, about + Nordletter sign-up, and unified stream layout remain.
