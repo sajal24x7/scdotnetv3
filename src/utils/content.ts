@@ -16,6 +16,9 @@ export interface Post {
     editionDisplay?: string;
     format?: string;
     syndicationUrls?: string[];
+    layout?: {
+      span?: 3 | 6 | 12;
+    };
     author?: string;
     bookStatus?: string;
     bookCover?: string;
@@ -82,6 +85,7 @@ export function transformPost(post: Post) {
             edition: post.data.edition,
             editionDisplay: post.data.editionDisplay,
             syndicationUrls: post.data.syndicationUrls,
+            layout: post.data.layout,
             link: `/${post.data.category}/${post.slug}/`
         },
         body: post.body,
