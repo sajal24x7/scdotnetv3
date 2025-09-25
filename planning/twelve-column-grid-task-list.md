@@ -28,7 +28,7 @@
   - Updated `RecentItems`, `FeaturedPosts`, and `PostItem` to rely on fluid typography tokens, shared grid gaps, and CSS variables so spacing and contrast stay consistent from mobile through desktop.
 
 ## 3. Garden Family Pages (`/garden`, `/evergreen`, `/til`, `/poems`, `/stories`)
-- [ ] Refactor `GardenGrid` to sit inside the shared twelve-column parent with default card spans of three columns on desktop.
+- [x] Refactor `GardenGrid` to sit inside the shared twelve-column parent with default card spans of three columns on desktop.
 - [ ] Provide overrides for featured cards to span six or twelve columns where applicable.
 - [ ] Align tag and count headers to full-width rows within `SectionLanding`.
 - [ ] Confirm mobile layout collapses to single-column while preserving card order.
