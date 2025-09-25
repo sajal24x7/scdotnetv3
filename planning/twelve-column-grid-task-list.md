@@ -39,7 +39,8 @@
 ## 4. Stream Family Pages (`/stream`, `/blog`, `/micro`, `/photos`)
 - [x] Update `StreamLayout` to map metadata/filters to sidebar spans (cols 9-12) and main content to cols 1-8.
   - Wrapped stream listings in the shared twelve-column grid with dedicated main (cols 1-8) and optional sticky sidebar (cols 9-12) slots for metadata and filters.
-- [ ] Adjust `PostItem` component spacing to harmonize with new column gutters.
+- [x] Adjust `PostItem` component spacing to harmonize with new column gutters.
+  - Replaced hard-coded clamps with inherited twelve-column spacing tokens so borders, metadata rows, and body copy follow the shared grid gaps across stream contexts.
 - [ ] Verify sticky sidebar behavior (if used) functions within twelve-column grid constraints.
 
 ## 5. Nordletter (`/nordletter`)
