@@ -1,13 +1,16 @@
 ---
-title: "Microfluidic cooling could lead to more efficient datacenters"
-slug: "microfluidic-cooling-could-lead-to-more-efficient-datacenters"
-pubDate: 2025-09-26T22:00:52+03:00
-updatedDate: 2025-09-26T22:00:52+03:00
+title: Microfluidic cooling could lead to more efficient datacenters
+slug: microfluidic-cooling-could-lead-to-more-efficient-datacenters
+pubDate: 2025-09-26T19:00:52.000Z
+updatedDate: 2025-09-26T19:00:52.000Z
 category: micro
 tags:
   - datacenter
   - msft
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115272152114616167'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lzr5tuffro2b'
+  - 'https://www.threads.com/@sajal24x7/post/DPE5aX9ikHL'
 ---
 [Microsoft says this new cooling method could enable more powerful chips and efficient data centers by Justine Calma](https://www.theverge.com/report/785992/ai-chip-cooling-microsoft-microfluidic-energy-efficiency)
 
