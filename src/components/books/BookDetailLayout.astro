@@ -16,29 +16,24 @@ interface Props {
 
 const { coverSrc, coverAlt, title, authors, kicker, metadata = [] } = Astro.props as Props;
 ---
-<section class="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-    <div class="grid gap-12 lg:grid-cols-3 lg:items-start">
-        <div class="mx-auto flex w-full max-w-xs flex-col gap-6 lg:mx-0">
-            <img src={coverSrc} alt={coverAlt} class="w-full rounded-lg shadow-lg" />
+<section class="book-detail twelve-grid grid-gap-tight grid-pad-narrow">
+    <div class="book-detail__media grid-span-4 grid-start-1">
+        <div class="book-detail__media-inner">
+            <img src={coverSrc} alt={coverAlt} class="book-detail__cover" />
 
             {metadata.length > 0 && (
-                <div class="rounded-lg border border-dotted border-borderColor p-4 text-sm text-textSecondary dark:border-borderColorDark dark:text-textSecondaryDark">
-                    <dl class="space-y-3">
+                <div class="book-detail__metadata">
+                    <dl class="book-detail__metadata-list">
                         {metadata.map((item) => (
-                            <div
-                                class="grid grid-cols-[max-content,1fr] items-baseline gap-x-6 text-textPrimary dark:text-textPrimaryDark"
-                                key={item.label}
-                            >
-                                <dt class="text-xs font-semibold uppercase tracking-wide text-textSecondary dark:text-textSecondaryDark">
-                                    {item.label}
-                                </dt>
-                                <dd class="text-sm text-right">
+                            <div class="book-detail__metadata-row" key={item.label}>
+                                <dt class="book-detail__metadata-label">{item.label}</dt>
+                                <dd class="book-detail__metadata-value">
                                     {item.href ? (
                                         <a
                                             href={item.href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            class="font-medium underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                                            class="book-detail__metadata-link"
                                         >
                                             {item.value}
                                         </a>
@@ -52,29 +47,160 @@ const { coverSrc, coverAlt, title, authors, kicker, metadata = [] } = Astro.prop
                 </div>
             )}
         </div>
+    </div>
 
-        <div class="lg:col-span-2">
-            <div class="space-y-6">
-                {(kicker || authors) && (
-                    <header class="space-y-2">
-                        {kicker && (
-                            <p class="text-sm font-semibold uppercase tracking-wide text-textSecondary dark:text-textSecondaryDark">
-                                {kicker}
-                            </p>
-                        )}
-                        <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
-                        {authors && (
-                            <p class="text-base text-textSecondary dark:text-textSecondaryDark">
-                                {authors}
-                            </p>
-                        )}
-                    </header>
-                )}
+    <div class="book-detail__content grid-span-8 grid-start-5">
+        <div class="book-detail__content-inner">
+            {(kicker || authors) && (
+                <header class="book-detail__header">
+                    {kicker && <p class="book-detail__kicker">{kicker}</p>}
+                    <h1 class="book-detail__title">{title}</h1>
+                    {authors && <p class="book-detail__authors">{authors}</p>}
+                </header>
+            )}
 
-                <div class="prose prose-neutral max-w-none text-base leading-relaxed dark:prose-invert">
-                    <slot />
-                </div>
+            <div class="book-detail__body prose prose-neutral dark:prose-invert">
+                <slot />
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    .book-detail {
+        padding-block: clamp(2rem, 6vw, 3.5rem);
+        row-gap: clamp(2rem, 6vw, 3rem);
+    }
+
+    .book-detail__media,
+    .book-detail__content {
+        display: flex;
+        min-width: 0;
+    }
+
+    .book-detail__media {
+        justify-content: center;
+    }
+
+    .book-detail__media-inner {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.25rem, 4vw, 2rem);
+        max-width: clamp(12rem, 38vw, 18rem);
+        width: 100%;
+    }
+
+    .book-detail__cover {
+        width: 100%;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .book-detail__metadata {
+        border: 1px dotted rgba(var(--color-border), 0.85);
+        border-radius: 0.75rem;
+        padding: clamp(1rem, 3vw, 1.5rem);
+        background-color: rgba(var(--color-bg-secondary), 0.6);
+    }
+
+    :global(.dark) .book-detail__metadata {
+        border-color: rgba(var(--color-border), 0.6);
+        background-color: rgba(var(--color-bg-secondary), 0.45);
+    }
+
+    .book-detail__metadata-list {
+        display: grid;
+        gap: clamp(0.5rem, 2vw, 0.75rem);
+    }
+
+    .book-detail__metadata-row {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        align-items: baseline;
+        gap: clamp(0.75rem, 3vw, 1.5rem);
+    }
+
+    .book-detail__metadata-label {
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: rgba(var(--color-text-secondary), 0.95);
+    }
+
+    :global(.dark) .book-detail__metadata-label {
+        color: rgba(var(--color-text-secondary), 0.75);
+    }
+
+    .book-detail__metadata-value {
+        text-align: right;
+        font-size: 0.875rem;
+        color: rgba(var(--color-text-primary), 0.95);
+    }
+
+    :global(.dark) .book-detail__metadata-value {
+        color: rgba(var(--color-text-primary), 0.85);
+    }
+
+    .book-detail__metadata-link {
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        text-underline-offset: 0.35em;
+        transition: text-decoration-style 200ms ease, color 200ms ease;
+    }
+
+    .book-detail__metadata-link:hover {
+        text-decoration-style: solid;
+        color: rgb(var(--color-accent));
+    }
+
+    .book-detail__content-inner {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.5rem, 4vw, 2.5rem);
+        min-width: 0;
+    }
+
+    .book-detail__header {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(0.5rem, 2vw, 0.75rem);
+    }
+
+    .book-detail__kicker {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(var(--color-text-secondary), 0.95);
+    }
+
+    :global(.dark) .book-detail__kicker {
+        color: rgba(var(--color-text-secondary), 0.75);
+    }
+
+    .book-detail__title {
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        font-weight: 700;
+        line-height: 1.15;
+        color: rgba(var(--color-text-primary), 0.95);
+    }
+
+    .book-detail__authors {
+        font-size: 1rem;
+        color: rgba(var(--color-text-secondary), 0.95);
+    }
+
+    .book-detail__body {
+        max-width: none;
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    @media (min-width: 48rem) {
+        .book-detail__media {
+            justify-content: flex-start;
+        }
+    }
+</style>
