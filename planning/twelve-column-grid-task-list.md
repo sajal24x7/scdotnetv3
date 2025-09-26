@@ -89,7 +89,8 @@
   - Client-side filtering now repopulates the twelve-column tag markup to maintain alignment when category scopes change.
 
 ## 12. Utility & Misc Pages
-- [ ] Ensure random redirect and Nordletter test pages inherit the centered eight-column template (content cols 3-10).
+- [x] Ensure random redirect and Nordletter test pages inherit the centered eight-column template (content cols 3-10).
+  - Follow-up cleanup removed the temporary `/random` and `/nordletter/test` routes entirely now that manual testing is complete.
 - [ ] Audit any remaining standalone components for hard-coded grid classes and migrate to column-span utilities.
 
 ## 13. Documentation & QA
