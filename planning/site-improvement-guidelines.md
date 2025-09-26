@@ -2,7 +2,7 @@
 
 These guidelines consolidate how the site should evolve without disrupting the current look and feel. Implementation plans are split into separate documents and referenced here.
 
-- Last Updated: run `npm run date` and replace this line per workspace rule
+- Last Updated: 2025-09-26 (UTC)
 
 ### Principles
 - Content-first. Keep pages fast, legible, and low-JS by default.
@@ -27,7 +27,12 @@ These guidelines consolidate how the site should evolve without disrupting the c
 
 ### UI/UX
 - Layout wrappers: use `PageWrapper` and `ProseWrapper` consistently to keep widths predictable. Keep current max-widths to avoid layout shift.
-- Twelve-column grid: wrap sections in the shared `.twelve-grid` utility, defaulting to single-column on small screens and 12 spans from `48rem` up. Adjust spacing via `.grid-gap-tight|loose` and padding via `.grid-pad-narrow|wide|none`; apply `.grid-span-*` and `.grid-start-*` helpers to place content without redefining templates.
+- Twelve-column grid:
+  - Wrap top-level sections in the shared `.twelve-grid` container so width, padding, and gap tokens stay consistent. The utility outputs a single column by default and expands to twelve columns from `48rem` upwards.
+  - Use `.grid-span-*` (or `.grid-span-full`) to control width and `.grid-start-*` to offset spans on desktop. Leave mobile fallbacks untouched so content naturally collapses to a single column.
+  - Adjust gutters with `.grid-gap-tight` or `.grid-gap-loose`, and tweak padding with `.grid-pad-narrow`, `.grid-pad-wide`, or `.grid-pad-none` instead of redefining `gap`/`padding` per component.
+  - When nesting grids or injecting full-bleed elements (dividers, section headers), wrap them in `.grid-span-full` to re-enter the primary flow without custom CSS.
+  - Default main content rails to eight or nine columns with sidebar/supporting content in the remaining span. Let cards and feature blocks opt into wider spans explicitly instead of embedding bespoke templates.
 - Header/nav: primary nav should reflect the buckets. If expanding items (e.g., add `Tags`, `Feeds`), gate behind a flag to avoid visual changes by default.
 - Search: keep modal approach; add keyboard navigation and ARIA attributes (`role="dialog"`, `aria-modal="true"`, labelled controls).
 - Typography: keep current defaults. Optionally offer an opt-in variant using Montserrat for headings (user preference) gated behind a CSS class to avoid global change.

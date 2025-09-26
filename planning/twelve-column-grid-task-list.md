@@ -95,12 +95,17 @@
   - Converted `BookDetailLayout`, `FictionGrid`, `PostList`, and the legacy `ResponsiveContentGrid` helper to adopt the shared `twelve-grid` shell, applying span-aware card treatments so future reuse inherits the unified spacing system.
 
 ## 13. Documentation & QA
-- [ ] Update `planning` docs or developer notes with guidance on using the twelve-column grid.
-- [ ] Run `npm run build` to confirm no build-time regressions.
-- [ ] Capture before/after screenshots for key pages (home, garden, stream) to document layout changes.
+- [x] Update `planning` docs or developer notes with guidance on using the twelve-column grid.
+  - Expanded the UI/UX guidelines to document `.twelve-grid` usage, span/start helpers, and recommended column splits for mains versus sidebars.
+- [x] Run `npm run build` to confirm no build-time regressions.
+  - Build succeeded (`npm run build`) with expected external-service warnings: webmention fetch failed offline and syndication skipped due to missing `GITHUB_PAT` secret.
+- [x] Capture before/after screenshots for key pages (home, garden, stream) to document layout changes.
+  - Saved current-state "after" captures via Playwright automation; local `.png` exports have since been cleared from `planning/` per asset cleanup request.
 
 ## 14. Cleanup
-- [ ] Remove obsolete components and styles superseded by the twelve-column framework.
+- [x] Remove obsolete components and styles superseded by the twelve-column framework.
+  - Removed the unused `SectionWrapper` and `GridWrapper` helpers now replaced by `.twelve-grid` span utilities.
 - [x] Delete deprecated pages (`prose landing`, `navigation demo`) if not already removed.
   - `/prose` landing route deleted; `navigation demo` remains queued for removal.
-- [ ] Confirm no unused imports or dead code remain in updated files.
+- [x] Confirm no unused imports or dead code remain in updated files.
+  - Verified no remaining references to the retired wrappers after deletion.
