@@ -1,0 +1,18 @@
+---
+title: "Microfluidic cooling could lead to more efficient datacenters"
+slug: "microfluidic-cooling-could-lead-to-more-efficient-datacenters"
+pubDate: 2025-09-26T22:00:52+03:00
+updatedDate: 2025-09-26T22:00:52+03:00
+category: micro
+tags:
+  - datacenter
+  - msft
+
+---
+[Microsoft says this new cooling method could enable more powerful chips and efficient data centers by Justine Calma](https://www.theverge.com/report/785992/ai-chip-cooling-microsoft-microfluidic-energy-efficiency)
+
+> With microfluidic cooling, liquid flows through channels etched onto the back of a chip. The trick is making sure the channels, about the width of a human hair, are deep enough to prevent clogging but not so deep that the chip becomes more likely to break.
+
+Two things here -
+1. Since the coolant does not need to cool the metal stuck to the chip, it does not need to be as colder. So less energy.
+2. During spike in demands, you could overclock, instead of scale so less machines, possibly.
