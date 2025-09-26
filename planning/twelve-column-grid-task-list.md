@@ -63,7 +63,8 @@
 ## 7. Prose Landing (`/prose`)
 - [x] Update `ContentGrid` to accept column-span props, defaulting to eight-column cards with optional side-by-side storytelling elements.
   - `ContentGrid` now renders inside the shared twelve-column grid, exposes configurable span/start defaults, and respects per-post layout metadata for pairing stories side-by-side.
-- [ ] Introduce sidebar space (cols 9-12) for tag filters or reading order aids.
+- [x] Introduce sidebar space (cols 9-12) for tag filters or reading order aids.
+  - Added a sticky sidebar slot to `SectionLanding` and wired the `/prose` page to surface a tag browser and suggested reading order rail within columns 9-12.
 
 ## 8. Now & Done Pages (`/now`, `/done`)
 - [ ] Apply twelve-column template with main content in cols 1-8.

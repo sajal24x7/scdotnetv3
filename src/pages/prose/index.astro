@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ContentGrid from '../../components/ContentGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
+import TagList from '../../components/TagList.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
 
 // Get all posts and filter for prose (stories and poems)
@@ -14,6 +15,7 @@ const prose = allPosts
 const transformedPosts = prose.map(transformPost);
 const pieceCount = transformedPosts.length;
 const pieceCountText = `${pieceCount} ${pieceCount === 1 ? 'piece' : 'pieces'}`;
+const featuredReading = transformedPosts.slice(0, 3);
 ---
 
 <Layout
@@ -38,10 +40,157 @@ const pieceCountText = `${pieceCount} ${pieceCount === 1 ? 'piece' : 'pieces'}`;
       headerMaxWidth="7xl"
       countText={pieceCountText}
       countVariant="plain"
-      tagCategory="prose"
-      tagPosts={allPosts}
       contentClass="prose-main"
     >
       <ContentGrid posts={transformedPosts} />
+
+      <aside slot="sidebar" class="prose-sidebar">
+        <div class="prose-sidebar__panel">
+          <TagList
+            category="prose"
+            title="Browse by tag"
+            maxTags={12}
+            posts={allPosts}
+          />
+        </div>
+
+        {featuredReading.length > 0 && (
+          <div class="prose-sidebar__panel">
+            <h2 class="prose-sidebar__heading">Suggested reading order</h2>
+            <p class="prose-sidebar__lede">
+              Start with recent highlights and follow the thread into the wider archive.
+            </p>
+            <ol class="prose-sidebar__reading-list">
+              {featuredReading.map((post) => (
+                <li class="prose-sidebar__reading-item">
+                  <a href={post.data.link} class="prose-sidebar__reading-link">
+                    <span class="prose-sidebar__reading-title">{post.data.title}</span>
+                    <span class="prose-sidebar__reading-date">
+                      {new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric'
+                      })}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+      </aside>
     </SectionLanding>
   </Layout>
+
+<style>
+  .prose-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 4vw, 2.25rem);
+  }
+
+  .prose-sidebar__panel {
+    background: rgba(var(--color-surface), 0.5);
+    border: 1px solid rgba(var(--color-border), 0.4);
+    border-radius: 1rem;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 20px 35px rgba(15, 23, 42, 0.05);
+  }
+
+  :global(.dark) .prose-sidebar__panel {
+    background: rgba(var(--color-surface-dark), 0.35);
+    border-color: rgba(var(--color-border-dark), 0.5);
+    box-shadow: 0 20px 35px rgba(15, 23, 42, 0.15);
+  }
+
+  .prose-sidebar__panel :global(.tagged-with) {
+    margin-bottom: 0;
+  }
+
+  .prose-sidebar__heading {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+    color: rgba(var(--color-foreground), 0.95);
+  }
+
+  .prose-sidebar__lede {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: rgba(var(--color-foreground), 0.7);
+  }
+
+  .prose-sidebar__reading-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    counter-reset: reading-order;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .prose-sidebar__reading-item {
+    counter-increment: reading-order;
+  }
+
+  .prose-sidebar__reading-link {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.75rem;
+    align-items: baseline;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .prose-sidebar__reading-link::before {
+    content: counter(reading-order, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    font-feature-settings: 'tnum';
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: rgba(var(--color-accent), 0.85);
+  }
+
+  .prose-sidebar__reading-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .prose-sidebar__reading-date {
+    font-size: 0.8rem;
+    color: rgba(var(--color-foreground), 0.55);
+  }
+
+  .prose-sidebar__reading-link:hover .prose-sidebar__reading-title,
+  .prose-sidebar__reading-link:focus-visible .prose-sidebar__reading-title {
+    color: rgba(var(--color-accent), 1);
+  }
+
+  @media (max-width: 48rem) {
+    .prose-sidebar__panel {
+      border-radius: 0.75rem;
+      padding: clamp(1rem, 6vw, 1.5rem);
+    }
+
+    .prose-sidebar__reading-link {
+      grid-template-columns: 1fr;
+      row-gap: 0.35rem;
+      padding-left: 2.5rem;
+    }
+
+    .prose-sidebar__reading-title {
+      font-size: 1rem;
+    }
+  }
+</style>
