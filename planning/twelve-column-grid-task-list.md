@@ -54,7 +54,8 @@
 ## 6. Bookshelf & Book Pages (`/bookshelf`, `/books`, `/books/*`)
 - [x] Convert `BookGrid` to twelve-column spans: default card width four columns, with support for wider features.
   - `BookGrid` now renders within the shared twelve-column container, defaulting cards to four-column spans while honoring optional eight- and twelve-column features via `layout.span` metadata.
-- [ ] For `/books`, align year sections across columns 1-8 with summary/sidebar content in cols 9-12.
+- [x] For `/books`, align year sections across columns 1-8 with summary/sidebar content in cols 9-12.
+  - Converted the books landing page to use `SectionLanding` with a nested twelve-column layout, placing the book timeline across columns 1-8 and a sticky summary rail within columns 9-12.
 - [ ] For book detail pages, center primary prose across columns 3-10 and place metadata/sidebar elements in cols 1-4.
 
 ## 7. Prose Landing (`/prose`)

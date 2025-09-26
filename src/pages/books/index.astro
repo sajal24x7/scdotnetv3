@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHeader from '../../components/layout/PageHeader.astro';
+import SectionLanding from '../../layouts/SectionLanding.astro';
 
 // Book data - add new books here in reverse chronological order
 const books = [
@@ -18,67 +18,219 @@ const books = [
 ---
 
 <Layout title="Books - Sajal Choudhary" description="Books by Sajal Choudhary" currentPage="/books/"
-  pageWrapper={{
-    maxWidth: '7xl',
-    padding: 'md',
-    centered: true
-  }}
-  enableSearchModal
-  enableLinkHoverEffect
+    pageWrapper={{
+        maxWidth: '7xl',
+        padding: 'none',
+        centered: true,
+        className: 'px-2 sm:px-4'
+    }}
+    enableSearchModal
+    enableLinkHoverEffect
 >
-  <PageHeader 
-    title="Books by Sajal Choudhary"
-    description="Essays and other writing can be found throughout this site: garden, blog posts, prose."
-    layout="centered"
-    size="lg"
-    maxWidth="7xl"
-  />
+    <SectionLanding
+        title="Books by Sajal Choudhary"
+        description="Essays and other writing can be found throughout this site: garden, blog posts, prose."
+        layout="centered"
+        headerSize="lg"
+        headerMaxWidth="7xl"
+        contentClass="books-layout twelve-grid grid-gap-tight grid-pad-narrow"
+        contentPadding="clamp(2rem, 5vw, 3rem)"
+    >
+        <section class="books-list grid-span-8 grid-start-1">
+            {books.map((book) => (
+                <article class="books-item">
+                    <div class="books-item__year text-2xl font-bold text-textSecondary dark:text-textSecondaryDark">
+                        {book.year}
+                    </div>
 
-  <section>
-    <div class="space-y-8">
-      {books.map((book) => (
-        <div class="border-b border-gray-200 dark:border-gray-700 pb-8 last:border-b-0">
-          <div class="flex flex-col md:flex-row md:items-start gap-6">
-            {/* Year */}
-            <div class="flex-shrink-0">
-              <span class="text-2xl font-bold text-textSecondary dark:text-textSecondaryDark">
-                {book.year}
-              </span>
+                    {book.coverImage && (
+                        <div class="books-item__cover">
+                            <img
+                                src={book.coverImage}
+                                alt={`${book.title} cover`}
+                                class="books-item__cover-image"
+                            />
+                        </div>
+                    )}
+
+                    <div class="books-item__details">
+                        <h2 class="books-item__title text-xl font-semibold">
+                            {book.available ? (
+                                <a href={book.url} class="link-hover">
+                                    <em>{book.title}</em>: {book.subtitle}
+                                </a>
+                            ) : (
+                                <span><em>{book.title}</em>: {book.subtitle}</span>
+                            )}
+                        </h2>
+
+                        {book.description && (
+                            <p class="books-item__description text-textSecondary dark:text-textSecondaryDark leading-relaxed">
+                                {book.description}
+                            </p>
+                        )}
+                    </div>
+                </article>
+            ))}
+        </section>
+
+        <aside class="books-sidebar grid-span-4 grid-start-9">
+            <div class="books-sidebar__inner">
+                <div class="books-sidebar__card">
+                    <h2 class="books-sidebar__heading">Explore more writing</h2>
+                    <p class="books-sidebar__copy">
+                        Beyond published books you will find essays, technical documentation, and ongoing
+                        notes spread across the garden, blog, prose archive, and personal stream. Each space
+                        follows the same twelve-column rhythm for easier reading.
+                    </p>
+                    <ul class="books-sidebar__links">
+                        <li><a class="link-hover" href="/garden/">Garden</a></li>
+                        <li><a class="link-hover" href="/blog/">Blog</a></li>
+                        <li><a class="link-hover" href="/prose/">Prose</a></li>
+                        <li><a class="link-hover" href="/stream/">Stream</a></li>
+                    </ul>
+                </div>
+
+                <div class="books-sidebar__card">
+                    <h2 class="books-sidebar__heading">Publishing cadence</h2>
+                    <p class="books-sidebar__copy">
+                        New book projects develop in public notes before they make their way into a finished
+                        manuscript. Subscribe to Nordletter or follow the stream to see drafts, annotations,
+                        and release updates as they land.
+                    </p>
+                    <a class="books-sidebar__cta link-hover" href="/nordletter/">Read the Nordletter</a>
+                </div>
             </div>
+        </aside>
+    </SectionLanding>
+</Layout>
 
-            {/* Book Cover (if available) */}
-            {book.coverImage && (
-              <div class="flex-shrink-0">
-                <img 
-                  src={book.coverImage} 
-                  alt={`${book.title} cover`}
-                  class="w-24 h-auto rounded-lg shadow-md border border-gray-200 dark:border-gray-600"
-                />
-              </div>
-            )}
+<style>
+    .books-layout {
+        align-items: start;
+    }
 
-            {/* Book Details */}
-            <div class="flex-1">
-              <h2 class="text-xl font-bold mb-2">
-                {book.available ? (
-                  <a href={book.url} class="font-medium link-hover">
-                    <em>{book.title}</em>: {book.subtitle}
-                  </a>
-                ) : (
-                  <span><em>{book.title}</em>: {book.subtitle}</span>
-                )}
-              </h2>
-              
-              {book.description && (
-                <p class="text-textSecondary dark:text-textSecondaryDark leading-relaxed mb-4">
-                  {book.description}
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
+    .books-list {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.75rem, 4vw, 2.75rem);
+    }
 
-  </section>
-</Layout> 
+    .books-item {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: clamp(1.25rem, 3vw, 1.75rem);
+        padding-bottom: clamp(1.5rem, 4vw, 2.25rem);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .books-item:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .books-item__year {
+        letter-spacing: 0.02em;
+    }
+
+    .books-item__cover-image {
+        width: clamp(5.5rem, 12vw, 6.5rem);
+        border-radius: 0.75rem;
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+        border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .books-item__title {
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+    }
+
+    .books-item__description {
+        margin: 0;
+    }
+
+    .books-sidebar {
+        align-self: start;
+    }
+
+    .books-sidebar__inner {
+        position: sticky;
+        top: clamp(1.75rem, 4vw, 3rem);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    .books-sidebar__card {
+        padding: clamp(1.5rem, 4vw, 2rem);
+        border-radius: 1rem;
+        background: rgba(15, 23, 42, 0.04);
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        backdrop-filter: blur(12px);
+    }
+
+    :global(.dark) .books-sidebar__card {
+        background: rgba(15, 23, 42, 0.35);
+        border-color: rgba(148, 163, 184, 0.35);
+    }
+
+    .books-sidebar__heading {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: var(--text-primary, #0f172a);
+    }
+
+    :global(.dark) .books-sidebar__heading {
+        color: #e2e8f0;
+    }
+
+    .books-sidebar__copy {
+        margin-bottom: 0.75rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--text-secondary, #475569);
+    }
+
+    :global(.dark) .books-sidebar__copy {
+        color: #cbd5f5;
+    }
+
+    .books-sidebar__links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-weight: 500;
+    }
+
+    .books-sidebar__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+    }
+
+    @media (min-width: 48rem) {
+        .books-item {
+            grid-template-columns: minmax(0, 2.5rem) minmax(0, 6.5rem) minmax(0, 1fr);
+            align-items: start;
+        }
+
+        .books-item__year {
+            padding-top: 0.25rem;
+        }
+    }
+
+    @media (max-width: 47.9375rem) {
+        .books-sidebar__inner {
+            position: static;
+        }
+
+        .books-sidebar {
+            order: -1;
+        }
+    }
+</style>
