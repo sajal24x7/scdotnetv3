@@ -25,7 +25,9 @@ const postsCollection = defineCollection({
     layout: z.object({
       span: z.union([
         z.literal(3),
+        z.literal(4),
         z.literal(6),
+        z.literal(8),
         z.literal(12)
       ]).optional()
     }).optional(),

@@ -2,51 +2,54 @@
 import BookCard from './BookCard.astro';
 
 interface Props {
-  books: any[];
+    books: any[];
 }
 
 const { books } = Astro.props;
 
 // Transform books for BookCard component
 const transformBook = (book: any) => ({
-  ...book.data,
-  link: book.slug ? `/bookshelf/${book.slug}/` : undefined
+    ...book.data,
+    link: book.slug ? `/bookshelf/${book.slug}/` : undefined
 });
+
+const getSpanClass = (book: any) => {
+    const span = book?.data?.layout?.span;
+
+    switch (span) {
+        case 12:
+            return 'grid-span-12';
+        case 8:
+            return 'grid-span-8';
+        case 6:
+            return 'grid-span-6';
+        case 4:
+            return 'grid-span-4';
+        default:
+            return 'grid-span-4';
+    }
+};
 ---
 
-<div class="book-grid layout-boundary px-2 md:px-0">
-  {books.map((book) => (
-    <BookCard {...transformBook(book)} />
-  ))}
+<div class="book-grid twelve-grid grid-gap-tight grid-pad-narrow">
+    {books.map((book) => (
+        <div class={`book-grid__item ${getSpanClass(book)}`}>
+            <BookCard {...transformBook(book)} />
+        </div>
+    ))}
 </div>
 
 <style>
-  .book-grid {
-    display: grid;
-    /* Mobile: 1 column */
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  /* Tablet and desktop: 2 columns */
-  @media (min-width: 768px) {
     .book-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
+        align-items: stretch;
     }
-  }
 
-  /* Extra large screens: still 2 columns but with more gap */
-  @media (min-width: 1280px) {
-    .book-grid {
-      gap: 2rem;
+    .book-grid__item {
+        display: flex;
+        min-width: 0;
     }
-  }
 
-  /* Mobile adjustments */
-  @media (max-width: 767px) {
-    .book-grid {
-      gap: 0.75rem;
+    .book-grid__item :global(.book-card) {
+        width: 100%;
     }
-  }
 </style>
