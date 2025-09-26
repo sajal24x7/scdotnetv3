@@ -67,8 +67,10 @@
   - Marking complete while the prose landing remains deprecated; any new prose experience can reuse the shared `SectionLanding` sidebar tooling.
 
 ## 8. Now & Done Pages (`/now`, `/done`)
-- [ ] Apply twelve-column template with main content in cols 1-8.
-- [ ] Populate cols 9-12 with quick links or summary widgets; ensure optional content is gracefully handled if omitted.
+- [x] Apply twelve-column template with main content in cols 1-8.
+  - Rebuilt the Now and Done routes around the shared progress layout with dedicated twelve-column spans for the primary feed content.
+- [x] Populate cols 9-12 with quick links or summary widgets; ensure optional content is gracefully handled if omitted.
+  - Added sidebar summary and quick link cards that collapse gracefully when data is unavailable.
 
 ## 9. Colophon & Sajal Pages
 - [ ] Map existing card sections to three-column spans on desktop.
