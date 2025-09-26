@@ -5,6 +5,8 @@ import TimeDisplay from '../components/TimeDisplay.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
 import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import { parseMarkdown } from '../utils/markdown';
+import { formatDate } from '../utils/dateFormat';
+import '../styles/progress-page.css';
 
 // Get all posts dynamically across year folders and filter to category 'now' and status 'active' (or undefined for backward compatibility)
 const allPosts = await getAllPosts();
@@ -14,9 +16,31 @@ const activeNowPosts = allPosts
 
 // Pre-render markdown content
 const renderedPosts = activeNowPosts.map(post => ({
-  ...post,
-  renderedContent: post.body ? parseMarkdown(post.body) : null
+    ...post,
+    renderedContent: post.body ? parseMarkdown(post.body) : null
 }));
+
+const activeCount = renderedPosts.length;
+const latestUpdateDate = renderedPosts[0]?.data.updatedDate ?? renderedPosts[0]?.data.pubDate;
+const latestUpdate = latestUpdateDate ? formatDate(latestUpdateDate) : null;
+
+const quickLinks = [
+    {
+        href: '/done/',
+        label: 'Browse completed tasks',
+        description: 'Review recently wrapped projects and milestones.'
+    },
+    {
+        href: '/stream/',
+        label: 'Read the stream',
+        description: 'Catch up on blog posts, photos, and micro updates.'
+    },
+    {
+        href: '/garden/',
+        label: 'Explore the garden',
+        description: 'Longer-term notes and research that inform these efforts.'
+    }
+];
 ---
 
 <Layout
@@ -24,156 +48,98 @@ const renderedPosts = activeNowPosts.map(post => ({
   description="What I'm currently working on and thinking about"
   currentPage="/now/"
   pageWrapper={{
-    maxWidth: '7xl',
-    padding: 'none',
-    centered: true,
-    className: 'px-2'
+        maxWidth: '7xl',
+        padding: 'md',
+        centered: true,
+        className: 'progress-page progress-page--now',
+        grid: {
+            gap: 'tight',
+            padding: 'narrow'
+        }
   }}
   allPosts={allPosts}
   enableSearchModal
   enableLinkHoverEffect
 >
-    <PageHeader 
-      title="Now" 
-      description="A snapshot of what I'm currently focused on, thinking about, and working towards."
-      layout="centered"
-      size="lg"
-      maxWidth="7xl"
-    />
+    <section class="progress-page__layout twelve-grid">
+        <header class="progress-page__header grid-span-full">
+            <PageHeader
+                title="Now"
+                description="A snapshot of what I'm currently focused on, thinking about, and working towards."
+                layout="centered"
+                size="lg"
+                maxWidth="7xl"
+            />
+        </header>
 
-    <div class="text-center mb-8">
-      <p class="text-gray-600 dark:text-gray-400">
-        View <a href="/done/" class="font-medium link-hover">completed tasks</a> here.
-      </p>
-    </div>
+        <section class="progress-page__content grid-span-8 grid-start-1">
+            <p class="progress-page__intro">
+                View <a href="/done/" class="progress-page__link">completed tasks</a> when you want to see what recently wrapped.
+            </p>
 
-    <div class="px-6">
-      <div class="grid grid-cols-1 gap-12 py-12">
-        {renderedPosts.length > 0 ? (
-          renderedPosts.map((post) => (
-            <article class="card bg-transparent dark:bg-transparent rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
-              <div class="p-8">
-                <div class="mb-6">
-                  <TimeDisplay 
-                    date={post.data.pubDate} 
-                    category="now" 
-                    format="month-year"
-                    className="text-lg font-semibold text-gray-700 dark:text-gray-300"
-                  />
-                  {post.data.title && (
-                    <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mt-3">
-                      {post.data.title}
-                    </h2>
-                  )}
+            {renderedPosts.length > 0 ? (
+                <div class="progress-page__list">
+                    {renderedPosts.map((post) => (
+                        <article class="progress-card">
+                            <div class="progress-card__meta">
+                                <TimeDisplay
+                                    date={post.data.pubDate}
+                                    category="now"
+                                    format="month-year"
+                                    className="progress-card__time"
+                                />
+                                {post.data.title && (
+                                    <h2 class="progress-card__title">{post.data.title}</h2>
+                                )}
+                            </div>
+
+                            {post.renderedContent && (
+                                <LayoutContainer prose maxWidth="full" className="progress-card__body">
+                                    <div set:html={post.renderedContent} />
+                                </LayoutContainer>
+                            )}
+                        </article>
+                    ))}
                 </div>
+            ) : (
+                <p class="progress-page__empty">No active updates yet.</p>
+            )}
+        </section>
 
-                {post.renderedContent && (
-                  <LayoutContainer prose maxWidth="full">
-                    <div set:html={post.renderedContent} />
-                  </LayoutContainer>
+        {(activeCount > 0 || quickLinks.length > 0) && (
+            <aside class="progress-page__sidebar grid-span-4 grid-start-9">
+                {activeCount > 0 && (
+                    <div class="progress-sidebar-card">
+                        <h2 class="progress-sidebar-card__title">Summary</h2>
+                        <dl class="progress-sidebar-card__stats">
+                            <div>
+                                <dt>Active updates</dt>
+                                <dd>{activeCount}</dd>
+                            </div>
+                            <div>
+                                <dt>Last updated</dt>
+                                <dd>{latestUpdate ?? '—'}</dd>
+                            </div>
+                        </dl>
+                    </div>
                 )}
-              </div>
-            </article>
-          ))
-        ) : (
-          <p class="text-gray-600 dark:text-gray-400">No active updates yet.</p>
+
+                {quickLinks.length > 0 && (
+                    <div class="progress-sidebar-card">
+                        <h2 class="progress-sidebar-card__title">Quick links</h2>
+                        <ul class="progress-sidebar-card__links">
+                            {quickLinks.map(link => (
+                                <li>
+                                    <a class="progress-sidebar-card__link" href={link.href}>
+                                        <span class="progress-sidebar-card__link-label">{link.label}</span>
+                                        <span class="progress-sidebar-card__link-description">{link.description}</span>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+            </aside>
         )}
-      </div>
-    </div>
+    </section>
 </Layout>
-
-<style>
-  .grid {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-  }
-
-  /* Add a subtle divider between cards */
-  .grid > *:not(:last-child) {
-    position: relative;
-  }
-
-  .grid > *:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    bottom: -1.5rem;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgb(229 231 235),
-      transparent
-    );
-  }
-
-  :global(.dark) .grid > *:not(:last-child)::after {
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgb(55 65 81),
-      transparent
-    );
-  }
-
-  /* Ensure links are properly styled */
-  /* Prose links now use global styling */
-
-  /* Additional prose styles for better markdown rendering */
-  :global(.prose h1),
-  :global(.prose h2),
-  :global(.prose h3),
-  :global(.prose h4) {
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-    font-weight: 600;
-  }
-
-  :global(.prose ul),
-  :global(.prose ol) {
-    margin-top: 0.5em;
-    margin-bottom: 1.5em;
-    padding-left: 1.5em;
-  }
-
-  :global(.prose li) {
-    margin-top: 0.25em;
-    margin-bottom: 0.25em;
-  }
-
-  :global(.prose blockquote) {
-    margin: 1.5em 0;
-    padding-left: 1em;
-    border-left: 4px solid #e5e7eb;
-    font-style: italic;
-  }
-
-  :global(.dark .prose blockquote) {
-    border-left-color: #374151;
-  }
-
-  :global(.prose code) {
-    background-color: #f3f4f6;
-    padding: 0.2em 0.4em;
-    border-radius: 0.25em;
-    font-size: 0.875em;
-  }
-
-  :global(.dark .prose code) {
-    background-color: #1f2937;
-  }
-
-  :global(.prose pre) {
-    background-color: #f3f4f6;
-    padding: 1em;
-    border-radius: 0.5em;
-    overflow-x: auto;
-    margin: 1.5em 0;
-  }
-
-  :global(.dark .prose pre) {
-    background-color: #1f2937;
-  }
-</style> 

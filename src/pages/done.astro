@@ -1,10 +1,11 @@
 ---
 import { getAllPosts, type Post } from '../utils/content';
 import Layout from '../layouts/Layout.astro';
-import { formatDateRange } from '../utils/dateFormat';
+import { formatDate, formatDateRange } from '../utils/dateFormat';
 import PageHeader from '../components/layout/PageHeader.astro';
 import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import { parseMarkdown } from '../utils/markdown';
+import '../styles/progress-page.css';
 
 // Get all posts dynamically across year folders and filter to category 'now' and status 'done'
 const allPosts = await getAllPosts();
@@ -24,15 +25,37 @@ type DonePost = Post & {
 };
 
 const renderedPosts: DonePost[] = doneNowPosts.map(post => {
-  const rawEndDate = post.data.updatedDate ?? post.data.pubDate;
-  const endDate = rawEndDate instanceof Date ? rawEndDate : new Date(rawEndDate);
+    const rawEndDate = post.data.updatedDate ?? post.data.pubDate;
+    const endDate = rawEndDate instanceof Date ? rawEndDate : new Date(rawEndDate);
 
-  return {
-    ...post,
-    endDate,
-    renderedContent: post.body ? parseMarkdown(post.body) : null
-  };
+    return {
+        ...post,
+        endDate,
+        renderedContent: post.body ? parseMarkdown(post.body) : null
+    };
 });
+
+const completedCount = renderedPosts.length;
+const lastCompletedDate = renderedPosts[0]?.endDate;
+const lastCompleted = lastCompletedDate ? formatDate(lastCompletedDate) : null;
+
+const quickLinks = [
+    {
+        href: '/now/',
+        label: 'Check current focus',
+        description: 'See what is in motion on the Now page.'
+    },
+    {
+        href: '/stream/',
+        label: 'Read recent updates',
+        description: 'Browse the stream for detailed write-ups.'
+    },
+    {
+        href: '/bookshelf/',
+        label: 'Visit the bookshelf',
+        description: 'Track reading notes that influence future work.'
+    }
+];
 ---
 
 <Layout
@@ -40,159 +63,103 @@ const renderedPosts: DonePost[] = doneNowPosts.map(post => {
   description="Completed tasks and projects that were previously in progress"
   currentPage="/done/"
   pageWrapper={{
-    maxWidth: '7xl',
-    padding: 'none',
-    centered: true,
-    className: 'px-2'
+        maxWidth: '7xl',
+        padding: 'md',
+        centered: true,
+        className: 'progress-page progress-page--done',
+        grid: {
+            gap: 'tight',
+            padding: 'narrow'
+        }
   }}
   allPosts={allPosts}
   enableSearchModal
   enableLinkHoverEffect
 >
-    <PageHeader 
-      title="Done" 
-      description="Completed tasks and projects that were previously in progress. These represent milestones achieved and goals accomplished."
-      layout="centered"
-      size="lg"
-      maxWidth="7xl"
-    />
+    <section class="progress-page__layout twelve-grid">
+        <header class="progress-page__header grid-span-full">
+            <PageHeader
+                title="Done"
+                description="Completed tasks and projects that were previously in progress. These represent milestones achieved and goals accomplished."
+                layout="centered"
+                size="lg"
+                maxWidth="7xl"
+            />
+        </header>
 
-    <div class="text-center mb-8">
-      <p class="text-gray-600 dark:text-gray-400">
-        View <a href="/now/" class="font-medium link-hover">current tasks</a> here.
-      </p>
-    </div>
+        <section class="progress-page__content grid-span-8 grid-start-1">
+            <p class="progress-page__intro">
+                Looking for active work? Visit the <a href="/now/" class="progress-page__link">Now page</a> to see what's in motion.
+            </p>
 
-    <div class="px-6">
-      {renderedPosts.length > 0 ? (
-        <div class="grid grid-cols-1 gap-8 py-12">
-          {renderedPosts.map((post) => (
-            <article class="card bg-transparent dark:bg-transparent rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
-              <div class="p-8">
-                <div class="mb-6">
-                  <time
-                    class="text-base font-semibold text-gray-700 dark:text-gray-300"
-                    datetime={post.endDate.toISOString()}
-                  >
-                    {formatDateRange(post.data.pubDate, post.endDate)}
-                  </time>
-                  {post.data.title && (
-                    <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mt-3">
-                      {post.data.title}
-                    </h2>
-                  )}
+            {renderedPosts.length > 0 ? (
+                <div class="progress-page__list">
+                    {renderedPosts.map((post) => (
+                        <article class="progress-card">
+                            <div class="progress-card__meta">
+                                <time
+                                    class="progress-card__time"
+                                    datetime={post.endDate.toISOString()}
+                                >
+                                    {formatDateRange(post.data.pubDate, post.endDate)}
+                                </time>
+                                {post.data.title && (
+                                    <h2 class="progress-card__title">{post.data.title}</h2>
+                                )}
+                            </div>
+
+                            {post.renderedContent && (
+                                <LayoutContainer prose maxWidth="full" className="progress-card__body">
+                                    <div set:html={post.renderedContent} />
+                                </LayoutContainer>
+                            )}
+                        </article>
+                    ))}
                 </div>
+            ) : (
+                <div class="progress-page__empty">
+                    <p>No completed tasks yet.</p>
+                    <p>
+                        Check the <a href="/now/" class="progress-page__link">Now page</a> to see what's currently in progress.
+                    </p>
+                </div>
+            )}
+        </section>
 
-                {post.renderedContent && (
-                  <LayoutContainer prose maxWidth="full">
-                    <div set:html={post.renderedContent} />
-                  </LayoutContainer>
+        {(completedCount > 0 || quickLinks.length > 0) && (
+            <aside class="progress-page__sidebar grid-span-4 grid-start-9">
+                {completedCount > 0 && (
+                    <div class="progress-sidebar-card">
+                        <h2 class="progress-sidebar-card__title">Summary</h2>
+                        <dl class="progress-sidebar-card__stats">
+                            <div>
+                                <dt>Completed items</dt>
+                                <dd>{completedCount}</dd>
+                            </div>
+                            <div>
+                                <dt>Last completion</dt>
+                                <dd>{lastCompleted ?? '—'}</dd>
+                            </div>
+                        </dl>
+                    </div>
                 )}
-              </div>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <div class="py-12 text-center">
-          <p class="text-gray-600 dark:text-gray-400 text-lg">No completed tasks yet.</p>
-          <p class="text-gray-500 dark:text-gray-500 mt-2">Check the <a href="/now/" class="font-medium link-hover">Now page</a> to see what's currently in progress.</p>
-        </div>
-      )}
-    </div>
+
+                {quickLinks.length > 0 && (
+                    <div class="progress-sidebar-card">
+                        <h2 class="progress-sidebar-card__title">Quick links</h2>
+                        <ul class="progress-sidebar-card__links">
+                            {quickLinks.map(link => (
+                                <li>
+                                    <a class="progress-sidebar-card__link" href={link.href}>
+                                        <span class="progress-sidebar-card__link-label">{link.label}</span>
+                                        <span class="progress-sidebar-card__link-description">{link.description}</span>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+            </aside>
+        )}
+    </section>
 </Layout>
-
-<style>
-  .grid {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-  }
-
-  /* Add a subtle divider between cards */
-  .grid > *:not(:last-child) {
-    position: relative;
-  }
-
-  .grid > *:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    bottom: -1rem;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgb(229 231 235),
-      transparent
-    );
-  }
-
-  :global(.dark) .grid > *:not(:last-child)::after {
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgb(55 65 81),
-      transparent
-    );
-  }
-
-  /* Ensure links are properly styled */
-  /* Prose links now use global styling */
-
-  /* Additional prose styles for better markdown rendering */
-  :global(.prose h1),
-  :global(.prose h2),
-  :global(.prose h3),
-  :global(.prose h4) {
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-    font-weight: 600;
-  }
-
-  :global(.prose ul),
-  :global(.prose ol) {
-    margin-top: 0.5em;
-    margin-bottom: 1.5em;
-    padding-left: 1.5em;
-  }
-
-  :global(.prose li) {
-    margin-top: 0.25em;
-    margin-bottom: 0.25em;
-  }
-
-  :global(.prose blockquote) {
-    margin: 1.5em 0;
-    padding-left: 1em;
-    border-left: 4px solid #e5e7eb;
-    font-style: italic;
-  }
-
-  :global(.dark .prose blockquote) {
-    border-left-color: #374151;
-  }
-
-  :global(.prose code) {
-    background-color: #f3f4f6;
-    padding: 0.2em 0.4em;
-    border-radius: 0.25em;
-    font-size: 0.875em;
-  }
-
-  :global(.dark .prose code) {
-    background-color: #1f2937;
-  }
-
-  :global(.prose pre) {
-    background-color: #f3f4f6;
-    padding: 1em;
-    border-radius: 0.5em;
-    overflow-x: auto;
-    margin: 1.5em 0;
-  }
-
-  :global(.dark .prose pre) {
-    background-color: #1f2937;
-  }
-</style>
