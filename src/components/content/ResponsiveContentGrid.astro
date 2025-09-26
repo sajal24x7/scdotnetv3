@@ -24,129 +24,123 @@ const renderedPosts = posts.map(post => ({
   renderedContent: post.body ? parseMarkdown(post.body) : null
 }));
 
-// Generate responsive grid classes
-const getGridClasses = () => {
-  const gapClasses = {
-    sm: 'gap-4',
-    md: 'gap-6', 
-    lg: 'gap-8',
-    xl: 'gap-12'
-  };
-
-  const columnClasses = {
-    1: 'grid-cols-1',
-    2: 'grid-cols-2 md:grid-cols-2',
-    3: 'grid-cols-2 md:grid-cols-2 lg:grid-cols-3',
-    4: 'grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
-  };
-
-  return `${columnClasses[columns]} ${gapClasses[gap]}`;
+const columnSpanMap: Record<typeof columns, 3 | 4 | 6 | 12> = {
+    1: 12,
+    2: 6,
+    3: 4,
+    4: 3
 };
+
+const containerClassName = [
+    'responsive-content-grid',
+    'twelve-grid',
+    layout === 'list' ? 'responsive-content-grid--list' : '',
+    layout === 'masonry' ? 'responsive-content-grid--masonry' : '',
+].filter(Boolean).join(' ');
 ---
 
-<div class={`grid ${getGridClasses()} layout-boundary`}>
-  {renderedPosts.map((post, index) => (
-    <div class={layout === 'masonry' ? 'break-inside-avoid' : ''}>
-      <Card {...post.data}>
-        {post.renderedContent && (
-          <div class="prose dark:prose-dark max-w-none">
-            <div set:html={post.renderedContent} />
-          </div>
-        )}
-      </Card>
-    </div>
-  ))}
+<div class={containerClassName} data-gap={gap} data-dividers={showDividers ? 'true' : 'false'}>
+    {renderedPosts.map((post) => (
+        <div
+            class={`responsive-content-grid__item grid-span-${columnSpanMap[columns]} ${layout === 'masonry' ? 'responsive-content-grid__item--masonry' : ''}`.trim()}
+        >
+            <Card {...post.data}>
+                {post.renderedContent && (
+                    <div class="prose dark:prose-dark max-w-none">
+                        <div set:html={post.renderedContent} />
+                    </div>
+                )}
+            </Card>
+        </div>
+    ))}
 </div>
 
 
 <style>
-  /* Add a subtle divider between cards */
-  .grid > *:not(:last-child) {
+  .responsive-content-grid {
+    padding-block: clamp(1.5rem, 5vw, 3rem);
+    row-gap: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  .responsive-content-grid[data-gap='sm'] {
+    --grid-column-gap: clamp(1rem, 3vw, 1.5rem);
+    --grid-row-gap: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .responsive-content-grid[data-gap='md'] {
+    --grid-column-gap: clamp(1.5rem, 4vw, 2rem);
+    --grid-row-gap: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .responsive-content-grid[data-gap='lg'] {
+    --grid-column-gap: clamp(2rem, 5vw, 2.75rem);
+    --grid-row-gap: clamp(2.25rem, 6vw, 3rem);
+  }
+
+  .responsive-content-grid[data-gap='xl'] {
+    --grid-column-gap: clamp(2.5rem, 6vw, 3.5rem);
+    --grid-row-gap: clamp(2.75rem, 7vw, 3.5rem);
+  }
+
+  .responsive-content-grid__item {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .responsive-content-grid[data-dividers='true'] .responsive-content-grid__item {
     position: relative;
   }
 
-  .grid > *:not(:last-child)::after {
+  .responsive-content-grid[data-dividers='true'] .responsive-content-grid__item:not(:last-child)::after {
     content: '';
     position: absolute;
-    bottom: -1.5rem;
     left: 0;
     right: 0;
+    bottom: calc(var(--grid-row-gap) * -0.5);
     height: 1px;
     background: linear-gradient(
       to right,
       transparent,
-      rgb(229 231 235),
+      rgba(var(--color-border), 0.85),
       transparent
     );
   }
 
-  :global(.dark) .grid > *:not(:last-child)::after {
+  :global(.dark) .responsive-content-grid[data-dividers='true'] .responsive-content-grid__item:not(:last-child)::after {
     background: linear-gradient(
       to right,
       transparent,
-      rgb(55 65 81),
+      rgba(var(--color-border), 0.6),
       transparent
     );
   }
 
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .grid {
-      max-width: none;
-    }
+  .responsive-content-grid__item :global(.card) {
+    height: 100%;
+    transition: transform 200ms ease, box-shadow 200ms ease;
   }
 
-  /* Tablet adjustments */
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .grid {
-      max-width: 1200px;
-    }
-  }
-
-  /* Masonry layout (static, not conditional) */
-  .masonry {
-    column-count: 1;
-    column-gap: 2rem;
-  }
-  @media (min-width: 768px) {
-    .masonry {
-      column-count: 2;
-    }
-  }
-  @media (min-width: 1024px) {
-    .masonry {
-      column-count: 3;
-    }
-  }
-  @media (min-width: 1280px) {
-    .masonry {
-      column-count: 4;
-    }
-  }
-
-  /* Ensure links are properly styled */
-  :global(.prose a) {
-    color: #3b82f6;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  :global(.prose a:hover) {
-    color: #2563eb;
-    text-decoration: underline;
-  }
-  :global(.dark .prose a) {
-    color: #60a5fa;
-  }
-  :global(.dark .prose a:hover) {
-    color: #93c5fd;
-  }
-
-  /* Card hover effects */
-  :global(.card:hover) {
+  .responsive-content-grid__item :global(.card:hover) {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 20px 45px -25px rgba(15, 23, 42, 0.35);
   }
-  :global(.dark .card:hover) {
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+
+  .responsive-content-grid__item--masonry {
+    break-inside: avoid;
   }
-</style> 
+
+  .responsive-content-grid--list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  .responsive-content-grid--list .responsive-content-grid__item {
+    width: 100%;
+  }
+
+  :global(.dark) .responsive-content-grid__item :global(.card:hover) {
+    box-shadow: 0 24px 48px -28px rgba(15, 23, 42, 0.6);
+  }
+</style>

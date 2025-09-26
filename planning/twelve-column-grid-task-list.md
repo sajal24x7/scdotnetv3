@@ -91,7 +91,8 @@
 ## 12. Utility & Misc Pages
 - [x] Ensure random redirect and Nordletter test pages inherit the centered eight-column template (content cols 3-10).
   - Follow-up cleanup removed the temporary `/random` and `/nordletter/test` routes entirely now that manual testing is complete.
-- [ ] Audit any remaining standalone components for hard-coded grid classes and migrate to column-span utilities.
+- [x] Audit any remaining standalone components for hard-coded grid classes and migrate to column-span utilities.
+  - Converted `BookDetailLayout`, `FictionGrid`, `PostList`, and the legacy `ResponsiveContentGrid` helper to adopt the shared `twelve-grid` shell, applying span-aware card treatments so future reuse inherits the unified spacing system.
 
 ## 13. Documentation & QA
 - [ ] Update `planning` docs or developer notes with guidance on using the twelve-column grid.
