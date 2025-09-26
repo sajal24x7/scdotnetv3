@@ -80,7 +80,8 @@
 ## 10. Feeds (`/feeds`)
 - [x] Arrange feed buttons into four three-column spans aligned within the grid.
   - Feed buttons now render inside a nested twelve-column grid, each spanning three columns on desktop while collapsing to full-width on smaller viewports.
-- [ ] Place `RecentItems` list in cols 1-8 and maintain sidebar explainer content in cols 9-12.
+- [x] Place `RecentItems` list in cols 1-8 and maintain sidebar explainer content in cols 9-12.
+  - `/feeds` now wraps the recent posts rail and About RSS explainer in a nested twelve-column grid, assigning spans 1-8 and 9-12 respectively while keeping the shared top border and spacing.
 
 ## 11. Tags (`/tags`)
 - [ ] Restructure tag grids so each tag chip spans three columns on desktop, four-up per row.
