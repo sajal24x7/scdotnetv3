@@ -58,6 +58,7 @@
   - Converted the books landing page to use `SectionLanding` with a nested twelve-column layout, placing the book timeline across columns 1-8 and a sticky summary rail within columns 9-12.
 - [x] For book detail pages, keep the cover in the first column and flow the description across the remaining two columns within a simple three-column desktop grid.
   - `/books/a-year-of-mornings/` now keeps the cover anchored to the first column with a metadata box beneath it, featuring publication date, ISBN, page count, and outbound store/library links in a dotted treatment with horizontal label/value pairs that mirrors other sidebar callouts.
+  - Introduced a reusable `BookDetailLayout` component so future book pages can share the cover, metadata, and description structure without rewriting the grid treatment.
 
 ## 7. Prose Landing (`/prose`)
 - [ ] Update `ContentGrid` to accept column-span props, defaulting to eight-column cards with optional side-by-side storytelling elements.

@@ -1,105 +1,41 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BookDetailLayout from '../../components/books/BookDetailLayout.astro';
+
+const metadata = [
+    { label: 'Pub date', value: 'October 2009' },
+    { label: 'ISBN', value: '978-1-56898-784-0' },
+    { label: 'Pages', value: '144' },
+    {
+        label: 'Amazon',
+        value: 'Buy on Amazon',
+        href: 'https://www.amazon.com/Year-Mornings-3191-Miles-Apart/dp/1568987841',
+    },
+    {
+        label: 'Library',
+        value: 'Find at your library',
+        href: 'https://www.worldcat.org/title/318450381',
+    },
+];
 ---
 
 <Layout
-    title="A Year of Mornings - Maria Alexandra Vettese & Stephanie Congdon Barnes"
+    title="A Year of Mornings - Maria Alexandra Vettese &amp; Stephanie Congdon Barnes"
     currentPage="/books/a-year-of-mornings/"
     enableSearchModal
     enableLinkHoverEffect
 >
-    <section class="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-        <div class="grid gap-12 lg:grid-cols-3 lg:items-start">
-            <div class="mx-auto flex w-full max-w-xs flex-col gap-6 lg:mx-0">
-                <img
-                    src="/books/01-ayom.jpg"
-                    alt="Book cover for A Year of Mornings"
-                    class="w-full rounded-lg shadow-lg"
-                />
-
-                <div
-                    class="rounded-lg border border-dotted border-borderColor p-4 text-sm text-textSecondary dark:border-borderColorDark dark:text-textSecondaryDark"
-                >
-                    <dl class="space-y-3">
-                        <div class="grid grid-cols-[max-content,1fr] items-baseline gap-x-6 text-textPrimary dark:text-textPrimaryDark">
-                            <dt class="text-xs font-semibold uppercase tracking-wide text-textSecondary dark:text-textSecondaryDark">
-                                Pub date
-                            </dt>
-                            <dd class="text-sm text-right">October 2009</dd>
-                        </div>
-                        <div class="grid grid-cols-[max-content,1fr] items-baseline gap-x-6 text-textPrimary dark:text-textPrimaryDark">
-                            <dt class="text-xs font-semibold uppercase tracking-wide text-textSecondary dark:text-textSecondaryDark">
-                                ISBN
-                            </dt>
-                            <dd class="text-sm text-right">978-1-56898-784-0</dd>
-                        </div>
-                        <div class="grid grid-cols-[max-content,1fr] items-baseline gap-x-6 text-textPrimary dark:text-textPrimaryDark">
-                            <dt class="text-xs font-semibold uppercase tracking-wide text-textSecondary dark:text-textSecondaryDark">
-                                Pages
-                            </dt>
-                            <dd class="text-sm text-right">144</dd>
-                        </div>
-                        <div class="grid grid-cols-[max-content,1fr] items-baseline gap-x-6 text-textPrimary dark:text-textPrimaryDark">
-                            <dt class="text-xs font-semibold uppercase tracking-wide text-textSecondary dark:text-textSecondaryDark">
-                                Amazon
-                            </dt>
-                            <dd class="text-sm text-right">
-                                <a
-                                    href="https://www.amazon.com/Year-Mornings-3191-Miles-Apart/dp/1568987841"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="font-medium underline decoration-dotted underline-offset-4 hover:decoration-solid"
-                                >
-                                    Buy on Amazon
-                                </a>
-                            </dd>
-                        </div>
-                        <div class="grid grid-cols-[max-content,1fr] items-baseline gap-x-6 text-textPrimary dark:text-textPrimaryDark">
-                            <dt class="text-xs font-semibold uppercase tracking-wide text-textSecondary dark:text-textSecondaryDark">
-                                Library
-                            </dt>
-                            <dd class="text-sm text-right">
-                                <a
-                                    href="https://www.worldcat.org/title/318450381"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="font-medium underline decoration-dotted underline-offset-4 hover:decoration-solid"
-                                >
-                                    Find at your library
-                                </a>
-                            </dd>
-                        </div>
-                    </dl>
-                </div>
-            </div>
-
-            <div class="lg:col-span-2">
-                <div class="space-y-6">
-                    <header class="space-y-2">
-                        <p class="text-sm font-semibold uppercase tracking-wide text-textSecondary dark:text-textSecondaryDark">
-                            Photography
-                        </p>
-                        <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">A Year of Mornings</h1>
-                        <p class="text-base text-textSecondary dark:text-textSecondaryDark">
-                            Maria Alexandra Vettese &amp; Stephanie Congdon Barnes
-                        </p>
-                    </header>
-
-                    <div class="prose prose-neutral max-w-none text-base leading-relaxed dark:prose-invert">
-                        <p>
-                            A Year of Mornings gathers 365 paired photographs from Maria Alexandra Vettese in Portland, Maine
-                            and Stephanie Congdon Barnes in Portland, Oregon. Separated by 3,191 miles, the artists documented
-                            the quiet rituals that open each day—cups of coffee, well-loved textiles, and the glow of kitchen
-                            windows—revealing an unexpected sense of closeness through shared rhythms.
-                        </p>
-                        <p>
-                            Sequenced chronologically, the project reads like a visual correspondence. It highlights how
-                            attentive observation can celebrate the beauty in ordinary spaces, while underscoring the
-                            friendship that inspired two creatives to keep showing up for the camera each morning.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <BookDetailLayout
+        coverSrc="/books/01-ayom.jpg"
+        coverAlt="Book cover for A Year of Mornings"
+        title="A Year of Mornings"
+        authors="Maria Alexandra Vettese &amp; Stephanie Congdon Barnes"
+        kicker="Photography"
+        metadata={metadata}
+    >
+        <p>
+            A collection of fifty love poems that follows a young heart as it finds love, finds the strength to be in love and
+            finally, finds the strength to let go.
+        </p>
+    </BookDetailLayout>
 </Layout>
