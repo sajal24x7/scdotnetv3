@@ -1,6 +1,119 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
+
+type CardSpan = number | undefined;
+
+const getGridSpanClass = (span: CardSpan, fallback: number) => {
+    if (typeof span === 'number' && Number.isInteger(span) && span >= 1 && span <= 12) {
+        return `grid-span-${span}`;
+    }
+
+    return `grid-span-${fallback}`;
+};
+
+const interestCards = [
+    {
+        icon: '💻',
+        title: 'Technology',
+        description: 'Exploring emerging technologies, web development, and how digital tools can enhance human creativity and productivity.'
+    },
+    {
+        icon: '📚',
+        title: 'Reading & Learning',
+        description: 'Avid reader across various genres, from technical books to philosophy, fiction, and everything in between.'
+    },
+    {
+        icon: '✍️',
+        title: 'Writing',
+        description: 'Creative writing, technical documentation, and exploring different forms of expression through words.'
+    },
+    {
+        icon: '🌱',
+        title: 'Digital Gardening',
+        description: 'Cultivating a space for interconnected thoughts, ideas, and knowledge that grows and evolves over time.'
+    },
+    {
+        icon: '🎨',
+        title: 'Creative Expression',
+        description: 'Exploring various forms of creativity, from poetry and stories to visual design and digital art.'
+    },
+    {
+        icon: '🤝',
+        title: 'Community',
+        description: 'Building connections with like-minded individuals and contributing to meaningful discussions and knowledge sharing.'
+    }
+];
+
+const focusCards = [
+    {
+        icon: '🚀',
+        title: 'Active Projects',
+        items: [
+            'Maintaining and improving this digital garden',
+            'Writing regular content across different categories',
+            'Exploring new technologies and frameworks',
+            'Building a sustainable content creation workflow'
+        ],
+        span: 6
+    },
+    {
+        icon: '📖',
+        title: 'Learning Goals',
+        items: [
+            'Deepening understanding of web technologies',
+            'Improving creative writing skills',
+            'Exploring new content formats and mediums',
+            'Building better systems for knowledge management'
+        ],
+        span: 6
+    }
+];
+
+const connectionCards = [
+    {
+        title: 'Professional',
+        items: [
+            {
+                label: 'LinkedIn',
+                value: 'Sajal Choudhary',
+                href: 'https://linkedin.com/in/yourusername'
+            },
+            {
+                label: 'GitHub',
+                value: '@yourusername',
+                href: 'https://github.com/yourusername'
+            },
+            {
+                label: 'Email',
+                value: 'your.email@example.com',
+                href: 'mailto:your.email@example.com'
+            }
+        ],
+        span: 6
+    },
+    {
+        title: 'Social & Content',
+        items: [
+            {
+                label: 'Twitter',
+                value: '@yourusername',
+                href: 'https://twitter.com/yourusername'
+            },
+            {
+                label: 'Newsletter',
+                value: 'Nordletter',
+                href: '/nordletter/'
+            },
+            {
+                label: 'RSS',
+                value: 'All Feeds',
+                href: '/feeds/'
+            }
+        ],
+        span: 6
+    }
+];
 ---
 
 <Layout
@@ -59,30 +172,12 @@ import PageHeader from '../components/layout/PageHeader.astro';
         <h2>Interests & Passions</h2>
       </div>
       <div class="sajal__card-group grid-span-full twelve-grid grid-gap-tight">
-        <article class="sajal-card grid-span-3 border border-borderColor dark:border-borderColorDark rounded-lg p-5">
-          <h3 class="sajal-card__title"><span class="sajal-card__icon">💻</span> Technology</h3>
-          <p>Exploring emerging technologies, web development, and how digital tools can enhance human creativity and productivity.</p>
-        </article>
-        <article class="sajal-card grid-span-3 border border-borderColor dark:border-borderColorDark rounded-lg p-5">
-          <h3 class="sajal-card__title"><span class="sajal-card__icon">📚</span> Reading & Learning</h3>
-          <p>Avid reader across various genres, from technical books to philosophy, fiction, and everything in between.</p>
-        </article>
-        <article class="sajal-card grid-span-3 border border-borderColor dark:border-borderColorDark rounded-lg p-5">
-          <h3 class="sajal-card__title"><span class="sajal-card__icon">✍️</span> Writing</h3>
-          <p>Creative writing, technical documentation, and exploring different forms of expression through words.</p>
-        </article>
-        <article class="sajal-card grid-span-3 border border-borderColor dark:border-borderColorDark rounded-lg p-5">
-          <h3 class="sajal-card__title"><span class="sajal-card__icon">🌱</span> Digital Gardening</h3>
-          <p>Cultivating a space for interconnected thoughts, ideas, and knowledge that grows and evolves over time.</p>
-        </article>
-        <article class="sajal-card grid-span-3 border border-borderColor dark:border-borderColorDark rounded-lg p-5">
-          <h3 class="sajal-card__title"><span class="sajal-card__icon">🎨</span> Creative Expression</h3>
-          <p>Exploring various forms of creativity, from poetry and stories to visual design and digital art.</p>
-        </article>
-        <article class="sajal-card grid-span-3 border border-borderColor dark:border-borderColorDark rounded-lg p-5">
-          <h3 class="sajal-card__title"><span class="sajal-card__icon">🤝</span> Community</h3>
-          <p>Building connections with like-minded individuals and contributing to meaningful discussions and knowledge sharing.</p>
-        </article>
+        {interestCards.map((card) => (
+            <article class={`sajal-card ${getGridSpanClass(card.span, 3)} border border-borderColor dark:border-borderColorDark rounded-lg p-5`}>
+                <h3 class="sajal-card__title"><span class="sajal-card__icon">{card.icon}</span> {card.title}</h3>
+                <p>{card.description}</p>
+            </article>
+        ))}
       </div>
     </section>
 
@@ -104,24 +199,16 @@ import PageHeader from '../components/layout/PageHeader.astro';
         <h2>Current Focus</h2>
       </div>
       <div class="sajal__card-group grid-span-full twelve-grid grid-gap-tight">
-        <article class="sajal-card grid-span-6 border border-borderColor dark:border-borderColorDark rounded-lg p-5">
-          <h3 class="sajal-card__title"><span class="sajal-card__icon">🚀</span> Active Projects</h3>
-          <ul class="sajal-card__list">
-            <li>Maintaining and improving this digital garden</li>
-            <li>Writing regular content across different categories</li>
-            <li>Exploring new technologies and frameworks</li>
-            <li>Building a sustainable content creation workflow</li>
-          </ul>
-        </article>
-        <article class="sajal-card grid-span-6 border border-borderColor dark:border-borderColorDark rounded-lg p-5">
-          <h3 class="sajal-card__title"><span class="sajal-card__icon">📖</span> Learning Goals</h3>
-          <ul class="sajal-card__list">
-            <li>Deepening understanding of web technologies</li>
-            <li>Improving creative writing skills</li>
-            <li>Exploring new content formats and mediums</li>
-            <li>Building better systems for knowledge management</li>
-          </ul>
-        </article>
+        {focusCards.map((card) => (
+            <article class={`sajal-card ${getGridSpanClass(card.span, 6)} border border-borderColor dark:border-borderColorDark rounded-lg p-5`}>
+                <h3 class="sajal-card__title"><span class="sajal-card__icon">{card.icon}</span> {card.title}</h3>
+                <ul class="sajal-card__list">
+                    {card.items.map((item) => (
+                        <li>{item}</li>
+                    ))}
+                </ul>
+            </article>
+        ))}
       </div>
     </section>
 
@@ -194,22 +281,29 @@ import PageHeader from '../components/layout/PageHeader.astro';
         <p>I'm always interested in connecting with like-minded individuals, discussing ideas, and collaborating on interesting projects. Feel free to reach out through any of the following channels:</p>
       </div>
       <div class="sajal__card-group grid-span-full twelve-grid grid-gap-tight">
-        <article class="sajal-card grid-span-6 border border-borderColor dark:border-borderColorDark rounded-lg p-5">
-          <h3 class="sajal-card__title">Professional</h3>
-          <ul class="sajal-card__list">
-            <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">Sajal Choudhary</a></li>
-            <li><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">@yourusername</a></li>
-            <li><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-          </ul>
-        </article>
-        <article class="sajal-card grid-span-6 border border-borderColor dark:border-borderColorDark rounded-lg p-5">
-          <h3 class="sajal-card__title">Social & Content</h3>
-          <ul class="sajal-card__list">
-            <li><strong>Twitter:</strong> <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">@yourusername</a></li>
-            <li><strong>Newsletter:</strong> <a href="/nordletter/">Nordletter</a></li>
-            <li><strong>RSS:</strong> <a href="/feeds/">All Feeds</a></li>
-          </ul>
-        </article>
+        {connectionCards.map((card) => (
+            <article class={`sajal-card ${getGridSpanClass(card.span, 6)} border border-borderColor dark:border-borderColorDark rounded-lg p-5`}>
+                <h3 class="sajal-card__title">{card.title}</h3>
+                <ul class="sajal-card__list">
+                    {card.items.map((item) => (
+                        <li>
+                            <strong>{item.label}:</strong>{' '}
+                            {item.href ? (
+                                <a
+                                  href={item.href}
+                                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                >
+                                    {item.value}
+                                </a>
+                            ) : (
+                                item.value
+                            )}
+                        </li>
+                    ))}
+                </ul>
+            </article>
+        ))}
       </div>
     </section>
 

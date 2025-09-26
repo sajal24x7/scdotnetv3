@@ -1,6 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
+
+const getGridSpanClass = (span: number | undefined, fallback: number) => {
+    if (typeof span === 'number' && Number.isInteger(span) && span >= 1 && span <= 12) {
+        return `grid-span-${span}`;
+    }
+
+    return `grid-span-${fallback}`;
+};
+
+const contentCallouts = [
+    {
+        title: 'Writing Workflow',
+        items: [
+            'Write in <a href="https://obsidian.md" target="_blank" rel="noopener noreferrer">Obsidian</a>',
+            'Organize with tags and categories',
+            'Use frontmatter for metadata',
+            'Preview with Astro dev server'
+        ],
+        span: 6
+    },
+    {
+        title: 'Content Types',
+        items: [
+            '<strong>Garden:</strong> Evergreen notes, TIL, bookshelf',
+            '<strong>Stream:</strong> Blog posts, micro posts, photos',
+            '<strong>Creative:</strong> Stories, poems, prose',
+            '<strong>Newsletter:</strong> Nordletter updates'
+        ],
+        span: 6
+    }
+];
 ---
 
 <Layout
@@ -61,24 +92,16 @@ import PageHeader from '../components/layout/PageHeader.astro';
         <h2>Content Management</h2>
       </div>
       <div class="colophon__callouts grid-span-full twelve-grid grid-gap-tight">
-        <article class="colophon-callout grid-span-6 bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6">
-          <h3 class="colophon-callout__title">Writing Workflow</h3>
-          <ul class="colophon-callout__list">
-            <li>Write in <a href="https://obsidian.md" target="_blank" rel="noopener noreferrer">Obsidian</a></li>
-            <li>Organize with tags and categories</li>
-            <li>Use frontmatter for metadata</li>
-            <li>Preview with Astro dev server</li>
-          </ul>
-        </article>
-        <article class="colophon-callout grid-span-6 bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6">
-          <h3 class="colophon-callout__title">Content Types</h3>
-          <ul class="colophon-callout__list">
-            <li><strong>Garden:</strong> Evergreen notes, TIL, bookshelf</li>
-            <li><strong>Stream:</strong> Blog posts, micro posts, photos</li>
-            <li><strong>Creative:</strong> Stories, poems, prose</li>
-            <li><strong>Newsletter:</strong> Nordletter updates</li>
-          </ul>
-        </article>
+        {contentCallouts.map((callout) => (
+            <article class={`colophon-callout ${getGridSpanClass(callout.span, 6)} bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6`}>
+                <h3 class="colophon-callout__title">{callout.title}</h3>
+                <ul class="colophon-callout__list">
+                    {callout.items.map((item) => (
+                        <li set:html={item} />
+                    ))}
+                </ul>
+            </article>
+        ))}
       </div>
     </section>
 
