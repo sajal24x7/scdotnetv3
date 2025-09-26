@@ -78,16 +78,18 @@ Create reusable layout components similar to Maggie Appleton's site structure to
 
 ### Phase 4: Create Additional Layout Components (if needed)
 
-#### P4.1 Create SectionWrapper Component
-- **File**: `src/components/layout/SectionWrapper.astro`
+#### P4.1 Create SectionWrapper Component *(superseded)*
+- **Status**: Retired September 2025; upstream twelve-column utilities now provide spacing directly on the parent grid.
+- **Historical file**: `src/components/layout/SectionWrapper.astro`
 - **Purpose**: Wrap sections with consistent spacing
 - **Props**:
   - `padding`: 'none' | 'sm' | 'md' | 'lg' | 'xl'
   - `margin`: 'none' | 'sm' | 'md' | 'lg' | 'xl'
   - `className`: string (additional classes)
 
-#### P4.2 Create GridWrapper Component
-- **File**: `src/components/layout/GridWrapper.astro`
+#### P4.2 Create GridWrapper Component *(superseded)*
+- **Status**: Retired September 2025 in favor of `.twelve-grid` span helpers and Tailwind utilities.
+- **Historical file**: `src/components/layout/GridWrapper.astro`
 - **Purpose**: Responsive grid layouts
 - **Props**:
   - `columns`: number | object (responsive)
@@ -230,8 +232,8 @@ const proseClasses = `prose dark:prose-invert ${maxWidthClasses[maxWidth]} ${cen
 - `src/components/layout/PageWrapper.astro` - Main page width controller
 - `src/components/layout/ProseWrapper.astro` - Content width for readable text
 - `src/components/layout/ContainerWrapper.astro` - General container with responsive padding
-- `src/components/layout/SectionWrapper.astro` - Section spacing wrapper
-- `src/components/layout/GridWrapper.astro` - Responsive grid layouts
+- `src/components/layout/SectionWrapper.astro` - Section spacing wrapper *(retired Sept 2025 in favor of `.twelve-grid` utilities)*
+- `src/components/layout/GridWrapper.astro` - Responsive grid layouts *(retired Sept 2025 in favor of `.twelve-grid` utilities)*
 - `planning/reusable-layout-components.md` - Implementation plan and documentation
 
 ### Files Updated
