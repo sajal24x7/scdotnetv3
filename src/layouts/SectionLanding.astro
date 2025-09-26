@@ -69,6 +69,7 @@ const hasTagListSlot = Astro.slots.has('tagList');
 const hasBeforeContentSlot = Astro.slots.has('beforeContent');
 const hasAfterCountSlot = Astro.slots.has('afterCount');
 const hasCountSlot = Astro.slots.has('count');
+const hasSidebarSlot = Astro.slots.has('sidebar');
 
 if (!hasTagListSlot && tagCategory && !tagPosts) {
     throw new Error('SectionLanding requires the `tagPosts` prop when rendering the default TagList.');
@@ -92,6 +93,19 @@ const contentStyle = [
 ].filter(Boolean).join(' ');
 
 const shouldRenderCount = hasCountSlot || Boolean(countText);
+
+const contentHasCustomSpanClass = /grid-span-\d+/.test(contentClass);
+const contentHasCustomStartClass = /grid-start-\d+/.test(contentClass);
+const contentSpanClass = contentHasCustomSpanClass
+    ? ''
+    : hasSidebarSlot
+        ? 'grid-span-8'
+        : 'grid-span-full';
+const contentStartClass = contentHasCustomStartClass
+    ? ''
+    : hasSidebarSlot
+        ? 'grid-start-1'
+        : '';
 ---
 <section class={`section-landing ${wrapperClass}`.trim()}>
     <div class="section-landing__grid twelve-grid">
@@ -148,11 +162,19 @@ const shouldRenderCount = hasCountSlot || Boolean(countText);
         )}
 
         <main
-            class={`section-content grid-span-full ${contentClass}`.trim()}
+            class={`section-content ${contentSpanClass} ${contentStartClass} ${contentClass}`.trim()}
             style={contentStyle || undefined}
         >
             <slot />
         </main>
+
+        {hasSidebarSlot && (
+            <aside class="section-sidebar grid-span-4 grid-start-9">
+                <div class="section-sidebar__inner">
+                    <slot name="sidebar" />
+                </div>
+            </aside>
+        )}
     </div>
 </section>
 
@@ -201,6 +223,18 @@ const shouldRenderCount = hasCountSlot || Boolean(countText);
         margin-bottom: 2rem;
     }
 
+    .section-sidebar {
+        align-self: start;
+    }
+
+    .section-sidebar__inner {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.25rem, 3vw, 2rem);
+        position: sticky;
+        top: clamp(1.5rem, 4vw, 3rem);
+    }
+
     @media (max-width: 768px) {
         .section-count {
             margin-bottom: var(--section-count-margin-mobile, 1.25rem);
@@ -220,6 +254,10 @@ const shouldRenderCount = hasCountSlot || Boolean(countText);
 
         .section-before-content {
             margin-bottom: 1.5rem;
+        }
+
+        .section-sidebar__inner {
+            position: static;
         }
     }
 </style>

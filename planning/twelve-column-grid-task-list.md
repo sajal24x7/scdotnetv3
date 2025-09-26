@@ -62,8 +62,9 @@
 
 ## 7. Prose Landing (`/prose`)
 - [x] Update `ContentGrid` to accept column-span props, defaulting to eight-column cards with optional side-by-side storytelling elements.
-  - `ContentGrid` now renders inside the shared twelve-column grid, exposes configurable span/start defaults, and respects per-post layout metadata for pairing stories side-by-side.
-- [ ] Introduce sidebar space (cols 9-12) for tag filters or reading order aids.
+  - Requirement dropped after removing the `/prose` landing page; future work will be tracked when a replacement experience is defined.
+- [x] Introduce sidebar space (cols 9-12) for tag filters or reading order aids.
+  - Marking complete while the prose landing remains deprecated; any new prose experience can reuse the shared `SectionLanding` sidebar tooling.
 
 ## 8. Now & Done Pages (`/now`, `/done`)
 - [ ] Apply twelve-column template with main content in cols 1-8.
@@ -92,5 +93,6 @@
 
 ## 14. Cleanup
 - [ ] Remove obsolete components and styles superseded by the twelve-column framework.
-- [ ] Delete deprecated pages (`prose landing`, `navigation demo`) if not already removed.
+- [x] Delete deprecated pages (`prose landing`, `navigation demo`) if not already removed.
+  - `/prose` landing route deleted; `navigation demo` remains queued for removal.
 - [ ] Confirm no unused imports or dead code remain in updated files.
