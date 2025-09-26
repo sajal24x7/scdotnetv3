@@ -78,7 +78,8 @@
 - [x] Allow select callouts to expand to six or twelve columns without breaking flow.
 
 ## 10. Feeds (`/feeds`)
-- [ ] Arrange feed buttons into four three-column spans aligned within the grid.
+- [x] Arrange feed buttons into four three-column spans aligned within the grid.
+  - Feed buttons now render inside a nested twelve-column grid, each spanning three columns on desktop while collapsing to full-width on smaller viewports.
 - [ ] Place `RecentItems` list in cols 1-8 and maintain sidebar explainer content in cols 9-12.
 
 ## 11. Tags (`/tags`)
