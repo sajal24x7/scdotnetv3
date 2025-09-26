@@ -47,6 +47,7 @@
 ## 5. Nordletter (`/nordletter`)
 - [x] Rework `NordletterGrid` so issues span three columns by default on desktop, with optional six-column highlights.
   - `NordletterGrid` now renders directly inside the shared twelve-column shell with span-aware classes (`grid-span-3`, `grid-span-6`, `grid-span-12`) mapped from optional `layout.span` metadata for curated highlights.
+  - Follow-up adjustments removed the card chrome, bumped image/title scale, and introduced a dedicated mobile grid so two issues sit side-by-side on phones per latest feedback.
 - [x] Ensure year dividers and signup module occupy full twelve-column width.
   - Year headers render as `grid-span-full` rows with refreshed styling and the newsletter signup inherits the landing grid container so it stretches across all twelve columns before the issue listings.
 
