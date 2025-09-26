@@ -73,7 +73,8 @@
   - Added sidebar summary and quick link cards that collapse gracefully when data is unavailable.
 
 ## 9. Colophon & Sajal Pages
-- [ ] Map existing card sections to three-column spans on desktop.
+- [x] Map existing card sections to three-column spans on desktop.
+  - Colophon and Sajal routes now wrap card groupings in the shared twelve-column shell with each card spanning three columns on desktop while collapsing to full-width on smaller screens.
 - [ ] Allow select callouts to expand to six or twelve columns without breaking flow.
 
 ## 10. Feeds (`/feeds`)
