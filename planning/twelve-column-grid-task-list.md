@@ -52,7 +52,8 @@
   - Year headers render as `grid-span-full` rows with refreshed styling and the newsletter signup inherits the landing grid container so it stretches across all twelve columns before the issue listings.
 
 ## 6. Bookshelf & Book Pages (`/bookshelf`, `/books`, `/books/*`)
-- [ ] Convert `BookGrid` to twelve-column spans: default card width four columns, with support for wider features.
+- [x] Convert `BookGrid` to twelve-column spans: default card width four columns, with support for wider features.
+  - `BookGrid` now renders within the shared twelve-column container, defaulting cards to four-column spans while honoring optional eight- and twelve-column features via `layout.span` metadata.
 - [ ] For `/books`, align year sections across columns 1-8 with summary/sidebar content in cols 9-12.
 - [ ] For book detail pages, center primary prose across columns 3-10 and place metadata/sidebar elements in cols 1-4.
 
