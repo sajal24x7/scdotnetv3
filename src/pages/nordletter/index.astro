@@ -47,12 +47,30 @@ const transformedPosts = nordletterPosts.map(post => {
     headerMaxWidth="7xl"
     tagCategory="nordletter"
     tagPosts={allPosts}
-    tagWrapperClass="px-6 mb-6"
+    tagWrapperClass="grid-span-full"
+    contentClass="nordletter-content twelve-grid grid-gap-tight grid-pad-narrow"
+    contentPadding="0"
   >
-    <div slot="beforeContent" class="px-6 mb-8">
-      <NewsletterSignup showCopy={false} wrapperClass="py-0" formClass="mx-auto" />
+    <div slot="beforeContent" class="nordletter-signup grid-span-full">
+      <NewsletterSignup showCopy={false} wrapperClass="py-0" formClass="nordletter-signup__form" />
     </div>
 
     <NordletterGrid posts={transformedPosts} />
   </SectionLanding>
 </Layout>
+
+<style>
+  .nordletter-signup {
+    margin-bottom: clamp(2.5rem, 6vw, 3.5rem);
+  }
+
+  .nordletter-signup__form {
+    margin-inline: auto;
+    width: min(100%, 38rem);
+    max-width: min(100%, 38rem);
+  }
+
+  .nordletter-content {
+    padding-bottom: clamp(2.5rem, 6vw, 4rem);
+  }
+</style>

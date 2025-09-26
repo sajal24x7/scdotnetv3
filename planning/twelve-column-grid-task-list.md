@@ -45,8 +45,11 @@
   - Ensured the stream grid aligns items to the start so the sidebar retains its sticky positioning within the twelve-column template across browsers.
 
 ## 5. Nordletter (`/nordletter`)
-- [ ] Rework `NordletterGrid` so issues span three columns by default on desktop, with optional six-column highlights.
-- [ ] Ensure year dividers and signup module occupy full twelve-column width.
+- [x] Rework `NordletterGrid` so issues span three columns by default on desktop, with optional six-column highlights.
+  - `NordletterGrid` now renders directly inside the shared twelve-column shell with span-aware classes (`grid-span-3`, `grid-span-6`, `grid-span-12`) mapped from optional `layout.span` metadata for curated highlights.
+  - Follow-up adjustments removed the card chrome, bumped image/title scale, and introduced a dedicated mobile grid so two issues sit side-by-side on phones per latest feedback.
+- [x] Ensure year dividers and signup module occupy full twelve-column width.
+  - Year headers render as `grid-span-full` rows with refreshed styling and the newsletter signup inherits the landing grid container so it stretches across all twelve columns before the issue listings.
 
 ## 6. Bookshelf & Book Pages (`/bookshelf`, `/books`, `/books/*`)
 - [ ] Convert `BookGrid` to twelve-column spans: default card width four columns, with support for wider features.

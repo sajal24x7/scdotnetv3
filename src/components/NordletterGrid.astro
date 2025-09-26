@@ -11,121 +11,125 @@ const postsByYear = posts.reduce((acc, post) => {
   }
   acc[year].push(post);
   return acc;
-}, {});
+}, {} as Record<number, typeof posts>);
 
 // Sort years in descending order
-const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
+const sortedYears = Object.keys(postsByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+
+const getSpanClass = (post: typeof posts[number]) => {
+  const span = post?.data?.layout?.span;
+
+  if (span === 6) {
+    return 'grid-span-6';
+  }
+
+  if (span === 12) {
+    return 'grid-span-12';
+  }
+
+  return 'grid-span-3';
+};
+
+const getVariantClass = (post: typeof posts[number]) => {
+  const span = post?.data?.layout?.span;
+
+  if (span === 12) {
+    return 'nordletter-item--full';
+  }
+
+  if (span === 6) {
+    return 'nordletter-item--wide';
+  }
+
+  return 'nordletter-item--standard';
+};
 ---
 
-<div class="nordletter-container">
-  {sortedYears.map((year) => (
-    <section class="year-section">
-      <h2 class="year-headline">{year}</h2>
-      <div class="nordletter-grid">
-        {postsByYear[year].map((post) => (
-          <article class="nordletter-item">
-            <a href={post.data.link} class="nordletter-link">
-              {post.data.image && (
-                <div class="nordletter-image">
-                  <img 
-                    src={post.data.image} 
-                    alt={post.data.title}
-                    loading="lazy"
-                  />
-                </div>
-              )}
-              <div class="nordletter-content">
-                <div class="nordletter-edition">
-                  {post.data.editionDisplay || `${post.data.edition || 'N/A'} - ${formatDateWithoutYear(post.data.pubDate)}`}
-                </div>
-                <h3 class="nordletter-title">{post.data.title}</h3>
-              </div>
-            </a>
-          </article>
-        ))}
-      </div>
-    </section>
-  ))}
-</div>
+{sortedYears.map((year) => (
+  <section class="nordletter-year" aria-labelledby={`nordletter-year-${year}`}>
+    <header class="nordletter-year__header grid-span-full">
+      <h2 id={`nordletter-year-${year}`} class="nordletter-year__title">
+        {year}
+      </h2>
+    </header>
+
+    {postsByYear[year].map((post) => (
+      <article class={`nordletter-item ${getSpanClass(post)} ${getVariantClass(post)}`}>
+        <a href={post.data.link} class="nordletter-link">
+          {post.data.image && (
+            <div class="nordletter-image">
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                loading="lazy"
+              />
+            </div>
+          )}
+          <div class="nordletter-content">
+            <div class="nordletter-edition">
+              {post.data.editionDisplay || `${post.data.edition || 'N/A'} · ${formatDateWithoutYear(post.data.pubDate)}`}
+            </div>
+            <h3 class="nordletter-title">{post.data.title}</h3>
+          </div>
+        </a>
+      </article>
+    ))}
+  </section>
+))}
 
 <style>
-  .nordletter-container {
-    padding: 2rem 0;
+  .nordletter-year {
+    display: contents;
   }
 
-  .year-section {
-    margin-bottom: 4rem;
+  .nordletter-year__header {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+    padding-bottom: clamp(0.75rem, 2vw, 1.25rem);
+    border-bottom: 1px solid rgba(31, 41, 55, 0.12);
   }
 
-  .year-section:last-child {
-    margin-bottom: 0;
+  .nordletter-year:first-of-type .nordletter-year__header {
+    margin-top: 0;
   }
 
-  .year-headline {
-    font-size: 2rem;
+  .nordletter-year__title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
     color: #1f2937;
-    margin: 0 0 2rem 0;
+    margin: 0;
     text-align: center;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid #e5e7eb;
-  }
-
-  .nordletter-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  @media (min-width: 768px) {
-    .nordletter-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .nordletter-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .nordletter-grid {
-      grid-template-columns: repeat(5, 1fr);
-    }
   }
 
   .nordletter-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    min-width: 0;
   }
 
   .nordletter-link {
     display: flex;
     flex-direction: column;
+    gap: clamp(0.75rem, 2.5vw, 1.25rem);
     align-items: center;
+    padding: clamp(1rem, 3vw, 1.5rem);
     text-decoration: none;
     color: inherit;
-    width: 100%;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    height: 100%;
+    transition: transform 0.2s ease;
   }
 
   .nordletter-link:hover {
     transform: translateY(-2px);
-    opacity: 0.8;
   }
 
   .nordletter-image {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
+    width: clamp(6rem, 20vw, 9.5rem);
+    height: clamp(6rem, 20vw, 9.5rem);
+    border-radius: 9999px;
     overflow: hidden;
-    margin-bottom: 1rem;
     background: #f3f4f6;
     flex-shrink: 0;
+    margin-inline: auto;
   }
 
   .nordletter-image img {
@@ -140,11 +144,11 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseI
   }
 
   .nordletter-content {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 0.5rem;
+    text-align: center;
+    align-items: center;
   }
 
   .nordletter-edition {
@@ -155,7 +159,7 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseI
   }
 
   .nordletter-title {
-    font-size: 1rem;
+    font-size: clamp(1.125rem, 2.8vw, 1.5rem);
     font-weight: 600;
     line-height: 1.4;
     margin: 0;
@@ -167,16 +171,38 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseI
     color: #3b82f6;
   }
 
-  .nordletter-date {
-    font-size: 0.875rem;
-    color: #6b7280;
-    font-weight: 400;
+  .nordletter-item--wide .nordletter-content,
+  .nordletter-item--full .nordletter-content {
+    max-width: 32rem;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 48rem) {
+    .nordletter-item--wide .nordletter-link {
+      flex-direction: row;
+      align-items: center;
+      text-align: left;
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .nordletter-item--wide .nordletter-image {
+      margin-inline: 0;
+    }
+
+    .nordletter-item--wide .nordletter-content {
+      text-align: left;
+      align-items: flex-start;
+      margin-inline: 0;
+    }
   }
 
   /* Dark mode styles */
-  :global(.dark) .year-headline {
+  :global(.dark) .nordletter-year__header {
+    border-bottom-color: rgba(148, 163, 184, 0.24);
+  }
+
+  :global(.dark) .nordletter-year__title {
     color: #f9fafb;
-    border-bottom-color: #374151;
   }
 
   :global(.dark) .nordletter-title {
@@ -184,11 +210,7 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseI
   }
 
   :global(.dark) .nordletter-link:hover .nordletter-title {
-    color: #60a5fa;
-  }
-
-  :global(.dark) .nordletter-date {
-    color: #9ca3af;
+    color: #93c5fd;
   }
 
   :global(.dark) .nordletter-edition {
@@ -196,6 +218,22 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseI
   }
 
   :global(.dark) .nordletter-image {
-    background: #374151;
+    background: #1f2937;
+  }
+
+  @media (max-width: 47.999rem) {
+    .nordletter-year {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(1rem, 4vw, 1.5rem);
+    }
+
+    .nordletter-year__header {
+      grid-column: 1 / -1;
+    }
+
+    .nordletter-year .nordletter-item.grid-span-3 {
+      grid-column: auto;
+    }
   }
 </style>
