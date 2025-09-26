@@ -68,7 +68,7 @@ categories.forEach(category => {
   enableSearchModal
   enableLinkHoverEffect
 >
-  <PageHeader 
+  <PageHeader
     title="Tags"
     description="A collection of all tags used across my blog, photos, and micro updates."
     layout="centered"
@@ -76,9 +76,9 @@ categories.forEach(category => {
     maxWidth="7xl"
   />
 
-  <section class="space-y-12">
+  <section id="tag-page-content" class="twelve-grid grid-gap-loose">
     {sortedTags.length === 0 ? (
-      <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
+      <div class="grid-span-full text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
         <p class="text-textSecondary dark:text-textSecondaryDark">
           No tags found.
         </p>
@@ -87,29 +87,53 @@ categories.forEach(category => {
       <>
         {/* Top Twenty Tags */}
         {topTwentyTags.length > 0 && (
-          <div>
-            <h2 class="text-2xl font-bold mb-8">Top Twenty Tags</h2>
-            <div class="grid grid-cols-2 gap-4">
+          <section
+            id="top-tags-section"
+            class="grid-span-full twelve-grid grid-gap-tight"
+            aria-labelledby="top-tags-heading"
+          >
+            <h2 id="top-tags-heading" class="grid-span-full text-2xl font-bold">
+              Top Twenty Tags
+            </h2>
+            <div
+              id="top-tags-grid"
+              class="grid-span-full twelve-grid grid-gap-tight grid-pad-none"
+            >
               {topTwentyTags.map(([tag, count]) => (
-                <a href={`/tags/${tag}/`} class="text-sm font-medium hover:text-accent transition-colors">
+                <a
+                  href={`/tags/${tag}/`}
+                  class="grid-span-3 tag-chip justify-self-start"
+                >
                   {tag.toUpperCase()} ({count})
                 </a>
               ))}
             </div>
-          </div>
+          </section>
         )}
 
         {/* All Tags */}
-        <div class="mt-48">
-          <h2 class="text-2xl font-bold mb-8">All Tags</h2>
-          <div class="grid grid-cols-2 gap-4">
+        <section
+          id="all-tags-section"
+          class="grid-span-full twelve-grid grid-gap-tight border-t border-borderColor dark:border-borderColorDark pt-12"
+          aria-labelledby="all-tags-heading"
+        >
+          <h2 id="all-tags-heading" class="grid-span-full text-2xl font-bold">
+            All Tags
+          </h2>
+          <div
+            id="all-tags-grid"
+            class="grid-span-full twelve-grid grid-gap-tight grid-pad-none"
+          >
             {allTags.map(([tag, count]) => (
-              <a href={`/tags/${tag}/`} class="text-sm font-medium hover:text-accent transition-colors">
+              <a
+                href={`/tags/${tag}/`}
+                class="grid-span-3 tag-chip justify-self-start"
+              >
                 {tag.toUpperCase()} ({count})
               </a>
             ))}
           </div>
-        </div>
+        </section>
       </>
     )}
   </section>
@@ -119,7 +143,7 @@ categories.forEach(category => {
     document.addEventListener('DOMContentLoaded', function() {
       const urlParams = new URLSearchParams(window.location.search);
       const category = urlParams.get('category');
-      
+
       if (category && tagsByCategory[category]) {
         // Update page title and description
       const title = document.querySelector('h1');
@@ -162,29 +186,42 @@ categories.forEach(category => {
         const allCategoryTags = categoryTags.sort((a, b) => a[0].localeCompare(b[0]));
         
         // Update top twenty tags
-        const topTwentyContainer = document.querySelector('.grid.grid-cols-2.gap-4');
-        if (topTwentyContainer && topTwenty.length > 0) {
-          topTwentyContainer.innerHTML = topTwenty.map(([tag, count]) =>
-            `<a href="/tags/${tag}/${category}/" class="text-sm font-medium hover:text-accent transition-colors">
-              ${tag.toUpperCase()} (${count})
-            </a>`
-          ).join('');
+        const topTagsSection = document.getElementById('top-tags-section');
+        const topTwentyContainer = document.getElementById('top-tags-grid');
+        if (topTwentyContainer) {
+          if (topTwenty.length > 0) {
+            topTwentyContainer.innerHTML = topTwenty.map(([tag, count]) =>
+              `<a href="/tags/${tag}/${category}/" class="grid-span-3 tag-chip justify-self-start">
+                ${tag.toUpperCase()} (${count})
+              </a>`
+            ).join('');
+
+            if (topTagsSection) {
+              topTagsSection.style.removeProperty('display');
+            }
+          } else if (topTagsSection) {
+            topTagsSection.style.display = 'none';
+          }
         }
-        
+
         // Update all tags
-        const allTagsContainer = document.querySelectorAll('.grid.grid-cols-2.gap-4')[1];
+        const allTagsContainer = document.getElementById('all-tags-grid');
         if (allTagsContainer) {
           allTagsContainer.innerHTML = allCategoryTags.map(([tag, count]) =>
-            `<a href="/tags/${tag}/${category}/" class="text-sm font-medium hover:text-accent transition-colors">
+            `<a href="/tags/${tag}/${category}/" class="grid-span-3 tag-chip justify-self-start">
               ${tag.toUpperCase()} (${count})
             </a>`
           ).join('');
         }
       } else {
         // Show no tags message
-        const section = document.querySelector('section');
+        const section = document.getElementById('tag-page-content');
+        if (!section) {
+          return;
+        }
+
         section.innerHTML = `
-          <div class="text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
+          <div class="grid-span-full text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
             <p class="text-textSecondary dark:text-textSecondaryDark">
               No tags found in ${category}.
             </p>

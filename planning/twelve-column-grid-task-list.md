@@ -84,8 +84,9 @@
   - `/feeds` now wraps the recent posts rail and About RSS explainer in a nested twelve-column grid, assigning spans 1-8 and 9-12 respectively while keeping the shared top border and spacing.
 
 ## 11. Tags (`/tags`)
-- [ ] Restructure tag grids so each tag chip spans three columns on desktop, four-up per row.
-- [ ] Confirm filtering script updates preserve alignment when new items append.
+- [x] Restructure tag grids so each tag chip spans three columns on desktop, four-up per row.
+- [x] Confirm filtering script updates preserve alignment when new items append.
+  - Client-side filtering now repopulates the twelve-column tag markup to maintain alignment when category scopes change.
 
 ## 12. Utility & Misc Pages
 - [ ] Ensure random redirect and Nordletter test pages inherit the centered eight-column template (content cols 3-10).
