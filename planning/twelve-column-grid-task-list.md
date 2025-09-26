@@ -61,7 +61,8 @@
   - Introduced a reusable `BookDetailLayout` component so future book pages can share the cover, metadata, and description structure without rewriting the grid treatment.
 
 ## 7. Prose Landing (`/prose`)
-- [ ] Update `ContentGrid` to accept column-span props, defaulting to eight-column cards with optional side-by-side storytelling elements.
+- [x] Update `ContentGrid` to accept column-span props, defaulting to eight-column cards with optional side-by-side storytelling elements.
+  - `ContentGrid` now renders inside the shared twelve-column grid, exposes configurable span/start defaults, and respects per-post layout metadata for pairing stories side-by-side.
 - [ ] Introduce sidebar space (cols 9-12) for tag filters or reading order aids.
 
 ## 8. Now & Done Pages (`/now`, `/done`)
