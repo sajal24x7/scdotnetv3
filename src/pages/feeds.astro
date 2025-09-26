@@ -87,53 +87,54 @@ const transformedRecentPosts = recentPosts.map(transformPost);
       </a>
     </section>
 
-    <!-- Recent Posts Section -->
-    <section class="grid-span-full border-t border-borderColor dark:border-borderColorDark pt-12">
-      <RecentItems posts={transformedRecentPosts} title="Recent Posts" showFullContent={false} />
-    </section>
-
-    <!-- About RSS Section -->
-    <section class="grid-span-full bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6 border border-borderColor dark:border-borderColorDark">
-      <h2 class="text-xl font-semibold mb-3 flex items-center">
-        <svg class="w-5 h-5 mr-2 text-accent" fill="currentColor" viewBox="0 0 20 20">
-          <path
-            fill-rule="evenodd"
-            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-            clip-rule="evenodd"
-          />
-        </svg>
-        About RSS
-      </h2>
-      <p class="text-textSecondary dark:text-textSecondaryDark mb-4">
-        RSS (Really Simple Syndication) lets you follow websites in your favorite RSS reader.
-        When I publish new content, it automatically appears in your reader - no need to check back manually.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        <a
-          href="https://aboutfeeds.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm hover:bg-opacity-20 transition-colors"
-        >
-          Learn about RSS
-        </a>
-        <a
-          href="https://feedly.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm hover:bg-opacity-20 transition-colors"
-        >
-          Try Feedly
-        </a>
-        <a
-          href="https://netnewswire.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm hover:bg-opacity-20 transition-colors"
-        >
-          NetNewsWire
-        </a>
+    <!-- Recent Posts + About RSS -->
+    <section class="grid-span-full border-t border-borderColor dark:border-borderColorDark pt-12 twelve-grid grid-gap-tight">
+      <div class="grid-span-8 grid-start-1">
+        <RecentItems posts={transformedRecentPosts} title="Recent Posts" showFullContent={false} />
       </div>
+
+      <aside class="grid-span-4 grid-start-9 self-start bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6 border border-borderColor dark:border-borderColorDark">
+        <h2 class="text-xl font-semibold mb-3 flex items-center">
+          <svg class="w-5 h-5 mr-2 text-accent" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          About RSS
+        </h2>
+        <p class="text-textSecondary dark:text-textSecondaryDark mb-4">
+          RSS (Really Simple Syndication) lets you follow websites in your favorite RSS reader.
+          When I publish new content, it automatically appears in your reader - no need to check back manually.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <a
+            href="https://aboutfeeds.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm hover:bg-opacity-20 transition-colors"
+          >
+            Learn about RSS
+          </a>
+          <a
+            href="https://feedly.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm hover:bg-opacity-20 transition-colors"
+          >
+            Try Feedly
+          </a>
+          <a
+            href="https://netnewswire.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm hover:bg-opacity-20 transition-colors"
+          >
+            NetNewsWire
+          </a>
+        </div>
+      </aside>
     </section>
   </section>
 </Layout>
