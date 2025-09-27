@@ -48,7 +48,7 @@
     --text-huge: clamp(2rem, 8vw, 3rem);
     --grid-column-gap: clamp(1.5rem, 3vw, 2.5rem);
     --grid-row-gap: clamp(2rem, 5vw, 3.5rem);
-    --grid-padding-inline: clamp(1rem, 5vw, 3rem);
+    --grid-padding-inline: 0rem;
   }
 
   .dark {
