@@ -1,14 +1,17 @@
 ---
-title: "Meta is building humanoid robots"
-slug: "meta-is-building-humanoid-robots"
-pubDate: 2025-09-27T13:50:15+03:00
-updatedDate: 2025-09-27T13:50:15+03:00
+title: Meta is building humanoid robots
+slug: meta-is-building-humanoid-robots
+pubDate: 2025-09-27T10:50:15.000Z
+updatedDate: 2025-09-27T10:50:15.000Z
 category: micro
 tags:
   - ai
   - robots
   - meta
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115275901864769069'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lzst52p5kh24'
+  - 'https://www.threads.com/@sajal24x7/post/DPGmi5yCOmv'
 ---
 [Humanoid robots are Meta’s next ‘AR-size bet’ by Alex Heath](https://www.theverge.com/column/786759/humanoid-robots-meta)
 
