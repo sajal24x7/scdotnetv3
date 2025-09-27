@@ -1,13 +1,16 @@
 ---
-title: "How to rate books"
-slug: "how-to-rate-books"
-pubDate: 2025-09-27T22:10:37+03:00
-updatedDate: 2025-09-27T22:10:37+03:00
+title: How to rate books
+slug: how-to-rate-books
+pubDate: 2025-09-27T19:10:37.000Z
+updatedDate: 2025-09-27T19:10:37.000Z
 category: micro
 tags:
   - books
   - ratings
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115277848036505119'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lztos34qzq2v'
+  - 'https://www.threads.com/@sajal24x7/post/DPHfL7BEhbF'
 ---
 [Scoring books – Manu](https://manuelmoreale.com/@/page/iecwfr5vvmtvt9bo)
 
