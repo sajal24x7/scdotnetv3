@@ -1,0 +1,54 @@
+# Layout Structure Audit
+
+## Page Overview
+| Route | Source file | Layout components | Notes |
+| --- | --- | --- | --- |
+| `/` | `src/pages/index.astro` | `Layout`, `LayoutContainer` (via `pageWrapper` grid), section-level grid markup | Uses the global `Layout` shell with a 12-column grid to place hero, newsletter, recent posts, and featured sidebar content.【F:src/pages/index.astro†L1-L124】 |
+| `/books/` | `src/pages/books/index.astro` | `Layout`, `SectionLanding` (with custom content grid) | SectionLanding provides the header and grid scaffolding; inner markup defines main/aside columns for book list and sticky sidebar.【F:src/pages/books/index.astro†L1-L152】 |
+| `/books/a-year-of-mornings/` | `src/pages/books/a-year-of-mornings.astro` | `Layout`, `BookDetailLayout` | BookDetailLayout handles the two-column detail layout within the global shell.【F:src/pages/books/a-year-of-mornings.astro†L1-L39】【F:src/components/books/BookDetailLayout.astro†L1-L124】 |
+| `/bookshelf/` | `src/pages/bookshelf/index.astro` | `Layout`, manual flex/grid sections | Relies on global Layout plus local CSS classes; does not reuse SectionLanding even though it mimics header/count patterns.【F:src/pages/bookshelf/index.astro†L1-L126】 |
+| `/til/` | `src/pages/til/index.astro` | `Layout`, `SectionLanding`, `GardenGrid` | SectionLanding frames the page and GardenGrid renders card spans per post.【F:src/pages/til/index.astro†L1-L47】【F:src/components/layout/GardenGrid.astro†L1-L97】 |
+| `/photos/` | `src/pages/photos/index.astro` | `Layout`, `SectionLanding`, `StreamLayout` | StreamLayout provides the two-column stream list with optional sidebar slot (unused here).【F:src/pages/photos/index.astro†L1-L43】【F:src/components/layout/StreamLayout.astro†L1-L63】 |
+| `/stream/` | `src/pages/stream/index.astro` | `Layout`, `SectionLanding`, `StreamLayout` | Same pattern as `/photos/` but for aggregated stream content.【F:src/pages/stream/index.astro†L1-L44】 |
+| `/blog/` | `src/pages/blog/index.astro` | `Layout`, `SectionLanding`, `StreamLayout` | StreamLayout renders blog entries within the section frame.【F:src/pages/blog/index.astro†L1-L45】 |
+| `/garden/` | `src/pages/garden/index.astro` | `Layout`, `SectionLanding`, `GardenGrid` | SectionLanding plus GardenGrid show mixed-category cards on the shared 12-column grid.【F:src/pages/garden/index.astro†L1-L43】 |
+| `/evergreen/` | `src/pages/evergreen/index.astro` | `Layout`, `SectionLanding`, `GardenGrid` | Dedicated evergreen listing reusing the same primitives.【F:src/pages/evergreen/index.astro†L1-L47】 |
+| `/stories/` | `src/pages/stories/index.astro` | `Layout`, `SectionLanding`, `GardenGrid` | Uses GardenGrid with `stories` styling inside SectionLanding.【F:src/pages/stories/index.astro†L1-L46】 |
+| `/poems/` | `src/pages/poems/index.astro` | `Layout`, `SectionLanding`, `GardenGrid` | Poems reuse SectionLanding + GardenGrid for layout.【F:src/pages/poems/index.astro†L1-L46】 |
+| `/micro/` | `src/pages/micro/index.astro` | `Layout`, `SectionLanding`, `StreamLayout` | StreamLayout renders micro posts while SectionLanding injects header/count/tag list.【F:src/pages/micro/index.astro†L1-L43】 |
+| `/nordletter/` | `src/pages/nordletter/index.astro` | `Layout`, `SectionLanding`, slot content, `NordletterGrid` | SectionLanding provides structure; newsletter signup slot and NordletterGrid fill the grid rows.【F:src/pages/nordletter/index.astro†L1-L63】 |
+| `/garden/rss.xml`, `/stream/rss.xml`, `/nordletter/rss.xml`, `/rss.xml`, `/prose/rss.xml` | `src/pages/*/rss.xml.js` | No layout components | Server scripts emitting XML feeds directly; they bypass Astro layouts.【F:src/pages/rss.xml.js†L1-L66】【F:src/pages/stream/rss.xml.js†L1-L69】【F:src/pages/garden/rss.xml.js†L1-L69】【F:src/pages/nordletter/rss.xml.js†L1-L69】【F:src/pages/prose/rss.xml.js†L1-L40】 |
+| `/now/` | `src/pages/now.astro` | `Layout`, `PageHeader`, `LayoutContainer` | PageHeader renders hero inside the Layout grid; LayoutContainer wraps markdown excerpts within progress cards.【F:src/pages/now.astro†L1-L120】【F:src/components/layout/PageHeader.astro†L1-L118】【F:src/components/layout/LayoutContainer.astro†L1-L67】 |
+| `/done/` | `src/pages/done.astro` | `Layout`, `PageHeader`, `LayoutContainer` | Shares the progress-page scaffold used by `/now/`, including LayoutContainer for per-entry body copy.【F:src/pages/done.astro†L1-L120】 |
+| `/colophon/` | `src/pages/colophon.astro` | `Layout`, `PageHeader`, custom twelve-grid sections | Uses Layout with nested grids; PageHeader drives hero text.【F:src/pages/colophon.astro†L1-L120】 |
+| `/feeds/` | `src/pages/feeds.astro` | `Layout`, `PageHeader`, manual twelve-grid sections | Layout handles shell; PageHeader and local grid markup arrange feed buttons and info panels.【F:src/pages/feeds.astro†L1-L120】 |
+| `/navigation-demo/` | `src/pages/navigation-demo.astro` | `Layout`, `PageHeader`, `MultiLevelNavigation` | Layout supplies shell; PageHeader anchors the explanatory content.【F:src/pages/navigation-demo.astro†L1-L74】 |
+| `/sajal/` | `src/pages/sajal.astro` | `Layout`, `PageHeader`, custom grid helpers | Layout plus PageHeader and manual grids for biography sections.【F:src/pages/sajal.astro†L1-L120】 |
+| `/tags/` | `src/pages/tags/index.astro` | `Layout`, `PageHeader`, client-side filtering script | Layout + PageHeader anchor the tag directory; remainder is manual grid markup.【F:src/pages/tags/index.astro†L1-L118】 |
+| `/tags/[tag]/` | `src/pages/tags/[tag]/index.astro` | `Layout`, `TagDetailPage` | TagDetailPage encapsulates header, nav, and RecentItems listing inside the global layout.【F:src/pages/tags/[tag]/index.astro†L1-L41】【F:src/components/tag/TagDetailPage.astro†L1-L140】 |
+| `/tags/[tag]/[category]/` | `src/pages/tags/[tag]/[category].astro` | `Layout`, `TagDetailPage` | Reuses TagDetailPage with active category slice props.【F:src/pages/tags/[tag]/[category].astro†L1-L45】 |
+| `/<category>/<slug>/` | `src/pages/[...slug].astro` | `Layout`, `LayoutContainer`, article-specific components | Layout wraps dynamic articles; LayoutContainer sets prose width while Backlinks/Webmentions provide supporting sections.【F:src/pages/[...slug].astro†L1-L120】 |
+| `/search-index.json` | `src/pages/search-index.json.ts` | API handler | Generates JSON index without Astro layout.【F:src/pages/search-index.json.ts†L1-L74】 |
+| `/api/link-previews.json` & `/api/link-previews/[category].json` | `src/pages/api/link-previews*.ts` | API handlers | Provide JSON payloads; no layout layer.【F:src/pages/api/link-previews.json.ts†L1-L74】【F:src/pages/api/link-previews/[category].json.ts†L1-L96】 |
+| `/api/webhook` | `src/pages/api/webhook.ts` | API handler | Server endpoint for webhooks; no layout usage.【F:src/pages/api/webhook.ts†L1-L78】 |
+
+## Layout Component Responsibilities
+- **`layouts/Layout.astro`** – Global page chrome: imports header/footer, applies twelve-column grid via `LayoutContainer`, exposes slots for search modal and link hover effects, and centralizes page-wide metadata.【F:src/layouts/Layout.astro†L1-L123】
+- **`layouts/SectionLanding.astro`** – Section intro scaffold with hero header, optional counts, tag list slots, and main/sidebar grid spans. Pages like Garden, Stream, and Nordletter rely on this to keep consistent spacing.【F:src/layouts/SectionLanding.astro†L1-L170】
+- **`components/layout/LayoutContainer.astro`** – Low-level wrapper that enforces max-width, padding scales, and optional prose styling; used inside Layout and individual cards.【F:src/components/layout/LayoutContainer.astro†L1-L67】
+- **`components/layout/StreamLayout.astro`** – Two-column stream view with sticky sidebar slot for future enhancements; renders a vertical list of posts with shared spacing tokens.【F:src/components/layout/StreamLayout.astro†L1-L61】
+- **`components/layout/GardenGrid.astro`** – Card grid for garden-style collections that maps post metadata to twelve-column spans and themed accent colors.【F:src/components/layout/GardenGrid.astro†L1-L90】
+- **`components/books/BookDetailLayout.astro`** – Detail view for individual books with media column, metadata stack, and prose body region.【F:src/components/books/BookDetailLayout.astro†L1-L124】
+- **`components/layout/PageHeader.astro`** – Reusable hero header supporting centered/left layouts, optional actions, and size variants; reused across informational pages and progress views.【F:src/components/layout/PageHeader.astro†L1-L118】
+- **`components/tag/TagDetailPage.astro`** – Complete tag detail layout with hero, category filters, and RecentItems listing for tag routes.【F:src/components/tag/TagDetailPage.astro†L1-L140】
+- **`components/layout/TagSidebar.astro`** – Standalone tag chip sidebar built for stream pages but currently unused anywhere in `src/pages` after StreamLayout switched to SectionLanding.【F:src/components/layout/TagSidebar.astro†L1-L95】
+
+## Simplification & Redundancy Notes
+1. **Unify section landing pages** – Garden, Stream, Blog, Micro, Photos, Evergreens, Stories, Poems, and Nordletter all pass near-identical props to `SectionLanding`. Extracting shared defaults (e.g., `pageWrapper` config, `countText` computation) into helper utilities or a thin wrapper component would reduce duplication.【F:src/pages/garden/index.astro†L14-L43】【F:src/pages/stream/index.astro†L15-L44】
+2. **Reuse SectionLanding for Bookshelf** – `/bookshelf/` reimplements header, count, and grid spacing manually. Adapting it to `SectionLanding` (with slots for the TagList and yearly sections) would align styling with the rest of the site and eliminate bespoke CSS.【F:src/pages/bookshelf/index.astro†L33-L126】
+3. **Audit `TagSidebar`** – The component is no longer imported by any page, suggesting it can be removed or reintegrated as a `StreamLayout` sidebar slot implementation to avoid dead code.【F:src/components/layout/TagSidebar.astro†L1-L95】
+4. **Progress pages share structure** – `/now/` and `/done/` duplicate the same twelve-grid scaffold and quick-link sidebar logic. A shared `ProgressLayout` component could receive title/empty-state props while reusing the `PageHeader` and `LayoutContainer` internals.【F:src/pages/now.astro†L35-L120】【F:src/pages/done.astro†L35-L120】
+5. **Dynamic article wrapper** – `[...slug].astro` manually assembles hero, metadata, and support sections inside `LayoutContainer`. If more content types adopt similar scaffolding, consider extracting a `PostLayout` to keep category-specific branching isolated.【F:src/pages/[...slug].astro†L33-L120】
+
+## Summary
+The site consistently uses `layouts/Layout.astro` as the outer shell, with `SectionLanding`, `StreamLayout`, `GardenGrid`, and `PageHeader` composing most interior structures. Opportunities exist to consolidate repetitive section setups, remove the unused `TagSidebar`, and introduce shared helpers for the progress and article templates to keep layout logic centralized.
