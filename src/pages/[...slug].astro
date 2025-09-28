@@ -52,7 +52,7 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
   enableSearchModal
   enableLinkHoverEffect
 >
-  <LayoutContainer prose maxWidth="4xl">
+  <LayoutContainer prose maxWidth="4xl" className="px-4 md:px-0">
     <article class="h-entry">
       <!-- Hidden microformat data -->
       <a href={canonicalUrl} class="u-url" style="display: none;"></a>
