@@ -14,7 +14,7 @@ This task list converts the findings from `planning/layout-structure-audit.md` i
 - [x] **Adopt SectionLanding on `/bookshelf/`**
   - Swap the bespoke bookshelf header/grid scaffolding for SectionLanding slots.
   - Ensure yearly sub-sections and TagList integrations still render correctly.
-- [ ] **Remove or reintegrate `TagSidebar`**
+- [x] **Remove or reintegrate `TagSidebar`**
   - Decide whether to delete the unused component or plug it into StreamLayout’s sidebar slot.
   - Update references and documentation accordingly.
 
