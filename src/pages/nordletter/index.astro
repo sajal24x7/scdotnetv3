@@ -32,8 +32,7 @@ const transformedPosts = nordletterPosts.map(post => {
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'none',
-    centered: true,
-    className: 'px-6'
+    centered: true
   }}
   allPosts={allPosts}
   enableSearchModal
@@ -48,7 +47,8 @@ const transformedPosts = nordletterPosts.map(post => {
     tagCategory="nordletter"
     tagPosts={allPosts}
     tagWrapperClass="grid-span-full"
-    contentClass="nordletter-content twelve-grid grid-gap-tight grid-pad-narrow"
+    padding="wide"
+    contentClass="nordletter-content twelve-grid grid-gap-tight"
     contentPadding="0"
   >
     <div slot="beforeContent" class="nordletter-signup grid-span-full">
