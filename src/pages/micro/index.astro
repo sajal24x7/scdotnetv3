@@ -21,8 +21,7 @@ const postCountText = `${postCount} ${postCount === 1 ? 'post' : 'posts'}`;
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'none',
-    centered: true,
-    className: 'px-2'
+    centered: true
   }}
   allPosts={allPosts}
   enableSearchModal
@@ -39,6 +38,7 @@ const postCountText = `${postCount} ${postCount === 1 ? 'post' : 'posts'}`;
     tagCategory="micro"
     tagTitle="Tagged with:"
     tagPosts={allPosts}
+    padding="narrow"
   >
     <StreamLayout posts={transformedPosts} />
   </SectionLanding>

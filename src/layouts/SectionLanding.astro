@@ -24,6 +24,9 @@ interface Props {
     contentClass?: string;
     contentPadding?: string;
     contentPaddingMobile?: string;
+    padding?: 'none' | 'narrow' | 'wide';
+    paddingValue?: string;
+    paddingValueMobile?: string;
     wrapperClass?: string;
     countAlignment?: 'left' | 'center' | 'right';
     countClass?: string;
@@ -50,6 +53,9 @@ const {
     contentClass = '',
     contentPadding,
     contentPaddingMobile,
+    padding = 'narrow',
+    paddingValue,
+    paddingValueMobile,
     wrapperClass = '',
     countAlignment = 'center',
     countClass = ''
@@ -92,6 +98,19 @@ const contentStyle = [
     contentPaddingMobile ? `--section-content-padding-mobile: ${contentPaddingMobile};` : undefined
 ].filter(Boolean).join(' ');
 
+const paddingTokens = {
+    none: '0',
+    narrow: 'clamp(0.75rem, 4vw, 2rem)',
+    wide: 'clamp(1.5rem, 6vw, 4rem)'
+} as const;
+
+const resolvedPaddingToken = paddingTokens[padding] ?? paddingTokens.narrow;
+
+const gridStyle = [
+    `--section-grid-padding: ${paddingValue ?? resolvedPaddingToken};`,
+    paddingValueMobile ? `--section-grid-padding-mobile: ${paddingValueMobile};` : undefined
+].filter(Boolean).join(' ');
+
 const shouldRenderCount = hasCountSlot || Boolean(countText);
 
 const contentHasCustomSpanClass = /grid-span-\d+/.test(contentClass);
@@ -108,7 +127,10 @@ const contentStartClass = contentHasCustomStartClass
         : '';
 ---
 <section class={`section-landing ${wrapperClass}`.trim()}>
-    <div class="section-landing__grid twelve-grid">
+    <div
+        class="section-landing__grid twelve-grid"
+        style={gridStyle || undefined}
+    >
         <div class="section-header grid-span-full">
             <PageHeader
                 title={title}
@@ -179,6 +201,15 @@ const contentStartClass = contentHasCustomStartClass
 </section>
 
 <style>
+    .section-landing {
+        --section-grid-padding: clamp(0.75rem, 4vw, 2rem);
+    }
+
+    .section-landing__grid {
+        --grid-padding-inline: var(--section-grid-padding);
+        padding-inline: var(--section-grid-padding);
+    }
+
     .section-count {
         margin-bottom: var(--section-count-margin, 1.5rem);
     }
@@ -212,7 +243,12 @@ const contentStartClass = contentHasCustomStartClass
     }
 
     .section-content {
+        --grid-padding-inline: var(--section-grid-padding);
         padding-bottom: var(--section-content-padding, 2rem);
+    }
+
+    .section-content:not(.twelve-grid) {
+        padding-inline: var(--section-grid-padding);
     }
 
     .section-after-count {
@@ -236,12 +272,22 @@ const contentStartClass = contentHasCustomStartClass
     }
 
     @media (max-width: 768px) {
+        .section-landing__grid {
+            --grid-padding-inline: var(--section-grid-padding-mobile, var(--section-grid-padding));
+            padding-inline: var(--section-grid-padding-mobile, var(--section-grid-padding));
+        }
+
         .section-count {
             margin-bottom: var(--section-count-margin-mobile, 1.25rem);
         }
 
         .section-content {
+            --grid-padding-inline: var(--section-grid-padding-mobile, var(--section-grid-padding));
             padding-bottom: var(--section-content-padding-mobile, 1.5rem);
+        }
+
+        .section-content:not(.twelve-grid) {
+            padding-inline: var(--section-grid-padding-mobile, var(--section-grid-padding));
         }
 
         .section-taglist {

@@ -20,8 +20,7 @@ const noteCountText = `${transformedPosts.length} ${transformedPosts.length === 
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'none',
-    centered: true,
-    className: 'px-2'
+    centered: true
   }}
   allPosts={allPosts}
   enableSearchModal
@@ -36,7 +35,8 @@ const noteCountText = `${transformedPosts.length} ${transformedPosts.length === 
       countText={noteCountText}
       tagCategory="garden"
       tagPosts={allPosts}
-      contentClass="garden-main twelve-grid grid-gap-tight grid-pad-narrow"
+      padding="narrow"
+      contentClass="garden-main twelve-grid grid-gap-tight"
     >
       <GardenGrid posts={transformedPosts} />
     </SectionLanding>

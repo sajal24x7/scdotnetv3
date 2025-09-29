@@ -23,8 +23,7 @@ const postCountText = `${postCount} ${postCount === 1 ? 'evergreen note' : 'ever
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'none',
-    centered: true,
-    className: 'px-2'
+    centered: true
   }}
   allPosts={allPosts}
   enableSearchModal
@@ -40,7 +39,8 @@ const postCountText = `${postCount} ${postCount === 1 ? 'evergreen note' : 'ever
       countVariant="plain"
       tagCategory="evergreen"
       tagPosts={allPosts}
-      contentClass="evergreen-main twelve-grid grid-gap-tight grid-pad-narrow"
+      padding="narrow"
+      contentClass="evergreen-main twelve-grid grid-gap-tight"
     >
       <GardenGrid posts={transformedPosts} contentType="evergreen" />
     </SectionLanding>

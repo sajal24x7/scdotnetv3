@@ -3,7 +3,7 @@
 This task list converts the findings from `planning/layout-structure-audit.md` into actionable follow-up work. Group tasks by priority and expected effort to aid planning.
 
 ## High Priority
-- [ ] **Normalize SectionLanding padding contract**
+- [x] **Normalize SectionLanding padding contract**
   - Centralize horizontal padding inside `SectionLanding` so headers, counts, tag lists, and the `section-content` grid share one spacing source.
   - Remove the `pageWrapper.className: 'px-*'` overrides from Garden/Stream/Blog/Micro/Photos/Evergreen/Stories/Poems/Nordletter pages and replace them with `SectionLanding` props (e.g., `contentPadding`, future inline padding hook).
   - Confirm `GardenGrid`, `StreamLayout`, and any sidebar slots do not reintroduce outer padding once SectionLanding owns the spacing.
