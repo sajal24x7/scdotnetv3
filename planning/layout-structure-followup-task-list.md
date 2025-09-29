@@ -11,7 +11,7 @@ This task list converts the findings from `planning/layout-structure-audit.md` i
   - Extract shared defaults/helpers so Garden/Stream/Blog/Micro/Photos/Evergreen/Stories/Poems/Nordletter pages stop duplicating configuration.
   - Document the new abstraction and update each route to consume it.
   - Added `createSectionLandingProps` utility and switched targeted routes to spread the shared defaults.
-- [ ] **Adopt SectionLanding on `/bookshelf/`**
+- [x] **Adopt SectionLanding on `/bookshelf/`**
   - Swap the bespoke bookshelf header/grid scaffolding for SectionLanding slots.
   - Ensure yearly sub-sections and TagList integrations still render correctly.
 - [ ] **Remove or reintegrate `TagSidebar`**

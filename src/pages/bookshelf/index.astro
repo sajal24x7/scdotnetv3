@@ -1,42 +1,55 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import SectionLanding from '../../layouts/SectionLanding.astro';
 import BookGrid from '../../components/bookshelf/BookGrid.astro';
-import TagList from '../../components/TagList.astro';
 import { getAllPosts } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
 
 // Get all posts and filter for bookshelf
 const allPosts = await getAllPosts();
 const bookshelfPosts = allPosts
-  .filter(post => post.data.category === 'bookshelf')
-  .sort((a, b) => {
-    // Sort by finished reading date if available, otherwise by pub date
-    const aDate = a.data.finishedReading || a.data.pubDate;
-    const bDate = b.data.finishedReading || b.data.pubDate;
-    return new Date(bDate).getTime() - new Date(aDate).getTime();
-  });
+    .filter((post) => post.data.category === 'bookshelf')
+    .sort((a, b) => {
+        // Sort by finished reading date if available, otherwise by pub date
+        const aDate = a.data.finishedReading || a.data.pubDate;
+        const bDate = b.data.finishedReading || b.data.pubDate;
+        return new Date(bDate).getTime() - new Date(aDate).getTime();
+    });
 
 // Separate currently reading books
-const currentlyReading = bookshelfPosts.filter(book => book.data.bookStatus === 'reading');
+const currentlyReading = bookshelfPosts.filter((book) => book.data.bookStatus === 'reading');
 
 // Group completed books by year
-const completedBooks = bookshelfPosts.filter(book => book.data.bookStatus === 'read' || !book.data.bookStatus);
+const completedBooks = bookshelfPosts.filter((book) => book.data.bookStatus === 'read' || !book.data.bookStatus);
 const booksByYear = completedBooks.reduce((acc, book) => {
-  const date = book.data.finishedReading || book.data.pubDate;
-  const year = new Date(date).getFullYear();
-  if (!acc[year]) {
-    acc[year] = [];
-  }
-  acc[year].push(book);
-  return acc;
+    const date = book.data.finishedReading || book.data.pubDate;
+    const year = new Date(date).getFullYear();
+    if (!acc[year]) {
+        acc[year] = [];
+    }
+    acc[year].push(book);
+    return acc;
 }, {} as Record<number, typeof bookshelfPosts>);
 
 // Get sorted years (newest first)
 const years = Object.keys(booksByYear)
-  .map(Number)
-  .sort((a, b) => b - a);
+    .map(Number)
+    .sort((a, b) => b - a);
 
 // Calculate total books count
 const totalBooks = bookshelfPosts.length;
+const countText = `${totalBooks} ${totalBooks === 1 ? 'book' : 'books'}`;
+
+const sectionLandingProps = createSectionLandingProps({
+    title: 'Bookshelf',
+    description: "A collection of books I've read and am currently reading, organized by year.",
+    countText,
+    countVariant: 'plain',
+    countClass: 'bookshelf-count',
+    tagCategory: 'bookshelf',
+    tagPosts: allPosts,
+    contentClass: 'bookshelf-content'
+});
 ---
 
 <Layout
@@ -44,93 +57,46 @@ const totalBooks = bookshelfPosts.length;
   description="Books I've read and am currently reading"
   currentPage="/bookshelf/"
   pageWrapper={{
-    maxWidth: '6xl',
+    maxWidth: '7xl',
     padding: 'none',
-    centered: true,
-    className: 'px-4'
+    centered: true
   }}
   allPosts={allPosts}
   enableSearchModal
   enableLinkHoverEffect
 >
-  <div class="bookshelf-container layout-boundary px-0 py-4 sm:px-2 sm:py-0">
-    <header class="bookshelf-header">
-      <h1 class="bookshelf-title">Bookshelf</h1>
-      <p class="bookshelf-description">
-        A collection of books I've read and am currently reading, organized by year.
-      </p>
-    </header>
-
-    <div class="bookshelf-count mb-6 text-center">
-      {totalBooks} {totalBooks === 1 ? 'book' : 'books'}
-    </div>
-    
-    <TagList category="bookshelf" posts={allPosts} />
-
-    <main class="bookshelf-content">
-      {/* Currently Reading Section */}
+  <SectionLanding {...sectionLandingProps}>
+    <div class="bookshelf-sections">
       {currentlyReading.length > 0 && (
-        <section class="section">
-          <h2 class="section-title">
-            Currently Reading
-            <span class="section-count">({currentlyReading.length})</span>
-          </h2>
+        <section class="bookshelf-section">
+          <header class="bookshelf-section__header">
+            <h2 class="bookshelf-section__title">Currently Reading</h2>
+            <span class="bookshelf-section__count">({currentlyReading.length})</span>
+          </header>
           <BookGrid books={currentlyReading} />
         </section>
       )}
 
-      {/* Books by Year */}
-      {years.map(year => (
-        <section class="section">
-          <h2 class="section-title">
-            {year}
-            <span class="section-count">({booksByYear[year].length})</span>
-          </h2>
+      {years.map((year) => (
+        <section class="bookshelf-section">
+          <header class="bookshelf-section__header">
+            <h2 class="bookshelf-section__title">{year}</h2>
+            <span class="bookshelf-section__count">({booksByYear[year].length})</span>
+          </header>
           <BookGrid books={booksByYear[year]} />
         </section>
       ))}
-    </main>
-  </div>
+    </div>
+  </SectionLanding>
 </Layout>
 
 <style>
-  .bookshelf-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-  .bookshelf-title {
-    font-size: var(--text-huge);
-    font-weight: 700;
-    line-height: 1.1;
-    margin: 0 0 1rem 0;
-    color: #111827;
-  }
-
-  :global(.dark) .bookshelf-title {
-    color: #f9fafb;
-  }
-
-  .bookshelf-description {
-    font-size: var(--text-normal);
-    line-height: 1.6;
-    color: #6b7280;
-    margin: 0 0 1.5rem 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  :global(.dark) .bookshelf-description {
-    color: #9ca3af;
-  }
-
   .bookshelf-count {
-    font-size: var(--text-small);
+    font-size: 0.875rem;
     font-weight: 500;
-    color: #6b7280;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    color: #6b7280;
   }
 
   :global(.dark) .bookshelf-count {
@@ -140,52 +106,57 @@ const totalBooks = bookshelfPosts.length;
   .bookshelf-content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: clamp(2rem, 5vw, 3rem);
     padding-bottom: 2rem;
   }
 
-  .section {
+  .bookshelf-sections {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: clamp(2rem, 5vw, 3rem);
   }
 
-  .section-title {
+  .bookshelf-section {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .bookshelf-section__header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .bookshelf-section__title {
     font-size: var(--text-large);
     font-weight: 600;
     margin: 0;
     color: #111827;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
   }
 
-  :global(.dark) .section-title {
+  :global(.dark) .bookshelf-section__title {
     color: #f9fafb;
   }
 
-  .section-count {
+  .bookshelf-section__count {
     font-size: var(--text-normal);
     font-weight: 500;
     color: #6b7280;
   }
 
-  :global(.dark) .section-count {
+  :global(.dark) .bookshelf-section__count {
     color: #9ca3af;
   }
 
-  /* Mobile adjustments */
   @media (max-width: 640px) {
-    .bookshelf-header {
-      margin-bottom: 2rem;
-    }
-
-    .bookshelf-content {
+    .bookshelf-content,
+    .bookshelf-sections {
       gap: 2rem;
     }
 
-    .section {
-      gap: 1rem;
+    .bookshelf-section {
+      gap: 1.5rem;
     }
   }
 </style>
