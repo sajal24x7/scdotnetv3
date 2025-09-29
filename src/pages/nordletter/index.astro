@@ -4,6 +4,7 @@ import SectionLanding from '../../layouts/SectionLanding.astro';
 import NordletterGrid from '../../components/NordletterGrid.astro';
 import NewsletterSignup from '../../components/ui/NewsletterSignup.astro';
 import { getAllPosts, transformPost, cleanNordletterTitle, getEditionDisplay } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
 
 // Get all posts and filter for nordletter
 const allPosts = await getAllPosts();
@@ -23,6 +24,17 @@ const transformedPosts = nordletterPosts.map(post => {
     }
   };
 });
+
+const sectionLandingProps = createSectionLandingProps({
+  title: 'Nordletter',
+  description: 'A weekly newsletter on living in Finland + 5 things from the web.',
+  tagCategory: 'nordletter',
+  tagPosts: allPosts,
+  tagWrapperClass: 'grid-span-full',
+  padding: 'wide',
+  contentClass: 'nordletter-content twelve-grid grid-gap-tight',
+  contentPadding: '0'
+});
 ---
 
 <Layout
@@ -38,19 +50,7 @@ const transformedPosts = nordletterPosts.map(post => {
   enableSearchModal
   enableLinkHoverEffect
 >
-  <SectionLanding
-    title="Nordletter"
-    description="A weekly newsletter on living in Finland + 5 things from the web."
-    layout="centered"
-    headerSize="lg"
-    headerMaxWidth="7xl"
-    tagCategory="nordletter"
-    tagPosts={allPosts}
-    tagWrapperClass="grid-span-full"
-    padding="wide"
-    contentClass="nordletter-content twelve-grid grid-gap-tight"
-    contentPadding="0"
-  >
+  <SectionLanding {...sectionLandingProps}>
     <div slot="beforeContent" class="nordletter-signup grid-span-full">
       <NewsletterSignup showCopy={false} wrapperClass="py-0" formClass="nordletter-signup__form" />
     </div>

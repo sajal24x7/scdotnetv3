@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
 
 // Get all evergreen posts
 const allPosts = await getAllPosts();
@@ -14,6 +15,18 @@ const evergreenPosts = allPosts
 const transformedPosts = evergreenPosts.map(transformPost);
 const postCount = transformedPosts.length;
 const postCountText = `${postCount} ${postCount === 1 ? 'evergreen note' : 'evergreen notes'}`;
+
+const sectionLandingProps = createSectionLandingProps(
+  {
+    title: 'Evergreen',
+    description: 'Timeless documentation and knowledge that remains relevant over time.',
+    countText: postCountText,
+    tagCategory: 'evergreen',
+    tagPosts: allPosts,
+    contentClass: 'evergreen-main twelve-grid grid-gap-tight'
+  },
+  'plainCount'
+);
 ---
 
 <Layout
@@ -29,19 +42,7 @@ const postCountText = `${postCount} ${postCount === 1 ? 'evergreen note' : 'ever
   enableSearchModal
   enableLinkHoverEffect
 >
-    <SectionLanding
-      title="Evergreen"
-      description="Timeless documentation and knowledge that remains relevant over time."
-      layout="centered"
-      headerSize="lg"
-      headerMaxWidth="7xl"
-      countText={postCountText}
-      countVariant="plain"
-      tagCategory="evergreen"
-      tagPosts={allPosts}
-      padding="narrow"
-      contentClass="evergreen-main twelve-grid grid-gap-tight"
-    >
+    <SectionLanding {...sectionLandingProps}>
       <GardenGrid posts={transformedPosts} contentType="evergreen" />
     </SectionLanding>
   </Layout>

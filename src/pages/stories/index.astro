@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
 
 // Get all posts and filter for stories
 const allPosts = await getAllPosts();
@@ -14,6 +15,18 @@ const stories = allPosts
 const transformedPosts = stories.map(transformPost);
 const storyCount = transformedPosts.length;
 const storyCountText = `${storyCount} ${storyCount === 1 ? 'story' : 'stories'}`;
+
+const sectionLandingProps = createSectionLandingProps(
+  {
+    title: 'Stories',
+    description: 'Short stories and fiction pieces.',
+    countText: storyCountText,
+    tagCategory: 'story',
+    tagPosts: allPosts,
+    contentClass: 'stories-main twelve-grid grid-gap-tight'
+  },
+  'plainCount'
+);
 ---
 
 <Layout
@@ -29,19 +42,7 @@ const storyCountText = `${storyCount} ${storyCount === 1 ? 'story' : 'stories'}`
   enableSearchModal
   enableLinkHoverEffect
 >
-    <SectionLanding
-      title="Stories"
-      description="Short stories and fiction pieces."
-      layout="centered"
-      headerSize="lg"
-      headerMaxWidth="7xl"
-      countText={storyCountText}
-      countVariant="plain"
-      tagCategory="story"
-      tagPosts={allPosts}
-      padding="narrow"
-      contentClass="stories-main twelve-grid grid-gap-tight"
-    >
+    <SectionLanding {...sectionLandingProps}>
       <GardenGrid posts={transformedPosts} contentType="stories" />
     </SectionLanding>
   </Layout>
