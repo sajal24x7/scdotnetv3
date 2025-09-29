@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import StreamLayout from '../../components/layout/StreamLayout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
 
 // Get all posts and filter for stream (blog, micro, and photo)
 const allPosts = await getAllPosts();
@@ -12,6 +13,17 @@ const stream = getPostsByCategory(allPosts, 'stream');
 const transformedPosts = stream.map(transformPost);
 const postCount = transformedPosts.length;
 const postCountText = `${postCount} ${postCount === 1 ? 'post' : 'posts'}`;
+
+const sectionLandingProps = createSectionLandingProps(
+  {
+    title: 'Stream',
+    description: 'Blog posts, photos, and micro updates from my daily life.',
+    countText: postCountText,
+    tagCategory: 'stream',
+    tagPosts: allPosts
+  },
+  'plainCount'
+);
 ---
 
 <Layout
@@ -27,19 +39,7 @@ const postCountText = `${postCount} ${postCount === 1 ? 'post' : 'posts'}`;
   enableSearchModal
   enableLinkHoverEffect
 >
-    <SectionLanding
-      title="Stream"
-      description="Blog posts, photos, and micro updates from my daily life."
-      layout="centered"
-      headerSize="lg"
-      headerMaxWidth="7xl"
-      countText={postCountText}
-      countVariant="plain"
-      tagCategory="stream"
-      tagTitle="Tagged with:"
-      tagPosts={allPosts}
-      padding="narrow"
-    >
+    <SectionLanding {...sectionLandingProps}>
       <StreamLayout posts={transformedPosts} />
     </SectionLanding>
   </Layout>

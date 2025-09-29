@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import StreamLayout from '../../components/layout/StreamLayout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
 
 // Get all posts and filter for blog
 const allPosts = await getAllPosts();
@@ -12,6 +13,17 @@ const blogPosts = getPostsByCategory(allPosts, 'blog');
 const transformedPosts = blogPosts.map(transformPost);
 const postCount = transformedPosts.length;
 const postCountText = `${postCount} ${postCount === 1 ? 'post' : 'posts'}`;
+
+const sectionLandingProps = createSectionLandingProps(
+  {
+    title: 'Blog',
+    description: 'Long-form thoughts, tutorials, and articles.',
+    countText: postCountText,
+    tagCategory: 'blog',
+    tagPosts: allPosts
+  },
+  'plainCount'
+);
 ---
 
 <Layout
@@ -27,19 +39,7 @@ const postCountText = `${postCount} ${postCount === 1 ? 'post' : 'posts'}`;
   enableSearchModal
   enableLinkHoverEffect
 >
-    <SectionLanding
-      title="Blog"
-      description="Long-form thoughts, tutorials, and articles."
-      layout="centered"
-      headerSize="lg"
-      headerMaxWidth="7xl"
-      countText={postCountText}
-      countVariant="plain"
-      tagCategory="blog"
-      tagTitle="Tagged with:"
-      tagPosts={allPosts}
-      padding="narrow"
-    >
+    <SectionLanding {...sectionLandingProps}>
       <StreamLayout posts={transformedPosts} />
     </SectionLanding>
   </Layout>

@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
 
 // Get all posts and filter for garden (evergreen, til, bookshelf, stories, poems)
 const allPosts = await getAllPosts();
@@ -11,6 +12,15 @@ const gardenPosts = getPostsByCategory(allPosts, 'garden');
 // Transform posts for the GardenGrid component
 const transformedPosts = gardenPosts.map(transformPost);
 const noteCountText = `${transformedPosts.length} ${transformedPosts.length === 1 ? 'note' : 'notes'}`;
+
+const sectionLandingProps = createSectionLandingProps({
+  title: 'Garden',
+  description: 'A collection of evergreen notes, learning, books, stories, and poems from my projects and explorations.',
+  countText: noteCountText,
+  tagCategory: 'garden',
+  tagPosts: allPosts,
+  contentClass: 'garden-main twelve-grid grid-gap-tight'
+});
 ---
 
 <Layout
@@ -26,18 +36,7 @@ const noteCountText = `${transformedPosts.length} ${transformedPosts.length === 
   enableSearchModal
   enableLinkHoverEffect
 >
-    <SectionLanding
-      title="Garden"
-      description="A collection of evergreen notes, learning, books, stories, and poems from my projects and explorations."
-      layout="centered"
-      headerSize="lg"
-      headerMaxWidth="7xl"
-      countText={noteCountText}
-      tagCategory="garden"
-      tagPosts={allPosts}
-      padding="narrow"
-      contentClass="garden-main twelve-grid grid-gap-tight"
-    >
+    <SectionLanding {...sectionLandingProps}>
       <GardenGrid posts={transformedPosts} />
     </SectionLanding>
   </Layout>

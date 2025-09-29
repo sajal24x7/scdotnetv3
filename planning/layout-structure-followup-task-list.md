@@ -7,9 +7,10 @@ This task list converts the findings from `planning/layout-structure-audit.md` i
   - Centralize horizontal padding inside `SectionLanding` so headers, counts, tag lists, and the `section-content` grid share one spacing source.
   - Remove the `pageWrapper.className: 'px-*'` overrides from Garden/Stream/Blog/Micro/Photos/Evergreen/Stories/Poems/Nordletter pages and replace them with `SectionLanding` props (e.g., `contentPadding`, future inline padding hook).
   - Confirm `GardenGrid`, `StreamLayout`, and any sidebar slots do not reintroduce outer padding once SectionLanding owns the spacing.
-- [ ] **Consolidate Section Landing usage**
+- [x] **Consolidate Section Landing usage**
   - Extract shared defaults/helpers so Garden/Stream/Blog/Micro/Photos/Evergreen/Stories/Poems/Nordletter pages stop duplicating configuration.
   - Document the new abstraction and update each route to consume it.
+  - Added `createSectionLandingProps` utility and switched targeted routes to spread the shared defaults.
 - [ ] **Adopt SectionLanding on `/bookshelf/`**
   - Swap the bespoke bookshelf header/grid scaffolding for SectionLanding slots.
   - Ensure yearly sub-sections and TagList integrations still render correctly.

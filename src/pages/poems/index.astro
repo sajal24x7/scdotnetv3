@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import { getAllPosts, transformPost } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
 
 // Get all posts and filter for poems
 const allPosts = await getAllPosts();
@@ -14,6 +15,18 @@ const poems = allPosts
 const transformedPosts = poems.map(transformPost);
 const poemCount = transformedPosts.length;
 const poemCountText = `${poemCount} ${poemCount === 1 ? 'poem' : 'poems'}`;
+
+const sectionLandingProps = createSectionLandingProps(
+  {
+    title: 'Poems',
+    description: 'Poetry and verse from my collections.',
+    countText: poemCountText,
+    tagCategory: 'poem',
+    tagPosts: allPosts,
+    contentClass: 'poems-main twelve-grid grid-gap-tight'
+  },
+  'plainCount'
+);
 ---
 
 <Layout
@@ -29,19 +42,7 @@ const poemCountText = `${poemCount} ${poemCount === 1 ? 'poem' : 'poems'}`;
   enableSearchModal
   enableLinkHoverEffect
 >
-    <SectionLanding
-      title="Poems"
-      description="Poetry and verse from my collections."
-      layout="centered"
-      headerSize="lg"
-      headerMaxWidth="7xl"
-      countText={poemCountText}
-      countVariant="plain"
-      tagCategory="poem"
-      tagPosts={allPosts}
-      padding="narrow"
-      contentClass="poems-main twelve-grid grid-gap-tight"
-    >
+    <SectionLanding {...sectionLandingProps}>
       <GardenGrid posts={transformedPosts} contentType="poems" />
     </SectionLanding>
   </Layout>
