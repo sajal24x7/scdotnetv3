@@ -19,7 +19,7 @@ This task list converts the findings from `planning/layout-structure-audit.md` i
   - Update references and documentation accordingly.
 
 ## Medium Priority
-- [ ] **Align Layout page wrapper padding with LayoutContainer tokens**
+ - [x] **Align Layout page wrapper padding with LayoutContainer tokens**
   - Audit the `Layout` → `LayoutContainer` wrapper (`mx-auto max-w-7xl grid-span-full px-*`) and replace ad-hoc `className` padding with the built-in `padding`/`paddingScale` props.
   - Update Nordletter and similar routes to keep the page wrapper padding-free and push spacing down into `SectionLanding`/inner components.
   - Document guidelines that Layout-level containers stay neutral while inner layouts own proximity padding.
