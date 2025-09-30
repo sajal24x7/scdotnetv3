@@ -26,7 +26,7 @@ These guidelines consolidate how the site should evolve without disrupting the c
 - Feeds: one canonical feed per bucket with consistent metadata and item shaping.
 
 ### UI/UX
-- Layout wrappers: use `PageWrapper` and `ProseWrapper` consistently to keep widths predictable. Keep current max-widths to avoid layout shift.
+- Layout primitives: keep outer shells on `src/layouts/Layout.astro` and rely on `LayoutContainer` for spacing/padding. Section pages should use `SectionLanding` with `createSectionLandingProps`, long-form articles should use `PostLayout`, and progress dashboards should lean on `ProgressLayout`.
 - Twelve-column grid:
   - Wrap top-level sections in the shared `.twelve-grid` container so width, padding, and gap tokens stay consistent. The utility outputs a single column by default and expands to twelve columns from `48rem` upwards.
   - Use `.grid-span-*` (or `.grid-span-full`) to control width and `.grid-start-*` to offset spans on desktop. Leave mobile fallbacks untouched so content naturally collapses to a single column.

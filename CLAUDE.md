@@ -84,7 +84,7 @@ Defined in `src/content/config.ts`:
 - **Book covers**: `src/utils/bookCovers.ts`
 
 ### Component Architecture
-- **Layout wrappers**: LayoutContainer + `.twelve-grid` utilities (GridWrapper/SectionWrapper are retired), ProseWrapper, PageWrapper
+- **Layout wrappers**: LayoutContainer + `.twelve-grid` utilities (GridWrapper/SectionWrapper are retired) with SectionLanding, ProgressLayout, and PostLayout covering common shells
 - **Content grids**: ContentGrid, NotesGrid, NordletterGrid, BookGrid
 - **Reusable UI**: PostCard, Tag, TagList, CategoryDisplay
 

@@ -48,7 +48,7 @@ The goal is to create a visually engaging, information-rich landing page that is
 
 The current home page (`src/pages/index.astro`) uses the following structure:
 
-- **Layout:** Wrapped in the `Layout` component, which applies a `PageWrapper` with `maxWidth: '7xl'`, `padding: 'none'`, and `className: 'px-2'` for consistent max width and centering.
+- **Layout:** Wrapped in the `Layout` component, which forwards a `LayoutContainer` configuration (`maxWidth: '7xl'`, `padding: 'none'`, `className: 'px-2'`) for consistent max width and centering.
 - **ProfileHero:** Displays the user's profile, name, image, and job description at the top.
 - **BookShowcase:** Highlights a featured book with cover, title, and description.
 - **NewsletterSignup:** Section for newsletter signups.
@@ -58,7 +58,7 @@ The current home page (`src/pages/index.astro`) uses the following structure:
 
 **Layout Approach:**
 - Uses Tailwind utility classes for spacing, borders, and typography.
-- All main content is inside the `Layout`/`PageWrapper` for consistent max width.
+- All main content is inside the `Layout`/`LayoutContainer` pairing for consistent max width.
 - No custom four-quadrant grid as described in the new requirements; the current `FourSectionLayout` is a simple section grid with links and counts.
 
 ---
@@ -68,6 +68,6 @@ The current home page (`src/pages/index.astro`) uses the following structure:
 ### P1.1 (July 25, 2025)
 - **File analyzed:** `src/pages/index.astro`
 - **Key features:** Profile, book showcase, newsletter, four-section grid (links/counts), recent posts, directory/footer
-- **Technical notes:** Uses `Layout`/`PageWrapper` for max width; no custom four-quadrant content grid yet
+- **Technical notes:** Uses `Layout`/`LayoutContainer` for max width; no custom four-quadrant content grid yet
 - **Next:** Design new four-section layout structure (P1.2)
 *To be filled as tasks are completed, including files modified, features implemented, and any issues resolved.* 

@@ -16,3 +16,8 @@ Pages that render archive-style grids share a common `SectionLanding` configurat
 ## Layout container usage
 
 The site-wide `Layout` component exposes a `pageWrapper` hook that forwards props to `LayoutContainer`. When page-level padding is needed, rely on the `padding` and `paddingScale` tokens defined on `LayoutContainer` instead of sprinkling Tailwind utility classes through `className`. Keep the wrapper neutral and push contextual spacing into inner surfaces (for example `SectionLanding` or dedicated content wrappers) so every route inherits the same structural frame.
+
+## Other shared layouts
+
+- **Progress pages**: `/now/` and `/done/` both render through `src/components/layout/ProgressLayout.astro`, which handles the two-column stats rail and main content slot.
+- **Long-form posts**: Articles rendered by `[...slug].astro` use `src/components/layout/PostLayout.astro` to standardize hero metadata, tags, backlinks, and microformat wiring.

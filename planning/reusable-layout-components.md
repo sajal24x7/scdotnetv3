@@ -1,266 +1,90 @@
-
 ## Overview
-Create reusable layout components similar to Maggie Appleton's site structure to control max width, page width, and other layout constraints consistently across the site.
 
-## Current State Analysis
+The reusable layout system now centers on a small set of primitives that balance spacing control with predictable markup. This
+refresh documents the current architecture so new surfaces stay aligned with the shared design language.
 
-### Existing Layout Structure
-- **Layout.astro**: Primary layout with `container mx-auto px-4 py-8 flex-grow max-w-3xl`
-- **PageHeader.astro**: Header component with title, description, and actions
-- **FourSectionLayout.astro**: Grid layout for sections
-- _Legacy base layout markup was retired; Layout.astro now acts as the single shared wrapper._
+- **Last audited:** 2025-10-07
+- **Primary contacts:** Layout maintainers (`src/layouts/`, `src/components/layout/` owners)
 
-### Current CSS Classes Used
-- `container mx-auto px-4 py-8 max-w-3xl` - Main content container
-- `max-w-4xl mx-auto px-4 sm:px-6 lg:px-8` - Home page container
-- `max-width: 1400px` - Blog/Notes pages
-- `prose` - Typography styling for content
-- Various responsive classes: `sm:px-6 lg:px-8`
+## Core Primitives
 
-## Implementation Plan
+### LayoutContainer (`src/components/layout/LayoutContainer.astro`)
+- Governs max-width, padding, and optional prose styling.
+- Accepts `paddingScale` to switch between page-scale and container-scale spacing tokens.
+- Provides a `grid` namespace so wrappers like `Layout.astro` can pass `.twelve-grid` gap and padding settings consistently.
+- Replaces the legacy `PageWrapper`, `ContainerWrapper`, and `ProseWrapper` components. Those files are retired and should not
+  re-surface.
 
-### Phase 1: Create Core Layout Components
+### Layout (`src/layouts/Layout.astro`)
+- Global shell that wires header, footer, and the `LayoutContainer` wrapper.
+- Routes configure `pageWrapper` to opt into container widths, grid padding, or prose treatments while leaving outer spacing
+  neutral.
+- Always keep new routes inside `Layout`; bespoke top-level shells drift from navigation/search affordances.
 
-#### P1.1 Create PageWrapper Component
-- **File**: `src/components/layout/PageWrapper.astro`
-- **Purpose**: Control page width and centering
-- **Props**:
-  - `maxWidth`: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full'
-  - `padding`: 'none' | 'sm' | 'md' | 'lg' | 'xl'
-  - `centered`: boolean
-  - `className`: string (additional classes)
+### SectionLanding (`src/layouts/SectionLanding.astro`)
+- Standardizes section headers, count badges, tag rails, and main/sidebar grids.
+- Works with `createSectionLandingProps` (`src/utils/sectionLanding.ts`) to pull in presets for layout, header sizing, and
+  padding tokens.
+- Section pages (Garden, Stream, Blog, Micro, Photos, Stories, Poems, Evergreen, Nordletter, Books, Bookshelf) should spread the
+  helper output and only override slots or copy.
 
-#### P1.2 Create ProseWrapper Component
-- **File**: `src/components/layout/ProseWrapper.astro`
-- **Purpose**: Control content width for readable text
-- **Props**:
-  - `maxWidth`: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full'
-  - `className`: string (additional classes)
-  - `centered`: boolean
+### ProgressLayout (`src/components/layout/ProgressLayout.astro`)
+- Shared scaffold for `/now/` and `/done/` that exposes slots for stats, quick links, and body content.
+- Relies on `LayoutContainer` internally so additional progress-style pages can drop in without copying grid math.
 
-#### P1.3 Create ContainerWrapper Component
-- **File**: `src/components/layout/ContainerWrapper.astro`
-- **Purpose**: General container with responsive padding
-- **Props**:
-  - `maxWidth`: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full'
-  - `padding`: 'none' | 'sm' | 'md' | 'lg' | 'xl'
-  - `className`: string (additional classes)
+### PostLayout (`src/components/layout/PostLayout.astro`)
+- Wraps article surfaces (`[...slug].astro`) with hero metadata, tag listings, share links, backlinks, syndication, and
+  webmentions.
+- Uses `LayoutContainer` in prose mode so long-form content inherits typography defaults automatically.
 
-### Phase 2: Update Existing Layouts
+## Usage Guidelines
 
-#### P2.1 Update Layout.astro
-- Replace hardcoded container classes with PageWrapper
-- Maintain current visual appearance
-- Add props for customization
+1. **Prefer helpers over ad-hoc class names.** Reach for `createSectionLandingProps` instead of rebuilding padding or count
+   logic. Add new presets there if a route needs a different combination.
+2. **Keep Layout neutral.** Only configure `pageWrapper` when a page needs prose sizing or specific grid padding. Push all other
+   spacing down into `SectionLanding`, `ProgressLayout`, or feature-specific wrappers.
+3. **Stick with `.twelve-grid`.** When adding new layouts, start from the shared grid utilities (`grid-span-*`, `grid-pad-*`,
+   `grid-gap-*`). Avoid bespoke CSS grids unless a component cannot express itself with the existing tokens.
+4. **Document new primitives here.** When introducing a new layout component, add an entry below so future sections can discover
+   it before duplicating markup.
 
-#### P2.2 Audit Other Layout Wrappers
-- Review remaining templates for hardcoded container classes
-- Replace any duplicated patterns with PageWrapper or ProseWrapper
-- Maintain current visual appearance
+## Existing Components At-a-Glance
 
-### Phase 3: Update Page Templates
+| Component | Purpose | Typical Consumers |
+| --- | --- | --- |
+| `LayoutContainer` | Max-width, padding, optional prose formatting | `Layout`, `PostLayout`, marketing pages |
+| `SectionLanding` | Section hero, counts, tag rails, main/sidebar grid | `garden/`, `stream/`, `blog/`, `photos/`, `nordletter/`, `bookshelf/` |
+| `ProgressLayout` | Two-column progress dashboards with stats rail | `/now/`, `/done/` |
+| `PostLayout` | Long-form article wrapper with metadata + microformats | `[...slug].astro` |
+| `StreamLayout` (`src/components/layout/StreamLayout.astro`) | Stream/Garden list scaffolding with optional sidebar slot | `/stream/`, `/blog/`, `/micro/`, `/photos/` |
+| `GardenGrid` (`src/components/layout/GardenGrid.astro`) | Accent-aware card grid for garden/prose listings | `/garden/`, `/stories/`, `/poems/`, `/evergreen/` |
 
-#### P3.1 Update Home Page (index.astro)
-- Replace `max-w-4xl mx-auto px-4 sm:px-6 lg:px-8` with PageWrapper
-- Maintain current visual appearance
+## Migration & Legacy Notes
 
-#### P3.2 Update Blog Index (blog/index.astro)
-- Replace custom container styles with PageWrapper
-- Maintain current visual appearance
+- `PageWrapper`, `ContainerWrapper`, and `ProseWrapper` were superseded in September 2025. Remove remaining references in planning
+  docs when encountered.
+- `SectionWrapper` and `GridWrapper` remain archived for historical context only. The `.twelve-grid` utility covers their use
+  cases.
+- When migrating older content, convert bespoke wrappers into one of the primitives above, then delete the redundant markup.
 
-#### P3.3 Update Notes Index (notes/index.astro)
-- Replace custom container styles with PageWrapper
-- Maintain current visual appearance
+## Onboarding Checklist for New Routes
 
-#### P3.4 Update Other Content Pages
-- Update all remaining pages to use new layout components
-- Maintain current visual appearance
+1. Start with `src/layouts/Layout.astro`.
+2. Decide whether the page is:
+   - A **section landing** → use `SectionLanding` + `createSectionLandingProps`.
+   - A **progress dashboard** → use `ProgressLayout`.
+   - A **long-form article** → use `PostLayout`.
+   - A **custom layout** → wrap feature-specific markup in `LayoutContainer`, applying grid tokens explicitly.
+3. Confirm padding comes from the chosen layout component, not ad-hoc `px-*` classes on the outer page.
+4. Update this document if a new reusable primitive emerges.
 
-### Phase 4: Create Additional Layout Components (if needed)
+## References
 
-#### P4.1 Create SectionWrapper Component *(superseded)*
-- **Status**: Retired September 2025; upstream twelve-column utilities now provide spacing directly on the parent grid.
-- **Historical file**: `src/components/layout/SectionWrapper.astro`
-- **Purpose**: Wrap sections with consistent spacing
-- **Props**:
-  - `padding`: 'none' | 'sm' | 'md' | 'lg' | 'xl'
-  - `margin`: 'none' | 'sm' | 'md' | 'lg' | 'xl'
-  - `className`: string (additional classes)
-
-#### P4.2 Create GridWrapper Component *(superseded)*
-- **Status**: Retired September 2025 in favor of `.twelve-grid` span helpers and Tailwind utilities.
-- **Historical file**: `src/components/layout/GridWrapper.astro`
-- **Purpose**: Responsive grid layouts
-- **Props**:
-  - `columns`: number | object (responsive)
-  - `gap`: 'none' | 'sm' | 'md' | 'lg' | 'xl'
-  - `className`: string (additional classes)
-
-### Phase 5: Testing and Validation
-
-#### P5.1 Visual Testing
-- Ensure all pages look identical to current state
-- Test responsive behavior
-- Verify dark mode compatibility
-
-#### P5.2 Component Testing
-- Test all prop combinations
-- Verify default values work correctly
-- Test edge cases
-
-## Implementation Details
-
-### Component Structure
-
-#### PageWrapper.astro
-```astro
----
-interface Props {
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
-  padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
-  centered?: boolean;
-  className?: string;
-}
-
-const { 
-  maxWidth = '3xl', 
-  padding = 'md', 
-  centered = true, 
-  className = '' 
-} = Astro.props;
-
-const maxWidthClasses = {
-  sm: 'max-w-sm',
-  md: 'max-w-md',
-  lg: 'max-w-lg',
-  xl: 'max-w-xl',
-  '2xl': 'max-w-2xl',
-  '3xl': 'max-w-3xl',
-  '4xl': 'max-w-4xl',
-  '5xl': 'max-w-5xl',
-  '6xl': 'max-w-6xl',
-  '7xl': 'max-w-7xl',
-  full: 'max-w-full'
-};
-
-const paddingClasses = {
-  none: '',
-  sm: 'px-2 py-4',
-  md: 'px-4 py-8',
-  lg: 'px-6 py-12',
-  xl: 'px-8 py-16'
-};
-
-const containerClasses = `container mx-auto ${maxWidthClasses[maxWidth]} ${paddingClasses[padding]} ${centered ? 'mx-auto' : ''} ${className}`;
----
-
-<div class={containerClasses}>
-  <slot />
-</div>
-```
-
-#### ProseWrapper.astro
-```astro
----
-interface Props {
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
-  className?: string;
-  centered?: boolean;
-}
-
-const { 
-  maxWidth = '4xl', 
-  className = '', 
-  centered = true 
-} = Astro.props;
-
-const maxWidthClasses = {
-  sm: 'max-w-sm',
-  md: 'max-w-md',
-  lg: 'max-w-lg',
-  xl: 'max-w-xl',
-  '2xl': 'max-w-2xl',
-  '3xl': 'max-w-3xl',
-  '4xl': 'max-w-4xl',
-  '5xl': 'max-w-5xl',
-  '6xl': 'max-w-6xl',
-  '7xl': 'max-w-7xl',
-  full: 'max-w-full'
-};
-
-const proseClasses = `prose dark:prose-invert ${maxWidthClasses[maxWidth]} ${centered ? 'mx-auto' : ''} ${className}`;
----
-
-<div class={proseClasses}>
-  <slot />
-</div>
-```
-
-### Migration Strategy
-
-1. **Create components first** - Build all layout components
-2. **Update layouts** - Ensure Layout.astro and related templates share the new wrappers
-3. **Update pages one by one** - Start with index.astro, then blog, notes, etc.
-4. **Test each change** - Ensure visual consistency
-5. **Final validation** - Complete site testing
-
-## Success Criteria
-
-- [ ] All pages maintain current visual appearance
-- [ ] Responsive behavior works correctly
-- [ ] Dark mode compatibility preserved
-- [ ] Components are reusable and flexible
-- [ ] Code is cleaner and more maintainable
-- [ ] Performance is not degraded
-
-## Current Phase: COMPLETED ✅
-## Overall Progress: 100% (All Phases Complete)
-
----
-
-## Notes
-- Maintain existing CSS classes and styling
-- Preserve current responsive behavior
-- Keep dark mode compatibility
-- Focus on visual consistency first, then optimization
-
----
-
-## Completion Notes
-
-### Files Created
-- `src/components/layout/PageWrapper.astro` - Main page width controller
-- `src/components/layout/ProseWrapper.astro` - Content width for readable text
-- `src/components/layout/ContainerWrapper.astro` - General container with responsive padding
-- `src/components/layout/SectionWrapper.astro` - Section spacing wrapper *(retired Sept 2025 in favor of `.twelve-grid` utilities)*
-- `src/components/layout/GridWrapper.astro` - Responsive grid layouts *(retired Sept 2025 in favor of `.twelve-grid` utilities)*
-- `planning/reusable-layout-components.md` - Implementation plan and documentation
-
-### Files Updated
-- `src/layouts/Layout.astro` - Updated to use PageWrapper with configurable props
-- `src/pages/index.astro` - Updated to use new layout system
-- `src/pages/blog/index.astro` - Updated to use new layout system
-- `src/pages/notes/index.astro` - Updated to use new layout system
-- `src/pages/about.astro` - Updated to use new layout system
-- `src/pages/now.astro` - Updated to use new layout system
-- `src/pages/poems/index.astro` - Updated to use new layout system
-- `src/pages/stories/index.astro` - Updated to use new layout system
-- `src/pages/ephemera/index.astro` - Updated to use new layout system
-
-### Key Features Implemented
-- ✅ Reusable layout components similar to Maggie Appleton's site
-- ✅ Configurable max width, padding, and centering
-- ✅ Maintained visual consistency across all pages
-- ✅ Responsive behavior preserved
-- ✅ Dark mode compatibility maintained
-- ✅ Clean, maintainable code structure
-- ✅ TypeScript interfaces for all components
-
-### Testing Results
-- ✅ Development server runs without errors
-- ✅ All pages maintain current visual appearance
-- ✅ Responsive behavior works correctly
-- ✅ Dark mode compatibility preserved
-- ✅ Components are reusable and flexible
-
-**Last Updated**: January 18, 2025 
+- `src/components/layout/LayoutContainer.astro`
+- `src/layouts/Layout.astro`
+- `src/layouts/SectionLanding.astro`
+- `src/utils/sectionLanding.ts`
+- `src/components/layout/ProgressLayout.astro`
+- `src/components/layout/PostLayout.astro`
+- `src/components/layout/StreamLayout.astro`
+- `src/components/layout/GardenGrid.astro`

@@ -13,8 +13,8 @@
   - Add skip link to `Header.astro` (hidden until focus), and ensure `main` has `id="content"`.
   - Ensure `nav`, `main`, `footer` semantics exist (they do). Add `aria-current` on active nav links.
 - [ ] P1.2 Standardize wrappers
-  - Ensure pages use `Layout.astro` with `PageWrapper` or `ProseWrapper` appropriately.
-  - Create a brief usage guideline per page type.
+  - Ensure pages use `Layout.astro` with the `LayoutContainer` configuration (`pageWrapper`) instead of legacy wrappers.
+  - Document when to pick `SectionLanding`, `ProgressLayout`, or `PostLayout` for new routes.
 - [ ] P1.3 Search modal accessibility
   - Add `role="dialog"`, `aria-modal="true"`, label the title, focus trap, close on `Esc` (exists), restore focus to opener.
   - Add keyboard navigation between results.
