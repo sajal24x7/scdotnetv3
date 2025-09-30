@@ -45,7 +45,13 @@ const publishedDate = entryData?.pubDate;
 const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
 ---
 
-<LayoutContainer prose maxWidth="4xl" className="px-4 md:px-0">
+<LayoutContainer
+    prose
+    maxWidth="4xl"
+    padding="sm"
+    paddingScale="page"
+    className="post-layout__container"
+>
     <article class="h-entry">
         <!-- Hidden microformat data -->
         <a href={canonicalUrl} class="u-url" style="display: none;"></a>
@@ -135,3 +141,15 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
         <Webmentions url={canonicalUrl} />
     </article>
 </LayoutContainer>
+
+<style>
+    .post-layout__container {
+        padding-block: 0;
+    }
+
+    @media (min-width: 48rem) {
+        .post-layout__container {
+            padding-inline: 0;
+        }
+    }
+</style>
