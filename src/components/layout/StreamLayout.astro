@@ -18,14 +18,14 @@ const isMicroContent = (category: string) => category === 'micro';
 ---
 
 <div class="stream-layout twelve-grid grid-gap-tight">
-    <section class="stream-layout__posts grid-span-8 grid-start-3">
+    <section class="stream-layout__posts">
         {renderedPosts.map((post) => (
             <PostItem post={post} isMicroContent={isMicroContent} showFullContent={true} />
         ))}
     </section>
 
     {hasSidebarContent && (
-        <aside class="stream-layout__sidebar grid-span-2 grid-start-1">
+        <aside class="stream-layout__sidebar">
             <div class="stream-layout__sidebar-inner">
                 <slot name="sidebar" />
             </div>
@@ -44,10 +44,12 @@ const isMicroContent = (category: string) => category === 'micro';
         display: flex;
         flex-direction: column;
         gap: var(--grid-row-gap);
+        grid-column: 1 / -1;
     }
 
     .stream-layout__sidebar {
         align-self: start;
+        grid-column: 1 / -1;
     }
 
     .stream-layout__sidebar-inner {
@@ -61,6 +63,17 @@ const isMicroContent = (category: string) => category === 'micro';
     @media (max-width: 63.9375rem) {
         .stream-layout__sidebar-inner {
             position: static;
+        }
+    }
+
+    @media (min-width: 48rem) {
+        .stream-layout__posts {
+            grid-column: 3 / span 8;
+        }
+
+        .stream-layout__sidebar {
+            grid-column: 1 / span 2;
+            grid-row: 1;
         }
     }
 </style>
