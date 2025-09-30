@@ -23,7 +23,7 @@ This task list converts the findings from `planning/layout-structure-audit.md` i
   - Audit the `Layout` → `LayoutContainer` wrapper (`mx-auto max-w-7xl grid-span-full px-*`) and replace ad-hoc `className` padding with the built-in `padding`/`paddingScale` props.
   - Update Nordletter and similar routes to keep the page wrapper padding-free and push spacing down into `SectionLanding`/inner components.
   - Document guidelines that Layout-level containers stay neutral while inner layouts own proximity padding.
-- [ ] **Create a shared Progress layout**
+- [x] **Create a shared Progress layout**
   - Extract the duplicated grid/aside logic from `/now/` and `/done/` into a reusable component.
   - Parameterize title, description, and empty-state copy.
 - [ ] **Explore a Post layout wrapper**

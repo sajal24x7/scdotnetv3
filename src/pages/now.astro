@@ -2,8 +2,8 @@
 import { getAllPosts } from '../utils/content';
 import Layout from '../layouts/Layout.astro';
 import TimeDisplay from '../components/TimeDisplay.astro';
-import PageHeader from '../components/layout/PageHeader.astro';
 import LayoutContainer from '../components/layout/LayoutContainer.astro';
+import ProgressLayout from '../components/layout/ProgressLayout.astro';
 import { parseMarkdown } from '../utils/markdown';
 import { formatDate } from '../utils/dateFormat';
 import '../styles/progress-page.css';
@@ -41,6 +41,19 @@ const quickLinks = [
         description: 'Longer-term notes and research that inform these efforts.'
     }
 ];
+
+const summaryStats = activeCount > 0
+    ? [
+        {
+            label: 'Active updates',
+            value: String(activeCount)
+        },
+        {
+            label: 'Last updated',
+            value: latestUpdate ?? '—'
+        }
+    ]
+    : [];
 ---
 
 <Layout
@@ -61,85 +74,39 @@ const quickLinks = [
   enableSearchModal
   enableLinkHoverEffect
 >
-    <section class="progress-page__layout twelve-grid">
-        <header class="progress-page__header grid-span-full">
-            <PageHeader
-                title="Now"
-                description="A snapshot of what I'm currently focused on, thinking about, and working towards."
-                layout="centered"
-                size="lg"
-                maxWidth="7xl"
-            />
-        </header>
+    <ProgressLayout
+        pageTitle="Now"
+        pageDescription="A snapshot of what I'm currently focused on, thinking about, and working towards."
+        hasItems={renderedPosts.length > 0}
+        stats={summaryStats}
+        quickLinks={quickLinks}
+    >
+        <p slot="intro" class="progress-page__intro">
+            View <a href="/done/" class="progress-page__link">completed tasks</a> when you want to see what recently wrapped.
+        </p>
 
-        <section class="progress-page__content grid-span-8 grid-start-1">
-            <p class="progress-page__intro">
-                View <a href="/done/" class="progress-page__link">completed tasks</a> when you want to see what recently wrapped.
-            </p>
-
-            {renderedPosts.length > 0 ? (
-                <div class="progress-page__list">
-                    {renderedPosts.map((post) => (
-                        <article class="progress-card">
-                            <div class="progress-card__meta">
-                                <TimeDisplay
-                                    date={post.data.pubDate}
-                                    category="now"
-                                    format="month-year"
-                                    className="progress-card__time"
-                                />
-                                {post.data.title && (
-                                    <h2 class="progress-card__title">{post.data.title}</h2>
-                                )}
-                            </div>
-
-                            {post.renderedContent && (
-                                <LayoutContainer prose maxWidth="full" className="progress-card__body">
-                                    <div set:html={post.renderedContent} />
-                                </LayoutContainer>
-                            )}
-                        </article>
-                    ))}
+        {renderedPosts.map((post) => (
+            <article class="progress-card">
+                <div class="progress-card__meta">
+                    <TimeDisplay
+                        date={post.data.pubDate}
+                        category="now"
+                        format="month-year"
+                        className="progress-card__time"
+                    />
+                    {post.data.title && (
+                        <h2 class="progress-card__title">{post.data.title}</h2>
+                    )}
                 </div>
-            ) : (
-                <p class="progress-page__empty">No active updates yet.</p>
-            )}
-        </section>
 
-        {(activeCount > 0 || quickLinks.length > 0) && (
-            <aside class="progress-page__sidebar grid-span-4 grid-start-9">
-                {activeCount > 0 && (
-                    <div class="progress-sidebar-card">
-                        <h2 class="progress-sidebar-card__title">Summary</h2>
-                        <dl class="progress-sidebar-card__stats">
-                            <div>
-                                <dt>Active updates</dt>
-                                <dd>{activeCount}</dd>
-                            </div>
-                            <div>
-                                <dt>Last updated</dt>
-                                <dd>{latestUpdate ?? '—'}</dd>
-                            </div>
-                        </dl>
-                    </div>
+                {post.renderedContent && (
+                    <LayoutContainer prose maxWidth="full" className="progress-card__body">
+                        <div set:html={post.renderedContent} />
+                    </LayoutContainer>
                 )}
+            </article>
+        ))}
 
-                {quickLinks.length > 0 && (
-                    <div class="progress-sidebar-card">
-                        <h2 class="progress-sidebar-card__title">Quick links</h2>
-                        <ul class="progress-sidebar-card__links">
-                            {quickLinks.map(link => (
-                                <li>
-                                    <a class="progress-sidebar-card__link" href={link.href}>
-                                        <span class="progress-sidebar-card__link-label">{link.label}</span>
-                                        <span class="progress-sidebar-card__link-description">{link.description}</span>
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-            </aside>
-        )}
-    </section>
+        <p slot="empty" class="progress-page__empty">No active updates yet.</p>
+    </ProgressLayout>
 </Layout>
