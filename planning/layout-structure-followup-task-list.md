@@ -39,7 +39,7 @@ This task list converts the findings from `planning/layout-structure-audit.md` i
   - Captured the findings in `planning/garden-grid-cardgrid-assessment.md` and recommended keeping `GardenGrid` as the integration layer until additional consumers surface.
 
 ## Low Priority / Nice to Have
-- [ ] **Inventory layout documentation**
+- [x] **Inventory layout documentation**
   - Cross-link any new abstractions from developer docs so future routes adopt them consistently.
 - [ ] **Monitor stream sidebar opportunities**
   - Plan enhancements that would use StreamLayout’s sticky sidebar slot (e.g., surfacing filters or featured posts).
