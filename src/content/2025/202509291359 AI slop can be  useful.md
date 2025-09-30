@@ -1,15 +1,18 @@
 ---
-title: "AI slop can be  useful"
-slug: "ai-slop-can-be-useful"
-pubDate: 2025-09-29T14:03:32+03:00
-updatedDate: 2025-09-29T14:03:32+03:00
+title: AI slop can be  useful
+slug: ai-slop-can-be-useful
+pubDate: 2025-09-29T11:03:32.000Z
+updatedDate: 2025-09-29T11:03:32.000Z
 category: micro
 tags:
   - note-taking
   - ai
   - notes
   - obsidian
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115291028383499271'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3lzzk3skxnt2k'
+  - 'https://www.threads.com/@sajal24x7/post/DPNeyN1D4F6'
 ---
 
 [I like AI slop and I cannot lie - Interconnected](https://interconnected.org/home/2025/09/26/slop)
