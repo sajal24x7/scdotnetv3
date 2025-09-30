@@ -29,10 +29,10 @@ This task list converts the findings from `planning/layout-structure-audit.md` i
 - [x] **Explore a Post layout wrapper**
   - Identify repeated scaffolding inside `[...slug].astro` and similar article templates.
   - Prototype a `PostLayout` component that centralizes hero, metadata, and supporting sections.
-- [ ] **Bring `[...slug].astro` into the padding audit**
-  - Catalogue how the post view uses `LayoutContainer` (`className="px-4 md:px-0"`) and plan to swap Tailwind padding classes for component props or a dedicated article body wrapper.
-  - Ensure post metadata, hero, and supporting sections inherit consistent inline padding without relying on the global page wrapper.
-  - Update the audit document to reflect the dynamic post route once the padding plan is in place.
+- [x] **Bring `[...slug].astro` into the padding audit**
+  - Swapped the post view to use `LayoutContainer`'s page-scale padding tokens via `PostLayout` while keeping responsive inline spacing scoped to the article shell.
+  - Confirmed hero metadata, backlinks, and syndication sections continue to share the consistent article wrapper.
+  - Refreshed the audit entry to describe the delegated PostLayout structure.
 - [ ] **Assess GardenGrid internal abstraction**
   - Evaluate whether a lower-level `CardGrid` utility would simplify `GardenGrid` span + accent handling.
   - Document trade-offs before refactoring.
