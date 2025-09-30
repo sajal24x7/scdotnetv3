@@ -26,7 +26,7 @@ This task list converts the findings from `planning/layout-structure-audit.md` i
 - [x] **Create a shared Progress layout**
   - Extract the duplicated grid/aside logic from `/now/` and `/done/` into a reusable component.
   - Parameterize title, description, and empty-state copy.
-- [ ] **Explore a Post layout wrapper**
+- [x] **Explore a Post layout wrapper**
   - Identify repeated scaffolding inside `[...slug].astro` and similar article templates.
   - Prototype a `PostLayout` component that centralizes hero, metadata, and supporting sections.
 - [ ] **Bring `[...slug].astro` into the padding audit**

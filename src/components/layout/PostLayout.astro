@@ -1,0 +1,137 @@
+---
+import LayoutContainer from './LayoutContainer.astro';
+import TimeDisplay from '../TimeDisplay.astro';
+import Tag from '../Tag.astro';
+import ShareButton from '../ShareButton.astro';
+import Backlinks from '../Backlinks.astro';
+import SyndicationLinks from '../SyndicationLinks.astro';
+import Webmentions from '../Webmentions.astro';
+
+interface Backlink {
+    slug: string;
+    title: string;
+    description: string;
+    category: string;
+    pubDate: Date;
+}
+
+interface PostEntry {
+    data: Record<string, any>;
+}
+
+interface Props {
+    entry: PostEntry;
+    category: string;
+    canonicalUrl: string;
+    backlinks: Backlink[];
+    hasUpdatedDate: boolean;
+}
+
+const { entry, category, canonicalUrl, backlinks, hasUpdatedDate } = Astro.props as Props;
+
+const entryData = entry.data ?? {};
+
+const title = entryData?.title ?? '';
+const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+const description = 'description' in entryData ? entryData.description : undefined;
+const tags = 'tags' in entryData && Array.isArray(entryData.tags) ? entryData.tags : [];
+const syndicationUrls = 'syndicationUrls' in entryData && Array.isArray(entryData.syndicationUrls)
+    ? entryData.syndicationUrls
+    : [];
+const heroImage = 'image' in entryData ? entryData.image : undefined;
+const edition = category === 'nordletter' && 'edition' in entryData ? entryData.edition : undefined;
+const bridgyOmit = 'bridgyOmit' in entryData && entryData.bridgyOmit;
+const publishedDate = entryData?.pubDate;
+const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
+---
+
+<LayoutContainer prose maxWidth="4xl" className="px-4 md:px-0">
+    <article class="h-entry">
+        <!-- Hidden microformat data -->
+        <a href={canonicalUrl} class="u-url" style="display: none;"></a>
+        {bridgyOmit && (
+            <a href={canonicalUrl} class="u-bridgy-omit-link" style="display: none;"></a>
+        )}
+        <div class="p-author h-card" style="display: none;">
+            <a class="p-name u-url" href="https://sajalchoudhary.net">Sajal Choudhary</a>
+            <a class="u-url" href="https://sajalchoudhary.net">https://sajalchoudhary.net</a>
+        </div>
+
+        <div class="mb-8">
+            {/* Hero image for all posts */}
+            {heroImage && (
+                <div class="mb-6">
+                    <img
+                        src={heroImage}
+                        alt={title}
+                        class="rounded-lg w-full object-cover max-h-96"
+                        loading="lazy"
+                    />
+                </div>
+            )}
+
+            <div class="text-center">
+                <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
+
+                {category === 'nordletter' && edition && (
+                    <div class="flex justify-center items-center gap-4 mb-4">
+                        <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Letter: {edition}
+                            </span>
+                        </div>
+                        <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Posted on <TimeDisplay date={updatedDate ?? publishedDate} category={category} format="detailed" />
+                            </span>
+                        </div>
+                    </div>
+                )}
+
+                {category !== 'nordletter' && (
+                    <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
+                        {updatedDate ? (
+                            <>Last updated: <time class="dt-updated" datetime={updatedDate.toISOString()}><TimeDisplay date={updatedDate} category={category} format="detailed" /></time></>
+                        ) : (
+                            <>Published: <time class="dt-published" datetime={publishedDate.toISOString()}><TimeDisplay date={publishedDate} category={category} format="detailed" /></time></>
+                        )}
+                    </p>
+                )}
+
+                {description && (
+                    <p class="p-summary text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
+                        {description}
+                    </p>
+                )}
+
+                {tags.length > 0 && (
+                    <div class="mb-8 flex justify-center">
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            {tags.map((tag: string) => (
+                                <Tag tag={tag} />
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+
+        <div class="e-content">
+            <slot />
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
+            <div class="flex justify-between">
+                <a href={`/${category}/`} class="font-medium link-hover">← Back to {formattedCategory}</a>
+
+                <ShareButton title={title} url={canonicalUrl} />
+            </div>
+        </div>
+
+        <Backlinks backlinks={backlinks} />
+
+        <SyndicationLinks syndicationUrls={syndicationUrls} />
+
+        <Webmentions url={canonicalUrl} />
+    </article>
+</LayoutContainer>

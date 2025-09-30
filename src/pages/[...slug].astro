@@ -1,16 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import TimeDisplay from '../components/TimeDisplay.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getYearDirectories } from '../utils/content';
-import LayoutContainer from '../components/layout/LayoutContainer.astro';
-import Backlinks from '../components/Backlinks.astro';
-import SyndicationLinks from '../components/SyndicationLinks.astro';
-import Webmentions from '../components/Webmentions.astro';
-import { findBacklinksComprehensive } from '../utils/backlinks';    
-import ShareButton from '../components/ShareButton.astro';
-import Tag from '../components/Tag.astro';
+import { findBacklinksComprehensive } from '../utils/backlinks';
+import PostLayout from '../components/layout/PostLayout.astro';
 
 export async function getStaticPaths() {
   // Get all year directories from content
@@ -52,98 +46,13 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
   enableSearchModal
   enableLinkHoverEffect
 >
-  <LayoutContainer prose maxWidth="4xl" className="px-4 md:px-0">
-    <article class="h-entry">
-      <!-- Hidden microformat data -->
-      <a href={canonicalUrl} class="u-url" style="display: none;"></a>
-      {entry.data?.bridgyOmit && (
-        <a href={canonicalUrl} class="u-bridgy-omit-link" style="display: none;"></a>
-      )}
-      <div class="p-author h-card" style="display: none;">
-        <a class="p-name u-url" href="https://sajalchoudhary.net">Sajal Choudhary</a>
-        <a class="u-url" href="https://sajalchoudhary.net">https://sajalchoudhary.net</a>
-      </div>
-      
-      <div class="mb-8">
-        
-        {/* Hero image for all posts */}
-        {'image' in entry.data && entry.data.image && (
-          <div class="mb-6">
-            <img 
-              src={entry.data.image} 
-              alt={entry.data?.title ?? ''} 
-              class="rounded-lg w-full object-cover max-h-96"
-              loading="lazy"
-            />
-          </div>
-        )}
-        
-        <div class="text-center">
-          <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{entry.data?.title ?? ''}</h1>
-          
-          {category === 'nordletter' && 'edition' in entry.data && entry.data.edition && (
-            <div class="flex justify-center items-center gap-4 mb-4">
-              <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
-                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Letter: {entry.data.edition}
-                </span>
-              </div>
-              <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
-                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Posted on <TimeDisplay date={hasUpdatedDate ? entry.data.updatedDate : entry.data.pubDate} category={category} format="detailed" />
-                </span>
-              </div>
-            </div>
-          )}
-          
-          {category !== 'nordletter' && (
-            <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
-              {hasUpdatedDate ? (
-                <>Last updated: <time class="dt-updated" datetime={entry.data.updatedDate.toISOString()}><TimeDisplay date={entry.data.updatedDate} category={category} format="detailed" /></time></>
-              ) : (
-                <>Published: <time class="dt-published" datetime={entry.data.pubDate.toISOString()}><TimeDisplay date={entry.data.pubDate} category={category} format="detailed" /></time></>
-              )}
-            </p>
-          )}
-          
-          {entry.data?.description && (
-            <p class="p-summary text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
-              {entry.data.description}
-            </p>
-          )}
-          
-          {'tags' in entry.data && Array.isArray(entry.data.tags) && entry.data.tags.length > 0 && (
-            <div class="mb-8 flex justify-center">
-              <div class="flex flex-wrap gap-2 justify-center">
-                {entry.data.tags.map((tag: string) => (
-                  <Tag tag={tag} />
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-      
-      <div class="e-content">
-        <Content />
-      </div>
-      
-      <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
-        <div class="flex justify-between">
-          <a href={`/${category}/`} class="font-medium link-hover">← Back to {category.charAt(0).toUpperCase() + category.slice(1)}</a>
-          
-          <ShareButton title={entry.data?.title ?? ''} url={canonicalUrl} />
-        </div>
-      </div>
-      
-      <!-- Backlinks Section -->
-      <Backlinks backlinks={backlinks} />
-      
-      <!-- Syndication Links Section -->
-      <SyndicationLinks syndicationUrls={entry.data?.syndicationUrls || []} />
-      
-      <!-- Webmentions Section -->
-      <Webmentions url={canonicalUrl} />
-    </article>
-  </LayoutContainer>
+  <PostLayout
+    entry={entry}
+    category={category}
+    canonicalUrl={canonicalUrl}
+    backlinks={backlinks}
+    hasUpdatedDate={hasUpdatedDate}
+  >
+    <Content />
+  </PostLayout>
 </Layout>
