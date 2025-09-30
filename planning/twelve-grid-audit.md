@@ -38,3 +38,10 @@ _Last updated: 2025-09-30_
 - Content landing pages (`/garden/`, `/evergreen/`, `/til/`, `/poems/`, `/stories/`, `/nordletter/`, `/books/`) currently layer the SectionLanding grid with an additional `.twelve-grid` applied to the main slot, effectively doubling the grid wrapper for primary content areas.【F:src/layouts/SectionLanding.astro†L129-L201】
 - Stream family pages (`/blog/`, `/micro/`, `/photos/`, `/stream/`) nest both SectionLanding and StreamLayout grids, resulting in three stacked `.twelve-grid` containers per route.【F:src/pages/blog/index.astro†L29-L44】【F:src/components/layout/StreamLayout.astro†L20-L34】
 - Informational pages such as `/feeds/`, `/tags/`, `/colophon/`, and `/sajal/` rely heavily on inline `.twelve-grid` sections, far exceeding the “one grid per page” target and warranting refactors to consolidate layout structure.【F:src/pages/feeds.astro†L31-L138】【F:src/pages/tags/index.astro†L79-L139】【F:src/pages/colophon.astro†L53-L205】【F:src/pages/sajal.astro†L135-L215】
+
+## Proposed canonical grid host component
+- **Candidate**: `LayoutContainer.astro` already sits directly beneath `Layout.astro` and funnels width, padding, and centering tokens for every page.【F:src/layouts/Layout.astro†L46-L134】【F:src/components/layout/LayoutContainer.astro†L1-L72】
+- **Approach**: Extend `LayoutContainer` with a `grid` configuration object (e.g., `{ columns, gap, padding }`) that toggles a single `.twelve-grid` shell around its slot. This concentrates the Craig Mod–style grid CSS in one place while allowing downstream callers to opt into the layout with props instead of duplicating utility classes.
+- **Supporting styles**: Move the core `.twelve-grid`, `.row`, and column width rules inspired by the reference snippet into `src/styles/global.css` so every instance of the component inherits consistent measurements (min/max widths, column percentages, gutter rhythm).【F:src/styles/global.css†L530-L577】
+
+For the implementation sequence, see `planning/twelve-grid-rollout-task-list.md`.
