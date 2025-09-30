@@ -33,9 +33,10 @@ This task list converts the findings from `planning/layout-structure-audit.md` i
   - Swapped the post view to use `LayoutContainer`'s page-scale padding tokens via `PostLayout` while keeping responsive inline spacing scoped to the article shell.
   - Confirmed hero metadata, backlinks, and syndication sections continue to share the consistent article wrapper.
   - Refreshed the audit entry to describe the delegated PostLayout structure.
-- [ ] **Assess GardenGrid internal abstraction**
+- [x] **Assess GardenGrid internal abstraction**
   - Evaluate whether a lower-level `CardGrid` utility would simplify `GardenGrid` span + accent handling.
   - Document trade-offs before refactoring.
+  - Captured the findings in `planning/garden-grid-cardgrid-assessment.md` and recommended keeping `GardenGrid` as the integration layer until additional consumers surface.
 
 ## Low Priority / Nice to Have
 - [ ] **Inventory layout documentation**
