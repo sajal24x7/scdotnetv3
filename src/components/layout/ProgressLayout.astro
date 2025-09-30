@@ -1,0 +1,91 @@
+---
+import PageHeader from './PageHeader.astro';
+
+export interface ProgressLayoutStat {
+    label: string;
+    value: string;
+}
+
+export interface ProgressLayoutQuickLink {
+    href: string;
+    label: string;
+    description: string;
+}
+
+interface Props {
+    pageTitle: string;
+    pageDescription: string;
+    hasItems: boolean;
+    stats?: ProgressLayoutStat[];
+    summaryTitle?: string;
+    quickLinks?: ProgressLayoutQuickLink[];
+}
+
+const {
+    pageTitle,
+    pageDescription,
+    hasItems,
+    stats = [],
+    summaryTitle = 'Summary',
+    quickLinks = []
+} = Astro.props as Props;
+
+const shouldShowSidebar = stats.length > 0 || quickLinks.length > 0;
+---
+<section class="progress-page__layout twelve-grid">
+    <header class="progress-page__header grid-span-full">
+        <PageHeader
+            title={pageTitle}
+            description={pageDescription}
+            layout="centered"
+            size="lg"
+            maxWidth="7xl"
+        />
+    </header>
+
+    <section class="progress-page__content grid-span-8 grid-start-1">
+        {Astro.slots.has('intro') && <slot name="intro" />}
+
+        {hasItems ? (
+            <div class="progress-page__list">
+                <slot />
+            </div>
+        ) : (
+            <slot name="empty" />
+        )}
+    </section>
+
+    {shouldShowSidebar && (
+        <aside class="progress-page__sidebar grid-span-4 grid-start-9">
+            {stats.length > 0 && (
+                <div class="progress-sidebar-card">
+                    <h2 class="progress-sidebar-card__title">{summaryTitle}</h2>
+                    <dl class="progress-sidebar-card__stats">
+                        {stats.map(stat => (
+                            <div>
+                                <dt>{stat.label}</dt>
+                                <dd>{stat.value}</dd>
+                            </div>
+                        ))}
+                    </dl>
+                </div>
+            )}
+
+            {quickLinks.length > 0 && (
+                <div class="progress-sidebar-card">
+                    <h2 class="progress-sidebar-card__title">Quick links</h2>
+                    <ul class="progress-sidebar-card__links">
+                        {quickLinks.map(link => (
+                            <li>
+                                <a class="progress-sidebar-card__link" href={link.href}>
+                                    <span class="progress-sidebar-card__link-label">{link.label}</span>
+                                    <span class="progress-sidebar-card__link-description">{link.description}</span>
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </aside>
+    )}
+</section>

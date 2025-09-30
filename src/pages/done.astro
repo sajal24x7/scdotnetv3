@@ -2,8 +2,8 @@
 import { getAllPosts, type Post } from '../utils/content';
 import Layout from '../layouts/Layout.astro';
 import { formatDate, formatDateRange } from '../utils/dateFormat';
-import PageHeader from '../components/layout/PageHeader.astro';
 import LayoutContainer from '../components/layout/LayoutContainer.astro';
+import ProgressLayout from '../components/layout/ProgressLayout.astro';
 import { parseMarkdown } from '../utils/markdown';
 import '../styles/progress-page.css';
 
@@ -56,6 +56,19 @@ const quickLinks = [
         description: 'Track reading notes that influence future work.'
     }
 ];
+
+const summaryStats = completedCount > 0
+    ? [
+        {
+            label: 'Completed items',
+            value: String(completedCount)
+        },
+        {
+            label: 'Last completion',
+            value: lastCompleted ?? '—'
+        }
+    ]
+    : [];
 ---
 
 <Layout
@@ -76,90 +89,44 @@ const quickLinks = [
   enableSearchModal
   enableLinkHoverEffect
 >
-    <section class="progress-page__layout twelve-grid">
-        <header class="progress-page__header grid-span-full">
-            <PageHeader
-                title="Done"
-                description="Completed tasks and projects that were previously in progress. These represent milestones achieved and goals accomplished."
-                layout="centered"
-                size="lg"
-                maxWidth="7xl"
-            />
-        </header>
+    <ProgressLayout
+        pageTitle="Done"
+        pageDescription="Completed tasks and projects that were previously in progress. These represent milestones achieved and goals accomplished."
+        hasItems={renderedPosts.length > 0}
+        stats={summaryStats}
+        quickLinks={quickLinks}
+    >
+        <p slot="intro" class="progress-page__intro">
+            Looking for active work? Visit the <a href="/now/" class="progress-page__link">Now page</a> to see what's in motion.
+        </p>
 
-        <section class="progress-page__content grid-span-8 grid-start-1">
-            <p class="progress-page__intro">
-                Looking for active work? Visit the <a href="/now/" class="progress-page__link">Now page</a> to see what's in motion.
+        {renderedPosts.map((post) => (
+            <article class="progress-card">
+                <div class="progress-card__meta">
+                    <time
+                        class="progress-card__time"
+                        datetime={post.endDate.toISOString()}
+                    >
+                        {formatDateRange(post.data.pubDate, post.endDate)}
+                    </time>
+                    {post.data.title && (
+                        <h2 class="progress-card__title">{post.data.title}</h2>
+                    )}
+                </div>
+
+                {post.renderedContent && (
+                    <LayoutContainer prose maxWidth="full" className="progress-card__body">
+                        <div set:html={post.renderedContent} />
+                    </LayoutContainer>
+                )}
+            </article>
+        ))}
+
+        <div slot="empty" class="progress-page__empty">
+            <p>No completed tasks yet.</p>
+            <p>
+                Check the <a href="/now/" class="progress-page__link">Now page</a> to see what's currently in progress.
             </p>
-
-            {renderedPosts.length > 0 ? (
-                <div class="progress-page__list">
-                    {renderedPosts.map((post) => (
-                        <article class="progress-card">
-                            <div class="progress-card__meta">
-                                <time
-                                    class="progress-card__time"
-                                    datetime={post.endDate.toISOString()}
-                                >
-                                    {formatDateRange(post.data.pubDate, post.endDate)}
-                                </time>
-                                {post.data.title && (
-                                    <h2 class="progress-card__title">{post.data.title}</h2>
-                                )}
-                            </div>
-
-                            {post.renderedContent && (
-                                <LayoutContainer prose maxWidth="full" className="progress-card__body">
-                                    <div set:html={post.renderedContent} />
-                                </LayoutContainer>
-                            )}
-                        </article>
-                    ))}
-                </div>
-            ) : (
-                <div class="progress-page__empty">
-                    <p>No completed tasks yet.</p>
-                    <p>
-                        Check the <a href="/now/" class="progress-page__link">Now page</a> to see what's currently in progress.
-                    </p>
-                </div>
-            )}
-        </section>
-
-        {(completedCount > 0 || quickLinks.length > 0) && (
-            <aside class="progress-page__sidebar grid-span-4 grid-start-9">
-                {completedCount > 0 && (
-                    <div class="progress-sidebar-card">
-                        <h2 class="progress-sidebar-card__title">Summary</h2>
-                        <dl class="progress-sidebar-card__stats">
-                            <div>
-                                <dt>Completed items</dt>
-                                <dd>{completedCount}</dd>
-                            </div>
-                            <div>
-                                <dt>Last completion</dt>
-                                <dd>{lastCompleted ?? '—'}</dd>
-                            </div>
-                        </dl>
-                    </div>
-                )}
-
-                {quickLinks.length > 0 && (
-                    <div class="progress-sidebar-card">
-                        <h2 class="progress-sidebar-card__title">Quick links</h2>
-                        <ul class="progress-sidebar-card__links">
-                            {quickLinks.map(link => (
-                                <li>
-                                    <a class="progress-sidebar-card__link" href={link.href}>
-                                        <span class="progress-sidebar-card__link-label">{link.label}</span>
-                                        <span class="progress-sidebar-card__link-description">{link.description}</span>
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-            </aside>
-        )}
-    </section>
+        </div>
+    </ProgressLayout>
 </Layout>
