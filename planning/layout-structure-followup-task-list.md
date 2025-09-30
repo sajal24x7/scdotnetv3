@@ -41,8 +41,9 @@ This task list converts the findings from `planning/layout-structure-audit.md` i
 ## Low Priority / Nice to Have
 - [x] **Inventory layout documentation**
   - Cross-link any new abstractions from developer docs so future routes adopt them consistently.
-- [ ] **Monitor stream sidebar opportunities**
+- [x] **Monitor stream sidebar opportunities**
   - Plan enhancements that would use StreamLayout’s sticky sidebar slot (e.g., surfacing filters or featured posts).
+  - Captured potential sidebar modules, data dependencies, and rollout sequencing in `planning/stream-sidebar-opportunities.md`.
 
 ## References
 - `planning/layout-structure-audit.md`
