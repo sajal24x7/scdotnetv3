@@ -1,4 +1,5 @@
 ---
+import LayoutContainer from '../layout/LayoutContainer.astro';
 import BookCard from './BookCard.astro';
 
 interface Props {
@@ -31,13 +32,13 @@ const getSpanClass = (book: any) => {
 };
 ---
 
-<div class="book-grid twelve-grid grid-gap-tight">
+<LayoutContainer className="book-grid" grid={{ gap: 'tight' }}>
     {books.map((book) => (
         <div class={`book-grid__item ${getSpanClass(book)}`}>
             <BookCard {...transformBook(book)} />
         </div>
     ))}
-</div>
+</LayoutContainer>
 
 <style>
     .book-grid {

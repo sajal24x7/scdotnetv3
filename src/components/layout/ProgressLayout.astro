@@ -1,4 +1,5 @@
 ---
+import LayoutContainer from './LayoutContainer.astro';
 import PageHeader from './PageHeader.astro';
 
 export interface ProgressLayoutStat {
@@ -32,7 +33,7 @@ const {
 
 const shouldShowSidebar = stats.length > 0 || quickLinks.length > 0;
 ---
-<section class="progress-page__layout twelve-grid">
+<LayoutContainer as="section" className="progress-page__layout" grid={true}>
     <header class="progress-page__header grid-span-full">
         <PageHeader
             title={pageTitle}
@@ -88,4 +89,4 @@ const shouldShowSidebar = stats.length > 0 || quickLinks.length > 0;
             )}
         </aside>
     )}
-</section>
+</LayoutContainer>
