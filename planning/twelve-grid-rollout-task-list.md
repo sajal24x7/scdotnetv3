@@ -2,7 +2,7 @@
 
 _Companion roadmap for consolidating every route onto a single Craig Mod–style grid host. Refer to `planning/twelve-grid-audit.md` for current usage counts and priority cues._
 
-- [ ] **Codify Craig Mod–style tokens** – Update the `.twelve-grid` ruleset in `src/styles/global.css` to mirror Craig Mod's container/row/column behavior and expose helpers for every span.
+- [x] **Codify Craig Mod–style tokens** – Update the `.twelve-grid` ruleset in `src/styles/global.css` to mirror Craig Mod's container/row/column behavior and expose helpers for every span.
   ```css
   .twelve-grid { padding-left: 20px; padding-right: 20px; min-width: 984px; }
   .twelve-grid .row { width: 100%; max-width: 1140px; min-width: 984px; margin: 0 auto; overflow: hidden; }
