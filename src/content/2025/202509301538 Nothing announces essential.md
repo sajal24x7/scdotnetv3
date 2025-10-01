@@ -1,14 +1,17 @@
 ---
-title: "Nothing announces essential"
-slug: "nothing-announces-essential"
-pubDate: 2025-10-01T08:07:10+03:00
-updatedDate: 2025-10-01T08:07:10+03:00
+title: Nothing announces essential
+slug: nothing-announces-essential
+pubDate: 2025-10-01T05:07:10.000Z
+updatedDate: 2025-10-01T05:07:10.000Z
 category: micro
 tags:
   - nothing
   - ai
   - apps
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115297181694244249'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m24bjz7rrq2h'
+  - 'https://www.threads.com/@sajal24x7/post/DPQR3r9jLEf'
 ---
 [Nothing’s new AI OS isn’t really an OS, or new by Robert Hart](https://www.theverge.com/news/788242/nothing-ai-os-essential-apps-playground)
 
