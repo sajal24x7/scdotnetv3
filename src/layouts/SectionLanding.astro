@@ -141,12 +141,36 @@ const contentStartClass = contentHasCustomStartClass
         : '';
 
 const sectionClassName = ['section-landing', wrapperClass].filter(Boolean).join(' ');
+const gridGapClasses: Record<GridGap, string> = {
+    tight: 'grid-gap-tight',
+    loose: 'grid-gap-loose'
+};
+
+const gridPaddingClasses: Record<GridPadding, string> = {
+    none: 'grid-pad-none',
+    narrow: 'grid-pad-narrow',
+    wide: 'grid-pad-wide'
+};
+
 const layoutGridConfig: ContentGridConfig = {
     padding,
     ...(gridGap ? { gap: gridGap } : {})
 };
-const resolvedContentGrid = contentGrid === true ? {} : contentGrid ?? false;
-const contentClassName = ['section-content', contentSpanClass, contentStartClass, contentClass]
+
+const resolvedContentGridConfig = typeof contentGrid === 'object' && contentGrid !== null ? contentGrid : undefined;
+const shouldEnableContentGrid = contentGrid === true || resolvedContentGridConfig !== undefined;
+const contentGridClasses = shouldEnableContentGrid
+    ? [
+          'section-content--grid',
+          resolvedContentGridConfig?.gap ? gridGapClasses[resolvedContentGridConfig.gap] : '',
+          resolvedContentGridConfig?.padding ? gridPaddingClasses[resolvedContentGridConfig.padding] : '',
+          resolvedContentGridConfig?.className ?? ''
+      ]
+          .filter(Boolean)
+          .join(' ')
+    : '';
+
+const contentClassName = ['section-content', contentSpanClass, contentStartClass, contentClass, contentGridClasses]
     .filter(Boolean)
     .join(' ');
 ---
@@ -207,14 +231,12 @@ const contentClassName = ['section-content', contentSpanClass, contentStartClass
             </div>
         )}
 
-        <LayoutContainer
-            as="main"
-            className={contentClassName}
+        <div
+            class={contentClassName}
             style={contentStyle || undefined}
-            grid={resolvedContentGrid}
         >
             <slot />
-        </LayoutContainer>
+        </div>
 
         {hasSidebarSlot && (
             <aside class="section-sidebar grid-span-4 grid-start-9">
@@ -273,6 +295,14 @@ const contentClassName = ['section-content', contentSpanClass, contentStartClass
         padding-bottom: var(--section-content-padding, 2rem);
     }
 
+    .section-content--grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        column-gap: var(--grid-column-gap, clamp(1.5rem, 4vw, 2.5rem));
+        row-gap: var(--grid-row-gap, clamp(1.75rem, 5vw, 2.75rem));
+        padding-inline: var(--grid-padding-inline, 0);
+    }
+
     .section-after-count {
         margin-bottom: 1.5rem;
     }
@@ -308,6 +338,10 @@ const contentClassName = ['section-content', contentSpanClass, contentStartClass
             padding-bottom: var(--section-content-padding-mobile, 1.5rem);
         }
 
+        .section-content--grid {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
         .section-taglist {
             margin-bottom: var(--section-taglist-margin-mobile, 1.5rem);
         }
@@ -322,6 +356,12 @@ const contentClassName = ['section-content', contentSpanClass, contentStartClass
 
         .section-sidebar__inner {
             position: static;
+        }
+    }
+
+    @media (min-width: 48rem) {
+        .section-content--grid {
+            grid-template-columns: repeat(12, minmax(0, 1fr));
         }
     }
 </style>
