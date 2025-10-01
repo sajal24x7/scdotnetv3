@@ -33,7 +33,7 @@ _Companion roadmap for consolidating every route onto a single Craig Mod–style
   img, object, embed { max-width: 100%; }
   img { height: auto; }
   ```
-- [ ] **Upgrade `LayoutContainer` API** – Add a boolean/variant prop that injects the global grid class list and optional gap/padding modifiers, replacing the manual `gridClasses` concatenation currently handled in `Layout.astro` and `SectionLanding`.
+- [x] **Upgrade `LayoutContainer` API** – Add a boolean/variant prop that injects the global grid class list and optional gap/padding modifiers, replacing the manual `gridClasses` concatenation currently handled in `Layout.astro` and `SectionLanding`.
 - [ ] **Refit `Layout.astro` to delegate grid control** – Strip the inline `.twelve-grid` wrapper from `Layout.astro`, pass the new grid prop down to `LayoutContainer`, and ensure default pages still receive one grid shell by default.
 - [ ] **Retire redundant wrappers in `SectionLanding` & `StreamLayout`** – Replace their internal `.twelve-grid` divs with the shared component, leaning on props for gap/padding so landing pages no longer apply `contentClass="… twelve-grid …"`. This covers the cluster of routes currently rendering three grids apiece.
 - [ ] **Normalize progress and bookshelf layouts** – Update `ProgressLayout`, `BookGrid`, and `BookDetailLayout` to consume the central grid configuration instead of hard-coding `.twelve-grid`, ensuring `/now/`, `/done/`, `/bookshelf/`, and `/books/*` collapse to a single wrapper.
