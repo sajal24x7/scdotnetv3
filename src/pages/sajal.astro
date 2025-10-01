@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
+import LayoutContainer from '../components/layout/LayoutContainer.astro';
 
 type CardSpan = number | undefined;
 
@@ -132,7 +133,7 @@ const connectionCards = [
   enableSearchModal
   enableLinkHoverEffect
 >
-  <section class="sajal twelve-grid grid-gap-tight">
+  <LayoutContainer as="section" className="sajal" grid={{ gap: 'tight' }}>
     <header class="grid-span-full">
       <PageHeader
         title="Sajal Choudhary"
@@ -143,7 +144,7 @@ const connectionCards = [
       />
     </header>
 
-    <section class="sajal__intro grid-span-full twelve-grid grid-gap-tight">
+    <LayoutContainer as="section" className="sajal__intro grid-span-full" grid={{ gap: 'tight' }}>
       <figure class="sajal__portrait grid-span-4 border border-borderColor dark:border-borderColorDark rounded-lg overflow-hidden">
         <img
           src="/profile/profile.jpeg"
@@ -156,7 +157,7 @@ const connectionCards = [
         <p>I'm deeply interested in technology, literature, philosophy, and the intersection of human creativity with digital tools. This website serves as my digital garden—a space where I cultivate ideas, document my learning journey, and share insights with others.</p>
         <p>When I'm not writing or exploring new technologies, you can find me reading books, experimenting with creative writing, or engaging in thoughtful conversations about the future of digital content and human expression.</p>
       </div>
-    </section>
+    </LayoutContainer>
 
     <section class="sajal__section grid-span-8 grid-start-3 prose dark:prose-dark">
       <h2>Background & Journey</h2>
@@ -167,19 +168,19 @@ const connectionCards = [
       </div>
     </section>
 
-    <section class="sajal__section grid-span-full twelve-grid grid-gap-tight">
+    <LayoutContainer as="section" className="sajal__section grid-span-full" grid={{ gap: 'tight' }}>
       <div class="sajal__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
         <h2>Interests & Passions</h2>
       </div>
-      <div class="sajal__card-group grid-span-full twelve-grid grid-gap-tight">
+      <LayoutContainer as="div" className="sajal__card-group grid-span-full" grid={{ gap: 'tight' }}>
         {interestCards.map((card) => (
             <article class={`sajal-card ${getGridSpanClass(card.span, 3)} border border-borderColor dark:border-borderColorDark rounded-lg p-5`}>
                 <h3 class="sajal-card__title"><span class="sajal-card__icon">{card.icon}</span> {card.title}</h3>
                 <p>{card.description}</p>
             </article>
         ))}
-      </div>
-    </section>
+      </LayoutContainer>
+    </LayoutContainer>
 
     <section class="sajal__section grid-span-8 grid-start-3 prose dark:prose-dark">
       <h2>Writing Philosophy</h2>
@@ -194,11 +195,11 @@ const connectionCards = [
       </div>
     </section>
 
-    <section class="sajal__section grid-span-full twelve-grid grid-gap-tight">
+    <LayoutContainer as="section" className="sajal__section grid-span-full" grid={{ gap: 'tight' }}>
       <div class="sajal__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
         <h2>Current Focus</h2>
       </div>
-      <div class="sajal__card-group grid-span-full twelve-grid grid-gap-tight">
+      <LayoutContainer as="div" className="sajal__card-group grid-span-full" grid={{ gap: 'tight' }}>
         {focusCards.map((card) => (
             <article class={`sajal-card ${getGridSpanClass(card.span, 6)} border border-borderColor dark:border-borderColorDark rounded-lg p-5`}>
                 <h3 class="sajal-card__title"><span class="sajal-card__icon">{card.icon}</span> {card.title}</h3>
@@ -209,10 +210,10 @@ const connectionCards = [
                 </ul>
             </article>
         ))}
-      </div>
-    </section>
+      </LayoutContainer>
+    </LayoutContainer>
 
-    <section class="sajal__section grid-span-full twelve-grid grid-gap-tight">
+    <LayoutContainer as="section" className="sajal__section grid-span-full" grid={{ gap: 'tight' }}>
       <div class="sajal__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
         <h2>Personal Timeline</h2>
       </div>
@@ -273,14 +274,14 @@ const connectionCards = [
           </div>
         </div>
       </div>
-    </section>
+    </LayoutContainer>
 
-    <section class="sajal__section grid-span-full twelve-grid grid-gap-tight">
+    <LayoutContainer as="section" className="sajal__section grid-span-full" grid={{ gap: 'tight' }}>
       <div class="sajal__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
         <h2>Connect With Me</h2>
         <p>I'm always interested in connecting with like-minded individuals, discussing ideas, and collaborating on interesting projects. Feel free to reach out through any of the following channels:</p>
       </div>
-      <div class="sajal__card-group grid-span-full twelve-grid grid-gap-tight">
+      <LayoutContainer as="div" className="sajal__card-group grid-span-full" grid={{ gap: 'tight' }}>
         {connectionCards.map((card) => (
             <article class={`sajal-card ${getGridSpanClass(card.span, 6)} border border-borderColor dark:border-borderColorDark rounded-lg p-5`}>
                 <h3 class="sajal-card__title">{card.title}</h3>
@@ -304,8 +305,8 @@ const connectionCards = [
                 </ul>
             </article>
         ))}
-      </div>
-    </section>
+      </LayoutContainer>
+    </LayoutContainer>
 
     <section class="sajal__section grid-span-8 grid-start-3 prose dark:prose-dark">
       <div class="sajal__callout bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6">
@@ -313,7 +314,7 @@ const connectionCards = [
         <p class="text-textSecondary dark:text-textColorDark">Whether you want to discuss a topic I've written about, collaborate on a project, or just say hello, I'd love to hear from you. The best conversations often start with a simple message.</p>
       </div>
     </section>
-  </section>
+  </LayoutContainer>
 </Layout>
 
 <style>

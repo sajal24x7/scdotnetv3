@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
+import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import RecentItems from '../components/RecentItems.astro';
 import { getAllPosts, transformPost } from '../utils/content';
 
@@ -28,7 +29,7 @@ const transformedRecentPosts = recentPosts.map(transformPost);
   enableSearchModal
   enableLinkHoverEffect
 >
-  <section class="twelve-grid grid-gap-tight">
+  <LayoutContainer as="section" grid={{ gap: 'tight' }}>
     <header class="grid-span-full">
       <PageHeader
         title="RSS Feeds"
@@ -40,7 +41,7 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     </header>
 
     <!-- Feed Buttons -->
-    <section class="grid-span-full twelve-grid grid-gap-tight">
+    <LayoutContainer as="section" className="grid-span-full" grid={{ gap: 'tight' }}>
       <a
         href="/rss.xml"
         class="grid-span-3 flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm"
@@ -85,10 +86,14 @@ const transformedRecentPosts = recentPosts.map(transformPost);
         </svg>
         <span>NordLetter</span>
       </a>
-    </section>
+    </LayoutContainer>
 
     <!-- Recent Posts + About RSS -->
-    <section class="grid-span-full border-t border-borderColor dark:border-borderColorDark pt-12 twelve-grid grid-gap-tight">
+    <LayoutContainer
+      as="section"
+      className="grid-span-full border-t border-borderColor dark:border-borderColorDark pt-12"
+      grid={{ gap: 'tight' }}
+    >
       <div class="grid-span-8 grid-start-1">
         <RecentItems posts={transformedRecentPosts} title="Recent Posts" showFullContent={false} />
       </div>
@@ -135,6 +140,6 @@ const transformedRecentPosts = recentPosts.map(transformPost);
           </a>
         </div>
       </aside>
-    </section>
-  </section>
+    </LayoutContainer>
+  </LayoutContainer>
 </Layout>
