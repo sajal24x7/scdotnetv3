@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/layout/PageHeader.astro';
+import LayoutContainer from '../../components/layout/LayoutContainer.astro';
 import { getAllPosts } from '../../utils/content';
 
 // Get all posts
@@ -76,7 +77,7 @@ categories.forEach(category => {
     maxWidth="7xl"
   />
 
-  <section id="tag-page-content" class="twelve-grid grid-gap-loose">
+  <LayoutContainer as="section" id="tag-page-content" grid={{ gap: 'loose' }}>
     {sortedTags.length === 0 ? (
       <div class="grid-span-full text-center py-12 border border-borderColor dark:border-borderColorDark rounded-lg">
         <p class="text-textSecondary dark:text-textSecondaryDark">
@@ -87,17 +88,21 @@ categories.forEach(category => {
       <>
         {/* Top Twenty Tags */}
         {topTwentyTags.length > 0 && (
-          <section
+          <LayoutContainer
+            as="section"
             id="top-tags-section"
-            class="grid-span-full twelve-grid grid-gap-tight"
+            className="grid-span-full"
+            grid={{ gap: 'tight' }}
             aria-labelledby="top-tags-heading"
           >
             <h2 id="top-tags-heading" class="grid-span-full text-2xl font-bold">
               Top Twenty Tags
             </h2>
-            <div
+            <LayoutContainer
+              as="div"
               id="top-tags-grid"
-              class="grid-span-full twelve-grid grid-gap-tight grid-pad-none"
+              className="grid-span-full"
+              grid={{ gap: 'tight', className: 'grid-pad-none' }}
             >
               {topTwentyTags.map(([tag, count]) => (
                 <a
@@ -107,22 +112,26 @@ categories.forEach(category => {
                   {tag.toUpperCase()} ({count})
                 </a>
               ))}
-            </div>
-          </section>
+            </LayoutContainer>
+          </LayoutContainer>
         )}
 
         {/* All Tags */}
-        <section
+        <LayoutContainer
+          as="section"
           id="all-tags-section"
-          class="grid-span-full twelve-grid grid-gap-tight border-t border-borderColor dark:border-borderColorDark pt-12"
+          className="grid-span-full border-t border-borderColor dark:border-borderColorDark pt-12"
+          grid={{ gap: 'tight' }}
           aria-labelledby="all-tags-heading"
         >
           <h2 id="all-tags-heading" class="grid-span-full text-2xl font-bold">
             All Tags
           </h2>
-          <div
+          <LayoutContainer
+            as="div"
             id="all-tags-grid"
-            class="grid-span-full twelve-grid grid-gap-tight grid-pad-none"
+            className="grid-span-full"
+            grid={{ gap: 'tight', className: 'grid-pad-none' }}
           >
             {allTags.map(([tag, count]) => (
               <a
@@ -132,11 +141,11 @@ categories.forEach(category => {
                 {tag.toUpperCase()} ({count})
               </a>
             ))}
-          </div>
-        </section>
+          </LayoutContainer>
+        </LayoutContainer>
       </>
     )}
-  </section>
+  </LayoutContainer>
 
   <script define:vars={{ tagsByCategory: Object.fromEntries(tagsByCategory) }}>
     // Handle category filtering based on URL parameters

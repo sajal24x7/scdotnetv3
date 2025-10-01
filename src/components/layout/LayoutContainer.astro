@@ -20,7 +20,11 @@ interface Props {
   className?: string;
   grid?: boolean | GridConfig;
   style?: string;
+  id?: string;
+  ['aria-labelledby']?: string;
 }
+
+const props = Astro.props as Props;
 
 const {
   as = 'div',
@@ -33,8 +37,11 @@ const {
   proseSize = 'base',
   className = '',
   grid = false,
-  style = ''
-} = Astro.props as Props;
+  style = '',
+  id
+} = props;
+
+const ariaLabelledby = props['aria-labelledby'];
 
 const maxWidthClasses = {
   sm: 'max-w-sm',
@@ -107,6 +114,6 @@ const classes = [
 const Tag = as;
 ---
 
-<Tag class={classes} style={style || undefined}>
+<Tag id={id} aria-labelledby={ariaLabelledby} class={classes} style={style || undefined}>
   <slot />
 </Tag>
