@@ -19,7 +19,7 @@ const sectionLandingProps = createSectionLandingProps({
   countText: noteCountText,
   tagCategory: 'garden',
   tagPosts: allPosts,
-  contentClass: 'garden-main twelve-grid grid-gap-tight'
+  contentClass: 'garden-main'
 });
 ---
 
@@ -36,7 +36,7 @@ const sectionLandingProps = createSectionLandingProps({
   enableSearchModal
   enableLinkHoverEffect
 >
-    <SectionLanding {...sectionLandingProps}>
+    <SectionLanding {...sectionLandingProps} contentGrid={{ gap: 'tight' }}>
       <GardenGrid posts={transformedPosts} />
     </SectionLanding>
   </Layout>

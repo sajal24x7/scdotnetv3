@@ -39,7 +39,8 @@ const noteCountText = `${noteCount} ${noteCount === 1 ? 'note' : 'notes'}`;
       countVariant="plain"
       tagCategory="til"
       tagPosts={allPosts}
-      contentClass="til-main twelve-grid grid-gap-tight"
+      contentClass="til-main"
+      contentGrid={{ gap: 'tight' }}
     >
       <GardenGrid posts={transformedPosts} contentType="til" />
     </SectionLanding>

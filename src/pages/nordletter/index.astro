@@ -32,7 +32,7 @@ const sectionLandingProps = createSectionLandingProps({
   tagPosts: allPosts,
   tagWrapperClass: 'grid-span-full',
   padding: 'wide',
-  contentClass: 'nordletter-content twelve-grid grid-gap-tight',
+  contentClass: 'nordletter-content',
   contentPadding: '0'
 });
 ---
@@ -50,7 +50,7 @@ const sectionLandingProps = createSectionLandingProps({
   enableSearchModal
   enableLinkHoverEffect
 >
-  <SectionLanding {...sectionLandingProps}>
+  <SectionLanding {...sectionLandingProps} contentGrid={{ gap: 'tight' }}>
     <div slot="beforeContent" class="nordletter-signup grid-span-full">
       <NewsletterSignup showCopy={false} wrapperClass="py-0" formClass="nordletter-signup__form" />
     </div>
