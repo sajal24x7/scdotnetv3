@@ -2,7 +2,7 @@
 
 These guidelines consolidate how the site should evolve without disrupting the current look and feel. Implementation plans are split into separate documents and referenced here.
 
-- Last Updated: 2025-09-26 (UTC)
+- Last Updated: 2025-10-01 (UTC)
 
 ### Principles
 - Content-first. Keep pages fast, legible, and low-JS by default.
@@ -26,9 +26,10 @@ These guidelines consolidate how the site should evolve without disrupting the c
 - Feeds: one canonical feed per bucket with consistent metadata and item shaping.
 
 ### UI/UX
-- Layout primitives: keep outer shells on `src/layouts/Layout.astro` and rely on `LayoutContainer` for spacing/padding. Section pages should use `SectionLanding` with `createSectionLandingProps`, long-form articles should use `PostLayout`, and progress dashboards should lean on `ProgressLayout`.
+- Layout primitives: keep outer shells on `src/layouts/Layout.astro` and rely on `LayoutContainer` for spacing/padding. Use its `grid` prop to attach the Craig Mod shell (optionally adjusting `gap`/`padding`), rather than hand-writing `.twelve-grid` wrappers. Section pages should use `SectionLanding` with `createSectionLandingProps`, long-form articles should use `PostLayout`, and progress dashboards should lean on `ProgressLayout`.
 - Twelve-column grid:
-  - Wrap top-level sections in the shared `.twelve-grid` container so width, padding, and gap tokens stay consistent. The utility outputs a single column by default and expands to twelve columns from `48rem` upwards.
+  - Prefer `LayoutContainer grid` controls to toggle the shared `.twelve-grid` host so width, padding, and gap tokens stay consistent. The utility outputs a single column by default and expands to twelve columns from `48rem` upwards.
+  - Keep one grid host per section when possible; use `.grid-span-*` and `.grid-start-*` utilities to position content, and only nest grids when a band needs custom gutters, padding, or background styling.
   - Use `.grid-span-*` (or `.grid-span-full`) to control width and `.grid-start-*` to offset spans on desktop. Leave mobile fallbacks untouched so content naturally collapses to a single column.
   - Adjust gutters with `.grid-gap-tight` or `.grid-gap-loose`, and tweak padding with `.grid-pad-narrow`, `.grid-pad-wide`, or `.grid-pad-none` instead of redefining `gap`/`padding` per component.
   - When nesting grids or injecting full-bleed elements (dividers, section headers), wrap them in `.grid-span-full` to re-enter the primary flow without custom CSS.
