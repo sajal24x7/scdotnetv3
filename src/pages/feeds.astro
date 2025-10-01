@@ -1,13 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
-import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import RecentItems from '../components/RecentItems.astro';
 import { getAllPosts, transformPost } from '../utils/content';
 
 // Get recent posts for preview (more posts for the main section)
 const allPosts = await getAllPosts();
-const sortedPosts = allPosts.sort((a, b) => 
+const sortedPosts = allPosts.sort((a, b) =>
   new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
 const recentPosts = sortedPosts.slice(0, 15); // Show more posts
@@ -29,7 +28,7 @@ const transformedRecentPosts = recentPosts.map(transformPost);
   enableSearchModal
   enableLinkHoverEffect
 >
-  <LayoutContainer as="section" grid={{ gap: 'tight' }}>
+  <section class="feeds-grid page-grid grid-gap-tight grid-span-full">
     <header class="grid-span-full">
       <PageHeader
         title="RSS Feeds"
@@ -41,7 +40,7 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     </header>
 
     <!-- Feed Buttons -->
-    <LayoutContainer as="section" className="grid-span-full" grid={{ gap: 'tight' }}>
+    <section class="feeds-grid__buttons page-grid grid-gap-tight grid-span-full">
       <a
         href="/rss.xml"
         class="grid-span-3 flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm"
@@ -86,14 +85,10 @@ const transformedRecentPosts = recentPosts.map(transformPost);
         </svg>
         <span>NordLetter</span>
       </a>
-    </LayoutContainer>
+    </section>
 
     <!-- Recent Posts + About RSS -->
-    <LayoutContainer
-      as="section"
-      className="grid-span-full border-t border-borderColor dark:border-borderColorDark pt-12"
-      grid={{ gap: 'tight' }}
-    >
+    <section class="feeds-grid__recent page-grid grid-gap-tight grid-span-full border-t border-borderColor dark:border-borderColorDark pt-12">
       <div class="grid-span-8 grid-start-1">
         <RecentItems posts={transformedRecentPosts} title="Recent Posts" showFullContent={false} />
       </div>
@@ -140,6 +135,26 @@ const transformedRecentPosts = recentPosts.map(transformPost);
           </a>
         </div>
       </aside>
-    </LayoutContainer>
-  </LayoutContainer>
+    </section>
+  </section>
 </Layout>
+
+<style>
+  .page-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    column-gap: var(--grid-column-gap);
+    row-gap: var(--grid-row-gap);
+    padding-inline: var(--grid-padding-inline);
+  }
+
+  @media (min-width: 48rem) {
+    .page-grid {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+
+  .feeds-grid {
+    padding-block: clamp(2.5rem, 6vw, 3.5rem);
+  }
+</style>

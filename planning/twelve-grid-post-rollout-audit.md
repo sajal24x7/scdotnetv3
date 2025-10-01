@@ -21,5 +21,11 @@ _Last updated: 2025-02-14_
 - **Bookshelf landing** (`/bookshelf/`) mirrors the pattern: the layout grid is disabled and `BookGrid` now renders its own CSS grid, ensuring a single `.twelve-grid` wrapper sourced from `SectionLanding` only.【F:src/pages/bookshelf/index.astro†L60-L89】【F:src/components/bookshelf/BookGrid.astro†L34-L65】
 - **Books index** (`/books/`) similarly delegates the grid to `SectionLanding`, while `ContentGrid` handles card layout without `.twelve-grid` duplication.【F:src/pages/books/index.astro†L28-L61】【F:src/components/ContentGrid.astro†L69-L132】
 
+### Informational pages
+- **RSS feeds** (`/feeds/`) keeps the layout shell as the only `.twelve-grid`, while local `.page-grid` wrappers orchestrate feed buttons and recent posts without reintroducing the legacy class.【F:src/pages/feeds.astro†L1-L160】
+- **Tag explorer** (`/tags/`) renders a single layout grid and relies on scoped `.page-grid` helpers for the top-twenty and full tag listings, eliminating nested `.twelve-grid` containers.【F:src/pages/tags/index.astro†L1-L259】
+- **Colophon** (`/colophon/`) now uses CSS-only grids for callouts, feature cards, and timeline sections, leaving the layout wrapper as the site-wide `.twelve-grid`.【F:src/pages/colophon.astro†L1-L342】
+- **About Sajal** (`/sajal/`) applies bespoke `.page-grid` sections for intro, card groups, and timeline content so the layout wrapper remains the lone `.twelve-grid`.【F:src/pages/sajal.astro†L1-L415】
+
 ### Audit conclusion
 All routes—including the blog, garden, stream, bookshelf, informational pages, and individual posts—now render exactly one `.twelve-grid` wrapper per page. Any additional layout structure is handled by bespoke CSS grid classes that no longer rely on the Craig Mod utility class, satisfying the rollout requirement for a single 12-column host across the site.
