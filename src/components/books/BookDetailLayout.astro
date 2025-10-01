@@ -1,4 +1,6 @@
 ---
+import LayoutContainer from '../layout/LayoutContainer.astro';
+
 interface MetadataItem {
     label: string;
     value: string;
@@ -16,7 +18,7 @@ interface Props {
 
 const { coverSrc, coverAlt, title, authors, kicker, metadata = [] } = Astro.props as Props;
 ---
-<section class="book-detail twelve-grid grid-gap-tight grid-pad-narrow">
+<LayoutContainer as="section" className="book-detail" grid={{ gap: 'tight', padding: 'narrow' }}>
     <div class="book-detail__media grid-span-4 grid-start-1">
         <div class="book-detail__media-inner">
             <img src={coverSrc} alt={coverAlt} class="book-detail__cover" />
@@ -64,7 +66,7 @@ const { coverSrc, coverAlt, title, authors, kicker, metadata = [] } = Astro.prop
             </div>
         </div>
     </div>
-</section>
+</LayoutContainer>
 
 <style>
     .book-detail {
