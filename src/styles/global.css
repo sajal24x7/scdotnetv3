@@ -48,7 +48,7 @@
     --text-huge: clamp(2rem, 8vw, 3rem);
     --grid-column-gap: clamp(1.5rem, 3vw, 2.5rem);
     --grid-row-gap: clamp(2rem, 5vw, 3.5rem);
-    --grid-padding-inline: 0rem;
+    --grid-padding-inline: clamp(1.25rem, 4vw, 2.5rem);
   }
 
   .dark {
@@ -528,7 +528,8 @@
   }
 
   .twelve-grid {
-    width: min(var(--layout-max-width), 100%);
+    width: 100%;
+    max-width: 71.25rem; /* 1140px */
     margin-inline: auto;
     padding-inline: var(--grid-padding-inline);
     display: grid;
@@ -538,10 +539,102 @@
     row-gap: var(--grid-row-gap);
   }
 
+  .twelve-grid .row {
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .twelve-grid .onecol,
+  .twelve-grid .twocol,
+  .twelve-grid .threecol,
+  .twelve-grid .fourcol,
+  .twelve-grid .fivecol,
+  .twelve-grid .sixcol,
+  .twelve-grid .sevencol,
+  .twelve-grid .eightcol,
+  .twelve-grid .ninecol,
+  .twelve-grid .tencol,
+  .twelve-grid .elevencol,
+  .twelve-grid .twelvecol {
+    grid-column: 1 / -1;
+  }
+
+  .twelve-grid .last {
+    margin-right: 0;
+  }
+
   @media (min-width: 48rem) {
     .twelve-grid {
       grid-template-columns: repeat(12, minmax(0, 1fr));
     }
+
+    .twelve-grid .row {
+      display: contents;
+      max-width: 71.25rem;
+      min-width: 61.5rem; /* 984px */
+    }
+
+    .twelve-grid .onecol {
+      grid-column: span 1 / span 1;
+    }
+
+    .twelve-grid .twocol {
+      grid-column: span 2 / span 2;
+    }
+
+    .twelve-grid .threecol {
+      grid-column: span 3 / span 3;
+    }
+
+    .twelve-grid .fourcol {
+      grid-column: span 4 / span 4;
+    }
+
+    .twelve-grid .fivecol {
+      grid-column: span 5 / span 5;
+    }
+
+    .twelve-grid .sixcol {
+      grid-column: span 6 / span 6;
+    }
+
+    .twelve-grid .sevencol {
+      grid-column: span 7 / span 7;
+    }
+
+    .twelve-grid .eightcol {
+      grid-column: span 8 / span 8;
+    }
+
+    .twelve-grid .ninecol {
+      grid-column: span 9 / span 9;
+    }
+
+    .twelve-grid .tencol {
+      grid-column: span 10 / span 10;
+    }
+
+    .twelve-grid .elevencol {
+      grid-column: span 11 / span 11;
+    }
+
+    .twelve-grid .twelvecol {
+      grid-column: span 12 / span 12;
+    }
+  }
+
+  .twelve-grid .row > * {
+    min-height: 1px;
+  }
+
+  img,
+  object,
+  embed {
+    max-width: 100%;
+  }
+
+  img {
+    height: auto;
   }
 
   .grid-pad-none {
