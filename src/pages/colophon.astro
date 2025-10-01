@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
-import LayoutContainer from '../components/layout/LayoutContainer.astro';
 
 const getGridSpanClass = (span: number | undefined, fallback: number) => {
     if (typeof span === 'number' && Number.isInteger(span) && span >= 1 && span <= 12) {
@@ -44,14 +43,13 @@ const contentCallouts = [
     padding: 'md',
     centered: true,
     grid: {
-      gap: 'tight',
-      padding: 'narrow'
+      gap: 'tight'
     }
   }}
   enableSearchModal
   enableLinkHoverEffect
 >
-  <LayoutContainer as="section" className="colophon" grid={{ gap: 'tight' }}>
+  <section class="colophon page-grid grid-gap-tight grid-span-full">
     <header class="grid-span-full">
       <PageHeader
         title="Colophon"
@@ -62,7 +60,7 @@ const contentCallouts = [
       />
     </header>
 
-    <LayoutContainer as="section" className="colophon__card-group grid-span-full" grid={{ gap: 'tight' }}>
+    <section class="colophon__card-group page-grid grid-gap-tight grid-span-full">
       <article class="colophon-card grid-span-3 border border-borderColor dark:border-borderColorDark rounded-lg p-6">
         <h3 class="colophon-card__title">
           <span class="colophon-card__icon">🛠️</span> Built With
@@ -86,13 +84,13 @@ const contentCallouts = [
           <li><strong>Theme:</strong> Light/dark mode support</li>
         </ul>
       </article>
-    </LayoutContainer>
+    </section>
 
-    <LayoutContainer as="section" className="colophon__section grid-span-full" grid={{ gap: 'tight' }}>
+    <section class="colophon__section page-grid grid-gap-tight grid-span-full">
       <div class="colophon__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
         <h2>Content Management</h2>
       </div>
-      <LayoutContainer as="div" className="colophon__callouts grid-span-full" grid={{ gap: 'tight' }}>
+      <div class="colophon__callouts page-grid grid-gap-tight grid-span-full">
         {contentCallouts.map((callout) => (
             <article class={`colophon-callout ${getGridSpanClass(callout.span, 6)} bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6`}>
                 <h3 class="colophon-callout__title">{callout.title}</h3>
@@ -103,14 +101,14 @@ const contentCallouts = [
                 </ul>
             </article>
         ))}
-      </LayoutContainer>
-    </LayoutContainer>
+      </div>
+    </section>
 
-    <LayoutContainer as="section" className="colophon__section grid-span-full" grid={{ gap: 'tight' }}>
+    <section class="colophon__section page-grid grid-gap-tight grid-span-full">
       <div class="colophon__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
         <h2>Technical Features</h2>
       </div>
-      <LayoutContainer as="div" className="colophon__card-group grid-span-full" grid={{ gap: 'tight' }}>
+      <div class="colophon__card-group page-grid grid-gap-tight grid-span-full">
         <article class="colophon-card grid-span-3 border border-borderColor dark:border-borderColorDark rounded-lg p-5">
           <h3 class="colophon-card__title">
             <span class="colophon-card__icon">🔍</span> Search
@@ -135,10 +133,10 @@ const contentCallouts = [
           </h3>
           <p>Optimized meta tags, structured data, and semantic HTML for better search engine visibility.</p>
         </article>
-      </LayoutContainer>
-    </LayoutContainer>
+      </div>
+    </section>
 
-    <LayoutContainer as="section" className="colophon__section grid-span-full" grid={{ gap: 'tight' }}>
+    <section class="colophon__section page-grid grid-gap-tight grid-span-full">
       <div class="colophon__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
         <h2>Site History</h2>
       </div>
@@ -199,9 +197,9 @@ const contentCallouts = [
           </div>
         </div>
       </div>
-    </LayoutContainer>
+    </section>
 
-    <LayoutContainer as="section" className="colophon__section grid-span-full" grid={{ gap: 'tight' }}>
+    <section class="colophon__section page-grid grid-gap-tight grid-span-full">
       <div class="colophon__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
         <h2>Open Source</h2>
         <p>This website is built entirely with open source technologies. The source code is available on GitHub, and contributions are welcome.</p>
@@ -230,11 +228,25 @@ const contentCallouts = [
           Report Issues
         </a>
       </div>
-    </LayoutContainer>
-  </LayoutContainer>
+    </section>
+  </section>
 </Layout>
 
 <style>
+  .page-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    column-gap: var(--grid-column-gap);
+    row-gap: var(--grid-row-gap);
+    padding-inline: var(--grid-padding-inline);
+  }
+
+  @media (min-width: 48rem) {
+    .page-grid {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+
   .colophon {
     padding-block: clamp(2.5rem, 6vw, 3.5rem);
   }
@@ -326,3 +338,4 @@ const contentCallouts = [
     box-shadow: 0 0 0 4px var(--color-bg);
   }
 </style>
+

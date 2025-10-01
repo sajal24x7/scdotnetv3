@@ -1,5 +1,4 @@
 ---
-import LayoutContainer from './LayoutContainer.astro';
 import PostItem from '../PostItem.astro';
 import { parseMarkdown } from '../../utils/markdown';
 
@@ -18,7 +17,7 @@ const renderedPosts = posts.map(post => ({
 const isMicroContent = (category: string) => category === 'micro';
 ---
 
-<LayoutContainer className="stream-layout" grid={{ gap: 'tight' }}>
+<section class="stream-layout">
     <section class="stream-layout__posts grid-span-8 grid-start-1">
         {renderedPosts.map((post) => (
             <PostItem post={post} isMicroContent={isMicroContent} showFullContent={true} />
@@ -32,10 +31,14 @@ const isMicroContent = (category: string) => category === 'micro';
             </div>
         </aside>
     )}
-</LayoutContainer>
+</section>
 
 <style>
     .stream-layout {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        column-gap: clamp(1.5rem, 4vw, 2.25rem);
+        row-gap: clamp(2rem, 5vw, 2.75rem);
         padding-block: clamp(1.5rem, 4vw, 2.5rem);
         align-items: start;
     }
@@ -62,6 +65,12 @@ const isMicroContent = (category: string) => category === 'micro';
     @media (max-width: 63.9375rem) {
         .stream-layout__sidebar-inner {
             position: static;
+        }
+    }
+
+    @media (min-width: 48rem) {
+        .stream-layout {
+            grid-template-columns: repeat(12, minmax(0, 1fr));
         }
     }
 </style>
