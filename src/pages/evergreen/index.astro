@@ -23,7 +23,7 @@ const sectionLandingProps = createSectionLandingProps(
     countText: postCountText,
     tagCategory: 'evergreen',
     tagPosts: allPosts,
-    contentClass: 'evergreen-main twelve-grid grid-gap-tight'
+    contentClass: 'evergreen-main'
   },
   'plainCount'
 );
@@ -42,7 +42,7 @@ const sectionLandingProps = createSectionLandingProps(
   enableSearchModal
   enableLinkHoverEffect
 >
-    <SectionLanding {...sectionLandingProps}>
+    <SectionLanding {...sectionLandingProps} contentGrid={{ gap: 'tight' }}>
       <GardenGrid posts={transformedPosts} contentType="evergreen" />
     </SectionLanding>
   </Layout>

@@ -1,9 +1,19 @@
 ---
+import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
 import TagList from '../components/TagList.astro';
 import type { Post } from '../utils/content';
 
-interface Props {
+type GridGap = 'tight' | 'loose';
+type GridPadding = 'none' | 'narrow' | 'wide';
+
+interface ContentGridConfig {
+    gap?: GridGap;
+    padding?: GridPadding;
+    className?: string;
+}
+
+export interface Props {
     title: string;
     description?: string;
     countText?: string;
@@ -30,6 +40,8 @@ interface Props {
     wrapperClass?: string;
     countAlignment?: 'left' | 'center' | 'right';
     countClass?: string;
+    gridGap?: GridGap;
+    contentGrid?: boolean | ContentGridConfig;
 }
 
 const {
@@ -58,7 +70,9 @@ const {
     paddingValueMobile,
     wrapperClass = '',
     countAlignment = 'center',
-    countClass = ''
+    countClass = '',
+    gridGap,
+    contentGrid
 } = Astro.props as Props;
 
 const resolvedHeaderSize = size ?? headerSize;
@@ -125,11 +139,21 @@ const contentStartClass = contentHasCustomStartClass
     : hasSidebarSlot
         ? 'grid-start-1'
         : '';
+
+const sectionClassName = ['section-landing', wrapperClass].filter(Boolean).join(' ');
+const layoutGridConfig: ContentGridConfig = {
+    padding,
+    ...(gridGap ? { gap: gridGap } : {})
+};
+const resolvedContentGrid = contentGrid === true ? {} : contentGrid ?? false;
+const contentClassName = ['section-content', contentSpanClass, contentStartClass, contentClass]
+    .filter(Boolean)
+    .join(' ');
 ---
-<section class={`section-landing ${wrapperClass}`.trim()}>
-    <div
-        class="section-landing__grid twelve-grid"
-        style={gridStyle || undefined}
+<section class={sectionClassName} style={gridStyle || undefined}>
+    <LayoutContainer
+        className="section-landing__grid"
+        grid={layoutGridConfig}
     >
         <div class="section-header grid-span-full">
             <PageHeader
@@ -183,12 +207,14 @@ const contentStartClass = contentHasCustomStartClass
             </div>
         )}
 
-        <main
-            class={`section-content ${contentSpanClass} ${contentStartClass} ${contentClass}`.trim()}
+        <LayoutContainer
+            as="main"
+            className={contentClassName}
             style={contentStyle || undefined}
+            grid={resolvedContentGrid}
         >
             <slot />
-        </main>
+        </LayoutContainer>
 
         {hasSidebarSlot && (
             <aside class="section-sidebar grid-span-4 grid-start-9">
@@ -197,7 +223,7 @@ const contentStartClass = contentHasCustomStartClass
                 </div>
             </aside>
         )}
-    </div>
+    </LayoutContainer>
 </section>
 
 <style>
