@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import BookShowcase from '../components/ui/BookShowcase.astro';
 import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
 import RecentItems from '../components/RecentItems.astro';
 import FeaturedPosts from '../components/content/FeaturedPosts.astro';
@@ -65,58 +64,75 @@ const featuredPosts = prioritizedFeatured.slice(0, 6).map(transformPost);
     enableSearchModal
     enableLinkHoverEffect
 >
-    <!-- About + Newsletter Section -->
-    <section class="grid-span-12 grid-start-1 py-12 md:py-16">
-        <div class="grid gap-8 md:grid-cols-12 items-start">
-            <div class="md:col-span-8">
-                <div class="grid gap-6 md:grid-cols-12 items-center">
-                    <div class="md:col-span-5 flex justify-center md:justify-start">
-                        <img
-                            src="/profile/profile.jpeg"
-                            alt="Sajal Choudhary"
-                            class="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full object-cover shadow-lg"
-                        />
-                    </div>
-                    <div class="md:col-span-7 text-center md:text-left">
-                        <h1 class="text-huge font-bold mb-4">Sajal Choudhary</h1>
-                        <div class="prose dark:prose-invert max-w-none">
-                            <p class="text-normal leading-relaxed">
-                                I am a platform engineer and a writer based in Finland.<br />I am the author of <a href='/books/a-year-of-mornings/' class='text-accent hover:text-accent/80'>A Year of Mornings</a>, a collection of poems for young adults.<br />
-                            </p>
-                        </div>
-
-                        <!-- Social Media Links for Bridgy verification (hidden) -->
-                        <div class="sr-only">
-                            <a href="https://mastodon.social/@sajal24x7" rel="me">Mastodon</a>
-                            <a href="https://bsky.app/profile/sajal24x7.bsky.social" rel="me">Bluesky</a>
-                            <a href="https://github.com/sajal24x7" rel="me">GitHub</a>
-                        </div>
-                    </div>
-                </div>
+    <!-- Book Hero Section -->
+    <section class="grid-span-12 md:grid-span-10 grid-start-1 md:grid-start-2 py-10 md:py-16">
+        <div class="grid gap-8 md:grid-cols-10 items-start">
+            <div class="md:col-span-3 flex justify-center md:justify-start">
+                <img
+                    src="/books/01-ayom.jpg"
+                    alt="A Year of Mornings - Book Cover"
+                    class="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-xl object-cover shadow-lg"
+                />
             </div>
-            <aside class="md:col-span-4">
-                <NewsletterSignup />
-            </aside>
+            <div class="md:col-span-7 text-center md:text-left space-y-4">
+                <div class="space-y-3">
+                    <p class="text-small text-gray-600 dark:text-gray-400 uppercase tracking-wide">Out now!</p>
+                    <h1 class="text-huge font-bold">
+                        <a href="/books/a-year-of-mornings/" class="text-accent hover:text-accent/80 transition-colors">
+                            A Year of Mornings
+                        </a>
+                    </h1>
+                    <p class="text-normal text-gray-700 dark:text-gray-300 leading-relaxed">
+                        A collection of fifty love poems that follows a young heart as it finds love, finds the strength to be in love and finally, finds the strength to let go.
+                    </p>
+                </div>
+                <p class="text-normal text-gray-700 dark:text-gray-300">
+                    Get your copy at Amazon or borrow a copy from Helmet (Library in Finland).
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- Book Hero Section -->
-    <section class="grid-span-12 grid-start-1 py-10 md:py-14">
-        <BookShowcase
-            bookTitle="A Year of Mornings"
-            bookLink="/books/a-year-of-mornings/"
-            bookCoverSrc="/books/01-ayom.jpg"
-            bookCoverAlt="A Year of Mornings - Book Cover"
-            bookDescription="A collection of fifty love poems that follows a young heart as it finds love, finds the strength to be in love and finally, finds the strength to let go."
-        />
+    <!-- About + Newsletter Section -->
+    <section class="grid-span-12 grid-start-1 py-12 md:py-16">
+        <div class="grid gap-8 md:grid-cols-12 items-start">
+            <div class="md:col-span-4 flex justify-center md:justify-start">
+                <img
+                    src="/profile/profile.jpeg"
+                    alt="Sajal Choudhary"
+                    class="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full object-cover shadow-lg"
+                />
+            </div>
+            <div class="md:col-span-8 space-y-6 text-center md:text-left">
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="text-normal leading-relaxed">
+                        I am a platform engineer and a writer based in Finland.<br />I am the author of <a href='/books/a-year-of-mornings/' class='text-accent hover:text-accent/80'>A Year of Mornings</a>, a collection of poems for young adults.<br />
+                    </p>
+                </div>
+                <p class="text-normal text-gray-700 dark:text-gray-300">
+                    I send out a newsletter once a week….
+                </p>
+                <NewsletterSignup />
+
+                <!-- Social Media Links for Bridgy verification (hidden) -->
+                <div class="sr-only">
+                    <a href="https://mastodon.social/@sajal24x7" rel="me">Mastodon</a>
+                    <a href="https://bsky.app/profile/sajal24x7.bsky.social" rel="me">Bluesky</a>
+                    <a href="https://github.com/sajal24x7" rel="me">GitHub</a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Stream Feed + Featured Rail -->
-    <section class="grid-span-8 grid-start-1 pb-16">
-        <RecentItems posts={recentPosts} title="Recently" />
+    <!-- Writing Section -->
+    <section class="grid-span-12 grid-start-1 pb-16">
+        <div class="grid gap-12 md:grid-cols-12">
+            <div class="md:col-span-7">
+                <RecentItems posts={recentPosts} title="Recently" />
+            </div>
+            <aside class="md:col-span-5">
+                <FeaturedPosts posts={featuredPosts} title="Featured" />
+            </aside>
+        </div>
     </section>
-
-    <aside class="grid-span-4 grid-start-9 pb-16">
-        <FeaturedPosts posts={featuredPosts} title="Featured" />
-    </aside>
 </Layout>
