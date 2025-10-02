@@ -16,7 +16,7 @@ interface Props {
 
 const { coverSrc, coverAlt, title, authors, kicker, metadata = [] } = Astro.props as Props;
 ---
-<section class="book-detail twelve-grid grid-gap-tight grid-pad-narrow">
+<section class="book-detail">
     <div class="book-detail__media grid-span-4 grid-start-1">
         <div class="book-detail__media-inner">
             <img src={coverSrc} alt={coverAlt} class="book-detail__cover" />
@@ -68,8 +68,12 @@ const { coverSrc, coverAlt, title, authors, kicker, metadata = [] } = Astro.prop
 
 <style>
     .book-detail {
-        padding-block: clamp(2rem, 6vw, 3.5rem);
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        column-gap: clamp(1.5rem, 4vw, 2.5rem);
         row-gap: clamp(2rem, 6vw, 3rem);
+        padding-block: clamp(2rem, 6vw, 3.5rem);
+        padding-inline: clamp(0.75rem, 4vw, 2rem);
     }
 
     .book-detail__media,
@@ -199,6 +203,11 @@ const { coverSrc, coverAlt, title, authors, kicker, metadata = [] } = Astro.prop
     }
 
     @media (min-width: 48rem) {
+        .book-detail {
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            padding-inline: clamp(1.5rem, 6vw, 4rem);
+        }
+
         .book-detail__media {
             justify-content: flex-start;
         }

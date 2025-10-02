@@ -1,4 +1,13 @@
 ---
+type GridGap = 'tight' | 'loose';
+type GridPadding = 'none' | 'narrow' | 'wide';
+
+interface GridConfig {
+  gap?: GridGap;
+  padding?: GridPadding;
+  className?: string;
+}
+
 interface Props {
   as?: keyof HTMLElementTagNameMap;
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
@@ -9,7 +18,13 @@ interface Props {
   prose?: boolean;
   proseSize?: 'sm' | 'base' | 'lg' | 'xl';
   className?: string;
+  grid?: boolean | GridConfig;
+  style?: string;
+  id?: string;
+  ['aria-labelledby']?: string;
 }
+
+const props = Astro.props as Props;
 
 const {
   as = 'div',
@@ -20,8 +35,13 @@ const {
   container = false,
   prose = false,
   proseSize = 'base',
-  className = ''
-} = Astro.props as Props;
+  className = '',
+  grid = false,
+  style = '',
+  id
+} = props;
+
+const ariaLabelledby = props['aria-labelledby'];
 
 const maxWidthClasses = {
   sm: 'max-w-sm',
@@ -56,7 +76,30 @@ const paddingMaps = {
 
 const paddingClass = padding === 'none' ? '' : paddingMaps[paddingScale][padding];
 
+const gridGapClasses: Record<GridGap, string> = {
+  tight: 'grid-gap-tight',
+  loose: 'grid-gap-loose'
+};
+
+const gridPaddingClasses: Record<GridPadding, string> = {
+  none: 'grid-pad-none',
+  narrow: 'grid-pad-narrow',
+  wide: 'grid-pad-wide'
+};
+
+const resolvedGridConfig = typeof grid === 'object' && grid !== null ? grid : undefined;
+
+const gridClasses = grid
+  ? [
+      'twelve-grid',
+      resolvedGridConfig?.gap ? gridGapClasses[resolvedGridConfig.gap] : '',
+      resolvedGridConfig?.padding ? gridPaddingClasses[resolvedGridConfig.padding] : '',
+      resolvedGridConfig?.className ?? ''
+    ].filter(Boolean)
+  : [];
+
 const classes = [
+  ...gridClasses,
   container ? 'container' : '',
   centered ? 'mx-auto' : '',
   maxWidthClasses[maxWidth],
@@ -71,6 +114,6 @@ const classes = [
 const Tag = as;
 ---
 
-<Tag class={classes}>
+<Tag id={id} aria-labelledby={ariaLabelledby} class={classes} style={style || undefined}>
   <slot />
 </Tag>

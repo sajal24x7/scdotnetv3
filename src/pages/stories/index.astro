@@ -23,7 +23,7 @@ const sectionLandingProps = createSectionLandingProps(
     countText: storyCountText,
     tagCategory: 'story',
     tagPosts: allPosts,
-    contentClass: 'stories-main twelve-grid grid-gap-tight'
+    contentClass: 'stories-main'
   },
   'plainCount'
 );
@@ -36,13 +36,14 @@ const sectionLandingProps = createSectionLandingProps(
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'none',
-    centered: true
+    centered: true,
+    grid: false
   }}
   allPosts={allPosts}
   enableSearchModal
   enableLinkHoverEffect
 >
-    <SectionLanding {...sectionLandingProps}>
+    <SectionLanding {...sectionLandingProps} contentGrid={{ gap: 'tight' }}>
       <GardenGrid posts={transformedPosts} contentType="stories" />
     </SectionLanding>
   </Layout>

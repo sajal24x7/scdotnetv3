@@ -32,7 +32,7 @@ const {
 
 const shouldShowSidebar = stats.length > 0 || quickLinks.length > 0;
 ---
-<section class="progress-page__layout twelve-grid">
+<section class="progress-page__layout">
     <header class="progress-page__header grid-span-full">
         <PageHeader
             title={pageTitle}
@@ -89,3 +89,90 @@ const shouldShowSidebar = stats.length > 0 || quickLinks.length > 0;
         </aside>
     )}
 </section>
+
+<style>
+    .progress-page__layout {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        column-gap: clamp(1.5rem, 4vw, 2.5rem);
+        row-gap: clamp(2rem, 6vw, 3rem);
+        padding-block: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .progress-page__content {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    .progress-page__list {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.25rem, 4vw, 2rem);
+    }
+
+    .progress-page__sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.5rem, 4vw, 2.25rem);
+    }
+
+    .progress-sidebar-card {
+        border: 1px solid rgba(var(--color-border), 0.85);
+        border-radius: 0.75rem;
+        padding: clamp(1rem, 3vw, 1.5rem);
+        background-color: rgba(var(--color-bg-secondary), 0.55);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    :global(.dark) .progress-sidebar-card {
+        border-color: rgba(var(--color-border), 0.6);
+        background-color: rgba(var(--color-bg-secondary), 0.45);
+    }
+
+    .progress-sidebar-card__title {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .progress-sidebar-card__stats {
+        display: grid;
+        gap: clamp(0.75rem, 3vw, 1.25rem);
+    }
+
+    .progress-sidebar-card__links {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(0.75rem, 3vw, 1.25rem);
+    }
+
+    .progress-sidebar-card__link {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-weight: 500;
+    }
+
+    .progress-sidebar-card__link-label {
+        font-size: 0.9375rem;
+    }
+
+    .progress-sidebar-card__link-description {
+        font-size: 0.8125rem;
+        color: rgba(var(--color-text-secondary), 0.85);
+    }
+
+    @media (min-width: 48rem) {
+        .progress-page__layout {
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+        }
+
+        .progress-page__sidebar {
+            position: sticky;
+            top: clamp(1.5rem, 4vw, 3rem);
+            align-self: start;
+        }
+    }
+</style>

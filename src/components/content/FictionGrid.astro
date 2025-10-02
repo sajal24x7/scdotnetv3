@@ -13,7 +13,7 @@ const { posts, maxPosts } = Astro.props;
 const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
 ---
 
-<div class="fiction-grid twelve-grid grid-gap-tight grid-pad-narrow">
+<div class="fiction-grid grid-gap-tight grid-pad-narrow">
     {displayPosts.map((post) => (
         <article class="fiction-card grid-span-3">
             <a href={`/${post.data.category}/${post.slug}/`} class="fiction-card__link">
@@ -42,7 +42,12 @@ const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
 
 <style>
     .fiction-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        column-gap: var(--grid-column-gap, clamp(1.5rem, 4vw, 2.5rem));
+        row-gap: var(--grid-row-gap, clamp(1.75rem, 5vw, 2.75rem));
         padding-block: clamp(1.5rem, 5vw, 2.5rem);
+        padding-inline: var(--grid-padding-inline, 0);
     }
 
     .fiction-card {
@@ -127,5 +132,11 @@ const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
         border-color: rgba(var(--color-accent), 0.55);
         background-color: rgba(var(--color-bg-secondary), 0.5);
         box-shadow: 0 18px 38px -18px rgba(15, 23, 42, 0.6);
+    }
+
+    @media (min-width: 48rem) {
+        .fiction-grid {
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+        }
     }
 </style>
