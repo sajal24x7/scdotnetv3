@@ -65,16 +65,17 @@ const featuredPosts = prioritizedFeatured.slice(0, 6).map(transformPost);
     enableLinkHoverEffect
 >
     <!-- Book Hero Section -->
-    <section class="grid-span-12 md:grid-span-10 grid-start-1 md:grid-start-2 py-10 md:py-16">
-        <div class="grid gap-8 md:grid-cols-10 items-start">
-            <div class="md:col-span-3 flex justify-center md:justify-start">
+    <section class="grid-span-full grid-start-1 py-10 md:py-16">
+        <div class="row">
+            <figure class="grid-span-3 grid-start-2 flex justify-center md:justify-start">
+              
                 <img
                     src="/books/01-ayom.jpg"
                     alt="A Year of Mornings - Book Cover"
                     class="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-xl object-cover shadow-lg"
                 />
-            </div>
-            <div class="md:col-span-7 text-center md:text-left space-y-4">
+            </figure>
+            <div class="grid-span-7 grid-start-5 space-y-4 text-center md:text-left">
                 <div class="space-y-3">
                     <p class="text-small text-gray-600 dark:text-gray-400 uppercase tracking-wide">Out now!</p>
                     <h1 class="text-huge font-bold">
@@ -92,18 +93,18 @@ const featuredPosts = prioritizedFeatured.slice(0, 6).map(transformPost);
             </div>
         </div>
     </section>
-
+        
     <!-- About + Newsletter Section -->
-    <section class="grid-span-12 grid-start-1 py-12 md:py-16">
-        <div class="grid gap-8 md:grid-cols-12 items-start">
-            <div class="md:col-span-4 flex justify-center md:justify-start">
+    <section class="grid-span-full grid-start-1 py-12 md:py-16">
+        <div class="row">
+            <figure class="grid-span-4 flex justify-center md:justify-start">
                 <img
                     src="/profile/profile.jpeg"
                     alt="Sajal Choudhary"
                     class="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full object-cover shadow-lg"
                 />
-            </div>
-            <div class="md:col-span-8 space-y-6 text-center md:text-left">
+            </figure>
+            <div class="grid-span-8 grid-start-5 space-y-6 text-center md:text-left">
                 <div class="prose dark:prose-invert max-w-none">
                     <p class="text-normal leading-relaxed">
                         I am a platform engineer and a writer based in Finland.<br />I am the author of <a href='/books/a-year-of-mornings/' class='text-accent hover:text-accent/80'>A Year of Mornings</a>, a collection of poems for young adults.<br />
@@ -125,14 +126,11 @@ const featuredPosts = prioritizedFeatured.slice(0, 6).map(transformPost);
     </section>
 
     <!-- Writing Section -->
-    <section class="grid-span-12 grid-start-1 pb-16">
-        <div class="grid gap-12 md:grid-cols-12">
-            <div class="md:col-span-7">
-                <RecentItems posts={recentPosts} title="Recently" />
-            </div>
-            <aside class="md:col-span-5">
-                <FeaturedPosts posts={featuredPosts} title="Featured" />
-            </aside>
-        </div>
+    <section class="grid-span-7 grid-start-1 pb-16">
+        <RecentItems posts={recentPosts} title="Recently" />
     </section>
+
+    <aside class="grid-span-5 grid-start-8 pb-16">
+        <FeaturedPosts posts={featuredPosts} title="Featured" />
+    </aside>
 </Layout>
