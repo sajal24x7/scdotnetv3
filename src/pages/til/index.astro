@@ -23,8 +23,7 @@ const noteCountText = `${noteCount} ${noteCount === 1 ? 'note' : 'notes'}`;
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'none',
-    centered: true,
-    grid: false
+    centered: true
   }}
   allPosts={allPosts}
   enableSearchModal
@@ -40,8 +39,7 @@ const noteCountText = `${noteCount} ${noteCount === 1 ? 'note' : 'notes'}`;
       countVariant="plain"
       tagCategory="til"
       tagPosts={allPosts}
-      contentClass="til-main"
-      contentGrid={{ gap: 'tight' }}
+      contentClass="til-main twelve-grid grid-gap-tight"
     >
       <GardenGrid posts={transformedPosts} contentType="til" />
     </SectionLanding>

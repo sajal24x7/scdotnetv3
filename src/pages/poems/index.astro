@@ -23,7 +23,7 @@ const sectionLandingProps = createSectionLandingProps(
     countText: poemCountText,
     tagCategory: 'poem',
     tagPosts: allPosts,
-    contentClass: 'poems-main'
+    contentClass: 'poems-main twelve-grid grid-gap-tight'
   },
   'plainCount'
 );
@@ -36,14 +36,13 @@ const sectionLandingProps = createSectionLandingProps(
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'none',
-    centered: true,
-    grid: false
+    centered: true
   }}
   allPosts={allPosts}
   enableSearchModal
   enableLinkHoverEffect
 >
-    <SectionLanding {...sectionLandingProps} contentGrid={{ gap: 'tight' }}>
+    <SectionLanding {...sectionLandingProps}>
       <GardenGrid posts={transformedPosts} contentType="poems" />
     </SectionLanding>
   </Layout>

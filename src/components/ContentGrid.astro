@@ -68,6 +68,7 @@ const resolveStart = (span: GridSpan): GridStart => {
 
 const gridClassName = [
     'content-grid',
+    'twelve-grid',
     GAP_CLASS_MAP[gap],
     PADDING_CLASS_MAP[padding]
 ].filter(Boolean).join(' ');
@@ -96,12 +97,7 @@ const gridClassName = [
 
 <style>
     .content-grid {
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        column-gap: var(--grid-column-gap, clamp(1.5rem, 4vw, 2.5rem));
-        row-gap: var(--grid-row-gap, clamp(1.75rem, 5vw, 2.75rem));
         padding-block: clamp(2rem, 6vw, 3rem);
-        padding-inline: var(--grid-padding-inline, 0);
     }
 
     .content-grid__item {
@@ -121,12 +117,6 @@ const gridClassName = [
     @media (max-width: 47.99rem) {
         .content-grid {
             padding-block: clamp(1.5rem, 8vw, 2.5rem);
-        }
-    }
-
-    @media (min-width: 48rem) {
-        .content-grid {
-            grid-template-columns: repeat(12, minmax(0, 1fr));
         }
     }
 </style>

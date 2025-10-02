@@ -125,13 +125,14 @@ const connectionCards = [
     padding: 'md',
     centered: true,
     grid: {
-      gap: 'tight'
+      gap: 'tight',
+      padding: 'narrow'
     }
   }}
   enableSearchModal
   enableLinkHoverEffect
 >
-  <section class="sajal page-grid grid-gap-tight grid-span-full">
+  <section class="sajal twelve-grid grid-gap-tight">
     <header class="grid-span-full">
       <PageHeader
         title="Sajal Choudhary"
@@ -142,7 +143,7 @@ const connectionCards = [
       />
     </header>
 
-    <section class="sajal__intro page-grid grid-gap-tight grid-span-full">
+    <section class="sajal__intro grid-span-full twelve-grid grid-gap-tight">
       <figure class="sajal__portrait grid-span-4 border border-borderColor dark:border-borderColorDark rounded-lg overflow-hidden">
         <img
           src="/profile/profile.jpeg"
@@ -166,11 +167,11 @@ const connectionCards = [
       </div>
     </section>
 
-    <section class="sajal__section page-grid grid-gap-tight grid-span-full">
+    <section class="sajal__section grid-span-full twelve-grid grid-gap-tight">
       <div class="sajal__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
         <h2>Interests & Passions</h2>
       </div>
-      <div class="sajal__card-group page-grid grid-gap-tight grid-span-full">
+      <div class="sajal__card-group grid-span-full twelve-grid grid-gap-tight">
         {interestCards.map((card) => (
             <article class={`sajal-card ${getGridSpanClass(card.span, 3)} border border-borderColor dark:border-borderColorDark rounded-lg p-5`}>
                 <h3 class="sajal-card__title"><span class="sajal-card__icon">{card.icon}</span> {card.title}</h3>
@@ -193,11 +194,11 @@ const connectionCards = [
       </div>
     </section>
 
-    <section class="sajal__section page-grid grid-gap-tight grid-span-full">
+    <section class="sajal__section grid-span-full twelve-grid grid-gap-tight">
       <div class="sajal__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
         <h2>Current Focus</h2>
       </div>
-      <div class="sajal__card-group page-grid grid-gap-tight grid-span-full">
+      <div class="sajal__card-group grid-span-full twelve-grid grid-gap-tight">
         {focusCards.map((card) => (
             <article class={`sajal-card ${getGridSpanClass(card.span, 6)} border border-borderColor dark:border-borderColorDark rounded-lg p-5`}>
                 <h3 class="sajal-card__title"><span class="sajal-card__icon">{card.icon}</span> {card.title}</h3>
@@ -211,7 +212,7 @@ const connectionCards = [
       </div>
     </section>
 
-    <section class="sajal__section page-grid grid-gap-tight grid-span-full">
+    <section class="sajal__section grid-span-full twelve-grid grid-gap-tight">
       <div class="sajal__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
         <h2>Personal Timeline</h2>
       </div>
@@ -274,12 +275,12 @@ const connectionCards = [
       </div>
     </section>
 
-    <section class="sajal__section page-grid grid-gap-tight grid-span-full">
+    <section class="sajal__section grid-span-full twelve-grid grid-gap-tight">
       <div class="sajal__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
         <h2>Connect With Me</h2>
         <p>I'm always interested in connecting with like-minded individuals, discussing ideas, and collaborating on interesting projects. Feel free to reach out through any of the following channels:</p>
       </div>
-      <div class="sajal__card-group page-grid grid-gap-tight grid-span-full">
+      <div class="sajal__card-group grid-span-full twelve-grid grid-gap-tight">
         {connectionCards.map((card) => (
             <article class={`sajal-card ${getGridSpanClass(card.span, 6)} border border-borderColor dark:border-borderColorDark rounded-lg p-5`}>
                 <h3 class="sajal-card__title">{card.title}</h3>
@@ -316,20 +317,6 @@ const connectionCards = [
 </Layout>
 
 <style>
-  .page-grid {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    column-gap: var(--grid-column-gap);
-    row-gap: var(--grid-row-gap);
-    padding-inline: var(--grid-padding-inline);
-  }
-
-  @media (min-width: 48rem) {
-    .page-grid {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-    }
-  }
-
   .sajal {
     padding-block: clamp(2.5rem, 6vw, 3.5rem);
   }
@@ -411,4 +398,3 @@ const connectionCards = [
     box-shadow: 0 0 0 4px var(--color-bg);
   }
 </style>
-

@@ -27,7 +27,7 @@ const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
 const getContainerClasses = () => {
     switch (mode) {
         case 'grid':
-            return 'post-list post-list--grid grid-gap-tight grid-pad-narrow';
+            return 'post-list post-list--grid twelve-grid grid-gap-tight grid-pad-narrow';
         case 'timeline':
             return 'post-list post-list--timeline space-y-8';
         default:
@@ -122,14 +122,6 @@ const getLinkClasses = () => {
 <style>
     .post-list {
         width: 100%;
-    }
-
-    .post-list--grid {
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        column-gap: var(--grid-column-gap, clamp(1.5rem, 4vw, 2.5rem));
-        row-gap: var(--grid-row-gap, clamp(1.75rem, 5vw, 2.75rem));
-        padding-inline: var(--grid-padding-inline, 0);
     }
 
     .post-list__grid-item {
@@ -283,11 +275,5 @@ const getLinkClasses = () => {
         border-color: rgba(var(--color-accent), 0.55);
         background-color: rgba(var(--color-bg-secondary), 0.5);
         box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.7);
-    }
-
-    @media (min-width: 48rem) {
-        .post-list--grid {
-            grid-template-columns: repeat(12, minmax(0, 1fr));
-        }
     }
 </style>

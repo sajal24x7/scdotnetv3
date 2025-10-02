@@ -18,12 +18,11 @@ const books = [
 ---
 
 <Layout title="Books - Sajal Choudhary" description="Books by Sajal Choudhary" currentPage="/books/"
-        pageWrapper={{
-            maxWidth: '7xl',
-            padding: 'none',
-            centered: true,
-            grid: false
-        }}
+    pageWrapper={{
+        maxWidth: '7xl',
+        padding: 'none',
+        centered: true
+    }}
     enableSearchModal
     enableLinkHoverEffect
 >
@@ -33,8 +32,7 @@ const books = [
         layout="centered"
         headerSize="lg"
         headerMaxWidth="7xl"
-        contentClass="books-layout"
-        contentGrid={{ gap: 'tight' }}
+        contentClass="books-layout twelve-grid grid-gap-tight"
         contentPadding="clamp(2rem, 5vw, 3rem)"
     >
         <section class="books-list grid-span-8 grid-start-1">

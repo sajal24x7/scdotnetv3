@@ -7,12 +7,6 @@ import LinkHoverEffect from '../components/LinkHoverEffect.astro';
 import type { Post } from '../utils/content';
 import '../styles/global.css';
 
-type LayoutGridConfig = {
-        gap?: 'tight' | 'loose';
-        padding?: 'none' | 'narrow' | 'wide';
-        className?: string;
-};
-
 interface Props {
         title: string;
         description?: string;
@@ -27,7 +21,11 @@ interface Props {
                 className?: string;
                 prose?: boolean;
                 proseSize?: 'sm' | 'base' | 'lg' | 'xl';
-                grid?: boolean | LayoutGridConfig;
+                grid?: {
+                        gap?: 'tight' | 'loose';
+                        padding?: 'none' | 'narrow' | 'wide';
+                        className?: string;
+                };
         };
         allPosts?: Post[];
         enableSearchModal?: boolean;
@@ -43,7 +41,19 @@ const {
         enableLinkHoverEffect = false,
 } = Astro.props as Props;
 
-const gridSetting = pageWrapper.grid === undefined ? true : pageWrapper.grid;
+const gridConfig = pageWrapper.grid ?? {};
+
+const gridClasses = [
+        'twelve-grid',
+        gridConfig.gap === 'tight' ? 'grid-gap-tight' : '',
+        gridConfig.gap === 'loose' ? 'grid-gap-loose' : '',
+        gridConfig.padding === 'narrow' ? 'grid-pad-narrow' : '',
+        gridConfig.padding === 'wide' ? 'grid-pad-wide' : '',
+        gridConfig.padding === 'none' ? 'grid-pad-none' : '',
+        gridConfig.className || '',
+]
+        .filter(Boolean)
+        .join(' ');
 
 const wrapperClassName = ['grid-span-full', pageWrapper.className || ''].filter(Boolean).join(' ');
 
@@ -113,20 +123,21 @@ const containerPadding = pageWrapper.padding ?? 'none';
                 <div class="flex flex-col min-h-screen">
                         <Header currentPage={currentPage} enableSearch={enableSearchModal} />
                         <main class="flex-grow relative z-10">
-                                <LayoutContainer
-                                        as={pageWrapper.as || 'div'}
-                                        container={containerEnabled}
-                                        maxWidth={containerMaxWidth}
-                                        padding={containerPadding}
-                                        paddingScale={pageWrapper.paddingScale || 'page'}
-                                        centered={pageWrapper.centered !== false}
-                                        prose={pageWrapper.prose === true}
-                                        proseSize={pageWrapper.proseSize || 'base'}
-                                        className={wrapperClassName}
-                                        grid={gridSetting}
-                                >
-                                        <slot />
-                                </LayoutContainer>
+                                <div class={gridClasses}>
+                                        <LayoutContainer
+                                                as={pageWrapper.as || 'div'}
+                                                container={containerEnabled}
+                                                maxWidth={containerMaxWidth}
+                                                padding={containerPadding}
+                                                paddingScale={pageWrapper.paddingScale || 'page'}
+                                                centered={pageWrapper.centered !== false}
+                                                prose={pageWrapper.prose === true}
+                                                proseSize={pageWrapper.proseSize || 'base'}
+                                                className={wrapperClassName}
+                                        >
+                                                <slot />
+                                        </LayoutContainer>
+                                </div>
                         </main>
 			<Footer />
 		</div>
