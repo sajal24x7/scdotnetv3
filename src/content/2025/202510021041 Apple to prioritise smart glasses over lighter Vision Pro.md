@@ -1,14 +1,17 @@
 ---
-title: "Apple to prioritise smart glasses over lighter Vision Pro"
-slug: "apple-to-prioritise-smart-glasses-over-lighter-vision-pro"
-pubDate: 2025-10-02T10:46:12+03:00
-updatedDate: 2025-10-02T10:46:12+03:00
+title: Apple to prioritise smart glasses over lighter Vision Pro
+slug: apple-to-prioritise-smart-glasses-over-lighter-vision-pro
+pubDate: 2025-10-02T07:46:12.000Z
+updatedDate: 2025-10-02T07:46:12.000Z
 category: micro
 tags:
   - apple
   - meta
   - smart-glasses
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115303609111933072'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m274utr6i42h'
+  - 'https://www.threads.com/@sajal24x7/post/DPTM7i9EaJr'
 ---
 
 [Apple sidelines lighter Vision Pro to prioritize smart glasses by Jay Peters](https://www.theverge.com/news/790285/apple-smart-glasses-vision-pro)
