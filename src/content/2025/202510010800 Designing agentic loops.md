@@ -1,13 +1,16 @@
 ---
-title: "Designing agentic loops"
-slug: "designing-agentic-loops"
-pubDate: 2025-10-01T08:05:57+03:00
-updatedDate: 2025-10-01T08:05:57+03:00
+title: Designing agentic loops
+slug: designing-agentic-loops
+pubDate: 2025-10-01T05:05:57.000Z
+updatedDate: 2025-10-01T05:05:57.000Z
 category: micro
 tags:
   - ai
   - agentic-coding
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115303607720154972'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m274uag2542n'
+  - 'https://www.threads.com/@sajal24x7/post/DPTM5EwkfN7'
 ---
 [Designing agentic loops by Simon Willison](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/#atom-everything)
 
