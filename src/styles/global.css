@@ -645,6 +645,16 @@
     --grid-padding-inline: clamp(0.75rem, 4vw, 2rem);
   }
 
+  .edge-to-edge-mobile {
+    margin-inline: calc(var(--grid-padding-inline) * -1);
+  }
+
+  @media (min-width: 48rem) {
+    .edge-to-edge-mobile {
+      margin-inline: 0;
+    }
+  }
+
   .grid-pad-wide {
     --grid-padding-inline: clamp(1.5rem, 6vw, 4rem);
   }

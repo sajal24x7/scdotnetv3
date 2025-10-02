@@ -66,16 +66,17 @@ const featuredPosts = prioritizedFeatured.slice(0, 6).map(transformPost);
 >
     <!-- Book Hero Section -->
     <section class="grid-span-full grid-start-1 py-10 md:py-16">
-        <div class="row">
-            <figure class="grid-span-3 grid-start-2 flex justify-center md:justify-start">
-              
+        <div class="row gap-y-8">
+            <figure
+                class="grid-span-full grid-start-1 edge-to-edge-mobile md:grid-span-4 md:grid-start-2 md:justify-self-start"
+            >
                 <img
                     src="/books/01-ayom.jpg"
                     alt="A Year of Mornings - Book Cover"
-                    class="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-xl object-cover shadow-lg"
+                    class="w-full h-auto max-w-xl mx-auto md:mx-0 aspect-[3/4] rounded-xl object-contain shadow-lg"
                 />
             </figure>
-            <div class="grid-span-7 grid-start-5 space-y-4 text-center md:text-left">
+            <div class="grid-span-full md:grid-span-6 md:grid-start-6 space-y-6 text-center md:text-left">
                 <div class="space-y-3">
                     <p class="text-small text-gray-600 dark:text-gray-400 uppercase tracking-wide">Out now!</p>
                     <h1 class="text-huge font-bold">
@@ -90,6 +91,20 @@ const featuredPosts = prioritizedFeatured.slice(0, 6).map(transformPost);
                 <p class="text-normal text-gray-700 dark:text-gray-300">
                     Get your copy at Amazon or borrow a copy from Helmet (Library in Finland).
                 </p>
+                <div class="flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
+                    <a
+                        href="https://amzn.in/d/cJIzbG0"
+                        class="inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3 font-semibold text-white shadow transition-colors hover:bg-accent/80"
+                    >
+                        Buy on Amazon
+                    </a>
+                    <a
+                        href="https://helmet.finna.fi/Record/helmet.2626433/Versions?sid=5134185916"
+                        class="inline-flex items-center justify-center rounded-xl border border-accent px-6 py-3 font-semibold text-accent transition-colors hover:bg-accent/10"
+                    >
+                        Borrow via Helmet
+                    </a>
+                </div>
             </div>
         </div>
     </section>
