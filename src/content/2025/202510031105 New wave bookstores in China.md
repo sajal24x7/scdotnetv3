@@ -1,13 +1,16 @@
 ---
-title: "New wave bookstores in China"
-slug: "new-wave-bookstores-in-china"
-pubDate: 2025-10-03T11:10:53+03:00
-updatedDate: 2025-10-03T11:10:53+03:00
+title: New wave bookstores in China
+slug: new-wave-bookstores-in-china
+pubDate: 2025-10-03T08:10:53.000Z
+updatedDate: 2025-10-03T08:10:53.000Z
 category: micro
 tags:
   - china
   - book-stores
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115309228066500699'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m2bmq2lfe62d'
+  - 'https://www.threads.com/@sajal24x7/post/DPVwdrtjD-B'
 ---
 [Inside China’s New Wave of Conceptually Innovative Bookstores by By Jean-Yves Mollier and Patricia Sorel
 October 2, 2025](https://lithub.com/inside-chinas-new-wave-of-conceptually-innovative-bookstores/)
