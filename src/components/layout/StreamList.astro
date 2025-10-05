@@ -1,0 +1,33 @@
+---
+import PostItem from '../PostItem.astro';
+import { parseMarkdown } from '../../utils/markdown';
+
+interface Props {
+    posts: any[];
+    showFullContent?: boolean;
+}
+
+const { posts = [], showFullContent = true } = Astro.props as Props;
+
+const renderedPosts = posts.map((post) => ({
+    ...post,
+    renderedContent: post.body ? parseMarkdown(post.body) : null
+}));
+
+const isMicroContent = (category: string) => category === 'micro';
+---
+
+<div class="home-stream-list">
+    {renderedPosts.map((post) => (
+        <PostItem post={post} isMicroContent={isMicroContent} showFullContent={showFullContent} />
+    ))}
+</div>
+
+<style>
+    .home-stream-list {
+        --post-item-spacing: var(--grid-row-gap);
+        display: flex;
+        flex-direction: column;
+        gap: var(--grid-row-gap);
+    }
+</style>
