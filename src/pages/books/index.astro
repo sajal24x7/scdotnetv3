@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
+import { Image } from 'astro:assets';
+import BookCover from '../../images/books/01-ayom.jpg';
 
 // Book data - add new books here in reverse chronological order
 const books = [
@@ -11,7 +13,7 @@ const books = [
     url: "/books/a-year-of-mornings/",
     description: "A year of mornings is a collection of fifty love poems. It follows a young heart as it finds love, finds the strength to be in love and finally, finds the strength to let go.",
     available: true,
-    coverImage: "/books/01-ayom.jpg"
+    coverImage: BookCover
   }
   // Future books will be added here
 ];
@@ -44,7 +46,7 @@ const books = [
 
                     {book.coverImage && (
                         <div class="books-item__cover">
-                            <img
+                            <Image
                                 src={book.coverImage}
                                 alt={`${book.title} cover`}
                                 class="books-item__cover-image"

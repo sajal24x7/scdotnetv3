@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import BookDetailLayout from '../../components/books/BookDetailLayout.astro';
+import BookCover from '../../images/books/01-ayom.jpg';
 
 const metadata = [
     { label: 'Pub date', value: 'October 2009' },
@@ -26,7 +27,7 @@ const metadata = [
     enableLinkHoverEffect
 >
     <BookDetailLayout
-        coverSrc="/books/01-ayom.jpg"
+        coverImage={BookCover}
         coverAlt="Book cover for A Year of Mornings"
         title="A Year of Mornings"
         kicker="Poetry"

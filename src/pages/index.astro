@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
 import StreamList from '../components/layout/StreamList.astro';
 import HomeFeaturedGrid from '../components/content/HomeFeaturedGrid.astro';
+import { Image } from 'astro:assets';
+import BookCover from '../images/books/01-ayom.jpg';
+import ProfileImage from '../images/profile/profile.jpeg';
 import { getAllPosts, getPostsByCategory, transformPost } from '../utils/content';
 import type { Post } from '../utils/content';
 
@@ -58,8 +61,8 @@ const featuredPosts = shufflePosts(featuredCandidates)
     <section class="home-section home-section--book">
         <div class="grid-span-1 hidden md:block" aria-hidden="true"></div>
         <figure class="grid-span-3 home-book__cover edge-to-edge-mobile md:pr-6">
-            <img
-                src="/books/01-ayom.jpg"
+            <Image
+                src={BookCover}
                 alt="A Year of Mornings - Book Cover"
                 class="w-full h-auto max-w-[20rem] mx-auto md:mx-0 rounded-xl shadow-lg"
             />
@@ -98,8 +101,8 @@ const featuredPosts = shufflePosts(featuredCandidates)
     <!-- About + Newsletter Section -->
     <section class="home-section home-section--about">
         <figure class="grid-span-4 home-about__image flex justify-center md:justify-start">
-            <img
-                src="/profile/profile.jpeg"
+            <Image
+                src={ProfileImage}
                 alt="Sajal Choudhary"
                 class="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full object-cover shadow-lg"
             />

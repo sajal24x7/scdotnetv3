@@ -1,4 +1,6 @@
 ---
+import { Image, type ImageMetadata } from 'astro:assets';
+
 interface MetadataItem {
     label: string;
     value: string;
@@ -6,7 +8,7 @@ interface MetadataItem {
 }
 
 interface Props {
-    coverSrc: string;
+    coverImage: ImageMetadata;
     coverAlt: string;
     title: string;
     authors?: string;
@@ -14,12 +16,12 @@ interface Props {
     metadata?: MetadataItem[];
 }
 
-const { coverSrc, coverAlt, title, authors, kicker, metadata = [] } = Astro.props as Props;
+const { coverImage, coverAlt, title, authors, kicker, metadata = [] } = Astro.props as Props;
 ---
 <section class="book-detail twelve-grid grid-gap-tight grid-pad-narrow">
     <div class="book-detail__media grid-span-4 grid-start-1">
         <div class="book-detail__media-inner">
-            <img src={coverSrc} alt={coverAlt} class="book-detail__cover" />
+            <Image src={coverImage} alt={coverAlt} class="book-detail__cover" />
 
             {metadata.length > 0 && (
                 <div class="book-detail__metadata">

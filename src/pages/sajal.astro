@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
+import { Image } from 'astro:assets';
+import ProfileImage from '../images/profile/profile.jpeg';
 
 type CardSpan = number | undefined;
 
@@ -145,8 +147,8 @@ const connectionCards = [
 
     <section class="sajal__intro grid-span-full twelve-grid grid-gap-tight">
       <figure class="sajal__portrait grid-span-4 border border-borderColor dark:border-borderColorDark rounded-lg overflow-hidden">
-        <img
-          src="/profile/profile.jpeg"
+        <Image
+          src={ProfileImage}
           alt="Sajal Choudhary"
           class="w-full h-full object-cover"
         />
