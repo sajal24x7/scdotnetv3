@@ -49,3 +49,4 @@ Commits in this repository use short, action-focused subjects (e.g., `Minor ui c
 - `src/components/PostCard.astro` wraps the base card for classic blog feeds and is consumed by `PostList` when a route wants stacked post cards.
 - `src/components/bookshelf/BookCard.astro` powers the bookshelf UI via `BookGrid`, formatting status, dates, and cover art for reading logs.
 - `StreamLayout` renders stream entries with `PostItem` instead of a dedicated card, and `NordletterGrid` ships bespoke markup for newsletter issues; there is no standalone stream or newsletter card component after the legacy `StreamCard` removal.
+- **Homepage Featured** reads its source slugs from `src/data/homeFeatured.json`. Keep that file to bare post slugs (e.g., `"the-goal-with-yoga"`) so the homepage lookup `postsBySlug.get(slug)` can match frontmatter `slug` values without needing category prefixes or full URLs.
