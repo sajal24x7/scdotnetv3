@@ -1,13 +1,16 @@
 ---
-title: "Finnish customs and new legislations want to block Temu"
-slug: "finnish-customs-and-new-legislations-want-to-block-temu"
-pubDate: 2025-10-07T06:35:07+03:00
-updatedDate: 2025-10-07T06:35:07+03:00
+title: Finnish customs and new legislations want to block Temu
+slug: finnish-customs-and-new-legislations-want-to-block-temu
+pubDate: 2025-10-07T03:35:07.000Z
+updatedDate: 2025-10-07T03:35:07.000Z
 category: micro
 tags:
   - finland
   - china
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115330793174889418'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m2l76qnbih2h'
+  - 'https://www.threads.com/@sajal24x7/post/DPfkF6DjgP-'
 ---
 [Finnish Customs wants to turn back the tide on Temu](https://yle.fi/a/74-20186849?origin=rss)
 
