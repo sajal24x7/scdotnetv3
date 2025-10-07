@@ -11,6 +11,7 @@ tags:
 bookCover: 'the-galaxy-and-the-ground-within.jpg'
 author: "Becky Chambers"
 bookStatus: "read"
+bookRating: 'liked-it'
 startedReading: "2025-01-10T20:15:00+03:00"
 finishedReading: "2025-01-10T20:15:00+03:00"
 ---

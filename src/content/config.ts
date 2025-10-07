@@ -37,6 +37,8 @@ const postsCollection = defineCollection({
     startedReading: dateSchema.optional(),
     finishedReading: dateSchema.optional(),
     bookStatus: z.enum(['reading', 'read']).optional(),
+    bookRating: z.enum(['not-for-me', 'liked-it', 'loved-it']).optional().default('liked-it'),
+    bookRatingLabel: z.string().optional(),
     bookCover: z.string().optional(), // Book cover image for bookshelf display
     // POSSE syndication metadata
     syndicationUrls: z.array(z.string()).optional(), // URLs where content was syndicated

@@ -1,6 +1,6 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2025-10-06T18:59:02.800Z
-// Found 20 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, artificial-condition.jpg, black-box-thinking.jpg, children-of-time.jpg, excellent-advice-for-living.jpg, men-without-women.jpg, nexus.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-mysterious-affair-at-styles.jpg, the-quick-python-book-fourth-edition.jpg, the-secret-of-secrets.jpg, the-three-body-problem.jpg, time-management-for-system-administrators.jpg
+// Generated on: 2025-10-07T10:29:42.896Z
+// Found 21 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, artificial-condition.jpg, black-box-thinking.jpg, children-of-time.jpg, data-analysis-with-python-and-pyspark.jpeg, excellent-advice-for-living.jpg, men-without-women.jpg, nexus.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-mysterious-affair-at-styles.jpg, the-quick-python-book-fourth-edition.jpg, the-secret-of-secrets.jpg, the-three-body-problem.jpg, time-management-for-system-administrators.jpg
 
 import a_closed_and_common_orbit_jpg from '../images/bookshelf/a-closed-and-common-orbit.jpg';
 import abundance_jpg from '../images/bookshelf/abundance.jpg';
@@ -8,6 +8,7 @@ import all_systems_red_jpg from '../images/bookshelf/all-systems-red.jpg';
 import artificial_condition_jpg from '../images/bookshelf/artificial-condition.jpg';
 import black_box_thinking_jpg from '../images/bookshelf/black-box-thinking.jpg';
 import children_of_time_jpg from '../images/bookshelf/children-of-time.jpg';
+import data_analysis_with_python_and_pyspark_jpeg from '../images/bookshelf/data-analysis-with-python-and-pyspark.jpeg';
 import excellent_advice_for_living_jpg from '../images/bookshelf/excellent-advice-for-living.jpg';
 import men_without_women_jpg from '../images/bookshelf/men-without-women.jpg';
 import nexus_jpg from '../images/bookshelf/nexus.jpg';
@@ -30,6 +31,7 @@ export const bookCoverImages: Record<string, any> = {
   'artificial-condition.jpg': artificial_condition_jpg,
   'black-box-thinking.jpg': black_box_thinking_jpg,
   'children-of-time.jpg': children_of_time_jpg,
+  'data-analysis-with-python-and-pyspark.jpeg': data_analysis_with_python_and_pyspark_jpeg,
   'excellent-advice-for-living.jpg': excellent_advice_for_living_jpg,
   'men-without-women.jpg': men_without_women_jpg,
   'nexus.jpg': nexus_jpg,
@@ -50,4 +52,4 @@ export function getBookCoverImage(filename: string) {
   return bookCoverImages[filename];
 }
 
-export type BookCoverFilename = 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'all-systems-red.jpg' | 'artificial-condition.jpg' | 'black-box-thinking.jpg' | 'children-of-time.jpg' | 'excellent-advice-for-living.jpg' | 'men-without-women.jpg' | 'nexus.jpg' | 'poems-to-fall-in-love-with.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'rogue-protocol.jpg' | 'the-dark-forest.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-mysterious-affair-at-styles.jpg' | 'the-quick-python-book-fourth-edition.jpg' | 'the-secret-of-secrets.jpg' | 'the-three-body-problem.jpg' | 'time-management-for-system-administrators.jpg';
+export type BookCoverFilename = 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'all-systems-red.jpg' | 'artificial-condition.jpg' | 'black-box-thinking.jpg' | 'children-of-time.jpg' | 'data-analysis-with-python-and-pyspark.jpeg' | 'excellent-advice-for-living.jpg' | 'men-without-women.jpg' | 'nexus.jpg' | 'poems-to-fall-in-love-with.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'rogue-protocol.jpg' | 'the-dark-forest.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-mysterious-affair-at-styles.jpg' | 'the-quick-python-book-fourth-edition.jpg' | 'the-secret-of-secrets.jpg' | 'the-three-body-problem.jpg' | 'time-management-for-system-administrators.jpg';

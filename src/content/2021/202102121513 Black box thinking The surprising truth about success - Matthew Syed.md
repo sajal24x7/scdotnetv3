@@ -13,6 +13,7 @@ bookCover: 'black-box-thinking.jpg'
 author: "Matthew Syed"
 series: none
 bookStatus: "read"
+bookRating: 'liked-it'
 startedReading: "2021-02-12T15:13:00+03:00"
 finishedReading: "2021-02-12T15:13:00+03:00"
 ---

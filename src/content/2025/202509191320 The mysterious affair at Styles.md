@@ -10,6 +10,7 @@ format: audio
 author: "Agatha Christie"
 series: "Hercule Poirot #1"
 bookStatus: "read"
+bookRating: 'liked-it'
 startedReading: 2025-09-19T16:11:06+03:00
 finishedReading: 2025-09-23T17:00:18+03:00
 bookCover: "the-mysterious-affair-at-styles.jpg"
