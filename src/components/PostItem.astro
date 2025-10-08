@@ -12,93 +12,95 @@ interface Props {
 const { post, isMicroContent, showFullContent = true } = Astro.props;
 const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
 const hasTags = tags.length > 0;
+const isMicro = isMicroContent(post.data.category);
+const postTitle = post.data.title;
+const postLink = post.data.link;
+const linkAriaLabel = postTitle
+  ? `Open “${postTitle}”`
+  : 'Open post';
 ---
 
 <article class="post-item">
-  <div class="post-item-body">
-    {post.data.title && (
-      <h2 class="stream-title">
-        <a href={post.data.link} class="stream-title-link link-hover">
-          {post.data.title}
-        </a>
-      </h2>
-    )}
-
-    <div class="stream-body">
-      {post.data.category === 'micro' && showFullContent ? (
-        <div
-          class="prose dark:prose-dark stream-prose"
-          set:html={post.renderedContent || post.body}
-        />
-      ) : (
-        post.data.description && (
-          <p class="stream-description">
-            {post.data.description}
-          </p>
-        )
-      )}
-    </div>
-
-    {!isMicroContent(post.data.category) && (
-      <div class="stream-read-more">
-        <a href={post.data.link} class="read-more-link link-hover">
-          Read more →
-        </a>
-      </div>
-    )}
-
-    <div class="post-item-meta post-item-meta-mobile">
-      <a href={post.data.link} class="stream-date-link link-hover">
+  <header class="post-item-header">
+    <a href={postLink} class="post-item-timestamp link-hover" aria-label={linkAriaLabel}>
+      <span class="post-item-time">
+        <span class="post-item-timestamp-label">Posted</span>
         <TimeDisplay
           date={post.data.pubDate}
           category={post.data.category}
-          className="stream-date"
-          format="detailed"
+          className="post-item-time-value"
+          format="relative"
         />
+        <span class="post-item-link-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M8.693 6.807 6.1 9.4a4.273 4.273 0 0 0 6.045 6.045l7.071-7.071a3 3 0 0 0-4.243-4.243l-7.07 7.071a1.5 1.5 0 1 0 2.121 2.121l5.657-5.657"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </span>
+    </a>
+  </header>
+
+  {!isMicro && postTitle && (
+    <h2 class="stream-title">
+      <a href={postLink} class="stream-title-link link-hover">
+        {postTitle}
       </a>
-      <div class="stream-meta-divider">•</div>
-      <CategoryDisplay category={post.data.category} className="stream-category" />
-      {hasTags && (
-        <>
-          <div class="stream-meta-divider">•</div>
-          <div class="stream-tags-inline">
-            {tags.map((tag: string) => (
-              <Tag tag={tag} />
-            ))}
-          </div>
-        </>
-      )}
-    </div>
+    </h2>
+  )}
+
+  <div class="stream-body">
+    {post.data.category === 'micro' && showFullContent ? (
+      <div
+        class="prose dark:prose-dark stream-prose"
+        set:html={post.renderedContent || post.body}
+      />
+    ) : (
+      post.data.description && (
+        <p class="stream-description">
+          {post.data.description}
+        </p>
+      )
+    )}
   </div>
 
-  <aside class="post-item-meta post-item-meta-desktop">
-    <a href={post.data.link} class="stream-date-link link-hover">
-      <TimeDisplay
-        date={post.data.pubDate}
-        category={post.data.category}
-        className="stream-date"
-        format="detailed"
-      />
-    </a>
+  {!isMicro && (
+    <div class="stream-read-more">
+      <a href={postLink} class="read-more-link link-hover">
+        Read more →
+      </a>
+    </div>
+  )}
+
+  <footer class="post-item-footer">
     <CategoryDisplay category={post.data.category} className="stream-category" />
     {hasTags && (
-      <div class="stream-tags-sidebar">
+      <div class="post-item-tags">
         {tags.map((tag: string) => (
           <Tag tag={tag} />
         ))}
       </div>
     )}
-  </aside>
+  </footer>
 </article>
 
 <style>
   .post-item {
-    border-bottom: 1px solid rgb(var(--color-border));
+    border-bottom: 2px dashed rgba(var(--color-text-secondary), 0.55);
     padding-bottom: calc(var(--post-item-spacing, var(--grid-row-gap)) / 2);
     margin-bottom: 0;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: calc(var(--post-item-spacing, var(--grid-row-gap)) / 2);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--post-item-spacing, var(--grid-row-gap)) / 3);
+  }
+
+  :global(.dark) .post-item {
+    border-bottom-color: rgba(var(--color-border), 0.6);
   }
 
   .post-item:last-child {
@@ -106,10 +108,62 @@ const hasTags = tags.length > 0;
     padding-bottom: 0;
   }
 
-  .post-item-body {
+  .post-item-header {
     display: flex;
-    flex-direction: column;
-    gap: calc(var(--post-item-spacing, var(--grid-row-gap)) / 3);
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .post-item-timestamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: #6b7280;
+    font-size: var(--text-small);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  :global(.dark) .post-item-timestamp {
+    color: #9ca3af;
+  }
+
+  .post-item-timestamp:hover {
+    color: rgb(var(--color-text-primary));
+  }
+
+  .post-item-timestamp-label {
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  .post-item-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .post-item-time-value {
+    color: inherit;
+  }
+
+  .post-item-link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .post-item-link-icon svg {
+    width: 100%;
+    height: 100%;
   }
 
   .stream-title {
@@ -133,59 +187,6 @@ const hasTags = tags.length > 0;
     margin-top: calc(var(--post-item-spacing, var(--grid-row-gap)) / 6);
   }
 
-  .post-item-meta {
-    font-size: 0.875rem;
-    color: rgb(var(--color-text-secondary));
-  }
-
-  .post-item-meta-mobile {
-    margin-top: 0;
-    padding-top: calc(var(--post-item-spacing, var(--grid-row-gap)) / 2);
-    border-top: 1px solid rgb(var(--color-border));
-    display: flex;
-    align-items: center;
-    gap: calc(var(--post-item-spacing, var(--grid-row-gap)) / 4);
-    flex-wrap: wrap;
-  }
-
-  .post-item-meta-desktop {
-    display: none;
-    flex-direction: column;
-    gap: calc(var(--post-item-spacing, var(--grid-row-gap)) / 3);
-    text-align: right;
-  }
-
-  .stream-date-link {
-    text-decoration: none;
-    transition: all 0.2s ease;
-    color: inherit;
-    font-weight: 500;
-  }
-
-  .stream-date {
-    font-weight: 500;
-    color: inherit;
-    font-family: monospace;
-  }
-
-  .stream-tags-sidebar {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-
-  .stream-tags-inline {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .stream-meta-divider {
-    color: rgba(var(--color-text-secondary), 0.35);
-  }
-
   .stream-prose {
     max-width: none;
     width: 100%;
@@ -196,32 +197,29 @@ const hasTags = tags.length > 0;
     margin-bottom: 0.75em;
   }
 
-  @media (min-width: 48rem) {
-    .post-item {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      column-gap: var(--grid-column-gap);
-      row-gap: var(--grid-row-gap);
-    }
-
-    .post-item-body {
-      grid-column: 1 / -1;
-    }
+  .post-item-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    color: rgb(var(--color-text-secondary));
+    padding-top: calc(var(--post-item-spacing, var(--grid-row-gap)) / 2);
   }
 
-  @media (min-width: 64rem) {
-    .post-item-body {
-      grid-column: 4 / span 9;
+  .post-item-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 48rem) {
+    .post-item {
+      gap: var(--post-item-spacing, var(--grid-row-gap));
     }
 
-    .post-item-meta-desktop {
-      display: flex;
-      grid-column: 1 / span 3;
-      grid-row: 1;
-      align-items: flex-end;
-    }
-
-    .post-item-meta-mobile {
-      display: none;
+    .post-item-header {
+      align-items: flex-start;
     }
   }
 </style>

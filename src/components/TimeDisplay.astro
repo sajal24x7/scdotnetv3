@@ -1,5 +1,5 @@
 ---
-import { formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNowStrict } from 'date-fns';
 import { formatDateWithTime, formatMonthYear } from '../utils/dateFormat';
 
 interface Props {
@@ -32,8 +32,8 @@ const getTimeFormat = () => {
 };
 
 const timeFormat = getTimeFormat();
-const displayTime = timeFormat === 'relative' 
-  ? formatDistanceToNow(new Date(date), { addSuffix: true }).replace(/^./, str => str.toUpperCase())
+const displayTime = timeFormat === 'relative'
+  ? formatDistanceToNowStrict(new Date(date), { addSuffix: true }).replace(/^./, str => str.toUpperCase())
   : timeFormat === 'month-year'
   ? formatMonthYear(date)
   : formatDateWithTime(date);
@@ -52,12 +52,8 @@ const isRelative = timeFormat === 'relative';
 <style>
   .time-display {
     font-size: var(--text-small);
-    color: #6b7280;
+    color: inherit;
     font-weight: 500;
-  }
-
-  :global(.dark) .time-display {
-    color: #9ca3af;
   }
 
   /* Hover effect for relative times to show full date */
