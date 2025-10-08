@@ -1,6 +1,6 @@
 ---
-title: "Children of Time"
-slug: "children-of-time"
+title: Children of Time
+slug: children-of-time
 pubDate: 2025-09-04T22:45:58+03:00
 updatedDate: 2025-09-04T22:45:58+03:00
 category: bookshelf
@@ -9,11 +9,11 @@ tags:
 format: audio
 author: Tchaikovsky, Adrian
 series: "Children of Time - Book #1"
-bookStatus: "read"
-bookRating: 'liked-it'
+bookStatus: read
+bookRating: loved-it
 startedReading: 2025-09-02T22:45:58+03:00
 finishedReading: 2025-09-19T16:45:58+03:00
-bookCover: "children-of-time.jpg"
+bookCover: children-of-time.jpg
 ---
 
 I loved reading Children of Time.
