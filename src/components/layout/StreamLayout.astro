@@ -18,7 +18,7 @@ const isMicroContent = (category: string) => category === 'micro';
 ---
 
 <div class="stream-layout twelve-grid grid-gap-tight">
-    <section class="stream-layout__posts grid-span-8 grid-start-1">
+    <section class={`stream-layout__posts grid-span-8 ${hasSidebarContent ? 'grid-start-1' : 'grid-start-2'}`}>
         {renderedPosts.map((post) => (
             <PostItem post={post} isMicroContent={isMicroContent} showFullContent={true} />
         ))}
