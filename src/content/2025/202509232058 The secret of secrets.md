@@ -11,6 +11,7 @@ format: audio
 author: "Dan Brown"
 series: "Robert Langdon #6"
 bookStatus: "reading"
+bookRating: 'liked-it'
 startedReading: 2025-09-23T17:00:18+03:00
 bookCover: "the-secret-of-secrets.jpg"
 ---

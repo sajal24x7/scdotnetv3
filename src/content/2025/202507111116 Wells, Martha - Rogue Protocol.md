@@ -13,6 +13,7 @@ bookCover: 'rogue-protocol.jpg'
 author: "Martha Wells"
 series: "The Murderbot Diaries"
 bookStatus: "read"
+bookRating: 'liked-it'
 startedReading: "2025-07-11T09:31:00+03:00"
 finishedReading: "2025-07-15T21:00:00+03:00"
 ---

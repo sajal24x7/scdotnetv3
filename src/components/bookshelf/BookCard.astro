@@ -1,32 +1,34 @@
 ---
 import { Image } from 'astro:assets';
 import { getBookCoverImage } from '../../utils/bookCovers';
+import { defaultBookRatingLabels, type BookRating } from '../../utils/bookRatings';
 
 interface BookCardProps {
-  title: string;
-  author?: string;
-  series?: string;
-  startedReading?: Date | string;
-  finishedReading?: Date | string;
-  bookStatus?: 'reading' | 'read';
-  bookCover?: string;
-  pubDate: Date | string;
-  link?: string;
-  format?: string;
+    title: string;
+    author?: string;
+    series?: string;
+    startedReading?: Date | string;
+    finishedReading?: Date | string;
+    bookStatus?: 'reading' | 'read';
+    bookRating?: BookRating;
+    bookRatingLabel?: string;
+    bookCover?: string;
+    link?: string;
+    format?: string;
 }
 
-const { 
-  title, 
-  author, 
-  series, 
-  startedReading, 
-  finishedReading, 
-  bookStatus, 
-  bookCover, 
-  pubDate, 
-  link, 
-  format
-} = Astro.props;
+const {
+    title,
+    author,
+    series,
+    startedReading,
+    finishedReading,
+    bookRating,
+    bookRatingLabel,
+    bookCover,
+    link,
+    format
+} = Astro.props as BookCardProps;
 
 // Only use bookCover for bookshelf display
 const coverImage = bookCover;
@@ -47,6 +49,32 @@ const formatDate = (date: Date | string | undefined) => {
 
 const startedDate = formatDate(startedReading);
 const finishedDate = formatDate(finishedReading);
+
+const rating: BookRating = bookRating ?? 'liked-it';
+const ratingLabel = bookRatingLabel ?? defaultBookRatingLabels[rating];
+
+type ThumbDirection = 'up' | 'down';
+
+const thumbIconPaths: Record<ThumbDirection, readonly string[]> = {
+    up: [
+        'M8 11.5V4.25c0-1.036.84-1.875 1.875-1.875.62 0 1.222.191 1.725.551l1.29.92c.44.315.705.821.705 1.361V10h5.167c1.172 0 1.97 1.174 1.579 2.29l-2.062 5.934a2.25 2.25 0 0 1-2.125 1.526H9.75A1.75 1.75 0 0 1 8 18v-6.5z',
+        'M8 11.5H5.75A2.75 2.75 0 0 0 3 14.25v0A2.75 2.75 0 0 0 5.75 17H8'
+    ],
+    down: [
+        'M16 12.5v7.25c0 1.036-.84 1.875-1.875 1.875-.62 0-1.222-.191-1.725-.551l-1.29-.92a1.75 1.75 0 0 1-.705-1.361V14H5.238c-1.172 0-1.97-1.174-1.579-2.29l2.062-5.934A2.25 2.25 0 0 1 7.846 4.25H14.25c.966 0 1.75.784 1.75 1.75v6.5z',
+        'M16 12.5h2.25A2.75 2.75 0 0 0 21 9.75v0A2.75 2.75 0 0 0 18.25 7H16'
+    ]
+};
+
+const ratingIconSpecs: Array<{ direction: ThumbDirection; size: number }> =
+    rating === 'loved-it'
+        ? [
+              { direction: 'up', size: 19 },
+              { direction: 'up', size: 15 }
+          ]
+        : rating === 'liked-it'
+        ? [{ direction: 'up', size: 18 }]
+        : [{ direction: 'down', size: 18 }];
 ---
 
 <article class="book-card">
@@ -109,6 +137,31 @@ const finishedDate = formatDate(finishedReading);
         {format && (
           <span class="book-format">{format}</span>
         )}
+        <div class={`book-rating book-rating--${rating}`} aria-label={`Rating: ${ratingLabel}`}>
+          <span class="book-rating__icons" aria-hidden="true">
+            {ratingIconSpecs.map(({ direction, size }) => (
+              <span class="book-rating__icon" aria-hidden="true">
+                <svg
+                  class="book-rating__icon-svg"
+                  width={size}
+                  height={size}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  {thumbIconPaths[direction].map((d) => (
+                    <path d={d}></path>
+                  ))}
+                </svg>
+              </span>
+            ))}
+          </span>
+          <span class="book-rating__text">{ratingLabel}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -126,9 +179,9 @@ const finishedDate = formatDate(finishedReading);
   }
 
   .book-card:hover {
-    border-color: #f59e0b;
-    box-shadow: 0 4px 16px 0 rgba(245, 158, 11, 0.08);
-    background: #fffbeb;
+    border-color: #94a3b8;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    background: #ffffff;
   }
 
   :global(.dark) .book-card {
@@ -138,9 +191,9 @@ const finishedDate = formatDate(finishedReading);
   }
 
   :global(.dark) .book-card:hover {
-    border-color: #f59e0b;
-    box-shadow: 0 4px 16px 0 rgba(245, 158, 11, 0.08);
-    background: #1f2937;
+    border-color: #60a5fa;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+    background: #111827;
   }
 
   .book-content {
@@ -197,6 +250,80 @@ const finishedDate = formatDate(finishedReading);
     flex-direction: column;
     gap: 0.5rem;
     min-width: 0;
+  }
+
+  .book-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .book-rating {
+    --rating-color: #1f2937;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border-radius: 9999px;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background: transparent;
+    color: var(--rating-color);
+    border: 1.5px solid currentColor;
+  }
+
+  .book-rating__icons {
+    display: inline-flex;
+    gap: 0.2rem;
+  }
+
+  .book-rating__icon {
+    line-height: 1;
+    display: inline-flex;
+  }
+
+  .book-rating__icon-svg {
+    display: block;
+  }
+
+  .book-rating__text {
+    letter-spacing: 0.02em;
+  }
+
+  .book-rating--liked-it {
+    --rating-color: #16a34a;
+  }
+
+  .book-rating--loved-it {
+    --rating-color: #7c3aed;
+  }
+
+  .book-rating--not-for-me {
+    --rating-color: #dc2626;
+  }
+
+  .book-rating--loved-it .book-rating__icon:nth-child(2) {
+    margin-left: -0.15rem;
+  }
+
+  :global(.dark) .book-rating {
+    --rating-color: #d1d5db;
+    background: transparent;
+  }
+
+  :global(.dark) .book-rating--liked-it {
+    --rating-color: #34d399;
+  }
+
+  :global(.dark) .book-rating--loved-it {
+    --rating-color: #c084fc;
+  }
+
+  :global(.dark) .book-rating--not-for-me {
+    --rating-color: #f87171;
   }
 
   .book-header {
@@ -273,38 +400,34 @@ const finishedDate = formatDate(finishedReading);
     color: #d1d5db;
   }
 
-  .book-meta {
-    margin-top: 0.5rem;
-  }
-
   .book-format {
     display: inline-block;
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: lowercase;
     letter-spacing: 0.05em;
-    color: #ca8a04;
+    color: #1f2937;
     background: transparent;
     padding: 0.2rem 0.6rem;
     border-radius: 9999px;
-    border: 1px solid #eab308;
+    border: 1px solid #d1d5db;
     white-space: nowrap;
-    transition: all 0.2s ease;
+    transition: color 0.2s ease, border-color 0.2s ease;
   }
 
   :global(.dark) .book-format {
-    color: #fbbf24;
-    border-color: #f59e0b;
+    color: #e5e7eb;
+    border-color: #4b5563;
   }
 
   .book-format:hover {
-    background: rgba(234, 179, 8, 0.05);
-    border-color: #ca8a04;
+    color: #111827;
+    border-color: #9ca3af;
   }
 
   :global(.dark) .book-format:hover {
-    background: rgba(245, 158, 11, 0.1);
-    border-color: #f59e0b;
+    color: #f3f4f6;
+    border-color: #9ca3af;
   }
 
   /* Mobile adjustments */

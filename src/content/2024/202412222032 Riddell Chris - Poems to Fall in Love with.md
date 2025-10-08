@@ -12,6 +12,7 @@ bookCover: 'poems-to-fall-in-love-with.jpg'
 author: "Chris Riddell"
 series: none
 bookStatus: "read"
+bookRating: 'liked-it'
 startedReading: "2024-12-22T20:32:00+03:00"
 finishedReading: "2024-12-22T20:32:00+03:00"
 ---

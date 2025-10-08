@@ -11,6 +11,7 @@ tags:
 bookCover: 'record-of-a-spaceborn-few.jpg'
 author: "Becky Chambers"
 bookStatus: "read"
+bookRating: 'liked-it'
 startedReading: "2024-12-24T10:54:00+03:00"
 finishedReading: "2024-12-24T10:54:00+03:00"
 ---
