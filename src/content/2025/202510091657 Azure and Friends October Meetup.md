@@ -1,15 +1,19 @@
 ---
-title: "Azure and Friends October Meetup"
-slug: "azure-and-friends-october-meetup"
-pubDate: 2025-10-10T00:53:28+03:00
-updatedDate: 2025-10-10T00:53:28+03:00
+title: Azure and Friends October Meetup
+slug: azure-and-friends-october-meetup
+pubDate: 2025-10-09T21:53:28.000Z
+updatedDate: 2025-10-09T21:53:28.000Z
 category: blog
 tags:
   - azure
   - azure-and-friends
   - finland
   - meetup
-image: https://storage.sajalchoudhary.net/images/2025/10/aaf-oct-2.jpeg
+image: 'https://storage.sajalchoudhary.net/images/2025/10/aaf-oct-2.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115346440744225491'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m2s5kg252o2q'
+  - 'https://www.threads.com/@sajal24x7/post/DPmrfvHCVEV'
 ---
 I’m back at the same beautiful area next to the Espalandi park area, this time at the Nordcloud office.
 
