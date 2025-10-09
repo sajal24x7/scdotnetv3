@@ -1,13 +1,16 @@
 ---
-title: "I don’t care about the three rings anymore"
-slug: "i-dont-care-about-the-three-rings-anymore"
-pubDate: 2025-10-09T07:27:08+03:00
-updatedDate: 2025-10-09T07:27:08+03:00
+title: I don’t care about the three rings anymore
+slug: i-dont-care-about-the-three-rings-anymore
+pubDate: 2025-10-09T04:27:08.000Z
+updatedDate: 2025-10-09T04:27:08.000Z
 category: blog
 tags:
   - apple
   - health
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115342322952648891'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m2qczukwlq2v'
+  - 'https://www.threads.com/@sajal24x7/post/DPkzpv9DLR4'
 ---
 I used to be obsessed with the Apple Health and workout metric. 
 
