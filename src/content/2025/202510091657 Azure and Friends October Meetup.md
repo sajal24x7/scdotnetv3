@@ -9,7 +9,7 @@ tags:
   - azure-and-friends
   - finland
   - meetup
-
+image: https://storage.sajalchoudhary.net/images/2025/10/aaf-oct-2.jpeg
 ---
 I’m back at the same beautiful area next to the Espalandi park area, this time at the Nordcloud office.
 
