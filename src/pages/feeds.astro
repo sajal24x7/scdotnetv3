@@ -22,7 +22,11 @@ const transformedRecentPosts = recentPosts.map(transformPost);
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'md',
-    centered: true
+    centered: true,
+    grid: {
+      gap: 'loose',
+      padding: 'narrow'
+    }
   }}
   allPosts={allPosts}
   enableSearchModal

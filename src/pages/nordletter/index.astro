@@ -31,7 +31,6 @@ const sectionLandingProps = createSectionLandingProps({
   tagCategory: 'nordletter',
   tagPosts: allPosts,
   tagWrapperClass: 'grid-span-full',
-  padding: 'wide',
   contentClass: 'nordletter-content twelve-grid grid-gap-tight',
   contentPadding: '0'
 });
@@ -44,7 +43,11 @@ const sectionLandingProps = createSectionLandingProps({
   pageWrapper={{
     maxWidth: '7xl',
     padding: 'none',
-    centered: true
+    centered: true,
+    grid: {
+      gap: 'loose',
+      padding: 'narrow'
+    }
   }}
   allPosts={allPosts}
   enableSearchModal
