@@ -29,7 +29,7 @@ const basePreset: SectionLandingPreset = {
     layout: 'centered',
     headerSize: 'lg',
     headerMaxWidth: '7xl',
-    padding: 'narrow'
+    padding: 'none'
 };
 
 const presetMap: Record<SectionLandingPresetName, SectionLandingPreset> = {
