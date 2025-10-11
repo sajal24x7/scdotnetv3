@@ -1,15 +1,18 @@
 ---
-title: "ChatGPT OSS runs on phone with 16GB memory"
-slug: "chatgpt-oss-runs-on-phone-with-16gb-memory"
-pubDate: 2025-10-11T06:55:35+03:00
-updatedDate: 2025-10-11T06:55:35+03:00
+title: ChatGPT OSS runs on phone with 16GB memory
+slug: chatgpt-oss-runs-on-phone-with-16gb-memory
+pubDate: 2025-10-11T03:55:35.000Z
+updatedDate: 2025-10-11T03:55:35.000Z
 category: micro
 tags:
   - ai
   - iphone
   - chatgpt
   - oss
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115353522615314158'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m2vc6uvw5r24'
+  - 'https://www.threads.com/@sajal24x7/post/DPp5m0NCsLV'
 ---
 [Video of GPT-OSS 20B running on a phone by Simon Willison](https://simonwillison.net/2025/Oct/10/gpt-oss-20b-snapdragon/#atom-everything)
 
