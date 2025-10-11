@@ -8,7 +8,7 @@ tags:
   - sci-fi
 format: audio
 author: Tchaikovsky, Adrian
-series: "Children of Time - Book #1"
+series: "Children of Time #1"
 bookStatus: read
 bookRating: loved-it
 startedReading: 2025-09-02T22:45:58+03:00
