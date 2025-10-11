@@ -1,13 +1,16 @@
 ---
-title: "Claude gets superpowers"
-slug: "claude-gets-superpowers"
-pubDate: 2025-10-11T06:50:03+03:00
-updatedDate: 2025-10-11T06:50:03+03:00
+title: Claude gets superpowers
+slug: claude-gets-superpowers
+pubDate: 2025-10-11T03:50:03.000Z
+updatedDate: 2025-10-11T03:50:03.000Z
 category: micro
 tags:
   - claude
   - agentic-coding
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115353501364260158'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m2vbv7z3bj2d'
+  - 'https://www.threads.com/@sajal24x7/post/DPp4_MZDH1J'
 ---
 [Superpowers: How I'm using coding agents in October 2025](https://blog.fsck.com/2025/10/09/superpowers/)
 
