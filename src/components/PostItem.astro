@@ -229,6 +229,18 @@ const postImageAlt = typeof post.data.imageAlt === 'string' && post.data.imageAl
     margin-bottom: 0.75em;
   }
 
+  .stream-prose :global(pre) {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  .stream-prose :global(pre code) {
+    white-space: inherit;
+  }
+
   .post-item-footer {
     display: flex;
     align-items: center;
