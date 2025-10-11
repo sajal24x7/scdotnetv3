@@ -1,12 +1,15 @@
 ---
-title: "Toyota to launch solid state EV batteries"
-slug: "toyota-to-launch-solid-state-ev-batteries"
-pubDate: 2025-10-11T11:02:26+03:00
-updatedDate: 2025-10-11T11:02:26+03:00
+title: Toyota to launch solid state EV batteries
+slug: toyota-to-launch-solid-state-ev-batteries
+pubDate: 2025-10-11T08:02:26.000Z
+updatedDate: 2025-10-11T08:02:26.000Z
 category: micro
 tags:
   - electric-cars
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115354512097870803'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m2vqatz2qa2q'
+  - 'https://www.threads.com/@sajal24x7/post/DPqWZ3PD-Gp'
 ---
 [Toyota Aims to Launch the 'World's First' All-Solid-State EV Batteries - Slashdot by ](https://hardware.slashdot.org/story/25/10/10/2127232/toyota-aims-to-launch-the-worlds-first-all-solid-state-ev-batteries?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
