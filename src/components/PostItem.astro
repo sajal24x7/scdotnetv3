@@ -232,9 +232,7 @@ const postImageAlt = typeof post.data.imageAlt === 'string' && post.data.imageAl
   .stream-prose :global(pre) {
     max-width: 100%;
     overflow-x: auto;
-    white-space: pre-wrap;
-    word-break: break-word;
-    overflow-wrap: anywhere;
+    white-space: pre;
   }
 
   .stream-prose :global(pre code) {
@@ -249,6 +247,14 @@ const postImageAlt = typeof post.data.imageAlt === 'string' && post.data.imageAl
     font-size: 0.875rem;
     color: rgb(var(--color-text-secondary));
     padding-top: calc(var(--post-item-spacing, var(--grid-row-gap)) / 2);
+  }
+
+  @media (max-width: 47.99rem) {
+    .stream-prose :global(pre) {
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
   }
 
   .post-item-tags {
