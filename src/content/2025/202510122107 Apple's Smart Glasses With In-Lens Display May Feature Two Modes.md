@@ -1,13 +1,16 @@
 ---
-title: "Apple's Smart Glasses With In-Lens Display May Feature Two Modes"
-slug: "apples-smart-glasses-with-in-lens-display-may-feature-two-modes"
-pubDate: 2025-10-12T21:09:49+03:00
-updatedDate: 2025-10-12T21:09:49+03:00
+title: Apple's Smart Glasses With In-Lens Display May Feature Two Modes
+slug: apples-smart-glasses-with-in-lens-display-may-feature-two-modes
+pubDate: 2025-10-12T18:09:49.000Z
+updatedDate: 2025-10-12T18:09:49.000Z
 category: micro
 tags:
   - apple
   - vision-os
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115362564963328836'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m2zcouryri2d'
+  - 'https://www.threads.com/@sajal24x7/post/DPuAxb8DCBU'
 ---
 [Apple's Smart Glasses With In-Lens Display May Feature Two Modes by Joe Rossignol](https://www.macrumors.com/2025/10/12/apple-smart-glasses-two-modes/)
 
