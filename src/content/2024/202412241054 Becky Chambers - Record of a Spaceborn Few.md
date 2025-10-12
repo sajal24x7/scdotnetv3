@@ -1,5 +1,5 @@
 ---
-title: Becky Chambers - Record of a Spaceborn Few
+title: Record of a Spaceborn Few
 slug: becky-chambers-record-of-a-spaceborn-few
 description: The third book in the wayfarer series
 pubDate: 2024-12-24T10:54:13
@@ -8,12 +8,12 @@ category: bookshelf
 tags:
   - book-reviews
   - sci-fi
-bookCover: 'record-of-a-spaceborn-few.jpg'
-author: "Becky Chambers"
-bookStatus: "read"
-bookRating: 'liked-it'
-startedReading: "2024-12-24T10:54:00+03:00"
-finishedReading: "2024-12-24T10:54:00+03:00"
+bookCover: record-of-a-spaceborn-few.jpg
+author: Becky Chambers
+bookStatus: read
+bookRating: liked-it
+startedReading: 2024-12-24T10:54:00+03:00
+finishedReading: 2024-12-24T10:54:00+03:00
 ---
 This is the third book in the Wayfarer series. Becky continues to explore further people and stories in this universe. This time concentrating on the Fleet, the descendants of the first humans who left a dying planet.
 

@@ -1,18 +1,18 @@
 ---
-title: Kevin Kelly - Excellent Advice for Living
+title: Excellent Advice for Living
 slug: kevin-kelly-excellent-advice-for-living
 pubDate: 2024-02-12T10:46:00
 updatedDate: 2024-12-24T10:52:55
 category: bookshelf
 tags:
   - book-reviews
-author: "Kevin Kelly"
-series: "none"
+author: Kevin Kelly
+series: none
 startedReading: 2024-02-12T10:46:00
 finishedReading: 2024-02-12T10:46:00
-bookStatus: "read"
-bookRating: 'liked-it'
-bookCover: 'excellent-advice-for-living.jpg'
+bookStatus: read
+bookRating: liked-it
+bookCover: excellent-advice-for-living.jpg
 ---
 This is an excellent gift for someone. 
 
