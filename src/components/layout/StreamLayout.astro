@@ -4,10 +4,9 @@ import { parseMarkdown } from '../../utils/markdown';
 
 interface Props {
     posts: any[];
-    startColumn?: number;
 }
 
-const { posts, startColumn = 2 } = Astro.props as Props;
+const { posts } = Astro.props as Props;
 const hasSidebarContent = Astro.slots.has('sidebar');
 
 const renderedPosts = posts.map(post => ({
@@ -16,11 +15,10 @@ const renderedPosts = posts.map(post => ({
 }));
 
 const isMicroContent = (category: string) => category === 'micro';
-const resolvedStartClass = hasSidebarContent ? 'grid-start-1' : `grid-start-${startColumn}`;
 ---
 
 <div class="stream-layout twelve-grid grid-gap-tight">
-    <section class={`stream-layout__posts grid-span-8 ${resolvedStartClass}`}>
+    <section class={`stream-layout__posts grid-span-8 ${hasSidebarContent ? 'grid-start-1' : 'grid-start-2'}`}>
         {renderedPosts.map((post) => (
             <PostItem post={post} isMicroContent={isMicroContent} showFullContent={true} />
         ))}

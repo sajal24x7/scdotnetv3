@@ -20,7 +20,8 @@ const sectionLandingProps = createSectionLandingProps(
     description: 'Blog posts, photos, and micro updates from my daily life.',
     countText: postCountText,
     tagCategory: 'stream',
-    tagPosts: allPosts
+    tagPosts: allPosts,
+    contentClass: 'grid-span-8 grid-start-3'
   },
   'plainCount'
 );
@@ -44,6 +45,6 @@ const sectionLandingProps = createSectionLandingProps(
   enableLinkHoverEffect
 >
     <SectionLanding {...sectionLandingProps}>
-      <StreamLayout posts={transformedPosts} startColumn={3} />
+      <StreamLayout posts={transformedPosts} />
     </SectionLanding>
   </Layout>
