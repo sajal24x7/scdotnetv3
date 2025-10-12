@@ -3,13 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
 import StreamList from '../components/layout/StreamList.astro';
 import HomeFeaturedGrid from '../components/content/HomeFeaturedGrid.astro';
-import Card from '../components/Card.astro';
+import GardenGrid from '../components/layout/GardenGrid.astro';
 import { Image } from 'astro:assets';
 import BookCover from '../images/books/01-ayom.jpg';
 import ProfileImage from '../images/profile/profile.jpeg';
 import { getAllPosts, getPostsByCategory, transformPost } from '../utils/content';
 import type { Post } from '../utils/content';
-import { parseMarkdown } from '../utils/markdown';
 
 
 // Get all posts
@@ -21,29 +20,8 @@ const streamPostsRaw = getPostsByCategory(allPosts, 'stream', { limit: 5 });
 const streamPosts = streamPostsRaw.map(transformPost);
 
 // Curate the latest garden notes, stories, til entries, and more
-const gardenPostsRaw = getPostsByCategory(allPosts, 'garden', { limit: 5 });
+const gardenPostsRaw = getPostsByCategory(allPosts, 'garden', { limit: 8 });
 const gardenPosts = gardenPostsRaw.map(transformPost);
-const gardenPostsWithContent = gardenPosts.map((post) => ({
-    ...post,
-    renderedContent: post.body ? parseMarkdown(post.body) : null
-}));
-
-const getGardenCardAccentClass = (category?: string) => {
-    switch (category) {
-        case 'evergreen':
-            return 'home-garden__card--evergreen';
-        case 'til':
-            return 'home-garden__card--til';
-        case 'bookshelf':
-            return 'home-garden__card--bookshelf';
-        case 'story':
-            return 'home-garden__card--stories';
-        case 'poem':
-            return 'home-garden__card--poems';
-        default:
-            return 'home-garden__card--default';
-    }
-};
 
 // Load the featured pool from the curated data file
 const { default: homeFeaturedPoolRaw } = await import('../data/homeFeatured.json');
@@ -152,39 +130,33 @@ const featuredPosts = shufflePosts(featuredCandidates)
     </section>
 
     <!-- Writing Section -->
-    <section class="home-section home-section--posts">
-        <div class="home-posts-row">
-            <div class="home-stream grid-span-8 grid-start-1">
-                <div class="home-stream__inner">
-                    <h2 class="home-stream__title">Stream</h2>
-                    <StreamList posts={streamPosts} />
-                    <a href="/stream/" class="home-stream__cta">Dip into the stream</a>
-                </div>
-            </div>
-
-            <div class="home-garden grid-span-4 grid-start-9">
-                <div class="home-garden__inner">
-                    <h2 class="home-garden__title">Garden</h2>
-                    <div class="home-garden__cards">
-                        {gardenPostsWithContent.map((post) => (
-                            <div class={`home-garden__card ${getGardenCardAccentClass(post.data.category)}`}>
-                                <Card {...post.data} tags={post.data.tags}>
-                                    {post.renderedContent && (
-                                        <div class="prose dark:prose-dark max-w-none">
-                                            <div set:html={post.renderedContent} />
-                                        </div>
-                                    )}
-                                </Card>
-                            </div>
-                        ))}
-                    </div>
-                    <a href="/garden/" class="home-garden__cta">Roam through the garden</a>
-                </div>
-            </div>
-        </div>
-
+    <section class="home-section home-section--featured">
         <HomeFeaturedGrid posts={featuredPosts} />
     </section>
+
+    <section class="home-section home-section--stream">
+        <div class="home-stream grid-span-8 grid-start-3">
+            <div class="home-stream__inner">
+                <h2 class="home-stream__title">Stream</h2>
+                <StreamList posts={streamPosts} />
+                <a href="/stream/" class="home-stream__cta">Dip into the stream</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-section home-section--garden">
+        <div class="home-garden__heading grid-span-full">
+            <h2 class="home-garden__title">Garden</h2>
+        </div>
+        <div class="home-garden__grid grid-span-full">
+            <GardenGrid posts={gardenPosts} />
+        </div>
+        <div class="home-garden__footer grid-span-full">
+            <a href="/garden/" class="home-garden__cta">Roam through the garden</a>
+        </div>
+    </section>
+
+    <div class="grid-span-full home-footer-spacer" aria-hidden="true"></div>
 </Layout>
 
 <style>
@@ -219,33 +191,15 @@ const featuredPosts = shufflePosts(featuredCandidates)
         justify-content: center;
     }
 
-    .home-section--posts {
+    .home-section--featured,
+    .home-section--stream,
+    .home-section--garden {
         display: contents;
     }
 
-    .home-posts-row {
-        display: contents;
-    }
-
-    .home-garden,
     .home-stream {
         display: flex;
         padding-block: clamp(2rem, 5vw, 3.5rem);
-    }
-
-    .home-stream {
-        order: 2;
-    }
-
-    .home-garden {
-        order: 1;
-    }
-
-    .home-garden__inner {
-        display: flex;
-        flex-direction: column;
-        gap: clamp(1.25rem, 3vw, 1.75rem);
-        width: 100%;
     }
 
     .home-garden__title {
@@ -255,45 +209,18 @@ const featuredPosts = shufflePosts(featuredCandidates)
         color: rgb(var(--color-text-primary));
     }
 
-    .home-garden__cards {
+    .home-garden__heading {
+        margin-top: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .home-garden__grid {
+        display: contents;
+        margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+    }
+
+    .home-garden__footer {
         display: flex;
-        flex-direction: column;
-        gap: clamp(1rem, 2.5vw, 1.5rem);
-    }
-
-    .home-garden__card {
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-        --card-accent: #a78bfa;
-    }
-
-    .home-garden__card :global(.card) {
-        height: 100%;
-    }
-
-    .home-garden__card :global(.card:hover) {
-        border-color: var(--card-accent, #a78bfa);
-    }
-
-    .home-garden__card--evergreen {
-        --card-accent: #10b981;
-    }
-
-    .home-garden__card--til {
-        --card-accent: #3b82f6;
-    }
-
-    .home-garden__card--bookshelf {
-        --card-accent: #f59e0b;
-    }
-
-    .home-garden__card--stories {
-        --card-accent: #8b5cf6;
-    }
-
-    .home-garden__card--poems {
-        --card-accent: #ec4899;
     }
 
     .home-garden__cta,
@@ -338,29 +265,6 @@ const featuredPosts = shufflePosts(featuredCandidates)
         transform: translateX(0.2rem);
     }
 
-    .home-garden__card--default {
-        --card-accent: #a78bfa;
-    }
-
-    .home-garden__card :global(.prose a) {
-        color: #3b82f6;
-        text-decoration: none;
-        transition: color 0.2s;
-    }
-
-    .home-garden__card :global(.prose a:hover) {
-        color: #2563eb;
-        text-decoration: underline;
-    }
-
-    :global(.dark) .home-garden__card :global(.prose a) {
-        color: #60a5fa;
-    }
-
-    :global(.dark) .home-garden__card :global(.prose a:hover) {
-        color: #93c5fd;
-    }
-
     .home-stream__inner {
         display: flex;
         flex-direction: column;
@@ -372,6 +276,10 @@ const featuredPosts = shufflePosts(featuredCandidates)
         font-weight: 700;
         margin: 0;
         color: rgb(var(--color-text-primary));
+    }
+
+    .home-footer-spacer {
+        padding-bottom: clamp(2rem, 5vw, 3rem);
     }
 
     @media (min-width: 48rem) {
@@ -390,13 +298,7 @@ const featuredPosts = shufflePosts(featuredCandidates)
 
         .home-stream {
             padding-block: clamp(2.5rem, 5vw, 4rem);
-            order: 1;
         }
-
-        .home-garden {
-            order: 2;
-        }
-
     }
 
     @media (max-width: 47.99rem) {
@@ -414,6 +316,10 @@ const featuredPosts = shufflePosts(featuredCandidates)
         .home-garden__cta {
             justify-content: center;
             align-self: center;
+        }
+
+        .home-garden__footer {
+            justify-content: center;
         }
     }
 </style>
