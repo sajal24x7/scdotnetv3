@@ -117,23 +117,27 @@ const getSpanClass = (post: any) => {
     border-color: var(--card-accent, #a78bfa);
   }
 
-  /* Ensure proper prose styling */
-  :global(.prose a) {
-    color: #3b82f6;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  :global(.prose a:hover) {
-    color: #2563eb;
+  .garden-card :global(.prose a) {
+    color: rgb(var(--color-text-primary));
     text-decoration: underline;
+    text-decoration-color: rgba(var(--color-text-primary), 0.35);
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
   }
 
-  :global(.dark .prose a) {
-    color: #60a5fa;
+  .garden-card :global(.prose a:hover),
+  .garden-card :global(.prose a:focus-visible) {
+    color: rgb(var(--color-text-primary));
+    text-decoration-color: rgba(var(--color-text-primary), 0.6);
   }
 
-  :global(.dark .prose a:hover) {
-    color: #93c5fd;
+  :global(.dark) .garden-card :global(.prose a) {
+    color: rgb(var(--color-text-primary));
+    text-decoration-color: rgba(var(--color-text-primary), 0.35);
+  }
+
+  :global(.dark) .garden-card :global(.prose a:hover),
+  :global(.dark) .garden-card :global(.prose a:focus-visible) {
+    color: rgb(var(--color-text-primary));
+    text-decoration-color: rgba(var(--color-text-primary), 0.6);
   }
 </style>
