@@ -34,9 +34,16 @@ const formClasses = [
   <div class="prose dark:prose-invert max-w-none">
     {showCopy && title && <h2 class="text-large font-bold mb-4">{title}</h2>}
     {showCopy && description && (
-      <p class="text-normal mb-6">
-        {description}
-      </p>
+      <>
+        <p class="text-normal mb-3">
+          {description}
+        </p>
+        <div class="mb-6 not-prose">
+          <a href="/nordletter/" class="cta-link">
+            View the archives
+          </a>
+        </div>
+      </>
     )}
 
     <form
@@ -60,10 +67,5 @@ const formClasses = [
         {buttonText}
       </button>
     </form>
-    <div class="mt-3 not-prose">
-      <a href="/nordletter/" class="cta-link">
-        View the archives
-      </a>
-    </div>
   </div>
 </div>
