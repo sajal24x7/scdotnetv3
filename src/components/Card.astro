@@ -3,9 +3,11 @@ import TimeDisplay from './TimeDisplay.astro';
 import CategoryDisplay from './CategoryDisplay.astro';
 
 const { title, description, pubDate, category, image, link } = Astro.props;
+const hasImage = Boolean(image);
+const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].join(' ');
 ---
 
-<article class="card">
+<article class={cardClass} data-card-root>
   <div class="card-content">
     {image && (
       <div class="card-image">
@@ -51,38 +53,69 @@ const { title, description, pubDate, category, image, link } = Astro.props;
 
 <style>
   .card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+    --card-padding: clamp(0.75rem, 2vw, 1rem);
+    --card-hover-bg: rgba(99, 102, 241, 0.08);
+    --card-hover-border: rgba(167, 139, 250, 0.65);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.75rem;
+    border: 1px solid transparent;
+    background-color: transparent;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 220ms ease,
+      transform 220ms ease;
   }
 
-  .card:hover {
-    border-color: #a78bfa;
-    box-shadow: 0 4px 16px 0 rgba(136, 58, 234, 0.08);
-    background: #fafaff;
+  .card--with-image {
+    background: rgba(255, 255, 255, 0.96);
+    border-color: rgba(229, 231, 235, 0.9);
+    box-shadow: 0 14px 36px -24px rgba(15, 23, 42, 0.25);
+  }
+
+  :global(.dark) .card--with-image {
+    background: rgba(24, 31, 44, 0.85);
+    border-color: rgba(55, 65, 81, 0.7);
+    box-shadow: 0 18px 42px -28px rgba(15, 23, 42, 0.6);
+  }
+
+  .card:hover,
+  .card:focus-within {
+    background: var(--card-hover-bg);
+    border-color: var(--card-hover-border);
+    box-shadow: 0 20px 46px -28px rgba(129, 140, 248, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .card--with-image:hover,
+  .card--with-image:focus-within {
+    background: rgba(250, 250, 255, 0.95);
   }
 
   :global(.dark) .card {
-    background: #1f2937;
-    border-color: #374151;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --card-hover-bg: rgba(99, 102, 241, 0.12);
   }
 
-  :global(.dark) .card:hover {
-    border-color: #a78bfa;
-    box-shadow: 0 4px 16px 0 rgba(136, 58, 234, 0.08);
-    background: #232336;
+  :global(.dark) .card--with-image:hover,
+  :global(.dark) .card--with-image:focus-within {
+    background: rgba(35, 35, 54, 0.9);
+  }
+
+  .card--no-image {
+    border-color: transparent;
+    box-shadow: none;
   }
 
   .card-content {
-    padding: 1rem;
+    padding: var(--card-padding);
   }
 
   .card-image {
-    margin: -1rem -1rem 1rem -1rem;
+    margin: calc(var(--card-padding) * -1);
+    margin-bottom: var(--card-padding);
     aspect-ratio: 16/9;
     overflow: hidden;
   }
@@ -102,7 +135,7 @@ const { title, description, pubDate, category, image, link } = Astro.props;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     flex-wrap: wrap;
     font-size: var(--text-small);
   }
@@ -123,7 +156,7 @@ const { title, description, pubDate, category, image, link } = Astro.props;
     font-size: var(--text-large);
     font-weight: 700;
     line-height: 1.3;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
     color: #111827;
   }
 
@@ -131,13 +164,9 @@ const { title, description, pubDate, category, image, link } = Astro.props;
     color: #f9fafb;
   }
 
-  .card-link {
-    /* Card links rely on global link styling for color and decoration */
-  }
-
   .card-description {
     color: #4b5563;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   :global(.dark) .card-description {
@@ -164,8 +193,6 @@ const { title, description, pubDate, category, image, link } = Astro.props;
     font-size: var(--text-normal);
   }
 
-  /* Prose links now use global styling */
-
   /* Additional prose styles for better markdown rendering */
   :global(.prose h1),
   :global(.prose h2),
@@ -179,7 +206,7 @@ const { title, description, pubDate, category, image, link } = Astro.props;
   :global(.prose ul),
   :global(.prose ol) {
     margin-top: 0.5em;
-    margin-bottom: 1.5em;
+    margin-bottom: 1.25em;
     padding-left: 1.5em;
   }
 
@@ -189,7 +216,7 @@ const { title, description, pubDate, category, image, link } = Astro.props;
   }
 
   :global(.prose blockquote) {
-    margin: 1.5em 0;
+    margin: 1.25em 0;
     padding-left: 1em;
     border-left: 4px solid #e5e7eb;
     font-style: italic;
