@@ -20,7 +20,7 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
     )}
     
     <div class="card-body">
-      <h2 class="card-title prose">
+      <h2 class="card-title">
         {link ? (
           <a href={link} class="card-link link-hover">
             {title}
@@ -32,7 +32,9 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
 
       <div class="card-description">
         {category === 'micro' ? (
-          <slot />
+          <div class="card-prose prose">
+            <slot />
+          </div>
         ) : (
           description && (
             <p class="description-text">
@@ -183,61 +185,61 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
   }
 
   /* Custom prose styles for micro posts */
-  :global(.prose) {
+  .card-prose {
     max-width: none;
   }
 
-  :global(.prose p) {
+  .card-prose :global(p) {
     margin-top: 0;
     margin-bottom: 0.75em;
     font-size: var(--text-normal);
   }
 
   /* Additional prose styles for better markdown rendering */
-  :global(.prose h1),
-  :global(.prose h2),
-  :global(.prose h3),
-  :global(.prose h4) {
+  .card-prose :global(h1),
+  .card-prose :global(h2),
+  .card-prose :global(h3),
+  .card-prose :global(h4) {
     margin-top: 1.5em;
     margin-bottom: 0.5em;
     font-weight: 600;
   }
 
-  :global(.prose ul),
-  :global(.prose ol) {
+  .card-prose :global(ul),
+  .card-prose :global(ol) {
     margin-top: 0.5em;
     margin-bottom: 1.25em;
     padding-left: 1.5em;
   }
 
-  :global(.prose li) {
+  .card-prose :global(li) {
     margin-top: 0.25em;
     margin-bottom: 0.25em;
   }
 
-  :global(.prose blockquote) {
+  .card-prose :global(blockquote) {
     margin: 1.25em 0;
     padding-left: 1em;
     border-left: 4px solid #e5e7eb;
     font-style: italic;
   }
 
-  :global(.dark .prose blockquote) {
+  :global(.dark) .card-prose :global(blockquote) {
     border-left-color: #374151;
   }
 
-  :global(.prose code) {
+  .card-prose :global(code) {
     background-color: #f3f4f6;
     padding: 0.2em 0.4em;
     border-radius: 0.25em;
     font-size: 0.875em;
   }
 
-  :global(.dark .prose code) {
+  :global(.dark) .card-prose :global(code) {
     background-color: #1f2937;
   }
 
-  :global(.prose pre) {
+  .card-prose :global(pre) {
     background-color: #f3f4f6;
     padding: 1em;
     border-radius: 0.5em;
@@ -245,7 +247,7 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
     margin: 1.5em 0;
   }
 
-  :global(.dark .prose pre) {
+  :global(.dark) .card-prose :global(pre) {
     background-color: #1f2937;
   }
 
