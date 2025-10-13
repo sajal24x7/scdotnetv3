@@ -259,6 +259,7 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
         column-gap: var(--grid-column-gap);
         row-gap: var(--grid-row-gap);
         align-items: start;
+        padding-bottom: var(--section-content-grid-padding, 1rem);
     }
 
     @supports not (grid-template-columns: subgrid) {
@@ -304,6 +305,7 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
 
         .section-content.section-content--as-grid {
             grid-template-columns: subgrid;
+            padding-bottom: var(--section-content-grid-padding-mobile, 0.75rem);
         }
 
         .section-taglist {
