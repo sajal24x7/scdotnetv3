@@ -63,13 +63,17 @@ const getSpanClass = (post: any) => {
     return 'grid-span-12';
   }
 
-  return 'grid-span-3';
+  if (span === 3) {
+    return 'grid-span-3';
+  }
+
+  return 'grid-span-4';
 };
 ---
 
 {renderedPosts.map((post) => (
     <div class={`garden-card ${getSpanClass(post)} ${getContentTypeClasses(contentType, post.data.category)}`}>
-        <Card {...post.data} tags={post.data.tags}>
+        <Card {...post.data}>
             {post.renderedContent && (
                 <div class="prose dark:prose-dark max-w-none">
                     <div set:html={post.renderedContent} />
@@ -81,14 +85,16 @@ const getSpanClass = (post: any) => {
 
 
 <style>
+  :global(.garden-main) {
+    align-items: start;
+    grid-auto-flow: row dense;
+  }
+
   .garden-card {
     display: flex;
     flex-direction: column;
     min-width: 0;
-  }
-
-  .garden-card :global(.card) {
-    height: 100%;
+    align-self: start;
   }
 
   /* Content type specific styling */
