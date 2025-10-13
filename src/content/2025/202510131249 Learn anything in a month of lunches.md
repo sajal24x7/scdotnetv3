@@ -1,8 +1,8 @@
 ---
-title: ""
-slug: ""
-pubDate: 2025-10-13T12:54:54+03:00
-updatedDate: 2025-10-13T12:54:54+03:00
+title: "Learn anything in a month of lunches"
+slug: "learn-anything-in-a-month-of-lunches"
+pubDate: 2025-10-13T12:56:16+03:00
+updatedDate: 2025-10-13T12:56:16+03:00
 category: micro
 tags:
   - powershell
