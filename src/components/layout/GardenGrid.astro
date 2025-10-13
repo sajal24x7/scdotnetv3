@@ -71,30 +71,41 @@ const getSpanClass = (post: any) => {
 };
 ---
 
-{renderedPosts.map((post) => (
-    <div
-        class={`garden-card ${getSpanClass(post)} ${getContentTypeClasses(contentType, post.data.category)}`}
-        data-garden-card
-    >
-        <Card {...post.data}>
-            {post.renderedContent && (
-                <div class="prose dark:prose-dark max-w-none">
-                    <div set:html={post.renderedContent} />
-                </div>
-            )}
-        </Card>
-    </div>
-))}
+<div class="garden-grid" data-garden-grid>
+    {renderedPosts.map((post) => (
+        <div
+            class={`garden-card ${getSpanClass(post)} ${getContentTypeClasses(contentType, post.data.category)}`}
+            data-garden-card
+        >
+            <Card {...post.data}>
+                {post.renderedContent && (
+                    <div class="prose dark:prose-dark max-w-none">
+                        <div set:html={post.renderedContent} />
+                    </div>
+                )}
+            </Card>
+        </div>
+    ))}
+</div>
 
 
 <style>
-  :global(.garden-main) {
+  .garden-grid {
     --garden-row-height: 10px;
-    --grid-column-gap: clamp(0.75rem, 2.5vw, 1.5rem);
-    --grid-row-gap: clamp(1rem, 3vw, 1.75rem);
+    display: grid;
+    width: 100%;
+    column-gap: var(--grid-column-gap, clamp(0.75rem, 2.5vw, 1.5rem));
+    row-gap: var(--grid-row-gap, clamp(1rem, 3vw, 1.75rem));
     align-items: start;
     grid-auto-flow: row dense;
     grid-auto-rows: var(--garden-row-height);
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  @media (min-width: 48rem) {
+    .garden-grid {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
   }
 
   .garden-card {
@@ -165,61 +176,65 @@ const getSpanClass = (post: any) => {
 
 <script type="module" is:inline>
   const initGardenMasonry = () => {
-    const grid = document.querySelector('.garden-main');
-    if (!grid) {
+    const grids = Array.from(document.querySelectorAll('[data-garden-grid]'));
+    if (!grids.length) {
       return;
     }
 
-    const getCards = () => Array.from(grid.querySelectorAll('[data-garden-card]'));
+    const setupGrid = (grid) => {
+      const getCards = () => Array.from(grid.querySelectorAll('[data-garden-card]'));
 
-    const computeMetrics = () => {
-      const styles = window.getComputedStyle(grid);
-      const rowHeight = parseFloat(styles.getPropertyValue('--garden-row-height')) || 10;
-      const rowGapValue = styles.rowGap || styles.getPropertyValue('row-gap');
-      const rowGap = rowGapValue ? parseFloat(rowGapValue) : 0;
-      return { rowHeight, rowGap };
-    };
+      const computeMetrics = () => {
+        const styles = window.getComputedStyle(grid);
+        const rowHeight = parseFloat(styles.getPropertyValue('--garden-row-height')) || 10;
+        const rowGapValue = styles.rowGap || styles.getPropertyValue('row-gap');
+        const rowGap = rowGapValue ? parseFloat(rowGapValue) : 0;
+        return { rowHeight, rowGap };
+      };
 
-    const updateCard = (card, metrics) => {
-      const inner = card.querySelector('[data-card-root]');
-      if (!inner) {
-        return;
-      }
-
-      const { rowGap, rowHeight } = metrics;
-      const height = inner.offsetHeight;
-      const span = Math.max(1, Math.ceil((height + rowGap) / (rowHeight + rowGap)));
-      card.style.setProperty('--garden-row-span', String(span));
-    };
-
-    const updateAll = () => {
-      const metrics = computeMetrics();
-      getCards().forEach((card) => updateCard(card, metrics));
-    };
-
-    if ('ResizeObserver' in window) {
-      const resizeObserver = new ResizeObserver(() => updateAll());
-
-      getCards().forEach((card) => {
+      const updateCard = (card, metrics) => {
         const inner = card.querySelector('[data-card-root]');
-        if (inner) {
-          resizeObserver.observe(inner);
+        if (!inner) {
+          return;
         }
-      });
-    }
 
-    updateAll();
+        const { rowGap, rowHeight } = metrics;
+        const height = inner.offsetHeight;
+        const span = Math.max(1, Math.ceil((height + rowGap) / (rowHeight + rowGap)));
+        card.style.setProperty('--garden-row-span', String(span));
+      };
 
-    let resizeFrame;
-    window.addEventListener('resize', () => {
-      if (resizeFrame) {
-        cancelAnimationFrame(resizeFrame);
+      const updateAll = () => {
+        const metrics = computeMetrics();
+        getCards().forEach((card) => updateCard(card, metrics));
+      };
+
+      if ('ResizeObserver' in window) {
+        const resizeObserver = new ResizeObserver(() => updateAll());
+
+        getCards().forEach((card) => {
+          const inner = card.querySelector('[data-card-root]');
+          if (inner) {
+            resizeObserver.observe(inner);
+          }
+        });
       }
 
-      resizeFrame = requestAnimationFrame(() => {
-        updateAll();
+      updateAll();
+
+      let resizeFrame;
+      window.addEventListener('resize', () => {
+        if (resizeFrame) {
+          cancelAnimationFrame(resizeFrame);
+        }
+
+        resizeFrame = requestAnimationFrame(() => {
+          updateAll();
+        });
       });
-    });
+    };
+
+    grids.forEach((grid) => setupGrid(grid));
   };
 
   if (document.readyState === 'loading') {
