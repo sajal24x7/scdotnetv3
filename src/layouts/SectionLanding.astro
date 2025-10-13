@@ -125,6 +125,8 @@ const contentStartClass = contentHasCustomStartClass
     : hasSidebarSlot
         ? 'grid-start-1'
         : '';
+const contentClassList = contentClass.split(/\s+/).filter(Boolean);
+const contentAsGrid = contentClassList.includes('section-content--as-grid');
 ---
 <section class={`section-landing ${wrapperClass}`.trim()}>
     <div
@@ -186,6 +188,8 @@ const contentStartClass = contentHasCustomStartClass
         <main
             class={`section-content ${contentSpanClass} ${contentStartClass} ${contentClass}`.trim()}
             style={contentStyle || undefined}
+            data-content-mode={contentAsGrid ? 'as-grid' : undefined}
+            data-garden-grid={contentAsGrid ? '' : undefined}
         >
             <slot />
         </main>
@@ -247,6 +251,22 @@ const contentStartClass = contentHasCustomStartClass
         padding-bottom: var(--section-content-padding, 2rem);
     }
 
+    .section-content.section-content--as-grid {
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-auto-flow: row dense;
+        grid-auto-rows: var(--garden-row-height, 10px);
+        column-gap: var(--grid-column-gap);
+        row-gap: var(--grid-row-gap);
+        align-items: start;
+    }
+
+    @supports not (grid-template-columns: subgrid) {
+        .section-content.section-content--as-grid {
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+        }
+    }
+
     .section-after-count {
         margin-bottom: 1.5rem;
     }
@@ -280,6 +300,10 @@ const contentStartClass = contentHasCustomStartClass
         .section-content {
             --grid-padding-inline: 0;
             padding-bottom: var(--section-content-padding-mobile, 1.5rem);
+        }
+
+        .section-content.section-content--as-grid {
+            grid-template-columns: subgrid;
         }
 
         .section-taglist {

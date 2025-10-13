@@ -71,41 +71,27 @@ const getSpanClass = (post: any) => {
 };
 ---
 
-<div class="garden-grid" data-garden-grid>
-    {renderedPosts.map((post) => (
-        <div
-            class={`garden-card ${getSpanClass(post)} ${getContentTypeClasses(contentType, post.data.category)}`}
-            data-garden-card
-        >
-            <Card {...post.data}>
-                {post.renderedContent && (
-                    <div class="prose dark:prose-dark max-w-none">
-                        <div set:html={post.renderedContent} />
-                    </div>
-                )}
-            </Card>
-        </div>
-    ))}
-</div>
+{renderedPosts.map((post) => (
+    <div
+        class={`garden-card ${getSpanClass(post)} ${getContentTypeClasses(contentType, post.data.category)}`}
+        data-garden-card
+    >
+        <Card {...post.data}>
+            {post.renderedContent && (
+                <div class="prose dark:prose-dark max-w-none">
+                    <div set:html={post.renderedContent} />
+                </div>
+            )}
+        </Card>
+    </div>
+))}
 
 
 <style>
-  .garden-grid {
+  :global([data-garden-grid]) {
     --garden-row-height: 10px;
-    display: grid;
-    width: 100%;
-    column-gap: var(--grid-column-gap, clamp(0.75rem, 2.5vw, 1.5rem));
-    row-gap: var(--grid-row-gap, clamp(1rem, 3vw, 1.75rem));
-    align-items: start;
-    grid-auto-flow: row dense;
-    grid-auto-rows: var(--garden-row-height);
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-
-  @media (min-width: 48rem) {
-    .garden-grid {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-    }
+    --grid-column-gap: clamp(0.75rem, 2.5vw, 1.5rem);
+    --grid-row-gap: clamp(1rem, 3vw, 1.75rem);
   }
 
   .garden-card {
@@ -176,13 +162,31 @@ const getSpanClass = (post: any) => {
 
 <script type="module" is:inline>
   const initGardenMasonry = () => {
-    const grids = Array.from(document.querySelectorAll('[data-garden-grid]'));
-    if (!grids.length) {
+    const cards = Array.from(document.querySelectorAll('[data-garden-card]'));
+    if (!cards.length) {
       return;
     }
 
-    const setupGrid = (grid) => {
-      const getCards = () => Array.from(grid.querySelectorAll('[data-garden-card]'));
+    const grids = new Map();
+
+    cards.forEach((card) => {
+      const grid = card.closest('[data-garden-grid]');
+      if (!grid) {
+        return;
+      }
+
+      if (!grids.has(grid)) {
+        grids.set(grid, []);
+      }
+
+      const list = grids.get(grid);
+      if (list) {
+        list.push(card);
+      }
+    });
+
+    grids.forEach((gridCards, grid) => {
+      grid.dataset.gardenGridReady = 'true';
 
       const computeMetrics = () => {
         const styles = window.getComputedStyle(grid);
@@ -206,13 +210,13 @@ const getSpanClass = (post: any) => {
 
       const updateAll = () => {
         const metrics = computeMetrics();
-        getCards().forEach((card) => updateCard(card, metrics));
+        gridCards.forEach((card) => updateCard(card, metrics));
       };
 
       if ('ResizeObserver' in window) {
         const resizeObserver = new ResizeObserver(() => updateAll());
 
-        getCards().forEach((card) => {
+        gridCards.forEach((card) => {
           const inner = card.querySelector('[data-card-root]');
           if (inner) {
             resizeObserver.observe(inner);
@@ -232,9 +236,7 @@ const getSpanClass = (post: any) => {
           updateAll();
         });
       });
-    };
-
-    grids.forEach((grid) => setupGrid(grid));
+    });
   };
 
   if (document.readyState === 'loading') {
