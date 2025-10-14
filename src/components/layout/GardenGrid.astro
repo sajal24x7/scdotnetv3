@@ -154,7 +154,7 @@ const renderCard = (post: any) => {
 ---
 
 <div class="garden-grid-host" data-garden-grid>
-    <div class="garden-grid garden-grid--stack">
+    <div class="garden-grid garden-grid--stack" style="display: none;">
         {renderedPosts.map((post) => renderCard(post))}
     </div>
 
@@ -199,7 +199,7 @@ const renderCard = (post: any) => {
     }
 
     .garden-grid--stack {
-        display: grid;
+        display: none;
         grid-template-columns: 1fr;
         gap: var(--grid-row-gap);
     }
@@ -222,6 +222,8 @@ const renderCard = (post: any) => {
         display: block;
         width: 100%;
         min-width: 0;
+        content-visibility: auto;
+        contain-intrinsic-size: auto 420px;
     }
 
     .garden-card :global(.card),
@@ -282,6 +284,16 @@ const renderCard = (post: any) => {
     :global(.dark) .garden-card :global(.prose a:focus-visible) {
         color: rgb(var(--color-text-primary));
         text-decoration-color: rgba(var(--color-text-primary), 0.6);
+    }
+
+    @media (max-width: 39.999rem) {
+        .garden-grid--stack {
+            display: grid !important;
+        }
+
+        .garden-grid--columns {
+            display: none !important;
+        }
     }
 
     @media (min-width: 40rem) {
