@@ -1,6 +1,7 @@
 import { getCollection } from 'astro:content';
 import { readdirSync } from 'fs';
 import { join } from 'path';
+import type { BookRating } from './bookRatings';
 
 export interface Post {
   data: {
@@ -20,10 +21,13 @@ export interface Post {
       span?: 3 | 6 | 12;
     };
     author?: string;
+    series?: string;
     bookStatus?: string;
     bookCover?: string;
     startedReading?: Date | string;
     finishedReading?: Date | string;
+    bookRating?: BookRating;
+    bookRatingLabel?: string;
   };
   slug: string;
   body: string;
@@ -86,6 +90,15 @@ export function transformPost(post: Post) {
             editionDisplay: post.data.editionDisplay,
             syndicationUrls: post.data.syndicationUrls,
             layout: post.data.layout,
+            author: post.data.author,
+            series: post.data.series,
+            bookStatus: post.data.bookStatus,
+            bookCover: post.data.bookCover,
+            startedReading: post.data.startedReading,
+            finishedReading: post.data.finishedReading,
+            bookRating: post.data.bookRating,
+            bookRatingLabel: post.data.bookRatingLabel,
+            format: post.data.format,
             link: `/${post.data.category}/${post.slug}/`
         },
         body: post.body,

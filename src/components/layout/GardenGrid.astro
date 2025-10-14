@@ -1,5 +1,6 @@
 ---
 import Card from '../Card.astro';
+import BookCard from '../bookshelf/BookCard.astro';
 import { parseMarkdown } from '../../utils/markdown';
 
 interface Props {
@@ -71,20 +72,40 @@ const getSpanClass = (post: any) => {
 };
 ---
 
-{renderedPosts.map((post) => (
-    <div
-        class={`garden-card ${getSpanClass(post)} ${getContentTypeClasses(contentType, post.data.category)}`}
-        data-garden-card
-    >
-        <Card {...post.data}>
-            {post.renderedContent && (
-                <div class="prose dark:prose-dark max-w-none">
-                    <div set:html={post.renderedContent} />
-                </div>
+{renderedPosts.map((post) => {
+    const isBookshelf = post.data.category === 'bookshelf';
+
+    return (
+        <div
+            class={`garden-card ${getSpanClass(post)} ${getContentTypeClasses(contentType, post.data.category)}`}
+            data-garden-card
+        >
+            {isBookshelf ? (
+                <BookCard
+                    title={post.data.title}
+                    author={post.data.author}
+                    series={post.data.series}
+                    startedReading={post.data.startedReading}
+                    finishedReading={post.data.finishedReading}
+                    bookStatus={post.data.bookStatus}
+                    bookRating={post.data.bookRating}
+                    bookRatingLabel={post.data.bookRatingLabel}
+                    bookCover={post.data.bookCover}
+                    link={post.data.link}
+                    format={post.data.format}
+                />
+            ) : (
+                <Card {...post.data}>
+                    {post.renderedContent && (
+                        <div class="prose dark:prose-dark max-w-none">
+                            <div set:html={post.renderedContent} />
+                        </div>
+                    )}
+                </Card>
             )}
-        </Card>
-    </div>
-))}
+        </div>
+    );
+})}
 
 
 <style>
@@ -100,7 +121,8 @@ const getSpanClass = (post: any) => {
     grid-row: span var(--garden-row-span, 1);
   }
 
-  .garden-card :global(.card) {
+  .garden-card :global(.card),
+  .garden-card :global(.book-card) {
     height: 100%;
   }
 
