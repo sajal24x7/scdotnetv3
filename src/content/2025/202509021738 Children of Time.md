@@ -10,7 +10,7 @@ format: audio
 author: Tchaikovsky, Adrian
 series: "Children of Time #1"
 bookStatus: read
-bookRating: loved-it
+bookRating: love
 startedReading: 2025-09-02T22:45:58+03:00
 finishedReading: 2025-09-19T16:45:58+03:00
 bookCover: children-of-time.jpg

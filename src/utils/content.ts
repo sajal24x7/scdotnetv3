@@ -27,7 +27,6 @@ export interface Post {
     startedReading?: Date | string;
     finishedReading?: Date | string;
     bookRating?: BookRating;
-    bookRatingLabel?: string;
   };
   slug: string;
   body: string;
@@ -97,7 +96,6 @@ export function transformPost(post: Post) {
             startedReading: post.data.startedReading,
             finishedReading: post.data.finishedReading,
             bookRating: post.data.bookRating,
-            bookRatingLabel: post.data.bookRatingLabel,
             format: post.data.format,
             link: `/${post.data.category}/${post.slug}/`
         },

@@ -14,7 +14,7 @@ bookCover: 'the-three-body-problem.jpg'
 author: "Liu Cixin"
 series: "Remembrance of Earth's Past"
 bookStatus: "read"
-bookRating: 'liked-it'
+bookRating: like
 startedReading: "2025-02-23T13:05:00+03:00"
 finishedReading: "2025-02-23T13:05:00+03:00"
 ---

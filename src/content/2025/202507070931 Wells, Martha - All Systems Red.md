@@ -12,7 +12,7 @@ series: "The Murderbot Diaries"
 startedReading: 2025-07-07T09:31:00+03:00
 finishedReading: 2025-07-08T18:00:00+03:00
 bookStatus: "read"
-bookRating: 'liked-it'
+bookRating: like
 format: audio
 bookCover: 'all-systems-red.jpg'
 ---

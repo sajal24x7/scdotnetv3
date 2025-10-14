@@ -9,7 +9,7 @@ tags:
 format: audio
 author: 'Thomas A. Limoncelli'
 bookStatus: "reading"
-bookRating: 'liked-it'
+bookRating: like
 startedReading: 2025-10-05T15:55:32+03:00
 bookCover: "time-management-for-system-administrators.jpg"
 ---

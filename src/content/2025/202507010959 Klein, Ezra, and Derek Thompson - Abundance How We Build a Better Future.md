@@ -13,7 +13,7 @@ bookCover: 'abundance.jpg'
 author: "Ezra Klein and Derek Thompson"
 series: none
 bookStatus: "read"
-bookRating: 'liked-it'
+bookRating: like
 startedReading: "2025-07-01T09:59:00+03:00"
 finishedReading: "2025-07-01T09:59:00+03:00"
 ---

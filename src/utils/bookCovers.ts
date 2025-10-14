@@ -1,6 +1,6 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2025-10-14T17:08:28.596Z
-// Found 23 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, artificial-condition.jpg, black-box-thinking.jpg, children-of-ruin.jpg, children-of-time.jpg, data-analysis-with-python-and-pyspark.jpeg, excellent-advice-for-living.jpg, men-without-women.jpg, nexus.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-life-of-chuck.jpg, the-mysterious-affair-at-styles.jpg, the-quick-python-book-fourth-edition.jpg, the-secret-of-secrets.jpg, the-three-body-problem.jpg, time-management-for-system-administrators.jpg
+// Generated on: 2025-10-14T18:30:51.904Z
+// Found 24 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, artificial-condition.jpg, black-box-thinking.jpg, children-of-ruin.jpg, children-of-time.jpg, data-analysis-with-python-and-pyspark.jpeg, excellent-advice-for-living.jpg, men-without-women.jpg, nexus.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, same-as-ever.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-life-of-chuck.jpg, the-mysterious-affair-at-styles.jpg, the-quick-python-book-fourth-edition.jpg, the-secret-of-secrets.jpg, the-three-body-problem.jpg, time-management-for-system-administrators.jpg
 
 import a_closed_and_common_orbit_jpg from '../images/bookshelf/a-closed-and-common-orbit.jpg';
 import abundance_jpg from '../images/bookshelf/abundance.jpg';
@@ -17,6 +17,7 @@ import poems_to_fall_in_love_with_jpg from '../images/bookshelf/poems-to-fall-in
 import range_jpg from '../images/bookshelf/range.jpg';
 import record_of_a_spaceborn_few_jpg from '../images/bookshelf/record-of-a-spaceborn-few.jpg';
 import rogue_protocol_jpg from '../images/bookshelf/rogue-protocol.jpg';
+import same_as_ever_jpg from '../images/bookshelf/same-as-ever.jpg';
 import the_dark_forest_jpg from '../images/bookshelf/the-dark-forest.jpg';
 import the_galaxy_and_the_ground_within_jpg from '../images/bookshelf/the-galaxy-and-the-ground-within.jpg';
 import the_life_of_chuck_jpg from '../images/bookshelf/the-life-of-chuck.jpg';
@@ -42,6 +43,7 @@ export const bookCoverImages: Record<string, any> = {
   'range.jpg': range_jpg,
   'record-of-a-spaceborn-few.jpg': record_of_a_spaceborn_few_jpg,
   'rogue-protocol.jpg': rogue_protocol_jpg,
+  'same-as-ever.jpg': same_as_ever_jpg,
   'the-dark-forest.jpg': the_dark_forest_jpg,
   'the-galaxy-and-the-ground-within.jpg': the_galaxy_and_the_ground_within_jpg,
   'the-life-of-chuck.jpg': the_life_of_chuck_jpg,
@@ -56,4 +58,4 @@ export function getBookCoverImage(filename: string) {
   return bookCoverImages[filename];
 }
 
-export type BookCoverFilename = 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'all-systems-red.jpg' | 'artificial-condition.jpg' | 'black-box-thinking.jpg' | 'children-of-ruin.jpg' | 'children-of-time.jpg' | 'data-analysis-with-python-and-pyspark.jpeg' | 'excellent-advice-for-living.jpg' | 'men-without-women.jpg' | 'nexus.jpg' | 'poems-to-fall-in-love-with.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'rogue-protocol.jpg' | 'the-dark-forest.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-life-of-chuck.jpg' | 'the-mysterious-affair-at-styles.jpg' | 'the-quick-python-book-fourth-edition.jpg' | 'the-secret-of-secrets.jpg' | 'the-three-body-problem.jpg' | 'time-management-for-system-administrators.jpg';
+export type BookCoverFilename = 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'all-systems-red.jpg' | 'artificial-condition.jpg' | 'black-box-thinking.jpg' | 'children-of-ruin.jpg' | 'children-of-time.jpg' | 'data-analysis-with-python-and-pyspark.jpeg' | 'excellent-advice-for-living.jpg' | 'men-without-women.jpg' | 'nexus.jpg' | 'poems-to-fall-in-love-with.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'rogue-protocol.jpg' | 'same-as-ever.jpg' | 'the-dark-forest.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-life-of-chuck.jpg' | 'the-mysterious-affair-at-styles.jpg' | 'the-quick-python-book-fourth-edition.jpg' | 'the-secret-of-secrets.jpg' | 'the-three-body-problem.jpg' | 'time-management-for-system-administrators.jpg';

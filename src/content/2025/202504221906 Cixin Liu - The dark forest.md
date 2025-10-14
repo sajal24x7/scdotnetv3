@@ -13,7 +13,7 @@ bookCover: 'the-dark-forest.jpg'
 author: "Cixin Liu"
 series: "Remembrance of Earth's Past"
 bookStatus: "read"
-bookRating: 'liked-it'
+bookRating: like
 startedReading: "2025-04-22T19:06:00+03:00"
 finishedReading: "2025-04-22T19:06:00+03:00"
 ---
