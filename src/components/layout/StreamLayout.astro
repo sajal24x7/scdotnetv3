@@ -17,15 +17,15 @@ const renderedPosts = posts.map(post => ({
 const isMicroContent = (category: string) => category === 'micro';
 ---
 
-<div class="stream-layout twelve-grid grid-gap-tight">
-    <section class={`stream-layout__posts grid-span-8 ${hasSidebarContent ? 'grid-start-1' : 'grid-start-2'}`}>
+<div class={`stream-layout ${hasSidebarContent ? 'stream-layout--with-sidebar' : ''}`}>
+    <section class="stream-layout__posts">
         {renderedPosts.map((post) => (
             <PostItem post={post} isMicroContent={isMicroContent} showFullContent={true} />
         ))}
     </section>
 
     {hasSidebarContent && (
-        <aside class="stream-layout__sidebar grid-span-4 grid-start-9">
+        <aside class="stream-layout__sidebar">
             <div class="stream-layout__sidebar-inner">
                 <slot name="sidebar" />
             </div>
@@ -35,18 +35,23 @@ const isMicroContent = (category: string) => category === 'micro';
 
 <style>
     .stream-layout {
+        --stream-layout-row-gap: clamp(1.5rem, 4vw, 2.5rem);
+        --stream-layout-column-gap: clamp(1rem, 2.5vw, 1.75rem);
         padding-block: clamp(1.5rem, 4vw, 2.5rem);
-        align-items: start;
+        display: flex;
+        flex-direction: column;
+        gap: var(--stream-layout-row-gap);
     }
 
     .stream-layout__posts {
-        --post-item-spacing: var(--grid-row-gap);
+        --post-item-spacing: var(--stream-layout-row-gap);
         display: flex;
         flex-direction: column;
-        gap: var(--grid-row-gap);
+        gap: var(--stream-layout-row-gap);
     }
 
     .stream-layout__sidebar {
+        margin-top: var(--stream-layout-row-gap);
         align-self: start;
     }
 
@@ -56,6 +61,24 @@ const isMicroContent = (category: string) => category === 'micro';
         display: flex;
         flex-direction: column;
         gap: clamp(1rem, 3vw, 1.75rem);
+    }
+
+    @media (min-width: 64rem) {
+        .stream-layout.stream-layout--with-sidebar {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            column-gap: var(--stream-layout-column-gap);
+            row-gap: var(--stream-layout-row-gap);
+        }
+
+        .stream-layout.stream-layout--with-sidebar .stream-layout__posts {
+            grid-column: span 8;
+        }
+
+        .stream-layout.stream-layout--with-sidebar .stream-layout__sidebar {
+            margin-top: 0;
+            grid-column: 9 / span 4;
+        }
     }
 
     @media (max-width: 63.9375rem) {

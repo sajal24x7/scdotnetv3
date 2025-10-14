@@ -30,6 +30,7 @@ interface Props {
     wrapperClass?: string;
     countAlignment?: 'left' | 'center' | 'right';
     countClass?: string;
+    gridMaxWidth?: string;
 }
 
 const {
@@ -58,7 +59,8 @@ const {
     paddingValueMobile,
     wrapperClass = '',
     countAlignment = 'center',
-    countClass = ''
+    countClass = '',
+    gridMaxWidth
 } = Astro.props as Props;
 
 const resolvedHeaderSize = size ?? headerSize;
@@ -108,7 +110,8 @@ const resolvedPaddingToken = paddingTokens[padding] ?? paddingTokens.narrow;
 
 const gridStyle = [
     `--section-grid-padding: ${paddingValue ?? resolvedPaddingToken};`,
-    paddingValueMobile ? `--section-grid-padding-mobile: ${paddingValueMobile};` : undefined
+    paddingValueMobile ? `--section-grid-padding-mobile: ${paddingValueMobile};` : undefined,
+    gridMaxWidth ? `--section-grid-max-width: ${gridMaxWidth};` : undefined
 ].filter(Boolean).join(' ');
 
 const shouldRenderCount = hasCountSlot || Boolean(countText);
@@ -212,6 +215,7 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
     .section-landing__grid {
         --grid-padding-inline: var(--section-grid-padding);
         padding-inline: var(--section-grid-padding);
+        max-width: var(--section-grid-max-width, 71.25rem);
     }
 
     .section-count {
@@ -312,4 +316,3 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
         }
     }
 </style>
-
