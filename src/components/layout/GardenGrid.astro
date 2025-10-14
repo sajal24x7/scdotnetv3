@@ -4,75 +4,120 @@ import BookCard from '../bookshelf/BookCard.astro';
 import { parseMarkdown } from '../../utils/markdown';
 
 interface Props {
-  posts: any[];
-  contentType?: 'evergreen' | 'til' | 'bookshelf' | 'stories' | 'poems' | 'mixed';
+    posts: any[];
+    contentType?: 'evergreen' | 'til' | 'bookshelf' | 'stories' | 'poems' | 'mixed';
 }
 
-const { posts, contentType = 'mixed' } = Astro.props;
+const { posts, contentType = 'mixed' } = Astro.props as Props;
 
 // Pre-render markdown content
-const renderedPosts = posts.map(post => ({
-  ...post,
-  renderedContent: post.body ? parseMarkdown(post.body) : null
+const renderedPosts = posts.map((post) => ({
+    ...post,
+    renderedContent: post.body ? parseMarkdown(post.body) : null
 }));
+
+const stripHtml = (input: string | null | undefined) =>
+    (input ?? '')
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/&[^;]+;/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+const estimatePostWeight = (post: any) => {
+    const { data, renderedContent } = post;
+    const hasImage = Boolean(data?.image || data?.bookCover);
+    const baseWeight = data?.category === 'bookshelf' ? 420 : 260;
+    const mediaWeight = hasImage ? 180 : 0;
+    const description = stripHtml(renderedContent) || data?.description || '';
+    const descriptionWeight = Math.ceil(description.length / 140) * 60;
+
+    return baseWeight + mediaWeight + descriptionWeight;
+};
+
+const distributePostsToColumns = (postList: any[], columnCount: number) => {
+    const columns = Array.from({ length: columnCount }, () => ({
+        weight: 0,
+        items: [] as any[]
+    }));
+
+    postList.forEach((post) => {
+        let targetColumn = columns[0];
+
+        for (const column of columns) {
+            if (column.weight < targetColumn.weight) {
+                targetColumn = column;
+            }
+        }
+
+        targetColumn.items.push(post);
+        targetColumn.weight += estimatePostWeight(post);
+    });
+
+    return columns.map((column) => column.items);
+};
+
+const columnLayouts = {
+    2: distributePostsToColumns(renderedPosts, 2),
+    3: distributePostsToColumns(renderedPosts, 3),
+    4: distributePostsToColumns(renderedPosts, 4)
+};
 
 // Content type specific styling classes
 const getContentTypeClasses = (type: string, category?: string) => {
-  // If mixed content type, determine from individual post category
-  if (type === 'mixed' && category) {
-    switch (category) {
-      case 'evergreen':
-        return 'evergreen-card';
-      case 'til':
-        return 'til-card';
-      case 'bookshelf':
-        return 'bookshelf-card';
-      case 'story':
-        return 'stories-card';
-      case 'poem':
-        return 'poems-card';
-      default:
-        return 'default-card';
+    // If mixed content type, determine from individual post category
+    if (type === 'mixed' && category) {
+        switch (category) {
+            case 'evergreen':
+                return 'evergreen-card';
+            case 'til':
+                return 'til-card';
+            case 'bookshelf':
+                return 'bookshelf-card';
+            case 'story':
+                return 'stories-card';
+            case 'poem':
+                return 'poems-card';
+            default:
+                return 'default-card';
+        }
     }
-  }
-  
-  // Use provided content type
-  switch (type) {
-    case 'evergreen':
-      return 'evergreen-card';
-    case 'til':
-      return 'til-card';
-    case 'bookshelf':
-      return 'bookshelf-card';
-    case 'stories':
-      return 'stories-card';
-    case 'poems':
-      return 'poems-card';
-    default:
-      return 'default-card';
-  }
+
+    // Use provided content type
+    switch (type) {
+        case 'evergreen':
+            return 'evergreen-card';
+        case 'til':
+            return 'til-card';
+        case 'bookshelf':
+            return 'bookshelf-card';
+        case 'stories':
+            return 'stories-card';
+        case 'poems':
+            return 'poems-card';
+        default:
+            return 'default-card';
+    }
 };
 
 const getSpanClass = (post: any) => {
-  const span = post?.data?.layout?.span;
+    const span = post?.data?.layout?.span;
 
-  if (span === 6) {
-    return 'grid-span-6';
-  }
+    if (span === 6) {
+        return 'grid-span-6';
+    }
 
-  if (span === 12) {
-    return 'grid-span-12';
-  }
+    if (span === 12) {
+        return 'grid-span-12';
+    }
 
-  if (span === 3) {
-    return 'grid-span-3';
-  }
+    if (span === 3) {
+        return 'grid-span-3';
+    }
 
-  return 'grid-span-4';
+    return 'grid-span-4';
 };
----
 
-{renderedPosts.map((post) => {
+const renderCard = (post: any) => {
     const isBookshelf = post.data.category === 'bookshelf';
 
     return (
@@ -105,165 +150,185 @@ const getSpanClass = (post: any) => {
             )}
         </div>
     );
-})}
+};
+---
 
+<div class="garden-grid-host" data-garden-grid>
+    <div class="garden-grid garden-grid--stack" style="display: none;">
+        {renderedPosts.map((post) => renderCard(post))}
+    </div>
+
+    <div class="garden-grid garden-grid--columns garden-grid--columns-2">
+        {columnLayouts[2].map((column, index) => (
+            <div class="garden-grid__column" data-column={index + 1}>
+                {column.map((post) => renderCard(post))}
+            </div>
+        ))}
+    </div>
+
+    <div class="garden-grid garden-grid--columns garden-grid--columns-3">
+        {columnLayouts[3].map((column, index) => (
+            <div class="garden-grid__column" data-column={index + 1}>
+                {column.map((post) => renderCard(post))}
+            </div>
+        ))}
+    </div>
+
+    <div class="garden-grid garden-grid--columns garden-grid--columns-4">
+        {columnLayouts[4].map((column, index) => (
+            <div class="garden-grid__column" data-column={index + 1}>
+                {column.map((post) => renderCard(post))}
+            </div>
+        ))}
+    </div>
+</div>
 
 <style>
-  :global([data-garden-grid]) {
-    --garden-row-height: 10px;
-    --grid-column-gap: clamp(0.75rem, 2.5vw, 1.5rem);
-    --grid-row-gap: clamp(1rem, 3vw, 1.75rem);
-  }
-
-  .garden-card {
-    position: relative;
-    min-width: 0;
-    grid-row: span var(--garden-row-span, 1);
-  }
-
-  .garden-card :global(.card),
-  .garden-card :global(.book-card) {
-    height: 100%;
-  }
-
-  .garden-card :global(.card--no-image:hover),
-  .garden-card :global(.card--no-image:focus-within) {
-    box-shadow: 0 20px 46px -28px rgba(129, 140, 248, 0.35);
-  }
-
-  /* Content type specific styling */
-  .evergreen-card {
-    --card-accent: #10b981; /* emerald */
-  }
-
-  .til-card {
-    --card-accent: #3b82f6; /* blue */
-  }
-
-  .bookshelf-card {
-    --card-accent: #f59e0b; /* amber */
-  }
-
-  .stories-card {
-    --card-accent: #8b5cf6; /* purple */
-  }
-
-  .poems-card {
-    --card-accent: #ec4899; /* pink */
-  }
-
-  /* Apply accent colors to cards */
-  .garden-card :global(.card:hover) {
-    border-color: var(--card-accent, #a78bfa);
-  }
-
-  .garden-card :global(.prose a) {
-    color: rgb(var(--color-text-primary));
-    text-decoration: underline;
-    text-decoration-color: rgba(var(--color-text-primary), 0.35);
-    transition: color 0.2s ease, text-decoration-color 0.2s ease;
-  }
-
-  .garden-card :global(.prose a:hover),
-  .garden-card :global(.prose a:focus-visible) {
-    color: rgb(var(--color-text-primary));
-    text-decoration-color: rgba(var(--color-text-primary), 0.6);
-  }
-
-  :global(.dark) .garden-card :global(.prose a) {
-    color: rgb(var(--color-text-primary));
-    text-decoration-color: rgba(var(--color-text-primary), 0.35);
-  }
-
-  :global(.dark) .garden-card :global(.prose a:hover),
-  :global(.dark) .garden-card :global(.prose a:focus-visible) {
-    color: rgb(var(--color-text-primary));
-    text-decoration-color: rgba(var(--color-text-primary), 0.6);
-  }
-</style>
-
-<script type="module" is:inline>
-  const initGardenMasonry = () => {
-    const cards = Array.from(document.querySelectorAll('[data-garden-card]'));
-    if (!cards.length) {
-      return;
+    :global([data-garden-grid]) {
+        --grid-column-gap: clamp(0.75rem, 2.5vw, 1.5rem);
+        --grid-row-gap: clamp(1rem, 3vw, 1.75rem);
     }
 
-    const grids = new Map();
+    .garden-grid-host {
+        display: block;
+        width: 100%;
+    }
 
-    cards.forEach((card) => {
-      const grid = card.closest('[data-garden-grid]');
-      if (!grid) {
-        return;
-      }
+    .garden-grid {
+        width: 100%;
+    }
 
-      if (!grids.has(grid)) {
-        grids.set(grid, []);
-      }
+    .garden-grid--stack {
+        display: none;
+        grid-template-columns: 1fr;
+        gap: var(--grid-row-gap);
+    }
 
-      const list = grids.get(grid);
-      if (list) {
-        list.push(card);
-      }
-    });
+    .garden-grid--columns {
+        display: none;
+        gap: var(--grid-column-gap);
+        align-items: flex-start;
+    }
 
-    grids.forEach((gridCards, grid) => {
-      grid.dataset.gardenGridReady = 'true';
+    .garden-grid__column {
+        display: flex;
+        flex-direction: column;
+        gap: var(--grid-row-gap);
+        min-width: 0;
+    }
 
-      const computeMetrics = () => {
-        const styles = window.getComputedStyle(grid);
-        const rowHeight = parseFloat(styles.getPropertyValue('--garden-row-height')) || 10;
-        const rowGapValue = styles.rowGap || styles.getPropertyValue('row-gap');
-        const rowGap = rowGapValue ? parseFloat(rowGapValue) : 0;
-        return { rowHeight, rowGap };
-      };
+    .garden-card {
+        position: relative;
+        display: block;
+        width: 100%;
+        min-width: 0;
+        content-visibility: auto;
+        contain-intrinsic-size: auto 420px;
+    }
 
-      const updateCard = (card, metrics) => {
-        const inner = card.querySelector('[data-card-root]');
-        if (!inner) {
-          return;
+    .garden-card :global(.card),
+    .garden-card :global(.book-card) {
+        height: 100%;
+    }
+
+    .garden-card :global(.card--no-image:hover),
+    .garden-card :global(.card--no-image:focus-within) {
+        box-shadow: 0 20px 46px -28px rgba(129, 140, 248, 0.35);
+    }
+
+    /* Content type specific styling */
+    .evergreen-card {
+        --card-accent: #10b981; /* emerald */
+    }
+
+    .til-card {
+        --card-accent: #3b82f6; /* blue */
+    }
+
+    .bookshelf-card {
+        --card-accent: #f59e0b; /* amber */
+    }
+
+    .stories-card {
+        --card-accent: #8b5cf6; /* purple */
+    }
+
+    .poems-card {
+        --card-accent: #ec4899; /* pink */
+    }
+
+    /* Apply accent colors to cards */
+    .garden-card :global(.card:hover) {
+        border-color: var(--card-accent, #a78bfa);
+    }
+
+    .garden-card :global(.prose a) {
+        color: rgb(var(--color-text-primary));
+        text-decoration: underline;
+        text-decoration-color: rgba(var(--color-text-primary), 0.35);
+        transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+
+    .garden-card :global(.prose a:hover),
+    .garden-card :global(.prose a:focus-visible) {
+        color: rgb(var(--color-text-primary));
+        text-decoration-color: rgba(var(--color-text-primary), 0.6);
+    }
+
+    :global(.dark) .garden-card :global(.prose a) {
+        color: rgb(var(--color-text-primary));
+        text-decoration-color: rgba(var(--color-text-primary), 0.35);
+    }
+
+    :global(.dark) .garden-card :global(.prose a:hover),
+    :global(.dark) .garden-card :global(.prose a:focus-visible) {
+        color: rgb(var(--color-text-primary));
+        text-decoration-color: rgba(var(--color-text-primary), 0.6);
+    }
+
+    @media (max-width: 39.999rem) {
+        .garden-grid--stack {
+            display: grid !important;
         }
 
-        const { rowGap, rowHeight } = metrics;
-        const height = inner.offsetHeight;
-        const span = Math.max(1, Math.ceil((height + rowGap) / (rowHeight + rowGap)));
-        card.style.setProperty('--garden-row-span', String(span));
-      };
+        .garden-grid--columns {
+            display: none !important;
+        }
+    }
 
-      const updateAll = () => {
-        const metrics = computeMetrics();
-        gridCards.forEach((card) => updateCard(card, metrics));
-      };
-
-      if ('ResizeObserver' in window) {
-        const resizeObserver = new ResizeObserver(() => updateAll());
-
-        gridCards.forEach((card) => {
-          const inner = card.querySelector('[data-card-root]');
-          if (inner) {
-            resizeObserver.observe(inner);
-          }
-        });
-      }
-
-      updateAll();
-
-      let resizeFrame;
-      window.addEventListener('resize', () => {
-        if (resizeFrame) {
-          cancelAnimationFrame(resizeFrame);
+    @media (min-width: 40rem) {
+        .garden-grid--stack {
+            display: none;
         }
 
-        resizeFrame = requestAnimationFrame(() => {
-          updateAll();
-        });
-      });
-    });
-  };
+        .garden-grid--columns-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: var(--grid-column-gap);
+        }
+    }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initGardenMasonry, { once: true });
-  } else {
-    initGardenMasonry();
-  }
-</script>
+    @media (min-width: 64rem) {
+        .garden-grid--columns-2 {
+            display: none;
+        }
+
+        .garden-grid--columns-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            column-gap: var(--grid-column-gap);
+        }
+    }
+
+    @media (min-width: 88rem) {
+        .garden-grid--columns-3 {
+            display: none;
+        }
+
+        .garden-grid--columns-4 {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            column-gap: var(--grid-column-gap);
+        }
+    }
+</style>
