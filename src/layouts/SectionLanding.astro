@@ -252,20 +252,8 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
     }
 
     .section-content.section-content--as-grid {
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-auto-flow: row dense;
-        grid-auto-rows: var(--garden-row-height, 10px);
-        column-gap: var(--grid-column-gap);
-        row-gap: var(--grid-row-gap);
-        align-items: start;
+        display: block;
         padding-bottom: var(--section-content-grid-padding, 1rem);
-    }
-
-    @supports not (grid-template-columns: subgrid) {
-        .section-content.section-content--as-grid {
-            grid-template-columns: repeat(12, minmax(0, 1fr));
-        }
     }
 
     .section-after-count {
@@ -304,7 +292,6 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
         }
 
         .section-content.section-content--as-grid {
-            grid-template-columns: subgrid;
             padding-bottom: var(--section-content-grid-padding-mobile, 0.75rem);
         }
 

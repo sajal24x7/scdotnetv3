@@ -110,20 +110,49 @@ const getSpanClass = (post: any) => {
 
 <style>
   :global([data-garden-grid]) {
-    --garden-row-height: 10px;
     --grid-column-gap: clamp(0.75rem, 2.5vw, 1.5rem);
     --grid-row-gap: clamp(1rem, 3vw, 1.75rem);
+    display: block;
+    column-gap: var(--grid-column-gap);
+    column-fill: balance;
+    column-count: 1;
+  }
+
+  @media (min-width: 40rem) {
+    :global([data-garden-grid]) {
+      column-count: 2;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    :global([data-garden-grid]) {
+      column-count: 3;
+    }
+  }
+
+  @media (min-width: 88rem) {
+    :global([data-garden-grid]) {
+      column-count: 4;
+    }
   }
 
   .garden-card {
     position: relative;
+    display: inline-block;
+    width: 100%;
     min-width: 0;
-    grid-row: span var(--garden-row-span, 1);
+    break-inside: avoid;
+    margin-bottom: var(--grid-row-gap);
   }
 
   .garden-card :global(.card),
   .garden-card :global(.book-card) {
     height: 100%;
+  }
+
+  .garden-card.grid-span-12,
+  .garden-card.grid-span-6 {
+    column-span: all;
   }
 
   .garden-card :global(.card--no-image:hover),
@@ -181,89 +210,3 @@ const getSpanClass = (post: any) => {
     text-decoration-color: rgba(var(--color-text-primary), 0.6);
   }
 </style>
-
-<script type="module" is:inline>
-  const initGardenMasonry = () => {
-    const cards = Array.from(document.querySelectorAll('[data-garden-card]'));
-    if (!cards.length) {
-      return;
-    }
-
-    const grids = new Map();
-
-    cards.forEach((card) => {
-      const grid = card.closest('[data-garden-grid]');
-      if (!grid) {
-        return;
-      }
-
-      if (!grids.has(grid)) {
-        grids.set(grid, []);
-      }
-
-      const list = grids.get(grid);
-      if (list) {
-        list.push(card);
-      }
-    });
-
-    grids.forEach((gridCards, grid) => {
-      grid.dataset.gardenGridReady = 'true';
-
-      const computeMetrics = () => {
-        const styles = window.getComputedStyle(grid);
-        const rowHeight = parseFloat(styles.getPropertyValue('--garden-row-height')) || 10;
-        const rowGapValue = styles.rowGap || styles.getPropertyValue('row-gap');
-        const rowGap = rowGapValue ? parseFloat(rowGapValue) : 0;
-        return { rowHeight, rowGap };
-      };
-
-      const updateCard = (card, metrics) => {
-        const inner = card.querySelector('[data-card-root]');
-        if (!inner) {
-          return;
-        }
-
-        const { rowGap, rowHeight } = metrics;
-        const height = inner.offsetHeight;
-        const span = Math.max(1, Math.ceil((height + rowGap) / (rowHeight + rowGap)));
-        card.style.setProperty('--garden-row-span', String(span));
-      };
-
-      const updateAll = () => {
-        const metrics = computeMetrics();
-        gridCards.forEach((card) => updateCard(card, metrics));
-      };
-
-      if ('ResizeObserver' in window) {
-        const resizeObserver = new ResizeObserver(() => updateAll());
-
-        gridCards.forEach((card) => {
-          const inner = card.querySelector('[data-card-root]');
-          if (inner) {
-            resizeObserver.observe(inner);
-          }
-        });
-      }
-
-      updateAll();
-
-      let resizeFrame;
-      window.addEventListener('resize', () => {
-        if (resizeFrame) {
-          cancelAnimationFrame(resizeFrame);
-        }
-
-        resizeFrame = requestAnimationFrame(() => {
-          updateAll();
-        });
-      });
-    });
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initGardenMasonry, { once: true });
-  } else {
-    initGardenMasonry();
-  }
-</script>
