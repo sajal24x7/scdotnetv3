@@ -23,6 +23,7 @@ const {
     series,
     startedReading,
     finishedReading,
+    bookStatus,
     bookRating,
     bookRatingLabel,
     bookCover,
@@ -50,8 +51,9 @@ const formatDate = (date: Date | string | undefined) => {
 const startedDate = formatDate(startedReading);
 const finishedDate = formatDate(finishedReading);
 
-const rating: BookRating = bookRating ?? 'liked-it';
-const ratingLabel = bookRatingLabel ?? defaultBookRatingLabels[rating];
+const showRating = bookStatus !== 'reading';
+const rating: BookRating | null = showRating ? bookRating ?? 'liked-it' : null;
+const ratingLabel = rating ? bookRatingLabel ?? defaultBookRatingLabels[rating] : null;
 
 type ThumbDirection = 'up' | 'down';
 
@@ -66,15 +68,16 @@ const thumbIconPaths: Record<ThumbDirection, readonly string[]> = {
     ]
 };
 
-const ratingIconSpecs: Array<{ direction: ThumbDirection; size: number }> =
-    rating === 'loved-it'
+const ratingIconSpecs: Array<{ direction: ThumbDirection; size: number }> = rating
+    ? rating === 'loved-it'
         ? [
               { direction: 'up', size: 19 },
               { direction: 'up', size: 15 }
           ]
         : rating === 'liked-it'
         ? [{ direction: 'up', size: 18 }]
-        : [{ direction: 'down', size: 18 }];
+        : [{ direction: 'down', size: 18 }]
+    : [];
 ---
 
 <article class="book-card">
@@ -137,31 +140,33 @@ const ratingIconSpecs: Array<{ direction: ThumbDirection; size: number }> =
         {format && (
           <span class="book-format">{format}</span>
         )}
-        <div class={`book-rating book-rating--${rating}`} aria-label={`Rating: ${ratingLabel}`}>
-          <span class="book-rating__icons" aria-hidden="true">
-            {ratingIconSpecs.map(({ direction, size }) => (
-              <span class="book-rating__icon" aria-hidden="true">
-                <svg
-                  class="book-rating__icon-svg"
-                  width={size}
-                  height={size}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  {thumbIconPaths[direction].map((d) => (
-                    <path d={d}></path>
-                  ))}
-                </svg>
-              </span>
-            ))}
-          </span>
-          <span class="book-rating__text">{ratingLabel}</span>
-        </div>
+        {rating && ratingLabel && (
+          <div class={`book-rating book-rating--${rating}`} aria-label={`Rating: ${ratingLabel}`}>
+            <span class="book-rating__icons" aria-hidden="true">
+              {ratingIconSpecs.map(({ direction, size }) => (
+                <span class="book-rating__icon" aria-hidden="true">
+                  <svg
+                    class="book-rating__icon-svg"
+                    width={size}
+                    height={size}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    {thumbIconPaths[direction].map((d) => (
+                      <path d={d}></path>
+                    ))}
+                  </svg>
+                </span>
+              ))}
+            </span>
+            <span class="book-rating__text">{ratingLabel}</span>
+          </div>
+        )}
       </div>
     </div>
   </div>
