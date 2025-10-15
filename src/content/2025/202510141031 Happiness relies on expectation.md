@@ -14,3 +14,4 @@ The difference is expectation. The delta between expectation and our reality is 
 
 Expectation comes from looking at what others around us have. That may or may not be what we need or want.
 
+Also expectation is easier to manage than the outcomes.
