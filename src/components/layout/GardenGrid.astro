@@ -1,6 +1,6 @@
 ---
 import Card from '../Card.astro';
-import BookCard from '../bookshelf/BookCard.astro';
+import BookshelfCard from '../bookshelf/BookshelfCard.astro';
 import { parseMarkdown } from '../../utils/markdown';
 
 interface Props {
@@ -81,17 +81,19 @@ const getSpanClass = (post: any) => {
             data-garden-card
         >
             {isBookshelf ? (
-                <BookCard
+                <BookshelfCard
                     title={post.data.title}
                     author={post.data.author}
                     series={post.data.series}
                     startedReading={post.data.startedReading}
                     finishedReading={post.data.finishedReading}
                     bookStatus={post.data.bookStatus}
+                    readingProgress={post.data.readingProgress}
                     bookRating={post.data.bookRating}
                     bookCover={post.data.bookCover}
                     link={post.data.link}
                     format={post.data.format}
+                    pubDate={post.data.pubDate}
                 />
             ) : (
                 <Card {...post.data}>

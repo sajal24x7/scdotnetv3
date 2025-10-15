@@ -1,29 +1,109 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import BookGrid from '../../components/bookshelf/BookGrid.astro';
+import BookshelfCard from '../../components/bookshelf/BookshelfCard.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 
 // Get all posts and filter for bookshelf
 const allPosts = await getAllPosts();
-const bookshelfPosts = allPosts
-    .filter((post) => post.data.category === 'bookshelf')
-    .sort((a, b) => {
-        // Sort by finished reading date if available, otherwise by pub date
-        const aDate = a.data.finishedReading || a.data.pubDate;
-        const bDate = b.data.finishedReading || b.data.pubDate;
-        return new Date(bDate).getTime() - new Date(aDate).getTime();
-    });
+const bookshelfPosts = allPosts.filter((post) => post.data.category === 'bookshelf');
 
-// Separate currently reading books
-const currentlyReading = bookshelfPosts.filter((book) => book.data.bookStatus === 'reading');
+const normalizeStatus = (status?: string | null) => {
+    switch (status) {
+        case 'read':
+        case 'finished':
+            return 'finished';
+        case 'reading':
+        case 'on-hold':
+        case 'to-read':
+            return status;
+        default:
+            return 'finished';
+    }
+};
 
-// Group completed books by year
-const completedBooks = bookshelfPosts.filter((book) => book.data.bookStatus === 'read' || !book.data.bookStatus);
-const booksByYear = completedBooks.reduce((acc, book) => {
-    const date = book.data.finishedReading || book.data.pubDate;
-    const year = new Date(date).getFullYear();
+const statusOrder: Record<string, number> = {
+    reading: 0,
+    finished: 1,
+    'on-hold': 2,
+    'to-read': 3,
+    other: 4
+};
+
+const toTime = (value?: Date | string | null) => {
+    if (!value) {
+        return 0;
+    }
+
+    const date = value instanceof Date ? value : new Date(value);
+    const time = date.getTime();
+    return Number.isNaN(time) ? 0 : time;
+};
+
+const compareDesc = (a?: Date | string | null, b?: Date | string | null) => {
+    return toTime(b) - toTime(a);
+};
+
+const parseDate = (value?: Date | string | null) => {
+    if (!value) return null;
+    const date = value instanceof Date ? value : new Date(value);
+    return Number.isNaN(date.getTime()) ? null : date;
+};
+
+const getBookYear = (book: typeof bookshelfPosts[number]) => {
+    const finished = parseDate(book.data.finishedReading);
+    if (finished) return finished.getFullYear();
+
+    const started = parseDate(book.data.startedReading);
+    if (started) return started.getFullYear();
+
+    const pub = parseDate(book.data.pubDate);
+    return (pub ?? new Date()).getFullYear();
+};
+
+const booksWithYear = bookshelfPosts.map((book) => ({
+    book,
+    year: getBookYear(book)
+}));
+
+const sortedBooks = [...booksWithYear].sort((a, b) => {
+    if (a.year !== b.year) {
+        return b.year - a.year;
+    }
+
+    const statusA = normalizeStatus(a.book.data.bookStatus);
+    const statusB = normalizeStatus(b.book.data.bookStatus);
+
+    if (statusA !== statusB) {
+        return (statusOrder[statusA] ?? statusOrder.other) - (statusOrder[statusB] ?? statusOrder.other);
+    }
+
+    if (statusA === 'reading') {
+        const progressA = typeof a.book.data.readingProgress === 'number' ? a.book.data.readingProgress : -1;
+        const progressB = typeof b.book.data.readingProgress === 'number' ? b.book.data.readingProgress : -1;
+
+        if (progressA !== progressB) {
+            return progressB - progressA;
+        }
+
+        return compareDesc(a.book.data.startedReading ?? a.book.data.pubDate, b.book.data.startedReading ?? b.book.data.pubDate);
+    }
+
+    if (statusA === 'finished') {
+        return compareDesc(a.book.data.finishedReading ?? a.book.data.pubDate, b.book.data.finishedReading ?? b.book.data.pubDate);
+    }
+
+    if (statusA === 'on-hold' || statusA === 'to-read') {
+        return compareDesc(a.book.data.startedReading ?? a.book.data.pubDate, b.book.data.startedReading ?? b.book.data.pubDate);
+    }
+
+    return compareDesc(a.book.data.pubDate, b.book.data.pubDate);
+});
+
+const years = Array.from(new Set(sortedBooks.map((entry) => entry.year)));
+
+const booksByYear = sortedBooks.reduce((acc, { year, book }) => {
     if (!acc[year]) {
         acc[year] = [];
     }
@@ -31,10 +111,10 @@ const booksByYear = completedBooks.reduce((acc, book) => {
     return acc;
 }, {} as Record<number, typeof bookshelfPosts>);
 
-// Get sorted years (newest first)
-const years = Object.keys(booksByYear)
-    .map(Number)
-    .sort((a, b) => b - a);
+const transformBook = (book: typeof bookshelfPosts[number]) => ({
+    ...book.data,
+    link: book.slug ? `/bookshelf/${book.slug}/` : undefined
+});
 
 // Calculate total books count
 const totalBooks = bookshelfPosts.length;
@@ -42,7 +122,7 @@ const countText = `${totalBooks} ${totalBooks === 1 ? 'book' : 'books'}`;
 
 const sectionLandingProps = createSectionLandingProps({
     title: 'Bookshelf',
-    description: "A collection of books I've read and am currently reading, organized by year.",
+    description: "Books I'm reading, have finished, or have on deck—organized by year with inline status cues.",
     countText,
     countVariant: 'plain',
     countClass: 'bookshelf-count',
@@ -70,26 +150,34 @@ const sectionLandingProps = createSectionLandingProps({
   enableLinkHoverEffect
 >
   <SectionLanding {...sectionLandingProps}>
-    <div class="bookshelf-sections">
-      {currentlyReading.length > 0 && (
-        <section class="bookshelf-section">
-          <header class="bookshelf-section__header">
-            <h2 class="bookshelf-section__title">Currently Reading</h2>
-            <span class="bookshelf-section__count">({currentlyReading.length})</span>
-          </header>
-          <BookGrid books={currentlyReading} />
-        </section>
-      )}
+    <div class="bookshelf-years">
+      {years.map((year) => {
+        const yearBooks = booksByYear[year] ?? [];
+        const finishedCount = yearBooks.filter((book) => normalizeStatus(book.data.bookStatus) === 'finished').length;
+        const finishedLabel = finishedCount === 1 ? 'book read' : 'books read';
 
-      {years.map((year) => (
-        <section class="bookshelf-section">
-          <header class="bookshelf-section__header">
-            <h2 class="bookshelf-section__title">{year}</h2>
-            <span class="bookshelf-section__count">({booksByYear[year].length})</span>
-          </header>
-          <BookGrid books={booksByYear[year]} />
-        </section>
-      ))}
+        return (
+          <section class="bookshelf-year" id={`bookshelf-${year}`}>
+            <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
+              <div class="bookshelf-year__sidebar grid-span-3">
+                <div class="bookshelf-year__sticky">
+                  <span class="bookshelf-year__year">{year}</span>
+                  <span class="bookshelf-year__count">{finishedCount} {finishedLabel}</span>
+                </div>
+              </div>
+              <div class="bookshelf-year__books grid-start-4 grid-span-8">
+                <div class="bookshelf-year__list">
+                  {yearBooks.map((book) => (
+                    <div class="bookshelf-year__book">
+                      <BookshelfCard {...transformBook(book)} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })}
     </div>
   </SectionLanding>
 </Layout>
@@ -114,53 +202,76 @@ const sectionLandingProps = createSectionLandingProps({
     padding-bottom: 2rem;
   }
 
-  .bookshelf-sections {
+  .bookshelf-years {
     display: flex;
     flex-direction: column;
-    gap: clamp(2rem, 5vw, 3rem);
+    gap: clamp(2rem, 5vw, 3.5rem);
   }
 
-  .bookshelf-section {
+  .bookshelf-year__grid {
+    align-items: flex-start;
+  }
+
+  .bookshelf-year__sidebar {
+    display: flex;
+  }
+
+  .bookshelf-year__sticky {
+    position: sticky;
+    top: clamp(4rem, 6vw, 5.5rem);
     display: flex;
     flex-direction: column;
-    gap: clamp(1.25rem, 3vw, 2rem);
+    gap: 0.35rem;
   }
 
-  .bookshelf-section__header {
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-  }
-
-  .bookshelf-section__title {
-    font-size: var(--text-large);
-    font-weight: 600;
-    margin: 0;
+  .bookshelf-year__year {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
     color: #111827;
   }
 
-  :global(.dark) .bookshelf-section__title {
+  :global(.dark) .bookshelf-year__year {
     color: #f9fafb;
   }
 
-  .bookshelf-section__count {
-    font-size: var(--text-normal);
+  .bookshelf-year__count {
+    font-size: 0.95rem;
     font-weight: 500;
     color: #6b7280;
   }
 
-  :global(.dark) .bookshelf-section__count {
+  :global(.dark) .bookshelf-year__count {
     color: #9ca3af;
   }
 
-  @media (max-width: 640px) {
-    .bookshelf-content,
-    .bookshelf-sections {
-      gap: 2rem;
-    }
+  .bookshelf-year__books {
+    display: flex;
+  }
 
-    .bookshelf-section {
-      gap: 1.5rem;
+  .bookshelf-year__list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    width: 100%;
+  }
+
+  .bookshelf-year__book {
+    display: flex;
+  }
+
+  .bookshelf-year__book :global(.book-card) {
+    width: 100%;
+  }
+
+  @media (max-width: 47.999rem) {
+    .bookshelf-year__sticky {
+      position: static;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .bookshelf-year__year {
+      font-size: clamp(2.25rem, 4vw, 3.5rem);
     }
   }
 </style>

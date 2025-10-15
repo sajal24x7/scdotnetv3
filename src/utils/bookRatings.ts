@@ -29,20 +29,20 @@ export const thumbIconPaths: Record<ThumbDirection, readonly string[]> = {
 
 export const bookRatingDisplay: Record<BookRating, BookRatingDisplay> = {
     like: {
-        label: 'liked-it',
+        label: 'Rating: Like',
         iconSpecs: [
             { direction: 'up', size: 18 }
         ]
     },
     love: {
-        label: 'loved-it',
+        label: 'Rating: Love',
         iconSpecs: [
             { direction: 'up', size: 19 },
             { direction: 'up', size: 15 }
         ]
     },
     nope: {
-        label: 'not-for-me',
+        label: 'Rating: Dislike',
         iconSpecs: [
             { direction: 'down', size: 18 }
         ]

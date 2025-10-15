@@ -1,0 +1,634 @@
+---
+import { Image } from 'astro:assets';
+import { getBookCoverImage } from '../../utils/bookCovers';
+import { bookRatingDisplay, thumbIconPaths, type BookRating } from '../../utils/bookRatings';
+
+type BookStatus = 'reading' | 'read' | 'finished' | 'on-hold' | 'to-read';
+type NormalizedStatus = 'reading' | 'finished' | 'on-hold' | 'to-read';
+
+interface BookshelfCardProps {
+    title: string;
+    author?: string;
+    series?: string;
+    format?: string;
+    bookStatus?: BookStatus;
+    readingProgress?: number;
+    startedReading?: Date | string;
+    finishedReading?: Date | string;
+    pubDate?: Date | string;
+    bookRating?: BookRating;
+    bookCover?: string;
+    link?: string;
+}
+
+const props = Astro.props as BookshelfCardProps;
+
+const parseDate = (value: Date | string | undefined) => {
+    if (!value) {
+        return null;
+    }
+
+    if (value instanceof Date) {
+        return Number.isNaN(value.getTime()) ? null : value;
+    }
+
+    const parsed = new Date(value);
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
+};
+
+const formatYMD = (value: Date | string | undefined) => {
+    const date = parseDate(value);
+
+    if (!date) {
+        return null;
+    }
+
+    return date.toISOString().slice(0, 10);
+};
+
+const {
+    title,
+    author,
+    series,
+    format,
+    bookStatus,
+    readingProgress,
+    startedReading,
+    finishedReading,
+    pubDate,
+    bookRating,
+    bookCover,
+    link
+} = props;
+
+const normalizedStatus: NormalizedStatus | undefined = (() => {
+    switch (bookStatus) {
+        case 'read':
+        case 'finished':
+            return 'finished';
+        case 'reading':
+        case 'on-hold':
+        case 'to-read':
+            return bookStatus;
+        default:
+            return undefined;
+    }
+})();
+
+const statusLabelMap: Record<NormalizedStatus, string> = {
+    reading: 'Currently Reading',
+    finished: 'Finished',
+    'on-hold': 'On Hold',
+    'to-read': 'To Read'
+};
+
+const statusLabel = normalizedStatus ? statusLabelMap[normalizedStatus] : null;
+const statusChipClass = normalizedStatus ? `book-card__chip--status-${normalizedStatus}` : '';
+
+const normalizedFormat = format ? format.toLowerCase() : null;
+
+const formatLabelMap: Record<string, string> = {
+    audio: 'AUDIOBOOK',
+    audiobook: 'AUDIOBOOK',
+    ebook: 'EBOOK',
+    digital: 'EBOOK',
+    paper: 'PAPER',
+    paperback: 'PAPER',
+    hardcover: 'HARDCOVER'
+};
+
+const formatLabel = normalizedFormat ? (formatLabelMap[normalizedFormat] ?? normalizedFormat.toUpperCase()) : null;
+
+const finishedDate = formatYMD(finishedReading);
+const startedDate = formatYMD(startedReading);
+const startedLabel = startedDate ?? null;
+const finishedLabel = finishedDate ?? null;
+
+const shouldShowRating = normalizedStatus !== 'reading';
+const ratingDisplay = shouldShowRating && bookRating ? bookRatingDisplay[bookRating] : null;
+const ratingAriaLabel = ratingDisplay ? ratingDisplay.label : 'Rating: Not set';
+
+const safeProgress = (() => {
+    if (normalizedStatus !== 'reading') {
+        return null;
+    }
+
+    if (typeof readingProgress !== 'number') {
+        return null;
+    }
+
+    if (!Number.isFinite(readingProgress)) {
+        return null;
+    }
+
+    return Math.max(0, Math.min(100, Math.round(readingProgress)));
+})();
+
+const coverImage = bookCover ? getBookCoverImage(bookCover) : null;
+
+type MetaSegment =
+    | { key: string; type: 'timeline'; label: string }
+    | {
+        key: string;
+        type: 'rating';
+        ariaLabel: string;
+        icons: readonly { direction: 'up' | 'down'; size: number }[];
+        hasIcons: boolean;
+        ratingType?: BookRating;
+    };
+
+const detailSegments: MetaSegment[] = [];
+
+const timelineLabel = (() => {
+    if (startedLabel && finishedLabel) {
+        return `${startedLabel} – ${finishedLabel}`;
+    }
+
+    if (startedLabel) {
+        return `${startedLabel} –`;
+    }
+
+    if (finishedLabel) {
+        return `– ${finishedLabel}`;
+    }
+
+    return null;
+})();
+
+if (timelineLabel) {
+    detailSegments.push({ key: 'timeline', type: 'timeline', label: timelineLabel });
+}
+
+if (shouldShowRating) {
+    if (ratingDisplay) {
+        detailSegments.push({
+            key: 'rating',
+            type: 'rating',
+            ariaLabel: ratingAriaLabel,
+            icons: ratingDisplay.iconSpecs,
+            hasIcons: true,
+            ratingType: bookRating
+        });
+    } else {
+        detailSegments.push({
+            key: 'rating',
+            type: 'rating',
+            ariaLabel: ratingAriaLabel,
+            icons: [],
+            hasIcons: false
+        });
+    }
+}
+---
+
+<article class="book-card" data-card-root>
+  <div class="book-card__surface">
+    <div class="book-card__cover">
+      {coverImage ? (
+        <Image
+          src={coverImage}
+          alt={`Cover of ${title}`}
+          width={84}
+          height={126}
+          class="book-card__cover-image"
+          loading="lazy"
+        />
+      ) : (
+        <div class="book-card__cover-placeholder" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+        </div>
+      )}
+    </div>
+
+    <div class="book-card__content">
+      <header class="book-card__header">
+        <div class="book-card__title-row">
+          <div class="book-card__title-block">
+            {series && series !== 'none' && (
+              <div class="book-card__series">{series}</div>
+            )}
+            <h3 class="book-card__title">
+              {link ? (
+                <a href={link} class="book-card__title-link">
+                  {title}
+                </a>
+              ) : (
+                title
+              )}
+            </h3>
+          </div>
+        </div>
+        {author && (
+          <div class="book-card__author">{author}</div>
+        )}
+      </header>
+
+      {(statusLabel || formatLabel || detailSegments.length > 0) && (
+        <div class="book-card__meta" data-meta>
+          {(statusLabel || formatLabel) && (
+            <div class="book-card__meta-row book-card__meta-row--chips">
+              {statusLabel && (
+                <span class={`book-card__chip book-card__chip--status ${statusChipClass}`}>
+                  {statusLabel}
+                </span>
+              )}
+              {formatLabel && (
+                <span class="book-card__chip book-card__chip--format">
+                  {formatLabel}
+                </span>
+              )}
+            </div>
+          )}
+
+          {detailSegments.length > 0 && (
+            <div class="book-card__meta-row book-card__meta-row--details">
+              {detailSegments.map((segment) => (
+                segment.type === 'timeline' ? (
+                  <span class="book-card__chip book-card__chip--timeline" key={segment.key}>
+                    <span class="book-card__chip-icon" aria-hidden="true">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M4.75 5.5c0-.69.56-1.25 1.25-1.25H10c.69 0 1.25.56 1.25 1.25v12.5c0 .552-.448 1-1 1H5.5a.75.75 0 0 1-.75-.75V5.5z"></path>
+                        <path d="M19.25 5.5c0-.69-.56-1.25-1.25-1.25H14c-.69 0-1.25.56-1.25 1.25v12.5c0 .552.448 1 1 1h4.75a.75.75 0 0 0 .75-.75V5.5z"></path>
+                        <path d="M11.25 6.75C9.5 5.9 7.75 5.75 6 5.75"></path>
+                        <path d="M12.75 6.75c1.75-.85 3.5-1 5.25-1"></path>
+                      </svg>
+                    </span>
+                    <span class="book-card__chip-label">{segment.label}</span>
+                  </span>
+                ) : (
+                  <span class={`book-card__rating ${segment.ratingType ? `book-card__rating--${segment.ratingType}` : ''}`} aria-label={segment.ariaLabel} role="img" key={segment.key}>
+                    {segment.hasIcons ? (
+                      <span class={`book-card__rating-icons ${segment.ratingType ? `book-card__rating-icons--${segment.ratingType}` : ''}`} aria-hidden="true">
+                        {segment.icons.map(({ direction, size }) => (
+                          <span class="book-card__rating-icon">
+                            <svg
+                              width={size}
+                              height={size}
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              {thumbIconPaths[direction].map((d) => (
+                                <path d={d}></path>
+                              ))}
+                            </svg>
+                          </span>
+                        ))}
+                      </span>
+                    ) : (
+                      <span class="book-card__meta-text" aria-hidden="true">—</span>
+                    )}
+                  </span>
+                )
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {safeProgress !== null && (
+        <div
+          class="book-card__progress"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow={safeProgress}
+        >
+          <span class="book-card__progress-track">
+            <span
+              class="book-card__progress-fill"
+              style={`width: ${safeProgress}%;`}
+            ></span>
+          </span>
+        </div>
+      )}
+    </div>
+  </div>
+</article>
+
+<style>
+  .book-card {
+    background: transparent;
+    border: none;
+  }
+
+  .book-card__surface {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .book-card__cover {
+    flex-shrink: 0;
+    width: 4.5rem;
+    max-width: 4.5rem;
+    aspect-ratio: 2 / 3;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: rgba(15, 23, 42, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.dark) .book-card__cover {
+    background: rgba(148, 163, 184, 0.18);
+  }
+
+  .book-card__cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
+  .book-card__cover-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: rgba(15, 23, 42, 0.35);
+  }
+
+  :global(.dark) .book-card__cover-placeholder {
+    color: rgba(226, 232, 240, 0.45);
+  }
+
+  .book-card__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .book-card__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .book-card__title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .book-card__author {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+  }
+
+  :global(.dark) .book-card__author {
+    color: #d1d5db;
+  }
+
+  .book-card__title {
+    flex: 1 1 auto;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+    color: #111827;
+  }
+
+  :global(.dark) .book-card__title {
+    color: #f9fafb;
+  }
+
+  .book-card__title-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .book-card__title-link:hover,
+  .book-card__title-link:focus-visible {
+    text-decoration: underline;
+  }
+
+  .book-card__title-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .book-card__series {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+  }
+
+  :global(.dark) .book-card__series {
+    color: #9ca3af;
+  }
+
+  .book-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #4b5563;
+  }
+
+  :global(.dark) .book-card__meta {
+    color: #9ca3af;
+  }
+
+  .book-card__meta-row {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .book-card__meta-row--details {
+    gap: 0.75rem;
+  }
+
+  .book-card__meta-text {
+    white-space: nowrap;
+  }
+
+  .book-card__chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .book-card__chip--status-reading {
+    background: #ede9fe;
+    color: #5b21b6;
+  }
+
+  :global(.dark) .book-card__chip--status-reading {
+    background: rgba(91, 33, 182, 0.3);
+    color: #ede9fe;
+  }
+
+  .book-card__chip--status-finished {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  :global(.dark) .book-card__chip--status-finished {
+    background: rgba(22, 101, 52, 0.3);
+    color: #bbf7d0;
+  }
+
+  .book-card__chip--status-on-hold {
+    background: #fef3c7;
+    color: #b45309;
+  }
+
+  :global(.dark) .book-card__chip--status-on-hold {
+    background: rgba(180, 83, 9, 0.3);
+    color: #fde68a;
+  }
+
+  .book-card__chip--status-to-read {
+    background: #dbeafe;
+    color: #1d4ed8;
+  }
+
+  :global(.dark) .book-card__chip--status-to-read {
+    background: rgba(29, 78, 216, 0.3);
+    color: #bfdbfe;
+  }
+
+  .book-card__chip--format {
+    background: #e5e7eb;
+    color: #111827;
+  }
+
+  :global(.dark) .book-card__chip--format {
+    background: #374151;
+    color: #e5e7eb;
+  }
+
+  .book-card__chip--timeline {
+    justify-content: flex-start;
+    background: #f3f4f6;
+    color: #1f2937;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: none;
+  }
+
+  :global(.dark) .book-card__chip--timeline {
+    background: #1f2937;
+    color: #e5e7eb;
+  }
+
+  .book-card__chip-icon {
+    display: inline-flex;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .book-card__chip-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .book-card__chip-label {
+    white-space: nowrap;
+  }
+
+  .book-card__rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .book-card__rating-icons {
+    display: inline-flex;
+    gap: 0.25rem;
+    color: #111827;
+  }
+
+  :global(.dark) .book-card__rating-icons {
+    color: #f9fafb;
+  }
+
+  .book-card__rating-icons--nope {
+    color: #b91c1c;
+  }
+
+  :global(.dark) .book-card__rating-icons--nope {
+    color: #fca5a5;
+  }
+
+  .book-card__rating-icon {
+    line-height: 1;
+    display: inline-flex;
+  }
+
+  .book-card__progress {
+    margin-top: 0.25rem;
+  }
+
+  .book-card__progress-track {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 0.25rem;
+    border-radius: 9999px;
+    background: rgba(156, 163, 175, 0.35);
+    overflow: hidden;
+  }
+
+  :global(.dark) .book-card__progress-track {
+    background: rgba(75, 85, 99, 0.5);
+  }
+
+  .book-card__progress-fill {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: #166534;
+  }
+
+  :global(.dark) .book-card__progress-fill {
+    background: #34d399;
+  }
+
+  @media (min-width: 45rem) {
+    .book-card__surface {
+      gap: 1.25rem;
+    }
+
+    .book-card__cover {
+      width: 5.25rem;
+      max-width: 5.25rem;
+    }
+  }
+</style>

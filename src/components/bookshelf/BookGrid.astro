@@ -1,5 +1,5 @@
 ---
-import BookCard from './BookCard.astro';
+import BookshelfCard from './BookshelfCard.astro';
 
 interface Props {
     books: any[];
@@ -7,34 +7,34 @@ interface Props {
 
 const { books } = Astro.props;
 
-// Transform books for BookCard component
+// Transform books for BookshelfCard component
 const transformBook = (book: any) => ({
     ...book.data,
     link: book.slug ? `/bookshelf/${book.slug}/` : undefined
 });
 
-const getSpanClass = (book: any) => {
+const getGridClasses = (book: any) => {
     const span = book?.data?.layout?.span;
 
     switch (span) {
         case 12:
             return 'grid-span-12';
         case 8:
-            return 'grid-span-8';
+            return 'grid-start-3 grid-span-8';
         case 6:
-            return 'grid-span-6';
+            return 'grid-start-4 grid-span-6';
         case 4:
-            return 'grid-span-4';
+            return 'grid-start-4 grid-span-6';
         default:
-            return 'grid-span-4';
+            return 'grid-start-3 grid-span-8';
     }
 };
 ---
 
 <div class="book-grid twelve-grid grid-gap-tight">
     {books.map((book) => (
-        <div class={`book-grid__item ${getSpanClass(book)}`}>
-            <BookCard {...transformBook(book)} />
+        <div class={`book-grid__item ${getGridClasses(book)}`}>
+            <BookshelfCard {...transformBook(book)} />
         </div>
     ))}
 </div>
