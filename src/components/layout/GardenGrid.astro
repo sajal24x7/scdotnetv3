@@ -111,37 +111,16 @@ const getSpanClass = (post: any) => {
   :global([data-garden-grid]) {
     --grid-column-gap: clamp(0.75rem, 2.5vw, 1.5rem);
     --grid-row-gap: clamp(1rem, 3vw, 1.75rem);
-    display: block;
-    column-gap: var(--grid-column-gap);
-    column-fill: balance;
-    column-count: 1;
-  }
-
-  @media (min-width: 40rem) {
-    :global([data-garden-grid]) {
-      column-count: 2;
-    }
-  }
-
-  @media (min-width: 64rem) {
-    :global([data-garden-grid]) {
-      column-count: 3;
-    }
-  }
-
-  @media (min-width: 88rem) {
-    :global([data-garden-grid]) {
-      column-count: 4;
-    }
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--grid-row-gap) var(--grid-column-gap);
+    align-items: stretch;
   }
 
   .garden-card {
     position: relative;
-    display: inline-block;
     width: 100%;
     min-width: 0;
-    break-inside: avoid;
-    margin-bottom: var(--grid-row-gap);
   }
 
   .garden-card :global(.card),
@@ -149,9 +128,31 @@ const getSpanClass = (post: any) => {
     height: 100%;
   }
 
-  .garden-card.grid-span-12,
-  .garden-card.grid-span-6 {
-    column-span: all;
+  .garden-card.grid-span-4 {
+    grid-column: 1 / -1;
+  }
+
+  .garden-card.grid-span-6,
+  .garden-card.grid-span-12 {
+    grid-column: 1 / -1;
+  }
+
+  @media (min-width: 40rem) {
+    .garden-card.grid-span-4 {
+      grid-column: span 6;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .garden-card.grid-span-4 {
+      grid-column: span 4;
+    }
+  }
+
+  @media (min-width: 88rem) {
+    .garden-card.grid-span-4 {
+      grid-column: span 3;
+    }
   }
 
   .garden-card :global(.card--no-image:hover),
