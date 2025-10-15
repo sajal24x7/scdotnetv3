@@ -1,13 +1,16 @@
 ---
-title: "Netflix will have podcasts soon"
-slug: "netflix-will-have-podcasts-soon"
-pubDate: 2025-10-15T11:05:13+03:00
-updatedDate: 2025-10-15T11:05:13+03:00
+title: Netflix will have podcasts soon
+slug: netflix-will-have-podcasts-soon
+pubDate: 2025-10-15T08:05:13.000Z
+updatedDate: 2025-10-15T08:05:13.000Z
 category: micro
 tags:
   - podcasts
   - netflix
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115377155942608795'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m37s23j2ux2k'
+  - 'https://www.threads.com/@sajal24x7/post/DP0pbUuEQT1'
 ---
 [Netflix is making a big bet on video podcasts by Emma Roth](https://www.theverge.com/news/799582/netflix-spotify-video-podcast-deal)
 
