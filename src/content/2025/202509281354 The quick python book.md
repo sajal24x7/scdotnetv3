@@ -8,7 +8,7 @@ tags:
   - python
 format: ebook
 author: "Naomi Ceder"
-bookStatus: "on-hold"
+bookStatus: "reading"
 bookRating: like
 startedReading: 2025-09-28T13:57:42+03:00
 bookCover: "the-quick-python-book-fourth-edition.jpg"
