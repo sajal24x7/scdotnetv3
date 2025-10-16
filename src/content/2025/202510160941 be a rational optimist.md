@@ -9,7 +9,7 @@ tags:
   - psychology
 
 ---
-From [Same as Ever](#).
+From [Same as Ever](/bookshelf/same-as-ever).
 
 A rational optimist is someone who knows that in the short term things will go bad, but over a longer time, things work out.
 

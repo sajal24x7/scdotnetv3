@@ -9,7 +9,7 @@ tags:
   - thinking
 
 ---
-From [Same as Ever](#)
+From [Same as Ever](/bookshelf/same-as-ever).
 
 Like in nature, species are not perfect. There are some imperfections. 
 

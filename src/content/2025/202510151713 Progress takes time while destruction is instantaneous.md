@@ -9,7 +9,7 @@ tags:
   - psychology
 
 ---
-From [Same as ever](#).
+From [Same as ever](/bookshelf/same-as-ever).
 
 Good things take time, they compound and that is difficult to point at and understand. Bad things on the other hand are things that did happen - a market crash, for example.
 
