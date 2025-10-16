@@ -1,5 +1,5 @@
 ---
-title: "be a rational optimist"
+title: "Be a rational optimist"
 slug: "be-a-rational-optimist"
 pubDate: 2025-10-16T10:16:34+03:00
 updatedDate: 2025-10-16T10:16:34+03:00

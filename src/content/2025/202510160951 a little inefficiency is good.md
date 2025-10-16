@@ -1,5 +1,5 @@
 ---
-title: "a little inefficiency is good"
+title: "A little inefficiency is good"
 slug: "a-little-inefficiency-is-good"
 pubDate: 2025-10-16T10:17:00+03:00
 updatedDate: 2025-10-16T10:17:00+03:00
