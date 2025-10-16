@@ -1,14 +1,18 @@
 ---
-title: "Devops Finland October meetup"
-slug: "devops-finland-october-meetup"
-pubDate: 2025-10-16T22:33:45+03:00
-updatedDate: 2025-10-16T22:33:45+03:00
+title: Devops Finland October meetup
+slug: devops-finland-october-meetup
+pubDate: 2025-10-16T19:33:45.000Z
+updatedDate: 2025-10-16T19:33:45.000Z
 category: blog
 tags:
   - meetup
   - finland
   - devops
-image: https://storage.sajalchoudhary.net/images/2025/10/devops-oct-03.jpeg
+image: 'https://storage.sajalchoudhary.net/images/2025/10/devops-oct-03.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115385544646240976'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3djasosas2v'
+  - 'https://www.threads.com/@sajal24x7/post/DP4dkcgD1Y-'
 ---
 I attended the Devops Finland meetup at SOK today. This was my first meetup at the SOK offices. I did not know what to expect going in. Would these be technical talks about tooling or something else.
 
