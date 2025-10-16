@@ -39,7 +39,7 @@ const renderedPosts: FeaturedPost[] = posts.map(post => ({
             <div class="featured-content">
               <div class="featured-meta">
                 <CategoryDisplay category={post.data.category} className="featured-category" />
-                <TimeDisplay date={post.data.pubDate} category={post.data.category} className="featured-date" />
+                <TimeDisplay date={post.data.pubDate} category={post.data.category} className="featured-date card-chip" />
               </div>
               {post.data.title && (
                 <h3 class="featured-heading">{post.data.title}</h3>
@@ -151,8 +151,11 @@ const renderedPosts: FeaturedPost[] = posts.map(post => ({
     flex-wrap: wrap;
     align-items: center;
     gap: 0.75rem;
-    font-size: 0.9rem;
     color: rgb(var(--color-text-secondary));
+  }
+
+  .featured-date {
+    color: inherit;
   }
 
   .featured-heading {

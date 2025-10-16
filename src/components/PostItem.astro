@@ -33,7 +33,7 @@ const postImageAlt = typeof post.data.imageAlt === 'string' && post.data.imageAl
         <TimeDisplay
           date={post.data.pubDate}
           category={post.data.category}
-          className="post-item-time-value"
+          className="post-item-time-value card-chip"
           format="relative"
         />
         <span class="post-item-link-icon" aria-hidden="true">
@@ -132,7 +132,7 @@ const postImageAlt = typeof post.data.imageAlt === 'string' && post.data.imageAl
   .post-item-timestamp {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
     text-decoration: none;
     color: #6b7280;
     font-size: var(--text-small);
@@ -159,7 +159,7 @@ const postImageAlt = typeof post.data.imageAlt === 'string' && post.data.imageAl
   .post-item-time {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.4rem;
   }
 
   .post-item-time-value {

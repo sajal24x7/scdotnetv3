@@ -50,14 +50,13 @@ const isRelative = timeFormat === 'relative';
 </time>
 
 <style>
-  .time-display {
-    font-size: var(--text-small);
+  :where(.time-display) {
     color: inherit;
-    font-weight: 500;
   }
 
   /* Hover effect for relative times to show full date */
-  .time-display[title]:hover {
+  :where(.time-display[title]):hover {
     cursor: help;
   }
 </style>
+

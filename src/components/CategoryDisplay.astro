@@ -5,23 +5,15 @@ interface Props {
 }
 
 const { category, className = '' } = Astro.props;
-const classes = ['category-display', 'category-chip', className].filter(Boolean).join(' ');
+const classes = ['category-display', 'card-chip', className].filter(Boolean).join(' ');
 ---
 
 <span class={classes}>
-  {category.toLowerCase()}
+  {category}
 </span>
 
 <style>
   .category-display {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: lowercase;
-    letter-spacing: 0.05em;
-    padding: 0.2rem 0.6rem;
-    border-radius: 9999px;
     white-space: nowrap;
-    /* Color, border, and hover styles now handled by global CSS */
   }
 </style>

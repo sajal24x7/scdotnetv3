@@ -32,7 +32,7 @@ const { posts = [], title = 'Featured' }: Props = Astro.props;
                     </div>
                     <div class="home-featured__meta">
                         <CategoryDisplay category={post.data.category} className="home-featured__category" />
-                        <TimeDisplay date={post.data.pubDate} category={post.data.category} className="home-featured__date" />
+                        <TimeDisplay date={post.data.pubDate} category={post.data.category} className="home-featured__date card-chip" />
                     </div>
                     <h3 class="home-featured__heading">{post.data.title}</h3>
                 </a>
@@ -111,12 +111,12 @@ const { posts = [], title = 'Featured' }: Props = Astro.props;
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        font-size: 0.9rem;
+        flex-wrap: wrap;
         color: rgb(var(--color-text-secondary));
     }
 
     .home-featured__date {
-        font-size: 0.85rem;
+        color: inherit;
     }
 
     .home-featured__heading {
