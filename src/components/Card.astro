@@ -46,7 +46,7 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
 
       <div class="card-meta">
         <CategoryDisplay category={category} className="card-category" />
-        <TimeDisplay date={pubDate} category={category} className="card-date" />
+        <TimeDisplay date={pubDate} category={category} className="card-date card-chip" />
       </div>
       
     </div>
@@ -136,13 +136,7 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
   }
 
   .card-date {
-    font-size: var(--text-small);
-    color: #6b7280;
-    font-weight: 500;
-  }
-
-  :global(.dark) .card-date {
-    color: #9ca3af;
+    color: inherit;
   }
 
 

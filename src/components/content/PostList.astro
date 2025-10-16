@@ -90,7 +90,7 @@ const getLinkClasses = () => {
                                 <TimeDisplay
                                     date={post.data.pubDate}
                                     category={post.data.category}
-                                    className="text-small text-gray-500 dark:text-gray-400 block"
+                                    className="post-list__date card-chip"
                                 />
                             )}
                             <h3 class="text-large font-semibold group-hover:text-accent transition-colors">
@@ -175,8 +175,13 @@ const getLinkClasses = () => {
     .post-list__meta {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         gap: 0.5rem;
         margin-top: 0.25rem;
+    }
+
+    .post-list__date {
+        color: inherit;
     }
 
     .post-list__tags {
