@@ -153,27 +153,28 @@ const sectionLandingProps = createSectionLandingProps({
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearBooks = booksByYear[year] ?? [];
-        const finishedCount = yearBooks.filter((book) => normalizeStatus(book.data.bookStatus) === 'finished').length;
-        const finishedLabel = finishedCount === 1 ? 'book read' : 'books read';
+        const bookCount = yearBooks.length;
+        const bookLabel = bookCount === 1 ? 'book' : 'books';
 
         return (
           <section class="bookshelf-year" id={`bookshelf-${year}`}>
             <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
-              <div class="bookshelf-year__sidebar grid-span-3">
+              <div class="bookshelf-year__sidebar grid-span-2">
                 <div class="bookshelf-year__sticky">
                   <span class="bookshelf-year__year">{year}</span>
-                  <span class="bookshelf-year__count">{finishedCount} {finishedLabel}</span>
+                  <span class="bookshelf-year__count">{bookCount} {bookLabel}</span>
                 </div>
               </div>
-              <div class="bookshelf-year__books grid-start-4 grid-span-8">
-                <div class="bookshelf-year__list">
-                  {yearBooks.map((book) => (
-                    <div class="bookshelf-year__book">
-                      <BookshelfCard {...transformBook(book)} />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {yearBooks.map((book, index) => {
+                const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
+                const bookSlug = book.slug ?? `${year}-${index}`;
+
+                return (
+                  <div key={bookSlug} class={`bookshelf-year__book ${gridClasses}`}>
+                    <BookshelfCard {...transformBook(book)} />
+                  </div>
+                );
+              })}
             </div>
           </section>
         );
@@ -216,6 +217,12 @@ const sectionLandingProps = createSectionLandingProps({
     display: flex;
   }
 
+  @media (min-width: 48rem) {
+    .bookshelf-year__sidebar {
+      grid-row: 1 / -1;
+    }
+  }
+
   .bookshelf-year__sticky {
     position: sticky;
     top: clamp(4rem, 6vw, 5.5rem);
@@ -242,17 +249,6 @@ const sectionLandingProps = createSectionLandingProps({
 
   :global(.dark) .bookshelf-year__count {
     color: #9ca3af;
-  }
-
-  .bookshelf-year__books {
-    display: flex;
-  }
-
-  .bookshelf-year__list {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(1.25rem, 3vw, 2rem);
-    width: 100%;
   }
 
   .bookshelf-year__book {
