@@ -27,6 +27,11 @@ import { RateLimiter } from './lib/utils/rate-limiter.js';
 // Configuration
 const PLATFORMS = ['mastodon', 'bluesky', 'threads'];
 const STREAM_CATEGORIES = ['blog', 'micro', 'photo'];
+const GARDEN_CATEGORIES = ['evergreen', 'til', 'bookshelf', 'story', 'poem'];
+const NORDLETTER_CATEGORIES = ['nordletter'];
+const SYNDICATION_CATEGORIES = [
+    ...new Set([...STREAM_CATEGORIES, ...GARDEN_CATEGORIES, ...NORDLETTER_CATEGORIES])
+];
 const DRY_RUN = process.env.SYNDICATION_DRY_RUN === 'true';
 const DAYS_BACK = parseInt(process.env.SYNDICATION_DAYS_BACK || '7', 10);
 
@@ -88,8 +93,9 @@ const rateLimiters = {
  * Check if a post needs syndication
  */
 function needsSyndication(post) {
-  // Only syndicate stream content
-  if (!STREAM_CATEGORIES.includes(post.data.category)) {
+  // Only syndicate configured categories
+  const category = (post.data.category || '').toLowerCase();
+  if (!SYNDICATION_CATEGORIES.includes(category)) {
     return false;
   }
 
