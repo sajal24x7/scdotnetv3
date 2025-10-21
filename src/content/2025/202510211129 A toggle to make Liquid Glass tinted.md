@@ -1,13 +1,16 @@
 ---
-title: "A toggle to make Liquid Glass tinted"
-slug: "a-toggle-to-make-liquid-glass-tinted"
-pubDate: 2025-10-21T11:30:37+03:00
-updatedDate: 2025-10-21T11:30:37+03:00
+title: A toggle to make Liquid Glass tinted
+slug: a-toggle-to-make-liquid-glass-tinted
+pubDate: 2025-10-21T08:30:37.000Z
+updatedDate: 2025-10-21T08:30:37.000Z
 category: micro
 tags:
   - apple
   - ios
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115411262263031169'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3owptnvk22f'
+  - 'https://www.threads.com/@sajal24x7/post/DQEKDPuihey'
 ---
 [Apple adds a new toggle to make Liquid Glass less glassy by Jay Peters](https://www.theverge.com/news/802963/apple-liquid-glass-ios-26-1-beta-tint-option)
 
