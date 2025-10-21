@@ -13,3 +13,8 @@ The first time around I had used the book [Learn Python the hard way](https://le
 I did not really have a chance to use Python at work outside of a few scripts, so those skills atrophied.
 
 Now I’m relearning Python and additionally pick up some data analysis skills. 
+
+# Resources - Intro level
+
+1. [Helsinki University Intro to Programming MOOC](https://programming-25.mooc.fi)
+2. [[202509281354 The quick python book]]

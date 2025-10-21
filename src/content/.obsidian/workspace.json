@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/202412241054 Becky Chambers - Record of a Spaceborn Few.md",
+                "file": "2025/202510211149 Learning python.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "202412241054 Becky Chambers - Record of a Spaceborn Few"
+              "title": "202510211149 Learning python"
             }
           }
         ],
@@ -68,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "[\"category\":bookshelf]",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -89,8 +89,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -188,6 +187,14 @@
   },
   "active": "26eff8e7ea3fa54d",
   "lastOpenFiles": [
+    "2024/202412241054 Becky Chambers - Record of a Spaceborn Few.md",
+    "2025/202510211541 Pythonic coding conventions.md",
+    "2025/202510211211 Cyborgs vs rooms.md",
+    "2025/202510211154 Google AI leader.md",
+    "2025/202510211149 Learning python.md",
+    "2025/202510211129 A toggle to make Liquid Glass tinted.md",
+    "2025/202510211107 Anthropic announce Claude code for web.md",
+    "2025/202510171528 Slow Productivity.md",
     "2025/202510171006 Better than average.md",
     "2025/202510170644 Claude announces skills.md",
     "2025/202510192200 NL76.md",
@@ -207,14 +214,6 @@
     "2025/202510141031 Happiness relies on expectation.md",
     "2025/202510131752 Risk is what you can’t see coming.md",
     "2025/202510131551 Same as Ever.md",
-    "2025/202510131326 How to handle stress at work.md",
-    "2025/202510131249 Learn anything in a month of lunches.md",
-    "2025/202510122107 Apple's Smart Glasses With In-Lens Display May Feature Two Modes.md",
-    "2025/202510121749 How to work with your boss.md",
-    "2024/202412222032 Riddell Chris - Poems to Fall in Love with.md",
-    "2024/202412102201 Becky Chambers - A closed and Common Orbit.md",
-    "2024/202402121046 Kevin Kelly - Excellent Advice for Living.md",
-    "2021/202102121513 Black box thinking The surprising truth about success - Matthew Syed.md",
     "2025/202510111435 NL75.txt",
     "2025/202510011731 Vibe coding.txt",
     "2025/202509201610 Data centers in space.txt",
