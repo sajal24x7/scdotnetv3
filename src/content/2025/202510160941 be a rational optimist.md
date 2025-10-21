@@ -1,13 +1,16 @@
 ---
-title: "Be a rational optimist"
-slug: "be-a-rational-optimist"
-pubDate: 2025-10-16T10:16:34+03:00
-updatedDate: 2025-10-16T10:16:34+03:00
+title: Be a rational optimist
+slug: be-a-rational-optimist
+pubDate: 2025-10-16T07:16:34.000Z
+updatedDate: 2025-10-16T07:16:34.000Z
 category: evergreen
 tags:
   - optimism
   - psychology
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115411434492210003'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3oz66jlk62q'
+  - 'https://www.threads.com/@sajal24x7/post/DQEPEHVgZI_'
 ---
 From [Same as Ever](/bookshelf/same-as-ever).
 

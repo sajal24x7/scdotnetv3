@@ -1,16 +1,19 @@
 ---
-title: "Slow Productivity"
-slug: "slow-productivity"
-pubDate: 2025-10-21T11:46:56+03:00
-updatedDate: 2025-10-21T11:46:56+03:00
+title: Slow Productivity
+slug: slow-productivity
+pubDate: 2025-10-21T08:46:56.000Z
+updatedDate: 2025-10-21T08:46:56.000Z
 category: bookshelf
 tags:
   - nonfiction
   - productivity
 format: audio
-author: "Cal Newport"
-bookStatus: "reading"
-startedReading: 2025-10-17T15:28:56+03:00
+author: Cal Newport
+bookStatus: reading
+startedReading: 2025-10-17T12:28:56.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115411436555564699'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3oz73mokl2v'
 ---
 
 # Notes

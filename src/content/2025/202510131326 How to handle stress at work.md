@@ -1,14 +1,17 @@
 ---
-title: "How to handle stress at work"
-slug: "how-to-handle-stress-at-work"
-pubDate: 2025-10-14T15:50:39+03:00
-updatedDate: 2025-10-14T15:50:39+03:00
+title: How to handle stress at work
+slug: how-to-handle-stress-at-work
+pubDate: 2025-10-14T12:50:39.000Z
+updatedDate: 2025-10-14T12:50:39.000Z
 category: evergreen
 tags:
   - work
   - stress
   - yoga
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115411431599992253'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3oz4tuuw32f'
+  - 'https://www.threads.com/@sajal24x7/post/DQEO-stARCB'
 ---
 These are the things that work for me. They may or may not work for you.
 

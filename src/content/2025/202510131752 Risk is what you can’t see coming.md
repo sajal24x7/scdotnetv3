@@ -1,13 +1,16 @@
 ---
-title: "Risk is what you can’t see coming"
-slug: "risk-is-what-you-cant-see-coming"
-pubDate: 2025-10-14T15:50:25+03:00
-updatedDate: 2025-10-14T15:50:25+03:00
+title: Risk is what you can’t see coming
+slug: risk-is-what-you-cant-see-coming
+pubDate: 2025-10-14T12:50:25.000Z
+updatedDate: 2025-10-14T12:50:25.000Z
 category: evergreen
 tags:
   - risk
   - planning
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115411432130541092'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3oz53ik7g24'
+  - 'https://www.threads.com/@sajal24x7/post/DQEO_o1gYZo'
 ---
 Like Covid, or any of the great depressions. Sure in hindsight it seems obvious, but for people living the happening, it’s anything but.
 

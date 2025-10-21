@@ -1,12 +1,15 @@
 ---
-title: "Happiness relies on expectation"
-slug: "happiness-relies-on-expectation"
-pubDate: 2025-10-14T15:47:26+03:00
-updatedDate: 2025-10-14T15:47:26+03:00
+title: Happiness relies on expectation
+slug: happiness-relies-on-expectation
+pubDate: 2025-10-14T12:47:26.000Z
+updatedDate: 2025-10-14T12:47:26.000Z
 category: evergreen
 tags:
   - happiness
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115411432631754139'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3oz5csvva24'
+  - 'https://www.threads.com/@sajal24x7/post/DQEPAkHgVcc'
 ---
 By almost every metric, we are better off than we were in an earlier age, still we earn for the golden period we had earlier (supposedly).
 
