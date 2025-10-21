@@ -197,65 +197,59 @@ function extractExcerpt(post, maxLength = 200) {
   return post.data.title || 'New post';
 }
 
-function formatNonLinkPost(post, config, hashtagsText, platform, postUrl, shortUrl) {
-    const linkValue = platform === 'threads' ? shortUrl : postUrl;
-    const linkSpace = linkValue ? linkValue.length + 2 : 0; // +2 for \n\n
-    const hashtagsSpace = hashtagsText ? hashtagsText.length + 2 : 0;
-    const maxContentLength = config.maxLength - linkSpace - hashtagsSpace;
+function formatNonLinkPost(post, config, hashtagsText) {
+    const maxContentLength = config.maxLength - (hashtagsText ? hashtagsText.length + 2 : 0);
+    if (maxContentLength <= 0) {
+        const fallback = (post.data.title || post.data.description || 'New post').trim() || 'New post';
+        let content = fallback;
+        if (hashtagsText) {
+            content += `\n\n${hashtagsText}`;
+        }
+        return content.length > config.maxLength
+            ? `${content.substring(0, config.maxLength - 3)}...`
+            : content.trim();
+    }
 
-    let content = '';
-    let truncatedTitle = '';
     const title = (post.data.title || '').trim();
+    let content = '';
+    let truncatedTitle = title;
 
-    if (maxContentLength > 0 && title) {
+    if (title) {
         truncatedTitle = title.length > maxContentLength
             ? `${title.substring(0, maxContentLength - 3)}...`
             : title;
         content = truncatedTitle;
     }
 
-    if (maxContentLength > 0) {
-        const newlineSpace = content ? 2 : 0;
-        const excerptSpace = maxContentLength - content.length - newlineSpace;
+    const newlineSpace = content ? 2 : 0;
+    const excerptSpace = maxContentLength - content.length - newlineSpace;
 
-        if (excerptSpace > 0) {
-            const excerpt = extractExcerpt(post, excerptSpace);
-            const cleanExcerpt = excerpt.trim();
-            if (cleanExcerpt) {
-                const normalizedExcerpt = cleanExcerpt.toLowerCase();
-                const normalizedTitle = title.toLowerCase();
-                const normalizedTruncated = truncatedTitle.toLowerCase();
+    if (excerptSpace > 0) {
+        const excerpt = extractExcerpt(post, excerptSpace);
+        const cleanExcerpt = excerpt.trim();
+        if (cleanExcerpt) {
+            const normalizedExcerpt = cleanExcerpt.toLowerCase();
+            const normalizedTitle = title.toLowerCase();
+            const normalizedTruncated = truncatedTitle.toLowerCase();
 
-                if (normalizedExcerpt !== normalizedTitle && normalizedExcerpt !== normalizedTruncated) {
-                    content = content ? `${content}\n\n${cleanExcerpt}` : cleanExcerpt;
-                }
+            if (normalizedExcerpt !== normalizedTitle && normalizedExcerpt !== normalizedTruncated) {
+                content = content ? `${content}\n\n${cleanExcerpt}` : cleanExcerpt;
             }
         }
     }
 
     if (!content) {
-        const fallbackSpace = maxContentLength > 0 ? maxContentLength : config.maxLength - linkSpace - hashtagsSpace;
-        const fallback = extractExcerpt(post, fallbackSpace) || title || post.data.description || 'New post';
-        content = fallback.length > fallbackSpace && fallbackSpace > 3
-            ? `${fallback.substring(0, fallbackSpace - 3)}...`
-            : fallback.substring(0, fallbackSpace);
+        const fallback = extractExcerpt(post, maxContentLength) || title || 'New post';
+        content = fallback.length > maxContentLength
+            ? `${fallback.substring(0, maxContentLength - 3)}...`
+            : fallback;
     }
 
-    let finalContent = content.trim();
-
-    if (linkValue) {
-        finalContent = finalContent ? `${finalContent}\n\n${linkValue}` : linkValue;
+    if (hashtagsText) {
+        content += `\n\n${hashtagsText}`;
     }
 
-    if (config.includeHashtags && hashtagsText) {
-        finalContent += `\n\n${hashtagsText}`;
-    }
-
-    if (finalContent.length > config.maxLength) {
-        finalContent = `${finalContent.substring(0, config.maxLength - 3)}...`;
-    }
-
-    return finalContent.trim();
+    return content.trim();
 }
 
 /**
@@ -328,7 +322,7 @@ export function formatContentForPlatform(post, platform) {
   const category = (post.data.category || '').toLowerCase();
 
   if (NON_LINK_CATEGORIES.has(category)) {
-    content = formatNonLinkPost(post, config, hashtagsText, platform, postUrl, shortUrl);
+    content = formatNonLinkPost(post, config, hashtagsText);
   } else if (category === 'micro') {
     // Check if content fits without needing a link back
     const fitsWithoutLink = checkMicroPostFitsWithoutLink(post, platform);

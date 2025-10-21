@@ -1,13 +1,16 @@
 ---
-title: "How to avoid wasting time"
-slug: "how-to-avoid-wasting-time"
-pubDate: 2025-10-15T13:36:55+03:00
-updatedDate: 2025-10-15T13:36:55+03:00
+title: How to avoid wasting time
+slug: how-to-avoid-wasting-time
+pubDate: 2025-10-15T10:36:55.000Z
+updatedDate: 2025-10-15T10:36:55.000Z
 category: evergreen
 tags:
   - howto
   - gaming
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115411433083228056'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3oz5jergc2f'
+  - 'https://www.threads.com/@sajal24x7/post/DQEPBaogf3z'
 ---
 1. Set a timer for the thing that you want to do - for me playing a game 
 2. Once the timer rings, stop doing the thing

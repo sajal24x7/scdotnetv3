@@ -1,8 +1,8 @@
 ---
 title: "Google AI leader"
 slug: "google-ai-leader"
-pubDate: 2025-10-21T11:55:45+03:00
-updatedDate: 2025-10-21T11:55:45+03:00
+pubDate: 2025-07-21T11:55:45+03:00
+updatedDate: 2025-08-21T11:55:45+03:00
 category: now
 status: done
 ---

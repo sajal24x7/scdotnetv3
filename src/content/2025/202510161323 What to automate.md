@@ -1,13 +1,16 @@
 ---
-title: "What to automate"
-slug: "what-to-automate"
-pubDate: 2025-10-16T13:26:58+03:00
-updatedDate: 2025-10-16T13:26:58+03:00
+title: What to automate
+slug: what-to-automate
+pubDate: 2025-10-16T10:26:58.000Z
+updatedDate: 2025-10-16T10:26:58.000Z
 category: evergreen
 tags:
   - work
   - automation
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115411435373362567'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3oz6l3xjg2q'
+  - 'https://www.threads.com/@sajal24x7/post/DQEPFuRgTBX'
 ---
 There are four types of things that we can automate -
 
