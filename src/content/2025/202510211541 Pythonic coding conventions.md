@@ -6,9 +6,8 @@ updatedDate: 2025-10-21T15:45:15+03:00
 category: til
 tags:
   - python
-
 ---
-In PEP 8, from [ The quick python book](#).
+In PEP 8, from [The quick python book](/bookshelf/the-quick-python-book).
 
 1. Module/package names - short lower case, underscores only if needed
 2. Function names - all lowercase, underscores for readability 
