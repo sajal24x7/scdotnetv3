@@ -23,12 +23,11 @@ const PLATFORM_CONFIG = {
     maxLength: 500,
     includeHashtags: true,
     includeLink: true,
-    linkText: 'Link in bio or visit'
+    linkText: 'Read more'
   }
 };
 
-const GARDEN_POST_CATEGORIES = new Set(['garden', 'evergreen', 'til', 'bookshelf', 'story', 'poem']);
-const NON_LINK_CATEGORIES = new Set([...GARDEN_POST_CATEGORIES, 'nordletter']);
+const NON_LINK_CATEGORIES = new Set(['nordletter']);
 
 /**
  * Extract link from markdown link format
@@ -274,13 +273,6 @@ function getPostUrl(post) {
 }
 
 /**
- * Create a short URL for social media (without https://)
- */
-function getShortUrl(post) {
-  return `sajalchoudhary.net/${post.data.category}/${post.slug}/`;
-}
-
-/**
  * Check if micro post content fits within platform limits without needing a link back
  */
 function checkMicroPostFitsWithoutLink(post, platform) {
@@ -317,7 +309,6 @@ export function formatContentForPlatform(post, platform) {
 
   let content = '';
   const postUrl = getPostUrl(post);
-  const shortUrl = getShortUrl(post);
   const hashtagsText = config.includeHashtags ? generateHashtags(post, 3) : '';
   const category = (post.data.category || '').toLowerCase();
 
@@ -335,9 +326,7 @@ export function formatContentForPlatform(post, platform) {
 
       if (formattedContent === 'NEEDS_WEBSITE_LINK') {
         // Handle quote >100 chars case: title + thoughts + website link
-        const linkText = platform === 'threads'
-          ? `\n\n${config.linkText}: ${shortUrl}`
-          : `\n\n📖 ${config.linkText}: ${postUrl}`;
+        const linkText = `\n\n📖 ${config.linkText}: ${postUrl}`;
 
         const reservedSpace = linkText.length + (hashtagsText ? hashtagsText.length + 2 : 0);
         const availableContentSpace = config.maxLength - reservedSpace;
@@ -380,9 +369,7 @@ export function formatContentForPlatform(post, platform) {
       }
     } else {
       // Content is too long, need to include link back and truncate
-      const linkText = platform === 'threads'
-        ? `\n\n${config.linkText}: ${shortUrl}`
-        : `\n\n📖 ${config.linkText}: ${postUrl}`;
+      const linkText = `\n\n📖 ${config.linkText}: ${postUrl}`;
 
       const reservedSpace = linkText.length + (hashtagsText ? hashtagsText.length + 2 : 0);
       const availableContentSpace = config.maxLength - reservedSpace;
@@ -425,9 +412,7 @@ export function formatContentForPlatform(post, platform) {
   } else {
     // For long-form posts, include link back to the site
     const linkText = config.includeLink
-      ? (platform === 'threads'
-          ? `\n\n${config.linkText}: ${shortUrl}`
-          : `\n\n📖 ${config.linkText}: ${postUrl}`)
+      ? `\n\n📖 ${config.linkText}: ${postUrl}`
       : '';
 
     const reservedSpace = linkText.length + (hashtagsText ? hashtagsText.length + 2 : 0);
