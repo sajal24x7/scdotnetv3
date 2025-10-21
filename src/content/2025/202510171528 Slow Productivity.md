@@ -11,6 +11,7 @@ format: audio
 author: Cal Newport
 bookStatus: reading
 startedReading: 2025-10-17T12:28:56.000Z
+bookCover: "slow-productivity.jpg"
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115411436555564699'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3oz73mokl2v'
