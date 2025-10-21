@@ -1,18 +1,22 @@
 ---
-title: "Anything you want"
-slug: "anything-you-want"
-pubDate: 2025-10-16T16:10:31+03:00
-updatedDate: 2025-10-16T16:10:31+03:00
+title: Anything you want
+slug: anything-you-want
+pubDate: 2025-10-16T13:10:31.000Z
+updatedDate: 2025-10-16T13:10:31.000Z
 category: bookshelf
 tags:
   - non-fiction
 format: ebook
-author: "Derek Sivers"
-bookStatus: "read"
-bookCover: "anything-you-want.jpg"
-startedReading: 2025-10-16T17:10:31+03:00
-finishedReading: 2025-10-21T17:10:31+03:00
+author: Derek Sivers
+bookStatus: read
+bookCover: anything-you-want.jpg
+startedReading: 2025-10-16T14:10:31.000Z
+finishedReading: 2025-10-21T14:10:31.000Z
 bookRating: like
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115413744776639298'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3pzyqsb2l2v'
+  - 'https://www.threads.com/@sajal24x7/post/DQFSTO9jIIR'
 ---
 
 This is a short book. 

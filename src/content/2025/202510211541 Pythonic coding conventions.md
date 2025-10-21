@@ -1,11 +1,15 @@
 ---
-title: "Pythonic coding conventions"
-slug: "pythonic-coding-conventions"
-pubDate: 2025-10-21T15:45:15+03:00
-updatedDate: 2025-10-21T15:45:15+03:00
+title: Pythonic coding conventions
+slug: pythonic-coding-conventions
+pubDate: 2025-10-21T12:45:15.000Z
+updatedDate: 2025-10-21T12:45:15.000Z
 category: til
 tags:
   - python
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115413745136046515'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3pzyvyglm2b'
+  - 'https://www.threads.com/@sajal24x7/post/DQFST4GDDKJ'
 ---
 In PEP 8, from [The quick python book](/bookshelf/the-quick-python-book).
 
