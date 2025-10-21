@@ -27,6 +27,9 @@ const PLATFORM_CONFIG = {
   }
 };
 
+const GARDEN_POST_CATEGORIES = new Set(['garden', 'evergreen', 'til', 'bookshelf', 'story', 'poem']);
+const NON_LINK_CATEGORIES = new Set([...GARDEN_POST_CATEGORIES, 'nordletter']);
+
 /**
  * Extract link from markdown link format
  */
@@ -194,6 +197,67 @@ function extractExcerpt(post, maxLength = 200) {
   return post.data.title || 'New post';
 }
 
+function formatNonLinkPost(post, config, hashtagsText, platform, postUrl, shortUrl) {
+    const linkValue = platform === 'threads' ? shortUrl : postUrl;
+    const linkSpace = linkValue ? linkValue.length + 2 : 0; // +2 for \n\n
+    const hashtagsSpace = hashtagsText ? hashtagsText.length + 2 : 0;
+    const maxContentLength = config.maxLength - linkSpace - hashtagsSpace;
+
+    let content = '';
+    let truncatedTitle = '';
+    const title = (post.data.title || '').trim();
+
+    if (maxContentLength > 0 && title) {
+        truncatedTitle = title.length > maxContentLength
+            ? `${title.substring(0, maxContentLength - 3)}...`
+            : title;
+        content = truncatedTitle;
+    }
+
+    if (maxContentLength > 0) {
+        const newlineSpace = content ? 2 : 0;
+        const excerptSpace = maxContentLength - content.length - newlineSpace;
+
+        if (excerptSpace > 0) {
+            const excerpt = extractExcerpt(post, excerptSpace);
+            const cleanExcerpt = excerpt.trim();
+            if (cleanExcerpt) {
+                const normalizedExcerpt = cleanExcerpt.toLowerCase();
+                const normalizedTitle = title.toLowerCase();
+                const normalizedTruncated = truncatedTitle.toLowerCase();
+
+                if (normalizedExcerpt !== normalizedTitle && normalizedExcerpt !== normalizedTruncated) {
+                    content = content ? `${content}\n\n${cleanExcerpt}` : cleanExcerpt;
+                }
+            }
+        }
+    }
+
+    if (!content) {
+        const fallbackSpace = maxContentLength > 0 ? maxContentLength : config.maxLength - linkSpace - hashtagsSpace;
+        const fallback = extractExcerpt(post, fallbackSpace) || title || post.data.description || 'New post';
+        content = fallback.length > fallbackSpace && fallbackSpace > 3
+            ? `${fallback.substring(0, fallbackSpace - 3)}...`
+            : fallback.substring(0, fallbackSpace);
+    }
+
+    let finalContent = content.trim();
+
+    if (linkValue) {
+        finalContent = finalContent ? `${finalContent}\n\n${linkValue}` : linkValue;
+    }
+
+    if (config.includeHashtags && hashtagsText) {
+        finalContent += `\n\n${hashtagsText}`;
+    }
+
+    if (finalContent.length > config.maxLength) {
+        finalContent = `${finalContent.substring(0, config.maxLength - 3)}...`;
+    }
+
+    return finalContent.trim();
+}
+
 /**
  * Generate hashtags from post tags
  */
@@ -261,9 +325,11 @@ export function formatContentForPlatform(post, platform) {
   const postUrl = getPostUrl(post);
   const shortUrl = getShortUrl(post);
   const hashtagsText = config.includeHashtags ? generateHashtags(post, 3) : '';
+  const category = (post.data.category || '').toLowerCase();
 
-  // Special handling for micro posts
-  if (post.data.category === 'micro') {
+  if (NON_LINK_CATEGORIES.has(category)) {
+    content = formatNonLinkPost(post, config, hashtagsText, platform, postUrl, shortUrl);
+  } else if (category === 'micro') {
     // Check if content fits without needing a link back
     const fitsWithoutLink = checkMicroPostFitsWithoutLink(post, platform);
 
@@ -363,7 +429,7 @@ export function formatContentForPlatform(post, platform) {
       }
     }
   } else {
-    // For blog posts, always include link back
+    // For long-form posts, include link back to the site
     const linkText = config.includeLink
       ? (platform === 'threads'
           ? `\n\n${config.linkText}: ${shortUrl}`
@@ -373,7 +439,6 @@ export function formatContentForPlatform(post, platform) {
     const reservedSpace = linkText.length + (hashtagsText ? hashtagsText.length + 2 : 0);
     const availableContentSpace = config.maxLength - reservedSpace;
 
-    // For blog posts, create an engaging preview
     const title = post.data.title || '';
     const titleSpace = title ? title.length + 2 : 0; // +2 for \n\n
     const excerptSpace = availableContentSpace - titleSpace;
@@ -386,12 +451,10 @@ export function formatContentForPlatform(post, platform) {
       content = extractExcerpt(post, availableContentSpace);
     }
 
-    // Add link if configured
     if (config.includeLink) {
       content += linkText;
     }
 
-    // Add hashtags if configured
     if (config.includeHashtags && hashtagsText) {
       content += `\n\n${hashtagsText}`;
     }
