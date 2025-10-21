@@ -7,14 +7,10 @@ category: bookshelf
 tags:
   - nonfiction
   - productivity
-
 format: audio
-author: 
-series: 
+author: "Cal Newport"
 bookStatus: "reading"
-startedReading: 
-finishedReading: 
-bookCover: 
+startedReading: 2025-10-17T15:28:56+03:00
 ---
 
 # Notes
