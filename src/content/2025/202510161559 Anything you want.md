@@ -8,11 +8,10 @@ tags:
   - non-fiction
 format: ebook
 author: "Derek Sivers"
-bookStatus: "reading"
+bookStatus: "read"
 bookCover: "anything-you-want.jpg"
 startedReading: 2025-10-16T17:10:31+03:00
 finishedReading: 2025-10-21T17:10:31+03:00
-bookStatus: read
 bookRating: like
 ---
 
