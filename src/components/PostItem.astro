@@ -85,7 +85,6 @@ const syndicationLinks = syndicationUrls
       <a href={postLink} class="post-item-timestamp link-hover" aria-label={linkAriaLabel}>
         <span class="post-item-time">
           <span class="post-item-time-chip card-chip">
-            <span class="post-item-timestamp-label">Posted</span>
             <TimeDisplay
               date={post.data.pubDate}
               category={post.data.category}
@@ -234,14 +233,6 @@ const syndicationLinks = syndicationUrls
     color: rgb(var(--color-text-primary));
   }
 
-  .post-item-timestamp-label {
-    font-size: inherit;
-    color: inherit;
-    font-weight: inherit;
-    text-transform: inherit;
-    letter-spacing: inherit;
-  }
-
   .post-item-time {
     display: inline-flex;
     align-items: center;
@@ -275,8 +266,13 @@ const syndicationLinks = syndicationUrls
   .post-item-syndication {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     flex-wrap: wrap;
+    color: #6b7280;
+  }
+
+  :global(.dark) .post-item-syndication {
+    color: #9ca3af;
   }
 
   .post-item-syndication-label {
@@ -288,7 +284,7 @@ const syndicationLinks = syndicationUrls
   .post-item-syndication-list {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.25rem;
   }
 
   .post-item-syndication-link {
