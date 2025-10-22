@@ -1,14 +1,17 @@
 ---
-title: "Giving books away for free"
-slug: "giving-books-away-for-free"
-pubDate: 2025-10-21T22:49:04+03:00
-updatedDate: 2025-10-21T22:49:04+03:00
+title: Giving books away for free
+slug: giving-books-away-for-free
+pubDate: 2025-10-21T19:49:04.000Z
+updatedDate: 2025-10-21T19:49:04.000Z
 category: blog
 tags:
   - books
   - reading
   - money
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115416882651773987'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3rglp6jlc2w'
+  - 'https://www.threads.com/@sajal24x7/post/DQGtoC8EcIY'
 ---
 [Derek Sivers](https://sive.rs/about) emailed me (and by me I mean he emailed everyone I guess) about an offer for a week to get his books for free.
 
