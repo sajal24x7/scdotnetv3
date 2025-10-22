@@ -32,7 +32,7 @@ const { Content } = await entry.render();
 const hasUpdatedDate = 'updatedDate' in entry.data && entry.data.updatedDate;
 
 // Find backlinks for this post
-const backlinks = await findBacklinksComprehensive(slug, entry.data?.title || '');
+const backlinks = await findBacklinksComprehensive(`${category}/${slug}`);
 
 // Get canonical URL for microformats
 const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
