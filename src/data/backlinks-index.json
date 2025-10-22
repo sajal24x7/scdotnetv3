@@ -1,0 +1,421 @@
+{
+  "blog/the-reason-why-i-want-to-move-my-home-on-the-world": [
+    {
+      "slug": "/nordletter/trip-to-nyc-i/",
+      "title": "Trip to NYC I",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-06-14T15:45:00.000Z"
+    }
+  ],
+  "bookshelf/abundance-how-we-build-a-better-future": [
+    {
+      "slug": "/nordletter/nl69-a-fresh-start/",
+      "title": "A fresh start",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-08-31T03:30:49.000Z"
+    },
+    {
+      "slug": "/micro/why-china-builds-faster-than-the-rest-of-the-world/",
+      "title": "Why China Builds Faster Than the Rest of the World",
+      "description": "",
+      "category": "micro",
+      "pubDate": "2025-08-28T16:14:22.000Z"
+    },
+    {
+      "slug": "/evergreen/homes-cant-be-considered-both-an-investment-and-affordable-enough-for-everyone-to-own/",
+      "title": "Homes can’t be considered both an investment and affordable enough for everyone to own",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-07-11T10:26:50.000Z"
+    },
+    {
+      "slug": "/bookshelf/wells-martha-all-systems-red/",
+      "title": "Wells, Martha - All Systems Red",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-09T13:12:00.000Z"
+    }
+  ],
+  "bookshelf/cixin-liu-the-dark-forest": [
+    {
+      "slug": "/bookshelf/wells-martha-all-systems-red/",
+      "title": "Wells, Martha - All Systems Red",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-09T13:12:00.000Z"
+    }
+  ],
+  "bookshelf/wells-martha-all-systems-red": [
+    {
+      "slug": "/bookshelf/wells-martha-rogue-protocol/",
+      "title": "Wells, Martha - Rogue Protocol",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-15T19:42:08.000Z"
+    },
+    {
+      "slug": "/bookshelf/wells-martha-artificial-condition/",
+      "title": "Wells, Martha - Artificial Condition",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-11T15:26:14.000Z"
+    }
+  ],
+  "bookshelf/wells-martha-artificial-condition": [
+    {
+      "slug": "/bookshelf/wells-martha-rogue-protocol/",
+      "title": "Wells, Martha - Rogue Protocol",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-15T19:42:08.000Z"
+    }
+  ],
+  "blog/visit-porvoo": [
+    {
+      "slug": "/nordletter/a-short-trip-to-porkkalanniemi/",
+      "title": "A short trip to Porkkalanniemi",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-07-13T03:30:05.000Z"
+    }
+  ],
+  "blog/nature-trails-nuuksio-and-pihlajasaari": [
+    {
+      "slug": "/nordletter/a-short-trip-to-porkkalanniemi/",
+      "title": "A short trip to Porkkalanniemi",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-07-13T03:30:05.000Z"
+    }
+  ],
+  "blog/visiting-the-ashokan-pillar-in-vaishali": [
+    {
+      "slug": "/nordletter/nl63-a-day-trip-to-turku/",
+      "title": "A day trip to Turku",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-07-20T03:11:09.000Z"
+    }
+  ],
+  "evergreen/about-ai-browsers": [
+    {
+      "slug": "/nordletter/nl64-a-lazy-day/",
+      "title": "A lazy day",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-07-27T03:11:00.000Z"
+    },
+    {
+      "slug": "/micro/about-perplexitys-new-ai-browser/",
+      "title": "About Perplexity's new AI browser",
+      "description": "",
+      "category": "micro",
+      "pubDate": "2025-07-19T08:31:53.000Z"
+    }
+  ],
+  "micro/study-mode-in-chatgpt": [
+    {
+      "slug": "/micro/new-updates-to-claude/",
+      "title": "New updates to Claude",
+      "description": "",
+      "category": "micro",
+      "pubDate": "2025-08-01T04:22:45.000Z"
+    }
+  ],
+  "micro/new-updates-to-claude": [
+    {
+      "slug": "/til/asking-claude-to-create-a-calendar-entry-from-a-screenshot/",
+      "title": "Asking Claude to create a calendar entry from a screenshot",
+      "description": "",
+      "category": "til",
+      "pubDate": "2025-08-04T09:53:07.000Z"
+    }
+  ],
+  "blog/postcard-from-oitta": [
+    {
+      "slug": "/nordletter/nl66/",
+      "title": "Return to Oitta",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-08-10T03:34:48.000Z"
+    }
+  ],
+  "nordletter/nl65": [
+    {
+      "slug": "/nordletter/nl66/",
+      "title": "Return to Oitta",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-08-10T03:34:48.000Z"
+    }
+  ],
+  "micro/openai-and-anthropic-announce-new-models": [
+    {
+      "slug": "/nordletter/nl66/",
+      "title": "Return to Oitta",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-08-10T03:34:48.000Z"
+    }
+  ],
+  "micro/openai-launches-gpt5": [
+    {
+      "slug": "/nordletter/nl66/",
+      "title": "Return to Oitta",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-08-10T03:34:48.000Z"
+    }
+  ],
+  "nordletter/nl67-performing-at-india-day": [
+    {
+      "slug": "/blog/what-do-i-do-now/",
+      "title": "what do I do now",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-08-20T19:06:10.000Z"
+    }
+  ],
+  "micro/should-ai-flatter-us-fix-us-or-just-inform-us-by-james-odonnell": [
+    {
+      "slug": "/nordletter/nl69-a-fresh-start/",
+      "title": "A fresh start",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-08-31T03:30:49.000Z"
+    },
+    {
+      "slug": "/micro/emotional-agents/",
+      "title": "Emotional Agents",
+      "description": "",
+      "category": "micro",
+      "pubDate": "2025-08-24T19:54:50.000Z"
+    }
+  ],
+  "evergreen/when-someone-has-been-dead-for-a-while": [
+    {
+      "slug": "/nordletter/nl69-a-fresh-start/",
+      "title": "A fresh start",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-08-31T03:30:49.000Z"
+    }
+  ],
+  "evergreen/why-journal": [
+    {
+      "slug": "/nordletter/nl69-a-fresh-start/",
+      "title": "A fresh start",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-08-31T03:30:49.000Z"
+    }
+  ],
+  "evergreen/the-goal-with-yoga": [
+    {
+      "slug": "/nordletter/nl72/",
+      "title": "A dying country",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-09-20T15:39:22.000Z"
+    },
+    {
+      "slug": "/now/yoga/",
+      "title": "Yoga",
+      "description": "",
+      "category": "now",
+      "pubDate": "2023-06-01T17:41:49.000Z"
+    }
+  ],
+  "evergreen/write-more": [
+    {
+      "slug": "/nordletter/nl70-build-or-break/",
+      "title": "Build or break",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-09-07T03:05:16.000Z"
+    }
+  ],
+  "evergreen/humans-and-algorithms-think-differently-when-coming-to-a-decision": [
+    {
+      "slug": "/nordletter/nl70-build-or-break/",
+      "title": "Build or break",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-09-07T03:05:16.000Z"
+    }
+  ],
+  "evergreen/algorithms-affect-what-we-post-on-the-socials": [
+    {
+      "slug": "/nordletter/nl70-build-or-break/",
+      "title": "Build or break",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-09-07T03:05:16.000Z"
+    }
+  ],
+  "blog/thoughts-on-iphone-day": [
+    {
+      "slug": "/blog/thoughts-on-iphone-day-2025/",
+      "title": "Thoughts on iPhone day - 2025",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-09-09T18:47:57.000Z"
+    }
+  ],
+  "bookshelf/nexus": [
+    {
+      "slug": "/evergreen/curation-matters/",
+      "title": "Curation matters",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-09-10T07:45:20.000Z"
+    }
+  ],
+  "blog/thoughts-on-iphone-day-2025": [
+    {
+      "slug": "/nordletter/nl71/",
+      "title": "Full moon",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-09-13T13:31:41.000Z"
+    }
+  ],
+  "nordletter/trip-to-nyc-i": [
+    {
+      "slug": "/nordletter/nl71/",
+      "title": "Full moon",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-09-13T13:31:41.000Z"
+    }
+  ],
+  "evergreen/curation-matters": [
+    {
+      "slug": "/nordletter/nl71/",
+      "title": "Full moon",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-09-13T13:31:41.000Z"
+    }
+  ],
+  "blog/azure-and-friends-at-brightly": [
+    {
+      "slug": "/nordletter/malai/",
+      "title": "Malai",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-11T23:06:03.000Z"
+    },
+    {
+      "slug": "/nordletter/nl73/",
+      "title": "Sunflower",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-09-27T13:17:33.000Z"
+    }
+  ],
+  "story/musings": [
+    {
+      "slug": "/nordletter/nl73/",
+      "title": "Sunflower",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-09-27T13:17:33.000Z"
+    }
+  ],
+  "blog/vibe-coding": [
+    {
+      "slug": "/nordletter/nl74-to-move/",
+      "title": "To move",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-04T20:06:32.000Z"
+    }
+  ],
+  "blog/azure-and-friends-october-meetup": [
+    {
+      "slug": "/nordletter/malai/",
+      "title": "Malai",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-11T23:06:03.000Z"
+    }
+  ],
+  "evergreen/best-practices-for-presenting-things": [
+    {
+      "slug": "/nordletter/malai/",
+      "title": "Malai",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-11T23:06:03.000Z"
+    }
+  ],
+  "blog/devops-finland-october-meetup": [
+    {
+      "slug": "/bookshelf/same-as-ever/",
+      "title": "Same as Ever",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-10-14T07:50:15.000Z"
+    }
+  ],
+  "bookshelf/same-as-ever": [
+    {
+      "slug": "/evergreen/a-little-inefficiency-is-good/",
+      "title": "A little inefficiency is good",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-10-16T07:17:00.000Z"
+    },
+    {
+      "slug": "/evergreen/progress-takes-time-while-destruction-is-instantaneous/",
+      "title": "Progress takes time while destruction is instantaneous",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-10-16T07:16:45.000Z"
+    },
+    {
+      "slug": "/evergreen/be-a-rational-optimist/",
+      "title": "Be a rational optimist",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-10-16T07:16:34.000Z"
+    }
+  ],
+  "bookshelf/time-management-for-system-administrators": [
+    {
+      "slug": "/evergreen/how-to-automate-something/",
+      "title": "How to automate something",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-10-16T10:31:07.000Z"
+    },
+    {
+      "slug": "/evergreen/what-to-automate/",
+      "title": "What to automate",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-10-16T10:26:58.000Z"
+    }
+  ],
+  "evergreen/what-to-automate": [
+    {
+      "slug": "/evergreen/how-to-automate-something/",
+      "title": "How to automate something",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-10-16T10:31:07.000Z"
+    }
+  ],
+  "bookshelf/the-quick-python-book": [
+    {
+      "slug": "/til/pythonic-coding-conventions/",
+      "title": "Pythonic coding conventions",
+      "description": "",
+      "category": "til",
+      "pubDate": "2025-10-21T12:45:15.000Z"
+    }
+  ]
+}
