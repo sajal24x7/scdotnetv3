@@ -1,7 +1,13 @@
 ---
 import { Image } from 'astro:assets';
 import { getBookCoverImage } from '../../utils/bookCovers';
-import { bookRatingDisplay, thumbIconPaths, type BookRating } from '../../utils/bookRatings';
+import {
+    bookRatingDisplay,
+    heartIconPaths,
+    thumbIconPaths,
+    type BookRating,
+    type RatingIconSpec
+} from '../../utils/bookRatings';
 
 type BookStatus = 'reading' | 'read' | 'finished' | 'on-hold' | 'to-read';
 type NormalizedStatus = 'reading' | 'finished' | 'on-hold' | 'to-read';
@@ -106,7 +112,11 @@ const finishedLabel = finishedDate ?? null;
 
 const shouldShowRating = normalizedStatus !== 'reading';
 const ratingDisplay = shouldShowRating && bookRating ? bookRatingDisplay[bookRating] : null;
-const ratingAriaLabel = ratingDisplay ? ratingDisplay.label : 'Rating: Not set';
+const ratingAriaLabel = ratingDisplay
+    ? ratingDisplay.label.replace(/^Rating:\s*/i, 'Rated ')
+    : 'Rating: Not set';
+const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
+const ratingChipLabel = shouldShowRating ? 'Rated' : null;
 
 const safeProgress = (() => {
     if (normalizedStatus !== 'reading') {
@@ -126,59 +136,21 @@ const safeProgress = (() => {
 
 const coverImage = bookCover ? getBookCoverImage(bookCover) : null;
 
-type MetaSegment =
-    | { key: string; type: 'timeline'; label: string }
-    | {
-        key: string;
-        type: 'rating';
-        ariaLabel: string;
-        icons: readonly { direction: 'up' | 'down'; size: number }[];
-        hasIcons: boolean;
-        ratingType?: BookRating;
-    };
-
-const detailSegments: MetaSegment[] = [];
-
 const timelineLabel = (() => {
     if (startedLabel && finishedLabel) {
-        return `${startedLabel} – ${finishedLabel}`;
+        return `Read ${startedLabel} - ${finishedLabel}`;
     }
 
     if (startedLabel) {
-        return `${startedLabel} –`;
+        return `Read ${startedLabel} -`;
     }
 
     if (finishedLabel) {
-        return `– ${finishedLabel}`;
+        return `Read - ${finishedLabel}`;
     }
 
     return null;
 })();
-
-if (timelineLabel) {
-    detailSegments.push({ key: 'timeline', type: 'timeline', label: timelineLabel });
-}
-
-if (shouldShowRating) {
-    if (ratingDisplay) {
-        detailSegments.push({
-            key: 'rating',
-            type: 'rating',
-            ariaLabel: ratingAriaLabel,
-            icons: ratingDisplay.iconSpecs,
-            hasIcons: true,
-            ratingType: bookRating
-        });
-    } else {
-        detailSegments.push({
-            key: 'rating',
-            type: 'rating',
-            ariaLabel: ratingAriaLabel,
-            icons: [],
-            hasIcons: false
-        });
-    }
-}
 ---
 
 <article class="book-card" data-card-root>
@@ -226,9 +198,9 @@ if (shouldShowRating) {
         )}
       </header>
 
-      {(statusLabel || formatLabel || detailSegments.length > 0) && (
+      {(statusLabel || formatLabel || ratingChipLabel || timelineLabel) && (
         <div class="book-card__meta" data-meta>
-          {(statusLabel || formatLabel) && (
+          {(statusLabel || formatLabel || ratingChipLabel) && (
             <div class="book-card__meta-row book-card__meta-row--chips">
               {statusLabel && (
                 <span class={`book-card__chip book-card__chip--status ${statusChipClass}`}>
@@ -240,62 +212,55 @@ if (shouldShowRating) {
                   {formatLabel}
                 </span>
               )}
+              {ratingChipLabel && (
+                <span
+                  class={`book-card__chip book-card__chip--rating ${
+                    bookRating ? `book-card__chip--rating-${bookRating}` : 'book-card__chip--rating-none'
+                  }`}
+                  aria-label={ratingAriaLabel}
+                >
+                  <span class="book-card__chip-label">{ratingChipLabel}</span>
+                  {ratingIconSpecs.length > 0 && (
+                    <span
+                      class={`book-card__rating-icons ${
+                        bookRating ? `book-card__rating-icons--${bookRating}` : ''
+                      }`}
+                      aria-hidden="true"
+                    >
+                      {ratingIconSpecs.map((iconSpec) => (
+                        <span class="book-card__rating-icon">
+                          <svg
+                            width={iconSpec.size}
+                            height={iconSpec.size}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            {(
+                              iconSpec.type === 'heart'
+                                  ? heartIconPaths
+                                  : thumbIconPaths[iconSpec.direction]
+                            ).map((d) => (
+                              <path d={d}></path>
+                            ))}
+                          </svg>
+                        </span>
+                      ))}
+                    </span>
+                  )}
+                </span>
+              )}
             </div>
           )}
 
-          {detailSegments.length > 0 && (
+          {timelineLabel && (
             <div class="book-card__meta-row book-card__meta-row--details">
-              {detailSegments.map((segment) => (
-                segment.type === 'timeline' ? (
-                  <span class="book-card__chip book-card__chip--timeline" key={segment.key}>
-                    <span class="book-card__chip-icon" aria-hidden="true">
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path d="M4.75 5.5c0-.69.56-1.25 1.25-1.25H10c.69 0 1.25.56 1.25 1.25v12.5c0 .552-.448 1-1 1H5.5a.75.75 0 0 1-.75-.75V5.5z"></path>
-                        <path d="M19.25 5.5c0-.69-.56-1.25-1.25-1.25H14c-.69 0-1.25.56-1.25 1.25v12.5c0 .552.448 1 1 1h4.75a.75.75 0 0 0 .75-.75V5.5z"></path>
-                        <path d="M11.25 6.75C9.5 5.9 7.75 5.75 6 5.75"></path>
-                        <path d="M12.75 6.75c1.75-.85 3.5-1 5.25-1"></path>
-                      </svg>
-                    </span>
-                    <span class="book-card__chip-label">{segment.label}</span>
-                  </span>
-                ) : (
-                  <span class={`book-card__rating ${segment.ratingType ? `book-card__rating--${segment.ratingType}` : ''}`} aria-label={segment.ariaLabel} role="img" key={segment.key}>
-                    {segment.hasIcons ? (
-                      <span class={`book-card__rating-icons ${segment.ratingType ? `book-card__rating-icons--${segment.ratingType}` : ''}`} aria-hidden="true">
-                        {segment.icons.map(({ direction, size }) => (
-                          <span class="book-card__rating-icon">
-                            <svg
-                              width={size}
-                              height={size}
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              stroke-width="1.5"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            >
-                              {thumbIconPaths[direction].map((d) => (
-                                <path d={d}></path>
-                              ))}
-                            </svg>
-                          </span>
-                        ))}
-                      </span>
-                    ) : (
-                      <span class="book-card__meta-text" aria-hidden="true">—</span>
-                    )}
-                  </span>
-                )
-              ))}
+              <span class="book-card__chip book-card__chip--timeline">
+                <span class="book-card__chip-label">{timelineLabel}</span>
+              </span>
             </div>
           )}
         </div>
@@ -533,6 +498,56 @@ if (shouldShowRating) {
     color: #e5e7eb;
   }
 
+  .book-card__chip--rating {
+    background: #e5e7eb;
+    color: #111827;
+  }
+
+  :global(.dark) .book-card__chip--rating {
+    background: #374151;
+    color: #f9fafb;
+  }
+
+  .book-card__chip--rating-like {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  :global(.dark) .book-card__chip--rating-like {
+    background: rgba(22, 101, 52, 0.35);
+    color: #bbf7d0;
+  }
+
+  .book-card__chip--rating-love {
+    background: #fce7f3;
+    color: #be185d;
+  }
+
+  :global(.dark) .book-card__chip--rating-love {
+    background: rgba(190, 24, 93, 0.3);
+    color: #fbcfe8;
+  }
+
+  .book-card__chip--rating-nope {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+
+  :global(.dark) .book-card__chip--rating-nope {
+    background: rgba(185, 28, 28, 0.3);
+    color: #fecaca;
+  }
+
+  .book-card__chip--rating-none {
+    background: #e5e7eb;
+    color: #111827;
+  }
+
+  :global(.dark) .book-card__chip--rating-none {
+    background: #374151;
+    color: #f9fafb;
+  }
+
   .book-card__chip--timeline {
     justify-content: flex-start;
     background: #f3f4f6;
@@ -547,25 +562,8 @@ if (shouldShowRating) {
     color: #e5e7eb;
   }
 
-  .book-card__chip-icon {
-    display: inline-flex;
-    width: 1rem;
-    height: 1rem;
-  }
-
-  .book-card__chip-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-
   .book-card__chip-label {
     white-space: nowrap;
-  }
-
-  .book-card__rating {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
   }
 
   .book-card__rating-icons {
@@ -576,6 +574,22 @@ if (shouldShowRating) {
 
   :global(.dark) .book-card__rating-icons {
     color: #f9fafb;
+  }
+
+  .book-card__rating-icons--like {
+    color: #166534;
+  }
+
+  :global(.dark) .book-card__rating-icons--like {
+    color: #bbf7d0;
+  }
+
+  .book-card__rating-icons--love {
+    color: #be185d;
+  }
+
+  :global(.dark) .book-card__rating-icons--love {
+    color: #f9a8d4;
   }
 
   .book-card__rating-icons--nope {

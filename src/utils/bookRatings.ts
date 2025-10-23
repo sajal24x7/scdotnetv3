@@ -2,10 +2,16 @@ export type BookRating = 'like' | 'love' | 'nope';
 
 export type ThumbDirection = 'up' | 'down';
 
-export interface RatingIconSpec {
-    direction: ThumbDirection;
-    size: number;
-}
+export type RatingIconSpec =
+    | {
+        type: 'thumb';
+        direction: ThumbDirection;
+        size: number;
+    }
+    | {
+        type: 'heart';
+        size: number;
+    };
 
 export interface BookRatingDisplay {
     label: string;
@@ -27,24 +33,27 @@ export const thumbIconPaths: Record<ThumbDirection, readonly string[]> = {
     ]
 };
 
+export const heartIconPaths: readonly string[] = [
+    'M21 8.25c0 2.485-1.355 4.736-3.515 6.42-1.64 1.29-3.68 2.364-5.485 3.08-1.805-.716-3.845-1.79-5.485-3.08C4.355 12.986 3 10.735 3 8.25 3 5.427 5.273 3 8.05 3c1.511 0 2.936.706 3.9 1.874C12.964 3.706 14.389 3 15.9 3 18.727 3 21 5.427 21 8.25z'
+];
+
 export const bookRatingDisplay: Record<BookRating, BookRatingDisplay> = {
     like: {
         label: 'Rating: Like',
         iconSpecs: [
-            { direction: 'up', size: 18 }
+            { type: 'thumb', direction: 'up', size: 18 }
         ]
     },
     love: {
         label: 'Rating: Love',
         iconSpecs: [
-            { direction: 'up', size: 19 },
-            { direction: 'up', size: 15 }
+            { type: 'heart', size: 20 }
         ]
     },
     nope: {
         label: 'Rating: Dislike',
         iconSpecs: [
-            { direction: 'down', size: 18 }
+            { type: 'thumb', direction: 'down', size: 18 }
         ]
     }
 };
