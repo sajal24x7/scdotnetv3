@@ -1,7 +1,14 @@
 ---
 import { Image } from 'astro:assets';
 import { getBookCoverImage } from '../../utils/bookCovers';
-import { bookRatingDisplay, defaultBookRating, thumbIconPaths, type BookRating } from '../../utils/bookRatings';
+import {
+    bookRatingDisplay,
+    defaultBookRating,
+    heartIconPaths,
+    thumbIconPaths,
+    type BookRating,
+    type RatingIconSpec
+} from '../../utils/bookRatings';
 
 interface BookCardProps {
     title: string;
@@ -53,7 +60,10 @@ const showRating = bookStatus !== 'reading';
 const rating: BookRating | null = showRating ? (bookRating ?? defaultBookRating) : null;
 const ratingDisplay = rating ? bookRatingDisplay[rating] : null;
 const ratingLabel = ratingDisplay?.label ?? null;
-const ratingIconSpecs = ratingDisplay?.iconSpecs ?? [];
+const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
+const ratingAriaLabel = ratingLabel
+    ? ratingLabel.replace(/^Rating:\s*/i, 'Rated ')
+    : 'Rated';
 ---
 
 <article class="book-card" data-card-root>
@@ -119,30 +129,36 @@ const ratingIconSpecs = ratingDisplay?.iconSpecs ?? [];
         {rating && ratingIconSpecs.length > 0 && (
           <div
             class={`book-rating book-rating--${rating}`}
-            aria-label={ratingLabel ? `Rated ${ratingLabel}` : 'Rated'}
+            aria-label={ratingAriaLabel}
           >
             <span class="book-rating__label">Rated</span>
             <span class="book-rating__icons" aria-hidden="true">
-              {ratingIconSpecs.map(({ direction, size }) => (
-                <span class="book-rating__icon" aria-hidden="true">
-                  <svg
-                    class="book-rating__icon-svg"
-                    width={size}
-                    height={size}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    {thumbIconPaths[direction].map((d) => (
-                      <path d={d}></path>
-                    ))}
-                  </svg>
-                </span>
-              ))}
+              {ratingIconSpecs.map((iconSpec) => {
+                const paths = iconSpec.type === 'heart'
+                    ? heartIconPaths
+                    : thumbIconPaths[iconSpec.direction];
+
+                return (
+                  <span class="book-rating__icon" aria-hidden="true">
+                    <svg
+                      class="book-rating__icon-svg"
+                      width={iconSpec.size}
+                      height={iconSpec.size}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      {paths.map((d) => (
+                        <path d={d}></path>
+                      ))}
+                    </svg>
+                  </span>
+                );
+              })}
             </span>
           </div>
         )}
