@@ -139,26 +139,16 @@ const componentId = `taglist-${Math.random().toString(36).slice(2, 11)}`;
     align-items: center;
   }
 
-  .tagged-with-item {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    white-space: nowrap;
-    /* Color, border, and hover styles now handled by global CSS */
-  }
-
+  .tagged-with-item,
   .show-more-btn,
   .show-less-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     background: none;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
     cursor: pointer;
     white-space: nowrap;
-    /* Color, border, and hover styles now handled by global CSS */
+    /* Color, border, and hover styles handled by global CSS */
   }
 
   .hidden-tags {
@@ -184,14 +174,10 @@ const componentId = `taglist-${Math.random().toString(36).slice(2, 11)}`;
       margin-bottom: 0.5rem;
     }
 
-    .tagged-with-item {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.4rem;
-    }
-
-    .show-more-btn {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.4rem;
+    .tagged-with-item,
+    .show-more-btn,
+    .show-less-btn {
+      gap: 0.25rem;
     }
   }
 </style>

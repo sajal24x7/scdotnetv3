@@ -408,17 +408,23 @@
   .show-more-btn,
   .show-less-btn,
   .tag-item {
-    color: rgb(var(--tag-color-rgb));
-    border: 1px solid rgb(var(--tag-color-rgb));
-    background: transparent;
-    text-decoration: none;
-    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.1;
     white-space: nowrap;
+    color: rgb(var(--tag-color-rgb));
+    border: 1px solid rgba(var(--tag-color-rgb), 0.85);
+    background-color: rgba(var(--tag-color-rgb), 0.08);
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
   }
 
   .tag-chip:hover,
@@ -428,8 +434,19 @@
   .show-less-btn:hover,
   .tag-item:hover {
     color: rgb(var(--tag-hover-rgb));
-    border-color: rgb(var(--tag-hover-rgb));
-    background-color: rgba(var(--tag-color-rgb), 0.08);
+    border-color: rgba(var(--tag-hover-rgb), 0.95);
+    background-color: rgba(var(--tag-color-rgb), 0.16);
+    box-shadow: 0 0 0 1px rgba(var(--tag-hover-rgb), 0.12);
+  }
+
+  .tag-chip:focus-visible,
+  .tag:focus-visible,
+  .tagged-with-item:focus-visible,
+  .show-more-btn:focus-visible,
+  .show-less-btn:focus-visible,
+  .tag-item:focus-visible {
+    outline: 2px solid rgba(var(--tag-hover-rgb), 0.35);
+    outline-offset: 2px;
   }
 
   .dark .tag-chip,
@@ -441,7 +458,8 @@
   .dark .show-less-btn,
   .dark .tag-item {
     color: rgb(var(--tag-dark-color-rgb));
-    border-color: rgb(var(--tag-dark-color-rgb));
+    border-color: rgba(var(--tag-dark-color-rgb), 0.8);
+    background-color: rgba(var(--tag-dark-color-rgb), 0.16);
   }
 
   .dark .tag-chip:hover,
@@ -451,25 +469,32 @@
   .dark .show-less-btn:hover,
   .dark .tag-item:hover {
     color: rgb(var(--tag-dark-hover-rgb));
-    border-color: rgb(var(--tag-dark-hover-rgb));
-    background-color: rgba(var(--tag-dark-color-rgb), 0.12);
+    border-color: rgba(var(--tag-dark-hover-rgb), 0.92);
+    background-color: rgba(var(--tag-dark-color-rgb), 0.26);
+    box-shadow: 0 0 0 1px rgba(var(--tag-dark-hover-rgb), 0.18);
   }
 
   .tag-chip-active,
   .tag-item.active,
   .tagged-with-item.active {
     color: rgb(var(--tag-hover-rgb));
-    border-color: rgb(var(--tag-hover-rgb));
-    background-color: rgba(var(--tag-color-rgb), 0.16);
-    font-weight: 600;
+    border-color: rgba(var(--tag-hover-rgb), 0.95);
+    background-color: rgba(var(--tag-color-rgb), 0.24);
+    box-shadow: 0 0 0 1px rgba(var(--tag-hover-rgb), 0.22);
   }
 
   .dark .tag-chip-active,
   .dark .tag-item.active,
   .dark .tagged-with-item.active {
     color: rgb(var(--tag-dark-hover-rgb));
-    border-color: rgb(var(--tag-dark-hover-rgb));
-    background-color: rgba(var(--tag-dark-color-rgb), 0.2);
+    border-color: rgba(var(--tag-dark-hover-rgb), 0.92);
+    background-color: rgba(var(--tag-dark-color-rgb), 0.32);
+    box-shadow: 0 0 0 1px rgba(var(--tag-dark-hover-rgb), 0.24);
+  }
+
+  .tag-chip-inline {
+    margin-right: 0.35rem;
+    margin-bottom: 0.35rem;
   }
 
   .card-chip,
