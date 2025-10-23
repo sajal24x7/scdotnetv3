@@ -1,0 +1,19 @@
+# Project Documentation Index
+
+This directory centralizes all reference material for the Astro-powered build of **sajalchoudhary.net**. Use the table below to find the appropriate guide for architecture, component behavior, content authoring, and operational workflows.
+
+| Area | Summary | Key Files |
+| --- | --- | --- |
+| [Architecture Overview](architecture/overview.md) | High-level explanation of the Astro layout shell, content entry points, and client islands. | `src/layouts/Layout.astro`, `src/utils/content.ts`
+| [Content Lifecycle](architecture/content-lifecycle.md) | Details on frontmatter schemas, year-based collections, indexing, and backlinks. | `src/content/config.ts`, `src/utils/backlinks.ts`
+| [Design System](design/system.md) | Documentation for typography, twelve-column grid utilities, chip patterns, and responsive rules. | `src/styles/global.css`
+| [Navigation](components/navigation.md) | Behavior of the Guardian-inspired multi-level navigation and header search affordances. | `src/components/navigation/*.astro`
+| [Search Modal](components/search.md) | Search index generation, lazy island loading, and scoring heuristics. | `src/pages/search-index.json.ts`, `src/components/islands/search-modal-island.ts`
+| [Backlinks](components/backlinks.md) | Cached backlink generation and rendering conventions for related-post callouts. | `src/utils/backlinks.ts`, `src/components/Backlinks.astro`
+| [Content Authoring](content/authoring.md) | Guidelines for writing Markdown/MDX entries, metadata expectations, and category usage. | `src/content/**/*`
+| [Deployment](operations/deployment.md) | Local commands, build pipeline, and Cloudflare Pages configuration. | `package.json`, `cloudflare-pages.json`
+| [Webmentions](operations/webmentions.md) | Build-time sync, spam filtering, and UI consumption of webmentions. | `scripts/fetch-webmentions.js`, `src/components/Webmentions.astro`
+| [Syndication](operations/syndication.md) | POSSE workflow, rate limiting, and how URLs are persisted back to content. | `scripts/syndicate-content.js`
+| [Contributor Notes](contributing/claude-guide.md) | Quick reference for automation assistants contributing to the project. | `docs/contributing/claude-guide.md`
+
+> **Planning artifacts** remain in the top-level `planning/` directory and are intentionally excluded from this reference library.
