@@ -9,6 +9,18 @@
 ## Project Structure & Module Organization
 The Astro site lives in `src`, with route files under `src/pages`, shared layout primitives in `src/layouts`, and UI elements in `src/components`. Structured content is kept in `src/content/<year>/<slug>.md` folders; use the same year split when adding notes, ephemera, or newsletters so collection helpers can enumerate years dynamically. Data helpers sit in `src/data` and `src/types`, while `src/utils` holds reusable formatters and content loaders. Static assets belong in `public` and generated covers are written to `src/assets/covers`; the production build emits to `dist`.
 
+## Documentation Index
+- Central reference materials now live in [`docs/README.md`](docs/README.md).
+- Architecture, component, and operations guides:
+  - [`docs/architecture/overview.md`](docs/architecture/overview.md) — Layout shell, routing, and island strategy.
+  - [`docs/architecture/content-lifecycle.md`](docs/architecture/content-lifecycle.md) — Collection schemas, content utilities, and derived artifacts.
+  - [`docs/design/system.md`](docs/design/system.md) — Twelve-column grid, typography, and chip conventions.
+  - [`docs/components/navigation.md`](docs/components/navigation.md), [`docs/components/search.md`](docs/components/search.md), [`docs/components/backlinks.md`](docs/components/backlinks.md) — Implementation guides for major UI systems.
+  - [`docs/content/authoring.md`](docs/content/authoring.md) — Frontmatter rules and author workflow.
+  - [`docs/operations/deployment.md`](docs/operations/deployment.md), [`docs/operations/webmentions.md`](docs/operations/webmentions.md), [`docs/operations/syndication.md`](docs/operations/syndication.md) — Build, sync, and POSSE procedures.
+  - [`docs/contributing/claude-guide.md`](docs/contributing/claude-guide.md) — Quick reference for automation assistants.
+- Keep planning artefacts in `planning/`; they remain separate from the documentation set.
+
 ## Build, Test, and Development Commands
 Run `npm install` with Node 20+ before contributing. Use `npm run dev` for the local server; it pre-builds covers and watches Astro files. `npm run build` executes cover generation, syncs webmentions, builds the static site, and best-effort triggers syndication. `npm run preview` serves the last build. Sync webmentions on demand with `npm run fetch-webmentions`, and use `npm run syndicate:dry-run` to verify outbound syndication without publishing.
 
