@@ -136,7 +136,7 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
 
         <Backlinks backlinks={backlinks} />
 
-        <SyndicationLinks syndicationUrls={syndicationUrls} />
+        <SyndicationLinks syndicationUrls={syndicationUrls} className="post-layout__syndication" />
 
         <Webmentions url={canonicalUrl} />
     </article>
@@ -151,5 +151,15 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
         .post-layout__container {
             padding-inline: 0;
         }
+    }
+
+    .post-layout__syndication {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgb(var(--color-border));
+    }
+
+    :global(.dark) .post-layout__syndication {
+        border-top-color: rgb(var(--color-border));
     }
 </style>
