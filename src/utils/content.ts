@@ -99,6 +99,7 @@ export function transformPost(post: Post) {
             format: post.data.format,
             link: `/${post.data.category}/${post.slug}/`
         },
+        slug: post.slug,
         body: post.body,
         render: post.render
     };

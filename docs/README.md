@@ -13,6 +13,7 @@ This directory centralizes all reference material for the Astro-powered build of
 | [Content Authoring](content/authoring.md) | Guidelines for writing Markdown/MDX entries, metadata expectations, and category usage. | `src/content/**/*`
 | [Deployment](operations/deployment.md) | Local commands, build pipeline, and Cloudflare Pages configuration. | `package.json`, `cloudflare-pages.json`
 | [Webmentions](operations/webmentions.md) | Build-time sync, spam filtering, and UI consumption of webmentions. | `scripts/fetch-webmentions.js`, `src/components/Webmentions.astro`
+| [Nordletter Image Caching](operations/nordletter-image-cache.md) | Build-time download + manifest workflow for newsletter thumbnails and a template for future asset caches. | `scripts/cache-nordletter-images.js`, `src/components/NordletterGrid.astro`
 | [Syndication](operations/syndication.md) | POSSE workflow, rate limiting, and how URLs are persisted back to content. | `scripts/syndicate-content.js`
 | [Contributor Notes](contributing/claude-guide.md) | Quick reference for automation assistants contributing to the project. | `docs/contributing/claude-guide.md`
 
