@@ -124,7 +124,11 @@ const dateClass = updatedDate ? 'dt-updated' : 'dt-published';
 
         <div class="post-layout__meta">
             {syndicationUrls.length > 0 && (
-                <SyndicationLinks syndicationUrls={syndicationUrls} className="post-layout__syndication" />
+                <SyndicationLinks
+                    syndicationUrls={syndicationUrls}
+                    class="post-layout__syndication"
+                    size="md"
+                />
             )}
             <ShareButton title={title} url={canonicalUrl} ariaLabel="Share this post" class="post-layout__share" />
         </div>
