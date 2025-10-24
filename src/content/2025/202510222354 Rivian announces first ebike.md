@@ -1,13 +1,15 @@
 ---
-title: "Rivian announces first ebike"
-slug: "rivian-announces-first-ebike"
-pubDate: 2025-10-22T23:57:24+03:00
-updatedDate: 2025-10-22T23:57:24+03:00
+title: Rivian announces first ebike
+slug: rivian-announces-first-ebike
+pubDate: 2025-10-22T20:57:24.000Z
+updatedDate: 2025-10-22T20:57:24.000Z
 category: micro
 tags:
   - ebike
   - rivian
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115428748135434717'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3wp7iifbq2k'
 ---
 [Rivian’s first e-bike is unlike anything you’ve ever seen by Thomas Ricker](https://www.theverge.com/news/804157/rivian-tm-b-electric-bike-price-specs-helmet-quad)
 

@@ -1,13 +1,16 @@
 ---
-title: "Mico announces for copilot voice mode"
-slug: "mico-announces-for-copilot-voice-mode"
-pubDate: 2025-10-23T21:13:59+03:00
-updatedDate: 2025-10-23T21:13:59+03:00
+title: Mico announces for copilot voice mode
+slug: mico-announces-for-copilot-voice-mode
+pubDate: 2025-10-23T18:13:59.000Z
+updatedDate: 2025-10-23T18:13:59.000Z
 category: micro
 tags:
   - msft
   - copilot
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115428748573492796'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3wp7opaag2q'
+  - 'https://www.threads.com/@sajal24x7/post/DQMG9-IDOR-'
 ---
 [Meet Mico, Microsoft’s AI version of Clippy by Tom Warren](https://www.theverge.com/news/804106/microsoft-mico-copilot-ai-assistant-clippy)
 
