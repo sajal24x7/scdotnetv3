@@ -1,7 +1,35 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import manifest from '../data/nordletter-image-manifest.json';
 import { formatDateWithoutYear } from '../utils/dateFormat';
 
 const { posts } = Astro.props;
+
+const imageModules = import.meta.glob(
+  '../images/nordletter/*.{jpg,jpeg,png,webp,avif}',
+  { eager: true }
+) as Record<string, { default: ImageMetadata }>;
+
+const imagesByFileName = Object.fromEntries(
+  Object.entries(imageModules).map(([key, module]) => [key.split('/').pop() ?? key, module.default])
+);
+
+const manifestMap = manifest as Record<string, string>;
+
+const getLocalImage = (post: typeof posts[number]) => {
+  const slug = post?.slug;
+  if (!slug) {
+    return undefined;
+  }
+
+  const fileName = manifestMap[slug];
+  if (!fileName) {
+    return undefined;
+  }
+
+  return imagesByFileName[fileName];
+};
 
 // Group posts by year
 const postsByYear = posts.reduce((acc, post) => {
@@ -55,18 +83,38 @@ const getVariantClass = (post: typeof posts[number]) => {
       </h2>
     </header>
 
-    {postsByYear[year].map((post) => (
-      <article class={`nordletter-item ${getSpanClass(post)} ${getVariantClass(post)}`}>
-        <a href={post.data.link} class="nordletter-link">
-          {post.data.image && (
-            <div class="nordletter-image">
-              <img
-                src={post.data.image}
-                alt={post.data.title}
-                loading="lazy"
-              />
-            </div>
-          )}
+    {postsByYear[year].map((post) => {
+      const localImage = getLocalImage(post);
+
+      return (
+        <article class={`nordletter-item ${getSpanClass(post)} ${getVariantClass(post)}`}>
+          <a href={post.data.link} class="nordletter-link">
+            {localImage ? (
+              <div class="nordletter-image">
+                <Image
+                  src={localImage}
+                  alt={post.data.title}
+                  width={384}
+                  height={384}
+                  fit="cover"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 48rem) 40vw, 9.5rem"
+                  class="nordletter-image__picture"
+                />
+              </div>
+            ) : post.data.image ? (
+              <div class="nordletter-image">
+                <img
+                  src={post.data.image}
+                  alt={post.data.title}
+                  loading="lazy"
+                  decoding="async"
+                  width="384"
+                  height="384"
+                />
+              </div>
+            ) : null}
           <div class="nordletter-content">
             <div class="nordletter-edition">
               {post.data.editionDisplay || `${post.data.edition || 'N/A'} · ${formatDateWithoutYear(post.data.pubDate)}`}
@@ -74,8 +122,9 @@ const getVariantClass = (post: typeof posts[number]) => {
             <h3 class="nordletter-title">{post.data.title}</h3>
           </div>
         </a>
-      </article>
-    ))}
+        </article>
+      );
+    })}
   </section>
 ))}
 
@@ -132,14 +181,22 @@ const getVariantClass = (post: typeof posts[number]) => {
     margin-inline: auto;
   }
 
-  .nordletter-image img {
+  .nordletter-image__picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .nordletter-image img,
+  .nordletter-image__picture img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
   }
 
-  .nordletter-link:hover .nordletter-image img {
+  .nordletter-link:hover .nordletter-image img,
+  .nordletter-link:hover .nordletter-image__picture img {
     transform: scale(1.05);
   }
 
