@@ -411,9 +411,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.35rem;
-    padding: 0.35rem 0.75rem;
-    border-radius: 9999px;
+    gap: 0.25rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.5rem;
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.08em;
