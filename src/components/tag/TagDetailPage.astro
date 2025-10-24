@@ -48,12 +48,12 @@ function formatSliceDescription(tagValue: string, slice: TagCategorySlice): stri
         ? ` (${slice.includeLabels.join(', ')})`
         : '';
     const itemLabel = slice.count === 1 ? 'item' : 'items';
-    return `${slice.count} ${itemLabel} tagged with #${tagValue} in ${slice.label}${includes}.`;
+    return `${slice.count} ${itemLabel} tagged with ${tagValue.toUpperCase()} in ${slice.label}${includes}.`;
 }
 
 function formatAllDescription(tagValue: string, count: number): string {
     const entryLabel = count === 1 ? 'entry' : 'entries';
-    return `All ${count} ${entryLabel} tagged with #${tagValue}.`;
+    return `All ${count} ${entryLabel} tagged with ${tagValue.toUpperCase()}.`;
 }
 ---
 

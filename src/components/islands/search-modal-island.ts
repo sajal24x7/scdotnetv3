@@ -39,11 +39,13 @@ const ERROR_TEMPLATE = `
 function highlightTag(tag: string, query: string, isTagSearch: boolean): string {
     const normalizedQuery = query.toLowerCase();
     const isHighlighted = isTagSearch || tag.toLowerCase().includes(normalizedQuery);
-    const highlightClasses = isHighlighted
-        ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 ring-1 ring-blue-300 dark:ring-blue-700'
-        : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300';
+    const classes = ['tag-chip', 'tag-chip-inline'];
 
-    return `<span class="inline-block ${highlightClasses} text-small px-2 py-1 rounded-full mr-1 mb-1">${tag}</span>`;
+    if (isHighlighted) {
+        classes.push('tag-chip-active');
+    }
+
+    return `<span class="${classes.join(' ')}">${tag.toUpperCase()}</span>`;
 }
 
 class SearchModalElement extends HTMLElement {
