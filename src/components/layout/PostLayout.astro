@@ -124,11 +124,7 @@ const dateClass = updatedDate ? 'dt-updated' : 'dt-published';
 
         <div class="post-layout__meta">
             {syndicationUrls.length > 0 && (
-                <SyndicationLinks
-                    syndicationUrls={syndicationUrls}
-                    class="post-layout__syndication"
-                    size="md"
-                />
+                <SyndicationLinks syndicationUrls={syndicationUrls} />
             )}
             <ShareButton title={title} url={canonicalUrl} ariaLabel="Share this post" class="post-layout__share" />
         </div>
@@ -226,10 +222,7 @@ const dateClass = updatedDate ? 'dt-updated' : 'dt-published';
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        padding-top: 2rem;
-        border-top: 1px solid rgb(var(--color-border));
+        gap: 0.75rem;
     }
 
     .post-layout__share {
