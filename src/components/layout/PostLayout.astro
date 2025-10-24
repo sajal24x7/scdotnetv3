@@ -43,6 +43,20 @@ const edition = category === 'nordletter' && 'edition' in entryData ? entryData.
 const bridgyOmit = 'bridgyOmit' in entryData && entryData.bridgyOmit;
 const publishedDate = entryData?.pubDate;
 const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
+const contentTypeLabels: Record<string, string> = {
+    blog: 'blog post',
+    micro: 'micro post',
+    photos: 'photo',
+    evergreen: 'evergreen note',
+    bookshelf: 'bookshelf note',
+    til: 'til note',
+    stories: 'story',
+    poems: 'poem',
+    nordletter: 'newsletter'
+};
+const contentType = contentTypeLabels[category] ?? 'post';
+const displayDate = updatedDate ?? publishedDate;
+const dateClass = updatedDate ? 'dt-updated' : 'dt-published';
 ---
 
 <LayoutContainer
@@ -52,7 +66,7 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
     paddingScale="page"
     className="post-layout__container"
 >
-    <article class="h-entry">
+    <article class="h-entry post-layout">
         <!-- Hidden microformat data -->
         <a href={canonicalUrl} class="u-url" style="display: none;"></a>
         {bridgyOmit && (
@@ -63,80 +77,74 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
             <a class="u-url" href="https://sajalchoudhary.net">https://sajalchoudhary.net</a>
         </div>
 
-        <div class="mb-8">
-            {/* Hero image for all posts */}
-            {heroImage && (
-                <div class="mb-6">
-                    <img
-                        src={heroImage}
-                        alt={title}
-                        class="rounded-lg w-full object-cover max-h-96"
-                        loading="lazy"
-                    />
+        {heroImage && (
+            <figure class="post-layout__hero">
+                <img
+                    src={heroImage}
+                    alt={title}
+                    class="rounded-lg w-full object-cover max-h-96"
+                    loading="lazy"
+                />
+            </figure>
+        )}
+
+        <header class="post-layout__header">
+            <h1 class="p-name text-3xl md:text-4xl font-bold mb-4">{title}</h1>
+
+            {category === 'nordletter' && edition && displayDate && (
+                <div class="post-layout__edition">
+                    <span class="post-layout__edition-chip">Letter: {edition}</span>
+                    <span class="post-layout__edition-chip">
+                        Posted on{' '}
+                        <time class={dateClass} datetime={displayDate.toISOString()}>
+                            <TimeDisplay date={displayDate} category={category} format="detailed" />
+                        </time>
+                    </span>
                 </div>
             )}
 
-            <div class="text-center">
-                <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
+            {description && (
+                <p class="p-summary post-layout__description">
+                    {description}
+                </p>
+            )}
 
-                {category === 'nordletter' && edition && (
-                    <div class="flex justify-center items-center gap-4 mb-4">
-                        <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
-                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Letter: {edition}
-                            </span>
-                        </div>
-                        <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
-                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Posted on <TimeDisplay date={updatedDate ?? publishedDate} category={category} format="detailed" />
-                            </span>
-                        </div>
-                    </div>
-                )}
+            {tags.length > 0 && (
+                <div class="post-layout__tags">
+                    {tags.map((tag: string) => (
+                        <Tag tag={tag} />
+                    ))}
+                </div>
+            )}
+        </header>
 
-                {category !== 'nordletter' && (
-                    <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
-                        {updatedDate ? (
-                            <>Last updated: <time class="dt-updated" datetime={updatedDate.toISOString()}><TimeDisplay date={updatedDate} category={category} format="detailed" /></time></>
-                        ) : (
-                            <>Published: <time class="dt-published" datetime={publishedDate.toISOString()}><TimeDisplay date={publishedDate} category={category} format="detailed" /></time></>
-                        )}
-                    </p>
-                )}
-
-                {description && (
-                    <p class="p-summary text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
-                        {description}
-                    </p>
-                )}
-
-                {tags.length > 0 && (
-                    <div class="mb-8 flex justify-center">
-                        <div class="flex flex-wrap gap-2 justify-center">
-                            {tags.map((tag: string) => (
-                                <Tag tag={tag} />
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </div>
-        </div>
-
-        <div class="e-content">
+        <div class="e-content post-layout__content">
             <slot />
         </div>
 
-        <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
-            <div class="flex justify-between">
-                <a href={`/${category}/`} class="font-medium link-hover">← Back to {formattedCategory}</a>
-
-                <ShareButton title={title} url={canonicalUrl} />
-            </div>
+        <div class="post-layout__meta">
+            {syndicationUrls.length > 0 && (
+                <SyndicationLinks syndicationUrls={syndicationUrls} className="post-layout__syndication" />
+            )}
+            <ShareButton title={title} url={canonicalUrl} ariaLabel="Share this post" class="post-layout__share" />
         </div>
 
-        <Backlinks backlinks={backlinks} />
+        <div class="post-layout__back-link">
+            <a href={`/${category}/`} class="font-medium link-hover">← Back to {formattedCategory}</a>
+        </div>
 
-        <SyndicationLinks syndicationUrls={syndicationUrls} />
+        {displayDate && (
+            <p class="post-layout__update-note">
+                This {contentType} last updated on{' '}
+                <time class={dateClass} datetime={displayDate.toISOString()}>
+                    <TimeDisplay date={displayDate} category={category} format="detailed" />
+                </time>
+                . Thoughts? Email{' '}
+                <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">sajal@sajalchoudhary.net</a>
+            </p>
+        )}
+
+        <Backlinks backlinks={backlinks} />
 
         <Webmentions url={canonicalUrl} />
     </article>
@@ -152,4 +160,85 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
             padding-inline: 0;
         }
     }
+
+    .post-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .post-layout__hero {
+        margin: 0;
+    }
+
+    .post-layout__header {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .post-layout__edition {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .post-layout__edition-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.5rem 0.85rem;
+        border-radius: 0.75rem;
+        background-color: rgba(var(--color-border), 0.12);
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    :global(.dark) .post-layout__edition-chip {
+        background-color: rgba(var(--color-border), 0.22);
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .post-layout__description {
+        font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+        color: rgb(var(--color-text-secondary));
+        max-width: 52ch;
+    }
+
+    .post-layout__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .post-layout__content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .post-layout__meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgb(var(--color-border));
+    }
+
+    .post-layout__share {
+        margin-left: auto;
+    }
+
+    .post-layout__back-link {
+        margin-top: -1rem;
+    }
+
+    .post-layout__update-note {
+        font-size: 0.95rem;
+        color: rgb(var(--color-text-secondary));
+    }
+
 </style>
