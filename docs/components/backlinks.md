@@ -13,11 +13,11 @@ The cached JSON artifact is safe to commit and allows incremental builds to reso
 
 ## Rendering Conventions
 
-`src/components/Backlinks.astro` displays each backlink as a compact article card:
+`src/components/Backlinks.astro` now reuses the shared `Card` component so backlink previews inherit the garden grid styling:
 
-- Uses the shared `.card-chip` styling through `CategoryDisplay` to render the source category as a chip, matching other metadata treatments on the site.【F:src/components/CategoryDisplay.astro†L1-L16】【F:src/styles/global.css†L475-L577】
-- Wraps the backlink list in a `<section>` with top border to separate it from share controls and footnotes.【F:src/components/Backlinks.astro†L17-L73】
-- Provides hover affordances in light and dark themes for both the card background and title link.【F:src/components/Backlinks.astro†L56-L139】
+- Each backlink is normalized before rendering—empty descriptions collapse to nothing, missing categories fall back to `blog`, and internal slugs are rewritten to canonical `/category/slug/` paths so the cards behave consistently across evergreen, garden, and Nordletter entries.【F:src/components/Backlinks.astro†L15-L41】
+- Category chips pass through `CategoryDisplay`, which converts the raw key into the human-friendly label defined in the tagging utilities (for example, `evergreen` → `Evergreen`, `nordletter` → `Nordletter`).【F:src/components/CategoryDisplay.astro†L1-L22】【F:src/utils/tagPages.ts†L179-L200】【F:src/styles/global.css†L500-L537】
+- The section retains the top border divider so the backlink grid separates from the post metadata and webmentions list while responding to the card hover affordances from the shared styles.【F:src/components/Backlinks.astro†L43-L97】
 
 The component only renders when the backlink array is non-empty to avoid empty headings.
 

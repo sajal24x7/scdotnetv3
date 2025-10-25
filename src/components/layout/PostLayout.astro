@@ -86,22 +86,7 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
                                 Letter: {edition}
                             </span>
                         </div>
-                        <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
-                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Posted on <TimeDisplay date={updatedDate ?? publishedDate} category={category} format="detailed" />
-                            </span>
-                        </div>
                     </div>
-                )}
-
-                {category !== 'nordletter' && (
-                    <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
-                        {updatedDate ? (
-                            <>Last updated: <time class="dt-updated" datetime={updatedDate.toISOString()}><TimeDisplay date={updatedDate} category={category} format="detailed" /></time></>
-                        ) : (
-                            <>Published: <time class="dt-published" datetime={publishedDate.toISOString()}><TimeDisplay date={publishedDate} category={category} format="detailed" /></time></>
-                        )}
-                    </p>
                 )}
 
                 {description && (
@@ -128,15 +113,49 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
 
         <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
             <div class="flex justify-between">
-                <a href={`/${category}/`} class="font-medium link-hover">← Back to {formattedCategory}</a>
+                <a href={`/${category}/`} class="post-layout__back-link">← Back to {formattedCategory}</a>
 
                 <ShareButton title={title} url={canonicalUrl} />
             </div>
         </div>
 
-        <Backlinks backlinks={backlinks} />
+        <div class="post-layout__meta">
+            <div class="post-layout__meta-row">
+                <div class="post-layout__meta-date">
+                    <span class="post-layout__meta-date-chip card-chip">
+                        <span class="post-layout__meta-date-chip-label">
+                            {updatedDate ? 'UPDATED' : 'PUBLISHED'}
+                        </span>
+                        {updatedDate ? (
+                            <TimeDisplay
+                                date={updatedDate}
+                                category={category}
+                                format="detailed"
+                                className="dt-updated post-layout__meta-date-time"
+                            />
+                        ) : (
+                            <TimeDisplay
+                                date={publishedDate}
+                                category={category}
+                                format="detailed"
+                                className="dt-published post-layout__meta-date-time"
+                            />
+                        )}
+                    </span>
+                </div>
 
-        <SyndicationLinks syndicationUrls={syndicationUrls} />
+                <SyndicationLinks
+                    syndicationUrls={syndicationUrls}
+                    className="post-layout__meta-syndication"
+                />
+            </div>
+        </div>
+
+        <div class="post-layout__feedback">
+            Thoughts? Email <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">sajal@sajalchoudhary.net</a>
+        </div>
+
+        <Backlinks backlinks={backlinks} />
 
         <Webmentions url={canonicalUrl} />
     </article>
@@ -151,5 +170,92 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
         .post-layout__container {
             padding-inline: 0;
         }
+    }
+
+    .post-layout__back-link {
+        font-weight: 600;
+        color: inherit;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+
+    .post-layout__back-link:hover,
+    .post-layout__back-link:focus-visible {
+        color: rgb(var(--color-text-primary));
+        text-decoration: underline;
+        text-decoration-thickness: 0.1em;
+        text-underline-offset: 0.2em;
+    }
+
+    .post-layout__back-link:focus-visible {
+        outline: 2px solid rgb(var(--color-accent));
+        outline-offset: 2px;
+    }
+
+    .post-layout__meta {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgb(var(--color-border));
+    }
+
+    :global(.dark) .post-layout__meta {
+        border-top-color: rgb(var(--color-border));
+    }
+
+    .post-layout__meta-row {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    @media (min-width: 48rem) {
+        .post-layout__meta-row {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .post-layout__meta-date {
+        display: flex;
+        align-items: center;
+    }
+
+    .post-layout__meta-date-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.75rem;
+        color: rgb(var(--color-text-primary));
+        flex-wrap: wrap;
+    }
+
+    .post-layout__meta-date-chip-label {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .post-layout__meta-date-time {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.15rem;
+        letter-spacing: inherit;
+    }
+
+    .post-layout__meta-syndication {
+        margin-top: 0;
+    }
+
+    .post-layout__feedback {
+        margin-top: 1.5rem;
+        font-size: 0.95rem;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .post-layout__feedback a {
+        font-weight: 600;
     }
 </style>
