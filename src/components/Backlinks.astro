@@ -11,25 +11,59 @@ interface Props {
     }[];
 }
 
+type BacklinkItem = Props['backlinks'][number];
+
+interface NormalizedBacklink extends BacklinkItem {
+    link: string;
+    description: string;
+    category: string;
+}
+
 const { backlinks } = Astro.props;
-const headingId = `backlinks-${backlinks.length}`;
+const normalizedBacklinks: NormalizedBacklink[] = backlinks.map((backlink) => {
+    const category = backlink.category && backlink.category.trim().length > 0 ? backlink.category : 'blog';
+    const description = backlink.description?.trim() ?? '';
+    const slug = backlink.slug?.trim() ?? '';
+
+    if (slug.startsWith('http')) {
+        return {
+            ...backlink,
+            category,
+            description,
+            link: slug
+        };
+    }
+
+    const sanitizedSlug = slug.replace(/[?#].*$/, '');
+    const normalizedPath = sanitizedSlug.replace(/^\/+/, '').replace(/\/+$/, '');
+    const link = normalizedPath.length > 0 ? `/${normalizedPath}/` : '/';
+
+    return {
+        ...backlink,
+        category,
+        description,
+        link
+    };
+});
+
+const headingId = `backlinks-${normalizedBacklinks.length}`;
 ---
 
-{backlinks.length > 0 && (
+{normalizedBacklinks.length > 0 && (
     <section class="backlinks" aria-labelledby={headingId}>
         <div class="backlinks__inner">
             <h3 id={headingId} class="backlinks__heading">
-                {backlinks.length} Backlink{backlinks.length === 1 ? '' : 's'}
+                {normalizedBacklinks.length} Backlink{normalizedBacklinks.length === 1 ? '' : 's'}
             </h3>
             <div class="backlinks__grid">
-                {backlinks.map((backlink) => (
+                {normalizedBacklinks.map((backlink) => (
                     <div class="backlinks__card">
                         <Card
                             title={backlink.title}
                             description={backlink.description}
                             pubDate={backlink.pubDate}
                             category={backlink.category}
-                            link={backlink.slug}
+                            link={backlink.link}
                         />
                     </div>
                 ))}
