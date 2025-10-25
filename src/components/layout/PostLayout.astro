@@ -86,22 +86,7 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
                                 Letter: {edition}
                             </span>
                         </div>
-                        <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
-                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Posted on <TimeDisplay date={updatedDate ?? publishedDate} category={category} format="detailed" />
-                            </span>
-                        </div>
                     </div>
-                )}
-
-                {category !== 'nordletter' && (
-                    <p class="text-sm text-textSecondary dark:text-textSecondaryDark mb-6">
-                        {updatedDate ? (
-                            <>Last updated: <time class="dt-updated" datetime={updatedDate.toISOString()}><TimeDisplay date={updatedDate} category={category} format="detailed" /></time></>
-                        ) : (
-                            <>Published: <time class="dt-published" datetime={publishedDate.toISOString()}><TimeDisplay date={publishedDate} category={category} format="detailed" /></time></>
-                        )}
-                    </p>
                 )}
 
                 {description && (
@@ -134,9 +119,35 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
             </div>
         </div>
 
-        <Backlinks backlinks={backlinks} />
+        <div class="post-layout__meta">
+            <div class="post-layout__meta-row">
+                <div class="post-layout__meta-date">
+                    <span class="post-layout__meta-date-label">
+                        {updatedDate ? 'Last updated on' : 'Published on'}
+                    </span>
+                    {updatedDate ? (
+                        <time class="dt-updated" datetime={updatedDate.toISOString()}>
+                            <TimeDisplay date={updatedDate} category={category} format="detailed" />
+                        </time>
+                    ) : (
+                        <time class="dt-published" datetime={publishedDate.toISOString()}>
+                            <TimeDisplay date={publishedDate} category={category} format="detailed" />
+                        </time>
+                    )}
+                </div>
 
-        <SyndicationLinks syndicationUrls={syndicationUrls} className="post-layout__syndication" />
+                <SyndicationLinks
+                    syndicationUrls={syndicationUrls}
+                    className="post-layout__meta-syndication"
+                />
+            </div>
+        </div>
+
+        <div class="post-layout__feedback">
+            Thoughts? Email <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">sajal@sajalchoudhary.net</a>
+        </div>
+
+        <Backlinks backlinks={backlinks} />
 
         <Webmentions url={canonicalUrl} />
     </article>
@@ -153,13 +164,62 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
         }
     }
 
-    .post-layout__syndication {
+    .post-layout__meta {
         margin-top: 2rem;
         padding-top: 1.5rem;
         border-top: 1px solid rgb(var(--color-border));
     }
 
-    :global(.dark) .post-layout__syndication {
+    :global(.dark) .post-layout__meta {
         border-top-color: rgb(var(--color-border));
+    }
+
+    .post-layout__meta-row {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    @media (min-width: 48rem) {
+        .post-layout__meta-row {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .post-layout__meta-date {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        color: rgb(var(--color-text-secondary));
+        font-size: 0.95rem;
+    }
+
+    .post-layout__meta-date time {
+        font-size: 1rem;
+        color: rgb(var(--color-text-primary));
+    }
+
+    .post-layout__meta-date-label {
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: inherit;
+    }
+
+    .post-layout__meta-syndication {
+        margin-top: 0;
+    }
+
+    .post-layout__feedback {
+        margin-top: 1.5rem;
+        font-size: 0.95rem;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .post-layout__feedback a {
+        font-weight: 600;
     }
 </style>
