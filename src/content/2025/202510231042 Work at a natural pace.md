@@ -1,13 +1,16 @@
 ---
-title: "Work at a natural pace"
-slug: "work-at-a-natural-pace"
-pubDate: 2025-10-26T22:55:28+02:00
-updatedDate: 2025-10-26T22:55:28+02:00
+title: Work at a natural pace
+slug: work-at-a-natural-pace
+pubDate: 2025-10-26T20:55:28.000Z
+updatedDate: 2025-10-26T20:55:28.000Z
 category: evergreen
 tags:
   - work
   - time-management
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115442496395283481'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m44sli4ugq2w'
+  - 'https://www.threads.com/@sajal24x7/post/DQSXFbfjJB6'
 ---
 There should be a varying approach to work, periods of rest and celebration, followed by periods of work.
 # How?

@@ -1,14 +1,16 @@
 ---
-title: "Celebrating Diwali at OP"
-slug: "celebrating-diwali-at-op"
-pubDate: 2025-10-26T22:26:03+02:00
-updatedDate: 2025-10-26T22:26:03+02:00
+title: Celebrating Diwali at OP
+slug: celebrating-diwali-at-op
+pubDate: 2025-10-26T20:26:03.000Z
+updatedDate: 2025-10-26T20:26:03.000Z
 category: blog
 tags:
   - op
   - diwali
   - finland
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115442495878059640'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m44sladyoi2f'
 ---
 In what has now become a yearly tradition, we celebrated Diwali at the OP Vallila office yesterday.
 

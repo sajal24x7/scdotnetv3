@@ -1,13 +1,15 @@
 ---
-title: "How to create a simulated pull workflow"
-slug: "how-to-create-a-simulated-pull-workflow"
-pubDate: 2025-10-26T22:52:38+02:00
-updatedDate: 2025-10-26T22:52:38+02:00
+title: How to create a simulated pull workflow
+slug: how-to-create-a-simulated-pull-workflow
+pubDate: 2025-10-26T20:52:38.000Z
+updatedDate: 2025-10-26T20:52:38.000Z
 category: evergreen
 tags:
   - management
   - projectmanagement
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115442496065195454'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m44sld2scs2v'
 ---
 Related to [Pull vs push method for getting projects](#). Read about this first in [Slow Productivity](/bookshelf/slow-productivity).
 
