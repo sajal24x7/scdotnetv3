@@ -9,7 +9,7 @@ tags:
   - productivity
 format: audio
 author: Cal Newport
-bookStatus: reading
+bookStatus: read
 startedReading: 2025-10-17T12:28:56.000Z
 finishedReading: 2025-10-24T17:46:56.000Z
 bookCover: "slow-productivity.jpg"
