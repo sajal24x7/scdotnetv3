@@ -1,13 +1,15 @@
 ---
-title: "A little essay by Stephen King"
-slug: "a-little-essay-by-stephen-king"
-pubDate: 2025-10-24T17:16:11+03:00
-updatedDate: 2025-10-24T17:16:11+03:00
+title: A little essay by Stephen King
+slug: a-little-essay-by-stephen-king
+pubDate: 2025-10-24T14:16:11.000Z
+updatedDate: 2025-10-24T14:16:11.000Z
 category: micro
 tags:
   - writing
   - stephen-king
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115440647071031615'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m43yciy4gf2h'
 ---
 [Bestsellers to Blockbusters: Stephen King Reflects on the Adaptations of His Work](https://lithub.com/bestsellers-to-blockbusters-stephen-king-reflects-on-the-adaptations-of-his-work/)
 

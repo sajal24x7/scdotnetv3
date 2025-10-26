@@ -1,13 +1,16 @@
 ---
-title: "Code like a surgeon"
-slug: "code-like-a-surgeon"
-pubDate: 2025-10-24T19:02:10+03:00
-updatedDate: 2025-10-24T19:02:10+03:00
+title: Code like a surgeon
+slug: code-like-a-surgeon
+pubDate: 2025-10-24T16:02:10.000Z
+updatedDate: 2025-10-24T16:02:10.000Z
 category: micro
 tags:
   - agentic-coding
   - work
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115440647326872241'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m43ycmf5hx2n'
+  - 'https://www.threads.com/@sajal24x7/post/DQRhRI6DYqG'
 ---
 
 [Code like a surgeon by Geoffrey Litt](https://www.geoffreylitt.com/2025/10/24/code-like-a-surgeon)
