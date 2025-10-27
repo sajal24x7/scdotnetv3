@@ -27,7 +27,9 @@ const PLATFORM_CONFIG = {
   }
 };
 
-const NON_LINK_CATEGORIES = new Set(['nordletter']);
+// Categories that intentionally omit the canonical link in syndicated posts.
+// Keep empty so Nordletter issues include a link back to the full edition.
+const NON_LINK_CATEGORIES = new Set();
 
 /**
  * Extract link from markdown link format
