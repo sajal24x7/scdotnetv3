@@ -13,8 +13,3 @@ startedReading: 2025-10-27T11:29:23+02:00
 ---
 
 # started reading
-
-
-
----
-# references:
