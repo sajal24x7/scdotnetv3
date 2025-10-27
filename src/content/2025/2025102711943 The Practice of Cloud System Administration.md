@@ -6,7 +6,7 @@ updatedDate: 2025-10-27T11:29:23+02:00
 category: bookshelf
 tags:
   - technical
-format: audio
+format: ebook
 author: "Thomas A. Limoncelli"
 bookStatus: "reading"
 startedReading: 2025-10-27T11:29:23+02:00
