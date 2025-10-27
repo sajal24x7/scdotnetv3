@@ -5,6 +5,10 @@ on:
   repository_dispatch:
     types: [deploy-success]
 
+  # Automatically run on commits to the default branch
+  push:
+    branches: [main]
+
   # Manual trigger for testing/catch-up
   workflow_dispatch:
     inputs:
@@ -21,6 +25,7 @@ on:
 
 jobs:
   syndicate:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -61,8 +66,8 @@ jobs:
           THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
 
           # Configuration
-          SYNDICATION_DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
-          SYNDICATION_DAYS_BACK: ${{ github.event.inputs.days_back || '7' }}
+          SYNDICATION_DRY_RUN: ${{ github.event.inputs.dry_run || github.event.client_payload.dry_run || 'false' }}
+          SYNDICATION_DAYS_BACK: ${{ github.event.inputs.days_back || github.event.client_payload.days_back || '7' }}
         run: node scripts/syndicate-content.js
 
       - name: Commit syndication updates
