@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115440647071031615'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m43yciy4gf2h'
+  - 'https://www.threads.com/@sajal24x7/post/DQT_HWIiiJ4'
 ---
 [Bestsellers to Blockbusters: Stephen King Reflects on the Adaptations of His Work](https://lithub.com/bestsellers-to-blockbusters-stephen-king-reflects-on-the-adaptations-of-his-work/)
 

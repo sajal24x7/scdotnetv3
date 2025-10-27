@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115442496065195454'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m44sld2scs2v'
+  - 'https://www.threads.com/@sajal24x7/post/DQT_AIZiszo'
 ---
 Related to [Pull vs push method for getting projects](#). Read about this first in [Slow Productivity](/bookshelf/slow-productivity).
 

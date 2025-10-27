@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115442495878059640'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m44sladyoi2f'
+  - 'https://www.threads.com/@sajal24x7/post/DQT--TzCjKQ'
 ---
 In what has now become a yearly tradition, we celebrated Diwali at the OP Vallila office yesterday.
 

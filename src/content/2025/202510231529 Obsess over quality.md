@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115442496876749922'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m44sloyyy32q'
+  - 'https://www.threads.com/@sajal24x7/post/DQT_CwrikWy'
 ---
 
 Have pride in what you build. Give it time and the effort it deserves.

@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115428748382766123'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3wp7m3nkw2h'
+  - 'https://www.threads.com/@sajal24x7/post/DQT_EPvigyl'
 ---
 [Copilot is getting more personality with a ‘real talk’ mode and group chats by Tom Warren](https://www.theverge.com/news/804122/microsoft-copilot-real-talk-mode-group-chats-features)
 

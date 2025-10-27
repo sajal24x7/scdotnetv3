@@ -1,14 +1,17 @@
 ---
-title: "Why stories make you smarter"
-slug: "why-stories-make-you-smarter"
-pubDate: 2025-10-27T11:16:22+02:00
-updatedDate: 2025-10-27T11:16:22+02:00
+title: Why stories make you smarter
+slug: why-stories-make-you-smarter
+pubDate: 2025-10-27T09:16:22.000Z
+updatedDate: 2025-10-27T09:16:22.000Z
 category: micro
 tags:
   - reading
   - self-help
   - novels
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115446071655241377'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m46ffcrzis2q'
+  - 'https://www.threads.com/@sajal24x7/post/DQT_IwmCr9v'
 ---
 [Why Stories Make You Smarter Than Self-Help Books by Joan Westenberg](https://www.joanwestenberg.com/p/why-stories-make-you-smarter-than-self-help-books?utm_source=cassidoo&utm_medium=email&utm_campaign=with-the-new-day-comes-new-strength-and-new)
 
