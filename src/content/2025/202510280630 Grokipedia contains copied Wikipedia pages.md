@@ -1,14 +1,17 @@
 ---
-title: "Grokipedia contains copied Wikipedia pages"
-slug: "grokipedia-contains-copied-wikipedia-pages"
-pubDate: 2025-10-28T06:32:01+02:00
-updatedDate: 2025-10-28T06:32:01+02:00
+title: Grokipedia contains copied Wikipedia pages
+slug: grokipedia-contains-copied-wikipedia-pages
+pubDate: 2025-10-28T04:32:01.000Z
+updatedDate: 2025-10-28T04:32:01.000Z
 category: micro
 tags:
   - wikipedia
   - grok
   - xai
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115453543651190902'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4bpl6yp6k27'
+  - 'https://www.threads.com/@sajal24x7/post/DQXYmjBkv34'
 ---
 [Elon Musk’s Grokipedia contains copied Wikipedia pages by Jay Peters](https://www.theverge.com/news/807686/elon-musk-grokipedia-launch-wikipedia-xai-copied)
 

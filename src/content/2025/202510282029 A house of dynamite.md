@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115453231502854228'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4bl5ah72e25'
+  - 'https://www.threads.com/@sajal24x7/post/DQXYng-EtVA'
 ---
 I watched [A house of dynamite](https://en.wikipedia.org/wiki/A_House_of_Dynamite) today. It was positively thrilling. I loved it.
 
