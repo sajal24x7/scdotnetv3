@@ -9,7 +9,7 @@ tags:
   - netflix
 
 ---
-I watched A house of dynamite today. It was positively thrilling. I loved it.
+I watched [A house of dynamite](https://en.wikipedia.org/wiki/A_House_of_Dynamite) today. It was positively thrilling. I loved it.
 
 I was literally at the edge of my seat - talking to the TV set. Do this. Do that. Oh fuck! And so on. Highly recommended.
 
