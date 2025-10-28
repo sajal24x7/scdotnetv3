@@ -89,7 +89,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -188,6 +189,8 @@
   },
   "active": "26eff8e7ea3fa54d",
   "lastOpenFiles": [
+    "2025/2025102711943 The Practice of Cloud System Administration.md",
+    "2025/202510271114 Why stories make you smarter.md",
     "2025/202510231042 Work at a natural pace.md",
     "2025/202510231042 Work at a natural pace.txt",
     "2025/202510221810 How to create a simulated pull workflow.md",
@@ -216,8 +219,6 @@
     "2025/202510171528 Slow Productivity.md",
     "2025/202510171006 Better than average.md",
     "2025/202510170644 Claude announces skills.md",
-    "2025/202510192200 NL76.md",
-    "2025/202510161757 Devops Finland October event.md",
     "2025/202510161757 Devops Finland October event.txt",
     "2025/202510111435 NL75.txt",
     "2025/202510011731 Vibe coding.txt",
