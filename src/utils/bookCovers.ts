@@ -1,6 +1,6 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2025-10-16T20:02:01.474Z
-// Found 25 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, anything-you-want.jpg, artificial-condition.jpg, black-box-thinking.jpg, children-of-ruin.jpg, children-of-time.jpg, data-analysis-with-python-and-pyspark.jpeg, excellent-advice-for-living.jpg, men-without-women.jpg, nexus.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, same-as-ever.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-life-of-chuck.jpg, the-mysterious-affair-at-styles.jpg, the-quick-python-book-fourth-edition.jpg, the-secret-of-secrets.jpg, the-three-body-problem.jpg, time-management-for-system-administrators.jpg
+// Generated on: 2025-10-28T19:03:42.781Z
+// Found 27 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, anything-you-want.jpg, artificial-condition.jpg, black-box-thinking.jpg, children-of-ruin.jpg, children-of-time.jpg, data-analysis-with-python-and-pyspark.jpeg, excellent-advice-for-living.jpg, men-without-women.jpg, nexus.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, same-as-ever.jpg, slow-productivity.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-life-of-chuck.jpg, the-mysterious-affair-at-styles.jpg, the-practice-of-cloud-system-administration.jpg, the-quick-python-book-fourth-edition.jpg, the-secret-of-secrets.jpg, the-three-body-problem.jpg, time-management-for-system-administrators.jpg
 
 import a_closed_and_common_orbit_jpg from '../images/bookshelf/a-closed-and-common-orbit.jpg';
 import abundance_jpg from '../images/bookshelf/abundance.jpg';
@@ -19,10 +19,12 @@ import range_jpg from '../images/bookshelf/range.jpg';
 import record_of_a_spaceborn_few_jpg from '../images/bookshelf/record-of-a-spaceborn-few.jpg';
 import rogue_protocol_jpg from '../images/bookshelf/rogue-protocol.jpg';
 import same_as_ever_jpg from '../images/bookshelf/same-as-ever.jpg';
+import slow_productivity_jpg from '../images/bookshelf/slow-productivity.jpg';
 import the_dark_forest_jpg from '../images/bookshelf/the-dark-forest.jpg';
 import the_galaxy_and_the_ground_within_jpg from '../images/bookshelf/the-galaxy-and-the-ground-within.jpg';
 import the_life_of_chuck_jpg from '../images/bookshelf/the-life-of-chuck.jpg';
 import the_mysterious_affair_at_styles_jpg from '../images/bookshelf/the-mysterious-affair-at-styles.jpg';
+import the_practice_of_cloud_system_administration_jpg from '../images/bookshelf/the-practice-of-cloud-system-administration.jpg';
 import the_quick_python_book_fourth_edition_jpg from '../images/bookshelf/the-quick-python-book-fourth-edition.jpg';
 import the_secret_of_secrets_jpg from '../images/bookshelf/the-secret-of-secrets.jpg';
 import the_three_body_problem_jpg from '../images/bookshelf/the-three-body-problem.jpg';
@@ -46,10 +48,12 @@ export const bookCoverImages: Record<string, any> = {
   'record-of-a-spaceborn-few.jpg': record_of_a_spaceborn_few_jpg,
   'rogue-protocol.jpg': rogue_protocol_jpg,
   'same-as-ever.jpg': same_as_ever_jpg,
+  'slow-productivity.jpg': slow_productivity_jpg,
   'the-dark-forest.jpg': the_dark_forest_jpg,
   'the-galaxy-and-the-ground-within.jpg': the_galaxy_and_the_ground_within_jpg,
   'the-life-of-chuck.jpg': the_life_of_chuck_jpg,
   'the-mysterious-affair-at-styles.jpg': the_mysterious_affair_at_styles_jpg,
+  'the-practice-of-cloud-system-administration.jpg': the_practice_of_cloud_system_administration_jpg,
   'the-quick-python-book-fourth-edition.jpg': the_quick_python_book_fourth_edition_jpg,
   'the-secret-of-secrets.jpg': the_secret_of_secrets_jpg,
   'the-three-body-problem.jpg': the_three_body_problem_jpg,
@@ -60,4 +64,4 @@ export function getBookCoverImage(filename: string) {
   return bookCoverImages[filename];
 }
 
-export type BookCoverFilename = 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'all-systems-red.jpg' | 'anything-you-want.jpg' | 'artificial-condition.jpg' | 'black-box-thinking.jpg' | 'children-of-ruin.jpg' | 'children-of-time.jpg' | 'data-analysis-with-python-and-pyspark.jpeg' | 'excellent-advice-for-living.jpg' | 'men-without-women.jpg' | 'nexus.jpg' | 'poems-to-fall-in-love-with.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'rogue-protocol.jpg' | 'same-as-ever.jpg' | 'the-dark-forest.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-life-of-chuck.jpg' | 'the-mysterious-affair-at-styles.jpg' | 'the-quick-python-book-fourth-edition.jpg' | 'the-secret-of-secrets.jpg' | 'the-three-body-problem.jpg' | 'time-management-for-system-administrators.jpg';
+export type BookCoverFilename = 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'all-systems-red.jpg' | 'anything-you-want.jpg' | 'artificial-condition.jpg' | 'black-box-thinking.jpg' | 'children-of-ruin.jpg' | 'children-of-time.jpg' | 'data-analysis-with-python-and-pyspark.jpeg' | 'excellent-advice-for-living.jpg' | 'men-without-women.jpg' | 'nexus.jpg' | 'poems-to-fall-in-love-with.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'rogue-protocol.jpg' | 'same-as-ever.jpg' | 'slow-productivity.jpg' | 'the-dark-forest.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-life-of-chuck.jpg' | 'the-mysterious-affair-at-styles.jpg' | 'the-practice-of-cloud-system-administration.jpg' | 'the-quick-python-book-fourth-edition.jpg' | 'the-secret-of-secrets.jpg' | 'the-three-body-problem.jpg' | 'time-management-for-system-administrators.jpg';
