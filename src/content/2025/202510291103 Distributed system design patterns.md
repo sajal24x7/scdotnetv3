@@ -1,13 +1,15 @@
 ---
-title: "Distributed system design patterns"
-slug: "distributed-system-design-patterns"
-pubDate: 2025-10-29T11:11:33+02:00
-updatedDate: 2025-10-29T11:11:33+02:00
+title: Distributed system design patterns
+slug: distributed-system-design-patterns
+pubDate: 2025-10-29T09:11:33.000Z
+updatedDate: 2025-10-29T09:11:33.000Z
 category: evergreen
 tags:
   - distributed-systems
   - sysadmin
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115456684095049000'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4d47cgq5g2o'
 ---
 From [The practice of cloud system administration](/bookshelf/the-practice-of-cloud-system-administration).
 
