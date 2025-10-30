@@ -1,15 +1,18 @@
 ---
-title: "MSFT AI User group event at Nitor"
-slug: "msft-ai-user-group-event-at-nitor"
-pubDate: 2025-10-30T22:53:11+02:00
-updatedDate: 2025-10-30T22:53:11+02:00
+title: MSFT AI User group event at Nitor
+slug: msft-ai-user-group-event-at-nitor
+pubDate: 2025-10-30T20:53:11.000Z
+updatedDate: 2025-10-30T20:53:11.000Z
 category: blog
 tags:
   - msaiug
   - finland
   - ai
   - nitor
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115465103272733502'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4gttvl6oc2n'
+  - 'https://www.threads.com/@sajal24x7/post/DQcpCC_iOao'
 ---
 Back at the Nitor office. At this point I feel like I should create a tag for Nitor.
 

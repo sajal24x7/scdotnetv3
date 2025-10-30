@@ -1,14 +1,18 @@
 ---
-title: "FAUG October meetup"
-slug: "faug-october-meetup"
-pubDate: 2025-10-30T22:39:01+02:00
-updatedDate: 2025-10-30T22:39:01+02:00
+title: FAUG October meetup
+slug: faug-october-meetup
+pubDate: 2025-10-30T20:39:01.000Z
+updatedDate: 2025-10-30T20:39:01.000Z
 category: blog
 tags:
   - faug
   - azure
   - meetup
   - finland
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115465104316613500'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4gtuee3sb2d'
+  - 'https://www.threads.com/@sajal24x7/post/DQcpD3MCKvI'
 ---
 The reason I was excited for this event was because of the palce it was being held at - PolarSquad. I had applied for a position at this organisation and even though I did not get an interview, I had received a good email back - detailing the things I needed to concentrate on. I like that. A human touch!
 
