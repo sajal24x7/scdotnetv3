@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115462181748387148'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4fkddt6ft2i'
+  - 'https://www.threads.com/@sajal24x7/post/DQbqeDQCMJ0'
 ---
 [DeepSeek may have found a new way to improve AI’s ability to remember by Caiwei Chen](https://www.technologyreview.com/2025/10/29/1126932/deepseek-ocr-visual-compression/)
 

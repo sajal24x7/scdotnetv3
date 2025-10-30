@@ -1,13 +1,16 @@
 ---
-title: "The CAP principle"
-slug: "the-cap-principle"
-pubDate: 2025-10-30T13:46:10+02:00
-updatedDate: 2025-10-30T13:46:10+02:00
+title: The CAP principle
+slug: the-cap-principle
+pubDate: 2025-10-30T11:46:10.000Z
+updatedDate: 2025-10-30T11:46:10.000Z
 category: til
 tags:
   - distributed-systems
   - sysadmin
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115462954660172157'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4fvcugb232e'
+  - 'https://www.threads.com/@sajal24x7/post/DQbqgBHCGkb'
 ---
 From [The practice of cloud system administration](/bookshelf/the-practice-of-cloud-system-administration) and other places.
 
