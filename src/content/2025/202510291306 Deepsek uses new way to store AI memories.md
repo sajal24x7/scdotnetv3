@@ -1,14 +1,16 @@
 ---
-title: "Deepsek uses new way to store AI memories"
-slug: "deepsek-uses-new-way-to-store-ai-memories"
-pubDate: 2025-10-30T10:30:10+02:00
-updatedDate: 2025-10-30T10:30:10+02:00
+title: Deepsek uses new way to store AI memories
+slug: deepsek-uses-new-way-to-store-ai-memories
+pubDate: 2025-10-30T08:30:10.000Z
+updatedDate: 2025-10-30T08:30:10.000Z
 category: micro
 tags:
   - ai
   - deepseek
   - llms
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115462181748387148'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4fkddt6ft2i'
 ---
 [DeepSeek may have found a new way to improve AI’s ability to remember by Caiwei Chen](https://www.technologyreview.com/2025/10/29/1126932/deepseek-ocr-visual-compression/)
 

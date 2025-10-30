@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115456684095049000'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4d47cgq5g2o'
+  - 'https://www.threads.com/@sajal24x7/post/DQbT_KwjUcU'
 ---
 From [The practice of cloud system administration](/bookshelf/the-practice-of-cloud-system-administration).
 
