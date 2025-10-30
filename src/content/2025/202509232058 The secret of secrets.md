@@ -2,7 +2,7 @@
 title: "The secret of secrets"
 slug: "the-secret-of-secrets"
 pubDate: 2025-09-23T21:00:18+03:00
-updatedDate: 2025-09-23T21:00:18+03:00
+updatedDate: 2025-10-30T10:48:01+02:00
 category: bookshelf
 tags:
   - thriller
@@ -12,6 +12,7 @@ series: "Robert Langdon #6"
 bookStatus: "read"
 bookRating: like
 startedReading: 2025-09-23T17:00:18+03:00
+finishedReading: 2025-10-30T10:48:01+02:00
 bookCover: "the-secret-of-secrets.jpg"
 ---
 I have read all the books in the Robert Langston series of books. I had not enjoyed any, as much as I enjoyed this one.
