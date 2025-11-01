@@ -1,13 +1,16 @@
 ---
-title: "A growing movement to shift away from US tech"
-slug: "a-growing-movement-to-shift-away-from-us-tech"
-pubDate: 2025-11-01T06:23:05+02:00
-updatedDate: 2025-11-01T06:23:05+02:00
+title: A growing movement to shift away from US tech
+slug: a-growing-movement-to-shift-away-from-us-tech
+pubDate: 2025-11-01T04:23:05.000Z
+updatedDate: 2025-11-01T04:23:05.000Z
 category: micro
 tags:
   - europe
   - cloud
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115472533699914605'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4k5gv2n5b25'
+  - 'https://www.threads.com/@sajal24x7/post/DQgBSSyEkhl'
 ---
 [Austria's Ministry of Economy Has Migrated To a Nextcloud Platform In Shift Away From US Tech](https://yro.slashdot.org/story/25/10/31/2023230/austrias-ministry-of-economy-has-migrated-to-a-nextcloud-platform-in-shift-away-from-us-tech?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
