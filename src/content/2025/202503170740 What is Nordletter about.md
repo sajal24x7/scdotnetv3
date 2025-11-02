@@ -1,12 +1,15 @@
 ---
-title: "What is Nordletter about?"
-slug: "what-is-nordletter-about"
-description: "Or, how to write about the same thing perpetually?"
+title: What is Nordletter about?
+slug: what-is-nordletter-about
+description: Or, how to write about the same thing perpetually?
 pubDate: 2025-03-17T07:40:38
 updatedDate: 2025-03-18T19:16:14
-category: nordletter
-tags: ["blog", "writing is", "Nord Letter"]
-image: "https://images.unsplash.com/photo-1605388939655-8ffbb1d6534e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDMwfHxub3JkfGVufDB8fHx8MTc0MjMyNTM1OHww&ixlib=rb-4.0.3&q=80&w=2000"
+category: blog
+tags:
+  - blog
+  - writing is
+  - Nord Letter
+image: https://images.unsplash.com/photo-1605388939655-8ffbb1d6534e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDMwfHxub3JkfGVufDB8fHx8MTc0MjMyNTM1OHww&ixlib=rb-4.0.3&q=80&w=2000
 ---
 The [NordLetter](__GHOST_URL__/nordletter/) is about the immigrant/expat experience, primarily. If I were to go even more specific, it is about an Indian immigrant’s experience living in Finland.
 
