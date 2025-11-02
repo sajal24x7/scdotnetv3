@@ -1,5 +1,5 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2025-10-28T19:03:42.781Z
+// Generated on: 2025-11-02T19:54:30.145Z
 // Found 27 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, anything-you-want.jpg, artificial-condition.jpg, black-box-thinking.jpg, children-of-ruin.jpg, children-of-time.jpg, data-analysis-with-python-and-pyspark.jpeg, excellent-advice-for-living.jpg, men-without-women.jpg, nexus.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, same-as-ever.jpg, slow-productivity.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-life-of-chuck.jpg, the-mysterious-affair-at-styles.jpg, the-practice-of-cloud-system-administration.jpg, the-quick-python-book-fourth-edition.jpg, the-secret-of-secrets.jpg, the-three-body-problem.jpg, time-management-for-system-administrators.jpg
 
 import a_closed_and_common_orbit_jpg from '../images/bookshelf/a-closed-and-common-orbit.jpg';

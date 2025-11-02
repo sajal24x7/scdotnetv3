@@ -1,4 +1,4 @@
-const moduleHref = new URL('./search-modal-island.ts', import.meta.url).href;
+const moduleHref = new URL('./search-modal-island.js', import.meta.url).href;
 
 type SearchModalElement = HTMLElement & {
     open?: () => void;
@@ -12,6 +12,7 @@ let modalElement: SearchModalElement | null = null;
 let shortcutListenerAttached = false;
 let observer: MutationObserver | null = null;
 const processedTriggers = new WeakSet<HTMLElement>();
+let isBootstrapped = false;
 
 function cleanupAfterLoad(): void {
     if (shortcutListenerAttached) {
@@ -159,8 +160,17 @@ function init(): void {
     observer.observe(document.body, { childList: true, subtree: true });
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
-} else {
+export default function initializeSearchModalLoader(): void {
+    if (typeof document === 'undefined' || isBootstrapped) {
+        return;
+    }
+
+    isBootstrapped = true;
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init, { once: true });
+        return;
+    }
+
     init();
 }

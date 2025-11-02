@@ -1,6 +1,4 @@
 ---
-import searchModalLoaderScript from './islands/search-modal-loader.ts?url';
-
 interface Props {
     searchIndexUrl?: string;
 }
@@ -77,7 +75,11 @@ const modalId = 'global-search';
   </div>
 </search-modal>
 
-<script type="module" src={searchModalLoaderScript}></script>
+<script type="module" hoist>
+    import initializeSearchModalLoader from '/scripts/search-modal-loader.js';
+
+    initializeSearchModalLoader();
+</script>
 
 <style>
   .line-clamp-2 {

@@ -1,12 +1,15 @@
 ---
-title: "Postcard from Oitta"
-slug: "postcard-from-oitta"
+title: Postcard from Oitta
+slug: postcard-from-oitta
 description: "Nord Letter #11 - Pristine waters at Oitta"
 pubDate: 2024-06-09T20:14:27
 updatedDate: 2024-07-07T16:07:08
-category: blog
-tags: ["Nord Letter", "oitta"]
-image: "https://storage.sajalchoudhary.net/images/2024/06/IMG_3673-1.jpeg"
+category: nordletter
+tags:
+  - Nord Letter
+  - oitta
+image: https://storage.sajalchoudhary.net/images/2024/06/IMG_3673-1.jpeg
+edition: 11
 ---
 Hello from my home in Matinkylä\! This is _NordLetter_ \#11, a weekly newsletter on living and walking in Finland. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 
