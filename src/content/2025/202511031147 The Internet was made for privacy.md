@@ -1,12 +1,14 @@
 ---
-title: "The Internet was made for privacy"
-slug: "the-internet-was-made-for-privacy"
-pubDate: 2025-11-03T12:00:55+02:00
-updatedDate: 2025-11-03T12:00:55+02:00
+title: The Internet was made for privacy
+slug: the-internet-was-made-for-privacy
+pubDate: 2025-11-03T10:00:55.000Z
+updatedDate: 2025-11-03T10:00:55.000Z
 category: micro
 tags:
   - cory-doctorow
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115485188515873910'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4prbmabof2p'
 ---
 [Pluralistic: The internet was made for privacy (31 Oct 2025) – Pluralistic: Daily links from Cory Doctorow by Cory Doctorow](https://pluralistic.net/2025/10/31/losing-the-crypto-wars/)
 
