@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115486147557849524'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4q6vq44bm2e'
+  - 'https://www.threads.com/@sajal24x7/post/DQq1LYgkpq6'
 ---
 [OLED MacBook Air Expected to Follow Touch Screen OLED MacBook Pro by Tim Hardwick](https://www.macrumors.com/2025/11/03/oled-macbook-air-follow-oled-macbook-pro/)
 

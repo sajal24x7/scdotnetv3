@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115485188515873910'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4prbmabof2p'
+  - 'https://www.threads.com/@sajal24x7/post/DQq1Kb6EhwJ'
 ---
 [Pluralistic: The internet was made for privacy (31 Oct 2025) – Pluralistic: Daily links from Cory Doctorow by Cory Doctorow](https://pluralistic.net/2025/10/31/losing-the-crypto-wars/)
 
