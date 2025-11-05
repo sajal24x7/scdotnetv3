@@ -1,6 +1,7 @@
 ---
 import { formatDistanceToNowStrict } from 'date-fns';
 import { formatDateWithTime, formatMonthYear } from '../utils/dateFormat';
+import relativeTimeIslandScript from './islands/relative-time-island.js?url';
 
 interface Props {
   date: Date | string;
@@ -32,22 +33,34 @@ const getTimeFormat = () => {
 };
 
 const timeFormat = getTimeFormat();
+const isoDate = typeof date === 'string' ? date : date.toISOString();
 const displayTime = timeFormat === 'relative'
   ? formatDistanceToNowStrict(new Date(date), { addSuffix: true }).replace(/^./, str => str.toUpperCase())
   : timeFormat === 'month-year'
   ? formatMonthYear(date)
   : formatDateWithTime(date);
 
+const locals = Astro.locals as Record<string, unknown>;
 const isRelative = timeFormat === 'relative';
+const shouldInjectRelativeScript = isRelative && !locals.relativeTimeScriptInjected;
+
+if (shouldInjectRelativeScript) {
+  locals.relativeTimeScriptInjected = true;
+}
 ---
 
 <time 
-  class={`time-display ${className}`} 
-  datetime={typeof date === 'string' ? date : date.toISOString()}
+  class={`time-display ${className}`}
+  datetime={isoDate}
+  data-relative-time={isRelative ? 'true' : undefined}
   title={isRelative ? formatDateWithTime(date) : undefined}
 >
   {displayTime}
 </time>
+
+{shouldInjectRelativeScript && (
+  <script type="module" src={relativeTimeIslandScript}></script>
+)}
 
 <style>
   :where(.time-display) {
