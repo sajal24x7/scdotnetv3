@@ -1,6 +1,7 @@
 ---
 import { formatDistanceToNowStrict } from 'date-fns';
 import { formatDateWithTime, formatMonthYear } from '../utils/dateFormat';
+import relativeTimeIslandScript from './islands/relative-time-island.ts?url';
 
 interface Props {
   date: Date | string;
@@ -32,6 +33,7 @@ const getTimeFormat = () => {
 };
 
 const timeFormat = getTimeFormat();
+const isoDate = typeof date === 'string' ? date : date.toISOString();
 const displayTime = timeFormat === 'relative'
   ? formatDistanceToNowStrict(new Date(date), { addSuffix: true }).replace(/^./, str => str.toUpperCase())
   : timeFormat === 'month-year'
@@ -42,12 +44,17 @@ const isRelative = timeFormat === 'relative';
 ---
 
 <time 
-  class={`time-display ${className}`} 
-  datetime={typeof date === 'string' ? date : date.toISOString()}
+  class={`time-display ${className}`}
+  datetime={isoDate}
+  data-relative-time={isRelative ? 'true' : undefined}
   title={isRelative ? formatDateWithTime(date) : undefined}
 >
   {displayTime}
 </time>
+
+{isRelative && (
+  <script type="module" src={relativeTimeIslandScript}></script>
+)}
 
 <style>
   :where(.time-display) {
