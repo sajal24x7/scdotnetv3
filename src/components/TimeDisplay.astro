@@ -40,7 +40,13 @@ const displayTime = timeFormat === 'relative'
   ? formatMonthYear(date)
   : formatDateWithTime(date);
 
+const locals = Astro.locals as Record<string, unknown>;
 const isRelative = timeFormat === 'relative';
+const shouldInjectRelativeScript = isRelative && !locals.relativeTimeScriptInjected;
+
+if (shouldInjectRelativeScript) {
+  locals.relativeTimeScriptInjected = true;
+}
 ---
 
 <time 
