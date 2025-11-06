@@ -1,18 +1,15 @@
 ---
-title: '1'
-slug: '1'
-pubDate: 2025-11-05T09:08:54.000Z
-updatedDate: 2025-11-05T09:08:54.000Z
+title: "Google will be changing App Store rules globally"
+slug: "google-will-be-changing-app-store-rules-globally"
+pubDate: 2025-11-06T07:25:14+02:00
+updatedDate: 2025-11-06T07:25:14+02:00
 category: micro
 tags:
   - google
   - apple
   - epic
   - appstores
-syndicationUrls:
-  - 'https://mastodon.social/@sajal24x7/115496307534281667'
-  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4upbxa6472d'
-  - 'https://www.threads.com/@sajal24x7/post/DQq1MZOkmdh'
+
 ---
 [Epic and Google agree to settle their lawsuit and change Android’s fate globally by Sean Hollister](https://www.theverge.com/policy/813991/epic-google-proposed-settlement)
 
