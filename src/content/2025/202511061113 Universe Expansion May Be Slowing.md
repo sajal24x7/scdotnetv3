@@ -1,13 +1,15 @@
 ---
-title: "Universe Expansion May Be Slowing"
-slug: "universe-expansion-may-be-slowing"
-pubDate: 2025-11-06T11:15:24+02:00
-updatedDate: 2025-11-06T11:15:24+02:00
+title: Universe Expansion May Be Slowing
+slug: universe-expansion-may-be-slowing
+pubDate: 2025-11-06T09:15:24.000Z
+updatedDate: 2025-11-06T09:15:24.000Z
 category: micro
 tags:
   - science
   - astronomy
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115501994480354063'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4xa43fnkh2d'
 ---
 [Universe Expansion May Be Slowing, Not Accelerating, Study Suggests - Slashdot by ](https://science.slashdot.org/story/25/11/06/0146235/universe-expansion-may-be-slowing-not-accelerating-study-suggests?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
