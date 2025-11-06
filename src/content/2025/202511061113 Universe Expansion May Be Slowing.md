@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115501994480354063'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4xa43fnkh2d'
+  - 'https://www.threads.com/@sajal24x7/post/DQtyVyhkWp8'
 ---
 [Universe Expansion May Be Slowing, Not Accelerating, Study Suggests - Slashdot by ](https://science.slashdot.org/story/25/11/06/0146235/universe-expansion-may-be-slowing-not-accelerating-study-suggests?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 

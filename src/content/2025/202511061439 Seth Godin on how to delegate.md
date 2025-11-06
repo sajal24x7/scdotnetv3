@@ -1,13 +1,15 @@
 ---
-title: "Seth Godin on how to delegate"
-slug: "seth-godin-on-how-to-delegate"
-pubDate: 2025-11-06T14:42:03+02:00
-updatedDate: 2025-11-06T14:42:03+02:00
+title: Seth Godin on how to delegate
+slug: seth-godin-on-how-to-delegate
+pubDate: 2025-11-06T12:42:03.000Z
+updatedDate: 2025-11-06T12:42:03.000Z
 category: micro
 tags:
   - delegate
   - seth-godin
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115502807258084493'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4xlnoeldm2d'
 ---
 [Delegate everything by Seth Godin](https://feeds.feedblitz.com/~/927274283/0/sethsblog~Delegate-everything/)
 
