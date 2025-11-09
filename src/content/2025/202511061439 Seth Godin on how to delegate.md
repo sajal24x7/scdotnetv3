@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115502807258084493'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m4xlnoeldm2d'
+  - 'https://www.threads.com/@sajal24x7/post/DQ1RjT3DFM7'
 ---
 [Delegate everything by Seth Godin](https://feeds.feedblitz.com/~/927274283/0/sethsblog~Delegate-everything/)
 
