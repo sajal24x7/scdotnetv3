@@ -1,14 +1,17 @@
 ---
-title: "How to use AI at universities"
-slug: "how-to-use-ai-at-universities"
-pubDate: 2025-11-10T07:43:41+02:00
-updatedDate: 2025-11-10T07:43:41+02:00
+title: How to use AI at universities
+slug: how-to-use-ai-at-universities
+pubDate: 2025-11-10T05:43:41.000Z
+updatedDate: 2025-11-10T05:43:41.000Z
 category: micro
 tags:
   - education
   - university
   - ai
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115523811414444867'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5aw5b7thk2d'
+  - 'https://www.threads.com/@sajal24x7/post/DQ3VqXFE0XC'
 ---
 [University education as we know it is over by Simas Kucinskas](https://inexactscience.substack.com/p/university-education-as-we-know-it)
 

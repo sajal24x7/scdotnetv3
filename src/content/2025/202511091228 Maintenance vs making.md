@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115519272685352589'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m56vnc5k6a2b'
+  - 'https://www.threads.com/@sajal24x7/post/DQ3VpWyE2-g'
 ---
 
 [Maintenance versus making | Note to Self](https://notetoself.studio/post/maintenance-versus-making/)
