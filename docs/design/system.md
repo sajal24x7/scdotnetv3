@@ -25,6 +25,7 @@ Metadata chips are the canonical way to display categories, publication dates, a
 - `.card-chip` defines the shared appearance—uppercase text, rounded pill, light/dark backgrounds, and subtle hover transitions.【F:src/styles/global.css†L475-L540】
 - `CategoryDisplay.astro` outputs the category chip and is reused by cards, list items, stream entries, and backlinks. Always pass the category string into this component instead of crafting ad-hoc markup.【F:src/components/CategoryDisplay.astro†L1-L16】
 - `TimeDisplay.astro` and `PostItem.astro` attach the `.card-chip` class to timestamps and syndication labels to keep metadata consistent across list and detail views.【F:src/components/Card.astro†L1-L64】【F:src/components/PostItem.astro†L70-L180】
+- Relative timestamps hydrate on the client through `relative-time-island`, which wires the `timeago.js` formatter to every `<time data-relative-time>` element so static builds stay fresh as real time advances.【F:src/components/islands/relative-time-island.ts†L1-L96】
 
 ## Tag Treatments
 
