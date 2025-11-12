@@ -9,9 +9,20 @@ tags:
 format: audio
 author: Adrian
 series: "Children of Time #2"
-bookStatus: "reading"
+bookStatus: "read"
+bookRating: "like"
 startedReading: 2025-10-09T09:39:40+03:00
+finishedReading: 2025-11-06T17:39:40+03:00
 bookCover: "children-of-ruin.jpg"
 ---
+The second book in the children of time series. Not as good as the first one.
 
-Started reading.
+It read like a horror novel at certain times, which was not unexpected and fun, so damn fun.
+
+I thought, when I started reading this book, that it would be about the octopus and the spiders, instead it was about something else.
+
+That discovery was fun too.
+
+I liked how this book was structured as well.
+
+And once again, I enjoyed the narration. In the first book, the narrator brought the craziness of Kern to fore. Here no one was crazy, but it was a good narration nonetheless.
