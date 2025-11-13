@@ -8,20 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "fb581853111c1677",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2025/202509232058 The secret of secrets.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "202509232058 The secret of secrets"
-            }
-          },
-          {
             "id": "26eff8e7ea3fa54d",
             "type": "leaf",
             "state": {
@@ -35,8 +21,7 @@
               "title": "202503170740 What is Nordletter about"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -186,8 +171,27 @@
       "zk-prefixer:Create new unique note": false
     }
   },
-  "active": "26eff8e7ea3fa54d",
+  "active": "716cd86a29cef966",
   "lastOpenFiles": [
+    "2025/202511130717 ChatGPT has renamed personalities now.md",
+    "2025/202511121154 Before the coffee gets cold.md",
+    "2025/202511121153 When the moon hits your eye.md",
+    "2025/202511101012 About oedipus.md",
+    "2025/202511100740 How to use AI at universities.md",
+    "2025/202511091228 Maintenance vs making.md",
+    "2025/202511061439 Seth Godin on how to delegate.md",
+    "2025/202511061113 Universe Expansion May Be Slowing.md",
+    "2025/202511051106 Google will be changing App Store rules globally.md",
+    "2025/202511031604 OLED MacBook Air to come out in 2027.md",
+    "2025/202511031147 The Internet was made for privacy.md",
+    "2024/202405051842 NL6 - Hyvä Vappu 2.md",
+    "2025-11-03.md",
+    "2025/202503170740 What is Nordletter about.md",
+    "2025/202509232058 The secret of secrets.md",
+    "2024/202411301215 Neruda, Pablo, and W. S. Merwin - Twenty Love Poems and a Song of Despair.md",
+    "2025/202411301215 Neruda, Pablo, and W. S. Merwin - Twenty Love Poems and a Song of Despair.md",
+    "2025/202411301215 Neruda, Pablo, and W. S. Merwin - Twenty Love Poems and a Song of Despair.txt",
+    "Untitled.md",
     "2025/202511021128 NL78.md",
     "2025/202511021128 NL78.txt",
     "2024/202411030244 NL32 - Diwali at home.md",
@@ -197,24 +201,6 @@
     "2024/202406160000 NL12 - Yoga on Father.md",
     "2024/202406232137 NL13 - Trek to Tallinn.md",
     "2024/202407142023 NL16 - What Now.md",
-    "2024/202408052108 NL19 - A day trip to Tampere.md",
-    "2024/202408070754 Azure Log Analytics.md",
-    "2024/202408052108 NL19 A day trip to Tampere.md",
-    "2024/202407282116 NL18 - Nature trails - Nuuksio and Pihlajasaari.md",
-    "2024/202407211819 NL17 - Celebrating Annaprashan.md",
-    "2024/202407151908 VNet Peering.md",
-    "2024/202407151553 Colophon.md",
-    "2024/202407111737 A case for being kinder to others.md",
-    "2024/202407101442 Update.md",
-    "2024/202407081159 Remove child items skipping one.md",
-    "2024/202406301503 NL14 - We won.md",
-    "2024/202406291458 Azure Import Export.md",
-    "2024/202406291441 Migrating between redundancy types in Azure Storage.md",
-    "2024/202406201611 Create windows firewall with gpo.md",
-    "2024/202406092014 NL11 - Postcard from Oitta.md",
-    "2024/202406021700 NL10 - A trip to IKEA.md",
-    "2024/202406081205 Well Architected Framework.md",
-    "2024/202406061302 Windows clear all events.md",
     "2025/202510231042 Work at a natural pace.txt",
     "2025/202510221809 Pull vs push method for getting projects.txt",
     "2025/202510221043 Do less work.txt",
@@ -222,7 +208,6 @@
     "2025/202510161757 Devops Finland October event.txt",
     "2025/202510111435 NL75.txt",
     "2025/202510011731 Vibe coding.txt",
-    "2025/202509201610 Data centers in space.txt",
-    "2025/202509201243 NL72.txt"
+    "2025/202509201610 Data centers in space.txt"
   ]
 }
