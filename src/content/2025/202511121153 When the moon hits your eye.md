@@ -13,6 +13,7 @@ startedReading: 2025-11-07T07:05:11.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115536188959662795'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5gfzw7m2a2f'
+  - 'https://www.threads.com/@sajal24x7/post/DQ_BPuME9Mp'
 ---
 Started reading.
 
