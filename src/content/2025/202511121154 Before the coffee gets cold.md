@@ -9,7 +9,7 @@ tags:
 format: audio
 author: Toshikazu Kawaguchi
 series: 'Before the coffee gets cold #1'
-bookStatus: reading
+bookStatus: read
 startedReading: 2025-11-06T10:06:04.000Z
 finishedReading: 2025-11-06T10:06:04.000Z
 bookCover: 'before-the-coffee-gets-cold.jpg'
