@@ -1,13 +1,15 @@
 ---
-title: "Better ways to use AI in browsers"
-slug: "better-ways-to-use-ai-in-browsers"
-pubDate: 2025-11-15T08:01:23+02:00
-updatedDate: 2025-11-15T08:01:23+02:00
+title: Better ways to use AI in browsers
+slug: better-ways-to-use-ai-in-browsers
+pubDate: 2025-11-15T06:01:23.000Z
+updatedDate: 2025-11-15T06:01:23.000Z
 category: micro
 tags:
   - ai
   - firefox
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115552193066579030'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5njhqz3zt2s'
 ---
 [I know you don’t want them to want AI, but… - Anil Dash by Anil Dash](https://anildash.com/2025/11/14/wanting-not-to-want-ai/)
 
