@@ -1,12 +1,14 @@
 ---
-title: "Massive DDoS attack on Azure"
-slug: "massive-ddos-attack-on-azure"
-pubDate: 2025-11-18T11:47:14+02:00
-updatedDate: 2025-11-18T11:47:14+02:00
+title: Massive DDoS attack on Azure
+slug: massive-ddos-attack-on-azure
+pubDate: 2025-11-18T09:47:14.000Z
+updatedDate: 2025-11-18T09:47:14.000Z
 category: micro
 tags:
   - azure
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115570067569194228'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5vhi5a7452f'
 ---
 [Microsoft Mitigated the Largest Cloud DDoS Ever Recorded, 15.7 Tbps - Slashdot by ](https://it.slashdot.org/story/25/11/17/2121230/microsoft-mitigated-the-largest-cloud-ddos-ever-recorded-157-tbps?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
