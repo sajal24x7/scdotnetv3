@@ -2,7 +2,7 @@
 title: "Learning python"
 slug: "learning-python"
 pubDate: 2025-10-21T11:53:27+03:00
-updatedDate: 2025-10-21T11:53:27+03:00
+updatedDate: 2025-11-19T11:53:27+03:00
 category: now
 status: active
 ---
@@ -18,3 +18,8 @@ Now I’m relearning Python and additionally pick up some data analysis skills.
 
 1. [Helsinki University Intro to Programming MOOC](https://programming-25.mooc.fi)
 2. [[202509281354 The quick python book]]
+
+# Progress - MooC
+1. Completed Part1 on 29th October.
+2. Completed Part2 on 5th November.
+3. Completed Part3 from the Mooc on 19th November.
