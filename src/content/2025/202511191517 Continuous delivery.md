@@ -1,16 +1,19 @@
 ---
-title: "Continuous delivery"
-slug: "continuous-delivery"
-pubDate: 2025-11-19T22:40:57+02:00
-updatedDate: 2025-11-19T22:40:57+02:00
+title: Continuous delivery
+slug: continuous-delivery
+pubDate: 2025-11-19T20:40:57.000Z
+updatedDate: 2025-11-19T20:40:57.000Z
 category: bookshelf
 tags:
   - technical
 format: ebook
-author: David Farley 
-bookCover: 'continuous-delivery.jpg'
-bookStatus: "reading"
-startedReading: 2025-11-19T14:40:57+02:00
+author: David Farley
+bookCover: continuous-delivery.jpg
+bookStatus: reading
+startedReading: 2025-11-19T12:40:57.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115578326764344353'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5z4txxapu25'
 ---
 
 Started reading
