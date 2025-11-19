@@ -1,15 +1,17 @@
 ---
-title: "Gemini 3 released"
-slug: "gemini-3-released"
-pubDate: 2025-11-19T08:12:20+02:00
-updatedDate: 2025-11-19T08:12:20+02:00
+title: Gemini 3 released
+slug: gemini-3-released
+pubDate: 2025-11-19T06:12:20.000Z
+updatedDate: 2025-11-19T06:12:20.000Z
 category: micro
 tags:
   - gemini
   - ethan-mollick
   - google
   - llms
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115574885122934677'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5xlwvvbnd22'
 ---
 [Three Years from GPT-3 to Gemini 3 by Ethan Mollick](https://www.oneusefulthing.org/p/three-years-from-gpt-3-to-gemini)
 

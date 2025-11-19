@@ -1,13 +1,15 @@
 ---
-title: "Cloudflare explains Tuesday’s outage"
-slug: "cloudflare-explains-tuesdays-outage"
-pubDate: 2025-11-19T08:09:27+02:00
-updatedDate: 2025-11-19T08:09:27+02:00
+title: Cloudflare explains Tuesday’s outage
+slug: cloudflare-explains-tuesdays-outage
+pubDate: 2025-11-19T06:09:27.000Z
+updatedDate: 2025-11-19T06:09:27.000Z
 category: micro
 tags:
   - cloudflare
   - outage
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115574885239973697'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5xlwxp34k2e'
 ---
 [Cloudflare explains Tuesday’s outage that temporarily took down ChatGPT by Richard Lawler](https://www.theverge.com/news/823711/cloudflare-outage-postmortem)
 
