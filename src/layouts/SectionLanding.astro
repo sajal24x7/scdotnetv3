@@ -214,12 +214,14 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
 
     .section-landing__grid {
         --grid-padding-inline: var(--section-grid-padding);
+        --grid-row-gap: 0;
         padding-inline: var(--section-grid-padding);
         max-width: var(--section-grid-max-width, 71.25rem);
     }
 
     .section-count {
-        margin-bottom: var(--section-count-margin, 1.5rem);
+        margin-top: 1rem;
+        margin-bottom: var(--section-count-margin, 0.75rem);
     }
 
     .section-count--accent {
@@ -247,7 +249,7 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
     }
 
     .section-taglist {
-        margin-bottom: var(--section-taglist-margin, 2rem);
+        margin-bottom: var(--section-taglist-margin, 1rem);
     }
 
     .section-content {
@@ -261,11 +263,11 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
     }
 
     .section-after-count {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     .section-before-content {
-        margin-bottom: 2rem;
+        margin-bottom: 1.25rem;
     }
 
     .section-sidebar {
@@ -283,11 +285,13 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
     @media (max-width: 768px) {
         .section-landing__grid {
             --grid-padding-inline: var(--section-grid-padding-mobile, var(--section-grid-padding));
+            --grid-row-gap: 0;
             padding-inline: var(--section-grid-padding-mobile, var(--section-grid-padding));
         }
 
         .section-count {
-            margin-bottom: var(--section-count-margin-mobile, 1.25rem);
+            margin-top: 0.75rem;
+            margin-bottom: var(--section-count-margin-mobile, 0.5rem);
         }
 
         .section-content {
@@ -300,15 +304,15 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
         }
 
         .section-taglist {
-            margin-bottom: var(--section-taglist-margin-mobile, 1.5rem);
+            margin-bottom: var(--section-taglist-margin-mobile, 0.75rem);
         }
 
         .section-after-count {
-            margin-bottom: 1.25rem;
+            margin-bottom: 0.75rem;
         }
 
         .section-before-content {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .section-sidebar__inner {
