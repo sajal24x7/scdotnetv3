@@ -1,12 +1,14 @@
 ---
-title: "The goal of software engineering"
-slug: "the-goal-of-software-engineering"
-pubDate: 2025-11-20T10:14:14+02:00
-updatedDate: 2025-11-20T10:14:14+02:00
+title: The goal of software engineering
+slug: the-goal-of-software-engineering
+pubDate: 2025-11-20T08:14:14.000Z
+updatedDate: 2025-11-20T08:14:14.000Z
 category: til
 tags:
   - software
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115581026089976254'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m62d7iciwl2d'
 ---
 Read first in [continuous delivery.](#)
 
