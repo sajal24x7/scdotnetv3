@@ -16,7 +16,7 @@ const {
   description = "I send out a newsletter once a week about living in Finland + five interesting things I've found on the open web.",
   actionUrl = "https://buttondown.com/api/emails/embed-subscribe/sajal24x7",
   targetUrl = "https://buttondown.com/sajal24x7",
-  placeholder = "Enter your email",
+  placeholder = "email address",
   buttonText = "Subscribe",
   showCopy = true,
   wrapperClass = "",
@@ -25,7 +25,7 @@ const {
 
 const outerClasses = ["py-8", wrapperClass].filter(Boolean).join(" ");
 const formClasses = [
-  "flex flex-col sm:flex-row gap-3 max-w-md",
+  "flex flex-col sm:flex-row gap-3 max-w-md mx-auto items-center",
   formClass
 ].filter(Boolean).join(" ");
 ---
@@ -51,11 +51,11 @@ const formClasses = [
         name="email"
         placeholder={placeholder}
         required
-        class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        class="w-80 sm:flex-1 px-4 py-1.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-center"
       />
       <button
         type="submit"
-        class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+        class="w-auto px-6 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
       >
         {buttonText}
       </button>
