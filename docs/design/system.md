@@ -12,11 +12,19 @@ The site’s visual language is codified in `src/styles/global.css` and a handfu
 - Body copy uses the Inter variable font, while headings switch to Merriweather for a serif accent. Utilities like `.text-small`, `.text-large`, and `.text-huge` map directly to the clamp-based CSS variables for responsive scaling.【F:src/styles/global.css†L48-L96】
 - The `LayoutContainer` component exposes a `prose` flag to enable Tailwind’s typography plugin, ensuring long-form pages adhere to consistent widths and heading treatments.【F:src/components/layout/LayoutContainer.astro†L1-L64】
 
-## Twelve-Column Grid
+## Grid Systems
 
-- `.twelve-grid` establishes the responsive grid shell used on every page. On small screens it collapses to a single column; at `48rem` the layout expands to twelve equal columns.【F:src/styles/global.css†L515-L561】
+### Twelve-Column Grid
+
+- `.twelve-grid` establishes the responsive grid shell used on most pages. On small screens it collapses to a single column; at `48rem` the layout expands to twelve equal columns.【F:src/styles/global.css†L515-L561】
 - Utility classes such as `grid-span-{n}` and `grid-start-{n}` control column spans and offsets on desktop breakpoints, while `grid-pad-{narrow|wide|none}` and `grid-gap-{tight|loose}` adjust padding and rhythm per section.【F:src/styles/global.css†L660-L741】
 - `Layout.astro` attaches these utilities via the `pageWrapper.grid` options so pages can opt into tighter gaps or edge-to-edge padding without redefining wrappers.【F:src/layouts/Layout.astro†L18-L76】
+
+### Ten-Column Grid
+
+- `.ten-grid` is a specialized grid utility introduced for nested layouts within the twelve-column grid. It follows the same responsive pattern—collapsing to single column on mobile and expanding to ten columns at `48rem`.【F:src/styles/global.css†L656-L672】
+- This grid is particularly useful for creating asymmetric content layouts where a 10-column container is nested within a 12-column parent, such as the Books page layout.【F:src/pages/books/index.astro†L48-L82】
+- Use `.grid-gap-normal` with ten-grid layouts to maintain balanced spacing between columns—this modifier provides medium-density gaps between tight and loose settings.【F:src/styles/global.css†L674-L677】
 
 ## Metadata Chips
 

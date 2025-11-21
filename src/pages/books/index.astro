@@ -19,7 +19,7 @@ const books = [
 ];
 ---
 
-<Layout title="Books - Sajal Choudhary" description="Books by Sajal Choudhary" currentPage="/books/"
+<Layout title="Published work - Sajal Choudhary" description="Books written by Sajal" currentPage="/books/"
     pageWrapper={{
         maxWidth: '7xl',
         padding: 'none',
@@ -33,209 +33,259 @@ const books = [
     enableLinkHoverEffect
 >
     <SectionLanding
-        title="Books by Sajal Choudhary"
-        description="Essays and other writing can be found throughout this site: garden, blog posts, prose."
+        title="Published work"
+        description="Books written by Sajal"
         layout="centered"
         headerSize="lg"
         headerMaxWidth="7xl"
-        contentClass="books-layout twelve-grid grid-gap-tight"
+        contentClass="books-layout"
         contentPadding="clamp(2rem, 5vw, 3rem)"
     >
-        <section class="books-list grid-span-8 grid-start-1">
+        <nav class="books-explore twelve-grid grid-gap-tight">
+            <div class="books-explore__content grid-span-10 grid-start-2">
+                <p class="books-explore__text">
+                    Roam the <a href="/garden/" class="underline-link">garden</a>, dip into the <a href="/stream/" class="underline-link">stream</a>, or read an edition of <a href="/nordletter/" class="underline-link">nordletter</a>.
+                </p>
+            </div>
+        </nav>
+
+        <section class="books-list">
             {books.map((book) => (
-                <article class="books-item">
-                    <div class="books-item__year text-2xl font-bold text-textSecondary dark:text-textSecondaryDark">
-                        {book.year}
-                    </div>
+                <article class="books-item twelve-grid grid-gap-tight">
+                    <div class="books-item__content grid-span-10 grid-start-2">
+                        <div class="books-item__inner ten-grid grid-gap-normal">
+                            <div class="books-item__year grid-span-2 grid-start-1">
+                                <div class="books-item__year-sticky">
+                                    <span class="year-text">{book.year}</span>
+                                </div>
+                            </div>
 
-                    {book.coverImage && (
-                        <div class="books-item__cover">
-                            <Image
-                                src={book.coverImage}
-                                alt={`${book.title} cover`}
-                                class="books-item__cover-image"
-                            />
-                        </div>
-                    )}
-
-                    <div class="books-item__details">
-                        <h2 class="books-item__title text-xl font-semibold">
-                            {book.available ? (
-                                <a href={book.url} class="link-hover">
-                                    <em>{book.title}</em>: {book.subtitle}
-                                </a>
-                            ) : (
-                                <span><em>{book.title}</em>: {book.subtitle}</span>
+                            {book.coverImage && (
+                                <div class="books-item__cover grid-span-2 grid-start-3">
+                                    <Image
+                                        src={book.coverImage}
+                                        alt={`${book.title} cover`}
+                                        class="books-item__cover-image"
+                                    />
+                                </div>
                             )}
-                        </h2>
 
-                        {book.description && (
-                            <p class="books-item__description text-textSecondary dark:text-textSecondaryDark leading-relaxed">
-                                {book.description}
-                            </p>
-                        )}
+                            <div class="books-item__details grid-span-6 grid-start-5">
+                                <h2 class="books-item__title text-xl font-semibold">
+                                    {book.available ? (
+                                        <a href={book.url} class="link-hover">
+                                            <em>{book.title}</em>: {book.subtitle}
+                                        </a>
+                                    ) : (
+                                        <span><em>{book.title}</em>: {book.subtitle}</span>
+                                    )}
+                                </h2>
+
+                                {book.description && (
+                                    <p class="books-item__description text-textSecondary dark:text-textSecondaryDark leading-relaxed">
+                                        {book.description}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </article>
             ))}
         </section>
-
-        <aside class="books-sidebar grid-span-4 grid-start-9">
-            <div class="books-sidebar__inner">
-                <div class="books-sidebar__card">
-                    <h2 class="books-sidebar__heading">Explore more writing</h2>
-                    <p class="books-sidebar__copy">
-                        Beyond published books you will find essays, technical documentation, and ongoing
-                        notes spread across the garden, blog, prose archive, and personal stream. Each space
-                        follows the same twelve-column rhythm for easier reading.
-                    </p>
-                    <ul class="books-sidebar__links">
-                        <li><a class="link-hover" href="/garden/">Garden</a></li>
-                        <li><a class="link-hover" href="/blog/">Blog</a></li>
-                        <li><a class="link-hover" href="/prose/">Prose</a></li>
-                        <li><a class="link-hover" href="/stream/">Stream</a></li>
-                    </ul>
-                </div>
-
-                <div class="books-sidebar__card">
-                    <h2 class="books-sidebar__heading">Publishing cadence</h2>
-                    <p class="books-sidebar__copy">
-                        New book projects develop in public notes before they make their way into a finished
-                        manuscript. Subscribe to Nordletter or follow the stream to see drafts, annotations,
-                        and release updates as they land.
-                    </p>
-                    <a class="books-sidebar__cta link-hover" href="/nordletter/">Read the Nordletter</a>
-                </div>
-            </div>
-        </aside>
     </SectionLanding>
 </Layout>
 
 <style>
     .books-layout {
-        align-items: start;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(2rem, 5vw, 3rem);
     }
 
     .books-list {
         display: flex;
         flex-direction: column;
-        gap: clamp(1.75rem, 4vw, 2.75rem);
+        gap: clamp(2.5rem, 5vw, 4rem);
     }
 
     .books-item {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: clamp(1.25rem, 3vw, 1.75rem);
-        padding-bottom: clamp(1.5rem, 4vw, 2.25rem);
+        align-items: start;
+    }
+
+    .books-item__content {
+        padding-bottom: clamp(2rem, 4vw, 3rem);
         border-bottom: 1px solid rgba(148, 163, 184, 0.35);
     }
 
-    .books-item:last-of-type {
+    .books-item:last-of-type .books-item__content {
         border-bottom: none;
         padding-bottom: 0;
     }
 
+    .books-item__inner {
+        align-items: start;
+        gap: clamp(1rem, 2vw, 1.5rem);
+    }
+
     .books-item__year {
+        display: flex;
+    }
+
+    .books-item__year-sticky {
+        position: sticky;
+        top: clamp(4rem, 6vw, 5.5rem);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .year-text {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
         letter-spacing: 0.02em;
+        color: #111827;
+    }
+
+    :global(.dark) .year-text {
+        color: #f9fafb;
+    }
+
+    .books-item__cover {
+        display: flex;
+        align-items: start;
     }
 
     .books-item__cover-image {
-        width: clamp(5.5rem, 12vw, 6.5rem);
+        width: 100%;
+        max-width: clamp(7rem, 15vw, 10rem);
         border-radius: 0.75rem;
         box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
         border: 1px solid rgba(148, 163, 184, 0.35);
     }
 
+    :global(.dark) .books-item__cover-image {
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .books-item__details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
     .books-item__title {
-        margin-bottom: 0.75rem;
+        margin: 0;
         line-height: 1.3;
+        font-size: clamp(1.125rem, 2.5vw, 1.25rem);
     }
 
     .books-item__description {
         margin: 0;
+        font-size: clamp(0.95rem, 2vw, 1rem);
     }
 
-    .books-sidebar {
-        align-self: start;
+    .books-explore {
+        margin-bottom: clamp(2rem, 4vw, 3rem);
+        padding-bottom: clamp(1.5rem, 3vw, 2rem);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.25);
     }
 
-    .books-sidebar__inner {
-        position: sticky;
-        top: clamp(1.75rem, 4vw, 3rem);
+    .books-explore__content {
         display: flex;
-        flex-direction: column;
-        gap: clamp(1.5rem, 4vw, 2.5rem);
+        justify-content: center;
     }
 
-    .books-sidebar__card {
-        padding: clamp(1.5rem, 4vw, 2rem);
-        border-radius: 1rem;
-        background: rgba(15, 23, 42, 0.04);
-        border: 1px solid rgba(148, 163, 184, 0.25);
-        backdrop-filter: blur(12px);
-    }
-
-    :global(.dark) .books-sidebar__card {
-        background: rgba(15, 23, 42, 0.35);
-        border-color: rgba(148, 163, 184, 0.35);
-    }
-
-    .books-sidebar__heading {
-        font-size: 1rem;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        color: var(--text-primary, #0f172a);
-    }
-
-    :global(.dark) .books-sidebar__heading {
-        color: #e2e8f0;
-    }
-
-    .books-sidebar__copy {
-        margin-bottom: 0.75rem;
-        font-size: 0.95rem;
-        line-height: 1.6;
-        color: var(--text-secondary, #475569);
-    }
-
-    :global(.dark) .books-sidebar__copy {
-        color: #cbd5f5;
-    }
-
-    .books-sidebar__links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
+    .books-explore__text {
         margin: 0;
-        padding: 0;
-        list-style: none;
+        font-size: clamp(1.05rem, 2.5vw, 1.15rem);
+        line-height: 1.6;
+        color: #475569;
+        text-align: center;
+    }
+
+    :global(.dark) .books-explore__text {
+        color: #cbd5e1;
+    }
+
+    .underline-link {
+        color: inherit;
         font-weight: 500;
+        text-decoration: none;
+        border-radius: 0.25em;
+        padding: 0.1em 0.2em;
+        margin: -0.1em -0.2em;
+        background-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 55%,
+            var(--link-highlight) 55%,
+            var(--link-highlight) 100%
+        );
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        transition: background 0.2s ease, color 0.2s ease;
     }
 
-    .books-sidebar__cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-weight: 600;
+    .underline-link:hover {
+        background-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 55%,
+            var(--link-highlight-hover) 55%,
+            var(--link-highlight-hover) 100%
+        );
     }
 
-    @media (min-width: 48rem) {
-        .books-item {
-            grid-template-columns: minmax(0, 2.5rem) minmax(0, 6.5rem) minmax(0, 1fr);
-            align-items: start;
-        }
-
-        .books-item__year {
-            padding-top: 0.25rem;
-        }
+    .underline-link:visited {
+        color: inherit;
     }
 
-    @media (max-width: 47.9375rem) {
-        .books-sidebar__inner {
+    /* Responsive adjustments */
+    @media (max-width: 47.999rem) {
+        .books-item__year-sticky {
             position: static;
         }
 
-        .books-sidebar {
-            order: -1;
+        .books-item__inner {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto auto;
+            gap: 1rem 1rem;
+        }
+
+        .books-item__year {
+            grid-column: 1 / -1;
+            grid-row: 1;
+        }
+
+        .books-item__cover {
+            grid-column: 1;
+            grid-row: 2;
+            flex-shrink: 0;
+        }
+
+        .books-item__details {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .year-text {
+            font-size: 1.75rem;
+        }
+
+        .books-item__cover-image {
+            max-width: 5rem;
+        }
+    }
+
+    @media (min-width: 48rem) {
+        .books-item__year {
+            grid-row: 1 / -1;
+        }
+    }
+
+    @media (min-width: 64rem) {
+        .year-text {
+            font-size: clamp(2.25rem, 4vw, 3.5rem);
         }
     }
 </style>
