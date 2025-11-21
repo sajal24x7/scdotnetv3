@@ -113,37 +113,35 @@ const getSpanClass = (post: any) => {
   :global([data-garden-grid]) {
     --grid-column-gap: clamp(0.75rem, 2.5vw, 1.5rem);
     --grid-row-gap: clamp(1rem, 3vw, 1.75rem);
-    display: block;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(1, 1fr);
     column-gap: var(--grid-column-gap);
-    column-fill: balance;
-    column-count: 1;
+    row-gap: var(--grid-row-gap);
   }
 
   @media (min-width: 40rem) {
     :global([data-garden-grid]) {
-      column-count: 2;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media (min-width: 64rem) {
     :global([data-garden-grid]) {
-      column-count: 3;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
   @media (min-width: 88rem) {
     :global([data-garden-grid]) {
-      column-count: 4;
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
   .garden-card {
     position: relative;
-    display: inline-block;
     width: 100%;
     min-width: 0;
-    break-inside: avoid;
-    margin-bottom: var(--grid-row-gap);
   }
 
   .garden-card :global(.card),
@@ -151,9 +149,41 @@ const getSpanClass = (post: any) => {
     height: 100%;
   }
 
-  .garden-card.grid-span-12,
-  .garden-card.grid-span-6 {
-    column-span: all;
+  /* Grid span classes - cards that span multiple columns */
+  /* On mobile, span-6 and span-12 take full width, others flow naturally in single column */
+  .garden-card.grid-span-6,
+  .garden-card.grid-span-12 {
+    grid-column: 1 / -1;
+  }
+
+  /* Tablet (2 columns) - span-6 and span-12 take full width */
+  @media (min-width: 40rem) {
+    .garden-card.grid-span-6,
+    .garden-card.grid-span-12 {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* Desktop (3 columns) - span-6 takes 2 cols, span-12 takes full width */
+  @media (min-width: 64rem) {
+    .garden-card.grid-span-6 {
+      grid-column: span 2;
+    }
+
+    .garden-card.grid-span-12 {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* Large desktop (4 columns) - span-6 takes 2 cols, span-12 takes full width */
+  @media (min-width: 88rem) {
+    .garden-card.grid-span-6 {
+      grid-column: span 2;
+    }
+
+    .garden-card.grid-span-12 {
+      grid-column: 1 / -1;
+    }
   }
 
   .garden-card :global(.card--no-image:hover),
