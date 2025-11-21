@@ -143,6 +143,12 @@ const getSpanClass = (post: any) => {
     min-width: 0;
   }
 
+  /* Override global grid-span classes for garden cards - default is single column */
+  .garden-card.grid-span-3,
+  .garden-card.grid-span-4 {
+    grid-column: auto;
+  }
+
   .garden-card :global(.card),
   .garden-card :global(.book-card) {
     height: 100%;
