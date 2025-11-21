@@ -246,9 +246,26 @@ const books = [
         }
 
         .books-item__inner {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto auto;
+            gap: 1rem 1rem;
+        }
+
+        .books-item__year {
+            grid-column: 1 / -1;
+            grid-row: 1;
+        }
+
+        .books-item__cover {
+            grid-column: 1;
+            grid-row: 2;
+            flex-shrink: 0;
+        }
+
+        .books-item__details {
+            grid-column: 2;
+            grid-row: 2;
         }
 
         .year-text {
@@ -256,7 +273,7 @@ const books = [
         }
 
         .books-item__cover-image {
-            max-width: 6rem;
+            max-width: 5rem;
         }
     }
 
