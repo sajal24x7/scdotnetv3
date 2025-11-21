@@ -113,37 +113,36 @@ const getSpanClass = (post: any) => {
   :global([data-garden-grid]) {
     --grid-column-gap: clamp(0.75rem, 2.5vw, 1.5rem);
     --grid-row-gap: clamp(1rem, 3vw, 1.75rem);
-    display: block;
-    column-gap: var(--grid-column-gap);
-    column-fill: balance;
-    column-count: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--grid-row-gap) var(--grid-column-gap);
+    grid-auto-flow: row;
+    align-items: start;
   }
 
   @media (min-width: 40rem) {
     :global([data-garden-grid]) {
-      column-count: 2;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media (min-width: 64rem) {
     :global([data-garden-grid]) {
-      column-count: 3;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
   @media (min-width: 88rem) {
     :global([data-garden-grid]) {
-      column-count: 4;
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
   .garden-card {
     position: relative;
-    display: inline-block;
+    display: flex;
     width: 100%;
     min-width: 0;
-    break-inside: avoid;
-    margin-bottom: var(--grid-row-gap);
   }
 
   .garden-card :global(.card),
