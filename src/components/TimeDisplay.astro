@@ -58,7 +58,7 @@ if (shouldInjectRelativeScript) {
   {displayTime}
 </time>
 
-{isRelative && (
+{shouldInjectRelativeScript && (
   <script type="module" src={relativeTimeIslandScript}></script>
 )}
 
