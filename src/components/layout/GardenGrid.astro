@@ -113,15 +113,41 @@ const getSpanClass = (post: any) => {
   :global([data-garden-grid]) {
     --grid-column-gap: clamp(0.75rem, 2.5vw, 1.5rem);
     --grid-row-gap: clamp(1rem, 3vw, 1.75rem);
-    position: relative;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--grid-row-gap) var(--grid-column-gap);
+    grid-auto-rows: minmax(0, auto);
+    align-items: start;
+  }
+
+  @media (min-width: 40rem) {
+    :global([data-garden-grid]) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    :global([data-garden-grid]) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 88rem) {
+    :global([data-garden-grid]) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   .garden-card {
-    position: absolute;
+    position: relative;
     display: flex;
     min-width: 0;
-    box-sizing: border-box;
+  }
+
+  /* Override global grid-span classes for garden cards - default is single column */
+  .garden-card.grid-span-3,
+  .garden-card.grid-span-4 {
+    grid-column: auto;
   }
 
   .garden-card :global(.card),
@@ -184,84 +210,3 @@ const getSpanClass = (post: any) => {
     text-decoration-color: rgba(var(--color-text-primary), 0.6);
   }
 </style>
-
-<script>
-  function initMasonryGrid() {
-    const grids = document.querySelectorAll('[data-garden-grid]');
-
-    grids.forEach(grid => {
-      const layoutMasonry = () => {
-        const cards = Array.from(grid.querySelectorAll('[data-garden-card]'));
-        if (!cards.length) return;
-
-        // Get computed gap values
-        const style = getComputedStyle(grid);
-        const columnGap = parseFloat(style.getPropertyValue('--grid-column-gap')) || 16;
-        const rowGap = parseFloat(style.getPropertyValue('--grid-row-gap')) || 24;
-
-        // Determine number of columns based on viewport
-        const viewportWidth = window.innerWidth;
-        let columns = 1;
-        if (viewportWidth >= 1408) columns = 4; // 88rem
-        else if (viewportWidth >= 1024) columns = 3; // 64rem
-        else if (viewportWidth >= 640) columns = 2; // 40rem
-
-        // Calculate column width
-        const gridWidth = grid.offsetWidth;
-        const columnWidth = (gridWidth - (columns - 1) * columnGap) / columns;
-
-        // Track column heights
-        const columnHeights = new Array(columns).fill(0);
-
-        // Position each card in row-by-row order
-        cards.forEach((card, index) => {
-          // Determine column based on index (maintains left-to-right order)
-          const column = index % columns;
-
-          // Calculate position
-          const x = column * (columnWidth + columnGap);
-          const y = columnHeights[column];
-
-          // Apply position and width
-          card.style.left = `${x}px`;
-          card.style.top = `${y}px`;
-          card.style.width = `${columnWidth}px`;
-
-          // Update column height
-          const cardHeight = card.offsetHeight;
-          columnHeights[column] += cardHeight + rowGap;
-        });
-
-        // Set container height
-        const maxHeight = Math.max(...columnHeights) - rowGap;
-        grid.style.height = `${maxHeight}px`;
-      };
-
-      // Layout on load
-      layoutMasonry();
-
-      // Re-layout on resize with debounce
-      let resizeTimeout: ReturnType<typeof setTimeout>;
-      const debouncedLayout = () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(layoutMasonry, 150);
-      };
-
-      window.addEventListener('resize', debouncedLayout);
-
-      // Re-layout when images load
-      const images = grid.querySelectorAll('img');
-      images.forEach(img => {
-        if (img.complete) return;
-        img.addEventListener('load', layoutMasonry);
-      });
-    });
-  }
-
-  // Initialize on DOMContentLoaded
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMasonryGrid);
-  } else {
-    initMasonryGrid();
-  }
-</script>
