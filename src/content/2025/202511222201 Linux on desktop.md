@@ -1,14 +1,16 @@
 ---
-title: "Linux on desktop"
-slug: "linux-on-desktop"
-pubDate: 2025-11-22T22:03:58+02:00
-updatedDate: 2025-11-22T22:03:58+02:00
+title: Linux on desktop
+slug: linux-on-desktop
+pubDate: 2025-11-22T20:03:58.000Z
+updatedDate: 2025-11-22T20:03:58.000Z
 category: micro
 tags:
   - linux
   - windows
   - msft
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115595141771402660'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6alskvn6p2n'
 ---
 [Screw it, I’m installing Linux by Nathan Edwards](https://www.theverge.com/tech/823337/switching-linux-gaming-desktop-cachyos)
 
