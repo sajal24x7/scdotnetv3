@@ -9,8 +9,9 @@ tags:
 format: audio
 author: Cory Doctorow
 bookCover: enshittification.jpg
-bookStatus: reading
+bookStatus: read
 startedReading: 2025-11-15T08:04:07.000Z
+finished
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115555989670585287'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5p7gaypm72s'
