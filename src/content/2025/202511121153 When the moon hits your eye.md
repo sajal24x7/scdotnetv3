@@ -9,6 +9,7 @@ tags:
 format: ebook
 author: John Scalzi
 bookStatus: read
+bookRating: like
 bookCover: 'when-the-moon-hits-your-eye.jpg'
 startedReading: 2025-11-07T07:05:11.000Z
 finishedReading: 2025-11-20T14:05:11.000Z
