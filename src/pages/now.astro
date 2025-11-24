@@ -45,10 +45,6 @@ const renderedPosts = activeNowPosts.map(post => ({
         hasItems={renderedPosts.length > 0}
         togglePage="now"
     >
-        <p slot="intro" class="progress-page__intro">
-            View <a href="/done/" class="progress-page__link">completed tasks</a> when you want to see what recently wrapped.
-        </p>
-
         {renderedPosts.map((post) => (
             <article class="progress-card">
                 <div class="progress-card__meta">

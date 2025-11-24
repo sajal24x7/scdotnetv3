@@ -61,10 +61,6 @@ const renderedPosts: DonePost[] = doneNowPosts.map(post => {
         hasItems={renderedPosts.length > 0}
         togglePage="done"
     >
-        <p slot="intro" class="progress-page__intro">
-            Looking for active work? Visit the <a href="/now/" class="progress-page__link">Now page</a> to see what's in motion.
-        </p>
-
         {renderedPosts.map((post) => (
             <article class="progress-card">
                 <div class="progress-card__meta">
