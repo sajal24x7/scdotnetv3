@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "202511130717 ChatGPT has renamed personalities now"
             }
+          },
+          {
+            "id": "e6326accf461ecef",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.10.3"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.10.3"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -171,8 +184,14 @@
       "zk-prefixer:Create new unique note": false
     }
   },
-  "active": "26eff8e7ea3fa54d",
+  "active": "716cd86a29cef966",
   "lastOpenFiles": [
+    "2025/202511241112 The Cloudflare outage was a good thing.md",
+    "2025/202511231333 How to write commit messages.md",
+    "2025/202511231333 How to write commit messages.txt",
+    "2025/202511242048 How to renew access token to Threads API.md",
+    "2025/202511222201 Linux on desktop.md",
+    "2025/202511222157 Take your Vitamin D supplements.md",
     "2025/202511222146 NL 80.md",
     "2025/202511191657 The goal of software engineering.md",
     "2025/202511191517 Continuous delivery.md",
@@ -196,18 +215,12 @@
     "2025/202511091228 Maintenance vs making.md",
     "2025/202511061439 Seth Godin on how to delegate.md",
     "2025/202511061113 Universe Expansion May Be Slowing.md",
-    "2025/202511051106 Google will be changing App Store rules globally.md",
-    "2025/202511031604 OLED MacBook Air to come out in 2027.md",
-    "2025/202511031147 The Internet was made for privacy.md",
-    "2024/202405051842 NL6 - Hyvä Vappu 2.md",
-    "2025-11-03.md",
     "2025/202411301215 Neruda, Pablo, and W. S. Merwin - Twenty Love Poems and a Song of Despair.txt",
     "2025/202511021128 NL78.txt",
     "2025/202510231042 Work at a natural pace.txt",
     "2025/202510221809 Pull vs push method for getting projects.txt",
     "2025/202510221043 Do less work.txt",
     "2025/202510212241 Giving books away for free.txt",
-    "2025/202510161757 Devops Finland October event.txt",
-    "2025/202510111435 NL75.txt"
+    "2025/202510161757 Devops Finland October event.txt"
   ]
 }
