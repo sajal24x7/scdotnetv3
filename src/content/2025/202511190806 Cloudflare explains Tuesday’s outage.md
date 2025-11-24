@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115574885239973697'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5xlwxp34k2e'
+  - 'https://www.threads.com/@sajal24x7/post/DRcyjBqkfP-'
 ---
 [Cloudflare explains Tuesday’s outage that temporarily took down ChatGPT by Richard Lawler](https://www.theverge.com/news/823711/cloudflare-outage-postmortem)
 

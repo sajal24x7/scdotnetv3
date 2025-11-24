@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115570067569194228'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5vhi5a7452f'
+  - 'https://www.threads.com/@sajal24x7/post/DRcyhSSkVo_'
 ---
 [Microsoft Mitigated the Largest Cloud DDoS Ever Recorded, 15.7 Tbps - Slashdot by ](https://it.slashdot.org/story/25/11/17/2121230/microsoft-mitigated-the-largest-cloud-ddos-ever-recorded-157-tbps?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 

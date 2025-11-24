@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115595141771402660'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6alskvn6p2n'
+  - 'https://www.threads.com/@sajal24x7/post/DRcymidkbIF'
 ---
 [Screw it, I’m installing Linux by Nathan Edwards](https://www.theverge.com/tech/823337/switching-linux-gaming-desktop-cachyos)
 

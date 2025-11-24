@@ -12,6 +12,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115574885122934677'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5xlwvvbnd22'
+  - 'https://www.threads.com/@sajal24x7/post/DRcyiTLkaGc'
 ---
 [Three Years from GPT-3 to Gemini 3 by Ethan Mollick](https://www.oneusefulthing.org/p/three-years-from-gpt-3-to-gemini)
 

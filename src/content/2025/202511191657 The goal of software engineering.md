@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115581026089976254'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m62d7iciwl2d'
+  - 'https://www.threads.com/@sajal24x7/post/DRcykwhkUlZ'
 ---
 Read first in [continuous delivery.](#)
 
