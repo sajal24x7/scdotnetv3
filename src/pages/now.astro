@@ -5,7 +5,6 @@ import TimeDisplay from '../components/TimeDisplay.astro';
 import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import ProgressLayout from '../components/layout/ProgressLayout.astro';
 import { parseMarkdown } from '../utils/markdown';
-import { formatDate } from '../utils/dateFormat';
 import '../styles/progress-page.css';
 
 // Get all posts dynamically across year folders and filter to category 'now' and status 'active' (or undefined for backward compatibility)
@@ -20,40 +19,6 @@ const renderedPosts = activeNowPosts.map(post => ({
     renderedContent: post.body ? parseMarkdown(post.body) : null
 }));
 
-const activeCount = renderedPosts.length;
-const latestUpdateDate = renderedPosts[0]?.data.updatedDate ?? renderedPosts[0]?.data.pubDate;
-const latestUpdate = latestUpdateDate ? formatDate(latestUpdateDate) : null;
-
-const quickLinks = [
-    {
-        href: '/done/',
-        label: 'Browse completed tasks',
-        description: 'Review recently wrapped projects and milestones.'
-    },
-    {
-        href: '/stream/',
-        label: 'Read the stream',
-        description: 'Catch up on blog posts, photos, and micro updates.'
-    },
-    {
-        href: '/garden/',
-        label: 'Explore the garden',
-        description: 'Longer-term notes and research that inform these efforts.'
-    }
-];
-
-const summaryStats = activeCount > 0
-    ? [
-        {
-            label: 'Active updates',
-            value: String(activeCount)
-        },
-        {
-            label: 'Last updated',
-            value: latestUpdate ?? '—'
-        }
-    ]
-    : [];
 ---
 
 <Layout
@@ -78,8 +43,7 @@ const summaryStats = activeCount > 0
         pageTitle="Now"
         pageDescription="A snapshot of what I'm currently focused on, thinking about, and working towards."
         hasItems={renderedPosts.length > 0}
-        stats={summaryStats}
-        quickLinks={quickLinks}
+        togglePage="now"
     >
         <p slot="intro" class="progress-page__intro">
             View <a href="/done/" class="progress-page__link">completed tasks</a> when you want to see what recently wrapped.

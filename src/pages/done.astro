@@ -1,7 +1,7 @@
 ---
 import { getAllPosts, type Post } from '../utils/content';
 import Layout from '../layouts/Layout.astro';
-import { formatDate, formatDateRange } from '../utils/dateFormat';
+import { formatDateRange } from '../utils/dateFormat';
 import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import ProgressLayout from '../components/layout/ProgressLayout.astro';
 import { parseMarkdown } from '../utils/markdown';
@@ -35,40 +35,6 @@ const renderedPosts: DonePost[] = doneNowPosts.map(post => {
     };
 });
 
-const completedCount = renderedPosts.length;
-const lastCompletedDate = renderedPosts[0]?.endDate;
-const lastCompleted = lastCompletedDate ? formatDate(lastCompletedDate) : null;
-
-const quickLinks = [
-    {
-        href: '/now/',
-        label: 'Check current focus',
-        description: 'See what is in motion on the Now page.'
-    },
-    {
-        href: '/stream/',
-        label: 'Read recent updates',
-        description: 'Browse the stream for detailed write-ups.'
-    },
-    {
-        href: '/bookshelf/',
-        label: 'Visit the bookshelf',
-        description: 'Track reading notes that influence future work.'
-    }
-];
-
-const summaryStats = completedCount > 0
-    ? [
-        {
-            label: 'Completed items',
-            value: String(completedCount)
-        },
-        {
-            label: 'Last completion',
-            value: lastCompleted ?? '—'
-        }
-    ]
-    : [];
 ---
 
 <Layout
@@ -93,8 +59,7 @@ const summaryStats = completedCount > 0
         pageTitle="Done"
         pageDescription="Completed tasks and projects that were previously in progress. These represent milestones achieved and goals accomplished."
         hasItems={renderedPosts.length > 0}
-        stats={summaryStats}
-        quickLinks={quickLinks}
+        togglePage="done"
     >
         <p slot="intro" class="progress-page__intro">
             Looking for active work? Visit the <a href="/now/" class="progress-page__link">Now page</a> to see what's in motion.

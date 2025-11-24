@@ -1,5 +1,6 @@
 ---
 import PageHeader from './PageHeader.astro';
+import PageToggleTitle from './PageToggleTitle.astro';
 
 export interface ProgressLayoutStat {
     label: string;
@@ -19,6 +20,7 @@ interface Props {
     stats?: ProgressLayoutStat[];
     summaryTitle?: string;
     quickLinks?: ProgressLayoutQuickLink[];
+    togglePage?: 'now' | 'done';
 }
 
 const {
@@ -27,23 +29,31 @@ const {
     hasItems,
     stats = [],
     summaryTitle = 'Summary',
-    quickLinks = []
+    quickLinks = [],
+    togglePage
 } = Astro.props as Props;
 
 const shouldShowSidebar = stats.length > 0 || quickLinks.length > 0;
 ---
 <section class="progress-page__layout twelve-grid">
     <header class="progress-page__header grid-span-full">
-        <PageHeader
-            title={pageTitle}
-            description={pageDescription}
-            layout="centered"
-            size="lg"
-            maxWidth="7xl"
-        />
+        {togglePage ? (
+            <div class="progress-page__header-content">
+                <PageToggleTitle currentPage={togglePage} />
+                <p class="progress-page__header-description">{pageDescription}</p>
+            </div>
+        ) : (
+            <PageHeader
+                title={pageTitle}
+                description={pageDescription}
+                layout="centered"
+                size="lg"
+                maxWidth="7xl"
+            />
+        )}
     </header>
 
-    <section class="progress-page__content grid-span-8 grid-start-1">
+    <section class={`progress-page__content ${shouldShowSidebar ? 'grid-span-8 grid-start-1' : 'grid-span-full'}`}>
         {Astro.slots.has('intro') && <slot name="intro" />}
 
         {hasItems ? (
