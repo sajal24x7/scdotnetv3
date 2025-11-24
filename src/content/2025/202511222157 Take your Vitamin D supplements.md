@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115595117935565000'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6alhpvist25'
+  - 'https://www.threads.com/@sajal24x7/post/DRczV5CEfMD'
 ---
 [We’re learning more about what vitamin D does to our bodies by Jessica Hamzelou](https://www.technologyreview.com/2025/11/21/1128206/vitamin-d-bodies-bone-health-immune/)
 

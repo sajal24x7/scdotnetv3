@@ -1,11 +1,14 @@
 ---
-title: "How to write commit messages"
-slug: "how-to-write-commit-messages"
-pubDate: 2025-11-24T20:54:37+02:00
-updatedDate: 2025-11-24T20:54:37+02:00
+title: How to write commit messages
+slug: how-to-write-commit-messages
+pubDate: 2025-11-24T18:54:37.000Z
+updatedDate: 2025-11-24T18:54:37.000Z
 category: til
-tags:
-
+tags: null
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115606195515946075'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6fiv7p5ue2m'
+  - 'https://www.threads.com/@sajal24x7/post/DRczWrhEfep'
 ---
 The authors of [continuous delivery](#) prefer commit messages be multiple paragraph.
 

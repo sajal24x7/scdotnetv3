@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115603912587553855'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6eih3rnaj25'
+  - 'https://www.threads.com/@sajal24x7/post/DRczXYvke8Q'
 ---
 [The CloudFlare outage was a good thing](https://gist.github.com/jbreckmckye/32587f2907e473dd06d68b0362fb0048)
 

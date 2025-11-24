@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115578326837766591'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5z4tywly322'
+  - 'https://www.threads.com/@sajal24x7/post/DRczUg_Efca'
 ---
 I wrote a solution to a [python](/now/learning-python/) exercise today. With the [University of Helsinki MooC](https://programming-25.mooc.fi), a fun thing that they do is they have an option to show model solution. I guess some LLM provides a solution for the exercise as well. 
 

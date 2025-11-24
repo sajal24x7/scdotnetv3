@@ -1,14 +1,17 @@
 ---
-title: "How to renew access token to Threads API"
-slug: "how-to-renew-access-token-to-threads-api"
-pubDate: 2025-11-24T20:54:28+02:00
-updatedDate: 2025-11-24T20:54:28+02:00
+title: How to renew access token to Threads API
+slug: how-to-renew-access-token-to-threads-api
+pubDate: 2025-11-24T18:54:28.000Z
+updatedDate: 2025-11-24T18:54:28.000Z
 category: til
 tags:
   - git
   - facebook
   - threads
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115606196422448533'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6fivmtdsl2p'
+  - 'https://www.threads.com/@sajal24x7/post/DRczYWWkb6y'
 ---
 I use a Github workflow to sync content to Threads, Mastodon and Bluesky. 
 
