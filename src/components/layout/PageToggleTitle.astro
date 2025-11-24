@@ -1,0 +1,76 @@
+---
+interface Props {
+    currentPage: 'now' | 'done';
+}
+
+const { currentPage } = Astro.props;
+---
+
+<div class="page-toggle-title">
+    {currentPage === 'now' ? (
+        <h1 class="page-toggle-title__text">
+            <span class="page-toggle-title__active">Now</span>
+            <span class="page-toggle-title__separator">/</span>
+            <a href="/done/" class="page-toggle-title__inactive">Done</a>
+        </h1>
+    ) : (
+        <h1 class="page-toggle-title__text">
+            <a href="/now/" class="page-toggle-title__inactive">Now</a>
+            <span class="page-toggle-title__separator">/</span>
+            <span class="page-toggle-title__active">Done</span>
+        </h1>
+    )}
+</div>
+
+<style>
+    .page-toggle-title {
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .page-toggle-title__text {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .page-toggle-title__active {
+        color: rgb(30 41 59);
+    }
+
+    :global(.dark) .page-toggle-title__active {
+        color: rgb(226 232 240);
+    }
+
+    .page-toggle-title__separator {
+        color: rgb(148 163 184);
+        font-weight: 400;
+    }
+
+    :global(.dark) .page-toggle-title__separator {
+        color: rgb(100 116 139);
+    }
+
+    .page-toggle-title__inactive {
+        color: rgb(148 163 184);
+        text-decoration: none;
+        transition: color 200ms ease;
+    }
+
+    :global(.dark) .page-toggle-title__inactive {
+        color: rgb(100 116 139);
+    }
+
+    .page-toggle-title__inactive:hover {
+        color: rgb(79 70 229);
+    }
+
+    :global(.dark) .page-toggle-title__inactive:hover {
+        color: rgb(129 140 248);
+    }
+</style>
