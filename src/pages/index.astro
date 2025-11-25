@@ -20,7 +20,7 @@ const streamPostsRaw = getPostsByCategory(allPosts, 'stream', { limit: 5 });
 const streamPosts = streamPostsRaw.map(transformPost);
 
 // Curate the latest garden notes, stories, til entries, and more
-const gardenPostsRaw = getPostsByCategory(allPosts, 'garden', { limit: 8 });
+const gardenPostsRaw = getPostsByCategory(allPosts, 'garden', { limit: 9 });
 const gardenPosts = gardenPostsRaw.map(transformPost);
 
 // Load the featured pool from the curated data file
