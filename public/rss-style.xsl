@@ -81,28 +81,25 @@
             }
             
             .tag {
-              color: #c4b5fd;
-              border-color: rgba(196, 181, 253, 0.4);
-              background: rgba(167, 139, 250, 0.12);
+              color: rgb(167, 139, 250);
+              border-color: rgba(167, 139, 250, 0.8);
+              background-color: rgba(167, 139, 250, 0.16);
             }
 
             .tag:hover {
-              color: #ddd6fe;
-              border-color: #c4b5fd;
-              background: rgba(167, 139, 250, 0.2);
-              transform: translateY(-1px);
+              color: rgb(196, 181, 253);
+              border-color: rgba(196, 181, 253, 0.92);
+              background-color: rgba(167, 139, 250, 0.26);
+              box-shadow: 0 0 0 1px rgba(196, 181, 253, 0.18);
             }
 
             .category-tag {
-              color: #fbbf24;
-              border-color: rgba(251, 191, 36, 0.3);
-              background: rgba(245, 158, 11, 0.15);
+              background-color: rgba(148, 163, 184, 0.2);
+              color: inherit;
             }
 
             .category-tag:hover {
-              background: rgba(245, 158, 11, 0.25);
-              border-color: #fbbf24;
-              transform: translateY(-1px);
+              background-color: rgba(148, 163, 184, 0.28);
             }
             
             .post-description {
@@ -340,26 +337,30 @@
           }
           
           .tag {
-            display: inline-block;
-            color: #8b5cf6;
-            text-decoration: none;
-            padding: 0.25rem 0.65rem;
-            border: 1px solid rgba(139, 92, 246, 0.4);
-            border-radius: 0.375rem;
-            font-size: 0.75rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            background: rgba(139, 92, 246, 0.08);
-            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            letter-spacing: 0.025em;
+            line-height: 1.1;
+            white-space: nowrap;
+            color: rgb(139, 92, 246);
+            border: 1px solid rgba(139, 92, 246, 0.85);
+            background-color: rgba(139, 92, 246, 0.08);
+            text-decoration: none;
+            transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
           }
 
           .tag:hover {
-            color: #7c3aed;
-            border-color: #8b5cf6;
-            background: rgba(139, 92, 246, 0.15);
-            transform: translateY(-1px);
+            color: rgb(124, 58, 237);
+            border-color: rgba(124, 58, 237, 0.95);
+            background-color: rgba(139, 92, 246, 0.16);
+            box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.12);
           }
           
           /* Content styling */
@@ -402,24 +403,27 @@
           }
           
           .category-tag {
-            display: inline-block;
-            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.5rem;
+            border: none;
+            background-color: rgba(17, 24, 39, 0.08);
+            color: inherit;
+            text-decoration: none;
+            font-size: 0.7rem;
             font-weight: 600;
-            text-transform: lowercase;
-            letter-spacing: 0.05em;
-            color: #ca8a04;
-            background: rgba(234, 179, 8, 0.1);
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            border: 1px solid rgba(234, 179, 8, 0.3);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1.1;
             white-space: nowrap;
-            transition: all 0.2s ease;
+            transition: background-color 0.2s ease, color 0.2s ease;
           }
 
           .category-tag:hover {
-            background: rgba(234, 179, 8, 0.2);
-            border-color: #eab308;
-            transform: translateY(-1px);
+            background-color: rgba(17, 24, 39, 0.12);
           }
           
           .post-description {

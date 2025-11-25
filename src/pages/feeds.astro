@@ -48,11 +48,11 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     </header>
 
     <!-- About Feeds -->
-    <article class="grid-span-8 grid-start-3 progress-card">
-      <div class="progress-card__meta">
+    <article class="grid-span-8 grid-start-3 progress-card about-feeds-card">
+      <div class="progress-card__meta about-feeds-header">
         <h2 class="progress-card__title">About Feeds</h2>
       </div>
-      <div class="progress-card__body">
+      <div class="progress-card__body about-feeds-body">
         <p class="progress-page__intro" style="margin-bottom: 1.5rem;">
           RSS lets you follow what I (or others that you choose to follow) write. I use NetNewsWire as my reader of choice. There are other options like Feedly for example.
         </p>
@@ -85,52 +85,25 @@ const transformedRecentPosts = recentPosts.map(transformPost);
       </div>
     </article>
 
-    <!-- Feed Buttons -->
-    <section class="grid-span-full twelve-grid grid-gap-tight">
-      <a
-        href="/rss.xml"
-        class="grid-span-3 flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm"
-      >
-        <svg class="w-4 h-4 opacity-60" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z" />
-        </svg>
-        <span>Everything</span>
-      </a>
-
-      <a
-        href="/garden/rss.xml"
-        class="grid-span-3 flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm"
-      >
-        <svg class="w-4 h-4 opacity-60" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z" />
-        </svg>
-        <span>Garden</span>
-      </a>
-
-      <a
-        href="/stream/rss.xml"
-        class="grid-span-3 flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm"
-      >
-        <svg class="w-4 h-4 opacity-60" fill="currentColor" viewBox="0 0 20 20">
-          <path
-            fill-rule="evenodd"
-            d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-            clip-rule="evenodd"
-          />
-        </svg>
-        <span>Stream</span>
-      </a>
-
-      <a
-        href="/nordletter/rss.xml"
-        class="grid-span-3 flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm"
-      >
-        <svg class="w-4 h-4 opacity-60" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-        </svg>
-        <span>NordLetter</span>
-      </a>
+    <!-- Feed Buttons Section -->
+    <section class="grid-span-8 grid-start-3 feed-buttons-section">
+      <p class="feed-buttons-description">
+        This website offers four aptly named feeds - everything/garden/stream/nordletter.
+      </p>
+      <div class="feed-buttons-grid">
+        <a href="/rss.xml" class="feed-button">
+          Everything
+        </a>
+        <a href="/garden/rss.xml" class="feed-button">
+          Garden
+        </a>
+        <a href="/stream/rss.xml" class="feed-button">
+          Stream
+        </a>
+        <a href="/nordletter/rss.xml" class="feed-button">
+          NordLetter
+        </a>
+      </div>
     </section>
 
     <!-- Recent Posts -->
@@ -141,10 +114,28 @@ const transformedRecentPosts = recentPosts.map(transformPost);
 </Layout>
 
 <style>
+  /* Center-align About Feeds section */
+  .about-feeds-card {
+    text-align: center;
+  }
+
+  .about-feeds-header,
+  .about-feeds-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-feeds-body p {
+    text-align: center;
+  }
+
   .feeds-buttons {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   .feeds-button {
@@ -203,10 +194,63 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     border-color: #8b5cf6;
   }
 
+  /* Feed Buttons Section */
+  .feed-buttons-section {
+    text-align: center;
+  }
+
+  .feed-buttons-description {
+    font-size: 1.05rem;
+    color: rgb(71 85 105);
+    margin: 0 0 1.5rem 0;
+  }
+
+  :global(.dark) .feed-buttons-description {
+    color: rgb(148 163 184);
+  }
+
+  .feed-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .feed-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: #8b5cf6;
+    color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .feed-button:hover {
+    background: #7c3aed;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .feed-button:focus-visible {
+    outline: 2px solid #7c3aed;
+    outline-offset: 2px;
+  }
+
   @media (min-width: 640px) {
     .feeds-buttons {
       flex-direction: row;
       flex-wrap: wrap;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .feed-buttons-grid {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 </style>
