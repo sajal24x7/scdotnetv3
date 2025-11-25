@@ -34,8 +34,8 @@ const transformedRecentPosts = recentPosts.map(transformPost);
   enableSearchModal
   enableLinkHoverEffect
 >
-  <section class="progress-page__layout twelve-grid">
-    <header class="grid-span-full progress-page__header">
+  <section class="progress-page__layout twelve-grid feeds-page-layout">
+    <header class="grid-span-full progress-page__header feeds-page-header">
       <div class="progress-page__header-content">
         <PageHeader
           title="RSS Feeds"
@@ -48,7 +48,7 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     </header>
 
     <!-- About Feeds -->
-    <article class="grid-span-full progress-card about-feeds-card">
+    <article class="grid-span-6 progress-card about-feeds-card">
       <div class="progress-card__meta about-feeds-header">
         <h2 class="progress-card__title">About Feeds</h2>
       </div>
@@ -86,7 +86,7 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     </article>
 
     <!-- Feed Buttons Section -->
-    <article class="grid-span-full progress-card feed-buttons-card">
+    <article class="grid-span-6 progress-card feed-buttons-card">
       <div class="progress-card__meta feed-buttons-header">
         <h2 class="progress-card__title">Subscribe</h2>
       </div>
@@ -119,6 +119,15 @@ const transformedRecentPosts = recentPosts.map(transformPost);
 </Layout>
 
 <style>
+  /* Reduce spacing after header */
+  .feeds-page-layout {
+    --grid-row-gap: clamp(1.25rem, 3vw, 1.75rem);
+  }
+
+  .feeds-page-header {
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  }
+
   /* Center-align About Feeds section */
   .about-feeds-card {
     text-align: center;
@@ -137,12 +146,10 @@ const transformedRecentPosts = recentPosts.map(transformPost);
 
   .feeds-buttons {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 0.75rem;
     width: 100%;
     max-width: 100%;
-    justify-content: center;
   }
 
   .feeds-button {
@@ -218,8 +225,8 @@ const transformedRecentPosts = recentPosts.map(transformPost);
   }
 
   .feed-buttons-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 0.75rem;
   }
 
@@ -249,10 +256,17 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     outline-offset: 2px;
   }
 
+  @media (max-width: 767px) {
+    .about-feeds-card,
+    .feed-buttons-card {
+      grid-column: span 12;
+    }
+  }
 
   @media (min-width: 768px) {
     .feed-buttons-grid {
-      grid-template-columns: repeat(4, 1fr);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
