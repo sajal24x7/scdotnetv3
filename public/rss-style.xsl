@@ -143,7 +143,7 @@
           }
           
           .container {
-            max-width: 900px;
+            max-width: 1280px;
             margin: 0 auto;
             background: rgba(var(--color-bg-secondary), 0.9);
             border-radius: 12px;
@@ -277,65 +277,65 @@
             margin-bottom: 0;
           }
           
-          /* Desktop Layout */
+          /* Single column layout for all screen sizes */
           .post-desktop {
-            display: none;
-          }
-          
-          @media (min-width: 1024px) {
-            .post-desktop {
-              display: grid;
-              grid-template-columns: 200px 1fr;
-              gap: 2rem;
-              padding: 1.5rem 0;
-            }
-          }
-          
-          /* Mobile Layout */
-          .post-mobile {
             display: block;
             padding: 1.5rem 0;
           }
-          
-          @media (min-width: 1024px) {
-            .post-mobile {
-              display: none;
-            }
+
+          /* Mobile Layout - hidden, we use same layout for all */
+          .post-mobile {
+            display: none;
           }
           
-          /* Metadata styling */
+          /* Metadata styling - horizontal layout like stream page */
           .post-metadata {
             display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 0.875rem;
             color: #6b7280;
-            text-align: right;
-            padding-right: 1rem;
-            align-items: flex-end;
+            margin-bottom: 0.75rem;
+            flex-wrap: nowrap;
           }
-          
+
           .post-date-link {
             text-decoration: none;
             transition: all 0.2s ease;
             color: #8b5cf6;
             font-weight: 500;
+            white-space: nowrap;
           }
-          
+
           .post-date-link:hover {
             color: #7c3aed;
             text-decoration: underline;
           }
-          
+
+          .post-meta-divider {
+            color: #d1d5db;
+            margin: 0 0.25rem;
+          }
+
+          .post-categories {
+            display: flex;
+            gap: 0.5rem;
+          }
+
           .post-tags-sidebar {
             display: flex;
             flex-direction: row;
             gap: 0.5rem;
-            align-items: flex-end;
             flex-wrap: wrap;
-            justify-content: flex-end;
           }
-          
+
+          .post-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+          }
+
           .tag {
             display: inline-flex;
             align-items: center;
@@ -446,44 +446,6 @@
             text-decoration: underline;
           }
           
-          /* Mobile specific styling */
-          .post-mobile-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 0.75rem;
-            color: rgb(var(--color-text-primary));
-            text-decoration: none;
-            display: block;
-            transition: color 0.2s ease;
-          }
-          
-          .post-mobile-title:hover {
-            color: #3b82f6;
-          }
-          
-          .post-mobile-metadata {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #f3f4f6;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            font-size: 0.875rem;
-            color: #6b7280;
-          }
-          
-          .post-meta-divider {
-            color: #d1d5db;
-          }
-          
-          .post-tags-inline {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-          }
-          
           .footer {
             background: rgba(var(--color-bg-secondary), 0.7);
             padding: 2rem;
@@ -503,17 +465,21 @@
             text-decoration: underline;
           }
           
-          @media (max-width: 1024px) {
-            .post-desktop {
-              display: none;
-            }
-            
-            .post-mobile {
-              display: block;
-            }
-          }
-          
           @media (max-width: 640px) {
+            .post-metadata {
+              flex-wrap: wrap;
+              font-size: 0.8125rem;
+            }
+
+            .tag,
+            .category-tag {
+              font-size: 0.65rem;
+              padding: 0.15rem 0.5rem;
+            }
+
+            .post-title {
+              font-size: 1.25rem;
+            }
             body {
               padding: 1rem 0.5rem;
             }
@@ -533,12 +499,6 @@
             }
             
             .posts-header {
-              flex-direction: column;
-              align-items: flex-start;
-              gap: 0.5rem;
-            }
-            
-            .post-mobile-metadata {
               flex-direction: column;
               align-items: flex-start;
               gap: 0.5rem;
@@ -611,9 +571,8 @@
             
             <xsl:for-each select="rss/channel/item">
               <article class="post">
-                <!-- Desktop Layout -->
                 <div class="post-desktop">
-                  <!-- Left column: Metadata -->
+                  <!-- Metadata at top in horizontal row -->
                   <div class="post-metadata">
                     <a href="{link}" class="post-date-link">
                       <xsl:call-template name="format-date">
@@ -621,74 +580,30 @@
                       </xsl:call-template>
                     </a>
                     <xsl:if test="category[1]">
-                      <div class="post-categories">
-                        <span class="category-tag">
-                          <xsl:value-of select="category[1]"/>
-                        </span>
-                      </div>
+                      <span class="post-meta-divider">•</span>
+                      <span class="category-tag">
+                        <xsl:value-of select="category[1]"/>
+                      </span>
                     </xsl:if>
                     <xsl:if test="category[position() > 1]">
-                      <div class="post-tags-sidebar">
-                        <xsl:for-each select="category[position() > 1]">
-                          <a href="/tags/{translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')}/" class="tag">
-                            <xsl:value-of select="translate(., 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
-                          </a>
-                        </xsl:for-each>
-                      </div>
+                      <span class="post-meta-divider">•</span>
+                      <xsl:for-each select="category[position() > 1]">
+                        <a href="/tags/{translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')}/" class="tag">
+                          <xsl:value-of select="translate(., 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
+                        </a>
+                      </xsl:for-each>
                     </xsl:if>
                   </div>
-                  
-                  <!-- Right column: Content -->
+
+                  <!-- Content -->
                   <div class="post-content">
                     <a href="{link}" class="post-title">
                       <xsl:value-of select="title"/>
                     </a>
-                    
+
                     <xsl:if test="description and description != ''">
                       <div class="post-description">
                         <xsl:value-of select="description"/>
-                      </div>
-                    </xsl:if>
-                  </div>
-                </div>
-                
-                <!-- Mobile Layout -->
-                <div class="post-mobile">
-                  <div class="post-content">
-                    <a href="{link}" class="post-mobile-title">
-                      <xsl:value-of select="title"/>
-                    </a>
-                    
-                    <xsl:if test="description and description != ''">
-                      <div class="post-description">
-                        <xsl:value-of select="description"/>
-                      </div>
-                    </xsl:if>
-                  </div>
-                  
-                  <!-- Mobile metadata after content -->
-                  <div class="post-mobile-metadata">
-                    <a href="{link}" class="post-date-link">
-                      <xsl:call-template name="format-date">
-                        <xsl:with-param name="date-string" select="pubDate"/>
-                      </xsl:call-template>
-                    </a>
-                    <xsl:if test="category[1]">
-                      <div class="post-meta-divider">•</div>
-                      <div class="post-categories">
-                        <span class="category-tag">
-                          <xsl:value-of select="category[1]"/>
-                        </span>
-                      </div>
-                    </xsl:if>
-                    <xsl:if test="category[position() > 1]">
-                      <div class="post-meta-divider">•</div>
-                      <div class="post-tags-inline">
-                        <xsl:for-each select="category[position() > 1]">
-                          <a href="/tags/{translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')}/" class="tag">
-                            <xsl:value-of select="translate(., 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
-                          </a>
-                        </xsl:for-each>
                       </div>
                     </xsl:if>
                   </div>
