@@ -14,12 +14,12 @@ I did not really have a chance to use Python at work outside of a few scripts, s
 
 Now I’m relearning Python and additionally pick up some data analysis skills. 
 
-# Resources - Intro level
+## Resources - Intro level
 
 1. [Helsinki University Intro to Programming MOOC](https://programming-25.mooc.fi)
 2. [[202509281354 The quick python book]]
 
-# Progress - MooC
+## Progress - MooC
 1. Completed Part1 on 29th October.
 2. Completed Part2 on 5th November.
 3. Completed Part3 from the Mooc on 19th November.

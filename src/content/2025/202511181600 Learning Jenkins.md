@@ -6,8 +6,9 @@ updatedDate: 2025-11-19T11:24:25+02:00
 category: now
 status: active
 ---
-Started learning Jenkins, using the following resources:
+Started learning Jenkins.
 
-1. [Learning continuous integration with Jenkins 3rd edition](bookshelf/learning-continuous-integration-with-jenkins-3rd-edition)
+## Resources
+1. [Continuous delivery](bookshelf/continuous-delivery)
 2. [Jenkins udemy course by Valentin Despa]()
 
