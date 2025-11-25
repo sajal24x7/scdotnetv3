@@ -1,14 +1,17 @@
 ---
-title: "Vibe Coding November Meetup"
-slug: "vibe-coding-november-meetup"
-pubDate: 2025-11-25T22:54:25+02:00
-updatedDate: 2025-11-25T22:54:25+02:00
+title: Vibe Coding November Meetup
+slug: vibe-coding-november-meetup
+pubDate: 2025-11-25T20:54:25.000Z
+updatedDate: 2025-11-25T20:54:25.000Z
 category: blog
 tags:
   - vibe-coding-finland
   - ai
   - stories
-image: https://storage.sajalchoudhary.net/images/2025/11/vibe-nov-3.jpeg
+image: 'https://storage.sajalchoudhary.net/images/2025/11/vibe-nov-3.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115612330730293846'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6ia373gxe2x'
 ---
 The thing that I am most excited about this meetup is where it is happening, at the architecture and design museum.
 
