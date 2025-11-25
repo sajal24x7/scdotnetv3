@@ -1,7 +1,6 @@
 ---
 import { formatDistanceToNowStrict } from 'date-fns';
 import { formatDateWithTime, formatMonthYear } from '../utils/dateFormat';
-import relativeTimeIslandScript from './islands/relative-time-island.js?url';
 
 interface Props {
   date: Date | string;
@@ -59,7 +58,9 @@ if (shouldInjectRelativeScript) {
 </time>
 
 {shouldInjectRelativeScript && (
-  <script type="module" src={relativeTimeIslandScript}></script>
+  <script type="module">
+    import './islands/relative-time-island.js';
+  </script>
 )}
 
 <style>
