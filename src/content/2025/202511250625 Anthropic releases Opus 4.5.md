@@ -1,14 +1,16 @@
 ---
-title: "Anthropic releases Opus 4.5"
-slug: "anthropic-releases-opus-45"
-pubDate: 2025-11-25T06:29:33+02:00
-updatedDate: 2025-11-25T06:29:33+02:00
+title: Anthropic releases Opus 4.5
+slug: anthropic-releases-opus-45
+pubDate: 2025-11-25T04:29:33.000Z
+updatedDate: 2025-11-25T04:29:33.000Z
 category: micro
 tags:
   - claude
   - ai
   - work
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115608454943468966'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6giypfoky25'
 ---
 [Claude Opus 4.5, and why evaluating new LLMs is increasingly difficult by Simon Willison](https://simonwillison.net/2025/Nov/24/claude-opus/#atom-everything)
 
