@@ -1,13 +1,15 @@
 ---
-title: "iOS27 to prioritise stability"
-slug: "ios27-to-prioritise-stability"
-pubDate: 2025-11-25T10:48:41+02:00
-updatedDate: 2025-11-25T10:48:41+02:00
+title: iOS27 to prioritise stability
+slug: ios27-to-prioritise-stability
+pubDate: 2025-11-25T08:48:41.000Z
+updatedDate: 2025-11-25T08:48:41.000Z
 category: micro
 tags:
   - apple
   - ios
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115609478675870381'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6gxk7tbok2n'
 ---
 [Apple iOS 27 to Be No-Frills 'Snow Leopard' Update, Other Than New AI - Slashdot by ](https://apple.slashdot.org/story/25/11/24/1457245/apple-ios-27-to-be-no-frills-snow-leopard-update-other-than-new-ai?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
