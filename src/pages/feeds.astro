@@ -86,25 +86,30 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     </article>
 
     <!-- Feed Buttons Section -->
-    <section class="grid-span-8 grid-start-3 feed-buttons-section">
-      <p class="feed-buttons-description">
-        This website offers four aptly named feeds - everything/garden/stream/nordletter.
-      </p>
-      <div class="feed-buttons-grid">
-        <a href="/rss.xml" class="feed-button">
-          Everything
-        </a>
-        <a href="/garden/rss.xml" class="feed-button">
-          Garden
-        </a>
-        <a href="/stream/rss.xml" class="feed-button">
-          Stream
-        </a>
-        <a href="/nordletter/rss.xml" class="feed-button">
-          NordLetter
-        </a>
+    <article class="grid-span-full progress-card feed-buttons-card">
+      <div class="progress-card__meta feed-buttons-header">
+        <h2 class="progress-card__title">Subscribe</h2>
       </div>
-    </section>
+      <div class="progress-card__body feed-buttons-body">
+        <p class="progress-page__intro" style="margin-bottom: 1.5rem;">
+          This website offers four aptly named feeds - everything/garden/stream/nordletter. Click and subscribe to the feed you prefer.
+        </p>
+        <div class="feed-buttons-grid">
+          <a href="/rss.xml" class="feed-button">
+            Everything
+          </a>
+          <a href="/garden/rss.xml" class="feed-button">
+            Garden
+          </a>
+          <a href="/stream/rss.xml" class="feed-button">
+            Stream
+          </a>
+          <a href="/nordletter/rss.xml" class="feed-button">
+            NordLetter
+          </a>
+        </div>
+      </div>
+    </article>
 
     <!-- Recent Posts -->
     <section class="grid-span-8 grid-start-3 progress-page__content" style="margin-top: clamp(2rem, 5vw, 3.5rem);">
@@ -196,19 +201,20 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     border-color: #8b5cf6;
   }
 
-  /* Feed Buttons Section */
-  .feed-buttons-section {
+  /* Feed Buttons Card */
+  .feed-buttons-card {
     text-align: center;
   }
 
-  .feed-buttons-description {
-    font-size: 1.05rem;
-    color: rgb(71 85 105);
-    margin: 0 0 1.5rem 0;
+  .feed-buttons-header,
+  .feed-buttons-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  :global(.dark) .feed-buttons-description {
-    color: rgb(148 163 184);
+  .feed-buttons-body p {
+    text-align: center;
   }
 
   .feed-buttons-grid {
