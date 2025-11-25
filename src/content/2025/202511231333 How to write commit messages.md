@@ -12,7 +12,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6fiv7p5ue2m'
   - 'https://www.threads.com/@sajal24x7/post/DRczWrhEfep'
 ---
-The authors of [continuous delivery](/bookshelf-continuous-delivery) prefer commit messages be multiple paragraph.
+The authors of [continuous delivery](/bookshelf/continuous-delivery) prefer commit messages be multiple paragraph.
 
 The first paragraph being a summary of the change, and the rest of them explaining the commit in detail.
 
