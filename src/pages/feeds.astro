@@ -48,7 +48,7 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     </header>
 
     <!-- About Feeds -->
-    <article class="grid-span-8 grid-start-3 progress-card about-feeds-card">
+    <article class="grid-span-full progress-card about-feeds-card">
       <div class="progress-card__meta about-feeds-header">
         <h2 class="progress-card__title">About Feeds</h2>
       </div>
@@ -132,10 +132,12 @@ const transformedRecentPosts = recentPosts.map(transformPost);
 
   .feeds-buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 0.75rem;
     width: 100%;
     max-width: 100%;
+    justify-content: center;
   }
 
   .feeds-button {
@@ -241,12 +243,6 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     outline-offset: 2px;
   }
 
-  @media (min-width: 640px) {
-    .feeds-buttons {
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-  }
 
   @media (min-width: 768px) {
     .feed-buttons-grid {
