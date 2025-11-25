@@ -3,10 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
 import RecentItems from '../components/RecentItems.astro';
 import { getAllPosts, transformPost } from '../utils/content';
+import '../styles/progress-page.css';
 
 // Get recent posts for preview (more posts for the main section)
 const allPosts = await getAllPosts();
-const sortedPosts = allPosts.sort((a, b) => 
+const sortedPosts = allPosts.sort((a, b) =>
   new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
 const recentPosts = sortedPosts.slice(0, 15); // Show more posts
@@ -23,6 +24,7 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     maxWidth: '7xl',
     padding: 'none',
     centered: true,
+    className: 'progress-page',
     grid: {
       gap: 'loose',
       padding: 'narrow'
@@ -32,60 +34,56 @@ const transformedRecentPosts = recentPosts.map(transformPost);
   enableSearchModal
   enableLinkHoverEffect
 >
-  <section class="twelve-grid grid-gap-tight">
-    <header class="grid-span-full">
-      <PageHeader
-        title="RSS Feeds"
-        description="Subscribe to different feeds based on your interests. All feeds are beautifully styled when viewed in your browser."
-        layout="centered"
-        size="lg"
-        maxWidth="7xl"
-      />
+  <section class="progress-page__layout twelve-grid">
+    <header class="grid-span-full progress-page__header">
+      <div class="progress-page__header-content">
+        <PageHeader
+          title="RSS Feeds"
+          description="Subscribe to different feeds based on your interests. All feeds are beautifully styled when viewed in your browser."
+          layout="centered"
+          size="lg"
+          maxWidth="7xl"
+        />
+      </div>
     </header>
 
-    <!-- About RSS -->
-    <div class="grid-span-full bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6 border border-borderColor dark:border-borderColorDark">
-      <h2 class="text-xl font-semibold mb-3 flex items-center">
-        <svg class="w-5 h-5 mr-2 text-accent" fill="currentColor" viewBox="0 0 20 20">
-          <path
-            fill-rule="evenodd"
-            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-            clip-rule="evenodd"
-          />
-        </svg>
-        About RSS
-      </h2>
-      <p class="text-textSecondary dark:text-textSecondaryDark mb-4">
-        RSS (Really Simple Syndication) lets you follow websites in your favorite RSS reader.
-        When I publish new content, it automatically appears in your reader - no need to check back manually.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        <a
-          href="https://aboutfeeds.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm hover:bg-opacity-20 transition-colors"
-        >
-          Learn about RSS
-        </a>
-        <a
-          href="https://feedly.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm hover:bg-opacity-20 transition-colors"
-        >
-          Try Feedly
-        </a>
-        <a
-          href="https://netnewswire.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm hover:bg-opacity-20 transition-colors"
-        >
-          NetNewsWire
-        </a>
+    <!-- About Feeds -->
+    <article class="grid-span-8 grid-start-3 progress-card">
+      <div class="progress-card__meta">
+        <h2 class="progress-card__title">About Feeds</h2>
       </div>
-    </div>
+      <div class="progress-card__body">
+        <p class="progress-page__intro" style="margin-bottom: 1.5rem;">
+          RSS lets you follow what I (or others that you choose to follow) write. I use NetNewsWire as my reader of choice. There are other options like Feedly for example.
+        </p>
+        <div class="feeds-buttons">
+          <a
+            href="https://aboutfeeds.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="feeds-button feeds-button--primary"
+          >
+            Learn more about feeds
+          </a>
+          <a
+            href="https://www.citationneeded.news/curate-with-rss/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="feeds-button feeds-button--secondary"
+          >
+            Curating your newspaper with feeds
+          </a>
+          <a
+            href="https://netnewswire.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="feeds-button feeds-button--secondary"
+          >
+            Download NetNewsWire
+          </a>
+        </div>
+      </div>
+    </article>
 
     <!-- Feed Buttons -->
     <section class="grid-span-full twelve-grid grid-gap-tight">
@@ -136,8 +134,79 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     </section>
 
     <!-- Recent Posts -->
-    <section class="grid-span-full border-t border-borderColor dark:border-borderColorDark pt-12">
+    <section class="grid-span-8 grid-start-3 progress-page__content" style="margin-top: clamp(2rem, 5vw, 3.5rem);">
       <RecentItems posts={transformedRecentPosts} title="Recent Posts" showFullContent={false} />
     </section>
   </section>
 </Layout>
+
+<style>
+  .feeds-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .feeds-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+
+  .feeds-button--primary {
+    background: #8b5cf6;
+    color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .feeds-button--primary:hover {
+    background: #7c3aed;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .feeds-button--primary:focus-visible {
+    outline: 2px solid #7c3aed;
+    outline-offset: 2px;
+  }
+
+  .feeds-button--secondary {
+    border: 1px solid #8b5cf6;
+    color: #7c3aed;
+    background: transparent;
+  }
+
+  .feeds-button--secondary:hover {
+    background: rgba(139, 92, 246, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .feeds-button--secondary:focus-visible {
+    outline: 2px solid #7c3aed;
+    outline-offset: 2px;
+  }
+
+  :global(.dark) .feeds-button--secondary {
+    color: #a78bfa;
+    border-color: #7c3aed;
+  }
+
+  :global(.dark) .feeds-button--secondary:hover {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: #8b5cf6;
+  }
+
+  @media (min-width: 640px) {
+    .feeds-buttons {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+</style>
