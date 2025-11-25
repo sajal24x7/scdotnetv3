@@ -8,9 +8,10 @@ interface Props {
   post: any;
   isMicroContent: (category: string) => boolean;
   showFullContent?: boolean;
+  showReadMore?: boolean;
 }
 
-const { post, isMicroContent, showFullContent = true } = Astro.props;
+const { post, isMicroContent, showFullContent = true, showReadMore = true } = Astro.props;
 const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
 const hasTags = tags.length > 0;
 const isMicro = isMicroContent(post.data.category);
@@ -65,7 +66,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
     </figure>
   )}
 
-  {!isMicro && postTitle && (
+  {postTitle && (
     <h2 class="stream-title">
       <a href={postLink} class="stream-title-link link-hover">
         {postTitle}
@@ -88,7 +89,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
     )}
   </div>
 
-  {!isMicro && (
+  {!isMicro && showReadMore && (
     <div class="stream-read-more">
       <a href={postLink} class="read-more-link link-hover">
         Read more →
@@ -225,11 +226,11 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
   }
 
   .stream-body {
-    margin-bottom: calc(var(--post-item-spacing, var(--grid-row-gap)) / 6);
+    margin-bottom: 0;
   }
 
   .stream-read-more {
-    margin-top: calc(var(--post-item-spacing, var(--grid-row-gap)) / 6);
+    margin-top: 0;
   }
 
   .stream-prose {
@@ -259,7 +260,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
     flex-wrap: wrap;
     font-size: 0.875rem;
     color: rgb(var(--color-text-secondary));
-    padding-top: clamp(0.75rem, 2vw, 1.25rem);
+    padding-top: 0;
   }
 
   @media (max-width: 47.99rem) {

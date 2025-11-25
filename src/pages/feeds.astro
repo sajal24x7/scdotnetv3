@@ -3,10 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
 import RecentItems from '../components/RecentItems.astro';
 import { getAllPosts, transformPost } from '../utils/content';
+import '../styles/progress-page.css';
 
 // Get recent posts for preview (more posts for the main section)
 const allPosts = await getAllPosts();
-const sortedPosts = allPosts.sort((a, b) => 
+const sortedPosts = allPosts.sort((a, b) =>
   new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
 const recentPosts = sortedPosts.slice(0, 15); // Show more posts
@@ -21,8 +22,9 @@ const transformedRecentPosts = recentPosts.map(transformPost);
   currentPage="/feeds/"
   pageWrapper={{
     maxWidth: '7xl',
-    padding: 'md',
+    padding: 'none',
     centered: true,
+    className: 'progress-page',
     grid: {
       gap: 'loose',
       padding: 'narrow'
@@ -32,113 +34,221 @@ const transformedRecentPosts = recentPosts.map(transformPost);
   enableSearchModal
   enableLinkHoverEffect
 >
-  <section class="twelve-grid grid-gap-tight">
-    <header class="grid-span-full">
-      <PageHeader
-        title="RSS Feeds"
-        description="Subscribe to different feeds based on your interests. All feeds are beautifully styled when viewed in your browser."
-        layout="centered"
-        size="lg"
-        maxWidth="7xl"
-      />
+  <section class="progress-page__layout twelve-grid feeds-page-layout">
+    <header class="grid-span-full progress-page__header feeds-page-header">
+      <div class="progress-page__header-content">
+        <PageHeader
+          title="RSS Feeds"
+          description="Subscribe to different feeds based on your interests. All feeds are beautifully styled when viewed in your browser."
+          layout="centered"
+          size="lg"
+          maxWidth="7xl"
+        />
+      </div>
     </header>
 
-    <!-- Feed Buttons -->
-    <section class="grid-span-full twelve-grid grid-gap-tight">
-      <a
-        href="/rss.xml"
-        class="grid-span-3 flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm"
-      >
-        <svg class="w-4 h-4 opacity-60" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z" />
-        </svg>
-        <span>Everything</span>
-      </a>
-
-      <a
-        href="/garden/rss.xml"
-        class="grid-span-3 flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm"
-      >
-        <svg class="w-4 h-4 opacity-60" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z" />
-        </svg>
-        <span>Garden</span>
-      </a>
-
-      <a
-        href="/stream/rss.xml"
-        class="grid-span-3 flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm"
-      >
-        <svg class="w-4 h-4 opacity-60" fill="currentColor" viewBox="0 0 20 20">
-          <path
-            fill-rule="evenodd"
-            d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-            clip-rule="evenodd"
-          />
-        </svg>
-        <span>Stream</span>
-      </a>
-
-      <a
-        href="/nordletter/rss.xml"
-        class="grid-span-3 flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 border border-borderColor dark:border-borderColorDark rounded-md hover:bg-bgSecondary dark:hover:bg-bgSecondaryDark transition-all duration-200 shadow-sm"
-      >
-        <svg class="w-4 h-4 opacity-60" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-        </svg>
-        <span>NordLetter</span>
-      </a>
-    </section>
-
-    <!-- Recent Posts + About RSS -->
-    <section class="grid-span-full border-t border-borderColor dark:border-borderColorDark pt-12 twelve-grid grid-gap-tight">
-      <div class="grid-span-8 grid-start-1">
-        <RecentItems posts={transformedRecentPosts} title="Recent Posts" showFullContent={false} />
+    <!-- About Feeds -->
+    <article class="grid-span-6 progress-card about-feeds-card">
+      <div class="progress-card__meta about-feeds-header">
+        <h2 class="progress-card__title">About Feeds</h2>
       </div>
-
-      <aside class="grid-span-4 grid-start-9 self-start bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6 border border-borderColor dark:border-borderColorDark">
-        <h2 class="text-xl font-semibold mb-3 flex items-center">
-          <svg class="w-5 h-5 mr-2 text-accent" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              fill-rule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-              clip-rule="evenodd"
-            />
-          </svg>
-          About RSS
-        </h2>
-        <p class="text-textSecondary dark:text-textSecondaryDark mb-4">
-          RSS (Really Simple Syndication) lets you follow websites in your favorite RSS reader.
-          When I publish new content, it automatically appears in your reader - no need to check back manually.
+      <div class="progress-card__body about-feeds-body">
+        <p class="progress-page__intro" style="margin-bottom: 1.5rem;">
+          RSS lets you follow what I (or others that you choose to follow) write. I use NetNewsWire as my reader of choice. There are other options like Feedly for example.
         </p>
-        <div class="flex flex-wrap gap-2">
+        <div class="feeds-buttons">
           <a
-            href="https://aboutfeeds.com/"
+            href="https://aboutfeeds.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm hover:bg-opacity-20 transition-colors"
+            class="feeds-button feeds-button--primary"
           >
-            Learn about RSS
+            Learn more about feeds
           </a>
           <a
-            href="https://feedly.com/"
+            href="https://www.citationneeded.news/curate-with-rss/"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm hover:bg-opacity-20 transition-colors"
+            class="feeds-button feeds-button--secondary"
           >
-            Try Feedly
+            Curating your newspaper with feeds
           </a>
           <a
-            href="https://netnewswire.com/"
+            href="https://netnewswire.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm hover:bg-opacity-20 transition-colors"
+            class="feeds-button feeds-button--secondary"
           >
-            NetNewsWire
+            Download NetNewsWire
           </a>
         </div>
-      </aside>
+      </div>
+    </article>
+
+    <!-- Feed Buttons Section -->
+    <article class="grid-span-6 progress-card feed-buttons-card">
+      <div class="progress-card__meta feed-buttons-header">
+        <h2 class="progress-card__title">Subscribe</h2>
+      </div>
+      <div class="progress-card__body feed-buttons-body">
+        <p class="progress-page__intro" style="margin-bottom: 1.5rem;">
+          This website offers four aptly named feeds - everything/garden/stream/nordletter. Click and subscribe to the feed you prefer.
+        </p>
+        <div class="feed-buttons-grid">
+          <a href="/rss.xml" class="feed-button">
+            Everything
+          </a>
+          <a href="/garden/rss.xml" class="feed-button">
+            Garden
+          </a>
+          <a href="/stream/rss.xml" class="feed-button">
+            Stream
+          </a>
+          <a href="/nordletter/rss.xml" class="feed-button">
+            NordLetter
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Recent Posts -->
+    <section class="grid-span-8 grid-start-3 progress-page__content" style="margin-top: clamp(2rem, 5vw, 3.5rem);">
+      <RecentItems posts={transformedRecentPosts} title="Recent Posts" showFullContent={false} showReadMore={false} />
     </section>
   </section>
 </Layout>
+
+<style>
+  /* Reduce spacing after header */
+  .feeds-page-header {
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  /* Center-align About Feeds section */
+  .about-feeds-card {
+    text-align: center;
+  }
+
+  .about-feeds-header,
+  .about-feeds-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-feeds-body p {
+    text-align: center;
+  }
+
+  .feeds-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .feeds-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+
+  .feeds-button--primary {
+    background: #8b5cf6;
+    color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .feeds-button--primary:hover {
+    background: #7c3aed;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .feeds-button--primary:focus-visible {
+    outline: 2px solid #7c3aed;
+    outline-offset: 2px;
+  }
+
+  .feeds-button--secondary {
+    border: 1px solid #8b5cf6;
+    color: #7c3aed;
+    background: transparent;
+  }
+
+  .feeds-button--secondary:hover {
+    background: rgba(139, 92, 246, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .feeds-button--secondary:focus-visible {
+    outline: 2px solid #7c3aed;
+    outline-offset: 2px;
+  }
+
+  :global(.dark) .feeds-button--secondary {
+    color: #a78bfa;
+    border-color: #7c3aed;
+  }
+
+  :global(.dark) .feeds-button--secondary:hover {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: #8b5cf6;
+  }
+
+  /* Feed Buttons Card */
+  .feed-buttons-card {
+    text-align: center;
+  }
+
+  .feed-buttons-header,
+  .feed-buttons-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feed-buttons-body p {
+    text-align: center;
+  }
+
+  .feed-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .feed-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: #8b5cf6;
+    color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .feed-button:hover {
+    background: #7c3aed;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .feed-button:focus-visible {
+    outline: 2px solid #7c3aed;
+    outline-offset: 2px;
+  }
+</style>
