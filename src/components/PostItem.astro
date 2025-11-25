@@ -65,7 +65,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
     </figure>
   )}
 
-  {!isMicro && postTitle && (
+  {postTitle && (
     <h2 class="stream-title">
       <a href={postLink} class="stream-title-link link-hover">
         {postTitle}
