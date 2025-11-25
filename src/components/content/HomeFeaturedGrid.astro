@@ -49,11 +49,11 @@ const { posts = [], title = 'Featured' }: Props = Astro.props;
     }
 
     .home-featured__title {
-        font-size: var(--text-large);
+        font-size: clamp(1.75rem, 5vw, 2.25rem);
         font-weight: 700;
         margin: 0 0 clamp(1.25rem, 3vw, 2rem);
         color: rgb(var(--color-text-primary));
-        text-align: left;
+        text-align: center;
     }
 
     .home-featured__item {
