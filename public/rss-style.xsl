@@ -151,9 +151,12 @@
             overflow: hidden;
             border: 1px solid rgb(var(--color-border));
             backdrop-filter: blur(10px);
+            padding: 0 clamp(1rem, 4vw, 2rem);
           }
           
           .header {
+            max-width: 900px;
+            margin: 0 auto;
             padding: 3rem 2rem 2rem 2rem;
             border-bottom: 1px solid rgb(var(--color-border));
             background: rgba(var(--color-bg-secondary), 0.7);
@@ -200,10 +203,11 @@
           }
           
           .rss-info {
+            max-width: 900px;
+            margin: 0 auto;
             background: rgba(var(--color-accent-bg), 0.5);
             border-left: 4px solid rgb(var(--color-accent));
             padding: 1.5rem 2rem;
-            margin: 0;
             border-radius: 0;
           }
           
@@ -232,6 +236,8 @@
           }
           
           .content {
+            max-width: 900px;
+            margin: 0 auto;
             padding: 2rem;
             background: rgba(var(--color-bg-secondary), 0.3);
           }
@@ -447,6 +453,8 @@
           }
           
           .footer {
+            max-width: 900px;
+            margin: 0 auto;
             background: rgba(var(--color-bg-secondary), 0.7);
             padding: 2rem;
             text-align: center;
