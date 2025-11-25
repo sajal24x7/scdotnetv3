@@ -4,7 +4,9 @@ slug: how-to-write-commit-messages
 pubDate: 2025-11-24T18:54:37.000Z
 updatedDate: 2025-11-24T18:54:37.000Z
 category: til
-tags: null
+tags: 
+  - git
+  - ci-cd
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115606195515946075'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6fiv7p5ue2m'
