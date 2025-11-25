@@ -12,6 +12,7 @@ image: 'https://storage.sajalchoudhary.net/images/2025/11/vibe-nov-3.jpeg'
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115612330730293846'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6ia373gxe2x'
+  - 'https://www.threads.com/@sajal24x7/post/DRfuYZSgaSh'
 ---
 The thing that I am most excited about this meetup is where it is happening, at the architecture and design museum.
 
