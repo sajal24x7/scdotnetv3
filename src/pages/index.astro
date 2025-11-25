@@ -75,7 +75,7 @@ const featuredPosts = shufflePosts(featuredCandidates)
         <div class="grid-span-7 home-book__content text-center md:text-left">
             <div class="space-y-3">
                 <p class="text-small text-gray-600 dark:text-gray-400 uppercase tracking-wide">Out now!</p>
-                <h1 class="text-huge font-bold">
+                <h1 class="home-book__title font-bold">
                     <a href="/books/a-year-of-mornings/" class="text-accent hover:text-accent/80 transition-colors">
                         A Year of Mornings
                     </a>
@@ -178,6 +178,11 @@ const featuredPosts = shufflePosts(featuredCandidates)
         justify-content: center;
     }
 
+    .home-book__title {
+        font-size: clamp(1.75rem, 5vw, 2.25rem);
+        text-align: center;
+    }
+
     .home-book__content {
         display: flex;
         flex-direction: column;
@@ -207,7 +212,7 @@ const featuredPosts = shufflePosts(featuredCandidates)
     }
 
     .home-garden__title {
-        font-size: var(--text-large);
+        font-size: clamp(1.75rem, 5vw, 2.25rem);
         font-weight: 700;
         margin: 0;
         color: rgb(var(--color-text-primary));
@@ -276,7 +281,7 @@ const featuredPosts = shufflePosts(featuredCandidates)
     }
 
     .home-stream__title {
-        font-size: var(--text-large);
+        font-size: clamp(1.75rem, 5vw, 2.25rem);
         font-weight: 700;
         margin: 0;
         color: rgb(var(--color-text-primary));
