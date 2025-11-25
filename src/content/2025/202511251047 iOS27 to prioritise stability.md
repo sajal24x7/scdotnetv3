@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115609478675870381'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6gxk7tbok2n'
+  - 'https://www.threads.com/@sajal24x7/post/DRevrH4jnqy'
 ---
 [Apple iOS 27 to Be No-Frills 'Snow Leopard' Update, Other Than New AI - Slashdot by ](https://apple.slashdot.org/story/25/11/24/1457245/apple-ios-27-to-be-no-frills-snow-leopard-update-other-than-new-ai?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
