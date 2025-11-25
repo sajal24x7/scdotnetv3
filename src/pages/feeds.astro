@@ -221,8 +221,8 @@ const transformedRecentPosts = recentPosts.map(transformPost);
   }
 
   .feed-buttons-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
   }
 
@@ -250,12 +250,5 @@ const transformedRecentPosts = recentPosts.map(transformPost);
   .feed-button:focus-visible {
     outline: 2px solid #7c3aed;
     outline-offset: 2px;
-  }
-
-  @media (min-width: 768px) {
-    .feed-buttons-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
 </style>
