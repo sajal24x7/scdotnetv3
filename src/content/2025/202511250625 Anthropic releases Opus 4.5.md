@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115608454943468966'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6giypfoky25'
+  - 'https://www.threads.com/@sajal24x7/post/DReW78RjsEG'
 ---
 [Claude Opus 4.5, and why evaluating new LLMs is increasingly difficult by Simon Willison](https://simonwillison.net/2025/Nov/24/claude-opus/#atom-everything)
 
