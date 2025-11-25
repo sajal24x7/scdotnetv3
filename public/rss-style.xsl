@@ -319,11 +319,6 @@
             text-decoration: underline;
           }
 
-          .post-meta-divider {
-            color: #d1d5db;
-            margin: 0 0.25rem;
-          }
-
           .post-categories {
             display: flex;
             gap: 0.5rem;
@@ -588,13 +583,11 @@
                       </xsl:call-template>
                     </a>
                     <xsl:if test="category[1]">
-                      <span class="post-meta-divider">•</span>
                       <span class="category-tag">
                         <xsl:value-of select="category[1]"/>
                       </span>
                     </xsl:if>
                     <xsl:if test="category[position() > 1]">
-                      <span class="post-meta-divider">•</span>
                       <xsl:for-each select="category[position() > 1]">
                         <a href="/tags/{translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')}/" class="tag">
                           <xsl:value-of select="translate(., 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
