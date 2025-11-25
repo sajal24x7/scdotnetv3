@@ -53,7 +53,7 @@ const shouldShowSidebar = stats.length > 0 || quickLinks.length > 0;
         )}
     </header>
 
-    <section class={`progress-page__content ${shouldShowSidebar ? 'grid-span-8 grid-start-1' : 'grid-span-full'}`}>
+    <section class={`progress-page__content ${shouldShowSidebar ? 'grid-span-8 grid-start-3' : 'grid-span-8 grid-start-3'}`}>
         {Astro.slots.has('intro') && <slot name="intro" />}
 
         {hasItems ? (
