@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115615159213780729'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6jibhthrc2d'
+  - 'https://www.threads.com/@sajal24x7/post/DRhJEMCDkLQ'
 ---
 [Warner Music Group partners with Suno to offer AI likenesses of its artists by Emma Roth](https://www.theverge.com/news/829189/warner-music-group-suno-ai-licensing-deal)
 
