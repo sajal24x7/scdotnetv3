@@ -1,0 +1,80 @@
+---
+import { getAllPosts } from '../../utils/content';
+import Layout from '../../layouts/Layout.astro';
+import TimeDisplay from '../../components/TimeDisplay.astro';
+import LayoutContainer from '../../components/layout/LayoutContainer.astro';
+import ProgressLayout from '../../components/layout/ProgressLayout.astro';
+import { parseMarkdown } from '../../utils/markdown';
+import '../../styles/progress-page.css';
+
+// Get all posts dynamically across year folders and filter to category 'colophon'
+const allPosts = await getAllPosts();
+const colophonPosts = allPosts
+  .filter(post => post.data.category === 'colophon')
+  .sort((a, b) => {
+    // Sort by updatedDate first, fallback to pubDate
+    const aDate = a.data.updatedDate || a.data.pubDate;
+    const bDate = b.data.updatedDate || b.data.pubDate;
+    return bDate.getTime() - aDate.getTime();
+  });
+
+// Get only the latest colophon post
+const latestColophon = colophonPosts.length > 0 ? colophonPosts[0] : null;
+
+// Pre-render markdown content
+const renderedPost = latestColophon ? {
+    ...latestColophon,
+    renderedContent: latestColophon.body ? parseMarkdown(latestColophon.body) : null
+} : null;
+
+---
+
+<Layout
+  title="Colophon - Sajal Choudhary"
+  description="Technical details and information about this website"
+  currentPage="/colophon/"
+  pageWrapper={{
+        maxWidth: '7xl',
+        padding: 'none',
+        centered: true,
+        className: 'progress-page progress-page--colophon',
+        grid: {
+            gap: 'loose',
+            padding: 'narrow'
+        }
+  }}
+  allPosts={allPosts}
+  enableSearchModal
+  enableLinkHoverEffect
+>
+    <ProgressLayout
+        pageTitle="Colophon"
+        pageDescription="Technical details and information about how this website is built and maintained."
+        hasItems={renderedPost !== null}
+        togglePage="current"
+    >
+        {renderedPost && (
+            <article class="progress-card">
+                <div class="progress-card__meta">
+                    <TimeDisplay
+                        date={renderedPost.data.updatedDate || renderedPost.data.pubDate}
+                        category="colophon"
+                        format="month-year"
+                        className="progress-card__time"
+                    />
+                    {renderedPost.data.title && (
+                        <h2 class="progress-card__title">{renderedPost.data.title}</h2>
+                    )}
+                </div>
+
+                {renderedPost.renderedContent && (
+                    <LayoutContainer prose maxWidth="full" className="progress-card__body">
+                        <div set:html={renderedPost.renderedContent} />
+                    </LayoutContainer>
+                )}
+            </article>
+        )}
+
+        <p slot="empty" class="progress-page__empty">No colophon entries yet.</p>
+    </ProgressLayout>
+</Layout>

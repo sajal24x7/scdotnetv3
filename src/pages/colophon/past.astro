@@ -1,0 +1,96 @@
+---
+import { getAllPosts, type Post } from '../../utils/content';
+import Layout from '../../layouts/Layout.astro';
+import { formatDateRange } from '../../utils/dateFormat';
+import LayoutContainer from '../../components/layout/LayoutContainer.astro';
+import ProgressLayout from '../../components/layout/ProgressLayout.astro';
+import { parseMarkdown } from '../../utils/markdown';
+import '../../styles/progress-page.css';
+
+// Get all posts dynamically across year folders and filter to category 'colophon'
+const allPosts = await getAllPosts();
+const colophonPosts = allPosts
+  .filter(post => post.data.category === 'colophon')
+  .sort((a, b) => {
+    // Sort by updatedDate first, fallback to pubDate - descending
+    const aDate = a.data.updatedDate || a.data.pubDate;
+    const bDate = b.data.updatedDate || b.data.pubDate;
+    return bDate.getTime() - aDate.getTime();
+  });
+
+// Skip the first one (that's the current), show the rest as past
+const pastColophons = colophonPosts.slice(1);
+
+// Pre-render markdown content
+type ColophonPost = Post & {
+  endDate: Date;
+  renderedContent: string | null;
+};
+
+const renderedPosts: ColophonPost[] = pastColophons.map(post => {
+    const rawEndDate = post.data.updatedDate ?? post.data.pubDate;
+    const endDate = rawEndDate instanceof Date ? rawEndDate : new Date(rawEndDate);
+
+    return {
+        ...post,
+        endDate,
+        renderedContent: post.body ? parseMarkdown(post.body) : null
+    };
+});
+
+---
+
+<Layout
+  title="Colophon History - Sajal Choudhary"
+  description="Historical versions of the colophon and site information"
+  currentPage="/colophon/"
+  pageWrapper={{
+        maxWidth: '7xl',
+        padding: 'none',
+        centered: true,
+        className: 'progress-page progress-page--colophon-past',
+        grid: {
+            gap: 'loose',
+            padding: 'narrow'
+        }
+  }}
+  allPosts={allPosts}
+  enableSearchModal
+  enableLinkHoverEffect
+>
+    <ProgressLayout
+        pageTitle="Colophon"
+        pageDescription="Historical versions of the colophon, showing how this website has evolved over time."
+        hasItems={renderedPosts.length > 0}
+        togglePage="past"
+    >
+        {renderedPosts.map((post) => (
+            <article class="progress-card">
+                <div class="progress-card__meta">
+                    <time
+                        class="progress-card__time"
+                        datetime={post.endDate.toISOString()}
+                    >
+                        {formatDateRange(post.data.pubDate, post.endDate)}
+                    </time>
+                    {post.data.title && (
+                        <h2 class="progress-card__title">{post.data.title}</h2>
+                    )}
+                </div>
+
+                {post.renderedContent && (
+                    <LayoutContainer prose maxWidth="full" className="progress-card__body">
+                        <div set:html={post.renderedContent} />
+                    </LayoutContainer>
+                )}
+            </article>
+        ))}
+
+        <div slot="empty" class="progress-page__empty">
+            <p>No historical colophon entries yet.</p>
+            <p>
+                Check the <a href="/colophon/current/" class="progress-page__link">Current page</a> to see the latest colophon.
+            </p>
+        </div>
+    </ProgressLayout>
+</Layout>
