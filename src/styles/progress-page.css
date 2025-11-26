@@ -16,12 +16,8 @@
 .progress-page__header-description {
     font-size: 1.125rem;
     line-height: 1.7;
-    color: rgb(71 85 105);
-    margin: 0;
-}
-
-:global(.dark) .progress-page__header-description {
     color: rgb(var(--color-text-secondary));
+    margin: 0;
 }
 
 .progress-page__content {
@@ -33,10 +29,6 @@
 .progress-page__intro {
     margin: 0;
     font-size: 1rem;
-    color: rgb(71 85 105);
-}
-
-:global(.dark) .progress-page__intro {
     color: rgb(var(--color-text-secondary));
 }
 
@@ -102,10 +94,6 @@
 .progress-card__time {
     font-size: 1rem;
     font-weight: 600;
-    color: rgb(71 85 105);
-}
-
-:global(.dark) .progress-card__time {
     color: rgb(var(--color-text-secondary));
 }
 
@@ -113,10 +101,6 @@
     font-size: clamp(2.25rem, 3.5vw, 2.75rem);
     font-weight: 700;
     margin: 0;
-    color: rgb(30 41 59);
-}
-
-:global(.dark) .progress-card__title {
     color: rgb(var(--color-text-primary));
 }
 
@@ -126,10 +110,6 @@
 
 .progress-page__empty {
     font-size: 1.05rem;
-    color: rgb(71 85 105);
-}
-
-:global(.dark) .progress-page__empty {
     color: rgb(var(--color-text-secondary));
 }
 
@@ -156,10 +136,6 @@
     margin: 0 0 0.75rem;
     font-size: 1rem;
     font-weight: 600;
-    color: rgb(30 41 59);
-}
-
-:global(.dark) .progress-sidebar-card__title {
     color: rgb(var(--color-text-primary));
 }
 
@@ -175,7 +151,7 @@
     align-items: baseline;
     gap: 0.75rem;
     font-size: 0.95rem;
-    color: rgb(71 85 105);
+    color: rgb(var(--color-text-secondary));
 }
 
 .progress-sidebar-card__stats dt {
@@ -185,14 +161,6 @@
 .progress-sidebar-card__stats dd {
     margin: 0;
     font-weight: 600;
-    color: rgb(30 41 59);
-}
-
-:global(.dark) .progress-sidebar-card__stats div {
-    color: rgb(var(--color-text-secondary));
-}
-
-:global(.dark) .progress-sidebar-card__stats dd {
     color: rgb(var(--color-text-primary));
 }
 
@@ -224,19 +192,11 @@
 
 .progress-sidebar-card__link-label {
     font-weight: 600;
-    color: rgb(30 41 59);
-}
-
-:global(.dark) .progress-sidebar-card__link-label {
     color: rgb(var(--color-text-primary));
 }
 
 .progress-sidebar-card__link-description {
     font-size: 0.9rem;
-    color: rgb(100 116 139);
-}
-
-:global(.dark) .progress-sidebar-card__link-description {
     color: rgb(var(--color-text-secondary));
 }
 
