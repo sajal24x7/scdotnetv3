@@ -1,0 +1,15 @@
+---
+title: "WMG signs deal to let Suno offer AI likenesses"
+slug: "wmg-signs-deal-to-let-suno-offer-ai-likenesses"
+pubDate: 2025-11-26T10:54:39+02:00
+updatedDate: 2025-11-26T10:54:39+02:00
+category: micro
+tags:
+  - ai
+
+---
+[Warner Music Group partners with Suno to offer AI likenesses of its artists by Emma Roth](https://www.theverge.com/news/829189/warner-music-group-suno-ai-licensing-deal)
+
+> Warner Music Group has struck a licensing deal with the AI music creation platform Suno. Under the agreement, WMG will allow users to create AI-generated music on Suno using the voices, names, likenesses, images, and compositions of artists who opt in to the program.
+
+All the suing was for this. OpenAI did this long back with the newspapers. It had started with the music industry now.
