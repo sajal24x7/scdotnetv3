@@ -7,24 +7,27 @@ import ProgressLayout from '../components/layout/ProgressLayout.astro';
 import { parseMarkdown } from '../utils/markdown';
 import '../styles/progress-page.css';
 
-// Get all posts dynamically across year folders and filter to category 'now' and status 'done'
+// Get all posts dynamically across year folders and filter to category 'colophon'
 const allPosts = await getAllPosts();
-const doneNowPosts = allPosts
-  .filter(post => post.data.category === 'now' && post.data.status === 'done')
+const colophonPosts = allPosts
+  .filter(post => post.data.category === 'colophon')
   .sort((a, b) => {
-    // Sort by updatedDate (end date) descending, fallback to pubDate if no updatedDate
+    // Sort by updatedDate first, fallback to pubDate - descending
     const aDate = a.data.updatedDate || a.data.pubDate;
     const bDate = b.data.updatedDate || b.data.pubDate;
     return bDate.getTime() - aDate.getTime();
   });
 
+// Skip the first one (that's the current), show the rest as past
+const pastColophons = colophonPosts.slice(1);
+
 // Pre-render markdown content
-type DonePost = Post & {
+type ColophonPost = Post & {
   endDate: Date;
   renderedContent: string | null;
 };
 
-const renderedPosts: DonePost[] = doneNowPosts.map(post => {
+const renderedPosts: ColophonPost[] = pastColophons.map(post => {
     const rawEndDate = post.data.updatedDate ?? post.data.pubDate;
     const endDate = rawEndDate instanceof Date ? rawEndDate : new Date(rawEndDate);
 
@@ -38,14 +41,14 @@ const renderedPosts: DonePost[] = doneNowPosts.map(post => {
 ---
 
 <Layout
-  title="Done - Sajal Choudhary"
-  description="Completed tasks and projects that were previously in progress"
-  currentPage="/now/"
+  title="Colophon History - Sajal Choudhary"
+  description="Historical versions of the colophon and site information"
+  currentPage="/colophon/"
   pageWrapper={{
         maxWidth: '7xl',
         padding: 'none',
         centered: true,
-        className: 'progress-page progress-page--done',
+        className: 'progress-page progress-page--colophon-past',
         grid: {
             gap: 'loose',
             padding: 'narrow'
@@ -56,10 +59,10 @@ const renderedPosts: DonePost[] = doneNowPosts.map(post => {
   enableLinkHoverEffect
 >
     <ProgressLayout
-        pageTitle="Done"
-        pageDescription="Completed tasks and projects that were previously in progress. These represent milestones achieved and goals accomplished."
+        pageTitle="Colophon"
+        pageDescription="Historical versions of the colophon, showing how this website has evolved over time."
         hasItems={renderedPosts.length > 0}
-        togglePage="done"
+        togglePage="past"
     >
         {renderedPosts.map((post) => (
             <article class="progress-card">
@@ -84,9 +87,9 @@ const renderedPosts: DonePost[] = doneNowPosts.map(post => {
         ))}
 
         <div slot="empty" class="progress-page__empty">
-            <p>No completed tasks yet.</p>
+            <p>No historical colophon entries yet.</p>
             <p>
-                Check the <a href="/now/" class="progress-page__link">Now page</a> to see what's currently in progress.
+                Check the <a href="/colophon/" class="progress-page__link">Current page</a> to see the latest colophon.
             </p>
         </div>
     </ProgressLayout>

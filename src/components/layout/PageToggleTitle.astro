@@ -1,25 +1,45 @@
 ---
 interface Props {
-    currentPage: 'now' | 'done';
+    currentPage: 'now' | 'done' | 'current' | 'past';
 }
 
 const { currentPage } = Astro.props;
+
+// Determine page type and toggle links
+const isProgressPage = currentPage === 'now' || currentPage === 'done';
+const isColophonPage = currentPage === 'current' || currentPage === 'past';
 ---
 
 <div class="page-toggle-title">
-    {currentPage === 'now' ? (
-        <h1 class="page-toggle-title__text">
-            <span class="page-toggle-title__active">Now</span>
-            <span class="page-toggle-title__separator">/</span>
-            <a href="/done/" class="page-toggle-title__inactive">Done</a>
-        </h1>
-    ) : (
-        <h1 class="page-toggle-title__text">
-            <a href="/now/" class="page-toggle-title__inactive">Now</a>
-            <span class="page-toggle-title__separator">/</span>
-            <span class="page-toggle-title__active">Done</span>
-        </h1>
-    )}
+    {isProgressPage ? (
+        currentPage === 'now' ? (
+            <h1 class="page-toggle-title__text">
+                <span class="page-toggle-title__active">Now</span>
+                <span class="page-toggle-title__separator">/</span>
+                <a href="/done/" class="page-toggle-title__inactive">Done</a>
+            </h1>
+        ) : (
+            <h1 class="page-toggle-title__text">
+                <a href="/now/" class="page-toggle-title__inactive">Now</a>
+                <span class="page-toggle-title__separator">/</span>
+                <span class="page-toggle-title__active">Done</span>
+            </h1>
+        )
+    ) : isColophonPage ? (
+        currentPage === 'current' ? (
+            <h1 class="page-toggle-title__text">
+                <span class="page-toggle-title__active">Current</span>
+                <span class="page-toggle-title__separator">/</span>
+                <a href="/colophon-history/" class="page-toggle-title__inactive">History</a>
+            </h1>
+        ) : (
+            <h1 class="page-toggle-title__text">
+                <a href="/colophon/" class="page-toggle-title__inactive">Current</a>
+                <span class="page-toggle-title__separator">/</span>
+                <span class="page-toggle-title__active">History</span>
+            </h1>
+        )
+    ) : null}
 </div>
 
 <style>
