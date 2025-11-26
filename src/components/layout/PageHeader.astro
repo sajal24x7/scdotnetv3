@@ -24,17 +24,17 @@ const {
 const sizeClasses = {
   sm: {
     title: 'text-large font-bold',
-    description: 'text-small text-gray-600 dark:text-gray-400 mt-2',
+    description: 'text-small mt-2',
     container: 'mb-6'
   },
   md: {
     title: 'text-huge font-bold',
-    description: 'text-normal text-gray-600 dark:text-gray-400 mt-3',
+    description: 'text-normal mt-3',
     container: 'mb-8'
   },
   lg: {
     title: 'text-huge font-bold',
-    description: 'text-large text-gray-600 dark:text-gray-400 mt-4',
+    description: 'text-large mt-4',
     container: 'mb-10'
   }
 };
@@ -155,22 +155,35 @@ const maxWidthClasses = {
   .inline-flex {
     transition: all 0.2s ease-in-out;
   }
-  
+
   /* Hover effects */
   .inline-flex:hover {
     transform: translateY(-1px);
   }
-  
+
   /* Back button hover */
   a:hover svg {
     transform: translateX(-2px);
   }
-  
+
+  /* Description colors */
+  p.text-small,
+  p.text-normal,
+  p.text-large {
+    color: rgb(71 85 105);
+  }
+
+  :global(.dark) p.text-small,
+  :global(.dark) p.text-normal,
+  :global(.dark) p.text-large {
+    color: rgb(var(--color-text-secondary));
+  }
+
   /* Dark mode adjustments */
   :global(.dark) .bg-accent {
     background-color: var(--color-accent);
   }
-  
+
   :global(.dark) .bg-accent-dark {
     background-color: var(--color-accent-dark, #1a5f7a);
   }
