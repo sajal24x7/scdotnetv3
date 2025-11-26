@@ -66,7 +66,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
     </figure>
   )}
 
-  {postTitle && (
+  {postTitle && (!isMicro || !showFullContent) && (
     <h2 class="stream-title">
       <a href={postLink} class="stream-title-link link-hover">
         {postTitle}
@@ -75,13 +75,13 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
   )}
 
   <div class="stream-body">
-    {post.data.category === 'micro' && showFullContent ? (
+    {isMicro && showFullContent ? (
       <div
         class="prose dark:prose-dark stream-prose"
         set:html={post.renderedContent || post.body}
       />
     ) : (
-      post.data.description && (
+      !isMicro && post.data.description && (
         <p class="stream-description">
           {post.data.description}
         </p>
