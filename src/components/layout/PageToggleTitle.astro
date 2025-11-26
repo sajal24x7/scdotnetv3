@@ -30,13 +30,13 @@ const isColophonPage = currentPage === 'current' || currentPage === 'past';
             <h1 class="page-toggle-title__text">
                 <span class="page-toggle-title__active">Current</span>
                 <span class="page-toggle-title__separator">/</span>
-                <a href="/colophon/past/" class="page-toggle-title__inactive">Past</a>
+                <a href="/colophon-history/" class="page-toggle-title__inactive">History</a>
             </h1>
         ) : (
             <h1 class="page-toggle-title__text">
-                <a href="/colophon/current/" class="page-toggle-title__inactive">Current</a>
+                <a href="/colophon/" class="page-toggle-title__inactive">Current</a>
                 <span class="page-toggle-title__separator">/</span>
-                <span class="page-toggle-title__active">Past</span>
+                <span class="page-toggle-title__active">History</span>
             </h1>
         )
     ) : null}

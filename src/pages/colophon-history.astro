@@ -1,11 +1,11 @@
 ---
-import { getAllPosts, type Post } from '../../utils/content';
-import Layout from '../../layouts/Layout.astro';
-import { formatDateRange } from '../../utils/dateFormat';
-import LayoutContainer from '../../components/layout/LayoutContainer.astro';
-import ProgressLayout from '../../components/layout/ProgressLayout.astro';
-import { parseMarkdown } from '../../utils/markdown';
-import '../../styles/progress-page.css';
+import { getAllPosts, type Post } from '../utils/content';
+import Layout from '../layouts/Layout.astro';
+import { formatDateRange } from '../utils/dateFormat';
+import LayoutContainer from '../components/layout/LayoutContainer.astro';
+import ProgressLayout from '../components/layout/ProgressLayout.astro';
+import { parseMarkdown } from '../utils/markdown';
+import '../styles/progress-page.css';
 
 // Get all posts dynamically across year folders and filter to category 'colophon'
 const allPosts = await getAllPosts();
@@ -43,7 +43,7 @@ const renderedPosts: ColophonPost[] = pastColophons.map(post => {
 <Layout
   title="Colophon History - Sajal Choudhary"
   description="Historical versions of the colophon and site information"
-  currentPage="/colophon/"
+  currentPage="/colophon-history/"
   pageWrapper={{
         maxWidth: '7xl',
         padding: 'none',
@@ -89,7 +89,7 @@ const renderedPosts: ColophonPost[] = pastColophons.map(post => {
         <div slot="empty" class="progress-page__empty">
             <p>No historical colophon entries yet.</p>
             <p>
-                Check the <a href="/colophon/current/" class="progress-page__link">Current page</a> to see the latest colophon.
+                Check the <a href="/colophon/" class="progress-page__link">Current page</a> to see the latest colophon.
             </p>
         </div>
     </ProgressLayout>
