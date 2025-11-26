@@ -21,7 +21,7 @@
 }
 
 :global(.dark) .progress-page__header-description {
-    color: rgb(148 163 184);
+    color: rgb(var(--color-text-secondary));
 }
 
 .progress-page__content {
@@ -37,7 +37,7 @@
 }
 
 :global(.dark) .progress-page__intro {
-    color: rgb(148 163 184);
+    color: rgb(var(--color-text-secondary));
 }
 
 .progress-page__link {
@@ -106,7 +106,7 @@
 }
 
 :global(.dark) .progress-card__time {
-    color: rgb(203 213 225);
+    color: rgb(var(--color-text-secondary));
 }
 
 .progress-card__title {
@@ -117,7 +117,7 @@
 }
 
 :global(.dark) .progress-card__title {
-    color: rgb(226 232 240);
+    color: rgb(var(--color-text-primary));
 }
 
 .progress-card__body :global(.prose) {
@@ -130,7 +130,7 @@
 }
 
 :global(.dark) .progress-page__empty {
-    color: rgb(148 163 184);
+    color: rgb(var(--color-text-secondary));
 }
 
 .progress-page__sidebar {
@@ -160,7 +160,7 @@
 }
 
 :global(.dark) .progress-sidebar-card__title {
-    color: rgb(226 232 240);
+    color: rgb(var(--color-text-primary));
 }
 
 .progress-sidebar-card__stats {
@@ -189,11 +189,11 @@
 }
 
 :global(.dark) .progress-sidebar-card__stats div {
-    color: rgb(148 163 184);
+    color: rgb(var(--color-text-secondary));
 }
 
 :global(.dark) .progress-sidebar-card__stats dd {
-    color: rgb(226 232 240);
+    color: rgb(var(--color-text-primary));
 }
 
 .progress-sidebar-card__links {
@@ -228,7 +228,7 @@
 }
 
 :global(.dark) .progress-sidebar-card__link-label {
-    color: rgb(226 232 240);
+    color: rgb(var(--color-text-primary));
 }
 
 .progress-sidebar-card__link-description {
@@ -237,7 +237,7 @@
 }
 
 :global(.dark) .progress-sidebar-card__link-description {
-    color: rgb(148 163 184);
+    color: rgb(var(--color-text-secondary));
 }
 
 @media (max-width: 47.99rem) {

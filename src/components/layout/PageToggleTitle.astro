@@ -44,7 +44,7 @@ const { currentPage } = Astro.props;
     }
 
     :global(.dark) .page-toggle-title__active {
-        color: rgb(226 232 240);
+        color: rgb(var(--color-text-primary));
     }
 
     .page-toggle-title__separator {
@@ -53,7 +53,8 @@ const { currentPage } = Astro.props;
     }
 
     :global(.dark) .page-toggle-title__separator {
-        color: rgb(100 116 139);
+        color: rgb(var(--color-text-secondary));
+        opacity: 0.6;
     }
 
     .page-toggle-title__inactive {
@@ -63,7 +64,8 @@ const { currentPage } = Astro.props;
     }
 
     :global(.dark) .page-toggle-title__inactive {
-        color: rgb(100 116 139);
+        color: rgb(var(--color-text-secondary));
+        opacity: 0.7;
     }
 
     .page-toggle-title__inactive:hover {
