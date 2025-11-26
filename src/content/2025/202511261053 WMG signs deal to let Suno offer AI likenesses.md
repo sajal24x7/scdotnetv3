@@ -1,12 +1,14 @@
 ---
-title: "WMG signs deal to let Suno offer AI likenesses"
-slug: "wmg-signs-deal-to-let-suno-offer-ai-likenesses"
-pubDate: 2025-11-26T10:54:39+02:00
-updatedDate: 2025-11-26T10:54:39+02:00
+title: WMG signs deal to let Suno offer AI likenesses
+slug: wmg-signs-deal-to-let-suno-offer-ai-likenesses
+pubDate: 2025-11-26T08:54:39.000Z
+updatedDate: 2025-11-26T08:54:39.000Z
 category: micro
 tags:
   - ai
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115615159213780729'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6jibhthrc2d'
 ---
 [Warner Music Group partners with Suno to offer AI likenesses of its artists by Emma Roth](https://www.theverge.com/news/829189/warner-music-group-suno-ai-licensing-deal)
 
