@@ -22,7 +22,7 @@ The last one was at a wonderful venue as well. The organisers clearly are on top
 
 During the five minute break between sessions I had a chance to look at a couple of exhibits, and it seemed interesting to me. Perhaps, we would be back here.
 
-# 1. "How AI can bring back the original tradition of storytelling" by Roope Rainisto
+## 1. "How AI can bring back the original tradition of storytelling" by Roope Rainisto
 
 ![Storytelling talk](https://storage.sajalchoudhary.net/images/2025/11/vibe-nov-2.jpeg)
 
@@ -40,7 +40,7 @@ AI may bring back the intelligent story-teller. It can bring back story-telling 
 
 The artist can be present by describing the story world not just the story. What are the ideas, the thing that you want to tell. The player needs to feel like they came to the realisation on their own.
 
-# 2. "Stop Prompting. Start Commanding: How Agent Armies Build Better Systems" by Rolf Koski, Co-founder & CTO @ Elexive
+## 2. "Stop Prompting. Start Commanding: How Agent Armies Build Better Systems" by Rolf Koski, Co-founder & CTO @ Elexive
 
 ![Spec-driven coding](https://storage.sajalchoudhary.net/images/2025/11/vibe-nov-3.jpeg)
 
@@ -54,7 +54,7 @@ There are different agent patterns -
 
 Rolf prefers [Kiro](https://kiro.dev) and [Claude Code](https://claude.ai/code). One alternative to Kiro is [OpenSpec](https://github.com/Fission-AI/OpenSpec/). I liked the idea of spec-driven development. Something to experiment with.
 
-# 3. "Three Gains from Integrating Vibecoding into My Workflow", by Christoffer Weiss, Chief Avatar Officer @ Avataria
+## 3. "Three Gains from Integrating Vibecoding into My Workflow", by Christoffer Weiss, Chief Avatar Officer @ Avataria
 
 ![Vibecoding gains](https://storage.sajalchoudhary.net/images/2025/11/vibe-nov-4.jpeg)
 
