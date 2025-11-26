@@ -16,12 +16,8 @@
 .progress-page__header-description {
     font-size: 1.125rem;
     line-height: 1.7;
-    color: rgb(71 85 105);
-    margin: 0;
-}
-
-:global(.dark) .progress-page__header-description {
     color: rgb(var(--color-text-secondary));
+    margin: 0;
 }
 
 .progress-page__content {
