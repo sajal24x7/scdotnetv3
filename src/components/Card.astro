@@ -66,7 +66,8 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
     transition:
       background-color 180ms ease,
       box-shadow 220ms ease,
-      transform 220ms ease;
+      transform 220ms ease,
+      border-color 180ms ease;
   }
 
   :global(.dark) .card {
@@ -75,33 +76,54 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
 
   .card--with-image {
     background: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 14px 36px -24px rgba(15, 23, 42, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 4px 12px rgba(15, 23, 42, 0.08);
   }
 
   :global(.dark) .card--with-image {
     background: rgba(24, 31, 44, 0.85);
-    box-shadow: 0 18px 42px -28px rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.2),
+      0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
   .card:hover,
   .card:focus-within {
     background: var(--card-hover-bg);
-    box-shadow: 0 20px 46px -28px rgba(129, 140, 248, 0.35);
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.08),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 8px 24px rgba(129, 140, 248, 0.25);
     transform: translateY(-2px);
   }
 
   .card--with-image:hover,
   .card--with-image:focus-within {
     background: rgba(250, 250, 255, 0.95);
+    border-color: rgba(99, 102, 241, 0.2);
   }
 
   :global(.dark) .card--with-image:hover,
   :global(.dark) .card--with-image:focus-within {
     background: rgba(35, 35, 54, 0.9);
+    border-color: rgba(99, 102, 241, 0.3);
   }
 
   .card--no-image {
-    box-shadow: none;
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.02);
+  }
+
+  :global(.dark) .card--no-image {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.15);
   }
 
   .card-content {
