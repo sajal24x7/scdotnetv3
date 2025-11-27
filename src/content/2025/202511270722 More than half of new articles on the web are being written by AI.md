@@ -1,13 +1,15 @@
 ---
-title: "More than half of new articles on the web are being written by AI"
-slug: "more-than-half-of-new-articles-on-the-web-are-being-written-by-ai"
-pubDate: 2025-11-27T07:25:07+02:00
-updatedDate: 2025-11-27T07:25:07+02:00
+title: More than half of new articles on the web are being written by AI
+slug: more-than-half-of-new-articles-on-the-web-are-being-written-by-ai
+pubDate: 2025-11-27T05:25:07.000Z
+updatedDate: 2025-11-27T05:25:07.000Z
 category: micro
 tags:
   - ai
   - web
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115619996936324072'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6lmzetjff2n'
 ---
 [More Than Half of New Articles On the Internet Are Being Written By AI - Slashdot](https://news.slashdot.org/story/25/11/26/1937217/more-than-half-of-new-articles-on-the-internet-are-being-written-by-ai?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
