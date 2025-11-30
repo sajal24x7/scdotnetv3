@@ -24,7 +24,6 @@ const secondaryNavItems = {
   about: [
     { href: '/colophon/', label: 'Colophon' },
     { href: '/now/', label: 'Now' },
-    { href: '/done/', label: 'Done' },
     { href: '/feeds/', label: 'Feeds' },
   ],
   garden: [
@@ -112,21 +111,21 @@ const getActiveSubsection = () => {
   if (currentPage.startsWith('/sajal/')) return '/sajal/';
   if (currentPage.startsWith('/colophon/')) return '/colophon/';
   if (currentPage.startsWith('/now/')) return '/now/';
-  if (currentPage.startsWith('/done/')) return '/done/';
+  if (currentPage.startsWith('/done/')) return '/now/'; // Done page highlights Now
   if (currentPage.startsWith('/feeds/')) return '/feeds/';
-  
+
   // Check for garden subsections
   if (currentPage.startsWith('/evergreen/')) return '/evergreen/';
   if (currentPage.startsWith('/til/')) return '/til/';
   if (currentPage.startsWith('/bookshelf/')) return '/bookshelf/';
   if (currentPage.startsWith('/stories/')) return '/stories/';
   if (currentPage.startsWith('/poems/')) return '/poems/';
-  
+
   // Check for stream subsections
   if (currentPage.startsWith('/blog/')) return '/blog/';
   if (currentPage.startsWith('/micro/')) return '/micro/';
   if (currentPage.startsWith('/photos/')) return '/photos/';
-  
+
   return null;
 };
 

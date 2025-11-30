@@ -1,14 +1,18 @@
 ---
-title: "Vibe Coding November Meetup"
-slug: "vibe-coding-november-meetup"
-pubDate: 2025-11-25T22:54:25+02:00
-updatedDate: 2025-11-25T22:54:25+02:00
+title: Vibe Coding November Meetup
+slug: vibe-coding-november-meetup
+pubDate: 2025-11-25T20:54:25.000Z
+updatedDate: 2025-11-25T20:54:25.000Z
 category: blog
 tags:
   - vibe-coding-finland
   - ai
   - stories
-image: https://storage.sajalchoudhary.net/images/2025/11/vibe-nov-3.jpeg
+image: 'https://storage.sajalchoudhary.net/images/2025/11/vibe-nov-3.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115612330730293846'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6ia373gxe2x'
+  - 'https://www.threads.com/@sajal24x7/post/DRfuYZSgaSh'
 ---
 The thing that I am most excited about this meetup is where it is happening, at the architecture and design museum.
 
@@ -18,7 +22,7 @@ The last one was at a wonderful venue as well. The organisers clearly are on top
 
 During the five minute break between sessions I had a chance to look at a couple of exhibits, and it seemed interesting to me. Perhaps, we would be back here.
 
-# 1. "How AI can bring back the original tradition of storytelling" by Roope Rainisto
+## 1. "How AI can bring back the original tradition of storytelling" by Roope Rainisto
 
 ![Storytelling talk](https://storage.sajalchoudhary.net/images/2025/11/vibe-nov-2.jpeg)
 
@@ -36,7 +40,7 @@ AI may bring back the intelligent story-teller. It can bring back story-telling 
 
 The artist can be present by describing the story world not just the story. What are the ideas, the thing that you want to tell. The player needs to feel like they came to the realisation on their own.
 
-# 2. "Stop Prompting. Start Commanding: How Agent Armies Build Better Systems" by Rolf Koski, Co-founder & CTO @ Elexive
+## 2. "Stop Prompting. Start Commanding: How Agent Armies Build Better Systems" by Rolf Koski, Co-founder & CTO @ Elexive
 
 ![Spec-driven coding](https://storage.sajalchoudhary.net/images/2025/11/vibe-nov-3.jpeg)
 
@@ -50,7 +54,7 @@ There are different agent patterns -
 
 Rolf prefers [Kiro](https://kiro.dev) and [Claude Code](https://claude.ai/code). One alternative to Kiro is [OpenSpec](https://github.com/Fission-AI/OpenSpec/). I liked the idea of spec-driven development. Something to experiment with.
 
-# 3. "Three Gains from Integrating Vibecoding into My Workflow", by Christoffer Weiss, Chief Avatar Officer @ Avataria
+## 3. "Three Gains from Integrating Vibecoding into My Workflow", by Christoffer Weiss, Chief Avatar Officer @ Avataria
 
 ![Vibecoding gains](https://storage.sajalchoudhary.net/images/2025/11/vibe-nov-4.jpeg)
 

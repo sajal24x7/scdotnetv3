@@ -132,12 +132,6 @@ const getSpanClass = (post: any) => {
     }
   }
 
-  @media (min-width: 88rem) {
-    :global([data-garden-grid]) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
   .garden-card {
     position: relative;
     display: flex;
@@ -152,6 +146,7 @@ const getSpanClass = (post: any) => {
 
   .garden-card :global(.card),
   .garden-card :global(.book-card) {
+    width: 100%;
     height: 100%;
   }
 
