@@ -13,6 +13,7 @@ startedReading: 2025-12-01T13:46:21.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115644626044031471'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6wkzfqo4o2d'
+bookCover: every-day-i-read.jpg
 ---
 
 Started reading
