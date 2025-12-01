@@ -8,7 +8,10 @@ This directory contains scripts for managing book covers for the bookshelf featu
 
 Automatically downloads missing book covers from Open Library and Google Books APIs.
 
-**Usage:**
+**Automatic Execution:**
+Runs automatically during `npm run dev`, `npm run build`, and all build commands.
+
+**Manual Usage:**
 ```bash
 npm run download-covers
 ```
@@ -19,7 +22,8 @@ npm run download-covers
 3. Searches Open Library and Google Books for cover images
 4. Downloads covers to `src/images/bookshelf/`
 5. Updates markdown frontmatter with `bookCover` field
-6. Regenerates TypeScript imports
+
+Note: `generate-book-covers.js` runs after this to update TypeScript imports.
 
 **Example output:**
 ```
@@ -45,7 +49,7 @@ npm run generate-covers
 2. Generates TypeScript imports in `src/utils/bookCovers.ts`
 3. Creates type-safe accessors for book covers
 
-**Note:** This is automatically called after `download-book-covers.js` completes.
+**Note:** This runs automatically in the build chain after `download-book-covers.js`.
 
 ## Quick Start
 
@@ -62,12 +66,18 @@ pubDate: 2025-12-01T10:00:00
 ---
 ```
 
-2. Download the cover:
+2. Start dev server (covers download automatically):
 ```bash
-npm run download-covers
+npm run dev
 ```
 
-3. Done! The cover is downloaded and referenced automatically.
+3. Done! The cover is automatically downloaded and referenced.
+
+**Or run manually:**
+```bash
+npm run download-covers
+npm run generate-covers
+```
 
 ## File Naming Convention
 

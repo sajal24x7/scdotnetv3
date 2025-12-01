@@ -292,22 +292,7 @@ async function main() {
   console.log('═══════════════════════════════════════\n');
 
   if (downloaded > 0) {
-    console.log('🔄 Running generate-book-covers.js to update TypeScript imports...\n');
-    const { spawn } = await import('child_process');
-
-    return new Promise((resolve) => {
-      const child = spawn('node', ['scripts/generate-book-covers.js'], {
-        stdio: 'inherit',
-        cwd: path.join(__dirname, '..')
-      });
-
-      child.on('close', (code) => {
-        if (code === 0) {
-          console.log('\n✅ Book covers TypeScript file updated successfully!');
-        }
-        resolve();
-      });
-    });
+    console.log('💡 Note: New covers downloaded. TypeScript imports will be updated by generate-covers script.\n');
   }
 }
 

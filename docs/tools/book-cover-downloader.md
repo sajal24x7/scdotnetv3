@@ -17,7 +17,19 @@ The book cover downloader scans all your bookshelf entries (markdown files with 
 
 ## Usage
 
-### Basic Usage
+### Automatic Execution
+
+The book cover downloader **runs automatically** during:
+- `npm run dev` - Development server startup
+- `npm run start` - Start command
+- `npm run build` - Production builds
+- `npm run build:cloudflare` - Cloudflare Pages builds
+
+This ensures all bookshelf entries have covers before the site builds.
+
+### Manual Execution
+
+You can also run it manually:
 
 ```bash
 npm run download-covers
@@ -29,14 +41,15 @@ This will:
 3. Search for covers using Open Library and Google Books APIs
 4. Download covers to `src/images/bookshelf/`
 5. Update markdown frontmatter with `bookCover` field
-6. Regenerate TypeScript imports using `generate-book-covers.js`
 
-### When to Run
+Note: After running, you should also run `npm run generate-covers` to update TypeScript imports, or the build will handle this automatically.
 
-Run this script when:
-- You add a new bookshelf entry without a cover
-- You want to find covers for existing entries that don't have them
-- You've manually deleted a cover and want to re-download it
+### When to Run Manually
+
+Run this script manually when:
+- You want to check for missing covers without starting a full dev server
+- You're testing cover downloads for new books
+- You want to see detailed download logs
 
 ## How It Works
 
@@ -184,16 +197,25 @@ Currently there's no dry-run mode, but the script is safe to run multiple times 
 
 ## Integration with Build Process
 
-The script is **not** automatically run during builds to avoid:
-- Network requests during CI/CD
-- Potential API rate limits
-- Unexpected file changes
+The script **runs automatically** as part of the build chain:
 
-Run it manually when needed:
-```bash
-npm run download-covers
-npm run dev
 ```
+Build Flow:
+1. cache-nordletter-images
+2. download-covers       ← Runs here
+3. generate-covers
+4. fetch-webmentions (build only)
+5. astro dev/build
+```
+
+This ensures:
+- All bookshelf entries have covers before builds
+- TypeScript imports are up-to-date
+- Covers are downloaded from public APIs during CI/CD builds
+
+### Rate Limiting Considerations
+
+The script includes a 500ms delay between API requests to respect rate limits. For large numbers of new books, the build may take slightly longer on the first run.
 
 ## API Sources
 
@@ -231,15 +253,18 @@ pubDate: 2025-12-01T10:00:00
 Your notes about the book...
 ```
 
-2. Run the downloader:
+2. Start your dev server:
 ```bash
-npm run download-covers
+npm run dev
 ```
 
-3. The script will:
-   - Find the book
+3. The script will **automatically**:
+   - Find the new book
    - Download the cover as `new-book-title.jpg`
    - Update the frontmatter to include `bookCover: "new-book-title.jpg"`
+   - Generate TypeScript imports
+
+You can also run it manually with `npm run download-covers` if you prefer.
 
 ### Bulk Adding Books
 
