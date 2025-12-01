@@ -72,24 +72,6 @@
       "pubDate": "2025-07-15T19:42:08.000Z"
     }
   ],
-  "blog/visit-porvoo": [
-    {
-      "slug": "/nordletter/a-short-trip-to-porkkalanniemi/",
-      "title": "A short trip to Porkkalanniemi",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-07-13T03:30:05.000Z"
-    }
-  ],
-  "blog/nature-trails-nuuksio-and-pihlajasaari": [
-    {
-      "slug": "/nordletter/a-short-trip-to-porkkalanniemi/",
-      "title": "A short trip to Porkkalanniemi",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-07-13T03:30:05.000Z"
-    }
-  ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
     {
       "slug": "/nordletter/nl63-a-day-trip-to-turku/",
@@ -131,15 +113,6 @@
       "description": "",
       "category": "til",
       "pubDate": "2025-08-04T09:53:07.000Z"
-    }
-  ],
-  "blog/postcard-from-oitta": [
-    {
-      "slug": "/nordletter/nl66/",
-      "title": "Return to Oitta",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-08-10T03:34:48.000Z"
     }
   ],
   "nordletter/nl65": [
@@ -384,6 +357,15 @@
       "pubDate": "2025-10-16T07:16:34.000Z"
     }
   ],
+  "evergreen/what-to-automate": [
+    {
+      "slug": "/evergreen/how-to-automate-something/",
+      "title": "How to automate something",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-10-16T10:31:07.000Z"
+    }
+  ],
   "bookshelf/time-management-for-system-administrators": [
     {
       "slug": "/evergreen/how-to-automate-something/",
@@ -400,13 +382,31 @@
       "pubDate": "2025-10-16T10:26:58.000Z"
     }
   ],
-  "evergreen/what-to-automate": [
+  "evergreen/do-fewer-things": [
     {
-      "slug": "/evergreen/how-to-automate-something/",
-      "title": "How to automate something",
+      "slug": "/bookshelf/slow-productivity/",
+      "title": "Slow Productivity",
       "description": "",
-      "category": "evergreen",
-      "pubDate": "2025-10-16T10:31:07.000Z"
+      "category": "bookshelf",
+      "pubDate": "2025-10-21T08:46:56.000Z"
+    }
+  ],
+  "evergreen/work-at-a-natural-pace": [
+    {
+      "slug": "/bookshelf/slow-productivity/",
+      "title": "Slow Productivity",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-10-21T08:46:56.000Z"
+    }
+  ],
+  "evergreen/obsess-over-quality": [
+    {
+      "slug": "/bookshelf/slow-productivity/",
+      "title": "Slow Productivity",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-10-21T08:46:56.000Z"
     }
   ],
   "bookshelf/the-quick-python-book": [
@@ -416,6 +416,121 @@
       "description": "",
       "category": "til",
       "pubDate": "2025-10-21T12:45:15.000Z"
+    }
+  ],
+  "bookshelf/slow-productivity": [
+    {
+      "slug": "/evergreen/how-to-create-a-simulated-pull-workflow/",
+      "title": "How to create a simulated pull workflow",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-10-26T20:52:38.000Z"
+    }
+  ],
+  "nordletter/diwali-week": [
+    {
+      "slug": "/nordletter/nl77/",
+      "title": "Hyva Diwalia!",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-26T20:45:29.000Z"
+    }
+  ],
+  "blog/celebrating-diwali-at-op": [
+    {
+      "slug": "/nordletter/nl77/",
+      "title": "Hyva Diwalia!",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-26T20:45:29.000Z"
+    }
+  ],
+  "bookshelf/the-practice-of-cloud-system-administration": [
+    {
+      "slug": "/til/the-cap-principle/",
+      "title": "The CAP principle",
+      "description": "",
+      "category": "til",
+      "pubDate": "2025-10-30T11:46:10.000Z"
+    },
+    {
+      "slug": "/evergreen/distributed-system-design-patterns/",
+      "title": "Distributed system design patterns",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-10-29T09:11:33.000Z"
+    }
+  ],
+  "blog/attending-the-global-ai-bootcamp-in-helsinki": [
+    {
+      "slug": "/blog/msft-ai-user-group-event-at-nitor/",
+      "title": "MSFT AI User group event at Nitor",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-10-30T20:53:11.000Z"
+    }
+  ],
+  "nordletter/the-human-condition": [
+    {
+      "slug": "/nordletter/nl78/",
+      "title": "Chath celebrations",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-11-02T20:42:52.000Z"
+    }
+  ],
+  "nordletter/nl74-to-move": [
+    {
+      "slug": "/nordletter/nl79/",
+      "title": "Moving",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-11-15T21:57:56.000Z"
+    }
+  ],
+  "blog/building-furniture": [
+    {
+      "slug": "/nordletter/nl79/",
+      "title": "Moving",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-11-15T21:57:56.000Z"
+    }
+  ],
+  "now/learning-python": [
+    {
+      "slug": "/blog/the-joy-of-coding/",
+      "title": "The joy of coding",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-11-19T20:40:40.000Z"
+    }
+  ],
+  "bookshelf/continuous-delivery": [
+    {
+      "slug": "/til/how-to-write-commit-messages/",
+      "title": "How to write commit messages",
+      "description": "",
+      "category": "til",
+      "pubDate": "2025-11-24T18:54:37.000Z"
+    }
+  ],
+  "micro/cloudflare-explains-tuesdays-outage": [
+    {
+      "slug": "/micro/the-cloudflare-outage-was-a-good-thing/",
+      "title": "The Cloudflare outage was a good thing",
+      "description": "",
+      "category": "micro",
+      "pubDate": "2025-11-24T09:14:29.000Z"
+    }
+  ],
+  "blog/vibe-coding-november-meetup": [
+    {
+      "slug": "/nordletter/nl81/",
+      "title": "Fun at Biitsi",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-11-30T20:44:23.000Z"
     }
   ]
 }
