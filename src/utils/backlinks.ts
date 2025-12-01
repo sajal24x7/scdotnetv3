@@ -4,6 +4,22 @@ import { getCollection } from 'astro:content';
 import { getYearDirectories } from './content';
 import type { CollectionEntry } from 'astro:content';
 
+/**
+ * Backlinks System with Smart Caching
+ *
+ * This module builds a reverse index of internal links between posts.
+ * For each post, it tracks which other posts link to it.
+ *
+ * Caching Strategy:
+ * - The index is cached to src/data/backlinks-index.json for performance
+ * - Cache is automatically invalidated when any content file is modified
+ * - Checks modification time of all .md files in content directories
+ * - Regenerates automatically if cache is stale
+ * - Can force regeneration with REGENERATE_BACKLINKS=true env var
+ *
+ * This ensures backlinks are always up-to-date without manual intervention.
+ */
+
 export interface Backlink {
     slug: string;
     title: string;
@@ -51,16 +67,71 @@ export async function findBacklinksComprehensive(currentPostPath: string): Promi
     return backlinks.map(backlink => ({ ...backlink }));
 }
 
+/**
+ * Check if the backlinks cache is fresh by comparing timestamps.
+ * Returns true if cache is fresh, false if stale, undefined if cache doesn't exist.
+ */
+async function isCacheFresh(): Promise<boolean | undefined> {
+    try {
+        const cacheStats = await fs.stat(CACHE_FILE);
+        const cacheMtime = cacheStats.mtimeMs;
+
+        const contentDir = path.join(process.cwd(), 'src', 'content');
+        const years = getYearDirectories();
+
+        // Check if any content file is newer than the cache
+        for (const year of years) {
+            const yearDir = path.join(contentDir, year);
+            try {
+                const files = await fs.readdir(yearDir);
+                for (const file of files) {
+                    if (!file.endsWith('.md')) continue;
+
+                    const filePath = path.join(yearDir, file);
+                    const fileStats = await fs.stat(filePath);
+
+                    if (fileStats.mtimeMs > cacheMtime) {
+                        return false; // Cache is stale
+                    }
+                }
+            } catch (error) {
+                // Skip directories that can't be read
+                continue;
+            }
+        }
+
+        return true; // Cache is fresh
+    } catch (error: any) {
+        if (error?.code === 'ENOENT') {
+            return undefined; // Cache doesn't exist
+        }
+        console.warn('[Backlinks] Error checking cache freshness:', error);
+        return false; // Assume stale on error
+    }
+}
+
 async function loadBacklinkIndex(): Promise<BacklinkIndex> {
     if (!backlinkIndexPromise) {
         backlinkIndexPromise = (async () => {
             const shouldRegenerate = process.env.REGENERATE_BACKLINKS === 'true';
-            const artifact = shouldRegenerate ? null : await readBacklinkArtifact();
+            const isCacheStale = await isCacheFresh() === false;
 
+            if (shouldRegenerate || isCacheStale) {
+                if (isCacheStale) {
+                    console.log('[Backlinks] Cache is stale, regenerating index...');
+                }
+                const builtIndex = await buildBacklinkIndex();
+                await writeBacklinkArtifact(builtIndex);
+                return builtIndex;
+            }
+
+            const artifact = await readBacklinkArtifact();
             if (artifact) {
+                console.log('[Backlinks] Using cached index');
                 return convertArtifactToIndex(artifact);
             }
 
+            console.log('[Backlinks] No cache found, building index...');
             const builtIndex = await buildBacklinkIndex();
             await writeBacklinkArtifact(builtIndex);
             return builtIndex;

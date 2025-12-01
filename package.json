@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "npm run cache-nordletter-images && npm run generate-covers && astro dev",
     "start": "npm run cache-nordletter-images && npm run generate-covers && astro dev",
-    "build": "npm run cache-nordletter-images && npm run generate-covers && npm run fetch-webmentions && astro build && ./scripts/trigger-syndication.sh || true",
+    "build": "npm run cache-nordletter-images && npm run generate-covers && npm run fetch-webmentions && astro build",
     "build:cloudflare": "npm run cache-nordletter-images && npm run generate-covers && npm run fetch-webmentions && astro build",
     "preview": "astro preview",
     "astro": "astro",
