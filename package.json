@@ -17,6 +17,7 @@
     "generate-covers": "node scripts/generate-book-covers.js",
     "fetch-webmentions": "node scripts/fetch-webmentions.js",
     "cache-nordletter-images": "node scripts/cache-nordletter-images.js",
+    "download-covers": "node scripts/download-book-covers.js",
     "syndicate": "node scripts/syndicate-content.js",
     "syndicate:dry-run": "SYNDICATION_DRY_RUN=true node scripts/syndicate-content.js"
   },
