@@ -17,19 +17,31 @@ The book cover downloader scans all your bookshelf entries (markdown files with 
 
 ## Usage
 
-### Automatic Execution
+### Automatic Execution via GitHub Actions
 
-The book cover downloader **runs automatically** during:
-- `npm run dev` - Development server startup
-- `npm run start` - Start command
-- `npm run build` - Production builds
-- `npm run build:cloudflare` - Cloudflare Pages builds
+The book cover downloader **runs automatically** as a GitHub Actions workflow that:
+- ✅ Triggers on every push to `main` branch (when markdown files in `src/content/` change)
+- ✅ Triggers after successful deployments via `repository_dispatch`
+- ✅ Runs weekly on Sunday at 2 AM UTC (to catch any missed covers)
+- ✅ Can be triggered manually via GitHub Actions UI
+- ✅ Downloads missing covers and commits them back to the repository
 
-This ensures all bookshelf entries have covers before the site builds.
+**Workflow file:** `.github/workflows/download-book-covers.yml`
+
+### How It Works
+
+1. **You add a new bookshelf entry** (markdown file with `category: bookshelf`)
+2. **Push to `main` branch**
+3. **GitHub Actions workflow detects the change** (monitors `src/content/**/*.md`)
+4. **Downloads missing book covers** from Open Library and Google Books APIs
+5. **Commits covers back to repo** along with updated frontmatter
+6. **Your next build has all covers ready** to use
+
+This ensures book covers are committed to the repository and available for all builds (including Cloudflare Pages).
 
 ### Manual Execution
 
-You can also run it manually:
+You can also run it manually locally for testing:
 
 ```bash
 npm run download-covers
@@ -42,14 +54,22 @@ This will:
 4. Download covers to `src/images/bookshelf/`
 5. Update markdown frontmatter with `bookCover` field
 
-Note: After running, you should also run `npm run generate-covers` to update TypeScript imports, or the build will handle this automatically.
+**Note:** After running locally, you should commit the downloaded covers and updated files to git.
+
+### Manual GitHub Actions Trigger
+
+You can also trigger the workflow manually from GitHub:
+1. Go to **Actions** tab in your repository
+2. Select **Download Book Covers** workflow
+3. Click **Run workflow**
+4. Wait for it to complete and commit changes
 
 ### When to Run Manually
 
 Run this script manually when:
-- You want to check for missing covers without starting a full dev server
-- You're testing cover downloads for new books
+- You're testing cover downloads for new books locally before committing
 - You want to see detailed download logs
+- You need to download covers immediately without waiting for the workflow
 
 ## How It Works
 
@@ -197,25 +217,53 @@ Currently there's no dry-run mode, but the script is safe to run multiple times 
 
 ## Integration with Build Process
 
-The script **runs automatically** as part of the build chain:
+The book cover downloader runs as a **separate GitHub Actions workflow**, not as part of the build:
 
-```
-Build Flow:
-1. cache-nordletter-images
-2. download-covers       ← Runs here
-3. generate-covers
-4. fetch-webmentions (build only)
-5. astro dev/build
+### Workflow Triggers
+
+```yaml
+on:
+  # Runs when markdown files change
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/**/*.md'
+
+  # Runs after successful deployments
+  repository_dispatch:
+    types: [deploy-success]
+
+  # Runs weekly to catch missed covers
+  schedule:
+    - cron: '0 2 * * 0' # Every Sunday at 2 AM UTC
+
+  # Can be triggered manually
+  workflow_dispatch:
 ```
 
-This ensures:
-- All bookshelf entries have covers before builds
-- TypeScript imports are up-to-date
-- Covers are downloaded from public APIs during CI/CD builds
+### Why Separate from Build?
+
+1. **Book covers need to be committed** to the repository for Cloudflare Pages to access them
+2. **Avoids network calls during builds** - covers are already in the repo
+3. **Faster builds** - downloads happen asynchronously
+4. **Better failure handling** - download failures don't break builds
+
+### Workflow Steps
+
+1. Checkout repository
+2. Install dependencies
+3. Run `npm run download-covers`
+4. Run `npm run generate-covers`
+5. Commit changes (covers + frontmatter updates)
+6. Push back to `main` branch
+
+### Bot Loop Prevention
+
+The workflow includes `if: github.actor != 'github-actions[bot]'` to prevent infinite loops when the bot commits changes.
 
 ### Rate Limiting Considerations
 
-The script includes a 500ms delay between API requests to respect rate limits. For large numbers of new books, the build may take slightly longer on the first run.
+The script includes a 500ms delay between API requests to respect rate limits. For large numbers of new books, the workflow may take a few minutes to complete.
 
 ## API Sources
 
@@ -253,30 +301,38 @@ pubDate: 2025-12-01T10:00:00
 Your notes about the book...
 ```
 
-2. Start your dev server:
+2. Commit and push to `main`:
 ```bash
-npm run dev
+git add .
+git commit -m "Add new book: New Book Title"
+git push origin main
 ```
 
-3. The script will **automatically**:
-   - Find the new book
+3. The GitHub Actions workflow will **automatically**:
+   - Detect the new bookshelf entry
    - Download the cover as `new-book-title.jpg`
    - Update the frontmatter to include `bookCover: "new-book-title.jpg"`
-   - Generate TypeScript imports
+   - Commit the changes back to the repository
 
-You can also run it manually with `npm run download-covers` if you prefer.
+4. Pull the changes:
+```bash
+git pull origin main
+```
+
+Your book cover is now in the repository and ready to use!
+
+**Alternative (Manual):** Run `npm run download-covers` locally before committing, then commit both the markdown file and the downloaded cover together.
 
 ### Bulk Adding Books
 
 If you add multiple books at once:
 
-```bash
-# Add all your markdown files first
-# Then run once to download all covers
-npm run download-covers
-```
+1. Create all your markdown files
+2. Commit and push to `main`
+3. The workflow processes all missing covers in a single run
+4. Pull the changes
 
-The script processes all missing covers in a single run.
+Or run `npm run download-covers` locally to download all at once before committing.
 
 ## Maintenance
 

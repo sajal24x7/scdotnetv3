@@ -9,7 +9,13 @@ This directory contains scripts for managing book covers for the bookshelf featu
 Automatically downloads missing book covers from Open Library and Google Books APIs.
 
 **Automatic Execution:**
-Runs automatically during `npm run dev`, `npm run build`, and all build commands.
+Runs as a GitHub Actions workflow (`.github/workflows/download-book-covers.yml`) that triggers:
+- On push to `main` (when markdown files change)
+- After successful deployments
+- Weekly on Sunday at 2 AM UTC
+- Manually via GitHub Actions UI
+
+The workflow downloads covers and commits them back to the repository.
 
 **Manual Usage:**
 ```bash
@@ -23,7 +29,7 @@ npm run download-covers
 4. Downloads covers to `src/images/bookshelf/`
 5. Updates markdown frontmatter with `bookCover` field
 
-Note: `generate-book-covers.js` runs after this to update TypeScript imports.
+Note: After running locally, commit the changes to git.
 
 **Example output:**
 ```
@@ -53,7 +59,7 @@ npm run generate-covers
 
 ## Quick Start
 
-### Add a new book
+### Add a new book (Automatic via GitHub Actions)
 
 1. Create markdown file in `src/content/YYYY/`:
 ```yaml
@@ -66,17 +72,29 @@ pubDate: 2025-12-01T10:00:00
 ---
 ```
 
-2. Start dev server (covers download automatically):
+2. Commit and push to `main`:
 ```bash
-npm run dev
+git add .
+git commit -m "Add new book"
+git push origin main
 ```
 
-3. Done! The cover is automatically downloaded and referenced.
+3. GitHub Actions workflow runs automatically:
+   - Downloads the book cover
+   - Updates frontmatter with `bookCover` field
+   - Commits changes back to repo
 
-**Or run manually:**
+4. Pull the changes:
+```bash
+git pull origin main
+```
+
+**Or run manually locally:**
 ```bash
 npm run download-covers
-npm run generate-covers
+git add .
+git commit -m "Add book covers"
+git push
 ```
 
 ## File Naming Convention
