@@ -7,7 +7,7 @@ category: bookshelf
 tags:
   - sci-fi
 format: audio
-author: Tchaikovsky, Adrian
+author: "Adrian Tchaikovsky"
 series: "Children of Time #1"
 bookStatus: read
 bookRating: love

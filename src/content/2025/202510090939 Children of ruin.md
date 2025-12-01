@@ -7,7 +7,7 @@ category: bookshelf
 tags:
   - sci-fi
 format: audio
-author: Adrian
+author: "Adrian Tchaikovsky"
 series: "Children of Time #2"
 bookStatus: "read"
 bookRating: "like"
