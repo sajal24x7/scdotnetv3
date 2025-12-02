@@ -15,6 +15,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115648920891604284'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6yi2ilovo2d'
   - 'https://www.threads.com/@sajal24x7/post/DRwO1AGDkqn'
+bookCover: this-is-how-you-lose-the-time-war.jpg
 ---
 Started reading.
 
