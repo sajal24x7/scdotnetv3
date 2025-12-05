@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115666288796502386'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7a6uii5i62m'
+  - 'https://www.threads.com/@sajal24x7/post/DR4Lmy0Dp53'
 ---
 [Netflix wins the bidding war for Warner Bros. by Dominic Preston](https://www.theverge.com/news/838781/netflix-warner-bros-discover-bids-buyout)
 

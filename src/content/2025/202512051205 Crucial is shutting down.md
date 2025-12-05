@@ -1,13 +1,15 @@
 ---
-title: "Crucial is shutting down"
-slug: "crucial-is-shutting-down"
-pubDate: 2025-12-05T12:06:38+02:00
-updatedDate: 2025-12-05T12:06:38+02:00
+title: Crucial is shutting down
+slug: crucial-is-shutting-down
+pubDate: 2025-12-05T10:06:38.000Z
+updatedDate: 2025-12-05T10:06:38.000Z
 category: micro
 tags:
   - ssd
   - pc
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115666402876290109'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7aaiebizy25'
 ---
 [Crucial is shutting down — because Micron wants to sell its RAM and SSDs to AI companies instead by Emma Roth](https://www.theverge.com/news/837594/crucial-ram-ssd-micron-ai)
 
