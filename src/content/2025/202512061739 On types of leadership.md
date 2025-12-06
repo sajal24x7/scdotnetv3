@@ -1,13 +1,15 @@
 ---
-title: "On types of leadership"
-slug: "on-types-of-leadership"
-pubDate: 2025-12-06T23:54:32+02:00
-updatedDate: 2025-12-06T23:54:32+02:00
+title: On types of leadership
+slug: on-types-of-leadership
+pubDate: 2025-12-06T21:54:32.000Z
+updatedDate: 2025-12-06T21:54:32.000Z
 category: micro
 tags:
   - leadership
   - work
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115674850534317997'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7dyjvsron2d'
 ---
 [Transparent Leadership Beats Servant Leadership by kqr](https://entropicthoughts.com/transparent-leadership-beats-servant-leadership)
 
