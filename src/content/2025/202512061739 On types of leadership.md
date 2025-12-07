@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115674850534317997'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7dyjvsron2d'
+  - 'https://www.threads.com/@sajal24x7/post/DR9KlrolakL'
 ---
 [Transparent Leadership Beats Servant Leadership by kqr](https://entropicthoughts.com/transparent-leadership-beats-servant-leadership)
 
