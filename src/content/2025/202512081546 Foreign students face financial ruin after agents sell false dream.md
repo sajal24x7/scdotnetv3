@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115684268150104204'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7i6ekg3f325'
+  - 'https://www.threads.com/@sajal24x7/post/DSBF2nsjlOC'
 ---
 [Foreign students face financial ruin after agents sell false dream of 'world's happiest country'](https://yle.fi/a/74-20198502?origin=rss)
 
