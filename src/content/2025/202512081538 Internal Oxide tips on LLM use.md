@@ -1,13 +1,15 @@
 ---
-title: "Internal Oxide tips on LLM use"
-slug: "internal-oxide-tips-on-llm-use"
-pubDate: 2025-12-08T15:42:38+02:00
-updatedDate: 2025-12-08T15:42:38+02:00
+title: Internal Oxide tips on LLM use
+slug: internal-oxide-tips-on-llm-use
+pubDate: 2025-12-08T13:42:38.000Z
+updatedDate: 2025-12-08T13:42:38.000Z
 category: micro
 tags:
   - claude
   - code
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115684239554979144'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7i5xjtddp2d'
 ---
 [Oxide's internal tips on LLM use](https://gist.github.com/david-crespo/5c5eaf36a2d20be8a3013ba3c7c265d9)
 
