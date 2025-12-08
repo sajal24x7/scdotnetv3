@@ -1,12 +1,14 @@
 ---
-title: "A new invention to convert waste heat to electricity"
-slug: "a-new-invention-to-convert-waste-heat-to-electricity"
-pubDate: 2025-12-08T11:15:26+02:00
-updatedDate: 2025-12-08T11:15:26+02:00
+title: A new invention to convert waste heat to electricity
+slug: a-new-invention-to-convert-waste-heat-to-electricity
+pubDate: 2025-12-08T09:15:26.000Z
+updatedDate: 2025-12-08T09:15:26.000Z
 category: micro
 tags:
   - green-tech
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115683188317781830'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7hozim7ae2p'
 ---
 [Can This Simple Invention Convert Waste Heat Into Electricity? - Slashdot](https://hardware.slashdot.org/story/25/12/08/0236259/can-this-simple-invention-convert-waste-heat-into-electricity?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
