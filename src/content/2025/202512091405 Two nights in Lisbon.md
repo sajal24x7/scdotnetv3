@@ -15,5 +15,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115689530594430643'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7kj5mwbxm2s'
   - 'https://www.threads.com/@sajal24x7/post/DSCsubPDnaN'
+bookCover: two-nights-in-lisbon.jpg
 ---
 Started reading.
