@@ -1,13 +1,15 @@
 ---
-title: "Nothing announces new community designed Phone 3A"
-slug: "nothing-announces-new-community-designed-phone-3a"
-pubDate: 2025-12-10T12:42:01+02:00
-updatedDate: 2025-12-10T12:42:01+02:00
+title: Nothing announces new community designed Phone 3A
+slug: nothing-announces-new-community-designed-phone-3a
+pubDate: 2025-12-10T10:42:01.000Z
+updatedDate: 2025-12-10T10:42:01.000Z
 category: micro
 tags:
   - nothing
   - phone
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115694853438843782'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7mus7bkjb2r'
 ---
 [Nothing’s community-designed Phone 3A adds some color and matching dice by Stevie Bonifield](https://www.theverge.com/news/841019/nothing-phone-3a-community-edition)
 
