@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PageHeader from '../components/layout/PageHeader.astro';
+import SectionLanding from '../layouts/SectionLanding.astro';
 import { Image } from 'astro:assets';
 import ProfileImage from '../images/profile/profile.jpeg';
 ---
@@ -13,7 +13,6 @@ import ProfileImage from '../images/profile/profile.jpeg';
     maxWidth: '7xl',
     padding: 'none',
     centered: true,
-    className: 'about-page',
     grid: {
       gap: 'loose',
       padding: 'narrow'
@@ -22,17 +21,14 @@ import ProfileImage from '../images/profile/profile.jpeg';
   enableSearchModal
   enableLinkHoverEffect
 >
-  <section class="about-page__layout twelve-grid">
-    <header class="grid-span-full about-page__header">
-      <PageHeader
-        title="Sajal Choudhary"
-        layout="centered"
-        size="lg"
-        maxWidth="7xl"
-      />
-    </header>
-
-    <section class="about-section twelve-grid grid-gap-tight grid-span-full">
+  <SectionLanding
+    title="Sajal Choudhary"
+    layout="centered"
+    headerSize="lg"
+    headerMaxWidth="7xl"
+    contentClass="about-content-wrapper"
+  >
+    <section class="about-section twelve-grid grid-gap-tight">
       <figure class="about-image grid-span-5">
         <Image
           src={ProfileImage}
@@ -45,16 +41,12 @@ import ProfileImage from '../images/profile/profile.jpeg';
         <p class="text-lg">I'm Sajal. I am a platform engineer and writer based in Finland.</p>
       </div>
     </section>
-  </section>
+  </SectionLanding>
 </Layout>
 
 <style>
-  .about-page__layout {
-    padding-block: clamp(2.5rem, 6vw, 4rem);
-  }
-
-  .about-page__header {
-    margin-bottom: clamp(2rem, 5vw, 3rem);
+  .about-content-wrapper {
+    padding-bottom: clamp(2rem, 5vw, 3rem);
   }
 
   .about-section {
