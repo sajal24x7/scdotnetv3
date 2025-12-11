@@ -1,0 +1,17 @@
+---
+title: "Why RSS matters"
+slug: "why-rss-matters"
+pubDate: 2025-12-11T13:18:03+02:00
+updatedDate: 2025-12-11T13:18:03+02:00
+category: micro
+tags:
+  - rss
+  - feeds
+  - open-web
+
+---
+[Why RSS matters by Ben Werdmuller](https://werd.io/why-rss-matters/)
+
+> RSS has always worked quietly in the background. In a moment when the web is being reshaped by enclosure, consolidation, and algorithmic mediation, its reliability is exactly what we need. It offers a simple, durable way for publishers to keep control of their distribution and for readers to keep control of their attention, without permission, platform lock-in, or hidden agendas. If we treat RSS not as a relic of an earlier web but as the strategic infrastructure it already is, it can continue to anchor a more open, more resilient, and more humane internet for decades to come.
+
+I love RSS. I want a new way to read though. The current way of NetNewsWire is a little taxing. Maybe someone creates a new way to view the feed? Daily feed can also get bogged down if you have a fire hose feed.
