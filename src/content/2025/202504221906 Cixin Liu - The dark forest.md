@@ -1,6 +1,6 @@
 ---
-title: Cixin Liu - The dark forest
-slug: cixin-liu-the-dark-forest
+title: The dark forest
+slug: the-dark-forest
 description: The second book in the three body problem series
 pubDate: 2025-04-22T19:06:54
 updatedDate: 2025-04-22T19:06:54
@@ -8,7 +8,7 @@ category: bookshelf
 tags:
   - book-reviews
   - three-body-problem
-  - 'Liu, Cixin'
+  - cixin-liu
 bookCover: 'the-dark-forest.jpg'
 author: "Cixin Liu"
 series: "Remembrance of Earth's Past"

@@ -1,17 +1,16 @@
 ---
-title: 'Liu, Cixin - The three-body problem'
-slug: liu-cixin-the-three-body-problem
+title: 'The three-body problem'
+slug: the-three-body-problem
 description: The first book in the remembrance of earth's past series
 pubDate: 2025-02-23T13:05:04
 updatedDate: 2025-02-23T13:05:04
 category: bookshelf
 tags:
-  - book-reviews
-  - 'Liu, Cixin'
-  - three-body-problem
   - sci-fi
+  - cixin-liu
+  - three-body-problem
 bookCover: 'the-three-body-problem.jpg'
-author: "Liu Cixin"
+author: "Cixin Liu"
 series: "Remembrance of Earth's Past"
 bookStatus: "read"
 bookRating: like
