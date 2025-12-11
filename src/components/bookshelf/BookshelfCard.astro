@@ -14,7 +14,7 @@ type NormalizedStatus = 'reading' | 'finished' | 'on-hold' | 'to-read';
 
 interface BookshelfCardProps {
     title: string;
-    author?: string;
+    author?: string | string[];
     series?: string;
     format?: string;
     bookStatus?: BookStatus;
@@ -50,6 +50,30 @@ const formatYMD = (value: Date | string | undefined) => {
     }
 
     return date.toISOString().slice(0, 10);
+};
+
+const formatAuthors = (author?: string | string[]) => {
+    if (!author) {
+        return null;
+    }
+
+    if (typeof author === 'string') {
+        return author;
+    }
+
+    if (author.length === 0) {
+        return null;
+    }
+
+    if (author.length === 1) {
+        return author[0];
+    }
+
+    if (author.length === 2) {
+        return `${author[0]} and ${author[1]}`;
+    }
+
+    return `${author.slice(0, -1).join(', ')}, and ${author[author.length - 1]}`;
 };
 
 const {
@@ -135,6 +159,7 @@ const safeProgress = (() => {
 })();
 
 const coverImage = bookCover ? getBookCoverImage(bookCover) : null;
+const formattedAuthor = formatAuthors(author);
 
 const timelineLabel = (() => {
     if (startedLabel && finishedLabel) {
@@ -193,8 +218,8 @@ const timelineLabel = (() => {
             </h3>
           </div>
         </div>
-        {author && (
-          <div class="book-card__author">{author}</div>
+        {formattedAuthor && (
+          <div class="book-card__author">{formattedAuthor}</div>
         )}
       </header>
 
