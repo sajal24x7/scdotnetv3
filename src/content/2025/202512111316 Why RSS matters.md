@@ -1,14 +1,16 @@
 ---
-title: "Why RSS matters"
-slug: "why-rss-matters"
-pubDate: 2025-12-11T13:18:03+02:00
-updatedDate: 2025-12-11T13:18:03+02:00
+title: Why RSS matters
+slug: why-rss-matters
+pubDate: 2025-12-11T11:18:03.000Z
+updatedDate: 2025-12-11T11:18:03.000Z
 category: micro
 tags:
   - rss
   - feeds
   - open-web
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115700657376773799'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7phbihn272d'
 ---
 [Why RSS matters by Ben Werdmuller](https://werd.io/why-rss-matters/)
 
