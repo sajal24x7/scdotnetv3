@@ -1,130 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PageHeader from '../components/layout/PageHeader.astro';
+import SectionLanding from '../layouts/SectionLanding.astro';
 import { Image } from 'astro:assets';
 import ProfileImage from '../images/profile/profile.jpeg';
-
-type CardSpan = number | undefined;
-
-const getGridSpanClass = (span: CardSpan, fallback: number) => {
-    if (typeof span === 'number' && Number.isInteger(span) && span >= 1 && span <= 12) {
-        return `grid-span-${span}`;
-    }
-
-    return `grid-span-${fallback}`;
-};
-
-const interestCards = [
-    {
-        icon: '💻',
-        title: 'Technology',
-        description: 'Exploring emerging technologies, web development, and how digital tools can enhance human creativity and productivity.'
-    },
-    {
-        icon: '📚',
-        title: 'Reading & Learning',
-        description: 'Avid reader across various genres, from technical books to philosophy, fiction, and everything in between.'
-    },
-    {
-        icon: '✍️',
-        title: 'Writing',
-        description: 'Creative writing, technical documentation, and exploring different forms of expression through words.'
-    },
-    {
-        icon: '🌱',
-        title: 'Digital Gardening',
-        description: 'Cultivating a space for interconnected thoughts, ideas, and knowledge that grows and evolves over time.'
-    },
-    {
-        icon: '🎨',
-        title: 'Creative Expression',
-        description: 'Exploring various forms of creativity, from poetry and stories to visual design and digital art.'
-    },
-    {
-        icon: '🤝',
-        title: 'Community',
-        description: 'Building connections with like-minded individuals and contributing to meaningful discussions and knowledge sharing.'
-    }
-];
-
-const focusCards = [
-    {
-        icon: '🚀',
-        title: 'Active Projects',
-        items: [
-            'Maintaining and improving this digital garden',
-            'Writing regular content across different categories',
-            'Exploring new technologies and frameworks',
-            'Building a sustainable content creation workflow'
-        ],
-        span: 6
-    },
-    {
-        icon: '📖',
-        title: 'Learning Goals',
-        items: [
-            'Deepening understanding of web technologies',
-            'Improving creative writing skills',
-            'Exploring new content formats and mediums',
-            'Building better systems for knowledge management'
-        ],
-        span: 6
-    }
-];
-
-const connectionCards = [
-    {
-        title: 'Professional',
-        items: [
-            {
-                label: 'LinkedIn',
-                value: 'Sajal Choudhary',
-                href: 'https://linkedin.com/in/yourusername'
-            },
-            {
-                label: 'GitHub',
-                value: '@yourusername',
-                href: 'https://github.com/yourusername'
-            },
-            {
-                label: 'Email',
-                value: 'your.email@example.com',
-                href: 'mailto:your.email@example.com'
-            }
-        ],
-        span: 6
-    },
-    {
-        title: 'Social & Content',
-        items: [
-            {
-                label: 'Twitter',
-                value: '@yourusername',
-                href: 'https://twitter.com/yourusername'
-            },
-            {
-                label: 'Newsletter',
-                value: 'Nordletter',
-                href: '/nordletter/'
-            },
-            {
-                label: 'RSS',
-                value: 'All Feeds',
-                href: '/feeds/'
-            }
-        ],
-        span: 6
-    }
-];
 ---
 
 <Layout
-  title="Sajal Choudhary - Personal"
-  description="Learn more about Sajal Choudhary - personal background, interests, and experiences"
+  title="Sajal Choudhary"
+  description="Platform engineer and writer based in Finland"
   currentPage="/sajal/"
   pageWrapper={{
     maxWidth: '7xl',
-    padding: 'md',
+    padding: 'none',
     centered: true,
     grid: {
       gap: 'loose',
@@ -134,269 +21,56 @@ const connectionCards = [
   enableSearchModal
   enableLinkHoverEffect
 >
-  <section class="sajal twelve-grid grid-gap-tight">
-    <header class="grid-span-full">
-      <PageHeader
-        title="Sajal Choudhary"
-        description="Learn more about my background, interests, and experiences."
-        layout="centered"
-        size="lg"
-        maxWidth="7xl"
-      />
-    </header>
-
-    <section class="sajal__intro grid-span-full twelve-grid grid-gap-tight">
-      <figure class="sajal__portrait grid-span-4 border border-borderColor dark:border-borderColorDark rounded-lg overflow-hidden">
+  <SectionLanding
+    title="Sajal Choudhary"
+    layout="centered"
+    headerSize="lg"
+    headerMaxWidth="7xl"
+    contentClass="about-content-wrapper"
+  >
+    <section class="about-section twelve-grid grid-gap-tight">
+      <figure class="about-image grid-span-5">
         <Image
           src={ProfileImage}
           alt="Sajal Choudhary"
-          class="w-full h-full object-cover"
+          class="w-full h-auto rounded-lg shadow-lg"
         />
       </figure>
-      <div class="sajal__intro-text grid-span-8 grid-start-5 prose dark:prose-dark">
-        <p class="text-lg">Hello! I'm Sajal Choudhary, a passionate individual who believes in continuous learning and sharing knowledge through writing and creative expression.</p>
-        <p>I'm deeply interested in technology, literature, philosophy, and the intersection of human creativity with digital tools. This website serves as my digital garden—a space where I cultivate ideas, document my learning journey, and share insights with others.</p>
-        <p>When I'm not writing or exploring new technologies, you can find me reading books, experimenting with creative writing, or engaging in thoughtful conversations about the future of digital content and human expression.</p>
+      <div class="about-content grid-span-7 prose dark:prose-dark">
+        <p class="text-lg">Hi!</p>
+        <p class="text-lg">I'm Sajal. I am a platform engineer and writer based in Finland.</p>
       </div>
     </section>
-
-    <section class="sajal__section grid-span-8 grid-start-3 prose dark:prose-dark">
-      <h2>Background & Journey</h2>
-      <div class="sajal__callout bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-4">My Story</h3>
-        <p class="mb-4">I started my journey in the digital world around 2012, during my college years. What began as a simple Blogger site has evolved into this comprehensive digital platform that reflects my growth, interests, and the changing landscape of web technologies.</p>
-        <p>Over the years, I've experimented with various platforms and technologies, always seeking the right balance between functionality, performance, and creative freedom. This journey has taught me valuable lessons about web development, content management, and the importance of building systems that serve both creators and readers.</p>
-      </div>
-    </section>
-
-    <section class="sajal__section grid-span-full twelve-grid grid-gap-tight">
-      <div class="sajal__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
-        <h2>Interests & Passions</h2>
-      </div>
-      <div class="sajal__card-group grid-span-full twelve-grid grid-gap-tight">
-        {interestCards.map((card) => (
-            <article class={`sajal-card ${getGridSpanClass(card.span, 3)} border border-borderColor dark:border-borderColorDark rounded-lg p-5`}>
-                <h3 class="sajal-card__title"><span class="sajal-card__icon">{card.icon}</span> {card.title}</h3>
-                <p>{card.description}</p>
-            </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="sajal__section grid-span-8 grid-start-3 prose dark:prose-dark">
-      <h2>Writing Philosophy</h2>
-      <div class="sajal__callout bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-4">Why I Write</h3>
-        <ul class="space-y-2">
-          <li><strong>Clarifying thoughts:</strong> Writing helps me understand complex ideas and concepts better.</li>
-          <li><strong>Sharing knowledge:</strong> Documenting what I learn so others can benefit from my experiences.</li>
-          <li><strong>Creative expression:</strong> Exploring ideas through different forms of writing.</li>
-          <li><strong>Building community:</strong> Connecting with people who share similar interests and perspectives.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="sajal__section grid-span-full twelve-grid grid-gap-tight">
-      <div class="sajal__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
-        <h2>Current Focus</h2>
-      </div>
-      <div class="sajal__card-group grid-span-full twelve-grid grid-gap-tight">
-        {focusCards.map((card) => (
-            <article class={`sajal-card ${getGridSpanClass(card.span, 6)} border border-borderColor dark:border-borderColorDark rounded-lg p-5`}>
-                <h3 class="sajal-card__title"><span class="sajal-card__icon">{card.icon}</span> {card.title}</h3>
-                <ul class="sajal-card__list">
-                    {card.items.map((item) => (
-                        <li>{item}</li>
-                    ))}
-                </ul>
-            </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="sajal__section grid-span-full twelve-grid grid-gap-tight">
-      <div class="sajal__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
-        <h2>Personal Timeline</h2>
-      </div>
-      <div class="sajal__timeline grid-span-8 grid-start-3">
-        <div class="timeline-container relative border-l border-borderColor dark:border-borderColorDark">
-          <div class="timeline-wrapper grid md:grid-cols-[1fr_3fr] gap-4 md:gap-8">
-            <!-- Timeline Item 1 -->
-            <div class="timeline-date text-right pr-8 hidden md:block">
-              <span class="inline-block bg-bgSecondary dark:bg-bgSecondaryDark px-4 py-2 rounded-lg font-medium">2025</span>
-            </div>
-            <div class="timeline-content relative mb-12">
-              <div class="md:hidden text-sm text-textSecondary dark:text-textSecondaryDark mb-2">2025</div>
-              <div class="timeline-marker absolute -left-[41px] md:-left-4 top-0 w-4 h-4 rounded-full bg-accent"></div>
-              <div class="bg-bgSecondary dark:bg-bgSecondaryDark p-6 rounded-lg shadow-sm">
-                <h3 class="text-xl font-semibold mb-2">Digital Garden Evolution</h3>
-                <p>Rebuilt the website using Astro, focusing on performance, user experience, and creating a more interconnected knowledge base. This represents a significant step forward in my digital presence and content strategy.</p>
-              </div>
-            </div>
-
-            <!-- Timeline Item 2 -->
-            <div class="timeline-date text-right pr-8 hidden md:block">
-              <span class="inline-block bg-bgSecondary dark:bg-bgSecondaryDark px-4 py-2 rounded-lg font-medium">2021-2024</span>
-            </div>
-            <div class="timeline-content relative mb-12">
-              <div class="md:hidden text-sm text-textSecondary dark:text-textSecondaryDark mb-2">2021-2024</div>
-              <div class="timeline-marker absolute -left-[41px] md:-left-4 top-0 w-4 h-4 rounded-full bg-accent"></div>
-              <div class="bg-bgSecondary dark:bg-bgSecondaryDark p-6 rounded-lg shadow-sm">
-                <h3 class="text-xl font-semibold mb-2">Content Creation Focus</h3>
-                <p>Focused on building a consistent writing habit and developing my voice across different content types. Explored various platforms and learned valuable lessons about content management and audience engagement.</p>
-              </div>
-            </div>
-
-            <!-- Timeline Item 3 -->
-            <div class="timeline-date text-right pr-8 hidden md:block">
-              <span class="inline-block bg-bgSecondary dark:bg-bgSecondaryDark px-4 py-2 rounded-lg font-medium">2018-2020</span>
-            </div>
-            <div class="timeline-content relative mb-12">
-              <div class="md:hidden text-sm text-textSecondary dark:text-textSecondaryDark mb-2">2018-2020</div>
-              <div class="timeline-marker absolute -left-[41px] md:-left-4 top-0 w-4 h-4 rounded-full bg-accent"></div>
-              <div class="bg-bgSecondary dark:bg-bgSecondaryDark p-6 rounded-lg shadow-sm">
-                <h3 class="text-xl font-semibold mb-2">Professional Growth</h3>
-                <p>Developed deeper technical skills and began exploring the intersection of technology and creativity. Started thinking more seriously about building a personal brand and digital presence.</p>
-              </div>
-            </div>
-
-            <!-- Timeline Item 4 -->
-            <div class="timeline-date text-right pr-8 hidden md:block">
-              <span class="inline-block bg-bgSecondary dark:bg-bgSecondaryDark px-4 py-2 rounded-lg font-medium">2012-2018</span>
-            </div>
-            <div class="timeline-content relative">
-              <div class="md:hidden text-sm text-textSecondary dark:text-textSecondaryDark mb-2">2012-2018</div>
-              <div class="timeline-marker absolute -left-[41px] md:-left-4 top-0 w-4 h-4 rounded-full bg-accent"></div>
-              <div class="bg-bgSecondary dark:bg-bgSecondaryDark p-6 rounded-lg shadow-sm">
-                <h3 class="text-xl font-semibold mb-2">Early Digital Exploration</h3>
-                <p>Started my first blog during college, experimenting with different platforms and content types. This period laid the foundation for my interest in digital content creation and web technologies.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="sajal__section grid-span-full twelve-grid grid-gap-tight">
-      <div class="sajal__section-heading grid-span-8 grid-start-3 prose dark:prose-dark">
-        <h2>Connect With Me</h2>
-        <p>I'm always interested in connecting with like-minded individuals, discussing ideas, and collaborating on interesting projects. Feel free to reach out through any of the following channels:</p>
-      </div>
-      <div class="sajal__card-group grid-span-full twelve-grid grid-gap-tight">
-        {connectionCards.map((card) => (
-            <article class={`sajal-card ${getGridSpanClass(card.span, 6)} border border-borderColor dark:border-borderColorDark rounded-lg p-5`}>
-                <h3 class="sajal-card__title">{card.title}</h3>
-                <ul class="sajal-card__list">
-                    {card.items.map((item) => (
-                        <li>
-                            <strong>{item.label}:</strong>{' '}
-                            {item.href ? (
-                                <a
-                                  href={item.href}
-                                  target={item.href.startsWith('http') ? '_blank' : undefined}
-                                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                >
-                                    {item.value}
-                                </a>
-                            ) : (
-                                item.value
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="sajal__section grid-span-8 grid-start-3 prose dark:prose-dark">
-      <div class="sajal__callout bg-bgSecondary dark:bg-bgSecondaryDark rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-3">Let's Connect</h3>
-        <p class="text-textSecondary dark:text-textColorDark">Whether you want to discuss a topic I've written about, collaborate on a project, or just say hello, I'd love to hear from you. The best conversations often start with a simple message.</p>
-      </div>
-    </section>
-  </section>
+  </SectionLanding>
 </Layout>
 
 <style>
-  .sajal {
-    padding-block: clamp(2.5rem, 6vw, 3.5rem);
+  .about-content-wrapper {
+    padding-bottom: clamp(2rem, 5vw, 3rem);
   }
 
-  .sajal__intro {
+  .about-section {
     align-items: start;
   }
 
-  .sajal__portrait {
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-  }
-
-  .sajal__intro-text p + p {
-    margin-top: 1rem;
-  }
-
-  .sajal__section-heading h2 {
-    margin-bottom: clamp(1rem, 3vw, 1.75rem);
-  }
-
-  .sajal-card {
+  .about-image {
     display: flex;
-    flex-direction: column;
-    gap: clamp(0.75rem, 2vw, 1.25rem);
-    background-color: var(--color-bg);
-  }
-
-  .sajal-card__title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: clamp(1.125rem, 2vw, 1.25rem);
-    font-weight: 600;
-  }
-
-  .sajal-card__icon {
-    display: inline-flex;
-    align-items: center;
     justify-content: center;
   }
 
-  .sajal-card__list {
-    display: grid;
-    gap: 0.5rem;
-    font-size: 0.95rem;
-  }
-
-  .sajal__callout {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(0.75rem, 2vw, 1.25rem);
-  }
-
-  .sajal__timeline {
-    margin-top: clamp(0.5rem, 2vw, 1rem);
-  }
-
-  /* Timeline specific styles */
-  @media (min-width: 768px) {
-    .timeline-container {
-      position: relative;
-      padding-left: clamp(2.5rem, 4vw, 3rem);
+  @media (min-width: 48rem) {
+    .about-image {
+      justify-content: flex-start;
     }
 
-    .timeline-container:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: clamp(1.25rem, 3vw, 1.5rem);
-      width: 2px;
-      background-color: var(--color-border);
-      transform: translateX(-1px);
+    .about-section {
+      align-items: center;
     }
   }
 
-  .timeline-marker {
-    box-shadow: 0 0 0 4px var(--color-bg);
+  @media (max-width: 47.99rem) {
+    .about-image {
+      margin-bottom: clamp(1.5rem, 5vw, 2rem);
+    }
   }
 </style>
