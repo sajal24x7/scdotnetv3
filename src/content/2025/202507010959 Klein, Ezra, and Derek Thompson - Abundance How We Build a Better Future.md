@@ -1,5 +1,5 @@
 ---
-title: "Klein, Ezra, and Derek Thompson - Abundance How We Build a Better Future"
+title: "Abundance How We Build a Better Future"
 slug: "abundance-how-we-build-a-better-future"
 pubDate: 2025-07-07T10:44:58+03:00
 category: bookshelf
@@ -10,7 +10,9 @@ startDate: 2025-07-01T09:59:00+03:00
 endDate: 2025-07-06T18:00:00+03:00
 format: audio
 bookCover: 'abundance.jpg'
-author: "Ezra Klein and Derek Thompson"
+author: 
+  - "Ezra Klein" 
+  - "Derek Thompson"
 series: none
 bookStatus: "read"
 bookRating: like
