@@ -1,12 +1,13 @@
 ---
-title: "Wells, Martha - All Systems Red"
-slug: "wells-martha-all-systems-red"
+title: "All Systems Red"
+slug: "all-systems-red"
 pubDate: 2025-07-09T16:12:00+03:00
 updatedDate: 2025-07-09T16:12:00+03:00
 category: bookshelf
 tags: 
   - murderbot
   - sci-fi 
+  - martha-wells
 author: "Martha Wells"
 series: "The Murderbot Diaries"
 startedReading: 2025-07-07T09:31:00+03:00

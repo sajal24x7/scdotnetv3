@@ -1,13 +1,13 @@
 ---
-title: "Wells, Martha - Artificial Condition"
-slug: "wells-martha-artificial-condition"
+title: "Artificial Condition"
+slug: "artificial-condition"
 pubDate: 2025-07-11T18:26:14+03:00
 updatedDate: 2025-07-11T18:26:14+03:00
 category: bookshelf
 tags: 
   - sci-fi
   - murderbot
-  - wells, martha
+  - martha-wells
 author: "Martha Wells"
 series: "The Murderbot Diaries"
 startedReading: 2025-07-08T09:59:00+03:00

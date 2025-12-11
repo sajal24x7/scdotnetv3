@@ -1,13 +1,13 @@
 ---
-title: "Wells, Martha - Rogue Protocol"
-slug: "wells-martha-rogue-protocol"
+title: "Rogue Protocol"
+slug: "rogue-protocol"
 pubDate: 2025-07-15T22:42:08+03:00
 updatedDate: 2025-07-15T22:42:08+03:00
 category: bookshelf
 tags: 
   - murderbot
   - sci-fi
-  - wells, martha
+  - martha-wells
 format: audio
 bookCover: 'rogue-protocol.jpg'
 author: "Martha Wells"
