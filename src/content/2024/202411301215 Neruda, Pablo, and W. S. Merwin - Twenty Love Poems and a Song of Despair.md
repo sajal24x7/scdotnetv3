@@ -5,10 +5,8 @@ pubDate: 2025-11-02T22:59:34+02:00
 updatedDate: 2025-11-02T22:59:34+02:00
 category: bookshelf
 tags: 
-  - poems
-bookCover: 'men-without-women.jpg'
-author: "Murakami Haruki"
-series: none
+  - poetry
+author: "Pablo Neruda"
 bookStatus: "read"
 bookRating: like
 startedReading: "2025-01-30T21:37:00+03:00"
