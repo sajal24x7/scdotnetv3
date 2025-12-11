@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115694853438843782'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7mus7bkjb2r'
+  - 'https://www.threads.com/@sajal24x7/post/DSHhYumjm6I'
 ---
 [Nothing’s community-designed Phone 3A adds some color and matching dice by Stevie Bonifield](https://www.theverge.com/news/841019/nothing-phone-3a-community-edition)
 
