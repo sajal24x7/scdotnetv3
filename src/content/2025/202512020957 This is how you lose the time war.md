@@ -8,7 +8,7 @@ tags:
   - scifi
 format: audio
 author: Amal El-Mohtar
-bookStatus: reading
+bookStatus: read
 startedReading: 2025-12-02T07:59:15.000Z
 finishedReading: 2025-12-12T10:45:29+02:00
 bookRating: nope
