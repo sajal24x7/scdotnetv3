@@ -1,12 +1,12 @@
 ---
 interface Props {
-    currentPage: 'now' | 'done' | 'current' | 'past';
+    currentPage: 'now' | 'then' | 'current' | 'past';
 }
 
 const { currentPage } = Astro.props;
 
 // Determine page type and toggle links
-const isProgressPage = currentPage === 'now' || currentPage === 'done';
+const isProgressPage = currentPage === 'now' || currentPage === 'then';
 const isColophonPage = currentPage === 'current' || currentPage === 'past';
 ---
 
@@ -16,13 +16,13 @@ const isColophonPage = currentPage === 'current' || currentPage === 'past';
             <h1 class="page-toggle-title__text">
                 <span class="page-toggle-title__active">Now</span>
                 <span class="page-toggle-title__separator">/</span>
-                <a href="/done/" class="page-toggle-title__inactive">Done</a>
+                <a href="/then/" class="page-toggle-title__inactive">Then</a>
             </h1>
         ) : (
             <h1 class="page-toggle-title__text">
                 <a href="/now/" class="page-toggle-title__inactive">Now</a>
                 <span class="page-toggle-title__separator">/</span>
-                <span class="page-toggle-title__active">Done</span>
+                <span class="page-toggle-title__active">Then</span>
             </h1>
         )
     ) : isColophonPage ? (
