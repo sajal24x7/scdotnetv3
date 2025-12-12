@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115700657376773799'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7phbihn272d'
+  - 'https://www.threads.com/@sajal24x7/post/DSKM4LCjV2_'
 ---
 [Why RSS matters by Ben Werdmuller](https://werd.io/why-rss-matters/)
 
