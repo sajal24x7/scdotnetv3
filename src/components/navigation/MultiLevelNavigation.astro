@@ -52,10 +52,10 @@ const getActiveMainSection = () => {
   if (currentPage.startsWith('/stream/')) return 'stream';
   
   // Check for individual post categories that belong to about
-  if (currentPage.startsWith('/sajal/') || 
-      currentPage.startsWith('/colophon/') || 
+  if (currentPage.startsWith('/sajal/') ||
+      currentPage.startsWith('/colophon/') ||
       currentPage.startsWith('/now/') ||
-      currentPage.startsWith('/done/') ||
+      currentPage.startsWith('/then/') ||
       currentPage.startsWith('/feeds/')) return 'about';
   
   // Check for individual post categories that belong to garden
@@ -111,7 +111,7 @@ const getActiveSubsection = () => {
   if (currentPage.startsWith('/sajal/')) return '/sajal/';
   if (currentPage.startsWith('/colophon/')) return '/colophon/';
   if (currentPage.startsWith('/now/')) return '/now/';
-  if (currentPage.startsWith('/done/')) return '/now/'; // Done page highlights Now
+  if (currentPage.startsWith('/then/')) return '/now/'; // Then page highlights Now
   if (currentPage.startsWith('/feeds/')) return '/feeds/';
 
   // Check for garden subsections

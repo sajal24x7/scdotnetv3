@@ -11,7 +11,7 @@ const categoryMappings: Record<string, SectionMapping> = {
     colophon: { main: 'about', subsection: '/colophon/' },
     now: { main: 'about', subsection: '/now/' },
     feeds: { main: 'about', subsection: '/feeds/' },
-    done: { main: 'about', subsection: '/done/' },
+    then: { main: 'about', subsection: '/then/' },
     garden: { main: 'garden' },
     evergreen: { main: 'garden', subsection: '/evergreen/' },
     til: { main: 'garden', subsection: '/til/' },
