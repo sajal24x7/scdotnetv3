@@ -7,10 +7,10 @@ import ProgressLayout from '../components/layout/ProgressLayout.astro';
 import { parseMarkdown } from '../utils/markdown';
 import '../styles/progress-page.css';
 
-// Get all posts dynamically across year folders and filter to category 'now' and status 'then'
+// Get all posts dynamically across year folders and filter to category 'now' and status 'done'
 const allPosts = await getAllPosts();
 const thenNowPosts = allPosts
-  .filter(post => post.data.category === 'now' && post.data.status === 'then')
+  .filter(post => post.data.category === 'now' && post.data.status === 'done')
   .sort((a, b) => {
     // Sort by updatedDate (end date) descending, fallback to pubDate if no updatedDate
     const aDate = a.data.updatedDate || a.data.pubDate;
