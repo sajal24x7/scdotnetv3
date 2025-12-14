@@ -1,13 +1,16 @@
 ---
-title: "Vibe coding is boring"
-slug: "vibe-coding-is-boring"
-pubDate: 2025-12-14T10:36:51+02:00
-updatedDate: 2025-12-14T10:36:51+02:00
+title: Vibe coding is boring
+slug: vibe-coding-is-boring
+pubDate: 2025-12-14T08:36:51.000Z
+updatedDate: 2025-12-14T08:36:51.000Z
 category: micro
 tags:
   - vibe-coding
   - cassidy-williams
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115717011372334151'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7wpoglstr2w'
+  - 'https://www.threads.com/@sajal24x7/post/DSPMhShjmbo'
 ---
 [Vibe coding is boring](https://cassidoo.co/post/vibe-coding-yawn/)
 
