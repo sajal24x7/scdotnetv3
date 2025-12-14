@@ -32,9 +32,21 @@
               "icon": "lucide-book-up",
               "title": "Release Notes 1.10.3"
             }
+          },
+          {
+            "id": "8911a6abf30cea36",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.10.6"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.10.6"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -184,8 +196,18 @@
       "zk-prefixer:Create new unique note": false
     }
   },
-  "active": "e6326accf461ecef",
+  "active": "8911a6abf30cea36",
   "lastOpenFiles": [
+    "2025/202512141033 Vibe coding is boring.md",
+    "2025/202512131840 NL83.md",
+    "2025/202512121931 Empire of AI.md",
+    "2025/202512111316 Why RSS matters.md",
+    "2025/202512101241 Nothing announces new community designed Phone 3A.md",
+    "2025/202512091405 Two nights in Lisbon.md",
+    "2025/202512081557 How to podcast.md",
+    "2025/202512081546 Foreign students face financial ruin after agents sell false dream.md",
+    "2025/202512081538 Internal Oxide tips on LLM use.md",
+    "2025/202512080831 A new invention to convert waste heat to electricity.md",
     "2025/202512061739 On types of leadership.md",
     "2025/202512051039 NL82.md",
     "2025/202512051205 Crucial is shutting down.md",
@@ -203,17 +225,7 @@
     "2025/202511272042 NL81.md",
     "2025/202511251639 Vibe Coding November Meetup.md",
     "2025/202511251639 Vibe Coding November Meetup.txt",
-    "2025/202511251047 iOS27 to prioritise stability.md",
-    "2025/202511251018 On poverty line and American economy.md",
-    "2025/202511250625 Anthropic releases Opus 4.5.md",
-    "2025/202511241112 The Cloudflare outage was a good thing.md",
-    "2025/202511231333 How to write commit messages.md",
     "2025/202511231333 How to write commit messages.txt",
-    "2025/202511242048 How to renew access token to Threads API.md",
-    "2025/202511222201 Linux on desktop.md",
-    "2025/202511222157 Take your Vitamin D supplements.md",
-    "2025/202511222146 NL 80.md",
-    "2025/202511191657 The goal of software engineering.md",
     "2025/202511191517 Continuous delivery.txt",
     "2025/202511192239 The joy of coding.txt",
     "2025/202411301215 Neruda, Pablo, and W. S. Merwin - Twenty Love Poems and a Song of Despair.txt",
