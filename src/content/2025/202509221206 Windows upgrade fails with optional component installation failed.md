@@ -1,13 +1,15 @@
 ---
-title: "Windows upgrade fails with optional component installation failed"
-slug: "windows-upgrade-fails-with-optional-component-installation-failed"
-pubDate: 2025-12-18T12:32:16+02:00
-updatedDate: 2025-12-18T12:32:16+02:00
+title: Windows upgrade fails with optional component installation failed
+slug: windows-upgrade-fails-with-optional-component-installation-failed
+pubDate: 2025-12-18T10:32:16.000Z
+updatedDate: 2025-12-18T10:32:16.000Z
 category: til
 tags:
   - windows
   - upgrade
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115740128469329245'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maay6uy5h62b'
 ---
 
 # Error

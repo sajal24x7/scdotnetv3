@@ -1,13 +1,16 @@
 ---
-title: "How to export csv from cis scan"
-slug: "how-to-export-csv-from-cis-scan"
-pubDate: 2025-12-18T12:31:55+02:00
-updatedDate: 2025-12-18T12:31:55+02:00
+title: How to export csv from cis scan
+slug: how-to-export-csv-from-cis-scan
+pubDate: 2025-12-18T10:31:55.000Z
+updatedDate: 2025-12-18T10:31:55.000Z
 category: til
 tags:
   - cis
   - powershell
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115740129211292422'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maay77je4r2a'
+  - 'https://www.threads.com/@sajal24x7/post/DSZtVn9Dl4r'
 ---
 ```powershell
 

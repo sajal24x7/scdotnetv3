@@ -1,13 +1,15 @@
 ---
-title: "How to configure time source using Group Policy"
-slug: "how-to-configure-time-source-using-group-policy"
-pubDate: 2025-12-18T12:30:51+02:00
-updatedDate: 2025-12-18T12:30:51+02:00
+title: How to configure time source using Group Policy
+slug: how-to-configure-time-source-using-group-policy
+pubDate: 2025-12-18T10:30:51.000Z
+updatedDate: 2025-12-18T10:30:51.000Z
 category: til
 tags:
   - time
   - windows
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115740130066457785'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maay7lx7nh2d'
 ---
 Can be useful for non-domain joined machines.
 
