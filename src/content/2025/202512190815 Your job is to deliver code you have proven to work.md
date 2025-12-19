@@ -1,14 +1,16 @@
 ---
-title: "Your job is to deliver code you have proven to work"
-slug: "your-job-is-to-deliver-code-you-have-proven-to-work"
-pubDate: 2025-12-19T08:17:00+02:00
-updatedDate: 2025-12-19T08:17:00+02:00
+title: Your job is to deliver code you have proven to work
+slug: your-job-is-to-deliver-code-you-have-proven-to-work
+pubDate: 2025-12-19T06:17:00.000Z
+updatedDate: 2025-12-19T06:17:00.000Z
 category: micro
 tags:
   - code
   - llms
   - agentic-coding
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115744772458408145'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mad26pp66f2o'
 ---
 [Your job is to deliver code you have proven to work by Simon Willison](https://simonwillison.net/2025/Dec/18/code-proven-to-work/#atom-everything)
 
