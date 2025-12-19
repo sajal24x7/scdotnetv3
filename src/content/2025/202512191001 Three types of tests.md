@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115745192905159886'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mada5vxizq2k'
+  - 'https://www.threads.com/@sajal24x7/post/DScx6DEET-6'
 ---
 1. Unit tests - to test the behaviour of small pieces of app in isolation.
 2. Component tests - to test the behaviour of several components.

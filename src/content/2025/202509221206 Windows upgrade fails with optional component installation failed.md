@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115740128469329245'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maay6uy5h62b'
+  - 'https://www.threads.com/@sajal24x7/post/DScx3h3kcP9'
 ---
 
 # Error

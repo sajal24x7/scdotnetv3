@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115740130066457785'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maay7lx7nh2d'
+  - 'https://www.threads.com/@sajal24x7/post/DScx5Atkb9U'
 ---
 Can be useful for non-domain joined machines.
 
