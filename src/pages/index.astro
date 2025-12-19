@@ -135,20 +135,20 @@ const featuredPosts = shufflePosts(featuredCandidates)
         </div>
         {featuredPosts.map((post) => (
             <div class="featured-card grid-span-3 grid-start-1">
-                <a href={post.slug} class="featured-card__link">
-                    {post.coverImage && (
+                <a href={post.data.link} class="featured-card__link">
+                    {post.data.image && (
                         <div class="featured-card__image">
-                            <Image
-                                src={post.coverImage}
-                                alt={post.imageAlt || post.title}
-                                class="w-full h-auto object-cover"
+                            <img
+                                src={post.data.image}
+                                alt={post.data.title}
+                                loading="lazy"
                             />
                         </div>
                     )}
                     <div class="featured-card__content">
-                        <h3 class="featured-card__title">{post.title}</h3>
-                        {post.description && (
-                            <p class="featured-card__description">{post.description}</p>
+                        <h3 class="featured-card__title">{post.data.title}</h3>
+                        {post.data.description && (
+                            <p class="featured-card__description">{post.data.description}</p>
                         )}
                     </div>
                 </a>
