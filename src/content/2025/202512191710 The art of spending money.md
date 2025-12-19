@@ -14,6 +14,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115746883736046622'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mady6suxkm2w'
   - 'https://www.threads.com/@sajal24x7/post/DScx68mkeMD'
+bookCover: the-art-of-spending-money.jpg
 ---
 Started reading
 

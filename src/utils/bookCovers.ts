@@ -1,6 +1,6 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2025-12-19T14:20:57.991Z
-// Found 38 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, anything-you-want.jpg, artificial-condition.jpg, before-the-coffee-gets-cold.jpg, black-box-thinking.jpg, children-of-memory.jpg, children-of-ruin.jpg, children-of-time.jpg, continuous-delivery.jpg, data-analysis-with-python-and-pyspark.jpeg, empire-of-ai.jpg, enshittification.jpg, every-day-i-read.jpg, excellent-advice-for-living.jpg, men-without-women.jpg, nexus.jpg, on-tennis.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, same-as-ever.jpg, slow-productivity.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-life-of-chuck.jpg, the-mysterious-affair-at-styles.jpg, the-practice-of-cloud-system-administration.jpg, the-quick-python-book-fourth-edition.jpg, the-secret-of-secrets.jpg, the-three-body-problem.jpg, this-is-how-you-lose-the-time-war.jpg, time-management-for-system-administrators.jpg, twenty-love-poems-and-a-song-of-despair.jpg, two-nights-in-lisbon.jpg, when-the-moon-hits-your-eye.jpg
+// Generated on: 2025-12-19T15:39:36.016Z
+// Found 39 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, anything-you-want.jpg, artificial-condition.jpg, before-the-coffee-gets-cold.jpg, black-box-thinking.jpg, children-of-memory.jpg, children-of-ruin.jpg, children-of-time.jpg, continuous-delivery.jpg, data-analysis-with-python-and-pyspark.jpeg, empire-of-ai.jpg, enshittification.jpg, every-day-i-read.jpg, excellent-advice-for-living.jpg, men-without-women.jpg, nexus.jpg, on-tennis.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, same-as-ever.jpg, slow-productivity.jpg, the-art-of-spending-money.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-life-of-chuck.jpg, the-mysterious-affair-at-styles.jpg, the-practice-of-cloud-system-administration.jpg, the-quick-python-book-fourth-edition.jpg, the-secret-of-secrets.jpg, the-three-body-problem.jpg, this-is-how-you-lose-the-time-war.jpg, time-management-for-system-administrators.jpg, twenty-love-poems-and-a-song-of-despair.jpg, two-nights-in-lisbon.jpg, when-the-moon-hits-your-eye.jpg
 
 import a_closed_and_common_orbit_jpg from '../images/bookshelf/a-closed-and-common-orbit.jpg';
 import abundance_jpg from '../images/bookshelf/abundance.jpg';
@@ -27,6 +27,7 @@ import record_of_a_spaceborn_few_jpg from '../images/bookshelf/record-of-a-space
 import rogue_protocol_jpg from '../images/bookshelf/rogue-protocol.jpg';
 import same_as_ever_jpg from '../images/bookshelf/same-as-ever.jpg';
 import slow_productivity_jpg from '../images/bookshelf/slow-productivity.jpg';
+import the_art_of_spending_money_jpg from '../images/bookshelf/the-art-of-spending-money.jpg';
 import the_dark_forest_jpg from '../images/bookshelf/the-dark-forest.jpg';
 import the_galaxy_and_the_ground_within_jpg from '../images/bookshelf/the-galaxy-and-the-ground-within.jpg';
 import the_life_of_chuck_jpg from '../images/bookshelf/the-life-of-chuck.jpg';
@@ -67,6 +68,7 @@ export const bookCoverImages: Record<string, any> = {
   'rogue-protocol.jpg': rogue_protocol_jpg,
   'same-as-ever.jpg': same_as_ever_jpg,
   'slow-productivity.jpg': slow_productivity_jpg,
+  'the-art-of-spending-money.jpg': the_art_of_spending_money_jpg,
   'the-dark-forest.jpg': the_dark_forest_jpg,
   'the-galaxy-and-the-ground-within.jpg': the_galaxy_and_the_ground_within_jpg,
   'the-life-of-chuck.jpg': the_life_of_chuck_jpg,
@@ -86,4 +88,4 @@ export function getBookCoverImage(filename: string) {
   return bookCoverImages[filename];
 }
 
-export type BookCoverFilename = 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'all-systems-red.jpg' | 'anything-you-want.jpg' | 'artificial-condition.jpg' | 'before-the-coffee-gets-cold.jpg' | 'black-box-thinking.jpg' | 'children-of-memory.jpg' | 'children-of-ruin.jpg' | 'children-of-time.jpg' | 'continuous-delivery.jpg' | 'data-analysis-with-python-and-pyspark.jpeg' | 'empire-of-ai.jpg' | 'enshittification.jpg' | 'every-day-i-read.jpg' | 'excellent-advice-for-living.jpg' | 'men-without-women.jpg' | 'nexus.jpg' | 'on-tennis.jpg' | 'poems-to-fall-in-love-with.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'rogue-protocol.jpg' | 'same-as-ever.jpg' | 'slow-productivity.jpg' | 'the-dark-forest.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-life-of-chuck.jpg' | 'the-mysterious-affair-at-styles.jpg' | 'the-practice-of-cloud-system-administration.jpg' | 'the-quick-python-book-fourth-edition.jpg' | 'the-secret-of-secrets.jpg' | 'the-three-body-problem.jpg' | 'this-is-how-you-lose-the-time-war.jpg' | 'time-management-for-system-administrators.jpg' | 'twenty-love-poems-and-a-song-of-despair.jpg' | 'two-nights-in-lisbon.jpg' | 'when-the-moon-hits-your-eye.jpg';
+export type BookCoverFilename = 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'all-systems-red.jpg' | 'anything-you-want.jpg' | 'artificial-condition.jpg' | 'before-the-coffee-gets-cold.jpg' | 'black-box-thinking.jpg' | 'children-of-memory.jpg' | 'children-of-ruin.jpg' | 'children-of-time.jpg' | 'continuous-delivery.jpg' | 'data-analysis-with-python-and-pyspark.jpeg' | 'empire-of-ai.jpg' | 'enshittification.jpg' | 'every-day-i-read.jpg' | 'excellent-advice-for-living.jpg' | 'men-without-women.jpg' | 'nexus.jpg' | 'on-tennis.jpg' | 'poems-to-fall-in-love-with.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'rogue-protocol.jpg' | 'same-as-ever.jpg' | 'slow-productivity.jpg' | 'the-art-of-spending-money.jpg' | 'the-dark-forest.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-life-of-chuck.jpg' | 'the-mysterious-affair-at-styles.jpg' | 'the-practice-of-cloud-system-administration.jpg' | 'the-quick-python-book-fourth-edition.jpg' | 'the-secret-of-secrets.jpg' | 'the-three-body-problem.jpg' | 'this-is-how-you-lose-the-time-war.jpg' | 'time-management-for-system-administrators.jpg' | 'twenty-love-poems-and-a-song-of-despair.jpg' | 'two-nights-in-lisbon.jpg' | 'when-the-moon-hits-your-eye.jpg';
