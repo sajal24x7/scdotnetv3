@@ -14,6 +14,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115740129823399928'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maay7igw622g'
+  - 'https://www.threads.com/@sajal24x7/post/DSc0fg8Drtf'
 ---
 ## Copy a file
 
