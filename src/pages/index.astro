@@ -133,29 +133,27 @@ const featuredPosts = shufflePosts(featuredCandidates)
         <div class="home-featured__heading grid-span-full">
             <h2 class="home-featured__title">Featured</h2>
         </div>
-        <div class="home-featured__row grid-span-full">
-            {featuredPosts.map((post) => (
-                <div class="featured-card">
-                    <a href={post.slug} class="featured-card__link">
-                        {post.coverImage && (
-                            <div class="featured-card__image">
-                                <Image
-                                    src={post.coverImage}
-                                    alt={post.imageAlt || post.title}
-                                    class="w-full h-auto object-cover"
-                                />
-                            </div>
-                        )}
-                        <div class="featured-card__content">
-                            <h3 class="featured-card__title">{post.title}</h3>
-                            {post.description && (
-                                <p class="featured-card__description">{post.description}</p>
-                            )}
+        {featuredPosts.map((post) => (
+            <div class="featured-card grid-span-3 grid-start-1">
+                <a href={post.slug} class="featured-card__link">
+                    {post.coverImage && (
+                        <div class="featured-card__image">
+                            <Image
+                                src={post.coverImage}
+                                alt={post.imageAlt || post.title}
+                                class="w-full h-auto object-cover"
+                            />
                         </div>
-                    </a>
-                </div>
-            ))}
-        </div>
+                    )}
+                    <div class="featured-card__content">
+                        <h3 class="featured-card__title">{post.title}</h3>
+                        {post.description && (
+                            <p class="featured-card__description">{post.description}</p>
+                        )}
+                    </div>
+                </a>
+            </div>
+        ))}
     </section>
 
     <section class="home-section home-section--stream">
@@ -243,30 +241,15 @@ const featuredPosts = shufflePosts(featuredCandidates)
         margin-bottom: clamp(1.5rem, 3vw, 2rem);
     }
 
-    .home-featured__row {
-        display: flex;
-        gap: clamp(1rem, 2vw, 1.5rem);
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
-        padding-bottom: 0.5rem;
-    }
-
-    .home-featured__row::-webkit-scrollbar {
-        display: none;
-    }
-
     .featured-card {
-        flex: 0 0 280px;
-        min-width: 280px;
-        max-width: 280px;
+        display: flex;
+        min-width: 0;
     }
 
     .featured-card__link {
         display: flex;
         flex-direction: column;
+        width: 100%;
         height: 100%;
         background: rgb(var(--color-surface));
         border: 1px solid rgb(var(--color-border));
@@ -319,6 +302,46 @@ const featuredPosts = shufflePosts(featuredCandidates)
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
+    }
+
+    /* Mobile: horizontal scroll, single column view */
+    @media (max-width: 47.99rem) {
+        .home-section--featured {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .home-featured__heading {
+            width: 100%;
+            flex: 0 0 100%;
+        }
+
+        .featured-card {
+            flex: 0 0 85vw;
+            max-width: 85vw;
+            scroll-snap-align: start;
+        }
+
+        .home-section--featured {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 0.5rem;
+        }
+
+        .home-section--featured::-webkit-scrollbar {
+            display: none;
+        }
+
+        .featured-card:not(:last-child) {
+            margin-right: clamp(1rem, 3vw, 1.5rem);
+        }
+
+        .featured-card.grid-span-3 {
+            grid-column: auto;
+        }
     }
 
     .home-stream {
