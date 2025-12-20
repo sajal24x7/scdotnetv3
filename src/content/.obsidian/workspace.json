@@ -20,33 +20,8 @@
               "icon": "lucide-file",
               "title": "202511130717 ChatGPT has renamed personalities now"
             }
-          },
-          {
-            "id": "e6326accf461ecef",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.10.3"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.10.3"
-            }
-          },
-          {
-            "id": "8911a6abf30cea36",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.10.6"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.10.6"
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -196,8 +171,19 @@
       "zk-prefixer:Create new unique note": false
     }
   },
-  "active": "8911a6abf30cea36",
+  "active": "26eff8e7ea3fa54d",
   "lastOpenFiles": [
+    "2025/202512201126 Runaway black holes confirmed by JWST.md",
+    "2025/202512201119 China needs to figure out what to do with the ageing batteries.md",
+    "2025/202512191710 The art of spending money.md",
+    "2025/202512191001 Three types of tests.md",
+    "2025/202512190815 Your job is to deliver code you have proven to work.md",
+    "2025/202512101529 How to configure time source using Group Policy.md",
+    "2025/202510101444 Create GPO to copy a file in a certain location and create a shortcut to that exe on Desktop.md",
+    "2025/202510100024 How to export csv from cis scan.md",
+    "2025/202509221447 Yubikey Minidriver install.md",
+    "2025/202509221206 Windows upgrade fails with optional component installation failed.md",
+    "2025/202509151511 How to run powershell as system account.md",
     "2025/202512141033 Vibe coding is boring.md",
     "2025/202512131840 NL83.md",
     "2025/202512121931 Empire of AI.md",
@@ -213,17 +199,6 @@
     "2025/202512051205 Crucial is shutting down.md",
     "2025/202512051135 Netflix may buy Warner Bros.md",
     "2025/202512021157 On tennis.md",
-    "2025/202512020957 This is how you lose the time war.md",
-    "2025/202512011545 Every day I read.md",
-    "2025/202512011144 Children of memory.md",
-    "2025/202512011142 Early childhood education teachers increasingly lack qualifications.md",
-    "2025/202511281139 AI CEO.md",
-    "2025/202511270722 More than half of new articles on the web are being written by AI.md",
-    "2025/202511261617 Astro years.md",
-    "2025/202511261319 Netflix did not rely on tentpole shows anymore.md",
-    "2025/202511261053 WMG signs deal to let Suno offer AI likenesses.md",
-    "2025/202511272042 NL81.md",
-    "2025/202511251639 Vibe Coding November Meetup.md",
     "2025/202511251639 Vibe Coding November Meetup.txt",
     "2025/202511231333 How to write commit messages.txt",
     "2025/202511191517 Continuous delivery.txt",
