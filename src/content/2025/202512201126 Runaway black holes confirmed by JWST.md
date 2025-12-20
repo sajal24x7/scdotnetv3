@@ -1,13 +1,15 @@
 ---
-title: "Runaway black holes confirmed by JWST"
-slug: "runaway-black-holes-confirmed-by-jwst"
-pubDate: 2025-12-20T11:28:11+02:00
-updatedDate: 2025-12-20T11:28:11+02:00
+title: Runaway black holes confirmed by JWST
+slug: runaway-black-holes-confirmed-by-jwst
+pubDate: 2025-12-20T09:28:11.000Z
+updatedDate: 2025-12-20T09:28:11.000Z
 category: micro
 tags:
   - science
   - astronomy
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115751191779069222'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mafvfuzcoy22'
 ---
 [James Webb Space Telescope Confirms 1st 'Runaway' Supermassive Black Hole - Slashdot by ](https://science.slashdot.org/story/25/12/19/2330204/james-webb-space-telescope-confirms-1st-runaway-supermassive-black-hole?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
