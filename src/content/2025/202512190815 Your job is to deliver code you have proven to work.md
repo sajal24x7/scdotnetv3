@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115744772458408145'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mad26pp66f2o'
+  - 'https://www.threads.com/@sajal24x7/post/DSeuoVVjniv'
 ---
 [Your job is to deliver code you have proven to work by Simon Willison](https://simonwillison.net/2025/Dec/18/code-proven-to-work/#atom-everything)
 
