@@ -1,17 +1,19 @@
 ---
-title: "Winter Solstice"
-slug: "nl84-winter-solstice"
+title: Winter Solstice
+slug: nl84-winter-solstice
 edition: 84
-image: 
-pubDate: 2025-12-21T20:00:25+02:00
-updatedDate: 2025-12-21T20:00:25+02:00
+image: null
+pubDate: 2025-12-21T18:00:25.000Z
+updatedDate: 2025-12-21T18:00:25.000Z
 category: nordletter
 tags:
   - christmas
   - helsinki
   - irobot
   - chatgpt
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115758890863701302'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3majcszrwg32b'
 ---
 Hello from my home in Helsinki! This is NordLetter #84, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
