@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115759462449161175'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3majkwxaav42b'
+  - 'https://www.threads.com/@sajal24x7/post/DSiiGrggVU6'
 ---
 I had this thought a couple of days back about time-limits. 
 
