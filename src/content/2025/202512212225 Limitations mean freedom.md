@@ -1,13 +1,15 @@
 ---
-title: "Limitations mean freedom"
-slug: "limitations-mean-freedom"
-pubDate: 2025-12-21T22:32:54+02:00
-updatedDate: 2025-12-21T22:32:54+02:00
+title: Limitations mean freedom
+slug: limitations-mean-freedom
+pubDate: 2025-12-21T20:32:54.000Z
+updatedDate: 2025-12-21T20:32:54.000Z
 category: evergreen
 tags:
   - limitation
   - freedom
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115759462449161175'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3majkwxaav42b'
 ---
 I had this thought a couple of days back about time-limits. 
 

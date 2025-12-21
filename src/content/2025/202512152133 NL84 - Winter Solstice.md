@@ -14,6 +14,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115758890863701302'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3majcszrwg32b'
+  - 'https://www.threads.com/@sajal24x7/post/DSif_VtkYb8'
 ---
 Hello from my home in Helsinki! This is NordLetter #84, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
