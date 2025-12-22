@@ -1,5 +1,4 @@
 ---
-import { formatDistanceToNowStrict } from 'date-fns';
 import { formatDateWithTime, formatMonthYear } from '../utils/dateFormat';
 
 interface Props {
@@ -10,10 +9,10 @@ interface Props {
   format?: 'relative' | 'detailed' | 'month-year' | 'auto';
 }
 
-const { 
-  date, 
-  category = '', 
-  className = '', 
+const {
+  date,
+  category = '',
+  className = '',
   showTime = true,
   format = 'auto'
 } = Astro.props;
@@ -23,24 +22,24 @@ const getTimeFormat = () => {
   if (format === 'relative') return 'relative';
   if (format === 'detailed') return 'detailed';
   if (format === 'month-year') return 'month-year';
-  
+
   // Auto format based on category
   const gardenCategories = ['evergreen', 'til', 'bookshelf', 'story', 'poem'];
   const isGardenContent = gardenCategories.includes(category);
-  
+
   return isGardenContent ? 'relative' : 'detailed';
 };
 
 const timeFormat = getTimeFormat();
 const isoDate = typeof date === 'string' ? date : date.toISOString();
-const displayTime = timeFormat === 'relative'
-  ? formatDistanceToNowStrict(new Date(date), { addSuffix: true }).replace(/^./, str => str.toUpperCase())
-  : timeFormat === 'month-year'
+const isRelative = timeFormat === 'relative';
+
+// For non-relative formats, calculate display time
+const displayTime = timeFormat === 'month-year'
   ? formatMonthYear(date)
   : formatDateWithTime(date);
 
 const locals = Astro.locals as Record<string, unknown>;
-const isRelative = timeFormat === 'relative';
 const shouldInjectRelativeScript = isRelative && !locals.relativeTimeScriptInjected;
 
 if (shouldInjectRelativeScript) {
@@ -48,18 +47,24 @@ if (shouldInjectRelativeScript) {
 }
 ---
 
-<time 
-  class={`time-display ${className}`}
-  datetime={isoDate}
-  data-relative-time={isRelative ? 'true' : undefined}
-  title={isRelative ? formatDateWithTime(date) : undefined}
->
-  {displayTime}
-</time>
+{isRelative ? (
+  <relative-time
+    class={`time-display ${className}`}
+    datetime={isoDate}
+    title={formatDateWithTime(date)}
+  ></relative-time>
+) : (
+  <time
+    class={`time-display ${className}`}
+    datetime={isoDate}
+  >
+    {displayTime}
+  </time>
+)}
 
 {shouldInjectRelativeScript && (
   <script type="module">
-    import './islands/relative-time-island.js';
+    import './islands/relative-time.js';
   </script>
 )}
 
