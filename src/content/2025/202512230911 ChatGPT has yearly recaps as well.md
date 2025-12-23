@@ -1,13 +1,15 @@
 ---
-title: "ChatGPT has yearly recaps as well"
-slug: "chatgpt-has-yearly-recaps-as-well"
-pubDate: 2025-12-23T09:13:51+02:00
-updatedDate: 2025-12-23T09:13:51+02:00
+title: ChatGPT has yearly recaps as well
+slug: chatgpt-has-yearly-recaps-as-well
+pubDate: 2025-12-23T07:13:51.000Z
+updatedDate: 2025-12-23T07:13:51.000Z
 category: micro
 tags:
   - chatgpt
   - yearly-recaps
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115767645715873922'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3man7abiqov2o'
 ---
 [ChatGPT’s yearly recap sums up your conversations with the chatbot by Emma Roth](https://www.theverge.com/news/849348/openai-chatgpt-2025-year-in-review-wrapped)
 
