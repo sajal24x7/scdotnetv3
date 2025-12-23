@@ -6,7 +6,7 @@ updatedDate: 2025-12-21T20:41:53.000Z
 category: bookshelf
 tags:
   - non-fiction
-format: audio
+format: hardcover
 author: Austin Kleon
 bookStatus: read
 startedReading: 2025-12-21T19:41:53.000Z
