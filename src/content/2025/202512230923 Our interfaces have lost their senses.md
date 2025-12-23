@@ -1,13 +1,15 @@
 ---
-title: "Our interfaces have lost their senses"
-slug: "our-interfaces-have-lost-their-senses"
-pubDate: 2025-12-23T09:25:54+02:00
-updatedDate: 2025-12-23T09:25:54+02:00
+title: Our interfaces have lost their senses
+slug: our-interfaces-have-lost-their-senses
+pubDate: 2025-12-23T07:25:54.000Z
+updatedDate: 2025-12-23T07:25:54.000Z
 category: micro
 tags:
   - web
   - design
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115767692333871761'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3man7vhrlgc2e'
 ---
 [Our interfaces have lost their senses by Amelia Wattenberger](https://wattenberger.com/thoughts/our-interfaces-have-lost-their-senses)
 

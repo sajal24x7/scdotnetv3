@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115767645715873922'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3man7abiqov2o'
+  - 'https://www.threads.com/@sajal24x7/post/DSmPhO3DoK3'
 ---
 [ChatGPT’s yearly recap sums up your conversations with the chatbot by Emma Roth](https://www.theverge.com/news/849348/openai-chatgpt-2025-year-in-review-wrapped)
 
