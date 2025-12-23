@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115767692333871761'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3man7vhrlgc2e'
+  - 'https://www.threads.com/@sajal24x7/post/DSnx0qBD7op'
 ---
 [Our interfaces have lost their senses by Amelia Wattenberger](https://wattenberger.com/thoughts/our-interfaces-have-lost-their-senses)
 

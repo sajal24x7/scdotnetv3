@@ -1,13 +1,15 @@
 ---
-title: "Remote Work is Officially Dead"
-slug: "remote-work-is-officially-dead"
-pubDate: 2025-12-23T22:15:48+02:00
-updatedDate: 2025-12-23T22:15:48+02:00
+title: Remote Work is Officially Dead
+slug: remote-work-is-officially-dead
+pubDate: 2025-12-23T20:15:48.000Z
+updatedDate: 2025-12-23T20:15:48.000Z
 category: micro
 tags:
   - work
   - remote-work
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115771070191151499'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maopvlhswz2s'
 ---
 [Remote Work is Officially Dead, Says the World's Largest Recruiter - Slashdot](https://slashdot.org/story/25/12/23/1836252/remote-work-is-officially-dead-says-the-worlds-largest-recruiter?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
