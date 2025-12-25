@@ -1,6 +1,6 @@
 ---
 title: Two nights in Lisbon
-slug: reading-two-nights-in-lisbon
+slug: two-nights-in-lisbon
 pubDate: 2025-12-09T12:07:02.000Z
 updatedDate: 2025-12-09T12:07:02.000Z
 category: bookshelf
