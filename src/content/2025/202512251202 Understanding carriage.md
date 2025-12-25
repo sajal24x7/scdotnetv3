@@ -1,13 +1,16 @@
 ---
-title: "Understanding carriage"
-slug: "understanding-carriage"
-pubDate: 2025-12-25T12:03:44+02:00
-updatedDate: 2025-12-25T12:03:44+02:00
+title: Understanding carriage
+slug: understanding-carriage
+pubDate: 2025-12-25T10:03:44.000Z
+updatedDate: 2025-12-25T10:03:44.000Z
 category: micro
 tags:
   - seth-godin
   - carriage
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115779639001691991'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3masjo7ovt42w'
+  - 'https://www.threads.com/@sajal24x7/post/DSrrOeWkf80'
 ---
 [Understanding carriage by Seth Godin](https://feeds.feedblitz.com/~/932252081/0/sethsblog~Understanding-carriage/)
 
