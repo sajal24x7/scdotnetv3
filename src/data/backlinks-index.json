@@ -31,45 +31,11 @@
       "pubDate": "2025-07-11T10:26:50.000Z"
     },
     {
-      "slug": "/bookshelf/wells-martha-all-systems-red/",
-      "title": "Wells, Martha - All Systems Red",
+      "slug": "/bookshelf/all-systems-red/",
+      "title": "All Systems Red",
       "description": "",
       "category": "bookshelf",
       "pubDate": "2025-07-09T13:12:00.000Z"
-    }
-  ],
-  "bookshelf/cixin-liu-the-dark-forest": [
-    {
-      "slug": "/bookshelf/wells-martha-all-systems-red/",
-      "title": "Wells, Martha - All Systems Red",
-      "description": "",
-      "category": "bookshelf",
-      "pubDate": "2025-07-09T13:12:00.000Z"
-    }
-  ],
-  "bookshelf/wells-martha-all-systems-red": [
-    {
-      "slug": "/bookshelf/wells-martha-rogue-protocol/",
-      "title": "Wells, Martha - Rogue Protocol",
-      "description": "",
-      "category": "bookshelf",
-      "pubDate": "2025-07-15T19:42:08.000Z"
-    },
-    {
-      "slug": "/bookshelf/wells-martha-artificial-condition/",
-      "title": "Wells, Martha - Artificial Condition",
-      "description": "",
-      "category": "bookshelf",
-      "pubDate": "2025-07-11T15:26:14.000Z"
-    }
-  ],
-  "bookshelf/wells-martha-artificial-condition": [
-    {
-      "slug": "/bookshelf/wells-martha-rogue-protocol/",
-      "title": "Wells, Martha - Rogue Protocol",
-      "description": "",
-      "category": "bookshelf",
-      "pubDate": "2025-07-15T19:42:08.000Z"
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
@@ -357,15 +323,6 @@
       "pubDate": "2025-10-16T07:16:34.000Z"
     }
   ],
-  "evergreen/what-to-automate": [
-    {
-      "slug": "/evergreen/how-to-automate-something/",
-      "title": "How to automate something",
-      "description": "",
-      "category": "evergreen",
-      "pubDate": "2025-10-16T10:31:07.000Z"
-    }
-  ],
   "bookshelf/time-management-for-system-administrators": [
     {
       "slug": "/evergreen/how-to-automate-something/",
@@ -380,6 +337,15 @@
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-10-16T10:26:58.000Z"
+    }
+  ],
+  "evergreen/what-to-automate": [
+    {
+      "slug": "/evergreen/how-to-automate-something/",
+      "title": "How to automate something",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-10-16T10:31:07.000Z"
     }
   ],
   "evergreen/do-fewer-things": [
@@ -531,6 +497,78 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-11-30T20:44:23.000Z"
+    }
+  ],
+  "bookshelf/children-of-ruin": [
+    {
+      "slug": "/bookshelf/children-of-memory/",
+      "title": "Children of memory",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-01T09:47:15.000Z"
+    }
+  ],
+  "bookshelf/children-of-time": [
+    {
+      "slug": "/bookshelf/children-of-memory/",
+      "title": "Children of memory",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-01T09:47:15.000Z"
+    }
+  ],
+  "bookshelf/every-day-i-read": [
+    {
+      "slug": "/bookshelf/on-tennis/",
+      "title": "On tennis",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-02T15:03:13.000Z"
+    }
+  ],
+  "nordletter/oodi-for-all": [
+    {
+      "slug": "/nordletter/nl82/",
+      "title": "Kid Fest at Oodi",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-06T21:34:44.000Z"
+    }
+  ],
+  "nordletter/writing-meet-ups": [
+    {
+      "slug": "/nordletter/nl82/",
+      "title": "Kid Fest at Oodi",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-06T21:34:44.000Z"
+    }
+  ],
+  "nordletter/helsinki-christmas-market": [
+    {
+      "slug": "/nordletter/nl84-winter-solstice/",
+      "title": "Winter Solstice",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-21T18:00:25.000Z"
+    }
+  ],
+  "bookshelf/empire-of-ai": [
+    {
+      "slug": "/nordletter/nl84-winter-solstice/",
+      "title": "Winter Solstice",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-21T18:00:25.000Z"
+    }
+  ],
+  "blog/why-walk-the-same-path-every-day": [
+    {
+      "slug": "/bookshelf/steal-like-an-artist/",
+      "title": "Steal like an artist",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-21T20:41:53.000Z"
     }
   ]
 }
