@@ -34,43 +34,61 @@ const getContentTypeClasses = (category?: string) => {
 };
 ---
 
-{renderedPosts.map((post) => {
-    const isBookshelf = post.data.category === 'bookshelf';
+<div class="featured-grid grid-span-full" data-featured-grid>
+  {renderedPosts.map((post) => {
+      const isBookshelf = post.data.category === 'bookshelf';
 
-    return (
-        <div
-            class={`featured-card grid-span-3 ${getContentTypeClasses(post.data.category)}`}
-            data-featured-card
-        >
-            {isBookshelf ? (
-                <BookshelfCard
-                    title={post.data.title}
-                    author={post.data.author}
-                    series={post.data.series}
-                    startedReading={post.data.startedReading}
-                    finishedReading={post.data.finishedReading}
-                    bookStatus={post.data.bookStatus}
-                    readingProgress={post.data.readingProgress}
-                    bookRating={post.data.bookRating}
-                    bookCover={post.data.bookCover}
-                    link={post.data.link}
-                    format={post.data.format}
-                    pubDate={post.data.pubDate}
-                />
-            ) : (
-                <Card {...post.data}>
-                    {post.renderedContent && (
-                        <div class="prose dark:prose-dark max-w-none">
-                            <div set:html={post.renderedContent} />
-                        </div>
-                    )}
-                </Card>
-            )}
-        </div>
-    );
-})}
+      return (
+          <div
+              class={`featured-card ${getContentTypeClasses(post.data.category)}`}
+              data-featured-card
+          >
+              {isBookshelf ? (
+                  <BookshelfCard
+                      title={post.data.title}
+                      author={post.data.author}
+                      series={post.data.series}
+                      startedReading={post.data.startedReading}
+                      finishedReading={post.data.finishedReading}
+                      bookStatus={post.data.bookStatus}
+                      readingProgress={post.data.readingProgress}
+                      bookRating={post.data.bookRating}
+                      bookCover={post.data.bookCover}
+                      link={post.data.link}
+                      format={post.data.format}
+                      pubDate={post.data.pubDate}
+                  />
+              ) : (
+                  <Card {...post.data}>
+                      {post.renderedContent && (
+                          <div class="prose dark:prose-dark max-w-none">
+                              <div set:html={post.renderedContent} />
+                          </div>
+                      )}
+                  </Card>
+              )}
+          </div>
+      );
+  })}
+</div>
 
 <style>
+  :global([data-featured-grid]) {
+    --grid-column-gap: clamp(0.75rem, 2.5vw, 1.5rem);
+    --grid-row-gap: clamp(1rem, 3vw, 1.75rem);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--grid-row-gap) var(--grid-column-gap);
+    grid-auto-rows: minmax(0, auto);
+    align-items: start;
+  }
+
+  @media (min-width: 48rem) {
+    :global([data-featured-grid]) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
   .featured-card {
     position: relative;
     display: flex;
@@ -82,10 +100,10 @@ const getContentTypeClasses = (category?: string) => {
     grid-column: 1 / -1;
   }
 
-  /* On desktop, each card spans 3 columns (4 cards × 3 = 12 columns) */
+  /* On desktop, each card spans 1 column in the 4-column grid */
   @media (min-width: 48rem) {
     .featured-card {
-      grid-column: span 3 / span 3;
+      grid-column: span 1 / span 1;
     }
   }
 

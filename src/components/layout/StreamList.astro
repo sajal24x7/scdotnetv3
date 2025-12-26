@@ -25,9 +25,9 @@ const isMicroContent = (category: string) => category === 'micro';
 
 <style>
     .home-stream-list {
-        --post-item-spacing: var(--grid-row-gap);
+        --stream-list-gap: clamp(1rem, 3vw, 1.75rem);
         display: flex;
         flex-direction: column;
-        gap: var(--grid-row-gap);
+        gap: var(--stream-list-gap);
     }
 </style>
