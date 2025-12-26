@@ -1,12 +1,13 @@
 ---
-title: "On paperbacks and tiktok"
-slug: "on-paperbacks-and-tiktok"
-pubDate: 2025-12-26T11:10:11+02:00
-updatedDate: 2025-12-26T11:10:11+02:00
+title: On paperbacks and tiktok
+slug: on-paperbacks-and-tiktok
+pubDate: 2025-12-26T09:10:11.000Z
+updatedDate: 2025-12-26T09:10:11.000Z
 category: micro
 tags:
   - books
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maux5stls42w'
 ---
 [On Paperbacks and TikTok - Cal Newport](https://calnewport.com/on-paperbacks-and-tiktok/)
 
