@@ -1,12 +1,15 @@
 ---
-title: "Write for one person"
-slug: "write-for-one-person"
-pubDate: 2025-12-26T19:59:24+02:00
-updatedDate: 2025-12-26T19:59:24+02:00
+title: Write for one person
+slug: write-for-one-person
+pubDate: 2025-12-26T17:59:24.000Z
+updatedDate: 2025-12-26T17:59:24.000Z
 category: evergreen
 tags:
   - writing
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115787172247153119'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mavupweuxw2t'
+  - 'https://www.threads.com/@sajal24x7/post/DSvGeLPEbuM'
 ---
 Write for one person. It’s difficult to make every one happy. If you try to write that way you will not be able to write anything. So, write for one person - the person you love. Try to make them happy.
 
