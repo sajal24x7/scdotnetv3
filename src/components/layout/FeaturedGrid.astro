@@ -94,10 +94,55 @@ const getContentTypeClasses = (category?: string) => {
   .featured-card :global(.book-card) {
     width: 100%;
     height: 100%;
-    min-height: 20rem;
-    max-height: 20rem;
+    min-height: 15rem;
+    max-height: 15rem;
     display: flex;
     flex-direction: column;
+  }
+
+  /* Add borders to all featured cards */
+  .featured-card :global(.card) {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 4px 12px rgba(15, 23, 42, 0.08);
+  }
+
+  :global(.dark) .featured-card :global(.card) {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.2),
+      0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Make cards with images have transparent background but keep border */
+  .featured-card :global(.card--with-image) {
+    background: transparent !important;
+  }
+
+  /* Set featured card image height and ensure it fills the container */
+  .featured-card :global(.card-image) {
+    min-height: 10rem;
+    max-height: 10rem;
+    aspect-ratio: auto !important;
+  }
+
+  .featured-card :global(.card-image img) {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Add default black placeholder for cards without images */
+  .featured-card :global(.card--no-image .card-content)::before {
+    content: '';
+    display: block;
+    width: calc(100% + (var(--card-padding) * 2));
+    height: 10rem;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    margin: calc(var(--card-padding) * -1);
+    margin-bottom: var(--card-padding);
+    border-radius: 0.75rem 0.75rem 0 0;
   }
 
   /* Ensure card content doesn't overflow */
