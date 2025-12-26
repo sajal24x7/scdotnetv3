@@ -8,6 +8,8 @@ tags:
   - books
 syndicationUrls:
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maux5stls42w'
+  - 'https://mastodon.social/@sajal24x7/115786212343568087'
+  - 'https://www.threads.com/@sajal24x7/post/DSuqiKBDvQ4'
 ---
 [On Paperbacks and TikTok - Cal Newport](https://calnewport.com/on-paperbacks-and-tiktok/)
 
