@@ -94,10 +94,17 @@ const getContentTypeClasses = (category?: string) => {
   .featured-card :global(.book-card) {
     width: 100%;
     height: 100%;
-    min-height: 16rem;
-    max-height: 16rem;
+    min-height: 18rem;
+    max-height: 18rem;
     display: flex;
     flex-direction: column;
+  }
+
+  /* Make cards with images transparent in featured section */
+  .featured-card :global(.card--with-image) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   /* Set featured card image height and ensure it fills the container */
