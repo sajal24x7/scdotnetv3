@@ -14,6 +14,7 @@ startedReading: 2025-12-26T17:32:36.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115787070068113269'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mavtblj6sj2b'
+  - 'https://www.threads.com/@sajal24x7/post/DSvP-BSEZmO'
 bookCover: ernest-hemingway-on-writing.jpg
 ---
 
