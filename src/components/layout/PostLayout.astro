@@ -140,12 +140,26 @@ const formattedAuthor = formatAuthors(author);
 
         <div class="mb-8">
             {/* Hero image for all posts */}
-            {heroImage && (
+            {heroImage && !isBookshelf && (
                 <div class="mb-6">
                     <img
                         src={heroImage}
                         alt={title}
                         class="rounded-lg w-full object-cover max-h-96"
+                        loading="lazy"
+                    />
+                </div>
+            )}
+
+            {/* Book cover for bookshelf posts */}
+            {isBookshelf && coverImage && (
+                <div class="mb-6 flex justify-center">
+                    <Image
+                        src={coverImage}
+                        alt={`Cover of ${title}`}
+                        width={252}
+                        height={378}
+                        class="book-meta-cover-image"
                         loading="lazy"
                     />
                 </div>
@@ -182,23 +196,10 @@ const formattedAuthor = formatAuthors(author);
             </div>
         </div>
 
-        {isBookshelf && (
+        {isBookshelf && (formattedAuthor || formatLabel || bookRating || timelineLabel) && (
             <div class="book-meta-section">
                 {formattedAuthor && (
                     <div class="book-meta-author">by {formattedAuthor}</div>
-                )}
-
-                {coverImage && (
-                    <div class="book-meta-cover">
-                        <Image
-                            src={coverImage}
-                            alt={`Cover of ${title}`}
-                            width={252}
-                            height={378}
-                            class="book-meta-cover-image"
-                            loading="lazy"
-                        />
-                    </div>
                 )}
 
                 {(formatLabel || bookRating || timelineLabel) && (
@@ -441,23 +442,6 @@ const formattedAuthor = formatAuthors(author);
         border-bottom-color: rgb(var(--color-border));
     }
 
-    .book-meta-author {
-        font-size: 1.125rem;
-        font-weight: 500;
-        color: #374151;
-        margin-bottom: 1.5rem;
-    }
-
-    :global(.dark) .book-meta-author {
-        color: #d1d5db;
-    }
-
-    .book-meta-cover {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-    }
-
     .book-meta-cover-image {
         width: 100%;
         max-width: 252px;
@@ -472,6 +456,17 @@ const formattedAuthor = formatAuthors(author);
         box-shadow:
             0 4px 6px rgba(0, 0, 0, 0.3),
             0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .book-meta-author {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 1.5rem;
+    }
+
+    :global(.dark) .book-meta-author {
+        color: #d1d5db;
     }
 
     .book-meta-pills {
