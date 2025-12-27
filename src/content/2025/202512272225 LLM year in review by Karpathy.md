@@ -1,13 +1,16 @@
 ---
-title: "LLM year in review by Karpathy"
-slug: "llm-year-in-review-by-karpathy"
-pubDate: 2025-12-27T22:26:20+02:00
-updatedDate: 2025-12-27T22:26:20+02:00
+title: LLM year in review by Karpathy
+slug: llm-year-in-review-by-karpathy
+pubDate: 2025-12-27T20:26:20.000Z
+updatedDate: 2025-12-27T20:26:20.000Z
 category: micro
 tags:
   - llms
   - karpathy
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115793410236537058'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maynencry22k'
+  - 'https://www.threads.com/@sajal24x7/post/DSx8Ba_EYnq'
 ---
 [2025 LLM Year in Review by Andrej Karpathy](https://karpathy.bearblog.dev/year-in-review-2025/)
 
