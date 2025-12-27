@@ -182,11 +182,14 @@ const formattedAuthor = formatAuthors(author);
             </div>
         </div>
 
-        {isBookshelf && (coverImage || formattedAuthor || formatLabel || bookRating || timelineLabel) && (
-            <div class="book-meta-section twelve-grid grid-gap-tight">
-                {/* Book Cover - 4 cols on desktop, full width on mobile */}
-                <div class="book-meta-cover grid-span-4">
-                    {coverImage ? (
+        {isBookshelf && (
+            <div class="book-meta-section">
+                {formattedAuthor && (
+                    <div class="book-meta-author">by {formattedAuthor}</div>
+                )}
+
+                {coverImage && (
+                    <div class="book-meta-cover">
                         <Image
                             src={coverImage}
                             alt={`Cover of ${title}`}
@@ -195,82 +198,66 @@ const formattedAuthor = formatAuthors(author);
                             class="book-meta-cover-image"
                             loading="lazy"
                         />
-                    ) : (
-                        <div class="book-meta-cover-placeholder" aria-hidden="true">
-                            <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                            </svg>
-                        </div>
-                    )}
-                </div>
+                    </div>
+                )}
 
-                {/* Metadata - 8 cols on desktop, full width on mobile */}
-                <div class="book-meta-content grid-span-8">
-                    {series && series !== 'none' && (
-                        <div class="book-meta-series">{series}</div>
-                    )}
-
-                    <div class="book-meta-details">
-                        {formattedAuthor && (
-                            <div class="book-meta-row">
-                                <span class="book-meta__chip">
-                                    Author: {formattedAuthor}
-                                </span>
-                            </div>
-                        )}
-
+                {(formatLabel || bookRating || timelineLabel) && (
+                    <div class="book-meta-pills">
                         {formatLabel && (
-                            <div class="book-meta-row">
-                                <span class="book-meta__chip">
-                                    Format: {formatLabel}
-                                </span>
-                            </div>
+                            <span class="book-meta__chip book-meta__chip--format">
+                                {formatLabel}
+                            </span>
                         )}
 
                         {bookRating && (
-                            <div class="book-meta-row">
-                                <span class="book-meta__chip" aria-label={ratingAriaLabel}>
-                                    Rating: {bookRating === 'like' ? 'Like' : bookRating === 'love' ? 'Love' : 'Not-for-me'}
-                                    {ratingIconSpecs.length > 0 && (
-                                        <span class="book-meta__rating-icons" aria-hidden="true">
-                                            {ratingIconSpecs.map((iconSpec) => (
-                                                <span class="book-meta__rating-icon">
-                                                    <svg
-                                                        width={iconSpec.size}
-                                                        height={iconSpec.size}
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.5"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        {(
-                                                            iconSpec.type === 'heart'
-                                                                ? heartIconPaths
-                                                                : thumbIconPaths[iconSpec.direction]
-                                                        ).map((d) => (
-                                                            <path d={d}></path>
-                                                        ))}
-                                                    </svg>
-                                                </span>
-                                            ))}
-                                        </span>
-                                    )}
-                                </span>
-                            </div>
+                            <span
+                                class={`book-meta__chip book-meta__chip--rating ${
+                                    bookRating ? `book-meta__chip--rating-${bookRating}` : 'book-meta__chip--rating-none'
+                                }`}
+                                aria-label={ratingAriaLabel}
+                            >
+                                <span class="book-meta__chip-label">Rated</span>
+                                {ratingIconSpecs.length > 0 && (
+                                    <span
+                                        class={`book-meta__rating-icons ${
+                                            bookRating ? `book-meta__rating-icons--${bookRating}` : ''
+                                        }`}
+                                        aria-hidden="true"
+                                    >
+                                        {ratingIconSpecs.map((iconSpec) => (
+                                            <span class="book-meta__rating-icon">
+                                                <svg
+                                                    width={iconSpec.size}
+                                                    height={iconSpec.size}
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                >
+                                                    {(
+                                                        iconSpec.type === 'heart'
+                                                            ? heartIconPaths
+                                                            : thumbIconPaths[iconSpec.direction]
+                                                    ).map((d) => (
+                                                        <path d={d}></path>
+                                                    ))}
+                                                </svg>
+                                            </span>
+                                        ))}
+                                    </span>
+                                )}
+                            </span>
                         )}
 
                         {timelineLabel && (
-                            <div class="book-meta-row">
-                                <span class="book-meta__chip">
-                                    {timelineLabel}
-                                </span>
-                            </div>
+                            <span class="book-meta__chip book-meta__chip--timeline">
+                                <span class="book-meta__chip-label">{timelineLabel}</span>
+                            </span>
                         )}
                     </div>
-                </div>
+                )}
             </div>
         )}
 
@@ -447,23 +434,28 @@ const formattedAuthor = formatAuthors(author);
         margin-bottom: 2.5rem;
         padding-bottom: 2.5rem;
         border-bottom: 1px solid rgb(var(--color-border));
+        text-align: center;
     }
 
     :global(.dark) .book-meta-section {
         border-bottom-color: rgb(var(--color-border));
     }
 
+    .book-meta-author {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 1.5rem;
+    }
+
+    :global(.dark) .book-meta-author {
+        color: #d1d5db;
+    }
+
     .book-meta-cover {
         display: flex;
         justify-content: center;
         margin-bottom: 1.5rem;
-    }
-
-    @media (min-width: 48rem) {
-        .book-meta-cover {
-            justify-content: flex-start;
-            margin-bottom: 0;
-        }
     }
 
     .book-meta-cover-image {
@@ -482,85 +474,139 @@ const formattedAuthor = formatAuthors(author);
             0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    .book-meta-cover-placeholder {
+    .book-meta-pills {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        max-width: 252px;
-        aspect-ratio: 2 / 3;
-        background: rgba(15, 23, 42, 0.08);
-        border-radius: 0.75rem;
-        color: rgba(15, 23, 42, 0.35);
-    }
-
-    :global(.dark) .book-meta-cover-placeholder {
-        background: rgba(148, 163, 184, 0.18);
-        color: rgba(226, 232, 240, 0.45);
-    }
-
-    .book-meta-content {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .book-meta-series {
-        font-size: 1rem;
-        font-weight: 500;
-        color: #6b7280;
-        margin-bottom: 0.25rem;
-    }
-
-    :global(.dark) .book-meta-series {
-        color: #9ca3af;
-    }
-
-    .book-meta-author {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #111827;
-        margin-bottom: 0.5rem;
-    }
-
-    :global(.dark) .book-meta-author {
-        color: #f9fafb;
-    }
-
-    .book-meta-details {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .book-meta-row {
-        display: flex;
-        align-items: center;
-        margin-bottom: 0.5rem;
+        gap: 0.5rem;
     }
 
     .book-meta__chip {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
+        justify-content: center;
+        gap: 0.35rem;
+        padding: 0.15rem 0.55rem;
         border-radius: 0.5rem;
-        background: #f3f4f6;
-        color: #1f2937;
-        font-size: 0.875rem;
-        font-weight: 500;
+        border: none;
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
         white-space: nowrap;
     }
 
-    :global(.dark) .book-meta__chip {
+    .book-meta__chip--format {
+        background: #e5e7eb;
+        color: #111827;
+    }
+
+    :global(.dark) .book-meta__chip--format {
         background: #374151;
         color: #e5e7eb;
+    }
+
+    .book-meta__chip--rating {
+        background: #e5e7eb;
+        color: #111827;
+    }
+
+    :global(.dark) .book-meta__chip--rating {
+        background: #374151;
+        color: #f9fafb;
+    }
+
+    .book-meta__chip--rating-like {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    :global(.dark) .book-meta__chip--rating-like {
+        background: rgba(22, 101, 52, 0.35);
+        color: #bbf7d0;
+    }
+
+    .book-meta__chip--rating-love {
+        background: #fce7f3;
+        color: #be185d;
+    }
+
+    :global(.dark) .book-meta__chip--rating-love {
+        background: rgba(190, 24, 93, 0.3);
+        color: #fbcfe8;
+    }
+
+    .book-meta__chip--rating-nope {
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+
+    :global(.dark) .book-meta__chip--rating-nope {
+        background: rgba(185, 28, 28, 0.3);
+        color: #fecaca;
+    }
+
+    .book-meta__chip--rating-none {
+        background: #e5e7eb;
+        color: #111827;
+    }
+
+    :global(.dark) .book-meta__chip--rating-none {
+        background: #374151;
+        color: #f9fafb;
+    }
+
+    .book-meta__chip--timeline {
+        justify-content: flex-start;
+        background: #f3f4f6;
+        color: #1f2937;
+        font-size: 0.7rem;
+        letter-spacing: 0.04em;
+        text-transform: none;
+    }
+
+    :global(.dark) .book-meta__chip--timeline {
+        background: #1f2937;
+        color: #e5e7eb;
+    }
+
+    .book-meta__chip-label {
+        white-space: nowrap;
     }
 
     .book-meta__rating-icons {
         display: inline-flex;
         gap: 0.25rem;
-        color: currentColor;
+        color: #111827;
+    }
+
+    :global(.dark) .book-meta__rating-icons {
+        color: #f9fafb;
+    }
+
+    .book-meta__rating-icons--like {
+        color: #166534;
+    }
+
+    :global(.dark) .book-meta__rating-icons--like {
+        color: #bbf7d0;
+    }
+
+    .book-meta__rating-icons--love {
+        color: #be185d;
+    }
+
+    :global(.dark) .book-meta__rating-icons--love {
+        color: #f9a8d4;
+    }
+
+    .book-meta__rating-icons--nope {
+        color: #b91c1c;
+    }
+
+    :global(.dark) .book-meta__rating-icons--nope {
+        color: #fca5a5;
     }
 
     .book-meta__rating-icon {
