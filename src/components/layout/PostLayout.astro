@@ -168,6 +168,10 @@ const formattedAuthor = formatAuthors(author);
             <div class="text-center">
                 <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
 
+                {isBookshelf && formattedAuthor && (
+                    <div class="book-meta-author-title">by {formattedAuthor}</div>
+                )}
+
                 {category === 'nordletter' && edition && (
                     <div class="flex justify-center items-center gap-4 mb-4">
                         <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
@@ -196,15 +200,10 @@ const formattedAuthor = formatAuthors(author);
             </div>
         </div>
 
-        {isBookshelf && (formattedAuthor || formatLabel || bookRating || timelineLabel) && (
+        {isBookshelf && (formatLabel || bookRating || timelineLabel) && (
             <div class="book-meta-section">
-                {formattedAuthor && (
-                    <div class="book-meta-author">by {formattedAuthor}</div>
-                )}
-
-                {(formatLabel || bookRating || timelineLabel) && (
-                    <div class="book-meta-pills">
-                        {formatLabel && (
+                <div class="book-meta-pills">
+                    {formatLabel && (
                             <span class="book-meta__chip book-meta__chip--format">
                                 {formatLabel}
                             </span>
@@ -252,13 +251,12 @@ const formattedAuthor = formatAuthors(author);
                             </span>
                         )}
 
-                        {timelineLabel && (
-                            <span class="book-meta__chip book-meta__chip--timeline">
-                                <span class="book-meta__chip-label">{timelineLabel}</span>
-                            </span>
-                        )}
-                    </div>
-                )}
+                    {timelineLabel && (
+                        <span class="book-meta__chip book-meta__chip--timeline">
+                            <span class="book-meta__chip-label">{timelineLabel}</span>
+                        </span>
+                    )}
+                </div>
             </div>
         )}
 
@@ -458,14 +456,15 @@ const formattedAuthor = formatAuthors(author);
             0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    .book-meta-author {
+    .book-meta-author-title {
         font-size: 1.125rem;
         font-weight: 500;
         color: #374151;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
     }
 
-    :global(.dark) .book-meta-author {
+    :global(.dark) .book-meta-author-title {
         color: #d1d5db;
     }
 
