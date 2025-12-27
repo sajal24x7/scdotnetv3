@@ -6,6 +6,15 @@ import ShareButton from '../ShareButton.astro';
 import Backlinks from '../Backlinks.astro';
 import SyndicationLinks from '../SyndicationLinks.astro';
 import Webmentions from '../Webmentions.astro';
+import { Image } from 'astro:assets';
+import { getBookCoverImage } from '../../utils/bookCovers';
+import {
+    bookRatingDisplay,
+    heartIconPaths,
+    thumbIconPaths,
+    type BookRating,
+    type RatingIconSpec
+} from '../../utils/bookRatings';
 
 interface Backlink {
     slug: string;
@@ -43,6 +52,72 @@ const edition = category === 'nordletter' && 'edition' in entryData ? entryData.
 const bridgyOmit = 'bridgyOmit' in entryData && entryData.bridgyOmit;
 const publishedDate = entryData?.pubDate;
 const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
+
+// Bookshelf-specific data
+const isBookshelf = category === 'bookshelf';
+const bookCover = isBookshelf && 'bookCover' in entryData ? entryData.bookCover : undefined;
+const author = isBookshelf && 'author' in entryData ? entryData.author : undefined;
+const format = isBookshelf && 'format' in entryData ? entryData.format : undefined;
+const bookStatus = isBookshelf && 'bookStatus' in entryData ? entryData.bookStatus : undefined;
+const bookRating = isBookshelf && 'bookRating' in entryData ? entryData.bookRating : undefined;
+const series = isBookshelf && 'series' in entryData ? entryData.series : undefined;
+const startedReading = isBookshelf && 'startedReading' in entryData ? entryData.startedReading : undefined;
+const finishedReading = isBookshelf && 'finishedReading' in entryData ? entryData.finishedReading : undefined;
+const readingProgress = isBookshelf && 'readingProgress' in entryData ? entryData.readingProgress : undefined;
+
+// Helper functions for bookshelf display
+const parseDate = (value: Date | string | undefined) => {
+    if (!value) return null;
+    if (value instanceof Date) return Number.isNaN(value.getTime()) ? null : value;
+    const parsed = new Date(value);
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
+};
+
+const formatYMD = (value: Date | string | undefined) => {
+    const date = parseDate(value);
+    if (!date) return null;
+    return date.toISOString().slice(0, 10);
+};
+
+const formatAuthors = (author?: string | string[]) => {
+    if (!author) return null;
+    if (typeof author === 'string') return author;
+    if (author.length === 0) return null;
+    if (author.length === 1) return author[0];
+    if (author.length === 2) return `${author[0]} and ${author[1]}`;
+    return `${author.slice(0, -1).join(', ')}, and ${author[author.length - 1]}`;
+};
+
+const normalizedFormat = format ? format.toLowerCase() : null;
+const formatLabelMap: Record<string, string> = {
+    audio: 'AUDIOBOOK',
+    audiobook: 'AUDIOBOOK',
+    ebook: 'EBOOK',
+    digital: 'EBOOK',
+    paper: 'PAPERBACK',
+    paperback: 'PAPERBACK',
+    hardcover: 'HARDCOVER'
+};
+
+const formatLabel = normalizedFormat ? (formatLabelMap[normalizedFormat] ?? normalizedFormat.toUpperCase()) : null;
+
+const finishedDate = formatYMD(finishedReading);
+const startedDate = formatYMD(startedReading);
+const timelineLabel = (() => {
+    if (startedDate && finishedDate) return `Read ${startedDate} - ${finishedDate}`;
+    if (startedDate) return `Read ${startedDate} -`;
+    if (finishedDate) return `Read - ${finishedDate}`;
+    return null;
+})();
+
+const ratingDisplay = bookRating ? bookRatingDisplay[bookRating as BookRating] : null;
+const ratingAriaLabel = ratingDisplay
+    ? ratingDisplay.label.replace(/^Rating:\s*/i, 'Rated ')
+    : 'Rating: Not set';
+const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
+
+const coverImage = bookCover ? getBookCoverImage(bookCover) : null;
+const formattedAuthor = formatAuthors(author);
 ---
 
 <LayoutContainer
@@ -65,7 +140,7 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
 
         <div class="mb-8">
             {/* Hero image for all posts */}
-            {heroImage && (
+            {heroImage && !isBookshelf && (
                 <div class="mb-6">
                     <img
                         src={heroImage}
@@ -76,8 +151,26 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
                 </div>
             )}
 
+            {/* Book cover for bookshelf posts */}
+            {isBookshelf && coverImage && (
+                <div class="mb-6 flex justify-center">
+                    <Image
+                        src={coverImage}
+                        alt={`Cover of ${title}`}
+                        width={252}
+                        height={378}
+                        class="book-meta-cover-image"
+                        loading="lazy"
+                    />
+                </div>
+            )}
+
             <div class="text-center">
                 <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
+
+                {isBookshelf && formattedAuthor && (
+                    <div class="book-meta-author-title">by {formattedAuthor}</div>
+                )}
 
                 {category === 'nordletter' && edition && (
                     <div class="flex justify-center items-center gap-4 mb-4">
@@ -106,6 +199,66 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
                 )}
             </div>
         </div>
+
+        {isBookshelf && (formatLabel || bookRating || timelineLabel) && (
+            <div class="book-meta-section">
+                <div class="book-meta-pills">
+                    {formatLabel && (
+                            <span class="book-meta__chip book-meta__chip--format">
+                                {formatLabel}
+                            </span>
+                        )}
+
+                        {bookRating && (
+                            <span
+                                class={`book-meta__chip book-meta__chip--rating ${
+                                    bookRating ? `book-meta__chip--rating-${bookRating}` : 'book-meta__chip--rating-none'
+                                }`}
+                                aria-label={ratingAriaLabel}
+                            >
+                                <span class="book-meta__chip-label">Rated</span>
+                                {ratingIconSpecs.length > 0 && (
+                                    <span
+                                        class={`book-meta__rating-icons ${
+                                            bookRating ? `book-meta__rating-icons--${bookRating}` : ''
+                                        }`}
+                                        aria-hidden="true"
+                                    >
+                                        {ratingIconSpecs.map((iconSpec) => (
+                                            <span class="book-meta__rating-icon">
+                                                <svg
+                                                    width={iconSpec.size}
+                                                    height={iconSpec.size}
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                >
+                                                    {(
+                                                        iconSpec.type === 'heart'
+                                                            ? heartIconPaths
+                                                            : thumbIconPaths[iconSpec.direction]
+                                                    ).map((d) => (
+                                                        <path d={d}></path>
+                                                    ))}
+                                                </svg>
+                                            </span>
+                                        ))}
+                                    </span>
+                                )}
+                            </span>
+                        )}
+
+                    {timelineLabel && (
+                        <span class="book-meta__chip book-meta__chip--timeline">
+                            <span class="book-meta__chip-label">{timelineLabel}</span>
+                        </span>
+                    )}
+                </div>
+            </div>
+        )}
 
         <div class="e-content">
             <slot />
@@ -273,5 +426,185 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
 
     .post-layout__feedback a {
         font-weight: 600;
+    }
+
+    /* Bookshelf metadata section */
+    .book-meta-section {
+        margin-bottom: 2.5rem;
+        padding-bottom: 2.5rem;
+        border-bottom: 1px solid rgb(var(--color-border));
+        text-align: center;
+    }
+
+    :global(.dark) .book-meta-section {
+        border-bottom-color: rgb(var(--color-border));
+    }
+
+    .book-meta-cover-image {
+        width: 100%;
+        max-width: 252px;
+        height: auto;
+        border-radius: 0.75rem;
+        box-shadow:
+            0 4px 6px rgba(0, 0, 0, 0.1),
+            0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    :global(.dark) .book-meta-cover-image {
+        box-shadow:
+            0 4px 6px rgba(0, 0, 0, 0.3),
+            0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .book-meta-author-title {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    :global(.dark) .book-meta-author-title {
+        color: #d1d5db;
+    }
+
+    .book-meta-pills {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .book-meta__chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        padding: 0.15rem 0.55rem;
+        border-radius: 0.5rem;
+        border: none;
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .book-meta__chip--format {
+        background: #e5e7eb;
+        color: #111827;
+    }
+
+    :global(.dark) .book-meta__chip--format {
+        background: #374151;
+        color: #e5e7eb;
+    }
+
+    .book-meta__chip--rating {
+        background: #e5e7eb;
+        color: #111827;
+    }
+
+    :global(.dark) .book-meta__chip--rating {
+        background: #374151;
+        color: #f9fafb;
+    }
+
+    .book-meta__chip--rating-like {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    :global(.dark) .book-meta__chip--rating-like {
+        background: rgba(22, 101, 52, 0.35);
+        color: #bbf7d0;
+    }
+
+    .book-meta__chip--rating-love {
+        background: #fce7f3;
+        color: #be185d;
+    }
+
+    :global(.dark) .book-meta__chip--rating-love {
+        background: rgba(190, 24, 93, 0.3);
+        color: #fbcfe8;
+    }
+
+    .book-meta__chip--rating-nope {
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+
+    :global(.dark) .book-meta__chip--rating-nope {
+        background: rgba(185, 28, 28, 0.3);
+        color: #fecaca;
+    }
+
+    .book-meta__chip--rating-none {
+        background: #e5e7eb;
+        color: #111827;
+    }
+
+    :global(.dark) .book-meta__chip--rating-none {
+        background: #374151;
+        color: #f9fafb;
+    }
+
+    .book-meta__chip--timeline {
+        justify-content: flex-start;
+        background: #f3f4f6;
+        color: #1f2937;
+        font-size: 0.7rem;
+        letter-spacing: 0.04em;
+        text-transform: none;
+    }
+
+    :global(.dark) .book-meta__chip--timeline {
+        background: #1f2937;
+        color: #e5e7eb;
+    }
+
+    .book-meta__chip-label {
+        white-space: nowrap;
+    }
+
+    .book-meta__rating-icons {
+        display: inline-flex;
+        gap: 0.25rem;
+        color: #111827;
+    }
+
+    :global(.dark) .book-meta__rating-icons {
+        color: #f9fafb;
+    }
+
+    .book-meta__rating-icons--like {
+        color: #166534;
+    }
+
+    :global(.dark) .book-meta__rating-icons--like {
+        color: #bbf7d0;
+    }
+
+    .book-meta__rating-icons--love {
+        color: #be185d;
+    }
+
+    :global(.dark) .book-meta__rating-icons--love {
+        color: #f9a8d4;
+    }
+
+    .book-meta__rating-icons--nope {
+        color: #b91c1c;
+    }
+
+    :global(.dark) .book-meta__rating-icons--nope {
+        color: #fca5a5;
+    }
+
+    .book-meta__rating-icon {
+        line-height: 1;
+        display: inline-flex;
     }
 </style>
