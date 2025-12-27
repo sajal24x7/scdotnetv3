@@ -1,13 +1,16 @@
 ---
-title: "Elif Shafak on How I write pod"
-slug: "elif-shafak-on-how-i-write-pod"
-pubDate: 2025-12-27T23:50:55+02:00
-updatedDate: 2025-12-27T23:50:55+02:00
+title: Elif Shafak on How I write pod
+slug: elif-shafak-on-how-i-write-pod
+pubDate: 2025-12-27T21:50:55.000Z
+updatedDate: 2025-12-27T21:50:55.000Z
 category: micro
 tags:
   - writing
   - how-i-write-pod
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115793743392712520'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mays44p77o2t'
+  - 'https://www.threads.com/@sajal24x7/post/DSyFt26ERhC'
 ---
 I absolutely loved listening to [Elif](https://youtu.be/tpGCRk6m838?si=W0G4Jq5YU98AIfYR) on the How I write podcast. Maybe David should have more female writers on the podcast.
 
