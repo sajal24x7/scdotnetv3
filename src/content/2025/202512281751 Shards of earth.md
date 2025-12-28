@@ -7,13 +7,9 @@ category: bookshelf
 tags:
   - scifi
 format: audio
-author: Adrian
-series: null
-bookStatus: reading
-startedReading: 2025-12-28T16:46:16.000Z
-syndicationUrls:
-  - 'https://mastodon.social/@sajal24x7/115798208510173798'
-  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mb2rkmglai2i'
-  - 'https://www.threads.com/@sajal24x7/post/DS0Hqw_EV7_'
+author: "Adrian Tchaikovsky"
+series: "The Expanse #1"
+bookStatus: "reading"
+startedReading: 2025-12-28T18:46:16+02:00
 ---
 Started reading.
