@@ -9,7 +9,7 @@ tags:
 format: ebook
 author: David Farley
 bookCover: continuous-delivery.jpg
-bookStatus: reading
+bookStatus: on-hold
 startedReading: 2025-11-19T12:40:57.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115578326764344353'
