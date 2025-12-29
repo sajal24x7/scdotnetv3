@@ -1,12 +1,14 @@
 ---
-title: "Writer vs Author"
-slug: "writer-vs-author"
-pubDate: 2025-12-29T20:16:19+02:00
-updatedDate: 2025-12-29T20:16:19+02:00
+title: Writer vs Author
+slug: writer-vs-author
+pubDate: 2025-12-29T18:16:19.000Z
+updatedDate: 2025-12-29T18:16:19.000Z
 category: micro
 tags:
   - writing
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115804223342583645'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mb5gzufgdc2r'
 ---
 [Art, Money, and AI - Hugh Howey](https://hughhowey.com/art-money-and-ai/)
 
