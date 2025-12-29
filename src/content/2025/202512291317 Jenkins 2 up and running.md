@@ -1,16 +1,19 @@
 ---
-title: "Jenkins 2 up and running"
-slug: "jenkins-2-up-and-running"
-pubDate: 2025-12-29T13:18:12+02:00
-updatedDate: 2025-12-29T13:18:12+02:00
+title: Jenkins 2 up and running
+slug: jenkins-2-up-and-running
+pubDate: 2025-12-29T11:18:12.000Z
+updatedDate: 2025-12-29T11:18:12.000Z
 category: bookshelf
 tags:
   - technical
-
 format: audio
-author: "Brent Laster"
-bookStatus: "reading"
-startedReading: 2025-12-29T13:18:12+02:00
+author: Brent Laster
+bookStatus: reading
+startedReading: 2025-12-29T11:18:12.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115802581732265575'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mb4ppdeh6u2k'
+  - 'https://www.threads.com/@sajal24x7/post/DS2G8h6EYbF'
 ---
 Started reading.
 
