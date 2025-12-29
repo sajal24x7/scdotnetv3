@@ -1,13 +1,16 @@
 ---
-title: "Ultraprocessed food is designed to be irresistible"
-slug: "ultraprocessed-food-is-designed-to-be-irresistible"
-pubDate: 2025-12-29T15:39:08+02:00
-updatedDate: 2025-12-29T15:39:08+02:00
+title: Ultraprocessed food is designed to be irresistible
+slug: ultraprocessed-food-is-designed-to-be-irresistible
+pubDate: 2025-12-29T13:39:08.000Z
+updatedDate: 2025-12-29T13:39:08.000Z
 category: evergreen
 tags:
   - food
   - health
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115803133645823126'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mb4xkd57by2a'
+  - 'https://www.threads.com/@sajal24x7/post/DS2XApJgJKI'
 ---
 ## How?
 
