@@ -1,0 +1,13 @@
+---
+title: "Writer vs Author"
+slug: "writer-vs-author"
+pubDate: 2025-12-29T20:16:19+02:00
+updatedDate: 2025-12-29T20:16:19+02:00
+category: micro
+tags:
+  - writing
+
+---
+[Art, Money, and AI - Hugh Howey](https://hughhowey.com/art-money-and-ai/)
+
+> The writing brain is bemused or ambivalent. It finds joy in writing and sees AI writing not as a threat but as something completely different, not the same game, not in the same universe. So there’s no threat. If a person wants to create a book entirely with AI, the most a writer brain might feel is the confusion over why someone would want to deprive themselves of the unique thrill of noodling it on their own. But an enlightened writer might realize that not everyone is looking for that thrill. Some people just want to read a book that doesn’t already exist, and however it gets created is not important to them. The book is the thing. Not the process.
