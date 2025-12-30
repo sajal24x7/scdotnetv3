@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115804223342583645'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mb5gzufgdc2r'
+  - 'https://www.threads.com/@sajal24x7/post/DS4poOpjig-'
 ---
 [Art, Money, and AI - Hugh Howey](https://hughhowey.com/art-money-and-ai/)
 
