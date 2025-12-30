@@ -6,7 +6,7 @@ updatedDate: 2025-12-29T11:18:12.000Z
 category: bookshelf
 tags:
   - technical
-format: audio
+format: ebook
 author: Brent Laster
 bookStatus: reading
 startedReading: 2025-12-29T11:18:12.000Z
