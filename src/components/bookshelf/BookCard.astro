@@ -61,9 +61,7 @@ const rating: BookRating | null = showRating ? (bookRating ?? defaultBookRating)
 const ratingDisplay = rating ? bookRatingDisplay[rating] : null;
 const ratingLabel = ratingDisplay?.label ?? null;
 const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
-const ratingAriaLabel = ratingLabel
-    ? ratingLabel.replace(/^Rating:\s*/i, 'Rated ')
-    : 'Rated';
+const ratingAriaLabel = ratingLabel ?? 'Rated';
 ---
 
 <article class="book-card" data-card-root>
@@ -131,7 +129,7 @@ const ratingAriaLabel = ratingLabel
             class={`book-rating book-rating--${rating}`}
             aria-label={ratingAriaLabel}
           >
-            <span class="book-rating__label">Rated</span>
+            <span class="book-rating__label">{ratingLabel}</span>
             <span class="book-rating__icons" aria-hidden="true">
               {ratingIconSpecs.map((iconSpec) => {
                 const paths = iconSpec.type === 'heart'

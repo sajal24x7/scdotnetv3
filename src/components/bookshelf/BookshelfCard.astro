@@ -137,10 +137,10 @@ const finishedLabel = finishedDate ?? null;
 const shouldShowRating = normalizedStatus !== 'reading';
 const ratingDisplay = shouldShowRating && bookRating ? bookRatingDisplay[bookRating] : null;
 const ratingAriaLabel = ratingDisplay
-    ? ratingDisplay.label.replace(/^Rating:\s*/i, 'Rated ')
+    ? ratingDisplay.label
     : 'Rating: Not set';
 const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
-const ratingChipLabel = shouldShowRating ? 'Rated' : null;
+const ratingChipLabel = ratingDisplay?.label ?? null;
 
 const safeProgress = (() => {
     if (normalizedStatus !== 'reading') {

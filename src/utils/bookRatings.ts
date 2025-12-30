@@ -39,19 +39,19 @@ export const heartIconPaths: readonly string[] = [
 
 export const bookRatingDisplay: Record<BookRating, BookRatingDisplay> = {
     like: {
-        label: 'Rating: Like',
+        label: 'Liked it',
         iconSpecs: [
             { type: 'thumb', direction: 'up', size: 18 }
         ]
     },
     love: {
-        label: 'Rating: Love',
+        label: 'Loved it',
         iconSpecs: [
             { type: 'heart', size: 20 }
         ]
     },
     nope: {
-        label: 'Rating: Dislike',
+        label: 'Not for me',
         iconSpecs: [
             { type: 'thumb', direction: 'down', size: 18 }
         ]
