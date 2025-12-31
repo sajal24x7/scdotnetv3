@@ -1,6 +1,6 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2025-12-31T03:26:28.593Z
-// Found 48 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, anything-you-want.jpg, artificial-condition.jpg, before-the-coffee-gets-cold.jpg, black-box-thinking.jpg, children-of-memory.jpg, children-of-ruin.jpg, children-of-time.jpg, continuous-delivery.jpg, data-analysis-with-python-and-pyspark.jpeg, empire-of-ai.jpg, enshittification.jpg, ernest-hemingway-on-writing.jpg, every-day-i-read.jpg, excellent-advice-for-living.jpg, helsinki-by-sauna.jpg, jenkins-2-up-and-running.jpg, keep-going.jpg, men-without-women.jpg, nexus.jpg, on-tennis.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, same-as-ever.jpg, shards-of-earth.jpg, show-your-work.jpg, slow-productivity.jpg, steal-like-an-artist.jpg, the-art-of-spending-money.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-life-of-chuck.jpg, the-mysterious-affair-at-styles.jpg, the-practice-of-cloud-system-administration.jpg, the-quick-python-book-fourth-edition.jpg, the-secret-of-secrets.jpg, the-story-grid.jpg, the-three-body-problem.jpg, this-is-how-you-lose-the-time-war.jpg, time-management-for-system-administrators.jpg, twenty-love-poems-and-a-song-of-despair.jpg, two-nights-in-lisbon.jpg, walden.jpg, when-the-moon-hits-your-eye.jpg
+// Generated on: 2025-12-31T20:19:41.107Z
+// Found 52 image(s): a-closed-and-common-orbit.jpg, abundance.jpg, all-systems-red.jpg, anything-you-want.jpg, artificial-condition.jpg, before-the-coffee-gets-cold.jpg, black-box-thinking.jpg, children-of-memory.jpg, children-of-ruin.jpg, children-of-time.jpg, continuous-delivery.jpg, data-analysis-with-python-and-pyspark.jpeg, deaths-end.jpg, empire-of-ai.jpg, enshittification.jpg, ernest-hemingway-on-writing.jpg, every-day-i-read.jpg, excellent-advice-for-living.jpg, exit-strategy.jpg, helsinki-by-sauna.jpg, jenkins-2-up-and-running.jpg, keep-going.jpg, men-without-women.jpg, network-effect.jpg, nexus.jpg, on-tennis.jpg, poems-to-fall-in-love-with.jpg, range.jpg, record-of-a-spaceborn-few.jpg, rogue-protocol.jpg, same-as-ever.jpg, shards-of-earth.jpg, show-your-work.jpg, slow-productivity.jpg, steal-like-an-artist.jpg, the-art-of-spending-money.jpg, the-dark-forest.jpg, the-galaxy-and-the-ground-within.jpg, the-life-of-chuck.jpg, the-mysterious-affair-at-styles.jpg, the-practice-of-cloud-system-administration.jpg, the-quick-python-book-fourth-edition.jpg, the-secret-of-secrets.jpg, the-story-grid.jpg, the-three-body-problem.jpg, this-is-how-you-lose-the-time-war.jpg, time-management-for-system-administrators.jpg, twenty-love-poems-and-a-song-of-despair.jpg, two-nights-in-lisbon.jpg, walden.jpg, what-technology-wants.jpg, when-the-moon-hits-your-eye.jpg
 
 import a_closed_and_common_orbit_jpg from '../images/bookshelf/a-closed-and-common-orbit.jpg';
 import abundance_jpg from '../images/bookshelf/abundance.jpg';
@@ -14,15 +14,18 @@ import children_of_ruin_jpg from '../images/bookshelf/children-of-ruin.jpg';
 import children_of_time_jpg from '../images/bookshelf/children-of-time.jpg';
 import continuous_delivery_jpg from '../images/bookshelf/continuous-delivery.jpg';
 import data_analysis_with_python_and_pyspark_jpeg from '../images/bookshelf/data-analysis-with-python-and-pyspark.jpeg';
+import deaths_end_jpg from '../images/bookshelf/deaths-end.jpg';
 import empire_of_ai_jpg from '../images/bookshelf/empire-of-ai.jpg';
 import enshittification_jpg from '../images/bookshelf/enshittification.jpg';
 import ernest_hemingway_on_writing_jpg from '../images/bookshelf/ernest-hemingway-on-writing.jpg';
 import every_day_i_read_jpg from '../images/bookshelf/every-day-i-read.jpg';
 import excellent_advice_for_living_jpg from '../images/bookshelf/excellent-advice-for-living.jpg';
+import exit_strategy_jpg from '../images/bookshelf/exit-strategy.jpg';
 import helsinki_by_sauna_jpg from '../images/bookshelf/helsinki-by-sauna.jpg';
 import jenkins_2_up_and_running_jpg from '../images/bookshelf/jenkins-2-up-and-running.jpg';
 import keep_going_jpg from '../images/bookshelf/keep-going.jpg';
 import men_without_women_jpg from '../images/bookshelf/men-without-women.jpg';
+import network_effect_jpg from '../images/bookshelf/network-effect.jpg';
 import nexus_jpg from '../images/bookshelf/nexus.jpg';
 import on_tennis_jpg from '../images/bookshelf/on-tennis.jpg';
 import poems_to_fall_in_love_with_jpg from '../images/bookshelf/poems-to-fall-in-love-with.jpg';
@@ -49,6 +52,7 @@ import time_management_for_system_administrators_jpg from '../images/bookshelf/t
 import twenty_love_poems_and_a_song_of_despair_jpg from '../images/bookshelf/twenty-love-poems-and-a-song-of-despair.jpg';
 import two_nights_in_lisbon_jpg from '../images/bookshelf/two-nights-in-lisbon.jpg';
 import walden_jpg from '../images/bookshelf/walden.jpg';
+import what_technology_wants_jpg from '../images/bookshelf/what-technology-wants.jpg';
 import when_the_moon_hits_your_eye_jpg from '../images/bookshelf/when-the-moon-hits-your-eye.jpg';
 
 export const bookCoverImages: Record<string, any> = {
@@ -64,15 +68,18 @@ export const bookCoverImages: Record<string, any> = {
   'children-of-time.jpg': children_of_time_jpg,
   'continuous-delivery.jpg': continuous_delivery_jpg,
   'data-analysis-with-python-and-pyspark.jpeg': data_analysis_with_python_and_pyspark_jpeg,
+  'deaths-end.jpg': deaths_end_jpg,
   'empire-of-ai.jpg': empire_of_ai_jpg,
   'enshittification.jpg': enshittification_jpg,
   'ernest-hemingway-on-writing.jpg': ernest_hemingway_on_writing_jpg,
   'every-day-i-read.jpg': every_day_i_read_jpg,
   'excellent-advice-for-living.jpg': excellent_advice_for_living_jpg,
+  'exit-strategy.jpg': exit_strategy_jpg,
   'helsinki-by-sauna.jpg': helsinki_by_sauna_jpg,
   'jenkins-2-up-and-running.jpg': jenkins_2_up_and_running_jpg,
   'keep-going.jpg': keep_going_jpg,
   'men-without-women.jpg': men_without_women_jpg,
+  'network-effect.jpg': network_effect_jpg,
   'nexus.jpg': nexus_jpg,
   'on-tennis.jpg': on_tennis_jpg,
   'poems-to-fall-in-love-with.jpg': poems_to_fall_in_love_with_jpg,
@@ -99,6 +106,7 @@ export const bookCoverImages: Record<string, any> = {
   'twenty-love-poems-and-a-song-of-despair.jpg': twenty_love_poems_and_a_song_of_despair_jpg,
   'two-nights-in-lisbon.jpg': two_nights_in_lisbon_jpg,
   'walden.jpg': walden_jpg,
+  'what-technology-wants.jpg': what_technology_wants_jpg,
   'when-the-moon-hits-your-eye.jpg': when_the_moon_hits_your_eye_jpg
 };
 
@@ -106,4 +114,4 @@ export function getBookCoverImage(filename: string) {
   return bookCoverImages[filename];
 }
 
-export type BookCoverFilename = 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'all-systems-red.jpg' | 'anything-you-want.jpg' | 'artificial-condition.jpg' | 'before-the-coffee-gets-cold.jpg' | 'black-box-thinking.jpg' | 'children-of-memory.jpg' | 'children-of-ruin.jpg' | 'children-of-time.jpg' | 'continuous-delivery.jpg' | 'data-analysis-with-python-and-pyspark.jpeg' | 'empire-of-ai.jpg' | 'enshittification.jpg' | 'ernest-hemingway-on-writing.jpg' | 'every-day-i-read.jpg' | 'excellent-advice-for-living.jpg' | 'helsinki-by-sauna.jpg' | 'jenkins-2-up-and-running.jpg' | 'keep-going.jpg' | 'men-without-women.jpg' | 'nexus.jpg' | 'on-tennis.jpg' | 'poems-to-fall-in-love-with.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'rogue-protocol.jpg' | 'same-as-ever.jpg' | 'shards-of-earth.jpg' | 'show-your-work.jpg' | 'slow-productivity.jpg' | 'steal-like-an-artist.jpg' | 'the-art-of-spending-money.jpg' | 'the-dark-forest.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-life-of-chuck.jpg' | 'the-mysterious-affair-at-styles.jpg' | 'the-practice-of-cloud-system-administration.jpg' | 'the-quick-python-book-fourth-edition.jpg' | 'the-secret-of-secrets.jpg' | 'the-story-grid.jpg' | 'the-three-body-problem.jpg' | 'this-is-how-you-lose-the-time-war.jpg' | 'time-management-for-system-administrators.jpg' | 'twenty-love-poems-and-a-song-of-despair.jpg' | 'two-nights-in-lisbon.jpg' | 'walden.jpg' | 'when-the-moon-hits-your-eye.jpg';
+export type BookCoverFilename = 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'all-systems-red.jpg' | 'anything-you-want.jpg' | 'artificial-condition.jpg' | 'before-the-coffee-gets-cold.jpg' | 'black-box-thinking.jpg' | 'children-of-memory.jpg' | 'children-of-ruin.jpg' | 'children-of-time.jpg' | 'continuous-delivery.jpg' | 'data-analysis-with-python-and-pyspark.jpeg' | 'deaths-end.jpg' | 'empire-of-ai.jpg' | 'enshittification.jpg' | 'ernest-hemingway-on-writing.jpg' | 'every-day-i-read.jpg' | 'excellent-advice-for-living.jpg' | 'exit-strategy.jpg' | 'helsinki-by-sauna.jpg' | 'jenkins-2-up-and-running.jpg' | 'keep-going.jpg' | 'men-without-women.jpg' | 'network-effect.jpg' | 'nexus.jpg' | 'on-tennis.jpg' | 'poems-to-fall-in-love-with.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'rogue-protocol.jpg' | 'same-as-ever.jpg' | 'shards-of-earth.jpg' | 'show-your-work.jpg' | 'slow-productivity.jpg' | 'steal-like-an-artist.jpg' | 'the-art-of-spending-money.jpg' | 'the-dark-forest.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-life-of-chuck.jpg' | 'the-mysterious-affair-at-styles.jpg' | 'the-practice-of-cloud-system-administration.jpg' | 'the-quick-python-book-fourth-edition.jpg' | 'the-secret-of-secrets.jpg' | 'the-story-grid.jpg' | 'the-three-body-problem.jpg' | 'this-is-how-you-lose-the-time-war.jpg' | 'time-management-for-system-administrators.jpg' | 'twenty-love-poems-and-a-song-of-despair.jpg' | 'two-nights-in-lisbon.jpg' | 'walden.jpg' | 'what-technology-wants.jpg' | 'when-the-moon-hits-your-eye.jpg';
