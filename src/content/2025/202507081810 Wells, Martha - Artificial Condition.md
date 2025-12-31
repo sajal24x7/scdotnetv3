@@ -17,6 +17,13 @@ bookRating: like
 format: audio
 bookCover: 'artificial-condition.jpg'
 ---
+
+Book 1 - [All systems red](/bookshelf/all-systems-red)
+Book 2 - [Artificial Condition](/bookshelf/artificial-condition)
+Book 3 - [Rogue Protocol](/bookshelf/rogue-protocol)
+Book 4 - [Exit Strategy](/bookshelf/exit-strategy)
+Book 5 - [Network Effect](/bookshelf/network-effect)
+
 This is the second book in Martha Wells' [The Murderbot Diaries](https://en.wikipedia.org/wiki/The_Murderbot_Diaries) series. 
 
 This book follows the titular Murderbot, who after the events of the first book decided to go out and figure out the mysteries of their past.

@@ -17,6 +17,13 @@ bookRating: like
 format: audio
 bookCover: 'all-systems-red.jpg'
 ---
+
+Book 1 - [All systems red](/bookshelf/all-systems-red)
+Book 2 - [Artificial Condition](/bookshelf/artificial-condition)
+Book 3 - [Rogue Protocol](/bookshelf/rogue-protocol)
+Book 4 - [Exit Strategy](/bookshelf/exit-strategy)
+Book 5 - [Network Effect](/bookshelf/network-effect)
+
 This is the first book in the Murderbot series. And a nice change of pace from [Death's End by Cixin Liu](https://sajalchoudhary.net/bookshelf/cixin-liu-the-dark-forest/) which was the last fiction book I read.
 
 It is short.
