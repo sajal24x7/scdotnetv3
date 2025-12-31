@@ -15,6 +15,7 @@ startedReading: 2025-07-18T19:56:47.000Z
 finishedReading: '2025-07-29T21:00:00+03:00'
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115815972885370248'
+bookCover: network-effect.jpg
 ---
 Book 1 - [All systems red](/bookshelf/all-systems-red)
 Book 2 - [Artificial Condition](/bookshelf/artificial-condition)

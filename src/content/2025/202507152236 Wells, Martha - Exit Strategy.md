@@ -15,6 +15,7 @@ startedReading: 2025-07-15T19:56:35.000Z
 finishedReading: '2025-07-18T21:00:00+03:00'
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115815972663572896'
+bookCover: exit-strategy.jpg
 ---
 Book 1 - [All systems red](/bookshelf/all-systems-red)
 Book 2 - [Artificial Condition](/bookshelf/artificial-condition)

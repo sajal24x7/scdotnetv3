@@ -15,6 +15,7 @@ finishedReading: '2025-06-22T19:06:00+03:00'
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115815935258000236'
   - 'https://www.threads.com/@sajal24x7/post/DS8LlgbkWNi'
+bookCover: deaths-end.jpg
 ---
 
 Enjoyed reading it.
