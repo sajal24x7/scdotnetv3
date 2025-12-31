@@ -1,17 +1,20 @@
 ---
-title: "What Technology Wants"
-slug: "what-technology-wants"
-pubDate: 2025-12-31T21:37:03+02:00
-updatedDate: 2025-12-31T21:37:03+02:00
+title: What Technology Wants
+slug: what-technology-wants
+pubDate: 2025-12-31T19:37:03.000Z
+updatedDate: 2025-12-31T19:37:03.000Z
 category: bookshelf
 tags:
   - non-fiction
 format: audio
-author: "Kevin Kelly"
-bookStatus: "reading"
-bookRating: "like"
-startedReading: 2025-02-23T21:37:03+02:00
-finishedReading: 2025-05-06T21:37:03+02:00
+author: Kevin Kelly
+bookStatus: reading
+bookRating: like
+startedReading: 2025-02-23T19:37:03.000Z
+finishedReading: 2025-05-06T19:37:03.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115815876230499690'
+  - 'https://www.threads.com/@sajal24x7/post/DS8J3bLiTtr'
 ---
 
 # Notes and Quotes
