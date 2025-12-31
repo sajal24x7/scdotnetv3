@@ -1,13 +1,16 @@
 ---
-title: "Books I have read this year"
-slug: "books-ive-read-this-year"
-pubDate: 2025-12-31T22:10:19+02:00
-updatedDate: 2025-12-31T22:10:19+02:00
+title: Books I have read this year
+slug: books-ive-read-this-year
+pubDate: 2025-12-31T20:10:19.000Z
+updatedDate: 2025-12-31T20:10:19.000Z
 category: blog
-tags: 
+tags:
   - yearly-recaps
   - books
   - reading
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115816174478732733'
+  - 'https://www.threads.com/@sajal24x7/post/DS8SjCakWyX'
 ---
 Last year, this post was a way for me to list out all the books I’ve read in one place. This year, I already have all the books I’ve read in one place - the [bookshelf](/bookshelf) page. 
 
