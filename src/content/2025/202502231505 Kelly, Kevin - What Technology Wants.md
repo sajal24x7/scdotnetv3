@@ -8,7 +8,7 @@ tags:
   - non-fiction
 format: audio
 author: Kevin Kelly
-bookStatus: reading
+bookStatus: read
 bookRating: like
 startedReading: 2025-02-23T19:37:03.000Z
 finishedReading: 2025-05-06T19:37:03.000Z
