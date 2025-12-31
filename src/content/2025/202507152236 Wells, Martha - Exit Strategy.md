@@ -14,9 +14,11 @@ bookRating: like
 startedReading: 2025-07-15T21:56:35+02:00
 finishedReading: "2025-07-18T21:00:00+03:00"
 ---
-Book 1 - [All systems red](#)
-Book 2 - [Artificial Condition](#)
-Book 2 - [Rogue Protocol](#)
+Book 1 - [All systems red](/bookshelf/all-systems-red)
+Book 2 - [Artificial Condition](/bookshelf/artificial-condition)
+Book 3 - [Rogue Protocol](/bookshelf/rogue-protocol)
+Book 4 - [Exit Strategy](/bookshelf/exit-strategy)
+Book 5 - [Network Effect](/bookshelf/network-effect)
 
 This is the fourth book in Martha Wells' [The Murderbot Diaries](https://en.wikipedia.org/wiki/The_Murderbot_Diaries) series.
 
