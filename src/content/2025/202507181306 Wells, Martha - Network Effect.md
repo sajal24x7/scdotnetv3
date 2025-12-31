@@ -1,18 +1,20 @@
 ---
-title: "Network Effect"
-slug: "network-effect"
-pubDate: 2025-12-31T21:56:47+02:00
-updatedDate: 2025-12-31T21:56:47+02:00
+title: Network Effect
+slug: network-effect
+pubDate: 2025-12-31T19:56:47.000Z
+updatedDate: 2025-12-31T19:56:47.000Z
 category: bookshelf
 tags:
   - sci-fi
 format: audio
-uthor: "Martha Wells"
-series: "The Murderbot Diaries #5"
-bookStatus: "read"
+uthor: Martha Wells
+series: 'The Murderbot Diaries #5'
+bookStatus: read
 bookRating: like
-startedReading: 2025-07-18T21:56:47+02:00
-finishedReading: "2025-07-29T21:00:00+03:00"
+startedReading: 2025-07-18T19:56:47.000Z
+finishedReading: '2025-07-29T21:00:00+03:00'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115815972885370248'
 ---
 Book 1 - [All systems red](/bookshelf/all-systems-red)
 Book 2 - [Artificial Condition](/bookshelf/artificial-condition)
