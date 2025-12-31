@@ -9,8 +9,8 @@ tags:
 author: Pablo Neruda
 bookStatus: read
 bookRating: like
-startedReading: '2025-01-30T21:37:00+03:00'
-finishedReading: '2025-01-30T21:37:00+03:00'
+startedReading: 2024-11-30T21:37:00+03:00
+finishedReading: 2024-11-30T21:37:00+03:00
 bookCover: twenty-love-poems-and-a-song-of-despair.jpg
 ---
 

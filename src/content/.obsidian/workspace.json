@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024/202410080346 A world full of agents.md",
+                "file": "2024/202411301215 Neruda, Pablo, and W. S. Merwin - Twenty Love Poems and a Song of Despair.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "202410080346 A world full of agents"
+              "title": "202411301215 Neruda, Pablo, and W. S. Merwin - Twenty Love Poems and a Song of Despair"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "what technology wants",
+                "query": "twenty love",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -174,6 +174,7 @@
   },
   "active": "26eff8e7ea3fa54d",
   "lastOpenFiles": [
+    "2024/202410080346 A world full of agents.md",
     "2025/202502231505 Kelly, Kevin - What Technology Wants.md",
     "2025/202511130717 ChatGPT has renamed personalities now.md",
     "2025/202512301258 The Story Grid.md",
@@ -199,7 +200,6 @@
     "2025/202512230911 ChatGPT has yearly recaps as well.md",
     "2025/202512222237 Show your work.md",
     "2025/202512212225 Limitations mean freedom.md",
-    "2025/202512212140 Steal like an artist.md",
     "2025/202511251639 Vibe Coding November Meetup.txt",
     "2025/202511231333 How to write commit messages.txt",
     "2025/202511191517 Continuous delivery.txt",
