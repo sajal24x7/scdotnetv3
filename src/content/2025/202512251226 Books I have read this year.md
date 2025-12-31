@@ -4,7 +4,7 @@ slug: "books-ive-read-this-year"
 pubDate: 2025-12-31T22:10:19+02:00
 updatedDate: 2025-12-31T22:10:19+02:00
 category: blog
-tags:
+tags: 
   - yearly-recaps
   - books
   - reading
