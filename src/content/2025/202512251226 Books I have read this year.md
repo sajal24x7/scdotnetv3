@@ -1,5 +1,5 @@
 ---
-title: "Books I’ve read this year"
+title: "Books I have read this year"
 slug: "books-ive-read-this-year"
 pubDate: 2025-12-31T22:10:19+02:00
 updatedDate: 2025-12-31T22:10:19+02:00
@@ -8,7 +8,6 @@ tags:
   - yearly-recaps
   - books
   - reading
-
 ---
 Last year, this post was a way for me to list out all the books I’ve read in one place. This year, I already have all the books I’ve read in one place - the [bookshelf](/bookshelf) page. 
 
