@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2025/202511130717 ChatGPT has renamed personalities now.md",
+                "file": "2024/202410080346 A world full of agents.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "202511130717 ChatGPT has renamed personalities now"
+              "title": "202410080346 A world full of agents"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "what technology wants",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +74,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -173,6 +174,14 @@
   },
   "active": "26eff8e7ea3fa54d",
   "lastOpenFiles": [
+    "2025/202502231505 Kelly, Kevin - What Technology Wants.md",
+    "2025/202511130717 ChatGPT has renamed personalities now.md",
+    "2025/202512301258 The Story Grid.md",
+    "2025/202512301150 The systems in a Jenkins installation.md",
+    "2025/202512291554 Writer vs Author.md",
+    "2025/202512291445 Ultraprocessed food is designed to be irresistible.md",
+    "2025/202512291317 Jenkins 2 up and running.md",
+    "2025/202512281751 Shards of earth.md",
     "2025/202512272350 Elif Shafak on How I write pod.md",
     "2025/202512272225 LLM year in review by Karpathy.md",
     "2025/202512262244 How to read.md",
@@ -191,14 +200,6 @@
     "2025/202512222237 Show your work.md",
     "2025/202512212225 Limitations mean freedom.md",
     "2025/202512212140 Steal like an artist.md",
-    "2025/202512152133 NL84 - Winter Solstice.md",
-    "2025/202512201126 Runaway black holes confirmed by JWST.md",
-    "2025/202512201119 China needs to figure out what to do with the ageing batteries.md",
-    "2025/202512191710 The art of spending money.md",
-    "2025/202512191001 Three types of tests.md",
-    "2025/202512190815 Your job is to deliver code you have proven to work.md",
-    "2025/202512101529 How to configure time source using Group Policy.md",
-    "2025/202510101444 Create GPO to copy a file in a certain location and create a shortcut to that exe on Desktop.md",
     "2025/202511251639 Vibe Coding November Meetup.txt",
     "2025/202511231333 How to write commit messages.txt",
     "2025/202511191517 Continuous delivery.txt",
