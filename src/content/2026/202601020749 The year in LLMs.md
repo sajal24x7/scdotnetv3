@@ -1,13 +1,15 @@
 ---
-title: "The year in LLMs"
-slug: "the-year-in-llms"
-pubDate: 2026-01-02T07:52:55+02:00
-updatedDate: 2026-01-02T07:52:55+02:00
+title: The year in LLMs
+slug: the-year-in-llms
+pubDate: 2026-01-02T05:52:55.000Z
+updatedDate: 2026-01-02T05:52:55.000Z
 category: micro
 tags:
   - llms
   - simon-willison
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115823950209135598'
+  - 'https://www.threads.com/@sajal24x7/post/DS_02ZRFhOl'
 ---
 [2025: The year in LLMs by Simon Willison](https://simonwillison.net/2025/Dec/31/the-year-in-llms/#atom-everything)
 
