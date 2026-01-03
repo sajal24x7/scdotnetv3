@@ -16,6 +16,7 @@ finishedReading: '2025-07-18T21:00:00+03:00'
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115815972663572896'
   - 'https://www.threads.com/@sajal24x7/post/DS8ShGaEfy0'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zqtgds2w'
 bookCover: exit-strategy.jpg
 ---
 Book 1 - [All systems red](/bookshelf/all-systems-red)
