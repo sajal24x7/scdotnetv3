@@ -80,6 +80,8 @@ BLUESKY_HANDLE=yourname.bsky.social
 BLUESKY_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx
 ```
 
+**Important**: If you use a custom domain as your Bluesky handle (e.g., `sajalchoudhary.net`), use that instead of the `.bsky.social` format. The handle should match exactly what you use to log in to Bluesky.
+
 #### 2.4 Important Notes About OAuth Migration
 - **Current**: App passwords are the recommended method
 - **Future**: Bluesky is transitioning to OAuth (started in 2024)
@@ -191,7 +193,7 @@ Click **Add Variable** for each:
 MASTODON_ACCESS_TOKEN=your_mastodon_access_token_here
 MASTODON_INSTANCE=https://mastodon.social
 
-# Bluesky
+# Bluesky (use your custom domain if you have one, e.g., sajalchoudhary.net)
 BLUESKY_HANDLE=yourname.bsky.social
 BLUESKY_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx
 

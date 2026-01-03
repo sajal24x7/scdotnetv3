@@ -108,8 +108,8 @@ Add the following secrets to your GitHub repository (`Settings` → `Secrets and
 MASTODON_ACCESS_TOKEN=your_mastodon_access_token
 MASTODON_INSTANCE=https://mastodon.social
 
-# Bluesky
-BLUESKY_HANDLE=sajal.bsky.social
+# Bluesky (use your actual handle - custom domain or .bsky.social)
+BLUESKY_HANDLE=sajalchoudhary.net
 BLUESKY_APP_PASSWORD=your_bluesky_app_password
 
 # Threads
