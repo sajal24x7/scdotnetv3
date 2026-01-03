@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115816174478732733'
   - 'https://www.threads.com/@sajal24x7/post/DS8SjCakWyX'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zrfsxr2s'
 ---
 Last year, this post was a way for me to list out all the books I’ve read in one place. This year, I already have all the books I’ve read in one place - the [bookshelf](/bookshelf) page. 
 

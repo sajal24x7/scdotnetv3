@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115823950209135598'
   - 'https://www.threads.com/@sajal24x7/post/DS_02ZRFhOl'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zsewq62t'
 ---
 [2025: The year in LLMs by Simon Willison](https://simonwillison.net/2025/Dec/31/the-year-in-llms/#atom-everything)
 

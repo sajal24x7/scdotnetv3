@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115808171952195171'
   - 'https://www.threads.com/@sajal24x7/post/DS4ppHhDp2E'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zrta6a2r'
 ---
 1. Master - Has access to all config and options, and full list of jobs. By default jobs run on master if any other system is not specified. However, other systems should be configured to run jobs.
 2. Agent - Any nonmaster system. Managed by master to run jobs. Associated with declarative pipeline.
