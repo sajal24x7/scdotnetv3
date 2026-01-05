@@ -229,74 +229,69 @@ const timelineLabel = (() => {
 
       {(statusLabel || genreLabel || formatLabel || ratingChipLabel || timelineLabel) && (
         <div class="book-card__meta" data-meta>
-          {(statusLabel || genreLabel || formatLabel || ratingChipLabel) && (
-            <div class="book-card__meta-row book-card__meta-row--chips">
-              {statusLabel && (
-                <span class={`book-card__chip book-card__chip--status ${statusChipClass}`}>
-                  {statusLabel}
-                </span>
-              )}
-              {genreLabel && (
-                <span class="book-card__chip book-card__chip--genre">
-                  {genreLabel}
-                </span>
-              )}
-              {formatLabel && (
-                <span class="book-card__chip book-card__chip--format">
-                  {formatLabel}
-                </span>
-              )}
-              {ratingChipLabel && (
-                <span
-                  class={`book-card__chip book-card__chip--rating ${
-                    bookRating ? `book-card__chip--rating-${bookRating}` : 'book-card__chip--rating-none'
-                  }`}
-                  aria-label={ratingAriaLabel}
-                >
-                  <span class="book-card__chip-label">{ratingChipLabel}</span>
-                  {ratingIconSpecs.length > 0 && (
-                    <span
-                      class={`book-card__rating-icons ${
-                        bookRating ? `book-card__rating-icons--${bookRating}` : ''
-                      }`}
-                      aria-hidden="true"
-                    >
-                      {ratingIconSpecs.map((iconSpec) => (
-                        <span class="book-card__rating-icon">
-                          <svg
-                            width={iconSpec.size}
-                            height={iconSpec.size}
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            {(
-                              iconSpec.type === 'heart'
-                                  ? heartIconPaths
-                                  : thumbIconPaths[iconSpec.direction]
-                            ).map((d) => (
-                              <path d={d}></path>
-                            ))}
-                          </svg>
-                        </span>
-                      ))}
-                    </span>
-                  )}
-                </span>
-              )}
-            </div>
-          )}
-
-          {timelineLabel && (
-            <div class="book-card__meta-row book-card__meta-row--details">
+          <div class="book-card__meta-row book-card__meta-row--chips">
+            {statusLabel && (
+              <span class={`book-card__chip book-card__chip--status ${statusChipClass}`}>
+                {statusLabel}
+              </span>
+            )}
+            {genreLabel && (
+              <span class="book-card__chip book-card__chip--genre">
+                {genreLabel}
+              </span>
+            )}
+            {formatLabel && (
+              <span class="book-card__chip book-card__chip--format">
+                {formatLabel}
+              </span>
+            )}
+            {ratingChipLabel && (
+              <span
+                class={`book-card__chip book-card__chip--rating ${
+                  bookRating ? `book-card__chip--rating-${bookRating}` : 'book-card__chip--rating-none'
+                }`}
+                aria-label={ratingAriaLabel}
+              >
+                <span class="book-card__chip-label">{ratingChipLabel}</span>
+                {ratingIconSpecs.length > 0 && (
+                  <span
+                    class={`book-card__rating-icons ${
+                      bookRating ? `book-card__rating-icons--${bookRating}` : ''
+                    }`}
+                    aria-hidden="true"
+                  >
+                    {ratingIconSpecs.map((iconSpec) => (
+                      <span class="book-card__rating-icon">
+                        <svg
+                          width={iconSpec.size}
+                          height={iconSpec.size}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          {(
+                            iconSpec.type === 'heart'
+                                ? heartIconPaths
+                                : thumbIconPaths[iconSpec.direction]
+                          ).map((d) => (
+                            <path d={d}></path>
+                          ))}
+                        </svg>
+                      </span>
+                    ))}
+                  </span>
+                )}
+              </span>
+            )}
+            {timelineLabel && (
               <span class="book-card__chip book-card__chip--timeline">
                 <span class="book-card__chip-label">{timelineLabel}</span>
               </span>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       )}
 
