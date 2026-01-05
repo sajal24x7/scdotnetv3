@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - non-fiction
 format: ebook
+genre: non-fiction
 author: Dale Carnegie
 bookStatus: reading
 startedReading: 2026-01-03T14:30:06.000Z

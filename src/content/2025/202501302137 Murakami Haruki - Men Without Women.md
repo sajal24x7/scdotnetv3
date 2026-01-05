@@ -8,6 +8,7 @@ category: bookshelf
 tags:
   - book-reviews
   - murakami
+genre: book-reviews
 bookCover: 'men-without-women.jpg'
 author: "Haruki Murakami"
 bookStatus: "read"

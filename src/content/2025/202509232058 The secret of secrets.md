@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - thriller
 format: audio
+genre: thriller
 author: "Dan Brown"
 series: "Robert Langdon #6"
 bookStatus: "read"

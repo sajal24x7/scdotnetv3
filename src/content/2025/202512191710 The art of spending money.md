@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - non-fiction
 format: audio
+genre: non-fiction
 author: Morgan Housel
 bookStatus: read 
 bookRating: like

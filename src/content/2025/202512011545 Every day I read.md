@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - nonfiction
 format: ebook
+genre: nonfiction
 author: Hwang Bo-reum
 bookStatus: read
 startedReading: 2025-12-01T13:46:21.000Z

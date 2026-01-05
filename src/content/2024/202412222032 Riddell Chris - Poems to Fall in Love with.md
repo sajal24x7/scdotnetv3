@@ -8,6 +8,7 @@ category: bookshelf
 tags:
   - book-reviews
   - poems
+genre: book-reviews
 bookCover: poems-to-fall-in-love-with.jpg
 author: Chris Riddell
 series: none

@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - non-fiction
 format: ebook
+genre: non-fiction
 author: Derek Sivers
 bookStatus: read
 bookCover: anything-you-want.jpg

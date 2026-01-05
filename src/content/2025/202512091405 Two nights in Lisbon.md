@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - thriller
 format: ebook
+genre: thriller
 author: Chris Pavone
 bookStatus: read
 startedReading: 2025-12-09T12:07:59.000Z

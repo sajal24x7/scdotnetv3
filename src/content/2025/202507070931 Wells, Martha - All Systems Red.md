@@ -15,6 +15,7 @@ finishedReading: 2025-07-08T18:00:00+03:00
 bookStatus: "read"
 bookRating: like
 format: audio
+genre: murderbot
 bookCover: 'all-systems-red.jpg'
 ---
 

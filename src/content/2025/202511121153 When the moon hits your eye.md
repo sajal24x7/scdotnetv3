@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - sci-fi
 format: ebook
+genre: sci-fi
 author: John Scalzi
 bookStatus: read
 bookRating: like

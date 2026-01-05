@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - scifi
 format: audio
+genre: scifi
 author: Amal El-Mohtar
 bookStatus: read
 startedReading: 2025-12-02T07:59:15.000Z

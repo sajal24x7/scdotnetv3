@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - fantasy
 format: audio
+genre: fantasy
 author: Toshikazu Kawaguchi
 series: 'Before the coffee gets cold #1'
 bookStatus: read

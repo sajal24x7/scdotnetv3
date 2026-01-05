@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - fiction
 format: audio
+genre: fiction
 author: Stephen King
 bookStatus: read
 startedReading: 2025-10-07T17:01:53+03:00

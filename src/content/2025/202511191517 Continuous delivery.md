@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - technical
 format: ebook
+genre: technical
 author: David Farley
 bookCover: continuous-delivery.jpg
 bookStatus: on-hold

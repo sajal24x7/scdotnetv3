@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - photobook
 format: ebook
+genre: photobook
 author: Katja Panzar
 bookStatus: read
 startedReading: 2025-12-25T21:02:28.000Z

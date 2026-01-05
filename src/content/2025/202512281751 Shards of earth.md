@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - scifi
 format: audio
+genre: scifi
 author: Adrian Tchaikovsky
 series: 'The Expanse #1'
 bookStatus: reading

@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - mystery
 format: audio
+genre: mystery
 author: "Agatha Christie"
 series: "Hercule Poirot #1"
 bookStatus: "read"

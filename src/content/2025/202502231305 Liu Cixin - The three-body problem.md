@@ -9,6 +9,7 @@ tags:
   - sci-fi
   - cixin-liu
   - three-body-problem
+genre: sci-fi
 bookCover: 'the-three-body-problem.jpg'
 author: "Cixin Liu"
 series: "Remembrance of Earth's Past"

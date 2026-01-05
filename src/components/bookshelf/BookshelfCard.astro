@@ -17,6 +17,7 @@ interface BookshelfCardProps {
     author?: string | string[];
     series?: string;
     format?: string;
+    genre?: string;
     bookStatus?: BookStatus;
     readingProgress?: number;
     startedReading?: Date | string;
@@ -81,6 +82,7 @@ const {
     author,
     series,
     format,
+    genre,
     bookStatus,
     readingProgress,
     startedReading,
@@ -128,6 +130,8 @@ const formatLabelMap: Record<string, string> = {
 };
 
 const formatLabel = normalizedFormat ? (formatLabelMap[normalizedFormat] ?? normalizedFormat.toUpperCase()) : null;
+
+const genreLabel = genre ? genre.toUpperCase() : null;
 
 const finishedDate = formatYMD(finishedReading);
 const startedDate = formatYMD(startedReading);
@@ -223,13 +227,18 @@ const timelineLabel = (() => {
         )}
       </header>
 
-      {(statusLabel || formatLabel || ratingChipLabel || timelineLabel) && (
+      {(statusLabel || genreLabel || formatLabel || ratingChipLabel || timelineLabel) && (
         <div class="book-card__meta" data-meta>
-          {(statusLabel || formatLabel || ratingChipLabel) && (
+          {(statusLabel || genreLabel || formatLabel || ratingChipLabel) && (
             <div class="book-card__meta-row book-card__meta-row--chips">
               {statusLabel && (
                 <span class={`book-card__chip book-card__chip--status ${statusChipClass}`}>
                   {statusLabel}
+                </span>
+              )}
+              {genreLabel && (
+                <span class="book-card__chip book-card__chip--genre">
+                  {genreLabel}
                 </span>
               )}
               {formatLabel && (
@@ -544,6 +553,16 @@ const timelineLabel = (() => {
 
   :global(.dark) .book-card__chip--status-to-read {
     background: rgba(29, 78, 216, 0.3);
+    color: #bfdbfe;
+  }
+
+  .book-card__chip--genre {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  :global(.dark) .book-card__chip--genre {
+    background: rgba(30, 64, 175, 0.3);
     color: #bfdbfe;
   }
 

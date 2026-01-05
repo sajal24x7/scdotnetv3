@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - sci-fi
 format: audio
+genre: sci-fi
 uthor: Martha Wells
 series: The Murderbot Diaries
 bookStatus: read
