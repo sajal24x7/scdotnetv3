@@ -236,11 +236,6 @@ const timelineLabel = (() => {
                   {statusLabel}
                 </span>
               )}
-              {genreLabel && (
-                <span class="book-card__chip book-card__chip--genre">
-                  {genreLabel}
-                </span>
-              )}
               {formatLabel && (
                 <span class="book-card__chip book-card__chip--format">
                   {formatLabel}
@@ -285,6 +280,11 @@ const timelineLabel = (() => {
                       ))}
                     </span>
                   )}
+                </span>
+              )}
+              {genreLabel && (
+                <span class="book-card__chip book-card__chip--genre">
+                  {genreLabel}
                 </span>
               )}
             </div>
