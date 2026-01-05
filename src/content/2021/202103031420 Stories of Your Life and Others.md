@@ -17,5 +17,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115842822272411645'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbolkmqaw52r'
   - 'https://www.threads.com/@sajal24x7/post/DTIaGdpEYaL'
+bookCover: stories-of-your-life-and-others.jpg
 ---
 I was inspired to pick this up after watching Arrival.
