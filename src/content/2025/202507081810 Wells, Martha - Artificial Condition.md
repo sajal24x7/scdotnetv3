@@ -15,6 +15,7 @@ finishedReading: 2025-07-11T18:26:14+03:00
 bookStatus: "read"
 bookRating: like
 format: audio
+genre: sci-fi
 bookCover: 'artificial-condition.jpg'
 ---
 

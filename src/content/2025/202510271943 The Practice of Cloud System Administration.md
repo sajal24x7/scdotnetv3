@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - technical
 format: ebook
+genre: technical
 author: Thomas A. Limoncelli
 bookStatus: on-hold
 startedReading: 2025-10-27T09:29:23.000Z

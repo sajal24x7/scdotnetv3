@@ -9,6 +9,7 @@ tags:
   - book-reviews
   - three-body-problem
   - cixin-liu
+genre: book-reviews
 bookCover: 'the-dark-forest.jpg'
 author: "Cixin Liu"
 series: "Remembrance of Earth's Past"

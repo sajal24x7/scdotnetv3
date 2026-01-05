@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - technical
 format: audio
+genre: technical
 author: 'Thomas A. Limoncelli'
 bookStatus: "read"
 bookRating: like

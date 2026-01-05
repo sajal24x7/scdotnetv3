@@ -8,6 +8,7 @@ tags:
   - non-fiction
   - writing
 format: audio
+genre: non-fiction
 author: Ernest Hemingway
 bookStatus: read
 startedReading: 2025-12-26T17:32:36.000Z

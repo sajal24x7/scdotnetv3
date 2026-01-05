@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - technical
 format: ebook
+genre: technical
 author: Brent Laster
 bookStatus: reading
 startedReading: 2025-12-29T11:18:12.000Z

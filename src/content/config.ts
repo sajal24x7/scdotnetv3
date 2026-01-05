@@ -22,6 +22,7 @@ const postsCollection = defineCollection({
     image: z.string().optional(),
     edition: z.number().optional(),
     format: z.string().optional(),
+    genre: z.string().optional(),
     layout: z.object({
       span: z.union([
         z.literal(3),

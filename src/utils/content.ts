@@ -16,6 +16,7 @@ export interface Post {
     edition?: number | string;
     editionDisplay?: string;
     format?: string;
+    genre?: string;
     syndicationUrls?: string[];
     layout?: {
       span?: 3 | 6 | 12;
@@ -97,6 +98,7 @@ export function transformPost(post: Post) {
             finishedReading: post.data.finishedReading,
             bookRating: post.data.bookRating,
             format: post.data.format,
+            genre: post.data.genre,
             link: `/${post.data.category}/${post.slug}/`
         },
         slug: post.slug,

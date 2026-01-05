@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - technical
 format: ebook
+genre: technical
 author: "Jonathan Rioux"
 bookStatus: "on-hold"
 startedReading: 2025-09-23T11:25:22+03:00

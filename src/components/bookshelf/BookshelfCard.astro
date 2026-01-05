@@ -17,6 +17,7 @@ interface BookshelfCardProps {
     author?: string | string[];
     series?: string;
     format?: string;
+    genre?: string;
     bookStatus?: BookStatus;
     readingProgress?: number;
     startedReading?: Date | string;
@@ -81,6 +82,7 @@ const {
     author,
     series,
     format,
+    genre,
     bookStatus,
     readingProgress,
     startedReading,
@@ -128,6 +130,8 @@ const formatLabelMap: Record<string, string> = {
 };
 
 const formatLabel = normalizedFormat ? (formatLabelMap[normalizedFormat] ?? normalizedFormat.toUpperCase()) : null;
+
+const genreLabel = genre ? genre.toUpperCase() : null;
 
 const finishedDate = formatYMD(finishedReading);
 const startedDate = formatYMD(startedReading);
@@ -223,71 +227,71 @@ const timelineLabel = (() => {
         )}
       </header>
 
-      {(statusLabel || formatLabel || ratingChipLabel || timelineLabel) && (
+      {(statusLabel || genreLabel || formatLabel || ratingChipLabel || timelineLabel) && (
         <div class="book-card__meta" data-meta>
-          {(statusLabel || formatLabel || ratingChipLabel) && (
-            <div class="book-card__meta-row book-card__meta-row--chips">
-              {statusLabel && (
-                <span class={`book-card__chip book-card__chip--status ${statusChipClass}`}>
-                  {statusLabel}
-                </span>
-              )}
-              {formatLabel && (
-                <span class="book-card__chip book-card__chip--format">
-                  {formatLabel}
-                </span>
-              )}
-              {ratingChipLabel && (
-                <span
-                  class={`book-card__chip book-card__chip--rating ${
-                    bookRating ? `book-card__chip--rating-${bookRating}` : 'book-card__chip--rating-none'
-                  }`}
-                  aria-label={ratingAriaLabel}
-                >
-                  <span class="book-card__chip-label">{ratingChipLabel}</span>
-                  {ratingIconSpecs.length > 0 && (
-                    <span
-                      class={`book-card__rating-icons ${
-                        bookRating ? `book-card__rating-icons--${bookRating}` : ''
-                      }`}
-                      aria-hidden="true"
-                    >
-                      {ratingIconSpecs.map((iconSpec) => (
-                        <span class="book-card__rating-icon">
-                          <svg
-                            width={iconSpec.size}
-                            height={iconSpec.size}
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            {(
-                              iconSpec.type === 'heart'
-                                  ? heartIconPaths
-                                  : thumbIconPaths[iconSpec.direction]
-                            ).map((d) => (
-                              <path d={d}></path>
-                            ))}
-                          </svg>
-                        </span>
-                      ))}
-                    </span>
-                  )}
-                </span>
-              )}
-            </div>
-          )}
-
-          {timelineLabel && (
-            <div class="book-card__meta-row book-card__meta-row--details">
+          <div class="book-card__meta-row book-card__meta-row--chips">
+            {statusLabel && (
+              <span class={`book-card__chip book-card__chip--status ${statusChipClass}`}>
+                {statusLabel}
+              </span>
+            )}
+            {genreLabel && (
+              <span class="book-card__chip book-card__chip--genre">
+                {genreLabel}
+              </span>
+            )}
+            {formatLabel && (
+              <span class="book-card__chip book-card__chip--format">
+                {formatLabel}
+              </span>
+            )}
+            {ratingChipLabel && (
+              <span
+                class={`book-card__chip book-card__chip--rating ${
+                  bookRating ? `book-card__chip--rating-${bookRating}` : 'book-card__chip--rating-none'
+                }`}
+                aria-label={ratingAriaLabel}
+              >
+                <span class="book-card__chip-label">{ratingChipLabel}</span>
+                {ratingIconSpecs.length > 0 && (
+                  <span
+                    class={`book-card__rating-icons ${
+                      bookRating ? `book-card__rating-icons--${bookRating}` : ''
+                    }`}
+                    aria-hidden="true"
+                  >
+                    {ratingIconSpecs.map((iconSpec) => (
+                      <span class="book-card__rating-icon">
+                        <svg
+                          width={iconSpec.size}
+                          height={iconSpec.size}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          {(
+                            iconSpec.type === 'heart'
+                                ? heartIconPaths
+                                : thumbIconPaths[iconSpec.direction]
+                          ).map((d) => (
+                            <path d={d}></path>
+                          ))}
+                        </svg>
+                      </span>
+                    ))}
+                  </span>
+                )}
+              </span>
+            )}
+            {timelineLabel && (
               <span class="book-card__chip book-card__chip--timeline">
                 <span class="book-card__chip-label">{timelineLabel}</span>
               </span>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       )}
 
@@ -544,6 +548,16 @@ const timelineLabel = (() => {
 
   :global(.dark) .book-card__chip--status-to-read {
     background: rgba(29, 78, 216, 0.3);
+    color: #bfdbfe;
+  }
+
+  .book-card__chip--genre {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  :global(.dark) .book-card__chip--genre {
+    background: rgba(30, 64, 175, 0.3);
     color: #bfdbfe;
   }
 

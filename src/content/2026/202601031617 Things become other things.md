@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - non-fiction
 format: hardcover
+genre: non-fiction
 author: Craig Mod
 bookStatus: reading
 startedReading: 2026-01-03T14:29:57.000Z

@@ -7,6 +7,7 @@ category: bookshelf
 tags:
   - python
 format: ebook
+genre: python
 author: "Naomi Ceder"
 bookStatus: "on-hold"
 bookRating: like

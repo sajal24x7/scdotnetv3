@@ -6,6 +6,7 @@ updatedDate: 2025-11-02T20:59:34.000Z
 category: bookshelf
 tags:
   - poetry
+genre: poetry
 author: Pablo Neruda
 bookStatus: read
 bookRating: like

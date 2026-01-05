@@ -9,6 +9,7 @@ tags:
   - sci-fi
   - martha-wells
 format: audio
+genre: murderbot
 bookCover: 'rogue-protocol.jpg'
 author: "Martha Wells"
 series: "The Murderbot Diaries"

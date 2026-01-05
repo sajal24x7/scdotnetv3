@@ -8,6 +8,7 @@ tags:
   - nonfiction
   - productivity
 format: audio
+genre: nonfiction
 author: Cal Newport
 bookStatus: read
 startedReading: 2025-10-17T12:28:56.000Z

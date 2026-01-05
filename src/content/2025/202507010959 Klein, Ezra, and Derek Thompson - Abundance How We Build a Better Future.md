@@ -9,6 +9,7 @@ tags:
 startDate: 2025-07-01T09:59:00+03:00
 endDate: 2025-07-06T18:00:00+03:00
 format: audio
+genre: future
 bookCover: 'abundance.jpg'
 author: 
   - "Ezra Klein" 

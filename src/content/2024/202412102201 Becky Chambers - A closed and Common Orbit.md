@@ -6,6 +6,7 @@ updatedDate: 2024-12-10T22:07:51
 category: bookshelf
 tags:
   - book-reviews
+genre: book-reviews
 author: Becky Chambers
 series: "Wayfarers #2"
 startedReading: 2024-12-08T00:00:00

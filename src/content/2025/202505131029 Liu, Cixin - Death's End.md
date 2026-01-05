@@ -6,6 +6,7 @@ updatedDate: 2025-12-31T19:51:06.000Z
 category: bookshelf
 tags:
   - sci-fi
+genre: sci-fi
 author: Cixin Liu
 series: Remembrance of Earth's Past
 bookStatus: read
