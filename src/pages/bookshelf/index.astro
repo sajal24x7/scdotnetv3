@@ -116,6 +116,27 @@ const transformBook = (book: typeof bookshelfPosts[number]) => ({
     link: book.slug ? `/bookshelf/${book.slug}/` : undefined
 });
 
+// Extract unique authors and genres for filters
+const extractAuthors = (author?: string | string[] | null) => {
+    if (!author) return [];
+    return Array.isArray(author) ? author : [author];
+};
+
+const allAuthors = new Set<string>();
+const allGenres = new Set<string>();
+
+bookshelfPosts.forEach((book) => {
+    const authors = extractAuthors(book.data.author);
+    authors.forEach((author) => allAuthors.add(author));
+
+    if (book.data.genre) {
+        allGenres.add(book.data.genre);
+    }
+});
+
+const sortedAuthors = Array.from(allAuthors).sort((a, b) => a.localeCompare(b));
+const sortedGenres = Array.from(allGenres).sort((a, b) => a.localeCompare(b));
+
 // Calculate total books count
 const totalBooks = bookshelfPosts.length;
 const countText = `${totalBooks} ${totalBooks === 1 ? 'book' : 'books'}`;
@@ -150,6 +171,43 @@ const sectionLandingProps = createSectionLandingProps({
   enableLinkHoverEffect
 >
   <SectionLanding {...sectionLandingProps}>
+    {(sortedAuthors.length > 0 || sortedGenres.length > 0) && (
+      <div class="bookshelf-filters">
+        <div class="bookshelf-filters__header">
+          <h3 class="bookshelf-filters__title">Filter Books</h3>
+          <button class="bookshelf-filters__reset" id="reset-filters" aria-label="Reset all filters">
+            Reset
+          </button>
+        </div>
+        <div class="bookshelf-filters__controls">
+          {sortedAuthors.length > 0 && (
+            <div class="bookshelf-filter">
+              <label for="author-filter" class="bookshelf-filter__label">Author</label>
+              <select id="author-filter" class="bookshelf-filter__select" data-filter="author">
+                <option value="">All Authors</option>
+                {sortedAuthors.map((author) => (
+                  <option value={author}>{author}</option>
+                ))}
+              </select>
+            </div>
+          )}
+          {sortedGenres.length > 0 && (
+            <div class="bookshelf-filter">
+              <label for="genre-filter" class="bookshelf-filter__label">Genre</label>
+              <select id="genre-filter" class="bookshelf-filter__select" data-filter="genre">
+                <option value="">All Genres</option>
+                {sortedGenres.map((genre) => (
+                  <option value={genre}>{genre}</option>
+                ))}
+              </select>
+            </div>
+          )}
+        </div>
+        <div class="bookshelf-filters__results" id="filter-results" aria-live="polite" aria-atomic="true">
+          Showing {totalBooks} {totalBooks === 1 ? 'book' : 'books'}
+        </div>
+      </div>
+    )}
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearBooks = booksByYear[year] ?? [];
@@ -157,20 +215,28 @@ const sectionLandingProps = createSectionLandingProps({
         const bookLabel = bookCount === 1 ? 'book' : 'books';
 
         return (
-          <section class="bookshelf-year" id={`bookshelf-${year}`}>
+          <section class="bookshelf-year" id={`bookshelf-${year}`} data-year={year}>
             <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
               <div class="bookshelf-year__sidebar grid-span-2">
                 <div class="bookshelf-year__sticky">
                   <span class="bookshelf-year__year">{year}</span>
-                  <span class="bookshelf-year__count">{bookCount} {bookLabel}</span>
+                  <span class="bookshelf-year__count" data-year-count={year}>{bookCount} {bookLabel}</span>
                 </div>
               </div>
               {yearBooks.map((book, index) => {
                 const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
                 const bookSlug = book.slug ?? `${year}-${index}`;
+                const bookAuthors = extractAuthors(book.data.author).join(',');
+                const bookGenre = book.data.genre ?? '';
 
                 return (
-                  <div key={bookSlug} class={`bookshelf-year__book ${gridClasses}`}>
+                  <div
+                    key={bookSlug}
+                    class={`bookshelf-year__book ${gridClasses}`}
+                    data-book-item
+                    data-author={bookAuthors}
+                    data-genre={bookGenre}
+                  >
                     <BookshelfCard {...transformBook(book)} />
                   </div>
                 );
@@ -201,6 +267,151 @@ const sectionLandingProps = createSectionLandingProps({
     flex-direction: column;
     gap: clamp(2rem, 5vw, 3rem);
     padding-bottom: 2rem;
+  }
+
+  .bookshelf-filters {
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  :global(.dark) .bookshelf-filters {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .bookshelf-filters__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .bookshelf-filters__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+  }
+
+  :global(.dark) .bookshelf-filters__title {
+    color: #f9fafb;
+  }
+
+  .bookshelf-filters__reset {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 180ms ease;
+  }
+
+  .bookshelf-filters__reset:hover {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  :global(.dark) .bookshelf-filters__reset {
+    color: #a5b4fc;
+    background: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  :global(.dark) .bookshelf-filters__reset:hover {
+    background: rgba(99, 102, 241, 0.25);
+    border-color: rgba(99, 102, 241, 0.4);
+  }
+
+  .bookshelf-filters__controls {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 48rem) {
+    .bookshelf-filters__controls {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .bookshelf-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bookshelf-filter__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  :global(.dark) .bookshelf-filter__label {
+    color: #d1d5db;
+  }
+
+  .bookshelf-filter__select {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.9375rem;
+    color: #111827;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 180ms ease;
+  }
+
+  .bookshelf-filter__select:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  .bookshelf-filter__select:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+
+  :global(.dark) .bookshelf-filter__select {
+    color: #f9fafb;
+    background: #1f2937;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  :global(.dark) .bookshelf-filter__select:hover {
+    border-color: rgba(99, 102, 241, 0.5);
+  }
+
+  :global(.dark) .bookshelf-filter__select:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  }
+
+  .bookshelf-filters__results {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  :global(.dark) .bookshelf-filters__results {
+    color: #9ca3af;
+    border-top-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .bookshelf-year[data-filtered="hidden"] {
+    display: none;
+  }
+
+  .bookshelf-year__book[data-filtered="hidden"] {
+    display: none;
   }
 
   .bookshelf-years {
@@ -271,3 +482,99 @@ const sectionLandingProps = createSectionLandingProps({
     }
   }
 </style>
+
+<script>
+  function initBookshelfFilters() {
+    const authorFilter = document.getElementById('author-filter') as HTMLSelectElement | null;
+    const genreFilter = document.getElementById('genre-filter') as HTMLSelectElement | null;
+    const resetButton = document.getElementById('reset-filters') as HTMLButtonElement | null;
+    const resultsDisplay = document.getElementById('filter-results');
+
+    if (!authorFilter && !genreFilter) {
+      return;
+    }
+
+    function applyFilters() {
+      const selectedAuthor = authorFilter?.value || '';
+      const selectedGenre = genreFilter?.value || '';
+
+      const allBookItems = document.querySelectorAll('[data-book-item]');
+      let visibleCount = 0;
+
+      // Track visible books per year
+      const yearCounts: Record<string, number> = {};
+
+      allBookItems.forEach((bookItem) => {
+        const bookAuthors = bookItem.getAttribute('data-author') || '';
+        const bookGenre = bookItem.getAttribute('data-genre') || '';
+
+        const authorMatch = !selectedAuthor || bookAuthors.split(',').includes(selectedAuthor);
+        const genreMatch = !selectedGenre || bookGenre === selectedGenre;
+
+        const isVisible = authorMatch && genreMatch;
+
+        if (isVisible) {
+          bookItem.removeAttribute('data-filtered');
+          visibleCount++;
+
+          // Get the year from the parent section
+          const yearSection = bookItem.closest('[data-year]');
+          if (yearSection) {
+            const year = yearSection.getAttribute('data-year') || '';
+            yearCounts[year] = (yearCounts[year] || 0) + 1;
+          }
+        } else {
+          bookItem.setAttribute('data-filtered', 'hidden');
+        }
+      });
+
+      // Update year counts and hide empty year sections
+      const yearSections = document.querySelectorAll('[data-year]');
+      yearSections.forEach((section) => {
+        const year = section.getAttribute('data-year') || '';
+        const count = yearCounts[year] || 0;
+
+        if (count === 0) {
+          section.setAttribute('data-filtered', 'hidden');
+        } else {
+          section.removeAttribute('data-filtered');
+
+          // Update the year count display
+          const countElement = section.querySelector(`[data-year-count="${year}"]`);
+          if (countElement) {
+            const bookLabel = count === 1 ? 'book' : 'books';
+            countElement.textContent = `${count} ${bookLabel}`;
+          }
+        }
+      });
+
+      // Update results display
+      if (resultsDisplay) {
+        const bookLabel = visibleCount === 1 ? 'book' : 'books';
+        resultsDisplay.textContent = `Showing ${visibleCount} ${bookLabel}`;
+      }
+    }
+
+    function resetFilters() {
+      if (authorFilter) {
+        authorFilter.value = '';
+      }
+      if (genreFilter) {
+        genreFilter.value = '';
+      }
+      applyFilters();
+    }
+
+    // Add event listeners
+    authorFilter?.addEventListener('change', applyFilters);
+    genreFilter?.addEventListener('change', applyFilters);
+    resetButton?.addEventListener('click', resetFilters);
+  }
+
+  // Initialize on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBookshelfFilters);
+  } else {
+    initBookshelfFilters();
+  }
+</script>
