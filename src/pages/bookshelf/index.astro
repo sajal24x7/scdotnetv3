@@ -173,36 +173,58 @@ const sectionLandingProps = createSectionLandingProps({
   <SectionLanding {...sectionLandingProps}>
     {(sortedAuthors.length > 0 || sortedGenres.length > 0) && (
       <div class="bookshelf-filters">
-        <div class="bookshelf-filters__header">
-          <h3 class="bookshelf-filters__title">Filter Books</h3>
-          <button class="bookshelf-filters__reset" id="reset-filters" aria-label="Reset all filters">
-            Reset
-          </button>
-        </div>
-        <div class="bookshelf-filters__controls">
-          {sortedAuthors.length > 0 && (
-            <div class="bookshelf-filter">
-              <label for="author-filter" class="bookshelf-filter__label">Author</label>
-              <select id="author-filter" class="bookshelf-filter__select" data-filter="author">
-                <option value="">All Authors</option>
-                {sortedAuthors.map((author) => (
-                  <option value={author}>{author}</option>
-                ))}
-              </select>
+        {sortedAuthors.length > 0 && (
+          <div class="bookshelf-filter-group">
+            <h3 class="bookshelf-filter-group__title">Filter by Author:</h3>
+            <div class="bookshelf-filter-group__items">
+              <button
+                type="button"
+                class="tag-chip"
+                data-filter-type="author"
+                data-filter-value=""
+                data-filter-active="true"
+              >
+                All Authors
+              </button>
+              {sortedAuthors.map((author) => (
+                <button
+                  type="button"
+                  class="tag-chip"
+                  data-filter-type="author"
+                  data-filter-value={author}
+                >
+                  {author}
+                </button>
+              ))}
             </div>
-          )}
-          {sortedGenres.length > 0 && (
-            <div class="bookshelf-filter">
-              <label for="genre-filter" class="bookshelf-filter__label">Genre</label>
-              <select id="genre-filter" class="bookshelf-filter__select" data-filter="genre">
-                <option value="">All Genres</option>
-                {sortedGenres.map((genre) => (
-                  <option value={genre}>{genre}</option>
-                ))}
-              </select>
+          </div>
+        )}
+        {sortedGenres.length > 0 && (
+          <div class="bookshelf-filter-group">
+            <h3 class="bookshelf-filter-group__title">Filter by Genre:</h3>
+            <div class="bookshelf-filter-group__items">
+              <button
+                type="button"
+                class="tag-chip"
+                data-filter-type="genre"
+                data-filter-value=""
+                data-filter-active="true"
+              >
+                All Genres
+              </button>
+              {sortedGenres.map((genre) => (
+                <button
+                  type="button"
+                  class="tag-chip"
+                  data-filter-type="genre"
+                  data-filter-value={genre}
+                >
+                  {genre}
+                </button>
+              ))}
             </div>
-          )}
-        </div>
+          </div>
+        )}
         <div class="bookshelf-filters__results" id="filter-results" aria-live="polite" aria-atomic="true">
           Showing {totalBooks} {totalBooks === 1 ? 'book' : 'books'}
         </div>
@@ -270,134 +292,52 @@ const sectionLandingProps = createSectionLandingProps({
   }
 
   .bookshelf-filters {
-    background: rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 0.75rem;
-    padding: 1.5rem;
+    display: block;
     margin-bottom: 2rem;
   }
 
-  :global(.dark) .bookshelf-filters {
-    background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.08);
+  .bookshelf-filter-group {
+    display: block;
+    margin-bottom: 1.5rem;
   }
 
-  .bookshelf-filters__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.25rem;
-  }
-
-  .bookshelf-filters__title {
-    font-size: 1.125rem;
+  .bookshelf-filter-group__title {
+    font-size: 1rem;
     font-weight: 600;
+    margin-bottom: 0.75rem;
     color: #111827;
-    margin: 0;
   }
 
-  :global(.dark) .bookshelf-filters__title {
+  :global(.dark) .bookshelf-filter-group__title {
     color: #f9fafb;
   }
 
-  .bookshelf-filters__reset {
-    padding: 0.4rem 0.9rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #6366f1;
-    background: rgba(99, 102, 241, 0.1);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 180ms ease;
-  }
-
-  .bookshelf-filters__reset:hover {
-    background: rgba(99, 102, 241, 0.15);
-    border-color: rgba(99, 102, 241, 0.3);
-  }
-
-  :global(.dark) .bookshelf-filters__reset {
-    color: #a5b4fc;
-    background: rgba(99, 102, 241, 0.15);
-    border-color: rgba(99, 102, 241, 0.3);
-  }
-
-  :global(.dark) .bookshelf-filters__reset:hover {
-    background: rgba(99, 102, 241, 0.25);
-    border-color: rgba(99, 102, 241, 0.4);
-  }
-
-  .bookshelf-filters__controls {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  @media (min-width: 48rem) {
-    .bookshelf-filters__controls {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .bookshelf-filter {
+  .bookshelf-filter-group__items {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 0.5rem;
+    align-items: center;
   }
 
-  .bookshelf-filter__label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #374151;
+  .bookshelf-filter-group__items .tag-chip[data-filter-active="true"] {
+    color: rgb(var(--tag-hover-rgb));
+    border-color: rgba(var(--tag-hover-rgb), 0.95);
+    background-color: rgba(var(--tag-color-rgb), 0.24);
+    box-shadow: 0 0 0 1px rgba(var(--tag-hover-rgb), 0.22);
   }
 
-  :global(.dark) .bookshelf-filter__label {
-    color: #d1d5db;
-  }
-
-  .bookshelf-filter__select {
-    padding: 0.625rem 0.875rem;
-    font-size: 0.9375rem;
-    color: #111827;
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 180ms ease;
-  }
-
-  .bookshelf-filter__select:hover {
-    border-color: rgba(99, 102, 241, 0.3);
-  }
-
-  .bookshelf-filter__select:focus {
-    outline: none;
-    border-color: #6366f1;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-  }
-
-  :global(.dark) .bookshelf-filter__select {
-    color: #f9fafb;
-    background: #1f2937;
-    border-color: rgba(255, 255, 255, 0.15);
-  }
-
-  :global(.dark) .bookshelf-filter__select:hover {
-    border-color: rgba(99, 102, 241, 0.5);
-  }
-
-  :global(.dark) .bookshelf-filter__select:focus {
-    border-color: #818cf8;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  :global(.dark) .bookshelf-filter-group__items .tag-chip[data-filter-active="true"] {
+    color: rgb(var(--tag-dark-hover-rgb));
+    border-color: rgba(var(--tag-dark-hover-rgb), 0.92);
+    background-color: rgba(var(--tag-dark-color-rgb), 0.32);
+    box-shadow: 0 0 0 1px rgba(var(--tag-dark-hover-rgb), 0.24);
   }
 
   .bookshelf-filters__results {
     font-size: 0.875rem;
     font-weight: 500;
     color: #6b7280;
-    padding-top: 0.5rem;
+    padding-top: 0.75rem;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
 
@@ -485,19 +425,18 @@ const sectionLandingProps = createSectionLandingProps({
 
 <script>
   function initBookshelfFilters() {
-    const authorFilter = document.getElementById('author-filter') as HTMLSelectElement | null;
-    const genreFilter = document.getElementById('genre-filter') as HTMLSelectElement | null;
-    const resetButton = document.getElementById('reset-filters') as HTMLButtonElement | null;
+    const filterChips = document.querySelectorAll('[data-filter-type]') as NodeListOf<HTMLButtonElement>;
     const resultsDisplay = document.getElementById('filter-results');
 
-    if (!authorFilter && !genreFilter) {
+    if (filterChips.length === 0) {
       return;
     }
 
-    function applyFilters() {
-      const selectedAuthor = authorFilter?.value || '';
-      const selectedGenre = genreFilter?.value || '';
+    // Store current filter state
+    let selectedAuthor = '';
+    let selectedGenre = '';
 
+    function applyFilters() {
       const allBookItems = document.querySelectorAll('[data-book-item]');
       let visibleCount = 0;
 
@@ -555,20 +494,43 @@ const sectionLandingProps = createSectionLandingProps({
       }
     }
 
-    function resetFilters() {
-      if (authorFilter) {
-        authorFilter.value = '';
-      }
-      if (genreFilter) {
-        genreFilter.value = '';
-      }
-      applyFilters();
+    function updateChipActiveState() {
+      filterChips.forEach((chip) => {
+        const filterType = chip.getAttribute('data-filter-type');
+        const filterValue = chip.getAttribute('data-filter-value') || '';
+
+        if (filterType === 'author') {
+          if (filterValue === selectedAuthor) {
+            chip.setAttribute('data-filter-active', 'true');
+          } else {
+            chip.removeAttribute('data-filter-active');
+          }
+        } else if (filterType === 'genre') {
+          if (filterValue === selectedGenre) {
+            chip.setAttribute('data-filter-active', 'true');
+          } else {
+            chip.removeAttribute('data-filter-active');
+          }
+        }
+      });
     }
 
-    // Add event listeners
-    authorFilter?.addEventListener('change', applyFilters);
-    genreFilter?.addEventListener('change', applyFilters);
-    resetButton?.addEventListener('click', resetFilters);
+    // Handle filter chip clicks
+    filterChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const filterType = chip.getAttribute('data-filter-type');
+        const filterValue = chip.getAttribute('data-filter-value') || '';
+
+        if (filterType === 'author') {
+          selectedAuthor = filterValue;
+        } else if (filterType === 'genre') {
+          selectedGenre = filterValue;
+        }
+
+        updateChipActiveState();
+        applyFilters();
+      });
+    });
   }
 
   // Initialize on page load
