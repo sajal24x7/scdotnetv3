@@ -1,13 +1,15 @@
 ---
-title: "Ruben Amorim sacked by Man United"
-slug: "ruben-amorim-sacked-by-man-united"
-pubDate: 2026-01-05T12:36:32+02:00
-updatedDate: 2026-01-05T12:36:32+02:00
+title: Ruben Amorim sacked by Man United
+slug: ruben-amorim-sacked-by-man-united
+pubDate: 2026-01-05T10:36:32.000Z
+updatedDate: 2026-01-05T10:36:32.000Z
 category: micro
 tags:
   - man-united
   - football
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115842052320313238'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mboami4vl72t'
 ---
 [Ruben Amorim sacked by Manchester United after losing power struggle over transfers by Jamie Jackson](https://www.theguardian.com/football/2026/jan/05/ruben-amorim-sacked-by-manchester-united-transfers-power-struggle)
 
