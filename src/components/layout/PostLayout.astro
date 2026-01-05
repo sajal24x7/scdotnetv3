@@ -58,6 +58,7 @@ const isBookshelf = category === 'bookshelf';
 const bookCover = isBookshelf && 'bookCover' in entryData ? entryData.bookCover : undefined;
 const author = isBookshelf && 'author' in entryData ? entryData.author : undefined;
 const format = isBookshelf && 'format' in entryData ? entryData.format : undefined;
+const genre = isBookshelf && 'genre' in entryData ? entryData.genre : undefined;
 const bookStatus = isBookshelf && 'bookStatus' in entryData ? entryData.bookStatus : undefined;
 const bookRating = isBookshelf && 'bookRating' in entryData ? entryData.bookRating : undefined;
 const series = isBookshelf && 'series' in entryData ? entryData.series : undefined;
@@ -100,6 +101,8 @@ const formatLabelMap: Record<string, string> = {
 };
 
 const formatLabel = normalizedFormat ? (formatLabelMap[normalizedFormat] ?? normalizedFormat.toUpperCase()) : null;
+
+const genreLabel = genre ? genre.toUpperCase() : null;
 
 const finishedDate = formatYMD(finishedReading);
 const startedDate = formatYMD(startedReading);
@@ -200,9 +203,15 @@ const formattedAuthor = formatAuthors(author);
             </div>
         </div>
 
-        {isBookshelf && (formatLabel || bookRating || timelineLabel) && (
+        {isBookshelf && (genreLabel || formatLabel || bookRating || timelineLabel) && (
             <div class="book-meta-section">
                 <div class="book-meta-pills">
+                    {genreLabel && (
+                            <span class="book-meta__chip book-meta__chip--genre">
+                                {genreLabel}
+                            </span>
+                        )}
+
                     {formatLabel && (
                             <span class="book-meta__chip book-meta__chip--format">
                                 {formatLabel}
@@ -489,6 +498,16 @@ const formattedAuthor = formatAuthors(author);
         letter-spacing: 0.08em;
         text-transform: uppercase;
         white-space: nowrap;
+    }
+
+    .book-meta__chip--genre {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    :global(.dark) .book-meta__chip--genre {
+        background: rgba(30, 64, 175, 0.3);
+        color: #bfdbfe;
     }
 
     .book-meta__chip--format {
