@@ -17,5 +17,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115843933197946613'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbp3dsm7qg2t'
   - 'https://www.threads.com/@sajal24x7/post/DTI6buaDzgn'
+bookCover: eyes-of-the-void.jpg
 ---
 The second book in the final architecture series. 
