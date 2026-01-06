@@ -1,5 +1,5 @@
 ---
-title: To Kill a Mockingbird
+title: "To Kill a Mockingbird"
 slug: to-kill-a-mockingbird
 pubDate: 2016-09-13T15:56:11Z
 updatedDate: 2016-09-13T15:56:11Z

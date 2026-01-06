@@ -9,7 +9,7 @@ tags:
 format: audio
 genre: sci-fi
 uthor: Martha Wells
-series: 'The Murderbot Diaries #5'
+series: "The Murderbot Diaries #5"
 bookStatus: read
 bookRating: like
 startedReading: 2025-07-18T19:56:47.000Z

@@ -1,5 +1,5 @@
 ---
-title: The Chancellor Manuscript
+title: "The Chancellor Manuscript"
 slug: the-chancellor-manuscript
 pubDate: 2013-01-08T15:16:56Z
 updatedDate: 2013-01-08T15:16:56Z

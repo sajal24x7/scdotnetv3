@@ -1,5 +1,5 @@
 ---
-title: Deception Point
+title: "Deception Point"
 slug: deception-point
 pubDate: 2013-01-08T15:15:09Z
 updatedDate: 2013-01-08T15:15:09Z

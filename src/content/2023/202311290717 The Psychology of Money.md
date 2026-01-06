@@ -1,5 +1,5 @@
 ---
-title: The Psychology of Money
+title: "The Psychology of Money"
 slug: the-psychology-of-money
 pubDate: 2023-11-29T07:17:18Z
 updatedDate: 2023-11-29T07:17:18Z

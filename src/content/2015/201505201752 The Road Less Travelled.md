@@ -1,5 +1,5 @@
 ---
-title: The Road Less Travelled
+title: "The Road Less Travelled"
 slug: the-road-less-travelled
 pubDate: 2015-05-20T17:52:27Z
 updatedDate: 2015-05-20T17:52:27Z
