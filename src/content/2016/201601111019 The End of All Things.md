@@ -1,19 +1,20 @@
 ---
-title: "The End of All Things"
+title: The End of All Things
 slug: the-end-of-all-things
-pubDate: 2016-01-11T10:19:51Z
-updatedDate: 2016-01-11T10:19:51Z
+pubDate: 2016-01-11T10:19:51.000Z
+updatedDate: 2016-01-11T10:19:51.000Z
 category: bookshelf
 tags:
   - book-reviews
 author:
   - John Scalzi
-series: "Old Man's War"
+series: Old Man's War
 genre: fiction
 format: paperback
 bookStatus: read
-startedReading: 2016-01-11T10:19:51Z
-finishedReading: 2016-01-11T10:19:51Z
+startedReading: 2016-01-11T10:19:51.000Z
+finishedReading: 2016-01-11T10:19:51.000Z
 bookRating: like
+bookCover: the-end-of-all-things.jpg
 ---
 Finished Reading

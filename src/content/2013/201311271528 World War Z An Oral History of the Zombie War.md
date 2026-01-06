@@ -1,8 +1,8 @@
 ---
-title: "World War Z: An Oral History of the Zombie War"
+title: 'World War Z: An Oral History of the Zombie War'
 slug: world-war-z-an-oral-history-of-the-zombie-war
-pubDate: 2013-11-27T15:28:54Z
-updatedDate: 2013-11-27T15:28:54Z
+pubDate: 2013-11-27T15:28:54.000Z
+updatedDate: 2013-11-27T15:28:54.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -11,8 +11,9 @@ author:
 genre: non-fiction
 format: paperback
 bookStatus: read
-startedReading: 2013-11-27T15:28:54Z
-finishedReading: 2013-11-27T15:28:54Z
+startedReading: 2013-11-27T15:28:54.000Z
+finishedReading: 2013-11-27T15:28:54.000Z
 bookRating: like
+bookCover: world-war-z-an-oral-history-of-the-zombie-war.jpg
 ---
 Finished Reading
