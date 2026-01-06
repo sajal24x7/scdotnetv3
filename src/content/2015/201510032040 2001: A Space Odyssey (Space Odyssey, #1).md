@@ -1,0 +1,19 @@
+---
+title: 2001: A Space Odyssey
+slug: 2001-a-space-odyssey
+pubDate: 2015-10-03T20:40:48Z
+updatedDate: 2015-10-03T20:40:48Z
+category: bookshelf
+tags:
+  - book-reviews
+author:
+  - Arthur C. Clarke
+series: 'Space Odyssey'
+genre: sci-fi
+format: paperback
+bookStatus: read
+startedReading: 2013-01-08T15:28:01Z
+finishedReading: 2015-10-03T20:40:48Z
+bookRating: like
+---
+Finished Reading

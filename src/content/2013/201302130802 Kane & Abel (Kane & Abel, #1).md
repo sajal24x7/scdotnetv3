@@ -1,0 +1,19 @@
+---
+title: Kane & Abel
+slug: kane-abel
+pubDate: 2013-02-13T08:02:19Z
+updatedDate: 2013-02-13T08:02:19Z
+category: bookshelf
+tags:
+  - book-reviews
+author:
+  - Jeffrey Archer
+series: 'Kane & Abel'
+genre: fiction
+format: paperback
+bookStatus: read
+startedReading: 2013-02-06T18:00:52Z
+finishedReading: 2013-02-13T08:02:19Z
+bookRating: love
+---
+Finished Reading
