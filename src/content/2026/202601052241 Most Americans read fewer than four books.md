@@ -1,12 +1,14 @@
 ---
-title: "Most Americans read fewer than four books"
-slug: "most-americans-read-fewer-than-four-books"
-pubDate: 2026-01-05T22:52:36+02:00
-updatedDate: 2026-01-05T22:52:36+02:00
+title: Most Americans read fewer than four books
+slug: most-americans-read-fewer-than-four-books
+pubDate: 2026-01-05T20:52:36.000Z
+updatedDate: 2026-01-05T20:52:36.000Z
 category: micro
 tags:
   - reading
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115848710630426227'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbr7adzboz2b'
 ---
 [In 2025, most Americans read fewer than four books.](https://lithub.com/in-2025-most-americans-read-fewer-than-four-books/)
 
