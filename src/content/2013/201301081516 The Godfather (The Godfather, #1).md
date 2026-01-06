@@ -1,19 +1,20 @@
 ---
 title: The Godfather
 slug: the-godfather
-pubDate: 2013-01-08T15:16:21Z
-updatedDate: 2013-01-08T15:16:21Z
+pubDate: 2013-01-08T15:16:21.000Z
+updatedDate: 2013-01-08T15:16:21.000Z
 category: bookshelf
 tags:
   - book-reviews
 author:
   - Mario Puzo
-series: 'The Godfather'
+series: The Godfather
 genre: fiction
 format: paperback
 bookStatus: read
-startedReading: 2013-01-08T15:16:04Z
-finishedReading: 2013-01-08T15:16:21Z
+startedReading: 2013-01-08T15:16:04.000Z
+finishedReading: 2013-01-08T15:16:21.000Z
 bookRating: love
+bookCover: the-godfather.jpg
 ---
 One word: Awesome!

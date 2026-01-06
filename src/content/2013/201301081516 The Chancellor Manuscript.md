@@ -1,8 +1,8 @@
 ---
 title: The Chancellor Manuscript
 slug: the-chancellor-manuscript
-pubDate: 2013-01-08T15:16:56Z
-updatedDate: 2013-01-08T15:16:56Z
+pubDate: 2013-01-08T15:16:56.000Z
+updatedDate: 2013-01-08T15:16:56.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -11,8 +11,9 @@ author:
 genre: mystery
 format: paperback
 bookStatus: read
-startedReading: 2013-01-08T15:16:51Z
-finishedReading: 2013-01-08T15:16:56Z
+startedReading: 2013-01-08T15:16:51.000Z
+finishedReading: 2013-01-08T15:16:56.000Z
 bookRating: like
+bookCover: the-chancellor-manuscript.jpg
 ---
 Finished Reading
