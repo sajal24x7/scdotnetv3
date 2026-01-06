@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115848710630426227'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbr7adzboz2b'
+  - 'https://www.threads.com/@sajal24x7/post/DTLrCWfkr1p'
 ---
 [In 2025, most Americans read fewer than four books.](https://lithub.com/in-2025-most-americans-read-fewer-than-four-books/)
 

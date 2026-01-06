@@ -1,15 +1,18 @@
 ---
-title: "Importing Goodreads data to Astro"
-slug: "importing-goodreads-data-to-astro"
-pubDate: 2026-01-06T22:18:14+02:00
-updatedDate: 2026-01-06T22:18:14+02:00
+title: Importing Goodreads data to Astro
+slug: importing-goodreads-data-to-astro
+pubDate: 2026-01-06T20:18:14.000Z
+updatedDate: 2026-01-06T20:18:14.000Z
 category: blog
 tags:
   - reading
   - books
   - astro
   - goodreads
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115850001845438456'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbrrlipdnk2w'
+  - 'https://www.threads.com/@sajal24x7/post/DTLrDXlkmG3'
 ---
 I pulled my read list from Goodreads to my blog today. There are no notes or reviews for these books on Goodreads. 
 
