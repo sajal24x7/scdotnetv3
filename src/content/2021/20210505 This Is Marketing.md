@@ -19,5 +19,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115854216435634657'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbtni3mdmo2l'
   - 'https://www.threads.com/@sajal24x7/post/DTNnWPSEVlm'
+bookCover: this-is-marketing.jpg
 ---
 Finished reading.
