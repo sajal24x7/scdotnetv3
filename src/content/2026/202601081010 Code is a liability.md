@@ -1,12 +1,15 @@
 ---
-title: "Code is a liability"
-slug: "code-is-a-liability"
-pubDate: 2026-01-08T10:15:16+02:00
-updatedDate: 2026-01-08T10:15:16+02:00
+title: Code is a liability
+slug: code-is-a-liability
+pubDate: 2026-01-08T08:15:16.000Z
+updatedDate: 2026-01-08T08:15:16.000Z
 category: micro
 tags:
   - code
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115858484401967119'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbvk4wzrqs2l'
+  - 'https://www.threads.com/@sajal24x7/post/DTPh7dbjg0P'
 ---
 [Pluralistic: Code is a liability (not an asset) (06 Jan 2026) – Pluralistic: Daily links from Cory Doctorow](https://pluralistic.net/2026/01/06/1000x-liability/)
 
