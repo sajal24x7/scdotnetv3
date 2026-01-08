@@ -257,16 +257,24 @@ const timelineLabel = (() => {
                 {genreLabel}
               </button>
             )}
-            {formatLabel && (
-              <span class="book-card__chip book-card__chip--format">
+            {formatLabel && format && (
+              <button
+                type="button"
+                class="book-card__chip book-card__chip--format book-card__chip--clickable"
+                data-filter-type="format"
+                data-filter-value={format}
+              >
                 {formatLabel}
-              </span>
+              </button>
             )}
-            {ratingChipLabel && (
-              <span
-                class={`book-card__chip book-card__chip--rating ${
+            {ratingChipLabel && bookRating && (
+              <button
+                type="button"
+                class={`book-card__chip book-card__chip--rating book-card__chip--clickable ${
                   bookRating ? `book-card__chip--rating-${bookRating}` : 'book-card__chip--rating-none'
                 }`}
+                data-filter-type="rating"
+                data-filter-value={bookRating}
                 aria-label={ratingAriaLabel}
               >
                 <span class="book-card__chip-label">{ratingChipLabel}</span>
@@ -301,7 +309,7 @@ const timelineLabel = (() => {
                     ))}
                   </span>
                 )}
-              </span>
+              </button>
             )}
             {timelineLabel && (
               <span class="book-card__chip book-card__chip--timeline">
