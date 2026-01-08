@@ -576,6 +576,9 @@ const sectionLandingProps = createSectionLandingProps({
         if (resultsDisplay) {
           resultsDisplay.setAttribute('hidden', '');
         }
+        if (filterSummary) {
+          filterSummary.textContent = '';
+        }
         activeFiltersContainer.innerHTML = '';
         return;
       }
@@ -699,8 +702,9 @@ const sectionLandingProps = createSectionLandingProps({
         }
       });
 
-      // Update results count
-      if (filterSummary) {
+      // Update results count only if filters are active
+      const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating;
+      if (filterSummary && hasFilters) {
         const bookLabel = visibleCount === 1 ? 'book' : 'books';
         filterSummary.textContent = `Showing ${visibleCount} ${bookLabel}`;
       }
@@ -719,6 +723,11 @@ const sectionLandingProps = createSectionLandingProps({
       // Hide results display when no filters active
       if (resultsDisplay) {
         resultsDisplay.setAttribute('hidden', '');
+      }
+
+      // Clear filter summary
+      if (filterSummary) {
+        filterSummary.textContent = '';
       }
 
       // Reset all book items
