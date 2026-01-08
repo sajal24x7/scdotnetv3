@@ -190,135 +190,9 @@ const sectionLandingProps = createSectionLandingProps({
   enableLinkHoverEffect
 >
   <SectionLanding {...sectionLandingProps}>
-    {(sortedAuthors.length > 0 || sortedGenres.length > 0) && (
-      <div class="bookshelf-filters">
-        {sortedAuthors.length > 0 && (
-          <div class="bookshelf-filter-group" id="author-filter-group">
-            <h3 class="bookshelf-filter-group__title">Filter by Author:</h3>
-            <div class="bookshelf-filter-group__items">
-              <button
-                type="button"
-                class="tag-chip"
-                data-filter-type="author"
-                data-filter-value=""
-                data-filter-active="true"
-              >
-                All Authors
-              </button>
-              {topAuthors.map(([author, count]) => (
-                <button
-                  type="button"
-                  class="tag-chip"
-                  data-filter-type="author"
-                  data-filter-value={author}
-                >
-                  {author} ({count})
-                </button>
-              ))}
-              {hasMoreAuthors && (
-                <button
-                  type="button"
-                  class="tag-chip show-more-btn"
-                  data-action="show-more"
-                  data-target="author-hidden"
-                  aria-expanded="false"
-                  aria-controls="author-hidden"
-                >
-                  Show more →
-                </button>
-              )}
-            </div>
-            {hasMoreAuthors && (
-              <div class="bookshelf-filter-group__hidden" id="author-hidden" hidden>
-                {sortedAuthors.slice(initialAuthorCount).map(([author, count]) => (
-                  <button
-                    type="button"
-                    class="tag-chip"
-                    data-filter-type="author"
-                    data-filter-value={author}
-                  >
-                    {author} ({count})
-                  </button>
-                ))}
-                <button
-                  type="button"
-                  class="tag-chip show-less-btn"
-                  data-action="show-less"
-                  data-target="author-hidden"
-                  aria-controls="author-hidden"
-                >
-                  Show less ←
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-        {sortedGenres.length > 0 && (
-          <div class="bookshelf-filter-group" id="genre-filter-group">
-            <h3 class="bookshelf-filter-group__title">Filter by Genre:</h3>
-            <div class="bookshelf-filter-group__items">
-              <button
-                type="button"
-                class="tag-chip"
-                data-filter-type="genre"
-                data-filter-value=""
-                data-filter-active="true"
-              >
-                All Genres
-              </button>
-              {topGenres.map(([genre, count]) => (
-                <button
-                  type="button"
-                  class="tag-chip"
-                  data-filter-type="genre"
-                  data-filter-value={genre}
-                >
-                  {genre} ({count})
-                </button>
-              ))}
-              {hasMoreGenres && (
-                <button
-                  type="button"
-                  class="tag-chip show-more-btn"
-                  data-action="show-more"
-                  data-target="genre-hidden"
-                  aria-expanded="false"
-                  aria-controls="genre-hidden"
-                >
-                  Show more →
-                </button>
-              )}
-            </div>
-            {hasMoreGenres && (
-              <div class="bookshelf-filter-group__hidden" id="genre-hidden" hidden>
-                {sortedGenres.slice(initialGenreCount).map(([genre, count]) => (
-                  <button
-                    type="button"
-                    class="tag-chip"
-                    data-filter-type="genre"
-                    data-filter-value={genre}
-                  >
-                    {genre} ({count})
-                  </button>
-                ))}
-                <button
-                  type="button"
-                  class="tag-chip show-less-btn"
-                  data-action="show-less"
-                  data-target="genre-hidden"
-                  aria-controls="genre-hidden"
-                >
-                  Show less ←
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-        <div class="bookshelf-filters__results" id="filter-results" aria-live="polite" aria-atomic="true">
-          Showing {totalBooks} {totalBooks === 1 ? 'book' : 'books'}
-        </div>
-      </div>
-    )}
+    <div class="bookshelf-filters__results" id="filter-results" aria-live="polite" aria-atomic="true" hidden>
+      Showing {totalBooks} {totalBooks === 1 ? 'book' : 'books'}
+    </div>
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearBooks = booksByYear[year] ?? [];
@@ -339,6 +213,7 @@ const sectionLandingProps = createSectionLandingProps({
                 const bookSlug = book.slug ?? `${year}-${index}`;
                 const bookAuthors = extractAuthors(book.data.author).join(',');
                 const bookGenre = book.data.genre ?? '';
+                const bookStatus = normalizeStatus(book.data.bookStatus);
 
                 return (
                   <div
@@ -347,6 +222,7 @@ const sectionLandingProps = createSectionLandingProps({
                     data-book-item
                     data-author={bookAuthors}
                     data-genre={bookGenre}
+                    data-status={bookStatus}
                   >
                     <BookshelfCard {...transformBook(book)} />
                   </div>
@@ -528,18 +404,12 @@ const sectionLandingProps = createSectionLandingProps({
 
 <script>
   function initBookshelfFilters() {
-    const filterChips = document.querySelectorAll('[data-filter-type]') as NodeListOf<HTMLButtonElement>;
     const resultsDisplay = document.getElementById('filter-results');
-    const showMoreButtons = document.querySelectorAll('[data-action="show-more"]') as NodeListOf<HTMLButtonElement>;
-    const showLessButtons = document.querySelectorAll('[data-action="show-less"]') as NodeListOf<HTMLButtonElement>;
-
-    if (filterChips.length === 0) {
-      return;
-    }
 
     // Store current filter state
     let selectedAuthor = '';
     let selectedGenre = '';
+    let selectedStatus = '';
 
     function applyFilters() {
       const allBookItems = document.querySelectorAll('[data-book-item]');
@@ -551,11 +421,13 @@ const sectionLandingProps = createSectionLandingProps({
       allBookItems.forEach((bookItem) => {
         const bookAuthors = bookItem.getAttribute('data-author') || '';
         const bookGenre = bookItem.getAttribute('data-genre') || '';
+        const bookStatus = bookItem.getAttribute('data-status') || '';
 
         const authorMatch = !selectedAuthor || bookAuthors.split(',').includes(selectedAuthor);
         const genreMatch = !selectedGenre || bookGenre === selectedGenre;
+        const statusMatch = !selectedStatus || bookStatus === selectedStatus;
 
-        const isVisible = authorMatch && genreMatch;
+        const isVisible = authorMatch && genreMatch && statusMatch;
 
         if (isVisible) {
           bookItem.removeAttribute('data-filtered');
@@ -596,76 +468,80 @@ const sectionLandingProps = createSectionLandingProps({
       if (resultsDisplay) {
         const bookLabel = visibleCount === 1 ? 'book' : 'books';
         resultsDisplay.textContent = `Showing ${visibleCount} ${bookLabel}`;
+        resultsDisplay.removeAttribute('hidden');
       }
     }
 
-    function updateChipActiveState() {
-      filterChips.forEach((chip) => {
-        const filterType = chip.getAttribute('data-filter-type');
-        const filterValue = chip.getAttribute('data-filter-value') || '';
+    function resetFilters() {
+      selectedAuthor = '';
+      selectedGenre = '';
+      selectedStatus = '';
 
-        if (filterType === 'author') {
-          if (filterValue === selectedAuthor) {
-            chip.setAttribute('data-filter-active', 'true');
-          } else {
-            chip.removeAttribute('data-filter-active');
-          }
-        } else if (filterType === 'genre') {
-          if (filterValue === selectedGenre) {
-            chip.setAttribute('data-filter-active', 'true');
-          } else {
-            chip.removeAttribute('data-filter-active');
-          }
+      // Hide results display when no filters active
+      if (resultsDisplay) {
+        resultsDisplay.setAttribute('hidden', '');
+      }
+
+      // Reset all book items
+      const allBookItems = document.querySelectorAll('[data-book-item]');
+      allBookItems.forEach((bookItem) => {
+        bookItem.removeAttribute('data-filtered');
+      });
+
+      // Reset year counts
+      const yearSections = document.querySelectorAll('[data-year]');
+      yearSections.forEach((section) => {
+        section.removeAttribute('data-filtered');
+        const year = section.getAttribute('data-year') || '';
+        const allYearBooks = section.querySelectorAll('[data-book-item]');
+        const count = allYearBooks.length;
+
+        const countElement = section.querySelector(`[data-year-count="${year}"]`);
+        if (countElement) {
+          const bookLabel = count === 1 ? 'book' : 'books';
+          countElement.textContent = `${count} ${bookLabel}`;
         }
       });
     }
 
-    // Handle filter chip clicks
-    filterChips.forEach((chip) => {
-      chip.addEventListener('click', () => {
-        const filterType = chip.getAttribute('data-filter-type');
-        const filterValue = chip.getAttribute('data-filter-value') || '';
+    // Handle clicks on card field filters
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      const filterTrigger = target.closest('[data-filter-type]') as HTMLElement;
 
+      if (filterTrigger) {
+        event.preventDefault();
+        const filterType = filterTrigger.getAttribute('data-filter-type');
+        const filterValue = filterTrigger.getAttribute('data-filter-value') || '';
+
+        // If clicking the same filter, reset it
+        if (filterType === 'author' && selectedAuthor === filterValue) {
+          resetFilters();
+          return;
+        } else if (filterType === 'genre' && selectedGenre === filterValue) {
+          resetFilters();
+          return;
+        } else if (filterType === 'status' && selectedStatus === filterValue) {
+          resetFilters();
+          return;
+        }
+
+        // Reset all filters first
+        selectedAuthor = '';
+        selectedGenre = '';
+        selectedStatus = '';
+
+        // Set new filter
         if (filterType === 'author') {
           selectedAuthor = filterValue;
         } else if (filterType === 'genre') {
           selectedGenre = filterValue;
+        } else if (filterType === 'status') {
+          selectedStatus = filterValue;
         }
 
-        updateChipActiveState();
         applyFilters();
-      });
-    });
-
-    // Handle show more/less buttons
-    showMoreButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const targetId = button.getAttribute('data-target');
-        if (targetId) {
-          const hiddenSection = document.getElementById(targetId);
-          if (hiddenSection) {
-            hiddenSection.removeAttribute('hidden');
-            button.setAttribute('aria-expanded', 'true');
-          }
-        }
-      });
-    });
-
-    showLessButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const targetId = button.getAttribute('data-target');
-        if (targetId) {
-          const hiddenSection = document.getElementById(targetId);
-          if (hiddenSection) {
-            hiddenSection.setAttribute('hidden', '');
-            // Find the corresponding show more button and update its state
-            const showMoreBtn = document.querySelector(`[data-action="show-more"][data-target="${targetId}"]`);
-            if (showMoreBtn) {
-              showMoreBtn.setAttribute('aria-expanded', 'false');
-            }
-          }
-        }
-      });
+      }
     });
   }
 
