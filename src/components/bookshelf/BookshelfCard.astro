@@ -223,33 +223,58 @@ const timelineLabel = (() => {
           </div>
         </div>
         {formattedAuthor && (
-          <div class="book-card__author">{formattedAuthor}</div>
+          <button
+            type="button"
+            class="book-card__author book-card__author--clickable"
+            data-filter-type="author"
+            data-filter-value={formattedAuthor}
+          >
+            {formattedAuthor}
+          </button>
         )}
       </header>
 
       {(statusLabel || genreLabel || formatLabel || ratingChipLabel || timelineLabel) && (
         <div class="book-card__meta" data-meta>
           <div class="book-card__meta-row book-card__meta-row--chips">
-            {statusLabel && (
-              <span class={`book-card__chip book-card__chip--status ${statusChipClass}`}>
+            {statusLabel && normalizedStatus && (
+              <button
+                type="button"
+                class={`book-card__chip book-card__chip--status book-card__chip--clickable ${statusChipClass}`}
+                data-filter-type="status"
+                data-filter-value={normalizedStatus}
+              >
                 {statusLabel}
-              </span>
+              </button>
             )}
-            {genreLabel && (
-              <span class="book-card__chip book-card__chip--genre">
+            {genreLabel && genre && (
+              <button
+                type="button"
+                class="book-card__chip book-card__chip--genre book-card__chip--clickable"
+                data-filter-type="genre"
+                data-filter-value={genre}
+              >
                 {genreLabel}
-              </span>
+              </button>
             )}
-            {formatLabel && (
-              <span class="book-card__chip book-card__chip--format">
+            {formatLabel && format && (
+              <button
+                type="button"
+                class="book-card__chip book-card__chip--format book-card__chip--clickable"
+                data-filter-type="format"
+                data-filter-value={format}
+              >
                 {formatLabel}
-              </span>
+              </button>
             )}
-            {ratingChipLabel && (
-              <span
-                class={`book-card__chip book-card__chip--rating ${
+            {ratingChipLabel && bookRating && (
+              <button
+                type="button"
+                class={`book-card__chip book-card__chip--rating book-card__chip--clickable ${
                   bookRating ? `book-card__chip--rating-${bookRating}` : 'book-card__chip--rating-none'
                 }`}
+                data-filter-type="rating"
+                data-filter-value={bookRating}
                 aria-label={ratingAriaLabel}
               >
                 <span class="book-card__chip-label">{ratingChipLabel}</span>
@@ -284,7 +309,7 @@ const timelineLabel = (() => {
                     ))}
                   </span>
                 )}
-              </span>
+              </button>
             )}
             {timelineLabel && (
               <span class="book-card__chip book-card__chip--timeline">
@@ -429,6 +454,27 @@ const timelineLabel = (() => {
     color: #d1d5db;
   }
 
+  .book-card__author--clickable {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    transition: color 150ms ease, text-decoration 150ms ease;
+  }
+
+  .book-card__author--clickable:hover,
+  .book-card__author--clickable:focus-visible {
+    color: #4f46e5;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  :global(.dark) .book-card__author--clickable:hover,
+  :global(.dark) .book-card__author--clickable:focus-visible {
+    color: #818cf8;
+  }
+
   .book-card__title {
     flex: 1 1 auto;
     font-size: 1.2rem;
@@ -509,6 +555,24 @@ const timelineLabel = (() => {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     white-space: nowrap;
+    background: inherit;
+  }
+
+  .book-card__chip--clickable {
+    cursor: pointer;
+    transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+  }
+
+  .book-card__chip--clickable:hover,
+  .book-card__chip--clickable:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    opacity: 0.95;
+  }
+
+  :global(.dark) .book-card__chip--clickable:hover,
+  :global(.dark) .book-card__chip--clickable:focus-visible {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   }
 
   .book-card__chip--status-reading {
