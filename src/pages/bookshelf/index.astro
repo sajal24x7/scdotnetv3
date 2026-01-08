@@ -191,9 +191,7 @@ const sectionLandingProps = createSectionLandingProps({
 >
   <SectionLanding {...sectionLandingProps}>
     <div class="bookshelf-filters__results" id="filter-results" aria-live="polite" aria-atomic="true" hidden>
-      <div class="bookshelf-filters__summary" id="filter-summary">
-        Showing <span id="filter-count">0</span> <span id="filter-count-label">books</span>
-      </div>
+      <div class="bookshelf-filters__summary" id="filter-summary"></div>
       <div class="bookshelf-filters__active" id="active-filters"></div>
     </div>
     <div class="bookshelf-years">
@@ -536,8 +534,7 @@ const sectionLandingProps = createSectionLandingProps({
   function initBookshelfFilters() {
     const resultsDisplay = document.getElementById('filter-results');
     const activeFiltersContainer = document.getElementById('active-filters');
-    const filterCountElement = document.getElementById('filter-count');
-    const filterCountLabel = document.getElementById('filter-count-label');
+    const filterSummary = document.getElementById('filter-summary');
 
     // Store current filter state
     let selectedAuthor = '';
@@ -703,11 +700,9 @@ const sectionLandingProps = createSectionLandingProps({
       });
 
       // Update results count
-      if (filterCountElement) {
-        filterCountElement.textContent = String(visibleCount);
-      }
-      if (filterCountLabel) {
-        filterCountLabel.textContent = visibleCount === 1 ? 'book' : 'books';
+      if (filterSummary) {
+        const bookLabel = visibleCount === 1 ? 'book' : 'books';
+        filterSummary.textContent = `Showing ${visibleCount} ${bookLabel}`;
       }
 
       // Update filter display
