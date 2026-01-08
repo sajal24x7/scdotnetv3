@@ -191,9 +191,7 @@ const sectionLandingProps = createSectionLandingProps({
 >
   <SectionLanding {...sectionLandingProps}>
     <div class="bookshelf-filters__results" id="filter-results" aria-live="polite" aria-atomic="true" hidden>
-      <div class="bookshelf-filters__summary" id="filter-summary">
-        Showing <span id="filter-count">0</span> <span id="filter-count-label">books</span>
-      </div>
+      <div class="bookshelf-filters__summary" id="filter-summary"></div>
       <div class="bookshelf-filters__active" id="active-filters"></div>
     </div>
     <div class="bookshelf-years">
@@ -272,6 +270,10 @@ const sectionLandingProps = createSectionLandingProps({
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 0.75rem;
     margin-bottom: 1.5rem;
+  }
+
+  .bookshelf-filters__results[hidden] {
+    display: none;
   }
 
   :global(.dark) .bookshelf-filters__results {
@@ -536,8 +538,7 @@ const sectionLandingProps = createSectionLandingProps({
   function initBookshelfFilters() {
     const resultsDisplay = document.getElementById('filter-results');
     const activeFiltersContainer = document.getElementById('active-filters');
-    const filterCountElement = document.getElementById('filter-count');
-    const filterCountLabel = document.getElementById('filter-count-label');
+    const filterSummary = document.getElementById('filter-summary');
 
     // Store current filter state
     let selectedAuthor = '';
@@ -578,6 +579,9 @@ const sectionLandingProps = createSectionLandingProps({
       if (!hasFilters) {
         if (resultsDisplay) {
           resultsDisplay.setAttribute('hidden', '');
+        }
+        if (filterSummary) {
+          filterSummary.textContent = '';
         }
         activeFiltersContainer.innerHTML = '';
         return;
@@ -702,12 +706,11 @@ const sectionLandingProps = createSectionLandingProps({
         }
       });
 
-      // Update results count
-      if (filterCountElement) {
-        filterCountElement.textContent = String(visibleCount);
-      }
-      if (filterCountLabel) {
-        filterCountLabel.textContent = visibleCount === 1 ? 'book' : 'books';
+      // Update results count only if filters are active
+      const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating;
+      if (filterSummary && hasFilters) {
+        const bookLabel = visibleCount === 1 ? 'book' : 'books';
+        filterSummary.textContent = `Showing ${visibleCount} ${bookLabel}`;
       }
 
       // Update filter display
@@ -724,6 +727,11 @@ const sectionLandingProps = createSectionLandingProps({
       // Hide results display when no filters active
       if (resultsDisplay) {
         resultsDisplay.setAttribute('hidden', '');
+      }
+
+      // Clear filter summary
+      if (filterSummary) {
+        filterSummary.textContent = '';
       }
 
       // Reset all book items
