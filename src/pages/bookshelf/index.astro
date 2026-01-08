@@ -191,7 +191,10 @@ const sectionLandingProps = createSectionLandingProps({
 >
   <SectionLanding {...sectionLandingProps}>
     <div class="bookshelf-filters__results" id="filter-results" aria-live="polite" aria-atomic="true" hidden>
-      Showing {totalBooks} {totalBooks === 1 ? 'book' : 'books'}
+      <div class="bookshelf-filters__summary" id="filter-summary">
+        Showing <span id="filter-count">{totalBooks}</span> {totalBooks === 1 ? 'book' : 'books'}
+      </div>
+      <div class="bookshelf-filters__active" id="active-filters"></div>
     </div>
     <div class="bookshelf-years">
       {years.map((year) => {
@@ -256,73 +259,105 @@ const sectionLandingProps = createSectionLandingProps({
     padding-bottom: 2rem;
   }
 
-  .bookshelf-filters {
-    display: block;
-    margin-bottom: 2rem;
-  }
-
-  .bookshelf-filter-group {
-    display: block;
-    margin-bottom: 1.5rem;
-  }
-
-  .bookshelf-filter-group__title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: #111827;
-  }
-
-  :global(.dark) .bookshelf-filter-group__title {
-    color: #f9fafb;
-  }
-
-  .bookshelf-filter-group__items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  .bookshelf-filter-group__hidden {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    align-items: center;
-    margin-top: 0.5rem;
-  }
-
-  .bookshelf-filter-group__hidden[hidden] {
-    display: none !important;
-  }
-
-  .bookshelf-filter-group__items .tag-chip[data-filter-active="true"],
-  .bookshelf-filter-group__hidden .tag-chip[data-filter-active="true"] {
-    color: rgb(var(--tag-hover-rgb));
-    border-color: rgba(var(--tag-hover-rgb), 0.95);
-    background-color: rgba(var(--tag-color-rgb), 0.24);
-    box-shadow: 0 0 0 1px rgba(var(--tag-hover-rgb), 0.22);
-  }
-
-  :global(.dark) .bookshelf-filter-group__items .tag-chip[data-filter-active="true"],
-  :global(.dark) .bookshelf-filter-group__hidden .tag-chip[data-filter-active="true"] {
-    color: rgb(var(--tag-dark-hover-rgb));
-    border-color: rgba(var(--tag-dark-hover-rgb), 0.92);
-    background-color: rgba(var(--tag-dark-color-rgb), 0.32);
-    box-shadow: 0 0 0 1px rgba(var(--tag-dark-hover-rgb), 0.24);
-  }
-
   .bookshelf-filters__results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
     font-size: 0.875rem;
     font-weight: 500;
     color: #6b7280;
-    padding-top: 0.75rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    background: rgba(99, 102, 241, 0.04);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
   }
 
   :global(.dark) .bookshelf-filters__results {
     color: #9ca3af;
-    border-top-color: rgba(255, 255, 255, 0.08);
+    background: rgba(99, 102, 241, 0.08);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+
+  .bookshelf-filters__summary {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .bookshelf-filters__active {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  :global(.filter-badge) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    background: #ffffff;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #4f46e5;
+    cursor: pointer;
+    transition: all 150ms ease;
+  }
+
+  :global(.dark) :global(.filter-badge) {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(99, 102, 241, 0.4);
+    color: #a5b4fc;
+  }
+
+  :global(.filter-badge:hover) {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.5);
+    transform: translateY(-1px);
+  }
+
+  :global(.dark) :global(.filter-badge:hover) {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.6);
+  }
+
+  :global(.filter-badge__label) {
+    white-space: nowrap;
+  }
+
+  :global(.filter-badge__remove) {
+    font-size: 1.2rem;
+    line-height: 1;
+    font-weight: 600;
+    opacity: 0.7;
+    transition: opacity 150ms ease;
+  }
+
+  :global(.filter-badge:hover) :global(.filter-badge__remove) {
+    opacity: 1;
+  }
+
+  :global(.filter-badge--clear-all) {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #dc2626;
+  }
+
+  :global(.dark) :global(.filter-badge--clear-all) {
+    background: #dc2626;
+    border-color: #b91c1c;
+  }
+
+  :global(.filter-badge--clear-all:hover) {
+    background: #dc2626;
+    border-color: #b91c1c;
+  }
+
+  :global(.dark) :global(.filter-badge--clear-all:hover) {
+    background: #b91c1c;
+    border-color: #991b1b;
   }
 
   .bookshelf-year[data-filtered="hidden"] {
@@ -405,11 +440,81 @@ const sectionLandingProps = createSectionLandingProps({
 <script>
   function initBookshelfFilters() {
     const resultsDisplay = document.getElementById('filter-results');
+    const filterCountElement = document.getElementById('filter-count');
+    const activeFiltersContainer = document.getElementById('active-filters');
 
     // Store current filter state
     let selectedAuthor = '';
     let selectedGenre = '';
     let selectedStatus = '';
+
+    // Map for display labels
+    const statusDisplayMap: Record<string, string> = {
+      reading: 'Currently Reading',
+      finished: 'Finished',
+      'on-hold': 'On Hold',
+      'to-read': 'To Read'
+    };
+
+    function updateFilterDisplay() {
+      if (!activeFiltersContainer) return;
+
+      const hasFilters = selectedAuthor || selectedGenre || selectedStatus;
+
+      if (!hasFilters) {
+        if (resultsDisplay) {
+          resultsDisplay.setAttribute('hidden', '');
+        }
+        activeFiltersContainer.innerHTML = '';
+        return;
+      }
+
+      if (resultsDisplay) {
+        resultsDisplay.removeAttribute('hidden');
+      }
+
+      // Build filter badges
+      const badges: string[] = [];
+
+      if (selectedAuthor) {
+        badges.push(`
+          <button type="button" class="filter-badge" data-remove-filter="author">
+            <span class="filter-badge__label">Author: ${selectedAuthor}</span>
+            <span class="filter-badge__remove" aria-label="Remove author filter">×</span>
+          </button>
+        `);
+      }
+
+      if (selectedGenre) {
+        badges.push(`
+          <button type="button" class="filter-badge" data-remove-filter="genre">
+            <span class="filter-badge__label">Genre: ${selectedGenre}</span>
+            <span class="filter-badge__remove" aria-label="Remove genre filter">×</span>
+          </button>
+        `);
+      }
+
+      if (selectedStatus) {
+        const statusLabel = statusDisplayMap[selectedStatus] || selectedStatus;
+        badges.push(`
+          <button type="button" class="filter-badge" data-remove-filter="status">
+            <span class="filter-badge__label">Status: ${statusLabel}</span>
+            <span class="filter-badge__remove" aria-label="Remove status filter">×</span>
+          </button>
+        `);
+      }
+
+      // Add clear all button if multiple filters
+      if (badges.length > 1) {
+        badges.push(`
+          <button type="button" class="filter-badge filter-badge--clear-all" data-remove-filter="all">
+            Clear all filters
+          </button>
+        `);
+      }
+
+      activeFiltersContainer.innerHTML = badges.join('');
+    }
 
     function applyFilters() {
       const allBookItems = document.querySelectorAll('[data-book-item]');
@@ -464,12 +569,13 @@ const sectionLandingProps = createSectionLandingProps({
         }
       });
 
-      // Update results display
-      if (resultsDisplay) {
-        const bookLabel = visibleCount === 1 ? 'book' : 'books';
-        resultsDisplay.textContent = `Showing ${visibleCount} ${bookLabel}`;
-        resultsDisplay.removeAttribute('hidden');
+      // Update results count
+      if (filterCountElement) {
+        filterCountElement.textContent = String(visibleCount);
       }
+
+      // Update filter display
+      updateFilterDisplay();
     }
 
     function resetFilters() {
@@ -502,42 +608,62 @@ const sectionLandingProps = createSectionLandingProps({
           countElement.textContent = `${count} ${bookLabel}`;
         }
       });
+
+      // Update filter display
+      updateFilterDisplay();
     }
 
-    // Handle clicks on card field filters
+    // Handle clicks on card field filters and remove filter buttons
     document.addEventListener('click', (event) => {
       const target = event.target as HTMLElement;
-      const filterTrigger = target.closest('[data-filter-type]') as HTMLElement;
 
+      // Check for remove filter button
+      const removeButton = target.closest('[data-remove-filter]') as HTMLElement;
+      if (removeButton) {
+        event.preventDefault();
+        const filterToRemove = removeButton.getAttribute('data-remove-filter');
+
+        if (filterToRemove === 'all') {
+          resetFilters();
+        } else if (filterToRemove === 'author') {
+          selectedAuthor = '';
+          applyFilters();
+        } else if (filterToRemove === 'genre') {
+          selectedGenre = '';
+          applyFilters();
+        } else if (filterToRemove === 'status') {
+          selectedStatus = '';
+          applyFilters();
+        }
+        return;
+      }
+
+      // Check for filter trigger
+      const filterTrigger = target.closest('[data-filter-type]') as HTMLElement;
       if (filterTrigger) {
         event.preventDefault();
         const filterType = filterTrigger.getAttribute('data-filter-type');
         const filterValue = filterTrigger.getAttribute('data-filter-value') || '';
 
-        // If clicking the same filter, reset it
-        if (filterType === 'author' && selectedAuthor === filterValue) {
-          resetFilters();
-          return;
-        } else if (filterType === 'genre' && selectedGenre === filterValue) {
-          resetFilters();
-          return;
-        } else if (filterType === 'status' && selectedStatus === filterValue) {
-          resetFilters();
-          return;
-        }
-
-        // Reset all filters first
-        selectedAuthor = '';
-        selectedGenre = '';
-        selectedStatus = '';
-
-        // Set new filter
+        // Toggle filter - if clicking the same filter, remove it
         if (filterType === 'author') {
-          selectedAuthor = filterValue;
+          if (selectedAuthor === filterValue) {
+            selectedAuthor = '';
+          } else {
+            selectedAuthor = filterValue;
+          }
         } else if (filterType === 'genre') {
-          selectedGenre = filterValue;
+          if (selectedGenre === filterValue) {
+            selectedGenre = '';
+          } else {
+            selectedGenre = filterValue;
+          }
         } else if (filterType === 'status') {
-          selectedStatus = filterValue;
+          if (selectedStatus === filterValue) {
+            selectedStatus = '';
+          } else {
+            selectedStatus = filterValue;
+          }
         }
 
         applyFilters();
