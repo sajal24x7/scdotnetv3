@@ -6,7 +6,7 @@ updatedDate: 2026-01-05T18:34:11.000Z
 category: bookshelf
 tags:
   - space-opera
-format: audiobook
+format: audio
 author:
   - Adrian Tchaikovsky
 series: "The Final Architecture #2"
