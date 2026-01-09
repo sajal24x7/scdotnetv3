@@ -291,11 +291,8 @@ const timelineLabel = (() => {
                           width={iconSpec.size}
                           height={iconSpec.size}
                           viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          fill="currentColor"
+                          aria-hidden="true"
                         >
                           {(
                             iconSpec.type === 'heart'
@@ -547,7 +544,7 @@ const timelineLabel = (() => {
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
-    padding: 0.15rem 0.55rem;
+    padding: 0.25rem 0.55rem;
     border-radius: 0.5rem;
     border: none;
     font-size: 0.65rem;
@@ -556,6 +553,7 @@ const timelineLabel = (() => {
     text-transform: uppercase;
     white-space: nowrap;
     background: inherit;
+    line-height: 1.2;
   }
 
   .book-card__chip--clickable {
@@ -740,6 +738,11 @@ const timelineLabel = (() => {
   .book-card__rating-icon {
     line-height: 1;
     display: inline-flex;
+    align-items: center;
+  }
+
+  .book-card__rating-icon svg {
+    display: block;
   }
 
   .book-card__progress {
