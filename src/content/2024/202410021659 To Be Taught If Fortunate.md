@@ -1,16 +1,20 @@
 ---
-title: "To Be Taught If Fortunate"
-slug: "to-be-taught-if-fortunate"
-pubDate: 2026-01-09T15:18:15+02:00
-updatedDate: 2026-01-09T15:18:15+02:00
+title: To Be Taught If Fortunate
+slug: to-be-taught-if-fortunate
+pubDate: 2026-01-09T13:18:15.000Z
+updatedDate: 2026-01-09T13:18:15.000Z
 category: bookshelf
 tags:
   - first-contact
 format: hardcover
 genre: sci-fi
-bookStatus: "read"
-startedReading: 2026-10-02T15:18:15+02:00
+bookStatus: read
+startedReading: 2026-10-02T13:18:15.000Z
 bookRating: like
-finishedReading: 2026-10-10T15:18:15+02:00
+finishedReading: 2026-10-10T13:18:15.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115865341673676105'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyllapj2o22'
+  - 'https://www.threads.com/@sajal24x7/post/DTSpgCHjvUe'
 ---
 This one was structured in an atypical way, in which, when I finished I could point out and say this is the idea that the author had when writing it, the theme, the central thought. And it came at the very end.
