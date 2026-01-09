@@ -1,13 +1,19 @@
 ---
-title: "How to handle increasing intensive work  caused by AI handling the mundane tasks"
-slug: "how-to-handle-increasing-intensive-work-caused-by-ai-handling-the-mundane-tasks"
-pubDate: 2026-01-09T09:53:41+02:00
-updatedDate: 2026-01-09T09:53:41+02:00
+title: >-
+  How to handle increasing intensive work  caused by AI handling the mundane
+  tasks
+slug: >-
+  how-to-handle-increasing-intensive-work-caused-by-ai-handling-the-mundane-tasks
+pubDate: 2026-01-09T07:53:41.000Z
+updatedDate: 2026-01-09T07:53:41.000Z
 category: micro
 tags:
   - ai
   - work
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115864060717767724'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbxzeqku7j2i'
+  - 'https://www.threads.com/@sajal24x7/post/DTSEOH_DpGr'
 ---
 ['The Downside To Using AI for All Those Boring Tasks at Work' - Slashdot](https://slashdot.org/story/26/01/08/1918257/the-downside-to-using-ai-for-all-those-boring-tasks-at-work?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
