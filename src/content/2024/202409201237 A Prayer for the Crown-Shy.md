@@ -1,20 +1,24 @@
 ---
-title: "A Prayer for the Crown-Shy"
-slug: "a-prayer-for-the-crown-shy"
-pubDate: 2026-01-09T15:11:05+02:00
-updatedDate: 2026-01-09T15:11:05+02:00
+title: A Prayer for the Crown-Shy
+slug: a-prayer-for-the-crown-shy
+pubDate: 2026-01-09T13:11:05.000Z
+updatedDate: 2026-01-09T13:11:05.000Z
 category: bookshelf
 tags:
   - solarpunk
 format: hardcover
 author:
   - Becky Chambers
-series: "Monk and Robot #2"
+series: 'Monk and Robot #2'
 genre: sci-fi
-bookStatus: "read"
-startedReading: 2024-09-20T15:11:05+02:00
+bookStatus: read
+startedReading: 2024-09-20T13:11:05.000Z
 bookRating: like
-finishedReading: 2024-09-25T15:11:05+02:00
+finishedReading: 2024-09-25T13:11:05.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115865315225189341'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyl77tmhc2a'
+  - 'https://www.threads.com/@sajal24x7/post/DTSoux2kZmJ'
 ---
 
 # Notes

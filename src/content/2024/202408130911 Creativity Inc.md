@@ -18,6 +18,7 @@ finishedReading: 2024-09-12T12:46:12.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865220162638063'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyjtycydc2l'
+  - 'https://www.threads.com/@sajal24x7/post/DTSotFzESoE'
 ---
 
 # Notes
