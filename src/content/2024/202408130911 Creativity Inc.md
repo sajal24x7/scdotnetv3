@@ -1,8 +1,8 @@
 ---
-title: "Creativity Inc"
-slug: "creativity-inc"
-pubDate: 2026-01-09T14:46:12+02:00
-updatedDate: 2026-01-09T14:46:12+02:00
+title: Creativity Inc
+slug: creativity-inc
+pubDate: 2026-01-09T12:46:12.000Z
+updatedDate: 2026-01-09T12:46:12.000Z
 category: bookshelf
 tags:
   - work
@@ -11,10 +11,13 @@ format: hardcover
 author:
   - Edwin E. Catmull
 genre: business
-bookStatus: "read"
-startedReading: 2024-08-13T14:46:12+02:00
+bookStatus: read
+startedReading: 2024-08-13T12:46:12.000Z
 bookRating: like
-finishedReading: 2024-09-12T14:46:12+02:00
+finishedReading: 2024-09-12T12:46:12.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115865220162638063'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyjtycydc2l'
 ---
 
 # Notes
