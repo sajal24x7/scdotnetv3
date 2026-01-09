@@ -1,15 +1,8 @@
 ---
-<<<<<<< refs/remotes/origin/main:src/content/2024/202406171050 Doctorow, Cory - Little Brother.md
-title: 'Doctorow, Cory - Little Brother'
-slug: doctorow-cory-little-brother
+title: 'Little Brother'
+slug: little-brother
 pubDate: 2026-01-09T12:25:52.000Z
 updatedDate: 2026-01-09T12:25:52.000Z
-=======
-title: "Little Brother"
-slug: "doctorow-cory-little-brother"
-pubDate: 2026-01-09T14:25:52+02:00
-updatedDate: 2026-01-09T14:25:52+02:00
->>>>>>> Last Sync: 2026-01-09 14:40 (Mobile):src/content/2024/202406171050 Little Brother.md
 category: bookshelf
 tags:
   - dystopia
