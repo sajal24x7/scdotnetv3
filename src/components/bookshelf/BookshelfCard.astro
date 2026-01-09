@@ -237,7 +237,7 @@ const timelineLabel = (() => {
       {(statusLabel || genreLabel || formatLabel || ratingChipLabel || timelineLabel) && (
         <div class="book-card__meta" data-meta>
           <div class="book-card__meta-row book-card__meta-row--chips">
-            {statusLabel && normalizedStatus && (
+            {statusLabel && normalizedStatus && normalizedStatus !== 'finished' && (
               <button
                 type="button"
                 class={`book-card__chip book-card__chip--status book-card__chip--clickable ${statusChipClass}`}
