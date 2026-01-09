@@ -11,9 +11,9 @@ author:
   - John Scalzi
 genre: sci-fi
 bookStatus: read
-startedReading: 2026-09-30T13:14:30.000Z
+startedReading: 2024-09-30T13:14:30.000Z
 bookRating: love
-finishedReading: 2026-10-01T13:14:30.000Z
+finishedReading: 2024-10-01T13:14:30.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865325873939434'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyle2v23c2a'
