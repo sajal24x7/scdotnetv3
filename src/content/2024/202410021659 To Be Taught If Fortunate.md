@@ -9,9 +9,9 @@ tags:
 format: hardcover
 genre: sci-fi
 bookStatus: read
-startedReading: 2026-10-02T13:18:15.000Z
+startedReading: 2024-10-02T13:18:15.000Z
 bookRating: like
-finishedReading: 2026-10-10T13:18:15.000Z
+finishedReading: 2024-10-10T13:18:15.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865341673676105'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyllapj2o22'
