@@ -1,12 +1,15 @@
 ---
-title: "Grok turns off image generation"
-slug: "grok-turns-off-image-generation"
-pubDate: 2026-01-09T12:30:25+02:00
-updatedDate: 2026-01-09T12:30:25+02:00
+title: Grok turns off image generation
+slug: grok-turns-off-image-generation
+pubDate: 2026-01-09T10:30:25.000Z
+updatedDate: 2026-01-09T10:30:25.000Z
 category: micro
 tags:
   - grok
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115864815643731817'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbye3zxq7h2r'
+  - 'https://www.threads.com/@sajal24x7/post/DTSaMQTEY-y'
 ---
 [Grok turns off image generator for most users after outcry over sexualised AI imagery by Helena Horton, Dan Milmo and Amelia Gentleman](https://www.theguardian.com/technology/2026/jan/09/grok-image-generator-outcry-sexualised-ai-imagery)
 

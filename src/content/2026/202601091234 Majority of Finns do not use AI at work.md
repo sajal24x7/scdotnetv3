@@ -1,13 +1,16 @@
 ---
-title: "Majority of Finns do not use AI at work"
-slug: "majority-of-finns-do-not-use-ai-at-work"
-pubDate: 2026-01-09T12:36:05+02:00
-updatedDate: 2026-01-09T12:36:05+02:00
+title: Majority of Finns do not use AI at work
+slug: majority-of-finns-do-not-use-ai-at-work
+pubDate: 2026-01-09T10:36:05.000Z
+updatedDate: 2026-01-09T10:36:05.000Z
 category: micro
 tags:
   - finland
   - ai
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115864816215191536'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbye4cagx22g'
+  - 'https://www.threads.com/@sajal24x7/post/DTSaNR-ETi-'
 ---
 [Survey: Majority of Finns do not use AI at work by ](https://yle.fi/a/74-20203380?origin=rss)
 
