@@ -41,19 +41,19 @@ export const bookRatingDisplay: Record<BookRating, BookRatingDisplay> = {
     like: {
         label: 'Liked it',
         iconSpecs: [
-            { type: 'thumb', direction: 'up', size: 18 }
+            { type: 'thumb', direction: 'up', size: 12 }
         ]
     },
     love: {
         label: 'Loved it',
         iconSpecs: [
-            { type: 'heart', size: 20 }
+            { type: 'heart', size: 12 }
         ]
     },
     nope: {
         label: 'Not for me',
         iconSpecs: [
-            { type: 'thumb', direction: 'down', size: 18 }
+            { type: 'thumb', direction: 'down', size: 12 }
         ]
     }
 };
