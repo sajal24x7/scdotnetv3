@@ -1,19 +1,22 @@
 ---
-title: "Elements of Fiction Writing - Scene & Structure"
-slug: "elements-of-fiction-writing-scene-structure"
-pubDate: 2026-01-09T15:29:30+02:00
-updatedDate: 2026-01-09T15:29:30+02:00
+title: Elements of Fiction Writing - Scene & Structure
+slug: elements-of-fiction-writing-scene-structure
+pubDate: 2026-01-09T13:29:30.000Z
+updatedDate: 2026-01-09T13:29:30.000Z
 category: bookshelf
 tags:
   - writing
   - craft
 format: ebook
-series: "Elements of fiction writing"
+series: Elements of fiction writing
 genre: writing-craft
-bookStatus: "read"
-startedReading: 2024-10-22T15:29:30+02:00
+bookStatus: read
+startedReading: 2024-10-22T13:29:30.000Z
 bookRating: like
-finishedReading: 2024-11-13T15:29:30+02:00
+finishedReading: 2024-11-13T13:29:30.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115865426553070735'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbymrttrhj2i'
 ---
 ## what does a reader want
 1. Story must begin with a significant change

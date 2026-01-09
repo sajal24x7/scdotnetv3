@@ -1,18 +1,22 @@
 ---
-title: "A Closed and Common Orbit"
-slug: "a-closed-and-common-orbit"
-pubDate: 2026-01-09T15:35:49+02:00
-updatedDate: 2026-01-09T15:35:49+02:00
+title: A Closed and Common Orbit
+slug: a-closed-and-common-orbit
+pubDate: 2026-01-09T13:35:49.000Z
+updatedDate: 2026-01-09T13:35:49.000Z
 category: bookshelf
 tags:
   - space-opera
 format: hardcover
-series: "Wayfarers #2"
+series: 'Wayfarers #2'
 genre: sci-fi
-bookStatus: "read"
-startedReading: 2024-11-29T15:35:49+02:00
+bookStatus: read
+startedReading: 2024-11-29T13:35:49.000Z
 bookRating: like
-finishedReading: 2024-12-10T15:35:49+02:00
+finishedReading: 2024-12-10T13:35:49.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115865426840871105'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbymrxyvey2r'
+  - 'https://www.threads.com/@sajal24x7/post/DTSr-p3EXQJ'
 ---
 I finished reading the second book in the Wayfarer series - A Closed and Common Orbit. The book follows the events in [The Long Way to a Small, Angry Planet](/bookshelf/the-long-way-to-a-small-angry-planet). It does not however include the characters of the long way.
 
