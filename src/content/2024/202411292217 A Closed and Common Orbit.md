@@ -17,6 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865426840871105'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbymrxyvey2r'
   - 'https://www.threads.com/@sajal24x7/post/DTSr-p3EXQJ'
+bookCover: a-closed-and-common-orbit.jpg
 ---
 I finished reading the second book in the Wayfarer series - A Closed and Common Orbit. The book follows the events in [The Long Way to a Small, Angry Planet](/bookshelf/the-long-way-to-a-small-angry-planet). It does not however include the characters of the long way.
 

@@ -16,6 +16,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865176736688057'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyjaacgxj2o'
   - 'https://www.threads.com/@sajal24x7/post/DTSksyJEX1q'
+bookCover: project-hail-mary.jpg
 ---
 I absolutely loved reading this book.
 
