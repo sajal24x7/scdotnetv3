@@ -10,6 +10,13 @@
   ],
   "bookshelf/abundance-how-we-build-a-better-future": [
     {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
       "slug": "/nordletter/nl69-a-fresh-start/",
       "title": "A fresh start",
       "description": "",
@@ -36,6 +43,191 @@
       "description": "",
       "category": "bookshelf",
       "pubDate": "2025-07-09T13:12:00.000Z"
+    }
+  ],
+  "bookshelf/artificial-condition": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
+      "slug": "/bookshelf/network-effect/",
+      "title": "Network Effect",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-31T19:56:47.000Z"
+    },
+    {
+      "slug": "/bookshelf/exit-strategy/",
+      "title": "Exit Strategy",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-31T19:56:35.000Z"
+    },
+    {
+      "slug": "/bookshelf/rogue-protocol/",
+      "title": "Rogue Protocol",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-15T19:42:08.000Z"
+    },
+    {
+      "slug": "/bookshelf/all-systems-red/",
+      "title": "All Systems Red",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-09T13:12:00.000Z"
+    }
+  ],
+  "bookshelf/rogue-protocol": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
+      "slug": "/bookshelf/network-effect/",
+      "title": "Network Effect",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-31T19:56:47.000Z"
+    },
+    {
+      "slug": "/bookshelf/exit-strategy/",
+      "title": "Exit Strategy",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-31T19:56:35.000Z"
+    },
+    {
+      "slug": "/bookshelf/artificial-condition/",
+      "title": "Artificial Condition",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-11T15:26:14.000Z"
+    },
+    {
+      "slug": "/bookshelf/all-systems-red/",
+      "title": "All Systems Red",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-09T13:12:00.000Z"
+    }
+  ],
+  "bookshelf/exit-strategy": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
+      "slug": "/bookshelf/network-effect/",
+      "title": "Network Effect",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-31T19:56:47.000Z"
+    },
+    {
+      "slug": "/bookshelf/rogue-protocol/",
+      "title": "Rogue Protocol",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-15T19:42:08.000Z"
+    },
+    {
+      "slug": "/bookshelf/artificial-condition/",
+      "title": "Artificial Condition",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-11T15:26:14.000Z"
+    },
+    {
+      "slug": "/bookshelf/all-systems-red/",
+      "title": "All Systems Red",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-09T13:12:00.000Z"
+    }
+  ],
+  "bookshelf/network-effect": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
+      "slug": "/bookshelf/exit-strategy/",
+      "title": "Exit Strategy",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-31T19:56:35.000Z"
+    },
+    {
+      "slug": "/bookshelf/rogue-protocol/",
+      "title": "Rogue Protocol",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-15T19:42:08.000Z"
+    },
+    {
+      "slug": "/bookshelf/artificial-condition/",
+      "title": "Artificial Condition",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-11T15:26:14.000Z"
+    },
+    {
+      "slug": "/bookshelf/all-systems-red/",
+      "title": "All Systems Red",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-09T13:12:00.000Z"
+    }
+  ],
+  "bookshelf/all-systems-red": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
+      "slug": "/bookshelf/network-effect/",
+      "title": "Network Effect",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-31T19:56:47.000Z"
+    },
+    {
+      "slug": "/bookshelf/exit-strategy/",
+      "title": "Exit Strategy",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-31T19:56:35.000Z"
+    },
+    {
+      "slug": "/bookshelf/rogue-protocol/",
+      "title": "Rogue Protocol",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-15T19:42:08.000Z"
+    },
+    {
+      "slug": "/bookshelf/artificial-condition/",
+      "title": "Artificial Condition",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-07-11T15:26:14.000Z"
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
@@ -109,6 +301,13 @@
     }
   ],
   "nordletter/nl67-performing-at-india-day": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy new year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    },
     {
       "slug": "/blog/what-do-i-do-now/",
       "title": "what do I do now",
@@ -205,6 +404,13 @@
   ],
   "bookshelf/nexus": [
     {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
       "slug": "/evergreen/curation-matters/",
       "title": "Curation matters",
       "description": "",
@@ -222,6 +428,13 @@
     }
   ],
   "nordletter/trip-to-nyc-i": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy new year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    },
     {
       "slug": "/nordletter/nl71/",
       "title": "Full moon",
@@ -302,6 +515,13 @@
   ],
   "bookshelf/same-as-ever": [
     {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
       "slug": "/evergreen/a-little-inefficiency-is-good/",
       "title": "A little inefficiency is good",
       "description": "",
@@ -324,6 +544,13 @@
     }
   ],
   "bookshelf/time-management-for-system-administrators": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
     {
       "slug": "/evergreen/how-to-automate-something/",
       "title": "How to automate something",
@@ -385,6 +612,13 @@
     }
   ],
   "bookshelf/slow-productivity": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
     {
       "slug": "/evergreen/how-to-create-a-simulated-pull-workflow/",
       "title": "How to create a simulated pull workflow",
@@ -501,6 +735,13 @@
   ],
   "bookshelf/children-of-ruin": [
     {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
       "slug": "/bookshelf/children-of-memory/",
       "title": "Children of memory",
       "description": "",
@@ -510,6 +751,13 @@
   ],
   "bookshelf/children-of-time": [
     {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
       "slug": "/bookshelf/children-of-memory/",
       "title": "Children of memory",
       "description": "",
@@ -518,6 +766,13 @@
     }
   ],
   "bookshelf/every-day-i-read": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
     {
       "slug": "/bookshelf/on-tennis/",
       "title": "On tennis",
@@ -555,6 +810,13 @@
   ],
   "bookshelf/empire-of-ai": [
     {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
       "slug": "/nordletter/nl84-winter-solstice/",
       "title": "Winter Solstice",
       "description": "",
@@ -562,13 +824,366 @@
       "pubDate": "2025-12-21T18:00:25.000Z"
     }
   ],
+  "bookshelf/the-psychology-of-money": [
+    {
+      "slug": "/bookshelf/the-art-of-spending-money/",
+      "title": "The art of spending money",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-19T15:11:57.000Z"
+    }
+  ],
   "blog/why-walk-the-same-path-every-day": [
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The route circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    },
     {
       "slug": "/bookshelf/steal-like-an-artist/",
       "title": "Steal like an artist",
       "description": "",
       "category": "bookshelf",
       "pubDate": "2025-12-21T20:41:53.000Z"
+    }
+  ],
+  "bookshelf/chambers-becky-the-galaxy-and-the-ground-within": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/murakami-haruki-men-without-women": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/the-three-body-problem": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/the-dark-forest": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/deaths-end": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/the-mysterious-affair-at-styles": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/the-life-of-chuck": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/the-secret-of-secrets": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/before-the-coffee-gets-cold": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/when-the-moon-hits-your-eye": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/children-of-memory": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/this-is-how-you-lose-the-time-war": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/two-nights-in-lisbon": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The route circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "bookshelf/what-technology-wants": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/range": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/enshittification": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/on-tennis": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/steal-like-an-artist": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The route circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "bookshelf/show-your-work": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The route circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "bookshelf/keep-going": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The route circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "bookshelf/helsinki-by-sauna": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    }
+  ],
+  "bookshelf/the-art-of-spending-money": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
+      "slug": "/evergreen/how-to-read/",
+      "title": "How to read",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-12-26T20:48:05.000Z"
+    }
+  ],
+  "bookshelf/ernest-hemingway-on-writing": [
+    {
+      "slug": "/blog/books-ive-read-this-year/",
+      "title": "Books I have read this year",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-12-31T20:10:19.000Z"
+    },
+    {
+      "slug": "/evergreen/write-for-one-person/",
+      "title": "Write for one person",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2025-12-26T17:59:24.000Z"
+    }
+  ],
+  "nordletter/nl79": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy new year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    },
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The route circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "nordletter/i-miss-walking": [
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The route circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "evergreen/limitations-mean-freedom": [
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The route circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "evergreen/write-for-one-person": [
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The route circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "evergreen/how-to-read": [
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The route circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "nordletter/a-happy-new-year": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy new year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "micro/chatgpt-has-yearly-recaps-as-well": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy new year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "blog/books-ive-read-this-year": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy new year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "nordletter/election-time": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy new year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
     }
   ]
 }
