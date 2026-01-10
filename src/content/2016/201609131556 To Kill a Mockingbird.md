@@ -1,8 +1,8 @@
 ---
-title: "To Kill a Mockingbird"
+title: To Kill a Mockingbird
 slug: to-kill-a-mockingbird
-pubDate: 2016-09-13T15:56:11Z
-updatedDate: 2016-09-13T15:56:11Z
+pubDate: 2016-09-13T15:56:11.000Z
+updatedDate: 2016-09-13T15:56:11.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -11,8 +11,9 @@ author:
 genre: fiction
 format: paperback
 bookStatus: read
-startedReading: 2013-03-18T11:20:10Z
-finishedReading: 2016-09-13T15:56:11Z
+startedReading: 2013-03-18T11:20:10.000Z
+finishedReading: 2016-09-13T15:56:11.000Z
 bookRating: love
+bookCover: to-kill-a-mockingbird.jpg
 ---
 Finished Reading

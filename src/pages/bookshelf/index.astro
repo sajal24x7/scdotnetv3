@@ -116,6 +116,46 @@ const transformBook = (book: typeof bookshelfPosts[number]) => ({
     link: book.slug ? `/bookshelf/${book.slug}/` : undefined
 });
 
+// Extract unique authors and genres for filters
+const extractAuthors = (author?: string | string[] | null) => {
+    if (!author) return [];
+    return Array.isArray(author) ? author : [author];
+};
+
+const authorCounts: Record<string, number> = {};
+const genreCounts: Record<string, number> = {};
+
+bookshelfPosts.forEach((book) => {
+    const authors = extractAuthors(book.data.author);
+    authors.forEach((author) => {
+        authorCounts[author] = (authorCounts[author] || 0) + 1;
+    });
+
+    if (book.data.genre) {
+        genreCounts[book.data.genre] = (genreCounts[book.data.genre] || 0) + 1;
+    }
+});
+
+// Sort by count (descending), then alphabetically
+const sortedAuthors = Object.entries(authorCounts)
+    .sort((a, b) => {
+        const countDiff = b[1] - a[1];
+        return countDiff !== 0 ? countDiff : a[0].localeCompare(b[0]);
+    });
+
+const sortedGenres = Object.entries(genreCounts)
+    .sort((a, b) => {
+        const countDiff = b[1] - a[1];
+        return countDiff !== 0 ? countDiff : a[0].localeCompare(b[0]);
+    });
+
+const initialAuthorCount = 5;
+const initialGenreCount = 5;
+const topAuthors = sortedAuthors.slice(0, initialAuthorCount);
+const topGenres = sortedGenres.slice(0, initialGenreCount);
+const hasMoreAuthors = sortedAuthors.length > initialAuthorCount;
+const hasMoreGenres = sortedGenres.length > initialGenreCount;
+
 // Calculate total books count
 const totalBooks = bookshelfPosts.length;
 const countText = `${totalBooks} ${totalBooks === 1 ? 'book' : 'books'}`;
@@ -150,6 +190,10 @@ const sectionLandingProps = createSectionLandingProps({
   enableLinkHoverEffect
 >
   <SectionLanding {...sectionLandingProps}>
+    <div class="bookshelf-filters__results" id="filter-results" aria-live="polite" aria-atomic="true" hidden>
+      <div class="bookshelf-filters__summary" id="filter-summary"></div>
+      <div class="bookshelf-filters__active" id="active-filters"></div>
+    </div>
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearBooks = booksByYear[year] ?? [];
@@ -157,20 +201,34 @@ const sectionLandingProps = createSectionLandingProps({
         const bookLabel = bookCount === 1 ? 'book' : 'books';
 
         return (
-          <section class="bookshelf-year" id={`bookshelf-${year}`}>
+          <section class="bookshelf-year" id={`bookshelf-${year}`} data-year={year}>
             <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
               <div class="bookshelf-year__sidebar grid-span-2">
                 <div class="bookshelf-year__sticky">
                   <span class="bookshelf-year__year">{year}</span>
-                  <span class="bookshelf-year__count">{bookCount} {bookLabel}</span>
+                  <span class="bookshelf-year__count" data-year-count={year}>{bookCount} {bookLabel}</span>
                 </div>
               </div>
               {yearBooks.map((book, index) => {
                 const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
                 const bookSlug = book.slug ?? `${year}-${index}`;
+                const bookAuthors = extractAuthors(book.data.author).join(',');
+                const bookGenre = book.data.genre ?? '';
+                const bookStatus = normalizeStatus(book.data.bookStatus);
+                const bookFormat = book.data.format ?? '';
+                const bookRating = book.data.bookRating ?? '';
 
                 return (
-                  <div key={bookSlug} class={`bookshelf-year__book ${gridClasses}`}>
+                  <div
+                    key={bookSlug}
+                    class={`bookshelf-year__book ${gridClasses}`}
+                    data-book-item
+                    data-author={bookAuthors}
+                    data-genre={bookGenre}
+                    data-status={bookStatus}
+                    data-format={bookFormat}
+                    data-rating={bookRating}
+                  >
                     <BookshelfCard {...transformBook(book)} />
                   </div>
                 );
@@ -201,6 +259,210 @@ const sectionLandingProps = createSectionLandingProps({
     flex-direction: column;
     gap: clamp(2rem, 5vw, 3rem);
     padding-bottom: 2rem;
+  }
+
+  .bookshelf-filters__results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .bookshelf-filters__results[hidden] {
+    display: none;
+  }
+
+  :global(.dark) .bookshelf-filters__results {
+    color: #9ca3af;
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .bookshelf-filters__summary {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+  }
+
+  :global(.dark) .bookshelf-filters__summary {
+    color: #9ca3af;
+  }
+
+  .bookshelf-filters__active {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  :global(.filter-badge) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+    background: #e5e7eb;
+    color: #111827;
+  }
+
+  :global(.dark) :global(.filter-badge) {
+    background: #374151;
+    color: #e5e7eb;
+  }
+
+  :global(.filter-badge:hover) {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    opacity: 0.95;
+  }
+
+  :global(.dark) :global(.filter-badge:hover) {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  :global(.filter-badge__remove) {
+    font-size: 1rem;
+    line-height: 1;
+    font-weight: 600;
+    opacity: 0.7;
+    transition: opacity 150ms ease;
+  }
+
+  :global(.filter-badge:hover) :global(.filter-badge__remove) {
+    opacity: 1;
+  }
+
+  /* Genre badges */
+  :global(.filter-badge--genre) {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  :global(.dark) :global(.filter-badge--genre) {
+    background: rgba(30, 64, 175, 0.3);
+    color: #bfdbfe;
+  }
+
+  /* Status badges */
+  :global(.filter-badge--status-reading) {
+    background: #ede9fe;
+    color: #5b21b6;
+  }
+
+  :global(.dark) :global(.filter-badge--status-reading) {
+    background: rgba(91, 33, 182, 0.3);
+    color: #ede9fe;
+  }
+
+  :global(.filter-badge--status-finished) {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  :global(.dark) :global(.filter-badge--status-finished) {
+    background: rgba(22, 101, 52, 0.3);
+    color: #bbf7d0;
+  }
+
+  :global(.filter-badge--status-on-hold) {
+    background: #fef3c7;
+    color: #b45309;
+  }
+
+  :global(.dark) :global(.filter-badge--status-on-hold) {
+    background: rgba(180, 83, 9, 0.3);
+    color: #fde68a;
+  }
+
+  :global(.filter-badge--status-to-read) {
+    background: #dbeafe;
+    color: #1d4ed8;
+  }
+
+  :global(.dark) :global(.filter-badge--status-to-read) {
+    background: rgba(29, 78, 216, 0.3);
+    color: #bfdbfe;
+  }
+
+  /* Format badges */
+  :global(.filter-badge--format) {
+    background: #e5e7eb;
+    color: #111827;
+  }
+
+  :global(.dark) :global(.filter-badge--format) {
+    background: #374151;
+    color: #e5e7eb;
+  }
+
+  /* Rating badges */
+  :global(.filter-badge--rating-like) {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  :global(.dark) :global(.filter-badge--rating-like) {
+    background: rgba(22, 101, 52, 0.35);
+    color: #bbf7d0;
+  }
+
+  :global(.filter-badge--rating-love) {
+    background: #fce7f3;
+    color: #be185d;
+  }
+
+  :global(.dark) :global(.filter-badge--rating-love) {
+    background: rgba(190, 24, 93, 0.3);
+    color: #fbcfe8;
+  }
+
+  :global(.filter-badge--rating-nope) {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+
+  :global(.dark) :global(.filter-badge--rating-nope) {
+    background: rgba(185, 28, 28, 0.3);
+    color: #fecaca;
+  }
+
+  /* Clear all button */
+  :global(.filter-badge--clear-all) {
+    background: #ef4444;
+    color: #ffffff;
+  }
+
+  :global(.dark) :global(.filter-badge--clear-all) {
+    background: #dc2626;
+    color: #ffffff;
+  }
+
+  :global(.filter-badge--clear-all:hover) {
+    background: #dc2626;
+  }
+
+  :global(.dark) :global(.filter-badge--clear-all:hover) {
+    background: #b91c1c;
+  }
+
+  .bookshelf-year[data-filtered="hidden"] {
+    display: none;
+  }
+
+  .bookshelf-year__book[data-filtered="hidden"] {
+    display: none;
   }
 
   .bookshelf-years {
@@ -271,3 +533,312 @@ const sectionLandingProps = createSectionLandingProps({
     }
   }
 </style>
+
+<script>
+  function initBookshelfFilters() {
+    const resultsDisplay = document.getElementById('filter-results');
+    const activeFiltersContainer = document.getElementById('active-filters');
+    const filterSummary = document.getElementById('filter-summary');
+
+    // Store current filter state
+    let selectedAuthor = '';
+    let selectedGenre = '';
+    let selectedStatus = '';
+    let selectedFormat = '';
+    let selectedRating = '';
+
+    // Map for display labels
+    const statusDisplayMap: Record<string, string> = {
+      reading: 'Currently Reading',
+      finished: 'Finished',
+      'on-hold': 'On Hold',
+      'to-read': 'To Read'
+    };
+
+    const ratingDisplayMap: Record<string, string> = {
+      like: 'Like',
+      love: 'Love',
+      nope: 'Nope'
+    };
+
+    const formatDisplayMap: Record<string, string> = {
+      audio: 'Audiobook',
+      audiobook: 'Audiobook',
+      ebook: 'Ebook',
+      digital: 'Ebook',
+      paper: 'Paperback',
+      paperback: 'Paperback',
+      hardcover: 'Hardcover'
+    };
+
+    function updateFilterDisplay() {
+      if (!activeFiltersContainer) return;
+
+      const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating;
+
+      if (!hasFilters) {
+        if (resultsDisplay) {
+          resultsDisplay.setAttribute('hidden', '');
+        }
+        if (filterSummary) {
+          filterSummary.textContent = '';
+        }
+        activeFiltersContainer.innerHTML = '';
+        return;
+      }
+
+      if (resultsDisplay) {
+        resultsDisplay.removeAttribute('hidden');
+      }
+
+      // Build filter badges
+      const badges: string[] = [];
+
+      if (selectedAuthor) {
+        badges.push(`
+          <button type="button" class="filter-badge" data-remove-filter="author">
+            ${selectedAuthor} <span class="filter-badge__remove" aria-label="Remove author filter">×</span>
+          </button>
+        `);
+      }
+
+      if (selectedGenre) {
+        badges.push(`
+          <button type="button" class="filter-badge filter-badge--genre" data-remove-filter="genre">
+            ${selectedGenre} <span class="filter-badge__remove" aria-label="Remove genre filter">×</span>
+          </button>
+        `);
+      }
+
+      if (selectedStatus) {
+        const statusLabel = statusDisplayMap[selectedStatus] || selectedStatus;
+        badges.push(`
+          <button type="button" class="filter-badge filter-badge--status-${selectedStatus}" data-remove-filter="status">
+            ${statusLabel} <span class="filter-badge__remove" aria-label="Remove status filter">×</span>
+          </button>
+        `);
+      }
+
+      if (selectedFormat) {
+        const formatLabel = formatDisplayMap[selectedFormat.toLowerCase()] || selectedFormat.toUpperCase();
+        badges.push(`
+          <button type="button" class="filter-badge filter-badge--format" data-remove-filter="format">
+            ${formatLabel} <span class="filter-badge__remove" aria-label="Remove format filter">×</span>
+          </button>
+        `);
+      }
+
+      if (selectedRating) {
+        const ratingLabel = ratingDisplayMap[selectedRating] || selectedRating;
+        badges.push(`
+          <button type="button" class="filter-badge filter-badge--rating-${selectedRating}" data-remove-filter="rating">
+            ${ratingLabel} <span class="filter-badge__remove" aria-label="Remove rating filter">×</span>
+          </button>
+        `);
+      }
+
+      // Add clear all button if multiple filters
+      if (badges.length > 1) {
+        badges.push(`
+          <button type="button" class="filter-badge filter-badge--clear-all" data-remove-filter="all">
+            Clear all
+          </button>
+        `);
+      }
+
+      activeFiltersContainer.innerHTML = badges.join('');
+    }
+
+    function applyFilters() {
+      const allBookItems = document.querySelectorAll('[data-book-item]');
+      let visibleCount = 0;
+
+      // Track visible books per year
+      const yearCounts: Record<string, number> = {};
+
+      allBookItems.forEach((bookItem) => {
+        const bookAuthors = bookItem.getAttribute('data-author') || '';
+        const bookGenre = bookItem.getAttribute('data-genre') || '';
+        const bookStatus = bookItem.getAttribute('data-status') || '';
+        const bookFormat = bookItem.getAttribute('data-format') || '';
+        const bookRating = bookItem.getAttribute('data-rating') || '';
+
+        const authorMatch = !selectedAuthor || bookAuthors.split(',').includes(selectedAuthor);
+        const genreMatch = !selectedGenre || bookGenre === selectedGenre;
+        const statusMatch = !selectedStatus || bookStatus === selectedStatus;
+        const formatMatch = !selectedFormat || bookFormat.toLowerCase() === selectedFormat.toLowerCase();
+        const ratingMatch = !selectedRating || bookRating === selectedRating;
+
+        const isVisible = authorMatch && genreMatch && statusMatch && formatMatch && ratingMatch;
+
+        if (isVisible) {
+          bookItem.removeAttribute('data-filtered');
+          visibleCount++;
+
+          // Get the year from the parent section
+          const yearSection = bookItem.closest('[data-year]');
+          if (yearSection) {
+            const year = yearSection.getAttribute('data-year') || '';
+            yearCounts[year] = (yearCounts[year] || 0) + 1;
+          }
+        } else {
+          bookItem.setAttribute('data-filtered', 'hidden');
+        }
+      });
+
+      // Update year counts and hide empty year sections
+      const yearSections = document.querySelectorAll('[data-year]');
+      yearSections.forEach((section) => {
+        const year = section.getAttribute('data-year') || '';
+        const count = yearCounts[year] || 0;
+
+        if (count === 0) {
+          section.setAttribute('data-filtered', 'hidden');
+        } else {
+          section.removeAttribute('data-filtered');
+
+          // Update the year count display
+          const countElement = section.querySelector(`[data-year-count="${year}"]`);
+          if (countElement) {
+            const bookLabel = count === 1 ? 'book' : 'books';
+            countElement.textContent = `${count} ${bookLabel}`;
+          }
+        }
+      });
+
+      // Update results count only if filters are active
+      const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating;
+      if (filterSummary && hasFilters) {
+        const bookLabel = visibleCount === 1 ? 'book' : 'books';
+        filterSummary.textContent = `Showing ${visibleCount} ${bookLabel}`;
+      }
+
+      // Update filter display
+      updateFilterDisplay();
+    }
+
+    function resetFilters() {
+      selectedAuthor = '';
+      selectedGenre = '';
+      selectedStatus = '';
+      selectedFormat = '';
+      selectedRating = '';
+
+      // Hide results display when no filters active
+      if (resultsDisplay) {
+        resultsDisplay.setAttribute('hidden', '');
+      }
+
+      // Clear filter summary
+      if (filterSummary) {
+        filterSummary.textContent = '';
+      }
+
+      // Reset all book items
+      const allBookItems = document.querySelectorAll('[data-book-item]');
+      allBookItems.forEach((bookItem) => {
+        bookItem.removeAttribute('data-filtered');
+      });
+
+      // Reset year counts
+      const yearSections = document.querySelectorAll('[data-year]');
+      yearSections.forEach((section) => {
+        section.removeAttribute('data-filtered');
+        const year = section.getAttribute('data-year') || '';
+        const allYearBooks = section.querySelectorAll('[data-book-item]');
+        const count = allYearBooks.length;
+
+        const countElement = section.querySelector(`[data-year-count="${year}"]`);
+        if (countElement) {
+          const bookLabel = count === 1 ? 'book' : 'books';
+          countElement.textContent = `${count} ${bookLabel}`;
+        }
+      });
+
+      // Update filter display
+      updateFilterDisplay();
+    }
+
+    // Handle clicks on card field filters and remove filter buttons
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+
+      // Check for remove filter button
+      const removeButton = target.closest('[data-remove-filter]') as HTMLElement;
+      if (removeButton) {
+        event.preventDefault();
+        const filterToRemove = removeButton.getAttribute('data-remove-filter');
+
+        if (filterToRemove === 'all') {
+          resetFilters();
+        } else if (filterToRemove === 'author') {
+          selectedAuthor = '';
+          applyFilters();
+        } else if (filterToRemove === 'genre') {
+          selectedGenre = '';
+          applyFilters();
+        } else if (filterToRemove === 'status') {
+          selectedStatus = '';
+          applyFilters();
+        } else if (filterToRemove === 'format') {
+          selectedFormat = '';
+          applyFilters();
+        } else if (filterToRemove === 'rating') {
+          selectedRating = '';
+          applyFilters();
+        }
+        return;
+      }
+
+      // Check for filter trigger
+      const filterTrigger = target.closest('[data-filter-type]') as HTMLElement;
+      if (filterTrigger) {
+        event.preventDefault();
+        const filterType = filterTrigger.getAttribute('data-filter-type');
+        const filterValue = filterTrigger.getAttribute('data-filter-value') || '';
+
+        // Toggle filter - if clicking the same filter, remove it
+        if (filterType === 'author') {
+          if (selectedAuthor === filterValue) {
+            selectedAuthor = '';
+          } else {
+            selectedAuthor = filterValue;
+          }
+        } else if (filterType === 'genre') {
+          if (selectedGenre === filterValue) {
+            selectedGenre = '';
+          } else {
+            selectedGenre = filterValue;
+          }
+        } else if (filterType === 'status') {
+          if (selectedStatus === filterValue) {
+            selectedStatus = '';
+          } else {
+            selectedStatus = filterValue;
+          }
+        } else if (filterType === 'format') {
+          if (selectedFormat === filterValue) {
+            selectedFormat = '';
+          } else {
+            selectedFormat = filterValue;
+          }
+        } else if (filterType === 'rating') {
+          if (selectedRating === filterValue) {
+            selectedRating = '';
+          } else {
+            selectedRating = filterValue;
+          }
+        }
+
+        applyFilters();
+      }
+    });
+  }
+
+  // Initialize on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBookshelfFilters);
+  } else {
+    initBookshelfFilters();
+  }
+</script>

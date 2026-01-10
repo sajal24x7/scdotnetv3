@@ -1,19 +1,20 @@
 ---
-title: "The Immortals of Meluha"
+title: The Immortals of Meluha
 slug: the-immortals-of-meluha
-pubDate: 2013-10-10T15:15:23Z
-updatedDate: 2013-10-10T15:15:23Z
+pubDate: 2013-10-10T15:15:23.000Z
+updatedDate: 2013-10-10T15:15:23.000Z
 category: bookshelf
 tags:
   - book-reviews
 author:
   - Amish Tripathi
-series: "Shiva Trilogy"
+series: Shiva Trilogy
 genre: fantasy
 format: paperback
 bookStatus: read
-startedReading: 2013-10-01T13:39:05Z
-finishedReading: 2013-10-10T15:15:23Z
+startedReading: 2013-10-01T13:39:05.000Z
+finishedReading: 2013-10-10T15:15:23.000Z
 bookRating: like
+bookCover: the-immortals-of-meluha.jpg
 ---
 Finished Reading

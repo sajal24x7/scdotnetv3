@@ -1,19 +1,20 @@
 ---
-title: "The Human Division"
+title: The Human Division
 slug: the-human-division
-pubDate: 2016-01-11T10:16:50Z
-updatedDate: 2016-01-11T10:16:50Z
+pubDate: 2016-01-11T10:16:50.000Z
+updatedDate: 2016-01-11T10:16:50.000Z
 category: bookshelf
 tags:
   - book-reviews
 author:
   - John Scalzi
-series: "Old Man's War"
+series: Old Man's War
 genre: fiction
 format: paperback
 bookStatus: read
-startedReading: 2016-01-11T10:16:50Z
-finishedReading: 2016-01-11T10:16:50Z
+startedReading: 2016-01-11T10:16:50.000Z
+finishedReading: 2016-01-11T10:16:50.000Z
 bookRating: like
+bookCover: the-human-division.jpg
 ---
 Finished Reading

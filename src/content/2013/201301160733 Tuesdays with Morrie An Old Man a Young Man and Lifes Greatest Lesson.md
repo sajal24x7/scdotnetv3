@@ -1,8 +1,8 @@
 ---
-title: "Tuesdays with Morrie"
+title: Tuesdays with Morrie
 slug: tuesdays-with-morrie-an-old-man-a-young-man-and-lifes-greatest-lesson
-pubDate: 2013-01-16T07:33:54Z
-updatedDate: 2013-01-16T07:33:54Z
+pubDate: 2013-01-16T07:33:54.000Z
+updatedDate: 2013-01-16T07:33:54.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -11,8 +11,9 @@ author:
 genre: fiction
 format: paperback
 bookStatus: read
-startedReading: 2013-01-08T15:13:30Z
-finishedReading: 2013-01-16T07:33:54Z
+startedReading: 2013-01-08T15:13:30.000Z
+finishedReading: 2013-01-16T07:33:54.000Z
 bookRating: love
+bookCover: tuesdays-with-morrie.jpg
 ---
 Almost made me cry!
