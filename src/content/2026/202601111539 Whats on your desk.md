@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115876752580896153'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mc5nqd3evx2s'
+  - 'https://www.threads.com/@sajal24x7/post/DTX2HQ_EdDs'
 ---
 [What’s on your desk, Stevie Bonifield?](https://www.theverge.com/gadgets/850479/desk-pc-keyboard-razer-kobo)
 
