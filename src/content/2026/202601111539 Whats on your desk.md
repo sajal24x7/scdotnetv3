@@ -1,12 +1,14 @@
 ---
-title: "Whats on your desk"
-slug: "whats-on-your-desk"
-pubDate: 2026-01-11T15:40:52+02:00
-updatedDate: 2026-01-11T15:40:52+02:00
+title: Whats on your desk
+slug: whats-on-your-desk
+pubDate: 2026-01-11T13:40:52.000Z
+updatedDate: 2026-01-11T13:40:52.000Z
 category: micro
 tags:
   - desk-setup
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115876752580896153'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mc5nqd3evx2s'
 ---
 [What’s on your desk, Stevie Bonifield?](https://www.theverge.com/gadgets/850479/desk-pc-keyboard-razer-kobo)
 
