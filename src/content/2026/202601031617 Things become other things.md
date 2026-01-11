@@ -6,8 +6,10 @@ updatedDate: 2026-01-03T14:29:57.000Z
 category: bookshelf
 tags:
   - non-fiction
+  - walking
+  - japan
 format: hardcover
-genre: non-fiction
+genre: memoir
 author: Craig Mod
 bookStatus: read
 startedReading: 2026-01-03T14:29:57.000Z
