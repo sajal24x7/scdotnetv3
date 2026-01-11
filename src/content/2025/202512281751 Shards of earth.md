@@ -7,7 +7,7 @@ category: bookshelf
 tags:
   - scifi
 format: audio
-genre: scifi
+genre: sci-fi
 author: Adrian Tchaikovsky
 series: "The Final Architecture #1"
 bookStatus: read
