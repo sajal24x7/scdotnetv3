@@ -1,13 +1,15 @@
 ---
-title: "Be wary of digital deskilling"
-slug: "be-wary-of-digital-deskilling"
-pubDate: 2026-01-12T17:47:31+02:00
-updatedDate: 2026-01-12T17:47:31+02:00
+title: Be wary of digital deskilling
+slug: be-wary-of-digital-deskilling
+pubDate: 2026-01-12T15:47:31.000Z
+updatedDate: 2026-01-12T15:47:31.000Z
 category: micro
 tags:
   - ai
   - work
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115882911145070898'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcafaw3d2a2g'
 ---
 [Be Wary of Digital Deskilling - Cal Newport](https://calnewport.com/be-wary-of-digital-deskilling/)
 
