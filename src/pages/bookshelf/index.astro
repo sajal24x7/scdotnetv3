@@ -125,14 +125,20 @@ const extractAuthors = (author?: string | string[] | null) => {
 const authorCounts: Record<string, number> = {};
 const genreCounts: Record<string, number> = {};
 
+// Only count finished books for author and genre counts
 bookshelfPosts.forEach((book) => {
-    const authors = extractAuthors(book.data.author);
-    authors.forEach((author) => {
-        authorCounts[author] = (authorCounts[author] || 0) + 1;
-    });
+    const status = book.data.bookStatus;
+    const isFinished = status === 'finished' || status === 'read';
 
-    if (book.data.genre) {
-        genreCounts[book.data.genre] = (genreCounts[book.data.genre] || 0) + 1;
+    if (isFinished) {
+        const authors = extractAuthors(book.data.author);
+        authors.forEach((author) => {
+            authorCounts[author] = (authorCounts[author] || 0) + 1;
+        });
+
+        if (book.data.genre) {
+            genreCounts[book.data.genre] = (genreCounts[book.data.genre] || 0) + 1;
+        }
     }
 });
 
@@ -156,8 +162,12 @@ const topGenres = sortedGenres.slice(0, initialGenreCount);
 const hasMoreAuthors = sortedAuthors.length > initialAuthorCount;
 const hasMoreGenres = sortedGenres.length > initialGenreCount;
 
-// Calculate total books count
-const totalBooks = bookshelfPosts.length;
+// Calculate total books count (only finished books)
+const finishedBooks = bookshelfPosts.filter((post) => {
+    const status = post.data.bookStatus;
+    return status === 'finished' || status === 'read';
+});
+const totalBooks = finishedBooks.length;
 const countText = `${totalBooks} ${totalBooks === 1 ? 'book' : 'books'}`;
 
 const sectionLandingProps = createSectionLandingProps({
@@ -197,7 +207,11 @@ const sectionLandingProps = createSectionLandingProps({
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearBooks = booksByYear[year] ?? [];
-        const bookCount = yearBooks.length;
+        const finishedYearBooks = yearBooks.filter((book) => {
+          const status = book.data.bookStatus;
+          return status === 'finished' || status === 'read';
+        });
+        const bookCount = finishedYearBooks.length;
         const bookLabel = bookCount === 1 ? 'book' : 'books';
 
         return (
@@ -690,7 +704,23 @@ const sectionLandingProps = createSectionLandingProps({
       const yearSections = document.querySelectorAll('[data-year]');
       yearSections.forEach((section) => {
         const year = section.getAttribute('data-year') || '';
-        const count = yearCounts[year] || 0;
+
+        // If filters are active, use filtered count, otherwise count only finished books
+        const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating;
+        let count = 0;
+
+        if (hasFilters) {
+          count = yearCounts[year] || 0;
+        } else {
+          // No filters active - count only finished books
+          const allYearBooks = section.querySelectorAll('[data-book-item]');
+          allYearBooks.forEach((bookItem) => {
+            const bookStatus = bookItem.getAttribute('data-status') || '';
+            if (bookStatus === 'finished') {
+              count++;
+            }
+          });
+        }
 
         if (count === 0) {
           section.setAttribute('data-filtered', 'hidden');
@@ -746,7 +776,15 @@ const sectionLandingProps = createSectionLandingProps({
         section.removeAttribute('data-filtered');
         const year = section.getAttribute('data-year') || '';
         const allYearBooks = section.querySelectorAll('[data-book-item]');
-        const count = allYearBooks.length;
+
+        // Count only finished books
+        let count = 0;
+        allYearBooks.forEach((bookItem) => {
+          const bookStatus = bookItem.getAttribute('data-status') || '';
+          if (bookStatus === 'finished') {
+            count++;
+          }
+        });
 
         const countElement = section.querySelector(`[data-year-count="${year}"]`);
         if (countElement) {
