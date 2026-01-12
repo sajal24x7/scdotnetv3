@@ -220,7 +220,7 @@ const sectionLandingProps = createSectionLandingProps({
               <div class="bookshelf-year__sidebar grid-span-2">
                 <div class="bookshelf-year__sticky">
                   <span class="bookshelf-year__year">{year}</span>
-                  <span class="bookshelf-year__count" data-year-count={year}>{bookCount} {bookLabel}</span>
+                  <span class="bookshelf-year__count" data-year-count={year}>Read {bookCount} {bookLabel}</span>
                 </div>
               </div>
               {yearBooks.map((book, index) => {
@@ -731,7 +731,7 @@ const sectionLandingProps = createSectionLandingProps({
           const countElement = section.querySelector(`[data-year-count="${year}"]`);
           if (countElement) {
             const bookLabel = count === 1 ? 'book' : 'books';
-            countElement.textContent = `${count} ${bookLabel}`;
+            countElement.textContent = `Read ${count} ${bookLabel}`;
           }
         }
       });
@@ -789,7 +789,7 @@ const sectionLandingProps = createSectionLandingProps({
         const countElement = section.querySelector(`[data-year-count="${year}"]`);
         if (countElement) {
           const bookLabel = count === 1 ? 'book' : 'books';
-          countElement.textContent = `${count} ${bookLabel}`;
+          countElement.textContent = `Read ${count} ${bookLabel}`;
         }
       });
 
