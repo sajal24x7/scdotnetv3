@@ -1,13 +1,16 @@
 ---
-title: "A software library with no code"
-slug: "a-software-library-with-no-code"
-pubDate: 2026-01-12T06:48:23+02:00
-updatedDate: 2026-01-12T06:48:23+02:00
+title: A software library with no code
+slug: a-software-library-with-no-code
+pubDate: 2026-01-12T04:48:23.000Z
+updatedDate: 2026-01-12T04:48:23.000Z
 category: micro
 tags:
   - code
   - llms
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115880319223615590'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mc7agb23ru2b'
+  - 'https://www.threads.com/@sajal24x7/post/DTZdZ74jtJb'
 ---
 [A Software Library with No Code by Drew Breunig](https://www.dbreunig.com/2026/01/08/a-software-library-with-no-code.html)
 
