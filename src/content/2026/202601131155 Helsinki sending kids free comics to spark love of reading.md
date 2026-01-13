@@ -1,13 +1,15 @@
 ---
-title: "Helsinki sending kids free comics to spark love of reading"
-slug: "helsinki-sending-kids-free-comics-to-spark-love-of-reading"
-pubDate: 2026-01-13T11:57:26+02:00
-updatedDate: 2026-01-13T11:57:26+02:00
+title: Helsinki sending kids free comics to spark love of reading
+slug: helsinki-sending-kids-free-comics-to-spark-love-of-reading
+pubDate: 2026-01-13T09:57:26.000Z
+updatedDate: 2026-01-13T09:57:26.000Z
 category: micro
 tags:
   - reading
   - helsinki
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115887197131315917'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mccc5xrkeg2s'
 ---
 [Helsinki sending kids free comics to spark love of reading](https://yle.fi/a/74-20203955?origin=rss)
 
