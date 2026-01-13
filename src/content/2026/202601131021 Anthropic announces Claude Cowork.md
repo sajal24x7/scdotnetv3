@@ -1,14 +1,16 @@
 ---
-title: "Anthropic announces Claude Cowork"
-slug: "anthropic-announces-claude-cowork"
-pubDate: 2026-01-13T10:24:18+02:00
-updatedDate: 2026-01-13T10:24:18+02:00
+title: Anthropic announces Claude Cowork
+slug: anthropic-announces-claude-cowork
+pubDate: 2026-01-13T08:24:18.000Z
+updatedDate: 2026-01-13T08:24:18.000Z
 category: micro
 tags:
   - openai
   - anthropic
   - claude
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115886831052228802'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcc4xitrsn2a'
 ---
 [First impressions of Claude Cowork, Anthropic’s general agent by Simon Willison](https://simonwillison.net/2026/Jan/12/claude-cowork/#atom-everything)
 
