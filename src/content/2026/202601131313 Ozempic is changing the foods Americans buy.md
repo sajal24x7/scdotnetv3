@@ -1,13 +1,15 @@
 ---
-title: "Ozempic is changing the foods Americans buy"
-slug: "ozempic-is-changing-the-foods-americans-buy"
-pubDate: 2026-01-13T13:36:57+02:00
-updatedDate: 2026-01-13T13:36:57+02:00
+title: Ozempic is changing the foods Americans buy
+slug: ozempic-is-changing-the-foods-americans-buy
+pubDate: 2026-01-13T11:36:57.000Z
+updatedDate: 2026-01-13T11:36:57.000Z
 category: micro
 tags:
   - health
   - ozempic
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115887588220376122'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcchpsipdj2l'
 ---
 [Ozempic is changing the foods Americans buy | Cornell Chronicle](https://news.cornell.edu/stories/2025/12/ozempic-changing-foods-americans-buy)
 
