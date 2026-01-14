@@ -1,14 +1,17 @@
 ---
-title: "Gemini is winning"
-slug: "gemini-is-winning"
-pubDate: 2026-01-14T20:34:21+02:00
-updatedDate: 2026-01-14T20:34:21+02:00
+title: Gemini is winning
+slug: gemini-is-winning
+pubDate: 2026-01-14T18:34:21.000Z
+updatedDate: 2026-01-14T18:34:21.000Z
 category: micro
 tags:
   - google
   - gemini
   - ai
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115894892635772206'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcfpjhmyou2l'
+  - 'https://www.threads.com/@sajal24x7/post/DTgFi8MER43'
 ---
 [Gemini is winning by David Pierce](https://www.theverge.com/ai-artificial-intelligence/861863/google-gemini-ai-race-winner)
 
