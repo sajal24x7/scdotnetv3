@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115886831052228802'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcc4xitrsn2a'
+  - 'https://www.threads.com/@sajal24x7/post/DTh4BDUEYwK'
 ---
 [First impressions of Claude Cowork, Anthropic’s general agent by Simon Willison](https://simonwillison.net/2026/Jan/12/claude-cowork/#atom-everything)
 

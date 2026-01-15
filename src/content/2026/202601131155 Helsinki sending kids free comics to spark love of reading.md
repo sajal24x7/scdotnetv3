@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115887197131315917'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mccc5xrkeg2s'
+  - 'https://www.threads.com/@sajal24x7/post/DTh4B0bEXb1'
 ---
 [Helsinki sending kids free comics to spark love of reading](https://yle.fi/a/74-20203955?origin=rss)
 

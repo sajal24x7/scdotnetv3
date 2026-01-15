@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115887588220376122'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcchpsipdj2l'
+  - 'https://www.threads.com/@sajal24x7/post/DTh4CkXEWlR'
 ---
 [Ozempic is changing the foods Americans buy | Cornell Chronicle](https://news.cornell.edu/stories/2025/12/ozempic-changing-foods-americans-buy)
 

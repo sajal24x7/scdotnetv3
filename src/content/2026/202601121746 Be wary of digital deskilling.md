@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115882911145070898'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcafaw3d2a2g'
+  - 'https://www.threads.com/@sajal24x7/post/DTh4AMQEX9r'
 ---
 [Be Wary of Digital Deskilling - Cal Newport](https://calnewport.com/be-wary-of-digital-deskilling/)
 
