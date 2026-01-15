@@ -1,13 +1,16 @@
 ---
-title: "Microsoft is closing its employee library"
-slug: "microsoft-is-closing-its-employee-library"
-pubDate: 2026-01-15T21:36:19+02:00
-updatedDate: 2026-01-15T21:36:19+02:00
+title: Microsoft is closing its employee library
+slug: microsoft-is-closing-its-employee-library
+pubDate: 2026-01-15T19:36:19.000Z
+updatedDate: 2026-01-15T19:36:19.000Z
 category: micro
 tags:
   - microsoft
   - library
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115900799031962765'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcidhfguop2s'
+  - 'https://www.threads.com/@sajal24x7/post/DTixclfD8MV'
 ---
 [Microsoft is closing its employee library and cutting back on subscriptions by Tom Warren](https://www.theverge.com/tech/862531/microsoft-library-closure-transition-changes-notepad)
 
