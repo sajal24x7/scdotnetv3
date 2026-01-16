@@ -16,5 +16,7 @@ syndicationUrls:
   - 'https://www.threads.com/@sajal24x7/post/DTD39NbD_Ta'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zsnnzk2o'
 bookCover: how-to-win-friends-and-influence-people.jpg
+bookRating: like
+finishedReading: 2026-01-15T23:59:50+02:00
 ---
 Started reading.
