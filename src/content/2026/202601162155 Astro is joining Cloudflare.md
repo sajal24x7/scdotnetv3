@@ -1,13 +1,16 @@
 ---
-title: "Astro is joining Cloudflare"
-slug: "astro-is-joining-cloudflare"
-pubDate: 2026-01-16T21:56:15+02:00
-updatedDate: 2026-01-16T21:56:15+02:00
+title: Astro is joining Cloudflare
+slug: astro-is-joining-cloudflare
+pubDate: 2026-01-16T19:56:15.000Z
+updatedDate: 2026-01-16T19:56:15.000Z
 category: micro
 tags:
   - cloudflare
   - astro
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115906538342270974'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mckuzdgeze22'
+  - 'https://www.threads.com/@sajal24x7/post/DTlYe5Kgfwi'
 ---
 [Astro is joining Cloudflare](https://blog.cloudflare.com/astro-joins-cloudflare/)
 
