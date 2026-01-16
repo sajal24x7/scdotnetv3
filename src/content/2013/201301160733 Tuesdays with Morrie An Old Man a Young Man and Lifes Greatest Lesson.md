@@ -8,7 +8,7 @@ tags:
   - book-reviews
 author:
   - Mitch Albom
-genre: fiction
+genre: memoir
 format: paperback
 bookStatus: read
 startedReading: 2013-01-08T15:13:30.000Z

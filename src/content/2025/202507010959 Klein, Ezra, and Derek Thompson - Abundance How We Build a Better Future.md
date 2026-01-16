@@ -1,24 +1,24 @@
 ---
-title: "Abundance How We Build a Better Future"
-slug: "abundance-how-we-build-a-better-future"
+title: Abundance How We Build a Better Future
+slug: abundance-how-we-build-a-better-future
 pubDate: 2025-07-07T10:44:58+03:00
 category: bookshelf
-tags: 
+tags:
   - future
   - non-fiction
 startDate: 2025-07-01T09:59:00+03:00
 endDate: 2025-07-06T18:00:00+03:00
 format: audio
-genre: future
-bookCover: 'abundance.jpg'
-author: 
-  - "Ezra Klein" 
-  - "Derek Thompson"
+genre: politics
+bookCover: abundance.jpg
+author:
+  - Ezra Klein
+  - Derek Thompson
 series: none
-bookStatus: "read"
+bookStatus: read
 bookRating: like
-startedReading: "2025-07-01T09:59:00+03:00"
-finishedReading: "2025-07-01T09:59:00+03:00"
+startedReading: 2025-07-01T09:59:00+03:00
+finishedReading: 2025-07-01T09:59:00+03:00
 ---
 This book did not turn out to be how I had imagined it would be. Maybe by looking at the title, maybe by looking at the cover, I was hoping for it to be a description of a future world achieved by technology, a future of abundance, of steps humanity might take to get there. Perhaps, I was hoping for a non-fiction version of  [Kim Stanley Robinson's -The Ministry For The Future](https://g.co/kgs/xeL8P6S).
 

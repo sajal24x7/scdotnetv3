@@ -9,7 +9,7 @@ tags:
 author:
   - John Scalzi
 series: Old Man's War
-genre: fiction
+genre: sci-fi
 format: paperback
 bookStatus: read
 startedReading: 2016-01-11T10:14:54.000Z

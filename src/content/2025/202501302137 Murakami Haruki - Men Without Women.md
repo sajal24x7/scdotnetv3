@@ -1,20 +1,20 @@
 ---
-title: 'Men Without Women'
+title: Men Without Women
 slug: murakami-haruki-men-without-women
-description: 'I love the book, and the object that it is'
+description: I love the book, and the object that it is
 pubDate: 2025-01-30T21:37:13
 updatedDate: 2025-01-30T21:37:13
 category: bookshelf
 tags:
   - book-reviews
   - murakami
-genre: book-reviews
-bookCover: 'men-without-women.jpg'
-author: "Haruki Murakami"
-bookStatus: "read"
+genre: short-story
+bookCover: men-without-women.jpg
+author: Haruki Murakami
+bookStatus: read
 bookRating: like
-startedReading: "2025-01-30T21:37:00+03:00"
-finishedReading: "2025-01-30T21:37:00+03:00"
+startedReading: 2025-01-30T21:37:00+03:00
+finishedReading: 2025-01-30T21:37:00+03:00
 ---
 # Few things about the thing that is this book
 

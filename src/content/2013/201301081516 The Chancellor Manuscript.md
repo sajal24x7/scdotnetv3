@@ -1,5 +1,5 @@
 ---
-title: "The Chancellor Manuscript"
+title: The Chancellor Manuscript
 slug: the-chancellor-manuscript
 pubDate: 2013-01-08T15:16:56.000Z
 updatedDate: 2013-01-08T15:16:56.000Z
@@ -8,7 +8,7 @@ tags:
   - book-reviews
 author:
   - Robert Ludlum
-genre: mystery
+genre: thriller
 format: paperback
 bookStatus: read
 startedReading: 2013-01-08T15:16:51.000Z

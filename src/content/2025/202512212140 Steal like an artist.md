@@ -7,16 +7,16 @@ category: bookshelf
 tags:
   - non-fiction
 format: hardcover
-genre: non-fiction
+genre: craft
 author: Austin Kleon
 bookStatus: read
 startedReading: 2025-12-21T19:41:53.000Z
 bookRating: love
 finishedReading: 2025-12-21T20:42:48.000Z
 syndicationUrls:
-  - 'https://mastodon.social/@sajal24x7/115759533928277913'
-  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3majlxhmcct2g'
-  - 'https://www.threads.com/@sajal24x7/post/DSiiFyqgZnX'
+  - https://mastodon.social/@sajal24x7/115759533928277913
+  - https://bsky.app/profile/sajal24x7.bsky.social/post/3majlxhmcct2g
+  - https://www.threads.com/@sajal24x7/post/DSiiFyqgZnX
 bookCover: steal-like-an-artist.jpg
 ---
 

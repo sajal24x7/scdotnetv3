@@ -8,7 +8,7 @@ tags:
   - book-reviews
 author:
   - Khaled Hosseini
-genre: fiction
+genre: drama
 format: paperback
 bookStatus: read
 startedReading: 2013-12-27T17:59:03.000Z

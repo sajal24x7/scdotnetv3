@@ -8,7 +8,7 @@ tags:
   - book-reviews
 author:
   - Morgan Housel
-genre: non-fiction
+genre: finance
 format: paperback
 bookStatus: read
 startedReading: 2023-11-29T07:17:18.000Z

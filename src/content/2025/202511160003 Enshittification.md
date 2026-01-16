@@ -7,7 +7,7 @@ category: bookshelf
 tags:
   - non-fiction
 format: audio
-genre: non-fiction
+genre: technology
 author: Cory Doctorow
 bookCover: enshittification.jpg
 bookStatus: read
@@ -15,8 +15,8 @@ startedReading: 2025-11-15T08:04:07.000Z
 finishedReading: 2025-11-22T14:04:07.000
 bookRating: like
 syndicationUrls:
-  - 'https://mastodon.social/@sajal24x7/115555989670585287'
-  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5p7gaypm72s'
+  - https://mastodon.social/@sajal24x7/115555989670585287
+  - https://bsky.app/profile/sajal24x7.bsky.social/post/3m5p7gaypm72s
 ---
 
 Most of the ideas in the book were not new to me. I have been reading Cory and Pluralistic since quite some time now.

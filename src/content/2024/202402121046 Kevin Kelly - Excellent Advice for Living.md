@@ -6,7 +6,7 @@ updatedDate: 2024-12-24T10:52:55
 category: bookshelf
 tags:
   - book-reviews
-genre: book-reviews
+genre: self-help
 author: Kevin Kelly
 series: none
 startedReading: 2024-02-12T10:46:00

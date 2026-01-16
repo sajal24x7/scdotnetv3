@@ -1,5 +1,5 @@
 ---
-title: "The Da Vinci Code"
+title: The Da Vinci Code
 slug: the-da-vinci-code
 pubDate: 2013-01-08T15:14:52.000Z
 updatedDate: 2013-01-08T15:14:52.000Z
@@ -8,8 +8,8 @@ tags:
   - book-reviews
 author:
   - Dan Brown
-series: "Robert Langdon"
-genre: mystery
+series: Robert Langdon
+genre: thriller
 format: paperback
 bookStatus: read
 startedReading: 2013-01-08T15:14:45.000Z

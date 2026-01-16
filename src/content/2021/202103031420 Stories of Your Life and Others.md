@@ -9,14 +9,14 @@ tags:
 format: paperback
 author:
   - Ted Chiang
-genre: Sci-Fi
+genre: sci-fi
 bookStatus: read
 startedReading: 2021-03-03T13:50:48.000Z
 finishedReading: 2021-03-05T13:50:48.000Z
 syndicationUrls:
-  - 'https://mastodon.social/@sajal24x7/115842822272411645'
-  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbolkmqaw52r'
-  - 'https://www.threads.com/@sajal24x7/post/DTIaGdpEYaL'
+  - https://mastodon.social/@sajal24x7/115842822272411645
+  - https://bsky.app/profile/sajalchoudhary.net/post/3mbolkmqaw52r
+  - https://www.threads.com/@sajal24x7/post/DTIaGdpEYaL
 bookCover: stories-of-your-life-and-others.jpg
 ---
 I was inspired to pick this up after watching Arrival.

@@ -1,22 +1,22 @@
 ---
-title: "All Systems Red"
-slug: "all-systems-red"
+title: All Systems Red
+slug: all-systems-red
 pubDate: 2025-07-09T16:12:00+03:00
 updatedDate: 2025-07-09T16:12:00+03:00
 category: bookshelf
-tags: 
+tags:
   - murderbot
-  - sci-fi 
+  - sci-fi
   - martha-wells
-author: "Martha Wells"
-series: "The Murderbot Diaries"
+author: Martha Wells
+series: The Murderbot Diaries
 startedReading: 2025-07-07T09:31:00+03:00
 finishedReading: 2025-07-08T18:00:00+03:00
-bookStatus: "read"
+bookStatus: read
 bookRating: like
 format: audio
-genre: murderbot
-bookCover: 'all-systems-red.jpg'
+genre: sci-fi
+bookCover: all-systems-red.jpg
 ---
 
 Book 1 - [All systems red](/bookshelf/all-systems-red)

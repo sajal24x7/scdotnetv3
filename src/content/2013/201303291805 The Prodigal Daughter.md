@@ -9,7 +9,7 @@ tags:
 author:
   - Jeffrey Archer
 series: Kane & Abel
-genre: fiction
+genre: thriller
 format: paperback
 bookStatus: read
 startedReading: 2013-03-19T16:21:38.000Z

@@ -9,15 +9,15 @@ tags:
   - craft
 format: ebook
 series: Elements of fiction writing
-genre: writing-craft
+genre: craft
 bookStatus: read
 startedReading: 2024-10-22T13:29:30.000Z
 bookRating: like
 finishedReading: 2024-11-13T13:29:30.000Z
 syndicationUrls:
-  - 'https://mastodon.social/@sajal24x7/115865426553070735'
-  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbymrttrhj2i'
-  - 'https://www.threads.com/@sajal24x7/post/DTV7SVTj26F'
+  - https://mastodon.social/@sajal24x7/115865426553070735
+  - https://bsky.app/profile/sajalchoudhary.net/post/3mbymrttrhj2i
+  - https://www.threads.com/@sajal24x7/post/DTV7SVTj26F
 bookCover: scene-structure.jpg
 ---
 ## what does a reader want

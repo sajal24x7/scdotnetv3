@@ -8,7 +8,7 @@ tags:
   - book-reviews
 author:
   - Arthur C. Clarke
-genre: fiction
+genre: sci-fi
 format: paperback
 bookStatus: read
 startedReading: 2013-01-08T15:28:22.000Z

@@ -7,7 +7,7 @@ updatedDate: 2024-12-24T11:08:03
 category: bookshelf
 tags:
   - book-reviews
-genre: book-reviews
+genre: self-help
 bookCover: black-box-thinking.jpg
 author: Matthew Syed
 series: none

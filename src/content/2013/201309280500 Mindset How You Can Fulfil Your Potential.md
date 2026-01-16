@@ -1,5 +1,5 @@
 ---
-title: 'Mindset: How You Can Fulfil Your Potential'
+title: "Mindset: How You Can Fulfil Your Potential"
 slug: mindset-how-you-can-fulfil-your-potential
 pubDate: 2013-09-28T05:00:37.000Z
 updatedDate: 2013-09-28T05:00:37.000Z
@@ -8,7 +8,7 @@ tags:
   - book-reviews
 author:
   - Carol S. Dweck
-genre: non-fiction
+genre: self-help
 format: paperback
 bookStatus: read
 startedReading: 2013-09-22T05:45:35.000Z

@@ -8,7 +8,7 @@ tags:
   - book-reviews
 author:
   - Harper Lee
-genre: fiction
+genre: thriller
 format: paperback
 bookStatus: read
 startedReading: 2013-03-18T11:20:10.000Z

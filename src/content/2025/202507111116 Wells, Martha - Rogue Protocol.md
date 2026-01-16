@@ -1,22 +1,22 @@
 ---
-title: "Rogue Protocol"
-slug: "rogue-protocol"
+title: Rogue Protocol
+slug: rogue-protocol
 pubDate: 2025-07-15T22:42:08+03:00
 updatedDate: 2025-07-15T22:42:08+03:00
 category: bookshelf
-tags: 
+tags:
   - murderbot
   - sci-fi
   - martha-wells
 format: audio
-genre: murderbot
-bookCover: 'rogue-protocol.jpg'
-author: "Martha Wells"
-series: "The Murderbot Diaries"
-bookStatus: "read"
+genre: sci-fi
+bookCover: rogue-protocol.jpg
+author: Martha Wells
+series: The Murderbot Diaries
+bookStatus: read
 bookRating: like
-startedReading: "2025-07-11T09:31:00+03:00"
-finishedReading: "2025-07-15T21:00:00+03:00"
+startedReading: 2025-07-11T09:31:00+03:00
+finishedReading: 2025-07-15T21:00:00+03:00
 ---
 Book 1 - [All systems red](/bookshelf/all-systems-red)
 Book 2 - [Artificial Condition](/bookshelf/artificial-condition)

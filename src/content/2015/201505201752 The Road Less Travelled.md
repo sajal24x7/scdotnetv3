@@ -8,7 +8,7 @@ tags:
   - book-reviews
 author:
   - M. Scott Peck
-genre: fiction
+genre: psychology
 format: paperback
 bookStatus: read
 startedReading: 2013-03-13T17:13:46.000Z

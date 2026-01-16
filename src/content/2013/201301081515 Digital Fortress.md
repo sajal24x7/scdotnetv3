@@ -1,5 +1,5 @@
 ---
-title: "Digital Fortress"
+title: Digital Fortress
 slug: digital-fortress
 pubDate: 2013-01-08T15:15:35.000Z
 updatedDate: 2013-01-08T15:15:35.000Z
@@ -8,7 +8,7 @@ tags:
   - book-reviews
 author:
   - Dan Brown
-genre: fiction
+genre: thriller
 format: paperback
 bookStatus: read
 startedReading: 2013-01-08T15:15:29.000Z

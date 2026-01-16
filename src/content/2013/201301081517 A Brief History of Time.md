@@ -1,5 +1,5 @@
 ---
-title: "A Brief History of Time"
+title: A Brief History of Time
 slug: a-brief-history-of-time
 pubDate: 2013-01-08T15:17:27.000Z
 updatedDate: 2013-01-08T15:17:27.000Z
@@ -8,7 +8,7 @@ tags:
   - book-reviews
 author:
   - Stephen Hawking
-genre: non-fiction
+genre: science
 format: paperback
 bookStatus: read
 startedReading: 2013-01-08T15:18:02.000Z
