@@ -11,7 +11,7 @@ author:
   - Adrian Tchaikovsky
 series: 'The Final Architecture #3'
 genre: sci-fi
-bookStatus: reading
+bookStatus: read
 startedReading: 2026-01-12T10:10:42.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115881589817343006'
