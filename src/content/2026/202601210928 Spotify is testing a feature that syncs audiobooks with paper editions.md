@@ -1,13 +1,15 @@
 ---
-title: "Spotify is testing a feature that syncs audiobooks with paper editions"
-slug: "spotify-is-testing-a-feature-that-syncs-audiobooks-with-paper-editions"
-pubDate: 2026-01-21T09:31:33+05:30
-updatedDate: 2026-01-21T09:31:33+05:30
+title: Spotify is testing a feature that syncs audiobooks with paper editions
+slug: spotify-is-testing-a-feature-that-syncs-audiobooks-with-paper-editions
+pubDate: 2026-01-21T04:01:33.000Z
+updatedDate: 2026-01-21T04:01:33.000Z
 category: micro
 tags:
   - reading
   - spotify
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115931096533955550'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcvrz3vtkz2b'
 ---
 [Spotify is testing a feature that syncs audiobooks with paper editions by Jess Weatherbed](https://www.theverge.com/news/864296/spotify-page-match-audiobook-testing-feature)
 

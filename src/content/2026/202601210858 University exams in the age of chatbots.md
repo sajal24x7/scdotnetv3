@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115930971076841383'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcvqa2cmjj2b'
+  - 'https://www.threads.com/@sajal24x7/post/DTwjM8Ykdj8'
 ---
 [Giving University Exams in the Age of Chatbots](https://ploum.net/2026-01-19-exam-with-chatbots.html)
 
