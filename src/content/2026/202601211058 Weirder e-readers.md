@@ -1,13 +1,15 @@
 ---
-title: "Weirder e-readers"
-slug: "weirder-e-readers"
-pubDate: 2026-01-21T11:00:53+05:30
-updatedDate: 2026-01-21T11:00:53+05:30
+title: Weirder e-readers
+slug: weirder-e-readers
+pubDate: 2026-01-21T05:30:53.000Z
+updatedDate: 2026-01-21T05:30:53.000Z
 category: micro
 tags:
   - e-readers
   - reading
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115931449202626883'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcvwzice3a2j'
 ---
 [If the future of e-readers is getting weird, I’m here for it by ](https://sixcolors.com/post/2026/01/if-the-future-of-e-readers-is-getting-weird-im-here-for-it/)
 
