@@ -1,13 +1,15 @@
 ---
-title: "University exams in the age of chatbots"
-slug: "university-exams-in-the-age-of-chatbots"
-pubDate: 2026-01-21T08:59:47+05:30
-updatedDate: 2026-01-21T08:59:47+05:30
+title: University exams in the age of chatbots
+slug: university-exams-in-the-age-of-chatbots
+pubDate: 2026-01-21T03:29:47.000Z
+updatedDate: 2026-01-21T03:29:47.000Z
 category: micro
 tags:
   - llms
   - exams
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115930971076841383'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcvqa2cmjj2b'
 ---
 [Giving University Exams in the Age of Chatbots](https://ploum.net/2026-01-19-exam-with-chatbots.html)
 
