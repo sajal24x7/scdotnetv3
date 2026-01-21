@@ -1,0 +1,16 @@
+---
+title: "University exams in the age of chatbots"
+slug: "university-exams-in-the-age-of-chatbots"
+pubDate: 2026-01-21T08:59:47+05:30
+updatedDate: 2026-01-21T08:59:47+05:30
+category: micro
+tags:
+  - llms
+  - exams
+
+---
+[Giving University Exams in the Age of Chatbots](https://ploum.net/2026-01-19-exam-with-chatbots.html)
+
+> Like every generation of students, there are good students, bad students and very brilliant students. It will always be the case, people evolve (I was, myself, not a very good student). Chatbots don’t change anything regarding that. Like every new technology, smart young people are very critical and, by defintion, smart about how they use it.
+
+Interesting read. 
