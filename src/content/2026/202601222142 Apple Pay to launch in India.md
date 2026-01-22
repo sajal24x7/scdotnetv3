@@ -1,13 +1,16 @@
 ---
-title: "Apple Pay to launch in India"
-slug: "apple-pay-to-launch-in-india"
-pubDate: 2026-01-22T21:43:50+05:30
-updatedDate: 2026-01-22T21:43:50+05:30
+title: Apple Pay to launch in India
+slug: apple-pay-to-launch-in-india
+pubDate: 2026-01-22T16:13:50.000Z
+updatedDate: 2026-01-22T16:13:50.000Z
 category: micro
 tags:
   - apple
   - india
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115939639086233394'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mczlfs7syf2p'
+  - 'https://www.threads.com/@sajal24x7/post/DT0b1tKERfo'
 ---
 [Apple Pay Likely to Launch in India This Year by Tim Hardwick](https://www.macrumors.com/2026/01/21/apple-pay-launch-india-this-year/)
 
