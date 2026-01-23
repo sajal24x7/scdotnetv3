@@ -1,15 +1,17 @@
 ---
-title: "Finland to set tougher guidelines for social media or smartphone use"
-slug: "finland-to-set-tougher-guidelines-for-social-media-or-smartphone-use"
-pubDate: 2026-01-23T10:33:59+05:30
-updatedDate: 2026-01-23T10:33:59+05:30
+title: Finland to set tougher guidelines for social media or smartphone use
+slug: finland-to-set-tougher-guidelines-for-social-media-or-smartphone-use
+pubDate: 2026-01-23T05:03:59.000Z
+updatedDate: 2026-01-23T05:03:59.000Z
 category: micro
 tags:
   - finland
   - parenting
   - social
   - phone
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115942666876607248'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3md2wgotany2l'
 ---
 [Finland sets tougher guidelines: No social media or smartphones for under-13s](https://yle.fi/a/74-20205877?origin=rss)
 
