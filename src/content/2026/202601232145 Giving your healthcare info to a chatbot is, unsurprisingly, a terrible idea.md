@@ -1,14 +1,16 @@
 ---
-title: "Giving your healthcare info to a chatbot is, unsurprisingly, a terrible idea"
-slug: "giving-your-healthcare-info-to-a-chatbot-is-unsurprisingly-a-terrible-idea"
-pubDate: 2026-01-23T21:49:44+05:30
-updatedDate: 2026-01-23T21:49:44+05:30
+title: 'Giving your healthcare info to a chatbot is, unsurprisingly, a terrible idea'
+slug: giving-your-healthcare-info-to-a-chatbot-is-unsurprisingly-a-terrible-idea
+pubDate: 2026-01-23T16:19:44.000Z
+updatedDate: 2026-01-23T16:19:44.000Z
 category: micro
 tags:
   - health
   - openai
   - anthropic
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115945324808896013'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3md447egogo2v'
 ---
 [Giving your healthcare info to a chatbot is, unsurprisingly, a terrible idea by Robert Hart](https://www.theverge.com/report/866683/chatgpt-health-sharing-data)
 

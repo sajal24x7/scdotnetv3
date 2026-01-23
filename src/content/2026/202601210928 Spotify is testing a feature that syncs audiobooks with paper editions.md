@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115931096533955550'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mcvrz3vtkz2b'
+  - 'https://www.threads.com/@sajal24x7/post/DT3BSVQFEWa'
 ---
 [Spotify is testing a feature that syncs audiobooks with paper editions by Jess Weatherbed](https://www.theverge.com/news/864296/spotify-page-match-audiobook-testing-feature)
 
