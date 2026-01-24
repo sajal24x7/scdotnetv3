@@ -1,13 +1,15 @@
 ---
-title: "About Yann and his new venture"
-slug: "about-yann-and-his-new-venture"
-pubDate: 2026-01-24T13:37:22+05:30
-updatedDate: 2026-01-24T13:37:22+05:30
+title: About Yann and his new venture
+slug: about-yann-and-his-new-venture
+pubDate: 2026-01-24T08:07:22.000Z
+updatedDate: 2026-01-24T08:07:22.000Z
 category: micro
 tags:
   - yann-lecun
   - ai
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115949050597222226'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3md5r5nzfr72j'
 ---
 [Yann LeCun’s new venture is a contrarian bet against large language models   by Caiwei Chen](https://www.technologyreview.com/2026/01/22/1131661/yann-lecuns-new-venture-ami-labs/)
 
