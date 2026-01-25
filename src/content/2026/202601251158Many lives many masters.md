@@ -1,6 +1,6 @@
 ---
-title: 'Many lives many masters'
-slug: 'many-lives-many-masters'
+title: Many lives many masters
+slug: many-lives-many-masters
 pubDate: 2026-01-25T07:38:11.000Z
 updatedDate: 2026-01-25T07:38:11.000Z
 category: bookshelf
@@ -17,6 +17,7 @@ startedReading: 2026-01-25T07:38:11.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115954598916675462'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mda7yqpizq2y'
+bookCover: many-lives-many-masters.jpg
 ---
 
 # Notes
