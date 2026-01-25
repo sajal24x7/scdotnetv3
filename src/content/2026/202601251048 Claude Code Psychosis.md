@@ -1,12 +1,14 @@
 ---
-title: "Claude Code Psychosis"
-slug: "claude-code-psychosis"
-pubDate: 2026-01-25T10:50:15+05:30
-updatedDate: 2026-01-25T10:50:15+05:30
+title: Claude Code Psychosis
+slug: claude-code-psychosis
+pubDate: 2026-01-25T05:20:15.000Z
+updatedDate: 2026-01-25T05:20:15.000Z
 category: micro
 tags:
   - claude
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115954109474455909'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3md7z26x2nq2n'
 ---
 [🌻 claude code psychosis by Jasmine Sun](https://jasmi.news/p/claude-code)
 
