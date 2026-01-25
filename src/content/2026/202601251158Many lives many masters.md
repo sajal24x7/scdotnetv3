@@ -1,8 +1,8 @@
 ---
-title: ""
-slug: ""
-pubDate: 2026-01-25T13:08:11+05:30
-updatedDate: 2026-01-25T13:08:11+05:30
+title: ''
+slug: ''
+pubDate: 2026-01-25T07:38:11.000Z
+updatedDate: 2026-01-25T07:38:11.000Z
 category: bookshelf
 tags:
   - death
@@ -12,8 +12,11 @@ format: paperback
 author:
   - Brian Weiss
 genre: psychology
-bookStatus: "reading"
-startedReading: 2026-01-25T13:08:11+05:30
+bookStatus: reading
+startedReading: 2026-01-25T07:38:11.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115954598916675462'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mda7yqpizq2y'
 ---
 
 # Notes
