@@ -1,12 +1,14 @@
 ---
-title: "How to build an interactive novel"
-slug: "how-to-build-an-interactive-novel"
-pubDate: 2026-01-25T11:05:06+05:30
-updatedDate: 2026-01-25T11:05:06+05:30
+title: How to build an interactive novel
+slug: how-to-build-an-interactive-novel
+pubDate: 2026-01-25T05:35:06.000Z
+updatedDate: 2026-01-25T05:35:06.000Z
 category: micro
 tags:
   - craft
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115954113036855932'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3md7z3ryeyg2w'
 ---
 [Can you chart a murder? How to build an interactive novel](https://sixcolors.com/post/2026/01/can-you-chart-a-murder-how-to-build-an-interactive-novel/)
 
