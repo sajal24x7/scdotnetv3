@@ -16,7 +16,7 @@ const postsCollection = defineCollection({
     description: z.string().optional(),
     pubDate: dateSchema,
     updatedDate: dateSchema.optional(),
-    category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'now', 'til', 'colophon']),
+    category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'film', 'tv', 'now', 'til', 'colophon']),
     status: z.enum(['active', 'done']).optional().default('active'),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
@@ -41,6 +41,14 @@ const postsCollection = defineCollection({
     readingProgress: z.number().min(0).max(100).optional(),
     bookRating: z.enum(['like', 'love', 'nope']).optional(),
     bookCover: z.string().optional(), // Book cover image for bookshelf display
+    // Film/TV-specific metadata
+    firstWatched: dateSchema.optional(),
+    rewatchedOn: dateSchema.optional(),
+    rating: z.enum(['like', 'love', 'nope']).optional(),
+    poster: z.string().optional(), // Poster image for filmshelf display
+    releaseDate: dateSchema.optional(),
+    season: z.number().optional(), // Season number for TV shows
+    seriesSlug: z.string().optional(), // Links multiple seasons of a TV show together
     // POSSE syndication metadata
     syndicationUrls: z.array(z.string()).optional(), // URLs where content was syndicated
   }),
@@ -65,7 +73,7 @@ const notesCollection = defineCollection({
     description: z.string().optional(),
     pubDate: dateSchema,
     updatedDate: dateSchema.optional(),
-    category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'til', 'colophon']).optional(),
+    category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'film', 'tv', 'til', 'colophon']).optional(),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
     stage: z.enum(['fleeting', 'seedling', 'budding', 'evergreen']).optional(),
