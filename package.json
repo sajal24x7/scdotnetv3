@@ -8,16 +8,18 @@
     "npm": ">=10.0.0"
   },
   "scripts": {
-    "dev": "npm run cache-nordletter-images && npm run generate-covers && astro dev",
-    "start": "npm run cache-nordletter-images && npm run generate-covers && astro dev",
-    "build": "npm run cache-nordletter-images && npm run generate-covers && npm run fetch-webmentions && astro build",
-    "build:cloudflare": "npm run cache-nordletter-images && npm run generate-covers && npm run fetch-webmentions && astro build",
+    "dev": "npm run cache-nordletter-images && npm run generate-covers && npm run generate-posters && astro dev",
+    "start": "npm run cache-nordletter-images && npm run generate-covers && npm run generate-posters && astro dev",
+    "build": "npm run cache-nordletter-images && npm run generate-covers && npm run generate-posters && npm run fetch-webmentions && astro build",
+    "build:cloudflare": "npm run cache-nordletter-images && npm run generate-covers && npm run generate-posters && npm run fetch-webmentions && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "generate-covers": "node scripts/generate-book-covers.js",
+    "generate-posters": "node scripts/generate-film-posters.js",
     "fetch-webmentions": "node scripts/fetch-webmentions.js",
     "cache-nordletter-images": "node scripts/cache-nordletter-images.js",
     "download-covers": "node scripts/download-book-covers.js",
+    "download-posters": "node scripts/download-film-posters.js",
     "syndicate": "node scripts/syndicate-content.js",
     "syndicate:dry-run": "SYNDICATION_DRY_RUN=true node scripts/syndicate-content.js"
   },

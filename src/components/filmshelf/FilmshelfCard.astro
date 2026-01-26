@@ -1,0 +1,602 @@
+---
+import { Image } from 'astro:assets';
+import { getFilmCoverImage } from '../../utils/filmCovers';
+import {
+    bookRatingDisplay,
+    heartIconPaths,
+    thumbIconPaths,
+    type BookRating,
+    type RatingIconSpec
+} from '../../utils/bookRatings';
+
+type FilmCategory = 'film' | 'tv';
+type FilmRating = BookRating;
+
+interface PreviousWatch {
+    season?: number;
+    watchedOn: string;
+}
+
+interface FilmshelfCardProps {
+    title: string;
+    category: FilmCategory;
+    releaseDate?: Date | string;
+    firstWatched?: Date | string;
+    rewatchedOn?: Date | string;
+    rating?: FilmRating;
+    poster?: string;
+    season?: number;
+    seriesSlug?: string;
+    previousWatches?: PreviousWatch[];
+    link?: string;
+}
+
+const props = Astro.props as FilmshelfCardProps;
+
+const parseDate = (value: Date | string | undefined) => {
+    if (!value) {
+        return null;
+    }
+
+    if (value instanceof Date) {
+        return Number.isNaN(value.getTime()) ? null : value;
+    }
+
+    const parsed = new Date(value);
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
+};
+
+const formatYMD = (value: Date | string | undefined) => {
+    const date = parseDate(value);
+
+    if (!date) {
+        return null;
+    }
+
+    return date.toISOString().slice(0, 10);
+};
+
+const formatYear = (value: Date | string | undefined) => {
+    const date = parseDate(value);
+
+    if (!date) {
+        return null;
+    }
+
+    return date.getFullYear().toString();
+};
+
+const formatMonthYear = (value: Date | string | undefined) => {
+    const date = parseDate(value);
+
+    if (!date) {
+        return null;
+    }
+
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return `${months[date.getMonth()]} ${date.getFullYear()}`;
+};
+
+const {
+    title,
+    category,
+    releaseDate,
+    firstWatched,
+    rewatchedOn,
+    rating,
+    poster,
+    season,
+    seriesSlug,
+    previousWatches,
+    link
+} = props;
+
+const isTV = category === 'tv';
+const isRewatch = !!rewatchedOn;
+
+const releaseYear = formatYear(releaseDate);
+const watchedDate = formatYMD(isRewatch ? rewatchedOn : firstWatched);
+const watchedLabel = isRewatch ? 'Rewatched' : 'Watched';
+
+// Rating display
+const ratingDisplay = rating ? bookRatingDisplay[rating] : null;
+const ratingAriaLabel = ratingDisplay
+    ? ratingDisplay.label
+    : 'Rating: Not set';
+const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
+const ratingChipLabel = ratingDisplay?.label ?? null;
+
+const coverImage = poster ? getFilmCoverImage(poster) : null;
+
+// Format previous watches for TV shows
+const previousWatchesText = (() => {
+    if (!previousWatches || previousWatches.length === 0) {
+        return null;
+    }
+
+    const formatted = previousWatches.map(pw => {
+        const date = formatMonthYear(pw.watchedOn);
+        if (pw.season !== undefined) {
+            return `S${pw.season} (${date})`;
+        }
+        return date;
+    });
+
+    return `Previously: ${formatted.join(', ')}`;
+})();
+
+// Display title with season if TV
+const displayTitle = isTV && season ? title : title;
+const seasonBadge = isTV && season ? `Season ${season}` : null;
+
+// Category label
+const categoryLabel = isTV ? 'TV' : 'FILM';
+---
+
+<article class="film-card" data-card-root>
+  <div class="film-card__surface">
+    <div class="film-card__poster">
+      {coverImage ? (
+        <Image
+          src={coverImage}
+          alt={`Poster of ${title}`}
+          width={84}
+          height={126}
+          class="film-card__poster-image"
+          loading="lazy"
+        />
+      ) : (
+        <div class="film-card__poster-placeholder" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+            <line x1="7" y1="2" x2="7" y2="22"></line>
+            <line x1="17" y1="2" x2="17" y2="22"></line>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <line x1="2" y1="7" x2="7" y2="7"></line>
+            <line x1="2" y1="17" x2="7" y2="17"></line>
+            <line x1="17" y1="17" x2="22" y2="17"></line>
+            <line x1="17" y1="7" x2="22" y2="7"></line>
+          </svg>
+        </div>
+      )}
+    </div>
+
+    <div class="film-card__content">
+      <header class="film-card__header">
+        <div class="film-card__title-row">
+          <div class="film-card__title-block">
+            {seasonBadge && (
+              <div class="film-card__season">{seasonBadge}</div>
+            )}
+            <h3 class="film-card__title">
+              {link ? (
+                <a href={link} class="film-card__title-link">
+                  {displayTitle}
+                </a>
+              ) : (
+                displayTitle
+              )}
+            </h3>
+          </div>
+        </div>
+        {releaseYear && (
+          <span class="film-card__release">
+            {releaseYear}
+          </span>
+        )}
+      </header>
+
+      <div class="film-card__meta" data-meta>
+        <div class="film-card__meta-row film-card__meta-row--chips">
+          <span class={`film-card__chip film-card__chip--category film-card__chip--category-${category}`}>
+            {categoryLabel}
+          </span>
+          {ratingChipLabel && rating && (
+            <button
+              type="button"
+              class={`film-card__chip film-card__chip--rating film-card__chip--clickable ${
+                rating ? `film-card__chip--rating-${rating}` : 'film-card__chip--rating-none'
+              }`}
+              data-filter-type="rating"
+              data-filter-value={rating}
+              aria-label={ratingAriaLabel}
+            >
+              <span class="film-card__chip-label">{ratingChipLabel}</span>
+              {ratingIconSpecs.length > 0 && (
+                <span
+                  class={`film-card__rating-icons ${
+                    rating ? `film-card__rating-icons--${rating}` : ''
+                  }`}
+                  aria-hidden="true"
+                >
+                  {ratingIconSpecs.map((iconSpec) => (
+                    <span class="film-card__rating-icon">
+                      <svg
+                        width={iconSpec.size}
+                        height={iconSpec.size}
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        {(
+                          iconSpec.type === 'heart'
+                              ? heartIconPaths
+                              : thumbIconPaths[iconSpec.direction]
+                        ).map((d) => (
+                          <path d={d}></path>
+                        ))}
+                      </svg>
+                    </span>
+                  ))}
+                </span>
+              )}
+            </button>
+          )}
+          {watchedDate && (
+            <span class="film-card__chip film-card__chip--watched">
+              <span class="film-card__chip-label">{watchedLabel} {watchedDate}</span>
+            </span>
+          )}
+        </div>
+        {previousWatchesText && (
+          <div class="film-card__previous">
+            {previousWatchesText}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  .film-card {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.02);
+    transition:
+      background-color 180ms ease,
+      box-shadow 220ms ease,
+      transform 220ms ease,
+      border-color 180ms ease;
+  }
+
+  :global(.dark) .film-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.15);
+  }
+
+  .film-card:hover,
+  .film-card:focus-within {
+    background: rgba(99, 102, 241, 0.04);
+    border-color: rgba(99, 102, 241, 0.2);
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.08),
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 8px 24px rgba(129, 140, 248, 0.15);
+    transform: translateY(-2px);
+  }
+
+  :global(.dark) .film-card:hover,
+  :global(.dark) .film-card:focus-within {
+    background: rgba(99, 102, 241, 0.08);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  .film-card__surface {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .film-card__poster {
+    flex-shrink: 0;
+    width: 4.5rem;
+    max-width: 4.5rem;
+    aspect-ratio: 2 / 3;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: rgba(15, 23, 42, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.dark) .film-card__poster {
+    background: rgba(148, 163, 184, 0.18);
+  }
+
+  .film-card__poster-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
+  .film-card__poster-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: rgba(15, 23, 42, 0.35);
+  }
+
+  :global(.dark) .film-card__poster-placeholder {
+    color: rgba(226, 232, 240, 0.45);
+  }
+
+  .film-card__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .film-card__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .film-card__title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .film-card__title {
+    flex: 1 1 auto;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+    color: #111827;
+  }
+
+  :global(.dark) .film-card__title {
+    color: #f9fafb;
+  }
+
+  .film-card__title-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .film-card__title-link:hover,
+  .film-card__title-link:focus-visible {
+    text-decoration: underline;
+  }
+
+  .film-card__title-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .film-card__season {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #7c3aed;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  :global(.dark) .film-card__season {
+    color: #a78bfa;
+  }
+
+  .film-card__release {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+  }
+
+  :global(.dark) .film-card__release {
+    color: #9ca3af;
+  }
+
+  .film-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #4b5563;
+  }
+
+  :global(.dark) .film-card__meta {
+    color: #9ca3af;
+  }
+
+  .film-card__meta-row {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .film-card__chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background: inherit;
+    line-height: 1.2;
+  }
+
+  .film-card__chip--clickable {
+    cursor: pointer;
+    transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+  }
+
+  .film-card__chip--clickable:hover,
+  .film-card__chip--clickable:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    opacity: 0.95;
+  }
+
+  :global(.dark) .film-card__chip--clickable:hover,
+  :global(.dark) .film-card__chip--clickable:focus-visible {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .film-card__chip--category {
+    background: #fef3c7;
+    color: #b45309;
+  }
+
+  :global(.dark) .film-card__chip--category {
+    background: rgba(180, 83, 9, 0.3);
+    color: #fde68a;
+  }
+
+  .film-card__chip--category-tv {
+    background: #ede9fe;
+    color: #5b21b6;
+  }
+
+  :global(.dark) .film-card__chip--category-tv {
+    background: rgba(91, 33, 182, 0.3);
+    color: #ede9fe;
+  }
+
+  .film-card__chip--rating {
+    background: #e5e7eb;
+    color: #111827;
+  }
+
+  :global(.dark) .film-card__chip--rating {
+    background: #374151;
+    color: #f9fafb;
+  }
+
+  .film-card__chip--rating-like {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  :global(.dark) .film-card__chip--rating-like {
+    background: rgba(22, 101, 52, 0.35);
+    color: #bbf7d0;
+  }
+
+  .film-card__chip--rating-love {
+    background: #fce7f3;
+    color: #be185d;
+  }
+
+  :global(.dark) .film-card__chip--rating-love {
+    background: rgba(190, 24, 93, 0.3);
+    color: #fbcfe8;
+  }
+
+  .film-card__chip--rating-nope {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+
+  :global(.dark) .film-card__chip--rating-nope {
+    background: rgba(185, 28, 28, 0.3);
+    color: #fecaca;
+  }
+
+  .film-card__chip--watched {
+    justify-content: flex-start;
+    background: #f3f4f6;
+    color: #1f2937;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: none;
+  }
+
+  :global(.dark) .film-card__chip--watched {
+    background: #1f2937;
+    color: #e5e7eb;
+  }
+
+  .film-card__chip-label {
+    white-space: nowrap;
+  }
+
+  .film-card__rating-icons {
+    display: inline-flex;
+    gap: 0.25rem;
+    color: #111827;
+  }
+
+  :global(.dark) .film-card__rating-icons {
+    color: #f9fafb;
+  }
+
+  .film-card__rating-icons--like {
+    color: #166534;
+  }
+
+  :global(.dark) .film-card__rating-icons--like {
+    color: #bbf7d0;
+  }
+
+  .film-card__rating-icons--love {
+    color: #be185d;
+  }
+
+  :global(.dark) .film-card__rating-icons--love {
+    color: #f9a8d4;
+  }
+
+  .film-card__rating-icons--nope {
+    color: #b91c1c;
+  }
+
+  :global(.dark) .film-card__rating-icons--nope {
+    color: #fca5a5;
+  }
+
+  .film-card__rating-icon {
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .film-card__rating-icon svg {
+    display: block;
+  }
+
+  .film-card__previous {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-style: italic;
+  }
+
+  :global(.dark) .film-card__previous {
+    color: #9ca3af;
+  }
+
+  @media (min-width: 45rem) {
+    .film-card__surface {
+      gap: 1.25rem;
+    }
+
+    .film-card__poster {
+      width: 5.25rem;
+      max-width: 5.25rem;
+    }
+  }
+</style>

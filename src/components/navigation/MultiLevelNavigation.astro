@@ -30,6 +30,7 @@ const secondaryNavItems = {
     { href: '/evergreen/', label: 'Evergreen' },
     { href: '/til/', label: 'TIL' },
     { href: '/bookshelf/', label: 'Bookshelf' },
+    { href: '/filmshelf/', label: 'Filmshelf' },
     { href: '/stories/', label: 'Stories' },
     { href: '/poems/', label: 'Poems' },
   ],
@@ -59,9 +60,10 @@ const getActiveMainSection = () => {
       currentPage.startsWith('/feeds/')) return 'about';
   
   // Check for individual post categories that belong to garden
-  if (currentPage.startsWith('/evergreen/') || 
-      currentPage.startsWith('/til/') || 
-      currentPage.startsWith('/bookshelf/') || 
+  if (currentPage.startsWith('/evergreen/') ||
+      currentPage.startsWith('/til/') ||
+      currentPage.startsWith('/bookshelf/') ||
+      currentPage.startsWith('/filmshelf/') ||
       currentPage.startsWith('/stories/') ||
       currentPage.startsWith('/poems/')) return 'garden';
   
@@ -118,6 +120,7 @@ const getActiveSubsection = () => {
   if (currentPage.startsWith('/evergreen/')) return '/evergreen/';
   if (currentPage.startsWith('/til/')) return '/til/';
   if (currentPage.startsWith('/bookshelf/')) return '/bookshelf/';
+  if (currentPage.startsWith('/filmshelf/')) return '/filmshelf/';
   if (currentPage.startsWith('/stories/')) return '/stories/';
   if (currentPage.startsWith('/poems/')) return '/poems/';
 
