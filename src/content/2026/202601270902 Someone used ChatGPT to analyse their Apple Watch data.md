@@ -1,14 +1,16 @@
 ---
-title: "Someone used ChatGPT to analyse their Apple Watch data"
-slug: "someone-used-chatgpt-to-analyse-their-apple-watch-data"
-pubDate: 2026-01-27T09:05:00+05:30
-updatedDate: 2026-01-27T09:05:00+05:30
+title: Someone used ChatGPT to analyse their Apple Watch data
+slug: someone-used-chatgpt-to-analyse-their-apple-watch-data
+pubDate: 2026-01-27T03:35:00.000Z
+updatedDate: 2026-01-27T03:35:00.000Z
 category: micro
 tags:
   - health
   - chatgpt
   - claude
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115968763765065090'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdgjc5yc7j2n'
 ---
 [I let ChatGPT analyze a decade of my Apple Watch data. Then I called my doctor](https://www.msn.com/en-us/news/technology/i-let-chatgpt-analyze-a-decade-of-my-apple-watch-data-then-i-called-my-doctor/ar-AA1UZxip)
 

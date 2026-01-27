@@ -1,12 +1,14 @@
 ---
-title: "Finland starts work on national segregation prevention programme"
-slug: "finland-starts-work-on-national-segregation-prevention-programme"
-pubDate: 2026-01-27T11:45:12+05:30
-updatedDate: 2026-01-27T11:45:12+05:30
+title: Finland starts work on national segregation prevention programme
+slug: finland-starts-work-on-national-segregation-prevention-programme
+pubDate: 2026-01-27T06:15:12.000Z
+updatedDate: 2026-01-27T06:15:12.000Z
 category: micro
 tags:
   - finland
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115968763812422631'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdgjc6vef62e'
 ---
 [Finland starts work on national segregation prevention programme](https://yle.fi/a/74-20206481?origin=rss)
 

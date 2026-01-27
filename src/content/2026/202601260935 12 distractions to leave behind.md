@@ -1,12 +1,14 @@
 ---
-title: "12 distractions to leave behind"
-slug: "12-distractions-to-leave-behind"
-pubDate: 2026-01-26T09:38:18+05:30
-updatedDate: 2026-01-26T09:38:18+05:30
+title: 12 distractions to leave behind
+slug: 12-distractions-to-leave-behind
+pubDate: 2026-01-26T04:08:18.000Z
+updatedDate: 2026-01-26T04:08:18.000Z
 category: micro
 tags:
   - self-help
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115968763693038149'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdgjc5cwmj2n'
 ---
 [12 Distractions to Leave Behind in 2026 by No Sidebar](https://nosidebar.com/12-distractions-to-leave-behind-in-2026/)
 
