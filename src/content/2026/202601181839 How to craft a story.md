@@ -1,12 +1,15 @@
 ---
-title: "How to craft a story"
-slug: "how-to-craft-a-story"
-pubDate: 2026-01-28T14:19:01+05:30
-updatedDate: 2026-01-28T14:19:01+05:30
+title: How to craft a story
+slug: how-to-craft-a-story
+pubDate: 2026-01-28T08:49:01.000Z
+updatedDate: 2026-01-28T08:49:01.000Z
 category: evergreen
 tags:
   - writing
   - craft
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115971865531144249'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdhveoseyi2n'
 ---
 There are three acts to a story - beginning, middle and end.
 
