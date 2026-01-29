@@ -1,14 +1,16 @@
 ---
-title: "Zuck wants AI as the new feed"
-slug: "zuck-wants-ai-as-the-new-feed"
-pubDate: 2026-01-29T14:36:25+05:30
-updatedDate: 2026-01-29T14:36:25+05:30
+title: Zuck wants AI as the new feed
+slug: zuck-wants-ai-as-the-new-feed
+pubDate: 2026-01-29T09:06:25.000Z
+updatedDate: 2026-01-29T09:06:25.000Z
 category: micro
 tags:
   - meta
   - ai
   - gen-ai
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115977593285499116'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdkgremiz22g'
 ---
 [Mark Zuckerberg is all in on AI as the new social media by Emma Roth](https://www.theverge.com/news/869882/mark-zuckerberg-meta-earnings-q4-2025)
 
