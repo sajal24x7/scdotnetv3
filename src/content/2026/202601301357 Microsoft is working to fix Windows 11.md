@@ -1,13 +1,15 @@
 ---
-title: "Microsoft is working to fix Windows 11"
-slug: "microsoft-is-working-to-fix-windows-11"
-pubDate: 2026-01-30T13:59:52+05:30
-updatedDate: 2026-01-30T13:59:52+05:30
+title: Microsoft is working to fix Windows 11
+slug: microsoft-is-working-to-fix-windows-11
+pubDate: 2026-01-30T08:29:52.000Z
+updatedDate: 2026-01-30T08:29:52.000Z
 category: micro
 tags:
   - microsoft
   - windows
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115985806207868174'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdo3i6ddk42a'
 ---
 [Microsoft is working to rebuild trust in Windows by Tom Warren](https://www.theverge.com/tech/870045/microsoft-windows-11-issues-rebuilding-trust-notepad)
 

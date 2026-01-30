@@ -1,13 +1,15 @@
 ---
-title: "Tesla will discontinue Model S and X"
-slug: "tesla-will-discontinue-model-s-and-x"
-pubDate: 2026-01-30T14:07:56+05:30
-updatedDate: 2026-01-30T14:07:56+05:30
+title: Tesla will discontinue Model S and X
+slug: tesla-will-discontinue-model-s-and-x
+pubDate: 2026-01-30T08:37:56.000Z
+updatedDate: 2026-01-30T08:37:56.000Z
 category: micro
 tags:
   - tesla
   - elon-musk
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115985806271924664'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdo3i737qg27'
 ---
 [Tesla discontinuing Model S and Model X to make room for robots by Andrew J. Hawkins](https://www.theverge.com/transportation/869872/tesla-model-s-model-x-discontinue-optimus-robot-factory)
 
