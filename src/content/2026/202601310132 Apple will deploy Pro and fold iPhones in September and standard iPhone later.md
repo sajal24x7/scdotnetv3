@@ -1,13 +1,15 @@
 ---
-title: "Apple will deploy Pro and fold iPhones in September and standard iPhone later"
-slug: "apple-will-deploy-pro-and-fold-iphones-in-september-and-standard-iphone-later"
-pubDate: 2026-01-31T01:34:14+05:30
-updatedDate: 2026-01-31T01:34:14+05:30
+title: Apple will deploy Pro and fold iPhones in September and standard iPhone later
+slug: apple-will-deploy-pro-and-fold-iphones-in-september-and-standard-iphone-later
+pubDate: 2026-01-30T20:04:14.000Z
+updatedDate: 2026-01-30T20:04:14.000Z
 category: micro
 tags:
   - apple
   - chip-manufacturing
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115985843141691403'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdo3yxocza2p'
 ---
 [Apple's New Split iPhone Launch Strategy Corroborated in Latest Report by Tim Hardwick](https://www.macrumors.com/2026/01/30/apples-split-iphone-launch-strategy-latest-report/)
 
