@@ -1,13 +1,15 @@
 ---
-title: "Mass market paperbacks are on the decline"
-slug: "mass-market-paperbacks-are-on-the-decline"
-pubDate: 2026-01-31T12:25:00+05:30
-updatedDate: 2026-01-31T12:25:00+05:30
+title: Mass market paperbacks are on the decline
+slug: mass-market-paperbacks-are-on-the-decline
+pubDate: 2026-01-31T06:55:00.000Z
+updatedDate: 2026-01-31T06:55:00.000Z
 category: micro
 tags:
   - books
   - publishing
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115988404108944554'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdpafkydb52y'
 ---
 [Last Call for Mass Market Paperbacks by by Jim Milliot, with Sophia Stewart](https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/99293-last-call-for-mass-market-paperbacks.html)
 
