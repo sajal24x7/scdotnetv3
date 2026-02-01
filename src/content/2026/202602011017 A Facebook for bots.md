@@ -1,14 +1,16 @@
 ---
-title: "A Facebook for bots"
-slug: "a-facebook-for-bots"
-pubDate: 2026-02-01T10:18:49+05:30
-updatedDate: 2026-02-01T10:18:49+05:30
+title: A Facebook for bots
+slug: a-facebook-for-bots
+pubDate: 2026-02-01T04:48:49.000Z
+updatedDate: 2026-02-01T04:48:49.000Z
 category: micro
 tags:
   - social
   - moltbook
   - agents
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115993566956615221'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdrjrehey62n'
 ---
 [Moltbook is the most interesting place on the internet right now by Simon Willison](https://simonwillison.net/2026/Jan/30/moltbook/#atom-everything)
 

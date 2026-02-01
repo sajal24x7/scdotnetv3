@@ -1,13 +1,15 @@
 ---
-title: "SpaceX seeks approval for 1 million DCs in space"
-slug: "spacex-seeks-approval-for-1-million-dcs-in-space"
-pubDate: 2026-02-01T08:48:26+05:30
-updatedDate: 2026-02-01T08:48:26+05:30
+title: SpaceX seeks approval for 1 million DCs in space
+slug: spacex-seeks-approval-for-1-million-dcs-in-space
+pubDate: 2026-02-01T03:18:26.000Z
+updatedDate: 2026-02-01T03:18:26.000Z
 category: micro
 tags:
   - space
   - spacex
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/115993566880410584'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdrjrct7ks2e'
 ---
 [SpaceX wants to put 1 million solar-powered data centers into orbit by Terrence O'Brien](https://www.theverge.com/tech/871641/spacex-fcc-1-million-solar-powered-data-centers-satellites-orbit)
 
