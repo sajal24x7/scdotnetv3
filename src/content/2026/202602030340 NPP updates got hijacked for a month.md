@@ -1,13 +1,15 @@
 ---
-title: "NPP updates got hijacked for a month"
-slug: "npp-updates-got-hijacked-for-a-month"
-pubDate: 2026-02-03T03:41:40+05:30
-updatedDate: 2026-02-03T03:41:40+05:30
+title: NPP updates got hijacked for a month
+slug: npp-updates-got-hijacked-for-a-month
+pubDate: 2026-02-02T22:11:40.000Z
+updatedDate: 2026-02-02T22:11:40.000Z
 category: micro
 tags:
   - npp
   - vulnerabilities
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116003546657343730'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdvxlll75m2j'
 ---
 [Notepad++ updates got hijacked for months and could have spied for China by Stevie Bonifield](https://www.theverge.com/tech/872462/notepad-plus-plus-server-hijacking)
 
