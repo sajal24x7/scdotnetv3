@@ -1,13 +1,15 @@
 ---
-title: "Claude Sonnet 5 coming soon"
-slug: "claude-sonnet-5-coming-soon"
-pubDate: 2026-02-04T00:00:43+05:30
-updatedDate: 2026-02-04T00:00:43+05:30
+title: Claude Sonnet 5 coming soon
+slug: claude-sonnet-5-coming-soon
+pubDate: 2026-02-03T18:30:43.000Z
+updatedDate: 2026-02-03T18:30:43.000Z
 category: micro
 tags:
   - claude
   - anthropic
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116008124232731289'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdxyna6faz2n'
 ---
 [Claude Sonnet 5 Is Imminent — And It Could Be a Generation Ahead of Google by Alex Morgan](https://ucstrategies.com/news/claude-sonnet-5-is-imminent-and-it-could-be-a-generation-ahead-of-google/)
 
