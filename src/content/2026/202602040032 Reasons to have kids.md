@@ -1,13 +1,15 @@
 ---
-title: "Reasons to have kids"
-slug: "reasons-to-have-kids"
-pubDate: 2026-02-04T00:33:44+05:30
-updatedDate: 2026-02-04T00:33:44+05:30
+title: Reasons to have kids
+slug: reasons-to-have-kids
+pubDate: 2026-02-03T19:03:44.000Z
+updatedDate: 2026-02-03T19:03:44.000Z
 category: micro
 tags:
   - kevin-kelly
   - parenting
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116013144996540586'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3me27yfstq72w'
 ---
 [Six Selfish Reasons to Have Kids by Kevin Kelly](https://kk.org/thetechnium/six-selfish-reasons-to-have-kids/)
 
