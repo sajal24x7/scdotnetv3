@@ -1,14 +1,19 @@
 ---
-title: "Anthropic didn’t want us to know that they were destroying millions of books to feed their software"
-slug: "anthropic-didnt-want-us-to-know-that-they-were-destroying-millions-of-books-to-feed-their-software"
-pubDate: 2026-02-07T21:01:40+05:30
-updatedDate: 2026-02-07T21:01:40+05:30
+title: >-
+  Anthropic didn’t want us to know that they were destroying millions of books
+  to feed their software
+slug: >-
+  anthropic-didnt-want-us-to-know-that-they-were-destroying-millions-of-books-to-feed-their-software
+pubDate: 2026-02-07T15:31:40.000Z
+updatedDate: 2026-02-07T15:31:40.000Z
 category: micro
 tags:
   - anthropic
   - ai
   - books
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116035864903604293'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3meecuaibca23'
 ---
 [Anthropic didn’t want us to know that they were destroying millions of books to feed their software - Lithub](https://lithub.com/anthropic-didnt-want-us-to-know-that-they-were-destroying-millions-of-books-to-feed-their-software/)
 
