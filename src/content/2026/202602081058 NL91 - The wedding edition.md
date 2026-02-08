@@ -1,10 +1,10 @@
 ---
-title: "The wedding edition"
-slug: "nl91-the-wedding-edition"
+title: The wedding edition
+slug: nl91-the-wedding-edition
 edition: 91
-image: https://storage.sajalchoudhary.net/images/2026/02/NL91-06.jpeg
-pubDate: 2026-02-08T22:33:58+05:30
-updatedDate: 2026-02-08T22:33:58+05:30
+image: 'https://storage.sajalchoudhary.net/images/2026/02/NL91-06.jpeg'
+pubDate: 2026-02-08T17:03:58.000Z
+updatedDate: 2026-02-08T17:03:58.000Z
 category: nordletter
 tags:
   - wedding
@@ -12,6 +12,9 @@ tags:
   - anthropic
   - parenting
   - spacex
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116036103665409429'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3meegasrtw423'
 ---
 Hello from my home in Helsinki! This is NordLetter #91, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
