@@ -1,13 +1,15 @@
 ---
-title: "How iPhones made a surprising comeback in China"
-slug: "how-iphones-made-a-surprising-comeback-in-china"
-pubDate: 2026-02-09T12:08:08+05:30
-updatedDate: 2026-02-09T12:08:08+05:30
+title: How iPhones made a surprising comeback in China
+slug: how-iphones-made-a-surprising-comeback-in-china
+pubDate: 2026-02-09T06:38:08.000Z
+updatedDate: 2026-02-09T06:38:08.000Z
 category: micro
 tags:
   - apple
   - china
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116040209345937051'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3megalubcpz2l'
 ---
 [How iPhones Made a Surprising Comeback in China by Zeyi Yang](https://www.wired.com/story/how-iphones-made-a-surprising-comeback-in-china/)
 
