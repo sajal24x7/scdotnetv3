@@ -1,13 +1,15 @@
 ---
-title: "Stop generating start thinking"
-slug: "stop-generating-start-thinking"
-pubDate: 2026-02-09T09:36:31+05:30
-updatedDate: 2026-02-09T09:36:31+05:30
+title: Stop generating start thinking
+slug: stop-generating-start-thinking
+pubDate: 2026-02-09T04:06:31.000Z
+updatedDate: 2026-02-09T04:06:31.000Z
 category: micro
 tags:
   - gen-ai
   - work
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116038700481606745'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mefl5ph72i2y'
 ---
 [Stop generating, start thinking - localghost](https://localghost.dev/blog/stop-generating-start-thinking/)
 
