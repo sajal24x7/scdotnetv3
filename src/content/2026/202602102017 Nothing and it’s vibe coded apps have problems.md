@@ -1,13 +1,15 @@
 ---
-title: "Nothing and it’s vibe coded apps have problems"
-slug: "nothing-and-its-vibe-coded-apps-have-problems"
-pubDate: 2026-02-10T21:52:12+05:30
-updatedDate: 2026-02-10T21:52:12+05:30
+title: Nothing and it’s vibe coded apps have problems
+slug: nothing-and-its-vibe-coded-apps-have-problems
+pubDate: 2026-02-10T16:22:12.000Z
+updatedDate: 2026-02-10T16:22:12.000Z
 category: micro
 tags:
   - nothing
   - vibe-coding
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116047254771344939'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mejepqveg62j'
 ---
 [Vibe coding Nothing’s apps is fun, until you try to make them useful by Robert Hart](https://www.theverge.com/tech/876229/nothing-essential-ai-app-builder)
 

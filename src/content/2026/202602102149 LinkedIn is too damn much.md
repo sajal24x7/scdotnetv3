@@ -1,12 +1,14 @@
 ---
-title: "LinkedIn is too damn much"
-slug: "linkedin-is-too-damn-much"
-pubDate: 2026-02-10T21:51:47+05:30
-updatedDate: 2026-02-10T21:51:47+05:30
+title: LinkedIn is too damn much
+slug: linkedin-is-too-damn-much
+pubDate: 2026-02-10T16:21:47.000Z
+updatedDate: 2026-02-10T16:21:47.000Z
 category: micro
 tags:
   - linkedin
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116047254854128293'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mejeprlfgp2e'
 ---
 LinkedIn is too damn much. 
 
