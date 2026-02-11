@@ -1,13 +1,15 @@
 ---
-title: "Europe takes a step toward post dollar world"
-slug: "europe-takes-a-step-toward-post-dollar-world"
-pubDate: 2026-02-11T20:44:59+05:30
-updatedDate: 2026-02-11T20:44:59+05:30
+title: Europe takes a step toward post dollar world
+slug: europe-takes-a-step-toward-post-dollar-world
+pubDate: 2026-02-11T15:14:59.000Z
+updatedDate: 2026-02-11T15:14:59.000Z
 category: micro
 tags:
   - usa
   - europe
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116052654084689123'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3melrh2utvh2y'
 ---
 [Pluralistic: Europe takes a big step towards a post-dollar world (11 Feb 2026) – Pluralistic: Daily links from Cory Doctorow](https://pluralistic.net/2026/02/11/post-dollar-world/)
 
