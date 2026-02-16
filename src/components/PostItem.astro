@@ -14,6 +14,7 @@ interface Props {
 const { post, isMicroContent, showFullContent = true, showReadMore = true } = Astro.props;
 const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
 const hasTags = tags.length > 0;
+const tagsString = tags.join(',');
 const isMicro = isMicroContent(post.data.category);
 const postTitle = post.data.title;
 const postLink = post.data.link;
@@ -28,7 +29,7 @@ const postImageAlt = typeof post.data.imageAlt === 'string' && post.data.imageAl
 const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syndicationUrls : [];
 ---
 
-<article class="post-item">
+<article class="post-item" data-content-item data-tags={tagsString}>
   <header class="post-item-header">
     <div class="post-item-meta">
       <a href={postLink} class="post-item-timestamp link-hover" aria-label={linkAriaLabel}>
@@ -102,7 +103,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
     {hasTags && (
       <div class="post-item-tags">
         {tags.map((tag: string) => (
-          <Tag tag={tag} />
+          <Tag tag={tag} asFilter />
         ))}
       </div>
     )}

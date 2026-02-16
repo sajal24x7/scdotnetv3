@@ -74,11 +74,14 @@ const getSpanClass = (post: any) => {
 
 {renderedPosts.map((post) => {
     const isBookshelf = post.data.category === 'bookshelf';
+    const postTags = Array.isArray(post.data.tags) ? post.data.tags.join(',') : '';
 
     return (
         <div
             class={`garden-card ${getSpanClass(post)} ${getContentTypeClasses(contentType, post.data.category)}`}
             data-garden-card
+            data-content-item
+            data-tags={postTags}
         >
             {isBookshelf ? (
                 <BookshelfCard

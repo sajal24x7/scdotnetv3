@@ -1,7 +1,18 @@
 class TagListElement extends HTMLElement {
+    _activeTag = '';
+
     handleClick = (event) => {
         const target = event.target;
         if (!target) {
+            return;
+        }
+
+        // Handle tag filter clicks
+        const filterButton = target.closest('[data-tag-filter]');
+        if (filterButton) {
+            event.preventDefault();
+            const tag = filterButton.getAttribute('data-tag-filter');
+            this.toggleTagFilter(tag);
             return;
         }
 
@@ -30,6 +41,36 @@ class TagListElement extends HTMLElement {
             this.hideHiddenTags(hiddenId);
         }
     };
+
+    toggleTagFilter(tag) {
+        // Toggle: if same tag clicked again, clear filter
+        const newTag = this._activeTag === tag ? '' : tag;
+        this._activeTag = newTag;
+
+        // Update active state on all tag filter buttons
+        const allFilterButtons = this.querySelectorAll('[data-tag-filter]');
+        allFilterButtons.forEach((btn) => {
+            if (newTag && btn.getAttribute('data-tag-filter') === newTag) {
+                btn.classList.add('tag-chip-active');
+            } else {
+                btn.classList.remove('tag-chip-active');
+            }
+        });
+
+        // Dispatch event for the section filtering script to handle
+        this.dispatchEvent(new CustomEvent('tagfilter', {
+            bubbles: true,
+            detail: { tag: newTag }
+        }));
+    }
+
+    clearActiveTag() {
+        this._activeTag = '';
+        const allFilterButtons = this.querySelectorAll('[data-tag-filter]');
+        allFilterButtons.forEach((btn) => {
+            btn.classList.remove('tag-chip-active');
+        });
+    }
 
     connectedCallback() {
         this.addEventListener('click', this.handleClick);

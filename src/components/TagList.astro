@@ -8,6 +8,7 @@ interface Props {
   maxTags?: number;
   showMore?: boolean;
   posts: Post[];
+  filterMode?: 'filter' | 'link';
 }
 
 const {
@@ -15,8 +16,11 @@ const {
   title = "Tagged with:",
   maxTags = 10,
   showMore = true,
-  posts
+  posts,
+  filterMode = 'filter'
 } = Astro.props as Props;
+
+const isFilterMode = filterMode === 'filter';
 
 if (!posts) {
   throw new Error('TagList requires the `posts` prop to be provided by the parent component.');
@@ -67,16 +71,26 @@ const componentId = `taglist-${Math.random().toString(36).slice(2, 11)}`;
 ---
 
 {popularTags.length > 0 && (
-  <tag-list class="tagged-with" id={componentId}>
-    <h3 class="tagged-with-title">{title}</h3>
+  <tag-list class="tagged-with" id={componentId} data-filter-mode={isFilterMode ? 'filter' : 'link'}>
+    <h3 class="tagged-with-title">{isFilterMode ? 'Filter by tag:' : title}</h3>
     <div class="tagged-with-list">
       {popularTags.map((tag) => (
-        <a
-          href={`/tags/${tag.toLowerCase()}/`}
-          class="tagged-with-item tag-chip"
-        >
-          {tag.toUpperCase()} ({tagCounts[tag]})
-        </a>
+        isFilterMode ? (
+          <button
+            type="button"
+            class="tagged-with-item tag-chip"
+            data-tag-filter={tag}
+          >
+            {tag.toUpperCase()} ({tagCounts[tag]})
+          </button>
+        ) : (
+          <a
+            href={`/tags/${tag.toLowerCase()}/`}
+            class="tagged-with-item tag-chip"
+          >
+            {tag.toUpperCase()} ({tagCounts[tag]})
+          </a>
+        )
       ))}
       {hasMoreTags && showMore && (
         <button
@@ -94,12 +108,22 @@ const componentId = `taglist-${Math.random().toString(36).slice(2, 11)}`;
     {hasMoreTags && showMore && (
       <div class="hidden-tags" id={`${componentId}-hidden`} hidden>
         {allSortedTags.slice(maxTags).map((tag) => (
-          <a
-            href={`/tags/${tag.toLowerCase()}/`}
-            class="tagged-with-item tag-chip"
-          >
-            {tag.toUpperCase()} ({tagCounts[tag]})
-          </a>
+          isFilterMode ? (
+            <button
+              type="button"
+              class="tagged-with-item tag-chip"
+              data-tag-filter={tag}
+            >
+              {tag.toUpperCase()} ({tagCounts[tag]})
+            </button>
+          ) : (
+            <a
+              href={`/tags/${tag.toLowerCase()}/`}
+              class="tagged-with-item tag-chip"
+            >
+              {tag.toUpperCase()} ({tagCounts[tag]})
+            </a>
+          )
         ))}
         <button
           type="button"

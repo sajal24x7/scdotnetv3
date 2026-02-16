@@ -85,9 +85,10 @@ const getVariantClass = (post: typeof posts[number]) => {
 
     {postsByYear[year].map((post) => {
       const localImage = getLocalImage(post);
+      const postTags = Array.isArray(post.data.tags) ? post.data.tags.join(',') : '';
 
       return (
-        <article class={`nordletter-item ${getSpanClass(post)} ${getVariantClass(post)}`}>
+        <article class={`nordletter-item ${getSpanClass(post)} ${getVariantClass(post)}`} data-content-item data-tags={postTags}>
           <a href={post.data.link} class="nordletter-link">
             {localImage ? (
               <div class="nordletter-image">
