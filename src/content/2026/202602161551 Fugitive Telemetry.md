@@ -11,7 +11,7 @@ author:
   - Martha Wells
 series: 'The Murderbot Diaries #6'
 genre: sci-fi
-bookStatus: read
+bookStatus: reading
 startedReading: 2026-02-16T13:52:45.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116080653219772487'
