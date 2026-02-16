@@ -1,14 +1,16 @@
 ---
-title: "Craig Mod on writing and memberships"
-slug: "craig-mod-on-writing-and-memberships"
-pubDate: 2026-02-16T11:17:48+02:00
-updatedDate: 2026-02-16T11:17:48+02:00
+title: Craig Mod on writing and memberships
+slug: craig-mod-on-writing-and-memberships
+pubDate: 2026-02-16T09:17:48.000Z
+updatedDate: 2026-02-16T09:17:48.000Z
 category: micro
 tags:
   - craig-mod
   - writing
   - obsidian
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116079569065243590'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mexpwloj5p2y'
 ---
 [Memberships Year Seven, Nuclear Bombs, Solar Power — Roden Newsletter Archive by Craig Mod](https://craigmod.com/roden/111/)
 
