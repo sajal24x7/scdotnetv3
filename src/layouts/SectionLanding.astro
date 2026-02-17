@@ -18,6 +18,7 @@ interface Props {
     tagMaxTags?: number;
     tagShowMore?: boolean;
     tagPosts?: Post[];
+    tagFilterMode?: 'filter' | 'link';
     tagWrapperClass?: string;
     tagListSpacing?: string;
     tagListSpacingMobile?: string;
@@ -48,6 +49,7 @@ const {
     tagMaxTags,
     tagShowMore,
     tagPosts,
+    tagFilterMode = 'filter',
     tagWrapperClass = '',
     tagListSpacing,
     tagListSpacingMobile,
@@ -130,8 +132,10 @@ const contentStartClass = contentHasCustomStartClass
         : '';
 const contentClassList = contentClass.split(/\s+/).filter(Boolean);
 const contentAsGrid = contentClassList.includes('section-content--as-grid');
+
+const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
 ---
-<section class={`section-landing ${wrapperClass}`.trim()}>
+<section class={`section-landing ${wrapperClass}`.trim()} data-tag-filter-enabled={isTagFilterEnabled ? '' : undefined}>
     <div
         class="section-landing__grid twelve-grid"
         style={gridStyle || undefined}
@@ -177,9 +181,17 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
                         maxTags={tagMaxTags}
                         showMore={tagShowMore}
                         posts={tagPosts}
+                        filterMode={tagFilterMode}
                     />
                 </div>
             )
+        )}
+
+        {isTagFilterEnabled && (
+            <div class="section-tag-filter__results grid-span-full" id="section-tag-filter-results" aria-live="polite" aria-atomic="true" hidden>
+                <div class="section-tag-filter__summary" id="section-tag-filter-summary"></div>
+                <div class="section-tag-filter__active" id="section-tag-filter-active"></div>
+            </div>
         )}
 
         {hasBeforeContentSlot && (
@@ -281,6 +293,95 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
         top: clamp(1.5rem, 4vw, 3rem);
     }
 
+    /* Tag filter results display */
+    .section-tag-filter__results {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.02);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .section-tag-filter__results[hidden] {
+        display: none;
+    }
+
+    :global(.dark) .section-tag-filter__results {
+        color: #9ca3af;
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .section-tag-filter__summary {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #6b7280;
+    }
+
+    :global(.dark) .section-tag-filter__summary {
+        color: #9ca3af;
+    }
+
+    .section-tag-filter__active {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    :global(.section-tag-filter-badge) {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.15rem 0.55rem;
+        border-radius: 0.5rem;
+        border: none;
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    :global(.dark) :global(.section-tag-filter-badge) {
+        background: rgba(30, 64, 175, 0.3);
+        color: #bfdbfe;
+    }
+
+    :global(.section-tag-filter-badge:hover) {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        opacity: 0.95;
+    }
+
+    :global(.dark) :global(.section-tag-filter-badge:hover) {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    :global(.section-tag-filter-badge__remove) {
+        font-size: 1rem;
+        line-height: 1;
+        font-weight: 600;
+        opacity: 0.7;
+        transition: opacity 150ms ease;
+    }
+
+    :global(.section-tag-filter-badge:hover) :global(.section-tag-filter-badge__remove) {
+        opacity: 1;
+    }
+
+    /* Hidden state for filtered content items */
+    :global([data-content-item][data-filtered="hidden"]) {
+        display: none;
+    }
+
     @media (max-width: 768px) {
         .section-landing__grid {
             --grid-padding-inline: var(--section-grid-padding-mobile, var(--section-grid-padding));
@@ -317,5 +418,146 @@ const contentAsGrid = contentClassList.includes('section-content--as-grid');
         .section-sidebar__inner {
             position: static;
         }
+
+        .section-tag-filter__results {
+            margin-bottom: 1rem;
+        }
     }
 </style>
+
+<script>
+    function initSectionTagFilter() {
+        const section = document.querySelector('[data-tag-filter-enabled]');
+        if (!section) return;
+
+        // Skip if no content items to filter (e.g., bookshelf uses its own filter system)
+        const contentItems = section.querySelectorAll('[data-content-item]');
+        if (contentItems.length === 0) return;
+
+        const resultsDisplay = document.getElementById('section-tag-filter-results');
+        const filterSummary = document.getElementById('section-tag-filter-summary');
+        const activeFiltersContainer = document.getElementById('section-tag-filter-active');
+
+        let selectedTag = '';
+
+        function updateFilterDisplay() {
+            if (!activeFiltersContainer) return;
+
+            if (!selectedTag) {
+                if (resultsDisplay) resultsDisplay.setAttribute('hidden', '');
+                if (filterSummary) filterSummary.textContent = '';
+                activeFiltersContainer.innerHTML = '';
+                return;
+            }
+
+            if (resultsDisplay) resultsDisplay.removeAttribute('hidden');
+
+            activeFiltersContainer.innerHTML = `
+                <button type="button" class="section-tag-filter-badge" data-remove-tag-filter>
+                    ${selectedTag.toUpperCase()} <span class="section-tag-filter-badge__remove" aria-label="Remove tag filter">\u00d7</span>
+                </button>
+            `;
+        }
+
+        function applyFilters() {
+            const allItems = section.querySelectorAll('[data-content-item]');
+            let visibleCount = 0;
+
+            allItems.forEach((item) => {
+                const itemTags = (item.getAttribute('data-tags') || '').split(',').filter(Boolean);
+                const tagMatch = !selectedTag || itemTags.includes(selectedTag);
+
+                if (tagMatch) {
+                    item.removeAttribute('data-filtered');
+                    visibleCount++;
+                } else {
+                    item.setAttribute('data-filtered', 'hidden');
+                }
+            });
+
+            if (filterSummary && selectedTag) {
+                const itemLabel = visibleCount === 1 ? 'item' : 'items';
+                filterSummary.textContent = `Showing ${visibleCount} ${itemLabel}`;
+            }
+
+            updateFilterDisplay();
+        }
+
+        function clearFilter() {
+            selectedTag = '';
+
+            // Reset all content items
+            const allItems = section.querySelectorAll('[data-content-item]');
+            allItems.forEach((item) => {
+                item.removeAttribute('data-filtered');
+            });
+
+            // Clear tag-list active state
+            const tagList = section.querySelector('tag-list');
+            if (tagList && tagList.clearActiveTag) {
+                tagList.clearActiveTag();
+            }
+
+            updateFilterDisplay();
+        }
+
+        // Listen for tag filter events from TagList
+        section.addEventListener('tagfilter', (event) => {
+            const detail = event.detail;
+            selectedTag = detail?.tag || '';
+            applyFilters();
+        });
+
+        // Listen for tag filter clicks from inline Tag components (on PostItem etc.)
+        section.addEventListener('click', (event) => {
+            const target = event.target;
+
+            // Handle remove filter badge click
+            const removeButton = target.closest('[data-remove-tag-filter]');
+            if (removeButton) {
+                event.preventDefault();
+                clearFilter();
+                return;
+            }
+
+            // Handle inline tag filter button clicks (from Tag components with asFilter)
+            const tagFilterButton = target.closest('[data-tag-filter]');
+            if (tagFilterButton) {
+                // Only handle if not inside tag-list (tag-list handles its own clicks)
+                const isInsideTagList = tagFilterButton.closest('tag-list');
+                if (!isInsideTagList) {
+                    event.preventDefault();
+                    const tag = tagFilterButton.getAttribute('data-tag-filter');
+                    const newTag = selectedTag === tag ? '' : tag;
+                    selectedTag = newTag;
+
+                    // Sync tag-list active state
+                    const tagList = section.querySelector('tag-list');
+                    if (tagList) {
+                        // Clear existing active states
+                        if (tagList.clearActiveTag) {
+                            tagList.clearActiveTag();
+                        }
+                        // Set new active state if a tag is selected
+                        if (newTag && tagList._activeTag !== undefined) {
+                            tagList._activeTag = newTag;
+                            const matchingBtn = tagList.querySelector(`[data-tag-filter="${CSS.escape(newTag)}"]`);
+                            if (matchingBtn) {
+                                matchingBtn.classList.add('tag-chip-active');
+                            }
+                        }
+                    }
+
+                    applyFilters();
+                }
+            }
+        });
+    }
+
+    // Initialize on page load
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSectionTagFilter);
+    } else {
+        initSectionTagFilter();
+    }
+</script>

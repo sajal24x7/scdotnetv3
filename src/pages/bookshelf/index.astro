@@ -231,6 +231,7 @@ const sectionLandingProps = createSectionLandingProps({
                 const bookStatus = normalizeStatus(book.data.bookStatus);
                 const bookFormat = book.data.format ?? '';
                 const bookRating = book.data.bookRating ?? '';
+                const bookTags = Array.isArray(book.data.tags) ? book.data.tags.join(',') : '';
 
                 return (
                   <div
@@ -242,6 +243,7 @@ const sectionLandingProps = createSectionLandingProps({
                     data-status={bookStatus}
                     data-format={bookFormat}
                     data-rating={bookRating}
+                    data-tags={bookTags}
                   >
                     <BookshelfCard {...transformBook(book)} />
                   </div>
@@ -452,6 +454,17 @@ const sectionLandingProps = createSectionLandingProps({
     color: #fecaca;
   }
 
+  /* Tag badges */
+  :global(.filter-badge--tag) {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  :global(.dark) :global(.filter-badge--tag) {
+    background: rgba(30, 64, 175, 0.3);
+    color: #bfdbfe;
+  }
+
   /* Clear all button */
   :global(.filter-badge--clear-all) {
     background: #ef4444;
@@ -560,6 +573,7 @@ const sectionLandingProps = createSectionLandingProps({
     let selectedStatus = '';
     let selectedFormat = '';
     let selectedRating = '';
+    let selectedTag = '';
 
     // Map for display labels
     const statusDisplayMap: Record<string, string> = {
@@ -588,7 +602,7 @@ const sectionLandingProps = createSectionLandingProps({
     function updateFilterDisplay() {
       if (!activeFiltersContainer) return;
 
-      const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating;
+      const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating || selectedTag;
 
       if (!hasFilters) {
         if (resultsDisplay) {
@@ -651,6 +665,14 @@ const sectionLandingProps = createSectionLandingProps({
         `);
       }
 
+      if (selectedTag) {
+        badges.push(`
+          <button type="button" class="filter-badge filter-badge--tag" data-remove-filter="tag">
+            ${selectedTag.toUpperCase()} <span class="filter-badge__remove" aria-label="Remove tag filter">×</span>
+          </button>
+        `);
+      }
+
       // Add clear all button if multiple filters
       if (badges.length > 1) {
         badges.push(`
@@ -676,14 +698,16 @@ const sectionLandingProps = createSectionLandingProps({
         const bookStatus = bookItem.getAttribute('data-status') || '';
         const bookFormat = bookItem.getAttribute('data-format') || '';
         const bookRating = bookItem.getAttribute('data-rating') || '';
+        const bookTags = bookItem.getAttribute('data-tags') || '';
 
         const authorMatch = !selectedAuthor || bookAuthors.split(',').includes(selectedAuthor);
         const genreMatch = !selectedGenre || bookGenre === selectedGenre;
         const statusMatch = !selectedStatus || bookStatus === selectedStatus;
         const formatMatch = !selectedFormat || bookFormat.toLowerCase() === selectedFormat.toLowerCase();
         const ratingMatch = !selectedRating || bookRating === selectedRating;
+        const tagMatch = !selectedTag || bookTags.split(',').includes(selectedTag);
 
-        const isVisible = authorMatch && genreMatch && statusMatch && formatMatch && ratingMatch;
+        const isVisible = authorMatch && genreMatch && statusMatch && formatMatch && ratingMatch && tagMatch;
 
         if (isVisible) {
           bookItem.removeAttribute('data-filtered');
@@ -753,6 +777,13 @@ const sectionLandingProps = createSectionLandingProps({
       selectedStatus = '';
       selectedFormat = '';
       selectedRating = '';
+      selectedTag = '';
+
+      // Clear tag-list active state
+      const tagList = document.querySelector('tag-list');
+      if (tagList && tagList.clearActiveTag) {
+        tagList.clearActiveTag();
+      }
 
       // Hide results display when no filters active
       if (resultsDisplay) {
@@ -824,6 +855,13 @@ const sectionLandingProps = createSectionLandingProps({
         } else if (filterToRemove === 'rating') {
           selectedRating = '';
           applyFilters();
+        } else if (filterToRemove === 'tag') {
+          selectedTag = '';
+          const tagList = document.querySelector('tag-list');
+          if (tagList && tagList.clearActiveTag) {
+            tagList.clearActiveTag();
+          }
+          applyFilters();
         }
         return;
       }
@@ -870,6 +908,13 @@ const sectionLandingProps = createSectionLandingProps({
 
         applyFilters();
       }
+    });
+
+    // Listen for tag filter events from the TagList component
+    document.addEventListener('tagfilter', (event) => {
+      const detail = (event as CustomEvent).detail;
+      selectedTag = detail?.tag || '';
+      applyFilters();
     });
   }
 

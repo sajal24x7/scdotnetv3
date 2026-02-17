@@ -11,7 +11,8 @@ interface Props extends TagAttributes {
     prefix?: string;
     suffix?: string;
     isActive?: boolean;
-    as?: 'a' | 'span';
+    as?: 'a' | 'span' | 'button';
+    asFilter?: boolean;
     class?: string;
     className?: string;
 }
@@ -25,12 +26,13 @@ const {
     suffix = '',
     isActive = false,
     as,
+    asFilter = false,
     class: classAttr = '',
     className = '',
     ...rest
 } = Astro.props as Props & Record<string, any>;
 
-const elementTag: 'a' | 'span' = as ?? (href ? 'a' : 'span');
+const elementTag: 'a' | 'span' | 'button' = asFilter ? 'button' : (as ?? (href ? 'a' : 'span'));
 const computedHref = elementTag === 'a' ? href ?? `/tags/${tag.toLowerCase()}/` : undefined;
 const classes = ['tag', 'tag-chip', isActive ? 'tag-chip-active' : '', classAttr || className]
     .filter(Boolean)
@@ -39,7 +41,11 @@ const baseLabel = label ?? tag;
 const displayLabel = `${prefix}${uppercase ? baseLabel.toUpperCase() : baseLabel}${suffix}`;
 ---
 
-{elementTag === 'a' ? (
+{elementTag === 'button' ? (
+    <button type="button" class={classes} data-tag-filter={tag} {...rest}>
+        {displayLabel}
+    </button>
+) : elementTag === 'a' ? (
     <a href={computedHref} class={classes} {...rest}>
         {displayLabel}
     </a>
