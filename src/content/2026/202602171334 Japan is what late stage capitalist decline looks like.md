@@ -1,13 +1,15 @@
 ---
-title: "Japan is what late stage capitalist decline looks like"
-slug: "japan-is-what-late-stage-capitalist-decline-looks-like"
-pubDate: 2026-02-17T13:37:48+02:00
-updatedDate: 2026-02-17T13:37:48+02:00
+title: Japan is what late stage capitalist decline looks like
+slug: japan-is-what-late-stage-capitalist-decline-looks-like
+pubDate: 2026-02-17T11:37:48.000Z
+updatedDate: 2026-02-17T11:37:48.000Z
 category: micro
 tags:
   - japan
   - capitalism
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116085786385063978'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mf2ibvmwi622'
 ---
 [Japan Is What Late-Stage Capitalist Decline Looks Like by Ellie](https://oceandrops.substack.com/p/japan-is-what-late-stage-capitalist)
 
