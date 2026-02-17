@@ -235,6 +235,15 @@
     color: inherit;
   }
 
+  .prose a.tag-chip,
+  .prose a.tag-chip:hover,
+  .prose a.tag-chip:focus-visible {
+    background-image: none;
+    padding: 0.2rem 0.6rem;
+    margin: 0;
+    font-weight: 600;
+  }
+
   .prose ul,
   .prose ol {
     margin-top: 1rem;
