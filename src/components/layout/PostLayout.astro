@@ -195,7 +195,7 @@ const formattedAuthor = formatAuthors(author);
                     <div class="mb-8 flex justify-center">
                         <div class="flex flex-wrap gap-2 justify-center">
                             {tags.map((tag: string) => (
-                                <Tag tag={tag} />
+                                <Tag tag={tag} as="a" />
                             ))}
                         </div>
                     </div>
