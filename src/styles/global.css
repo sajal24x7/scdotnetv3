@@ -236,12 +236,38 @@
   }
 
   .prose a.tag-chip,
-  .prose a.tag-chip:hover,
-  .prose a.tag-chip:focus-visible {
+  .prose a.tag-chip:visited {
     background-image: none;
     padding: 0.2rem 0.6rem;
     margin: 0;
     font-weight: 600;
+    color: rgb(var(--tag-color-rgb));
+    border-radius: 0.5rem;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .prose a.tag-chip:hover {
+    background-image: none;
+    padding: 0.2rem 0.6rem;
+    margin: 0;
+    color: rgb(var(--tag-hover-rgb));
+  }
+
+  .prose a.tag-chip:focus-visible {
+    background-image: none;
+    padding: 0.2rem 0.6rem;
+    margin: 0;
+    outline: 2px solid rgba(var(--tag-hover-rgb), 0.35);
+    outline-offset: 2px;
+  }
+
+  .dark .prose a.tag-chip,
+  .dark .prose a.tag-chip:visited {
+    color: rgb(var(--tag-dark-color-rgb));
+  }
+
+  .dark .prose a.tag-chip:hover {
+    color: rgb(var(--tag-dark-hover-rgb));
   }
 
   .prose ul,
