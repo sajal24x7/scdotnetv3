@@ -1,13 +1,15 @@
 ---
-title: "The only moat left is money"
-slug: "the-only-moat-left-is-money"
-pubDate: 2026-02-18T22:51:56+02:00
-updatedDate: 2026-02-18T22:51:56+02:00
+title: The only moat left is money
+slug: the-only-moat-left-is-money
+pubDate: 2026-02-18T20:51:56.000Z
+updatedDate: 2026-02-18T20:51:56.000Z
 category: micro
 tags:
   - ai
   - work
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116095798628879078'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mf6wkwnlsu2f'
 ---
 [The Only Moat Left Is Money - Elliot Bonneville by ](https://elliotbonneville.com/the-only-moat-left-is-money/)
 

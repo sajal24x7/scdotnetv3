@@ -1,13 +1,15 @@
 ---
-title: "Audible syncs ebook reading and audiobook listening to keep you focused"
-slug: "audible-syncs-ebook-reading-and-audiobook-listening-to-keep-you-focused"
-pubDate: 2026-02-18T22:35:06+02:00
-updatedDate: 2026-02-18T22:35:06+02:00
+title: Audible syncs ebook reading and audiobook listening to keep you focused
+slug: audible-syncs-ebook-reading-and-audiobook-listening-to-keep-you-focused
+pubDate: 2026-02-18T20:35:06.000Z
+updatedDate: 2026-02-18T20:35:06.000Z
 category: micro
 tags:
   - reading
   - audible
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116095798505216258'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mf6wkvhwsf27'
 ---
 [Audible syncs ebook reading and audiobook listening to keep you focused by Stevie Bonifield](https://www.theverge.com/entertainment/880719/audible-immersion-reading-read-and-listen)
 
