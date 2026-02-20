@@ -1,14 +1,16 @@
 ---
-title: "OpenAI could be building a smart speaker with a camera"
-slug: "openai-could-be-building-a-smart-speaker-with-a-camera"
-pubDate: 2026-02-20T19:35:00+02:00
-updatedDate: 2026-02-20T19:35:00+02:00
+title: OpenAI could be building a smart speaker with a camera
+slug: openai-could-be-building-a-smart-speaker-with-a-camera
+pubDate: 2026-02-20T17:35:00.000Z
+updatedDate: 2026-02-20T17:35:00.000Z
 category: micro
 tags:
   - openai
   - apple
   - ai-device
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116104164108794396'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfcnh4exhg2l'
 ---
 [OpenAI’s first ChatGPT gadget could be a smart speaker with a camera by Jay Peters](https://www.theverge.com/ai-artificial-intelligence/882077/openai-chatgpt-smart-speaker-camera-glasses-lamp)
 
