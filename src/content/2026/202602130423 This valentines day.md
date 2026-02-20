@@ -3,7 +3,7 @@ title: "This valentines day"
 slug: "this-valentines-day"
 pubDate: 2026-02-19T16:39:14+02:00
 updatedDate: 2026-02-19T16:39:14+02:00
-category: poems
+category: poem
 tags:
   - love
   - valentines-day
