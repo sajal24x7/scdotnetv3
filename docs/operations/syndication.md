@@ -42,5 +42,6 @@ The general build (`npm run build`) triggers `scripts/trigger-syndication.sh` af
 
 ## Related Documentation
 
+- [Threads Token Refresh](threads-token-refresh.md)
 - [Deployment and Build Pipeline](deployment.md)
 - [Content Lifecycle](../architecture/content-lifecycle.md)
