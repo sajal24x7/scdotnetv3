@@ -1,0 +1,167 @@
+name: Refresh Threads Token
+
+# Threads access tokens expire every 60 days. This workflow automatically
+# refreshes the token before it expires, so you don't have to do it manually.
+#
+# Prerequisites:
+#   1. A Personal Access Token (classic) with `repo` scope, stored as the
+#      GH_PAT secret in this repository. This is needed to update the
+#      THREADS_ACCESS_TOKEN secret programmatically.
+#      Create one at: https://github.com/settings/tokens
+#   2. The existing THREADS_ACCESS_TOKEN and THREADS_USER_ID secrets.
+
+on:
+  schedule:
+    # Run every Monday at 9:00 UTC
+    - cron: '0 9 * * 1'
+
+  workflow_dispatch:
+    inputs:
+      force_refresh:
+        description: 'Force token refresh even if not close to expiring'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  refresh-token:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check token expiration
+        id: check_expiry
+        env:
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$THREADS_ACCESS_TOKEN" ]; then
+            echo "::error::THREADS_ACCESS_TOKEN secret is not set"
+            echo "token_status=missing" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          RESPONSE=$(curl -sf "https://graph.facebook.com/debug_token?input_token=${THREADS_ACCESS_TOKEN}&access_token=${THREADS_ACCESS_TOKEN}" 2>/dev/null) || true
+
+          if [ -z "$RESPONSE" ]; then
+            echo "::warning::Could not reach debug_token endpoint. Attempting refresh anyway."
+            echo "token_status=unknown" >> $GITHUB_OUTPUT
+            echo "needs_refresh=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          IS_VALID=$(echo "$RESPONSE" | jq -r '.data.is_valid')
+          EXPIRES_AT=$(echo "$RESPONSE" | jq -r '.data.expires_at // 0')
+
+          if [ "$IS_VALID" != "true" ]; then
+            echo "::error::Token is no longer valid and cannot be refreshed automatically."
+            echo "token_status=expired" >> $GITHUB_OUTPUT
+            echo "needs_refresh=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          NOW=$(date +%s)
+          DAYS_REMAINING=$(( (EXPIRES_AT - NOW) / 86400 ))
+          EXPIRY_DATE=$(date -u -d @"${EXPIRES_AT}" '+%Y-%m-%d %H:%M UTC' 2>/dev/null || date -u -r "${EXPIRES_AT}" '+%Y-%m-%d %H:%M UTC' 2>/dev/null || echo "unknown")
+          echo "Token expires on ${EXPIRY_DATE} (${DAYS_REMAINING} days remaining)"
+
+          FORCE="${{ github.event.inputs.force_refresh }}"
+          if [ "$DAYS_REMAINING" -lt 14 ] || [ "$FORCE" = "true" ]; then
+            echo "Token needs refresh (${DAYS_REMAINING} days remaining, force=${FORCE})"
+            echo "needs_refresh=true" >> $GITHUB_OUTPUT
+          else
+            echo "Token has ${DAYS_REMAINING} days remaining. No refresh needed."
+            echo "needs_refresh=false" >> $GITHUB_OUTPUT
+          fi
+
+          echo "token_status=valid" >> $GITHUB_OUTPUT
+          echo "days_remaining=${DAYS_REMAINING}" >> $GITHUB_OUTPUT
+
+      - name: Refresh token and update secret
+        if: steps.check_expiry.outputs.needs_refresh == 'true'
+        env:
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          # Call the Threads token refresh endpoint
+          RESPONSE=$(curl -sf "https://graph.threads.net/refresh_access_token?grant_type=th_refresh_token&access_token=${THREADS_ACCESS_TOKEN}")
+
+          if [ $? -ne 0 ]; then
+            echo "::error::Failed to refresh token. The token may have already expired."
+            exit 1
+          fi
+
+          NEW_TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
+          EXPIRES_IN=$(echo "$RESPONSE" | jq -r '.expires_in')
+
+          if [ -z "$NEW_TOKEN" ] || [ "$NEW_TOKEN" = "null" ]; then
+            echo "::error::Refresh response did not contain a new access token"
+            echo "Response: $(echo "$RESPONSE" | jq -r '.error.message // "unknown error"')"
+            exit 1
+          fi
+
+          # Mask the new token so it doesn't appear in logs
+          echo "::add-mask::${NEW_TOKEN}"
+
+          DAYS_VALID=$(( EXPIRES_IN / 86400 ))
+          echo "Token refreshed successfully. New token valid for ${DAYS_VALID} days."
+
+          # Update the repository secret
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::GH_PAT secret is not set. Cannot update THREADS_ACCESS_TOKEN."
+            echo "Add a Personal Access Token with repo scope as the GH_PAT secret."
+            exit 1
+          fi
+
+          echo "${NEW_TOKEN}" | gh secret set THREADS_ACCESS_TOKEN --repo "${{ github.repository }}"
+          echo "THREADS_ACCESS_TOKEN secret updated successfully."
+
+      - name: Create issue for expired token
+        if: steps.check_expiry.outputs.token_status == 'expired' || steps.check_expiry.outputs.token_status == 'missing'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'automation',
+            });
+
+            const existing = issues.find(i => i.title.includes('Threads access token'));
+            if (existing) {
+              console.log(`Issue already exists: #${existing.number}`);
+              return;
+            }
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Threads access token has expired — manual renewal required',
+              body: `The Threads access token has expired and cannot be refreshed automatically.\n\nPlease generate a new token manually:\n1. Go to [Facebook Developers](https://developers.facebook.com/apps/) and open your Threads API app\n2. Click **Customize the Access to the Threads API use case**\n3. Go to **Settings**\n4. Use **Generate Access token** at the bottom of the page\n5. Authenticate to Threads in the popup window\n6. Copy the new token to the \`THREADS_ACCESS_TOKEN\` secret in [repository settings](${{ github.server_url }}/${{ github.repository }}/settings/secrets/actions)\n\n**Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`,
+              labels: ['bug', 'automation']
+            });
+
+      - name: Create issue on refresh failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'automation',
+            });
+
+            const existing = issues.find(i => i.title.includes('Threads token refresh failed'));
+            if (existing) {
+              console.log(`Issue already exists: #${existing.number}`);
+              return;
+            }
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Threads token refresh failed',
+              body: `The automatic Threads token refresh failed.\n\n**Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\n\nPlease check the logs. If the token has expired, you will need to [renew it manually](https://developers.facebook.com/apps/).`,
+              labels: ['bug', 'automation']
+            });
