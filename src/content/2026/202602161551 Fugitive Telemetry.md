@@ -1,6 +1,6 @@
 ---
 title: Fugitive Telemetry
-slug: reading-fugitive-telemetry
+slug: fugitive-telemetry
 pubDate: 2026-02-16T13:52:45.000Z
 updatedDate: 2026-02-16T13:52:45.000Z
 category: bookshelf
