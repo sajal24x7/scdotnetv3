@@ -1,13 +1,15 @@
 ---
-title: "This valentines day"
-slug: "this-valentines-day"
-pubDate: 2026-02-19T16:39:14+02:00
-updatedDate: 2026-02-19T16:39:14+02:00
+title: This valentines day
+slug: this-valentines-day
+pubDate: 2026-02-19T14:39:14.000Z
+updatedDate: 2026-02-19T14:39:14.000Z
 category: poem
 tags:
   - love
   - valentines-day
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116102382501559670'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfbu4wnyjq22'
 ---
 You said, in Finland,
 they celebrate friendships
