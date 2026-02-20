@@ -1,0 +1,17 @@
+---
+title: "OpenAI could be building a smart speaker with a camera"
+slug: "openai-could-be-building-a-smart-speaker-with-a-camera"
+pubDate: 2026-02-20T19:35:00+02:00
+updatedDate: 2026-02-20T19:35:00+02:00
+category: micro
+tags:
+  - openai
+  - apple
+  - ai-device
+
+---
+[OpenAI’s first ChatGPT gadget could be a smart speaker with a camera by Jay Peters](https://www.theverge.com/ai-artificial-intelligence/882077/openai-chatgpt-smart-speaker-camera-glasses-lamp)
+
+> OpenAI's first hardware release will be a smart speaker with a camera that will probably cost between $200 and $300, according to The Information. The device will be able to recognize things like "items on a nearby table or conversations people are having in the vicinity," The Information says, and it will have a Face ID-like facial recognition system so that people can purchase things.
+
+Sounds like the iPad on a swivel home device Apple has been rumoured to be making since quite some time. Given Apple’s manufacturing chops they are more likely to turn it into a hit product.
