@@ -1,13 +1,15 @@
 ---
-title: "A galaxy composed mostly of dark matter"
-slug: "a-galaxy-composed-mostly-of-dark-matter"
-pubDate: 2026-02-21T12:07:17+02:00
-updatedDate: 2026-02-21T12:07:17+02:00
+title: A galaxy composed mostly of dark matter
+slug: a-galaxy-composed-mostly-of-dark-matter
+pubDate: 2026-02-21T10:07:17.000Z
+updatedDate: 2026-02-21T10:07:17.000Z
 category: micro
 tags:
   - space
   - dark-matter
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116108522626846119'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfelf56gkk2h'
 ---
 [A Galaxy Composed Almost Entirely of Dark Matter Has Been Confirmed by Jorge Garay](https://www.wired.com/story/a-galaxy-composed-almost-entirely-of-dark-matter-has-been-confirmed/)
 
