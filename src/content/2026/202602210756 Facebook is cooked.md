@@ -1,13 +1,15 @@
 ---
-title: "Facebook is cooked"
-slug: "facebook-is-cooked"
-pubDate: 2026-02-21T08:01:30+02:00
-updatedDate: 2026-02-21T08:01:30+02:00
+title: Facebook is cooked
+slug: facebook-is-cooked
+pubDate: 2026-02-21T06:01:30.000Z
+updatedDate: 2026-02-21T06:01:30.000Z
 category: micro
 tags:
   - facebook
   - instagram
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116107099001075553'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfdx5qrise2a'
 ---
 [PILK #3 | Facebook is absolutely cooked by ](https://pilk.website/3/facebook-is-absolutely-cooked)
 
