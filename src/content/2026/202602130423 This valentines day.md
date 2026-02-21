@@ -11,6 +11,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116102382501559670'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfbu4wnyjq22'
 ---
+
 You said, in Finland,
 they celebrate friendships
 as well, on this day,
