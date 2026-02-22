@@ -1,14 +1,16 @@
 ---
-title: "The limits of AI"
-slug: "the-limits-of-ai"
-pubDate: 2026-02-22T16:37:59+02:00
-updatedDate: 2026-02-22T16:37:59+02:00
+title: The limits of AI
+slug: the-limits-of-ai
+pubDate: 2026-02-22T14:37:59.000Z
+updatedDate: 2026-02-22T14:37:59.000Z
 category: micro
 tags:
   - ai
   - hugh-howey
   - llms
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116114792145087409'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfhei72cbe2y'
 ---
 [The Limits of AI by Hugh Howey](https://hughhowey.com/the-limits-of-ai/)
 
