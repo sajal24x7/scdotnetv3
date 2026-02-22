@@ -1,13 +1,15 @@
 ---
-title: "Two sentence journals"
-slug: "two-sentence-journals"
-pubDate: 2026-02-22T18:16:42+02:00
-updatedDate: 2026-02-22T18:16:42+02:00
+title: Two sentence journals
+slug: two-sentence-journals
+pubDate: 2026-02-22T16:16:42.000Z
+updatedDate: 2026-02-22T16:16:42.000Z
 category: micro
 tags:
   - journaling
   - writing
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116115181114080073'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfhjz2xg5o2c'
 ---
 [Allow me to introduce the two-sentence journal by ](https://alexanderbjoy.com/two-sentence-journal/)
 
