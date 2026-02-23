@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116095798505216258'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mf6wkvhwsf27'
+  - 'https://www.threads.com/@sajal24x7/post/DVHU5nhlKSz'
 ---
 [Audible syncs ebook reading and audiobook listening to keep you focused by Stevie Bonifield](https://www.theverge.com/entertainment/880719/audible-immersion-reading-read-and-listen)
 

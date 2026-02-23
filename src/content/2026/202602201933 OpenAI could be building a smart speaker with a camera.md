@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116104164108794396'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfcnh4exhg2l'
+  - 'https://www.threads.com/@sajal24x7/post/DVHU7O4FEXc'
 ---
 [OpenAI’s first ChatGPT gadget could be a smart speaker with a camera by Jay Peters](https://www.theverge.com/ai-artificial-intelligence/882077/openai-chatgpt-smart-speaker-camera-glasses-lamp)
 
