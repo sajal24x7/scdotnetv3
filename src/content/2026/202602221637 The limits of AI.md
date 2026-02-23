@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116114792145087409'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfhei72cbe2y'
+  - 'https://www.threads.com/@sajal24x7/post/DVHYiFZCYvg'
 ---
 [The Limits of AI by Hugh Howey](https://hughhowey.com/the-limits-of-ai/)
 

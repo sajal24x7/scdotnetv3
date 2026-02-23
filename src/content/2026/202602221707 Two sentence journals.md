@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116115181114080073'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfhjz2xg5o2c'
+  - 'https://www.threads.com/@sajal24x7/post/DVHYjFhiZRF'
 ---
 [Allow me to introduce the two-sentence journal by ](https://alexanderbjoy.com/two-sentence-journal/)
 

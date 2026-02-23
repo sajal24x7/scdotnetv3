@@ -1,14 +1,17 @@
 ---
-title: "Researchers make gel electrolyte breakthrough for Lithium ion batteries"
-slug: "researchers-make-gel-electrolyte-breakthrough-for-lithium-ion-batteries"
-pubDate: 2026-02-23T23:21:25+02:00
-updatedDate: 2026-02-23T23:21:25+02:00
+title: Researchers make gel electrolyte breakthrough for Lithium ion batteries
+slug: researchers-make-gel-electrolyte-breakthrough-for-lithium-ion-batteries
+pubDate: 2026-02-23T21:21:25.000Z
+updatedDate: 2026-02-23T21:21:25.000Z
 category: micro
 tags:
   - electric-cars
   - green-tech
   - batteries
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116122046025526320'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfklkuhkha2i'
+  - 'https://www.threads.com/@sajal24x7/post/DVHYlIOCcgo'
 ---
 ['There’s still plenty of life left in lithium-ion battery technology': researchers make gel electrolyte breakthrough that could boost EV range and safety](https://www.techradar.com/vehicle-tech/hybrid-electric-vehicles/forget-solid-state-batteries-researchers-have-made-a-lithium-ion-breakthrough-that-could-boost-range-and-drastically-lower-costs)
 
