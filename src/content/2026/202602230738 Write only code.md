@@ -1,15 +1,17 @@
 ---
-title: "Write only code"
-slug: "write-only-code"
-pubDate: 2026-02-23T07:39:51+02:00
-updatedDate: 2026-02-23T07:39:51+02:00
+title: Write only code
+slug: write-only-code
+pubDate: 2026-02-23T05:39:51.000Z
+updatedDate: 2026-02-23T05:39:51.000Z
 category: micro
 tags:
   - code
   - llms
   - enterprise
   - sdlc
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116119401068664685'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfjfy3gmpn2y'
 ---
 [Write-Only Code | Heavybit](https://www.heavybit.com/library/article/write-only-code)
 
