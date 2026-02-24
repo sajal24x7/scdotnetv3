@@ -1,14 +1,19 @@
 ---
-title: "Anthropic accuses DeepSeek and other Chinese firms of using Claude to train their AI"
-slug: "anthropic-accuses-deepseek-and-other-chinese-firms-of-using-claude-to-train-their-ai"
-pubDate: 2026-02-24T11:50:13+02:00
-updatedDate: 2026-02-24T11:50:13+02:00
+title: >-
+  Anthropic accuses DeepSeek and other Chinese firms of using Claude to train
+  their AI
+slug: >-
+  anthropic-accuses-deepseek-and-other-chinese-firms-of-using-claude-to-train-their-ai
+pubDate: 2026-02-24T09:50:13.000Z
+updatedDate: 2026-02-24T09:50:13.000Z
 category: micro
 tags:
   - deepseek
   - anthropic
   - llms
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116124987213143695'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mflveehwts2b'
 ---
 [Anthropic accuses DeepSeek and other Chinese firms of using Claude to train their AI by Emma Roth](https://www.theverge.com/ai-artificial-intelligence/883243/anthropic-claude-deepseek-china-ai-distillation)
 
