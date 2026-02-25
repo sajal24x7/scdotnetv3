@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116107099001075553'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfdx5qrise2a'
+  - 'https://www.threads.com/@sajal24x7/post/DVLnJBSDiKB'
 ---
 [PILK #3 | Facebook is absolutely cooked by ](https://pilk.website/3/facebook-is-absolutely-cooked)
 

@@ -1,13 +1,15 @@
 ---
-title: "The whole economy pays the Amazon tax"
-slug: "the-whole-economy-pays-the-amazon-tax"
-pubDate: 2026-02-25T14:46:47+02:00
-updatedDate: 2026-02-25T14:46:47+02:00
+title: The whole economy pays the Amazon tax
+slug: the-whole-economy-pays-the-amazon-tax
+pubDate: 2026-02-25T12:46:47.000Z
+updatedDate: 2026-02-25T12:46:47.000Z
 category: micro
 tags:
   - amazon
   - economy
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116131344324646704'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfoppai3jc27'
 ---
 [Pluralistic: The whole economy pays the Amazon tax (25 Feb 2026) – Pluralistic: Daily links from Cory Doctorow by Author Cory Doctorow](https://pluralistic.net/2026/02/25/most-favored-nation/)
 
