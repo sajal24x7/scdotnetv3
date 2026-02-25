@@ -1,13 +1,15 @@
 ---
-title: "About Claude  Remote Control"
-slug: "about-claude-remote-control"
-pubDate: 2026-02-25T13:13:16+02:00
-updatedDate: 2026-02-25T13:13:16+02:00
+title: About Claude  Remote Control
+slug: about-claude-remote-control
+pubDate: 2026-02-25T11:13:16.000Z
+updatedDate: 2026-02-25T11:13:16.000Z
 category: micro
 tags:
   - claude
   - obsidian
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116130975756107809'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfokhnixfv2a'
 ---
 [Continue local sessions from any device with Remote Control - Claude Code Docs by ](https://code.claude.com/docs/en/remote-control)
 
