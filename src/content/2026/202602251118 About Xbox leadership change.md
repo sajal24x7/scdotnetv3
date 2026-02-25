@@ -1,13 +1,15 @@
 ---
-title: "About Xbox leadership change"
-slug: "about-xbox-leadership-change"
-pubDate: 2026-02-25T11:19:45+02:00
-updatedDate: 2026-02-25T11:19:45+02:00
+title: About Xbox leadership change
+slug: about-xbox-leadership-change
+pubDate: 2026-02-25T09:19:45.000Z
+updatedDate: 2026-02-25T09:19:45.000Z
 category: micro
 tags:
   - xbox
   - microsoft
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116130530078082904'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfoe4y3ple2l'
 ---
 [Xbox CEO Asha Sharma — "This team has brought it back before, and I'm here to help us do it again." By Jez Corden](https://www.windowscentral.com/gaming/xbox/exclusive-talking-to-new-xbox-ceo-asha-sharma-and-cco-matt-booty)
 

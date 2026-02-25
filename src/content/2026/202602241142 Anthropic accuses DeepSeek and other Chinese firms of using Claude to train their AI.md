@@ -14,6 +14,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116124987213143695'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mflveehwts2b'
+  - 'https://www.threads.com/@sajal24x7/post/DVLPeUPDh-p'
 ---
 [Anthropic accuses DeepSeek and other Chinese firms of using Claude to train their AI by Emma Roth](https://www.theverge.com/ai-artificial-intelligence/883243/anthropic-claude-deepseek-china-ai-distillation)
 
