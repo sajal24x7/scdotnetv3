@@ -1,14 +1,17 @@
 ---
-title: "Scheduled tasks in cowork"
-slug: "scheduled-tasks-in-cowork"
-pubDate: 2026-02-25T21:58:05+02:00
-updatedDate: 2026-02-25T21:58:05+02:00
+title: Scheduled tasks in cowork
+slug: scheduled-tasks-in-cowork
+pubDate: 2026-02-25T19:58:05.000Z
+updatedDate: 2026-02-25T19:58:05.000Z
 category: micro
 tags:
   - claude
   - writing
   - obsidian
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116133057911999300'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfpi2il3os2f'
+  - 'https://www.threads.com/@sajal24x7/post/DVMZEYtAQWc'
 ---
 [Schedule recurring tasks in Cowork | Claude Help Center by ](https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-cowork)
 

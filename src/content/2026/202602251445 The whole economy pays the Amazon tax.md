@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116131344324646704'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfoppai3jc27'
+  - 'https://www.threads.com/@sajal24x7/post/DVMZCt-AeuH'
 ---
 [Pluralistic: The whole economy pays the Amazon tax (25 Feb 2026) – Pluralistic: Daily links from Cory Doctorow by Author Cory Doctorow](https://pluralistic.net/2026/02/25/most-favored-nation/)
 

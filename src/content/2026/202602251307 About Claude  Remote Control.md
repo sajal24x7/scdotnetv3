@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116130975756107809'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfokhnixfv2a'
+  - 'https://www.threads.com/@sajal24x7/post/DVMZBmzAW-F'
 ---
 [Continue local sessions from any device with Remote Control - Claude Code Docs by ](https://code.claude.com/docs/en/remote-control)
 

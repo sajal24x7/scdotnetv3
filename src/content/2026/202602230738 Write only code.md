@@ -12,6 +12,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116119401068664685'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfjfy3gmpn2y'
+  - 'https://www.threads.com/@sajal24x7/post/DVMY-vEgXQj'
 ---
 [Write-Only Code | Heavybit](https://www.heavybit.com/library/article/write-only-code)
 

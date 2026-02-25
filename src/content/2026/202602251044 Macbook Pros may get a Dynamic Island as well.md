@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116130394919001367'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfoc7isijn27'
+  - 'https://www.threads.com/@sajal24x7/post/DVMY_vegXS8'
 ---
 [Apple’s touchscreen MacBooks might also have a Dynamic Island by Jay Peters](https://www.theverge.com/tech/884089/apple-touchscreen-macbook-pro-dynamic-island)
 

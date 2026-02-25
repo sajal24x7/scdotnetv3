@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116130530078082904'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfoe4y3ple2l'
+  - 'https://www.threads.com/@sajal24x7/post/DVMZAumAexd'
 ---
 [Xbox CEO Asha Sharma — "This team has brought it back before, and I'm here to help us do it again." By Jez Corden](https://www.windowscentral.com/gaming/xbox/exclusive-talking-to-new-xbox-ceo-asha-sharma-and-cco-matt-booty)
 

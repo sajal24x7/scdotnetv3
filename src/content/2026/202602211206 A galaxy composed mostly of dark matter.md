@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116108522626846119'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfelf56gkk2h'
+  - 'https://www.threads.com/@sajal24x7/post/DVMY9A7AUYo'
 ---
 [A Galaxy Composed Almost Entirely of Dark Matter Has Been Confirmed by Jorge Garay](https://www.wired.com/story/a-galaxy-composed-almost-entirely-of-dark-matter-has-been-confirmed/)
 
