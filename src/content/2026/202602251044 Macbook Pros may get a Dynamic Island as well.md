@@ -1,13 +1,15 @@
 ---
-title: "Macbook Pros may get a Dynamic Island as well"
-slug: "macbook-pros-may-get-a-dynamic-island-as-well"
-pubDate: 2026-02-25T10:45:30+02:00
-updatedDate: 2026-02-25T10:45:30+02:00
+title: Macbook Pros may get a Dynamic Island as well
+slug: macbook-pros-may-get-a-dynamic-island-as-well
+pubDate: 2026-02-25T08:45:30.000Z
+updatedDate: 2026-02-25T08:45:30.000Z
 category: micro
 tags:
   - mac
   - apple
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116130394919001367'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfoc7isijn27'
 ---
 [Apple’s touchscreen MacBooks might also have a Dynamic Island by Jay Peters](https://www.theverge.com/tech/884089/apple-touchscreen-macbook-pro-dynamic-island)
 

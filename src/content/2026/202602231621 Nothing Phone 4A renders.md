@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116121439615452847'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfkcx42csx2l'
+  - 'https://www.threads.com/@sajal24x7/post/DVLLizgla-x'
 ---
 [Nothing couldn’t wait to show off the Phone 4A by Jess Weatherbed](https://www.theverge.com/gadgets/882983/nothing-phone-4a-official-design-glyph-bar)
 
