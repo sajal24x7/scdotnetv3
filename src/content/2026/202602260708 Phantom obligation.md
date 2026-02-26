@@ -1,13 +1,15 @@
 ---
-title: "Phantom obligation"
-slug: "phantom-obligation"
-pubDate: 2026-02-26T12:02:09+02:00
-updatedDate: 2026-02-26T12:02:09+02:00
+title: Phantom obligation
+slug: phantom-obligation
+pubDate: 2026-02-26T10:02:09.000Z
+updatedDate: 2026-02-26T10:02:09.000Z
 category: micro
 tags:
   - rss
   - reading
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116136693805232224'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfr3pvpzmy2i'
 ---
 [Phantom Obligation by https://indieweb.social/@tg](https://www.terrygodier.com/phantom-obligation)
 
