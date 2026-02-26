@@ -1,0 +1,20 @@
+---
+title: "Phantom obligation"
+slug: "phantom-obligation"
+pubDate: 2026-02-26T12:02:09+02:00
+updatedDate: 2026-02-26T12:02:09+02:00
+category: micro
+tags:
+  - rss
+  - reading
+
+---
+[Phantom Obligation by https://indieweb.social/@tg](https://www.terrygodier.com/phantom-obligation)
+
+> Email's unread count means something specific: these are messages from real people who wrote to you and are, in some cases, actively waiting for your response. The number isn't neutral information. It's a measure of social debt.
+> 
+> But when we applied that same visual language to RSS (the unread counts, the bold text for new items, the sense of a backlog accumulating) we imported the anxiety without the cause.
+
+I have wondered about this myself. My current practice involves reading what I want to read and then marking everything else as read with prejudice. It’s not ideal. There is this feeling of guilt I have, of a task that needs to be done, quite like email. 
+
+There should be a different design, a different paradigm. Maybe I should write my thoughts in a place.
