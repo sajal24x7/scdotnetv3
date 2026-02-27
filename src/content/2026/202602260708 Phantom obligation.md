@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116136693805232224'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfr3pvpzmy2i'
+  - 'https://www.threads.com/@sajal24x7/post/DVQnHU5Ed1f'
 ---
 [Phantom Obligation by https://indieweb.social/@tg](https://www.terrygodier.com/phantom-obligation)
 
