@@ -1,13 +1,16 @@
 ---
-title: "Anthropic refuses to acquiesce to Pentagon"
-slug: "anthropic-refuses-to-acquiesce-to-pentagon"
-pubDate: 2026-02-27T12:56:44+02:00
-updatedDate: 2026-02-27T12:56:44+02:00
+title: Anthropic refuses to acquiesce to Pentagon
+slug: anthropic-refuses-to-acquiesce-to-pentagon
+pubDate: 2026-02-27T10:56:44.000Z
+updatedDate: 2026-02-27T10:56:44.000Z
 category: micro
 tags:
   - anthropic
   - usa
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116147872143853518'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfw2laci2q2h'
+  - 'https://www.threads.com/@sajal24x7/post/DVTIOFNjm_r'
 ---
 [Anthropic refuses Pentagon’s new terms, standing firm on lethal autonomous weapons and mass surveillance by Hayden Field](https://www.theverge.com/news/885773/anthropic-department-of-defense-dod-pentagon-refusal-terms-hegseth-dario-amodei)
 

@@ -1,13 +1,16 @@
 ---
-title: "How to use CC to build a website"
-slug: "how-to-use-cc-to-build-a-website"
-pubDate: 2026-02-27T22:56:57+02:00
-updatedDate: 2026-02-27T22:56:57+02:00
+title: How to use CC to build a website
+slug: how-to-use-cc-to-build-a-website
+pubDate: 2026-02-27T20:56:57.000Z
+updatedDate: 2026-02-27T20:56:57.000Z
 category: micro
 tags:
   - claude
   - claude-code
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116147873044696967'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfw2lnay6b2o'
+  - 'https://www.threads.com/@sajal24x7/post/DVTIPtnjqaT'
 ---
 [Proud Uncle Alert - Sabrina Feld by Brad Feld](https://feld.com/archives/2026/02/proud-uncle-alert-sabrina-feld/)
 

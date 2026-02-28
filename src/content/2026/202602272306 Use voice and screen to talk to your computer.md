@@ -1,14 +1,16 @@
 ---
-title: "Use voice and screen to talk to your computer"
-slug: "use-voice-and-screen-to-talk-to-your-computer"
-pubDate: 2026-02-27T23:09:31+02:00
-updatedDate: 2026-02-27T23:09:31+02:00
+title: Use voice and screen to talk to your computer
+slug: use-voice-and-screen-to-talk-to-your-computer
+pubDate: 2026-02-27T21:09:31.000Z
+updatedDate: 2026-02-27T21:09:31.000Z
 category: micro
 tags:
   - ai
   - voice
   - interfac
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116147873431903636'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfw2lsu55u2d'
 ---
 [Interconnected, a blog by Matt Webb by ](https://interconnected.org/home/)
 

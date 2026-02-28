@@ -1,13 +1,15 @@
 ---
-title: "Microsoft launches copilot tasks"
-slug: "microsoft-launches-copilot-tasks"
-pubDate: 2026-02-27T13:30:37+02:00
-updatedDate: 2026-02-27T13:30:37+02:00
+title: Microsoft launches copilot tasks
+slug: microsoft-launches-copilot-tasks
+pubDate: 2026-02-27T11:30:37.000Z
+updatedDate: 2026-02-27T11:30:37.000Z
 category: micro
 tags:
   - microsoft
   - copilot
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116147872654729103'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfw2lhtrgx2c'
 ---
 [Microsoft’s Copilot Tasks AI uses its own computer to get things done by Emma Roth](https://www.theverge.com/tech/885741/microsoft-copilot-tasks-ai)
 
