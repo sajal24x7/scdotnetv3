@@ -3,7 +3,7 @@ title: "Anthropic refuses to acquiesce to Pentagon"
 slug: "anthropic-refuses-to-acquiesce-to-pentagon"
 pubDate: 2026-02-27T12:56:44+02:00
 updatedDate: 2026-02-27T12:56:44+02:00
-category: "[[202506241127
+category: micro
 tags:
   - anthropic
   - usa

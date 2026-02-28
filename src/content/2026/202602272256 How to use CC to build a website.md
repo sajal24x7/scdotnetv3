@@ -3,7 +3,7 @@ title: "How to use CC to build a website"
 slug: "how-to-use-cc-to-build-a-website"
 pubDate: 2026-02-27T22:56:57+02:00
 updatedDate: 2026-02-27T22:56:57+02:00
-category: "[[202506241127
+category: micro
 tags:
   - claude
   - claude-code

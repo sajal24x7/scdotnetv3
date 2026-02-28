@@ -3,7 +3,7 @@ title: "Microsoft launches copilot tasks"
 slug: "microsoft-launches-copilot-tasks"
 pubDate: 2026-02-27T13:30:37+02:00
 updatedDate: 2026-02-27T13:30:37+02:00
-category: "[[202506241127
+category: micro
 tags:
   - microsoft
   - copilot

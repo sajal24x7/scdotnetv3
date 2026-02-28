@@ -3,7 +3,7 @@ title: "Use voice and screen to talk to your computer"
 slug: "use-voice-and-screen-to-talk-to-your-computer"
 pubDate: 2026-02-27T23:09:31+02:00
 updatedDate: 2026-02-27T23:09:31+02:00
-category: "[[202506241127
+category: micro
 tags:
   - ai
   - voice
