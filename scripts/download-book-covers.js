@@ -151,6 +151,14 @@ function titleScore(candidateTitle, targetTitle) {
   return overlap / Math.max(tWords.length, 1) * 0.5;
 }
 
+// Combined score weighing title (65%) and author (35%) when author is available
+function combinedScore(candidateTitle, candidateAuthor, targetTitle, targetAuthor) {
+  const ts = titleScore(candidateTitle, targetTitle);
+  if (!targetAuthor || !candidateAuthor) return ts;
+  const as = titleScore(candidateAuthor, targetAuthor);
+  return ts * 0.65 + as * 0.35;
+}
+
 // Search for book cover on Goodreads (scrapes HTML search results)
 // Uses the same technique as https://github.com/kepano/bookcover-api:
 // strips the Goodreads size indicator (e.g. "._SX98_.") from the CDN URL
@@ -221,22 +229,36 @@ async function searchGoodreads(title, author) {
         stream.on('data', (chunk) => { html += chunk; });
         stream.on('end', () => {
           try {
-            // Extract ALL book cover img tags from search results.
-            // Goodreads search rows use class="bookCover" on the img element.
-            // Each img has alt/title attributes with the book title.
-            const imgRegex = /<img[^>]+class="bookCover"[^>]*>/gi;
-            let imgMatch;
+            // Split the HTML on Goodreads book-result rows (<tr itemscope itemtype="...Book">).
+            // Parsing each row segment gives us the full book title and author — not just the
+            // img alt, which for summary books often just echoes the original title.
+            const bookSplit = html.split(/<tr\b[^>]*\bitemsco\b/i);
             const candidates = [];
-            while ((imgMatch = imgRegex.exec(html)) !== null) {
-              const img = imgMatch[0];
-              const srcMatch = img.match(/src="([^"]+)"/);
-              const labelMatch = img.match(/(?:alt|title)="([^"]+)"/);
-              if (srcMatch) {
-                candidates.push({
-                  src: srcMatch[1],
-                  title: labelMatch ? labelMatch[1] : '',
-                });
-              }
+
+            for (let i = 1; i < bookSplit.length; i++) {
+              const seg = bookSplit[i];
+
+              // Must contain a bookCover img
+              const imgTagMatch = seg.match(/<img\b[^>]+\bclass="bookCover"[^>]*/i);
+              if (!imgTagMatch) continue;
+              const srcMatch = imgTagMatch[0].match(/\bsrc="([^"]+)"/);
+              if (!srcMatch) continue;
+
+              // Full book title: prefer bookTitle anchor span, then itemprop=name, then img alt
+              const fullTitleMatch =
+                seg.match(/<a\b[^>]*\bbookTitle\b[^>]*>\s*<span[^>]*>\s*([^<]+?)\s*<\/span>/i) ||
+                seg.match(/<span\b[^>]*\bitemprop="name"[^>]*>\s*([^<]+?)\s*<\/span>/i);
+              const imgLabel = imgTagMatch[0].match(/\b(?:alt|title)="([^"]+)"/);
+              const fullTitle = fullTitleMatch
+                ? fullTitleMatch[1].trim()
+                : (imgLabel ? imgLabel[1] : '');
+
+              // Author: prefer authorName anchor, then itemprop=author
+              const authorMatch =
+                seg.match(/<a\b[^>]*\bauthorName\b[^>]*>\s*(?:<span[^>]*>)?\s*([^<]+?)\s*(?:<\/span>)?\s*<\/a>/i);
+              const fullAuthor = authorMatch ? authorMatch[1].trim() : '';
+
+              candidates.push({ src: srcMatch[1], title: fullTitle, author: fullAuthor });
             }
 
             if (candidates.length === 0) {
@@ -246,22 +268,22 @@ async function searchGoodreads(title, author) {
 
             console.log(`   🌐 [DEBUG] Goodreads found ${candidates.length} candidate(s)`);
 
-            // Filter out summary/study-guide/SparkNotes books
+            // Filter out summary/study-guide/SparkNotes books by full title
             const genuine = candidates.filter(c => !SUMMARY_KEYWORDS.test(c.title));
             const pool = genuine.length > 0 ? genuine : candidates;
 
-            // Pick the candidate whose title best matches our target
+            // Pick the candidate whose title+author best matches our target
             let best = pool[0];
-            let bestScore = titleScore(pool[0].title, title);
+            let bestScore = combinedScore(pool[0].title, pool[0].author, title, author);
             for (const c of pool.slice(1)) {
-              const s = titleScore(c.title, title);
+              const s = combinedScore(c.title, c.author, title, author);
               if (s > bestScore) {
                 bestScore = s;
                 best = c;
               }
             }
 
-            console.log(`   🌐 [DEBUG] Best match: "${best.title}" (score=${bestScore.toFixed(2)})`);
+            console.log(`   🌐 [DEBUG] Best match: "${best.title}" by "${best.author}" (score=${bestScore.toFixed(2)}`);
             console.log(`   🌐 [DEBUG] Goodreads raw cover URL: ${best.src}`);
 
             // Goodreads CDN URLs embed a size indicator like "_SX50_" or "_SY160_"
@@ -311,9 +333,9 @@ async function searchOpenLibrary(title, author) {
             const candidates = withCover.length > 0 ? withCover : pool;
 
             let best = candidates[0];
-            let bestScore = titleScore(candidates[0].title || '', title);
+            let bestScore = combinedScore(candidates[0].title || '', candidates[0].author_name?.[0] || '', title, author);
             for (const b of candidates.slice(1)) {
-              const s = titleScore(b.title || '', title);
+              const s = combinedScore(b.title || '', b.author_name?.[0] || '', title, author);
               if (s > bestScore) { bestScore = s; best = b; }
             }
 
@@ -367,9 +389,9 @@ async function searchGoogleBooks(title, author) {
             const candidates = withImage.length > 0 ? withImage : pool;
 
             let best = candidates[0];
-            let bestScore = titleScore(candidates[0].volumeInfo.title || '', title);
+            let bestScore = combinedScore(candidates[0].volumeInfo.title || '', candidates[0].volumeInfo.authors?.[0] || '', title, author);
             for (const b of candidates.slice(1)) {
-              const s = titleScore(b.volumeInfo.title || '', title);
+              const s = combinedScore(b.volumeInfo.title || '', b.volumeInfo.authors?.[0] || '', title, author);
               if (s > bestScore) { bestScore = s; best = b; }
             }
 
