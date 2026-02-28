@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import https from 'https';
 import http from 'http';
+import zlib from 'zlib';
 import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
 
@@ -56,15 +57,26 @@ function isLowRes(filepath) {
   }
 }
 
-// Download image from URL
-function downloadImage(url, filepath) {
+// Download image from URL, with optional extra request headers (e.g. Referer for Goodreads CDN)
+function downloadImage(url, filepath, extraHeaders = {}) {
   return new Promise((resolve, reject) => {
     const protocol = url.startsWith('https') ? https : http;
+    const parsedUrl = new URL(url);
+    const options = {
+      hostname: parsedUrl.hostname,
+      path: parsedUrl.pathname + parsedUrl.search,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        ...extraHeaders,
+      },
+    };
 
-    protocol.get(url, (response) => {
-      if (response.statusCode === 302 || response.statusCode === 301) {
-        // Follow redirect
-        downloadImage(response.headers.location, filepath)
+    protocol.get(options, (response) => {
+      if (response.statusCode === 302 || response.statusCode === 301 ||
+          response.statusCode === 307 || response.statusCode === 308) {
+        // Follow redirect, preserving extra headers
+        response.resume();
+        downloadImage(response.headers.location, filepath, extraHeaders)
           .then(resolve)
           .catch(reject);
         return;
@@ -98,48 +110,95 @@ function downloadImage(url, filepath) {
 async function searchGoodreads(title, author) {
   return new Promise((resolve) => {
     const query = encodeURIComponent(`${title} ${author || ''}`.trim());
-    const options = {
-      hostname: 'www.goodreads.com',
-      path: `/search?q=${query}&search_type=books`,
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xhtml+xml;q=0.9,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.5',
-      }
-    };
 
-    https.get(options, (response) => {
-      if (response.statusCode !== 200) {
+    function makeRequest(urlStr, redirectCount = 0) {
+      if (redirectCount > 5) {
         resolve(null);
         return;
       }
 
-      let html = '';
-      response.on('data', (chunk) => { html += chunk; });
-      response.on('end', () => {
-        try {
-          // Extract the first book cover image src from search results.
-          // Goodreads search rows use class="bookCover" on the img element.
-          const match = html.match(/class="bookCover"[^>]*src="([^"]+)"/);
-          if (!match) {
-            resolve(null);
-            return;
-          }
-
-          const rawUrl = match[1];
-
-          // Goodreads CDN URLs embed a size indicator like "._SX98_." or "._SY160_."
-          // between the base filename and the extension, e.g.:
-          //   .../45154316._SX98_.jpg  →  .../45154316.jpg
-          // Removing it gives the full-resolution original (same technique as kepano/bookcover-api).
-          const fullResUrl = rawUrl.replace(/_[^_]*_\./g, '.');
-
-          resolve(fullResUrl);
-        } catch {
-          resolve(null);
+      const parsedUrl = new URL(urlStr);
+      const options = {
+        hostname: parsedUrl.hostname,
+        path: parsedUrl.pathname + parsedUrl.search,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+          'Accept-Language': 'en-US,en;q=0.9',
+          'Accept-Encoding': 'gzip, deflate, br',
+          'Connection': 'keep-alive',
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+          'Sec-Fetch-Dest': 'document',
+          'Sec-Fetch-Mode': 'navigate',
+          'Sec-Fetch-Site': 'none',
+          'Sec-Fetch-User': '?1',
+          'Upgrade-Insecure-Requests': '1',
         }
-      });
-    }).on('error', () => resolve(null));
+      };
+
+      https.get(options, (response) => {
+        // Follow redirects (Cloudflare/Goodreads often redirects before serving content)
+        if (response.statusCode === 301 || response.statusCode === 302 ||
+            response.statusCode === 307 || response.statusCode === 308) {
+          const location = response.headers.location;
+          response.resume(); // consume to free socket
+          if (!location) { resolve(null); return; }
+          const nextUrl = location.startsWith('http')
+            ? location
+            : `https://${parsedUrl.hostname}${location}`;
+          makeRequest(nextUrl, redirectCount + 1);
+          return;
+        }
+
+        if (response.statusCode !== 200) {
+          console.log(`   ⚠️  Goodreads returned HTTP ${response.statusCode}`);
+          response.resume();
+          resolve(null);
+          return;
+        }
+
+        // Decompress response if needed (we sent Accept-Encoding, server may compress)
+        const encoding = response.headers['content-encoding'];
+        let stream = response;
+        if (encoding === 'gzip') {
+          stream = response.pipe(zlib.createGunzip());
+        } else if (encoding === 'deflate') {
+          stream = response.pipe(zlib.createInflate());
+        } else if (encoding === 'br') {
+          stream = response.pipe(zlib.createBrotliDecompress());
+        }
+
+        let html = '';
+        stream.on('data', (chunk) => { html += chunk; });
+        stream.on('end', () => {
+          try {
+            // Extract the first book cover image src from search results.
+            // Goodreads search rows use class="bookCover" on the img element.
+            const match = html.match(/class="bookCover"[^>]*src="([^"]+)"/);
+            if (!match) {
+              resolve(null);
+              return;
+            }
+
+            const rawUrl = match[1];
+
+            // Goodreads CDN URLs embed a size indicator like "._SX98_." or "._SY160_."
+            // between the base filename and the extension, e.g.:
+            //   .../45154316._SX98_.jpg  →  .../45154316.jpg
+            // Removing it gives the full-resolution original (same technique as kepano/bookcover-api).
+            const fullResUrl = rawUrl.replace(/_[^_]*_\./g, '.');
+
+            resolve(fullResUrl);
+          } catch {
+            resolve(null);
+          }
+        });
+        stream.on('error', () => resolve(null));
+      }).on('error', () => resolve(null));
+    }
+
+    makeRequest(`https://www.goodreads.com/search?q=${query}&search_type=books`);
   });
 }
 
@@ -277,13 +336,14 @@ function updateMarkdownWithCover(filePath, originalContent, coverFilename) {
 }
 
 // Try all sources in priority order: Goodreads → Open Library → Google Books
+// Returns { url, headers } so callers can supply extra request headers (e.g. Referer for Goodreads CDN).
 async function fetchCoverUrl(title, author) {
   // 1. Goodreads (highest quality — full-res via size-suffix removal)
   console.log(`   🔎 Searching Goodreads...`);
   const goodreadsUrl = await searchGoodreads(title, author);
   if (goodreadsUrl) {
     console.log(`   ✓ Found on Goodreads (full-res)`);
-    return goodreadsUrl;
+    return { url: goodreadsUrl, headers: { 'Referer': 'https://www.goodreads.com/' } };
   }
 
   // 2. Open Library
@@ -292,7 +352,7 @@ async function fetchCoverUrl(title, author) {
   if (olBook && olBook.coverId) {
     const olUrl = getOpenLibraryCoverUrl(olBook.coverId);
     console.log(`   ✓ Found on Open Library`);
-    return olUrl;
+    return { url: olUrl, headers: {} };
   }
 
   // 3. Google Books (zoom-enhanced)
@@ -300,7 +360,7 @@ async function fetchCoverUrl(title, author) {
   const gbUrl = await searchGoogleBooks(title, author);
   if (gbUrl) {
     console.log(`   ✓ Found on Google Books (zoom-enhanced)`);
-    return gbUrl;
+    return { url: gbUrl, headers: {} };
   }
 
   return null;
@@ -392,11 +452,12 @@ async function main() {
     console.log(`📚 Processing: "${title}" by ${author || 'Unknown Author'}`);
 
     try {
-      const coverUrl = await fetchCoverUrl(title, author);
+      const coverResult = await fetchCoverUrl(title, author);
 
-      if (coverUrl) {
+      if (coverResult) {
+        const { url: coverUrl, headers: coverHeaders } = coverResult;
         console.log(`   ⬇️  Downloading cover...`);
-        await downloadImage(coverUrl, coverPath);
+        await downloadImage(coverUrl, coverPath, coverHeaders);
 
         const downloadedSizeKb = (fs.statSync(coverPath).size / 1024).toFixed(1);
         console.log(`   ✅ Saved as: ${coverFilename} (${downloadedSizeKb}KB)`);
