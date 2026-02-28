@@ -126,6 +126,31 @@ function downloadImage(url, filepath, extraHeaders = {}, _redirectCount = 0) {
   });
 }
 
+// Keywords that identify non-original books (summaries, study guides, etc.)
+const SUMMARY_KEYWORDS = /\b(summary|summaries|study guide|sparknotes|cliffsnotes|gradesaver|analysis|review|synopsis|workbook|companion guide)\b/i;
+
+// Normalize a title for comparison: lowercase, strip punctuation and articles
+function normalizeTitle(s) {
+  return s.toLowerCase()
+    .replace(/^(a |an |the )/i, '')
+    .replace(/[^\w\s]/g, '')
+    .trim();
+}
+
+// Score how well a candidate title matches the target title (0–1, higher is better)
+function titleScore(candidateTitle, targetTitle) {
+  const cNorm = normalizeTitle(candidateTitle);
+  const tNorm = normalizeTitle(targetTitle);
+  if (cNorm === tNorm) return 1;
+  if (cNorm.startsWith(tNorm) || tNorm.startsWith(cNorm)) return 0.9;
+  if (cNorm.includes(tNorm) || tNorm.includes(cNorm)) return 0.7;
+  // Word overlap score
+  const cWords = new Set(cNorm.split(/\s+/));
+  const tWords = tNorm.split(/\s+/);
+  const overlap = tWords.filter(w => cWords.has(w)).length;
+  return overlap / Math.max(tWords.length, 1) * 0.5;
+}
+
 // Search for book cover on Goodreads (scrapes HTML search results)
 // Uses the same technique as https://github.com/kepano/bookcover-api:
 // strips the Goodreads size indicator (e.g. "._SX98_.") from the CDN URL
@@ -196,23 +221,55 @@ async function searchGoodreads(title, author) {
         stream.on('data', (chunk) => { html += chunk; });
         stream.on('end', () => {
           try {
-            // Extract the first book cover image src from search results.
+            // Extract ALL book cover img tags from search results.
             // Goodreads search rows use class="bookCover" on the img element.
-            const match = html.match(/class="bookCover"[^>]*src="([^"]+)"/);
-            if (!match) {
+            // Each img has alt/title attributes with the book title.
+            const imgRegex = /<img[^>]+class="bookCover"[^>]*>/gi;
+            let imgMatch;
+            const candidates = [];
+            while ((imgMatch = imgRegex.exec(html)) !== null) {
+              const img = imgMatch[0];
+              const srcMatch = img.match(/src="([^"]+)"/);
+              const labelMatch = img.match(/(?:alt|title)="([^"]+)"/);
+              if (srcMatch) {
+                candidates.push({
+                  src: srcMatch[1],
+                  title: labelMatch ? labelMatch[1] : '',
+                });
+              }
+            }
+
+            if (candidates.length === 0) {
               resolve(null);
               return;
             }
 
-            const rawUrl = match[1];
-            console.log(`   🌐 [DEBUG] Goodreads raw cover URL: ${rawUrl}`);
+            console.log(`   🌐 [DEBUG] Goodreads found ${candidates.length} candidate(s)`);
+
+            // Filter out summary/study-guide/SparkNotes books
+            const genuine = candidates.filter(c => !SUMMARY_KEYWORDS.test(c.title));
+            const pool = genuine.length > 0 ? genuine : candidates;
+
+            // Pick the candidate whose title best matches our target
+            let best = pool[0];
+            let bestScore = titleScore(pool[0].title, title);
+            for (const c of pool.slice(1)) {
+              const s = titleScore(c.title, title);
+              if (s > bestScore) {
+                bestScore = s;
+                best = c;
+              }
+            }
+
+            console.log(`   🌐 [DEBUG] Best match: "${best.title}" (score=${bestScore.toFixed(2)})`);
+            console.log(`   🌐 [DEBUG] Goodreads raw cover URL: ${best.src}`);
 
             // Goodreads CDN URLs embed a size indicator like "_SX50_" or "_SY160_"
             // between the base filename and the extension, e.g.:
             //   .../45154316._SX50_.jpg  →  .../45154316._SX300_.jpg
             // Using a larger size indicator gives a high-quality image that the CDN will serve.
             // Stripping the size entirely (e.g. .../45154316.jpg) results in a 403 from CloudFront.
-            const fullResUrl = rawUrl.replace(/_S[XY]\d+_/g, '_SX300_');
+            const fullResUrl = best.src.replace(/_S[XY]\d+_/g, '_SX300_');
             console.log(`   🌐 [DEBUG] Enhanced URL (SX300): ${fullResUrl}`);
 
             resolve(fullResUrl);
@@ -232,7 +289,7 @@ async function searchGoodreads(title, author) {
 async function searchOpenLibrary(title, author) {
   return new Promise((resolve, reject) => {
     const query = encodeURIComponent(`${title} ${author || ''}`.trim());
-    const url = `https://openlibrary.org/search.json?q=${query}&limit=1`;
+    const url = `https://openlibrary.org/search.json?q=${query}&limit=10`;
 
     https.get(url, (response) => {
       let data = '';
@@ -245,12 +302,26 @@ async function searchOpenLibrary(title, author) {
         try {
           const result = JSON.parse(data);
           if (result.docs && result.docs.length > 0) {
-            const book = result.docs[0];
+            // Filter out summary/study-guide results, then pick best title match
+            const genuine = result.docs.filter(b => !SUMMARY_KEYWORDS.test(b.title || ''));
+            const pool = genuine.length > 0 ? genuine : result.docs;
+
+            // Among results with a cover, pick best title match
+            const withCover = pool.filter(b => b.cover_i);
+            const candidates = withCover.length > 0 ? withCover : pool;
+
+            let best = candidates[0];
+            let bestScore = titleScore(candidates[0].title || '', title);
+            for (const b of candidates.slice(1)) {
+              const s = titleScore(b.title || '', title);
+              if (s > bestScore) { bestScore = s; best = b; }
+            }
+
             resolve({
-              isbn: book.isbn ? book.isbn[0] : null,
-              coverId: book.cover_i,
-              title: book.title,
-              author: book.author_name ? book.author_name[0] : null
+              isbn: best.isbn ? best.isbn[0] : null,
+              coverId: best.cover_i,
+              title: best.title,
+              author: best.author_name ? best.author_name[0] : null
             });
           } else {
             resolve(null);
@@ -274,7 +345,7 @@ function getOpenLibraryCoverUrl(coverId, size = 'L') {
 async function searchGoogleBooks(title, author) {
   return new Promise((resolve, reject) => {
     const query = encodeURIComponent(`${title} ${author || ''}`.trim());
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=1`;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=10`;
 
     https.get(url, (response) => {
       let data = '';
@@ -287,27 +358,42 @@ async function searchGoogleBooks(title, author) {
         try {
           const result = JSON.parse(data);
           if (result.items && result.items.length > 0) {
-            const book = result.items[0];
-            const imageLinks = book.volumeInfo.imageLinks;
-            if (imageLinks) {
-              // Prefer larger images
-              const coverUrl = imageLinks.extraLarge || imageLinks.large ||
-                               imageLinks.medium || imageLinks.small ||
-                               imageLinks.thumbnail;
-              if (!coverUrl) {
-                resolve(null);
-                return;
-              }
-              // Enhance resolution: remove zoom restriction and edge curl artifact
-              // e.g. "zoom=1&edge=curl" → higher-res image from Google Books CDN
-              const enhancedUrl = coverUrl
-                .replace('http:', 'https:')
-                .replace(/&zoom=\d+/, '&zoom=0')
-                .replace(/&edge=curl/, '');
-              resolve(enhancedUrl);
-            } else {
-              resolve(null);
+            // Filter out summary/study-guide results, then pick best title match
+            const genuine = result.items.filter(b => !SUMMARY_KEYWORDS.test(b.volumeInfo.title || ''));
+            const pool = genuine.length > 0 ? genuine : result.items;
+
+            // Among results with an image, pick best title match
+            const withImage = pool.filter(b => b.volumeInfo.imageLinks);
+            const candidates = withImage.length > 0 ? withImage : pool;
+
+            let best = candidates[0];
+            let bestScore = titleScore(candidates[0].volumeInfo.title || '', title);
+            for (const b of candidates.slice(1)) {
+              const s = titleScore(b.volumeInfo.title || '', title);
+              if (s > bestScore) { bestScore = s; best = b; }
             }
+
+            const imageLinks = best.volumeInfo.imageLinks;
+            if (!imageLinks) {
+              resolve(null);
+              return;
+            }
+
+            // Prefer larger images
+            const coverUrl = imageLinks.extraLarge || imageLinks.large ||
+                             imageLinks.medium || imageLinks.small ||
+                             imageLinks.thumbnail;
+            if (!coverUrl) {
+              resolve(null);
+              return;
+            }
+            // Enhance resolution: remove zoom restriction and edge curl artifact
+            // e.g. "zoom=1&edge=curl" → higher-res image from Google Books CDN
+            const enhancedUrl = coverUrl
+              .replace('http:', 'https:')
+              .replace(/&zoom=\d+/, '&zoom=0')
+              .replace(/&edge=curl/, '');
+            resolve(enhancedUrl);
           } else {
             resolve(null);
           }
