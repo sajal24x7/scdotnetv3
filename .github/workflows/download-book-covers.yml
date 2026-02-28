@@ -7,6 +7,16 @@ on:
 
   # Manual trigger for downloading covers
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Download mode'
+        required: true
+        default: 'normal'
+        type: choice
+        options:
+          - normal
+          - force
+          - refresh-low-res
 
   # Run daily to catch any new books
   schedule:
@@ -42,7 +52,14 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Download missing book covers
-        run: npm run download-covers
+        run: |
+          if [ "${{ inputs.mode }}" = "force" ]; then
+            npm run download-covers:force
+          elif [ "${{ inputs.mode }}" = "refresh-low-res" ]; then
+            npm run download-covers:refresh-low-res
+          else
+            npm run download-covers
+          fi
 
       - name: Generate TypeScript imports
         run: npm run generate-covers
