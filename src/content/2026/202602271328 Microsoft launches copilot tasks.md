@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116147872654729103'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfw2lhtrgx2c'
+  - 'https://www.threads.com/@sajal24x7/post/DVT-kOaj0AQ'
 ---
 [Microsoft’s Copilot Tasks AI uses its own computer to get things done by Emma Roth](https://www.theverge.com/tech/885741/microsoft-copilot-tasks-ai)
 

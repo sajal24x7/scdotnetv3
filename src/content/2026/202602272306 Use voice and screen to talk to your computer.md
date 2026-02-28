@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116147873431903636'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mfw2lsu55u2d'
+  - 'https://www.threads.com/@sajal24x7/post/DVT-lQRDxrK'
 ---
 [Interconnected, a blog by Matt Webb by ](https://interconnected.org/home/)
 
