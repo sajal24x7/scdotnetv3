@@ -58,32 +58,55 @@ function isLowRes(filepath) {
 }
 
 // Download image from URL, with optional extra request headers (e.g. Referer for Goodreads CDN)
-function downloadImage(url, filepath, extraHeaders = {}) {
+function downloadImage(url, filepath, extraHeaders = {}, _redirectCount = 0) {
   return new Promise((resolve, reject) => {
     const protocol = url.startsWith('https') ? https : http;
     const parsedUrl = new URL(url);
+    const requestHeaders = {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Accept-Encoding': 'gzip, deflate, br',
+      ...extraHeaders,
+    };
     const options = {
       hostname: parsedUrl.hostname,
       path: parsedUrl.pathname + parsedUrl.search,
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        ...extraHeaders,
-      },
+      headers: requestHeaders,
     };
 
+    console.log(`   🌐 [DEBUG] GET ${url}`);
+    console.log(`   🌐 [DEBUG] Request headers: ${JSON.stringify(requestHeaders)}`);
+
     protocol.get(options, (response) => {
+      console.log(`   🌐 [DEBUG] Response status: ${response.statusCode}`);
+      console.log(`   🌐 [DEBUG] Response headers: ${JSON.stringify(response.headers)}`);
+
       if (response.statusCode === 302 || response.statusCode === 301 ||
           response.statusCode === 307 || response.statusCode === 308) {
         // Follow redirect, preserving extra headers
+        const location = response.headers.location;
+        const nextUrl = location.startsWith('http')
+          ? location
+          : `${parsedUrl.protocol}//${parsedUrl.hostname}${location}`;
+        console.log(`   🌐 [DEBUG] Redirect ${response.statusCode} → ${nextUrl}`);
         response.resume();
-        downloadImage(response.headers.location, filepath, extraHeaders)
+        downloadImage(nextUrl, filepath, extraHeaders, _redirectCount + 1)
           .then(resolve)
           .catch(reject);
         return;
       }
 
       if (response.statusCode !== 200) {
-        reject(new Error(`Failed to download: ${response.statusCode}`));
+        // Drain the body so we can log any error message from the server
+        let body = '';
+        response.on('data', (chunk) => { body += chunk; });
+        response.on('end', () => {
+          if (body.length > 0 && body.length < 2000) {
+            console.log(`   🌐 [DEBUG] Response body: ${body}`);
+          }
+          reject(new Error(`Failed to download: ${response.statusCode} from ${url}`));
+        });
         return;
       }
 
@@ -182,12 +205,14 @@ async function searchGoodreads(title, author) {
             }
 
             const rawUrl = match[1];
+            console.log(`   🌐 [DEBUG] Goodreads raw cover URL: ${rawUrl}`);
 
             // Goodreads CDN URLs embed a size indicator like "._SX98_." or "._SY160_."
             // between the base filename and the extension, e.g.:
             //   .../45154316._SX98_.jpg  →  .../45154316.jpg
             // Removing it gives the full-resolution original (same technique as kepano/bookcover-api).
             const fullResUrl = rawUrl.replace(/_[^_]*_\./g, '.');
+            console.log(`   🌐 [DEBUG] Full-res URL after stripping size suffix: ${fullResUrl}`);
 
             resolve(fullResUrl);
           } catch {
