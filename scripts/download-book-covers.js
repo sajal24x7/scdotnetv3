@@ -207,12 +207,13 @@ async function searchGoodreads(title, author) {
             const rawUrl = match[1];
             console.log(`   🌐 [DEBUG] Goodreads raw cover URL: ${rawUrl}`);
 
-            // Goodreads CDN URLs embed a size indicator like "._SX98_." or "._SY160_."
+            // Goodreads CDN URLs embed a size indicator like "_SX50_" or "_SY160_"
             // between the base filename and the extension, e.g.:
-            //   .../45154316._SX98_.jpg  →  .../45154316.jpg
-            // Removing it gives the full-resolution original (same technique as kepano/bookcover-api).
-            const fullResUrl = rawUrl.replace(/_[^_]*_\./g, '.');
-            console.log(`   🌐 [DEBUG] Full-res URL after stripping size suffix: ${fullResUrl}`);
+            //   .../45154316._SX50_.jpg  →  .../45154316._SX300_.jpg
+            // Using a larger size indicator gives a high-quality image that the CDN will serve.
+            // Stripping the size entirely (e.g. .../45154316.jpg) results in a 403 from CloudFront.
+            const fullResUrl = rawUrl.replace(/_S[XY]\d+_/g, '_SX300_');
+            console.log(`   🌐 [DEBUG] Enhanced URL (SX300): ${fullResUrl}`);
 
             resolve(fullResUrl);
           } catch {
@@ -367,7 +368,7 @@ async function fetchCoverUrl(title, author) {
   console.log(`   🔎 Searching Goodreads...`);
   const goodreadsUrl = await searchGoodreads(title, author);
   if (goodreadsUrl) {
-    console.log(`   ✓ Found on Goodreads (full-res)`);
+    console.log(`   ✓ Found on Goodreads (SX300)`);
     return { url: goodreadsUrl, headers: { 'Referer': 'https://www.goodreads.com/' } };
   }
 
