@@ -6,6 +6,8 @@ import zlib from 'zlib';
 import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
 
+import os from 'os';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -612,49 +614,71 @@ function updateMarkdownWithCover(filePath, originalContent, coverFilename) {
   fs.writeFileSync(filePath, newContent, 'utf8');
 }
 
-// Try all sources in priority order: Bookshop.org → Goodreads → Open Library → Google Books
-// Returns { url, headers, fallbackUrls? } so callers can supply extra request headers
-// and attempt fallback URLs when the primary download fails (e.g. CDN 403).
-async function fetchCoverUrl(title, author) {
-  // 0. Bookshop.org (highest quality — publisher-grade images from Ingram)
-  console.log(`   🔎 Searching Bookshop.org...`);
-  const bookshopUrl = await searchBookshop(title, author);
+// Query all sources in parallel and return every URL candidate found.
+// Each candidate is { source, url, headers }.
+// The caller downloads all of them and keeps the largest file.
+async function fetchAllCoverCandidates(title, author) {
+  console.log(`   🔎 Searching Bookshop.org, Goodreads, Open Library, Google Books in parallel...`);
+
+  const [bookshopUrl, goodreadsResult, olBook, gbUrl] = await Promise.all([
+    searchBookshop(title, author).catch(() => null),
+    searchGoodreads(title, author).catch(() => null),
+    searchOpenLibrary(title, author).catch(() => null),
+    searchGoogleBooks(title, author).catch(() => null),
+  ]);
+
+  const candidates = [];
+
   if (bookshopUrl) {
     console.log(`   ✓ Found on Bookshop.org`);
-    return { url: bookshopUrl, headers: { 'Referer': 'https://bookshop.org/' } };
+    candidates.push({ source: 'Bookshop.org', url: bookshopUrl, headers: { 'Referer': 'https://bookshop.org/' } });
   }
 
-  // 1. Goodreads (full-res via size-suffix stripping, with SX680 fallback)
-  console.log(`   🔎 Searching Goodreads...`);
-  const goodreadsResult = await searchGoodreads(title, author);
   if (goodreadsResult) {
     const { urls } = goodreadsResult;
     console.log(`   ✓ Found on Goodreads (${urls.length} URL candidate(s))`);
-    return {
-      url: urls[0],
-      headers: { 'Referer': 'https://www.goodreads.com/' },
-      fallbackUrls: urls.slice(1),
-    };
+    for (const url of urls) {
+      candidates.push({ source: 'Goodreads', url, headers: { 'Referer': 'https://www.goodreads.com/' } });
+    }
   }
 
-  // 2. Open Library
-  console.log(`   🔎 Searching Open Library...`);
-  const olBook = await searchOpenLibrary(title, author);
   if (olBook && olBook.coverId) {
     const olUrl = getOpenLibraryCoverUrl(olBook.coverId);
     console.log(`   ✓ Found on Open Library`);
-    return { url: olUrl, headers: {} };
+    candidates.push({ source: 'Open Library', url: olUrl, headers: {} });
   }
 
-  // 3. Google Books (zoom-enhanced)
-  console.log(`   🔎 Searching Google Books...`);
-  const gbUrl = await searchGoogleBooks(title, author);
   if (gbUrl) {
-    console.log(`   ✓ Found on Google Books (zoom-enhanced)`);
-    return { url: gbUrl, headers: {} };
+    console.log(`   ✓ Found on Google Books`);
+    candidates.push({ source: 'Google Books', url: gbUrl, headers: {} });
   }
 
-  return null;
+  if (candidates.length === 0) {
+    console.log(`   ✗ No results from any source`);
+  } else {
+    console.log(`   📋 ${candidates.length} candidate(s) to compare`);
+  }
+
+  return candidates;
+}
+
+// Download a candidate cover to a temporary file. Returns { tmpPath, size, source }
+// on success, or null on failure. The caller is responsible for cleaning up tmpPath.
+async function downloadCandidate(candidate, index) {
+  const tmpPath = path.join(os.tmpdir(), `bookcover-${Date.now()}-${index}.tmp`);
+  try {
+    await downloadImage(candidate.url, tmpPath, candidate.headers);
+    const stats = fs.statSync(tmpPath);
+    if (stats.size < 1024) {
+      // Too small — likely an error page or placeholder
+      fs.unlinkSync(tmpPath);
+      return null;
+    }
+    return { tmpPath, size: stats.size, source: candidate.source };
+  } catch {
+    try { fs.unlinkSync(tmpPath); } catch {}
+    return null;
+  }
 }
 
 // Main function
@@ -743,60 +767,58 @@ async function main() {
     console.log(`📚 Processing: "${title}" by ${author || 'Unknown Author'}`);
 
     try {
-      const coverResult = await fetchCoverUrl(title, author);
+      const candidates = await fetchAllCoverCandidates(title, author);
 
-      if (coverResult) {
-        const { url: coverUrl, headers: coverHeaders, fallbackUrls = [] } = coverResult;
-        const allUrls = [coverUrl, ...fallbackUrls];
-        let downloadSuccess = false;
-
-        for (let i = 0; i < allUrls.length; i++) {
-          const tryUrl = allUrls[i];
-          try {
-            console.log(`   ⬇️  Downloading cover${i > 0 ? ` (fallback ${i})` : ''}...`);
-            await downloadImage(tryUrl, coverPath, coverHeaders);
-
-            // Verify we got a real image (not an error page or placeholder)
-            const stats = fs.statSync(coverPath);
-            if (stats.size < 1024) {
-              console.log(`   ⚠️  Downloaded file too small (${stats.size} bytes), trying next URL...`);
-              fs.unlinkSync(coverPath);
-              continue;
-            }
-
-            downloadSuccess = true;
-            break;
-          } catch (err) {
-            console.log(`   ⚠️  Download failed: ${err.message}${i < allUrls.length - 1 ? ', trying next URL...' : ''}`);
-            // Clean up partial download
-            try { fs.unlinkSync(coverPath); } catch {}
-          }
-        }
-
-        if (!downloadSuccess) {
-          console.log(`   ❌ All download URLs failed`);
-          failed++;
-          await new Promise(resolve => setTimeout(resolve, 500));
-          console.log('');
-          continue;
-        }
-
-        const downloadedSizeKb = (fs.statSync(coverPath).size / 1024).toFixed(1);
-        console.log(`   ✅ Saved as: ${coverFilename} (${downloadedSizeKb}KB)`);
-
-        if (!bookCover) {
-          updateMarkdownWithCover(file.path, file.content, coverFilename);
-          console.log(`   📝 Updated markdown with bookCover reference`);
-        }
-
-        if (replaceLowRes || (targetBook && resolvedCoverPath)) {
-          replaced++;
-        } else {
-          downloaded++;
-        }
-      } else {
+      if (candidates.length === 0) {
         console.log(`   ❌ No cover found`);
         failed++;
+        await new Promise(resolve => setTimeout(resolve, 500));
+        console.log('');
+        continue;
+      }
+
+      // Download all candidates in parallel to temp files
+      console.log(`   ⬇️  Downloading ${candidates.length} candidate(s) in parallel...`);
+      const results = await Promise.all(
+        candidates.map((c, i) => downloadCandidate(c, i))
+      );
+
+      // Filter out failed downloads
+      const successful = results.filter(Boolean);
+
+      if (successful.length === 0) {
+        console.log(`   ❌ All download attempts failed`);
+        failed++;
+        await new Promise(resolve => setTimeout(resolve, 500));
+        console.log('');
+        continue;
+      }
+
+      // Log all results and pick the largest file
+      for (const r of successful) {
+        console.log(`   📊 ${r.source}: ${(r.size / 1024).toFixed(1)}KB`);
+      }
+      const best = successful.reduce((a, b) => a.size >= b.size ? a : b);
+      console.log(`   🏆 Best: ${best.source} (${(best.size / 1024).toFixed(1)}KB)`);
+
+      // Move the best file to the final location, clean up the rest
+      fs.copyFileSync(best.tmpPath, coverPath);
+      for (const r of successful) {
+        try { fs.unlinkSync(r.tmpPath); } catch {}
+      }
+
+      const downloadedSizeKb = (fs.statSync(coverPath).size / 1024).toFixed(1);
+      console.log(`   ✅ Saved as: ${coverFilename} (${downloadedSizeKb}KB)`);
+
+      if (!bookCover) {
+        updateMarkdownWithCover(file.path, file.content, coverFilename);
+        console.log(`   📝 Updated markdown with bookCover reference`);
+      }
+
+      if (replaceLowRes || (targetBook && resolvedCoverPath)) {
+        replaced++;
+      } else {
+        downloaded++;
       }
 
       // Small delay to avoid rate limiting

@@ -160,8 +160,6 @@ const formattedAuthor = formatAuthors(author);
                     <Image
                         src={coverImage}
                         alt={`Cover of ${title}`}
-                        width={252}
-                        height={378}
                         class="book-meta-cover-image"
                         loading="lazy"
                     />
@@ -451,7 +449,7 @@ const formattedAuthor = formatAuthors(author);
 
     .book-meta-cover-image {
         width: 100%;
-        max-width: 252px;
+        max-width: 100%;
         height: auto;
         border-radius: 0.75rem;
         box-shadow:
