@@ -57,6 +57,10 @@ jobs:
             npm run download-covers:force
           elif [ "${{ inputs.mode }}" = "refresh-low-res" ]; then
             npm run download-covers:refresh-low-res
+          elif [ "${{ github.event_name }}" = "schedule" ]; then
+            # Scheduled runs: download missing covers AND replace low-res ones
+            npm run download-covers
+            npm run download-covers:refresh-low-res
           else
             npm run download-covers
           fi
