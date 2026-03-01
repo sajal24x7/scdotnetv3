@@ -19,8 +19,9 @@ const replaceLowRes = args.includes('--replace-low-res');
 const targetBookIndex = args.findIndex(a => a === '--book');
 const targetBook = targetBookIndex !== -1 ? args[targetBookIndex + 1] : null;
 
-// Low-res threshold: files smaller than this are considered low quality
-const LOW_RES_THRESHOLD_BYTES = 20 * 1024; // 20 KB
+// Low-res threshold: files smaller than this are considered low quality.
+// With the full-res / SX680 Goodreads URLs, decent covers are typically 40KB+.
+const LOW_RES_THRESHOLD_BYTES = 40 * 1024; // 40 KB
 
 // Ensure bookshelf directory exists
 if (!fs.existsSync(bookshelfDir)) {
@@ -110,8 +111,19 @@ function downloadImage(url, filepath, extraHeaders = {}, _redirectCount = 0) {
         return;
       }
 
+      // Decompress response if the server applied content-encoding
+      const encoding = response.headers['content-encoding'];
+      let stream = response;
+      if (encoding === 'gzip') {
+        stream = response.pipe(zlib.createGunzip());
+      } else if (encoding === 'deflate') {
+        stream = response.pipe(zlib.createInflate());
+      } else if (encoding === 'br') {
+        stream = response.pipe(zlib.createBrotliDecompress());
+      }
+
       const fileStream = fs.createWriteStream(filepath);
-      response.pipe(fileStream);
+      stream.pipe(fileStream);
 
       fileStream.on('finish', () => {
         fileStream.close();
@@ -290,13 +302,16 @@ async function searchGoodreads(title, author) {
 
             // Goodreads CDN URLs embed a size indicator like "_SX50_" or "_SY160_"
             // between the base filename and the extension, e.g.:
-            //   .../45154316._SX50_.jpg  →  .../45154316._SX300_.jpg
-            // Using a larger size indicator gives a high-quality image that the CDN will serve.
-            // Stripping the size entirely (e.g. .../45154316.jpg) results in a 403 from CloudFront.
-            const fullResUrl = best.src.replace(/_S[XY]\d+_/g, '_SX300_');
-            console.log(`   🌐 [DEBUG] Enhanced URL (SX300): ${fullResUrl}`);
+            //   .../45154316._SX50_.jpg  →  .../45154316.jpg (full resolution)
+            // Stripping the size indicator entirely gives the original uploaded image.
+            // If that fails (some CDN paths return 403), fall back to _SX680_ for a
+            // high-quality resized version.
+            const fullResUrl = best.src.replace(/\._S[XY]\d+_/g, '');
+            const highResUrl = best.src.replace(/_S[XY]\d+_/g, '_SX680_');
+            console.log(`   🌐 [DEBUG] Full-res URL (stripped): ${fullResUrl}`);
+            console.log(`   🌐 [DEBUG] High-res URL (SX680):    ${highResUrl}`);
 
-            resolve(fullResUrl);
+            resolve({ urls: [fullResUrl, highResUrl] });
           } catch {
             resolve(null);
           }
@@ -362,6 +377,132 @@ async function searchOpenLibrary(title, author) {
 function getOpenLibraryCoverUrl(coverId, size = 'L') {
   if (!coverId) return null;
   return `https://covers.openlibrary.org/b/id/${coverId}-${size}.jpg`;
+}
+
+// Search for book cover on Bookshop.org.
+// Bookshop.org gets its cover images from Ingram Content, which are typically
+// high-resolution publisher-supplied images. We scrape the product page and
+// extract the cover image URL from Open Graph meta tags or img elements.
+async function searchBookshop(title, author) {
+  return new Promise((resolve) => {
+    const query = encodeURIComponent(`${title} ${author || ''}`.trim());
+
+    function makeRequest(urlStr, redirectCount = 0) {
+      if (redirectCount > 5) {
+        resolve(null);
+        return;
+      }
+
+      const parsedUrl = new URL(urlStr);
+      const protocol = parsedUrl.protocol === 'https:' ? https : http;
+      const options = {
+        hostname: parsedUrl.hostname,
+        path: parsedUrl.pathname + parsedUrl.search,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+          'Accept-Language': 'en-US,en;q=0.9',
+          'Accept-Encoding': 'gzip, deflate, br',
+          'Connection': 'keep-alive',
+          'Cache-Control': 'no-cache',
+          'Sec-Fetch-Dest': 'document',
+          'Sec-Fetch-Mode': 'navigate',
+          'Sec-Fetch-Site': 'none',
+          'Sec-Fetch-User': '?1',
+          'Upgrade-Insecure-Requests': '1',
+        }
+      };
+
+      protocol.get(options, (response) => {
+        if (response.statusCode === 301 || response.statusCode === 302 ||
+            response.statusCode === 307 || response.statusCode === 308) {
+          const location = response.headers.location;
+          response.resume();
+          if (!location) { resolve(null); return; }
+          const nextUrl = location.startsWith('http')
+            ? location
+            : `${parsedUrl.protocol}//${parsedUrl.hostname}${location}`;
+          makeRequest(nextUrl, redirectCount + 1);
+          return;
+        }
+
+        if (response.statusCode !== 200) {
+          console.log(`   ⚠️  Bookshop.org returned HTTP ${response.statusCode}`);
+          response.resume();
+          resolve(null);
+          return;
+        }
+
+        const encoding = response.headers['content-encoding'];
+        let stream = response;
+        if (encoding === 'gzip') {
+          stream = response.pipe(zlib.createGunzip());
+        } else if (encoding === 'deflate') {
+          stream = response.pipe(zlib.createInflate());
+        } else if (encoding === 'br') {
+          stream = response.pipe(zlib.createBrotliDecompress());
+        }
+
+        let html = '';
+        stream.on('data', (chunk) => { html += chunk; });
+        stream.on('end', () => {
+          try {
+            // Extract cover image URL from the search results page.
+            // Look for Open Graph image meta tags first, then fall back to
+            // product listing images. Bookshop.org uses high-res Ingram images.
+
+            // Try og:image meta tag (available on product pages)
+            const ogMatch = html.match(/<meta\s+(?:property|name)="og:image"\s+content="([^"]+)"/i) ||
+                            html.match(/<meta\s+content="([^"]+)"\s+(?:property|name)="og:image"/i);
+
+            if (ogMatch) {
+              const imageUrl = ogMatch[1];
+              console.log(`   🌐 [DEBUG] Bookshop.org og:image: ${imageUrl}`);
+              // Verify it looks like a book cover (not a generic site image)
+              if (imageUrl && !imageUrl.includes('logo') && !imageUrl.includes('favicon')) {
+                resolve(imageUrl);
+                return;
+              }
+            }
+
+            // Try to find product/cover images in the HTML
+            // Bookshop.org typically uses img tags with book cover images
+            const imgMatches = html.matchAll(/<img\b[^>]*\bsrc="([^"]+)"[^>]*>/gi);
+            const candidates = [];
+            for (const m of imgMatches) {
+              const src = m[1];
+              const fullTag = m[0];
+              // Look for images that are likely book covers (contain ISBN-like patterns
+              // or are from known image CDNs, and have alt text matching the book title)
+              const altMatch = fullTag.match(/\balt="([^"]+)"/i);
+              const alt = altMatch ? altMatch[1] : '';
+              if (src && (src.includes('cover') || src.includes('book') ||
+                          src.includes('ingram') || src.includes('isbn') ||
+                          /\/\d{10,13}/.test(src))) {
+                const score = combinedScore(alt, '', title, '');
+                candidates.push({ src, alt, score });
+              }
+            }
+
+            if (candidates.length > 0) {
+              candidates.sort((a, b) => b.score - a.score);
+              console.log(`   🌐 [DEBUG] Bookshop.org found ${candidates.length} image candidate(s), best: "${candidates[0].alt}"`);
+              resolve(candidates[0].src);
+              return;
+            }
+
+            resolve(null);
+          } catch {
+            resolve(null);
+          }
+        });
+        stream.on('error', () => resolve(null));
+      }).on('error', () => resolve(null));
+    }
+
+    // Search Bookshop.org — try the search page
+    makeRequest(`https://bookshop.org/search?keywords=${query}`);
+  });
 }
 
 // Search for book cover on Google Books.
@@ -471,15 +612,29 @@ function updateMarkdownWithCover(filePath, originalContent, coverFilename) {
   fs.writeFileSync(filePath, newContent, 'utf8');
 }
 
-// Try all sources in priority order: Goodreads → Open Library → Google Books
-// Returns { url, headers } so callers can supply extra request headers (e.g. Referer for Goodreads CDN).
+// Try all sources in priority order: Bookshop.org → Goodreads → Open Library → Google Books
+// Returns { url, headers, fallbackUrls? } so callers can supply extra request headers
+// and attempt fallback URLs when the primary download fails (e.g. CDN 403).
 async function fetchCoverUrl(title, author) {
-  // 1. Goodreads (highest quality — full-res via size-suffix removal)
+  // 0. Bookshop.org (highest quality — publisher-grade images from Ingram)
+  console.log(`   🔎 Searching Bookshop.org...`);
+  const bookshopUrl = await searchBookshop(title, author);
+  if (bookshopUrl) {
+    console.log(`   ✓ Found on Bookshop.org`);
+    return { url: bookshopUrl, headers: { 'Referer': 'https://bookshop.org/' } };
+  }
+
+  // 1. Goodreads (full-res via size-suffix stripping, with SX680 fallback)
   console.log(`   🔎 Searching Goodreads...`);
-  const goodreadsUrl = await searchGoodreads(title, author);
-  if (goodreadsUrl) {
-    console.log(`   ✓ Found on Goodreads (SX300)`);
-    return { url: goodreadsUrl, headers: { 'Referer': 'https://www.goodreads.com/' } };
+  const goodreadsResult = await searchGoodreads(title, author);
+  if (goodreadsResult) {
+    const { urls } = goodreadsResult;
+    console.log(`   ✓ Found on Goodreads (${urls.length} URL candidate(s))`);
+    return {
+      url: urls[0],
+      headers: { 'Referer': 'https://www.goodreads.com/' },
+      fallbackUrls: urls.slice(1),
+    };
   }
 
   // 2. Open Library
@@ -591,9 +746,40 @@ async function main() {
       const coverResult = await fetchCoverUrl(title, author);
 
       if (coverResult) {
-        const { url: coverUrl, headers: coverHeaders } = coverResult;
-        console.log(`   ⬇️  Downloading cover...`);
-        await downloadImage(coverUrl, coverPath, coverHeaders);
+        const { url: coverUrl, headers: coverHeaders, fallbackUrls = [] } = coverResult;
+        const allUrls = [coverUrl, ...fallbackUrls];
+        let downloadSuccess = false;
+
+        for (let i = 0; i < allUrls.length; i++) {
+          const tryUrl = allUrls[i];
+          try {
+            console.log(`   ⬇️  Downloading cover${i > 0 ? ` (fallback ${i})` : ''}...`);
+            await downloadImage(tryUrl, coverPath, coverHeaders);
+
+            // Verify we got a real image (not an error page or placeholder)
+            const stats = fs.statSync(coverPath);
+            if (stats.size < 1024) {
+              console.log(`   ⚠️  Downloaded file too small (${stats.size} bytes), trying next URL...`);
+              fs.unlinkSync(coverPath);
+              continue;
+            }
+
+            downloadSuccess = true;
+            break;
+          } catch (err) {
+            console.log(`   ⚠️  Download failed: ${err.message}${i < allUrls.length - 1 ? ', trying next URL...' : ''}`);
+            // Clean up partial download
+            try { fs.unlinkSync(coverPath); } catch {}
+          }
+        }
+
+        if (!downloadSuccess) {
+          console.log(`   ❌ All download URLs failed`);
+          failed++;
+          await new Promise(resolve => setTimeout(resolve, 500));
+          console.log('');
+          continue;
+        }
 
         const downloadedSizeKb = (fs.statSync(coverPath).size / 1024).toFixed(1);
         console.log(`   ✅ Saved as: ${coverFilename} (${downloadedSizeKb}KB)`);
