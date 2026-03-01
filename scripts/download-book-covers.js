@@ -131,7 +131,9 @@ const SUMMARY_KEYWORDS = /\b(summary|summaries|study guide|sparknotes|cliffsnote
 
 // Normalize a title for comparison: lowercase, strip punctuation and articles
 function normalizeTitle(s) {
-  return s.toLowerCase()
+  // Coerce arrays (e.g. YAML frontmatter `author: [Name]`) to their first element
+  if (Array.isArray(s)) s = s[0] ?? '';
+  return String(s ?? '').toLowerCase()
     .replace(/^(a |an |the )/i, '')
     .replace(/[^\w\s]/g, '')
     .trim();
