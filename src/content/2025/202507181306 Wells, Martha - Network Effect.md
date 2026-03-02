@@ -18,7 +18,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115815972885370248'
   - 'https://www.threads.com/@sajal24x7/post/DS8SiEJEfxq'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zr4o352k'
-bookCover: network-effect.jpg
+bookCover: network-effect.webp
 ---
 Book 1 - [All systems red](/bookshelf/all-systems-red)
 Book 2 - [Artificial Condition](/bookshelf/artificial-condition)
