@@ -14,7 +14,7 @@ bookStatus: "read"
 bookRating: like
 startedReading: 2025-09-19T16:11:06+03:00
 finishedReading: 2025-09-23T17:00:18+03:00
-bookCover: "the-mysterious-affair-at-styles.jpg"
+bookCover: "the-mysterious-affair-at-styles.jpeg"
 ---
 
 This was my first Agatha Christie novel, believe it or not. My sister used to love reading Agatha Christie. I somehow never got into reading her. I was a Asimov guy.
