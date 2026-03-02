@@ -1,13 +1,16 @@
 ---
-title: "What do social media companies fear"
-slug: "what-do-social-media-companies-fear"
-pubDate: 2026-03-02T14:44:10+02:00
-updatedDate: 2026-03-02T14:44:10+02:00
+title: What do social media companies fear
+slug: what-do-social-media-companies-fear
+pubDate: 2026-03-02T12:44:10.000Z
+updatedDate: 2026-03-02T12:44:10.000Z
 category: micro
 tags:
   - cal-newport
   - social
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116159779540097865'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mg3ds3rhgt2c'
+  - 'https://www.threads.com/@sajal24x7/post/DVYixZIju06'
 ---
 [What Do Social Media Companies Fear? Time Management. - Cal Newport by Study Hacks](https://calnewport.com/what-do-social-media-companies-fear-time-management/)
 
