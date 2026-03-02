@@ -68,39 +68,65 @@ export async function findBacklinksComprehensive(currentPostPath: string): Promi
 }
 
 /**
- * Check if the backlinks cache is fresh by comparing timestamps.
+ * Get a sorted list of all content file paths relative to the content directory.
+ * Used to detect when content files are added or removed.
+ */
+async function getContentFileList(): Promise<string[]> {
+    const contentDir = path.join(process.cwd(), 'src', 'content');
+    const years = getYearDirectories();
+    const files: string[] = [];
+
+    for (const year of years) {
+        const yearDir = path.join(contentDir, year);
+        try {
+            const yearFiles = await fs.readdir(yearDir);
+            for (const file of yearFiles) {
+                if (file.endsWith('.md')) {
+                    files.push(`${year}/${file}`);
+                }
+            }
+        } catch {
+            continue;
+        }
+    }
+
+    return files.sort();
+}
+
+/**
+ * Check if the backlinks cache is fresh by comparing the stored file manifest.
  * Returns true if cache is fresh, false if stale, undefined if cache doesn't exist.
+ *
+ * Uses a file manifest instead of mtime comparison because git does not preserve
+ * file modification times — all files get the checkout timestamp on clone/pull,
+ * making mtime-based checks unreliable.
  */
 async function isCacheFresh(): Promise<boolean | undefined> {
     try {
-        const cacheStats = await fs.stat(CACHE_FILE);
-        const cacheMtime = cacheStats.mtimeMs;
+        const data = await fs.readFile(CACHE_FILE, 'utf-8');
+        const raw = JSON.parse(data) as Record<string, unknown>;
 
-        const contentDir = path.join(process.cwd(), 'src', 'content');
-        const years = getYearDirectories();
+        const meta = raw['_meta'] as { files?: string[] } | undefined;
+        if (!meta || !Array.isArray(meta.files)) {
+            // Cache has no manifest (old format) — treat as stale so it regenerates
+            console.log('[Backlinks] Cache has no file manifest, treating as stale');
+            return false;
+        }
 
-        // Check if any content file is newer than the cache
-        for (const year of years) {
-            const yearDir = path.join(contentDir, year);
-            try {
-                const files = await fs.readdir(yearDir);
-                for (const file of files) {
-                    if (!file.endsWith('.md')) continue;
+        const storedFiles = meta.files as string[];
+        const currentFiles = await getContentFileList();
 
-                    const filePath = path.join(yearDir, file);
-                    const fileStats = await fs.stat(filePath);
+        if (storedFiles.length !== currentFiles.length) {
+            return false; // File count differs
+        }
 
-                    if (fileStats.mtimeMs > cacheMtime) {
-                        return false; // Cache is stale
-                    }
-                }
-            } catch (error) {
-                // Skip directories that can't be read
-                continue;
+        for (let i = 0; i < storedFiles.length; i++) {
+            if (storedFiles[i] !== currentFiles[i]) {
+                return false; // File list differs
             }
         }
 
-        return true; // Cache is fresh
+        return true; // Manifest matches
     } catch (error: any) {
         if (error?.code === 'ENOENT') {
             return undefined; // Cache doesn't exist
@@ -144,7 +170,13 @@ async function loadBacklinkIndex(): Promise<BacklinkIndex> {
 async function readBacklinkArtifact(): Promise<BacklinkArtifact | null> {
     try {
         const data = await fs.readFile(CACHE_FILE, 'utf-8');
-        return JSON.parse(data) as BacklinkArtifact;
+        const raw = JSON.parse(data) as Record<string, unknown>;
+        const artifact: BacklinkArtifact = {};
+        for (const [key, value] of Object.entries(raw)) {
+            if (key === '_meta') continue;
+            artifact[key] = value as BacklinkJson[];
+        }
+        return artifact;
     } catch (error: any) {
         if (error?.code !== 'ENOENT') {
             console.warn('Failed to read backlink artifact, regenerating…', error);
@@ -158,7 +190,15 @@ async function writeBacklinkArtifact(index: BacklinkIndex): Promise<void> {
     try {
         await fs.mkdir(DATA_DIRECTORY, { recursive: true });
         const artifact = convertIndexToArtifact(index);
-        await fs.writeFile(CACHE_FILE, JSON.stringify(artifact, null, 2), 'utf-8');
+        const files = await getContentFileList();
+        const output: Record<string, unknown> = {
+            _meta: {
+                files,
+                generatedAt: new Date().toISOString(),
+            },
+            ...artifact,
+        };
+        await fs.writeFile(CACHE_FILE, JSON.stringify(output, null, 2), 'utf-8');
     } catch (error) {
         console.warn('Unable to write backlink artifact', error);
     }

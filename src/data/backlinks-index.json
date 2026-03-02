@@ -1185,5 +1185,23 @@
       "category": "nordletter",
       "pubDate": "2026-01-03T21:03:01.000Z"
     }
+  ],
+  "bookshelf/things-become-other-things": [
+    {
+      "slug": "/nordletter/nl87/",
+      "title": "Winter wonderland",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-10T19:46:59.000Z"
+    }
+  ],
+  "nordletter/nl85": [
+    {
+      "slug": "/nordletter/nl87/",
+      "title": "Winter wonderland",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-10T19:46:59.000Z"
+    }
   ]
 }
