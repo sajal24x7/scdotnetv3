@@ -16,7 +16,7 @@ bookStatus: read
 bookRating: like
 format: audio
 genre: sci-fi
-bookCover: all-systems-red.jpg
+bookCover: all-systems-red.webp
 ---
 
 Book 1 - [All systems red](/bookshelf/all-systems-red)
