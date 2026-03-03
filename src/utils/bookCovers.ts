@@ -1,25 +1,26 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2026-03-02T04:14:01.509Z
-// Found 142 image(s): 1984.jpg, 2001-a-space-odyssey.jpg, a-brief-history-of-time.jpg, a-city-on-mars.jpg, a-closed-and-common-orbit.jpg, abundance-how-we-build-a-better-future.jpg, after-steve.jpg, all-systems-red.jpg, and-the-mountains-echoed.jpg, animal-farm.jpg, anything-you-want.jpg, artificial-condition.jpg, before-the-coffee-gets-cold.jpg, bird-by-bird.jpg, black-box-thinking-the-surprising-truth-about-success.jpg, blade-runner.jpg, body-problem.jpg, born-to-run.jpg, built.jpg, childhoods-end.jpg, children-of-memory.jpg, children-of-ruin.jpg, children-of-time.jpg, continuous-delivery.jpg, creativity-inc.jpg, data-analysis-with-python-and-pyspark.jpeg, data-analysis-with-python-and-pyspark.jpg, deaths-end.jpg, deception-point.jpg, die-with-zero.jpg, digital-fortress.jpg, dune.jpg, dune.webp, empire-of-ai.jpg, enders-game.jpg, enshittification.jpg, ernest-hemingway-on-writing.jpg, every-day-i-read.jpg, excellent-advice-for-living.jpg, exhalation.jpg, exit-strategy.jpg, eyes-of-the-void.jpg, fahrenheit-451.jpg, forward-the-foundation.jpg, foundation-and-earth.jpg, foundation-and-empire.jpg, foundation.jpg, foundations-edge.jpg, fugitive-telemetry.jpg, helsinki-by-sauna.jpg, how-to-win-friends-and-influence-people.jpg, i-robot.jpg, inferno.jpg, jenkins-2-up-and-running.jpg, kane-abel.jpg, keep-going.jpg, little-brother.jpg, lords-of-uncreation.jpg, many-lives-many-masters.jpg, men-without-women.jpg, mindset-how-you-can-fulfil-your-potential.jpg, myth-mithya-a-handbook-of-hindu-mythology.jpg, network-effect.jpg, nexus.jpg, old-mans-war.jpg, on-tennis.jpg, one-two-threeinfinity-facts-and-speculations-of-science.jpg, poems-to-fall-in-love-with.jpg, prelude-to-foundation.jpg, project-hail-mary.jpg, range.jpg, record-of-a-spaceborn-few.jpg, redshirts.jpg, robots-and-empire.jpg, rogue-protocol.jpg, same-as-ever.jpg, scene-structure.jpg, second-foundation.jpg, shards-of-earth.jpg, show-your-work.jpg, shy.jpg, slow-productivity.jpg, starter-villain.jpg, steal-like-an-artist.jpg, stories-of-your-life-and-others.jpg, the-art-of-spending-money.jpg, the-caves-of-steel.jpg, the-chancellor-manuscript.jpg, the-da-vinci-code.jpg, the-dark-forest.jpg, the-end-of-all-things.jpg, the-end-of-everything-astrophysically-speaking.jpg, the-fountainhead.jpg, the-galaxy-and-the-ground-within.jpg, the-ghost-brigades.jpg, the-godfather.jpg, the-hitchhikers-guide-to-the-galaxy.jpg, the-human-division.jpg, the-immortals-of-meluha.jpg, the-last-colony.jpg, the-life-of-chuck.jpg, the-long-way-to-a-small-angry-planet.jpg, the-lost-symbol.jpg, the-ministry-for-the-future.jpg, the-mysterious-affair-at-styles.jpg, the-naked-sun.jpg, the-oath-of-the-vayuputras.jpg, the-phoenix-project.jpg, the-practice-of-cloud-system-administration.jpg, the-practice.jpg, the-prodigal-daughter.jpg, the-psychology-of-money.jpg, the-quick-python-book.jpg, the-road-less-travelled.jpg, the-robots-of-dawn.jpg, the-sagan-diary.jpg, the-secret-of-secrets.jpg, the-secret-of-the-nagas.jpg, the-stand.jpg, the-story-grid.jpg, the-three-body-problem.jpg, the-tipping-point-how-little-things-can-make-a-big-difference.jpg, the-ultimate-hitchhikers-guide-to-the-galaxy.jpg, the-unicorn-project.jpg, the-zombie-survival-guide-complete-protection-from-the-living-dead.jpg, things-become-other-things.jpg, this-is-how-you-lose-the-time-war.jpg, this-is-marketing.jpg, time-management-for-system-administrators.jpg, timequake.jpg, to-be-taught-if-fortunate.jpg, to-kill-a-mockingbird.jpg, tuesdays-with-morrie.jpg, turning-pro.jpg, twenty-love-poems-and-a-song-of-despair.jpg, two-nights-in-lisbon.jpg, v-for-vendetta.jpg, walden.jpg, what-technology-wants.jpg, when-the-moon-hits-your-eye.jpg, world-war-z-an-oral-history-of-the-zombie-war.jpg, zoes-tale.jpg
+// Generated on: 2026-03-03T04:14:50.001Z
+// Found 142 image(s): 1984.webp, 2001-a-space-odyssey.jpg, a-brief-history-of-time.jpg, a-city-on-mars.jpg, a-closed-and-common-orbit.jpg, abundance.jpg, after-steve.jpg, all-systems-red.webp, and-the-mountains-echoed.jpg, animal-farm.jpg, anything-you-want.jpg, artificial-condition.jpg, before-the-coffee-gets-cold.jpg, bird-by-bird.webp, black-box-thinking-the-surprising-truth-about-success.jpg, black-box-thinking.jpg, bladerunner.jpeg, body-problem.jpg, born-to-run.webp, built.jpg, childhoods-end.jpg, children-of-memory.jpg, children-of-ruin.jpg, children-of-time.jpg, continuous-delivery.jpg, creativity-inc.jpg, data-analysis-with-python-and-pyspark.jpeg, data-analysis-with-python-and-pyspark.jpg, deaths-end.jpg, deception-point.jpeg, die-with-zero.jpg, digital-fortress.webp, dune.webp, empire-of-ai.jpg, enders-game.jpg, enshittification.jpg, ernest-hemingway-on-writing.jpg, every-day-i-read.jpg, excellent-advice-for-living.jpg, exhalation.jpg, exit-strategy.webp, eyes-of-the-void.jpg, fahrenheit-451.jpg, forward-the-foundation.jpg, foundation-and-earth.jpg, foundation-and-empire.jpg, foundation.jpg, foundations-edge.jpg, fugitive-telemetry.jpg, helsinki-by-sauna.jpeg, how-to-win-friends-and-influence-people.jpg, i-robot.jpg, inferno.jpg, jenkins-2-up-and-running.jpg, kane-abel.jpg, keep-going.jpg, little-brother.webp, lords-of-uncreation.jpg, many-lives-many-masters.jpg, men-without-women.jpg, mindset-how-you-can-fulfil-your-potential.jpg, myth-mithya-a-handbook-of-hindu-mythology.jpg, network-effect.webp, nexus.jpg, old-mans-war.jpg, on-tennis.jpg, one-two-threeinfinity-facts-and-speculations-of-science.jpg, poems-to-fall-in-love-with.jpg, prelude-to-foundation.jpg, project-hail-mary.jpg, range.jpg, record-of-a-spaceborn-few.jpg, redshirts.jpg, robots-and-empire.jpg, rogue-protocol.jpg, same-as-ever.jpg, scene-structure.jpg, second-foundation.jpg, shards-of-earth.jpg, show-your-work.jpeg, shy.jpg, slow-productivity.jpg, starter-villain.jpg, steal-like-an-artist.jpeg, stories-of-your-life-and-others.jpg, the-art-of-spending-money.jpg, the-caves-of-steel.jpg, the-chancellor-manuscript.jpg, the-da-vinci-code.jpg, the-dark-forest.jpg, the-end-of-all-things.jpg, the-end-of-everything-astrophysically-speaking.jpg, the-fountainhead.jpg, the-galaxy-and-the-ground-within.jpg, the-ghost-brigades.jpg, the-godfather.jpg, the-hitchhikers-guide-to-the-galaxy.jpg, the-human-division.jpg, the-immortals-of-meluha.jpg, the-last-colony.jpg, the-life-of-chuck.jpg, the-long-way-to-a-small-angry-planet.jpg, the-lost-symbol.jpg, the-ministry-for-the-future.jpg, the-mysterious-affair-at-styles.jpeg, the-naked-sun.jpg, the-oath-of-the-vayuputras.jpg, the-phoenix-project.jpg, the-practice-of-cloud-system-administration.jpg, the-practice.jpg, the-prodigal-daughter.jpg, the-psychology-of-money.jpg, the-quick-python-book.jpg, the-road-less-travelled.jpg, the-robots-of-dawn.jpg, the-sagan-diary.jpg, the-secret-of-secrets.jpg, the-secret-of-the-nagas.jpg, the-stand.jpg, the-story-grid.jpg, the-three-body-problem.jpg, the-tipping-point-how-little-things-can-make-a-big-difference.jpg, the-ultimate-hitchhikers-guide-to-the-galaxy.jpg, the-unicorn-project.jpg, the-zombie-survival-guide-complete-protection-from-the-living-dead.jpg, things-become-other-things.jpg, this-is-how-you-lose-the-time-war.jpg, this-is-marketing.jpg, time-management-for-system-administrators.jpg, timequake.jpg, to-be-taught-if-fortunate.jpg, to-kill-a-mockingbird.webp, tuesdays-with-morrie.jpg, turning-pro.jpg, twenty-love-poems-and-a-song-of-despair.jpg, two-nights-in-lisbon.jpg, v-for-vendetta.jpg, walden.jpg, what-technology-wants.jpg, when-the-moon-hits-your-eye.jpg, world-war-z-an-oral-history-of-the-zombie-war.jpg, zoes-tale.jpg
 
-import img_1984_jpg from '../images/bookshelf/1984.jpg';
+import img_1984_webp from '../images/bookshelf/1984.webp';
 import img_2001_a_space_odyssey_jpg from '../images/bookshelf/2001-a-space-odyssey.jpg';
 import a_brief_history_of_time_jpg from '../images/bookshelf/a-brief-history-of-time.jpg';
 import a_city_on_mars_jpg from '../images/bookshelf/a-city-on-mars.jpg';
 import a_closed_and_common_orbit_jpg from '../images/bookshelf/a-closed-and-common-orbit.jpg';
-import abundance_how_we_build_a_better_future_jpg from '../images/bookshelf/abundance-how-we-build-a-better-future.jpg';
+import abundance_jpg from '../images/bookshelf/abundance.jpg';
 import after_steve_jpg from '../images/bookshelf/after-steve.jpg';
-import all_systems_red_jpg from '../images/bookshelf/all-systems-red.jpg';
+import all_systems_red_webp from '../images/bookshelf/all-systems-red.webp';
 import and_the_mountains_echoed_jpg from '../images/bookshelf/and-the-mountains-echoed.jpg';
 import animal_farm_jpg from '../images/bookshelf/animal-farm.jpg';
 import anything_you_want_jpg from '../images/bookshelf/anything-you-want.jpg';
 import artificial_condition_jpg from '../images/bookshelf/artificial-condition.jpg';
 import before_the_coffee_gets_cold_jpg from '../images/bookshelf/before-the-coffee-gets-cold.jpg';
-import bird_by_bird_jpg from '../images/bookshelf/bird-by-bird.jpg';
+import bird_by_bird_webp from '../images/bookshelf/bird-by-bird.webp';
 import black_box_thinking_the_surprising_truth_about_success_jpg from '../images/bookshelf/black-box-thinking-the-surprising-truth-about-success.jpg';
-import blade_runner_jpg from '../images/bookshelf/blade-runner.jpg';
+import black_box_thinking_jpg from '../images/bookshelf/black-box-thinking.jpg';
+import bladerunner_jpeg from '../images/bookshelf/bladerunner.jpeg';
 import body_problem_jpg from '../images/bookshelf/body-problem.jpg';
-import born_to_run_jpg from '../images/bookshelf/born-to-run.jpg';
+import born_to_run_webp from '../images/bookshelf/born-to-run.webp';
 import built_jpg from '../images/bookshelf/built.jpg';
 import childhoods_end_jpg from '../images/bookshelf/childhoods-end.jpg';
 import children_of_memory_jpg from '../images/bookshelf/children-of-memory.jpg';
@@ -30,10 +31,9 @@ import creativity_inc_jpg from '../images/bookshelf/creativity-inc.jpg';
 import data_analysis_with_python_and_pyspark_jpeg from '../images/bookshelf/data-analysis-with-python-and-pyspark.jpeg';
 import data_analysis_with_python_and_pyspark_jpg from '../images/bookshelf/data-analysis-with-python-and-pyspark.jpg';
 import deaths_end_jpg from '../images/bookshelf/deaths-end.jpg';
-import deception_point_jpg from '../images/bookshelf/deception-point.jpg';
+import deception_point_jpeg from '../images/bookshelf/deception-point.jpeg';
 import die_with_zero_jpg from '../images/bookshelf/die-with-zero.jpg';
-import digital_fortress_jpg from '../images/bookshelf/digital-fortress.jpg';
-import dune_jpg from '../images/bookshelf/dune.jpg';
+import digital_fortress_webp from '../images/bookshelf/digital-fortress.webp';
 import dune_webp from '../images/bookshelf/dune.webp';
 import empire_of_ai_jpg from '../images/bookshelf/empire-of-ai.jpg';
 import enders_game_jpg from '../images/bookshelf/enders-game.jpg';
@@ -42,7 +42,7 @@ import ernest_hemingway_on_writing_jpg from '../images/bookshelf/ernest-hemingwa
 import every_day_i_read_jpg from '../images/bookshelf/every-day-i-read.jpg';
 import excellent_advice_for_living_jpg from '../images/bookshelf/excellent-advice-for-living.jpg';
 import exhalation_jpg from '../images/bookshelf/exhalation.jpg';
-import exit_strategy_jpg from '../images/bookshelf/exit-strategy.jpg';
+import exit_strategy_webp from '../images/bookshelf/exit-strategy.webp';
 import eyes_of_the_void_jpg from '../images/bookshelf/eyes-of-the-void.jpg';
 import fahrenheit_451_jpg from '../images/bookshelf/fahrenheit-451.jpg';
 import forward_the_foundation_jpg from '../images/bookshelf/forward-the-foundation.jpg';
@@ -51,20 +51,20 @@ import foundation_and_empire_jpg from '../images/bookshelf/foundation-and-empire
 import foundation_jpg from '../images/bookshelf/foundation.jpg';
 import foundations_edge_jpg from '../images/bookshelf/foundations-edge.jpg';
 import fugitive_telemetry_jpg from '../images/bookshelf/fugitive-telemetry.jpg';
-import helsinki_by_sauna_jpg from '../images/bookshelf/helsinki-by-sauna.jpg';
+import helsinki_by_sauna_jpeg from '../images/bookshelf/helsinki-by-sauna.jpeg';
 import how_to_win_friends_and_influence_people_jpg from '../images/bookshelf/how-to-win-friends-and-influence-people.jpg';
 import i_robot_jpg from '../images/bookshelf/i-robot.jpg';
 import inferno_jpg from '../images/bookshelf/inferno.jpg';
 import jenkins_2_up_and_running_jpg from '../images/bookshelf/jenkins-2-up-and-running.jpg';
 import kane_abel_jpg from '../images/bookshelf/kane-abel.jpg';
 import keep_going_jpg from '../images/bookshelf/keep-going.jpg';
-import little_brother_jpg from '../images/bookshelf/little-brother.jpg';
+import little_brother_webp from '../images/bookshelf/little-brother.webp';
 import lords_of_uncreation_jpg from '../images/bookshelf/lords-of-uncreation.jpg';
 import many_lives_many_masters_jpg from '../images/bookshelf/many-lives-many-masters.jpg';
 import men_without_women_jpg from '../images/bookshelf/men-without-women.jpg';
 import mindset_how_you_can_fulfil_your_potential_jpg from '../images/bookshelf/mindset-how-you-can-fulfil-your-potential.jpg';
 import myth_mithya_a_handbook_of_hindu_mythology_jpg from '../images/bookshelf/myth-mithya-a-handbook-of-hindu-mythology.jpg';
-import network_effect_jpg from '../images/bookshelf/network-effect.jpg';
+import network_effect_webp from '../images/bookshelf/network-effect.webp';
 import nexus_jpg from '../images/bookshelf/nexus.jpg';
 import old_mans_war_jpg from '../images/bookshelf/old-mans-war.jpg';
 import on_tennis_jpg from '../images/bookshelf/on-tennis.jpg';
@@ -81,11 +81,11 @@ import same_as_ever_jpg from '../images/bookshelf/same-as-ever.jpg';
 import scene_structure_jpg from '../images/bookshelf/scene-structure.jpg';
 import second_foundation_jpg from '../images/bookshelf/second-foundation.jpg';
 import shards_of_earth_jpg from '../images/bookshelf/shards-of-earth.jpg';
-import show_your_work_jpg from '../images/bookshelf/show-your-work.jpg';
+import show_your_work_jpeg from '../images/bookshelf/show-your-work.jpeg';
 import shy_jpg from '../images/bookshelf/shy.jpg';
 import slow_productivity_jpg from '../images/bookshelf/slow-productivity.jpg';
 import starter_villain_jpg from '../images/bookshelf/starter-villain.jpg';
-import steal_like_an_artist_jpg from '../images/bookshelf/steal-like-an-artist.jpg';
+import steal_like_an_artist_jpeg from '../images/bookshelf/steal-like-an-artist.jpeg';
 import stories_of_your_life_and_others_jpg from '../images/bookshelf/stories-of-your-life-and-others.jpg';
 import the_art_of_spending_money_jpg from '../images/bookshelf/the-art-of-spending-money.jpg';
 import the_caves_of_steel_jpg from '../images/bookshelf/the-caves-of-steel.jpg';
@@ -106,7 +106,7 @@ import the_life_of_chuck_jpg from '../images/bookshelf/the-life-of-chuck.jpg';
 import the_long_way_to_a_small_angry_planet_jpg from '../images/bookshelf/the-long-way-to-a-small-angry-planet.jpg';
 import the_lost_symbol_jpg from '../images/bookshelf/the-lost-symbol.jpg';
 import the_ministry_for_the_future_jpg from '../images/bookshelf/the-ministry-for-the-future.jpg';
-import the_mysterious_affair_at_styles_jpg from '../images/bookshelf/the-mysterious-affair-at-styles.jpg';
+import the_mysterious_affair_at_styles_jpeg from '../images/bookshelf/the-mysterious-affair-at-styles.jpeg';
 import the_naked_sun_jpg from '../images/bookshelf/the-naked-sun.jpg';
 import the_oath_of_the_vayuputras_jpg from '../images/bookshelf/the-oath-of-the-vayuputras.jpg';
 import the_phoenix_project_jpg from '../images/bookshelf/the-phoenix-project.jpg';
@@ -133,7 +133,7 @@ import this_is_marketing_jpg from '../images/bookshelf/this-is-marketing.jpg';
 import time_management_for_system_administrators_jpg from '../images/bookshelf/time-management-for-system-administrators.jpg';
 import timequake_jpg from '../images/bookshelf/timequake.jpg';
 import to_be_taught_if_fortunate_jpg from '../images/bookshelf/to-be-taught-if-fortunate.jpg';
-import to_kill_a_mockingbird_jpg from '../images/bookshelf/to-kill-a-mockingbird.jpg';
+import to_kill_a_mockingbird_webp from '../images/bookshelf/to-kill-a-mockingbird.webp';
 import tuesdays_with_morrie_jpg from '../images/bookshelf/tuesdays-with-morrie.jpg';
 import turning_pro_jpg from '../images/bookshelf/turning-pro.jpg';
 import twenty_love_poems_and_a_song_of_despair_jpg from '../images/bookshelf/twenty-love-poems-and-a-song-of-despair.jpg';
@@ -146,24 +146,25 @@ import world_war_z_an_oral_history_of_the_zombie_war_jpg from '../images/bookshe
 import zoes_tale_jpg from '../images/bookshelf/zoes-tale.jpg';
 
 export const bookCoverImages: Record<string, any> = {
-  '1984.jpg': img_1984_jpg,
+  '1984.webp': img_1984_webp,
   '2001-a-space-odyssey.jpg': img_2001_a_space_odyssey_jpg,
   'a-brief-history-of-time.jpg': a_brief_history_of_time_jpg,
   'a-city-on-mars.jpg': a_city_on_mars_jpg,
   'a-closed-and-common-orbit.jpg': a_closed_and_common_orbit_jpg,
-  'abundance-how-we-build-a-better-future.jpg': abundance_how_we_build_a_better_future_jpg,
+  'abundance.jpg': abundance_jpg,
   'after-steve.jpg': after_steve_jpg,
-  'all-systems-red.jpg': all_systems_red_jpg,
+  'all-systems-red.webp': all_systems_red_webp,
   'and-the-mountains-echoed.jpg': and_the_mountains_echoed_jpg,
   'animal-farm.jpg': animal_farm_jpg,
   'anything-you-want.jpg': anything_you_want_jpg,
   'artificial-condition.jpg': artificial_condition_jpg,
   'before-the-coffee-gets-cold.jpg': before_the_coffee_gets_cold_jpg,
-  'bird-by-bird.jpg': bird_by_bird_jpg,
+  'bird-by-bird.webp': bird_by_bird_webp,
   'black-box-thinking-the-surprising-truth-about-success.jpg': black_box_thinking_the_surprising_truth_about_success_jpg,
-  'blade-runner.jpg': blade_runner_jpg,
+  'black-box-thinking.jpg': black_box_thinking_jpg,
+  'bladerunner.jpeg': bladerunner_jpeg,
   'body-problem.jpg': body_problem_jpg,
-  'born-to-run.jpg': born_to_run_jpg,
+  'born-to-run.webp': born_to_run_webp,
   'built.jpg': built_jpg,
   'childhoods-end.jpg': childhoods_end_jpg,
   'children-of-memory.jpg': children_of_memory_jpg,
@@ -174,10 +175,9 @@ export const bookCoverImages: Record<string, any> = {
   'data-analysis-with-python-and-pyspark.jpeg': data_analysis_with_python_and_pyspark_jpeg,
   'data-analysis-with-python-and-pyspark.jpg': data_analysis_with_python_and_pyspark_jpg,
   'deaths-end.jpg': deaths_end_jpg,
-  'deception-point.jpg': deception_point_jpg,
+  'deception-point.jpeg': deception_point_jpeg,
   'die-with-zero.jpg': die_with_zero_jpg,
-  'digital-fortress.jpg': digital_fortress_jpg,
-  'dune.jpg': dune_jpg,
+  'digital-fortress.webp': digital_fortress_webp,
   'dune.webp': dune_webp,
   'empire-of-ai.jpg': empire_of_ai_jpg,
   'enders-game.jpg': enders_game_jpg,
@@ -186,7 +186,7 @@ export const bookCoverImages: Record<string, any> = {
   'every-day-i-read.jpg': every_day_i_read_jpg,
   'excellent-advice-for-living.jpg': excellent_advice_for_living_jpg,
   'exhalation.jpg': exhalation_jpg,
-  'exit-strategy.jpg': exit_strategy_jpg,
+  'exit-strategy.webp': exit_strategy_webp,
   'eyes-of-the-void.jpg': eyes_of_the_void_jpg,
   'fahrenheit-451.jpg': fahrenheit_451_jpg,
   'forward-the-foundation.jpg': forward_the_foundation_jpg,
@@ -195,20 +195,20 @@ export const bookCoverImages: Record<string, any> = {
   'foundation.jpg': foundation_jpg,
   'foundations-edge.jpg': foundations_edge_jpg,
   'fugitive-telemetry.jpg': fugitive_telemetry_jpg,
-  'helsinki-by-sauna.jpg': helsinki_by_sauna_jpg,
+  'helsinki-by-sauna.jpeg': helsinki_by_sauna_jpeg,
   'how-to-win-friends-and-influence-people.jpg': how_to_win_friends_and_influence_people_jpg,
   'i-robot.jpg': i_robot_jpg,
   'inferno.jpg': inferno_jpg,
   'jenkins-2-up-and-running.jpg': jenkins_2_up_and_running_jpg,
   'kane-abel.jpg': kane_abel_jpg,
   'keep-going.jpg': keep_going_jpg,
-  'little-brother.jpg': little_brother_jpg,
+  'little-brother.webp': little_brother_webp,
   'lords-of-uncreation.jpg': lords_of_uncreation_jpg,
   'many-lives-many-masters.jpg': many_lives_many_masters_jpg,
   'men-without-women.jpg': men_without_women_jpg,
   'mindset-how-you-can-fulfil-your-potential.jpg': mindset_how_you_can_fulfil_your_potential_jpg,
   'myth-mithya-a-handbook-of-hindu-mythology.jpg': myth_mithya_a_handbook_of_hindu_mythology_jpg,
-  'network-effect.jpg': network_effect_jpg,
+  'network-effect.webp': network_effect_webp,
   'nexus.jpg': nexus_jpg,
   'old-mans-war.jpg': old_mans_war_jpg,
   'on-tennis.jpg': on_tennis_jpg,
@@ -225,11 +225,11 @@ export const bookCoverImages: Record<string, any> = {
   'scene-structure.jpg': scene_structure_jpg,
   'second-foundation.jpg': second_foundation_jpg,
   'shards-of-earth.jpg': shards_of_earth_jpg,
-  'show-your-work.jpg': show_your_work_jpg,
+  'show-your-work.jpeg': show_your_work_jpeg,
   'shy.jpg': shy_jpg,
   'slow-productivity.jpg': slow_productivity_jpg,
   'starter-villain.jpg': starter_villain_jpg,
-  'steal-like-an-artist.jpg': steal_like_an_artist_jpg,
+  'steal-like-an-artist.jpeg': steal_like_an_artist_jpeg,
   'stories-of-your-life-and-others.jpg': stories_of_your_life_and_others_jpg,
   'the-art-of-spending-money.jpg': the_art_of_spending_money_jpg,
   'the-caves-of-steel.jpg': the_caves_of_steel_jpg,
@@ -250,7 +250,7 @@ export const bookCoverImages: Record<string, any> = {
   'the-long-way-to-a-small-angry-planet.jpg': the_long_way_to_a_small_angry_planet_jpg,
   'the-lost-symbol.jpg': the_lost_symbol_jpg,
   'the-ministry-for-the-future.jpg': the_ministry_for_the_future_jpg,
-  'the-mysterious-affair-at-styles.jpg': the_mysterious_affair_at_styles_jpg,
+  'the-mysterious-affair-at-styles.jpeg': the_mysterious_affair_at_styles_jpeg,
   'the-naked-sun.jpg': the_naked_sun_jpg,
   'the-oath-of-the-vayuputras.jpg': the_oath_of_the_vayuputras_jpg,
   'the-phoenix-project.jpg': the_phoenix_project_jpg,
@@ -277,7 +277,7 @@ export const bookCoverImages: Record<string, any> = {
   'time-management-for-system-administrators.jpg': time_management_for_system_administrators_jpg,
   'timequake.jpg': timequake_jpg,
   'to-be-taught-if-fortunate.jpg': to_be_taught_if_fortunate_jpg,
-  'to-kill-a-mockingbird.jpg': to_kill_a_mockingbird_jpg,
+  'to-kill-a-mockingbird.webp': to_kill_a_mockingbird_webp,
   'tuesdays-with-morrie.jpg': tuesdays_with_morrie_jpg,
   'turning-pro.jpg': turning_pro_jpg,
   'twenty-love-poems-and-a-song-of-despair.jpg': twenty_love_poems_and_a_song_of_despair_jpg,
@@ -294,4 +294,4 @@ export function getBookCoverImage(filename: string) {
   return bookCoverImages[filename];
 }
 
-export type BookCoverFilename = '1984.jpg' | '2001-a-space-odyssey.jpg' | 'a-brief-history-of-time.jpg' | 'a-city-on-mars.jpg' | 'a-closed-and-common-orbit.jpg' | 'abundance-how-we-build-a-better-future.jpg' | 'after-steve.jpg' | 'all-systems-red.jpg' | 'and-the-mountains-echoed.jpg' | 'animal-farm.jpg' | 'anything-you-want.jpg' | 'artificial-condition.jpg' | 'before-the-coffee-gets-cold.jpg' | 'bird-by-bird.jpg' | 'black-box-thinking-the-surprising-truth-about-success.jpg' | 'blade-runner.jpg' | 'body-problem.jpg' | 'born-to-run.jpg' | 'built.jpg' | 'childhoods-end.jpg' | 'children-of-memory.jpg' | 'children-of-ruin.jpg' | 'children-of-time.jpg' | 'continuous-delivery.jpg' | 'creativity-inc.jpg' | 'data-analysis-with-python-and-pyspark.jpeg' | 'data-analysis-with-python-and-pyspark.jpg' | 'deaths-end.jpg' | 'deception-point.jpg' | 'die-with-zero.jpg' | 'digital-fortress.jpg' | 'dune.jpg' | 'dune.webp' | 'empire-of-ai.jpg' | 'enders-game.jpg' | 'enshittification.jpg' | 'ernest-hemingway-on-writing.jpg' | 'every-day-i-read.jpg' | 'excellent-advice-for-living.jpg' | 'exhalation.jpg' | 'exit-strategy.jpg' | 'eyes-of-the-void.jpg' | 'fahrenheit-451.jpg' | 'forward-the-foundation.jpg' | 'foundation-and-earth.jpg' | 'foundation-and-empire.jpg' | 'foundation.jpg' | 'foundations-edge.jpg' | 'fugitive-telemetry.jpg' | 'helsinki-by-sauna.jpg' | 'how-to-win-friends-and-influence-people.jpg' | 'i-robot.jpg' | 'inferno.jpg' | 'jenkins-2-up-and-running.jpg' | 'kane-abel.jpg' | 'keep-going.jpg' | 'little-brother.jpg' | 'lords-of-uncreation.jpg' | 'many-lives-many-masters.jpg' | 'men-without-women.jpg' | 'mindset-how-you-can-fulfil-your-potential.jpg' | 'myth-mithya-a-handbook-of-hindu-mythology.jpg' | 'network-effect.jpg' | 'nexus.jpg' | 'old-mans-war.jpg' | 'on-tennis.jpg' | 'one-two-threeinfinity-facts-and-speculations-of-science.jpg' | 'poems-to-fall-in-love-with.jpg' | 'prelude-to-foundation.jpg' | 'project-hail-mary.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'redshirts.jpg' | 'robots-and-empire.jpg' | 'rogue-protocol.jpg' | 'same-as-ever.jpg' | 'scene-structure.jpg' | 'second-foundation.jpg' | 'shards-of-earth.jpg' | 'show-your-work.jpg' | 'shy.jpg' | 'slow-productivity.jpg' | 'starter-villain.jpg' | 'steal-like-an-artist.jpg' | 'stories-of-your-life-and-others.jpg' | 'the-art-of-spending-money.jpg' | 'the-caves-of-steel.jpg' | 'the-chancellor-manuscript.jpg' | 'the-da-vinci-code.jpg' | 'the-dark-forest.jpg' | 'the-end-of-all-things.jpg' | 'the-end-of-everything-astrophysically-speaking.jpg' | 'the-fountainhead.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-ghost-brigades.jpg' | 'the-godfather.jpg' | 'the-hitchhikers-guide-to-the-galaxy.jpg' | 'the-human-division.jpg' | 'the-immortals-of-meluha.jpg' | 'the-last-colony.jpg' | 'the-life-of-chuck.jpg' | 'the-long-way-to-a-small-angry-planet.jpg' | 'the-lost-symbol.jpg' | 'the-ministry-for-the-future.jpg' | 'the-mysterious-affair-at-styles.jpg' | 'the-naked-sun.jpg' | 'the-oath-of-the-vayuputras.jpg' | 'the-phoenix-project.jpg' | 'the-practice-of-cloud-system-administration.jpg' | 'the-practice.jpg' | 'the-prodigal-daughter.jpg' | 'the-psychology-of-money.jpg' | 'the-quick-python-book.jpg' | 'the-road-less-travelled.jpg' | 'the-robots-of-dawn.jpg' | 'the-sagan-diary.jpg' | 'the-secret-of-secrets.jpg' | 'the-secret-of-the-nagas.jpg' | 'the-stand.jpg' | 'the-story-grid.jpg' | 'the-three-body-problem.jpg' | 'the-tipping-point-how-little-things-can-make-a-big-difference.jpg' | 'the-ultimate-hitchhikers-guide-to-the-galaxy.jpg' | 'the-unicorn-project.jpg' | 'the-zombie-survival-guide-complete-protection-from-the-living-dead.jpg' | 'things-become-other-things.jpg' | 'this-is-how-you-lose-the-time-war.jpg' | 'this-is-marketing.jpg' | 'time-management-for-system-administrators.jpg' | 'timequake.jpg' | 'to-be-taught-if-fortunate.jpg' | 'to-kill-a-mockingbird.jpg' | 'tuesdays-with-morrie.jpg' | 'turning-pro.jpg' | 'twenty-love-poems-and-a-song-of-despair.jpg' | 'two-nights-in-lisbon.jpg' | 'v-for-vendetta.jpg' | 'walden.jpg' | 'what-technology-wants.jpg' | 'when-the-moon-hits-your-eye.jpg' | 'world-war-z-an-oral-history-of-the-zombie-war.jpg' | 'zoes-tale.jpg';
+export type BookCoverFilename = '1984.webp' | '2001-a-space-odyssey.jpg' | 'a-brief-history-of-time.jpg' | 'a-city-on-mars.jpg' | 'a-closed-and-common-orbit.jpg' | 'abundance.jpg' | 'after-steve.jpg' | 'all-systems-red.webp' | 'and-the-mountains-echoed.jpg' | 'animal-farm.jpg' | 'anything-you-want.jpg' | 'artificial-condition.jpg' | 'before-the-coffee-gets-cold.jpg' | 'bird-by-bird.webp' | 'black-box-thinking-the-surprising-truth-about-success.jpg' | 'black-box-thinking.jpg' | 'bladerunner.jpeg' | 'body-problem.jpg' | 'born-to-run.webp' | 'built.jpg' | 'childhoods-end.jpg' | 'children-of-memory.jpg' | 'children-of-ruin.jpg' | 'children-of-time.jpg' | 'continuous-delivery.jpg' | 'creativity-inc.jpg' | 'data-analysis-with-python-and-pyspark.jpeg' | 'data-analysis-with-python-and-pyspark.jpg' | 'deaths-end.jpg' | 'deception-point.jpeg' | 'die-with-zero.jpg' | 'digital-fortress.webp' | 'dune.webp' | 'empire-of-ai.jpg' | 'enders-game.jpg' | 'enshittification.jpg' | 'ernest-hemingway-on-writing.jpg' | 'every-day-i-read.jpg' | 'excellent-advice-for-living.jpg' | 'exhalation.jpg' | 'exit-strategy.webp' | 'eyes-of-the-void.jpg' | 'fahrenheit-451.jpg' | 'forward-the-foundation.jpg' | 'foundation-and-earth.jpg' | 'foundation-and-empire.jpg' | 'foundation.jpg' | 'foundations-edge.jpg' | 'fugitive-telemetry.jpg' | 'helsinki-by-sauna.jpeg' | 'how-to-win-friends-and-influence-people.jpg' | 'i-robot.jpg' | 'inferno.jpg' | 'jenkins-2-up-and-running.jpg' | 'kane-abel.jpg' | 'keep-going.jpg' | 'little-brother.webp' | 'lords-of-uncreation.jpg' | 'many-lives-many-masters.jpg' | 'men-without-women.jpg' | 'mindset-how-you-can-fulfil-your-potential.jpg' | 'myth-mithya-a-handbook-of-hindu-mythology.jpg' | 'network-effect.webp' | 'nexus.jpg' | 'old-mans-war.jpg' | 'on-tennis.jpg' | 'one-two-threeinfinity-facts-and-speculations-of-science.jpg' | 'poems-to-fall-in-love-with.jpg' | 'prelude-to-foundation.jpg' | 'project-hail-mary.jpg' | 'range.jpg' | 'record-of-a-spaceborn-few.jpg' | 'redshirts.jpg' | 'robots-and-empire.jpg' | 'rogue-protocol.jpg' | 'same-as-ever.jpg' | 'scene-structure.jpg' | 'second-foundation.jpg' | 'shards-of-earth.jpg' | 'show-your-work.jpeg' | 'shy.jpg' | 'slow-productivity.jpg' | 'starter-villain.jpg' | 'steal-like-an-artist.jpeg' | 'stories-of-your-life-and-others.jpg' | 'the-art-of-spending-money.jpg' | 'the-caves-of-steel.jpg' | 'the-chancellor-manuscript.jpg' | 'the-da-vinci-code.jpg' | 'the-dark-forest.jpg' | 'the-end-of-all-things.jpg' | 'the-end-of-everything-astrophysically-speaking.jpg' | 'the-fountainhead.jpg' | 'the-galaxy-and-the-ground-within.jpg' | 'the-ghost-brigades.jpg' | 'the-godfather.jpg' | 'the-hitchhikers-guide-to-the-galaxy.jpg' | 'the-human-division.jpg' | 'the-immortals-of-meluha.jpg' | 'the-last-colony.jpg' | 'the-life-of-chuck.jpg' | 'the-long-way-to-a-small-angry-planet.jpg' | 'the-lost-symbol.jpg' | 'the-ministry-for-the-future.jpg' | 'the-mysterious-affair-at-styles.jpeg' | 'the-naked-sun.jpg' | 'the-oath-of-the-vayuputras.jpg' | 'the-phoenix-project.jpg' | 'the-practice-of-cloud-system-administration.jpg' | 'the-practice.jpg' | 'the-prodigal-daughter.jpg' | 'the-psychology-of-money.jpg' | 'the-quick-python-book.jpg' | 'the-road-less-travelled.jpg' | 'the-robots-of-dawn.jpg' | 'the-sagan-diary.jpg' | 'the-secret-of-secrets.jpg' | 'the-secret-of-the-nagas.jpg' | 'the-stand.jpg' | 'the-story-grid.jpg' | 'the-three-body-problem.jpg' | 'the-tipping-point-how-little-things-can-make-a-big-difference.jpg' | 'the-ultimate-hitchhikers-guide-to-the-galaxy.jpg' | 'the-unicorn-project.jpg' | 'the-zombie-survival-guide-complete-protection-from-the-living-dead.jpg' | 'things-become-other-things.jpg' | 'this-is-how-you-lose-the-time-war.jpg' | 'this-is-marketing.jpg' | 'time-management-for-system-administrators.jpg' | 'timequake.jpg' | 'to-be-taught-if-fortunate.jpg' | 'to-kill-a-mockingbird.webp' | 'tuesdays-with-morrie.jpg' | 'turning-pro.jpg' | 'twenty-love-poems-and-a-song-of-despair.jpg' | 'two-nights-in-lisbon.jpg' | 'v-for-vendetta.jpg' | 'walden.jpg' | 'what-technology-wants.jpg' | 'when-the-moon-hits-your-eye.jpg' | 'world-war-z-an-oral-history-of-the-zombie-war.jpg' | 'zoes-tale.jpg';
