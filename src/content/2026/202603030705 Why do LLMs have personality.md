@@ -1,13 +1,16 @@
 ---
-title: "Why do LLMs have personality"
-slug: "why-do-llms-have-personality"
-pubDate: 2026-03-03T07:06:17+02:00
-updatedDate: 2026-03-03T07:06:17+02:00
+title: Why do LLMs have personality
+slug: why-do-llms-have-personality
+pubDate: 2026-03-03T05:06:17.000Z
+updatedDate: 2026-03-03T05:06:17.000Z
 category: micro
 tags:
   - llms
   - personality
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116163507321785030'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mg4yrcbpqg2u'
+  - 'https://www.threads.com/@sajal24x7/post/DVaPQ5LjkwA'
 ---
 [Giving LLMs a personality is just good engineering by Sean](https://seangoedecke.com/giving-llms-a-personality/)
 
