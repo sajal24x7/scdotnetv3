@@ -1,13 +1,16 @@
 ---
-title: "Apple launches Macbook Neo"
-slug: "apple-launches-macbook-neo"
-pubDate: 2026-03-04T21:22:41+02:00
-updatedDate: 2026-03-04T21:22:41+02:00
+title: Apple launches Macbook Neo
+slug: apple-launches-macbook-neo
+pubDate: 2026-03-04T19:22:41.000Z
+updatedDate: 2026-03-04T19:22:41.000Z
 category: micro
 tags:
   - mac
   - apple
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116172535531273194'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgaz2u4ybh2c'
+  - 'https://www.threads.com/@sajal24x7/post/DVeWBR9iRpI'
 ---
 [Say hello to MacBook Neo - Apple](https://www.apple.com/newsroom/2026/03/say-hello-to-macbook-neo/)
 
