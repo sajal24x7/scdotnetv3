@@ -1,15 +1,18 @@
 ---
-title: "Console exclusives may be back"
-slug: "console-exclusives-may-be-back"
-pubDate: 2026-03-05T10:29:42+02:00
-updatedDate: 2026-03-05T10:29:42+02:00
+title: Console exclusives may be back
+slug: console-exclusives-may-be-back
+pubDate: 2026-03-05T08:29:42.000Z
+updatedDate: 2026-03-05T08:29:42.000Z
 category: micro
 tags:
   - microsoft
   - sony
   - xbox
   - ps5
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116175629988652691'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgcf2hkdui2u'
+  - 'https://www.threads.com/@sajal24x7/post/DVfwG1cltLz'
 ---
 [Console exclusives might be making a comeback by Andrew Webster](https://www.theverge.com/entertainment/889336/console-exclusives-comeback)
 
