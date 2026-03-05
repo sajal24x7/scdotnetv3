@@ -11,7 +11,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115991116464211882'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mdqgwz5rjr2j'
 ---
-From [Bird by bird](#).
+From [Bird by bird](/bookshelf/bird-by-bird).
 
 When stuck, or unsure what to write, write it as a letter to your child. Tell them whatever you want to tell them, however you want to tell them.
 
