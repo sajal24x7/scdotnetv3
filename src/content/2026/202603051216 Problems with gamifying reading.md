@@ -1,13 +1,16 @@
 ---
-title: "Problems with gamifying reading"
-slug: "problems-with-gamifying-reading"
-pubDate: 2026-03-05T12:42:28+02:00
-updatedDate: 2026-03-05T12:42:28+02:00
+title: Problems with gamifying reading
+slug: problems-with-gamifying-reading
+pubDate: 2026-03-05T10:42:28.000Z
+updatedDate: 2026-03-05T10:42:28.000Z
 category: micro
 tags:
   - reading
   - books
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116176151582003830'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgcmh7qz352h'
+  - 'https://www.threads.com/@sajal24x7/post/DVf_QlmkQWY'
 ---
 [What We Lose When We Gamify Reading by Marissa Levien](https://lithub.com/what-we-lose-when-we-gamify-reading/)
 
