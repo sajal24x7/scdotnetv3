@@ -73,174 +73,154 @@ const getContentTypeClasses = (category?: string) => {
 </div>
 
 <style>
+  /* ── Grid ─────────────────────────────────────────────── */
   :global([data-featured-grid]) {
     --grid-column-gap: clamp(0.75rem, 2.5vw, 1.5rem);
     --grid-row-gap: clamp(1rem, 3vw, 1.75rem);
     display: grid;
     grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: 11rem;
     gap: var(--grid-row-gap) var(--grid-column-gap);
-    grid-auto-rows: minmax(0, auto);
-    align-items: start;
   }
 
   @media (min-width: 48rem) {
     :global([data-featured-grid]) {
       grid-template-columns: repeat(4, 1fr);
-      align-items: stretch;
+      grid-auto-rows: 14rem;
     }
   }
 
+  /* ── Card wrapper ─────────────────────────────────────── */
   .featured-card {
     position: relative;
     display: flex;
     min-width: 0;
   }
 
-  /* On mobile, cards span full width */
   .featured-card {
     grid-column: 1 / -1;
   }
 
-  /* On desktop, each card spans 1 column in the 4-column grid */
   @media (min-width: 48rem) {
     .featured-card {
       grid-column: span 1 / span 1;
     }
   }
 
-  /* Cards fill their grid cell; desktop enforces min-height via align-items: stretch */
+  /* ── Card: fills its grid row, image fills card ───────── */
   .featured-card :global(.card),
   .featured-card :global(.book-card) {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    border: none !important;
+    background: #1a1a1a !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18), 0 1px 2px rgba(0, 0, 0, 0.1);
   }
 
-  @media (min-width: 48rem) {
-    .featured-card :global(.card),
-    .featured-card :global(.book-card) {
-      min-height: 17rem;
-    }
+  /* card-content: zero padding, acts as positioned container */
+  .featured-card :global(.card-content) {
+    padding: 0;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Add borders to all featured cards */
-  .featured-card :global(.card) {
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.04),
-      0 4px 12px rgba(15, 23, 42, 0.08);
-  }
-
-  :global(.dark) .featured-card :global(.card) {
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.2),
-      0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Make cards with images have transparent background but keep border */
-  .featured-card :global(.card--with-image) {
-    background: transparent !important;
-  }
-
-  /* Set featured card image height and ensure it fills the container */
+  /* Image fills the entire card */
   .featured-card :global(.card-image) {
-    min-height: 8rem;
-    max-height: 8rem;
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    min-height: 0;
+    max-height: none;
     aspect-ratio: auto !important;
+    margin: 0;
+    overflow: hidden;
   }
 
   .featured-card :global(.card-image img) {
-    object-fit: cover !important;
     width: 100% !important;
     height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.35s ease;
   }
 
-  /* Add default black placeholder for cards without images */
+  .featured-card :global(.card:hover .card-image img) {
+    transform: scale(1.05);
+  }
+
+  /* No-image cards: dark gradient fills the whole card */
   .featured-card :global(.card--no-image .card-content)::before {
     content: '';
-    display: block;
-    width: calc(100% + (var(--card-padding) * 2));
-    height: 8rem;
+    position: absolute;
+    inset: 0;
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    margin: calc(var(--card-padding) * -1);
-    margin-bottom: var(--card-padding);
-    border-radius: 0.75rem 0.75rem 0 0;
+    border-radius: 0;
   }
 
-  /* Ensure card content doesn't overflow */
-  .featured-card :global(.card-content) {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow: hidden;
-  }
-
+  /* ── Text overlay at the bottom ───────────────────────── */
   .featured-card :global(.card-body) {
-    flex: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.65rem 0.8rem 0.7rem;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.82) 0%,
+      rgba(0, 0, 0, 0.55) 55%,
+      transparent 100%
+    );
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    gap: 0.3rem;
+  }
+
+  .featured-card :global(.card-title) {
+    color: #ffffff;
+    font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .featured-card :global(.card-meta) {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  /* Chip-style tags in the overlay */
+  .featured-card :global(.card-chip),
+  .featured-card :global(.card-category) {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.65rem !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
   }
 
   .featured-card :global(.card-description) {
     display: none;
   }
 
-  /* Hover effects for cards without images */
-  .featured-card :global(.card--no-image:hover),
-  .featured-card :global(.card--no-image:focus-within) {
-    box-shadow: 0 20px 46px -28px rgba(129, 140, 248, 0.35);
+  /* ── Hover glow (override Card.astro's light hover bg) ── */
+  .featured-card :global(.card:hover),
+  .featured-card :global(.card:focus-within) {
+    background: #1a1a1a !important;
+    box-shadow:
+      0 0 0 2px var(--card-accent, rgba(167, 139, 250, 0.6)),
+      0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    transform: translateY(-2px);
   }
 
-  /* Content type specific styling */
-  .evergreen-card {
-    --card-accent: #10b981; /* emerald */
-  }
-
-  .til-card {
-    --card-accent: #3b82f6; /* blue */
-  }
-
-  .bookshelf-card {
-    --card-accent: #f59e0b; /* amber */
-  }
-
-  .stories-card {
-    --card-accent: #8b5cf6; /* purple */
-  }
-
-  .poems-card {
-    --card-accent: #ec4899; /* pink */
-  }
-
-  /* Apply accent colors to cards */
-  .featured-card :global(.card:hover) {
-    border-color: var(--card-accent, #a78bfa);
-  }
-
-  .featured-card :global(.prose a) {
-    color: rgb(var(--color-text-primary));
-    text-decoration: underline;
-    text-decoration-color: rgba(var(--color-text-primary), 0.35);
-    transition: color 0.2s ease, text-decoration-color 0.2s ease;
-  }
-
-  .featured-card :global(.prose a:hover),
-  .featured-card :global(.prose a:focus-visible) {
-    color: rgb(var(--color-text-primary));
-    text-decoration-color: rgba(var(--color-text-primary), 0.6);
-  }
-
-  :global(.dark) .featured-card :global(.prose a) {
-    color: rgb(var(--color-text-primary));
-    text-decoration-color: rgba(var(--color-text-primary), 0.35);
-  }
-
-  :global(.dark) .featured-card :global(.prose a:hover),
-  :global(.dark) .featured-card :global(.prose a:focus-visible) {
-    color: rgb(var(--color-text-primary));
-    text-decoration-color: rgba(var(--color-text-primary), 0.6);
-  }
+  /* ── Content type accent colours ─────────────────────── */
+  .evergreen-card  { --card-accent: #10b981; }
+  .til-card        { --card-accent: #3b82f6; }
+  .bookshelf-card  { --card-accent: #f59e0b; }
+  .stories-card    { --card-accent: #8b5cf6; }
+  .poems-card      { --card-accent: #ec4899; }
 </style>
