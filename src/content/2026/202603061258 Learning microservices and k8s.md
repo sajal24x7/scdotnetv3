@@ -13,4 +13,4 @@ Getting reacquainted with k8s and microservices. The goal is CKA at the end of t
 
 ## Log
 
-2026-03-06 13:00 - Started reading [Building microservices by Sam Newman](#).
+2026-03-06 13:00 - Started reading [Building microservices by Sam Newman](/bookshelf/building-microservices).
