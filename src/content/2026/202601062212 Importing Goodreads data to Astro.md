@@ -3,7 +3,7 @@ title: Importing Goodreads data to Astro
 slug: importing-goodreads-data-to-astro
 pubDate: 2026-01-06T20:18:14.000Z
 updatedDate: 2026-01-06T20:18:14.000Z
-category: blog
+category: til
 tags:
   - reading
   - books
