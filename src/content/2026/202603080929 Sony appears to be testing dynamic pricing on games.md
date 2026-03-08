@@ -1,13 +1,15 @@
 ---
-title: "Sony appears to be testing dynamic pricing on games"
-slug: "sony-appears-to-be-testing-dynamic-pricing-on-games"
-pubDate: 2026-03-08T09:31:05+02:00
-updatedDate: 2026-03-08T09:31:05+02:00
+title: Sony appears to be testing dynamic pricing on games
+slug: sony-appears-to-be-testing-dynamic-pricing-on-games
+pubDate: 2026-03-08T07:31:05.000Z
+updatedDate: 2026-03-08T07:31:05.000Z
 category: micro
 tags:
   - sony
   - ps5
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116192386497977654'
+  - 'https://www.threads.com/@sajal24x7/post/DVnXwcWDr5n'
 ---
 [Sony appears to be testing dynamic pricing on PlayStation games by Terrence O'Brien](https://www.theverge.com/games/891085/sony-dynamic-pricing-playstation-games)
 

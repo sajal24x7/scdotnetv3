@@ -1,13 +1,16 @@
 ---
-title: "Fazer plans to enter Indian market"
-slug: "fazer-plans-to-enter-indian-market"
-pubDate: 2026-03-06T17:16:52+02:00
-updatedDate: 2026-03-06T17:16:52+02:00
+title: Fazer plans to enter Indian market
+slug: fazer-plans-to-enter-indian-market
+pubDate: 2026-03-06T15:16:52.000Z
+updatedDate: 2026-03-06T15:16:52.000Z
 category: micro
 tags:
   - fazer
   - chocolates
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116192385816176110'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgjt5prglj2a'
+  - 'https://www.threads.com/@sajal24x7/post/DVnXvSsjsXO'
 ---
 [Finnish sweets giant Fazer plans to enter Indian market](https://yle.fi/a/74-20214088?origin=rss)
 
