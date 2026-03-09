@@ -9,7 +9,7 @@ tags:
 format: ebook
 genre: technical
 author: Brent Laster
-bookStatus: reading
+bookStatus: on-hold
 startedReading: 2025-12-29T11:18:12.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115802581732265575'
