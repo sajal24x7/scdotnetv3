@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116192386497977654'
   - 'https://www.threads.com/@sajal24x7/post/DVnXwcWDr5n'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgmmpirpz72h'
 ---
 [Sony appears to be testing dynamic pricing on PlayStation games by Terrence O'Brien](https://www.theverge.com/games/891085/sony-dynamic-pricing-playstation-games)
 
