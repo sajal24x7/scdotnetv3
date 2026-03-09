@@ -1,13 +1,15 @@
 ---
-title: "Types of coupling"
-slug: "types-of-coupling"
-pubDate: 2026-03-09T14:18:43+02:00
-updatedDate: 2026-03-09T14:18:43+02:00
+title: Types of coupling
+slug: types-of-coupling
+pubDate: 2026-03-09T12:18:43.000Z
+updatedDate: 2026-03-09T12:18:43.000Z
 category: til
 tags:
   - micro-services
   - architecture
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116199188731156768'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgmttcseib2h'
 ---
 In the context of micro-services architecture, learned from [Building microservices.](/bookshelf/building-microservices)
 
