@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116199188731156768'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgmttcseib2h'
+  - 'https://www.threads.com/@sajal24x7/post/DVqfpPxjlcp'
 ---
 In the context of micro-services architecture, learned from [Building microservices.](/bookshelf/building-microservices)
 
