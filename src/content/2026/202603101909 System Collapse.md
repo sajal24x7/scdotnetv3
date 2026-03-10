@@ -9,7 +9,7 @@ tags:
 format: audiobook
 author:
   - Martha Wells
-series: The Murderbot Diaries #6
+series: "The Murderbot Diaries #7"
 genre: sci-fi
 format: audiobook
 bookStatus: "reading"
