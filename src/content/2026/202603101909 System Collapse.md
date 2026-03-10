@@ -11,7 +11,6 @@ author:
   - Martha Wells
 series: "The Murderbot Diaries #7"
 genre: sci-fi
-format: audiobook
 bookStatus: "reading"
 startedReading: 2026-03-10T19:24:57+02:00
 ---
