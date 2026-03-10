@@ -17,5 +17,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116206729922231492'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgq6yo4b6i2f'
   - 'https://www.threads.com/@sajal24x7/post/DVt5NROlN3P'
+bookCover: system-collapse.jpg
 ---
 Started reading.
