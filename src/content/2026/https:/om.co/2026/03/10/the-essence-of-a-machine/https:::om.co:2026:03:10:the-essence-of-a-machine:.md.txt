@@ -1,9 +1,0 @@
----
-title: ""
-slug: ""
-pubDate: 2026-03-11T10:40:41+02:00
-updatedDate: 2026-03-11T10:40:41+02:00
-category: 
-
----
-https://om.co/2026/03/10/the-essence-of-a-machine/

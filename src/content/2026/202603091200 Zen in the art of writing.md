@@ -52,7 +52,7 @@ I think I will add this book to my bookshelf next.
 
 He talks about writing a thousand words each day since he was twelve.
 
-Make a list of things that speak to you. Things that you want to write about. Things hidden in your subconscious. Aligns, a little bit with the exercise from [[202601281508 Bird by bird|Bird by bird]], about writing stories from your childhood. 
+Make a list of things that speak to you. Things that you want to write about. Things hidden in your subconscious. Aligns, a little bit with the exercise from [Bird by bird](/bookshelf/bird-by-bird), about writing stories from your childhood. 
 
 Feed your muse.
 1. Read a poem a day
