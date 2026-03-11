@@ -1,13 +1,16 @@
 ---
-title: "About the MacBook Neo"
-slug: "about-the-macbook-neo"
-pubDate: 2026-03-11T10:46:05+02:00
-updatedDate: 2026-03-11T10:46:05+02:00
+title: About the MacBook Neo
+slug: about-the-macbook-neo
+pubDate: 2026-03-11T08:46:05.000Z
+updatedDate: 2026-03-11T08:46:05.000Z
 category: micro
 tags:
   - mac
   - apple
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116209668073936724'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgriqr6du22l'
+  - 'https://www.threads.com/@sajal24x7/post/DVvOt83kW3g'
 ---
 [The Essence of a Machine by Om](https://om.co/2026/03/10/the-essence-of-a-machine/)
 
