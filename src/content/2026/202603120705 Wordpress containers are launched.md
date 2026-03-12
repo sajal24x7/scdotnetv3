@@ -1,13 +1,16 @@
 ---
-title: "Wordpress containers are launched"
-slug: "wordpress-containers-are-launched"
-pubDate: 2026-03-12T07:07:01+02:00
-updatedDate: 2026-03-12T07:07:01+02:00
+title: Wordpress containers are launched
+slug: wordpress-containers-are-launched
+pubDate: 2026-03-12T05:07:01.000Z
+updatedDate: 2026-03-12T05:07:01.000Z
 category: micro
 tags:
   - wordpress
   - web
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116214468446551942'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgtmxpydne2y'
+  - 'https://www.threads.com/@sajal24x7/post/DVxabVujtML'
 ---
 [WordPress Everywhere ](https://ma.tt/2026/03/wordpress-everywhere/)
 
