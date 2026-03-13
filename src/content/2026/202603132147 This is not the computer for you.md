@@ -1,13 +1,16 @@
 ---
-title: "This is not the computer for you"
-slug: "this-is-not-the-computer-for-you"
-pubDate: 2026-03-13T21:48:42+02:00
-updatedDate: 2026-03-13T21:48:42+02:00
+title: This is not the computer for you
+slug: this-is-not-the-computer-for-you
+pubDate: 2026-03-13T19:48:42.000Z
+updatedDate: 2026-03-13T19:48:42.000Z
 category: micro
 tags:
   - mac
   - compute
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116223600300221395'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgxoqfvug327'
+  - 'https://www.threads.com/@sajal24x7/post/DV1kMzDFIxp'
 ---
 [“This Is Not The Computer For You” · Sam Henri Gold by ](https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/)
 
