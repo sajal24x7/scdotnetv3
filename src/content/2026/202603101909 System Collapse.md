@@ -15,7 +15,11 @@ bookStatus: read
 startedReading: 2026-03-10T17:24:57.000Z
 bookCover: system-collapse.jpg
 bookRating: like
-finishedReading: 2026-03-14T13:17:25+02:00
+finishedReading: 2026-03-14T11:17:25.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116227293557532968'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgzd7vqrkg2f'
+  - 'https://www.threads.com/@sajal24x7/post/DV3Pr8pFOpM'
 ---
 
 ## Review
