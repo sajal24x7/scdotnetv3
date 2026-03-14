@@ -1,14 +1,17 @@
 ---
-title: "Software bonkers"
-slug: "software-bonkers"
-pubDate: 2026-03-14T10:04:18+02:00
-updatedDate: 2026-03-14T10:04:18+02:00
+title: Software bonkers
+slug: software-bonkers
+pubDate: 2026-03-14T08:04:18.000Z
+updatedDate: 2026-03-14T08:04:18.000Z
 category: micro
 tags:
   - ai
   - craig-mod
   - claude-code
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116226490452160330'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgyxsouwrx2i'
+  - 'https://www.threads.com/@sajal24x7/post/DV24UFmFjaP'
 ---
 [Software Bonkers by Craig Mod](https://craigmod.com/essays/software_bonkers/)
 
