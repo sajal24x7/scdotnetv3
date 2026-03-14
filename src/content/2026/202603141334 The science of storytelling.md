@@ -17,6 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116227320865979172'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgzdmd2dlg2i'
   - 'https://www.threads.com/@sajal24x7/post/DV3Qex-kQwB'
+bookCover: the-science-of-storytelling.jpg
 ---
 Started reading.
 
