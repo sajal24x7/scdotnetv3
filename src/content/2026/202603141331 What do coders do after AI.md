@@ -1,14 +1,17 @@
 ---
-title: "What do coders do after AI"
-slug: "what-do-coders-do-after-ai"
-pubDate: 2026-03-14T13:32:09+02:00
-updatedDate: 2026-03-14T13:32:09+02:00
+title: What do coders do after AI
+slug: what-do-coders-do-after-ai
+pubDate: 2026-03-14T11:32:09.000Z
+updatedDate: 2026-03-14T11:32:09.000Z
 category: micro
 tags:
   - anil-dash
   - ai
   - coding
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116227308428016757'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgzdgoic6h2b'
+  - 'https://www.threads.com/@sajal24x7/post/DV3QHq_FMBj'
 ---
 [What do coders do after AI? - Anil Dash](https://anildash.com/2026/03/13/coders-after-ai/)
 
