@@ -1,13 +1,16 @@
 ---
-title: "Starfield is coming to PS5"
-slug: "starfield-is-coming-to-ps5"
-pubDate: 2026-03-17T21:41:43+02:00
-updatedDate: 2026-03-17T21:41:43+02:00
+title: Starfield is coming to PS5
+slug: starfield-is-coming-to-ps5
+pubDate: 2026-03-17T19:41:43.000Z
+updatedDate: 2026-03-17T19:41:43.000Z
 category: micro
 tags:
   - ps5
   - xbox
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116246228580264791'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mhbqcks3ok2a'
+  - 'https://www.threads.com/@sajal24x7/post/DV_2xQbgPlF'
 ---
 [Starfield is coming to the PS5 and getting a pair of major updates in April by Andrew Webster](https://www.theverge.com/entertainment/895304/starfield-ps5-launch-date-story-expansion)
 
