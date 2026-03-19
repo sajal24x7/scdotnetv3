@@ -1,15 +1,18 @@
 ---
-title: "FAUG Zero to Hero meetup"
-slug: "faug-zero-to-hero-meetup"
-pubDate: 2026-03-19T21:21:29+02:00
-updatedDate: 2026-03-19T21:21:29+02:00
+title: FAUG Zero to Hero meetup
+slug: faug-zero-to-hero-meetup
+pubDate: 2026-03-19T19:21:29.000Z
+updatedDate: 2026-03-19T19:21:29.000Z
 category: blog
 tags:
   - faug
   - azure
   - meetup
   - finland
-image: https://storage.sajalchoudhary.net/images/2026/03/faug-2026-march-08.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116257468489973412'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mhgpzuvdsm2c'
+  - 'https://www.threads.com/@sajal24x7/post/DWE95LVkiZB'image: https://storage.sajalchoudhary.net/images/2026/03/faug-2026-march-08.jpeg
 ---
 I had fun attending the Zero to Hero FAUG event at Microsoft campus in Keilaniemi. Around 130 people had registered for the event, but there were a few no-shows. I was going to be one of those, not no-shows, but rather cancelled a day-befores. I was not sure what this event would have for me, but I decided to go. Prerna was going anyway and just last night I saw the post from FAUG on Linkedin, and somehow it made me want to go.
 
