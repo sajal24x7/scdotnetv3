@@ -9,7 +9,7 @@ tags:
   - azure
   - meetup
   - finland
-
+image: https://storage.sajalchoudhary.net/images/2026/03/faug-2026-march-08.jpeg
 ---
 I had fun attending the Zero to Hero FAUG event at Microsoft campus in Keilaniemi. Around 130 people had registered for the event, but there were a few no-shows. I was going to be one of those, not no-shows, but rather cancelled a day-befores. I was not sure what this event would have for me, but I decided to go. Prerna was going anyway and just last night I saw the post from FAUG on Linkedin, and somehow it made me want to go.
 
