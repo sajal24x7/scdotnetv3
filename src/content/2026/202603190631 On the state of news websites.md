@@ -1,13 +1,16 @@
 ---
-title: "On the state of news websites"
-slug: "on-the-state-of-news-websites"
-pubDate: 2026-03-19T06:37:43+02:00
-updatedDate: 2026-03-19T06:37:43+02:00
+title: On the state of news websites
+slug: on-the-state-of-news-websites
+pubDate: 2026-03-19T04:37:43.000Z
+updatedDate: 2026-03-19T04:37:43.000Z
 category: micro
 tags:
   - daring-fireball
   - web
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116254002684615789'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mhf6rsxb4o2i'
+  - 'https://www.threads.com/@sajal24x7/post/DWDZBoblg_-'
 ---
 [‘Your Frustration Is the Product’ by John Gruber](https://daringfireball.net/2026/03/your_frustration_is_the_product)
 
