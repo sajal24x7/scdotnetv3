@@ -1,12 +1,15 @@
 ---
-title: "Ok being left behind"
-slug: "ok-being-left-behind"
-pubDate: 2026-03-21T00:31:15+02:00
-updatedDate: 2026-03-21T00:31:15+02:00
+title: Ok being left behind
+slug: ok-being-left-behind
+pubDate: 2026-03-20T22:31:15.000Z
+updatedDate: 2026-03-20T22:31:15.000Z
 category: micro
 tags:
   - ai
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116263873561566658'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mhjl2l2qrc27'
+  - 'https://www.threads.com/@sajal24x7/post/DWH4TjCEhxl'
 ---
 [I'm OK being left behind, thanks! by Terence Eden](https://shkspr.mobi/blog/2026/03/im-ok-being-left-behind-thanks/)
 
