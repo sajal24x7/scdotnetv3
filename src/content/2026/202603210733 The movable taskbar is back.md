@@ -1,12 +1,15 @@
 ---
-title: "The movable taskbar is back"
-slug: "the-movable-taskbar-is-back"
-pubDate: 2026-03-21T07:35:20+02:00
-updatedDate: 2026-03-21T07:35:20+02:00
+title: The movable taskbar is back
+slug: the-movable-taskbar-is-back
+pubDate: 2026-03-21T05:35:20.000Z
+updatedDate: 2026-03-21T05:35:20.000Z
 category: micro
 tags:
   - windows
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116265541261535262'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mhkcqxpsd72c'
+  - 'https://www.threads.com/@sajal24x7/post/DWIo19flmgW'
 ---
 [Windows 11 is finally getting a movable taskbar by Tom Warren](https://www.theverge.com/tech/897849/microsoft-windows-11-taskbar-vertical-top-movable)
 
