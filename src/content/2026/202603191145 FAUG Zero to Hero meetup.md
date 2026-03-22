@@ -4,12 +4,12 @@ slug: faug-zero-to-hero-meetup
 pubDate: 2026-03-19T19:21:29.000Z
 updatedDate: 2026-03-19T19:21:29.000Z
 category: blog
+image: https://storage.sajalchoudhary.net/images/2026/03/faug-2026-march-08.jpeg
 tags:
   - faug
   - azure
   - meetup
   - finland
-image: https://storage.sajalchoudhary.net/images/2026/03/faug-2026-march-08.jpeg
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116257468489973412'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mhgpzuvdsm2c'
