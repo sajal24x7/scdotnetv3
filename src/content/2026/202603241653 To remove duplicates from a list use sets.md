@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mhszq646jq22'
   - 'https://www.threads.com/@sajal24x7/post/DWRkLwdEfnh'
+  - 'https://mastodon.social/@sajal24x7/116288950967744020'
 ---
 ```python
 # create set using {} or with set keyword

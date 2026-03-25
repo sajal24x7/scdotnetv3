@@ -1,13 +1,16 @@
 ---
-title: "Apple is testing a standalone app for Siri"
-slug: "apple-is-testing-a-standalone-app-for-siri"
-pubDate: 2026-03-25T06:32:15+02:00
-updatedDate: 2026-03-25T06:32:15+02:00
+title: Apple is testing a standalone app for Siri
+slug: apple-is-testing-a-standalone-app-for-siri
+pubDate: 2026-03-25T04:32:15.000Z
+updatedDate: 2026-03-25T04:32:15.000Z
 category: micro
 tags:
   - apple
   - siri
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116288951001796509'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mhupghulpp2o'
+  - 'https://www.threads.com/@sajal24x7/post/DWTSJ6-lkX7'
 ---
 [Apple is testing a standalone app for its overhauled Siri by Andrew Liszewski](https://www.theverge.com/tech/899801/apple-wwdc-2026-new-siri-apple-intelligence-standalone-app)
 
