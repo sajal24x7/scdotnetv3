@@ -1,14 +1,17 @@
 ---
-title: "Around 60 percent would be qualifying for free daycare in Vanta"
-slug: "around-60-percent-would-be-qualifying-for-free-daycare-in-vanta"
-pubDate: 2026-03-28T08:56:29+02:00
-updatedDate: 2026-03-28T08:56:29+02:00
+title: Around 60 percent would be qualifying for free daycare in Vanta
+slug: around-60-percent-would-be-qualifying-for-free-daycare-in-vanta
+pubDate: 2026-03-28T06:56:29.000Z
+updatedDate: 2026-03-28T06:56:29.000Z
 category: micro
 tags:
   - finland
   - daycare
   - education
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116305495965329745'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mi42kax5552o'
+  - 'https://www.threads.com/@sajal24x7/post/DWazrW6kTGQ'
 ---
 [More qualifying for free daycare](https://yle.fi/a/74-20217773?origin=rss)
 
