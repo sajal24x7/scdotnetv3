@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import BookshelfCard from '../../components/bookshelf/BookshelfCard.astro';
+import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 
@@ -200,6 +201,7 @@ const sectionLandingProps = createSectionLandingProps({
   enableLinkHoverEffect
 >
   <SectionLanding {...sectionLandingProps}>
+    <ShelfTabNav currentTab="books" />
     <div class="bookshelf-filters__results" id="filter-results" aria-live="polite" aria-atomic="true" hidden>
       <div class="bookshelf-filters__summary" id="filter-summary"></div>
       <div class="bookshelf-filters__active" id="active-filters"></div>

@@ -1,0 +1,182 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionLanding from '../../layouts/SectionLanding.astro';
+import GameCard from '../../components/shelf/GameCard.astro';
+import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
+import { getAllPosts } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
+import { computeWatchNumbers } from '../../utils/shelfUtils';
+
+const allPosts = await getAllPosts();
+const gamePosts = allPosts.filter((post) => post.data.category === 'gameshelf');
+
+const parseDate = (value?: Date | string | null): Date | null => {
+    if (!value) return null;
+    const d = value instanceof Date ? value : new Date(value);
+    return Number.isNaN(d.getTime()) ? null : d;
+};
+
+const getGameYear = (post: typeof gamePosts[number]): number => {
+    const started = parseDate(post.data.startedReading); // reuse startedReading as startedPlaying for now
+    if (started) return started.getFullYear();
+    const pub = parseDate(post.data.pubDate);
+    return (pub ?? new Date()).getFullYear();
+};
+
+const compareDesc = (a?: Date | string | null, b?: Date | string | null) => {
+    const toTime = (v?: Date | string | null) => {
+        if (!v) return 0;
+        const d = v instanceof Date ? v : new Date(v);
+        return Number.isNaN(d.getTime()) ? 0 : d.getTime();
+    };
+    return toTime(b) - toTime(a);
+};
+
+const statusOrder: Record<string, number> = {
+    playing: 0,
+    played: 1,
+    'to-play': 2,
+    'on-hold': 3,
+    abandoned: 4,
+    other: 5
+};
+
+const gamesWithYear = gamePosts.map((post) => ({
+    post,
+    year: getGameYear(post)
+}));
+
+const sortedGames = [...gamesWithYear].sort((a, b) => {
+    if (a.year !== b.year) return b.year - a.year;
+    const statusA = a.post.data.gameStatus ?? 'other';
+    const statusB = b.post.data.gameStatus ?? 'other';
+    if (statusA !== statusB) {
+        return (statusOrder[statusA] ?? statusOrder.other) - (statusOrder[statusB] ?? statusOrder.other);
+    }
+    return compareDesc(a.post.data.pubDate, b.post.data.pubDate);
+});
+
+const years = Array.from(new Set(sortedGames.map((e) => e.year)));
+
+const gamesByYear = sortedGames.reduce((acc, { year, post }) => {
+    if (!acc[year]) acc[year] = [];
+    acc[year].push(post);
+    return acc;
+}, {} as Record<number, typeof gamePosts>);
+
+// Compute replay numbers
+const allGameEntries = sortedGames.map((e) => ({
+    title: e.post.data.title ?? '',
+    date: e.post.data.pubDate
+}));
+const watchNumbers = computeWatchNumbers(allGameEntries);
+const watchNumberMap = new Map<string, number>();
+sortedGames.forEach((entry, i) => {
+    watchNumberMap.set(entry.post.slug, watchNumbers.get(i) ?? 1);
+});
+
+// Count played games
+const playedGames = gamePosts.filter((p) => p.data.gameStatus === 'played');
+const totalGames = playedGames.length;
+const countText = `${totalGames} ${totalGames === 1 ? 'game' : 'games'} played`;
+
+const sectionLandingProps = createSectionLandingProps({
+    title: 'Game Shelf',
+    description: "Games I've played, am playing, or want to play—organized by year.",
+    countText,
+    countVariant: 'plain',
+    countClass: 'bookshelf-count',
+    tagCategory: 'gameshelf',
+    tagPosts: allPosts,
+    contentClass: 'bookshelf-content'
+});
+---
+
+<Layout
+  title="Game Shelf"
+  description="Games I've played and want to play"
+  currentPage="/gameshelf/"
+  pageWrapper={{
+    maxWidth: '7xl',
+    padding: 'none',
+    centered: true,
+    grid: { gap: 'loose', padding: 'narrow' }
+  }}
+  allPosts={allPosts}
+  enableSearchModal
+  enableLinkHoverEffect
+>
+  <SectionLanding {...sectionLandingProps}>
+    <ShelfTabNav currentTab="games" />
+    <div class="bookshelf-years">
+      {years.map((year) => {
+        const yearGames = gamesByYear[year] ?? [];
+        const playedYearGames = yearGames.filter((p) => p.data.gameStatus === 'played');
+        const gameCount = playedYearGames.length;
+        const gameLabel = gameCount === 1 ? 'game' : 'games';
+
+        return (
+          <section class="bookshelf-year" id={`gameshelf-${year}`} data-year={year}>
+            <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
+              <div class="bookshelf-year__sidebar grid-span-2">
+                <div class="bookshelf-year__sticky">
+                  <span class="bookshelf-year__year">{year}</span>
+                  <span class="bookshelf-year__count" data-year-count={year}>Played {gameCount} {gameLabel}</span>
+                </div>
+              </div>
+              {yearGames.map((post, index) => {
+                const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
+                const watchNumber = watchNumberMap.get(post.slug) ?? 1;
+                return (
+                  <div
+                    key={post.slug}
+                    class={`bookshelf-year__book ${gridClasses}`}
+                    data-book-item
+                    data-genre={post.data.genre ?? ''}
+                    data-status={post.data.gameStatus ?? ''}
+                    data-rating={post.data.gameRating ?? ''}
+                    data-platform={post.data.platform ?? ''}
+                  >
+                    <GameCard
+                      title={post.data.title ?? ''}
+                      developer={post.data.developer}
+                      year={post.data.year as number | undefined}
+                      genre={post.data.genre}
+                      platform={post.data.platform}
+                      gameStatus={post.data.gameStatus}
+                      gameRating={post.data.gameRating}
+                      gameCover={post.data.gameCover}
+                      link={post.slug ? `/gameshelf/${post.slug}/` : undefined}
+                      watchNumber={watchNumber}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  </SectionLanding>
+</Layout>
+
+<style>
+  .bookshelf-count { font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; }
+  :global(.dark) .bookshelf-count { color: #9ca3af; }
+  .bookshelf-content { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3rem); padding-bottom: 2rem; }
+  .bookshelf-years { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3.5rem); }
+  .bookshelf-year[data-filtered="hidden"] { display: none; }
+  .bookshelf-year__book[data-filtered="hidden"] { display: none; }
+  .bookshelf-year__grid { align-items: flex-start; }
+  .bookshelf-year__sidebar { display: flex; }
+  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / -1; } }
+  .bookshelf-year__sticky { position: sticky; top: clamp(4rem, 6vw, 5.5rem); display: flex; flex-direction: column; gap: 0.35rem; }
+  .bookshelf-year__year { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: #111827; }
+  :global(.dark) .bookshelf-year__year { color: #f9fafb; }
+  .bookshelf-year__count { font-size: 0.95rem; font-weight: 500; color: #6b7280; }
+  :global(.dark) .bookshelf-year__count { color: #9ca3af; }
+  .bookshelf-year__book { display: flex; }
+  .bookshelf-year__book :global(.book-card) { width: 100%; }
+  @media (max-width: 47.999rem) { .bookshelf-year__sticky { position: static; } }
+  @media (min-width: 64rem) { .bookshelf-year__year { font-size: clamp(2.25rem, 4vw, 3.5rem); } }
+</style>

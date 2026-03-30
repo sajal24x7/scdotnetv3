@@ -29,7 +29,7 @@ const secondaryNavItems = {
   garden: [
     { href: '/evergreen/', label: 'Evergreen' },
     { href: '/til/', label: 'TIL' },
-    { href: '/bookshelf/', label: 'Bookshelf' },
+    { href: '/shelf/', label: 'Shelf' },
     { href: '/stories/', label: 'Stories' },
     { href: '/poems/', label: 'Poems' },
   ],
@@ -59,9 +59,13 @@ const getActiveMainSection = () => {
       currentPage.startsWith('/feeds/')) return 'about';
   
   // Check for individual post categories that belong to garden
-  if (currentPage.startsWith('/evergreen/') || 
-      currentPage.startsWith('/til/') || 
-      currentPage.startsWith('/bookshelf/') || 
+  if (currentPage.startsWith('/evergreen/') ||
+      currentPage.startsWith('/til/') ||
+      currentPage.startsWith('/bookshelf/') ||
+      currentPage.startsWith('/shelf/') ||
+      currentPage.startsWith('/filmshelf/') ||
+      currentPage.startsWith('/tvshelf/') ||
+      currentPage.startsWith('/gameshelf/') ||
       currentPage.startsWith('/stories/') ||
       currentPage.startsWith('/poems/')) return 'garden';
   
@@ -117,7 +121,11 @@ const getActiveSubsection = () => {
   // Check for garden subsections
   if (currentPage.startsWith('/evergreen/')) return '/evergreen/';
   if (currentPage.startsWith('/til/')) return '/til/';
-  if (currentPage.startsWith('/bookshelf/')) return '/bookshelf/';
+  if (currentPage.startsWith('/shelf/') ||
+      currentPage.startsWith('/bookshelf/') ||
+      currentPage.startsWith('/filmshelf/') ||
+      currentPage.startsWith('/tvshelf/') ||
+      currentPage.startsWith('/gameshelf/')) return '/shelf/';
   if (currentPage.startsWith('/stories/')) return '/stories/';
   if (currentPage.startsWith('/poems/')) return '/poems/';
 

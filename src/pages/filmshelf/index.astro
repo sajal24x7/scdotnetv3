@@ -1,0 +1,181 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionLanding from '../../layouts/SectionLanding.astro';
+import FilmCard from '../../components/shelf/FilmCard.astro';
+import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
+import { getAllPosts } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
+import { computeWatchNumbers, slugify } from '../../utils/shelfUtils';
+
+const allPosts = await getAllPosts();
+const filmPosts = allPosts.filter((post) => post.data.category === 'filmshelf');
+
+const parseDate = (value?: Date | string | null): Date | null => {
+    if (!value) return null;
+    const d = value instanceof Date ? value : new Date(value);
+    return Number.isNaN(d.getTime()) ? null : d;
+};
+
+const getFilmYear = (post: typeof filmPosts[number]): number => {
+    const watched = parseDate(post.data.watchedDate);
+    if (watched) return watched.getFullYear();
+    const pub = parseDate(post.data.pubDate);
+    return (pub ?? new Date()).getFullYear();
+};
+
+// Sort: year desc, then watched desc, then to-watch last
+const compareDesc = (a?: Date | string | null, b?: Date | string | null) => {
+    const toTime = (v?: Date | string | null) => {
+        if (!v) return 0;
+        const d = v instanceof Date ? v : new Date(v);
+        return Number.isNaN(d.getTime()) ? 0 : d.getTime();
+    };
+    return toTime(b) - toTime(a);
+};
+
+const statusOrder: Record<string, number> = {
+    watching: 0,
+    watched: 1,
+    'to-watch': 2,
+    other: 3
+};
+
+const filmsWithYear = filmPosts.map((post) => ({
+    post,
+    year: getFilmYear(post)
+}));
+
+const sortedFilms = [...filmsWithYear].sort((a, b) => {
+    if (a.year !== b.year) return b.year - a.year;
+    const statusA = a.post.data.filmStatus ?? 'other';
+    const statusB = b.post.data.filmStatus ?? 'other';
+    if (statusA !== statusB) {
+        return (statusOrder[statusA] ?? statusOrder.other) - (statusOrder[statusB] ?? statusOrder.other);
+    }
+    return compareDesc(a.post.data.watchedDate ?? a.post.data.pubDate, b.post.data.watchedDate ?? b.post.data.pubDate);
+});
+
+const years = Array.from(new Set(sortedFilms.map((e) => e.year)));
+
+const filmsByYear = sortedFilms.reduce((acc, { year, post }) => {
+    if (!acc[year]) acc[year] = [];
+    acc[year].push(post);
+    return acc;
+}, {} as Record<number, typeof filmPosts>);
+
+// Compute rewatch numbers across all film posts
+const allFilmEntries = sortedFilms.map((e) => ({
+    title: e.post.data.title ?? '',
+    date: e.post.data.watchedDate ?? e.post.data.pubDate
+}));
+const watchNumbers = computeWatchNumbers(allFilmEntries);
+// Map from post slug to watch number
+const watchNumberMap = new Map<string, number>();
+sortedFilms.forEach((entry, i) => {
+    watchNumberMap.set(entry.post.slug, watchNumbers.get(i) ?? 1);
+});
+
+// Count watched films for the header
+const watchedFilms = filmPosts.filter((p) => p.data.filmStatus === 'watched');
+const totalFilms = watchedFilms.length;
+const countText = `${totalFilms} ${totalFilms === 1 ? 'film' : 'films'} watched`;
+
+const sectionLandingProps = createSectionLandingProps({
+    title: 'Film Shelf',
+    description: "Films I've watched, am watching, or want to watch—organized by year.",
+    countText,
+    countVariant: 'plain',
+    countClass: 'bookshelf-count',
+    tagCategory: 'filmshelf',
+    tagPosts: allPosts,
+    contentClass: 'bookshelf-content'
+});
+---
+
+<Layout
+  title="Film Shelf"
+  description="Films I've watched and want to watch"
+  currentPage="/filmshelf/"
+  pageWrapper={{
+    maxWidth: '7xl',
+    padding: 'none',
+    centered: true,
+    grid: { gap: 'loose', padding: 'narrow' }
+  }}
+  allPosts={allPosts}
+  enableSearchModal
+  enableLinkHoverEffect
+>
+  <SectionLanding {...sectionLandingProps}>
+    <ShelfTabNav currentTab="film" />
+    <div class="bookshelf-years">
+      {years.map((year) => {
+        const yearFilms = filmsByYear[year] ?? [];
+        const watchedYearFilms = yearFilms.filter((p) => p.data.filmStatus === 'watched');
+        const filmCount = watchedYearFilms.length;
+        const filmLabel = filmCount === 1 ? 'film' : 'films';
+
+        return (
+          <section class="bookshelf-year" id={`filmshelf-${year}`} data-year={year}>
+            <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
+              <div class="bookshelf-year__sidebar grid-span-2">
+                <div class="bookshelf-year__sticky">
+                  <span class="bookshelf-year__year">{year}</span>
+                  <span class="bookshelf-year__count" data-year-count={year}>Watched {filmCount} {filmLabel}</span>
+                </div>
+              </div>
+              {yearFilms.map((post, index) => {
+                const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
+                const watchNumber = watchNumberMap.get(post.slug) ?? 1;
+                return (
+                  <div
+                    key={post.slug}
+                    class={`bookshelf-year__book ${gridClasses}`}
+                    data-book-item
+                    data-genre={post.data.genre ?? ''}
+                    data-status={post.data.filmStatus ?? ''}
+                    data-rating={post.data.filmRating ?? ''}
+                  >
+                    <FilmCard
+                      title={post.data.title ?? ''}
+                      director={post.data.director}
+                      year={post.data.year as number | undefined}
+                      genre={post.data.genre}
+                      filmStatus={post.data.filmStatus}
+                      filmRating={post.data.filmRating}
+                      watchedDate={post.data.watchedDate}
+                      filmCover={post.data.filmCover}
+                      link={post.slug ? `/filmshelf/${post.slug}/` : undefined}
+                      watchNumber={watchNumber}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  </SectionLanding>
+</Layout>
+
+<style>
+  .bookshelf-count { font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; }
+  :global(.dark) .bookshelf-count { color: #9ca3af; }
+  .bookshelf-content { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3rem); padding-bottom: 2rem; }
+  .bookshelf-years { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3.5rem); }
+  .bookshelf-year[data-filtered="hidden"] { display: none; }
+  .bookshelf-year__book[data-filtered="hidden"] { display: none; }
+  .bookshelf-year__grid { align-items: flex-start; }
+  .bookshelf-year__sidebar { display: flex; }
+  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / -1; } }
+  .bookshelf-year__sticky { position: sticky; top: clamp(4rem, 6vw, 5.5rem); display: flex; flex-direction: column; gap: 0.35rem; }
+  .bookshelf-year__year { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: #111827; }
+  :global(.dark) .bookshelf-year__year { color: #f9fafb; }
+  .bookshelf-year__count { font-size: 0.95rem; font-weight: 500; color: #6b7280; }
+  :global(.dark) .bookshelf-year__count { color: #9ca3af; }
+  .bookshelf-year__book { display: flex; }
+  .bookshelf-year__book :global(.book-card) { width: 100%; }
+  @media (max-width: 47.999rem) { .bookshelf-year__sticky { position: static; } }
+  @media (min-width: 64rem) { .bookshelf-year__year { font-size: clamp(2.25rem, 4vw, 3.5rem); } }
+</style>
