@@ -80,9 +80,10 @@ const playedGames = gamePosts.filter((p) => p.data.gameStatus === 'played');
 const totalGames = playedGames.length;
 const countText = `${totalGames} ${totalGames === 1 ? 'game' : 'games'} played`;
 
+const gameDescription = "Games I've played, am playing, or want to play—organized by year.";
+
 const sectionLandingProps = createSectionLandingProps({
     title: 'Game Shelf',
-    description: "Games I've played, am playing, or want to play—organized by year.",
     countText,
     countVariant: 'plain',
     countClass: 'bookshelf-count',
@@ -107,7 +108,10 @@ const sectionLandingProps = createSectionLandingProps({
   enableLinkHoverEffect
 >
   <SectionLanding {...sectionLandingProps}>
-    <ShelfTabNav currentTab="games" />
+    <div slot="afterHeader" class="shelf-header-block">
+      <ShelfTabNav currentTab="games" />
+      <p class="shelf-description">{gameDescription}</p>
+    </div>
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearGames = gamesByYear[year] ?? [];

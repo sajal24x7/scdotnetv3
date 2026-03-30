@@ -78,6 +78,7 @@ const countAlignmentClass = alignmentClasses[countAlignment] ?? alignmentClasses
 const hasTagListSlot = Astro.slots.has('tagList');
 const hasBeforeContentSlot = Astro.slots.has('beforeContent');
 const hasAfterCountSlot = Astro.slots.has('afterCount');
+const hasAfterHeaderSlot = Astro.slots.has('afterHeader');
 const hasCountSlot = Astro.slots.has('count');
 const hasSidebarSlot = Astro.slots.has('sidebar');
 
@@ -143,12 +144,18 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
         <div class="section-header grid-span-full">
             <PageHeader
                 title={title}
-                description={description}
+                description={hasAfterHeaderSlot ? undefined : description}
                 layout={layout}
                 size={resolvedHeaderSize}
                 maxWidth={resolvedHeaderMaxWidth}
             />
         </div>
+
+        {hasAfterHeaderSlot && (
+            <div class="section-after-header grid-span-full">
+                <slot name="afterHeader" />
+            </div>
+        )}
 
         {shouldRenderCount && (
             <div class={`section-count grid-span-full ${countVariantClass} ${countAlignmentClass} ${countClass}`.trim()}>
@@ -229,6 +236,30 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
         --grid-row-gap: 0;
         padding-inline: var(--section-grid-padding);
         max-width: var(--section-grid-max-width, 71.25rem);
+    }
+
+    .section-after-header {
+        margin-top: 0.25rem;
+    }
+
+    :global(.shelf-header-block) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    :global(.shelf-description) {
+        font-size: clamp(0.95rem, 2vw, 1.05rem);
+        color: rgb(71 85 105);
+        text-align: center;
+        max-width: 48rem;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    :global(.dark) :global(.shelf-description) {
+        color: rgb(var(--color-text-secondary));
     }
 
     .section-count {

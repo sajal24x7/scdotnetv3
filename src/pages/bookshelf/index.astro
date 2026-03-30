@@ -171,9 +171,10 @@ const finishedBooks = bookshelfPosts.filter((post) => {
 const totalBooks = finishedBooks.length;
 const countText = `${totalBooks} ${totalBooks === 1 ? 'book' : 'books'}`;
 
+const bookshelfDescription = "Books I'm reading, have finished, or have on deck—organized by year with inline status cues.";
+
 const sectionLandingProps = createSectionLandingProps({
     title: 'Bookshelf',
-    description: "Books I'm reading, have finished, or have on deck—organized by year with inline status cues.",
     countText,
     countVariant: 'plain',
     countClass: 'bookshelf-count',
@@ -201,7 +202,10 @@ const sectionLandingProps = createSectionLandingProps({
   enableLinkHoverEffect
 >
   <SectionLanding {...sectionLandingProps}>
-    <ShelfTabNav currentTab="books" />
+    <div slot="afterHeader" class="shelf-header-block">
+      <ShelfTabNav currentTab="books" />
+      <p class="shelf-description">{bookshelfDescription}</p>
+    </div>
     <div class="bookshelf-filters__results" id="filter-results" aria-live="polite" aria-atomic="true" hidden>
       <div class="bookshelf-filters__summary" id="filter-summary"></div>
       <div class="bookshelf-filters__active" id="active-filters"></div>

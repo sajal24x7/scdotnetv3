@@ -134,12 +134,13 @@ const countText = `${totalItems} ${totalItems === 1 ? 'item' : 'items'} finished
 
 const sectionLandingProps = createSectionLandingProps({
     title: 'Shelf',
-    description: "Everything I've read, watched, and played—books, films, TV, and games—in one place.",
     countText,
     countVariant: 'plain',
     countClass: 'bookshelf-count',
     contentClass: 'bookshelf-content'
 });
+
+const shelfDescription = "Everything I've read, watched, and played—books, films, TV, and games—in one place.";
 
 const normalizeBookStatus = (status?: string | null) => {
     switch (status) {
@@ -171,7 +172,10 @@ const normalizeBookStatus = (status?: string | null) => {
   enableLinkHoverEffect
 >
   <SectionLanding {...sectionLandingProps}>
-    <ShelfTabNav currentTab="all" />
+    <div slot="afterHeader" class="shelf-header-block">
+      <ShelfTabNav currentTab="all" />
+      <p class="shelf-description">{shelfDescription}</p>
+    </div>
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearEntries = entriesByYear[year] ?? [];

@@ -112,9 +112,10 @@ const watchedShows = shows.filter((s) => s.tvStatus === 'watched');
 const totalShows = watchedShows.length;
 const countText = `${totalShows} ${totalShows === 1 ? 'show' : 'shows'} watched`;
 
+const tvDescription = "TV shows I've watched, am watching, or want to watch—organized by year.";
+
 const sectionLandingProps = createSectionLandingProps({
     title: 'TV Shelf',
-    description: "TV shows I've watched, am watching, or want to watch—organized by year.",
     countText,
     countVariant: 'plain',
     countClass: 'bookshelf-count',
@@ -139,7 +140,10 @@ const sectionLandingProps = createSectionLandingProps({
   enableLinkHoverEffect
 >
   <SectionLanding {...sectionLandingProps}>
-    <ShelfTabNav currentTab="tv" />
+    <div slot="afterHeader" class="shelf-header-block">
+      <ShelfTabNav currentTab="tv" />
+      <p class="shelf-description">{tvDescription}</p>
+    </div>
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearShows = showsByYear[year] ?? [];

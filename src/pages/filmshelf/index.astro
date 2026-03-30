@@ -80,9 +80,10 @@ const watchedFilms = filmPosts.filter((p) => p.data.filmStatus === 'watched');
 const totalFilms = watchedFilms.length;
 const countText = `${totalFilms} ${totalFilms === 1 ? 'film' : 'films'} watched`;
 
+const filmDescription = "Films I've watched, am watching, or want to watch—organized by year.";
+
 const sectionLandingProps = createSectionLandingProps({
     title: 'Film Shelf',
-    description: "Films I've watched, am watching, or want to watch—organized by year.",
     countText,
     countVariant: 'plain',
     countClass: 'bookshelf-count',
@@ -107,7 +108,10 @@ const sectionLandingProps = createSectionLandingProps({
   enableLinkHoverEffect
 >
   <SectionLanding {...sectionLandingProps}>
-    <ShelfTabNav currentTab="film" />
+    <div slot="afterHeader" class="shelf-header-block">
+      <ShelfTabNav currentTab="film" />
+      <p class="shelf-description">{filmDescription}</p>
+    </div>
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearFilms = filmsByYear[year] ?? [];
