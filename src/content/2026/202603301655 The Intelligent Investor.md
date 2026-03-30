@@ -16,5 +16,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116318474834535356'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mibsydqt3o2s'
   - 'https://www.threads.com/@sajal24x7/post/DWgtaR2ESU_'
+bookCover: the-intelligent-investor.jpg
 ---
 Started reading.
