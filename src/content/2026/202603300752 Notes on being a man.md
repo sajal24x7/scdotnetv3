@@ -17,6 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116316341289785443'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3miauo4px2n25'
   - 'https://www.threads.com/@sajal24x7/post/DWfvURiFTx5'
+bookCover: notes-on-being-a-man.jpg
 ---
 Started reading.
 
