@@ -1,13 +1,16 @@
 ---
-title: "Get a MacBook Air"
-slug: "get-a-macbook-air"
-pubDate: 2026-03-30T16:46:05+03:00
-updatedDate: 2026-03-30T16:46:05+03:00
+title: Get a MacBook Air
+slug: get-a-macbook-air
+pubDate: 2026-03-30T13:46:05.000Z
+updatedDate: 2026-03-30T13:46:05.000Z
 category: micro
 tags:
   - apple
   - mac
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116318474193538776'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mibsy32m3t2q'
+  - 'https://www.threads.com/@sajal24x7/post/DWgtZMXkdkJ'
 ---
 [For $200 more, you can get a MacBook Air by Joanna Stern](https://www.theverge.com/tech/901698/macbook-air-history)
 
