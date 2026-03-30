@@ -1,0 +1,428 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
+import { Image } from 'astro:assets';
+import { getAllPosts } from '../../utils/content';
+import { slugify } from '../../utils/shelfUtils';
+import { getTVCoverImage } from '../../utils/tvCovers';
+import {
+    bookRatingDisplay,
+    heartIconPaths,
+    thumbIconPaths,
+    type BookRating,
+    type RatingIconSpec
+} from '../../utils/bookRatings';
+
+export async function getStaticPaths() {
+    const { getAllPosts } = await import('../../utils/content');
+    const { slugify } = await import('../../utils/shelfUtils');
+    const allPosts = await getAllPosts();
+    const tvPosts = allPosts.filter((p) => p.data.category === 'tvshelf');
+
+    // Group by show
+    const showMap = new Map<string, typeof tvPosts>();
+    for (const post of tvPosts) {
+        const key = post.data.showTitle ?? post.data.title ?? 'Unknown';
+        if (!showMap.has(key)) showMap.set(key, []);
+        showMap.get(key)!.push(post);
+    }
+
+    return Array.from(showMap.entries()).map(([showTitle, seasons]) => ({
+        params: { show: slugify(showTitle) },
+        props: { showTitle, seasons }
+    }));
+}
+
+interface Props {
+    showTitle: string;
+    seasons: Awaited<ReturnType<typeof getAllPosts>>;
+}
+
+const { showTitle, seasons } = Astro.props;
+
+// Sort seasons by season number ascending
+const sortedSeasons = [...seasons].sort((a, b) => {
+    return (a.data.season ?? 1) - (b.data.season ?? 1);
+});
+
+// Overall show info from the most recent season
+const latestSeason = [...seasons].sort((a, b) => (b.data.season ?? 1) - (a.data.season ?? 1))[0];
+
+const parseDate = (value?: Date | string | null): Date | null => {
+    if (!value) return null;
+    const d = value instanceof Date ? value : new Date(value);
+    return Number.isNaN(d.getTime()) ? null : d;
+};
+
+const formatYMD = (value?: Date | string | null): string | null => {
+    const d = parseDate(value);
+    return d ? d.toISOString().slice(0, 10) : null;
+};
+
+const allPosts = await getAllPosts();
+
+const statusLabelMap: Record<string, string> = {
+    watching: 'Watching',
+    watched: 'Watched',
+    'to-watch': 'To Watch',
+    'on-hold': 'On Hold',
+    abandoned: 'Abandoned'
+};
+
+const statusChipClassMap: Record<string, string> = {
+    watching: 'chip--status-watching',
+    watched: 'chip--status-watched',
+    'to-watch': 'chip--status-to-watch',
+    'on-hold': 'chip--status-on-hold',
+    abandoned: 'chip--status-abandoned'
+};
+---
+
+<Layout
+  title={`${showTitle} — TV Shelf`}
+  description={`All seasons of ${showTitle}`}
+  currentPage="/tvshelf/"
+  pageWrapper={{
+    maxWidth: '4xl',
+    padding: 'none',
+    centered: true,
+    grid: { gap: 'loose', padding: 'narrow' }
+  }}
+  allPosts={allPosts}
+  enableSearchModal
+  enableLinkHoverEffect
+>
+  <div class="tv-show-page">
+    <ShelfTabNav currentTab="tv" />
+
+    <header class="tv-show-page__header">
+      <div class="tv-show-page__cover-area">
+        {latestSeason.data.tvCover ? (() => {
+          const img = getTVCoverImage(latestSeason.data.tvCover);
+          return img ? (
+            <Image
+              src={img}
+              alt={`Poster for ${showTitle}`}
+              width={180}
+              height={270}
+              class="tv-show-page__cover"
+              loading="eager"
+            />
+          ) : null;
+        })() : (
+          <div class="tv-show-page__cover-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+              <polyline points="17 2 12 7 7 2"></polyline>
+            </svg>
+          </div>
+        )}
+      </div>
+      <div class="tv-show-page__info">
+        <h1 class="tv-show-page__title">{showTitle}</h1>
+        {latestSeason.data.creator && (
+          <p class="tv-show-page__creator">{latestSeason.data.creator}</p>
+        )}
+        <div class="tv-show-page__meta">
+          {latestSeason.data.year && (
+            <span class="tv-chip tv-chip--year">{latestSeason.data.year as number}</span>
+          )}
+          {latestSeason.data.genre && (
+            <span class="tv-chip tv-chip--genre">{latestSeason.data.genre.toUpperCase()}</span>
+          )}
+          <span class="tv-chip tv-chip--seasons">
+            {sortedSeasons.length} {sortedSeasons.length === 1 ? 'season' : 'seasons'}
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <section class="tv-show-page__seasons">
+      <h2 class="tv-show-page__seasons-title">Seasons</h2>
+      <div class="tv-show-page__seasons-list">
+        {sortedSeasons.map((season) => {
+          const seasonNum = season.data.season ?? 1;
+          const status = season.data.tvStatus;
+          const statusLabel = status ? statusLabelMap[status] : null;
+          const statusChipClass = status ? statusChipClassMap[status] : '';
+          const ratingDisplay = season.data.tvRating ? bookRatingDisplay[season.data.tvRating as BookRating] : null;
+          const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
+          const watchedDate = formatYMD(season.data.pubDate);
+          const coverImage = season.data.tvCover ? getTVCoverImage(season.data.tvCover) : null;
+
+          return (
+            <div class="tv-season-card">
+              {coverImage && (
+                <div class="tv-season-card__cover-wrap">
+                  <Image
+                    src={coverImage}
+                    alt={`Season ${seasonNum} poster`}
+                    width={80}
+                    height={120}
+                    class="tv-season-card__cover"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <div class="tv-season-card__body">
+                <div class="tv-season-card__heading">
+                  <span class="tv-season-card__label">Season {seasonNum}</span>
+                  {season.data.title && season.data.title !== showTitle && (
+                    <span class="tv-season-card__subtitle"> — {season.data.title}</span>
+                  )}
+                </div>
+                <div class="tv-season-card__chips">
+                  {statusLabel && status && status !== 'watched' && (
+                    <span class={`tv-chip ${statusChipClass}`}>{statusLabel}</span>
+                  )}
+                  {ratingDisplay && (
+                    <span class={`tv-chip tv-chip--rating tv-chip--rating-${season.data.tvRating}`}>
+                      <span>{ratingDisplay.label}</span>
+                      {ratingIconSpecs.length > 0 && (
+                        <span class="tv-chip__icons" aria-hidden="true">
+                          {ratingIconSpecs.map((spec) => (
+                            <svg width={spec.size} height={spec.size} viewBox="0 0 24 24" fill="currentColor">
+                              {(spec.type === 'heart' ? heartIconPaths : thumbIconPaths[spec.direction]).map((d) => (
+                                <path d={d}></path>
+                              ))}
+                            </svg>
+                          ))}
+                        </span>
+                      )}
+                    </span>
+                  )}
+                  {watchedDate && status === 'watched' && (
+                    <span class="tv-chip tv-chip--date">Watched {watchedDate}</span>
+                  )}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <div class="tv-show-page__back">
+      <a href="/tvshelf/" class="tv-show-page__back-link">← Back to TV Shelf</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .tv-show-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 0 3rem;
+  }
+
+  .tv-show-page__header {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .tv-show-page__cover-area {
+    flex-shrink: 0;
+  }
+
+  .tv-show-page__cover {
+    width: 7.5rem;
+    height: auto;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  }
+
+  .tv-show-page__cover-placeholder {
+    width: 7.5rem;
+    aspect-ratio: 2/3;
+    border-radius: 0.5rem;
+    background: rgba(15,23,42,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(15,23,42,0.35);
+  }
+
+  :global(.dark) .tv-show-page__cover-placeholder {
+    background: rgba(148,163,184,0.18);
+    color: rgba(226,232,240,0.45);
+  }
+
+  .tv-show-page__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tv-show-page__title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    margin: 0;
+    color: #111827;
+    line-height: 1.2;
+  }
+
+  :global(.dark) .tv-show-page__title { color: #f9fafb; }
+
+  .tv-show-page__creator {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+    margin: 0;
+  }
+
+  :global(.dark) .tv-show-page__creator { color: #d1d5db; }
+
+  .tv-show-page__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+
+  .tv-show-page__seasons-title {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b7280;
+    margin: 0 0 1rem;
+  }
+
+  :global(.dark) .tv-show-page__seasons-title { color: #9ca3af; }
+
+  .tv-show-page__seasons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .tv-season-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(0,0,0,0.02);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 0.75rem;
+    align-items: center;
+  }
+
+  :global(.dark) .tv-season-card {
+    background: rgba(255,255,255,0.03);
+    border-color: rgba(255,255,255,0.08);
+  }
+
+  .tv-season-card__cover-wrap {
+    flex-shrink: 0;
+  }
+
+  .tv-season-card__cover {
+    width: 3.5rem;
+    height: auto;
+    border-radius: 0.35rem;
+    object-fit: cover;
+  }
+
+  .tv-season-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .tv-season-card__heading {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  :global(.dark) .tv-season-card__heading { color: #f9fafb; }
+
+  .tv-season-card__label {
+    font-weight: 700;
+  }
+
+  .tv-season-card__subtitle {
+    font-weight: 400;
+    color: #6b7280;
+  }
+
+  :global(.dark) .tv-season-card__subtitle { color: #9ca3af; }
+
+  .tv-season-card__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  /* Chips */
+  .tv-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background: #e5e7eb;
+    color: #111827;
+  }
+
+  :global(.dark) .tv-chip { background: #374151; color: #e5e7eb; }
+
+  .tv-chip__icons {
+    display: inline-flex;
+    gap: 0.15rem;
+  }
+
+  .tv-chip--genre { background: #dbeafe; color: #1e40af; }
+  :global(.dark) .tv-chip--genre { background: rgba(30,64,175,0.3); color: #bfdbfe; }
+
+  .tv-chip--seasons { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: 0.7rem; letter-spacing: 0.03em; }
+  :global(.dark) .tv-chip--seasons { background: #1f2937; color: #e5e7eb; }
+
+  .tv-chip--year { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: 0.7rem; letter-spacing: 0.03em; }
+  :global(.dark) .tv-chip--year { background: #1f2937; color: #e5e7eb; }
+
+  .chip--status-watching { background: #ede9fe; color: #5b21b6; }
+  :global(.dark) .chip--status-watching { background: rgba(91,33,182,0.3); color: #ede9fe; }
+
+  .chip--status-to-watch { background: #dbeafe; color: #1d4ed8; }
+  :global(.dark) .chip--status-to-watch { background: rgba(29,78,216,0.3); color: #bfdbfe; }
+
+  .chip--status-on-hold { background: #fef3c7; color: #b45309; }
+  :global(.dark) .chip--status-on-hold { background: rgba(180,83,9,0.3); color: #fde68a; }
+
+  .chip--status-abandoned { background: #fee2e2; color: #b91c1c; }
+  :global(.dark) .chip--status-abandoned { background: rgba(185,28,28,0.3); color: #fecaca; }
+
+  .tv-chip--rating-like { background: #dcfce7; color: #166534; }
+  :global(.dark) .tv-chip--rating-like { background: rgba(22,101,52,0.35); color: #bbf7d0; }
+
+  .tv-chip--rating-love { background: #fce7f3; color: #be185d; }
+  :global(.dark) .tv-chip--rating-love { background: rgba(190,24,93,0.3); color: #fbcfe8; }
+
+  .tv-chip--rating-nope { background: #fee2e2; color: #b91c1c; }
+  :global(.dark) .tv-chip--rating-nope { background: rgba(185,28,28,0.3); color: #fecaca; }
+
+  .tv-chip--date { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: 0.7rem; letter-spacing: 0.03em; }
+  :global(.dark) .tv-chip--date { background: #1f2937; color: #e5e7eb; }
+
+  .tv-show-page__back {
+    margin-top: 1rem;
+  }
+
+  .tv-show-page__back-link {
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .tv-show-page__back-link:hover { color: #4f46e5; }
+  :global(.dark) .tv-show-page__back-link { color: #9ca3af; }
+  :global(.dark) .tv-show-page__back-link:hover { color: #818cf8; }
+</style>

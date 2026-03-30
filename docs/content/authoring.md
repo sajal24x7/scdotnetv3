@@ -22,6 +22,9 @@ Follow this guide when adding or updating Markdown/MDX entries under `src/conten
 | `image` | Optional | Path or URL for hero/cover art. Required for some grid layouts. |
 | `syndicationUrls` | Optional | Managed by the syndication workflow; manual entries should list canonical cross-post URLs.【F:src/content/config.ts†L31-L55】 |
 | Book-specific fields | Optional | `author`, `series`, `bookStatus`, `startedReading`, `finishedReading`, `bookRating`, `bookCover` drive bookshelf components.【F:src/content/config.ts†L23-L55】 |
+| Film-specific fields | Optional | `director`, `year`, `watchedDate`, `filmStatus`, `filmRating`, `filmCover` for `filmshelf` entries. |
+| TV-specific fields | Optional | `showTitle`, `season`, `creator`, `year`, `tvStatus`, `tvRating`, `tvCover` for `tvshelf` entries. `showTitle` is the grouping key for multi-season shows. |
+| Game-specific fields | Optional | `developer`, `year`, `platform`, `gameStatus`, `gameRating`, `gameCover` for `gameshelf` entries. |
 
 Nordletter issues (`src/content/nordletter`) and notes use their own schemas but follow similar conventions for title, description, and dates.【F:src/content/config.ts†L57-L90】
 

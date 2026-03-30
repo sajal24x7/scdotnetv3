@@ -1,0 +1,86 @@
+---
+interface Props {
+    currentTab: 'all' | 'books' | 'film' | 'tv' | 'games';
+}
+
+const { currentTab } = Astro.props;
+
+const tabs = [
+    { key: 'books', label: 'Books', href: '/bookshelf/' },
+    { key: 'film', label: 'Film', href: '/filmshelf/' },
+    { key: 'tv', label: 'TV', href: '/tvshelf/' },
+    { key: 'games', label: 'Games', href: '/gameshelf/' },
+] as const;
+---
+
+<div class="shelf-tab-nav">
+    <h1 class="shelf-tab-nav__text">
+        {tabs.map((tab, i) => (
+            <>
+                {i > 0 && <span class="shelf-tab-nav__separator">/</span>}
+                {tab.key === currentTab ? (
+                    <span class="shelf-tab-nav__active">{tab.label}</span>
+                ) : (
+                    <a href={tab.href} class="shelf-tab-nav__inactive">{tab.label}</a>
+                )}
+            </>
+        ))}
+    </h1>
+</div>
+
+<style>
+    .shelf-tab-nav {
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .shelf-tab-nav__text {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .shelf-tab-nav__active {
+        color: rgb(30 41 59);
+    }
+
+    :global(.dark) .shelf-tab-nav__active {
+        color: rgb(var(--color-text-primary));
+    }
+
+    .shelf-tab-nav__separator {
+        color: rgb(148 163 184);
+        font-weight: 400;
+    }
+
+    :global(.dark) .shelf-tab-nav__separator {
+        color: rgb(var(--color-text-secondary));
+        opacity: 0.6;
+    }
+
+    .shelf-tab-nav__inactive {
+        color: rgb(148 163 184);
+        text-decoration: none;
+        transition: color 200ms ease;
+    }
+
+    :global(.dark) .shelf-tab-nav__inactive {
+        color: rgb(var(--color-text-secondary));
+        opacity: 0.7;
+    }
+
+    .shelf-tab-nav__inactive:hover {
+        color: rgb(79 70 229);
+    }
+
+    :global(.dark) .shelf-tab-nav__inactive:hover {
+        color: rgb(129 140 248);
+    }
+</style>

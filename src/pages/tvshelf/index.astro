@@ -1,0 +1,218 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionLanding from '../../layouts/SectionLanding.astro';
+import TVCard from '../../components/shelf/TVCard.astro';
+import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
+import { getAllPosts } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
+import { slugify } from '../../utils/shelfUtils';
+
+const allPosts = await getAllPosts();
+const tvPosts = allPosts.filter((post) => post.data.category === 'tvshelf');
+
+const parseDate = (value?: Date | string | null): Date | null => {
+    if (!value) return null;
+    const d = value instanceof Date ? value : new Date(value);
+    return Number.isNaN(d.getTime()) ? null : d;
+};
+
+// Group season entries by show (using showTitle, fallback to title)
+const showMap = new Map<string, typeof tvPosts>();
+for (const post of tvPosts) {
+    const showKey = post.data.showTitle ?? post.data.title ?? 'Unknown';
+    if (!showMap.has(showKey)) showMap.set(showKey, []);
+    showMap.get(showKey)!.push(post);
+}
+
+// For each show, pick the representative entry (highest season number, or latest by date)
+// and compute aggregate info
+interface ShowEntry {
+    showTitle: string;
+    showSlug: string;
+    representative: typeof tvPosts[number];
+    seasonCount: number;
+    latestSeason: number | undefined;
+    year: number;
+    tvStatus: string | undefined;
+}
+
+const shows: ShowEntry[] = [];
+
+for (const [showTitle, seasons] of showMap.entries()) {
+    // Sort seasons by season number desc, then by date desc
+    const sortedSeasons = [...seasons].sort((a, b) => {
+        const sA = a.data.season ?? 0;
+        const sB = b.data.season ?? 0;
+        if (sA !== sB) return sB - sA;
+        const dA = parseDate(a.data.pubDate)?.getTime() ?? 0;
+        const dB = parseDate(b.data.pubDate)?.getTime() ?? 0;
+        return dB - dA;
+    });
+
+    const representative = sortedSeasons[0];
+    const seasonNumbers = seasons.map((s) => s.data.season ?? 1);
+    const latestSeason = Math.max(...seasonNumbers);
+
+    // Year: from pubDate or earliest season
+    const dates = seasons.map((s) => parseDate(s.data.pubDate)).filter(Boolean) as Date[];
+    dates.sort((a, b) => a.getTime() - b.getTime());
+    const year = (dates[0] ?? new Date()).getFullYear();
+
+    // Status: prioritize 'watching' > 'to-watch' > 'on-hold' > 'abandoned' > 'watched'
+    const statusPriority: Record<string, number> = {
+        watching: 0,
+        'to-watch': 1,
+        'on-hold': 2,
+        abandoned: 3,
+        watched: 4
+    };
+    const tvStatus = seasons
+        .map((s) => s.data.tvStatus)
+        .filter(Boolean)
+        .sort((a, b) => (statusPriority[a!] ?? 5) - (statusPriority[b!] ?? 5))[0];
+
+    shows.push({
+        showTitle,
+        showSlug: slugify(showTitle),
+        representative,
+        seasonCount: seasons.length,
+        latestSeason: seasonNumbers.length > 0 ? latestSeason : undefined,
+        year,
+        tvStatus
+    });
+}
+
+// Sort shows by year desc, then by status
+const statusOrder: Record<string, number> = {
+    watching: 0,
+    watched: 1,
+    'to-watch': 2,
+    'on-hold': 3,
+    abandoned: 4,
+    other: 5
+};
+
+shows.sort((a, b) => {
+    if (a.year !== b.year) return b.year - a.year;
+    const sA = statusOrder[a.tvStatus ?? 'other'] ?? statusOrder.other;
+    const sB = statusOrder[b.tvStatus ?? 'other'] ?? statusOrder.other;
+    return sA - sB;
+});
+
+const years = Array.from(new Set(shows.map((s) => s.year)));
+
+const showsByYear = shows.reduce((acc, show) => {
+    if (!acc[show.year]) acc[show.year] = [];
+    acc[show.year].push(show);
+    return acc;
+}, {} as Record<number, ShowEntry[]>);
+
+// Count watched shows
+const watchedShows = shows.filter((s) => s.tvStatus === 'watched');
+const totalShows = watchedShows.length;
+const countText = `${totalShows} ${totalShows === 1 ? 'show' : 'shows'} watched`;
+
+const tvDescription = "TV shows I've watched, am watching, or want to watch—organized by year.";
+
+const sectionLandingProps = createSectionLandingProps({
+    title: 'TV Shelf',
+    countText,
+    countVariant: 'plain',
+    countClass: 'bookshelf-count',
+    tagCategory: 'tvshelf',
+    tagPosts: allPosts,
+    contentClass: 'bookshelf-content',
+    hideTitle: true
+});
+---
+
+<Layout
+  title="TV Shelf"
+  description="TV shows I've watched and want to watch"
+  currentPage="/tvshelf/"
+  pageWrapper={{
+    maxWidth: '7xl',
+    padding: 'none',
+    centered: true,
+    grid: { gap: 'loose', padding: 'narrow' }
+  }}
+  allPosts={allPosts}
+  enableSearchModal
+  enableLinkHoverEffect
+>
+  <SectionLanding {...sectionLandingProps}>
+    <div slot="afterHeader" class="shelf-header-block">
+      <ShelfTabNav currentTab="tv" />
+      <p class="shelf-description">{tvDescription}</p>
+    </div>
+    <div class="bookshelf-years">
+      {years.map((year) => {
+        const yearShows = showsByYear[year] ?? [];
+        const watchedYearShows = yearShows.filter((s) => s.tvStatus === 'watched');
+        const showCount = watchedYearShows.length;
+        const showLabel = showCount === 1 ? 'show' : 'shows';
+
+        return (
+          <section class="bookshelf-year" id={`tvshelf-${year}`} data-year={year}>
+            <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
+              <div class="bookshelf-year__sidebar grid-span-2">
+                <div class="bookshelf-year__sticky">
+                  <span class="bookshelf-year__year">{year}</span>
+                  <span class="bookshelf-year__count" data-year-count={year}>Watched {showCount} {showLabel}</span>
+                </div>
+              </div>
+              {yearShows.map((show, index) => {
+                const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
+                const rep = show.representative;
+                return (
+                  <div
+                    key={show.showSlug}
+                    class={`bookshelf-year__book ${gridClasses}`}
+                    data-book-item
+                    data-genre={rep.data.genre ?? ''}
+                    data-status={show.tvStatus ?? ''}
+                    data-rating={rep.data.tvRating ?? ''}
+                  >
+                    <TVCard
+                      title={show.showTitle}
+                      showSlug={show.showSlug}
+                      creator={rep.data.creator}
+                      year={rep.data.year as number | undefined}
+                      genre={rep.data.genre}
+                      tvStatus={show.tvStatus as any}
+                      tvRating={rep.data.tvRating}
+                      tvCover={rep.data.tvCover}
+                      seasonCount={show.seasonCount}
+                      latestSeason={show.latestSeason}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  </SectionLanding>
+</Layout>
+
+<style>
+  .bookshelf-count { font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; }
+  :global(.dark) .bookshelf-count { color: #9ca3af; }
+  .bookshelf-content { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3rem); padding-bottom: 2rem; }
+  .bookshelf-years { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3.5rem); }
+  .bookshelf-year[data-filtered="hidden"] { display: none; }
+  .bookshelf-year__book[data-filtered="hidden"] { display: none; }
+  .bookshelf-year__grid { align-items: flex-start; }
+  .bookshelf-year__sidebar { display: flex; }
+  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / -1; } }
+  .bookshelf-year__sticky { position: sticky; top: clamp(4rem, 6vw, 5.5rem); display: flex; flex-direction: column; gap: 0.35rem; }
+  .bookshelf-year__year { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: #111827; }
+  :global(.dark) .bookshelf-year__year { color: #f9fafb; }
+  .bookshelf-year__count { font-size: 0.95rem; font-weight: 500; color: #6b7280; }
+  :global(.dark) .bookshelf-year__count { color: #9ca3af; }
+  .bookshelf-year__book { display: flex; }
+  .bookshelf-year__book :global(.book-card) { width: 100%; }
+  @media (max-width: 47.999rem) { .bookshelf-year__sticky { position: static; } }
+  @media (min-width: 64rem) { .bookshelf-year__year { font-size: clamp(2.25rem, 4vw, 3.5rem); } }
+</style>

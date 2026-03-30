@@ -1,0 +1,272 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionLanding from '../../layouts/SectionLanding.astro';
+import BookshelfCard from '../../components/bookshelf/BookshelfCard.astro';
+import FilmCard from '../../components/shelf/FilmCard.astro';
+import TVCard from '../../components/shelf/TVCard.astro';
+import GameCard from '../../components/shelf/GameCard.astro';
+import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
+import { getAllPosts } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
+import { slugify, computeWatchNumbers } from '../../utils/shelfUtils';
+
+const allPosts = await getAllPosts();
+const shelfCategories = new Set(['bookshelf', 'filmshelf', 'tvshelf', 'gameshelf']);
+const shelfPosts = allPosts.filter((post) => shelfCategories.has(post.data.category ?? ''));
+
+const parseDate = (value?: Date | string | null): Date | null => {
+    if (!value) return null;
+    const d = value instanceof Date ? value : new Date(value);
+    return Number.isNaN(d.getTime()) ? null : d;
+};
+
+const getEntryYear = (post: typeof shelfPosts[number]): number => {
+    const cat = post.data.category;
+    if (cat === 'bookshelf') {
+        const finished = parseDate(post.data.finishedReading);
+        if (finished) return finished.getFullYear();
+        const started = parseDate(post.data.startedReading);
+        if (started) return started.getFullYear();
+    }
+    if (cat === 'filmshelf') {
+        const watched = parseDate(post.data.watchedDate);
+        if (watched) return watched.getFullYear();
+    }
+    if (cat === 'tvshelf' || cat === 'gameshelf') {
+        // use pubDate as best proxy
+    }
+    const pub = parseDate(post.data.pubDate);
+    return (pub ?? new Date()).getFullYear();
+};
+
+// For TV: group seasons by show — one representative per show
+const tvShowMap = new Map<string, typeof shelfPosts>();
+for (const post of shelfPosts) {
+    if (post.data.category !== 'tvshelf') continue;
+    const key = post.data.showTitle ?? post.data.title ?? 'Unknown';
+    if (!tvShowMap.has(key)) tvShowMap.set(key, []);
+    tvShowMap.get(key)!.push(post);
+}
+
+// Build a deduplicated list of entries for the combined view
+interface CombinedEntry {
+    type: 'book' | 'film' | 'tv' | 'game';
+    year: number;
+    post?: typeof shelfPosts[number];
+    // TV-specific aggregate data
+    showTitle?: string;
+    showSlug?: string;
+    tvRepresentative?: typeof shelfPosts[number];
+    tvSeasonCount?: number;
+    tvLatestSeason?: number;
+    tvStatus?: string;
+}
+
+const entries: CombinedEntry[] = [];
+
+// Add non-TV posts directly
+for (const post of shelfPosts) {
+    if (post.data.category === 'tvshelf') continue; // handled via showMap
+    entries.push({
+        type: post.data.category === 'bookshelf' ? 'book'
+             : post.data.category === 'filmshelf' ? 'film'
+             : 'game',
+        year: getEntryYear(post),
+        post
+    });
+}
+
+// Add one entry per TV show
+const statusPriority: Record<string, number> = { watching: 0, 'to-watch': 1, 'on-hold': 2, abandoned: 3, watched: 4 };
+for (const [showTitle, seasons] of tvShowMap.entries()) {
+    const sortedSeasons = [...seasons].sort((a, b) => (b.data.season ?? 1) - (a.data.season ?? 1));
+    const representative = sortedSeasons[0];
+    const seasonNumbers = seasons.map((s) => s.data.season ?? 1);
+    const latestSeason = Math.max(...seasonNumbers);
+    const tvStatus = seasons
+        .map((s) => s.data.tvStatus)
+        .filter(Boolean)
+        .sort((a, b) => (statusPriority[a!] ?? 5) - (statusPriority[b!] ?? 5))[0];
+    const pub = parseDate(representative.data.pubDate);
+    const year = (pub ?? new Date()).getFullYear();
+
+    entries.push({
+        type: 'tv',
+        year,
+        showTitle,
+        showSlug: slugify(showTitle),
+        tvRepresentative: representative,
+        tvSeasonCount: seasons.length,
+        tvLatestSeason: seasonNumbers.length > 0 ? latestSeason : undefined,
+        tvStatus
+    });
+}
+
+// Sort: year desc, then by type order (book > film > tv > game) within year
+const typeOrder: Record<string, number> = { book: 0, film: 1, tv: 2, game: 3 };
+entries.sort((a, b) => {
+    if (a.year !== b.year) return b.year - a.year;
+    return (typeOrder[a.type] ?? 4) - (typeOrder[b.type] ?? 4);
+});
+
+const years = Array.from(new Set(entries.map((e) => e.year)));
+
+const entriesByYear = entries.reduce((acc, entry) => {
+    if (!acc[entry.year]) acc[entry.year] = [];
+    acc[entry.year].push(entry);
+    return acc;
+}, {} as Record<number, CombinedEntry[]>);
+
+// Compute rewatch numbers for films and games
+const filmEntries = shelfPosts.filter((p) => p.data.category === 'filmshelf');
+const filmWatchNumbers = computeWatchNumbers(filmEntries.map((p) => ({ title: p.data.title ?? '', date: p.data.watchedDate ?? p.data.pubDate })));
+const filmWatchMap = new Map<string, number>();
+filmEntries.forEach((p, i) => filmWatchMap.set(p.slug, filmWatchNumbers.get(i) ?? 1));
+
+// Count total finished items
+const totalItems =
+    shelfPosts.filter((p) => p.data.bookStatus === 'finished' || p.data.bookStatus === 'read').length +
+    shelfPosts.filter((p) => p.data.filmStatus === 'watched').length +
+    shelfPosts.filter((p) => p.data.gameStatus === 'played').length +
+    Array.from(tvShowMap.values()).filter((seasons) => seasons.some((s) => s.data.tvStatus === 'watched')).length;
+
+const countText = `${totalItems} ${totalItems === 1 ? 'item' : 'items'} finished`;
+
+const sectionLandingProps = createSectionLandingProps({
+    title: 'Shelf',
+    countText,
+    countVariant: 'plain',
+    countClass: 'bookshelf-count',
+    contentClass: 'bookshelf-content',
+    hideTitle: true
+});
+
+const shelfDescription = "Everything I've read, watched, and played—books, films, TV, and games—in one place.";
+
+const normalizeBookStatus = (status?: string | null) => {
+    switch (status) {
+        case 'read':
+        case 'finished':
+            return 'finished';
+        case 'reading':
+        case 'on-hold':
+        case 'to-read':
+            return status;
+        default:
+            return 'finished';
+    }
+};
+---
+
+<Layout
+  title="Shelf"
+  description="Books, films, TV shows, and games I've engaged with"
+  currentPage="/shelf/"
+  pageWrapper={{
+    maxWidth: '7xl',
+    padding: 'none',
+    centered: true,
+    grid: { gap: 'loose', padding: 'narrow' }
+  }}
+  allPosts={allPosts}
+  enableSearchModal
+  enableLinkHoverEffect
+>
+  <SectionLanding {...sectionLandingProps}>
+    <div slot="afterHeader" class="shelf-header-block">
+      <ShelfTabNav currentTab="all" />
+      <p class="shelf-description">{shelfDescription}</p>
+    </div>
+    <div class="bookshelf-years">
+      {years.map((year) => {
+        const yearEntries = entriesByYear[year] ?? [];
+
+        return (
+          <section class="bookshelf-year" id={`shelf-${year}`} data-year={year}>
+            <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
+              <div class="bookshelf-year__sidebar grid-span-2">
+                <div class="bookshelf-year__sticky">
+                  <span class="bookshelf-year__year">{year}</span>
+                </div>
+              </div>
+              {yearEntries.map((entry, index) => {
+                const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
+                const key = entry.post?.slug ?? entry.showSlug ?? `${year}-${index}`;
+
+                return (
+                  <div key={key} class={`bookshelf-year__book ${gridClasses}`}>
+                    {entry.type === 'book' && entry.post && (
+                      <BookshelfCard
+                        {...entry.post.data}
+                        title={entry.post.data.title ?? ''}
+                        link={entry.post.slug ? `/bookshelf/${entry.post.slug}/` : undefined}
+                      />
+                    )}
+                    {entry.type === 'film' && entry.post && (
+                      <FilmCard
+                        title={entry.post.data.title ?? ''}
+                        director={entry.post.data.director}
+                        year={entry.post.data.year as number | undefined}
+                        genre={entry.post.data.genre}
+                        filmStatus={entry.post.data.filmStatus}
+                        filmRating={entry.post.data.filmRating}
+                        watchedDate={entry.post.data.watchedDate}
+                        filmCover={entry.post.data.filmCover}
+                        link={entry.post.slug ? `/filmshelf/${entry.post.slug}/` : undefined}
+                        watchNumber={filmWatchMap.get(entry.post.slug) ?? 1}
+                      />
+                    )}
+                    {entry.type === 'tv' && entry.tvRepresentative && (
+                      <TVCard
+                        title={entry.showTitle ?? ''}
+                        showSlug={entry.showSlug ?? ''}
+                        creator={entry.tvRepresentative.data.creator}
+                        year={entry.tvRepresentative.data.year as number | undefined}
+                        genre={entry.tvRepresentative.data.genre}
+                        tvStatus={entry.tvStatus as any}
+                        tvRating={entry.tvRepresentative.data.tvRating}
+                        tvCover={entry.tvRepresentative.data.tvCover}
+                        seasonCount={entry.tvSeasonCount}
+                        latestSeason={entry.tvLatestSeason}
+                      />
+                    )}
+                    {entry.type === 'game' && entry.post && (
+                      <GameCard
+                        title={entry.post.data.title ?? ''}
+                        developer={entry.post.data.developer}
+                        year={entry.post.data.year as number | undefined}
+                        genre={entry.post.data.genre}
+                        platform={entry.post.data.platform}
+                        gameStatus={entry.post.data.gameStatus}
+                        gameRating={entry.post.data.gameRating}
+                        gameCover={entry.post.data.gameCover}
+                        link={entry.post.slug ? `/gameshelf/${entry.post.slug}/` : undefined}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  </SectionLanding>
+</Layout>
+
+<style>
+  .bookshelf-count { font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; }
+  :global(.dark) .bookshelf-count { color: #9ca3af; }
+  .bookshelf-content { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3rem); padding-bottom: 2rem; }
+  .bookshelf-years { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3.5rem); }
+  .bookshelf-year__grid { align-items: flex-start; }
+  .bookshelf-year__sidebar { display: flex; }
+  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / -1; } }
+  .bookshelf-year__sticky { position: sticky; top: clamp(4rem, 6vw, 5.5rem); display: flex; flex-direction: column; gap: 0.35rem; }
+  .bookshelf-year__year { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: #111827; }
+  :global(.dark) .bookshelf-year__year { color: #f9fafb; }
+  .bookshelf-year__book { display: flex; }
+  .bookshelf-year__book :global(.book-card) { width: 100%; }
+  @media (max-width: 47.999rem) { .bookshelf-year__sticky { position: static; } }
+  @media (min-width: 64rem) { .bookshelf-year__year { font-size: clamp(2.25rem, 4vw, 3.5rem); } }
+</style>
