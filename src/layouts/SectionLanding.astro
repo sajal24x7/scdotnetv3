@@ -32,6 +32,7 @@ interface Props {
     countAlignment?: 'left' | 'center' | 'right';
     countClass?: string;
     gridMaxWidth?: string;
+    hideTitle?: boolean;
 }
 
 const {
@@ -62,7 +63,8 @@ const {
     wrapperClass = '',
     countAlignment = 'center',
     countClass = '',
-    gridMaxWidth
+    gridMaxWidth,
+    hideTitle = false
 } = Astro.props as Props;
 
 const resolvedHeaderSize = size ?? headerSize;
@@ -141,6 +143,7 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
         class="section-landing__grid twelve-grid"
         style={gridStyle || undefined}
     >
+        {!hideTitle && (
         <div class="section-header grid-span-full">
             <PageHeader
                 title={title}
@@ -150,6 +153,7 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
                 maxWidth={resolvedHeaderMaxWidth}
             />
         </div>
+        )}
 
         {hasAfterHeaderSlot && (
             <div class="section-after-header grid-span-full">
