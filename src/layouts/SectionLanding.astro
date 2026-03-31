@@ -413,7 +413,7 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
     }
 
     /* Hidden state for filtered content items */
-    :global([data-content-item][data-filtered="hidden"]) {
+    :global([data-tag-filter-enabled] [data-content-item][data-filtered="hidden"]) {
         display: none;
     }
 
