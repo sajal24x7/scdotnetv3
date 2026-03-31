@@ -168,7 +168,8 @@ const sectionLandingProps = createSectionLandingProps({
                   <div
                     key={show.showSlug}
                     class={`bookshelf-year__book ${gridClasses}`}
-                    data-book-item
+                    data-content-item
+                    data-tags={Array.isArray(rep.data.tags) ? rep.data.tags.join(',') : ''}
                     data-genre={rep.data.genre ?? ''}
                     data-status={show.tvStatus ?? ''}
                     data-rating={rep.data.tvRating ?? ''}
