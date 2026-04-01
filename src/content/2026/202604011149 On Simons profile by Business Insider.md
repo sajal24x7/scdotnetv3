@@ -1,13 +1,16 @@
 ---
-title: "On Simons profile by Business Insider"
-slug: "on-simons-profile-by-business-insider"
-pubDate: 2026-04-01T11:51:37+03:00
-updatedDate: 2026-04-01T11:51:37+03:00
+title: On Simons profile by Business Insider
+slug: on-simons-profile-by-business-insider
+pubDate: 2026-04-01T08:51:37.000Z
+updatedDate: 2026-04-01T08:51:37.000Z
 category: micro
 tags:
   - openai
   - daring-fireball
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116328598482881678'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3migcu2qy4226'
+  - 'https://www.threads.com/@sajal24x7/post/DWlUDIIFde_'
 ---
 [Business Insiders profile on OpenAI’s Simons]()
 
