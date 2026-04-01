@@ -1,13 +1,16 @@
 ---
-title: "Claude Code leaks after update"
-slug: "claude-code-leaks-after-update"
-pubDate: 2026-04-01T12:00:43+03:00
-updatedDate: 2026-04-01T12:00:43+03:00
+title: Claude Code leaks after update
+slug: claude-code-leaks-after-update
+pubDate: 2026-04-01T09:00:43.000Z
+updatedDate: 2026-04-01T09:00:43.000Z
 category: micro
 tags:
   - claude-code
   - anthr
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116328633791583035'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3migde4agoy2y'
+  - 'https://www.threads.com/@sajal24x7/post/DWlVE2ikRFf'
 ---
 [Claude Code leak exposes a Tamagotchi-style ‘pet’ and an always-on agent](https://www.theverge.com/ai-artificial-intelligence/904776/anthropic-claude-source-code-leak)
 
