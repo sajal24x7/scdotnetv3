@@ -1,14 +1,17 @@
 ---
-title: "Solar-panels on balconies"
-slug: "solar-panels-on-balconies"
-pubDate: 2026-04-02T10:36:49+03:00
-updatedDate: 2026-04-02T10:36:49+03:00
+title: Solar-panels on balconies
+slug: solar-panels-on-balconies
+pubDate: 2026-04-02T07:36:49.000Z
+updatedDate: 2026-04-02T07:36:49.000Z
 category: micro
 tags:
   - solar
   - renewables
   - europe
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116333966432023694'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3miip54iofi26'
+  - 'https://www.threads.com/@sajal24x7/post/DWnwRqjlFSC'
 ---
 [Solar Balconies Take Europe By Storm by Lewin Day](https://hackaday.com/2026/03/31/solar-balconies-take-europe-by-storm/)
 
