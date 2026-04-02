@@ -1,13 +1,16 @@
 ---
-title: "The routines of super-readers"
-slug: "the-routines-of-super-readers"
-pubDate: 2026-04-02T16:40:34+03:00
-updatedDate: 2026-04-02T16:40:34+03:00
+title: The routines of super-readers
+slug: the-routines-of-super-readers
+pubDate: 2026-04-02T13:40:34.000Z
+updatedDate: 2026-04-02T13:40:34.000Z
 category: micro
 tags:
   - reading
   - library
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116335396717725599'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mijdhjur3z2x'
+  - 'https://www.threads.com/@sajal24x7/post/DWoZ51HEXAX'
 ---
 [What Are the Routines of So-Called Super-Readers? by Kelsey Rexroat](https://lithub.com/what-are-the-routines-of-so-called-super-readers/)
 
