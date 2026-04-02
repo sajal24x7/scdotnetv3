@@ -1,14 +1,16 @@
 ---
-title: "Cursor launches a new agentic experience"
-slug: "cursor-launches-a-new-agentic-experience"
-pubDate: 2026-04-02T20:19:27+03:00
-updatedDate: 2026-04-02T20:19:27+03:00
+title: Cursor launches a new agentic experience
+slug: cursor-launches-a-new-agentic-experience
+pubDate: 2026-04-02T17:19:27.000Z
+updatedDate: 2026-04-02T17:19:27.000Z
 category: micro
 tags:
   - code
   - cursor
   - claude-code
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116336257936216699'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mijpp5yhce26'
 ---
 [Cursor Launches a New AI Agent Experience to Take On Claude Code and Codex by Maxwell Zeff](https://www.wired.com/story/cusor-launches-coding-agent-openai-anthropic/)
 

@@ -1,13 +1,15 @@
 ---
-title: "X3 is smaller than X3 but has the same software problems"
-slug: "x3-is-smaller-than-x3-but-has-the-same-software-problems"
-pubDate: 2026-04-02T20:12:21+03:00
-updatedDate: 2026-04-02T20:12:21+03:00
+title: X3 is smaller than X3 but has the same software problems
+slug: x3-is-smaller-than-x3-but-has-the-same-software-problems
+pubDate: 2026-04-02T17:12:21.000Z
+updatedDate: 2026-04-02T17:12:21.000Z
 category: micro
 tags:
   - reading
   - e-readers
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116336257620817219'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mijpozi5ym2b'
 ---
 [This even smaller credit card-sized e-reader has one tragic flaw by Andrew Liszewski](https://www.theverge.com/tech/905258/xteink-x3-e-ink-reader-ebooks-hands-on)
 
