@@ -1,0 +1,18 @@
+---
+title: "X3 is smaller than X3 but has the same software problems"
+slug: "x3-is-smaller-than-x3-but-has-the-same-software-problems"
+pubDate: 2026-04-02T20:12:21+03:00
+updatedDate: 2026-04-02T20:12:21+03:00
+category: micro
+tags:
+  - reading
+  - e-readers
+
+---
+[This even smaller credit card-sized e-reader has one tragic flaw by Andrew Liszewski](https://www.theverge.com/tech/905258/xteink-x3-e-ink-reader-ebooks-hands-on)
+
+> I was thrilled to find the X3 fits perfectly on the back of my iPhone 16 Pro, and then once again disappointed to discover its magnets aren’t strong enough to keep it securely in place. Magnetic accessories like PopSockets or the OhSnap Snap Grip have a satisfying “thunk” when attaching them to your phone. Attaching the X3 to my 16 Pro feels more like the devices are exchanging a weak hug. They don’t remain aligned when holding the two together, and on several occasions the X3 fell off my phone while being inserted or removed from a pocket.
+
+I want to buy a phone sized device which can help me read. The problem is what I read. Not just books. I [Use RSS to read](#) from the web. That, is the missing component in this and all the other devices like this.
+
+But damn is it tempting.
