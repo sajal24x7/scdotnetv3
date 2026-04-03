@@ -1,0 +1,18 @@
+---
+title: "An AI state of the union by Simon"
+slug: "an-ai-state-of-the-union-by-simon"
+pubDate: 2026-04-03T12:06:05+03:00
+updatedDate: 2026-04-03T12:06:05+03:00
+category: micro
+tags:
+  - llms
+  - agents
+  - agentic-coding
+  - simon-willison
+
+---
+[Highlights from my conversation about agentic engineering on Lenny’s Podcast by Simon Willison](https://simonwillison.net/2026/Apr/2/lennys-podcast/#atom-everything)
+
+> People talk about how important it is not to interrupt your coders. Your coders need to have solid two to four hour blocks of uninterrupted work so they can spin up their mental model and churn out the code. That's changed completely. My programming work, I need two minutes every now and then to prompt my agent about what to do next. And then I can do the other stuff and I can go back. I'm much more interruptible than I used to be.
+
+Kind of goes against the whole deep work principle. Times sure are changing.
