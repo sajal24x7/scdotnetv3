@@ -1,15 +1,18 @@
 ---
-title: "An AI state of the union by Simon"
-slug: "an-ai-state-of-the-union-by-simon"
-pubDate: 2026-04-03T12:06:05+03:00
-updatedDate: 2026-04-03T12:06:05+03:00
+title: An AI state of the union by Simon
+slug: an-ai-state-of-the-union-by-simon
+pubDate: 2026-04-03T09:06:05.000Z
+updatedDate: 2026-04-03T09:06:05.000Z
 category: micro
 tags:
   - llms
   - agents
   - agentic-coding
   - simon-willison
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116340426861672205'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3milkwxraht2y'
+  - 'https://www.threads.com/@sajal24x7/post/DWqsTGPFLi_'
 ---
 [Highlights from my conversation about agentic engineering on Lenny’s Podcast by Simon Willison](https://simonwillison.net/2026/Apr/2/lennys-podcast/#atom-everything)
 

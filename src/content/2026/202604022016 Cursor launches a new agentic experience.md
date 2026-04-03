@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116336257936216699'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mijpp5yhce26'
+  - 'https://www.threads.com/@sajal24x7/post/DWqsRpflAJ7'
 ---
 [Cursor Launches a New AI Agent Experience to Take On Claude Code and Codex by Maxwell Zeff](https://www.wired.com/story/cusor-launches-coding-agent-openai-anthropic/)
 

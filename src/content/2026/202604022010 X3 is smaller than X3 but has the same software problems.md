@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116336257620817219'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mijpozi5ym2b'
+  - 'https://www.threads.com/@sajal24x7/post/DWqsQ0KlLLk'
 ---
 [This even smaller credit card-sized e-reader has one tragic flaw by Andrew Liszewski](https://www.theverge.com/tech/905258/xteink-x3-e-ink-reader-ebooks-hands-on)
 
