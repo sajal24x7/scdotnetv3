@@ -1,14 +1,17 @@
 ---
-title: "Anthropic requires add on subscriptions to use third party tools"
-slug: "anthropic-requires-add-on-subscriptions-to-use-third-party-tools"
-pubDate: 2026-04-04T08:37:01+03:00
-updatedDate: 2026-04-04T08:37:01+03:00
+title: Anthropic requires add on subscriptions to use third party tools
+slug: anthropic-requires-add-on-subscriptions-to-use-third-party-tools
+pubDate: 2026-04-04T05:37:01.000Z
+updatedDate: 2026-04-04T05:37:01.000Z
 category: micro
 tags:
   - anthropic
   - claude
   - openclaw
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116344820404374713'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3minjewwl2r26'
+  - 'https://www.threads.com/@sajal24x7/post/DWssK3vFBVD'
 ---
 [Anthropic essentially bans OpenClaw from Claude by making subscribers pay extra by Jay Peters](https://www.theverge.com/ai-artificial-intelligence/907074/anthropic-openclaw-claude-subscription-ban)
 
