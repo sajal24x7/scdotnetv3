@@ -17,6 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116356842475389493'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3misu7wejfi25'
   - 'https://www.threads.com/@sajal24x7/post/DWyKDmRFUMy'
+bookCover: all-that-we-see-or-seem.jpg
 ---
 ## Review
 ## Notes
