@@ -1,6 +1,6 @@
 import { marked } from 'marked';
 
-marked.setOptions({
+marked.use({
   gfm: true,
   breaks: true
 });
