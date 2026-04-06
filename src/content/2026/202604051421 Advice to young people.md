@@ -1,12 +1,14 @@
 ---
-title: "Advice to young people"
-slug: "advice-to-young-people"
-pubDate: 2026-04-06T11:26:39+03:00
-updatedDate: 2026-04-06T11:26:39+03:00
+title: Advice to young people
+slug: advice-to-young-people
+pubDate: 2026-04-06T08:26:39.000Z
+updatedDate: 2026-04-06T08:26:39.000Z
 category: micro
 tags:
   - advice
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116356843071769176'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3misua6ykdf2y'
 ---
 [Advice to Young People, The Lies I Tell Myself - Jason Liu by Jason Liu](https://jxnl.co/writing/2024/06/01/advice-to-young-people/)
 
