@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116356843071769176'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3misua6ykdf2y'
+  - 'https://www.threads.com/@sajal24x7/post/DWyRP8jkRMY'
 ---
 [Advice to Young People, The Lies I Tell Myself - Jason Liu by Jason Liu](https://jxnl.co/writing/2024/06/01/advice-to-young-people/)
 
