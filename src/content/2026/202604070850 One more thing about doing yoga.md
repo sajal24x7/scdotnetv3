@@ -1,12 +1,15 @@
 ---
-title: "One more thing about doing yoga"
-slug: "one-more-thing-about-doing-yoga"
-pubDate: 2026-04-07T08:56:36+03:00
-updatedDate: 2026-04-07T08:56:36+03:00
+title: One more thing about doing yoga
+slug: one-more-thing-about-doing-yoga
+pubDate: 2026-04-07T05:56:36.000Z
+updatedDate: 2026-04-07T05:56:36.000Z
 category: blog
 tags:
   - yoga
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116361884389678012'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3miv3uqhg3u2b'
+  - 'https://www.threads.com/@sajal24x7/post/DW0cy8HETh9'
 ---
 One more benefit of doing yoga, first thing in the morning is that it lets me think about my body, health and wellbeing.
 

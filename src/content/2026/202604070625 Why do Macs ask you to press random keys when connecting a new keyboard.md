@@ -1,13 +1,16 @@
 ---
-title: "Why do Macs ask you to press random keys when connecting a new keyboard"
-slug: "why-do-macs-ask-you-to-press-random-keys-when-connecting-a-new-keyboard"
-pubDate: 2026-04-07T06:27:00+03:00
-updatedDate: 2026-04-07T06:27:00+03:00
+title: Why do Macs ask you to press random keys when connecting a new keyboard
+slug: why-do-macs-ask-you-to-press-random-keys-when-connecting-a-new-keyboard
+pubDate: 2026-04-07T03:27:00.000Z
+updatedDate: 2026-04-07T03:27:00.000Z
 category: micro
 tags:
   - mac
   - keyboard
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116361883742278177'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3miv3ugufvv2x'
+  - 'https://www.threads.com/@sajal24x7/post/DW0cxwpEdjb'
 ---
 [Why do Macs ask you to press random keys when connecting a new keyboard? – Unsung by Marcin Wichary](https://unsung.aresluna.org/why-do-macs-ask-you-to-press-random-keys-when-connecting-a-new-keyboard/)
 
