@@ -1,13 +1,15 @@
 ---
-title: "Dyson made a handheld version of its iconic fans"
-slug: "dyson-made-a-handheld-version-of-its-iconic-fans"
-pubDate: 2026-04-09T06:26:53+03:00
-updatedDate: 2026-04-09T06:26:53+03:00
+title: Dyson made a handheld version of its iconic fans
+slug: dyson-made-a-handheld-version-of-its-iconic-fans
+pubDate: 2026-04-09T03:26:53.000Z
+updatedDate: 2026-04-09T03:26:53.000Z
 category: micro
 tags:
   - dyson
   - fans
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116374430398709483'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mj2o5yebq62b'
 ---
 [Dyson made a handheld version of its iconic fans by Andrew Liszewski](https://www.theverge.com/tech/907802/dyson-hushjet-mini-cool-handheld-personal-fan-specs-availability)
 

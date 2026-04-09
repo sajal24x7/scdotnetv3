@@ -1,12 +1,15 @@
 ---
-title: "Protect your shed"
-slug: "protect-your-shed"
-pubDate: 2026-04-08T13:22:42+03:00
-updatedDate: 2026-04-08T13:22:42+03:00
+title: Protect your shed
+slug: protect-your-shed
+pubDate: 2026-04-08T10:22:42.000Z
+updatedDate: 2026-04-08T10:22:42.000Z
 category: micro
 tags:
   - work
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116374429814856627'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mj2o5puano2b'
+  - 'https://www.threads.com/@sajal24x7/post/DW6J6lVEWCA'
 ---
 [Protect Your Shed by Dylan Butler](https://dylanbutler.dev/blog/protect-your-shed/)
 
