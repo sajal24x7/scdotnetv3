@@ -1,6 +1,7 @@
 ---
 title: Azure and friends April meetup
 slug: azure-and-friends-april-meetup
+image: https://storage.sajalchoudhary.net/images/2026/04/anf-2026-04-02.jpeg
 pubDate: 2026-04-09T19:18:31.000Z
 updatedDate: 2026-04-09T19:18:31.000Z
 category: blog
@@ -19,7 +20,7 @@ I’m back at the Nordcloud offices for another Azure and Friends meetup. The we
 
 There was a nice introduction by Azure and Friends - who they are and a call to give talks. They reminisced about some of the talks they have had about giving these talks, for example - a fairly meta thing to do.
 
-![Food](https://storage.sajalchoudhary.net/images/2026/04/anf-2026-04-02.jpeg)
+![Intro](https://storage.sajalchoudhary.net/images/2026/04/anf-2026-04-02.jpeg)
 ## Digital Sovereignty on Azure by Jari Lietzen (Nordcloud)
 
 ![About Sovereignty on azure](https://storage.sajalchoudhary.net/images/2026/04/anf-2026-04-03.jpeg)

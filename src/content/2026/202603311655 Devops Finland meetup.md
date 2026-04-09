@@ -1,6 +1,7 @@
 ---
 title: "Devops Finland meetup"
 slug: "devops-finland-meetup"
+image: https://storage.sajalchoudhary.net/images/2026/03/df-2026-03-02.jpeg
 pubDate: 2026-04-09T22:34:03+03:00
 updatedDate: 2026-04-09T22:34:03+03:00
 category: blog
