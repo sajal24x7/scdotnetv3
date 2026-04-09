@@ -1,14 +1,17 @@
 ---
-title: "Devops Finland meetup"
-slug: "devops-finland-meetup"
-pubDate: 2026-04-09T22:34:03+03:00
-updatedDate: 2026-04-09T22:34:03+03:00
+title: Devops Finland meetup
+slug: devops-finland-meetup
+pubDate: 2026-04-09T19:34:03.000Z
+updatedDate: 2026-04-09T19:34:03.000Z
 category: blog
 tags:
   - devops
   - finland
   - meetup
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116376424555085180'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mj3kitqh5m25'
+  - 'https://www.threads.com/@sajal24x7/post/DW7D-Ock8nw'
 ---
 ## The space
 The meetup was at the Hoxhunt offices near Ruoholahti. I decided to park at home and then go back using public transport. I could not find any OK parking place near the venue and it was far away that I couldn’t just walk from the place.
