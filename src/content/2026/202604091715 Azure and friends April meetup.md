@@ -1,14 +1,17 @@
 ---
-title: "Azure and friends April meetup"
-slug: "azure-and-friends-april-meetup"
-pubDate: 2026-04-09T22:18:31+03:00
-updatedDate: 2026-04-09T22:18:31+03:00
+title: Azure and friends April meetup
+slug: azure-and-friends-april-meetup
+pubDate: 2026-04-09T19:18:31.000Z
+updatedDate: 2026-04-09T19:18:31.000Z
 category: blog
 tags:
   - azure-and-friends
   - finland
   - meetup
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116376363727006318'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mj3jn66mpl26'
+  - 'https://www.threads.com/@sajal24x7/post/DW7CMxFAb1s'
 ---
 I’m back at the Nordcloud offices for another Azure and Friends meetup. The weather today was nice - sunny and chilly (thanks Finland!). There was fresh pizza and drinks.
 

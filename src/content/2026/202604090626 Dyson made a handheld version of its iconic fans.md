@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116374430398709483'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mj2o5yebq62b'
+  - 'https://www.threads.com/@sajal24x7/post/DW7CLmAgbXO'
 ---
 [Dyson made a handheld version of its iconic fans by Andrew Liszewski](https://www.theverge.com/tech/907802/dyson-hushjet-mini-cool-handheld-personal-fan-specs-availability)
 
