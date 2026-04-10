@@ -1,13 +1,16 @@
 ---
-title: "Tesla is building a smaller cheaper EV"
-slug: "tesla-is-building-a-smaller-cheaper-ev"
-pubDate: 2026-04-10T11:27:55+03:00
-updatedDate: 2026-04-10T11:27:55+03:00
+title: Tesla is building a smaller cheaper EV
+slug: tesla-is-building-a-smaller-cheaper-ev
+pubDate: 2026-04-10T08:27:55.000Z
+updatedDate: 2026-04-10T08:27:55.000Z
 category: micro
 tags:
   - tesla
   - electric-cars
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116379466824310099'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mj4vqcxjf52h'
+  - 'https://www.threads.com/@sajal24x7/post/DW8cg1tlJ9j'
 ---
 [Tesla is un-canceling its plan to build a smaller, cheaper EV: report by Andrew J. Hawkins](https://www.theverge.com/transportation/909196/tesla-cheap-affordable-ev-musk-model-2)
 
