@@ -1,13 +1,16 @@
 ---
-title: "Code is run more than read"
-slug: "code-is-run-more-than-read"
-pubDate: 2026-04-11T11:45:35+03:00
-updatedDate: 2026-04-11T11:45:35+03:00
+title: Code is run more than read
+slug: code-is-run-more-than-read
+pubDate: 2026-04-11T08:45:35.000Z
+updatedDate: 2026-04-11T08:45:35.000Z
 category: micro
 tags:
   - code
   - work
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116385197109584174'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mj7h652ljl2f'
+  - 'https://www.threads.com/@sajal24x7/post/DW_DSQSlKn3'
 ---
 [Code is run more than read by Facundo Olano](https://olano.dev/blog/code-is-run-more-than-read/)
 

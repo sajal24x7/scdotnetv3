@@ -1,15 +1,18 @@
 ---
-title: "Has Mythos just broken the deal that kept the internet safe"
-slug: "has-mythos-just-broken-the-deal-that-kept-the-internet-safe"
-pubDate: 2026-04-11T11:43:29+03:00
-updatedDate: 2026-04-11T11:43:29+03:00
+title: Has Mythos just broken the deal that kept the internet safe
+slug: has-mythos-just-broken-the-deal-that-kept-the-internet-safe
+pubDate: 2026-04-11T08:43:29.000Z
+updatedDate: 2026-04-11T08:43:29.000Z
 category: micro
 tags:
   - claude
   - anthropic
   - internet
   - security
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116385197673612736'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mj7h6ey3tj2q'
+  - 'https://www.threads.com/@sajal24x7/post/DW_DTPwFB7n'
 ---
 [Has Mythos just broken the deal that kept the internet safe? by Martin Alderson](https://martinalderson.com/posts/has-mythos-just-broken-the-deal-that-kept-the-internet-safe/)
 
