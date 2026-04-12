@@ -1,14 +1,17 @@
 ---
-title: "France to ditch Windows for Linux"
-slug: "france-to-ditch-windows-for-linux"
-pubDate: 2026-04-11T12:12:50+03:00
-updatedDate: 2026-04-11T12:12:50+03:00
+title: France to ditch Windows for Linux
+slug: france-to-ditch-windows-for-linux
+pubDate: 2026-04-11T09:12:50.000Z
+updatedDate: 2026-04-11T09:12:50.000Z
 category: micro
 tags:
   - linux
   - windows
   - france
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116385304450331555'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mj7iox5ijy26'
+  - 'https://www.threads.com/@sajal24x7/post/DW_GaMEFBG4'
 ---
 [France to ditch Windows for Linux to reduce reliance on US tech | TechCrunch by Zack Whittaker](https://techcrunch.com/2026/04/10/france-to-ditch-windows-for-linux-to-reduce-reliance-on-us-tech/)
 
