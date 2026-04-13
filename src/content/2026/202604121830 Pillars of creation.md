@@ -17,6 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116393505423411609'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mjd5acv6kw27'
   - 'https://www.threads.com/@sajal24x7/post/DXEBWPzIEWU'
+bookCover: pillars-of-creation.jpg
 ---
 Started reading.
 
