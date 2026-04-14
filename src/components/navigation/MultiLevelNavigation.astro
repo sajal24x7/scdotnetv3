@@ -116,7 +116,6 @@ const getActiveTertiarySection = () => {
 };
 
 const activeTertiarySection = getActiveTertiarySection();
-const showTertiaryNav = activeSubsection === '/shelf/';
 
 
 // Check if a link is active - improved logic for post pages
@@ -160,6 +159,7 @@ const getActiveSubsection = () => {
 };
 
 const activeSubsection = getActiveSubsection();
+const showTertiaryNav = activeSubsection === '/shelf/';
 ---
 
 <multi-level-navigation class="w-full block">
