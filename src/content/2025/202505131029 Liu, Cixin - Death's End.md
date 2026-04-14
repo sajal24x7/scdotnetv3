@@ -2,7 +2,7 @@
 title: Death's End
 slug: deaths-end
 pubDate: 2025-12-31T19:51:06.000Z
-updatedDate: 2025-12-31T19:51:06.000Z
+updatedDate: 2025-06-01T19:51:06.000Z
 category: bookshelf
 tags:
   - sci-fi
