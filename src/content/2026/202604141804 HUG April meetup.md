@@ -1,14 +1,17 @@
 ---
-title: "HUG April meetup"
-slug: "hug-april-meetup"
-pubDate: 2026-04-14T22:45:40+03:00
-updatedDate: 2026-04-14T22:45:40+03:00
+title: HUG April meetup
+slug: hug-april-meetup
+pubDate: 2026-04-14T19:45:40.000Z
+updatedDate: 2026-04-14T19:45:40.000Z
 category: blog
 tags:
   - hug
   - hashicorp
   - terraform
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116404783066102111'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mji5irxpgy2n'
+  - 'https://www.threads.com/@sajal24x7/post/DXH9T9VGHkB'
 ---
 ## Reproducible Developer Environments with Jumppad - Robert Barnes, HashiCorp
 
