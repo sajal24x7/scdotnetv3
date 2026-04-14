@@ -96,6 +96,27 @@ const secondaryNavEntries = sectionsWithSecondary.map((section) => ({
   items: secondaryNavItems[section] ?? []
 }));
 
+// Tertiary navigation for Shelf subsections
+const tertiaryNavItems = [
+  { href: '/bookshelf/', label: 'Books', key: 'books' },
+  { href: '/filmshelf/', label: 'Film', key: 'film' },
+  { href: '/tvshelf/', label: 'TV', key: 'tv' },
+  { href: '/gameshelf/', label: 'Games', key: 'games' },
+];
+
+const tertiaryActiveClasses = 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-gray-900 dark:border-white nav-active shadow-sm border-b-2 border-blue-600';
+const tertiaryInactiveClasses = 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50 border-gray-600 dark:border-gray-400';
+
+const getActiveTertiarySection = () => {
+  if (currentPage.startsWith('/bookshelf/')) return 'books';
+  if (currentPage.startsWith('/filmshelf/')) return 'film';
+  if (currentPage.startsWith('/tvshelf/')) return 'tv';
+  if (currentPage.startsWith('/gameshelf/')) return 'games';
+  return null;
+};
+
+const activeTertiarySection = getActiveTertiarySection();
+
 
 // Check if a link is active - improved logic for post pages
 const isActive = (href: string) => {
@@ -138,6 +159,7 @@ const getActiveSubsection = () => {
 };
 
 const activeSubsection = getActiveSubsection();
+const showTertiaryNav = activeSubsection === '/shelf/';
 ---
 
 <multi-level-navigation class="w-full block">
@@ -217,6 +239,35 @@ const activeSubsection = getActiveSubsection();
             </nav>
           ))}
         </div>
+
+        <!-- Tertiary Navigation Row (for Shelf subsections: Books / Film / TV / Games) -->
+        <div class="tertiary-in-grid nav-area">
+          <nav
+            data-tertiary-nav
+            class="tertiary-nav-row py-0.5"
+            hidden={!showTertiaryNav}
+            aria-label="Shelf section navigation"
+          >
+            {tertiaryNavItems.map((item, index) => (
+              <a
+                href={item.href}
+                data-tertiary-href={item.href}
+                data-active-class={tertiaryActiveClasses}
+                data-inactive-class={tertiaryInactiveClasses}
+                aria-current={activeTertiarySection === item.key ? 'page' : undefined}
+                class={`px-3 py-0.25 text-sm font-medium uppercase tracking-wide transition-colors duration-200 ${
+                  index < tertiaryNavItems.length - 1 ? 'border-r' : ''
+                } border-b ${
+                  activeTertiarySection === item.key
+                    ? tertiaryActiveClasses
+                    : tertiaryInactiveClasses
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
       </div>
     </div>
   </div>
@@ -282,7 +333,7 @@ const activeSubsection = getActiveSubsection();
   .name-social-row {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto;
     align-items: center;
     column-gap: 0.5rem;
     row-gap: 0.25rem;
@@ -291,6 +342,10 @@ const activeSubsection = getActiveSubsection();
   .secondary-in-grid {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
+  }
+  .tertiary-in-grid {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
   }
   
   .header-name {
@@ -330,8 +385,27 @@ const activeSubsection = getActiveSubsection();
   .secondary-nav-row[hidden] {
     display: none;
   }
-  
+
   .secondary-nav-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Tertiary Navigation Row */
+  .tertiary-nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .tertiary-nav-row[hidden] {
+    display: none;
+  }
+
+  .tertiary-nav-row::-webkit-scrollbar {
     display: none;
   }
 
@@ -341,11 +415,11 @@ const activeSubsection = getActiveSubsection();
       padding-left: 1rem;
       padding-right: 1rem;
     }
-    
-    /* Mobile adjustments: name + socials on one row, then primary, then secondary */
+
+    /* Mobile: name + socials on row 1, primary on row 2, secondary on row 3, tertiary on row 4 */
     .name-social-row {
       grid-template-columns: auto 1fr auto;
-      grid-template-rows: auto auto auto;
+      grid-template-rows: auto auto auto auto;
       row-gap: 0.375rem;
     }
 
@@ -384,17 +458,30 @@ const activeSubsection = getActiveSubsection();
       overflow-x: auto;
       gap: 0;
     }
-    
+
+    .tertiary-in-grid {
+      grid-column: 1 / -1;
+      grid-row: 4 / 5;
+      justify-content: center;
+    }
+
+    .tertiary-nav-row {
+      justify-content: center;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 0;
+    }
+
     nav {
       width: 100%;
     }
-    
+
     nav a {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
       font-size: 0.75rem;
     }
-    
+
     h1 {
       font-size: 1.5rem;
     }
