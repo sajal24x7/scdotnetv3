@@ -1,13 +1,16 @@
 ---
-title: "Human cost of 10x productivity"
-slug: "human-cost-of-10x-productivity"
-pubDate: 2026-04-14T10:38:24+03:00
-updatedDate: 2026-04-14T10:38:24+03:00
+title: Human cost of 10x productivity
+slug: human-cost-of-10x-productivity
+pubDate: 2026-04-14T07:38:24.000Z
+updatedDate: 2026-04-14T07:38:24.000Z
 category: micro
 tags:
   - ai
   - work
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116401960222160931'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mjgvf43cdd2m'
+  - 'https://www.threads.com/@sajal24x7/post/DXGrJ7LlDrR'
 ---
 [The Human Cost of 10x AI Productivity  by Denis Stetskov](https://techtrenches.dev/p/the-human-cost-of-10x-how-ai-is-physically)
 
