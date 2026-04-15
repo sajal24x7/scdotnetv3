@@ -1,13 +1,16 @@
 ---
-title: "OpenAI announces a new cybersecurity model"
-slug: "openai-announces-a-new-cybersecurity-model"
-pubDate: 2026-04-15T07:31:27+03:00
-updatedDate: 2026-04-15T07:31:27+03:00
+title: OpenAI announces a new cybersecurity model
+slug: openai-announces-a-new-cybersecurity-model
+pubDate: 2026-04-15T04:31:27.000Z
+updatedDate: 2026-04-15T04:31:27.000Z
 category: micro
 tags:
   - openai
   - anthropic
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116406848000252520'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mjj2tsxyyx2x'
+  - 'https://www.threads.com/@sajal24x7/post/DXI5aLClSPW'
 ---
 [In the Wake of Anthropic’s Mythos, OpenAI Has a New Cybersecurity Model—and Strategy by Lily Hay Newman](https://www.wired.com/story/in-the-wake-of-anthropics-mythos-openai-has-a-new-cybersecurity-model-and-strategy/)
 
