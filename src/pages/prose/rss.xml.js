@@ -1,15 +1,12 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
-import { getYearDirectories } from '../../utils/content';
+import { getContentCategories } from '../../utils/content';
 import { parseMarkdown } from '../../utils/markdown';
 
 export async function GET(context) {
-  // Get all year directories
-  const years = getYearDirectories();
-  
-  // Get all posts from year collections and filter for prose (story, poem)
-  const allPosts = await Promise.all(years.map(year => getCollection(year)));
+  const categories = getContentCategories();
+  const allPosts = await Promise.all(categories.map(category => getCollection(category)));
   const flatPosts = allPosts.flat();
   const prose = flatPosts.filter(post => 
     ['story', 'poem'].includes(post.data.category)

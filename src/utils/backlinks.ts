@@ -1,7 +1,7 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { getCollection } from 'astro:content';
-import { getYearDirectories } from './content';
+import { getContentCategories } from './content';
 import type { CollectionEntry } from 'astro:content';
 
 /**
@@ -73,16 +73,16 @@ export async function findBacklinksComprehensive(currentPostPath: string): Promi
  */
 async function getContentFileList(): Promise<string[]> {
     const contentDir = path.join(process.cwd(), 'src', 'content');
-    const years = getYearDirectories();
+    const categories = getContentCategories();
     const files: string[] = [];
 
-    for (const year of years) {
-        const yearDir = path.join(contentDir, year);
+    for (const category of categories) {
+        const categoryDir = path.join(contentDir, category);
         try {
-            const yearFiles = await fs.readdir(yearDir);
-            for (const file of yearFiles) {
+            const categoryFiles = await fs.readdir(categoryDir);
+            for (const file of categoryFiles) {
                 if (file.endsWith('.md')) {
-                    files.push(`${year}/${file}`);
+                    files.push(`${category}/${file}`);
                 }
             }
         } catch {
@@ -205,11 +205,11 @@ async function writeBacklinkArtifact(index: BacklinkIndex): Promise<void> {
 }
 
 async function buildBacklinkIndex(): Promise<BacklinkIndex> {
-    const years = getYearDirectories();
+    const categories = getContentCategories();
     const entries: CollectionEntry<any>[] = [];
 
-    for (const year of years) {
-        const posts = await getCollection(year as any);
+    for (const category of categories) {
+        const posts = await getCollection(category as any);
         entries.push(...posts);
     }
 

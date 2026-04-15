@@ -1,0 +1,117 @@
+name: Sort inbox notes into category folders
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/inbox/**.md'
+
+jobs:
+  sort:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Fetch the full history so we can push back to main
+          fetch-depth: 0
+
+      - name: Sort inbox notes
+        id: sort
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          KNOWN_CATEGORIES="til blog micro photo nordletter story poem bookshelf filmshelf tvshelf gameshelf now colophon evergreen"
+          INBOX="src/content/inbox"
+          MOVED=0
+          FAILED=0
+          REPORT=""
+
+          for file in "$INBOX"/*.md; do
+            # Skip if glob expands to nothing
+            [ -f "$file" ] || continue
+
+            filename=$(basename "$file")
+
+            # Skip the README that lives in inbox permanently
+            [ "$filename" = "README.md" ] && continue
+
+            # Extract category from frontmatter (handles quoted and unquoted values)
+            category=$(grep -m1 '^category:' "$file" \
+              | sed 's/^category:[[:space:]]*//' \
+              | tr -d "'\"" \
+              | tr -d '[:space:]') || true
+
+            # Validate against known categories
+            if echo "$KNOWN_CATEGORIES" | grep -qw "$category"; then
+              dest="src/content/$category"
+              mkdir -p "$dest"
+              mv "$file" "$dest/$filename"
+              echo "Moved: $filename → $category/"
+              MOVED=$((MOVED + 1))
+              REPORT="$REPORT\n- \`$filename\` → \`$category/\`"
+            else
+              # Unknown or missing category — leave file in inbox and flag it
+              if [ -z "$category" ]; then
+                reason="no \`category\` field in frontmatter"
+              else
+                reason="unknown category: \`$category\`"
+              fi
+              echo "WARNING: Could not sort $filename ($reason)"
+              FAILED=$((FAILED + 1))
+              REPORT="$REPORT\n- ⚠️ \`$filename\` left in inbox — $reason"
+            fi
+          done
+
+          echo "moved=$MOVED"   >> "$GITHUB_OUTPUT"
+          echo "failed=$FAILED" >> "$GITHUB_OUTPUT"
+
+          # Store report for later steps (multiline-safe)
+          {
+            echo "report<<EOF"
+            echo -e "$REPORT"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Commit sorted files
+        if: steps.sort.outputs.moved != '0'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/content/
+          git commit -m "chore: sort inbox notes into category folders
+
+          ${{ steps.sort.outputs.report }}"
+          git push origin main
+
+      - name: Open issue for unsorted files
+        if: steps.sort.outputs.failed != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const report = `${{ steps.sort.outputs.report }}`;
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '⚠️ Inbox contains notes that could not be sorted',
+              body: [
+                'The **Sort inbox** workflow ran but could not move the following files',
+                'because their `category` frontmatter field is missing or not recognised.',
+                '',
+                '**Files left in `src/content/inbox/`:**',
+                report,
+                '',
+                '**Valid categories:** `til` · `blog` · `micro` · `photo` · `nordletter`',
+                '· `story` · `poem` · `bookshelf` · `filmshelf` · `tvshelf`',
+                '· `gameshelf` · `now` · `colophon` · `evergreen`',
+                '',
+                'Fix the frontmatter and push again — the workflow will re-run automatically.',
+              ].join('\n'),
+              labels: ['inbox'],
+            });

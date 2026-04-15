@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content';
-import { getYearDirectories } from './content';
+import { getContentCategories } from './content';
 
 export interface ContentPreview {
   title: string;
@@ -13,9 +13,9 @@ export async function generateContentPreviews(): Promise<Map<string, ContentPrev
   const previewMap = new Map<string, ContentPreview>();
   
   try {
-    // Get all year directories and collections
-    const years = getYearDirectories();
-    const allPosts = await Promise.all(years.map(year => getCollection(year as any)));
+    // Get all category collections
+    const categories = getContentCategories();
+    const allPosts = await Promise.all(categories.map(category => getCollection(category as any)));
     const posts = allPosts.flat();
 
     for (const post of posts) {
