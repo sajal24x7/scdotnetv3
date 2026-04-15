@@ -2,16 +2,14 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import type { CollectionEntry } from 'astro:content';
-import { getYearDirectories } from '../utils/content';
+import { getContentCategories } from '../utils/content';
 import { findBacklinksComprehensive } from '../utils/backlinks';
 import PostLayout from '../components/layout/PostLayout.astro';
 
 export async function getStaticPaths() {
-  // Get all year directories from content
-  const years = getYearDirectories();
-
-  // Get all posts from all collections
-  const allPosts = await Promise.all(years.map(year => getCollection(year as any)));
+  // Get all category collections
+  const categories = getContentCategories();
+  const allPosts = await Promise.all(categories.map(category => getCollection(category as any)));
   const posts = allPosts.flat().filter(entry => (entry as CollectionEntry<any>).data && (entry as CollectionEntry<any>).data.title);
 
   return posts.map((entry) => {

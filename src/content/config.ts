@@ -1,6 +1,4 @@
 import { defineCollection, z } from 'astro:content';
-import { readdirSync } from 'fs';
-import { join } from 'path';
 
 // Define a custom date schema that accepts both Date objects and ISO date strings
 const dateSchema = z.union([
@@ -40,7 +38,7 @@ const postsCollection = defineCollection({
     bookStatus: z.enum(['reading', 'read', 'finished', 'on-hold', 'to-read']).optional(),
     readingProgress: z.number().min(0).max(100).optional(),
     bookRating: z.enum(['like', 'love', 'nope']).optional(),
-    bookCover: z.string().optional(), // Book cover image for bookshelf display
+    bookCover: z.string().optional(),
     // Release year (film, TV, games)
     year: z.number().optional(),
     // Film-specific metadata
@@ -51,8 +49,8 @@ const postsCollection = defineCollection({
     filmCover: z.string().optional(),
     // TV-specific metadata
     creator: z.string().optional(),
-    showTitle: z.string().optional(), // For grouping seasons on the TV shelf
-    season: z.number().optional(),    // Season number (for per-season entries)
+    showTitle: z.string().optional(),
+    season: z.number().optional(),
     tvStatus: z.enum(['watching', 'watched', 'to-watch', 'on-hold', 'abandoned']).optional(),
     tvRating: z.enum(['like', 'love', 'nope']).optional(),
     tvCover: z.string().optional(),
@@ -63,50 +61,62 @@ const postsCollection = defineCollection({
     gameRating: z.enum(['like', 'love', 'nope']).optional(),
     gameCover: z.string().optional(),
     // POSSE syndication metadata
-    syndicationUrls: z.array(z.string()).optional(), // URLs where content was syndicated
+    syndicationUrls: z.array(z.string()).optional(),
   }),
 });
 
-// Export collections
-const nordletterCollection = defineCollection({
+// Inbox collection — relaxed schema for notes arriving from Shortcuts/Obsidian.
+// The GitHub Action moves them to the correct category folder after sorting.
+const inboxCollection = defineCollection({
   type: 'content',
   schema: z.object({
-    title: z.string(),
-    pubDate: dateSchema,
+    title: z.string().optional(),
     description: z.string().optional(),
-    edition: z.number().optional(),
-  }),
-});
-
-// Define the notes collection
-const notesCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    pubDate: dateSchema,
+    pubDate: dateSchema.optional(),
     updatedDate: dateSchema.optional(),
-    category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'filmshelf', 'tvshelf', 'gameshelf', 'til', 'colophon']).optional(),
+    category: z.string().optional(),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
-    stage: z.enum(['fleeting', 'seedling', 'budding', 'evergreen']).optional(),
-  }),
+  }).passthrough(),
 });
 
-// Get all year directories from src/content
-const contentDir = join(process.cwd(), 'src', 'content');
-const yearDirs = readdirSync(contentDir, { withFileTypes: true })
-  .filter(dirent => dirent.isDirectory() && /^\d{4}$/.test(dirent.name))
-  .map(dirent => dirent.name);
+// All known content categories — each maps to a folder under src/content/
+export const CONTENT_CATEGORIES = [
+  'til',
+  'blog',
+  'micro',
+  'photo',
+  'nordletter',
+  'story',
+  'poem',
+  'bookshelf',
+  'filmshelf',
+  'tvshelf',
+  'gameshelf',
+  'now',
+  'colophon',
+  'evergreen',
+] as const;
 
-// Create year collections dynamically
-const yearCollections = Object.fromEntries(
-  yearDirs.map(year => [year, postsCollection])
-);
+export type ContentCategory = typeof CONTENT_CATEGORIES[number];
 
 export const collections = {
-  'posts': postsCollection,
-  'nordletter': nordletterCollection,
-  'notes': notesCollection,
-  ...yearCollections,
-}; 
+  // Inbox — staging area for new notes
+  'inbox': inboxCollection,
+
+  // Content categories — one collection per folder
+  'til':        postsCollection,
+  'blog':       postsCollection,
+  'micro':      postsCollection,
+  'photo':      postsCollection,
+  'nordletter': postsCollection,
+  'story':      postsCollection,
+  'poem':       postsCollection,
+  'bookshelf':  postsCollection,
+  'filmshelf':  postsCollection,
+  'tvshelf':    postsCollection,
+  'gameshelf':  postsCollection,
+  'now':        postsCollection,
+  'colophon':   postsCollection,
+  'evergreen':  postsCollection,
+};

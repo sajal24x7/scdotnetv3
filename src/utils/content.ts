@@ -1,7 +1,6 @@
 import { getCollection } from 'astro:content';
-import { readdirSync } from 'fs';
-import { join } from 'path';
 import type { BookRating } from './bookRatings';
+import { CONTENT_CATEGORIES } from '../content/config';
 
 export interface Post {
   data: {
@@ -34,19 +33,19 @@ export interface Post {
   render: () => Promise<{ Content: any }>;
 }
 
-// Get all year directories from src/content
-export function getYearDirectories(): string[] {
-  const contentDir = join(process.cwd(), 'src', 'content');
-  return readdirSync(contentDir, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory() && /^\d{4}$/.test(dirent.name))
-    .map(dirent => dirent.name)
-    .sort();
+// Returns the list of known content category names.
+// Each category corresponds to a folder under src/content/ and an Astro collection.
+export function getContentCategories(): string[] {
+  return [...CONTENT_CATEGORIES];
 }
+
+// Backwards-compatible alias — prefer getContentCategories() in new code
+export const getYearDirectories = getContentCategories;
 
 let cachedPosts: Post[] | null = null;
 let cachedPostsPromise: Promise<Post[]> | null = null;
 
-// Get all posts from year collections
+// Get all posts from category collections
 export async function getAllPosts(): Promise<Post[]> {
   if (cachedPosts) {
     return cachedPosts;
@@ -54,9 +53,9 @@ export async function getAllPosts(): Promise<Post[]> {
 
   if (!cachedPostsPromise) {
     cachedPostsPromise = (async () => {
-      const years = getYearDirectories();
-      const allPosts = await Promise.all(years.map(async year => {
-        const posts = await getCollection(year as any);
+      const categories = getContentCategories();
+      const allPosts = await Promise.all(categories.map(async category => {
+        const posts = await getCollection(category as any);
         return posts.map((post: any) => ({
           data: post.data,
           slug: post.slug,
