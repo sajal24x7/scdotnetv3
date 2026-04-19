@@ -2,7 +2,7 @@
 title: I Deliver Parcels in Beijing
 slug: i-deliver-parcels-in-beijing
 pubDate: 2026-04-06T10:41:19.000Z
-updatedDate: 2026-04-06T10:41:19.000Z
+updatedDate: 2026-04-19T13:15:50+03:00
 category: bookshelf
 tags:
   - china
