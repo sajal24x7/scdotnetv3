@@ -18,6 +18,8 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mit3ckd2ch2y'
   - 'https://www.threads.com/@sajal24x7/post/DWyaxyDETRP'
 bookCover: i-deliver-parcels-in-beijing.jpg
+bookRating: like
+finishedReading: 2026-04-19T13:15:50+03:00
 ---
 ## Review
 ## Notes
