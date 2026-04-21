@@ -36,38 +36,40 @@ const DRY_RUN = process.env.SYNDICATION_DRY_RUN === 'true';
 const DAYS_BACK = parseInt(process.env.SYNDICATION_DAYS_BACK || '7', 10);
 
 /**
- * Simple implementation to get all posts from year directories
+ * Get all posts from category subdirectories
  */
 async function getAllPosts() {
   const contentDir = path.join(process.cwd(), 'src', 'content');
   const posts = [];
 
-  // Get all year directories
+  // Get all category directories (skip files, hidden dirs, and inbox)
   const items = fs.readdirSync(contentDir, { withFileTypes: true });
-  const years = items
-    .filter(item => item.isDirectory() && /^\d{4}$/.test(item.name))
+  const categoryDirs = items
+    .filter(item => item.isDirectory() && !item.name.startsWith('.') && item.name !== 'inbox')
     .map(item => item.name)
     .sort();
 
-  // Read posts from each year
-  for (const year of years) {
-    const yearDir = path.join(contentDir, year);
-    const files = fs.readdirSync(yearDir)
+  // Read posts from each category directory
+  for (const category of categoryDirs) {
+    const categoryDir = path.join(contentDir, category);
+    const files = fs.readdirSync(categoryDir)
       .filter(file => file.endsWith('.md') || file.endsWith('.mdx'));
 
     for (const file of files) {
-      const filePath = path.join(yearDir, file);
+      const filePath = path.join(categoryDir, file);
       try {
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const { data, content } = matter(fileContent);
 
         // Create a post object similar to Astro's structure
+        // Derive category from directory name if not set in frontmatter
         const post = {
           data: {
             ...data,
+            category: data.category || category,
             pubDate: new Date(data.pubDate)
           },
-          slug: data.slug || file.replace(/\.(md|mdx)$/, ''), // Use frontmatter slug or fallback to filename
+          slug: data.slug || file.replace(/\.(md|mdx)$/, ''),
           body: content,
           filePath: filePath
         };
@@ -136,18 +138,20 @@ function getPostFilePath(post) {
     return post.filePath;
   }
 
-  // Fallback to the original search method
+  // Fallback: search all category subdirectories
   const contentDir = path.join(process.cwd(), 'src', 'content');
-  const years = fs.readdirSync(contentDir).filter(dir => /^\d{4}$/.test(dir));
+  const items = fs.readdirSync(contentDir, { withFileTypes: true });
+  const categoryDirs = items
+    .filter(item => item.isDirectory() && !item.name.startsWith('.') && item.name !== 'inbox')
+    .map(item => item.name);
 
-  for (const year of years) {
-    const yearDir = path.join(contentDir, year);
-    const files = fs.readdirSync(yearDir);
+  for (const category of categoryDirs) {
+    const categoryDir = path.join(contentDir, category);
+    const files = fs.readdirSync(categoryDir);
 
-    // Look for a file that contains this slug
     for (const file of files) {
       if (file.includes(post.slug) || file.replace(/\.\w+$/, '').endsWith(post.slug)) {
-        return path.join(yearDir, file);
+        return path.join(categoryDir, file);
       }
     }
   }
