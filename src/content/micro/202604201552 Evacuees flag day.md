@@ -1,12 +1,14 @@
 ---
-title: "Evacuees flag day"
-slug: "evacuees-flag-day"
-pubDate: 2026-04-20T15:52:52+03:00
-updatedDate: 2026-04-20T15:52:52+03:00
+title: Evacuees flag day
+slug: evacuees-flag-day
+pubDate: 2026-04-20T12:52:52.000Z
+updatedDate: 2026-04-20T12:52:52.000Z
 category: micro
 tags:
   - finland
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116447457845598700'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mk33wzvgqy2d'
 ---
 [Flags fly to honour Finland's internally displaced](https://yle.fi/a/74-20221484?origin=rss)
 

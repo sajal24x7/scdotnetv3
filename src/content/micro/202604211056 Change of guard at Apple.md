@@ -1,12 +1,14 @@
 ---
-title: "Change of guard at Apple"
-slug: "change-of-guard-at-apple"
-pubDate: 2026-04-21T10:58:18+03:00
-updatedDate: 2026-04-21T10:58:18+03:00
+title: Change of guard at Apple
+slug: change-of-guard-at-apple
+pubDate: 2026-04-21T07:58:18.000Z
+updatedDate: 2026-04-21T07:58:18.000Z
 category: micro
 tags:
   - apple
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116447458421565709'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mk33xc2sxf2e'
 ---
 [Another Day Has Come](https://daringfireball.net/2026/04/another_day_has_come)
 

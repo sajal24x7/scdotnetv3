@@ -1,13 +1,16 @@
 ---
-title: "RAM shortage could last years"
-slug: "ram-shortage-could-last-years"
-pubDate: 2026-04-19T10:47:50+03:00
-updatedDate: 2026-04-19T10:47:50+03:00
+title: RAM shortage could last years
+slug: ram-shortage-could-last-years
+pubDate: 2026-04-19T07:47:50.000Z
+updatedDate: 2026-04-19T07:47:50.000Z
 category: micro
 tags:
   - compute
   - memory
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116447456950937045'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mk33wmsgki2d'
+  - 'https://www.threads.com/@sajal24x7/post/DXbXSNYlNZM'
 ---
 [The RAM shortage could last years by Terrence O'Brien](https://www.theverge.com/ai-artificial-intelligence/914672/the-ram-shortage-could-last-years)
 

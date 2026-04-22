@@ -1,13 +1,16 @@
 ---
-title: "Chinese tech workers are starting to train their AI doubles and pushing back"
-slug: "chinese-tech-workers-are-starting-to-train-their-ai-doubles-and-pushing-back"
-pubDate: 2026-04-20T15:50:40+03:00
-updatedDate: 2026-04-20T15:50:40+03:00
+title: Chinese tech workers are starting to train their AI doubles and pushing back
+slug: chinese-tech-workers-are-starting-to-train-their-ai-doubles-and-pushing-back
+pubDate: 2026-04-20T12:50:40.000Z
+updatedDate: 2026-04-20T12:50:40.000Z
 category: micro
 tags:
   - ai
   - china
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116447457402907599'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mk33wtjyuo2w'
+  - 'https://www.threads.com/@sajal24x7/post/DXbXTESlChF'
 ---
 [Chinese tech workers are starting to train their AI doubles–and pushing back by Caiwei Chen](https://www.technologyreview.com/2026/04/20/1136149/chinese-tech-workers-ai-colleagues/)
 

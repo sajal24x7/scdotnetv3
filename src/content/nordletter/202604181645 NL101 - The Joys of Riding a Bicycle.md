@@ -1,17 +1,20 @@
 ---
-title: "City Biking through the summer"
-slug: "nl101-the-joys-of-riding-a-bicycle"
+title: City Biking through the summer
+slug: nl101-the-joys-of-riding-a-bicycle
 edition: 101
-image: https://storage.sajalchoudhary.net/images/2026/04/nl101-05.jpeg
-pubDate: 2026-04-19T17:41:52+03:00
-updatedDate: 2026-04-19T17:41:52+03:00
+image: 'https://storage.sajalchoudhary.net/images/2026/04/nl101-05.jpeg'
+pubDate: 2026-04-19T14:41:52.000Z
+updatedDate: 2026-04-19T14:41:52.000Z
 category: nordletter
 tags:
   - bicycle
   - finland
   - pizza
   - city-bike
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116447458718947948'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mk33xgnx3g2w'
+  - 'https://www.threads.com/@sajal24x7/post/DXbXVg6FIxS'
 ---
 Hello from my home in Helsinki! This is NordLetter #, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
