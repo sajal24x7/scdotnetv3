@@ -1,13 +1,16 @@
 ---
-title: "Google launches Gemini on Mac"
-slug: "google-launches-gemini-on-mac"
-pubDate: 2026-04-16T11:02:44+03:00
-updatedDate: 2026-04-16T11:02:44+03:00
+title: Google launches Gemini on Mac
+slug: google-launches-gemini-on-mac
+pubDate: 2026-04-16T08:02:44.000Z
+updatedDate: 2026-04-16T08:02:44.000Z
 category: micro
 tags:
   - google
   - gemini
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116447456494042345'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mk33wg2atn2n'
+  - 'https://www.threads.com/@sajal24x7/post/DXbXRVzFGMb'
 ---
 [Google launches a Gemini AI app on Mac by Emma Roth](https://www.theverge.com/tech/912638/google-gemini-mac-app)
 

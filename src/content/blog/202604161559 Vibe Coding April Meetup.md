@@ -1,12 +1,16 @@
 ---
-title: "Vibe Coding April Meetup"
-slug: "vibe-coding-april-meetup"
-pubDate: 2026-04-16T22:39:17+03:00
-updatedDate: 2026-04-16T22:39:17+03:00
+title: Vibe Coding April Meetup
+slug: vibe-coding-april-meetup
+pubDate: 2026-04-16T19:39:17.000Z
+updatedDate: 2026-04-16T19:39:17.000Z
 category: blog
 tags:
   - vibe-coding-finland
-image: https://storage.sajalchoudhary.net/images/2026/04/vcf-apr-04.jpeg
+image: 'https://storage.sajalchoudhary.net/images/2026/04/vcf-apr-04.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116447454603939004'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mk33vkshzt2b'
+  - 'https://www.threads.com/@sajal24x7/post/DXbXN5HFHIf'
 ---
 I saw a few familiar faces at the event today and a few unfamiliar ones. It was raining lightly, as I walked from my office to the venue - 350m / 8 mins. I saw a technician putting the bicycle stand in place above the bridge. That city bike station is in gray on the HSL may at present. If it becomes active, I may park my city bike here. It's closer.
 
