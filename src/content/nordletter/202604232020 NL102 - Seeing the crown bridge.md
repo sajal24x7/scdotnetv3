@@ -1,15 +1,19 @@
 ---
-title: "Seeing the crown bridge"
-slug: "nl102-seeing-the-crown-bridge"
+title: Seeing the crown bridge
+slug: nl102-seeing-the-crown-bridge
 edition: 102
-image: https://storage.sajalchoudhary.net/images/2026/04/nl02-08.jpeg
-pubDate: 2026-04-25T23:52:19+03:00
-updatedDate: 2026-04-25T23:52:19+03:00
+image: 'https://storage.sajalchoudhary.net/images/2026/04/nl02-08.jpeg'
+pubDate: 2026-04-25T20:52:19.000Z
+updatedDate: 2026-04-25T20:52:19.000Z
 category: nordletter
 tags:
   - helsinki
   - bridges
   - crown-bridge
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116467333243206216'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mkdwfcuewa2a'
+  - 'https://www.threads.com/@sajal24x7/post/DXkZwwAmIT8'
 ---
 Hello from my home in Helsinki! This is NordLetter #, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
