@@ -17,6 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116474932193632534'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mkhcew5xhj2a'
   - 'https://www.threads.com/@sajal24x7/post/DXn267JDcKK'
+bookCover: children-of-strife.jpg
 ---
 ## Review
 ## Notes
