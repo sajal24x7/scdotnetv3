@@ -1,5 +1,5 @@
 ---
-title: Zuck wants AI as the new feed
+title: Zuck Wants AI as the New Feed
 slug: zuck-wants-ai-as-the-new-feed
 pubDate: 2026-01-29T09:06:25.000Z
 updatedDate: 2026-01-29T09:06:25.000Z

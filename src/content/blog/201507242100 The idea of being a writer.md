@@ -1,5 +1,5 @@
 ---
-title: "The idea of being a writer"
+title: "The Idea of Being a Writer"
 slug: "the-idea-of-being-a-writer"
 pubDate: 2015-07-24T21:00:00
 updatedDate: 2015-07-24T21:00:00

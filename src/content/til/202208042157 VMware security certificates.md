@@ -1,5 +1,5 @@
 ---
-title: VMware security certificates
+title: VMware Security Certificates
 slug: vmware-security-certificates
 pubDate: '2022-08-04T21:57:00+03:00'
 updatedDate: '2022-08-04T21:57:00+03:00'

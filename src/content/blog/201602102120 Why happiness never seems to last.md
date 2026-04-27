@@ -1,5 +1,5 @@
 ---
-title: "Why happiness never seems to last"
+title: "Why Happiness Never Seems to Last"
 slug: "why-happiness-never-seems-to-last"
 pubDate: 2016-02-10T21:20:28
 updatedDate: 2016-02-10T21:20:28

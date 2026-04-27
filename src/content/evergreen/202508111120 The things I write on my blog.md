@@ -1,5 +1,5 @@
 ---
-title: "The things I write on my blog"
+title: "The Things I Write on My Blog"
 slug: "the-things-i-write-on-my-blog"
 pubDate: 2025-08-30T11:47:22+03:00
 updatedDate: 2025-08-30T11:47:22+03:00

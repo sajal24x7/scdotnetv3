@@ -1,5 +1,5 @@
 ---
-title: "A happy new year"
+title: "A Happy New Year"
 edition: 41
 slug: "a-happy-new-year"
 description: "Most things are still the same + AI roundups + good things that happened in 2024"

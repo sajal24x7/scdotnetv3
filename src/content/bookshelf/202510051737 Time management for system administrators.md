@@ -1,5 +1,5 @@
 ---
-title: "Time management for system administrators"
+title: "Time Management for System Administrators"
 slug: "time-management-for-system-administrators"
 pubDate: 2025-10-06T21:55:32+03:00
 updatedDate: 2025-10-06T21:55:32+03:00

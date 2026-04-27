@@ -1,5 +1,5 @@
 ---
-title: "What would you do?"
+title: "What Would You Do?"
 edition: 55
 slug: "what-would-you-do"
 description: "Teenagers + AI can be a partner + Meta doing Meta things + Love Death and Robots!"

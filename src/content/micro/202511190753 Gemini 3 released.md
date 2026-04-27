@@ -1,5 +1,5 @@
 ---
-title: Gemini 3 released
+title: Gemini 3 Released
 slug: gemini-3-released
 pubDate: 2025-11-19T06:12:20.000Z
 updatedDate: 2025-11-19T06:12:20.000Z

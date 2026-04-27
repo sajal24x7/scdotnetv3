@@ -1,5 +1,5 @@
 ---
-title: Code is run more than read
+title: Code Is Run More Than Read
 slug: code-is-run-more-than-read
 pubDate: 2026-04-11T08:45:35.000Z
 updatedDate: 2026-04-11T08:45:35.000Z

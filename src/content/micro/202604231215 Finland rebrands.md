@@ -1,5 +1,5 @@
 ---
-title: Finland rebrands
+title: Finland Rebrands
 slug: finland-rebrands
 pubDate: 2026-04-23T09:18:20.000Z
 updatedDate: 2026-04-23T09:18:20.000Z

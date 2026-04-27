@@ -1,5 +1,5 @@
 ---
-title: "Proprietary formats"
+title: "Proprietary Formats"
 slug: "proprietary-formats"
 description: "A day spent copy pasting from Notes to Markdown"
 pubDate: 2024-12-02T03:57:28

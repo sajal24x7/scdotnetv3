@@ -1,5 +1,5 @@
 ---
-title: "Music can remind you of things"
+title: "Music Can Remind You of Things"
 slug: "music-can-remind-you-of-things"
 description: "It can transport you, across time and space"
 pubDate: 2024-12-12T03:41:48

@@ -1,5 +1,5 @@
 ---
-title: This is how you lose the time war
+title: This Is How You Lose the Time War
 slug: this-is-how-you-lose-the-time-war
 pubDate: 2025-12-02T07:59:15.000Z
 updatedDate: 2025-12-12T10:45:29+02:00

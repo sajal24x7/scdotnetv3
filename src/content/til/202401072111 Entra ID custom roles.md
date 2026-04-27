@@ -1,5 +1,5 @@
 ---
-title: Entra ID custom roles
+title: Entra ID Custom Roles
 slug: entra-id-custom-roles
 pubDate: '2024-01-07T21:11:00+03:00'
 updatedDate: '2024-01-07T21:11:00+03:00'

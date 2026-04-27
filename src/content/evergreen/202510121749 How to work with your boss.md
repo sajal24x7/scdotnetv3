@@ -1,5 +1,5 @@
 ---
-title: "How to work with your boss"
+title: "How to Work With Your Boss"
 slug: "how-to-work-with-your-boss"
 pubDate: 2025-10-12T21:15:01+03:00
 updatedDate: 2025-10-12T21:15:01+03:00

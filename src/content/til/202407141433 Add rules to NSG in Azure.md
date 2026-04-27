@@ -1,5 +1,5 @@
 ---
-title: Add rules to NSG in Azure
+title: Add Rules to NSG in Azure
 slug: add-rules-to-nsg-in-azure
 pubDate: '2024-07-14T14:33:00+03:00'
 updatedDate: '2024-07-14T14:33:00+03:00'

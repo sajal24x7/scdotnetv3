@@ -1,5 +1,5 @@
 ---
-title: Disable autoplay for all devices
+title: Disable Autoplay for All Devices
 slug: disable-autoplay-for-all-devices
 pubDate: '2024-07-09T14:58:00+03:00'
 updatedDate: '2024-07-09T14:58:00+03:00'

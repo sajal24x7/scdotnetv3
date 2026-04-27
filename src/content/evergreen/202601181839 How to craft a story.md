@@ -1,5 +1,5 @@
 ---
-title: How to craft a story
+title: How to Craft a Story
 slug: how-to-craft-a-story
 pubDate: 2026-01-28T08:49:01.000Z
 updatedDate: 2026-01-28T08:49:01.000Z

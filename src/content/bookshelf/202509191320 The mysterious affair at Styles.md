@@ -1,5 +1,5 @@
 ---
-title: "The mysterious affair at Styles"
+title: "The Mysterious Affair at Styles"
 slug: "the-mysterious-affair-at-styles"
 pubDate: 2025-09-22T23:11:06+03:00
 updatedDate: 2025-09-22T23:11:06+03:00

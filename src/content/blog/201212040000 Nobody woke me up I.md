@@ -1,5 +1,5 @@
 ---
-title: "Nobody woke me up, I'm up any ways!"
+title: "Nobody Woke Me up, I'm up Any Ways!"
 slug: "nobody-woke-me-up-i"
 pubDate: 2012-12-04T00:00:00
 updatedDate: 2024-04-29T00:00:00

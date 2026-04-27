@@ -1,5 +1,5 @@
 ---
-title: Use Azure Key Vault with bicep
+title: Use Azure Key Vault With Bicep
 slug: use-azure-key-vault-with-bicep
 pubDate: '2024-07-19T19:25:00+03:00'
 updatedDate: '2024-07-19T19:25:00+03:00'

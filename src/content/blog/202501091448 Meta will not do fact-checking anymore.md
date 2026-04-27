@@ -1,5 +1,5 @@
 ---
-title: "Meta will not do fact-checking anymore"
+title: "Meta Will Not Do Fact-Checking Anymore"
 slug: "meta-will-not-do-fact-checking-anymore"
 description: "Meta goes MAGA?"
 pubDate: 2025-01-09T14:48:42

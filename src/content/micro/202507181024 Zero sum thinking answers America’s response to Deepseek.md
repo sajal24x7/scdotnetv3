@@ -1,5 +1,5 @@
 ---
-title: "Zero sum thinking answers America’s response to Deepseek"
+title: "Zero Sum Thinking Answers America’s Response to Deepseek"
 slug: "zero-sum-thinking-answers-americas-response-to-deepseek"
 pubDate: 2025-07-18T10:35:11+03:00
 updatedDate: 2025-07-18T10:35:11+03:00

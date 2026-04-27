@@ -1,5 +1,5 @@
 ---
-title: Remove child items skipping one
+title: Remove Child Items Skipping One
 slug: remove-child-items-skipping-one
 pubDate: '2024-07-08T11:59:00+03:00'
 updatedDate: '2024-07-08T11:59:00+03:00'

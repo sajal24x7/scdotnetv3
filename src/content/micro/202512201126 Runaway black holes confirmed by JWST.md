@@ -1,5 +1,5 @@
 ---
-title: Runaway black holes confirmed by JWST
+title: Runaway Black Holes Confirmed by JWST
 slug: runaway-black-holes-confirmed-by-jwst
 pubDate: 2025-12-20T09:28:11.000Z
 updatedDate: 2025-12-20T09:28:11.000Z

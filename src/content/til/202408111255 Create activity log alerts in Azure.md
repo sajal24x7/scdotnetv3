@@ -1,5 +1,5 @@
 ---
-title: Create activity log alerts in Azure
+title: Create Activity Log Alerts in Azure
 slug: create-activity-log-alerts-in-azure
 pubDate: '2024-08-11T12:55:00+03:00'
 updatedDate: '2024-08-11T12:55:00+03:00'

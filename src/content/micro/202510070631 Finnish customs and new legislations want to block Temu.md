@@ -1,5 +1,5 @@
 ---
-title: Finnish customs and new legislations want to block Temu
+title: Finnish Customs and New Legislations Want to Block Temu
 slug: finnish-customs-and-new-legislations-want-to-block-temu
 pubDate: 2025-10-07T03:35:07.000Z
 updatedDate: 2025-10-07T03:35:07.000Z

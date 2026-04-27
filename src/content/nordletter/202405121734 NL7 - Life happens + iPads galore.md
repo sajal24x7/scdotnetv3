@@ -1,5 +1,5 @@
 ---
-title: "Life happens + iPads galore"
+title: "Life Happens + iPads Galore"
 edition: 7
 slug: "life-happens-ipads-galore"
 description: "Nord Letter #7 - Meeting people + Food + iPads"

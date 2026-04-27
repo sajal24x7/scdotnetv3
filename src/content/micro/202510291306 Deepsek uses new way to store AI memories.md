@@ -1,5 +1,5 @@
 ---
-title: Deepsek uses new way to store AI memories
+title: Deepsek Uses New Way to Store AI Memories
 slug: deepsek-uses-new-way-to-store-ai-memories
 pubDate: 2025-10-30T08:30:10.000Z
 updatedDate: 2025-10-30T08:30:10.000Z

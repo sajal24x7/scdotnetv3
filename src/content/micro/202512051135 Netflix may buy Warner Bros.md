@@ -1,5 +1,5 @@
 ---
-title: Netflix may buy Warner Bros
+title: Netflix May Buy Warner Bros
 slug: netflix-may-buy-warner-bros
 pubDate: 2025-12-05T09:37:32.000Z
 updatedDate: 2025-12-05T09:37:32.000Z

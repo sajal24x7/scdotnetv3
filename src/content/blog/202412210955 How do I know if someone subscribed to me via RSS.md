@@ -1,5 +1,5 @@
 ---
-title: "How do I know if someone subscribed to me via RSS"
+title: "How Do I Know If Someone Subscribed to Me via RSS"
 slug: "how-do-i-know-if-someone-subscribed-to-me-via-rss"
 description: "Fans everywhere. Fans nowhere."
 pubDate: 2024-12-21T09:55:00

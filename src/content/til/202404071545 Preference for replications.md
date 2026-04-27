@@ -1,5 +1,5 @@
 ---
-title: Preference for replications
+title: Preference for Replications
 slug: preference-for-replications
 pubDate: '2024-04-07T15:45:00+03:00'
 updatedDate: '2024-04-07T15:45:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: Windows get last boot time
+title: Windows Get Last Boot Time
 slug: windows-get-last-boot-time
 pubDate: '2023-06-28T14:25:00+03:00'
 updatedDate: '2023-06-28T14:25:00+03:00'

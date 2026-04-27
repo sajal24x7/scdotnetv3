@@ -1,5 +1,5 @@
 ---
-title: Convert a dynamic dns record to static
+title: Convert a Dynamic Dns Record to Static
 slug: convert-a-dynamic-dns-record-to-static
 pubDate: '2022-05-25T14:14:00+03:00'
 updatedDate: '2022-05-25T14:14:00+03:00'

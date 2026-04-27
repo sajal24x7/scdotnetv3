@@ -1,5 +1,5 @@
 ---
-title: How to decommission an ESXi
+title: How to Decommission an ESXi
 slug: how-to-decommission-an-esxi
 pubDate: '2024-04-22T13:46:00+03:00'
 updatedDate: '2024-04-22T13:46:00+03:00'

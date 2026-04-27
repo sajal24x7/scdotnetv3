@@ -1,5 +1,5 @@
 ---
-title: Nothing announces new community designed Phone 3A
+title: Nothing Announces New Community Designed Phone 3A
 slug: nothing-announces-new-community-designed-phone-3a
 pubDate: 2025-12-10T10:42:01.000Z
 updatedDate: 2025-12-10T10:42:01.000Z

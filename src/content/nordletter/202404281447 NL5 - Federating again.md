@@ -1,5 +1,5 @@
 ---
-title: "Federating again"
+title: "Federating Again"
 edition: 5
 slug: "federating-again"
 description: "Nord Letter #5 - Ghost Activitypub + Information Flow"

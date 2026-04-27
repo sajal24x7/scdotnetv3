@@ -1,5 +1,5 @@
 ---
-title: Claude gets superpowers
+title: Claude Gets Superpowers
 slug: claude-gets-superpowers
 pubDate: 2025-10-11T03:50:03.000Z
 updatedDate: 2025-10-11T03:50:03.000Z

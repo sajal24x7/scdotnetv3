@@ -1,5 +1,5 @@
 ---
-title: Internal Oxide tips on LLM use
+title: Internal Oxide Tips on LLM Use
 slug: internal-oxide-tips-on-llm-use
 pubDate: 2025-12-08T13:42:38.000Z
 updatedDate: 2025-12-08T13:42:38.000Z

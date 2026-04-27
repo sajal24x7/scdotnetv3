@@ -1,5 +1,5 @@
 ---
-title: "A tale of four chat bots"
+title: "A Tale of Four Chat Bots"
 slug: "a-tale-of-four-chat-bots"
 pubDate: 2025-04-18T20:09:00
 updatedDate: 2025-04-18T21:09:44

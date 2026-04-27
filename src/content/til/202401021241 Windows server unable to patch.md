@@ -1,5 +1,5 @@
 ---
-title: Windows server unable to patch
+title: Windows Server Unable to Patch
 slug: windows-server-unable-to-patch
 pubDate: '2024-01-02T12:41:00+03:00'
 updatedDate: '2024-01-02T12:41:00+03:00'

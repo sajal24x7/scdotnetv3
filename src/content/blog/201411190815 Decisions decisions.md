@@ -1,5 +1,5 @@
 ---
-title: "Decisions decisions!"
+title: "Decisions Decisions!"
 slug: "decisions-decisions"
 pubDate: 2014-11-19T08:15:34
 updatedDate: 2014-11-19T08:15:34

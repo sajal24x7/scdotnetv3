@@ -1,5 +1,5 @@
 ---
-title: Mico announced for copilot voice mode
+title: Mico Announced for Copilot Voice Mode
 slug: mico-announced-for-copilot-voice-mode
 pubDate: 2025-10-23T18:13:59.000Z
 updatedDate: 2025-10-23T18:13:59.000Z

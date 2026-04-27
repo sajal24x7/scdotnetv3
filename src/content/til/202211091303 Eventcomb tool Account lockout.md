@@ -1,5 +1,5 @@
 ---
-title: Eventcomb tool Account lockout
+title: Eventcomb Tool Account Lockout
 slug: eventcomb-tool-account-lockout
 pubDate: '2022-11-09T13:03:00+03:00'
 updatedDate: '2022-11-09T13:03:00+03:00'

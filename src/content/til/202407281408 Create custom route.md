@@ -1,5 +1,5 @@
 ---
-title: Create custom route
+title: Create Custom Route
 slug: create-custom-route
 pubDate: '2024-07-28T14:08:00+03:00'
 updatedDate: '2024-07-28T14:08:00+03:00'

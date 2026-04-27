@@ -1,5 +1,5 @@
 ---
-title: "Helsinki daycares step up against mini bullies"
+title: "Helsinki Daycares Step up Against Mini Bullies"
 slug: "helsinki-daycares-step-up-against-mini-bullies"
 pubDate: 2025-08-06T14:28:08+03:00
 updatedDate: 2025-08-06T14:28:08+03:00

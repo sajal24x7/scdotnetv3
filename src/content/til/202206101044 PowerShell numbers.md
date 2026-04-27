@@ -1,5 +1,5 @@
 ---
-title: PowerShell numbers
+title: PowerShell Numbers
 slug: powershell-numbers
 pubDate: '2022-06-10T10:44:00+03:00'
 updatedDate: '2022-06-10T10:44:00+03:00'

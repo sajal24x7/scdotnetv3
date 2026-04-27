@@ -1,5 +1,5 @@
 ---
-title: "Get ACL for AD object"
+title: "Get ACL for AD Object"
 slug: "get-acl-for-ad-object"
 pubDate: 2025-05-05T12:39:14+03:00
 updatedDate: 2025-05-05T12:39:14+03:00

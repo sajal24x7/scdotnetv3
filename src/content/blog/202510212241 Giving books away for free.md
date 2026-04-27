@@ -1,5 +1,5 @@
 ---
-title: Giving books away for free
+title: Giving Books Away for Free
 slug: giving-books-away-for-free
 pubDate: 2025-10-21T19:49:04.000Z
 updatedDate: 2025-10-21T19:49:04.000Z

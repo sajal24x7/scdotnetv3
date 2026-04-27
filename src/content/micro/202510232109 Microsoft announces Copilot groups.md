@@ -1,5 +1,5 @@
 ---
-title: Microsoft announces Copilot groups
+title: Microsoft Announces Copilot Groups
 slug: microsoft-announces-copilot-groups
 pubDate: 2025-10-23T18:11:35.000Z
 updatedDate: 2025-10-23T18:11:35.000Z

@@ -1,5 +1,5 @@
 ---
-title: Remote Work is Officially Dead
+title: Remote Work Is Officially Dead
 slug: remote-work-is-officially-dead
 pubDate: 2025-12-23T20:15:48.000Z
 updatedDate: 2025-12-23T20:15:48.000Z

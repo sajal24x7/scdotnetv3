@@ -1,5 +1,5 @@
 ---
-title: This is not the computer for you
+title: This Is Not the Computer for You
 slug: this-is-not-the-computer-for-you
 pubDate: 2026-03-13T19:48:42.000Z
 updatedDate: 2026-03-13T19:48:42.000Z

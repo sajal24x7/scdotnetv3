@@ -1,5 +1,5 @@
 ---
-title: "Five Seconds of Life: 1. The trip"
+title: "Five Seconds of Life: 1. The Trip"
 slug: "five-seconds-of-life-1-the-trip"
 pubDate: 2014-09-08T21:00:02
 updatedDate: 2014-09-08T21:00:02

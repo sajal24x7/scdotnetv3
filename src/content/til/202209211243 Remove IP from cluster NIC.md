@@ -1,5 +1,5 @@
 ---
-title: Remove IP from cluster NIC
+title: Remove IP From Cluster NIC
 slug: remove-ip-from-cluster-nic
 pubDate: '2022-09-21T12:43:00+03:00'
 updatedDate: '2022-09-21T12:43:00+03:00'

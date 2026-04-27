@@ -1,5 +1,5 @@
 ---
-title: "Books I've read this year"
+title: "Books I've Read This Year"
 slug: "books-ive-read-this-year-2024"
 description: "16 - that's the number"
 pubDate: 2024-12-25T00:00:00

@@ -1,5 +1,5 @@
 ---
-title: "Om Malik on the effects of automating everything"
+title: "Om Malik on the Effects of Automating Everything"
 slug: "om-malik-on-the-effects-of-automating-everything"
 pubDate: 2025-07-19T11:16:19+03:00
 updatedDate: 2025-07-19T11:16:19+03:00

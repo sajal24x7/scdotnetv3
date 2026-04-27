@@ -1,5 +1,5 @@
 ---
-title: "Looks like nuclear fusion is picking up steam"
+title: "Looks Like Nuclear Fusion Is Picking up Steam"
 slug: "looks-like-nuclear-fusion-is-picking-up-steam"
 pubDate: 2025-08-27T06:46:11+03:00
 updatedDate: 2025-08-27T06:46:11+03:00

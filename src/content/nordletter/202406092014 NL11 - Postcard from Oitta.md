@@ -1,5 +1,5 @@
 ---
-title: Postcard from Oitta
+title: Postcard From Oitta
 slug: postcard-from-oitta
 description: "Nord Letter #11 - Pristine waters at Oitta"
 pubDate: 2024-06-09T20:14:27

@@ -1,5 +1,5 @@
 ---
-title: VMware set SSH service
+title: VMware Set SSH Service
 slug: vmware-set-ssh-service
 pubDate: '2024-07-12T13:40:00+03:00'
 updatedDate: '2024-07-12T13:40:00+03:00'

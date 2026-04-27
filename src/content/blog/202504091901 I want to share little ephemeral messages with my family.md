@@ -1,5 +1,5 @@
 ---
-title: "I want to share little ephemeral messages with my family"
+title: "I Want to Share Little Ephemeral Messages With My Family"
 slug: "i-want-to-share-little-ephemeral-messages-with-my-family"
 description: "Like this picture of the skies I took while out on my walk"
 pubDate: 2025-04-09T19:01:56

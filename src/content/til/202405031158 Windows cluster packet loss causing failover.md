@@ -1,5 +1,5 @@
 ---
-title: Windows cluster packet loss causing failover
+title: Windows Cluster Packet Loss Causing Failover
 slug: windows-cluster-packet-loss-causing-failover
 pubDate: '2024-05-03T11:58:00+03:00'
 updatedDate: '2024-05-03T11:58:00+03:00'

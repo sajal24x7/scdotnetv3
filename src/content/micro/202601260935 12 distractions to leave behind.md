@@ -1,5 +1,5 @@
 ---
-title: 12 distractions to leave behind
+title: 12 Distractions to Leave Behind
 slug: 12-distractions-to-leave-behind
 pubDate: 2026-01-26T04:08:18.000Z
 updatedDate: 2026-01-26T04:08:18.000Z

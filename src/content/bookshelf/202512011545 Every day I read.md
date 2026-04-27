@@ -1,5 +1,5 @@
 ---
-title: Every day I read
+title: Every Day I Read
 slug: every-day-i-read
 pubDate: 2025-12-01T13:46:21.000Z
 updatedDate: 2025-12-01T13:46:21.000Z

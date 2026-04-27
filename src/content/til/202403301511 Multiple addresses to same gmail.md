@@ -1,5 +1,5 @@
 ---
-title: Multiple addresses to same gmail
+title: Multiple Addresses to Same Gmail
 slug: multiple-addresses-to-same-gmail
 pubDate: '2024-03-30T15:11:00+03:00'
 updatedDate: '2024-03-30T15:11:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: What to automate
+title: What to Automate
 slug: what-to-automate
 pubDate: 2025-10-16T10:26:58.000Z
 updatedDate: 2025-10-16T10:26:58.000Z

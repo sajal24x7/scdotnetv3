@@ -1,5 +1,5 @@
 ---
-title: How to use Claude code for generating ideas and other things
+title: How to Use Claude Code for Generating Ideas and Other Things
 slug: how-to-use-claude-code-for-generating-ideas-and-other-things
 pubDate: 2025-09-13T17:52:27.000Z
 updatedDate: 2025-09-13T17:52:27.000Z

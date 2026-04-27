@@ -1,5 +1,5 @@
 ---
-title: Set alias for cluster resource record
+title: Set Alias for Cluster Resource Record
 slug: set-alias-for-cluster-resource-record
 pubDate: '2024-04-09T14:51:00+03:00'
 updatedDate: '2024-04-09T14:51:00+03:00'

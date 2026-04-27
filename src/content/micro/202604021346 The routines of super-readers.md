@@ -1,5 +1,5 @@
 ---
-title: The routines of super-readers
+title: The Routines of Super-Readers
 slug: the-routines-of-super-readers
 pubDate: 2026-04-02T13:40:34.000Z
 updatedDate: 2026-04-02T13:40:34.000Z

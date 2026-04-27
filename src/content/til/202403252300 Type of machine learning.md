@@ -1,5 +1,5 @@
 ---
-title: Type of machine learning
+title: Type of Machine Learning
 slug: type-of-machine-learning
 pubDate: '2024-03-25T23:00:00+03:00'
 updatedDate: '2024-03-25T23:00:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "Good food takes time to prepare"
+title: "Good Food Takes Time to Prepare"
 slug: "good-food-takes-time-to-prepare"
 description: "Patience is a virtue"
 pubDate: 2025-03-14T20:52:38

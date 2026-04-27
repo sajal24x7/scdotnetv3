@@ -1,5 +1,5 @@
 ---
-title: The quick python book
+title: The Quick Python Book
 slug: the-quick-python-book
 pubDate: 2025-09-28T13:57:42+03:00
 updatedDate: 2025-09-28T13:57:42+03:00

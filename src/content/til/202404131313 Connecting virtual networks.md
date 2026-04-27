@@ -1,5 +1,5 @@
 ---
-title: Connecting virtual networks
+title: Connecting Virtual Networks
 slug: connecting-virtual-networks
 pubDate: '2024-04-13T13:13:00+03:00'
 updatedDate: '2024-04-13T13:13:00+03:00'

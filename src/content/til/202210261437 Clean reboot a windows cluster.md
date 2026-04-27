@@ -1,5 +1,5 @@
 ---
-title: Clean reboot a windows cluster
+title: Clean Reboot a Windows Cluster
 slug: clean-reboot-a-windows-cluster
 pubDate: '2022-10-26T14:37:00+03:00'
 updatedDate: '2022-10-26T14:37:00+03:00'

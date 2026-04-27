@@ -1,5 +1,5 @@
 ---
-title: The wedding edition
+title: The Wedding Edition
 slug: nl91-the-wedding-edition
 edition: 91
 image: 'https://storage.sajalchoudhary.net/images/2026/02/NL91-06.jpeg'

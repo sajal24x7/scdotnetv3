@@ -1,5 +1,5 @@
 ---
-title: How to assign licenses in Entra
+title: How to Assign Licenses in Entra
 slug: how-to-assign-licenses-in-entra
 pubDate: '2024-08-28T19:30:00+03:00'
 updatedDate: '2024-08-28T19:30:00+03:00'

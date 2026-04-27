@@ -1,5 +1,5 @@
 ---
-title: Velero install
+title: Velero Install
 slug: velero-install
 pubDate: '2022-09-26T12:54:00+03:00'
 updatedDate: '2022-09-26T12:54:00+03:00'

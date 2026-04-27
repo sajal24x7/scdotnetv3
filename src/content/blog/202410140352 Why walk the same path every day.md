@@ -1,5 +1,5 @@
 ---
-title: "Why walk the same path every day"
+title: "Why Walk the Same Path Every Day"
 slug: "why-walk-the-same-path-every-day"
 description: "Ignore the path"
 pubDate: 2024-10-14T03:52:57

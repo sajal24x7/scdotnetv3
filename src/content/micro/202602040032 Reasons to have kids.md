@@ -1,5 +1,5 @@
 ---
-title: Reasons to have kids
+title: Reasons to Have Kids
 slug: reasons-to-have-kids
 pubDate: 2026-02-03T19:03:44.000Z
 updatedDate: 2026-02-03T19:03:44.000Z

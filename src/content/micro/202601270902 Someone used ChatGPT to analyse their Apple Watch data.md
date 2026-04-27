@@ -1,5 +1,5 @@
 ---
-title: Someone used ChatGPT to analyse their Apple Watch data
+title: Someone Used ChatGPT to Analyse Their Apple Watch Data
 slug: someone-used-chatgpt-to-analyse-their-apple-watch-data
 pubDate: 2026-01-27T03:35:00.000Z
 updatedDate: 2026-01-27T03:35:00.000Z

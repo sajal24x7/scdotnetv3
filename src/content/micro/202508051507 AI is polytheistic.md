@@ -1,5 +1,5 @@
 ---
-title: "AI is polytheistic"
+title: "AI Is Polytheistic"
 slug: "ai-is-polytheistic"
 pubDate: 2025-08-05T15:08:21+03:00
 updatedDate: 2025-08-05T15:08:21+03:00

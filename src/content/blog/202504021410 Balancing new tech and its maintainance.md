@@ -1,5 +1,5 @@
 ---
-title: "Balancing new tech and its maintainance"
+title: "Balancing New Tech and Its Maintainance"
 slug: "balancing-new-tech-and-its-maintainance"
 pubDate: 2025-04-02T14:10:26
 updatedDate: 2025-04-02T14:10:26

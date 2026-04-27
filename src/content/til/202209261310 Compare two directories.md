@@ -1,5 +1,5 @@
 ---
-title: Compare two directories
+title: Compare Two Directories
 slug: compare-two-directories
 pubDate: '2022-09-26T13:10:00+03:00'
 updatedDate: '2022-09-26T13:10:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "VW announces ID. Cross"
+title: "VW Announces ID. Cross"
 slug: "vw-announces-id-cross"
 pubDate: 2025-09-07T19:52:04+03:00
 updatedDate: 2025-09-07T19:52:04+03:00

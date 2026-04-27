@@ -1,5 +1,5 @@
 ---
-title: Manually cleaning DFSR folder
+title: Manually Cleaning DFSR Folder
 slug: manually-cleaning-dfsr-folder
 pubDate: '2024-12-02T11:41:00+03:00'
 updatedDate: '2024-12-02T11:41:00+03:00'

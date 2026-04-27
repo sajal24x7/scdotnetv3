@@ -1,5 +1,5 @@
 ---
-title: "Things that I think about"
+title: "Things That I Think About"
 slug: "things-that-i-think-about"
 pubDate: 2016-08-31T21:56:25
 updatedDate: 2024-04-13T14:09:51

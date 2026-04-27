@@ -1,5 +1,5 @@
 ---
-title: Problems with gamifying reading
+title: Problems With Gamifying Reading
 slug: problems-with-gamifying-reading
 pubDate: 2026-03-05T10:42:28.000Z
 updatedDate: 2026-03-05T10:42:28.000Z

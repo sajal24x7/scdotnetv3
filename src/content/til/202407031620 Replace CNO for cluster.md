@@ -1,5 +1,5 @@
 ---
-title: Replace CNO for cluster
+title: Replace CNO for Cluster
 slug: replace-cno-for-cluster
 pubDate: '2024-07-03T16:20:00+03:00'
 updatedDate: '2024-07-03T16:20:00+03:00'

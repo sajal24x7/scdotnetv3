@@ -1,5 +1,5 @@
 ---
-title: "About the Pareto principle"
+title: "About the Pareto Principle"
 slug: "about-the-pareto-principle"
 description: "And the value of putting in the work"
 pubDate: 2025-03-05T21:54:00

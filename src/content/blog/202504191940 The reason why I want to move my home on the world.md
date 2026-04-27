@@ -1,5 +1,5 @@
 ---
-title: "The reason why I want to move my home on the world"
+title: "The Reason Why I Want to Move My Home on the World"
 slug: "the-reason-why-i-want-to-move-my-home-on-the-world"
 pubDate: 2025-04-19T19:40:25
 updatedDate: 2025-04-19T19:40:25

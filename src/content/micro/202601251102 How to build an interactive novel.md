@@ -1,5 +1,5 @@
 ---
-title: How to build an interactive novel
+title: How to Build an Interactive Novel
 slug: how-to-build-an-interactive-novel
 pubDate: 2026-01-25T05:35:06.000Z
 updatedDate: 2026-01-25T05:35:06.000Z

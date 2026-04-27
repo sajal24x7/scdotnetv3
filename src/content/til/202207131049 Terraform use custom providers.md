@@ -1,5 +1,5 @@
 ---
-title: Terraform use custom providers
+title: Terraform Use Custom Providers
 slug: terraform-use-custom-providers
 pubDate: '2022-07-13T10:49:00+03:00'
 updatedDate: '2022-07-13T10:49:00+03:00'

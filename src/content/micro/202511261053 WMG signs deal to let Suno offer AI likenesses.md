@@ -1,5 +1,5 @@
 ---
-title: WMG signs deal to let Suno offer AI likenesses
+title: WMG Signs Deal to Let Suno Offer AI Likenesses
 slug: wmg-signs-deal-to-let-suno-offer-ai-likenesses
 pubDate: 2025-11-26T08:54:39.000Z
 updatedDate: 2025-11-26T08:54:39.000Z

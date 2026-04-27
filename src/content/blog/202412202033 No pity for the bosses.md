@@ -1,5 +1,5 @@
 ---
-title: "No pity for the bosses"
+title: "No Pity for the Bosses"
 slug: "no-pity-for-the-bosses"
 description: "Apps make everything legal"
 pubDate: 2024-12-20T20:33:28

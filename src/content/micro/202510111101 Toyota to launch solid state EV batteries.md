@@ -1,5 +1,5 @@
 ---
-title: Toyota to launch solid state EV batteries
+title: Toyota to Launch Solid State EV Batteries
 slug: toyota-to-launch-solid-state-ev-batteries
 pubDate: 2025-10-11T08:02:26.000Z
 updatedDate: 2025-10-11T08:02:26.000Z

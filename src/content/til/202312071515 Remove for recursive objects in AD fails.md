@@ -1,5 +1,5 @@
 ---
-title: Remove for recursive objects in AD fails
+title: Remove for Recursive Objects in AD Fails
 slug: remove-for-recursive-objects-in-ad-fails
 pubDate: '2023-12-07T15:15:00+03:00'
 updatedDate: '2023-12-07T15:15:00+03:00'

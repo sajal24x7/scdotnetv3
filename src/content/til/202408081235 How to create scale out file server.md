@@ -1,5 +1,5 @@
 ---
-title: How to create scale out file server
+title: How to Create Scale out File Server
 slug: how-to-create-scale-out-file-server
 pubDate: '2024-08-08T12:35:00+03:00'
 updatedDate: '2024-08-08T12:35:00+03:00'

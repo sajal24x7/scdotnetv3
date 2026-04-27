@@ -1,5 +1,5 @@
 ---
-title: ESXi set syslog
+title: ESXi Set Syslog
 slug: esxi-set-syslog
 pubDate: '2024-09-05T11:17:00+03:00'
 updatedDate: '2024-09-05T11:17:00+03:00'

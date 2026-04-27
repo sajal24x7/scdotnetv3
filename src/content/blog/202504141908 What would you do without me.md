@@ -1,5 +1,5 @@
 ---
-title: "What would you do without me?"
+title: "What Would You Do Without Me?"
 slug: "what-would-you-do-without-me"
 description: "Remarry (Bad jokes and me)"
 pubDate: 2025-04-14T19:08:41

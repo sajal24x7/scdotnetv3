@@ -1,5 +1,5 @@
 ---
-title: Seeing the crown bridge
+title: Seeing the Crown Bridge
 slug: nl102-seeing-the-crown-bridge
 edition: 102
 image: 'https://storage.sajalchoudhary.net/images/2026/04/nl02-08.jpeg'

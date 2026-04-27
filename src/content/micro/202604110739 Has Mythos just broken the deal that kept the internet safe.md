@@ -1,5 +1,5 @@
 ---
-title: Has Mythos just broken the deal that kept the internet safe
+title: Has Mythos Just Broken the Deal That Kept the Internet Safe
 slug: has-mythos-just-broken-the-deal-that-kept-the-internet-safe
 pubDate: 2026-04-11T08:43:29.000Z
 updatedDate: 2026-04-11T08:43:29.000Z

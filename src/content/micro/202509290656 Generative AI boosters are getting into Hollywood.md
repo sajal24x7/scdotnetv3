@@ -1,5 +1,5 @@
 ---
-title: Generative AI boosters are getting into Hollywood
+title: Generative AI Boosters Are Getting Into Hollywood
 slug: generative-ai-boosters-are-getting-into-hollywood
 pubDate: 2025-09-29T04:08:32.000Z
 updatedDate: 2025-09-29T04:08:32.000Z

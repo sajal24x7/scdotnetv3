@@ -1,5 +1,5 @@
 ---
-title: Windows host file
+title: Windows Host File
 slug: windows-host-file
 pubDate: '2023-09-18T14:32:00+03:00'
 updatedDate: '2023-09-18T14:32:00+03:00'

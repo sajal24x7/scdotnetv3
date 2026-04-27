@@ -1,5 +1,5 @@
 ---
-title: "Boiling frogs and global warming"
+title: "Boiling Frogs and Global Warming"
 slug: "boiling-frogs-and-global-warming"
 pubDate: 2025-03-28T04:27:26
 updatedDate: 2025-03-28T04:27:25

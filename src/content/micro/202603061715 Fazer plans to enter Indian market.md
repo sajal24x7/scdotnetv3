@@ -1,5 +1,5 @@
 ---
-title: Fazer plans to enter Indian market
+title: Fazer Plans to Enter Indian Market
 slug: fazer-plans-to-enter-indian-market
 pubDate: 2026-03-06T15:16:52.000Z
 updatedDate: 2026-03-06T15:16:52.000Z

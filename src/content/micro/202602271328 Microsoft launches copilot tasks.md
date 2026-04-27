@@ -1,5 +1,5 @@
 ---
-title: Microsoft launches copilot tasks
+title: Microsoft Launches Copilot Tasks
 slug: microsoft-launches-copilot-tasks
 pubDate: 2026-02-27T11:30:37.000Z
 updatedDate: 2026-02-27T11:30:37.000Z

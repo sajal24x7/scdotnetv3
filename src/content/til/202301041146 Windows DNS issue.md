@@ -1,5 +1,5 @@
 ---
-title: Windows DNS issue
+title: Windows DNS Issue
 slug: windows-dns-issue
 pubDate: '2023-01-04T11:46:00+03:00'
 updatedDate: '2023-01-04T11:46:00+03:00'

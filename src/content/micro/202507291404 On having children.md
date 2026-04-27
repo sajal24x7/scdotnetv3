@@ -1,5 +1,5 @@
 ---
-title: "On having children"
+title: "On Having Children"
 slug: "on-having-children"
 pubDate: 2025-07-29T14:08:55+03:00
 updatedDate: 2025-07-29T14:08:55+03:00

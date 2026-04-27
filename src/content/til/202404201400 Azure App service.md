@@ -1,5 +1,5 @@
 ---
-title: Azure App service
+title: Azure App Service
 slug: azure-app-service
 pubDate: '2024-04-20T14:00:00+03:00'
 updatedDate: '2024-04-20T14:00:00+03:00'

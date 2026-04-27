@@ -1,5 +1,5 @@
 ---
-title: Write only code
+title: Write Only Code
 slug: write-only-code
 pubDate: 2026-02-23T05:39:51.000Z
 updatedDate: 2026-02-23T05:39:51.000Z

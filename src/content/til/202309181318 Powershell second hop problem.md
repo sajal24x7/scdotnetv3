@@ -1,5 +1,5 @@
 ---
-title: Powershell second hop problem
+title: Powershell Second Hop Problem
 slug: powershell-second-hop-problem
 pubDate: '2023-09-18T13:18:00+03:00'
 updatedDate: '2023-09-18T13:18:00+03:00'

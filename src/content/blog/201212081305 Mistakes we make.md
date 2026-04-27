@@ -1,5 +1,5 @@
 ---
-title: "Mistakes we make!"
+title: "Mistakes We Make!"
 slug: "mistakes-we-make"
 pubDate: 2012-12-08T13:05:11
 updatedDate: 2024-04-29T14:04:15

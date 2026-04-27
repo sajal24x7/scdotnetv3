@@ -1,5 +1,5 @@
 ---
-title: "I miss walking"
+title: "I Miss Walking"
 edition: 2
 slug: "i-miss-walking"
 description: "Nord Letter #2 - Walking"

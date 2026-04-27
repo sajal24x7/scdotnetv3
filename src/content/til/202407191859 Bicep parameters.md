@@ -1,5 +1,5 @@
 ---
-title: Bicep parameters
+title: Bicep Parameters
 slug: bicep-parameters
 pubDate: '2024-07-19T18:59:00+03:00'
 updatedDate: '2024-07-19T18:59:00+03:00'

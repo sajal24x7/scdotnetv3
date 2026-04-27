@@ -1,5 +1,5 @@
 ---
-title: Azure Open source DB
+title: Azure Open Source DB
 slug: azure-open-source-db
 pubDate: '2024-04-24T17:15:00+03:00'
 updatedDate: '2024-04-24T17:15:00+03:00'

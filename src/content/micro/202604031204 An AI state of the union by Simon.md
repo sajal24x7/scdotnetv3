@@ -1,5 +1,5 @@
 ---
-title: An AI state of the union by Simon
+title: An AI State of the Union by Simon
 slug: an-ai-state-of-the-union-by-simon
 pubDate: 2026-04-03T09:06:05.000Z
 updatedDate: 2026-04-03T09:06:05.000Z

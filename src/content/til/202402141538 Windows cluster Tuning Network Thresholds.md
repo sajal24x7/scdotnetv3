@@ -1,5 +1,5 @@
 ---
-title: Windows cluster Tuning Network Thresholds
+title: Windows Cluster Tuning Network Thresholds
 slug: windows-cluster-tuning-network-thresholds
 pubDate: '2024-02-14T15:38:00+03:00'
 updatedDate: '2024-02-14T15:38:00+03:00'

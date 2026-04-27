@@ -1,5 +1,5 @@
 ---
-title: "Some things should be free"
+title: "Some Things Should Be Free"
 edition: 57
 slug: "some-things-should-be-free"
 pubDate: 2025-04-27T02:47:41

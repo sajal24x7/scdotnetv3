@@ -1,5 +1,5 @@
 ---
-title: "Hard works trumps talent every time"
+title: "Hard Works Trumps Talent Every Time"
 slug: "hard-works-trumps-talent-every-time"
 description: "Every damn time"
 pubDate: 2025-01-01T03:42:25

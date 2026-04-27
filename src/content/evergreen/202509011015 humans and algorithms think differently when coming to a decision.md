@@ -1,5 +1,5 @@
 ---
-title: "Humans and algorithms think differently when coming to a decision"
+title: "Humans and Algorithms Think Differently When Coming to a Decision"
 slug: "humans-and-algorithms-think-differently-when-coming-to-a-decision"
 pubDate: 2025-09-01T10:25:34+03:00
 updatedDate: 2025-09-01T10:25:34+03:00

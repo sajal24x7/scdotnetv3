@@ -1,5 +1,5 @@
 ---
-title: Add custom domain to Entra ID
+title: Add Custom Domain to Entra ID
 slug: add-custom-domain-to-entra-id
 pubDate: '2024-08-28T19:22:00+03:00'
 updatedDate: '2024-08-28T19:22:00+03:00'

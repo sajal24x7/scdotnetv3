@@ -1,5 +1,5 @@
 ---
-title: Write for one person
+title: Write for One Person
 slug: write-for-one-person
 pubDate: 2025-12-26T17:59:24.000Z
 updatedDate: 2025-12-26T17:59:24.000Z

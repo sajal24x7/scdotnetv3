@@ -1,5 +1,5 @@
 ---
-title: DNS delegation
+title: DNS Delegation
 slug: dns-delegation
 pubDate: '2024-10-17T15:08:00+03:00'
 updatedDate: '2024-10-17T15:08:00+03:00'

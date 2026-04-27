@@ -1,5 +1,5 @@
 ---
-title: "Linkin Park are back"
+title: "Linkin Park Are Back"
 slug: "linkin-park-are-back"
 description: "The emptiness machine"
 pubDate: 2024-09-28T18:09:04

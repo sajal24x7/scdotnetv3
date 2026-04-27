@@ -1,5 +1,5 @@
 ---
-title: "The human condition"
+title: "The Human Condition"
 edition: 33
 slug: "the-human-condition"
 description: "Curing cancer + e-Vitara + President of the USA"

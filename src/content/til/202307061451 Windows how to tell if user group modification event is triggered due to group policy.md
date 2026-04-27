@@ -1,5 +1,5 @@
 ---
-title: Windows how to tell if user group modification event is triggered due to group
+title: Windows How to Tell If User Group Modification Event Is Triggered Due to Group
   policy
 slug: windows-how-to-tell-if-user-group-modification-event-is-triggered-due-to-group-policy
 pubDate: '2023-07-06T14:51:00+03:00'

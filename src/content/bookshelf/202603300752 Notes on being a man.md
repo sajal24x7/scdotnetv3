@@ -1,5 +1,5 @@
 ---
-title: Notes on being a man
+title: Notes on Being a Man
 slug: reading-notes-on-being-a-man
 pubDate: 2026-03-30T04:53:56.000Z
 updatedDate: 2026-03-30T04:53:56.000Z

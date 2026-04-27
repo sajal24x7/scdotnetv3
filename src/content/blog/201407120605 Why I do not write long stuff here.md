@@ -1,5 +1,5 @@
 ---
-title: "Why I do not write long stuff here!"
+title: "Why I Do Not Write Long Stuff Here!"
 slug: "why-i-do-not-write-long-stuff-here"
 pubDate: 2014-07-12T06:05:31
 updatedDate: 2024-01-28T11:05:58

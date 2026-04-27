@@ -1,5 +1,5 @@
 ---
-title: Convert cis pdf to csv
+title: Convert Cis Pdf to Csv
 slug: convert-cis-pdf-to-csv
 pubDate: '2024-08-16T16:19:00+03:00'
 updatedDate: '2024-08-16T16:19:00+03:00'

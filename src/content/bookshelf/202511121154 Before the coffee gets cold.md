@@ -1,5 +1,5 @@
 ---
-title: Before the coffee gets cold
+title: Before the Coffee Gets Cold
 slug: before-the-coffee-gets-cold
 pubDate: 2025-11-12T10:06:04.000Z
 updatedDate: 2025-11-12T10:06:04.000Z

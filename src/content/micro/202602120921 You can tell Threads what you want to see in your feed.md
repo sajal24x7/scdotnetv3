@@ -1,5 +1,5 @@
 ---
-title: You can tell Threads what you want to see in your feed
+title: You Can Tell Threads What You Want to See in Your Feed
 slug: you-can-tell-threads-what-you-want-to-see-in-your-feed
 pubDate: 2026-02-12T03:52:54.000Z
 updatedDate: 2026-02-12T03:52:54.000Z

@@ -1,5 +1,5 @@
 ---
-title: Windows disable ipv6
+title: Windows Disable Ipv6
 slug: windows-disable-ipv6
 pubDate: '2022-12-21T15:01:00+03:00'
 updatedDate: '2022-12-21T15:01:00+03:00'

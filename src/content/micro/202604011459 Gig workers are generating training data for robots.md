@@ -1,5 +1,5 @@
 ---
-title: Gig workers are generating training data for robots
+title: Gig Workers Are Generating Training Data for Robots
 slug: gig-workers-are-generating-training-data-for-robots
 pubDate: 2026-04-01T11:59:44.000Z
 updatedDate: 2026-04-01T11:59:44.000Z

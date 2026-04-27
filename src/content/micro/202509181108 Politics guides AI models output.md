@@ -1,5 +1,5 @@
 ---
-title: Politics guides AI models output
+title: Politics Guides AI Models Output
 slug: politics-guides-ai-models-output
 pubDate: 2025-09-18T08:10:06.000Z
 updatedDate: 2025-09-18T08:10:06.000Z

@@ -1,5 +1,5 @@
 ---
-title: Create windows firewall with gpo
+title: Create Windows Firewall With Gpo
 slug: create-windows-firewall-with-gpo
 pubDate: '2024-06-20T16:11:00+03:00'
 updatedDate: '2024-06-20T16:11:00+03:00'

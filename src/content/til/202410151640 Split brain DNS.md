@@ -1,5 +1,5 @@
 ---
-title: Split brain DNS
+title: Split Brain DNS
 slug: split-brain-dns
 pubDate: '2024-10-15T16:40:00+03:00'
 updatedDate: '2024-10-15T16:40:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "Update firewall on VMware"
+title: "Update Firewall on VMware"
 slug: "update-firewall-on-vmware"
 pubDate: 2025-02-13T14:42:15+03:00
 updatedDate: 2025-02-13T14:42:15+03:00

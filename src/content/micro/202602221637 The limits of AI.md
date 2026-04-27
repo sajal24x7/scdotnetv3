@@ -1,5 +1,5 @@
 ---
-title: The limits of AI
+title: The Limits of AI
 slug: the-limits-of-ai
 pubDate: 2026-02-22T14:37:59.000Z
 updatedDate: 2026-02-22T14:37:59.000Z

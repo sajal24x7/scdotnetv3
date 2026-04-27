@@ -1,5 +1,5 @@
 ---
-title: "VMware List allowed IPs in firewall"
+title: "VMware List Allowed IPs in Firewall"
 slug: "vmware-list-allowed-ips-in-firewall"
 pubDate: 2025-02-13T14:42:07+03:00
 updatedDate: 2025-02-13T14:42:07+03:00

@@ -1,5 +1,5 @@
 ---
-title: How to create P2S VPN
+title: How to Create P2S VPN
 slug: how-to-create-p2s-vpn
 pubDate: '2024-08-24T12:55:00+03:00'
 updatedDate: '2024-08-24T12:55:00+03:00'

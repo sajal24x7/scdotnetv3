@@ -1,5 +1,5 @@
 ---
-title: "How to upgrade Domain Controller"
+title: "How to Upgrade Domain Controller"
 slug: "how-to-upgrade-domain-controller"
 pubDate: 2025-03-08T11:41:01+03:00
 updatedDate: 2025-03-08T11:41:01+03:00

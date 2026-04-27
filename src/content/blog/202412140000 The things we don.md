@@ -1,5 +1,5 @@
 ---
-title: "The things we don't need"
+title: "The Things We Don't Need"
 slug: "the-things-we-don"
 description: "We should let those go, no?"
 pubDate: 2024-12-14T00:00:00

@@ -1,5 +1,5 @@
 ---
-title: Winsocket reset
+title: Winsocket Reset
 slug: winsocket-reset
 pubDate: '2023-03-28T16:14:00+03:00'
 updatedDate: '2023-03-28T16:14:00+03:00'

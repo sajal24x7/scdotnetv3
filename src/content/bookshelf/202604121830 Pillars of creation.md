@@ -1,5 +1,5 @@
 ---
-title: Pillars of creation
+title: Pillars of Creation
 slug: reading-pillars-of-creation
 pubDate: 2026-04-12T15:32:00.000Z
 updatedDate: 2026-04-12T15:32:00.000Z

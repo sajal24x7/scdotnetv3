@@ -1,5 +1,5 @@
 ---
-title: WSUS troubleshooting
+title: WSUS Troubleshooting
 slug: wsus-troubleshooting
 pubDate: '2024-01-25T11:45:00+03:00'
 updatedDate: '2024-01-25T11:45:00+03:00'

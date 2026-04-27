@@ -1,5 +1,5 @@
 ---
-title: A Facebook for bots
+title: A Facebook for Bots
 slug: a-facebook-for-bots
 pubDate: 2026-02-01T04:48:49.000Z
 updatedDate: 2026-02-01T04:48:49.000Z

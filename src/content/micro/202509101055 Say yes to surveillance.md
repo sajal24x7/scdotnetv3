@@ -1,5 +1,5 @@
 ---
-title: Say yes to surveillance
+title: Say Yes to Surveillance
 slug: say-yes-to-surveillance
 pubDate: 2025-09-10T08:02:44.000Z
 updatedDate: 2025-09-10T08:02:44.000Z

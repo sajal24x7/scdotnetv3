@@ -1,5 +1,5 @@
 ---
-title: "Just because you can do something does not mean you should"
+title: "Just Because You Can Do Something Does Not Mean You Should"
 slug: "just-because-you-can-do-something-does-not-mean-you-should"
 description: "A writer's apocalypse approaches"
 pubDate: 2025-04-12T07:36:18

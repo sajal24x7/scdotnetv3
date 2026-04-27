@@ -1,5 +1,5 @@
 ---
-title: "Organizing the things in our life"
+title: "Organizing the Things in Our Life"
 slug: "organizing-the-things-in-our-life"
 description: "The value of knowing where things are"
 pubDate: 2025-04-08T18:53:31

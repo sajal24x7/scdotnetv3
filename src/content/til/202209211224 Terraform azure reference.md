@@ -1,5 +1,5 @@
 ---
-title: Terraform azure reference
+title: Terraform Azure Reference
 slug: terraform-azure-reference
 pubDate: '2022-09-21T12:24:00+03:00'
 updatedDate: '2022-09-21T12:24:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "What are trails"
+title: "What Are Trails"
 slug: "what-are-trails"
 description: "But paths other have walked upon"
 pubDate: 2024-09-23T03:49:50

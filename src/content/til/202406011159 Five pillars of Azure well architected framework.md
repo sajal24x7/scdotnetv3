@@ -1,5 +1,5 @@
 ---
-title: Five pillars of Azure well architected framework
+title: Five Pillars of Azure Well Architected Framework
 slug: five-pillars-of-azure-well-architected-framework
 pubDate: '2024-06-01T11:59:00+03:00'
 updatedDate: '2024-06-01T11:59:00+03:00'

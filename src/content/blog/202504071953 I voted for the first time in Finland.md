@@ -1,5 +1,5 @@
 ---
-title: "I voted for the first time in Finland"
+title: "I Voted for the First Time in Finland"
 slug: "i-voted-for-the-first-time-in-finland"
 description: "In the municipal + county elections of 2025"
 pubDate: 2025-04-07T19:53:57

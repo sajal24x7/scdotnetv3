@@ -1,5 +1,5 @@
 ---
-title: "I figured out what to do"
+title: "I Figured out What to Do"
 slug: "i-figured-out-what-to-do"
 description: "How to write here"
 pubDate: 2025-01-04T02:57:18

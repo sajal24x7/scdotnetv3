@@ -1,5 +1,5 @@
 ---
-title: On poverty line and American economy
+title: On Poverty Line and American Economy
 slug: on-poverty-line-and-american-economy
 pubDate: 2025-11-25T08:49:48.000Z
 updatedDate: 2025-11-25T08:49:48.000Z

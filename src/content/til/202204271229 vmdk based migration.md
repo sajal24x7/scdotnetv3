@@ -1,5 +1,5 @@
 ---
-title: vmdk based migration
+title: Vmdk Based Migration
 slug: vmdk-based-migration
 pubDate: '2022-04-27T12:29:00+03:00'
 updatedDate: '2022-04-27T12:29:00+03:00'

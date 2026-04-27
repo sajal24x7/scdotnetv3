@@ -1,5 +1,5 @@
 ---
-title: "Dealing with the World Cup"
+title: "Dealing With the World Cup"
 slug: "dealing-with-the-world-cup"
 pubDate: 2014-07-17T13:25:20
 updatedDate: 2024-01-28T11:05:59

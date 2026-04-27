@@ -1,5 +1,5 @@
 ---
-title: Apple launches Macbook Neo
+title: Apple Launches Macbook Neo
 slug: apple-launches-macbook-neo
 pubDate: 2026-03-04T19:22:41.000Z
 updatedDate: 2026-03-04T19:22:41.000Z

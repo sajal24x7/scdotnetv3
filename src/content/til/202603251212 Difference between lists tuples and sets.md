@@ -1,5 +1,5 @@
 ---
-title: Difference between lists tuples and sets
+title: Difference Between Lists Tuples and Sets
 slug: difference-between-lists-tuples-and-sets
 pubDate: 2026-03-25T10:15:05.000Z
 updatedDate: 2026-03-25T10:15:05.000Z

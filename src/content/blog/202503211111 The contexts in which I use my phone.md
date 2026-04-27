@@ -1,5 +1,5 @@
 ---
-title: "The contexts in which I use my phone"
+title: "The Contexts in Which I Use My Phone"
 slug: "the-contexts-in-which-i-use-my-phone"
 description: "Thinking about phone usage + productivity"
 pubDate: 2025-03-21T11:11:00

@@ -1,5 +1,5 @@
 ---
-title: Trump says H-1B visas will now cost 100000 usd per year
+title: Trump Says H-1B Visas Will Now Cost 100000 Usd per Year
 slug: trump-says-h-1b-visas-will-now-cost-100000-usd-per-year
 pubDate: 2025-09-22T20:29:30.000Z
 updatedDate: 2025-09-22T20:29:30.000Z

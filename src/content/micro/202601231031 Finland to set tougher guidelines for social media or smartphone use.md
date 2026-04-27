@@ -1,5 +1,5 @@
 ---
-title: Finland to set tougher guidelines for social media or smartphone use
+title: Finland to Set Tougher Guidelines for Social Media or Smartphone Use
 slug: finland-to-set-tougher-guidelines-for-social-media-or-smartphone-use
 pubDate: 2026-01-23T05:03:59.000Z
 updatedDate: 2026-01-23T05:03:59.000Z

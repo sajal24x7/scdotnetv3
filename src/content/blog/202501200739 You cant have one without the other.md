@@ -1,5 +1,5 @@
 ---
-title: "You can’t have one without the other"
+title: "You Can’t Have One Without the Other"
 slug: "you-cant-have-one-without-the-other"
 description: "Actions and consequences"
 pubDate: 2025-01-20T07:39:49

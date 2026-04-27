@@ -1,5 +1,5 @@
 ---
-title: How do Azure resources use resiliency
+title: How Do Azure Resources Use Resiliency
 slug: how-do-azure-resources-use-resiliency
 pubDate: '2024-04-07T14:51:00+03:00'
 updatedDate: '2024-04-07T14:51:00+03:00'

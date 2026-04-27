@@ -1,5 +1,5 @@
 ---
-title: Beautiful pictures from icy Finland
+title: Beautiful Pictures From Icy Finland
 slug: beautiful-pictures-from-icy-finland
 pubDate: 2026-02-01T03:13:11.000Z
 updatedDate: 2026-02-01T03:13:11.000Z

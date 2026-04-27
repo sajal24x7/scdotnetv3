@@ -1,5 +1,5 @@
 ---
-title: How to avoid wasting time
+title: How to Avoid Wasting Time
 slug: how-to-avoid-wasting-time
 pubDate: 2025-10-15T10:36:55.000Z
 updatedDate: 2025-10-15T10:36:55.000Z

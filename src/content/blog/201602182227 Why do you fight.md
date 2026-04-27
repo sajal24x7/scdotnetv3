@@ -1,5 +1,5 @@
 ---
-title: "Why do you fight?"
+title: "Why Do You Fight?"
 slug: "why-do-you-fight"
 pubDate: 2016-02-18T22:27:47
 updatedDate: 2016-02-18T22:27:47

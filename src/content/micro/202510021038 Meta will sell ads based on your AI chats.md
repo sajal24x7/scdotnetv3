@@ -1,5 +1,5 @@
 ---
-title: Meta will sell ads based on your AI chats
+title: Meta Will Sell Ads Based on Your AI Chats
 slug: meta-will-sell-ads-based-on-your-ai-chats
 pubDate: 2025-10-02T07:39:38.000Z
 updatedDate: 2025-10-02T07:39:38.000Z

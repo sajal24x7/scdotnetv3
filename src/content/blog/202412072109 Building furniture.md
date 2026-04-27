@@ -1,5 +1,5 @@
 ---
-title: "Building furniture"
+title: "Building Furniture"
 slug: "building-furniture"
 description: "A traditional Ikea holiday"
 pubDate: 2024-12-07T21:09:00

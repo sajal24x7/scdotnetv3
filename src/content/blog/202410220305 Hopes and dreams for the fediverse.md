@@ -1,5 +1,5 @@
 ---
-title: "Hopes and dreams for the fediverse"
+title: "Hopes and Dreams for the Fediverse"
 slug: "hopes-and-dreams-for-the-fediverse"
 description: "Interop everywhere"
 pubDate: 2024-10-22T03:05:31

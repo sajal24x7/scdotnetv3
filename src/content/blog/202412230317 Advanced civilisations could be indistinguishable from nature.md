@@ -1,5 +1,5 @@
 ---
-title: "Advanced civilisations could be indistinguishable from nature"
+title: "Advanced Civilisations Could Be Indistinguishable From Nature"
 slug: "advanced-civilisations-could-be-indistinguishable-from-nature"
 description: "A sustainable solution to the fermi paradox"
 pubDate: 2024-12-23T03:17:47

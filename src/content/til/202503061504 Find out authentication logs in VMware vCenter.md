@@ -1,5 +1,5 @@
 ---
-title: "Find out authentication logs in VMware vCenter"
+title: "Find out Authentication Logs in VMware vCenter"
 slug: "find-out-authentication-logs-in-vmware-vcenter"
 pubDate: 2025-03-06T15:41:09+03:00
 updatedDate: 2025-03-06T15:41:09+03:00

@@ -1,5 +1,5 @@
 ---
-title: "what matters to you"
+title: "What Matters to You"
 edition: 50
 slug: "what-matters-to-you"
 description: "A year of mornings available everywhere now + EV for the masses + new Apple stuff"

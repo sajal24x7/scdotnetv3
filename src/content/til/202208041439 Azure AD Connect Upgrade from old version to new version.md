@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect Upgrade from old version to new version
+title: Azure AD Connect Upgrade From Old Version to New Version
 slug: azure-ad-connect-upgrade-from-old-version-to-new-version
 pubDate: '2022-08-04T14:39:00+03:00'
 updatedDate: '2022-08-04T14:39:00+03:00'

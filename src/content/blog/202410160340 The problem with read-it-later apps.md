@@ -1,5 +1,5 @@
 ---
-title: "The problem with read-it-later apps"
+title: "The Problem With Read-It-Later Apps"
 slug: "the-problem-with-read-it-later-apps"
 description: "It feels like stripping character from the web"
 pubDate: 2024-10-16T03:40:20

@@ -1,5 +1,5 @@
 ---
-title: "A little something called Inertia"
+title: "A Little Something Called Inertia"
 slug: "a-little-something-called-inertia"
 pubDate: 2013-07-03T18:28:05
 updatedDate: 2024-04-29T14:15:32

@@ -1,5 +1,5 @@
 ---
-title: "How to complain"
+title: "How to Complain"
 slug: "how-to-complain"
 description: "Or, how to make your boss's life easier"
 pubDate: 2025-01-11T19:50:32

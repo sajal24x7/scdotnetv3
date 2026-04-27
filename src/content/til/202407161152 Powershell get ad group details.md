@@ -1,5 +1,5 @@
 ---
-title: Powershell get ad group details
+title: Powershell Get Ad Group Details
 slug: powershell-get-ad-group-details
 pubDate: '2024-07-16T11:52:00+03:00'
 updatedDate: '2024-07-16T11:52:00+03:00'

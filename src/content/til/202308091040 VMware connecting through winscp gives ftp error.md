@@ -1,5 +1,5 @@
 ---
-title: VMware connecting through winscp gives ftp error
+title: VMware Connecting Through Winscp Gives Ftp Error
 slug: vmware-connecting-through-winscp-gives-ftp-error
 pubDate: '2023-08-09T10:40:00+03:00'
 updatedDate: '2023-08-09T10:40:00+03:00'

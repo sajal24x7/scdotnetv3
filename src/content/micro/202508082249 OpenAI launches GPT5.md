@@ -1,5 +1,5 @@
 ---
-title: "OpenAI launches GPT5"
+title: "OpenAI Launches GPT5"
 slug: "openai-launches-gpt5"
 pubDate: 2025-08-08T23:18:34+03:00
 updatedDate: 2025-08-08T23:18:34+03:00

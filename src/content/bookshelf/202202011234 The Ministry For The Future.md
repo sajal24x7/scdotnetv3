@@ -1,5 +1,5 @@
 ---
-title: The Ministry For The Future
+title: The Ministry for the Future
 slug: the-ministry-for-the-future
 pubDate: 2026-01-08T08:19:11.000Z
 updatedDate: 2026-01-08T08:19:11.000Z

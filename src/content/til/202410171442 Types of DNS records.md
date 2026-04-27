@@ -1,5 +1,5 @@
 ---
-title: Types of DNS records
+title: Types of DNS Records
 slug: types-of-dns-records
 pubDate: '2024-10-17T14:42:00+03:00'
 updatedDate: '2024-10-17T14:42:00+03:00'

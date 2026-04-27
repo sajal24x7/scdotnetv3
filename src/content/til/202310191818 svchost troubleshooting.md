@@ -1,5 +1,5 @@
 ---
-title: svchost troubleshooting
+title: Svchost Troubleshooting
 slug: svchost-troubleshooting
 pubDate: '2023-10-19T18:18:00+03:00'
 updatedDate: '2023-10-19T18:18:00+03:00'

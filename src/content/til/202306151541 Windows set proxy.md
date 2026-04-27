@@ -1,5 +1,5 @@
 ---
-title: Windows set proxy
+title: Windows Set Proxy
 slug: windows-set-proxy
 pubDate: '2023-06-15T15:41:00+03:00'
 updatedDate: '2023-06-15T15:41:00+03:00'

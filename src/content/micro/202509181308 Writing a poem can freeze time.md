@@ -1,5 +1,5 @@
 ---
-title: Writing a poem can freeze time
+title: Writing a Poem Can Freeze Time
 slug: writing-a-poem-can-freeze-time
 pubDate: 2025-09-18T10:49:14.000Z
 updatedDate: 2025-09-18T10:49:14.000Z

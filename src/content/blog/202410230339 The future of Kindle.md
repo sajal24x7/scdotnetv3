@@ -1,5 +1,5 @@
 ---
-title: "The future of Kindle"
+title: "The Future of Kindle"
 slug: "the-future-of-kindle"
 description: "More notes please!"
 pubDate: 2024-10-23T03:39:21

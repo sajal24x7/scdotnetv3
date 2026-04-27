@@ -1,5 +1,5 @@
 ---
-title: "I’ve become afraid of keeping thoughts in my head"
+title: "I’ve Become Afraid of Keeping Thoughts in My Head"
 slug: "ive-become-afraid-of-keeping-thoughts-in-my-head"
 description: "The consequence of thinking while writing"
 pubDate: 2025-01-13T15:32:06

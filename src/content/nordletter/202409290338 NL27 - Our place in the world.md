@@ -1,5 +1,5 @@
 ---
-title: "Our place in the world"
+title: "Our Place in the World"
 edition: 27
 slug: "our-place-in-the-world"
 description: "Linkin Park are back + what is our place in this world"

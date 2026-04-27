@@ -1,5 +1,5 @@
 ---
-title: "About reflections on writing"
+title: "About Reflections on Writing"
 slug: "about-reflections-on-writing"
 description: "From people who have been doing this for many years"
 pubDate: 2025-02-20T20:44:26

@@ -1,5 +1,5 @@
 ---
-title: Restore files from Azure backup
+title: Restore Files From Azure Backup
 slug: restore-files-from-azure-backup
 pubDate: '2024-08-13T19:19:00+03:00'
 updatedDate: '2024-08-13T19:19:00+03:00'

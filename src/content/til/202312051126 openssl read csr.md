@@ -1,5 +1,5 @@
 ---
-title: openssl read csr
+title: Openssl Read Csr
 slug: openssl-read-csr
 pubDate: '2023-12-05T11:26:00+03:00'
 updatedDate: '2023-12-05T11:26:00+03:00'

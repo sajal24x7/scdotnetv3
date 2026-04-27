@@ -1,5 +1,5 @@
 ---
-title: X3 is smaller than X3 but has the same software problems
+title: X3 Is Smaller Than X3 but Has the Same Software Problems
 slug: x3-is-smaller-than-x3-but-has-the-same-software-problems
 pubDate: 2026-04-02T17:12:21.000Z
 updatedDate: 2026-04-02T17:12:21.000Z

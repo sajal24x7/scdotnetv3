@@ -1,5 +1,5 @@
 ---
-title: On paperbacks and tiktok
+title: On Paperbacks and Tiktok
 slug: on-paperbacks-and-tiktok
 pubDate: 2025-12-26T09:10:11.000Z
 updatedDate: 2025-12-26T09:10:11.000Z

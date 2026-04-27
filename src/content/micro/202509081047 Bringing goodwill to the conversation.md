@@ -1,5 +1,5 @@
 ---
-title: "Bringing goodwill to the conversation"
+title: "Bringing Goodwill to the Conversation"
 slug: "bringing-goodwill-to-the-conversation"
 pubDate: 2025-09-08T11:56:14+03:00
 updatedDate: 2025-09-08T11:56:14+03:00

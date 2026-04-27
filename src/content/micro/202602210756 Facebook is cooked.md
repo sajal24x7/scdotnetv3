@@ -1,5 +1,5 @@
 ---
-title: Facebook is cooked
+title: Facebook Is Cooked
 slug: facebook-is-cooked
 pubDate: 2026-02-21T06:01:30.000Z
 updatedDate: 2026-02-21T06:01:30.000Z

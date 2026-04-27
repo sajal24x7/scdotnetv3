@@ -1,5 +1,5 @@
 ---
-title: "What if life were a game?"
+title: "What If Life Were a Game?"
 slug: "what-if-life-were-a-game"
 pubDate: 2016-02-20T21:13:20
 updatedDate: 2016-02-20T21:13:20

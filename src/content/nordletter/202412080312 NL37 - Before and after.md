@@ -1,5 +1,5 @@
 ---
-title: "Before and after"
+title: "Before and After"
 edition: 37
 slug: "before-and-after"
 description: "Sinitarra + who owns your words + Intel drama"

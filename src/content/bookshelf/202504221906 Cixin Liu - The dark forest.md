@@ -1,5 +1,5 @@
 ---
-title: The dark forest
+title: The Dark Forest
 slug: the-dark-forest
 description: The second book in the three body problem series
 pubDate: 2025-04-22T19:06:54

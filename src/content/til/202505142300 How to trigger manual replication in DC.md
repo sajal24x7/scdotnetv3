@@ -1,5 +1,5 @@
 ---
-title: "How to trigger manual replication in DC"
+title: "How to Trigger Manual Replication in DC"
 slug: "how-to-trigger-manual-replication-in-dc"
 pubDate: 2025-05-14T23:38:51+03:00
 updatedDate: 2025-05-14T23:38:51+03:00

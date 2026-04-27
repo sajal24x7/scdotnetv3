@@ -1,5 +1,5 @@
 ---
-title: LinkedIn is too damn much
+title: LinkedIn Is Too Damn Much
 slug: linkedin-is-too-damn-much
 pubDate: 2026-02-10T16:21:47.000Z
 updatedDate: 2026-02-10T16:21:47.000Z

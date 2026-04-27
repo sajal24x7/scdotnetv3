@@ -1,5 +1,5 @@
 ---
-title: "Why I decided to set a shipping date for my book"
+title: "Why I Decided to Set a Shipping Date for My Book"
 slug: "why-i-decided-to-set-a-shipping-date-for-my-book"
 pubDate: 2015-07-01T20:58:57
 updatedDate: 2015-07-01T20:58:57

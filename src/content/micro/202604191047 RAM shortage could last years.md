@@ -1,5 +1,5 @@
 ---
-title: RAM shortage could last years
+title: RAM Shortage Could Last Years
 slug: ram-shortage-could-last-years
 pubDate: 2026-04-19T07:47:50.000Z
 updatedDate: 2026-04-19T07:47:50.000Z

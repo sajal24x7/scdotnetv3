@@ -1,5 +1,5 @@
 ---
-title: "Birthdays are funny"
+title: "Birthdays Are Funny"
 slug: "birthdays-are-funny"
 description: "Another year around the sun! Yay!"
 pubDate: 2024-12-11T03:25:58

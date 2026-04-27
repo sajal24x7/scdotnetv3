@@ -1,5 +1,5 @@
 ---
-title: "Re-designing my home screen and the way I use my phone"
+title: "Re-Designing My Home Screen and the Way I Use My Phone"
 slug: "re-designing-my-home-screen-and-the-way-i-use-my-phone"
 description: "Focus modes + Shortcuts magic"
 pubDate: 2025-03-22T11:40:04

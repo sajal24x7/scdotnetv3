@@ -1,5 +1,5 @@
 ---
-title: Azure subscriptions
+title: Azure Subscriptions
 slug: azure-subscriptions
 pubDate: '2024-01-10T14:41:00+03:00'
 updatedDate: '2024-01-10T14:41:00+03:00'

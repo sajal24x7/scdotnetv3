@@ -1,5 +1,5 @@
 ---
-title: A day trip to Turku
+title: A Day Trip to Turku
 slug: nl63-a-day-trip-to-turku
 pubDate: 2025-07-20T06:11:09+03:00
 updatedDate: 2025-07-20T06:11:09+03:00

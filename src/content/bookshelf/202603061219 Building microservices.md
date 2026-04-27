@@ -1,5 +1,5 @@
 ---
-title: Building microservices
+title: Building Microservices
 slug: reading-building-microservices
 pubDate: 2026-03-06T10:20:43.000Z
 updatedDate: 2026-03-06T10:20:43.000Z

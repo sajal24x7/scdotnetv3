@@ -1,5 +1,5 @@
 ---
-title: Write a letter to your child
+title: Write a Letter to Your Child
 slug: write-a-letter-to-your-child
 pubDate: 2026-01-31T18:25:30.000Z
 updatedDate: 2026-01-31T18:25:30.000Z

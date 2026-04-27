@@ -1,5 +1,5 @@
 ---
-title: Enable or disable lockdown mode on vcenter
+title: Enable or Disable Lockdown Mode on Vcenter
 slug: enable-or-disable-lockdown-mode-on-vcenter
 pubDate: '2024-07-05T10:22:00+03:00'
 updatedDate: '2024-07-05T10:22:00+03:00'

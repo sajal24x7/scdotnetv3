@@ -1,5 +1,5 @@
 ---
-title: China needs to figure out what to do with the ageing batteries
+title: China Needs to Figure out What to Do With the Ageing Batteries
 slug: china-needs-to-figure-out-what-to-do-with-the-ageing-batteries
 pubDate: 2025-12-20T09:23:45.000Z
 updatedDate: 2025-12-20T09:23:45.000Z

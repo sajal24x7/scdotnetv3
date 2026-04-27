@@ -1,5 +1,5 @@
 ---
-title: "Digital consumption does not let me do actual work"
+title: "Digital Consumption Does Not Let Me Do Actual Work"
 slug: "digital-consumption-does-not-let-me-do-actual-work"
 description: "It affects my ability to focus and remember"
 pubDate: 2024-12-16T05:11:10

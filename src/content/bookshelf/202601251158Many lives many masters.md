@@ -1,5 +1,5 @@
 ---
-title: Many lives many masters
+title: Many Lives Many Masters
 slug: many-lives-many-masters
 pubDate: 2026-01-25T07:38:11.000Z
 updatedDate: 2026-01-25T07:38:11.000Z

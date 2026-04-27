@@ -1,5 +1,5 @@
 ---
-title: "Thoughts on iPhone day"
+title: "Thoughts on iPhone Day"
 slug: "thoughts-on-iphone-day"
 description: "2024 edition"
 pubDate: 2024-09-09T20:57:00

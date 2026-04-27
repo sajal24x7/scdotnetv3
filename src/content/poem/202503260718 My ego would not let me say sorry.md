@@ -1,5 +1,5 @@
 ---
-title: "My ego would not let me say sorry"
+title: "My Ego Would Not Let Me Say Sorry"
 slug: "my-ego-would-not-let-me-say-sorry"
 pubDate: 2025-03-26T07:18:23
 updatedDate: 2025-03-26T07:18:23

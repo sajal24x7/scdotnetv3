@@ -1,5 +1,5 @@
 ---
-title: To remove duplicates from a list use sets
+title: To Remove Duplicates From a List Use Sets
 slug: to-remove-duplicates-from-a-list-use-sets
 pubDate: 2026-03-24T14:55:58.000Z
 updatedDate: 2026-03-24T14:55:58.000Z

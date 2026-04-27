@@ -1,5 +1,5 @@
 ---
-title: VMware MOB reference
+title: VMware MOB Reference
 slug: vmware-mob-reference
 pubDate: '2023-10-27T11:45:00+03:00'
 updatedDate: '2023-10-27T11:45:00+03:00'

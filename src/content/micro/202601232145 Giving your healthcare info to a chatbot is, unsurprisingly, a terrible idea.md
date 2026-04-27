@@ -1,5 +1,5 @@
 ---
-title: 'Giving your healthcare info to a chatbot is, unsurprisingly, a terrible idea'
+title: 'Giving Your Healthcare Info to a Chatbot Is, Unsurprisingly, a Terrible Idea'
 slug: giving-your-healthcare-info-to-a-chatbot-is-unsurprisingly-a-terrible-idea
 pubDate: 2026-01-23T16:19:44.000Z
 updatedDate: 2026-01-23T16:19:44.000Z

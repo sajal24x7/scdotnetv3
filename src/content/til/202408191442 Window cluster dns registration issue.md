@@ -1,5 +1,5 @@
 ---
-title: Window cluster dns registration issue
+title: Window Cluster Dns Registration Issue
 slug: window-cluster-dns-registration-issue
 pubDate: '2024-08-19T14:42:00+03:00'
 updatedDate: '2024-08-19T14:42:00+03:00'

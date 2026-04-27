@@ -1,5 +1,5 @@
 ---
-title: Designing agentic loops
+title: Designing Agentic Loops
 slug: designing-agentic-loops
 pubDate: 2025-10-01T05:05:57.000Z
 updatedDate: 2025-10-01T05:05:57.000Z

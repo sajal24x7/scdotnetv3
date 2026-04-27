@@ -1,5 +1,5 @@
 ---
-title: "All the motivation you need!"
+title: "All the Motivation You Need!"
 slug: "all-the-motivation-you-need"
 pubDate: 2015-03-24T12:12:01
 updatedDate: 2015-03-24T12:12:01

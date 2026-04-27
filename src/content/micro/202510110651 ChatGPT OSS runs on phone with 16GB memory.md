@@ -1,5 +1,5 @@
 ---
-title: ChatGPT OSS runs on phone with 16GB memory
+title: ChatGPT OSS Runs on Phone With 16GB Memory
 slug: chatgpt-oss-runs-on-phone-with-16gb-memory
 pubDate: 2025-10-11T03:55:35.000Z
 updatedDate: 2025-10-11T03:55:35.000Z

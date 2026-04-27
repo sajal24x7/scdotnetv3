@@ -1,5 +1,5 @@
 ---
-title: "How I felt when my Jawbone broke"
+title: "How I Felt When My Jawbone Broke"
 slug: "how-i-felt-when-my-jawbone-broke"
 pubDate: 2016-06-02T21:50:04
 updatedDate: 2016-06-02T21:50:04

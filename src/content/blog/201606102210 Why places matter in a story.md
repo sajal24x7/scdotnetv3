@@ -1,5 +1,5 @@
 ---
-title: "Why places matter in a story"
+title: "Why Places Matter in a Story"
 slug: "why-places-matter-in-a-story"
 pubDate: 2016-06-10T22:10:35
 updatedDate: 2016-06-10T22:10:35

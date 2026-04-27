@@ -1,5 +1,5 @@
 ---
-title: Bicep conditionals
+title: Bicep Conditionals
 slug: bicep-conditionals
 pubDate: '2024-07-19T19:32:00+03:00'
 updatedDate: '2024-07-19T19:32:00+03:00'

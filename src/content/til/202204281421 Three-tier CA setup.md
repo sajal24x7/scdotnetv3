@@ -1,5 +1,5 @@
 ---
-title: Three-tier CA setup
+title: Three-Tier CA Setup
 slug: three-tier-ca-setup
 pubDate: '2022-04-28T14:21:00+03:00'
 updatedDate: '2022-04-28T14:21:00+03:00'

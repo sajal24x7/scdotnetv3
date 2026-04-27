@@ -1,5 +1,5 @@
 ---
-title: "Why do I read more on the web"
+title: "Why Do I Read More on the Web"
 slug: "why-do-i-read-more-on-the-web"
 description: "The phone, that’s the answer."
 pubDate: 2025-01-27T08:14:14

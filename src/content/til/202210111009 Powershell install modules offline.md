@@ -1,5 +1,5 @@
 ---
-title: Powershell install modules offline
+title: Powershell Install Modules Offline
 slug: powershell-install-modules-offline
 pubDate: '2022-10-11T10:09:00+03:00'
 updatedDate: '2022-10-11T10:09:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: New Claude features
+title: New Claude Features
 slug: new-claude-features
 pubDate: 2025-09-10T03:57:19.000Z
 updatedDate: 2025-09-10T03:57:19.000Z

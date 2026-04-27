@@ -1,5 +1,5 @@
 ---
-title: "The Last of Us II has chronological mode now"
+title: "The Last of Us II Has Chronological Mode Now"
 slug: "the-last-of-us-ii-has-chronological-mode-now"
 pubDate: 2025-07-10T16:12:15+03:00
 updatedDate: 2025-07-10T16:12:15+03:00

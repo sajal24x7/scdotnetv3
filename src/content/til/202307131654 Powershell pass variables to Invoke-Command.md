@@ -1,5 +1,5 @@
 ---
-title: Powershell pass variables to Invoke-Command
+title: Powershell Pass Variables to Invoke-Command
 slug: powershell-pass-variables-to-invoke-command
 pubDate: '2023-07-13T16:54:00+03:00'
 updatedDate: '2023-07-13T16:54:00+03:00'

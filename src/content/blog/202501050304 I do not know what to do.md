@@ -1,5 +1,5 @@
 ---
-title: "I do not know what to do"
+title: "I Do Not Know What to Do"
 slug: "i-do-not-know-what-to-do"
 description: "Part #3 of what to do and how to post my damn links"
 pubDate: 2025-01-05T03:04:56

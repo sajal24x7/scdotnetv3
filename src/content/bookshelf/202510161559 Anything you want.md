@@ -1,5 +1,5 @@
 ---
-title: Anything you want
+title: Anything You Want
 slug: anything-you-want
 pubDate: 2025-10-16T13:10:31.000Z
 updatedDate: 2025-10-16T13:10:31.000Z

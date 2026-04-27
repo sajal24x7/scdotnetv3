@@ -1,5 +1,5 @@
 ---
-title: Run powershell command as scheduled task
+title: Run Powershell Command as Scheduled Task
 slug: run-powershell-command-as-scheduled-task
 pubDate: '2024-07-08T12:01:00+03:00'
 updatedDate: '2024-07-08T12:01:00+03:00'

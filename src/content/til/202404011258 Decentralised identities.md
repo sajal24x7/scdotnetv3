@@ -1,5 +1,5 @@
 ---
-title: Decentralised identities
+title: Decentralised Identities
 slug: decentralised-identities
 pubDate: '2024-04-01T12:58:00+03:00'
 updatedDate: '2024-04-01T12:58:00+03:00'

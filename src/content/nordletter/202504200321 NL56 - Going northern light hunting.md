@@ -1,5 +1,5 @@
 ---
-title: "Going northern light hunting"
+title: "Going Northern Light Hunting"
 edition: 56
 slug: "going-northern-light-hunting"
 description: "And a bunch of AI use cases + Zuck shot himself in the foot"

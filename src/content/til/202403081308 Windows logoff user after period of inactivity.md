@@ -1,5 +1,5 @@
 ---
-title: Windows logoff user after period of inactivity
+title: Windows Logoff User After Period of Inactivity
 slug: windows-logoff-user-after-period-of-inactivity
 pubDate: '2024-03-08T13:08:00+03:00'
 updatedDate: '2024-03-08T13:08:00+03:00'

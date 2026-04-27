@@ -1,5 +1,5 @@
 ---
-title: Weirder e-readers
+title: Weirder E-Readers
 slug: weirder-e-readers
 pubDate: 2026-01-21T05:30:53.000Z
 updatedDate: 2026-01-21T05:30:53.000Z

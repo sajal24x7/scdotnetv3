@@ -1,5 +1,5 @@
 ---
-title: "New Life: Ties, and cufflinks!"
+title: "New Life: Ties, and Cufflinks!"
 slug: "new-life-ties-and-cufflinks"
 pubDate: 2014-10-08T21:00:00
 updatedDate: 2014-10-08T21:00:00

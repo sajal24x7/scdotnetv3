@@ -1,5 +1,5 @@
 ---
-title: Anthropic refuses to acquiesce to Pentagon
+title: Anthropic Refuses to Acquiesce to Pentagon
 slug: anthropic-refuses-to-acquiesce-to-pentagon
 pubDate: 2026-02-27T10:56:44.000Z
 updatedDate: 2026-02-27T10:56:44.000Z

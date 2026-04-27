@@ -1,5 +1,5 @@
 ---
-title: Delete vCLS VMs from ESXI
+title: Delete vCLS VMs From ESXI
 slug: delete-vcls-vms-from-esxi
 pubDate: '2024-09-04T10:33:00+03:00'
 updatedDate: '2024-09-04T10:33:00+03:00'

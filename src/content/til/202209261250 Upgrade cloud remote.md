@@ -1,5 +1,5 @@
 ---
-title: Upgrade cloud remote
+title: Upgrade Cloud Remote
 slug: upgrade-cloud-remote
 pubDate: '2022-09-26T12:50:00+03:00'
 updatedDate: '2022-09-26T12:50:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: AAP controller rbac
+title: AAP Controller Rbac
 slug: aap-controller-rbac
 pubDate: '2023-01-20T11:47:00+03:00'
 updatedDate: '2023-01-20T11:47:00+03:00'

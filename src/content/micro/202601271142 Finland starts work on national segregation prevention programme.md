@@ -1,5 +1,5 @@
 ---
-title: Finland starts work on national segregation prevention programme
+title: Finland Starts Work on National Segregation Prevention Programme
 slug: finland-starts-work-on-national-segregation-prevention-programme
 pubDate: 2026-01-27T06:15:12.000Z
 updatedDate: 2026-01-27T06:15:12.000Z

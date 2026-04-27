@@ -1,5 +1,5 @@
 ---
-title: A software library with no code
+title: A Software Library With No Code
 slug: a-software-library-with-no-code
 pubDate: 2026-01-12T04:48:23.000Z
 updatedDate: 2026-01-12T04:48:23.000Z

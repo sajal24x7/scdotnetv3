@@ -1,5 +1,5 @@
 ---
-title: Linux ping multiple ips
+title: Linux Ping Multiple Ips
 slug: linux-ping-multiple-ips
 pubDate: '2022-04-21T14:58:00+03:00'
 updatedDate: '2022-04-21T14:58:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "Us against the World!"
+title: "Us Against the World!"
 slug: "us-against-the-world"
 pubDate: 2012-04-26T14:13:55
 updatedDate: 2024-04-29T12:59:30

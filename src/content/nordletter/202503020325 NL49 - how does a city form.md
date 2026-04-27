@@ -1,5 +1,5 @@
 ---
-title: "how does a city form"
+title: "How Does a City Form"
 edition: 49
 slug: "how-does-a-city-form"
 description: "Kindle bad + AI poet + chip designer + good bye Finland"

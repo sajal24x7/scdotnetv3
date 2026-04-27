@@ -1,5 +1,5 @@
 ---
-title: "You can’t make friendships happen"
+title: "You Can’t Make Friendships Happen"
 slug: "you-cant-make-friendships-happen"
 pubDate: 2025-03-15T09:47:00
 updatedDate: 2025-03-16T09:48:02

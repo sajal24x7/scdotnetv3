@@ -1,5 +1,5 @@
 ---
-title: "Reading children’s books"
+title: "Reading Children’s Books"
 slug: "reading-childrens-books"
 description: "They are so damn beautiful"
 pubDate: 2025-04-15T20:21:00

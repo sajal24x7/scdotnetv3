@@ -1,5 +1,5 @@
 ---
-title: Certificate output in plaintext
+title: Certificate Output in Plaintext
 slug: certificate-output-in-plaintext
 pubDate: '2022-04-29T11:33:00+03:00'
 updatedDate: '2022-04-29T11:33:00+03:00'

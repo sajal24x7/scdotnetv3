@@ -1,5 +1,5 @@
 ---
-title: "The stories we tell"
+title: "The Stories We Tell"
 slug: "the-stories-we-tell"
 description: "Of a place and a time"
 pubDate: 2024-10-07T03:10:40

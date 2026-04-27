@@ -1,5 +1,5 @@
 ---
-title: "Just the two of us..!!"
+title: "Just the Two of Us..!!"
 slug: "just-the-two-of-us"
 pubDate: 2012-02-14T17:51:19
 updatedDate: 2024-04-29T13:50:06

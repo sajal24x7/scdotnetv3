@@ -1,5 +1,5 @@
 ---
-title: Powershell get certs on system
+title: Powershell Get Certs on System
 slug: powershell-get-certs-on-system
 pubDate: '2024-07-09T16:31:00+03:00'
 updatedDate: '2024-07-09T16:31:00+03:00'

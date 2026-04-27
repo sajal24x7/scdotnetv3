@@ -1,5 +1,5 @@
 ---
-title: Windows Cluster disk reserved error 170
+title: Windows Cluster Disk Reserved Error 170
 slug: windows-cluster-disk-reserved-error-170
 pubDate: '2023-05-10T12:52:00+03:00'
 updatedDate: '2023-05-10T12:52:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "What to say to someone who's feeling down"
+title: "What to Say to Someone Who's Feeling Down"
 slug: "what-to-say-to-someone-who"
 pubDate: 2016-02-23T00:00:00
 updatedDate: 2016-02-23T00:00:00

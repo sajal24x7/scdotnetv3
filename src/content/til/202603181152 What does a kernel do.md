@@ -1,5 +1,5 @@
 ---
-title: What does a kernel do
+title: What Does a Kernel Do
 slug: what-does-a-kernel-do
 pubDate: 2026-03-18T09:55:49.000Z
 updatedDate: 2026-03-18T09:55:49.000Z

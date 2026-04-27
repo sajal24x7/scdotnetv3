@@ -1,5 +1,5 @@
 ---
-title: "Spring is here"
+title: "Spring Is Here"
 edition: 4
 slug: "spring-is-here"
 description: "Nord Letter #4 - Communal spaces @Iso Omena library"

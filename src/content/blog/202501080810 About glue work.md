@@ -1,5 +1,5 @@
 ---
-title: "About glue work"
+title: "About Glue Work"
 slug: "about-glue-work"
 description: "Is glue work bad? Depends."
 pubDate: 2025-01-08T08:10:02

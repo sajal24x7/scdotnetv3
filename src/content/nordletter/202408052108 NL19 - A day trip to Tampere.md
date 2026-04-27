@@ -1,5 +1,5 @@
 ---
-title: "A day trip to Tampere"
+title: "A Day Trip to Tampere"
 edition: 19
 slug: "a-day-trip-to-tampere"
 description: "Nord Letter #19 - Tampere + foundations for a good life"

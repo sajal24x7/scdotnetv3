@@ -1,5 +1,5 @@
 ---
-title: "Once upon a time, we almost lost everything"
+title: "Once Upon a Time, We Almost Lost Everything"
 slug: "once-upon-a-time-we-almost-lost-everything"
 description: "A story of a near victim of a cyber crime"
 pubDate: 2025-02-03T16:01:47

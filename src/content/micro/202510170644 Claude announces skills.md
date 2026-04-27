@@ -1,5 +1,5 @@
 ---
-title: Claude announces skills
+title: Claude Announces Skills
 slug: claude-announces-skills
 pubDate: 2025-10-17T03:48:01.000Z
 updatedDate: 2025-10-17T03:48:01.000Z

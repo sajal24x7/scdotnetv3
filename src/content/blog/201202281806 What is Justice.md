@@ -1,5 +1,5 @@
 ---
-title: "What is Justice?"
+title: "What Is Justice?"
 slug: "what-is-justice"
 pubDate: 2012-02-28T18:06:52
 updatedDate: 2024-04-29T12:35:40

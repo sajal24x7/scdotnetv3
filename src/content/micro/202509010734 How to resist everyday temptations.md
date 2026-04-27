@@ -1,5 +1,5 @@
 ---
-title: "How to resist everyday temptations"
+title: "How to Resist Everyday Temptations"
 slug: "how-to-resist-everyday-temptations"
 pubDate: 2025-09-03T06:22:09+03:00
 updatedDate: 2025-09-03T06:22:09+03:00

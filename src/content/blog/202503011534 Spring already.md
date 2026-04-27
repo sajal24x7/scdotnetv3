@@ -1,5 +1,5 @@
 ---
-title: "Spring already?"
+title: "Spring Already?"
 slug: "spring-already"
 pubDate: 2025-03-01T15:34:55
 updatedDate: 2025-03-01T15:34:55

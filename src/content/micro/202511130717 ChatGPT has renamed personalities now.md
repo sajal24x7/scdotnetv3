@@ -1,5 +1,5 @@
 ---
-title: ChatGPT has renamed personalities now
+title: ChatGPT Has Renamed Personalities Now
 slug: chatgpt-has-renamed-personalities-now
 pubDate: 2025-11-13T05:19:22.000Z
 updatedDate: 2025-11-13T05:19:22.000Z

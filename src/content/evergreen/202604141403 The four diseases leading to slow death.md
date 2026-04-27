@@ -1,5 +1,5 @@
 ---
-title: The four diseases leading to slow death
+title: The Four Diseases Leading to Slow Death
 slug: the-four-diseases-leading-to-slow-death
 pubDate: 2026-04-14T11:54:01.000Z
 updatedDate: 2026-04-14T11:54:01.000Z

@@ -1,5 +1,5 @@
 ---
-title: Tesla is building a smaller cheaper EV
+title: Tesla Is Building a Smaller Cheaper EV
 slug: tesla-is-building-a-smaller-cheaper-ev
 pubDate: 2026-04-10T08:27:55.000Z
 updatedDate: 2026-04-10T08:27:55.000Z

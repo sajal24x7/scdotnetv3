@@ -1,5 +1,5 @@
 ---
-title: Apple announces M5 Pro and Max chips
+title: Apple Announces M5 Pro and Max Chips
 slug: apple-announces-m5-pro-and-max-chips
 pubDate: 2026-03-04T06:01:22.000Z
 updatedDate: 2026-03-04T06:01:22.000Z

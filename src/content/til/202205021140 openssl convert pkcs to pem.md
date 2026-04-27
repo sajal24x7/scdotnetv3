@@ -1,5 +1,5 @@
 ---
-title: openssl convert pkcs to pem
+title: Openssl Convert Pkcs to Pem
 slug: openssl-convert-pkcs-to-pem
 pubDate: '2022-05-02T11:40:00+03:00'
 updatedDate: '2022-05-02T11:40:00+03:00'

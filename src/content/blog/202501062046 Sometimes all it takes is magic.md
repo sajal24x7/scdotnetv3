@@ -1,5 +1,5 @@
 ---
-title: "Sometimes all it takes is magic"
+title: "Sometimes All It Takes Is Magic"
 slug: "sometimes-all-it-takes-is-magic"
 description: "Sometimes magic is working harder than imagined possible"
 pubDate: 2025-01-06T20:46:56

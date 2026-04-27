@@ -1,5 +1,5 @@
 ---
-title: Starfield is coming to PS5
+title: Starfield Is Coming to PS5
 slug: starfield-is-coming-to-ps5
 pubDate: 2026-03-17T19:41:43.000Z
 updatedDate: 2026-03-17T19:41:43.000Z

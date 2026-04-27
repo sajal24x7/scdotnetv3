@@ -1,5 +1,5 @@
 ---
-title: AI slop can be  useful
+title: AI Slop Can Be  Useful
 slug: ai-slop-can-be-useful
 pubDate: 2025-09-29T11:03:32.000Z
 updatedDate: 2025-09-29T11:03:32.000Z

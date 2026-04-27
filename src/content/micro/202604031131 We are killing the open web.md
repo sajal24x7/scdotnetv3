@@ -1,5 +1,5 @@
 ---
-title: We are killing the open web
+title: We Are Killing the Open Web
 slug: we-are-killing-the-open-web
 pubDate: 2026-04-03T08:42:27.000Z
 updatedDate: 2026-04-03T08:42:27.000Z

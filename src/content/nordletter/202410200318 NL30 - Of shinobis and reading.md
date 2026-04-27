@@ -1,5 +1,5 @@
 ---
-title: "Of shinobis and reading"
+title: "Of Shinobis and Reading"
 edition: 30
 slug: "of-shinobis-and-reading"
 description: "Visiting Restaurant Shinobi + Reading on devices and the web"

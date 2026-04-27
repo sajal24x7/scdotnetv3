@@ -1,5 +1,5 @@
 ---
-title: The systems in a Jenkins installation
+title: The Systems in a Jenkins Installation
 slug: the-systems-in-a-jenkins-installation
 pubDate: 2025-12-30T09:55:42.000Z
 updatedDate: 2025-12-30T09:55:42.000Z

@@ -1,5 +1,5 @@
 ---
-title: Apple is testing a standalone app for Siri
+title: Apple Is Testing a Standalone App for Siri
 slug: apple-is-testing-a-standalone-app-for-siri
 pubDate: 2026-03-25T04:32:15.000Z
 updatedDate: 2026-03-25T04:32:15.000Z

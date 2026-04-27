@@ -1,5 +1,5 @@
 ---
-title: "Cherries all around"
+title: "Cherries All Around"
 edition: 8
 slug: "cherries-all-around"
 description: "Nord Letter #8 - Folklore'24 + Roihuvuori Cherry Park + AI"

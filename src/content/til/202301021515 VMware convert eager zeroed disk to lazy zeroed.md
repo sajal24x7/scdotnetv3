@@ -1,5 +1,5 @@
 ---
-title: VMware convert eager zeroed disk to lazy zeroed
+title: VMware Convert Eager Zeroed Disk to Lazy Zeroed
 slug: vmware-convert-eager-zeroed-disk-to-lazy-zeroed
 pubDate: '2023-01-02T15:15:00+03:00'
 updatedDate: '2023-01-02T15:15:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: Advice to young people
+title: Advice to Young People
 slug: advice-to-young-people
 pubDate: 2026-04-06T08:26:39.000Z
 updatedDate: 2026-04-06T08:26:39.000Z

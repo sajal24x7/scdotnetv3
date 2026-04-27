@@ -1,5 +1,5 @@
 ---
-title: How to use AI at universities
+title: How to Use AI at Universities
 slug: how-to-use-ai-at-universities
 pubDate: 2025-11-10T05:43:41.000Z
 updatedDate: 2025-11-10T05:43:41.000Z

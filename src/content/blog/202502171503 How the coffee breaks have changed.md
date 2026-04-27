@@ -1,5 +1,5 @@
 ---
-title: "How the coffee breaks have changed"
+title: "How the Coffee Breaks Have Changed"
 slug: "how-the-coffee-breaks-have-changed"
 description: "Answer: more time on phones"
 pubDate: 2025-02-17T15:03:36

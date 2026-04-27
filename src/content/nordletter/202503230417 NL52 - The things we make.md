@@ -1,5 +1,5 @@
 ---
-title: "The things we make"
+title: "The Things We Make"
 edition: 52
 slug: "the-things-we-make"
 description: "Apple rumours + Learn some AI python"

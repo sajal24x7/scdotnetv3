@@ -1,5 +1,5 @@
 ---
-title: "Things change when you become a parent"
+title: "Things Change When You Become a Parent"
 slug: "things-change-when-you-become-a-parent"
 description: "Life goes on"
 pubDate: 2025-02-25T07:15:59

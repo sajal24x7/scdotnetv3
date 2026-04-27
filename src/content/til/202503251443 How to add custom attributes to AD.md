@@ -1,5 +1,5 @@
 ---
-title: "How to add custom attributes to AD"
+title: "How to Add Custom Attributes to AD"
 slug: "how-to-add-custom-attributes-to-ad"
 pubDate: 2025-03-25T14:40:33+03:00
 updatedDate: 2025-03-25T14:40:33+03:00

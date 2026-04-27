@@ -1,5 +1,5 @@
 ---
-title: "The good people of Finland"
+title: "The Good People of Finland"
 slug: "the-good-people-of-finland"
 description: "About going to sell my phone and unexpected kindness"
 pubDate: 2024-09-22T10:20:56

@@ -1,5 +1,5 @@
 ---
-title: "The value of consistency"
+title: "The Value of Consistency"
 slug: "the-value-of-consistency"
 description: "Discipline and repetition"
 pubDate: 2025-01-14T09:23:29

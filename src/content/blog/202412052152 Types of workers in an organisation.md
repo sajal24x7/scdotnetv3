@@ -1,5 +1,5 @@
 ---
-title: "Types of workers in an organisation"
+title: "Types of Workers in an Organisation"
 slug: "types-of-workers-in-an-organisation"
 description: "Or, evolution of the type of worker you are"
 pubDate: 2024-12-05T21:52:25

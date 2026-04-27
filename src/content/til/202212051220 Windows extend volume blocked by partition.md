@@ -1,5 +1,5 @@
 ---
-title: Windows extend volume blocked by partition
+title: Windows Extend Volume Blocked by Partition
 slug: windows-extend-volume-blocked-by-partition
 pubDate: '2022-12-05T12:20:00+03:00'
 updatedDate: '2022-12-05T12:20:00+03:00'

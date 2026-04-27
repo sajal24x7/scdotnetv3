@@ -1,5 +1,5 @@
 ---
-title: Understanding carriage
+title: Understanding Carriage
 slug: understanding-carriage
 pubDate: 2025-12-25T10:03:44.000Z
 updatedDate: 2025-12-25T10:03:44.000Z

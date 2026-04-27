@@ -1,5 +1,5 @@
 ---
-title: "It does not matter how many times I do surya namaskar"
+title: "It Does Not Matter How Many Times I Do Surya Namaskar"
 slug: "it-does-not-matter-how-many-times-i-do-surya-namaskar"
 description: "I don’t need to count anymore"
 pubDate: 2025-03-31T02:59:48

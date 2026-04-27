@@ -1,5 +1,5 @@
 ---
-title: Nature trails - Nuuksio and Pihlajasaari
+title: Nature Trails - Nuuksio and Pihlajasaari
 slug: nature-trails-nuuksio-and-pihlajasaari
 description: Nature trails + Beating procrastination
 pubDate: 2024-07-28T21:16:24

@@ -1,5 +1,5 @@
 ---
-title: "Letters to an imaginary girlfriend : Two"
+title: "Letters to an Imaginary Girlfriend : Two"
 slug: "letters-to-an-imaginary-girlfriend-two"
 pubDate: 2016-01-20T21:03:13
 updatedDate: 2016-01-20T21:03:13

@@ -1,5 +1,5 @@
 ---
-title: Tesla will discontinue Model S and X
+title: Tesla Will Discontinue Model S and X
 slug: tesla-will-discontinue-model-s-and-x
 pubDate: 2026-01-30T08:37:56.000Z
 updatedDate: 2026-01-30T08:37:56.000Z

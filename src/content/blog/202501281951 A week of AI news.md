@@ -1,5 +1,5 @@
 ---
-title: "A week of AI news"
+title: "A Week of AI News"
 slug: "a-week-of-ai-news"
 description: "Deepsek and the others"
 pubDate: 2025-01-28T19:51:45

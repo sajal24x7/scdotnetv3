@@ -1,5 +1,5 @@
 ---
-title: "The two factors that allow services to be terrible"
+title: "The Two Factors That Allow Services to Be Terrible"
 slug: "the-two-factors-that-allow-services-to-be-terrible"
 description: "My WhatsApp story"
 pubDate: 2025-01-22T07:35:44

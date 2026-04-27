@@ -1,5 +1,5 @@
 ---
-title: How to win friends and influence people
+title: How to Win Friends and Influence People
 slug: how-to-win-friends-and-influence-people
 pubDate: 2026-01-03T14:30:06.000Z
 updatedDate: 2026-01-03T14:30:06.000Z

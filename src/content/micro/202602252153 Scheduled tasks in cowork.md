@@ -1,5 +1,5 @@
 ---
-title: Scheduled tasks in cowork
+title: Scheduled Tasks in Cowork
 slug: scheduled-tasks-in-cowork
 pubDate: 2026-02-25T19:58:05.000Z
 updatedDate: 2026-02-25T19:58:05.000Z

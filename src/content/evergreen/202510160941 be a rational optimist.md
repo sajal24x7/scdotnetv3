@@ -1,5 +1,5 @@
 ---
-title: Be a rational optimist
+title: Be a Rational Optimist
 slug: be-a-rational-optimist
 pubDate: 2025-10-16T07:16:34.000Z
 updatedDate: 2025-10-16T07:16:34.000Z

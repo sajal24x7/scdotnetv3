@@ -1,5 +1,5 @@
 ---
-title: How to create a simulated pull workflow
+title: How to Create a Simulated Pull Workflow
 slug: how-to-create-a-simulated-pull-workflow
 pubDate: 2025-10-26T20:52:38.000Z
 updatedDate: 2025-10-26T20:52:38.000Z

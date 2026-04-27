@@ -1,5 +1,5 @@
 ---
-title: Nothing announces essential
+title: Nothing Announces Essential
 slug: nothing-announces-essential
 pubDate: 2025-10-01T05:07:10.000Z
 updatedDate: 2025-10-01T05:07:10.000Z

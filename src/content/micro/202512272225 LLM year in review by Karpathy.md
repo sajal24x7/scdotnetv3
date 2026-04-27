@@ -1,5 +1,5 @@
 ---
-title: LLM year in review by Karpathy
+title: LLM Year in Review by Karpathy
 slug: llm-year-in-review-by-karpathy
 pubDate: 2025-12-27T20:26:20.000Z
 updatedDate: 2025-12-27T20:26:20.000Z

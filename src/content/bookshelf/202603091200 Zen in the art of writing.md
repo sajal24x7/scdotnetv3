@@ -1,5 +1,5 @@
 ---
-title: Zen in the art of writing
+title: Zen in the Art of Writing
 slug: zen-in-the-art-of-writing
 pubDate: 2026-03-09T10:13:18.000Z
 updatedDate: 2026-03-09T10:13:18.000Z

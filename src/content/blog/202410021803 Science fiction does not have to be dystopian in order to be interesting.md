@@ -1,5 +1,5 @@
 ---
-title: "Science fiction does not have to be dystopian in order to be interesting"
+title: "Science Fiction Does Not Have to Be Dystopian in Order to Be Interesting"
 slug: "science-fiction-does-not-have-to-be-dystopian-in-order-to-be-interesting"
 description: "More hope for the world"
 pubDate: 2024-10-02T18:03:41

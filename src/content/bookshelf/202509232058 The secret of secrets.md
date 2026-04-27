@@ -1,5 +1,5 @@
 ---
-title: "The secret of secrets"
+title: "The Secret of Secrets"
 slug: "the-secret-of-secrets"
 pubDate: 2025-09-23T21:00:18+03:00
 updatedDate: 2025-10-30T10:48:01+02:00

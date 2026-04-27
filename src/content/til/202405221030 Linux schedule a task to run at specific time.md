@@ -1,5 +1,5 @@
 ---
-title: Linux schedule a task to run at specific time
+title: Linux Schedule a Task to Run at Specific Time
 slug: linux-schedule-a-task-to-run-at-specific-time
 pubDate: '2024-05-22T10:30:00+03:00'
 updatedDate: '2024-05-22T10:30:00+03:00'

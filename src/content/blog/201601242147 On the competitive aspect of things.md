@@ -1,5 +1,5 @@
 ---
-title: "On the competitive aspect of things"
+title: "On the Competitive Aspect of Things"
 slug: "on-the-competitive-aspect-of-things"
 pubDate: 2016-01-24T21:47:49
 updatedDate: 2016-01-24T21:47:49

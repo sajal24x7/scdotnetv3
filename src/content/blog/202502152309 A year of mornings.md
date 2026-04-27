@@ -1,5 +1,5 @@
 ---
-title: "A year of mornings"
+title: "A Year of Mornings"
 slug: "a-year-of-mornings"
 pubDate: 2025-02-15T23:09:28
 updatedDate: 2025-03-03T20:19:23

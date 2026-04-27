@@ -1,5 +1,5 @@
 ---
-title: Remove vmware tools
+title: Remove Vmware Tools
 slug: remove-vmware-tools
 pubDate: '2022-09-26T12:47:00+03:00'
 updatedDate: '2022-09-26T12:47:00+03:00'

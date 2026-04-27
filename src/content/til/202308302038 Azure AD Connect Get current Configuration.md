@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect Get current Configuration
+title: Azure AD Connect Get Current Configuration
 slug: azure-ad-connect-get-current-configuration
 pubDate: '2023-08-30T20:38:00+03:00'
 updatedDate: '2023-08-30T20:38:00+03:00'

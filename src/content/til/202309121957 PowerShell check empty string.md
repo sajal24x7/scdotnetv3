@@ -1,5 +1,5 @@
 ---
-title: PowerShell check empty string
+title: PowerShell Check Empty String
 slug: powershell-check-empty-string
 pubDate: '2023-09-12T19:57:00+03:00'
 updatedDate: '2023-09-12T19:57:00+03:00'

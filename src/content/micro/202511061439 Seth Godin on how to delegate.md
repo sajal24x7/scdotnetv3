@@ -1,5 +1,5 @@
 ---
-title: Seth Godin on how to delegate
+title: Seth Godin on How to Delegate
 slug: seth-godin-on-how-to-delegate
 pubDate: 2025-11-06T12:42:03.000Z
 updatedDate: 2025-11-06T12:42:03.000Z

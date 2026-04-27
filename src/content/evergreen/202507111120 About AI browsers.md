@@ -1,5 +1,5 @@
 ---
-title: "About AI browsers"
+title: "About AI Browsers"
 slug: "about-ai-browsers"
 pubDate: 2025-07-11T11:50:15+03:00
 updatedDate: 2025-07-11T11:50:15+03:00

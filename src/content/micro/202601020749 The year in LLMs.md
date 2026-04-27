@@ -1,5 +1,5 @@
 ---
-title: The year in LLMs
+title: The Year in LLMs
 slug: the-year-in-llms
 pubDate: 2026-01-02T05:52:55.000Z
 updatedDate: 2026-01-02T05:52:55.000Z
