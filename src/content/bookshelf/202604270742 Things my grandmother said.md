@@ -1,5 +1,5 @@
 ---
-title: Things my grandmother said
+title: Things My Grandmother Said
 slug: reading-things-my-grandmother-said
 pubDate: 2026-04-27T04:46:16.000Z
 updatedDate: 2026-04-27T04:46:16.000Z

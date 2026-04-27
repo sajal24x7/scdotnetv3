@@ -1,5 +1,5 @@
 ---
-title: Children of strife
+title: Children of Strife
 slug: reading-children-of-strife
 pubDate: 2026-04-26T16:04:26.000Z
 updatedDate: 2026-04-26T16:04:26.000Z
