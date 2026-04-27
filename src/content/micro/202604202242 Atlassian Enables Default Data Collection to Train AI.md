@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116447458133682912'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mk33x5yc6t2b'
+  - 'https://www.threads.com/@sajal24x7/post/DXeAldlFLmI'
 ---
 [Atlassian Enables Default Data Collection to Train AI by Let's Data Science](https://letsdatascience.com/news/atlassian-enables-default-data-collection-to-train-ai-f71343d8)
 

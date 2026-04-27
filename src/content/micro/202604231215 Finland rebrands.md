@@ -1,13 +1,16 @@
 ---
-title: "Finland rebrands"
-slug: "finland-rebrands"
-pubDate: 2026-04-23T12:18:20+03:00
-updatedDate: 2026-04-23T12:18:20+03:00
+title: Finland rebrands
+slug: finland-rebrands
+pubDate: 2026-04-23T09:18:20.000Z
+updatedDate: 2026-04-23T09:18:20.000Z
 category: micro
 tags:
   - finland
   - tourism
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116453274903518453'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mk5omd3u5z2b'
+  - 'https://www.threads.com/@sajal24x7/post/DXeAm-PFE8K'
 ---
 [Finland rebrands: 'Making happiness happen'](https://yle.fi/a/74-20222255?origin=rss)
 

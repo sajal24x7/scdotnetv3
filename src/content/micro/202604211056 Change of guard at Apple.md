@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116447458421565709'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mk33xc2sxf2e'
+  - 'https://www.threads.com/@sajal24x7/post/DXeAmHVFMFo'
 ---
 [Another Day Has Come](https://daringfireball.net/2026/04/another_day_has_come)
 
