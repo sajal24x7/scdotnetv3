@@ -1,5 +1,5 @@
 ---
-title: Solarwinds IPAM reference
+title: Solarwinds IPAM Reference
 slug: solarwinds-ipam-reference
 pubDate: '2022-09-26T12:32:00+03:00'
 updatedDate: '2022-09-26T12:32:00+03:00'

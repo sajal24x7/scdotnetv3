@@ -1,5 +1,5 @@
 ---
-title: Cyborgs vs rooms
+title: Cyborgs vs Rooms
 slug: cyborgs-vs-rooms
 pubDate: 2025-10-21T09:13:24.000Z
 updatedDate: 2025-10-21T09:13:24.000Z

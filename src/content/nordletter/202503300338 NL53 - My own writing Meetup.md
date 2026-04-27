@@ -1,5 +1,5 @@
 ---
-title: "My own writing Meetup"
+title: "My Own Writing Meetup"
 edition: 53
 slug: "my-own-writing-meetup"
 description: "Happening on 6th April + smart homes suck as do smart TVs"

@@ -1,5 +1,5 @@
 ---
-title: OpenAI could be building a smart speaker with a camera
+title: OpenAI Could Be Building a Smart Speaker With a Camera
 slug: openai-could-be-building-a-smart-speaker-with-a-camera
 pubDate: 2026-02-20T17:35:00.000Z
 updatedDate: 2026-02-20T17:35:00.000Z

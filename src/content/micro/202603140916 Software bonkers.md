@@ -1,5 +1,5 @@
 ---
-title: Software bonkers
+title: Software Bonkers
 slug: software-bonkers
 pubDate: 2026-03-14T08:04:18.000Z
 updatedDate: 2026-03-14T08:04:18.000Z

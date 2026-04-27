@@ -1,5 +1,5 @@
 ---
-title: "The next four years are going to be a drag"
+title: "The Next Four Years Are Going to Be a Drag"
 slug: "the-next-four-years-are-going-to-be-a-drag"
 description: "Spent in dread"
 pubDate: 2025-01-21T07:38:29

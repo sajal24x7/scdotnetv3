@@ -1,5 +1,5 @@
 ---
-title: "Writing more vs less"
+title: "Writing More vs Less"
 slug: "writing-more-vs-less"
 description: "Reducing vs habit"
 pubDate: 2024-12-10T03:00:44

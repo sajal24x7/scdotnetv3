@@ -1,5 +1,5 @@
 ---
-title: "Providing customisation options to users is a great thing"
+title: "Providing Customisation Options to Users Is a Great Thing"
 slug: "providing-customisation-options-to-users-is-a-great-thing"
 description: "Adventures in configuring tools to work better"
 pubDate: 2025-03-13T05:22:38

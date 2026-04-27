@@ -1,5 +1,5 @@
 ---
-title: "Sam Altman and the whale"
+title: "Sam Altman and the Whale"
 slug: "sam-altman-and-the-whale"
 pubDate: 2025-08-13T13:50:57+03:00
 updatedDate: 2025-08-13T13:50:57+03:00

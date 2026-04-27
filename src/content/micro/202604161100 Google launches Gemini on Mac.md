@@ -1,5 +1,5 @@
 ---
-title: Google launches Gemini on Mac
+title: Google Launches Gemini on Mac
 slug: google-launches-gemini-on-mac
 pubDate: 2026-04-16T08:02:44.000Z
 updatedDate: 2026-04-16T08:02:44.000Z

@@ -1,5 +1,5 @@
 ---
-title: "The families we make"
+title: "The Families We Make"
 edition: 38
 slug: "the-families-we-make"
 description: "2 hopeful things + electric cars might last longer + the age of average + one more thing about AI"

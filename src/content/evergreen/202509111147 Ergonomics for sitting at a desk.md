@@ -1,5 +1,5 @@
 ---
-title: "Ergonomics for sitting at a desk"
+title: "Ergonomics for Sitting at a Desk"
 slug: "ergonomics-for-sitting-at-a-desk"
 pubDate: 2025-09-11T11:57:25+03:00
 updatedDate: 2025-09-11T11:57:25+03:00

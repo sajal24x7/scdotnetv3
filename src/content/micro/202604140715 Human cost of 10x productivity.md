@@ -1,5 +1,5 @@
 ---
-title: Human cost of 10x productivity
+title: Human Cost of 10x Productivity
 slug: human-cost-of-10x-productivity
 pubDate: 2026-04-14T07:38:24.000Z
 updatedDate: 2026-04-14T07:38:24.000Z

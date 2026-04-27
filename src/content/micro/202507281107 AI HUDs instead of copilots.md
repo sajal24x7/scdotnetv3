@@ -1,5 +1,5 @@
 ---
-title: "AI HUDs instead of copilots"
+title: "AI HUDs Instead of Copilots"
 slug: "ai-huds-instead-of-copilots"
 pubDate: 2025-07-28T11:09:05+03:00
 updatedDate: 2025-07-28T11:09:05+03:00

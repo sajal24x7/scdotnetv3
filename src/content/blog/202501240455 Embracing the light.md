@@ -1,5 +1,5 @@
 ---
-title: "Embracing the light"
+title: "Embracing the Light"
 slug: "embracing-the-light"
 description: "Light mode / dark mode"
 pubDate: 2025-01-24T04:55:45

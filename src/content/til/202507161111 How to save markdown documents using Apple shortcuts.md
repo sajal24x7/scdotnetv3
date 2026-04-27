@@ -1,5 +1,5 @@
 ---
-title: "How to save markdown documents using Apple shortcuts"
+title: "How to Save Markdown Documents Using Apple Shortcuts"
 slug: "how-to-save-markdown-documents-using-apple-shortcuts"
 pubDate: 2025-07-16T11:13:39+03:00
 updatedDate: 2025-07-16T11:13:39+03:00

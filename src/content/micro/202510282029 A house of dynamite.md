@@ -1,5 +1,5 @@
 ---
-title: A house of dynamite
+title: A House of Dynamite
 slug: a-house-of-dynamite
 pubDate: 2025-10-28T18:31:40.000Z
 updatedDate: 2025-10-28T18:31:40.000Z

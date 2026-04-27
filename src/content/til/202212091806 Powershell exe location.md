@@ -1,5 +1,5 @@
 ---
-title: Powershell exe location
+title: Powershell Exe Location
 slug: powershell-exe-location
 pubDate: '2022-12-09T18:06:00+03:00'
 updatedDate: '2022-12-09T18:06:00+03:00'

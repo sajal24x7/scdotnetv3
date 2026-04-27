@@ -1,5 +1,5 @@
 ---
-title: The whole economy pays the Amazon tax
+title: The Whole Economy Pays the Amazon Tax
 slug: the-whole-economy-pays-the-amazon-tax
 pubDate: 2026-02-25T12:46:47.000Z
 updatedDate: 2026-02-25T12:46:47.000Z

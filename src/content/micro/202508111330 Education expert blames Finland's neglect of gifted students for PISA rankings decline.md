@@ -1,5 +1,5 @@
 ---
-title: "Education expert blames Finland's neglect of gifted students for PISA rankings decline"
+title: "Education Expert Blames Finland's Neglect of Gifted Students for PISA Rankings Decline"
 slug: "education-expert-blames-finlands-neglect-of-gifted-students-for-pisa-rankings-decline"
 pubDate: 2025-08-11T13:32:58+03:00
 updatedDate: 2025-08-11T13:32:58+03:00

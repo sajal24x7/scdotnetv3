@@ -1,5 +1,5 @@
 ---
-title: "There was this boy in school"
+title: "There Was This Boy in School"
 slug: "there-was-this-boy-in-school"
 pubDate: 2014-07-18T08:31:59
 updatedDate: 2024-01-28T11:05:59

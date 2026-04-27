@@ -1,5 +1,5 @@
 ---
-title: Terraform custom worker image
+title: Terraform Custom Worker Image
 slug: terraform-custom-worker-image
 pubDate: '2022-05-17T15:19:00+03:00'
 updatedDate: '2022-05-17T15:19:00+03:00'

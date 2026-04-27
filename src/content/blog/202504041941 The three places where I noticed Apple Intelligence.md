@@ -1,5 +1,5 @@
 ---
-title: "The three places where I noticed Apple Intelligence"
+title: "The Three Places Where I Noticed Apple Intelligence"
 slug: "the-three-places-where-i-noticed-apple-intelligence"
 description: "Apple Intelligence comes to India (English)"
 pubDate: 2025-04-04T19:41:11

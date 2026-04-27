@@ -1,5 +1,5 @@
 ---
-title: "Finland backs Nokia-led plan for AI gigafactory"
+title: "Finland Backs Nokia-Led Plan for AI Gigafactory"
 slug: "finland-backs-nokia-led-plan-for-ai-gigafactory"
 pubDate: 2025-07-07T08:13:06+03:00
 updatedDate: 2025-07-07T08:13:06+03:00

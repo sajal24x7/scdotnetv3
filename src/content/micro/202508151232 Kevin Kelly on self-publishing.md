@@ -1,5 +1,5 @@
 ---
-title: "Kevin Kelly on self-publishing"
+title: "Kevin Kelly on Self-Publishing"
 slug: "kevin-kelly-on-self-publishing"
 pubDate: 2025-08-15T12:59:11+03:00
 updatedDate: 2025-08-15T12:59:11+03:00

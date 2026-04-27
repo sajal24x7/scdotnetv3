@@ -1,5 +1,5 @@
 ---
-title: Massive DDoS attack on Azure
+title: Massive DDoS Attack on Azure
 slug: massive-ddos-attack-on-azure
 pubDate: 2025-11-18T09:47:14.000Z
 updatedDate: 2025-11-18T09:47:14.000Z

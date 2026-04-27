@@ -1,5 +1,5 @@
 ---
-title: "Everything you type in your iPhone could be used to train a digital you"
+title: "Everything You Type in Your iPhone Could Be Used to Train a Digital You"
 slug: "everything-you-type-in-your-iphone-could-be-used-to-train-a-digital-you"
 description: "Make more detailed notes"
 pubDate: 2025-04-10T20:06:13

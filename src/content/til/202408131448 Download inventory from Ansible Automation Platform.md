@@ -1,5 +1,5 @@
 ---
-title: Download inventory from Ansible Automation Platform
+title: Download Inventory From Ansible Automation Platform
 slug: download-inventory-from-ansible-automation-platform
 pubDate: '2024-08-13T14:48:00+03:00'
 updatedDate: '2024-08-13T14:48:00+03:00'

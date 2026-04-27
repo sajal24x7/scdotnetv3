@@ -1,5 +1,5 @@
 ---
-title: Platespin scheduling target machine for provisioning fails
+title: Platespin Scheduling Target Machine for Provisioning Fails
 slug: platespin-scheduling-target-machine-for-provisioning-fails
 pubDate: '2022-09-26T12:59:00+03:00'
 updatedDate: '2022-09-26T12:59:00+03:00'

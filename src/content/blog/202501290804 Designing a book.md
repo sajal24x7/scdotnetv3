@@ -1,5 +1,5 @@
 ---
-title: "Designing a book"
+title: "Designing a Book"
 slug: "designing-a-book"
 description: "With a little bit of quirkiness"
 pubDate: 2025-01-29T08:04:32

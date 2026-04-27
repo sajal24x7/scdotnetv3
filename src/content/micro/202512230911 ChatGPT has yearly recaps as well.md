@@ -1,5 +1,5 @@
 ---
-title: ChatGPT has yearly recaps as well
+title: ChatGPT Has Yearly Recaps as Well
 slug: chatgpt-has-yearly-recaps-as-well
 pubDate: 2025-12-23T07:13:51.000Z
 updatedDate: 2025-12-23T07:13:51.000Z

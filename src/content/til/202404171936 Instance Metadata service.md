@@ -1,5 +1,5 @@
 ---
-title: Instance Metadata service
+title: Instance Metadata Service
 slug: instance-metadata-service
 pubDate: '2024-04-17T19:36:00+03:00'
 updatedDate: '2024-04-17T19:36:00+03:00'

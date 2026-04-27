@@ -1,5 +1,5 @@
 ---
-title: "How to set time zone on windows using PowerShell"
+title: "How to Set Time Zone on Windows Using PowerShell"
 slug: "how-to-set-time-zone-on-windows-using-powershell"
 pubDate: 2025-09-08T20:52:04+03:00
 updatedDate: 2025-09-08T20:52:04+03:00

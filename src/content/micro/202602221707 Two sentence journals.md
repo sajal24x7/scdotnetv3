@@ -1,5 +1,5 @@
 ---
-title: Two sentence journals
+title: Two Sentence Journals
 slug: two-sentence-journals
 pubDate: 2026-02-22T16:16:42.000Z
 updatedDate: 2026-02-22T16:16:42.000Z

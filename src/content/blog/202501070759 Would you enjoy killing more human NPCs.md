@@ -1,5 +1,5 @@
 ---
-title: "Would you enjoy killing more human NPCs?"
+title: "Would You Enjoy Killing More Human NPCs?"
 slug: "would-you-enjoy-killing-more-human-npcs"
 description: "Nvidia’s AI NPCs can become your allies"
 pubDate: 2025-01-07T07:59:23

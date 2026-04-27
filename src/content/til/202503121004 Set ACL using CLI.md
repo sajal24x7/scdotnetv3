@@ -1,5 +1,5 @@
 ---
-title: "Set ACL using CLI"
+title: "Set ACL Using CLI"
 slug: "set-acl-using-cli"
 pubDate: 2025-03-12T10:40:41+03:00
 updatedDate: 2025-03-12T10:40:41+03:00

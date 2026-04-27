@@ -1,5 +1,5 @@
 ---
-title: "Are you tired of everything?"
+title: "Are You Tired of Everything?"
 slug: "are-you-tired-of-everything"
 pubDate: 2016-05-16T21:06:51
 updatedDate: 2016-05-16T21:06:51

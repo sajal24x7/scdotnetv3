@@ -1,5 +1,5 @@
 ---
-title: Docker logs for all containers
+title: Docker Logs for All Containers
 slug: docker-logs-for-all-containers
 pubDate: '2022-08-10T12:48:00+03:00'
 updatedDate: '2022-08-10T12:48:00+03:00'

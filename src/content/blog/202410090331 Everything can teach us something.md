@@ -1,5 +1,5 @@
 ---
-title: "Everything can teach us something"
+title: "Everything Can Teach Us Something"
 slug: "everything-can-teach-us-something"
 description: "Help us grow"
 pubDate: 2024-10-09T03:31:40

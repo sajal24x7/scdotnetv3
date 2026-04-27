@@ -1,5 +1,5 @@
 ---
-title: "We are all addicted to our phones"
+title: "We Are All Addicted to Our Phones"
 slug: "we-are-all-addicted-to-our-phones"
 description: "And a few rules I have"
 pubDate: 2025-03-07T21:55:00

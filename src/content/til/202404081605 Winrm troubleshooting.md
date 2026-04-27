@@ -1,5 +1,5 @@
 ---
-title: Winrm troubleshooting
+title: Winrm Troubleshooting
 slug: winrm-troubleshooting
 pubDate: '2024-04-08T16:05:00+03:00'
 updatedDate: '2024-04-08T16:05:00+03:00'

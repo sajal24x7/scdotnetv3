@@ -1,5 +1,5 @@
 ---
-title: "The whorish aspect of things"
+title: "The Whorish Aspect of Things"
 slug: "the-whorish-aspect-of-things"
 pubDate: 2015-03-07T12:18:28
 updatedDate: 2015-03-07T12:18:28

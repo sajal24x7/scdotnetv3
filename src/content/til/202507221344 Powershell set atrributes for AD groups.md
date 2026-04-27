@@ -1,5 +1,5 @@
 ---
-title: "Powershell set atrributes for AD groups"
+title: "Powershell Set Atrributes for AD Groups"
 slug: "powershell-set-atrributes-for-ad-groups"
 pubDate: 2025-07-22T13:38:02+03:00
 updatedDate: 2025-07-22T13:38:02+03:00

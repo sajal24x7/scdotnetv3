@@ -1,5 +1,5 @@
 ---
-title: SMB share does not work for cluster
+title: SMB Share Does Not Work for Cluster
 slug: smb-share-does-not-work-for-cluster
 pubDate: '2024-03-13T13:11:00+03:00'
 updatedDate: '2024-03-13T13:11:00+03:00'

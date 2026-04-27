@@ -1,5 +1,5 @@
 ---
-title: "Something about nothing!"
+title: "Something About Nothing!"
 slug: "something-about-nothing"
 pubDate: 2015-02-26T22:01:45
 updatedDate: 2015-02-26T22:01:45

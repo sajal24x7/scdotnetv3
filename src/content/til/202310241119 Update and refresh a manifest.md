@@ -1,5 +1,5 @@
 ---
-title: Update and refresh a manifest
+title: Update and Refresh a Manifest
 slug: update-and-refresh-a-manifest
 pubDate: '2023-10-24T11:19:00+03:00'
 updatedDate: '2023-10-24T11:19:00+03:00'

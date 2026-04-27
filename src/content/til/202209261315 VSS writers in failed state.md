@@ -1,5 +1,5 @@
 ---
-title: VSS writers in failed state
+title: VSS Writers in Failed State
 slug: vss-writers-in-failed-state
 pubDate: '2022-09-26T13:15:00+03:00'
 updatedDate: '2022-09-26T13:15:00+03:00'

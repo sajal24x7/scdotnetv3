@@ -1,5 +1,5 @@
 ---
-title: "Thoughts on self-hosting"
+title: "Thoughts on Self-Hosting"
 slug: "thoughts-on-self-hosting"
 pubDate: 2016-05-26T22:33:41
 updatedDate: 2016-05-26T22:33:41

@@ -1,5 +1,5 @@
 ---
-title: Platespin SQL queries
+title: Platespin SQL Queries
 slug: platespin-sql-queries
 pubDate: '2022-09-26T12:57:00+03:00'
 updatedDate: '2022-09-26T12:57:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "Using AI right now -"
+title: "Using AI Right Now -"
 slug: "using-ai-right-now-"
 pubDate: 2025-07-10T16:16:42+03:00
 updatedDate: 2025-07-10T16:16:42+03:00

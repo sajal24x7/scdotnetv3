@@ -1,5 +1,5 @@
 ---
-title: Ok being left behind
+title: Ok Being Left Behind
 slug: ok-being-left-behind
 pubDate: 2026-03-20T22:31:15.000Z
 updatedDate: 2026-03-20T22:31:15.000Z

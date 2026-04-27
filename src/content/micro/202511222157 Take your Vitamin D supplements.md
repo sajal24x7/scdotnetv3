@@ -1,5 +1,5 @@
 ---
-title: Take your Vitamin D supplements
+title: Take Your Vitamin D Supplements
 slug: take-your-vitamin-d-supplements
 pubDate: 2025-11-22T19:58:00.000Z
 updatedDate: 2025-11-22T19:58:00.000Z

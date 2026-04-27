@@ -1,5 +1,5 @@
 ---
-title: On types of leadership
+title: On Types of Leadership
 slug: on-types-of-leadership
 pubDate: 2025-12-06T21:54:32.000Z
 updatedDate: 2025-12-06T21:54:32.000Z

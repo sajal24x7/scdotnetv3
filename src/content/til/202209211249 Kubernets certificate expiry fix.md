@@ -1,5 +1,5 @@
 ---
-title: Kubernets certificate expiry fix
+title: Kubernets Certificate Expiry Fix
 slug: kubernets-certificate-expiry-fix
 pubDate: '2022-09-21T12:49:00+03:00'
 updatedDate: '2022-09-21T12:49:00+03:00'

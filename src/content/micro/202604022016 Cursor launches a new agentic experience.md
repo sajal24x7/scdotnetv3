@@ -1,5 +1,5 @@
 ---
-title: Cursor launches a new agentic experience
+title: Cursor Launches a New Agentic Experience
 slug: cursor-launches-a-new-agentic-experience
 pubDate: 2026-04-02T17:19:27.000Z
 updatedDate: 2026-04-02T17:19:27.000Z

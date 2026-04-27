@@ -1,5 +1,5 @@
 ---
-title: "Some times we wait"
+title: "Some Times We Wait"
 slug: "some-times-we-wait"
 description: "For a thing to become what it must"
 pubDate: 2025-02-11T20:48:09

@@ -1,5 +1,5 @@
 ---
-title: Entra ID objects
+title: Entra ID Objects
 slug: entra-id-objects
 pubDate: '2024-04-01T13:43:00+03:00'
 updatedDate: '2024-04-01T13:43:00+03:00'

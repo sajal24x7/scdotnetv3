@@ -1,5 +1,5 @@
 ---
-title: I don’t care about the three rings anymore
+title: I Don’t Care About the Three Rings Anymore
 slug: i-dont-care-about-the-three-rings-anymore
 pubDate: 2025-10-09T04:27:08.000Z
 updatedDate: 2025-10-09T04:27:08.000Z

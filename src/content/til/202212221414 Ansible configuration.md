@@ -1,5 +1,5 @@
 ---
-title: Ansible configuration
+title: Ansible Configuration
 slug: ansible-configuration
 pubDate: '2022-12-22T14:14:00+03:00'
 updatedDate: '2022-12-22T14:14:00+03:00'

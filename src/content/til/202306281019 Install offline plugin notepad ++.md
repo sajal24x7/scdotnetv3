@@ -1,5 +1,5 @@
 ---
-title: Install offline plugin notepad ++
+title: Install Offline Plugin Notepad ++
 slug: install-offline-plugin-notepad-++
 pubDate: '2023-06-28T10:19:00+03:00'
 updatedDate: '2023-06-28T10:19:00+03:00'

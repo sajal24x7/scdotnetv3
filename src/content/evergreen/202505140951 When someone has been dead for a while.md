@@ -1,5 +1,5 @@
 ---
-title: "When someone has been dead for a while"
+title: "When Someone Has Been Dead for a While"
 slug: "when-someone-has-been-dead-for-a-while"
 pubDate: 2025-08-30T11:50:28+03:00
 updatedDate: 2025-08-30T11:50:28+03:00

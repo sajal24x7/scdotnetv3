@@ -1,5 +1,5 @@
 ---
-title: "Basics of typography"
+title: "Basics of Typography"
 slug: "basics-of-typography"
 description: "Good typography conveys emotion"
 pubDate: 2024-09-16T19:34:01

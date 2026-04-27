@@ -1,5 +1,5 @@
 ---
-title: "They killed some more men today"
+title: "They Killed Some More Men Today"
 slug: "they-killed-some-more-men-today"
 pubDate: 2016-07-08T21:00:26
 updatedDate: 2024-04-29T07:59:45

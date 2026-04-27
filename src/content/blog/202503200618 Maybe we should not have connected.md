@@ -1,5 +1,5 @@
 ---
-title: "Maybe we should not have connected"
+title: "Maybe We Should Not Have Connected"
 slug: "maybe-we-should-not-have-connected"
 description: "Mixing DS2, Mastodon and Fediverse"
 pubDate: 2025-03-20T06:18:48

@@ -1,5 +1,5 @@
 ---
-title: The art of spending money
+title: The Art of Spending Money
 slug: the-art-of-spending-money
 pubDate: 2025-12-19T15:11:57.000Z
 updatedDate: 2025-12-19T15:11:57.000Z

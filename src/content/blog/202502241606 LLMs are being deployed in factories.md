@@ -1,5 +1,5 @@
 ---
-title: "LLMs are being deployed in factories"
+title: "LLMs Are Being Deployed in Factories"
 slug: "llms-are-being-deployed-in-factories"
 description: "How does that make you feel?"
 pubDate: 2025-02-24T16:06:39

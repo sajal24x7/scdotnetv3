@@ -1,5 +1,5 @@
 ---
-title: "ESX update fails with error 15"
+title: "ESX Update Fails With Error 15"
 slug: "esx-update-fails-with-error-15"
 pubDate: 2025-08-12T12:59:30+03:00
 updatedDate: 2025-08-12T12:59:30+03:00

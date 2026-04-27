@@ -1,5 +1,5 @@
 ---
-title: "Living with bindis"
+title: "Living With Bindis"
 slug: "living-with-bindis"
 pubDate: 2024-10-25T03:37:45
 updatedDate: 2024-10-25T03:37:44

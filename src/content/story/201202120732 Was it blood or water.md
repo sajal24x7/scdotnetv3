@@ -1,5 +1,5 @@
 ---
-title: "Was it blood or water?"
+title: "Was It Blood or Water?"
 slug: "was-it-blood-or-water"
 pubDate: 2012-02-12T07:32:16
 updatedDate: 2024-04-29T13:43:16

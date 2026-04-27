@@ -1,5 +1,5 @@
 ---
-title: Overproduction of electric vehicles is causing problems in China
+title: Overproduction of Electric Vehicles Is Causing Problems in China
 slug: overproduction-of-electric-vehicles-is-causing-problems-in-china
 pubDate: 2025-09-18T08:07:45.000Z
 updatedDate: 2025-09-18T08:07:45.000Z

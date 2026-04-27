@@ -1,5 +1,5 @@
 ---
-title: One more thing about doing yoga
+title: One More Thing About Doing Yoga
 slug: one-more-thing-about-doing-yoga
 pubDate: 2026-04-07T05:56:36.000Z
 updatedDate: 2026-04-07T05:56:36.000Z

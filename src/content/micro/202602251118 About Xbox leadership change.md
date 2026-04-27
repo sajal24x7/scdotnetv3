@@ -1,5 +1,5 @@
 ---
-title: About Xbox leadership change
+title: About Xbox Leadership Change
 slug: about-xbox-leadership-change
 pubDate: 2026-02-25T09:19:45.000Z
 updatedDate: 2026-02-25T09:19:45.000Z

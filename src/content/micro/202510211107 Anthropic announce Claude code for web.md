@@ -1,5 +1,5 @@
 ---
-title: Anthropic announce Claude code for web
+title: Anthropic Announce Claude Code for Web
 slug: anthropic-announce-claude-code-for-web
 pubDate: 2025-10-21T08:09:14.000Z
 updatedDate: 2025-10-21T08:09:14.000Z

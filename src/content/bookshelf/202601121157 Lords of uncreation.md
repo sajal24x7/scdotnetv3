@@ -1,5 +1,5 @@
 ---
-title: Lords of uncreation
+title: Lords of Uncreation
 slug: lords-of-uncreation
 pubDate: 2026-01-12T10:10:42.000Z
 updatedDate: 2026-01-12T10:10:42.000Z

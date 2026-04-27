@@ -1,5 +1,5 @@
 ---
-title: "Why persistence matters"
+title: "Why Persistence Matters"
 slug: "why-persistence-matters"
 pubDate: 2016-02-15T22:02:36
 updatedDate: 2016-02-15T22:02:36

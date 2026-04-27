@@ -1,5 +1,5 @@
 ---
-title: "Where are we going"
+title: "Where Are We Going"
 edition: 28
 slug: "where-are-we-going"
 description: "More iPhone (camera) reviews + AI future"

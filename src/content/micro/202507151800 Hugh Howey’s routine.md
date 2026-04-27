@@ -1,5 +1,5 @@
 ---
-title: "Hugh Howey’s routine"
+title: "Hugh Howey’s Routine"
 slug: "hugh-howeys-routine"
 pubDate: 2025-07-16T11:15:58+03:00
 updatedDate: 2025-07-16T11:15:58+03:00

@@ -1,5 +1,5 @@
 ---
-title: "What is the difference between Education & Knowledge?"
+title: "What Is the Difference Between Education & Knowledge?"
 slug: "what-is-the-difference-between-education-knowledge"
 pubDate: 2012-10-10T19:58:32
 updatedDate: 2024-04-29T13:34:44

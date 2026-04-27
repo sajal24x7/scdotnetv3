@@ -1,5 +1,5 @@
 ---
-title: VMware esxi unable to reach DNS
+title: VMware Esxi Unable to Reach DNS
 slug: vmware-esxi-unable-to-reach-dns
 pubDate: '2024-09-11T19:20:00+03:00'
 updatedDate: '2024-09-11T19:20:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "Duplicating everything"
+title: "Duplicating Everything"
 slug: "duplicating-everything"
 description: "Stop re-doing everything"
 pubDate: 2025-03-27T05:07:09

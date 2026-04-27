@@ -1,5 +1,5 @@
 ---
-title: Google will be changing App Store rules globally
+title: Google Will Be Changing App Store Rules Globally
 slug: google-will-be-changing-app-store-rules-globally
 pubDate: 2025-11-06T05:25:14.000Z
 updatedDate: 2025-11-06T05:25:14.000Z

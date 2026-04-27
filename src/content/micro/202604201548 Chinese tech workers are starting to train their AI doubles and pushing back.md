@@ -1,5 +1,5 @@
 ---
-title: Chinese tech workers are starting to train their AI doubles and pushing back
+title: Chinese Tech Workers Are Starting to Train Their AI Doubles and Pushing Back
 slug: chinese-tech-workers-are-starting-to-train-their-ai-doubles-and-pushing-back
 pubDate: 2026-04-20T12:50:40.000Z
 updatedDate: 2026-04-20T12:50:40.000Z

@@ -1,5 +1,5 @@
 ---
-title: Majority of Finns do not use AI at work
+title: Majority of Finns Do Not Use AI at Work
 slug: majority-of-finns-do-not-use-ai-at-work
 pubDate: 2026-01-09T10:36:05.000Z
 updatedDate: 2026-01-09T10:36:05.000Z

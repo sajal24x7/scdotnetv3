@@ -1,5 +1,5 @@
 ---
-title: "Day Twelve: The Lord in the mountains"
+title: "Day Twelve: The Lord in the Mountains"
 slug: "day-twelve-the-lord-in-the-mountains"
 pubDate: 2014-03-24T20:24:40
 updatedDate: 2014-03-24T20:24:40

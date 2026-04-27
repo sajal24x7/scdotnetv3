@@ -1,5 +1,5 @@
 ---
-title: Platespin install
+title: Platespin Install
 slug: platespin-install
 pubDate: '2022-09-26T12:55:00+03:00'
 updatedDate: '2022-09-26T12:55:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: Clear recycle bin for all users
+title: Clear Recycle Bin for All Users
 slug: clear-recycle-bin-for-all-users
 pubDate: '2024-08-05T11:32:00+03:00'
 updatedDate: '2024-08-05T11:32:00+03:00'

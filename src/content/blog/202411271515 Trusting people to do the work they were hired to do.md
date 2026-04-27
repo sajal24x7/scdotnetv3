@@ -1,5 +1,5 @@
 ---
-title: "Trusting people to do the work they were hired to do"
+title: "Trusting People to Do the Work They Were Hired to Do"
 slug: "trusting-people-to-do-the-work-they-were-hired-to-do"
 description: "Curb micro-management"
 pubDate: 2024-11-27T15:15:32

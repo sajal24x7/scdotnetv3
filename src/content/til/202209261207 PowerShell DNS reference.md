@@ -1,5 +1,5 @@
 ---
-title: PowerShell DNS reference
+title: PowerShell DNS Reference
 slug: powershell-dns-reference
 pubDate: '2022-09-26T12:07:00+03:00'
 updatedDate: '2022-09-26T12:07:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: Obsess over quality
+title: Obsess Over Quality
 slug: obsess-over-quality
 pubDate: 2025-10-26T20:50:47.000Z
 updatedDate: 2025-10-26T20:50:47.000Z

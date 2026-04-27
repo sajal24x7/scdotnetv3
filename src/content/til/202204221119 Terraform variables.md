@@ -1,5 +1,5 @@
 ---
-title: Terraform variables
+title: Terraform Variables
 slug: terraform-variables
 pubDate: '2022-04-22T11:19:00+03:00'
 updatedDate: '2022-04-22T11:19:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: Maintenance vs making
+title: Maintenance vs Making
 slug: maintenance-vs-making
 pubDate: 2025-11-09T10:29:27.000Z
 updatedDate: 2025-11-09T10:29:27.000Z

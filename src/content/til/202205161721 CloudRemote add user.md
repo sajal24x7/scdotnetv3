@@ -1,5 +1,5 @@
 ---
-title: CloudRemote add user
+title: CloudRemote Add User
 slug: cloudremote-add-user
 pubDate: '2022-05-16T17:21:00+03:00'
 updatedDate: '2022-05-16T17:21:00+03:00'

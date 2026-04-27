@@ -1,5 +1,5 @@
 ---
-title: Early childhood education teachers increasingly lack qualifications
+title: Early Childhood Education Teachers Increasingly Lack Qualifications
 slug: early-childhood-education-teachers-increasingly-lack-qualifications
 pubDate: 2025-12-01T09:47:25.000Z
 updatedDate: 2025-12-01T09:47:25.000Z

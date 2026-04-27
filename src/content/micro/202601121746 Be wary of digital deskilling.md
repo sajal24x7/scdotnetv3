@@ -1,5 +1,5 @@
 ---
-title: Be wary of digital deskilling
+title: Be Wary of Digital Deskilling
 slug: be-wary-of-digital-deskilling
 pubDate: 2026-01-12T15:47:31.000Z
 updatedDate: 2026-01-12T15:47:31.000Z

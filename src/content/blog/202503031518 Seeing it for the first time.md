@@ -1,5 +1,5 @@
 ---
-title: "Seeing it for the first time"
+title: "Seeing It for the First Time"
 slug: "seeing-it-for-the-first-time"
 description: "Following Apple rumours"
 pubDate: 2025-03-03T15:18:37

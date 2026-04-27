@@ -1,5 +1,5 @@
 ---
-title: How to configure time source using Group Policy
+title: How to Configure Time Source Using Group Policy
 slug: how-to-configure-time-source-using-group-policy
 pubDate: 2025-12-18T10:30:51.000Z
 updatedDate: 2025-12-18T10:30:51.000Z

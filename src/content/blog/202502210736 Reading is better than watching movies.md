@@ -1,5 +1,5 @@
 ---
-title: "Reading is better than watching movies"
+title: "Reading Is Better Than Watching Movies"
 slug: "reading-is-better-than-watching-movies"
 description: "If it’s the same story"
 pubDate: 2025-02-21T07:36:29

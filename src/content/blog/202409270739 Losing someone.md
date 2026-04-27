@@ -1,5 +1,5 @@
 ---
-title: "Losing someone"
+title: "Losing Someone"
 slug: "losing-someone"
 description: "It's hard"
 pubDate: 2024-09-27T07:39:30

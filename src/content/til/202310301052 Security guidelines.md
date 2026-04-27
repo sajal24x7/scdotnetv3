@@ -1,5 +1,5 @@
 ---
-title: Security guidelines
+title: Security Guidelines
 slug: security-guidelines
 pubDate: '2023-10-30T10:52:00+03:00'
 updatedDate: '2023-10-30T10:52:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "A tale of two airlines"
+title: "A Tale of Two Airlines"
 slug: "a-tale-of-two-airlines"
 description: "Finnair good. SpiceJet shit."
 pubDate: 2024-10-26T03:03:23

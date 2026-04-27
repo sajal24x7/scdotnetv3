@@ -1,5 +1,5 @@
 ---
-title: "#4 in an year of mornings"
+title: "#4 in an Year of Mornings"
 slug: "4-in-an-year-of-mornings"
 pubDate: 2017-09-04T09:00:25
 updatedDate: 2024-04-28T15:48:25

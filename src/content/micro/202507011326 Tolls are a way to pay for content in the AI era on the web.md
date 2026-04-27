@@ -1,5 +1,5 @@
 ---
-title: "Tolls are a way to pay for content in the AI era on the web"
+title: "Tolls Are a Way to Pay for Content in the AI Era on the Web"
 slug: "tolls-are-a-way-to-pay-for-content-in-the-ai-era-on-the-web"
 pubDate: 2025-07-01T16:33:01+03:00
 updatedDate: 2025-07-01T16:33:01+03:00

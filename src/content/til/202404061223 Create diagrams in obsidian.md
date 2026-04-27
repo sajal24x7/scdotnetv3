@@ -1,5 +1,5 @@
 ---
-title: Create diagrams in obsidian
+title: Create Diagrams in Obsidian
 slug: create-diagrams-in-obsidian
 pubDate: '2024-04-06T12:23:00+03:00'
 updatedDate: '2024-04-06T12:23:00+03:00'

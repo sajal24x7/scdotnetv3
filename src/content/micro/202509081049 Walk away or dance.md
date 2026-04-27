@@ -1,5 +1,5 @@
 ---
-title: "Walk away or dance"
+title: "Walk Away or Dance"
 slug: "walk-away-or-dance"
 pubDate: 2025-09-08T11:56:04+03:00
 updatedDate: 2025-09-08T11:56:04+03:00

@@ -1,5 +1,5 @@
 ---
-title: Types of analysis
+title: Types of Analysis
 slug: types-of-analysis
 pubDate: '2024-04-27T15:18:00+03:00'
 updatedDate: '2024-04-27T15:18:00+03:00'

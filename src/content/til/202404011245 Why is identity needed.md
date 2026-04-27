@@ -1,5 +1,5 @@
 ---
-title: Why is identity needed
+title: Why Is Identity Needed
 slug: why-is-identity-needed
 pubDate: '2024-04-01T12:45:00+03:00'
 updatedDate: '2024-04-01T12:45:00+03:00'

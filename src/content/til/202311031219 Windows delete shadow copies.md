@@ -1,5 +1,5 @@
 ---
-title: Windows delete shadow copies
+title: Windows Delete Shadow Copies
 slug: windows-delete-shadow-copies
 pubDate: '2023-11-03T12:19:00+03:00'
 updatedDate: '2023-11-03T12:19:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "Why are there no small photo sharing apps"
+title: "Why Are There No Small Photo Sharing Apps"
 slug: "why-are-there-no-small-photo-sharing-apps"
 description: "There is an opportunity here"
 pubDate: 2024-12-03T20:24:39

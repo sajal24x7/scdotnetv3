@@ -1,5 +1,5 @@
 ---
-title: Ansible inventory
+title: Ansible Inventory
 slug: ansible-inventory
 pubDate: '2022-12-22T13:08:00+03:00'
 updatedDate: '2022-12-22T13:08:00+03:00'

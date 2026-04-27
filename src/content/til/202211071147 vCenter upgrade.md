@@ -1,5 +1,5 @@
 ---
-title: vCenter upgrade
+title: vCenter Upgrade
 slug: vcenter-upgrade
 pubDate: '2022-11-07T11:47:00+03:00'
 updatedDate: '2022-11-07T11:47:00+03:00'

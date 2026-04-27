@@ -1,5 +1,5 @@
 ---
-title: Solar-panels on balconies
+title: Solar-Panels on Balconies
 slug: solar-panels-on-balconies
 pubDate: 2026-04-02T07:36:49.000Z
 updatedDate: 2026-04-02T07:36:49.000Z

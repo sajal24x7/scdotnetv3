@@ -1,5 +1,5 @@
 ---
-title: Jenkins 2 up and running
+title: Jenkins 2 up and Running
 slug: jenkins-2-up-and-running
 pubDate: 2025-12-29T11:18:12.000Z
 updatedDate: 2025-12-29T11:18:12.000Z

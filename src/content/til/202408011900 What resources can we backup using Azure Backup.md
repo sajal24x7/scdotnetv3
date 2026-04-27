@@ -1,5 +1,5 @@
 ---
-title: What resources can we backup using Azure Backup
+title: What Resources Can We Backup Using Azure Backup
 slug: what-resources-can-we-backup-using-azure-backup
 pubDate: '2024-08-01T19:00:00+03:00'
 updatedDate: '2024-08-01T19:00:00+03:00'

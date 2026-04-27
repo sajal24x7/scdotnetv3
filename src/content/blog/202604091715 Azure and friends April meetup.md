@@ -1,5 +1,5 @@
 ---
-title: Azure and friends April meetup
+title: Azure and Friends April Meetup
 slug: azure-and-friends-april-meetup
 image: https://storage.sajalchoudhary.net/images/2026/04/anf-2026-04-02.jpeg
 pubDate: 2026-04-09T19:18:31.000Z

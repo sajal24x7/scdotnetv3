@@ -1,5 +1,5 @@
 ---
-title: "How would you like your fiction served?"
+title: "How Would You Like Your Fiction Served?"
 slug: "how-would-you-like-your-fiction-served"
 pubDate: 2012-09-20T19:37:44
 updatedDate: 2024-04-29T13:31:54

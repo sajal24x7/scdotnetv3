@@ -1,5 +1,5 @@
 ---
-title: "Why planning is important, but irrelevant"
+title: "Why Planning Is Important, but Irrelevant"
 slug: "why-planning-is-important-but-irrelevant"
 pubDate: 2014-07-23T08:40:24
 updatedDate: 2024-01-28T11:05:59

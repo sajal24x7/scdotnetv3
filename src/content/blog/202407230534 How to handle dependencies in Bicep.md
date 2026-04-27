@@ -1,5 +1,5 @@
 ---
-title: "How to handle dependencies in Bicep"
+title: "How to Handle Dependencies in Bicep"
 slug: "how-to-handle-dependencies-in-bicep"
 pubDate: 2024-07-23T05:34:23
 updatedDate: 2024-07-23T08:23:36

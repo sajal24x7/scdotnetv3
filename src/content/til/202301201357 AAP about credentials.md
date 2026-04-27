@@ -1,5 +1,5 @@
 ---
-title: AAP about credentials
+title: AAP About Credentials
 slug: aap-about-credentials
 pubDate: '2023-01-20T13:57:00+03:00'
 updatedDate: '2023-01-20T13:57:00+03:00'

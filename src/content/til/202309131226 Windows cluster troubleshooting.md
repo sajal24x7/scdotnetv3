@@ -1,5 +1,5 @@
 ---
-title: Windows cluster troubleshooting
+title: Windows Cluster Troubleshooting
 slug: windows-cluster-troubleshooting
 pubDate: '2023-09-13T12:26:00+03:00'
 updatedDate: '2023-09-13T12:26:00+03:00'

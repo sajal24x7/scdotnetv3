@@ -1,5 +1,5 @@
 ---
-title: VMware unable to unmount datastore
+title: VMware Unable to Unmount Datastore
 slug: vmware-unable-to-unmount-datastore
 pubDate: '2022-05-31T14:53:00+03:00'
 updatedDate: '2022-05-31T14:53:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "On writing : the numbers"
+title: "On Writing : The Numbers"
 slug: "on-writing-the-numbers"
 pubDate: 2016-02-03T21:00:53
 updatedDate: 2016-02-03T21:00:53

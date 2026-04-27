@@ -1,5 +1,5 @@
 ---
-title: "I need to talk to more people, more often"
+title: "I Need to Talk to More People, More Often"
 slug: "i-need-to-talk-to-more-people-more-often"
 description: "And hear their stories"
 pubDate: 2025-01-23T07:54:34

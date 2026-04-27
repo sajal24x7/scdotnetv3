@@ -1,5 +1,5 @@
 ---
-title: "The three types of code I write"
+title: "The Three Types of Code I Write"
 slug: "the-three-types-of-code-i-write"
 description: "slapdash, scrappy and production-grade"
 pubDate: 2025-02-08T21:04:26

@@ -1,5 +1,5 @@
 ---
-title: "Sometimes, I wish"
+title: "Sometimes, I Wish"
 slug: "sometimes-i-wish"
 pubDate: 2016-06-04T21:23:41
 updatedDate: 2016-06-04T21:23:41

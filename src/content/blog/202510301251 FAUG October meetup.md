@@ -1,5 +1,5 @@
 ---
-title: FAUG October meetup
+title: FAUG October Meetup
 slug: faug-october-meetup
 pubDate: 2025-10-30T20:39:01.000Z
 updatedDate: 2025-10-30T20:39:01.000Z

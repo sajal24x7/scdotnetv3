@@ -1,5 +1,5 @@
 ---
-title: "Ghost announces beginning of the public beta for the social web"
+title: "Ghost Announces Beginning of the Public Beta for the Social Web"
 slug: "ghost-announces-beginning-of-the-public-beta-for-the-social-web"
 description: "Public beta for fediverse support is live now"
 pubDate: 2025-03-19T05:39:31

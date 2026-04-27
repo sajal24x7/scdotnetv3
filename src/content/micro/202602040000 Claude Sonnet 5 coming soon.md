@@ -1,5 +1,5 @@
 ---
-title: Claude Sonnet 5 coming soon
+title: Claude Sonnet 5 Coming Soon
 slug: claude-sonnet-5-coming-soon
 pubDate: 2026-02-03T18:30:43.000Z
 updatedDate: 2026-02-03T18:30:43.000Z

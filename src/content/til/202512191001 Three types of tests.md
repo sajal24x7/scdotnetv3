@@ -1,5 +1,5 @@
 ---
-title: Three types of tests
+title: Three Types of Tests
 slug: three-types-of-tests
 pubDate: 2025-12-19T08:03:49.000Z
 updatedDate: 2025-12-19T08:03:49.000Z

@@ -1,5 +1,5 @@
 ---
-title: "Good food, good life"
+title: "Good Food, Good Life"
 edition: 45
 slug: "good-food-good-life"
 description: "Finland's PR changes + VPNs + Why are so many people wearing glasses now + a succinct take on AI"

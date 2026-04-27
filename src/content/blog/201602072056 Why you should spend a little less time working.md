@@ -1,5 +1,5 @@
 ---
-title: "Why you should spend a little less time working"
+title: "Why You Should Spend a Little Less Time Working"
 slug: "why-you-should-spend-a-little-less-time-working"
 pubDate: 2016-02-07T20:56:25
 updatedDate: 2016-02-07T20:56:25

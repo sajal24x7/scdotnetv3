@@ -1,5 +1,5 @@
 ---
-title: A profile of Nandan Nilekani in wired
+title: A Profile of Nandan Nilekani in Wired
 slug: a-profile-of-nandan-nilekani-in-wired
 pubDate: 2026-01-07T13:18:14.000Z
 updatedDate: 2026-01-07T13:18:14.000Z

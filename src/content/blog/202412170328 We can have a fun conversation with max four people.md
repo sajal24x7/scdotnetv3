@@ -1,5 +1,5 @@
 ---
-title: "We can have a fun conversation with max four people"
+title: "We Can Have a Fun Conversation With Max Four People"
 slug: "we-can-have-a-fun-conversation-with-max-four-people"
 description: "Shakespeare got it"
 pubDate: 2024-12-17T03:28:00

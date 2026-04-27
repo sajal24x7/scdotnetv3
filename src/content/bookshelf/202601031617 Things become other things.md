@@ -1,5 +1,5 @@
 ---
-title: Things become other things
+title: Things Become Other Things
 slug: things-become-other-things
 pubDate: 2026-01-03T14:29:57.000Z
 updatedDate: 2026-01-03T14:29:57.000Z

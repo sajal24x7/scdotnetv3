@@ -1,5 +1,5 @@
 ---
-title: Your job is to deliver code you have proven to work
+title: Your Job Is to Deliver Code You Have Proven to Work
 slug: your-job-is-to-deliver-code-you-have-proven-to-work
 pubDate: 2025-12-19T06:17:00.000Z
 updatedDate: 2025-12-19T06:17:00.000Z

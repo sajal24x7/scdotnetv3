@@ -1,5 +1,5 @@
 ---
-title: "Birth, death and everything in between"
+title: "Birth, Death and Everything in Between"
 slug: "birth-death-and-everything-in-between"
 pubDate: 2016-07-11T20:47:03
 updatedDate: 2024-04-29T07:57:21

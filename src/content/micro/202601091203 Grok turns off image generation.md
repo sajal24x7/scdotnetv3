@@ -1,5 +1,5 @@
 ---
-title: Grok turns off image generation
+title: Grok Turns off Image Generation
 slug: grok-turns-off-image-generation
 pubDate: 2026-01-09T10:30:25.000Z
 updatedDate: 2026-01-09T10:30:25.000Z

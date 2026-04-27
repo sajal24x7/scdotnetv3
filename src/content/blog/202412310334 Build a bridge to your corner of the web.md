@@ -1,5 +1,5 @@
 ---
-title: "Build a bridge to your corner of the web"
+title: "Build a Bridge to Your Corner of the Web"
 slug: "build-a-bridge-to-your-corner-of-the-web"
 description: "Self host"
 pubDate: 2024-12-31T03:34:58

@@ -1,5 +1,5 @@
 ---
-title: Coupling and cohesion
+title: Coupling and Cohesion
 slug: coupling-and-cohesion
 pubDate: 2026-03-09T12:19:56.000Z
 updatedDate: 2026-03-09T12:19:56.000Z

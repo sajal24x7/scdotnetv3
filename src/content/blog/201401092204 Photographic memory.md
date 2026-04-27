@@ -1,5 +1,5 @@
 ---
-title: "Photographic memory"
+title: "Photographic Memory"
 slug: "photographic-memory"
 description: "My first memories of being captured, on a photo film that is, consist of me being rushed to the terrace, followed by a change of clothes and a brief touch up, which is followed by introduction of two more kids almost the same age and then one of my brothers clicking the picture."
 pubDate: 2014-01-09T22:04:12

@@ -1,5 +1,5 @@
 ---
-title: Azure restore from backup
+title: Azure Restore From Backup
 slug: azure-restore-from-backup
 pubDate: '2024-08-13T19:27:00+03:00'
 updatedDate: '2024-08-13T19:27:00+03:00'

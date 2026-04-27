@@ -1,5 +1,5 @@
 ---
-title: When the moon hits your eye
+title: When the Moon Hits Your Eye
 slug: when-the-moon-hits-your-eye
 pubDate: 2025-11-12T10:05:11.000Z
 updatedDate: 2025-11-12T10:05:11.000Z

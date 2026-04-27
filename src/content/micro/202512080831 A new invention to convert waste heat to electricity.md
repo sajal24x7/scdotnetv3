@@ -1,5 +1,5 @@
 ---
-title: A new invention to convert waste heat to electricity
+title: A New Invention to Convert Waste Heat to Electricity
 slug: a-new-invention-to-convert-waste-heat-to-electricity
 pubDate: 2025-12-08T09:15:26.000Z
 updatedDate: 2025-12-08T09:15:26.000Z

@@ -1,5 +1,5 @@
 ---
-title: Cloud Remote bootstrap procedure
+title: Cloud Remote Bootstrap Procedure
 slug: cloud-remote-bootstrap-procedure
 pubDate: '2022-05-16T17:11:00+03:00'
 updatedDate: '2022-05-16T17:11:00+03:00'

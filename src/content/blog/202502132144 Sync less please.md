@@ -1,5 +1,5 @@
 ---
-title: "Sync less, please?"
+title: "Sync Less, Please?"
 slug: "sync-less-please"
 description: "About reading on NNW"
 pubDate: 2025-02-13T21:44:19

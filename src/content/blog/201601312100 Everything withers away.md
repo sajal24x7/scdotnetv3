@@ -1,5 +1,5 @@
 ---
-title: "Everything withers away"
+title: "Everything Withers Away"
 slug: "everything-withers-away"
 pubDate: 2016-01-31T21:00:41
 updatedDate: 2016-01-31T21:00:41

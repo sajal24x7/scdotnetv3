@@ -1,5 +1,5 @@
 ---
-title: Ports to be opened for Ansible Automation Platform
+title: Ports to Be Opened for Ansible Automation Platform
 slug: ports-to-be-opened-for-ansible-automation-platform
 pubDate: '2023-05-26T09:11:00+03:00'
 updatedDate: '2023-05-26T09:11:00+03:00'

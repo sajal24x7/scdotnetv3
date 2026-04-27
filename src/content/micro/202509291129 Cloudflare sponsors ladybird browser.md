@@ -1,5 +1,5 @@
 ---
-title: Cloudflare sponsors ladybird browser
+title: Cloudflare Sponsors Ladybird Browser
 slug: cloudflare-sponsors-ladybird-browser
 pubDate: 2025-09-29T08:30:36.000Z
 updatedDate: 2025-09-29T08:30:36.000Z

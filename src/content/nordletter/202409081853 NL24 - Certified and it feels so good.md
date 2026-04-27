@@ -1,5 +1,5 @@
 ---
-title: "Certified and it feels so good"
+title: "Certified and It Feels so Good"
 edition: 24
 slug: "certified-and-it-feels-so-good"
 description: "Azure goals + Apple's DMA compliance"

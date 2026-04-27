@@ -1,5 +1,5 @@
 ---
-title: Dyson made a handheld version of its iconic fans
+title: Dyson Made a Handheld Version of Its Iconic Fans
 slug: dyson-made-a-handheld-version-of-its-iconic-fans
 pubDate: 2026-04-09T03:26:53.000Z
 updatedDate: 2026-04-09T03:26:53.000Z

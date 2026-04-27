@@ -1,5 +1,5 @@
 ---
-title: Better than average
+title: Better Than Average
 slug: better-than-average
 pubDate: 2025-10-17T07:10:11.000Z
 updatedDate: 2025-10-17T07:10:11.000Z

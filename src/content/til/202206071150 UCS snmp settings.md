@@ -1,5 +1,5 @@
 ---
-title: UCS snmp settings
+title: UCS Snmp Settings
 slug: ucs-snmp-settings
 pubDate: '2022-06-07T11:50:00+03:00'
 updatedDate: '2022-06-07T11:50:00+03:00'

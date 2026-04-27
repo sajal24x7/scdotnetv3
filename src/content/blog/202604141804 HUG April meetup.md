@@ -1,5 +1,5 @@
 ---
-title: HUG April meetup
+title: HUG April Meetup
 slug: hug-april-meetup
 pubDate: 2026-04-14T19:45:40.000Z
 updatedDate: 2026-04-14T19:45:40.000Z

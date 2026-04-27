@@ -1,5 +1,5 @@
 ---
-title: "Learning microservices and k8s"
+title: "Learning Microservices and K8s"
 slug: "learning-microservices-and-k8s"
 pubDate: 2026-03-06T13:01:56+02:00
 updatedDate: 2026-03-06T13:01:56+02:00

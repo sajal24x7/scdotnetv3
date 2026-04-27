@@ -1,5 +1,5 @@
 ---
-title: "Look at the stars"
+title: "Look at the Stars"
 slug: "look-at-the-stars"
 description: "Look at the sun"
 pubDate: 2024-10-21T03:14:23

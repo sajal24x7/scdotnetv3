@@ -1,5 +1,5 @@
 ---
-title: Happiness relies on expectation
+title: Happiness Relies on Expectation
 slug: happiness-relies-on-expectation
 pubDate: 2025-10-14T12:47:26.000Z
 updatedDate: 2025-10-14T12:47:26.000Z

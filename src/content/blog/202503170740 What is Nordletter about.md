@@ -1,5 +1,5 @@
 ---
-title: What is Nordletter about?
+title: "What Is Nordletter About?"
 slug: what-is-nordletter-about
 description: Or, how to write about the same thing perpetually?
 pubDate: 2025-03-17T07:40:38

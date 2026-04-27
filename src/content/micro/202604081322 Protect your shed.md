@@ -1,5 +1,5 @@
 ---
-title: Protect your shed
+title: Protect Your Shed
 slug: protect-your-shed
 pubDate: 2026-04-08T10:22:42.000Z
 updatedDate: 2026-04-08T10:22:42.000Z

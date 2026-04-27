@@ -1,5 +1,5 @@
 ---
-title: Windows file systems
+title: Windows File Systems
 slug: windows-file-systems
 pubDate: '2024-07-16T12:59:00+03:00'
 updatedDate: '2024-07-16T12:59:00+03:00'

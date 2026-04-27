@@ -1,5 +1,5 @@
 ---
-title: Entra ID editions
+title: Entra ID Editions
 slug: entra-id-editions
 pubDate: '2023-12-23T14:37:00+03:00'
 updatedDate: '2023-12-23T14:37:00+03:00'

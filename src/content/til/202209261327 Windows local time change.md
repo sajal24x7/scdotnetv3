@@ -1,5 +1,5 @@
 ---
-title: Windows local time change
+title: Windows Local Time Change
 slug: windows-local-time-change
 pubDate: '2022-09-26T13:27:00+03:00'
 updatedDate: '2022-09-26T13:27:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: City Biking through the summer
+title: City Biking Through the Summer
 slug: nl101-the-joys-of-riding-a-bicycle
 edition: 101
 image: 'https://storage.sajalchoudhary.net/images/2026/04/nl101-05.jpeg'

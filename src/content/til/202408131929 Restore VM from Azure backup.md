@@ -1,5 +1,5 @@
 ---
-title: Restore VM from Azure backup
+title: Restore VM From Azure Backup
 slug: restore-vm-from-azure-backup
 pubDate: '2024-08-13T19:29:00+03:00'
 updatedDate: '2024-08-13T19:29:00+03:00'

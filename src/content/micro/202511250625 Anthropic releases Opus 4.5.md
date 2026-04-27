@@ -1,5 +1,5 @@
 ---
-title: Anthropic releases Opus 4.5
+title: Anthropic Releases Opus 4.5
 slug: anthropic-releases-opus-45
 pubDate: 2025-11-25T04:29:33.000Z
 updatedDate: 2025-11-25T04:29:33.000Z

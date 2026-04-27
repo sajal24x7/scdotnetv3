@@ -1,5 +1,5 @@
 ---
-title: Our interfaces have lost their senses
+title: Our Interfaces Have Lost Their Senses
 slug: our-interfaces-have-lost-their-senses
 pubDate: 2025-12-23T07:25:54.000Z
 updatedDate: 2025-12-23T07:25:54.000Z

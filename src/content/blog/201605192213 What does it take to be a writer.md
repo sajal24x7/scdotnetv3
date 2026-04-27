@@ -1,5 +1,5 @@
 ---
-title: "What does it take to be a writer?"
+title: "What Does It Take to Be a Writer?"
 slug: "what-does-it-take-to-be-a-writer"
 pubDate: 2016-05-19T22:13:06
 updatedDate: 2016-05-19T22:13:06

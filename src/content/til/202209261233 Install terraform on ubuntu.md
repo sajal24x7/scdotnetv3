@@ -1,5 +1,5 @@
 ---
-title: Install terraform on ubuntu
+title: Install Terraform on Ubuntu
 slug: install-terraform-on-ubuntu
 pubDate: '2022-09-26T12:33:00+03:00'
 updatedDate: '2022-09-26T12:33:00+03:00'

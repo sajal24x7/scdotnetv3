@@ -1,5 +1,5 @@
 ---
-title: "Fiction takes time"
+title: "Fiction Takes Time"
 slug: "fiction-takes-time"
 pubDate: 2016-07-12T21:00:11
 updatedDate: 2024-04-29T07:55:50

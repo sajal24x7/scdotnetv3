@@ -1,5 +1,5 @@
 ---
-title: Install cliqr agent for vmware cloud
+title: Install Cliqr Agent for Vmware Cloud
 slug: install-cliqr-agent-for-vmware-cloud
 pubDate: '2022-09-26T12:51:00+03:00'
 updatedDate: '2022-09-26T12:51:00+03:00'

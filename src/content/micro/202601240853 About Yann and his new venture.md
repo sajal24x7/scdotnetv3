@@ -1,5 +1,5 @@
 ---
-title: About Yann and his new venture
+title: About Yann and His New Venture
 slug: about-yann-and-his-new-venture
 pubDate: 2026-01-24T08:07:22.000Z
 updatedDate: 2026-01-24T08:07:22.000Z

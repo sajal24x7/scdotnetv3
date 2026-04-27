@@ -1,5 +1,5 @@
 ---
-title: Stop generating start thinking
+title: Stop Generating Start Thinking
 slug: stop-generating-start-thinking
 pubDate: 2026-02-09T04:06:31.000Z
 updatedDate: 2026-02-09T04:06:31.000Z

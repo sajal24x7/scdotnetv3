@@ -1,5 +1,5 @@
 ---
-title: UCS keyring fix
+title: UCS Keyring Fix
 slug: ucs-keyring-fix
 pubDate: '2024-01-04T16:00:00+03:00'
 updatedDate: '2024-01-04T16:00:00+03:00'

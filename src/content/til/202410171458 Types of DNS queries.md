@@ -1,5 +1,5 @@
 ---
-title: Types of DNS queries
+title: Types of DNS Queries
 slug: types-of-dns-queries
 pubDate: '2024-10-17T14:58:00+03:00'
 updatedDate: '2024-10-17T14:58:00+03:00'

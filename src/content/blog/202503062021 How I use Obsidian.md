@@ -1,5 +1,5 @@
 ---
-title: "How I use Obsidian"
+title: "How I Use Obsidian"
 slug: "how-i-use-obsidian"
 description: "Notes on note-taking"
 pubDate: 2025-03-06T20:21:05

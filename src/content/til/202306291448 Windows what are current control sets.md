@@ -1,5 +1,5 @@
 ---
-title: Windows what are current control sets
+title: Windows What Are Current Control Sets
 slug: windows-what-are-current-control-sets
 pubDate: '2023-06-29T14:48:00+03:00'
 updatedDate: '2023-06-29T14:48:00+03:00'

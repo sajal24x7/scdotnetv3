@@ -1,5 +1,5 @@
 ---
-title: "New year, new rules!"
+title: "New Year, New Rules!"
 slug: "new-year-new-rules"
 pubDate: 2016-01-02T18:16:13
 updatedDate: 2016-01-02T18:16:13

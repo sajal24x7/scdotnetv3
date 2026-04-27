@@ -1,5 +1,5 @@
 ---
-title: Azure monitoring old
+title: Azure Monitoring Old
 slug: azure-monitoring-old
 pubDate: '2024-04-28T16:01:00+03:00'
 updatedDate: '2024-04-28T16:01:00+03:00'

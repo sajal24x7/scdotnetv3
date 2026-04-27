@@ -1,5 +1,5 @@
 ---
-title: Create an Azure metric alert
+title: Create an Azure Metric Alert
 slug: create-an-azure-metric-alert
 pubDate: '2024-08-11T12:40:00+03:00'
 updatedDate: '2024-08-11T12:40:00+03:00'

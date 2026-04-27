@@ -1,5 +1,5 @@
 ---
-title: "Where you do yoga matters"
+title: "Where You Do Yoga Matters"
 slug: "where-you-do-yoga-matters"
 description: "Or, the poisonous Delhi air sucks ass"
 pubDate: 2024-11-26T20:05:26

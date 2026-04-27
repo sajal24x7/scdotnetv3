@@ -1,5 +1,5 @@
 ---
-title: Platespin iperf to check connectivity
+title: Platespin Iperf to Check Connectivity
 slug: platespin-iperf-to-check-connectivity
 pubDate: '2022-09-26T13:04:00+03:00'
 updatedDate: '2022-09-26T13:04:00+03:00'

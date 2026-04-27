@@ -1,5 +1,5 @@
 ---
-title: "it's Teacher's Day!!"
+title: "It's Teacher's Day!!"
 slug: "teachers-day"
 pubDate: 2012-09-05T00:00:00
 updatedDate: 2024-04-29T00:00:00

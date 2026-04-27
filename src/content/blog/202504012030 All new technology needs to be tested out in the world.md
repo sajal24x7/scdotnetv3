@@ -1,5 +1,5 @@
 ---
-title: "All new technology needs to be tested out in the world"
+title: "All New Technology Needs to Be Tested out in the World"
 slug: "all-new-technology-needs-to-be-tested-out-in-the-world"
 pubDate: 2025-04-01T20:30:08
 updatedDate: 2025-04-01T20:30:08

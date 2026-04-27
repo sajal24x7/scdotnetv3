@@ -1,5 +1,5 @@
 ---
-title: "Day Five: The Girl with the Bazooka"
+title: "Day Five: The Girl With the Bazooka"
 slug: "day-five-the-girl-with-the-bazooka"
 pubDate: 2014-03-17T21:39:10
 updatedDate: 2014-03-17T21:39:10

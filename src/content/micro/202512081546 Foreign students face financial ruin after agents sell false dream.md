@@ -1,5 +1,5 @@
 ---
-title: Foreign students face financial ruin after agents sell false dream
+title: Foreign Students Face Financial Ruin After Agents Sell False Dream
 slug: foreign-students-face-financial-ruin-after-agents-sell-false-dream
 pubDate: 2025-12-08T13:49:58.000Z
 updatedDate: 2025-12-08T13:49:58.000Z

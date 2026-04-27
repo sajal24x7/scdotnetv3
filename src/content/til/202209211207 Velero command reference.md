@@ -1,5 +1,5 @@
 ---
-title: Velero command reference
+title: Velero Command Reference
 slug: velero-command-reference
 pubDate: '2022-09-21T12:07:00+03:00'
 updatedDate: '2022-09-21T12:07:00+03:00'

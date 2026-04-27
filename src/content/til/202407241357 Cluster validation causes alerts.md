@@ -1,5 +1,5 @@
 ---
-title: Cluster validation causes alerts
+title: Cluster Validation Causes Alerts
 slug: cluster-validation-causes-alerts
 pubDate: '2024-07-24T13:57:00+03:00'
 updatedDate: '2024-07-24T13:57:00+03:00'

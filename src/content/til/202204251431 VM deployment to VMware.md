@@ -1,5 +1,5 @@
 ---
-title: VM deployment to VMware
+title: VM Deployment to VMware
 slug: vm-deployment-to-vmware
 pubDate: '2022-04-25T14:31:00+03:00'
 updatedDate: '2022-04-25T14:31:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "How to check windows upgrade errors"
+title: "How to Check Windows Upgrade Errors"
 slug: "how-to-check-windows-upgrade-errors"
 pubDate: 2025-08-12T17:11:23+03:00
 updatedDate: 2025-08-12T17:11:23+03:00

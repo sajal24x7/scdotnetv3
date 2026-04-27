@@ -1,5 +1,5 @@
 ---
-title: "How democratic is our democracy?"
+title: "How Democratic Is Our Democracy?"
 slug: "how-democratic-is-our-democracy"
 pubDate: 2014-09-25T21:00:00
 updatedDate: 2014-09-25T21:00:00

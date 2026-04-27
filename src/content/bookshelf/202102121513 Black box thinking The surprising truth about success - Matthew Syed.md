@@ -1,5 +1,5 @@
 ---
-title: "Black box thinking: The surprising truth about success"
+title: "Black Box Thinking: The Surprising Truth About Success"
 slug: black-box-thinking-the-surprising-truth-about-success-matthew-syed
 description: This book talks about failures, how we treat them citing examples from industries ranging from aviation, healthcare, coding, cycling teams.
 pubDate: 2021-02-12T15:13:38

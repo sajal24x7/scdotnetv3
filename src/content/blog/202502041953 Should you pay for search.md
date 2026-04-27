@@ -1,5 +1,5 @@
 ---
-title: "Should you pay for search?"
+title: "Should You Pay for Search?"
 slug: "should-you-pay-for-search"
 description: "Public services should be subsidised"
 pubDate: 2025-02-04T19:53:57

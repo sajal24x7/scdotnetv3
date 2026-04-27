@@ -1,5 +1,5 @@
 ---
-title: "How to tell stories"
+title: "How to Tell Stories"
 slug: "how-to-tell-stories"
 description: "Stories need to surprise"
 pubDate: 2024-10-19T20:38:28

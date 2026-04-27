@@ -1,5 +1,5 @@
 ---
-title: User defined routing
+title: User Defined Routing
 slug: user-defined-routing
 pubDate: '2024-07-28T14:01:00+03:00'
 updatedDate: '2024-07-28T14:01:00+03:00'

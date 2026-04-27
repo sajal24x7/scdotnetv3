@@ -1,5 +1,5 @@
 ---
-title: "A world full of agents"
+title: "A World Full of Agents"
 slug: "a-world-full-of-agents"
 description: "Hey Siri fetch me a glass of water!"
 pubDate: 2024-10-08T03:46:39

@@ -1,5 +1,5 @@
 ---
-title: Powershell convert Int64 TimeStamp to DateTime
+title: Powershell Convert Int64 TimeStamp to DateTime
 slug: powershell-convert-int64-timestamp-to-datetime
 pubDate: '2022-07-20T12:09:00+03:00'
 updatedDate: '2022-07-20T12:09:00+03:00'

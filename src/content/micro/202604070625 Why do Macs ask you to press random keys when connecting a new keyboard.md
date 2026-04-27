@@ -1,5 +1,5 @@
 ---
-title: Why do Macs ask you to press random keys when connecting a new keyboard
+title: Why Do Macs Ask You to Press Random Keys When Connecting a New Keyboard
 slug: why-do-macs-ask-you-to-press-random-keys-when-connecting-a-new-keyboard
 pubDate: 2026-04-07T03:27:00.000Z
 updatedDate: 2026-04-07T03:27:00.000Z

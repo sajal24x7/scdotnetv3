@@ -1,5 +1,5 @@
 ---
-title: "Mixed format books"
+title: "Mixed Format Books"
 slug: "mixed-format-books"
 pubDate: 2025-07-17T00:44:06+03:00
 updatedDate: 2025-07-17T00:44:06+03:00

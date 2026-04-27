@@ -1,5 +1,5 @@
 ---
-title: Powershell rename cluster resource
+title: Powershell Rename Cluster Resource
 slug: powershell-rename-cluster-resource
 pubDate: '2024-08-08T15:17:00+03:00'
 updatedDate: '2024-08-08T15:17:00+03:00'

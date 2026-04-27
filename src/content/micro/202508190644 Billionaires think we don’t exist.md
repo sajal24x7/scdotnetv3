@@ -1,5 +1,5 @@
 ---
-title: "Billionaires think we don’t exist"
+title: "Billionaires Think We Don’t Exist"
 slug: "billionaires-think-we-dont-exist"
 pubDate: 2025-08-19T06:45:51+03:00
 updatedDate: 2025-08-19T06:45:51+03:00

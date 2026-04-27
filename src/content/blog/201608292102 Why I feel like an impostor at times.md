@@ -1,5 +1,5 @@
 ---
-title: "Why I feel like an impostor at times"
+title: "Why I Feel Like an Impostor at Times"
 slug: "why-i-feel-like-an-impostor-at-times"
 pubDate: 2016-08-29T21:02:15
 updatedDate: 2024-04-28T15:51:57

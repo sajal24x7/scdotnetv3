@@ -1,5 +1,5 @@
 ---
-title: PowerShell registry key related
+title: PowerShell Registry Key Related
 slug: powershell-registry-key-related
 pubDate: '2024-02-06T14:38:00+03:00'
 updatedDate: '2024-02-06T14:38:00+03:00'

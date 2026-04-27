@@ -1,5 +1,5 @@
 ---
-title: Create powershell offline repo
+title: Create Powershell Offline Repo
 slug: create-powershell-offline-repo
 pubDate: '2024-08-12T16:10:00+03:00'
 updatedDate: '2024-08-12T16:10:00+03:00'

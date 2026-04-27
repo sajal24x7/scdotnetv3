@@ -1,5 +1,5 @@
 ---
-title: "Parenting is full of contradictions"
+title: "Parenting Is Full of Contradictions"
 slug: "parenting-is-full-of-contradictions"
 description: "Sleep child, sleep!"
 pubDate: 2025-01-16T16:02:21

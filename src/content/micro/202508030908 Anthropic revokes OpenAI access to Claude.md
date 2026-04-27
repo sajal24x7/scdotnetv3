@@ -1,5 +1,5 @@
 ---
-title: "Anthropic revokes OpenAI access to Claude"
+title: "Anthropic Revokes OpenAI Access to Claude"
 slug: "anthropic-revokes-openai-access-to-claude"
 pubDate: 2025-08-03T09:09:41+03:00
 updatedDate: 2025-08-03T09:09:41+03:00

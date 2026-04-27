@@ -1,5 +1,5 @@
 ---
-title: Ansible Error handling
+title: Ansible Error Handling
 slug: ansible-error-handling
 pubDate: '2022-06-06T17:08:00+03:00'
 updatedDate: '2022-06-06T17:08:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: Run powershell as admin
+title: Run Powershell as Admin
 slug: run-powershell-as-admin
 pubDate: '2022-11-24T13:20:00+03:00'
 updatedDate: '2022-11-24T13:20:00+03:00'

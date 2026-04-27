@@ -1,5 +1,5 @@
 ---
-title: Pythonic coding conventions
+title: Pythonic Coding Conventions
 slug: pythonic-coding-conventions
 pubDate: 2025-10-21T12:45:15.000Z
 updatedDate: 2025-10-21T12:45:15.000Z

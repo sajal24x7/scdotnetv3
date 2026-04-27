@@ -1,5 +1,5 @@
 ---
-title: "A case for being kinder to others"
+title: "A Case for Being Kinder to Others"
 slug: "a-case-for-being-kinder-to-others"
 description: "About Fundamental Attribution Error + Be kinder"
 pubDate: 2024-07-11T17:37:37

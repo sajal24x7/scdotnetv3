@@ -1,5 +1,5 @@
 ---
-title: "Hugh writes about hope"
+title: "Hugh Writes About Hope"
 slug: "hugh-writes-about-hope"
 pubDate: 2025-07-23T14:21:45+03:00
 updatedDate: 2025-07-23T14:21:45+03:00

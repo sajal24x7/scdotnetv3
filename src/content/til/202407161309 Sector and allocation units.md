@@ -1,5 +1,5 @@
 ---
-title: Sector and allocation units
+title: Sector and Allocation Units
 slug: sector-and-allocation-units
 pubDate: '2024-07-16T13:09:00+03:00'
 updatedDate: '2024-07-16T13:09:00+03:00'

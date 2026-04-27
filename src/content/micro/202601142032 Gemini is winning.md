@@ -1,5 +1,5 @@
 ---
-title: Gemini is winning
+title: Gemini Is Winning
 slug: gemini-is-winning
 pubDate: 2026-01-14T18:34:21.000Z
 updatedDate: 2026-01-14T18:34:21.000Z

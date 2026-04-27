@@ -1,5 +1,5 @@
 ---
-title: "Surprises, and good stories"
+title: "Surprises, and Good Stories"
 slug: "surprises-and-good-stories"
 pubDate: 2014-09-18T21:00:05
 updatedDate: 2014-09-18T21:00:05

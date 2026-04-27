@@ -1,5 +1,5 @@
 ---
-title: 'The three-body problem'
+title: 'The Three-Body Problem'
 slug: the-three-body-problem
 description: The first book in the remembrance of earth's past series
 pubDate: 2025-02-23T13:05:04

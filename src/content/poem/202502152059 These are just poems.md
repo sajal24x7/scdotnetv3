@@ -1,5 +1,5 @@
 ---
-title: "These are just poems"
+title: "These Are Just Poems"
 slug: "these-are-just-poems"
 pubDate: 2025-02-15T20:59:25
 updatedDate: 2025-02-15T20:59:25

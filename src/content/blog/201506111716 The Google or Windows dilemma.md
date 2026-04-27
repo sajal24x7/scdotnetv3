@@ -1,5 +1,5 @@
 ---
-title: "The Google or Windows dilemma"
+title: "The Google or Windows Dilemma"
 slug: "the-google-or-windows-dilemma"
 pubDate: 2015-06-11T17:16:18
 updatedDate: 2015-06-11T17:16:18

@@ -1,5 +1,5 @@
 ---
-title: "OpenAI and Anthropic announce new models"
+title: "OpenAI and Anthropic Announce New Models"
 slug: "openai-and-anthropic-announce-new-models"
 pubDate: 2025-08-06T14:25:23+03:00
 updatedDate: 2025-08-06T14:25:23+03:00

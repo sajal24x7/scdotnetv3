@@ -1,5 +1,5 @@
 ---
-title: "Sit on the floor with your child and play"
+title: "Sit on the Floor With Your Child and Play"
 slug: "sit-on-the-floor-with-your-child-and-play"
 description: "Spend time playing with your child"
 pubDate: 2025-03-10T03:01:16

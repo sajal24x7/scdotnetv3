@@ -1,5 +1,5 @@
 ---
-title: Bicep variables
+title: Bicep Variables
 slug: bicep-variables
 pubDate: '2024-07-19T19:00:00+03:00'
 updatedDate: '2024-07-19T19:00:00+03:00'

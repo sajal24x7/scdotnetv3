@@ -1,5 +1,5 @@
 ---
-title: UCS CLI reference
+title: UCS CLI Reference
 slug: ucs-cli-reference
 pubDate: '2022-09-26T12:34:00+03:00'
 updatedDate: '2022-09-26T12:34:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "Gmail has a new tab for unsubscribing"
+title: "Gmail Has a New Tab for Unsubscribing"
 slug: "gmail-has-a-new-tab-for-unsubscribing"
 pubDate: 2025-07-10T16:05:13+03:00
 updatedDate: 2025-07-10T16:05:13+03:00

@@ -1,5 +1,5 @@
 ---
-title: On Vmware tools
+title: On Vmware Tools
 slug: on-vmware-tools
 pubDate: '2023-11-03T10:25:00+03:00'
 updatedDate: '2023-11-03T10:25:00+03:00'

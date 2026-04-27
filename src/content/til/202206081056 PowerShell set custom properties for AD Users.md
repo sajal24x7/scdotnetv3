@@ -1,5 +1,5 @@
 ---
-title: PowerShell set custom properties for AD Users
+title: PowerShell Set Custom Properties for AD Users
 slug: powershell-set-custom-properties-for-ad-users
 pubDate: '2022-06-08T10:56:00+03:00'
 updatedDate: '2022-06-08T10:56:00+03:00'

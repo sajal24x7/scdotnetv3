@@ -1,5 +1,5 @@
 ---
-title: "A head full of dreams"
+title: "A Head Full of Dreams"
 edition: 29
 slug: "a-head-full-of-dreams"
 description: "Writing every day + AI + Metaverse"

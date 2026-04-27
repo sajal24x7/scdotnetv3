@@ -1,5 +1,5 @@
 ---
-title: "Do what you want to!"
+title: "Do What You Want To!"
 slug: "do-what-you-want-to"
 description: "Whatever you do, make sure that you are not doing what your father, mother or society wishes you to do because you don’t want to end up where you don’t want to be"
 pubDate: 2014-07-08T15:57:30

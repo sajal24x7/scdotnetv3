@@ -1,5 +1,5 @@
 ---
-title: "The real demon inside ChatGPT"
+title: "The Real Demon Inside ChatGPT"
 slug: "the-real-demon-inside-chatgpt"
 pubDate: 2025-07-29T14:13:56+03:00
 updatedDate: 2025-07-29T14:13:56+03:00

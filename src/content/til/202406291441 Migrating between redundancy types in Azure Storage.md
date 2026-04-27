@@ -1,5 +1,5 @@
 ---
-title: Migrating between redundancy types in Azure Storage
+title: Migrating Between Redundancy Types in Azure Storage
 slug: migrating-between-redundancy-types-in-azure-storage
 pubDate: '2024-06-29T14:41:00+03:00'
 updatedDate: '2024-06-29T14:41:00+03:00'

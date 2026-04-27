@@ -1,5 +1,5 @@
 ---
-title: Macbook Pros may get a Dynamic Island as well
+title: Macbook Pros May Get a Dynamic Island as Well
 slug: macbook-pros-may-get-a-dynamic-island-as-well
 pubDate: 2026-02-25T08:45:30.000Z
 updatedDate: 2026-02-25T08:45:30.000Z

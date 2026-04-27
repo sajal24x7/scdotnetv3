@@ -1,5 +1,5 @@
 ---
-title: "Professionals are consistent"
+title: "Professionals Are Consistent"
 slug: "professionals-are-consistent"
 description: "They show up"
 pubDate: 2024-10-03T17:27:19

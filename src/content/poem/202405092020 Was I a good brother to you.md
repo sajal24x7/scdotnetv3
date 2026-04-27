@@ -1,5 +1,5 @@
 ---
-title: "Was I a good brother to you"
+title: "Was I a Good Brother to You"
 slug: "was-i-a-good-brother-to-you"
 description: "You needed me,
 But was I there?"

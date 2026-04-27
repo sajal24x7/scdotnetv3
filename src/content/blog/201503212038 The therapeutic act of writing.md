@@ -1,5 +1,5 @@
 ---
-title: "The therapeutic act of writing"
+title: "The Therapeutic Act of Writing"
 slug: "the-therapeutic-act-of-writing"
 pubDate: 2015-03-21T20:38:14
 updatedDate: 2015-03-21T20:38:14

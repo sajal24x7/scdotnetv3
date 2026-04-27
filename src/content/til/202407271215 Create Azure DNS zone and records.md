@@ -1,5 +1,5 @@
 ---
-title: Create Azure DNS zone and records
+title: Create Azure DNS Zone and Records
 slug: create-azure-dns-zone-and-records
 pubDate: '2024-07-27T12:15:00+03:00'
 updatedDate: '2024-07-27T12:15:00+03:00'

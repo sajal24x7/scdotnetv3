@@ -1,5 +1,5 @@
 ---
-title: Code like a surgeon
+title: Code Like a Surgeon
 slug: code-like-a-surgeon
 pubDate: 2025-10-24T16:02:10.000Z
 updatedDate: 2025-10-24T16:02:10.000Z

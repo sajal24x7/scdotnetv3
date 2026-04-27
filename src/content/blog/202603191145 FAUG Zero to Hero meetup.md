@@ -1,5 +1,5 @@
 ---
-title: FAUG Zero to Hero meetup
+title: FAUG Zero to Hero Meetup
 slug: faug-zero-to-hero-meetup
 pubDate: 2026-03-19T19:21:29.000Z
 updatedDate: 2026-03-19T19:21:29.000Z

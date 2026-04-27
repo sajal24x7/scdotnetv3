@@ -1,5 +1,5 @@
 ---
-title: Change of guard at Apple
+title: Change of Guard at Apple
 slug: change-of-guard-at-apple
 pubDate: 2026-04-21T07:58:18.000Z
 updatedDate: 2026-04-21T07:58:18.000Z

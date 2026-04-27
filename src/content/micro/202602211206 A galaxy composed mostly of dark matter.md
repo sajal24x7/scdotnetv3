@@ -1,5 +1,5 @@
 ---
-title: A galaxy composed mostly of dark matter
+title: A Galaxy Composed Mostly of Dark Matter
 slug: a-galaxy-composed-mostly-of-dark-matter
 pubDate: 2026-02-21T10:07:17.000Z
 updatedDate: 2026-02-21T10:07:17.000Z

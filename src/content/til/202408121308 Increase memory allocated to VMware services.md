@@ -1,5 +1,5 @@
 ---
-title: Increase memory allocated to VMware services
+title: Increase Memory Allocated to VMware Services
 slug: increase-memory-allocated-to-vmware-services
 pubDate: '2024-08-12T13:08:00+03:00'
 updatedDate: '2024-08-12T13:08:00+03:00'

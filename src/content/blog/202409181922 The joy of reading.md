@@ -1,5 +1,5 @@
 ---
-title: "The joy of reading"
+title: "The Joy of Reading"
 slug: "the-joy-of-reading"
 description: "Books transport you"
 pubDate: 2024-09-18T19:22:47

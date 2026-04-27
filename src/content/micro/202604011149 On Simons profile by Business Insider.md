@@ -1,5 +1,5 @@
 ---
-title: On Simons profile by Business Insider
+title: On Simons Profile by Business Insider
 slug: on-simons-profile-by-business-insider
 pubDate: 2026-04-01T08:51:37.000Z
 updatedDate: 2026-04-01T08:51:37.000Z

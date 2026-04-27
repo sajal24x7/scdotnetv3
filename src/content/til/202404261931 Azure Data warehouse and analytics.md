@@ -1,5 +1,5 @@
 ---
-title: Azure Data warehouse and analytics
+title: Azure Data Warehouse and Analytics
 slug: azure-data-warehouse-and-analytics
 pubDate: '2024-04-26T19:31:00+03:00'
 updatedDate: '2024-04-26T19:31:00+03:00'

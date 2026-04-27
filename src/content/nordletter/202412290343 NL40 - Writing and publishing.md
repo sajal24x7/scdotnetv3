@@ -1,5 +1,5 @@
 ---
-title: "Writing and publishing"
+title: "Writing and Publishing"
 edition: 40
 slug: "writing-and-publishing"
 description: "Playing TT at Vox + Car makers merging + paper passports might die"

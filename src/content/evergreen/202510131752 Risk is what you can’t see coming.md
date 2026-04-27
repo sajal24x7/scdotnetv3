@@ -1,5 +1,5 @@
 ---
-title: Risk is what you can’t see coming
+title: Risk Is What You Can’t See Coming
 slug: risk-is-what-you-cant-see-coming
 pubDate: 2025-10-14T12:50:25.000Z
 updatedDate: 2025-10-14T12:50:25.000Z

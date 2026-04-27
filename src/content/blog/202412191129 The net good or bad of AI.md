@@ -1,5 +1,5 @@
 ---
-title: "The net good or bad of AI"
+title: "The Net Good or Bad of AI"
 slug: "the-net-good-or-bad-of-ai"
 description: "Balancing the perceived benefits against the harms"
 pubDate: 2024-12-19T11:29:23

@@ -1,5 +1,5 @@
 ---
-title: Crucial is shutting down
+title: Crucial Is Shutting Down
 slug: crucial-is-shutting-down
 pubDate: 2025-12-05T10:06:38.000Z
 updatedDate: 2025-12-05T10:06:38.000Z

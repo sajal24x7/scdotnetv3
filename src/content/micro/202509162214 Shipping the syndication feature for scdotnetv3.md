@@ -1,5 +1,5 @@
 ---
-title: Shipping the syndication feature for scdotnetv3
+title: Shipping the Syndication Feature for Scdotnetv3
 slug: shipping-the-syndication-feature-for-scdotnetv3
 pubDate: 2025-09-16T19:20:19.000Z
 updatedDate: 2025-09-16T19:20:19.000Z

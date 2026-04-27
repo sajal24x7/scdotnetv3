@@ -1,5 +1,5 @@
 ---
-title: Setup password less ssh
+title: Setup Password Less Ssh
 slug: setup-password-less-ssh
 pubDate: '2022-04-25T15:55:00+03:00'
 updatedDate: '2022-04-25T15:55:00+03:00'

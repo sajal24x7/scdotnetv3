@@ -1,5 +1,5 @@
 ---
-title: Netflix did not rely on tentpole shows anymore
+title: Netflix Did Not Rely on Tentpole Shows Anymore
 slug: netflix-did-not-rely-on-tentpole-shows-anymore
 pubDate: 2025-11-26T11:21:54.000Z
 updatedDate: 2025-11-26T11:21:54.000Z

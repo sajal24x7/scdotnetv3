@@ -1,5 +1,5 @@
 ---
-title: "Writing about not writing"
+title: "Writing About Not Writing"
 slug: "writing-about-not-writing"
 pubDate: 2014-09-28T21:00:00
 updatedDate: 2014-09-28T21:00:00

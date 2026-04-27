@@ -1,5 +1,5 @@
 ---
-title: "About the marshmallow experiment"
+title: "About the Marshmallow Experiment"
 slug: "about-the-marshmallow-experiment"
 description: "And the value of providing kids with a good environment growing up"
 pubDate: 2025-02-14T07:54:20

@@ -1,5 +1,5 @@
 ---
-title: "The value of diversity"
+title: "The Value of Diversity"
 slug: "the-value-of-diversity"
 pubDate: 2025-04-21T20:02:58
 updatedDate: 2025-04-21T20:02:58

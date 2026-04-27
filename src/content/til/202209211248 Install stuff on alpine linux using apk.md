@@ -1,5 +1,5 @@
 ---
-title: Install stuff on alpine linux using apk
+title: Install Stuff on Alpine Linux Using Apk
 slug: install-stuff-on-alpine-linux-using-apk
 pubDate: '2022-09-21T12:48:00+03:00'
 updatedDate: '2022-09-21T12:48:00+03:00'

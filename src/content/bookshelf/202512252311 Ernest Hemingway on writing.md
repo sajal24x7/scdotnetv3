@@ -1,5 +1,5 @@
 ---
-title: Ernest Hemingway on writing
+title: Ernest Hemingway on Writing
 slug: ernest-hemingway-on-writing
 pubDate: 2025-12-26T17:32:36.000Z
 updatedDate: 2025-12-26T17:32:36.000Z

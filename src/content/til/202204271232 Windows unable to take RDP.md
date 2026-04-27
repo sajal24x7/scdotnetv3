@@ -1,5 +1,5 @@
 ---
-title: Windows unable to take RDP
+title: Windows Unable to Take RDP
 slug: windows-unable-to-take-rdp
 pubDate: '2022-04-27T12:32:00+03:00'
 updatedDate: '2022-04-27T12:32:00+03:00'

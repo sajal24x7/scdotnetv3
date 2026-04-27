@@ -1,5 +1,5 @@
 ---
-title: This is marketing
+title: This Is Marketing
 slug: this-is-marketing
 pubDate: 2026-01-07T14:08:09.000Z
 updatedDate: 2026-01-07T14:08:09.000Z

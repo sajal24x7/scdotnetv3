@@ -1,5 +1,5 @@
 ---
-title: Vmware get list of rebooted servers by HA
+title: Vmware Get List of Rebooted Servers by HA
 slug: vmware-get-list-of-rebooted-servers-by-ha
 pubDate: '2023-08-02T10:20:00+03:00'
 updatedDate: '2023-08-02T10:20:00+03:00'

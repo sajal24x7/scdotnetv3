@@ -1,5 +1,5 @@
 ---
-title: "How would the web work in an increasingly AI-fied world"
+title: "How Would the Web Work in an Increasingly AI-Fied World"
 slug: "how-would-the-web-work-in-an-increasingly-ai-fied-world"
 pubDate: 2025-03-29T21:04:08
 updatedDate: 2025-03-29T21:04:08

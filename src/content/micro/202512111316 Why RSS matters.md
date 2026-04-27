@@ -1,5 +1,5 @@
 ---
-title: Why RSS matters
+title: Why RSS Matters
 slug: why-rss-matters
 pubDate: 2025-12-11T11:18:03.000Z
 updatedDate: 2025-12-11T11:18:03.000Z

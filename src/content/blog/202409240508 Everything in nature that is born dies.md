@@ -1,5 +1,5 @@
 ---
-title: "Everything in nature that is born, dies"
+title: "Everything in Nature That Is Born, Dies"
 slug: "everything-in-nature-that-is-born-dies"
 description: "Life is what happens in the middle"
 pubDate: 2024-09-24T05:08:17

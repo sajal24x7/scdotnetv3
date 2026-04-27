@@ -1,5 +1,5 @@
 ---
-title: The life of Chuck
+title: The Life of Chuck
 slug: the-life-of-chuck
 pubDate: 2025-10-07T22:01:53+03:00
 updatedDate: 2025-10-07T22:01:53+03:00

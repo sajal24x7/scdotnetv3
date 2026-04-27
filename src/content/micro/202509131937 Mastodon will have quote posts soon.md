@@ -1,5 +1,5 @@
 ---
-title: Mastodon will have quote posts soon
+title: Mastodon Will Have Quote Posts Soon
 slug: mastodon-will-have-quote-posts-soon
 pubDate: 2025-09-13T16:41:03.000Z
 updatedDate: 2025-09-13T16:41:03.000Z

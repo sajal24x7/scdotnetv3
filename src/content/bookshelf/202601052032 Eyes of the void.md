@@ -1,5 +1,5 @@
 ---
-title: Eyes of the void
+title: Eyes of the Void
 slug: eyes-of-the-void
 pubDate: 2026-01-05T18:34:11.000Z
 updatedDate: 2026-01-05T18:34:11.000Z

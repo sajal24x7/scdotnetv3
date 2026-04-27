@@ -1,5 +1,5 @@
 ---
-title: "Who will advocate for the future"
+title: "Who Will Advocate for the Future"
 slug: "who-will-advocate-for-the-future"
 description: "Leave a better world than you found"
 pubDate: 2024-10-11T03:00:32

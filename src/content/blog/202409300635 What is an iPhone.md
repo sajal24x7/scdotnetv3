@@ -1,5 +1,5 @@
 ---
-title: "What is an iPhone"
+title: "What Is an iPhone"
 slug: "what-is-an-iphone"
 description: "Answer - a computer"
 pubDate: 2024-09-30T06:35:32

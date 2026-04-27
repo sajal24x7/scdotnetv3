@@ -1,5 +1,5 @@
 ---
-title: UCSM firmware upgrade
+title: UCSM Firmware Upgrade
 slug: ucsm-firmware-upgrade
 pubDate: '2023-11-15T15:34:00+03:00'
 updatedDate: '2023-11-15T15:34:00+03:00'

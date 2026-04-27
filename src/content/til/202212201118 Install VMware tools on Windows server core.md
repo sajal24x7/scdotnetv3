@@ -1,5 +1,5 @@
 ---
-title: Install VMware tools on Windows server core
+title: Install VMware Tools on Windows Server Core
 slug: install-vmware-tools-on-windows-server-core
 pubDate: '2022-12-20T11:18:00+03:00'
 updatedDate: '2022-12-20T11:18:00+03:00'

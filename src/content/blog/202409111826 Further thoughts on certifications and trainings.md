@@ -1,5 +1,5 @@
 ---
-title: "Further thoughts on certifications and trainings"
+title: "Further Thoughts on Certifications and Trainings"
 slug: "further-thoughts-on-certifications-and-trainings"
 description: "And marrying well"
 pubDate: 2024-09-11T18:26:23

@@ -1,5 +1,5 @@
 ---
-title: "We need to learn the technique in the beginning and then leave it behind"
+title: "We Need to Learn the Technique in the Beginning and Then Leave It Behind"
 slug: "we-need-to-learn-the-technique-in-the-beginning-and-then-leave-it-behind"
 description: "Don't think too much about the rules"
 pubDate: 2025-04-17T16:06:57

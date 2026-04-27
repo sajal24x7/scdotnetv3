@@ -1,5 +1,5 @@
 ---
-title: "Writing meet-ups"
+title: "Writing Meet-Ups"
 edition: 48
 slug: "writing-meet-ups"
 description: "Shutup and write + 2 opposite views on where the society is going + save your attention"

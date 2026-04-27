@@ -1,5 +1,5 @@
 ---
-title: Ansible parallelism
+title: Ansible Parallelism
 slug: ansible-parallelism
 pubDate: '2022-06-07T14:55:00+03:00'
 updatedDate: '2022-06-07T14:55:00+03:00'

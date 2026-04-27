@@ -1,5 +1,5 @@
 ---
-title: "Quoting Dave about working with ChatGPT"
+title: "Quoting Dave About Working With ChatGPT"
 slug: "quoting-dave-about-working-with-chatgpt"
 pubDate: 2025-07-10T07:28:59+03:00
 updatedDate: 2025-07-10T07:28:59+03:00

@@ -1,5 +1,5 @@
 ---
-title: "Which iPad do I get in 2025?"
+title: "Which iPad Do I Get in 2025?"
 slug: "which-ipad-do-i-get-in-2025"
 description: "About the state of the iPad lineup"
 pubDate: 2025-03-12T06:33:13

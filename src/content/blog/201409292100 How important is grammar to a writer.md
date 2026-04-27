@@ -1,5 +1,5 @@
 ---
-title: "How important is grammar to a writer?"
+title: "How Important Is Grammar to a Writer?"
 slug: "how-important-is-grammar-to-a-writer"
 pubDate: 2014-09-29T21:00:51
 updatedDate: 2014-09-29T21:00:51

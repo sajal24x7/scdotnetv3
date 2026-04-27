@@ -1,5 +1,5 @@
 ---
-title: Compare private key and ssl
+title: Compare Private Key and Ssl
 slug: compare-private-key-and-ssl
 pubDate: '2022-04-28T12:55:00+03:00'
 updatedDate: '2022-04-28T12:55:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: The joy of coding
+title: The Joy of Coding
 slug: the-joy-of-coding
 pubDate: 2025-11-19T20:40:40.000Z
 updatedDate: 2025-11-19T20:40:40.000Z

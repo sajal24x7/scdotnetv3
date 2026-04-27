@@ -1,5 +1,5 @@
 ---
-title: "Sitting and talking"
+title: "Sitting and Talking"
 slug: "sitting-and-talking"
 description: "a place to be less alone"
 pubDate: 2024-12-24T03:51:21

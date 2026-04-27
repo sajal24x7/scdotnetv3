@@ -1,5 +1,5 @@
 ---
-title: Entra Connect sync
+title: Entra Connect Sync
 slug: entra-connect-sync
 pubDate: '2022-08-04T11:36:00+03:00'
 updatedDate: '2022-08-04T11:36:00+03:00'

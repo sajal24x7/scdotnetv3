@@ -1,5 +1,5 @@
 ---
-title: "Two lessons on work"
+title: "Two Lessons on Work"
 slug: "two-lessons-on-work"
 description: "Show your work + Ask for help"
 pubDate: 2024-12-26T03:31:09

@@ -1,5 +1,5 @@
 ---
-title: Claude gets memory
+title: Claude Gets Memory
 slug: claude-gets-memory
 pubDate: 2025-10-23T18:16:11.000Z
 updatedDate: 2025-10-23T18:16:11.000Z

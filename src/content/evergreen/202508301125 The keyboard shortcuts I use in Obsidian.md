@@ -1,5 +1,5 @@
 ---
-title: "The keyboard shortcuts I use in Obsidian"
+title: "The Keyboard Shortcuts I Use in Obsidian"
 slug: "the-keyboard-shortcuts-i-use-in-obsidian"
 pubDate: 2025-08-30T11:42:13+03:00
 updatedDate: 2025-08-30T11:42:13+03:00

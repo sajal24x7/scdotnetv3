@@ -1,5 +1,5 @@
 ---
-title: FSF launches project to create free OS for mobiles
+title: FSF Launches Project to Create Free OS for Mobiles
 slug: fsf-launches-project-to-create-free-os-for-mobiles
 pubDate: 2025-10-15T11:25:57.000Z
 updatedDate: 2025-10-15T11:25:57.000Z

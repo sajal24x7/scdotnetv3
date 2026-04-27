@@ -1,5 +1,5 @@
 ---
-title: Get account last lockout time
+title: Get Account Last Lockout Time
 slug: get-account-last-lockout-time
 pubDate: '2024-10-14T11:54:00+03:00'
 updatedDate: '2024-10-14T11:54:00+03:00'

@@ -1,5 +1,5 @@
 ---
-title: "Children wrote to Moominvalley and Tove Jansson replied"
+title: "Children Wrote to Moominvalley and Tove Jansson Replied"
 slug: "children-wrote-to-moominvalley-and-tove-jansson-replied"
 pubDate: 2025-08-30T15:59:58+03:00
 updatedDate: 2025-08-30T15:59:58+03:00

@@ -1,5 +1,5 @@
 ---
-title: Data centers in space
+title: Data Centers in Space
 slug: data-centers-in-space
 pubDate: 2025-09-20T15:49:14.000Z
 updatedDate: 2025-09-20T15:49:14.000Z

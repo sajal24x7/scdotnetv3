@@ -1,5 +1,5 @@
 ---
-title: VMware remove host from inventory
+title: VMware Remove Host From Inventory
 slug: vmware-remove-host-from-inventory
 pubDate: '2022-05-31T17:38:00+03:00'
 updatedDate: '2022-05-31T17:38:00+03:00'

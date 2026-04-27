@@ -1,5 +1,5 @@
 ---
-title: "A short trip to Porkkalanniemi"
+title: "A Short Trip to Porkkalanniemi"
 edition: 62
 slug: "a-short-trip-to-porkkalanniemi"
 pubDate: 2025-07-13T06:30:05+03:00

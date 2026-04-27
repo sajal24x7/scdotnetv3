@@ -1,5 +1,5 @@
 ---
-title: "Should AI flatter us, fix us, or just inform us"
+title: "Should AI Flatter Us, Fix Us, or Just Inform Us"
 slug: "should-ai-flatter-us-fix-us-or-just-inform-us-by-james-odonnell"
 pubDate: 2025-08-20T22:20:32+03:00
 updatedDate: 2025-08-20T22:20:32+03:00

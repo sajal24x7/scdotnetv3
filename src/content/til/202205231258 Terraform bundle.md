@@ -1,5 +1,5 @@
 ---
-title: Terraform bundle
+title: Terraform Bundle
 slug: terraform-bundle
 pubDate: '2022-05-23T12:58:00+03:00'
 updatedDate: '2022-05-23T12:58:00+03:00'

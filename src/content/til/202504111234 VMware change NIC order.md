@@ -1,5 +1,5 @@
 ---
-title: "VMware change NIC order"
+title: "VMware Change NIC Order"
 slug: "vmware-change-nic-order"
 pubDate: 2025-04-11T12:40:00+03:00
 updatedDate: 2025-04-11T12:40:00+03:00

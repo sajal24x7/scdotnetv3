@@ -1,5 +1,5 @@
 ---
-title: "That face among the faces!"
+title: "That Face Among the Faces!"
 slug: "that-face-among-the-faces"
 pubDate: 2012-03-25T13:22:29
 updatedDate: 2024-04-29T13:02:38

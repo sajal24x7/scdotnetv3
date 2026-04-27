@@ -1,5 +1,5 @@
 ---
-title: Distributed system design patterns
+title: Distributed System Design Patterns
 slug: distributed-system-design-patterns
 pubDate: 2025-10-29T09:11:33.000Z
 updatedDate: 2025-10-29T09:11:33.000Z

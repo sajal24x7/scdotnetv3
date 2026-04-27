@@ -1,5 +1,5 @@
 ---
-title: "Notes on obsidian"
+title: "Notes on Obsidian"
 slug: "notes-on-obsidian"
 description: "Some things which do not work"
 pubDate: 2024-12-09T03:08:43

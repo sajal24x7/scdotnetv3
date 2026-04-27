@@ -1,5 +1,5 @@
 ---
-title: "Feels like Christmas"
+title: "Feels Like Christmas"
 edition: 39
 slug: "feels-like-christmas"
 description: "Delhi Rasoi + decaying internet + bad Spotify + solar probe"

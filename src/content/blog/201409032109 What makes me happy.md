@@ -1,5 +1,5 @@
 ---
-title: "What makes me happy?"
+title: "What Makes Me Happy?"
 slug: "what-makes-me-happy"
 pubDate: 2014-09-03T21:09:43
 updatedDate: 2014-09-03T21:09:43

@@ -1,5 +1,5 @@
 ---
-title: Linux disable ipv6
+title: Linux Disable Ipv6
 slug: linux-disable-ipv6
 pubDate: '2022-09-26T12:30:00+03:00'
 updatedDate: '2022-09-26T12:30:00+03:00'

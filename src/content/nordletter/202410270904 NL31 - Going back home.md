@@ -1,5 +1,5 @@
 ---
-title: "Going back home"
+title: "Going Back Home"
 edition: 31
 slug: "going-back-home"
 description: "Trip to India"

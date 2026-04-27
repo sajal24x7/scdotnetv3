@@ -1,5 +1,5 @@
 ---
-title: VC appliance connect through winscp
+title: VC Appliance Connect Through Winscp
 slug: vc-appliance-connect-through-winscp
 pubDate: '2023-05-10T12:46:00+03:00'
 updatedDate: '2023-05-10T12:46:00+03:00'

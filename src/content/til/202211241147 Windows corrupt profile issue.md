@@ -1,5 +1,5 @@
 ---
-title: Windows corrupt profile issue
+title: Windows Corrupt Profile Issue
 slug: windows-corrupt-profile-issue
 pubDate: '2022-11-24T11:47:00+03:00'
 updatedDate: '2022-11-24T11:47:00+03:00'

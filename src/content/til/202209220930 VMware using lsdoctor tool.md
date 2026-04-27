@@ -1,5 +1,5 @@
 ---
-title: VMware using lsdoctor tool
+title: VMware Using Lsdoctor Tool
 slug: vmware-using-lsdoctor-tool
 pubDate: '2022-09-22T09:30:00+03:00'
 updatedDate: '2022-09-22T09:30:00+03:00'

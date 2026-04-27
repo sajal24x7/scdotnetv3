@@ -1,5 +1,5 @@
 ---
-title: "Don’t call me a writer!"
+title: "Don’t Call Me a Writer!"
 slug: "dont-call-me-a-writer"
 description: "I hate the spotlight"
 pubDate: 2025-03-11T03:26:53

@@ -1,5 +1,5 @@
 ---
-title: Ansible directory structure
+title: Ansible Directory Structure
 slug: ansible-directory-structure
 pubDate: '2022-06-16T09:35:00+03:00'
 updatedDate: '2022-06-16T09:35:00+03:00'

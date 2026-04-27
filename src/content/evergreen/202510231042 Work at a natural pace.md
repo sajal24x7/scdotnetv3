@@ -1,5 +1,5 @@
 ---
-title: Work at a natural pace
+title: Work at a Natural Pace
 slug: work-at-a-natural-pace
 pubDate: 2025-10-26T20:55:28.000Z
 updatedDate: 2025-10-26T20:55:28.000Z

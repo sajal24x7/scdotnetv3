@@ -1,5 +1,5 @@
 ---
-title: MSFT AI User group event at Nitor
+title: MSFT AI User Group Event at Nitor
 slug: msft-ai-user-group-event-at-nitor
 pubDate: 2025-10-30T20:53:11.000Z
 updatedDate: 2025-10-30T20:53:11.000Z

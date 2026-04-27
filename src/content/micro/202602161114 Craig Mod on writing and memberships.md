@@ -1,5 +1,5 @@
 ---
-title: Craig Mod on writing and memberships
+title: Craig Mod on Writing and Memberships
 slug: craig-mod-on-writing-and-memberships
 pubDate: 2026-02-16T09:17:48.000Z
 updatedDate: 2026-02-16T09:17:48.000Z

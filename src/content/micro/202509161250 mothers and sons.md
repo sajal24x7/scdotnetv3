@@ -1,5 +1,5 @@
 ---
-title: mothers and sons
+title: Mothers and Sons
 slug: mothers-and-sons
 pubDate: 2025-09-16T09:52:14.000Z
 updatedDate: 2025-09-16T09:52:14.000Z

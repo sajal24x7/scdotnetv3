@@ -1,5 +1,5 @@
 ---
-title: "Anthropic to pay $1.5 billion to authors in landmark AI settlement"
+title: "Anthropic to Pay title: .5 Billion to Authors in Landmark AI Settlement"
 slug: "anthropic-to-pay-15-billion-to-authors-in-landmark-ai-settlement"
 pubDate: 2025-09-06T09:55:10+03:00
 updatedDate: 2025-09-06T09:55:10+03:00

@@ -1,5 +1,5 @@
 ---
-title: Create entries in reverse lookup zone through PowerShell
+title: Create Entries in Reverse Lookup Zone Through PowerShell
 slug: create-entries-in-reverse-lookup-zone-through-powershell
 pubDate: '2024-04-17T16:50:00+03:00'
 updatedDate: '2024-04-17T16:50:00+03:00'

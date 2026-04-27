@@ -1,5 +1,5 @@
 ---
-title: How to write commit messages
+title: How to Write Commit Messages
 slug: how-to-write-commit-messages
 pubDate: 2025-11-24T18:54:37.000Z
 updatedDate: 2025-11-24T18:54:37.000Z

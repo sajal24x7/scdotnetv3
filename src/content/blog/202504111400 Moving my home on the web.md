@@ -1,5 +1,5 @@
 ---
-title: "Moving my home on the web"
+title: "Moving My Home on the Web"
 slug: "moving-my-home-on-the-web"
 pubDate: 2025-04-11T14:00:54
 updatedDate: 2025-04-11T14:00:54

@@ -1,5 +1,5 @@
 ---
-title: Remove cloud-init
+title: Remove Cloud-Init
 slug: remove-cloud-init
 pubDate: '2022-09-26T12:29:00+03:00'
 updatedDate: '2022-09-26T12:29:00+03:00'

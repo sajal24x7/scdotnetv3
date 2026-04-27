@@ -1,5 +1,5 @@
 ---
-title: VMware offline snapshots
+title: VMware Offline Snapshots
 slug: vmware-offline-snapshots
 pubDate: '2022-09-22T09:36:00+03:00'
 updatedDate: '2022-09-22T09:36:00+03:00'

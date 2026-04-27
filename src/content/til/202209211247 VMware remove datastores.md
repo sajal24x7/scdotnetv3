@@ -1,5 +1,5 @@
 ---
-title: VMware remove datastores
+title: VMware Remove Datastores
 slug: vmware-remove-datastores
 pubDate: '2022-09-21T12:47:00+03:00'
 updatedDate: '2022-09-21T12:47:00+03:00'

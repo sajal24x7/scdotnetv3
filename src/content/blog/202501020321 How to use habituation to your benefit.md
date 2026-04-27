@@ -1,5 +1,5 @@
 ---
-title: "How to use habituation to your benefit"
+title: "How to Use Habituation to Your Benefit"
 slug: "how-to-use-habituation-to-your-benefit"
 description: "Recognise. Breaks in good. No breaks in bad."
 pubDate: 2025-01-02T03:21:30

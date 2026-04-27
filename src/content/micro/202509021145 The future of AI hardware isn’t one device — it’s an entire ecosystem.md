@@ -1,5 +1,5 @@
 ---
-title: "The future of AI hardware isn’t one device — it’s an entire ecosystem"
+title: "The Future of AI Hardware Isn’t One Device — It’s an Entire Ecosystem"
 slug: "the-future-of-ai-hardware-isnt-one-device-its-an-entire-ecosystem"
 pubDate: 2025-09-03T06:21:05+03:00
 updatedDate: 2025-09-03T06:21:05+03:00

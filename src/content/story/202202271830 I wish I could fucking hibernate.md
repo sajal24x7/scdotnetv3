@@ -1,5 +1,5 @@
 ---
-title: "I wish I could fucking hibernate!"
+title: "I Wish I Could Fucking Hibernate!"
 slug: "i-wish-i-could-fucking-hibernate"
 pubDate: 2022-02-27T18:30:00
 updatedDate: 2024-06-09T20:15:46

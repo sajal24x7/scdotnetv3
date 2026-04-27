@@ -1,5 +1,5 @@
 ---
-title: All that we see or seem
+title: All That We See or Seem
 slug: all-that-we-see-or-seem
 pubDate: 2026-04-06T08:27:25.000Z
 updatedDate: 2026-04-06T08:27:25.000Z

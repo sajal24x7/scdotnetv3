@@ -1,5 +1,5 @@
 ---
-title: "Hello from the puddle"
+title: "Hello From the Puddle"
 slug: "hello-from-the-puddle"
 description: "Nature"
 pubDate: 2024-09-19T20:16:52

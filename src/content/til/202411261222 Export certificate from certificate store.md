@@ -1,5 +1,5 @@
 ---
-title: Export certificate from certificate store
+title: Export Certificate From Certificate Store
 slug: export-certificate-from-certificate-store
 pubDate: '2024-11-26T12:22:00+03:00'
 updatedDate: '2024-11-26T12:22:00+03:00'

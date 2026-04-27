@@ -1,5 +1,5 @@
 ---
-title: Phantom obligation
+title: Phantom Obligation
 slug: phantom-obligation
 pubDate: 2026-02-26T10:02:09.000Z
 updatedDate: 2026-02-26T10:02:09.000Z

@@ -1,5 +1,5 @@
 ---
-title: What do coders do after AI
+title: What Do Coders Do After AI
 slug: what-do-coders-do-after-ai
 pubDate: 2026-03-14T11:32:09.000Z
 updatedDate: 2026-03-14T11:32:09.000Z

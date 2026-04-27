@@ -1,5 +1,5 @@
 ---
-title: "The custodian for all human knowledge"
+title: "The Custodian for All Human Knowledge"
 slug: "the-custodian-for-all-human-knowledge"
 description: "AIs trained on the web make the web a worse place"
 pubDate: 2024-10-10T03:25:49

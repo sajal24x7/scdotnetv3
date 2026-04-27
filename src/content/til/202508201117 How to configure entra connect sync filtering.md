@@ -1,5 +1,5 @@
 ---
-title: "How to configure entra connect sync filtering"
+title: "How to Configure Entra Connect Sync Filtering"
 slug: "how-to-configure-entra-connect-sync-filtering"
 pubDate: 2025-09-08T20:51:55+03:00
 updatedDate: 2025-09-08T20:51:55+03:00

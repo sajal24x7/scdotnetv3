@@ -1,5 +1,5 @@
 ---
-title: "Temu as a form of soft power"
+title: "Temu as a Form of Soft Power"
 slug: "temu-as-a-form-of-soft-power"
 description: "A realisation amidst assembling cheap stuff from Temu"
 pubDate: 2025-04-03T03:42:23

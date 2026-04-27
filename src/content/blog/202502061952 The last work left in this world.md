@@ -1,5 +1,5 @@
 ---
-title: "The last work left in this world"
+title: "The Last Work Left in This World"
 slug: "the-last-work-left-in-this-world"
 description: "Train the models!"
 pubDate: 2025-02-06T19:52:44

@@ -1,5 +1,5 @@
 ---
-title: How to handle stress at work
+title: How to Handle Stress at Work
 slug: how-to-handle-stress-at-work
 pubDate: 2025-10-14T12:50:39.000Z
 updatedDate: 2025-10-14T12:50:39.000Z

@@ -1,5 +1,5 @@
 ---
-title: "Noticing the little things"
+title: "Noticing the Little Things"
 slug: "noticing-the-little-things"
 pubDate: 2025-04-28T06:38:07
 updatedDate: 2025-04-28T06:38:07

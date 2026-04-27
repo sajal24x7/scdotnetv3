@@ -1,5 +1,5 @@
 ---
-title: "Why standing still is scary"
+title: "Why Standing Still Is Scary"
 slug: "why-standing-still-is-scary"
 pubDate: 2016-05-01T22:17:37
 updatedDate: 2016-05-01T22:17:37

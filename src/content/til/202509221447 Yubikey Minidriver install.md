@@ -1,5 +1,5 @@
 ---
-title: Yubikey Minidriver install
+title: Yubikey Minidriver Install
 slug: yubikey-minidriver-install
 pubDate: 2025-12-18T10:32:33.000Z
 updatedDate: 2025-12-18T10:32:33.000Z

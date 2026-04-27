@@ -1,5 +1,5 @@
 ---
-title: Apple to prioritise smart glasses over lighter Vision Pro
+title: Apple to Prioritise Smart Glasses Over Lighter Vision Pro
 slug: apple-to-prioritise-smart-glasses-over-lighter-vision-pro
 pubDate: 2025-10-02T07:46:12.000Z
 updatedDate: 2025-10-02T07:46:12.000Z

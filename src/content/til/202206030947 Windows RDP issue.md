@@ -1,5 +1,5 @@
 ---
-title: Windows RDP issue
+title: Windows RDP Issue
 slug: windows-rdp-issue
 pubDate: '2022-06-03T09:47:00+03:00'
 updatedDate: '2022-06-03T09:47:00+03:00'

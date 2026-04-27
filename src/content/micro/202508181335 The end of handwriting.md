@@ -1,5 +1,5 @@
 ---
-title: "The end of handwriting"
+title: "The End of Handwriting"
 slug: "the-end-of-handwriting"
 pubDate: 2025-08-18T13:37:07+03:00
 updatedDate: 2025-08-18T13:37:07+03:00

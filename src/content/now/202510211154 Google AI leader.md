@@ -1,5 +1,5 @@
 ---
-title: "Google AI leader"
+title: "Google AI Leader"
 slug: "google-ai-leader"
 pubDate: 2025-07-21T11:55:45+03:00
 updatedDate: 2025-08-21T11:55:45+03:00

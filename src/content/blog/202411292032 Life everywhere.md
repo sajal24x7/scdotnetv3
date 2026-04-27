@@ -1,5 +1,5 @@
 ---
-title: "Life everywhere"
+title: "Life Everywhere"
 slug: "life-everywhere"
 description: "But not in the way you expect"
 pubDate: 2024-11-29T20:32:03

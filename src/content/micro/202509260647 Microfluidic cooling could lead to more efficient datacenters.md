@@ -1,5 +1,5 @@
 ---
-title: Microfluidic cooling could lead to more efficient datacenters
+title: Microfluidic Cooling Could Lead to More Efficient Datacenters
 slug: microfluidic-cooling-could-lead-to-more-efficient-datacenters
 pubDate: 2025-09-26T19:00:52.000Z
 updatedDate: 2025-09-26T19:00:52.000Z

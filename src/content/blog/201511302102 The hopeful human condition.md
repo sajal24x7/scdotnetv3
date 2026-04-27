@@ -1,5 +1,5 @@
 ---
-title: "The hopeful human condition"
+title: "The Hopeful Human Condition"
 slug: "the-hopeful-human-condition"
 pubDate: 2015-11-30T21:02:41
 updatedDate: 2015-11-30T21:02:41

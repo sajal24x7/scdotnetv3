@@ -1,5 +1,5 @@
 ---
-title: Run remote command cmd
+title: Run Remote Command Cmd
 slug: run-remote-command-cmd
 pubDate: '2022-11-03T12:09:00+03:00'
 updatedDate: '2022-11-03T12:09:00+03:00'

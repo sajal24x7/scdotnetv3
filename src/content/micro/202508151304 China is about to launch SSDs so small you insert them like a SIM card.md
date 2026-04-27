@@ -1,5 +1,5 @@
 ---
-title: "China is about to launch SSDs so small you insert them like a SIM card"
+title: "China Is About to Launch SSDs so Small You Insert Them Like a SIM Card"
 slug: "china-is-about-to-launch-ssds-so-small-you-insert-them-like-a-sim-card"
 pubDate: 2025-08-15T13:04:52+03:00
 updatedDate: 2025-08-15T13:04:52+03:00
