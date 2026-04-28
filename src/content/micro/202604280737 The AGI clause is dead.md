@@ -1,13 +1,16 @@
 ---
-title: "The AGI clause is dead"
-slug: "the-agi-clause-is-dead"
-pubDate: 2026-04-28T07:38:44+03:00
-updatedDate: 2026-04-28T07:38:44+03:00
+title: The AGI clause is dead
+slug: the-agi-clause-is-dead
+pubDate: 2026-04-28T04:38:44.000Z
+updatedDate: 2026-04-28T04:38:44.000Z
 category: micro
 tags:
   - openai
   - microsoft
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116480486319364086'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mkjrcn7z5w2m'
+  - 'https://www.threads.com/@sajal24x7/post/DXqYkOLlo_3'
 ---
 [Microsoft and OpenAI’s famed AGI agreement is dead by Hayden Field](https://www.theverge.com/ai-artificial-intelligence/918981/openai-microsoft-renegotiate-contract)
 
