@@ -17,7 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116474932934021579'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mkhcfavrts2u'
   - 'https://www.threads.com/@sajal24x7/post/DXn28NvjXE6'
-bookCover: reading-things-my-grandmother-said.jpg
+bookCover: things-my-grandmother-said.jpg
 ---
 ## Review
 ## Notes
