@@ -15,7 +15,11 @@ bookStatus: read
 startedReading: 2026-04-27T04:46:16.000Z
 bookCover: things-my-grandmother-said.JPG
 bookRating: like
-finishedReading: 2026-04-29T20:06:23+03:00
+finishedReading: 2026-04-29T17:06:23.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116506302306722686'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mkva6fftay2a'
+  - 'https://www.threads.com/@sajal24x7/post/DX2H6QglKQ_'
 ---
 ## Review
 
