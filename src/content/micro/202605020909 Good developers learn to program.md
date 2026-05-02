@@ -1,13 +1,16 @@
 ---
-title: "Good developers learn to program"
-slug: "good-developers-learn-to-program"
-pubDate: 2026-05-02T09:21:30+03:00
-updatedDate: 2026-05-02T09:21:30+03:00
+title: Good developers learn to program
+slug: good-developers-learn-to-program
+pubDate: 2026-05-02T06:21:30.000Z
+updatedDate: 2026-05-02T06:21:30.000Z
 category: micro
 tags:
   - developers
   - education
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116503540049265747'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mktywbfts22p'
+  - 'https://www.threads.com/@sajal24x7/post/DX03hKUlL6x'
 ---
 [Good developers learn to program. Most courses teach a language. by EvilGenius](https://evilgeniuslabs.ca/blog/good-developers-learn-to-program-not-a-language)
 

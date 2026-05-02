@@ -1,13 +1,16 @@
 ---
-title: "Mac Mini starting price rises"
-slug: "mac-mini-starting-price-rises"
-pubDate: 2026-05-02T09:20:31+03:00
-updatedDate: 2026-05-02T09:20:31+03:00
+title: Mac Mini starting price rises
+slug: mac-mini-starting-price-rises
+pubDate: 2026-05-02T06:20:31.000Z
+updatedDate: 2026-05-02T06:20:31.000Z
 category: micro
 tags:
   - apple
   - mac
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116503540575625225'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mktywj3kdr2a'
+  - 'https://www.threads.com/@sajal24x7/post/DX03iHglL_C'
 ---
 [Apple raises the Mac Mini’s starting price by Emma Roth](https://www.theverge.com/tech/922572/apple-mac-mini-256-model)
 
