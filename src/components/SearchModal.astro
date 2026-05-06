@@ -1,9 +1,4 @@
 ---
-interface Props {
-    searchIndexUrl?: string;
-}
-
-const { searchIndexUrl = '/search-index.json' } = Astro.props as Props;
 const modalId = 'global-search';
 ---
 
@@ -13,7 +8,6 @@ const modalId = 'global-search';
   class="fixed inset-0 z-50 hidden items-center justify-center p-4"
   style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"
   data-modal-id={modalId}
-  data-search-index-url={searchIndexUrl}
   role="dialog"
   aria-modal="true"
   aria-hidden="true"
@@ -25,7 +19,7 @@ const modalId = 'global-search';
   <div class="relative w-full max-w-2xl mx-auto bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
     <!-- Header -->
     <div class="flex items-center justify-between p-4 border-b border-gray-200/50 dark:border-gray-700/50">
-      <h2 class="text-large font-semibold text-gray-900 dark:text-gray-100">Search Posts</h2>
+      <h2 class="text-large font-semibold text-gray-900 dark:text-gray-100">Search</h2>
       <button 
         id="close-search" 
         class="w-8 h-8 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center justify-center transition-colors"
@@ -45,7 +39,7 @@ const modalId = 'global-search';
         <input 
           type="text" 
           id="modal-search-input"
-          placeholder="Search posts, try 'tag:ai' for tag search..." 
+          placeholder="Search via DuckDuckGo..."
           class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
           autocomplete="off"
           data-search-input
@@ -57,7 +51,7 @@ const modalId = 'global-search';
       
       <!-- Search Tips -->
       <div class="mt-2 text-small text-gray-600 dark:text-gray-400">
-        <span class="inline-block mr-4">💡 Try: "AI", "productivity", or "tag:coding"</span>
+        <span class="inline-block mr-4">Press Enter to search this site on DuckDuckGo</span>
       </div>
     </div>
     
@@ -69,7 +63,7 @@ const modalId = 'global-search';
           <circle cx="11" cy="11" r="8"></circle>
           <path d="m21 21-4.35-4.35"></path>
         </svg>
-        <p>Start typing to search through posts...</p>
+        <p>Start typing to search via DuckDuckGo...</p>
       </div>
     </div>
   </div>

@@ -1,12 +1,4 @@
-type SearchPost = {
-    slug: string;
-    data: {
-        title?: string;
-        description?: string;
-        category?: string;
-        tags?: string[];
-    };
-};
+const SITE_DOMAIN = 'sajalchoudhary.net';
 
 const DEFAULT_STATE_TEMPLATE = `
     <div class="p-8 text-center text-gray-500 dark:text-gray-400">
@@ -14,7 +6,7 @@ const DEFAULT_STATE_TEMPLATE = `
             <circle cx="11" cy="11" r="8"></circle>
             <path d="m21 21-4.35-4.35"></path>
         </svg>
-        <p>Start typing to search through posts...</p>
+        <p>Start typing to search via DuckDuckGo...</p>
     </div>
 `;
 
@@ -24,43 +16,65 @@ const MIN_CHARS_TEMPLATE = `
     </div>
 `;
 
-const LOADING_TEMPLATE = `
-    <div class="p-4 text-center text-gray-500 dark:text-gray-400">
-        Loading search index...
-    </div>
-`;
+function buildDuckDuckGoUrl(query: string, siteOnly: boolean): string {
+    const q = siteOnly ? `site:${SITE_DOMAIN} ${query}` : query;
+    return `https://duckduckgo.com/?q=${encodeURIComponent(q)}`;
+}
 
-const ERROR_TEMPLATE = `
-    <div class="p-4 text-center text-red-500 dark:text-red-400">
-        Unable to load search index. Please try again later.
-    </div>
-`;
+function renderSearchOptions(query: string): string {
+    const siteUrl = buildDuckDuckGoUrl(query, true);
+    const webUrl = buildDuckDuckGoUrl(query, false);
 
-function highlightTag(tag: string, query: string, isTagSearch: boolean): string {
-    const normalizedQuery = query.toLowerCase();
-    const isHighlighted = isTagSearch || tag.toLowerCase().includes(normalizedQuery);
-    const classes = ['tag-chip', 'tag-chip-inline'];
-
-    if (isHighlighted) {
-        classes.push('tag-chip-active');
-    }
-
-    return `<span class="${classes.join(' ')}">${tag.toUpperCase()}</span>`;
+    return `
+        <a href="${siteUrl}" target="_blank" rel="noopener noreferrer"
+           class="flex items-center gap-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-800 border-b border-gray-200/50 dark:border-gray-700/50 transition-colors group">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-500 flex-shrink-0">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <div class="flex-1 min-w-0">
+                <div class="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                    Search this site for "<span class="italic">${query}</span>"
+                </div>
+                <div class="text-small text-gray-500 dark:text-gray-400">via DuckDuckGo &mdash; ${SITE_DOMAIN}</div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-orange-500 transition-colors flex-shrink-0">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+        </a>
+        <a href="${webUrl}" target="_blank" rel="noopener noreferrer"
+           class="flex items-center gap-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 flex-shrink-0">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <div class="flex-1 min-w-0">
+                <div class="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                    Search the web for "<span class="italic">${query}</span>"
+                </div>
+                <div class="text-small text-gray-500 dark:text-gray-400">via DuckDuckGo</div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-orange-500 transition-colors flex-shrink-0">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+        </a>
+    `;
 }
 
 class SearchModalElement extends HTMLElement {
     private modalId: string = 'global-search';
     private triggers: HTMLElement[] = [];
-    private posts: SearchPost[] = [];
     private previouslyFocused: HTMLElement | null = null;
     private isOpen = false;
 
     private closeButton: HTMLElement | null = null;
     private inputElement: HTMLInputElement | null = null;
     private resultsContainer: HTMLElement | null = null;
-    private indexUrl: string = '/search-index.json';
-    private loadingPromise: Promise<SearchPost[] | null> | null = null;
-    private isIndexLoaded = false;
 
     private handleTriggerClick = (event: Event) => {
         event.preventDefault();
@@ -76,18 +90,18 @@ class SearchModalElement extends HTMLElement {
         if (!this.inputElement) {
             return;
         }
-        void this.performSearch(this.inputElement.value);
+        this.performSearch(this.inputElement.value);
     };
 
     private handleInputKeydown = (event: KeyboardEvent) => {
-        if (event.key !== 'Enter' || !this.resultsContainer) {
+        if (event.key !== 'Enter' || !this.inputElement) {
             return;
         }
 
-        const firstResult = this.resultsContainer.querySelector<HTMLAnchorElement>('a');
-        if (firstResult) {
+        const query = this.inputElement.value.trim();
+        if (query.length >= 2) {
             event.preventDefault();
-            window.location.href = firstResult.href;
+            window.open(buildDuckDuckGoUrl(query, true), '_blank', 'noopener,noreferrer');
         }
     };
 
@@ -116,7 +130,6 @@ class SearchModalElement extends HTMLElement {
         this.closeButton = this.querySelector('[data-search-close]');
         this.inputElement = this.querySelector('[data-search-input]');
         this.resultsContainer = this.querySelector('[data-search-results]');
-        this.indexUrl = this.dataset.searchIndexUrl || this.indexUrl;
 
         this.renderDefaultState();
         this.attachTriggerListeners();
@@ -174,7 +187,6 @@ class SearchModalElement extends HTMLElement {
         document.body.style.overflow = 'hidden';
         this.setAttribute('aria-hidden', 'false');
         this.isOpen = true;
-        void this.ensureIndexLoaded();
 
         window.setTimeout(() => {
             this.inputElement?.focus();
@@ -215,211 +227,24 @@ class SearchModalElement extends HTMLElement {
         }
     }
 
-    private renderLoadingState() {
-        if (this.resultsContainer) {
-            this.resultsContainer.innerHTML = LOADING_TEMPLATE;
-        }
-    }
-
-    private renderErrorState() {
-        if (this.resultsContainer) {
-            this.resultsContainer.innerHTML = ERROR_TEMPLATE;
-        }
-    }
-
-    private renderNoResultsState(query: string) {
+    private performSearch(rawQuery: string) {
         if (!this.resultsContainer) {
             return;
         }
 
-        this.resultsContainer.innerHTML = `
-            <div class="p-8 text-center text-gray-500 dark:text-gray-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-3 opacity-50">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="m21 21-4.35-4.35"></path>
-                </svg>
-                <div class="mb-2">No results found for "<strong>${query}</strong>"</div>
-                <div class="text-small space-y-1">
-                    <div>💡 Try searching for "AI", "productivity", or "coding"</div>
-                    <div>🏷️ Use "tag:ai" for exact tag matches</div>
-                </div>
-            </div>
-        `;
-    }
-
-    private async ensureIndexLoaded() {
-        if (this.isIndexLoaded) {
-            return;
-        }
-
-        if (!this.loadingPromise) {
-            this.loadingPromise = this.loadIndex();
-        }
-
-        const posts = await this.loadingPromise;
-        if (Array.isArray(posts)) {
-            this.posts = posts;
-            this.isIndexLoaded = true;
-        }
-    }
-
-    private async loadIndex(): Promise<SearchPost[] | null> {
-        try {
-            const response = await fetch(this.indexUrl, {
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error(`Failed to load search index: ${response.status}`);
-            }
-
-            const data = await response.json();
-            if (!Array.isArray(data)) {
-                return [];
-            }
-
-            return data.map((entry: SearchPost) => ({
-                slug: entry.slug,
-                data: {
-                    title: entry.data?.title,
-                    description: entry.data?.description,
-                    category: entry.data?.category,
-                    tags: entry.data?.tags ?? []
-                }
-            }));
-        } catch (error) {
-            console.error('Search index fetch failed', error);
-            return null;
-        } finally {
-            this.loadingPromise = null;
-        }
-    }
-
-    private async performSearch(rawQuery: string) {
-        if (!this.resultsContainer) {
-            return;
-        }
-
-        const query = rawQuery.toLowerCase().trim();
+        const query = rawQuery.trim();
 
         if (query.length === 0) {
             this.renderDefaultState();
             return;
         }
 
-        if (query.length < 2 && !query.startsWith('tag:')) {
+        if (query.length < 2) {
             this.renderMinCharsState();
             return;
         }
 
-        if (!this.isIndexLoaded) {
-            this.renderLoadingState();
-            await this.ensureIndexLoaded();
-        }
-
-        if (!this.isIndexLoaded) {
-            this.renderErrorState();
-            return;
-        }
-
-        const isTagSearch = query.startsWith('tag:');
-        const tagQuery = isTagSearch ? query.substring(4) : '';
-
-        let results: Array<SearchPost & { relevanceScore?: number }> = [];
-
-        if (isTagSearch) {
-            results = this.posts.filter((post) => {
-                const tags = post.data.tags || [];
-                return tags.some((tag) => tag.toLowerCase() === tagQuery);
-            });
-        } else {
-            results = this.computeRankedResults(query);
-        }
-
-        if (results.length === 0) {
-            this.renderNoResultsState(query);
-            return;
-        }
-
-        const limitedResults = results.slice(0, 10);
-        this.resultsContainer.innerHTML = limitedResults.map((post) => this.renderResultItem(post, query, isTagSearch)).join('');
-    }
-
-    private computeRankedResults(query: string) {
-        const results: Array<SearchPost & { relevanceScore: number }> = [];
-
-        this.posts.forEach((post) => {
-            const title = (post.data.title || '').toLowerCase();
-            const category = (post.data.category || '').toLowerCase();
-            const description = (post.data.description || '').toLowerCase();
-            const tags = (post.data.tags || []).map((tag) => tag.toLowerCase());
-
-            let relevanceScore = 0;
-            let hasMatch = false;
-
-            if (tags.some((tag) => tag.includes(query))) {
-                relevanceScore += 100;
-                hasMatch = true;
-            }
-
-            if (title.includes(query)) {
-                relevanceScore += 50;
-                hasMatch = true;
-            }
-
-            if (category.includes(query)) {
-                relevanceScore += 25;
-                hasMatch = true;
-            }
-
-            if (description.includes(query)) {
-                relevanceScore += 10;
-                hasMatch = true;
-            }
-
-            if (hasMatch) {
-                results.push({ ...post, relevanceScore });
-            }
-        });
-
-        return results.sort((a, b) => (b.relevanceScore ?? 0) - (a.relevanceScore ?? 0));
-    }
-
-    private renderResultItem(post: SearchPost & { relevanceScore?: number }, query: string, isTagSearch: boolean) {
-        const tags = post.data.tags || [];
-        const tagBadges = tags.slice(0, 3).map((tag) => highlightTag(tag, query, isTagSearch)).join('');
-
-        const relevanceScore = post.relevanceScore ?? 0;
-        const relevanceIndicator = relevanceScore >= 100 ? '🏷️'
-            : relevanceScore >= 50 ? '📝'
-            : relevanceScore >= 25 ? '📁'
-            : '💬';
-
-        const title = post.data.title || 'Untitled';
-        const category = post.data.category || '';
-        const description = post.data.description || '';
-        const href = category ? `/${category}/${post.slug}/` : `/${post.slug}/`;
-
-        return `
-            <a href="${href}" class="block p-4 hover:bg-gray-50 dark:hover:bg-gray-800 border-b border-gray-200/50 dark:border-gray-700/50 last:border-b-0 transition-colors group">
-                <div class="flex items-start justify-between">
-                    <div class="flex-1">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-small">${relevanceIndicator}</span>
-                            <h3 class="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">${title}</h3>
-                        </div>
-                        <p class="text-small text-gray-600 dark:text-gray-400 mb-2 capitalize">${category}</p>
-                        ${description ? `<p class="text-small text-gray-500 dark:text-gray-500 mb-2 line-clamp-2">${description}</p>` : ''}
-                        ${tags.length > 0 ? `<div class="flex flex-wrap">${tagBadges}</div>` : ''}
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-blue-500 transition-colors flex-shrink-0 mt-1">
-                        <path d="m9 18 6-6-6-6"/>
-                    </svg>
-                </div>
-            </a>
-        `;
+        this.resultsContainer.innerHTML = renderSearchOptions(query);
     }
 }
 
