@@ -1,4 +1,4 @@
-const moduleHref = new URL('./search-modal-island.js', import.meta.url).href;
+const moduleHref = new URL('./search-modal-island.ts', import.meta.url).href;
 
 type SearchModalElement = HTMLElement & {
     open?: () => void;
