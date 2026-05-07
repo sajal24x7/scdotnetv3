@@ -23,6 +23,9 @@ import re
 import os
 from pathlib import Path
 
+# Default content root relative to where the script is called from
+DEFAULT_CONTENT_ROOT = "src/content"
+
 
 SMALL_WORDS = {"a", "an", "the", "and", "but", "or", "for", "nor", "on", "at", "to", "by", "in", "of", "up", "as"}
 
@@ -90,12 +93,63 @@ def parse_frontmatter(content: str):
     return fm, body
 
 
+def build_content_index(content_root: str) -> dict:
+    """
+    Scan src/content/<category>/*.md and return a dict mapping
+    filename stem -> category, e.g. {"202412091436 Be a hybrid": "evergreen"}.
+    Inbox is excluded because those files haven't been sorted yet.
+    """
+    index = {}
+    root = Path(content_root)
+    if not root.exists():
+        return index
+
+    for md_file in root.rglob("*.md"):
+        parts = md_file.relative_to(root).parts
+        if len(parts) < 2:
+            continue
+        category = parts[0]
+        if category == "inbox":
+            continue
+        index[md_file.stem] = category
+
+    return index
+
+
+def convert_internal_links(body: str, content_index: dict) -> str:
+    """
+    Replace Obsidian [[stem|alias]] and [[stem]] links with Astro markdown links.
+    Uses content_index to resolve the category for each linked note.
+
+    [[202412091436 Be a hybrid|Be a hybrid]] -> [Be a hybrid](/evergreen/be-a-hybrid)
+    [[202412091436 Be a hybrid]]             -> [Be a Hybrid](/evergreen/be-a-hybrid)
+    """
+    pattern = re.compile(r"\[\[([^\]|]+?)(?:\|([^\]]+?))?\]\]")
+
+    def replace(m: re.Match) -> str:
+        stem = m.group(1).strip()
+        alias = m.group(2).strip() if m.group(2) else None
+
+        # Strip timestamp prefix to get the raw title portion
+        title_match = re.match(r"^\d{12}\s+(.+)$", stem)
+        title_raw = title_match.group(1) if title_match else stem
+
+        slug = to_slug(title_raw)
+        display = alias if alias else title_case(title_raw)
+
+        category = content_index.get(stem)
+        path = f"/{category}/{slug}" if category else f"/{slug}"
+        return f"[{display}]({path})"
+
+    return pattern.sub(replace, body)
+
+
 def is_obsidian_format(fm: dict) -> bool:
     """True if the frontmatter looks like it came from Obsidian (needs transformation)."""
     return "aliases" in fm or "title" not in fm or "slug" not in fm
 
 
-def transform_file(filepath: str) -> bool:
+def transform_file(filepath: str, content_index: dict | None = None) -> bool:
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
 
@@ -120,10 +174,10 @@ def transform_file(filepath: str) -> bool:
     slug = to_slug(title_raw)
     category = fm.get("category", "").strip().strip("'\"")
 
-    # Parse tags from the raw file for list values
     tags = extract_tags(content)
-
     tags_str = "[" + ", ".join(f'"{t}"' for t in tags) + "]"
+
+    body = convert_internal_links(body, content_index or {})
 
     new_fm_lines = [
         "---",
@@ -199,10 +253,12 @@ if __name__ == "__main__":
         print("Usage: obsidian_to_astro.py <file1.md> [file2.md ...]")
         sys.exit(1)
 
+    content_index = build_content_index(DEFAULT_CONTENT_ROOT)
+
     failed = 0
     for path in sys.argv[1:]:
         try:
-            transform_file(path)
+            transform_file(path, content_index)
         except Exception as e:
             print(f"ERROR processing {path}: {e}", file=sys.stderr)
             failed += 1
