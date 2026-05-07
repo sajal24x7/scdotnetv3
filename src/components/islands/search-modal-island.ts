@@ -1,11 +1,22 @@
-type SearchPost = {
-    slug: string;
-    data: {
-        title?: string;
-        description?: string;
-        category?: string;
-        tags?: string[];
-    };
+type PagefindResultData = {
+    url: string;
+    content: string;
+    filters: Record<string, string[]>;
+    meta: Record<string, string>;
+    excerpt: string;
+};
+
+type PagefindResult = {
+    id: string;
+    data: () => Promise<PagefindResultData>;
+};
+
+type PagefindInstance = {
+    init: () => Promise<void>;
+    search: (
+        query: string | null,
+        options?: { filters?: Record<string, string> }
+    ) => Promise<{ results: PagefindResult[] }>;
 };
 
 const DEFAULT_STATE_TEMPLATE = `
@@ -32,34 +43,21 @@ const LOADING_TEMPLATE = `
 
 const ERROR_TEMPLATE = `
     <div class="p-4 text-center text-red-500 dark:text-red-400">
-        Unable to load search index. Please try again later.
+        Search index not found. Run <code>npm run build</code> to enable search.
     </div>
 `;
-
-function highlightTag(tag: string, query: string, isTagSearch: boolean): string {
-    const normalizedQuery = query.toLowerCase();
-    const isHighlighted = isTagSearch || tag.toLowerCase().includes(normalizedQuery);
-    const classes = ['tag-chip', 'tag-chip-inline'];
-
-    if (isHighlighted) {
-        classes.push('tag-chip-active');
-    }
-
-    return `<span class="${classes.join(' ')}">${tag.toUpperCase()}</span>`;
-}
 
 class SearchModalElement extends HTMLElement {
     private modalId: string = 'global-search';
     private triggers: HTMLElement[] = [];
-    private posts: SearchPost[] = [];
     private previouslyFocused: HTMLElement | null = null;
     private isOpen = false;
 
     private closeButton: HTMLElement | null = null;
     private inputElement: HTMLInputElement | null = null;
     private resultsContainer: HTMLElement | null = null;
-    private indexUrl: string = '/search-index.json';
-    private loadingPromise: Promise<SearchPost[] | null> | null = null;
+    private pagefind: PagefindInstance | null = null;
+    private loadingPromise: Promise<PagefindInstance | null> | null = null;
     private isIndexLoaded = false;
 
     private handleTriggerClick = (event: Event) => {
@@ -73,17 +71,12 @@ class SearchModalElement extends HTMLElement {
     };
 
     private handleInput = () => {
-        if (!this.inputElement) {
-            return;
-        }
+        if (!this.inputElement) return;
         void this.performSearch(this.inputElement.value);
     };
 
     private handleInputKeydown = (event: KeyboardEvent) => {
-        if (event.key !== 'Enter' || !this.resultsContainer) {
-            return;
-        }
-
+        if (event.key !== 'Enter' || !this.resultsContainer) return;
         const firstResult = this.resultsContainer.querySelector<HTMLAnchorElement>('a');
         if (firstResult) {
             event.preventDefault();
@@ -104,7 +97,6 @@ class SearchModalElement extends HTMLElement {
             this.openModal();
             return;
         }
-
         if (event.key === 'Escape' && this.isOpen) {
             event.preventDefault();
             this.closeModal();
@@ -116,7 +108,6 @@ class SearchModalElement extends HTMLElement {
         this.closeButton = this.querySelector('[data-search-close]');
         this.inputElement = this.querySelector('[data-search-input]');
         this.resultsContainer = this.querySelector('[data-search-results]');
-        this.indexUrl = this.dataset.searchIndexUrl || this.indexUrl;
 
         this.renderDefaultState();
         this.attachTriggerListeners();
@@ -139,9 +130,7 @@ class SearchModalElement extends HTMLElement {
     private attachTriggerListeners() {
         this.triggers = Array.from(document.querySelectorAll<HTMLElement>(`[data-search-modal="${this.modalId}"]`));
         this.triggers.forEach((trigger) => {
-            if (trigger.dataset.searchModalBound === 'true') {
-                return;
-            }
+            if (trigger.dataset.searchModalBound === 'true') return;
             trigger.addEventListener('click', this.handleTriggerClick);
             trigger.dataset.searchModalBound = 'true';
         });
@@ -155,19 +144,11 @@ class SearchModalElement extends HTMLElement {
         this.triggers = [];
     }
 
-    public open() {
-        this.openModal();
-    }
-
-    public close() {
-        this.closeModal();
-    }
+    public open() { this.openModal(); }
+    public close() { this.closeModal(); }
 
     private openModal() {
-        if (this.isOpen) {
-            return;
-        }
-
+        if (this.isOpen) return;
         this.previouslyFocused = document.activeElement as HTMLElement | null;
         this.classList.remove('hidden');
         this.classList.add('flex');
@@ -175,63 +156,39 @@ class SearchModalElement extends HTMLElement {
         this.setAttribute('aria-hidden', 'false');
         this.isOpen = true;
         void this.ensureIndexLoaded();
-
-        window.setTimeout(() => {
-            this.inputElement?.focus();
-        }, 100);
+        window.setTimeout(() => { this.inputElement?.focus(); }, 100);
     }
 
     private closeModal() {
-        if (!this.isOpen) {
-            return;
-        }
-
+        if (!this.isOpen) return;
         this.classList.add('hidden');
         this.classList.remove('flex');
         document.body.style.overflow = '';
         this.setAttribute('aria-hidden', 'true');
         this.isOpen = false;
-
-        if (this.inputElement) {
-            this.inputElement.value = '';
-        }
-
+        if (this.inputElement) this.inputElement.value = '';
         this.renderDefaultState();
-
-        if (this.previouslyFocused) {
-            this.previouslyFocused.focus();
-        }
+        if (this.previouslyFocused) this.previouslyFocused.focus();
     }
 
     private renderDefaultState() {
-        if (this.resultsContainer) {
-            this.resultsContainer.innerHTML = DEFAULT_STATE_TEMPLATE;
-        }
+        if (this.resultsContainer) this.resultsContainer.innerHTML = DEFAULT_STATE_TEMPLATE;
     }
 
     private renderMinCharsState() {
-        if (this.resultsContainer) {
-            this.resultsContainer.innerHTML = MIN_CHARS_TEMPLATE;
-        }
+        if (this.resultsContainer) this.resultsContainer.innerHTML = MIN_CHARS_TEMPLATE;
     }
 
     private renderLoadingState() {
-        if (this.resultsContainer) {
-            this.resultsContainer.innerHTML = LOADING_TEMPLATE;
-        }
+        if (this.resultsContainer) this.resultsContainer.innerHTML = LOADING_TEMPLATE;
     }
 
     private renderErrorState() {
-        if (this.resultsContainer) {
-            this.resultsContainer.innerHTML = ERROR_TEMPLATE;
-        }
+        if (this.resultsContainer) this.resultsContainer.innerHTML = ERROR_TEMPLATE;
     }
 
     private renderNoResultsState(query: string) {
-        if (!this.resultsContainer) {
-            return;
-        }
-
+        if (!this.resultsContainer) return;
         this.resultsContainer.innerHTML = `
             <div class="p-8 text-center text-gray-500 dark:text-gray-400">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-3 opacity-50">
@@ -240,7 +197,7 @@ class SearchModalElement extends HTMLElement {
                 </svg>
                 <div class="mb-2">No results found for "<strong>${query}</strong>"</div>
                 <div class="text-small space-y-1">
-                    <div>💡 Try searching for "AI", "productivity", or "coding"</div>
+                    <div>💡 Try a different search term</div>
                     <div>🏷️ Use "tag:ai" for exact tag matches</div>
                 </div>
             </div>
@@ -248,49 +205,25 @@ class SearchModalElement extends HTMLElement {
     }
 
     private async ensureIndexLoaded() {
-        if (this.isIndexLoaded) {
-            return;
-        }
-
+        if (this.isIndexLoaded) return;
         if (!this.loadingPromise) {
-            this.loadingPromise = this.loadIndex();
+            this.loadingPromise = this.loadPagefind();
         }
-
-        const posts = await this.loadingPromise;
-        if (Array.isArray(posts)) {
-            this.posts = posts;
+        const pf = await this.loadingPromise;
+        if (pf) {
+            this.pagefind = pf;
             this.isIndexLoaded = true;
         }
     }
 
-    private async loadIndex(): Promise<SearchPost[] | null> {
+    private async loadPagefind(): Promise<PagefindInstance | null> {
         try {
-            const response = await fetch(this.indexUrl, {
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error(`Failed to load search index: ${response.status}`);
-            }
-
-            const data = await response.json();
-            if (!Array.isArray(data)) {
-                return [];
-            }
-
-            return data.map((entry: SearchPost) => ({
-                slug: entry.slug,
-                data: {
-                    title: entry.data?.title,
-                    description: entry.data?.description,
-                    category: entry.data?.category,
-                    tags: entry.data?.tags ?? []
-                }
-            }));
+            // @ts-ignore — generated at build time, not resolvable by TS
+            const pf = await import(/* @vite-ignore */ '/pagefind/pagefind.js') as PagefindInstance;
+            await pf.init();
+            return pf;
         } catch (error) {
-            console.error('Search index fetch failed', error);
+            console.error('Pagefind failed to load', error);
             return null;
         } finally {
             this.loadingPromise = null;
@@ -298,11 +231,8 @@ class SearchModalElement extends HTMLElement {
     }
 
     private async performSearch(rawQuery: string) {
-        if (!this.resultsContainer) {
-            return;
-        }
-
-        const query = rawQuery.toLowerCase().trim();
+        if (!this.resultsContainer) return;
+        const query = rawQuery.trim();
 
         if (query.length === 0) {
             this.renderDefaultState();
@@ -325,93 +255,59 @@ class SearchModalElement extends HTMLElement {
         }
 
         const isTagSearch = query.startsWith('tag:');
-        const tagQuery = isTagSearch ? query.substring(4) : '';
+        const tagQuery = isTagSearch ? query.substring(4).toLowerCase().trim() : '';
 
-        let results: Array<SearchPost & { relevanceScore?: number }> = [];
+        try {
+            let searchResult: { results: PagefindResult[] };
 
-        if (isTagSearch) {
-            results = this.posts.filter((post) => {
-                const tags = post.data.tags || [];
-                return tags.some((tag) => tag.toLowerCase() === tagQuery);
-            });
-        } else {
-            results = this.computeRankedResults(query);
+            if (isTagSearch) {
+                if (!tagQuery) {
+                    this.renderMinCharsState();
+                    return;
+                }
+                searchResult = await this.pagefind!.search(null, { filters: { tag: tagQuery } });
+            } else {
+                searchResult = await this.pagefind!.search(query);
+            }
+
+            if (searchResult.results.length === 0) {
+                this.renderNoResultsState(query);
+                return;
+            }
+
+            const limited = searchResult.results.slice(0, 10);
+            const resultData = await Promise.all(limited.map((r) => r.data()));
+            this.resultsContainer.innerHTML = resultData
+                .map((data) => this.renderResultItem(data, isTagSearch, tagQuery))
+                .join('');
+        } catch (error) {
+            console.error('Search failed', error);
+            this.renderErrorState();
         }
-
-        if (results.length === 0) {
-            this.renderNoResultsState(query);
-            return;
-        }
-
-        const limitedResults = results.slice(0, 10);
-        this.resultsContainer.innerHTML = limitedResults.map((post) => this.renderResultItem(post, query, isTagSearch)).join('');
     }
 
-    private computeRankedResults(query: string) {
-        const results: Array<SearchPost & { relevanceScore: number }> = [];
+    private renderResultItem(data: PagefindResultData, isTagSearch: boolean, tagQuery: string) {
+        const tags = data.filters?.tag ?? [];
+        const category = data.meta?.category ?? '';
+        const title = data.meta?.title ?? 'Untitled';
+        const href = data.url;
 
-        this.posts.forEach((post) => {
-            const title = (post.data.title || '').toLowerCase();
-            const category = (post.data.category || '').toLowerCase();
-            const description = (post.data.description || '').toLowerCase();
-            const tags = (post.data.tags || []).map((tag) => tag.toLowerCase());
+        const tagBadges = tags.slice(0, 3).map((tag) => {
+            const isActive = isTagSearch && tag === tagQuery;
+            const classes = ['tag-chip', 'tag-chip-inline', isActive ? 'tag-chip-active' : ''].filter(Boolean).join(' ');
+            return `<span class="${classes}">${tag.toUpperCase()}</span>`;
+        }).join('');
 
-            let relevanceScore = 0;
-            let hasMatch = false;
-
-            if (tags.some((tag) => tag.includes(query))) {
-                relevanceScore += 100;
-                hasMatch = true;
-            }
-
-            if (title.includes(query)) {
-                relevanceScore += 50;
-                hasMatch = true;
-            }
-
-            if (category.includes(query)) {
-                relevanceScore += 25;
-                hasMatch = true;
-            }
-
-            if (description.includes(query)) {
-                relevanceScore += 10;
-                hasMatch = true;
-            }
-
-            if (hasMatch) {
-                results.push({ ...post, relevanceScore });
-            }
-        });
-
-        return results.sort((a, b) => (b.relevanceScore ?? 0) - (a.relevanceScore ?? 0));
-    }
-
-    private renderResultItem(post: SearchPost & { relevanceScore?: number }, query: string, isTagSearch: boolean) {
-        const tags = post.data.tags || [];
-        const tagBadges = tags.slice(0, 3).map((tag) => highlightTag(tag, query, isTagSearch)).join('');
-
-        const relevanceScore = post.relevanceScore ?? 0;
-        const relevanceIndicator = relevanceScore >= 100 ? '🏷️'
-            : relevanceScore >= 50 ? '📝'
-            : relevanceScore >= 25 ? '📁'
-            : '💬';
-
-        const title = post.data.title || 'Untitled';
-        const category = post.data.category || '';
-        const description = post.data.description || '';
-        const href = category ? `/${category}/${post.slug}/` : `/${post.slug}/`;
-
+        // data.excerpt is Pagefind-generated HTML with <mark> highlights — safe, from our own content
         return `
             <a href="${href}" class="block p-4 hover:bg-gray-50 dark:hover:bg-gray-800 border-b border-gray-200/50 dark:border-gray-700/50 last:border-b-0 transition-colors group">
                 <div class="flex items-start justify-between">
                     <div class="flex-1">
                         <div class="flex items-center gap-2 mb-1">
-                            <span class="text-small">${relevanceIndicator}</span>
                             <h3 class="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">${title}</h3>
                         </div>
-                        <p class="text-small text-gray-600 dark:text-gray-400 mb-2 capitalize">${category}</p>
-                        ${description ? `<p class="text-small text-gray-500 dark:text-gray-500 mb-2 line-clamp-2">${description}</p>` : ''}
+                        ${category ? `<p class="text-small text-gray-600 dark:text-gray-400 mb-2 capitalize">${category}</p>` : ''}
+                        ${data.excerpt ? `<p class="text-small text-gray-500 dark:text-gray-500 mb-2 line-clamp-2 pagefind-excerpt">${data.excerpt}</p>` : ''}
                         ${tags.length > 0 ? `<div class="flex flex-wrap">${tagBadges}</div>` : ''}
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-blue-500 transition-colors flex-shrink-0 mt-1">

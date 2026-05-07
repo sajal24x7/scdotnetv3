@@ -130,7 +130,15 @@ const formattedAuthor = formatAuthors(author);
     paddingScale="page"
     className="post-layout__container"
 >
-    <article class="h-entry">
+    <!-- Pagefind metadata: outside data-pagefind-body so they don't pollute text index -->
+    <div aria-hidden="true" style="display:none">
+        <span data-pagefind-meta="category">{category}</span>
+        {tags.map((tag: string) => (
+            <span data-pagefind-filter="tag">{tag.toLowerCase()}</span>
+        ))}
+    </div>
+
+    <article class="h-entry" data-pagefind-body>
         <!-- Hidden microformat data -->
         <a href={canonicalUrl} class="u-url" style="display: none;"></a>
         {bridgyOmit && (
