@@ -1,9 +1,4 @@
 ---
-interface Props {
-    searchIndexUrl?: string;
-}
-
-const { searchIndexUrl = '/search-index.json' } = Astro.props as Props;
 const modalId = 'global-search';
 ---
 
@@ -13,21 +8,20 @@ const modalId = 'global-search';
   class="fixed inset-0 z-50 hidden items-center justify-center p-4"
   style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"
   data-modal-id={modalId}
-  data-search-index-url={searchIndexUrl}
   role="dialog"
   aria-modal="true"
   aria-hidden="true"
 >
   <!-- Background overlay -->
   <div class="absolute inset-0 bg-black/20 dark:bg-black/40" data-search-overlay="true"></div>
-  
+
   <!-- Modal content -->
   <div class="relative w-full max-w-2xl mx-auto bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
     <!-- Header -->
     <div class="flex items-center justify-between p-4 border-b border-gray-200/50 dark:border-gray-700/50">
       <h2 class="text-large font-semibold text-gray-900 dark:text-gray-100">Search Posts</h2>
-      <button 
-        id="close-search" 
+      <button
+        id="close-search"
         class="w-8 h-8 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center justify-center transition-colors"
         aria-label="Close search"
         data-search-close
@@ -38,14 +32,14 @@ const modalId = 'global-search';
         </svg>
       </button>
     </div>
-    
+
     <!-- Search Input -->
     <div class="p-4">
       <div class="relative">
-        <input 
-          type="text" 
+        <input
+          type="text"
           id="modal-search-input"
-          placeholder="Search posts, try 'tag:ai' for tag search..." 
+          placeholder="Search posts, try 'tag:ai' for tag search..."
           class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
           autocomplete="off"
           data-search-input
@@ -54,13 +48,13 @@ const modalId = 'global-search';
           <kbd class="px-2 py-1 text-small bg-gray-200 dark:bg-gray-700 rounded">⌘K</kbd>
         </div>
       </div>
-      
+
       <!-- Search Tips -->
       <div class="mt-2 text-small text-gray-600 dark:text-gray-400">
         <span class="inline-block mr-4">💡 Try: "AI", "productivity", or "tag:coding"</span>
       </div>
     </div>
-    
+
     <!-- Search Results -->
     <div id="modal-search-results" class="max-h-96 overflow-y-auto border-t border-gray-200/50 dark:border-gray-700/50" data-search-results>
       <!-- Default state -->
@@ -87,5 +81,17 @@ const modalId = 'global-search';
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  /* Pagefind highlight marks in excerpts */
+  :global(.pagefind-excerpt mark) {
+    background-color: rgb(254 240 138);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+
+  :global(.dark) :global(.pagefind-excerpt mark) {
+    background-color: rgb(161 98 7 / 0.5);
   }
 </style>

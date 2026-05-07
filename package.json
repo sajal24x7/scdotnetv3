@@ -10,8 +10,8 @@
   "scripts": {
     "dev": "npm run cache-nordletter-images && npm run generate-covers && astro dev",
     "start": "npm run cache-nordletter-images && npm run generate-covers && astro dev",
-    "build": "npm run cache-nordletter-images && npm run generate-covers && npm run fetch-webmentions && astro build",
-    "build:cloudflare": "npm run cache-nordletter-images && npm run generate-covers && npm run fetch-webmentions && astro build",
+    "build": "npm run cache-nordletter-images && npm run generate-covers && npm run fetch-webmentions && astro build && pagefind --site dist",
+    "build:cloudflare": "npm run cache-nordletter-images && npm run generate-covers && npm run fetch-webmentions && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "generate-covers": "node scripts/generate-book-covers.js",
@@ -44,7 +44,8 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "@types/sanitize-html": "^2.16.0",
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "pagefind": "^1.5.2"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.42.0"
