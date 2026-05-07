@@ -20,6 +20,22 @@ jobs:
           # Fetch the full history so we can push back to main
           fetch-depth: 0
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Transform Obsidian metadata to Astro format
+        run: |
+          set -euo pipefail
+          INBOX="src/content/inbox"
+          for file in "$INBOX"/*.md; do
+            [ -f "$file" ] || continue
+            filename=$(basename "$file")
+            [ "$filename" = "README.md" ] && continue
+            python3 scripts/obsidian_to_astro.py "$file"
+          done
+
       - name: Sort inbox notes
         id: sort
         env:
