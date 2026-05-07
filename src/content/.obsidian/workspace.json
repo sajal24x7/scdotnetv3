@@ -11,14 +11,13 @@
             "id": "26eff8e7ea3fa54d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "2024/202411301215 Neruda, Pablo, and W. S. Merwin - Twenty Love Poems and a Song of Despair.md",
-                "mode": "source",
-                "source": false
+                "file": "Untitled.base",
+                "viewName": "Table"
               },
-              "icon": "lucide-file",
-              "title": "202411301215 Neruda, Pablo, and W. S. Merwin - Twenty Love Poems and a Song of Despair"
+              "icon": "lucide-table",
+              "title": "Untitled"
             }
           }
         ]
@@ -174,32 +173,33 @@
   },
   "active": "26eff8e7ea3fa54d",
   "lastOpenFiles": [
-    "2020/202011141430 The End of Everything Astrophysically Speaking.md",
-    "2016/201609131556 Foundations Edge.md",
-    "2016/201609131556 Foundation and Earth.md",
-    "2016/201609131556 Forward the Foundation.md",
-    "2016/201609131555 Second Foundation.md",
-    "2016/201609131555 Foundation and Empire.md",
-    "2016/201609131555 Foundation.md",
-    "2016/201609131555 Childhoods End.md",
-    "2016/201601111020 The Sagan Diary.md",
-    "2016/201601111019 The End of All Things.md",
-    "2016/201601111016 Zoes Tale.md",
-    "2016/201601111016 The Last Colony.md",
-    "2016/201601111016 The Human Division.md",
-    "2016/201601111014 The Ghost Brigades.md",
-    "2016/201601111012 Old Mans War.md",
-    "2015/201510032040 2001 A Space Odyssey.md",
-    "2013/201312161450 Inferno.md",
-    "2013/201311271528 World War Z An Oral History of the Zombie War.md",
-    "2013/201311211621 The Zombie Survival Guide Complete Protection from the Living Dead.md",
-    "2013/201311211619 The Oath of the Vayuputras.md",
-    "2013/201310101516 The Secret of the Nagas.md",
-    "2013/201310101515 The Immortals of Meluha.md",
-    "2013/201310011338 Myth = Mithya A Handbook of Hindu Mythology.md",
-    "2013/201309280500 Mindset How You Can Fulfil Your Potential.md",
-    "2013/201308081301 Prelude to Foundation.md",
-    "2013/201305011705 Robots and Empire.md",
+    "2026/202602152230 NL92.md",
+    "2026/202602120921 You can tell Threads what you want to see in your feed.md",
+    "2026/202602112044 Europe takes a step toward post dollar world.md",
+    "2026/202602102149 LinkedIn is too damn much.md",
+    "2026/202602102017 Nothing and it’s vibe coded apps have problems.md",
+    "2026/202602091205 How iPhones made a surprising comeback in China.md",
+    "2026/202602090931 Stop generating start thinking.md",
+    "2026/202602081058 NL91 - The wedding edition.md",
+    "2026/202602072058 Anthropic didn’t want us to know that they were destroying millions of books to feed their software.md",
+    "2026/202602040032 Reasons to have kids.md",
+    "2026/202602040000 Claude Sonnet 5 coming soon.md",
+    "2026/202602030421 Die with zero.md",
+    "2026/202602030340 NPP updates got hijacked for a month.md",
+    "2026/202602011017 A Facebook for bots.md",
+    "2026/202602010846 SpaceX seeks approval for 1 million DCs in space.md",
+    "2026/202602010842 Beautiful pictures from icy Finland.md",
+    "2026/202601312353 Write a letter to your child.md",
+    "2026/202601311224 Mass market paperbacks are on the decline.md",
+    "2026/202601310950 NL90.md",
+    "2026/202601310132 Apple will deploy Pro and fold iPhones in September and standard iPhone later.md",
+    "2026/202601301406 Tesla will discontinue Model S and X.md",
+    "2026/202601301357 Microsoft is working to fix Windows 11.md",
+    "2026/202601291428 Zuck wants AI as the new feed.md",
+    "2026/202601281508 Bird by bird.md",
+    "2026/202601271820 Dune.md",
+    "2026/202601271142 Finland starts work on national segregation prevention programme.md",
+    "Untitled.base",
     "2020",
     "2026/202601032141 NL 86 - A new year.txt",
     "2026",
@@ -208,7 +208,6 @@
     "2025/202511231333 How to write commit messages.txt",
     "2025/202511191517 Continuous delivery.txt",
     "2025/202511192239 The joy of coding.txt",
-    "2025/202411301215 Neruda, Pablo, and W. S. Merwin - Twenty Love Poems and a Song of Despair.txt",
-    "2025/202511021128 NL78.txt"
+    "2025/202411301215 Neruda, Pablo, and W. S. Merwin - Twenty Love Poems and a Song of Despair.txt"
   ]
 }
