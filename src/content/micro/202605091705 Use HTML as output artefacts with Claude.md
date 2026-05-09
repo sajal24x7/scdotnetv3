@@ -1,13 +1,16 @@
 ---
-title: "Use HTML as output artefacts with Claude"
-slug: "use-html-as-output-artefacts-with-claude"
-pubDate: 2026-05-09T17:13:51+03:00
-updatedDate: 2026-05-09T17:13:51+03:00
+title: Use HTML as output artefacts with Claude
+slug: use-html-as-output-artefacts-with-claude
+pubDate: 2026-05-09T14:13:51.000Z
+updatedDate: 2026-05-09T14:13:51.000Z
 category: micro
 tags:
   - claude-code
   - html
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116545033250290059'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mlggl6sqpp2n'
+  - 'https://www.threads.com/@sajal24x7/post/DYHvIRQlLFt'
 ---
 [Thariq on X: "Using Claude Code: The Unreasonable Effectiveness of HTML" / X by ](https://x.com/trq212/status/2052809885763747935)
 
