@@ -1,13 +1,15 @@
 ---
-title: "Geography is four dimensional"
-slug: "geography-is-four-dimensional"
-pubDate: 2026-05-11T11:27:25+03:00
-updatedDate: 2026-05-11T11:27:25+03:00
+title: Geography is four dimensional
+slug: geography-is-four-dimensional
+pubDate: 2026-05-11T08:27:25.000Z
+updatedDate: 2026-05-11T08:27:25.000Z
 category: micro
 tags:
   - travel
   - time
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116554996331235101'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mlku5usnnz22'
 ---
 [Geography is four-dimensional | Derek Sivers by ](https://sive.rs/4d)
 
