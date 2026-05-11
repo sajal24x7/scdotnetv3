@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116554996331235101'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mlku5usnnz22'
+  - 'https://www.threads.com/@sajal24x7/post/DYNTT_SlHrT'
 ---
 [Geography is four-dimensional | Derek Sivers by ](https://sive.rs/4d)
 
