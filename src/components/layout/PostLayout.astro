@@ -6,6 +6,7 @@ import ShareButton from '../ShareButton.astro';
 import Backlinks from '../Backlinks.astro';
 import SyndicationLinks from '../SyndicationLinks.astro';
 import Webmentions from '../Webmentions.astro';
+import NewsletterSignup from '../ui/NewsletterSignup.astro';
 import { Image } from 'astro:assets';
 import { getBookCoverImage } from '../../utils/bookCovers';
 import {
@@ -279,25 +280,12 @@ const formattedAuthor = formatAuthors(author);
             <slot />
         </div>
 
-        <div class="nl-cta">
-            <p class="nl-cta__headline">Not subscribed to <em>NordLetter</em>?</p>
-            <p class="nl-cta__sub">A weekly letter about living in Finland and five interesting things I've found on the open web.</p>
-            <form
-                class="nl-cta__form"
-                action="https://buttondown.com/api/emails/embed-subscribe/sajal24x7"
-                method="post"
-                target="popupwindow"
-                onsubmit="window.open('https://buttondown.com/sajal24x7', 'popupwindow')"
-            >
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="enter your email address"
-                    required
-                    class="nl-cta__input"
-                />
-                <button type="submit" class="nl-cta__btn">Subscribe</button>
-            </form>
+        <div class="mt-12 border-t border-borderColor dark:border-borderColorDark">
+            <NewsletterSignup
+                title="Subscribe to NordLetter"
+                description="A weekly newsletter on living in Finland."
+                buttonText="Sign up"
+            />
         </div>
 
         <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
@@ -654,86 +642,4 @@ const formattedAuthor = formatAuthors(author);
         display: inline-flex;
     }
 
-    /* Newsletter CTA */
-    .nl-cta {
-        margin-top: 3rem;
-        padding: 2rem 1.5rem;
-        background: rgb(var(--color-bg-secondary));
-        border: 1px solid rgb(var(--color-border));
-        border-radius: 0.75rem;
-        text-align: center;
-    }
-
-    .nl-cta__headline {
-        font-family: var(--font-serif, serif);
-        font-size: 1.375rem;
-        font-weight: 700;
-        color: rgb(var(--color-text-primary));
-        margin: 0 0 0.5rem;
-    }
-
-    .nl-cta__sub {
-        font-size: 0.9rem;
-        color: rgb(var(--color-text-secondary));
-        margin: 0 0 1.25rem;
-    }
-
-    .nl-cta__form {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        max-width: 28rem;
-        margin: 0 auto;
-        align-items: stretch;
-    }
-
-    @media (min-width: 40rem) {
-        .nl-cta__form {
-            flex-direction: row;
-            align-items: center;
-        }
-    }
-
-    .nl-cta__input {
-        flex: 1;
-        padding: 0.5rem 1rem;
-        border: 1px solid rgb(var(--color-border));
-        border-radius: 0.5rem;
-        background: rgb(var(--color-bg));
-        color: rgb(var(--color-text-primary));
-        font-size: 0.95rem;
-        text-align: center;
-    }
-
-    .nl-cta__input::placeholder {
-        color: rgb(var(--color-text-secondary));
-    }
-
-    .nl-cta__input:focus {
-        outline: 2px solid rgb(var(--color-accent));
-        outline-offset: -1px;
-        border-color: transparent;
-    }
-
-    .nl-cta__btn {
-        padding: 0.5rem 1.5rem;
-        background: rgb(var(--color-accent));
-        color: white;
-        border: none;
-        border-radius: 0.5rem;
-        font-size: 0.95rem;
-        font-weight: 600;
-        cursor: pointer;
-        white-space: nowrap;
-        transition: opacity 0.15s ease;
-    }
-
-    .nl-cta__btn:hover {
-        opacity: 0.85;
-    }
-
-    .nl-cta__btn:focus-visible {
-        outline: 2px solid rgb(var(--color-accent));
-        outline-offset: 2px;
-    }
 </style>
