@@ -6,6 +6,7 @@ import ShareButton from '../ShareButton.astro';
 import Backlinks from '../Backlinks.astro';
 import SyndicationLinks from '../SyndicationLinks.astro';
 import Webmentions from '../Webmentions.astro';
+import NewsletterSignup from '../ui/NewsletterSignup.astro';
 import { Image } from 'astro:assets';
 import { getBookCoverImage } from '../../utils/bookCovers';
 import {
@@ -277,6 +278,16 @@ const formattedAuthor = formatAuthors(author);
 
         <div class="e-content">
             <slot />
+        </div>
+
+        <div class="mt-12 border-t border-borderColor dark:border-borderColorDark">
+            <NewsletterSignup
+                title="Subscribe to NordLetter"
+                description="A weekly newsletter on living in Finland."
+                buttonText="Sign up"
+                headingClass="text-xl font-bold mb-3"
+                centered={true}
+            />
         </div>
 
         <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
@@ -632,4 +643,5 @@ const formattedAuthor = formatAuthors(author);
         line-height: 1;
         display: inline-flex;
     }
+
 </style>

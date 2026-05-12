@@ -9,6 +9,8 @@ interface Props {
   showCopy?: boolean;
   wrapperClass?: string;
   formClass?: string;
+  headingClass?: string;
+  centered?: boolean;
 }
 
 const {
@@ -20,19 +22,23 @@ const {
   buttonText = "Subscribe",
   showCopy = true,
   wrapperClass = "",
-  formClass = ""
+  formClass = "",
+  headingClass = "text-large font-bold mb-4",
+  centered = false
 } = Astro.props;
 
 const outerClasses = ["py-8", wrapperClass].filter(Boolean).join(" ");
+const innerClasses = ["prose dark:prose-invert max-w-none", centered && "text-center"].filter(Boolean).join(" ");
 const formClasses = [
   "flex flex-col sm:flex-row gap-3 max-w-md items-center",
+  centered && "mx-auto",
   formClass
 ].filter(Boolean).join(" ");
 ---
 
 <div class={outerClasses}>
-  <div class="prose dark:prose-invert max-w-none">
-    {showCopy && title && <h2 class="text-large font-bold mb-4">{title}</h2>}
+  <div class={innerClasses}>
+    {showCopy && title && <h2 class={headingClass}>{title}</h2>}
     {showCopy && description && (
       <p class="text-normal mb-6">
         {description}
