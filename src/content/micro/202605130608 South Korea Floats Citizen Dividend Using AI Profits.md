@@ -1,13 +1,16 @@
 ---
-title: "South Korea Floats Citizen Dividend Using AI Profits"
-slug: "south-korea-floats-citizen-dividend-using-ai-profits"
-pubDate: 2026-05-13T06:10:14+03:00
-updatedDate: 2026-05-13T06:10:14+03:00
+title: South Korea Floats Citizen Dividend Using AI Profits
+slug: south-korea-floats-citizen-dividend-using-ai-profits
+pubDate: 2026-05-13T03:10:14.000Z
+updatedDate: 2026-05-13T03:10:14.000Z
 category: micro
 tags:
   - ai
   - south-korea
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116565073542290368'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mlpdehpsaz2u'
+  - 'https://www.threads.com/@sajal24x7/post/DYQ2YP_FJXl'
 ---
 [South Korea Floats 'Citizen Dividend' Using AI Profits - Slashdot](https://slashdot.org/story/26/05/12/2021240/south-korea-floats-citizen-dividend-using-ai-profits?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 
