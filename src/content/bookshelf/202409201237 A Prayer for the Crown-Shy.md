@@ -9,7 +9,8 @@ tags:
 format: hardcover
 author:
   - Becky Chambers
-series: 'Monk and Robot #2'
+series: 'Monk and Robot'
+seriesNumber: 2
 genre: sci-fi
 bookStatus: read
 startedReading: 2024-09-20T13:11:05.000Z

@@ -9,7 +9,8 @@ tags:
 format: audio
 author:
   - Adrian Tchaikovsky
-series: "The Final Architecture #2"
+series: "The Final Architecture"
+seriesNumber: 2
 genre: sci-fi
 bookStatus: read
 startedReading: 2026-01-05T16:34:11.000Z

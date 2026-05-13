@@ -9,7 +9,8 @@ tags:
 format: hardcover
 author:
   - Becky Chambers
-series: 'Monk and Robot #1'
+series: 'Monk and Robot'
+seriesNumber: 1
 genre: sci-fi
 bookStatus: read
 startedReading: 2024-09-16T13:06:55.000Z

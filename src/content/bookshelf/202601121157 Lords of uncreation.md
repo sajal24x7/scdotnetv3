@@ -9,7 +9,8 @@ tags:
 format: audiobook
 author:
   - Adrian Tchaikovsky
-series: 'The Final Architecture #3'
+series: 'The Final Architecture'
+seriesNumber: 3
 genre: sci-fi
 bookStatus: read
 startedReading: 2026-01-12T10:10:42.000Z

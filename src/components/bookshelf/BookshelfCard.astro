@@ -16,6 +16,7 @@ interface BookshelfCardProps {
     title: string;
     author?: string | string[];
     series?: string;
+    seriesNumber?: number;
     format?: string;
     genre?: string;
     bookStatus?: BookStatus;
@@ -81,6 +82,7 @@ const {
     title,
     author,
     series,
+    seriesNumber,
     format,
     genre,
     bookStatus,
@@ -165,6 +167,11 @@ const safeProgress = (() => {
 const coverImage = bookCover ? getBookCoverImage(bookCover) : null;
 const formattedAuthor = formatAuthors(author);
 
+const seriesInfo = (() => {
+    if (!series || series === 'none' || series === '') return null;
+    return { name: series, number: seriesNumber ?? null };
+})();
+
 const timelineLabel = (() => {
     if (startedLabel && finishedLabel) {
         return `Read ${startedLabel} - ${finishedLabel}`;
@@ -208,8 +215,15 @@ const timelineLabel = (() => {
       <header class="book-card__header">
         <div class="book-card__title-row">
           <div class="book-card__title-block">
-            {series && series !== 'none' && (
-              <div class="book-card__series">{series}</div>
+            {seriesInfo && (
+              <button
+                type="button"
+                class="book-card__series book-card__series--clickable"
+                data-filter-type="series"
+                data-filter-value={seriesInfo.name}
+              >
+                {seriesInfo.name}{seriesInfo.number !== null ? ` #${seriesInfo.number}` : ''}
+              </button>
             )}
             <h3 class="book-card__title">
               {link ? (
@@ -505,10 +519,32 @@ const timelineLabel = (() => {
     font-size: 0.875rem;
     font-weight: 500;
     color: #6b7280;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    cursor: default;
+    line-height: inherit;
+  }
+
+  .book-card__series--clickable {
+    cursor: pointer;
+    transition: color 120ms ease;
+  }
+
+  .book-card__series--clickable:hover {
+    color: #374151;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   :global(.dark) .book-card__series {
     color: #9ca3af;
+  }
+
+  :global(.dark) .book-card__series--clickable:hover {
+    color: #d1d5db;
   }
 
   .book-card__meta {
