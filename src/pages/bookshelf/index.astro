@@ -239,6 +239,12 @@ const sectionLandingProps = createSectionLandingProps({
                 const bookFormat = book.data.format ?? '';
                 const bookRating = book.data.bookRating ?? '';
                 const bookTags = Array.isArray(book.data.tags) ? book.data.tags.join(',') : '';
+                const rawSeries = book.data.series ?? '';
+                const bookSeries = (() => {
+                    if (!rawSeries || rawSeries === 'none') return '';
+                    const m = rawSeries.match(/^(.+?)\s*#\d+(?:\.\d+)?$/);
+                    return m ? m[1].trim() : rawSeries;
+                })();
 
                 return (
                   <div
@@ -251,6 +257,7 @@ const sectionLandingProps = createSectionLandingProps({
                     data-format={bookFormat}
                     data-rating={bookRating}
                     data-tags={bookTags}
+                    data-series={bookSeries}
                   >
                     <BookshelfCard {...transformBook(book)} />
                   </div>
@@ -472,6 +479,17 @@ const sectionLandingProps = createSectionLandingProps({
     color: #bfdbfe;
   }
 
+  /* Series badges */
+  :global(.filter-badge--series) {
+    background: #ede9fe;
+    color: #5b21b6;
+  }
+
+  :global(.dark) :global(.filter-badge--series) {
+    background: rgba(91, 33, 182, 0.3);
+    color: #ede9fe;
+  }
+
   /* Clear all button */
   :global(.filter-badge--clear-all) {
     background: #ef4444;
@@ -581,6 +599,7 @@ const sectionLandingProps = createSectionLandingProps({
     let selectedFormat = '';
     let selectedRating = '';
     let selectedTag = '';
+    let selectedSeries = '';
 
     // Map for display labels
     const statusDisplayMap: Record<string, string> = {
@@ -609,7 +628,7 @@ const sectionLandingProps = createSectionLandingProps({
     function updateFilterDisplay() {
       if (!activeFiltersContainer) return;
 
-      const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating || selectedTag;
+      const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating || selectedTag || selectedSeries;
 
       if (!hasFilters) {
         if (resultsDisplay) {
@@ -680,6 +699,14 @@ const sectionLandingProps = createSectionLandingProps({
         `);
       }
 
+      if (selectedSeries) {
+        badges.push(`
+          <button type="button" class="filter-badge filter-badge--series" data-remove-filter="series">
+            ${selectedSeries} <span class="filter-badge__remove" aria-label="Remove series filter">×</span>
+          </button>
+        `);
+      }
+
       // Add clear all button if multiple filters
       if (badges.length > 1) {
         badges.push(`
@@ -706,6 +733,7 @@ const sectionLandingProps = createSectionLandingProps({
         const bookFormat = bookItem.getAttribute('data-format') || '';
         const bookRating = bookItem.getAttribute('data-rating') || '';
         const bookTags = bookItem.getAttribute('data-tags') || '';
+        const bookSeries = bookItem.getAttribute('data-series') || '';
 
         const authorMatch = !selectedAuthor || bookAuthors.split(',').includes(selectedAuthor);
         const genreMatch = !selectedGenre || bookGenre === selectedGenre;
@@ -713,8 +741,9 @@ const sectionLandingProps = createSectionLandingProps({
         const formatMatch = !selectedFormat || bookFormat.toLowerCase() === selectedFormat.toLowerCase();
         const ratingMatch = !selectedRating || bookRating === selectedRating;
         const tagMatch = !selectedTag || bookTags.split(',').includes(selectedTag);
+        const seriesMatch = !selectedSeries || bookSeries === selectedSeries;
 
-        const isVisible = authorMatch && genreMatch && statusMatch && formatMatch && ratingMatch && tagMatch;
+        const isVisible = authorMatch && genreMatch && statusMatch && formatMatch && ratingMatch && tagMatch && seriesMatch;
 
         if (isVisible) {
           bookItem.removeAttribute('data-filtered');
@@ -737,7 +766,7 @@ const sectionLandingProps = createSectionLandingProps({
         const year = section.getAttribute('data-year') || '';
 
         // If filters are active, use filtered count, otherwise count only finished books
-        const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating;
+        const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating || selectedSeries;
         let count = 0;
 
         if (hasFilters) {
@@ -768,7 +797,7 @@ const sectionLandingProps = createSectionLandingProps({
       });
 
       // Update results count only if filters are active
-      const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating;
+      const hasFilters = selectedAuthor || selectedGenre || selectedStatus || selectedFormat || selectedRating || selectedSeries;
       if (filterSummary && hasFilters) {
         const bookLabel = visibleCount === 1 ? 'book' : 'books';
         filterSummary.textContent = `Showing ${visibleCount} ${bookLabel}`;
@@ -785,6 +814,7 @@ const sectionLandingProps = createSectionLandingProps({
       selectedFormat = '';
       selectedRating = '';
       selectedTag = '';
+      selectedSeries = '';
 
       // Clear tag-list active state
       const tagList = document.querySelector('tag-list');
@@ -869,6 +899,9 @@ const sectionLandingProps = createSectionLandingProps({
             tagList.clearActiveTag();
           }
           applyFilters();
+        } else if (filterToRemove === 'series') {
+          selectedSeries = '';
+          applyFilters();
         }
         return;
       }
@@ -910,6 +943,12 @@ const sectionLandingProps = createSectionLandingProps({
             selectedRating = '';
           } else {
             selectedRating = filterValue;
+          }
+        } else if (filterType === 'series') {
+          if (selectedSeries === filterValue) {
+            selectedSeries = '';
+          } else {
+            selectedSeries = filterValue;
           }
         }
 
