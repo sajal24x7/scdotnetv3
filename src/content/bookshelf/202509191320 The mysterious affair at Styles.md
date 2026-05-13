@@ -9,7 +9,8 @@ tags:
 format: audio
 genre: mystery
 author: "Agatha Christie"
-series: "Hercule Poirot #1"
+series: "Hercule Poirot"
+seriesNumber: 1
 bookStatus: "read"
 bookRating: like
 startedReading: 2025-09-19T16:11:06+03:00

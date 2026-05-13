@@ -240,11 +240,7 @@ const sectionLandingProps = createSectionLandingProps({
                 const bookRating = book.data.bookRating ?? '';
                 const bookTags = Array.isArray(book.data.tags) ? book.data.tags.join(',') : '';
                 const rawSeries = book.data.series ?? '';
-                const bookSeries = (() => {
-                    if (!rawSeries || rawSeries === 'none') return '';
-                    const m = rawSeries.match(/^(.+?)\s*#\d+(?:\.\d+)?$/);
-                    return m ? m[1].trim() : rawSeries;
-                })();
+                const bookSeries = (!rawSeries || rawSeries === 'none') ? '' : rawSeries;
 
                 return (
                   <div

@@ -9,7 +9,8 @@ tags:
 format: audio
 genre: sci-fi
 author: Adrian Tchaikovsky
-series: "Children of Time #3"
+series: "Children of Time"
+seriesNumber: 3
 bookStatus: read
 startedReading: 2025-11-30T16:47:15.000Z
 finishedReading: 2025-12-08T23:08:50+02:00

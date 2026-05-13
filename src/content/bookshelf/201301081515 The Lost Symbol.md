@@ -8,7 +8,8 @@ tags:
   - book-reviews
 author:
   - Dan Brown
-series: "Robert Langdon #3"
+series: "Robert Langdon"
+seriesNumber: 3
 genre: thriller
 format: paperback
 bookStatus: read

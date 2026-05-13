@@ -8,7 +8,8 @@ tags:
   - book-reviews
 genre: sci-fi
 author: Becky Chambers
-series: "Wayfarers #2"
+series: "Wayfarers"
+seriesNumber: 2
 startedReading: 2024-12-08T00:00:00
 finishedReading: 2024-12-10T22:01:50
 bookStatus: read

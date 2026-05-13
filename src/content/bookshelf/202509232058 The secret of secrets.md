@@ -9,7 +9,8 @@ tags:
 format: audio
 genre: thriller
 author: "Dan Brown"
-series: "Robert Langdon #6"
+series: "Robert Langdon"
+seriesNumber: 6
 bookStatus: "read"
 bookRating: like
 startedReading: 2025-09-23T17:00:18+03:00

@@ -16,6 +16,7 @@ interface BookshelfCardProps {
     title: string;
     author?: string | string[];
     series?: string;
+    seriesNumber?: number;
     format?: string;
     genre?: string;
     bookStatus?: BookStatus;
@@ -81,6 +82,7 @@ const {
     title,
     author,
     series,
+    seriesNumber,
     format,
     genre,
     bookStatus,
@@ -167,9 +169,7 @@ const formattedAuthor = formatAuthors(author);
 
 const seriesInfo = (() => {
     if (!series || series === 'none' || series === '') return null;
-    const match = series.match(/^(.+?)\s*#(\d+(?:\.\d+)?)$/);
-    if (match) return { name: match[1].trim(), number: match[2] };
-    return { name: series, number: null };
+    return { name: series, number: seriesNumber ?? null };
 })();
 
 const timelineLabel = (() => {
