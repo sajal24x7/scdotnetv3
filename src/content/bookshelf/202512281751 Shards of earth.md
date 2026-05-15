@@ -9,7 +9,8 @@ tags:
 format: audio
 genre: sci-fi
 author: Adrian Tchaikovsky
-series: "The Final Architecture #1"
+series: "The Final Architecture"
+seriesNumber: 1
 bookStatus: read
 startedReading: 2025-12-28T16:46:16.000Z
 bookRating: love

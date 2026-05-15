@@ -9,7 +9,8 @@ tags:
 format: hardcover
 author:
   - Becky Chambers
-series: 'Wayfarers #1'
+series: 'Wayfarers'
+seriesNumber: 1
 genre: sci-fi
 bookStatus: read
 startedReading: 2024-10-18T13:20:57.000Z

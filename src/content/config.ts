@@ -33,6 +33,7 @@ const postsCollection = defineCollection({
     // Book-specific metadata
     author: z.union([z.string(), z.array(z.string())]).optional(),
     series: z.string().optional().default('none'),
+    seriesNumber: z.number().optional(),
     startedReading: dateSchema.optional(),
     finishedReading: dateSchema.optional(),
     bookStatus: z.enum(['reading', 'read', 'finished', 'on-hold', 'to-read']).optional(),

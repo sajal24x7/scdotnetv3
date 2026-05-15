@@ -9,7 +9,8 @@ tags:
 format: audio
 genre: sci-fi
 author: "Adrian Tchaikovsky"
-series: "Children of Time #2"
+series: "Children of Time"
+seriesNumber: 2
 bookStatus: "read"
 bookRating: "like"
 startedReading: 2025-10-09T09:39:40+03:00
