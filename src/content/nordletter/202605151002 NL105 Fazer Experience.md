@@ -1,17 +1,20 @@
 ---
-title: "The Fazer Experience"
-slug: "nl105-fazer-experience"
+title: The Fazer Experience
+slug: nl105-fazer-experience
 edition: 105
-image: https://storage.sajalchoudhary.net/images/2026/05/nl105-05.jpeg
-pubDate: 2026-05-17T00:16:18+03:00
-updatedDate: 2026-05-17T00:16:18+03:00
+image: 'https://storage.sajalchoudhary.net/images/2026/05/nl105-05.jpeg'
+pubDate: 2026-05-16T21:16:18.000Z
+updatedDate: 2026-05-16T21:16:18.000Z
 category: nordletter
 tags:
   - fazer
   - chocolates
   - finland
   - helsinki
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116586333257926809'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mlyriaycdg2s'
+  - 'https://www.threads.com/@sajal24x7/post/DYahHifmIBF'
 ---
 Hello from my home in Helsinki! This is NordLetter #105, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
