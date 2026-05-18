@@ -67,7 +67,7 @@ The tour started then, with our wonderful guide getting us past the stanchion, p
 ![At the exhibition hall](https://storage.sajalchoudhary.net/images/2026/05/nl105-07.jpeg)
 
 
-After this we moved to the greenhouse (fondly called a Swedish sauna). This is where we saw a bunch of coffee trees, some spice trees, banana trees and so on. While the guide talked about where Fazer gets the chocolate from.
+After this we moved to the greenhouse (fondly called a Swedish sauna). This is where we saw a bunch of cocoa trees, some spice trees, banana trees and so on. While the guide talked about where Fazer gets the chocolate from.
 
 ![At the greenhouse](https://storage.sajalchoudhary.net/images/2026/05/nl105-08.jpeg)
 
