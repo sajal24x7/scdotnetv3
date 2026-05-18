@@ -1,15 +1,18 @@
 ---
-title: "The problem with Current"
-slug: "the-problem-with-current"
-pubDate: 2026-05-18T11:04:30+03:00
-updatedDate: 2026-05-18T11:04:30+03:00
+title: The problem with Current
+slug: the-problem-with-current
+pubDate: 2026-05-18T08:04:30.000Z
+updatedDate: 2026-05-18T08:04:30.000Z
 category: blog
 tags:
   - reading
   - current
   - net-news-wire
   - web
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116594543338255391'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mm4g5rte2m2u'
+  - 'https://www.threads.com/@sajal24x7/post/DYeQEB-lCCY'
 ---
 Or why it does not work for my reading habits.
 
