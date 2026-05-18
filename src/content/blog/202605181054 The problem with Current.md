@@ -1,5 +1,5 @@
 ---
-title: The problem with Current
+title: The Problem with Current
 slug: the-problem-with-current
 pubDate: 2026-05-18T08:04:30.000Z
 updatedDate: 2026-05-18T08:04:30.000Z

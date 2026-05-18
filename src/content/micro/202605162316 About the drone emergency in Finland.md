@@ -1,5 +1,5 @@
 ---
-title: "About the drone emergency in Finland"
+title: "About the Drone Emergency in Finland"
 slug: "about-the-drone-emergency-in-finland"
 pubDate: 2026-05-18T09:26:11+03:00
 updatedDate: 2026-05-18T09:26:11+03:00
