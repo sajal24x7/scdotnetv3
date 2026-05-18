@@ -1,13 +1,16 @@
 ---
-title: "About the Drone Emergency in Finland"
-slug: "about-the-drone-emergency-in-finland"
-pubDate: 2026-05-18T09:26:11+03:00
-updatedDate: 2026-05-18T09:26:11+03:00
+title: About the drone emergency in Finland
+slug: about-the-drone-emergency-in-finland
+pubDate: 2026-05-18T06:26:11.000Z
+updatedDate: 2026-05-18T06:26:11.000Z
 category: micro
 tags:
   - finland
   - emergency
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116595470627553647'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mm4tdh4jhl2w'
+  - 'https://www.threads.com/@sajal24x7/post/DYerDKsFj7G'
 ---
 [Finland did not overreact to Friday's suspected drone incursion, minister says](https://yle.fi/a/74-20226281?origin=rss)
 
