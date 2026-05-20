@@ -1,14 +1,17 @@
 ---
-title: "Gemini will use Volvo’s external cameras to interpret parking signs"
-slug: "gemini-will-use-volvos-external-cameras-to-interpret-parking-signs"
-pubDate: 2026-05-20T07:34:04+03:00
-updatedDate: 2026-05-20T07:34:04+03:00
+title: Gemini will use Volvo’s external cameras to interpret parking signs
+slug: gemini-will-use-volvos-external-cameras-to-interpret-parking-signs
+pubDate: 2026-05-20T04:34:04.000Z
+updatedDate: 2026-05-20T04:34:04.000Z
 category: micro
 tags:
   - google
   - gemini
   - cars
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116605040947962233'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mmb3djyenv2e'
+  - 'https://www.threads.com/@sajal24x7/post/DYjBlVXFpCD'
 ---
 [Gemini will use Volvo’s external cameras to interpret parking signs by Andrew J. Hawkins](https://www.theverge.com/transportation/933556/google-io-gemini-volvo-ex60-camera-ai-parking)
 
