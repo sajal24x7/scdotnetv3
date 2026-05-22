@@ -47,7 +47,8 @@ import PageHeader from '../components/layout/PageHeader.astro';
   </div>
 
   <script>
-    import '../components/islands/search-page-island.ts';
+    import initializeSearchPage from '../components/islands/search-page-loader.ts';
+    initializeSearchPage();
   </script>
 </Layout>
 
