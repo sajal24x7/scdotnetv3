@@ -1,6 +1,6 @@
 # Deployment and Build Pipeline
 
-This site deploys to Cloudflare Pages and uses npm scripts to orchestrate pre-build tasks such as cover generation and webmention syncing.
+This site deploys to Cloudflare Pages and uses npm scripts to orchestrate pre-build tasks such as cover generation.
 
 ## Environment Requirements
 
@@ -12,22 +12,21 @@ This site deploys to Cloudflare Pages and uses npm scripts to orchestrate pre-bu
 | Command | Description |
 | --- | --- |
 | `npm run dev` | Generates bookshelf covers and starts the Astro dev server with live reload.【F:package.json†L11-L18】 |
-| `npm run build` | Generates covers, fetches webmentions, runs `astro build`, and then triggers the POSSE syndication shell script. The syndication step is allowed to fail without failing the build (`|| true`).【F:package.json†L11-L16】 |
+| `npm run build` | Generates covers, runs `astro build`, and then triggers the POSSE syndication shell script. The syndication step is allowed to fail without failing the build (`|| true`).【F:package.json†L11-L16】 |
 | `npm run build:cloudflare` | Same as `npm run build` but skips the syndication shell script; this is the command executed in Cloudflare Pages.【F:package.json†L11-L16】【F:cloudflare-pages.json†L1-L8】 |
 | `npm run preview` | Serves the contents of the `dist/` directory for validation.【F:package.json†L11-L21】 |
 
 ## Build Sequence
 
 1. **Cover generation** – `scripts/generate-book-covers.js` creates or updates cover art assets referenced by bookshelf entries before the Astro compiler runs. The command is idempotent and safe to run repeatedly.
-2. **Webmention sync** – `scripts/fetch-webmentions.js` pulls the latest social interactions into `src/data/webmentions.json`. This step ensures deployments include current reactions even if the upstream API has changed since the last commit.【F:scripts/fetch-webmentions.js†L1-L48】
-3. **Astro build** – Generates static HTML, JSON endpoints, and asset bundles under `dist/`.
-4. **Optional syndication** – The default `npm run build` calls `./scripts/trigger-syndication.sh`. Cloudflare skips this step because it uses `npm run build:cloudflare`.
+2. **Astro build** – Generates static HTML, JSON endpoints, and asset bundles under `dist/`.
+3. **Optional syndication** – The default `npm run build` calls `./scripts/trigger-syndication.sh`. Cloudflare skips this step because it uses `npm run build:cloudflare`.
 
 ## Cloudflare Pages Configuration
 
 - Build command: `npm run build:cloudflare`
 - Output directory: `dist`
-- Environment variables: set in the Pages dashboard for secrets (e.g., Webmention tokens, syndication credentials). None are hard-coded in the repo.
+- Environment variables: set in the Pages dashboard for secrets (e.g., syndication credentials). None are hard-coded in the repo.
 
 If you add new build-time scripts, update both `package.json` and `cloudflare-pages.json` so local and hosted builds remain consistent.
 
@@ -35,10 +34,9 @@ If you add new build-time scripts, update both `package.json` and `cloudflare-pa
 
 - Run `npm install` after pulling changes to ensure dependencies align with the lockfile.
 - Execute `npm run build` locally before pushing major changes to catch integration regressions.
-- Commit regenerated artifacts (`src/data/webmentions.json`, `src/data/backlinks-index.json`, generated covers) when they change; the build relies on these caches to stay warm.
+- Commit regenerated artifacts (`src/data/backlinks-index.json`, generated covers) when they change; the build relies on these caches to stay warm.
 
 ## Related Documentation
 
-- [Webmentions Workflow](webmentions.md)
 - [Syndication Workflow](syndication.md)
 - [Content Lifecycle](../architecture/content-lifecycle.md)

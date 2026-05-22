@@ -5,7 +5,6 @@ import Tag from '../Tag.astro';
 import ShareButton from '../ShareButton.astro';
 import Backlinks from '../Backlinks.astro';
 import SyndicationLinks from '../SyndicationLinks.astro';
-import Webmentions from '../Webmentions.astro';
 import NewsletterSignup from '../ui/NewsletterSignup.astro';
 import { Image } from 'astro:assets';
 import { getBookCoverImage } from '../../utils/bookCovers';
@@ -337,8 +336,6 @@ const formattedAuthor = formatAuthors(author);
         </div>
 
         <Backlinks backlinks={backlinks} />
-
-        <Webmentions url={canonicalUrl} />
     </article>
 </LayoutContainer>
 

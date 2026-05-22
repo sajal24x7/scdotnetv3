@@ -14,10 +14,9 @@ Consult the [Architecture Overview](../architecture/overview.md) for a full tour
 
 ```bash
 npm run dev            # Generate book covers, start Astro dev server
-npm run build          # Generate covers, fetch webmentions, run astro build, attempt syndication
+npm run build          # Generate covers, run astro build, attempt syndication
 npm run build:cloudflare  # Build without firing the syndication shell script
 npm run preview        # Serve the latest production build
-npm run fetch-webmentions  # Refresh webmentions cache
 ```
 
 Node 20+ and npm 10+ are required for parity with the production environment.【F:package.json†L1-L23】
@@ -28,7 +27,7 @@ Node 20+ and npm 10+ are required for parity with the production environment.【
 - Preserve the twelve-column grid utilities defined in `src/styles/global.css` when adjusting layouts; see [Design System](../design/system.md).
 - Fetch content once in route files and pass subsets to components instead of re-querying. Utilities are memoized to avoid redundant file system reads.【F:src/utils/content.ts†L38-L92】
 - Respect the metadata chip language documented under [Design System](../design/system.md#metadata-chips) when adding new UI surfaces.
-- Backlinks, search, syndication, and webmention workflows are covered in dedicated documents under `docs/components` and `docs/operations`.
+- Backlinks, search, and syndication workflows are covered in dedicated documents under `docs/components` and `docs/operations`.
 
 ## Tooling Etiquette
 

@@ -20,7 +20,6 @@ This guide documents how Markdown files flow from `src/content` into Astro pages
 | Artifact | Produced By | Used For |
 | --- | --- | --- |
 | `src/data/backlinks-index.json` | `findBacklinksComprehensive()` regenerates this cache when `REGENERATE_BACKLINKS=true` or when the file is missing. | Supplies backlinks to `PostLayout.astro`.【F:src/utils/backlinks.ts†L33-L189】 |
-| `src/data/webmentions.json` | `npm run fetch-webmentions` hits the Webmention.io API and persists the response. | Powers the `Webmentions` component on post pages.【F:scripts/fetch-webmentions.js†L1-L48】 |
 | `dist/search-index.json` (at build) | `src/pages/search-index.json.ts` emits a static index over every post. | Read by the search modal island for client-side queries.【F:src/pages/search-index.json.ts†L1-L31】 |
 | Generated book covers | `npm run generate-covers` runs `scripts/generate-book-covers.js` to create local assets. | Used by bookshelf layouts to display consistent cover art. |
 

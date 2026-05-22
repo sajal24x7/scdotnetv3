@@ -38,9 +38,8 @@ Nordletter issues (`src/content/nordletter`) and notes use their own schemas but
 - Use root-relative links (`/garden/example-post/`) when referencing other posts. The backlink index normalizes full URLs and bare domains, but root-relative paths are the most reliable.【F:src/utils/backlinks.ts†L145-L261】
 - Backlink sections render automatically at the bottom of posts when other entries link to them. No additional markup is necessary.【F:src/components/Backlinks.astro†L5-L73】
 
-## Webmentions and Syndication
+## Syndication
 
-- Likes, reposts, and replies from Webmention-enabled services appear automatically once `npm run fetch-webmentions` pulls the latest data.【F:src/components/Webmentions.astro†L1-L68】
 - If you cross-post manually, append the resulting URLs to the `syndicationUrls` array so `SyndicationLinks.astro` can expose them in post headers.【F:src/content/config.ts†L31-L55】
 
 ## Content Tips

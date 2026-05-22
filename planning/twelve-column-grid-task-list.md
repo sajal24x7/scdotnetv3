@@ -98,7 +98,7 @@
 - [x] Update `planning` docs or developer notes with guidance on using the twelve-column grid.
   - Expanded the UI/UX guidelines to document `.twelve-grid` usage, span/start helpers, and recommended column splits for mains versus sidebars.
 - [x] Run `npm run build` to confirm no build-time regressions.
-  - Build succeeded (`npm run build`) with expected external-service warnings: webmention fetch failed offline and syndication skipped due to missing `GITHUB_PAT` secret.
+  - Build succeeded (`npm run build`) with expected external-service warnings: syndication skipped due to missing `GITHUB_PAT` secret.
 - [x] Capture before/after screenshots for key pages (home, garden, stream) to document layout changes.
   - Saved current-state "after" captures via Playwright automation; local `.png` exports have since been cleared from `planning/` per asset cleanup request.
 
