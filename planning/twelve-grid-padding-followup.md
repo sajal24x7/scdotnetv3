@@ -95,4 +95,4 @@ Component list (2)
 ### Individual posts (/category/slug/)
 Component list (2)
 - **Layout** – Wraps each article with the global chrome and twelve-column shell.【F:src/pages/[...slug].astro†L39-L110】
-- **LayoutContainer** – Applies the prose width clamp and optional padding around the article body, backlinks, and webmentions.【F:src/components/layout/LayoutContainer.astro†L1-L76】
+- **LayoutContainer** – Applies the prose width clamp and optional padding around the article body and backlinks.【F:src/components/layout/LayoutContainer.astro†L1-L76】

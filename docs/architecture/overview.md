@@ -30,7 +30,7 @@ Pages enable specific islands by passing flags to `Layout.astro`, ensuring minim
 
 - **Content collections** – `src/content/config.ts` defines schemas for posts, nordletters, and notes. Year-based directories are discovered dynamically and registered as individual collections so `getCollection(year)` works automatically.【F:src/content/config.ts†L1-L55】【F:src/content/config.ts†L57-L90】
 - **Utilities** – `getAllPosts()` memoizes filesystem reads and powers search, feeds, and backlinks. `getPostsByCategory()` applies consistent filtering across landing pages. Additional helpers cover Nordletter edition parsing and bookshelf metadata normalization.【F:src/utils/content.ts†L38-L165】
-- **Generated data** – Build scripts store artifacts in `src/data/`, including `backlinks-index.json`, `webmentions.json`, and generated cover metadata. Components treat these as local caches.
+- **Generated data** – Build scripts store artifacts in `src/data/`, including `backlinks-index.json` and generated cover metadata. Components treat these as local caches.
 
 ## Styling System
 

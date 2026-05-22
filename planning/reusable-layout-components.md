@@ -33,8 +33,7 @@ refresh documents the current architecture so new surfaces stay aligned with the
 - Relies on `LayoutContainer` internally so additional progress-style pages can drop in without copying grid math.
 
 ### PostLayout (`src/components/layout/PostLayout.astro`)
-- Wraps article surfaces (`[...slug].astro`) with hero metadata, tag listings, share links, backlinks, syndication, and
-  webmentions.
+- Wraps article surfaces (`[...slug].astro`) with hero metadata, tag listings, share links, backlinks, and syndication.
 - Uses `LayoutContainer` in prose mode so long-form content inherits typography defaults automatically.
 
 ## Usage Guidelines

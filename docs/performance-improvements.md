@@ -131,7 +131,7 @@ slow, the cause is already baked in.
 **How to fix:** Wrap the build command in `package.json` to emit timing:
 
 ```json
-"build": "node -e \"console.log('Build started:', new Date().toISOString())\" && npm run cache-nordletter-images && npm run generate-covers && npm run fetch-webmentions && astro build && node -e \"console.log('Build finished:', new Date().toISOString())\""
+"build": "node -e \"console.log('Build started:', new Date().toISOString())\" && npm run cache-nordletter-images && npm run generate-covers && astro build && node -e \"console.log('Build finished:', new Date().toISOString())\""
 ```
 
 Or add a dedicated script:
@@ -152,19 +152,19 @@ before the problem is noticeable in local dev.
 
 **Problem:** `package.json` runs pre-build steps sequentially:
 ```
-cache-nordletter-images → generate-covers → fetch-webmentions → astro build
+cache-nordletter-images → generate-covers → astro build
 ```
 
-The first three are independent and could run in parallel.
+The first two are independent and could run in parallel.
 
 **How to fix:**
 ```json
-"prebuild": "npm run cache-nordletter-images & npm run generate-covers & npm run fetch-webmentions & wait"
+"prebuild": "npm run cache-nordletter-images & npm run generate-covers & wait"
 ```
 
 Or use `npm-run-all` (already a common dev dependency) with `--parallel`:
 ```json
-"prebuild": "npm-run-all --parallel cache-nordletter-images generate-covers fetch-webmentions"
+"prebuild": "npm-run-all --parallel cache-nordletter-images generate-covers"
 ```
 
 ---

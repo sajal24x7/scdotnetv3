@@ -17,7 +17,7 @@ The cached JSON artifact is safe to commit and allows incremental builds to reso
 
 - Each backlink is normalized before rendering—empty descriptions collapse to nothing, missing categories fall back to `blog`, and internal slugs are rewritten to canonical `/category/slug/` paths so the cards behave consistently across evergreen, garden, and Nordletter entries.【F:src/components/Backlinks.astro†L15-L41】
 - Category chips pass through `CategoryDisplay`, which converts the raw key into the human-friendly label defined in the tagging utilities (for example, `evergreen` → `Evergreen`, `nordletter` → `Nordletter`).【F:src/components/CategoryDisplay.astro†L1-L22】【F:src/utils/tagPages.ts†L179-L200】【F:src/styles/global.css†L500-L537】
-- The section retains the top border divider so the backlink grid separates from the post metadata and webmentions list while responding to the card hover affordances from the shared styles.【F:src/components/Backlinks.astro†L43-L97】
+- The section retains the top border divider so the backlink grid separates from the post metadata while responding to the card hover affordances from the shared styles.【F:src/components/Backlinks.astro†L43-L97】
 
 The component only renders when the backlink array is non-empty to avoid empty headings.
 
