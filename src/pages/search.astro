@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
-import searchPageIslandScript from '../components/islands/search-page-island.ts?url';
 ---
 
 <Layout
@@ -46,9 +45,11 @@ import searchPageIslandScript from '../components/islands/search-page-island.ts?
 
     <div id="search-results" class="mt-4 divide-y divide-gray-200 dark:divide-gray-700"></div>
   </div>
-</Layout>
 
-<script type="module" src={searchPageIslandScript}></script>
+  <script>
+    import '../components/islands/search-page-island.ts';
+  </script>
+</Layout>
 
 <style>
   .line-clamp-2 {

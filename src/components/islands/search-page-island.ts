@@ -25,7 +25,7 @@ const status = document.getElementById('search-status') as HTMLDivElement | null
 const resultsEl = document.getElementById('search-results') as HTMLDivElement | null;
 
 if (!form || !input || !status || !resultsEl) {
-    throw new Error('Search page elements not found');
+    throw new Error('search-page-island: required DOM elements missing');
 }
 
 let pagefind: PagefindInstance | null = null;
