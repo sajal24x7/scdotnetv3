@@ -119,3 +119,7 @@ src/utils/bookCovers.ts
 src/content/*.base
 src/content/.obsidian/*
 src/content/.obsidian/workspace.json
+
+
+## Superpowers directory
+./superpowers/*
