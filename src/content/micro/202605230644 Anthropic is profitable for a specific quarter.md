@@ -1,13 +1,16 @@
 ---
-title: "Anthropic is profitable for a specific quarter"
-slug: "anthropic-is-profitable-for-a-specific-quarter"
-pubDate: 2026-05-23T06:50:00+03:00
-updatedDate: 2026-05-23T06:50:00+03:00
+title: Anthropic is profitable for a specific quarter
+slug: anthropic-is-profitable-for-a-specific-quarter
+pubDate: 2026-05-23T03:50:00.000Z
+updatedDate: 2026-05-23T03:50:00.000Z
 category: micro
 tags:
   - anthropic
   - ai
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116621852514151469'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mmikajz5fq2b'
+  - 'https://www.threads.com/@sajal24x7/post/DYqq3RAloz3'
 ---
 [Anthropic's "Profitability" Swindle by Ed Zitron](https://www.wheresyoured.at/anthropics-profitability-swindle/)
 
