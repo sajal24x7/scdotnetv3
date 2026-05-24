@@ -3,46 +3,48 @@ import Layout from '../layouts/Layout.astro';
 import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
 import StreamList from '../components/layout/StreamList.astro';
 import GardenGrid from '../components/layout/GardenGrid.astro';
-import FeaturedGrid from '../components/layout/FeaturedGrid.astro';
+import BookshelfCard from '../components/bookshelf/BookshelfCard.astro';
 import { Image } from 'astro:assets';
 import BookCover from '../images/books/01-ayom.jpg';
 import ProfileImage from '../images/profile/profile.jpeg';
-import { getAllPosts, getPostsByCategory, transformPost } from '../utils/content';
+import { getAllPosts, getPostsByCategory, transformPost, cleanNordletterTitle } from '../utils/content';
 import type { Post } from '../utils/content';
 
-
-// Get all posts
 const allPosts = await getAllPosts();
 const postsBySlug = new Map(allPosts.map((post) => [post.slug, post] as const));
 
-// Build a list of the most recent stream posts across the unified categories
+// Stream: last 5 posts (blog, micro, photo)
 const streamPostsRaw = getPostsByCategory(allPosts, 'stream', { limit: 5 });
 const streamPosts = streamPostsRaw.map(transformPost);
 
-// Curate the latest garden notes, stories, til entries, and more
-const gardenPostsRaw = getPostsByCategory(allPosts, 'garden', { limit: 9 });
-const gardenPosts = gardenPostsRaw.map(transformPost);
-
-// Load the featured pool from the curated data file
+// Garden: curated featured posts from homeFeatured.json pool
 const { default: homeFeaturedPoolRaw } = await import('../data/homeFeatured.json');
 const homeFeaturedPool = (Array.isArray(homeFeaturedPoolRaw) ? homeFeaturedPoolRaw : []) as string[];
 
-const shufflePosts = <T,>(input: T[]): T[] => {
-    const array = [...input];
-    for (let i = array.length - 1; i > 0; i -= 1) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-};
-
-const featuredCandidates = homeFeaturedPool
+const gardenPosts = homeFeaturedPool
     .map((slug) => postsBySlug.get(slug))
-    .filter((post): post is Post => Boolean(post));
-
-const featuredPosts = shufflePosts(featuredCandidates)
-    .slice(0, 4)
+    .filter((post): post is Post => Boolean(post))
     .map(transformPost);
+
+// Nordletter: 3 most recent editions
+const nordletterPostsRaw = getPostsByCategory(allPosts, 'nordletter', { limit: 3 });
+const nordletterPosts = nordletterPostsRaw.map(post => {
+    const transformed = transformPost(post);
+    const pubDate = post.data.pubDate instanceof Date ? post.data.pubDate : new Date(String(post.data.pubDate));
+    return {
+        ...transformed,
+        cleanTitle: cleanNordletterTitle(post.data.title || '') || post.data.title || '',
+        formattedDate: pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        isoDate: pubDate.toISOString(),
+    };
+});
+
+// Bookshelf: 4 most recently added books (raw data kept for full BookshelfCard props)
+const bookshelfPostsRaw = getPostsByCategory(allPosts, 'bookshelf', { limit: 4 });
+const bookshelfPosts = bookshelfPostsRaw.map(post => ({
+    ...post,
+    link: `/bookshelf/${post.slug}/`,
+}));
 ---
 
 <Layout
@@ -119,8 +121,6 @@ const featuredPosts = shufflePosts(featuredCandidates)
                 </p>
             </div>
             <NewsletterSignup wrapperClass="py-0" formClass="mx-auto md:mx-0" />
-
-            <!-- Social Media Links for Bridgy verification (hidden) -->
             <div class="sr-only">
                 <a href="https://mastodon.social/@sajal24x7" rel="me">Mastodon</a>
                 <a href="https://bsky.app/profile/sajal24x7.bsky.social" rel="me">Bluesky</a>
@@ -129,35 +129,91 @@ const featuredPosts = shufflePosts(featuredCandidates)
         </div>
     </section>
 
-    <!-- Writing Section -->
-    <section class="home-section home-section--featured">
-        <div class="home-featured__heading grid-span-full">
-            <h2 class="home-featured__title">Featured</h2>
-        </div>
-        <FeaturedGrid posts={featuredPosts} />
-    </section>
+    <!-- Two-column content: Wide left (Garden + Stream) | Narrow right (Nordletter + Bookshelf) -->
+    <div class="home-content-columns grid-span-full">
 
-    <section class="home-section home-section--stream">
-        <div class="home-stream grid-span-8 grid-start-3">
-            <div class="home-stream__inner">
-                <h2 class="home-stream__title">Stream</h2>
+        <!-- Left column: Garden (curated) + Stream -->
+        <div class="home-col home-col--main">
+
+            <section class="home-section-block">
+                <div class="home-section-header">
+                    <h2 class="home-section-title">Garden</h2>
+                </div>
+                <div data-garden-grid>
+                    <GardenGrid posts={gardenPosts} />
+                </div>
+                <div class="home-section-footer">
+                    <a href="/garden/" class="home-section-cta">Roam through the garden</a>
+                </div>
+            </section>
+
+            <section class="home-section-block">
+                <div class="home-section-header">
+                    <h2 class="home-section-title">Stream</h2>
+                </div>
                 <StreamList posts={streamPosts} />
-                <a href="/stream/" class="home-stream__cta">Dip into the stream</a>
-            </div>
-        </div>
-    </section>
+                <div class="home-section-footer">
+                    <a href="/stream/" class="home-section-cta">Dip into the stream</a>
+                </div>
+            </section>
 
-    <section class="home-section home-section--garden">
-        <div class="home-garden__heading grid-span-full">
-            <h2 class="home-garden__title">Garden</h2>
         </div>
-        <div class="home-garden__grid grid-span-full" data-garden-grid>
-            <GardenGrid posts={gardenPosts} />
+
+        <!-- Right column: Nordletter + Bookshelf -->
+        <div class="home-col home-col--side">
+
+            <section class="home-section-block">
+                <div class="home-section-header">
+                    <h2 class="home-section-title">Nordletter</h2>
+                </div>
+                <ul class="home-nordletter-list">
+                    {nordletterPosts.map(post => (
+                        <li class="home-nordletter-item">
+                            <a href={post.data.link} class="home-nordletter-link">
+                                {post.data.edition && (
+                                    <span class="home-nordletter-edition">#{post.data.edition}</span>
+                                )}
+                                <span class="home-nordletter-title">{post.cleanTitle}</span>
+                            </a>
+                            <time class="home-nordletter-date" datetime={post.isoDate}>
+                                {post.formattedDate}
+                            </time>
+                        </li>
+                    ))}
+                </ul>
+                <div class="home-section-footer">
+                    <a href="/nordletter/" class="home-section-cta">Read the archives</a>
+                </div>
+            </section>
+
+            <section class="home-section-block">
+                <div class="home-section-header">
+                    <h2 class="home-section-title">Bookshelf</h2>
+                </div>
+                <div class="home-bookshelf-list">
+                    {bookshelfPosts.map(post => (
+                        <BookshelfCard
+                            title={post.data.title}
+                            author={post.data.author}
+                            series={post.data.series}
+                            startedReading={post.data.startedReading}
+                            finishedReading={post.data.finishedReading}
+                            bookStatus={post.data.bookStatus}
+                            bookRating={post.data.bookRating}
+                            bookCover={post.data.bookCover}
+                            link={post.link}
+                            format={post.data.format}
+                            pubDate={post.data.pubDate}
+                        />
+                    ))}
+                </div>
+                <div class="home-section-footer">
+                    <a href="/bookshelf/" class="home-section-cta">Browse the shelf</a>
+                </div>
+            </section>
+
         </div>
-        <div class="home-garden__footer grid-span-full">
-            <a href="/garden/" class="home-garden__cta">Roam through the garden</a>
-        </div>
-    </section>
+    </div>
 
     <div class="grid-span-full home-footer-spacer" aria-hidden="true"></div>
 </Layout>
@@ -166,6 +222,8 @@ const featuredPosts = shufflePosts(featuredCandidates)
     :global(.twelve-grid) {
         --grid-row-gap: 0;
     }
+
+    /* ── Book + About sections (display: contents — children live in the parent grid) ── */
 
     .home-section {
         display: contents;
@@ -203,115 +261,6 @@ const featuredPosts = shufflePosts(featuredCandidates)
         justify-content: center;
     }
 
-    .home-section--featured,
-    .home-section--stream,
-    .home-section--garden {
-        display: contents;
-    }
-
-    .home-featured__title {
-        font-size: clamp(1.75rem, 5vw, 2.25rem);
-        font-weight: 700;
-        margin: 0;
-        color: rgb(var(--color-text-primary));
-        text-align: center;
-    }
-
-    .home-featured__heading {
-        margin-top: clamp(2rem, 5vw, 3.5rem);
-        margin-bottom: clamp(1.5rem, 3vw, 2rem);
-    }
-
-    .home-section--featured {
-        margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
-    }
-
-    .home-stream {
-        display: flex;
-        padding-block: clamp(2rem, 5vw, 3.5rem);
-    }
-
-    .home-garden__title {
-        font-size: clamp(1.75rem, 5vw, 2.25rem);
-        font-weight: 700;
-        margin: 0;
-        color: rgb(var(--color-text-primary));
-        text-align: center;
-    }
-
-    .home-garden__heading {
-        margin-top: clamp(2rem, 5vw, 3.5rem);
-        margin-bottom: clamp(1.5rem, 3vw, 2rem);
-    }
-
-    .home-garden__grid {
-        margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
-    }
-
-    .home-garden__footer {
-        display: flex;
-    }
-
-    .home-garden__cta,
-    .home-stream__cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        font-weight: 600;
-        font-size: 0.95rem;
-        color: rgb(var(--color-text-primary));
-        text-decoration: none;
-        border-bottom: 1px solid rgba(var(--color-text-primary), 0.2);
-        padding-bottom: 0.15rem;
-        transition: color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .home-garden__cta:hover,
-    .home-garden__cta:focus-visible,
-    .home-stream__cta:hover,
-    .home-stream__cta:focus-visible {
-        color: rgb(var(--color-text-primary));
-        border-bottom-color: rgba(var(--color-text-primary), 0.45);
-    }
-
-    .home-garden__cta:focus-visible,
-    .home-stream__cta:focus-visible {
-        outline: 2px solid rgb(var(--color-accent));
-        outline-offset: 2px;
-    }
-
-    .home-garden__cta::after,
-    .home-stream__cta::after {
-        content: '→';
-        font-size: 0.95em;
-        transition: transform 0.2s ease;
-    }
-
-    .home-garden__cta:hover::after,
-    .home-garden__cta:focus-visible::after,
-    .home-stream__cta:hover::after,
-    .home-stream__cta:focus-visible::after {
-        transform: translateX(0.2rem);
-    }
-
-    .home-stream__inner {
-        display: flex;
-        flex-direction: column;
-        gap: clamp(1.25rem, 3vw, 1.75rem);
-    }
-
-    .home-stream__title {
-        font-size: clamp(1.75rem, 5vw, 2.25rem);
-        font-weight: 700;
-        margin: 0;
-        color: rgb(var(--color-text-primary));
-        text-align: center;
-    }
-
-    .home-footer-spacer {
-        padding-bottom: clamp(2rem, 5vw, 3rem);
-    }
-
     @media (min-width: 48rem) {
         .home-book__cover {
             justify-content: flex-start;
@@ -325,10 +274,6 @@ const featuredPosts = shufflePosts(featuredCandidates)
         .home-about__content {
             text-align: left;
         }
-
-        .home-stream {
-            padding-block: clamp(2.5rem, 5vw, 4rem);
-        }
     }
 
     @media (max-width: 47.99rem) {
@@ -336,20 +281,175 @@ const featuredPosts = shufflePosts(featuredCandidates)
         .home-about__image {
             margin-bottom: clamp(1.5rem, 5vw, 2rem);
         }
+    }
 
-        .home-stream__title,
-        .home-garden__title {
-            text-align: center;
-        }
+    /* ── Two-column content layout ── */
 
-        .home-stream__cta,
-        .home-garden__cta {
-            justify-content: center;
-            align-self: center;
-        }
+    .home-content-columns {
+        padding-block: clamp(2rem, 5vw, 3.5rem);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(3rem, 6vw, 4rem);
+    }
 
-        .home-garden__footer {
-            justify-content: center;
+    @media (min-width: 48rem) {
+        .home-content-columns {
+            display: grid;
+            grid-template-columns: 7fr 5fr;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            align-items: start;
         }
+    }
+
+    .home-col {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(2.5rem, 5vw, 3.5rem);
+    }
+
+    /* ── Section blocks (Garden, Stream, Nordletter, Bookshelf) ── */
+
+    .home-section-block {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.25rem, 3vw, 1.75rem);
+    }
+
+    .home-section-header {
+        display: flex;
+        align-items: center;
+    }
+
+    .home-section-title {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: 700;
+        margin: 0;
+        color: rgb(var(--color-text-primary));
+    }
+
+    .home-section-footer {
+        display: flex;
+    }
+
+    .home-section-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: rgb(var(--color-text-primary));
+        text-decoration: none;
+        border-bottom: 1px solid rgba(var(--color-text-primary), 0.2);
+        padding-bottom: 0.15rem;
+        transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .home-section-cta:hover,
+    .home-section-cta:focus-visible {
+        border-bottom-color: rgba(var(--color-text-primary), 0.45);
+    }
+
+    .home-section-cta:focus-visible {
+        outline: 2px solid rgb(var(--color-accent));
+        outline-offset: 2px;
+    }
+
+    .home-section-cta::after {
+        content: '→';
+        font-size: 0.95em;
+        transition: transform 0.2s ease;
+    }
+
+    .home-section-cta:hover::after,
+    .home-section-cta:focus-visible::after {
+        transform: translateX(0.2rem);
+    }
+
+    /* Garden grid: cap at 2 columns inside the left column */
+    @media (min-width: 64rem) {
+        .home-col--main :global([data-garden-grid]) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* ── Nordletter list ── */
+
+    .home-nordletter-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(0.6rem, 1.5vw, 0.85rem);
+    }
+
+    .home-nordletter-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        padding: clamp(0.75rem, 2vw, 1rem);
+        background: rgba(0, 0, 0, 0.02);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 0.75rem;
+        transition: background 180ms ease, border-color 180ms ease, transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    :global(.dark) .home-nordletter-item {
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .home-nordletter-item:hover {
+        background: rgba(99, 102, 241, 0.04);
+        border-color: rgba(99, 102, 241, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(129, 140, 248, 0.15);
+        transform: translateY(-2px);
+    }
+
+    :global(.dark) .home-nordletter-item:hover {
+        background: rgba(99, 102, 241, 0.08);
+        border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .home-nordletter-link {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: rgb(var(--color-text-primary));
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    .home-nordletter-edition {
+        flex-shrink: 0;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: rgb(var(--color-accent));
+        font-variant-numeric: tabular-nums;
+    }
+
+    .home-nordletter-title {
+        font-size: var(--text-normal);
+    }
+
+    .home-nordletter-date {
+        font-size: var(--text-small);
+        color: rgb(var(--color-text-secondary, 107 114 128));
+        padding-left: 0;
+    }
+
+    /* ── Bookshelf list ── */
+
+    .home-bookshelf-list {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(0.6rem, 1.5vw, 0.85rem);
+    }
+
+    /* ── Footer spacer ── */
+
+    .home-footer-spacer {
+        padding-bottom: clamp(2rem, 5vw, 3rem);
     }
 </style>
