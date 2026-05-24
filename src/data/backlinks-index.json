@@ -353,7 +353,6 @@
       "blog/202503211111 The contexts in which I use my phone.md",
       "blog/202503221140 Re-designing my home screen and the way I use my phone.md",
       "blog/202503241946 A weird day.md",
-      "blog/202503250411 Be a hybrid.md",
       "blog/202503270507 Duplicating everything.md",
       "blog/202503280427 Boiling frogs and global warming.md",
       "blog/202503292104 How would the web work in an increasingly AI-fied world.md",
@@ -399,6 +398,9 @@
       "blog/202603311655 Devops Finland meetup.md",
       "blog/202604070850 One more thing about doing yoga.md",
       "blog/202604091715 Azure and friends April meetup.md",
+      "blog/202604141804 HUG April meetup.md",
+      "blog/202604161559 Vibe Coding April Meetup.md",
+      "blog/202605181054 The problem with Current.md",
       "bookshelf/201301081514 The Da Vinci Code.md",
       "bookshelf/201301081514 The Ultimate Hitchhikers Guide to the Galaxy.md",
       "bookshelf/201301081515 Deception Point.md",
@@ -554,8 +556,16 @@
       "bookshelf/202604061330 I deliver parcels in Beijing.md",
       "bookshelf/202604121830 Pillars of creation.md",
       "bookshelf/202604141222 Outlive.md",
+      "bookshelf/202604191753 Ariel.md",
+      "bookshelf/202604201305 Wool.md",
+      "bookshelf/202604261903 Children of strife.md",
+      "bookshelf/202604270742 Things my grandmother said.md",
+      "bookshelf/202605062112 Cat’s Cradle.md",
+      "bookshelf/202605130836 Shift.md",
+      "bookshelf/202605130838 Ars Poeticas.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
+      "evergreen/202503250411 Be a hybrid.md",
       "evergreen/202505140951 When someone has been dead for a while.md",
       "evergreen/202507020958 Homes can’t be considered both an investment and affordable enough for everyone to own.md",
       "evergreen/202507091431 The goal with yoga.md",
@@ -596,6 +606,7 @@
       "evergreen/202512291445 Ultraprocessed food is designed to be irresistible.md",
       "evergreen/202601181839 How to craft a story.md",
       "evergreen/202601312353 Write a letter to your child.md",
+      "evergreen/202604141403 The four diseases leading to slow death.md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -893,6 +904,27 @@
       "micro/202604110739 Has Mythos just broken the deal that kept the internet safe.md",
       "micro/202604111211 France to ditch Windows for Linux.md",
       "micro/202604140715 Human cost of 10x productivity.md",
+      "micro/202604150728 OpenAI announces a new cybersecurity model.md",
+      "micro/202604151539 Finns changed diets after nutrition guideline update.md",
+      "micro/202604161100 Google launches Gemini on Mac.md",
+      "micro/202604191047 RAM shortage could last years.md",
+      "micro/202604201548 Chinese tech workers are starting to train their AI doubles and pushing back.md",
+      "micro/202604201552 Evacuees flag day.md",
+      "micro/202604202242 Atlassian Enables Default Data Collection to Train AI.md",
+      "micro/202604211056 Change of guard at Apple.md",
+      "micro/202604231215 Finland rebrands.md",
+      "micro/202604280737 The AGI clause is dead.md",
+      "micro/202605020909 Good developers learn to program.md",
+      "micro/202605020918 Mac Mini starting price rises.md",
+      "micro/202605071925 Will Carrick continue as the United coach.md",
+      "micro/202605091705 Use HTML as output artefacts with Claude.md",
+      "micro/202605111120 The Locals Don’t Know.md",
+      "micro/202605111125 Geography is four dimensional.md",
+      "micro/202605130608 South Korea Floats Citizen Dividend Using AI Profits.md",
+      "micro/202605142221 New Xbox controller for cloud gaming leaked.md",
+      "micro/202605162316 About the drone emergency in Finland.md",
+      "micro/202605200732 Gemini will use Volvo’s external cameras to interpret parking signs.md",
+      "micro/202605230644 Anthropic is profitable for a specific quarter.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -992,6 +1024,11 @@
       "nordletter/202603282015 NL98.md",
       "nordletter/202604051855 NL99 - New Things.md",
       "nordletter/202604112349 NL 100.md",
+      "nordletter/202604181645 NL101 - The Joys of Riding a Bicycle.md",
+      "nordletter/202604232020 NL102 - Seeing the crown bridge.md",
+      "nordletter/202605012210 NL103 - Birdsong.md",
+      "nordletter/202605092257 NL 104.md",
+      "nordletter/202605151002 NL105 Fazer Experience.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -1587,46 +1624,46 @@
       "til/202603251249 Conditionals in python.md",
       "til/202603301610 Generators in python.md"
     ],
-    "generatedAt": "2026-04-15T09:42:39.959Z"
+    "generatedAt": "2026-05-24T17:54:00.388Z"
   },
   "micro/new-updates-to-claude": [
     {
       "slug": "/til/asking-claude-to-create-a-calendar-entry-from-a-screenshot/",
-      "title": "Asking Claude to create a calendar entry from a screenshot",
+      "title": "Asking Claude to Create a Calendar Entry From a Screenshot",
       "description": "",
       "category": "til",
       "pubDate": "2025-08-04T09:53:07.000Z"
     }
   ],
+  "bookshelf/the-quick-python-book": [
+    {
+      "slug": "/til/pythonic-coding-conventions/",
+      "title": "Pythonic Coding Conventions",
+      "description": "",
+      "category": "til",
+      "pubDate": "2025-10-21T12:45:15.000Z"
+    }
+  ],
   "bookshelf/the-practice-of-cloud-system-administration": [
     {
       "slug": "/til/the-cap-principle/",
-      "title": "The CAP principle",
+      "title": "The CAP Principle",
       "description": "",
       "category": "til",
       "pubDate": "2025-10-30T11:46:10.000Z"
     },
     {
       "slug": "/evergreen/distributed-system-design-patterns/",
-      "title": "Distributed system design patterns",
+      "title": "Distributed System Design Patterns",
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-10-29T09:11:33.000Z"
     }
   ],
-  "bookshelf/the-quick-python-book": [
-    {
-      "slug": "/til/pythonic-coding-conventions/",
-      "title": "Pythonic coding conventions",
-      "description": "",
-      "category": "til",
-      "pubDate": "2025-10-21T12:45:15.000Z"
-    }
-  ],
   "bookshelf/continuous-delivery": [
     {
       "slug": "/til/how-to-write-commit-messages/",
-      "title": "How to write commit messages",
+      "title": "How to Write Commit Messages",
       "description": "",
       "category": "til",
       "pubDate": "2025-11-24T18:54:37.000Z"
@@ -1635,7 +1672,7 @@
   "bookshelf/how-linux-works": [
     {
       "slug": "/til/what-does-a-kernel-do/",
-      "title": "What does a kernel do",
+      "title": "What Does a Kernel Do",
       "description": "",
       "category": "til",
       "pubDate": "2026-03-18T09:55:49.000Z"
@@ -1644,14 +1681,14 @@
   "nordletter/nl67-performing-at-india-day": [
     {
       "slug": "/nordletter/happy-new-year/",
-      "title": "Happy new year",
+      "title": "Happy New Year",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-03T21:03:01.000Z"
     },
     {
       "slug": "/blog/what-do-i-do-now/",
-      "title": "what do I do now",
+      "title": "What Do I Do Now",
       "description": "",
       "category": "blog",
       "pubDate": "2025-08-20T19:06:10.000Z"
@@ -1660,7 +1697,7 @@
   "blog/thoughts-on-iphone-day": [
     {
       "slug": "/blog/thoughts-on-iphone-day-2025/",
-      "title": "Thoughts on iPhone day - 2025",
+      "title": "Thoughts on iPhone Day - 2025",
       "description": "",
       "category": "blog",
       "pubDate": "2025-09-09T18:47:57.000Z"
@@ -1669,7 +1706,7 @@
   "blog/attending-the-global-ai-bootcamp-in-helsinki": [
     {
       "slug": "/blog/msft-ai-user-group-event-at-nitor/",
-      "title": "MSFT AI User group event at Nitor",
+      "title": "MSFT AI User Group Event at Nitor",
       "description": "",
       "category": "blog",
       "pubDate": "2025-10-30T20:53:11.000Z"
@@ -1678,7 +1715,7 @@
   "now/learning-python": [
     {
       "slug": "/blog/the-joy-of-coding/",
-      "title": "The joy of coding",
+      "title": "The Joy of Coding",
       "description": "",
       "category": "blog",
       "pubDate": "2025-11-19T20:40:40.000Z"
@@ -1687,14 +1724,14 @@
   "bookshelf/abundance-how-we-build-a-better-future": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/nordletter/nl69-a-fresh-start/",
-      "title": "A fresh start",
+      "title": "A Fresh Start",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-08-31T03:30:49.000Z"
@@ -1708,7 +1745,7 @@
     },
     {
       "slug": "/evergreen/homes-cant-be-considered-both-an-investment-and-affordable-enough-for-everyone-to-own/",
-      "title": "Homes can’t be considered both an investment and affordable enough for everyone to own",
+      "title": "Homes Can’t Be Considered Both an Investment and Affordable Enough for Everyone to Own",
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-07-11T10:26:50.000Z"
@@ -1724,7 +1761,7 @@
   "bookshelf/chambers-becky-the-galaxy-and-the-ground-within": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -1733,7 +1770,7 @@
   "bookshelf/murakami-haruki-men-without-women": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -1742,14 +1779,14 @@
   "bookshelf/the-three-body-problem": [
     {
       "slug": "/bookshelf/all-that-we-see-or-seem/",
-      "title": "All that we see or seem",
+      "title": "All That We See or Seem",
       "description": "",
       "category": "bookshelf",
       "pubDate": "2026-04-06T08:27:25.000Z"
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -1758,7 +1795,7 @@
   "bookshelf/the-dark-forest": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -1767,7 +1804,7 @@
   "bookshelf/deaths-end": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -1776,7 +1813,7 @@
   "bookshelf/all-systems-red": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -1813,7 +1850,7 @@
   "bookshelf/artificial-condition": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -1850,7 +1887,7 @@
   "bookshelf/rogue-protocol": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -1887,7 +1924,7 @@
   "bookshelf/exit-strategy": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -1931,7 +1968,7 @@
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -1967,15 +2004,22 @@
   ],
   "bookshelf/children-of-time": [
     {
+      "slug": "/nordletter/nl-104/",
+      "title": "Wheezing past the cradle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-09T20:51:46.000Z"
+    },
+    {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/bookshelf/children-of-memory/",
-      "title": "Children of memory",
+      "title": "Children of Memory",
       "description": "",
       "category": "bookshelf",
       "pubDate": "2025-12-01T09:47:15.000Z"
@@ -1991,7 +2035,7 @@
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2000,7 +2044,7 @@
   "bookshelf/the-life-of-chuck": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2009,21 +2053,21 @@
   "bookshelf/the-secret-of-secrets": [
     {
       "slug": "/nordletter/nl95-holi-week/",
-      "title": "Holi week",
+      "title": "Holi Week",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-07T23:08:24.000Z"
     },
     {
       "slug": "/micro/problems-with-gamifying-reading/",
-      "title": "Problems with gamifying reading",
+      "title": "Problems With Gamifying Reading",
       "description": "",
       "category": "micro",
       "pubDate": "2026-03-05T10:42:28.000Z"
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2032,14 +2076,14 @@
   "bookshelf/children-of-ruin": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/bookshelf/children-of-memory/",
-      "title": "Children of memory",
+      "title": "Children of Memory",
       "description": "",
       "category": "bookshelf",
       "pubDate": "2025-12-01T09:47:15.000Z"
@@ -2048,7 +2092,7 @@
   "bookshelf/before-the-coffee-gets-cold": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2057,7 +2101,7 @@
   "bookshelf/when-the-moon-hits-your-eye": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2066,7 +2110,7 @@
   "bookshelf/children-of-memory": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2075,7 +2119,7 @@
   "bookshelf/this-is-how-you-lose-the-time-war": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2084,14 +2128,14 @@
   "bookshelf/two-nights-in-lisbon": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
-      "title": "The route circle",
+      "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-12-27T21:33:35.000Z"
@@ -2100,7 +2144,7 @@
   "bookshelf/what-technology-wants": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2109,7 +2153,7 @@
   "bookshelf/range": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2118,14 +2162,14 @@
   "bookshelf/nexus": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/evergreen/curation-matters/",
-      "title": "Curation matters",
+      "title": "Curation Matters",
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-09-10T07:45:20.000Z"
@@ -2134,21 +2178,21 @@
   "bookshelf/time-management-for-system-administrators": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/evergreen/how-to-automate-something/",
-      "title": "How to automate something",
+      "title": "How to Automate Something",
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-10-16T10:31:07.000Z"
     },
     {
       "slug": "/evergreen/what-to-automate/",
-      "title": "What to automate",
+      "title": "What to Automate",
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-10-16T10:26:58.000Z"
@@ -2157,28 +2201,28 @@
   "bookshelf/same-as-ever": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/evergreen/a-little-inefficiency-is-good/",
-      "title": "A little inefficiency is good",
+      "title": "A Little Inefficiency Is Good",
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-10-16T07:17:00.000Z"
     },
     {
       "slug": "/evergreen/progress-takes-time-while-destruction-is-instantaneous/",
-      "title": "Progress takes time while destruction is instantaneous",
+      "title": "Progress Takes Time While Destruction Is Instantaneous",
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-10-16T07:16:45.000Z"
     },
     {
       "slug": "/evergreen/be-a-rational-optimist/",
-      "title": "Be a rational optimist",
+      "title": "Be a Rational Optimist",
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-10-16T07:16:34.000Z"
@@ -2187,14 +2231,14 @@
   "bookshelf/slow-productivity": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/evergreen/how-to-create-a-simulated-pull-workflow/",
-      "title": "How to create a simulated pull workflow",
+      "title": "How to Create a Simulated Pull Workflow",
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-10-26T20:52:38.000Z"
@@ -2203,14 +2247,14 @@
   "bookshelf/enshittification": [
     {
       "slug": "/micro/giving-your-healthcare-info-to-a-chatbot-is-unsurprisingly-a-terrible-idea/",
-      "title": "Giving your healthcare info to a chatbot is, unsurprisingly, a terrible idea",
+      "title": "Giving Your Healthcare Info to a Chatbot Is, Unsurprisingly, a Terrible Idea",
       "description": "",
       "category": "micro",
       "pubDate": "2026-01-23T16:19:44.000Z"
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2219,14 +2263,14 @@
   "bookshelf/every-day-i-read": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/bookshelf/on-tennis/",
-      "title": "On tennis",
+      "title": "On Tennis",
       "description": "",
       "category": "bookshelf",
       "pubDate": "2025-12-02T15:03:13.000Z"
@@ -2235,7 +2279,7 @@
   "bookshelf/on-tennis": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2244,7 +2288,7 @@
   "bookshelf/empire-of-ai": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2260,14 +2304,14 @@
   "bookshelf/steal-like-an-artist": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
-      "title": "The route circle",
+      "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-12-27T21:33:35.000Z"
@@ -2276,14 +2320,14 @@
   "bookshelf/show-your-work": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
-      "title": "The route circle",
+      "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-12-27T21:33:35.000Z"
@@ -2292,14 +2336,14 @@
   "bookshelf/keep-going": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
-      "title": "The route circle",
+      "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-12-27T21:33:35.000Z"
@@ -2308,7 +2352,7 @@
   "bookshelf/helsinki-by-sauna": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
@@ -2317,14 +2361,14 @@
   "bookshelf/the-art-of-spending-money": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/evergreen/how-to-read/",
-      "title": "How to read",
+      "title": "How to Read",
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-12-26T20:48:05.000Z"
@@ -2333,30 +2377,48 @@
   "bookshelf/ernest-hemingway-on-writing": [
     {
       "slug": "/blog/books-ive-read-this-year/",
-      "title": "Books I have read this year",
+      "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
       "pubDate": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/evergreen/write-for-one-person/",
-      "title": "Write for one person",
+      "title": "Write for One Person",
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-12-26T17:59:24.000Z"
     }
   ],
+  "blog/about-the-pareto-principle": [
+    {
+      "slug": "/blog/vibe-coding-april-meetup/",
+      "title": "Vibe Coding April Meetup",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2026-04-16T19:39:17.000Z"
+    }
+  ],
+  "micro/human-cost-of-10x-productivity": [
+    {
+      "slug": "/blog/vibe-coding-april-meetup/",
+      "title": "Vibe Coding April Meetup",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2026-04-16T19:39:17.000Z"
+    }
+  ],
   "evergreen/about-ai-browsers": [
     {
       "slug": "/nordletter/nl64-a-lazy-day/",
-      "title": "A lazy day",
+      "title": "A Lazy Day",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-07-27T03:11:00.000Z"
     },
     {
       "slug": "/micro/about-perplexitys-new-ai-browser/",
-      "title": "About Perplexity's new AI browser",
+      "title": "About Perplexity's New AI Browser",
       "description": "",
       "category": "micro",
       "pubDate": "2025-07-19T08:31:53.000Z"
@@ -2365,7 +2427,7 @@
   "micro/study-mode-in-chatgpt": [
     {
       "slug": "/micro/new-updates-to-claude/",
-      "title": "New updates to Claude",
+      "title": "New Updates to Claude",
       "description": "",
       "category": "micro",
       "pubDate": "2025-08-01T04:22:45.000Z"
@@ -2374,7 +2436,7 @@
   "micro/should-ai-flatter-us-fix-us-or-just-inform-us-by-james-odonnell": [
     {
       "slug": "/nordletter/nl69-a-fresh-start/",
-      "title": "A fresh start",
+      "title": "A Fresh Start",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-08-31T03:30:49.000Z"
@@ -2390,7 +2452,7 @@
   "micro/cloudflare-explains-tuesdays-outage": [
     {
       "slug": "/micro/the-cloudflare-outage-was-a-good-thing/",
-      "title": "The Cloudflare outage was a good thing",
+      "title": "The Cloudflare Outage Was a Good Thing",
       "description": "",
       "category": "micro",
       "pubDate": "2025-11-24T09:14:29.000Z"
@@ -2399,14 +2461,14 @@
   "evergreen/mixed-format-books": [
     {
       "slug": "/nordletter/nl89/",
-      "title": "Same and different",
+      "title": "Same and Different",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-25T16:48:33.000Z"
     },
     {
       "slug": "/micro/spotify-is-testing-a-feature-that-syncs-audiobooks-with-paper-editions/",
-      "title": "Spotify is testing a feature that syncs audiobooks with paper editions",
+      "title": "Spotify Is Testing a Feature That Syncs Audiobooks With Paper Editions",
       "description": "",
       "category": "micro",
       "pubDate": "2026-01-21T04:01:33.000Z"
@@ -2415,7 +2477,7 @@
   "micro/claude-code-psychosis": [
     {
       "slug": "/micro/how-to-build-an-interactive-novel/",
-      "title": "How to build an interactive novel",
+      "title": "How to Build an Interactive Novel",
       "description": "",
       "category": "micro",
       "pubDate": "2026-01-25T05:35:06.000Z"
@@ -2424,7 +2486,7 @@
   "micro/about-claude-remote-control": [
     {
       "slug": "/micro/scheduled-tasks-in-cowork/",
-      "title": "Scheduled tasks in cowork",
+      "title": "Scheduled Tasks in Cowork",
       "description": "",
       "category": "micro",
       "pubDate": "2026-02-25T19:58:05.000Z"
@@ -2442,7 +2504,7 @@
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
     {
       "slug": "/nordletter/nl63-a-day-trip-to-turku/",
-      "title": "A day trip to Turku",
+      "title": "A Day Trip to Turku",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-07-20T03:11:09.000Z"
@@ -2478,7 +2540,7 @@
   "evergreen/when-someone-has-been-dead-for-a-while": [
     {
       "slug": "/nordletter/nl69-a-fresh-start/",
-      "title": "A fresh start",
+      "title": "A Fresh Start",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-08-31T03:30:49.000Z"
@@ -2487,7 +2549,7 @@
   "evergreen/why-journal": [
     {
       "slug": "/nordletter/nl69-a-fresh-start/",
-      "title": "A fresh start",
+      "title": "A Fresh Start",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-08-31T03:30:49.000Z"
@@ -2496,7 +2558,7 @@
   "evergreen/write-more": [
     {
       "slug": "/nordletter/nl70-build-or-break/",
-      "title": "Build or break",
+      "title": "Build or Break",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-09-07T03:05:16.000Z"
@@ -2505,7 +2567,7 @@
   "evergreen/humans-and-algorithms-think-differently-when-coming-to-a-decision": [
     {
       "slug": "/nordletter/nl70-build-or-break/",
-      "title": "Build or break",
+      "title": "Build or Break",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-09-07T03:05:16.000Z"
@@ -2514,7 +2576,7 @@
   "evergreen/algorithms-affect-what-we-post-on-the-socials": [
     {
       "slug": "/nordletter/nl70-build-or-break/",
-      "title": "Build or break",
+      "title": "Build or Break",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-09-07T03:05:16.000Z"
@@ -2523,7 +2585,7 @@
   "blog/thoughts-on-iphone-day-2025": [
     {
       "slug": "/nordletter/nl71/",
-      "title": "Full moon",
+      "title": "Full Moon",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-09-13T13:31:41.000Z"
@@ -2531,15 +2593,22 @@
   ],
   "nordletter/trip-to-nyc-i": [
     {
+      "slug": "/nordletter/nl102-seeing-the-crown-bridge/",
+      "title": "Seeing the Crown Bridge",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-04-25T20:52:19.000Z"
+    },
+    {
       "slug": "/nordletter/happy-new-year/",
-      "title": "Happy new year",
+      "title": "Happy New Year",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-03T21:03:01.000Z"
     },
     {
       "slug": "/nordletter/nl71/",
-      "title": "Full moon",
+      "title": "Full Moon",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-09-13T13:31:41.000Z"
@@ -2548,7 +2617,7 @@
   "evergreen/curation-matters": [
     {
       "slug": "/nordletter/nl71/",
-      "title": "Full moon",
+      "title": "Full Moon",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-09-13T13:31:41.000Z"
@@ -2557,7 +2626,7 @@
   "evergreen/the-goal-with-yoga": [
     {
       "slug": "/nordletter/nl72/",
-      "title": "A dying country",
+      "title": "A Dying Country",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-09-20T15:39:22.000Z"
@@ -2598,7 +2667,7 @@
   "blog/vibe-coding": [
     {
       "slug": "/nordletter/nl74-to-move/",
-      "title": "To move",
+      "title": "To Move",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-10-04T20:06:32.000Z"
@@ -2643,7 +2712,7 @@
   "nordletter/the-human-condition": [
     {
       "slug": "/nordletter/nl78/",
-      "title": "Chath celebrations",
+      "title": "Chath Celebrations",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-11-02T20:42:52.000Z"
@@ -2703,17 +2772,60 @@
       "pubDate": "2025-12-21T18:00:25.000Z"
     }
   ],
-  "nordletter/nl79": [
+  "nordletter/a-happy-new-year": [
     {
       "slug": "/nordletter/happy-new-year/",
-      "title": "Happy new year",
+      "title": "Happy New Year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "micro/chatgpt-has-yearly-recaps-as-well": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy New Year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "blog/books-ive-read-this-year": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy New Year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "nordletter/election-time": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy New Year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "nordletter/nl79": [
+    {
+      "slug": "/nordletter/nl-104/",
+      "title": "Wheezing past the cradle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-09T20:51:46.000Z"
+    },
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy New Year",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-03T21:03:01.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
-      "title": "The route circle",
+      "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-12-27T21:33:35.000Z"
@@ -2722,7 +2834,7 @@
   "nordletter/i-miss-walking": [
     {
       "slug": "/nordletter/nl85/",
-      "title": "The route circle",
+      "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-12-27T21:33:35.000Z"
@@ -2738,14 +2850,14 @@
     },
     {
       "slug": "/nordletter/nl85/",
-      "title": "The route circle",
+      "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-12-27T21:33:35.000Z"
     },
     {
       "slug": "/bookshelf/steal-like-an-artist/",
-      "title": "Steal like an artist",
+      "title": "Steal Like an Artist",
       "description": "",
       "category": "bookshelf",
       "pubDate": "2025-12-21T20:41:53.000Z"
@@ -2754,7 +2866,7 @@
   "evergreen/limitations-mean-freedom": [
     {
       "slug": "/nordletter/nl85/",
-      "title": "The route circle",
+      "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-12-27T21:33:35.000Z"
@@ -2763,7 +2875,7 @@
   "evergreen/write-for-one-person": [
     {
       "slug": "/nordletter/nl85/",
-      "title": "The route circle",
+      "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-12-27T21:33:35.000Z"
@@ -2772,14 +2884,14 @@
   "evergreen/how-to-read": [
     {
       "slug": "/bookshelf/all-that-we-see-or-seem/",
-      "title": "All that we see or seem",
+      "title": "All That We See or Seem",
       "description": "",
       "category": "bookshelf",
       "pubDate": "2026-04-06T08:27:25.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
-      "title": "The route circle",
+      "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-12-27T21:33:35.000Z"
@@ -2788,7 +2900,7 @@
   "bookshelf/things-become-other-things": [
     {
       "slug": "/nordletter/nl87/",
-      "title": "Winter wonderland",
+      "title": "Winter Wonderland",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-10T19:46:59.000Z"
@@ -2797,46 +2909,10 @@
   "nordletter/nl85": [
     {
       "slug": "/nordletter/nl87/",
-      "title": "Winter wonderland",
+      "title": "Winter Wonderland",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-10T19:46:59.000Z"
-    }
-  ],
-  "nordletter/a-happy-new-year": [
-    {
-      "slug": "/nordletter/happy-new-year/",
-      "title": "Happy new year",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
-    }
-  ],
-  "micro/chatgpt-has-yearly-recaps-as-well": [
-    {
-      "slug": "/nordletter/happy-new-year/",
-      "title": "Happy new year",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
-    }
-  ],
-  "blog/books-ive-read-this-year": [
-    {
-      "slug": "/nordletter/happy-new-year/",
-      "title": "Happy new year",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
-    }
-  ],
-  "nordletter/election-time": [
-    {
-      "slug": "/nordletter/happy-new-year/",
-      "title": "Happy new year",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
     }
   ],
   "nordletter/nl87": [
@@ -2878,7 +2954,7 @@
   "blog/2025-letters": [
     {
       "slug": "/nordletter/nl89/",
-      "title": "Same and different",
+      "title": "Same and Different",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-25T16:48:33.000Z"
@@ -2887,28 +2963,28 @@
   "bookshelf/bird-by-bird": [
     {
       "slug": "/bookshelf/zen-in-the-art-of-writing/",
-      "title": "Zen in the art of writing",
+      "title": "Zen in the Art of Writing",
       "description": "",
       "category": "bookshelf",
       "pubDate": "2026-03-09T10:13:18.000Z"
     },
     {
       "slug": "/bookshelf/die-with-zero/",
-      "title": "Die with zero",
+      "title": "Die With Zero",
       "description": "",
       "category": "bookshelf",
       "pubDate": "2026-02-02T22:52:35.000Z"
     },
     {
       "slug": "/evergreen/write-a-letter-to-your-child/",
-      "title": "Write a letter to your child",
+      "title": "Write a Letter to Your Child",
       "description": "",
       "category": "evergreen",
       "pubDate": "2026-01-31T18:25:30.000Z"
     },
     {
       "slug": "/nordletter/nl90/",
-      "title": "Lunches and monkeys",
+      "title": "Lunches and Monkeys",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-31T16:21:15.000Z"
@@ -2942,7 +3018,7 @@
   "poem/this-valentines-day": [
     {
       "slug": "/nordletter/nl93/",
-      "title": "An anniversary visit to Porvoo",
+      "title": "An Anniversary Visit to Porvoo",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-02-21T22:32:49.000Z"
@@ -2951,7 +3027,7 @@
   "nordletter/visit-porvoo": [
     {
       "slug": "/nordletter/nl93/",
-      "title": "An anniversary visit to Porvoo",
+      "title": "An Anniversary Visit to Porvoo",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-02-21T22:32:49.000Z"
@@ -2960,7 +3036,7 @@
   "nordletter/nl77": [
     {
       "slug": "/nordletter/nl95-holi-week/",
-      "title": "Holi week",
+      "title": "Holi Week",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-07T23:08:24.000Z"
@@ -2969,7 +3045,7 @@
   "nordletter/spring-is-here": [
     {
       "slug": "/nordletter/nl96/",
-      "title": "Spring in the air",
+      "title": "Spring in the Air",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-14T16:18:16.000Z"
@@ -2978,7 +3054,7 @@
   "blog/spring-already": [
     {
       "slug": "/nordletter/nl96/",
-      "title": "Spring in the air",
+      "title": "Spring in the Air",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-14T16:18:16.000Z"
@@ -2987,7 +3063,7 @@
   "blog/two-lessons-on-work": [
     {
       "slug": "/nordletter/nl96/",
-      "title": "Spring in the air",
+      "title": "Spring in the Air",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-14T16:18:16.000Z"
@@ -2996,7 +3072,7 @@
   "bookshelf/zen-in-the-art-of-writing": [
     {
       "slug": "/nordletter/nl96/",
-      "title": "Spring in the air",
+      "title": "Spring in the Air",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-14T16:18:16.000Z"
@@ -3005,7 +3081,7 @@
   "bookshelf/die-with-zero": [
     {
       "slug": "/nordletter/nl96/",
-      "title": "Spring in the air",
+      "title": "Spring in the Air",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-14T16:18:16.000Z"
@@ -3014,7 +3090,7 @@
   "bookshelf/system-collapse": [
     {
       "slug": "/nordletter/nl96/",
-      "title": "Spring in the air",
+      "title": "Spring in the Air",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-14T16:18:16.000Z"
@@ -3023,7 +3099,7 @@
   "blog/faug-zero-to-hero-meetup": [
     {
       "slug": "/nordletter/nl97/",
-      "title": "Nothing to say",
+      "title": "Nothing to Say",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-22T19:56:34.000Z"
@@ -3032,7 +3108,7 @@
   "nordletter/nl96": [
     {
       "slug": "/nordletter/nl97/",
-      "title": "Nothing to say",
+      "title": "Nothing to Say",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-22T19:56:34.000Z"
@@ -3041,7 +3117,7 @@
   "bookshelf/dune": [
     {
       "slug": "/nordletter/nl98/",
-      "title": "For those we love",
+      "title": "For Those We Love",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-28T18:50:51.000Z"
@@ -3059,7 +3135,7 @@
   "bookshelf/this-and-that": [
     {
       "slug": "/nordletter/nl-100/",
-      "title": "Celebrating formats",
+      "title": "Celebrating Formats",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-04-11T21:19:08.000Z"
@@ -3067,8 +3143,15 @@
   ],
   "bookshelf/i-deliver-parcels-in-beijing": [
     {
+      "slug": "/nordletter/nl101-the-joys-of-riding-a-bicycle/",
+      "title": "City Biking Through the Summer",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-04-19T14:41:52.000Z"
+    },
+    {
       "slug": "/nordletter/nl-100/",
-      "title": "Celebrating formats",
+      "title": "Celebrating Formats",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-04-11T21:19:08.000Z"
@@ -3077,10 +3160,107 @@
   "bookshelf/all-that-we-see-or-seem": [
     {
       "slug": "/nordletter/nl-100/",
-      "title": "Celebrating formats",
+      "title": "Celebrating Formats",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-04-11T21:19:08.000Z"
+    }
+  ],
+  "bookshelf/things-my-grandmother-said": [
+    {
+      "slug": "/nordletter/nl103-birdsong/",
+      "title": "Birdsong",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-02T22:20:45.000Z"
+    }
+  ],
+  "nordletter/nl99-new-things": [
+    {
+      "slug": "/nordletter/nl103-birdsong/",
+      "title": "Birdsong",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-02T22:20:45.000Z"
+    }
+  ],
+  "nordletter/hyva-vappu": [
+    {
+      "slug": "/nordletter/nl103-birdsong/",
+      "title": "Birdsong",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-02T22:20:45.000Z"
+    }
+  ],
+  "evergreen/be-a-hybrid": [
+    {
+      "slug": "/nordletter/nl-104/",
+      "title": "Wheezing past the cradle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-09T20:51:46.000Z"
+    }
+  ],
+  "bookshelf/reading-cats-cradle": [
+    {
+      "slug": "/nordletter/nl-104/",
+      "title": "Wheezing past the cradle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-09T20:51:46.000Z"
+    }
+  ],
+  "blog/vibe-coding-april-meetup": [
+    {
+      "slug": "/nordletter/nl-104/",
+      "title": "Wheezing past the cradle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-09T20:51:46.000Z"
+    }
+  ],
+  "bookshelf/outlive": [
+    {
+      "slug": "/nordletter/nl-104/",
+      "title": "Wheezing past the cradle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-09T20:51:46.000Z"
+    },
+    {
+      "slug": "/evergreen/the-four-diseases-leading-to-slow-death/",
+      "title": "The Four Diseases Leading to Slow Death",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2026-04-14T11:54:01.000Z"
+    }
+  ],
+  "micro/mac-mini-starting-price-rises": [
+    {
+      "slug": "/nordletter/nl-104/",
+      "title": "Wheezing past the cradle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-09T20:51:46.000Z"
+    }
+  ],
+  "micro/use-html-as-output-artefacts-with-claude": [
+    {
+      "slug": "/nordletter/nl-104/",
+      "title": "Wheezing past the cradle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-09T20:51:46.000Z"
+    }
+  ],
+  "nordletter/cherries-all-around": [
+    {
+      "slug": "/nordletter/nl105-fazer-experience/",
+      "title": "The Fazer Experience",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-16T21:16:18.000Z"
     }
   ],
   "blog/devops-finland-october-meetup": [
@@ -3122,7 +3302,7 @@
   "bookshelf/the-psychology-of-money": [
     {
       "slug": "/bookshelf/the-art-of-spending-money/",
-      "title": "The art of spending money",
+      "title": "The Art of Spending Money",
       "description": "",
       "category": "bookshelf",
       "pubDate": "2025-12-19T15:11:57.000Z"
@@ -3155,10 +3335,37 @@
       "pubDate": "2026-03-16T10:31:16.000Z"
     }
   ],
+  "evergreen/the-four-diseases-leading-to-slow-death": [
+    {
+      "slug": "/bookshelf/outlive/",
+      "title": "Outlive",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2026-04-14T09:23:33.000Z"
+    }
+  ],
+  "bookshelf/the-road-less-travelled": [
+    {
+      "slug": "/bookshelf/outlive/",
+      "title": "Outlive",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2026-04-14T09:23:33.000Z"
+    }
+  ],
+  "bookshelf/timequake": [
+    {
+      "slug": "/bookshelf/reading-cats-cradle/",
+      "title": "Cat’s Cradle",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2026-05-06T18:46:08.000Z"
+    }
+  ],
   "evergreen/what-to-automate": [
     {
       "slug": "/evergreen/how-to-automate-something/",
-      "title": "How to automate something",
+      "title": "How to Automate Something",
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-10-16T10:31:07.000Z"
