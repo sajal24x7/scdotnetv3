@@ -1,14 +1,17 @@
 ---
-title: "About Apple Sports"
-slug: "about-apple-sports"
-pubDate: 2026-05-26T21:12:45+03:00
-updatedDate: 2026-05-26T21:12:45+03:00
+title: About Apple Sports
+slug: about-apple-sports
+pubDate: 2026-05-26T18:12:45.000Z
+updatedDate: 2026-05-26T18:12:45.000Z
 category: blog
 tags:
   - apple
   - sports
   - football
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116642232010190497'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mmrlu2x33z2m'
+  - 'https://www.threads.com/@sajal24x7/post/DYz7_FsmAKM'
 ---
 I remember when Apple Sports was announced. Not the exact date, month or year. No. I remember back then when it had been announced, I had looked at it and thought to myself - this seems cool, I want to use it. 
 
