@@ -1,13 +1,16 @@
 ---
-title: "The Literary World is Not Prepared for AI"
-slug: "the-literary-world-is-not-prepared-for-ai"
-pubDate: 2026-05-23T08:14:44+03:00
-updatedDate: 2026-05-23T08:14:44+03:00
+title: The Literary World is Not Prepared for AI
+slug: the-literary-world-is-not-prepared-for-ai
+pubDate: 2026-05-23T05:14:44.000Z
+updatedDate: 2026-05-23T05:14:44.000Z
 category: micro
 tags:
   - writing
   - publishing
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116641016610293375'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mmr2lecwtx2w'
+  - 'https://www.threads.com/@sajal24x7/post/DYzYnM1Dsq7'
 ---
 [The literary world isn’t prepared for AI by Gaby Del Valle](https://www.theverge.com/tech/936073/ai-writing-granta-commonwealth-prize)
 
