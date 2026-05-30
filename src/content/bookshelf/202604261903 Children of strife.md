@@ -1,6 +1,6 @@
 ---
 title: Children of Strife
-slug: reading-children-of-strife
+slug: children-of-strife
 pubDate: 2026-04-26T16:04:26.000Z
 updatedDate: 2026-04-26T16:04:26.000Z
 category: bookshelf
@@ -12,7 +12,7 @@ author:
 series: 'Children of Time'
 seriesNumber: 4
 genre: sci-fi
-bookStatus: reading
+bookStatus: read
 startedReading: 2026-04-26T16:04:26.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116474932193632534'
