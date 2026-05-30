@@ -29,6 +29,11 @@ DEFAULT_CONTENT_ROOT = "src/content"
 
 SMALL_WORDS = {"a", "an", "the", "and", "but", "or", "for", "nor", "on", "at", "to", "by", "in", "of", "up", "as"}
 
+# Keys rewritten by the transform step — not passed through verbatim
+_TRANSFORMED_KEYS = {"title", "slug", "pubDate", "updatedDate", "category", "tags"}
+# Keys that are Obsidian-internal and should be stripped from output
+_OBSIDIAN_ONLY_KEYS = {"aliases", "cssclass", "cssClasses"}
+
 
 def title_case(s: str) -> str:
     words = s.split()
@@ -149,6 +154,29 @@ def is_obsidian_format(fm: dict) -> bool:
     return "aliases" in fm or "title" not in fm or "slug" not in fm
 
 
+def extract_passthrough_lines(fm_text: str) -> list:
+    """Return raw frontmatter lines for keys that are neither transformed nor Obsidian-only.
+
+    Preserves multi-line values (indented list items) verbatim so that fields like
+    'author:\\n  - Dan Brown' survive unchanged.
+    """
+    skip = _TRANSFORMED_KEYS | _OBSIDIAN_ONLY_KEYS
+    lines = fm_text.splitlines()
+    result = []
+    include = False
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
+            continue
+        # A new key starts when a non-indented, non-list line contains ':'
+        if not line.startswith(" ") and not line.startswith("\t") and not stripped.startswith("- "):
+            key = stripped.partition(":")[0].strip()
+            include = key not in skip
+        if include:
+            result.append(line)
+    return result
+
+
 def transform_file(filepath: str, content_index: dict | None = None) -> bool:
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
@@ -179,6 +207,11 @@ def transform_file(filepath: str, content_index: dict | None = None) -> bool:
 
     body = convert_internal_links(body, content_index or {})
 
+    # Extract the raw frontmatter text to collect passthrough fields
+    fm_end = content.find("---", 3)
+    fm_text = content[3:fm_end]
+    passthrough = extract_passthrough_lines(fm_text)
+
     new_fm_lines = [
         "---",
         f'title: "{title}"',
@@ -187,6 +220,7 @@ def transform_file(filepath: str, content_index: dict | None = None) -> bool:
         f"updatedDate: {pub_date}",
         f"category: {category}",
         f"tags: {tags_str}",
+        *passthrough,
         "---",
     ]
 
