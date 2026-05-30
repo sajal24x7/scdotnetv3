@@ -20,7 +20,8 @@
     "download-covers:force": "node scripts/download-book-covers.js --force",
     "download-covers:refresh-low-res": "node scripts/download-book-covers.js --replace-low-res",
     "syndicate": "node scripts/syndicate-content.js",
-    "syndicate:dry-run": "SYNDICATION_DRY_RUN=true node scripts/syndicate-content.js"
+    "syndicate:dry-run": "SYNDICATION_DRY_RUN=true node scripts/syndicate-content.js",
+    "sort-inbox": "bash scripts/sort-inbox.sh"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.0",
