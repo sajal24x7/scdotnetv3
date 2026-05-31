@@ -138,7 +138,7 @@ const featuredPosts = shufflePosts(featuredCandidates)
     </section>
 
     <section class="home-section home-section--stream">
-        <div class="home-stream grid-span-8 grid-start-3">
+        <div class="home-stream grid-span-full home-stream__col">
             <div class="home-stream__inner">
                 <h2 class="home-stream__title">Stream</h2>
                 <StreamList posts={streamPosts} />
@@ -313,6 +313,10 @@ const featuredPosts = shufflePosts(featuredCandidates)
     }
 
     @media (min-width: 48rem) {
+        .home-stream__col {
+            grid-column: 2 / span 10;
+        }
+
         .home-book__cover {
             justify-content: flex-start;
             padding-right: clamp(1.25rem, 3vw, 2.5rem);
