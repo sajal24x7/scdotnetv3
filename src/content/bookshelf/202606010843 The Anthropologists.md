@@ -17,5 +17,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116673485824804420'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mn7hyo47cp27'
   - 'https://www.threads.com/@sajal24x7/post/DZCJvByFUi7'
+bookCover: the-anthropologists.jpg
 ---
 Started reading.
