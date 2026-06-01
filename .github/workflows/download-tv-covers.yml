@@ -65,7 +65,7 @@ jobs:
             exit 0
           fi
 
-          git add src/images/tvshelf/ src/utils/tvCovers.ts
+          git add src/images/tvshelf/ src/utils/tvCovers.ts src/content/
 
           git commit -m "Download and add TV covers
 

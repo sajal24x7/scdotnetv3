@@ -65,7 +65,7 @@ jobs:
             exit 0
           fi
 
-          git add src/images/filmshelf/ src/utils/filmCovers.ts
+          git add src/images/filmshelf/ src/utils/filmCovers.ts src/content/
 
           git commit -m "Download and add film covers
 
