@@ -125,7 +125,7 @@ const formattedAuthor = formatAuthors(author);
 
 <LayoutContainer
     prose
-    maxWidth="4xl"
+    maxWidth="full"
     padding="sm"
     paddingScale="page"
     className="post-layout__container"
@@ -498,8 +498,8 @@ const formattedAuthor = formatAuthors(author);
     @media (min-width: 48rem) {
         .book-header {
             display: grid;
-            /* 3 cols cover, 9 cols metadata out of 12 */
-            grid-template-columns: 3fr 9fr;
+            /* 3 cols cover, 5 cols metadata (= 8 cols total, matching grid-span-8) */
+            grid-template-columns: 3fr 5fr;
             gap: 2rem;
             align-items: start;
             margin-bottom: 0;
