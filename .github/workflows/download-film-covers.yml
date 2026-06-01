@@ -1,0 +1,93 @@
+name: Download Film Covers
+
+on:
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Download mode'
+        required: true
+        default: 'normal'
+        type: choice
+        options:
+          - normal
+          - force
+
+  # Run weekly to catch any new films
+  schedule:
+    - cron: '0 3 * * 0' # Every Sunday at 3 AM UTC
+
+jobs:
+  download-covers:
+    # Prevent infinite loops from bot commits
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Download missing film covers
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: |
+          if [ "${{ inputs.mode }}" = "force" ]; then
+            node scripts/download-film-covers.js --force
+          else
+            node scripts/download-film-covers.js
+          fi
+
+      - name: Generate TypeScript imports
+        run: node scripts/generate-film-covers.js
+
+      - name: Commit film cover updates
+        run: |
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No new film covers to commit"
+            exit 0
+          fi
+
+          git add src/images/filmshelf/ src/utils/filmCovers.ts src/content/
+
+          git commit -m "Download and add film covers
+
+          🤖 Generated with GitHub Actions
+
+          Co-Authored-By: github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+
+          git push origin main
+
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Film cover download workflow failed',
+              body: `The film cover download workflow failed on ${new Date().toISOString()}.
+
+              **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+              Please check the logs and fix any issues.`,
+              labels: ['bug', 'automation']
+            })

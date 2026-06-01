@@ -12,7 +12,7 @@
  *   2. Groups by showTitle (or title) — downloads one poster per unique show
  *   3. Searches TMDB TV endpoint for each show
  *   4. Downloads the poster to src/images/tvshelf/[show-slug].jpg
- *   5. Prints the filename to add to tvCover frontmatter field
+ *   5. Updates tvCover in the frontmatter of all entries for that show
  */
 
 import fs from 'fs';
@@ -82,7 +82,7 @@ function getTVshelfFiles() {
           const content = fs.readFileSync(fullPath, 'utf8');
           const { data } = matter(content);
           if (data.category === 'tvshelf') {
-            files.push({ path: fullPath, data });
+            files.push({ path: fullPath, data, content });
           }
         } catch {
           // skip
@@ -127,6 +127,13 @@ function downloadFile(url, filepath) {
   });
 }
 
+function updateMarkdownWithCover(filePath, originalContent, coverFilename) {
+  const { data, content: bodyContent } = matter(originalContent);
+  data.tvCover = coverFilename;
+  const newContent = matter.stringify(bodyContent, data);
+  fs.writeFileSync(filePath, newContent, 'utf8');
+}
+
 async function searchTVPoster(showTitle, year) {
   let url = `${TMDB_BASE}/search/tv?api_key=${tmdbApiKey}&query=${encodeURIComponent(showTitle)}&language=en-US`;
   if (year) url += `&first_air_date_year=${year}`;
@@ -140,13 +147,14 @@ async function main() {
   const allFiles = getTVshelfFiles();
   console.log(`Found ${allFiles.length} tvshelf entries.`);
 
-  // Group by showTitle (or title) — one poster per unique show
+  // Group by showTitle (or title) — one poster per unique show, all files tracked
   const showMap = new Map();
   for (const file of allFiles) {
     const showTitle = file.data.showTitle ?? file.data.title ?? 'Unknown';
     if (!showMap.has(showTitle)) {
-      showMap.set(showTitle, { data: file.data, showTitle });
+      showMap.set(showTitle, { data: file.data, showTitle, files: [] });
     }
+    showMap.get(showTitle).files.push(file);
   }
 
   console.log(`Found ${showMap.size} unique TV shows.`);
@@ -162,7 +170,13 @@ async function main() {
     const outputPath = path.join(tvshelfDir, filename);
 
     if (fs.existsSync(outputPath) && !forceDownload) {
-      console.log(`⏭️  ${showTitle} — already exists (${filename})`);
+      const missing = show.files.filter(f => !f.data.tvCover);
+      if (missing.length > 0) {
+        for (const f of missing) updateMarkdownWithCover(f.path, f.content, filename);
+        console.log(`📝 ${showTitle} — image exists, updated ${missing.length} frontmatter file(s) (${filename})`);
+      } else {
+        console.log(`⏭️  ${showTitle} — already exists (${filename})`);
+      }
       continue;
     }
 
@@ -177,14 +191,14 @@ async function main() {
       console.log(`   ⬇️  Downloading: ${posterUrl}`);
       await downloadFile(posterUrl, outputPath);
       const size = fs.statSync(outputPath).size;
-      console.log(`   ✅ Saved: ${filename} (${(size / 1024).toFixed(1)} KB)`);
-      console.log(`   📝 Add to frontmatter: tvCover: ${filename}`);
+      for (const f of show.files) updateMarkdownWithCover(f.path, f.content, filename);
+      console.log(`   ✅ Saved: ${filename} (${(size / 1024).toFixed(1)} KB) — updated ${show.files.length} frontmatter file(s)`);
     } catch (err) {
       console.error(`   ❌ Failed for "${showTitle}": ${err.message}`);
     }
   }
 
-  console.log('\nDone! Run "node scripts/generate-tv-covers.js" to update tvCovers.ts');
+  console.log('\nDone! Run "node scripts/generate-tv-covers.js" to update tvCovers.ts.');;
 }
 
 main().catch(console.error);

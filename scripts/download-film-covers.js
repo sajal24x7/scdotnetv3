@@ -11,7 +11,7 @@
  *   1. Reads all markdown files with category: filmshelf
  *   2. For each film without a local poster (or --force), searches TMDB
  *   3. Downloads the poster to src/images/filmshelf/[slug].jpg
- *   4. Prints the filename to add to the filmCover frontmatter field
+ *   4. Updates the filmCover field in the markdown frontmatter automatically
  */
 
 import fs from 'fs';
@@ -83,7 +83,7 @@ function getFilmshelfFiles() {
           const content = fs.readFileSync(fullPath, 'utf8');
           const { data } = matter(content);
           if (data.category === 'filmshelf') {
-            files.push({ path: fullPath, data });
+            files.push({ path: fullPath, data, content });
           }
         } catch {
           // skip
@@ -134,6 +134,13 @@ function downloadFile(url, filepath) {
   });
 }
 
+function updateMarkdownWithCover(filePath, originalContent, coverFilename) {
+  const { data, content: bodyContent } = matter(originalContent);
+  data.filmCover = coverFilename;
+  const newContent = matter.stringify(bodyContent, data);
+  fs.writeFileSync(filePath, newContent, 'utf8');
+}
+
 // Search TMDB for a film and return the poster path
 async function searchFilmPoster(title, year) {
   let url = `${TMDB_BASE}/search/movie?api_key=${tmdbApiKey}&query=${encodeURIComponent(title)}&language=en-US`;
@@ -169,7 +176,12 @@ async function main() {
     const outputPath = path.join(filmshelfDir, filename);
 
     if (fs.existsSync(outputPath) && !forceDownload) {
-      console.log(`⏭️  ${title} — already exists (${filename})`);
+      if (!film.data.filmCover) {
+        updateMarkdownWithCover(film.path, film.content, filename);
+        console.log(`📝 ${title} — image exists, updated frontmatter (${filename})`);
+      } else {
+        console.log(`⏭️  ${title} — already exists (${filename})`);
+      }
       continue;
     }
 
@@ -184,14 +196,14 @@ async function main() {
       console.log(`   ⬇️  Downloading: ${posterUrl}`);
       await downloadFile(posterUrl, outputPath);
       const size = fs.statSync(outputPath).size;
-      console.log(`   ✅ Saved: ${filename} (${(size / 1024).toFixed(1)} KB)`);
-      console.log(`   📝 Add to frontmatter: filmCover: ${filename}`);
+      updateMarkdownWithCover(film.path, film.content, filename);
+      console.log(`   ✅ Saved: ${filename} (${(size / 1024).toFixed(1)} KB) — frontmatter updated`);
     } catch (err) {
       console.error(`   ❌ Failed for "${title}": ${err.message}`);
     }
   }
 
-  console.log('\nDone! Run "node scripts/generate-film-covers.js" to update filmCovers.ts');
+  console.log('\nDone! Run "node scripts/generate-film-covers.js" to update filmCovers.ts.');;
 }
 
 main().catch(console.error);

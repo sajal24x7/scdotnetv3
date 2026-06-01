@@ -11,7 +11,7 @@
  *   1. Reads all markdown files with category: gameshelf
  *   2. For each game without a local cover (or --force), searches RAWG
  *   3. Downloads the background image to src/images/gameshelf/[slug].jpg
- *   4. Prints the filename to add to the gameCover frontmatter field
+ *   4. Updates the gameCover field in the markdown frontmatter automatically
  */
 
 import fs from 'fs';
@@ -74,7 +74,7 @@ function getGameshelfFiles() {
           const content = fs.readFileSync(fullPath, 'utf8');
           const { data } = matter(content);
           if (data.category === 'gameshelf') {
-            files.push({ path: fullPath, data });
+            files.push({ path: fullPath, data, content });
           }
         } catch {
           // skip
@@ -119,6 +119,13 @@ function downloadFile(url, filepath) {
   });
 }
 
+function updateMarkdownWithCover(filePath, originalContent, coverFilename) {
+  const { data, content: bodyContent } = matter(originalContent);
+  data.gameCover = coverFilename;
+  const newContent = matter.stringify(bodyContent, data);
+  fs.writeFileSync(filePath, newContent, 'utf8');
+}
+
 async function searchGameCover(title) {
   let url = `${RAWG_BASE}/games?search=${encodeURIComponent(title)}&page_size=1`;
   if (rawgApiKey) url += `&key=${rawgApiKey}`;
@@ -154,7 +161,12 @@ async function main() {
     const outputPath = path.join(gameshelfDir, filename);
 
     if (fs.existsSync(outputPath) && !forceDownload) {
-      console.log(`⏭️  ${title} — already exists (${filename})`);
+      if (!game.data.gameCover) {
+        updateMarkdownWithCover(game.path, game.content, filename);
+        console.log(`📝 ${title} — image exists, updated frontmatter (${filename})`);
+      } else {
+        console.log(`⏭️  ${title} — already exists (${filename})`);
+      }
       continue;
     }
 
@@ -169,14 +181,15 @@ async function main() {
       console.log(`   ⬇️  Downloading: ${coverUrl}`);
       await downloadFile(coverUrl, outputPath);
       const size = fs.statSync(outputPath).size;
-      console.log(`   ✅ Saved: ${filename} (${(size / 1024).toFixed(1)} KB)`);
-      console.log(`   📝 Add to frontmatter: gameCover: ${filename}`);
+      updateMarkdownWithCover(game.path, game.content, filename);
+      console.log(`   ✅ Saved: ${filename} (${(size / 1024).toFixed(1)} KB) — frontmatter updated`);
     } catch (err) {
       console.error(`   ❌ Failed for "${title}": ${err.message}`);
     }
   }
 
-  console.log('\nDone! Run "node scripts/generate-game-covers.js" to update gameCovers.ts');
+  console.log('\nDone! Run "node scripts/generate-game-covers.js" to update gameCovers.ts.');
+;
 }
 
 main().catch(console.error);
