@@ -1,14 +1,17 @@
 ---
-title: "About Using AI for Personal Notes"
-slug: "about-using-ai-for-personal-notes"
-pubDate: 2026-06-01T09:42:17+03:00
-updatedDate: 2026-06-01T09:42:17+03:00
+title: About Using AI for Personal Notes
+slug: about-using-ai-for-personal-notes
+pubDate: 2026-06-01T06:42:17.000Z
+updatedDate: 2026-06-01T06:42:17.000Z
 category: micro
 tags:
   - interconnected
   - ai
   - psychology
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116673491243403457'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mn7i34py522a'
+  - 'https://www.threads.com/@sajal24x7/post/DZCJv4slTA5'
 ---
 [How global logistics got me over my fear of personal agents](https://interconnected.org/home/2026/05/30/fedex)
 
