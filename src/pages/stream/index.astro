@@ -21,11 +21,19 @@ const sectionLandingProps = createSectionLandingProps(
     countText: postCountText,
     tagCategory: 'stream',
     tagPosts: allPosts,
-    contentClass: 'grid-span-8 grid-start-3'
+    contentClass: 'stream-content-10col'
   },
   'plainCount'
 );
 ---
+
+<style>
+  @media (min-width: 48rem) {
+    :global(.stream-content-10col) {
+      grid-column: 2 / span 10;
+    }
+  }
+</style>
 
 <Layout
   title="Stream"
