@@ -125,7 +125,7 @@ const formattedAuthor = formatAuthors(author);
 
 <LayoutContainer
     prose
-    maxWidth="4xl"
+    maxWidth="full"
     padding="sm"
     paddingScale="page"
     className="post-layout__container"
@@ -162,55 +162,76 @@ const formattedAuthor = formatAuthors(author);
                 </div>
             )}
 
-            {/* Book cover for bookshelf posts */}
-            {isBookshelf && coverImage && (
-                <div class="mb-6 flex justify-center">
-                    <Image
-                        src={coverImage}
-                        alt={`Cover of ${title}`}
-                        class="book-meta-cover-image"
-                        loading="lazy"
-                    />
+            {/* Bookshelf: two-column on desktop (cover left, metadata right) */}
+            {isBookshelf ? (
+                <div class="book-header">
+                    {coverImage && (
+                        <div class="book-header__cover">
+                            <Image
+                                src={coverImage}
+                                alt={`Cover of ${title}`}
+                                class="book-meta-cover-image"
+                                loading="lazy"
+                            />
+                        </div>
+                    )}
+                    <div class={`book-header__meta${!coverImage ? ' book-header__meta--no-cover' : ''}`}>
+                        <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
+
+                        {formattedAuthor && (
+                            <div class="book-meta-author-title">by {formattedAuthor}</div>
+                        )}
+
+                        {description && (
+                            <p class="p-summary text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
+                                {description}
+                            </p>
+                        )}
+
+                        {tags.length > 0 && (
+                            <div class="mb-4 flex flex-wrap gap-2">
+                                {tags.map((tag: string) => (
+                                    <Tag tag={tag} as="a" />
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            ) : (
+                <div class="text-center">
+                    <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
+
+                    {category === 'nordletter' && edition && (
+                        <div class="flex justify-center items-center gap-4 mb-4">
+                            <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+                                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Letter: {edition}
+                                </span>
+                            </div>
+                        </div>
+                    )}
+
+                    {description && (
+                        <p class="p-summary text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
+                            {description}
+                        </p>
+                    )}
+
+                    {tags.length > 0 && (
+                        <div class="mb-8 flex justify-center">
+                            <div class="flex flex-wrap gap-2 justify-center">
+                                {tags.map((tag: string) => (
+                                    <Tag tag={tag} as="a" />
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             )}
-
-            <div class="text-center">
-                <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
-
-                {isBookshelf && formattedAuthor && (
-                    <div class="book-meta-author-title">by {formattedAuthor}</div>
-                )}
-
-                {category === 'nordletter' && edition && (
-                    <div class="flex justify-center items-center gap-4 mb-4">
-                        <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
-                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Letter: {edition}
-                            </span>
-                        </div>
-                    </div>
-                )}
-
-                {description && (
-                    <p class="p-summary text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
-                        {description}
-                    </p>
-                )}
-
-                {tags.length > 0 && (
-                    <div class="mb-8 flex justify-center">
-                        <div class="flex flex-wrap gap-2 justify-center">
-                            {tags.map((tag: string) => (
-                                <Tag tag={tag} as="a" />
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </div>
         </div>
 
         {isBookshelf && (genreLabel || formatLabel || bookRating || timelineLabel) && (
-            <div class="book-meta-section">
+            <div class={`book-meta-section${coverImage ? ' book-meta-section--has-cover' : ''}`}>
                 <div class="book-meta-pills">
                     {genreLabel && (
                             <span class="book-meta__chip book-meta__chip--genre">
@@ -451,6 +472,49 @@ const formattedAuthor = formatAuthors(author);
         font-weight: 600;
     }
 
+    /* Bookshelf two-column header */
+    .book-header {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 0;
+    }
+
+    .book-header__cover {
+        display: flex;
+        justify-content: center;
+    }
+
+    .book-header__meta {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .book-header__meta--no-cover {
+        text-align: center;
+        align-items: center;
+    }
+
+    @media (min-width: 48rem) {
+        .book-header {
+            display: grid;
+            /* 3 cols cover, 5 cols metadata (= 8 cols total, matching grid-span-8) */
+            grid-template-columns: 3fr 5fr;
+            gap: 2rem;
+            align-items: start;
+            margin-bottom: 0;
+        }
+
+        .book-header__cover {
+            justify-content: flex-start;
+        }
+
+        .book-header__meta {
+            justify-content: flex-start;
+            padding-top: 0.25rem;
+        }
+    }
+
     /* Bookshelf metadata section */
     .book-meta-section {
         margin-bottom: 2.5rem;
@@ -459,18 +523,35 @@ const formattedAuthor = formatAuthors(author);
         text-align: center;
     }
 
+    @media (min-width: 48rem) {
+        .book-meta-section--has-cover {
+            text-align: left;
+        }
+
+        .book-meta-section--has-cover .book-meta-pills {
+            justify-content: flex-start;
+        }
+    }
+
     :global(.dark) .book-meta-section {
         border-bottom-color: rgb(var(--color-border));
     }
 
     .book-meta-cover-image {
         width: auto;
-        max-height: 24rem; /* matches hero image max-h-96 */
+        max-height: 24rem;
         height: auto;
         border-radius: 0.75rem;
         box-shadow:
             0 4px 6px rgba(0, 0, 0, 0.1),
             0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    @media (min-width: 48rem) {
+        .book-meta-cover-image {
+            width: 100%;
+            max-height: none;
+        }
     }
 
     :global(.dark) .book-meta-cover-image {

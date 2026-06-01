@@ -43,6 +43,7 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
   currentPage={`/${category}/${slug}/`}
   enableSearchModal
   enableLinkHoverEffect
+  pageWrapper={{ className: 'grid-span-8 grid-start-3' }}
 >
   <PostLayout
     entry={entry}
