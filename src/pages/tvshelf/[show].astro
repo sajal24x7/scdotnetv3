@@ -120,8 +120,8 @@ const statusChipClassMap: Record<string, string> = {
       </div>
       <div class="tv-show-page__info">
         <h1 class="tv-show-page__title">{showTitle}</h1>
-        {latestSeason.data.creator && (
-          <p class="tv-show-page__creator">{latestSeason.data.creator}</p>
+        {latestSeason.data.creator && latestSeason.data.creator.length > 0 && (
+          <p class="tv-show-page__creator">{latestSeason.data.creator.join(', ')}</p>
         )}
         <div class="tv-show-page__meta">
           {latestSeason.data.year && (

@@ -14,7 +14,7 @@ type FilmStatus = 'watching' | 'watched' | 'to-watch';
 
 interface FilmCardProps {
     title: string;
-    director?: string;
+    director?: string[];
     year?: number;
     genre?: string;
     filmStatus?: FilmStatus;
@@ -106,15 +106,19 @@ const timelineLabel = watchedLabel ? `Watched ${watchedLabel}` : null;
             </h3>
           </div>
         </div>
-        {director && (
-          <button
-            type="button"
-            class="book-card__author book-card__author--clickable"
-            data-filter-type="director"
-            data-filter-value={director}
-          >
-            {director}
-          </button>
+        {director && director.length > 0 && (
+          <div class="book-card__authors">
+            {director.map((d) => (
+              <button
+                type="button"
+                class="book-card__author book-card__author--clickable"
+                data-filter-type="director"
+                data-filter-value={d}
+              >
+                {d}
+              </button>
+            ))}
+          </div>
         )}
       </header>
 
@@ -211,6 +215,7 @@ const timelineLabel = watchedLabel ? `Watched ${watchedLabel}` : null;
   :global(.dark) .book-card__title { color: #f9fafb; }
   .book-card__title-link { color: inherit; text-decoration: none; }
   .book-card__title-link:hover, .book-card__title-link:focus-visible { text-decoration: underline; }
+  .book-card__authors { display: flex; flex-wrap: wrap; gap: 0.25rem; }
   .book-card__author { font-size: 0.875rem; font-weight: 500; color: #374151; }
   :global(.dark) .book-card__author { color: #d1d5db; }
   .book-card__author--clickable { background: none; border: none; padding: 0; cursor: pointer; text-align: left; transition: color 150ms ease; }
