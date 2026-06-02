@@ -1,25 +1,24 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
+import Layout from '../../../layouts/Layout.astro';
+import ShelfTabNav from '../../../components/shelf/ShelfTabNav.astro';
 import { Image } from 'astro:assets';
-import { getAllPosts } from '../../utils/content';
-import { slugify } from '../../utils/shelfUtils';
-import { getTVCoverImage } from '../../utils/tvCovers';
+import { getAllPosts } from '../../../utils/content';
+import { slugify } from '../../../utils/shelfUtils';
+import { getTVCoverImage } from '../../../utils/tvCovers';
 import {
     bookRatingDisplay,
     heartIconPaths,
     thumbIconPaths,
     type BookRating,
     type RatingIconSpec
-} from '../../utils/bookRatings';
+} from '../../../utils/bookRatings';
 
 export async function getStaticPaths() {
-    const { getAllPosts } = await import('../../utils/content');
-    const { slugify } = await import('../../utils/shelfUtils');
+    const { getAllPosts } = await import('../../../utils/content');
+    const { slugify } = await import('../../../utils/shelfUtils');
     const allPosts = await getAllPosts();
     const tvPosts = allPosts.filter((p) => p.data.category === 'tvshelf');
 
-    // Group by show
     const showMap = new Map<string, typeof tvPosts>();
     for (const post of tvPosts) {
         const key = post.data.showTitle ?? post.data.title ?? 'Unknown';
@@ -39,13 +38,12 @@ interface Props {
 }
 
 const { showTitle, seasons } = Astro.props;
+const showSlug = slugify(showTitle);
 
-// Sort seasons by season number ascending
 const sortedSeasons = [...seasons].sort((a, b) => {
     return (a.data.season ?? 1) - (b.data.season ?? 1);
 });
 
-// Overall show info from the most recent season
 const latestSeason = [...seasons].sort((a, b) => (b.data.season ?? 1) - (a.data.season ?? 1))[0];
 
 const parseDate = (value?: Date | string | null): Date | null => {
@@ -60,14 +58,6 @@ const formatYMD = (value?: Date | string | null): string | null => {
 };
 
 const allPosts = await getAllPosts();
-
-// Pre-render season body content for notes
-const renderedSeasons = await Promise.all(
-    sortedSeasons.map(async (season) => {
-        const { Content } = await season.render();
-        return { season, Content };
-    })
-);
 
 const statusLabelMap: Record<string, string> = {
     watching: 'Watching',
@@ -85,7 +75,6 @@ const statusChipClassMap: Record<string, string> = {
     abandoned: 'chip--status-abandoned'
 };
 
-// Show-level metadata from latest season
 const showCoverImage = latestSeason.data.tvCover ? getTVCoverImage(latestSeason.data.tvCover) : null;
 const showCreators: string[] = Array.isArray(latestSeason.data.creator) ? latestSeason.data.creator : [];
 const formatCreators = (creators: string[]) => {
@@ -163,7 +152,7 @@ const showYear = latestSeason.data.year ?? null;
     <section class="tv-show-page__seasons">
       <h2 class="tv-show-page__seasons-title">Seasons</h2>
       <div class="tv-show-page__seasons-list">
-        {renderedSeasons.map(({ season, Content }) => {
+        {sortedSeasons.map((season) => {
           const seasonNum = season.data.season ?? 1;
           const status = season.data.tvStatus;
           const statusLabel = status ? statusLabelMap[status] : null;
@@ -174,7 +163,7 @@ const showYear = latestSeason.data.year ?? null;
           const coverImage = season.data.tvCover ? getTVCoverImage(season.data.tvCover) : null;
 
           return (
-            <div class="tv-season-card">
+            <a href={`/tvshelf/${showSlug}/s${seasonNum}/`} class="tv-season-card">
               {coverImage && (
                 <div class="tv-season-card__cover-wrap">
                   <Image
@@ -224,11 +213,8 @@ const showYear = latestSeason.data.year ?? null;
                     </span>
                   )}
                 </div>
-                <div class="tv-season-card__notes">
-                  <Content />
-                </div>
               </div>
-            </div>
+            </a>
           );
         })}
       </div>
@@ -248,7 +234,6 @@ const showYear = latestSeason.data.year ?? null;
     padding: 1rem 0 3rem;
   }
 
-  /* Show header: stacked on mobile, 3/5 grid on desktop */
   .tv-show-header {
     display: flex;
     flex-direction: column;
@@ -377,11 +362,26 @@ const showYear = latestSeason.data.year ?? null;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 0.75rem;
     align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  }
+
+  .tv-season-card:hover {
+    background: rgba(99, 102, 241, 0.04);
+    border-color: rgba(99, 102, 241, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(129, 140, 248, 0.15);
+    transform: translateY(-2px);
   }
 
   :global(.dark) .tv-season-card {
     background: rgba(255, 255, 255, 0.03);
     border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  :global(.dark) .tv-season-card:hover {
+    background: rgba(99, 102, 241, 0.08);
+    border-color: rgba(99, 102, 241, 0.3);
   }
 
   .tv-season-card__cover-wrap {
@@ -428,19 +428,7 @@ const showYear = latestSeason.data.year ?? null;
     gap: 0.4rem;
   }
 
-  .tv-season-card__notes {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #374151;
-    line-height: 1.6;
-  }
-
-  :global(.dark) .tv-season-card__notes { color: #d1d5db; }
-
-  .tv-season-card__notes :global(p) { margin: 0 0 0.5rem; }
-  .tv-season-card__notes :global(p:last-child) { margin-bottom: 0; }
-
-  /* Chip label (property name) */
+  /* Chip label */
   .tv-chip-label {
     opacity: 0.6;
     font-weight: 500;
