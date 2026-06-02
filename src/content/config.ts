@@ -43,13 +43,13 @@ const postsCollection = defineCollection({
     // Release year (film, TV, games)
     year: z.number().optional(),
     // Film-specific metadata
-    director: z.string().optional(),
+    director: z.array(z.string()).optional(),
     watchedDate: dateSchema.optional(),
     filmStatus: z.enum(['watching', 'watched', 'to-watch']).optional(),
     filmRating: z.enum(['like', 'love', 'nope']).optional(),
     filmCover: z.string().optional(),
     // TV-specific metadata
-    creator: z.string().optional(),
+    creator: z.array(z.string()).optional(),
     showTitle: z.string().optional(),
     season: z.number().optional(),
     tvStatus: z.enum(['watching', 'watched', 'to-watch', 'on-hold', 'abandoned']).optional(),
