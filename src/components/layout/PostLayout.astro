@@ -8,6 +8,9 @@ import SyndicationLinks from '../SyndicationLinks.astro';
 import NewsletterSignup from '../ui/NewsletterSignup.astro';
 import { Image } from 'astro:assets';
 import { getBookCoverImage } from '../../utils/bookCovers';
+import { getFilmCoverImage } from '../../utils/filmCovers';
+import { getGameCoverImage } from '../../utils/gameCovers';
+import { getTVCoverImage } from '../../utils/tvCovers';
 import {
     bookRatingDisplay,
     heartIconPaths,
@@ -121,6 +124,71 @@ const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [
 
 const coverImage = bookCover ? getBookCoverImage(bookCover) : null;
 const formattedAuthor = formatAuthors(author);
+
+// Film-specific data
+const isFilmshelf = category === 'filmshelf';
+const filmCoverFilename = isFilmshelf ? (entryData.filmCover ?? undefined) : undefined;
+const director = isFilmshelf ? (entryData.director ?? undefined) : undefined;
+const filmRating = isFilmshelf ? (entryData.filmRating ?? undefined) : undefined;
+const filmWatchedDate = isFilmshelf ? (entryData.watchedDate ?? undefined) : undefined;
+const filmYear = isFilmshelf ? (entryData.year ?? null) : null;
+const filmGenre = isFilmshelf ? (entryData.genre ?? null) : null;
+
+// Game-specific data
+const isGameshelf = category === 'gameshelf';
+const gameCoverFilename = isGameshelf ? (entryData.gameCover ?? undefined) : undefined;
+const developer = isGameshelf ? (entryData.developer ?? null) : null;
+const platform = isGameshelf ? (entryData.platform ?? null) : null;
+const gameRating = isGameshelf ? (entryData.gameRating ?? undefined) : undefined;
+const gameYear = isGameshelf ? (entryData.year ?? null) : null;
+const gameGenre = isGameshelf ? (entryData.genre ?? null) : null;
+
+// TV-specific data (PostLayout fallback; primary TV page is tvshelf/[show].astro)
+const isTVshelf = category === 'tvshelf';
+const tvCoverFilename = isTVshelf ? (entryData.tvCover ?? undefined) : undefined;
+const tvCreator = isTVshelf ? (entryData.creator ?? undefined) : undefined;
+const tvRating = isTVshelf ? (entryData.tvRating ?? undefined) : undefined;
+const tvYear = isTVshelf ? (entryData.year ?? null) : null;
+const tvGenre = isTVshelf ? (entryData.genre ?? null) : null;
+const tvSeason = isTVshelf ? (entryData.season ?? null) : null;
+
+const isShelfPost = isBookshelf || isFilmshelf || isGameshelf || isTVshelf;
+
+// Cover images for all shelf types
+const filmCoverImage = filmCoverFilename ? getFilmCoverImage(filmCoverFilename) : null;
+const gameCoverImage = gameCoverFilename ? getGameCoverImage(gameCoverFilename) : null;
+const tvCoverImage = tvCoverFilename ? getTVCoverImage(tvCoverFilename) : null;
+const shelfCoverImage = isBookshelf ? coverImage
+    : isFilmshelf ? filmCoverImage
+    : isGameshelf ? gameCoverImage
+    : isTVshelf ? tvCoverImage
+    : null;
+
+// Formatted metadata for film/game/TV
+const formattedDirectors = formatAuthors(director);
+const formattedCreators = formatAuthors(tvCreator);
+
+const filmGenreLabel = filmGenre ? filmGenre.toUpperCase() : null;
+const filmRatingDisplay = filmRating ? bookRatingDisplay[filmRating as BookRating] : null;
+const filmRatingAriaLabel = filmRatingDisplay
+    ? filmRatingDisplay.label.replace(/^Rating:\s*/i, 'Rated ')
+    : 'Rating: Not set';
+const filmRatingIconSpecs: readonly RatingIconSpec[] = filmRatingDisplay?.iconSpecs ?? [];
+const filmWatchedFormatted = formatYMD(filmWatchedDate);
+
+const gameGenreLabel = gameGenre ? gameGenre.toUpperCase() : null;
+const gameRatingDisplay = gameRating ? bookRatingDisplay[gameRating as BookRating] : null;
+const gameRatingAriaLabel = gameRatingDisplay
+    ? gameRatingDisplay.label.replace(/^Rating:\s*/i, 'Rated ')
+    : 'Rating: Not set';
+const gameRatingIconSpecs: readonly RatingIconSpec[] = gameRatingDisplay?.iconSpecs ?? [];
+
+const tvGenreLabel = tvGenre ? tvGenre.toUpperCase() : null;
+const tvRatingDisplay = tvRating ? bookRatingDisplay[tvRating as BookRating] : null;
+const tvRatingAriaLabel = tvRatingDisplay
+    ? tvRatingDisplay.label.replace(/^Rating:\s*/i, 'Rated ')
+    : 'Rating: Not set';
+const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs ?? [];
 ---
 
 <LayoutContainer
@@ -150,8 +218,8 @@ const formattedAuthor = formatAuthors(author);
         </div>
 
         <div class="mb-8">
-            {/* Hero image for all posts */}
-            {heroImage && !isBookshelf && (
+            {/* Hero image for non-shelf posts */}
+            {heroImage && !isShelfPost && (
                 <div class="mb-6">
                     <img
                         src={heroImage}
@@ -162,24 +230,33 @@ const formattedAuthor = formatAuthors(author);
                 </div>
             )}
 
-            {/* Bookshelf: two-column on desktop (cover left, metadata right) */}
-            {isBookshelf ? (
+            {/* Shelf post pages: two-column on desktop (cover left, metadata right) */}
+            {isShelfPost ? (
                 <div class="book-header">
-                    {coverImage && (
+                    {shelfCoverImage && (
                         <div class="book-header__cover">
                             <Image
-                                src={coverImage}
+                                src={shelfCoverImage}
                                 alt={`Cover of ${title}`}
                                 class="book-meta-cover-image"
                                 loading="lazy"
                             />
                         </div>
                     )}
-                    <div class={`book-header__meta${!coverImage ? ' book-header__meta--no-cover' : ''}`}>
+                    <div class={`book-header__meta${!shelfCoverImage ? ' book-header__meta--no-cover' : ''}`}>
                         <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
 
-                        {formattedAuthor && (
+                        {isBookshelf && formattedAuthor && (
                             <div class="book-meta-author-title">by {formattedAuthor}</div>
+                        )}
+                        {isFilmshelf && formattedDirectors && (
+                            <div class="book-meta-author-title">Directed by {formattedDirectors}</div>
+                        )}
+                        {isGameshelf && developer && (
+                            <div class="book-meta-author-title">by {developer}</div>
+                        )}
+                        {isTVshelf && formattedCreators && (
+                            <div class="book-meta-author-title">Created by {formattedCreators}</div>
                         )}
 
                         {description && (
@@ -196,7 +273,8 @@ const formattedAuthor = formatAuthors(author);
                             </div>
                         )}
 
-                        {(genreLabel || formatLabel || bookRating || timelineValue) && (
+                        {/* Bookshelf chips */}
+                        {isBookshelf && (genreLabel || formatLabel || bookRating || timelineValue) && (
                             <div class="book-meta-pills">
                                 {genreLabel && (
                                     <span class="book-meta__chip book-meta__chip--genre">
@@ -258,6 +336,189 @@ const formattedAuthor = formatAuthors(author);
                                     <span class="book-meta__chip book-meta__chip--timeline">
                                         <span class="book-meta__chip-section-label">Read</span>
                                         <span class="book-meta__chip-label">{timelineValue}</span>
+                                    </span>
+                                )}
+                            </div>
+                        )}
+
+                        {/* Film chips */}
+                        {isFilmshelf && (filmGenreLabel || filmYear || filmRating || filmWatchedFormatted) && (
+                            <div class="book-meta-pills">
+                                {filmGenreLabel && (
+                                    <span class="book-meta__chip book-meta__chip--genre">
+                                        <span class="book-meta__chip-section-label">Genre</span>
+                                        {filmGenreLabel}
+                                    </span>
+                                )}
+                                {filmYear && (
+                                    <span class="book-meta__chip book-meta__chip--timeline">
+                                        <span class="book-meta__chip-section-label">Year</span>
+                                        <span class="book-meta__chip-label">{filmYear}</span>
+                                    </span>
+                                )}
+                                {filmRating && (
+                                    <span
+                                        class={`book-meta__chip book-meta__chip--rating book-meta__chip--rating-${filmRating}`}
+                                        aria-label={filmRatingAriaLabel}
+                                    >
+                                        <span class="book-meta__chip-section-label">Rated</span>
+                                        {filmRatingIconSpecs.length > 0 && (
+                                            <span
+                                                class={`book-meta__rating-icons book-meta__rating-icons--${filmRating}`}
+                                                aria-hidden="true"
+                                            >
+                                                {filmRatingIconSpecs.map((iconSpec) => (
+                                                    <span class="book-meta__rating-icon">
+                                                        <svg
+                                                            width={iconSpec.size}
+                                                            height={iconSpec.size}
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="1.5"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                        >
+                                                            {(
+                                                                iconSpec.type === 'heart'
+                                                                    ? heartIconPaths
+                                                                    : thumbIconPaths[iconSpec.direction]
+                                                            ).map((d) => (
+                                                                <path d={d}></path>
+                                                            ))}
+                                                        </svg>
+                                                    </span>
+                                                ))}
+                                            </span>
+                                        )}
+                                    </span>
+                                )}
+                                {filmWatchedFormatted && (
+                                    <span class="book-meta__chip book-meta__chip--timeline">
+                                        <span class="book-meta__chip-section-label">Watched</span>
+                                        <span class="book-meta__chip-label">{filmWatchedFormatted}</span>
+                                    </span>
+                                )}
+                            </div>
+                        )}
+
+                        {/* Game chips */}
+                        {isGameshelf && (gameGenreLabel || platform || gameYear || gameRating) && (
+                            <div class="book-meta-pills">
+                                {gameGenreLabel && (
+                                    <span class="book-meta__chip book-meta__chip--genre">
+                                        <span class="book-meta__chip-section-label">Genre</span>
+                                        {gameGenreLabel}
+                                    </span>
+                                )}
+                                {platform && (
+                                    <span class="book-meta__chip book-meta__chip--format">
+                                        <span class="book-meta__chip-section-label">Platform</span>
+                                        {(platform as string).toUpperCase()}
+                                    </span>
+                                )}
+                                {gameYear && (
+                                    <span class="book-meta__chip book-meta__chip--timeline">
+                                        <span class="book-meta__chip-section-label">Year</span>
+                                        <span class="book-meta__chip-label">{gameYear}</span>
+                                    </span>
+                                )}
+                                {gameRating && (
+                                    <span
+                                        class={`book-meta__chip book-meta__chip--rating book-meta__chip--rating-${gameRating}`}
+                                        aria-label={gameRatingAriaLabel}
+                                    >
+                                        <span class="book-meta__chip-section-label">Rated</span>
+                                        {gameRatingIconSpecs.length > 0 && (
+                                            <span
+                                                class={`book-meta__rating-icons book-meta__rating-icons--${gameRating}`}
+                                                aria-hidden="true"
+                                            >
+                                                {gameRatingIconSpecs.map((iconSpec) => (
+                                                    <span class="book-meta__rating-icon">
+                                                        <svg
+                                                            width={iconSpec.size}
+                                                            height={iconSpec.size}
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="1.5"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                        >
+                                                            {(
+                                                                iconSpec.type === 'heart'
+                                                                    ? heartIconPaths
+                                                                    : thumbIconPaths[iconSpec.direction]
+                                                            ).map((d) => (
+                                                                <path d={d}></path>
+                                                            ))}
+                                                        </svg>
+                                                    </span>
+                                                ))}
+                                            </span>
+                                        )}
+                                    </span>
+                                )}
+                            </div>
+                        )}
+
+                        {/* TV chips */}
+                        {isTVshelf && (tvGenreLabel || tvYear || tvSeason || tvRating) && (
+                            <div class="book-meta-pills">
+                                {tvGenreLabel && (
+                                    <span class="book-meta__chip book-meta__chip--genre">
+                                        <span class="book-meta__chip-section-label">Genre</span>
+                                        {tvGenreLabel}
+                                    </span>
+                                )}
+                                {tvYear && (
+                                    <span class="book-meta__chip book-meta__chip--timeline">
+                                        <span class="book-meta__chip-section-label">Year</span>
+                                        <span class="book-meta__chip-label">{tvYear}</span>
+                                    </span>
+                                )}
+                                {tvSeason && (
+                                    <span class="book-meta__chip book-meta__chip--format">
+                                        <span class="book-meta__chip-section-label">Season</span>
+                                        {tvSeason}
+                                    </span>
+                                )}
+                                {tvRating && (
+                                    <span
+                                        class={`book-meta__chip book-meta__chip--rating book-meta__chip--rating-${tvRating}`}
+                                        aria-label={tvRatingAriaLabel}
+                                    >
+                                        <span class="book-meta__chip-section-label">Rated</span>
+                                        {tvRatingIconSpecs.length > 0 && (
+                                            <span
+                                                class={`book-meta__rating-icons book-meta__rating-icons--${tvRating}`}
+                                                aria-hidden="true"
+                                            >
+                                                {tvRatingIconSpecs.map((iconSpec) => (
+                                                    <span class="book-meta__rating-icon">
+                                                        <svg
+                                                            width={iconSpec.size}
+                                                            height={iconSpec.size}
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="1.5"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                        >
+                                                            {(
+                                                                iconSpec.type === 'heart'
+                                                                    ? heartIconPaths
+                                                                    : thumbIconPaths[iconSpec.direction]
+                                                            ).map((d) => (
+                                                                <path d={d}></path>
+                                                            ))}
+                                                        </svg>
+                                                    </span>
+                                                ))}
+                                            </span>
+                                        )}
                                     </span>
                                 )}
                             </div>
@@ -474,7 +735,7 @@ const formattedAuthor = formatAuthors(author);
         font-weight: 600;
     }
 
-    /* Bookshelf two-column header */
+    /* Shelf post two-column header */
     .book-header {
         display: flex;
         flex-direction: column;
