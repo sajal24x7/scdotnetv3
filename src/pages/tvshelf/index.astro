@@ -16,10 +16,23 @@ const parseDate = (value?: Date | string | null): Date | null => {
     return Number.isNaN(d.getTime()) ? null : d;
 };
 
+// Split slug like "glory/s1" into show and season parts,
+// falling back to computed values for posts without the new format.
+function parsePostSlug(post: typeof tvPosts[number]) {
+    const parts = (post.data.slug ?? '').split('/');
+    const showTitle = post.data.showTitle ?? post.data.title ?? 'Unknown';
+    const seasonNum = post.data.season ?? 1;
+    return {
+        showSlug: parts[0] || slugify(showTitle),
+        seasonSlug: parts[1] || `s${seasonNum}`
+    };
+}
+
 interface SeasonEntry {
     post: typeof tvPosts[number];
     showTitle: string;
     showSlug: string;
+    seasonSlug: string;
     seasonNum: number;
     year: number;
     tvStatus: string | undefined;
@@ -34,14 +47,18 @@ const statusOrder: Record<string, number> = {
     other: 5
 };
 
-const seasonEntries: SeasonEntry[] = tvPosts.map((post) => ({
-    post,
-    showTitle: post.data.showTitle ?? post.data.title ?? 'Unknown',
-    showSlug: slugify(post.data.showTitle ?? post.data.title ?? 'Unknown'),
-    seasonNum: post.data.season ?? 1,
-    year: (parseDate(post.data.pubDate) ?? new Date()).getFullYear(),
-    tvStatus: post.data.tvStatus
-}));
+const seasonEntries: SeasonEntry[] = tvPosts.map((post) => {
+    const { showSlug, seasonSlug } = parsePostSlug(post);
+    return {
+        post,
+        showTitle: post.data.showTitle ?? post.data.title ?? 'Unknown',
+        showSlug,
+        seasonSlug,
+        seasonNum: post.data.season ?? 1,
+        year: (parseDate(post.data.pubDate) ?? new Date()).getFullYear(),
+        tvStatus: post.data.tvStatus
+    };
+});
 
 seasonEntries.sort((a, b) => {
     if (a.year !== b.year) return b.year - a.year;
@@ -111,10 +128,10 @@ const sectionLandingProps = createSectionLandingProps({
               </div>
               {yearEntries.map((entry, index) => {
                 const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
-                const { post, showTitle, showSlug, seasonNum } = entry;
+                const { post, showTitle, showSlug, seasonSlug, seasonNum } = entry;
                 return (
                   <div
-                    key={`${showSlug}-s${seasonNum}`}
+                    key={`${showSlug}-${seasonSlug}`}
                     class={`bookshelf-year__book ${gridClasses}`}
                     data-content-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
@@ -125,6 +142,7 @@ const sectionLandingProps = createSectionLandingProps({
                     <TVCard
                       title={showTitle}
                       showSlug={showSlug}
+                      seasonSlug={seasonSlug}
                       seasonNumber={seasonNum}
                       creator={post.data.creator}
                       year={post.data.year as number | undefined}

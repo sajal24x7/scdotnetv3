@@ -26,19 +26,25 @@ export async function getStaticPaths() {
         showMap.get(key)!.push(post);
     }
 
-    return Array.from(showMap.entries()).map(([showTitle, seasons]) => ({
-        params: { show: slugify(showTitle) },
-        props: { showTitle, seasons }
-    }));
+    return Array.from(showMap.entries()).map(([showTitle, seasons]) => {
+        // Use the show part of the first season's slug (e.g. "glory" from "glory/s1"),
+        // falling back to slugify(showTitle) for entries without the new format.
+        const firstSlug = seasons[0]?.data.slug ?? '';
+        const showSlug = firstSlug.split('/')[0] || slugify(showTitle);
+        return {
+            params: { show: showSlug },
+            props: { showTitle, showSlug, seasons }
+        };
+    });
 }
 
 interface Props {
     showTitle: string;
+    showSlug: string;
     seasons: Awaited<ReturnType<typeof getAllPosts>>;
 }
 
-const { showTitle, seasons } = Astro.props;
-const showSlug = slugify(showTitle);
+const { showTitle, showSlug, seasons } = Astro.props;
 
 const sortedSeasons = [...seasons].sort((a, b) => {
     return (a.data.season ?? 1) - (b.data.season ?? 1);
@@ -154,6 +160,8 @@ const showYear = latestSeason.data.year ?? null;
       <div class="tv-show-page__seasons-list">
         {sortedSeasons.map((season) => {
           const seasonNum = season.data.season ?? 1;
+          const rawSlug = season.data.slug ?? '';
+          const seasonSlug = rawSlug.split('/')[1] || `s${seasonNum}`;
           const status = season.data.tvStatus;
           const statusLabel = status ? statusLabelMap[status] : null;
           const statusChipClass = status ? statusChipClassMap[status] : '';
@@ -163,7 +171,7 @@ const showYear = latestSeason.data.year ?? null;
           const coverImage = season.data.tvCover ? getTVCoverImage(season.data.tvCover) : null;
 
           return (
-            <a href={`/tvshelf/${showSlug}/s${seasonNum}/`} class="tv-season-card">
+            <a href={`/tvshelf/${showSlug}/${seasonSlug}/`} class="tv-season-card">
               {coverImage && (
                 <div class="tv-season-card__cover-wrap">
                   <Image

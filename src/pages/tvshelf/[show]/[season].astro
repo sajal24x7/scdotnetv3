@@ -28,12 +28,18 @@ export async function getStaticPaths() {
 
     const paths: { params: { show: string; season: string }; props: any }[] = [];
     for (const [showTitle, seasons] of showMap.entries()) {
-        const showSlug = slugify(showTitle);
         const sortedSeasons = [...seasons].sort((a, b) => (a.data.season ?? 1) - (b.data.season ?? 1));
+        // Derive show slug from the first season's slug (e.g. "glory" from "glory/s1")
+        const firstSlug = sortedSeasons[0]?.data.slug ?? '';
+        const showSlug = firstSlug.split('/')[0] || slugify(showTitle);
+
         for (const season of seasons) {
+            const rawSlug = season.data.slug ?? '';
+            const parts = rawSlug.split('/');
             const seasonNum = season.data.season ?? 1;
+            const seasonSlug = parts[1] || `s${seasonNum}`;
             paths.push({
-                params: { show: showSlug, season: `s${seasonNum}` },
+                params: { show: showSlug, season: seasonSlug },
                 props: { showTitle, showSlug, season, allSeasons: sortedSeasons }
             });
         }
@@ -223,8 +229,9 @@ const coverImage = season.data.tvCover ? getTVCoverImage(season.data.tvCover) : 
       {allSeasons.find((s) => (s.data.season ?? 1) < seasonNum) && (() => {
         const prev = [...allSeasons].reverse().find((s) => (s.data.season ?? 1) < seasonNum);
         const prevNum = prev?.data.season ?? 1;
+        const prevSlug = (prev?.data.slug ?? '').split('/')[1] || `s${prevNum}`;
         return (
-          <a href={`/tvshelf/${showSlug}/s${prevNum}/`} class="season-nav__link season-nav__link--prev">
+          <a href={`/tvshelf/${showSlug}/${prevSlug}/`} class="season-nav__link season-nav__link--prev">
             ← Season {prevNum}
           </a>
         );
@@ -235,8 +242,9 @@ const coverImage = season.data.tvCover ? getTVCoverImage(season.data.tvCover) : 
       {allSeasons.find((s) => (s.data.season ?? 1) > seasonNum) && (() => {
         const next = allSeasons.find((s) => (s.data.season ?? 1) > seasonNum);
         const nextNum = next?.data.season ?? seasonNum + 1;
+        const nextSlug = (next?.data.slug ?? '').split('/')[1] || `s${nextNum}`;
         return (
-          <a href={`/tvshelf/${showSlug}/s${nextNum}/`} class="season-nav__link season-nav__link--next">
+          <a href={`/tvshelf/${showSlug}/${nextSlug}/`} class="season-nav__link season-nav__link--next">
             Season {nextNum} →
           </a>
         );

@@ -14,7 +14,8 @@ type TVStatus = 'watching' | 'watched' | 'to-watch' | 'on-hold' | 'abandoned';
 interface TVCardProps {
     title: string;
     showSlug: string;
-    seasonNumber?: number;  // specific season — sets the link to /tvshelf/[show]/s[N]/
+    seasonSlug?: string;    // URL segment, e.g. "s1" — drives the link target
+    seasonNumber?: number;  // numeric season for display ("Season 1")
     creator?: string[];
     year?: number;
     genre?: string;
@@ -30,6 +31,7 @@ const props = Astro.props as TVCardProps;
 const {
     title,
     showSlug,
+    seasonSlug,
     seasonNumber,
     creator,
     year,
@@ -80,9 +82,11 @@ const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [
 const ratingChipLabel = ratingDisplay?.label ?? null;
 
 const coverImage = tvCover ? getTVCoverImage(tvCover) : null;
-const showLink = seasonNumber !== undefined
-    ? `/tvshelf/${showSlug}/s${seasonNumber}/`
-    : `/tvshelf/${showSlug}/`;
+const showLink = seasonSlug
+    ? `/tvshelf/${showSlug}/${seasonSlug}/`
+    : seasonNumber !== undefined
+        ? `/tvshelf/${showSlug}/s${seasonNumber}/`
+        : `/tvshelf/${showSlug}/`;
 ---
 
 <article class="book-card" data-card-root>
