@@ -16,73 +16,15 @@ const parseDate = (value?: Date | string | null): Date | null => {
     return Number.isNaN(d.getTime()) ? null : d;
 };
 
-// Group season entries by show (using showTitle, fallback to title)
-const showMap = new Map<string, typeof tvPosts>();
-for (const post of tvPosts) {
-    const showKey = post.data.showTitle ?? post.data.title ?? 'Unknown';
-    if (!showMap.has(showKey)) showMap.set(showKey, []);
-    showMap.get(showKey)!.push(post);
-}
-
-// For each show, pick the representative entry (highest season number, or latest by date)
-// and compute aggregate info
-interface ShowEntry {
+interface SeasonEntry {
+    post: typeof tvPosts[number];
     showTitle: string;
     showSlug: string;
-    representative: typeof tvPosts[number];
-    seasonCount: number;
-    latestSeason: number | undefined;
+    seasonNum: number;
     year: number;
     tvStatus: string | undefined;
 }
 
-const shows: ShowEntry[] = [];
-
-for (const [showTitle, seasons] of showMap.entries()) {
-    // Sort seasons by season number desc, then by date desc
-    const sortedSeasons = [...seasons].sort((a, b) => {
-        const sA = a.data.season ?? 0;
-        const sB = b.data.season ?? 0;
-        if (sA !== sB) return sB - sA;
-        const dA = parseDate(a.data.pubDate)?.getTime() ?? 0;
-        const dB = parseDate(b.data.pubDate)?.getTime() ?? 0;
-        return dB - dA;
-    });
-
-    const representative = sortedSeasons[0];
-    const seasonNumbers = seasons.map((s) => s.data.season ?? 1);
-    const latestSeason = Math.max(...seasonNumbers);
-
-    // Year: from pubDate or earliest season
-    const dates = seasons.map((s) => parseDate(s.data.pubDate)).filter(Boolean) as Date[];
-    dates.sort((a, b) => a.getTime() - b.getTime());
-    const year = (dates[0] ?? new Date()).getFullYear();
-
-    // Status: prioritize 'watching' > 'to-watch' > 'on-hold' > 'abandoned' > 'watched'
-    const statusPriority: Record<string, number> = {
-        watching: 0,
-        'to-watch': 1,
-        'on-hold': 2,
-        abandoned: 3,
-        watched: 4
-    };
-    const tvStatus = seasons
-        .map((s) => s.data.tvStatus)
-        .filter(Boolean)
-        .sort((a, b) => (statusPriority[a!] ?? 5) - (statusPriority[b!] ?? 5))[0];
-
-    shows.push({
-        showTitle,
-        showSlug: slugify(showTitle),
-        representative,
-        seasonCount: seasons.length,
-        latestSeason: seasonNumbers.length > 0 ? latestSeason : undefined,
-        year,
-        tvStatus
-    });
-}
-
-// Sort shows by year desc, then by status
 const statusOrder: Record<string, number> = {
     watching: 0,
     watched: 1,
@@ -92,25 +34,32 @@ const statusOrder: Record<string, number> = {
     other: 5
 };
 
-shows.sort((a, b) => {
+const seasonEntries: SeasonEntry[] = tvPosts.map((post) => ({
+    post,
+    showTitle: post.data.showTitle ?? post.data.title ?? 'Unknown',
+    showSlug: slugify(post.data.showTitle ?? post.data.title ?? 'Unknown'),
+    seasonNum: post.data.season ?? 1,
+    year: (parseDate(post.data.pubDate) ?? new Date()).getFullYear(),
+    tvStatus: post.data.tvStatus
+}));
+
+seasonEntries.sort((a, b) => {
     if (a.year !== b.year) return b.year - a.year;
     const sA = statusOrder[a.tvStatus ?? 'other'] ?? statusOrder.other;
     const sB = statusOrder[b.tvStatus ?? 'other'] ?? statusOrder.other;
     return sA - sB;
 });
 
-const years = Array.from(new Set(shows.map((s) => s.year)));
+const years = Array.from(new Set(seasonEntries.map((e) => e.year)));
 
-const showsByYear = shows.reduce((acc, show) => {
-    if (!acc[show.year]) acc[show.year] = [];
-    acc[show.year].push(show);
+const entriesByYear = seasonEntries.reduce((acc, entry) => {
+    if (!acc[entry.year]) acc[entry.year] = [];
+    acc[entry.year].push(entry);
     return acc;
-}, {} as Record<number, ShowEntry[]>);
+}, {} as Record<number, SeasonEntry[]>);
 
-// Count watched shows
-const watchedShows = shows.filter((s) => s.tvStatus === 'watched');
-const totalShows = watchedShows.length;
-const countText = `${totalShows} ${totalShows === 1 ? 'show' : 'shows'} watched`;
+const watchedCount = seasonEntries.filter((e) => e.tvStatus === 'watched').length;
+const countText = `${watchedCount} ${watchedCount === 1 ? 'season' : 'seasons'} watched`;
 
 const tvDescription = "TV shows I've watched, am watching, or want to watch—organized by year.";
 
@@ -147,10 +96,9 @@ const sectionLandingProps = createSectionLandingProps({
     </div>
     <div class="bookshelf-years">
       {years.map((year) => {
-        const yearShows = showsByYear[year] ?? [];
-        const watchedYearShows = yearShows.filter((s) => s.tvStatus === 'watched');
-        const showCount = watchedYearShows.length;
-        const showLabel = showCount === 1 ? 'show' : 'shows';
+        const yearEntries = entriesByYear[year] ?? [];
+        const watchedYear = yearEntries.filter((e) => e.tvStatus === 'watched').length;
+        const seasonLabel = watchedYear === 1 ? 'season' : 'seasons';
 
         return (
           <section class="bookshelf-year" id={`tvshelf-${year}`} data-year={year}>
@@ -158,33 +106,32 @@ const sectionLandingProps = createSectionLandingProps({
               <div class="bookshelf-year__sidebar grid-span-2">
                 <div class="bookshelf-year__sticky">
                   <span class="bookshelf-year__year">{year}</span>
-                  <span class="bookshelf-year__count" data-year-count={year}>Watched {showCount} {showLabel}</span>
+                  <span class="bookshelf-year__count" data-year-count={year}>Watched {watchedYear} {seasonLabel}</span>
                 </div>
               </div>
-              {yearShows.map((show, index) => {
+              {yearEntries.map((entry, index) => {
                 const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
-                const rep = show.representative;
+                const { post, showTitle, showSlug, seasonNum } = entry;
                 return (
                   <div
-                    key={show.showSlug}
+                    key={`${showSlug}-s${seasonNum}`}
                     class={`bookshelf-year__book ${gridClasses}`}
                     data-content-item
-                    data-tags={Array.isArray(rep.data.tags) ? rep.data.tags.join(',') : ''}
-                    data-genre={rep.data.genre ?? ''}
-                    data-status={show.tvStatus ?? ''}
-                    data-rating={rep.data.tvRating ?? ''}
+                    data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
+                    data-genre={post.data.genre ?? ''}
+                    data-status={entry.tvStatus ?? ''}
+                    data-rating={post.data.tvRating ?? ''}
                   >
                     <TVCard
-                      title={show.showTitle}
-                      showSlug={show.showSlug}
-                      creator={rep.data.creator}
-                      year={rep.data.year as number | undefined}
-                      genre={rep.data.genre}
-                      tvStatus={show.tvStatus as any}
-                      tvRating={rep.data.tvRating}
-                      tvCover={rep.data.tvCover}
-                      seasonCount={show.seasonCount}
-                      latestSeason={show.latestSeason}
+                      title={showTitle}
+                      showSlug={showSlug}
+                      seasonNumber={seasonNum}
+                      creator={post.data.creator}
+                      year={post.data.year as number | undefined}
+                      genre={post.data.genre}
+                      tvStatus={entry.tvStatus as any}
+                      tvRating={post.data.tvRating}
+                      tvCover={post.data.tvCover}
                     />
                   </div>
                 );

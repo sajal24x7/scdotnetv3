@@ -1,0 +1,528 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ShelfTabNav from '../../../components/shelf/ShelfTabNav.astro';
+import { Image } from 'astro:assets';
+import { getAllPosts } from '../../../utils/content';
+import { slugify } from '../../../utils/shelfUtils';
+import { getTVCoverImage } from '../../../utils/tvCovers';
+import {
+    bookRatingDisplay,
+    heartIconPaths,
+    thumbIconPaths,
+    type BookRating,
+    type RatingIconSpec
+} from '../../../utils/bookRatings';
+
+export async function getStaticPaths() {
+    const { getAllPosts } = await import('../../../utils/content');
+    const { slugify } = await import('../../../utils/shelfUtils');
+    const allPosts = await getAllPosts();
+    const tvPosts = allPosts.filter((p) => p.data.category === 'tvshelf');
+
+    const showMap = new Map<string, typeof tvPosts>();
+    for (const post of tvPosts) {
+        const key = post.data.showTitle ?? post.data.title ?? 'Unknown';
+        if (!showMap.has(key)) showMap.set(key, []);
+        showMap.get(key)!.push(post);
+    }
+
+    const paths: { params: { show: string; season: string }; props: any }[] = [];
+    for (const [showTitle, seasons] of showMap.entries()) {
+        const showSlug = slugify(showTitle);
+        const sortedSeasons = [...seasons].sort((a, b) => (a.data.season ?? 1) - (b.data.season ?? 1));
+        for (const season of seasons) {
+            const seasonNum = season.data.season ?? 1;
+            paths.push({
+                params: { show: showSlug, season: `s${seasonNum}` },
+                props: { showTitle, showSlug, season, allSeasons: sortedSeasons }
+            });
+        }
+    }
+    return paths;
+}
+
+interface Props {
+    showTitle: string;
+    showSlug: string;
+    season: Awaited<ReturnType<typeof getAllPosts>>[number];
+    allSeasons: Awaited<ReturnType<typeof getAllPosts>>;
+}
+
+const { showTitle, showSlug, season, allSeasons } = Astro.props;
+const seasonNum = season.data.season ?? 1;
+
+const allPosts = await getAllPosts();
+const { Content } = await season.render();
+
+const parseDate = (value?: Date | string | null): Date | null => {
+    if (!value) return null;
+    const d = value instanceof Date ? value : new Date(value);
+    return Number.isNaN(d.getTime()) ? null : d;
+};
+
+const formatYMD = (value?: Date | string | null): string | null => {
+    const d = parseDate(value);
+    return d ? d.toISOString().slice(0, 10) : null;
+};
+
+const creators: string[] = Array.isArray(season.data.creator) ? season.data.creator : [];
+const formatCreators = (arr: string[]) => {
+    if (arr.length === 0) return null;
+    if (arr.length === 1) return arr[0];
+    if (arr.length === 2) return `${arr[0]} and ${arr[1]}`;
+    return `${arr.slice(0, -1).join(', ')}, and ${arr[arr.length - 1]}`;
+};
+
+const genre = season.data.genre as string | undefined;
+const year = season.data.year as number | undefined;
+const platform = season.data.platform as string | undefined;
+const started = formatYMD(season.data.started);
+const finished = formatYMD(season.data.finished);
+const tvStatus = season.data.tvStatus;
+const tvRating = season.data.tvRating;
+
+const statusLabelMap: Record<string, string> = {
+    watching: 'Watching',
+    watched: 'Watched',
+    'to-watch': 'To Watch',
+    'on-hold': 'On Hold',
+    abandoned: 'Abandoned'
+};
+
+const statusChipClassMap: Record<string, string> = {
+    watching: 'chip--status-watching',
+    watched: 'chip--status-watched',
+    'to-watch': 'chip--status-to-watch',
+    'on-hold': 'chip--status-on-hold',
+    abandoned: 'chip--status-abandoned'
+};
+
+const ratingDisplay = tvRating ? bookRatingDisplay[tvRating as BookRating] : null;
+const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
+
+const coverImage = season.data.tvCover ? getTVCoverImage(season.data.tvCover) : null;
+---
+
+<Layout
+  title={`${showTitle} — Season ${seasonNum} — TV Shelf`}
+  description={`Season ${seasonNum} of ${showTitle}`}
+  currentPage="/tvshelf/"
+  pageWrapper={{
+    maxWidth: '4xl',
+    padding: 'none',
+    centered: true,
+    grid: { gap: 'loose', padding: 'narrow' }
+  }}
+  allPosts={allPosts}
+  enableSearchModal
+  enableLinkHoverEffect
+>
+  <div class="season-page">
+    <ShelfTabNav currentTab="tv" />
+
+    <header class="season-header">
+      <div class="season-header__cover-area">
+        {coverImage ? (
+          <Image
+            src={coverImage}
+            alt={`Poster for ${showTitle} Season ${seasonNum}`}
+            class="season-header__cover"
+            loading="eager"
+          />
+        ) : (
+          <div class="season-header__cover-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+              <polyline points="17 2 12 7 7 2"></polyline>
+            </svg>
+          </div>
+        )}
+      </div>
+
+      <div class="season-header__meta">
+        <h1 class="season-header__title">{showTitle}</h1>
+
+        {formatCreators(creators) && (
+          <p class="season-header__creator">Created by {formatCreators(creators)}</p>
+        )}
+
+        <div class="season-header__chips">
+          <span class="tv-chip tv-chip--season">
+            <span class="tv-chip-label">Season</span>
+            {seasonNum}
+          </span>
+
+          {genre && (
+            <span class="tv-chip tv-chip--genre">
+              <span class="tv-chip-label">Genre</span>
+              {genre.toUpperCase()}
+            </span>
+          )}
+
+          {year && (
+            <span class="tv-chip tv-chip--year">
+              <span class="tv-chip-label">Year</span>
+              {year}
+            </span>
+          )}
+
+          {platform && (
+            <span class="tv-chip tv-chip--platform">
+              <span class="tv-chip-label">Platform</span>
+              {platform}
+            </span>
+          )}
+
+          {tvStatus && tvStatus !== 'watched' && (
+            <span class={`tv-chip ${statusChipClassMap[tvStatus]}`}>
+              <span class="tv-chip-label">Status</span>
+              {statusLabelMap[tvStatus]}
+            </span>
+          )}
+
+          {ratingDisplay && (
+            <span class={`tv-chip tv-chip--rating tv-chip--rating-${tvRating}`}>
+              <span class="tv-chip-label">Rated</span>
+              {ratingIconSpecs.length > 0 && (
+                <span class="tv-chip__icons" aria-hidden="true">
+                  {ratingIconSpecs.map((spec) => (
+                    <svg width={spec.size} height={spec.size} viewBox="0 0 24 24" fill="currentColor">
+                      {(spec.type === 'heart' ? heartIconPaths : thumbIconPaths[spec.direction]).map((d) => (
+                        <path d={d}></path>
+                      ))}
+                    </svg>
+                  ))}
+                </span>
+              )}
+            </span>
+          )}
+
+          {(started || finished) && (
+            <span class="tv-chip tv-chip--dates">
+              {started && finished ? `${started} – ${finished}` : started ?? finished}
+            </span>
+          )}
+
+          <a href={`/tvshelf/${showSlug}/`} class="tv-chip tv-chip--show-link">
+            <span class="tv-chip-label">Show</span>
+            {showTitle}
+            <span class="tv-chip--show-link__seasons">
+              {allSeasons.length} {allSeasons.length === 1 ? 'season' : 'seasons'}
+            </span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    {/* Season content / notes */}
+    <div class="season-content">
+      <Content />
+    </div>
+
+    <div class="season-nav">
+      {allSeasons.find((s) => (s.data.season ?? 1) < seasonNum) && (() => {
+        const prev = [...allSeasons].reverse().find((s) => (s.data.season ?? 1) < seasonNum);
+        const prevNum = prev?.data.season ?? 1;
+        return (
+          <a href={`/tvshelf/${showSlug}/s${prevNum}/`} class="season-nav__link season-nav__link--prev">
+            ← Season {prevNum}
+          </a>
+        );
+      })()}
+      <a href={`/tvshelf/${showSlug}/`} class="season-nav__link season-nav__link--show">
+        All seasons
+      </a>
+      {allSeasons.find((s) => (s.data.season ?? 1) > seasonNum) && (() => {
+        const next = allSeasons.find((s) => (s.data.season ?? 1) > seasonNum);
+        const nextNum = next?.data.season ?? seasonNum + 1;
+        return (
+          <a href={`/tvshelf/${showSlug}/s${nextNum}/`} class="season-nav__link season-nav__link--next">
+            Season {nextNum} →
+          </a>
+        );
+      })()}
+    </div>
+
+    <div class="season-back">
+      <a href="/tvshelf/" class="season-back__link">← Back to TV Shelf</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .season-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 0 3rem;
+  }
+
+  /* Header layout */
+  .season-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.dark) .season-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (min-width: 48rem) {
+    .season-header {
+      display: grid;
+      grid-template-columns: 3fr 5fr;
+      gap: 2rem;
+      align-items: start;
+    }
+  }
+
+  .season-header__cover-area {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 48rem) {
+    .season-header__cover-area {
+      justify-content: flex-start;
+    }
+  }
+
+  .season-header__cover {
+    width: auto;
+    max-height: 24rem;
+    height: auto;
+    border-radius: 0.75rem;
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.1),
+      0 2px 4px rgba(0, 0, 0, 0.06);
+  }
+
+  @media (min-width: 48rem) {
+    .season-header__cover {
+      width: 100%;
+      max-height: none;
+    }
+  }
+
+  :global(.dark) .season-header__cover {
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .season-header__cover-placeholder {
+    width: 100%;
+    max-width: 12rem;
+    aspect-ratio: 2/3;
+    border-radius: 0.75rem;
+    background: rgba(15, 23, 42, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(15, 23, 42, 0.35);
+  }
+
+  :global(.dark) .season-header__cover-placeholder {
+    background: rgba(148, 163, 184, 0.18);
+    color: rgba(226, 232, 240, 0.45);
+  }
+
+  .season-header__meta {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.25rem;
+  }
+
+  .season-header__title {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    color: #111827;
+    line-height: 1.2;
+  }
+
+  :global(.dark) .season-header__title { color: #f9fafb; }
+
+  .season-header__creator {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #374151;
+    margin: 0 0 1rem;
+  }
+
+  :global(.dark) .season-header__creator { color: #d1d5db; }
+
+  .season-header__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Season content */
+  .season-content {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #374151;
+  }
+
+  :global(.dark) .season-content { color: #d1d5db; }
+
+  .season-content :global(p) { margin: 0 0 1rem; }
+  .season-content :global(p:last-child) { margin-bottom: 0; }
+
+  /* Season nav */
+  .season-nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  :global(.dark) .season-nav {
+    border-top-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .season-nav__link {
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .season-nav__link:hover { color: #4f46e5; }
+  :global(.dark) .season-nav__link { color: #9ca3af; }
+  :global(.dark) .season-nav__link:hover { color: #818cf8; }
+
+  .season-nav__link--show {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Back link */
+  .season-back {
+    margin-top: 0.5rem;
+  }
+
+  .season-back__link {
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .season-back__link:hover { color: #4f46e5; }
+  :global(.dark) .season-back__link { color: #9ca3af; }
+  :global(.dark) .season-back__link:hover { color: #818cf8; }
+
+  /* Chip label */
+  .tv-chip-label {
+    opacity: 0.6;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .tv-chip-label::after {
+    content: ':';
+    margin-inline-end: 0.2rem;
+  }
+
+  /* Chips */
+  .tv-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 0.5rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background: #e5e7eb;
+    color: #111827;
+  }
+
+  :global(.dark) .tv-chip { background: #374151; color: #e5e7eb; }
+
+  .tv-chip__icons {
+    display: inline-flex;
+    gap: 0.15rem;
+  }
+
+  .tv-chip--season { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: 0.75rem; letter-spacing: 0.02em; font-weight: 700; }
+  :global(.dark) .tv-chip--season { background: #1f2937; color: #e5e7eb; }
+
+  .tv-chip--genre { background: #dbeafe; color: #1e40af; }
+  :global(.dark) .tv-chip--genre { background: rgba(30, 64, 175, 0.3); color: #bfdbfe; }
+
+  .tv-chip--year { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: 0.7rem; letter-spacing: 0.03em; }
+  :global(.dark) .tv-chip--year { background: #1f2937; color: #e5e7eb; }
+
+  .tv-chip--platform { background: #f0fdf4; color: #166534; text-transform: none; font-size: 0.7rem; letter-spacing: 0.03em; }
+  :global(.dark) .tv-chip--platform { background: rgba(22, 101, 52, 0.25); color: #bbf7d0; }
+
+  .tv-chip--dates { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: 0.68rem; letter-spacing: 0.02em; }
+  :global(.dark) .tv-chip--dates { background: #1f2937; color: #e5e7eb; }
+
+  /* Show link chip — styled as a small interactive box */
+  .tv-chip--show-link {
+    background: #ede9fe;
+    color: #5b21b6;
+    text-decoration: none;
+    border: 1px solid rgba(91, 33, 182, 0.2);
+    transition: background-color 150ms ease, border-color 150ms ease;
+    text-transform: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    gap: 0.35rem;
+  }
+
+  .tv-chip--show-link:hover {
+    background: #ddd6fe;
+    border-color: rgba(91, 33, 182, 0.4);
+  }
+
+  :global(.dark) .tv-chip--show-link {
+    background: rgba(91, 33, 182, 0.2);
+    color: #c4b5fd;
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  :global(.dark) .tv-chip--show-link:hover {
+    background: rgba(91, 33, 182, 0.35);
+    border-color: rgba(139, 92, 246, 0.5);
+  }
+
+  .tv-chip--show-link__seasons {
+    opacity: 0.65;
+    font-size: 0.6rem;
+    letter-spacing: 0.03em;
+  }
+
+  .chip--status-watching { background: #ede9fe; color: #5b21b6; }
+  :global(.dark) .chip--status-watching { background: rgba(91, 33, 182, 0.3); color: #ede9fe; }
+
+  .chip--status-to-watch { background: #dbeafe; color: #1d4ed8; }
+  :global(.dark) .chip--status-to-watch { background: rgba(29, 78, 216, 0.3); color: #bfdbfe; }
+
+  .chip--status-on-hold { background: #fef3c7; color: #b45309; }
+  :global(.dark) .chip--status-on-hold { background: rgba(180, 83, 9, 0.3); color: #fde68a; }
+
+  .chip--status-abandoned { background: #fee2e2; color: #b91c1c; }
+  :global(.dark) .chip--status-abandoned { background: rgba(185, 28, 28, 0.3); color: #fecaca; }
+
+  .tv-chip--rating-like { background: #dcfce7; color: #166534; }
+  :global(.dark) .tv-chip--rating-like { background: rgba(22, 101, 52, 0.35); color: #bbf7d0; }
+
+  .tv-chip--rating-love { background: #fce7f3; color: #be185d; }
+  :global(.dark) .tv-chip--rating-love { background: rgba(190, 24, 93, 0.3); color: #fbcfe8; }
+
+  .tv-chip--rating-nope { background: #fee2e2; color: #b91c1c; }
+  :global(.dark) .tv-chip--rating-nope { background: rgba(185, 28, 28, 0.3); color: #fecaca; }
+</style>

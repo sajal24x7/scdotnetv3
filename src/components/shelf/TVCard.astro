@@ -12,23 +12,25 @@ import {
 type TVStatus = 'watching' | 'watched' | 'to-watch' | 'on-hold' | 'abandoned';
 
 interface TVCardProps {
-    title: string;          // Show title displayed on the card
-    showSlug: string;       // URL slug for the show detail page
+    title: string;
+    showSlug: string;
+    seasonNumber?: number;  // specific season — sets the link to /tvshelf/[show]/s[N]/
     creator?: string[];
     year?: number;
     genre?: string;
     tvStatus?: TVStatus;
     tvRating?: BookRating;
     tvCover?: string;
-    seasonCount?: number;   // Total number of seasons tracked
-    latestSeason?: number;  // Most recent season number
-    watchNumber?: number;   // 1 = first watch, 2+ = rewatch
+    seasonCount?: number;
+    latestSeason?: number;
+    watchNumber?: number;
 }
 
 const props = Astro.props as TVCardProps;
 const {
     title,
     showSlug,
+    seasonNumber,
     creator,
     year,
     genre,
@@ -63,11 +65,13 @@ const genreLabel = genre ? genre.toUpperCase() : null;
 const isRewatch = watchNumber > 1;
 const rewatchLabel = isRewatch ? (watchNumber === 2 ? '2nd watch' : watchNumber === 3 ? '3rd watch' : `${watchNumber}th watch`) : null;
 
-const seasonLabel = seasonCount > 1
-    ? `${seasonCount} seasons`
-    : latestSeason
-        ? `Season ${latestSeason}`
-        : null;
+const seasonLabel = seasonNumber !== undefined
+    ? `Season ${seasonNumber}`
+    : seasonCount > 1
+        ? `${seasonCount} seasons`
+        : latestSeason
+            ? `Season ${latestSeason}`
+            : null;
 
 const shouldShowRating = tvStatus !== 'watching';
 const ratingDisplay = shouldShowRating && tvRating ? bookRatingDisplay[tvRating] : null;
@@ -76,7 +80,9 @@ const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [
 const ratingChipLabel = ratingDisplay?.label ?? null;
 
 const coverImage = tvCover ? getTVCoverImage(tvCover) : null;
-const showLink = `/tvshelf/${showSlug}/`;
+const showLink = seasonNumber !== undefined
+    ? `/tvshelf/${showSlug}/s${seasonNumber}/`
+    : `/tvshelf/${showSlug}/`;
 ---
 
 <article class="book-card" data-card-root>
