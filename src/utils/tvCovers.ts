@@ -1,10 +1,15 @@
 // Auto-generated file - do not edit manually
-// Run: node scripts/generate-tv-covers.js
+// Generated on: 2026-06-02T06:52:47.203Z
+// Found 1 image(s): glory.jpg
 
-export const tvCoverImages: Record<string, any> = {};
+import glory_jpg from '../images/tvshelf/glory.jpg';
+
+export const tvCoverImages: Record<string, any> = {
+  'glory.jpg': glory_jpg
+};
 
 export function getTVCoverImage(filename: string) {
-    return tvCoverImages[filename];
+  return tvCoverImages[filename];
 }
 
-export type TVCoverFilename = string;
+export type TVCoverFilename = 'glory.jpg';
