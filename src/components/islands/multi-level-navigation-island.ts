@@ -3,7 +3,6 @@ const DEFAULT_MAIN_SECTION = 'garden';
 type SectionMapping = {
     main: string;
     subsection?: string;
-    tertiary?: string;
 };
 
 const categoryMappings: Record<string, SectionMapping> = {
@@ -16,11 +15,11 @@ const categoryMappings: Record<string, SectionMapping> = {
     garden: { main: 'garden' },
     evergreen: { main: 'garden', subsection: '/evergreen/' },
     til: { main: 'garden', subsection: '/til/' },
-    shelf: { main: 'garden', subsection: '/shelf/' },
-    bookshelf: { main: 'garden', subsection: '/shelf/', tertiary: 'books' },
-    filmshelf: { main: 'garden', subsection: '/shelf/', tertiary: 'film' },
-    tvshelf: { main: 'garden', subsection: '/shelf/', tertiary: 'tv' },
-    gameshelf: { main: 'garden', subsection: '/shelf/', tertiary: 'games' },
+    shelf: { main: 'shelf' },
+    bookshelf: { main: 'shelf', subsection: '/bookshelf/' },
+    filmshelf: { main: 'shelf', subsection: '/filmshelf/' },
+    tvshelf: { main: 'shelf', subsection: '/tvshelf/' },
+    gameshelf: { main: 'shelf', subsection: '/gameshelf/' },
     stories: { main: 'garden', subsection: '/stories/' },
     story: { main: 'garden', subsection: '/stories/' },
     poems: { main: 'garden', subsection: '/poems/' },
@@ -30,13 +29,6 @@ const categoryMappings: Record<string, SectionMapping> = {
     micro: { main: 'stream', subsection: '/micro/' },
     photo: { main: 'stream', subsection: '/photos/' },
     photos: { main: 'stream', subsection: '/photos/' }
-};
-
-const tertiaryHrefMap: Record<string, string> = {
-    books: '/bookshelf/',
-    film: '/filmshelf/',
-    tv: '/tvshelf/',
-    games: '/gameshelf/',
 };
 
 function splitClasses(value?: string): string[] {
@@ -98,14 +90,12 @@ class MultiLevelNavigationElement extends HTMLElement {
         const mapping = categoryMappings[normalizedCategory];
         const mainSection = mapping?.main ?? DEFAULT_MAIN_SECTION;
         const subsection = mapping?.subsection ?? null;
-        const tertiary = mapping?.tertiary ?? null;
 
         this.dataset.activeMain = mainSection;
         this.dataset.activeSubsection = subsection ?? '';
 
         this.updateMainLinks(mainSection);
         this.updateSecondaryNavigation(mainSection, subsection);
-        this.updateTertiaryNavigation(subsection, tertiary);
     }
 
     private updateMainLinks(targetMain: string) {
@@ -134,22 +124,6 @@ class MultiLevelNavigationElement extends HTMLElement {
         });
     }
 
-    private updateTertiaryNavigation(subsection: string | null, targetTertiary: string | null) {
-        const tertiaryNav = this.querySelector<HTMLElement>('[data-tertiary-nav]');
-        if (!tertiaryNav) return;
-
-        const showTertiary = subsection === '/shelf/';
-        tertiaryNav.toggleAttribute('hidden', !showTertiary);
-
-        if (showTertiary) {
-            const links = tertiaryNav.querySelectorAll<HTMLElement>('[data-tertiary-href]');
-            links.forEach((link) => {
-                const href = link.dataset.tertiaryHref ?? '';
-                const targetHref = targetTertiary ? (tertiaryHrefMap[targetTertiary] ?? null) : null;
-                applyActiveState(link, !!targetHref && href === targetHref);
-            });
-        }
-    }
 }
 
 if (!customElements.get('multi-level-navigation')) {
