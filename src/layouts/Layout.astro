@@ -2,7 +2,6 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import LayoutContainer from '../components/layout/LayoutContainer.astro';
-import SearchModal from '../components/SearchModal.astro';
 import LinkHoverEffect from '../components/LinkHoverEffect.astro';
 import type { Post } from '../utils/content';
 import '../styles/global.css';
@@ -28,7 +27,6 @@ interface Props {
                 };
         };
         allPosts?: Post[];
-        enableSearchModal?: boolean;
         enableLinkHoverEffect?: boolean;
 }
 
@@ -37,7 +35,6 @@ const {
         description,
         currentPage,
         pageWrapper = {},
-        enableSearchModal = false,
         enableLinkHoverEffect = false,
 } = Astro.props as Props;
 
@@ -117,7 +114,7 @@ const containerPadding = pageWrapper.padding ?? 'none';
         </head>
         <body class="min-h-screen text-textPrimary dark:text-textPrimaryDark transition-all duration-500">
                 <div class="flex flex-col min-h-screen">
-                        <Header currentPage={currentPage} enableSearch={enableSearchModal} />
+                        <Header currentPage={currentPage} />
                         <main class="flex-grow relative z-10">
                                 <div class={gridClasses}>
                                         <LayoutContainer
@@ -138,7 +135,6 @@ const containerPadding = pageWrapper.padding ?? 'none';
 			<Footer />
 		</div>
 		
-                {enableSearchModal && <SearchModal />}
                 {enableLinkHoverEffect && <LinkHoverEffect />}
         </body>
 </html>

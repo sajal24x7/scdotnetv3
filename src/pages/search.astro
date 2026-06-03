@@ -1,0 +1,246 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import { getAllPosts } from '../utils/content';
+
+const allPosts = await getAllPosts();
+const tagCounts = new Map<string, number>();
+allPosts.forEach(post => {
+  post.data.tags?.forEach(tag => {
+    tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+  });
+});
+const popularTags = Array.from(tagCounts.entries())
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 14)
+  .map(([tag]) => tag);
+---
+
+<Layout
+  title="Search - Sajal Choudhary"
+  description="Search posts, TILs, notes, and more across the site."
+  currentPage="/search/"
+  pageWrapper={{
+    maxWidth: '4xl',
+    padding: 'md',
+    paddingScale: 'container',
+    centered: true,
+    grid: { gap: 'loose', padding: 'narrow' }
+  }}
+>
+  <PageHeader
+    title="Search"
+    description="Search across all posts, notes, and content."
+    size="md"
+  />
+
+  <div class="grid-span-full space-y-6">
+    <!-- Search input -->
+    <div class="relative">
+      <div class="absolute left-3 top-3.5 text-gray-400 pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </div>
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search posts, or try 'tag:VMware'…"
+        class="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-base"
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+
+    <!-- Default state: popular tags + syntax hint -->
+    <div id="search-hints" class="space-y-4">
+      {popularTags.length > 0 && (
+        <div>
+          <p class="text-small text-gray-500 dark:text-gray-400 mb-3 font-medium uppercase tracking-wide">Popular tags</p>
+          <div class="flex flex-wrap gap-2">
+            {popularTags.map(tag => (
+              <a href={`/search?q=tag:${encodeURIComponent(tag)}`} class="tag-chip tag-chip-inline">
+                {tag.toUpperCase()}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+      <p class="text-small text-gray-400 dark:text-gray-500">
+        Tip: use <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs">tag:VMware</code> to filter by tag,
+        or type freely for full-text search.
+      </p>
+    </div>
+
+    <!-- Results container (hidden by default) -->
+    <div id="search-results" class="hidden"></div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var input = document.getElementById('search-input');
+      var results = document.getElementById('search-results');
+      var hints = document.getElementById('search-hints');
+
+      var pf = null;
+      var pfLoading = false;
+      var debounceTimer = null;
+
+      function ensureLoaded() {
+        if (pf) return Promise.resolve(pf);
+        if (pfLoading) {
+          return new Promise(function (resolve) {
+            var check = setInterval(function () {
+              if (pf) { clearInterval(check); resolve(pf); }
+              if (!pfLoading) { clearInterval(check); resolve(null); }
+            }, 50);
+          });
+        }
+        pfLoading = true;
+        return import('/pagefind/pagefind.js').then(function (mod) {
+          return mod.init().then(function () {
+            pf = mod;
+            pfLoading = false;
+            return pf;
+          });
+        }).catch(function () {
+          pfLoading = false;
+          return null;
+        });
+      }
+
+      function showHints() {
+        hints.style.display = '';
+        results.innerHTML = '';
+        results.classList.add('hidden');
+      }
+
+      function showInResults(html) {
+        hints.style.display = 'none';
+        results.classList.remove('hidden');
+        results.innerHTML = html;
+      }
+
+      function performSearch(query) {
+        var q = query.trim();
+        if (!q) { showHints(); return; }
+
+        showInResults('<div class="py-8 text-center text-gray-500 dark:text-gray-400">Loading…</div>');
+
+        ensureLoaded().then(function (pagefind) {
+          if (!pagefind) {
+            showInResults('<div class="py-8 text-center text-red-500 dark:text-red-400">Search index not available. Run <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs">npm run build</code> to enable search.</div>');
+            return;
+          }
+
+          var isTag = q.startsWith('tag:');
+          var tagValue = isTag ? q.slice(4).trim().toLowerCase() : '';
+
+          var searchPromise;
+          if (isTag) {
+            if (!tagValue) {
+              showInResults('<div class="py-6 text-center text-gray-400">Type a tag name after <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs">tag:</code></div>');
+              return;
+            }
+            searchPromise = pagefind.search(null, { filters: { tag: tagValue } });
+          } else {
+            searchPromise = pagefind.search(q);
+          }
+
+          searchPromise.then(function (res) {
+            if (!res.results.length) {
+              showInResults(
+                '<div class="py-12 text-center text-gray-500 dark:text-gray-400 space-y-2">' +
+                '<p>No results for “<strong>' + q + '</strong>”</p>' +
+                '<p class="text-small">Try a different term, or use <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs">tag:topic</code> to filter by tag.</p>' +
+                '</div>'
+              );
+              return;
+            }
+
+            var total = res.results.length;
+            var slice = res.results.slice(0, 50);
+
+            Promise.all(slice.map(function (r) { return r.data(); })).then(function (data) {
+              var shown = slice.length;
+              var countLabel = shown < total
+                ? shown + ' of ' + total + ' results'
+                : total + ' result' + (total !== 1 ? 's' : '');
+
+              var header = '<p class="text-small text-gray-500 dark:text-gray-400 mb-6">' +
+                countLabel + ' for “<strong>' + q + '</strong>”</p>';
+
+              var items = data.map(function (d) {
+                var tags = (d.filters && d.filters.tag) ? d.filters.tag : [];
+                var category = (d.meta && d.meta.category) ? d.meta.category : '';
+                var title = (d.meta && d.meta.title) ? d.meta.title : 'Untitled';
+                var href = d.url;
+
+                var tagBadges = tags.slice(0, 5).map(function (tag) {
+                  var active = isTag && tag.toLowerCase() === tagValue;
+                  var cls = 'tag-chip tag-chip-inline' + (active ? ' tag-chip-active' : '');
+                  return '<a href="/tags/' + encodeURIComponent(tag) + '/" class="' + cls + '">' + tag.toUpperCase() + '</a>';
+                }).join('');
+
+                return '<article class="border-b border-gray-200/50 dark:border-gray-700/50 py-5 last:border-b-0">' +
+                  '<div class="flex items-start justify-between gap-4">' +
+                  '<div class="flex-1 min-w-0">' +
+                  '<div class="flex items-center flex-wrap gap-x-2 gap-y-1 mb-1">' +
+                  '<a href="' + href + '" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-snug">' + title + '</a>' +
+                  (category ? '<span class="text-small text-gray-500 dark:text-gray-400 capitalize">' + category + '</span>' : '') +
+                  '</div>' +
+                  (d.excerpt ? '<p class="text-small text-gray-500 dark:text-gray-400 mb-2 pagefind-excerpt">' + d.excerpt + '</p>' : '') +
+                  (tags.length > 0 ? '<div class="flex flex-wrap gap-1">' + tagBadges + '</div>' : '') +
+                  '</div>' +
+                  '<a href="' + href + '" class="flex-shrink-0 mt-1 text-gray-400 hover:text-blue-500 transition-colors" aria-hidden="true">' +
+                  '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>' +
+                  '</a>' +
+                  '</div>' +
+                  '</article>';
+              }).join('');
+
+              showInResults(header + '<div>' + items + '</div>');
+            });
+          }).catch(function () {
+            showInResults('<div class="py-8 text-center text-red-500 dark:text-red-400">Search error. Please try again.</div>');
+          });
+        });
+      }
+
+      // Initialize from URL
+      var params = new URLSearchParams(window.location.search);
+      var initial = params.get('q') || '';
+      if (initial) {
+        input.value = initial;
+        performSearch(initial);
+      }
+
+      // Input handler with debounce
+      input.addEventListener('input', function () {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function () {
+          var q = input.value;
+          var url = new URL(window.location.href);
+          if (q) { url.searchParams.set('q', q); }
+          else { url.searchParams.delete('q'); }
+          history.replaceState(null, '', url);
+          performSearch(q);
+        }, 200);
+      });
+    })();
+  </script>
+
+  <style>
+    :global(.pagefind-excerpt mark) {
+      background-color: rgb(254 240 138);
+      color: inherit;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+
+    :global(.dark) :global(.pagefind-excerpt mark) {
+      background-color: rgb(161 98 7 / 0.5);
+    }
+  </style>
+</Layout>
