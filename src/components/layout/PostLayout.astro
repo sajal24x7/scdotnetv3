@@ -795,8 +795,12 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 
     @media (min-width: 48rem) {
         .book-meta-cover-image {
-            width: 100%;
-            max-height: none;
+            width: auto;
+            max-height: 24rem;
+        }
+
+        .book-header__cover {
+            justify-content: center;
         }
     }
 
