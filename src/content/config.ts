@@ -25,7 +25,7 @@ const postsLoader = (category: string) =>
     pattern: '**/*.{md,mdx}',
     base: `./src/content/${category}`,
     generateId: ({ entry, data }) =>
-      (data as Record<string, unknown>).slug as string | undefined ?? slugFromEntry(entry),
+      ((data as Record<string, unknown>).slug as string | undefined) || slugFromEntry(entry),
   });
 
 // Shared post schema (all 14 content categories use this)
