@@ -211,7 +211,7 @@ const normalizeBookStatus = (status?: string | null) => {
                         filmStatus={entry.post.data.filmStatus}
                         filmRating={entry.post.data.filmRating}
                         watchedDate={entry.post.data.watchedDate}
-                        filmCover={entry.post.data.filmCover}
+                        cover={entry.post.data.cover}
                         link={entry.post.slug ? `/filmshelf/${entry.post.slug}/` : undefined}
                         watchNumber={filmWatchMap.get(entry.post.slug) ?? 1}
                       />
@@ -225,7 +225,7 @@ const normalizeBookStatus = (status?: string | null) => {
                         genre={entry.tvRepresentative.data.genre}
                         tvStatus={entry.tvStatus as any}
                         tvRating={entry.tvRepresentative.data.tvRating}
-                        tvCover={entry.tvRepresentative.data.tvCover}
+                        cover={entry.tvRepresentative.data.cover}
                         seasonCount={entry.tvSeasonCount}
                         latestSeason={entry.tvLatestSeason}
                       />
@@ -239,7 +239,7 @@ const normalizeBookStatus = (status?: string | null) => {
                         platform={entry.post.data.platform}
                         gameStatus={entry.post.data.gameStatus}
                         gameRating={entry.post.data.gameRating}
-                        gameCover={entry.post.data.gameCover}
+                        cover={entry.post.data.cover}
                         link={entry.post.slug ? `/gameshelf/${entry.post.slug}/` : undefined}
                       />
                     )}

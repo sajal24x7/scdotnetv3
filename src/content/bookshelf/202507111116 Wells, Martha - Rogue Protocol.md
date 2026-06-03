@@ -10,7 +10,7 @@ tags:
   - martha-wells
 format: audio
 genre: sci-fi
-bookCover: rogue-protocol.jpg
+cover: rogue-protocol.jpg
 author: Martha Wells
 series: The Murderbot Diaries
 bookStatus: read

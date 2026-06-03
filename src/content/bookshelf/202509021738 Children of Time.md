@@ -15,7 +15,7 @@ bookStatus: read
 bookRating: love
 startedReading: 2025-09-02T22:45:58+03:00
 finishedReading: 2025-09-19T16:45:58+03:00
-bookCover: children-of-time.jpg
+cover: children-of-time.jpg
 ---
 
 I loved reading Children of Time.

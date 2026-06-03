@@ -14,6 +14,6 @@ bookStatus: read
 startedReading: 2013-11-27T15:28:54.000Z
 finishedReading: 2013-11-27T15:28:54.000Z
 bookRating: like
-bookCover: world-war-z-an-oral-history-of-the-zombie-war.jpg
+cover: world-war-z-an-oral-history-of-the-zombie-war.jpg
 ---
 Finished Reading

@@ -14,6 +14,6 @@ bookStatus: read
 startedReading: 2013-01-08T15:18:02.000Z
 finishedReading: 2013-01-08T15:17:27.000Z
 bookRating: like
-bookCover: a-brief-history-of-time.jpg
+cover: a-brief-history-of-time.jpg
 ---
 Finished Reading

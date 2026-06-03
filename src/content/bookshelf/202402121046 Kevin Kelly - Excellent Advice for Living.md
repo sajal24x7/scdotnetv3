@@ -13,7 +13,7 @@ startedReading: 2024-02-12T10:46:00
 finishedReading: 2024-02-12T10:46:00
 bookStatus: read
 bookRating: like
-bookCover: excellent-advice-for-living.jpg
+cover: excellent-advice-for-living.jpg
 ---
 This is an excellent gift for someone. 
 

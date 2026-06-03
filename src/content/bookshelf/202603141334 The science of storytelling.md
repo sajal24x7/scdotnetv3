@@ -13,7 +13,7 @@ author:
 genre: craft
 bookStatus: read
 startedReading: 2026-03-14T11:34:48.000Z
-bookCover: the-science-of-storytelling.jpg
+cover: the-science-of-storytelling.jpg
 bookRating: like
 finishedReading: 2026-03-24T10:46:56+02:00
 ---

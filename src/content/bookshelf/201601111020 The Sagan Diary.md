@@ -15,6 +15,6 @@ bookStatus: read
 startedReading: 2016-01-11T10:20:13.000Z
 finishedReading: 2016-01-11T10:20:13.000Z
 bookRating: like
-bookCover: the-sagan-diary.jpg
+cover: the-sagan-diary.jpg
 ---
 Finished Reading

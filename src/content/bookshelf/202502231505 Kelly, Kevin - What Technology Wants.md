@@ -17,7 +17,7 @@ syndicationUrls:
   - https://mastodon.social/@sajal24x7/115815876230499690
   - https://www.threads.com/@sajal24x7/post/DS8J3bLiTtr
   - https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zot73c2o
-bookCover: what-technology-wants.jpg
+cover: what-technology-wants.jpg
 ---
 
 # Notes and Quotes

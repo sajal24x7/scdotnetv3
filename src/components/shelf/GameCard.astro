@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { getGameCoverImage } from '../../utils/gameCovers';
+import { getGameCoverImage } from '../../utils/covers';
 import {
     bookRatingDisplay,
     heartIconPaths,
@@ -19,7 +19,7 @@ interface GameCardProps {
     platform?: string;
     gameStatus?: GameStatus;
     gameRating?: BookRating;
-    gameCover?: string;
+    cover?: string;
     link?: string;
     watchNumber?: number; // 1 = first play, 2+ = replay
 }
@@ -33,7 +33,7 @@ const {
     platform,
     gameStatus,
     gameRating,
-    gameCover,
+    cover,
     link,
     watchNumber = 1
 } = props;
@@ -68,7 +68,7 @@ const ratingAriaLabel = ratingDisplay ? ratingDisplay.label : 'Rating: Not set';
 const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
 const ratingChipLabel = ratingDisplay?.label ?? null;
 
-const coverImage = gameCover ? getGameCoverImage(gameCover) : null;
+const coverImage = cover ? getGameCoverImage(cover) : null;
 ---
 
 <article class="book-card" data-card-root>

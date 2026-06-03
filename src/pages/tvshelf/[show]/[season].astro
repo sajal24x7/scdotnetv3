@@ -108,7 +108,7 @@ const statusChipClassMap: Record<string, string> = {
 const ratingDisplay = tvRating ? bookRatingDisplay[tvRating as BookRating] : null;
 const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
 
-const coverImage = season.data.tvCover ? getTVCoverImage(season.data.tvCover) : null;
+const coverImage = season.data.cover ? getTVCoverImage(season.data.cover) : null;
 ---
 
 <Layout

@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { getBookCoverImage } from '../../utils/bookCovers';
+import { getBookCoverImage } from '../../utils/covers';
 import {
     bookRatingDisplay,
     defaultBookRating,
@@ -18,7 +18,7 @@ interface BookCardProps {
     finishedReading?: Date | string;
     bookStatus?: 'reading' | 'read';
     bookRating?: BookRating;
-    bookCover?: string;
+    cover?: string;
     link?: string;
     format?: string;
 }
@@ -31,16 +31,16 @@ const {
     finishedReading,
     bookStatus,
     bookRating,
-    bookCover,
+    cover,
     link,
     format
 } = Astro.props as BookCardProps;
 
-// Only use bookCover for bookshelf display
-const coverImage = bookCover;
+// Only use cover for bookshelf display
+const coverImage = cover;
 
 // Get the imported image for local book covers
-const importedCoverImage = bookCover ? getBookCoverImage(bookCover) : null;
+const importedCoverImage = cover ? getBookCoverImage(cover) : null;
 
 // Format dates
 const formatDate = (date: Date | string | undefined) => {

@@ -14,6 +14,6 @@ format: paperback
 bookStatus: read
 startedReading: 2013-01-16T07:02:07.000Z
 finishedReading: 2016-09-13T15:55:33.000Z
-bookCover: second-foundation.jpg
+cover: second-foundation.jpg
 ---
 Finished Reading

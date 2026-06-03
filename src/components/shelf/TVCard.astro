@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { getTVCoverImage } from '../../utils/tvCovers';
+import { getTVCoverImage } from '../../utils/covers';
 import {
     bookRatingDisplay,
     heartIconPaths,
@@ -21,7 +21,7 @@ interface TVCardProps {
     genre?: string;
     tvStatus?: TVStatus;
     tvRating?: BookRating;
-    tvCover?: string;
+    cover?: string;
     seasonCount?: number;
     latestSeason?: number;
     watchNumber?: number;
@@ -38,7 +38,7 @@ const {
     genre,
     tvStatus,
     tvRating,
-    tvCover,
+    cover,
     seasonCount = 1,
     latestSeason,
     watchNumber = 1
@@ -81,7 +81,7 @@ const ratingAriaLabel = ratingDisplay ? ratingDisplay.label : 'Rating: Not set';
 const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
 const ratingChipLabel = ratingDisplay?.label ?? null;
 
-const coverImage = tvCover ? getTVCoverImage(tvCover) : null;
+const coverImage = cover ? getTVCoverImage(cover) : null;
 const showLink = seasonSlug
     ? `/tvshelf/${showSlug}/${seasonSlug}/`
     : seasonNumber !== undefined

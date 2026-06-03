@@ -13,7 +13,7 @@
  *   1. Reads all markdown files with category: gameshelf
  *   2. For each game without a local cover (or --force), searches RAWG then IGDB
  *   3. Downloads the cover to src/images/gameshelf/[slug].jpg
- *   4. Updates the gameCover field in the markdown frontmatter automatically
+ *   4. Updates the cover field in the markdown frontmatter automatically
  */
 
 import fs from 'fs';
@@ -160,7 +160,7 @@ function downloadFile(url, filepath) {
 
 function updateMarkdownWithCover(filePath, originalContent, coverFilename) {
   const { data, content: bodyContent } = matter(originalContent);
-  data.gameCover = coverFilename;
+  data.cover = coverFilename;
   const newContent = matter.stringify(bodyContent, data);
   fs.writeFileSync(filePath, newContent, 'utf8');
 }
@@ -249,7 +249,7 @@ async function main() {
     const outputPath = path.join(gameshelfDir, filename);
 
     if (fs.existsSync(outputPath) && !forceDownload) {
-      if (!game.data.gameCover) {
+      if (!game.data.cover) {
         updateMarkdownWithCover(game.path, game.content, filename);
         console.log(`📝 ${title} — image exists, updated frontmatter (${filename})`);
       } else {

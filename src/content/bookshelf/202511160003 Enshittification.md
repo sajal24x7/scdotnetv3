@@ -9,7 +9,7 @@ tags:
 format: audio
 genre: technology
 author: Cory Doctorow
-bookCover: enshittification.jpg
+cover: enshittification.jpg
 bookStatus: read
 startedReading: 2025-11-15T08:04:07.000Z
 finishedReading: 2025-11-22T14:04:07.000

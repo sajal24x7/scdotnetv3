@@ -17,7 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115785090768021542'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maux5dyuaf22'
   - 'https://www.threads.com/@sajal24x7/post/DSuJ5AqEcb9'
-bookCover: helsinki-by-sauna.jpeg
+cover: helsinki-by-sauna.jpeg
 ---
 
 A short guide to saunas in Helsinki.

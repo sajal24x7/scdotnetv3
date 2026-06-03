@@ -15,6 +15,6 @@ bookStatus: read
 startedReading: 2013-01-30T15:29:06.000Z
 finishedReading: 2013-01-30T15:29:06.000Z
 bookRating: love
-bookCover: the-hitchhikers-guide-to-the-galaxy.jpg
+cover: the-hitchhikers-guide-to-the-galaxy.jpg
 ---
 Finished Reading

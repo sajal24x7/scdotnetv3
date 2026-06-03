@@ -13,7 +13,7 @@ bookStatus: "read"
 bookRating: like
 startedReading: 2025-10-05T15:55:32+03:00
 finishedReading: 2025-10-16T13:55:32+03:00
-bookCover: "time-management-for-system-administrators.jpg"
+cover: "time-management-for-system-administrators.jpg"
 ---
 
 I enjoyed this book. 

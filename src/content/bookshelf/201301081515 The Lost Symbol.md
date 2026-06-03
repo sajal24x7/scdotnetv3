@@ -16,6 +16,6 @@ bookStatus: read
 startedReading: 2013-01-08T15:15:15.000Z
 finishedReading: 2013-01-08T15:15:21.000Z
 bookRating: like
-bookCover: the-lost-symbol.jpg
+cover: the-lost-symbol.jpg
 ---
 Finished Reading

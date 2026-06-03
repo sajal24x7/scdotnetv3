@@ -9,7 +9,7 @@ tags:
   - book-reviews
   - sci-fi
 genre: sci-fi
-bookCover: record-of-a-spaceborn-few.jpg
+cover: record-of-a-spaceborn-few.jpg
 author: Becky Chambers
 bookStatus: read
 bookRating: like

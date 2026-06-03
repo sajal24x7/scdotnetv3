@@ -58,7 +58,7 @@ const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
 
 // Bookshelf-specific data
 const isBookshelf = category === 'bookshelf';
-const bookCover = isBookshelf && 'bookCover' in entryData ? entryData.bookCover : undefined;
+const bookCover = isBookshelf && 'cover' in entryData ? entryData.cover : undefined;
 const author = isBookshelf && 'author' in entryData ? entryData.author : undefined;
 const format = isBookshelf && 'format' in entryData ? entryData.format : undefined;
 const genre = isBookshelf && 'genre' in entryData ? entryData.genre : undefined;
@@ -127,7 +127,7 @@ const formattedAuthor = formatAuthors(author);
 
 // Film-specific data
 const isFilmshelf = category === 'filmshelf';
-const filmCoverFilename = isFilmshelf ? (entryData.filmCover ?? undefined) : undefined;
+const filmCoverFilename = isFilmshelf ? (entryData.cover ?? undefined) : undefined;
 const director = isFilmshelf ? (entryData.director ?? undefined) : undefined;
 const filmRating = isFilmshelf ? (entryData.filmRating ?? undefined) : undefined;
 const filmWatchedDate = isFilmshelf ? (entryData.watchedDate ?? undefined) : undefined;
@@ -136,7 +136,7 @@ const filmGenre = isFilmshelf ? (entryData.genre ?? null) : null;
 
 // Game-specific data
 const isGameshelf = category === 'gameshelf';
-const gameCoverFilename = isGameshelf ? (entryData.gameCover ?? undefined) : undefined;
+const gameCoverFilename = isGameshelf ? (entryData.cover ?? undefined) : undefined;
 const developer = isGameshelf ? (entryData.developer ?? null) : null;
 const platform = isGameshelf ? (entryData.platform ?? null) : null;
 const gameRating = isGameshelf ? (entryData.gameRating ?? undefined) : undefined;
@@ -145,7 +145,7 @@ const gameGenre = isGameshelf ? (entryData.genre ?? null) : null;
 
 // TV-specific data (PostLayout fallback; primary TV page is tvshelf/[show].astro)
 const isTVshelf = category === 'tvshelf';
-const tvCoverFilename = isTVshelf ? (entryData.tvCover ?? undefined) : undefined;
+const tvCoverFilename = isTVshelf ? (entryData.cover ?? undefined) : undefined;
 const tvCreator = isTVshelf ? (entryData.creator ?? undefined) : undefined;
 const tvRating = isTVshelf ? (entryData.tvRating ?? undefined) : undefined;
 const tvYear = isTVshelf ? (entryData.year ?? null) : null;
@@ -796,7 +796,7 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
     @media (min-width: 48rem) {
         .book-meta-cover-image {
             width: auto;
-            max-height: 24rem;
+            max-height: 16rem;
         }
 
         .book-header__cover {

@@ -19,7 +19,7 @@ syndicationUrls:
   - https://mastodon.social/@sajal24x7/115860579948496578
   - https://bsky.app/profile/sajalchoudhary.net/post/3mbwhvujvj42l
   - https://www.threads.com/@sajal24x7/post/DTQfUgfjsTJ
-bookCover: the-unicorn-project.jpg
+cover: the-unicorn-project.jpg
 ---
 
 Finished reading.

@@ -16,6 +16,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116272467890985831'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mhnf6svmqo2d'
   - 'https://www.threads.com/@sajal24x7/post/DWLybuolHbu'
-bookCover: the-linux-command-line.jpg
+cover: the-linux-command-line.jpg
 ---
 Started Reading.

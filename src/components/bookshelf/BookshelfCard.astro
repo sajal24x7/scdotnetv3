@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { getBookCoverImage } from '../../utils/bookCovers';
+import { getBookCoverImage } from '../../utils/covers';
 import {
     bookRatingDisplay,
     heartIconPaths,
@@ -25,7 +25,7 @@ interface BookshelfCardProps {
     finishedReading?: Date | string;
     pubDate?: Date | string;
     bookRating?: BookRating;
-    bookCover?: string;
+    cover?: string;
     link?: string;
 }
 
@@ -91,7 +91,7 @@ const {
     finishedReading,
     pubDate,
     bookRating,
-    bookCover,
+    cover,
     link
 } = props;
 
@@ -164,7 +164,7 @@ const safeProgress = (() => {
     return Math.max(0, Math.min(100, Math.round(readingProgress)));
 })();
 
-const coverImage = bookCover ? getBookCoverImage(bookCover) : null;
+const coverImage = cover ? getBookCoverImage(cover) : null;
 const formattedAuthor = formatAuthors(author);
 
 const seriesInfo = (() => {

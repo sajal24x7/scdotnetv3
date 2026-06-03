@@ -86,7 +86,7 @@ const statusChipClassMap: Record<string, string> = {
     abandoned: 'chip--status-abandoned'
 };
 
-const showCoverImage = latestSeason.data.tvCover ? getTVCoverImage(latestSeason.data.tvCover) : null;
+const showCoverImage = latestSeason.data.cover ? getTVCoverImage(latestSeason.data.cover) : null;
 const showCreators: string[] = Array.isArray(latestSeason.data.creator) ? latestSeason.data.creator : [];
 const formatCreators = (creators: string[]) => {
     if (creators.length === 0) return null;
@@ -228,7 +228,7 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
           const ratingDisplay = season.data.tvRating ? bookRatingDisplay[season.data.tvRating as BookRating] : null;
           const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
           const watchedDate = formatYMD(season.data.pubDate);
-          const coverImage = season.data.tvCover ? getTVCoverImage(season.data.tvCover) : null;
+          const coverImage = season.data.cover ? getTVCoverImage(season.data.cover) : null;
 
           return (
             <a href={`/tvshelf/${showSlug}/${seasonSlug}/`} class="tv-season-card">

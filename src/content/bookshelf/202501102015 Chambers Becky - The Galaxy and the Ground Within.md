@@ -11,7 +11,7 @@ tags:
 genre: sci-fi
 series: 'Wayfarers'
 seriesNumber: 4
-bookCover: 'the-galaxy-and-the-ground-within.jpg'
+cover: 'the-galaxy-and-the-ground-within.jpg'
 author: "Becky Chambers"
 bookStatus: "read"
 bookRating: like

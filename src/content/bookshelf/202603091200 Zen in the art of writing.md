@@ -17,7 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116198687868461871'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgmmpk3uwc2c'
   - 'https://www.threads.com/@sajal24x7/post/DVqPJrYFBvJ'
-bookCover: zen-in-the-art-of-writing.jpg
+cover: zen-in-the-art-of-writing.jpg
 bookRating: love
 finishedReading: 2026-03-10T19:08:56+02:00
 ---

@@ -21,7 +21,7 @@ syndicationUrls:
   - https://mastodon.social/@sajal24x7/115860556223508716
   - https://bsky.app/profile/sajalchoudhary.net/post/3mbwhl3dglw2o
   - https://www.threads.com/@sajal24x7/post/DTQeOdwkRs8
-bookCover: the-phoenix-project.jpg
+cover: the-phoenix-project.jpg
 ---
 
 Finished reading.

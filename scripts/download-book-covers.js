@@ -602,12 +602,12 @@ function findBookshelfFiles(dir, files = []) {
   return files;
 }
 
-// Update markdown file with bookCover field
+// Update markdown file with cover field
 function updateMarkdownWithCover(filePath, originalContent, coverFilename) {
   const { data, content: bodyContent } = matter(originalContent);
 
-  // Add or update bookCover field
-  data.bookCover = coverFilename;
+  // Add or update cover field
+  data.cover = coverFilename;
 
   // Recreate the frontmatter
   const newContent = matter.stringify(bodyContent, data);
@@ -714,7 +714,7 @@ async function main() {
   let replaced = 0;
 
   for (const file of bookshelfFiles) {
-    const { title, author, bookCover } = file.data;
+    const { title, author, cover } = file.data;
 
     if (!title) {
       console.log(`⚠️  Skipping file without title: ${path.basename(file.path)}`);
@@ -726,7 +726,7 @@ async function main() {
     const expectedFilename = titleToFilename(title, author);
     const coverFilename = `${expectedFilename}.jpg`;
     const coverPath = path.join(bookshelfDir, coverFilename);
-    const existingCoverPath = bookCover ? path.join(bookshelfDir, bookCover) : null;
+    const existingCoverPath = cover ? path.join(bookshelfDir, cover) : null;
     const resolvedCoverPath = existingCoverPath && fs.existsSync(existingCoverPath)
       ? existingCoverPath
       : (fs.existsSync(coverPath) ? coverPath : null);
@@ -740,7 +740,7 @@ async function main() {
           fs.unlinkSync(resolvedCoverPath);
         } else if (!replaceLowRes) {
           const sizeKb = (fs.statSync(resolvedCoverPath).size / 1024).toFixed(1);
-          console.log(`✅ "${title}" — cover exists (${sizeKb}KB): ${bookCover || coverFilename}`);
+          console.log(`✅ "${title}" — cover exists (${sizeKb}KB): ${cover || coverFilename}`);
           skipped++;
           continue;
         } else {
@@ -749,7 +749,7 @@ async function main() {
           skipped++;
           continue;
         }
-      } else if (bookCover) {
+      } else if (cover) {
         // Cover referenced in frontmatter but file missing — re-download
         console.log(`📚 Processing: "${title}" — referenced cover missing, re-downloading...`);
       } else if (fs.existsSync(coverPath)) {
@@ -810,9 +810,9 @@ async function main() {
       const downloadedSizeKb = (fs.statSync(coverPath).size / 1024).toFixed(1);
       console.log(`   ✅ Saved as: ${coverFilename} (${downloadedSizeKb}KB)`);
 
-      if (!bookCover) {
+      if (!cover) {
         updateMarkdownWithCover(file.path, file.content, coverFilename);
-        console.log(`   📝 Updated markdown with bookCover reference`);
+        console.log(`   📝 Updated markdown with cover reference`);
       }
 
       if (replaceLowRes || (targetBook && resolvedCoverPath)) {

@@ -14,6 +14,6 @@ bookStatus: read
 startedReading: 2013-01-08T15:26:39.000Z
 finishedReading: 2013-01-08T15:26:39.000Z
 bookRating: like
-bookCover: the-tipping-point-how-little-things-can-make-a-big-difference.jpg
+cover: the-tipping-point-how-little-things-can-make-a-big-difference.jpg
 ---
 Finished Reading

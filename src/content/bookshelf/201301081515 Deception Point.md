@@ -14,6 +14,6 @@ bookStatus: read
 startedReading: 2013-01-08T15:15:02.000Z
 finishedReading: 2013-01-08T15:15:09.000Z
 bookRating: love
-bookCover: deception-point.jpeg
+cover: deception-point.jpeg
 ---
 Finished Reading

@@ -9,7 +9,7 @@ tags:
   - book-reviews
   - murakami
 genre: short-story
-bookCover: men-without-women.jpg
+cover: men-without-women.jpg
 author: Haruki Murakami
 bookStatus: read
 bookRating: like

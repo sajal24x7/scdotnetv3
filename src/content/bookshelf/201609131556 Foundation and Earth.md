@@ -14,6 +14,6 @@ format: paperback
 bookStatus: read
 startedReading: 2013-01-16T07:02:09.000Z
 finishedReading: 2016-09-13T15:56:22.000Z
-bookCover: foundation-and-earth.jpg
+cover: foundation-and-earth.jpg
 ---
 Finished Reading

@@ -15,6 +15,6 @@ bookStatus: read
 startedReading: 2013-01-16T07:01:23.000Z
 finishedReading: 2013-08-08T13:01:58.000Z
 bookRating: love
-bookCover: prelude-to-foundation.jpg
+cover: prelude-to-foundation.jpg
 ---
 Finished Reading

@@ -12,7 +12,7 @@ bookStatus: read
 bookRating: like
 startedReading: 2024-11-30T21:37:00+03:00
 finishedReading: 2024-11-30T21:37:00+03:00
-bookCover: twenty-love-poems-and-a-song-of-despair.jpg
+cover: twenty-love-poems-and-a-song-of-despair.jpg
 ---
 
 # Notes

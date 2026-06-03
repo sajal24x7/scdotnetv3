@@ -13,7 +13,7 @@ author: Cal Newport
 bookStatus: read
 startedReading: 2025-10-17T12:28:56.000Z
 finishedReading: 2025-10-24T17:46:56.000Z
-bookCover: slow-productivity.jpg
+cover: slow-productivity.jpg
 bookRating: like
 syndicationUrls:
   - https://mastodon.social/@sajal24x7/115411436555564699

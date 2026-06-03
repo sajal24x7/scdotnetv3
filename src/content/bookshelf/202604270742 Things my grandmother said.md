@@ -13,7 +13,7 @@ author:
 genre: poetry
 bookStatus: read
 startedReading: 2026-04-27T04:46:16.000Z
-bookCover: things-my-grandmother-said.JPG
+cover: things-my-grandmother-said.JPG
 bookRating: like
 finishedReading: 2026-04-29T17:06:23.000Z
 syndicationUrls:

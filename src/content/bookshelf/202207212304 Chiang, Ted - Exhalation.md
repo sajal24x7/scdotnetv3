@@ -18,6 +18,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115864826030776501'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyear7lb72l'
   - 'https://www.threads.com/@sajal24x7/post/DTSaflwjm9V'
-bookCover: exhalation.jpg
+cover: exhalation.jpg
 ---
 Finished reading.

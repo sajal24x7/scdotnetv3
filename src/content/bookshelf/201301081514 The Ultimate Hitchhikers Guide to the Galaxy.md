@@ -15,6 +15,6 @@ bookStatus: read
 startedReading: 2013-01-08T15:14:05.000Z
 finishedReading: 2013-01-08T15:14:21.000Z
 bookRating: like
-bookCover: the-ultimate-hitchhikers-guide-to-the-galaxy.jpg
+cover: the-ultimate-hitchhikers-guide-to-the-galaxy.jpg
 ---
 Finished Reading
