@@ -10,7 +10,7 @@ import {
     heartIconPaths,
     thumbIconPaths,
     type BookRating,
-    type RatingIconSpec
+    type RatingIconSpec,
 } from '../../../utils/bookRatings';
 
 export async function getStaticPaths() {
@@ -52,6 +52,11 @@ const sortedSeasons = [...seasons].sort((a, b) => {
 
 const latestSeason = [...seasons].sort((a, b) => (b.data.season ?? 1) - (a.data.season ?? 1))[0];
 
+// Limited series: no entry has a season number — render content directly on this page.
+const isLimitedSeries = seasons.every((s) => s.data.season === undefined);
+const limitedPost = isLimitedSeries ? sortedSeasons[0] : null;
+const { Content: LimitedContent } = limitedPost ? await limitedPost.render() : { Content: null };
+
 const parseDate = (value?: Date | string | null): Date | null => {
     if (!value) return null;
     const d = value instanceof Date ? value : new Date(value);
@@ -92,6 +97,13 @@ const formatCreators = (creators: string[]) => {
 const formattedCreators = formatCreators(showCreators);
 const showGenreLabel = latestSeason.data.genre ? (latestSeason.data.genre as string).toUpperCase() : null;
 const showYear = latestSeason.data.year ?? null;
+
+// Extra metadata for limited series header
+const limitedStatus = limitedPost?.data.tvStatus;
+const limitedRating = limitedPost?.data.tvRating;
+const limitedPlatform = limitedPost?.data.platform as string | undefined;
+const limitedStarted = formatYMD(limitedPost?.data.started);
+const limitedFinished = formatYMD(limitedPost?.data.finished);
 ---
 
 <Layout
@@ -147,14 +159,62 @@ const showYear = latestSeason.data.year ?? null;
               {showYear as number}
             </span>
           )}
-          <span class="tv-chip tv-chip--seasons">
-            <span class="tv-chip-label">Seasons</span>
-            {sortedSeasons.length}
-          </span>
+          {!isLimitedSeries && (
+            <span class="tv-chip tv-chip--seasons">
+              <span class="tv-chip-label">Seasons</span>
+              {sortedSeasons.length}
+            </span>
+          )}
+          {isLimitedSeries && limitedPlatform && (
+            <span class="tv-chip tv-chip--platform">
+              <span class="tv-chip-label">Platform</span>
+              {limitedPlatform}
+            </span>
+          )}
+          {isLimitedSeries && limitedStatus && limitedStatus !== 'watched' && (
+            <span class={`tv-chip ${statusChipClassMap[limitedStatus]}`}>
+              <span class="tv-chip-label">Status</span>
+              {statusLabelMap[limitedStatus]}
+            </span>
+          )}
+          {isLimitedSeries && limitedRating && (() => {
+            const rd = bookRatingDisplay[limitedRating as BookRating];
+            const specs: readonly RatingIconSpec[] = rd?.iconSpecs ?? [];
+            return rd ? (
+              <span class={`tv-chip tv-chip--rating tv-chip--rating-${limitedRating}`}>
+                <span class="tv-chip-label">Rated</span>
+                {specs.length > 0 && (
+                  <span class="tv-chip__icons" aria-hidden="true">
+                    {specs.map((spec) => (
+                      <svg width={spec.size} height={spec.size} viewBox="0 0 24 24" fill="currentColor">
+                        {(spec.type === 'heart' ? heartIconPaths : thumbIconPaths[spec.direction]).map((d) => (
+                          <path d={d}></path>
+                        ))}
+                      </svg>
+                    ))}
+                  </span>
+                )}
+              </span>
+            ) : null;
+          })()}
+          {isLimitedSeries && (limitedStarted || limitedFinished) && (
+            <span class="tv-chip tv-chip--dates">
+              {limitedStarted && limitedFinished
+                ? `${limitedStarted} – ${limitedFinished}`
+                : limitedStarted ?? limitedFinished}
+            </span>
+          )}
         </div>
       </div>
     </header>
 
+    {isLimitedSeries && LimitedContent && (
+      <div class="season-content">
+        <LimitedContent />
+      </div>
+    )}
+
+    {!isLimitedSeries && (
     <section class="tv-show-page__seasons">
       <h2 class="tv-show-page__seasons-title">Seasons</h2>
       <div class="tv-show-page__seasons-list">
@@ -227,6 +287,7 @@ const showYear = latestSeason.data.year ?? null;
         })}
       </div>
     </section>
+    )}
 
     <div class="tv-show-page__back">
       <a href="/tvshelf/" class="tv-show-page__back-link">← Back to TV Shelf</a>
@@ -344,6 +405,24 @@ const showYear = latestSeason.data.year ?? null;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
+
+  /* Limited-series content body */
+  .season-content {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #374151;
+  }
+
+  :global(.dark) .season-content { color: #d1d5db; }
+
+  .season-content :global(p) { margin: 0 0 1rem; }
+  .season-content :global(p:last-child) { margin-bottom: 0; }
+
+  .tv-chip--platform { background: #f0fdf4; color: #166534; text-transform: none; font-size: 0.7rem; letter-spacing: 0.03em; }
+  :global(.dark) .tv-chip--platform { background: rgba(22, 101, 52, 0.25); color: #bbf7d0; }
+
+  .tv-chip--dates { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: 0.68rem; letter-spacing: 0.02em; }
+  :global(.dark) .tv-chip--dates { background: #1f2937; color: #e5e7eb; }
 
   .tv-show-page__seasons-title {
     font-size: 1rem;

@@ -34,9 +34,11 @@ export async function getStaticPaths() {
         const showSlug = firstSlug.split('/')[0] || slugify(showTitle);
 
         for (const season of seasons) {
+            // Posts without season metadata are limited series — no season subpage.
+            if (season.data.season === undefined) continue;
             const rawSlug = season.data.slug ?? '';
             const parts = rawSlug.split('/');
-            const seasonNum = season.data.season ?? 1;
+            const seasonNum = season.data.season;
             const seasonSlug = parts[1] || `s${seasonNum}`;
             paths.push({
                 params: { show: showSlug, season: seasonSlug },

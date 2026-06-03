@@ -16,15 +16,18 @@ const parseDate = (value?: Date | string | null): Date | null => {
     return Number.isNaN(d.getTime()) ? null : d;
 };
 
-// Split slug like "glory/s1" into show and season parts,
-// falling back to computed values for posts without the new format.
+// Split slug like "glory/s1" into show and season parts.
+// When post.data.season is undefined the show is treated as a limited series
+// (single season) and seasonSlug is left undefined — the card links to the
+// show overview page rather than a season subpage.
 function parsePostSlug(post: typeof tvPosts[number]) {
     const parts = (post.data.slug ?? '').split('/');
     const showTitle = post.data.showTitle ?? post.data.title ?? 'Unknown';
+    const hasSeason = post.data.season !== undefined;
     const seasonNum = post.data.season ?? 1;
     return {
         showSlug: parts[0] || slugify(showTitle),
-        seasonSlug: parts[1] || `s${seasonNum}`
+        seasonSlug: hasSeason ? (parts[1] || `s${seasonNum}`) : undefined
     };
 }
 
@@ -32,7 +35,7 @@ interface SeasonEntry {
     post: typeof tvPosts[number];
     showTitle: string;
     showSlug: string;
-    seasonSlug: string;
+    seasonSlug: string | undefined;
     seasonNum: number;
     year: number;
     tvStatus: string | undefined;
