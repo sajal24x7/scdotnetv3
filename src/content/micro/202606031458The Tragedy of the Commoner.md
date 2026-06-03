@@ -1,15 +1,18 @@
 ---
-title: ""
-slug: ""
-pubDate: 2026-06-03T15:04:59+03:00
-updatedDate: 2026-06-03T15:04:59+03:00
+title: ''
+slug: ''
+pubDate: 2026-06-03T12:04:59.000Z
+updatedDate: 2026-06-03T12:04:59.000Z
 category: micro
 tags:
   - hugh-howey
   - economy
   - society
   - ai
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116686084697985181'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mnf2zxkosd2v'
+  - 'https://www.threads.com/@sajal24x7/post/DZH4RDTEbfI'
 ---
 [The Tragedy of the Commoner by Hugh Howey](https://hughhowey.com/the-tragedy-of-the-commoner/)
 
