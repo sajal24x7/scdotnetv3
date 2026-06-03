@@ -337,19 +337,12 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
 
   .tv-show-header__cover {
     width: auto;
-    max-height: 24rem;
+    max-height: 16rem;
     height: auto;
     border-radius: 0.75rem;
     box-shadow:
       0 4px 6px rgba(0, 0, 0, 0.1),
       0 2px 4px rgba(0, 0, 0, 0.06);
-  }
-
-  @media (min-width: 48rem) {
-    .tv-show-header__cover {
-      width: 100%;
-      max-height: none;
-    }
   }
 
   :global(.dark) .tv-show-header__cover {
