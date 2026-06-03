@@ -935,6 +935,7 @@
       "micro/202606010957 Nividia Announces RTX Spark Chips.md",
       "micro/202606011012 The AI Bubble.md",
       "micro/202606020937 Meta bot used to hijack IG accounts.md",
+      "micro/202606031458The Tragedy of the Commoner.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1637,7 +1638,7 @@
       "til/202603301610 Generators in python.md",
       "tvshelf/202605270840 Glory.md"
     ],
-    "generatedAt": "2026-06-03T09:12:09.099Z"
+    "generatedAt": "2026-06-03T13:08:47.903Z"
   },
   "micro/new-updates-to-claude": [
     {
@@ -1657,6 +1658,15 @@
       "pubDate": "2025-10-21T12:45:15.000Z"
     }
   ],
+  "bookshelf/continuous-delivery": [
+    {
+      "slug": "/til/how-to-write-commit-messages/",
+      "title": "How to Write Commit Messages",
+      "description": "",
+      "category": "til",
+      "pubDate": "2025-11-24T18:54:37.000Z"
+    }
+  ],
   "bookshelf/the-practice-of-cloud-system-administration": [
     {
       "slug": "/til/the-cap-principle/",
@@ -1673,15 +1683,6 @@
       "pubDate": "2025-10-29T09:11:33.000Z"
     }
   ],
-  "bookshelf/continuous-delivery": [
-    {
-      "slug": "/til/how-to-write-commit-messages/",
-      "title": "How to Write Commit Messages",
-      "description": "",
-      "category": "til",
-      "pubDate": "2025-11-24T18:54:37.000Z"
-    }
-  ],
   "bookshelf/how-linux-works": [
     {
       "slug": "/til/what-does-a-kernel-do/",
@@ -1689,15 +1690,6 @@
       "description": "",
       "category": "til",
       "pubDate": "2026-03-18T09:55:49.000Z"
-    }
-  ],
-  "blog/thoughts-on-iphone-day": [
-    {
-      "slug": "/blog/thoughts-on-iphone-day-2025/",
-      "title": "Thoughts on iPhone Day - 2025",
-      "description": "",
-      "category": "blog",
-      "pubDate": "2025-09-09T18:47:57.000Z"
     }
   ],
   "nordletter/nl67-performing-at-india-day": [
@@ -1714,6 +1706,15 @@
       "description": "",
       "category": "blog",
       "pubDate": "2025-08-20T19:06:10.000Z"
+    }
+  ],
+  "blog/thoughts-on-iphone-day": [
+    {
+      "slug": "/blog/thoughts-on-iphone-day-2025/",
+      "title": "Thoughts on iPhone Day - 2025",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-09-09T18:47:57.000Z"
     }
   ],
   "blog/attending-the-global-ai-bootcamp-in-helsinki": [
@@ -2550,24 +2551,6 @@
       "pubDate": "2025-08-10T03:34:48.000Z"
     }
   ],
-  "evergreen/when-someone-has-been-dead-for-a-while": [
-    {
-      "slug": "/nordletter/nl69-a-fresh-start/",
-      "title": "A Fresh Start",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-08-31T03:30:49.000Z"
-    }
-  ],
-  "evergreen/why-journal": [
-    {
-      "slug": "/nordletter/nl69-a-fresh-start/",
-      "title": "A Fresh Start",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-08-31T03:30:49.000Z"
-    }
-  ],
   "evergreen/write-more": [
     {
       "slug": "/nordletter/nl70-build-or-break/",
@@ -2593,6 +2576,24 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-09-07T03:05:16.000Z"
+    }
+  ],
+  "evergreen/when-someone-has-been-dead-for-a-while": [
+    {
+      "slug": "/nordletter/nl69-a-fresh-start/",
+      "title": "A Fresh Start",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-08-31T03:30:49.000Z"
+    }
+  ],
+  "evergreen/why-journal": [
+    {
+      "slug": "/nordletter/nl69-a-fresh-start/",
+      "title": "A Fresh Start",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-08-31T03:30:49.000Z"
     }
   ],
   "blog/thoughts-on-iphone-day-2025": [
@@ -2679,11 +2680,11 @@
   ],
   "blog/vibe-coding": [
     {
-      "slug": "/nordletter/nl78/",
-      "title": "Chath Celebrations",
+      "slug": "/nordletter/nl74-to-move/",
+      "title": "To Move",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-11-02T20:42:52.000Z"
+      "pubDate": "2025-10-04T20:06:32.000Z"
     }
   ],
   "blog/azure-and-friends-october-meetup": [
@@ -2702,6 +2703,33 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-10-11T23:06:03.000Z"
+    }
+  ],
+  "nordletter/diwali-week": [
+    {
+      "slug": "/nordletter/nl77/",
+      "title": "Hyva Diwalia!",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-26T20:45:29.000Z"
+    }
+  ],
+  "blog/celebrating-diwali-at-op": [
+    {
+      "slug": "/nordletter/nl77/",
+      "title": "Hyva Diwalia!",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-26T20:45:29.000Z"
+    }
+  ],
+  "nordletter/the-human-condition": [
+    {
+      "slug": "/nordletter/nl78/",
+      "title": "Chath Celebrations",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-11-02T20:42:52.000Z"
     }
   ],
   "nordletter/nl74-to-move": [
@@ -2731,24 +2759,6 @@
       "pubDate": "2025-11-30T20:44:23.000Z"
     }
   ],
-  "nordletter/diwali-week": [
-    {
-      "slug": "/nordletter/nl77/",
-      "title": "Hyva Diwalia!",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-10-26T20:45:29.000Z"
-    }
-  ],
-  "blog/celebrating-diwali-at-op": [
-    {
-      "slug": "/nordletter/nl77/",
-      "title": "Hyva Diwalia!",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-10-26T20:45:29.000Z"
-    }
-  ],
   "nordletter/oodi-for-all": [
     {
       "slug": "/nordletter/nl82/",
@@ -2776,77 +2786,14 @@
       "pubDate": "2025-12-21T18:00:25.000Z"
     }
   ],
-  "nordletter/a-happy-new-year": [
+  "nordletter/nl79": [
     {
-      "slug": "/nordletter/happy-new-year/",
-      "title": "Happy New Year",
+      "slug": "/nordletter/nl-104/",
+      "title": "Wheezing past the cradle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
-    }
-  ],
-  "evergreen/limitations-mean-freedom": [
-    {
-      "slug": "/nordletter/nl85/",
-      "title": "The Route Circle",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
-    }
-  ],
-  "evergreen/write-for-one-person": [
-    {
-      "slug": "/nordletter/nl85/",
-      "title": "The Route Circle",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
-    }
-  ],
-  "evergreen/how-to-read": [
-    {
-      "slug": "/bookshelf/all-that-we-see-or-seem/",
-      "title": "All That We See or Seem",
-      "description": "",
-      "category": "bookshelf",
-      "pubDate": "2026-04-06T08:27:25.000Z"
+      "pubDate": "2026-05-09T20:51:46.000Z"
     },
-    {
-      "slug": "/nordletter/nl85/",
-      "title": "The Route Circle",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
-    }
-  ],
-  "bookshelf/things-become-other-things": [
-    {
-      "slug": "/nordletter/nl87/",
-      "title": "Winter Wonderland",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-10T19:46:59.000Z"
-    }
-  ],
-  "nordletter/nl85": [
-    {
-      "slug": "/nordletter/nl87/",
-      "title": "Winter Wonderland",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-10T19:46:59.000Z"
-    }
-  ],
-  "nordletter/a-happy-new-year": [
-    {
-      "slug": "/nordletter/happy-new-year/",
-      "title": "Happy New Year",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
-    }
-  ],
-  "micro/chatgpt-has-yearly-recaps-as-well": [
     {
       "slug": "/nordletter/happy-new-year/",
       "title": "Happy New Year",
@@ -2860,60 +2807,6 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-12-27T21:33:35.000Z"
-    }
-  ],
-  "blog/books-ive-read-this-year": [
-    {
-      "slug": "/nordletter/happy-new-year/",
-      "title": "Happy New Year",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
-    }
-  ],
-  "nordletter/election-time": [
-    {
-      "slug": "/nordletter/happy-new-year/",
-      "title": "Happy New Year",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
-    }
-  ],
-  "nordletter/nl87": [
-    {
-      "slug": "/nordletter/nl88/",
-      "title": "Indiabound",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-17T21:31:10.000Z"
-    }
-  ],
-  "evergreen/how-to-decide-what-to-watch-or-read": [
-    {
-      "slug": "/nordletter/nl88/",
-      "title": "Indiabound",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-17T21:31:10.000Z"
-    }
-  ],
-  "bookshelf/how-to-win-friends-and-influence-people": [
-    {
-      "slug": "/nordletter/nl88/",
-      "title": "Indiabound",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-17T21:31:10.000Z"
-    }
-  ],
-  "bookshelf/lords-of-uncreation": [
-    {
-      "slug": "/nordletter/nl88/",
-      "title": "Indiabound",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-17T21:31:10.000Z"
     }
   ],
   "nordletter/i-miss-walking": [
@@ -2982,6 +2875,96 @@
       "pubDate": "2025-12-27T21:33:35.000Z"
     }
   ],
+  "nordletter/a-happy-new-year": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy New Year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "micro/chatgpt-has-yearly-recaps-as-well": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy New Year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "blog/books-ive-read-this-year": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy New Year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "nordletter/election-time": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy New Year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "bookshelf/things-become-other-things": [
+    {
+      "slug": "/nordletter/nl87/",
+      "title": "Winter Wonderland",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-10T19:46:59.000Z"
+    }
+  ],
+  "nordletter/nl85": [
+    {
+      "slug": "/nordletter/nl87/",
+      "title": "Winter Wonderland",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-10T19:46:59.000Z"
+    }
+  ],
+  "nordletter/nl87": [
+    {
+      "slug": "/nordletter/nl88/",
+      "title": "Indiabound",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-17T21:31:10.000Z"
+    }
+  ],
+  "evergreen/how-to-decide-what-to-watch-or-read": [
+    {
+      "slug": "/nordletter/nl88/",
+      "title": "Indiabound",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-17T21:31:10.000Z"
+    }
+  ],
+  "bookshelf/how-to-win-friends-and-influence-people": [
+    {
+      "slug": "/nordletter/nl88/",
+      "title": "Indiabound",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-17T21:31:10.000Z"
+    }
+  ],
+  "bookshelf/lords-of-uncreation": [
+    {
+      "slug": "/nordletter/nl88/",
+      "title": "Indiabound",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-17T21:31:10.000Z"
+    }
+  ],
   "blog/2025-letters": [
     {
       "slug": "/nordletter/nl89/",
@@ -3021,24 +3004,6 @@
       "pubDate": "2026-01-31T16:21:15.000Z"
     }
   ],
-  "poem/this-valentines-day": [
-    {
-      "slug": "/nordletter/nl93/",
-      "title": "An Anniversary Visit to Porvoo",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-02-21T22:32:49.000Z"
-    }
-  ],
-  "nordletter/visit-porvoo": [
-    {
-      "slug": "/nordletter/nl93/",
-      "title": "An Anniversary Visit to Porvoo",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-02-21T22:32:49.000Z"
-    }
-  ],
   "nordletter/nl90": [
     {
       "slug": "/nordletter/nl92/",
@@ -3062,6 +3027,24 @@
       "description": "",
       "category": "bookshelf",
       "pubDate": "2025-12-30T10:59:25.000Z"
+    }
+  ],
+  "poem/this-valentines-day": [
+    {
+      "slug": "/nordletter/nl93/",
+      "title": "An Anniversary Visit to Porvoo",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-02-21T22:32:49.000Z"
+    }
+  ],
+  "nordletter/visit-porvoo": [
+    {
+      "slug": "/nordletter/nl93/",
+      "title": "An Anniversary Visit to Porvoo",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-02-21T22:32:49.000Z"
     }
   ],
   "nordletter/nl77": [
@@ -3145,22 +3128,13 @@
       "pubDate": "2026-03-22T19:56:34.000Z"
     }
   ],
-  "poem/this-valentines-day": [
+  "bookshelf/dune": [
     {
-      "slug": "/nordletter/nl93/",
-      "title": "An Anniversary Visit to Porvoo",
+      "slug": "/nordletter/nl98/",
+      "title": "For Those We Love",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-02-21T22:32:49.000Z"
-    }
-  ],
-  "nordletter/visit-porvoo": [
-    {
-      "slug": "/nordletter/nl93/",
-      "title": "An Anniversary Visit to Porvoo",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-02-21T22:32:49.000Z"
+      "pubDate": "2026-03-28T18:50:51.000Z"
     }
   ],
   "bookshelf/reading-wanderlust": [
@@ -3170,15 +3144,6 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-04-05T16:19:46.000Z"
-    }
-  ],
-  "bookshelf/dune": [
-    {
-      "slug": "/nordletter/nl98/",
-      "title": "For Those We Love",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-03-28T18:50:51.000Z"
     }
   ],
   "bookshelf/this-and-that": [
@@ -3242,38 +3207,6 @@
       "pubDate": "2026-05-02T22:20:45.000Z"
     }
   ],
-  "nordletter/cherries-all-around": [
-    {
-      "slug": "/nordletter/nl105-fazer-experience/",
-      "title": "The Fazer Experience",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-05-16T21:16:18.000Z"
-    }
-  ],
-  "bookshelf/outlive": [
-    {
-      "slug": "/nordletter/nl107/",
-      "title": "Read More Books",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-05-30T23:33:00.000Z"
-    },
-    {
-      "slug": "/nordletter/nl-104/",
-      "title": "Wheezing past the cradle",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-05-09T20:51:46.000Z"
-    },
-    {
-      "slug": "/evergreen/the-four-diseases-leading-to-slow-death/",
-      "title": "The Four Diseases Leading to Slow Death",
-      "description": "",
-      "category": "evergreen",
-      "pubDate": "2026-04-14T11:54:01.000Z"
-    }
-  ],
   "evergreen/be-a-hybrid": [
     {
       "slug": "/nordletter/nl-104/",
@@ -3301,6 +3234,29 @@
       "pubDate": "2026-05-09T20:51:46.000Z"
     }
   ],
+  "bookshelf/outlive": [
+    {
+      "slug": "/nordletter/nl107/",
+      "title": "Read More Books",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-30T23:33:00.000Z"
+    },
+    {
+      "slug": "/nordletter/nl-104/",
+      "title": "Wheezing past the cradle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-09T20:51:46.000Z"
+    },
+    {
+      "slug": "/evergreen/the-four-diseases-leading-to-slow-death/",
+      "title": "The Four Diseases Leading to Slow Death",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2026-04-14T11:54:01.000Z"
+    }
+  ],
   "micro/mac-mini-starting-price-rises": [
     {
       "slug": "/nordletter/nl-104/",
@@ -3317,6 +3273,15 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-05-09T20:51:46.000Z"
+    }
+  ],
+  "nordletter/cherries-all-around": [
+    {
+      "slug": "/nordletter/nl105-fazer-experience/",
+      "title": "The Fazer Experience",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-16T21:16:18.000Z"
     }
   ],
   "blog/devops-finland-october-meetup": [
