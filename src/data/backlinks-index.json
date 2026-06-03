@@ -402,6 +402,7 @@
       "blog/202604161559 Vibe Coding April Meetup.md",
       "blog/202605181054 The problem with Current.md",
       "blog/202605262043 About Apple Sports.md",
+      "blog/202606031121 State of Play June.md",
       "bookshelf/201301081514 The Da Vinci Code.md",
       "bookshelf/201301081514 The Ultimate Hitchhikers Guide to the Galaxy.md",
       "bookshelf/201301081515 Deception Point.md",
@@ -933,6 +934,7 @@
       "micro/202606010639 About Using AI for Personal Notes.md",
       "micro/202606010957 Nividia Announces RTX Spark Chips.md",
       "micro/202606011012 The AI Bubble.md",
+      "micro/202606020937 Meta bot used to hijack IG accounts.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1635,7 +1637,7 @@
       "til/202603301610 Generators in python.md",
       "tvshelf/202605270840 Glory.md"
     ],
-    "generatedAt": "2026-06-02T10:28:09.843Z"
+    "generatedAt": "2026-06-03T09:12:09.099Z"
   },
   "micro/new-updates-to-claude": [
     {
@@ -1689,6 +1691,15 @@
       "pubDate": "2026-03-18T09:55:49.000Z"
     }
   ],
+  "blog/thoughts-on-iphone-day": [
+    {
+      "slug": "/blog/thoughts-on-iphone-day-2025/",
+      "title": "Thoughts on iPhone Day - 2025",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-09-09T18:47:57.000Z"
+    }
+  ],
   "nordletter/nl67-performing-at-india-day": [
     {
       "slug": "/nordletter/happy-new-year/",
@@ -1703,15 +1714,6 @@
       "description": "",
       "category": "blog",
       "pubDate": "2025-08-20T19:06:10.000Z"
-    }
-  ],
-  "blog/thoughts-on-iphone-day": [
-    {
-      "slug": "/blog/thoughts-on-iphone-day-2025/",
-      "title": "Thoughts on iPhone Day - 2025",
-      "description": "",
-      "category": "blog",
-      "pubDate": "2025-09-09T18:47:57.000Z"
     }
   ],
   "blog/attending-the-global-ai-bootcamp-in-helsinki": [
@@ -2675,6 +2677,15 @@
       "pubDate": "2025-09-27T13:17:33.000Z"
     }
   ],
+  "blog/vibe-coding": [
+    {
+      "slug": "/nordletter/nl74-to-move/",
+      "title": "To Move",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-04T20:06:32.000Z"
+    }
+  ],
   "blog/azure-and-friends-october-meetup": [
     {
       "slug": "/nordletter/malai/",
@@ -2691,33 +2702,6 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-10-11T23:06:03.000Z"
-    }
-  ],
-  "blog/vibe-coding": [
-    {
-      "slug": "/nordletter/nl74-to-move/",
-      "title": "To Move",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-10-04T20:06:32.000Z"
-    }
-  ],
-  "nordletter/diwali-week": [
-    {
-      "slug": "/nordletter/nl77/",
-      "title": "Hyva Diwalia!",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-10-26T20:45:29.000Z"
-    }
-  ],
-  "blog/celebrating-diwali-at-op": [
-    {
-      "slug": "/nordletter/nl77/",
-      "title": "Hyva Diwalia!",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-10-26T20:45:29.000Z"
     }
   ],
   "nordletter/the-human-condition": [
@@ -2754,6 +2738,24 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-11-30T20:44:23.000Z"
+    }
+  ],
+  "nordletter/diwali-week": [
+    {
+      "slug": "/nordletter/nl77/",
+      "title": "Hyva Diwalia!",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-26T20:45:29.000Z"
+    }
+  ],
+  "blog/celebrating-diwali-at-op": [
+    {
+      "slug": "/nordletter/nl77/",
+      "title": "Hyva Diwalia!",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-26T20:45:29.000Z"
     }
   ],
   "nordletter/oodi-for-all": [
@@ -2872,6 +2874,24 @@
       "pubDate": "2025-12-27T21:33:35.000Z"
     }
   ],
+  "bookshelf/things-become-other-things": [
+    {
+      "slug": "/nordletter/nl87/",
+      "title": "Winter Wonderland",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-10T19:46:59.000Z"
+    }
+  ],
+  "nordletter/nl85": [
+    {
+      "slug": "/nordletter/nl87/",
+      "title": "Winter Wonderland",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-10T19:46:59.000Z"
+    }
+  ],
   "nordletter/a-happy-new-year": [
     {
       "slug": "/nordletter/happy-new-year/",
@@ -2906,24 +2926,6 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-03T21:03:01.000Z"
-    }
-  ],
-  "bookshelf/things-become-other-things": [
-    {
-      "slug": "/nordletter/nl87/",
-      "title": "Winter Wonderland",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-10T19:46:59.000Z"
-    }
-  ],
-  "nordletter/nl85": [
-    {
-      "slug": "/nordletter/nl87/",
-      "title": "Winter Wonderland",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-10T19:46:59.000Z"
     }
   ],
   "nordletter/nl87": [
@@ -3001,6 +3003,24 @@
       "pubDate": "2026-01-31T16:21:15.000Z"
     }
   ],
+  "poem/this-valentines-day": [
+    {
+      "slug": "/nordletter/nl93/",
+      "title": "An Anniversary Visit to Porvoo",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-02-21T22:32:49.000Z"
+    }
+  ],
+  "nordletter/visit-porvoo": [
+    {
+      "slug": "/nordletter/nl93/",
+      "title": "An Anniversary Visit to Porvoo",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-02-21T22:32:49.000Z"
+    }
+  ],
   "nordletter/nl90": [
     {
       "slug": "/nordletter/nl92/",
@@ -3033,24 +3053,6 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-07T23:08:24.000Z"
-    }
-  ],
-  "poem/this-valentines-day": [
-    {
-      "slug": "/nordletter/nl93/",
-      "title": "An Anniversary Visit to Porvoo",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-02-21T22:32:49.000Z"
-    }
-  ],
-  "nordletter/visit-porvoo": [
-    {
-      "slug": "/nordletter/nl93/",
-      "title": "An Anniversary Visit to Porvoo",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-02-21T22:32:49.000Z"
     }
   ],
   "nordletter/spring-is-here": [
