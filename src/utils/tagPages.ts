@@ -89,7 +89,7 @@ export async function getTagPageData(): Promise<TagPageData[]> {
         const transformedBySlug = new Map<string, TransformedPost>();
         const transformedPosts = sortedPosts.map(post => {
             const transformed = transformPost(post);
-            transformedBySlug.set(post.slug, transformed);
+            transformedBySlug.set(post.id, transformed);
             return transformed;
         });
 
@@ -135,9 +135,9 @@ function buildCategorySlices(
             includeLabels: config.includes.map(formatCategoryLabel),
             count: filtered.length,
             transformedPosts: filtered.map(post => {
-                const transformed = transformedBySlug.get(post.slug);
+                const transformed = transformedBySlug.get(post.id);
                 if (!transformed) {
-                    throw new Error(`Missing transformed post for slug "${post.slug}".`);
+                    throw new Error(`Missing transformed post for id "${post.id}".`);
                 }
                 return transformed;
             })
@@ -164,9 +164,9 @@ function buildCategorySlices(
             includeLabels: [formatCategoryLabel(category)],
             count: filtered.length,
             transformedPosts: filtered.map(post => {
-                const transformed = transformedBySlug.get(post.slug);
+                const transformed = transformedBySlug.get(post.id);
                 if (!transformed) {
-                    throw new Error(`Missing transformed post for slug "${post.slug}".`);
+                    throw new Error(`Missing transformed post for id "${post.id}".`);
                 }
                 return transformed;
             })

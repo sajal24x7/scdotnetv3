@@ -216,7 +216,7 @@ async function buildBacklinkIndex(): Promise<BacklinkIndex> {
     const postIndex = new Map<string, CollectionEntry<any>>();
     for (const entry of entries) {
         const category = resolveCategory(entry);
-        const key = `${category}/${entry.slug}`;
+        const key = `${category}/${entry.id}`;
         postIndex.set(key, entry);
     }
 
@@ -224,8 +224,8 @@ async function buildBacklinkIndex(): Promise<BacklinkIndex> {
 
     for (const entry of entries) {
         const category = resolveCategory(entry);
-        const sourceKey = `${category}/${entry.slug}`;
-        const targets = collectBacklinkTargets(entry.body);
+        const sourceKey = `${category}/${entry.id}`;
+        const targets = collectBacklinkTargets(entry.body ?? '');
 
         for (const targetKey of targets) {
             if (targetKey === sourceKey) continue;
@@ -237,7 +237,7 @@ async function buildBacklinkIndex(): Promise<BacklinkIndex> {
             }
 
             backlinkEntry.push({
-                slug: `/${category}/${entry.slug}/`,
+                slug: `/${category}/${entry.id}/`,
                 title: entry.data.title || 'Untitled',
                 description: entry.data.description || '',
                 category,

@@ -23,7 +23,7 @@ export async function generateContentPreviews(): Promise<Map<string, ContentPrev
       if (!postData.data || !postData.data.title) continue;
 
       const category = postData.data.category || 'notes';
-      const slug = postData.slug;
+      const slug = postData.id;
       const path = `/${category}/${slug}/`;
       
       // Get description from frontmatter, or use empty string

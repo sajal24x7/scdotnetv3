@@ -45,7 +45,7 @@ export async function GET(context) {
       }
       
       // Determine the post URL based on category
-      const postUrl = `/${item.data.category}/${item.slug}/`;
+      const postUrl = `/${item.data.category}/${item.id}/`;
       
       return {
         link: postUrl,

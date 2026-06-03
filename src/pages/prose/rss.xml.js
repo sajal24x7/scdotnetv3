@@ -41,7 +41,7 @@ export async function GET(context) {
       }
       
       return {
-        link: `/${item.data.category}/${item.slug}/`,
+        link: `/${item.data.category}/${item.id}/`,
         title: item.data.title || 'Untitled',
         description: item.data.description || '',
         content,

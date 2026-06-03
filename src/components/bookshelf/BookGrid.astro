@@ -10,7 +10,7 @@ const { books } = Astro.props;
 // Transform books for BookshelfCard component
 const transformBook = (book: any) => ({
     ...book.data,
-    link: book.slug ? `/bookshelf/${book.slug}/` : undefined
+    link: book.id ? `/bookshelf/${book.id}/` : undefined
 });
 
 const getGridClasses = (book: any) => {

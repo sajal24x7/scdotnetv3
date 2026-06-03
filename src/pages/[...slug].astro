@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getContentCategories } from '../utils/content';
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
     const e = entry as CollectionEntry<any>;
     const category = 'category' in e.data && e.data.category ? e.data.category : 'notes';
     return {
-      params: { slug: `${category}/${e.slug}` },
+      params: { slug: `${category}/${e.id}` },
       props: { entry: e },
     };
   });
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 const slugParam = Astro.params.slug as string;
 const [category, slug] = slugParam.split('/');
 const entry = (Astro.props as { entry: CollectionEntry<any> }).entry;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 const hasUpdatedDate = 'updatedDate' in entry.data && entry.data.updatedDate;
 

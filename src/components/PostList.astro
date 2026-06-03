@@ -20,7 +20,7 @@ const { title, description, posts, currentPage } = Astro.props;
         <PostCard 
           title={post.data.title}
           description={post.data.description}
-          url={`/${currentPage}/${post.slug}`}
+          url={`/${currentPage}/${post.id}`}
           pubDate={new Date(post.data.pubDate)}
           image={post.data.image}
         />

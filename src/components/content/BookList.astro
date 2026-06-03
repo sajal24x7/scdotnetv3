@@ -15,7 +15,7 @@ const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
 <div class="space-y-2">
   {displayPosts.map((post) => (
     <article class="compact-card">
-      <a href={`/bookshelf/${post.slug}/`} class="block">
+      <a href={`/bookshelf/${post.id}/`} class="block">
         <div class="flex items-center gap-2">
           {post.data.format && (
             <span class="text-small font-medium text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900 px-2 py-1 rounded-full">

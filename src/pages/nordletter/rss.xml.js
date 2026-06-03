@@ -24,7 +24,6 @@ export async function GET(context) {
     site: context.site,
     items: await Promise.all(newsletterContent.map(async (item) => {
       // Render the content body to HTML
-      const { Content } = await item.render();
       let content;
       
       // If it's a string, parse it with the shared markdown helper
@@ -36,7 +35,7 @@ export async function GET(context) {
       }
       
       return {
-        link: `/nordletter/${item.slug}/`,
+        link: `/nordletter/${item.id}/`,
         title: item.data.title,
         description: item.data.description || '',
         content,
