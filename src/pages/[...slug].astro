@@ -41,7 +41,6 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
   title={`${entry.data?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
   description={entry.data?.description}
   currentPage={`/${category}/${slug}/`}
-  enableSearchModal
   enableLinkHoverEffect
   pageWrapper={{ className: 'grid-span-8 grid-start-3' }}
 >

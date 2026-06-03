@@ -1637,7 +1637,7 @@
       "til/202603301610 Generators in python.md",
       "tvshelf/202605270840 Glory.md"
     ],
-    "generatedAt": "2026-06-03T10:09:57.346Z"
+    "generatedAt": "2026-06-03T09:12:09.099Z"
   },
   "micro/new-updates-to-claude": [
     {
@@ -1691,6 +1691,15 @@
       "pubDate": "2026-03-18T09:55:49.000Z"
     }
   ],
+  "blog/thoughts-on-iphone-day": [
+    {
+      "slug": "/blog/thoughts-on-iphone-day-2025/",
+      "title": "Thoughts on iPhone Day - 2025",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-09-09T18:47:57.000Z"
+    }
+  ],
   "nordletter/nl67-performing-at-india-day": [
     {
       "slug": "/nordletter/happy-new-year/",
@@ -1705,15 +1714,6 @@
       "description": "",
       "category": "blog",
       "pubDate": "2025-08-20T19:06:10.000Z"
-    }
-  ],
-  "blog/thoughts-on-iphone-day": [
-    {
-      "slug": "/blog/thoughts-on-iphone-day-2025/",
-      "title": "Thoughts on iPhone Day - 2025",
-      "description": "",
-      "category": "blog",
-      "pubDate": "2025-09-09T18:47:57.000Z"
     }
   ],
   "blog/attending-the-global-ai-bootcamp-in-helsinki": [
@@ -2679,11 +2679,11 @@
   ],
   "blog/vibe-coding": [
     {
-      "slug": "/nordletter/nl74-to-move/",
-      "title": "To Move",
+      "slug": "/nordletter/nl78/",
+      "title": "Chath Celebrations",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-10-04T20:06:32.000Z"
+      "pubDate": "2025-11-02T20:42:52.000Z"
     }
   ],
   "blog/azure-and-friends-october-meetup": [
@@ -2702,33 +2702,6 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-10-11T23:06:03.000Z"
-    }
-  ],
-  "nordletter/the-human-condition": [
-    {
-      "slug": "/nordletter/nl78/",
-      "title": "Chath Celebrations",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-11-02T20:42:52.000Z"
-    }
-  ],
-  "nordletter/diwali-week": [
-    {
-      "slug": "/nordletter/nl77/",
-      "title": "Hyva Diwalia!",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-10-26T20:45:29.000Z"
-    }
-  ],
-  "blog/celebrating-diwali-at-op": [
-    {
-      "slug": "/nordletter/nl77/",
-      "title": "Hyva Diwalia!",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-10-26T20:45:29.000Z"
     }
   ],
   "nordletter/nl74-to-move": [
@@ -2756,6 +2729,24 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-11-30T20:44:23.000Z"
+    }
+  ],
+  "nordletter/diwali-week": [
+    {
+      "slug": "/nordletter/nl77/",
+      "title": "Hyva Diwalia!",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-26T20:45:29.000Z"
+    }
+  ],
+  "blog/celebrating-diwali-at-op": [
+    {
+      "slug": "/nordletter/nl77/",
+      "title": "Hyva Diwalia!",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-26T20:45:29.000Z"
     }
   ],
   "nordletter/oodi-for-all": [
@@ -2794,47 +2785,31 @@
       "pubDate": "2026-01-03T21:03:01.000Z"
     }
   ],
-  "micro/chatgpt-has-yearly-recaps-as-well": [
+  "evergreen/limitations-mean-freedom": [
     {
-      "slug": "/nordletter/happy-new-year/",
-      "title": "Happy New Year",
+      "slug": "/nordletter/nl85/",
+      "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
+      "pubDate": "2025-12-27T21:33:35.000Z"
     }
   ],
-  "blog/books-ive-read-this-year": [
+  "evergreen/write-for-one-person": [
     {
-      "slug": "/nordletter/happy-new-year/",
-      "title": "Happy New Year",
+      "slug": "/nordletter/nl85/",
+      "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
+      "pubDate": "2025-12-27T21:33:35.000Z"
     }
   ],
-  "nordletter/election-time": [
+  "evergreen/how-to-read": [
     {
-      "slug": "/nordletter/happy-new-year/",
-      "title": "Happy New Year",
+      "slug": "/bookshelf/all-that-we-see-or-seem/",
+      "title": "All That We See or Seem",
       "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
-    }
-  ],
-  "nordletter/nl79": [
-    {
-      "slug": "/nordletter/nl-104/",
-      "title": "Wheezing past the cradle",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-05-09T20:51:46.000Z"
-    },
-    {
-      "slug": "/nordletter/happy-new-year/",
-      "title": "Happy New Year",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
+      "category": "bookshelf",
+      "pubDate": "2026-04-06T08:27:25.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
@@ -2860,6 +2835,49 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-10T19:46:59.000Z"
+    }
+  ],
+  "nordletter/a-happy-new-year": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy New Year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "micro/chatgpt-has-yearly-recaps-as-well": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy New Year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    },
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The Route Circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "blog/books-ive-read-this-year": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy New Year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
+    }
+  ],
+  "nordletter/election-time": [
+    {
+      "slug": "/nordletter/happy-new-year/",
+      "title": "Happy New Year",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-01-03T21:03:01.000Z"
     }
   ],
   "nordletter/nl87": [
@@ -3001,6 +3019,24 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-31T16:21:15.000Z"
+    }
+  ],
+  "poem/this-valentines-day": [
+    {
+      "slug": "/nordletter/nl93/",
+      "title": "An Anniversary Visit to Porvoo",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-02-21T22:32:49.000Z"
+    }
+  ],
+  "nordletter/visit-porvoo": [
+    {
+      "slug": "/nordletter/nl93/",
+      "title": "An Anniversary Visit to Porvoo",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-02-21T22:32:49.000Z"
     }
   ],
   "nordletter/nl90": [
