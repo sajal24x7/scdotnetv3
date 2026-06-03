@@ -14,6 +14,6 @@ bookStatus: read
 startedReading: 2023-11-29T07:17:18.000Z
 finishedReading: 2023-11-29T07:17:18.000Z
 bookRating: love
-bookCover: the-psychology-of-money.jpg
+cover: the-psychology-of-money.jpg
 ---
 Finished Reading

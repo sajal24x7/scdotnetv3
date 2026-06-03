@@ -18,7 +18,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115881589817343006'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mc7si2g3fr2a'
   - 'https://www.threads.com/@sajal24x7/post/DTaCYlqjjzU'
-bookCover: lords-of-uncreation.jpg 
+cover: lords-of-uncreation.jpg 
 bookRating: love
 finishedReading: 2026-01-17T16:55:30+02:00
 ---

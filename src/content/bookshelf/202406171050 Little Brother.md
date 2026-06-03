@@ -16,7 +16,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865176452131141'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyja4qfme2d'
   - 'https://www.threads.com/@sajal24x7/post/DTSlbatkVOg'
-bookCover: little-brother.webp
+cover: little-brother.webp
 ---
 
 Finished reading.

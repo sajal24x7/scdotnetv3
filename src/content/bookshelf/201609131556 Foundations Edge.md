@@ -14,6 +14,6 @@ format: paperback
 bookStatus: read
 startedReading: 2013-01-16T07:02:08.000Z
 finishedReading: 2016-09-13T15:56:26.000Z
-bookCover: foundations-edge.jpg
+cover: foundations-edge.jpg
 ---
 Finished Reading

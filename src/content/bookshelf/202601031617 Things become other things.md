@@ -17,7 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115831650517355392'
   - 'https://www.threads.com/@sajal24x7/post/DTDU9SYEdRX'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zswy7j2s'
-bookCover: things-become-other-things.jpg
+cover: things-become-other-things.jpg
 bookRating: like
 finishedReading: 2026-01-11T13:06:21+02:00
 ---

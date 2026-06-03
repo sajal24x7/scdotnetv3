@@ -14,6 +14,6 @@ bookStatus: read
 startedReading: 2013-12-27T17:59:03.000Z
 finishedReading: 2013-12-27T17:59:03.000Z
 bookRating: like
-bookCover: and-the-mountains-echoed.jpg
+cover: and-the-mountains-echoed.jpg
 ---
 Finished Reading

@@ -15,6 +15,6 @@ bookStatus: read
 startedReading: 2016-01-11T10:14:54.000Z
 finishedReading: 2016-01-11T10:16:01.000Z
 bookRating: like
-bookCover: the-last-colony.jpg
+cover: the-last-colony.jpg
 ---
 Finished Reading

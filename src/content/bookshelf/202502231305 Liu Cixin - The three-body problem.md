@@ -10,7 +10,7 @@ tags:
   - cixin-liu
   - three-body-problem
 genre: sci-fi
-bookCover: 'the-three-body-problem.jpg'
+cover: 'the-three-body-problem.jpg'
 author: "Cixin Liu"
 series: "Remembrance of Earth's Past"
 bookStatus: "read"

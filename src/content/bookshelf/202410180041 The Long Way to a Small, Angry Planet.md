@@ -20,6 +20,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865426061401888'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbymrmtgyq2l'
   - 'https://www.threads.com/@sajal24x7/post/DTSr9Pfkdbo'
-bookCover: the-long-way-to-a-small-angry-planet.jpg
+cover: the-long-way-to-a-small-angry-planet.jpg
 ---
 Finished reading.

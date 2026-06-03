@@ -18,7 +18,7 @@ syndicationUrls:
   - https://mastodon.social/@sajal24x7/115865426553070735
   - https://bsky.app/profile/sajalchoudhary.net/post/3mbymrttrhj2i
   - https://www.threads.com/@sajal24x7/post/DTV7SVTj26F
-bookCover: scene-structure.jpg
+cover: scene-structure.jpg
 ---
 ## what does a reader want
 1. Story must begin with a significant change

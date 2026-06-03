@@ -9,7 +9,7 @@ tags:
   - book-reviews
   - poems
 genre: poetry
-bookCover: poems-to-fall-in-love-with.jpg
+cover: poems-to-fall-in-love-with.jpg
 author: Chris Riddell
 series: none
 bookStatus: read

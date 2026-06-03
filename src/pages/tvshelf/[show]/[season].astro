@@ -108,7 +108,7 @@ const statusChipClassMap: Record<string, string> = {
 const ratingDisplay = tvRating ? bookRatingDisplay[tvRating as BookRating] : null;
 const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
 
-const coverImage = season.data.tvCover ? getTVCoverImage(season.data.tvCover) : null;
+const coverImage = season.data.cover ? getTVCoverImage(season.data.cover) : null;
 ---
 
 <Layout
@@ -301,19 +301,12 @@ const coverImage = season.data.tvCover ? getTVCoverImage(season.data.tvCover) : 
 
   .season-header__cover {
     width: auto;
-    max-height: 24rem;
+    max-height: 16rem;
     height: auto;
     border-radius: 0.75rem;
     box-shadow:
       0 4px 6px rgba(0, 0, 0, 0.1),
       0 2px 4px rgba(0, 0, 0, 0.06);
-  }
-
-  @media (min-width: 48rem) {
-    .season-header__cover {
-      width: 100%;
-      max-height: none;
-    }
   }
 
   :global(.dark) .season-header__cover {

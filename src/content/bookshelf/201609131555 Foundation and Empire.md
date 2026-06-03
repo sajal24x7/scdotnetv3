@@ -14,6 +14,6 @@ format: paperback
 bookStatus: read
 startedReading: 2013-01-16T07:02:06.000Z
 finishedReading: 2016-09-13T15:55:36.000Z
-bookCover: foundation-and-empire.jpg
+cover: foundation-and-empire.jpg
 ---
 Finished Reading

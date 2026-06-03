@@ -16,7 +16,7 @@ bookStatus: "read"
 bookRating: like
 format: audio
 genre: sci-fi
-bookCover: 'artificial-condition.jpg'
+cover: 'artificial-condition.jpg'
 ---
 
 Book 1 - [All systems red](/bookshelf/all-systems-red)

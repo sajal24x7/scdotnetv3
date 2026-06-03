@@ -14,6 +14,6 @@ bookStatus: read
 startedReading: 2013-01-19T09:38:36.000Z
 finishedReading: 2013-01-19T09:38:36.000Z
 bookRating: like
-bookCover: the-fountainhead.jpg
+cover: the-fountainhead.jpg
 ---
 Finished Reading

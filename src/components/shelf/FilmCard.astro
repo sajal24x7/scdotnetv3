@@ -20,7 +20,7 @@ interface FilmCardProps {
     filmStatus?: FilmStatus;
     filmRating?: BookRating;
     watchedDate?: Date | string;
-    filmCover?: string;
+    cover?: string;
     link?: string;
     watchNumber?: number; // 1 = first watch, 2+ = rewatch
 }
@@ -34,7 +34,7 @@ const {
     filmStatus,
     filmRating,
     watchedDate,
-    filmCover,
+    cover,
     link,
     watchNumber = 1
 } = props;
@@ -59,7 +59,7 @@ const ratingAriaLabel = ratingDisplay ? ratingDisplay.label : 'Rating: Not set';
 const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
 const ratingChipLabel = ratingDisplay?.label ?? null;
 
-const coverImage = filmCover ? getFilmCoverImage(filmCover) : null;
+const coverImage = cover ? getFilmCoverImage(cover) : null;
 
 const timelineLabel = watchedLabel ? `Watched ${watchedLabel}` : null;
 ---

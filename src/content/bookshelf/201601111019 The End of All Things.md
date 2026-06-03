@@ -15,6 +15,6 @@ bookStatus: read
 startedReading: 2016-01-11T10:19:51.000Z
 finishedReading: 2016-01-11T10:19:51.000Z
 bookRating: like
-bookCover: the-end-of-all-things.jpg
+cover: the-end-of-all-things.jpg
 ---
 Finished Reading

@@ -15,6 +15,6 @@ bookStatus: read
 startedReading: 2013-10-10T15:16:30.000Z
 finishedReading: 2013-11-21T16:19:35.000Z
 bookRating: like
-bookCover: the-oath-of-the-vayuputras.jpg
+cover: the-oath-of-the-vayuputras.jpg
 ---
 Finished Reading

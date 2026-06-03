@@ -12,7 +12,7 @@ author:
 genre: sci-fi
 bookStatus: read
 startedReading: 2026-04-06T08:27:25.000Z
-bookCover: all-that-we-see-or-seem.jpg
+cover: all-that-we-see-or-seem.jpg
 bookRating: like
 finishedReading: 2026-04-12T15:19:26.000Z
 syndicationUrls:

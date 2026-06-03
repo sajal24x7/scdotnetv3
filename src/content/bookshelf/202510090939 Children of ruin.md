@@ -15,7 +15,7 @@ bookStatus: "read"
 bookRating: "like"
 startedReading: 2025-10-09T09:39:40+03:00
 finishedReading: 2025-11-06T17:39:40+03:00
-bookCover: "children-of-ruin.jpg"
+cover: "children-of-ruin.jpg"
 ---
 The second book in the children of time series. Not as good as the first one.
 

@@ -14,6 +14,6 @@ bookStatus: read
 startedReading: 2013-01-08T15:16:51.000Z
 finishedReading: 2013-01-08T15:16:56.000Z
 bookRating: like
-bookCover: the-chancellor-manuscript.jpg
+cover: the-chancellor-manuscript.jpg
 ---
 Finished Reading

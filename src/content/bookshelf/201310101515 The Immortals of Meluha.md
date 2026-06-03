@@ -15,6 +15,6 @@ bookStatus: read
 startedReading: 2013-10-01T13:39:05.000Z
 finishedReading: 2013-10-10T15:15:23.000Z
 bookRating: like
-bookCover: the-immortals-of-meluha.jpg
+cover: the-immortals-of-meluha.jpg
 ---
 Finished Reading

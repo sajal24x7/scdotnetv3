@@ -14,7 +14,7 @@ seriesNumber: 7
 genre: sci-fi
 bookStatus: read
 startedReading: 2026-03-10T17:24:57.000Z
-bookCover: system-collapse.jpg
+cover: system-collapse.jpg
 bookRating: like
 finishedReading: 2026-03-14T11:17:25.000Z
 syndicationUrls:

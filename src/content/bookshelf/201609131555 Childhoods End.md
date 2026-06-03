@@ -14,6 +14,6 @@ bookStatus: read
 startedReading: 2013-01-08T15:28:22.000Z
 finishedReading: 2016-09-13T15:55:22.000Z
 bookRating: love
-bookCover: childhoods-end.jpg
+cover: childhoods-end.jpg
 ---
 Finished Reading

@@ -12,7 +12,7 @@
  *   2. Groups by showTitle (or title) — downloads one poster per unique show
  *   3. Searches TMDB TV endpoint for each show
  *   4. Downloads the poster to src/images/tvshelf/[show-slug].jpg
- *   5. Updates tvCover in the frontmatter of all entries for that show
+ *   5. Updates cover in the frontmatter of all entries for that show
  */
 
 import fs from 'fs';
@@ -129,7 +129,7 @@ function downloadFile(url, filepath) {
 
 function updateMarkdownWithCover(filePath, originalContent, coverFilename) {
   const { data, content: bodyContent } = matter(originalContent);
-  data.tvCover = coverFilename;
+  data.cover = coverFilename;
   const newContent = matter.stringify(bodyContent, data);
   fs.writeFileSync(filePath, newContent, 'utf8');
 }
@@ -170,7 +170,7 @@ async function main() {
     const outputPath = path.join(tvshelfDir, filename);
 
     if (fs.existsSync(outputPath) && !forceDownload) {
-      const missing = show.files.filter(f => !f.data.tvCover);
+      const missing = show.files.filter(f => !f.data.cover);
       if (missing.length > 0) {
         for (const f of missing) updateMarkdownWithCover(f.path, f.content, filename);
         console.log(`📝 ${showTitle} — image exists, updated ${missing.length} frontmatter file(s) (${filename})`);

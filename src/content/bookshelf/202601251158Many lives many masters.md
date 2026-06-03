@@ -17,7 +17,7 @@ startedReading: 2026-01-25T07:38:11.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115954598916675462'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mda7yqpizq2y'
-bookCover: many-lives-many-masters.jpg
+cover: many-lives-many-masters.jpg
 bookRating: like
 finishedReading: 2026-01-27T14:40:48+05:30
 ---

@@ -10,7 +10,7 @@ format: ebook
 genre: business
 author: Derek Sivers
 bookStatus: read
-bookCover: anything-you-want.jpg
+cover: anything-you-want.jpg
 startedReading: 2025-10-16T14:10:31.000Z
 finishedReading: 2025-10-21T14:10:31.000Z
 bookRating: like

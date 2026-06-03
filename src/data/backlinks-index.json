@@ -2679,11 +2679,11 @@
   ],
   "blog/vibe-coding": [
     {
-      "slug": "/nordletter/nl74-to-move/",
-      "title": "To Move",
+      "slug": "/nordletter/nl78/",
+      "title": "Chath Celebrations",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-10-04T20:06:32.000Z"
+      "pubDate": "2025-11-02T20:42:52.000Z"
     }
   ],
   "blog/azure-and-friends-october-meetup": [
@@ -2702,15 +2702,6 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-10-11T23:06:03.000Z"
-    }
-  ],
-  "nordletter/the-human-condition": [
-    {
-      "slug": "/nordletter/nl78/",
-      "title": "Chath Celebrations",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-11-02T20:42:52.000Z"
     }
   ],
   "nordletter/nl74-to-move": [
@@ -2785,59 +2776,13 @@
       "pubDate": "2025-12-21T18:00:25.000Z"
     }
   ],
-  "nordletter/nl79": [
-    {
-      "slug": "/nordletter/nl-104/",
-      "title": "Wheezing past the cradle",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-05-09T20:51:46.000Z"
-    },
+  "nordletter/a-happy-new-year": [
     {
       "slug": "/nordletter/happy-new-year/",
       "title": "Happy New Year",
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-03T21:03:01.000Z"
-    },
-    {
-      "slug": "/nordletter/nl85/",
-      "title": "The Route Circle",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
-    }
-  ],
-  "nordletter/i-miss-walking": [
-    {
-      "slug": "/nordletter/nl85/",
-      "title": "The Route Circle",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
-    }
-  ],
-  "blog/why-walk-the-same-path-every-day": [
-    {
-      "slug": "/nordletter/nl99-new-things/",
-      "title": "New Things",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-04-05T16:19:46.000Z"
-    },
-    {
-      "slug": "/nordletter/nl85/",
-      "title": "The Route Circle",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
-    },
-    {
-      "slug": "/bookshelf/steal-like-an-artist/",
-      "title": "Steal Like an Artist",
-      "description": "",
-      "category": "bookshelf",
-      "pubDate": "2025-12-21T20:41:53.000Z"
     }
   ],
   "evergreen/limitations-mean-freedom": [
@@ -2908,6 +2853,13 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-03T21:03:01.000Z"
+    },
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The Route Circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
     }
   ],
   "blog/books-ive-read-this-year": [
@@ -2962,6 +2914,72 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-01-17T21:31:10.000Z"
+    }
+  ],
+  "nordletter/i-miss-walking": [
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The Route Circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "blog/why-walk-the-same-path-every-day": [
+    {
+      "slug": "/nordletter/nl99-new-things/",
+      "title": "New Things",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-04-05T16:19:46.000Z"
+    },
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The Route Circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    },
+    {
+      "slug": "/bookshelf/steal-like-an-artist/",
+      "title": "Steal Like an Artist",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-12-21T20:41:53.000Z"
+    }
+  ],
+  "evergreen/limitations-mean-freedom": [
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The Route Circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "evergreen/write-for-one-person": [
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The Route Circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
+    }
+  ],
+  "evergreen/how-to-read": [
+    {
+      "slug": "/bookshelf/all-that-we-see-or-seem/",
+      "title": "All That We See or Seem",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2026-04-06T08:27:25.000Z"
+    },
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The Route Circle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-12-27T21:33:35.000Z"
     }
   ],
   "blog/2025-letters": [
@@ -3127,13 +3145,22 @@
       "pubDate": "2026-03-22T19:56:34.000Z"
     }
   ],
-  "bookshelf/dune": [
+  "poem/this-valentines-day": [
     {
-      "slug": "/nordletter/nl98/",
-      "title": "For Those We Love",
+      "slug": "/nordletter/nl93/",
+      "title": "An Anniversary Visit to Porvoo",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-28T18:50:51.000Z"
+      "pubDate": "2026-02-21T22:32:49.000Z"
+    }
+  ],
+  "nordletter/visit-porvoo": [
+    {
+      "slug": "/nordletter/nl93/",
+      "title": "An Anniversary Visit to Porvoo",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-02-21T22:32:49.000Z"
     }
   ],
   "bookshelf/reading-wanderlust": [
@@ -3143,6 +3170,15 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-04-05T16:19:46.000Z"
+    }
+  ],
+  "bookshelf/dune": [
+    {
+      "slug": "/nordletter/nl98/",
+      "title": "For Those We Love",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-03-28T18:50:51.000Z"
     }
   ],
   "bookshelf/this-and-that": [
@@ -3206,6 +3242,38 @@
       "pubDate": "2026-05-02T22:20:45.000Z"
     }
   ],
+  "nordletter/cherries-all-around": [
+    {
+      "slug": "/nordletter/nl105-fazer-experience/",
+      "title": "The Fazer Experience",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-16T21:16:18.000Z"
+    }
+  ],
+  "bookshelf/outlive": [
+    {
+      "slug": "/nordletter/nl107/",
+      "title": "Read More Books",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-30T23:33:00.000Z"
+    },
+    {
+      "slug": "/nordletter/nl-104/",
+      "title": "Wheezing past the cradle",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-05-09T20:51:46.000Z"
+    },
+    {
+      "slug": "/evergreen/the-four-diseases-leading-to-slow-death/",
+      "title": "The Four Diseases Leading to Slow Death",
+      "description": "",
+      "category": "evergreen",
+      "pubDate": "2026-04-14T11:54:01.000Z"
+    }
+  ],
   "evergreen/be-a-hybrid": [
     {
       "slug": "/nordletter/nl-104/",
@@ -3233,29 +3301,6 @@
       "pubDate": "2026-05-09T20:51:46.000Z"
     }
   ],
-  "bookshelf/outlive": [
-    {
-      "slug": "/nordletter/nl107/",
-      "title": "Read More Books",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-05-30T23:33:00.000Z"
-    },
-    {
-      "slug": "/nordletter/nl-104/",
-      "title": "Wheezing past the cradle",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-05-09T20:51:46.000Z"
-    },
-    {
-      "slug": "/evergreen/the-four-diseases-leading-to-slow-death/",
-      "title": "The Four Diseases Leading to Slow Death",
-      "description": "",
-      "category": "evergreen",
-      "pubDate": "2026-04-14T11:54:01.000Z"
-    }
-  ],
   "micro/mac-mini-starting-price-rises": [
     {
       "slug": "/nordletter/nl-104/",
@@ -3272,15 +3317,6 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-05-09T20:51:46.000Z"
-    }
-  ],
-  "nordletter/cherries-all-around": [
-    {
-      "slug": "/nordletter/nl105-fazer-experience/",
-      "title": "The Fazer Experience",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-05-16T21:16:18.000Z"
     }
   ],
   "blog/devops-finland-october-meetup": [

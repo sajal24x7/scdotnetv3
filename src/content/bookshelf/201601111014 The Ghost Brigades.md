@@ -15,6 +15,6 @@ bookStatus: read
 startedReading: 2016-01-11T10:13:23.000Z
 finishedReading: 2016-01-11T10:14:02.000Z
 bookRating: like
-bookCover: the-ghost-brigades.jpg
+cover: the-ghost-brigades.jpg
 ---
 Finished Reading

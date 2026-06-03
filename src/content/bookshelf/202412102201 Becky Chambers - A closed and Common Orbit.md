@@ -14,7 +14,7 @@ startedReading: 2024-12-08T00:00:00
 finishedReading: 2024-12-10T22:01:50
 bookStatus: read
 bookRating: like
-bookCover: a-closed-and-common-orbit.jpg
+cover: a-closed-and-common-orbit.jpg
 ---
 I finished reading the second book in the Wayfarer series - A Closed and Common Orbit. The book follows the events in [The Long Way to a Small, Angry Planet](https://en.wikipedia.org/wiki/The_Long_Way_to_a_Small,_Angry_Planet). It does not however include the characters of the long way.
 

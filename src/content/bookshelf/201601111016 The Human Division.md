@@ -15,6 +15,6 @@ bookStatus: read
 startedReading: 2016-01-11T10:16:50.000Z
 finishedReading: 2016-01-11T10:16:50.000Z
 bookRating: like
-bookCover: the-human-division.jpg
+cover: the-human-division.jpg
 ---
 Finished Reading

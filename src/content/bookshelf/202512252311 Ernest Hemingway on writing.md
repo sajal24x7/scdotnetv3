@@ -18,7 +18,7 @@ syndicationUrls:
   - https://mastodon.social/@sajal24x7/115787070068113269
   - https://bsky.app/profile/sajal24x7.bsky.social/post/3mavtblj6sj2b
   - https://www.threads.com/@sajal24x7/post/DSvP-BSEZmO
-bookCover: ernest-hemingway-on-writing.jpg
+cover: ernest-hemingway-on-writing.jpg
 ---
 
 This is not a book in a traditional sense. This is not Ernest Hemingway writing about the craft. 

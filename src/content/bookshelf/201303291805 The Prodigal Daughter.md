@@ -15,7 +15,7 @@ bookStatus: read
 startedReading: 2013-03-19T16:21:38.000Z
 finishedReading: 2013-03-29T18:05:21.000Z
 bookRating: like
-bookCover: the-prodigal-daughter.jpg
+cover: the-prodigal-daughter.jpg
 ---
 
 Finished Reading

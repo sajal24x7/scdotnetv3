@@ -14,6 +14,6 @@ bookStatus: read
 startedReading: 2013-09-28T05:01:06.000Z
 finishedReading: 2013-10-01T13:38:03.000Z
 bookRating: like
-bookCover: myth-mithya-a-handbook-of-hindu-mythology.jpg
+cover: myth-mithya-a-handbook-of-hindu-mythology.jpg
 ---
 Finished Reading

@@ -14,6 +14,6 @@ bookStatus: read
 startedReading: 2013-01-08T15:15:29.000Z
 finishedReading: 2013-01-08T15:15:35.000Z
 bookRating: like
-bookCover: digital-fortress.webp
+cover: digital-fortress.webp
 ---
 Finished Reading

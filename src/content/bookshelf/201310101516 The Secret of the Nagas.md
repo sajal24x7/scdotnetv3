@@ -15,6 +15,6 @@ bookStatus: read
 startedReading: 2013-10-10T15:16:10.000Z
 finishedReading: 2013-10-10T15:16:20.000Z
 bookRating: like
-bookCover: the-secret-of-the-nagas.jpg
+cover: the-secret-of-the-nagas.jpg
 ---
 Finished Reading

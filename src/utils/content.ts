@@ -23,7 +23,7 @@ export interface Post {
     author?: string;
     series?: string;
     bookStatus?: string;
-    bookCover?: string;
+    cover?: string;
     startedReading?: Date | string;
     finishedReading?: Date | string;
     bookRating?: BookRating;
@@ -90,7 +90,7 @@ export function transformPost(post: Post) {
             author: post.data.author,
             series: post.data.series,
             bookStatus: post.data.bookStatus,
-            bookCover: post.data.bookCover,
+            cover: post.data.cover,
             startedReading: post.data.startedReading,
             finishedReading: post.data.finishedReading,
             bookRating: post.data.bookRating,
