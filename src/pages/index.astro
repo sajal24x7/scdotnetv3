@@ -13,7 +13,7 @@ import type { Post } from '../utils/content';
 
 // Get all posts
 const allPosts = await getAllPosts();
-const postsBySlug = new Map(allPosts.map((post) => [post.slug, post] as const));
+const postsBySlug = new Map(allPosts.map((post) => [post.id, post] as const));
 
 // Build a list of the most recent stream posts across the unified categories
 const streamPostsRaw = getPostsByCategory(allPosts, 'stream', { limit: 5 });

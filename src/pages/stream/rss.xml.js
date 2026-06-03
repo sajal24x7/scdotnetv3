@@ -44,7 +44,7 @@ export async function GET(context) {
       const hashtags = (item.data.tags || []).map(tag => `#${tag}`).join(' ');
       
       return {
-        link: `/${item.data.category}/${item.slug}/`,
+        link: `/${item.data.category}/${item.id}/`,
         title: item.data.title || 'Untitled',
         description: item.data.description || '',
         content,

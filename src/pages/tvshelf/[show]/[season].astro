@@ -3,6 +3,8 @@ import Layout from '../../../layouts/Layout.astro';
 import ShelfTabNav from '../../../components/shelf/ShelfTabNav.astro';
 import { Image } from 'astro:assets';
 import { getAllPosts } from '../../../utils/content';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import { slugify } from '../../../utils/shelfUtils';
 import { getTVCoverImage } from '../../../utils/tvCovers';
 import {
@@ -14,12 +16,10 @@ import {
 } from '../../../utils/bookRatings';
 
 export async function getStaticPaths() {
-    const { getAllPosts } = await import('../../../utils/content');
     const { slugify } = await import('../../../utils/shelfUtils');
-    const allPosts = await getAllPosts();
-    const tvPosts = allPosts.filter((p) => p.data.category === 'tvshelf');
+    const tvPosts = await getCollection('tvshelf');
 
-    const showMap = new Map<string, typeof tvPosts>();
+    const showMap = new Map<string, CollectionEntry<'tvshelf'>[]>();
     for (const post of tvPosts) {
         const key = post.data.showTitle ?? post.data.title ?? 'Unknown';
         if (!showMap.has(key)) showMap.set(key, []);
@@ -52,15 +52,15 @@ export async function getStaticPaths() {
 interface Props {
     showTitle: string;
     showSlug: string;
-    season: Awaited<ReturnType<typeof getAllPosts>>[number];
-    allSeasons: Awaited<ReturnType<typeof getAllPosts>>;
+    season: CollectionEntry<'tvshelf'>;
+    allSeasons: CollectionEntry<'tvshelf'>[];
 }
 
 const { showTitle, showSlug, season, allSeasons } = Astro.props;
 const seasonNum = season.data.season ?? 1;
 
 const allPosts = await getAllPosts();
-const { Content } = await season.render();
+const { Content } = await render(season);
 
 const parseDate = (value?: Date | string | null): Date | null => {
     if (!value) return null;

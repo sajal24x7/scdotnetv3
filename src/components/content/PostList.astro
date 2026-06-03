@@ -64,7 +64,7 @@ const getLinkClasses = () => {
 <div class={getContainerClasses()}>
     {displayPosts.map((post) => (
         <article class={getArticleClasses()}>
-            <a href={`/${post.data.category}/${post.slug}/`} class={getLinkClasses()}>
+            <a href={`/${post.data.category}/${post.id}/`} class={getLinkClasses()}>
                 {mode === 'grid' && (
                     <div class="post-list__grid-media">
                         {post.data.image && (

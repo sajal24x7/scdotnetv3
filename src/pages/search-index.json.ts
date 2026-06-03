@@ -15,7 +15,7 @@ type SearchIndexEntry = {
 export async function GET() {
     const posts = await getAllPosts();
     const index: SearchIndexEntry[] = posts.map((post) => ({
-        slug: post.slug,
+        slug: post.id,
         data: {
             title: post.data.title,
             description: post.data.description,

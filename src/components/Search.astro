@@ -66,7 +66,7 @@ const allPosts = posts ?? await getAllPosts();
           `<span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-small px-2 py-1 rounded-full mr-1">${tag}</span>`
         ).join('');
         
-        return `<a href="/${post.data.category}/${post.slug}/" class="block p-3 hover:bg-gray-100 dark:hover:bg-gray-700 border-b border-gray-200 dark:border-gray-600 last:border-b-0 transition-colors">
+        return `<a href="/${post.data.category}/${post.id}/" class="block p-3 hover:bg-gray-100 dark:hover:bg-gray-700 border-b border-gray-200 dark:border-gray-600 last:border-b-0 transition-colors">
           <h3 class="font-semibold mb-1 text-gray-900 dark:text-gray-100">${post.data.title || 'Untitled'}</h3>
           <p class="text-small text-gray-600 dark:text-gray-400 mb-1">${post.data.category}</p>
           ${tags.length > 0 ? `<div>${tagBadges}</div>` : ''}

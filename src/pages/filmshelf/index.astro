@@ -72,7 +72,7 @@ const watchNumbers = computeWatchNumbers(allFilmEntries);
 // Map from post slug to watch number
 const watchNumberMap = new Map<string, number>();
 sortedFilms.forEach((entry, i) => {
-    watchNumberMap.set(entry.post.slug, watchNumbers.get(i) ?? 1);
+    watchNumberMap.set(entry.post.id, watchNumbers.get(i) ?? 1);
 });
 
 // Count watched films for the header
@@ -131,10 +131,10 @@ const sectionLandingProps = createSectionLandingProps({
               </div>
               {yearFilms.map((post, index) => {
                 const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
-                const watchNumber = watchNumberMap.get(post.slug) ?? 1;
+                const watchNumber = watchNumberMap.get(post.id) ?? 1;
                 return (
                   <div
-                    key={post.slug}
+                    key={post.id}
                     class={`bookshelf-year__book ${gridClasses}`}
                     data-content-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
@@ -151,7 +151,7 @@ const sectionLandingProps = createSectionLandingProps({
                       filmRating={post.data.filmRating}
                       watchedDate={post.data.watchedDate}
                       filmCover={post.data.filmCover}
-                      link={post.slug ? `/filmshelf/${post.slug}/` : undefined}
+                      link={post.id ? `/filmshelf/${post.id}/` : undefined}
                       watchNumber={watchNumber}
                     />
                   </div>

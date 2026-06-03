@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 // Define a custom date schema that accepts both Date objects and ISO date strings
 const dateSchema = z.union([
@@ -6,10 +7,29 @@ const dateSchema = z.union([
   z.string().transform((str) => new Date(str))
 ]);
 
-// Define the unified post schema
-const postsCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
+// Derive a URL-safe id from the file entry path (used as fallback when no slug in frontmatter)
+function slugFromEntry(entry: string): string {
+  return entry
+    .replace(/\.mdx?$/, '')
+    .split('/')
+    .pop()!
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+// Shared glob loader factory — uses frontmatter slug as the entry id so URLs are
+// stable and human-readable regardless of the underlying filename convention.
+const postsLoader = (category: string) =>
+  glob({
+    pattern: '**/*.{md,mdx}',
+    base: `./src/content/${category}`,
+    generateId: ({ entry, data }) =>
+      (data as Record<string, unknown>).slug as string | undefined ?? slugFromEntry(entry),
+  });
+
+// Shared post schema (all 14 content categories use this)
+const postsSchema = z.object({
     title: z.string().optional(),
     description: z.string().optional(),
     pubDate: dateSchema,
@@ -63,13 +83,12 @@ const postsCollection = defineCollection({
     gameCover: z.string().optional(),
     // POSSE syndication metadata
     syndicationUrls: z.array(z.string()).optional(),
-  }),
-});
+  });
 
 // Inbox collection — relaxed schema for notes arriving from Shortcuts/Obsidian.
 // The GitHub Action moves them to the correct category folder after sorting.
 const inboxCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/inbox' }),
   schema: z.object({
     title: z.string().optional(),
     description: z.string().optional(),
@@ -101,23 +120,27 @@ export const CONTENT_CATEGORIES = [
 
 export type ContentCategory = typeof CONTENT_CATEGORIES[number];
 
+// Convenience: build a collection for a named category
+const postsCollection = (category: string) =>
+  defineCollection({ loader: postsLoader(category), schema: postsSchema });
+
 export const collections = {
   // Inbox — staging area for new notes
   'inbox': inboxCollection,
 
   // Content categories — one collection per folder
-  'til':        postsCollection,
-  'blog':       postsCollection,
-  'micro':      postsCollection,
-  'photo':      postsCollection,
-  'nordletter': postsCollection,
-  'story':      postsCollection,
-  'poem':       postsCollection,
-  'bookshelf':  postsCollection,
-  'filmshelf':  postsCollection,
-  'tvshelf':    postsCollection,
-  'gameshelf':  postsCollection,
-  'now':        postsCollection,
-  'colophon':   postsCollection,
-  'evergreen':  postsCollection,
+  'til':        postsCollection('til'),
+  'blog':       postsCollection('blog'),
+  'micro':      postsCollection('micro'),
+  'photo':      postsCollection('photo'),
+  'nordletter': postsCollection('nordletter'),
+  'story':      postsCollection('story'),
+  'poem':       postsCollection('poem'),
+  'bookshelf':  postsCollection('bookshelf'),
+  'filmshelf':  postsCollection('filmshelf'),
+  'tvshelf':    postsCollection('tvshelf'),
+  'gameshelf':  postsCollection('gameshelf'),
+  'now':        postsCollection('now'),
+  'colophon':   postsCollection('colophon'),
+  'evergreen':  postsCollection('evergreen'),
 };

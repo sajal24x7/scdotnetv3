@@ -16,7 +16,7 @@ const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
 <div class="fiction-grid twelve-grid grid-gap-tight grid-pad-narrow">
     {displayPosts.map((post) => (
         <article class="fiction-card grid-span-3">
-            <a href={`/${post.data.category}/${post.slug}/`} class="fiction-card__link">
+            <a href={`/${post.data.category}/${post.id}/`} class="fiction-card__link">
                 <div class="fiction-card__inner">
                     {post.data.image && (
                         <div class="fiction-card__image">

@@ -28,9 +28,8 @@ export interface Post {
     finishedReading?: Date | string;
     bookRating?: BookRating;
   };
-  slug: string;
+  id: string;
   body: string;
-  render: () => Promise<{ Content: any }>;
 }
 
 // Returns the list of known content category names.
@@ -58,9 +57,8 @@ export async function getAllPosts(): Promise<Post[]> {
         const posts = await getCollection(category as any);
         return posts.map((post: any) => ({
           data: post.data,
-          slug: post.slug,
+          id: post.id,
           body: post.body,
-          render: post.render
         }));
       }));
       cachedPosts = allPosts.flat() as Post[];
@@ -98,11 +96,10 @@ export function transformPost(post: Post) {
             bookRating: post.data.bookRating,
             format: post.data.format,
             genre: post.data.genre,
-            link: `/${post.data.category}/${post.slug}/`
+            link: `/${post.data.category}/${post.id}/`
         },
-        slug: post.slug,
+        id: post.id,
         body: post.body,
-        render: post.render
     };
 }
 
