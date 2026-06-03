@@ -72,7 +72,7 @@ const allGameEntries = sortedGames.map((e) => ({
 const watchNumbers = computeWatchNumbers(allGameEntries);
 const watchNumberMap = new Map<string, number>();
 sortedGames.forEach((entry, i) => {
-    watchNumberMap.set(entry.post.slug, watchNumbers.get(i) ?? 1);
+    watchNumberMap.set(entry.post.id, watchNumbers.get(i) ?? 1);
 });
 
 // Count played games
@@ -131,10 +131,10 @@ const sectionLandingProps = createSectionLandingProps({
               </div>
               {yearGames.map((post, index) => {
                 const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
-                const watchNumber = watchNumberMap.get(post.slug) ?? 1;
+                const watchNumber = watchNumberMap.get(post.id) ?? 1;
                 return (
                   <div
-                    key={post.slug}
+                    key={post.id}
                     class={`bookshelf-year__book ${gridClasses}`}
                     data-content-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
@@ -151,8 +151,8 @@ const sectionLandingProps = createSectionLandingProps({
                       platform={post.data.platform}
                       gameStatus={post.data.gameStatus}
                       gameRating={post.data.gameRating}
-                      cover={post.data.cover}
-                      link={post.slug ? `/gameshelf/${post.slug}/` : undefined}
+                      gameCover={post.data.gameCover}
+                      link={post.id ? `/gameshelf/${post.id}/` : undefined}
                       watchNumber={watchNumber}
                     />
                   </div>

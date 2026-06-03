@@ -20,7 +20,7 @@ const transformedPosts = nordletterPosts.map(post => {
     data: {
       ...transformed.data,
       title: cleanNordletterTitle(transformed.data.title),
-      editionDisplay: getEditionDisplay(transformed.data.edition, post.data.pubDate, post.data.title, post.slug)
+      editionDisplay: getEditionDisplay(transformed.data.edition, post.data.pubDate, post.data.title, post.id)
     }
   };
 });

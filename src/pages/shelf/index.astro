@@ -121,7 +121,7 @@ const entriesByYear = entries.reduce((acc, entry) => {
 const filmEntries = shelfPosts.filter((p) => p.data.category === 'filmshelf');
 const filmWatchNumbers = computeWatchNumbers(filmEntries.map((p) => ({ title: p.data.title ?? '', date: p.data.watchedDate ?? p.data.pubDate })));
 const filmWatchMap = new Map<string, number>();
-filmEntries.forEach((p, i) => filmWatchMap.set(p.slug, filmWatchNumbers.get(i) ?? 1));
+filmEntries.forEach((p, i) => filmWatchMap.set(p.id, filmWatchNumbers.get(i) ?? 1));
 
 // Count total finished items
 const totalItems =
@@ -191,7 +191,7 @@ const normalizeBookStatus = (status?: string | null) => {
               </div>
               {yearEntries.map((entry, index) => {
                 const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
-                const key = entry.post?.slug ?? entry.showSlug ?? `${year}-${index}`;
+                const key = entry.post?.id ?? entry.showSlug ?? `${year}-${index}`;
 
                 return (
                   <div key={key} class={`bookshelf-year__book ${gridClasses}`}>
@@ -199,7 +199,7 @@ const normalizeBookStatus = (status?: string | null) => {
                       <BookshelfCard
                         {...entry.post.data}
                         title={entry.post.data.title ?? ''}
-                        link={entry.post.slug ? `/bookshelf/${entry.post.slug}/` : undefined}
+                        link={entry.post.id ? `/bookshelf/${entry.post.id}/` : undefined}
                       />
                     )}
                     {entry.type === 'film' && entry.post && (
@@ -211,9 +211,9 @@ const normalizeBookStatus = (status?: string | null) => {
                         filmStatus={entry.post.data.filmStatus}
                         filmRating={entry.post.data.filmRating}
                         watchedDate={entry.post.data.watchedDate}
-                        cover={entry.post.data.cover}
-                        link={entry.post.slug ? `/filmshelf/${entry.post.slug}/` : undefined}
-                        watchNumber={filmWatchMap.get(entry.post.slug) ?? 1}
+                        filmCover={entry.post.data.filmCover}
+                        link={entry.post.id ? `/filmshelf/${entry.post.id}/` : undefined}
+                        watchNumber={filmWatchMap.get(entry.post.id) ?? 1}
                       />
                     )}
                     {entry.type === 'tv' && entry.tvRepresentative && (
@@ -239,8 +239,8 @@ const normalizeBookStatus = (status?: string | null) => {
                         platform={entry.post.data.platform}
                         gameStatus={entry.post.data.gameStatus}
                         gameRating={entry.post.data.gameRating}
-                        cover={entry.post.data.cover}
-                        link={entry.post.slug ? `/gameshelf/${entry.post.slug}/` : undefined}
+                        gameCover={entry.post.data.gameCover}
+                        link={entry.post.id ? `/gameshelf/${entry.post.id}/` : undefined}
                       />
                     )}
                   </div>

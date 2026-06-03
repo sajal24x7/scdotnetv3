@@ -114,7 +114,7 @@ const booksByYear = sortedBooks.reduce((acc, { year, book }) => {
 
 const transformBook = (book: typeof bookshelfPosts[number]) => ({
     ...book.data,
-    link: book.slug ? `/bookshelf/${book.slug}/` : undefined
+    link: book.id ? `/bookshelf/${book.id}/` : undefined
 });
 
 // Extract unique authors and genres for filters
@@ -232,7 +232,7 @@ const sectionLandingProps = createSectionLandingProps({
               </div>
               {yearBooks.map((book, index) => {
                 const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
-                const bookSlug = book.slug ?? `${year}-${index}`;
+                const bookSlug = book.id ?? `${year}-${index}`;
                 const bookAuthors = extractAuthors(book.data.author).join(',');
                 const bookGenre = book.data.genre ?? '';
                 const bookStatus = normalizeStatus(book.data.bookStatus);

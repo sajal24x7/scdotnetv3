@@ -18,7 +18,7 @@ const imagesByFileName = Object.fromEntries(
 const manifestMap = manifest as Record<string, string>;
 
 const getLocalImage = (post: typeof posts[number]) => {
-  const slug = post?.slug;
+  const slug = post?.id;
   if (!slug) {
     return undefined;
   }
