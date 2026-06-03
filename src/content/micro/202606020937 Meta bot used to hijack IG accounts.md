@@ -1,15 +1,18 @@
 ---
-title: "Meta bot used to hijack IG accounts"
-slug: "meta-bot-used-to-hijack-ig-accounts"
-pubDate: 2026-06-02T09:39:35+03:00
-updatedDate: 2026-06-02T09:39:35+03:00
+title: Meta bot used to hijack IG accounts
+slug: meta-bot-used-to-hijack-ig-accounts
+pubDate: 2026-06-02T06:39:35.000Z
+updatedDate: 2026-06-02T06:39:35.000Z
 category: micro
 tags:
   - meta
   - instagram
   - hack
   - ai
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116685249930002745'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mnep6e7jyw2y'
+  - 'https://www.threads.com/@sajal24x7/post/DZHf-KCFja2'
 ---
 [Meta’s own AI was exploited to hijack Instagram accounts by Emma Roth](https://www.theverge.com/tech/941179/meta-instagram-ai-support-chatbot-exploit-hacked)
 

@@ -1,14 +1,17 @@
 ---
-title: "State of Play June"
-slug: "state-of-play-june"
-pubDate: 2026-06-03T11:32:15+03:00
-updatedDate: 2026-06-03T11:32:15+03:00
+title: State of Play June
+slug: state-of-play-june
+pubDate: 2026-06-03T08:32:15.000Z
+updatedDate: 2026-06-03T08:32:15.000Z
 category: blog
 tags:
   - state-of-play
   - sony
   - playstation
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116685249553925746'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mnep66vdzb2z'
+  - 'https://www.threads.com/@sajal24x7/post/DZHf9fsFpts'
 ---
 Sony held a [State of Play](https://www.youtube.com/live/cvh0xXmu0bs?is=JJzew76hMHU8MZej) on 2nd June. There were a bunch of exciting showcases and gameplay reveals. These are the things that excited me.
 
