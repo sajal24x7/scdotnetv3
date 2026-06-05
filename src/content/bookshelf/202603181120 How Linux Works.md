@@ -11,7 +11,7 @@ format: ebook
 author:
   - Brian Ward
 genre: technical
-shelfStatus: reading
+shelfStatus: on-hold
 started: 2026-03-18T09:21:09.000Z
 cover: how-linux-works.jpg
 syndicationUrls:
