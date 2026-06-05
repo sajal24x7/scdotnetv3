@@ -15,7 +15,11 @@ bookStatus: read
 startedReading: 2026-06-01T06:40:13.000Z
 cover: the-anthropologists.jpg
 bookRating: love
-finishedReading: 2026-06-04T08:53:56+03:00
+finishedReading: 2026-06-04T05:53:56.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116696242038552641'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mnjleyaph32e'
+  - 'https://www.threads.com/@sajal24x7/post/DZMf4mbFd5p'
 ---
 
 ## Review
