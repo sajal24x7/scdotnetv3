@@ -11,10 +11,10 @@ author:
 series: Shiva Trilogy
 genre: fantasy
 format: paperback
-bookStatus: read
-startedReading: 2013-10-01T13:39:05.000Z
-finishedReading: 2013-10-10T15:15:23.000Z
-bookRating: like
+shelfStatus: read
+started: 2013-10-01T13:39:05.000Z
+finished: 2013-10-10T15:15:23.000Z
+rating: like
 cover: the-immortals-of-meluha.jpg
 ---
 Finished Reading

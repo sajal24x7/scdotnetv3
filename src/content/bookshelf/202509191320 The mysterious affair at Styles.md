@@ -11,10 +11,10 @@ genre: mystery
 author: "Agatha Christie"
 series: "Hercule Poirot"
 seriesNumber: 1
-bookStatus: "read"
-bookRating: like
-startedReading: 2025-09-19T16:11:06+03:00
-finishedReading: 2025-09-23T17:00:18+03:00
+shelfStatus: "read"
+rating: like
+started: 2025-09-19T16:11:06+03:00
+finished: 2025-09-23T17:00:18+03:00
 cover: "the-mysterious-affair-at-styles.jpeg"
 ---
 

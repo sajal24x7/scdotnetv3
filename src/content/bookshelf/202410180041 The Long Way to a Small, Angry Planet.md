@@ -12,10 +12,10 @@ author:
 series: 'Wayfarers'
 seriesNumber: 1
 genre: sci-fi
-bookStatus: read
-startedReading: 2024-10-18T13:20:57.000Z
-bookRating: like
-finishedReading: 2024-10-23T13:20:57.000Z
+shelfStatus: read
+started: 2024-10-18T13:20:57.000Z
+rating: like
+finished: 2024-10-23T13:20:57.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865426061401888'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbymrmtgyq2l'

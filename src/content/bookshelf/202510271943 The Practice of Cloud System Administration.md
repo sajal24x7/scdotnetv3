@@ -9,8 +9,8 @@ tags:
 format: ebook
 genre: technical
 author: Thomas A. Limoncelli
-bookStatus: on-hold
-startedReading: 2025-10-27T09:29:23.000Z
+shelfStatus: on-hold
+started: 2025-10-27T09:29:23.000Z
 cover: "the-practice-of-cloud-system-administration.jpg"
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115446072477817612'

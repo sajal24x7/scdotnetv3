@@ -17,7 +17,7 @@ const parseDate = (value?: Date | string | null): Date | null => {
 };
 
 const getFilmYear = (post: typeof filmPosts[number]): number => {
-    const watched = parseDate(post.data.watchedDate);
+    const watched = parseDate(post.data.finished);
     if (watched) return watched.getFullYear();
     const pub = parseDate(post.data.pubDate);
     return (pub ?? new Date()).getFullYear();
@@ -36,8 +36,7 @@ const compareDesc = (a?: Date | string | null, b?: Date | string | null) => {
 const statusOrder: Record<string, number> = {
     watching: 0,
     watched: 1,
-    'to-watch': 2,
-    other: 3
+    other: 2
 };
 
 const filmsWithYear = filmPosts.map((post) => ({
@@ -47,12 +46,12 @@ const filmsWithYear = filmPosts.map((post) => ({
 
 const sortedFilms = [...filmsWithYear].sort((a, b) => {
     if (a.year !== b.year) return b.year - a.year;
-    const statusA = a.post.data.filmStatus ?? 'other';
-    const statusB = b.post.data.filmStatus ?? 'other';
+    const statusA = a.post.data.shelfStatus ?? 'other';
+    const statusB = b.post.data.shelfStatus ?? 'other';
     if (statusA !== statusB) {
         return (statusOrder[statusA] ?? statusOrder.other) - (statusOrder[statusB] ?? statusOrder.other);
     }
-    return compareDesc(a.post.data.watchedDate ?? a.post.data.pubDate, b.post.data.watchedDate ?? b.post.data.pubDate);
+    return compareDesc(a.post.data.finished ?? a.post.data.pubDate, b.post.data.finished ?? b.post.data.pubDate);
 });
 
 const years = Array.from(new Set(sortedFilms.map((e) => e.year)));
@@ -66,7 +65,7 @@ const filmsByYear = sortedFilms.reduce((acc, { year, post }) => {
 // Compute rewatch numbers across all film posts
 const allFilmEntries = sortedFilms.map((e) => ({
     title: e.post.data.title ?? '',
-    date: e.post.data.watchedDate ?? e.post.data.pubDate
+    date: e.post.data.finished ?? e.post.data.pubDate
 }));
 const watchNumbers = computeWatchNumbers(allFilmEntries);
 // Map from post slug to watch number
@@ -76,7 +75,7 @@ sortedFilms.forEach((entry, i) => {
 });
 
 // Count watched films for the header
-const watchedFilms = filmPosts.filter((p) => p.data.filmStatus === 'watched');
+const watchedFilms = filmPosts.filter((p) => p.data.shelfStatus === 'watched');
 const totalFilms = watchedFilms.length;
 const countText = `${totalFilms} ${totalFilms === 1 ? 'film' : 'films'} watched`;
 
@@ -115,7 +114,7 @@ const sectionLandingProps = createSectionLandingProps({
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearFilms = filmsByYear[year] ?? [];
-        const watchedYearFilms = yearFilms.filter((p) => p.data.filmStatus === 'watched');
+        const watchedYearFilms = yearFilms.filter((p) => p.data.shelfStatus === 'watched');
         const filmCount = watchedYearFilms.length;
         const filmLabel = filmCount === 1 ? 'film' : 'films';
 
@@ -138,18 +137,18 @@ const sectionLandingProps = createSectionLandingProps({
                     data-content-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
                     data-genre={post.data.genre ?? ''}
-                    data-status={post.data.filmStatus ?? ''}
-                    data-rating={post.data.filmRating ?? ''}
+                    data-status={post.data.shelfStatus ?? ''}
+                    data-rating={post.data.rating ?? ''}
                   >
                     <FilmCard
                       title={post.data.title ?? ''}
                       director={post.data.director}
                       year={post.data.year as number | undefined}
                       genre={post.data.genre}
-                      filmStatus={post.data.filmStatus}
-                      filmRating={post.data.filmRating}
-                      watchedDate={post.data.watchedDate}
-                      filmCover={post.data.filmCover}
+                      shelfStatus={post.data.shelfStatus as any}
+                      rating={post.data.rating}
+                      finished={post.data.finished}
+                      cover={post.data.cover}
                       link={post.id ? `/filmshelf/${post.id}/` : undefined}
                       watchNumber={watchNumber}
                     />

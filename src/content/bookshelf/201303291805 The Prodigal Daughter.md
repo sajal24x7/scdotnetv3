@@ -11,10 +11,10 @@ author:
 series: Kane & Abel
 genre: thriller
 format: paperback
-bookStatus: read
-startedReading: 2013-03-19T16:21:38.000Z
-finishedReading: 2013-03-29T18:05:21.000Z
-bookRating: like
+shelfStatus: read
+started: 2013-03-19T16:21:38.000Z
+finished: 2013-03-29T18:05:21.000Z
+rating: like
 cover: the-prodigal-daughter.jpg
 ---
 

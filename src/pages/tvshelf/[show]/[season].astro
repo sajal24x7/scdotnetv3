@@ -86,23 +86,19 @@ const year = season.data.year as number | undefined;
 const platform = season.data.platform as string | undefined;
 const started = formatYMD(season.data.started);
 const finished = formatYMD(season.data.finished);
-const tvStatus = season.data.tvStatus;
-const tvRating = season.data.tvRating;
+const tvStatus = season.data.shelfStatus;
+const tvRating = season.data.rating;
 
 const statusLabelMap: Record<string, string> = {
     watching: 'Watching',
     watched: 'Watched',
-    'to-watch': 'To Watch',
     'on-hold': 'On Hold',
-    abandoned: 'Abandoned'
 };
 
 const statusChipClassMap: Record<string, string> = {
     watching: 'chip--status-watching',
     watched: 'chip--status-watched',
-    'to-watch': 'chip--status-to-watch',
     'on-hold': 'chip--status-on-hold',
-    abandoned: 'chip--status-abandoned'
 };
 
 const ratingDisplay = tvRating ? bookRatingDisplay[tvRating as BookRating] : null;

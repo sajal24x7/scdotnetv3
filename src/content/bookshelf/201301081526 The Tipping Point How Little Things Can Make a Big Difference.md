@@ -10,10 +10,10 @@ author:
   - Malcolm Gladwell
 genre: self-help
 format: paperback
-bookStatus: read
-startedReading: 2013-01-08T15:26:39.000Z
-finishedReading: 2013-01-08T15:26:39.000Z
-bookRating: like
+shelfStatus: read
+started: 2013-01-08T15:26:39.000Z
+finished: 2013-01-08T15:26:39.000Z
+rating: like
 cover: the-tipping-point-how-little-things-can-make-a-big-difference.jpg
 ---
 Finished Reading

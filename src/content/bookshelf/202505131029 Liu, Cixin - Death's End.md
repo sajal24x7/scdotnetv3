@@ -9,10 +9,10 @@ tags:
 genre: sci-fi
 author: Cixin Liu
 series: Remembrance of Earth's Past
-bookStatus: read
-bookRating: like
-startedReading: '2025-05-08T19:06:00+03:00'
-finishedReading: '2025-06-22T19:06:00+03:00'
+shelfStatus: read
+rating: like
+started: '2025-05-08T19:06:00+03:00'
+finished: '2025-06-22T19:06:00+03:00'
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115815935258000236'
   - 'https://www.threads.com/@sajal24x7/post/DS8LlgbkWNi'

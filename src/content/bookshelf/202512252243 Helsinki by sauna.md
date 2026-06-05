@@ -9,10 +9,10 @@ tags:
 format: ebook
 genre: photobook
 author: Katja Panzar
-bookStatus: read
-startedReading: 2025-12-25T21:02:28.000Z
-bookRating: like
-finishedReading: 2025-12-25T21:03:15.000Z
+shelfStatus: read
+started: 2025-12-25T21:02:28.000Z
+rating: like
+finished: 2025-12-25T21:03:15.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115785090768021542'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maux5dyuaf22'

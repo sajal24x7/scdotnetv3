@@ -11,11 +11,11 @@ genre: fantasy
 author: Toshikazu Kawaguchi
 series: "Before the coffee gets cold"
 seriesNumber: 1
-bookStatus: read
-startedReading: 2025-11-06T10:06:04.000Z
-finishedReading: 2025-11-15T12:06:04.000Z
+shelfStatus: read
+started: 2025-11-06T10:06:04.000Z
+finished: 2025-11-15T12:06:04.000Z
 cover: 'before-the-coffee-gets-cold.jpg'
-bookRating: like
+rating: like
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115536189228694891'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5gfzzx5b52b'

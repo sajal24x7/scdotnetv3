@@ -11,10 +11,10 @@ genre: thriller
 author: "Dan Brown"
 series: "Robert Langdon"
 seriesNumber: 6
-bookStatus: "read"
-bookRating: like
-startedReading: 2025-09-23T17:00:18+03:00
-finishedReading: 2025-10-30T10:48:01+02:00
+shelfStatus: "read"
+rating: like
+started: 2025-09-23T17:00:18+03:00
+finished: 2025-10-30T10:48:01+02:00
 cover: "the-secret-of-secrets.jpg"
 ---
 I have read all the books in the Robert Langston series of books. I had not enjoyed any, as much as I enjoyed this one.

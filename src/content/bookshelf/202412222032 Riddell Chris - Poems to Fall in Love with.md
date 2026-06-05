@@ -12,10 +12,10 @@ genre: poetry
 cover: poems-to-fall-in-love-with.jpg
 author: Chris Riddell
 series: none
-bookStatus: read
-bookRating: like
-startedReading: 2024-12-22T20:32:00+03:00
-finishedReading: 2024-12-22T20:32:00+03:00
+shelfStatus: read
+rating: like
+started: 2024-12-22T20:32:00+03:00
+finished: 2024-12-22T20:32:00+03:00
 ---
 This is an excellent collection of poetry on love with wonderful art by Chris Riddell. Some poems, specifically ‘If you are an ancient Egyptian pharaoh by Hera Lindsay Bird’ became more than their words thanks to Chris’s work.
 

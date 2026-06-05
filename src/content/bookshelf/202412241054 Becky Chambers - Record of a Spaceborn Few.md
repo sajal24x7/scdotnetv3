@@ -11,10 +11,10 @@ tags:
 genre: sci-fi
 cover: record-of-a-spaceborn-few.jpg
 author: Becky Chambers
-bookStatus: read
-bookRating: like
-startedReading: 2024-12-24T10:54:00+03:00
-finishedReading: 2024-12-24T10:54:00+03:00
+shelfStatus: read
+rating: like
+started: 2024-12-24T10:54:00+03:00
+finished: 2024-12-24T10:54:00+03:00
 ---
 This is the third book in the Wayfarer series. Becky continues to explore further people and stories in this universe. This time concentrating on the Fleet, the descendants of the first humans who left a dying planet.
 

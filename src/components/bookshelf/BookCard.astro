@@ -14,10 +14,10 @@ interface BookCardProps {
     title: string;
     author?: string;
     series?: string;
-    startedReading?: Date | string;
-    finishedReading?: Date | string;
-    bookStatus?: 'reading' | 'read';
-    bookRating?: BookRating;
+    started?: Date | string;
+    finished?: Date | string;
+    shelfStatus?: 'reading' | 'read' | 'on-hold';
+    rating?: BookRating;
     cover?: string;
     link?: string;
     format?: string;
@@ -27,10 +27,10 @@ const {
     title,
     author,
     series,
-    startedReading,
-    finishedReading,
-    bookStatus,
-    bookRating,
+    started,
+    finished,
+    shelfStatus,
+    rating,
     cover,
     link,
     format
@@ -53,12 +53,12 @@ const formatDate = (date: Date | string | undefined) => {
   });
 };
 
-const startedDate = formatDate(startedReading);
-const finishedDate = formatDate(finishedReading);
+const startedDate = formatDate(started);
+const finishedDate = formatDate(finished);
 
-const showRating = bookStatus !== 'reading';
-const rating: BookRating | null = showRating ? (bookRating ?? defaultBookRating) : null;
-const ratingDisplay = rating ? bookRatingDisplay[rating] : null;
+const showRating = shelfStatus !== 'reading';
+const resolvedRating: BookRating | null = showRating ? (rating ?? defaultBookRating) : null;
+const ratingDisplay = resolvedRating ? bookRatingDisplay[resolvedRating] : null;
 const ratingLabel = ratingDisplay?.label ?? null;
 const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
 const ratingAriaLabel = ratingLabel ?? 'Rated';
@@ -124,9 +124,9 @@ const ratingAriaLabel = ratingLabel ?? 'Rated';
         {format && (
           <span class="book-format">{format}</span>
         )}
-        {rating && ratingIconSpecs.length > 0 && (
+        {resolvedRating && ratingIconSpecs.length > 0 && (
           <div
-            class={`book-rating book-rating--${rating}`}
+            class={`book-rating book-rating--${resolvedRating}`}
             aria-label={ratingAriaLabel}
           >
             <span class="book-rating__label">{ratingLabel}</span>

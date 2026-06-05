@@ -11,10 +11,10 @@ tags:
 genre: short-story
 cover: men-without-women.jpg
 author: Haruki Murakami
-bookStatus: read
-bookRating: like
-startedReading: 2025-01-30T21:37:00+03:00
-finishedReading: 2025-01-30T21:37:00+03:00
+shelfStatus: read
+rating: like
+started: 2025-01-30T21:37:00+03:00
+finished: 2025-01-30T21:37:00+03:00
 ---
 # Few things about the thing that is this book
 

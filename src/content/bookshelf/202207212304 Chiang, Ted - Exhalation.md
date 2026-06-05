@@ -10,10 +10,10 @@ format: ebook
 author:
   - Ted Chiang
 genre: sci-fi
-bookStatus: read
-startedReading: 2022-07-21T17:13:34.000Z
-bookRating: like
-finishedReading: 2023-04-13T17:14:15.000Z
+shelfStatus: read
+started: 2022-07-21T17:13:34.000Z
+rating: like
+finished: 2023-04-13T17:14:15.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115864826030776501'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyear7lb72l'

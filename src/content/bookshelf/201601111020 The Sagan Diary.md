@@ -11,10 +11,10 @@ author:
 series: Old Man's War
 genre: sci-fi
 format: paperback
-bookStatus: read
-startedReading: 2016-01-11T10:20:13.000Z
-finishedReading: 2016-01-11T10:20:13.000Z
-bookRating: like
+shelfStatus: read
+started: 2016-01-11T10:20:13.000Z
+finished: 2016-01-11T10:20:13.000Z
+rating: like
 cover: the-sagan-diary.jpg
 ---
 Finished Reading

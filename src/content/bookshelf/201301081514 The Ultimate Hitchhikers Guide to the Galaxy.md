@@ -11,10 +11,10 @@ author:
   - Douglas Adams
 genre: sci-fi
 format: paperback
-bookStatus: read
-startedReading: 2013-01-08T15:14:05.000Z
-finishedReading: 2013-01-08T15:14:21.000Z
-bookRating: like
+shelfStatus: read
+started: 2013-01-08T15:14:05.000Z
+finished: 2013-01-08T15:14:21.000Z
+rating: like
 cover: the-ultimate-hitchhikers-guide-to-the-galaxy.jpg
 ---
 Finished Reading

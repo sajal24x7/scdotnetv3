@@ -9,9 +9,9 @@ tags:
 format: ebook
 genre: technical
 author: Naomi Ceder
-bookStatus: on-hold
-bookRating: like
-startedReading: 2025-09-28T13:57:42+03:00
+shelfStatus: on-hold
+rating: like
+started: 2025-09-28T13:57:42+03:00
 cover: the-quick-python-book.jpg
 ---
 

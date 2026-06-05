@@ -9,10 +9,10 @@ tags:
 format: audio
 genre: technical
 author: 'Thomas A. Limoncelli'
-bookStatus: "read"
-bookRating: like
-startedReading: 2025-10-05T15:55:32+03:00
-finishedReading: 2025-10-16T13:55:32+03:00
+shelfStatus: "read"
+rating: like
+started: 2025-10-05T15:55:32+03:00
+finished: 2025-10-16T13:55:32+03:00
 cover: "time-management-for-system-administrators.jpg"
 ---
 

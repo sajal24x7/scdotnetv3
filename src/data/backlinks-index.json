@@ -609,6 +609,8 @@
       "evergreen/202601181839 How to craft a story.md",
       "evergreen/202601312353 Write a letter to your child.md",
       "evergreen/202604141403 The four diseases leading to slow death.md",
+      "filmshelf/202606021827 Apex.md",
+      "filmshelf/202606051110 Ladies First.md",
       "gameshelf/202605290954 Ghost of Yotei.md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
@@ -936,6 +938,7 @@
       "micro/202606011012 The AI Bubble.md",
       "micro/202606020937 Meta bot used to hijack IG accounts.md",
       "micro/202606031458The Tragedy of the Commoner.md",
+      "micro/202606051024 Amazon has a new plan for games.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1638,7 +1641,7 @@
       "til/202603301610 Generators in python.md",
       "tvshelf/202605270840 Glory.md"
     ],
-    "generatedAt": "2026-06-03T13:08:47.903Z"
+    "generatedAt": "2026-06-05T11:13:06.214Z"
   },
   "micro/new-updates-to-claude": [
     {
@@ -1658,15 +1661,6 @@
       "pubDate": "2025-10-21T12:45:15.000Z"
     }
   ],
-  "bookshelf/continuous-delivery": [
-    {
-      "slug": "/til/how-to-write-commit-messages/",
-      "title": "How to Write Commit Messages",
-      "description": "",
-      "category": "til",
-      "pubDate": "2025-11-24T18:54:37.000Z"
-    }
-  ],
   "bookshelf/the-practice-of-cloud-system-administration": [
     {
       "slug": "/til/the-cap-principle/",
@@ -1681,6 +1675,15 @@
       "description": "",
       "category": "evergreen",
       "pubDate": "2025-10-29T09:11:33.000Z"
+    }
+  ],
+  "bookshelf/continuous-delivery": [
+    {
+      "slug": "/til/how-to-write-commit-messages/",
+      "title": "How to Write Commit Messages",
+      "description": "",
+      "category": "til",
+      "pubDate": "2025-11-24T18:54:37.000Z"
     }
   ],
   "bookshelf/how-linux-works": [
@@ -2551,6 +2554,24 @@
       "pubDate": "2025-08-10T03:34:48.000Z"
     }
   ],
+  "evergreen/when-someone-has-been-dead-for-a-while": [
+    {
+      "slug": "/nordletter/nl69-a-fresh-start/",
+      "title": "A Fresh Start",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-08-31T03:30:49.000Z"
+    }
+  ],
+  "evergreen/why-journal": [
+    {
+      "slug": "/nordletter/nl69-a-fresh-start/",
+      "title": "A Fresh Start",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-08-31T03:30:49.000Z"
+    }
+  ],
   "evergreen/write-more": [
     {
       "slug": "/nordletter/nl70-build-or-break/",
@@ -2576,24 +2597,6 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-09-07T03:05:16.000Z"
-    }
-  ],
-  "evergreen/when-someone-has-been-dead-for-a-while": [
-    {
-      "slug": "/nordletter/nl69-a-fresh-start/",
-      "title": "A Fresh Start",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-08-31T03:30:49.000Z"
-    }
-  ],
-  "evergreen/why-journal": [
-    {
-      "slug": "/nordletter/nl69-a-fresh-start/",
-      "title": "A Fresh Start",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-08-31T03:30:49.000Z"
     }
   ],
   "blog/thoughts-on-iphone-day-2025": [

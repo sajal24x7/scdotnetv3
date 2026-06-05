@@ -9,15 +9,15 @@ tags:
 format: ebook
 genre: essays
 author: Hwang Bo-reum
-bookStatus: read
-startedReading: 2025-12-01T13:46:21.000Z
-finishedReading: 2025-12-02T11:51:25+02:00
+shelfStatus: read
+started: 2025-12-01T13:46:21.000Z
+finished: 2025-12-02T11:51:25+02:00
 syndicationUrls:
   - https://mastodon.social/@sajal24x7/115644626044031471
   - https://bsky.app/profile/sajal24x7.bsky.social/post/3m6wkzfqo4o2d
   - https://www.threads.com/@sajal24x7/post/DRvB7T2koUO
 cover: every-day-i-read.jpg
-bookRating: like
+rating: like
 ---
 
 This was a short and sweet book of 53 essays on why one should read books.

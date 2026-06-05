@@ -12,24 +12,20 @@ const bookshelfPosts = allPosts.filter((post) => post.data.category === 'bookshe
 
 const normalizeStatus = (status?: string | null) => {
     switch (status) {
-        case 'read':
-        case 'finished':
-            return 'finished';
         case 'reading':
         case 'on-hold':
-        case 'to-read':
             return status;
+        case 'read':
         default:
-            return 'finished';
+            return 'read';
     }
 };
 
 const statusOrder: Record<string, number> = {
     reading: 0,
-    finished: 1,
+    read: 1,
     'on-hold': 2,
-    'to-read': 3,
-    other: 4
+    other: 3
 };
 
 const toTime = (value?: Date | string | null) => {
@@ -53,10 +49,10 @@ const parseDate = (value?: Date | string | null) => {
 };
 
 const getBookYear = (book: typeof bookshelfPosts[number]) => {
-    const finished = parseDate(book.data.finishedReading);
+    const finished = parseDate(book.data.finished);
     if (finished) return finished.getFullYear();
 
-    const started = parseDate(book.data.startedReading);
+    const started = parseDate(book.data.started);
     if (started) return started.getFullYear();
 
     const pub = parseDate(book.data.pubDate);
@@ -73,8 +69,8 @@ const sortedBooks = [...booksWithYear].sort((a, b) => {
         return b.year - a.year;
     }
 
-    const statusA = normalizeStatus(a.book.data.bookStatus);
-    const statusB = normalizeStatus(b.book.data.bookStatus);
+    const statusA = normalizeStatus(a.book.data.shelfStatus);
+    const statusB = normalizeStatus(b.book.data.shelfStatus);
 
     if (statusA !== statusB) {
         return (statusOrder[statusA] ?? statusOrder.other) - (statusOrder[statusB] ?? statusOrder.other);
@@ -88,15 +84,15 @@ const sortedBooks = [...booksWithYear].sort((a, b) => {
             return progressB - progressA;
         }
 
-        return compareDesc(a.book.data.startedReading ?? a.book.data.pubDate, b.book.data.startedReading ?? b.book.data.pubDate);
+        return compareDesc(a.book.data.started ?? a.book.data.pubDate, b.book.data.started ?? b.book.data.pubDate);
     }
 
-    if (statusA === 'finished') {
-        return compareDesc(a.book.data.finishedReading ?? a.book.data.pubDate, b.book.data.finishedReading ?? b.book.data.pubDate);
+    if (statusA === 'read') {
+        return compareDesc(a.book.data.finished ?? a.book.data.pubDate, b.book.data.finished ?? b.book.data.pubDate);
     }
 
-    if (statusA === 'on-hold' || statusA === 'to-read') {
-        return compareDesc(a.book.data.startedReading ?? a.book.data.pubDate, b.book.data.startedReading ?? b.book.data.pubDate);
+    if (statusA === 'on-hold') {
+        return compareDesc(a.book.data.started ?? a.book.data.pubDate, b.book.data.started ?? b.book.data.pubDate);
     }
 
     return compareDesc(a.book.data.pubDate, b.book.data.pubDate);
@@ -128,8 +124,8 @@ const genreCounts: Record<string, number> = {};
 
 // Only count finished books for author and genre counts
 bookshelfPosts.forEach((book) => {
-    const status = book.data.bookStatus;
-    const isFinished = status === 'finished' || status === 'read';
+    const status = book.data.shelfStatus;
+    const isFinished = status === 'read';
 
     if (isFinished) {
         const authors = extractAuthors(book.data.author);
@@ -165,8 +161,7 @@ const hasMoreGenres = sortedGenres.length > initialGenreCount;
 
 // Calculate total books count (only finished books)
 const finishedBooks = bookshelfPosts.filter((post) => {
-    const status = post.data.bookStatus;
-    return status === 'finished' || status === 'read';
+    return post.data.shelfStatus === 'read';
 });
 const totalBooks = finishedBooks.length;
 const countText = `${totalBooks} ${totalBooks === 1 ? 'book' : 'books'}`;
@@ -213,10 +208,7 @@ const sectionLandingProps = createSectionLandingProps({
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearBooks = booksByYear[year] ?? [];
-        const finishedYearBooks = yearBooks.filter((book) => {
-          const status = book.data.bookStatus;
-          return status === 'finished' || status === 'read';
-        });
+        const finishedYearBooks = yearBooks.filter((book) => book.data.shelfStatus === 'read');
         const bookCount = finishedYearBooks.length;
         const bookLabel = bookCount === 1 ? 'book' : 'books';
 
@@ -234,9 +226,9 @@ const sectionLandingProps = createSectionLandingProps({
                 const bookSlug = book.id ?? `${year}-${index}`;
                 const bookAuthors = extractAuthors(book.data.author).join(',');
                 const bookGenre = book.data.genre ?? '';
-                const bookStatus = normalizeStatus(book.data.bookStatus);
+                const bookStatus = normalizeStatus(book.data.shelfStatus);
                 const bookFormat = book.data.format ?? '';
-                const bookRating = book.data.bookRating ?? '';
+                const bookRating = book.data.rating ?? '';
                 const bookTags = Array.isArray(book.data.tags) ? book.data.tags.join(',') : '';
                 const rawSeries = book.data.series ?? '';
                 const bookSeries = (!rawSeries || rawSeries === 'none') ? '' : rawSeries;
@@ -599,9 +591,8 @@ const sectionLandingProps = createSectionLandingProps({
     // Map for display labels
     const statusDisplayMap: Record<string, string> = {
       reading: 'Currently Reading',
-      finished: 'Finished',
+      read: 'Read',
       'on-hold': 'On Hold',
-      'to-read': 'To Read'
     };
 
     const ratingDisplayMap: Record<string, string> = {
@@ -771,7 +762,7 @@ const sectionLandingProps = createSectionLandingProps({
           const allYearBooks = section.querySelectorAll('[data-book-item]');
           allYearBooks.forEach((bookItem) => {
             const bookStatus = bookItem.getAttribute('data-status') || '';
-            if (bookStatus === 'finished') {
+            if (bookStatus === 'read') {
               count++;
             }
           });
@@ -844,7 +835,7 @@ const sectionLandingProps = createSectionLandingProps({
         let count = 0;
         allYearBooks.forEach((bookItem) => {
           const bookStatus = bookItem.getAttribute('data-status') || '';
-          if (bookStatus === 'finished') {
+          if (bookStatus === 'read') {
             count++;
           }
         });

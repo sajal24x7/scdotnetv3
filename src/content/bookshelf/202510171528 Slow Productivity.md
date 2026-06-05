@@ -10,11 +10,11 @@ tags:
 format: audio
 genre: self-help
 author: Cal Newport
-bookStatus: read
-startedReading: 2025-10-17T12:28:56.000Z
-finishedReading: 2025-10-24T17:46:56.000Z
+shelfStatus: read
+started: 2025-10-17T12:28:56.000Z
+finished: 2025-10-24T17:46:56.000Z
 cover: slow-productivity.jpg
-bookRating: like
+rating: like
 syndicationUrls:
   - https://mastodon.social/@sajal24x7/115411436555564699
   - https://bsky.app/profile/sajal24x7.bsky.social/post/3m3oz73mokl2v

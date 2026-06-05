@@ -8,10 +8,10 @@ tags:
   - poetry
 genre: poetry
 author: Pablo Neruda
-bookStatus: read
-bookRating: like
-startedReading: 2024-11-30T21:37:00+03:00
-finishedReading: 2024-11-30T21:37:00+03:00
+shelfStatus: read
+rating: like
+started: 2024-11-30T21:37:00+03:00
+finished: 2024-11-30T21:37:00+03:00
 cover: twenty-love-poems-and-a-song-of-despair.jpg
 ---
 

@@ -9,10 +9,10 @@ tags:
 format: ebook
 genre: thriller
 author: Chris Pavone
-bookStatus: read
-startedReading: 2025-12-09T12:07:59.000Z
-bookRating: love
-finishedReading: 2025-12-25T02:11:18+02:00
+shelfStatus: read
+started: 2025-12-09T12:07:59.000Z
+rating: love
+finished: 2025-12-25T02:11:18+02:00
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115689530594430643'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7kj5mwbxm2s'

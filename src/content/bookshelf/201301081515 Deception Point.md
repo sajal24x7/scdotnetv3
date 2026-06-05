@@ -10,10 +10,10 @@ author:
   - Dan Brown
 genre: thriller
 format: paperback
-bookStatus: read
-startedReading: 2013-01-08T15:15:02.000Z
-finishedReading: 2013-01-08T15:15:09.000Z
-bookRating: love
+shelfStatus: read
+started: 2013-01-08T15:15:02.000Z
+finished: 2013-01-08T15:15:09.000Z
+rating: love
 cover: deception-point.jpeg
 ---
 Finished Reading

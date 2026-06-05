@@ -10,10 +10,10 @@ format: ebook
 author:
   - Kim Stanley Robinson
 genre: sci-fi
-bookStatus: read
-startedReading: 2022-02-01T08:19:11.000Z
-bookRating: love
-finishedReading: 2022-06-01T08:20:10.000Z
+shelfStatus: read
+started: 2022-02-01T08:19:11.000Z
+rating: love
+finished: 2022-06-01T08:20:10.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115858505349109720'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbvkghiw2a2g'

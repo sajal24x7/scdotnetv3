@@ -9,10 +9,10 @@ tags:
 format: audio
 genre: technology
 author: Kevin Kelly
-bookStatus: read
-bookRating: like
-startedReading: 2025-02-23T19:37:03.000Z
-finishedReading: 2025-05-06T19:37:03.000Z
+shelfStatus: read
+rating: like
+started: 2025-02-23T19:37:03.000Z
+finished: 2025-05-06T19:37:03.000Z
 syndicationUrls:
   - https://mastodon.social/@sajal24x7/115815876230499690
   - https://www.threads.com/@sajal24x7/post/DS8J3bLiTtr

@@ -11,10 +11,10 @@ format: audiobook
 author:
   - Richard Panek
 genre: science
-bookStatus: read
-startedReading: 2026-04-12T15:32:00.000Z
-bookRating: like
-finishedReading: 2026-04-14T07:18:20.000Z
+shelfStatus: read
+started: 2026-04-12T15:32:00.000Z
+rating: like
+finished: 2026-04-14T07:18:20.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116401959959849335'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mjgveyszoj2h'

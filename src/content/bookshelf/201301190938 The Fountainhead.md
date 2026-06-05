@@ -10,10 +10,10 @@ author:
   - Ayn Rand
 genre: fiction
 format: paperback
-bookStatus: read
-startedReading: 2013-01-19T09:38:36.000Z
-finishedReading: 2013-01-19T09:38:36.000Z
-bookRating: like
+shelfStatus: read
+started: 2013-01-19T09:38:36.000Z
+finished: 2013-01-19T09:38:36.000Z
+rating: like
 cover: the-fountainhead.jpg
 ---
 Finished Reading

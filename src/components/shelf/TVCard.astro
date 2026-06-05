@@ -9,7 +9,7 @@ import {
     type RatingIconSpec
 } from '../../utils/bookRatings';
 
-type TVStatus = 'watching' | 'watched' | 'to-watch' | 'on-hold' | 'abandoned';
+type TVShelfStatus = 'watching' | 'watched' | 'on-hold';
 
 interface TVCardProps {
     title: string;
@@ -19,8 +19,8 @@ interface TVCardProps {
     creator?: string[];
     year?: number;
     genre?: string;
-    tvStatus?: TVStatus;
-    tvRating?: BookRating;
+    shelfStatus?: TVShelfStatus;
+    rating?: BookRating;
     cover?: string;
     seasonCount?: number;
     latestSeason?: number;
@@ -36,32 +36,28 @@ const {
     creator,
     year,
     genre,
-    tvStatus,
-    tvRating,
+    shelfStatus,
+    rating,
     cover,
     seasonCount = 1,
     latestSeason,
     watchNumber = 1
 } = props;
 
-const statusLabelMap: Record<TVStatus, string> = {
+const statusLabelMap: Record<TVShelfStatus, string> = {
     watching: 'Watching',
     watched: 'Watched',
-    'to-watch': 'To Watch',
     'on-hold': 'On Hold',
-    abandoned: 'Abandoned'
 };
 
-const statusChipClassMap: Record<TVStatus, string> = {
+const statusChipClassMap: Record<TVShelfStatus, string> = {
     watching: 'book-card__chip--status-reading',
     watched: 'book-card__chip--status-finished',
-    'to-watch': 'book-card__chip--status-to-read',
     'on-hold': 'book-card__chip--status-on-hold',
-    abandoned: 'book-card__chip--status-nope'
 };
 
-const statusLabel = tvStatus ? statusLabelMap[tvStatus] : null;
-const statusChipClass = tvStatus ? statusChipClassMap[tvStatus] : '';
+const statusLabel = shelfStatus ? statusLabelMap[shelfStatus] : null;
+const statusChipClass = shelfStatus ? (statusChipClassMap[shelfStatus] ?? '') : '';
 
 const genreLabel = genre ? genre.toUpperCase() : null;
 const isRewatch = watchNumber > 1;
@@ -75,8 +71,8 @@ const seasonLabel = seasonNumber !== undefined
             ? `Season ${latestSeason}`
             : null;
 
-const shouldShowRating = tvStatus !== 'watching';
-const ratingDisplay = shouldShowRating && tvRating ? bookRatingDisplay[tvRating] : null;
+const shouldShowRating = shelfStatus !== 'watching';
+const ratingDisplay = shouldShowRating && rating ? bookRatingDisplay[rating] : null;
 const ratingAriaLabel = ratingDisplay ? ratingDisplay.label : 'Rating: Not set';
 const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
 const ratingChipLabel = ratingDisplay?.label ?? null;
@@ -140,12 +136,12 @@ const showLink = seasonSlug
       {(statusLabel || genreLabel || seasonLabel || ratingChipLabel || rewatchLabel) && (
         <div class="book-card__meta" data-meta>
           <div class="book-card__meta-row book-card__meta-row--chips">
-            {statusLabel && tvStatus && tvStatus !== 'watched' && (
+            {statusLabel && shelfStatus && shelfStatus !== 'watched' && (
               <button
                 type="button"
                 class={`book-card__chip book-card__chip--status book-card__chip--clickable ${statusChipClass}`}
-                data-filter-type="tvStatus"
-                data-filter-value={tvStatus}
+                data-filter-type="shelfStatus"
+                data-filter-value={shelfStatus}
               >
                 {statusLabel}
               </button>
@@ -165,17 +161,17 @@ const showLink = seasonSlug
                 <span class="book-card__chip-label">{seasonLabel}</span>
               </span>
             )}
-            {ratingChipLabel && tvRating && (
+            {ratingChipLabel && rating && (
               <button
                 type="button"
-                class={`book-card__chip book-card__chip--rating book-card__chip--clickable book-card__chip--rating-${tvRating}`}
+                class={`book-card__chip book-card__chip--rating book-card__chip--clickable book-card__chip--rating-${rating}`}
                 data-filter-type="rating"
-                data-filter-value={tvRating}
+                data-filter-value={rating}
                 aria-label={ratingAriaLabel}
               >
                 <span class="book-card__chip-label">{ratingChipLabel}</span>
                 {ratingIconSpecs.length > 0 && (
-                  <span class={`book-card__rating-icons book-card__rating-icons--${tvRating}`} aria-hidden="true">
+                  <span class={`book-card__rating-icons book-card__rating-icons--${rating}`} aria-hidden="true">
                     {ratingIconSpecs.map((iconSpec) => (
                       <span class="book-card__rating-icon">
                         <svg width={iconSpec.size} height={iconSpec.size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

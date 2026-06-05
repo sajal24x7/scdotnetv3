@@ -11,9 +11,9 @@ author:
 series: Foundation
 genre: sci-fi
 format: paperback
-bookStatus: read
-startedReading: 2013-01-16T07:02:07.000Z
-finishedReading: 2016-09-13T15:55:33.000Z
+shelfStatus: read
+started: 2013-01-16T07:02:07.000Z
+finished: 2016-09-13T15:55:33.000Z
 cover: second-foundation.jpg
 ---
 Finished Reading

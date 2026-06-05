@@ -10,10 +10,10 @@ author:
   - Stephen Hawking
 genre: science
 format: paperback
-bookStatus: read
-startedReading: 2013-01-08T15:18:02.000Z
-finishedReading: 2013-01-08T15:17:27.000Z
-bookRating: like
+shelfStatus: read
+started: 2013-01-08T15:18:02.000Z
+finished: 2013-01-08T15:17:27.000Z
+rating: like
 cover: a-brief-history-of-time.jpg
 ---
 Finished Reading

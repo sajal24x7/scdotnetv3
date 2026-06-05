@@ -10,10 +10,10 @@ author:
   - Robert Ludlum
 genre: thriller
 format: paperback
-bookStatus: read
-startedReading: 2013-01-08T15:16:51.000Z
-finishedReading: 2013-01-08T15:16:56.000Z
-bookRating: like
+shelfStatus: read
+started: 2013-01-08T15:16:51.000Z
+finished: 2013-01-08T15:16:56.000Z
+rating: like
 cover: the-chancellor-manuscript.jpg
 ---
 Finished Reading

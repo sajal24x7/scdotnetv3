@@ -9,10 +9,10 @@ tags:
 format: hardcover
 genre: craft
 author: Austin Kleon
-bookStatus: read
-startedReading: 2025-12-21T19:41:53.000Z
-bookRating: love
-finishedReading: 2025-12-21T20:42:48.000Z
+shelfStatus: read
+started: 2025-12-21T19:41:53.000Z
+rating: love
+finished: 2025-12-21T20:42:48.000Z
 syndicationUrls:
   - https://mastodon.social/@sajal24x7/115759533928277913
   - https://bsky.app/profile/sajal24x7.bsky.social/post/3majlxhmcct2g

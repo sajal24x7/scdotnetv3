@@ -17,7 +17,7 @@ const parseDate = (value?: Date | string | null): Date | null => {
 };
 
 const getGameYear = (post: typeof gamePosts[number]): number => {
-    const started = parseDate(post.data.startedReading); // reuse startedReading as startedPlaying for now
+    const started = parseDate(post.data.started);
     if (started) return started.getFullYear();
     const pub = parseDate(post.data.pubDate);
     return (pub ?? new Date()).getFullYear();
@@ -35,10 +35,8 @@ const compareDesc = (a?: Date | string | null, b?: Date | string | null) => {
 const statusOrder: Record<string, number> = {
     playing: 0,
     played: 1,
-    'to-play': 2,
-    'on-hold': 3,
-    abandoned: 4,
-    other: 5
+    'on-hold': 2,
+    other: 3
 };
 
 const gamesWithYear = gamePosts.map((post) => ({
@@ -48,8 +46,8 @@ const gamesWithYear = gamePosts.map((post) => ({
 
 const sortedGames = [...gamesWithYear].sort((a, b) => {
     if (a.year !== b.year) return b.year - a.year;
-    const statusA = a.post.data.gameStatus ?? 'other';
-    const statusB = b.post.data.gameStatus ?? 'other';
+    const statusA = a.post.data.shelfStatus ?? 'other';
+    const statusB = b.post.data.shelfStatus ?? 'other';
     if (statusA !== statusB) {
         return (statusOrder[statusA] ?? statusOrder.other) - (statusOrder[statusB] ?? statusOrder.other);
     }
@@ -76,7 +74,7 @@ sortedGames.forEach((entry, i) => {
 });
 
 // Count played games
-const playedGames = gamePosts.filter((p) => p.data.gameStatus === 'played');
+const playedGames = gamePosts.filter((p) => p.data.shelfStatus === 'played');
 const totalGames = playedGames.length;
 const countText = `${totalGames} ${totalGames === 1 ? 'game' : 'games'} played`;
 
@@ -115,7 +113,7 @@ const sectionLandingProps = createSectionLandingProps({
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearGames = gamesByYear[year] ?? [];
-        const playedYearGames = yearGames.filter((p) => p.data.gameStatus === 'played');
+        const playedYearGames = yearGames.filter((p) => p.data.shelfStatus === 'played');
         const gameCount = playedYearGames.length;
         const gameLabel = gameCount === 1 ? 'game' : 'games';
 
@@ -138,8 +136,8 @@ const sectionLandingProps = createSectionLandingProps({
                     data-content-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
                     data-genre={post.data.genre ?? ''}
-                    data-status={post.data.gameStatus ?? ''}
-                    data-rating={post.data.gameRating ?? ''}
+                    data-status={post.data.shelfStatus ?? ''}
+                    data-rating={post.data.rating ?? ''}
                     data-platform={post.data.platform ?? ''}
                   >
                     <GameCard
@@ -148,9 +146,9 @@ const sectionLandingProps = createSectionLandingProps({
                       year={post.data.year as number | undefined}
                       genre={post.data.genre}
                       platform={post.data.platform}
-                      gameStatus={post.data.gameStatus}
-                      gameRating={post.data.gameRating}
-                      gameCover={post.data.gameCover}
+                      shelfStatus={post.data.shelfStatus as any}
+                      rating={post.data.rating}
+                      cover={post.data.cover}
                       link={post.id ? `/gameshelf/${post.id}/` : undefined}
                       watchNumber={watchNumber}
                     />

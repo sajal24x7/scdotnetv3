@@ -12,14 +12,14 @@ format: paperback
 author:
   - Brian Weiss
 genre: psychology
-bookStatus: read
-startedReading: 2026-01-25T07:38:11.000Z
+shelfStatus: read
+started: 2026-01-25T07:38:11.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115954598916675462'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mda7yqpizq2y'
 cover: many-lives-many-masters.jpg
-bookRating: like
-finishedReading: 2026-01-27T14:40:48+05:30
+rating: like
+finished: 2026-01-27T14:40:48+05:30
 ---
 
 Prerna had suggested I read this book. No that’s not correct. 

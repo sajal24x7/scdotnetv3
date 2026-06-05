@@ -11,10 +11,10 @@ genre: sci-fi
 author: "Adrian Tchaikovsky"
 series: "Children of Time"
 seriesNumber: 2
-bookStatus: "read"
-bookRating: "like"
-startedReading: 2025-10-09T09:39:40+03:00
-finishedReading: 2025-11-06T17:39:40+03:00
+shelfStatus: "read"
+rating: "like"
+started: 2025-10-09T09:39:40+03:00
+finished: 2025-11-06T17:39:40+03:00
 cover: "children-of-ruin.jpg"
 ---
 The second book in the children of time series. Not as good as the first one.

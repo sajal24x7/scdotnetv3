@@ -9,8 +9,8 @@ import {
     type RatingIconSpec
 } from '../../utils/bookRatings';
 
-type BookStatus = 'reading' | 'read' | 'finished' | 'on-hold' | 'to-read';
-type NormalizedStatus = 'reading' | 'finished' | 'on-hold' | 'to-read';
+type ShelfStatus = 'reading' | 'read' | 'on-hold';
+type NormalizedStatus = 'reading' | 'read' | 'on-hold';
 
 interface BookshelfCardProps {
     title: string;
@@ -19,12 +19,12 @@ interface BookshelfCardProps {
     seriesNumber?: number;
     format?: string;
     genre?: string;
-    bookStatus?: BookStatus;
+    shelfStatus?: ShelfStatus;
     readingProgress?: number;
-    startedReading?: Date | string;
-    finishedReading?: Date | string;
+    started?: Date | string;
+    finished?: Date | string;
     pubDate?: Date | string;
-    bookRating?: BookRating;
+    rating?: BookRating;
     cover?: string;
     link?: string;
 }
@@ -85,39 +85,31 @@ const {
     seriesNumber,
     format,
     genre,
-    bookStatus,
+    shelfStatus,
     readingProgress,
-    startedReading,
-    finishedReading,
+    started,
+    finished,
     pubDate,
-    bookRating,
+    rating,
     cover,
     link
 } = props;
 
-const normalizedStatus: NormalizedStatus | undefined = (() => {
-    switch (bookStatus) {
-        case 'read':
-        case 'finished':
-            return 'finished';
-        case 'reading':
-        case 'on-hold':
-        case 'to-read':
-            return bookStatus;
-        default:
-            return undefined;
-    }
-})();
+const normalizedStatus: NormalizedStatus | undefined = shelfStatus ?? undefined;
 
 const statusLabelMap: Record<NormalizedStatus, string> = {
     reading: 'Currently Reading',
-    finished: 'Finished',
+    read: 'Read',
     'on-hold': 'On Hold',
-    'to-read': 'To Read'
 };
 
 const statusLabel = normalizedStatus ? statusLabelMap[normalizedStatus] : null;
-const statusChipClass = normalizedStatus ? `book-card__chip--status-${normalizedStatus}` : '';
+const statusChipClassMap: Record<NormalizedStatus, string> = {
+    reading: 'book-card__chip--status-reading',
+    read: 'book-card__chip--status-finished',
+    'on-hold': 'book-card__chip--status-on-hold',
+};
+const statusChipClass = normalizedStatus ? (statusChipClassMap[normalizedStatus] ?? '') : '';
 
 const normalizedFormat = format ? format.toLowerCase() : null;
 
@@ -135,13 +127,13 @@ const formatLabel = normalizedFormat ? (formatLabelMap[normalizedFormat] ?? norm
 
 const genreLabel = genre ? genre.toUpperCase() : null;
 
-const finishedDate = formatYMD(finishedReading);
-const startedDate = formatYMD(startedReading);
+const finishedDate = formatYMD(finished);
+const startedDate = formatYMD(started);
 const startedLabel = startedDate ?? null;
 const finishedLabel = finishedDate ?? null;
 
 const shouldShowRating = normalizedStatus !== 'reading';
-const ratingDisplay = shouldShowRating && bookRating ? bookRatingDisplay[bookRating] : null;
+const ratingDisplay = shouldShowRating && rating ? bookRatingDisplay[rating] : null;
 const ratingAriaLabel = ratingDisplay
     ? ratingDisplay.label
     : 'Rating: Not set';
@@ -149,7 +141,7 @@ const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [
 const ratingChipLabel = ratingDisplay?.label ?? null;
 
 const safeProgress = (() => {
-    if (normalizedStatus !== 'reading') {
+    if (shelfStatus !== 'reading') {
         return null;
     }
 
@@ -251,7 +243,7 @@ const timelineLabel = (() => {
       {(statusLabel || genreLabel || formatLabel || ratingChipLabel || timelineLabel) && (
         <div class="book-card__meta" data-meta>
           <div class="book-card__meta-row book-card__meta-row--chips">
-            {statusLabel && normalizedStatus && normalizedStatus !== 'finished' && (
+            {statusLabel && normalizedStatus && normalizedStatus !== 'read' && (
               <button
                 type="button"
                 class={`book-card__chip book-card__chip--status book-card__chip--clickable ${statusChipClass}`}
@@ -281,21 +273,21 @@ const timelineLabel = (() => {
                 {formatLabel}
               </button>
             )}
-            {ratingChipLabel && bookRating && (
+            {ratingChipLabel && rating && (
               <button
                 type="button"
                 class={`book-card__chip book-card__chip--rating book-card__chip--clickable ${
-                  bookRating ? `book-card__chip--rating-${bookRating}` : 'book-card__chip--rating-none'
+                  rating ? `book-card__chip--rating-${rating}` : 'book-card__chip--rating-none'
                 }`}
                 data-filter-type="rating"
-                data-filter-value={bookRating}
+                data-filter-value={rating}
                 aria-label={ratingAriaLabel}
               >
                 <span class="book-card__chip-label">{ratingChipLabel}</span>
                 {ratingIconSpecs.length > 0 && (
                   <span
                     class={`book-card__rating-icons ${
-                      bookRating ? `book-card__rating-icons--${bookRating}` : ''
+                      rating ? `book-card__rating-icons--${rating}` : ''
                     }`}
                     aria-hidden="true"
                   >

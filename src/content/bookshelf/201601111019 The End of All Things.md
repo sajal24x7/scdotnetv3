@@ -11,10 +11,10 @@ author:
 series: Old Man's War
 genre: sci-fi
 format: paperback
-bookStatus: read
-startedReading: 2016-01-11T10:19:51.000Z
-finishedReading: 2016-01-11T10:19:51.000Z
-bookRating: like
+shelfStatus: read
+started: 2016-01-11T10:19:51.000Z
+finished: 2016-01-11T10:19:51.000Z
+rating: like
 cover: the-end-of-all-things.jpg
 ---
 Finished Reading

@@ -10,8 +10,8 @@ format: hardcover
 author:
   - Shane Parrish
 genre: science
-bookStatus: reading
-startedReading: 2026-05-30T03:44:52.000Z
+shelfStatus: reading
+started: 2026-05-30T03:44:52.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116661474622848374'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mn25cljmmp2n'
