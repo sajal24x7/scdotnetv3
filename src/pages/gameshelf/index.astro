@@ -133,9 +133,10 @@ const sectionLandingProps = createSectionLandingProps({
                   <div
                     key={post.id}
                     class={`bookshelf-year__book ${gridClasses}`}
-                    data-content-item
+                    data-game-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
                     data-genre={post.data.genre ?? ''}
+                    data-developer={post.data.developer ?? ''}
                     data-status={post.data.shelfStatus ?? ''}
                     data-rating={post.data.rating ?? ''}
                     data-platform={post.data.platform ?? ''}
@@ -146,6 +147,7 @@ const sectionLandingProps = createSectionLandingProps({
                       year={post.data.year as number | undefined}
                       genre={post.data.genre}
                       platform={post.data.platform}
+                      hoursPlayed={post.data.hoursPlayed}
                       shelfStatus={post.data.shelfStatus as any}
                       rating={post.data.rating}
                       cover={post.data.cover}
@@ -183,3 +185,166 @@ const sectionLandingProps = createSectionLandingProps({
   @media (max-width: 47.999rem) { .bookshelf-year__sticky { position: static; } }
   @media (min-width: 64rem) { .bookshelf-year__year { font-size: clamp(2.25rem, 4vw, 3.5rem); } }
 </style>
+
+<script>
+  function initGameshelfFilters() {
+    let selectedGenre = '';
+    let selectedPlatform = '';
+    let selectedRating = '';
+    let selectedStatus = '';
+    let selectedDeveloper = '';
+    let selectedTag = '';
+
+    function hasAnyFilter() {
+      return !!(selectedGenre || selectedPlatform || selectedRating || selectedStatus || selectedDeveloper || selectedTag);
+    }
+
+    function applyFilters() {
+      const allItems = document.querySelectorAll<HTMLElement>('[data-game-item]');
+      const yearCounts: Record<string, number> = {};
+
+      allItems.forEach((item) => {
+        const genre = item.getAttribute('data-genre') || '';
+        const platform = item.getAttribute('data-platform') || '';
+        const rating = item.getAttribute('data-rating') || '';
+        const status = item.getAttribute('data-status') || '';
+        const developer = item.getAttribute('data-developer') || '';
+        const tags = (item.getAttribute('data-tags') || '').split(',').filter(Boolean);
+
+        const isVisible =
+          (!selectedGenre || genre === selectedGenre) &&
+          (!selectedPlatform || platform === selectedPlatform) &&
+          (!selectedRating || rating === selectedRating) &&
+          (!selectedStatus || status === selectedStatus) &&
+          (!selectedDeveloper || developer === selectedDeveloper) &&
+          (!selectedTag || tags.includes(selectedTag));
+
+        if (isVisible) {
+          item.removeAttribute('data-filtered');
+          const yearSection = item.closest<HTMLElement>('[data-year]');
+          if (yearSection) {
+            const year = yearSection.getAttribute('data-year') || '';
+            yearCounts[year] = (yearCounts[year] || 0) + 1;
+          }
+        } else {
+          item.setAttribute('data-filtered', 'hidden');
+        }
+      });
+
+      const yearSections = document.querySelectorAll<HTMLElement>('[data-year]');
+      yearSections.forEach((section) => {
+        const year = section.getAttribute('data-year') || '';
+        let count = 0;
+
+        if (hasAnyFilter()) {
+          count = yearCounts[year] || 0;
+        } else {
+          section.querySelectorAll<HTMLElement>('[data-game-item]').forEach((item) => {
+            if (item.getAttribute('data-status') === 'played') count++;
+          });
+        }
+
+        if (hasAnyFilter() && count === 0) {
+          section.setAttribute('data-filtered', 'hidden');
+        } else {
+          section.removeAttribute('data-filtered');
+          const countEl = section.querySelector(`[data-year-count="${year}"]`);
+          if (countEl) {
+            const label = count === 1 ? 'game' : 'games';
+            countEl.textContent = hasAnyFilter()
+              ? `Showing ${count} ${label}`
+              : `Played ${count} ${label}`;
+          }
+        }
+      });
+
+      updateFilterBadges();
+    }
+
+    function updateFilterBadges() {
+      const resultsDisplay = document.getElementById('section-tag-filter-results');
+      const activeFiltersContainer = document.getElementById('section-tag-filter-active');
+      const filterSummary = document.getElementById('section-tag-filter-summary');
+
+      if (!hasAnyFilter()) {
+        if (resultsDisplay) resultsDisplay.setAttribute('hidden', '');
+        if (activeFiltersContainer) activeFiltersContainer.innerHTML = '';
+        return;
+      }
+
+      if (resultsDisplay) resultsDisplay.removeAttribute('hidden');
+
+      const x = '<span aria-hidden="true">×</span>';
+      const badges: string[] = [];
+
+      if (selectedGenre)    badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="genre">${selectedGenre.toUpperCase()} ${x}</button>`);
+      if (selectedPlatform) badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="platform">${selectedPlatform.toUpperCase()} ${x}</button>`);
+      if (selectedRating)   badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="rating">${selectedRating.toUpperCase()} ${x}</button>`);
+      if (selectedStatus)   badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="status">${selectedStatus.toUpperCase()} ${x}</button>`);
+      if (selectedDeveloper) badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="developer">${selectedDeveloper} ${x}</button>`);
+      if (selectedTag)      badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="tag">${selectedTag.toUpperCase()} ${x}</button>`);
+
+      if (badges.length > 1) badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="all">Clear all</button>`);
+
+      if (activeFiltersContainer) activeFiltersContainer.innerHTML = badges.join('');
+
+      if (filterSummary) {
+        const visibleCount = document.querySelectorAll('[data-game-item]:not([data-filtered])').length;
+        const label = visibleCount === 1 ? 'game' : 'games';
+        filterSummary.textContent = `Showing ${visibleCount} ${label}`;
+      }
+    }
+
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+
+      const removeBadge = target.closest<HTMLElement>('[data-remove-game-filter]');
+      if (removeBadge) {
+        event.preventDefault();
+        const key = removeBadge.getAttribute('data-remove-game-filter');
+        if (key === 'all') {
+          selectedGenre = selectedPlatform = selectedRating = selectedStatus = selectedDeveloper = selectedTag = '';
+          const tagList = document.querySelector('tag-list') as any;
+          if (tagList?.clearActiveTag) tagList.clearActiveTag();
+        } else if (key === 'genre')     { selectedGenre = ''; }
+        else if (key === 'platform')    { selectedPlatform = ''; }
+        else if (key === 'rating')      { selectedRating = ''; }
+        else if (key === 'status')      { selectedStatus = ''; }
+        else if (key === 'developer')   { selectedDeveloper = ''; }
+        else if (key === 'tag') {
+          selectedTag = '';
+          const tagList = document.querySelector('tag-list') as any;
+          if (tagList?.clearActiveTag) tagList.clearActiveTag();
+        }
+        applyFilters();
+        return;
+      }
+
+      const filterTrigger = target.closest<HTMLElement>('[data-filter-type]');
+      if (filterTrigger) {
+        event.preventDefault();
+        const type = filterTrigger.getAttribute('data-filter-type');
+        const value = filterTrigger.getAttribute('data-filter-value') || '';
+
+        if (type === 'genre')       selectedGenre     = selectedGenre === value ? '' : value;
+        else if (type === 'platform')    selectedPlatform  = selectedPlatform === value ? '' : value;
+        else if (type === 'rating')      selectedRating    = selectedRating === value ? '' : value;
+        else if (type === 'shelfStatus') selectedStatus    = selectedStatus === value ? '' : value;
+        else if (type === 'developer')   selectedDeveloper = selectedDeveloper === value ? '' : value;
+
+        applyFilters();
+      }
+    });
+
+    document.addEventListener('tagfilter', (event) => {
+      selectedTag = (event as CustomEvent).detail?.tag || '';
+      applyFilters();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGameshelfFilters);
+  } else {
+    initGameshelfFilters();
+  }
+</script>

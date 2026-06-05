@@ -136,6 +136,7 @@ const sectionLandingProps = createSectionLandingProps({
                     data-content-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
                     data-genre={post.data.genre ?? ''}
+                    data-platform={post.data.platform ?? ''}
                     data-status={entry.tvStatus ?? ''}
                     data-rating={post.data.rating ?? ''}
                   >
@@ -147,6 +148,7 @@ const sectionLandingProps = createSectionLandingProps({
                       creator={post.data.creator}
                       year={post.data.year as number | undefined}
                       genre={post.data.genre}
+                      platform={post.data.platform}
                       shelfStatus={entry.tvStatus as any}
                       rating={post.data.rating}
                       cover={post.data.cover}

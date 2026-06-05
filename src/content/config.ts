@@ -73,6 +73,7 @@ const postsSchema = z.object({
     // Games-specific metadata
     developer: z.string().optional(),
     platform: z.string().optional(),
+    hoursPlayed: z.number().int().optional(),
     // Shared cover image (books, films, TV, games)
     cover: z.string().optional(),
     // POSSE syndication metadata
