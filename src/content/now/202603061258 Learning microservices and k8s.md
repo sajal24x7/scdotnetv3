@@ -2,7 +2,7 @@
 title: "Learning Microservices and K8s"
 slug: "learning-microservices-and-k8s"
 pubDate: 2026-03-06T13:01:56+02:00
-updatedDate: 2026-06-05T13:01:56+02:00
+updatedDate: 2026-06-05T08:04:42
 category: now
 tags:
   - technical
