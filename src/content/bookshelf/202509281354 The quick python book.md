@@ -2,7 +2,7 @@
 title: The Quick Python Book
 slug: the-quick-python-book
 pubDate: 2025-09-28T13:57:42+03:00
-updatedDate: 2025-09-28T13:57:42+03:00
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - python

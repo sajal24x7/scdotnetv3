@@ -2,7 +2,7 @@
 title: The Caves of Steel
 slug: the-caves-of-steel
 pubDate: 2013-02-02T11:44:21.000Z
-updatedDate: 2013-02-02T11:44:21.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

@@ -2,7 +2,7 @@
 title: Shards of Earth
 slug: shards-of-earth
 pubDate: 2025-12-28T16:46:16.000Z
-updatedDate: 2025-12-28T16:46:16.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - scifi

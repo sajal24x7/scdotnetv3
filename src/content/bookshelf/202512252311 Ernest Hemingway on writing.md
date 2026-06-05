@@ -2,7 +2,7 @@
 title: Ernest Hemingway on Writing
 slug: ernest-hemingway-on-writing
 pubDate: 2025-12-26T17:32:36.000Z
-updatedDate: 2025-12-26T17:32:36.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - non-fiction

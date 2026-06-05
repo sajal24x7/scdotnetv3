@@ -2,7 +2,7 @@
 title: Children of Memory
 slug: children-of-memory
 pubDate: 2025-12-01T09:47:15.000Z
-updatedDate: 2025-12-01T09:47:15.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - scifi

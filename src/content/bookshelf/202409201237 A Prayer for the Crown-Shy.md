@@ -2,7 +2,7 @@
 title: A Prayer for the Crown-Shy
 slug: a-prayer-for-the-crown-shy
 pubDate: 2026-01-09T13:11:05.000Z
-updatedDate: 2026-01-09T13:11:05.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - solarpunk

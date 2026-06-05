@@ -2,7 +2,7 @@
 title: The Anthropologists
 slug: the-anthropologists
 pubDate: 2026-06-01T06:40:13.000Z
-updatedDate: 2026-06-05T06:40:13.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - city-life

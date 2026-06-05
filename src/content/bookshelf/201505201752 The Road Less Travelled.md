@@ -2,7 +2,7 @@
 title: The Road Less Travelled
 slug: the-road-less-travelled
 pubDate: 2015-05-20T17:52:27.000Z
-updatedDate: 2015-05-20T17:52:27.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

@@ -2,7 +2,7 @@
 title: Lords of Uncreation
 slug: lords-of-uncreation
 pubDate: 2026-01-12T10:10:42.000Z
-updatedDate: 2026-01-12T10:10:42.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - space-opera

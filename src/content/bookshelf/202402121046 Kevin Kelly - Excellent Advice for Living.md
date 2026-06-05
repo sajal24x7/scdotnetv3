@@ -2,7 +2,7 @@
 title: Excellent Advice for Living
 slug: kevin-kelly-excellent-advice-for-living
 pubDate: 2024-02-12T10:46:00
-updatedDate: 2024-12-24T10:52:55
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

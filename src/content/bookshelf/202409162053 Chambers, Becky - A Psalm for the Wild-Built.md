@@ -2,7 +2,7 @@
 title: A Psalm for the Wild-Built
 slug: a-psalm-for-the-wild-built
 pubDate: 2026-01-09T13:06:55.000Z
-updatedDate: 2026-01-09T13:06:55.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - solarpunk

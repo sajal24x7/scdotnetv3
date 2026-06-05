@@ -2,7 +2,7 @@
 title: How to Win Friends and Influence People
 slug: how-to-win-friends-and-influence-people
 pubDate: 2026-01-03T14:30:06.000Z
-updatedDate: 2026-01-03T14:30:06.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - non-fiction

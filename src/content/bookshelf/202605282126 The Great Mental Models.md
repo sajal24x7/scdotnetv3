@@ -2,7 +2,7 @@
 title: The Great Mental Models
 slug: reading-the-great-mental-models
 pubDate: 2026-05-30T03:44:52.000Z
-updatedDate: 2026-05-30T03:44:52.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - mental-models

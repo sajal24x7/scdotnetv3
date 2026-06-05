@@ -2,7 +2,7 @@
 title: To Be Taught If Fortunate
 slug: to-be-taught-if-fortunate
 pubDate: 2026-01-09T13:18:15.000Z
-updatedDate: 2026-01-09T13:18:15.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - first-contact

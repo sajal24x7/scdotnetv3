@@ -2,7 +2,7 @@
 title: The Last Colony
 slug: the-last-colony
 pubDate: 2016-01-11T10:16:01.000Z
-updatedDate: 2016-01-11T10:16:01.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

@@ -2,7 +2,7 @@
 title: Second Foundation
 slug: second-foundation
 pubDate: 2016-09-13T15:55:33.000Z
-updatedDate: 2016-09-13T15:55:33.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

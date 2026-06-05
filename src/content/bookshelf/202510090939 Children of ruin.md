@@ -2,7 +2,7 @@
 title: "Children of Ruin"
 slug: "children-of-ruin"
 pubDate: 2025-10-12T02:22:40+03:00
-updatedDate: 2025-10-12T02:22:40+03:00
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - sci-fi

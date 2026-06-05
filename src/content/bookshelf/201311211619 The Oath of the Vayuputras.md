@@ -2,7 +2,7 @@
 title: The Oath of the Vayuputras
 slug: the-oath-of-the-vayuputras
 pubDate: 2013-11-21T16:19:35.000Z
-updatedDate: 2013-11-21T16:19:35.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

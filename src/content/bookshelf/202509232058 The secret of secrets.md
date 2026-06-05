@@ -2,7 +2,7 @@
 title: "The Secret of Secrets"
 slug: "the-secret-of-secrets"
 pubDate: 2025-09-23T21:00:18+03:00
-updatedDate: 2025-10-30T10:48:01+02:00
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - thriller

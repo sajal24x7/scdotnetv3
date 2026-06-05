@@ -2,7 +2,7 @@
 title: The Immortals of Meluha
 slug: the-immortals-of-meluha
 pubDate: 2013-10-10T15:15:23.000Z
-updatedDate: 2013-10-10T15:15:23.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

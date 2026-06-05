@@ -2,7 +2,7 @@
 title: What Technology Wants
 slug: what-technology-wants
 pubDate: 2025-12-31T19:37:03.000Z
-updatedDate: 2025-12-31T19:37:03.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - non-fiction

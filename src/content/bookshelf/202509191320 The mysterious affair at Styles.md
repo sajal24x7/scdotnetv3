@@ -2,7 +2,7 @@
 title: "The Mysterious Affair at Styles"
 slug: "the-mysterious-affair-at-styles"
 pubDate: 2025-09-22T23:11:06+03:00
-updatedDate: 2025-09-22T23:11:06+03:00
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - mystery

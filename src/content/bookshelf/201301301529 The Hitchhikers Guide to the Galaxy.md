@@ -2,7 +2,7 @@
 title: The Hitchhiker’s Guide to the Galaxy
 slug: the-hitchhikers-guide-to-the-galaxy
 pubDate: 2013-01-30T15:29:06.000Z
-updatedDate: 2013-01-30T15:29:06.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

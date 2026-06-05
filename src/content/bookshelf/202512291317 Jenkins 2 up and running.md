@@ -2,7 +2,7 @@
 title: Jenkins 2 up and Running
 slug: jenkins-2-up-and-running
 pubDate: 2025-12-29T11:18:12.000Z
-updatedDate: 2025-12-29T11:18:12.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - technical

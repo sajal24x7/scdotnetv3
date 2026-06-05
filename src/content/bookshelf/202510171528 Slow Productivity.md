@@ -2,7 +2,7 @@
 title: Slow Productivity
 slug: slow-productivity
 pubDate: 2025-10-21T08:46:56.000Z
-updatedDate: 2025-10-24T17:46:56.000Z
+updatedDate: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - nonfiction
