@@ -1,15 +1,18 @@
 ---
-title: "Amazon has a new plan for games"
-slug: "amazon-has-a-new-plan-for-games"
-pubDate: 2026-06-05T10:26:11+03:00
-updatedDate: 2026-06-05T10:26:11+03:00
+title: Amazon has a new plan for games
+slug: amazon-has-a-new-plan-for-games
+pubDate: 2026-06-05T07:26:11.000Z
+updatedDate: 2026-06-05T07:26:11.000Z
 category: micro
 tags:
   - amazon
   - gaming
   - tv
   - movies
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116696520863508112'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mnjpdrz54z2x'
+  - 'https://www.threads.com/@sajal24x7/post/DZMn_8ylaLY'
 ---
 [Amazon’s new plan for games: James Bond and AI Snoop Dogg by Jay Peters](https://www.theverge.com/games/943147/amazon-gaming-strategy-james-bond-snoop-dogg-luna)
 
