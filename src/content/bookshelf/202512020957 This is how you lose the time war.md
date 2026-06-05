@@ -9,10 +9,10 @@ tags:
 format: audio
 genre: sci-fi
 author: Amal El-Mohtar
-bookStatus: read
-startedReading: 2025-12-02T07:59:15.000Z
-finishedReading: 2025-12-12T10:45:29+02:00
-bookRating: nope
+shelfStatus: read
+started: 2025-12-02T07:59:15.000Z
+finished: 2025-12-12T10:45:29+02:00
+rating: nope
 syndicationUrls:
   - https://mastodon.social/@sajal24x7/115648920891604284
   - https://bsky.app/profile/sajal24x7.bsky.social/post/3m6yi2ilovo2d

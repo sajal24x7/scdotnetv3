@@ -12,15 +12,15 @@ author:
 series: "The Final Architecture"
 seriesNumber: 2
 genre: sci-fi
-bookStatus: read
-startedReading: 2026-01-05T16:34:11.000Z
+shelfStatus: read
+started: 2026-01-05T16:34:11.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115843933197946613'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbp3dsm7qg2t'
   - 'https://www.threads.com/@sajal24x7/post/DTI6buaDzgn'
 cover: eyes-of-the-void.jpg 
-bookRating: like
-finishedReading: 2026-01-12T12:07:35+02:00
+rating: like
+finished: 2026-01-12T12:07:35+02:00
 ---
 The second book in the final architecture series. 
 

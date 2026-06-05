@@ -9,7 +9,7 @@ import {
     type RatingIconSpec
 } from '../../utils/bookRatings';
 
-type GameStatus = 'playing' | 'played' | 'to-play' | 'on-hold' | 'abandoned';
+type GameShelfStatus = 'playing' | 'played' | 'on-hold';
 
 interface GameCardProps {
     title: string;
@@ -17,8 +17,8 @@ interface GameCardProps {
     year?: number;
     genre?: string;
     platform?: string;
-    gameStatus?: GameStatus;
-    gameRating?: BookRating;
+    shelfStatus?: GameShelfStatus;
+    rating?: BookRating;
     cover?: string;
     link?: string;
     watchNumber?: number; // 1 = first play, 2+ = replay
@@ -31,39 +31,35 @@ const {
     year,
     genre,
     platform,
-    gameStatus,
-    gameRating,
+    shelfStatus,
+    rating,
     cover,
     link,
     watchNumber = 1
 } = props;
 
-const statusLabelMap: Record<GameStatus, string> = {
+const statusLabelMap: Record<GameShelfStatus, string> = {
     playing: 'Playing',
     played: 'Played',
-    'to-play': 'To Play',
     'on-hold': 'On Hold',
-    abandoned: 'Abandoned'
 };
 
-const statusChipClassMap: Record<GameStatus, string> = {
+const statusChipClassMap: Record<GameShelfStatus, string> = {
     playing: 'book-card__chip--status-reading',
     played: 'book-card__chip--status-finished',
-    'to-play': 'book-card__chip--status-to-read',
     'on-hold': 'book-card__chip--status-on-hold',
-    abandoned: 'book-card__chip--status-nope'
 };
 
-const statusLabel = gameStatus ? statusLabelMap[gameStatus] : null;
-const statusChipClass = gameStatus ? statusChipClassMap[gameStatus] : '';
+const statusLabel = shelfStatus ? statusLabelMap[shelfStatus] : null;
+const statusChipClass = shelfStatus ? (statusChipClassMap[shelfStatus] ?? '') : '';
 
 const genreLabel = genre ? genre.toUpperCase() : null;
 const platformLabel = platform ? platform.toUpperCase() : null;
 const isReplay = watchNumber > 1;
 const replayLabel = isReplay ? (watchNumber === 2 ? '2nd play' : watchNumber === 3 ? '3rd play' : `${watchNumber}th play`) : null;
 
-const shouldShowRating = gameStatus !== 'playing';
-const ratingDisplay = shouldShowRating && gameRating ? bookRatingDisplay[gameRating] : null;
+const shouldShowRating = shelfStatus !== 'playing';
+const ratingDisplay = shouldShowRating && rating ? bookRatingDisplay[rating] : null;
 const ratingAriaLabel = ratingDisplay ? ratingDisplay.label : 'Rating: Not set';
 const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
 const ratingChipLabel = ratingDisplay?.label ?? null;
@@ -125,12 +121,12 @@ const coverImage = cover ? getGameCoverImage(cover) : null;
       {(statusLabel || genreLabel || platformLabel || ratingChipLabel || replayLabel) && (
         <div class="book-card__meta" data-meta>
           <div class="book-card__meta-row book-card__meta-row--chips">
-            {statusLabel && gameStatus && gameStatus !== 'played' && (
+            {statusLabel && shelfStatus && shelfStatus !== 'played' && (
               <button
                 type="button"
                 class={`book-card__chip book-card__chip--status book-card__chip--clickable ${statusChipClass}`}
-                data-filter-type="gameStatus"
-                data-filter-value={gameStatus}
+                data-filter-type="shelfStatus"
+                data-filter-value={shelfStatus}
               >
                 {statusLabel}
               </button>
@@ -155,17 +151,17 @@ const coverImage = cover ? getGameCoverImage(cover) : null;
                 {platformLabel}
               </button>
             )}
-            {ratingChipLabel && gameRating && (
+            {ratingChipLabel && rating && (
               <button
                 type="button"
-                class={`book-card__chip book-card__chip--rating book-card__chip--clickable book-card__chip--rating-${gameRating}`}
+                class={`book-card__chip book-card__chip--rating book-card__chip--clickable book-card__chip--rating-${rating}`}
                 data-filter-type="rating"
-                data-filter-value={gameRating}
+                data-filter-value={rating}
                 aria-label={ratingAriaLabel}
               >
                 <span class="book-card__chip-label">{ratingChipLabel}</span>
                 {ratingIconSpecs.length > 0 && (
-                  <span class={`book-card__rating-icons book-card__rating-icons--${gameRating}`} aria-hidden="true">
+                  <span class={`book-card__rating-icons book-card__rating-icons--${rating}`} aria-hidden="true">
                     {ratingIconSpecs.map((iconSpec) => (
                       <span class="book-card__rating-icon">
                         <svg width={iconSpec.size} height={iconSpec.size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

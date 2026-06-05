@@ -73,17 +73,13 @@ const allPosts = await getAllPosts();
 const statusLabelMap: Record<string, string> = {
     watching: 'Watching',
     watched: 'Watched',
-    'to-watch': 'To Watch',
     'on-hold': 'On Hold',
-    abandoned: 'Abandoned'
 };
 
 const statusChipClassMap: Record<string, string> = {
     watching: 'chip--status-watching',
     watched: 'chip--status-watched',
-    'to-watch': 'chip--status-to-watch',
     'on-hold': 'chip--status-on-hold',
-    abandoned: 'chip--status-abandoned'
 };
 
 const showCoverImage = latestSeason.data.cover ? getTVCoverImage(latestSeason.data.cover) : null;
@@ -99,8 +95,8 @@ const showGenreLabel = latestSeason.data.genre ? (latestSeason.data.genre as str
 const showYear = latestSeason.data.year ?? null;
 
 // Extra metadata for limited series header
-const limitedStatus = limitedPost?.data.tvStatus;
-const limitedRating = limitedPost?.data.tvRating;
+const limitedStatus = limitedPost?.data.shelfStatus;
+const limitedRating = limitedPost?.data.rating;
 const limitedPlatform = limitedPost?.data.platform as string | undefined;
 const limitedStarted = formatYMD(limitedPost?.data.started);
 const limitedFinished = formatYMD(limitedPost?.data.finished);
@@ -221,10 +217,10 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
           const seasonNum = season.data.season ?? 1;
           const rawSlug = season.data.slug ?? '';
           const seasonSlug = rawSlug.split('/')[1] || `s${seasonNum}`;
-          const status = season.data.tvStatus;
+          const status = season.data.shelfStatus;
           const statusLabel = status ? statusLabelMap[status] : null;
           const statusChipClass = status ? statusChipClassMap[status] : '';
-          const ratingDisplay = season.data.tvRating ? bookRatingDisplay[season.data.tvRating as BookRating] : null;
+          const ratingDisplay = season.data.rating ? bookRatingDisplay[season.data.rating as BookRating] : null;
           const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
           const watchedDate = formatYMD(season.data.pubDate);
           const coverImage = season.data.cover ? getTVCoverImage(season.data.cover) : null;
@@ -258,7 +254,7 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
                     </span>
                   )}
                   {ratingDisplay && (
-                    <span class={`tv-chip tv-chip--rating tv-chip--rating-${season.data.tvRating}`}>
+                    <span class={`tv-chip tv-chip--rating tv-chip--rating-${season.data.rating}`}>
                       <span class="tv-chip-label">Rated</span>
                       {ratingIconSpecs.length > 0 && (
                         <span class="tv-chip__icons" aria-hidden="true">

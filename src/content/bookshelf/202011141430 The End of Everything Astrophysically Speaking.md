@@ -8,11 +8,11 @@ tags:
   - universe
 format: audio
 author: Katie Mack
-bookStatus: read
-startedReading: 2020-11-14T13:11:03.000Z
+shelfStatus: read
+started: 2020-11-14T13:11:03.000Z
 genre: science
-finishedReading: 2020-11-20T13:11:03.000Z
-bookRating: love
+finished: 2020-11-20T13:11:03.000Z
+rating: love
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115842671407436035'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbojg2tv622t'

@@ -9,10 +9,10 @@ tags:
 genre: self-help
 author: Kevin Kelly
 series: none
-startedReading: 2024-02-12T10:46:00
-finishedReading: 2024-02-12T10:46:00
-bookStatus: read
-bookRating: like
+started: 2024-02-12T10:46:00
+finished: 2024-02-12T10:46:00
+shelfStatus: read
+rating: like
 cover: excellent-advice-for-living.jpg
 ---
 This is an excellent gift for someone. 

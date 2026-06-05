@@ -11,10 +11,10 @@ author:
 series: Robot
 genre: sci-fi
 format: paperback
-bookStatus: read
-startedReading: 2013-01-16T07:01:03.000Z
-finishedReading: 2013-02-02T11:44:21.000Z
-bookRating: like
+shelfStatus: read
+started: 2013-01-16T07:01:03.000Z
+finished: 2013-02-02T11:44:21.000Z
+rating: like
 cover: the-caves-of-steel.jpg
 ---
 Finished Reading

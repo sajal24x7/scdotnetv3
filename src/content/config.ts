@@ -54,29 +54,25 @@ const postsSchema = z.object({
     author: z.union([z.string(), z.array(z.string())]).optional(),
     series: z.string().optional().default('none'),
     seriesNumber: z.number().optional(),
-    startedReading: dateSchema.optional(),
-    finishedReading: dateSchema.optional(),
-    bookStatus: z.enum(['reading', 'read', 'finished', 'on-hold', 'to-read']).optional(),
+    // Unified shelf date fields (books: started/finished, film: finished only, TV/games: started/finished)
+    started: dateSchema.optional(),
+    finished: dateSchema.optional(),
     readingProgress: z.number().min(0).max(100).optional(),
-    bookRating: z.enum(['like', 'love', 'nope']).optional(),
+    // Unified shelf status (books: reading/read/on-hold, films: watching/watched, TV: watching/watched, games: playing/played/on-hold)
+    shelfStatus: z.enum(['reading', 'read', 'on-hold', 'watching', 'watched', 'playing', 'played']).optional(),
+    // Unified rating for all shelf types
+    rating: z.enum(['like', 'love', 'nope']).optional(),
     // Release year (film, TV, games)
     year: z.number().optional(),
     // Film-specific metadata
     director: z.array(z.string()).optional(),
-    watchedDate: dateSchema.optional(),
-    filmStatus: z.enum(['watching', 'watched', 'to-watch']).optional(),
-    filmRating: z.enum(['like', 'love', 'nope']).optional(),
     // TV-specific metadata
     creator: z.array(z.string()).optional(),
     showTitle: z.string().optional(),
     season: z.number().optional(),
-    tvStatus: z.enum(['watching', 'watched', 'to-watch', 'on-hold', 'abandoned']).optional(),
-    tvRating: z.enum(['like', 'love', 'nope']).optional(),
     // Games-specific metadata
     developer: z.string().optional(),
     platform: z.string().optional(),
-    gameStatus: z.enum(['playing', 'played', 'to-play', 'on-hold', 'abandoned']).optional(),
-    gameRating: z.enum(['like', 'love', 'nope']).optional(),
     // Shared cover image (books, films, TV, games)
     cover: z.string().optional(),
     // POSSE syndication metadata

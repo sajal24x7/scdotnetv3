@@ -10,10 +10,10 @@ author:
   - Morgan Housel
 genre: finance
 format: paperback
-bookStatus: read
-startedReading: 2023-11-29T07:17:18.000Z
-finishedReading: 2023-11-29T07:17:18.000Z
-bookRating: love
+shelfStatus: read
+started: 2023-11-29T07:17:18.000Z
+finished: 2023-11-29T07:17:18.000Z
+rating: love
 cover: the-psychology-of-money.jpg
 ---
 Finished Reading

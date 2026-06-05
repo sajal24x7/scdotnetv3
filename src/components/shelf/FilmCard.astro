@@ -10,16 +10,16 @@ import {
 } from '../../utils/bookRatings';
 import { formatYMD } from '../../utils/shelfUtils';
 
-type FilmStatus = 'watching' | 'watched' | 'to-watch';
+type FilmShelfStatus = 'watching' | 'watched';
 
 interface FilmCardProps {
     title: string;
     director?: string[];
     year?: number;
     genre?: string;
-    filmStatus?: FilmStatus;
-    filmRating?: BookRating;
-    watchedDate?: Date | string;
+    shelfStatus?: FilmShelfStatus;
+    rating?: BookRating;
+    finished?: Date | string;
     cover?: string;
     link?: string;
     watchNumber?: number; // 1 = first watch, 2+ = rewatch
@@ -31,30 +31,29 @@ const {
     director,
     year,
     genre,
-    filmStatus,
-    filmRating,
-    watchedDate,
+    shelfStatus,
+    rating,
+    finished,
     cover,
     link,
     watchNumber = 1
 } = props;
 
-const statusLabelMap: Record<FilmStatus, string> = {
+const statusLabelMap: Record<FilmShelfStatus, string> = {
     watching: 'Watching',
     watched: 'Watched',
-    'to-watch': 'To Watch'
 };
 
-const statusLabel = filmStatus ? statusLabelMap[filmStatus] : null;
-const statusChipClass = filmStatus ? `book-card__chip--status-${filmStatus === 'watched' ? 'finished' : filmStatus === 'watching' ? 'reading' : 'to-read'}` : '';
+const statusLabel = shelfStatus ? statusLabelMap[shelfStatus] : null;
+const statusChipClass = shelfStatus === 'watching' ? 'book-card__chip--status-reading' : '';
 
 const genreLabel = genre ? genre.toUpperCase() : null;
-const watchedLabel = formatYMD(watchedDate);
+const watchedLabel = formatYMD(finished);
 const isRewatch = watchNumber > 1;
 const rewatchLabel = isRewatch ? (watchNumber === 2 ? '2nd watch' : watchNumber === 3 ? '3rd watch' : `${watchNumber}th watch`) : null;
 
-const shouldShowRating = filmStatus !== 'watching';
-const ratingDisplay = shouldShowRating && filmRating ? bookRatingDisplay[filmRating] : null;
+const shouldShowRating = shelfStatus !== 'watching';
+const ratingDisplay = shouldShowRating && rating ? bookRatingDisplay[rating] : null;
 const ratingAriaLabel = ratingDisplay ? ratingDisplay.label : 'Rating: Not set';
 const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
 const ratingChipLabel = ratingDisplay?.label ?? null;
@@ -125,12 +124,12 @@ const timelineLabel = watchedLabel ? `Watched ${watchedLabel}` : null;
       {(statusLabel || genreLabel || ratingChipLabel || timelineLabel || rewatchLabel) && (
         <div class="book-card__meta" data-meta>
           <div class="book-card__meta-row book-card__meta-row--chips">
-            {statusLabel && filmStatus && filmStatus !== 'watched' && (
+            {statusLabel && shelfStatus && shelfStatus !== 'watched' && (
               <button
                 type="button"
                 class={`book-card__chip book-card__chip--status book-card__chip--clickable ${statusChipClass}`}
-                data-filter-type="filmStatus"
-                data-filter-value={filmStatus}
+                data-filter-type="shelfStatus"
+                data-filter-value={shelfStatus}
               >
                 {statusLabel}
               </button>
@@ -145,17 +144,17 @@ const timelineLabel = watchedLabel ? `Watched ${watchedLabel}` : null;
                 {genreLabel}
               </button>
             )}
-            {ratingChipLabel && filmRating && (
+            {ratingChipLabel && rating && (
               <button
                 type="button"
-                class={`book-card__chip book-card__chip--rating book-card__chip--clickable book-card__chip--rating-${filmRating}`}
+                class={`book-card__chip book-card__chip--rating book-card__chip--clickable book-card__chip--rating-${rating}`}
                 data-filter-type="rating"
-                data-filter-value={filmRating}
+                data-filter-value={rating}
                 aria-label={ratingAriaLabel}
               >
                 <span class="book-card__chip-label">{ratingChipLabel}</span>
                 {ratingIconSpecs.length > 0 && (
-                  <span class={`book-card__rating-icons book-card__rating-icons--${filmRating}`} aria-hidden="true">
+                  <span class={`book-card__rating-icons book-card__rating-icons--${rating}`} aria-hidden="true">
                     {ratingIconSpecs.map((iconSpec) => (
                       <span class="book-card__rating-icon">
                         <svg width={iconSpec.size} height={iconSpec.size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

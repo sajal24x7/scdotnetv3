@@ -9,10 +9,10 @@ tags:
 format: audio
 genre: psychology
 author: Morgan Housel
-bookStatus: read
-bookRating: like
-finishedReading: 2025-12-26T22:06:42+02:00
-startedReading: 2025-12-19T15:11:57.000Z
+shelfStatus: read
+rating: like
+finished: 2025-12-26T22:06:42+02:00
+started: 2025-12-19T15:11:57.000Z
 syndicationUrls:
   - https://mastodon.social/@sajal24x7/115746883736046622
   - https://bsky.app/profile/sajal24x7.bsky.social/post/3mady6suxkm2w

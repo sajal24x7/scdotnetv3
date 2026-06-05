@@ -13,10 +13,10 @@ series: 'Wayfarers'
 seriesNumber: 4
 cover: 'the-galaxy-and-the-ground-within.jpg'
 author: "Becky Chambers"
-bookStatus: "read"
-bookRating: like
-startedReading: "2025-01-10T20:15:00+03:00"
-finishedReading: "2025-01-10T20:15:00+03:00"
+shelfStatus: "read"
+rating: like
+started: "2025-01-10T20:15:00+03:00"
+finished: "2025-01-10T20:15:00+03:00"
 ---
 This is the final book in the wayfarer series, after [Record of a spaceborn few](__GHOST_URL__/becky-chambers-record-of-a-spaceborn-few/). Becky continues to explore new characters in this universe. The common thread this time is Captain Pei, the Aeuluon Ashby loves from [The Long Way to a Small, Angry Planet](https://en.wikipedia.org/wiki/The_Long_Way_to_a_Small,_Angry_Planet). Pei is joined by Oulu, a Laru mother and their child Tupo, Roveg an exiled artist who wants to go back to his family, and Speaker, an Akarak, about whom no one knows much, and hence fears a little.
 

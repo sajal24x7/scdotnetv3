@@ -11,8 +11,8 @@ format: ebook
 author:
   - Sam Newman
 genre: technical
-bookStatus: reading
-startedReading: 2026-03-06T10:20:43.000Z
+shelfStatus: reading
+started: 2026-03-06T10:20:43.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116181730338362692'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgf3q5xqyh27'

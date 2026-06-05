@@ -12,10 +12,10 @@ author:
 series: 'Monk and Robot'
 seriesNumber: 1
 genre: sci-fi
-bookStatus: read
-startedReading: 2024-09-16T13:06:55.000Z
-bookRating: like
-finishedReading: 2024-09-18T13:06:55.000Z
+shelfStatus: read
+started: 2024-09-16T13:06:55.000Z
+rating: like
+finished: 2024-09-18T13:06:55.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865314715022706'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyl6yf3rf2s'

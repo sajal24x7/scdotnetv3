@@ -11,10 +11,10 @@ genre: sci-fi
 author: "Adrian Tchaikovsky"
 series: "Children of Time"
 seriesNumber: 1
-bookStatus: read
-bookRating: love
-startedReading: 2025-09-02T22:45:58+03:00
-finishedReading: 2025-09-19T16:45:58+03:00
+shelfStatus: read
+rating: love
+started: 2025-09-02T22:45:58+03:00
+finished: 2025-09-19T16:45:58+03:00
 cover: children-of-time.jpg
 ---
 

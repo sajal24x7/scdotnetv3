@@ -9,11 +9,11 @@ tags:
 format: audio
 genre: sci-fi
 author: Stephen King
-bookStatus: read
-startedReading: 2025-10-07T17:01:53+03:00
+shelfStatus: read
+started: 2025-10-07T17:01:53+03:00
 cover: the-life-of-chuck.jpg
-finishedReading: 2025-10-08T11:01:53+03:00
-bookRating: like
+finished: 2025-10-08T11:01:53+03:00
+rating: like
 ---
 The life of chuck is a beautiful little book - just two and a half hours of audio. 
 

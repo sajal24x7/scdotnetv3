@@ -10,10 +10,10 @@ author:
   - Max Brooks
 genre: humor
 format: paperback
-bookStatus: read
-startedReading: 2013-11-21T16:21:47.000Z
-finishedReading: 2013-11-21T16:21:47.000Z
-bookRating: love
+shelfStatus: read
+started: 2013-11-21T16:21:47.000Z
+finished: 2013-11-21T16:21:47.000Z
+rating: love
 cover: the-zombie-survival-guide-complete-protection-from-the-living-dead.jpg
 ---
 Finished Reading

@@ -18,15 +18,30 @@ export interface Post {
     genre?: string;
     syndicationUrls?: string[];
     layout?: {
-      span?: 3 | 6 | 12;
+      span?: 3 | 4 | 6 | 8 | 12;
     };
-    author?: string;
+    // Unified shelf fields
+    shelfStatus?: string;
+    rating?: BookRating;
+    started?: Date | string;
+    finished?: Date | string;
+    readingProgress?: number;
+    // Book-specific
+    author?: string | string[];
     series?: string;
-    bookStatus?: string;
+    seriesNumber?: number;
     cover?: string;
-    startedReading?: Date | string;
-    finishedReading?: Date | string;
-    bookRating?: BookRating;
+    // Film-specific
+    director?: string[];
+    // TV-specific
+    creator?: string[];
+    showTitle?: string;
+    season?: number;
+    // Game-specific
+    developer?: string;
+    platform?: string;
+    // Shared shelf
+    year?: number;
   };
   id: string;
   body: string;
@@ -87,15 +102,30 @@ export function transformPost(post: Post) {
             editionDisplay: post.data.editionDisplay,
             syndicationUrls: post.data.syndicationUrls,
             layout: post.data.layout,
-            author: post.data.author,
-            series: post.data.series,
-            bookStatus: post.data.bookStatus,
-            cover: post.data.cover,
-            startedReading: post.data.startedReading,
-            finishedReading: post.data.finishedReading,
-            bookRating: post.data.bookRating,
             format: post.data.format,
             genre: post.data.genre,
+            // Unified shelf fields
+            shelfStatus: post.data.shelfStatus,
+            rating: post.data.rating,
+            started: post.data.started,
+            finished: post.data.finished,
+            readingProgress: post.data.readingProgress,
+            // Book-specific
+            author: post.data.author,
+            series: post.data.series,
+            seriesNumber: post.data.seriesNumber,
+            cover: post.data.cover,
+            // Film-specific
+            director: post.data.director,
+            // TV-specific
+            creator: post.data.creator,
+            showTitle: post.data.showTitle,
+            season: post.data.season,
+            // Game-specific
+            developer: post.data.developer,
+            platform: post.data.platform,
+            // Shared
+            year: post.data.year,
             link: `/${post.data.category}/${post.id}/`
         },
         id: post.id,

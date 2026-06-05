@@ -9,11 +9,11 @@ tags:
 format: ebook
 genre: sci-fi
 author: John Scalzi
-bookStatus: read
-bookRating: like
+shelfStatus: read
+rating: like
 cover: 'when-the-moon-hits-your-eye.jpg'
-startedReading: 2025-11-07T07:05:11.000Z
-finishedReading: 2025-11-20T14:05:11.000Z
+started: 2025-11-07T07:05:11.000Z
+finished: 2025-11-20T14:05:11.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115536188959662795'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5gfzw7m2a2f'

@@ -10,10 +10,10 @@ tags:
 format: audio
 genre: craft
 author: Ernest Hemingway
-bookStatus: read
-startedReading: 2025-12-26T17:32:36.000Z
-bookRating: like
-finishedReading: 2025-12-29T11:24:09+02:00
+shelfStatus: read
+started: 2025-12-26T17:32:36.000Z
+rating: like
+finished: 2025-12-29T11:24:09+02:00
 syndicationUrls:
   - https://mastodon.social/@sajal24x7/115787070068113269
   - https://bsky.app/profile/sajal24x7.bsky.social/post/3mavtblj6sj2b

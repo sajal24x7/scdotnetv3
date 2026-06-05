@@ -12,15 +12,15 @@ author:
 series: 'The Final Architecture'
 seriesNumber: 3
 genre: sci-fi
-bookStatus: read
-startedReading: 2026-01-12T10:10:42.000Z
+shelfStatus: read
+started: 2026-01-12T10:10:42.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115881589817343006'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mc7si2g3fr2a'
   - 'https://www.threads.com/@sajal24x7/post/DTaCYlqjjzU'
 cover: lords-of-uncreation.jpg 
-bookRating: love
-finishedReading: 2026-01-17T16:55:30+02:00
+rating: love
+finished: 2026-01-17T16:55:30+02:00
 ---
 There is a bitter-sweet feeling I have now as I have finished this book. 
 

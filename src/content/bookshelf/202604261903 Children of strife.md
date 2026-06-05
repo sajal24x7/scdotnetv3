@@ -12,15 +12,15 @@ author:
 series: 'Children of Time'
 seriesNumber: 4
 genre: sci-fi
-bookStatus: read
-startedReading: 2026-04-26T16:04:26.000Z
+shelfStatus: read
+started: 2026-04-26T16:04:26.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116474932193632534'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mkhcew5xhj2a'
   - 'https://www.threads.com/@sajal24x7/post/DXn267JDcKK'
 cover: children-of-strife.jpg
-bookRating: like
-finishedReading: 2026-05-30T16:19:36+03:00
+rating: like
+finished: 2026-05-30T16:19:36+03:00
 ---
 ## Review
 

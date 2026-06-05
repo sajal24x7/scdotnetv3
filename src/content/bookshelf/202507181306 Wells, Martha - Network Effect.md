@@ -11,10 +11,10 @@ genre: sci-fi
 uthor: Martha Wells
 series: "The Murderbot Diaries"
 seriesNumber: 5
-bookStatus: read
-bookRating: like
-startedReading: 2025-07-18T19:56:47.000Z
-finishedReading: '2025-07-29T21:00:00+03:00'
+shelfStatus: read
+rating: like
+started: 2025-07-18T19:56:47.000Z
+finished: '2025-07-29T21:00:00+03:00'
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115815972885370248'
   - 'https://www.threads.com/@sajal24x7/post/DS8SiEJEfxq'

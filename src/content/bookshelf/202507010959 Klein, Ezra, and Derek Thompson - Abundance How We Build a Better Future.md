@@ -15,10 +15,10 @@ author:
   - Ezra Klein
   - Derek Thompson
 series: none
-bookStatus: read
-bookRating: like
-startedReading: 2025-07-01T09:59:00+03:00
-finishedReading: 2025-07-01T09:59:00+03:00
+shelfStatus: read
+rating: like
+started: 2025-07-01T09:59:00+03:00
+finished: 2025-07-01T09:59:00+03:00
 ---
 This book did not turn out to be how I had imagined it would be. Maybe by looking at the title, maybe by looking at the cover, I was hoping for it to be a description of a future world achieved by technology, a future of abundance, of steps humanity might take to get there. Perhaps, I was hoping for a non-fiction version of  [Kim Stanley Robinson's -The Ministry For The Future](https://g.co/kgs/xeL8P6S).
 

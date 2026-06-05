@@ -62,11 +62,11 @@ const bookCover = isBookshelf && 'cover' in entryData ? entryData.cover : undefi
 const author = isBookshelf && 'author' in entryData ? entryData.author : undefined;
 const format = isBookshelf && 'format' in entryData ? entryData.format : undefined;
 const genre = isBookshelf && 'genre' in entryData ? entryData.genre : undefined;
-const bookStatus = isBookshelf && 'bookStatus' in entryData ? entryData.bookStatus : undefined;
-const bookRating = isBookshelf && 'bookRating' in entryData ? entryData.bookRating : undefined;
+const shelfStatus = isBookshelf && 'shelfStatus' in entryData ? entryData.shelfStatus : undefined;
+const bookRating = isBookshelf && 'rating' in entryData ? entryData.rating : undefined;
 const series = isBookshelf && 'series' in entryData ? entryData.series : undefined;
-const startedReading = isBookshelf && 'startedReading' in entryData ? entryData.startedReading : undefined;
-const finishedReading = isBookshelf && 'finishedReading' in entryData ? entryData.finishedReading : undefined;
+const started = isBookshelf && 'started' in entryData ? entryData.started : undefined;
+const finished = isBookshelf && 'finished' in entryData ? entryData.finished : undefined;
 const readingProgress = isBookshelf && 'readingProgress' in entryData ? entryData.readingProgress : undefined;
 
 // Helper functions for bookshelf display
@@ -107,8 +107,8 @@ const formatLabel = normalizedFormat ? (formatLabelMap[normalizedFormat] ?? norm
 
 const genreLabel = genre ? genre.toUpperCase() : null;
 
-const finishedDate = formatYMD(finishedReading);
-const startedDate = formatYMD(startedReading);
+const finishedDate = formatYMD(finished);
+const startedDate = formatYMD(started);
 const timelineValue = (() => {
     if (startedDate && finishedDate) return `${startedDate} – ${finishedDate}`;
     if (startedDate) return `${startedDate} –`;
@@ -129,8 +129,8 @@ const formattedAuthor = formatAuthors(author);
 const isFilmshelf = category === 'filmshelf';
 const filmCoverFilename = isFilmshelf ? (entryData.cover ?? undefined) : undefined;
 const director = isFilmshelf ? (entryData.director ?? undefined) : undefined;
-const filmRating = isFilmshelf ? (entryData.filmRating ?? undefined) : undefined;
-const filmWatchedDate = isFilmshelf ? (entryData.watchedDate ?? undefined) : undefined;
+const filmRating = isFilmshelf ? (entryData.rating ?? undefined) : undefined;
+const filmWatchedDate = isFilmshelf ? (entryData.finished ?? undefined) : undefined;
 const filmYear = isFilmshelf ? (entryData.year ?? null) : null;
 const filmGenre = isFilmshelf ? (entryData.genre ?? null) : null;
 
@@ -139,7 +139,7 @@ const isGameshelf = category === 'gameshelf';
 const gameCoverFilename = isGameshelf ? (entryData.cover ?? undefined) : undefined;
 const developer = isGameshelf ? (entryData.developer ?? null) : null;
 const platform = isGameshelf ? (entryData.platform ?? null) : null;
-const gameRating = isGameshelf ? (entryData.gameRating ?? undefined) : undefined;
+const gameRating = isGameshelf ? (entryData.rating ?? undefined) : undefined;
 const gameYear = isGameshelf ? (entryData.year ?? null) : null;
 const gameGenre = isGameshelf ? (entryData.genre ?? null) : null;
 
@@ -147,7 +147,7 @@ const gameGenre = isGameshelf ? (entryData.genre ?? null) : null;
 const isTVshelf = category === 'tvshelf';
 const tvCoverFilename = isTVshelf ? (entryData.cover ?? undefined) : undefined;
 const tvCreator = isTVshelf ? (entryData.creator ?? undefined) : undefined;
-const tvRating = isTVshelf ? (entryData.tvRating ?? undefined) : undefined;
+const tvRating = isTVshelf ? (entryData.rating ?? undefined) : undefined;
 const tvYear = isTVshelf ? (entryData.year ?? null) : null;
 const tvGenre = isTVshelf ? (entryData.genre ?? null) : null;
 const tvSeason = isTVshelf ? (entryData.season ?? null) : null;

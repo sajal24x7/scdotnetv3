@@ -11,10 +11,10 @@ genre: sci-fi
 author: Adrian Tchaikovsky
 series: "Children of Time"
 seriesNumber: 3
-bookStatus: read
-startedReading: 2025-11-30T16:47:15.000Z
-finishedReading: 2025-12-08T23:08:50+02:00
-bookRating: love
+shelfStatus: read
+started: 2025-11-30T16:47:15.000Z
+finished: 2025-12-08T23:08:50+02:00
+rating: love
 syndicationUrls:
   - https://mastodon.social/@sajal24x7/115643739160102203
   - https://bsky.app/profile/sajal24x7.bsky.social/post/3m6w6g3eqws2i

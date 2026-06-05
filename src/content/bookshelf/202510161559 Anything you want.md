@@ -9,11 +9,11 @@ tags:
 format: ebook
 genre: business
 author: Derek Sivers
-bookStatus: read
+shelfStatus: read
 cover: anything-you-want.jpg
-startedReading: 2025-10-16T14:10:31.000Z
-finishedReading: 2025-10-21T14:10:31.000Z
-bookRating: like
+started: 2025-10-16T14:10:31.000Z
+finished: 2025-10-21T14:10:31.000Z
+rating: like
 syndicationUrls:
   - https://mastodon.social/@sajal24x7/115413744776639298
   - https://bsky.app/profile/sajal24x7.bsky.social/post/3m3pzyqsb2l2v

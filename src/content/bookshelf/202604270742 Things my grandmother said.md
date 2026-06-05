@@ -11,11 +11,11 @@ format: audiobook
 author:
   - Amit Majmudar
 genre: poetry
-bookStatus: read
-startedReading: 2026-04-27T04:46:16.000Z
+shelfStatus: read
+started: 2026-04-27T04:46:16.000Z
 cover: things-my-grandmother-said.JPG
-bookRating: like
-finishedReading: 2026-04-29T17:06:23.000Z
+rating: like
+finished: 2026-04-29T17:06:23.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116506302306722686'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mkva6fftay2a'

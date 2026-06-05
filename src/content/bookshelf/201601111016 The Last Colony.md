@@ -11,10 +11,10 @@ author:
 series: Old Man's War
 genre: sci-fi
 format: paperback
-bookStatus: read
-startedReading: 2016-01-11T10:14:54.000Z
-finishedReading: 2016-01-11T10:16:01.000Z
-bookRating: like
+shelfStatus: read
+started: 2016-01-11T10:14:54.000Z
+finished: 2016-01-11T10:16:01.000Z
+rating: like
 cover: the-last-colony.jpg
 ---
 Finished Reading

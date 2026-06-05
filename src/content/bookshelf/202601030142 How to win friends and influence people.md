@@ -9,15 +9,15 @@ tags:
 format: ebook
 genre: self-help
 author: Dale Carnegie
-bookStatus: read
-startedReading: 2026-01-03T14:30:06.000Z
+shelfStatus: read
+started: 2026-01-03T14:30:06.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115831650310472291'
   - 'https://www.threads.com/@sajal24x7/post/DTD39NbD_Ta'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zsnnzk2o'
 cover: how-to-win-friends-and-influence-people.jpg
-bookRating: like
-finishedReading: 2026-01-15T23:59:50+02:00
+rating: like
+finished: 2026-01-15T23:59:50+02:00
 ---
 The book became boring by the time I was done with the first two sections. It felt too preachy and a bit dated. 
 

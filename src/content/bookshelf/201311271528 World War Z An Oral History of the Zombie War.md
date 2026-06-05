@@ -10,10 +10,10 @@ author:
   - Max Brooks
 genre: sci-fi
 format: paperback
-bookStatus: read
-startedReading: 2013-11-27T15:28:54.000Z
-finishedReading: 2013-11-27T15:28:54.000Z
-bookRating: like
+shelfStatus: read
+started: 2013-11-27T15:28:54.000Z
+finished: 2013-11-27T15:28:54.000Z
+rating: like
 cover: world-war-z-an-oral-history-of-the-zombie-war.jpg
 ---
 Finished Reading

@@ -10,10 +10,10 @@ tags:
   - martha-wells
 author: "Martha Wells"
 series: "The Murderbot Diaries"
-startedReading: 2025-07-08T09:59:00+03:00
-finishedReading: 2025-07-11T18:26:14+03:00
-bookStatus: "read"
-bookRating: like
+started: 2025-07-08T09:59:00+03:00
+finished: 2025-07-11T18:26:14+03:00
+shelfStatus: "read"
+rating: like
 format: audio
 genre: sci-fi
 cover: 'artificial-condition.jpg'

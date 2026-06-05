@@ -11,10 +11,10 @@ author:
 series: Robot
 genre: sci-fi
 format: paperback
-bookStatus: read
-startedReading: 2013-01-16T07:01:10.000Z
-finishedReading: 2013-04-25T15:37:34.000Z
-bookRating: love
+shelfStatus: read
+started: 2013-01-16T07:01:10.000Z
+finished: 2013-04-25T15:37:34.000Z
+rating: love
 cover: the-robots-of-dawn.jpg
 ---
 Finished Reading

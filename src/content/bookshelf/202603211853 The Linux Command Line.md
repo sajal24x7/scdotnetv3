@@ -10,8 +10,8 @@ format: ebook
 author:
   - William E Shotts
 genre: technical
-bookStatus: reading
-startedReading: 2026-03-22T10:56:39.000Z
+shelfStatus: reading
+started: 2026-03-22T10:56:39.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116272467890985831'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mhnf6svmqo2d'

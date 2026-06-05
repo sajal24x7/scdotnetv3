@@ -10,10 +10,10 @@ author:
   - Dan Brown
 genre: thriller
 format: paperback
-bookStatus: read
-startedReading: 2013-01-08T15:15:29.000Z
-finishedReading: 2013-01-08T15:15:35.000Z
-bookRating: like
+shelfStatus: read
+started: 2013-01-08T15:15:29.000Z
+finished: 2013-01-08T15:15:35.000Z
+rating: like
 cover: digital-fortress.webp
 ---
 Finished Reading

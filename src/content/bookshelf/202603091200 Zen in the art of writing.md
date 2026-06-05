@@ -11,15 +11,15 @@ format: audiobook
 author:
   - Ray Bradbury
 genre: craft
-bookStatus: read
-startedReading: 2026-03-09T10:13:18.000Z
+shelfStatus: read
+started: 2026-03-09T10:13:18.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116198687868461871'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgmmpk3uwc2c'
   - 'https://www.threads.com/@sajal24x7/post/DVqPJrYFBvJ'
 cover: zen-in-the-art-of-writing.jpg
-bookRating: love
-finishedReading: 2026-03-10T19:08:56+02:00
+rating: love
+finished: 2026-03-10T19:08:56+02:00
 ---
 
 ## Review

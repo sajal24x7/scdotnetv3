@@ -11,10 +11,10 @@ author:
 series: Robot
 genre: sci-fi
 format: paperback
-bookStatus: read
-startedReading: 2013-01-16T07:01:11.000Z
-finishedReading: 2013-05-01T17:05:25.000Z
-bookRating: love
+shelfStatus: read
+started: 2013-01-16T07:01:11.000Z
+finished: 2013-05-01T17:05:25.000Z
+rating: love
 cover: robots-and-empire.jpg
 ---
 The best novel in the robot series, if not better then at least equivalent to I, Robot(though calling I, Robot a novel might not be correct)
