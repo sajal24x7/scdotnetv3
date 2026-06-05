@@ -1,10 +1,17 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2026-06-01T08:41:11.637Z
+// Generated on: 2026-06-05T11:20:49.306Z
+// Found 2 image(s): apex.jpg, ladies-first.jpg
 
-export const filmCoverImages: Record<string, any> = {};
+import apex_jpg from '../images/filmshelf/apex.jpg';
+import ladies_first_jpg from '../images/filmshelf/ladies-first.jpg';
+
+export const filmCoverImages: Record<string, any> = {
+  'apex.jpg': apex_jpg,
+  'ladies-first.jpg': ladies_first_jpg
+};
 
 export function getFilmCoverImage(filename: string) {
   return filmCoverImages[filename];
 }
 
-export type FilmCoverFilename = string;
+export type FilmCoverFilename = 'apex.jpg' | 'ladies-first.jpg';
