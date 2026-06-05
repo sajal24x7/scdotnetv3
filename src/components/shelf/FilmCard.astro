@@ -17,6 +17,7 @@ interface FilmCardProps {
     director?: string[];
     year?: number;
     genre?: string;
+    platform?: string;
     shelfStatus?: FilmShelfStatus;
     rating?: BookRating;
     finished?: Date | string;
@@ -31,6 +32,7 @@ const {
     director,
     year,
     genre,
+    platform,
     shelfStatus,
     rating,
     finished,
@@ -48,6 +50,7 @@ const statusLabel = shelfStatus ? statusLabelMap[shelfStatus] : null;
 const statusChipClass = shelfStatus === 'watching' ? 'book-card__chip--status-reading' : '';
 
 const genreLabel = genre ? genre.toUpperCase() : null;
+const platformLabel = platform ? platform.toUpperCase() : null;
 const watchedLabel = formatYMD(finished);
 const isRewatch = watchNumber > 1;
 const rewatchLabel = isRewatch ? (watchNumber === 2 ? '2nd watch' : watchNumber === 3 ? '3rd watch' : `${watchNumber}th watch`) : null;
@@ -121,7 +124,7 @@ const timelineLabel = watchedLabel ? `Watched ${watchedLabel}` : null;
         )}
       </header>
 
-      {(statusLabel || genreLabel || ratingChipLabel || timelineLabel || rewatchLabel) && (
+      {(statusLabel || genreLabel || platformLabel || ratingChipLabel || timelineLabel || rewatchLabel) && (
         <div class="book-card__meta" data-meta>
           <div class="book-card__meta-row book-card__meta-row--chips">
             {statusLabel && shelfStatus && shelfStatus !== 'watched' && (
@@ -142,6 +145,16 @@ const timelineLabel = watchedLabel ? `Watched ${watchedLabel}` : null;
                 data-filter-value={genre}
               >
                 {genreLabel}
+              </button>
+            )}
+            {platformLabel && platform && (
+              <button
+                type="button"
+                class="book-card__chip book-card__chip--platform book-card__chip--clickable"
+                data-filter-type="platform"
+                data-filter-value={platform}
+              >
+                {platformLabel}
               </button>
             )}
             {ratingChipLabel && rating && (
@@ -234,6 +247,8 @@ const timelineLabel = watchedLabel ? `Watched ${watchedLabel}` : null;
   :global(.dark) .book-card__chip--status-to-read { background: rgba(29,78,216,0.3); color: #bfdbfe; }
   .book-card__chip--genre { background: #dbeafe; color: #1e40af; }
   :global(.dark) .book-card__chip--genre { background: rgba(30,64,175,0.3); color: #bfdbfe; }
+  .book-card__chip--platform { background: #e5e7eb; color: #111827; }
+  :global(.dark) .book-card__chip--platform { background: #374151; color: #e5e7eb; }
   .book-card__chip--rating-like { background: #dcfce7; color: #166534; }
   :global(.dark) .book-card__chip--rating-like { background: rgba(22,101,52,0.35); color: #bbf7d0; }
   .book-card__chip--rating-love { background: #fce7f3; color: #be185d; }
