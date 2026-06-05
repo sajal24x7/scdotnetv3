@@ -13,9 +13,16 @@ if (!filesPath) {
   process.exit(1);
 }
 
-// Parse commit timestamp and format as YYYY-MM-DDTHH:MM:SS (UTC, no Z — matches existing post format)
+// Parse commit timestamp and format as YYYY-MM-DDTHH:MM:SS in Helsinki time
 const date = new Date(timestamp);
-const formattedDate = date.toISOString().slice(0, 19);
+const parts = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Europe/Helsinki',
+  year: 'numeric', month: '2-digit', day: '2-digit',
+  hour: '2-digit', minute: '2-digit', second: '2-digit',
+  hour12: false,
+}).formatToParts(date);
+const get = (type) => parts.find(p => p.type === type).value;
+const formattedDate = `${get('year')}-${get('month')}-${get('day')}T${get('hour')}:${get('minute')}:${get('second')}`;
 
 console.log(`Updating updatedDate to: ${formattedDate}`);
 
