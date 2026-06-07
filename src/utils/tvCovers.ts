@@ -1,5 +1,5 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2026-06-02T06:52:47.203Z
+// Generated on: 2026-06-07T07:09:54.884Z
 // Found 1 image(s): glory.jpg
 
 import glory_jpg from '../images/tvshelf/glory.jpg';
