@@ -939,6 +939,7 @@
       "micro/202606020937 Meta bot used to hijack IG accounts.md",
       "micro/202606031458The Tragedy of the Commoner.md",
       "micro/202606051024 Amazon has a new plan for games.md",
+      "micro/202606090949 Apple announces AI extensions in Safari.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1045,6 +1046,7 @@
       "nordletter/202605151002 NL105 Fazer Experience.md",
       "nordletter/202605230950 NL106 - CITCON 2026 Helsinki.md",
       "nordletter/202605302333 NL107.md",
+      "nordletter/202606052132 NL108.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -1641,7 +1643,7 @@
       "til/202603301610 Generators in python.md",
       "tvshelf/202605270840 Glory.md"
     ],
-    "generatedAt": "2026-06-05T11:13:06.214Z"
+    "generatedAt": "2026-06-09T08:44:53.057Z"
   },
   "micro/new-updates-to-claude": [
     {
@@ -1661,6 +1663,15 @@
       "pubDate": "2025-10-21T12:45:15.000Z"
     }
   ],
+  "bookshelf/continuous-delivery": [
+    {
+      "slug": "/til/how-to-write-commit-messages/",
+      "title": "How to Write Commit Messages",
+      "description": "",
+      "category": "til",
+      "pubDate": "2025-11-24T18:54:37.000Z"
+    }
+  ],
   "bookshelf/the-practice-of-cloud-system-administration": [
     {
       "slug": "/til/the-cap-principle/",
@@ -1677,15 +1688,6 @@
       "pubDate": "2025-10-29T09:11:33.000Z"
     }
   ],
-  "bookshelf/continuous-delivery": [
-    {
-      "slug": "/til/how-to-write-commit-messages/",
-      "title": "How to Write Commit Messages",
-      "description": "",
-      "category": "til",
-      "pubDate": "2025-11-24T18:54:37.000Z"
-    }
-  ],
   "bookshelf/how-linux-works": [
     {
       "slug": "/til/what-does-a-kernel-do/",
@@ -1693,6 +1695,15 @@
       "description": "",
       "category": "til",
       "pubDate": "2026-03-18T09:55:49.000Z"
+    }
+  ],
+  "blog/thoughts-on-iphone-day": [
+    {
+      "slug": "/blog/thoughts-on-iphone-day-2025/",
+      "title": "Thoughts on iPhone Day - 2025",
+      "description": "",
+      "category": "blog",
+      "pubDate": "2025-09-09T18:47:57.000Z"
     }
   ],
   "nordletter/nl67-performing-at-india-day": [
@@ -1709,15 +1720,6 @@
       "description": "",
       "category": "blog",
       "pubDate": "2025-08-20T19:06:10.000Z"
-    }
-  ],
-  "blog/thoughts-on-iphone-day": [
-    {
-      "slug": "/blog/thoughts-on-iphone-day-2025/",
-      "title": "Thoughts on iPhone Day - 2025",
-      "description": "",
-      "category": "blog",
-      "pubDate": "2025-09-09T18:47:57.000Z"
     }
   ],
   "blog/attending-the-global-ai-bootcamp-in-helsinki": [
@@ -2610,6 +2612,13 @@
   ],
   "nordletter/trip-to-nyc-i": [
     {
+      "slug": "/nordletter/vacations/",
+      "title": "Vacations and Noticing Things",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-06-07T17:38:19.000Z"
+    },
+    {
       "slug": "/nordletter/nl102-seeing-the-crown-bridge/",
       "title": "Seeing the Crown Bridge",
       "description": "",
@@ -2656,31 +2665,6 @@
       "pubDate": "2023-06-01T17:41:49.000Z"
     }
   ],
-  "blog/azure-and-friends-at-brightly": [
-    {
-      "slug": "/nordletter/malai/",
-      "title": "Malai",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-10-11T23:06:03.000Z"
-    },
-    {
-      "slug": "/nordletter/nl73/",
-      "title": "Sunflower",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-09-27T13:17:33.000Z"
-    }
-  ],
-  "story/musings": [
-    {
-      "slug": "/nordletter/nl73/",
-      "title": "Sunflower",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2025-09-27T13:17:33.000Z"
-    }
-  ],
   "blog/vibe-coding": [
     {
       "slug": "/nordletter/nl74-to-move/",
@@ -2699,6 +2683,22 @@
       "pubDate": "2025-10-11T23:06:03.000Z"
     }
   ],
+  "blog/azure-and-friends-at-brightly": [
+    {
+      "slug": "/nordletter/malai/",
+      "title": "Malai",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-10-11T23:06:03.000Z"
+    },
+    {
+      "slug": "/nordletter/nl73/",
+      "title": "Sunflower",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-09-27T13:17:33.000Z"
+    }
+  ],
   "evergreen/best-practices-for-presenting-things": [
     {
       "slug": "/nordletter/malai/",
@@ -2706,6 +2706,15 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2025-10-11T23:06:03.000Z"
+    }
+  ],
+  "story/musings": [
+    {
+      "slug": "/nordletter/nl73/",
+      "title": "Sunflower",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2025-09-27T13:17:33.000Z"
     }
   ],
   "nordletter/diwali-week": [
@@ -3050,15 +3059,6 @@
       "pubDate": "2026-02-21T22:32:49.000Z"
     }
   ],
-  "nordletter/nl77": [
-    {
-      "slug": "/nordletter/nl95-holi-week/",
-      "title": "Holi Week",
-      "description": "",
-      "category": "nordletter",
-      "pubDate": "2026-03-07T23:08:24.000Z"
-    }
-  ],
   "nordletter/spring-is-here": [
     {
       "slug": "/nordletter/nl96/",
@@ -3138,6 +3138,15 @@
       "description": "",
       "category": "nordletter",
       "pubDate": "2026-03-28T18:50:51.000Z"
+    }
+  ],
+  "nordletter/nl77": [
+    {
+      "slug": "/nordletter/nl95-holi-week/",
+      "title": "Holi Week",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-03-07T23:08:24.000Z"
     }
   ],
   "bookshelf/reading-wanderlust": [
@@ -3287,13 +3296,40 @@
       "pubDate": "2026-05-16T21:16:18.000Z"
     }
   ],
-  "blog/devops-finland-october-meetup": [
+  "nordletter/trip-to-nyc-ii": [
     {
-      "slug": "/bookshelf/same-as-ever/",
-      "title": "Same as Ever",
+      "slug": "/nordletter/vacations/",
+      "title": "Vacations and Noticing Things",
       "description": "",
-      "category": "bookshelf",
-      "pubDate": "2025-10-14T07:50:15.000Z"
+      "category": "nordletter",
+      "pubDate": "2026-06-07T17:38:19.000Z"
+    }
+  ],
+  "nordletter/trip-to-nyc-iii": [
+    {
+      "slug": "/nordletter/vacations/",
+      "title": "Vacations and Noticing Things",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-06-07T17:38:19.000Z"
+    }
+  ],
+  "nordletter/nyc-iv": [
+    {
+      "slug": "/nordletter/vacations/",
+      "title": "Vacations and Noticing Things",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-06-07T17:38:19.000Z"
+    }
+  ],
+  "bookshelf/the-anthropologists": [
+    {
+      "slug": "/nordletter/vacations/",
+      "title": "Vacations and Noticing Things",
+      "description": "",
+      "category": "nordletter",
+      "pubDate": "2026-06-07T17:38:19.000Z"
     }
   ],
   "evergreen/do-fewer-things": [
@@ -3321,6 +3357,15 @@
       "description": "",
       "category": "bookshelf",
       "pubDate": "2025-10-21T08:46:56.000Z"
+    }
+  ],
+  "blog/devops-finland-october-meetup": [
+    {
+      "slug": "/bookshelf/same-as-ever/",
+      "title": "Same as Ever",
+      "description": "",
+      "category": "bookshelf",
+      "pubDate": "2025-10-14T07:50:15.000Z"
     }
   ],
   "bookshelf/the-psychology-of-money": [
