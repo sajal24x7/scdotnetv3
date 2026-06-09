@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import { remarkWikilinks } from './src/utils/remarkWikilinks.ts';
 
 // Converts soft line breaks (single newlines) to <br> nodes, preserving
 // line-by-line structure in blockquotes used for poetry and similar content.
@@ -47,7 +48,7 @@ export default defineConfig({
     sitemap(),
   ],
   markdown: {
-    remarkPlugins: [remarkBreaks],
+    remarkPlugins: [remarkWikilinks, remarkBreaks],
     shikiConfig: {
       themes: {
         light: 'github-light',
