@@ -1,14 +1,17 @@
 ---
-title: "Apple announces AI extensions in Safari"
-slug: "apple-announces-ai-extensions-in-safari"
-pubDate: 2026-06-09T09:50:29+03:00
-updatedDate: 2026-06-09T09:50:29+03:00
+title: Apple announces AI extensions in Safari
+slug: apple-announces-ai-extensions-in-safari
+pubDate: 2026-06-09T06:50:29.000Z
+updatedDate: 2026-06-09T06:50:29.000Z
 category: micro
 tags:
   - apple
   - ai
   - safari
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116718868738385322'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mntmwfyual2a'
+  - 'https://www.threads.com/@sajal24x7/post/DZWyaFSEbjD'
 ---
 [Apple is using AI to fix Safari’s extension problem by Emma Roth](https://www.theverge.com/tech/946345/apple-safari-ai-update-extensions)
 
