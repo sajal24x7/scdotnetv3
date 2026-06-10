@@ -1,15 +1,17 @@
 ---
-title: "BYD to Install Thousands of Five Minute Chargers in Europe"
-slug: "byd-to-install-thousands-of-five-minute-chargers-in-europe"
-pubDate: 2026-06-10T17:32:58+03:00
-updatedDate: 2026-06-10T17:32:58+03:00
+title: BYD to Install Thousands of Five Minute Chargers in Europe
+slug: byd-to-install-thousands-of-five-minute-chargers-in-europe
+pubDate: 2026-06-10T14:32:58.000Z
+updatedDate: 2026-06-10T14:32:58.000Z
 category: micro
 tags:
   - electric-cars
   - europe
   - byd
   - china
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116726304559987035'
+  - 'https://www.threads.com/@sajal24x7/post/DZaK0VhFAQz'
 ---
 [BYD to install thousands of 5-minute EV chargers across Europe by Dominic Preston](https://www.theverge.com/transportation/947553/byd-flash-chargers-uk-europe-ev-blade-battery)
 

@@ -1,15 +1,18 @@
 ---
-title: "Apple Announces AI Support for Generating Shortcuts"
-slug: "apple-announces-ai-support-for-generating-shortcuts"
-pubDate: 2026-06-10T17:30:45+03:00
-updatedDate: 2026-06-10T17:30:45+03:00
+title: Apple Announces AI Support for Generating Shortcuts
+slug: apple-announces-ai-support-for-generating-shortcuts
+pubDate: 2026-06-10T14:30:45.000Z
+updatedDate: 2026-06-10T14:30:45.000Z
 category: micro
 tags:
   - apple
   - automation
   - iphone
   - shortcuts
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116726303985393407'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mnwwll7ake24'
+  - 'https://www.threads.com/@sajal24x7/post/DZaKzTplDer'
 ---
 [Apple’s best AI idea looks a lot like vibe coding by David Pierce](https://www.theverge.com/tech/946733/apple-shortcuts-ai-safari-tabs-vibe-code)
 
