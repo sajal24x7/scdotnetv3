@@ -62,11 +62,18 @@ async function buildWikilinkIndex(): Promise<WikilinkIndex> {
             const url = `/${category}/${slug}/`;
             const entry: WikilinkEntry = { url, title: title || slug };
 
+            // Index by slug
             index.set(slug, entry);
             index.set(`${category}/${slug}`, entry);
+            // Index by title (case-insensitive)
             if (title) {
                 index.set(title.toLowerCase(), entry);
             }
+            // Index by filename stem — Obsidian uses the raw filename (without extension)
+            // as the wikilink target, e.g. "202404141404 Control traffic flows"
+            const filenameStem = file.replace(/\.mdx?$/, '');
+            index.set(filenameStem, entry);
+            index.set(filenameStem.toLowerCase(), entry);
         }
     }
 

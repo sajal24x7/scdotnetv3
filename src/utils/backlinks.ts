@@ -220,7 +220,7 @@ async function buildBacklinkIndex(): Promise<BacklinkIndex> {
         postIndex.set(key, entry);
     }
 
-    // Build a wikilink resolution index: slug and lowercase title → "category/slug" key
+    // Build a wikilink resolution index: slug, title, and Obsidian filename stem → "category/slug" key
     const wikilinkResolutionIndex = new Map<string, string>();
     for (const [key, entry] of postIndex) {
         const e = entry as any;
@@ -229,6 +229,30 @@ async function buildBacklinkIndex(): Promise<BacklinkIndex> {
         const title = e.data?.title;
         if (title) {
             wikilinkResolutionIndex.set(String(title).toLowerCase(), key);
+        }
+    }
+
+    // Also index by raw filename stem so Obsidian wikilinks like
+    // [[202404141404 Control traffic flows]] resolve correctly.
+    const contentDir = path.join(process.cwd(), 'src', 'content');
+    for (const categoryRelPath of await getContentFileList()) {
+        const [category, filename] = categoryRelPath.split('/');
+        const filenameStem = filename.replace(/\.mdx?$/, '');
+        const filePath = path.join(contentDir, categoryRelPath);
+        try {
+            const raw = await fs.readFile(filePath, 'utf-8');
+            const fm = raw.match(/^---\s*\n([\s\S]*?)\n---/);
+            if (!fm) continue;
+            const slugMatch = fm[1].match(/^slug:\s*["']?(.+?)["']?\s*$/m);
+            if (!slugMatch) continue;
+            const slug = slugMatch[1].trim();
+            const key = `${category}/${slug}`;
+            if (postIndex.has(key)) {
+                wikilinkResolutionIndex.set(filenameStem, key);
+                wikilinkResolutionIndex.set(filenameStem.toLowerCase(), key);
+            }
+        } catch {
+            continue;
         }
     }
 
