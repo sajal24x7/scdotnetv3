@@ -220,12 +220,58 @@ async function buildBacklinkIndex(): Promise<BacklinkIndex> {
         postIndex.set(key, entry);
     }
 
+    // Build a wikilink resolution index: slug, title, and Obsidian filename stem → "category/slug" key
+    const wikilinkResolutionIndex = new Map<string, string>();
+    for (const [key, entry] of postIndex) {
+        const e = entry as any;
+        wikilinkResolutionIndex.set(e.id, key);
+        wikilinkResolutionIndex.set(key, key);
+        const title = e.data?.title;
+        if (title) {
+            wikilinkResolutionIndex.set(String(title).toLowerCase(), key);
+        }
+    }
+
+    // Also index by raw filename stem so Obsidian wikilinks like
+    // [[202404141404 Control traffic flows]] resolve correctly.
+    const contentDir = path.join(process.cwd(), 'src', 'content');
+    for (const categoryRelPath of await getContentFileList()) {
+        const [category, filename] = categoryRelPath.split('/');
+        const filenameStem = filename.replace(/\.mdx?$/, '');
+        const filePath = path.join(contentDir, categoryRelPath);
+        try {
+            const raw = await fs.readFile(filePath, 'utf-8');
+            const fm = raw.match(/^---\s*\n([\s\S]*?)\n---/);
+            if (!fm) continue;
+            const slugMatch = fm[1].match(/^slug:\s*["']?(.+?)["']?\s*$/m);
+            if (!slugMatch) continue;
+            const slug = slugMatch[1].trim();
+            const key = `${category}/${slug}`;
+            if (postIndex.has(key)) {
+                wikilinkResolutionIndex.set(filenameStem, key);
+                wikilinkResolutionIndex.set(filenameStem.toLowerCase(), key);
+            }
+        } catch {
+            continue;
+        }
+    }
+
     const backlinkIndex: BacklinkIndex = new Map();
 
     for (const entry of entries) {
         const category = resolveCategory(entry);
         const sourceKey = `${category}/${entry.id}`;
         const targets = collectBacklinkTargets(entry.body ?? '');
+
+        // Also collect wikilink targets and resolve them
+        for (const wikilinkTarget of collectWikilinkTargets(entry.body ?? '')) {
+            const resolved =
+                wikilinkResolutionIndex.get(wikilinkTarget) ||
+                wikilinkResolutionIndex.get(wikilinkTarget.toLowerCase());
+            if (resolved) {
+                targets.add(resolved);
+            }
+        }
 
         for (const targetKey of targets) {
             if (targetKey === sourceKey) continue;
@@ -304,6 +350,20 @@ function collectBacklinkTargets(content: string): Set<string> {
     }
 
     return normalizedTargets;
+}
+
+/**
+ * Extract raw wikilink targets from content body.
+ * Returns the target portion of [[target]] and [[target|display]] syntax.
+ */
+function collectWikilinkTargets(content: string): Set<string> {
+    const targets = new Set<string>();
+    const wikilinkRegex = /\[\[([^\]|]+?)(?:\|[^\]]+?)?\]\]/g;
+    let match: RegExpExecArray | null;
+    while ((match = wikilinkRegex.exec(content)) !== null) {
+        targets.add(match[1].trim());
+    }
+    return targets;
 }
 
 function normalizeHrefToKey(href: string): string | null {
