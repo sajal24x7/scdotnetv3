@@ -62,7 +62,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
   {showFeaturedImage && postImage && (
     <figure class="post-item-media">
       <a href={postLink} class="post-item-media-link" aria-label={linkAriaLabel}>
-        <img src={postImage} alt={postImageAlt} loading="lazy" decoding="async" />
+        <img src={postImage} alt={postImageAlt} width="1200" height="675" loading="lazy" decoding="async" />
       </a>
     </figure>
   )}
