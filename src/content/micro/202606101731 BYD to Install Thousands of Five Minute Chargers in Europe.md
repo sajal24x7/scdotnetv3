@@ -12,6 +12,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116726304559987035'
   - 'https://www.threads.com/@sajal24x7/post/DZaK0VhFAQz'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mnyilnquhz2i'
 ---
 [BYD to install thousands of 5-minute EV chargers across Europe by Dominic Preston](https://www.theverge.com/transportation/947553/byd-flash-chargers-uk-europe-ev-blade-battery)
 
