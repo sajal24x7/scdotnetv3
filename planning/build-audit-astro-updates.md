@@ -1,10 +1,12 @@
 # Build Audit & Astro Updates
 
-_Audit date: 2026-06-03_
+_Audit date: 2026-06-03 — last updated 2026-06-11_
 
 ## Build Status
 
-Build succeeded — 4,353 pages built in 45.68s, Pagefind indexed 1,630 pages.
+**2026-06-11 (post Astro 6 upgrade):** Build succeeded — 4,379 pages built in 44.50s on `astro@6.4.6`.
+
+**2026-06-03 (baseline):** Build succeeded — 4,353 pages built in 45.68s, Pagefind indexed 1,630 pages.
 
 **Known issue (non-blocking):** The `cache-nordletter-images` pre-build script hits 403 Forbidden errors for every image from `storage.sajalchoudhary.net`. The build continues past it. Worth checking if storage bucket permissions have changed.
 
@@ -28,13 +30,13 @@ Build succeeded — 4,353 pages built in 45.68s, Pagefind indexed 1,630 pages.
 
 ### Major version upgrades — breaking changes, plan separately
 
-- [ ] `astro` 5.x → **6.4.3**
-- [ ] `@astrojs/mdx` 4.x → **6.0.1** (must track Astro major)
-- [ ] `@astrojs/check` 0.4.1 → **0.9.9**
+- [x] `astro` 5.x → **6.4.6** _(done 2026-06-11)_
+- [x] `@astrojs/mdx` 4.x → **6.0.3** (must track Astro major) _(done 2026-06-11)_
+- [x] `@astrojs/check` 0.4.1 → **0.9.9** _(done 2026-06-11)_
+- [x] `zod` 3.x → **4.4.3** — required by Astro 6; Astro 6 internally imports `zod/v4` and the Zod 3 compatibility shim for that path was incomplete (missing `.optional()` on `ZodFunction`), breaking the static build. No schema code changes needed — project uses `z` only via `astro:content`. _(done 2026-06-11)_
 - [ ] `tailwindcss` 3.x → **4.3.0** (completely rewritten CSS engine; drops `@astrojs/tailwind` integration)
 - [ ] `date-fns` 2.x → **4.4.0** (ESM-first, many API changes)
 - [ ] `marked` 15.x → **18.0.4**
-- [ ] `zod` 3.x → **4.4.3** (breaking schema API changes)
 - [ ] `typescript` 5.x → **6.0.3** (new strictness defaults)
 - [ ] `glob` 11.x → **13.0.6**
 
@@ -42,13 +44,13 @@ Build succeeded — 4,353 pages built in 45.68s, Pagefind indexed 1,630 pages.
 
 ## Astro 6 Upgrade Plan
 
-**Target version:** `astro@6.4.3` (latest as of 2026-06-03, released June 2)
+**Target version:** `astro@6.4.3` (latest as of 2026-06-03, released June 2) — **installed 6.4.6** (latest as of 2026-06-11)
 
 ### Pre-Upgrade: Required Changes
 
 These must be done before or alongside the version bump — the build will fail or behave incorrectly if skipped.
 
-#### 1. Move content collection config file (BREAKING)
+#### 1. Move content collection config file (BREAKING) ✅ done 2026-06-11
 
 Astro 6 ends the Astro 5 grace period: `src/content/config.ts` must move to `src/content.config.ts` at the **src root**.
 
@@ -56,7 +58,7 @@ Astro 6 ends the Astro 5 grace period: `src/content/config.ts` must move to `src
 mv src/content/config.ts src/content.config.ts
 ```
 
-Update the import path from `astro/loaders` — the glob pattern `base` paths (`./src/content/blog`, etc.) remain unchanged. All `getCollection()` calls are unaffected.
+Also updated the direct import in `src/utils/content.ts` (`CONTENT_CATEGORIES`) and the comment in `src/utils/remarkWikilinks.ts`. The glob `base` paths and all `getCollection()` calls were unaffected.
 
 #### 2. Switch Tailwind integration (BREAKING)
 
@@ -71,34 +73,33 @@ Steps:
 
 This is the largest migration effort. Do it as its own PR.
 
-#### 3. Update Node.js engines constraint
+#### 3. Update Node.js engines constraint ✅ done 2026-06-11
 
-Astro 6 requires Node.js ≥ 22.12.0. The environment is already on v22.22.2, but `package.json` still declares `"node": ">=20.0.0"`. Update to `"node": ">=22.12.0"`.
+Astro 6 requires Node.js ≥ 22.12.0. Updated `package.json` from `"node": ">=20.0.0"` to `"node": ">=22.12.0"`.
 
-#### 4. Upgrade companion integrations alongside Astro
+#### 4. Upgrade companion integrations alongside Astro ✅ done 2026-06-11
 
-These packages must track the Astro major version:
-
-| Package | Current | Target | Notes |
-|---------|---------|--------|-------|
-| `@astrojs/mdx` | 4.x | **6.0.1** | Must match Astro major |
-| `@astrojs/check` | 0.4.1 | **0.9.9** | Type-checking CLI |
-| `@astrojs/rss` | 4.x | verify compat | Likely fine, check changelog |
-| `@astrojs/sitemap` | 3.x | verify compat | Likely fine, check changelog |
+| Package | Before | After | Notes |
+|---------|--------|-------|-------|
+| `@astrojs/mdx` | 4.3.1 | **6.0.3** | Installed alongside Astro 6 |
+| `@astrojs/check` | 0.4.0 | **0.9.9** | Installed alongside Astro 6 |
+| `@astrojs/rss` | 4.0.11 | 4.0.11 | Compatible with Astro 6, no change needed |
+| `@astrojs/sitemap` | 3.3.1 | 3.3.1 | Compatible with Astro 6, no change needed |
 
 ---
 
 ### What Will Break
 
-#### Likely to break
+#### Likely to break — actual outcomes (2026-06-11)
 
-| Issue | Where | Severity |
-|-------|-------|----------|
-| Content config not found | `src/content/config.ts` | 🔴 Build fails until moved |
-| Tailwind styles missing | `astro.config.mjs`, all CSS | 🔴 Visual regression until migrated |
-| Heading anchor IDs changed | Markdown heading ID algorithm updated | 🟡 Deep links in prose/garden content may 404 |
-| Shiki v4 API changes | `astro.config.mjs` `shikiConfig` | 🟡 Verify `themes: { light, dark }` still works — likely fine |
-| `remarkPlugins` deprecation warning | `astro.config.mjs` | 🟢 Still works; removed in Astro 8 |
+| Issue | Where | Outcome |
+|-------|-------|---------|
+| Content config not found | `src/content/config.ts` | ✅ Fixed — moved to `src/content.config.ts` |
+| Zod `zod/v4` module conflict | `node_modules` | ✅ Fixed — upgraded `zod` 3→4 (not predicted; Astro 6 imports `zod/v4` at runtime, Zod 3's stub was incomplete) |
+| Tailwind styles missing | `astro.config.mjs`, all CSS | ⏳ Deferred — `@astrojs/tailwind` shim still works in Astro 6; Tailwind v4 migration is a separate PR |
+| Heading anchor IDs changed | Markdown heading ID algorithm updated | ✅ No visible breakage — build clean |
+| Shiki v4 API changes | `astro.config.mjs` `shikiConfig` | ✅ `themes: { light, dark }` still works fine |
+| `remarkPlugins` deprecation warning | `astro.config.mjs` | 🟢 Warning present, non-blocking — fix before Astro 8 |
 
 #### Probably fine (verify after upgrade)
 
