@@ -11,10 +11,14 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
   <div class="card-content">
     {image && (
       <div class="card-image">
-        <img 
-          src={image} 
+        <img
+          src={image}
           alt={title}
+          width="800"
+          height="450"
           class="image"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     )}

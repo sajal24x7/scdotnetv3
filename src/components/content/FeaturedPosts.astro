@@ -33,7 +33,7 @@ const renderedPosts: FeaturedPost[] = posts.map(post => ({
           <a href={post.data.link} class="featured-card-link">
             {post.data.image && (
               <div class="featured-image">
-                <img src={post.data.image} alt={post.data.title} loading="lazy" />
+                <img src={post.data.image} alt={post.data.title} width="1200" height="630" loading="lazy" decoding="async" />
               </div>
             )}
             <div class="featured-content">
