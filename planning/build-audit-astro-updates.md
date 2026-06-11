@@ -4,6 +4,8 @@ _Audit date: 2026-06-03 — last updated 2026-06-11_
 
 ## Build Status
 
+**2026-06-11 (post major package upgrades):** Build succeeded — 4,379 pages built in 31.47s on `date-fns@4.4.0`, `marked@18.0.4`, `typescript@6.0.3`, `glob@13.0.6`.
+
 **2026-06-11 (post Tailwind v4 upgrade):** Build succeeded — 4,379 pages built in 53.29s on `tailwindcss@4.3.0`.
 
 **2026-06-11 (post Astro 6 upgrade):** Build succeeded — 4,379 pages built in 44.50s on `astro@6.4.6`.
@@ -37,10 +39,10 @@ _Audit date: 2026-06-03 — last updated 2026-06-11_
 - [x] `@astrojs/check` 0.4.1 → **0.9.9** _(done 2026-06-11)_
 - [x] `zod` 3.x → **4.4.3** — required by Astro 6; Astro 6 internally imports `zod/v4` and the Zod 3 compatibility shim for that path was incomplete (missing `.optional()` on `ZodFunction`), breaking the static build. No schema code changes needed — project uses `z` only via `astro:content`. _(done 2026-06-11)_
 - [x] `tailwindcss` 3.x → **4.3.0** _(done 2026-06-11)_
-- [ ] `date-fns` 2.x → **4.4.0** (ESM-first, many API changes)
-- [ ] `marked` 15.x → **18.0.4**
-- [ ] `typescript` 5.x → **6.0.3** (new strictness defaults)
-- [ ] `glob` 11.x → **13.0.6**
+- [x] `date-fns` 2.x → **4.4.0** — `format()` API unchanged; no code changes required _(done 2026-06-11)_
+- [x] `marked` 15.x → **18.0.4** — `marked.use()`/`marked.parse()` API unchanged; synchronous string return preserved _(done 2026-06-11)_
+- [x] `typescript` 5.x → **6.0.3** — `@astrojs/check` already declared `^5||^6` support; no code changes required _(done 2026-06-11)_
+- [x] `glob` 11.x → **13.0.6** — `glob()` async API unchanged _(done 2026-06-11)_
 
 ---
 
