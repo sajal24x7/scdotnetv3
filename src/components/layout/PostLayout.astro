@@ -566,10 +566,8 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
         <div class="mt-12 border-t border-borderColor dark:border-borderColorDark">
             <NewsletterSignup
                 title="Subscribe to NordLetter"
-                description="A weekly newsletter on living in Finland."
                 buttonText="Sign up"
-                headingClass="text-xl font-bold mb-3"
-                centered={true}
+                compact={true}
             />
         </div>
 
@@ -626,12 +624,7 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 <style>
     .post-layout__container {
         padding-block: 0;
-    }
-
-    @media (min-width: 48rem) {
-        .post-layout__container {
-            padding-inline: 0;
-        }
+        padding-inline: 0;
     }
 
     .post-layout__back-link {
