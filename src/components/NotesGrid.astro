@@ -15,7 +15,7 @@ const renderedPosts = posts.map(post => ({
   {renderedPosts.map((post) => (
     <Card {...post.data}>
       {post.renderedContent && (
-        <div class="prose dark:prose-dark max-w-none">
+        <div class="prose dark:prose-invert max-w-none">
           <div set:html={post.renderedContent} />
         </div>
       )}

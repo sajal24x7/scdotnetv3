@@ -1,8 +1,41 @@
 /* Global styles for astronautical-aperture */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Class-based dark mode — .dark on <html> element */
+@variant dark (&:where(.dark, .dark *));
+
+/* Design tokens from tailwind.config.mjs */
+@theme {
+  --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Merriweather', ui-serif, Georgia, serif;
+}
+
+/* Colors that reference runtime CSS variables (light/dark) must use @theme inline */
+@theme inline {
+  --color-bgLight: rgb(var(--color-bg));
+  --color-bgSecondary: rgb(var(--color-bg-secondary));
+  --color-textPrimary: rgb(var(--color-text-primary));
+  --color-textSecondary: rgb(var(--color-text-secondary));
+  --color-accent: rgb(var(--color-accent));
+  --color-borderColor: rgb(var(--color-border));
+
+  --color-bgDark: rgb(var(--color-bg));
+  --color-bgSecondaryDark: rgb(var(--color-bg-secondary));
+  --color-textPrimaryDark: rgb(var(--color-text-primary));
+  --color-textSecondaryDark: rgb(var(--color-text-secondary));
+  --color-borderColorDark: rgb(var(--color-border));
+
+  --color-tag: #8b5cf6;
+  --color-tag-hover: #7c3aed;
+  --color-tag-dark: #a78bfa;
+  --color-tag-dark-hover: #c4b5fd;
+  --color-category: #ca8a04;
+  --color-category-border: #eab308;
+  --color-category-dark: #fbbf24;
+  --color-category-dark-border: #f59e0b;
+}
 
 @layer base {
   /* Root theme tokens */
@@ -400,7 +433,9 @@
 
 @layer components {
   .layout-boundary {
-    @apply w-full max-w-layout mx-auto;
+    width: 100%;
+    max-width: var(--layout-max-width);
+    margin-inline: auto;
   }
 
   .link-hover {

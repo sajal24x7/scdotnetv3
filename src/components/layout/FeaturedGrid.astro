@@ -61,7 +61,7 @@ const getContentTypeClasses = (category?: string) => {
               ) : (
                   <Card {...post.data}>
                       {post.renderedContent && (
-                          <div class="prose dark:prose-dark max-w-none">
+                          <div class="prose dark:prose-invert max-w-none">
                               <div set:html={post.renderedContent} />
                           </div>
                       )}
