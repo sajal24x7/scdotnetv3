@@ -921,3 +921,41 @@
     }
   }
 }
+
+/* @tailwindcss/typography puts .prose styles in @layer utilities, which beats our
+   @layer base overrides regardless of specificity. These unlayered rules have
+   highest cascade priority and restore the project's prose link and blockquote styles. */
+.prose a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.prose a:hover {
+  color: inherit;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 55%,
+    var(--link-highlight-hover) 55%,
+    var(--link-highlight-hover) 100%
+  );
+}
+
+.prose a:focus,
+.prose a:visited {
+  color: inherit;
+}
+
+.prose a:focus-visible {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 55%,
+    var(--link-highlight-hover) 55%,
+    var(--link-highlight-hover) 100%
+  );
+}
+
+.prose blockquote {
+  font-weight: normal;
+}
