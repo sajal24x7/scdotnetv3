@@ -729,9 +729,10 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 
     /* Shelf post two-column header */
     .book-header {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        gap: 0.75rem;
+        align-items: start;
         margin-bottom: 2.5rem;
         padding-bottom: 2.5rem;
         border-bottom: 1px solid rgb(var(--color-border));
@@ -743,12 +744,23 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 
     .book-header__cover {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .book-header__meta {
         display: flex;
         flex-direction: column;
+    }
+
+    .book-header__meta h1 {
+        font-size: 1.05rem;
+        line-height: 1.3;
+        margin-bottom: 0.2rem;
+    }
+
+    .book-header__meta .p-summary {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
     }
 
     .book-header__meta--no-cover {
@@ -758,11 +770,9 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 
     @media (min-width: 48rem) {
         .book-header {
-            display: grid;
             /* 3 cols cover, 5 cols metadata (= 8 cols total, matching grid-span-8) */
             grid-template-columns: 3fr 5fr;
             gap: 2rem;
-            align-items: start;
         }
 
         .book-header__cover {
@@ -773,12 +783,25 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
             justify-content: flex-start;
             padding-top: 0.25rem;
         }
+
+        .book-header__meta h1 {
+            font-size: 2.25rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-header__meta .p-summary {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
     }
 
     .book-meta-cover-image {
-        width: auto;
-        max-height: 16rem;
+        width: 100%;
+        max-height: 9rem;
         height: auto;
+        object-fit: contain;
+        object-position: top;
         border-radius: 0.75rem;
         box-shadow:
             0 4px 6px rgba(0, 0, 0, 0.1),
@@ -803,15 +826,23 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
     }
 
     .book-meta-author-title {
-        font-size: 1.125rem;
+        font-size: 0.8rem;
         font-weight: 500;
         color: #374151;
-        margin-bottom: 1rem;
-        margin-top: 0.5rem;
+        margin-bottom: 0.4rem;
+        margin-top: 0.2rem;
     }
 
     :global(.dark) .book-meta-author-title {
         color: #d1d5db;
+    }
+
+    @media (min-width: 48rem) {
+        .book-meta-author-title {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
     }
 
     .book-meta-pills {
