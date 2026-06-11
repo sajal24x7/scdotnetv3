@@ -1,6 +1,6 @@
 import { getCollection } from 'astro:content';
 import type { BookRating } from './bookRatings';
-import { CONTENT_CATEGORIES } from '../content/config';
+import { CONTENT_CATEGORIES } from '../content.config';
 
 export interface Post {
   data: {

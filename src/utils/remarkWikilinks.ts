@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { findAndReplace } from 'mdast-util-find-and-replace';
 
-// Must be kept in sync with CONTENT_CATEGORIES in src/content/config.ts.
+// Must be kept in sync with CONTENT_CATEGORIES in src/content.config.ts.
 // Defined inline here to avoid importing astro:content into astro.config.mjs.
 const CONTENT_CATEGORIES = [
     'til', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem',
