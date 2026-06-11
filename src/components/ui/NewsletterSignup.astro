@@ -11,7 +11,6 @@ interface Props {
   formClass?: string;
   headingClass?: string;
   centered?: boolean;
-  compact?: boolean;
 }
 
 const {
@@ -25,73 +24,47 @@ const {
   wrapperClass = "",
   formClass = "",
   headingClass = "text-large font-bold mb-4",
-  centered = false,
-  compact = false
+  centered = false
 } = Astro.props;
+
+const outerClasses = ["py-8", wrapperClass].filter(Boolean).join(" ");
+const innerClasses = ["prose dark:prose-invert max-w-none", centered && "text-center"].filter(Boolean).join(" ");
+const formClasses = [
+  "flex flex-col sm:flex-row gap-3 max-w-md items-center",
+  centered && "mx-auto",
+  formClass
+].filter(Boolean).join(" ");
 ---
 
-{compact ? (
-  <div class={["py-3", wrapperClass].filter(Boolean).join(" ")}>
-    <div class="flex flex-col sm:flex-row sm:items-center gap-2">
-      {title && <span class="text-sm font-semibold sm:whitespace-nowrap">{title}</span>}
-      <form
-        class={["flex flex-row items-center gap-2 flex-1", formClass].filter(Boolean).join(" ")}
-        action={actionUrl}
-        method="post"
-        target="popupwindow"
-        onsubmit={`window.open('${targetUrl}', 'popupwindow')`}
-      >
-        <input
-          type="email"
-          name="email"
-          placeholder={placeholder}
-          required
-          class="flex-1 min-w-0 px-3 py-1.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#8b5cf6] focus:border-transparent text-sm"
-        />
-        <button
-          type="submit"
-          class="px-4 py-1.5 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-lg transition-colors font-medium text-sm whitespace-nowrap"
-        >
-          {buttonText}
-        </button>
-      </form>
-    </div>
-  </div>
-) : (
-  <div class={["py-8", wrapperClass].filter(Boolean).join(" ")}>
-    <div class={["prose dark:prose-invert max-w-none", centered && "text-center"].filter(Boolean).join(" ")}>
-      {showCopy && title && <h2 class={headingClass}>{title}</h2>}
-      {showCopy && description && (
-        <p class="text-normal mb-6">
-          {description}
-        </p>
-      )}
+<div class={outerClasses}>
+  <div class={innerClasses}>
+    {showCopy && title && <h2 class={headingClass}>{title}</h2>}
+    {showCopy && description && (
+      <p class="text-normal mb-6">
+        {description}
+      </p>
+    )}
 
-      <form
-        class={[
-          "flex flex-col sm:flex-row gap-3 max-w-md items-center",
-          centered && "mx-auto",
-          formClass
-        ].filter(Boolean).join(" ")}
-        action={actionUrl}
-        method="post"
-        target="popupwindow"
-        onsubmit={`window.open('${targetUrl}', 'popupwindow')`}
+    <form
+      class={formClasses}
+      action={actionUrl}
+      method="post"
+      target="popupwindow"
+      onsubmit={`window.open('${targetUrl}', 'popupwindow')`}
+    >
+      <input
+        type="email"
+        name="email"
+        placeholder={placeholder}
+        required
+        class="w-80 sm:flex-1 px-4 py-1.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#8b5cf6] focus:border-transparent text-center"
+      />
+      <button
+        type="submit"
+        class="w-auto px-6 py-1.5 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-lg transition-colors font-medium"
       >
-        <input
-          type="email"
-          name="email"
-          placeholder={placeholder}
-          required
-          class="w-80 sm:flex-1 px-4 py-1.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#8b5cf6] focus:border-transparent text-center"
-        />
-        <button
-          type="submit"
-          class="w-auto px-6 py-1.5 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-lg transition-colors font-medium"
-        >
-          {buttonText}
-        </button>
-      </form>
-    </div>
+        {buttonText}
+      </button>
+    </form>
   </div>
-)}
+</div>
