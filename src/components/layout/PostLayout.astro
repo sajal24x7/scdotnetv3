@@ -194,8 +194,7 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 <LayoutContainer
     prose
     maxWidth="full"
-    padding="sm"
-    paddingScale="page"
+    padding="none"
     className="post-layout__container"
 >
     <!-- Pagefind metadata: outside data-pagefind-body so they don't pollute text index -->
@@ -568,7 +567,7 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
                 title="Subscribe to NordLetter"
                 description="A weekly newsletter on living in Finland."
                 buttonText="Sign up"
-                headingClass="text-xl font-bold mb-3"
+                headingClass="text-xs font-semibold mb-2"
                 centered={true}
             />
         </div>
@@ -624,16 +623,6 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 </LayoutContainer>
 
 <style>
-    .post-layout__container {
-        padding-block: 0;
-    }
-
-    @media (min-width: 48rem) {
-        .post-layout__container {
-            padding-inline: 0;
-        }
-    }
-
     .post-layout__back-link {
         font-weight: 600;
         color: inherit;

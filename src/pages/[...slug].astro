@@ -42,7 +42,7 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
   description={entry.data?.description}
   currentPage={`/${category}/${slug}/`}
   enableLinkHoverEffect
-  pageWrapper={{ className: 'grid-span-8 grid-start-3' }}
+  pageWrapper={{ className: 'grid-span-8 grid-start-3', grid: { padding: 'narrow' } }}
 >
   <PostLayout
     entry={entry}
