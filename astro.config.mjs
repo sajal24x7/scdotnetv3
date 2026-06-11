@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { remarkWikilinks } from './src/utils/remarkWikilinks.ts';
@@ -40,10 +40,10 @@ function remarkBreaks() {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://sajalchoudhary.net',
+  vite: {
+    plugins: [tailwindcss()],
+  },
   integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
     mdx(),
     sitemap(),
   ],

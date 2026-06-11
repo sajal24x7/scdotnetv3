@@ -78,7 +78,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
   <div class="stream-body">
     {isMicro && showFullContent ? (
       <div
-        class="prose dark:prose-dark stream-prose"
+        class="prose dark:prose-invert stream-prose"
         set:html={post.renderedContent || post.body}
       />
     ) : (

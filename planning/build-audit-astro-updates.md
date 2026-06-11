@@ -4,6 +4,8 @@ _Audit date: 2026-06-03 — last updated 2026-06-11_
 
 ## Build Status
 
+**2026-06-11 (post Tailwind v4 upgrade):** Build succeeded — 4,379 pages built in 53.29s on `tailwindcss@4.3.0`.
+
 **2026-06-11 (post Astro 6 upgrade):** Build succeeded — 4,379 pages built in 44.50s on `astro@6.4.6`.
 
 **2026-06-03 (baseline):** Build succeeded — 4,353 pages built in 45.68s, Pagefind indexed 1,630 pages.
@@ -34,7 +36,7 @@ _Audit date: 2026-06-03 — last updated 2026-06-11_
 - [x] `@astrojs/mdx` 4.x → **6.0.3** (must track Astro major) _(done 2026-06-11)_
 - [x] `@astrojs/check` 0.4.1 → **0.9.9** _(done 2026-06-11)_
 - [x] `zod` 3.x → **4.4.3** — required by Astro 6; Astro 6 internally imports `zod/v4` and the Zod 3 compatibility shim for that path was incomplete (missing `.optional()` on `ZodFunction`), breaking the static build. No schema code changes needed — project uses `z` only via `astro:content`. _(done 2026-06-11)_
-- [ ] `tailwindcss` 3.x → **4.3.0** (completely rewritten CSS engine; drops `@astrojs/tailwind` integration)
+- [x] `tailwindcss` 3.x → **4.3.0** _(done 2026-06-11)_
 - [ ] `date-fns` 2.x → **4.4.0** (ESM-first, many API changes)
 - [ ] `marked` 15.x → **18.0.4**
 - [ ] `typescript` 5.x → **6.0.3** (new strictness defaults)
@@ -60,18 +62,17 @@ mv src/content/config.ts src/content.config.ts
 
 Also updated the direct import in `src/utils/content.ts` (`CONTENT_CATEGORIES`) and the comment in `src/utils/remarkWikilinks.ts`. The glob `base` paths and all `getCollection()` calls were unaffected.
 
-#### 2. Switch Tailwind integration (BREAKING)
+#### 2. Switch Tailwind integration (BREAKING) ✅ done 2026-06-11
 
-`@astrojs/tailwind` is deprecated for Tailwind v4 and must be replaced with the official `@tailwindcss/vite` Vite plugin. Astro 6 itself still ships with `@astrojs/tailwind` as a compatibility shim, but the real migration is to Tailwind v4.
+`@astrojs/tailwind` replaced with `@tailwindcss/vite` Vite plugin.
 
-Steps:
-1. `npm uninstall @astrojs/tailwind tailwindcss`
-2. `npm install tailwindcss@4 @tailwindcss/vite @tailwindcss/typography`
-3. In `astro.config.mjs`: remove `tailwind()` from `integrations`, add `@tailwindcss/vite` to `vite.plugins`
-4. Migrate config: Tailwind v4 uses a CSS-native config (`@import "tailwindcss"` in the main CSS file) rather than `tailwind.config.mjs`. Content paths, theme extensions, and plugin setup all move into CSS.
-5. `@tailwindcss/typography` syntax changes — prose classes are the same but some v3 config API differs.
-
-This is the largest migration effort. Do it as its own PR.
+What changed:
+- `astro.config.mjs`: removed `tailwind()` integration, added `vite: { plugins: [tailwindcss()] }`
+- `global.css`: `@tailwind base/components/utilities` → `@import "tailwindcss"` + `@plugin "@tailwindcss/typography"`;
+  class-based dark mode via `@variant dark`; font-family and color tokens moved to `@theme`/`@theme inline`
+- `tailwind.config.mjs` deleted — config is now CSS-native
+- `dark:prose-dark` (custom typography modifier) replaced with `dark:prose-invert` (built-in) in 8 components
+- `.layout-boundary` converted from `@apply` to plain CSS (no utility class needed)
 
 #### 3. Update Node.js engines constraint ✅ done 2026-06-11
 
@@ -96,7 +97,7 @@ Astro 6 requires Node.js ≥ 22.12.0. Updated `package.json` from `"node": ">=20
 |-------|-------|---------|
 | Content config not found | `src/content/config.ts` | ✅ Fixed — moved to `src/content.config.ts` |
 | Zod `zod/v4` module conflict | `node_modules` | ✅ Fixed — upgraded `zod` 3→4 (not predicted; Astro 6 imports `zod/v4` at runtime, Zod 3's stub was incomplete) |
-| Tailwind styles missing | `astro.config.mjs`, all CSS | ⏳ Deferred — `@astrojs/tailwind` shim still works in Astro 6; Tailwind v4 migration is a separate PR |
+| Tailwind styles missing | `astro.config.mjs`, all CSS | ✅ Done — migrated to Tailwind v4 + `@tailwindcss/vite` (2026-06-11) |
 | Heading anchor IDs changed | Markdown heading ID algorithm updated | ✅ No visible breakage — build clean |
 | Shiki v4 API changes | `astro.config.mjs` `shikiConfig` | ✅ `themes: { light, dark }` still works fine |
 | `remarkPlugins` deprecation warning | `astro.config.mjs` | 🟢 Warning present, non-blocking — fix before Astro 8 |
@@ -158,7 +159,7 @@ Astro 6.3 now follows up to 10 redirects when fetching remote images. The known 
 
 ### Bigger migrations (Astro 6)
 
-- [ ] **Tailwind v4 + native Vite plugin** — See pre-upgrade step 2 above. CSS-native config replaces `tailwind.config.mjs`. Largest migration effort — do as its own PR after the core Astro upgrade lands.
+- [x] **Tailwind v4 + native Vite plugin** — Done 2026-06-11. See pre-upgrade step 2 above.
 
 ### Experimental in Astro 6 (not yet stable)
 

@@ -46,7 +46,7 @@ const renderedPosts: FeaturedPost[] = posts.map(post => ({
               )}
               <div class="featured-body">
                 {post.data.category === 'micro' && post.renderedContent ? (
-                  <div class="prose dark:prose-dark max-w-none" set:html={post.renderedContent} />
+                  <div class="prose dark:prose-invert max-w-none" set:html={post.renderedContent} />
                 ) : post.data.description ? (
                   <p>{post.data.description}</p>
                 ) : null}

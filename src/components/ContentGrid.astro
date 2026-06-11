@@ -84,7 +84,7 @@ const gridClassName = [
                 <div class={`content-grid__item grid-span-${span} grid-start-${start}`}>
                     <Card {...post.data}>
                         {post.renderedContent && (
-                            <div class="prose dark:prose-dark max-w-none">
+                            <div class="prose dark:prose-invert max-w-none">
                                 <div set:html={post.renderedContent} />
                             </div>
                         )}
