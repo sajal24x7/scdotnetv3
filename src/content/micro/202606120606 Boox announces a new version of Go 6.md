@@ -1,13 +1,16 @@
 ---
-title: "Boox announces a new version of Go 6"
-slug: "boox-announces-a-new-version-of-go-6"
-pubDate: 2026-06-13T16:50:59+03:00
-updatedDate: 2026-06-13T16:50:59+03:00
+title: Boox announces a new version of Go 6
+slug: boox-announces-a-new-version-of-go-6
+pubDate: 2026-06-13T13:50:59.000Z
+updatedDate: 2026-06-13T13:50:59.000Z
 category: micro
 tags:
   - boox
   - e-readers
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116743123391241791'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mo6fm5ou3e2p'
+  - 'https://www.threads.com/@sajal24x7/post/DZh0T6dIIJd'
 ---
 [Boox’s new e-reader could replace your Kindle, Kobo, and digital notepad by Andrew Liszewski](https://www.theverge.com/tech/947769/boox-onyx-go-6-gen-ii-android-11-e-reader-google-play)
 
