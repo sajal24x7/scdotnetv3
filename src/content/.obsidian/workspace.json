@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "twenty love",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,8 +73,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -171,7 +170,7 @@
       "zk-prefixer:Create new unique note": false
     }
   },
-  "active": "26eff8e7ea3fa54d",
+  "active": "716cd86a29cef966",
   "lastOpenFiles": [
     "2026/202602152230 NL92.md",
     "2026/202602120921 You can tell Threads what you want to see in your feed.md",
