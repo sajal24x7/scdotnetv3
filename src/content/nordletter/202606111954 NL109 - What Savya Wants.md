@@ -1,17 +1,20 @@
 ---
-title: "What Savya Wants"
-slug: "nl109-what-savya-wants"
+title: What Savya Wants
+slug: nl109-what-savya-wants
 edition: 109
-image: https://storage.sajalchoudhary.net/images/2026/06/nl109-02.jpeg
-pubDate: 2026-06-13T19:29:14+03:00
-updatedDate: 2026-06-13T19:29:14+03:00
+image: 'https://storage.sajalchoudhary.net/images/2026/06/nl109-02.jpeg'
+pubDate: 2026-06-13T16:29:14.000Z
+updatedDate: 2026-06-13T16:29:14.000Z
 category: nordletter
 tags:
   - savya
   - walking
   - finland
   - parenting
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116743751104562688'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mo6ojmep5m2p'
+  - 'https://www.threads.com/@sajal24x7/post/DZiGlJ2FnGr'
 ---
 Hello from my home in Helsinki! This is NordLetter #109, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
