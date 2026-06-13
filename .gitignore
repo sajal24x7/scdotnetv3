@@ -1,6 +1,5 @@
 # Obsidian
 src/content/.obsidian/
-src/content/.obsidian/workspace.json
 
 # Dependencies
 node_modules/
@@ -107,20 +106,11 @@ Thumbs.db
 # docs
 documentation/
 
-# Tech notes folder
-./30-TechNotes/
-
 # Backup folder
 src/content_backup_20250728_212307/
 
 # Generated book covers file
 src/utils/bookCovers.ts
 
-src/content/*.base
-src/content/.obsidian/*
-src/content/.obsidian/workspace.json
-
-
 ## Superpowers directory
 .superpowers/
-src/content/.obsidian/workspace.json
