@@ -1,8 +1,8 @@
 ---
 title: Console Exclusives May Be Back
 slug: console-exclusives-may-be-back
-pubDate: 2026-03-05T08:29:42.000Z
-updatedDate: 2026-03-05T08:29:42.000Z
+created: 2026-03-05T08:29:42.000Z
+updated: 2026-03-05T08:29:42.000Z
 category: micro
 tags:
   - microsoft

@@ -1,8 +1,8 @@
 ---
 title: Import Csv Data Into Infoblox
 slug: import-csv-data-into-infoblox
-pubDate: '2022-12-14T09:38:00+03:00'
-updatedDate: '2022-12-14T09:38:00+03:00'
+created: '2022-12-14T09:38:00+03:00'
+updated: '2022-12-14T09:38:00+03:00'
 category: til
 tags: []
 ---

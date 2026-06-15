@@ -1,8 +1,8 @@
 ---
 title: "Why China Builds Faster Than the Rest of the World"
 slug: "why-china-builds-faster-than-the-rest-of-the-world"
-pubDate: 2025-08-28T19:14:22+03:00
-updatedDate: 2025-08-28T19:14:22+03:00
+created: 2025-08-28T19:14:22+03:00
+updated: 2025-08-28T19:14:22+03:00
 category: micro
 tags:
   - china

@@ -1,8 +1,8 @@
 ---
 title: Grokipedia Contains Copied Wikipedia Pages
 slug: grokipedia-contains-copied-wikipedia-pages
-pubDate: 2025-10-28T04:32:01.000Z
-updatedDate: 2025-10-28T04:32:01.000Z
+created: 2025-10-28T04:32:01.000Z
+updated: 2025-10-28T04:32:01.000Z
 category: micro
 tags:
   - wikipedia

@@ -1,8 +1,8 @@
 ---
 title: "Why Places Matter in a Story"
 slug: "why-places-matter-in-a-story"
-pubDate: 2016-06-10T22:10:35
-updatedDate: 2016-06-10T22:10:35
+created: 2016-06-10T22:10:35
+updated: 2016-06-10T22:10:35
 category: blog
 tags: ["blog", "places", "settings", "story", "storytelling", "writing is"]
 ---

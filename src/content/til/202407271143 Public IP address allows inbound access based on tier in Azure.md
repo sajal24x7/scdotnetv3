@@ -1,8 +1,8 @@
 ---
 title: Public IP Address Allows Inbound Access Based on Tier in Azure
 slug: public-ip-address-allows-inbound-access-based-on-tier-in-azure
-pubDate: '2024-07-27T11:43:00+03:00'
-updatedDate: '2024-07-27T11:43:00+03:00'
+created: '2024-07-27T11:43:00+03:00'
+updated: '2024-07-27T11:43:00+03:00'
 category: til
 tags:
 - azure

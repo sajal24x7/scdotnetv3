@@ -1,8 +1,8 @@
 ---
 title: About Apple Sports
 slug: about-apple-sports
-pubDate: 2026-05-26T18:12:45.000Z
-updatedDate: 2026-05-26T18:12:45.000Z
+created: 2026-05-26T18:12:45.000Z
+updated: 2026-05-26T18:12:45.000Z
 category: blog
 tags:
   - apple

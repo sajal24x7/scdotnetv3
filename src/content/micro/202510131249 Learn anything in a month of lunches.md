@@ -1,8 +1,8 @@
 ---
 title: Learn Anything in a Month of Lunches
 slug: learn-anything-in-a-month-of-lunches
-pubDate: 2025-10-13T09:56:16.000Z
-updatedDate: 2025-10-13T09:56:16.000Z
+created: 2025-10-13T09:56:16.000Z
+updated: 2025-10-13T09:56:16.000Z
 category: micro
 tags:
   - powershell

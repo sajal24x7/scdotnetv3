@@ -1,8 +1,8 @@
 ---
 title: The CAP Principle
 slug: the-cap-principle
-pubDate: 2025-10-30T11:46:10.000Z
-updatedDate: 2025-10-30T11:46:10.000Z
+created: 2025-10-30T11:46:10.000Z
+updated: 2025-10-30T11:46:10.000Z
 category: til
 tags:
   - distributed-systems

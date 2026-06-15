@@ -1,8 +1,8 @@
 ---
 title: Apple Announces AI Support for Generating Shortcuts
 slug: apple-announces-ai-support-for-generating-shortcuts
-pubDate: 2026-06-10T14:30:45.000Z
-updatedDate: 2026-06-10T14:30:45.000Z
+created: 2026-06-10T14:30:45.000Z
+updated: 2026-06-10T14:30:45.000Z
 category: micro
 tags:
   - apple

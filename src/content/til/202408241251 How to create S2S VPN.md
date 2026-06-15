@@ -1,8 +1,8 @@
 ---
 title: How to Create S2S VPN
 slug: how-to-create-s2s-vpn
-pubDate: '2024-08-24T12:51:00+03:00'
-updatedDate: '2024-08-24T12:51:00+03:00'
+created: '2024-08-24T12:51:00+03:00'
+updated: '2024-08-24T12:51:00+03:00'
 category: til
 tags:
 - azure

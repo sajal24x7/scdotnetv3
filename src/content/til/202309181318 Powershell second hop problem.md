@@ -1,8 +1,8 @@
 ---
 title: Powershell Second Hop Problem
 slug: powershell-second-hop-problem
-pubDate: '2023-09-18T13:18:00+03:00'
-updatedDate: '2023-09-18T13:18:00+03:00'
+created: '2023-09-18T13:18:00+03:00'
+updated: '2023-09-18T13:18:00+03:00'
 category: til
 tags:
 - powershell

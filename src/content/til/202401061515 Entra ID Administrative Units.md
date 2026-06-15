@@ -1,8 +1,8 @@
 ---
 title: Entra ID Administrative Units
 slug: entra-id-administrative-units
-pubDate: '2024-01-06T15:15:00+03:00'
-updatedDate: '2024-01-06T15:15:00+03:00'
+created: '2024-01-06T15:15:00+03:00'
+updated: '2024-01-06T15:15:00+03:00'
 category: til
 tags:
 - azure

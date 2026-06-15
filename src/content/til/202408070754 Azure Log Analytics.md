@@ -1,8 +1,8 @@
 ---
 title: Azure Log Analytics
 slug: azure-log-analytics
-pubDate: '2024-08-07T07:54:00+03:00'
-updatedDate: '2024-08-07T07:54:00+03:00'
+created: '2024-08-07T07:54:00+03:00'
+updated: '2024-08-07T07:54:00+03:00'
 category: til
 tags:
 - azure

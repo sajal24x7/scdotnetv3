@@ -2,8 +2,8 @@
 title: "How to Complain"
 slug: "how-to-complain"
 description: "Or, how to make your boss's life easier"
-pubDate: 2025-01-11T19:50:32
-updatedDate: 2025-01-11T19:50:32
+created: 2025-01-11T19:50:32
+updated: 2025-01-11T19:50:32
 category: blog
 tags: ["blog", "work"]
 image: "https://images.unsplash.com/photo-1607211851821-8be3cd6146f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDl8fHBhaW50fGVufDB8fHx8MTczNjYyNTAwNXww&ixlib=rb-4.0.3&q=80&w=2000"

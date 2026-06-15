@@ -1,8 +1,8 @@
 ---
 title: "Cursor Launches Bugbot"
 slug: "cursor-launches-bugbot"
-pubDate: 2025-07-25T13:49:14+03:00
-updatedDate: 2025-07-25T13:49:14+03:00
+created: 2025-07-25T13:49:14+03:00
+updated: 2025-07-25T13:49:14+03:00
 category: micro
 tags:
   - ai

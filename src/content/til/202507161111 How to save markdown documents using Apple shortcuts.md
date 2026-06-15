@@ -1,8 +1,8 @@
 ---
 title: "How to Save Markdown Documents Using Apple Shortcuts"
 slug: "how-to-save-markdown-documents-using-apple-shortcuts"
-pubDate: 2025-07-16T11:13:39+03:00
-updatedDate: 2025-07-16T11:13:39+03:00
+created: 2025-07-16T11:13:39+03:00
+updated: 2025-07-16T11:13:39+03:00
 category: til
 tags:
   - apple

@@ -2,8 +2,8 @@
 title: "The Two Factors That Allow Services to Be Terrible"
 slug: "the-two-factors-that-allow-services-to-be-terrible"
 description: "My WhatsApp story"
-pubDate: 2025-01-22T07:35:44
-updatedDate: 2025-01-22T07:35:44
+created: 2025-01-22T07:35:44
+updated: 2025-01-22T07:35:44
 category: blog
 tags: ["blog", "messaging", "meta"]
 image: "https://images.unsplash.com/photo-1719204718581-5c95889c8ec9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDl8fE1lc3NhZ2luZ3xlbnwwfHx8fDE3Mzc1MzEyOTV8MA&ixlib=rb-4.0.3&q=80&w=2000"

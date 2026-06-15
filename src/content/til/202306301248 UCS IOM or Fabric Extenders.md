@@ -1,8 +1,8 @@
 ---
 title: UCS IOM or Fabric Extenders
 slug: ucs-iom-or-fabric-extenders
-pubDate: '2023-06-30T12:48:00+03:00'
-updatedDate: '2023-06-30T12:48:00+03:00'
+created: '2023-06-30T12:48:00+03:00'
+updated: '2023-06-30T12:48:00+03:00'
 category: til
 tags: []
 ---

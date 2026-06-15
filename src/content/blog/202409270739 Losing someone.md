@@ -2,8 +2,8 @@
 title: "Losing Someone"
 slug: "losing-someone"
 description: "It's hard"
-pubDate: 2024-09-27T07:39:30
-updatedDate: 2024-09-27T07:39:30
+created: 2024-09-27T07:39:30
+updated: 2024-09-27T07:39:30
 category: blog
 tags: ["blog", "death"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_3831.jpeg"

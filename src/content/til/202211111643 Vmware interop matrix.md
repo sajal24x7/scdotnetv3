@@ -1,8 +1,8 @@
 ---
 title: Vmware Interop Matrix
 slug: vmware-interop-matrix
-pubDate: '2022-11-11T16:43:00+03:00'
-updatedDate: '2022-11-11T16:43:00+03:00'
+created: '2022-11-11T16:43:00+03:00'
+updated: '2022-11-11T16:43:00+03:00'
 category: til
 tags: []
 ---

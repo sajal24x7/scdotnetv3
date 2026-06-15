@@ -1,8 +1,8 @@
 ---
 title: "Why I Need to Blog"
 slug: "why-i-need-to-blog"
-pubDate: 2013-07-23T14:23:11
-updatedDate: 2024-05-04T06:33:44
+created: 2013-07-23T14:23:11
+updated: 2024-05-04T06:33:44
 category: blog
 tags: ["writing-is"]
 image: "https://storage.sajalchoudhary.net/images/2024/05/blog-update.gif"

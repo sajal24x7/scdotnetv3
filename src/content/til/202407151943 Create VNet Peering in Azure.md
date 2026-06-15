@@ -1,8 +1,8 @@
 ---
 title: Create VNet Peering in Azure
 slug: create-vnet-peering-in-azure
-pubDate: '2024-07-15T19:43:00+03:00'
-updatedDate: '2024-07-15T19:43:00+03:00'
+created: '2024-07-15T19:43:00+03:00'
+updated: '2024-07-15T19:43:00+03:00'
 category: til
 tags:
 - powershell

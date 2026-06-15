@@ -1,8 +1,8 @@
 ---
 title: How to Run Powershell as System Account
 slug: how-to-run-powershell-as-system-account
-pubDate: 2025-12-18T10:32:50.000Z
-updatedDate: 2025-12-18T10:32:50.000Z
+created: 2025-12-18T10:32:50.000Z
+updated: 2025-12-18T10:32:50.000Z
 category: til
 tags:
   - powershell

@@ -2,8 +2,8 @@
 title: "The Joy of Reading"
 slug: "the-joy-of-reading"
 description: "Books transport you"
-pubDate: 2024-09-18T19:22:47
-updatedDate: 2024-09-18T19:22:47
+created: 2024-09-18T19:22:47
+updated: 2024-09-18T19:22:47
 category: blog
 tags: ["blog", "reading"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6066.jpeg"

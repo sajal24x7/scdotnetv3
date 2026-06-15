@@ -1,8 +1,8 @@
 ---
 title: Entra Self Service Password Reset
 slug: entra-self-service-password-reset
-pubDate: '2024-05-02T18:35:00+03:00'
-updatedDate: '2024-05-02T18:35:00+03:00'
+created: '2024-05-02T18:35:00+03:00'
+updated: '2024-05-02T18:35:00+03:00'
 category: til
 tags:
 - azure

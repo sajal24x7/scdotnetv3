@@ -1,8 +1,8 @@
 ---
 title: "Walk Away or Dance"
 slug: "walk-away-or-dance"
-pubDate: 2025-09-08T11:56:04+03:00
-updatedDate: 2025-09-08T11:56:04+03:00
+created: 2025-09-08T11:56:04+03:00
+updated: 2025-09-08T11:56:04+03:00
 category: micro
 tags:
   - ai

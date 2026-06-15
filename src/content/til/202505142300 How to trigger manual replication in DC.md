@@ -1,8 +1,8 @@
 ---
 title: "How to Trigger Manual Replication in DC"
 slug: "how-to-trigger-manual-replication-in-dc"
-pubDate: 2025-05-14T23:38:51+03:00
-updatedDate: 2025-05-14T23:38:51+03:00
+created: 2025-05-14T23:38:51+03:00
+updated: 2025-05-14T23:38:51+03:00
 category: til
 tags:
   - "#powershell"

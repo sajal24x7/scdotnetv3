@@ -1,8 +1,8 @@
 ---
 title: Code Is a Liability
 slug: code-is-a-liability
-pubDate: 2026-01-08T08:15:16.000Z
-updatedDate: 2026-01-08T08:15:16.000Z
+created: 2026-01-08T08:15:16.000Z
+updated: 2026-01-08T08:15:16.000Z
 category: micro
 tags:
   - code

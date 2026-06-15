@@ -2,8 +2,8 @@
 title: "The Three Places Where I Noticed Apple Intelligence"
 slug: "the-three-places-where-i-noticed-apple-intelligence"
 description: "Apple Intelligence comes to India (English)"
-pubDate: 2025-04-04T19:41:11
-updatedDate: 2025-04-04T19:41:11
+created: 2025-04-04T19:41:11
+updated: 2025-04-04T19:41:11
 category: blog
 tags: ["blog", "apple", "iphone", "AI"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0796-1.jpeg"

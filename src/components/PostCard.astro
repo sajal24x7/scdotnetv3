@@ -5,17 +5,17 @@ interface Props {
   title: string;
   description: string;
   url: string;
-  pubDate: Date;
+  created: Date;
   image?: string;
 }
 
-const { title, description, url, pubDate, image } = Astro.props;
+const { title, description, url, created, image } = Astro.props;
 ---
 
 <Card 
   title={title}
   description={description}
-  pubDate={pubDate}
+  created={created}
   category="blog"
   image={image}
   link={url}

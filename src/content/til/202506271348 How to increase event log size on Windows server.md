@@ -1,8 +1,8 @@
 ---
 title: "How to Increase Event Log Size on Windows Server"
 slug: "how-to-increase-event-log-size-on-windows-server"
-pubDate: 2025-06-27T13:38:34+03:00
-updatedDate: 2025-06-27T13:38:34+03:00
+created: 2025-06-27T13:38:34+03:00
+updated: 2025-06-27T13:38:34+03:00
 category: til
 tags:
   - "#windows"

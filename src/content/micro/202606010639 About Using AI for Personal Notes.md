@@ -1,8 +1,8 @@
 ---
 title: About Using AI for Personal Notes
 slug: about-using-ai-for-personal-notes
-pubDate: 2026-06-01T06:42:17.000Z
-updatedDate: 2026-06-01T06:42:17.000Z
+created: 2026-06-01T06:42:17.000Z
+updated: 2026-06-01T06:42:17.000Z
 category: micro
 tags:
   - interconnected

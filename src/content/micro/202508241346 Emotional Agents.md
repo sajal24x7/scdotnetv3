@@ -1,8 +1,8 @@
 ---
 title: "Emotional Agents"
 slug: "emotional-agents"
-pubDate: 2025-08-24T22:54:50+03:00
-updatedDate: 2025-08-24T22:54:50+03:00
+created: 2025-08-24T22:54:50+03:00
+updated: 2025-08-24T22:54:50+03:00
 category: micro
 tags:
   - ai

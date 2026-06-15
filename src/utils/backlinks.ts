@@ -25,11 +25,11 @@ export interface Backlink {
     title: string;
     description: string;
     category: string;
-    pubDate: Date;
+    created: Date;
 }
 
-interface BacklinkJson extends Omit<Backlink, 'pubDate'> {
-    pubDate: string;
+interface BacklinkJson extends Omit<Backlink, 'created'> {
+    created: string;
 }
 
 type BacklinkIndex = Map<string, Backlink[]>;
@@ -287,13 +287,13 @@ async function buildBacklinkIndex(): Promise<BacklinkIndex> {
                 title: entry.data.title || 'Untitled',
                 description: entry.data.description || '',
                 category,
-                pubDate: normalizeDate(entry.data.pubDate)
+                created: normalizeDate(entry.data.created)
             });
         }
     }
 
     for (const backlinks of backlinkIndex.values()) {
-        backlinks.sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
+        backlinks.sort((a, b) => b.created.getTime() - a.created.getTime());
     }
 
     return backlinkIndex;
@@ -452,9 +452,9 @@ function convertArtifactToIndex(artifact: BacklinkArtifact): BacklinkIndex {
             backlinks
                 .map(backlink => ({
                     ...backlink,
-                    pubDate: new Date(backlink.pubDate)
+                    created: new Date(backlink.created)
                 }))
-                .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime())
+                .sort((a, b) => b.created.getTime() - a.created.getTime())
         );
     }
 
@@ -467,7 +467,7 @@ function convertIndexToArtifact(index: BacklinkIndex): BacklinkArtifact {
     for (const [key, backlinks] of index) {
         artifact[key] = backlinks.map(backlink => ({
             ...backlink,
-            pubDate: backlink.pubDate.toISOString()
+            created: backlink.created.toISOString()
         }));
     }
 

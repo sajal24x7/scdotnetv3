@@ -1,8 +1,8 @@
 ---
 title: Researchers Make Gel Electrolyte Breakthrough for Lithium Ion Batteries
 slug: researchers-make-gel-electrolyte-breakthrough-for-lithium-ion-batteries
-pubDate: 2026-02-23T21:21:25.000Z
-updatedDate: 2026-02-23T21:21:25.000Z
+created: 2026-02-23T21:21:25.000Z
+updated: 2026-02-23T21:21:25.000Z
 category: micro
 tags:
   - electric-cars

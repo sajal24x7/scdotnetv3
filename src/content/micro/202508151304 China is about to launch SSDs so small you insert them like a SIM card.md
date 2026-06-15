@@ -1,8 +1,8 @@
 ---
 title: "China Is About to Launch SSDs so Small You Insert Them Like a SIM Card"
 slug: "china-is-about-to-launch-ssds-so-small-you-insert-them-like-a-sim-card"
-pubDate: 2025-08-15T13:04:52+03:00
-updatedDate: 2025-08-15T13:04:52+03:00
+created: 2025-08-15T13:04:52+03:00
+updated: 2025-08-15T13:04:52+03:00
 category: micro
 tags:
   - storage

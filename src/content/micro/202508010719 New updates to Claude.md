@@ -1,8 +1,8 @@
 ---
 title: "New Updates to Claude"
 slug: "new-updates-to-claude"
-pubDate: 2025-08-01T07:22:45+03:00
-updatedDate: 2025-08-01T07:22:45+03:00
+created: 2025-08-01T07:22:45+03:00
+updated: 2025-08-01T07:22:45+03:00
 category: micro
 tags:
   - ai

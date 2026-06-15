@@ -1,8 +1,8 @@
 ---
 title: "Configure Mobile Quick Action on Obsidian"
 slug: "configure-mobile-quick-action-on-obsidian"
-pubDate: 2025-08-29T13:37:58+03:00
-updatedDate: 2025-08-29T13:37:58+03:00
+created: 2025-08-29T13:37:58+03:00
+updated: 2025-08-29T13:37:58+03:00
 category: til
 tags:
   - obsidian

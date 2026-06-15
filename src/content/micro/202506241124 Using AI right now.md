@@ -1,8 +1,8 @@
 ---
 title: "Using AI Right Now -"
 slug: "using-ai-right-now-"
-pubDate: 2025-07-10T16:16:42+03:00
-updatedDate: 2025-07-10T16:16:42+03:00
+created: 2025-07-10T16:16:42+03:00
+updated: 2025-07-10T16:16:42+03:00
 category: micro
 tags:
   - ai

@@ -3,8 +3,8 @@ title: "Our Place in the World"
 edition: 27
 slug: "our-place-in-the-world"
 description: "Linkin Park are back + what is our place in this world"
-pubDate: 2024-09-29T03:38:40
-updatedDate: 2024-09-29T03:38:39
+created: 2024-09-29T03:38:40
+updated: 2024-09-29T03:38:39
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6141.jpeg"

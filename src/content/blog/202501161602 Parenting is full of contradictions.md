@@ -2,8 +2,8 @@
 title: "Parenting Is Full of Contradictions"
 slug: "parenting-is-full-of-contradictions"
 description: "Sleep child, sleep!"
-pubDate: 2025-01-16T16:02:21
-updatedDate: 2025-01-16T16:02:21
+created: 2025-01-16T16:02:21
+updated: 2025-01-16T16:02:21
 category: blog
 tags: ["blog", "parenting"]
 image: "https://images.unsplash.com/photo-1490633658548-02223374071a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fEJ8ZW58MHx8fHwxNzM3MDQzMzExfDA&ixlib=rb-4.0.3&q=80&w=2000"

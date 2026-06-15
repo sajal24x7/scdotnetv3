@@ -1,8 +1,8 @@
 ---
 title: No Pressure, Really!
 slug: no-pressure-really
-pubDate: 2013-08-15T22:02:27
-updatedDate: 2026-06-13T19:57:20
+created: 2013-08-15T22:02:27
+updated: 2026-06-13T19:57:20
 category: blog
 tags:
   - college

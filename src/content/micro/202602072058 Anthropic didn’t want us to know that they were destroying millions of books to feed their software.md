@@ -4,8 +4,8 @@ title: >-
   to feed their software
 slug: >-
   anthropic-didnt-want-us-to-know-that-they-were-destroying-millions-of-books-to-feed-their-software
-pubDate: 2026-02-07T15:31:40.000Z
-updatedDate: 2026-02-07T15:31:40.000Z
+created: 2026-02-07T15:31:40.000Z
+updated: 2026-02-07T15:31:40.000Z
 category: micro
 tags:
   - anthropic

@@ -1,8 +1,8 @@
 ---
 title: Azure Managed Disks
 slug: azure-managed-disks
-pubDate: '2024-04-12T12:54:00+03:00'
-updatedDate: '2024-04-12T12:54:00+03:00'
+created: '2024-04-12T12:54:00+03:00'
+updated: '2024-04-12T12:54:00+03:00'
 category: til
 tags:
 - azure

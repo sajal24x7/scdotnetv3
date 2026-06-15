@@ -1,8 +1,8 @@
 ---
 title: "Cursor Coded This Website for Me. I Was Not Happy."
 slug: "cursor-coded-this-website-for-me-i-was-not-happy"
-pubDate: 2025-07-15T22:42:00+03:00
-updatedDate: 2025-07-15T22:42:00+03:00
+created: 2025-07-15T22:42:00+03:00
+updated: 2025-07-15T22:42:00+03:00
 category: blog
 tags:
   - ai

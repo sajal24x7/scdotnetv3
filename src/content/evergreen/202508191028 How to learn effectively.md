@@ -1,8 +1,8 @@
 ---
 title: "How to Learn Effectively"
 slug: "how-to-learn-effectively"
-pubDate: 2025-08-20T22:13:19+03:00
-updatedDate: 2025-08-20T22:13:19+03:00
+created: 2025-08-20T22:13:19+03:00
+updated: 2025-08-20T22:13:19+03:00
 category: evergreen
 tags:
   - learning

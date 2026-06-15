@@ -1,8 +1,8 @@
 ---
 title: "Decisions Decisions!"
 slug: "decisions-decisions"
-pubDate: 2014-11-19T08:15:34
-updatedDate: 2014-11-19T08:15:34
+created: 2014-11-19T08:15:34
+updated: 2014-11-19T08:15:34
 category: blog
 tags: ["blog", "decisions", "hard decisions"]
 ---

@@ -1,8 +1,8 @@
 ---
 title: "Wake Me up, When November Ends!"
 slug: "wake-me-up-when-november-ends"
-pubDate: 2012-11-01T20:34:45
-updatedDate: 2024-04-29T13:42:34
+created: 2012-11-01T20:34:45
+updated: 2024-04-29T13:42:34
 category: blog
 tags: [“college”]
 ---

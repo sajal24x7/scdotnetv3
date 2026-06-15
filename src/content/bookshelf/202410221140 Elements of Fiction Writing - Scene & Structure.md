@@ -1,8 +1,8 @@
 ---
 title: Elements of Fiction Writing - Scene & Structure
 slug: elements-of-fiction-writing-scene-structure
-pubDate: 2026-01-09T13:29:30.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2026-01-09T13:29:30.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - writing

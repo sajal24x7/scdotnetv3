@@ -2,8 +2,8 @@
 title: "Everything Can Teach Us Something"
 slug: "everything-can-teach-us-something"
 description: "Help us grow"
-pubDate: 2024-10-09T03:31:40
-updatedDate: 2024-10-09T03:31:40
+created: 2024-10-09T03:31:40
+updated: 2024-10-09T03:31:40
 category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/photo-1728327509874-68aeaa84590c.jpeg"

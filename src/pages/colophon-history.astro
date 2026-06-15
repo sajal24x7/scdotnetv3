@@ -12,9 +12,9 @@ const allPosts = await getAllPosts();
 const colophonPosts = allPosts
   .filter(post => post.data.category === 'colophon')
   .sort((a, b) => {
-    // Sort by updatedDate first, fallback to pubDate - descending
-    const aDate = a.data.updatedDate || a.data.pubDate;
-    const bDate = b.data.updatedDate || b.data.pubDate;
+    // Sort by updated first, fallback to created - descending
+    const aDate = a.data.updated || a.data.created;
+    const bDate = b.data.updated || b.data.created;
     return bDate.getTime() - aDate.getTime();
   });
 
@@ -28,7 +28,7 @@ type ColophonPost = Post & {
 };
 
 const renderedPosts: ColophonPost[] = pastColophons.map(post => {
-    const rawEndDate = post.data.updatedDate ?? post.data.pubDate;
+    const rawEndDate = post.data.updated ?? post.data.created;
     const endDate = rawEndDate instanceof Date ? rawEndDate : new Date(rawEndDate);
 
     return {
@@ -70,7 +70,7 @@ const renderedPosts: ColophonPost[] = pastColophons.map(post => {
                         class="progress-card__time"
                         datetime={post.endDate.toISOString()}
                     >
-                        {formatDateRange(post.data.pubDate, post.endDate)}
+                        {formatDateRange(post.data.created, post.endDate)}
                     </time>
                     {post.data.title && (
                         <h2 class="progress-card__title">{post.data.title}</h2>

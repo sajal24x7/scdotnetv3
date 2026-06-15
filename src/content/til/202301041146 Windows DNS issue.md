@@ -1,8 +1,8 @@
 ---
 title: Windows DNS Issue
 slug: windows-dns-issue
-pubDate: '2023-01-04T11:46:00+03:00'
-updatedDate: '2023-01-04T11:46:00+03:00'
+created: '2023-01-04T11:46:00+03:00'
+updated: '2023-01-04T11:46:00+03:00'
 category: til
 tags:
 - windows

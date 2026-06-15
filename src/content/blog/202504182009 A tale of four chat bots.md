@@ -1,8 +1,8 @@
 ---
 title: "A Tale of Four Chat Bots"
 slug: "a-tale-of-four-chat-bots"
-pubDate: 2025-04-18T20:09:00
-updatedDate: 2025-04-18T21:09:44
+created: 2025-04-18T20:09:00
+updated: 2025-04-18T21:09:44
 category: blog
 tags: ["blog", "AI"]
 image: "https://images.unsplash.com/photo-1743945968054-088cff86a63a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDUwMTAwOTR8&ixlib=rb-4.0.3&q=80&w=2000"

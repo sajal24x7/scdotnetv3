@@ -1,8 +1,8 @@
 ---
 title: A Brief History of Time
 slug: a-brief-history-of-time
-pubDate: 2013-01-08T15:17:27.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2013-01-08T15:17:27.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

@@ -1,8 +1,8 @@
 ---
 title: "How to Check Windows Upgrade Errors"
 slug: "how-to-check-windows-upgrade-errors"
-pubDate: 2025-08-12T17:11:23+03:00
-updatedDate: 2025-08-12T17:11:23+03:00
+created: 2025-08-12T17:11:23+03:00
+updated: 2025-08-12T17:11:23+03:00
 category: til
 tags:
   - windows

@@ -1,8 +1,8 @@
 ---
 title: Sony Appears to Be Testing Dynamic Pricing on Games
 slug: sony-appears-to-be-testing-dynamic-pricing-on-games
-pubDate: 2026-03-08T07:31:05.000Z
-updatedDate: 2026-03-08T07:31:05.000Z
+created: 2026-03-08T07:31:05.000Z
+updated: 2026-03-08T07:31:05.000Z
 category: micro
 tags:
   - sony

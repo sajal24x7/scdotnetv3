@@ -1,8 +1,8 @@
 ---
 title: Ozempic Is Changing the Foods Americans Buy
 slug: ozempic-is-changing-the-foods-americans-buy
-pubDate: 2026-01-13T11:36:57.000Z
-updatedDate: 2026-01-13T11:36:57.000Z
+created: 2026-01-13T11:36:57.000Z
+updated: 2026-01-13T11:36:57.000Z
 category: micro
 tags:
   - health

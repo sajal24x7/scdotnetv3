@@ -2,8 +2,8 @@
 title: "I Need to Talk to More People, More Often"
 slug: "i-need-to-talk-to-more-people-more-often"
 description: "And hear their stories"
-pubDate: 2025-01-23T07:54:34
-updatedDate: 2025-01-23T08:39:28
+created: 2025-01-23T07:54:34
+updated: 2025-01-23T08:39:28
 category: blog
 tags: ["blog", "writing is"]
 image: "https://images.unsplash.com/photo-1737079567862-4ccc9433d443?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDEwfHx8fHx8fHwxNzM3NjE3NDgxfA&ixlib=rb-4.0.3&q=80&w=2000"

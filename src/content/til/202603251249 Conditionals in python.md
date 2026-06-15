@@ -1,8 +1,8 @@
 ---
 title: Conditionals in Python
 slug: conditionals-in-python
-pubDate: 2026-03-25T10:50:38.000Z
-updatedDate: 2026-03-25T10:50:38.000Z
+created: 2026-03-25T10:50:38.000Z
+updated: 2026-03-25T10:50:38.000Z
 category: til
 tags:
   - python

@@ -1,8 +1,8 @@
 ---
 title: "Curation Matters"
 slug: "curation-matters"
-pubDate: 2025-09-10T10:45:20+03:00
-updatedDate: 2025-09-10T10:45:20+03:00
+created: 2025-09-10T10:45:20+03:00
+updated: 2025-09-10T10:45:20+03:00
 category: evergreen
 tags:
   - curstion

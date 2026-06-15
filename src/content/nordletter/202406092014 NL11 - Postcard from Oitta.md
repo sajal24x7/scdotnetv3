@@ -2,8 +2,8 @@
 title: Postcard From Oitta
 slug: postcard-from-oitta
 description: "Nord Letter #11 - Pristine waters at Oitta"
-pubDate: 2024-06-09T20:14:27
-updatedDate: 2024-07-07T16:07:08
+created: 2024-06-09T20:14:27
+updated: 2024-07-07T16:07:08
 category: nordletter
 tags:
   - Nord Letter

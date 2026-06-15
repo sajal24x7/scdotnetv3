@@ -1,8 +1,8 @@
 ---
 title: "VMware List Allowed IPs in Firewall"
 slug: "vmware-list-allowed-ips-in-firewall"
-pubDate: 2025-02-13T14:42:07+03:00
-updatedDate: 2025-02-13T14:42:07+03:00
+created: 2025-02-13T14:42:07+03:00
+updated: 2025-02-13T14:42:07+03:00
 category: til
 tags:
   - "#vmware"

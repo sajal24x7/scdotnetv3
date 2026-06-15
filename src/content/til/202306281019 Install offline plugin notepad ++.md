@@ -1,8 +1,8 @@
 ---
 title: Install Offline Plugin Notepad ++
 slug: install-offline-plugin-notepad-++
-pubDate: '2023-06-28T10:19:00+03:00'
-updatedDate: '2023-06-28T10:19:00+03:00'
+created: '2023-06-28T10:19:00+03:00'
+updated: '2023-06-28T10:19:00+03:00'
 category: til
 tags: []
 ---

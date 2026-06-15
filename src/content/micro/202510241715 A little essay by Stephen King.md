@@ -1,8 +1,8 @@
 ---
 title: A Little Essay by Stephen King
 slug: a-little-essay-by-stephen-king
-pubDate: 2025-10-24T14:16:11.000Z
-updatedDate: 2025-10-24T14:16:11.000Z
+created: 2025-10-24T14:16:11.000Z
+updated: 2025-10-24T14:16:11.000Z
 category: micro
 tags:
   - writing

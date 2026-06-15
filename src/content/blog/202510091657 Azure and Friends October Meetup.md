@@ -1,8 +1,8 @@
 ---
 title: Azure and Friends October Meetup
 slug: azure-and-friends-october-meetup
-pubDate: 2025-10-09T21:53:28.000Z
-updatedDate: 2025-10-09T21:53:28.000Z
+created: 2025-10-09T21:53:28.000Z
+updated: 2025-10-09T21:53:28.000Z
 category: blog
 tags:
   - azure

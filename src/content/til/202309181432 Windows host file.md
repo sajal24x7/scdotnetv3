@@ -1,8 +1,8 @@
 ---
 title: Windows Host File
 slug: windows-host-file
-pubDate: '2023-09-18T14:32:00+03:00'
-updatedDate: '2023-09-18T14:32:00+03:00'
+created: '2023-09-18T14:32:00+03:00'
+updated: '2023-09-18T14:32:00+03:00'
 category: til
 tags:
 - windows

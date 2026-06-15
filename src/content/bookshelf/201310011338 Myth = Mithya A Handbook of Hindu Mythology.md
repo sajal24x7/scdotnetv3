@@ -1,8 +1,8 @@
 ---
 title: "Myth = Mithya: A Handbook of Hindu Mythology"
 slug: myth-mithya-a-handbook-of-hindu-mythology
-pubDate: 2013-10-01T13:38:03.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2013-10-01T13:38:03.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

@@ -1,8 +1,8 @@
 ---
 title: Download Inventory From Ansible Automation Platform
 slug: download-inventory-from-ansible-automation-platform
-pubDate: '2024-08-13T14:48:00+03:00'
-updatedDate: '2024-08-13T14:48:00+03:00'
+created: '2024-08-13T14:48:00+03:00'
+updated: '2024-08-13T14:48:00+03:00'
 category: til
 tags:
 - ansible

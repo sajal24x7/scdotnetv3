@@ -1,8 +1,8 @@
 ---
 title: Microsoft Entra
 slug: microsoft-entra
-pubDate: '2023-12-23T14:20:00+03:00'
-updatedDate: '2023-12-23T14:20:00+03:00'
+created: '2023-12-23T14:20:00+03:00'
+updated: '2023-12-23T14:20:00+03:00'
 category: til
 tags:
 - azure

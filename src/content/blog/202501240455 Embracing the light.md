@@ -2,8 +2,8 @@
 title: "Embracing the Light"
 slug: "embracing-the-light"
 description: "Light mode / dark mode"
-pubDate: 2025-01-24T04:55:45
-updatedDate: 2025-01-24T04:55:45
+created: 2025-01-24T04:55:45
+updated: 2025-01-24T04:55:45
 category: blog
 tags: ["blog", "tech"]
 image: "https://images.unsplash.com/photo-1607027340690-37e80b0f1b31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE1fHxkYXJrJTIwbW9kZXxlbnwwfHx8fDE3Mzc2Njg1OTB8MA&ixlib=rb-4.0.3&q=80&w=2000"

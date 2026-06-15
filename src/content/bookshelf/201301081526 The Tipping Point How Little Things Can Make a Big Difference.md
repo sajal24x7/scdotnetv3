@@ -1,8 +1,8 @@
 ---
 title: "The Tipping Point: How Little Things Can Make a Big Difference"
 slug: the-tipping-point-how-little-things-can-make-a-big-difference
-pubDate: 2013-01-08T15:26:39.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2013-01-08T15:26:39.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

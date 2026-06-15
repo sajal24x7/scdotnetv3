@@ -2,8 +2,8 @@
 title: "The Future of Kindle"
 slug: "the-future-of-kindle"
 description: "More notes please!"
-pubDate: 2024-10-23T03:39:21
-updatedDate: 2024-10-23T03:39:20
+created: 2024-10-23T03:39:21
+updated: 2024-10-23T03:39:20
 category: blog
 tags: ["blog", "reading"]
 image: "https://images.unsplash.com/photo-1529978567524-3dfb744b7769?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGtpbmRsZXxlbnwwfHx8fDE3Mjk2MjE3NDB8MA&ixlib=rb-4.0.3&q=80&w=2000"

@@ -1,8 +1,8 @@
 ---
 title: Delegate Permission to Restore Deleted Ad Objects
 slug: delegate-permission-to-restore-deleted-ad-objects
-pubDate: '2024-03-25T12:47:00+03:00'
-updatedDate: '2024-03-25T12:47:00+03:00'
+created: '2024-03-25T12:47:00+03:00'
+updated: '2024-03-25T12:47:00+03:00'
 category: til
 tags:
 - ad

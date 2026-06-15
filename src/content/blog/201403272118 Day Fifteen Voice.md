@@ -1,8 +1,8 @@
 ---
 title: "Day Fifteen: Voice"
 slug: "day-fifteen-voice"
-pubDate: 2014-03-27T21:18:56
-updatedDate: 2014-03-27T21:18:56
+created: 2014-03-27T21:18:56
+updated: 2014-03-27T21:18:56
 category: blog
 tags: ["30 day challenge", "golden temple", "language", "photography", "poem", "prose", "religion", "thoughts"]
 ---

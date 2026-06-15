@@ -1,8 +1,8 @@
 ---
 title: "How to Change How a Link Looks Like in Obsidian"
 slug: "how-to-change-how-a-link-looks-like-in-obsidian"
-pubDate: 2025-09-18T14:07:50+03:00
-updatedDate: 2025-09-18T14:07:50+03:00
+created: 2025-09-18T14:07:50+03:00
+updated: 2025-09-18T14:07:50+03:00
 category: til
 tags:
   - obsidian

@@ -1,8 +1,8 @@
 ---
 title: "Asking Claude to Create a Calendar Entry From a Screenshot"
 slug: "asking-claude-to-create-a-calendar-entry-from-a-screenshot"
-pubDate: 2025-08-04T12:53:07+03:00
-updatedDate: 2025-08-04T12:53:07+03:00
+created: 2025-08-04T12:53:07+03:00
+updated: 2025-08-04T12:53:07+03:00
 category: til
 tags:
   - ai

@@ -1,8 +1,8 @@
 ---
 title: "How Twiddling Enshittifies Your Brain"
 slug: "how-twiddling-enshittifies-your-brain"
-pubDate: 2025-07-29T14:10:24+03:00
-updatedDate: 2025-07-29T14:10:24+03:00
+created: 2025-07-29T14:10:24+03:00
+updated: 2025-07-29T14:10:24+03:00
 category: micro
 tags:
   - enshittification

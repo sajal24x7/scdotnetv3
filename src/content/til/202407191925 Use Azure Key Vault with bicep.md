@@ -1,8 +1,8 @@
 ---
 title: Use Azure Key Vault With Bicep
 slug: use-azure-key-vault-with-bicep
-pubDate: '2024-07-19T19:25:00+03:00'
-updatedDate: '2024-07-19T19:25:00+03:00'
+created: '2024-07-19T19:25:00+03:00'
+updated: '2024-07-19T19:25:00+03:00'
 category: til
 tags:
 - azure

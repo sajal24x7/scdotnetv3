@@ -2,8 +2,8 @@
 title: "Books I've Read This Year"
 slug: "books-ive-read-this-year-2024"
 description: "16 - that's the number"
-pubDate: 2024-12-25T00:00:00
-updatedDate: 2024-12-25T00:00:00
+created: 2024-12-25T00:00:00
+updated: 2024-12-25T00:00:00
 category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_1809.jpeg"

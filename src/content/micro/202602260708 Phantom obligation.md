@@ -1,8 +1,8 @@
 ---
 title: Phantom Obligation
 slug: phantom-obligation
-pubDate: 2026-02-26T10:02:09.000Z
-updatedDate: 2026-02-26T10:02:09.000Z
+created: 2026-02-26T10:02:09.000Z
+updated: 2026-02-26T10:02:09.000Z
 category: micro
 tags:
   - rss

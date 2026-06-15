@@ -1,8 +1,8 @@
 ---
 title: How to Rate Books
 slug: how-to-rate-books
-pubDate: 2025-09-27T19:10:37.000Z
-updatedDate: 2025-09-27T19:10:37.000Z
+created: 2025-09-27T19:10:37.000Z
+updated: 2025-09-27T19:10:37.000Z
 category: micro
 tags:
   - books

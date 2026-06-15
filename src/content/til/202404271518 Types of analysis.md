@@ -1,8 +1,8 @@
 ---
 title: Types of Analysis
 slug: types-of-analysis
-pubDate: '2024-04-27T15:18:00+03:00'
-updatedDate: '2024-04-27T15:18:00+03:00'
+created: '2024-04-27T15:18:00+03:00'
+updated: '2024-04-27T15:18:00+03:00'
 category: til
 tags:
 - azure

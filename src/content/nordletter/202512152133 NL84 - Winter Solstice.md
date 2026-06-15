@@ -3,8 +3,8 @@ title: Winter Solstice
 slug: nl84-winter-solstice
 edition: 84
 image: https://storage.sajalchoudhary.net/images/2025/12/nl84-4.jpeg
-pubDate: 2025-12-21T20:00:25+02:00
-updatedDate: 2025-12-21T20:00:25+02:00
+created: 2025-12-21T20:00:25+02:00
+updated: 2025-12-21T20:00:25+02:00
 category: nordletter
 tags:
   - christmas

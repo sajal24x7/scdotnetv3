@@ -1,8 +1,8 @@
 ---
 title: "A Couple of Rasagullas"
 slug: "a-couple-of-rasagullas"
-pubDate: 2017-06-12T21:00:00
-updatedDate: 2024-05-04T07:23:29
+created: 2017-06-12T21:00:00
+updated: 2024-05-04T07:23:29
 category: story
 tags: ["stories"]
 image: "https://images.unsplash.com/photo-1509749837427-ac94a2553d0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGJ1c3xlbnwwfHx8fDE3MTQ4MDcxNDR8MA&ixlib=rb-4.0.3&q=80&w=2000"

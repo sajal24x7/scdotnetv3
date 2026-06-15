@@ -1,8 +1,8 @@
 ---
 title: Openstack Disintegration
 slug: openstack-disintegration
-pubDate: '2023-06-20T12:38:00+03:00'
-updatedDate: '2023-06-20T12:38:00+03:00'
+created: '2023-06-20T12:38:00+03:00'
+updated: '2023-06-20T12:38:00+03:00'
 category: til
 tags: []
 ---

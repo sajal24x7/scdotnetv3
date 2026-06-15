@@ -2,8 +2,8 @@
 title: "Providing Customisation Options to Users Is a Great Thing"
 slug: "providing-customisation-options-to-users-is-a-great-thing"
 description: "Adventures in configuring tools to work better"
-pubDate: 2025-03-13T05:22:38
-updatedDate: 2025-03-13T05:22:37
+created: 2025-03-13T05:22:38
+updated: 2025-03-13T05:22:37
 category: blog
 tags: ["blog", "obsidian", "writing is", "apple", "choice"]
 image: "https://storage.sajalchoudhary.net/images/2025/03/Screenshot-2025-03-12-at-11.04.06-PM.png"

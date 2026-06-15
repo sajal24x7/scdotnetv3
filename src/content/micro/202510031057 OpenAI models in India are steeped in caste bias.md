@@ -1,8 +1,8 @@
 ---
 title: OpenAI Models in India Are Steeped in Caste Bias
 slug: openai-models-in-india-are-steeped-in-caste-bias
-pubDate: 2025-10-03T08:10:57.000Z
-updatedDate: 2025-10-03T08:10:57.000Z
+created: 2025-10-03T08:10:57.000Z
+updated: 2025-10-03T08:10:57.000Z
 category: micro
 tags:
   - openai

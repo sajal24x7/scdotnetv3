@@ -1,8 +1,8 @@
 ---
 title: "Day Sixteen: In Death"
 slug: "day-sixteen-in-death"
-pubDate: 2014-03-28T22:56:29
-updatedDate: 2014-03-28T22:56:29
+created: 2014-03-28T22:56:29
+updated: 2014-03-28T22:56:29
 category: blog
 tags: ["30 day challenge", "photography", "Uncategorized"]
 ---

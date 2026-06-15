@@ -1,8 +1,8 @@
 ---
 title: Windows Sysprep Reference
 slug: windows-sysprep-reference
-pubDate: '2022-09-26T13:30:00+03:00'
-updatedDate: '2022-09-26T13:30:00+03:00'
+created: '2022-09-26T13:30:00+03:00'
+updated: '2022-09-26T13:30:00+03:00'
 category: til
 tags:
 - windows

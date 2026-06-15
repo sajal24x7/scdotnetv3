@@ -1,8 +1,8 @@
 ---
 title: "On Possessions"
 slug: "on-possessions"
-pubDate: 2015-11-01T21:06:46
-updatedDate: 2015-11-01T21:06:46
+created: 2015-11-01T21:06:46
+updated: 2015-11-01T21:06:46
 category: blog
 tags: ["blog", "diwali", "minimalism", "nandan", "possessions", "stuff"]
 ---

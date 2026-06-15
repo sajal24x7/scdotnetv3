@@ -1,8 +1,8 @@
 ---
 title: "What to Say to Someone Who's Feeling Down"
 slug: "what-to-say-to-someone-who"
-pubDate: 2016-02-23T00:00:00
-updatedDate: 2016-02-23T00:00:00
+created: 2016-02-23T00:00:00
+updated: 2016-02-23T00:00:00
 category: blog
 tags: ["blog", "dealing with emotions", "depression", "down", "emotions", "feelings", "life"]
 ---

@@ -1,8 +1,8 @@
 ---
 title: Solar-Panels on Balconies
 slug: solar-panels-on-balconies
-pubDate: 2026-04-02T07:36:49.000Z
-updatedDate: 2026-04-02T07:36:49.000Z
+created: 2026-04-02T07:36:49.000Z
+updated: 2026-04-02T07:36:49.000Z
 category: micro
 tags:
   - solar

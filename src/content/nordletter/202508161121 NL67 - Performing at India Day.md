@@ -1,8 +1,8 @@
 ---
 title: "Performing at India Day"
 slug: "nl67-performing-at-india-day"
-pubDate: 2025-08-17T22:46:15+03:00
-updatedDate: 2025-08-17T22:46:15+03:00
+created: 2025-08-17T22:46:15+03:00
+updated: 2025-08-17T22:46:15+03:00
 category: nordletter
 tags:
   - india-day

@@ -1,8 +1,8 @@
 ---
 title: Nothing Phone 4a Renders
 slug: nothing-phone-4a-renders
-pubDate: 2026-02-23T14:22:34.000Z
-updatedDate: 2026-02-23T14:22:34.000Z
+created: 2026-02-23T14:22:34.000Z
+updated: 2026-02-23T14:22:34.000Z
 category: micro
 tags:
   - android

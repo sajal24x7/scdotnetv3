@@ -3,8 +3,8 @@ title: "What Would You Do?"
 edition: 55
 slug: "what-would-you-do"
 description: "Teenagers + AI can be a partner + Meta doing Meta things + Love Death and Robots!"
-pubDate: 2025-04-13T03:34:55
-updatedDate: 2025-04-13T03:34:54
+created: 2025-04-13T03:34:55
+updated: 2025-04-13T03:34:54
 category: nordletter
 tags: ["Nord Letter", "AI", "finland"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0884.jpeg"

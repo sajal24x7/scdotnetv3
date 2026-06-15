@@ -1,8 +1,8 @@
 ---
 title: "Record Solar Growth Keeps China's CO2 Falling in First Half of 2025"
 slug: "record-solar-growth-keeps-chinas-co2-falling-in-first-half-of-2025"
-pubDate: 2025-08-23T22:31:08+03:00
-updatedDate: 2025-08-23T22:31:08+03:00
+created: 2025-08-23T22:31:08+03:00
+updated: 2025-08-23T22:31:08+03:00
 category: micro
 tags:
   - china

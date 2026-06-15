@@ -1,8 +1,8 @@
 ---
 title: Azure Monitoring
 slug: azure-monitoring
-pubDate: '2024-08-04T12:24:00+03:00'
-updatedDate: '2024-08-04T12:24:00+03:00'
+created: '2024-08-04T12:24:00+03:00'
+updated: '2024-08-04T12:24:00+03:00'
 category: til
 tags:
 - azure

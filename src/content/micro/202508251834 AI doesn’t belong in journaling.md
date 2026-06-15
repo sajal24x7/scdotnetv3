@@ -1,8 +1,8 @@
 ---
 title: "AI Doesn’t Belong in Journaling"
 slug: "ai-doesnt-belong-in-journaling"
-pubDate: 2025-08-30T11:43:00+03:00
-updatedDate: 2025-08-30T11:43:00+03:00
+created: 2025-08-30T11:43:00+03:00
+updated: 2025-08-30T11:43:00+03:00
 category: micro
 tags:
   - ai

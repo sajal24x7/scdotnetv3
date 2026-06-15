@@ -1,8 +1,8 @@
 ---
 title: "The Idea of Being a Writer"
 slug: "the-idea-of-being-a-writer"
-pubDate: 2015-07-24T21:00:00
-updatedDate: 2015-07-24T21:00:00
+created: 2015-07-24T21:00:00
+updated: 2015-07-24T21:00:00
 category: blog
 tags: ["blog", "ideas", "writer", "writing is", "writing tips"]
 ---

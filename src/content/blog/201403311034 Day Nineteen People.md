@@ -1,8 +1,8 @@
 ---
 title: "Day Nineteen: People"
 slug: "day-nineteen-people"
-pubDate: 2014-03-31T10:34:00
-updatedDate: 2014-03-31T10:34:00
+created: 2014-03-31T10:34:00
+updated: 2014-03-31T10:34:00
 category: blog
 tags: ["30 day challenge", "photography", "Uncategorized"]
 ---

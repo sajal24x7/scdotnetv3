@@ -1,8 +1,8 @@
 ---
 title: "iPad Gets Closer to the Mac"
 slug: "ipad-gets-closer-to-the-mac"
-pubDate: 2025-07-25T10:32:06+03:00
-updatedDate: 2025-07-25T10:32:06+03:00
+created: 2025-07-25T10:32:06+03:00
+updated: 2025-07-25T10:32:06+03:00
 category: micro
 tags:
   - apple

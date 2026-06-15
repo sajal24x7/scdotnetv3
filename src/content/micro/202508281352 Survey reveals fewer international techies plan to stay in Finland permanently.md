@@ -1,8 +1,8 @@
 ---
 title: Survey Reveals Fewer International Techies Plan to Stay in Finland Permanently
 slug: "whats-the-point-survey-reveals-fewer-international-techies-plan-to-stay-in-finland-permanently"
-pubDate: 2025-08-28T13:53:47+03:00
-updatedDate: 2025-08-28T13:53:47+03:00
+created: 2025-08-28T13:53:47+03:00
+updated: 2025-08-28T13:53:47+03:00
 category: micro
 tags:
   - finland

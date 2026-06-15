@@ -1,8 +1,8 @@
 ---
 title: Progress Takes Time While Destruction Is Instantaneous
 slug: progress-takes-time-while-destruction-is-instantaneous
-pubDate: 2025-10-16T07:16:45.000Z
-updatedDate: 2025-10-16T07:16:45.000Z
+created: 2025-10-16T07:16:45.000Z
+updated: 2025-10-16T07:16:45.000Z
 category: evergreen
 tags:
   - progress

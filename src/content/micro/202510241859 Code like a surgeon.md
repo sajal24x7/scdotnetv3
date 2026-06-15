@@ -1,8 +1,8 @@
 ---
 title: Code Like a Surgeon
 slug: code-like-a-surgeon
-pubDate: 2025-10-24T16:02:10.000Z
-updatedDate: 2025-10-24T16:02:10.000Z
+created: 2025-10-24T16:02:10.000Z
+updated: 2025-10-24T16:02:10.000Z
 category: micro
 tags:
   - agentic-coding

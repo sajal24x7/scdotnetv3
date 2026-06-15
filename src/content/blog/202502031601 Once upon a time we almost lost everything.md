@@ -2,8 +2,8 @@
 title: "Once Upon a Time, We Almost Lost Everything"
 slug: "once-upon-a-time-we-almost-lost-everything"
 description: "A story of a near victim of a cyber crime"
-pubDate: 2025-02-03T16:01:47
-updatedDate: 2025-02-03T16:01:47
+created: 2025-02-03T16:01:47
+updated: 2025-02-03T16:01:47
 category: blog
 tags: ["blog", "cybercrime", "phishing", "security"]
 image: "https://images.unsplash.com/photo-1701724355618-55b0306ff6c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fFBoaXNoaW5nfGVufDB8fHx8MTczODU5ODQyMHww&ixlib=rb-4.0.3&q=80&w=2000"

@@ -2,8 +2,8 @@
 title: "How the Coffee Breaks Have Changed"
 slug: "how-the-coffee-breaks-have-changed"
 description: "Answer: more time on phones"
-pubDate: 2025-02-17T15:03:36
-updatedDate: 2025-02-19T08:55:57
+created: 2025-02-17T15:03:36
+updated: 2025-02-19T08:55:57
 category: blog
 tags: ["blog", "phone", "breaks"]
 image: "https://images.unsplash.com/photo-1739715642309-04ea662522eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDZ8fHx8fHx8fDE3Mzk4MDQ0NTV8&ixlib=rb-4.0.3&q=80&w=2000"

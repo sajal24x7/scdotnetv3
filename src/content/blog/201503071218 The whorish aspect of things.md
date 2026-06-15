@@ -1,8 +1,8 @@
 ---
 title: "The Whorish Aspect of Things"
 slug: "the-whorish-aspect-of-things"
-pubDate: 2015-03-07T12:18:28
-updatedDate: 2015-03-07T12:18:28
+created: 2015-03-07T12:18:28
+updated: 2015-03-07T12:18:28
 category: blog
 tags: ["blog", "facebook", "writing is", "writing tips"]
 ---

@@ -1,8 +1,8 @@
 ---
 title: How to Export Csv From Cis Scan
 slug: how-to-export-csv-from-cis-scan
-pubDate: 2025-12-18T10:31:55.000Z
-updatedDate: 2025-12-18T10:31:55.000Z
+created: 2025-12-18T10:31:55.000Z
+updated: 2025-12-18T10:31:55.000Z
 category: til
 tags:
   - cis

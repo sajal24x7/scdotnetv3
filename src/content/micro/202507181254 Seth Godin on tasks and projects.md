@@ -1,8 +1,8 @@
 ---
 title: "Seth Godin on Tasks and Projects"
 slug: "seth-godin-on-tasks-and-projects"
-pubDate: 2025-07-19T11:16:07+03:00
-updatedDate: 2025-07-19T11:16:07+03:00
+created: 2025-07-19T11:16:07+03:00
+updated: 2025-07-19T11:16:07+03:00
 category: micro
 tags:
   - work

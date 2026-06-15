@@ -1,8 +1,8 @@
 ---
 title: Azure Import Export
 slug: azure-import-export
-pubDate: '2024-06-29T14:58:00+03:00'
-updatedDate: '2024-06-29T14:58:00+03:00'
+created: '2024-06-29T14:58:00+03:00'
+updated: '2024-06-29T14:58:00+03:00'
 category: til
 tags:
 - azure

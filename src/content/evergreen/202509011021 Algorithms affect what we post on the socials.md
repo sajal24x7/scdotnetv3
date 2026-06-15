@@ -1,8 +1,8 @@
 ---
 title: "Algorithms Affect What We Post on the Socials"
 slug: "algorithms-affect-what-we-post-on-the-socials"
-pubDate: 2025-09-01T10:25:15+03:00
-updatedDate: 2025-09-01T10:25:15+03:00
+created: 2025-09-01T10:25:15+03:00
+updated: 2025-09-01T10:25:15+03:00
 category: evergreen
 tags:
   - algorithm

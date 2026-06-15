@@ -1,8 +1,8 @@
 ---
 title: Connecting to Onprem
 slug: connecting-to-onprem
-pubDate: '2024-04-13T13:37:00+03:00'
-updatedDate: '2024-04-13T13:37:00+03:00'
+created: '2024-04-13T13:37:00+03:00'
+updated: '2024-04-13T13:37:00+03:00'
 category: til
 tags:
 - azure

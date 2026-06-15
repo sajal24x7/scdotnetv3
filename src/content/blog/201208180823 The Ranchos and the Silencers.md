@@ -1,8 +1,8 @@
 ---
 title: "The Ranchos and the Silencers"
 slug: "the-ranchos-and-the-silencers"
-pubDate: 2012-08-18T08:23:42
-updatedDate: 2024-04-29T13:21:06
+created: 2012-08-18T08:23:42
+updated: 2024-04-29T13:21:06
 category: blog
 tags: [“college-life”]
 ---

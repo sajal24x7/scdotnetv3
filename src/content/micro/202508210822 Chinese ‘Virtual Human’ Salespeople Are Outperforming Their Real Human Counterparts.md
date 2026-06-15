@@ -1,8 +1,8 @@
 ---
 title: "Chinese ‘Virtual Human’ Salespeople Are Outperforming Their Real Human Counterparts"
 slug: "chinese-virtual-human-salespeople-are-outperforming-their-real-human-counterparts"
-pubDate: 2025-08-21T08:22:50+03:00
-updatedDate: 2025-08-21T08:22:50+03:00
+created: 2025-08-21T08:22:50+03:00
+updated: 2025-08-21T08:22:50+03:00
 category: micro
 tags:
   - ai

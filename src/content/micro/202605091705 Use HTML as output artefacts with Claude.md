@@ -1,8 +1,8 @@
 ---
 title: Use HTML as output artefacts with Claude
 slug: use-html-as-output-artefacts-with-claude
-pubDate: 2026-05-09T14:13:51.000Z
-updatedDate: 2026-05-09T14:13:51.000Z
+created: 2026-05-09T14:13:51.000Z
+updated: 2026-05-09T14:13:51.000Z
 category: micro
 tags:
   - claude-code

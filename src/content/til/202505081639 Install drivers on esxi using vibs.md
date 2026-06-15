@@ -1,8 +1,8 @@
 ---
 title: "Install Drivers on Esxi Using Vibs"
 slug: "install-drivers-on-esxi-using-vibs"
-pubDate: 2025-05-08T16:38:51+03:00
-updatedDate: 2025-05-08T16:38:51+03:00
+created: 2025-05-08T16:38:51+03:00
+updated: 2025-05-08T16:38:51+03:00
 category: til
 tags:
   - "#vmware"

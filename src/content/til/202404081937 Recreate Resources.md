@@ -1,8 +1,8 @@
 ---
 title: Recreate Resources
 slug: recreate-resources
-pubDate: '2024-04-08T19:37:00+03:00'
-updatedDate: '2024-04-08T19:37:00+03:00'
+created: '2024-04-08T19:37:00+03:00'
+updated: '2024-04-08T19:37:00+03:00'
 category: til
 tags:
 - resiliency

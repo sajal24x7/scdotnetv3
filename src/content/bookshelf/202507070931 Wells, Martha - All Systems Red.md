@@ -1,8 +1,8 @@
 ---
 title: All Systems Red
 slug: all-systems-red
-pubDate: 2025-07-09T16:12:00+03:00
-updatedDate: 2026-06-05T14:19:08
+created: 2025-07-09T16:12:00+03:00
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - murderbot

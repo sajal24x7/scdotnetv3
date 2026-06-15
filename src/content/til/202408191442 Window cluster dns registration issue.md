@@ -1,8 +1,8 @@
 ---
 title: Window Cluster Dns Registration Issue
 slug: window-cluster-dns-registration-issue
-pubDate: '2024-08-19T14:42:00+03:00'
-updatedDate: '2024-08-19T14:42:00+03:00'
+created: '2024-08-19T14:42:00+03:00'
+updated: '2024-08-19T14:42:00+03:00'
 category: til
 tags:
 - windows

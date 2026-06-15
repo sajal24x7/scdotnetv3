@@ -36,7 +36,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
         <span class="post-item-time">
           <span class="post-item-time-chip card-chip">
             <TimeDisplay
-              date={post.data.pubDate}
+              date={post.data.created}
               category={post.data.category}
               className="post-item-time-value"
               format="relative"

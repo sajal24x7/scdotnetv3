@@ -1,8 +1,8 @@
 ---
 title: Create VNIC in Azure
 slug: create-vnic-in-azure
-pubDate: '2024-08-04T11:16:00+03:00'
-updatedDate: '2024-08-04T11:16:00+03:00'
+created: '2024-08-04T11:16:00+03:00'
+updated: '2024-08-04T11:16:00+03:00'
 category: til
 tags:
 - powershell

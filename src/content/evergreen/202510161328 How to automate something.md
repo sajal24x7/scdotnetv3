@@ -1,8 +1,8 @@
 ---
 title: How to Automate Something
 slug: how-to-automate-something
-pubDate: 2025-10-16T10:31:07.000Z
-updatedDate: 2025-10-16T10:31:07.000Z
+created: 2025-10-16T10:31:07.000Z
+updated: 2025-10-16T10:31:07.000Z
 category: evergreen
 tags:
   - automation

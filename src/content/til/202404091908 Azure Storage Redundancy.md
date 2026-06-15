@@ -1,8 +1,8 @@
 ---
 title: Azure Storage Redundancy
 slug: azure-storage-redundancy
-pubDate: '2024-04-09T19:08:00+03:00'
-updatedDate: '2024-04-09T19:08:00+03:00'
+created: '2024-04-09T19:08:00+03:00'
+updated: '2024-04-09T19:08:00+03:00'
 category: til
 tags:
 - azure

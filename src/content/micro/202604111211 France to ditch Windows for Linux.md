@@ -1,8 +1,8 @@
 ---
 title: France to Ditch Windows for Linux
 slug: france-to-ditch-windows-for-linux
-pubDate: 2026-04-11T09:12:50.000Z
-updatedDate: 2026-04-11T09:12:50.000Z
+created: 2026-04-11T09:12:50.000Z
+updated: 2026-04-11T09:12:50.000Z
 category: micro
 tags:
   - linux

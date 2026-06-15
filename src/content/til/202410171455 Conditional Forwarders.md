@@ -1,8 +1,8 @@
 ---
 title: Conditional Forwarders
 slug: conditional-forwarders
-pubDate: '2024-10-17T14:55:00+03:00'
-updatedDate: '2024-10-17T14:55:00+03:00'
+created: '2024-10-17T14:55:00+03:00'
+updated: '2024-10-17T14:55:00+03:00'
 category: til
 tags:
 - windows

@@ -1,8 +1,8 @@
 ---
 title: "SAP to Invest Over 20 Billion Euros in 'Sovereign Cloud'"
 slug: "sap-to-invest-over-20-billion-euros-in-sovereign-cloud"
-pubDate: 2025-09-06T09:55:46+03:00
-updatedDate: 2025-09-06T09:55:46+03:00
+created: 2025-09-06T09:55:46+03:00
+updated: 2025-09-06T09:55:46+03:00
 category: micro
 tags:
   - sap

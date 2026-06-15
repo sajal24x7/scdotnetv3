@@ -1,8 +1,8 @@
 ---
 title: Azure Storage Account
 slug: azure-storage-account
-pubDate: '2024-04-09T18:59:00+03:00'
-updatedDate: '2024-04-09T18:59:00+03:00'
+created: '2024-04-09T18:59:00+03:00'
+updated: '2024-04-09T18:59:00+03:00'
 category: til
 tags:
 - azure

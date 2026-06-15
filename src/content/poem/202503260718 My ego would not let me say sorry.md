@@ -1,8 +1,8 @@
 ---
 title: "My Ego Would Not Let Me Say Sorry"
 slug: "my-ego-would-not-let-me-say-sorry"
-pubDate: 2025-03-26T07:18:23
-updatedDate: 2025-03-26T07:18:23
+created: 2025-03-26T07:18:23
+updated: 2025-03-26T07:18:23
 category: poem
 tags: ["poems"]
 image: "https://images.unsplash.com/photo-1522785375704-25fac21552fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxTb3JyeXxlbnwwfHx8fDE3NDI5NzM0Njd8MA&ixlib=rb-4.0.3&q=80&w=2000"

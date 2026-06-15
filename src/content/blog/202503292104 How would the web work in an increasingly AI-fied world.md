@@ -1,8 +1,8 @@
 ---
 title: "How Would the Web Work in an Increasingly AI-Fied World"
 slug: "how-would-the-web-work-in-an-increasingly-ai-fied-world"
-pubDate: 2025-03-29T21:04:08
-updatedDate: 2025-03-29T21:04:08
+created: 2025-03-29T21:04:08
+updated: 2025-03-29T21:04:08
 category: blog
 tags: ["blog", "AI", "openweb", "writing is", "reading"]
 image: "https://images.unsplash.com/photo-1461880234904-751a2f54f1c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fGdsb2JhbCUyMHdhcm1pbmd8ZW58MHx8fHwxNzQzMTA2NTk5fDA&ixlib=rb-4.0.3&q=80&w=2000"

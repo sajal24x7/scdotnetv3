@@ -2,8 +2,8 @@
 title: "Meta Will Not Do Fact-Checking Anymore"
 slug: "meta-will-not-do-fact-checking-anymore"
 description: "Meta goes MAGA?"
-pubDate: 2025-01-09T14:48:42
-updatedDate: 2025-01-09T14:48:42
+created: 2025-01-09T14:48:42
+updated: 2025-01-09T14:48:42
 category: blog
 tags: ["blog", "web"]
 image: "https://images.unsplash.com/photo-1636051028886-0059ad2383c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDR8fG1ldGF8ZW58MHx8fHwxNzM2NDEzOTYyfDA&ixlib=rb-4.0.3&q=80&w=2000"

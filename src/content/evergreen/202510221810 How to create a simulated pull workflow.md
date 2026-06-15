@@ -1,8 +1,8 @@
 ---
 title: How to Create a Simulated Pull Workflow
 slug: how-to-create-a-simulated-pull-workflow
-pubDate: 2025-10-26T20:52:38.000Z
-updatedDate: 2025-10-26T20:52:38.000Z
+created: 2025-10-26T20:52:38.000Z
+updated: 2025-10-26T20:52:38.000Z
 category: evergreen
 tags:
   - management

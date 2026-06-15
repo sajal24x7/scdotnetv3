@@ -1,8 +1,8 @@
 ---
 title: "How to Work With Your Boss"
 slug: "how-to-work-with-your-boss"
-pubDate: 2025-10-12T21:15:01+03:00
-updatedDate: 2025-10-12T21:15:01+03:00
+created: 2025-10-12T21:15:01+03:00
+updated: 2025-10-12T21:15:01+03:00
 category: evergreen
 tags:
   - work

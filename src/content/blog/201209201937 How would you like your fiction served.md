@@ -1,8 +1,8 @@
 ---
 title: "How Would You Like Your Fiction Served?"
 slug: "how-would-you-like-your-fiction-served"
-pubDate: 2012-09-20T19:37:44
-updatedDate: 2024-04-29T13:31:54
+created: 2012-09-20T19:37:44
+updated: 2024-04-29T13:31:54
 category: blog
 tags: ["writing is"]
 image: "https://images.unsplash.com/photo-1596890187042-5240d0a9bb6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxmaWN0aW9ufGVufDB8fHx8MTcxNDM5NzQ5OXww&ixlib=rb-4.0.3&q=80&w=2000"

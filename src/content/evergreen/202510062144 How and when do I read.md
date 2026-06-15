@@ -1,8 +1,8 @@
 ---
 title: "How and When Do I Read"
 slug: "how-and-when-do-i-read"
-pubDate: 2025-10-06T21:49:17+03:00
-updatedDate: 2025-10-06T21:49:17+03:00
+created: 2025-10-06T21:49:17+03:00
+updated: 2025-10-06T21:49:17+03:00
 category: evergreen
 tags:
   - reading

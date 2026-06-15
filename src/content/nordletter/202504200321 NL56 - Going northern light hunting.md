@@ -3,8 +3,8 @@ title: "Going Northern Light Hunting"
 edition: 56
 slug: "going-northern-light-hunting"
 description: "And a bunch of AI use cases + Zuck shot himself in the foot"
-pubDate: 2025-04-20T03:21:32
-updatedDate: 2025-04-20T03:21:31
+created: 2025-04-20T03:21:32
+updated: 2025-04-20T03:21:31
 category: nordletter
 tags: ["Nord Letter", "AI", "meta", "finland", "northernlights"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_5235.jpeg"

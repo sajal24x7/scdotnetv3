@@ -1,8 +1,8 @@
 ---
 title: About Claude  Remote Control
 slug: about-claude-remote-control
-pubDate: 2026-02-25T11:13:16.000Z
-updatedDate: 2026-02-25T11:13:16.000Z
+created: 2026-02-25T11:13:16.000Z
+updated: 2026-02-25T11:13:16.000Z
 category: micro
 tags:
   - claude

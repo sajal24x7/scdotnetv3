@@ -1,8 +1,8 @@
 ---
 title: The Goal of Software Engineering
 slug: the-goal-of-software-engineering
-pubDate: 2025-11-20T08:14:14.000Z
-updatedDate: 2025-11-20T08:14:14.000Z
+created: 2025-11-20T08:14:14.000Z
+updated: 2025-11-20T08:14:14.000Z
 category: til
 tags:
   - software

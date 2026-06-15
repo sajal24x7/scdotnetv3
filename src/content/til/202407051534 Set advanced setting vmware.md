@@ -1,8 +1,8 @@
 ---
 title: Set Advanced Setting Vmware
 slug: set-advanced-setting-vmware
-pubDate: '2024-07-05T15:34:00+03:00'
-updatedDate: '2024-07-05T15:34:00+03:00'
+created: '2024-07-05T15:34:00+03:00'
+updated: '2024-07-05T15:34:00+03:00'
 category: til
 tags:
 - vmware

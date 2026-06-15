@@ -1,8 +1,8 @@
 ---
 title: Conditional Access
 slug: conditional-access
-pubDate: '2024-04-01T15:57:00+03:00'
-updatedDate: '2024-04-01T15:57:00+03:00'
+created: '2024-04-01T15:57:00+03:00'
+updated: '2024-04-01T15:57:00+03:00'
 category: til
 tags:
 - entra

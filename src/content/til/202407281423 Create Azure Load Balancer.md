@@ -1,8 +1,8 @@
 ---
 title: Create Azure Load Balancer
 slug: create-azure-load-balancer
-pubDate: '2024-07-28T14:23:00+03:00'
-updatedDate: '2024-07-28T14:23:00+03:00'
+created: '2024-07-28T14:23:00+03:00'
+updated: '2024-07-28T14:23:00+03:00'
 category: til
 tags:
 - powershell

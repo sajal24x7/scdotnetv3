@@ -1,8 +1,8 @@
 ---
 title: Disable SMBv1 on Windows
 slug: disable-smbv1-on-windows
-pubDate: '2024-09-16T12:36:00+03:00'
-updatedDate: '2024-09-16T12:36:00+03:00'
+created: '2024-09-16T12:36:00+03:00'
+updated: '2024-09-16T12:36:00+03:00'
 category: til
 tags:
 - windows

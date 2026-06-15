@@ -2,8 +2,8 @@
 title: "No Pity for the Bosses"
 slug: "no-pity-for-the-bosses"
 description: "Apps make everything legal"
-pubDate: 2024-12-20T20:33:28
-updatedDate: 2024-12-20T20:33:28
+created: 2024-12-20T20:33:28
+updated: 2024-12-20T20:33:28
 category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGFwcHMlMjBib3NzfGVufDB8fHx8MTczNDcyNjc4NHww&ixlib=rb-4.0.3&q=80&w=2000"

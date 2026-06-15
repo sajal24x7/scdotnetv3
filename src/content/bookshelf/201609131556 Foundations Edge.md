@@ -1,8 +1,8 @@
 ---
 title: Foundation's Edge
 slug: foundations-edge
-pubDate: 2016-09-13T15:56:26.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2016-09-13T15:56:26.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

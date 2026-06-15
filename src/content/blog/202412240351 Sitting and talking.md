@@ -2,8 +2,8 @@
 title: "Sitting and Talking"
 slug: "sitting-and-talking"
 description: "a place to be less alone"
-pubDate: 2024-12-24T03:51:21
-updatedDate: 2024-12-24T03:51:21
+created: 2024-12-24T03:51:21
+updated: 2024-12-24T03:51:21
 category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1516789892567-2a5f37fd9656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxiYXIlMjBmcmllbmRzfGVufDB8fHx8MTczNDk3OTIzOHww&ixlib=rb-4.0.3&q=80&w=2000"

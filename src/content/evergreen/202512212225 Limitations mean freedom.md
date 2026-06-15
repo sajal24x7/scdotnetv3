@@ -1,8 +1,8 @@
 ---
 title: Limitations Mean Freedom
 slug: limitations-mean-freedom
-pubDate: 2025-12-21T20:32:54.000Z
-updatedDate: 2025-12-21T20:32:54.000Z
+created: 2025-12-21T20:32:54.000Z
+updated: 2025-12-21T20:32:54.000Z
 category: evergreen
 tags:
   - limitation

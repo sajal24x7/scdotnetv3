@@ -1,8 +1,8 @@
 ---
 title: The Future of the Browser
 slug: the-future-of-the-browser
-pubDate: 2025-09-24T03:30:05.000Z
-updatedDate: 2025-09-24T03:30:05.000Z
+created: 2025-09-24T03:30:05.000Z
+updated: 2025-09-24T03:30:05.000Z
 category: micro
 tags:
   - ai

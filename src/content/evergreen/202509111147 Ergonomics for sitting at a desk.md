@@ -1,8 +1,8 @@
 ---
 title: "Ergonomics for Sitting at a Desk"
 slug: "ergonomics-for-sitting-at-a-desk"
-pubDate: 2025-09-11T11:57:25+03:00
-updatedDate: 2025-09-11T11:57:25+03:00
+created: 2025-09-11T11:57:25+03:00
+updated: 2025-09-11T11:57:25+03:00
 category: evergreen
 tags:
   - ergonomic

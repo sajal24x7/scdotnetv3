@@ -1,8 +1,8 @@
 ---
 title: VMware Not Possible to Forward Only Auth Logs to Splunk
 slug: vmware-not-possible-to-forward-only-auth-logs-to-splunk
-pubDate: '2024-06-27T13:02:00+03:00'
-updatedDate: '2024-06-27T13:02:00+03:00'
+created: '2024-06-27T13:02:00+03:00'
+updated: '2024-06-27T13:02:00+03:00'
 category: til
 tags:
 - vmware

@@ -1,8 +1,8 @@
 ---
 title: "Paul Graham on Good Writing"
 slug: "paul-graham-on-good-writing"
-pubDate: 2025-07-28T11:09:18+03:00
-updatedDate: 2025-07-28T11:09:18+03:00
+created: 2025-07-28T11:09:18+03:00
+updated: 2025-07-28T11:09:18+03:00
 category: micro
 tags:
   - writing

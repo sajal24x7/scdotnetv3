@@ -1,8 +1,8 @@
 ---
 title: A New Preview Option for Codex Agents
 slug: a-new-preview-option-for-codex-agents
-pubDate: 2025-09-26T19:00:45.000Z
-updatedDate: 2025-09-26T19:00:45.000Z
+created: 2025-09-26T19:00:45.000Z
+updated: 2025-09-26T19:00:45.000Z
 category: micro
 tags:
   - chatgpt

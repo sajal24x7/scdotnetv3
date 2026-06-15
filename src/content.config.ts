@@ -32,8 +32,8 @@ const postsLoader = (category: string) =>
 const postsSchema = z.object({
     title: z.string().optional(),
     description: z.string().optional(),
-    pubDate: dateSchema,
-    updatedDate: dateSchema.optional(),
+    created: dateSchema,
+    updated: dateSchema.optional(),
     category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'filmshelf', 'tvshelf', 'gameshelf', 'now', 'til', 'colophon']),
     status: z.enum(['active', 'done']).optional().default('active'),
     tags: z.array(z.string()).optional(),
@@ -87,8 +87,8 @@ const inboxCollection = defineCollection({
   schema: z.object({
     title: z.string().optional(),
     description: z.string().optional(),
-    pubDate: dateSchema.optional(),
-    updatedDate: dateSchema.optional(),
+    created: dateSchema.optional(),
+    updated: dateSchema.optional(),
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),

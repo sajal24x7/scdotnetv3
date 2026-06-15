@@ -1,8 +1,8 @@
 ---
 title: Bicep Functions
 slug: bicep-functions
-pubDate: '2024-07-20T14:33:00+03:00'
-updatedDate: '2024-07-20T14:33:00+03:00'
+created: '2024-07-20T14:33:00+03:00'
+updated: '2024-07-20T14:33:00+03:00'
 category: til
 tags:
 - azure

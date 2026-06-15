@@ -3,8 +3,8 @@ title: What Savya Wants
 slug: nl109-what-savya-wants
 edition: 109
 image: 'https://storage.sajalchoudhary.net/images/2026/06/nl109-02.jpeg'
-pubDate: 2026-06-13T16:29:14.000Z
-updatedDate: 2026-06-13T16:29:14.000Z
+created: 2026-06-13T16:29:14.000Z
+updated: 2026-06-13T16:29:14.000Z
 category: nordletter
 tags:
   - savya

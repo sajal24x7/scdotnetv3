@@ -1,8 +1,8 @@
 ---
 title: VMware Unable to Unmount Datastore
 slug: vmware-unable-to-unmount-datastore
-pubDate: '2022-05-31T14:53:00+03:00'
-updatedDate: '2022-05-31T14:53:00+03:00'
+created: '2022-05-31T14:53:00+03:00'
+updated: '2022-05-31T14:53:00+03:00'
 category: til
 tags:
 - vmware

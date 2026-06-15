@@ -1,8 +1,8 @@
 ---
 title: Say Yes to Surveillance
 slug: say-yes-to-surveillance
-pubDate: 2025-09-10T08:02:44.000Z
-updatedDate: 2025-09-10T08:02:44.000Z
+created: 2025-09-10T08:02:44.000Z
+updated: 2025-09-10T08:02:44.000Z
 category: micro
 tags:
   - surveillance

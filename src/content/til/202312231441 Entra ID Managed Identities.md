@@ -1,8 +1,8 @@
 ---
 title: Entra ID Managed Identities
 slug: entra-id-managed-identities
-pubDate: '2023-12-23T14:41:00+03:00'
-updatedDate: '2023-12-23T14:41:00+03:00'
+created: '2023-12-23T14:41:00+03:00'
+updated: '2023-12-23T14:41:00+03:00'
 category: til
 tags:
 - azure

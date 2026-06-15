@@ -1,8 +1,8 @@
 ---
 title: "The Perfect* Road Trip"
 slug: "the-perfect-road-trip"
-pubDate: 2013-07-23T01:21:30
-updatedDate: 2024-04-29T14:16:35
+created: 2013-07-23T01:21:30
+updated: 2024-04-29T14:16:35
 category: blog
 tags: [“travel”]
 ---

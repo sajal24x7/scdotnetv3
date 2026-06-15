@@ -1,8 +1,8 @@
 ---
 title: "Xbox Is Coming to Cars Thanks to an LG and Microsoft Partnership"
 slug: "xbox-is-coming-to-cars-thanks-to-an-lg-and-microsoft-partnership"
-pubDate: 2025-09-09T12:55:19+03:00
-updatedDate: 2025-09-09T12:55:19+03:00
+created: 2025-09-09T12:55:19+03:00
+updated: 2025-09-09T12:55:19+03:00
 category: micro
 tags:
   - electric-cars

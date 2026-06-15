@@ -1,8 +1,8 @@
 ---
 title: "Surprises, and Good Stories"
 slug: "surprises-and-good-stories"
-pubDate: 2014-09-18T21:00:05
-updatedDate: 2014-09-18T21:00:05
+created: 2014-09-18T21:00:05
+updated: 2014-09-18T21:00:05
 category: blog
 tags: ["blog", "death note", "death note review", "life", "light", "novel", "novella", "post-apocalytic", "stephen king", "the mist", "thewalkingdead", "writing is", "writing tips", "yagami"]
 ---

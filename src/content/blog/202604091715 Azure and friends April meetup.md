@@ -2,8 +2,8 @@
 title: Azure and Friends April Meetup
 slug: azure-and-friends-april-meetup
 image: https://storage.sajalchoudhary.net/images/2026/04/anf-2026-04-02.jpeg
-pubDate: 2026-04-09T19:18:31.000Z
-updatedDate: 2026-04-09T19:18:31.000Z
+created: 2026-04-09T19:18:31.000Z
+updated: 2026-04-09T19:18:31.000Z
 category: blog
 tags:
   - azure-and-friends

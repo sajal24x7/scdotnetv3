@@ -1,8 +1,8 @@
 ---
 title: Windows Delete Shadow Copies
 slug: windows-delete-shadow-copies
-pubDate: '2023-11-03T12:19:00+03:00'
-updatedDate: '2023-11-03T12:19:00+03:00'
+created: '2023-11-03T12:19:00+03:00'
+updated: '2023-11-03T12:19:00+03:00'
 category: til
 tags:
 - windows

@@ -1,8 +1,8 @@
 ---
 title: Good developers learn to program
 slug: good-developers-learn-to-program
-pubDate: 2026-05-02T06:21:30.000Z
-updatedDate: 2026-05-02T06:21:30.000Z
+created: 2026-05-02T06:21:30.000Z
+updated: 2026-05-02T06:21:30.000Z
 category: micro
 tags:
   - developers

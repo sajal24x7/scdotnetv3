@@ -1,8 +1,8 @@
 ---
 title: "Installing Remote Desktop on Standalone Server"
 slug: "installing-remote-desktop-on-standalone-server"
-pubDate: 2025-03-10T14:40:49+03:00
-updatedDate: 2025-03-10T14:40:49+03:00
+created: 2025-03-10T14:40:49+03:00
+updated: 2025-03-10T14:40:49+03:00
 category: til
 tags:
   - windows

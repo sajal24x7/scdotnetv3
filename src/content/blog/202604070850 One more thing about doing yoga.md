@@ -1,8 +1,8 @@
 ---
 title: One More Thing About Doing Yoga
 slug: one-more-thing-about-doing-yoga
-pubDate: 2026-04-07T05:56:36.000Z
-updatedDate: 2026-04-07T05:56:36.000Z
+created: 2026-04-07T05:56:36.000Z
+updated: 2026-04-07T05:56:36.000Z
 category: blog
 tags:
   - yoga

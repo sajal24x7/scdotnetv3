@@ -1,8 +1,8 @@
 ---
 title: "No Limit for Better"
 slug: "no-limit-for-better"
-pubDate: 2025-08-12T11:56:50+03:00
-updatedDate: 2025-08-12T11:56:50+03:00
+created: 2025-08-12T11:56:50+03:00
+updated: 2025-08-12T11:56:50+03:00
 category: micro
 tags: 
   - ai

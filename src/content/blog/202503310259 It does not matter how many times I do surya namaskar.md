@@ -2,8 +2,8 @@
 title: "It Does Not Matter How Many Times I Do Surya Namaskar"
 slug: "it-does-not-matter-how-many-times-i-do-surya-namaskar"
 description: "I don’t need to count anymore"
-pubDate: 2025-03-31T02:59:48
-updatedDate: 2025-03-31T02:59:47
+created: 2025-03-31T02:59:48
+updated: 2025-03-31T02:59:47
 category: blog
 tags: ["blog", "yoga"]
 image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fFlvZ2F8ZW58MHx8fHwxNzQzMzY0MDUwfDA&ixlib=rb-4.0.3&q=80&w=2000"

@@ -1,8 +1,8 @@
 ---
 title: "Can We Harness Light Like Nature for a New Era of Green Chemistry"
 slug: "can-we-harness-light-like-nature-for-a-new-era-of-green-chemistry"
-pubDate: 2025-08-18T10:20:43+03:00
-updatedDate: 2025-08-18T10:20:43+03:00
+created: 2025-08-18T10:20:43+03:00
+updated: 2025-08-18T10:20:43+03:00
 category: micro
 tags:
   - photosynthesis

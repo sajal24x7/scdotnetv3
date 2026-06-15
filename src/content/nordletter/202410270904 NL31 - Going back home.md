@@ -3,8 +3,8 @@ title: "Going Back Home"
 edition: 31
 slug: "going-back-home"
 description: "Trip to India"
-pubDate: 2024-10-27T09:04:21
-updatedDate: 2024-10-27T09:04:21
+created: 2024-10-27T09:04:21
+updated: 2024-10-27T09:04:21
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6409.jpeg"

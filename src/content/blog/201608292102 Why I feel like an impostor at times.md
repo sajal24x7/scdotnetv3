@@ -1,8 +1,8 @@
 ---
 title: "Why I Feel Like an Impostor at Times"
 slug: "why-i-feel-like-an-impostor-at-times"
-pubDate: 2016-08-29T21:02:15
-updatedDate: 2024-04-28T15:51:57
+created: 2016-08-29T21:02:15
+updated: 2024-04-28T15:51:57
 category: blog
 tags: ["writing is", "essays"]
 image: "https://images.unsplash.com/photo-1646650932143-3308b85aefd1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fGltcG9zdGVyfGVufDB8fHx8MTcxNDMxOTUwOXww&ixlib=rb-4.0.3&q=80&w=2000"

@@ -1,8 +1,8 @@
 ---
 title: User Defined Routing
 slug: user-defined-routing
-pubDate: '2024-07-28T14:01:00+03:00'
-updatedDate: '2024-07-28T14:01:00+03:00'
+created: '2024-07-28T14:01:00+03:00'
+updated: '2024-07-28T14:01:00+03:00'
 category: til
 tags:
 - azure

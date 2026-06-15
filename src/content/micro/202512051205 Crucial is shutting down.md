@@ -1,8 +1,8 @@
 ---
 title: Crucial Is Shutting Down
 slug: crucial-is-shutting-down
-pubDate: 2025-12-05T10:06:38.000Z
-updatedDate: 2025-12-05T10:06:38.000Z
+created: 2025-12-05T10:06:38.000Z
+updated: 2025-12-05T10:06:38.000Z
 category: micro
 tags:
   - ssd

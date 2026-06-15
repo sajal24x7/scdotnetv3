@@ -3,8 +3,8 @@ title: "Life Happens + iPads Galore"
 edition: 7
 slug: "life-happens-ipads-galore"
 description: "Nord Letter #7 - Meeting people + Food + iPads"
-pubDate: 2024-05-12T17:34:26
-updatedDate: 2024-07-07T20:04:36
+created: 2024-05-12T17:34:26
+updated: 2024-07-07T20:04:36
 category: nordletter
 tags:
   - helsinki

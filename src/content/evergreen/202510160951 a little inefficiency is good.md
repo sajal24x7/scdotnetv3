@@ -1,8 +1,8 @@
 ---
 title: A Little Inefficiency Is Good
 slug: a-little-inefficiency-is-good
-pubDate: 2025-10-16T07:17:00.000Z
-updatedDate: 2025-10-16T07:17:00.000Z
+created: 2025-10-16T07:17:00.000Z
+updated: 2025-10-16T07:17:00.000Z
 category: evergreen
 tags:
   - work

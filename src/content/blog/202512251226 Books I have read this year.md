@@ -1,8 +1,8 @@
 ---
 title: Books I Have Read This Year
 slug: books-ive-read-this-year
-pubDate: 2025-12-31T20:10:19.000Z
-updatedDate: 2025-12-31T20:10:19.000Z
+created: 2025-12-31T20:10:19.000Z
+updated: 2025-12-31T20:10:19.000Z
 category: blog
 tags:
   - yearly-recaps

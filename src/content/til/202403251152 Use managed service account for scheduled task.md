@@ -1,8 +1,8 @@
 ---
 title: Use Managed Service Account for Scheduled Task
 slug: use-managed-service-account-for-scheduled-task
-pubDate: '2024-03-25T11:52:00+03:00'
-updatedDate: '2024-03-25T11:52:00+03:00'
+created: '2024-03-25T11:52:00+03:00'
+updated: '2024-03-25T11:52:00+03:00'
 category: til
 tags:
 - windows

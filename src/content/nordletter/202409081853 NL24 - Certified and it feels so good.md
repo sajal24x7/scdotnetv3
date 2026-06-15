@@ -3,8 +3,8 @@ title: "Certified and It Feels so Good"
 edition: 24
 slug: "certified-and-it-feels-so-good"
 description: "Azure goals + Apple's DMA compliance"
-pubDate: 2024-09-08T18:53:50
-updatedDate: 2024-09-16T17:59:27
+created: 2024-09-08T18:53:50
+updated: 2024-09-16T17:59:27
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_5995-1.jpeg"

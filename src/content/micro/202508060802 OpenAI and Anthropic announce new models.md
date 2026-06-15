@@ -1,8 +1,8 @@
 ---
 title: "OpenAI and Anthropic Announce New Models"
 slug: "openai-and-anthropic-announce-new-models"
-pubDate: 2025-08-06T14:25:23+03:00
-updatedDate: 2025-08-06T14:25:23+03:00
+created: 2025-08-06T14:25:23+03:00
+updated: 2025-08-06T14:25:23+03:00
 category: micro
 tags:
   - ai

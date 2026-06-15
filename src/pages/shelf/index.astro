@@ -29,9 +29,9 @@ const getEntryYear = (post: typeof shelfPosts[number]): number => {
         if (started) return started.getFullYear();
     }
     if (cat === 'tvshelf' || cat === 'gameshelf') {
-        // use pubDate as best proxy
+        // use created as best proxy
     }
-    const pub = parseDate(post.data.pubDate);
+    const pub = parseDate(post.data.created);
     return (pub ?? new Date()).getFullYear();
 };
 
@@ -84,7 +84,7 @@ for (const [showTitle, seasons] of tvShowMap.entries()) {
         .map((s) => s.data.shelfStatus)
         .filter(Boolean)
         .sort((a, b) => (statusPriority[a!] ?? 5) - (statusPriority[b!] ?? 5))[0];
-    const pub = parseDate(representative.data.pubDate);
+    const pub = parseDate(representative.data.created);
     const year = (pub ?? new Date()).getFullYear();
 
     entries.push({
@@ -116,7 +116,7 @@ const entriesByYear = entries.reduce((acc, entry) => {
 
 // Compute rewatch numbers for films and games
 const filmEntries = shelfPosts.filter((p) => p.data.category === 'filmshelf');
-const filmWatchNumbers = computeWatchNumbers(filmEntries.map((p) => ({ title: p.data.title ?? '', date: p.data.finished ?? p.data.pubDate })));
+const filmWatchNumbers = computeWatchNumbers(filmEntries.map((p) => ({ title: p.data.title ?? '', date: p.data.finished ?? p.data.created })));
 const filmWatchMap = new Map<string, number>();
 filmEntries.forEach((p, i) => filmWatchMap.set(p.id, filmWatchNumbers.get(i) ?? 1));
 

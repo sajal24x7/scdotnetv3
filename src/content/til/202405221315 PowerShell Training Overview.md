@@ -1,8 +1,8 @@
 ---
 title: PowerShell Training Overview
 slug: powershell-training-overview
-pubDate: '2024-05-22T13:15:00+03:00'
-updatedDate: '2024-05-22T13:15:00+03:00'
+created: '2024-05-22T13:15:00+03:00'
+updated: '2024-05-22T13:15:00+03:00'
 category: til
 tags:
 - powershell

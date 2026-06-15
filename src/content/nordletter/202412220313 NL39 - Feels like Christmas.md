@@ -3,8 +3,8 @@ title: "Feels Like Christmas"
 edition: 39
 slug: "feels-like-christmas"
 description: "Delhi Rasoi + decaying internet + bad Spotify + solar probe"
-pubDate: 2024-12-22T03:13:22
-updatedDate: 2024-12-22T03:13:21
+created: 2024-12-22T03:13:22
+updated: 2024-12-22T03:13:21
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8796.jpeg"

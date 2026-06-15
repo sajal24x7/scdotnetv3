@@ -2,8 +2,8 @@
 title: "Why Are There No Small Photo Sharing Apps"
 slug: "why-are-there-no-small-photo-sharing-apps"
 description: "There is an opportunity here"
-pubDate: 2024-12-03T20:24:39
-updatedDate: 2024-12-03T20:24:39
+created: 2024-12-03T20:24:39
+updated: 2024-12-03T20:24:39
 category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/photo-1649489903954-cf99452166aa.jpeg"

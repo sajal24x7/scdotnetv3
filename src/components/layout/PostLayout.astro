@@ -24,7 +24,7 @@ interface Backlink {
     title: string;
     description: string;
     category: string;
-    pubDate: Date;
+    created: Date;
 }
 
 interface PostEntry {
@@ -53,8 +53,8 @@ const syndicationUrls = 'syndicationUrls' in entryData && Array.isArray(entryDat
 const heroImage = 'image' in entryData ? entryData.image : undefined;
 const edition = category === 'nordletter' && 'edition' in entryData ? entryData.edition : undefined;
 const bridgyOmit = 'bridgyOmit' in entryData && entryData.bridgyOmit;
-const publishedDate = entryData?.pubDate;
-const updatedDate = hasUpdatedDate ? entryData.updatedDate : undefined;
+const publishedDate = entryData?.created;
+const updated = hasUpdatedDate ? entryData.updated : undefined;
 
 // Bookshelf-specific data
 const isBookshelf = category === 'bookshelf';
@@ -589,11 +589,11 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
                     <div class="post-layout__meta-date">
                         <span class="post-layout__meta-date-chip card-chip">
                             <span class="post-layout__meta-date-chip-label">
-                                {updatedDate ? 'UPDATED' : 'PUBLISHED'}
+                                {updated ? 'UPDATED' : 'PUBLISHED'}
                             </span>
-                            {updatedDate ? (
+                            {updated ? (
                                 <TimeDisplay
-                                    date={updatedDate}
+                                    date={updated}
                                     category={category}
                                     format="detailed"
                                     className="dt-updated post-layout__meta-date-time"

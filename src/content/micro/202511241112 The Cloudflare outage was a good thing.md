@@ -1,8 +1,8 @@
 ---
 title: The Cloudflare Outage Was a Good Thing
 slug: the-cloudflare-outage-was-a-good-thing
-pubDate: 2025-11-24T09:14:29.000Z
-updatedDate: 2025-11-24T09:14:29.000Z
+created: 2025-11-24T09:14:29.000Z
+updated: 2025-11-24T09:14:29.000Z
 category: micro
 tags:
   - cloudflare

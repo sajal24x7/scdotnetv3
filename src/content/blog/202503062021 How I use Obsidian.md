@@ -2,8 +2,8 @@
 title: "How I Use Obsidian"
 slug: "how-i-use-obsidian"
 description: "Notes on note-taking"
-pubDate: 2025-03-06T20:21:05
-updatedDate: 2025-03-06T20:21:05
+created: 2025-03-06T20:21:05
+updated: 2025-03-06T20:21:05
 category: blog
 tags: ["blog", "obisidian", "note-taking", "writing is"]
 image: "https://images.unsplash.com/photo-1655448985613-3d16697a7250?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE2fHxvYnNpZGlhbnxlbnwwfHx8fDE3NDEyOTI0MTN8MA&ixlib=rb-4.0.3&q=80&w=2000"

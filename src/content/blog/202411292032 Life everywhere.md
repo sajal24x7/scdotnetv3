@@ -2,8 +2,8 @@
 title: "Life Everywhere"
 slug: "life-everywhere"
 description: "But not in the way you expect"
-pubDate: 2024-11-29T20:32:03
-updatedDate: 2024-11-29T20:32:03
+created: 2024-11-29T20:32:03
+updated: 2024-11-29T20:32:03
 category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1688406107329-4b4537173519?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDh8fHZpbmVzJTIwcnVpbnN8ZW58MHx8fHwxNzMyOTEyMjk0fDA&ixlib=rb-4.0.3&q=80&w=2000"

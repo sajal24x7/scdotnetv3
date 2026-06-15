@@ -1,8 +1,8 @@
 ---
 title: "Why Build Walls?"
 slug: "why-build-walls"
-pubDate: 2016-06-03T20:06:55
-updatedDate: 2016-06-03T20:06:55
+created: 2016-06-03T20:06:55
+updated: 2016-06-03T20:06:55
 category: poem
 tags: ["poems", "fear", "mind", "poem", "soul", "walls"]
 ---

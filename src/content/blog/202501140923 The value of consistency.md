@@ -2,8 +2,8 @@
 title: "The Value of Consistency"
 slug: "the-value-of-consistency"
 description: "Discipline and repetition"
-pubDate: 2025-01-14T09:23:29
-updatedDate: 2025-01-14T09:23:29
+created: 2025-01-14T09:23:29
+updated: 2025-01-14T09:23:29
 category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1733690577845-4f4641a456b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3MzY4NDUyOTl8&ixlib=rb-4.0.3&q=80&w=2000"

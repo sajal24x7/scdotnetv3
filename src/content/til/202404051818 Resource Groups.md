@@ -1,8 +1,8 @@
 ---
 title: Resource Groups
 slug: resource-groups
-pubDate: '2024-04-05T18:18:00+03:00'
-updatedDate: '2024-04-05T18:18:00+03:00'
+created: '2024-04-05T18:18:00+03:00'
+updated: '2024-04-05T18:18:00+03:00'
 category: til
 tags:
 - azure

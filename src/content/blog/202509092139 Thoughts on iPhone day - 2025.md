@@ -1,8 +1,8 @@
 ---
 title: Thoughts on iPhone Day - 2025
 slug: thoughts-on-iphone-day-2025
-pubDate: 2025-09-09T18:47:57.000Z
-updatedDate: 2025-09-09T18:47:57.000Z
+created: 2025-09-09T18:47:57.000Z
+updated: 2025-09-09T18:47:57.000Z
 category: blog
 tags:
   - iphone

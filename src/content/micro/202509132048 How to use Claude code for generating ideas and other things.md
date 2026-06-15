@@ -1,8 +1,8 @@
 ---
 title: How to Use Claude Code for Generating Ideas and Other Things
 slug: how-to-use-claude-code-for-generating-ideas-and-other-things
-pubDate: 2025-09-13T17:52:27.000Z
-updatedDate: 2025-09-13T17:52:27.000Z
+created: 2025-09-13T17:52:27.000Z
+updated: 2025-09-13T17:52:27.000Z
 category: micro
 tags:
   - claude

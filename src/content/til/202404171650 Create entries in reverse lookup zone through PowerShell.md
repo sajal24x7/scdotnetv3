@@ -1,8 +1,8 @@
 ---
 title: Create Entries in Reverse Lookup Zone Through PowerShell
 slug: create-entries-in-reverse-lookup-zone-through-powershell
-pubDate: '2024-04-17T16:50:00+03:00'
-updatedDate: '2024-04-17T16:50:00+03:00'
+created: '2024-04-17T16:50:00+03:00'
+updated: '2024-04-17T16:50:00+03:00'
 category: til
 tags:
 - powershell

@@ -1,8 +1,8 @@
 ---
 title: Elif Shafak on How I Write Pod
 slug: elif-shafak-on-how-i-write-pod
-pubDate: 2025-12-27T21:50:55.000Z
-updatedDate: 2025-12-27T21:50:55.000Z
+created: 2025-12-27T21:50:55.000Z
+updated: 2025-12-27T21:50:55.000Z
 category: micro
 tags:
   - writing

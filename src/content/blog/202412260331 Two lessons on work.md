@@ -2,8 +2,8 @@
 title: "Two Lessons on Work"
 slug: "two-lessons-on-work"
 description: "Show your work + Ask for help"
-pubDate: 2024-12-26T03:31:09
-updatedDate: 2024-12-26T03:31:09
+created: 2024-12-26T03:31:09
+updated: 2024-12-26T03:31:09
 category: blog
 tags: ["blog", "work"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/photo-1734327177128-ef59b0d9ded8.jpeg"

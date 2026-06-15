@@ -1,8 +1,8 @@
 ---
 title: Azure Private IP Address
 slug: azure-private-ip-address
-pubDate: '2024-07-28T12:28:00+03:00'
-updatedDate: '2024-07-28T12:28:00+03:00'
+created: '2024-07-28T12:28:00+03:00'
+updated: '2024-07-28T12:28:00+03:00'
 category: til
 tags:
 - azure

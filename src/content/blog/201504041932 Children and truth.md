@@ -1,8 +1,8 @@
 ---
 title: "Children, and Truth"
 slug: "children-and-truth"
-pubDate: 2015-04-04T19:32:36
-updatedDate: 2015-04-04T19:32:36
+created: 2015-04-04T19:32:36
+updated: 2015-04-04T19:32:36
 category: blog
 tags: ["blog", "parenting", "parents", "truth"]
 ---

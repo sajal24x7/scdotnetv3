@@ -1,8 +1,8 @@
 ---
 title: "Does Setting a Goal Really Help You?"
 slug: "does-setting-a-goal-really-help-you"
-pubDate: 2016-02-26T22:14:32
-updatedDate: 2016-02-26T22:14:32
+created: 2016-02-26T22:14:32
+updated: 2016-02-26T22:14:32
 category: blog
 tags: ["blog", "goal-setting", "goals", "life", "running"]
 ---

@@ -39,7 +39,7 @@ const renderedPosts: FeaturedPost[] = posts.map(post => ({
             <div class="featured-content">
               <div class="featured-meta">
                 <CategoryDisplay category={post.data.category} className="featured-category" />
-                <TimeDisplay date={post.data.pubDate} category={post.data.category} className="featured-date card-chip" />
+                <TimeDisplay date={post.data.created} category={post.data.category} className="featured-date card-chip" />
               </div>
               {post.data.title && (
                 <h3 class="featured-heading">{post.data.title}</h3>

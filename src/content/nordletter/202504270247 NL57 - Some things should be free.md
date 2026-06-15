@@ -2,8 +2,8 @@
 title: "Some Things Should Be Free"
 edition: 57
 slug: "some-things-should-be-free"
-pubDate: 2025-04-27T02:47:41
-updatedDate: 2025-04-27T02:47:41
+created: 2025-04-27T02:47:41
+updated: 2025-04-27T02:47:41
 category: nordletter
 tags: ["Nord Letter", "finland", "paivakoti", "AI"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_1140.jpeg"

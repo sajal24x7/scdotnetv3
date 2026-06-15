@@ -19,7 +19,7 @@ const parseDate = (value?: Date | string | null): Date | null => {
 const getFilmYear = (post: typeof filmPosts[number]): number => {
     const watched = parseDate(post.data.finished);
     if (watched) return watched.getFullYear();
-    const pub = parseDate(post.data.pubDate);
+    const pub = parseDate(post.data.created);
     return (pub ?? new Date()).getFullYear();
 };
 
@@ -51,7 +51,7 @@ const sortedFilms = [...filmsWithYear].sort((a, b) => {
     if (statusA !== statusB) {
         return (statusOrder[statusA] ?? statusOrder.other) - (statusOrder[statusB] ?? statusOrder.other);
     }
-    return compareDesc(a.post.data.finished ?? a.post.data.pubDate, b.post.data.finished ?? b.post.data.pubDate);
+    return compareDesc(a.post.data.finished ?? a.post.data.created, b.post.data.finished ?? b.post.data.created);
 });
 
 const years = Array.from(new Set(sortedFilms.map((e) => e.year)));
@@ -65,7 +65,7 @@ const filmsByYear = sortedFilms.reduce((acc, { year, post }) => {
 // Compute rewatch numbers across all film posts
 const allFilmEntries = sortedFilms.map((e) => ({
     title: e.post.data.title ?? '',
-    date: e.post.data.finished ?? e.post.data.pubDate
+    date: e.post.data.finished ?? e.post.data.created
 }));
 const watchNumbers = computeWatchNumbers(allFilmEntries);
 // Map from post slug to watch number

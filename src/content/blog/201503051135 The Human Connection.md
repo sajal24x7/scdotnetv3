@@ -1,8 +1,8 @@
 ---
 title: "The Human Connection"
 slug: "the-human-connection"
-pubDate: 2015-03-05T11:35:56
-updatedDate: 2015-03-05T11:35:56
+created: 2015-03-05T11:35:56
+updated: 2015-03-05T11:35:56
 category: blog
 tags: ["blog", "imagination", "science fiction", "the human connection", "writing is", "writing tips"]
 ---

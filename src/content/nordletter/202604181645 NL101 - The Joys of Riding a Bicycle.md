@@ -3,8 +3,8 @@ title: City Biking Through the Summer
 slug: nl101-the-joys-of-riding-a-bicycle
 edition: 101
 image: 'https://storage.sajalchoudhary.net/images/2026/04/nl101-05.jpeg'
-pubDate: 2026-04-19T14:41:52.000Z
-updatedDate: 2026-04-19T14:41:52.000Z
+created: 2026-04-19T14:41:52.000Z
+updated: 2026-04-19T14:41:52.000Z
 category: nordletter
 tags:
   - bicycle

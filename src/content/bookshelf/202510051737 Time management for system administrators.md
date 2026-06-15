@@ -1,8 +1,8 @@
 ---
 title: "Time Management for System Administrators"
 slug: "time-management-for-system-administrators"
-pubDate: 2025-10-06T21:55:32+03:00
-updatedDate: 2026-06-05T14:19:08
+created: 2025-10-06T21:55:32+03:00
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - technical

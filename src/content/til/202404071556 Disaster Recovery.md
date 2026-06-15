@@ -1,8 +1,8 @@
 ---
 title: Disaster Recovery
 slug: disaster-recovery
-pubDate: '2024-04-07T15:56:00+03:00'
-updatedDate: '2024-04-07T15:56:00+03:00'
+created: '2024-04-07T15:56:00+03:00'
+updated: '2024-04-07T15:56:00+03:00'
 category: til
 tags:
 - resiliency

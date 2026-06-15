@@ -1,8 +1,8 @@
 ---
 title: "Why I Decided to Set a Shipping Date for My Book"
 slug: "why-i-decided-to-set-a-shipping-date-for-my-book"
-pubDate: 2015-07-01T20:58:57
-updatedDate: 2015-07-01T20:58:57
+created: 2015-07-01T20:58:57
+updated: 2015-07-01T20:58:57
 category: blog
 tags: ["blog", "deadline", "shipping date", "writing is", "writing tips"]
 ---

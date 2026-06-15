@@ -1,8 +1,8 @@
 ---
 title: "On Writing : The Numbers"
 slug: "on-writing-the-numbers"
-pubDate: 2016-02-03T21:00:53
-updatedDate: 2016-02-03T21:00:53
+created: 2016-02-03T21:00:53
+updated: 2016-02-03T21:00:53
 category: blog
 tags: ["blog", "google docs", "lifehacker", "writing is", "writing tips"]
 ---

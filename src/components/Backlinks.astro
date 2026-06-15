@@ -7,7 +7,7 @@ interface Props {
         title: string;
         description: string;
         category: string;
-        pubDate: Date;
+        created: Date;
     }[];
 }
 
@@ -61,7 +61,7 @@ const headingId = `backlinks-${normalizedBacklinks.length}`;
                         <Card
                             title={backlink.title}
                             description={backlink.description}
-                            pubDate={backlink.pubDate}
+                            created={backlink.created}
                             category={backlink.category}
                             link={backlink.link}
                         />

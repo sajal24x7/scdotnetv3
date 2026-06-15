@@ -1,8 +1,8 @@
 ---
 title: How to Renew Access Token to Threads API
 slug: how-to-renew-access-token-to-threads-api
-pubDate: 2025-11-24T18:54:28.000Z
-updatedDate: 2025-11-24T18:54:28.000Z
+created: 2025-11-24T18:54:28.000Z
+updated: 2025-11-24T18:54:28.000Z
 category: til
 tags:
   - git

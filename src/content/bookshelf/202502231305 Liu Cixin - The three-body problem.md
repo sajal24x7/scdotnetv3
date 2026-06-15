@@ -2,8 +2,8 @@
 title: 'The Three-Body Problem'
 slug: the-three-body-problem
 description: The first book in the remembrance of earth's past series
-pubDate: 2025-02-23T13:05:04
-updatedDate: 2026-06-05T14:19:08
+created: 2025-02-23T13:05:04
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - sci-fi

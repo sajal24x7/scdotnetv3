@@ -2,8 +2,8 @@
 title: "Further Thoughts on Certifications and Trainings"
 slug: "further-thoughts-on-certifications-and-trainings"
 description: "And marrying well"
-pubDate: 2024-09-11T18:26:23
-updatedDate: 2024-09-11T18:26:23
+created: 2024-09-11T18:26:23
+updated: 2024-09-11T18:26:23
 category: blog
 tags: ["blog", "Azure"]
 image: "https://images.unsplash.com/photo-1711998431907-61f9b72aabdd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDl8fHx8fHwyfHwxNzI2MDc3NjkxfA&ixlib=rb-4.0.3&q=80&w=2000"

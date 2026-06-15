@@ -1,8 +1,8 @@
 ---
 title: "Anthropic Revokes OpenAI Access to Claude"
 slug: "anthropic-revokes-openai-access-to-claude"
-pubDate: 2025-08-03T09:09:41+03:00
-updatedDate: 2025-08-03T09:09:41+03:00
+created: 2025-08-03T09:09:41+03:00
+updated: 2025-08-03T09:09:41+03:00
 category: micro
 tags:
   - ai

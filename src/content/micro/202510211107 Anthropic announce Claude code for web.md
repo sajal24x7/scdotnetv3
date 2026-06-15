@@ -1,8 +1,8 @@
 ---
 title: Anthropic Announce Claude Code for Web
 slug: anthropic-announce-claude-code-for-web
-pubDate: 2025-10-21T08:09:14.000Z
-updatedDate: 2025-10-21T08:09:14.000Z
+created: 2025-10-21T08:09:14.000Z
+updated: 2025-10-21T08:09:14.000Z
 category: micro
 tags:
   - claude

@@ -1,8 +1,8 @@
 ---
 title: "Why Standing Still Is Scary"
 slug: "why-standing-still-is-scary"
-pubDate: 2016-05-01T22:17:37
-updatedDate: 2016-05-01T22:17:37
+created: 2016-05-01T22:17:37
+updated: 2016-05-01T22:17:37
 category: blog
 tags: ["blog", "life", "standing still", "writing is"]
 ---

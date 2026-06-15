@@ -2,8 +2,8 @@
 title: "Warming up to LLMs"
 slug: "warming-up-to-llms"
 description: "Using copilot to update my book page"
-pubDate: 2025-03-04T07:28:03
-updatedDate: 2025-03-04T07:28:03
+created: 2025-03-04T07:28:03
+updated: 2025-03-04T07:28:03
 category: blog
 tags: ["blog", "AI", "LLM", "openweb"]
 image: "https://images.unsplash.com/photo-1733503711063-3427bff34612?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDEwNzE3MzJ8&ixlib=rb-4.0.3&q=80&w=2000"

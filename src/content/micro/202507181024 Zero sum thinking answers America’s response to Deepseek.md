@@ -1,8 +1,8 @@
 ---
 title: "Zero Sum Thinking Answers America’s Response to Deepseek"
 slug: "zero-sum-thinking-answers-americas-response-to-deepseek"
-pubDate: 2025-07-18T10:35:11+03:00
-updatedDate: 2025-07-18T10:35:11+03:00
+created: 2025-07-18T10:35:11+03:00
+updated: 2025-07-18T10:35:11+03:00
 category: micro
 tags:
   - ai
