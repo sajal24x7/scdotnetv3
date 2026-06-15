@@ -1,10 +1,12 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2026-06-07T07:09:54.884Z
-// Found 1 image(s): glory.jpg
+// Generated on: 2026-06-14T07:27:02.132Z
+// Found 2 image(s): drive-to-survive.jpg, glory.jpg
 
+import drive_to_survive_jpg from '../images/tvshelf/drive-to-survive.jpg';
 import glory_jpg from '../images/tvshelf/glory.jpg';
 
 export const tvCoverImages: Record<string, any> = {
+  'drive-to-survive.jpg': drive_to_survive_jpg,
   'glory.jpg': glory_jpg
 };
 
@@ -12,4 +14,4 @@ export function getTVCoverImage(filename: string) {
   return tvCoverImages[filename];
 }
 
-export type TVCoverFilename = 'glory.jpg';
+export type TVCoverFilename = 'drive-to-survive.jpg' | 'glory.jpg';
