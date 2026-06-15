@@ -9,6 +9,7 @@ tags:
   - dns
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobtdj5r26'
+  - 'https://mastodon.social/@sajal24x7/116756402969313144'
 ---
 
 # Iterative

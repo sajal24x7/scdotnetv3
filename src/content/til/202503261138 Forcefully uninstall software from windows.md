@@ -8,6 +8,7 @@ tags:
   - windows
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododhp2po23'
+  - 'https://mastodon.social/@sajal24x7/116756405808046286'
 ---
 Download tool and run.
 

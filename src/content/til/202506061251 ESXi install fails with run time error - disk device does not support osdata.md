@@ -9,6 +9,7 @@ tags:
   - esxi
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoe5uguh2z'
+  - 'https://mastodon.social/@sajal24x7/116756407348634339'
 ---
 If the disk is too small, then this issue can come.
 

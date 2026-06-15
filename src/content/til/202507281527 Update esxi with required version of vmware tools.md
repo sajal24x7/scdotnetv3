@@ -10,6 +10,7 @@ tags:
   - vmware-tools
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoegvmqp2s'
+  - 'https://mastodon.social/@sajal24x7/116756408246395325'
 ---
 By default each esxi release come bundled with a specific vmware tools release. Automatic upgrade option for VMs checks against this version.
 

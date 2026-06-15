@@ -8,6 +8,7 @@ tags:
   - obsidian
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoezmeap2l'
+  - 'https://mastodon.social/@sajal24x7/116756409673287348'
 ---
 In order to link to an internal link, what I used to do was use the aliases property. 
 

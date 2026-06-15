@@ -9,6 +9,7 @@ tags:
   - monitoring
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo3ufwpq2c'
+  - 'https://mastodon.social/@sajal24x7/116756208000296887'
 ---
 
 We can use the [[202408041409 Types of monitoring data in Azure|Types of monitoring data in Azure]] collected in [[202404281601 Azure monitoring old|Azure monitoring]] to create alerts.

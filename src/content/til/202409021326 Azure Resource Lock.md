@@ -9,6 +9,7 @@ tags:
   - management
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoahqmwz2m'
+  - 'https://mastodon.social/@sajal24x7/116756211711531438'
 ---
 
 1. Azure Locks can be applied at [[202404061212 Azure Resources|resource]], [[202404051818 Resource Groups|resource group]] or [[202401101441 Azure subscriptions|subscription]] level

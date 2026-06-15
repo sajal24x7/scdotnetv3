@@ -9,6 +9,7 @@ tags:
   - backup
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo5gynjf23'
+  - 'https://mastodon.social/@sajal24x7/116756209030252104'
 ---
 
 ![[Screenshot 2024-08-13 at 7.21.49 PM.png]]

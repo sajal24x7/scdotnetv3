@@ -9,6 +9,7 @@ tags:
   - backup
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo5n5cka2v'
+  - 'https://mastodon.social/@sajal24x7/116756209167466486'
 ---
 
 We can either:

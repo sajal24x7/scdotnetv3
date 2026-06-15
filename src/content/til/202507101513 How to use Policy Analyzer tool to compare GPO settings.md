@@ -10,6 +10,7 @@ tags:
   - gpo
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoebrxj623'
+  - 'https://mastodon.social/@sajal24x7/116756407612906718'
 ---
 - gpresult and using Get-GPOreport does not work because it can export output in .xml or html but PolicyAnalyzer wants backup format
 

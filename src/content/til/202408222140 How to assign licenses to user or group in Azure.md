@@ -9,6 +9,7 @@ tags:
   - entra
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo6rjhzi26'
+  - 'https://mastodon.social/@sajal24x7/116756210081759487'
 ---
 
 1. Licenses can be applied to security or M365 [[202312242245 Entra ID Groups|groups]]

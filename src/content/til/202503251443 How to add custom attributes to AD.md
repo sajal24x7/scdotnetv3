@@ -9,6 +9,7 @@ tags:
   - windows
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modod6ffcr2v'
+  - 'https://mastodon.social/@sajal24x7/116756405560234387'
 ---
 ## Pre-requisites
 1. Make sure you have schema admin rights

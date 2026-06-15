@@ -8,6 +8,7 @@ tags:
   - '#windows'
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododjkovr2v'
+  - 'https://mastodon.social/@sajal24x7/116756405935366248'
 ---
 When running Get-ChildItem or Get-Acl, we might come across this issue. 
 

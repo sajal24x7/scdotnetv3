@@ -9,6 +9,7 @@ tags:
   - ad
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocv2vhv2p'
+  - 'https://mastodon.social/@sajal24x7/116756404979121239'
 ---
 In-place upgrade is not suggested. The approach to take is deploy a new server, dcpromo the old one out, rename, give the same IP, dcpromo the new one in.
 

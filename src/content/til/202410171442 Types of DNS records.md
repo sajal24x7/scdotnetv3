@@ -9,6 +9,7 @@ tags:
   - dns
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobobjv62z'
+  - 'https://mastodon.social/@sajal24x7/116756402592236745'
 ---
 
 1. SOA (Start of Authority)

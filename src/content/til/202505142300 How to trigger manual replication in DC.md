@@ -11,6 +11,7 @@ tags:
   - '#repadmin'
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoe25dgz2w'
+  - 'https://mastodon.social/@sajal24x7/116756406958196685'
 ---
 ```powershell
 

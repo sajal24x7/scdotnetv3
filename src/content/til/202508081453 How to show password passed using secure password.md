@@ -8,6 +8,7 @@ tags:
   - powershell
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoelfunr26'
+  - 'https://mastodon.social/@sajal24x7/116756408549822798'
 ---
 Mostly for troubleshooting
 ```powershell

@@ -9,6 +9,7 @@ tags:
   - ad
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododnjvby2v'
+  - 'https://mastodon.social/@sajal24x7/116756406340972193'
 ---
 This can happen during demotion.
 

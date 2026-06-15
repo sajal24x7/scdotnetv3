@@ -9,6 +9,7 @@ tags:
   - claude
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoejvzrb2v'
+  - 'https://mastodon.social/@sajal24x7/116756408391895464'
 ---
 I wrote about [new updates to claude](/micro/new-updates-to-claude) recently, in which there was a mention of using Claude to create calendar entries.
 

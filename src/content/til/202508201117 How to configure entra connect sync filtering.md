@@ -10,6 +10,7 @@ tags:
   - entraconnect
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoeura6r2w'
+  - 'https://mastodon.social/@sajal24x7/116756409291631790'
 ---
 [MSFT has good documentation around this.]([Microsoft Entra Connect Sync: Configure filtering - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-sync-configure-filtering)) 
 

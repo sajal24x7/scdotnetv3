@@ -8,6 +8,7 @@ tags:
   - powershell
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo53zbea2m'
+  - 'https://mastodon.social/@sajal24x7/116756208688377557'
 ---
 
 Fastest way to install modules on disconnected servers is [[202210111009 Powershell install modules offline|Install powershell modules]].

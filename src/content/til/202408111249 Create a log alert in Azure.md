@@ -9,6 +9,7 @@ tags:
   - monitoring
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo4cwxk32m'
+  - 'https://mastodon.social/@sajal24x7/116756208271125081'
 ---
 
 - first define a log search rule

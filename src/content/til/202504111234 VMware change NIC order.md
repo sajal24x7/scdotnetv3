@@ -9,6 +9,7 @@ tags:
   - '#vmware'
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododlgtdz26'
+  - 'https://mastodon.social/@sajal24x7/116756406202336837'
 ---
 There is a bug in Cisco Hardware which causes vmnics to get assigned in wrong order after esxi install. As a workaround we can change the vmnic order from esxi level.
 

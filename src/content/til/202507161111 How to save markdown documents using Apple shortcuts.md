@@ -9,6 +9,7 @@ tags:
   - shortcuts
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoedawdv2p'
+  - 'https://mastodon.social/@sajal24x7/116756407755687200'
 ---
 The **Save File** component saves file as .txt even if you specify the complete name with .md.
 

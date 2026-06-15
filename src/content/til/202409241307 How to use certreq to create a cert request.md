@@ -9,6 +9,7 @@ tags:
   - windows
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoba3dqv23'
+  - 'https://mastodon.social/@sajal24x7/116756401716568967'
 ---
 
 # Sample inf file

@@ -9,6 +9,7 @@ tags:
   - network
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo7j4t7x2s'
+  - 'https://mastodon.social/@sajal24x7/116756210619057278'
 ---
 
 How it differs from [[202408241251 How to create S2S VPN|S2S VPN]] is around authentication.

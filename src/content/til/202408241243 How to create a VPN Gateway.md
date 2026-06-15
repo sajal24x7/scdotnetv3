@@ -9,6 +9,7 @@ tags:
   - network
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo735czz2w'
+  - 'https://mastodon.social/@sajal24x7/116756210263575659'
 ---
 
 Related to [[202407151913 Azure VPN|Azure VPN]]

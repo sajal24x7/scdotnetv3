@@ -9,6 +9,7 @@ tags:
   - productivity
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoewjgv72s'
+  - 'https://mastodon.social/@sajal24x7/116756409406842029'
 ---
 I have two shortcuts I use to publish micro blog to my website -
 1. Linkblog - which takes a selection from a url and pastes that url and add the selection as a quote, and,

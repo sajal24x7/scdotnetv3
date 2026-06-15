@@ -9,6 +9,7 @@ tags:
   - powershell
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoaxi5yd2m'
+  - 'https://mastodon.social/@sajal24x7/116756401122748172'
 ---
 
 # Remove SMB v1

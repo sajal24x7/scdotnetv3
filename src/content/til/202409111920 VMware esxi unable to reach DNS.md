@@ -9,6 +9,7 @@ tags:
   - dns
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoavjhub26'
+  - 'https://mastodon.social/@sajal24x7/116756400981670844'
 ---
 
 1. Check that DNS configuration is correct.

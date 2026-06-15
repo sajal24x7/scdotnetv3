@@ -9,6 +9,7 @@ tags:
   - '#powershell'
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocfjrdq2m'
+  - 'https://mastodon.social/@sajal24x7/116756403769125761'
 ---
 ipaddress is a string so can not have multiple items in one go. So need to loop for allowed IP addresses as a [PowerShell Arrays](#), if many.
 

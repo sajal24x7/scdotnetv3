@@ -9,6 +9,7 @@ tags:
   - cluster
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo67atnx2l'
+  - 'https://mastodon.social/@sajal24x7/116756209622133093'
 ---
 
 # Error

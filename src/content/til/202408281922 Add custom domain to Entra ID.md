@@ -9,6 +9,7 @@ tags:
   - azure
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoaa3g4v23'
+  - 'https://mastodon.social/@sajal24x7/116756211352252328'
 ---
 
 1. Have a custom domain registered with a registrar

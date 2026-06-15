@@ -8,6 +8,7 @@ tags:
   - vmware
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoats6x72l'
+  - 'https://mastodon.social/@sajal24x7/116756212238190217'
 ---
 
 Syslog.global.logDir --> Location where logs will be set

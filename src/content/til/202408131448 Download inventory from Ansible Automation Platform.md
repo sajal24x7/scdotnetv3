@@ -9,6 +9,7 @@ tags:
   - aap
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo575cma2v'
+  - 'https://mastodon.social/@sajal24x7/116756208906149216'
 ---
 
 We have to use this api:

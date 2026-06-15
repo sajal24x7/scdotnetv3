@@ -10,6 +10,7 @@ tags:
   - entra
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo7x532523'
+  - 'https://mastodon.social/@sajal24x7/116756211147773086'
 ---
 
 - Dedicated and Trusted instance of [[202404011327 Entra ID|Entra ID]]

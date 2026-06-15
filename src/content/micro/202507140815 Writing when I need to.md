@@ -8,6 +8,7 @@ tags:
   - writing
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modebygwar2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZnikChlQJv'
 ---
 I have noticed that I tend not to finish a thought later if I did not write anything about it when the thought came. This burning desire to write, when I actually write something, comes to me once, and if I let it pass, if I get into a state where I am not excited about the thing, then I just am not able to write about it later.
 

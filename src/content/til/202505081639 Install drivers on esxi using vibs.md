@@ -9,6 +9,7 @@ tags:
   - '#hp'
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododxhb4b26'
+  - 'https://mastodon.social/@sajal24x7/116756406840974207'
 ---
 1. Copy vib to the esxi. 
 2. Run the following command.

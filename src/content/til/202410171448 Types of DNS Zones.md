@@ -9,6 +9,7 @@ tags:
   - dns
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobpyfrr2v'
+  - 'https://mastodon.social/@sajal24x7/116756402717330451'
 ---
 
 1. Primary Zone

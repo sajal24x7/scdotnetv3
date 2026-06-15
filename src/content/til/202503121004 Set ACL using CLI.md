@@ -10,6 +10,7 @@ tags:
   - acl
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modod34cy72o'
+  - 'https://mastodon.social/@sajal24x7/116756405323635329'
 ---
 There are two options:
 1. icacls

@@ -9,6 +9,7 @@ tags:
   - dns
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobrjsql2m'
+  - 'https://mastodon.social/@sajal24x7/116756402841623091'
 ---
 
 - Forward specific DNS queries (for a domain) to external DNS servers, when it can't be solved internally.

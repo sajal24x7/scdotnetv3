@@ -8,6 +8,7 @@ tags:
   - vmware
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modob53ibn2p'
+  - 'https://mastodon.social/@sajal24x7/116756401477298049'
 ---
 
 We can not set **noproxy** in VAMI UI. It needs to be set in config file located at

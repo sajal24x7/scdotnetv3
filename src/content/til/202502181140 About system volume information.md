@@ -9,6 +9,7 @@ tags:
   - '#powershell'
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocmpd2l2m'
+  - 'https://mastodon.social/@sajal24x7/116756404237359608'
 ---
 ```powershell
 # Take ownership

@@ -9,6 +9,7 @@ tags:
   - entra
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoafw4o72s'
+  - 'https://mastodon.social/@sajal24x7/116756211506690917'
 ---
 
 Related to [[202312231437 Entra ID editions|Entra ID Licenses]]

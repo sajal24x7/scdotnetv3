@@ -8,6 +8,7 @@ tags:
   - vmware
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoajqgub2w'
+  - 'https://mastodon.social/@sajal24x7/116756211920497001'
 ---
 
 Useful when trying to remove datastore from ESXi and the vCLS VM is running on it. 

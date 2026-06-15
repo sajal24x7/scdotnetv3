@@ -7,6 +7,7 @@ category: til
 tags: []
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobjte6q2v'
+  - 'https://mastodon.social/@sajal24x7/116756402383363993'
 ---
 
 Depending on the source IP of the DNS request, DNS server provides different response.

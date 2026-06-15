@@ -10,6 +10,7 @@ tags:
   - powershell
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo43ke652p'
+  - 'https://mastodon.social/@sajal24x7/116756208150295326'
 ---
 
 ```bash

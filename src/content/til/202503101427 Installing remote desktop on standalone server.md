@@ -8,6 +8,7 @@ tags:
   - windows
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoczuogy2m'
+  - 'https://mastodon.social/@sajal24x7/116756405114498822'
 ---
 Basically install Remote Desktop Session Host role.
 Note: Might require 2 reboots: 1 after role install, 1 for licensing to look OK on the server.

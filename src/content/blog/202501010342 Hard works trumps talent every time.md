@@ -9,6 +9,7 @@ image: 'https://storage.sajalchoudhary.net/images/2024/12/2022-04-06-112-.jpeg'
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754215149871656'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modda3wz662d'
+  - 'https://www.threads.com/@sajal24x7/post/DZnbqvFFZyd'
 ---
 When I was in tenth, because that’s when it starts, I was told, all I had to do was study hard till twelfth, get into a good college, and that would be it.
 

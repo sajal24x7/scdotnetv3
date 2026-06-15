@@ -9,6 +9,7 @@ tags:
   - entraconnect
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoaz474j2v'
+  - 'https://mastodon.social/@sajal24x7/116756401247989947'
 ---
 
 ```powershell

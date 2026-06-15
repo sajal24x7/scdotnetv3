@@ -9,6 +9,7 @@ tags:
   - windows
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobvbyjz2v'
+  - 'https://mastodon.social/@sajal24x7/116756403079892555'
 ---
 
 We can create a delegated zone and allow app/teams to create entries as needed

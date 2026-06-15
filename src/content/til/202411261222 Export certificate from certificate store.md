@@ -8,6 +8,7 @@ tags: []
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobz5fp72s'
   - 'https://www.threads.com/@sajal24x7/post/DZnNxeSlpZA'
+  - 'https://mastodon.social/@sajal24x7/116756403297199713'
 ---
 
 Export-Certificate command can be used to export certificate in .cer or .p10.

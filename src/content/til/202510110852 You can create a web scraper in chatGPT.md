@@ -11,6 +11,7 @@ tags:
   - web
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modof3aykw23'
+  - 'https://mastodon.social/@sajal24x7/116756409899694903'
 ---
 For the last few days I would see an alert from ChatGPT saying that it has found some new data engineer jobs. I ignored it for most of last week. Today curiosity got the better of me and I opened the chat. [Prerna](#) had talked to ChatGPT about the job situation in Finland and for market research regarding data engineer jobs.
 

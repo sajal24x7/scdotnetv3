@@ -10,6 +10,7 @@ tags:
   - powershell
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoeeyvex2u'
+  - 'https://mastodon.social/@sajal24x7/116756408080475234'
 ---
 Use the `-Instance` property with `set-aduser` 
 

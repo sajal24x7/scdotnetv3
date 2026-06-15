@@ -9,6 +9,7 @@ tags:
   - esxi
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododpcnmr2v'
+  - 'https://mastodon.social/@sajal24x7/116756406462222026'
 ---
 In the message, it will show the list of VIBs that are causing problems. 
 

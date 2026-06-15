@@ -9,6 +9,7 @@ tags:
   - esxi
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoeouj2w23'
+  - 'https://mastodon.social/@sajal24x7/116756408849085206'
 ---
 Check in `/var/run/log/esxupdate.log` file, better to run the following and let it write the logs to a temporary file.
 

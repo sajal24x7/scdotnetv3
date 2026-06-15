@@ -9,6 +9,7 @@ tags:
   - upgade
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoeqpiop2u'
+  - 'https://mastodon.social/@sajal24x7/116756409026602565'
 ---
 [Windows update log files](https://learn.microsoft.com/en-us/windows/deployment/upgrade/log-files#analyze-log-files)are present under `$Windows.~BT\Sources\Panther`. There are two files `setupact.log` and `setuperr.log`.
 

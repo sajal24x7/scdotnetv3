@@ -9,6 +9,7 @@ tags:
   - '#windows'
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocq756w23'
+  - 'https://mastodon.social/@sajal24x7/116756404474333738'
 ---
 Check in registry:  `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters`
 

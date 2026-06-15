@@ -9,6 +9,7 @@ tags:
   - dfsr
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoca7my72z'
+  - 'https://mastodon.social/@sajal24x7/116756403322902659'
 ---
 
 Quota can be checked in DFS management > Replication > Staging Quota

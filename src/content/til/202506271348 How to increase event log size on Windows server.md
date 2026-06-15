@@ -8,6 +8,7 @@ tags:
   - '#windows'
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoe7sob22m'
+  - 'https://mastodon.social/@sajal24x7/116756407496781109'
 ---
 # Through GPO
 1. `Computer Configuration\Administrative Templates\Windows Components\Event Log Service\` 

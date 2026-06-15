@@ -9,6 +9,7 @@ tags:
   - network
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo7cl2yz26'
+  - 'https://mastodon.social/@sajal24x7/116756210461710569'
 ---
 
 From [[202408241243 How to create a VPN Gateway|How to create a VPN Gateway]], till VPN Gateway and then the rest.

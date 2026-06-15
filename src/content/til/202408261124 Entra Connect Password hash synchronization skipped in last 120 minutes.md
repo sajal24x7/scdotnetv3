@@ -10,6 +10,7 @@ tags:
   - entra
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo7otrfz26'
+  - 'https://mastodon.social/@sajal24x7/116756210765325051'
 ---
 
 Need to restart Microsoft Entra Sync service. 

@@ -9,6 +9,7 @@ tags:
   - backup
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo5uatnx2u'
+  - 'https://mastodon.social/@sajal24x7/116756209321453137'
 ---
 
 Part of [[202408131927 Azure restore from backup|Restore from backups]]

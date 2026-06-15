@@ -8,6 +8,7 @@ tags:
   - python
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo5ynbiy26'
+  - 'https://mastodon.social/@sajal24x7/116756209479132245'
 ---
 
 The script that work is this: https://github.com/serenedeluge/cis-pdf2csv/tree/main

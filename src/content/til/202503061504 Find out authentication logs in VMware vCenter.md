@@ -8,6 +8,7 @@ tags:
   - '#vmware'
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoctfgmw23'
+  - 'https://mastodon.social/@sajal24x7/116756404793473137'
 ---
 Related to [202303211323 VMware logs](#)
 

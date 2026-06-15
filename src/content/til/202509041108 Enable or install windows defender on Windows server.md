@@ -10,6 +10,7 @@ tags:
   - av
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoexvttt2m'
+  - 'https://mastodon.social/@sajal24x7/116756409546929826'
 ---
 ```powershell
 # Get feature status and find Windows-Defender

@@ -9,6 +9,7 @@ tags:
   - ad
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododufjhf2p'
+  - 'https://mastodon.social/@sajal24x7/116756406592896027'
 ---
 ```powershell
 # For summary

@@ -9,6 +9,7 @@ tags:
   - windows
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modod7txih2s'
+  - 'https://mastodon.social/@sajal24x7/116756405681677934'
 ---
 ### To configure time synchronization through registry edit on the PDC emulator:
 
