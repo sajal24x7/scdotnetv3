@@ -24,7 +24,7 @@ You can reach out to me by replying on this mail or adding a comment on this. I 
 
 ---
 
-Ever since Savya was born, we have been going for our walks. Savya and I on all days, with Prerna along for most days. The walks are when we get to decompress. When alone, the walks are when I started listening to and still listen to audiobooks. I used to listed to podcasts before that. The walks are where Prerna and I talk.
+Ever since Savya was born, we have been going for our walks. Savya and I on all days, with Prerna along for most days. The walks are when we get to decompress. When alone, the walks are when I started listening to and still listen to audiobooks. I used to listen to podcasts before that. The walks are where Prerna and I talk.
 
 Savya loves the walks as well. In May, while his pram had broken down and we were trying to find a replacement or a fix, he would often walk to the door in the evening and tell us to take him out, for the walk.
 
@@ -44,7 +44,7 @@ He wants to push his pram, and no, he does not want your help steering or helpin
 
 ---
 
-This is a problem. I love rhythms and routines of things. I love my walk, which mostly follows [[202410140012 Why walk the same route everyday|a single route]]. 
+This is a problem. I love rhythms and routines of things. I love my walk, which mostly follows [[202410140352 Why walk the same path every day|a single route]]. 
 
 My solution to him wanting to walk was this - I would tie him down using the safety belts and let him make noises for a bit. He would eventually settle down.
 
