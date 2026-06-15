@@ -6,12 +6,14 @@ updatedDate: 2026-06-14T04:24:07.000Z
 category: tvshelf
 tags:
   - f1
-format: null
-series: ''
-seriesNumber: null
+showTitle: Formula 1: Drive to Survive
+season: 8
+creator:
+  - James Gay Rees
+started: 2026-06-14T04:24:07.000Z
 genre: documentary
-bookStatus: reading
-startedReading: 2026-06-14T04:24:07.000Z
+platform: Netflix
+shelfStatus: in-progress
 cover: drive-to-survive.jpg
 ---
 
