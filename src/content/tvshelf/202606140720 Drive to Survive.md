@@ -6,7 +6,7 @@ updatedDate: 2026-06-15T11:39:37
 category: tvshelf
 tags:
   - f1
-showTitle: “Formula 1: Drive to Survive”
+showTitle: “Drive to Survive”
 season: 8
 creator:
   - James Gay Rees
