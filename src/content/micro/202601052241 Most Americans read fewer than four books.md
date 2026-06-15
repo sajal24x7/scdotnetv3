@@ -1,8 +1,8 @@
 ---
 title: Most Americans Read Fewer Than Four Books
 slug: most-americans-read-fewer-than-four-books
-pubDate: 2026-01-05T20:52:36.000Z
-updatedDate: 2026-01-05T20:52:36.000Z
+created: 2026-01-05T20:52:36.000Z
+updated: 2026-01-05T20:52:36.000Z
 category: micro
 tags:
   - reading

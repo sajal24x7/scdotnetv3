@@ -1,8 +1,8 @@
 ---
 title: Pythonic Coding Conventions
 slug: pythonic-coding-conventions
-pubDate: 2025-10-21T12:45:15.000Z
-updatedDate: 2025-10-21T12:45:15.000Z
+created: 2025-10-21T12:45:15.000Z
+updated: 2025-10-21T12:45:15.000Z
 category: til
 tags:
   - python

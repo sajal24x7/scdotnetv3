@@ -1,10 +1,17 @@
 ---
-title: "The Whorish Aspect of Things"
-slug: "the-whorish-aspect-of-things"
-pubDate: 2015-03-07T12:18:28
-updatedDate: 2015-03-07T12:18:28
+title: The Whorish Aspect of Things
+slug: the-whorish-aspect-of-things
+created: 2015-03-07T12:18:28.000Z
+updated: 2015-03-07T12:18:28.000Z
 category: blog
-tags: ["blog", "facebook", "writing is", "writing tips"]
+tags:
+  - blog
+  - facebook
+  - writing is
+  - writing tips
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754002167004507'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda7awddn23'
 ---
 [![Source: http://commons.wikimedia.org/wiki/File:Lautrec_the_sphinx_1898.jpg](https://storage.sajalchoudhary.net/images/wordpress/2015/03/prostitute-the-sphinx-1898.jpg?w=660)](https://storage.sajalchoudhary.net/images/wordpress/2015/03/prostitute-the-sphinx-1898.jpg)Source: http://commons.wikimedia.org/wiki/File:Lautrec\_the\_sphinx\_1898.jpg
 

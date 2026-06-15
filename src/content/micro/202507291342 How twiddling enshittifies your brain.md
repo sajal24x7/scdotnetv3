@@ -1,12 +1,13 @@
 ---
-title: "How Twiddling Enshittifies Your Brain"
-slug: "how-twiddling-enshittifies-your-brain"
-pubDate: 2025-07-29T14:10:24+03:00
-updatedDate: 2025-07-29T14:10:24+03:00
+title: How Twiddling Enshittifies Your Brain
+slug: how-twiddling-enshittifies-your-brain
+created: 2025-07-29T11:10:24.000Z
+updated: 2025-07-29T11:10:24.000Z
 category: micro
 tags:
   - enshittification
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgfuartd2s'
 ---
 
 [Pluralistic: How twiddling enshittifies your brain (28 Jul 2025) – Pluralistic: Daily links from Cory Doctorow](https://pluralistic.net/2025/07/28/twiddlehazard/)

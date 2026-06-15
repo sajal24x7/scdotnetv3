@@ -1,14 +1,15 @@
 ---
-title: "Set ACL Using CLI"
-slug: "set-acl-using-cli"
-pubDate: 2025-03-12T10:40:41+03:00
-updatedDate: 2025-03-12T10:40:41+03:00
+title: Set ACL Using CLI
+slug: set-acl-using-cli
+created: 2025-03-12T07:40:41.000Z
+updated: 2025-03-12T07:40:41.000Z
 category: til
 tags:
-  - "#powershell"
+  - '#powershell'
   - windows
   - acl
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modod34cy72o'
 ---
 There are two options:
 1. icacls

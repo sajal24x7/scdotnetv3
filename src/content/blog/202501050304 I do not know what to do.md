@@ -1,12 +1,19 @@
 ---
-title: "I Do Not Know What to Do"
-slug: "i-do-not-know-what-to-do"
-description: "Part #3 of what to do and how to post my damn links"
-pubDate: 2025-01-05T03:04:56
-updatedDate: 2025-01-05T03:04:55
+title: I Do Not Know What to Do
+slug: i-do-not-know-what-to-do
+description: 'Part #3 of what to do and how to post my damn links'
+created: 2025-01-05T03:04:56.000Z
+updated: 2025-01-05T03:04:55.000Z
 category: blog
-tags: ["blog", "writing is", "ghost"]
-image: "https://images.unsplash.com/photo-1734009589019-7c557c4e7e11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDEyfHx8fHx8fHwxNzM2MDIzMDU5fA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - writing is
+  - ghost
+image: >-
+  https://images.unsplash.com/photo-1734009589019-7c557c4e7e11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDEyfHx8fHx8fHwxNzM2MDIzMDU5fA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754216886939213'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddavqvk32w'
 ---
 These are the moments, when I feel like the only thing that would give me peace, is having my own website. Using Hugo, or Jekyll. The problem I think would be around the newsletter. I had self-hosted ghost for a bit on [LighSail](https://docs.aws.amazon.com/lightsail/latest/userguide/what-is-amazon-lightsail.html). Sending emails was the thing I could not solve, and the reason I had started with [Ghost Pro](https://ghost.org/pricing/).
 

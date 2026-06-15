@@ -1,13 +1,14 @@
 ---
-title: "ESXi Firmware Upgrade Baseline Fails to Apply With Incompatible Message"
-slug: "esxi-firmware-upgrade-baseline-fails-to-apply-with-incompatible-message"
-pubDate: 2025-04-18T21:39:37+03:00
-updatedDate: 2025-04-18T21:39:37+03:00
+title: ESXi Firmware Upgrade Baseline Fails to Apply With Incompatible Message
+slug: esxi-firmware-upgrade-baseline-fails-to-apply-with-incompatible-message
+created: 2025-04-18T18:39:37.000Z
+updated: 2025-04-18T18:39:37.000Z
 category: til
 tags:
   - vmware
   - esxi
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododpcnmr2v'
 ---
 In the message, it will show the list of VIBs that are causing problems. 
 

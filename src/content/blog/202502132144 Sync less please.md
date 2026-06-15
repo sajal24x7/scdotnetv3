@@ -1,12 +1,19 @@
 ---
-title: "Sync Less, Please?"
-slug: "sync-less-please"
-description: "About reading on NNW"
-pubDate: 2025-02-13T21:44:19
-updatedDate: 2025-02-13T21:44:19
+title: 'Sync Less, Please?'
+slug: sync-less-please
+description: About reading on NNW
+created: 2025-02-13T21:44:19.000Z
+updated: 2025-02-13T21:44:19.000Z
 category: blog
-tags: ["reading", "netnewswire", "openweb"]
-image: "https://images.unsplash.com/photo-1662553739062-3c2570008adc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyfHxTeW5jfGVufDB8fHx8MTczOTQ4Mjk5Nnww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - reading
+  - netnewswire
+  - openweb
+image: >-
+  https://images.unsplash.com/photo-1662553739062-3c2570008adc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyfHxTeW5jfGVufDB8fHx8MTczOTQ4Mjk5Nnww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754228725696615'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddgbnd6s2v'
 ---
 I wish Net News Wire had a feature where in I could dictate the frequency of its updates.
 

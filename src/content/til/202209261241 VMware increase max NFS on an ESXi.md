@@ -1,10 +1,12 @@
 ---
 title: VMware Increase Max NFS on an ESXi
 slug: vmware-increase-max-nfs-on-an-esxi
-pubDate: '2022-09-26T12:41:00+03:00'
-updatedDate: '2022-09-26T12:41:00+03:00'
+created: '2022-09-26T12:41:00+03:00'
+updated: '2022-09-26T12:41:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkaid7gp26'
 ---
 
 

@@ -1,12 +1,15 @@
 ---
 title: External Access
 slug: external-access
-pubDate: '2024-04-13T12:19:00+03:00'
-updatedDate: '2024-04-13T12:19:00+03:00'
+created: '2024-04-13T12:19:00+03:00'
+updated: '2024-04-13T12:19:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754919639875924'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnahzyl32m'
 ---
 
 - There is no special "DMZ" subnet where resources get a public IP

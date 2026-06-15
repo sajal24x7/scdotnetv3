@@ -1,8 +1,8 @@
 ---
 title: The Linux Command Line
 slug: the-linux-command-line
-pubDate: 2026-03-22T10:56:39.000Z
-updatedDate: 2026-06-05T14:48:54
+created: 2026-03-22T10:56:39.000Z
+updated: 2026-06-05T14:48:54
 category: bookshelf
 tags:
   - linux

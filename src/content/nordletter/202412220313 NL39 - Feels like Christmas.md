@@ -1,13 +1,16 @@
 ---
-title: "Feels Like Christmas"
+title: Feels Like Christmas
 edition: 39
-slug: "feels-like-christmas"
-description: "Delhi Rasoi + decaying internet + bad Spotify + solar probe"
-pubDate: 2024-12-22T03:13:22
-updatedDate: 2024-12-22T03:13:21
+slug: feels-like-christmas
+description: Delhi Rasoi + decaying internet + bad Spotify + solar probe
+created: 2024-12-22T03:13:22.000Z
+updated: 2024-12-22T03:13:21.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8796.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8796.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh7lmhip26'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#39, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

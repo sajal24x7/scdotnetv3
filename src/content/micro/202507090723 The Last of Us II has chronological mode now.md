@@ -1,12 +1,14 @@
 ---
-title: "The Last of Us II Has Chronological Mode Now"
-slug: "the-last-of-us-ii-has-chronological-mode-now"
-pubDate: 2025-07-10T16:12:15+03:00
-updatedDate: 2025-07-10T16:12:15+03:00
+title: The Last of Us II Has Chronological Mode Now
+slug: the-last-of-us-ii-has-chronological-mode-now
+created: 2025-07-10T13:12:15.000Z
+updated: 2025-07-10T13:12:15.000Z
 category: micro
-tags: 
+tags:
   - games
   - tlou
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modebtbdeb2s'
 ---
 [The Last of Us Part II’s new mode puts the story in chronological order](https://www.theverge.com/news/701060/the-last-of-us-part-ii-chronological-mode-season-three-hbo)
 

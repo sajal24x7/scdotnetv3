@@ -1,21 +1,23 @@
 ---
-title: "The Mysterious Affair at Styles"
-slug: "the-mysterious-affair-at-styles"
-pubDate: 2025-09-22T23:11:06+03:00
-updatedDate: 2026-06-05T14:19:08
+title: The Mysterious Affair at Styles
+slug: the-mysterious-affair-at-styles
+created: 2025-09-22T20:11:06.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - mystery
 format: audio
 genre: mystery
-author: "Agatha Christie"
-series: "Hercule Poirot"
+author: Agatha Christie
+series: Hercule Poirot
 seriesNumber: 1
-shelfStatus: "read"
+shelfStatus: read
 rating: like
-started: 2025-09-19T16:11:06+03:00
-finished: 2025-09-23T17:00:18+03:00
-cover: "the-mysterious-affair-at-styles.jpeg"
+started: 2025-09-19T13:11:06.000Z
+finished: 2025-09-23T14:00:18.000Z
+cover: the-mysterious-affair-at-styles.jpeg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode73beoz26'
 ---
 
 This was my first Agatha Christie novel, believe it or not. My sister used to love reading Agatha Christie. I somehow never got into reading her. I was a Asimov guy.

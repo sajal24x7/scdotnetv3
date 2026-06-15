@@ -1,12 +1,17 @@
 ---
-title: "Why Walk the Same Path Every Day"
-slug: "why-walk-the-same-path-every-day"
-description: "Ignore the path"
-pubDate: 2024-10-14T03:52:57
-updatedDate: 2024-10-14T03:52:57
+title: Why Walk the Same Path Every Day
+slug: why-walk-the-same-path-every-day
+description: Ignore the path
+created: 2024-10-14T03:52:57.000Z
+updated: 2024-10-14T03:52:57.000Z
 category: blog
-tags: ["blog", "walking"]
-image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6297.jpeg"
+tags:
+  - blog
+  - walking
+image: 'https://storage.sajalchoudhary.net/images/2024/10/IMG_6297.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754053047721433'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modawexlj42d'
 ---
 Each day, around six or seven, after dinner, I leave the flat and go for my walk.
 

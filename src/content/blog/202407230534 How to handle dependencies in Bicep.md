@@ -1,11 +1,17 @@
 ---
-title: "How to Handle Dependencies in Bicep"
-slug: "how-to-handle-dependencies-in-bicep"
-pubDate: 2024-07-23T05:34:23
-updatedDate: 2024-07-23T08:23:36
+title: How to Handle Dependencies in Bicep
+slug: how-to-handle-dependencies-in-bicep
+created: 2024-07-23T05:34:23.000Z
+updated: 2024-07-23T08:23:36.000Z
 category: blog
-tags: ["Azure", "Tech Notes"]
-image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fHNlcnZlciUyMGNvZGV8ZW58MHx8fHwxNzIxNzEyODUwfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - Azure
+  - Tech Notes
+image: >-
+  https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fHNlcnZlciUyMGNvZGV8ZW58MHx8fHwxNzIxNzEyODUwfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754049509340353'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modaurp22y2s'
 ---
 Bicep deploys resources in parallel. Which is what you might want as that is faster. However, there might be dependencies. I came across this while creating the environment needed for [this exercise](https://learn.microsoft.com/en-in/training/modules/configure-vnet-peering/6-simulation-peering). It was basically a lab on vnet-peering.  
 What I needed to create was this:

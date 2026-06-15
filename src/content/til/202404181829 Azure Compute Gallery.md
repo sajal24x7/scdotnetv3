@@ -1,12 +1,15 @@
 ---
 title: Azure Compute Gallery
 slug: azure-compute-gallery
-pubDate: '2024-04-18T18:29:00+03:00'
-updatedDate: '2024-04-18T18:29:00+03:00'
+created: '2024-04-18T18:29:00+03:00'
+updated: '2024-04-18T18:29:00+03:00'
 category: til
 tags:
-- azure
-- compute
+  - azure
+  - compute
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754926274146842'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modndidkrq2v'
 ---
 
 Azure Compute Gallery allows to store images and VM apps. 

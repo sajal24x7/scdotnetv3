@@ -1,12 +1,16 @@
 ---
-title: "Everything in Nature That Is Born, Dies"
-slug: "everything-in-nature-that-is-born-dies"
-description: "Life is what happens in the middle"
-pubDate: 2024-09-24T05:08:17
-updatedDate: 2024-09-24T05:08:17
+title: 'Everything in Nature That Is Born, Dies'
+slug: everything-in-nature-that-is-born-dies
+description: Life is what happens in the middle
+created: 2024-09-24T05:08:17.000Z
+updated: 2024-09-24T05:08:17.000Z
 category: blog
-tags: ["blog"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6137.jpeg"
+tags:
+  - blog
+image: 'https://storage.sajalchoudhary.net/images/2024/09/IMG_6137.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754051068849054'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modavibq2m2u'
 ---
 > Everything in nature that is born, dies.
 

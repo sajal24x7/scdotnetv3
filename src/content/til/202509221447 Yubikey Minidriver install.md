@@ -1,8 +1,8 @@
 ---
 title: Yubikey Minidriver Install
 slug: yubikey-minidriver-install
-pubDate: 2025-12-18T10:32:33.000Z
-updatedDate: 2025-12-18T10:32:33.000Z
+created: 2025-12-18T10:32:33.000Z
+updated: 2025-12-18T10:32:33.000Z
 category: til
 tags:
   - windows

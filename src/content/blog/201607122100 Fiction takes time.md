@@ -1,11 +1,18 @@
 ---
-title: "Fiction Takes Time"
-slug: "fiction-takes-time"
-pubDate: 2016-07-12T21:00:11
-updatedDate: 2024-04-29T07:55:50
+title: Fiction Takes Time
+slug: fiction-takes-time
+created: 2016-07-12T21:00:11.000Z
+updated: 2024-04-29T07:55:50.000Z
 category: blog
-tags: ["writing is", "essays"]
-image: "https://images.unsplash.com/photo-1592819695396-064b9572a660?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDd8fHdyaXRpbmd8ZW58MHx8fHwxNzE0Mzc3MzM5fDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - writing is
+  - essays
+image: >-
+  https://images.unsplash.com/photo-1592819695396-064b9572a660?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDd8fHdyaXRpbmd8ZW58MHx8fHwxNzE0Mzc3MzM5fDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754029405062726'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modaln4em523'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxt4lFoIc'
 ---
 Fiction takes time.
 

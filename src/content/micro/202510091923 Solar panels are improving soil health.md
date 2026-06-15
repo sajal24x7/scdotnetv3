@@ -1,8 +1,8 @@
 ---
 title: Solar Panels Are Improving Soil Health
 slug: solar-panels-are-improving-soil-health
-pubDate: 2025-10-09T16:25:40.000Z
-updatedDate: 2025-10-09T16:25:40.000Z
+created: 2025-10-09T16:25:40.000Z
+updated: 2025-10-09T16:25:40.000Z
 category: micro
 tags:
   - solar

@@ -1,16 +1,19 @@
 ---
-title: "Celebrating Sakraat in Finland"
+title: Celebrating Sakraat in Finland
 edition: 1
-slug: "celebrating-sakraat-in-finland"
-description: "Nord Letter #1 - Celebrating Sakraat + What is art"
-pubDate: 2024-01-27T20:12:57
-updatedDate: 2024-07-07T20:10:16
+slug: celebrating-sakraat-in-finland
+description: 'Nord Letter #1 - Celebrating Sakraat + What is art'
+created: 2024-01-27T20:12:57.000Z
+updated: 2024-07-07T20:10:16.000Z
 category: nordletter
 tags:
   - sakraat
   - finland
   - bjprf
-image: https://storage.sajalchoudhary.net/images/2024/01/53164A75-2BF0-415B-8A82-8C0C5DF411B0_1_105_c.jpeg
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/01/53164A75-2BF0-415B-8A82-8C0C5DF411B0_1_105_c.jpeg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgxcrot42d'
 ---
 Sometimes I wonder if anyone would find this useful. Does it server any purpose? Does it help anyone?
 

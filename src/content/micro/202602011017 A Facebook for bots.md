@@ -1,8 +1,8 @@
 ---
 title: A Facebook for Bots
 slug: a-facebook-for-bots
-pubDate: 2026-02-01T04:48:49.000Z
-updatedDate: 2026-02-01T04:48:49.000Z
+created: 2026-02-01T04:48:49.000Z
+updated: 2026-02-01T04:48:49.000Z
 category: micro
 tags:
   - social

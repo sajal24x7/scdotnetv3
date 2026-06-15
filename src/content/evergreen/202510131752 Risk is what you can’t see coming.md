@@ -1,8 +1,8 @@
 ---
 title: Risk Is What You Can’t See Coming
 slug: risk-is-what-you-cant-see-coming
-pubDate: 2025-10-14T12:50:25.000Z
-updatedDate: 2025-10-14T12:50:25.000Z
+created: 2025-10-14T12:50:25.000Z
+updated: 2025-10-14T12:50:25.000Z
 category: evergreen
 tags:
   - risk

@@ -1,8 +1,8 @@
 ---
 title: The Secret of the Nagas
 slug: the-secret-of-the-nagas
-pubDate: 2013-10-10T15:16:20.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2013-10-10T15:16:20.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -16,5 +16,8 @@ started: 2013-10-10T15:16:10.000Z
 finished: 2013-10-10T15:16:20.000Z
 rating: like
 cover: the-secret-of-the-nagas.jpg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754270258372827'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddz6dyub2s'
 ---
 Finished Reading

@@ -1,21 +1,23 @@
 ---
-title: "Children of Ruin"
-slug: "children-of-ruin"
-pubDate: 2025-10-12T02:22:40+03:00
-updatedDate: 2026-06-05T14:19:08
+title: Children of Ruin
+slug: children-of-ruin
+created: 2025-10-11T23:22:40.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - sci-fi
 format: audio
 genre: sci-fi
-author: "Adrian Tchaikovsky"
-series: "Children of Time"
+author: Adrian Tchaikovsky
+series: Children of Time
 seriesNumber: 2
-shelfStatus: "read"
-rating: "like"
-started: 2025-10-09T09:39:40+03:00
-finished: 2025-11-06T17:39:40+03:00
-cover: "children-of-ruin.jpg"
+shelfStatus: read
+rating: like
+started: 2025-10-09T06:39:40.000Z
+finished: 2025-11-06T14:39:40.000Z
+cover: children-of-ruin.jpg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode7gu4mn2l'
 ---
 The second book in the children of time series. Not as good as the first one.
 

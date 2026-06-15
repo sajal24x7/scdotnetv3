@@ -1,8 +1,8 @@
 ---
 title: To Remove Duplicates From a List Use Sets
 slug: to-remove-duplicates-from-a-list-use-sets
-pubDate: 2026-03-24T14:55:58.000Z
-updatedDate: 2026-03-24T14:55:58.000Z
+created: 2026-03-24T14:55:58.000Z
+updated: 2026-03-24T14:55:58.000Z
 category: til
 tags:
   - python

@@ -1,12 +1,15 @@
 ---
 title: Sector and Allocation Units
 slug: sector-and-allocation-units
-pubDate: '2024-07-16T13:09:00+03:00'
-updatedDate: '2024-07-16T13:09:00+03:00'
+created: '2024-07-16T13:09:00+03:00'
+updated: '2024-07-16T13:09:00+03:00'
 category: til
 tags:
-- windows
-- storage
+  - windows
+  - storage
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754959343359530'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnsjj6ko2m'
 ---
 
 # Sector

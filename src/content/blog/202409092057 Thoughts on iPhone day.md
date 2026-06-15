@@ -1,12 +1,18 @@
 ---
-title: "Thoughts on iPhone Day"
-slug: "thoughts-on-iphone-day"
-description: "2024 edition"
-pubDate: 2024-09-09T20:57:00
-updatedDate: 2024-09-11T18:32:18
+title: Thoughts on iPhone Day
+slug: thoughts-on-iphone-day
+description: 2024 edition
+created: 2024-09-09T20:57:00.000Z
+updated: 2024-09-11T18:32:18.000Z
 category: blog
-tags: ["blog", "apple"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/photo-1531554694128-c4c6665f59c2.jpeg"
+tags:
+  - blog
+  - apple
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/09/photo-1531554694128-c4c6665f59c2.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754049780415173'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modauvilpq2o'
 ---
 Apple announced new iPhones, new Apple Watches and new AirPods today. 
 

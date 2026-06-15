@@ -1,12 +1,15 @@
 ---
 title: Bicep Dependencies
 slug: bicep-dependencies
-pubDate: '2024-07-20T15:12:00+03:00'
-updatedDate: '2024-07-20T15:12:00+03:00'
+created: '2024-07-20T15:12:00+03:00'
+updated: '2024-07-20T15:12:00+03:00'
 category: til
 tags:
-- azure
-- bicep
+  - azure
+  - bicep
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754965197411179'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnv6ufqd2m'
 ---
 
 - implicit

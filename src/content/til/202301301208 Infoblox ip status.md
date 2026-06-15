@@ -1,10 +1,13 @@
 ---
 title: Infoblox Ip Status
 slug: infoblox-ip-status
-pubDate: '2023-01-30T12:08:00+03:00'
-updatedDate: '2023-01-30T12:08:00+03:00'
+created: '2023-01-30T12:08:00+03:00'
+updated: '2023-01-30T12:08:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754737903128549'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modknu7zog2c'
 ---
 
 

@@ -1,11 +1,17 @@
 ---
-title: "Attending the Global AI Bootcamp in Helsinki"
-slug: "attending-the-global-ai-bootcamp-in-helsinki"
-pubDate: 2025-04-24T06:45:53
-updatedDate: 2025-04-24T06:45:53
+title: Attending the Global AI Bootcamp in Helsinki
+slug: attending-the-global-ai-bootcamp-in-helsinki
+created: 2025-04-24T06:45:53.000Z
+updated: 2025-04-24T06:45:53.000Z
 category: blog
-tags: ["blog", "microsoft", "AI"]
-image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_1130.jpeg"
+tags:
+  - blog
+  - microsoft
+  - AI
+image: 'https://storage.sajalchoudhary.net/images/2025/04/IMG_1130.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754253522967381'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddrld7kx2m'
 ---
 I attended the [Global AI Bootcamp](https://globalai.community/badges/88df1dfa-8a1d-4203-80cc-7993a2320d21/) at the Microsoft office in Espoo on the 23rd April. It was a good session, centred around understanding and building agents. These sessions have been happening around the world in March, but here in Finland it was arranged in April.
 

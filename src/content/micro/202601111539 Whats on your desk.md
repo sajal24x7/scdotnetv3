@@ -1,8 +1,8 @@
 ---
 title: Whats on Your Desk
 slug: whats-on-your-desk
-pubDate: 2026-01-11T13:40:52.000Z
-updatedDate: 2026-01-11T13:40:52.000Z
+created: 2026-01-11T13:40:52.000Z
+updated: 2026-01-11T13:40:52.000Z
 category: micro
 tags:
   - desk-setup

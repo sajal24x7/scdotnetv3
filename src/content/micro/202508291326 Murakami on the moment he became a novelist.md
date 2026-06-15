@@ -1,13 +1,14 @@
 ---
-title: "Murakami on the Moment He Became a Novelist"
-slug: "murakami-on-the-moment-he-became-a-novelist"
-pubDate: 2025-08-29T13:30:02+03:00
-updatedDate: 2025-08-29T13:30:02+03:00
+title: Murakami on the Moment He Became a Novelist
+slug: murakami-on-the-moment-he-became-a-novelist
+created: 2025-08-29T10:30:02.000Z
+updated: 2025-08-29T10:30:02.000Z
 category: micro
 tags:
   - writing
   - murakami
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgo3kmtx2m'
 ---
 
 [Haruki Murakami: The Moment I Became a Novelist](https://lithub.com/haruki-murakami-the-moment-i-became-a-novelist/)

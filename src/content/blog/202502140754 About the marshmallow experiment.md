@@ -1,12 +1,19 @@
 ---
-title: "About the Marshmallow Experiment"
-slug: "about-the-marshmallow-experiment"
-description: "And the value of providing kids with a good environment growing up"
-pubDate: 2025-02-14T07:54:20
-updatedDate: 2025-02-14T07:54:20
+title: About the Marshmallow Experiment
+slug: about-the-marshmallow-experiment
+description: And the value of providing kids with a good environment growing up
+created: 2025-02-14T07:54:20.000Z
+updated: 2025-02-14T07:54:20.000Z
 category: blog
-tags: ["blog", "marshmallow test", "parenting"]
-image: "https://images.unsplash.com/photo-1597326585512-f5d2216dcf0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDExfHxNYXJzaG1hbGxvd3xlbnwwfHx8fDE3Mzk1MTk2NDB8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - marshmallow test
+  - parenting
+image: >-
+  https://images.unsplash.com/photo-1597326585512-f5d2216dcf0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDExfHxNYXJzaG1hbGxvd3xlbnwwfHx8fDE3Mzk1MTk2NDB8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754229351834541'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddgkyled2m'
 ---
 A good early measure of whether a child will be successful in life is if they are able to delay gratification. Most famously this was tested in the [marshmallow experiment](https://en.wikipedia.org/wiki/Stanford_marshmallow_experiment).
 

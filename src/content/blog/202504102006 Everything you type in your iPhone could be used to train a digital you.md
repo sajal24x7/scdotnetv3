@@ -1,12 +1,18 @@
 ---
-title: "Everything You Type in Your iPhone Could Be Used to Train a Digital You"
-slug: "everything-you-type-in-your-iphone-could-be-used-to-train-a-digital-you"
-description: "Make more detailed notes"
-pubDate: 2025-04-10T20:06:13
-updatedDate: 2025-04-10T20:06:13
+title: Everything You Type in Your iPhone Could Be Used to Train a Digital You
+slug: everything-you-type-in-your-iphone-could-be-used-to-train-a-digital-you
+description: Make more detailed notes
+created: 2025-04-10T20:06:13.000Z
+updated: 2025-04-10T20:06:13.000Z
 category: blog
-tags: ["blog", "AI"]
-image: "https://images.unsplash.com/photo-1737365506116-ef7eba797492?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDN8fHx8fHx8fDE3NDQyMjQxODJ8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - AI
+image: >-
+  https://images.unsplash.com/photo-1737365506116-ef7eba797492?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDN8fHx8fHx8fDE3NDQyMjQxODJ8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754248616831637'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddpdgldr2u'
 ---
 Everything you type in your iPhone, every feeling you note down in Journal, could give a future Siri \(or another agent\) every bit of data it needs to create a digital you.
 

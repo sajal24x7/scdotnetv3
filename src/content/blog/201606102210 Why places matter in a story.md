@@ -1,10 +1,19 @@
 ---
-title: "Why Places Matter in a Story"
-slug: "why-places-matter-in-a-story"
-pubDate: 2016-06-10T22:10:35
-updatedDate: 2016-06-10T22:10:35
+title: Why Places Matter in a Story
+slug: why-places-matter-in-a-story
+created: 2016-06-10T22:10:35.000Z
+updated: 2016-06-10T22:10:35.000Z
 category: blog
-tags: ["blog", "places", "settings", "story", "storytelling", "writing is"]
+tags:
+  - blog
+  - places
+  - settings
+  - story
+  - storytelling
+  - writing is
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754025527040207'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modajup4g42d'
 ---
 ![wp-1465576617960.jpeg](https://storage.sajalchoudhary.net/images/wordpress/2016/06/wp-1465576617960.jpeg)Decisions, decisions…\!
 

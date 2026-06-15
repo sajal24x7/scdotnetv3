@@ -1,15 +1,18 @@
 ---
-title: "I Miss Walking"
+title: I Miss Walking
 edition: 2
-slug: "i-miss-walking"
-description: "Nord Letter #2 - Walking"
-pubDate: 2024-02-03T18:35:15
-updatedDate: 2024-07-07T20:09:41
+slug: i-miss-walking
+description: 'Nord Letter #2 - Walking'
+created: 2024-02-03T18:35:15.000Z
+updated: 2024-07-07T20:09:41.000Z
 category: nordletter
 tags:
   - walking
   - finland
-image: https://storage.sajalchoudhary.net/images/2024/02/4DCAA106-2B20-4903-A254-3BA9D043C152.jpeg
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/02/4DCAA106-2B20-4903-A254-3BA9D043C152.jpeg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgxjkxlk24'
 ---
 I love walking. 
 

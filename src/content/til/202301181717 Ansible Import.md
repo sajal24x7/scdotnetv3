@@ -1,11 +1,14 @@
 ---
 title: Ansible Import
 slug: ansible-import
-pubDate: '2023-01-18T17:17:00+03:00'
-updatedDate: '2023-01-18T17:17:00+03:00'
+created: '2023-01-18T17:17:00+03:00'
+updated: '2023-01-18T17:17:00+03:00'
 category: til
 tags:
-- ansible
+  - ansible
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754733995340334'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkm2fd232u'
 ---
 
 

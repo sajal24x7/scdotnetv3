@@ -1,10 +1,21 @@
 ---
-title: "What to Say to Someone Who's Feeling Down"
-slug: "what-to-say-to-someone-who"
-pubDate: 2016-02-23T00:00:00
-updatedDate: 2016-02-23T00:00:00
+title: What to Say to Someone Who's Feeling Down
+slug: what-to-say-to-someone-who
+created: 2016-02-23T00:00:00.000Z
+updated: 2016-02-23T00:00:00.000Z
 category: blog
-tags: ["blog", "dealing with emotions", "depression", "down", "emotions", "feelings", "life"]
+tags:
+  - blog
+  - dealing with emotions
+  - depression
+  - down
+  - emotions
+  - feelings
+  - life
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754019030159815'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modagw7vu42u'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxakSFhiW'
 ---
 # What to say to someone who's feeling down
 

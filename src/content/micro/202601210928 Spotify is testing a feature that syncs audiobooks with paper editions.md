@@ -1,8 +1,8 @@
 ---
 title: Spotify Is Testing a Feature That Syncs Audiobooks With Paper Editions
 slug: spotify-is-testing-a-feature-that-syncs-audiobooks-with-paper-editions
-pubDate: 2026-01-21T04:01:33.000Z
-updatedDate: 2026-01-21T04:01:33.000Z
+created: 2026-01-21T04:01:33.000Z
+updated: 2026-01-21T04:01:33.000Z
 category: micro
 tags:
   - reading

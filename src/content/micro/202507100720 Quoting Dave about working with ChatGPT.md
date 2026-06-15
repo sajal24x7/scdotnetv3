@@ -1,12 +1,13 @@
 ---
-title: "Quoting Dave About Working With ChatGPT"
-slug: "quoting-dave-about-working-with-chatgpt"
-pubDate: 2025-07-10T07:28:59+03:00
-updatedDate: 2025-07-10T07:28:59+03:00
+title: Quoting Dave About Working With ChatGPT
+slug: quoting-dave-about-working-with-chatgpt
+created: 2025-07-10T04:28:59.000Z
+updated: 2025-07-10T04:28:59.000Z
 category: micro
 tags:
   - ai
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modebvavks2u'
 ---
 [Teaching ChatGPT how to work with me](http://scripting.com/2025/07/09/160306.html)
 

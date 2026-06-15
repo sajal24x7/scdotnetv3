@@ -1,11 +1,13 @@
 ---
 title: VMware Packet Capture Using Pktcap
 slug: vmware-packet-capture-using-pktcap
-pubDate: '2022-05-31T15:38:00+03:00'
-updatedDate: '2022-05-31T15:38:00+03:00'
+created: '2022-05-31T15:38:00+03:00'
+updated: '2022-05-31T15:38:00+03:00'
 category: til
 tags:
-- vmware
+  - vmware
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjr563ip2u'
 ---
 
 

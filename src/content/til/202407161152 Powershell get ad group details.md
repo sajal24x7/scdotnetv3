@@ -1,12 +1,15 @@
 ---
 title: Powershell Get Ad Group Details
 slug: powershell-get-ad-group-details
-pubDate: '2024-07-16T11:52:00+03:00'
-updatedDate: '2024-07-16T11:52:00+03:00'
+created: '2024-07-16T11:52:00+03:00'
+updated: '2024-07-16T11:52:00+03:00'
 category: til
 tags:
-- powershell
-- ad
+  - powershell
+  - ad
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754958243697554'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnrznp7y2v'
 ---
 
 ```powershell

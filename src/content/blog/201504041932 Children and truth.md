@@ -1,10 +1,17 @@
 ---
-title: "Children, and Truth"
-slug: "children-and-truth"
-pubDate: 2015-04-04T19:32:36
-updatedDate: 2015-04-04T19:32:36
+title: 'Children, and Truth'
+slug: children-and-truth
+created: 2015-04-04T19:32:36.000Z
+updated: 2015-04-04T19:32:36.000Z
 category: blog
-tags: ["blog", "parenting", "parents", "truth"]
+tags:
+  - blog
+  - parenting
+  - parents
+  - truth
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754003235670539'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda7qelq22v'
 ---
 [![Children, and truth](https://storage.sajalchoudhary.net/images/wordpress/2015/04/yelling-parents-hurt-kids.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2015/04/yelling-parents-hurt-kids.jpg)
 

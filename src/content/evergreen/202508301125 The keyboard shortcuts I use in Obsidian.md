@@ -1,12 +1,13 @@
 ---
-title: "The Keyboard Shortcuts I Use in Obsidian"
-slug: "the-keyboard-shortcuts-i-use-in-obsidian"
-pubDate: 2025-08-30T11:42:13+03:00
-updatedDate: 2025-08-30T11:42:13+03:00
+title: The Keyboard Shortcuts I Use in Obsidian
+slug: the-keyboard-shortcuts-i-use-in-obsidian
+created: 2025-08-30T08:42:13.000Z
+updated: 2025-08-30T08:42:13.000Z
 category: evergreen
 tags:
   - obsidian
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modeaq3kcf2l'
 ---
 1. Open daily note - `Cmd+D`
 2. Create unique note - `Cmd+Shift+Z`

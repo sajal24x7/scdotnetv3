@@ -1,13 +1,16 @@
 ---
-title: "Spectacular Solar Punk"
+title: Spectacular Solar Punk
 edition: 26
-slug: "spectacular-solar-punk"
-description: "iPhone reviews + reading becky chambers"
-pubDate: 2024-09-22T03:00:34
-updatedDate: 2024-09-22T03:00:33
+slug: spectacular-solar-punk
+description: iPhone reviews + reading becky chambers
+created: 2024-09-22T03:00:34.000Z
+updated: 2024-09-22T03:00:33.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6071-1.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/09/IMG_6071-1.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh4udopz2v'
 ---
 Hello from my home in Matinkyla\! This is NordLetter \#26, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

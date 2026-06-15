@@ -1,12 +1,15 @@
 ---
 title: VMware Find out When Vmotion Happened
 slug: vmware-find-out-when-vmotion-happened
-pubDate: '2024-06-13T14:58:00+03:00'
-updatedDate: '2024-06-13T14:58:00+03:00'
+created: '2024-06-13T14:58:00+03:00'
+updated: '2024-06-13T14:58:00+03:00'
 category: til
 tags:
-- vmware
-- vmotion
+  - vmware
+  - vmotion
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754944697699620'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnludbk32m'
 ---
 
 1. Go to VM logs. This is where VM folder is created. You can check on vmware console and then find the datastore where vmware.log file is present. Usually there will be older archives also.

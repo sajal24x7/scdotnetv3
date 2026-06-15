@@ -1,19 +1,21 @@
 ---
 title: Excellent Advice for Living
 slug: kevin-kelly-excellent-advice-for-living
-pubDate: 2024-02-12T10:46:00
-updatedDate: 2026-06-05T14:19:08
+created: 2024-02-12T10:46:00.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
 genre: self-help
 author: Kevin Kelly
 series: none
-started: 2024-02-12T10:46:00
-finished: 2024-02-12T10:46:00
+started: 2024-02-12T10:46:00.000Z
+finished: 2024-02-12T10:46:00.000Z
 shelfStatus: read
 rating: like
 cover: excellent-advice-for-living.jpg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode66amdc2u'
 ---
 This is an excellent gift for someone. 
 

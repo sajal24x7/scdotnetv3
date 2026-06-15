@@ -1,10 +1,19 @@
 ---
-title: "Are You Tired of Everything?"
-slug: "are-you-tired-of-everything"
-pubDate: 2016-05-16T21:06:51
-updatedDate: 2016-05-16T21:06:51
+title: Are You Tired of Everything?
+slug: are-you-tired-of-everything
+created: 2016-05-16T21:06:51.000Z
+updated: 2016-05-16T21:06:51.000Z
 category: blog
-tags: ["blog", "happiness", "happy", "life", "tired"]
+tags:
+  - blog
+  - happiness
+  - happy
+  - life
+  - tired
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754021967782260'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modaiatthx2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxgCDlqxE'
 ---
 ![wp-1463412872715.jpeg](https://storage.sajalchoudhary.net/images/wordpress/2016/05/wp-1463412872715.jpeg)
 

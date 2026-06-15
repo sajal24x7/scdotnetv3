@@ -1,10 +1,22 @@
 ---
-title: "Letters to an Imaginary Girlfriend : Two"
-slug: "letters-to-an-imaginary-girlfriend-two"
-pubDate: 2016-01-20T21:03:13
-updatedDate: 2016-01-20T21:03:13
+title: 'Letters to an Imaginary Girlfriend : Two'
+slug: letters-to-an-imaginary-girlfriend-two
+created: 2016-01-20T21:03:13.000Z
+updated: 2016-01-20T21:03:13.000Z
 category: blog
-tags: ["love", "blog", "girlfriend", "honesty", "letter", "life", "relationship", "trust"]
+tags:
+  - love
+  - blog
+  - girlfriend
+  - honesty
+  - letter
+  - life
+  - relationship
+  - trust
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754013259593885'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modaecjoq52o'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxP-FFgbJ'
 ---
 ![wp-1453303926261.jpeg](https://storage.sajalchoudhary.net/images/wordpress/2016/01/wp-1453303926261.jpeg)
 

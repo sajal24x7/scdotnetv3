@@ -1,14 +1,14 @@
 ---
 title: The Lost Symbol
 slug: the-lost-symbol
-pubDate: 2013-01-08T15:15:21.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2013-01-08T15:15:21.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
 author:
   - Dan Brown
-series: "Robert Langdon"
+series: Robert Langdon
 seriesNumber: 3
 genre: thriller
 format: paperback
@@ -17,5 +17,8 @@ started: 2013-01-08T15:15:15.000Z
 finished: 2013-01-08T15:15:21.000Z
 rating: like
 cover: the-lost-symbol.jpg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754257866145232'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddtjkrvr2s'
 ---
 Finished Reading

@@ -1,11 +1,14 @@
 ---
 title: Azure Resource Graph
 slug: azure-resource-graph
-pubDate: '2024-06-15T11:33:00+03:00'
-updatedDate: '2024-06-15T11:33:00+03:00'
+created: '2024-06-15T11:33:00+03:00'
+updated: '2024-06-15T11:33:00+03:00'
 category: til
 tags:
-- azure
+  - azure
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754945191984165'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnm3ohwv2s'
 ---
 
 - Querying [[202404061212 Azure Resources|ARM]] can be slow and expensive. There is a quota. So we use [[202406151133 Azure Resource Graph|Azure Resource Graph]]

@@ -1,12 +1,19 @@
 ---
-title: "The Two Factors That Allow Services to Be Terrible"
-slug: "the-two-factors-that-allow-services-to-be-terrible"
-description: "My WhatsApp story"
-pubDate: 2025-01-22T07:35:44
-updatedDate: 2025-01-22T07:35:44
+title: The Two Factors That Allow Services to Be Terrible
+slug: the-two-factors-that-allow-services-to-be-terrible
+description: My WhatsApp story
+created: 2025-01-22T07:35:44.000Z
+updated: 2025-01-22T07:35:44.000Z
 category: blog
-tags: ["blog", "messaging", "meta"]
-image: "https://images.unsplash.com/photo-1719204718581-5c95889c8ec9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDl8fE1lc3NhZ2luZ3xlbnwwfHx8fDE3Mzc1MzEyOTV8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - messaging
+  - meta
+image: >-
+  https://images.unsplash.com/photo-1719204718581-5c95889c8ec9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDl8fE1lc3NhZ2luZ3xlbnwwfHx8fDE3Mzc1MzEyOTV8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754221005303217'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddcr4gyk2l'
 ---
 From Pluralistic: [Enshittification isn’t caused by venture capital](https://pluralistic.net/2025/01/20/capitalist-unrealism/),
 

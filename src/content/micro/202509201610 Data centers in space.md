@@ -1,8 +1,8 @@
 ---
 title: Data Centers in Space
 slug: data-centers-in-space
-pubDate: 2025-09-20T15:49:14.000Z
-updatedDate: 2025-09-20T15:49:14.000Z
+created: 2025-09-20T15:49:14.000Z
+updated: 2025-09-20T15:49:14.000Z
 category: micro
 tags:
   - datacenter

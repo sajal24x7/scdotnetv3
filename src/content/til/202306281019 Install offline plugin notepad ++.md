@@ -1,10 +1,14 @@
 ---
 title: Install Offline Plugin Notepad ++
 slug: install-offline-plugin-notepad-++
-pubDate: '2023-06-28T10:19:00+03:00'
-updatedDate: '2023-06-28T10:19:00+03:00'
+created: '2023-06-28T10:19:00+03:00'
+updated: '2023-06-28T10:19:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754746830385470'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkruqfgq2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZnGm8JFiLE'
 ---
 
 

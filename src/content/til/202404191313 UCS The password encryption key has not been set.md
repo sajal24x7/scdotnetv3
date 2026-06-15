@@ -1,11 +1,14 @@
 ---
 title: UCS the Password Encryption Key Has Not Been Set
 slug: ucs-the-password-encryption-key-has-not-been-set
-pubDate: '2024-04-19T13:13:00+03:00'
-updatedDate: '2024-04-19T13:13:00+03:00'
+created: '2024-04-19T13:13:00+03:00'
+updated: '2024-04-19T13:13:00+03:00'
 category: til
 tags:
-- ucs
+  - ucs
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754927266847155'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modndwojeq2v'
 ---
 
 1. In the Navigation pane, click Admin.

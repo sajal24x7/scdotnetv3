@@ -1,8 +1,8 @@
 ---
 title: Vibe Coding Is Boring
 slug: vibe-coding-is-boring
-pubDate: 2025-12-14T08:36:51.000Z
-updatedDate: 2025-12-14T08:36:51.000Z
+created: 2025-12-14T08:36:51.000Z
+updated: 2025-12-14T08:36:51.000Z
 category: micro
 tags:
   - vibe-coding

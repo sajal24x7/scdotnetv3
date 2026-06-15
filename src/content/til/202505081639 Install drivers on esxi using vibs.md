@@ -1,13 +1,14 @@
 ---
-title: "Install Drivers on Esxi Using Vibs"
-slug: "install-drivers-on-esxi-using-vibs"
-pubDate: 2025-05-08T16:38:51+03:00
-updatedDate: 2025-05-08T16:38:51+03:00
+title: Install Drivers on Esxi Using Vibs
+slug: install-drivers-on-esxi-using-vibs
+created: 2025-05-08T13:38:51.000Z
+updated: 2025-05-08T13:38:51.000Z
 category: til
 tags:
-  - "#vmware"
-  - "#hp"
-
+  - '#vmware'
+  - '#hp'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododxhb4b26'
 ---
 1. Copy vib to the esxi. 
 2. Run the following command.

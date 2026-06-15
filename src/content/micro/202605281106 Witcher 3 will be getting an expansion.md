@@ -1,8 +1,8 @@
 ---
 title: Witcher 3 will be getting an expansion
 slug: witcher-3-will-be-getting-an-expansion
-pubDate: 2026-05-28T08:06:57.000Z
-updatedDate: 2026-05-28T08:06:57.000Z
+created: 2026-05-28T08:06:57.000Z
+updated: 2026-05-28T08:06:57.000Z
 category: micro
 tags:
   - witcher

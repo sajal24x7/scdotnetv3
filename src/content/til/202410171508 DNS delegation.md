@@ -1,12 +1,14 @@
 ---
 title: DNS Delegation
 slug: dns-delegation
-pubDate: '2024-10-17T15:08:00+03:00'
-updatedDate: '2024-10-17T15:08:00+03:00'
+created: '2024-10-17T15:08:00+03:00'
+updated: '2024-10-17T15:08:00+03:00'
 category: til
 tags:
-- dns
-- windows
+  - dns
+  - windows
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobvbyjz2v'
 ---
 
 We can create a delegated zone and allow app/teams to create entries as needed

@@ -1,8 +1,8 @@
 ---
 title: Atlassian Enables Default Data Collection to Train AI
 slug: atlassian-enables-default-data-collection-to-train-ai
-pubDate: 2026-04-20T19:44:16.000Z
-updatedDate: 2026-04-20T19:44:16.000Z
+created: 2026-04-20T19:44:16.000Z
+updated: 2026-04-20T19:44:16.000Z
 category: micro
 tags:
   - atlassian

@@ -1,13 +1,17 @@
 ---
-title: "Preparedness Day"
+title: Preparedness Day
 edition: 46
-slug: "preparedness-day"
-description: "Fighting flu + smaller AI models + timeline apps"
-pubDate: 2025-02-09T03:58:10
-updatedDate: 2025-02-09T03:58:09
+slug: preparedness-day
+description: Fighting flu + smaller AI models + timeline apps
+created: 2025-02-09T03:58:10.000Z
+updated: 2025-02-09T03:58:09.000Z
 category: nordletter
-tags: ["Nord Letter", "AI"]
-image: "https://storage.sajalchoudhary.net/images/2025/02/IMG_9569.jpeg"
+tags:
+  - Nord Letter
+  - AI
+image: 'https://storage.sajalchoudhary.net/images/2025/02/IMG_9569.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhbarx442u'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#46, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

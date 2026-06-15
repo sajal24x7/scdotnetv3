@@ -1,10 +1,22 @@
 ---
-title: "Why I Do Not Write Long Stuff Here!"
-slug: "why-i-do-not-write-long-stuff-here"
-pubDate: 2014-07-12T06:05:31
-updatedDate: 2024-01-28T11:05:58
+title: Why I Do Not Write Long Stuff Here!
+slug: why-i-do-not-write-long-stuff-here
+created: 2014-07-12T06:05:31.000Z
+updated: 2024-01-28T11:05:58.000Z
 category: blog
-tags: ["fiction writing", "length", "sixty-day-blog", "tips", "Uncategorized", "wordlimit", "writing is", "#test"]
+tags:
+  - fiction writing
+  - length
+  - sixty-day-blog
+  - tips
+  - Uncategorized
+  - wordlimit
+  - writing is
+  - '#test'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753985443486613'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7xnmzh72m'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwcCFlow-'
 ---
 Because if I did, I won’t.
 

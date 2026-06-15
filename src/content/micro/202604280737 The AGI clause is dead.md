@@ -1,8 +1,8 @@
 ---
 title: The AGI clause is dead
 slug: the-agi-clause-is-dead
-pubDate: 2026-04-28T04:38:44.000Z
-updatedDate: 2026-04-28T04:38:44.000Z
+created: 2026-04-28T04:38:44.000Z
+updated: 2026-04-28T04:38:44.000Z
 category: micro
 tags:
   - openai

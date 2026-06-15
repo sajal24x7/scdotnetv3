@@ -1,11 +1,13 @@
 ---
 title: PowerShell Arrays
 slug: powershell-arrays
-pubDate: '2022-04-12T15:31:00+03:00'
-updatedDate: '2022-04-12T15:31:00+03:00'
+created: '2022-04-12T15:31:00+03:00'
+updated: '2022-04-12T15:31:00+03:00'
 category: til
 tags:
-- powershell
+  - powershell
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhn5hxmu2l'
 ---
 
 

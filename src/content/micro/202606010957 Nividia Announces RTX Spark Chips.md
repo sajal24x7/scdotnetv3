@@ -1,8 +1,8 @@
 ---
 title: Nividia Announces RTX Spark Chips
 slug: nividia-announces-rtx-spark-chips
-pubDate: 2026-06-01T07:02:10.000Z
-updatedDate: 2026-06-01T07:02:10.000Z
+created: 2026-06-01T07:02:10.000Z
+updated: 2026-06-01T07:02:10.000Z
 category: micro
 tags:
   - nvidia

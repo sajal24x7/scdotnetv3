@@ -1,12 +1,19 @@
 ---
-title: "I Want to Share Little Ephemeral Messages With My Family"
-slug: "i-want-to-share-little-ephemeral-messages-with-my-family"
-description: "Like this picture of the skies I took while out on my walk"
-pubDate: 2025-04-09T19:01:56
-updatedDate: 2025-04-09T19:01:56
+title: I Want to Share Little Ephemeral Messages With My Family
+slug: i-want-to-share-little-ephemeral-messages-with-my-family
+description: Like this picture of the skies I took while out on my walk
+created: 2025-04-09T19:01:56.000Z
+updated: 2025-04-09T19:01:56.000Z
 category: blog
-tags: ["blog", "social media", "apps", "app store"]
-image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0879.jpeg"
+tags:
+  - blog
+  - social media
+  - apps
+  - app store
+image: 'https://storage.sajalchoudhary.net/images/2025/04/IMG_0879.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754248118366094'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddp43m5w2d'
 ---
 I want to be able to share little videos and photos directly with my family. I don't want a video call. I don't want a group chat. I just want a simple app where I can leave ephemeral messages for my family.
 

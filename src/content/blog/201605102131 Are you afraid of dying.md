@@ -1,10 +1,17 @@
 ---
-title: "Are You Afraid of Dying?"
-slug: "are-you-afraid-of-dying"
-pubDate: 2016-05-10T21:31:42
-updatedDate: 2016-05-10T21:31:42
+title: Are You Afraid of Dying?
+slug: are-you-afraid-of-dying
+created: 2016-05-10T21:31:42.000Z
+updated: 2016-05-10T21:31:42.000Z
 category: blog
-tags: ["blog", "death", "life", "truth"]
+tags:
+  - blog
+  - death
+  - life
+  - truth
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754021688275304'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modai54ymy2v'
 ---
 ![are you afraid of dying.jpg](https://storage.sajalchoudhary.net/images/wordpress/2016/05/are-you-afraid-of-dying.jpg)
 

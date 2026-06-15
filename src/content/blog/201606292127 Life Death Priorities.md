@@ -1,11 +1,17 @@
 ---
-title: "Life, Death & Priorities"
-slug: "life-death-priorities"
-pubDate: 2016-06-29T21:27:09
-updatedDate: 2024-06-01T11:43:50
+title: 'Life, Death & Priorities'
+slug: life-death-priorities
+created: 2016-06-29T21:27:09.000Z
+updated: 2024-06-01T11:43:50.000Z
 category: blog
-tags: ["writing is", "essays"]
-image: "https://storage.sajalchoudhary.net/images/2024/06/capture.png"
+tags:
+  - writing is
+  - essays
+image: 'https://storage.sajalchoudhary.net/images/2024/06/capture.png'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754025830439317'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modajzchui2v'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxnQZFuYh'
 ---
 There was a moment, between when I had picked up my luggage, and when I began looking for a cab, that I felt this sense of loss, this sadness. I had just returned from one of the four or so trips I need in a year to function. I was back in the city. I was home. And yet, I could not shake this feeling of entrapment\!
 

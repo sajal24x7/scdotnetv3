@@ -1,12 +1,14 @@
 ---
 title: Add Custom Domain to Entra ID
 slug: add-custom-domain-to-entra-id
-pubDate: '2024-08-28T19:22:00+03:00'
-updatedDate: '2024-08-28T19:22:00+03:00'
+created: '2024-08-28T19:22:00+03:00'
+updated: '2024-08-28T19:22:00+03:00'
 category: til
 tags:
-- entra
-- azure
+  - entra
+  - azure
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoaa3g4v23'
 ---
 
 1. Have a custom domain registered with a registrar

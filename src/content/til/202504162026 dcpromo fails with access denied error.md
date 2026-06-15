@@ -1,13 +1,14 @@
 ---
-title: "Dcpromo Fails With Access Denied Error"
-slug: "dcpromo-fails-with-access-denied-error"
-pubDate: 2025-04-16T20:39:48+03:00
-updatedDate: 2025-04-16T20:39:48+03:00
+title: Dcpromo Fails With Access Denied Error
+slug: dcpromo-fails-with-access-denied-error
+created: 2025-04-16T17:39:48.000Z
+updated: 2025-04-16T17:39:48.000Z
 category: til
 tags:
   - windows
   - ad
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododnjvby2v'
 ---
 This can happen during demotion.
 

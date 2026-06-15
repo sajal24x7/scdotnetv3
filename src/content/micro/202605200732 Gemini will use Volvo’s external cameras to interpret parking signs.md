@@ -1,8 +1,8 @@
 ---
 title: Gemini will use Volvo’s external cameras to interpret parking signs
 slug: gemini-will-use-volvos-external-cameras-to-interpret-parking-signs
-pubDate: 2026-05-20T04:34:04.000Z
-updatedDate: 2026-05-20T04:34:04.000Z
+created: 2026-05-20T04:34:04.000Z
+updated: 2026-05-20T04:34:04.000Z
 category: micro
 tags:
   - google

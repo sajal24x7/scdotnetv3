@@ -1,8 +1,8 @@
 ---
 title: To Kill a Mockingbird
 slug: to-kill-a-mockingbird
-pubDate: 2016-09-13T15:56:11.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2016-09-13T15:56:11.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -15,5 +15,7 @@ started: 2013-03-18T11:20:10.000Z
 finished: 2016-09-13T15:56:11.000Z
 rating: love
 cover: to-kill-a-mockingbird.webp
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode5p6fpb2m'
 ---
 Finished Reading

@@ -1,13 +1,14 @@
 ---
-title: "AD Database Files Location"
-slug: "ad-database-files-location"
-pubDate: 2025-02-26T13:41:26+03:00
-updatedDate: 2025-02-26T13:41:26+03:00
+title: AD Database Files Location
+slug: ad-database-files-location
+created: 2025-02-26T10:41:26.000Z
+updated: 2025-02-26T10:41:26.000Z
 category: til
 tags:
-  - "#ad"
-  - "#windows"
-
+  - '#ad'
+  - '#windows'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocq756w23'
 ---
 Check in registry:  `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters`
 

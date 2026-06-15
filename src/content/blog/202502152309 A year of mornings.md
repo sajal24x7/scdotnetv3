@@ -1,9 +1,13 @@
 ---
-title: "A Year of Mornings"
-slug: "a-year-of-mornings"
-pubDate: 2025-02-15T23:09:28
-updatedDate: 2025-03-03T20:19:23
+title: A Year of Mornings
+slug: a-year-of-mornings
+created: 2025-02-15T23:09:28.000Z
+updated: 2025-03-03T20:19:23.000Z
 category: blog
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754230558227416'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddh4av6g2u'
+  - 'https://www.threads.com/@sajal24x7/post/DZm3kj-Fhhw'
 ---
 ![A year of mornings - Poems by Sajal](https://storage.sajalchoudhary.net/images/2025/02/NotionPress---Front---A-year-of-mornings-1.png)
 

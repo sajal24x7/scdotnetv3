@@ -1,12 +1,18 @@
 ---
-title: "What Would You Do Without Me?"
-slug: "what-would-you-do-without-me"
-description: "Remarry (Bad jokes and me)"
-pubDate: 2025-04-14T19:08:41
-updatedDate: 2025-04-14T19:08:41
+title: What Would You Do Without Me?
+slug: what-would-you-do-without-me
+description: Remarry (Bad jokes and me)
+created: 2025-04-14T19:08:41.000Z
+updated: 2025-04-14T19:08:41.000Z
 category: blog
-tags: ["blog", "prerna"]
-image: "https://images.unsplash.com/photo-1743052864032-2363b7e67bf7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDN8fHx8fHx8fDE3NDQ2NTc2OTl8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - prerna
+image: >-
+  https://images.unsplash.com/photo-1743052864032-2363b7e67bf7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDN8fHx8fHx8fDE3NDQ2NTc2OTl8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754250184756577'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddpzrr4r2m'
 ---
 Prerna is not doing well these past few days. She has an upset stomach. Tonight, after a dinner at our friends’ place, she came and vomitted everything she had eaten. Later, she was crying, and when I asked why was she crying, she said she was worried what would happen to us if she was not here. Who would take care of Savya? Who would cook for me?
 

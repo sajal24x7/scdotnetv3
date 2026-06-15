@@ -1,8 +1,8 @@
 ---
 title: Write a Letter to Your Child
 slug: write-a-letter-to-your-child
-pubDate: 2026-01-31T18:25:30.000Z
-updatedDate: 2026-01-31T18:25:30.000Z
+created: 2026-01-31T18:25:30.000Z
+updated: 2026-01-31T18:25:30.000Z
 category: evergreen
 tags:
   - writing

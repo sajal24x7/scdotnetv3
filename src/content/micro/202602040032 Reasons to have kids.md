@@ -1,8 +1,8 @@
 ---
 title: Reasons to Have Kids
 slug: reasons-to-have-kids
-pubDate: 2026-02-03T19:03:44.000Z
-updatedDate: 2026-02-03T19:03:44.000Z
+created: 2026-02-03T19:03:44.000Z
+updated: 2026-02-03T19:03:44.000Z
 category: micro
 tags:
   - kevin-kelly

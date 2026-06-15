@@ -1,11 +1,22 @@
 ---
-title: "Day Twelve: The Lord in the Mountains"
-slug: "day-twelve-the-lord-in-the-mountains"
-pubDate: 2014-03-24T20:24:40
-updatedDate: 2014-03-24T20:24:40
+title: 'Day Twelve: The Lord in the Mountains'
+slug: day-twelve-the-lord-in-the-mountains
+created: 2014-03-24T20:24:40.000Z
+updated: 2014-03-24T20:24:40.000Z
 category: blog
-tags: ["30 day challenge", "featured", "Lord", "photography", "prose", "Uncategorized"]
-image: "https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395672580169.jpeg"
+tags:
+  - 30 day challenge
+  - featured
+  - Lord
+  - photography
+  - prose
+  - Uncategorized
+image: >-
+  https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395672580169.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753978384044524'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7ugqyfm26'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwO3nFu-e'
 ---
 [![image](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395672580169.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395672580169.jpeg)
 

@@ -1,13 +1,14 @@
 ---
-title: "Gmail Has a New Tab for Unsubscribing"
-slug: "gmail-has-a-new-tab-for-unsubscribing"
-pubDate: 2025-07-10T16:05:13+03:00
-updatedDate: 2025-07-10T16:05:13+03:00
+title: Gmail Has a New Tab for Unsubscribing
+slug: gmail-has-a-new-tab-for-unsubscribing
+created: 2025-07-10T13:05:13.000Z
+updated: 2025-07-10T13:05:13.000Z
 category: micro
 tags:
   - gmail
   - google
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modebrdfwe2o'
 ---
 [Gmail’s new tab is made for unsubscribing from emails](https://www.theverge.com/news/701282/gmail-manage-email-subscriptions-unsubscribe)
 

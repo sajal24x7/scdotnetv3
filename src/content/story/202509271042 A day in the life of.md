@@ -1,12 +1,13 @@
 ---
-title: "A Day in the Life Of"
-slug: "a-day-in-the-life-of"
-pubDate: 2025-09-27T16:22:28+03:00
-updatedDate: 2025-09-27T16:22:28+03:00
+title: A Day in the Life Of
+slug: a-day-in-the-life-of
+created: 2025-09-27T13:22:28.000Z
+updated: 2025-09-27T13:22:28.000Z
 category: story
 tags:
   - children
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhmwofed2p'
 ---
 I wake up. It’s still dark outside (inside?) whatever. I don’t care. I don’t want to wake up right now. I make a noise. I still haven’t figured out the talking thing completely. I can say some things. Not everything. I don’t need to. These guys will figure out. 
 

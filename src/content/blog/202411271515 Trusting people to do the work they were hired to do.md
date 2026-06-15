@@ -1,12 +1,18 @@
 ---
-title: "Trusting People to Do the Work They Were Hired to Do"
-slug: "trusting-people-to-do-the-work-they-were-hired-to-do"
-description: "Curb micro-management"
-pubDate: 2024-11-27T15:15:32
-updatedDate: 2024-11-27T15:15:32
+title: Trusting People to Do the Work They Were Hired to Do
+slug: trusting-people-to-do-the-work-they-were-hired-to-do
+description: Curb micro-management
+created: 2024-11-27T15:15:32.000Z
+updated: 2024-11-27T15:15:32.000Z
 category: blog
-tags: ["blog", "work"]
-image: "https://images.unsplash.com/photo-1527525443983-6e60c75fff46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDl8fFRlYW18ZW58MHx8fHwxNzMyNzIwNDc0fDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - work
+image: >-
+  https://images.unsplash.com/photo-1527525443983-6e60c75fff46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDl8fFRlYW18ZW58MHx8fHwxNzMyNzIwNDc0fDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754202830340778'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd2jn5va2v'
 ---
 I graduated college in 2014 and joined TCS in October of the same year. The first two months after joining TCS were earmarked for training.
 

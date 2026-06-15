@@ -1,10 +1,19 @@
 ---
-title: "Why I Decided to Set a Shipping Date for My Book"
-slug: "why-i-decided-to-set-a-shipping-date-for-my-book"
-pubDate: 2015-07-01T20:58:57
-updatedDate: 2015-07-01T20:58:57
+title: Why I Decided to Set a Shipping Date for My Book
+slug: why-i-decided-to-set-a-shipping-date-for-my-book
+created: 2015-07-01T20:58:57.000Z
+updated: 2015-07-01T20:58:57.000Z
 category: blog
-tags: ["blog", "deadline", "shipping date", "writing is", "writing tips"]
+tags:
+  - blog
+  - deadline
+  - shipping date
+  - writing is
+  - writing tips
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754005118216377'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modaalp47x2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxAqDltlA'
 ---
 Well, I did say I might decide to explain what [this](http://sajalchoudhary.com/2015/06/09/lets-sail/) was all about. So, here it goes.
 

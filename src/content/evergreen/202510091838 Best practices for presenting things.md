@@ -1,13 +1,14 @@
 ---
-title: "Best Practices for Presenting Things"
-slug: "best-practices-for-presenting-things"
-pubDate: 2025-10-09T19:26:08+03:00
-updatedDate: 2025-10-09T19:26:08+03:00
+title: Best Practices for Presenting Things
+slug: best-practices-for-presenting-things
+created: 2025-10-09T16:26:08.000Z
+updated: 2025-10-09T16:26:08.000Z
 category: evergreen
 tags:
   - presentation
   - talks
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modebc6idv2v'
 ---
 These are things that I have noticed in presentations given by others. Presentations that I have liked have these qualities.
 

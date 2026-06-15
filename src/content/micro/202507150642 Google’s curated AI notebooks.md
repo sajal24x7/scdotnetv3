@@ -1,14 +1,15 @@
 ---
-title: "Google’s Curated AI Notebooks"
-slug: "googles-curated-ai-notebooks"
-pubDate: 2025-07-16T11:08:25+03:00
-updatedDate: 2025-07-16T11:08:25+03:00
+title: Google’s Curated AI Notebooks
+slug: googles-curated-ai-notebooks
+created: 2025-07-16T08:08:25.000Z
+updated: 2025-07-16T08:08:25.000Z
 category: micro
 tags:
   - ai
   - google
   - notebooklm
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modec3im6d2m'
 ---
 [Google’s curated AI ‘notebooks’ talk you through topics from parenting to Shakespeare](https://www.theverge.com/news/706854/google-notebooklm-featured-notebook-ai-topics)
 

@@ -1,8 +1,8 @@
 ---
 title: SpaceX Seeks Approval for 1 Million DCs in Space
 slug: spacex-seeks-approval-for-1-million-dcs-in-space
-pubDate: 2026-02-01T03:18:26.000Z
-updatedDate: 2026-02-01T03:18:26.000Z
+created: 2026-02-01T03:18:26.000Z
+updated: 2026-02-01T03:18:26.000Z
 category: micro
 tags:
   - space

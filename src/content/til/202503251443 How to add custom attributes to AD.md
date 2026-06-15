@@ -1,13 +1,14 @@
 ---
-title: "How to Add Custom Attributes to AD"
-slug: "how-to-add-custom-attributes-to-ad"
-pubDate: 2025-03-25T14:40:33+03:00
-updatedDate: 2025-03-25T14:40:33+03:00
+title: How to Add Custom Attributes to AD
+slug: how-to-add-custom-attributes-to-ad
+created: 2025-03-25T11:40:33.000Z
+updated: 2025-03-25T11:40:33.000Z
 category: til
 tags:
   - ad
   - windows
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modod6ffcr2v'
 ---
 ## Pre-requisites
 1. Make sure you have schema admin rights

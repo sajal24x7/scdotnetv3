@@ -1,12 +1,17 @@
 ---
-title: "Professionals Are Consistent"
-slug: "professionals-are-consistent"
-description: "They show up"
-pubDate: 2024-10-03T17:27:19
-updatedDate: 2024-10-03T17:27:19
+title: Professionals Are Consistent
+slug: professionals-are-consistent
+description: They show up
+created: 2024-10-03T17:27:19.000Z
+updated: 2024-10-03T17:27:19.000Z
 category: blog
-tags: ["blog", "writing is"]
-image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6184.jpeg"
+tags:
+  - blog
+  - writing is
+image: 'https://storage.sajalchoudhary.net/images/2024/10/IMG_6184.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754051906712017'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modavujccz2o'
 ---
 Professionals show up, each time whenever needed.
 

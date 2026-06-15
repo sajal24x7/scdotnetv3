@@ -1,11 +1,14 @@
 ---
 title: Event Viewer Logs Location
 slug: event-viewer-logs-location
-pubDate: '2024-01-30T13:12:00+03:00'
-updatedDate: '2024-01-30T13:12:00+03:00'
+created: '2024-01-30T13:12:00+03:00'
+updated: '2024-01-30T13:12:00+03:00'
 category: til
 tags:
-- windows
+  - windows
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754761487194633'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkykbpgj2w'
 ---
 
 ```text

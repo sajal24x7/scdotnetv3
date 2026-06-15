@@ -1,14 +1,15 @@
 ---
-title: "Anthropic Revokes OpenAI Access to Claude"
-slug: "anthropic-revokes-openai-access-to-claude"
-pubDate: 2025-08-03T09:09:41+03:00
-updatedDate: 2025-08-03T09:09:41+03:00
+title: Anthropic Revokes OpenAI Access to Claude
+slug: anthropic-revokes-openai-access-to-claude
+created: 2025-08-03T06:09:41.000Z
+updated: 2025-08-03T06:09:41.000Z
 category: micro
 tags:
   - ai
   - anthropic
   - openai
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modghoibys2l'
 ---
 
 [Anthropic Revokes OpenAI's Access to Claude](https://www.wired.com/story/anthropic-revokes-openais-access-to-claude/)

@@ -1,8 +1,8 @@
 ---
 title: Gig Workers Are Generating Training Data for Robots
 slug: gig-workers-are-generating-training-data-for-robots
-pubDate: 2026-04-01T11:59:44.000Z
-updatedDate: 2026-04-01T11:59:44.000Z
+created: 2026-04-01T11:59:44.000Z
+updated: 2026-04-01T11:59:44.000Z
 category: micro
 tags:
   - robots

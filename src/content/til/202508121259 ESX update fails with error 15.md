@@ -1,13 +1,14 @@
 ---
-title: "ESX Update Fails With Error 15"
-slug: "esx-update-fails-with-error-15"
-pubDate: 2025-08-12T12:59:30+03:00
-updatedDate: 2025-08-12T12:59:30+03:00
+title: ESX Update Fails With Error 15
+slug: esx-update-fails-with-error-15
+created: 2025-08-12T09:59:30.000Z
+updated: 2025-08-12T09:59:30.000Z
 category: til
 tags:
   - vmware
   - esxi
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoeouj2w23'
 ---
 Check in `/var/run/log/esxupdate.log` file, better to run the following and let it write the logs to a temporary file.
 

@@ -1,12 +1,15 @@
 ---
 title: What Resources Can We Backup Using Azure Backup
 slug: what-resources-can-we-backup-using-azure-backup
-pubDate: '2024-08-01T19:00:00+03:00'
-updatedDate: '2024-08-01T19:00:00+03:00'
+created: '2024-08-01T19:00:00+03:00'
+updated: '2024-08-01T19:00:00+03:00'
 category: til
 tags:
-- azure
-- backup
+  - azure
+  - backup
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754972341696739'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnygh44y2m'
 ---
 
 Broadly speaking:

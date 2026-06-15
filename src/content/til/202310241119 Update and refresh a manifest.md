@@ -1,12 +1,15 @@
 ---
 title: Update and Refresh a Manifest
 slug: update-and-refresh-a-manifest
-pubDate: '2023-10-24T11:19:00+03:00'
-updatedDate: '2023-10-24T11:19:00+03:00'
+created: '2023-10-24T11:19:00+03:00'
+updated: '2023-10-24T11:19:00+03:00'
 category: til
 tags:
-- ansible
-- redhat
+  - ansible
+  - redhat
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754755269892201'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkvpslxn2m'
 ---
 
 1. Go to [Red Hat Customer Portal](https://access.redhat.com/)

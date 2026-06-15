@@ -1,11 +1,13 @@
 ---
 title: Increase Memory Allocated to VMware Services
 slug: increase-memory-allocated-to-vmware-services
-pubDate: '2024-08-12T13:08:00+03:00'
-updatedDate: '2024-08-12T13:08:00+03:00'
+created: '2024-08-12T13:08:00+03:00'
+updated: '2024-08-12T13:08:00+03:00'
 category: til
 tags:
-- vmware
+  - vmware
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo4u3s4a2v'
 ---
 
 # Error

@@ -1,12 +1,14 @@
 ---
 title: Restore Files From Azure Backup
 slug: restore-files-from-azure-backup
-pubDate: '2024-08-13T19:19:00+03:00'
-updatedDate: '2024-08-13T19:19:00+03:00'
+created: '2024-08-13T19:19:00+03:00'
+updated: '2024-08-13T19:19:00+03:00'
 category: til
 tags:
-- azure
-- backup
+  - azure
+  - backup
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo5gynjf23'
 ---
 
 ![[Screenshot 2024-08-13 at 7.21.49 PM.png]]

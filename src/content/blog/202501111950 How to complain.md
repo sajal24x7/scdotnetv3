@@ -1,12 +1,18 @@
 ---
-title: "How to Complain"
-slug: "how-to-complain"
-description: "Or, how to make your boss's life easier"
-pubDate: 2025-01-11T19:50:32
-updatedDate: 2025-01-11T19:50:32
+title: How to Complain
+slug: how-to-complain
+description: 'Or, how to make your boss''s life easier'
+created: 2025-01-11T19:50:32.000Z
+updated: 2025-01-11T19:50:32.000Z
 category: blog
-tags: ["blog", "work"]
-image: "https://images.unsplash.com/photo-1607211851821-8be3cd6146f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDl8fHBhaW50fGVufDB8fHx8MTczNjYyNTAwNXww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - work
+image: >-
+  https://images.unsplash.com/photo-1607211851821-8be3cd6146f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDl8fHBhaW50fGVufDB8fHx8MTczNjYyNTAwNXww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754218456870474'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddbm3iq32w'
 ---
 Complaining is easy.
 

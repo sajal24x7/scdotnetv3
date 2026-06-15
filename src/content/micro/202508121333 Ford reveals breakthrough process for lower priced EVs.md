@@ -1,13 +1,14 @@
 ---
-slug: "ford-reveals-breakthrough-process-for-lower-priced-evs"
-pubDate: 2025-08-12T13:39:06+03:00
-updatedDate: 2025-08-12T13:39:06+03:00
+slug: ford-reveals-breakthrough-process-for-lower-priced-evs
+created: 2025-08-12T10:39:06.000Z
+updated: 2025-08-12T10:39:06.000Z
 category: micro
 tags:
   - cars
   - electric-cars
   - ford
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgk4ibqu2o'
 ---
 [Ford reveals breakthrough process for lower priced EVs by Andrew J. Hawkins](https://www.theverge.com/ford-motor-company/757243/ford-ev-truck-breakthrough-model-t)
 

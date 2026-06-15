@@ -1,8 +1,8 @@
 ---
 title: New Wave Bookstores in China
 slug: new-wave-bookstores-in-china
-pubDate: 2025-10-03T08:10:53.000Z
-updatedDate: 2025-10-03T08:10:53.000Z
+created: 2025-10-03T08:10:53.000Z
+updated: 2025-10-03T08:10:53.000Z
 category: micro
 tags:
   - china

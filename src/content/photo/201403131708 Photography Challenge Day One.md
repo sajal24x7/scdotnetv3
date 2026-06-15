@@ -1,11 +1,16 @@
 ---
-title: "Photography Challenge: Day One"
-slug: "photography-challenge-day-one"
-pubDate: 2014-03-13T17:08:47
-updatedDate: 2024-05-04T06:52:53
+title: 'Photography Challenge: Day One'
+slug: photography-challenge-day-one
+created: 2014-03-13T17:08:47.000Z
+updated: 2024-05-04T06:52:53.000Z
 category: photo
-tags: ["30 day challenge", "photography"]
-image: "https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1394723640207.jpeg"
+tags:
+  - 30 day challenge
+  - photography
+image: >-
+  https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1394723640207.jpeg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhjln7xn2v'
 ---
 _Disclaimer: This is not an original idea. I ’m not sure if anybody can claim to be the sole-proprietor of it either._  
 So, what happened was this.  

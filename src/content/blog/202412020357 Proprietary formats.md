@@ -1,12 +1,18 @@
 ---
-title: "Proprietary Formats"
-slug: "proprietary-formats"
-description: "A day spent copy pasting from Notes to Markdown"
-pubDate: 2024-12-02T03:57:28
-updatedDate: 2024-12-02T03:57:27
+title: Proprietary Formats
+slug: proprietary-formats
+description: A day spent copy pasting from Notes to Markdown
+created: 2024-12-02T03:57:28.000Z
+updated: 2024-12-02T03:57:27.000Z
 category: blog
-tags: ["blog", "tech"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/photo-1597740985671-2a8a3b80502e.jpeg"
+tags:
+  - blog
+  - tech
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/12/photo-1597740985671-2a8a3b80502e.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754204672899269'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd3dowkk2m'
 ---
 I spent most of Saturday morning at the library, transferring the almost 150 poems I had written around 2017 from Notes to Obsidian.
 

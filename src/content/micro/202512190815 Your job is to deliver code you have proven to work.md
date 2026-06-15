@@ -1,8 +1,8 @@
 ---
 title: Your Job Is to Deliver Code You Have Proven to Work
 slug: your-job-is-to-deliver-code-you-have-proven-to-work
-pubDate: 2025-12-19T06:17:00.000Z
-updatedDate: 2025-12-19T06:17:00.000Z
+created: 2025-12-19T06:17:00.000Z
+updated: 2025-12-19T06:17:00.000Z
 category: micro
 tags:
   - code

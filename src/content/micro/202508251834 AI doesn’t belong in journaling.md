@@ -1,13 +1,14 @@
 ---
-title: "AI Doesn’t Belong in Journaling"
-slug: "ai-doesnt-belong-in-journaling"
-pubDate: 2025-08-30T11:43:00+03:00
-updatedDate: 2025-08-30T11:43:00+03:00
+title: AI Doesn’t Belong in Journaling
+slug: ai-doesnt-belong-in-journaling
+created: 2025-08-30T08:43:00.000Z
+updated: 2025-08-30T08:43:00.000Z
 category: micro
 tags:
   - ai
   - journaling
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgn2c4o22l'
 ---
 [AI doesn’t belong in journaling by Victoria Song](https://www.theverge.com/analysis/764519/ai-gemini-pixel-journal-app)
 

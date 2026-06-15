@@ -1,12 +1,18 @@
 ---
-title: "What Are Trails"
-slug: "what-are-trails"
-description: "But paths other have walked upon"
-pubDate: 2024-09-23T03:49:50
-updatedDate: 2024-09-23T03:49:49
+title: What Are Trails
+slug: what-are-trails
+description: But paths other have walked upon
+created: 2024-09-23T03:49:50.000Z
+updated: 2024-09-23T03:49:49.000Z
 category: blog
-tags: ["blog", "walking", "trails"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6130.jpeg"
+tags:
+  - blog
+  - walking
+  - trails
+image: 'https://storage.sajalchoudhary.net/images/2024/09/IMG_6130.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754050956698690'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modavgpudl2c'
 ---
 > What are trails but the paths others have walked upon.
 

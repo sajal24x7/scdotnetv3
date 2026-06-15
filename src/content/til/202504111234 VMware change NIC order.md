@@ -1,13 +1,14 @@
 ---
-title: "VMware Change NIC Order"
-slug: "vmware-change-nic-order"
-pubDate: 2025-04-11T12:40:00+03:00
-updatedDate: 2025-04-11T12:40:00+03:00
+title: VMware Change NIC Order
+slug: vmware-change-nic-order
+created: 2025-04-11T09:40:00.000Z
+updated: 2025-04-11T09:40:00.000Z
 category: til
 tags:
-  - "#cisco"
-  - "#vmware"
-
+  - '#cisco'
+  - '#vmware'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododlgtdz26'
 ---
 There is a bug in Cisco Hardware which causes vmnics to get assigned in wrong order after esxi install. As a workaround we can change the vmnic order from esxi level.
 

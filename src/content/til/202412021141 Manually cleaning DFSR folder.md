@@ -1,12 +1,14 @@
 ---
 title: Manually Cleaning DFSR Folder
 slug: manually-cleaning-dfsr-folder
-pubDate: '2024-12-02T11:41:00+03:00'
-updatedDate: '2024-12-02T11:41:00+03:00'
+created: '2024-12-02T11:41:00+03:00'
+updated: '2024-12-02T11:41:00+03:00'
 category: til
 tags:
-- windows
-- dfsr
+  - windows
+  - dfsr
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoca7my72z'
 ---
 
 Quota can be checked in DFS management > Replication > Staging Quota

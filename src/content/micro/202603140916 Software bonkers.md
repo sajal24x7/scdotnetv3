@@ -1,8 +1,8 @@
 ---
 title: Software Bonkers
 slug: software-bonkers
-pubDate: 2026-03-14T08:04:18.000Z
-updatedDate: 2026-03-14T08:04:18.000Z
+created: 2026-03-14T08:04:18.000Z
+updated: 2026-03-14T08:04:18.000Z
 category: micro
 tags:
   - ai

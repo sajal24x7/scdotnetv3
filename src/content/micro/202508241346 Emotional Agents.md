@@ -1,14 +1,15 @@
 ---
-title: "Emotional Agents"
-slug: "emotional-agents"
-pubDate: 2025-08-24T22:54:50+03:00
-updatedDate: 2025-08-24T22:54:50+03:00
+title: Emotional Agents
+slug: emotional-agents
+created: 2025-08-24T19:54:50.000Z
+updated: 2025-08-24T19:54:50.000Z
 category: micro
 tags:
   - ai
   - agents
   - chatgpt
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgmvqsy72m'
 ---
 I read [should AI flatter us, fix us, or just inform us](https://sajalchoudhary.net/micro/should-ai-flatter-us-fix-us-or-just-inform-us-by-james-odonnell/ ), the crux of which was that agents like ChatGPT etc. should behave like machines, and it should be clear to us, the humans, that they are machines.
 

@@ -1,10 +1,17 @@
 ---
-title: "Decisions Decisions!"
-slug: "decisions-decisions"
-pubDate: 2014-11-19T08:15:34
-updatedDate: 2014-11-19T08:15:34
+title: Decisions Decisions!
+slug: decisions-decisions
+created: 2014-11-19T08:15:34.000Z
+updated: 2014-11-19T08:15:34.000Z
 category: blog
-tags: ["blog", "decisions", "hard decisions"]
+tags:
+  - blog
+  - decisions
+  - hard decisions
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753996772473197'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda4s65t52o'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwxF7FsnA'
 ---
 > How do you decide between what you have and what you want?
 

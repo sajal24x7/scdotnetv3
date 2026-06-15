@@ -1,8 +1,8 @@
 ---
 title: To Create a Single Item Tuple Add a Comma to the End
 slug: to-create-a-single-item-tuple-add-a-comma-to-the-end
-pubDate: 2026-03-24T14:50:21.000Z
-updatedDate: 2026-03-24T14:50:21.000Z
+created: 2026-03-24T14:50:21.000Z
+updated: 2026-03-24T14:50:21.000Z
 category: til
 tags:
   - python

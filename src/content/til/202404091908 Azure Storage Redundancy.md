@@ -1,12 +1,15 @@
 ---
 title: Azure Storage Redundancy
 slug: azure-storage-redundancy
-pubDate: '2024-04-09T19:08:00+03:00'
-updatedDate: '2024-04-09T19:08:00+03:00'
+created: '2024-04-09T19:08:00+03:00'
+updated: '2024-04-09T19:08:00+03:00'
 category: til
 tags:
-- azure
-- storage
+  - azure
+  - storage
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754915402539160'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn6kayoc2p'
 ---
 
 Related to [[202404091859 Azure Storage Account]] and [[202404071304 Resiliency Overview|resiliency]]

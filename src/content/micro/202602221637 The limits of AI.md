@@ -1,8 +1,8 @@
 ---
 title: The Limits of AI
 slug: the-limits-of-ai
-pubDate: 2026-02-22T14:37:59.000Z
-updatedDate: 2026-02-22T14:37:59.000Z
+created: 2026-02-22T14:37:59.000Z
+updated: 2026-02-22T14:37:59.000Z
 category: micro
 tags:
   - ai

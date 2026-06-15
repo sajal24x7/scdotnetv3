@@ -1,13 +1,14 @@
 ---
-title: "Configure PDC With Authoritative Time Source"
-slug: "configure-pdc-with-authoritative-time-source"
-pubDate: 2025-03-25T13:40:26+03:00
-updatedDate: 2025-03-25T13:40:26+03:00
+title: Configure PDC With Authoritative Time Source
+slug: configure-pdc-with-authoritative-time-source
+created: 2025-03-25T10:40:26.000Z
+updated: 2025-03-25T10:40:26.000Z
 category: til
 tags:
   - ad
   - windows
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modod7txih2s'
 ---
 ### To configure time synchronization through registry edit on the PDC emulator:
 

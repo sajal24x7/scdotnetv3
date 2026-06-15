@@ -1,12 +1,14 @@
 ---
 title: How to Assign Licenses in Entra
 slug: how-to-assign-licenses-in-entra
-pubDate: '2024-08-28T19:30:00+03:00'
-updatedDate: '2024-08-28T19:30:00+03:00'
+created: '2024-08-28T19:30:00+03:00'
+updated: '2024-08-28T19:30:00+03:00'
 category: til
 tags:
-- azure
-- entra
+  - azure
+  - entra
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoafw4o72s'
 ---
 
 Related to [[202312231437 Entra ID editions|Entra ID Licenses]]

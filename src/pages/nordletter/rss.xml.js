@@ -12,7 +12,7 @@ export async function GET(context) {
   // Filter for nordletter content and sort by publish date (newest first)
   const newsletterContent = flatPosts
     .filter(entry => entry.data.category === 'nordletter')
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    .sort((a, b) => b.data.created.valueOf() - a.data.created.valueOf());
   
   // Extract the site URL from the Astro context
   const site = context.site.toString();
@@ -39,7 +39,7 @@ export async function GET(context) {
         title: item.data.title,
         description: item.data.description || '',
         content,
-        pubDate: item.data.pubDate,
+        created: item.data.created,
         categories: [item.data.category, ...(item.data.tags || [])],
         // Add custom namespace elements for better newsletter features
         customData: `

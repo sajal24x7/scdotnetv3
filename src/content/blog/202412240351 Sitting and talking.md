@@ -1,12 +1,17 @@
 ---
-title: "Sitting and Talking"
-slug: "sitting-and-talking"
-description: "a place to be less alone"
-pubDate: 2024-12-24T03:51:21
-updatedDate: 2024-12-24T03:51:21
+title: Sitting and Talking
+slug: sitting-and-talking
+description: a place to be less alone
+created: 2024-12-24T03:51:21.000Z
+updated: 2024-12-24T03:51:21.000Z
 category: blog
-tags: ["blog"]
-image: "https://images.unsplash.com/photo-1516789892567-2a5f37fd9656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxiYXIlMjBmcmllbmRzfGVufDB8fHx8MTczNDk3OTIzOHww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+image: >-
+  https://images.unsplash.com/photo-1516789892567-2a5f37fd9656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxiYXIlMjBmcmllbmRzfGVufDB8fHx8MTczNDk3OTIzOHww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754213162490340'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd77chpg24'
 ---
 There was this thing we used to do back in college. And for years after, while we got busy with our jobs.
 

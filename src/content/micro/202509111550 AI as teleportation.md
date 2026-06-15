@@ -1,8 +1,8 @@
 ---
 title: AI as Teleportation
 slug: ai-as-teleportation
-pubDate: 2025-09-12T18:32:43.000Z
-updatedDate: 2025-09-12T18:32:43.000Z
+created: 2025-09-12T18:32:43.000Z
+updated: 2025-09-12T18:32:43.000Z
 category: micro
 tags:
   - ai

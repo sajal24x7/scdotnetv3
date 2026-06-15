@@ -1,11 +1,13 @@
 ---
 title: Convert Cis Pdf to Csv
 slug: convert-cis-pdf-to-csv
-pubDate: '2024-08-16T16:19:00+03:00'
-updatedDate: '2024-08-16T16:19:00+03:00'
+created: '2024-08-16T16:19:00+03:00'
+updated: '2024-08-16T16:19:00+03:00'
 category: til
 tags:
-- python
+  - python
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo5ynbiy26'
 ---
 
 The script that work is this: https://github.com/serenedeluge/cis-pdf2csv/tree/main

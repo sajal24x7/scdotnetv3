@@ -1,12 +1,15 @@
 ---
 title: Azure Resiliency Concepts
 slug: azure-resiliency-concepts
-pubDate: '2024-04-07T14:20:00+03:00'
-updatedDate: '2024-04-07T14:20:00+03:00'
+created: '2024-04-07T14:20:00+03:00'
+updated: '2024-04-07T14:20:00+03:00'
 category: til
 tags:
-- azure
-- resiliency
+  - azure
+  - resiliency
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754766316950815'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modl2qmtkr2w'
 ---
 
 # 1. Fault domains

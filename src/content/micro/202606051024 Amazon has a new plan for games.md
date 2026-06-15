@@ -1,8 +1,8 @@
 ---
 title: Amazon has a new plan for games
 slug: amazon-has-a-new-plan-for-games
-pubDate: 2026-06-05T07:26:11.000Z
-updatedDate: 2026-06-05T07:26:11.000Z
+created: 2026-06-05T07:26:11.000Z
+updated: 2026-06-05T07:26:11.000Z
 category: micro
 tags:
   - amazon

@@ -1,8 +1,8 @@
 ---
 title: Writer vs Author
 slug: writer-vs-author
-pubDate: 2025-12-29T18:16:19.000Z
-updatedDate: 2025-12-29T18:16:19.000Z
+created: 2025-12-29T18:16:19.000Z
+updated: 2025-12-29T18:16:19.000Z
 category: micro
 tags:
   - writing

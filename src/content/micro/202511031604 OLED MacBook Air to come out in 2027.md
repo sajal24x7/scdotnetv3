@@ -1,8 +1,8 @@
 ---
 title: OLED MacBook Air to Come out in 2027
 slug: oled-macbook-air-to-come-out-in-2027
-pubDate: 2025-11-03T14:05:17.000Z
-updatedDate: 2025-11-03T14:05:17.000Z
+created: 2025-11-03T14:05:17.000Z
+updated: 2025-11-03T14:05:17.000Z
 category: micro
 tags:
   - mac

@@ -1,10 +1,17 @@
 ---
-title: "What Does It Take to Be a Writer?"
-slug: "what-does-it-take-to-be-a-writer"
-pubDate: 2016-05-19T22:13:06
-updatedDate: 2016-05-19T22:13:06
+title: What Does It Take to Be a Writer?
+slug: what-does-it-take-to-be-a-writer
+created: 2016-05-19T22:13:06.000Z
+updated: 2016-05-19T22:13:06.000Z
 category: blog
-tags: ["Uncategorized", "writer", "writing is", "writing tips"]
+tags:
+  - Uncategorized
+  - writer
+  - writing is
+  - writing tips
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754023136045205'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modairyinv26'
 ---
 ![writer](https://storage.sajalchoudhary.net/images/wordpress/2016/05/writer.jpg)
 

@@ -1,12 +1,19 @@
 ---
-title: "Reading Is Better Than Watching Movies"
-slug: "reading-is-better-than-watching-movies"
-description: "If it’s the same story"
-pubDate: 2025-02-21T07:36:29
-updatedDate: 2025-02-21T07:36:29
+title: Reading Is Better Than Watching Movies
+slug: reading-is-better-than-watching-movies
+description: If it’s the same story
+created: 2025-02-21T07:36:29.000Z
+updated: 2025-02-21T07:36:29.000Z
 category: blog
-tags: ["blog", "reading", "movies"]
-image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fE1vdmllc3xlbnwwfHx8fDE3NDAxMjMzNDd8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - reading
+  - movies
+image: >-
+  https://images.unsplash.com/photo-1542204165-65bf26472b9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fE1vdmllc3xlbnwwfHx8fDE3NDAxMjMzNDd8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754232224672258'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddhuzmej2s'
 ---
 I have been wanting to read [Cixin Liu](https://en.wikipedia.org/wiki/Liu_Cixin) for a long time. I knew of the [three body problem](https://en.wikipedia.org/wiki/The_Three-Body_Problem_\(novel\)), but some other book kept interesting me more.
 

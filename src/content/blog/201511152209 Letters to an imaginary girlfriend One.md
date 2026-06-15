@@ -1,10 +1,21 @@
 ---
-title: "Letters to an Imaginary Girlfriend : One"
-slug: "letters-to-an-imaginary-girlfriend-one"
-pubDate: 2015-11-15T22:09:22
-updatedDate: 2015-11-15T22:09:22
+title: 'Letters to an Imaginary Girlfriend : One'
+slug: letters-to-an-imaginary-girlfriend-one
+created: 2015-11-15T22:09:22.000Z
+updated: 2015-11-15T22:09:22.000Z
 category: blog
-tags: ["love", "blog", "freedom", "girlfriend", "letter", "life", "relationship"]
+tags:
+  - love
+  - blog
+  - freedom
+  - girlfriend
+  - letter
+  - life
+  - relationship
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754009553820453'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modacnayw22v'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxJDeFvEc'
 ---
 [![](https://storage.sajalchoudhary.net/images/wordpress/2015/11/wpid-note151115_12-jpg.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2015/11/wpid-note151115_12-jpg.jpeg)
 

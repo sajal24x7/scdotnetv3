@@ -1,12 +1,19 @@
 ---
-title: "The Last Work Left in This World"
-slug: "the-last-work-left-in-this-world"
-description: "Train the models!"
-pubDate: 2025-02-06T19:52:44
-updatedDate: 2025-02-06T19:52:44
+title: The Last Work Left in This World
+slug: the-last-work-left-in-this-world
+description: Train the models!
+created: 2025-02-06T19:52:44.000Z
+updated: 2025-02-06T19:52:44.000Z
 category: blog
-tags: ["blog", "AI", "work"]
-image: "https://images.unsplash.com/photo-1738830656378-c8f96e01ec50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3Mzg4NzA0NTR8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - AI
+  - work
+image: >-
+  https://images.unsplash.com/photo-1738830656378-c8f96e01ec50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3Mzg4NzA0NTR8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754225330947528'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddeqkoht2w'
 ---
 I was listening to a podcast and [walking](__GHOST_URL__/tag/walking/). The podcasters were talking about the future of work, what AI is good at and not. Whether there will be software developers in the world. And I had this thought: what if the only work that remained in the world was feeding training data to the AI.
 

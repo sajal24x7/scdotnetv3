@@ -1,12 +1,18 @@
 ---
-title: "Types of Workers in an Organisation"
-slug: "types-of-workers-in-an-organisation"
-description: "Or, evolution of the type of worker you are"
-pubDate: 2024-12-05T21:52:25
-updatedDate: 2024-12-06T20:10:52
+title: Types of Workers in an Organisation
+slug: types-of-workers-in-an-organisation
+description: 'Or, evolution of the type of worker you are'
+created: 2024-12-05T21:52:25.000Z
+updated: 2024-12-06T20:10:52.000Z
 category: blog
-tags: ["blog", "work"]
-image: "https://images.unsplash.com/photo-1503423571797-2d2bb372094a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxjdWJpY2xlc3xlbnwwfHx8fDE3MzM0MzU0NDJ8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - work
+image: >-
+  https://images.unsplash.com/photo-1503423571797-2d2bb372094a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE4fHxjdWJpY2xlc3xlbnwwfHx8fDE3MzM0MzU0NDJ8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754206417086070'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd453jjz2m'
 ---
 There exist archetypes of people around us in an organisation. Everyone to an extent is a mix of some of these archetypes. There might be some who map exactly with the archetypes. But not many.
 

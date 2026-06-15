@@ -1,12 +1,18 @@
 ---
-title: "A Week of AI News"
-slug: "a-week-of-ai-news"
-description: "Deepsek and the others"
-pubDate: 2025-01-28T19:51:45
-updatedDate: 2025-01-28T19:51:45
+title: A Week of AI News
+slug: a-week-of-ai-news
+description: Deepsek and the others
+created: 2025-01-28T19:51:45.000Z
+updated: 2025-01-28T19:51:45.000Z
 category: blog
-tags: ["blog", "AI"]
-image: "https://images.unsplash.com/photo-1736196074922-9db5970da336?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDd8fHx8fHx8fDE3MzgwOTI4OTJ8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - AI
+image: >-
+  https://images.unsplash.com/photo-1736196074922-9db5970da336?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDd8fHx8fHx8fDE3MzgwOTI4OTJ8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754223096708360'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modddpkjlb23'
 ---
 Last week, was another big week for AI. It feels like every week is a big week for AI news.
 

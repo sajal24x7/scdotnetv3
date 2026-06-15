@@ -1,12 +1,15 @@
 ---
 title: Why Is Identity Needed
 slug: why-is-identity-needed
-pubDate: '2024-04-01T12:45:00+03:00'
-updatedDate: '2024-04-01T12:45:00+03:00'
+created: '2024-04-01T12:45:00+03:00'
+updated: '2024-04-01T12:45:00+03:00'
 category: til
 tags:
-- azure
-- identity
+  - azure
+  - identity
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754763226070642'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkzddyci2m'
 ---
 
 1. For any service, its critical to apply principle of least privilege

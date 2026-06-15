@@ -1,8 +1,8 @@
 ---
 title: Apple announces AI extensions in Safari
 slug: apple-announces-ai-extensions-in-safari
-pubDate: 2026-06-09T06:50:29.000Z
-updatedDate: 2026-06-09T06:50:29.000Z
+created: 2026-06-09T06:50:29.000Z
+updated: 2026-06-09T06:50:29.000Z
 category: micro
 tags:
   - apple

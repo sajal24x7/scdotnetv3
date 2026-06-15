@@ -1,12 +1,15 @@
 ---
 title: Azure Network Watcher
 slug: azure-network-watcher
-pubDate: '2024-08-08T08:00:00+03:00'
-updatedDate: '2024-08-08T08:00:00+03:00'
+created: '2024-08-08T08:00:00+03:00'
+updated: '2024-08-08T08:00:00+03:00'
 category: til
 tags:
-- azure
-- monitoring
+  - azure
+  - monitoring
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754978231859964'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo34ewaw2o'
 ---
 
 - regional service (1 per region per subscription)

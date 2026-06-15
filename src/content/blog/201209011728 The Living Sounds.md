@@ -1,11 +1,16 @@
 ---
-title: "The Living Sounds"
-slug: "the-living-sounds"
-pubDate: 2012-09-01T17:28:59
-updatedDate: 2024-04-29T13:38:24
+title: The Living Sounds
+slug: the-living-sounds
+created: 2012-09-01T17:28:59.000Z
+updated: 2024-04-29T13:38:24.000Z
 category: blog
-tags: ["music"]
-image: "https://storage.sajalchoudhary.net/images/2024/04/dsc02774.jpg"
+tags:
+  - music
+image: 'https://storage.sajalchoudhary.net/images/2024/04/dsc02774.jpg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753967559903007'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7piwtbb2u'
+  - 'https://www.threads.com/@sajal24x7/post/DZmv6qXllct'
 ---
 Ripples of waves travelling through a medium seemingly so very empty; basic yet prevalent. Nature speaks through sounds, all sorts of it. Long before the dawn and long after the dusk of mankind sound will linger. Instruments will be conceived, notes written, music produced; sounds will endure.
 

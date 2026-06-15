@@ -1,20 +1,22 @@
 ---
 title: A Closed and Common Orbit
 slug: becky-chambers-a-closed-and-common-orbit
-pubDate: 2024-12-10T22:01:50
-updatedDate: 2026-06-05T14:19:08
+created: 2024-12-10T22:01:50.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
 genre: sci-fi
 author: Becky Chambers
-series: "Wayfarers"
+series: Wayfarers
 seriesNumber: 2
-started: 2024-12-08T00:00:00
-finished: 2024-12-10T22:01:50
+started: 2024-12-08T00:00:00.000Z
+finished: 2024-12-10T22:01:50.000Z
 shelfStatus: read
 rating: like
 cover: a-closed-and-common-orbit.jpg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6blvvw24'
 ---
 I finished reading the second book in the Wayfarer series - A Closed and Common Orbit. The book follows the events in [The Long Way to a Small, Angry Planet](https://en.wikipedia.org/wiki/The_Long_Way_to_a_Small,_Angry_Planet). It does not however include the characters of the long way.
 

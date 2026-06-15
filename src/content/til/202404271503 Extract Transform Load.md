@@ -1,11 +1,14 @@
 ---
 title: Extract Transform Load
 slug: extract-transform-load
-pubDate: '2024-04-27T15:03:00+03:00'
-updatedDate: '2024-04-27T15:03:00+03:00'
+created: '2024-04-27T15:03:00+03:00'
+updated: '2024-04-27T15:03:00+03:00'
 category: til
 tags:
-- wip
+  - wip
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754938392021106'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modniyotey26'
 ---
 
 Related to [[202404261946 Data flow|How data flows]] in the context of enterprise apps.

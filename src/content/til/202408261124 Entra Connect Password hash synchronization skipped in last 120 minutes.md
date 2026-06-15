@@ -1,13 +1,15 @@
 ---
 title: Entra Connect Password Hash Synchronization Skipped in Last 120 Minutes
 slug: entra-connect-password-hash-synchronization-skipped-in-last-120-minutes
-pubDate: '2024-08-26T11:24:00+03:00'
-updatedDate: '2024-08-26T11:24:00+03:00'
+created: '2024-08-26T11:24:00+03:00'
+updated: '2024-08-26T11:24:00+03:00'
 category: til
 tags:
-- azure
-- entraconnect
-- entra
+  - azure
+  - entraconnect
+  - entra
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo7otrfz26'
 ---
 
 Need to restart Microsoft Entra Sync service. 

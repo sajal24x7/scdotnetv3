@@ -1,11 +1,13 @@
 ---
 title: Terraform Scaling VMs
 slug: terraform-scaling-vms
-pubDate: '2022-05-04T20:02:00+03:00'
-updatedDate: '2022-05-04T20:02:00+03:00'
+created: '2022-05-04T20:02:00+03:00'
+updated: '2022-05-04T20:02:00+03:00'
 category: til
 tags:
-- terraform
+  - terraform
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhoi5mh32p'
 ---
 
 

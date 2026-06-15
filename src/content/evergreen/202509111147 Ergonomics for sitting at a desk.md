@@ -1,13 +1,14 @@
 ---
-title: "Ergonomics for Sitting at a Desk"
-slug: "ergonomics-for-sitting-at-a-desk"
-pubDate: 2025-09-11T11:57:25+03:00
-updatedDate: 2025-09-11T11:57:25+03:00
+title: Ergonomics for Sitting at a Desk
+slug: ergonomics-for-sitting-at-a-desk
+created: 2025-09-11T08:57:25.000Z
+updated: 2025-09-11T08:57:25.000Z
 category: evergreen
 tags:
   - ergonomic
   - sitting
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modeazfg7l23'
 ---
 From [this YouTube video](https://youtu.be/F8_ME4VwTiw?si=kwIBEgnzG8h_hn_L) and many other articles I’ve read elsewhere.
 

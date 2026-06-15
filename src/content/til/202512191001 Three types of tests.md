@@ -1,8 +1,8 @@
 ---
 title: Three Types of Tests
 slug: three-types-of-tests
-pubDate: 2025-12-19T08:03:49.000Z
-updatedDate: 2025-12-19T08:03:49.000Z
+created: 2025-12-19T08:03:49.000Z
+updated: 2025-12-19T08:03:49.000Z
 category: til
 tags:
   - testing

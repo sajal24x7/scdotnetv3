@@ -1,12 +1,14 @@
 ---
 title: Setup Password Less Ssh
 slug: setup-password-less-ssh
-pubDate: '2022-04-25T15:55:00+03:00'
-updatedDate: '2022-04-25T15:55:00+03:00'
+created: '2022-04-25T15:55:00+03:00'
+updated: '2022-04-25T15:55:00+03:00'
 category: til
 tags:
-- linux
-- ssh
+  - linux
+  - ssh
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnglt772m'
 ---
 
 

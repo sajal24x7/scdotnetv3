@@ -1,8 +1,8 @@
 ---
 title: New Xbox controller for cloud gaming leaked
 slug: new-xbox-controller-for-cloud-gaming-leaked
-pubDate: 2026-05-14T19:22:13.000Z
-updatedDate: 2026-05-14T19:22:13.000Z
+created: 2026-05-14T19:22:13.000Z
+updated: 2026-05-14T19:22:13.000Z
 category: micro
 tags:
   - xbox

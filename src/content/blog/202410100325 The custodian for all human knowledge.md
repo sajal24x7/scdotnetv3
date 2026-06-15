@@ -1,12 +1,18 @@
 ---
-title: "The Custodian for All Human Knowledge"
-slug: "the-custodian-for-all-human-knowledge"
-description: "AIs trained on the web make the web a worse place"
-pubDate: 2024-10-10T03:25:49
-updatedDate: 2024-10-10T03:25:49
+title: The Custodian for All Human Knowledge
+slug: the-custodian-for-all-human-knowledge
+description: AIs trained on the web make the web a worse place
+created: 2024-10-10T03:25:49.000Z
+updated: 2024-10-10T03:25:49.000Z
 category: blog
-tags: ["blog", "AI"]
-image: "https://images.unsplash.com/photo-1498831624351-bb3e382fe091?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHx3b3JsZCUyMGtub3dsZWRnZXxlbnwwfHx8fDE3Mjg1MDU1MTV8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - AI
+image: >-
+  https://images.unsplash.com/photo-1498831624351-bb3e382fe091?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHx3b3JsZCUyMGtub3dsZWRnZXxlbnwwfHx8fDE3Mjg1MDU1MTV8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754052698902575'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modaw7ti6a24'
 ---
 I was watching Bill Gates' new documentary - [What Next](https://www.netflix.com/title/81609333) on Netflix today. The first episode, perhaps unsurprisingly was about AI. It was on a whole, a well-rounded, hopeful take on AI.
 

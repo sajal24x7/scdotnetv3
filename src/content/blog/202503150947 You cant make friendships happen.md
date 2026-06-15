@@ -1,11 +1,17 @@
 ---
-title: "You Can’t Make Friendships Happen"
-slug: "you-cant-make-friendships-happen"
-pubDate: 2025-03-15T09:47:00
-updatedDate: 2025-03-16T09:48:02
+title: You Can’t Make Friendships Happen
+slug: you-cant-make-friendships-happen
+created: 2025-03-15T09:47:00.000Z
+updated: 2025-03-16T09:48:02.000Z
 category: blog
-tags: ["blog", "friendships"]
-image: "https://images.unsplash.com/photo-1536010305525-f7aa0834e2c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDd8fEZyaWVuZHN8ZW58MHx8fHwxNzQyMTE4NDAwfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - friendships
+image: >-
+  https://images.unsplash.com/photo-1536010305525-f7aa0834e2c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDd8fEZyaWVuZHN8ZW58MHx8fHwxNzQyMTE4NDAwfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754239116016077'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddkytndz2s'
 ---
 They just happen. Like love. You can’t force someone to be your friend. You can’t will a friendship into existence.
 

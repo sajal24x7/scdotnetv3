@@ -1,12 +1,19 @@
 ---
-title: "Just Because You Can Do Something Does Not Mean You Should"
-slug: "just-because-you-can-do-something-does-not-mean-you-should"
-description: "A writer's apocalypse approaches"
-pubDate: 2025-04-12T07:36:18
-updatedDate: 2025-04-12T07:40:59
+title: Just Because You Can Do Something Does Not Mean You Should
+slug: just-because-you-can-do-something-does-not-mean-you-should
+description: A writer's apocalypse approaches
+created: 2025-04-12T07:36:18.000Z
+updated: 2025-04-12T07:40:59.000Z
 category: blog
-tags: ["blog", "AI", "writing is"]
-image: "https://images.unsplash.com/photo-1551006097-61dd4a01d3e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI1fHxhcG9jYWx5cHNlfGVufDB8fHx8MTc0NDQ0MzMyOXww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - AI
+  - writing is
+image: >-
+  https://images.unsplash.com/photo-1551006097-61dd4a01d3e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI1fHxhcG9jYWx5cHNlfGVufDB8fHx8MTc0NDQ0MzMyOXww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754249611321894'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddprtgfm2v'
 ---
 A writer's apocalypse quickly approaches. The LLMs might not be good enough right now, but given enough time and money, they would get good enough. They might one day be the best writers on the planet. It does not matter how long that takes. Eventually they will get there.
 

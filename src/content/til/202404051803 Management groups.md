@@ -1,12 +1,15 @@
 ---
 title: Management Groups
 slug: management-groups
-pubDate: '2024-04-05T18:03:00+03:00'
-updatedDate: '2024-04-05T18:03:00+03:00'
+created: '2024-04-05T18:03:00+03:00'
+updated: '2024-04-05T18:03:00+03:00'
 category: til
 tags:
-- azure
-- governance
+  - azure
+  - governance
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754764205068504'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkzrlz5f2m'
 ---
 
 

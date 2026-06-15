@@ -1,8 +1,8 @@
 ---
 title: Claude Code Leaks After Update
 slug: claude-code-leaks-after-update
-pubDate: 2026-04-01T09:00:43.000Z
-updatedDate: 2026-04-01T09:00:43.000Z
+created: 2026-04-01T09:00:43.000Z
+updated: 2026-04-01T09:00:43.000Z
 category: micro
 tags:
   - claude-code

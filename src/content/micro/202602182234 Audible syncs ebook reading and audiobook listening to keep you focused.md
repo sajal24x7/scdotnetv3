@@ -1,8 +1,8 @@
 ---
 title: Audible Syncs Ebook Reading and Audiobook Listening to Keep You Focused
 slug: audible-syncs-ebook-reading-and-audiobook-listening-to-keep-you-focused
-pubDate: 2026-02-18T20:35:06.000Z
-updatedDate: 2026-02-18T20:35:06.000Z
+created: 2026-02-18T20:35:06.000Z
+updated: 2026-02-18T20:35:06.000Z
 category: micro
 tags:
   - reading

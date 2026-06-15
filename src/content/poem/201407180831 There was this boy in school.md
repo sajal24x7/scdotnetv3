@@ -1,10 +1,20 @@
 ---
-title: "There Was This Boy in School"
-slug: "there-was-this-boy-in-school"
-pubDate: 2014-07-18T08:31:59
-updatedDate: 2024-01-28T11:05:59
+title: There Was This Boy in School
+slug: there-was-this-boy-in-school
+created: 2014-07-18T08:31:59.000Z
+updated: 2024-01-28T11:05:59.000Z
 category: poem
-tags: ["poem", "poetry", "sixty-day-blog", "spoken word", "spoken word poetry", "Uncategorized", "writing is", "#test"]
+tags:
+  - poem
+  - poetry
+  - sixty-day-blog
+  - spoken word
+  - spoken word poetry
+  - Uncategorized
+  - writing is
+  - '#test'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhkiwadn2v'
 ---
 There was this boy in school,
 

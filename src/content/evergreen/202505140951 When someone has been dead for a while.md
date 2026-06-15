@@ -1,14 +1,15 @@
 ---
-title: "When Someone Has Been Dead for a While"
-slug: "when-someone-has-been-dead-for-a-while"
-pubDate: 2025-08-30T11:50:28+03:00
-updatedDate: 2025-08-30T11:50:28+03:00
+title: When Someone Has Been Dead for a While
+slug: when-someone-has-been-dead-for-a-while
+created: 2025-08-30T08:50:28.000Z
+updated: 2025-08-30T08:50:28.000Z
 category: evergreen
 tags:
   - personal
   - death
   - memory
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modea3euvt23'
 ---
 When someone has been dead for a while, you don’t remember how they look. Their image, in your mind becomes muddied. The image is not that sharp. It feels like you are looking at them through a muddied window or without eyeglasses. 
 

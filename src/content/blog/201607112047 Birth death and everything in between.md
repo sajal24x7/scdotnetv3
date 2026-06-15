@@ -1,11 +1,20 @@
 ---
-title: "Birth, Death and Everything in Between"
-slug: "birth-death-and-everything-in-between"
-pubDate: 2016-07-11T20:47:03
-updatedDate: 2024-04-29T07:57:21
+title: 'Birth, Death and Everything in Between'
+slug: birth-death-and-everything-in-between
+created: 2016-07-11T20:47:03.000Z
+updated: 2024-04-29T07:57:21.000Z
 category: blog
-tags: ["love", "poems", "death", "life"]
-image: "https://images.unsplash.com/photo-1518281420975-50db6e5d0a97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fGxpZmV8ZW58MHx8fHwxNzE0Mzc3NDMyfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - love
+  - poems
+  - death
+  - life
+image: >-
+  https://images.unsplash.com/photo-1518281420975-50db6e5d0a97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fGxpZmV8ZW58MHx8fHwxNzE0Mzc3NDMyfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754028851495232'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modalf5ck62m'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxs3JFpol'
 ---
 ![birth-death.PNG](https://storage.sajalchoudhary.net/images/wordpress/2016/07/birth-death.png)
 

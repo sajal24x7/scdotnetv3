@@ -1,10 +1,19 @@
 ---
-title: "Why You Should Spend a Little Less Time Working"
-slug: "why-you-should-spend-a-little-less-time-working"
-pubDate: 2016-02-07T20:56:25
-updatedDate: 2016-02-07T20:56:25
+title: Why You Should Spend a Little Less Time Working
+slug: why-you-should-spend-a-little-less-time-working
+created: 2016-02-07T20:56:25.000Z
+updated: 2016-02-07T20:56:25.000Z
 category: blog
-tags: ["blog", "life", "stress", "travel", "work never ends"]
+tags:
+  - blog
+  - life
+  - stress
+  - travel
+  - work never ends
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754015744361390'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modafg6z6w2v'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxUccljyR'
 ---
 ![Trippin](https://storage.sajalchoudhary.net/images/wordpress/2016/02/trippin.jpg)Work never ends\!
 

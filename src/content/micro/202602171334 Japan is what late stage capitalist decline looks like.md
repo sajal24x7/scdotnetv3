@@ -1,8 +1,8 @@
 ---
 title: Japan Is What Late Stage Capitalist Decline Looks Like
 slug: japan-is-what-late-stage-capitalist-decline-looks-like
-pubDate: 2026-02-17T11:37:48.000Z
-updatedDate: 2026-02-17T11:37:48.000Z
+created: 2026-02-17T11:37:48.000Z
+updated: 2026-02-17T11:37:48.000Z
 category: micro
 tags:
   - japan

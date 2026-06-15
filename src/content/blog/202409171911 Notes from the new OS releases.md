@@ -1,12 +1,17 @@
 ---
-title: "Notes From the New OS Releases"
-slug: "notes-from-the-new-os-releases"
-description: "iOS18 + MacOS15 + WatchOS11"
-pubDate: 2024-09-17T19:11:57
-updatedDate: 2024-09-17T19:11:57
+title: Notes From the New OS Releases
+slug: notes-from-the-new-os-releases
+description: iOS18 + MacOS15 + WatchOS11
+created: 2024-09-17T19:11:57.000Z
+updated: 2024-09-17T19:11:57.000Z
 category: blog
-tags: ["essays"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/Screenshot-2024-09-17-at-9.57.59-PM.png"
+tags:
+  - essays
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/09/Screenshot-2024-09-17-at-9.57.59-PM.png
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754050454156157'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modav7coj42u'
 ---
 Apple released the new versions of iOS, iPadOS, WatchOS and MacOS \(surprise\!\) on Monday 20:00 PM EEST. I had set an alarm to be reminded of the same. Yes, I was that excited about it. Of course, not so much excited as to install the beta software. I had done that once, and because you can not go back to the normal version after installing the beta OS on the watch, I did not try it again.  
 This is not a review. This is just a list of things I noticed, or found useful or just something new that I came across in my very limited time with these OSes.

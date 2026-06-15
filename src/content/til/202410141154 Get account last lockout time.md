@@ -1,12 +1,14 @@
 ---
 title: Get Account Last Lockout Time
 slug: get-account-last-lockout-time
-pubDate: '2024-10-14T11:54:00+03:00'
-updatedDate: '2024-10-14T11:54:00+03:00'
+created: '2024-10-14T11:54:00+03:00'
+updated: '2024-10-14T11:54:00+03:00'
 category: til
 tags:
-- powershell
-- ad
+  - powershell
+  - ad
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobfmteh2u'
 ---
 
 ```powershell

@@ -1,12 +1,15 @@
 ---
 title: Recreate Resources
 slug: recreate-resources
-pubDate: '2024-04-08T19:37:00+03:00'
-updatedDate: '2024-04-08T19:37:00+03:00'
+created: '2024-04-08T19:37:00+03:00'
+updated: '2024-04-08T19:37:00+03:00'
 category: til
 tags:
-- resiliency
-- disasterrecovery
+  - resiliency
+  - disasterrecovery
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754913169631755'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn5jobji23'
 ---
 
 Related to [[202404071556 Disaster Recovery|Disaster Recovery]] and [[202404071304 Resiliency Overview]] 

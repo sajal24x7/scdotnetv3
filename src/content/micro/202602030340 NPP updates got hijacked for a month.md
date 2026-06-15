@@ -1,8 +1,8 @@
 ---
 title: NPP Updates Got Hijacked for a Month
 slug: npp-updates-got-hijacked-for-a-month
-pubDate: 2026-02-02T22:11:40.000Z
-updatedDate: 2026-02-02T22:11:40.000Z
+created: 2026-02-02T22:11:40.000Z
+updated: 2026-02-02T22:11:40.000Z
 category: micro
 tags:
   - npp

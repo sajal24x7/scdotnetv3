@@ -1,12 +1,14 @@
 ---
 title: Windows Event ID Reference
 slug: windows-event-id-reference
-pubDate: '2022-04-26T16:12:00+03:00'
-updatedDate: '2022-04-26T16:12:00+03:00'
+created: '2022-04-26T16:12:00+03:00'
+updated: '2022-04-26T16:12:00+03:00'
 category: til
 tags:
-- windows
-- events
+  - windows
+  - events
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnkg4br2v'
 ---
 
 

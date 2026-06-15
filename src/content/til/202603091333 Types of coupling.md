@@ -1,8 +1,8 @@
 ---
 title: Types of Coupling
 slug: types-of-coupling
-pubDate: 2026-03-09T12:18:43.000Z
-updatedDate: 2026-03-09T12:18:43.000Z
+created: 2026-03-09T12:18:43.000Z
+updated: 2026-03-09T12:18:43.000Z
 category: til
 tags:
   - micro-services

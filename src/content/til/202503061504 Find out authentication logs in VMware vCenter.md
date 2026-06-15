@@ -1,12 +1,13 @@
 ---
-title: "Find out Authentication Logs in VMware vCenter"
-slug: "find-out-authentication-logs-in-vmware-vcenter"
-pubDate: 2025-03-06T15:41:09+03:00
-updatedDate: 2025-03-06T15:41:09+03:00
+title: Find out Authentication Logs in VMware vCenter
+slug: find-out-authentication-logs-in-vmware-vcenter
+created: 2025-03-06T12:41:09.000Z
+updated: 2025-03-06T12:41:09.000Z
 category: til
 tags:
-  - "#vmware"
-
+  - '#vmware'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoctfgmw23'
 ---
 Related to [202303211323 VMware logs](#)
 

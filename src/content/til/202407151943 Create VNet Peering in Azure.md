@@ -1,13 +1,16 @@
 ---
 title: Create VNet Peering in Azure
 slug: create-vnet-peering-in-azure
-pubDate: '2024-07-15T19:43:00+03:00'
-updatedDate: '2024-07-15T19:43:00+03:00'
+created: '2024-07-15T19:43:00+03:00'
+updated: '2024-07-15T19:43:00+03:00'
 category: til
 tags:
-- powershell
-- azure
-- network
+  - powershell
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754957564018488'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnrpxnbq2v'
 ---
 
 After [[202407141408 Create VNet in Azure|Create VNet in Azure]]

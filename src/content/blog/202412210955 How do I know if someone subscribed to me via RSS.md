@@ -1,12 +1,19 @@
 ---
-title: "How Do I Know If Someone Subscribed to Me via RSS"
-slug: "how-do-i-know-if-someone-subscribed-to-me-via-rss"
-description: "Fans everywhere. Fans nowhere."
-pubDate: 2024-12-21T09:55:00
-updatedDate: 2024-12-24T10:39:02
+title: How Do I Know If Someone Subscribed to Me via RSS
+slug: how-do-i-know-if-someone-subscribed-to-me-via-rss
+description: Fans everywhere. Fans nowhere.
+created: 2024-12-21T09:55:00.000Z
+updated: 2024-12-24T10:39:02.000Z
 category: blog
-tags: ["blog", "rss", "reading"]
-image: "https://images.unsplash.com/photo-1664904527535-79f003cc5ec9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8MTczNDgxODU1NHww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - rss
+  - reading
+image: >-
+  https://images.unsplash.com/photo-1664904527535-79f003cc5ec9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8MTczNDgxODU1NHww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754212295700659'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd6szikr2m'
 ---
 I love RSS. Ever since I've discovered it thanks to Net News Wire, I have moved a lot of my reading to it.
 

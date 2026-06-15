@@ -1,12 +1,17 @@
 ---
-title: "Writing More vs Less"
-slug: "writing-more-vs-less"
-description: "Reducing vs habit"
-pubDate: 2024-12-10T03:00:44
-updatedDate: 2024-12-10T03:00:43
+title: Writing More vs Less
+slug: writing-more-vs-less
+description: Reducing vs habit
+created: 2024-12-10T03:00:44.000Z
+updated: 2024-12-10T03:00:43.000Z
 category: blog
-tags: ["essays"]
-image: "https://images.unsplash.com/photo-1517873569652-f231d7134909?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDIxfHx3cml0ZXxlbnwwfHx8fDE3MzM2OTE0OTJ8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - essays
+image: >-
+  https://images.unsplash.com/photo-1517873569652-f231d7134909?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDIxfHx3cml0ZXxlbnwwfHx8fDE3MzM2OTE0OTJ8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754208141963930'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd4wnaht2v'
 ---
 # Writing more is better. _Right?_
 

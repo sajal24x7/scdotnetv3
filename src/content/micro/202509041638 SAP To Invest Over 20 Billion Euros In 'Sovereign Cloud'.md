@@ -1,13 +1,14 @@
 ---
-title: "SAP to Invest Over 20 Billion Euros in 'Sovereign Cloud'"
-slug: "sap-to-invest-over-20-billion-euros-in-sovereign-cloud"
-pubDate: 2025-09-06T09:55:46+03:00
-updatedDate: 2025-09-06T09:55:46+03:00
+title: SAP to Invest Over 20 Billion Euros in 'Sovereign Cloud'
+slug: sap-to-invest-over-20-billion-euros-in-sovereign-cloud
+created: 2025-09-06T06:55:46.000Z
+updated: 2025-09-06T06:55:46.000Z
 category: micro
 tags:
   - sap
   - cloud
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgph2guv2m'
 ---
 [SAP To Invest Over 20 Billion Euros In 'Sovereign Cloud' - Slashdot](https://news.slashdot.org/story/25/09/02/1959258/sap-to-invest-over-20-billion-euros-in-sovereign-cloud?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 

@@ -1,8 +1,8 @@
 ---
 title: Better Than Average
 slug: better-than-average
-pubDate: 2025-10-17T07:10:11.000Z
-updatedDate: 2025-10-17T07:10:11.000Z
+created: 2025-10-17T07:10:11.000Z
+updated: 2025-10-17T07:10:11.000Z
 category: blog
 tags:
   - ai

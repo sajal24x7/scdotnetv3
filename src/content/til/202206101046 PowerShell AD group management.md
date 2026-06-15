@@ -1,12 +1,14 @@
 ---
 title: PowerShell AD Group Management
 slug: powershell-ad-group-management
-pubDate: '2022-06-10T10:46:00+03:00'
-updatedDate: '2022-06-10T10:46:00+03:00'
+created: '2022-06-10T10:46:00+03:00'
+updated: '2022-06-10T10:46:00+03:00'
 category: til
 tags:
-- powershell
-- ad
+  - powershell
+  - ad
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjthn7wo26'
 ---
 
 

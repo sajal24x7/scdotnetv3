@@ -1,13 +1,14 @@
 ---
-title: "About System Volume Information"
-slug: "about-system-volume-information"
-pubDate: 2025-02-18T11:41:45+03:00
-updatedDate: 2025-02-18T11:41:45+03:00
+title: About System Volume Information
+slug: about-system-volume-information
+created: 2025-02-18T08:41:45.000Z
+updated: 2025-02-18T08:41:45.000Z
 category: til
 tags:
-  - "#windows"
-  - "#powershell"
-
+  - '#windows'
+  - '#powershell'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocmpd2l2m'
 ---
 ```powershell
 # Take ownership

@@ -1,12 +1,18 @@
 ---
-title: "Organizing the Things in Our Life"
-slug: "organizing-the-things-in-our-life"
-description: "The value of knowing where things are"
-pubDate: 2025-04-08T18:53:31
-updatedDate: 2025-04-12T07:52:53
+title: Organizing the Things in Our Life
+slug: organizing-the-things-in-our-life
+description: The value of knowing where things are
+created: 2025-04-08T18:53:31.000Z
+updated: 2025-04-12T07:52:53.000Z
 category: blog
-tags: ["blog", "organize"]
-image: "https://images.unsplash.com/photo-1587831968842-d3ea13fb7281?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ0fHxvcmdhbml6ZXxlbnwwfHx8fDE3NDQxMzgzNzF8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - organize
+image: >-
+  https://images.unsplash.com/photo-1587831968842-d3ea13fb7281?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ0fHxvcmdhbml6ZXxlbnwwfHx8fDE3NDQxMzgzNzF8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754247391600790'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddorwk4a26'
 ---
 Life happens.
 

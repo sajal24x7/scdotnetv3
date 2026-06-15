@@ -1,13 +1,16 @@
 ---
-title: "My Own Writing Meetup"
+title: My Own Writing Meetup
 edition: 53
-slug: "my-own-writing-meetup"
-description: "Happening on 6th April + smart homes suck as do smart TVs"
-pubDate: 2025-03-30T03:38:56
-updatedDate: 2025-03-30T03:38:55
+slug: my-own-writing-meetup
+description: Happening on 6th April + smart homes suck as do smart TVs
+created: 2025-03-30T03:38:56.000Z
+updated: 2025-03-30T03:38:55.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_0542.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2025/03/IMG_0542.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhd6l4c726'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#53, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

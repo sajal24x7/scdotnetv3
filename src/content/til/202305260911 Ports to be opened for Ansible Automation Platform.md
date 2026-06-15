@@ -1,11 +1,14 @@
 ---
 title: Ports to Be Opened for Ansible Automation Platform
 slug: ports-to-be-opened-for-ansible-automation-platform
-pubDate: '2023-05-26T09:11:00+03:00'
-updatedDate: '2023-05-26T09:11:00+03:00'
+created: '2023-05-26T09:11:00+03:00'
+updated: '2023-05-26T09:11:00+03:00'
 category: til
 tags:
-- ansible
+  - ansible
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754743392739719'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkqczuwj2w'
 ---
 
 

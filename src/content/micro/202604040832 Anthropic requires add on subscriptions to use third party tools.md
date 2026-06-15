@@ -1,8 +1,8 @@
 ---
 title: Anthropic Requires Add on Subscriptions to Use Third Party Tools
 slug: anthropic-requires-add-on-subscriptions-to-use-third-party-tools
-pubDate: 2026-04-04T05:37:01.000Z
-updatedDate: 2026-04-04T05:37:01.000Z
+created: 2026-04-04T05:37:01.000Z
+updated: 2026-04-04T05:37:01.000Z
 category: micro
 tags:
   - anthropic

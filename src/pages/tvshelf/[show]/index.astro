@@ -222,7 +222,7 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
           const statusChipClass = status ? statusChipClassMap[status] : '';
           const ratingDisplay = season.data.rating ? bookRatingDisplay[season.data.rating as BookRating] : null;
           const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
-          const watchedDate = formatYMD(season.data.pubDate);
+          const watchedDate = formatYMD(season.data.created);
           const coverImage = season.data.cover ? getTVCoverImage(season.data.cover) : null;
 
           return (

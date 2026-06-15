@@ -1,10 +1,18 @@
 ---
-title: "Why Build Walls?"
-slug: "why-build-walls"
-pubDate: 2016-06-03T20:06:55
-updatedDate: 2016-06-03T20:06:55
+title: Why Build Walls?
+slug: why-build-walls
+created: 2016-06-03T20:06:55.000Z
+updated: 2016-06-03T20:06:55.000Z
 category: poem
-tags: ["poems", "fear", "mind", "poem", "soul", "walls"]
+tags:
+  - poems
+  - fear
+  - mind
+  - poem
+  - soul
+  - walls
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhkzd57r2v'
 ---
 ![wall-1087955_960_720](https://storage.sajalchoudhary.net/images/wordpress/2016/06/wall-1087955_960_720.jpg)
 

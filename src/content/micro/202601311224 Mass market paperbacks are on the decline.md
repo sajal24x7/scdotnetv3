@@ -1,8 +1,8 @@
 ---
 title: Mass Market Paperbacks Are on the Decline
 slug: mass-market-paperbacks-are-on-the-decline
-pubDate: 2026-01-31T06:55:00.000Z
-updatedDate: 2026-01-31T06:55:00.000Z
+created: 2026-01-31T06:55:00.000Z
+updated: 2026-01-31T06:55:00.000Z
 category: micro
 tags:
   - books

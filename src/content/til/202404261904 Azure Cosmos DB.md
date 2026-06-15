@@ -1,12 +1,15 @@
 ---
 title: Azure Cosmos DB
 slug: azure-cosmos-db
-pubDate: '2024-04-26T19:04:00+03:00'
-updatedDate: '2024-04-26T19:04:00+03:00'
+created: '2024-04-26T19:04:00+03:00'
+updated: '2024-04-26T19:04:00+03:00'
 category: til
 tags:
-- azure
-- database
+  - azure
+  - database
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754934767921926'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnhedbmh2c'
 ---
 
 - This was built for the cloud / designed for global distribution / multi-write [[#Variable consistencies]]

@@ -19,7 +19,7 @@ const parseDate = (value?: Date | string | null): Date | null => {
 const getGameYear = (post: typeof gamePosts[number]): number => {
     const started = parseDate(post.data.started);
     if (started) return started.getFullYear();
-    const pub = parseDate(post.data.pubDate);
+    const pub = parseDate(post.data.created);
     return (pub ?? new Date()).getFullYear();
 };
 
@@ -51,7 +51,7 @@ const sortedGames = [...gamesWithYear].sort((a, b) => {
     if (statusA !== statusB) {
         return (statusOrder[statusA] ?? statusOrder.other) - (statusOrder[statusB] ?? statusOrder.other);
     }
-    return compareDesc(a.post.data.pubDate, b.post.data.pubDate);
+    return compareDesc(a.post.data.created, b.post.data.created);
 });
 
 const years = Array.from(new Set(sortedGames.map((e) => e.year)));
@@ -65,7 +65,7 @@ const gamesByYear = sortedGames.reduce((acc, { year, post }) => {
 // Compute replay numbers
 const allGameEntries = sortedGames.map((e) => ({
     title: e.post.data.title ?? '',
-    date: e.post.data.pubDate
+    date: e.post.data.created
 }));
 const watchNumbers = computeWatchNumbers(allGameEntries);
 const watchNumberMap = new Map<string, number>();

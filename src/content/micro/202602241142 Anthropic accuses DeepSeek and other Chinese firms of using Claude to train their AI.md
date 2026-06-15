@@ -4,8 +4,8 @@ title: >-
   their AI
 slug: >-
   anthropic-accuses-deepseek-and-other-chinese-firms-of-using-claude-to-train-their-ai
-pubDate: 2026-02-24T09:50:13.000Z
-updatedDate: 2026-02-24T09:50:13.000Z
+created: 2026-02-24T09:50:13.000Z
+updated: 2026-02-24T09:50:13.000Z
 category: micro
 tags:
   - deepseek

@@ -1,8 +1,8 @@
 ---
 title: The Locals Don’t Know
 slug: the-locals-dont-know
-pubDate: 2026-05-11T08:21:26.000Z
-updatedDate: 2026-05-11T08:21:26.000Z
+created: 2026-05-11T08:21:26.000Z
+updated: 2026-05-11T08:21:26.000Z
 category: micro
 tags:
   - tourism

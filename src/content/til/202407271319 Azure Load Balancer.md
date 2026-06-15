@@ -1,12 +1,15 @@
 ---
 title: Azure Load Balancer
 slug: azure-load-balancer
-pubDate: '2024-07-27T13:19:00+03:00'
-updatedDate: '2024-07-27T13:19:00+03:00'
+created: '2024-07-27T13:19:00+03:00'
+updated: '2024-07-27T13:19:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754967401653255'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnw6u4ln2o'
 ---
 
 - provides high availability

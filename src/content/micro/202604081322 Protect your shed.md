@@ -1,8 +1,8 @@
 ---
 title: Protect Your Shed
 slug: protect-your-shed
-pubDate: 2026-04-08T10:22:42.000Z
-updatedDate: 2026-04-08T10:22:42.000Z
+created: 2026-04-08T10:22:42.000Z
+updated: 2026-04-08T10:22:42.000Z
 category: micro
 tags:
   - work

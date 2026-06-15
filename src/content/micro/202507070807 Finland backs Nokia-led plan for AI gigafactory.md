@@ -1,14 +1,15 @@
 ---
-title: "Finland Backs Nokia-Led Plan for AI Gigafactory"
-slug: "finland-backs-nokia-led-plan-for-ai-gigafactory"
-pubDate: 2025-07-07T08:13:06+03:00
-updatedDate: 2025-07-07T08:13:06+03:00
+title: Finland Backs Nokia-Led Plan for AI Gigafactory
+slug: finland-backs-nokia-led-plan-for-ai-gigafactory
+created: 2025-07-07T05:13:06.000Z
+updated: 2025-07-07T05:13:06.000Z
 category: micro
 tags:
   - finland
   - ai
   - datacentre
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modebpb7rk2u'
 ---
 [Finland backs Nokia-led plan for AI gigafactory](https://yle.fi/a/74-20171278?origin=rss)
 

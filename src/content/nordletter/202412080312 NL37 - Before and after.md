@@ -1,13 +1,16 @@
 ---
-title: "Before and After"
+title: Before and After
 edition: 37
-slug: "before-and-after"
-description: "Sinitarra + who owns your words + Intel drama"
-pubDate: 2024-12-08T03:12:16
-updatedDate: 2024-12-08T03:12:16
+slug: before-and-after
+description: Sinitarra + who owns your words + Intel drama
+created: 2024-12-08T03:12:16.000Z
+updated: 2024-12-08T03:12:16.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8643-1.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8643-1.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh7esz742d'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#37, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

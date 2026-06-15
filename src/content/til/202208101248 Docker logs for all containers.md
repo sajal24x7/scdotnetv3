@@ -1,11 +1,13 @@
 ---
 title: Docker Logs for All Containers
 slug: docker-logs-for-all-containers
-pubDate: '2022-08-10T12:48:00+03:00'
-updatedDate: '2022-08-10T12:48:00+03:00'
+created: '2022-08-10T12:48:00+03:00'
+updated: '2022-08-10T12:48:00+03:00'
 category: til
 tags:
-- docker
+  - docker
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjzzuavr24'
 ---
 
 

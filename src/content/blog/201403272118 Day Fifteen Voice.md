@@ -1,10 +1,21 @@
 ---
-title: "Day Fifteen: Voice"
-slug: "day-fifteen-voice"
-pubDate: 2014-03-27T21:18:56
-updatedDate: 2014-03-27T21:18:56
+title: 'Day Fifteen: Voice'
+slug: day-fifteen-voice
+created: 2014-03-27T21:18:56.000Z
+updated: 2014-03-27T21:18:56.000Z
 category: blog
-tags: ["30 day challenge", "golden temple", "language", "photography", "poem", "prose", "religion", "thoughts"]
+tags:
+  - 30 day challenge
+  - golden temple
+  - language
+  - photography
+  - poem
+  - prose
+  - religion
+  - thoughts
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753979955146528'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7v5qb272m'
 ---
 [![The Voice](https://storage.sajalchoudhary.net/images/wordpress/2014/03/dsc07387.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/dsc07387.jpg)At the Golden Temple, Amritsar.
 

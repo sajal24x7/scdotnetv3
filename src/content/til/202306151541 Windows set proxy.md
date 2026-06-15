@@ -1,10 +1,13 @@
 ---
 title: Windows Set Proxy
 slug: windows-set-proxy
-pubDate: '2023-06-15T15:41:00+03:00'
-updatedDate: '2023-06-15T15:41:00+03:00'
+created: '2023-06-15T15:41:00+03:00'
+updated: '2023-06-15T15:41:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754745189197339'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkr552i22s'
 ---
 
 

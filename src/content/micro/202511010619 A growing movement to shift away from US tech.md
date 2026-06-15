@@ -1,8 +1,8 @@
 ---
 title: A Growing Movement to Shift Away From US Tech
 slug: a-growing-movement-to-shift-away-from-us-tech
-pubDate: 2025-11-01T04:23:05.000Z
-updatedDate: 2025-11-01T04:23:05.000Z
+created: 2025-11-01T04:23:05.000Z
+updated: 2025-11-01T04:23:05.000Z
 category: micro
 tags:
   - europe

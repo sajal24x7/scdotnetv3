@@ -1,8 +1,8 @@
 ---
 title: Vibe Coding April Meetup
 slug: vibe-coding-april-meetup
-pubDate: 2026-04-16T19:39:17.000Z
-updatedDate: 2026-04-16T19:39:17.000Z
+created: 2026-04-16T19:39:17.000Z
+updated: 2026-04-16T19:39:17.000Z
 category: blog
 tags:
   - vibe-coding-finland

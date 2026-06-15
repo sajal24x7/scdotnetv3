@@ -1,12 +1,14 @@
 ---
 title: How to Create a VPN Gateway
 slug: how-to-create-a-vpn-gateway
-pubDate: '2024-08-24T12:43:00+03:00'
-updatedDate: '2024-08-24T12:43:00+03:00'
+created: '2024-08-24T12:43:00+03:00'
+updated: '2024-08-24T12:43:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo735czz2w'
 ---
 
 Related to [[202407151913 Azure VPN|Azure VPN]]

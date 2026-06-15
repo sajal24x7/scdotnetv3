@@ -1,11 +1,20 @@
 ---
-title: "How Would the Web Work in an Increasingly AI-Fied World"
-slug: "how-would-the-web-work-in-an-increasingly-ai-fied-world"
-pubDate: 2025-03-29T21:04:08
-updatedDate: 2025-03-29T21:04:08
+title: How Would the Web Work in an Increasingly AI-Fied World
+slug: how-would-the-web-work-in-an-increasingly-ai-fied-world
+created: 2025-03-29T21:04:08.000Z
+updated: 2025-03-29T21:04:08.000Z
 category: blog
-tags: ["blog", "AI", "openweb", "writing is", "reading"]
-image: "https://images.unsplash.com/photo-1461880234904-751a2f54f1c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fGdsb2JhbCUyMHdhcm1pbmd8ZW58MHx8fHwxNzQzMTA2NTk5fDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - AI
+  - openweb
+  - writing is
+  - reading
+image: >-
+  https://images.unsplash.com/photo-1461880234904-751a2f54f1c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fGdsb2JhbCUyMHdhcm1pbmd8ZW58MHx8fHwxNzQzMTA2NTk5fDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754243558883638'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddmzhq342o'
 ---
 [Om - Has search become just a feature](https://om.co/2025/03/20/has-search-become-just-a-feature/):
 

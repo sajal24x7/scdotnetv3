@@ -1,12 +1,17 @@
 ---
-title: "Love and Despair"
-slug: "love-and-despair"
-description: "Reading poems"
-pubDate: 2024-11-30T21:04:00
-updatedDate: 2024-11-30T22:05:23
+title: Love and Despair
+slug: love-and-despair
+description: Reading poems
+created: 2024-11-30T21:04:00.000Z
+updated: 2024-11-30T22:05:23.000Z
 category: blog
-tags: ["blog", "reading"]
-image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_8536.jpeg"
+tags:
+  - blog
+  - reading
+image: 'https://storage.sajalchoudhary.net/images/2024/11/IMG_8536.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754204321703947'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd36kyhx2u'
 ---
 I read Pablo Neruda's twenty love poems and a song of despair. 
 

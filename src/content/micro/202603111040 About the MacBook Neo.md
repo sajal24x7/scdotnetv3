@@ -1,8 +1,8 @@
 ---
 title: About the MacBook Neo
 slug: about-the-macbook-neo
-pubDate: 2026-03-11T08:46:05.000Z
-updatedDate: 2026-03-11T08:46:05.000Z
+created: 2026-03-11T08:46:05.000Z
+updated: 2026-03-11T08:46:05.000Z
 category: micro
 tags:
   - mac

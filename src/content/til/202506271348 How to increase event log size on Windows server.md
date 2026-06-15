@@ -1,12 +1,13 @@
 ---
-title: "How to Increase Event Log Size on Windows Server"
-slug: "how-to-increase-event-log-size-on-windows-server"
-pubDate: 2025-06-27T13:38:34+03:00
-updatedDate: 2025-06-27T13:38:34+03:00
+title: How to Increase Event Log Size on Windows Server
+slug: how-to-increase-event-log-size-on-windows-server
+created: 2025-06-27T10:38:34.000Z
+updated: 2025-06-27T10:38:34.000Z
 category: til
 tags:
-  - "#windows"
-
+  - '#windows'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoe7sob22m'
 ---
 # Through GPO
 1. `Computer Configuration\Administrative Templates\Windows Components\Event Log Service\` 

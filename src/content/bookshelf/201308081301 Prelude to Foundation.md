@@ -1,8 +1,8 @@
 ---
 title: Prelude to Foundation
 slug: prelude-to-foundation
-pubDate: 2013-08-08T13:01:58.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2013-08-08T13:01:58.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -16,5 +16,8 @@ started: 2013-01-16T07:01:23.000Z
 finished: 2013-08-08T13:01:58.000Z
 rating: love
 cover: prelude-to-foundation.jpg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754267358792899'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddxtwvhe2l'
 ---
 Finished Reading

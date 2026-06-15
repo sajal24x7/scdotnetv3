@@ -1,8 +1,8 @@
 ---
 title: How to Avoid Wasting Time
 slug: how-to-avoid-wasting-time
-pubDate: 2025-10-15T10:36:55.000Z
-updatedDate: 2025-10-15T10:36:55.000Z
+created: 2025-10-15T10:36:55.000Z
+updated: 2025-10-15T10:36:55.000Z
 category: evergreen
 tags:
   - howto

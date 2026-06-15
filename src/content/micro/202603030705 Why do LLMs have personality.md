@@ -1,8 +1,8 @@
 ---
 title: Why Do LLMs Have Personality
 slug: why-do-llms-have-personality
-pubDate: 2026-03-03T05:06:17.000Z
-updatedDate: 2026-03-03T05:06:17.000Z
+created: 2026-03-03T05:06:17.000Z
+updated: 2026-03-03T05:06:17.000Z
 category: micro
 tags:
   - llms

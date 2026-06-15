@@ -1,11 +1,14 @@
 ---
-title: "Hard Works Trumps Talent Every Time"
-slug: "hard-works-trumps-talent-every-time"
-description: "Every damn time"
-pubDate: 2025-01-01T03:42:25
-updatedDate: 2025-01-01T03:42:30
+title: Hard Works Trumps Talent Every Time
+slug: hard-works-trumps-talent-every-time
+description: Every damn time
+created: 2025-01-01T03:42:25.000Z
+updated: 2025-01-01T03:42:30.000Z
 category: blog
-image: "https://storage.sajalchoudhary.net/images/2024/12/2022-04-06-112-.jpeg"
+image: 'https://storage.sajalchoudhary.net/images/2024/12/2022-04-06-112-.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754215149871656'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modda3wz662d'
 ---
 When I was in tenth, because that’s when it starts, I was told, all I had to do was study hard till twelfth, get into a good college, and that would be it.
 

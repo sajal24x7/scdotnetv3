@@ -1,8 +1,8 @@
 ---
 title: Anthropic cuts fable and mythos access
 slug: anthropic-cuts-fable-and-mythos-access
-pubDate: 2026-06-13T13:43:53.000Z
-updatedDate: 2026-06-13T13:43:53.000Z
+created: 2026-06-13T13:43:53.000Z
+updated: 2026-06-13T13:43:53.000Z
 category: micro
 tags:
   - anthropic

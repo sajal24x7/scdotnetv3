@@ -1,8 +1,8 @@
 ---
 title: The Unicorn Project
 slug: the-unicorn-project
-pubDate: 2026-01-08T17:06:53.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2026-01-08T17:06:53.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - devops

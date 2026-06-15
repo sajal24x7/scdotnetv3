@@ -12,9 +12,9 @@ const allPosts = await getAllPosts();
 const thenNowPosts = allPosts
   .filter(post => post.data.category === 'now' && post.data.status === 'done')
   .sort((a, b) => {
-    // Sort by updatedDate (end date) descending, fallback to pubDate if no updatedDate
-    const aDate = a.data.updatedDate || a.data.pubDate;
-    const bDate = b.data.updatedDate || b.data.pubDate;
+    // Sort by updated (end date) descending, fallback to created if no updated
+    const aDate = a.data.updated || a.data.created;
+    const bDate = b.data.updated || b.data.created;
     return bDate.getTime() - aDate.getTime();
   });
 
@@ -25,7 +25,7 @@ type ThenPost = Post & {
 };
 
 const renderedPosts: ThenPost[] = thenNowPosts.map(post => {
-    const rawEndDate = post.data.updatedDate ?? post.data.pubDate;
+    const rawEndDate = post.data.updated ?? post.data.created;
     const endDate = rawEndDate instanceof Date ? rawEndDate : new Date(rawEndDate);
 
     return {
@@ -67,7 +67,7 @@ const renderedPosts: ThenPost[] = thenNowPosts.map(post => {
                         class="progress-card__time"
                         datetime={post.endDate.toISOString()}
                     >
-                        {formatDateRange(post.data.pubDate, post.endDate)}
+                        {formatDateRange(post.data.created, post.endDate)}
                     </time>
                     {post.data.title && (
                         <h2 class="progress-card__title">{post.data.title}</h2>

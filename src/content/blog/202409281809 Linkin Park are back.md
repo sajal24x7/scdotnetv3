@@ -1,12 +1,17 @@
 ---
-title: "Linkin Park Are Back"
-slug: "linkin-park-are-back"
-description: "The emptiness machine"
-pubDate: 2024-09-28T18:09:04
-updatedDate: 2024-09-28T18:09:04
+title: Linkin Park Are Back
+slug: linkin-park-are-back
+description: The emptiness machine
+created: 2024-09-28T18:09:04.000Z
+updated: 2024-09-28T18:09:04.000Z
 category: blog
-tags: ["blog"]
-image: "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHJvY2slMjBtdXNpY3xlbnwwfHx8fDE3Mjc1NDY4OTl8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+image: >-
+  https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHJvY2slMjBtdXNpY3xlbnwwfHx8fDE3Mjc1NDY4OTl8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754051354220800'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modavmpcd623'
 ---
 Linkin Park are back. The first time I saw [the Emptiness Machine](https://youtu.be/SRXH9AbT280?si=59XcTBdmQ2RizMBG), I thought it was a special sort of thing. Maybe a collaboration. Then, during the week I asked Siri to play me some Linkin Park. She did and she played this song. And I loved it. I was transported back to all the times I had listened to Linkin Park in the college days.
 

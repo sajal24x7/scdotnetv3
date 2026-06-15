@@ -1,12 +1,15 @@
 ---
 title: Connecting Virtual Networks
 slug: connecting-virtual-networks
-pubDate: '2024-04-13T13:13:00+03:00'
-updatedDate: '2024-04-13T13:13:00+03:00'
+created: '2024-04-13T13:13:00+03:00'
+updated: '2024-04-13T13:13:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754920280751755'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnar2rpg2w'
 ---
 
 - If you wish to have multiple subscriptions and/or use multiple regions you will have multiple virtual networks

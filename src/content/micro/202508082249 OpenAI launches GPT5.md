@@ -1,14 +1,15 @@
 ---
-title: "OpenAI Launches GPT5"
-slug: "openai-launches-gpt5"
-pubDate: 2025-08-08T23:18:34+03:00
-updatedDate: 2025-08-08T23:18:34+03:00
+title: OpenAI Launches GPT5
+slug: openai-launches-gpt5
+created: 2025-08-08T20:18:34.000Z
+updated: 2025-08-08T20:18:34.000Z
 category: micro
 tags:
   - ai
   - openai
   - chatgpt
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgjho4g72m'
 ---
 OpenAI launched its new GPT-5 series models yesterday. 
 

@@ -1,8 +1,8 @@
 ---
 title: The Last Colony
 slug: the-last-colony
-pubDate: 2016-01-11T10:16:01.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2016-01-11T10:16:01.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -16,5 +16,7 @@ started: 2016-01-11T10:14:54.000Z
 finished: 2016-01-11T10:16:01.000Z
 rating: like
 cover: the-last-colony.jpg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode3l3qag2d'
 ---
 Finished Reading

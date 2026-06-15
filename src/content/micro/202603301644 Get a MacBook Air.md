@@ -1,8 +1,8 @@
 ---
 title: Get a MacBook Air
 slug: get-a-macbook-air
-pubDate: 2026-03-30T13:46:05.000Z
-updatedDate: 2026-03-30T13:46:05.000Z
+created: 2026-03-30T13:46:05.000Z
+updated: 2026-03-30T13:46:05.000Z
 category: micro
 tags:
   - apple

@@ -1,13 +1,16 @@
 ---
-title: "Our Place in the World"
+title: Our Place in the World
 edition: 27
-slug: "our-place-in-the-world"
-description: "Linkin Park are back + what is our place in this world"
-pubDate: 2024-09-29T03:38:40
-updatedDate: 2024-09-29T03:38:39
+slug: our-place-in-the-world
+description: Linkin Park are back + what is our place in this world
+created: 2024-09-29T03:38:40.000Z
+updated: 2024-09-29T03:38:39.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6141.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/09/IMG_6141.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh53xnef2v'
 ---
 Hello from my home in Matinkyla\! This is NordLetter \#27, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

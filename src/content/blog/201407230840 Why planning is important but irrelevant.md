@@ -1,10 +1,20 @@
 ---
-title: "Why Planning Is Important, but Irrelevant"
-slug: "why-planning-is-important-but-irrelevant"
-pubDate: 2014-07-23T08:40:24
-updatedDate: 2024-01-28T11:05:59
+title: 'Why Planning Is Important, but Irrelevant'
+slug: why-planning-is-important-but-irrelevant
+created: 2014-07-23T08:40:24.000Z
+updated: 2024-01-28T11:05:59.000Z
 category: blog
-tags: ["fiction writing", "planning", "sixty-day-blog", "Uncategorized", "writing is", "writing tips", "#test"]
+tags:
+  - fiction writing
+  - planning
+  - sixty-day-blog
+  - Uncategorized
+  - writing is
+  - writing tips
+  - '#test'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753986618824550'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7y6kljl2c'
 ---
 I like having a faint bit of predictability in my work. a faint bit, though. I like knowing how things are going to pan out, sort of like knowing the destinations, even though the paths may vary. It is not a hard and fast rule this. Many a times I have ended up with almost the opposite of what I wanted to do. Still planning in advance helps.
 

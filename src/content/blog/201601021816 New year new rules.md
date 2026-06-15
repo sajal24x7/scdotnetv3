@@ -1,10 +1,15 @@
 ---
-title: "New Year, New Rules!"
-slug: "new-year-new-rules"
-pubDate: 2016-01-02T18:16:13
-updatedDate: 2016-01-02T18:16:13
+title: 'New Year, New Rules!'
+slug: new-year-new-rules
+created: 2016-01-02T18:16:13.000Z
+updated: 2016-01-02T18:16:13.000Z
 category: blog
-tags: ["blog"]
+tags:
+  - blog
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754011907648222'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modadovvb42d'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxNWQlnsT'
 ---
 ![wp-1451738693582.jpeg](https://storage.sajalchoudhary.net/images/wordpress/2016/01/wp-1451738693582.jpeg)
 

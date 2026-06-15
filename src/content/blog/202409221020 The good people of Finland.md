@@ -1,12 +1,18 @@
 ---
-title: "The Good People of Finland"
-slug: "the-good-people-of-finland"
-description: "About going to sell my phone and unexpected kindness"
-pubDate: 2024-09-22T10:20:56
-updatedDate: 2024-09-22T10:23:26
+title: The Good People of Finland
+slug: the-good-people-of-finland
+description: About going to sell my phone and unexpected kindness
+created: 2024-09-22T10:20:56.000Z
+updated: 2024-09-22T10:23:26.000Z
 category: blog
-tags: ["blog", "kindness"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/photo-1635402972344-a8402ea982b6.jpeg"
+tags:
+  - blog
+  - kindness
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/09/photo-1635402972344-a8402ea982b6.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754050845364464'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modavetugc2m'
 ---
 I went to Iso Omena to sell my old iPhone today. I entered the store, took a number and waited. I was hoping the same person who gave me my new phone on Friday will take my phone today. I guess we all crave familiarity. Or at least I do. That must say something about me. Right? Psychologically?
 

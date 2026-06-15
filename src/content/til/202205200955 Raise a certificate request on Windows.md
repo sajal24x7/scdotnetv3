@@ -1,12 +1,14 @@
 ---
 title: Raise a Certificate Request on Windows
 slug: raise-a-certificate-request-on-windows
-pubDate: '2022-05-20T09:55:00+03:00'
-updatedDate: '2022-05-20T09:55:00+03:00'
+created: '2022-05-20T09:55:00+03:00'
+updated: '2022-05-20T09:55:00+03:00'
 category: til
 tags:
-- windows
-- cert
+  - windows
+  - cert
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhopt7vh2v'
 ---
 
 

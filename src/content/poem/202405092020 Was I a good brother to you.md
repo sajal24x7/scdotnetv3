@@ -1,13 +1,16 @@
 ---
-title: "Was I a Good Brother to You"
-slug: "was-i-a-good-brother-to-you"
-description: "You needed me,
-But was I there?"
-pubDate: 2024-05-09T20:20:11
-updatedDate: 2024-05-09T20:20:11
+title: Was I a Good Brother to You
+slug: was-i-a-good-brother-to-you
+description: 'You needed me, But was I there?'
+created: 2024-05-09T20:20:11.000Z
+updated: 2024-05-09T20:20:11.000Z
 category: poem
-tags: ["poems"]
-image: "https://images.unsplash.com/photo-1451471016731-e963a8588be8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHNpc3RlcnxlbnwwfHx8fDE3MTQ4MDQxNzF8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - poems
+image: >-
+  https://images.unsplash.com/photo-1451471016731-e963a8588be8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHNpc3RlcnxlbnwwfHx8fDE3MTQ4MDQxNzF8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhlmodmf2u'
 ---
 Was I a good brother to you?  
 You needed me,  

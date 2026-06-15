@@ -1,8 +1,8 @@
 ---
 title: Azure and Friends at Brightly
 slug: azure-and-friends-at-brightly
-pubDate: 2025-09-25T19:57:52.000Z
-updatedDate: 2025-09-25T19:57:52.000Z
+created: 2025-09-25T19:57:52.000Z
+updated: 2025-09-25T19:57:52.000Z
 category: blog
 tags:
   - brightly

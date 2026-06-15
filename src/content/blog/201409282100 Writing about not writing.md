@@ -1,10 +1,18 @@
 ---
-title: "Writing About Not Writing"
-slug: "writing-about-not-writing"
-pubDate: 2014-09-28T21:00:00
-updatedDate: 2014-09-28T21:00:00
+title: Writing About Not Writing
+slug: writing-about-not-writing
+created: 2014-09-28T21:00:00.000Z
+updated: 2014-09-28T21:00:00.000Z
 category: blog
-tags: ["blog", "edx", "novel", "writers block", "writing is"]
+tags:
+  - blog
+  - edx
+  - novel
+  - writers block
+  - writing is
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753994252698419'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda3nmi6v2m'
 ---
 [![writer's block](https://storage.sajalchoudhary.net/images/wordpress/2014/09/writerblock.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/writerblock.jpg)
 

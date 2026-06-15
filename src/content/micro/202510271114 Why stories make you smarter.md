@@ -1,8 +1,8 @@
 ---
 title: Why Stories Make You Smarter
 slug: why-stories-make-you-smarter
-pubDate: 2025-10-27T09:16:22.000Z
-updatedDate: 2025-10-27T09:16:22.000Z
+created: 2025-10-27T09:16:22.000Z
+updated: 2025-10-27T09:16:22.000Z
 category: micro
 tags:
   - reading

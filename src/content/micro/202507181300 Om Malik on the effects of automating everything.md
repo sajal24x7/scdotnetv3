@@ -1,14 +1,15 @@
 ---
-title: "Om Malik on the Effects of Automating Everything"
-slug: "om-malik-on-the-effects-of-automating-everything"
-pubDate: 2025-07-19T11:16:19+03:00
-updatedDate: 2025-07-19T11:16:19+03:00
+title: Om Malik on the Effects of Automating Everything
+slug: om-malik-on-the-effects-of-automating-everything
+created: 2025-07-19T08:16:19.000Z
+updated: 2025-07-19T08:16:19.000Z
 category: micro
 tags:
-  - "#ai"
+  - '#ai'
   - economy
   - uber
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modecf4knw2v'
 ---
 [Uber’s Robotaxi Is No Quick Delivery](https://om.co/2025/07/17/ubers-robotaxi-is-no-quick-delivery/)
 

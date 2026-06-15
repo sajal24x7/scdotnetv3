@@ -1,13 +1,14 @@
 ---
-title: "Ford Planning a Model T Moment in August"
-slug: "ford-planning-a-model-t-moment-in-august"
-pubDate: 2025-07-31T23:25:40+03:00
-updatedDate: 2025-07-31T23:25:40+03:00
+title: Ford Planning a Model T Moment in August
+slug: ford-planning-a-model-t-moment-in-august
+created: 2025-07-31T20:25:40.000Z
+updated: 2025-07-31T20:25:40.000Z
 category: micro
 tags:
   - cars
   - electric-cars
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modggnsazk2v'
 ---
 [Ford’s planning a ‘Model T moment’ for EVs on August 11th](https://www.theverge.com/news/716799/ford-model-t-moment-ev-announcement-date-earnings)
 

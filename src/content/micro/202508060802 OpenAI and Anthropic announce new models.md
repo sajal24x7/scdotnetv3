@@ -1,14 +1,15 @@
 ---
-title: "OpenAI and Anthropic Announce New Models"
-slug: "openai-and-anthropic-announce-new-models"
-pubDate: 2025-08-06T14:25:23+03:00
-updatedDate: 2025-08-06T14:25:23+03:00
+title: OpenAI and Anthropic Announce New Models
+slug: openai-and-anthropic-announce-new-models
+created: 2025-08-06T11:25:23.000Z
+updated: 2025-08-06T11:25:23.000Z
 category: micro
 tags:
   - ai
   - anthropic
   - openai
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgik535s2o'
 ---
 
 [OpenAI releases a free GPT model that can run on your laptop by Alex Heath](https://www.theverge.com/openai/718785/openai-gpt-oss-open-model-release)

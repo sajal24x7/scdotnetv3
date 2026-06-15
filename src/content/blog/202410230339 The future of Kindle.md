@@ -1,12 +1,18 @@
 ---
-title: "The Future of Kindle"
-slug: "the-future-of-kindle"
-description: "More notes please!"
-pubDate: 2024-10-23T03:39:21
-updatedDate: 2024-10-23T03:39:20
+title: The Future of Kindle
+slug: the-future-of-kindle
+description: More notes please!
+created: 2024-10-23T03:39:21.000Z
+updated: 2024-10-23T03:39:20.000Z
 category: blog
-tags: ["blog", "reading"]
-image: "https://images.unsplash.com/photo-1529978567524-3dfb744b7769?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGtpbmRsZXxlbnwwfHx8fDE3Mjk2MjE3NDB8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - reading
+image: >-
+  https://images.unsplash.com/photo-1529978567524-3dfb744b7769?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGtpbmRsZXxlbnwwfHx8fDE3Mjk2MjE3NDB8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754054001277514'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modawstcfw2m'
 ---
 Far too many times in the past, I was tempted to listen to [The Vergecast.](https://www.theverge.com/the-vergecast) I did not start before now. But then, [Amazon announced the new Kindles](https://www.theverge.com/2024/10/16/24271603/kindle-2024-colorsoft-scribe-paperwhite-specs-price-date) and [the vergecast had an episode with Panos Panay discussing these same Kindles.](https://www.youtube.com/watch?v=wz9X_Of93U0)
 

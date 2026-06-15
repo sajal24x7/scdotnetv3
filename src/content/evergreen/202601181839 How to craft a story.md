@@ -1,8 +1,8 @@
 ---
 title: How to Craft a Story
 slug: how-to-craft-a-story
-pubDate: 2026-01-28T08:49:01.000Z
-updatedDate: 2026-01-28T08:49:01.000Z
+created: 2026-01-28T08:49:01.000Z
+updated: 2026-01-28T08:49:01.000Z
 category: evergreen
 tags:
   - writing

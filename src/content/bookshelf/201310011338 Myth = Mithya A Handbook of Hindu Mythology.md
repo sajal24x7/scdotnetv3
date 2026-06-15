@@ -1,8 +1,8 @@
 ---
-title: "Myth = Mithya: A Handbook of Hindu Mythology"
+title: 'Myth = Mithya: A Handbook of Hindu Mythology'
 slug: myth-mithya-a-handbook-of-hindu-mythology
-pubDate: 2013-10-01T13:38:03.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2013-10-01T13:38:03.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -15,5 +15,8 @@ started: 2013-09-28T05:01:06.000Z
 finished: 2013-10-01T13:38:03.000Z
 rating: like
 cover: myth-mithya-a-handbook-of-hindu-mythology.jpg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754269188388960'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddyohr6r2s'
 ---
 Finished Reading

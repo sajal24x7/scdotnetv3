@@ -1,8 +1,8 @@
 ---
 title: Will Carrick continue as the United coach
 slug: will-carrick-continue-as-the-united-coach
-pubDate: 2026-05-09T05:22:57.000Z
-updatedDate: 2026-05-09T05:22:57.000Z
+created: 2026-05-09T05:22:57.000Z
+updated: 2026-05-09T05:22:57.000Z
 category: micro
 tags:
   - football

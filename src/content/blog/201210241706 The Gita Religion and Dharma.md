@@ -1,11 +1,18 @@
 ---
-title: "The Gita, Religion and Dharma"
-slug: "the-gita-religion-and-dharma"
-pubDate: 2012-10-24T17:06:09
-updatedDate: 2024-04-29T13:37:28
+title: 'The Gita, Religion and Dharma'
+slug: the-gita-religion-and-dharma
+created: 2012-10-24T17:06:09.000Z
+updated: 2024-04-29T13:37:28.000Z
 category: blog
-tags: ["Hinduism", "religion"]
-image: "https://images.unsplash.com/photo-1625580917212-e86139d26e1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGtyaXNobmF8ZW58MHx8fHwxNzE0Mzk3ODE0fDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - Hinduism
+  - religion
+image: >-
+  https://images.unsplash.com/photo-1625580917212-e86139d26e1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGtyaXNobmF8ZW58MHx8fHwxNzE0Mzk3ODE0fDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753969561279100'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7qglkmx2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZmv-dHlhSZ'
 ---
 I’m into the [_Bhagavat Gita_](http://en.wikipedia.org/wiki/Bhagavad_Gita).
 

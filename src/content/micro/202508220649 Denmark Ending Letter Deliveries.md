@@ -1,13 +1,14 @@
 ---
-title: "Denmark Ending Letter Deliveries"
-slug: "denmark-ending-letter-deliveries"
-pubDate: 2025-08-22T06:51:57+03:00
-updatedDate: 2025-08-22T06:51:57+03:00
+title: Denmark Ending Letter Deliveries
+slug: denmark-ending-letter-deliveries
+created: 2025-08-22T03:51:57.000Z
+updated: 2025-08-22T03:51:57.000Z
 category: micro
 tags:
   - denmark
   - post
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgmhz4m22u'
 ---
 [Denmark Ending Letter Deliveries Is a Sign of the Digital Times - Slashdot by ](https://tech.slashdot.org/story/25/08/21/1928230/denmark-ending-letter-deliveries-is-a-sign-of-the-digital-times?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 

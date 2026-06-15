@@ -1,12 +1,15 @@
 ---
 title: Azure Subscriptions
 slug: azure-subscriptions
-pubDate: '2024-01-10T14:41:00+03:00'
-updatedDate: '2024-01-10T14:41:00+03:00'
+created: '2024-01-10T14:41:00+03:00'
+updated: '2024-01-10T14:41:00+03:00'
 category: til
 tags:
-- azure
-- governance
+  - azure
+  - governance
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754759831813856'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkxs4p3c2z'
 ---
 
 - each service belongs to a subscription 

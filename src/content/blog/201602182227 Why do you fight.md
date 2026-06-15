@@ -1,10 +1,20 @@
 ---
-title: "Why Do You Fight?"
-slug: "why-do-you-fight"
-pubDate: 2016-02-18T22:27:47
-updatedDate: 2016-02-18T22:27:47
+title: Why Do You Fight?
+slug: why-do-you-fight
+created: 2016-02-18T22:27:47.000Z
+updated: 2016-02-18T22:27:47.000Z
 category: blog
-tags: ["blog", "fight", "jnu", "life", "look", "think"]
+tags:
+  - blog
+  - fight
+  - jnu
+  - life
+  - look
+  - think
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754017867218034'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modagfcvhp2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxYZ3lsWc'
 ---
 ![think](https://storage.sajalchoudhary.net/images/wordpress/2016/02/think.jpg)Stop and think\!
 

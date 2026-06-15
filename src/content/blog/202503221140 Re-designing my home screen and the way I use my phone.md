@@ -1,12 +1,20 @@
 ---
-title: "Re-Designing My Home Screen and the Way I Use My Phone"
-slug: "re-designing-my-home-screen-and-the-way-i-use-my-phone"
-description: "Focus modes + Shortcuts magic"
-pubDate: 2025-03-22T11:40:04
-updatedDate: 2025-03-22T11:40:04
+title: Re-Designing My Home Screen and the Way I Use My Phone
+slug: re-designing-my-home-screen-and-the-way-i-use-my-phone
+description: Focus modes + Shortcuts magic
+created: 2025-03-22T11:40:04.000Z
+updated: 2025-03-22T11:40:04.000Z
 category: blog
-tags: ["blog", "phone", "iphone", "apple"]
-image: "https://storage.sajalchoudhary.net/images/2025/03/Screenshot-2025-03-22-at-1.33.36-PM.png"
+tags:
+  - blog
+  - phone
+  - iphone
+  - apple
+image: >-
+  https://storage.sajalchoudhary.net/images/2025/03/Screenshot-2025-03-22-at-1.33.36-PM.png
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754241769125324'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddm7mkel2w'
 ---
 I have a contentious relationship with my phone.
 

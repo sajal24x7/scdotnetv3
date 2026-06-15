@@ -1,14 +1,15 @@
 ---
-title: "How to Use Policy Analyzer Tool to Compare GPO Settings"
-slug: "how-to-use-policy-analyzer-tool-to-compare-gpo-settings"
-pubDate: 2025-07-10T15:38:27+03:00
-updatedDate: 2025-07-10T15:38:27+03:00
+title: How to Use Policy Analyzer Tool to Compare GPO Settings
+slug: how-to-use-policy-analyzer-tool-to-compare-gpo-settings
+created: 2025-07-10T12:38:27.000Z
+updated: 2025-07-10T12:38:27.000Z
 category: til
 tags:
   - windows
   - ad
   - gpo
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoebrxj623'
 ---
 - gpresult and using Get-GPOreport does not work because it can export output in .xml or html but PolicyAnalyzer wants backup format
 

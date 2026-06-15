@@ -1,8 +1,8 @@
 ---
 title: Coupling and Cohesion
 slug: coupling-and-cohesion
-pubDate: 2026-03-09T12:19:56.000Z
-updatedDate: 2026-03-09T12:19:56.000Z
+created: 2026-03-09T12:19:56.000Z
+updated: 2026-03-09T12:19:56.000Z
 category: til
 tags:
   - micro-services

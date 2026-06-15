@@ -1,12 +1,19 @@
 ---
-title: "Why Do I Read More on the Web"
-slug: "why-do-i-read-more-on-the-web"
-description: "The phone, that’s the answer."
-pubDate: 2025-01-27T08:14:14
-updatedDate: 2025-01-27T08:14:14
+title: Why Do I Read More on the Web
+slug: why-do-i-read-more-on-the-web
+description: 'The phone, that’s the answer.'
+created: 2025-01-27T08:14:14.000Z
+updated: 2025-01-27T08:14:14.000Z
 category: blog
-tags: ["blog", "reading", "openweb"]
-image: "https://images.unsplash.com/photo-1623031345438-387dd3c45e9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fFJlYWR8ZW58MHx8fHwxNzM3OTY0ODAxfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - reading
+  - openweb
+image: >-
+  https://images.unsplash.com/photo-1623031345438-387dd3c45e9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fFJlYWR8ZW58MHx8fHwxNzM3OTY0ODAxfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754222794513850'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modddlolqp2c'
 ---
 I thought about this today, while I was reading something on NNW.
 

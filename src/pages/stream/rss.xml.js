@@ -14,7 +14,7 @@ export async function GET(context) {
   
   // Sort by publish date (newest first)
   const sortedPosts = stream.sort((a, b) => 
-    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+    new Date(b.data.created).valueOf() - new Date(a.data.created).valueOf()
   );
   
   // Generate the RSS feed
@@ -48,7 +48,7 @@ export async function GET(context) {
         title: item.data.title || 'Untitled',
         description: item.data.description || '',
         content,
-        pubDate: item.data.pubDate,
+        created: item.data.created,
         categories: [item.data.category, ...(item.data.tags || [])],
         author: 'sajal@sajalchoudhary.net (Sajal Choudhary)',
         customData: `

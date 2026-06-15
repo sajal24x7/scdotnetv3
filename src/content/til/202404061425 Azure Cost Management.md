@@ -1,12 +1,15 @@
 ---
 title: Azure Cost Management
 slug: azure-cost-management
-pubDate: '2024-04-06T14:25:00+03:00'
-updatedDate: '2024-04-06T14:25:00+03:00'
+created: '2024-04-06T14:25:00+03:00'
+updated: '2024-04-06T14:25:00+03:00'
 category: til
 tags:
-- azure
-- governance
+  - azure
+  - governance
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754765750323419'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modl2iqpc52m'
 ---
 
 Part of [[202404051739 Governance Overview|azure governance]]

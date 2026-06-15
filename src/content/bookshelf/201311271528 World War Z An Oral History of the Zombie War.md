@@ -1,8 +1,8 @@
 ---
-title: "World War Z: An Oral History of the Zombie War"
+title: 'World War Z: An Oral History of the Zombie War'
 slug: world-war-z-an-oral-history-of-the-zombie-war
-pubDate: 2013-11-27T15:28:54.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2013-11-27T15:28:54.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -15,5 +15,7 @@ started: 2013-11-27T15:28:54.000Z
 finished: 2013-11-27T15:28:54.000Z
 rating: like
 cover: world-war-z-an-oral-history-of-the-zombie-war.jpg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddzvc7ye2o'
 ---
 Finished Reading

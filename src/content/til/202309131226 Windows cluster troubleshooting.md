@@ -1,12 +1,15 @@
 ---
 title: Windows Cluster Troubleshooting
 slug: windows-cluster-troubleshooting
-pubDate: '2023-09-13T12:26:00+03:00'
-updatedDate: '2023-09-13T12:26:00+03:00'
+created: '2023-09-13T12:26:00+03:00'
+updated: '2023-09-13T12:26:00+03:00'
 category: til
 tags:
-- windows
-- cluster
+  - windows
+  - cluster
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754754681534079'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkvhc6f72l'
 ---
 
 ```

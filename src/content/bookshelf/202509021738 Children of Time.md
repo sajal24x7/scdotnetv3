@@ -1,21 +1,23 @@
 ---
 title: Children of Time
 slug: children-of-time
-pubDate: 2025-09-04T22:45:58+03:00
-updatedDate: 2026-06-05T14:19:08
+created: 2025-09-04T19:45:58.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - sci-fi
 format: audio
 genre: sci-fi
-author: "Adrian Tchaikovsky"
-series: "Children of Time"
+author: Adrian Tchaikovsky
+series: Children of Time
 seriesNumber: 1
 shelfStatus: read
 rating: love
-started: 2025-09-02T22:45:58+03:00
-finished: 2025-09-19T16:45:58+03:00
+started: 2025-09-02T19:45:58.000Z
+finished: 2025-09-19T13:45:58.000Z
 cover: children-of-time.jpg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6znro22u'
 ---
 
 I loved reading Children of Time.

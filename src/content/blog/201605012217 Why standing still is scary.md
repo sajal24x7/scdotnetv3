@@ -1,10 +1,18 @@
 ---
-title: "Why Standing Still Is Scary"
-slug: "why-standing-still-is-scary"
-pubDate: 2016-05-01T22:17:37
-updatedDate: 2016-05-01T22:17:37
+title: Why Standing Still Is Scary
+slug: why-standing-still-is-scary
+created: 2016-05-01T22:17:37.000Z
+updated: 2016-05-01T22:17:37.000Z
 category: blog
-tags: ["blog", "life", "standing still", "writing is"]
+tags:
+  - blog
+  - life
+  - standing still
+  - writing is
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754021113508188'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modahuubwu2u'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxefmFuK8'
 ---
 ![Standing still](https://storage.sajalchoudhary.net/images/wordpress/2016/05/2a0b291e39db5ef70e9964697549f878.jpg)Standing still
 

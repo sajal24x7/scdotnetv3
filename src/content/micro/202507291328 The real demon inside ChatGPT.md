@@ -1,13 +1,14 @@
 ---
-title: "The Real Demon Inside ChatGPT"
-slug: "the-real-demon-inside-chatgpt"
-pubDate: 2025-07-29T14:13:56+03:00
-updatedDate: 2025-07-29T14:13:56+03:00
+title: The Real Demon Inside ChatGPT
+slug: the-real-demon-inside-chatgpt
+created: 2025-07-29T11:13:56.000Z
+updated: 2025-07-29T11:13:56.000Z
 category: micro
 tags:
   - ai
   - chatgpt
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgflpko32s'
 ---
 
 [The Real Demon Inside ChatGPT](https://www.wired.com/story/chatgpt-devil-worship-llm-training/)

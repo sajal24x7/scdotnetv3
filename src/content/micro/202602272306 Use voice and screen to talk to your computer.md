@@ -1,8 +1,8 @@
 ---
 title: Use Voice and Screen to Talk to Your Computer
 slug: use-voice-and-screen-to-talk-to-your-computer
-pubDate: 2026-02-27T21:09:31.000Z
-updatedDate: 2026-02-27T21:09:31.000Z
+created: 2026-02-27T21:09:31.000Z
+updated: 2026-02-27T21:09:31.000Z
 category: micro
 tags:
   - ai

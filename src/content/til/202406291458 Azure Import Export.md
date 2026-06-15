@@ -1,12 +1,15 @@
 ---
 title: Azure Import Export
 slug: azure-import-export
-pubDate: '2024-06-29T14:58:00+03:00'
-updatedDate: '2024-06-29T14:58:00+03:00'
+created: '2024-06-29T14:58:00+03:00'
+updated: '2024-06-29T14:58:00+03:00'
 category: til
 tags:
-- azure
-- storage
+  - azure
+  - storage
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754948186585020'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnngx4kn2z'
 ---
 
 - To import/export large amount of data to and from Azure using physically shipping drives etc

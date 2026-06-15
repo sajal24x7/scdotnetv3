@@ -1,10 +1,14 @@
 ---
 title: Vmware Get List of Rebooted Servers by HA
 slug: vmware-get-list-of-rebooted-servers-by-ha
-pubDate: '2023-08-02T10:20:00+03:00'
-updatedDate: '2023-08-02T10:20:00+03:00'
+created: '2023-08-02T10:20:00+03:00'
+updated: '2023-08-02T10:20:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754752288847984'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkueknpc2s'
+  - 'https://www.threads.com/@sajal24x7/post/DZnGwYAlgmC'
 ---
 
 

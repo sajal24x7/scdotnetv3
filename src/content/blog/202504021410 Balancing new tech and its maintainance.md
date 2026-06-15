@@ -1,11 +1,17 @@
 ---
-title: "Balancing New Tech and Its Maintainance"
-slug: "balancing-new-tech-and-its-maintainance"
-pubDate: 2025-04-02T14:10:26
-updatedDate: 2025-04-02T14:10:26
+title: Balancing New Tech and Its Maintainance
+slug: balancing-new-tech-and-its-maintainance
+created: 2025-04-02T14:10:26.000Z
+updated: 2025-04-02T14:10:26.000Z
 category: blog
-tags: ["blog", "tech"]
-image: "https://images.unsplash.com/photo-1741879080222-b9b5f20b3333?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDF8fHx8fHx8fDE3NDM2MDI1NDJ8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - tech
+image: >-
+  https://images.unsplash.com/photo-1741879080222-b9b5f20b3333?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDF8fHx8fHx8fDE3NDM2MDI1NDJ8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754244761149716'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddnkx6gt2w'
 ---
 Each new piece of technology makes our lives easier but it also comes with things we need to take care of, for it to work optimally. Hence, when it comes to thinking about adopting new technology we need to think about the costs associated with adding this technology, with the things we will have to do to maintain and support it, and on a whole does it make our lives better or not.
 

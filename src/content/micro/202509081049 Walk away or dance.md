@@ -1,13 +1,14 @@
 ---
-title: "Walk Away or Dance"
-slug: "walk-away-or-dance"
-pubDate: 2025-09-08T11:56:04+03:00
-updatedDate: 2025-09-08T11:56:04+03:00
+title: Walk Away or Dance
+slug: walk-away-or-dance
+created: 2025-09-08T08:56:04.000Z
+updated: 2025-09-08T08:56:04.000Z
 category: micro
 tags:
   - ai
   - writing
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgqcmfvm2d'
 ---
 
 [Walk away or dance by Seth Godin](https://feeds.feedblitz.com/~/924154304/0/sethsblog~Walk-away-or-dance/)

@@ -1,12 +1,15 @@
 ---
 title: Use Azure Key Vault With Bicep
 slug: use-azure-key-vault-with-bicep
-pubDate: '2024-07-19T19:25:00+03:00'
-updatedDate: '2024-07-19T19:25:00+03:00'
+created: '2024-07-19T19:25:00+03:00'
+updated: '2024-07-19T19:25:00+03:00'
 category: til
 tags:
-- azure
-- bicep
+  - azure
+  - bicep
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754963788629029'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnukbmsq2c'
 ---
 
 # In [[202407191915 Bicep parameter files|parameter file]]

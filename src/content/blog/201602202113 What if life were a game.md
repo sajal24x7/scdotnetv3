@@ -1,10 +1,23 @@
 ---
-title: "What If Life Were a Game?"
-slug: "what-if-life-were-a-game"
-pubDate: 2016-02-20T21:13:20
-updatedDate: 2016-02-20T21:13:20
+title: What If Life Were a Game?
+slug: what-if-life-were-a-game
+created: 2016-02-20T21:13:20.000Z
+updated: 2016-02-20T21:13:20.000Z
 category: blog
-tags: ["blog", "gaming", "gita", "life", "life's a game", "reality", "religion", "universe", "virtual"]
+tags:
+  - blog
+  - gaming
+  - gita
+  - life
+  - life's a game
+  - reality
+  - religion
+  - universe
+  - virtual
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754018494056560'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modagohsfm2u'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxZlYFpcB'
 ---
 ![No-Mans-Sky-concept-art_8.jpg](https://storage.sajalchoudhary.net/images/wordpress/2016/02/no-mans-sky-concept-art_8.jpg)Life’s a game\!
 

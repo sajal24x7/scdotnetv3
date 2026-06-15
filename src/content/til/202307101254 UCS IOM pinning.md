@@ -1,10 +1,14 @@
 ---
 title: UCS IOM Pinning
 slug: ucs-iom-pinning
-pubDate: '2023-07-10T12:54:00+03:00'
-updatedDate: '2023-07-10T12:54:00+03:00'
+created: '2023-07-10T12:54:00+03:00'
+updated: '2023-07-10T12:54:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754751342848856'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modktwrbom2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZnGunMlvQy'
 ---
 
 

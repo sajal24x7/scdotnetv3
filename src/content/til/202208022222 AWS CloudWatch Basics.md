@@ -1,10 +1,12 @@
 ---
 title: AWS CloudWatch Basics
 slug: aws-cloudwatch-basics
-pubDate: '2022-08-02T22:22:00+03:00'
-updatedDate: '2022-08-02T22:22:00+03:00'
+created: '2022-08-02T22:22:00+03:00'
+updated: '2022-08-02T22:22:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjxr3qay2v'
 ---
 
 

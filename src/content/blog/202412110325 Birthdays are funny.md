@@ -1,12 +1,17 @@
 ---
-title: "Birthdays Are Funny"
-slug: "birthdays-are-funny"
-description: "Another year around the sun! Yay!"
-pubDate: 2024-12-11T03:25:58
-updatedDate: 2024-12-11T03:25:57
+title: Birthdays Are Funny
+slug: birthdays-are-funny
+description: Another year around the sun! Yay!
+created: 2024-12-11T03:25:58.000Z
+updated: 2024-12-11T03:25:57.000Z
 category: blog
-tags: ["blog"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/photo-1490126125528-a0c3b2998dcd.jpeg"
+tags:
+  - blog
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/12/photo-1490126125528-a0c3b2998dcd.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754208325523372'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd4z7ehj2m'
 ---
 We start with celebrating the birthdays. The first birthday, then the fifth, the tenth and so on.
 

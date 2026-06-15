@@ -1,8 +1,8 @@
 ---
 title: Zen in the Art of Writing
 slug: zen-in-the-art-of-writing
-pubDate: 2026-03-09T10:13:18.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2026-03-09T10:13:18.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - writing

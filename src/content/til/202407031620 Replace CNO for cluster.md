@@ -1,12 +1,15 @@
 ---
 title: Replace CNO for Cluster
 slug: replace-cno-for-cluster
-pubDate: '2024-07-03T16:20:00+03:00'
-updatedDate: '2024-07-03T16:20:00+03:00'
+created: '2024-07-03T16:20:00+03:00'
+updated: '2024-07-03T16:20:00+03:00'
 category: til
 tags:
-- windows
-- cluster
+  - windows
+  - cluster
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754948562429569'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnnmio7e2o'
 ---
 
 # Issue

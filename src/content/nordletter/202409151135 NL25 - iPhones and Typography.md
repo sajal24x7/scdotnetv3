@@ -1,13 +1,17 @@
 ---
-title: "iPhones and Typography"
+title: iPhones and Typography
 edition: 25
-slug: "iphones-and-typography"
-description: "iPhone 16 launch event + learn about typefaces and fonts"
-pubDate: 2024-09-15T11:35:42
-updatedDate: 2024-09-15T11:35:42
+slug: iphones-and-typography
+description: iPhone 16 launch event + learn about typefaces and fonts
+created: 2024-09-15T11:35:42.000Z
+updated: 2024-09-15T11:35:42.000Z
 category: nordletter
-tags: ["Nord Letter", "apple"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6033.jpeg"
+tags:
+  - Nord Letter
+  - apple
+image: 'https://storage.sajalchoudhary.net/images/2024/09/IMG_6033.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh4npzb42u'
 ---
 Hello from the Iso Omena library\! I type this from the silent room in the library. This is NordLetter \#25, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

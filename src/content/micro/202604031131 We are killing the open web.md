@@ -1,8 +1,8 @@
 ---
 title: We Are Killing the Open Web
 slug: we-are-killing-the-open-web
-pubDate: 2026-04-03T08:42:27.000Z
-updatedDate: 2026-04-03T08:42:27.000Z
+created: 2026-04-03T08:42:27.000Z
+updated: 2026-04-03T08:42:27.000Z
 category: micro
 tags:
   - web

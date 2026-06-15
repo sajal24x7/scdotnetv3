@@ -1,10 +1,14 @@
 ---
-title: "Wake Me up, When November Ends!"
-slug: "wake-me-up-when-november-ends"
-pubDate: 2012-11-01T20:34:45
-updatedDate: 2024-04-29T13:42:34
+title: 'Wake Me up, When November Ends!'
+slug: wake-me-up-when-november-ends
+created: 2012-11-01T20:34:45.000Z
+updated: 2024-04-29T13:42:34.000Z
 category: blog
-tags: [“college”]
+tags:
+  - “college”
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753970448509398'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7qtaatl2u'
 ---
 The thing with rumors is, they can be true some times.
 

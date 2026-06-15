@@ -1,10 +1,20 @@
 ---
-title: "The Hopeful Human Condition"
-slug: "the-hopeful-human-condition"
-pubDate: 2015-11-30T21:02:41
-updatedDate: 2015-11-30T21:02:41
+title: The Hopeful Human Condition
+slug: the-hopeful-human-condition
+created: 2015-11-30T21:02:41.000Z
+updated: 2015-11-30T21:02:41.000Z
 category: blog
-tags: ["blog", "cosmos", "humanity", "science fiction", "the human condition", "Uncategorized"]
+tags:
+  - blog
+  - cosmos
+  - humanity
+  - science fiction
+  - the human condition
+  - Uncategorized
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754010688539379'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modad4qv3m2u'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxLBcFpQq'
 ---
 ![2079435_deeper-still_jfxeaqbh63vorhnrwcs4oomcjqoxpy7q62c4u66siw3t6qwph3oq_790x445](https://storage.sajalchoudhary.net/images/wordpress/2015/11/2079435_deeper-still_jfxeaqbh63vorhnrwcs4oomcjqoxpy7q62c4u66siw3t6qwph3oq_790x445.jpg)
 

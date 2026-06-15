@@ -1,13 +1,16 @@
 ---
 title: Ansible VMware Module Does Sysprep by Default
 slug: ansible-vmware-module-does-sysprep-by-default
-pubDate: '2024-05-28T15:30:00+03:00'
-updatedDate: '2024-05-28T15:30:00+03:00'
+created: '2024-05-28T15:30:00+03:00'
+updated: '2024-05-28T15:30:00+03:00'
 category: til
 tags:
-- ansible
-- windows
-- vmware
+  - ansible
+  - windows
+  - vmware
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754942389653661'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnkslo272l'
 ---
 
 When using [community.vmware.vmware_guest module – Manages virtual machines in vCenter — Ansible Community Documentation](https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_module.html) 

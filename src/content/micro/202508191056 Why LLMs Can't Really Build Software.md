@@ -1,13 +1,14 @@
 ---
-title: "Why LLMs Can't Really Build Software"
-slug: "why-llms-cant-really-build-software"
-pubDate: 2025-08-19T10:58:58+03:00
-updatedDate: 2025-08-19T10:58:58+03:00
+title: Why LLMs Can't Really Build Software
+slug: why-llms-cant-really-build-software
+created: 2025-08-19T07:58:58.000Z
+updated: 2025-08-19T07:58:58.000Z
 category: micro
 tags:
   - ai
   - software
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modglucqud2m'
 ---
 
 [Why LLMs Can't Really Build Software - Zed Blog](https://zed.dev/blog/why-llms-cant-build-software?utm_source=cassidoo&utm_medium=email&utm_campaign=its-important-to-have-something-to-walk-towards)

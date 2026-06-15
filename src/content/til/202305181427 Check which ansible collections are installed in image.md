@@ -1,11 +1,14 @@
 ---
 title: Check Which Ansible Collections Are Installed in Image
 slug: check-which-ansible-collections-are-installed-in-image
-pubDate: '2023-05-18T14:27:00+03:00'
-updatedDate: '2023-05-18T14:27:00+03:00'
+created: '2023-05-18T14:27:00+03:00'
+updated: '2023-05-18T14:27:00+03:00'
 category: til
 tags:
-- ansible
+  - ansible
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754743240794007'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkqaxsm22z'
 ---
 
 

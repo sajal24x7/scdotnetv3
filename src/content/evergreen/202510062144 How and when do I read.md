@@ -1,12 +1,13 @@
 ---
-title: "How and When Do I Read"
-slug: "how-and-when-do-i-read"
-pubDate: 2025-10-06T21:49:17+03:00
-updatedDate: 2025-10-06T21:49:17+03:00
+title: How and When Do I Read
+slug: how-and-when-do-i-read
+created: 2025-10-06T18:49:17.000Z
+updated: 2025-10-06T18:49:17.000Z
 category: evergreen
 tags:
   - reading
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modeba5r6i2m'
 ---
 At present, I am mostly consuming audio books now. I listen to them whenever I can, but mostly -
 1. While commuting (a 40 min commute at present)

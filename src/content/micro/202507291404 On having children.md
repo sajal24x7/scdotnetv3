@@ -1,11 +1,13 @@
 ---
-title: "On Having Children"
-slug: "on-having-children"
-pubDate: 2025-07-29T14:08:55+03:00
-updatedDate: 2025-07-29T14:08:55+03:00
+title: On Having Children
+slug: on-having-children
+created: 2025-07-29T11:08:55.000Z
+updated: 2025-07-29T11:08:55.000Z
 category: micro
-tags: 
+tags:
   - parenting
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgfw4vp42w'
 ---
 [Paul Graham - Having Kids](https://www.paulgraham.com/kids.html)
 

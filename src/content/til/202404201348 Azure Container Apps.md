@@ -1,13 +1,16 @@
 ---
 title: Azure Container Apps
 slug: azure-container-apps
-pubDate: '2024-04-20T13:48:00+03:00'
-updatedDate: '2024-04-20T13:48:00+03:00'
+created: '2024-04-20T13:48:00+03:00'
+updated: '2024-04-20T13:48:00+03:00'
 category: til
 tags:
-- azure
-- appservices
-- container
+  - azure
+  - appservices
+  - container
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754928501588370'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modneipj6d2m'
 ---
 
 - Built on top of [[202404201210 Azure Kubernetes Service|AKS]], abstracts away the AKS layer. We focus on the application

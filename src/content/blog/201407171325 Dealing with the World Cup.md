@@ -1,10 +1,23 @@
 ---
-title: "Dealing With the World Cup"
-slug: "dealing-with-the-world-cup"
-pubDate: 2014-07-17T13:25:20
-updatedDate: 2024-01-28T11:05:59
+title: Dealing With the World Cup
+slug: dealing-with-the-world-cup
+created: 2014-07-17T13:25:20.000Z
+updated: 2024-01-28T11:05:59.000Z
 category: blog
-tags: ["england", "fiction writing", "football", "germany", "sixty-day-blog", "Uncategorized", "world cup", "writing is", "writing tips", "#test"]
+tags:
+  - england
+  - fiction writing
+  - football
+  - germany
+  - sixty-day-blog
+  - Uncategorized
+  - world cup
+  - writing is
+  - writing tips
+  - '#test'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753985904384310'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7xu5bkv2m'
 ---
 After a month long tournament, Germany came out on top with a one-goal win over Argentina \(or Messi, if you prefer\!\) Oh\! and in case you were in a cave in a remote island somewhere in the Pacific \(or the Atlantic\) I am talking about the football world cup.
 

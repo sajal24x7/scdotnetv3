@@ -1,11 +1,14 @@
 ---
 title: PowerShell Check Empty String
 slug: powershell-check-empty-string
-pubDate: '2023-09-12T19:57:00+03:00'
-updatedDate: '2023-09-12T19:57:00+03:00'
+created: '2023-09-12T19:57:00+03:00'
+updated: '2023-09-12T19:57:00+03:00'
 category: til
 tags:
-- powershell
+  - powershell
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754754568712675'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkvfjmit23'
 ---
 
 

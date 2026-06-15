@@ -1,8 +1,8 @@
 ---
 title: Claude Announces Skills
 slug: claude-announces-skills
-pubDate: 2025-10-17T03:48:01.000Z
-updatedDate: 2025-10-17T03:48:01.000Z
+created: 2025-10-17T03:48:01.000Z
+updated: 2025-10-17T03:48:01.000Z
 category: micro
 tags:
   - claude

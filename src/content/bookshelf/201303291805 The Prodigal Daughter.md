@@ -1,8 +1,8 @@
 ---
 title: The Prodigal Daughter
 slug: the-prodigal-daughter
-pubDate: 2013-03-29T18:05:21.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2013-03-29T18:05:21.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -16,6 +16,9 @@ started: 2013-03-19T16:21:38.000Z
 finished: 2013-03-29T18:05:21.000Z
 rating: like
 cover: the-prodigal-daughter.jpg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754264343634277'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddwhx3cw2u'
 ---
 
 Finished Reading

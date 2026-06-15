@@ -1,10 +1,19 @@
 ---
-title: "On Writing : The Numbers"
-slug: "on-writing-the-numbers"
-pubDate: 2016-02-03T21:00:53
-updatedDate: 2016-02-03T21:00:53
+title: 'On Writing : The Numbers'
+slug: on-writing-the-numbers
+created: 2016-02-03T21:00:53.000Z
+updated: 2016-02-03T21:00:53.000Z
 category: blog
-tags: ["blog", "google docs", "lifehacker", "writing is", "writing tips"]
+tags:
+  - blog
+  - google docs
+  - lifehacker
+  - writing is
+  - writing tips
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754015194987212'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modaf6pu752l'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxTd_Fl6S'
 ---
 ![graph](https://storage.sajalchoudhary.net/images/wordpress/2016/02/graph.png)word count v/s date : courtesy of the infamous sheet, and google
 

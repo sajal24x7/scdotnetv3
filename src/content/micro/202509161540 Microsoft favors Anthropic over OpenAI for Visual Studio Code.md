@@ -1,8 +1,8 @@
 ---
 title: Microsoft Favors Anthropic Over OpenAI for Visual Studio Code
 slug: microsoft-favors-anthropic-over-openai-for-visual-studio-code
-pubDate: 2025-09-16T12:44:07.000Z
-updatedDate: 2025-09-16T12:44:07.000Z
+created: 2025-09-16T12:44:07.000Z
+updated: 2025-09-16T12:44:07.000Z
 category: micro
 tags:
   - openai

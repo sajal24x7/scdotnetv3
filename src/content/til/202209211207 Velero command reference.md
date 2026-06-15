@@ -1,12 +1,14 @@
 ---
 title: Velero Command Reference
 slug: velero-command-reference
-pubDate: '2022-09-21T12:07:00+03:00'
-updatedDate: '2022-09-21T12:07:00+03:00'
+created: '2022-09-21T12:07:00+03:00'
+updated: '2022-09-21T12:07:00+03:00'
 category: til
 tags:
-- velero
-- ccs
+  - velero
+  - ccs
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk2elmuh26'
 ---
 
 

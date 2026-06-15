@@ -1,12 +1,17 @@
 ---
-title: "Advanced Civilisations Could Be Indistinguishable From Nature"
-slug: "advanced-civilisations-could-be-indistinguishable-from-nature"
-description: "A sustainable solution to the fermi paradox"
-pubDate: 2024-12-23T03:17:47
-updatedDate: 2024-12-23T03:17:46
+title: Advanced Civilisations Could Be Indistinguishable From Nature
+slug: advanced-civilisations-could-be-indistinguishable-from-nature
+description: A sustainable solution to the fermi paradox
+created: 2024-12-23T03:17:47.000Z
+updated: 2024-12-23T03:17:46.000Z
 category: blog
-tags: ["blog"]
-image: "https://images.unsplash.com/photo-1666112835145-d79fc3f2e008?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGR5c29uJTIwc3BoZXJlfGVufDB8fHx8MTczNDg2NTY1M3ww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+image: >-
+  https://images.unsplash.com/photo-1666112835145-d79fc3f2e008?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGR5c29uJTIwc3BoZXJlfGVufDB8fHx8MTczNDg2NTY1M3ww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754212700318757'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd6ywt7u2m'
 ---
 The [Fermi paradox](https://en.wikipedia.org/wiki/Fermi_paradox) is about the lack of advanced space-faring civilisations we have come across \(none\) given that there are a lot of stars in the galaxy, which should have a lot of habitable planets surrounding those stars.
 

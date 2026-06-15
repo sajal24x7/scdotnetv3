@@ -1,14 +1,15 @@
 ---
-title: "iPad Gets Closer to the Mac"
-slug: "ipad-gets-closer-to-the-mac"
-pubDate: 2025-07-25T10:32:06+03:00
-updatedDate: 2025-07-25T10:32:06+03:00
+title: iPad Gets Closer to the Mac
+slug: ipad-gets-closer-to-the-mac
+created: 2025-07-25T07:32:06.000Z
+updated: 2025-07-25T07:32:06.000Z
 category: micro
 tags:
   - apple
   - ipad
   - os
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modeclebcd23'
 ---
 [First Look: iPadOS 26 Public Beta](https://sixcolors.com/post/2025/07/first-look-ipados-26-public-beta/)
 

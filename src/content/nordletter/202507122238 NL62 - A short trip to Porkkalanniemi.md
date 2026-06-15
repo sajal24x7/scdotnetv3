@@ -1,16 +1,18 @@
 ---
-title: "A Short Trip to Porkkalanniemi"
+title: A Short Trip to Porkkalanniemi
 edition: 62
-slug: "a-short-trip-to-porkkalanniemi"
-pubDate: 2025-07-13T06:30:05+03:00
-updatedDate: 2025-07-13T06:30:05+03:00
+slug: a-short-trip-to-porkkalanniemi
+created: 2025-07-13T03:30:05.000Z
+updated: 2025-07-13T03:30:05.000Z
 category: nordletter
-tags: 
+tags:
   - finland
   - ai
   - browsers
   - gmail
-image: "https://storage.sajalchoudhary.net/images/2025/07/nl62-2.jpeg"
+image: 'https://storage.sajalchoudhary.net/images/2025/07/nl62-2.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhfh56m32l'
 ---
 Hello from my home in Matinkylä! This is NordLetter #62, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

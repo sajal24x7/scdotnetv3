@@ -1,12 +1,13 @@
 ---
-title: "How to Learn Effectively"
-slug: "how-to-learn-effectively"
-pubDate: 2025-08-20T22:13:19+03:00
-updatedDate: 2025-08-20T22:13:19+03:00
+title: How to Learn Effectively
+slug: how-to-learn-effectively
+created: 2025-08-20T19:13:19.000Z
+updated: 2025-08-20T19:13:19.000Z
 category: evergreen
 tags:
   - learning
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modeah4led2m'
 ---
 Read about this in [Range](#)
 

@@ -1,8 +1,8 @@
 ---
 title: On Poverty Line and American Economy
 slug: on-poverty-line-and-american-economy
-pubDate: 2025-11-25T08:49:48.000Z
-updatedDate: 2025-11-25T08:49:48.000Z
+created: 2025-11-25T08:49:48.000Z
+updated: 2025-11-25T08:49:48.000Z
 category: micro
 tags:
   - economy

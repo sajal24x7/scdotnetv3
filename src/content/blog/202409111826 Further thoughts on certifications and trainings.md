@@ -1,12 +1,18 @@
 ---
-title: "Further Thoughts on Certifications and Trainings"
-slug: "further-thoughts-on-certifications-and-trainings"
-description: "And marrying well"
-pubDate: 2024-09-11T18:26:23
-updatedDate: 2024-09-11T18:26:23
+title: Further Thoughts on Certifications and Trainings
+slug: further-thoughts-on-certifications-and-trainings
+description: And marrying well
+created: 2024-09-11T18:26:23.000Z
+updated: 2024-09-11T18:26:23.000Z
 category: blog
-tags: ["blog", "Azure"]
-image: "https://images.unsplash.com/photo-1711998431907-61f9b72aabdd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDl8fHx8fHwyfHwxNzI2MDc3NjkxfA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - Azure
+image: >-
+  https://images.unsplash.com/photo-1711998431907-61f9b72aabdd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDl8fHx8fHwyfHwxNzI2MDc3NjkxfA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754050024432669'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modauzdgf22m'
 ---
 I am a member of a Reddit sub by the name of [**r/AzureCertification**](https://click.redditmail.com/CL0/https:%2F%2Fwww.reddit.com%2Fr%2Fazurecertification%2F%3F%2524deep_link=true%26correlation_id=d2d03b0b-bf47-4e7b-b333-a7f08e5be8cf%26post_fullname=t3_1fcsb54%26ref=email_digest%26ref_campaign=email_digest%26ref_source=email%26utm_content=post_subreddit/2/01000191dd06c3f0-7cbd33de-d356-4065-a5d3-cabe684f0aaf-000000/T8y6njfmDjmzHPWTfbbdusDVoOKi1UVsl0Df4pMdWl8=370). This is a sub to discuss all things Azure certs. I joined this sub back in 2023, when I had first thought of getting certified. I lurked in the sub without posting anything. Some people would give tips on how to prepare for the certs. Some would be celebrating their successful attempts. Some were not so well prepared or lucky to crack the exam.
 

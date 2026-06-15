@@ -1,8 +1,8 @@
 ---
 title: Meta Creates a Vibes Feed for AI Videos
 slug: meta-creates-a-vibes-feed-for-ai-videos
-pubDate: 2025-09-27T10:52:56.000Z
-updatedDate: 2025-09-27T10:52:56.000Z
+created: 2025-09-27T10:52:56.000Z
+updated: 2025-09-27T10:52:56.000Z
 category: micro
 tags:
   - ai

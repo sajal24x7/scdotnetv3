@@ -1,14 +1,15 @@
 ---
-title: "Xbox Is Coming to Cars Thanks to an LG and Microsoft Partnership"
-slug: "xbox-is-coming-to-cars-thanks-to-an-lg-and-microsoft-partnership"
-pubDate: 2025-09-09T12:55:19+03:00
-updatedDate: 2025-09-09T12:55:19+03:00
+title: Xbox Is Coming to Cars Thanks to an LG and Microsoft Partnership
+slug: xbox-is-coming-to-cars-thanks-to-an-lg-and-microsoft-partnership
+created: 2025-09-09T09:55:19.000Z
+updated: 2025-09-09T09:55:19.000Z
 category: micro
 tags:
   - electric-cars
   - xbox
   - msft
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgqp7imx26'
 ---
 [Xbox is coming to cars thanks to an LG and Microsoft partnership by Tom Warren](https://www.theverge.com/news/774177/microsoft-xbox-car-lg-partnership-cloud-streaming)
 

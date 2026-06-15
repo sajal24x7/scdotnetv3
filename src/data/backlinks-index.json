@@ -1653,70 +1653,70 @@
       "title": "Add Custom Domain to Entra ID",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-28T16:22:00.000Z"
+      "created": "2024-08-28T16:22:00.000Z"
     },
     {
       "slug": "/til/entra-id-tenant/",
       "title": "Entra ID Tenant",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-28T16:18:00.000Z"
+      "created": "2024-08-28T16:18:00.000Z"
     },
     {
       "slug": "/til/azure-monitoring-old/",
       "title": "Azure Monitoring Old",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-28T13:01:00.000Z"
+      "created": "2024-04-28T13:01:00.000Z"
     },
     {
       "slug": "/til/azure-dns/",
       "title": "Azure DNS",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:50:00.000Z"
+      "created": "2024-04-14T11:50:00.000Z"
     },
     {
       "slug": "/til/azure-storage-account/",
       "title": "Azure Storage Account",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-09T15:59:00.000Z"
+      "created": "2024-04-09T15:59:00.000Z"
     },
     {
       "slug": "/til/azure-abac/",
       "title": "Azure ABAC",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:23:00.000Z"
+      "created": "2024-04-06T10:23:00.000Z"
     },
     {
       "slug": "/til/authentication-and-authorization/",
       "title": "Authentication and Authorization",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-01T11:14:00.000Z"
+      "created": "2024-04-01T11:14:00.000Z"
     },
     {
       "slug": "/til/entra-id-roles/",
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-07T17:01:00.000Z"
+      "created": "2024-01-07T17:01:00.000Z"
     },
     {
       "slug": "/til/entra-id-managed-identities/",
       "title": "Entra ID Managed Identities",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:41:00.000Z"
+      "created": "2023-12-23T11:41:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/create-azure-dns-zone-and-records": [
@@ -1725,14 +1725,14 @@
       "title": "Add Custom Domain to Entra ID",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-28T16:22:00.000Z"
+      "created": "2024-08-28T16:22:00.000Z"
     },
     {
       "slug": "/til/azure-dns/",
       "title": "Azure DNS",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:50:00.000Z"
+      "created": "2024-04-14T11:50:00.000Z"
     }
   ],
   "til/azure-dns": [
@@ -1741,21 +1741,21 @@
       "title": "Add Custom Domain to Entra ID",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-28T16:22:00.000Z"
+      "created": "2024-08-28T16:22:00.000Z"
     },
     {
       "slug": "/til/create-azure-dns-zone-and-records/",
       "title": "Create Azure DNS Zone and Records",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-27T09:15:00.000Z"
+      "created": "2024-07-27T09:15:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/create-nsg-in-azure": [
@@ -1764,14 +1764,14 @@
       "title": "Add Rules to NSG in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-14T11:33:00.000Z"
+      "created": "2024-07-14T11:33:00.000Z"
     },
     {
       "slug": "/til/network-security-groups/",
       "title": "Network Security Groups",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:19:00.000Z"
+      "created": "2024-04-14T11:19:00.000Z"
     }
   ],
   "til/network-security-groups": [
@@ -1780,63 +1780,63 @@
       "title": "Azure Bastion",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-28T13:50:00.000Z"
+      "created": "2024-08-28T13:50:00.000Z"
     },
     {
       "slug": "/til/azure-network-watcher/",
       "title": "Azure Network Watcher",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-08T05:00:00.000Z"
+      "created": "2024-08-08T05:00:00.000Z"
     },
     {
       "slug": "/til/public-ip-address-allows-inbound-access-based-on-tier-in-azure/",
       "title": "Public IP Address Allows Inbound Access Based on Tier in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-27T08:43:00.000Z"
+      "created": "2024-07-27T08:43:00.000Z"
     },
     {
       "slug": "/til/add-rules-to-nsg-in-azure/",
       "title": "Add Rules to NSG in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-14T11:33:00.000Z"
+      "created": "2024-07-14T11:33:00.000Z"
     },
     {
       "slug": "/til/application-security-groups/",
       "title": "Application Security Groups",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-14T11:03:00.000Z"
+      "created": "2024-07-14T11:03:00.000Z"
     },
     {
       "slug": "/til/azure-service-endpoints-and-service-endpoint-policies/",
       "title": "Azure Service Endpoints and Service Endpoint Policies",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:35:00.000Z"
+      "created": "2024-04-14T11:35:00.000Z"
     },
     {
       "slug": "/til/control-traffic-flows/",
       "title": "Control Traffic Flows",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:04:00.000Z"
+      "created": "2024-04-14T11:04:00.000Z"
     },
     {
       "slug": "/til/azure-vnet/",
       "title": "Azure VNet",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-12T14:03:00.000Z"
+      "created": "2024-04-12T14:03:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/windows-sysprep-reference": [
@@ -1845,7 +1845,7 @@
       "title": "Ansible VMware Module Does Sysprep by Default",
       "description": "",
       "category": "til",
-      "pubDate": "2024-05-28T12:30:00.000Z"
+      "created": "2024-05-28T12:30:00.000Z"
     }
   ],
   "til/arm-template": [
@@ -1854,14 +1854,14 @@
       "title": "ARM Bicep",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-15T09:19:00.000Z"
+      "created": "2024-06-15T09:19:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-resources": [
@@ -1870,133 +1870,133 @@
       "title": "Azure Resource Lock",
       "description": "",
       "category": "til",
-      "pubDate": "2024-09-02T10:26:00.000Z"
+      "created": "2024-09-02T10:26:00.000Z"
     },
     {
       "slug": "/til/azure-restore-from-backup/",
       "title": "Azure Restore From Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-13T16:27:00.000Z"
+      "created": "2024-08-13T16:27:00.000Z"
     },
     {
       "slug": "/til/azure-monitor-alerts/",
       "title": "Azure Monitor Alerts",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-11T09:24:00.000Z"
+      "created": "2024-08-11T09:24:00.000Z"
     },
     {
       "slug": "/til/azure-log-analytics-workspace/",
       "title": "Azure Log Analytics Workspace",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-07T05:03:00.000Z"
+      "created": "2024-08-07T05:03:00.000Z"
     },
     {
       "slug": "/til/azure-log-analytics/",
       "title": "Azure Log Analytics",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-07T04:54:00.000Z"
+      "created": "2024-08-07T04:54:00.000Z"
     },
     {
       "slug": "/til/azure-monitoring/",
       "title": "Azure Monitoring",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-04T09:24:00.000Z"
+      "created": "2024-08-04T09:24:00.000Z"
     },
     {
       "slug": "/til/bicep-conditionals/",
       "title": "Bicep Conditionals",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-19T16:32:00.000Z"
+      "created": "2024-07-19T16:32:00.000Z"
     },
     {
       "slug": "/til/types-of-operations-in-azure/",
       "title": "Types of Operations in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-16T18:20:00.000Z"
+      "created": "2024-07-16T18:20:00.000Z"
     },
     {
       "slug": "/til/arm-bicep/",
       "title": "ARM Bicep",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-15T09:19:00.000Z"
+      "created": "2024-06-15T09:19:00.000Z"
     },
     {
       "slug": "/til/azure-resource-graph/",
       "title": "Azure Resource Graph",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-15T08:33:00.000Z"
+      "created": "2024-06-15T08:33:00.000Z"
     },
     {
       "slug": "/til/arm-template/",
       "title": "ARM Template",
       "description": "",
       "category": "til",
-      "pubDate": "2024-05-01T09:42:00.000Z"
+      "created": "2024-05-01T09:42:00.000Z"
     },
     {
       "slug": "/til/azure-monitoring-old/",
       "title": "Azure Monitoring Old",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-28T13:01:00.000Z"
+      "created": "2024-04-28T13:01:00.000Z"
     },
     {
       "slug": "/til/azure-vm-nic/",
       "title": "Azure VM NIC",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-12T14:27:00.000Z"
+      "created": "2024-04-12T14:27:00.000Z"
     },
     {
       "slug": "/til/azure-tagging/",
       "title": "Azure Tagging",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T11:55:00.000Z"
+      "created": "2024-04-06T11:55:00.000Z"
     },
     {
       "slug": "/til/azure-policy/",
       "title": "Azure Policy",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:56:00.000Z"
+      "created": "2024-04-06T10:56:00.000Z"
     },
     {
       "slug": "/til/azure-rbac/",
       "title": "Azure RBAC",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T09:49:00.000Z"
+      "created": "2024-04-06T09:49:00.000Z"
     },
     {
       "slug": "/til/resource-groups/",
       "title": "Resource Groups",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-05T15:18:00.000Z"
+      "created": "2024-04-05T15:18:00.000Z"
     },
     {
       "slug": "/til/entra-id-roles/",
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-07T17:01:00.000Z"
+      "created": "2024-01-07T17:01:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/bicep-parameters": [
@@ -2005,21 +2005,21 @@
       "title": "Bicep Loops",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-19T16:39:00.000Z"
+      "created": "2024-07-19T16:39:00.000Z"
     },
     {
       "slug": "/til/bicep-parameter-files/",
       "title": "Bicep Parameter Files",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-19T16:15:00.000Z"
+      "created": "2024-07-19T16:15:00.000Z"
     },
     {
       "slug": "/til/arm-bicep/",
       "title": "ARM Bicep",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-15T09:19:00.000Z"
+      "created": "2024-06-15T09:19:00.000Z"
     }
   ],
   "til/use-azure-key-vault-with-bicep": [
@@ -2028,7 +2028,7 @@
       "title": "ARM Bicep",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-15T09:19:00.000Z"
+      "created": "2024-06-15T09:19:00.000Z"
     }
   ],
   "til/bicep-variables": [
@@ -2037,21 +2037,21 @@
       "title": "Bicep Loops",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-19T16:39:00.000Z"
+      "created": "2024-07-19T16:39:00.000Z"
     },
     {
       "slug": "/til/bicep-conditionals/",
       "title": "Bicep Conditionals",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-19T16:32:00.000Z"
+      "created": "2024-07-19T16:32:00.000Z"
     },
     {
       "slug": "/til/arm-bicep/",
       "title": "ARM Bicep",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-15T09:19:00.000Z"
+      "created": "2024-06-15T09:19:00.000Z"
     }
   ],
   "til/bicep-modules": [
@@ -2060,14 +2060,14 @@
       "title": "ARM Bicep",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-15T09:19:00.000Z"
+      "created": "2024-06-15T09:19:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/bicep-loops": [
@@ -2076,7 +2076,7 @@
       "title": "ARM Bicep",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-15T09:19:00.000Z"
+      "created": "2024-06-15T09:19:00.000Z"
     }
   ],
   "til/bicep-conditionals": [
@@ -2085,7 +2085,7 @@
       "title": "ARM Bicep",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-15T09:19:00.000Z"
+      "created": "2024-06-15T09:19:00.000Z"
     }
   ],
   "til/arm-bicep": [
@@ -2094,14 +2094,14 @@
       "title": "ARM Template",
       "description": "",
       "category": "til",
-      "pubDate": "2024-05-01T09:42:00.000Z"
+      "created": "2024-05-01T09:42:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "micro/new-updates-to-claude": [
@@ -2110,7 +2110,7 @@
       "title": "Asking Claude to Create a Calendar Entry From a Screenshot",
       "description": "",
       "category": "til",
-      "pubDate": "2025-08-04T09:53:07.000Z"
+      "created": "2025-08-04T09:53:07.000Z"
     }
   ],
   "til/entra-mfa": [
@@ -2119,14 +2119,14 @@
       "title": "Authentication and Authorization",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-01T11:14:00.000Z"
+      "created": "2024-04-01T11:14:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/aws-iam-basics": [
@@ -2135,21 +2135,21 @@
       "title": "AWS IAM",
       "description": "",
       "category": "til",
-      "pubDate": "2022-08-07T10:27:00.000Z"
+      "created": "2022-08-07T10:27:00.000Z"
     },
     {
       "slug": "/til/aws-fundamentals/",
       "title": "AWS Fundamentals",
       "description": "",
       "category": "til",
-      "pubDate": "2022-07-26T20:54:00.000Z"
+      "created": "2022-07-26T20:54:00.000Z"
     },
     {
       "slug": "/til/cantrill,-adrian---saac02_03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
-      "pubDate": "2022-07-26T20:05:00.000Z"
+      "created": "2022-07-26T20:05:00.000Z"
     }
   ],
   "til/aws-vpc-basics": [
@@ -2158,14 +2158,14 @@
       "title": "AWS Fundamentals",
       "description": "",
       "category": "til",
-      "pubDate": "2022-07-26T20:54:00.000Z"
+      "created": "2022-07-26T20:54:00.000Z"
     },
     {
       "slug": "/til/cantrill,-adrian---saac02_03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
-      "pubDate": "2022-07-26T20:05:00.000Z"
+      "created": "2022-07-26T20:05:00.000Z"
     }
   ],
   "til/ec2-basics": [
@@ -2174,14 +2174,14 @@
       "title": "AWS Fundamentals",
       "description": "",
       "category": "til",
-      "pubDate": "2022-07-26T20:54:00.000Z"
+      "created": "2022-07-26T20:54:00.000Z"
     },
     {
       "slug": "/til/cantrill,-adrian---saac02_03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
-      "pubDate": "2022-07-26T20:05:00.000Z"
+      "created": "2022-07-26T20:05:00.000Z"
     }
   ],
   "til/governance-overview": [
@@ -2190,63 +2190,63 @@
       "title": "Types of Operations in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-16T18:20:00.000Z"
+      "created": "2024-07-16T18:20:00.000Z"
     },
     {
       "slug": "/til/five-pillars-of-azure-well-architected-framework/",
       "title": "Five Pillars of Azure Well Architected Framework",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-01T08:59:00.000Z"
+      "created": "2024-06-01T08:59:00.000Z"
     },
     {
       "slug": "/til/azure-storage-services/",
       "title": "Azure Storage Services",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-12T08:17:00.000Z"
+      "created": "2024-04-12T08:17:00.000Z"
     },
     {
       "slug": "/til/azure-tagging/",
       "title": "Azure Tagging",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T11:55:00.000Z"
+      "created": "2024-04-06T11:55:00.000Z"
     },
     {
       "slug": "/til/azure-cost-management/",
       "title": "Azure Cost Management",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T11:25:00.000Z"
+      "created": "2024-04-06T11:25:00.000Z"
     },
     {
       "slug": "/til/azure-policy/",
       "title": "Azure Policy",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:56:00.000Z"
+      "created": "2024-04-06T10:56:00.000Z"
     },
     {
       "slug": "/til/azure-abac/",
       "title": "Azure ABAC",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:23:00.000Z"
+      "created": "2024-04-06T10:23:00.000Z"
     },
     {
       "slug": "/til/azure-rbac/",
       "title": "Azure RBAC",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T09:49:00.000Z"
+      "created": "2024-04-06T09:49:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-rbac": [
@@ -2255,42 +2255,42 @@
       "title": "Types of Operations in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-16T18:20:00.000Z"
+      "created": "2024-07-16T18:20:00.000Z"
     },
     {
       "slug": "/til/azure-storage-account/",
       "title": "Azure Storage Account",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-09T15:59:00.000Z"
+      "created": "2024-04-09T15:59:00.000Z"
     },
     {
       "slug": "/til/azure-backup/",
       "title": "Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:59:00.000Z"
+      "created": "2024-04-07T12:59:00.000Z"
     },
     {
       "slug": "/til/azure-abac/",
       "title": "Azure ABAC",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:23:00.000Z"
+      "created": "2024-04-06T10:23:00.000Z"
     },
     {
       "slug": "/til/governance-overview/",
       "title": "Governance Overview",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-05T14:39:00.000Z"
+      "created": "2024-04-05T14:39:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-ad-connect-pre-reqs": [
@@ -2299,14 +2299,14 @@
       "title": "Azure AD Connect",
       "description": "",
       "category": "til",
-      "pubDate": "2022-08-04T08:36:00.000Z"
+      "created": "2022-08-04T08:36:00.000Z"
     },
     {
       "slug": "/til/entra-connect-sync/",
       "title": "Entra Connect Sync",
       "description": "",
       "category": "til",
-      "pubDate": "2022-08-04T08:36:00.000Z"
+      "created": "2022-08-04T08:36:00.000Z"
     }
   ],
   "til/export-configuration-of-existing-azure-ad-connect-server": [
@@ -2315,14 +2315,14 @@
       "title": "Azure AD Connect",
       "description": "",
       "category": "til",
-      "pubDate": "2022-08-04T08:36:00.000Z"
+      "created": "2022-08-04T08:36:00.000Z"
     },
     {
       "slug": "/til/entra-connect-sync/",
       "title": "Entra Connect Sync",
       "description": "",
       "category": "til",
-      "pubDate": "2022-08-04T08:36:00.000Z"
+      "created": "2022-08-04T08:36:00.000Z"
     }
   ],
   "til/azure-ad-connect-upgrade-from-old-version-to-new-version": [
@@ -2331,14 +2331,14 @@
       "title": "Azure AD Connect",
       "description": "",
       "category": "til",
-      "pubDate": "2022-08-04T08:36:00.000Z"
+      "created": "2022-08-04T08:36:00.000Z"
     },
     {
       "slug": "/til/entra-connect-sync/",
       "title": "Entra Connect Sync",
       "description": "",
       "category": "til",
-      "pubDate": "2022-08-04T08:36:00.000Z"
+      "created": "2022-08-04T08:36:00.000Z"
     }
   ],
   "til/azure-monitoring-old": [
@@ -2347,21 +2347,21 @@
       "title": "Azure Monitor Alerts",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-11T09:24:00.000Z"
+      "created": "2024-08-11T09:24:00.000Z"
     },
     {
       "slug": "/til/azure-alerting/",
       "title": "Azure Alerting",
       "description": "",
       "category": "til",
-      "pubDate": "2024-05-02T15:49:00.000Z"
+      "created": "2024-05-02T15:49:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-vnet": [
@@ -2370,133 +2370,133 @@
       "title": "Azure Bastion",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-28T13:50:00.000Z"
+      "created": "2024-08-28T13:50:00.000Z"
     },
     {
       "slug": "/til/how-to-create-s2s-vpn/",
       "title": "How to Create S2S VPN",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-24T09:51:00.000Z"
+      "created": "2024-08-24T09:51:00.000Z"
     },
     {
       "slug": "/til/how-to-create-a-vpn-gateway/",
       "title": "How to Create a VPN Gateway",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-24T09:43:00.000Z"
+      "created": "2024-08-24T09:43:00.000Z"
     },
     {
       "slug": "/til/azure-network-watcher/",
       "title": "Azure Network Watcher",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-08T05:00:00.000Z"
+      "created": "2024-08-08T05:00:00.000Z"
     },
     {
       "slug": "/til/user-defined-routing/",
       "title": "User Defined Routing",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-28T11:01:00.000Z"
+      "created": "2024-07-28T11:01:00.000Z"
     },
     {
       "slug": "/til/azure-load-balancer/",
       "title": "Azure Load Balancer",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-27T10:19:00.000Z"
+      "created": "2024-07-27T10:19:00.000Z"
     },
     {
       "slug": "/til/azure-vpn/",
       "title": "Azure VPN",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:13:00.000Z"
+      "created": "2024-07-15T16:13:00.000Z"
     },
     {
       "slug": "/til/vnet-peering/",
       "title": "VNet Peering",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:08:00.000Z"
+      "created": "2024-07-15T16:08:00.000Z"
     },
     {
       "slug": "/til/create-vm-in-azure/",
       "title": "Create VM in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-14T11:12:00.000Z"
+      "created": "2024-07-14T11:12:00.000Z"
     },
     {
       "slug": "/til/create-vnet-in-azure/",
       "title": "Create VNet in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-14T11:08:00.000Z"
+      "created": "2024-07-14T11:08:00.000Z"
     },
     {
       "slug": "/til/azure-sql/",
       "title": "Azure SQL",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-23T16:33:00.000Z"
+      "created": "2024-04-23T16:33:00.000Z"
     },
     {
       "slug": "/til/azure-app-service/",
       "title": "Azure App Service",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-20T11:00:00.000Z"
+      "created": "2024-04-20T11:00:00.000Z"
     },
     {
       "slug": "/til/azure-container-apps/",
       "title": "Azure Container Apps",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-20T10:48:00.000Z"
+      "created": "2024-04-20T10:48:00.000Z"
     },
     {
       "slug": "/til/azure-dns/",
       "title": "Azure DNS",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:50:00.000Z"
+      "created": "2024-04-14T11:50:00.000Z"
     },
     {
       "slug": "/til/azure-private-link/",
       "title": "Azure Private Link",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:42:00.000Z"
+      "created": "2024-04-14T11:42:00.000Z"
     },
     {
       "slug": "/til/control-traffic-flows/",
       "title": "Control Traffic Flows",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:04:00.000Z"
+      "created": "2024-04-14T11:04:00.000Z"
     },
     {
       "slug": "/til/connecting-virtual-networks/",
       "title": "Connecting Virtual Networks",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-13T10:13:00.000Z"
+      "created": "2024-04-13T10:13:00.000Z"
     },
     {
       "slug": "/til/azure-vm-nic/",
       "title": "Azure VM NIC",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-12T14:27:00.000Z"
+      "created": "2024-04-12T14:27:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-storage-overview": [
@@ -2505,28 +2505,28 @@
       "title": "Azure Network Watcher",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-08T05:00:00.000Z"
+      "created": "2024-08-08T05:00:00.000Z"
     },
     {
       "slug": "/til/azure-app-service/",
       "title": "Azure App Service",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-20T11:00:00.000Z"
+      "created": "2024-04-20T11:00:00.000Z"
     },
     {
       "slug": "/til/azure-storage-services/",
       "title": "Azure Storage Services",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-12T08:17:00.000Z"
+      "created": "2024-04-12T08:17:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-load-balancer": [
@@ -2535,28 +2535,28 @@
       "title": "Create Azure Load Balancer",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-28T11:23:00.000Z"
+      "created": "2024-07-28T11:23:00.000Z"
     },
     {
       "slug": "/til/azure-application-gateway/",
       "title": "Azure Application Gateway",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-27T10:53:00.000Z"
+      "created": "2024-07-27T10:53:00.000Z"
     },
     {
       "slug": "/til/external-access/",
       "title": "External Access",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-13T09:19:00.000Z"
+      "created": "2024-04-13T09:19:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/external-access": [
@@ -2565,14 +2565,14 @@
       "title": "Azure Application Gateway",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-27T10:53:00.000Z"
+      "created": "2024-07-27T10:53:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/resiliency-overview": [
@@ -2581,56 +2581,56 @@
       "title": "Azure VM Scale Sets",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-18T15:46:00.000Z"
+      "created": "2024-04-18T15:46:00.000Z"
     },
     {
       "slug": "/til/azure-expressroute/",
       "title": "Azure ExpressRoute",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T10:39:00.000Z"
+      "created": "2024-04-14T10:39:00.000Z"
     },
     {
       "slug": "/til/azure-storage-redundancy/",
       "title": "Azure Storage Redundancy",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-09T16:08:00.000Z"
+      "created": "2024-04-09T16:08:00.000Z"
     },
     {
       "slug": "/til/azure-storage-account/",
       "title": "Azure Storage Account",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-09T15:59:00.000Z"
+      "created": "2024-04-09T15:59:00.000Z"
     },
     {
       "slug": "/til/recreate-resources/",
       "title": "Recreate Resources",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-08T16:37:00.000Z"
+      "created": "2024-04-08T16:37:00.000Z"
     },
     {
       "slug": "/til/azure-availability-zones/",
       "title": "Azure Availability Zones",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-08T15:30:00.000Z"
+      "created": "2024-04-08T15:30:00.000Z"
     },
     {
       "slug": "/til/azure-backup/",
       "title": "Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:59:00.000Z"
+      "created": "2024-04-07T12:59:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-resiliency-concepts": [
@@ -2639,14 +2639,14 @@
       "title": "Azure Availability Zones",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-08T15:30:00.000Z"
+      "created": "2024-04-08T15:30:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/disaster-recovery": [
@@ -2655,42 +2655,42 @@
       "title": "Five Pillars of Azure Well Architected Framework",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-01T08:59:00.000Z"
+      "created": "2024-06-01T08:59:00.000Z"
     },
     {
       "slug": "/til/recreate-resources/",
       "title": "Recreate Resources",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-08T16:37:00.000Z"
+      "created": "2024-04-08T16:37:00.000Z"
     },
     {
       "slug": "/til/recovery-point-objective/",
       "title": "Recovery Point Objective",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-08T16:31:00.000Z"
+      "created": "2024-04-08T16:31:00.000Z"
     },
     {
       "slug": "/til/azure-availability-zones/",
       "title": "Azure Availability Zones",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-08T15:30:00.000Z"
+      "created": "2024-04-08T15:30:00.000Z"
     },
     {
       "slug": "/til/preference-for-replications/",
       "title": "Preference for Replications",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:45:00.000Z"
+      "created": "2024-04-07T12:45:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-restore-from-backup": [
@@ -2699,21 +2699,21 @@
       "title": "Restore VM From Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-13T16:29:00.000Z"
+      "created": "2024-08-13T16:29:00.000Z"
     },
     {
       "slug": "/til/azure-backup/",
       "title": "Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:59:00.000Z"
+      "created": "2024-04-07T12:59:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-backup-access-tiers": [
@@ -2722,14 +2722,14 @@
       "title": "Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:59:00.000Z"
+      "created": "2024-04-07T12:59:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/entra-privileged-identity-management": [
@@ -2738,28 +2738,28 @@
       "title": "Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:59:00.000Z"
+      "created": "2024-04-07T12:59:00.000Z"
     },
     {
       "slug": "/til/azure-roles/",
       "title": "Azure Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:16:00.000Z"
+      "created": "2024-04-06T10:16:00.000Z"
     },
     {
       "slug": "/til/entra-id-governance/",
       "title": "Entra ID Governance",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-10T12:59:00.000Z"
+      "created": "2024-01-10T12:59:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/azure-backup": [
@@ -2768,21 +2768,21 @@
       "title": "Azure Backup Access Tiers",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-01T16:14:00.000Z"
+      "created": "2024-08-01T16:14:00.000Z"
     },
     {
       "slug": "/til/resiliency-overview/",
       "title": "Resiliency Overview",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T10:04:00.000Z"
+      "created": "2024-04-07T10:04:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-vm-basics": [
@@ -2791,56 +2791,56 @@
       "title": "Azure Bastion",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-28T13:50:00.000Z"
+      "created": "2024-08-28T13:50:00.000Z"
     },
     {
       "slug": "/til/azure-network-watcher/",
       "title": "Azure Network Watcher",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-08T05:00:00.000Z"
+      "created": "2024-08-08T05:00:00.000Z"
     },
     {
       "slug": "/til/what-resources-can-we-backup-using-azure-backup/",
       "title": "What Resources Can We Backup Using Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-01T16:00:00.000Z"
+      "created": "2024-08-01T16:00:00.000Z"
     },
     {
       "slug": "/til/azure-custom-script-extension/",
       "title": "Azure Custom Script Extension",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-12T14:45:00.000Z"
+      "created": "2024-07-12T14:45:00.000Z"
     },
     {
       "slug": "/til/azure-vm-scale-sets/",
       "title": "Azure VM Scale Sets",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-18T15:46:00.000Z"
+      "created": "2024-04-18T15:46:00.000Z"
     },
     {
       "slug": "/til/instance-metadata-service/",
       "title": "Instance Metadata Service",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-17T16:36:00.000Z"
+      "created": "2024-04-17T16:36:00.000Z"
     },
     {
       "slug": "/til/azure-dns/",
       "title": "Azure DNS",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:50:00.000Z"
+      "created": "2024-04-14T11:50:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-private-ip-address": [
@@ -2849,28 +2849,28 @@
       "title": "Azure Bastion",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-28T13:50:00.000Z"
+      "created": "2024-08-28T13:50:00.000Z"
     },
     {
       "slug": "/til/azure-dns/",
       "title": "Azure DNS",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:50:00.000Z"
+      "created": "2024-04-14T11:50:00.000Z"
     },
     {
       "slug": "/til/azure-vnet/",
       "title": "Azure VNet",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-12T14:03:00.000Z"
+      "created": "2024-04-12T14:03:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/public-ip-address-allows-inbound-access-based-on-tier-in-azure": [
@@ -2879,49 +2879,49 @@
       "title": "Azure Bastion",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-28T13:50:00.000Z"
+      "created": "2024-08-28T13:50:00.000Z"
     },
     {
       "slug": "/til/azure-load-balancer/",
       "title": "Azure Load Balancer",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-27T10:19:00.000Z"
+      "created": "2024-07-27T10:19:00.000Z"
     },
     {
       "slug": "/til/azure-vpn/",
       "title": "Azure VPN",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:13:00.000Z"
+      "created": "2024-07-15T16:13:00.000Z"
     },
     {
       "slug": "/til/azure-dns/",
       "title": "Azure DNS",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:50:00.000Z"
+      "created": "2024-04-14T11:50:00.000Z"
     },
     {
       "slug": "/til/external-access/",
       "title": "External Access",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-13T09:19:00.000Z"
+      "created": "2024-04-13T09:19:00.000Z"
     },
     {
       "slug": "/til/azure-vnet/",
       "title": "Azure VNet",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-12T14:03:00.000Z"
+      "created": "2024-04-12T14:03:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-kubernetes-service": [
@@ -2930,28 +2930,28 @@
       "title": "What Resources Can We Backup Using Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-01T16:00:00.000Z"
+      "created": "2024-08-01T16:00:00.000Z"
     },
     {
       "slug": "/til/azure-spring-apps/",
       "title": "Azure Spring Apps",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-20T10:57:00.000Z"
+      "created": "2024-04-20T10:57:00.000Z"
     },
     {
       "slug": "/til/azure-container-apps/",
       "title": "Azure Container Apps",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-20T10:48:00.000Z"
+      "created": "2024-04-20T10:48:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-subscriptions": [
@@ -2960,77 +2960,77 @@
       "title": "Azure Resource Lock",
       "description": "",
       "category": "til",
-      "pubDate": "2024-09-02T10:26:00.000Z"
+      "created": "2024-09-02T10:26:00.000Z"
     },
     {
       "slug": "/til/azure-monitoring/",
       "title": "Azure Monitoring",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-04T09:24:00.000Z"
+      "created": "2024-08-04T09:24:00.000Z"
     },
     {
       "slug": "/til/azure-tagging/",
       "title": "Azure Tagging",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T11:55:00.000Z"
+      "created": "2024-04-06T11:55:00.000Z"
     },
     {
       "slug": "/til/azure-cost-management/",
       "title": "Azure Cost Management",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T11:25:00.000Z"
+      "created": "2024-04-06T11:25:00.000Z"
     },
     {
       "slug": "/til/azure-policy/",
       "title": "Azure Policy",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:56:00.000Z"
+      "created": "2024-04-06T10:56:00.000Z"
     },
     {
       "slug": "/til/azure-roles/",
       "title": "Azure Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:16:00.000Z"
+      "created": "2024-04-06T10:16:00.000Z"
     },
     {
       "slug": "/til/azure-rbac/",
       "title": "Azure RBAC",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T09:49:00.000Z"
+      "created": "2024-04-06T09:49:00.000Z"
     },
     {
       "slug": "/til/azure-resources/",
       "title": "Azure Resources",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T09:12:00.000Z"
+      "created": "2024-04-06T09:12:00.000Z"
     },
     {
       "slug": "/til/resource-groups/",
       "title": "Resource Groups",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-05T15:18:00.000Z"
+      "created": "2024-04-05T15:18:00.000Z"
     },
     {
       "slug": "/til/management-groups/",
       "title": "Management Groups",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-05T15:03:00.000Z"
+      "created": "2024-04-05T15:03:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/resource-groups": [
@@ -3039,70 +3039,70 @@
       "title": "Azure Resource Lock",
       "description": "",
       "category": "til",
-      "pubDate": "2024-09-02T10:26:00.000Z"
+      "created": "2024-09-02T10:26:00.000Z"
     },
     {
       "slug": "/til/azure-log-analytics/",
       "title": "Azure Log Analytics",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-07T04:54:00.000Z"
+      "created": "2024-08-07T04:54:00.000Z"
     },
     {
       "slug": "/til/create-vm-in-azure/",
       "title": "Create VM in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-14T11:12:00.000Z"
+      "created": "2024-07-14T11:12:00.000Z"
     },
     {
       "slug": "/til/azure-tagging/",
       "title": "Azure Tagging",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T11:55:00.000Z"
+      "created": "2024-04-06T11:55:00.000Z"
     },
     {
       "slug": "/til/azure-cost-management/",
       "title": "Azure Cost Management",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T11:25:00.000Z"
+      "created": "2024-04-06T11:25:00.000Z"
     },
     {
       "slug": "/til/azure-policy/",
       "title": "Azure Policy",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:56:00.000Z"
+      "created": "2024-04-06T10:56:00.000Z"
     },
     {
       "slug": "/til/azure-roles/",
       "title": "Azure Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:16:00.000Z"
+      "created": "2024-04-06T10:16:00.000Z"
     },
     {
       "slug": "/til/azure-rbac/",
       "title": "Azure RBAC",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T09:49:00.000Z"
+      "created": "2024-04-06T09:49:00.000Z"
     },
     {
       "slug": "/til/azure-resources/",
       "title": "Azure Resources",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T09:12:00.000Z"
+      "created": "2024-04-06T09:12:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-private-link": [
@@ -3111,14 +3111,14 @@
       "title": "Azure DNS",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:50:00.000Z"
+      "created": "2024-04-14T11:50:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-app-service": [
@@ -3127,21 +3127,21 @@
       "title": "Bicep Parameters",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-19T15:59:00.000Z"
+      "created": "2024-07-19T15:59:00.000Z"
     },
     {
       "slug": "/til/azure-dns/",
       "title": "Azure DNS",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:50:00.000Z"
+      "created": "2024-04-14T11:50:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-master": [
@@ -3150,126 +3150,126 @@
       "title": "Restore Files From Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-13T16:19:00.000Z"
+      "created": "2024-08-13T16:19:00.000Z"
     },
     {
       "slug": "/til/azure-log-analytics/",
       "title": "Azure Log Analytics",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-07T04:54:00.000Z"
+      "created": "2024-08-07T04:54:00.000Z"
     },
     {
       "slug": "/til/user-defined-routing/",
       "title": "User Defined Routing",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-28T11:01:00.000Z"
+      "created": "2024-07-28T11:01:00.000Z"
     },
     {
       "slug": "/til/azure-networking-basics/",
       "title": "Azure Networking Basics",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-28T09:23:00.000Z"
+      "created": "2024-07-28T09:23:00.000Z"
     },
     {
       "slug": "/til/types-of-operations-in-azure/",
       "title": "Types of Operations in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-16T18:20:00.000Z"
+      "created": "2024-07-16T18:20:00.000Z"
     },
     {
       "slug": "/til/azure-vpn/",
       "title": "Azure VPN",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:13:00.000Z"
+      "created": "2024-07-15T16:13:00.000Z"
     },
     {
       "slug": "/til/create-vnet-in-azure/",
       "title": "Create VNet in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-14T11:08:00.000Z"
+      "created": "2024-07-14T11:08:00.000Z"
     },
     {
       "slug": "/til/well-architected-framework/",
       "title": "Well Architected Framework",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-08T09:05:00.000Z"
+      "created": "2024-06-08T09:05:00.000Z"
     },
     {
       "slug": "/til/azure-monitoring-old/",
       "title": "Azure Monitoring Old",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-28T13:01:00.000Z"
+      "created": "2024-04-28T13:01:00.000Z"
     },
     {
       "slug": "/til/azure-dns/",
       "title": "Azure DNS",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:50:00.000Z"
+      "created": "2024-04-14T11:50:00.000Z"
     },
     {
       "slug": "/til/azure-private-link/",
       "title": "Azure Private Link",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:42:00.000Z"
+      "created": "2024-04-14T11:42:00.000Z"
     },
     {
       "slug": "/til/azure-file-sync/",
       "title": "Azure File Sync",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-12T09:39:00.000Z"
+      "created": "2024-04-12T09:39:00.000Z"
     },
     {
       "slug": "/til/how-do-azure-resources-use-resiliency/",
       "title": "How Do Azure Resources Use Resiliency",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T11:51:00.000Z"
+      "created": "2024-04-07T11:51:00.000Z"
     },
     {
       "slug": "/til/governance-overview/",
       "title": "Governance Overview",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-05T14:39:00.000Z"
+      "created": "2024-04-05T14:39:00.000Z"
     },
     {
       "slug": "/til/entra-id/",
       "title": "Entra ID",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-01T10:27:00.000Z"
+      "created": "2024-04-01T10:27:00.000Z"
     },
     {
       "slug": "/til/entra-id-roles/",
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-07T17:01:00.000Z"
+      "created": "2024-01-07T17:01:00.000Z"
     },
     {
       "slug": "/til/entra-id-managed-identities/",
       "title": "Entra ID Managed Identities",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:41:00.000Z"
+      "created": "2023-12-23T11:41:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/azure-files": [
@@ -3278,28 +3278,28 @@
       "title": "What Resources Can We Backup Using Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-01T16:00:00.000Z"
+      "created": "2024-08-01T16:00:00.000Z"
     },
     {
       "slug": "/til/azure-import-export/",
       "title": "Azure Import Export",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-29T11:58:00.000Z"
+      "created": "2024-06-29T11:58:00.000Z"
     },
     {
       "slug": "/til/azure-file-sync/",
       "title": "Azure File Sync",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-12T09:39:00.000Z"
+      "created": "2024-04-12T09:39:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-storage-services": [
@@ -3308,21 +3308,21 @@
       "title": "Azure Files",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-29T09:21:00.000Z"
+      "created": "2024-06-29T09:21:00.000Z"
     },
     {
       "slug": "/til/azure-storage-account/",
       "title": "Azure Storage Account",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-09T15:59:00.000Z"
+      "created": "2024-04-09T15:59:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-file-sync": [
@@ -3331,14 +3331,14 @@
       "title": "Azure Files",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-29T09:21:00.000Z"
+      "created": "2024-06-29T09:21:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-storage-account": [
@@ -3347,28 +3347,28 @@
       "title": "Azure Files",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-29T09:21:00.000Z"
+      "created": "2024-06-29T09:21:00.000Z"
     },
     {
       "slug": "/til/azure-storage-services/",
       "title": "Azure Storage Services",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-12T08:17:00.000Z"
+      "created": "2024-04-12T08:17:00.000Z"
     },
     {
       "slug": "/til/azure-storage-redundancy/",
       "title": "Azure Storage Redundancy",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-09T16:08:00.000Z"
+      "created": "2024-04-09T16:08:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/control-traffic-flows": [
@@ -3377,28 +3377,28 @@
       "title": "Network Virtual Appliance",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-28T11:10:00.000Z"
+      "created": "2024-07-28T11:10:00.000Z"
     },
     {
       "slug": "/til/network-security-groups/",
       "title": "Network Security Groups",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:19:00.000Z"
+      "created": "2024-04-14T11:19:00.000Z"
     },
     {
       "slug": "/til/azure-firewall/",
       "title": "Azure Firewall",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:13:00.000Z"
+      "created": "2024-04-14T11:13:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-container-instance": [
@@ -3407,14 +3407,14 @@
       "title": "Azure Kubernetes Service",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-20T09:10:00.000Z"
+      "created": "2024-04-20T09:10:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/entra-id-managed-identities": [
@@ -3423,14 +3423,14 @@
       "title": "Azure Kubernetes Service",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-20T09:10:00.000Z"
+      "created": "2024-04-20T09:10:00.000Z"
     },
     {
       "slug": "/til/entra-id-objects/",
       "title": "Entra ID Objects",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-01T10:43:00.000Z"
+      "created": "2024-04-01T10:43:00.000Z"
     }
   ],
   "til/create-azure-load-balancer": [
@@ -3439,7 +3439,7 @@
       "title": "Azure Load Balancer",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-27T10:19:00.000Z"
+      "created": "2024-07-27T10:19:00.000Z"
     }
   ],
   "til/azure-vm-scale-sets": [
@@ -3448,21 +3448,21 @@
       "title": "Azure Network Watcher",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-08T05:00:00.000Z"
+      "created": "2024-08-08T05:00:00.000Z"
     },
     {
       "slug": "/til/azure-load-balancer/",
       "title": "Azure Load Balancer",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-27T10:19:00.000Z"
+      "created": "2024-07-27T10:19:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-monitoring": [
@@ -3471,21 +3471,21 @@
       "title": "Azure Log Analytics",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-07T04:54:00.000Z"
+      "created": "2024-08-07T04:54:00.000Z"
     },
     {
       "slug": "/til/resiliency-overview/",
       "title": "Resiliency Overview",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T10:04:00.000Z"
+      "created": "2024-04-07T10:04:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-log-analytics-workspace": [
@@ -3494,7 +3494,7 @@
       "title": "Azure Log Analytics",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-07T04:54:00.000Z"
+      "created": "2024-08-07T04:54:00.000Z"
     }
   ],
   "til/azure-log-analytics": [
@@ -3503,14 +3503,14 @@
       "title": "Azure Log Analytics Workspace",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-07T05:03:00.000Z"
+      "created": "2024-08-07T05:03:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-functions": [
@@ -3519,21 +3519,21 @@
       "title": "Azure Static Web App",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-20T11:40:00.000Z"
+      "created": "2024-04-20T11:40:00.000Z"
     },
     {
       "slug": "/til/azure-logic-apps/",
       "title": "Azure Logic Apps",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-20T11:38:00.000Z"
+      "created": "2024-04-20T11:38:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/cloud-computing-fundamentals": [
@@ -3542,14 +3542,14 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     },
     {
       "slug": "/til/cantrill,-adrian---saac02_03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
-      "pubDate": "2022-07-26T20:05:00.000Z"
+      "created": "2022-07-26T20:05:00.000Z"
     }
   ],
   "til/types-of-operations-in-azure": [
@@ -3558,7 +3558,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/why-is-identity-needed": [
@@ -3567,7 +3567,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/decentralised-identities": [
@@ -3576,7 +3576,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/microsoft-entra": [
@@ -3585,14 +3585,14 @@
       "title": "Azure Monitoring",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-04T09:24:00.000Z"
+      "created": "2024-08-04T09:24:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-policy": [
@@ -3601,21 +3601,21 @@
       "title": "Azure Tagging",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T11:55:00.000Z"
+      "created": "2024-04-06T11:55:00.000Z"
     },
     {
       "slug": "/til/governance-overview/",
       "title": "Governance Overview",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-05T14:39:00.000Z"
+      "created": "2024-04-05T14:39:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-roles": [
@@ -3624,35 +3624,35 @@
       "title": "Azure Resource Lock",
       "description": "",
       "category": "til",
-      "pubDate": "2024-09-02T10:26:00.000Z"
+      "created": "2024-09-02T10:26:00.000Z"
     },
     {
       "slug": "/til/types-of-operations-in-azure/",
       "title": "Types of Operations in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-16T18:20:00.000Z"
+      "created": "2024-07-16T18:20:00.000Z"
     },
     {
       "slug": "/til/azure-rbac/",
       "title": "Azure RBAC",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T09:49:00.000Z"
+      "created": "2024-04-06T09:49:00.000Z"
     },
     {
       "slug": "/til/entra-id-roles/",
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-07T17:01:00.000Z"
+      "created": "2024-01-07T17:01:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-rbac-custom-roles": [
@@ -3661,28 +3661,28 @@
       "title": "Azure Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:16:00.000Z"
+      "created": "2024-04-06T10:16:00.000Z"
     },
     {
       "slug": "/til/azure-rbac/",
       "title": "Azure RBAC",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T09:49:00.000Z"
+      "created": "2024-04-06T09:49:00.000Z"
     },
     {
       "slug": "/til/entra-id-custom-roles/",
       "title": "Entra ID Custom Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-07T18:11:00.000Z"
+      "created": "2024-01-07T18:11:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-cost-management": [
@@ -3691,28 +3691,28 @@
       "title": "Five Pillars of Azure Well Architected Framework",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-01T08:59:00.000Z"
+      "created": "2024-06-01T08:59:00.000Z"
     },
     {
       "slug": "/til/azure-tagging/",
       "title": "Azure Tagging",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T11:55:00.000Z"
+      "created": "2024-04-06T11:55:00.000Z"
     },
     {
       "slug": "/til/governance-overview/",
       "title": "Governance Overview",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-05T14:39:00.000Z"
+      "created": "2024-04-05T14:39:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/management-groups": [
@@ -3721,35 +3721,35 @@
       "title": "Azure Resource Lock",
       "description": "",
       "category": "til",
-      "pubDate": "2024-09-02T10:26:00.000Z"
+      "created": "2024-09-02T10:26:00.000Z"
     },
     {
       "slug": "/til/azure-policy/",
       "title": "Azure Policy",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:56:00.000Z"
+      "created": "2024-04-06T10:56:00.000Z"
     },
     {
       "slug": "/til/azure-rbac/",
       "title": "Azure RBAC",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T09:49:00.000Z"
+      "created": "2024-04-06T09:49:00.000Z"
     },
     {
       "slug": "/til/governance-overview/",
       "title": "Governance Overview",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-05T14:39:00.000Z"
+      "created": "2024-04-05T14:39:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-abac": [
@@ -3758,7 +3758,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-naming": [
@@ -3767,14 +3767,14 @@
       "title": "Azure Tagging",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T11:55:00.000Z"
+      "created": "2024-04-06T11:55:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-tagging": [
@@ -3783,7 +3783,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-resource-lock": [
@@ -3792,7 +3792,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/replication": [
@@ -3801,35 +3801,35 @@
       "title": "Disaster Recovery",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:56:00.000Z"
+      "created": "2024-04-07T12:56:00.000Z"
     },
     {
       "slug": "/til/preference-for-replications/",
       "title": "Preference for Replications",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:45:00.000Z"
+      "created": "2024-04-07T12:45:00.000Z"
     },
     {
       "slug": "/til/vm-replications/",
       "title": "VM Replications",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:43:00.000Z"
+      "created": "2024-04-07T12:43:00.000Z"
     },
     {
       "slug": "/til/resiliency-overview/",
       "title": "Resiliency Overview",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T10:04:00.000Z"
+      "created": "2024-04-07T10:04:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/how-do-azure-resources-use-resiliency": [
@@ -3838,7 +3838,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-availability-zones": [
@@ -3847,28 +3847,28 @@
       "title": "Azure VNet",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-12T14:03:00.000Z"
+      "created": "2024-04-12T14:03:00.000Z"
     },
     {
       "slug": "/til/azure-storage-redundancy/",
       "title": "Azure Storage Redundancy",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-09T16:08:00.000Z"
+      "created": "2024-04-09T16:08:00.000Z"
     },
     {
       "slug": "/til/azure-resiliency-concepts/",
       "title": "Azure Resiliency Concepts",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T11:20:00.000Z"
+      "created": "2024-04-07T11:20:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/multi-region-deployments": [
@@ -3877,7 +3877,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/preference-for-replications": [
@@ -3886,14 +3886,14 @@
       "title": "Disaster Recovery",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:56:00.000Z"
+      "created": "2024-04-07T12:56:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/vm-replications": [
@@ -3902,7 +3902,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-storage-redundancy": [
@@ -3911,21 +3911,21 @@
       "title": "Migrating Between Redundancy Types in Azure Storage",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-29T11:41:00.000Z"
+      "created": "2024-06-29T11:41:00.000Z"
     },
     {
       "slug": "/til/azure-storage-account/",
       "title": "Azure Storage Account",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-09T15:59:00.000Z"
+      "created": "2024-04-09T15:59:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-data-lake": [
@@ -3934,14 +3934,14 @@
       "title": "Data Flow",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-26T16:46:00.000Z"
+      "created": "2024-04-26T16:46:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-netapp-files": [
@@ -3950,7 +3950,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-managed-disks": [
@@ -3959,21 +3959,21 @@
       "title": "What Resources Can We Backup Using Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-01T16:00:00.000Z"
+      "created": "2024-08-01T16:00:00.000Z"
     },
     {
       "slug": "/til/azure-storage-account/",
       "title": "Azure Storage Account",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-09T15:59:00.000Z"
+      "created": "2024-04-09T15:59:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-networking-basics": [
@@ -3982,7 +3982,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/create-vnet-in-azure": [
@@ -3991,21 +3991,21 @@
       "title": "Create VNet Peering in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:43:00.000Z"
+      "created": "2024-07-15T16:43:00.000Z"
     },
     {
       "slug": "/til/azure-vnet/",
       "title": "Azure VNet",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-12T14:03:00.000Z"
+      "created": "2024-04-12T14:03:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-vm-nic": [
@@ -4014,21 +4014,21 @@
       "title": "Azure Network Watcher",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-08T05:00:00.000Z"
+      "created": "2024-08-08T05:00:00.000Z"
     },
     {
       "slug": "/til/create-vm-in-azure/",
       "title": "Create VM in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-14T11:12:00.000Z"
+      "created": "2024-07-14T11:12:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-application-gateway": [
@@ -4037,21 +4037,21 @@
       "title": "Azure Network Watcher",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-08T05:00:00.000Z"
+      "created": "2024-08-08T05:00:00.000Z"
     },
     {
       "slug": "/til/external-access/",
       "title": "External Access",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-13T09:19:00.000Z"
+      "created": "2024-04-13T09:19:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/connecting-virtual-networks": [
@@ -4060,21 +4060,21 @@
       "title": "User Defined Routing",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-28T11:01:00.000Z"
+      "created": "2024-07-28T11:01:00.000Z"
     },
     {
       "slug": "/til/vnet-peering/",
       "title": "VNet Peering",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:08:00.000Z"
+      "created": "2024-07-15T16:08:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/vnet-peering": [
@@ -4083,28 +4083,28 @@
       "title": "Create VNet Peering in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:43:00.000Z"
+      "created": "2024-07-15T16:43:00.000Z"
     },
     {
       "slug": "/til/azure-vpn/",
       "title": "Azure VPN",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:13:00.000Z"
+      "created": "2024-07-15T16:13:00.000Z"
     },
     {
       "slug": "/til/connecting-virtual-networks/",
       "title": "Connecting Virtual Networks",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-13T10:13:00.000Z"
+      "created": "2024-04-13T10:13:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/user-defined-routing": [
@@ -4113,28 +4113,28 @@
       "title": "Network Virtual Appliance",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-28T11:10:00.000Z"
+      "created": "2024-07-28T11:10:00.000Z"
     },
     {
       "slug": "/til/create-custom-route/",
       "title": "Create Custom Route",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-28T11:08:00.000Z"
+      "created": "2024-07-28T11:08:00.000Z"
     },
     {
       "slug": "/til/connecting-virtual-networks/",
       "title": "Connecting Virtual Networks",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-13T10:13:00.000Z"
+      "created": "2024-04-13T10:13:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/connecting-to-onprem": [
@@ -4143,21 +4143,21 @@
       "title": "VNet Peering",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:08:00.000Z"
+      "created": "2024-07-15T16:08:00.000Z"
     },
     {
       "slug": "/til/connecting-virtual-networks/",
       "title": "Connecting Virtual Networks",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-13T10:13:00.000Z"
+      "created": "2024-04-13T10:13:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-expressroute": [
@@ -4166,21 +4166,21 @@
       "title": "Azure VPN",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:13:00.000Z"
+      "created": "2024-07-15T16:13:00.000Z"
     },
     {
       "slug": "/til/connecting-to-onprem/",
       "title": "Connecting to Onprem",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-13T10:37:00.000Z"
+      "created": "2024-04-13T10:37:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-vpn": [
@@ -4189,35 +4189,35 @@
       "title": "How to Create S2S VPN",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-24T09:51:00.000Z"
+      "created": "2024-08-24T09:51:00.000Z"
     },
     {
       "slug": "/til/how-to-create-a-vpn-gateway/",
       "title": "How to Create a VPN Gateway",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-24T09:43:00.000Z"
+      "created": "2024-08-24T09:43:00.000Z"
     },
     {
       "slug": "/til/vnet-peering/",
       "title": "VNet Peering",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:08:00.000Z"
+      "created": "2024-07-15T16:08:00.000Z"
     },
     {
       "slug": "/til/connecting-to-onprem/",
       "title": "Connecting to Onprem",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-13T10:37:00.000Z"
+      "created": "2024-04-13T10:37:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/how-to-create-s2s-vpn": [
@@ -4226,28 +4226,28 @@
       "title": "How to Create P2S VPN",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-24T09:55:00.000Z"
+      "created": "2024-08-24T09:55:00.000Z"
     },
     {
       "slug": "/til/azure-vpn/",
       "title": "Azure VPN",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:13:00.000Z"
+      "created": "2024-07-15T16:13:00.000Z"
     },
     {
       "slug": "/til/connecting-virtual-networks/",
       "title": "Connecting Virtual Networks",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-13T10:13:00.000Z"
+      "created": "2024-04-13T10:13:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/how-to-create-p2s-vpn": [
@@ -4256,14 +4256,14 @@
       "title": "Azure VPN",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:13:00.000Z"
+      "created": "2024-07-15T16:13:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-firewall": [
@@ -4272,14 +4272,14 @@
       "title": "Control Traffic Flows",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:04:00.000Z"
+      "created": "2024-04-14T11:04:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/application-security-groups": [
@@ -4288,21 +4288,21 @@
       "title": "Network Security Groups",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:19:00.000Z"
+      "created": "2024-04-14T11:19:00.000Z"
     },
     {
       "slug": "/til/control-traffic-flows/",
       "title": "Control Traffic Flows",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:04:00.000Z"
+      "created": "2024-04-14T11:04:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-virtual-wan": [
@@ -4311,7 +4311,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-service-endpoints-and-service-endpoint-policies": [
@@ -4320,14 +4320,14 @@
       "title": "Azure Private Link",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:42:00.000Z"
+      "created": "2024-04-14T11:42:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-custom-script-extension": [
@@ -4336,7 +4336,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-compute-gallery": [
@@ -4345,7 +4345,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/use-azure-vmware-solution-if-an-org-wants-to-move-to-cloud-quickly": [
@@ -4354,7 +4354,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-bastion": [
@@ -4363,7 +4363,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-container-apps": [
@@ -4372,7 +4372,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-logic-apps": [
@@ -4381,7 +4381,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-static-web-app": [
@@ -4390,7 +4390,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/types-of-data": [
@@ -4399,7 +4399,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/type-of-databases": [
@@ -4408,14 +4408,14 @@
       "title": "What Resources Can We Backup Using Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-01T16:00:00.000Z"
+      "created": "2024-08-01T16:00:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/types-of-data-related-roles": [
@@ -4424,7 +4424,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/data-flow": [
@@ -4433,14 +4433,14 @@
       "title": "Extract Transform Load",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-27T12:03:00.000Z"
+      "created": "2024-04-27T12:03:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-sql": [
@@ -4449,7 +4449,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-open-source-db": [
@@ -4458,7 +4458,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-cosmos-db": [
@@ -4467,7 +4467,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-data-warehouse-and-analytics": [
@@ -4476,21 +4476,21 @@
       "title": "Type of Databases",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-27T10:58:00.000Z"
+      "created": "2024-04-27T10:58:00.000Z"
     },
     {
       "slug": "/til/data-flow/",
       "title": "Data Flow",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-26T16:46:00.000Z"
+      "created": "2024-04-26T16:46:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/create-backup-for-vms": [
@@ -4499,14 +4499,14 @@
       "title": "What Resources Can We Backup Using Azure Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-01T16:00:00.000Z"
+      "created": "2024-08-01T16:00:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/what-resources-can-we-backup-using-azure-backup": [
@@ -4515,7 +4515,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/restore-vm-from-azure-backup": [
@@ -4524,14 +4524,14 @@
       "title": "Azure Restore From Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-13T16:27:00.000Z"
+      "created": "2024-08-13T16:27:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/restore-files-from-azure-backup": [
@@ -4540,14 +4540,14 @@
       "title": "Azure Restore From Backup",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-13T16:27:00.000Z"
+      "created": "2024-08-13T16:27:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/types-of-monitoring-data-in-azure": [
@@ -4556,14 +4556,14 @@
       "title": "Azure Monitor Alerts",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-11T09:24:00.000Z"
+      "created": "2024-08-11T09:24:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-network-watcher": [
@@ -4572,7 +4572,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/azure-monitor-alerts": [
@@ -4581,7 +4581,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/create-an-azure-metric-alert": [
@@ -4590,21 +4590,21 @@
       "title": "Create a Log Alert in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-11T09:49:00.000Z"
+      "created": "2024-08-11T09:49:00.000Z"
     },
     {
       "slug": "/til/azure-monitor-alerts/",
       "title": "Azure Monitor Alerts",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-11T09:24:00.000Z"
+      "created": "2024-08-11T09:24:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/create-a-log-alert-in-azure": [
@@ -4613,7 +4613,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/well-architected-framework": [
@@ -4622,7 +4622,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/five-pillars-of-azure-well-architected-framework": [
@@ -4631,14 +4631,14 @@
       "title": "Well Architected Framework",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-08T09:05:00.000Z"
+      "created": "2024-06-08T09:05:00.000Z"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T11:15:00.000Z"
     }
   ],
   "til/crud": [
@@ -4647,7 +4647,7 @@
       "title": "Azure Policy",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:56:00.000Z"
+      "created": "2024-04-06T10:56:00.000Z"
     }
   ],
   "til/azure-resource-graph": [
@@ -4656,7 +4656,7 @@
       "title": "Azure Resources",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T09:12:00.000Z"
+      "created": "2024-04-06T09:12:00.000Z"
     }
   ],
   "til/entra-id-roles": [
@@ -4665,14 +4665,14 @@
       "title": "Azure Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-06T10:16:00.000Z"
+      "created": "2024-04-06T10:16:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/get-azure-vm-images": [
@@ -4681,7 +4681,7 @@
       "title": "Azure VM Basics",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-16T15:35:00.000Z"
+      "created": "2024-04-16T15:35:00.000Z"
     }
   ],
   "til/create-vm-in-azure": [
@@ -4690,7 +4690,7 @@
       "title": "Azure VM Basics",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-16T15:35:00.000Z"
+      "created": "2024-04-16T15:35:00.000Z"
     }
   ],
   "til/how-to-create-a-vpn-gateway": [
@@ -4699,14 +4699,14 @@
       "title": "How to Create S2S VPN",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-24T09:51:00.000Z"
+      "created": "2024-08-24T09:51:00.000Z"
     },
     {
       "slug": "/til/azure-vpn/",
       "title": "Azure VPN",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:13:00.000Z"
+      "created": "2024-07-15T16:13:00.000Z"
     }
   ],
   "til/bicep-parameter-files": [
@@ -4715,14 +4715,14 @@
       "title": "Use Azure Key Vault With Bicep",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-19T16:25:00.000Z"
+      "created": "2024-07-19T16:25:00.000Z"
     },
     {
       "slug": "/til/bicep-parameters/",
       "title": "Bicep Parameters",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-19T15:59:00.000Z"
+      "created": "2024-07-19T15:59:00.000Z"
     }
   ],
   "til/azure-key-vault": [
@@ -4731,7 +4731,7 @@
       "title": "Bicep Parameters",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-19T15:59:00.000Z"
+      "created": "2024-07-19T15:59:00.000Z"
     }
   ],
   "til/aws-fundamentals": [
@@ -4740,7 +4740,7 @@
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
-      "pubDate": "2022-07-26T20:05:00.000Z"
+      "created": "2022-07-26T20:05:00.000Z"
     }
   ],
   "til/cloudformation-basics": [
@@ -4749,7 +4749,7 @@
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
-      "pubDate": "2022-07-26T20:05:00.000Z"
+      "created": "2022-07-26T20:05:00.000Z"
     }
   ],
   "til/aws-cloudwatch-basics": [
@@ -4758,7 +4758,7 @@
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
-      "pubDate": "2022-07-26T20:05:00.000Z"
+      "created": "2022-07-26T20:05:00.000Z"
     }
   ],
   "til/shared-responsibility-model": [
@@ -4767,7 +4767,7 @@
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
-      "pubDate": "2022-07-26T20:05:00.000Z"
+      "created": "2022-07-26T20:05:00.000Z"
     }
   ],
   "til/route-53-basics": [
@@ -4776,7 +4776,7 @@
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
-      "pubDate": "2022-07-26T20:05:00.000Z"
+      "created": "2022-07-26T20:05:00.000Z"
     }
   ],
   "til/openssl-convert-pkcs-to-pem": [
@@ -4785,7 +4785,7 @@
       "title": "Certificate Reference",
       "description": "",
       "category": "til",
-      "pubDate": "2022-05-02T08:47:00.000Z"
+      "created": "2022-05-02T08:47:00.000Z"
     }
   ],
   "til/compare-private-key-and-ssl": [
@@ -4794,7 +4794,7 @@
       "title": "Certificate Reference",
       "description": "",
       "category": "til",
-      "pubDate": "2022-05-02T08:47:00.000Z"
+      "created": "2022-05-02T08:47:00.000Z"
     }
   ],
   "til/openssl-generate-csr": [
@@ -4803,7 +4803,7 @@
       "title": "Certificate Reference",
       "description": "",
       "category": "til",
-      "pubDate": "2022-05-02T08:47:00.000Z"
+      "created": "2022-05-02T08:47:00.000Z"
     }
   ],
   "til/certificate-output-in-plaintext": [
@@ -4812,7 +4812,7 @@
       "title": "Certificate Reference",
       "description": "",
       "category": "til",
-      "pubDate": "2022-05-02T08:47:00.000Z"
+      "created": "2022-05-02T08:47:00.000Z"
     }
   ],
   "til/certificate-remove-password-from-private-key": [
@@ -4821,7 +4821,7 @@
       "title": "Certificate Reference",
       "description": "",
       "category": "til",
-      "pubDate": "2022-05-02T08:47:00.000Z"
+      "created": "2022-05-02T08:47:00.000Z"
     }
   ],
   "til/how-to-create-stacked-certificates": [
@@ -4830,7 +4830,7 @@
       "title": "Certificate Reference",
       "description": "",
       "category": "til",
-      "pubDate": "2022-05-02T08:47:00.000Z"
+      "created": "2022-05-02T08:47:00.000Z"
     }
   ],
   "til/cloudremote-add-user": [
@@ -4839,7 +4839,7 @@
       "title": "Cloud Remote Bootstrap Procedure",
       "description": "",
       "category": "til",
-      "pubDate": "2022-05-16T14:11:00.000Z"
+      "created": "2022-05-16T14:11:00.000Z"
     }
   ],
   "til/network-virtual-appliance": [
@@ -4848,14 +4848,14 @@
       "title": "Control Traffic Flows",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-14T11:04:00.000Z"
+      "created": "2024-04-14T11:04:00.000Z"
     },
     {
       "slug": "/til/external-access/",
       "title": "External Access",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-13T09:19:00.000Z"
+      "created": "2024-04-13T09:19:00.000Z"
     }
   ],
   "til/powershell-install-modules-offline": [
@@ -4864,7 +4864,7 @@
       "title": "Create Powershell Offline Repo",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-12T13:10:00.000Z"
+      "created": "2024-08-12T13:10:00.000Z"
     }
   ],
   "til/extract-transform-load": [
@@ -4873,7 +4873,7 @@
       "title": "Data Flow",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-26T16:46:00.000Z"
+      "created": "2024-04-26T16:46:00.000Z"
     }
   ],
   "til/recreate-resources": [
@@ -4882,7 +4882,7 @@
       "title": "Disaster Recovery",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:56:00.000Z"
+      "created": "2024-04-07T12:56:00.000Z"
     }
   ],
   "til/recovery-point-objective": [
@@ -4891,14 +4891,14 @@
       "title": "Five Pillars of Azure Well Architected Framework",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-01T08:59:00.000Z"
+      "created": "2024-06-01T08:59:00.000Z"
     },
     {
       "slug": "/til/disaster-recovery/",
       "title": "Disaster Recovery",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:56:00.000Z"
+      "created": "2024-04-07T12:56:00.000Z"
     }
   ],
   "til/recovery-time-objective": [
@@ -4907,21 +4907,21 @@
       "title": "Five Pillars of Azure Well Architected Framework",
       "description": "",
       "category": "til",
-      "pubDate": "2024-06-01T08:59:00.000Z"
+      "created": "2024-06-01T08:59:00.000Z"
     },
     {
       "slug": "/til/recreate-resources/",
       "title": "Recreate Resources",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-08T16:37:00.000Z"
+      "created": "2024-04-08T16:37:00.000Z"
     },
     {
       "slug": "/til/disaster-recovery/",
       "title": "Disaster Recovery",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-07T12:56:00.000Z"
+      "created": "2024-04-07T12:56:00.000Z"
     }
   ],
   "til/entra-id-tenant": [
@@ -4930,21 +4930,21 @@
       "title": "Entra External IDs",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-08T17:57:00.000Z"
+      "created": "2024-01-08T17:57:00.000Z"
     },
     {
       "slug": "/til/entra-id-roles/",
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-07T17:01:00.000Z"
+      "created": "2024-01-07T17:01:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/entra-connect-sync": [
@@ -4953,14 +4953,14 @@
       "title": "Entra ID",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-01T10:27:00.000Z"
+      "created": "2024-04-01T10:27:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/entra-id-governance": [
@@ -4969,14 +4969,14 @@
       "title": "Entra ID Entitlement Management",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-10T17:57:00.000Z"
+      "created": "2024-01-10T17:57:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/entra-id-entitlement-management": [
@@ -4985,14 +4985,14 @@
       "title": "Entra ID Governance",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-10T12:59:00.000Z"
+      "created": "2024-01-10T12:59:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/entra-access-reviews": [
@@ -5001,14 +5001,14 @@
       "title": "Entra ID Governance",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-10T12:59:00.000Z"
+      "created": "2024-01-10T12:59:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/azure-entra-id-app-identity": [
@@ -5017,14 +5017,14 @@
       "title": "Entra ID Objects",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-01T10:43:00.000Z"
+      "created": "2024-04-01T10:43:00.000Z"
     },
     {
       "slug": "/til/entra-id-managed-identities/",
       "title": "Entra ID Managed Identities",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:41:00.000Z"
+      "created": "2023-12-23T11:41:00.000Z"
     }
   ],
   "til/entra-id-users": [
@@ -5033,21 +5033,21 @@
       "title": "How to Assign Licenses in Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-28T16:30:00.000Z"
+      "created": "2024-08-28T16:30:00.000Z"
     },
     {
       "slug": "/til/entra-id-objects/",
       "title": "Entra ID Objects",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-01T10:43:00.000Z"
+      "created": "2024-04-01T10:43:00.000Z"
     },
     {
       "slug": "/til/entra-id-roles/",
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-07T17:01:00.000Z"
+      "created": "2024-01-07T17:01:00.000Z"
     }
   ],
   "til/entra-id-groups": [
@@ -5056,28 +5056,28 @@
       "title": "How to Assign Licenses in Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-28T16:30:00.000Z"
+      "created": "2024-08-28T16:30:00.000Z"
     },
     {
       "slug": "/til/how-to-assign-licenses-to-user-or-group-in-azure/",
       "title": "How to Assign Licenses to User or Group in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-22T18:40:00.000Z"
+      "created": "2024-08-22T18:40:00.000Z"
     },
     {
       "slug": "/til/entra-id-objects/",
       "title": "Entra ID Objects",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-01T10:43:00.000Z"
+      "created": "2024-04-01T10:43:00.000Z"
     },
     {
       "slug": "/til/entra-id-roles/",
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-07T17:01:00.000Z"
+      "created": "2024-01-07T17:01:00.000Z"
     }
   ],
   "til/entra-id-custom-roles": [
@@ -5086,14 +5086,14 @@
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-07T17:01:00.000Z"
+      "created": "2024-01-07T17:01:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/entra-id-administrative-units": [
@@ -5102,14 +5102,14 @@
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "pubDate": "2024-01-07T17:01:00.000Z"
+      "created": "2024-01-07T17:01:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/authentication-and-authorization": [
@@ -5118,14 +5118,14 @@
       "title": "Entra MFA",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-01T12:32:00.000Z"
+      "created": "2024-04-01T12:32:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/entra-id-editions": [
@@ -5134,14 +5134,14 @@
       "title": "How to Assign Licenses in Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2024-08-28T16:30:00.000Z"
+      "created": "2024-08-28T16:30:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "bookshelf/continuous-delivery": [
@@ -5150,7 +5150,7 @@
       "title": "How to Write Commit Messages",
       "description": "",
       "category": "til",
-      "pubDate": "2025-11-24T18:54:37.000Z"
+      "created": "2025-11-24T18:54:37.000Z"
     }
   ],
   "til/add-custom-domain-to-entra-id": [
@@ -5159,7 +5159,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/difference-between-entra-id-and-adds": [
@@ -5168,7 +5168,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/entra-id-objects": [
@@ -5177,7 +5177,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/how-to-assign-licenses-in-entra": [
@@ -5186,7 +5186,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/entra-external-ids": [
@@ -5195,7 +5195,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/conditional-access": [
@@ -5204,7 +5204,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/entra-self-service-password-reset": [
@@ -5213,7 +5213,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "pubDate": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T11:20:00.000Z"
     }
   ],
   "til/create-public-ip-address-in-azure": [
@@ -5222,7 +5222,7 @@
       "title": "Public IP Address Allows Inbound Access Based on Tier in Azure",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-27T08:43:00.000Z"
+      "created": "2024-07-27T08:43:00.000Z"
     }
   ],
   "bookshelf/the-quick-python-book": [
@@ -5231,14 +5231,14 @@
       "title": "Pythonic Coding Conventions",
       "description": "",
       "category": "til",
-      "pubDate": "2025-10-21T12:45:15.000Z"
+      "created": "2025-10-21T12:45:15.000Z"
     },
     {
       "slug": "/now/learning-python/",
       "title": "Learning Python",
       "description": "",
       "category": "now",
-      "pubDate": "2025-10-21T08:53:27.000Z"
+      "created": "2025-10-21T08:53:27.000Z"
     }
   ],
   "til/sector-and-allocation-units": [
@@ -5247,7 +5247,7 @@
       "title": "Storage Spaces",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-17T11:35:00.000Z"
+      "created": "2024-07-17T11:35:00.000Z"
     }
   ],
   "til/install-go": [
@@ -5256,7 +5256,7 @@
       "title": "Terraform Bundle",
       "description": "",
       "category": "til",
-      "pubDate": "2022-05-23T09:58:00.000Z"
+      "created": "2022-05-23T09:58:00.000Z"
     }
   ],
   "bookshelf/the-practice-of-cloud-system-administration": [
@@ -5265,14 +5265,14 @@
       "title": "The CAP Principle",
       "description": "",
       "category": "til",
-      "pubDate": "2025-10-30T11:46:10.000Z"
+      "created": "2025-10-30T11:46:10.000Z"
     },
     {
       "slug": "/evergreen/distributed-system-design-patterns/",
       "title": "Distributed System Design Patterns",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2025-10-29T09:11:33.000Z"
+      "created": "2025-10-29T09:11:33.000Z"
     }
   ],
   "til/acid": [
@@ -5281,7 +5281,7 @@
       "title": "Type of Databases",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-27T10:58:00.000Z"
+      "created": "2024-04-27T10:58:00.000Z"
     }
   ],
   "til/types-of-dns-records": [
@@ -5290,7 +5290,7 @@
       "title": "Types of DNS Zones",
       "description": "",
       "category": "til",
-      "pubDate": "2024-10-17T11:48:00.000Z"
+      "created": "2024-10-17T11:48:00.000Z"
     }
   ],
   "til/conditional-forwarders": [
@@ -5299,7 +5299,7 @@
       "title": "Types of DNS Zones",
       "description": "",
       "category": "til",
-      "pubDate": "2024-10-17T11:48:00.000Z"
+      "created": "2024-10-17T11:48:00.000Z"
     }
   ],
   "til/ucs-iom-or-fabric-extenders": [
@@ -5308,7 +5308,7 @@
       "title": "UCS Chassis",
       "description": "",
       "category": "til",
-      "pubDate": "2023-06-30T08:58:00.000Z"
+      "created": "2023-06-30T08:58:00.000Z"
     }
   ],
   "til/create-custom-route": [
@@ -5317,7 +5317,7 @@
       "title": "User Defined Routing",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-28T11:01:00.000Z"
+      "created": "2024-07-28T11:01:00.000Z"
     }
   ],
   "til/create-vnet-peering-in-azure": [
@@ -5326,7 +5326,7 @@
       "title": "VNet Peering",
       "description": "",
       "category": "til",
-      "pubDate": "2024-07-15T16:08:00.000Z"
+      "created": "2024-07-15T16:08:00.000Z"
     }
   ],
   "bookshelf/how-linux-works": [
@@ -5335,7 +5335,7 @@
       "title": "What Does a Kernel Do",
       "description": "",
       "category": "til",
-      "pubDate": "2026-03-18T09:55:49.000Z"
+      "created": "2026-03-18T09:55:49.000Z"
     }
   ],
   "til/powershell-second-hop-problem": [
@@ -5344,7 +5344,7 @@
       "title": "Winrm Troubleshooting",
       "description": "",
       "category": "til",
-      "pubDate": "2024-04-08T13:05:00.000Z"
+      "created": "2024-04-08T13:05:00.000Z"
     }
   ],
   "bookshelf/abundance-how-we-build-a-better-future": [
@@ -5353,35 +5353,35 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/nordletter/nl69-a-fresh-start/",
       "title": "A Fresh Start",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-08-31T03:30:49.000Z"
+      "created": "2025-08-31T03:30:49.000Z"
     },
     {
       "slug": "/micro/why-china-builds-faster-than-the-rest-of-the-world/",
       "title": "Why China Builds Faster Than the Rest of the World",
       "description": "",
       "category": "micro",
-      "pubDate": "2025-08-28T16:14:22.000Z"
+      "created": "2025-08-28T16:14:22.000Z"
     },
     {
       "slug": "/evergreen/homes-cant-be-considered-both-an-investment-and-affordable-enough-for-everyone-to-own/",
       "title": "Homes Can’t Be Considered Both an Investment and Affordable Enough for Everyone to Own",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2025-07-11T10:26:50.000Z"
+      "created": "2025-07-11T10:26:50.000Z"
     },
     {
       "slug": "/bookshelf/all-systems-red/",
       "title": "All Systems Red",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-09T13:12:00.000Z"
+      "created": "2025-07-09T13:12:00.000Z"
     }
   ],
   "bookshelf/chambers-becky-the-galaxy-and-the-ground-within": [
@@ -5390,7 +5390,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/murakami-haruki-men-without-women": [
@@ -5399,7 +5399,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/the-three-body-problem": [
@@ -5408,14 +5408,14 @@
       "title": "All That We See or Seem",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-04-06T08:27:25.000Z"
+      "created": "2026-04-06T08:27:25.000Z"
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/the-dark-forest": [
@@ -5424,7 +5424,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/deaths-end": [
@@ -5433,7 +5433,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/all-systems-red": [
@@ -5442,35 +5442,35 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/bookshelf/network-effect/",
       "title": "Network Effect",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-31T19:56:47.000Z"
+      "created": "2025-12-31T19:56:47.000Z"
     },
     {
       "slug": "/bookshelf/exit-strategy/",
       "title": "Exit Strategy",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-31T19:56:35.000Z"
+      "created": "2025-12-31T19:56:35.000Z"
     },
     {
       "slug": "/bookshelf/rogue-protocol/",
       "title": "Rogue Protocol",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-15T19:42:08.000Z"
+      "created": "2025-07-15T19:42:08.000Z"
     },
     {
       "slug": "/bookshelf/artificial-condition/",
       "title": "Artificial Condition",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-11T15:26:14.000Z"
+      "created": "2025-07-11T15:26:14.000Z"
     }
   ],
   "bookshelf/artificial-condition": [
@@ -5479,35 +5479,35 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/bookshelf/network-effect/",
       "title": "Network Effect",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-31T19:56:47.000Z"
+      "created": "2025-12-31T19:56:47.000Z"
     },
     {
       "slug": "/bookshelf/exit-strategy/",
       "title": "Exit Strategy",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-31T19:56:35.000Z"
+      "created": "2025-12-31T19:56:35.000Z"
     },
     {
       "slug": "/bookshelf/rogue-protocol/",
       "title": "Rogue Protocol",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-15T19:42:08.000Z"
+      "created": "2025-07-15T19:42:08.000Z"
     },
     {
       "slug": "/bookshelf/all-systems-red/",
       "title": "All Systems Red",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-09T13:12:00.000Z"
+      "created": "2025-07-09T13:12:00.000Z"
     }
   ],
   "bookshelf/rogue-protocol": [
@@ -5516,35 +5516,35 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/bookshelf/network-effect/",
       "title": "Network Effect",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-31T19:56:47.000Z"
+      "created": "2025-12-31T19:56:47.000Z"
     },
     {
       "slug": "/bookshelf/exit-strategy/",
       "title": "Exit Strategy",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-31T19:56:35.000Z"
+      "created": "2025-12-31T19:56:35.000Z"
     },
     {
       "slug": "/bookshelf/artificial-condition/",
       "title": "Artificial Condition",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-11T15:26:14.000Z"
+      "created": "2025-07-11T15:26:14.000Z"
     },
     {
       "slug": "/bookshelf/all-systems-red/",
       "title": "All Systems Red",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-09T13:12:00.000Z"
+      "created": "2025-07-09T13:12:00.000Z"
     }
   ],
   "bookshelf/exit-strategy": [
@@ -5553,35 +5553,35 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/bookshelf/network-effect/",
       "title": "Network Effect",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-31T19:56:47.000Z"
+      "created": "2025-12-31T19:56:47.000Z"
     },
     {
       "slug": "/bookshelf/rogue-protocol/",
       "title": "Rogue Protocol",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-15T19:42:08.000Z"
+      "created": "2025-07-15T19:42:08.000Z"
     },
     {
       "slug": "/bookshelf/artificial-condition/",
       "title": "Artificial Condition",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-11T15:26:14.000Z"
+      "created": "2025-07-11T15:26:14.000Z"
     },
     {
       "slug": "/bookshelf/all-systems-red/",
       "title": "All Systems Red",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-09T13:12:00.000Z"
+      "created": "2025-07-09T13:12:00.000Z"
     }
   ],
   "bookshelf/network-effect": [
@@ -5590,42 +5590,42 @@
       "title": "System Collapse",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-03-10T17:24:57.000Z"
+      "created": "2026-03-10T17:24:57.000Z"
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/bookshelf/exit-strategy/",
       "title": "Exit Strategy",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-31T19:56:35.000Z"
+      "created": "2025-12-31T19:56:35.000Z"
     },
     {
       "slug": "/bookshelf/rogue-protocol/",
       "title": "Rogue Protocol",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-15T19:42:08.000Z"
+      "created": "2025-07-15T19:42:08.000Z"
     },
     {
       "slug": "/bookshelf/artificial-condition/",
       "title": "Artificial Condition",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-11T15:26:14.000Z"
+      "created": "2025-07-11T15:26:14.000Z"
     },
     {
       "slug": "/bookshelf/all-systems-red/",
       "title": "All Systems Red",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-07-09T13:12:00.000Z"
+      "created": "2025-07-09T13:12:00.000Z"
     }
   ],
   "bookshelf/children-of-time": [
@@ -5634,21 +5634,21 @@
       "title": "Wheezing past the cradle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-09T20:51:46.000Z"
+      "created": "2026-05-09T20:51:46.000Z"
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/bookshelf/children-of-memory/",
       "title": "Children of Memory",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-01T09:47:15.000Z"
+      "created": "2025-12-01T09:47:15.000Z"
     }
   ],
   "bookshelf/the-mysterious-affair-at-styles": [
@@ -5657,14 +5657,14 @@
       "title": "Dune",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-01-27T05:15:18.000Z"
+      "created": "2026-01-27T05:15:18.000Z"
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/the-life-of-chuck": [
@@ -5673,7 +5673,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/the-secret-of-secrets": [
@@ -5682,21 +5682,21 @@
       "title": "Holi Week",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-07T23:08:24.000Z"
+      "created": "2026-03-07T23:08:24.000Z"
     },
     {
       "slug": "/micro/problems-with-gamifying-reading/",
       "title": "Problems With Gamifying Reading",
       "description": "",
       "category": "micro",
-      "pubDate": "2026-03-05T10:42:28.000Z"
+      "created": "2026-03-05T10:42:28.000Z"
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/children-of-ruin": [
@@ -5705,14 +5705,14 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/bookshelf/children-of-memory/",
       "title": "Children of Memory",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-01T09:47:15.000Z"
+      "created": "2025-12-01T09:47:15.000Z"
     }
   ],
   "bookshelf/before-the-coffee-gets-cold": [
@@ -5721,7 +5721,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/when-the-moon-hits-your-eye": [
@@ -5730,7 +5730,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/children-of-memory": [
@@ -5739,7 +5739,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/this-is-how-you-lose-the-time-war": [
@@ -5748,7 +5748,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/two-nights-in-lisbon": [
@@ -5757,14 +5757,14 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
       "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
+      "created": "2025-12-27T21:33:35.000Z"
     }
   ],
   "bookshelf/what-technology-wants": [
@@ -5773,7 +5773,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/range": [
@@ -5782,7 +5782,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/nexus": [
@@ -5791,14 +5791,14 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/evergreen/curation-matters/",
       "title": "Curation Matters",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2025-09-10T07:45:20.000Z"
+      "created": "2025-09-10T07:45:20.000Z"
     }
   ],
   "bookshelf/time-management-for-system-administrators": [
@@ -5807,21 +5807,21 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/evergreen/how-to-automate-something/",
       "title": "How to Automate Something",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2025-10-16T10:31:07.000Z"
+      "created": "2025-10-16T10:31:07.000Z"
     },
     {
       "slug": "/evergreen/what-to-automate/",
       "title": "What to Automate",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2025-10-16T10:26:58.000Z"
+      "created": "2025-10-16T10:26:58.000Z"
     }
   ],
   "bookshelf/same-as-ever": [
@@ -5830,28 +5830,28 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/evergreen/a-little-inefficiency-is-good/",
       "title": "A Little Inefficiency Is Good",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2025-10-16T07:17:00.000Z"
+      "created": "2025-10-16T07:17:00.000Z"
     },
     {
       "slug": "/evergreen/progress-takes-time-while-destruction-is-instantaneous/",
       "title": "Progress Takes Time While Destruction Is Instantaneous",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2025-10-16T07:16:45.000Z"
+      "created": "2025-10-16T07:16:45.000Z"
     },
     {
       "slug": "/evergreen/be-a-rational-optimist/",
       "title": "Be a Rational Optimist",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2025-10-16T07:16:34.000Z"
+      "created": "2025-10-16T07:16:34.000Z"
     }
   ],
   "bookshelf/slow-productivity": [
@@ -5860,14 +5860,14 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/evergreen/how-to-create-a-simulated-pull-workflow/",
       "title": "How to Create a Simulated Pull Workflow",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2025-10-26T20:52:38.000Z"
+      "created": "2025-10-26T20:52:38.000Z"
     }
   ],
   "bookshelf/enshittification": [
@@ -5876,14 +5876,14 @@
       "title": "Giving Your Healthcare Info to a Chatbot Is, Unsurprisingly, a Terrible Idea",
       "description": "",
       "category": "micro",
-      "pubDate": "2026-01-23T16:19:44.000Z"
+      "created": "2026-01-23T16:19:44.000Z"
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/every-day-i-read": [
@@ -5892,14 +5892,14 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/bookshelf/on-tennis/",
       "title": "On Tennis",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-02T15:03:13.000Z"
+      "created": "2025-12-02T15:03:13.000Z"
     }
   ],
   "bookshelf/on-tennis": [
@@ -5908,7 +5908,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/empire-of-ai": [
@@ -5917,14 +5917,14 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/nordletter/nl84-winter-solstice/",
       "title": "Winter Solstice",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-21T18:00:25.000Z"
+      "created": "2025-12-21T18:00:25.000Z"
     }
   ],
   "bookshelf/steal-like-an-artist": [
@@ -5933,14 +5933,14 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
       "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
+      "created": "2025-12-27T21:33:35.000Z"
     }
   ],
   "bookshelf/show-your-work": [
@@ -5949,14 +5949,14 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
       "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
+      "created": "2025-12-27T21:33:35.000Z"
     }
   ],
   "bookshelf/keep-going": [
@@ -5965,14 +5965,14 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
       "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
+      "created": "2025-12-27T21:33:35.000Z"
     }
   ],
   "bookshelf/helsinki-by-sauna": [
@@ -5981,7 +5981,7 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     }
   ],
   "bookshelf/the-art-of-spending-money": [
@@ -5990,14 +5990,14 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/evergreen/how-to-read/",
       "title": "How to Read",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2025-12-26T20:48:05.000Z"
+      "created": "2025-12-26T20:48:05.000Z"
     }
   ],
   "bookshelf/ernest-hemingway-on-writing": [
@@ -6006,14 +6006,14 @@
       "title": "Books I Have Read This Year",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-12-31T20:10:19.000Z"
+      "created": "2025-12-31T20:10:19.000Z"
     },
     {
       "slug": "/evergreen/write-for-one-person/",
       "title": "Write for One Person",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2025-12-26T17:59:24.000Z"
+      "created": "2025-12-26T17:59:24.000Z"
     }
   ],
   "blog/attending-the-global-ai-bootcamp-in-helsinki": [
@@ -6022,7 +6022,7 @@
       "title": "MSFT AI User Group Event at Nitor",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-10-30T20:53:11.000Z"
+      "created": "2025-10-30T20:53:11.000Z"
     }
   ],
   "now/learning-python": [
@@ -6031,7 +6031,7 @@
       "title": "The Joy of Coding",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-11-19T20:40:40.000Z"
+      "created": "2025-11-19T20:40:40.000Z"
     }
   ],
   "blog/thoughts-on-iphone-day": [
@@ -6040,7 +6040,7 @@
       "title": "Thoughts on iPhone Day - 2025",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-09-09T18:47:57.000Z"
+      "created": "2025-09-09T18:47:57.000Z"
     }
   ],
   "blog/about-the-pareto-principle": [
@@ -6049,7 +6049,7 @@
       "title": "Vibe Coding April Meetup",
       "description": "",
       "category": "blog",
-      "pubDate": "2026-04-16T19:39:17.000Z"
+      "created": "2026-04-16T19:39:17.000Z"
     }
   ],
   "micro/human-cost-of-10x-productivity": [
@@ -6058,7 +6058,7 @@
       "title": "Vibe Coding April Meetup",
       "description": "",
       "category": "blog",
-      "pubDate": "2026-04-16T19:39:17.000Z"
+      "created": "2026-04-16T19:39:17.000Z"
     }
   ],
   "nordletter/nl67-performing-at-india-day": [
@@ -6067,14 +6067,14 @@
       "title": "Happy New Year",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
+      "created": "2026-01-03T21:03:01.000Z"
     },
     {
       "slug": "/blog/what-do-i-do-now/",
       "title": "What Do I Do Now",
       "description": "",
       "category": "blog",
-      "pubDate": "2025-08-20T19:06:10.000Z"
+      "created": "2025-08-20T19:06:10.000Z"
     }
   ],
   "evergreen/about-ai-browsers": [
@@ -6083,14 +6083,14 @@
       "title": "A Lazy Day",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-07-27T03:11:00.000Z"
+      "created": "2025-07-27T03:11:00.000Z"
     },
     {
       "slug": "/micro/about-perplexitys-new-ai-browser/",
       "title": "About Perplexity's New AI Browser",
       "description": "",
       "category": "micro",
-      "pubDate": "2025-07-19T08:31:53.000Z"
+      "created": "2025-07-19T08:31:53.000Z"
     }
   ],
   "micro/should-ai-flatter-us-fix-us-or-just-inform-us-by-james-odonnell": [
@@ -6099,14 +6099,14 @@
       "title": "A Fresh Start",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-08-31T03:30:49.000Z"
+      "created": "2025-08-31T03:30:49.000Z"
     },
     {
       "slug": "/micro/emotional-agents/",
       "title": "Emotional Agents",
       "description": "",
       "category": "micro",
-      "pubDate": "2025-08-24T19:54:50.000Z"
+      "created": "2025-08-24T19:54:50.000Z"
     }
   ],
   "micro/claude-code-psychosis": [
@@ -6115,7 +6115,7 @@
       "title": "How to Build an Interactive Novel",
       "description": "",
       "category": "micro",
-      "pubDate": "2026-01-25T05:35:06.000Z"
+      "created": "2026-01-25T05:35:06.000Z"
     }
   ],
   "micro/study-mode-in-chatgpt": [
@@ -6124,7 +6124,7 @@
       "title": "New Updates to Claude",
       "description": "",
       "category": "micro",
-      "pubDate": "2025-08-01T04:22:45.000Z"
+      "created": "2025-08-01T04:22:45.000Z"
     }
   ],
   "micro/about-claude-remote-control": [
@@ -6133,7 +6133,7 @@
       "title": "Scheduled Tasks in Cowork",
       "description": "",
       "category": "micro",
-      "pubDate": "2026-02-25T19:58:05.000Z"
+      "created": "2026-02-25T19:58:05.000Z"
     }
   ],
   "evergreen/mixed-format-books": [
@@ -6142,14 +6142,14 @@
       "title": "Same and Different",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-25T16:48:33.000Z"
+      "created": "2026-01-25T16:48:33.000Z"
     },
     {
       "slug": "/micro/spotify-is-testing-a-feature-that-syncs-audiobooks-with-paper-editions/",
       "title": "Spotify Is Testing a Feature That Syncs Audiobooks With Paper Editions",
       "description": "",
       "category": "micro",
-      "pubDate": "2026-01-21T04:01:33.000Z"
+      "created": "2026-01-21T04:01:33.000Z"
     }
   ],
   "micro/cloudflare-explains-tuesdays-outage": [
@@ -6158,7 +6158,7 @@
       "title": "The Cloudflare Outage Was a Good Thing",
       "description": "",
       "category": "micro",
-      "pubDate": "2025-11-24T09:14:29.000Z"
+      "created": "2025-11-24T09:14:29.000Z"
     }
   ],
   "nordletter/a-happy-new-year": [
@@ -6167,7 +6167,7 @@
       "title": "Happy New Year",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
+      "created": "2026-01-03T21:03:01.000Z"
     }
   ],
   "micro/chatgpt-has-yearly-recaps-as-well": [
@@ -6176,7 +6176,7 @@
       "title": "Happy New Year",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
+      "created": "2026-01-03T21:03:01.000Z"
     }
   ],
   "blog/books-ive-read-this-year": [
@@ -6185,7 +6185,7 @@
       "title": "Happy New Year",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
+      "created": "2026-01-03T21:03:01.000Z"
     }
   ],
   "nordletter/election-time": [
@@ -6194,7 +6194,7 @@
       "title": "Happy New Year",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
+      "created": "2026-01-03T21:03:01.000Z"
     }
   ],
   "nordletter/trip-to-nyc-i": [
@@ -6203,28 +6203,28 @@
       "title": "Vacations and Noticing Things",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-06-07T17:38:19.000Z"
+      "created": "2026-06-07T17:38:19.000Z"
     },
     {
       "slug": "/nordletter/nl102-seeing-the-crown-bridge/",
       "title": "Seeing the Crown Bridge",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-04-25T20:52:19.000Z"
+      "created": "2026-04-25T20:52:19.000Z"
     },
     {
       "slug": "/nordletter/happy-new-year/",
       "title": "Happy New Year",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
+      "created": "2026-01-03T21:03:01.000Z"
     },
     {
       "slug": "/nordletter/nl71/",
       "title": "Full Moon",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-09-13T13:31:41.000Z"
+      "created": "2025-09-13T13:31:41.000Z"
     }
   ],
   "nordletter/nl79": [
@@ -6233,21 +6233,21 @@
       "title": "Wheezing past the cradle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-09T20:51:46.000Z"
+      "created": "2026-05-09T20:51:46.000Z"
     },
     {
       "slug": "/nordletter/happy-new-year/",
       "title": "Happy New Year",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-03T21:03:01.000Z"
+      "created": "2026-01-03T21:03:01.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
       "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
+      "created": "2025-12-27T21:33:35.000Z"
     }
   ],
   "blog/azure-and-friends-october-meetup": [
@@ -6256,7 +6256,7 @@
       "title": "Malai",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-10-11T23:06:03.000Z"
+      "created": "2025-10-11T23:06:03.000Z"
     }
   ],
   "blog/azure-and-friends-at-brightly": [
@@ -6265,14 +6265,14 @@
       "title": "Malai",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-10-11T23:06:03.000Z"
+      "created": "2025-10-11T23:06:03.000Z"
     },
     {
       "slug": "/nordletter/nl73/",
       "title": "Sunflower",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-09-27T13:17:33.000Z"
+      "created": "2025-09-27T13:17:33.000Z"
     }
   ],
   "evergreen/best-practices-for-presenting-things": [
@@ -6281,7 +6281,7 @@
       "title": "Malai",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-10-11T23:06:03.000Z"
+      "created": "2025-10-11T23:06:03.000Z"
     }
   ],
   "bookshelf/this-and-that": [
@@ -6290,7 +6290,7 @@
       "title": "Celebrating Formats",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-04-11T21:19:08.000Z"
+      "created": "2026-04-11T21:19:08.000Z"
     }
   ],
   "bookshelf/i-deliver-parcels-in-beijing": [
@@ -6299,14 +6299,14 @@
       "title": "City Biking Through the Summer",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-04-19T14:41:52.000Z"
+      "created": "2026-04-19T14:41:52.000Z"
     },
     {
       "slug": "/nordletter/nl-100/",
       "title": "Celebrating Formats",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-04-11T21:19:08.000Z"
+      "created": "2026-04-11T21:19:08.000Z"
     }
   ],
   "bookshelf/all-that-we-see-or-seem": [
@@ -6315,7 +6315,7 @@
       "title": "Celebrating Formats",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-04-11T21:19:08.000Z"
+      "created": "2026-04-11T21:19:08.000Z"
     }
   ],
   "evergreen/be-a-hybrid": [
@@ -6324,7 +6324,7 @@
       "title": "Wheezing past the cradle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-09T20:51:46.000Z"
+      "created": "2026-05-09T20:51:46.000Z"
     }
   ],
   "bookshelf/reading-cats-cradle": [
@@ -6333,7 +6333,7 @@
       "title": "Wheezing past the cradle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-09T20:51:46.000Z"
+      "created": "2026-05-09T20:51:46.000Z"
     }
   ],
   "blog/vibe-coding-april-meetup": [
@@ -6342,7 +6342,7 @@
       "title": "Wheezing past the cradle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-09T20:51:46.000Z"
+      "created": "2026-05-09T20:51:46.000Z"
     }
   ],
   "bookshelf/outlive": [
@@ -6351,21 +6351,21 @@
       "title": "Read More Books",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-30T23:33:00.000Z"
+      "created": "2026-05-30T23:33:00.000Z"
     },
     {
       "slug": "/nordletter/nl-104/",
       "title": "Wheezing past the cradle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-09T20:51:46.000Z"
+      "created": "2026-05-09T20:51:46.000Z"
     },
     {
       "slug": "/evergreen/the-four-diseases-leading-to-slow-death/",
       "title": "The Four Diseases Leading to Slow Death",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2026-04-14T11:54:01.000Z"
+      "created": "2026-04-14T11:54:01.000Z"
     }
   ],
   "micro/mac-mini-starting-price-rises": [
@@ -6374,7 +6374,7 @@
       "title": "Wheezing past the cradle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-09T20:51:46.000Z"
+      "created": "2026-05-09T20:51:46.000Z"
     }
   ],
   "micro/use-html-as-output-artefacts-with-claude": [
@@ -6383,7 +6383,7 @@
       "title": "Wheezing past the cradle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-09T20:51:46.000Z"
+      "created": "2026-05-09T20:51:46.000Z"
     }
   ],
   "bookshelf/things-my-grandmother-said": [
@@ -6392,7 +6392,7 @@
       "title": "Birdsong",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-02T22:20:45.000Z"
+      "created": "2026-05-02T22:20:45.000Z"
     }
   ],
   "nordletter/nl99-new-things": [
@@ -6401,7 +6401,7 @@
       "title": "Birdsong",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-02T22:20:45.000Z"
+      "created": "2026-05-02T22:20:45.000Z"
     }
   ],
   "nordletter/hyva-vappu": [
@@ -6410,7 +6410,7 @@
       "title": "Birdsong",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-02T22:20:45.000Z"
+      "created": "2026-05-02T22:20:45.000Z"
     }
   ],
   "nordletter/cherries-all-around": [
@@ -6419,7 +6419,7 @@
       "title": "The Fazer Experience",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-05-16T21:16:18.000Z"
+      "created": "2026-05-16T21:16:18.000Z"
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
@@ -6428,7 +6428,7 @@
       "title": "A Day Trip to Turku",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-07-20T03:11:09.000Z"
+      "created": "2025-07-20T03:11:09.000Z"
     }
   ],
   "nordletter/nl65": [
@@ -6437,7 +6437,7 @@
       "title": "Return to Oitta",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-08-10T03:34:48.000Z"
+      "created": "2025-08-10T03:34:48.000Z"
     }
   ],
   "micro/openai-and-anthropic-announce-new-models": [
@@ -6446,7 +6446,7 @@
       "title": "Return to Oitta",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-08-10T03:34:48.000Z"
+      "created": "2025-08-10T03:34:48.000Z"
     }
   ],
   "micro/openai-launches-gpt5": [
@@ -6455,7 +6455,7 @@
       "title": "Return to Oitta",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-08-10T03:34:48.000Z"
+      "created": "2025-08-10T03:34:48.000Z"
     }
   ],
   "evergreen/analogical-thinking": [
@@ -6464,7 +6464,7 @@
       "title": "Autumn Begins",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-08-24T03:35:47.000Z"
+      "created": "2025-08-24T03:35:47.000Z"
     }
   ],
   "evergreen/how-to-learn-effectively": [
@@ -6473,7 +6473,7 @@
       "title": "Autumn Begins",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-08-24T03:35:47.000Z"
+      "created": "2025-08-24T03:35:47.000Z"
     }
   ],
   "evergreen/when-someone-has-been-dead-for-a-while": [
@@ -6482,7 +6482,7 @@
       "title": "A Fresh Start",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-08-31T03:30:49.000Z"
+      "created": "2025-08-31T03:30:49.000Z"
     }
   ],
   "evergreen/why-journal": [
@@ -6491,7 +6491,7 @@
       "title": "A Fresh Start",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-08-31T03:30:49.000Z"
+      "created": "2025-08-31T03:30:49.000Z"
     }
   ],
   "evergreen/write-more": [
@@ -6500,7 +6500,7 @@
       "title": "Build or Break",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-09-07T03:05:16.000Z"
+      "created": "2025-09-07T03:05:16.000Z"
     }
   ],
   "evergreen/humans-and-algorithms-think-differently-when-coming-to-a-decision": [
@@ -6509,7 +6509,7 @@
       "title": "Build or Break",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-09-07T03:05:16.000Z"
+      "created": "2025-09-07T03:05:16.000Z"
     }
   ],
   "evergreen/algorithms-affect-what-we-post-on-the-socials": [
@@ -6518,7 +6518,7 @@
       "title": "Build or Break",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-09-07T03:05:16.000Z"
+      "created": "2025-09-07T03:05:16.000Z"
     }
   ],
   "blog/thoughts-on-iphone-day-2025": [
@@ -6527,7 +6527,7 @@
       "title": "Full Moon",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-09-13T13:31:41.000Z"
+      "created": "2025-09-13T13:31:41.000Z"
     }
   ],
   "evergreen/curation-matters": [
@@ -6536,7 +6536,7 @@
       "title": "Full Moon",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-09-13T13:31:41.000Z"
+      "created": "2025-09-13T13:31:41.000Z"
     }
   ],
   "evergreen/the-goal-with-yoga": [
@@ -6545,14 +6545,14 @@
       "title": "A Dying Country",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-09-20T15:39:22.000Z"
+      "created": "2025-09-20T15:39:22.000Z"
     },
     {
       "slug": "/now/yoga/",
       "title": "Yoga",
       "description": "",
       "category": "now",
-      "pubDate": "2023-06-01T17:41:49.000Z"
+      "created": "2023-06-01T17:41:49.000Z"
     }
   ],
   "story/musings": [
@@ -6561,7 +6561,7 @@
       "title": "Sunflower",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-09-27T13:17:33.000Z"
+      "created": "2025-09-27T13:17:33.000Z"
     }
   ],
   "nordletter/nl72": [
@@ -6570,7 +6570,7 @@
       "title": "Sunflower",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-09-27T13:17:33.000Z"
+      "created": "2025-09-27T13:17:33.000Z"
     }
   ],
   "blog/vibe-coding": [
@@ -6579,7 +6579,7 @@
       "title": "To Move",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-10-04T20:06:32.000Z"
+      "created": "2025-10-04T20:06:32.000Z"
     }
   ],
   "nordletter/diwali-week": [
@@ -6588,7 +6588,7 @@
       "title": "Hyva Diwalia!",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-10-26T20:45:29.000Z"
+      "created": "2025-10-26T20:45:29.000Z"
     }
   ],
   "blog/celebrating-diwali-at-op": [
@@ -6597,7 +6597,7 @@
       "title": "Hyva Diwalia!",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-10-26T20:45:29.000Z"
+      "created": "2025-10-26T20:45:29.000Z"
     }
   ],
   "nordletter/the-human-condition": [
@@ -6606,7 +6606,7 @@
       "title": "Chath Celebrations",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-11-02T20:42:52.000Z"
+      "created": "2025-11-02T20:42:52.000Z"
     }
   ],
   "nordletter/nl74-to-move": [
@@ -6615,7 +6615,7 @@
       "title": "Moving",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-11-15T21:57:56.000Z"
+      "created": "2025-11-15T21:57:56.000Z"
     }
   ],
   "blog/building-furniture": [
@@ -6624,7 +6624,7 @@
       "title": "Moving",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-11-15T21:57:56.000Z"
+      "created": "2025-11-15T21:57:56.000Z"
     }
   ],
   "blog/vibe-coding-november-meetup": [
@@ -6633,7 +6633,7 @@
       "title": "Fun at Biitsi",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-11-30T20:44:23.000Z"
+      "created": "2025-11-30T20:44:23.000Z"
     }
   ],
   "nordletter/nl-80": [
@@ -6642,7 +6642,7 @@
       "title": "Fun at Biitsi",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-11-30T20:44:23.000Z"
+      "created": "2025-11-30T20:44:23.000Z"
     }
   ],
   "nordletter/oodi-for-all": [
@@ -6651,7 +6651,7 @@
       "title": "Kid Fest at Oodi",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-06T21:34:44.000Z"
+      "created": "2025-12-06T21:34:44.000Z"
     }
   ],
   "nordletter/writing-meet-ups": [
@@ -6660,7 +6660,7 @@
       "title": "Kid Fest at Oodi",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-06T21:34:44.000Z"
+      "created": "2025-12-06T21:34:44.000Z"
     }
   ],
   "nordletter/helsinki-christmas-market": [
@@ -6669,7 +6669,7 @@
       "title": "Winter Solstice",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-21T18:00:25.000Z"
+      "created": "2025-12-21T18:00:25.000Z"
     }
   ],
   "nordletter/i-miss-walking": [
@@ -6678,7 +6678,7 @@
       "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
+      "created": "2025-12-27T21:33:35.000Z"
     }
   ],
   "blog/why-walk-the-same-path-every-day": [
@@ -6687,21 +6687,21 @@
       "title": "New Things",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-04-05T16:19:46.000Z"
+      "created": "2026-04-05T16:19:46.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
       "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
+      "created": "2025-12-27T21:33:35.000Z"
     },
     {
       "slug": "/bookshelf/steal-like-an-artist/",
       "title": "Steal Like an Artist",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-21T20:41:53.000Z"
+      "created": "2025-12-21T20:41:53.000Z"
     }
   ],
   "evergreen/limitations-mean-freedom": [
@@ -6710,7 +6710,7 @@
       "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
+      "created": "2025-12-27T21:33:35.000Z"
     }
   ],
   "evergreen/write-for-one-person": [
@@ -6719,7 +6719,7 @@
       "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
+      "created": "2025-12-27T21:33:35.000Z"
     }
   ],
   "evergreen/how-to-read": [
@@ -6728,14 +6728,14 @@
       "title": "All That We See or Seem",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-04-06T08:27:25.000Z"
+      "created": "2026-04-06T08:27:25.000Z"
     },
     {
       "slug": "/nordletter/nl85/",
       "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-12-27T21:33:35.000Z"
+      "created": "2025-12-27T21:33:35.000Z"
     }
   ],
   "bookshelf/things-become-other-things": [
@@ -6744,7 +6744,7 @@
       "title": "Winter Wonderland",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-10T19:46:59.000Z"
+      "created": "2026-01-10T19:46:59.000Z"
     }
   ],
   "nordletter/nl85": [
@@ -6753,7 +6753,7 @@
       "title": "Winter Wonderland",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-10T19:46:59.000Z"
+      "created": "2026-01-10T19:46:59.000Z"
     }
   ],
   "nordletter/nl87": [
@@ -6762,7 +6762,7 @@
       "title": "Indiabound",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-17T21:31:10.000Z"
+      "created": "2026-01-17T21:31:10.000Z"
     }
   ],
   "evergreen/how-to-decide-what-to-watch-or-read": [
@@ -6771,7 +6771,7 @@
       "title": "Indiabound",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-17T21:31:10.000Z"
+      "created": "2026-01-17T21:31:10.000Z"
     }
   ],
   "bookshelf/how-to-win-friends-and-influence-people": [
@@ -6780,7 +6780,7 @@
       "title": "Indiabound",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-17T21:31:10.000Z"
+      "created": "2026-01-17T21:31:10.000Z"
     }
   ],
   "bookshelf/lords-of-uncreation": [
@@ -6789,7 +6789,7 @@
       "title": "Indiabound",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-17T21:31:10.000Z"
+      "created": "2026-01-17T21:31:10.000Z"
     }
   ],
   "blog/2025-letters": [
@@ -6798,7 +6798,7 @@
       "title": "Same and Different",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-25T16:48:33.000Z"
+      "created": "2026-01-25T16:48:33.000Z"
     }
   ],
   "bookshelf/bird-by-bird": [
@@ -6807,28 +6807,28 @@
       "title": "Zen in the Art of Writing",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-03-09T10:13:18.000Z"
+      "created": "2026-03-09T10:13:18.000Z"
     },
     {
       "slug": "/bookshelf/die-with-zero/",
       "title": "Die With Zero",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-02-02T22:52:35.000Z"
+      "created": "2026-02-02T22:52:35.000Z"
     },
     {
       "slug": "/evergreen/write-a-letter-to-your-child/",
       "title": "Write a Letter to Your Child",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2026-01-31T18:25:30.000Z"
+      "created": "2026-01-31T18:25:30.000Z"
     },
     {
       "slug": "/nordletter/nl90/",
       "title": "Lunches and Monkeys",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-01-31T16:21:15.000Z"
+      "created": "2026-01-31T16:21:15.000Z"
     }
   ],
   "nordletter/nl90": [
@@ -6837,7 +6837,7 @@
       "title": "Friends",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-02-15T21:21:10.000Z"
+      "created": "2026-02-15T21:21:10.000Z"
     }
   ],
   "nordletter/nl89": [
@@ -6846,14 +6846,14 @@
       "title": "Friends",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-02-15T21:21:10.000Z"
+      "created": "2026-02-15T21:21:10.000Z"
     },
     {
       "slug": "/bookshelf/the-story-grid/",
       "title": "The Story Grid",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-30T10:59:25.000Z"
+      "created": "2025-12-30T10:59:25.000Z"
     }
   ],
   "poem/this-valentines-day": [
@@ -6862,7 +6862,7 @@
       "title": "An Anniversary Visit to Porvoo",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-02-21T22:32:49.000Z"
+      "created": "2026-02-21T22:32:49.000Z"
     }
   ],
   "nordletter/visit-porvoo": [
@@ -6871,7 +6871,7 @@
       "title": "An Anniversary Visit to Porvoo",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-02-21T22:32:49.000Z"
+      "created": "2026-02-21T22:32:49.000Z"
     }
   ],
   "nordletter/nl77": [
@@ -6880,7 +6880,7 @@
       "title": "Holi Week",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-07T23:08:24.000Z"
+      "created": "2026-03-07T23:08:24.000Z"
     }
   ],
   "nordletter/nl94": [
@@ -6889,7 +6889,7 @@
       "title": "Holi Week",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-07T23:08:24.000Z"
+      "created": "2026-03-07T23:08:24.000Z"
     }
   ],
   "nordletter/spring-is-here": [
@@ -6898,7 +6898,7 @@
       "title": "Spring in the Air",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-14T16:18:16.000Z"
+      "created": "2026-03-14T16:18:16.000Z"
     }
   ],
   "blog/spring-already": [
@@ -6907,7 +6907,7 @@
       "title": "Spring in the Air",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-14T16:18:16.000Z"
+      "created": "2026-03-14T16:18:16.000Z"
     }
   ],
   "blog/two-lessons-on-work": [
@@ -6916,7 +6916,7 @@
       "title": "Spring in the Air",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-14T16:18:16.000Z"
+      "created": "2026-03-14T16:18:16.000Z"
     }
   ],
   "bookshelf/zen-in-the-art-of-writing": [
@@ -6925,7 +6925,7 @@
       "title": "Spring in the Air",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-14T16:18:16.000Z"
+      "created": "2026-03-14T16:18:16.000Z"
     }
   ],
   "bookshelf/die-with-zero": [
@@ -6934,7 +6934,7 @@
       "title": "Spring in the Air",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-14T16:18:16.000Z"
+      "created": "2026-03-14T16:18:16.000Z"
     }
   ],
   "bookshelf/system-collapse": [
@@ -6943,7 +6943,7 @@
       "title": "Spring in the Air",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-14T16:18:16.000Z"
+      "created": "2026-03-14T16:18:16.000Z"
     }
   ],
   "blog/faug-zero-to-hero-meetup": [
@@ -6952,7 +6952,7 @@
       "title": "Nothing to Say",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-22T19:56:34.000Z"
+      "created": "2026-03-22T19:56:34.000Z"
     }
   ],
   "nordletter/nl96": [
@@ -6961,7 +6961,7 @@
       "title": "Nothing to Say",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-22T19:56:34.000Z"
+      "created": "2026-03-22T19:56:34.000Z"
     }
   ],
   "bookshelf/dune": [
@@ -6970,7 +6970,7 @@
       "title": "For Those We Love",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-03-28T18:50:51.000Z"
+      "created": "2026-03-28T18:50:51.000Z"
     }
   ],
   "bookshelf/reading-wanderlust": [
@@ -6979,7 +6979,7 @@
       "title": "New Things",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-04-05T16:19:46.000Z"
+      "created": "2026-04-05T16:19:46.000Z"
     }
   ],
   "blog/the-reason-why-i-want-to-move-my-home-on-the-world": [
@@ -6988,7 +6988,7 @@
       "title": "Trip to NYC I",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2025-06-14T15:45:00.000Z"
+      "created": "2025-06-14T15:45:00.000Z"
     }
   ],
   "nordletter/trip-to-nyc-ii": [
@@ -6997,7 +6997,7 @@
       "title": "Vacations and Noticing Things",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-06-07T17:38:19.000Z"
+      "created": "2026-06-07T17:38:19.000Z"
     }
   ],
   "nordletter/trip-to-nyc-iii": [
@@ -7006,7 +7006,7 @@
       "title": "Vacations and Noticing Things",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-06-07T17:38:19.000Z"
+      "created": "2026-06-07T17:38:19.000Z"
     }
   ],
   "nordletter/nyc-iv": [
@@ -7015,7 +7015,7 @@
       "title": "Vacations and Noticing Things",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-06-07T17:38:19.000Z"
+      "created": "2026-06-07T17:38:19.000Z"
     }
   ],
   "bookshelf/the-anthropologists": [
@@ -7024,7 +7024,7 @@
       "title": "Vacations and Noticing Things",
       "description": "",
       "category": "nordletter",
-      "pubDate": "2026-06-07T17:38:19.000Z"
+      "created": "2026-06-07T17:38:19.000Z"
     }
   ],
   "evergreen/the-four-diseases-leading-to-slow-death": [
@@ -7033,7 +7033,7 @@
       "title": "Outlive",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-04-14T09:23:33.000Z"
+      "created": "2026-04-14T09:23:33.000Z"
     }
   ],
   "bookshelf/the-road-less-travelled": [
@@ -7042,7 +7042,7 @@
       "title": "Outlive",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-04-14T09:23:33.000Z"
+      "created": "2026-04-14T09:23:33.000Z"
     }
   ],
   "bookshelf/timequake": [
@@ -7051,7 +7051,7 @@
       "title": "Cat’s Cradle",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-05-06T18:46:08.000Z"
+      "created": "2026-05-06T18:46:08.000Z"
     }
   ],
   "blog/devops-finland-october-meetup": [
@@ -7060,7 +7060,7 @@
       "title": "Same as Ever",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-10-14T07:50:15.000Z"
+      "created": "2025-10-14T07:50:15.000Z"
     }
   ],
   "bookshelf/jaya": [
@@ -7069,7 +7069,7 @@
       "title": "Sita",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-03-16T10:31:16.000Z"
+      "created": "2026-03-16T10:31:16.000Z"
     }
   ],
   "evergreen/do-fewer-things": [
@@ -7078,7 +7078,7 @@
       "title": "Slow Productivity",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-10-21T08:46:56.000Z"
+      "created": "2025-10-21T08:46:56.000Z"
     }
   ],
   "evergreen/work-at-a-natural-pace": [
@@ -7087,7 +7087,7 @@
       "title": "Slow Productivity",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-10-21T08:46:56.000Z"
+      "created": "2025-10-21T08:46:56.000Z"
     }
   ],
   "evergreen/obsess-over-quality": [
@@ -7096,7 +7096,7 @@
       "title": "Slow Productivity",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-10-21T08:46:56.000Z"
+      "created": "2025-10-21T08:46:56.000Z"
     }
   ],
   "bookshelf/fugitive-telemetry": [
@@ -7105,7 +7105,7 @@
       "title": "System Collapse",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-03-10T17:24:57.000Z"
+      "created": "2026-03-10T17:24:57.000Z"
     }
   ],
   "bookshelf/children-of-strife": [
@@ -7114,7 +7114,7 @@
       "title": "The Anthropologists",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-06-01T06:40:13.000Z"
+      "created": "2026-06-01T06:40:13.000Z"
     }
   ],
   "bookshelf/a-prayer-for-the-crown-shy": [
@@ -7123,7 +7123,7 @@
       "title": "The Anthropologists",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2026-06-01T06:40:13.000Z"
+      "created": "2026-06-01T06:40:13.000Z"
     }
   ],
   "bookshelf/the-psychology-of-money": [
@@ -7132,7 +7132,7 @@
       "title": "The Art of Spending Money",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-19T15:11:57.000Z"
+      "created": "2025-12-19T15:11:57.000Z"
     }
   ],
   "evergreen/how-to-craft-a-story": [
@@ -7141,7 +7141,7 @@
       "title": "The Story Grid",
       "description": "",
       "category": "bookshelf",
-      "pubDate": "2025-12-30T10:59:25.000Z"
+      "created": "2025-12-30T10:59:25.000Z"
     }
   ],
   "evergreen/what-to-automate": [
@@ -7150,7 +7150,7 @@
       "title": "How to Automate Something",
       "description": "",
       "category": "evergreen",
-      "pubDate": "2025-10-16T10:31:07.000Z"
+      "created": "2025-10-16T10:31:07.000Z"
     }
   ]
 }

@@ -1,10 +1,27 @@
 ---
-title: "Surprises, and Good Stories"
-slug: "surprises-and-good-stories"
-pubDate: 2014-09-18T21:00:05
-updatedDate: 2014-09-18T21:00:05
+title: 'Surprises, and Good Stories'
+slug: surprises-and-good-stories
+created: 2014-09-18T21:00:05.000Z
+updated: 2014-09-18T21:00:05.000Z
 category: blog
-tags: ["blog", "death note", "death note review", "life", "light", "novel", "novella", "post-apocalytic", "stephen king", "the mist", "thewalkingdead", "writing is", "writing tips", "yagami"]
+tags:
+  - blog
+  - death note
+  - death note review
+  - life
+  - light
+  - novel
+  - novella
+  - post-apocalytic
+  - stephen king
+  - the mist
+  - thewalkingdead
+  - writing is
+  - writing tips
+  - yagami
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753992553126728'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda2v44jt23'
 ---
 [![Death Note](https://storage.sajalchoudhary.net/images/wordpress/2014/09/34457_death_note.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/34457_death_note.jpg)
 

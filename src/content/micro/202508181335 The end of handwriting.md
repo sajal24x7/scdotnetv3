@@ -1,14 +1,15 @@
 ---
-title: "The End of Handwriting"
-slug: "the-end-of-handwriting"
-pubDate: 2025-08-18T13:37:07+03:00
-updatedDate: 2025-08-18T13:37:07+03:00
+title: The End of Handwriting
+slug: the-end-of-handwriting
+created: 2025-08-18T10:37:07.000Z
+updated: 2025-08-18T10:37:07.000Z
 category: micro
 tags:
   - ai
   - education
   - hand-writing
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgl4r3od2m'
 ---
 [The End of Handwriting by Angela Watercutter](https://www.wired.com/story/the-end-of-handwriting/)
 

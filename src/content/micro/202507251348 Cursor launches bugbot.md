@@ -1,13 +1,14 @@
 ---
-title: "Cursor Launches Bugbot"
-slug: "cursor-launches-bugbot"
-pubDate: 2025-07-25T13:49:14+03:00
-updatedDate: 2025-07-25T13:49:14+03:00
+title: Cursor Launches Bugbot
+slug: cursor-launches-bugbot
+created: 2025-07-25T10:49:14.000Z
+updated: 2025-07-25T10:49:14.000Z
 category: micro
 tags:
   - ai
   - cursor
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgetjuu32s'
 ---
 [Cursor’s New Bugbot Is Designed to Save Vibe Coders From Themselves](https://www.wired.com/story/cursor-releases-new-ai-tool-for-debugging-code/)
 

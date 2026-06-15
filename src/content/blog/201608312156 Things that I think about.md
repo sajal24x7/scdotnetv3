@@ -1,9 +1,13 @@
 ---
-title: "Things That I Think About"
-slug: "things-that-i-think-about"
-pubDate: 2016-08-31T21:56:25
-updatedDate: 2024-04-13T14:09:51
+title: Things That I Think About
+slug: things-that-i-think-about
+created: 2016-08-31T21:56:25.000Z
+updated: 2024-04-13T14:09:51.000Z
 category: blog
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754030530892185'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modam5mbtf26'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxwAUFgIc'
 ---
 ![doodle-thinking](https://storage.sajalchoudhary.net/images/wordpress/2016/08/doodle-thinking.jpg)
 

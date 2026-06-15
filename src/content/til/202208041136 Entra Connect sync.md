@@ -1,12 +1,14 @@
 ---
 title: Entra Connect Sync
 slug: entra-connect-sync
-pubDate: '2022-08-04T11:36:00+03:00'
-updatedDate: '2022-08-04T11:36:00+03:00'
+created: '2022-08-04T11:36:00+03:00'
+updated: '2022-08-04T11:36:00+03:00'
 category: til
 tags:
-- azure
-- entra
+  - azure
+  - entra
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjymdriq2u'
 ---
 
 - AD is source of truth

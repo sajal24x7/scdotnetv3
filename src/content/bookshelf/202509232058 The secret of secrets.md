@@ -1,21 +1,23 @@
 ---
-title: "The Secret of Secrets"
-slug: "the-secret-of-secrets"
-pubDate: 2025-09-23T21:00:18+03:00
-updatedDate: 2026-06-05T14:19:08
+title: The Secret of Secrets
+slug: the-secret-of-secrets
+created: 2025-09-23T18:00:18.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - thriller
 format: audio
 genre: thriller
-author: "Dan Brown"
-series: "Robert Langdon"
+author: Dan Brown
+series: Robert Langdon
 seriesNumber: 6
-shelfStatus: "read"
+shelfStatus: read
 rating: like
-started: 2025-09-23T17:00:18+03:00
-finished: 2025-10-30T10:48:01+02:00
-cover: "the-secret-of-secrets.jpg"
+started: 2025-09-23T14:00:18.000Z
+finished: 2025-10-30T08:48:01.000Z
+cover: the-secret-of-secrets.jpg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode7724bz2s'
 ---
 I have read all the books in the Robert Langston series of books. I had not enjoyed any, as much as I enjoyed this one.
 

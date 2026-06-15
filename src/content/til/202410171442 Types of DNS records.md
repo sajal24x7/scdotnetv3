@@ -1,12 +1,14 @@
 ---
 title: Types of DNS Records
 slug: types-of-dns-records
-pubDate: '2024-10-17T14:42:00+03:00'
-updatedDate: '2024-10-17T14:42:00+03:00'
+created: '2024-10-17T14:42:00+03:00'
+updated: '2024-10-17T14:42:00+03:00'
 category: til
 tags:
-- windows
-- dns
+  - windows
+  - dns
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobobjv62z'
 ---
 
 1. SOA (Start of Authority)

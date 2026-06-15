@@ -1,12 +1,13 @@
 ---
-title: "Bringing Goodwill to the Conversation"
-slug: "bringing-goodwill-to-the-conversation"
-pubDate: 2025-09-08T11:56:14+03:00
-updatedDate: 2025-09-08T11:56:14+03:00
+title: Bringing Goodwill to the Conversation
+slug: bringing-goodwill-to-the-conversation
+created: 2025-09-08T08:56:14.000Z
+updated: 2025-09-08T08:56:14.000Z
 category: micro
 tags:
   - learning
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgpzgres2l'
 ---
 
 [Bringing goodwill to the conversation by Seth Godin](https://feeds.feedblitz.com/~/924207617/0/sethsblog~Bringing-goodwill-to-the-conversation/)

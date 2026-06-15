@@ -1,13 +1,20 @@
 ---
-title: "Celebrating the Republic"
+title: Celebrating the Republic
 edition: 44
-slug: "celebrating-the-republic"
-description: "Republic Day at the embassy + OpenAI announces Operator + Trumps first few orders + some life lessons"
-pubDate: 2025-01-26T21:22:31
-updatedDate: 2025-02-08T20:28:27
+slug: celebrating-the-republic
+description: >-
+  Republic Day at the embassy + OpenAI announces Operator + Trumps first few
+  orders + some life lessons
+created: 2025-01-26T21:22:31.000Z
+updated: 2025-02-08T20:28:27.000Z
 category: nordletter
-tags: ["Nord Letter", "AI", "celebrations"]
-image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9361.jpeg"
+tags:
+  - Nord Letter
+  - AI
+  - celebrations
+image: 'https://storage.sajalchoudhary.net/images/2025/01/IMG_9361.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhapbhud2l'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#44, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

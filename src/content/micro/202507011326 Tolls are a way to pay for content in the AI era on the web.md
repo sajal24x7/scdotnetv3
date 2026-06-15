@@ -1,10 +1,14 @@
 ---
-title: "Tolls Are a Way to Pay for Content in the AI Era on the Web"
-slug: "tolls-are-a-way-to-pay-for-content-in-the-ai-era-on-the-web"
-pubDate: 2025-07-01T16:33:01+03:00
-updatedDate: 2025-07-01T16:33:01+03:00
+title: Tolls Are a Way to Pay for Content in the AI Era on the Web
+slug: tolls-are-a-way-to-pay-for-content-in-the-ai-era-on-the-web
+created: 2025-07-01T13:33:01.000Z
+updated: 2025-07-01T13:33:01.000Z
 category: micro
-tags: [“ai”, “openweb”]
+tags:
+  - “ai”
+  - “openweb”
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modeblacr624'
 ---
 [Why the AI revolution needs tollbooths](https://crazystupidtech.com/2025/06/22/why-the-ai-revolution-needs-tollbooths/)
 

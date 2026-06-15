@@ -1,13 +1,14 @@
 ---
-title: "Americans Are Being Conditioned to Accept Delayed Elections"
-slug: "americans-are-being-conditioned-to-accept-delayed-elections"
-pubDate: 2025-09-06T09:56:07+03:00
-updatedDate: 2025-09-06T09:56:07+03:00
+title: Americans Are Being Conditioned to Accept Delayed Elections
+slug: americans-are-being-conditioned-to-accept-delayed-elections
+created: 2025-09-06T06:56:07.000Z
+updated: 2025-09-06T06:56:07.000Z
 category: micro
 tags:
   - america
   - politics
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgpbufre2d'
 ---
 [Are Americans Being Conditioned to Accept Delayed Elections? ](https://lithub.com/are-americans-being-conditioned-to-accept-delayed-elections/)
 

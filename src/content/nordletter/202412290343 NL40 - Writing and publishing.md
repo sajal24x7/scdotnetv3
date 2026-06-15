@@ -1,13 +1,16 @@
 ---
-title: "Writing and Publishing"
+title: Writing and Publishing
 edition: 40
-slug: "writing-and-publishing"
-description: "Playing TT at Vox + Car makers merging + paper passports might die"
-pubDate: 2024-12-29T03:43:05
-updatedDate: 2024-12-29T03:43:05
+slug: writing-and-publishing
+description: Playing TT at Vox + Car makers merging + paper passports might die
+created: 2024-12-29T03:43:05.000Z
+updated: 2024-12-29T03:43:05.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8967.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8967.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh7stoby2w'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#40, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

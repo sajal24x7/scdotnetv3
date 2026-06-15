@@ -1,12 +1,15 @@
 ---
 title: PowerShell Registry Key Related
 slug: powershell-registry-key-related
-pubDate: '2024-02-06T14:38:00+03:00'
-updatedDate: '2024-02-06T14:38:00+03:00'
+created: '2024-02-06T14:38:00+03:00'
+updated: '2024-02-06T14:38:00+03:00'
 category: til
 tags:
-- windows
-- powershell
+  - windows
+  - powershell
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754761754808781'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkyomfub2u'
 ---
 
 

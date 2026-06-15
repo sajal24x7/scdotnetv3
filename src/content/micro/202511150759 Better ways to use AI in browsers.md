@@ -1,8 +1,8 @@
 ---
 title: Better Ways to Use AI in Browsers
 slug: better-ways-to-use-ai-in-browsers
-pubDate: 2025-11-15T06:01:23.000Z
-updatedDate: 2025-11-15T06:01:23.000Z
+created: 2025-11-15T06:01:23.000Z
+updated: 2025-11-15T06:01:23.000Z
 category: micro
 tags:
   - ai

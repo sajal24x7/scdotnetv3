@@ -1,10 +1,18 @@
 ---
-title: "All the Motivation You Need!"
-slug: "all-the-motivation-you-need"
-pubDate: 2015-03-24T12:12:01
-updatedDate: 2015-03-24T12:12:01
+title: All the Motivation You Need!
+slug: all-the-motivation-you-need
+created: 2015-03-24T12:12:01.000Z
+updated: 2015-03-24T12:12:01.000Z
 category: blog
-tags: ["blog", "life", "motivation", "writing is", "writing tips"]
+tags:
+  - blog
+  - life
+  - motivation
+  - writing is
+  - writing tips
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754002980907742'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda7mlonn2m'
 ---
 [![Motivation](https://storage.sajalchoudhary.net/images/wordpress/2015/03/motivation-is-inside-you1.jpg?w=660)](https://storage.sajalchoudhary.net/images/wordpress/2015/03/motivation-is-inside-you1.jpg)
 

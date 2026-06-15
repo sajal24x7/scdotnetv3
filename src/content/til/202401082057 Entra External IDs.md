@@ -1,12 +1,15 @@
 ---
 title: Entra External IDs
 slug: entra-external-ids
-pubDate: '2024-01-08T20:57:00+03:00'
-updatedDate: '2024-01-08T20:57:00+03:00'
+created: '2024-01-08T20:57:00+03:00'
+updated: '2024-01-08T20:57:00+03:00'
 category: til
 tags:
-- azure
-- entra
+  - azure
+  - entra
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754759523115831'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkxnwyqb2u'
 ---
 
 - AuthN happens in guest [[202408281918 Entra ID tenant|tenant]]

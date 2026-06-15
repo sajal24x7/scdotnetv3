@@ -1,11 +1,14 @@
 ---
 title: UCS Keyring Fix
 slug: ucs-keyring-fix
-pubDate: '2024-01-04T16:00:00+03:00'
-updatedDate: '2024-01-04T16:00:00+03:00'
+created: '2024-01-04T16:00:00+03:00'
+updated: '2024-01-04T16:00:00+03:00'
 category: til
 tags:
-- ucs
+  - ucs
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754758093643981'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkwyyyfa2u'
 ---
 
 Issue:

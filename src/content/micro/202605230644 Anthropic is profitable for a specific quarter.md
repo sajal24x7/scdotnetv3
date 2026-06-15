@@ -1,8 +1,8 @@
 ---
 title: Anthropic is profitable for a specific quarter
 slug: anthropic-is-profitable-for-a-specific-quarter
-pubDate: 2026-05-23T03:50:00.000Z
-updatedDate: 2026-05-23T03:50:00.000Z
+created: 2026-05-23T03:50:00.000Z
+updated: 2026-05-23T03:50:00.000Z
 category: micro
 tags:
   - anthropic

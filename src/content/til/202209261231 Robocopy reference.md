@@ -1,10 +1,12 @@
 ---
 title: Robocopy Reference
 slug: robocopy-reference
-pubDate: '2022-09-26T12:31:00+03:00'
-updatedDate: '2022-09-26T12:31:00+03:00'
+created: '2022-09-26T12:31:00+03:00'
+updated: '2022-09-26T12:31:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk6xh7xc2v'
 ---
 
 

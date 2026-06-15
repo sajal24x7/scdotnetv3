@@ -1,8 +1,8 @@
 ---
 title: Cloudflare Explains Tuesday’s Outage
 slug: cloudflare-explains-tuesdays-outage
-pubDate: 2025-11-19T06:09:27.000Z
-updatedDate: 2025-11-19T06:09:27.000Z
+created: 2025-11-19T06:09:27.000Z
+updated: 2025-11-19T06:09:27.000Z
 category: micro
 tags:
   - cloudflare

@@ -1,12 +1,17 @@
 ---
-title: "Why Are There No Small Photo Sharing Apps"
-slug: "why-are-there-no-small-photo-sharing-apps"
-description: "There is an opportunity here"
-pubDate: 2024-12-03T20:24:39
-updatedDate: 2024-12-03T20:24:39
+title: Why Are There No Small Photo Sharing Apps
+slug: why-are-there-no-small-photo-sharing-apps
+description: There is an opportunity here
+created: 2024-12-03T20:24:39.000Z
+updated: 2024-12-03T20:24:39.000Z
 category: blog
-tags: ["blog"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/photo-1649489903954-cf99452166aa.jpeg"
+tags:
+  - blog
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/12/photo-1649489903954-cf99452166aa.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754205147362820'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd3kgg2l2v'
 ---
 "You can see the Hudson from here", she said.  
 I could. I thought. 'Yes' I said.  

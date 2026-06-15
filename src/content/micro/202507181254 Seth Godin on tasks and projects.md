@@ -1,14 +1,15 @@
 ---
-title: "Seth Godin on Tasks and Projects"
-slug: "seth-godin-on-tasks-and-projects"
-pubDate: 2025-07-19T11:16:07+03:00
-updatedDate: 2025-07-19T11:16:07+03:00
+title: Seth Godin on Tasks and Projects
+slug: seth-godin-on-tasks-and-projects
+created: 2025-07-19T08:16:07.000Z
+updated: 2025-07-19T08:16:07.000Z
 category: micro
 tags:
   - work
   - art
   - leadership
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modecd53ro2d'
 ---
 [Tasks and projects](https://feeds.feedblitz.com/~/921834878/0/sethsblog~Tasks-and-projects/)
 

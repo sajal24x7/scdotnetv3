@@ -1,12 +1,19 @@
 ---
-title: "Where You Do Yoga Matters"
-slug: "where-you-do-yoga-matters"
-description: "Or, the poisonous Delhi air sucks ass"
-pubDate: 2024-11-26T20:05:26
-updatedDate: 2024-11-26T20:05:26
+title: Where You Do Yoga Matters
+slug: where-you-do-yoga-matters
+description: 'Or, the poisonous Delhi air sucks ass'
+created: 2024-11-26T20:05:26.000Z
+updated: 2024-11-26T20:05:26.000Z
 category: blog
-tags: ["blog", "yoga", "pollution"]
-image: "https://images.unsplash.com/photo-1517363898874-737b62a7db91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxZT0dBfGVufDB8fHx8MTczMjY1MTQ0NHww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - yoga
+  - pollution
+image: >-
+  https://images.unsplash.com/photo-1517363898874-737b62a7db91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE5fHxZT0dBfGVufDB8fHx8MTczMjY1MTQ0NHww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754202310309471'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd2bqunh2c'
 ---
 The day I landed in Delhi, I had tears in my eyes. Not because I got emotional about being home after more than a year, but because of the pollution in Delhi.
 

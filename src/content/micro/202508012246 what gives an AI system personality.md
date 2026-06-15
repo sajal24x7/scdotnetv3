@@ -1,13 +1,14 @@
 ---
-title: "What Gives an AI System Personality"
-slug: "what-gives-an-ai-system-personality"
-pubDate: 2025-08-01T22:47:52+03:00
-updatedDate: 2025-08-01T22:47:52+03:00
+title: What Gives an AI System Personality
+slug: what-gives-an-ai-system-personality
+created: 2025-08-01T19:47:52.000Z
+updated: 2025-08-01T19:47:52.000Z
 category: micro
 tags:
   - ai
   - anthropic
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modghihbvg2c'
 ---
 [Anthropic studied what gives an AI system its ‘personality’ — and what makes it ‘evil’](https://www.theverge.com/anthropic/717551/anthropic-research-fellows-ai-personality-claude-sycophantic-evil)
 

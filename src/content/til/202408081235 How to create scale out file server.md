@@ -1,12 +1,15 @@
 ---
 title: How to Create Scale out File Server
 slug: how-to-create-scale-out-file-server
-pubDate: '2024-08-08T12:35:00+03:00'
-updatedDate: '2024-08-08T12:35:00+03:00'
+created: '2024-08-08T12:35:00+03:00'
+updated: '2024-08-08T12:35:00+03:00'
 category: til
 tags:
-- windows
-- cluster
+  - windows
+  - cluster
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754978876836407'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo3fqcdg2o'
 ---
 
 How to create [[202407161044 Scale out file server|Scale out file server]] on Windows core.

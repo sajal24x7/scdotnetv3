@@ -1,12 +1,19 @@
 ---
-title: "About Reflections on Writing"
-slug: "about-reflections-on-writing"
-description: "From people who have been doing this for many years"
-pubDate: 2025-02-20T20:44:26
-updatedDate: 2025-02-20T20:44:26
+title: About Reflections on Writing
+slug: about-reflections-on-writing
+description: From people who have been doing this for many years
+created: 2025-02-20T20:44:26.000Z
+updated: 2025-02-20T20:44:26.000Z
 category: blog
-tags: ["blog", "work", "writing is"]
-image: "https://images.unsplash.com/photo-1739992115892-36453a241b5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDh8fHx8fHx8fDE3NDAwODM5MTV8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - work
+  - writing is
+image: >-
+  https://images.unsplash.com/photo-1739992115892-36453a241b5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDh8fHx8fHx8fDE3NDAwODM5MTV8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754231807542850'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddhomgxj2u'
 ---
 I love reading people talk about the craft of writing. I love reading people who have been doing this since long. I came across [Dave](http://scripting.com/), courtesy of one such post.
 

@@ -1,8 +1,8 @@
 ---
 title: Have EVs Gotten Too Powerful
 slug: have-evs-gotten-too-powerful
-pubDate: 2025-09-19T20:04:38.000Z
-updatedDate: 2025-09-19T20:04:38.000Z
+created: 2025-09-19T20:04:38.000Z
+updated: 2025-09-19T20:04:38.000Z
 category: micro
 tags:
   - electric-cars

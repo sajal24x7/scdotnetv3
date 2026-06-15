@@ -1,11 +1,14 @@
 ---
 title: Manage VM Templates in VMware Content Libraries
 slug: manage-vm-templates-in-vmware-content-libraries
-pubDate: '2024-08-01T15:53:00+03:00'
-updatedDate: '2024-08-01T15:53:00+03:00'
+created: '2024-08-01T15:53:00+03:00'
+updated: '2024-08-01T15:53:00+03:00'
 category: til
 tags:
-- vmware
+  - vmware
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754971737688978'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modny5nv5q2c'
 ---
 
 After [[202407191233 Create VMware Content Libraries|Create VMware Content Libraries]]

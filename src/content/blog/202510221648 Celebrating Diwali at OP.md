@@ -1,8 +1,8 @@
 ---
 title: Celebrating Diwali at OP
 slug: celebrating-diwali-at-op
-pubDate: 2025-10-26T20:26:03.000Z
-updatedDate: 2025-10-26T20:26:03.000Z
+created: 2025-10-26T20:26:03.000Z
+updated: 2025-10-26T20:26:03.000Z
 category: blog
 tags:
   - op

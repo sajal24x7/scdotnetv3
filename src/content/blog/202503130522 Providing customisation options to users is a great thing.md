@@ -1,12 +1,21 @@
 ---
-title: "Providing Customisation Options to Users Is a Great Thing"
-slug: "providing-customisation-options-to-users-is-a-great-thing"
-description: "Adventures in configuring tools to work better"
-pubDate: 2025-03-13T05:22:38
-updatedDate: 2025-03-13T05:22:37
+title: Providing Customisation Options to Users Is a Great Thing
+slug: providing-customisation-options-to-users-is-a-great-thing
+description: Adventures in configuring tools to work better
+created: 2025-03-13T05:22:38.000Z
+updated: 2025-03-13T05:22:37.000Z
 category: blog
-tags: ["blog", "obsidian", "writing is", "apple", "choice"]
-image: "https://storage.sajalchoudhary.net/images/2025/03/Screenshot-2025-03-12-at-11.04.06-PM.png"
+tags:
+  - blog
+  - obsidian
+  - writing is
+  - apple
+  - choice
+image: >-
+  https://storage.sajalchoudhary.net/images/2025/03/Screenshot-2025-03-12-at-11.04.06-PM.png
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754238309457541'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddkmwnxg24'
 ---
 The option to change things, order things, filter things per user choice is an important and valuable thing.
 

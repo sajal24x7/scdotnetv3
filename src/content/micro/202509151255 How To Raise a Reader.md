@@ -1,8 +1,8 @@
 ---
 title: How to Raise a Reader
 slug: how-to-raise-a-reader
-pubDate: 2025-09-15T09:56:28.000Z
-updatedDate: 2025-09-15T09:56:28.000Z
+created: 2025-09-15T09:56:28.000Z
+updated: 2025-09-15T09:56:28.000Z
 category: micro
 tags:
   - parenting

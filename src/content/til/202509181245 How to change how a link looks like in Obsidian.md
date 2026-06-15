@@ -1,12 +1,13 @@
 ---
-title: "How to Change How a Link Looks Like in Obsidian"
-slug: "how-to-change-how-a-link-looks-like-in-obsidian"
-pubDate: 2025-09-18T14:07:50+03:00
-updatedDate: 2025-09-18T14:07:50+03:00
+title: How to Change How a Link Looks Like in Obsidian
+slug: how-to-change-how-a-link-looks-like-in-obsidian
+created: 2025-09-18T11:07:50.000Z
+updated: 2025-09-18T11:07:50.000Z
 category: til
 tags:
   - obsidian
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoezmeap2l'
 ---
 In order to link to an internal link, what I used to do was use the aliases property. 
 

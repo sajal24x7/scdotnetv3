@@ -1,15 +1,16 @@
 ---
-title: "Zero Sum Thinking Answers America’s Response to Deepseek"
-slug: "zero-sum-thinking-answers-americas-response-to-deepseek"
-pubDate: 2025-07-18T10:35:11+03:00
-updatedDate: 2025-07-18T10:35:11+03:00
+title: Zero Sum Thinking Answers America’s Response to Deepseek
+slug: zero-sum-thinking-answers-americas-response-to-deepseek
+created: 2025-07-18T07:35:11.000Z
+updated: 2025-07-18T07:35:11.000Z
 category: micro
 tags:
   - ai
   - deepseek
   - mindset
   - economics
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modecbfj3g2u'
 ---
 [The Sputnik vs. Deep Seek Moment: The Answers - Marginal REVOLUTION](https://feeds.feedblitz.com/~/921787157/0/marginalrevolution~The-Sputnik-vs-Deep-Seek-Moment-The-Answers.html)
 

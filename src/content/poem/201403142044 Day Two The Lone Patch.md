@@ -1,11 +1,16 @@
 ---
-title: "Day Two: The Lone Patch"
-slug: "day-two-the-lone-patch"
-pubDate: 2014-03-14T20:44:41
-updatedDate: 2014-03-14T20:44:41
+title: 'Day Two: The Lone Patch'
+slug: day-two-the-lone-patch
+created: 2014-03-14T20:44:41.000Z
+updated: 2014-03-14T20:44:41.000Z
 category: poem
-tags: ["30 day challenge", "photography"]
-image: ”https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1394810174041.jpeg”
+tags:
+  - 30 day challenge
+  - photography
+image: >-
+  ”https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1394810174041.jpeg”
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhkd5n422w'
 ---
 There was a time when it was all green here,  
 That time is long gone now,  

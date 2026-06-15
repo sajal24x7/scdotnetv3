@@ -1,12 +1,14 @@
 ---
 title: Jinja2 Reference
 slug: jinja2-reference
-pubDate: '2022-04-27T16:56:00+03:00'
-updatedDate: '2022-04-27T16:56:00+03:00'
+created: '2022-04-27T16:56:00+03:00'
+updated: '2022-04-27T16:56:00+03:00'
 category: til
 tags:
-- jinja
-- ansible
+  - jinja
+  - ansible
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnrwzbb2v'
 ---
 
 

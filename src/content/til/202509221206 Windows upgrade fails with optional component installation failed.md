@@ -1,8 +1,8 @@
 ---
 title: Windows Upgrade Fails With Optional Component Installation Failed
 slug: windows-upgrade-fails-with-optional-component-installation-failed
-pubDate: 2025-12-18T10:32:16.000Z
-updatedDate: 2025-12-18T10:32:16.000Z
+created: 2025-12-18T10:32:16.000Z
+updated: 2025-12-18T10:32:16.000Z
 category: til
 tags:
   - windows

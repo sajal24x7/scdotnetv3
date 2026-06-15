@@ -1,12 +1,15 @@
 ---
 title: Powershell Get Certs on System
 slug: powershell-get-certs-on-system
-pubDate: '2024-07-09T16:31:00+03:00'
-updatedDate: '2024-07-09T16:31:00+03:00'
+created: '2024-07-09T16:31:00+03:00'
+updated: '2024-07-09T16:31:00+03:00'
 category: til
 tags:
-- powershell
-- cert
+  - powershell
+  - cert
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754951309815633'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnouneil2m'
 ---
 
 ```powershell

@@ -1,8 +1,8 @@
 ---
 title: Meta announces subscriptions for its apps
 slug: meta-announces-subscriptions-for-its-apps
-pubDate: 2026-05-28T04:17:43.000Z
-updatedDate: 2026-05-28T04:17:43.000Z
+created: 2026-05-28T04:17:43.000Z
+updated: 2026-05-28T04:17:43.000Z
 category: micro
 tags:
   - meta

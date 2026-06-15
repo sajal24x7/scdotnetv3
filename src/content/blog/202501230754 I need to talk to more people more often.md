@@ -1,12 +1,18 @@
 ---
-title: "I Need to Talk to More People, More Often"
-slug: "i-need-to-talk-to-more-people-more-often"
-description: "And hear their stories"
-pubDate: 2025-01-23T07:54:34
-updatedDate: 2025-01-23T08:39:28
+title: 'I Need to Talk to More People, More Often'
+slug: i-need-to-talk-to-more-people-more-often
+description: And hear their stories
+created: 2025-01-23T07:54:34.000Z
+updated: 2025-01-23T08:39:28.000Z
 category: blog
-tags: ["blog", "writing is"]
-image: "https://images.unsplash.com/photo-1737079567862-4ccc9433d443?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDEwfHx8fHx8fHwxNzM3NjE3NDgxfA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - writing is
+image: >-
+  https://images.unsplash.com/photo-1737079567862-4ccc9433d443?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDEwfHx8fHx8fHwxNzM3NjE3NDgxfA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754221575159079'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddczpaqe2m'
 ---
 I am reading [Murakami](https://en.wikipedia.org/wiki/Haruki_Murakami)’s [Men without women](https://en.wikipedia.org/wiki/Men_Without_Women_\(Murakami_short_story_collection\)) right now. I feel like I had read it earlier.
 

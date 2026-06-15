@@ -1,8 +1,8 @@
 ---
 title: State of Play June
 slug: state-of-play-june
-pubDate: 2026-06-03T08:32:15.000Z
-updatedDate: 2026-06-03T08:32:15.000Z
+created: 2026-06-03T08:32:15.000Z
+updated: 2026-06-03T08:32:15.000Z
 category: blog
 tags:
   - state-of-play

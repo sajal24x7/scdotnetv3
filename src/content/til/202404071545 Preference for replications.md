@@ -1,12 +1,15 @@
 ---
 title: Preference for Replications
 slug: preference-for-replications
-pubDate: '2024-04-07T15:45:00+03:00'
-updatedDate: '2024-04-07T15:45:00+03:00'
+created: '2024-04-07T15:45:00+03:00'
+updated: '2024-04-07T15:45:00+03:00'
 category: til
 tags:
-- azure
-- resiliency
+  - azure
+  - resiliency
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754909797324198'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn3ymtva2v'
 ---
 
 Related to [[202404071441 Replication|replication]] and [[202404071556 Disaster Recovery|Disaster Recovery]]

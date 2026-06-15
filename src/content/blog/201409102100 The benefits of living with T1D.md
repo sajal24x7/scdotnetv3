@@ -1,10 +1,18 @@
 ---
-title: "The Benefits of Living With T1D"
-slug: "the-benefits-of-living-with-t1d"
-pubDate: 2014-09-10T21:00:18
-updatedDate: 2024-09-10T19:53:09
+title: The Benefits of Living With T1D
+slug: the-benefits-of-living-with-t1d
+created: 2014-09-10T21:00:18.000Z
+updated: 2024-09-10T19:53:09.000Z
 category: blog
-tags: ["blog", "diabetes", "health", "type 1 diabetes"]
+tags:
+  - blog
+  - diabetes
+  - health
+  - type 1 diabetes
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753989715310026'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7zlvn4p2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwkChFjFF'
 ---
 [![t1d&me](https://storage.sajalchoudhary.net/images/wordpress/2014/09/t1dme-logo.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/t1dme-logo.jpg)
 

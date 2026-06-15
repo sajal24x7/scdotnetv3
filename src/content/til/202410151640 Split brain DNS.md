@@ -1,10 +1,12 @@
 ---
 title: Split Brain DNS
 slug: split-brain-dns
-pubDate: '2024-10-15T16:40:00+03:00'
-updatedDate: '2024-10-15T16:40:00+03:00'
+created: '2024-10-15T16:40:00+03:00'
+updated: '2024-10-15T16:40:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobjte6q2v'
 ---
 
 Depending on the source IP of the DNS request, DNS server provides different response.

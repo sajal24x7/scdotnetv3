@@ -1,8 +1,8 @@
 ---
 title: Astro Is Joining Cloudflare
 slug: astro-is-joining-cloudflare
-pubDate: 2026-01-16T19:56:15.000Z
-updatedDate: 2026-01-16T19:56:15.000Z
+created: 2026-01-16T19:56:15.000Z
+updated: 2026-01-16T19:56:15.000Z
 category: micro
 tags:
   - cloudflare

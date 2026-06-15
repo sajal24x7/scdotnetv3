@@ -1,14 +1,15 @@
 ---
-title: "Study Mode in ChatGPT"
-slug: "study-mode-in-chatgpt"
-pubDate: 2025-07-30T06:53:29+03:00
-updatedDate: 2025-07-30T06:53:29+03:00
+title: Study Mode in ChatGPT
+slug: study-mode-in-chatgpt
+created: 2025-07-30T03:53:29.000Z
+updated: 2025-07-30T03:53:29.000Z
 category: micro
 tags:
   - ai
   - chatgpt
   - openai
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgg76yux23'
 ---
 
 [Introducing study mode](https://openai.com/index/chatgpt-study-mode/)

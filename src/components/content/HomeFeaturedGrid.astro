@@ -32,7 +32,7 @@ const { posts = [], title = 'Featured' }: Props = Astro.props;
                     </div>
                     <div class="home-featured__meta">
                         <CategoryDisplay category={post.data.category} className="home-featured__category" />
-                        <TimeDisplay date={post.data.pubDate} category={post.data.category} className="home-featured__date card-chip" />
+                        <TimeDisplay date={post.data.created} category={post.data.category} className="home-featured__date card-chip" />
                     </div>
                     <h3 class="home-featured__heading">{post.data.title}</h3>
                 </a>

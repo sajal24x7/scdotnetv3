@@ -1,12 +1,19 @@
 ---
-title: "Sit on the Floor With Your Child and Play"
-slug: "sit-on-the-floor-with-your-child-and-play"
-description: "Spend time playing with your child"
-pubDate: 2025-03-10T03:01:16
-updatedDate: 2025-03-10T03:01:16
+title: Sit on the Floor With Your Child and Play
+slug: sit-on-the-floor-with-your-child-and-play
+description: Spend time playing with your child
+created: 2025-03-10T03:01:16.000Z
+updated: 2025-03-10T03:01:16.000Z
 category: blog
-tags: ["blog", "parenting", "savya"]
-image: "https://images.unsplash.com/photo-1735342623457-b683e0ba1c2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDZ8fHx8fHx8fDE3NDE1NDg2Nzh8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - parenting
+  - savya
+image: >-
+  https://images.unsplash.com/photo-1735342623457-b683e0ba1c2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDZ8fHx8fHx8fDE3NDE1NDg2Nzh8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754237215718227'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddk4zrr62u'
 ---
 It was match day yesterday \(Sunday\) United vs Arsenal. There was one other match going on in Dubai. But I’m not here to talk about matches. United could have won, but didn’t. I am more than happy with a point.
 

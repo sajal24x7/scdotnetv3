@@ -1,12 +1,15 @@
 ---
 title: Five Pillars of Azure Well Architected Framework
 slug: five-pillars-of-azure-well-architected-framework
-pubDate: '2024-06-01T11:59:00+03:00'
-updatedDate: '2024-06-01T11:59:00+03:00'
+created: '2024-06-01T11:59:00+03:00'
+updated: '2024-06-01T11:59:00+03:00'
 category: til
 tags:
-- azure
-- architecture
+  - azure
+  - architecture
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754943160242597'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnl6co272l'
 ---
 
 # Cost effectiveness

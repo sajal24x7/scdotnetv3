@@ -6,8 +6,8 @@ export interface Post {
   data: {
     title?: string;
     description?: string;
-    pubDate: Date;
-    updatedDate?: Date;
+    created: Date;
+    updated?: Date;
     category: string;
     status?: string;
     image?: string;
@@ -94,7 +94,7 @@ export function transformPost(post: Post) {
         data: {
             title: post.data.title,
             description: post.data.description,
-            pubDate: post.data.pubDate,
+            created: post.data.created,
             category: post.data.category,
             image: post.data.image,
             tags: post.data.tags,
@@ -167,16 +167,16 @@ function resolveCategoryList(filter: CategoryFilter): ReadonlyArray<string> {
 }
 
 function getPostTimestamp(post: Post): number {
-    const pubDate = post.data.pubDate;
-    if (!pubDate) {
+    const created = post.data.created;
+    if (!created) {
         return 0;
     }
 
-    if (pubDate instanceof Date) {
-        return pubDate.getTime();
+    if (created instanceof Date) {
+        return created.getTime();
     }
 
-    return new Date(pubDate).getTime();
+    return new Date(created).getTime();
 }
 
 export function getPostsByCategory(posts: Post[], filter: CategoryFilter, options: CategoryFilterOptions = {}): Post[] {
@@ -237,19 +237,19 @@ export function cleanNordletterTitle(title: string): string {
 /**
  * Get edition display text for nordletter posts
  * @param edition The edition number (from metadata)
- * @param pubDate The publication date
+ * @param created The publication date
  * @param title The post title
  * @param slug The post slug
  * @param filename The post filename
  * @returns Formatted edition text (e.g., "62 - July 13")
  */
-export function getEditionDisplay(edition: number | string | undefined, pubDate: Date, title?: string, slug?: string, filename?: string): string {
+export function getEditionDisplay(edition: number | string | undefined, created: Date, title?: string, slug?: string, filename?: string): string {
   let editionNumber = edition;
   if (!editionNumber) {
     editionNumber = extractEditionNumber(title || '', slug, filename);
   }
   if (!editionNumber) return '';
-  const month = pubDate.toLocaleDateString('en-US', { month: 'long' });
-  const day = pubDate.getDate();
+  const month = created.toLocaleDateString('en-US', { month: 'long' });
+  const day = created.getDate();
   return `${editionNumber} - ${month} ${day}`;
 } 

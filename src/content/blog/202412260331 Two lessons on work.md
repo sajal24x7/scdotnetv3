@@ -1,12 +1,18 @@
 ---
-title: "Two Lessons on Work"
-slug: "two-lessons-on-work"
-description: "Show your work + Ask for help"
-pubDate: 2024-12-26T03:31:09
-updatedDate: 2024-12-26T03:31:09
+title: Two Lessons on Work
+slug: two-lessons-on-work
+description: Show your work + Ask for help
+created: 2024-12-26T03:31:09.000Z
+updated: 2024-12-26T03:31:09.000Z
 category: blog
-tags: ["blog", "work"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/photo-1734327177128-ef59b0d9ded8.jpeg"
+tags:
+  - blog
+  - work
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/12/photo-1734327177128-ef59b0d9ded8.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754213864581416'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd7k2js22l'
 ---
 When I joined TCS, all those years back, I started with a healthcare project. The company we worked for had DCs all across the world, including two in India. Or was it three?
 

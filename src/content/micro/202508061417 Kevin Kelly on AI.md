@@ -1,12 +1,13 @@
 ---
-title: "Kevin Kelly on AI"
-slug: "kevin-kelly-on-ai"
-pubDate: 2025-08-06T14:18:44+03:00
-updatedDate: 2025-08-06T14:18:44+03:00
+title: Kevin Kelly on AI
+slug: kevin-kelly-on-ai
+created: 2025-08-06T11:18:44.000Z
+updated: 2025-08-06T11:18:44.000Z
 category: micro
 tags:
   - ai
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgirjbsh2m'
 ---
 
 [Artificial Intelligences, So Far by Kevin Kelly](https://kk.org/thetechnium/artificial-intelligences-so-far/)

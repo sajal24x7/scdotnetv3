@@ -1,12 +1,15 @@
 ---
 title: Resiliency Overview
 slug: resiliency-overview
-pubDate: '2024-04-07T13:04:00+03:00'
-updatedDate: '2024-04-07T13:04:00+03:00'
+created: '2024-04-07T13:04:00+03:00'
+updated: '2024-04-07T13:04:00+03:00'
 category: til
 tags:
-- azure
-- resiliency
+  - azure
+  - resiliency
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754766191123324'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modl2on7h52v'
 ---
 
 # What are we protecting against

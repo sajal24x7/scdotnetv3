@@ -1,13 +1,20 @@
 ---
-title: "Going Northern Light Hunting"
+title: Going Northern Light Hunting
 edition: 56
-slug: "going-northern-light-hunting"
-description: "And a bunch of AI use cases + Zuck shot himself in the foot"
-pubDate: 2025-04-20T03:21:32
-updatedDate: 2025-04-20T03:21:31
+slug: going-northern-light-hunting
+description: And a bunch of AI use cases + Zuck shot himself in the foot
+created: 2025-04-20T03:21:32.000Z
+updated: 2025-04-20T03:21:31.000Z
 category: nordletter
-tags: ["Nord Letter", "AI", "meta", "finland", "northernlights"]
-image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_5235.jpeg"
+tags:
+  - Nord Letter
+  - AI
+  - meta
+  - finland
+  - northernlights
+image: 'https://storage.sajalchoudhary.net/images/2025/04/IMG_5235.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhdylyn726'
 ---
 Hello from my Iso Omena's Kari meeting room\! This is NordLetter \#56, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

@@ -4,8 +4,8 @@ title: >-
   exe on Desktop
 slug: >-
   create-gpo-to-copy-a-file-in-a-certain-location-and-create-a-shortcut-to-that-exe-on-desktop
-pubDate: 2025-12-18T10:30:46.000Z
-updatedDate: 2025-12-18T10:30:46.000Z
+created: 2025-12-18T10:30:46.000Z
+updated: 2025-12-18T10:30:46.000Z
 category: til
 tags:
   - windows

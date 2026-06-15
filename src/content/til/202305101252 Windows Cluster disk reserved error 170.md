@@ -1,10 +1,14 @@
 ---
 title: Windows Cluster Disk Reserved Error 170
 slug: windows-cluster-disk-reserved-error-170
-pubDate: '2023-05-10T12:52:00+03:00'
-updatedDate: '2023-05-10T12:52:00+03:00'
+created: '2023-05-10T12:52:00+03:00'
+updated: '2023-05-10T12:52:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754742468441047'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkpvnb4b2w'
+  - 'https://www.threads.com/@sajal24x7/post/DZnGemBlqYE'
 ---
 
 

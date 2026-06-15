@@ -1,12 +1,15 @@
 ---
 title: Azure Container Instance
 slug: azure-container-instance
-pubDate: '2024-04-20T12:03:00+03:00'
-updatedDate: '2024-04-20T12:03:00+03:00'
+created: '2024-04-20T12:03:00+03:00'
+updated: '2024-04-20T12:03:00+03:00'
 category: til
 tags:
-- azure
-- appservices
+  - azure
+  - appservices
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754927485000433'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modne2333f2m'
 ---
 
 - Basic container as service

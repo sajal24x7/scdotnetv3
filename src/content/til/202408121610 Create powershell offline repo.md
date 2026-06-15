@@ -1,11 +1,13 @@
 ---
 title: Create Powershell Offline Repo
 slug: create-powershell-offline-repo
-pubDate: '2024-08-12T16:10:00+03:00'
-updatedDate: '2024-08-12T16:10:00+03:00'
+created: '2024-08-12T16:10:00+03:00'
+updated: '2024-08-12T16:10:00+03:00'
 category: til
 tags:
-- powershell
+  - powershell
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo53zbea2m'
 ---
 
 Fastest way to install modules on disconnected servers is [[202210111009 Powershell install modules offline|Install powershell modules]].

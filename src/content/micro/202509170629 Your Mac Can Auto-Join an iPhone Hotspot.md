@@ -1,8 +1,8 @@
 ---
 title: Your Mac Can Auto-Join an iPhone Hotspot
 slug: your-mac-can-auto-join-an-iphone-hotspot
-pubDate: 2025-09-17T03:30:59.000Z
-updatedDate: 2025-09-17T03:30:59.000Z
+created: 2025-09-17T03:30:59.000Z
+updated: 2025-09-17T03:30:59.000Z
 category: micro
 tags:
   - mac

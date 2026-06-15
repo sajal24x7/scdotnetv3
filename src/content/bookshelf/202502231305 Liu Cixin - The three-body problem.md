@@ -1,22 +1,24 @@
 ---
-title: 'The Three-Body Problem'
+title: The Three-Body Problem
 slug: the-three-body-problem
 description: The first book in the remembrance of earth's past series
-pubDate: 2025-02-23T13:05:04
-updatedDate: 2026-06-05T14:19:08
+created: 2025-02-23T13:05:04.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - sci-fi
   - cixin-liu
   - three-body-problem
 genre: sci-fi
-cover: 'the-three-body-problem.jpg'
-author: "Cixin Liu"
-series: "Remembrance of Earth's Past"
-shelfStatus: "read"
+cover: the-three-body-problem.jpg
+author: Cixin Liu
+series: Remembrance of Earth's Past
+shelfStatus: read
 rating: like
-started: "2025-02-23T13:05:00+03:00"
-finished: "2025-02-23T13:05:00+03:00"
+started: '2025-02-23T13:05:00+03:00'
+finished: '2025-02-23T13:05:00+03:00'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6kvfh323'
 ---
 How does one review a book?
 

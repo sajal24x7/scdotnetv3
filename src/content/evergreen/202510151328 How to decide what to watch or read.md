@@ -1,8 +1,8 @@
 ---
 title: How to Decide What to Watch or Read
 slug: how-to-decide-what-to-watch-or-read
-pubDate: 2025-10-15T10:32:58.000Z
-updatedDate: 2025-10-15T10:32:58.000Z
+created: 2025-10-15T10:32:58.000Z
+updated: 2025-10-15T10:32:58.000Z
 category: evergreen
 tags:
   - reading

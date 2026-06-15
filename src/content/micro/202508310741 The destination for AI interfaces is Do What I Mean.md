@@ -1,12 +1,13 @@
 ---
-title: "The Destination for AI Interfaces Is Do What I Mean"
-slug: "the-destination-for-ai-interfaces-is-do-what-i-mean"
-pubDate: 2025-08-31T11:15:03+03:00
-updatedDate: 2025-08-31T11:15:03+03:00
+title: The Destination for AI Interfaces Is Do What I Mean
+slug: the-destination-for-ai-interfaces-is-do-what-i-mean
+created: 2025-08-31T08:15:03.000Z
+updated: 2025-08-31T08:15:03.000Z
 category: micro
 tags:
   - ai
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgoltdyt2m'
 ---
 [The destination for AI interfaces is Do What I Mean - Interconnected](https://interconnected.org/home/2025/08/29/dwim)
 

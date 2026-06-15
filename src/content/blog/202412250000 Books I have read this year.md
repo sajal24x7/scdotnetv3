@@ -1,12 +1,16 @@
 ---
-title: "Books I've Read This Year"
-slug: "books-ive-read-this-year-2024"
-description: "16 - that's the number"
-pubDate: 2024-12-25T00:00:00
-updatedDate: 2024-12-25T00:00:00
+title: Books I've Read This Year
+slug: books-ive-read-this-year-2024
+description: 16 - that's the number
+created: 2024-12-25T00:00:00.000Z
+updated: 2024-12-25T00:00:00.000Z
 category: blog
-tags: ["blog"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_1809.jpeg"
+tags:
+  - blog
+image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_1809.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754213468780118'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd7e5bsy2u'
 ---
 # Books I've read this year
 

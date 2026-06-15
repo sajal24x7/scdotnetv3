@@ -1,11 +1,14 @@
 ---
 title: Type of Machine Learning
 slug: type-of-machine-learning
-pubDate: '2024-03-25T23:00:00+03:00'
-updatedDate: '2024-03-25T23:00:00+03:00'
+created: '2024-03-25T23:00:00+03:00'
+updated: '2024-03-25T23:00:00+03:00'
 category: til
 tags:
-- ai
+  - ai
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754762815235998'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkz5u6du2v'
 ---
 
 # Supervised

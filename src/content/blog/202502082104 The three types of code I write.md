@@ -1,12 +1,18 @@
 ---
-title: "The Three Types of Code I Write"
-slug: "the-three-types-of-code-i-write"
-description: "slapdash, scrappy and production-grade"
-pubDate: 2025-02-08T21:04:26
-updatedDate: 2025-02-08T21:04:26
+title: The Three Types of Code I Write
+slug: the-three-types-of-code-i-write
+description: 'slapdash, scrappy and production-grade'
+created: 2025-02-08T21:04:26.000Z
+updated: 2025-02-08T21:04:26.000Z
 category: blog
-tags: ["blog", "Tech Notes"]
-image: "https://images.unsplash.com/photo-1564865878688-9a244444042a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNvZGV8ZW58MHx8fHwxNzM5MDAyODUzfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - Tech Notes
+image: >-
+  https://images.unsplash.com/photo-1564865878688-9a244444042a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNvZGV8ZW58MHx8fHwxNzM5MDAyODUzfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754226725303608'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddfeiqfr2s'
 ---
 All code is not created equal.
 

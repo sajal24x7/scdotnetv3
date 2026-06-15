@@ -1,11 +1,15 @@
 ---
-title: "A Couple of Rasagullas"
-slug: "a-couple-of-rasagullas"
-pubDate: 2017-06-12T21:00:00
-updatedDate: 2024-05-04T07:23:29
+title: A Couple of Rasagullas
+slug: a-couple-of-rasagullas
+created: 2017-06-12T21:00:00.000Z
+updated: 2024-05-04T07:23:29.000Z
 category: story
-tags: ["stories"]
-image: "https://images.unsplash.com/photo-1509749837427-ac94a2553d0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGJ1c3xlbnwwfHx8fDE3MTQ4MDcxNDR8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - stories
+image: >-
+  https://images.unsplash.com/photo-1509749837427-ac94a2553d0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fGJ1c3xlbnwwfHx8fDE3MTQ4MDcxNDR8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhmobvkt2p'
 ---
 The bus to Hajipur was late by an hour. It was nothing new, or in that matter, exceptional. The woman and her son got down. The road crumbled beneath their feet.
 

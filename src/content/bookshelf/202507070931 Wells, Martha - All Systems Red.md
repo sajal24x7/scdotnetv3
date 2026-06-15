@@ -1,8 +1,8 @@
 ---
 title: All Systems Red
 slug: all-systems-red
-pubDate: 2025-07-09T16:12:00+03:00
-updatedDate: 2026-06-05T14:19:08
+created: 2025-07-09T13:12:00.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - murderbot
@@ -10,13 +10,15 @@ tags:
   - martha-wells
 author: Martha Wells
 series: The Murderbot Diaries
-started: 2025-07-07T09:31:00+03:00
-finished: 2025-07-08T18:00:00+03:00
+started: 2025-07-07T06:31:00.000Z
+finished: 2025-07-08T15:00:00.000Z
 shelfStatus: read
 rating: like
 format: audio
 genre: sci-fi
 cover: all-systems-red.webp
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6qq4en2l'
 ---
 
 Book 1 - [All systems red](/bookshelf/all-systems-red)

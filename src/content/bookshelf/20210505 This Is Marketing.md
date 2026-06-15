@@ -1,8 +1,8 @@
 ---
 title: This Is Marketing
 slug: this-is-marketing
-pubDate: 2026-01-07T14:08:09.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2026-01-07T14:08:09.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - business

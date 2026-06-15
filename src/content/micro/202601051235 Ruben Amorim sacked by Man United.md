@@ -1,8 +1,8 @@
 ---
 title: Ruben Amorim Sacked by Man United
 slug: ruben-amorim-sacked-by-man-united
-pubDate: 2026-01-05T10:36:32.000Z
-updatedDate: 2026-01-05T10:36:32.000Z
+created: 2026-01-05T10:36:32.000Z
+updated: 2026-01-05T10:36:32.000Z
 category: micro
 tags:
   - man-united

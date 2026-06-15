@@ -8,7 +8,7 @@ import { getAllPosts, transformPost } from '../../utils/content';
 const allPosts = await getAllPosts();
 const tilPosts = allPosts
   .filter(post => post.data.category === 'til')
-  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+  .sort((a, b) => new Date(b.data.created).getTime() - new Date(a.data.created).getTime());
 
 // Transform posts for the ContentGrid component
 const transformedPosts = tilPosts.map(transformPost);

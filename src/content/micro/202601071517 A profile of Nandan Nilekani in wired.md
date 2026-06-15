@@ -1,8 +1,8 @@
 ---
 title: A Profile of Nandan Nilekani in Wired
 slug: a-profile-of-nandan-nilekani-in-wired
-pubDate: 2026-01-07T13:18:14.000Z
-updatedDate: 2026-01-07T13:18:14.000Z
+created: 2026-01-07T13:18:14.000Z
+updated: 2026-01-07T13:18:14.000Z
 category: micro
 tags:
   - india

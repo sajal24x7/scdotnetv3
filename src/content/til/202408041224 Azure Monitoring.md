@@ -1,12 +1,15 @@
 ---
 title: Azure Monitoring
 slug: azure-monitoring
-pubDate: '2024-08-04T12:24:00+03:00'
-updatedDate: '2024-08-04T12:24:00+03:00'
+created: '2024-08-04T12:24:00+03:00'
+updated: '2024-08-04T12:24:00+03:00'
 category: til
 tags:
-- azure
-- monitoring
+  - azure
+  - monitoring
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754975313177818'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnzrxaxt2m'
 ---
 
 - Monitoring is available for all [[202404061212 Azure Resources|azure resources]]

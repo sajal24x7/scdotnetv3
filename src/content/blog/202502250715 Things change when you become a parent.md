@@ -1,12 +1,19 @@
 ---
-title: "Things Change When You Become a Parent"
-slug: "things-change-when-you-become-a-parent"
-description: "Life goes on"
-pubDate: 2025-02-25T07:15:59
-updatedDate: 2025-02-25T07:16:33
+title: Things Change When You Become a Parent
+slug: things-change-when-you-become-a-parent
+description: Life goes on
+created: 2025-02-25T07:15:59.000Z
+updated: 2025-02-25T07:16:33.000Z
 category: blog
-tags: ["blog", "parenting", "mattdavella"]
-image: "https://images.unsplash.com/photo-1723444059774-743b0e6d19e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDd8fHx8fHx8fDE3NDA0NjcwNTB8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - parenting
+  - mattdavella
+image: >-
+  https://images.unsplash.com/photo-1723444059774-743b0e6d19e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDd8fHx8fHx8fDE3NDA0NjcwNTB8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754233411532074'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddifz2f62d'
 ---
 I was watching this video last night.
 

@@ -1,12 +1,15 @@
 ---
 title: Azure ExpressRoute
 slug: azure-expressroute
-pubDate: '2024-04-14T13:39:00+03:00'
-updatedDate: '2024-04-14T13:39:00+03:00'
+created: '2024-04-14T13:39:00+03:00'
+updated: '2024-04-14T13:39:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754921122345555'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnb5mg5d2z'
 ---
 
 1. ExpressRoute lets you extend your on-premises networks into the Microsoft cloud over a private connection with the help of a connectivity provider.

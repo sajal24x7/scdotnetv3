@@ -1,12 +1,13 @@
 ---
-title: "AI Is Polytheistic"
-slug: "ai-is-polytheistic"
-pubDate: 2025-08-05T15:08:21+03:00
-updatedDate: 2025-08-05T15:08:21+03:00
+title: AI Is Polytheistic
+slug: ai-is-polytheistic
+created: 2025-08-05T12:08:21.000Z
+updated: 2025-08-05T12:08:21.000Z
 category: micro
 tags:
   - ai
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgickkfw2c'
 ---
 
 [AI is polytheistic, not monotheistic by Balaji](https://balajis.com/p/ai-is-polytheistic-not-monotheistic)
