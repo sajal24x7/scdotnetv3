@@ -1,22 +1,24 @@
 ---
-title: 'The Galaxy and the Ground Within'
+title: The Galaxy and the Ground Within
 slug: chambers-becky-the-galaxy-and-the-ground-within
 description: The fourth and final book in the wayfarer series
-created: 2025-01-10T20:15:50
-updated: 2026-06-05T14:19:08
+created: 2025-01-10T20:15:50.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
   - sci-fi
 genre: sci-fi
-series: 'Wayfarers'
+series: Wayfarers
 seriesNumber: 4
-cover: 'the-galaxy-and-the-ground-within.jpg'
-author: "Becky Chambers"
-shelfStatus: "read"
+cover: the-galaxy-and-the-ground-within.jpg
+author: Becky Chambers
+shelfStatus: read
 rating: like
-started: "2025-01-10T20:15:00+03:00"
-finished: "2025-01-10T20:15:00+03:00"
+started: '2025-01-10T20:15:00+03:00'
+finished: '2025-01-10T20:15:00+03:00'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6gzkoa2m'
 ---
 This is the final book in the wayfarer series, after [Record of a spaceborn few](__GHOST_URL__/becky-chambers-record-of-a-spaceborn-few/). Becky continues to explore new characters in this universe. The common thread this time is Captain Pei, the Aeuluon Ashby loves from [The Long Way to a Small, Angry Planet](https://en.wikipedia.org/wiki/The_Long_Way_to_a_Small,_Angry_Planet). Pei is joined by Oulu, a Laru mother and their child Tupo, Roveg an exiled artist who wants to go back to his family, and Speaker, an Akarak, about whom no one knows much, and hence fears a little.
 

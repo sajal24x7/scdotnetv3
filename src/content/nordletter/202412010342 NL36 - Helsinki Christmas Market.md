@@ -1,13 +1,16 @@
 ---
-title: "Helsinki Christmas Market"
+title: Helsinki Christmas Market
 edition: 36
-slug: "helsinki-christmas-market"
-description: "Two fun videos + two business concepts + something about rats"
-created: 2024-12-01T03:42:56
-updated: 2024-12-01T03:42:56
+slug: helsinki-christmas-market
+description: Two fun videos + two business concepts + something about rats
+created: 2024-12-01T03:42:56.000Z
+updated: 2024-12-01T03:42:56.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_8564.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/11/IMG_8564.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh6x3w232u'
 ---
 Hello from home in Matinkylä\! This is NordLetter \#36, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

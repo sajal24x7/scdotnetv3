@@ -1,13 +1,18 @@
 ---
-title: "A Happy New Year"
+title: A Happy New Year
 edition: 41
-slug: "a-happy-new-year"
-description: "Most things are still the same + AI roundups + good things that happened in 2024"
-created: 2025-01-05T03:51:06
-updated: 2025-01-05T03:51:05
+slug: a-happy-new-year
+description: >-
+  Most things are still the same + AI roundups + good things that happened in
+  2024
+created: 2025-01-05T03:51:06.000Z
+updated: 2025-01-05T03:51:05.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9046.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2025/01/IMG_9046.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modha2jane2s'
 ---
 Hello and happy new year\! I am still in Matinkylä and this is still NordLetter. This is edition \#41 of NordLetter, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

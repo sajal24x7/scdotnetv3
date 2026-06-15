@@ -1,10 +1,19 @@
 ---
-title: "On the Competitive Aspect of Things"
-slug: "on-the-competitive-aspect-of-things"
-created: 2016-01-24T21:47:49
-updated: 2016-01-24T21:47:49
+title: On the Competitive Aspect of Things
+slug: on-the-competitive-aspect-of-things
+created: 2016-01-24T21:47:49.000Z
+updated: 2016-01-24T21:47:49.000Z
 category: blog
-tags: ["blog", "competitive nature", "humanity", "life", "time"]
+tags:
+  - blog
+  - competitive nature
+  - humanity
+  - life
+  - time
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754014042898869'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modaenwjvu2d'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxRVQlj9W'
 ---
 ![](http://www.thehelix.ie/wp-content/uploads/2015/08/competition-time-700x330-692x326.png)
 

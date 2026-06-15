@@ -5,8 +5,11 @@ created: '2023-11-15T15:34:00+03:00'
 updated: '2023-11-15T15:34:00+03:00'
 category: til
 tags:
-- ucs
-- cisco
+  - ucs
+  - cisco
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754756331624810'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkw72mpp26'
 ---
 
 # Firmware Image Management

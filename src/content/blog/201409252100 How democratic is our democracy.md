@@ -1,10 +1,20 @@
 ---
-title: "How Democratic Is Our Democracy?"
-slug: "how-democratic-is-our-democracy"
-created: 2014-09-25T21:00:00
-updated: 2014-09-25T21:00:00
+title: How Democratic Is Our Democracy?
+slug: how-democratic-is-our-democracy
+created: 2014-09-25T21:00:00.000Z
+updated: 2014-09-25T21:00:00.000Z
 category: blog
-tags: ["blog", "democracy", "india", "indian politics", "politics", "vote"]
+tags:
+  - blog
+  - democracy
+  - india
+  - indian politics
+  - politics
+  - vote
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753993591797319'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda3dvfzt2c'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwrLZFvDz'
 ---
 [![Democracy](https://storage.sajalchoudhary.net/images/wordpress/2014/09/blog-3.png)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/blog-3.png)
 

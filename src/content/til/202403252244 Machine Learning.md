@@ -5,8 +5,11 @@ created: '2024-03-25T22:44:00+03:00'
 updated: '2024-03-25T22:44:00+03:00'
 category: til
 tags:
-- azure
-- ai
+  - azure
+  - ai
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754762683666614'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkz3pvqq2c'
 ---
 
 # What is ML?

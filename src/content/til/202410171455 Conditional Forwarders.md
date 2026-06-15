@@ -5,8 +5,10 @@ created: '2024-10-17T14:55:00+03:00'
 updated: '2024-10-17T14:55:00+03:00'
 category: til
 tags:
-- windows
-- dns
+  - windows
+  - dns
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobrjsql2m'
 ---
 
 - Forward specific DNS queries (for a domain) to external DNS servers, when it can't be solved internally.

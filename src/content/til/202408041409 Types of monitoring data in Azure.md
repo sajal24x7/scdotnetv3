@@ -5,8 +5,11 @@ created: '2024-08-04T14:09:00+03:00'
 updated: '2024-08-04T14:09:00+03:00'
 category: til
 tags:
-- azure
-- monitoring
+  - azure
+  - monitoring
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754975867019648'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnzzxddq2c'
 ---
 
 Basically two types:

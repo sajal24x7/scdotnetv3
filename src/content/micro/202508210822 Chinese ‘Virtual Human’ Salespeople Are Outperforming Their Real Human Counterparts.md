@@ -1,14 +1,18 @@
 ---
-title: "Chinese ‘Virtual Human’ Salespeople Are Outperforming Their Real Human Counterparts"
-slug: "chinese-virtual-human-salespeople-are-outperforming-their-real-human-counterparts"
-created: 2025-08-21T08:22:50+03:00
-updated: 2025-08-21T08:22:50+03:00
+title: >-
+  Chinese ‘Virtual Human’ Salespeople Are Outperforming Their Real Human
+  Counterparts
+slug: >-
+  chinese-virtual-human-salespeople-are-outperforming-their-real-human-counterparts
+created: 2025-08-21T05:22:50.000Z
+updated: 2025-08-21T05:22:50.000Z
 category: micro
 tags:
   - ai
   - china
   - virtual-humans
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgm65vpc24'
 ---
 
 [Chinese ‘Virtual Human’ Salespeople Are Outperforming Their Real Human Counterparts by Jason Koebler](https://www.wired.com/story/artificial-intelligence-tiktok-shop-ecommerce-china/)

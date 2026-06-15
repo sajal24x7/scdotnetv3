@@ -1,12 +1,18 @@
 ---
-title: "What Is an iPhone"
-slug: "what-is-an-iphone"
-description: "Answer - a computer"
-created: 2024-09-30T06:35:32
-updated: 2024-09-30T06:35:31
+title: What Is an iPhone
+slug: what-is-an-iphone
+description: Answer - a computer
+created: 2024-09-30T06:35:32.000Z
+updated: 2024-09-30T06:35:31.000Z
 category: blog
-tags: ["blog", "apple"]
-image: "https://images.unsplash.com/photo-1493163950639-25d052809253?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ2fHxpcGhvbmV8ZW58MHx8fHwxNzI3NjMyNzc0fDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - apple
+image: >-
+  https://images.unsplash.com/photo-1493163950639-25d052809253?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ2fHxpcGhvbmV8ZW58MHx8fHwxNzI3NjMyNzc0fDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754051660010987'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modavqp73r2o'
 ---
 The iPhone is not a phone. It hasn't been a phone for a long long time now. [Steve Jobs had announced the iPhone](https://www.youtube.com/watch?v=VQKMoT-6XSg) as being three things:
 

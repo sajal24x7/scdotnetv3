@@ -1,12 +1,19 @@
 ---
-title: "Hopes and Dreams for the Fediverse"
-slug: "hopes-and-dreams-for-the-fediverse"
-description: "Interop everywhere"
-created: 2024-10-22T03:05:31
-updated: 2024-10-27T08:28:39
+title: Hopes and Dreams for the Fediverse
+slug: hopes-and-dreams-for-the-fediverse
+description: Interop everywhere
+created: 2024-10-22T03:05:31.000Z
+updated: 2024-10-27T08:28:39.000Z
 category: blog
-tags: ["essays", "writing is", "fediverse"]
-image: "https://images.unsplash.com/photo-1706265399459-1fe07a0c9f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDc1fHxjb25uZWN0ZWQlMjBkZXZpY2VzfGVufDB8fHx8MTcyOTU0NzA4Mnww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - essays
+  - writing is
+  - fediverse
+image: >-
+  https://images.unsplash.com/photo-1706265399459-1fe07a0c9f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDc1fHxjb25uZWN0ZWQlMjBkZXZpY2VzfGVufDB8fHx8MTcyOTU0NzA4Mnww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754053904580597'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modawrg37c2m'
 ---
 I started this note in September. Almost a month has passed since I started thinking about this.
 

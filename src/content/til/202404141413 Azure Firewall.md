@@ -5,8 +5,11 @@ created: '2024-04-14T14:13:00+03:00'
 updated: '2024-04-14T14:13:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754921886041441'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnbicnd32o'
 ---
 
 Can be used to [[202404141404 Control traffic flows|control traffic flow]]

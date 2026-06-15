@@ -1,13 +1,14 @@
 ---
-title: "New Features in Apple’s Spotlight"
-slug: "new-features-in-apples-spotlight"
-created: 2025-08-01T13:07:00+03:00
-updated: 2025-08-01T13:07:00+03:00
+title: New Features in Apple’s Spotlight
+slug: new-features-in-apples-spotlight
+created: 2025-08-01T10:07:00.000Z
+updated: 2025-08-01T10:07:00.000Z
 category: micro
 tags:
   - apple
   - mac
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modghgfhgt2s'
 ---
 [How Apple’s New Spotlight Compares to Raycast](https://www.wired.com/story/how-new-macos-spotlight-compares-to-raycast/)
 

@@ -1,10 +1,18 @@
 ---
-title: "On Honesty, Part-II"
-slug: "on-honesty-part-ii"
-created: 2015-11-24T20:33:58
-updated: 2015-11-24T20:33:58
+title: 'On Honesty, Part-II'
+slug: on-honesty-part-ii
+created: 2015-11-24T20:33:58.000Z
+updated: 2015-11-24T20:33:58.000Z
 category: blog
-tags: ["blog", "honesty", "writer", "writing is"]
+tags:
+  - blog
+  - honesty
+  - writer
+  - writing is
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754010236573928'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modacwdbdn2l'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxKM5Fq38'
 ---
 ![honesty](https://storage.sajalchoudhary.net/images/wordpress/2015/11/honesty.png)
 

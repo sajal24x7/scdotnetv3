@@ -1,12 +1,14 @@
 ---
-title: "Kevin Kelly on Self-Publishing"
-slug: "kevin-kelly-on-self-publishing"
-created: 2025-08-15T12:59:11+03:00
-updated: 2025-08-15T12:59:11+03:00
+title: Kevin Kelly on Self-Publishing
+slug: kevin-kelly-on-self-publishing
+created: 2025-08-15T09:59:11.000Z
+updated: 2025-08-15T09:59:11.000Z
 category: micro
-tags: 
+tags:
   - writing
   - publishing
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgkixk4k2v'
 ---
 [Everything I Know about Self-Publishing by Kevin Kelly](https://kk.org/thetechnium/everything-i-know-about-self-publishing/)
 

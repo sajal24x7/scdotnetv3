@@ -1,13 +1,18 @@
 ---
-title: "What Matters to You"
+title: What Matters to You
 edition: 50
-slug: "what-matters-to-you"
-description: "A year of mornings available everywhere now + EV for the masses + new Apple stuff"
-created: 2025-03-09T03:49:00
-updated: 2025-03-09T03:49:00
+slug: what-matters-to-you
+description: >-
+  A year of mornings available everywhere now + EV for the masses + new Apple
+  stuff
+created: 2025-03-09T03:49:00.000Z
+updated: 2025-03-09T03:49:00.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_0130.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2025/03/IMG_0130.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhcdwjhf2v'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#50. Each week I share some of the interesting things I found on the web. And I have been doing that for 50 consecutive weeks. That is a good streak.
 

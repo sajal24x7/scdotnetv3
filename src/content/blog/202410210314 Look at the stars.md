@@ -1,12 +1,16 @@
 ---
-title: "Look at the Stars"
-slug: "look-at-the-stars"
-description: "Look at the sun"
-created: 2024-10-21T03:14:23
-updated: 2024-10-21T03:14:23
+title: Look at the Stars
+slug: look-at-the-stars
+description: Look at the sun
+created: 2024-10-21T03:14:23.000Z
+updated: 2024-10-21T03:14:23.000Z
 category: blog
-tags: ["blog"]
-image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6354.jpeg"
+tags:
+  - blog
+image: 'https://storage.sajalchoudhary.net/images/2024/10/IMG_6354.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754053780153484'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modawpqux623'
 ---
 I was walking through the nature trail the other night. It was dark, and there were no lights. Just the light from the stars in the sky. And I thought how different life would have been if we did not have lights at night.
 

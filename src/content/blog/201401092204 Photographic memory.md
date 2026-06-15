@@ -1,12 +1,23 @@
 ---
-title: "Photographic Memory"
-slug: "photographic-memory"
-description: "My first memories of being captured, on a photo film that is, consist of me being rushed to the terrace, followed by a change of clothes and a brief touch up, which is followed by introduction of two more kids almost the same age and then one of my brothers clicking the picture."
-created: 2014-01-09T22:04:12
-updated: 2024-05-04T06:52:06
+title: Photographic Memory
+slug: photographic-memory
+description: >-
+  My first memories of being captured, on a photo film that is, consist of me
+  being rushed to the terrace, followed by a change of clothes and a brief touch
+  up, which is followed by introduction of two more kids almost the same age and
+  then one of my brothers clicking the picture.
+created: 2014-01-09T22:04:12.000Z
+updated: 2024-05-04T06:52:06.000Z
 category: blog
-tags: ["nostalgia", "photography"]
-image: "https://storage.sajalchoudhary.net/images/wordpress/2014/01/wpid-img_20140109_220150.jpg"
+tags:
+  - nostalgia
+  - photography
+image: >-
+  https://storage.sajalchoudhary.net/images/wordpress/2014/01/wpid-img_20140109_220150.jpg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753975500248743'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7t4yrwn2v'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwJhtFlvu'
 ---
 My first memories of being captured, on a photo film that is, consist of me being rushed to the terrace, followed by a change of clothes and a brief touch up, which is followed by introduction of two more kids almost the same age and then one of my brothers clicking the picture. That was around a decade back, more or less. How times have changed\!
 

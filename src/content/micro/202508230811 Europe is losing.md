@@ -1,13 +1,14 @@
 ---
-title: "Europe Is Losing"
-slug: "europe-is-losing"
-created: 2025-08-23T22:30:52+03:00
-updated: 2025-08-23T22:30:52+03:00
+title: Europe Is Losing
+slug: europe-is-losing
+created: 2025-08-23T19:30:52.000Z
+updated: 2025-08-23T19:30:52.000Z
 category: micro
 tags:
   - europe
   - economy
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgmqvk6k24'
 ---
 [Europe Is Losing](https://www.msn.com/en-us/politics/government/europe-is-losing/ar-AA1L24RG)
 

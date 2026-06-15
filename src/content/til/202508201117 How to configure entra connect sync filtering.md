@@ -1,14 +1,15 @@
 ---
-title: "How to Configure Entra Connect Sync Filtering"
-slug: "how-to-configure-entra-connect-sync-filtering"
-created: 2025-09-08T20:51:55+03:00
-updated: 2025-09-08T20:51:55+03:00
+title: How to Configure Entra Connect Sync Filtering
+slug: how-to-configure-entra-connect-sync-filtering
+created: 2025-09-08T17:51:55.000Z
+updated: 2025-09-08T17:51:55.000Z
 category: til
 tags:
   - azure
   - entra
   - entraconnect
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoeura6r2w'
 ---
 [MSFT has good documentation around this.]([Microsoft Entra Connect Sync: Configure filtering - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-sync-configure-filtering)) 
 

@@ -1,13 +1,16 @@
 ---
-title: "Certified and It Feels so Good"
+title: Certified and It Feels so Good
 edition: 24
-slug: "certified-and-it-feels-so-good"
-description: "Azure goals + Apple's DMA compliance"
-created: 2024-09-08T18:53:50
-updated: 2024-09-16T17:59:27
+slug: certified-and-it-feels-so-good
+description: Azure goals + Apple's DMA compliance
+created: 2024-09-08T18:53:50.000Z
+updated: 2024-09-16T17:59:27.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_5995-1.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/09/IMG_5995-1.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh4f5wqa2c'
 ---
 Hello from my home in Matinkyla\! This is NordLetter \#24, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

@@ -5,10 +5,13 @@ created: '2024-04-20T12:10:00+03:00'
 updated: '2024-04-20T12:10:00+03:00'
 category: til
 tags:
-- azure
-- container
-- appservices
-- k8s
+  - azure
+  - container
+  - appservices
+  - k8s
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754927891717543'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modne7xha32o'
 ---
 
 - [[202404201203 Azure Container Instance|Azure Container Instace]] is OK. But mostly we need more than one container. 

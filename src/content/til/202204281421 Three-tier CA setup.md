@@ -5,10 +5,12 @@ created: '2022-04-28T14:21:00+03:00'
 updated: '2022-04-28T14:21:00+03:00'
 category: til
 tags:
-- cert
-- internalca
-- powershell
-- windows
+  - cert
+  - internalca
+  - powershell
+  - windows
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnzj6al24'
 ---
 
 

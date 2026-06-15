@@ -5,8 +5,11 @@ created: '2024-08-07T07:54:00+03:00'
 updated: '2024-08-07T07:54:00+03:00'
 category: til
 tags:
-- azure
-- monitoring
+  - azure
+  - monitoring
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754977175252371'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo2n2bpy26'
 ---
 
 -  a tool in [[202408041224 Azure Monitoring|Azure Monitoring]] to run queries on collected logs

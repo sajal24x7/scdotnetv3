@@ -1,12 +1,13 @@
 ---
-title: "Ethan Mollick on Mass Intelligence"
-slug: "ethan-mollick-on-mass-intelligence"
-created: 2025-08-29T13:13:26+03:00
-updated: 2025-08-29T13:13:26+03:00
+title: Ethan Mollick on Mass Intelligence
+slug: ethan-mollick-on-mass-intelligence
+created: 2025-08-29T10:13:26.000Z
+updated: 2025-08-29T10:13:26.000Z
 category: micro
 tags:
   - ai
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgnucacb2o'
 ---
 
 [Mass Intelligence by Ethan Mollick](https://www.oneusefulthing.org/p/mass-intelligence)

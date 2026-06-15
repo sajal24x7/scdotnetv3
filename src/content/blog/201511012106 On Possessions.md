@@ -1,10 +1,20 @@
 ---
-title: "On Possessions"
-slug: "on-possessions"
-created: 2015-11-01T21:06:46
-updated: 2015-11-01T21:06:46
+title: On Possessions
+slug: on-possessions
+created: 2015-11-01T21:06:46.000Z
+updated: 2015-11-01T21:06:46.000Z
 category: blog
-tags: ["blog", "diwali", "minimalism", "nandan", "possessions", "stuff"]
+tags:
+  - blog
+  - diwali
+  - minimalism
+  - nandan
+  - possessions
+  - stuff
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754008646024542'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modac6ragn2l'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxHLzFp00'
 ---
 [![Possessions](https://storage.sajalchoudhary.net/images/wordpress/2015/11/img_20151031_102519.jpg?w=660)](https://storage.sajalchoudhary.net/images/wordpress/2015/11/img_20151031_102519.jpg)
 

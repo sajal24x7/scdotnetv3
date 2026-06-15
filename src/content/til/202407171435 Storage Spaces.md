@@ -5,8 +5,11 @@ created: '2024-07-17T14:35:00+03:00'
 updated: '2024-07-17T14:35:00+03:00'
 category: til
 tags:
-- windows
-- storage
+  - windows
+  - storage
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754960461736402'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnszqzaq2v'
 ---
 
 # Limitations

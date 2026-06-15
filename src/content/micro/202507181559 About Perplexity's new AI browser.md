@@ -1,8 +1,8 @@
 ---
-title: "About Perplexity's New AI Browser"
-slug: "about-perplexitys-new-ai-browser"
-created: 2025-07-19T11:31:53+03:00
-updated: 2025-07-19T11:31:53+03:00
+title: About Perplexity's New AI Browser
+slug: about-perplexitys-new-ai-browser
+created: 2025-07-19T08:31:53.000Z
+updated: 2025-07-19T08:31:53.000Z
 category: micro
 tags:
   - ai
@@ -10,7 +10,8 @@ tags:
   - web
   - google
   - perplexity
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modech3hec2c'
 ---
 [Perplexity’s Comet is the AI browser Google wants](https://www.theverge.com/news/709025/perplexity-comet-ai-browser-chrome-competitor)
 

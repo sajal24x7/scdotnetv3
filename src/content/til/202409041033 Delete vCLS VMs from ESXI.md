@@ -5,7 +5,9 @@ created: '2024-09-04T10:33:00+03:00'
 updated: '2024-09-04T10:33:00+03:00'
 category: til
 tags:
-- vmware
+  - vmware
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoajqgub2w'
 ---
 
 Useful when trying to remove datastore from ESXi and the vCLS VM is running on it. 

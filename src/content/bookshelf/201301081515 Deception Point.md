@@ -2,7 +2,7 @@
 title: Deception Point
 slug: deception-point
 created: 2013-01-08T15:15:09.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -15,5 +15,8 @@ started: 2013-01-08T15:15:02.000Z
 finished: 2013-01-08T15:15:09.000Z
 rating: love
 cover: deception-point.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754256677083074'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddsyf74p2m'
 ---
 Finished Reading

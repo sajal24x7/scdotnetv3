@@ -1,12 +1,18 @@
 ---
-title: "Duplicating Everything"
-slug: "duplicating-everything"
-description: "Stop re-doing everything"
-created: 2025-03-27T05:07:09
-updated: 2025-03-27T05:07:08
+title: Duplicating Everything
+slug: duplicating-everything
+description: Stop re-doing everything
+created: 2025-03-27T05:07:09.000Z
+updated: 2025-03-27T05:07:08.000Z
 category: blog
-tags: ["blog", "AI"]
-image: "https://images.unsplash.com/photo-1742654230443-7c19cb55cd46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDI5OTk5Mzd8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - AI
+image: >-
+  https://images.unsplash.com/photo-1742654230443-7c19cb55cd46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDI5OTk5Mzd8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754242678736161'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddmmi5ai2c'
 ---
 I read this in Kevin Kelly's What Technology Wants:
 

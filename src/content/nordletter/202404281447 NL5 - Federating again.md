@@ -1,16 +1,18 @@
 ---
-title: "Federating Again"
+title: Federating Again
 edition: 5
-slug: "federating-again"
-description: "Nord Letter #5 - Ghost Activitypub + Information Flow"
-created: 2024-04-28T14:47:09
-updated: 2024-07-07T20:07:15
+slug: federating-again
+description: 'Nord Letter #5 - Ghost Activitypub + Information Flow'
+created: 2024-04-28T14:47:09.000Z
+updated: 2024-07-07T20:07:15.000Z
 category: nordletter
 tags:
   - finland
   - writing
   - ghost
-image: https://storage.sajalchoudhary.net/images/2024/04/tempImageFm5RD9.gif
+image: 'https://storage.sajalchoudhary.net/images/2024/04/tempImageFm5RD9.gif'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgy7s3gw2m'
 ---
 Hello 👋 from the Iso Omena Library. 
 

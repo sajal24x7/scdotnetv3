@@ -1,10 +1,14 @@
 ---
-title: "The Ranchos and the Silencers"
-slug: "the-ranchos-and-the-silencers"
-created: 2012-08-18T08:23:42
-updated: 2024-04-29T13:21:06
+title: The Ranchos and the Silencers
+slug: the-ranchos-and-the-silencers
+created: 2012-08-18T08:23:42.000Z
+updated: 2024-04-29T13:21:06.000Z
 category: blog
-tags: [“college-life”]
+tags:
+  - “college-life”
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753966689264125'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7p4iozf2s'
 ---
 So, the results came out a while back.
 

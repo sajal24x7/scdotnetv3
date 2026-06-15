@@ -1,12 +1,17 @@
 ---
-title: "A Tale of Two Airlines"
-slug: "a-tale-of-two-airlines"
-description: "Finnair good. SpiceJet shit."
-created: 2024-10-26T03:03:23
-updated: 2024-10-26T03:03:23
+title: A Tale of Two Airlines
+slug: a-tale-of-two-airlines
+description: Finnair good. SpiceJet shit.
+created: 2024-10-26T03:03:23.000Z
+updated: 2024-10-26T03:03:23.000Z
 category: blog
-tags: ["blog", "travel"]
-image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6390.jpeg"
+tags:
+  - blog
+  - travel
+image: 'https://storage.sajalchoudhary.net/images/2024/10/IMG_6390.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754054214769860'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modawvzul32v'
 ---
 I travelled to India on Wednesday aboard Finnair. I always use Finnair, but this was the best flight I had with them, which is not to say that the others were bad. Just that this was the most comfortable flight for me.
 

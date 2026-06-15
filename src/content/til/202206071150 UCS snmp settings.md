@@ -5,7 +5,9 @@ created: '2022-06-07T11:50:00+03:00'
 updated: '2022-06-07T11:50:00+03:00'
 category: til
 tags:
-- ucs
+  - ucs
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjrxbtdg26'
 ---
 
 Admin > Expand All > Communication Management > Communication Services

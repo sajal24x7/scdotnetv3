@@ -5,8 +5,11 @@ created: '2024-07-28T14:10:00+03:00'
 updated: '2024-07-28T14:10:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754969974259978'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnxea23n2s'
 ---
 
 - An appliance by security vendors (cisco,etc.)

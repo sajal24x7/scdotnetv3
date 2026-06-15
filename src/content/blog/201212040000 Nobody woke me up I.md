@@ -1,10 +1,15 @@
 ---
-title: "Nobody Woke Me up, I'm up Any Ways!"
-slug: "nobody-woke-me-up-i"
-created: 2012-12-04T00:00:00
-updated: 2024-04-29T00:00:00
+title: 'Nobody Woke Me up, I''m up Any Ways!'
+slug: nobody-woke-me-up-i
+created: 2012-12-04T00:00:00.000Z
+updated: 2024-04-29T00:00:00.000Z
 category: blog
-tags: ["writing is"]
+tags:
+  - writing is
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753970729350758'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7qxfrfh2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwAnoFn0T'
 ---
 Ok, doesn’t exactly look like this\!
 

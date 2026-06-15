@@ -1,9 +1,9 @@
 ---
 title: Men Without Women
 slug: murakami-haruki-men-without-women
-description: I love the book, and the object that it is
-created: 2025-01-30T21:37:13
-updated: 2026-06-05T14:19:08
+description: 'I love the book, and the object that it is'
+created: 2025-01-30T21:37:13.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -13,8 +13,10 @@ cover: men-without-women.jpg
 author: Haruki Murakami
 shelfStatus: read
 rating: like
-started: 2025-01-30T21:37:00+03:00
-finished: 2025-01-30T21:37:00+03:00
+started: 2025-01-30T18:37:00.000Z
+finished: 2025-01-30T18:37:00.000Z
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6ir3va2c'
 ---
 # Few things about the thing that is this book
 

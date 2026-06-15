@@ -1,10 +1,19 @@
 ---
-title: "Thoughts on Self-Hosting"
-slug: "thoughts-on-self-hosting"
-created: 2016-05-26T22:33:41
-updated: 2016-05-26T22:33:41
+title: Thoughts on Self-Hosting
+slug: thoughts-on-self-hosting
+created: 2016-05-26T22:33:41.000Z
+updated: 2016-05-26T22:33:41.000Z
 category: blog
-tags: ["blog", "hosting", "self-hosting", "wordpress", "writing is"]
+tags:
+  - blog
+  - hosting
+  - self-hosting
+  - wordpress
+  - writing is
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754023373692801'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modaivihyh2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxiq3lkcs'
 ---
 ![websites.png](https://storage.sajalchoudhary.net/images/wordpress/2016/05/websites.png)
 

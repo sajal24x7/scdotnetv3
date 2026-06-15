@@ -1,14 +1,15 @@
 ---
-title: "Hungry Worms Could Help Solve Plastic Pollution"
-slug: "hungry-worms-could-help-solve-plastic-pollution"
-created: 2025-09-06T09:57:20+03:00
-updated: 2025-09-06T09:57:20+03:00
+title: Hungry Worms Could Help Solve Plastic Pollution
+slug: hungry-worms-could-help-solve-plastic-pollution
+created: 2025-09-06T06:57:20.000Z
+updated: 2025-09-06T06:57:20.000Z
 category: micro
 tags:
   - plastic
   - pollution
   - green-tech
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgoztze72m'
 ---
 
 [Hungry Worms Could Help Solve Plastic Pollution by Ritsuko Kawai](https://www.wired.com/story/could-plastic-eating-moth-larvae-be-a-solution-to-environmental-pollution/)

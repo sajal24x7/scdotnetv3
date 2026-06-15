@@ -1,12 +1,17 @@
 ---
-title: "Losing Someone"
-slug: "losing-someone"
-description: "It's hard"
-created: 2024-09-27T07:39:30
-updated: 2024-09-27T07:39:30
+title: Losing Someone
+slug: losing-someone
+description: It's hard
+created: 2024-09-27T07:39:30.000Z
+updated: 2024-09-27T07:39:30.000Z
 category: blog
-tags: ["blog", "death"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_3831.jpeg"
+tags:
+  - blog
+  - death
+image: 'https://storage.sajalchoudhary.net/images/2024/09/IMG_3831.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754051200545667'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modavk6v3a2v'
 ---
 My _nanaji_ passed away a couple of days back.
 

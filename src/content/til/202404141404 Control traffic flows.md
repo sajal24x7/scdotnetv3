@@ -5,8 +5,11 @@ created: '2024-04-14T14:04:00+03:00'
 updated: '2024-04-14T14:04:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754921513774316'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnbcvq7q2v'
 ---
 
 - By default traffic can freely flow within a virtual network and to any connected network

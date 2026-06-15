@@ -5,8 +5,11 @@ created: '2024-04-13T13:37:00+03:00'
 updated: '2024-04-13T13:37:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754920633875232'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnawfcld2m'
 ---
 
 - Many Azure services have external, Internet facing endpoints however often private connectivity is required

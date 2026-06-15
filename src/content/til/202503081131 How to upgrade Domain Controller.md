@@ -1,13 +1,14 @@
 ---
-title: "How to Upgrade Domain Controller"
-slug: "how-to-upgrade-domain-controller"
-created: 2025-03-08T11:41:01+03:00
-updated: 2025-03-08T11:41:01+03:00
+title: How to Upgrade Domain Controller
+slug: how-to-upgrade-domain-controller
+created: 2025-03-08T08:41:01.000Z
+updated: 2025-03-08T08:41:01.000Z
 category: til
 tags:
   - windows
   - ad
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocv2vhv2p'
 ---
 In-place upgrade is not suggested. The approach to take is deploy a new server, dcpromo the old one out, rename, give the same IP, dcpromo the new one in.
 

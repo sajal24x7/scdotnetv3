@@ -1,13 +1,14 @@
 ---
-title: "The Things I Write on My Blog"
-slug: "the-things-i-write-on-my-blog"
-created: 2025-08-30T11:47:22+03:00
-updated: 2025-08-30T11:47:22+03:00
+title: The Things I Write on My Blog
+slug: the-things-i-write-on-my-blog
+created: 2025-08-30T08:47:22.000Z
+updated: 2025-08-30T08:47:22.000Z
 category: evergreen
 tags:
   - writing
   - scdotnet
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modeaf7zul23'
 ---
 The first step is to figure out the things I write and a brief description of those things. Then, we can move onto how those could be organised.
 

@@ -5,8 +5,11 @@ created: '2024-04-20T14:00:00+03:00'
 updated: '2024-04-20T14:00:00+03:00'
 category: til
 tags:
-- azure
-- appservices
+  - azure
+  - appservices
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754929588784295'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modneyoqmi2v'
 ---
 
 - original paas

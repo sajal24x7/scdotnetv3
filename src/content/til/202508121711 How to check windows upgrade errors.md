@@ -1,13 +1,14 @@
 ---
-title: "How to Check Windows Upgrade Errors"
-slug: "how-to-check-windows-upgrade-errors"
-created: 2025-08-12T17:11:23+03:00
-updated: 2025-08-12T17:11:23+03:00
+title: How to Check Windows Upgrade Errors
+slug: how-to-check-windows-upgrade-errors
+created: 2025-08-12T14:11:23.000Z
+updated: 2025-08-12T14:11:23.000Z
 category: til
 tags:
   - windows
   - upgade
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoeqpiop2u'
 ---
 [Windows update log files](https://learn.microsoft.com/en-us/windows/deployment/upgrade/log-files#analyze-log-files)are present under `$Windows.~BT\Sources\Panther`. There are two files `setupact.log` and `setuperr.log`.
 

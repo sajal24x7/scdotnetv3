@@ -5,8 +5,10 @@ created: '2024-09-02T13:26:00+03:00'
 updated: '2024-09-02T13:26:00+03:00'
 category: til
 tags:
-- azure
-- management
+  - azure
+  - management
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoahqmwz2m'
 ---
 
 1. Azure Locks can be applied at [[202404061212 Azure Resources|resource]], [[202404051818 Resource Groups|resource group]] or [[202401101441 Azure subscriptions|subscription]] level

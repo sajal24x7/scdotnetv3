@@ -5,7 +5,10 @@ created: '2024-07-16T21:20:00+03:00'
 updated: '2024-07-16T21:20:00+03:00'
 category: til
 tags:
-- azure
+  - azure
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754959914804395'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnsrz4iv2s'
 ---
 
 - These are used elsewhere like in [[202404051739 Governance Overview|azure governance]]

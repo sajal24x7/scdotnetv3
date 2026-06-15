@@ -5,8 +5,11 @@ created: '2024-07-05T15:34:00+03:00'
 updated: '2024-07-05T15:34:00+03:00'
 category: til
 tags:
-- vmware
-- powershell
+  - vmware
+  - powershell
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754949433854903'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnnze2ei2v'
 ---
 
 .Set-AdvancedSetting can be used to set it.

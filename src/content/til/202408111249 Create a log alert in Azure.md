@@ -5,8 +5,10 @@ created: '2024-08-11T12:49:00+03:00'
 updated: '2024-08-11T12:49:00+03:00'
 category: til
 tags:
-- azure
-- monitoring
+  - azure
+  - monitoring
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo4cwxk32m'
 ---
 
 - first define a log search rule

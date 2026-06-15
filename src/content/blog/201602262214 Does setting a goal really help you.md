@@ -1,10 +1,18 @@
 ---
-title: "Does Setting a Goal Really Help You?"
-slug: "does-setting-a-goal-really-help-you"
-created: 2016-02-26T22:14:32
-updated: 2016-02-26T22:14:32
+title: Does Setting a Goal Really Help You?
+slug: does-setting-a-goal-really-help-you
+created: 2016-02-26T22:14:32.000Z
+updated: 2016-02-26T22:14:32.000Z
 category: blog
-tags: ["blog", "goal-setting", "goals", "life", "running"]
+tags:
+  - blog
+  - goal-setting
+  - goals
+  - life
+  - running
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754019651949129'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modah77up32c'
 ---
 ![8535316836_f9998457f0_b](https://storage.sajalchoudhary.net/images/wordpress/2016/02/8535316836_f9998457f0_b.jpg)
 

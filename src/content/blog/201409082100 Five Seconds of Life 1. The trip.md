@@ -1,10 +1,20 @@
 ---
-title: "Five Seconds of Life: 1. The Trip"
-slug: "five-seconds-of-life-1-the-trip"
-created: 2014-09-08T21:00:02
-updated: 2014-09-08T21:00:02
+title: 'Five Seconds of Life: 1. The Trip'
+slug: five-seconds-of-life-1-the-trip
+created: 2014-09-08T21:00:02.000Z
+updated: 2014-09-08T21:00:02.000Z
 category: blog
-tags: ["blog", "dehradun", "mussorie", "road trip", "trip", "video"]
+tags:
+  - blog
+  - dehradun
+  - mussorie
+  - road trip
+  - trip
+  - video
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753989137242839'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7zd6gke2u'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwi4xln01'
 ---
 So here’s how its going to workout I guess. Each week, on the first day I’ll post a five second video. I might or might not add some text to it. That will take care of one out of the three days when I need to post something fresh.
 

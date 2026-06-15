@@ -1,12 +1,18 @@
 ---
-title: "The Net Good or Bad of AI"
-slug: "the-net-good-or-bad-of-ai"
-description: "Balancing the perceived benefits against the harms"
-created: 2024-12-19T11:29:23
-updated: 2024-12-19T11:29:23
+title: The Net Good or Bad of AI
+slug: the-net-good-or-bad-of-ai
+description: Balancing the perceived benefits against the harms
+created: 2024-12-19T11:29:23.000Z
+updated: 2024-12-19T11:29:23.000Z
 category: blog
-tags: ["blog", "AI"]
-image: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTczNDYwNzcyMnww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - AI
+image: >-
+  https://images.unsplash.com/photo-1677756119517-756a188d2d94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTczNDYwNzcyMnww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754211231283092'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd6dg64e2m'
 ---
 What is the net result of IA? Is it good or bad?
 

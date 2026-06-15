@@ -1,10 +1,18 @@
 ---
-title: "Why Persistence Matters"
-slug: "why-persistence-matters"
-created: 2016-02-15T22:02:36
-updated: 2016-02-15T22:02:36
+title: Why Persistence Matters
+slug: why-persistence-matters
+created: 2016-02-15T22:02:36.000Z
+updated: 2016-02-15T22:02:36.000Z
 category: blog
-tags: ["blog", "life", "persistence", "writing is"]
+tags:
+  - blog
+  - life
+  - persistence
+  - writing is
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754017348759058'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modag5rduf2o'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxXcBloOh'
 ---
 ![persistence](https://storage.sajalchoudhary.net/images/wordpress/2016/02/persistence.jpg)The persistent ant\!
 

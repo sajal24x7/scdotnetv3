@@ -1,11 +1,17 @@
 ---
-title: "What Is Justice?"
-slug: "what-is-justice"
-created: 2012-02-28T18:06:52
-updated: 2024-04-29T12:35:40
+title: What Is Justice?
+slug: what-is-justice
+created: 2012-02-28T18:06:52.000Z
+updated: 2024-04-29T12:35:40.000Z
 category: blog
-tags: ["justice"]
-image: "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGp1c3RpY2V8ZW58MHx8fHwxNzE0Mzk0MTIwfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - justice
+image: >-
+  https://images.unsplash.com/photo-1589994965851-a8f479c573a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGp1c3RpY2V8ZW58MHx8fHwxNzE0Mzk0MTIwfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753965071718549'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7oewk7f2o'
+  - 'https://www.threads.com/@sajal24x7/post/DZmv2DrFjQX'
 ---
 _So, what is Justice?_
 

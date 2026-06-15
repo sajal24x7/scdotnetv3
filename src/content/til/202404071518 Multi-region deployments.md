@@ -5,8 +5,11 @@ created: '2024-04-07T15:18:00+03:00'
 updated: '2024-04-07T15:18:00+03:00'
 category: til
 tags:
-- azure
-- resiliency
+  - azure
+  - resiliency
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754908668365702'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn3i422h2c'
 ---
 
 1. Mostly active-passive setups but can be active-active too

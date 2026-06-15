@@ -5,9 +5,12 @@ created: '2024-04-14T14:42:00+03:00'
 updated: '2024-04-14T14:42:00+03:00'
 category: til
 tags:
-- azure
-- network
-- security
+  - azure
+  - network
+  - security
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754923586272510'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modncbb2gx2l'
 ---
 
 - When an externally facing [[202312231415 Azure Master|Azure]] PaaS service is accessed from a resource in a  [[202404121703 Azure VNet|VNet]] the traffic stays on the Azure network

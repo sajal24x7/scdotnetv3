@@ -1,8 +1,8 @@
 ---
-title: "The Zombie Survival Guide: Complete Protection From the Living Dead"
+title: 'The Zombie Survival Guide: Complete Protection From the Living Dead'
 slug: the-zombie-survival-guide-complete-protection-from-the-living-dead
 created: 2013-11-21T16:21:47.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -15,5 +15,8 @@ started: 2013-11-21T16:21:47.000Z
 finished: 2013-11-21T16:21:47.000Z
 rating: love
 cover: the-zombie-survival-guide-complete-protection-from-the-living-dead.jpg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754271335735734'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddznnxkw2u'
 ---
 Finished Reading

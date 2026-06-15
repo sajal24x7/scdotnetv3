@@ -1,12 +1,26 @@
 ---
-title: "The Morality Factor"
-slug: "the-morality-factor"
-description: "Daneel’s issue was with the scientific slowdown, the decline in the development of newer technologies or that’s how he illustrates his point. I on the other hand have my issues with the morality of the society, the civilization in large."
-created: 2013-08-22T23:21:05
-updated: 2024-05-04T06:40:30
+title: The Morality Factor
+slug: the-morality-factor
+description: >-
+  Daneel’s issue was with the scientific slowdown, the decline in the
+  development of newer technologies or that’s how he illustrates his point. I on
+  the other hand have my issues with the morality of the society, the
+  civilization in large.
+created: 2013-08-22T23:21:05.000Z
+updated: 2024-05-04T06:40:30.000Z
 category: blog
-tags: ["degradation", "eve teasing", "india", "morality", "ogling", "social values"]
-image: "https://storage.sajalchoudhary.net/images/2024/05/animal.jpg"
+tags:
+  - degradation
+  - eve teasing
+  - india
+  - morality
+  - ogling
+  - social values
+image: 'https://storage.sajalchoudhary.net/images/2024/05/animal.jpg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753973941674516'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7sg4ffv2s'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwGlkFnFK'
 ---
 “The Empire is deteriorating” says [R. Daneel Olivaw](http://en.wikipedia.org/wiki/R._Daneel_Olivaw) to Hari Seldon in [‘Prelude to the Foundation’](http://en.wikipedia.org/wiki/Prelude_to_Foundation). Not in the exact same words I think, but I’m pretty sure about the zest.
 

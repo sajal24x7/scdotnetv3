@@ -5,8 +5,11 @@ created: '2024-04-12T12:39:00+03:00'
 updated: '2024-04-12T12:39:00+03:00'
 category: til
 tags:
-- azure
-- storage
+  - azure
+  - storage
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754917319126281'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn7ft5bl2m'
 ---
 
 You might have [[202406291221 Azure Files|Azure Files]]

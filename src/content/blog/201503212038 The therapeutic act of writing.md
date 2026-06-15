@@ -1,10 +1,17 @@
 ---
-title: "The Therapeutic Act of Writing"
-slug: "the-therapeutic-act-of-writing"
-created: 2015-03-21T20:38:14
-updated: 2015-03-21T20:38:14
+title: The Therapeutic Act of Writing
+slug: the-therapeutic-act-of-writing
+created: 2015-03-21T20:38:14.000Z
+updated: 2015-03-21T20:38:14.000Z
 category: blog
-tags: ["blog", "therapeutic writing", "writing is"]
+tags:
+  - blog
+  - therapeutic writing
+  - writing is
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754002491435670'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda7fs23f2l'
+  - 'https://www.threads.com/@sajal24x7/post/DZmw7y9lmbr'
 ---
 [![Writing](https://storage.sajalchoudhary.net/images/wordpress/2015/03/hand-writing-dave-king.jpg?w=1000)](https://storage.sajalchoudhary.net/images/wordpress/2015/03/hand-writing-dave-king.jpg)
 

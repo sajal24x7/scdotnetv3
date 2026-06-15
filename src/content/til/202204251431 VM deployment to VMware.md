@@ -5,8 +5,10 @@ created: '2022-04-25T14:31:00+03:00'
 updated: '2022-04-25T14:31:00+03:00'
 category: til
 tags:
-- vmware
-- terraform
+  - vmware
+  - terraform
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnevwjn2s'
 ---
 
 

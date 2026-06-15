@@ -5,7 +5,10 @@ created: '2024-04-23T11:54:00+03:00'
 updated: '2024-04-23T11:54:00+03:00'
 category: til
 tags:
-- ansible
+  - ansible
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754931658164352'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnfwmiya2v'
 ---
 
 ```bash

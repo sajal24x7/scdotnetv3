@@ -5,8 +5,10 @@ created: '2024-08-11T12:24:00+03:00'
 updated: '2024-08-11T12:24:00+03:00'
 category: til
 tags:
-- azure
-- monitoring
+  - azure
+  - monitoring
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo3ufwpq2c'
 ---
 
 We can use the [[202408041409 Types of monitoring data in Azure|Types of monitoring data in Azure]] collected in [[202404281601 Azure monitoring old|Azure monitoring]] to create alerts.

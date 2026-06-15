@@ -2,7 +2,7 @@
 title: The End of All Things
 slug: the-end-of-all-things
 created: 2016-01-11T10:19:51.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -16,5 +16,7 @@ started: 2016-01-11T10:19:51.000Z
 finished: 2016-01-11T10:19:51.000Z
 rating: like
 cover: the-end-of-all-things.jpg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode42tvny2c'
 ---
 Finished Reading

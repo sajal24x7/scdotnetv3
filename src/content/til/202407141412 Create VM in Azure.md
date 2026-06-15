@@ -5,9 +5,12 @@ created: '2024-07-14T14:12:00+03:00'
 updated: '2024-07-14T14:12:00+03:00'
 category: til
 tags:
-- powershell
-- azure
-- compute
+  - powershell
+  - azure
+  - compute
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754954806722968'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnqhjbcq23'
 ---
 
 

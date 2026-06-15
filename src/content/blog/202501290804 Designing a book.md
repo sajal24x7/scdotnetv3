@@ -1,12 +1,18 @@
 ---
-title: "Designing a Book"
-slug: "designing-a-book"
-description: "With a little bit of quirkiness"
-created: 2025-01-29T08:04:32
-updated: 2025-01-29T08:08:20
+title: Designing a Book
+slug: designing-a-book
+description: With a little bit of quirkiness
+created: 2025-01-29T08:04:32.000Z
+updated: 2025-01-29T08:08:20.000Z
 category: blog
-tags: ["blog", "books", "design"]
-image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9437.jpeg"
+tags:
+  - blog
+  - books
+  - design
+image: 'https://storage.sajalchoudhary.net/images/2025/01/IMG_9437.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754223645282074'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modddxt3pl2l'
 ---
 I am reading Murakami’s Men without women, hardcover.
 

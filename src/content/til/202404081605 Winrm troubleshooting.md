@@ -5,8 +5,11 @@ created: '2024-04-08T16:05:00+03:00'
 updated: '2024-04-08T16:05:00+03:00'
 category: til
 tags:
-- windows
-- winrm
+  - windows
+  - winrm
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754911030293324'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn4ke6ay2v'
 ---
 
 Related to [[202309181318 Powershell second hop problem]]

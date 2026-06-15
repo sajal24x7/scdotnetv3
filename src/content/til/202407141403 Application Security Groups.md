@@ -5,8 +5,11 @@ created: '2024-07-14T14:03:00+03:00'
 updated: '2024-07-14T14:03:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754953835442353'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnpzfchh2m'
 ---
 
 - ASGs allow VMs to be grouped together based on application role

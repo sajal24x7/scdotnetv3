@@ -1,11 +1,17 @@
 ---
-title: "A Little Something Called Inertia"
-slug: "a-little-something-called-inertia"
-created: 2013-07-03T18:28:05
-updated: 2024-04-29T14:15:32
+title: A Little Something Called Inertia
+slug: a-little-something-called-inertia
+created: 2013-07-03T18:28:05.000Z
+updated: 2024-04-29T14:15:32.000Z
 category: blog
-tags: ["inertia"]
-image: "https://images.unsplash.com/photo-1511715282680-fbf93a50e721?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fG1vdGlvbnxlbnwwfHx8fDE3MTQ0MDAxMDB8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - inertia
+image: >-
+  https://images.unsplash.com/photo-1511715282680-fbf93a50e721?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fG1vdGlvbnxlbnwwfHx8fDE3MTQ0MDAxMDB8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753972086276140'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7rl5g6f2o'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwDI7lmZk'
 ---
 **Inertia \(n\):  A tendency to do nothing or to remain unchanged**
 

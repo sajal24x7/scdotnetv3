@@ -1,12 +1,18 @@
 ---
-title: "Sometimes All It Takes Is Magic"
-slug: "sometimes-all-it-takes-is-magic"
-description: "Sometimes magic is working harder than imagined possible"
-created: 2025-01-06T20:46:56
-updated: 2025-01-06T20:46:56
+title: Sometimes All It Takes Is Magic
+slug: sometimes-all-it-takes-is-magic
+description: Sometimes magic is working harder than imagined possible
+created: 2025-01-06T20:46:56.000Z
+updated: 2025-01-06T20:46:56.000Z
 category: blog
-tags: ["blog", "writing is"]
-image: "https://images.unsplash.com/photo-1475738384599-8cf3db232ffa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ0fHxtYWdpY3xlbnwwfHx8fDE3MzYxOTYzODV8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - writing is
+image: >-
+  https://images.unsplash.com/photo-1475738384599-8cf3db232ffa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQ0fHxtYWdpY3xlbnwwfHx8fDE3MzYxOTYzODV8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754217090942146'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddazikmo24'
 ---
 I read [Hugh Howey's](https://hughhowey.com) [Writing Insights](https://hughhowey.com/writing-insights-part-one-becoming-a-writer/) series recently. I wrote about it too - about [when to write](__GHOST_URL__/blog/when-to-write/).
 

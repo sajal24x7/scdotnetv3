@@ -1,13 +1,14 @@
 ---
-title: "Analogical Thinking"
-slug: "analogical-thinking"
-created: 2025-08-20T22:17:51+03:00
-updated: 2025-08-20T22:17:51+03:00
+title: Analogical Thinking
+slug: analogical-thinking
+created: 2025-08-20T19:17:51.000Z
+updated: 2025-08-20T19:17:51.000Z
 category: evergreen
 tags:
   - learning
   - thinking
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modeajg7sm2o'
 ---
 Read about this first in [Range](#).
 

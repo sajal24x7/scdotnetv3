@@ -1,13 +1,14 @@
 ---
-title: "Asking Claude to Create a Calendar Entry From a Screenshot"
-slug: "asking-claude-to-create-a-calendar-entry-from-a-screenshot"
-created: 2025-08-04T12:53:07+03:00
-updated: 2025-08-04T12:53:07+03:00
+title: Asking Claude to Create a Calendar Entry From a Screenshot
+slug: asking-claude-to-create-a-calendar-entry-from-a-screenshot
+created: 2025-08-04T09:53:07.000Z
+updated: 2025-08-04T09:53:07.000Z
 category: til
 tags:
   - ai
   - claude
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoejvzrb2v'
 ---
 I wrote about [new updates to claude](/micro/new-updates-to-claude) recently, in which there was a mention of using Claude to create calendar entries.
 

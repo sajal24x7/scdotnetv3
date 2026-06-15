@@ -1,12 +1,17 @@
 ---
-title: "Life Everywhere"
-slug: "life-everywhere"
-description: "But not in the way you expect"
-created: 2024-11-29T20:32:03
-updated: 2024-11-29T20:32:03
+title: Life Everywhere
+slug: life-everywhere
+description: But not in the way you expect
+created: 2024-11-29T20:32:03.000Z
+updated: 2024-11-29T20:32:03.000Z
 category: blog
-tags: ["blog"]
-image: "https://images.unsplash.com/photo-1688406107329-4b4537173519?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDh8fHZpbmVzJTIwcnVpbnN8ZW58MHx8fHwxNzMyOTEyMjk0fDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+image: >-
+  https://images.unsplash.com/photo-1688406107329-4b4537173519?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDh8fHZpbmVzJTIwcnVpbnN8ZW58MHx8fHwxNzMyOTEyMjk0fDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754203712707499'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd2w5sa32w'
 ---
 [The cosmos is teeming with complex organic molecules](https://www.quantamagazine.org/the-cosmos-teems-with-complex-organic-molecules-20241113/), the building block of carbon-based life.
 

@@ -1,12 +1,21 @@
 ---
-title: "Do What You Want To!"
-slug: "do-what-you-want-to"
-description: "Whatever you do, make sure that you are not doing what your father, mother or society wishes you to do because you don’t want to end up where you don’t want to be"
-created: 2014-07-08T15:57:30
-updated: 2024-05-04T06:56:50
+title: Do What You Want To!
+slug: do-what-you-want-to
+description: >-
+  Whatever you do, make sure that you are not doing what your father, mother or
+  society wishes you to do because you don’t want to end up where you don’t want
+  to be
+created: 2014-07-08T15:57:30.000Z
+updated: 2024-05-04T06:56:50.000Z
 category: blog
-tags: ["essays"]
-image: "https://storage.sajalchoudhary.net/images/2024/05/photo-1594605965522-16b488c9cd9f.jpeg"
+tags:
+  - essays
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/05/photo-1594605965522-16b488c9cd9f.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753983313079915'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7wodfpe2u'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwYCAls2q'
 ---
 _“Whatever you do, make sure that you are not doing what your father, mother or society wishes you to do because you don’t want to end up where you don’t want to be”_
 

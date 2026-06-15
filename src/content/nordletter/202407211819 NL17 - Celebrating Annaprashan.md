@@ -1,14 +1,16 @@
 ---
 title: Celebrating Annaprashan
 slug: celebrating-annaprashan
-description: "Nord Letter #17 - Annaprashan + Global Crowdstrike outage"
-created: 2024-07-21T18:19:41
-updated: 2024-08-20T15:58:18
+description: 'Nord Letter #17 - Annaprashan + Global Crowdstrike outage'
+created: 2024-07-21T18:19:41.000Z
+updated: 2024-08-20T15:58:18.000Z
 category: nordletter
 tags:
   - savya
-image: https://storage.sajalchoudhary.net/images/2024/07/IMG_4778.jpeg
+image: 'https://storage.sajalchoudhary.net/images/2024/07/IMG_4778.jpeg'
 edition: 17
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh2mzkeu2u'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#17, a weekly newsletter on living and walking in Finland. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 

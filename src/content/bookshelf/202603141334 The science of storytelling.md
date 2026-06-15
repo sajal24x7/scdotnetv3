@@ -2,7 +2,7 @@
 title: The Science of Storytelling
 slug: the-science-of-storytelling
 created: 2026-03-14T11:34:48.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - writing
@@ -15,7 +15,9 @@ shelfStatus: read
 started: 2026-03-14T11:34:48.000Z
 cover: the-science-of-storytelling.jpg
 rating: like
-finished: 2026-03-24T10:46:56+02:00
+finished: 2026-03-24T08:46:56.000Z
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode7rrhye2o'
 ---
 
 ## Review

@@ -1,12 +1,20 @@
 ---
-title: "Warming up to LLMs"
-slug: "warming-up-to-llms"
-description: "Using copilot to update my book page"
-created: 2025-03-04T07:28:03
-updated: 2025-03-04T07:28:03
+title: Warming up to LLMs
+slug: warming-up-to-llms
+description: Using copilot to update my book page
+created: 2025-03-04T07:28:03.000Z
+updated: 2025-03-04T07:28:03.000Z
 category: blog
-tags: ["blog", "AI", "LLM", "openweb"]
-image: "https://images.unsplash.com/photo-1733503711063-3427bff34612?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDEwNzE3MzJ8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - AI
+  - LLM
+  - openweb
+image: >-
+  https://images.unsplash.com/photo-1733503711063-3427bff34612?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDEwNzE3MzJ8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754235151453066'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddj76ql32l'
 ---
 Outside of all the hype created by the techbros selling their AI products, there is a usefulness to the LLMs. I personally use Copilot whenever I need to. It’s free and uses ChatGPT in the backend. I don’t have high usage for the product, I am not using it as a coding companion or something. So it works.
 

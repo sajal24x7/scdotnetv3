@@ -1,12 +1,16 @@
 ---
-title: "Building Furniture"
-slug: "building-furniture"
-description: "A traditional Ikea holiday"
-created: 2024-12-07T21:09:00
-updated: 2024-12-07T23:09:21
+title: Building Furniture
+slug: building-furniture
+description: A traditional Ikea holiday
+created: 2024-12-07T21:09:00.000Z
+updated: 2024-12-07T23:09:21.000Z
 category: blog
-tags: ["blog"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8659-1.jpeg"
+tags:
+  - blog
+image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8659-1.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754206896197207'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd4dvvqz2s'
 ---
 Finland celebrated its 107th Independence Day on Friday. It is a public holiday in Finland, which made this a long weekend.
 

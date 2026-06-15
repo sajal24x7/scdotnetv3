@@ -5,8 +5,11 @@ created: '2024-07-27T12:15:00+03:00'
 updated: '2024-07-27T12:15:00+03:00'
 category: til
 tags:
-- azure
-- powershell
+  - azure
+  - powershell
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754966983443788'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnvz3ikp2m'
 ---
 
 [[202404141450 Azure DNS|Azure DNS]]

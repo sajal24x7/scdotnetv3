@@ -1,12 +1,18 @@
 ---
-title: "How to Tell Stories"
-slug: "how-to-tell-stories"
-description: "Stories need to surprise"
-created: 2024-10-19T20:38:28
-updated: 2024-10-19T20:38:28
+title: How to Tell Stories
+slug: how-to-tell-stories
+description: Stories need to surprise
+created: 2024-10-19T20:38:28.000Z
+updated: 2024-10-19T20:38:28.000Z
 category: blog
-tags: ["blog", "writing is"]
-image: "https://images.unsplash.com/photo-1543726969-a1da85a6d334?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHN0b3JpZXN8ZW58MHx8fHwxNzI5MzcwMjE0fDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - writing is
+image: >-
+  https://images.unsplash.com/photo-1543726969-a1da85a6d334?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHN0b3JpZXN8ZW58MHx8fHwxNzI5MzcwMjE0fDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754053671414349'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modawo4ec42u'
 ---
 I had recently watched [Ctrl \(control\) on Netflix](https://en.wikipedia.org/wiki/CTRL_\(film\)) this past week. I had heard some rave reviews about it. It is directed by Mr. Motwane. Which is all to say, I went into it with high hopes.
 

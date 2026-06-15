@@ -1,14 +1,15 @@
 ---
-title: "About AI Browsers"
-slug: "about-ai-browsers"
-created: 2025-07-11T11:50:15+03:00
-updated: 2025-07-11T11:50:15+03:00
+title: About AI Browsers
+slug: about-ai-browsers
+created: 2025-07-11T08:50:15.000Z
+updated: 2025-07-11T08:50:15.000Z
 category: evergreen
 tags:
   - ai
   - browsers
   - web
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modeab4bf52l'
 ---
 [OpenAI’s next big launch could be an AI web browser](https://www.theverge.com/news/704162/opeani-ai-web-browser-chatgpt)
 

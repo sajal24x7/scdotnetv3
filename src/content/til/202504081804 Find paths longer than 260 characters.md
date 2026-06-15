@@ -1,12 +1,13 @@
 ---
-title: "Find Paths Longer Than 260 Characters"
-slug: "find-paths-longer-than-260-characters"
-created: 2025-04-08T21:40:06+03:00
-updated: 2025-04-08T21:40:06+03:00
+title: Find Paths Longer Than 260 Characters
+slug: find-paths-longer-than-260-characters
+created: 2025-04-08T18:40:06.000Z
+updated: 2025-04-08T18:40:06.000Z
 category: til
 tags:
-  - "#windows"
-
+  - '#windows'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododjkovr2v'
 ---
 When running Get-ChildItem or Get-Acl, we might come across this issue. 
 

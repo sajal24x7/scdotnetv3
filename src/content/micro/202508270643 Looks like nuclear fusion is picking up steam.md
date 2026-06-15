@@ -1,13 +1,14 @@
 ---
-title: "Looks Like Nuclear Fusion Is Picking up Steam"
-slug: "looks-like-nuclear-fusion-is-picking-up-steam"
-created: 2025-08-27T06:46:11+03:00
-updated: 2025-08-27T06:46:11+03:00
+title: Looks Like Nuclear Fusion Is Picking up Steam
+slug: looks-like-nuclear-fusion-is-picking-up-steam
+created: 2025-08-27T03:46:11.000Z
+updated: 2025-08-27T03:46:11.000Z
 category: micro
 tags:
   - fusion
   - green-tech
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgn6wjff2w'
 ---
 [Looks like nuclear fusion is picking up steam  by Justine Calma](https://www.theverge.com/news/766269/nuclear-fusion-project-map)
 

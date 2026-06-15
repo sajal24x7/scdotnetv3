@@ -1,13 +1,14 @@
 ---
-title: "How to Save Markdown Documents Using Apple Shortcuts"
-slug: "how-to-save-markdown-documents-using-apple-shortcuts"
-created: 2025-07-16T11:13:39+03:00
-updated: 2025-07-16T11:13:39+03:00
+title: How to Save Markdown Documents Using Apple Shortcuts
+slug: how-to-save-markdown-documents-using-apple-shortcuts
+created: 2025-07-16T08:13:39.000Z
+updated: 2025-07-16T08:13:39.000Z
 category: til
 tags:
   - apple
   - shortcuts
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoedawdv2p'
 ---
 The **Save File** component saves file as .txt even if you specify the complete name with .md.
 

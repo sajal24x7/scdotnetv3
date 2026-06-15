@@ -5,8 +5,11 @@ created: '2024-07-27T11:43:00+03:00'
 updated: '2024-07-27T11:43:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754966312212135'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnvou5si2v'
 ---
 
 Public IP address in Azure have 2 SKUs: 

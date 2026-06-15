@@ -1,12 +1,17 @@
 ---
-title: "Everything Can Teach Us Something"
-slug: "everything-can-teach-us-something"
-description: "Help us grow"
-created: 2024-10-09T03:31:40
-updated: 2024-10-09T03:31:40
+title: Everything Can Teach Us Something
+slug: everything-can-teach-us-something
+description: Help us grow
+created: 2024-10-09T03:31:40.000Z
+updated: 2024-10-09T03:31:40.000Z
 category: blog
-tags: ["blog"]
-image: "https://storage.sajalchoudhary.net/images/2024/10/photo-1728327509874-68aeaa84590c.jpeg"
+tags:
+  - blog
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/10/photo-1728327509874-68aeaa84590c.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754052552573668'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modaw5rlra2s'
 ---
 I had a little tiff at work today. Nothing like how I used to get maybe an year or so earlier. Maybe two years earlier. I have grown since those days. It's true these things still affect me. I am not bulletproof in an emotional sense.
 

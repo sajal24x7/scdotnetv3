@@ -1,14 +1,16 @@
 ---
-title: "Hugh Howey’s Routine"
-slug: "hugh-howeys-routine"
-created: 2025-07-16T11:15:58+03:00
-updated: 2025-07-16T11:15:58+03:00
+title: Hugh Howey’s Routine
+slug: hugh-howeys-routine
+created: 2025-07-16T08:15:58.000Z
+updated: 2025-07-16T08:15:58.000Z
 category: micro
-tags: 
-  - howey, hugh
+tags:
+  - 'howey, hugh'
   - health
-  - workout 
+  - workout
   - routine
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modec52tw52l'
 ---
 [My Routine - Hugh Howey](https://hughhowey.com/my-routine/)
 

@@ -5,8 +5,10 @@ created: '2022-05-25T14:14:00+03:00'
 updated: '2022-05-25T14:14:00+03:00'
 category: til
 tags:
-- dns
-- windows
+  - dns
+  - windows
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjqorxuh2u'
 ---
 
 1. dnsmgmt.msc

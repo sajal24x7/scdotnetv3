@@ -5,7 +5,10 @@ created: '2023-07-13T16:54:00+03:00'
 updated: '2023-07-13T16:54:00+03:00'
 category: til
 tags:
-- powershell
+  - powershell
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754752151474623'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkucf7yq2p'
 ---
 
 

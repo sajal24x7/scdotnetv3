@@ -1,11 +1,15 @@
 ---
-title: "Us Against the World!"
-slug: "us-against-the-world"
-created: 2012-04-26T14:13:55
-updated: 2024-04-29T12:59:30
+title: Us Against the World!
+slug: us-against-the-world
+created: 2012-04-26T14:13:55.000Z
+updated: 2024-04-29T12:59:30.000Z
 category: poem
-tags: ["love"]
-image: "https://storage.sajalchoudhary.net/images/2024/04/photo-1543280554-642953527bf5.jpeg"
+tags:
+  - love
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/04/photo-1543280554-642953527bf5.jpeg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhk4g7k42o'
 ---
 _As the world stood crumbling,_
 

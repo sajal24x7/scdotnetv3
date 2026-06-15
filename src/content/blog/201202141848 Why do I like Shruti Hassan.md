@@ -1,10 +1,15 @@
 ---
-title: "Why Do I Like Shruti Hassan?"
-slug: "why-do-i-like-shruti-hassan"
-created: 2012-02-14T18:48:00
-updated: 2024-04-29T12:27:30
+title: Why Do I Like Shruti Hassan?
+slug: why-do-i-like-shruti-hassan
+created: 2012-02-14T18:48:00.000Z
+updated: 2024-04-29T12:27:30.000Z
 category: blog
-tags: [“fandom”]
+tags:
+  - “fandom”
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753964490095982'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7o4rbju26'
+  - 'https://www.threads.com/@sajal24x7/post/DZmv1DOlpgC'
 ---
 [![Why do I like Shruti Hassan?](https://storage.sajalchoudhary.net/images/wordpress/2012/02/dreamgirl-18.jpg?w=165)](https://storage.sajalchoudhary.net/images/wordpress/2012/02/dreamgirl-18.jpg)Why do I like Shruti Hassan?
 

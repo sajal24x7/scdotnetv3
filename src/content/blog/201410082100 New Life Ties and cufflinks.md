@@ -1,10 +1,19 @@
 ---
-title: "New Life: Ties, and Cufflinks!"
-slug: "new-life-ties-and-cufflinks"
-created: 2014-10-08T21:00:00
-updated: 2014-10-08T21:00:00
+title: 'New Life: Ties, and Cufflinks!'
+slug: new-life-ties-and-cufflinks
+created: 2014-10-08T21:00:00.000Z
+updated: 2014-10-08T21:00:00.000Z
 category: blog
-tags: ["blog", "hyderabad", "life", "new life", "travelling"]
+tags:
+  - blog
+  - hyderabad
+  - life
+  - new life
+  - travelling
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753995088507635'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda3zyzm42u'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwuAnFoab'
 ---
 [![image](https://storage.sajalchoudhary.net/images/wordpress/2014/10/wpid-wp-1412522071079.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/10/wpid-wp-1412522071079.jpg)
 

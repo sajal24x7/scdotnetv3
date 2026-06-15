@@ -5,9 +5,11 @@ created: '2024-08-28T19:18:00+03:00'
 updated: '2024-08-28T19:18:00+03:00'
 category: til
 tags:
-- azure
-- identity
-- entra
+  - azure
+  - identity
+  - entra
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo7x532523'
 ---
 
 - Dedicated and Trusted instance of [[202404011327 Entra ID|Entra ID]]

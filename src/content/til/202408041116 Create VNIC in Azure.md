@@ -5,9 +5,12 @@ created: '2024-08-04T11:16:00+03:00'
 updated: '2024-08-04T11:16:00+03:00'
 category: til
 tags:
-- powershell
-- azure
-- network
+  - powershell
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754974643811330'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnziaeei26'
 ---
 
 ```powershell

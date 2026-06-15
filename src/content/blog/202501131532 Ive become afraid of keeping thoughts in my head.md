@@ -1,11 +1,16 @@
 ---
-title: "I’ve Become Afraid of Keeping Thoughts in My Head"
-slug: "ive-become-afraid-of-keeping-thoughts-in-my-head"
-description: "The consequence of thinking while writing"
-created: 2025-01-13T15:32:06
-updated: 2025-01-13T15:32:06
+title: I’ve Become Afraid of Keeping Thoughts in My Head
+slug: ive-become-afraid-of-keeping-thoughts-in-my-head
+description: The consequence of thinking while writing
+created: 2025-01-13T15:32:06.000Z
+updated: 2025-01-13T15:32:06.000Z
 category: blog
-image: "https://images.unsplash.com/photo-1616595707129-de9953028c19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fFRoaW5raW5nfGVufDB8fHx8MTczNjc4MjMxMXww&ixlib=rb-4.0.3&q=80&w=2000"
+image: >-
+  https://images.unsplash.com/photo-1616595707129-de9953028c19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fFRoaW5raW5nfGVufDB8fHx8MTczNjc4MjMxMXww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754218761827366'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddbqqq3p2c'
+  - 'https://www.threads.com/@sajal24x7/post/DZm3O3cFtJK'
 ---
 Has this happened with you before?  
 You think of something.  

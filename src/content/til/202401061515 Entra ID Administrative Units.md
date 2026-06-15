@@ -5,8 +5,11 @@ created: '2024-01-06T15:15:00+03:00'
 updated: '2024-01-06T15:15:00+03:00'
 category: til
 tags:
-- azure
-- entra
+  - azure
+  - entra
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754758238284593'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkx2wi5f2v'
 ---
 
 - Help manage permissions for managing Entra ID

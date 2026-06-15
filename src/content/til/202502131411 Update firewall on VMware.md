@@ -1,13 +1,14 @@
 ---
-title: "Update Firewall on VMware"
-slug: "update-firewall-on-vmware"
-created: 2025-02-13T14:42:15+03:00
-updated: 2025-02-13T14:42:15+03:00
+title: Update Firewall on VMware
+slug: update-firewall-on-vmware
+created: 2025-02-13T11:42:15.000Z
+updated: 2025-02-13T11:42:15.000Z
 category: til
 tags:
-  - "#vmware"
-  - "#powershell"
-
+  - '#vmware'
+  - '#powershell'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocfjrdq2m'
 ---
 ipaddress is a string so can not have multiple items in one go. So need to loop for allowed IP addresses as a [PowerShell Arrays](#), if many.
 

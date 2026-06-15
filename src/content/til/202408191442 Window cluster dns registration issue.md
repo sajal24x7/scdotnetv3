@@ -5,8 +5,10 @@ created: '2024-08-19T14:42:00+03:00'
 updated: '2024-08-19T14:42:00+03:00'
 category: til
 tags:
-- windows
-- cluster
+  - windows
+  - cluster
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo67atnx2l'
 ---
 
 # Error

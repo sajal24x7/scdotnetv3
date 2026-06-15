@@ -1,11 +1,18 @@
 ---
-title: "Noticing the Little Things"
-slug: "noticing-the-little-things"
-created: 2025-04-28T06:38:07
-updated: 2025-04-28T06:38:07
+title: Noticing the Little Things
+slug: noticing-the-little-things
+created: 2025-04-28T06:38:07.000Z
+updated: 2025-04-28T06:38:07.000Z
 category: blog
-tags: ["blog", "savya", "parenting"]
-image: "https://images.unsplash.com/photo-1744429523595-2c06b8611242?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDh8fHx8fHx8fDE3NDU4MjE5MjN8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - savya
+  - parenting
+image: >-
+  https://images.unsplash.com/photo-1744429523595-2c06b8611242?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDh8fHx8fHx8fDE3NDU4MjE5MjN8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754254658151315'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modds34ggu2o'
 ---
 When Savya figured out moving on his own \(crawling\), the first thing he did was find out the little crumbs in the hidden corners of our home. He would go in the kitchen, put his chest close to the ground and drag things out which we did not even know existed.
 

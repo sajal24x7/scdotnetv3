@@ -5,8 +5,10 @@ created: '2024-09-11T19:20:00+03:00'
 updated: '2024-09-11T19:20:00+03:00'
 category: til
 tags:
-- vmware
-- dns
+  - vmware
+  - dns
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoavjhub26'
 ---
 
 1. Check that DNS configuration is correct.

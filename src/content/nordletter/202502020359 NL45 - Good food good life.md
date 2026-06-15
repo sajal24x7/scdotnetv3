@@ -1,13 +1,20 @@
 ---
-title: "Good Food, Good Life"
+title: 'Good Food, Good Life'
 edition: 45
-slug: "good-food-good-life"
-description: "Finland's PR changes + VPNs + Why are so many people wearing glasses now + a succinct take on AI"
-created: 2025-02-02T03:59:20
-updated: 2025-02-08T20:28:16
+slug: good-food-good-life
+description: >-
+  Finland's PR changes + VPNs + Why are so many people wearing glasses now + a
+  succinct take on AI
+created: 2025-02-02T03:59:20.000Z
+updated: 2025-02-08T20:28:16.000Z
 category: nordletter
-tags: ["Nord Letter", "AI", "food"]
-image: "https://storage.sajalchoudhary.net/images/2025/02/IMG_9563.jpeg"
+tags:
+  - Nord Letter
+  - AI
+  - food
+image: 'https://storage.sajalchoudhary.net/images/2025/02/IMG_9563.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhaye2ei2c'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#45, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

@@ -1,13 +1,16 @@
 ---
-title: "The Human Condition"
+title: The Human Condition
 edition: 33
-slug: "the-human-condition"
-description: "Curing cancer + e-Vitara + President of the USA"
-created: 2024-11-10T18:41:01
-updated: 2024-11-10T18:41:01
+slug: the-human-condition
+description: Curing cancer + e-Vitara + President of the USA
+created: 2024-11-10T18:41:01.000Z
+updated: 2024-11-10T18:41:01.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_7466.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/11/IMG_7466.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh6ceqgh2m'
 ---
 Hello from my home in Noida\! This is NordLetter \#33, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

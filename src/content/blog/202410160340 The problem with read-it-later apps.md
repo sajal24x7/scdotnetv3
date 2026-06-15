@@ -1,12 +1,18 @@
 ---
-title: "The Problem With Read-It-Later Apps"
-slug: "the-problem-with-read-it-later-apps"
-description: "It feels like stripping character from the web"
-created: 2024-10-16T03:40:20
-updated: 2024-10-16T03:40:20
+title: The Problem With Read-It-Later Apps
+slug: the-problem-with-read-it-later-apps
+description: It feels like stripping character from the web
+created: 2024-10-16T03:40:20.000Z
+updated: 2024-10-16T03:40:20.000Z
 category: blog
-tags: ["blog", "reading"]
-image: "https://images.unsplash.com/photo-1509177532812-b41c8305705a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDM1fHxyZWFkfGVufDB8fHx8MTcyOTAxNjk3NHww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - reading
+image: >-
+  https://images.unsplash.com/photo-1509177532812-b41c8305705a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDM1fHxyZWFkfGVufDB8fHx8MTcyOTAxNjk3NHww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754053309560313'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modawiomr62m'
 ---
 I read, a lot. Not as much as I want. But enough.
 

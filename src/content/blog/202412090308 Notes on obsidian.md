@@ -1,12 +1,18 @@
 ---
-title: "Notes on Obsidian"
-slug: "notes-on-obsidian"
-description: "Some things which do not work"
-created: 2024-12-09T03:08:43
-updated: 2024-12-09T03:08:42
+title: Notes on Obsidian
+slug: notes-on-obsidian
+description: Some things which do not work
+created: 2024-12-09T03:08:43.000Z
+updated: 2024-12-09T03:08:42.000Z
 category: blog
-tags: ["blog", "obsidian"]
-image: "https://images.unsplash.com/photo-1461773518188-b3e86f98242f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDMxfHx3cml0ZXxlbnwwfHx8fDE3MzM2OTE1MDF8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - obsidian
+image: >-
+  https://images.unsplash.com/photo-1461773518188-b3e86f98242f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDMxfHx3cml0ZXxlbnwwfHx8fDE3MzM2OTE1MDF8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754207560412663'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd4ohqct2o'
 ---
 # Mobile
 

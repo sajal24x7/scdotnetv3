@@ -5,6 +5,9 @@ created: '2022-10-26T14:37:00+03:00'
 updated: '2022-10-26T14:37:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754721290539789'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkgbinyz2c'
 ---
 
 

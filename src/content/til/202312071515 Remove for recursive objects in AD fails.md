@@ -5,8 +5,11 @@ created: '2023-12-07T15:15:00+03:00'
 updated: '2023-12-07T15:15:00+03:00'
 category: til
 tags:
-- ad
-- powershell
+  - ad
+  - powershell
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754756582243065'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkwcshza2o'
 ---
 
 Issue is because of additional child-objects for an object : user or computer

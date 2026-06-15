@@ -1,12 +1,13 @@
 ---
-title: "Writing When I Need To"
-slug: "writing-when-i-need-to"
-created: 2025-07-14T08:16:39+03:00
-updated: 2025-07-14T08:16:39+03:00
+title: Writing When I Need To
+slug: writing-when-i-need-to
+created: 2025-07-14T05:16:39.000Z
+updated: 2025-07-14T05:16:39.000Z
 category: micro
 tags:
   - writing
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modebygwar2m'
 ---
 I have noticed that I tend not to finish a thought later if I did not write anything about it when the thought came. This burning desire to write, when I actually write something, comes to me once, and if I let it pass, if I get into a state where I am not excited about the thing, then I just am not able to write about it later.
 

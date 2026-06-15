@@ -1,13 +1,16 @@
 ---
-title: "A Head Full of Dreams"
+title: A Head Full of Dreams
 edition: 29
-slug: "a-head-full-of-dreams"
-description: "Writing every day + AI + Metaverse"
-created: 2024-10-13T03:18:03
-updated: 2024-10-13T03:18:03
+slug: a-head-full-of-dreams
+description: Writing every day + AI + Metaverse
+created: 2024-10-13T03:18:03.000Z
+updated: 2024-10-13T03:18:03.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6277.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/10/IMG_6277.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh5mvn3w2w'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#29, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

@@ -5,8 +5,10 @@ created: '2024-08-11T12:55:00+03:00'
 updated: '2024-08-11T12:55:00+03:00'
 category: til
 tags:
-- azure
-- monitoring
+  - azure
+  - monitoring
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo4lraoh2u'
 ---
 
 Alerting can be enabled for:

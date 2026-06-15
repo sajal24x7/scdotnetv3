@@ -1,11 +1,17 @@
 ---
-title: "Spring Already?"
-slug: "spring-already"
-created: 2025-03-01T15:34:55
-updated: 2025-03-01T15:34:55
+title: Spring Already?
+slug: spring-already
+created: 2025-03-01T15:34:55.000Z
+updated: 2025-03-01T15:34:55.000Z
 category: blog
-tags: ["blog", "walking", "spring"]
-image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_0103.jpeg"
+tags:
+  - blog
+  - walking
+  - spring
+image: 'https://storage.sajalchoudhary.net/images/2025/03/IMG_0103.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754234410136599'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddiuorbz2u'
 ---
 [We were down with flu these past few weeks,](__GHOST_URL__/nordletter/nl46-preparedness-day/) as was most of Helsinki/Espoo. Most people I work with had the symptoms over the past few weeks.
 

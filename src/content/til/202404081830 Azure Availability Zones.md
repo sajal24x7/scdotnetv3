@@ -5,8 +5,11 @@ created: '2024-04-08T18:30:00+03:00'
 updated: '2024-04-08T18:30:00+03:00'
 category: til
 tags:
-- azure
-- resiliency
+  - azure
+  - resiliency
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754911725008679'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn4uocnc2m'
 ---
 
 Related to [[202404071304 Resiliency Overview]]

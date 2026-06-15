@@ -5,7 +5,9 @@ created: '2022-05-31T17:38:00+03:00'
 updated: '2022-05-31T17:38:00+03:00'
 category: til
 tags:
-- vmware
+  - vmware
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjragr662v'
 ---
 
 

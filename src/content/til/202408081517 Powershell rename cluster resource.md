@@ -5,8 +5,10 @@ created: '2024-08-08T15:17:00+03:00'
 updated: '2024-08-08T15:17:00+03:00'
 category: til
 tags:
-- powershell
-- windows
+  - powershell
+  - windows
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo3mzvli26'
 ---
 
 ```powershell

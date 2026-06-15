@@ -1,10 +1,20 @@
 ---
-title: "The Google or Windows Dilemma"
-slug: "the-google-or-windows-dilemma"
-created: 2015-06-11T17:16:18
-updated: 2015-06-11T17:16:18
+title: The Google or Windows Dilemma
+slug: the-google-or-windows-dilemma
+created: 2015-06-11T17:16:18.000Z
+updated: 2015-06-11T17:16:18.000Z
 category: blog
-tags: ["blog", "docs", "google", "microsoft", "tech", "windows", "word"]
+tags:
+  - blog
+  - docs
+  - google
+  - microsoft
+  - tech
+  - windows
+  - word
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754004901735434'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modaaijccp24'
 ---
 It is weird for me that I have been obsessing over something as _trivial_ , and **permanent** thing like the coming of Windows 10. It is weirder that I am actually writing about it.
 

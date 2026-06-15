@@ -1,13 +1,16 @@
 ---
-title: "Going Back Home"
+title: Going Back Home
 edition: 31
-slug: "going-back-home"
-description: "Trip to India"
-created: 2024-10-27T09:04:21
-updated: 2024-10-27T09:04:21
+slug: going-back-home
+description: Trip to India
+created: 2024-10-27T09:04:21.000Z
+updated: 2024-10-27T09:04:21.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6409.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/10/IMG_6409.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh5zrrju2s'
 ---
 Hello from India\! I am sitting in a random room in Bangalore as I type this. This is NordLetter \#31, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

@@ -1,14 +1,15 @@
 ---
-title: "New Updates to Claude"
-slug: "new-updates-to-claude"
-created: 2025-08-01T07:22:45+03:00
-updated: 2025-08-01T07:22:45+03:00
+title: New Updates to Claude
+slug: new-updates-to-claude
+created: 2025-08-01T04:22:45.000Z
+updated: 2025-08-01T04:22:45.000Z
 category: micro
 tags:
   - ai
   - claude
   - anthropic
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modggujqlg2m'
 ---
 
 [Reverse engineering some updates to Claude](https://simonwillison.net/2025/Jul/31/updates-to-claude/#atom-everything)

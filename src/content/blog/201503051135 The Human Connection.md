@@ -1,10 +1,19 @@
 ---
-title: "The Human Connection"
-slug: "the-human-connection"
-created: 2015-03-05T11:35:56
-updated: 2015-03-05T11:35:56
+title: The Human Connection
+slug: the-human-connection
+created: 2015-03-05T11:35:56.000Z
+updated: 2015-03-05T11:35:56.000Z
 category: blog
-tags: ["blog", "imagination", "science fiction", "the human connection", "writing is", "writing tips"]
+tags:
+  - blog
+  - imagination
+  - science fiction
+  - the human connection
+  - writing is
+  - writing tips
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754001847149761'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda746b4n2o'
 ---
 > The unimaginable is usually imaginable….
 

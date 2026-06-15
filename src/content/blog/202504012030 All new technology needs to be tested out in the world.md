@@ -1,11 +1,17 @@
 ---
-title: "All New Technology Needs to Be Tested out in the World"
-slug: "all-new-technology-needs-to-be-tested-out-in-the-world"
-created: 2025-04-01T20:30:08
-updated: 2025-04-01T20:30:08
+title: All New Technology Needs to Be Tested out in the World
+slug: all-new-technology-needs-to-be-tested-out-in-the-world
+created: 2025-04-01T20:30:08.000Z
+updated: 2025-04-01T20:30:08.000Z
 category: blog
-tags: ["blog", "tech"]
-image: "https://images.unsplash.com/photo-1742228896964-83f6327740ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDl8fHx8fHx8fDE3NDM1Mzc2NDd8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - tech
+image: >-
+  https://images.unsplash.com/photo-1742228896964-83f6327740ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDl8fHx8fHx8fDE3NDM1Mzc2NDd8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754244440956085'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddngia7624'
 ---
 This is because of secondary effects. The effect of a technology in the world only comes into view after it has been deployed in the world for some time.
 

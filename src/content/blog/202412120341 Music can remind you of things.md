@@ -1,12 +1,18 @@
 ---
-title: "Music Can Remind You of Things"
-slug: "music-can-remind-you-of-things"
-description: "It can transport you, across time and space"
-created: 2024-12-12T03:41:48
-updated: 2024-12-12T03:41:47
+title: Music Can Remind You of Things
+slug: music-can-remind-you-of-things
+description: 'It can transport you, across time and space'
+created: 2024-12-12T03:41:48.000Z
+updated: 2024-12-12T03:41:47.000Z
 category: blog
-tags: ["blog", "music"]
-image: "https://images.unsplash.com/photo-1637048131240-a9517d582735?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGhlYWRwaG9uZXMlMjBtZXRyb3xlbnwwfHx8fDE3MzM5NDE4ODR8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - music
+image: >-
+  https://images.unsplash.com/photo-1637048131240-a9517d582735?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGhlYWRwaG9uZXMlMjBtZXRyb3xlbnwwfHx8fDE3MzM5NDE4ODR8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754208858605944'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd5b6u6t2o'
 ---
 Here's what I do.
 

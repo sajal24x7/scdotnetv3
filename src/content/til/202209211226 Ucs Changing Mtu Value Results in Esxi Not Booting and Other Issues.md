@@ -5,9 +5,11 @@ created: '2022-09-21T12:26:00+03:00'
 updated: '2022-09-21T12:26:00+03:00'
 category: til
 tags:
-- esxi
-- cisco
-- ucs
+  - esxi
+  - cisco
+  - ucs
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk2sv5sa2u'
 ---
 
 

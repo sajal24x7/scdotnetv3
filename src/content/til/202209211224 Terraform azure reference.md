@@ -5,8 +5,10 @@ created: '2022-09-21T12:24:00+03:00'
 updated: '2022-09-21T12:24:00+03:00'
 category: til
 tags:
-- terraform
-- azure
+  - terraform
+  - azure
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk2nhsxp2w'
 ---
 
 

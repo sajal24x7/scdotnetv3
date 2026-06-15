@@ -5,8 +5,11 @@ created: '2024-06-29T14:41:00+03:00'
 updated: '2024-06-29T14:41:00+03:00'
 category: til
 tags:
-- azure
-- storage
+  - azure
+  - storage
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754947653300889'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnn7c4pa23'
 ---
 
 Related to [[202404091908 Azure Storage Redundancy]]

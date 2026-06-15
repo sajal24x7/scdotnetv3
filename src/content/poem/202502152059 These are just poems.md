@@ -1,11 +1,15 @@
 ---
-title: "These Are Just Poems"
-slug: "these-are-just-poems"
-created: 2025-02-15T20:59:25
-updated: 2025-02-15T20:59:25
+title: These Are Just Poems
+slug: these-are-just-poems
+created: 2025-02-15T20:59:25.000Z
+updated: 2025-02-15T20:59:25.000Z
 category: poem
-tags: ["poems"]
-image: "https://images.unsplash.com/photo-1739609439850-2eace0b03218?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDZ8fHx8fHx8fDE3Mzk2NTE3NDV8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - poems
+image: >-
+  https://images.unsplash.com/photo-1739609439850-2eace0b03218?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDZ8fHx8fHx8fDE3Mzk2NTE3NDV8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhlvcfnc2w'
 ---
 These are just poems,  
 And not serious ones at that.

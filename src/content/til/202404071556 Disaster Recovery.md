@@ -5,9 +5,12 @@ created: '2024-04-07T15:56:00+03:00'
 updated: '2024-04-07T15:56:00+03:00'
 category: til
 tags:
-- resiliency
-- azure
-- disasterrecovery
+  - resiliency
+  - azure
+  - disasterrecovery
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754910305770124'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn4a2u6a2v'
 ---
 
 1. Disaster Recovery is moving things from one location to another when the active one is not available for any reason. 

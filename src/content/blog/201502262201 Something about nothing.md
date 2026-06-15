@@ -1,10 +1,19 @@
 ---
-title: "Something About Nothing!"
-slug: "something-about-nothing"
-created: 2015-02-26T22:01:45
-updated: 2015-02-26T22:01:45
+title: Something About Nothing!
+slug: something-about-nothing
+created: 2015-02-26T22:01:45.000Z
+updated: 2015-02-26T22:01:45.000Z
 category: blog
-tags: ["blog", "short stories", "stories", "walking", "writing is", "writing tips"]
+tags:
+  - blog
+  - short stories
+  - stories
+  - walking
+  - writing is
+  - writing tips
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754001527900189'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda6xi5fx2s'
 ---
 > Sometimes, nothing is supposed to mean anything. Sometimes, you do stuff just for the sake of doing stuff. Sometimes, it all falls into place.
 

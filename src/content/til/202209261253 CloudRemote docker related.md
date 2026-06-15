@@ -5,6 +5,9 @@ created: '2022-09-26T12:53:00+03:00'
 updated: '2022-09-26T12:53:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkbdbijr24'
+  - 'https://www.threads.com/@sajal24x7/post/DZnFiiFFkgT'
 ---
 
 

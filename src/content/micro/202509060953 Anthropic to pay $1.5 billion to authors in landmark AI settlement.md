@@ -1,14 +1,15 @@
 ---
-title: "Anthropic to Pay title: .5 Billion to Authors in Landmark AI Settlement"
-slug: "anthropic-to-pay-15-billion-to-authors-in-landmark-ai-settlement"
-created: 2025-09-06T09:55:10+03:00
-updated: 2025-09-06T09:55:10+03:00
+title: 'Anthropic to Pay title: .5 Billion to Authors in Landmark AI Settlement'
+slug: anthropic-to-pay-15-billion-to-authors-in-landmark-ai-settlement
+created: 2025-09-06T06:55:10.000Z
+updated: 2025-09-06T06:55:10.000Z
 category: micro
 tags:
   - anthropic
   - ai
   - copyright
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgpo4c3x26'
 ---
 [Anthropic to pay $1.5 billion to authors in landmark AI settlement by Hayden Field](https://www.theverge.com/anthropic/773087/anthropic-to-pay-1-5-billion-to-authors-in-landmark-ai-settlement)
 

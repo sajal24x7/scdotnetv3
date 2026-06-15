@@ -1,13 +1,14 @@
 ---
-title: "The Future of AI Hardware Isn’t One Device — It’s an Entire Ecosystem"
-slug: "the-future-of-ai-hardware-isnt-one-device-its-an-entire-ecosystem"
-created: 2025-09-03T06:21:05+03:00
-updated: 2025-09-03T06:21:05+03:00
+title: The Future of AI Hardware Isn’t One Device — It’s an Entire Ecosystem
+slug: the-future-of-ai-hardware-isnt-one-device-its-an-entire-ecosystem
+created: 2025-09-03T03:21:05.000Z
+updated: 2025-09-03T03:21:05.000Z
 category: micro
 tags:
   - ai
   - tech
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgov77my2v'
 ---
 [The future of AI hardware isn’t one device — it’s an entire ecosystem by Victoria Song](https://www.theverge.com/report/767765/ai-hardware-google-pixel-gemini-wearables-ambient-computing)
 

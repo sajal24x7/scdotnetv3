@@ -5,8 +5,11 @@ created: '2024-07-14T14:33:00+03:00'
 updated: '2024-07-14T14:33:00+03:00'
 category: til
 tags:
-- powershell
-- azure
+  - powershell
+  - azure
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754956054090570'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnr2ra7k2p'
 ---
 
 In continuation to [[202407141419 Create NSG in Azure|Create NSG in Azure]] about adding rules to [[202404141419 Network Security Groups|NSG]]

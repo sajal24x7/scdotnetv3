@@ -1,13 +1,18 @@
 ---
-title: "How Does a City Form"
+title: How Does a City Form
 edition: 49
-slug: "how-does-a-city-form"
-description: "Kindle bad + AI poet + chip designer + good bye Finland"
-created: 2025-03-02T03:25:00
-updated: 2025-03-02T05:55:17
+slug: how-does-a-city-form
+description: Kindle bad + AI poet + chip designer + good bye Finland
+created: 2025-03-02T03:25:00.000Z
+updated: 2025-03-02T05:55:17.000Z
 category: nordletter
-tags: ["Nord Letter", "AI", "kindle"]
-image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_0100.jpeg"
+tags:
+  - Nord Letter
+  - AI
+  - kindle
+image: 'https://storage.sajalchoudhary.net/images/2025/03/IMG_0100.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhc3mfry2m'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#49, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

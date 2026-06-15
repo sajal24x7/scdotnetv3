@@ -5,8 +5,11 @@ created: '2023-08-29T14:32:00+03:00'
 updated: '2023-08-29T14:32:00+03:00'
 category: til
 tags:
-- ansible
-- aap
+  - ansible
+  - aap
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754753728807257'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkuzgeve2m'
 ---
 
 

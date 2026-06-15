@@ -1,15 +1,16 @@
 ---
-title: "Mixed Format Books"
-slug: "mixed-format-books"
-created: 2025-07-17T00:44:06+03:00
-updated: 2025-07-17T00:44:06+03:00
+title: Mixed Format Books
+slug: mixed-format-books
+created: 2025-07-16T21:44:06.000Z
+updated: 2025-07-16T21:44:06.000Z
 category: evergreen
 tags:
   - books
   - reading
   - audiobooks
   - kindle
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modeacxeno2u'
 ---
 I have discovered audiobooks recently. Before this, of course I was not a big fan of audiobooks. I was unsure, I was a bit of a purist. I used to feel that if you want to read a book, you know, read a book. 
 

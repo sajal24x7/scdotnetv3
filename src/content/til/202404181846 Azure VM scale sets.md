@@ -5,8 +5,11 @@ created: '2024-04-18T18:46:00+03:00'
 updated: '2024-04-18T18:46:00+03:00'
 category: til
 tags:
-- azure
-- compute
+  - azure
+  - compute
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754927001091159'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modndsmo2x2c'
 ---
 
 - VMSS allows you to scale VMs in and out based on certain rules (utilization or queue) / helps with [[202404071304 Resiliency Overview|resiliency]]

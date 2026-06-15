@@ -1,12 +1,18 @@
 ---
-title: "Some Things Should Be Free"
+title: Some Things Should Be Free
 edition: 57
-slug: "some-things-should-be-free"
-created: 2025-04-27T02:47:41
-updated: 2025-04-27T02:47:41
+slug: some-things-should-be-free
+created: 2025-04-27T02:47:41.000Z
+updated: 2025-04-27T02:47:41.000Z
 category: nordletter
-tags: ["Nord Letter", "finland", "paivakoti", "AI"]
-image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_1140.jpeg"
+tags:
+  - Nord Letter
+  - finland
+  - paivakoti
+  - AI
+image: 'https://storage.sajalchoudhary.net/images/2025/04/IMG_1140.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhecpeqf2m'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#57, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

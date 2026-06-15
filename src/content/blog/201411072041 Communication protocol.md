@@ -1,10 +1,19 @@
 ---
-title: "Communication Protocol"
-slug: "communication-protocol"
-created: 2014-11-07T20:41:00
-updated: 2014-11-07T20:41:00
+title: Communication Protocol
+slug: communication-protocol
+created: 2014-11-07T20:41:00.000Z
+updated: 2014-11-07T20:41:00.000Z
 category: blog
-tags: ["blog", "conversations", "listening", "non-verbal", "talking", "verbal"]
+tags:
+  - blog
+  - conversations
+  - listening
+  - non-verbal
+  - talking
+  - verbal
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753996097473154'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda4ihckp2s'
 ---
 [![image](https://storage.sajalchoudhary.net/images/wordpress/2014/11/wpid-first-communication-4fcd0126d49ea_hires.jpg?w=10)](https://storage.sajalchoudhary.net/images/wordpress/2014/11/wpid-first-communication-4fcd0126d49ea_hires.jpg)
 

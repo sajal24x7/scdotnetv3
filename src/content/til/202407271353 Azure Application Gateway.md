@@ -5,8 +5,11 @@ created: '2024-07-27T13:53:00+03:00'
 updated: '2024-07-27T13:53:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754967776939701'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnwef2ei26'
 ---
 
 - When compared to [[202407271319 Azure Load Balancer|Azure Load Balancer]] this uses app layer routing as mentioned in [[202404131219 External Access]]

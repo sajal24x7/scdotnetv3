@@ -5,9 +5,12 @@ created: '2024-06-20T16:11:00+03:00'
 updated: '2024-06-20T16:11:00+03:00'
 category: til
 tags:
-- windows
-- gpo
-- firewall
+  - windows
+  - gpo
+  - firewall
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754946428603482'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnmngq7i26'
 ---
 
 # Configure firewall service

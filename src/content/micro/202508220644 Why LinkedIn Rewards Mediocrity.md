@@ -1,13 +1,14 @@
 ---
-title: "Why LinkedIn Rewards Mediocrity"
-slug: "why-linkedin-rewards-mediocrity"
-created: 2025-08-22T06:47:13+03:00
-updated: 2025-08-22T06:47:13+03:00
+title: Why LinkedIn Rewards Mediocrity
+slug: why-linkedin-rewards-mediocrity
+created: 2025-08-22T03:47:13.000Z
+updated: 2025-08-22T03:47:13.000Z
 category: micro
 tags:
   - linkedin
   - msft
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgmbol752w'
 ---
 [Sunny Days Are Warm: Why LinkedIn Rewards Mediocrity by Elliot Smith](https://www.elliotcsmith.com/linkedin-toxic-mediocrity/)
 

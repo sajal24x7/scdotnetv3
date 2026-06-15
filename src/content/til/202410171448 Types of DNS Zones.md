@@ -5,8 +5,10 @@ created: '2024-10-17T14:48:00+03:00'
 updated: '2024-10-17T14:48:00+03:00'
 category: til
 tags:
-- windows
-- dns
+  - windows
+  - dns
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobpyfrr2v'
 ---
 
 1. Primary Zone

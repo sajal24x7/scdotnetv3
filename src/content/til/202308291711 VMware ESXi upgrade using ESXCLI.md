@@ -5,7 +5,10 @@ created: '2023-08-29T17:11:00+03:00'
 updated: '2023-08-29T17:11:00+03:00'
 category: til
 tags:
-- vmware
+  - vmware
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754753900244894'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkv3xmiu2m'
 ---
 
 

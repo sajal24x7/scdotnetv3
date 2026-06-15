@@ -1,12 +1,16 @@
 ---
-title: "You Can’t Have One Without the Other"
-slug: "you-cant-have-one-without-the-other"
-description: "Actions and consequences"
-created: 2025-01-20T07:39:49
-updated: 2025-01-20T07:39:49
+title: You Can’t Have One Without the Other
+slug: you-cant-have-one-without-the-other
+description: Actions and consequences
+created: 2025-01-20T07:39:49.000Z
+updated: 2025-01-20T07:39:49.000Z
 category: blog
-tags: ["blog"]
-image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9238.jpeg"
+tags:
+  - blog
+image: 'https://storage.sajalchoudhary.net/images/2025/01/IMG_9238.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754219901124058'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddcbgxtz2m'
 ---
 I went out for a walk today, same route, same time. The thing about walking in the cold air is it freshens you up. You can feel the air going inside your lungs. It wakes you up. Sure you’re cold when you begin, but soon your body warms up and then there is no cold.
 

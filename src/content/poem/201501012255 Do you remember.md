@@ -1,8 +1,8 @@
 ---
 title: Do You Remember?
 slug: do-you-remember
-created: 2015-01-01T22:55:07
-updated: 2024-05-04T07:25:47
+created: 2015-01-01T22:55:07.000Z
+updated: 2024-05-04T07:25:47.000Z
 category: poem
 tags:
   - love
@@ -10,6 +10,8 @@ tags:
   - poem
   - rains
   - remember
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhknl3z52v'
 ---
 Do you remember the plains my love?  
 Do you remember the rains my love?

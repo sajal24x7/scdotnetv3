@@ -1,11 +1,16 @@
 ---
-title: "Visiting the Ashokan Pillar in Vaishali"
-slug: "visiting-the-ashokan-pillar-in-vaishali"
-created: 2024-11-12T12:57:59
-updated: 2024-11-12T12:57:59
+title: Visiting the Ashokan Pillar in Vaishali
+slug: visiting-the-ashokan-pillar-in-vaishali
+created: 2024-11-12T12:57:59.000Z
+updated: 2024-11-12T12:57:59.000Z
 category: blog
-tags: ["blog", "travelog"]
-image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_7777-1.jpeg"
+tags:
+  - blog
+  - travelog
+image: 'https://storage.sajalchoudhary.net/images/2024/11/IMG_7777-1.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754201810655300'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modczzyldi2v'
 ---
 My hometown is in a village called Agarpur, in [Lalganj](https://en.wikipedia.org/wiki/Lalganj,_Bihar), in [Vaishali](https://en.wikipedia.org/wiki/Vaishali_district) district, in [Bihar](https://en.wikipedia.org/wiki/Bihar). Despite this, this was the first time I visited some places other than my home in Vaishali. I think that happens with places we call homes. 
 

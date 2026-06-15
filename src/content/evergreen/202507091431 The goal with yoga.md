@@ -1,12 +1,13 @@
 ---
-title: "The Goal With Yoga"
-slug: "the-goal-with-yoga"
-created: 2025-07-13T12:19:43+03:00
-updated: 2025-07-13T12:19:43+03:00
+title: The Goal With Yoga
+slug: the-goal-with-yoga
+created: 2025-07-13T09:19:43.000Z
+updated: 2025-07-13T09:19:43.000Z
 category: evergreen
 tags:
   - yoga
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modea7dhyv2l'
 ---
 I had written sometime back on Mastodon, and I am paraphrasing here, that with yoga it felt like I was trying to get back to how my body was when I was a child.
 

@@ -5,7 +5,9 @@ created: '2022-08-18T09:49:00+03:00'
 updated: '2022-08-18T09:49:00+03:00'
 category: til
 tags:
-- aws
+  - aws
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk27axby2u'
 ---
 
 

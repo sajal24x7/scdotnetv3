@@ -1,14 +1,15 @@
 ---
-title: "AI HUDs Instead of Copilots"
-slug: "ai-huds-instead-of-copilots"
-created: 2025-07-28T11:09:05+03:00
-updated: 2025-07-28T11:09:05+03:00
+title: AI HUDs Instead of Copilots
+slug: ai-huds-instead-of-copilots
+created: 2025-07-28T08:09:05.000Z
+updated: 2025-07-28T08:09:05.000Z
 category: micro
 tags:
   - ai
   - interfaces
   - ui
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgfdusb62c'
 ---
 
 [Enough AI copilots! We need AI HUDs](https://www.geoffreylitt.com/2025/07/27/enough-ai-copilots-we-need-ai-huds)

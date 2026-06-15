@@ -5,9 +5,12 @@ created: '2024-04-14T14:35:00+03:00'
 updated: '2024-04-14T14:35:00+03:00'
 category: til
 tags:
-- azure
-- network
-- security
+  - azure
+  - network
+  - security
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754923123890043'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnc2ikfv2z'
 ---
 
 - [[202404141419 Network Security Groups|NSGs]] are focused on traffic into and out of the virtual network

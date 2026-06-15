@@ -1,10 +1,19 @@
 ---
-title: "How Important Is Grammar to a Writer?"
-slug: "how-important-is-grammar-to-a-writer"
-created: 2014-09-29T21:00:51
-updated: 2014-09-29T21:00:51
+title: How Important Is Grammar to a Writer?
+slug: how-important-is-grammar-to-a-writer
+created: 2014-09-29T21:00:51.000Z
+updated: 2014-09-29T21:00:51.000Z
 category: blog
-tags: ["blog", "edx", "grammar", "writing is", "writing tips"]
+tags:
+  - blog
+  - edx
+  - grammar
+  - writing is
+  - writing tips
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753994576335278'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moda3sj46n2l'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwtCmliqP'
 ---
 _**[![good_grammar](https://storage.sajalchoudhary.net/images/wordpress/2014/09/good_grammar.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/good_grammar.jpg)**_
 

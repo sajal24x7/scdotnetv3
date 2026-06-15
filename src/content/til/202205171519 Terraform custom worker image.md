@@ -5,7 +5,9 @@ created: '2022-05-17T15:19:00+03:00'
 updated: '2022-05-17T15:19:00+03:00'
 category: til
 tags:
-- terraform
+  - terraform
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhonwmpu2l'
 ---
 
 

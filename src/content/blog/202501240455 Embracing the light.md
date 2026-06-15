@@ -1,12 +1,18 @@
 ---
-title: "Embracing the Light"
-slug: "embracing-the-light"
-description: "Light mode / dark mode"
-created: 2025-01-24T04:55:45
-updated: 2025-01-24T04:55:45
+title: Embracing the Light
+slug: embracing-the-light
+description: Light mode / dark mode
+created: 2025-01-24T04:55:45.000Z
+updated: 2025-01-24T04:55:45.000Z
 category: blog
-tags: ["blog", "tech"]
-image: "https://images.unsplash.com/photo-1607027340690-37e80b0f1b31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE1fHxkYXJrJTIwbW9kZXxlbnwwfHx8fDE3Mzc2Njg1OTB8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - tech
+image: >-
+  https://images.unsplash.com/photo-1607027340690-37e80b0f1b31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE1fHxkYXJrJTIwbW9kZXxlbnwwfHx8fDE3Mzc2Njg1OTB8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754222078408832'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modddavvht2v'
 ---
 I remember being very excited when the system wide dark mode came with iOS13/MacOS Mojave. I had wanted this for so long.
 

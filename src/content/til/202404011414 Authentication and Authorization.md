@@ -5,8 +5,11 @@ created: '2024-04-01T14:14:00+03:00'
 updated: '2024-04-01T14:14:00+03:00'
 category: til
 tags:
-- azure
-- entra
+  - azure
+  - entra
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754763704703374'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkzkiipq2p'
 ---
 
 - Authentication (AuthN) is who you are

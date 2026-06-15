@@ -1,10 +1,22 @@
 ---
-title: "Why Should I Read?"
-slug: "why-should-i-read"
-created: 2014-08-08T15:33:49
-updated: 2024-01-28T11:05:59
+title: Why Should I Read?
+slug: why-should-i-read
+created: 2014-08-08T15:33:49.000Z
+updated: 2024-01-28T11:05:59.000Z
 category: blog
-tags: ["fiction writing", "poem", "poetry", "reading", "sixty-day-blog", "Uncategorized", "writing is", "#test"]
+tags:
+  - fiction writing
+  - poem
+  - poetry
+  - reading
+  - sixty-day-blog
+  - Uncategorized
+  - writing is
+  - '#test'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753987842611234'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7yqngxp2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwghHlpdv'
 ---
 We’ve been taught from a very early age to look for stuff when we read, you know stuff like morals, summaries, questions, answers. I remember being taught poems in Hindi, my mother tongue, the language I was most comfortable with. Taught, yes. I remember being taught the meaning of each word, each line. The funny thing is poems, and all art for that matter is not bound, physical in its nature\! It’s all-encompassing, transcendent sort of stuff. And it is upto you the viewer to derive the meaning of it. Its like that only. I’ve often been surprised by what people thought I meant to say in my poems. Sometimes they think of stuff I _could not_ have thought, and yet I wrote it\! Art is beautiful that way. And yet, I was taught poems, and stories and other stuff. We did not have the freedom to give our own answers, the answers mind you were dictated to us. Literature was taught as if it was history\!
 

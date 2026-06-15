@@ -1,8 +1,8 @@
 ---
 title: Everything Withers Away
 slug: everything-withers-away
-created: 2016-01-31T21:00:41
-updated: 2016-01-31T21:00:41
+created: 2016-01-31T21:00:41.000Z
+updated: 2016-01-31T21:00:41.000Z
 category: poem
 tags:
   - love
@@ -12,6 +12,8 @@ tags:
   - poem
   - time
   - withering
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhks6cvq2c'
 ---
 ![wood_autumn_trees_fog_young_growth_hoarfrost_grass_withering_morning_48358_1920x1080.jpg](https://storage.sajalchoudhary.net/images/wordpress/2016/01/wood_autumn_trees_fog_young_growth_hoarfrost_grass_withering_morning_48358_1920x1080.jpg)
 

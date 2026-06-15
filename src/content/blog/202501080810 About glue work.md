@@ -1,12 +1,18 @@
 ---
-title: "About Glue Work"
-slug: "about-glue-work"
-description: "Is glue work bad? Depends."
-created: 2025-01-08T08:10:02
-updated: 2025-01-08T08:10:02
+title: About Glue Work
+slug: about-glue-work
+description: Is glue work bad? Depends.
+created: 2025-01-08T08:10:02.000Z
+updated: 2025-01-08T08:10:02.000Z
 category: blog
-tags: ["blog", "work"]
-image: "https://images.unsplash.com/photo-1591622778887-83445831b63d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fEdsdWV8ZW58MHx8fHwxNzM2MzIzNzcwfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - work
+image: >-
+  https://images.unsplash.com/photo-1591622778887-83445831b63d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fEdsdWV8ZW58MHx8fHwxNzM2MzIzNzcwfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754217819183439'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddbcxs462d'
 ---
 One of the problems with managing a bunch of people is figuring out who is doing what. Tasks can be tracked through Jira boards or tickets locked in SNOW. But how do you track the things that are not on the board? Does that make those tasks not important?
 

@@ -1,14 +1,15 @@
 ---
-title: "Should AI Flatter Us, Fix Us, or Just Inform Us"
-slug: "should-ai-flatter-us-fix-us-or-just-inform-us-by-james-odonnell"
-created: 2025-08-20T22:20:32+03:00
-updated: 2025-08-20T22:20:32+03:00
+title: 'Should AI Flatter Us, Fix Us, or Just Inform Us'
+slug: should-ai-flatter-us-fix-us-or-just-inform-us-by-james-odonnell
+created: 2025-08-20T19:20:32.000Z
+updated: 2025-08-20T19:20:32.000Z
 category: micro
 tags:
   - ai
   - openai
   - chatgpt
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modglztup22u'
 ---
 
 [Should AI flatter us, fix us, or just inform us? by James O'Donnell](https://www.technologyreview.com/2025/08/19/1122021/should-ai-flatter-us-fix-us-or-just-inform-us/)

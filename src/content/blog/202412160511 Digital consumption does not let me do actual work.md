@@ -1,12 +1,18 @@
 ---
-title: "Digital Consumption Does Not Let Me Do Actual Work"
-slug: "digital-consumption-does-not-let-me-do-actual-work"
-description: "It affects my ability to focus and remember"
-created: 2024-12-16T05:11:10
-updated: 2024-12-16T05:11:10
+title: Digital Consumption Does Not Let Me Do Actual Work
+slug: digital-consumption-does-not-let-me-do-actual-work
+description: It affects my ability to focus and remember
+created: 2024-12-16T05:11:10.000Z
+updated: 2024-12-16T05:11:10.000Z
 category: blog
-tags: ["blog", "Learning"]
-image: "https://images.unsplash.com/photo-1670330964751-cdd17fb4e507?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE1fHxkb29tJTIwc2Nyb2xsaW5nfGVufDB8fHx8MTczNDI5MDM4Nnww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - Learning
+image: >-
+  https://images.unsplash.com/photo-1670330964751-cdd17fb4e507?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE1fHxkb29tJTIwc2Nyb2xsaW5nfGVufDB8fHx8MTczNDI5MDM4Nnww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754209564465344'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd5kxbaz2v'
 ---
 There are two types of people in the world - those who create and those who consume. Facebook, IG and the rest evolved from social networks to social media. They honed the product \(their algorithms\) to such a degree so as to get maximum engagement from their users. This is visible in Meta's user hostile decision to always default to the algorithmic 'For You' feed on Threads.
 

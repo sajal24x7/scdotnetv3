@@ -5,7 +5,10 @@ created: '2023-11-03T10:25:00+03:00'
 updated: '2023-11-03T10:25:00+03:00'
 category: til
 tags:
-- vmware
+  - vmware
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754755928097430'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkvzdqic2s'
 ---
 
 VMware tools check happens with respect to the Host. Each ESXi host has a storage location for VM Tools installers, which is a configurable option and visibly referenced by the /productLocker symlink. The target can be either local to each host or point to a centralized repository of VM Tools on a shared datastore.

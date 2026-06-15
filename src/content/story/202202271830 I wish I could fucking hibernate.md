@@ -1,11 +1,15 @@
 ---
-title: "I Wish I Could Fucking Hibernate!"
-slug: "i-wish-i-could-fucking-hibernate"
-created: 2022-02-27T18:30:00
-updated: 2024-06-09T20:15:46
+title: I Wish I Could Fucking Hibernate!
+slug: i-wish-i-could-fucking-hibernate
+created: 2022-02-27T18:30:00.000Z
+updated: 2024-06-09T20:15:46.000Z
 category: story
-tags: ["stories"]
-image: "https://images.unsplash.com/photo-1515005177773-3397ccbbb265?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDI1fHxmcm96ZW58ZW58MHx8fHwxNjQ1OTQzMjIw&ixlib=rb-1.2.1&q=80&w=2000"
+tags:
+  - stories
+image: >-
+  https://images.unsplash.com/photo-1515005177773-3397ccbbb265?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDI1fHxmcm96ZW58ZW58MHx8fHwxNjQ1OTQzMjIw&ixlib=rb-1.2.1&q=80&w=2000
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhmumizz2v'
 ---
 An ice age is triggered when summer temperatures in the northern hemisphere fails to rise above freezing for a number of years. That means that the winter ice fails to melt, but instead builds up, compresses and over time starts to compact into ice sheets.
 

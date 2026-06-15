@@ -1,12 +1,18 @@
 ---
-title: "Meta Will Not Do Fact-Checking Anymore"
-slug: "meta-will-not-do-fact-checking-anymore"
-description: "Meta goes MAGA?"
-created: 2025-01-09T14:48:42
-updated: 2025-01-09T14:48:42
+title: Meta Will Not Do Fact-Checking Anymore
+slug: meta-will-not-do-fact-checking-anymore
+description: Meta goes MAGA?
+created: 2025-01-09T14:48:42.000Z
+updated: 2025-01-09T14:48:42.000Z
 category: blog
-tags: ["blog", "web"]
-image: "https://images.unsplash.com/photo-1636051028886-0059ad2383c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDR8fG1ldGF8ZW58MHx8fHwxNzM2NDEzOTYyfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - web
+image: >-
+  https://images.unsplash.com/photo-1636051028886-0059ad2383c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDR8fG1ldGF8ZW58MHx8fHwxNzM2NDEzOTYyfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754218127727858'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddbhe5wl2o'
 ---
 [Mark announced changes to way it does content moderation across Meta properties - IG, FB, Threads.](https://www.instagram.com/p/DEhf2uTJUs0/)
 

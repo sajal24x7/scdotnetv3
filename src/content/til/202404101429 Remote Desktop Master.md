@@ -5,8 +5,11 @@ created: '2024-04-10T14:29:00+03:00'
 updated: '2024-04-10T14:29:00+03:00'
 category: til
 tags:
-- windows
-- remotedesktop
+  - windows
+  - remotedesktop
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754915939092396'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn6s3chn2s'
 ---
 
 # Logs

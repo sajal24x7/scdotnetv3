@@ -1,11 +1,18 @@
 ---
-title: "Boiling Frogs and Global Warming"
-slug: "boiling-frogs-and-global-warming"
-created: 2025-03-28T04:27:26
-updated: 2025-03-28T04:27:25
+title: Boiling Frogs and Global Warming
+slug: boiling-frogs-and-global-warming
+created: 2025-03-28T04:27:26.000Z
+updated: 2025-03-28T04:27:25.000Z
 category: blog
-tags: ["blog", "prerna", "climate change"]
-image: "https://images.unsplash.com/photo-1533921482637-8e125577dde6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxnbG9iYWwlMjB3YXJtaW5nfGVufDB8fHx8MTc0MzEwNjU5OXww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - prerna
+  - climate change
+image: >-
+  https://images.unsplash.com/photo-1533921482637-8e125577dde6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEwfHxnbG9iYWwlMjB3YXJtaW5nfGVufDB8fHx8MTc0MzEwNjU5OXww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754243033259524'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddmrrbod2l'
 ---
 Have you read the story of the [boiling frog](https://en.wikipedia.org/wiki/Boiling_frog)?
 

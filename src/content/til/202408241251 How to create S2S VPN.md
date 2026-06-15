@@ -5,8 +5,10 @@ created: '2024-08-24T12:51:00+03:00'
 updated: '2024-08-24T12:51:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo7cl2yz26'
 ---
 
 From [[202408241243 How to create a VPN Gateway|How to create a VPN Gateway]], till VPN Gateway and then the rest.

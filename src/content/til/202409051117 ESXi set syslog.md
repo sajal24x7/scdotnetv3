@@ -5,7 +5,9 @@ created: '2024-09-05T11:17:00+03:00'
 updated: '2024-09-05T11:17:00+03:00'
 category: til
 tags:
-- vmware
+  - vmware
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoats6x72l'
 ---
 
 Syslog.global.logDir --> Location where logs will be set

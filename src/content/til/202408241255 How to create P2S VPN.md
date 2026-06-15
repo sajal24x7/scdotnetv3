@@ -5,8 +5,10 @@ created: '2024-08-24T12:55:00+03:00'
 updated: '2024-08-24T12:55:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo7j4t7x2s'
 ---
 
 How it differs from [[202408241251 How to create S2S VPN|S2S VPN]] is around authentication.

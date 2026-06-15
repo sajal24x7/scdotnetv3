@@ -5,8 +5,11 @@ created: '2024-04-05T18:18:00+03:00'
 updated: '2024-04-05T18:18:00+03:00'
 category: til
 tags:
-- azure
-- governance
+  - azure
+  - governance
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754764325805040'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkztlwwy2o'
 ---
 
 Another construct for grouping together [[202404061212 Azure Resources|resources]]. Things that run together, might get decommissioned together, policies, etc.

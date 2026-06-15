@@ -5,8 +5,11 @@ created: '2023-06-21T17:51:00+03:00'
 updated: '2023-06-21T17:51:00+03:00'
 category: til
 tags:
-- windows
-- powershell
+  - windows
+  - powershell
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754746370195114'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkrod32z2c'
 ---
 
 

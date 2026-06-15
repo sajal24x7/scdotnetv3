@@ -5,8 +5,11 @@ created: '2023-12-23T14:20:00+03:00'
 updated: '2023-12-23T14:20:00+03:00'
 category: til
 tags:
-- azure
-- entra
+  - azure
+  - entra
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754757063955018'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkwjybjc2z'
 ---
 
 Entra is the overall umbrella for identity and access solution in [[202312231415 Azure Master|"azure"]].

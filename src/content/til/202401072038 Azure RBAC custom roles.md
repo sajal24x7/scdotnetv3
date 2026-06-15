@@ -5,9 +5,12 @@ created: '2024-01-07T20:38:00+03:00'
 updated: '2024-01-07T20:38:00+03:00'
 category: til
 tags:
-- azure
-- rbac
-- entra
+  - azure
+  - rbac
+  - entra
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754758471324378'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkx6v3vq2m'
 ---
 
 - created using role definition

@@ -5,8 +5,11 @@ created: '2024-06-08T12:05:00+03:00'
 updated: '2024-06-08T12:05:00+03:00'
 category: til
 tags:
-- azure
-- architecture
+  - azure
+  - architecture
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754944245572439'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnlo3shi26'
 ---
 
 [[202312231415 Azure Master|Azure]] Well Architected Framework provides a set of guidelines  around how to design a workload. This framework concerns itself with architecture and not implementation.

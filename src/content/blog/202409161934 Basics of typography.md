@@ -1,12 +1,19 @@
 ---
-title: "Basics of Typography"
-slug: "basics-of-typography"
-description: "Good typography conveys emotion"
-created: 2024-09-16T19:34:01
-updated: 2024-09-16T19:39:47
+title: Basics of Typography
+slug: basics-of-typography
+description: Good typography conveys emotion
+created: 2024-09-16T19:34:01.000Z
+updated: 2024-09-16T19:39:47.000Z
 category: blog
-tags: ["essays", "typography", "design"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/photo-1618411463178-9591ef1965bf.jpeg"
+tags:
+  - essays
+  - typography
+  - design
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/09/photo-1618411463178-9591ef1965bf.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754050305069916'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modav4yx4l2c'
 ---
 # /a brief overview
 

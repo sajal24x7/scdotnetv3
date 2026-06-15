@@ -1,12 +1,20 @@
 ---
-title: "The Contexts in Which I Use My Phone"
-slug: "the-contexts-in-which-i-use-my-phone"
-description: "Thinking about phone usage + productivity"
-created: 2025-03-21T11:11:00
-updated: 2025-03-22T11:12:07
+title: The Contexts in Which I Use My Phone
+slug: the-contexts-in-which-i-use-my-phone
+description: Thinking about phone usage + productivity
+created: 2025-03-21T11:11:00.000Z
+updated: 2025-03-22T11:12:07.000Z
 category: blog
-tags: ["blog", "phone", "mindfulness", "productivity"]
-image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fHBob25lfGVufDB8fHx8MTc0MjY0MTg1Nnww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - phone
+  - mindfulness
+  - productivity
+image: >-
+  https://images.unsplash.com/photo-1523206489230-c012c64b2b48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fHBob25lfGVufDB8fHx8MTc0MjY0MTg1Nnww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754241238116356'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddlxisww2m'
 ---
 I started thinking about the different contexts in which I use my phone, while rearranging the apps I use across different home screens. This style of home-screen/automation was highlighted in [Installer \#73](https://www.theverge.com/installer-newsletter/621782/best-speakers-headphones-music-gear-installer). This is the [thread](https://www.threads.net/@tinyblocks_/post/DGakDS6M_xP). The idea is to have four screens quickly accessible by using 4 shortcuts added to the default dock.
 

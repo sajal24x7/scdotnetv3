@@ -1,15 +1,17 @@
 ---
-title: "A Day Trip to Tampere"
+title: A Day Trip to Tampere
 edition: 19
-slug: "a-day-trip-to-tampere"
-description: "Nord Letter #19 - Tampere + foundations for a good life"
-created: 2024-08-05T21:08:14
-updated: 2024-08-20T15:57:05
+slug: a-day-trip-to-tampere
+description: 'Nord Letter #19 - Tampere + foundations for a good life'
+created: 2024-08-05T21:08:14.000Z
+updated: 2024-08-20T15:57:05.000Z
 category: nordletter
 tags:
   - tampere
   - trains
-image: https://storage.sajalchoudhary.net/images/2024/08/IMG_5708-2-1.jpeg
+image: 'https://storage.sajalchoudhary.net/images/2024/08/IMG_5708-2-1.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh33nynh2m'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#19, a weekly newsletter on living and walking in Finland. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 

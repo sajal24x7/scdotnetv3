@@ -5,7 +5,9 @@ created: '2024-09-16T15:27:00+03:00'
 updated: '2024-09-16T15:27:00+03:00'
 category: til
 tags:
-- entraconnect
+  - entraconnect
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modob37jdf2p'
 ---
 
 ``` powershell

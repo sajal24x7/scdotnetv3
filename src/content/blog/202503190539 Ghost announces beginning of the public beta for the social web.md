@@ -1,12 +1,21 @@
 ---
-title: "Ghost Announces Beginning of the Public Beta for the Social Web"
-slug: "ghost-announces-beginning-of-the-public-beta-for-the-social-web"
-description: "Public beta for fediverse support is live now"
-created: 2025-03-19T05:39:31
-updated: 2025-03-22T09:39:24
+title: Ghost Announces Beginning of the Public Beta for the Social Web
+slug: ghost-announces-beginning-of-the-public-beta-for-the-social-web
+description: Public beta for fediverse support is live now
+created: 2025-03-19T05:39:31.000Z
+updated: 2025-03-22T09:39:24.000Z
 category: blog
-tags: ["blog", "writing is", "fediverse", "openweb", "ghost"]
-image: "https://images.unsplash.com/photo-1726065235239-b20b88d43eea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDIzNjk1Mzd8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - writing is
+  - fediverse
+  - openweb
+  - ghost
+image: >-
+  https://images.unsplash.com/photo-1726065235239-b20b88d43eea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wxfDF8YWxsfDF8fHx8fHx8fDE3NDIzNjk1Mzd8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754240580609624'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddloazyb23'
 ---
 [Ghost announced public beta start](https://activitypub.ghost.org/social-web-beta/) for [Fediverse support](https://activitypub.ghost.org) yesterday. I have been following their journey for a while now. [I was eagerly awaiting this release](__GHOST_URL__/essays/hopes-and-dreams-for-the-fediverse/). I had signed up to be included in their earlier beta, but I did not get in. Which might have been for the best.
 

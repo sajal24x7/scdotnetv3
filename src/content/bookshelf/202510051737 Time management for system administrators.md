@@ -1,19 +1,21 @@
 ---
-title: "Time Management for System Administrators"
-slug: "time-management-for-system-administrators"
-created: 2025-10-06T21:55:32+03:00
-updated: 2026-06-05T14:19:08
+title: Time Management for System Administrators
+slug: time-management-for-system-administrators
+created: 2025-10-06T18:55:32.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - technical
 format: audio
 genre: technical
-author: 'Thomas A. Limoncelli'
-shelfStatus: "read"
+author: Thomas A. Limoncelli
+shelfStatus: read
 rating: like
-started: 2025-10-05T15:55:32+03:00
-finished: 2025-10-16T13:55:32+03:00
-cover: "time-management-for-system-administrators.jpg"
+started: 2025-10-05T12:55:32.000Z
+finished: 2025-10-16T10:55:32.000Z
+cover: time-management-for-system-administrators.jpg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode7cxe3z2s'
 ---
 
 I enjoyed this book. 

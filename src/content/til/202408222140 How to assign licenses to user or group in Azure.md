@@ -5,8 +5,10 @@ created: '2024-08-22T21:40:00+03:00'
 updated: '2024-08-22T21:40:00+03:00'
 category: til
 tags:
-- azure
-- entra
+  - azure
+  - entra
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo6rjhzi26'
 ---
 
 1. Licenses can be applied to security or M365 [[202312242245 Entra ID Groups|groups]]

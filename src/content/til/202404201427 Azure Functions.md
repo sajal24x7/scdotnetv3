@@ -5,8 +5,11 @@ created: '2024-04-20T14:27:00+03:00'
 updated: '2024-04-20T14:27:00+03:00'
 category: til
 tags:
-- azure
-- appservices
+  - azure
+  - appservices
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754930121623465'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnfafzrn2m'
 ---
 
 - serverless (can run with [[202404201400 Azure App service#App service plan]])

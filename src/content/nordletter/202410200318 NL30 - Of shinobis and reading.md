@@ -1,13 +1,16 @@
 ---
-title: "Of Shinobis and Reading"
+title: Of Shinobis and Reading
 edition: 30
-slug: "of-shinobis-and-reading"
-description: "Visiting Restaurant Shinobi + Reading on devices and the web"
-created: 2024-10-20T03:18:52
-updated: 2024-10-20T03:18:52
+slug: of-shinobis-and-reading
+description: Visiting Restaurant Shinobi + Reading on devices and the web
+created: 2024-10-20T03:18:52.000Z
+updated: 2024-10-20T03:18:52.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6320-1.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/10/IMG_6320-1.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh5vrkyl2u'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#30, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

@@ -1,14 +1,16 @@
 ---
-title: "Cursor Coded This Website for Me. I Was Not Happy."
-slug: "cursor-coded-this-website-for-me-i-was-not-happy"
-created: 2025-07-15T22:42:00+03:00
-updated: 2025-07-15T22:42:00+03:00
+title: Cursor Coded This Website for Me. I Was Not Happy.
+slug: cursor-coded-this-website-for-me-i-was-not-happy
+created: 2025-07-15T19:42:00.000Z
+updated: 2025-07-15T19:42:00.000Z
 category: blog
 tags:
   - ai
   - cursor
   - website
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754255164138404'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddscaobh2m'
 ---
 What happened was this: I asked Cursor to look at my website code and suggest some changes, things that I could improve. Of course this was not the first time that I had asked it that. I had asked Cursor the same question some time back as well, and it had given me a different set of things to do. 
 

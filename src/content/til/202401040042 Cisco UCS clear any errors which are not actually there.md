@@ -5,7 +5,10 @@ created: '2024-01-04T00:42:00+03:00'
 updated: '2024-01-04T00:42:00+03:00'
 category: til
 tags:
-- ucs
+  - ucs
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754757981942213'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkwx47zb2w'
 ---
 
 Go to Service Profile > General > Recover Server > Reset CIMC (Server Controller)

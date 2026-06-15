@@ -1,9 +1,11 @@
 ---
-title: "Black Box Thinking: The Surprising Truth About Success"
+title: 'Black Box Thinking: The Surprising Truth About Success'
 slug: black-box-thinking-the-surprising-truth-about-success-matthew-syed
-description: This book talks about failures, how we treat them citing examples from industries ranging from aviation, healthcare, coding, cycling teams.
-created: 2021-02-12T15:13:38
-updated: 2026-06-05T14:19:08
+description: >-
+  This book talks about failures, how we treat them citing examples from
+  industries ranging from aviation, healthcare, coding, cycling teams.
+created: 2021-02-12T15:13:38.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -13,8 +15,10 @@ author: Matthew Syed
 series: none
 shelfStatus: read
 rating: like
-started: 2020-12-13T15:13:00+03:00
-finished: 2021-01-19T15:13:00+03:00
+started: 2020-12-13T12:13:00.000Z
+finished: 2021-01-19T12:13:00.000Z
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode632xf624'
 ---
 I learnt about this [book](https://www.amazon.in/dp/B00PW634YQ/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1) on [**\#484** of the Tim Ferris show](https://tim.blog/2020/12/03/daniel-ek/), with [Daniel Ek](https://twitter.com/eldsjal), the CEO of Spotify.
 

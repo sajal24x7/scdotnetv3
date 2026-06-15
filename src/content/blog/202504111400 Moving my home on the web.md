@@ -1,11 +1,16 @@
 ---
-title: "Moving My Home on the Web"
-slug: "moving-my-home-on-the-web"
-created: 2025-04-11T14:00:54
-updated: 2025-04-11T14:00:54
+title: Moving My Home on the Web
+slug: moving-my-home-on-the-web
+created: 2025-04-11T14:00:54.000Z
+updated: 2025-04-11T14:00:54.000Z
 category: blog
-tags: ["blog"]
-image: "https://images.unsplash.com/photo-1734623044490-4bf667aafade?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDQzNzg2MjN8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+image: >-
+  https://images.unsplash.com/photo-1734623044490-4bf667aafade?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDQzNzg2MjN8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754249152515844'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddppd52j2s'
 ---
 I have recently been exposed to a bunch of new blogs - [Dragoncatcher the blog](https://www.robinsloan.com/lab/), [JEDDACP.COM](https://jeddacp.com/) and a bunch more. This all started when I read [Matt Webb's appearance on People and Blogs](https://manuelmoreale.com/pb-matt-webb). In the section about recommending some other blogs, Matt redirected to [his post of 10 recommendations](https://interconnected.org/home/2023/12/29/recommendations).
 

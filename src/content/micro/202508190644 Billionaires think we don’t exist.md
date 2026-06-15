@@ -1,13 +1,14 @@
 ---
-title: "Billionaires Think We Don’t Exist"
-slug: "billionaires-think-we-dont-exist"
-created: 2025-08-19T06:45:51+03:00
-updated: 2025-08-19T06:45:51+03:00
+title: Billionaires Think We Don’t Exist
+slug: billionaires-think-we-dont-exist
+created: 2025-08-19T03:45:51.000Z
+updated: 2025-08-19T03:45:51.000Z
 category: micro
 tags:
   - billionaires
   - cory-doctorow
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modglggzl72m'
 ---
 [Pluralistic: Zuckermuskian solipsism (18 Aug 2025) – Pluralistic: Daily links from Cory Doctorow by Author Cory Doctorow](https://pluralistic.net/2025/08/18/seeing-like-a-billionaire/)
 

@@ -1,14 +1,15 @@
 ---
-title: "Powershell Set Atrributes for AD Groups"
-slug: "powershell-set-atrributes-for-ad-groups"
-created: 2025-07-22T13:38:02+03:00
-updated: 2025-07-22T13:38:02+03:00
+title: Powershell Set Atrributes for AD Groups
+slug: powershell-set-atrributes-for-ad-groups
+created: 2025-07-22T10:38:02.000Z
+updated: 2025-07-22T10:38:02.000Z
 category: til
 tags:
   - ad
   - groups
   - powershell
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoeeyvex2u'
 ---
 Use the `-Instance` property with `set-aduser` 
 

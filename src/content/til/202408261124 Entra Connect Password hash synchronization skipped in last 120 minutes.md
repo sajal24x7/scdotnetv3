@@ -5,9 +5,11 @@ created: '2024-08-26T11:24:00+03:00'
 updated: '2024-08-26T11:24:00+03:00'
 category: til
 tags:
-- azure
-- entraconnect
-- entra
+  - azure
+  - entraconnect
+  - entra
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo7otrfz26'
 ---
 
 Need to restart Microsoft Entra Sync service. 

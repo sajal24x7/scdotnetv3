@@ -1,12 +1,13 @@
 ---
-title: "VW Announces ID. Cross"
-slug: "vw-announces-id-cross"
-created: 2025-09-07T19:52:04+03:00
-updated: 2025-09-07T19:52:04+03:00
+title: VW Announces ID. Cross
+slug: vw-announces-id-cross
+created: 2025-09-07T16:52:04.000Z
+updated: 2025-09-07T16:52:04.000Z
 category: micro
 tags:
   - electric-cars
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgprhrym2m'
 ---
 [Volkswagen rounds out new lineup of affordable EVs with ID. Cross concept by Andrew J. Hawkins](https://www.theverge.com/news/773435/volkswagen-rounds-out-new-lineup-of-affordable-evs-with-id-cross-concept)
 

@@ -5,8 +5,11 @@ created: '2024-05-30T10:22:00+03:00'
 updated: '2024-05-30T10:22:00+03:00'
 category: til
 tags:
-- solarwinds
-- ipam
+  - solarwinds
+  - ipam
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754942727853957'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnkxk5332m'
 ---
 
 1. Go to Manage Subnets and IP Address

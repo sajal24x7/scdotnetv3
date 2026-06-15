@@ -1,11 +1,15 @@
 ---
-title: "That Face Among the Faces!"
-slug: "that-face-among-the-faces"
-created: 2012-03-25T13:22:29
-updated: 2024-04-29T13:02:38
+title: That Face Among the Faces!
+slug: that-face-among-the-faces
+created: 2012-03-25T13:22:29.000Z
+updated: 2024-04-29T13:02:38.000Z
 category: poem
-tags: ["love"]
-image: "https://storage.sajalchoudhary.net/images/2024/04/_e5662afe-c32e-4310-9bbc-41d7ac52f904.jpg"
+tags:
+  - love
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/04/_e5662afe-c32e-4310-9bbc-41d7ac52f904.jpg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhk2tv5y2c'
 ---
 _I looked up, at the blue sky_
 

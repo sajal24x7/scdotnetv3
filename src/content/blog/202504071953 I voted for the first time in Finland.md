@@ -1,12 +1,19 @@
 ---
-title: "I Voted for the First Time in Finland"
-slug: "i-voted-for-the-first-time-in-finland"
-description: "In the municipal + county elections of 2025"
-created: 2025-04-07T19:53:57
-updated: 2025-04-07T19:53:57
+title: I Voted for the First Time in Finland
+slug: i-voted-for-the-first-time-in-finland
+description: In the municipal + county elections of 2025
+created: 2025-04-07T19:53:57.000Z
+updated: 2025-04-07T19:53:57.000Z
 category: blog
-tags: ["blog", "elections", "democracy", "finland"]
-image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0830.jpeg"
+tags:
+  - blog
+  - elections
+  - democracy
+  - finland
+image: 'https://storage.sajalchoudhary.net/images/2025/04/IMG_0830.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754246815802311'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddoiyad32m'
 ---
 I participated in the [Finnish local elections](__GHOST_URL__/blog/elections-in-finland/) today. I went and voted for a candidate in both the municipal and county elections.
 

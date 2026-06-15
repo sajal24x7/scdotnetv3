@@ -5,7 +5,9 @@ created: '2022-05-25T11:25:00+03:00'
 updated: '2022-05-25T11:25:00+03:00'
 category: til
 tags:
-- linux
+  - linux
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjq5lmlw2v'
 ---
 
 

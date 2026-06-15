@@ -5,7 +5,10 @@ created: '2024-01-22T11:53:00+03:00'
 updated: '2024-01-22T11:53:00+03:00'
 category: til
 tags:
-- vmware
+  - vmware
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754760909816208'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkyc2z5c2s'
 ---
 
 [Build numbers and versions of VMware ESXi/ESX (broadcom.com)](https://knowledge.broadcom.com/external/article/316595/build-numbers-and-versions-of-vmware-esx.html)

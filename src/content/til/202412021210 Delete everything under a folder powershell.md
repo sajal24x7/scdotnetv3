@@ -5,7 +5,9 @@ created: '2024-12-02T12:10:00+03:00'
 updated: '2024-12-02T12:10:00+03:00'
 category: til
 tags:
-- powershell
+  - powershell
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocc4gei2c'
 ---
 
 ```powershell

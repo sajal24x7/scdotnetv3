@@ -1,13 +1,16 @@
 ---
-title: "Where Are We Going"
+title: Where Are We Going
 edition: 28
-slug: "where-are-we-going"
-description: "More iPhone (camera) reviews + AI future"
-created: 2024-10-06T03:47:27
-updated: 2024-10-06T03:47:27
+slug: where-are-we-going
+description: More iPhone (camera) reviews + AI future
+created: 2024-10-06T03:47:27.000Z
+updated: 2024-10-06T03:47:27.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6204-1.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/10/IMG_6204-1.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh5fb7se2u'
 ---
 Hello from the Iso Omena Library\! Iso means 'big' and Omena means 'apple' from Finnish to English. Go [Duo](https://www.duolingo.com) I guess\!
 

@@ -5,8 +5,10 @@ created: '2022-06-03T09:47:00+03:00'
 updated: '2022-06-03T09:47:00+03:00'
 category: til
 tags:
-- windows
-- errors
+  - windows
+  - errors
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjrjnhvt2m'
 ---
 
 

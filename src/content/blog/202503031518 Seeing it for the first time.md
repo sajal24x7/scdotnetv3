@@ -1,12 +1,20 @@
 ---
-title: "Seeing It for the First Time"
-slug: "seeing-it-for-the-first-time"
-description: "Following Apple rumours"
-created: 2025-03-03T15:18:37
-updated: 2025-03-03T15:22:50
+title: Seeing It for the First Time
+slug: seeing-it-for-the-first-time
+description: Following Apple rumours
+created: 2025-03-03T15:18:37.000Z
+updated: 2025-03-03T15:22:50.000Z
 category: blog
-tags: ["blog", "apple", "rumours", "reading"]
-image: "https://images.unsplash.com/photo-1740412662676-a3b16d74ee86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDEwMTQ2OTh8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - apple
+  - rumours
+  - reading
+image: >-
+  https://images.unsplash.com/photo-1740412662676-a3b16d74ee86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDEwMTQ2OTh8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754234744365550'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddiyzjt62m'
 ---
 I follow Apple related news across multiple sources. There were things I used to do which I do not anymore, like watching Rene Ritchie on YouTube. There were others as well, but I just don’t watch YouTube as much anymore.
 

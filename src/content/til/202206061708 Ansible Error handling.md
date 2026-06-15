@@ -5,7 +5,9 @@ created: '2022-06-06T17:08:00+03:00'
 updated: '2022-06-06T17:08:00+03:00'
 category: til
 tags:
-- ansible
+  - ansible
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjrrcxbx2w'
 ---
 
 

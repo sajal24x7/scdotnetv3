@@ -1,12 +1,17 @@
 ---
-title: "About the Pareto Principle"
-slug: "about-the-pareto-principle"
-description: "And the value of putting in the work"
-created: 2025-03-05T21:54:00
-updated: 2025-03-05T22:05:17
+title: About the Pareto Principle
+slug: about-the-pareto-principle
+description: And the value of putting in the work
+created: 2025-03-05T21:54:00.000Z
+updated: 2025-03-05T22:05:17.000Z
 category: blog
-tags: ["blog"]
-image: "https://images.unsplash.com/photo-1741082212669-4566cf0077f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDEyMTIxMjJ8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+image: >-
+  https://images.unsplash.com/photo-1741082212669-4566cf0077f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3NDEyMTIxMjJ8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754235730819905'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddjhmnx32m'
 ---
 Few people invest the time needed to be good at something. This dynamic is known by many names: the 80/20 rule, the Pareto principle.
 

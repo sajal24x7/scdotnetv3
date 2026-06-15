@@ -1,12 +1,18 @@
 ---
-title: "A World Full of Agents"
-slug: "a-world-full-of-agents"
-description: "Hey Siri fetch me a glass of water!"
-created: 2024-10-08T03:46:39
-updated: 2024-10-08T03:46:38
+title: A World Full of Agents
+slug: a-world-full-of-agents
+description: Hey Siri fetch me a glass of water!
+created: 2024-10-08T03:46:39.000Z
+updated: 2024-10-08T03:46:38.000Z
 category: blog
-tags: ["blog", "AI"]
-image: "https://images.unsplash.com/photo-1705825859829-e594eb06ab49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxzaXJpfGVufDB8fHx8MTcyODMyMjQ5MHww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - AI
+image: >-
+  https://images.unsplash.com/photo-1705825859829-e594eb06ab49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxzaXJpfGVufDB8fHx8MTcyODMyMjQ5MHww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754052426732172'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modaw45wgt2c'
 ---
 The first time I came across this concept of agents was when the [Zoom CEO was on Decoder](https://www.theverge.com/2024/6/3/24168733/zoom-ceo-ai-clones-digital-twins-videoconferencing-decoder-interview). It was a little difficult to understand Eric Yuan at times, but the conversation was very enjoyable.
 

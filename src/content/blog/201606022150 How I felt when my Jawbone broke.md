@@ -1,10 +1,22 @@
 ---
-title: "How I Felt When My Jawbone Broke"
-slug: "how-i-felt-when-my-jawbone-broke"
-created: 2016-06-02T21:50:04
-updated: 2016-06-02T21:50:04
+title: How I Felt When My Jawbone Broke
+slug: how-i-felt-when-my-jawbone-broke
+created: 2016-06-02T21:50:04.000Z
+updated: 2016-06-02T21:50:04.000Z
 category: blog
-tags: ["blog", "data", "fitness", "free", "jawbone", "step-counter", "tracking", "up2"]
+tags:
+  - blog
+  - data
+  - fitness
+  - free
+  - jawbone
+  - step-counter
+  - tracking
+  - up2
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754024926661969'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modajm3bbe2d'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxlj_Fhrf'
 ---
 ![img_20160602_214538.jpg](https://storage.sajalchoudhary.net/images/wordpress/2016/06/img_20160602_214538.jpg)Broken\!
 

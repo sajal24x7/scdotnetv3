@@ -1,11 +1,18 @@
 ---
-title: "The Reason Why I Want to Move My Home on the World"
-slug: "the-reason-why-i-want-to-move-my-home-on-the-world"
-created: 2025-04-19T19:40:25
-updated: 2025-04-19T19:40:25
+title: The Reason Why I Want to Move My Home on the World
+slug: the-reason-why-i-want-to-move-my-home-on-the-world
+created: 2025-04-19T19:40:25.000Z
+updated: 2025-04-19T19:40:25.000Z
 category: blog
-tags: ["blog", "writing is", "openweb"]
-image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDR8fGhvbWV8ZW58MHx8fHwxNzQ1MDkxNTk5fDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - writing is
+  - openweb
+image: >-
+  https://images.unsplash.com/photo-1586023492125-27b2c045efd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDR8fGhvbWV8ZW58MHx8fHwxNzQ1MDkxNTk5fDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754252482621951'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddr3gtyh2m'
 ---
 The reason why I want to do this \([this being moving my home on the web](__GHOST_URL__/blog/moving-my-home-on-the-web/)\), is the same reason why I have little motivation to post on Threads/Mastodon/Bluesky. It is the same reason why [Dave wants to bring blogging and social media together](http://scripting.com/2025/04/19.html#a132828).
 

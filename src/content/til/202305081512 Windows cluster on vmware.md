@@ -5,8 +5,11 @@ created: '2023-05-08T15:12:00+03:00'
 updated: '2023-05-08T15:12:00+03:00'
 category: til
 tags:
-- windows
-- failover
+  - windows
+  - failover
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754740844182034'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkp62s6h26'
 ---
 
 

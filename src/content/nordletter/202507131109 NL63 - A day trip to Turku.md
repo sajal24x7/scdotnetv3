@@ -1,8 +1,8 @@
 ---
 title: A Day Trip to Turku
 slug: nl63-a-day-trip-to-turku
-created: 2025-07-20T06:11:09+03:00
-updated: 2025-07-20T06:11:09+03:00
+created: 2025-07-20T03:11:09.000Z
+updated: 2025-07-20T03:11:09.000Z
 category: nordletter
 tags:
   - turku
@@ -10,7 +10,9 @@ tags:
   - google
   - notebooklm
 edition: 63
-image: https://storage.sajalchoudhary.net/images/2025/07/nl63-3.jpeg
+image: 'https://storage.sajalchoudhary.net/images/2025/07/nl63-3.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhfnvk4a2m'
 ---
 Hello from my home in Matinkylä! This is NordLetter #63, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

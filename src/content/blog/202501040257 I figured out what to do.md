@@ -1,12 +1,18 @@
 ---
-title: "I Figured out What to Do"
-slug: "i-figured-out-what-to-do"
-description: "How to write here"
-created: 2025-01-04T02:57:18
-updated: 2025-01-04T02:57:17
+title: I Figured out What to Do
+slug: i-figured-out-what-to-do
+description: How to write here
+created: 2025-01-04T02:57:18.000Z
+updated: 2025-01-04T02:57:17.000Z
 category: blog
-tags: ["blog", "writing is", "ghost"]
-image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9052.jpeg"
+tags:
+  - blog
+  - writing is
+  - ghost
+image: 'https://storage.sajalchoudhary.net/images/2025/01/IMG_9052.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754216511402752'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddappcd42m'
 ---
 I figured out what to do. Yesterday, was me thinking out loud about how to write on this website. I had originally wanted to edit the post before it went live, with details about what I planned to do.
 

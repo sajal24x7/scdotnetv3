@@ -1,14 +1,19 @@
 ---
-title: No Pressure, Really!
+title: 'No Pressure, Really!'
 slug: no-pressure-really
-created: 2013-08-15T22:02:27
-updated: 2026-06-13T19:57:20
+created: 2013-08-15T22:02:27.000Z
+updated: 2026-06-13T19:57:20.000Z
 category: blog
 tags:
   - college
   - education
   - pressure
-image: https://images.unsplash.com/photo-1700735779767-58d53b6dde8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDM0fHxwcmVzc3VyZSUyMGNvb2tlcnxlbnwwfHx8fDE3MTQ4MDQ2MzF8MA&ixlib=rb-4.0.3&q=80&w=2000
+image: >-
+  https://images.unsplash.com/photo-1700735779767-58d53b6dde8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDM0fHxwcmVzc3VyZSUyMGNvb2tlcnxlbnwwfHx8fDE3MTQ4MDQ2MzF8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753973410396544'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7s674wl2u'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwFlVFoVY'
 ---
 We are different; we’ve been wired that way. How we think, how we respond to situations defines us. And hence, _what might work for some, might not for some._ It’s plain genetics.
 

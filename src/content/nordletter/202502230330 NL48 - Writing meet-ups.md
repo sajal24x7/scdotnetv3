@@ -1,13 +1,22 @@
 ---
-title: "Writing Meet-Ups"
+title: Writing Meet-Ups
 edition: 48
-slug: "writing-meet-ups"
-description: "Shutup and write + 2 opposite views on where the society is going + save your attention"
-created: 2025-02-23T03:30:45
-updated: 2025-02-23T03:30:44
+slug: writing-meet-ups
+description: >-
+  Shutup and write + 2 opposite views on where the society is going + save your
+  attention
+created: 2025-02-23T03:30:45.000Z
+updated: 2025-02-23T03:30:44.000Z
 category: nordletter
-tags: ["Nord Letter", "AI", "attention", "openweb", "writing is"]
-image: "https://storage.sajalchoudhary.net/images/2025/02/IMG_9976-1.jpeg"
+tags:
+  - Nord Letter
+  - AI
+  - attention
+  - openweb
+  - writing is
+image: 'https://storage.sajalchoudhary.net/images/2025/02/IMG_9976-1.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhbskygn2d'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#48, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

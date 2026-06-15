@@ -1,11 +1,17 @@
 ---
-title: "Success/Failure"
-slug: "successfailure"
-created: 2014-07-11T07:54:12
-updated: 2024-05-04T07:01:50
+title: Success/Failure
+slug: successfailure
+created: 2014-07-11T07:54:12.000Z
+updated: 2024-05-04T07:01:50.000Z
 category: blog
-tags: ["writing is"]
-image: "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fHN1Y2Nlc3N8ZW58MHx8fHwxNzE0NzUxMDIwfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - writing is
+image: >-
+  https://images.unsplash.com/photo-1491555103944-7c647fd857e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fHN1Y2Nlc3N8ZW58MHx8fHwxNzE0NzUxMDIwfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753984855536156'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7xeyxjf2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwa7VluIe'
 ---
 It is too early to be thinking about that. Though, if you know me, you know given the way things are going I’m confident of a happy ending. I’m optimistic that way. And hopeful.
 

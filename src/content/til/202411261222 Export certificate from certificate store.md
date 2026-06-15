@@ -5,6 +5,9 @@ created: '2024-11-26T12:22:00+03:00'
 updated: '2024-11-26T12:22:00+03:00'
 category: til
 tags: []
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobz5fp72s'
+  - 'https://www.threads.com/@sajal24x7/post/DZnNxeSlpZA'
 ---
 
 Export-Certificate command can be used to export certificate in .cer or .p10.

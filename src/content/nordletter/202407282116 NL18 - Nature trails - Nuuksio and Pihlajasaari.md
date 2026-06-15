@@ -2,15 +2,17 @@
 title: Nature Trails - Nuuksio and Pihlajasaari
 slug: nature-trails-nuuksio-and-pihlajasaari
 description: Nature trails + Beating procrastination
-created: 2024-07-28T21:16:24
-updated: 2024-08-20T15:57:41
+created: 2024-07-28T21:16:24.000Z
+updated: 2024-08-20T15:57:41.000Z
 category: nordletter
 tags:
   - nature
   - trails
   - nuuksio
-image: https://storage.sajalchoudhary.net/images/2024/07/IMG_5349-1.jpeg
+image: 'https://storage.sajalchoudhary.net/images/2024/07/IMG_5349-1.jpeg'
 edition: 18
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh2varag2w'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#18, a weekly newsletter on living and walking in Finland. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 

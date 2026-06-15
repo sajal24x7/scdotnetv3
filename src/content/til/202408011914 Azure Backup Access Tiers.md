@@ -5,8 +5,11 @@ created: '2024-08-01T19:14:00+03:00'
 updated: '2024-08-01T19:14:00+03:00'
 category: til
 tags:
-- azure
-- backup
+  - azure
+  - backup
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754972996058218'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnyq3dgn23'
 ---
 
 Access tiers for [[202404071559 Azure Backup|Azure backup]]

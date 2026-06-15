@@ -5,8 +5,10 @@ created: '2024-08-13T19:27:00+03:00'
 updated: '2024-08-13T19:27:00+03:00'
 category: til
 tags:
-- azure
-- backup
+  - azure
+  - backup
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo5n5cka2v'
 ---
 
 We can either:

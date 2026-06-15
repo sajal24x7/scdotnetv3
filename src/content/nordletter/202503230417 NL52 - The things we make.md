@@ -1,13 +1,18 @@
 ---
-title: "The Things We Make"
+title: The Things We Make
 edition: 52
-slug: "the-things-we-make"
-description: "Apple rumours + Learn some AI python"
-created: 2025-03-23T04:17:30
-updated: 2025-03-23T04:17:29
+slug: the-things-we-make
+description: Apple rumours + Learn some AI python
+created: 2025-03-23T04:17:30.000Z
+updated: 2025-03-23T04:17:29.000Z
 category: nordletter
-tags: ["Nord Letter", "waste", "compassion"]
-image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_20140320_123300451.jpg"
+tags:
+  - Nord Letter
+  - waste
+  - compassion
+image: 'https://storage.sajalchoudhary.net/images/2025/03/IMG_20140320_123300451.jpg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhctpahh26'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#52, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

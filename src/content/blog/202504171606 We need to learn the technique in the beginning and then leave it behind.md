@@ -1,12 +1,20 @@
 ---
-title: "We Need to Learn the Technique in the Beginning and Then Leave It Behind"
-slug: "we-need-to-learn-the-technique-in-the-beginning-and-then-leave-it-behind"
-description: "Don't think too much about the rules"
-created: 2025-04-17T16:06:57
-updated: 2025-04-17T16:06:57
+title: We Need to Learn the Technique in the Beginning and Then Leave It Behind
+slug: we-need-to-learn-the-technique-in-the-beginning-and-then-leave-it-behind
+description: Don't think too much about the rules
+created: 2025-04-17T16:06:57.000Z
+updated: 2025-04-17T16:06:57.000Z
 category: blog
-tags: ["blog", "writing is", "yoga", "health"]
-image: "https://images.unsplash.com/photo-1744144501177-5666f17e190c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDR8fHx8fHx8fDE3NDQ5MDU2NTF8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - writing is
+  - yoga
+  - health
+image: >-
+  https://images.unsplash.com/photo-1744144501177-5666f17e190c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDR8fHx8fHx8fDE3NDQ5MDU2NTF8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754251377551967'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddql6pdb2s'
 ---
 This principle is a common one I believe. It cuts across many seemingly dissimilar domains: health, yoga, writing.
 

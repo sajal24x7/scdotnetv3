@@ -1,13 +1,14 @@
 ---
-title: "Configure Mobile Quick Action on Obsidian"
-slug: "configure-mobile-quick-action-on-obsidian"
-created: 2025-08-29T13:37:58+03:00
-updated: 2025-08-29T13:37:58+03:00
+title: Configure Mobile Quick Action on Obsidian
+slug: configure-mobile-quick-action-on-obsidian
+created: 2025-08-29T10:37:58.000Z
+updated: 2025-08-29T10:37:58.000Z
 category: til
 tags:
   - obsidian
   - productivity
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoewjgv72s'
 ---
 I have two shortcuts I use to publish micro blog to my website -
 1. Linkblog - which takes a selection from a url and pastes that url and add the selection as a quote, and,

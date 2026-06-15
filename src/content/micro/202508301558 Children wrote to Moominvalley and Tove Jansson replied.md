@@ -1,13 +1,14 @@
 ---
-title: "Children Wrote to Moominvalley and Tove Jansson Replied"
-slug: "children-wrote-to-moominvalley-and-tove-jansson-replied"
-created: 2025-08-30T15:59:58+03:00
-updated: 2025-08-30T15:59:58+03:00
+title: Children Wrote to Moominvalley and Tove Jansson Replied
+slug: children-wrote-to-moominvalley-and-tove-jansson-replied
+created: 2025-08-30T12:59:58.000Z
+updated: 2025-08-30T12:59:58.000Z
 category: micro
 tags:
   - tove-jansson
   - moomin
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgojxv7p26'
 ---
 [Children wrote to Moominvalley, and Tove Jansson replied](https://yle.fi/a/74-20180126?origin=rss)
 

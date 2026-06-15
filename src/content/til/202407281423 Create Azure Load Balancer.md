@@ -5,8 +5,11 @@ created: '2024-07-28T14:23:00+03:00'
 updated: '2024-07-28T14:23:00+03:00'
 category: til
 tags:
-- powershell
-- azure
+  - powershell
+  - azure
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754970547235208'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnxmpby72m'
 ---
 
 # Public [[202407271319 Azure Load Balancer|Azure Load Balancer]]

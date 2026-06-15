@@ -1,10 +1,20 @@
 ---
-title: "What Makes Me Happy?"
-slug: "what-makes-me-happy"
-created: 2014-09-03T21:09:43
-updated: 2014-09-03T21:09:43
+title: What Makes Me Happy?
+slug: what-makes-me-happy
+created: 2014-09-03T21:09:43.000Z
+updated: 2014-09-03T21:09:43.000Z
 category: blog
-tags: ["blog", "edx", "happiness", "happy", "hello world", "writing is"]
+tags:
+  - blog
+  - edx
+  - happiness
+  - happy
+  - hello world
+  - writing is
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753988606023537'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7z37idx2m'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwh3rlsrv'
 ---
 \[youtube=http://youtu.be/04QJUpHi040\]
 

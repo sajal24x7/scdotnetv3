@@ -1,12 +1,13 @@
 ---
-title: "Relax, You’re Probably Getting Enough Protein"
-slug: "relax-youre-probably-getting-enough-protein"
-created: 2025-08-07T22:18:21+03:00
-updated: 2025-08-07T22:18:21+03:00
+title: 'Relax, You’re Probably Getting Enough Protein'
+slug: relax-youre-probably-getting-enough-protein
+created: 2025-08-07T19:18:21.000Z
+updated: 2025-08-07T19:18:21.000Z
 category: micro
 tags:
   - health
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgj4ej3e2v'
 ---
 [Relax, You’re Probably Getting Enough Protein by Boutayna Chokrane ](https://www.wired.com/story/how-much-protein-do-i-need/)
 

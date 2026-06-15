@@ -1,10 +1,20 @@
 ---
-title: "Why Happiness Never Seems to Last"
-slug: "why-happiness-never-seems-to-last"
-created: 2016-02-10T21:20:28
-updated: 2016-02-10T21:20:28
+title: Why Happiness Never Seems to Last
+slug: why-happiness-never-seems-to-last
+created: 2016-02-10T21:20:28.000Z
+updated: 2016-02-10T21:20:28.000Z
 category: blog
-tags: ["blog", "happiness", "happiness never lasts", "happy", "life", "life lessons"]
+tags:
+  - blog
+  - happiness
+  - happiness never lasts
+  - happy
+  - life
+  - life lessons
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754016310432481'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modafoqh6w2v'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxVhNlt-K'
 ---
 ![wp-1455119348052.jpeg](https://storage.sajalchoudhary.net/images/wordpress/2016/02/wp-1455119348052.jpeg)Not for long\!
 

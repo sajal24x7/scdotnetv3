@@ -1,12 +1,14 @@
 ---
-title: "No Limit for Better"
-slug: "no-limit-for-better"
-created: 2025-08-12T11:56:50+03:00
-updated: 2025-08-12T11:56:50+03:00
+title: No Limit for Better
+slug: no-limit-for-better
+created: 2025-08-12T08:56:50.000Z
+updated: 2025-08-12T08:56:50.000Z
 category: micro
-tags: 
+tags:
   - ai
-  - openai 
+  - openai
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgjsvyxc2u'
 ---
 [No Limit for Better by Kevin Kelly](https://kk.org/thetechnium/no-limit-for-better/)
 

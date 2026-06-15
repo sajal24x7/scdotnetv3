@@ -1,15 +1,16 @@
 ---
-title: "How to Trigger Manual Replication in DC"
-slug: "how-to-trigger-manual-replication-in-dc"
-created: 2025-05-14T23:38:51+03:00
-updated: 2025-05-14T23:38:51+03:00
+title: How to Trigger Manual Replication in DC
+slug: how-to-trigger-manual-replication-in-dc
+created: 2025-05-14T20:38:51.000Z
+updated: 2025-05-14T20:38:51.000Z
 category: til
 tags:
-  - "#powershell"
-  - "#ad"
-  - "#windows"
-  - "#repadmin"
-
+  - '#powershell'
+  - '#ad'
+  - '#windows'
+  - '#repadmin'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoe25dgz2w'
 ---
 ```powershell
 

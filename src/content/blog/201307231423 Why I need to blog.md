@@ -1,11 +1,15 @@
 ---
-title: "Why I Need to Blog"
-slug: "why-i-need-to-blog"
-created: 2013-07-23T14:23:11
-updated: 2024-05-04T06:33:44
+title: Why I Need to Blog
+slug: why-i-need-to-blog
+created: 2013-07-23T14:23:11.000Z
+updated: 2024-05-04T06:33:44.000Z
 category: blog
-tags: ["writing-is"]
-image: "https://storage.sajalchoudhary.net/images/2024/05/blog-update.gif"
+tags:
+  - writing-is
+image: 'https://storage.sajalchoudhary.net/images/2024/05/blog-update.gif'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753973183506644'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7s2y34l2m'
 ---
 A little background might help here: I have been on a sort of leave from the [blog](http://arcumen.wordpress.com/), and no it was not self-imposed or disciplinarian in any sense. I just had a bad time, physically; and then there was the all familiar: [inertia](http://arcumen.wordpress.com/2013/07/03/a-little-something-called-inertia/).
 

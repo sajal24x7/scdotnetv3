@@ -5,8 +5,11 @@ created: '2023-06-27T15:12:00+03:00'
 updated: '2023-06-27T15:12:00+03:00'
 category: til
 tags:
-- azure
-- entraconnect
+  - azure
+  - entraconnect
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754746594885668'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkrrkqgz2m'
 ---
 
 

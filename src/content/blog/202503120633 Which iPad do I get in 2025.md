@@ -1,12 +1,19 @@
 ---
-title: "Which iPad Do I Get in 2025?"
-slug: "which-ipad-do-i-get-in-2025"
-description: "About the state of the iPad lineup"
-created: 2025-03-12T06:33:13
-updated: 2025-03-12T06:33:12
+title: Which iPad Do I Get in 2025?
+slug: which-ipad-do-i-get-in-2025
+description: About the state of the iPad lineup
+created: 2025-03-12T06:33:13.000Z
+updated: 2025-03-12T06:33:12.000Z
 category: blog
-tags: ["blog", "apple", "ipad"]
-image: "https://images.unsplash.com/photo-1585770536735-27993a080586?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fElwYWR8ZW58MHx8fHwxNzQxNzA2NTYzfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - apple
+  - ipad
+image: >-
+  https://images.unsplash.com/photo-1585770536735-27993a080586?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fElwYWR8ZW58MHx8fHwxNzQxNzA2NTYzfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754238036161630'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddkj36rz23'
 ---
 This is the year to get an iPad. Finally.
 

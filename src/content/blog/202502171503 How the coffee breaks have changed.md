@@ -1,12 +1,19 @@
 ---
-title: "How the Coffee Breaks Have Changed"
-slug: "how-the-coffee-breaks-have-changed"
-description: "Answer: more time on phones"
-created: 2025-02-17T15:03:36
-updated: 2025-02-19T08:55:57
+title: How the Coffee Breaks Have Changed
+slug: how-the-coffee-breaks-have-changed
+description: 'Answer: more time on phones'
+created: 2025-02-17T15:03:36.000Z
+updated: 2025-02-19T08:55:57.000Z
 category: blog
-tags: ["blog", "phone", "breaks"]
-image: "https://images.unsplash.com/photo-1739715642309-04ea662522eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDZ8fHx8fHx8fDE3Mzk4MDQ0NTV8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - phone
+  - breaks
+image: >-
+  https://images.unsplash.com/photo-1739715642309-04ea662522eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDZ8fHx8fHx8fDE3Mzk4MDQ0NTV8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754231190789514'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddhfruyz2m'
 ---
 There are two factors here:
 

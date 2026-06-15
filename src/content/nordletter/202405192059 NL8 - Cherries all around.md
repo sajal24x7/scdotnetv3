@@ -1,16 +1,18 @@
 ---
-title: "Cherries All Around"
+title: Cherries All Around
 edition: 8
-slug: "cherries-all-around"
-description: "Nord Letter #8 - Folklore'24 + Roihuvuori Cherry Park + AI"
-created: 2024-05-19T20:59:00
-updated: 2024-07-07T20:02:40
+slug: cherries-all-around
+description: 'Nord Letter #8 - Folklore''24 + Roihuvuori Cherry Park + AI'
+created: 2024-05-19T20:59:00.000Z
+updated: 2024-07-07T20:02:40.000Z
 category: nordletter
 tags:
   - finland
   - cherry-park
   - folklore
-image: https://storage.sajalchoudhary.net/images/2024/05/IMG_3148.jpeg
+image: 'https://storage.sajalchoudhary.net/images/2024/05/IMG_3148.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgyqj3ks24'
 ---
 Hello from Helsinki\! This is NordLetter \#8. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 

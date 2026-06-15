@@ -1,12 +1,18 @@
 ---
-title: "How to Use Habituation to Your Benefit"
-slug: "how-to-use-habituation-to-your-benefit"
-description: "Recognise. Breaks in good. No breaks in bad."
-created: 2025-01-02T03:21:30
-updated: 2025-01-02T03:21:35
+title: How to Use Habituation to Your Benefit
+slug: how-to-use-habituation-to-your-benefit
+description: Recognise. Breaks in good. No breaks in bad.
+created: 2025-01-02T03:21:30.000Z
+updated: 2025-01-02T03:21:35.000Z
 category: blog
-tags: ["blog", "psychology"]
-image: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fHVzZWR8ZW58MHx8fHwxNzM1NzM2OTgxfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - psychology
+image: >-
+  https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fHVzZWR8ZW58MHx8fHwxNzM1NzM2OTgxfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754215685389068'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddadusut2o'
 ---
 [Habituation](https://en.wikipedia.org/wiki/Habituation), i.e. becoming used to something can have both good and bad affects.
 

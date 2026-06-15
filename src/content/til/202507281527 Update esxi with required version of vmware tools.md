@@ -1,14 +1,15 @@
 ---
-title: "Update Esxi With Required Version of Vmware Tools"
-slug: "update-esxi-with-required-version-of-vmware-tools"
-created: 2025-07-28T15:37:32+03:00
-updated: 2025-07-28T15:37:32+03:00
+title: Update Esxi With Required Version of Vmware Tools
+slug: update-esxi-with-required-version-of-vmware-tools
+created: 2025-07-28T12:37:32.000Z
+updated: 2025-07-28T12:37:32.000Z
 category: til
 tags:
   - vmware
   - esxi
   - vmware-tools
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoegvmqp2s'
 ---
 By default each esxi release come bundled with a specific vmware tools release. Automatic upgrade option for VMs checks against this version.
 

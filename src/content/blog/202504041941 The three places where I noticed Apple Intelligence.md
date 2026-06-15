@@ -1,12 +1,19 @@
 ---
-title: "The Three Places Where I Noticed Apple Intelligence"
-slug: "the-three-places-where-i-noticed-apple-intelligence"
-description: "Apple Intelligence comes to India (English)"
-created: 2025-04-04T19:41:11
-updated: 2025-04-04T19:41:11
+title: The Three Places Where I Noticed Apple Intelligence
+slug: the-three-places-where-i-noticed-apple-intelligence
+description: Apple Intelligence comes to India (English)
+created: 2025-04-04T19:41:11.000Z
+updated: 2025-04-04T19:41:11.000Z
 category: blog
-tags: ["blog", "apple", "iphone", "AI"]
-image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0796-1.jpeg"
+tags:
+  - blog
+  - apple
+  - iphone
+  - AI
+image: 'https://storage.sajalchoudhary.net/images/2025/04/IMG_0796-1.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754245869353107'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddo3sbfj23'
 ---
 iOS 18.4 on Monday \(31st March\), with it came Apple Intelligence in additional languages and regions, including support in English \(India\), as prophesied earlier in [NL53](__GHOST_URL__/nordletter/nl53-my-own-writing-meetup/).
 

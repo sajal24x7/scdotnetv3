@@ -1,10 +1,20 @@
 ---
-title: "We Are All Inspired!"
-slug: "we-are-all-inspired"
-created: 2014-09-14T21:00:00
-updated: 2024-10-06T10:20:07
+title: We Are All Inspired!
+slug: we-are-all-inspired
+created: 2014-09-14T21:00:00.000Z
+updated: 2024-10-06T10:20:07.000Z
 category: blog
-tags: ["blog", "novel", "novella", "post-apocalytic", "thewalkingdead", "writing is", "writing tips"]
+tags:
+  - blog
+  - novel
+  - novella
+  - post-apocalytic
+  - thewalkingdead
+  - writing is
+  - writing tips
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753990568729322'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7zyfaad23'
 ---
 [![Inspire!](https://storage.sajalchoudhary.net/images/wordpress/2014/09/e607ed858b00d061966736b0b0817a02.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/09/e607ed858b00d061966736b0b0817a02.jpg)I was doing this thing on, and with [First Time Novelist](http://afirsttimenovelist.wordpress.com/), where I was posting stuff related to writing in general. At the end I’d put up a postscript stating my current progress on the novel. This is that post.
 

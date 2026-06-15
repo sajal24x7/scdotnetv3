@@ -1,12 +1,17 @@
 ---
-title: "Build a Bridge to Your Corner of the Web"
-slug: "build-a-bridge-to-your-corner-of-the-web"
-description: "Self host"
-created: 2024-12-31T03:34:58
-updated: 2024-12-31T03:34:57
+title: Build a Bridge to Your Corner of the Web
+slug: build-a-bridge-to-your-corner-of-the-web
+description: Self host
+created: 2024-12-31T03:34:58.000Z
+updated: 2024-12-31T03:34:57.000Z
 category: blog
-tags: ["blog", "web"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_7261.jpeg"
+tags:
+  - blog
+  - web
+image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_7261.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754214533509525'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd7tjtjk2v'
 ---
 I was not on the old Twitter \(just Twitter?\). I mean I was there, but not really posting there.
 

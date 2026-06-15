@@ -1,12 +1,19 @@
 ---
-title: "Don’t Call Me a Writer!"
-slug: "dont-call-me-a-writer"
-description: "I hate the spotlight"
-created: 2025-03-11T03:26:53
-updated: 2025-03-11T03:26:52
+title: Don’t Call Me a Writer!
+slug: dont-call-me-a-writer
+description: I hate the spotlight
+created: 2025-03-11T03:26:53.000Z
+updated: 2025-03-11T03:26:52.000Z
 category: blog
-tags: ["blog", "writing is", "speaking"]
-image: "https://images.unsplash.com/photo-1615754890634-69ac8bca7189?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDh8fFNwb3RsaWdodHxlbnwwfHx8fDE3NDE2Mzc3NjV8MA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - writing is
+  - speaking
+image: >-
+  https://images.unsplash.com/photo-1615754890634-69ac8bca7189?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDh8fFNwb3RsaWdodHxlbnwwfHx8fDE3NDE2Mzc3NjV8MA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754237708484681'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddke7gfw24'
 ---
 We were sitting in the living room, Prerna on the sofa, me on a chair, facing no one in particular. Our two French friends had occupied the other two chairs in the room. The living room was done minimally, there were two mirrors on adjacent walls, bringing in plenty of light. There were a two IKEA Billys on the entrance to the bedroom, filled with books and some collectibles: a Lego Starwars cruiser of some sort, the most prominent of these.
 

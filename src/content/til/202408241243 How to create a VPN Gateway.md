@@ -5,8 +5,10 @@ created: '2024-08-24T12:43:00+03:00'
 updated: '2024-08-24T12:43:00+03:00'
 category: til
 tags:
-- azure
-- network
+  - azure
+  - network
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo735czz2w'
 ---
 
 Related to [[202407151913 Azure VPN|Azure VPN]]

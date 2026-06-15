@@ -1,12 +1,18 @@
 ---
-title: "Parenting Is Full of Contradictions"
-slug: "parenting-is-full-of-contradictions"
-description: "Sleep child, sleep!"
-created: 2025-01-16T16:02:21
-updated: 2025-01-16T16:02:21
+title: Parenting Is Full of Contradictions
+slug: parenting-is-full-of-contradictions
+description: 'Sleep child, sleep!'
+created: 2025-01-16T16:02:21.000Z
+updated: 2025-01-16T16:02:21.000Z
 category: blog
-tags: ["blog", "parenting"]
-image: "https://images.unsplash.com/photo-1490633658548-02223374071a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fEJ8ZW58MHx8fHwxNzM3MDQzMzExfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - parenting
+image: >-
+  https://images.unsplash.com/photo-1490633658548-02223374071a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fEJ8ZW58MHx8fHwxNzM3MDQzMzExfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754219476487076'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddc2yti62d'
 ---
 Before the child is born, you take care of what you eat, only good things, no alcohol, healthy stuff - apples, almonds, less oil.
 

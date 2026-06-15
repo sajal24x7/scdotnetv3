@@ -1,13 +1,17 @@
 ---
-title: "Majority of the Organisations Are Not Seeing Any Monetary Benefits From Deploying AI"
-slug: "majority-of-the-organisations-are-not-seeing-any-monetary-benefits-from-deploying-ai"
-created: 2025-08-22T08:05:43+03:00
-updated: 2025-08-22T08:05:43+03:00
+title: >-
+  Majority of the Organisations Are Not Seeing Any Monetary Benefits From
+  Deploying AI
+slug: >-
+  majority-of-the-organisations-are-not-seeing-any-monetary-benefits-from-deploying-ai
+created: 2025-08-22T05:05:43.000Z
+updated: 2025-08-22T05:05:43.000Z
 category: evergreen
 tags:
   - ai
   - work
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modealxxzd2m'
 ---
 [Bank Forced To Rehire Workers After Lying About Chatbot Productivity, Union Says - Slashdot](https://slashdot.org/story/25/08/21/1919258/bank-forced-to-rehire-workers-after-lying-about-chatbot-productivity-union-says?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 > As banks around the world prepare to replace many thousands of workers with AI, Australia's biggest bank is scrambling to rehire 45 workers after allegedly lying about chatbots besting staff by handling higher call volumes

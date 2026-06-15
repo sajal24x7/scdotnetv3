@@ -5,8 +5,11 @@ created: '2024-04-17T16:50:00+03:00'
 updated: '2024-04-17T16:50:00+03:00'
 category: til
 tags:
-- powershell
-- evergreen
+  - powershell
+  - evergreen
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754924987542714'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modncvfqxw2u'
 ---
 
 ```powershell

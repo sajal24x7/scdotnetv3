@@ -5,8 +5,10 @@ created: '2022-04-28T10:49:00+03:00'
 updated: '2022-04-28T10:49:00+03:00'
 category: til
 tags:
-- ansible
-- jinja
+  - ansible
+  - jinja
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnu23qc2w'
 ---
 
 

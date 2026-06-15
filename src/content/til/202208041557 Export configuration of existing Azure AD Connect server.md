@@ -5,10 +5,12 @@ created: '2022-08-04T15:57:00+03:00'
 updated: '2022-08-04T15:57:00+03:00'
 category: til
 tags:
-- aadconnect
-- azure
-- entra
-- entraconnect
+  - aadconnect
+  - azure
+  - entra
+  - entraconnect
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjz6arqh2l'
 ---
 
 

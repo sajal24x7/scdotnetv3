@@ -1,12 +1,18 @@
 ---
-title: "The Stories We Tell"
-slug: "the-stories-we-tell"
-description: "Of a place and a time"
-created: 2024-10-07T03:10:40
-updated: 2024-10-07T03:10:39
+title: The Stories We Tell
+slug: the-stories-we-tell
+description: Of a place and a time
+created: 2024-10-07T03:10:40.000Z
+updated: 2024-10-07T03:10:39.000Z
 category: blog
-tags: ["blog", "writing is"]
-image: "https://storage.sajalchoudhary.net/images/2024/10/photo-1659147554654-7a548884b60d.jpeg"
+tags:
+  - blog
+  - writing is
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/10/photo-1659147554654-7a548884b60d.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754052254660081'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modavzeja22m'
 ---
 I was listening to [The New Yorker Fiction Podcast - Rebecca Makkai Reads Jhumpa Lahiri ](https://www.newyorker.com/podcast/fiction/rebecca-makkai-reads-jhumpa-lahiri)today. In this episode they were reading [The Third and Final Continent by Jhumpa Lahiri](https://www.newyorker.com/magazine/1999/06/21/the-third-and-final-continent) about an Indian immigrant who travels from Kolkata to the USA.
 

@@ -1,14 +1,15 @@
 ---
-title: "Curation Matters"
-slug: "curation-matters"
-created: 2025-09-10T10:45:20+03:00
-updated: 2025-09-10T10:45:20+03:00
+title: Curation Matters
+slug: curation-matters
+created: 2025-09-10T07:45:20.000Z
+updated: 2025-09-10T07:45:20.000Z
 category: evergreen
 tags:
   - curstion
   - information-systems
   - information
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modeaxmgdw2d'
 ---
 Or, curation can have long term consequences.
 

@@ -1,11 +1,16 @@
 ---
-title: "Daily Post: 1984 (Of Emptiness and Vastness)"
-slug: "daily-post-1984-of-emptiness-and-vastness"
-created: 2013-01-10T20:50:07
-updated: 2024-04-29T14:05:57
+title: 'Daily Post: 1984 (Of Emptiness and Vastness)'
+slug: daily-post-1984-of-emptiness-and-vastness
+created: 2013-01-10T20:50:07.000Z
+updated: 2024-04-29T14:05:57.000Z
 category: blog
-tags: ["fear"]
-image: "https://images.unsplash.com/photo-1634410078081-1a918cef84c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fGluZmluaXR5fGVufDB8fHx8MTcxNDM5OTUyNnww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - fear
+image: >-
+  https://images.unsplash.com/photo-1634410078081-1a918cef84c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fGluZmluaXR5fGVufDB8fHx8MTcxNDM5OTUyNnww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753971810383275'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7rh5w4624'
 ---
 [“**You’re locked in a room with your greatest fear. Describe what’s in the room.”**](http://dailypost.wordpress.com/2013/01/09/daily-prompt-fear/)
 

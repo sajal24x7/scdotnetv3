@@ -5,9 +5,12 @@ created: '2024-04-18T18:44:00+03:00'
 updated: '2024-04-18T18:44:00+03:00'
 category: til
 tags:
-- azure
-- compute
-- vmware
+  - azure
+  - compute
+  - vmware
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754926714071826'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modndopjzt2m'
 ---
 
 - If an organization needs to leave their DC quickly, i.e. don't have time to retool they can use the Azure VMware offering.

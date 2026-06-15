@@ -5,8 +5,11 @@ created: '2023-01-04T11:46:00+03:00'
 updated: '2023-01-04T11:46:00+03:00'
 category: til
 tags:
-- windows
-- dns
+  - windows
+  - dns
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754733746159252'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modklwma232u'
 ---
 
 # Error

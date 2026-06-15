@@ -5,8 +5,11 @@ created: '2023-11-06T12:52:00+03:00'
 updated: '2023-11-06T12:52:00+03:00'
 category: til
 tags:
-- windows
-- ad
+  - windows
+  - ad
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754756191106193'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkw5afqm2m'
 ---
 
 

@@ -5,8 +5,11 @@ created: '2024-07-24T13:57:00+03:00'
 updated: '2024-07-24T13:57:00+03:00'
 category: til
 tags:
-- windows
-- cluster
+  - windows
+  - cluster
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754965842865401'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnvhwzoa2c'
 ---
 
 Windows creates account clitest2 during cluster validation.

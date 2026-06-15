@@ -1,10 +1,19 @@
 ---
-title: "How It Feels to Finally Finish That First Draft"
-slug: "how-it-feels-to-finally-finish-that-first-draft"
-created: 2016-04-19T21:02:53
-updated: 2016-04-19T21:02:53
+title: How It Feels to Finally Finish That First Draft
+slug: how-it-feels-to-finally-finish-that-first-draft
+created: 2016-04-19T21:02:53.000Z
+updated: 2016-04-19T21:02:53.000Z
 category: blog
-tags: ["blog", "first draft", "novel", "the end", "writing is"]
+tags:
+  - blog
+  - first draft
+  - novel
+  - the end
+  - writing is
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754020458229208'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modahkyles2v'
+  - 'https://www.threads.com/@sajal24x7/post/DZmxdOeFhR2'
 ---
 ![firstdraft](https://storage.sajalchoudhary.net/images/wordpress/2016/04/wp-1461079906391.jpeg)
 

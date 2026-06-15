@@ -1,13 +1,14 @@
 ---
-title: "Why China Builds Faster Than the Rest of the World"
-slug: "why-china-builds-faster-than-the-rest-of-the-world"
-created: 2025-08-28T19:14:22+03:00
-updated: 2025-08-28T19:14:22+03:00
+title: Why China Builds Faster Than the Rest of the World
+slug: why-china-builds-faster-than-the-rest-of-the-world
+created: 2025-08-28T16:14:22.000Z
+updated: 2025-08-28T16:14:22.000Z
 category: micro
 tags:
   - china
   - engineering
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgnoi2at2s'
 ---
 
 [Why China Builds Faster Than the Rest of the World by Zeyi Yang](https://www.wired.com/story/dan-wang-china-breakneck-book-interview/)

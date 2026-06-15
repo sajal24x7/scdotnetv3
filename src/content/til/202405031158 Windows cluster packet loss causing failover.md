@@ -5,9 +5,12 @@ created: '2024-05-03T11:58:00+03:00'
 updated: '2024-05-03T11:58:00+03:00'
 category: til
 tags:
-- windows
-- failover
-- vmware
+  - windows
+  - failover
+  - vmware
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754940999605531'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnk6m23a2w'
 ---
 
 Windows Failover Diagnostic logs might have error 2051.

@@ -1,15 +1,16 @@
 ---
-title: "Record Solar Growth Keeps China's CO2 Falling in First Half of 2025"
-slug: "record-solar-growth-keeps-chinas-co2-falling-in-first-half-of-2025"
-created: 2025-08-23T22:31:08+03:00
-updated: 2025-08-23T22:31:08+03:00
+title: Record Solar Growth Keeps China's CO2 Falling in First Half of 2025
+slug: record-solar-growth-keeps-chinas-co2-falling-in-first-half-of-2025
+created: 2025-08-23T19:31:08.000Z
+updated: 2025-08-23T19:31:08.000Z
 category: micro
 tags:
   - china
   - india
   - renewables
   - environment
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgmmielv2m'
 ---
 [Record Solar Growth Keeps China's CO2 Falling in First Half of 2025 - Slashdot](https://news.slashdot.org/story/25/08/22/2036256/record-solar-growth-keeps-chinas-co2-falling-in-first-half-of-2025?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 

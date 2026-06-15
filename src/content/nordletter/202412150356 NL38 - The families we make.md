@@ -1,13 +1,18 @@
 ---
-title: "The Families We Make"
+title: The Families We Make
 edition: 38
-slug: "the-families-we-make"
-description: "2 hopeful things + electric cars might last longer + the age of average + one more thing about AI"
-created: 2024-12-15T03:56:45
-updated: 2024-12-15T19:22:39
+slug: the-families-we-make
+description: >-
+  2 hopeful things + electric cars might last longer + the age of average + one
+  more thing about AI
+created: 2024-12-15T03:56:45.000Z
+updated: 2024-12-15T19:22:39.000Z
 category: nordletter
-tags: ["Nord Letter"]
-image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8762.jpeg"
+tags:
+  - Nord Letter
+image: 'https://storage.sajalchoudhary.net/images/2024/12/IMG_8762.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modh7ijdxu2o'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#38, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

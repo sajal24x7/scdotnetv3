@@ -1,12 +1,21 @@
 ---
-title: "Good Food Takes Time to Prepare"
-slug: "good-food-takes-time-to-prepare"
-description: "Patience is a virtue"
-created: 2025-03-14T20:52:38
-updated: 2025-03-14T20:52:38
+title: Good Food Takes Time to Prepare
+slug: good-food-takes-time-to-prepare
+description: Patience is a virtue
+created: 2025-03-14T20:52:38.000Z
+updated: 2025-03-14T20:52:38.000Z
 category: blog
-tags: ["blog", "prerna", "love", "life", "food"]
-image: "https://images.unsplash.com/photo-1668236534990-73c4ed23043c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fFJham1hfGVufDB8fHx8MTc0MTk4NTQ3MXww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - prerna
+  - love
+  - life
+  - food
+image: >-
+  https://images.unsplash.com/photo-1668236534990-73c4ed23043c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fFJham1hfGVufDB8fHx8MTc0MTk4NTQ3MXww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754238646290815'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddkrvf4b2m'
 ---
 Quite naturally, and sometimes through repeated fights, we have divided the chores in our home. Things are fluid mostly, but in a twenty four hour period the things that need to get done, do get done.
 

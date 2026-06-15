@@ -1,12 +1,13 @@
 ---
-title: "How to Resist Everyday Temptations"
-slug: "how-to-resist-everyday-temptations"
-created: 2025-09-03T06:22:09+03:00
-updated: 2025-09-03T06:22:09+03:00
+title: How to Resist Everyday Temptations
+slug: how-to-resist-everyday-temptations
+created: 2025-09-03T03:22:09.000Z
+updated: 2025-09-03T03:22:09.000Z
 category: micro
 tags:
   - psychology
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgooyrd22l'
 ---
 [How to resist everyday temptations | Psyche Guides](https://psyche.co/guides/how-to-resist-everyday-temptations-and-take-back-control)
 

@@ -1,14 +1,15 @@
 ---
-title: "Helsinki Daycares Step up Against Mini Bullies"
-slug: "helsinki-daycares-step-up-against-mini-bullies"
-created: 2025-08-06T14:28:08+03:00
-updated: 2025-08-06T14:28:08+03:00
+title: Helsinki Daycares Step up Against Mini Bullies
+slug: helsinki-daycares-step-up-against-mini-bullies
+created: 2025-08-06T11:28:08.000Z
+updated: 2025-08-06T11:28:08.000Z
 category: micro
 tags:
   - finland
   - daycare
   - parenting
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgiufm6c2l'
 ---
 
 [Helsinki daycares step up against mini bullies by YLE](https://yle.fi/a/74-20176154?origin=rss)

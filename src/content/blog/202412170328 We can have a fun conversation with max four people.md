@@ -1,12 +1,18 @@
 ---
-title: "We Can Have a Fun Conversation With Max Four People"
-slug: "we-can-have-a-fun-conversation-with-max-four-people"
-description: "Shakespeare got it"
-created: 2024-12-17T03:28:00
-updated: 2024-12-17T03:27:59
+title: We Can Have a Fun Conversation With Max Four People
+slug: we-can-have-a-fun-conversation-with-max-four-people
+description: Shakespeare got it
+created: 2024-12-17T03:28:00.000Z
+updated: 2024-12-17T03:27:59.000Z
 category: blog
-tags: ["blog", "psychology"]
-image: "https://images.unsplash.com/photo-1513171920216-2640b288471b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHxjb252ZXJzYXRpb24lMjBmb3VyJTIwcGVvcGxlfGVufDB8fHx8MTczNDM4Mzg0M3ww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - psychology
+image: >-
+  https://images.unsplash.com/photo-1513171920216-2640b288471b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHxjb252ZXJzYXRpb24lMjBmb3VyJTIwcGVvcGxlfGVufDB8fHx8MTczNDM4Mzg0M3ww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754210090295126'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modd5slxns2l'
 ---
 [After celebrating a birthday](__GHOST_URL__/nordletter/nl38-the-families-we-make/) in Leppävaara, we had taken the 520 to get back home. The four of us were sitting around the middle of the bus, chatting, laughing. The four of us, and Savya, who was mostly getting fussy, chatting and laughing.
 

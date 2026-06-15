@@ -1,13 +1,20 @@
 ---
-title: "What Would You Do?"
+title: What Would You Do?
 edition: 55
-slug: "what-would-you-do"
-description: "Teenagers + AI can be a partner + Meta doing Meta things + Love Death and Robots!"
-created: 2025-04-13T03:34:55
-updated: 2025-04-13T03:34:54
+slug: what-would-you-do
+description: >-
+  Teenagers + AI can be a partner + Meta doing Meta things + Love Death and
+  Robots!
+created: 2025-04-13T03:34:55.000Z
+updated: 2025-04-13T03:34:54.000Z
 category: nordletter
-tags: ["Nord Letter", "AI", "finland"]
-image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0884.jpeg"
+tags:
+  - Nord Letter
+  - AI
+  - finland
+image: 'https://storage.sajalchoudhary.net/images/2025/04/IMG_0884.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhdq5buq2c'
 ---
 Hello from the Iso Omena library's Aalto meeting room\! This is NordLetter \#55, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

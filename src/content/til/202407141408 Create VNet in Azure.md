@@ -5,9 +5,12 @@ created: '2024-07-14T14:08:00+03:00'
 updated: '2024-07-14T14:08:00+03:00'
 category: til
 tags:
-- powershell
-- azure
-- network
+  - powershell
+  - azure
+  - network
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754954381026735'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnqbqdee2o'
 ---
 
 Create [[202404121703 Azure VNet|VNet]] in [[202312231415 Azure Master|Azure]]

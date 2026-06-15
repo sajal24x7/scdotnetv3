@@ -1,11 +1,15 @@
 ---
-title: "Just the Two of Us..!!"
-slug: "just-the-two-of-us"
-created: 2012-02-14T17:51:19
-updated: 2024-04-29T13:50:06
+title: Just the Two of Us..!!
+slug: just-the-two-of-us
+created: 2012-02-14T17:51:19.000Z
+updated: 2024-04-29T13:50:06.000Z
 category: story
-tags: ["love"]
-image: "https://storage.sajalchoudhary.net/images/2024/04/photo-1426543881949-cbd9a76740a4.jpeg"
+tags:
+  - love
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/04/photo-1426543881949-cbd9a76740a4.jpeg
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhm4cgki2c'
 ---
 “Need something to write on. Suggestions..”
 

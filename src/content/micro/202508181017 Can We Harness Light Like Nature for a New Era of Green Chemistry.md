@@ -1,12 +1,14 @@
 ---
-title: "Can We Harness Light Like Nature for a New Era of Green Chemistry"
-slug: "can-we-harness-light-like-nature-for-a-new-era-of-green-chemistry"
-created: 2025-08-18T10:20:43+03:00
-updated: 2025-08-18T10:20:43+03:00
+title: Can We Harness Light Like Nature for a New Era of Green Chemistry
+slug: can-we-harness-light-like-nature-for-a-new-era-of-green-chemistry
+created: 2025-08-18T07:20:43.000Z
+updated: 2025-08-18T07:20:43.000Z
 category: micro
 tags:
   - photosynthesis
   - green-tech
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgktgsmv2m'
 ---
 [Can We Harness Light Like Nature for a New Era of Green Chemistry? - Slashdot](https://science.slashdot.org/story/25/08/17/0011242/can-we-harness-light-like-nature-for-a-new-era-of-green-chemistry?utm_source=rss1.0mainlinkanon&utm_medium=feed)
 

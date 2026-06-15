@@ -1,12 +1,19 @@
 ---
-title: "Maybe We Should Not Have Connected"
-slug: "maybe-we-should-not-have-connected"
-description: "Mixing DS2, Mastodon and Fediverse"
-created: 2025-03-20T06:18:48
-updated: 2025-03-20T06:18:48
+title: Maybe We Should Not Have Connected
+slug: maybe-we-should-not-have-connected
+description: 'Mixing DS2, Mastodon and Fediverse'
+created: 2025-03-20T06:18:48.000Z
+updated: 2025-03-20T06:18:48.000Z
 category: blog
-tags: ["blog", "ghost", "openweb"]
-image: "https://images.unsplash.com/photo-1590615370581-265ae19a053b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHxjb25uZWN0fGVufDB8fHx8MTc0MjQxMTI3M3ww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - ghost
+  - openweb
+image: >-
+  https://images.unsplash.com/photo-1590615370581-265ae19a053b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEzfHxjb25uZWN0fGVufDB8fHx8MTc0MjQxMTI3M3ww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754241047397465'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddluvmpb2s'
 ---
 Ghost announced beta start for the social web. [I have thoughts about it, the product that it is, in its current state.](__GHOST_URL__/blog/ghost-post/)
 

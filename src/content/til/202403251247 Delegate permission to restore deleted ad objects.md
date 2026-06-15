@@ -5,7 +5,10 @@ created: '2024-03-25T12:47:00+03:00'
 updated: '2024-03-25T12:47:00+03:00'
 category: til
 tags:
-- ad
+  - ad
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754762533904682'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkyzulb42m'
 ---
 
 You need to delegate **Reanimate tombstones** permission on the Domain level and make it applied to **This object and all descendant objects**. You can the **Security** tab in your Domain properties to do that:

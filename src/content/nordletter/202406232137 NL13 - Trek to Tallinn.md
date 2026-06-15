@@ -1,15 +1,17 @@
 ---
 title: Trek to Tallinn
 slug: trek-to-tallinn
-description: "Nord Letter #13 - Tallinn + bits around managing teams better"
-created: 2024-06-23T21:37:53
-updated: 2024-07-07T16:05:06
+description: 'Nord Letter #13 - Tallinn + bits around managing teams better'
+created: 2024-06-23T21:37:53.000Z
+updated: 2024-07-07T16:05:06.000Z
 category: nordletter
 tags:
   - Nord Letter
   - Tallinn
-image: https://storage.sajalchoudhary.net/images/2024/06/IMG_7859-1.jpeg
+image: 'https://storage.sajalchoudhary.net/images/2024/06/IMG_7859-1.jpeg'
 edition: 13
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgzt6rer2v'
 ---
 Hello from my home in Matinkylä\! This is NordLetter \#13, a weekly newsletter on living and walking in Finland. Previous editions can be found [here](__GHOST_URL__/nordletter/).
 

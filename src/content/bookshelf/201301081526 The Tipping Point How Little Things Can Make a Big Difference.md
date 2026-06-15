@@ -1,8 +1,8 @@
 ---
-title: "The Tipping Point: How Little Things Can Make a Big Difference"
+title: 'The Tipping Point: How Little Things Can Make a Big Difference'
 slug: the-tipping-point-how-little-things-can-make-a-big-difference
 created: 2013-01-08T15:26:39.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - book-reviews
@@ -15,5 +15,8 @@ started: 2013-01-08T15:26:39.000Z
 finished: 2013-01-08T15:26:39.000Z
 rating: like
 cover: the-tipping-point-how-little-things-can-make-a-big-difference.jpg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754260474221067'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddupm6mq26'
 ---
 Finished Reading

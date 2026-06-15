@@ -1,12 +1,17 @@
 ---
-title: "The Value of Consistency"
-slug: "the-value-of-consistency"
-description: "Discipline and repetition"
-created: 2025-01-14T09:23:29
-updated: 2025-01-14T09:23:29
+title: The Value of Consistency
+slug: the-value-of-consistency
+description: Discipline and repetition
+created: 2025-01-14T09:23:29.000Z
+updated: 2025-01-14T09:23:29.000Z
 category: blog
-tags: ["blog"]
-image: "https://images.unsplash.com/photo-1733690577845-4f4641a456b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3MzY4NDUyOTl8&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+image: >-
+  https://images.unsplash.com/photo-1733690577845-4f4641a456b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDJ8fHx8fHx8fDE3MzY4NDUyOTl8&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754219347200319'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddbz76j42m'
 ---
 I wrote about how [hard work trumps talent every time](__GHOST_URL__/hard-works-trumps-talent-every-time-2/). There is an additional element to it, of discipline and repetition.
 

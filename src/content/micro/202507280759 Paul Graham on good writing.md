@@ -1,12 +1,13 @@
 ---
-title: "Paul Graham on Good Writing"
-slug: "paul-graham-on-good-writing"
-created: 2025-07-28T11:09:18+03:00
-updated: 2025-07-28T11:09:18+03:00
+title: Paul Graham on Good Writing
+slug: paul-graham-on-good-writing
+created: 2025-07-28T08:09:18.000Z
+updated: 2025-07-28T08:09:18.000Z
 category: micro
 tags:
   - writing
-
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modgf343xl2m'
 ---
 
 [Good Writing](https://paulgraham.com/goodwriting.html)

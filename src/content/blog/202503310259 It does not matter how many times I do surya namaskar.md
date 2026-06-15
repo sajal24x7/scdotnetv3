@@ -1,12 +1,18 @@
 ---
-title: "It Does Not Matter How Many Times I Do Surya Namaskar"
-slug: "it-does-not-matter-how-many-times-i-do-surya-namaskar"
-description: "I don’t need to count anymore"
-created: 2025-03-31T02:59:48
-updated: 2025-03-31T02:59:47
+title: It Does Not Matter How Many Times I Do Surya Namaskar
+slug: it-does-not-matter-how-many-times-i-do-surya-namaskar
+description: I don’t need to count anymore
+created: 2025-03-31T02:59:48.000Z
+updated: 2025-03-31T02:59:47.000Z
 category: blog
-tags: ["blog", "yoga"]
-image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fFlvZ2F8ZW58MHx8fHwxNzQzMzY0MDUwfDA&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - yoga
+image: >-
+  https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fFlvZ2F8ZW58MHx8fHwxNzQzMzY0MDUwfDA&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754243914354417'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddn6uam32w'
 ---
 Today was the first session for Jha sir’s Vihangam Vidya Yoga. It goes on for the next 10 days. Prerna had registered for it. We were listening to the first session together.
 

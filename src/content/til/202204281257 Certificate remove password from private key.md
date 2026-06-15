@@ -5,7 +5,9 @@ created: '2022-04-28T12:57:00+03:00'
 updated: '2022-04-28T12:57:00+03:00'
 category: til
 tags:
-- cert
+  - cert
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnxkjdv2u'
 ---
 
 

@@ -1,11 +1,21 @@
 ---
-title: "Day Fourteen: The Hungry Man/Dog"
-slug: "day-fourteen-the-hungry-mandog"
-created: 2014-03-26T21:37:07
-updated: 2014-03-26T21:37:07
+title: 'Day Fourteen: The Hungry Man/Dog'
+slug: day-fourteen-the-hungry-mandog
+created: 2014-03-26T21:37:07.000Z
+updated: 2014-03-26T21:37:07.000Z
 category: blog
-tags: ["30 day challenge", "featured", "photography", "prose", "Uncategorized"]
-image: "https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395848789304.jpeg"
+tags:
+  - 30 day challenge
+  - featured
+  - photography
+  - prose
+  - Uncategorized
+image: >-
+  https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395848789304.jpeg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116753979464332393'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7uwb3q624'
+  - 'https://www.threads.com/@sajal24x7/post/DZmwQ2JlgB0'
 ---
 [![image](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395848789304.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395848789304.jpeg)
 

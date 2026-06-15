@@ -1,12 +1,17 @@
 ---
-title: "The Joy of Reading"
-slug: "the-joy-of-reading"
-description: "Books transport you"
-created: 2024-09-18T19:22:47
-updated: 2024-09-18T19:22:47
+title: The Joy of Reading
+slug: the-joy-of-reading
+description: Books transport you
+created: 2024-09-18T19:22:47.000Z
+updated: 2024-09-18T19:22:47.000Z
 category: blog
-tags: ["blog", "reading"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/IMG_6066.jpeg"
+tags:
+  - blog
+  - reading
+image: 'https://storage.sajalchoudhary.net/images/2024/09/IMG_6066.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754050614363063'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modavboo5a2v'
 ---
 I woke up a bit late today. I was a bit groggy as I went through the early morning rituals. I cooked my lunch, packed it. I went and took a shower. I ate my breakfast. I slipped on my shoes, put on my headphones, and left for work.
 

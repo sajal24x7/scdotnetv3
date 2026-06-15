@@ -1,12 +1,17 @@
 ---
-title: "Reading Children’s Books"
-slug: "reading-childrens-books"
-description: "They are so damn beautiful"
-created: 2025-04-15T20:21:00
-updated: 2025-04-15T21:22:21
+title: Reading Children’s Books
+slug: reading-childrens-books
+description: They are so damn beautiful
+created: 2025-04-15T20:21:00.000Z
+updated: 2025-04-15T21:22:21.000Z
 category: blog
-tags: ["blog", "reading"]
-image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0941.jpeg"
+tags:
+  - blog
+  - reading
+image: 'https://storage.sajalchoudhary.net/images/2025/04/IMG_0941.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754250712227489'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddqbmfkw2u'
 ---
 We got a ton of children’s books \(15\) issued from the library. We had issued five the last time around. 
 

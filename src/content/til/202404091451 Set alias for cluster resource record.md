@@ -5,9 +5,12 @@ created: '2024-04-09T14:51:00+03:00'
 updated: '2024-04-09T14:51:00+03:00'
 category: til
 tags:
-- windows
-- cluster
-- powershell
+  - windows
+  - cluster
+  - powershell
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754913745114877'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn5sgr7w2w'
 ---
 
 ```powershell

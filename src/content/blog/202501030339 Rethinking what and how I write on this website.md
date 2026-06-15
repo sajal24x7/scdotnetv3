@@ -1,12 +1,18 @@
 ---
-title: "Rethinking What and How I Write on This Website"
-slug: "rethinking-what-and-how-i-write-on-this-website"
-description: "How to add a linkblog here and about how I categorise things"
-created: 2025-01-03T03:39:41
-updated: 2025-01-03T20:14:16
+title: Rethinking What and How I Write on This Website
+slug: rethinking-what-and-how-i-write-on-this-website
+description: How to add a linkblog here and about how I categorise things
+created: 2025-01-03T03:39:41.000Z
+updated: 2025-01-03T20:14:16.000Z
 category: blog
-tags: ["blog", "writing is"]
-image: "https://images.unsplash.com/photo-1602212096437-d0af1ce0553e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHN0YXJzfGVufDB8fHx8MTczNTc3NTY3OXww&ixlib=rb-4.0.3&q=80&w=2000"
+tags:
+  - blog
+  - writing is
+image: >-
+  https://images.unsplash.com/photo-1602212096437-d0af1ce0553e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHN0YXJzfGVufDB8fHx8MTczNTc3NTY3OXww&ixlib=rb-4.0.3&q=80&w=2000
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754216331989132'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddankaak2m'
 ---
 # What do I write now
 

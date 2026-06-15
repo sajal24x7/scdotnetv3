@@ -1,12 +1,18 @@
 ---
-title: "Azure Admin Associate"
-slug: "azure-admin-associate"
-description: "I passed the AZ 104 on 3rd Sep"
-created: 2024-09-08T17:07:31
-updated: 2024-09-08T19:30:16
+title: Azure Admin Associate
+slug: azure-admin-associate
+description: I passed the AZ 104 on 3rd Sep
+created: 2024-09-08T17:07:31.000Z
+updated: 2024-09-08T19:30:16.000Z
 category: blog
-tags: ["Tech Notes", "Azure"]
-image: "https://storage.sajalchoudhary.net/images/2024/09/Screenshot-2024-09-08-at-8.05.34-PM.png"
+tags:
+  - Tech Notes
+  - Azure
+image: >-
+  https://storage.sajalchoudhary.net/images/2024/09/Screenshot-2024-09-08-at-8.05.34-PM.png
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754049638730474'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modautib4q2v'
 ---
 One of [my goals for this year](__GHOST_URL__/now/) was to get the Azure Administrator Associate certificate. On the 3rd September, I sat for the exam and passed. 😀
 

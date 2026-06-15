@@ -5,7 +5,10 @@ created: '2024-03-08T13:08:00+03:00'
 updated: '2024-03-08T13:08:00+03:00'
 category: til
 tags:
-- windows
+  - windows
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754762049834144'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkyslxwr2w'
 ---
 
 # Can be done through GPO

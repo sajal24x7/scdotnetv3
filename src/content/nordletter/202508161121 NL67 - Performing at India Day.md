@@ -1,8 +1,8 @@
 ---
-title: "Performing at India Day"
-slug: "nl67-performing-at-india-day"
-created: 2025-08-17T22:46:15+03:00
-updated: 2025-08-17T22:46:15+03:00
+title: Performing at India Day
+slug: nl67-performing-at-india-day
+created: 2025-08-17T19:46:15.000Z
+updated: 2025-08-17T19:46:15.000Z
 category: nordletter
 tags:
   - india-day
@@ -13,7 +13,9 @@ tags:
   - writing
   - practice
 edition: 67
-image: https://storage.sajalchoudhary.net/images/2025/08/nl67-4.jpeg
+image: 'https://storage.sajalchoudhary.net/images/2025/08/nl67-4.jpeg'
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhgqmhxf2v'
 ---
 Hello from my home in Matinkylä! This is NordLetter #67, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 

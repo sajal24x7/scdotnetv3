@@ -5,7 +5,10 @@ created: '2024-01-02T12:41:00+03:00'
 updated: '2024-01-02T12:41:00+03:00'
 category: til
 tags:
-- windows
+  - windows
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116754757862613886'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkwvi6bx2l'
 ---
 
 Install servicing stack patch.

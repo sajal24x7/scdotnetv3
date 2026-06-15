@@ -1,8 +1,8 @@
 ---
 title: Rogue Protocol
 slug: rogue-protocol
-created: 2025-07-15T22:42:08+03:00
-updated: 2026-06-05T14:19:08
+created: 2025-07-15T19:42:08.000Z
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - murderbot
@@ -15,8 +15,10 @@ author: Martha Wells
 series: The Murderbot Diaries
 shelfStatus: read
 rating: like
-started: 2025-07-11T09:31:00+03:00
-finished: 2025-07-15T21:00:00+03:00
+started: 2025-07-11T06:31:00.000Z
+finished: 2025-07-15T18:00:00.000Z
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6uk6bw2u'
 ---
 Book 1 - [All systems red](/bookshelf/all-systems-red)
 Book 2 - [Artificial Condition](/bookshelf/artificial-condition)
