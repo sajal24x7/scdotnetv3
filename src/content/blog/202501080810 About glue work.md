@@ -2,8 +2,8 @@
 title: "About Glue Work"
 slug: "about-glue-work"
 description: "Is glue work bad? Depends."
-pubDate: 2025-01-08T08:10:02
-updatedDate: 2025-01-08T08:10:02
+created: 2025-01-08T08:10:02
+updated: 2025-01-08T08:10:02
 category: blog
 tags: ["blog", "work"]
 image: "https://images.unsplash.com/photo-1591622778887-83445831b63d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fEdsdWV8ZW58MHx8fHwxNzM2MzIzNzcwfDA&ixlib=rb-4.0.3&q=80&w=2000"

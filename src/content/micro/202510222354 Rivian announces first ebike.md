@@ -1,8 +1,8 @@
 ---
 title: Rivian Announces First Ebike
 slug: rivian-announces-first-ebike
-pubDate: 2025-10-22T20:57:24.000Z
-updatedDate: 2025-10-22T20:57:24.000Z
+created: 2025-10-22T20:57:24.000Z
+updated: 2025-10-22T20:57:24.000Z
 category: micro
 tags:
   - ebike

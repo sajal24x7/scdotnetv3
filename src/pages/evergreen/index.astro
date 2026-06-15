@@ -9,7 +9,7 @@ import { createSectionLandingProps } from '../../utils/sectionLanding';
 const allPosts = await getAllPosts();
 const evergreenPosts = allPosts
   .filter(post => post.data.category === 'evergreen')
-  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+  .sort((a, b) => new Date(b.data.created).getTime() - new Date(a.data.created).getTime());
 
 // Transform posts for the NotesGrid component
 const transformedPosts = evergreenPosts.map(transformPost);

@@ -1,8 +1,8 @@
 ---
 title: VMware Powercli Reference
 slug: vmware-powercli-reference
-pubDate: '2023-10-24T16:46:00+03:00'
-updatedDate: '2023-10-24T16:46:00+03:00'
+created: '2023-10-24T16:46:00+03:00'
+updated: '2023-10-24T16:46:00+03:00'
 category: til
 tags:
 - vmware

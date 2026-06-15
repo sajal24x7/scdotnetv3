@@ -1,8 +1,8 @@
 ---
 title: "The Destination for AI Interfaces Is Do What I Mean"
 slug: "the-destination-for-ai-interfaces-is-do-what-i-mean"
-pubDate: 2025-08-31T11:15:03+03:00
-updatedDate: 2025-08-31T11:15:03+03:00
+created: 2025-08-31T11:15:03+03:00
+updated: 2025-08-31T11:15:03+03:00
 category: micro
 tags:
   - ai

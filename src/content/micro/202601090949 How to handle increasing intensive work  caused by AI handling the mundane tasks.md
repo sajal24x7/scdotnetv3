@@ -4,8 +4,8 @@ title: >-
   tasks
 slug: >-
   how-to-handle-increasing-intensive-work-caused-by-ai-handling-the-mundane-tasks
-pubDate: 2026-01-09T07:53:41.000Z
-updatedDate: 2026-01-09T07:53:41.000Z
+created: 2026-01-09T07:53:41.000Z
+updated: 2026-01-09T07:53:41.000Z
 category: micro
 tags:
   - ai

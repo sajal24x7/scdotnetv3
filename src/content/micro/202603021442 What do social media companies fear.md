@@ -1,8 +1,8 @@
 ---
 title: What Do Social Media Companies Fear
 slug: what-do-social-media-companies-fear
-pubDate: 2026-03-02T12:44:10.000Z
-updatedDate: 2026-03-02T12:44:10.000Z
+created: 2026-03-02T12:44:10.000Z
+updated: 2026-03-02T12:44:10.000Z
 category: micro
 tags:
   - cal-newport

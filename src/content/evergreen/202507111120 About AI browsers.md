@@ -1,8 +1,8 @@
 ---
 title: "About AI Browsers"
 slug: "about-ai-browsers"
-pubDate: 2025-07-11T11:50:15+03:00
-updatedDate: 2025-07-11T11:50:15+03:00
+created: 2025-07-11T11:50:15+03:00
+updated: 2025-07-11T11:50:15+03:00
 category: evergreen
 tags:
   - ai

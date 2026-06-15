@@ -2,8 +2,8 @@
 title: Trek to Tallinn
 slug: trek-to-tallinn
 description: "Nord Letter #13 - Tallinn + bits around managing teams better"
-pubDate: 2024-06-23T21:37:53
-updatedDate: 2024-07-07T16:05:06
+created: 2024-06-23T21:37:53
+updated: 2024-07-07T16:05:06
 category: nordletter
 tags:
   - Nord Letter

@@ -1,8 +1,8 @@
 ---
 title: Authentication and Authorization
 slug: authentication-and-authorization
-pubDate: '2024-04-01T14:14:00+03:00'
-updatedDate: '2024-04-01T14:14:00+03:00'
+created: '2024-04-01T14:14:00+03:00'
+updated: '2024-04-01T14:14:00+03:00'
 category: til
 tags:
 - azure

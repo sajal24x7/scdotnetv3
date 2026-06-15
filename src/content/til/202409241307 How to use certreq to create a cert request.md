@@ -1,8 +1,8 @@
 ---
 title: How to Use Certreq to Create a Cert Request
 slug: how-to-use-certreq-to-create-a-cert-request
-pubDate: '2024-09-24T13:07:00+03:00'
-updatedDate: '2024-09-24T13:07:00+03:00'
+created: '2024-09-24T13:07:00+03:00'
+updated: '2024-09-24T13:07:00+03:00'
 category: til
 tags:
 - cert

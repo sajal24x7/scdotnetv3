@@ -1,8 +1,8 @@
 ---
 title: Azure Resource Lock
 slug: azure-resource-lock
-pubDate: '2024-09-02T13:26:00+03:00'
-updatedDate: '2024-09-02T13:26:00+03:00'
+created: '2024-09-02T13:26:00+03:00'
+updated: '2024-09-02T13:26:00+03:00'
 category: til
 tags:
 - azure

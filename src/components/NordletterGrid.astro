@@ -33,7 +33,7 @@ const getLocalImage = (post: typeof posts[number]) => {
 
 // Group posts by year
 const postsByYear = posts.reduce((acc, post) => {
-  const year = post.data.pubDate.getFullYear();
+  const year = post.data.created.getFullYear();
   if (!acc[year]) {
     acc[year] = [];
   }
@@ -118,7 +118,7 @@ const getVariantClass = (post: typeof posts[number]) => {
             ) : null}
           <div class="nordletter-content">
             <div class="nordletter-edition">
-              {post.data.editionDisplay || `${post.data.edition || 'N/A'} · ${formatDateWithoutYear(post.data.pubDate)}`}
+              {post.data.editionDisplay || `${post.data.edition || 'N/A'} · ${formatDateWithoutYear(post.data.created)}`}
             </div>
             <h3 class="nordletter-title">{post.data.title}</h3>
           </div>

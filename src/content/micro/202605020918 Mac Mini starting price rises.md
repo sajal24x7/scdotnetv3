@@ -1,8 +1,8 @@
 ---
 title: Mac Mini starting price rises
 slug: mac-mini-starting-price-rises
-pubDate: 2026-05-02T06:20:31.000Z
-updatedDate: 2026-05-02T06:20:31.000Z
+created: 2026-05-02T06:20:31.000Z
+updated: 2026-05-02T06:20:31.000Z
 category: micro
 tags:
   - apple

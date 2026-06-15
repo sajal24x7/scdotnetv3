@@ -1,8 +1,8 @@
 ---
 title: Be a Rational Optimist
 slug: be-a-rational-optimist
-pubDate: 2025-10-16T07:16:34.000Z
-updatedDate: 2025-10-16T07:16:34.000Z
+created: 2025-10-16T07:16:34.000Z
+updated: 2025-10-16T07:16:34.000Z
 category: evergreen
 tags:
   - optimism

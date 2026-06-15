@@ -1,8 +1,8 @@
 ---
 title: Linux Disable Ipv6
 slug: linux-disable-ipv6
-pubDate: '2022-09-26T12:30:00+03:00'
-updatedDate: '2022-09-26T12:30:00+03:00'
+created: '2022-09-26T12:30:00+03:00'
+updated: '2022-09-26T12:30:00+03:00'
 category: til
 tags: []
 ---

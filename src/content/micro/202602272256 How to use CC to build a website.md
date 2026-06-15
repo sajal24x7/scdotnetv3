@@ -1,8 +1,8 @@
 ---
 title: How to Use CC to Build a Website
 slug: how-to-use-cc-to-build-a-website
-pubDate: 2026-02-27T20:56:57.000Z
-updatedDate: 2026-02-27T20:56:57.000Z
+created: 2026-02-27T20:56:57.000Z
+updated: 2026-02-27T20:56:57.000Z
 category: micro
 tags:
   - claude

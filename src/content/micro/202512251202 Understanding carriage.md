@@ -1,8 +1,8 @@
 ---
 title: Understanding Carriage
 slug: understanding-carriage
-pubDate: 2025-12-25T10:03:44.000Z
-updatedDate: 2025-12-25T10:03:44.000Z
+created: 2025-12-25T10:03:44.000Z
+updated: 2025-12-25T10:03:44.000Z
 category: micro
 tags:
   - seth-godin

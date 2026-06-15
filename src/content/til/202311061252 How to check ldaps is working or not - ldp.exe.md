@@ -1,8 +1,8 @@
 ---
 title: How to Check Ldaps Is Working or Not - Ldp.exe
 slug: how-to-check-ldaps-is-working-or-not---ldp.exe
-pubDate: '2023-11-06T12:52:00+03:00'
-updatedDate: '2023-11-06T12:52:00+03:00'
+created: '2023-11-06T12:52:00+03:00'
+updated: '2023-11-06T12:52:00+03:00'
 category: til
 tags:
 - windows

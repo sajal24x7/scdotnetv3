@@ -1,8 +1,8 @@
 ---
 title: Update and Refresh a Manifest
 slug: update-and-refresh-a-manifest
-pubDate: '2023-10-24T11:19:00+03:00'
-updatedDate: '2023-10-24T11:19:00+03:00'
+created: '2023-10-24T11:19:00+03:00'
+updated: '2023-10-24T11:19:00+03:00'
 category: til
 tags:
 - ansible

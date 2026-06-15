@@ -1,8 +1,8 @@
 ---
 title: Azure Portal Url List
 slug: azure-portal-url-list
-pubDate: '2023-08-29T14:15:00+03:00'
-updatedDate: '2023-08-29T14:15:00+03:00'
+created: '2023-08-29T14:15:00+03:00'
+updated: '2023-08-29T14:15:00+03:00'
 category: til
 tags: []
 ---

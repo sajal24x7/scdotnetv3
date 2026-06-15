@@ -1,8 +1,8 @@
 ---
 title: "Dealing With the World Cup"
 slug: "dealing-with-the-world-cup"
-pubDate: 2014-07-17T13:25:20
-updatedDate: 2024-01-28T11:05:59
+created: 2014-07-17T13:25:20
+updated: 2024-01-28T11:05:59
 category: blog
 tags: ["england", "fiction writing", "football", "germany", "sixty-day-blog", "Uncategorized", "world cup", "writing is", "writing tips", "#test"]
 ---

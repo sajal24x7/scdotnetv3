@@ -1,8 +1,8 @@
 ---
 title: The Literary World is Not Prepared for AI
 slug: the-literary-world-is-not-prepared-for-ai
-pubDate: 2026-05-23T05:14:44.000Z
-updatedDate: 2026-05-23T05:14:44.000Z
+created: 2026-05-23T05:14:44.000Z
+updated: 2026-05-23T05:14:44.000Z
 category: micro
 tags:
   - writing

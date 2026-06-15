@@ -1,8 +1,8 @@
 ---
 title: Azure Compute Gallery
 slug: azure-compute-gallery
-pubDate: '2024-04-18T18:29:00+03:00'
-updatedDate: '2024-04-18T18:29:00+03:00'
+created: '2024-04-18T18:29:00+03:00'
+updated: '2024-04-18T18:29:00+03:00'
 category: til
 tags:
 - azure

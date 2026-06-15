@@ -1,8 +1,8 @@
 ---
 title: The Systems in a Jenkins Installation
 slug: the-systems-in-a-jenkins-installation
-pubDate: 2025-12-30T09:55:42.000Z
-updatedDate: 2025-12-30T09:55:42.000Z
+created: 2025-12-30T09:55:42.000Z
+updated: 2025-12-30T09:55:42.000Z
 category: til
 tags:
   - jenkins

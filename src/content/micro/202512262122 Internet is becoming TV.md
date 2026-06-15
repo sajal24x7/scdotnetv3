@@ -1,8 +1,8 @@
 ---
 title: Internet Is Becoming TV
 slug: internet-is-becoming-tv
-pubDate: 2025-12-26T19:23:01.000Z
-updatedDate: 2025-12-26T19:23:01.000Z
+created: 2025-12-26T19:23:01.000Z
+updated: 2025-12-26T19:23:01.000Z
 category: micro
 tags:
   - internet

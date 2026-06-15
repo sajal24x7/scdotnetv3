@@ -1,8 +1,8 @@
 ---
 title: CloudRemote Docker Related
 slug: cloudremote-docker-related
-pubDate: '2022-09-26T12:53:00+03:00'
-updatedDate: '2022-09-26T12:53:00+03:00'
+created: '2022-09-26T12:53:00+03:00'
+updated: '2022-09-26T12:53:00+03:00'
 category: til
 tags: []
 ---

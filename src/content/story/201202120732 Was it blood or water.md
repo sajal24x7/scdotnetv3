@@ -1,8 +1,8 @@
 ---
 title: "Was It Blood or Water?"
 slug: "was-it-blood-or-water"
-pubDate: 2012-02-12T07:32:16
-updatedDate: 2024-04-29T13:43:16
+created: 2012-02-12T07:32:16
+updated: 2024-04-29T13:43:16
 category: story
 tags: ["story"]
 image: "https://images.unsplash.com/photo-1569407616525-3df696e2cfde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDU4fHxibG9vZHxlbnwwfHx8fDE3MTQzMTk2Njh8MA&ixlib=rb-4.0.3&q=80&w=2000"

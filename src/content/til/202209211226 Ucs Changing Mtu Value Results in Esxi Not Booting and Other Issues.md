@@ -1,8 +1,8 @@
 ---
 title: Ucs Changing Mtu Value Results in Esxi Not Booting and Other Issues
 slug: ucs-changing-mtu-value-results-in-esxi-not-booting-and-other-issues
-pubDate: '2022-09-21T12:26:00+03:00'
-updatedDate: '2022-09-21T12:26:00+03:00'
+created: '2022-09-21T12:26:00+03:00'
+updated: '2022-09-21T12:26:00+03:00'
 category: til
 tags:
 - esxi

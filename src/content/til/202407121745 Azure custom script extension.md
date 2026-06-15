@@ -1,8 +1,8 @@
 ---
 title: Azure Custom Script Extension
 slug: azure-custom-script-extension
-pubDate: '2024-07-12T17:45:00+03:00'
-updatedDate: '2024-07-12T17:45:00+03:00'
+created: '2024-07-12T17:45:00+03:00'
+updated: '2024-07-12T17:45:00+03:00'
 category: til
 tags:
 - azure

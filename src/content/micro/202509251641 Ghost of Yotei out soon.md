@@ -1,8 +1,8 @@
 ---
 title: Ghost of Yotei out Soon
 slug: ghost-of-yotei-out-soon
-pubDate: 2025-09-25T13:49:23.000Z
-updatedDate: 2025-09-25T13:49:23.000Z
+created: 2025-09-25T13:49:23.000Z
+updated: 2025-09-25T13:49:23.000Z
 category: micro
 tags:
   - playstation

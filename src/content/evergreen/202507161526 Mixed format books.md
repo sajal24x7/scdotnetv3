@@ -1,8 +1,8 @@
 ---
 title: "Mixed Format Books"
 slug: "mixed-format-books"
-pubDate: 2025-07-17T00:44:06+03:00
-updatedDate: 2025-07-17T00:44:06+03:00
+created: 2025-07-17T00:44:06+03:00
+updated: 2025-07-17T00:44:06+03:00
 category: evergreen
 tags:
   - books

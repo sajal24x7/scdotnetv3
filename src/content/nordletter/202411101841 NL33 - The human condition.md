@@ -3,8 +3,8 @@ title: "The Human Condition"
 edition: 33
 slug: "the-human-condition"
 description: "Curing cancer + e-Vitara + President of the USA"
-pubDate: 2024-11-10T18:41:01
-updatedDate: 2024-11-10T18:41:01
+created: 2024-11-10T18:41:01
+updated: 2024-11-10T18:41:01
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_7466.jpeg"

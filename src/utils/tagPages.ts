@@ -83,7 +83,7 @@ export async function getTagPageData(): Promise<TagPageData[]> {
         }
 
         const sortedPosts = [...posts].sort((a, b) =>
-            b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+            b.data.created.valueOf() - a.data.created.valueOf()
         );
 
         const transformedBySlug = new Map<string, TransformedPost>();

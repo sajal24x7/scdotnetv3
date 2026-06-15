@@ -1,8 +1,8 @@
 ---
 title: Azure Data Warehouse and Analytics
 slug: azure-data-warehouse-and-analytics
-pubDate: '2024-04-26T19:31:00+03:00'
-updatedDate: '2024-04-26T19:31:00+03:00'
+created: '2024-04-26T19:31:00+03:00'
+updated: '2024-04-26T19:31:00+03:00'
 category: til
 tags:
 - azure

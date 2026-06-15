@@ -1,8 +1,8 @@
 ---
 title: Mastodon Will Have Quote Posts Soon
 slug: mastodon-will-have-quote-posts-soon
-pubDate: 2025-09-13T16:41:03.000Z
-updatedDate: 2025-09-13T16:41:03.000Z
+created: 2025-09-13T16:41:03.000Z
+updated: 2025-09-13T16:41:03.000Z
 category: micro
 tags:
   - mastodon

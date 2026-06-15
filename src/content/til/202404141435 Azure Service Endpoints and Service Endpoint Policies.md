@@ -1,8 +1,8 @@
 ---
 title: Azure Service Endpoints and Service Endpoint Policies
 slug: azure-service-endpoints-and-service-endpoint-policies
-pubDate: '2024-04-14T14:35:00+03:00'
-updatedDate: '2024-04-14T14:35:00+03:00'
+created: '2024-04-14T14:35:00+03:00'
+updated: '2024-04-14T14:35:00+03:00'
 category: til
 tags:
 - azure

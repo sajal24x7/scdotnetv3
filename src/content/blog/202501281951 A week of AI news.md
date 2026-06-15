@@ -2,8 +2,8 @@
 title: "A Week of AI News"
 slug: "a-week-of-ai-news"
 description: "Deepsek and the others"
-pubDate: 2025-01-28T19:51:45
-updatedDate: 2025-01-28T19:51:45
+created: 2025-01-28T19:51:45
+updated: 2025-01-28T19:51:45
 category: blog
 tags: ["blog", "AI"]
 image: "https://images.unsplash.com/photo-1736196074922-9db5970da336?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDd8fHx8fHx8fDE3MzgwOTI4OTJ8&ixlib=rb-4.0.3&q=80&w=2000"

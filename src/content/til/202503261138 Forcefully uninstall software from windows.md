@@ -1,8 +1,8 @@
 ---
 title: "Forcefully Uninstall Software From Windows"
 slug: "forcefully-uninstall-software-from-windows"
-pubDate: 2025-07-29T21:40:19+03:00
-updatedDate: 2025-07-29T21:40:19+03:00
+created: 2025-07-29T21:40:19+03:00
+updated: 2025-07-29T21:40:19+03:00
 category: til
 tags:
   - windows

@@ -1,8 +1,8 @@
 ---
 title: Someone Used ChatGPT to Analyse Their Apple Watch Data
 slug: someone-used-chatgpt-to-analyse-their-apple-watch-data
-pubDate: 2026-01-27T03:35:00.000Z
-updatedDate: 2026-01-27T03:35:00.000Z
+created: 2026-01-27T03:35:00.000Z
+updated: 2026-01-27T03:35:00.000Z
 category: micro
 tags:
   - health

@@ -1,8 +1,8 @@
 ---
 title: Apple's Smart Glasses With In-Lens Display May Feature Two Modes
 slug: apples-smart-glasses-with-in-lens-display-may-feature-two-modes
-pubDate: 2025-10-12T18:09:49.000Z
-updatedDate: 2025-10-12T18:09:49.000Z
+created: 2025-10-12T18:09:49.000Z
+updated: 2025-10-12T18:09:49.000Z
 category: micro
 tags:
   - apple

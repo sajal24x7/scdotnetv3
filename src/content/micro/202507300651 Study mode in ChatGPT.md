@@ -1,8 +1,8 @@
 ---
 title: "Study Mode in ChatGPT"
 slug: "study-mode-in-chatgpt"
-pubDate: 2025-07-30T06:53:29+03:00
-updatedDate: 2025-07-30T06:53:29+03:00
+created: 2025-07-30T06:53:29+03:00
+updated: 2025-07-30T06:53:29+03:00
 category: micro
 tags:
   - ai

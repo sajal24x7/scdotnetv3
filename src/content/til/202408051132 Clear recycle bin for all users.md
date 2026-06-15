@@ -1,8 +1,8 @@
 ---
 title: Clear Recycle Bin for All Users
 slug: clear-recycle-bin-for-all-users
-pubDate: '2024-08-05T11:32:00+03:00'
-updatedDate: '2024-08-05T11:32:00+03:00'
+created: '2024-08-05T11:32:00+03:00'
+updated: '2024-08-05T11:32:00+03:00'
 category: til
 tags:
 - powershell

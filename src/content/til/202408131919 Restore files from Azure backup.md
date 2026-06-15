@@ -1,8 +1,8 @@
 ---
 title: Restore Files From Azure Backup
 slug: restore-files-from-azure-backup
-pubDate: '2024-08-13T19:19:00+03:00'
-updatedDate: '2024-08-13T19:19:00+03:00'
+created: '2024-08-13T19:19:00+03:00'
+updated: '2024-08-13T19:19:00+03:00'
 category: til
 tags:
 - azure

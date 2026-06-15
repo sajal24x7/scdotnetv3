@@ -2,8 +2,8 @@
 title: Men Without Women
 slug: murakami-haruki-men-without-women
 description: I love the book, and the object that it is
-pubDate: 2025-01-30T21:37:13
-updatedDate: 2026-06-05T14:19:08
+created: 2025-01-30T21:37:13
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

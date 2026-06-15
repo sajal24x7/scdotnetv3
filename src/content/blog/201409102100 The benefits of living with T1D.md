@@ -1,8 +1,8 @@
 ---
 title: "The Benefits of Living With T1D"
 slug: "the-benefits-of-living-with-t1d"
-pubDate: 2014-09-10T21:00:18
-updatedDate: 2024-09-10T19:53:09
+created: 2014-09-10T21:00:18
+updated: 2024-09-10T19:53:09
 category: blog
 tags: ["blog", "diabetes", "health", "type 1 diabetes"]
 ---

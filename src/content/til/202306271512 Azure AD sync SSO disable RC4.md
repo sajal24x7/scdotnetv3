@@ -1,8 +1,8 @@
 ---
 title: Azure AD Sync SSO Disable RC4
 slug: azure-ad-sync-sso-disable-rc4
-pubDate: '2023-06-27T15:12:00+03:00'
-updatedDate: '2023-06-27T15:12:00+03:00'
+created: '2023-06-27T15:12:00+03:00'
+updated: '2023-06-27T15:12:00+03:00'
 category: til
 tags:
 - azure

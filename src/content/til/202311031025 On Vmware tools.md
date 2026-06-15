@@ -1,8 +1,8 @@
 ---
 title: On Vmware Tools
 slug: on-vmware-tools
-pubDate: '2023-11-03T10:25:00+03:00'
-updatedDate: '2023-11-03T10:25:00+03:00'
+created: '2023-11-03T10:25:00+03:00'
+updated: '2023-11-03T10:25:00+03:00'
 category: til
 tags:
 - vmware

@@ -1,8 +1,8 @@
 ---
 title: "Kevin Kelly on AI"
 slug: "kevin-kelly-on-ai"
-pubDate: 2025-08-06T14:18:44+03:00
-updatedDate: 2025-08-06T14:18:44+03:00
+created: 2025-08-06T14:18:44+03:00
+updated: 2025-08-06T14:18:44+03:00
 category: micro
 tags:
   - ai

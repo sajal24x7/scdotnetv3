@@ -1,8 +1,8 @@
 ---
 title: Runaway Black Holes Confirmed by JWST
 slug: runaway-black-holes-confirmed-by-jwst
-pubDate: 2025-12-20T09:28:11.000Z
-updatedDate: 2025-12-20T09:28:11.000Z
+created: 2025-12-20T09:28:11.000Z
+updated: 2025-12-20T09:28:11.000Z
 category: micro
 tags:
   - science

@@ -2,8 +2,8 @@
 title: "Hard Works Trumps Talent Every Time"
 slug: "hard-works-trumps-talent-every-time"
 description: "Every damn time"
-pubDate: 2025-01-01T03:42:25
-updatedDate: 2025-01-01T03:42:30
+created: 2025-01-01T03:42:25
+updated: 2025-01-01T03:42:30
 category: blog
 image: "https://storage.sajalchoudhary.net/images/2024/12/2022-04-06-112-.jpeg"
 ---

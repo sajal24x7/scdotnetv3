@@ -1,8 +1,8 @@
 ---
 title: VMware MOB Reference
 slug: vmware-mob-reference
-pubDate: '2023-10-27T11:45:00+03:00'
-updatedDate: '2023-10-27T11:45:00+03:00'
+created: '2023-10-27T11:45:00+03:00'
+updated: '2023-10-27T11:45:00+03:00'
 category: til
 tags:
 - vmware

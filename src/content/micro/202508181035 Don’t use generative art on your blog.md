@@ -1,8 +1,8 @@
 ---
 title: "Don’t Use Generative Art on Your Blog"
 slug: "dont-use-generative-art-on-your-blog"
-pubDate: 2025-08-18T10:39:12+03:00
-updatedDate: 2025-08-18T10:39:12+03:00
+created: 2025-08-18T10:39:12+03:00
+updated: 2025-08-18T10:39:12+03:00
 category: micro
 tags:
   - ai

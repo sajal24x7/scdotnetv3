@@ -1,8 +1,8 @@
 ---
 title: The Internet Was Made for Privacy
 slug: the-internet-was-made-for-privacy
-pubDate: 2025-11-03T10:00:55.000Z
-updatedDate: 2025-11-03T10:00:55.000Z
+created: 2025-11-03T10:00:55.000Z
+updated: 2025-11-03T10:00:55.000Z
 category: micro
 tags:
   - cory-doctorow

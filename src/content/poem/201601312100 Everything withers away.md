@@ -1,8 +1,8 @@
 ---
 title: Everything Withers Away
 slug: everything-withers-away
-pubDate: 2016-01-31T21:00:41
-updatedDate: 2016-01-31T21:00:41
+created: 2016-01-31T21:00:41
+updated: 2016-01-31T21:00:41
 category: poem
 tags:
   - love

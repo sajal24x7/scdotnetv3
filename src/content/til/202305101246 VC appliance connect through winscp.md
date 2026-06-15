@@ -1,8 +1,8 @@
 ---
 title: VC Appliance Connect Through Winscp
 slug: vc-appliance-connect-through-winscp
-pubDate: '2023-05-10T12:46:00+03:00'
-updatedDate: '2023-05-10T12:46:00+03:00'
+created: '2023-05-10T12:46:00+03:00'
+updated: '2023-05-10T12:46:00+03:00'
 category: til
 tags: []
 ---

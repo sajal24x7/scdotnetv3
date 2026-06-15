@@ -1,8 +1,8 @@
 ---
 title: Vmware Check Rdm Details
 slug: vmware-check-rdm-details
-pubDate: '2023-05-08T15:33:00+03:00'
-updatedDate: '2023-05-08T15:33:00+03:00'
+created: '2023-05-08T15:33:00+03:00'
+updated: '2023-05-08T15:33:00+03:00'
 category: til
 tags: []
 ---

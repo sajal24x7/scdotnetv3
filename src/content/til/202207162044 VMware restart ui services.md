@@ -1,8 +1,8 @@
 ---
 title: VMware Restart Ui Services
 slug: vmware-restart-ui-services
-pubDate: '2022-07-16T20:44:00+03:00'
-updatedDate: '2022-07-16T20:44:00+03:00'
+created: '2022-07-16T20:44:00+03:00'
+updated: '2022-07-16T20:44:00+03:00'
 category: til
 tags:
 - vmware

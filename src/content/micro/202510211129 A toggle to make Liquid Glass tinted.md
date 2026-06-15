@@ -1,8 +1,8 @@
 ---
 title: A Toggle to Make Liquid Glass Tinted
 slug: a-toggle-to-make-liquid-glass-tinted
-pubDate: 2025-10-21T08:30:37.000Z
-updatedDate: 2025-10-21T08:30:37.000Z
+created: 2025-10-21T08:30:37.000Z
+updated: 2025-10-21T08:30:37.000Z
 category: micro
 tags:
   - apple

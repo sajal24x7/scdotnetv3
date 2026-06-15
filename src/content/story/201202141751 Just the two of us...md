@@ -1,8 +1,8 @@
 ---
 title: "Just the Two of Us..!!"
 slug: "just-the-two-of-us"
-pubDate: 2012-02-14T17:51:19
-updatedDate: 2024-04-29T13:50:06
+created: 2012-02-14T17:51:19
+updated: 2024-04-29T13:50:06
 category: story
 tags: ["love"]
 image: "https://storage.sajalchoudhary.net/images/2024/04/photo-1426543881949-cbd9a76740a4.jpeg"

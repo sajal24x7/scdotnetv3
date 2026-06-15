@@ -1,8 +1,8 @@
 ---
 title: ChatGPT Has Renamed Personalities Now
 slug: chatgpt-has-renamed-personalities-now
-pubDate: 2025-11-13T05:19:22.000Z
-updatedDate: 2025-11-13T05:19:22.000Z
+created: 2025-11-13T05:19:22.000Z
+updated: 2025-11-13T05:19:22.000Z
 category: micro
 tags:
   - chatgpt

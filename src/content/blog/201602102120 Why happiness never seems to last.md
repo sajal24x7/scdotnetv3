@@ -1,8 +1,8 @@
 ---
 title: "Why Happiness Never Seems to Last"
 slug: "why-happiness-never-seems-to-last"
-pubDate: 2016-02-10T21:20:28
-updatedDate: 2016-02-10T21:20:28
+created: 2016-02-10T21:20:28
+updated: 2016-02-10T21:20:28
 category: blog
 tags: ["blog", "happiness", "happiness never lasts", "happy", "life", "life lessons"]
 ---

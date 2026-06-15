@@ -1,8 +1,8 @@
 ---
 title: Managed Service Account Does Not Work
 slug: managed-service-account-does-not-work
-pubDate: '2023-06-09T12:33:00+03:00'
-updatedDate: '2023-06-09T12:33:00+03:00'
+created: '2023-06-09T12:33:00+03:00'
+updated: '2023-06-09T12:33:00+03:00'
 category: til
 tags: []
 ---

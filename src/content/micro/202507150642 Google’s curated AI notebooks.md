@@ -1,8 +1,8 @@
 ---
 title: "Google’s Curated AI Notebooks"
 slug: "googles-curated-ai-notebooks"
-pubDate: 2025-07-16T11:08:25+03:00
-updatedDate: 2025-07-16T11:08:25+03:00
+created: 2025-07-16T11:08:25+03:00
+updated: 2025-07-16T11:08:25+03:00
 category: micro
 tags:
   - ai

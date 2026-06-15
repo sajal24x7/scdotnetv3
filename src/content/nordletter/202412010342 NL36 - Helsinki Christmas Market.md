@@ -3,8 +3,8 @@ title: "Helsinki Christmas Market"
 edition: 36
 slug: "helsinki-christmas-market"
 description: "Two fun videos + two business concepts + something about rats"
-pubDate: 2024-12-01T03:42:56
-updatedDate: 2024-12-01T03:42:56
+created: 2024-12-01T03:42:56
+updated: 2024-12-01T03:42:56
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/11/IMG_8564.jpeg"

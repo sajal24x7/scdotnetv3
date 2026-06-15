@@ -1,8 +1,8 @@
 ---
 title: "What If Life Were a Game?"
 slug: "what-if-life-were-a-game"
-pubDate: 2016-02-20T21:13:20
-updatedDate: 2016-02-20T21:13:20
+created: 2016-02-20T21:13:20
+updated: 2016-02-20T21:13:20
 category: blog
 tags: ["blog", "gaming", "gita", "life", "life's a game", "reality", "religion", "universe", "virtual"]
 ---

@@ -1,8 +1,8 @@
 ---
 title: PowerShell Create Custom Object
 slug: powershell-create-custom-object
-pubDate: '2022-09-29T10:29:00+03:00'
-updatedDate: '2022-09-29T10:29:00+03:00'
+created: '2022-09-29T10:29:00+03:00'
+updated: '2022-09-29T10:29:00+03:00'
 category: til
 tags:
 - powershell

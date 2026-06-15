@@ -1,8 +1,8 @@
 ---
 title: Linux on Desktop
 slug: linux-on-desktop
-pubDate: 2025-11-22T20:03:58.000Z
-updatedDate: 2025-11-22T20:03:58.000Z
+created: 2025-11-22T20:03:58.000Z
+updated: 2025-11-22T20:03:58.000Z
 category: micro
 tags:
   - linux

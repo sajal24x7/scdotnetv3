@@ -1,8 +1,8 @@
 ---
 title: Delete vCLS VMs From ESXI
 slug: delete-vcls-vms-from-esxi
-pubDate: '2024-09-04T10:33:00+03:00'
-updatedDate: '2024-09-04T10:33:00+03:00'
+created: '2024-09-04T10:33:00+03:00'
+updated: '2024-09-04T10:33:00+03:00'
 category: til
 tags:
 - vmware

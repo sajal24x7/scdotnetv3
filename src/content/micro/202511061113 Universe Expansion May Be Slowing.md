@@ -1,8 +1,8 @@
 ---
 title: Universe Expansion May Be Slowing
 slug: universe-expansion-may-be-slowing
-pubDate: 2025-11-06T09:15:24.000Z
-updatedDate: 2025-11-06T09:15:24.000Z
+created: 2025-11-06T09:15:24.000Z
+updated: 2025-11-06T09:15:24.000Z
 category: micro
 tags:
   - science

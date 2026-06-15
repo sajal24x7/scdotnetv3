@@ -1,8 +1,8 @@
 ---
 title: "Why Do I Like Shruti Hassan?"
 slug: "why-do-i-like-shruti-hassan"
-pubDate: 2012-02-14T18:48:00
-updatedDate: 2024-04-29T12:27:30
+created: 2012-02-14T18:48:00
+updated: 2024-04-29T12:27:30
 category: blog
 tags: [“fandom”]
 ---

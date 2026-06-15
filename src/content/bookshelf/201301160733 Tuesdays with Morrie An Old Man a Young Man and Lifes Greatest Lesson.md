@@ -1,8 +1,8 @@
 ---
 title: Tuesdays With Morrie
 slug: tuesdays-with-morrie-an-old-man-a-young-man-and-lifes-greatest-lesson
-pubDate: 2013-01-16T07:33:54.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2013-01-16T07:33:54.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

@@ -3,8 +3,8 @@ title: "What Matters to You"
 edition: 50
 slug: "what-matters-to-you"
 description: "A year of mornings available everywhere now + EV for the masses + new Apple stuff"
-pubDate: 2025-03-09T03:49:00
-updatedDate: 2025-03-09T03:49:00
+created: 2025-03-09T03:49:00
+updated: 2025-03-09T03:49:00
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2025/03/IMG_0130.jpeg"

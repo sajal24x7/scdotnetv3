@@ -1,8 +1,8 @@
 ---
 title: University Exams in the Age of Chatbots
 slug: university-exams-in-the-age-of-chatbots
-pubDate: 2026-01-21T03:29:47.000Z
-updatedDate: 2026-01-21T03:29:47.000Z
+created: 2026-01-21T03:29:47.000Z
+updated: 2026-01-21T03:29:47.000Z
 category: micro
 tags:
   - llms

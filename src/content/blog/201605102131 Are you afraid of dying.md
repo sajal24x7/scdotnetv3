@@ -1,8 +1,8 @@
 ---
 title: "Are You Afraid of Dying?"
 slug: "are-you-afraid-of-dying"
-pubDate: 2016-05-10T21:31:42
-updatedDate: 2016-05-10T21:31:42
+created: 2016-05-10T21:31:42
+updated: 2016-05-10T21:31:42
 category: blog
 tags: ["blog", "death", "life", "truth"]
 ---

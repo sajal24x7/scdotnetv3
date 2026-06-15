@@ -1,8 +1,8 @@
 ---
 title: South Korea Floats Citizen Dividend Using AI Profits
 slug: south-korea-floats-citizen-dividend-using-ai-profits
-pubDate: 2026-05-13T03:10:14.000Z
-updatedDate: 2026-05-13T03:10:14.000Z
+created: 2026-05-13T03:10:14.000Z
+updated: 2026-05-13T03:10:14.000Z
 category: micro
 tags:
   - ai

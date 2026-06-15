@@ -1,8 +1,8 @@
 ---
 title: Multi-Region Deployments
 slug: multi-region-deployments
-pubDate: '2024-04-07T15:18:00+03:00'
-updatedDate: '2024-04-07T15:18:00+03:00'
+created: '2024-04-07T15:18:00+03:00'
+updated: '2024-04-07T15:18:00+03:00'
 category: til
 tags:
 - azure

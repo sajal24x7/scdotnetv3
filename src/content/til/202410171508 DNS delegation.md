@@ -1,8 +1,8 @@
 ---
 title: DNS Delegation
 slug: dns-delegation
-pubDate: '2024-10-17T15:08:00+03:00'
-updatedDate: '2024-10-17T15:08:00+03:00'
+created: '2024-10-17T15:08:00+03:00'
+updated: '2024-10-17T15:08:00+03:00'
 category: til
 tags:
 - dns

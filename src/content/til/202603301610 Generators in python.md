@@ -1,8 +1,8 @@
 ---
 title: Generators in Python
 slug: generators-in-python
-pubDate: 2026-03-30T13:27:36.000Z
-updatedDate: 2026-03-30T13:27:36.000Z
+created: 2026-03-30T13:27:36.000Z
+updated: 2026-03-30T13:27:36.000Z
 category: til
 tags:
   - python

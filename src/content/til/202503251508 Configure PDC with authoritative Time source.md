@@ -1,8 +1,8 @@
 ---
 title: "Configure PDC With Authoritative Time Source"
 slug: "configure-pdc-with-authoritative-time-source"
-pubDate: 2025-03-25T13:40:26+03:00
-updatedDate: 2025-03-25T13:40:26+03:00
+created: 2025-03-25T13:40:26+03:00
+updated: 2025-03-25T13:40:26+03:00
 category: til
 tags:
   - ad

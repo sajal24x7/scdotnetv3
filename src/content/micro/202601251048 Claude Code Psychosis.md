@@ -1,8 +1,8 @@
 ---
 title: Claude Code Psychosis
 slug: claude-code-psychosis
-pubDate: 2026-01-25T05:20:15.000Z
-updatedDate: 2026-01-25T05:20:15.000Z
+created: 2026-01-25T05:20:15.000Z
+updated: 2026-01-25T05:20:15.000Z
 category: micro
 tags:
   - claude

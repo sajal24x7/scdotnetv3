@@ -1,8 +1,8 @@
 ---
 title: "Day Twelve: The Lord in the Mountains"
 slug: "day-twelve-the-lord-in-the-mountains"
-pubDate: 2014-03-24T20:24:40
-updatedDate: 2014-03-24T20:24:40
+created: 2014-03-24T20:24:40
+updated: 2014-03-24T20:24:40
 category: blog
 tags: ["30 day challenge", "featured", "Lord", "photography", "prose", "Uncategorized"]
 image: "https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395672580169.jpeg"

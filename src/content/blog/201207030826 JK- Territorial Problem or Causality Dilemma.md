@@ -1,8 +1,8 @@
 ---
 title: "J&K- Territorial Problem or Causality Dilemma?"
 slug: "jk-territorial-problem-or-causality-dilemma"
-pubDate: 2012-07-03T08:26:58
-updatedDate: 2024-04-29T13:18:09
+created: 2012-07-03T08:26:58
+updated: 2024-04-29T13:18:09
 category: blog
 tags: ["j&k"]
 image: "https://images.unsplash.com/photo-1614056965546-42fbe24eb36c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fGthc2htaXJ8ZW58MHx8fHwxNzE0Mzk2NjgwfDA&ixlib=rb-4.0.3&q=80&w=2000"

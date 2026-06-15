@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot Entra Connect Issues
 slug: troubleshoot-entra-connect-issues
-pubDate: '2024-09-16T15:27:00+03:00'
-updatedDate: '2024-09-16T15:27:00+03:00'
+created: '2024-09-16T15:27:00+03:00'
+updated: '2024-09-16T15:27:00+03:00'
 category: til
 tags:
 - entraconnect

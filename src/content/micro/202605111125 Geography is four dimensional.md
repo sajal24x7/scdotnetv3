@@ -1,8 +1,8 @@
 ---
 title: Geography is four dimensional
 slug: geography-is-four-dimensional
-pubDate: 2026-05-11T08:27:25.000Z
-updatedDate: 2026-05-11T08:27:25.000Z
+created: 2026-05-11T08:27:25.000Z
+updated: 2026-05-11T08:27:25.000Z
 category: micro
 tags:
   - travel

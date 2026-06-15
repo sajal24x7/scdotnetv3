@@ -1,8 +1,8 @@
 ---
 title: "New Life: Ties, and Cufflinks!"
 slug: "new-life-ties-and-cufflinks"
-pubDate: 2014-10-08T21:00:00
-updatedDate: 2014-10-08T21:00:00
+created: 2014-10-08T21:00:00
+updated: 2014-10-08T21:00:00
 category: blog
 tags: ["blog", "hyderabad", "life", "new life", "travelling"]
 ---

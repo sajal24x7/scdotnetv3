@@ -2,8 +2,8 @@
 title: "Temu as a Form of Soft Power"
 slug: "temu-as-a-form-of-soft-power"
 description: "A realisation amidst assembling cheap stuff from Temu"
-pubDate: 2025-04-03T03:42:23
-updatedDate: 2025-04-03T03:42:23
+created: 2025-04-03T03:42:23
+updated: 2025-04-03T03:42:23
 category: blog
 tags: ["blog", "temu", "prerna"]
 image: "https://images.unsplash.com/photo-1721618878234-1086729bc513?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fHNvZmElMjBjb3ZlcnxlbnwwfHx8fDE3NDM2MjIyNjF8MA&ixlib=rb-4.0.3&q=80&w=2000"

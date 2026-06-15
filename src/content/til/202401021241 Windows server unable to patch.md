@@ -1,8 +1,8 @@
 ---
 title: Windows Server Unable to Patch
 slug: windows-server-unable-to-patch
-pubDate: '2024-01-02T12:41:00+03:00'
-updatedDate: '2024-01-02T12:41:00+03:00'
+created: '2024-01-02T12:41:00+03:00'
+updated: '2024-01-02T12:41:00+03:00'
 category: til
 tags:
 - windows

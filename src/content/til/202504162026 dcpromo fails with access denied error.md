@@ -1,8 +1,8 @@
 ---
 title: "Dcpromo Fails With Access Denied Error"
 slug: "dcpromo-fails-with-access-denied-error"
-pubDate: 2025-04-16T20:39:48+03:00
-updatedDate: 2025-04-16T20:39:48+03:00
+created: 2025-04-16T20:39:48+03:00
+updated: 2025-04-16T20:39:48+03:00
 category: til
 tags:
   - windows

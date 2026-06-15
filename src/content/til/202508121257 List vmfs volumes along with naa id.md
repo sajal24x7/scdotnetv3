@@ -1,8 +1,8 @@
 ---
 title: "List Vmfs Volumes Along With Naa Id"
 slug: "list-vmfs-volumes-along-with-naa-id"
-pubDate: 2025-08-12T12:57:30+03:00
-updatedDate: 2025-08-12T12:57:30+03:00
+created: 2025-08-12T12:57:30+03:00
+updated: 2025-08-12T12:57:30+03:00
 category: til
 tags:
   - vmware

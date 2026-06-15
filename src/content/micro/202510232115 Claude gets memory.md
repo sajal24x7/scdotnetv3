@@ -1,8 +1,8 @@
 ---
 title: Claude Gets Memory
 slug: claude-gets-memory
-pubDate: 2025-10-23T18:16:11.000Z
-updatedDate: 2025-10-23T18:16:11.000Z
+created: 2025-10-23T18:16:11.000Z
+updated: 2025-10-23T18:16:11.000Z
 category: micro
 tags:
   - claude

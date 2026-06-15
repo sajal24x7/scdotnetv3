@@ -1,8 +1,8 @@
 ---
 title: System Collapse
 slug: system-collapse
-pubDate: 2026-03-10T17:24:57.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2026-03-10T17:24:57.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - murderbot

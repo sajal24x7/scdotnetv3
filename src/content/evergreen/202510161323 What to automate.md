@@ -1,8 +1,8 @@
 ---
 title: What to Automate
 slug: what-to-automate
-pubDate: 2025-10-16T10:26:58.000Z
-updatedDate: 2025-10-16T10:26:58.000Z
+created: 2025-10-16T10:26:58.000Z
+updated: 2025-10-16T10:26:58.000Z
 category: evergreen
 tags:
   - work

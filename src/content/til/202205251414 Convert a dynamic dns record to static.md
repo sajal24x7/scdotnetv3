@@ -1,8 +1,8 @@
 ---
 title: Convert a Dynamic Dns Record to Static
 slug: convert-a-dynamic-dns-record-to-static
-pubDate: '2022-05-25T14:14:00+03:00'
-updatedDate: '2022-05-25T14:14:00+03:00'
+created: '2022-05-25T14:14:00+03:00'
+updated: '2022-05-25T14:14:00+03:00'
 category: til
 tags:
 - dns

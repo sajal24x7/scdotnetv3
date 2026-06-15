@@ -1,8 +1,8 @@
 ---
 title: "Murakami on the Moment He Became a Novelist"
 slug: "murakami-on-the-moment-he-became-a-novelist"
-pubDate: 2025-08-29T13:30:02+03:00
-updatedDate: 2025-08-29T13:30:02+03:00
+created: 2025-08-29T13:30:02+03:00
+updated: 2025-08-29T13:30:02+03:00
 category: micro
 tags:
   - writing

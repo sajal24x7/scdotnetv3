@@ -1,8 +1,8 @@
 ---
 title: "Day TwentyTwo: Parallel"
 slug: "day-twentytwo-parallel"
-pubDate: 2014-04-03T08:04:24
-updatedDate: 2014-04-03T08:04:24
+created: 2014-04-03T08:04:24
+updated: 2014-04-03T08:04:24
 category: blog
 tags: ["30 day challenge", "photography", "Uncategorized"]
 ---

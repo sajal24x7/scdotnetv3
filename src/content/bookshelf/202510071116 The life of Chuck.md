@@ -1,8 +1,8 @@
 ---
 title: The Life of Chuck
 slug: the-life-of-chuck
-pubDate: 2025-10-07T22:01:53+03:00
-updatedDate: 2026-06-05T14:19:08
+created: 2025-10-07T22:01:53+03:00
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - fiction

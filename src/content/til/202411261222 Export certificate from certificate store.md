@@ -1,8 +1,8 @@
 ---
 title: Export Certificate From Certificate Store
 slug: export-certificate-from-certificate-store
-pubDate: '2024-11-26T12:22:00+03:00'
-updatedDate: '2024-11-26T12:22:00+03:00'
+created: '2024-11-26T12:22:00+03:00'
+updated: '2024-11-26T12:22:00+03:00'
 category: til
 tags: []
 ---

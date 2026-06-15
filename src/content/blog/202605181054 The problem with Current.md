@@ -1,8 +1,8 @@
 ---
 title: The Problem with Current
 slug: the-problem-with-current
-pubDate: 2026-05-18T08:04:30.000Z
-updatedDate: 2026-05-18T08:04:30.000Z
+created: 2026-05-18T08:04:30.000Z
+updated: 2026-05-18T08:04:30.000Z
 category: blog
 tags:
   - reading

@@ -1,8 +1,8 @@
 ---
 title: The Movable Taskbar Is Back
 slug: the-movable-taskbar-is-back
-pubDate: 2026-03-21T05:35:20.000Z
-updatedDate: 2026-03-21T05:35:20.000Z
+created: 2026-03-21T05:35:20.000Z
+updated: 2026-03-21T05:35:20.000Z
 category: micro
 tags:
   - windows

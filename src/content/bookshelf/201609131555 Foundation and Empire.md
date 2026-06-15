@@ -1,8 +1,8 @@
 ---
 title: Foundation and Empire
 slug: foundation-and-empire
-pubDate: 2016-09-13T15:55:36.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2016-09-13T15:55:36.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

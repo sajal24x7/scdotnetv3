@@ -1,8 +1,8 @@
 ---
 title: VMware Find out When Vmotion Happened
 slug: vmware-find-out-when-vmotion-happened
-pubDate: '2024-06-13T14:58:00+03:00'
-updatedDate: '2024-06-13T14:58:00+03:00'
+created: '2024-06-13T14:58:00+03:00'
+updated: '2024-06-13T14:58:00+03:00'
 category: til
 tags:
 - vmware

@@ -1,8 +1,8 @@
 ---
 title: The Joy of Coding
 slug: the-joy-of-coding
-pubDate: 2025-11-19T20:40:40.000Z
-updatedDate: 2025-11-19T20:40:40.000Z
+created: 2025-11-19T20:40:40.000Z
+updated: 2025-11-19T20:40:40.000Z
 category: blog
 tags:
   - coding

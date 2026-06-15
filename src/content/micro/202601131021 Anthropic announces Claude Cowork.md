@@ -1,8 +1,8 @@
 ---
 title: Anthropic Announces Claude Cowork
 slug: anthropic-announces-claude-cowork
-pubDate: 2026-01-13T08:24:18.000Z
-updatedDate: 2026-01-13T08:24:18.000Z
+created: 2026-01-13T08:24:18.000Z
+updated: 2026-01-13T08:24:18.000Z
 category: micro
 tags:
   - openai

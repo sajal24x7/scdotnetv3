@@ -1,8 +1,8 @@
 ---
 title: The Routines of Super-Readers
 slug: the-routines-of-super-readers
-pubDate: 2026-04-02T13:40:34.000Z
-updatedDate: 2026-04-02T13:40:34.000Z
+created: 2026-04-02T13:40:34.000Z
+updated: 2026-04-02T13:40:34.000Z
 category: micro
 tags:
   - reading

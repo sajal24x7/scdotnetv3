@@ -10,7 +10,7 @@ import { createSectionLandingProps } from '../../utils/sectionLanding';
 const allPosts = await getAllPosts();
 const nordletterPosts = allPosts
   .filter(post => post.data.category === 'nordletter')
-  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+  .sort((a, b) => new Date(b.data.created).getTime() - new Date(a.data.created).getTime());
 
 // Transform posts for the NordletterGrid component and add edition information
 const transformedPosts = nordletterPosts.map(post => {
@@ -20,7 +20,7 @@ const transformedPosts = nordletterPosts.map(post => {
     data: {
       ...transformed.data,
       title: cleanNordletterTitle(transformed.data.title),
-      editionDisplay: getEditionDisplay(transformed.data.edition, post.data.pubDate, post.data.title, post.id)
+      editionDisplay: getEditionDisplay(transformed.data.edition, post.data.created, post.data.title, post.id)
     }
   };
 });

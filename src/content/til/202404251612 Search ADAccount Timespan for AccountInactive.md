@@ -1,8 +1,8 @@
 ---
 title: Search ADAccount Timespan for AccountInactive
 slug: search-adaccount-timespan-for-accountinactive
-pubDate: '2024-04-25T16:12:00+03:00'
-updatedDate: '2024-04-25T16:12:00+03:00'
+created: '2024-04-25T16:12:00+03:00'
+updated: '2024-04-25T16:12:00+03:00'
 category: til
 tags:
 - powershell

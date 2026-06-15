@@ -2,8 +2,8 @@
 title: "Music Can Remind You of Things"
 slug: "music-can-remind-you-of-things"
 description: "It can transport you, across time and space"
-pubDate: 2024-12-12T03:41:48
-updatedDate: 2024-12-12T03:41:47
+created: 2024-12-12T03:41:48
+updated: 2024-12-12T03:41:47
 category: blog
 tags: ["blog", "music"]
 image: "https://images.unsplash.com/photo-1637048131240-a9517d582735?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGhlYWRwaG9uZXMlMjBtZXRyb3xlbnwwfHx8fDE3MzM5NDE4ODR8MA&ixlib=rb-4.0.3&q=80&w=2000"

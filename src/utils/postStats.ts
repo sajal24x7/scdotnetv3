@@ -34,7 +34,7 @@ export function calculatePostActivitySummary(posts: Post[] | undefined | null): 
     }
 
     const validDates = posts
-        .map(post => normaliseDate(post?.data?.pubDate))
+        .map(post => normaliseDate(post?.data?.created))
         .filter((date): date is Date => Boolean(date))
         .sort((a, b) => b.getTime() - a.getTime());
 
@@ -45,8 +45,8 @@ export function calculatePostActivitySummary(posts: Post[] | undefined | null): 
     const weeklyPostCounts: Record<string, number> = {};
     const weekTimestamps = new Set<number>();
 
-    for (const pubDate of validDates) {
-        const weekStart = getWeekStart(pubDate);
+    for (const created of validDates) {
+        const weekStart = getWeekStart(created);
         const weekTimestamp = weekStart.getTime();
         const weekKey = buildWeekKey(weekStart);
 

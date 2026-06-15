@@ -1,8 +1,8 @@
 ---
 title: "Hungry Worms Could Help Solve Plastic Pollution"
 slug: "hungry-worms-could-help-solve-plastic-pollution"
-pubDate: 2025-09-06T09:57:20+03:00
-updatedDate: 2025-09-06T09:57:20+03:00
+created: 2025-09-06T09:57:20+03:00
+updated: 2025-09-06T09:57:20+03:00
 category: micro
 tags:
   - plastic

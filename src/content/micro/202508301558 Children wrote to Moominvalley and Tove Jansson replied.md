@@ -1,8 +1,8 @@
 ---
 title: "Children Wrote to Moominvalley and Tove Jansson Replied"
 slug: "children-wrote-to-moominvalley-and-tove-jansson-replied"
-pubDate: 2025-08-30T15:59:58+03:00
-updatedDate: 2025-08-30T15:59:58+03:00
+created: 2025-08-30T15:59:58+03:00
+updated: 2025-08-30T15:59:58+03:00
 category: micro
 tags:
   - tove-jansson

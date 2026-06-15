@@ -1,8 +1,8 @@
 ---
 title: How to Assign Licenses to User or Group in Azure
 slug: how-to-assign-licenses-to-user-or-group-in-azure
-pubDate: '2024-08-22T21:40:00+03:00'
-updatedDate: '2024-08-22T21:40:00+03:00'
+created: '2024-08-22T21:40:00+03:00'
+updated: '2024-08-22T21:40:00+03:00'
 category: til
 tags:
 - azure

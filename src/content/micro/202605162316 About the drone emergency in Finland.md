@@ -1,8 +1,8 @@
 ---
 title: About the drone emergency in Finland
 slug: about-the-drone-emergency-in-finland
-pubDate: 2026-05-18T06:26:11.000Z
-updatedDate: 2026-05-18T06:26:11.000Z
+created: 2026-05-18T06:26:11.000Z
+updated: 2026-05-18T06:26:11.000Z
 category: micro
 tags:
   - finland

@@ -3,8 +3,8 @@ title: "Where Are We Going"
 edition: 28
 slug: "where-are-we-going"
 description: "More iPhone (camera) reviews + AI future"
-pubDate: 2024-10-06T03:47:27
-updatedDate: 2024-10-06T03:47:27
+created: 2024-10-06T03:47:27
+updated: 2024-10-06T03:47:27
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6204-1.jpeg"

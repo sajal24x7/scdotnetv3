@@ -1,8 +1,8 @@
 ---
 title: Curl Gives a Handshake Failure When Trying to Use Ntlm to Talk to Windows Server
 slug: curl-gives-a-handshake-failure-when-trying-to-use-ntlm-to-talk-to-windows-server
-pubDate: '2024-04-18T16:41:00+03:00'
-updatedDate: '2024-04-18T16:41:00+03:00'
+created: '2024-04-18T16:41:00+03:00'
+updated: '2024-04-18T16:41:00+03:00'
 category: til
 tags:
 - linux

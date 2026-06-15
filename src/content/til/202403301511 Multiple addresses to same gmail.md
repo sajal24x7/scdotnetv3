@@ -1,8 +1,8 @@
 ---
 title: Multiple Addresses to Same Gmail
 slug: multiple-addresses-to-same-gmail
-pubDate: '2024-03-30T15:11:00+03:00'
-updatedDate: '2024-03-30T15:11:00+03:00'
+created: '2024-03-30T15:11:00+03:00'
+updated: '2024-03-30T15:11:00+03:00'
 category: til
 tags:
 - email

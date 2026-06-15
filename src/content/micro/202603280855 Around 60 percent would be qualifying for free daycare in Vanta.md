@@ -1,8 +1,8 @@
 ---
 title: Around 60 Percent Would Be Qualifying for Free Daycare in Vanta
 slug: around-60-percent-would-be-qualifying-for-free-daycare-in-vanta
-pubDate: 2026-03-28T06:56:29.000Z
-updatedDate: 2026-03-28T06:56:29.000Z
+created: 2026-03-28T06:56:29.000Z
+updated: 2026-03-28T06:56:29.000Z
 category: micro
 tags:
   - finland

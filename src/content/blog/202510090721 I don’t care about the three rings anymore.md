@@ -1,8 +1,8 @@
 ---
 title: I Don’t Care About the Three Rings Anymore
 slug: i-dont-care-about-the-three-rings-anymore
-pubDate: 2025-10-09T04:27:08.000Z
-updatedDate: 2025-10-09T04:27:08.000Z
+created: 2025-10-09T04:27:08.000Z
+updated: 2025-10-09T04:27:08.000Z
 category: blog
 tags:
   - apple

@@ -1,8 +1,8 @@
 ---
 title: Windows File Systems
 slug: windows-file-systems
-pubDate: '2024-07-16T12:59:00+03:00'
-updatedDate: '2024-07-16T12:59:00+03:00'
+created: '2024-07-16T12:59:00+03:00'
+updated: '2024-07-16T12:59:00+03:00'
 category: til
 tags:
 - windows

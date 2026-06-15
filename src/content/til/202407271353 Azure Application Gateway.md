@@ -1,8 +1,8 @@
 ---
 title: Azure Application Gateway
 slug: azure-application-gateway
-pubDate: '2024-07-27T13:53:00+03:00'
-updatedDate: '2024-07-27T13:53:00+03:00'
+created: '2024-07-27T13:53:00+03:00'
+updated: '2024-07-27T13:53:00+03:00'
 category: til
 tags:
 - azure

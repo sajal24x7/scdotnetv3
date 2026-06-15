@@ -1,8 +1,8 @@
 ---
 title: "Why LLMs Can't Really Build Software"
 slug: "why-llms-cant-really-build-software"
-pubDate: 2025-08-19T10:58:58+03:00
-updatedDate: 2025-08-19T10:58:58+03:00
+created: 2025-08-19T10:58:58+03:00
+updated: 2025-08-19T10:58:58+03:00
 category: micro
 tags:
   - ai

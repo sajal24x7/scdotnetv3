@@ -1,8 +1,8 @@
 ---
 title: Machine Learning
 slug: machine-learning
-pubDate: '2024-03-25T22:44:00+03:00'
-updatedDate: '2024-03-25T22:44:00+03:00'
+created: '2024-03-25T22:44:00+03:00'
+updated: '2024-03-25T22:44:00+03:00'
 category: til
 tags:
 - azure

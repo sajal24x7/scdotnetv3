@@ -2,8 +2,8 @@
 title: "The Things We Don't Need"
 slug: "the-things-we-don"
 description: "We should let those go, no?"
-pubDate: 2024-12-14T00:00:00
-updatedDate: 2024-12-14T00:00:00
+created: 2024-12-14T00:00:00
+updated: 2024-12-14T00:00:00
 category: blog
 tags: ["blog"]
 image: "https://images.unsplash.com/photo-1663775635512-c60be8b302b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDM3fHxuZXRmbGl4fGVufDB8fHx8MTczNDEyNDEyNnww&ixlib=rb-4.0.3&q=80&w=2000"

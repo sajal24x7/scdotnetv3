@@ -1,8 +1,8 @@
 ---
 title: Finns Changed Diets After Nutrition Guideline Update
 slug: finns-changed-diets-after-nutrition-guideline-update
-pubDate: 2026-04-15T12:43:26.000Z
-updatedDate: 2026-04-15T12:43:26.000Z
+created: 2026-04-15T12:43:26.000Z
+updated: 2026-04-15T12:43:26.000Z
 category: micro
 tags:
   - health

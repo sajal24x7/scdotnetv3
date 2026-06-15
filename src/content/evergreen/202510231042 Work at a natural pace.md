@@ -1,8 +1,8 @@
 ---
 title: Work at a Natural Pace
 slug: work-at-a-natural-pace
-pubDate: 2025-10-26T20:55:28.000Z
-updatedDate: 2025-10-26T20:55:28.000Z
+created: 2025-10-26T20:55:28.000Z
+updated: 2025-10-26T20:55:28.000Z
 category: evergreen
 tags:
   - work

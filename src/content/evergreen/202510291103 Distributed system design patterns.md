@@ -1,8 +1,8 @@
 ---
 title: Distributed System Design Patterns
 slug: distributed-system-design-patterns
-pubDate: 2025-10-29T09:11:33.000Z
-updatedDate: 2025-10-29T09:11:33.000Z
+created: 2025-10-29T09:11:33.000Z
+updated: 2025-10-29T09:11:33.000Z
 category: evergreen
 tags:
   - distributed-systems

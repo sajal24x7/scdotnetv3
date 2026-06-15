@@ -1,8 +1,8 @@
 ---
 title: Write Only Code
 slug: write-only-code
-pubDate: 2026-02-23T05:39:51.000Z
-updatedDate: 2026-02-23T05:39:51.000Z
+created: 2026-02-23T05:39:51.000Z
+updated: 2026-02-23T05:39:51.000Z
 category: micro
 tags:
   - code

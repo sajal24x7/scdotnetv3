@@ -1,8 +1,8 @@
 ---
 title: Windows Cluster Troubleshooting
 slug: windows-cluster-troubleshooting
-pubDate: '2023-09-13T12:26:00+03:00'
-updatedDate: '2023-09-13T12:26:00+03:00'
+created: '2023-09-13T12:26:00+03:00'
+updated: '2023-09-13T12:26:00+03:00'
 category: til
 tags:
 - windows

@@ -3,8 +3,8 @@ title: "Federating Again"
 edition: 5
 slug: "federating-again"
 description: "Nord Letter #5 - Ghost Activitypub + Information Flow"
-pubDate: 2024-04-28T14:47:09
-updatedDate: 2024-07-07T20:07:15
+created: 2024-04-28T14:47:09
+updated: 2024-07-07T20:07:15
 category: nordletter
 tags:
   - finland

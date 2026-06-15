@@ -1,8 +1,8 @@
 ---
 title: ESXi Set Syslog
 slug: esxi-set-syslog
-pubDate: '2024-09-05T11:17:00+03:00'
-updatedDate: '2024-09-05T11:17:00+03:00'
+created: '2024-09-05T11:17:00+03:00'
+updated: '2024-09-05T11:17:00+03:00'
 category: til
 tags:
 - vmware

@@ -1,8 +1,8 @@
 ---
 title: The Science of Storytelling
 slug: the-science-of-storytelling
-pubDate: 2026-03-14T11:34:48.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2026-03-14T11:34:48.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - writing

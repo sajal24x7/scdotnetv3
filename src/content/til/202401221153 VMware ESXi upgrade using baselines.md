@@ -1,8 +1,8 @@
 ---
 title: VMware ESXi Upgrade Using Baselines
 slug: vmware-esxi-upgrade-using-baselines
-pubDate: '2024-01-22T11:53:00+03:00'
-updatedDate: '2024-01-22T11:53:00+03:00'
+created: '2024-01-22T11:53:00+03:00'
+updated: '2024-01-22T11:53:00+03:00'
 category: til
 tags:
 - vmware

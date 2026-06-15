@@ -1,8 +1,8 @@
 ---
 title: VMware ESXi Upgrade Using ESXCLI
 slug: vmware-esxi-upgrade-using-esxcli
-pubDate: '2023-08-29T17:11:00+03:00'
-updatedDate: '2023-08-29T17:11:00+03:00'
+created: '2023-08-29T17:11:00+03:00'
+updated: '2023-08-29T17:11:00+03:00'
 category: til
 tags:
 - vmware

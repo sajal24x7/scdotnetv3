@@ -8,7 +8,7 @@ import '../styles/progress-page.css';
 // Get recent posts for preview (more posts for the main section)
 const allPosts = await getAllPosts();
 const sortedPosts = allPosts.sort((a, b) =>
-  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+  new Date(b.data.created).valueOf() - new Date(a.data.created).valueOf()
 );
 const recentPosts = sortedPosts.slice(0, 15); // Show more posts
 

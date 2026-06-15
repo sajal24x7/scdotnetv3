@@ -3,8 +3,8 @@ title: "I Miss Walking"
 edition: 2
 slug: "i-miss-walking"
 description: "Nord Letter #2 - Walking"
-pubDate: 2024-02-03T18:35:15
-updatedDate: 2024-07-07T20:09:41
+created: 2024-02-03T18:35:15
+updated: 2024-07-07T20:09:41
 category: nordletter
 tags:
   - walking

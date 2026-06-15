@@ -3,8 +3,8 @@ title: "A Head Full of Dreams"
 edition: 29
 slug: "a-head-full-of-dreams"
 description: "Writing every day + AI + Metaverse"
-pubDate: 2024-10-13T03:18:03
-updatedDate: 2024-10-13T03:18:03
+created: 2024-10-13T03:18:03
+updated: 2024-10-13T03:18:03
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6277.jpeg"

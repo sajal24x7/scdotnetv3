@@ -1,8 +1,8 @@
 ---
 title: "A Little Something Called Inertia"
 slug: "a-little-something-called-inertia"
-pubDate: 2013-07-03T18:28:05
-updatedDate: 2024-04-29T14:15:32
+created: 2013-07-03T18:28:05
+updated: 2024-04-29T14:15:32
 category: blog
 tags: ["inertia"]
 image: "https://images.unsplash.com/photo-1511715282680-fbf93a50e721?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDV8fG1vdGlvbnxlbnwwfHx8fDE3MTQ0MDAxMDB8MA&ixlib=rb-4.0.3&q=80&w=2000"

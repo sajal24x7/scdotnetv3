@@ -1,8 +1,8 @@
 ---
 title: Devops Finland October Meetup
 slug: devops-finland-october-meetup
-pubDate: 2025-10-16T19:33:45.000Z
-updatedDate: 2025-10-16T19:33:45.000Z
+created: 2025-10-16T19:33:45.000Z
+updated: 2025-10-16T19:33:45.000Z
 category: blog
 tags:
   - meetup

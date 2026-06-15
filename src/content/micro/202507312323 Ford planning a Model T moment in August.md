@@ -1,8 +1,8 @@
 ---
 title: "Ford Planning a Model T Moment in August"
 slug: "ford-planning-a-model-t-moment-in-august"
-pubDate: 2025-07-31T23:25:40+03:00
-updatedDate: 2025-07-31T23:25:40+03:00
+created: 2025-07-31T23:25:40+03:00
+updated: 2025-07-31T23:25:40+03:00
 category: micro
 tags:
   - cars

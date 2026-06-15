@@ -1,8 +1,8 @@
 ---
 title: "New Features in Apple’s Spotlight"
 slug: "new-features-in-apples-spotlight"
-pubDate: 2025-08-01T13:07:00+03:00
-updatedDate: 2025-08-01T13:07:00+03:00
+created: 2025-08-01T13:07:00+03:00
+updated: 2025-08-01T13:07:00+03:00
 category: micro
 tags:
   - apple

@@ -1,8 +1,8 @@
 ---
 title: How iPhones Made a Surprising Comeback in China
 slug: how-iphones-made-a-surprising-comeback-in-china
-pubDate: 2026-02-09T06:38:08.000Z
-updatedDate: 2026-02-09T06:38:08.000Z
+created: 2026-02-09T06:38:08.000Z
+updated: 2026-02-09T06:38:08.000Z
 category: micro
 tags:
   - apple

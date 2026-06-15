@@ -1,8 +1,8 @@
 ---
 title: Control Traffic Flows
 slug: control-traffic-flows
-pubDate: '2024-04-14T14:04:00+03:00'
-updatedDate: '2024-04-14T14:04:00+03:00'
+created: '2024-04-14T14:04:00+03:00'
+updated: '2024-04-14T14:04:00+03:00'
 category: til
 tags:
 - azure

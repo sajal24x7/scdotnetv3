@@ -3,8 +3,8 @@ title: Seeing the Crown Bridge
 slug: nl102-seeing-the-crown-bridge
 edition: 102
 image: 'https://storage.sajalchoudhary.net/images/2026/04/nl02-08.jpeg'
-pubDate: 2026-04-25T20:52:19.000Z
-updatedDate: 2026-04-25T20:52:19.000Z
+created: 2026-04-25T20:52:19.000Z
+updated: 2026-04-25T20:52:19.000Z
 category: nordletter
 tags:
   - helsinki

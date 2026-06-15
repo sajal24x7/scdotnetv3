@@ -3,8 +3,8 @@ title: The Wedding Edition
 slug: nl91-the-wedding-edition
 edition: 91
 image: 'https://storage.sajalchoudhary.net/images/2026/02/NL91-06.jpeg'
-pubDate: 2026-02-08T17:03:58.000Z
-updatedDate: 2026-02-08T17:03:58.000Z
+created: 2026-02-08T17:03:58.000Z
+updated: 2026-02-08T17:03:58.000Z
 category: nordletter
 tags:
   - wedding

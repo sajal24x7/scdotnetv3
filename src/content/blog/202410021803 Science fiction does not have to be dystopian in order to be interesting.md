@@ -2,8 +2,8 @@
 title: "Science Fiction Does Not Have to Be Dystopian in Order to Be Interesting"
 slug: "science-fiction-does-not-have-to-be-dystopian-in-order-to-be-interesting"
 description: "More hope for the world"
-pubDate: 2024-10-02T18:03:41
-updatedDate: 2024-10-02T18:03:41
+created: 2024-10-02T18:03:41
+updated: 2024-10-02T18:03:41
 category: blog
 tags: ["blog", "writing is", "hope"]
 image: "https://images.unsplash.com/photo-1687985826611-80b714011d0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDQwfHxzY2klMjBmaXxlbnwwfHx8fDE3Mjc4OTIwNjB8MA&ixlib=rb-4.0.3&q=80&w=2000"

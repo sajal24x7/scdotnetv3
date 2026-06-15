@@ -1,8 +1,8 @@
 ---
 title: "Update Esxi With Required Version of Vmware Tools"
 slug: "update-esxi-with-required-version-of-vmware-tools"
-pubDate: 2025-07-28T15:37:32+03:00
-updatedDate: 2025-07-28T15:37:32+03:00
+created: 2025-07-28T15:37:32+03:00
+updated: 2025-07-28T15:37:32+03:00
 category: til
 tags:
   - vmware

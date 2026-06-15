@@ -1,8 +1,8 @@
 ---
 title: Azure RBAC Custom Roles
 slug: azure-rbac-custom-roles
-pubDate: '2024-01-07T20:38:00+03:00'
-updatedDate: '2024-01-07T20:38:00+03:00'
+created: '2024-01-07T20:38:00+03:00'
+updated: '2024-01-07T20:38:00+03:00'
 category: til
 tags:
 - azure

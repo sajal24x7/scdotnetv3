@@ -1,8 +1,8 @@
 ---
 title: Meta Is Building Humanoid Robots
 slug: meta-is-building-humanoid-robots
-pubDate: 2025-09-27T10:50:15.000Z
-updatedDate: 2025-09-27T10:50:15.000Z
+created: 2025-09-27T10:50:15.000Z
+updated: 2025-09-27T10:50:15.000Z
 category: micro
 tags:
   - ai

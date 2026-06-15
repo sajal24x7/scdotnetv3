@@ -1,8 +1,8 @@
 ---
 title: Preference for Replications
 slug: preference-for-replications
-pubDate: '2024-04-07T15:45:00+03:00'
-updatedDate: '2024-04-07T15:45:00+03:00'
+created: '2024-04-07T15:45:00+03:00'
+updated: '2024-04-07T15:45:00+03:00'
 category: til
 tags:
 - azure

@@ -1,8 +1,8 @@
 ---
 title: Entra ID Governance
 slug: entra-id-governance
-pubDate: '2024-01-10T15:59:00+03:00'
-updatedDate: '2024-01-10T15:59:00+03:00'
+created: '2024-01-10T15:59:00+03:00'
+updated: '2024-01-10T15:59:00+03:00'
 category: til
 tags:
 - azure

@@ -1,8 +1,8 @@
 ---
 title: Platespin Windows PreReqs
 slug: platespin-windows-prereqs
-pubDate: '2022-09-22T10:05:00+03:00'
-updatedDate: '2022-09-22T10:05:00+03:00'
+created: '2022-09-22T10:05:00+03:00'
+updated: '2022-09-22T10:05:00+03:00'
 category: til
 tags: []
 ---

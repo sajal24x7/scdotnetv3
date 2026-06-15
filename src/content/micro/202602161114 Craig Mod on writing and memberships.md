@@ -1,8 +1,8 @@
 ---
 title: Craig Mod on Writing and Memberships
 slug: craig-mod-on-writing-and-memberships
-pubDate: 2026-02-16T09:17:48.000Z
-updatedDate: 2026-02-16T09:17:48.000Z
+created: 2026-02-16T09:17:48.000Z
+updated: 2026-02-16T09:17:48.000Z
 category: micro
 tags:
   - craig-mod

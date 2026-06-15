@@ -1,8 +1,8 @@
 ---
 title: Compare Two Directories
 slug: compare-two-directories
-pubDate: '2022-09-26T13:10:00+03:00'
-updatedDate: '2022-09-26T13:10:00+03:00'
+created: '2022-09-26T13:10:00+03:00'
+updated: '2022-09-26T13:10:00+03:00'
 category: til
 tags: []
 ---

@@ -1,8 +1,8 @@
 ---
 title: VMware to Lose 35 Percent Workloads in the Future
 slug: vmware-to-lose-35-percent-workloads-in-the-future
-pubDate: 2025-09-12T04:05:48.000Z
-updatedDate: 2025-09-12T04:05:48.000Z
+created: 2025-09-12T04:05:48.000Z
+updated: 2025-09-12T04:05:48.000Z
 category: micro
 tags:
   - vmware

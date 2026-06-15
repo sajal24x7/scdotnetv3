@@ -2,8 +2,8 @@
 title: "Elections in Finland"
 slug: "elections-in-finland"
 description: "About the local elections"
-pubDate: 2025-04-05T19:58:57
-updatedDate: 2025-04-05T19:58:57
+created: 2025-04-05T19:58:57
+updated: 2025-04-05T19:58:57
 category: blog
 tags: ["blog", "finland", "elections"]
 image: "https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGZpbmxhbmR8ZW58MHx8fHwxNzQzODgzMDk3fDA&ixlib=rb-4.0.3&q=80&w=2000"

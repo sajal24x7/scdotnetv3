@@ -1,8 +1,8 @@
 ---
 title: Europe Takes a Step Toward Post Dollar World
 slug: europe-takes-a-step-toward-post-dollar-world
-pubDate: 2026-02-11T15:14:59.000Z
-updatedDate: 2026-02-11T15:14:59.000Z
+created: 2026-02-11T15:14:59.000Z
+updated: 2026-02-11T15:14:59.000Z
 category: micro
 tags:
   - usa

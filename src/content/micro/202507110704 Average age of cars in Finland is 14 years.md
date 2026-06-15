@@ -1,8 +1,8 @@
 ---
 title: "Average Age of Cars in Finland Is 14 Years"
 slug: "average-age-of-cars-in-finland-is-14-years"
-pubDate: 2025-07-11T07:06:54+03:00
-updatedDate: 2025-07-11T07:06:54+03:00
+created: 2025-07-11T07:06:54+03:00
+updated: 2025-07-11T07:06:54+03:00
 category: micro
 tags: 
   - finland 

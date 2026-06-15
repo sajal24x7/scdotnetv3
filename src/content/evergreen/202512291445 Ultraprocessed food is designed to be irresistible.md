@@ -1,8 +1,8 @@
 ---
 title: Ultraprocessed Food Is Designed to Be Irresistible
 slug: ultraprocessed-food-is-designed-to-be-irresistible
-pubDate: 2025-12-29T13:39:08.000Z
-updatedDate: 2025-12-29T13:39:08.000Z
+created: 2025-12-29T13:39:08.000Z
+updated: 2025-12-29T13:39:08.000Z
 category: evergreen
 tags:
   - food

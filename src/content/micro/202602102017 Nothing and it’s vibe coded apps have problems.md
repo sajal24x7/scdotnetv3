@@ -1,8 +1,8 @@
 ---
 title: Nothing and It’s Vibe Coded Apps Have Problems
 slug: nothing-and-its-vibe-coded-apps-have-problems
-pubDate: 2026-02-10T16:22:12.000Z
-updatedDate: 2026-02-10T16:22:12.000Z
+created: 2026-02-10T16:22:12.000Z
+updated: 2026-02-10T16:22:12.000Z
 category: micro
 tags:
   - nothing

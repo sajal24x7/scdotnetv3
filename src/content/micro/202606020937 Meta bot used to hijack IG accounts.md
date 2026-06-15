@@ -1,8 +1,8 @@
 ---
 title: Meta bot used to hijack IG accounts
 slug: meta-bot-used-to-hijack-ig-accounts
-pubDate: 2026-06-02T06:39:35.000Z
-updatedDate: 2026-06-02T06:39:35.000Z
+created: 2026-06-02T06:39:35.000Z
+updated: 2026-06-02T06:39:35.000Z
 category: micro
 tags:
   - meta

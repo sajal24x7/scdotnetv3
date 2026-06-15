@@ -3,8 +3,8 @@ title: "Celebrating Sakraat in Finland"
 edition: 1
 slug: "celebrating-sakraat-in-finland"
 description: "Nord Letter #1 - Celebrating Sakraat + What is art"
-pubDate: 2024-01-27T20:12:57
-updatedDate: 2024-07-07T20:10:16
+created: 2024-01-27T20:12:57
+updated: 2024-07-07T20:10:16
 category: nordletter
 tags:
   - sakraat

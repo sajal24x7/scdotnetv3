@@ -2,8 +2,8 @@
 title: "Designing a Book"
 slug: "designing-a-book"
 description: "With a little bit of quirkiness"
-pubDate: 2025-01-29T08:04:32
-updatedDate: 2025-01-29T08:08:20
+created: 2025-01-29T08:04:32
+updated: 2025-01-29T08:08:20
 category: blog
 tags: ["blog", "books", "design"]
 image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9437.jpeg"

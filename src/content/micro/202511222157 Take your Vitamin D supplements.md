@@ -1,8 +1,8 @@
 ---
 title: Take Your Vitamin D Supplements
 slug: take-your-vitamin-d-supplements
-pubDate: 2025-11-22T19:58:00.000Z
-updatedDate: 2025-11-22T19:58:00.000Z
+created: 2025-11-22T19:58:00.000Z
+updated: 2025-11-22T19:58:00.000Z
 category: micro
 tags:
   - health

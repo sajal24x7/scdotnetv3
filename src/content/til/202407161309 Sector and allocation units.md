@@ -1,8 +1,8 @@
 ---
 title: Sector and Allocation Units
 slug: sector-and-allocation-units
-pubDate: '2024-07-16T13:09:00+03:00'
-updatedDate: '2024-07-16T13:09:00+03:00'
+created: '2024-07-16T13:09:00+03:00'
+updated: '2024-07-16T13:09:00+03:00'
 category: til
 tags:
 - windows

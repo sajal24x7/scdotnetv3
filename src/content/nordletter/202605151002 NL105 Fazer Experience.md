@@ -3,8 +3,8 @@ title: The Fazer Experience
 slug: nl105-fazer-experience
 edition: 105
 image: 'https://storage.sajalchoudhary.net/images/2026/05/nl105-05.jpeg'
-pubDate: 2026-05-16T21:16:18.000Z
-updatedDate: 2026-05-16T21:16:18.000Z
+created: 2026-05-16T21:16:18.000Z
+updated: 2026-05-16T21:16:18.000Z
 category: nordletter
 tags:
   - fazer

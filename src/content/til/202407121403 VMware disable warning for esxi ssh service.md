@@ -1,8 +1,8 @@
 ---
 title: VMware Disable Warning for Esxi Ssh Service
 slug: vmware-disable-warning-for-esxi-ssh-service
-pubDate: '2024-07-12T14:03:00+03:00'
-updatedDate: '2024-07-12T14:03:00+03:00'
+created: '2024-07-12T14:03:00+03:00'
+updated: '2024-07-12T14:03:00+03:00'
 category: til
 tags:
 - vmware

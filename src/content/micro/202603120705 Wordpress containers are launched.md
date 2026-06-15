@@ -1,8 +1,8 @@
 ---
 title: Wordpress Containers Are Launched
 slug: wordpress-containers-are-launched
-pubDate: 2026-03-12T05:07:01.000Z
-updatedDate: 2026-03-12T05:07:01.000Z
+created: 2026-03-12T05:07:01.000Z
+updated: 2026-03-12T05:07:01.000Z
 category: micro
 tags:
   - wordpress

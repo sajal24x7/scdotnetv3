@@ -1,8 +1,8 @@
 ---
 title: "Best Practices for Presenting Things"
 slug: "best-practices-for-presenting-things"
-pubDate: 2025-10-09T19:26:08+03:00
-updatedDate: 2025-10-09T19:26:08+03:00
+created: 2025-10-09T19:26:08+03:00
+updated: 2025-10-09T19:26:08+03:00
 category: evergreen
 tags:
   - presentation

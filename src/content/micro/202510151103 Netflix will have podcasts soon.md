@@ -1,8 +1,8 @@
 ---
 title: Netflix Will Have Podcasts Soon
 slug: netflix-will-have-podcasts-soon
-pubDate: 2025-10-15T08:05:13.000Z
-updatedDate: 2025-10-15T08:05:13.000Z
+created: 2025-10-15T08:05:13.000Z
+updated: 2025-10-15T08:05:13.000Z
 category: micro
 tags:
   - podcasts

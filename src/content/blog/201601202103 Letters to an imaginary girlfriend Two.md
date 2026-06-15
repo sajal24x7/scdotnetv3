@@ -1,8 +1,8 @@
 ---
 title: "Letters to an Imaginary Girlfriend : Two"
 slug: "letters-to-an-imaginary-girlfriend-two"
-pubDate: 2016-01-20T21:03:13
-updatedDate: 2016-01-20T21:03:13
+created: 2016-01-20T21:03:13
+updated: 2016-01-20T21:03:13
 category: blog
 tags: ["love", "blog", "girlfriend", "honesty", "letter", "life", "relationship", "trust"]
 ---

@@ -1,8 +1,8 @@
 ---
 title: ''
 slug: ''
-pubDate: 2026-06-03T12:04:59.000Z
-updatedDate: 2026-06-03T12:04:59.000Z
+created: 2026-06-03T12:04:59.000Z
+updated: 2026-06-03T12:04:59.000Z
 category: micro
 tags:
   - hugh-howey

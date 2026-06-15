@@ -1,8 +1,8 @@
 ---
 title: "The Things I Write on My Blog"
 slug: "the-things-i-write-on-my-blog"
-pubDate: 2025-08-30T11:47:22+03:00
-updatedDate: 2025-08-30T11:47:22+03:00
+created: 2025-08-30T11:47:22+03:00
+updated: 2025-08-30T11:47:22+03:00
 category: evergreen
 tags:
   - writing

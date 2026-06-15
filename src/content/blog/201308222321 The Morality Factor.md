@@ -2,8 +2,8 @@
 title: "The Morality Factor"
 slug: "the-morality-factor"
 description: "Daneel’s issue was with the scientific slowdown, the decline in the development of newer technologies or that’s how he illustrates his point. I on the other hand have my issues with the morality of the society, the civilization in large."
-pubDate: 2013-08-22T23:21:05
-updatedDate: 2024-05-04T06:40:30
+created: 2013-08-22T23:21:05
+updated: 2024-05-04T06:40:30
 category: blog
 tags: ["degradation", "eve teasing", "india", "morality", "ogling", "social values"]
 image: "https://storage.sajalchoudhary.net/images/2024/05/animal.jpg"

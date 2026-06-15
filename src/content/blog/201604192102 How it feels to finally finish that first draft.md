@@ -1,8 +1,8 @@
 ---
 title: "How It Feels to Finally Finish That First Draft"
 slug: "how-it-feels-to-finally-finish-that-first-draft"
-pubDate: 2016-04-19T21:02:53
-updatedDate: 2016-04-19T21:02:53
+created: 2016-04-19T21:02:53
+updated: 2016-04-19T21:02:53
 category: blog
 tags: ["blog", "first draft", "novel", "the end", "writing is"]
 ---

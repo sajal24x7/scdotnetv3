@@ -1,8 +1,8 @@
 ---
 title: Winrm Troubleshooting
 slug: winrm-troubleshooting
-pubDate: '2024-04-08T16:05:00+03:00'
-updatedDate: '2024-04-08T16:05:00+03:00'
+created: '2024-04-08T16:05:00+03:00'
+updated: '2024-04-08T16:05:00+03:00'
 category: til
 tags:
 - windows

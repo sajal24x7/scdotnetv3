@@ -1,8 +1,8 @@
 ---
 title: vMotion Does Not Work
 slug: vmotion-does-not-work
-pubDate: '2024-03-11T14:27:00+03:00'
-updatedDate: '2024-03-11T14:27:00+03:00'
+created: '2024-03-11T14:27:00+03:00'
+updated: '2024-03-11T14:27:00+03:00'
 category: til
 tags:
 - vmware

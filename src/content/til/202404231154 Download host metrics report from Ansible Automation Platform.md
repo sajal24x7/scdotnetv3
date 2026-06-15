@@ -1,8 +1,8 @@
 ---
 title: Download Host Metrics Report From Ansible Automation Platform
 slug: download-host-metrics-report-from-ansible-automation-platform
-pubDate: '2024-04-23T11:54:00+03:00'
-updatedDate: '2024-04-23T11:54:00+03:00'
+created: '2024-04-23T11:54:00+03:00'
+updated: '2024-04-23T11:54:00+03:00'
 category: til
 tags:
 - ansible

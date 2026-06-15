@@ -1,8 +1,8 @@
 ---
 title: "Michael Christie: Reading and Exercise"
 slug: "michael-christie-reading-and-exercise"
-pubDate: 2015-01-31T22:54:24
-updatedDate: 2015-01-31T22:54:24
+created: 2015-01-31T22:54:24
+updated: 2015-01-31T22:54:24
 category: blog
 tags: ["Uncategorized"]
 ---

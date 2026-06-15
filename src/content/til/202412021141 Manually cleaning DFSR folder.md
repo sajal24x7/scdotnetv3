@@ -1,8 +1,8 @@
 ---
 title: Manually Cleaning DFSR Folder
 slug: manually-cleaning-dfsr-folder
-pubDate: '2024-12-02T11:41:00+03:00'
-updatedDate: '2024-12-02T11:41:00+03:00'
+created: '2024-12-02T11:41:00+03:00'
+updated: '2024-12-02T11:41:00+03:00'
 category: til
 tags:
 - windows

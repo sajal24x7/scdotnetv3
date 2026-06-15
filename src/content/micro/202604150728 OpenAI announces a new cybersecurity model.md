@@ -1,8 +1,8 @@
 ---
 title: OpenAI Announces a New Cybersecurity Model
 slug: openai-announces-a-new-cybersecurity-model
-pubDate: 2026-04-15T04:31:27.000Z
-updatedDate: 2026-04-15T04:31:27.000Z
+created: 2026-04-15T04:31:27.000Z
+updated: 2026-04-15T04:31:27.000Z
 category: micro
 tags:
   - openai

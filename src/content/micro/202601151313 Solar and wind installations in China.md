@@ -1,8 +1,8 @@
 ---
 title: Solar and Wind Installations in China
 slug: solar-and-wind-installations-in-china
-pubDate: 2026-01-15T11:14:44.000Z
-updatedDate: 2026-01-15T11:14:44.000Z
+created: 2026-01-15T11:14:44.000Z
+updated: 2026-01-15T11:14:44.000Z
 category: micro
 tags:
   - china

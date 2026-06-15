@@ -1,8 +1,8 @@
 ---
 title: Powershell Get Ad Group Details
 slug: powershell-get-ad-group-details
-pubDate: '2024-07-16T11:52:00+03:00'
-updatedDate: '2024-07-16T11:52:00+03:00'
+created: '2024-07-16T11:52:00+03:00'
+updated: '2024-07-16T11:52:00+03:00'
 category: til
 tags:
 - powershell

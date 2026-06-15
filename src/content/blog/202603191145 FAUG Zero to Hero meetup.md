@@ -1,8 +1,8 @@
 ---
 title: FAUG Zero to Hero Meetup
 slug: faug-zero-to-hero-meetup
-pubDate: 2026-03-19T19:21:29.000Z
-updatedDate: 2026-03-19T19:21:29.000Z
+created: 2026-03-19T19:21:29.000Z
+updated: 2026-03-19T19:21:29.000Z
 category: blog
 image: https://storage.sajalchoudhary.net/images/2026/03/faug-2026-march-08.jpeg
 tags:

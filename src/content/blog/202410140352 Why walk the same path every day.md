@@ -2,8 +2,8 @@
 title: "Why Walk the Same Path Every Day"
 slug: "why-walk-the-same-path-every-day"
 description: "Ignore the path"
-pubDate: 2024-10-14T03:52:57
-updatedDate: 2024-10-14T03:52:57
+created: 2024-10-14T03:52:57
+updated: 2024-10-14T03:52:57
 category: blog
 tags: ["blog", "walking"]
 image: "https://storage.sajalchoudhary.net/images/2024/10/IMG_6297.jpeg"

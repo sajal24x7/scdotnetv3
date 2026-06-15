@@ -1,8 +1,8 @@
 ---
 title: "Americans Are Being Conditioned to Accept Delayed Elections"
 slug: "americans-are-being-conditioned-to-accept-delayed-elections"
-pubDate: 2025-09-06T09:56:07+03:00
-updatedDate: 2025-09-06T09:56:07+03:00
+created: 2025-09-06T09:56:07+03:00
+updated: 2025-09-06T09:56:07+03:00
 category: micro
 tags:
   - america

@@ -1,8 +1,8 @@
 ---
 title: Two Nights in Lisbon
 slug: two-nights-in-lisbon
-pubDate: 2025-12-09T12:07:02.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2025-12-09T12:07:02.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - thriller

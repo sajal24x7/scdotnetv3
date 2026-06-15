@@ -1,8 +1,8 @@
 ---
 title: "Relax, You’re Probably Getting Enough Protein"
 slug: "relax-youre-probably-getting-enough-protein"
-pubDate: 2025-08-07T22:18:21+03:00
-updatedDate: 2025-08-07T22:18:21+03:00
+created: 2025-08-07T22:18:21+03:00
+updated: 2025-08-07T22:18:21+03:00
 category: micro
 tags:
   - health

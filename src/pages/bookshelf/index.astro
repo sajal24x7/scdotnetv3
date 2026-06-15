@@ -55,7 +55,7 @@ const getBookYear = (book: typeof bookshelfPosts[number]) => {
     const started = parseDate(book.data.started);
     if (started) return started.getFullYear();
 
-    const pub = parseDate(book.data.pubDate);
+    const pub = parseDate(book.data.created);
     return (pub ?? new Date()).getFullYear();
 };
 
@@ -84,18 +84,18 @@ const sortedBooks = [...booksWithYear].sort((a, b) => {
             return progressB - progressA;
         }
 
-        return compareDesc(a.book.data.started ?? a.book.data.pubDate, b.book.data.started ?? b.book.data.pubDate);
+        return compareDesc(a.book.data.started ?? a.book.data.created, b.book.data.started ?? b.book.data.created);
     }
 
     if (statusA === 'read') {
-        return compareDesc(a.book.data.finished ?? a.book.data.pubDate, b.book.data.finished ?? b.book.data.pubDate);
+        return compareDesc(a.book.data.finished ?? a.book.data.created, b.book.data.finished ?? b.book.data.created);
     }
 
     if (statusA === 'on-hold') {
-        return compareDesc(a.book.data.started ?? a.book.data.pubDate, b.book.data.started ?? b.book.data.pubDate);
+        return compareDesc(a.book.data.started ?? a.book.data.created, b.book.data.started ?? b.book.data.created);
     }
 
-    return compareDesc(a.book.data.pubDate, b.book.data.pubDate);
+    return compareDesc(a.book.data.created, b.book.data.created);
 });
 
 const years = Array.from(new Set(sortedBooks.map((entry) => entry.year)));

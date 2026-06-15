@@ -1,8 +1,8 @@
 ---
 title: Apple Pay to Launch in India
 slug: apple-pay-to-launch-in-india
-pubDate: 2026-01-22T16:13:50.000Z
-updatedDate: 2026-01-22T16:13:50.000Z
+created: 2026-01-22T16:13:50.000Z
+updated: 2026-01-22T16:13:50.000Z
 category: micro
 tags:
   - apple

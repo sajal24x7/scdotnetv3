@@ -1,8 +1,8 @@
 ---
 title: "Things That I Think About"
 slug: "things-that-i-think-about"
-pubDate: 2016-08-31T21:56:25
-updatedDate: 2024-04-13T14:09:51
+created: 2016-08-31T21:56:25
+updated: 2024-04-13T14:09:51
 category: blog
 ---
 ![doodle-thinking](https://storage.sajalchoudhary.net/images/wordpress/2016/08/doodle-thinking.jpg)

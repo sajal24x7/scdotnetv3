@@ -1,8 +1,8 @@
 ---
 title: Boox announces a new version of Go 6
 slug: boox-announces-a-new-version-of-go-6
-pubDate: 2026-06-13T13:50:59.000Z
-updatedDate: 2026-06-13T13:50:59.000Z
+created: 2026-06-13T13:50:59.000Z
+updated: 2026-06-13T13:50:59.000Z
 category: micro
 tags:
   - boox

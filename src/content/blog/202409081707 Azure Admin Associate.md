@@ -2,8 +2,8 @@
 title: "Azure Admin Associate"
 slug: "azure-admin-associate"
 description: "I passed the AZ 104 on 3rd Sep"
-pubDate: 2024-09-08T17:07:31
-updatedDate: 2024-09-08T19:30:16
+created: 2024-09-08T17:07:31
+updated: 2024-09-08T19:30:16
 category: blog
 tags: ["Tech Notes", "Azure"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/Screenshot-2024-09-08-at-8.05.34-PM.png"

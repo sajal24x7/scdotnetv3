@@ -1,8 +1,8 @@
 ---
 title: Vibe Coding November Meetup
 slug: vibe-coding-november-meetup
-pubDate: 2025-11-25T20:54:25.000Z
-updatedDate: 2025-11-25T20:54:25.000Z
+created: 2025-11-25T20:54:25.000Z
+updated: 2025-11-25T20:54:25.000Z
 category: blog
 tags:
   - vibe-coding-finland

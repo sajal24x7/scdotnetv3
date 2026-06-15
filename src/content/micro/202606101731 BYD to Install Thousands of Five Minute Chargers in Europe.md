@@ -1,8 +1,8 @@
 ---
 title: BYD to Install Thousands of Five Minute Chargers in Europe
 slug: byd-to-install-thousands-of-five-minute-chargers-in-europe
-pubDate: 2026-06-10T14:32:58.000Z
-updatedDate: 2026-06-10T14:32:58.000Z
+created: 2026-06-10T14:32:58.000Z
+updated: 2026-06-10T14:32:58.000Z
 category: micro
 tags:
   - electric-cars

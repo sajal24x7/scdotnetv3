@@ -2,8 +2,8 @@
 title: "You Can’t Have One Without the Other"
 slug: "you-cant-have-one-without-the-other"
 description: "Actions and consequences"
-pubDate: 2025-01-20T07:39:49
-updatedDate: 2025-01-20T07:39:49
+created: 2025-01-20T07:39:49
+updated: 2025-01-20T07:39:49
 category: blog
 tags: ["blog"]
 image: "https://storage.sajalchoudhary.net/images/2025/01/IMG_9238.jpeg"

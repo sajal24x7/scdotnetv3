@@ -1,8 +1,8 @@
 ---
 title: iOS27 to Prioritise Stability
 slug: ios27-to-prioritise-stability
-pubDate: 2025-11-25T08:48:41.000Z
-updatedDate: 2025-11-25T08:48:41.000Z
+created: 2025-11-25T08:48:41.000Z
+updated: 2025-11-25T08:48:41.000Z
 category: micro
 tags:
   - apple

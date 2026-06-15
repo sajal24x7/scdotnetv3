@@ -1,8 +1,8 @@
 ---
 title: "A Day in the Life Of"
 slug: "a-day-in-the-life-of"
-pubDate: 2025-09-27T16:22:28+03:00
-updatedDate: 2025-09-27T16:22:28+03:00
+created: 2025-09-27T16:22:28+03:00
+updated: 2025-09-27T16:22:28+03:00
 category: story
 tags:
   - children

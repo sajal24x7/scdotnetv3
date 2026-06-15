@@ -3,8 +3,8 @@ title: "Writing Meet-Ups"
 edition: 48
 slug: "writing-meet-ups"
 description: "Shutup and write + 2 opposite views on where the society is going + save your attention"
-pubDate: 2025-02-23T03:30:45
-updatedDate: 2025-02-23T03:30:44
+created: 2025-02-23T03:30:45
+updated: 2025-02-23T03:30:44
 category: nordletter
 tags: ["Nord Letter", "AI", "attention", "openweb", "writing is"]
 image: "https://storage.sajalchoudhary.net/images/2025/02/IMG_9976-1.jpeg"

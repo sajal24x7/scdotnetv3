@@ -27,7 +27,7 @@ const [category, slug] = slugParam.split('/');
 const entry = (Astro.props as { entry: CollectionEntry<any> }).entry;
 const { Content } = await render(entry);
 
-const hasUpdatedDate = 'updatedDate' in entry.data && entry.data.updatedDate;
+const hasUpdatedDate = 'updated' in entry.data && entry.data.updated;
 
 // Find backlinks for this post
 const backlinks = await findBacklinksComprehensive(`${category}/${slug}`);

@@ -2,8 +2,8 @@
 title: "Reading Children’s Books"
 slug: "reading-childrens-books"
 description: "They are so damn beautiful"
-pubDate: 2025-04-15T20:21:00
-updatedDate: 2025-04-15T21:22:21
+created: 2025-04-15T20:21:00
+updated: 2025-04-15T21:22:21
 category: blog
 tags: ["blog", "reading"]
 image: "https://storage.sajalchoudhary.net/images/2025/04/IMG_0941.jpeg"

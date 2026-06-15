@@ -2,8 +2,8 @@
 title: "Notes From the New OS Releases"
 slug: "notes-from-the-new-os-releases"
 description: "iOS18 + MacOS15 + WatchOS11"
-pubDate: 2024-09-17T19:11:57
-updatedDate: 2024-09-17T19:11:57
+created: 2024-09-17T19:11:57
+updated: 2024-09-17T19:11:57
 category: blog
 tags: ["essays"]
 image: "https://storage.sajalchoudhary.net/images/2024/09/Screenshot-2024-09-17-at-9.57.59-PM.png"

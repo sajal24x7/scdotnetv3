@@ -1,8 +1,8 @@
 ---
 title: Compare Private Key and Ssl
 slug: compare-private-key-and-ssl
-pubDate: '2022-04-28T12:55:00+03:00'
-updatedDate: '2022-04-28T12:55:00+03:00'
+created: '2022-04-28T12:55:00+03:00'
+updated: '2022-04-28T12:55:00+03:00'
 category: til
 tags:
 - cert

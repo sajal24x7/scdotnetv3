@@ -1,8 +1,8 @@
 ---
 title: "You Can Create a Web Scraper in chatGPT"
 slug: "you-can-create-a-web-scraper-in-chatgpt"
-pubDate: 2025-10-11T08:57:03+03:00
-updatedDate: 2025-10-11T08:57:03+03:00
+created: 2025-10-11T08:57:03+03:00
+updated: 2025-10-11T08:57:03+03:00
 category: til
 tags:
   - chatgpt

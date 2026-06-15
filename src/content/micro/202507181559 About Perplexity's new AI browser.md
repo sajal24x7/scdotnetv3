@@ -1,8 +1,8 @@
 ---
 title: "About Perplexity's New AI Browser"
 slug: "about-perplexitys-new-ai-browser"
-pubDate: 2025-07-19T11:31:53+03:00
-updatedDate: 2025-07-19T11:31:53+03:00
+created: 2025-07-19T11:31:53+03:00
+updated: 2025-07-19T11:31:53+03:00
 category: micro
 tags:
   - ai

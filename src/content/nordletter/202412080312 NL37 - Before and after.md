@@ -3,8 +3,8 @@ title: "Before and After"
 edition: 37
 slug: "before-and-after"
 description: "Sinitarra + who owns your words + Intel drama"
-pubDate: 2024-12-08T03:12:16
-updatedDate: 2024-12-08T03:12:16
+created: 2024-12-08T03:12:16
+updated: 2024-12-08T03:12:16
 category: nordletter
 tags: ["Nord Letter"]
 image: "https://storage.sajalchoudhary.net/images/2024/12/IMG_8643-1.jpeg"

@@ -1,8 +1,8 @@
 ---
 title: Types of Operations in Azure
 slug: types-of-operations-in-azure
-pubDate: '2024-07-16T21:20:00+03:00'
-updatedDate: '2024-07-16T21:20:00+03:00'
+created: '2024-07-16T21:20:00+03:00'
+updated: '2024-07-16T21:20:00+03:00'
 category: til
 tags:
 - azure

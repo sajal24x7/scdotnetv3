@@ -1,8 +1,8 @@
 ---
 title: Evacuees Flag Day
 slug: evacuees-flag-day
-pubDate: 2026-04-20T12:52:52.000Z
-updatedDate: 2026-04-20T12:52:52.000Z
+created: 2026-04-20T12:52:52.000Z
+updated: 2026-04-20T12:52:52.000Z
 category: micro
 tags:
   - finland

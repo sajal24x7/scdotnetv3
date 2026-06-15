@@ -1,8 +1,8 @@
 ---
 title: On the State of News Websites
 slug: on-the-state-of-news-websites
-pubDate: 2026-03-19T04:37:43.000Z
-updatedDate: 2026-03-19T04:37:43.000Z
+created: 2026-03-19T04:37:43.000Z
+updated: 2026-03-19T04:37:43.000Z
 category: micro
 tags:
   - daring-fireball

@@ -1,8 +1,8 @@
 ---
 title: How to Create P2S VPN
 slug: how-to-create-p2s-vpn
-pubDate: '2024-08-24T12:55:00+03:00'
-updatedDate: '2024-08-24T12:55:00+03:00'
+created: '2024-08-24T12:55:00+03:00'
+updated: '2024-08-24T12:55:00+03:00'
 category: til
 tags:
 - azure

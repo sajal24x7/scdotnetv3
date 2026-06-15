@@ -1,8 +1,8 @@
 ---
 title: More Than Half of New Articles on the Web Are Being Written by AI
 slug: more-than-half-of-new-articles-on-the-web-are-being-written-by-ai
-pubDate: 2025-11-27T05:25:07.000Z
-updatedDate: 2025-11-27T05:25:07.000Z
+created: 2025-11-27T05:25:07.000Z
+updated: 2025-11-27T05:25:07.000Z
 category: micro
 tags:
   - ai

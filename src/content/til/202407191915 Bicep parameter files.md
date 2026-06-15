@@ -1,8 +1,8 @@
 ---
 title: Bicep Parameter Files
 slug: bicep-parameter-files
-pubDate: '2024-07-19T19:15:00+03:00'
-updatedDate: '2024-07-19T19:15:00+03:00'
+created: '2024-07-19T19:15:00+03:00'
+updated: '2024-07-19T19:15:00+03:00'
 category: til
 tags:
 - azure

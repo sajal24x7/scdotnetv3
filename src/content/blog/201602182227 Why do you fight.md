@@ -1,8 +1,8 @@
 ---
 title: "Why Do You Fight?"
 slug: "why-do-you-fight"
-pubDate: 2016-02-18T22:27:47
-updatedDate: 2016-02-18T22:27:47
+created: 2016-02-18T22:27:47
+updated: 2016-02-18T22:27:47
 category: blog
 tags: ["blog", "fight", "jnu", "life", "look", "think"]
 ---

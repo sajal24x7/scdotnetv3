@@ -1,8 +1,8 @@
 ---
 title: The End of All Things
 slug: the-end-of-all-things
-pubDate: 2016-01-11T10:19:51.000Z
-updatedDate: 2026-06-05T14:19:08
+created: 2016-01-11T10:19:51.000Z
+updated: 2026-06-05T14:19:08
 category: bookshelf
 tags:
   - book-reviews

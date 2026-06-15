@@ -1,8 +1,8 @@
 ---
 title: Delete Everything Under a Folder Powershell
 slug: delete-everything-under-a-folder-powershell
-pubDate: '2024-12-02T12:10:00+03:00'
-updatedDate: '2024-12-02T12:10:00+03:00'
+created: '2024-12-02T12:10:00+03:00'
+updated: '2024-12-02T12:10:00+03:00'
 category: til
 tags:
 - powershell

@@ -1,8 +1,8 @@
 ---
 title: "The Hopeful Human Condition"
 slug: "the-hopeful-human-condition"
-pubDate: 2015-11-30T21:02:41
-updatedDate: 2015-11-30T21:02:41
+created: 2015-11-30T21:02:41
+updated: 2015-11-30T21:02:41
 category: blog
 tags: ["blog", "cosmos", "humanity", "science fiction", "the human condition", "Uncategorized"]
 ---

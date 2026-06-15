@@ -1,8 +1,8 @@
 ---
 title: The Thinking Machine
 slug: reading-the-thinking-machine
-pubDate: 2026-06-11T11:54:42.000Z
-updatedDate: 2026-06-11T11:54:42.000Z
+created: 2026-06-11T11:54:42.000Z
+updated: 2026-06-11T11:54:42.000Z
 category: bookshelf
 tags:
   - computing

@@ -2,8 +2,8 @@
 title: Nature Trails - Nuuksio and Pihlajasaari
 slug: nature-trails-nuuksio-and-pihlajasaari
 description: Nature trails + Beating procrastination
-pubDate: 2024-07-28T21:16:24
-updatedDate: 2024-08-20T15:57:41
+created: 2024-07-28T21:16:24
+updated: 2024-08-20T15:57:41
 category: nordletter
 tags:
   - nature

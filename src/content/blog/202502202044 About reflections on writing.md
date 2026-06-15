@@ -2,8 +2,8 @@
 title: "About Reflections on Writing"
 slug: "about-reflections-on-writing"
 description: "From people who have been doing this for many years"
-pubDate: 2025-02-20T20:44:26
-updatedDate: 2025-02-20T20:44:26
+created: 2025-02-20T20:44:26
+updated: 2025-02-20T20:44:26
 category: blog
 tags: ["blog", "work", "writing is"]
 image: "https://images.unsplash.com/photo-1739992115892-36453a241b5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDh8fHx8fHx8fDE3NDAwODM5MTV8&ixlib=rb-4.0.3&q=80&w=2000"

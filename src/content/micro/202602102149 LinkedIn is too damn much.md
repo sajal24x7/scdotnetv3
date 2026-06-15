@@ -1,8 +1,8 @@
 ---
 title: LinkedIn Is Too Damn Much
 slug: linkedin-is-too-damn-much
-pubDate: 2026-02-10T16:21:47.000Z
-updatedDate: 2026-02-10T16:21:47.000Z
+created: 2026-02-10T16:21:47.000Z
+updated: 2026-02-10T16:21:47.000Z
 category: micro
 tags:
   - linkedin

@@ -1,8 +1,8 @@
 ---
 title: "Learning Python"
 slug: "learning-python"
-pubDate: 2025-10-21T11:53:27+03:00
-updatedDate: 2026-03-31T11:53:27+03:00
+created: 2025-10-21T11:53:27+03:00
+updated: 2026-03-31T11:53:27+03:00
 category: now
 status: active
 ---

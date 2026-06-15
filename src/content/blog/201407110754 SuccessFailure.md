@@ -1,8 +1,8 @@
 ---
 title: "Success/Failure"
 slug: "successfailure"
-pubDate: 2014-07-11T07:54:12
-updatedDate: 2024-05-04T07:01:50
+created: 2014-07-11T07:54:12
+updated: 2024-05-04T07:01:50
 category: blog
 tags: ["writing is"]
 image: "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fHN1Y2Nlc3N8ZW58MHx8fHwxNzE0NzUxMDIwfDA&ixlib=rb-4.0.3&q=80&w=2000"

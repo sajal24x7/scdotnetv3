@@ -1,8 +1,8 @@
 ---
 title: Nothing Announces New Community Designed Phone 3A
 slug: nothing-announces-new-community-designed-phone-3a
-pubDate: 2025-12-10T10:42:01.000Z
-updatedDate: 2025-12-10T10:42:01.000Z
+created: 2025-12-10T10:42:01.000Z
+updated: 2025-12-10T10:42:01.000Z
 category: micro
 tags:
   - nothing

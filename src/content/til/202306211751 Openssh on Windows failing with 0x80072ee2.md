@@ -1,8 +1,8 @@
 ---
 title: Openssh on Windows Failing With 0x80072ee2
 slug: openssh-on-windows-failing-with-0x80072ee2
-pubDate: '2023-06-21T17:51:00+03:00'
-updatedDate: '2023-06-21T17:51:00+03:00'
+created: '2023-06-21T17:51:00+03:00'
+updated: '2023-06-21T17:51:00+03:00'
 category: til
 tags:
 - windows

@@ -10,7 +10,7 @@ A GitHub Action will automatically move each file to the correct category folder
 ```yaml
 ---
 title: "Your note title"
-pubDate: 2025-01-15T10:30:00
+created: 2025-01-15T10:30:00
 category: til   # must match one of the known categories
 tags: []
 ---

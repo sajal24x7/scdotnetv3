@@ -1,8 +1,8 @@
 ---
 title: "Homes Can’t Be Considered Both an Investment and Affordable Enough for Everyone to Own"
 slug: "homes-cant-be-considered-both-an-investment-and-affordable-enough-for-everyone-to-own"
-pubDate: 2025-07-11T13:26:50+03:00
-updatedDate: 2025-07-11T13:26:50+03:00
+created: 2025-07-11T13:26:50+03:00
+updated: 2025-07-11T13:26:50+03:00
 category: evergreen
 tags:
   - homeownership

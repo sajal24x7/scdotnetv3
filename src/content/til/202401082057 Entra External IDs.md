@@ -1,8 +1,8 @@
 ---
 title: Entra External IDs
 slug: entra-external-ids
-pubDate: '2024-01-08T20:57:00+03:00'
-updatedDate: '2024-01-08T20:57:00+03:00'
+created: '2024-01-08T20:57:00+03:00'
+updated: '2024-01-08T20:57:00+03:00'
 category: til
 tags:
 - azure

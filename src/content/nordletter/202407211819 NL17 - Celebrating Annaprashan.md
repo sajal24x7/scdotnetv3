@@ -2,8 +2,8 @@
 title: Celebrating Annaprashan
 slug: celebrating-annaprashan
 description: "Nord Letter #17 - Annaprashan + Global Crowdstrike outage"
-pubDate: 2024-07-21T18:19:41
-updatedDate: 2024-08-20T15:58:18
+created: 2024-07-21T18:19:41
+updated: 2024-08-20T15:58:18
 category: nordletter
 tags:
   - savya

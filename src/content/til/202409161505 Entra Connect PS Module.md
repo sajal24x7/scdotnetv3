@@ -1,8 +1,8 @@
 ---
 title: Entra Connect PS Module
 slug: entra-connect-ps-module
-pubDate: '2024-09-16T15:05:00+03:00'
-updatedDate: '2024-09-16T15:05:00+03:00'
+created: '2024-09-16T15:05:00+03:00'
+updated: '2024-09-16T15:05:00+03:00'
 category: til
 tags:
 - powershell

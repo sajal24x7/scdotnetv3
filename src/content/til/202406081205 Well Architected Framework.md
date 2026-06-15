@@ -1,8 +1,8 @@
 ---
 title: Well Architected Framework
 slug: well-architected-framework
-pubDate: '2024-06-08T12:05:00+03:00'
-updatedDate: '2024-06-08T12:05:00+03:00'
+created: '2024-06-08T12:05:00+03:00'
+updated: '2024-06-08T12:05:00+03:00'
 category: til
 tags:
 - azure

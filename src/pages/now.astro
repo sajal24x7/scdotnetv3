@@ -11,7 +11,7 @@ import '../styles/progress-page.css';
 const allPosts = await getAllPosts();
 const activeNowPosts = allPosts
   .filter(post => post.data.category === 'now' && (!post.data.status || post.data.status === 'active'))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+  .sort((a, b) => b.data.created.getTime() - a.data.created.getTime());
 
 // Pre-render markdown content
 const renderedPosts = activeNowPosts.map(post => ({
@@ -48,7 +48,7 @@ const renderedPosts = activeNowPosts.map(post => ({
             <article class="progress-card">
                 <div class="progress-card__meta">
                     <TimeDisplay
-                        date={post.data.pubDate}
+                        date={post.data.created}
                         category="now"
                         format="month-year"
                         className="progress-card__time"

@@ -1,8 +1,8 @@
 ---
 title: "The End of Handwriting"
 slug: "the-end-of-handwriting"
-pubDate: 2025-08-18T13:37:07+03:00
-updatedDate: 2025-08-18T13:37:07+03:00
+created: 2025-08-18T13:37:07+03:00
+updated: 2025-08-18T13:37:07+03:00
 category: micro
 tags:
   - ai

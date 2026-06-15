@@ -1,8 +1,8 @@
 ---
 title: Obsess Over Quality
 slug: obsess-over-quality
-pubDate: 2025-10-26T20:50:47.000Z
-updatedDate: 2025-10-26T20:50:47.000Z
+created: 2025-10-26T20:50:47.000Z
+updated: 2025-10-26T20:50:47.000Z
 category: evergreen
 tags:
   - work

@@ -1,8 +1,8 @@
 ---
 title: Microsoft Is Working to Fix Windows 11
 slug: microsoft-is-working-to-fix-windows-11
-pubDate: 2026-01-30T08:29:52.000Z
-updatedDate: 2026-01-30T08:29:52.000Z
+created: 2026-01-30T08:29:52.000Z
+updated: 2026-01-30T08:29:52.000Z
 category: micro
 tags:
   - microsoft

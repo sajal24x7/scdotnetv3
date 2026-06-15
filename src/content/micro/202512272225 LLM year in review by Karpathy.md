@@ -1,8 +1,8 @@
 ---
 title: LLM Year in Review by Karpathy
 slug: llm-year-in-review-by-karpathy
-pubDate: 2025-12-27T20:26:20.000Z
-updatedDate: 2025-12-27T20:26:20.000Z
+created: 2025-12-27T20:26:20.000Z
+updated: 2025-12-27T20:26:20.000Z
 category: micro
 tags:
   - llms

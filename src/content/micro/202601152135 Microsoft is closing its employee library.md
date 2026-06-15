@@ -1,8 +1,8 @@
 ---
 title: Microsoft Is Closing Its Employee Library
 slug: microsoft-is-closing-its-employee-library
-pubDate: 2026-01-15T19:36:19.000Z
-updatedDate: 2026-01-15T19:36:19.000Z
+created: 2026-01-15T19:36:19.000Z
+updated: 2026-01-15T19:36:19.000Z
 category: micro
 tags:
   - microsoft
