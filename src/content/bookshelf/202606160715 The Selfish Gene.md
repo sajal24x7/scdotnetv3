@@ -15,6 +15,7 @@ started: 2026-06-16T04:18:28.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116758302498822071'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mof5ct73ot2v'
+cover: the-selfish-gene.jpg
 ---
 Started reading.
 
