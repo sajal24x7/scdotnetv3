@@ -67,7 +67,7 @@ async function getAllPosts() {
           data: {
             ...data,
             category: data.category || category,
-            pubDate: new Date(data.pubDate)
+            pubDate: new Date(data.created || data.pubDate)
           },
           slug: data.slug || file.replace(/\.(md|mdx)$/, ''),
           body: content,
