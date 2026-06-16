@@ -24,7 +24,7 @@ const parts = new Intl.DateTimeFormat('en-CA', {
 const get = (type) => parts.find(p => p.type === type).value;
 const formattedDate = `${get('year')}-${get('month')}-${get('day')}T${get('hour')}:${get('minute')}:${get('second')}`;
 
-console.log(`Updating updatedDate to: ${formattedDate}`);
+console.log(`Updating updated to: ${formattedDate}`);
 
 const filesContent = await fs.readFile(filesPath, 'utf-8');
 const files = filesContent.split('\n').filter(f => f.trim());
@@ -52,14 +52,14 @@ for (const file of files) {
   }
 
   let updated;
-  if (/^updatedDate:/m.test(content)) {
-    // Replace the existing updatedDate line (handles quoted and unquoted values)
-    updated = content.replace(/^updatedDate:.*$/m, `updatedDate: ${formattedDate}`);
-  } else if (/^pubDate:/m.test(content)) {
-    // No updatedDate yet — insert one directly after pubDate
-    updated = content.replace(/^(pubDate:.*)$/m, `$1\nupdatedDate: ${formattedDate}`);
+  if (/^updated:/m.test(content)) {
+    // Replace the existing updated line (handles quoted and unquoted values)
+    updated = content.replace(/^updated:.*$/m, `updated: ${formattedDate}`);
+  } else if (/^created:/m.test(content)) {
+    // No updated yet — insert one directly after created
+    updated = content.replace(/^(created:.*)$/m, `$1\nupdated: ${formattedDate}`);
   } else {
-    console.log(`Skipping ${file}: no pubDate to insert after`);
+    console.log(`Skipping ${file}: no created field to insert after`);
     continue;
   }
 

@@ -62,7 +62,7 @@ jobs:
             echo "No modified content files — nothing to do"
           fi
 
-      - name: Update updatedDate in frontmatter
+      - name: Update updated in frontmatter
         if: steps.changed-files.outputs.has_files == 'true'
         run: node scripts/update-post-dates.js
         env:
@@ -78,7 +78,7 @@ jobs:
           fi
 
           git add src/content/
-          git commit -m "chore: update updatedDate for modified posts
+          git commit -m "chore: update updated for modified posts
 
           🤖 Generated with GitHub Actions
 
