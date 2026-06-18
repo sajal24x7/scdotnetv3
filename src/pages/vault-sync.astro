@@ -1,0 +1,357 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Vault Sync"
+  description="Sync your Obsidian vault notes via GitHub"
+  currentPage="/vault-sync/"
+  pageWrapper={{
+    maxWidth: '2xl',
+    padding: 'lg',
+    centered: true,
+  }}
+>
+  <div class="grid-span-full py-10 flex flex-col gap-6">
+
+    <div>
+      <h1 class="text-2xl font-semibold text-textPrimary">Vault Sync</h1>
+      <p class="text-textSecondary mt-1 text-sm">Sync your Obsidian notes with GitHub</p>
+    </div>
+
+    <!-- Unauthenticated state -->
+    <div id="auth-section" class="border border-borderColor rounded-lg p-6 bg-bgSecondary">
+      <p class="text-textSecondary text-sm mb-4">
+        Sign in with a passkey to upload or download your vault.
+      </p>
+      <button
+        id="signin-btn"
+        class="px-4 py-2 bg-accent text-bgLight rounded-md text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
+      >
+        Sign in with passkey
+      </button>
+      <p id="auth-error" class="mt-3 text-sm" style="color: #dc2626; display: none;"></p>
+    </div>
+
+    <!-- Authenticated state -->
+    <div id="main-section" style="display: none;" class="flex flex-col gap-4">
+
+      <!-- Upload -->
+      <div class="border border-borderColor rounded-lg p-6 bg-bgSecondary">
+        <h2 class="font-medium text-textPrimary mb-1">Upload Vault</h2>
+        <p class="text-textSecondary text-sm mb-4">
+          Select a <code class="text-xs bg-bgLight px-1 py-0.5 rounded border border-borderColor">.zip</code>
+          of your Obsidian markdown files. A PR will be opened on
+          <code class="text-xs bg-bgLight px-1 py-0.5 rounded border border-borderColor">til-sync</code>
+          with all <code class="text-xs bg-bgLight px-1 py-0.5 rounded border border-borderColor">.md</code>
+          files as a full-replace snapshot.
+        </p>
+        <div class="flex flex-col gap-3">
+          <input
+            type="file"
+            id="zip-input"
+            accept=".zip"
+            class="block w-full text-sm text-textSecondary
+              file:mr-3 file:py-1.5 file:px-3
+              file:rounded file:border file:border-borderColor
+              file:text-sm file:text-textPrimary file:bg-bgLight file:cursor-pointer
+              hover:file:bg-bgSecondary cursor-pointer"
+          />
+          <div class="flex items-center gap-3">
+            <button
+              id="upload-btn"
+              class="px-4 py-2 bg-accent text-bgLight rounded-md text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
+            >
+              Upload &amp; Create PR
+            </button>
+            <p id="upload-progress" class="text-sm text-textSecondary" style="display: none;">
+              Creating PR…
+            </p>
+          </div>
+          <div id="upload-result" style="display: none;" class="text-sm"></div>
+        </div>
+      </div>
+
+      <!-- Download -->
+      <div class="border border-borderColor rounded-lg p-6 bg-bgSecondary">
+        <h2 class="font-medium text-textPrimary mb-1">Download Vault</h2>
+        <p class="text-textSecondary text-sm mb-4">
+          Download a zip of all notes from the current
+          <code class="text-xs bg-bgLight px-1 py-0.5 rounded border border-borderColor">til-sync</code>
+          main branch.
+        </p>
+        <button
+          id="download-btn"
+          class="px-4 py-2 border border-borderColor text-textPrimary rounded-md text-sm hover:bg-bgLight transition-colors disabled:opacity-50"
+        >
+          Download Vault Zip
+        </button>
+        <p id="download-error" class="mt-3 text-sm" style="color: #dc2626; display: none;"></p>
+      </div>
+
+      <!-- Sign out -->
+      <div class="flex justify-end">
+        <button id="signout-btn" class="text-sm text-textSecondary hover:text-textPrimary transition-colors">
+          Sign out
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Setup — register a passkey (one-time, from personal device) -->
+    <details class="border border-borderColor rounded-lg overflow-hidden">
+      <summary
+        class="px-6 py-4 cursor-pointer text-sm text-textSecondary hover:text-textPrimary transition-colors select-none list-none flex items-center gap-2"
+      >
+        <span id="setup-arrow" class="text-xs transition-transform">▶</span>
+        Setup — Register a passkey
+      </summary>
+      <div class="px-6 pb-6 pt-4 border-t border-borderColor bg-bgSecondary flex flex-col gap-3">
+        <p class="text-sm text-textSecondary">
+          Register a passkey once from your personal device. You will need the
+          <code class="text-xs bg-bgLight px-1 py-0.5 rounded border border-borderColor">REGISTRATION_TOKEN</code>
+          set in your Cloudflare Pages environment variables.
+          The passkey will sync to your phone or password manager so you can authenticate from any device.
+        </p>
+        <input
+          type="password"
+          id="reg-token"
+          placeholder="Registration token"
+          autocomplete="off"
+          class="block w-full text-sm px-3 py-2 border border-borderColor rounded-md bg-bgLight text-textPrimary placeholder:text-textSecondary focus:outline-none focus:border-accent"
+        />
+        <div class="flex items-center gap-3">
+          <button
+            id="register-btn"
+            class="px-4 py-2 border border-borderColor text-textPrimary rounded-md text-sm hover:bg-bgLight transition-colors disabled:opacity-50"
+          >
+            Register passkey
+          </button>
+        </div>
+        <p id="reg-result" class="text-sm" style="display: none;"></p>
+      </div>
+    </details>
+
+  </div>
+</Layout>
+
+<script>
+  import { startAuthentication, startRegistration } from '@simplewebauthn/browser';
+
+  const SESSION_KEY = 'syncSession';
+  const SESSION_EXPIRY_KEY = 'syncSessionExpiry';
+
+  function getSession(): string | null {
+    const token = localStorage.getItem(SESSION_KEY);
+    const expiry = localStorage.getItem(SESSION_EXPIRY_KEY);
+    if (!token || !expiry) return null;
+    if (Date.now() > parseInt(expiry, 10)) {
+      localStorage.removeItem(SESSION_KEY);
+      localStorage.removeItem(SESSION_EXPIRY_KEY);
+      return null;
+    }
+    return token;
+  }
+
+  function saveSession(token: string, expiresIn: number) {
+    localStorage.setItem(SESSION_KEY, token);
+    localStorage.setItem(SESSION_EXPIRY_KEY, String(Date.now() + expiresIn * 1000));
+  }
+
+  function clearSession() {
+    localStorage.removeItem(SESSION_KEY);
+    localStorage.removeItem(SESSION_EXPIRY_KEY);
+  }
+
+  const authSection = document.getElementById('auth-section')!;
+  const mainSection = document.getElementById('main-section')!;
+  const signinBtn = document.getElementById('signin-btn') as HTMLButtonElement;
+  const authError = document.getElementById('auth-error')!;
+  const uploadBtn = document.getElementById('upload-btn') as HTMLButtonElement;
+  const zipInput = document.getElementById('zip-input') as HTMLInputElement;
+  const uploadProgress = document.getElementById('upload-progress')!;
+  const uploadResult = document.getElementById('upload-result')!;
+  const downloadBtn = document.getElementById('download-btn') as HTMLButtonElement;
+  const downloadError = document.getElementById('download-error')!;
+  const signoutBtn = document.getElementById('signout-btn') as HTMLButtonElement;
+  const registerBtn = document.getElementById('register-btn') as HTMLButtonElement;
+  const regToken = document.getElementById('reg-token') as HTMLInputElement;
+  const regResult = document.getElementById('reg-result')!;
+  const setupArrow = document.getElementById('setup-arrow')!;
+
+  function showMain() {
+    authSection.style.display = 'none';
+    mainSection.style.display = 'flex';
+  }
+
+  function showAuth() {
+    mainSection.style.display = 'none';
+    authSection.style.display = 'block';
+  }
+
+  // Rotate arrow on details toggle
+  const details = document.querySelector('details')!;
+  details.addEventListener('toggle', () => {
+    setupArrow.style.transform = details.open ? 'rotate(90deg)' : '';
+  });
+
+  // Init
+  if (getSession()) {
+    showMain();
+  } else {
+    showAuth();
+  }
+
+  // Sign in
+  signinBtn.addEventListener('click', async () => {
+    signinBtn.disabled = true;
+    signinBtn.textContent = 'Authenticating…';
+    authError.style.display = 'none';
+
+    try {
+      const beginRes = await fetch('/api/sync/passkey/auth-begin', { method: 'POST' });
+      const beginData = await beginRes.json() as { options?: unknown; challengeId?: string; error?: string };
+      if (!beginRes.ok) throw new Error(beginData.error ?? 'Failed to begin authentication');
+
+      const authResponse = await startAuthentication({ optionsJSON: beginData.options as Parameters<typeof startAuthentication>[0]['optionsJSON'] });
+
+      const finishRes = await fetch('/api/sync/passkey/auth-finish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ challengeId: beginData.challengeId, authenticationResponse: authResponse }),
+      });
+      const finishData = await finishRes.json() as { sessionToken?: string; expiresIn?: number; error?: string };
+      if (!finishRes.ok) throw new Error(finishData.error ?? 'Authentication failed');
+
+      saveSession(finishData.sessionToken!, finishData.expiresIn!);
+      showMain();
+    } catch (err: unknown) {
+      authError.textContent = err instanceof Error ? err.message : 'Authentication failed';
+      authError.style.display = 'block';
+    } finally {
+      signinBtn.disabled = false;
+      signinBtn.textContent = 'Sign in with passkey';
+    }
+  });
+
+  // Upload
+  uploadBtn.addEventListener('click', async () => {
+    const file = zipInput.files?.[0];
+    if (!file) { alert('Please select a zip file first.'); return; }
+
+    const token = getSession();
+    if (!token) { showAuth(); return; }
+
+    uploadBtn.disabled = true;
+    uploadProgress.style.display = 'block';
+    uploadResult.style.display = 'none';
+
+    try {
+      const body = new FormData();
+      body.append('file', file);
+
+      const res = await fetch('/api/sync/upload', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+        body,
+      });
+      const data = await res.json() as { prUrl?: string; fileCount?: number; error?: string };
+      if (!res.ok) throw new Error(data.error ?? 'Upload failed');
+
+      uploadResult.innerHTML = `
+        <span style="color: #16a34a;">✓ PR created — ${data.fileCount} files synced</span><br>
+        <a href="${data.prUrl}" target="_blank" rel="noopener noreferrer"
+           style="color: var(--link-color);">View PR on GitHub →</a>
+      `;
+      uploadResult.style.display = 'block';
+      zipInput.value = '';
+    } catch (err: unknown) {
+      uploadResult.innerHTML = `<span style="color: #dc2626;">✗ ${err instanceof Error ? err.message : 'Upload failed'}</span>`;
+      uploadResult.style.display = 'block';
+    } finally {
+      uploadBtn.disabled = false;
+      uploadProgress.style.display = 'none';
+    }
+  });
+
+  // Download
+  downloadBtn.addEventListener('click', async () => {
+    const token = getSession();
+    if (!token) { showAuth(); return; }
+
+    downloadBtn.disabled = true;
+    downloadBtn.textContent = 'Downloading…';
+    downloadError.style.display = 'none';
+
+    try {
+      const res = await fetch('/api/sync/download', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) throw new Error('Download failed — check GitHub token');
+
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `til-sync-${new Date().toISOString().split('T')[0]}.zip`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err: unknown) {
+      downloadError.textContent = err instanceof Error ? err.message : 'Download failed';
+      downloadError.style.display = 'block';
+    } finally {
+      downloadBtn.disabled = false;
+      downloadBtn.textContent = 'Download Vault Zip';
+    }
+  });
+
+  // Sign out
+  signoutBtn.addEventListener('click', () => {
+    clearSession();
+    showAuth();
+  });
+
+  // Register passkey
+  registerBtn.addEventListener('click', async () => {
+    const regTokenValue = regToken.value.trim();
+    if (!regTokenValue) { alert('Please enter the registration token.'); return; }
+
+    registerBtn.disabled = true;
+    registerBtn.textContent = 'Registering…';
+    regResult.style.display = 'none';
+
+    try {
+      const beginRes = await fetch('/api/sync/passkey/register-begin', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${regTokenValue}` },
+      });
+      const beginData = await beginRes.json() as { options?: unknown; challengeId?: string; error?: string };
+      if (!beginRes.ok) throw new Error(beginData.error ?? 'Failed to begin registration');
+
+      const regResponse = await startRegistration({ optionsJSON: beginData.options as Parameters<typeof startRegistration>[0]['optionsJSON'] });
+
+      const finishRes = await fetch('/api/sync/passkey/register-finish', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${regTokenValue}`,
+        },
+        body: JSON.stringify({ challengeId: beginData.challengeId, registrationResponse: regResponse }),
+      });
+      const finishData = await finishRes.json() as { verified?: boolean; error?: string };
+      if (!finishRes.ok) throw new Error(finishData.error ?? 'Registration failed');
+
+      regResult.innerHTML = `<span style="color: #16a34a;">✓ Passkey registered! You can now sign in from any device.</span>`;
+      regResult.style.display = 'block';
+      regToken.value = '';
+    } catch (err: unknown) {
+      regResult.innerHTML = `<span style="color: #dc2626;">✗ ${err instanceof Error ? err.message : 'Registration failed'}</span>`;
+      regResult.style.display = 'block';
+    } finally {
+      registerBtn.disabled = false;
+      registerBtn.textContent = 'Register passkey';
+    }
+  });
+</script>

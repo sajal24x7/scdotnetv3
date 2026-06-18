@@ -28,9 +28,12 @@
     "@astrojs/mdx": "^6.0.3",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.3.1",
+    "@simplewebauthn/browser": "^13.3.0",
+    "@simplewebauthn/server": "^13.3.1",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.6",
     "date-fns": "^4.4.0",
+    "fflate": "^0.8.3",
     "glob": "^13.0.6",
     "js-yaml": "^4.1.0",
     "marked": "^18.0.4",
@@ -42,6 +45,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260617.1",
     "@tailwindcss/typography": "^0.5.20",
     "@types/sanitize-html": "^2.16.0",
     "gray-matter": "^4.0.3",
