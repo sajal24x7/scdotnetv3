@@ -1,8 +1,8 @@
 ---
 title: "Apple will increase the prices of its devices"
 slug: "apple-will-increase-the-prices-of-its-devices"
-pubDate: 2026-06-18T14:20:38+03:00
-updatedDate: 2026-06-18T14:20:38+03:00
+created: 2026-06-18T14:20:38+03:00
+updated: 2026-06-18T14:20:38+03:00
 category: micro
 tags:
   - apple
