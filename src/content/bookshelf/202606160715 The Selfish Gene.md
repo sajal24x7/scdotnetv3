@@ -2,7 +2,7 @@
 title: The Selfish Gene
 slug: reading-the-selfish-gene
 created: 2026-06-16T04:18:28.000Z
-updated: 2026-06-18T10:59:33
+updated: 2026-06-18T14:21:19
 category: bookshelf
 tags:
   - biology
