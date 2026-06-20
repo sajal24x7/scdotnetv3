@@ -91,20 +91,66 @@ const transformedRecentPosts = recentPosts.map(transformPost);
       </div>
       <div class="progress-card__body feed-buttons-body">
         <p class="progress-page__intro" style="margin-bottom: 1.5rem;">
-          This website offers four aptly named feeds - everything/garden/stream/nordletter. Click and subscribe to the feed you prefer.
+          Curated feeds combining multiple categories, or subscribe to any individual category feed below.
         </p>
-        <div class="feed-buttons-grid">
+        <h3 class="feed-section-label">Curated feeds</h3>
+        <div class="feed-buttons-grid feed-buttons-grid--wide">
           <a href="/rss.xml" class="feed-button">
             Everything
           </a>
-          <a href="/garden/rss.xml" class="feed-button">
-            Garden
+          <a href="/longform/rss.xml" class="feed-button">
+            Longform
           </a>
           <a href="/stream/rss.xml" class="feed-button">
             Stream
           </a>
+          <a href="/garden/rss.xml" class="feed-button">
+            Garden
+          </a>
+          <a href="/prose/rss.xml" class="feed-button">
+            Prose
+          </a>
           <a href="/nordletter/rss.xml" class="feed-button">
             NordLetter
+          </a>
+        </div>
+        <h3 class="feed-section-label" style="margin-top: 1.5rem;">By category</h3>
+        <div class="feed-buttons-grid feed-buttons-grid--wide">
+          <a href="/blog/rss.xml" class="feed-button feed-button--secondary">
+            Blog
+          </a>
+          <a href="/micro/rss.xml" class="feed-button feed-button--secondary">
+            Micro
+          </a>
+          <a href="/til/rss.xml" class="feed-button feed-button--secondary">
+            TIL
+          </a>
+          <a href="/evergreen/rss.xml" class="feed-button feed-button--secondary">
+            Evergreen
+          </a>
+          <a href="/photo/rss.xml" class="feed-button feed-button--secondary">
+            Photos
+          </a>
+          <a href="/story/rss.xml" class="feed-button feed-button--secondary">
+            Stories
+          </a>
+          <a href="/poem/rss.xml" class="feed-button feed-button--secondary">
+            Poetry
+          </a>
+          <a href="/bookshelf/rss.xml" class="feed-button feed-button--secondary">
+            Bookshelf
+          </a>
+          <a href="/filmshelf/rss.xml" class="feed-button feed-button--secondary">
+            Filmshelf
+          </a>
+          <a href="/tvshelf/rss.xml" class="feed-button feed-button--secondary">
+            TV Shelf
+          </a>
+          <a href="/gameshelf/rss.xml" class="feed-button feed-button--secondary">
+            Game Shelf
+          </a>
+          <a href="/now/rss.xml" class="feed-button feed-button--secondary">
+            Now
           </a>
         </div>
       </div>
@@ -219,10 +265,27 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     text-align: center;
   }
 
+  .feed-section-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+  }
+
+  :global(.dark) .feed-section-label {
+    color: #9ca3af;
+  }
+
   .feed-buttons-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
+  }
+
+  .feed-buttons-grid--wide {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .feed-button {
@@ -249,5 +312,28 @@ const transformedRecentPosts = recentPosts.map(transformPost);
   .feed-button:focus-visible {
     outline: 2px solid #7c3aed;
     outline-offset: 2px;
+  }
+
+  .feed-button--secondary {
+    background: transparent;
+    color: #7c3aed;
+    border: 1px solid #8b5cf6;
+    box-shadow: none;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .feed-button--secondary:hover {
+    background: rgba(139, 92, 246, 0.1);
+  }
+
+  :global(.dark) .feed-button--secondary {
+    color: #a78bfa;
+    border-color: #7c3aed;
+  }
+
+  :global(.dark) .feed-button--secondary:hover {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: #8b5cf6;
   }
 </style>
