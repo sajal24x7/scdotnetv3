@@ -38,120 +38,51 @@ const transformedRecentPosts = recentPosts.map(transformPost);
       <div class="progress-page__header-content">
         <PageHeader
           title="RSS Feeds"
-          description="Subscribe to different feeds based on your interests. All feeds are beautifully styled when viewed in your browser."
           layout="centered"
           size="lg"
           maxWidth="7xl"
         />
+        <div class="feeds-intro">
+          <p>
+            RSS lets you follow what I — or anyone you choose — write, without algorithms or ads.
+            I use <a href="https://netnewswire.com" target="_blank" rel="noopener noreferrer">NetNewsWire</a> as
+            my reader of choice; <a href="https://feedly.com" target="_blank" rel="noopener noreferrer">Feedly</a> is
+            another popular option. If you're new to feeds,
+            <a href="https://aboutfeeds.com" target="_blank" rel="noopener noreferrer">aboutfeeds.com</a> is
+            a good place to start, and this piece on
+            <a href="https://www.citationneeded.news/curate-with-rss/" target="_blank" rel="noopener noreferrer">curating your newspaper with feeds</a>
+            is well worth reading.
+          </p>
+        </div>
       </div>
     </header>
 
-    <!-- About Feeds -->
-    <article class="grid-span-6 progress-card about-feeds-card">
-      <div class="progress-card__meta about-feeds-header">
-        <h2 class="progress-card__title">About Feeds</h2>
-      </div>
-      <div class="progress-card__body about-feeds-body">
-        <p class="progress-page__intro" style="margin-bottom: 1.5rem;">
-          RSS lets you follow what I (or others that you choose to follow) write. I use NetNewsWire as my reader of choice. There are other options like Feedly for example.
-        </p>
-        <div class="feeds-buttons">
-          <a
-            href="https://aboutfeeds.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="feeds-button feeds-button--primary"
-          >
-            Learn more about feeds
-          </a>
-          <a
-            href="https://www.citationneeded.news/curate-with-rss/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="feeds-button feeds-button--secondary"
-          >
-            Curating your newspaper with feeds
-          </a>
-          <a
-            href="https://netnewswire.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="feeds-button feeds-button--secondary"
-          >
-            Download NetNewsWire
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Feed Buttons Section -->
-    <article class="grid-span-6 progress-card feed-buttons-card">
-      <div class="progress-card__meta feed-buttons-header">
+    <!-- Subscribe Section -->
+    <article class="grid-span-8 grid-start-3 progress-card feed-subscribe-card">
+      <div class="progress-card__meta feed-subscribe-header">
         <h2 class="progress-card__title">Subscribe</h2>
       </div>
-      <div class="progress-card__body feed-buttons-body">
-        <p class="progress-page__intro" style="margin-bottom: 1.5rem;">
-          Curated feeds combining multiple categories, or subscribe to any individual category feed below.
+      <div class="progress-card__body feed-subscribe-body">
+        <p class="feeds-subscribe-intro">
+          Other than feeds for all the categories, the following curated feeds are available.
         </p>
-        <h3 class="feed-section-label">Curated feeds</h3>
-        <div class="feed-buttons-grid feed-buttons-grid--wide">
-          <a href="/rss.xml" class="feed-button">
-            Everything
-          </a>
-          <a href="/longform/rss.xml" class="feed-button">
-            Longform
-          </a>
-          <a href="/stream/rss.xml" class="feed-button">
-            Stream
-          </a>
-          <a href="/garden/rss.xml" class="feed-button">
-            Garden
-          </a>
-          <a href="/prose/rss.xml" class="feed-button">
-            Prose
-          </a>
-          <a href="/nordletter/rss.xml" class="feed-button">
-            NordLetter
-          </a>
-        </div>
-        <h3 class="feed-section-label" style="margin-top: 1.5rem;">By category</h3>
-        <div class="feed-buttons-grid feed-buttons-grid--wide">
-          <a href="/blog/rss.xml" class="feed-button feed-button--secondary">
-            Blog
-          </a>
-          <a href="/micro/rss.xml" class="feed-button feed-button--secondary">
-            Micro
-          </a>
-          <a href="/til/rss.xml" class="feed-button feed-button--secondary">
-            TIL
-          </a>
-          <a href="/evergreen/rss.xml" class="feed-button feed-button--secondary">
-            Evergreen
-          </a>
-          <a href="/photo/rss.xml" class="feed-button feed-button--secondary">
-            Photos
-          </a>
-          <a href="/story/rss.xml" class="feed-button feed-button--secondary">
-            Stories
-          </a>
-          <a href="/poem/rss.xml" class="feed-button feed-button--secondary">
-            Poetry
-          </a>
-          <a href="/bookshelf/rss.xml" class="feed-button feed-button--secondary">
-            Bookshelf
-          </a>
-          <a href="/filmshelf/rss.xml" class="feed-button feed-button--secondary">
-            Filmshelf
-          </a>
-          <a href="/tvshelf/rss.xml" class="feed-button feed-button--secondary">
-            TV Shelf
-          </a>
-          <a href="/gameshelf/rss.xml" class="feed-button feed-button--secondary">
-            Game Shelf
-          </a>
-          <a href="/now/rss.xml" class="feed-button feed-button--secondary">
-            Now
-          </a>
+        <div class="feeds-prose">
+          <p>
+            The <a href="/rss.xml"><strong>Everything</strong></a> feed is the full firehose — all content published
+            across the site, every category, in a single stream. For something narrower,
+            <a href="/longform/rss.xml"><strong>Longform</strong></a> brings together the writing that takes more
+            than a few minutes to read: blog essays, evergreen notes, and NordLetter issues. If
+            you prefer the quicker stuff, the <a href="/stream/rss.xml"><strong>Stream</strong></a> collects
+            blog posts, micro-updates, and photos — the things that flow through day to day.
+          </p>
+          <p>
+            <a href="/garden/rss.xml"><strong>Garden</strong></a> is for the slower, more permanent writing:
+            evergreen notes, TIL entries, bookshelf logs, stories, and poems — content that tends
+            to grow and be tended over time rather than published and forgotten.
+            <a href="/prose/rss.xml"><strong>Prose</strong></a> narrows this further to creative writing only —
+            stories and poetry. And <a href="/nordletter/rss.xml"><strong>NordLetter</strong></a> is the feed
+            for the newsletter archive, published on its own cadence.
+          </p>
         </div>
       </div>
     </article>
@@ -169,171 +100,103 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     margin-bottom: clamp(1rem, 2vw, 1.5rem);
   }
 
-  /* Center-align About Feeds section */
-  .about-feeds-card {
+  /* Intro prose below title */
+  .feeds-intro {
+    margin-top: 1.25rem;
     text-align: center;
   }
 
-  .about-feeds-header,
-  .about-feeds-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .feeds-intro p {
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    color: rgb(71 85 105);
+    max-width: 48rem;
+    margin: 0 auto;
+    line-height: 1.7;
   }
 
-  .about-feeds-body p {
-    text-align: center;
+  :global(.dark) .feeds-intro p {
+    color: rgb(var(--color-text-secondary));
   }
 
-  .feeds-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .feeds-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.75rem;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    text-align: center;
-  }
-
-  .feeds-button--primary {
-    background: #8b5cf6;
-    color: white;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  }
-
-  .feeds-button--primary:hover {
-    background: #7c3aed;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  }
-
-  .feeds-button--primary:focus-visible {
-    outline: 2px solid #7c3aed;
-    outline-offset: 2px;
-  }
-
-  .feeds-button--secondary {
-    border: 1px solid #8b5cf6;
+  .feeds-intro a {
     color: #7c3aed;
-    background: transparent;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
-  .feeds-button--secondary:hover {
-    background: rgba(139, 92, 246, 0.1);
-    transform: translateY(-1px);
+  .feeds-intro a:hover {
+    color: #6d28d9;
   }
 
-  .feeds-button--secondary:focus-visible {
-    outline: 2px solid #7c3aed;
-    outline-offset: 2px;
-  }
-
-  :global(.dark) .feeds-button--secondary {
+  :global(.dark) .feeds-intro a {
     color: #a78bfa;
-    border-color: #7c3aed;
   }
 
-  :global(.dark) .feeds-button--secondary:hover {
-    background: rgba(139, 92, 246, 0.15);
-    border-color: #8b5cf6;
+  :global(.dark) .feeds-intro a:hover {
+    color: #c4b5fd;
   }
 
-  /* Feed Buttons Card */
-  .feed-buttons-card {
-    text-align: center;
+  /* Subscribe card */
+  .feed-subscribe-card {
+    margin-top: clamp(0.5rem, 2vw, 1rem);
   }
 
-  .feed-buttons-header,
-  .feed-buttons-body {
+  .feed-subscribe-header,
+  .feed-subscribe-body {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
-  .feed-buttons-body p {
-    text-align: center;
-  }
-
-  .feed-section-label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #6b7280;
-    margin-bottom: 0.75rem;
-  }
-
-  :global(.dark) .feed-section-label {
-    color: #9ca3af;
-  }
-
-  .feed-buttons-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-  }
-
-  .feed-buttons-grid--wide {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .feed-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.75rem;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
+  .feeds-subscribe-intro {
     font-size: 0.95rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    background: #8b5cf6;
-    color: white;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    color: rgb(71 85 105);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
   }
 
-  .feed-button:hover {
-    background: #7c3aed;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  :global(.dark) .feeds-subscribe-intro {
+    color: rgb(var(--color-text-secondary));
   }
 
-  .feed-button:focus-visible {
-    outline: 2px solid #7c3aed;
-    outline-offset: 2px;
+  /* Prose descriptions */
+  .feeds-prose {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  .feed-button--secondary {
-    background: transparent;
+  .feeds-prose p {
+    font-size: clamp(0.925rem, 1.8vw, 1rem);
+    line-height: 1.75;
+    color: rgb(55 65 81);
+    margin: 0;
+  }
+
+  :global(.dark) .feeds-prose p {
+    color: rgb(var(--color-text-secondary));
+  }
+
+  .feeds-prose a {
     color: #7c3aed;
-    border: 1px solid #8b5cf6;
-    box-shadow: none;
-    font-size: 0.875rem;
-    padding: 0.5rem 1rem;
+    text-decoration: none;
   }
 
-  .feed-button--secondary:hover {
-    background: rgba(139, 92, 246, 0.1);
+  .feeds-prose a:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
-  :global(.dark) .feed-button--secondary {
+  :global(.dark) .feeds-prose a {
     color: #a78bfa;
-    border-color: #7c3aed;
   }
 
-  :global(.dark) .feed-button--secondary:hover {
-    background: rgba(139, 92, 246, 0.15);
-    border-color: #8b5cf6;
+  :global(.dark) .feeds-prose a:hover {
+    color: #c4b5fd;
+  }
+
+  .feeds-prose strong {
+    font-weight: 600;
+    color: inherit;
   }
 </style>
