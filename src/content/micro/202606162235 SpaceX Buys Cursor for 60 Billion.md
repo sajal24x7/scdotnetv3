@@ -2,7 +2,7 @@
 title: "SpaceX Buys Cursor for 60 Billion"
 slug: "spacex-buys-cursor-for-60-billion"
 created: 2026-06-16T22:41:09+03:00
-updated: 2026-06-20T14:29:08
+updated: 2026-06-20T14:31:09
 category: micro
 tags:
   - spacex
