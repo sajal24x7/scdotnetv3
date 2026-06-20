@@ -1,19 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
-import RecentItems from '../components/RecentItems.astro';
-import { getAllPosts, transformPost } from '../utils/content';
+import { getAllPosts } from '../utils/content';
 import '../styles/progress-page.css';
 
-// Get recent posts for preview (more posts for the main section)
 const allPosts = await getAllPosts();
-const sortedPosts = allPosts.sort((a, b) =>
-  new Date(b.data.created).valueOf() - new Date(a.data.created).valueOf()
-);
-const recentPosts = sortedPosts.slice(0, 15); // Show more posts
-
-// Transform posts for the RecentItems component
-const transformedRecentPosts = recentPosts.map(transformPost);
 ---
 
 <Layout
@@ -57,50 +48,56 @@ const transformedRecentPosts = recentPosts.map(transformPost);
       </div>
     </header>
 
-    <!-- Subscribe Section -->
-    <article class="grid-span-8 grid-start-3 progress-card feed-subscribe-card">
-      <div class="progress-card__meta feed-subscribe-header">
-        <h2 class="progress-card__title">Subscribe</h2>
-      </div>
-      <div class="progress-card__body feed-subscribe-body">
-        <p class="feeds-subscribe-intro">
-          Other than feeds for all the categories, the following curated feeds are available.
-        </p>
-        <div class="feeds-prose">
-          <p>
-            The <a href="/rss.xml"><strong>Everything</strong></a> feed is the full firehose — all content published
-            across the site, every category, in a single stream. For something narrower,
-            <a href="/longform/rss.xml"><strong>Longform</strong></a> brings together the writing that takes more
-            than a few minutes to read: blog essays, evergreen notes, and NordLetter issues. If
-            you prefer the quicker stuff, the <a href="/stream/rss.xml"><strong>Stream</strong></a> collects
-            blog posts, micro-updates, and photos — the things that flow through day to day.
-          </p>
-          <p>
-            <a href="/garden/rss.xml"><strong>Garden</strong></a> is for the slower, more permanent writing:
-            evergreen notes, TIL entries, bookshelf logs, stories, and poems — content that tends
-            to grow and be tended over time rather than published and forgotten.
-            <a href="/prose/rss.xml"><strong>Prose</strong></a> narrows this further to creative writing only —
-            stories and poetry. And <a href="/nordletter/rss.xml"><strong>NordLetter</strong></a> is the feed
-            for the newsletter archive, published on its own cadence.
-          </p>
+    <!-- Subscribe Table -->
+    <article class="grid-span-full feeds-table-card">
+      <div class="feeds-table">
+
+        <!-- Column 1: Garden -->
+        <div class="feeds-col">
+          <a href="/garden/rss.xml" class="feeds-col__parent">Garden</a>
+          <ul class="feeds-col__list">
+            <li><a href="/evergreen/rss.xml">Evergreen</a></li>
+            <li><a href="/til/rss.xml">TIL</a></li>
+            <li><a href="/story/rss.xml">Stories</a></li>
+            <li><a href="/poem/rss.xml">Poems</a></li>
+            <li><a href="/bookshelf/rss.xml">Bookshelf</a></li>
+            <li><a href="/filmshelf/rss.xml">Film Shelf</a></li>
+            <li><a href="/tvshelf/rss.xml">TV Shelf</a></li>
+            <li><a href="/gameshelf/rss.xml">Game Shelf</a></li>
+          </ul>
         </div>
+
+        <!-- Column 2: Stream + Nordletter -->
+        <div class="feeds-col">
+          <a href="/stream/rss.xml" class="feeds-col__parent">Stream</a>
+          <ul class="feeds-col__list">
+            <li><a href="/blog/rss.xml">Blog</a></li>
+            <li><a href="/micro/rss.xml">Micro</a></li>
+            <li><a href="/photo/rss.xml">Photos</a></li>
+          </ul>
+          <a href="/nordletter/rss.xml" class="feeds-col__parent feeds-col__parent--spaced">Nordletter</a>
+        </div>
+
+        <!-- Column 3: Special -->
+        <div class="feeds-col">
+          <span class="feeds-col__label">Special</span>
+          <ul class="feeds-col__list">
+            <li><a href="/rss.xml">Everything</a></li>
+            <li><a href="/longform/rss.xml">Longform</a></li>
+            <li><a href="/prose/rss.xml">Prose</a></li>
+          </ul>
+        </div>
+
       </div>
     </article>
-
-    <!-- Recent Posts -->
-    <section class="grid-span-8 grid-start-3 progress-page__content" style="margin-top: clamp(2rem, 5vw, 3.5rem);">
-      <RecentItems posts={transformedRecentPosts} title="Recent Posts" showFullContent={false} showReadMore={false} />
-    </section>
   </section>
 </Layout>
 
 <style>
-  /* Reduce spacing after header */
   .feeds-page-header {
     margin-bottom: clamp(1rem, 2vw, 1.5rem);
   }
 
-  /* Intro prose below title */
   .feeds-intro {
     margin-top: 1.25rem;
     text-align: center;
@@ -136,67 +133,139 @@ const transformedRecentPosts = recentPosts.map(transformPost);
     color: #c4b5fd;
   }
 
-  /* Subscribe card */
-  .feed-subscribe-card {
+  /* Table layout */
+  .feeds-table-card {
     margin-top: clamp(0.5rem, 2vw, 1rem);
+    max-width: 48rem;
+    margin-inline: auto;
+    width: 100%;
   }
 
-  .feed-subscribe-header,
-  .feed-subscribe-body {
+  .feeds-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  :global(.dark) .feeds-table {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .feeds-col {
+    padding: 1.5rem 1.25rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 0;
   }
 
-  .feeds-subscribe-intro {
-    font-size: 0.95rem;
-    color: rgb(71 85 105);
-    margin-bottom: 1.25rem;
-    line-height: 1.6;
+  .feeds-col + .feeds-col {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  :global(.dark) .feeds-subscribe-intro {
-    color: rgb(var(--color-text-secondary));
+  :global(.dark) .feeds-col + .feeds-col {
+    border-left-color: rgba(255, 255, 255, 0.1);
   }
 
-  /* Prose descriptions */
-  .feeds-prose {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .feeds-prose p {
-    font-size: clamp(0.925rem, 1.8vw, 1rem);
-    line-height: 1.75;
-    color: rgb(55 65 81);
-    margin: 0;
-  }
-
-  :global(.dark) .feeds-prose p {
-    color: rgb(var(--color-text-secondary));
-  }
-
-  .feeds-prose a {
-    color: #7c3aed;
+  /* Column heading (clickable feed) */
+  .feeds-col__parent {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgb(31 41 55);
     text-decoration: none;
+    margin-bottom: 0.625rem;
+    transition: color 0.15s ease;
   }
 
-  .feeds-prose a:hover {
-    text-decoration: underline;
-    text-underline-offset: 2px;
+  .feeds-col__parent:hover {
+    color: #7c3aed;
   }
 
-  :global(.dark) .feeds-prose a {
+  :global(.dark) .feeds-col__parent {
+    color: rgb(243 244 246);
+  }
+
+  :global(.dark) .feeds-col__parent:hover {
     color: #a78bfa;
   }
 
-  :global(.dark) .feeds-prose a:hover {
-    color: #c4b5fd;
+  .feeds-col__parent--spaced {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
   }
 
-  .feeds-prose strong {
-    font-weight: 600;
-    color: inherit;
+  /* Non-clickable column label (Special) */
+  .feeds-col__label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgb(31 41 55);
+    margin-bottom: 0.625rem;
+  }
+
+  :global(.dark) .feeds-col__label {
+    color: rgb(243 244 246);
+  }
+
+  /* Sub-feed list */
+  .feeds-col__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .feeds-col__list li {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  :global(.dark) .feeds-col__list li {
+    border-top-color: rgba(255, 255, 255, 0.07);
+  }
+
+  .feeds-col__list a {
+    display: block;
+    padding: 0.4rem 0;
+    font-size: 0.875rem;
+    color: rgb(75 85 99);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .feeds-col__list a:hover {
+    color: #7c3aed;
+  }
+
+  :global(.dark) .feeds-col__list a {
+    color: rgb(156 163 175);
+  }
+
+  :global(.dark) .feeds-col__list a:hover {
+    color: #a78bfa;
+  }
+
+  /* Mobile: single column */
+  @media (max-width: 640px) {
+    .feeds-table {
+      grid-template-columns: 1fr;
+    }
+
+    .feeds-col + .feeds-col {
+      border-left: none;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    :global(.dark) .feeds-col + .feeds-col {
+      border-top-color: rgba(255, 255, 255, 0.1);
+    }
   }
 </style>
