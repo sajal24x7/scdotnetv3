@@ -30,7 +30,7 @@ DEFAULT_CONTENT_ROOT = "src/content"
 SMALL_WORDS = {"a", "an", "the", "and", "but", "or", "for", "nor", "on", "at", "to", "by", "in", "of", "up", "as"}
 
 # Keys rewritten by the transform step — not passed through verbatim
-_TRANSFORMED_KEYS = {"title", "slug", "pubDate", "updatedDate", "category", "tags"}
+_TRANSFORMED_KEYS = {"title", "slug", "created", "updated", "category", "tags"}
 # Keys that are Obsidian-internal and should be stripped from output
 _OBSIDIAN_ONLY_KEYS = {"aliases", "cssclass", "cssClasses"}
 
@@ -257,6 +257,9 @@ def transform_file(filepath: str, content_index: dict | None = None) -> bool:
     slug = to_slug(title_raw)
     category = fm.get("category", "").strip().strip("'\"")
 
+    # Use the Obsidian `updated` field if present; otherwise fall back to pubDate
+    updated_date = fm.get("updated") or pub_date
+
     tags = extract_tags(content)
     tags_str = "[" + ", ".join(f'"{t}"' for t in tags) + "]"
 
@@ -280,8 +283,8 @@ def transform_file(filepath: str, content_index: dict | None = None) -> bool:
         "---",
         f'title: "{title}"',
         f'slug: "{slug}"',
-        f"pubDate: {pub_date}",
-        f"updatedDate: {pub_date}",
+        f"created: {pub_date}",
+        f"updated: {updated_date}",
         f"category: {category}",
         f"tags: {tags_str}",
         *passthrough,
