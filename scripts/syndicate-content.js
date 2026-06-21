@@ -34,67 +34,11 @@ const SYNDICATION_CATEGORIES = [
 ];
 const DRY_RUN = process.env.SYNDICATION_DRY_RUN === 'true';
 const DAYS_BACK = parseInt(process.env.SYNDICATION_DAYS_BACK || '7', 10);
-// When set (push events only), restrict syndication to these specific files.
-// Prevents partially-syndicated posts from being retried on every push.
-const NEW_FILES_PATH = process.env.SYNDICATION_NEW_FILES_PATH || '';
 
 /**
- * Parse a single content file into a post object
- */
-function parsePostFile(filePath) {
-  const category = path.basename(path.dirname(filePath));
-  try {
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const { data, content } = matter(fileContent);
-    return {
-      data: {
-        ...data,
-        category: data.category || category,
-        pubDate: new Date(data.created || data.pubDate)
-      },
-      slug: data.slug || path.basename(filePath).replace(/\.(md|mdx)$/, ''),
-      body: content,
-      filePath
-    };
-  } catch (error) {
-    console.warn(`Warning: Could not parse ${filePath}: ${error.message}`);
-    return null;
-  }
-}
-
-/**
- * Get posts to consider for syndication.
- *
- * When SYNDICATION_NEW_FILES_PATH is set (push events), only the files listed
- * there are processed — these are files that were just added in this commit.
- * This prevents a post that failed on one platform from being retried on every
- * subsequent push to main.
- *
- * Without SYNDICATION_NEW_FILES_PATH (repository_dispatch / workflow_dispatch),
- * all posts from the last DAYS_BACK days are scanned for catch-up.
+ * Get all posts from category subdirectories
  */
 async function getAllPosts() {
-  // Targeted mode: only process files newly added in this push
-  if (NEW_FILES_PATH) {
-    let filePaths = [];
-    try {
-      const raw = fs.readFileSync(NEW_FILES_PATH, 'utf-8');
-      filePaths = raw.split('\n').map(f => f.trim()).filter(Boolean);
-    } catch {
-      // File missing means no new content files were added — nothing to do
-    }
-
-    if (filePaths.length === 0) {
-      return [];
-    }
-
-    console.log(`📌 Push mode: syndicating ${filePaths.length} newly added file(s)`);
-    return filePaths
-      .map(f => parsePostFile(path.resolve(f)))
-      .filter(Boolean);
-  }
-
-  // Full scan mode: all posts within DAYS_BACK days
   const contentDir = path.join(process.cwd(), 'src', 'content');
   const posts = [];
 
@@ -112,8 +56,28 @@ async function getAllPosts() {
       .filter(file => file.endsWith('.md') || file.endsWith('.mdx'));
 
     for (const file of files) {
-      const post = parsePostFile(path.join(categoryDir, file));
-      if (post) posts.push(post);
+      const filePath = path.join(categoryDir, file);
+      try {
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        const { data, content } = matter(fileContent);
+
+        // Create a post object similar to Astro's structure
+        // Derive category from directory name if not set in frontmatter
+        const post = {
+          data: {
+            ...data,
+            category: data.category || category,
+            pubDate: new Date(data.created || data.pubDate)
+          },
+          slug: data.slug || file.replace(/\.(md|mdx)$/, ''),
+          body: content,
+          filePath: filePath
+        };
+
+        posts.push(post);
+      } catch (error) {
+        console.warn(`Warning: Could not parse ${filePath}: ${error.message}`);
+      }
     }
   }
 
@@ -137,14 +101,12 @@ function needsSyndication(post) {
     return false;
   }
 
-  // In full-scan mode, skip posts older than DAYS_BACK days.
-  // In targeted (push) mode the files were explicitly selected, so no date filter.
-  if (!NEW_FILES_PATH) {
-    const cutoffDate = new Date();
-    cutoffDate.setDate(cutoffDate.getDate() - DAYS_BACK);
-    if (post.data.pubDate < cutoffDate) {
-      return false;
-    }
+  // Only syndicate posts from the last X days (configurable)
+  const cutoffDate = new Date();
+  cutoffDate.setDate(cutoffDate.getDate() - DAYS_BACK);
+
+  if (post.data.pubDate < cutoffDate) {
+    return false; // Skip posts older than configured days
   }
 
   // Simple rule: if we don't have URLs for all 3 platforms, syndicate
@@ -250,11 +212,7 @@ async function syndicateContent() {
     console.log('🧪 Running in DRY RUN mode - no actual posting will occur');
   }
 
-  if (NEW_FILES_PATH) {
-    console.log('📌 Push mode: only newly added posts will be syndicated');
-  } else {
-    console.log(`📅 Catch-up mode: checking posts from the last ${DAYS_BACK} days`);
-  };
+  console.log(`📅 Checking posts from the last ${DAYS_BACK} days`);
 
   try {
     // Get all posts

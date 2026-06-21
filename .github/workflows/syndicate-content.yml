@@ -1,20 +1,18 @@
 name: Syndicate Content
 
 on:
-  # Run after successful deployment (full 7-day scan for catch-up)
+  # Run after successful deployment
   repository_dispatch:
     types: [deploy-success]
 
-  # Run when new content files are added — only processes the newly added files,
-  # not all posts from the last 7 days. This prevents a post with a failing
-  # platform (e.g. Threads API down) from being retried on every push.
+  # Automatically run on commits to the default branch
   push:
     branches: [main]
     paths:
       - 'src/content/**/*.md'
       - 'src/content/**/*.mdx'
 
-  # Manual trigger for testing/catch-up (full 7-day scan)
+  # Manual trigger for testing/catch-up
   workflow_dispatch:
     inputs:
       dry_run:
@@ -28,11 +26,11 @@ on:
         default: '7'
         type: string
 
-# Serialise all syndication runs globally. When a push and a repository_dispatch
-# both fire for the same commit (Cloudflare deploys after every push), this
-# prevents them from running simultaneously and posting the same content twice.
-# cancel-in-progress: false means the second run waits rather than being dropped,
-# so it still runs — and by then the first run has already saved the URLs.
+# Serialise all syndication runs. Every push fires two triggers back-to-back:
+# the push trigger immediately, then repository_dispatch once Cloudflare deploys.
+# Without this, both runs start before either saves syndicationUrls and the same
+# post gets published to every platform twice. cancel-in-progress: false means
+# the second run waits rather than being dropped, so retries still happen.
 concurrency:
   group: syndication
   cancel-in-progress: false
@@ -65,21 +63,6 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Detect new content files
-        if: github.event_name == 'push'
-        run: |
-          git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'src/content/' \
-            | grep -E '\.(md|mdx)$' \
-            | grep -v '^src/content/inbox/' \
-            > /tmp/new_syndication_targets.txt || true
-
-          if [ -s /tmp/new_syndication_targets.txt ]; then
-            echo "New content files to syndicate:"
-            cat /tmp/new_syndication_targets.txt
-          else
-            echo "No new content files added in this push — nothing to syndicate"
-          fi
-
       - name: Run syndication
         env:
           # Mastodon credentials
@@ -97,9 +80,6 @@ jobs:
           # Configuration
           SYNDICATION_DRY_RUN: ${{ github.event.inputs.dry_run || github.event.client_payload.dry_run || 'false' }}
           SYNDICATION_DAYS_BACK: ${{ github.event.inputs.days_back || github.event.client_payload.days_back || '7' }}
-          # On push events, restrict syndication to newly added files only.
-          # Empty for repository_dispatch and workflow_dispatch (full 7-day scan).
-          SYNDICATION_NEW_FILES_PATH: ${{ github.event_name == 'push' && '/tmp/new_syndication_targets.txt' || '' }}
         run: node scripts/syndicate-content.js
 
       - name: Commit syndication updates
@@ -120,10 +100,10 @@ jobs:
 
           Co-Authored-By: github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
 
-          # Rebase on top of any commits landed while this job ran (e.g. from
-          # update-post-dates), then push. Without this, a concurrent workflow
-          # push would cause git push to fail and the syndicationUrls would
-          # never be saved, causing the next run to post duplicates again.
+          # Rebase on top of any commits that landed while this job ran
+          # (e.g. from update-post-dates running in parallel). Without this,
+          # a concurrent push causes git push to fail and syndicationUrls are
+          # never saved, so the next trigger posts to the same platforms again.
           git pull --rebase origin main
           git push origin main
 
