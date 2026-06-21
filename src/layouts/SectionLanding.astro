@@ -33,6 +33,7 @@ interface Props {
     countClass?: string;
     gridMaxWidth?: string;
     hideTitle?: boolean;
+    rssUrl?: string;
 }
 
 const {
@@ -64,7 +65,8 @@ const {
     countAlignment = 'center',
     countClass = '',
     gridMaxWidth,
-    hideTitle = false
+    hideTitle = false,
+    rssUrl
 } = Astro.props as Props;
 
 const resolvedHeaderSize = size ?? headerSize;
@@ -151,6 +153,7 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
                 layout={layout}
                 size={resolvedHeaderSize}
                 maxWidth={resolvedHeaderMaxWidth}
+                rssUrl={rssUrl}
             />
         </div>
         )}
@@ -260,6 +263,26 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
         max-width: 48rem;
         margin: 0;
         line-height: 1.6;
+    }
+
+    :global(.shelf-title-row) {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    :global(.shelf-rss-link) {
+        display: inline-flex;
+        align-items: center;
+        color: currentColor;
+        opacity: 0.35;
+        transition: opacity 0.15s ease;
+        text-decoration: none;
+        flex-shrink: 0;
+    }
+
+    :global(.shelf-rss-link:hover) {
+        opacity: 0.8;
     }
 
     :global(.dark) :global(.shelf-description) {
