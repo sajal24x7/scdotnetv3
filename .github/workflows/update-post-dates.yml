@@ -9,8 +9,8 @@ on:
 
 jobs:
   update-dates:
-    # Prevent infinite loops: skip commits made by this bot
-    if: github.actor != 'github-actions[bot]'
+    # Paused — updated field is now set in Obsidian notes directly
+    if: false
     runs-on: ubuntu-latest
     permissions:
       contents: write

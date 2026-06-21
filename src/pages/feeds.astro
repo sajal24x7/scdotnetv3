@@ -1,19 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/layout/PageHeader.astro';
-import RecentItems from '../components/RecentItems.astro';
-import { getAllPosts, transformPost } from '../utils/content';
+import { getAllPosts } from '../utils/content';
 import '../styles/progress-page.css';
 
-// Get recent posts for preview (more posts for the main section)
 const allPosts = await getAllPosts();
-const sortedPosts = allPosts.sort((a, b) =>
-  new Date(b.data.created).valueOf() - new Date(a.data.created).valueOf()
-);
-const recentPosts = sortedPosts.slice(0, 15); // Show more posts
-
-// Transform posts for the RecentItems component
-const transformedRecentPosts = recentPosts.map(transformPost);
 ---
 
 <Layout
@@ -38,302 +29,243 @@ const transformedRecentPosts = recentPosts.map(transformPost);
       <div class="progress-page__header-content">
         <PageHeader
           title="RSS Feeds"
-          description="Subscribe to different feeds based on your interests. All feeds are beautifully styled when viewed in your browser."
           layout="centered"
           size="lg"
           maxWidth="7xl"
         />
+        <div class="feeds-intro">
+          <p>
+            RSS lets you follow what I — or anyone you choose — write, without algorithms or ads.
+            I use <a href="https://netnewswire.com" target="_blank" rel="noopener noreferrer">NetNewsWire</a> as
+            my reader of choice; <a href="https://feedly.com" target="_blank" rel="noopener noreferrer">Feedly</a> is
+            another popular option. If you're new to feeds,
+            <a href="https://aboutfeeds.com" target="_blank" rel="noopener noreferrer">aboutfeeds.com</a> is
+            a good place to start, and this piece on
+            <a href="https://www.citationneeded.news/curate-with-rss/" target="_blank" rel="noopener noreferrer">curating your newspaper with feeds</a>
+            is well worth reading.
+          </p>
+        </div>
       </div>
     </header>
 
-    <!-- About Feeds -->
-    <article class="grid-span-6 progress-card about-feeds-card">
-      <div class="progress-card__meta about-feeds-header">
-        <h2 class="progress-card__title">About Feeds</h2>
-      </div>
-      <div class="progress-card__body about-feeds-body">
-        <p class="progress-page__intro" style="margin-bottom: 1.5rem;">
-          RSS lets you follow what I (or others that you choose to follow) write. I use NetNewsWire as my reader of choice. There are other options like Feedly for example.
-        </p>
-        <div class="feeds-buttons">
-          <a
-            href="https://aboutfeeds.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="feeds-button feeds-button--primary"
-          >
-            Learn more about feeds
-          </a>
-          <a
-            href="https://www.citationneeded.news/curate-with-rss/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="feeds-button feeds-button--secondary"
-          >
-            Curating your newspaper with feeds
-          </a>
-          <a
-            href="https://netnewswire.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="feeds-button feeds-button--secondary"
-          >
-            Download NetNewsWire
-          </a>
+    <!-- Subscribe Table -->
+    <article class="grid-span-full feeds-table-card">
+      <div class="feeds-table">
+
+        <!-- Column 1: Garden -->
+        <div class="feeds-col">
+          <a href="/garden/rss.xml" class="feeds-col__parent">Garden</a>
+          <ul class="feeds-col__list">
+            <li><a href="/evergreen/rss.xml">Evergreen</a></li>
+            <li><a href="/til/rss.xml">TIL</a></li>
+            <li><a href="/story/rss.xml">Stories</a></li>
+            <li><a href="/poem/rss.xml">Poems</a></li>
+            <li><a href="/bookshelf/rss.xml">Bookshelf</a></li>
+            <li><a href="/filmshelf/rss.xml">Film Shelf</a></li>
+            <li><a href="/tvshelf/rss.xml">TV Shelf</a></li>
+            <li><a href="/gameshelf/rss.xml">Game Shelf</a></li>
+          </ul>
         </div>
+
+        <!-- Column 2: Stream + Nordletter -->
+        <div class="feeds-col">
+          <a href="/stream/rss.xml" class="feeds-col__parent">Stream</a>
+          <ul class="feeds-col__list">
+            <li><a href="/blog/rss.xml">Blog</a></li>
+            <li><a href="/micro/rss.xml">Micro</a></li>
+            <li><a href="/photo/rss.xml">Photos</a></li>
+          </ul>
+          <a href="/nordletter/rss.xml" class="feeds-col__parent feeds-col__parent--spaced">Nordletter</a>
+        </div>
+
+        <!-- Column 3: Special -->
+        <div class="feeds-col">
+          <span class="feeds-col__label">Special</span>
+          <ul class="feeds-col__list">
+            <li><a href="/rss.xml">Everything</a></li>
+            <li><a href="/longform/rss.xml">Longform</a></li>
+            <li><a href="/prose/rss.xml">Prose</a></li>
+          </ul>
+        </div>
+
       </div>
     </article>
-
-    <!-- Feed Buttons Section -->
-    <article class="grid-span-6 progress-card feed-buttons-card">
-      <div class="progress-card__meta feed-buttons-header">
-        <h2 class="progress-card__title">Subscribe</h2>
-      </div>
-      <div class="progress-card__body feed-buttons-body">
-        <p class="progress-page__intro" style="margin-bottom: 1.5rem;">
-          Curated feeds combining multiple categories, or subscribe to any individual category feed below.
-        </p>
-        <h3 class="feed-section-label">Curated feeds</h3>
-        <div class="feed-buttons-grid feed-buttons-grid--wide">
-          <a href="/rss.xml" class="feed-button">
-            Everything
-          </a>
-          <a href="/longform/rss.xml" class="feed-button">
-            Longform
-          </a>
-          <a href="/stream/rss.xml" class="feed-button">
-            Stream
-          </a>
-          <a href="/garden/rss.xml" class="feed-button">
-            Garden
-          </a>
-          <a href="/prose/rss.xml" class="feed-button">
-            Prose
-          </a>
-          <a href="/nordletter/rss.xml" class="feed-button">
-            NordLetter
-          </a>
-        </div>
-        <h3 class="feed-section-label" style="margin-top: 1.5rem;">By category</h3>
-        <div class="feed-buttons-grid feed-buttons-grid--wide">
-          <a href="/blog/rss.xml" class="feed-button feed-button--secondary">
-            Blog
-          </a>
-          <a href="/micro/rss.xml" class="feed-button feed-button--secondary">
-            Micro
-          </a>
-          <a href="/til/rss.xml" class="feed-button feed-button--secondary">
-            TIL
-          </a>
-          <a href="/evergreen/rss.xml" class="feed-button feed-button--secondary">
-            Evergreen
-          </a>
-          <a href="/photo/rss.xml" class="feed-button feed-button--secondary">
-            Photos
-          </a>
-          <a href="/story/rss.xml" class="feed-button feed-button--secondary">
-            Stories
-          </a>
-          <a href="/poem/rss.xml" class="feed-button feed-button--secondary">
-            Poetry
-          </a>
-          <a href="/bookshelf/rss.xml" class="feed-button feed-button--secondary">
-            Bookshelf
-          </a>
-          <a href="/filmshelf/rss.xml" class="feed-button feed-button--secondary">
-            Filmshelf
-          </a>
-          <a href="/tvshelf/rss.xml" class="feed-button feed-button--secondary">
-            TV Shelf
-          </a>
-          <a href="/gameshelf/rss.xml" class="feed-button feed-button--secondary">
-            Game Shelf
-          </a>
-          <a href="/now/rss.xml" class="feed-button feed-button--secondary">
-            Now
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Recent Posts -->
-    <section class="grid-span-8 grid-start-3 progress-page__content" style="margin-top: clamp(2rem, 5vw, 3.5rem);">
-      <RecentItems posts={transformedRecentPosts} title="Recent Posts" showFullContent={false} showReadMore={false} />
-    </section>
   </section>
 </Layout>
 
 <style>
-  /* Reduce spacing after header */
   .feeds-page-header {
     margin-bottom: clamp(1rem, 2vw, 1.5rem);
   }
 
-  /* Center-align About Feeds section */
-  .about-feeds-card {
+  .feeds-intro {
+    margin-top: 1.25rem;
     text-align: center;
   }
 
-  .about-feeds-header,
-  .about-feeds-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .feeds-intro p {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    color: rgb(71 85 105);
+    max-width: 48rem;
+    margin: 0 auto;
+    line-height: 1.7;
   }
 
-  .about-feeds-body p {
-    text-align: center;
+  :global(.dark) .feeds-intro p {
+    color: rgb(var(--color-text-secondary));
   }
 
-  .feeds-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+  .feeds-intro a {
+    color: #7c3aed;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .feeds-intro a:hover {
+    color: #6d28d9;
+  }
+
+  :global(.dark) .feeds-intro a {
+    color: #a78bfa;
+  }
+
+  :global(.dark) .feeds-intro a:hover {
+    color: #c4b5fd;
+  }
+
+  /* Table layout */
+  .feeds-table-card {
+    margin-top: clamp(0.5rem, 2vw, 1rem);
+    max-width: 48rem;
+    margin-inline: auto;
     width: 100%;
-    max-width: 100%;
   }
 
-  .feeds-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  .feeds-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0.75rem;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    text-align: center;
+    overflow: hidden;
   }
 
-  .feeds-button--primary {
-    background: #8b5cf6;
-    color: white;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  :global(.dark) .feeds-table {
+    border-color: rgba(255, 255, 255, 0.1);
   }
 
-  .feeds-button--primary:hover {
-    background: #7c3aed;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  }
-
-  .feeds-button--primary:focus-visible {
-    outline: 2px solid #7c3aed;
-    outline-offset: 2px;
-  }
-
-  .feeds-button--secondary {
-    border: 1px solid #8b5cf6;
-    color: #7c3aed;
-    background: transparent;
-  }
-
-  .feeds-button--secondary:hover {
-    background: rgba(139, 92, 246, 0.1);
-    transform: translateY(-1px);
-  }
-
-  .feeds-button--secondary:focus-visible {
-    outline: 2px solid #7c3aed;
-    outline-offset: 2px;
-  }
-
-  :global(.dark) .feeds-button--secondary {
-    color: #a78bfa;
-    border-color: #7c3aed;
-  }
-
-  :global(.dark) .feeds-button--secondary:hover {
-    background: rgba(139, 92, 246, 0.15);
-    border-color: #8b5cf6;
-  }
-
-  /* Feed Buttons Card */
-  .feed-buttons-card {
-    text-align: center;
-  }
-
-  .feed-buttons-header,
-  .feed-buttons-body {
+  .feeds-col {
+    padding: 1.5rem 1.25rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 0;
   }
 
-  .feed-buttons-body p {
-    text-align: center;
+  .feeds-col + .feeds-col {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  .feed-section-label {
+  :global(.dark) .feeds-col + .feeds-col {
+    border-left-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Column heading (clickable feed) */
+  .feeds-col__parent {
+    display: block;
     font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
-    color: #6b7280;
-    margin-bottom: 0.75rem;
-  }
-
-  :global(.dark) .feed-section-label {
-    color: #9ca3af;
-  }
-
-  .feed-buttons-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-  }
-
-  .feed-buttons-grid--wide {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .feed-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.75rem;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    font-size: 0.95rem;
+    color: rgb(31 41 55);
     text-decoration: none;
-    transition: all 0.2s ease;
-    background: #8b5cf6;
-    color: white;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    margin-bottom: 0.625rem;
+    transition: color 0.15s ease;
   }
 
-  .feed-button:hover {
-    background: #7c3aed;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  }
-
-  .feed-button:focus-visible {
-    outline: 2px solid #7c3aed;
-    outline-offset: 2px;
-  }
-
-  .feed-button--secondary {
-    background: transparent;
+  .feeds-col__parent:hover {
     color: #7c3aed;
-    border: 1px solid #8b5cf6;
-    box-shadow: none;
-    font-size: 0.875rem;
-    padding: 0.5rem 1rem;
   }
 
-  .feed-button--secondary:hover {
-    background: rgba(139, 92, 246, 0.1);
+  :global(.dark) .feeds-col__parent {
+    color: rgb(243 244 246);
   }
 
-  :global(.dark) .feed-button--secondary {
+  :global(.dark) .feeds-col__parent:hover {
     color: #a78bfa;
-    border-color: #7c3aed;
   }
 
-  :global(.dark) .feed-button--secondary:hover {
-    background: rgba(139, 92, 246, 0.15);
-    border-color: #8b5cf6;
+  .feeds-col__parent--spaced {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  /* Non-clickable column label (Special) */
+  .feeds-col__label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgb(31 41 55);
+    margin-bottom: 0.625rem;
+  }
+
+  :global(.dark) .feeds-col__label {
+    color: rgb(243 244 246);
+  }
+
+  /* Sub-feed list */
+  .feeds-col__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .feeds-col__list li {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  :global(.dark) .feeds-col__list li {
+    border-top-color: rgba(255, 255, 255, 0.07);
+  }
+
+  .feeds-col__list a {
+    display: block;
+    padding: 0.4rem 0;
+    font-size: 0.875rem;
+    color: rgb(75 85 99);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .feeds-col__list a:hover {
+    color: #7c3aed;
+  }
+
+  :global(.dark) .feeds-col__list a {
+    color: rgb(156 163 175);
+  }
+
+  :global(.dark) .feeds-col__list a:hover {
+    color: #a78bfa;
+  }
+
+  /* Mobile: single column */
+  @media (max-width: 640px) {
+    .feeds-table {
+      grid-template-columns: 1fr;
+    }
+
+    .feeds-col + .feeds-col {
+      border-left: none;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    :global(.dark) .feeds-col + .feeds-col {
+      border-top-color: rgba(255, 255, 255, 0.1);
+    }
   }
 </style>
