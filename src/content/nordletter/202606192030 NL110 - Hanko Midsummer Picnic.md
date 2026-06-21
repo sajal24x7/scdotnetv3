@@ -1,10 +1,10 @@
 ---
-title: "Hanko Midsummer Picnic"
-slug: "nl110-hanko-midsummer-picnic"
+title: Hanko Midsummer Picnic
+slug: nl110-hanko-midsummer-picnic
 edition: 110
-image: https://storage.sajalchoudhary.net/images/2026/06/nl110-01.jpeg
-created: 2026-06-21T22:35:29+03:00
-updated: 2026-06-21T22:35:29+03:00
+image: 'https://storage.sajalchoudhary.net/images/2026/06/nl110-01.jpeg'
+created: 2026-06-21T19:35:29.000Z
+updated: 2026-06-21T19:35:29.000Z
 category: nordletter
 tags:
   - midsummer
@@ -12,7 +12,10 @@ tags:
   - hanko
   - camping
   - nature
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116789791763209200'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mot4sigt4v2k'
+  - 'https://www.threads.com/@sajal24x7/post/DZ3Ciq2GPUf'
 ---
 Hello from my home in Helsinki! This is NordLetter #110, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
