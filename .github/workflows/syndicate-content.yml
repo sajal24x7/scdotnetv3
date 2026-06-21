@@ -28,6 +28,15 @@ on:
         default: '7'
         type: string
 
+# Serialise all syndication runs globally. When a push and a repository_dispatch
+# both fire for the same commit (Cloudflare deploys after every push), this
+# prevents them from running simultaneously and posting the same content twice.
+# cancel-in-progress: false means the second run waits rather than being dropped,
+# so it still runs — and by then the first run has already saved the URLs.
+concurrency:
+  group: syndication
+  cancel-in-progress: false
+
 jobs:
   syndicate:
     if: github.actor != 'github-actions[bot]'
@@ -111,7 +120,11 @@ jobs:
 
           Co-Authored-By: github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
 
-          # Push changes back to main branch
+          # Rebase on top of any commits landed while this job ran (e.g. from
+          # update-post-dates), then push. Without this, a concurrent workflow
+          # push would cause git push to fail and the syndicationUrls would
+          # never be saved, causing the next run to post duplicates again.
+          git pull --rebase origin main
           git push origin main
 
       - name: Create issue on failure
