@@ -1,15 +1,20 @@
 name: Syndicate Content
 
 on:
-  # Run after successful deployment
+  # Run after successful deployment (full 7-day scan for catch-up)
   repository_dispatch:
     types: [deploy-success]
 
-  # Automatically run on commits to the default branch
+  # Run when new content files are added — only processes the newly added files,
+  # not all posts from the last 7 days. This prevents a post with a failing
+  # platform (e.g. Threads API down) from being retried on every push.
   push:
     branches: [main]
+    paths:
+      - 'src/content/**/*.md'
+      - 'src/content/**/*.mdx'
 
-  # Manual trigger for testing/catch-up
+  # Manual trigger for testing/catch-up (full 7-day scan)
   workflow_dispatch:
     inputs:
       dry_run:
@@ -51,6 +56,21 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
+      - name: Detect new content files
+        if: github.event_name == 'push'
+        run: |
+          git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'src/content/' \
+            | grep -E '\.(md|mdx)$' \
+            | grep -v '^src/content/inbox/' \
+            > /tmp/new_syndication_targets.txt || true
+
+          if [ -s /tmp/new_syndication_targets.txt ]; then
+            echo "New content files to syndicate:"
+            cat /tmp/new_syndication_targets.txt
+          else
+            echo "No new content files added in this push — nothing to syndicate"
+          fi
+
       - name: Run syndication
         env:
           # Mastodon credentials
@@ -68,6 +88,9 @@ jobs:
           # Configuration
           SYNDICATION_DRY_RUN: ${{ github.event.inputs.dry_run || github.event.client_payload.dry_run || 'false' }}
           SYNDICATION_DAYS_BACK: ${{ github.event.inputs.days_back || github.event.client_payload.days_back || '7' }}
+          # On push events, restrict syndication to newly added files only.
+          # Empty for repository_dispatch and workflow_dispatch (full 7-day scan).
+          SYNDICATION_NEW_FILES_PATH: ${{ github.event_name == 'push' && '/tmp/new_syndication_targets.txt' || '' }}
         run: node scripts/syndicate-content.js
 
       - name: Commit syndication updates
