@@ -1,14 +1,17 @@
 ---
-title: "Kunal Shah to Become Global Head of WhatsApp"
-slug: "kunal-shah-to-become-global-head-of-whatsapp"
-created: 2026-06-23T09:54:54+03:00
-updated: 2026-06-23T09:54:54+03:00
+title: Kunal Shah to Become Global Head of WhatsApp
+slug: kunal-shah-to-become-global-head-of-whatsapp
+created: 2026-06-23T06:54:54.000Z
+updated: 2026-06-23T06:54:54.000Z
 category: micro
 tags:
   - whatsapp
   - meta
   - messaging
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116798122425373992'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mowt6syabm2i'
+  - 'https://www.threads.com/@sajal24x7/post/DZ60_jVnAKY'
 ---
 [WhatsApp head Will Cathcart is stepping down after seven years by Emma Roth](https://www.theverge.com/tech/953464/whatsapp-will-cathcart-stepping-down-cred)
 

@@ -1,15 +1,18 @@
 ---
-title: "Extinction Was Discovered"
-slug: "extinction-was-discovered"
-created: 2026-06-23T09:55:39+03:00
-updated: 2026-06-23T09:55:39+03:00
+title: Extinction Was Discovered
+slug: extinction-was-discovered
+created: 2026-06-23T06:55:39.000Z
+updated: 2026-06-23T06:55:39.000Z
 category: evergreen
 tags:
   - extinction
   - science
   - mental-models
   - evolution
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116798121949791914'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mowt6mckm52u'
+  - 'https://www.threads.com/@sajal24x7/post/DZ60-tmHAMG'
 ---
 At a time in the recent past, humanity did not know about extinction - everything seemed to exist in perpetuity. Then came [Cuvier](https://en.wikipedia.org/wiki/Georges_Cuvier), a French naturalist who looked at fossils (which were assumed to belong to humans in some cases, and elephants in other) and said, they were in fact extinct.
 
