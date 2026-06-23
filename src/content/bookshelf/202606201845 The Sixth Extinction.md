@@ -17,6 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116798121382731217'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mowt6eahlu2e'
   - 'https://www.threads.com/@sajal24x7/post/DZ609tunIRg'
+cover: the-sixth-extinction.jpg
 ---
 Started reading.
 
