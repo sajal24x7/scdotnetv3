@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Games | SC"
+  description="Interactive browser games"
+  currentPage="games"
+  pageWrapper={{ container: true, maxWidth: '3xl', padding: 'lg', centered: true }}
+>
+  <div class="games-hub">
+    <h1>Games</h1>
+    <p class="hub-sub">Browser games, no installs.</p>
+
+    <div class="games-list">
+      <a href="/games/cards-29" class="game-entry">
+        <div class="game-icon" aria-hidden="true">🃏</div>
+        <div class="game-meta">
+          <div class="game-name">Game 29</div>
+          <div class="game-desc">The classic South Asian trick-taking card game. Play against computer opponents.</div>
+        </div>
+        <span class="game-go" aria-hidden="true">›</span>
+      </a>
+    </div>
+  </div>
+
+  <style>
+    .games-hub {
+      padding-top: 2rem;
+      padding-bottom: 4rem;
+    }
+
+    h1 { margin-bottom: 0.25rem; }
+
+    .hub-sub {
+      color: rgb(var(--color-text-secondary));
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .games-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border: 1px solid rgb(var(--color-border));
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .game-entry {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1rem;
+      background: rgb(var(--color-bg));
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.12s;
+    }
+    .game-entry:hover {
+      background: rgb(var(--color-bg-secondary));
+    }
+
+    .game-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .game-meta { flex: 1; min-width: 0; }
+
+    .game-name {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .game-desc {
+      font-size: 0.82rem;
+      color: rgb(var(--color-text-secondary));
+      line-height: 1.4;
+    }
+
+    .game-go {
+      font-size: 1.5rem;
+      color: rgb(var(--color-text-secondary));
+      flex-shrink: 0;
+    }
+  </style>
+</Layout>
