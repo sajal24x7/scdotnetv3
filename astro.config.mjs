@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import react from '@astrojs/react';
 import { remarkWikilinks } from './src/utils/remarkWikilinks.ts';
 
 // Converts soft line breaks (single newlines) to <br> nodes, preserving
@@ -46,6 +47,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap(),
+    react(),
   ],
   markdown: {
     remarkPlugins: [remarkWikilinks, remarkBreaks],
