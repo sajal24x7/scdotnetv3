@@ -330,256 +330,327 @@ const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap');
 .g28*,.g28*::before,.g28*::after{box-sizing:border-box;margin:0;padding:0}
 
-/* Root — locked to viewport, no scroll */
+/* Root — full-screen green felt, no inner table */
 .g28{
-  height:100vh; height:100dvh;
-  background:linear-gradient(165deg,#3e2a1a 0%,#2a1a10 45%,#1a0f08 100%);
-  display:flex; flex-direction:column; align-items:center;
+  height:100svh; height:100dvh;
+  background:radial-gradient(ellipse at 50% 35%,#1d6b47 0%,#0f4a32 45%,#062318 100%);
+  display:flex; flex-direction:column;
   font-family:'Inter',system-ui,sans-serif; color:#f3ecd9; overflow:hidden;
-}
-.g28-wrap{
-  width:100%; max-width:440px; height:100%;
-  display:flex; flex-direction:column; gap:6px; padding:10px 12px 10px;
-  overflow:hidden;
+  position:relative;
 }
 
-/* Header */
-.g28-hdr{ display:flex; justify-content:space-between; align-items:center; flex-shrink:0; }
-.g28-title{ font-family:'Fraunces',serif; font-size:28px; font-weight:700; color:#e9d9a0; line-height:1; }
-.g28-subtitle{ font-size:10px; opacity:0.5; margin-top:1px; }
-.g28-hdr-right{ display:flex; gap:5px; align-items:center; }
+/* ── Top bar ── */
+.g28-topbar{
+  display:flex; align-items:center; gap:6px;
+  padding:6px 10px 5px; flex-shrink:0;
+  background:rgba(0,0,0,0.32); border-bottom:1px solid rgba(201,162,39,0.18);
+}
+.g28-team-score{ display:flex; flex-direction:column; gap:3px; flex:1; min-width:0; }
+.g28-team-score.right{ align-items:flex-end; }
+.g28-topname{
+  font-size:10px; opacity:0.72; white-space:nowrap;
+  overflow:hidden; text-overflow:ellipsis; max-width:100%;
+}
+.g28-sdots{ display:flex; gap:3px; }
+.g28-sdot{
+  width:7px; height:7px; border-radius:50%;
+  border:1px solid rgba(201,162,39,0.45); display:inline-block; flex-shrink:0;
+}
+.g28-sdot.on{ background:#c9a227; border-color:#c9a227; }
+
+.g28-trump-chip{
+  display:flex; flex-direction:column; align-items:center; gap:1px;
+  flex-shrink:0; padding:0 4px; min-width:44px;
+}
+.g28-trump-sym{ font-size:20px; line-height:1; }
+.g28-trump-lbl{ font-size:8px; opacity:0.45; letter-spacing:0.3px; text-transform:uppercase; }
+
+.g28-topbtns{ display:flex; gap:4px; align-items:center; flex-shrink:0; }
 .g28-tbtn{
-  font-family:'Inter',sans-serif; font-size:10px; padding:4px 9px; border-radius:99px;
-  border:1px solid rgba(201,162,39,0.5); background:transparent; color:#e9d9a0; cursor:pointer;
+  font-size:11px; padding:4px 8px; border-radius:6px;
+  border:1px solid rgba(201,162,39,0.35); background:transparent;
+  color:#e9d9a0; cursor:pointer; font-family:'Inter',sans-serif; line-height:1;
 }
-.g28-tbtn.dim{ color:rgba(243,236,217,0.38); }
-.g28-tbtn:hover{ opacity:0.75; }
+.g28-tbtn.dim{ opacity:0.35; }
+.g28-tbtn:hover{ background:rgba(201,162,39,0.1); }
 
-/* Score bar */
-.g28-score{ display:flex; justify-content:space-between; align-items:flex-start; flex-shrink:0; gap:6px; }
-.g28-team{ display:flex; flex-direction:column; align-items:center; gap:3px; min-width:100px; }
-.g28-tname{ font-size:10px; opacity:0.75; text-align:center; line-height:1.3; }
-.g28-badges{ display:flex; gap:4px; }
-.g28-badge{ display:flex; flex-direction:column; align-items:center; gap:2px; }
-.g28-badge-card{
-  width:22px; height:32px; border-radius:3px; background:#fbf6e9;
-  border:1.5px solid currentColor; display:flex; flex-direction:column;
-  align-items:center; justify-content:center; gap:0; line-height:1;
-}
-.g28-b6{ font-size:10px; font-weight:700; }
-.g28-bsym{ font-size:11px; }
-.g28-pips{ display:flex; gap:2px; }
-.g28-pip{ width:4px; height:4px; border-radius:50%; border:1px solid currentColor; }
-.g28-pip.on{ background:currentColor; }
-
-.g28-trump-mid{ display:flex; flex-direction:column; align-items:center; gap:2px; padding-top:2px; }
-.g28-trump-lbl{ font-size:9px; opacity:0.55; }
-.g28-trump-val{ font-size:12px; font-weight:600; text-align:center; line-height:1.25; }
-
-/* Table */
-.g28-table{
-  position:relative; border-radius:14px; flex-shrink:0;
-  border:2px solid rgba(201,162,39,0.5);
-  background:radial-gradient(ellipse at center,#15543f 0%,#0d3a2b 65%,#082417 100%);
-  box-shadow:inset 0 0 32px rgba(0,0,0,0.5); overflow:hidden;
-  display:flex; flex-direction:column; gap:6px; padding:8px 10px;
-}
-.g28-cnr{ position:absolute; font-size:8px; color:rgba(201,162,39,0.35); letter-spacing:2px; }
-.g28-cnr.tl{ top:5px; left:7px; } .g28-cnr.tr{ top:5px; right:7px; }
-.g28-cnr.bl{ bottom:5px; left:7px; } .g28-cnr.br{ bottom:5px; right:7px; }
-
-/* Partner row (top of table) */
-.g28-partner-row{ display:flex; align-items:center; justify-content:center; gap:8px; }
-.g28-pip-name{ font-size:10px; opacity:0.7; white-space:nowrap; max-width:80px; overflow:hidden; text-overflow:ellipsis; }
-.g28-pip-lbl{ font-size:9px; opacity:0.4; }
-.g28-card-fan{
-  display:flex; gap:-4px; /* overlapping */
-}
-.g28-fan-card{
-  width:14px; height:20px; border-radius:2px; background:#0f3d2e; border:1px solid #c9a227;
-  flex-shrink:0;
-}
-.g28-fan-card:not(:first-child){ margin-left:-5px; }
-.g28-count-badge{
-  font-size:10px; font-weight:600; color:rgba(201,162,39,0.8);
-  min-width:16px; text-align:center;
+/* ── Arena — fills all space between topbar and hand dock ── */
+.g28-arena{
+  flex:1; min-height:0; display:flex; flex-direction:column;
+  padding:6px 10px 4px; gap:0; position:relative; overflow:hidden;
 }
 
-/* Middle row */
-.g28-mid{ display:flex; align-items:center; gap:4px; }
-.g28-opp{ display:flex; flex-direction:column; align-items:center; gap:3px; width:36px; flex-shrink:0; }
-.g28-opp-name{ font-size:9px; opacity:0.65; text-align:center; white-space:nowrap; overflow:hidden; max-width:36px; text-overflow:ellipsis; }
+/* Partner strip at top of arena */
+.g28-partner-strip{
+  display:flex; align-items:center; justify-content:center; gap:7px;
+  flex-shrink:0; padding:4px 0 6px;
+}
+.g28-pname{ font-size:11px; opacity:0.8; }
+.g28-ptag{ font-size:9px; opacity:0.38; }
 
-/* Trick area — absolute diamond layout */
-.g28-trick{
-  flex:1; min-width:0; position:relative; aspect-ratio:1;
-  max-width:160px; margin:0 auto;
+/* Center row: left-opp | trick | right-opp */
+.g28-center-row{
+  flex:1; min-height:0; display:flex; align-items:center; gap:4px;
 }
-.g28-tslot{
-  position:absolute; display:flex; flex-direction:column; align-items:center; gap:2px;
+
+/* Opponent side chips */
+.g28-opp-chip{
+  width:40px; flex-shrink:0; display:flex; flex-direction:column;
+  align-items:center; gap:4px;
 }
-.g28-tslot.top { left:50%; top:0; transform:translateX(-50%); }
-.g28-tslot.bot { left:50%; bottom:0; transform:translateX(-50%); }
-.g28-tslot.left { left:0; top:50%; transform:translateY(-50%); }
-.g28-tslot.right { right:0; top:50%; transform:translateY(-50%); }
-.g28-tcenter{
+.g28-oppname{
+  font-size:9px; opacity:0.7; text-align:center;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:40px;
+}
+.g28-oppturn{ font-size:10px; line-height:1; }
+
+/* Trick field — the open felt in the center */
+.g28-trick-field{
+  flex:1; min-width:0; min-height:0; position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* Subtle center marker */
+.g28-felt-mark{
   position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  font-size:16px; color:rgba(201,162,39,0.2); pointer-events:none;
+  width:48px; height:48px; border-radius:50%;
+  border:1px solid rgba(255,255,255,0.05);
+  pointer-events:none;
 }
-.g28-tname{ font-size:9px; color:rgba(243,236,217,0.38); }
-.g28-tname.played{ color:#e9d9a0; }
 
-/* Points row */
-.g28-pts{ display:flex; justify-content:center; gap:12px; font-size:9px; opacity:0.7; min-height:12px; }
-
-/* Banner */
-.g28-banner-wrap{
-  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-  pointer-events:none; z-index:30;
+/* Trick card slots — absolute diamond */
+.g28-tslot{
+  position:absolute; display:flex; flex-direction:column; align-items:center; gap:3px;
 }
-.g28-banner{
-  padding:9px 20px; border-radius:9px; border:1px solid #c9a227;
-  box-shadow:0 6px 20px rgba(0,0,0,0.5); text-align:center;
-}
-.g28-banner-txt{ font-family:'Fraunces',serif; font-size:17px; font-weight:700; color:#e9d9a0; }
+.g28-tslot.top{ top:6px; left:50%; transform:translateX(-50%); }
+.g28-tslot.bot{ bottom:6px; left:50%; transform:translateX(-50%); }
+.g28-tslot.lft{ left:6px; top:50%; transform:translateY(-50%); }
+.g28-tslot.rgt{ right:6px; top:50%; transform:translateY(-50%); }
+.g28-tsname{ font-size:8px; color:rgba(243,236,217,0.3); line-height:1; }
+.g28-tsname.played{ color:rgba(243,236,217,0.7); }
 
-/* Controls section */
-.g28-ctrl{ flex:1; min-height:0; display:flex; flex-direction:column; gap:6px; overflow:hidden; }
-.g28-panel{ border-radius:9px; padding:10px; background:rgba(0,0,0,0.35); display:flex; flex-direction:column; gap:8px; flex-shrink:0; }
-.g28-panel-lbl{ font-size:11px; opacity:0.65; }
-.g28-row{ display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
+/* Points overlay — very subtle, center of felt */
+.g28-pts-overlay{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  font-size:8px; opacity:0.28; text-align:center; line-height:1.6;
+  pointer-events:none; white-space:nowrap;
+}
+
+/* Action zone — between trick area and hand dock */
+.g28-action{
+  flex-shrink:0; display:flex; flex-direction:column; gap:5px; padding-top:4px;
+}
+
+/* Panel (bid, trump picker) */
+.g28-panel{
+  border-radius:10px; padding:9px 11px;
+  background:rgba(0,0,0,0.42); border:1px solid rgba(201,162,39,0.18);
+  display:flex; flex-direction:column; gap:7px;
+}
+.g28-panel-lbl{ font-size:11px; opacity:0.58; }
+.g28-btn-row{ display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
+.g28-suit-row{ display:flex; gap:10px; justify-content:center; }
 
 /* Buttons */
 .g28-btn{
   font-family:'Inter',sans-serif; font-size:13px; font-weight:500;
-  padding:8px 14px; border-radius:7px; border:none; cursor:pointer;
-  transition:opacity 0.12s,transform 0.1s;
+  padding:8px 14px; border-radius:8px; border:none; cursor:pointer;
+  transition:opacity 0.12s,transform 0.1s; line-height:1;
 }
-.g28-btn:hover{ opacity:0.85; }
-.g28-btn:active{ transform:scale(0.96); }
-.g28-btn:disabled{ opacity:0.32; cursor:default; }
-.g28-btn.gold{ background:#c9a227; color:#1c1f1d; font-weight:600; }
-.g28-btn.ghost{ background:transparent; color:#f3ecd9; border:1px solid rgba(243,236,217,0.4); }
+.g28-btn:hover{ opacity:0.82; }
+.g28-btn:active{ transform:scale(0.95); }
+.g28-btn:disabled{ opacity:0.28; cursor:default; }
+.g28-btn.gold{ background:#c9a227; color:#1c1209; font-weight:600; }
+.g28-btn.ghost{ background:transparent; color:#f3ecd9; border:1px solid rgba(243,236,217,0.32); }
 .g28-btn.red{ background:#9a2b3a; color:#f3ecd9; }
 .g28-btn.full{ width:100%; text-align:center; padding:11px; font-size:14px; font-weight:600; }
-.g28-suit-row{ display:flex; gap:8px; justify-content:center; }
+.g28-btn.sm{ font-size:11px; padding:5px 10px; }
+
 .g28-suit-btn{
-  width:50px; height:50px; border-radius:9px; border:none; background:#fbf6e9;
-  font-size:26px; cursor:pointer; display:flex; align-items:center; justify-content:center;
-  transition:transform 0.1s;
+  width:54px; height:54px; border-radius:10px; border:none; background:#fbf6e9;
+  font-size:30px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:transform 0.12s; box-shadow:0 3px 10px rgba(0,0,0,0.35);
 }
-.g28-suit-btn:hover{ transform:scale(1.1); }
+.g28-suit-btn:hover{ transform:scale(1.1) translateY(-2px); }
+.g28-suit-btn:active{ transform:scale(0.96); }
 
 /* Move tip */
 .g28-tip{
-  padding:7px 10px; border-radius:7px; font-size:11px; line-height:1.5; flex-shrink:0;
-  background:rgba(201,162,39,0.13); border:1px solid rgba(201,162,39,0.4); color:#e9d9a0;
+  padding:7px 10px; border-radius:8px; font-size:11px; line-height:1.5;
+  background:rgba(201,162,39,0.12); border:1px solid rgba(201,162,39,0.32); color:#e9d9a0;
 }
-
-/* Hand */
-.g28-hand{ display:flex; flex-direction:column; gap:5px; flex-shrink:0; }
-.g28-hand-hdr{ display:flex; justify-content:space-between; align-items:center; }
-.g28-hand-lbl{ font-size:10px; opacity:0.55; }
-.g28-hand-row{ display:flex; gap:5px; justify-content:center; flex-wrap:nowrap; }
-
-/* Cards */
-.g28-card{
-  position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center;
-  border-radius:5px; border:1.5px solid #3a2a1a; background:#fbf6e9;
-  box-shadow:0 1px 3px rgba(0,0,0,0.25); user-select:none; flex-shrink:0;
-  transition:transform 0.1s,box-shadow 0.1s;
-}
-.g28-card.play{ cursor:pointer; border-color:#c9a227; box-shadow:0 0 0 2px #c9a227; }
-.g28-card.play:hover{ transform:translateY(-5px); box-shadow:0 0 0 2px #c9a227,0 5px 12px rgba(0,0,0,0.35); }
-.g28-card.dim{ opacity:0.28; }
-.g28-card.waiting{ opacity:0.6; }
-.g28-tdot{ position:absolute; top:2px; right:2px; width:5px; height:5px; border-radius:50%; background:#c9a227; }
-.g28-crank{ font-weight:700; line-height:1; }
-.g28-csym{ line-height:1; }
-
-/* Card back (trick area) */
-.g28-cback{
-  border-radius:3px; background:#0f3d2e; border:1px solid #c9a227;
-  display:flex; align-items:center; justify-content:center; flex-shrink:0;
-}
-.g28-cback-in{ width:65%; height:65%; border:1px solid rgba(201,162,39,0.4); border-radius:2px; }
 
 /* Result panel */
-.g28-result{ border-radius:9px; padding:11px; display:flex; flex-direction:column; gap:5px; background:rgba(0,0,0,0.35); }
-.g28-result.win{ background:rgba(201,162,39,0.14); border:1px solid rgba(201,162,39,0.4); }
-.g28-res-big{ font-family:'Fraunces',serif; font-size:16px; color:#e9d9a0; }
-.g28-res-row{ font-size:12px; opacity:0.8; }
-.g28-res-winner{ font-size:13px; font-weight:600; color:#e9d9a0; }
-.g28-res-tips{ font-size:10px; padding:7px 9px; border-radius:6px; background:rgba(0,0,0,0.22); line-height:1.5; }
-.g28-res-tips ul{ padding-left:14px; margin-top:3px; }
+.g28-result{
+  border-radius:10px; padding:10px 11px;
+  background:rgba(0,0,0,0.4); border:1px solid rgba(201,162,39,0.18);
+  display:flex; flex-direction:column; gap:5px;
+}
+.g28-result.win{ background:rgba(201,162,39,0.1); border-color:rgba(201,162,39,0.45); }
+.g28-res-big{ font-family:'Fraunces',serif; font-size:15px; color:#e9d9a0; }
+.g28-res-row{ font-size:11px; opacity:0.72; }
+.g28-res-winner{ font-size:12px; font-weight:600; color:#e9d9a0; }
+.g28-res-tips{ font-size:10px; padding:6px 8px; border-radius:6px; background:rgba(0,0,0,0.22); line-height:1.55; }
+.g28-res-tips ul{ padding-left:14px; margin-top:2px; }
 .g28-res-tips li{ margin-bottom:2px; opacity:0.85; }
 
-/* Log */
-.g28-log{ display:flex; flex-direction:column; gap:1px; font-size:9px; opacity:0.38; padding:0 2px; flex-shrink:0; }
+/* Waiting text */
+.g28-waiting{ font-size:11px; opacity:0.38; text-align:center; padding:3px 0; }
 
-/* Start screen */
-.g28-start{ display:flex; flex-direction:column; gap:12px; }
-.g28-start-title{ font-family:'Fraunces',serif; font-size:22px; color:#e9d9a0; }
-.g28-start-sub{ font-size:12px; opacity:0.6; line-height:1.5; }
-.g28-start-field{ display:flex; flex-direction:column; gap:5px; }
-.g28-start-lbl{ font-size:11px; opacity:0.55; }
+/* Log */
+.g28-log{ font-size:9px; opacity:0.3; line-height:1.55; }
+
+/* ── Hand dock — pinned to bottom ── */
+.g28-hand-dock{
+  flex-shrink:0; padding:7px 10px 10px;
+  background:rgba(0,0,0,0.3); border-top:1px solid rgba(201,162,39,0.15);
+}
+.g28-hand-hdr{
+  display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;
+}
+.g28-hand-lbl{ font-size:10px; opacity:0.45; }
+.g28-hand-row{ display:flex; gap:5px; justify-content:center; flex-wrap:nowrap; }
+
+/* ── Cards ── */
+/* Player's hand cards — scale with viewport */
+.g28-card{
+  position:relative; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  border-radius:6px; background:#fbf6e9;
+  border:1.5px solid #ccc;
+  box-shadow:0 2px 5px rgba(0,0,0,0.32); user-select:none; flex-shrink:0;
+  transition:transform 0.12s,box-shadow 0.12s;
+  width:clamp(36px,10vw,50px); height:clamp(52px,14.5vw,72px);
+  cursor:default;
+}
+.g28-card.play{
+  border-color:#c9a227; box-shadow:0 0 0 2px #c9a227,0 2px 5px rgba(0,0,0,0.32); cursor:pointer;
+}
+.g28-card.play:hover{
+  transform:translateY(-7px);
+  box-shadow:0 0 0 2px #c9a227,0 8px 16px rgba(0,0,0,0.4);
+}
+.g28-card.play:active{ transform:translateY(-3px) scale(0.97); }
+.g28-card.dim{ opacity:0.22; }
+.g28-card.waiting{ opacity:0.5; }
+.g28-tdot{ position:absolute; top:3px; right:3px; width:5px; height:5px; border-radius:50%; background:#c9a227; }
+.g28-crank{ font-weight:700; line-height:1; font-size:clamp(11px,3.2vw,15px); }
+.g28-csym{ line-height:1; font-size:clamp(13px,3.8vw,19px); }
+
+/* Trick-area cards (smaller) */
+.g28-tcard{
+  border-radius:5px; background:#fbf6e9;
+  border:1.5px solid #ccc;
+  box-shadow:0 3px 8px rgba(0,0,0,0.4);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  width:clamp(28px,7.5vw,38px); height:clamp(40px,10.8vw,54px);
+  flex-shrink:0;
+}
+.g28-trank{ font-weight:700; line-height:1; font-size:clamp(10px,2.6vw,13px); }
+.g28-tsym{ line-height:1; font-size:clamp(11px,3vw,15px); }
+
+/* Empty trick slot */
+.g28-tempty{
+  border-radius:5px; border:1px dashed rgba(255,255,255,0.1);
+  width:clamp(28px,7.5vw,38px); height:clamp(40px,10.8vw,54px);
+}
+
+/* Fan card backs (for opponent hand count) */
+.g28-fan-card{
+  width:12px; height:18px; border-radius:2px;
+  background:linear-gradient(145deg,#0f4a32,#083020);
+  border:1px solid rgba(201,162,39,0.55);
+  flex-shrink:0;
+}
+
+/* ── Start / Resume overlay ── */
+.g28-overlay{
+  position:absolute; inset:0; display:flex;
+  align-items:center; justify-content:center; padding:20px; z-index:10;
+}
+.g28-overlay-box{
+  width:100%; max-width:340px;
+  background:rgba(6,28,18,0.96); border:1px solid rgba(201,162,39,0.4);
+  border-radius:14px; padding:22px 18px;
+  display:flex; flex-direction:column; gap:14px;
+  box-shadow:0 16px 48px rgba(0,0,0,0.6);
+}
+.g28-start-title{ font-family:'Fraunces',serif; font-size:28px; color:#e9d9a0; }
+.g28-start-sub{ font-size:12px; opacity:0.58; line-height:1.65; }
+.g28-field{ display:flex; flex-direction:column; gap:5px; }
+.g28-field-lbl{ font-size:11px; opacity:0.52; }
 .g28-input{
-  font-family:'Inter',sans-serif; font-size:15px; padding:9px 12px; border-radius:7px;
-  border:1px solid rgba(201,162,39,0.5); background:rgba(255,255,255,0.07); color:#f3ecd9; outline:none;
+  font-family:'Inter',sans-serif; font-size:15px; padding:10px 12px;
+  border-radius:8px; border:1px solid rgba(201,162,39,0.45);
+  background:rgba(255,255,255,0.07); color:#f3ecd9; outline:none;
 }
 .g28-input:focus{ border-color:#c9a227; background:rgba(255,255,255,0.1); }
-.g28-input::placeholder{ color:rgba(243,236,217,0.28); }
-.g28-resume{ display:flex; flex-direction:column; gap:8px; }
-.g28-resume-greet{ font-size:13px; opacity:0.75; }
+.g28-input::placeholder{ color:rgba(243,236,217,0.25); }
+.g28-resume-greet{ font-size:13px; opacity:0.72; line-height:1.5; }
 
-/* Rules panel */
-.g28-rules{ border-radius:9px; padding:10px 12px; font-size:10px; line-height:1.65; background:rgba(12,53,39,0.88); border:1px solid rgba(201,162,39,0.3); flex-shrink:0; overflow-y:auto; }
-.g28-rules p{ margin-bottom:5px; }
+/* ── Rules overlay ── */
+.g28-rules-overlay{
+  position:absolute; inset:0; z-index:20;
+  background:rgba(6,28,18,0.97); padding:16px;
+  display:flex; flex-direction:column; gap:10px; overflow-y:auto;
+}
+.g28-rules-title{ font-family:'Fraunces',serif; font-size:18px; color:#e9d9a0; flex-shrink:0; }
+.g28-rules-body{ font-size:12px; line-height:1.7; opacity:0.82; }
+.g28-rules-body p{ margin-bottom:6px; }
 
-/* Animations */
-@keyframes g28-popT{from{transform:translateX(-50%) translateY(-14px) scale(0.78);opacity:0}to{transform:translateX(-50%) translateY(0) scale(1);opacity:1}}
-@keyframes g28-popB{from{transform:translateX(-50%) translateY(14px) scale(0.78);opacity:0}to{transform:translateX(-50%) translateY(0) scale(1);opacity:1}}
-@keyframes g28-popL{from{transform:translateY(-50%) translateX(-14px) scale(0.78);opacity:0}to{transform:translateY(-50%) translateX(0) scale(1);opacity:1}}
-@keyframes g28-popR{from{transform:translateY(-50%) translateX(14px) scale(0.78);opacity:0}to{transform:translateY(-50%) translateX(0) scale(1);opacity:1}}
-@keyframes g28-pop{from{transform:scale(0.7) translateY(6px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
-.g28-aT{animation:g28-popT .28s ease-out}
-.g28-aB{animation:g28-popB .28s ease-out}
-.g28-aL{animation:g28-popL .28s ease-out}
-.g28-aR{animation:g28-popR .28s ease-out}
-.g28-ap{animation:g28-pop .22s ease-out}
+/* ── Banner ── */
+.g28-banner-wrap{
+  position:absolute; inset:0; display:flex;
+  align-items:center; justify-content:center;
+  pointer-events:none; z-index:15;
+}
+.g28-banner{
+  padding:10px 22px; border-radius:10px; border:1px solid #c9a227;
+  box-shadow:0 6px 24px rgba(0,0,0,0.5); text-align:center;
+}
+.g28-banner-txt{ font-family:'Fraunces',serif; font-size:18px; font-weight:700; color:#e9d9a0; }
+
+/* ── Animations ── */
+@keyframes g28-popT{from{transform:translateX(-50%) translateY(-12px) scale(0.82);opacity:0}to{transform:translateX(-50%) translateY(0) scale(1);opacity:1}}
+@keyframes g28-popB{from{transform:translateX(-50%) translateY(12px) scale(0.82);opacity:0}to{transform:translateX(-50%) translateY(0) scale(1);opacity:1}}
+@keyframes g28-popL{from{transform:translateY(-50%) translateX(-12px) scale(0.82);opacity:0}to{transform:translateY(-50%) translateX(0) scale(1);opacity:1}}
+@keyframes g28-popR{from{transform:translateY(-50%) translateX(12px) scale(0.82);opacity:0}to{transform:translateY(-50%) translateX(0) scale(1);opacity:1}}
+.g28-aT{animation:g28-popT .24s ease-out}
+.g28-aB{animation:g28-popB .24s ease-out}
+.g28-aL{animation:g28-popL .24s ease-out}
+.g28-aR{animation:g28-popR .24s ease-out}
 
 @keyframes g28-bnr{
-  0%{opacity:0;transform:translateY(8px) scale(0.85)}
-  12%{opacity:1;transform:translateY(0) scale(1)}
-  80%{opacity:1;transform:translateY(0) scale(1)}
-  100%{opacity:0;transform:translateY(-5px) scale(0.95)}
+  0%{opacity:0;transform:translateY(10px) scale(0.84)}
+  12%{opacity:1;transform:none}
+  80%{opacity:1;transform:none}
+  100%{opacity:0;transform:translateY(-6px) scale(0.95)}
 }
 .g28-bnr-anim{animation:g28-bnr 1.6s ease-in-out forwards}
 
 @keyframes g28-tip{
-  0%{opacity:0;transform:translateY(4px)}8%{opacity:1;transform:translateY(0)}
-  88%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-3px)}
+  0%{opacity:0;transform:translateY(4px)}
+  8%{opacity:1;transform:none}
+  88%{opacity:1}
+  100%{opacity:0;transform:translateY(-3px)}
 }
 .g28-tip-anim{animation:g28-tip 3.2s ease-in-out forwards}
 `;
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
-/** Small fanned stack to represent a player's hidden hand */
 function HandPip({ count }: { count: number }) {
-  if (count === 0) return <span style={{ fontSize: 9, opacity: 0.4 }}>done</span>;
+  if (count === 0) return <span style={{ fontSize: 8, opacity: 0.3 }}>done</span>;
   const n = Math.min(count, 5);
   return (
-    <div style={{ display: "flex", alignItems: "flex-end", gap: 0, position: "relative", height: 22, width: 8 + n * 7 }}>
+    <div style={{ position: "relative", height: 20, width: 8 + n * 7, flexShrink: 0 }}>
       {Array.from({ length: n }).map((_, i) => (
         <div
           key={i}
           className="g28-fan-card"
           style={{
-            position: "absolute",
-            left: i * 7,
-            bottom: 0,
-            transform: `rotate(${(i - (n - 1) / 2) * 8}deg)`,
+            position: "absolute", left: i * 7, bottom: 0,
+            transform: `rotate(${(i - (n - 1) / 2) * 9}deg)`,
             transformOrigin: "bottom center",
           }}
         />
@@ -588,72 +659,62 @@ function HandPip({ count }: { count: number }) {
   );
 }
 
-/** Card rendered in the trick area (small) */
-function TrickCard({ card, dir }: { card: Card; dir: "top" | "bot" | "left" | "right" }) {
+function TrickCard({ card, dir }: { card: Card; dir: "top" | "bot" | "lft" | "rgt" }) {
   const info = SUIT_INFO[card.suit];
-  const animCls = { top: "g28-aT", bot: "g28-aB", left: "g28-aL", right: "g28-aR" }[dir];
+  const animCls = { top: "g28-aT", bot: "g28-aB", lft: "g28-aL", rgt: "g28-aR" }[dir];
   return (
-    <div className={`g28-card ${animCls}`} style={{ width: 30, height: 42, border: "none" }}>
-      <span className="g28-crank" style={{ color: info.color, fontSize: 12 }}>{card.rank}</span>
-      <span className="g28-csym" style={{ color: info.color, fontSize: 14 }}>{info.sym}</span>
+    <div className={`g28-tcard ${animCls}`}>
+      <span className="g28-trank" style={{ color: info.color }}>{card.rank}</span>
+      <span className="g28-tsym" style={{ color: info.color }}>{info.sym}</span>
     </div>
   );
 }
 
-/** Card in the player's hand (tappable) */
 function HandCard({ card, playable, faded, isTrump, onClick }: {
   card: Card; playable?: boolean; faded?: boolean; isTrump?: boolean; onClick?: () => void;
 }) {
   const info = SUIT_INFO[card.suit];
+  const cls = playable ? "play" : faded ? "dim" : "waiting";
   return (
     <button
       onClick={onClick}
       disabled={!onClick}
-      className={`g28-card${playable ? " play" : faded ? " dim" : !playable && !faded ? " waiting" : ""}`}
-      style={{ width: 42, height: 60, border: "none" }}
+      className={`g28-card ${cls}`}
+      style={{ border: "none" }}
     >
       {isTrump && <span className="g28-tdot" />}
-      <span className="g28-crank" style={{ color: info.color, fontSize: 14 }}>{card.rank}</span>
-      <span className="g28-csym" style={{ color: info.color, fontSize: 18 }}>{info.sym}</span>
+      <span className="g28-crank" style={{ color: info.color }}>{card.rank}</span>
+      <span className="g28-csym" style={{ color: info.color }}>{info.sym}</span>
     </button>
   );
 }
 
-function SixBadge({ filled, color, sym }: { filled: number; color: string; sym: string }) {
+function ScoreDots({ filled }: { filled: number }) {
   return (
-    <div className="g28-badge" style={{ color }}>
-      <div className="g28-badge-card">
-        <span className="g28-b6">6</span>
-        <span className="g28-bsym">{sym}</span>
-      </div>
-      <div className="g28-pips">
-        {Array.from({ length: MATCH_TARGET }).map((_, i) => (
-          <span key={i} className={`g28-pip${i < filled ? " on" : ""}`} />
-        ))}
-      </div>
+    <div className="g28-sdots">
+      {Array.from({ length: MATCH_TARGET }).map((_, i) => (
+        <span key={i} className={`g28-sdot${i < filled ? " on" : ""}`} />
+      ))}
     </div>
   );
 }
 
-/** Simplified start screen — just your name */
 function StartScreen({ savedName, onStart }: { savedName?: string; onStart: (names: string[]) => void }) {
   const [name, setName] = useState(savedName || "");
-
   function go(n = name) {
     const you = n.trim() || "You";
     const [partner] = pickN(PARTNER_POOL, 1);
     const [o1, o2] = pickN(OPP_POOL, 2);
     onStart([you, o1, partner, o2]);
   }
-
   return (
-    <div className="g28-start">
+    <>
       <div>
         <h2 className="g28-start-title">28</h2>
-        <p className="g28-start-sub">A trick-taking card game for two pairs.<br />J=3, 9=2, A=1, 10=1 — first to {MATCH_TARGET} wins.</p>
+        <p className="g28-start-sub">South Indian trick-taking for two pairs.<br />J=3, 9=2, A=1, 10=1 · first to {MATCH_TARGET} wins.</p>
       </div>
-      <div className="g28-start-field">
-        <label className="g28-start-lbl">Your name</label>
+      <div className="g28-field">
+        <label className="g28-field-lbl">Your name</label>
         <input
           className="g28-input"
           value={name}
@@ -665,18 +726,17 @@ function StartScreen({ savedName, onStart }: { savedName?: string; onStart: (nam
         />
       </div>
       <button className="g28-btn gold full" onClick={() => go()}>Deal Cards →</button>
-    </div>
+    </>
   );
 }
 
-/** Resume prompt when there's a saved in-progress game */
 function ResumeScreen({ name, onResume, onNew }: { name: string; onResume: () => void; onNew: () => void }) {
   return (
-    <div className="g28-resume">
-      <p className="g28-resume-greet">Welcome back, <strong>{name}</strong> — your game is saved.</p>
+    <>
+      <p className="g28-resume-greet">Welcome back, <strong>{name}</strong>.<br />Your game is saved.</p>
       <button className="g28-btn gold full" onClick={onResume}>Continue Game →</button>
-      <button className="g28-btn ghost full" style={{ fontSize: 12, padding: "7px" }} onClick={onNew}>Start a new game instead</button>
-    </div>
+      <button className="g28-btn ghost full" style={{ fontSize: 12, padding: "8px" }} onClick={onNew}>Start new game</button>
+    </>
   );
 }
 
@@ -684,7 +744,6 @@ function ResumeScreen({ name, onResume, onNew }: { name: string; onResume: () =>
 export default function TwentyEight() {
   const [state, dispatch] = useReducer(reducer, INIT, loadState);
   const [showRules, setShowRules] = useState(false);
-  // If we loaded a non-start saved state, show resume prompt first
   const [resuming, setResuming] = useState(() => {
     const s = loadState(INIT);
     return s.phase !== "start" && s.phase !== undefined;
@@ -692,12 +751,13 @@ export default function TwentyEight() {
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   useEffect(() => () => timers.current.forEach(clearTimeout), []);
-  const after = (ms: number, fn: () => void) => { const id = setTimeout(fn, ms); timers.current.push(id); };
+  const after = (ms: number, fn: () => void) => {
+    const id = setTimeout(fn, ms);
+    timers.current.push(id);
+  };
 
-  // Persist every state change
   useEffect(() => { if (state.phase !== "start") saveState(state); }, [state]);
 
-  // AI effects
   useEffect(() => {
     if (state.phase === "bidding" && state.bidTurn !== 0 && !state.passed[state.bidTurn])
       after(850, () => dispatch({ type: "AI_BID", playerIdx: state.bidTurn }));
@@ -715,205 +775,213 @@ export default function TwentyEight() {
       after(1400, () => dispatch({ type: "CLEAR_TRICK" }));
   }, [state.trick.length, state.phase]);
   useEffect(() => {
-    if (state.banner) { const id = state.banner.id; after(1600, () => dispatch({ type: "CLEAR_BANNER", id })); }
+    if (state.banner) {
+      const id = state.banner.id;
+      after(1600, () => dispatch({ type: "CLEAR_BANNER", id }));
+    }
   }, [state.banner]);
   useEffect(() => {
-    if (state.moveTip) { const id = state.moveTip.id; after(3200, () => dispatch({ type: "CLEAR_MOVE_TIP", id })); }
+    if (state.moveTip) {
+      const id = state.moveTip.id;
+      after(3200, () => dispatch({ type: "CLEAR_MOVE_TIP", id }));
+    }
   }, [state.moveTip]);
 
+  const { names, handsWon, teamPoints, trumpSuit: ts, trumpRevealed, caller } = state;
   const hand = sortHand(state.hands[0] || []);
   const mustFollow = !!(state.leadSuit && hand.some((c) => c.suit === state.leadSuit));
   const isLegal = (c: Card) => !mustFollow || c.suit === state.leadSuit;
   const userTurn = state.phase === "playing" && state.turn === 0 && state.trick.length < 4;
-  const trumpKnown = state.caller === 0 || state.trumpRevealed;
+  const trumpKnown = caller === 0 || trumpRevealed;
   const voidInLead = !!(state.leadSuit && !hand.some((c) => c.suit === state.leadSuit));
-  const callerTeam = state.caller === null ? null : state.caller % 2;
-  const teams = tl(state.names);
-  const ts = state.trumpSuit;
-  const trumpColor = ts ? (SUIT_INFO[ts].color === "#9a2b3a" ? "#e07a8b" : "#c9d4a0") : "#e9d9a0";
+  const callerTeam = caller === null ? null : caller % 2;
+  const teams = tl(names);
+  const trumpColor = ts ? (SUIT_INFO[ts].color === "#9a2b3a" ? "#e07a8b" : "#b8d4a0") : "#e9d9a0";
   const seat = (idx: number) => state.trick.find((t) => t.player === idx);
   const inGame = state.phase !== "start";
-  const showHand = (state.phase === "playing" || state.phase === "bidding" || state.phase === "choose-trump") && hand.length > 0;
+  const showHand = ["playing", "bidding", "choose-trump"].includes(state.phase) && hand.length > 0;
+
+  function resetGame() {
+    dispatch({ type: "RESET" });
+    setResuming(false);
+    localStorage.removeItem(SAVE_KEY);
+  }
+
+  // Trick slot direction → player index mapping: top=partner(2), bot=you(0), lft=opp1(1), rgt=opp3(3)
+  const DIRS = ["top", "bot", "lft", "rgt"] as const;
+  const DIR_PLAYER = [2, 0, 1, 3];
 
   return (
     <div className="g28">
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <div className="g28-wrap">
 
-        {/* ── Header ── */}
-        <div className="g28-hdr">
-          <div>
-            <div className="g28-title">28</div>
-            {inGame && <div className="g28-subtitle">{state.names[0]} & {state.names[2]} vs {state.names[1]} & {state.names[3]}</div>}
+      {/* ── Top bar ── */}
+      {inGame && (
+        <div className="g28-topbar">
+          <div className="g28-team-score">
+            <span className="g28-topname">{names[0]} & {names[2]}</span>
+            <ScoreDots filled={Math.min(MATCH_TARGET, handsWon[0])} />
           </div>
-          <div className="g28-hdr-right">
-            {inGame && (
-              <button className="g28-tbtn" onClick={() => { dispatch({ type: "RESET" }); setResuming(false); localStorage.removeItem(SAVE_KEY); }}>
-                New
-              </button>
-            )}
-            <button className="g28-tbtn" onClick={() => setShowRules((v) => !v)}>
-              {showRules ? "✕" : "Rules"}
-            </button>
-            <button className={`g28-tbtn${state.feedbackOn ? "" : " dim"}`} onClick={() => dispatch({ type: "TOGGLE_FEEDBACK" })}>
-              Tips
-            </button>
+
+          <div className="g28-trump-chip">
+            {trumpKnown && ts
+              ? <span className="g28-trump-sym" style={{ color: trumpColor }}>{SUIT_INFO[ts].sym}</span>
+              : <span className="g28-trump-sym" style={{ opacity: 0.25, fontSize: 16 }}>🔒</span>
+            }
+            <span className="g28-trump-lbl">{trumpKnown && ts ? SUIT_INFO[ts].name : "trump"}</span>
+          </div>
+
+          <div className="g28-team-score right">
+            <span className="g28-topname">{names[1]} & {names[3]}</span>
+            <ScoreDots filled={Math.min(MATCH_TARGET, handsWon[1])} />
+          </div>
+
+          <div className="g28-topbtns">
+            <button className="g28-tbtn" onClick={resetGame}>↺</button>
+            <button className="g28-tbtn" onClick={() => setShowRules((v) => !v)}>{showRules ? "✕" : "?"}</button>
+            <button className={`g28-tbtn${state.feedbackOn ? "" : " dim"}`} onClick={() => dispatch({ type: "TOGGLE_FEEDBACK" })}>💡</button>
           </div>
         </div>
+      )}
 
-        {/* ── Rules (collapsible) ── */}
+      {/* ── Arena ── */}
+      <div className="g28-arena">
+
+        {/* Rules overlay */}
         {showRules && (
-          <div className="g28-rules">
-            <p><strong>Goal:</strong> two pairs fight over 28 pts per hand. J=3, 9=2, A=1, 10=1.</p>
-            <p><strong>Rank</strong> (high→low): J 9 A 10 K Q 8 7.</p>
-            <p><strong>Bid:</strong> with 4 cards, bid points you'll win. Winner secretly picks trump, then all get 4 more cards.</p>
-            <p><strong>Hidden trump:</strong> tap "Ask trump" when void in led suit to force the reveal — or play blind. Playing a trump card also reveals it.</p>
-            <p><strong>Under-half:</strong> holding caller below bid/2 wins double.</p>
-            <p><strong>Match:</strong> first to {MATCH_TARGET} hand-points wins.</p>
+          <div className="g28-rules-overlay">
+            <div className="g28-rules-title">Rules of 28</div>
+            <div className="g28-rules-body">
+              <p><strong>Goal:</strong> Two pairs fight over 28 points per hand. J=3, 9=2, A=1, 10=1. K Q 8 7 score zero.</p>
+              <p><strong>Rank</strong> (high→low): J · 9 · A · 10 · K · Q · 8 · 7. Trump suit beats all others.</p>
+              <p><strong>Bidding:</strong> Each player gets 4 cards. Bid how many points your team will score. Highest bidder wins and secretly picks the trump suit, then all get 4 more cards.</p>
+              <p><strong>Hidden trump:</strong> Only the caller knows trump until revealed. A player void in the led suit may ask for trump to be revealed, or play blind. Playing any trump card also reveals it.</p>
+              <p><strong>Under-half penalty:</strong> If the calling team scores less than half their bid, the defending team wins double (2 match points instead of 1).</p>
+              <p><strong>Match:</strong> First team to {MATCH_TARGET} match points wins.</p>
+            </div>
+            <button className="g28-btn ghost" onClick={() => setShowRules(false)} style={{ marginTop: 4 }}>Close</button>
           </div>
         )}
 
-        {/* ── Score bar ── */}
-        {inGame && (
-          <div className="g28-score">
-            <div className="g28-team">
-              <span className="g28-tname">{state.names[0]} & {state.names[2]}</span>
-              <div className="g28-badges">
-                <SixBadge filled={Math.min(MATCH_TARGET, state.handsWon[0])} color="#b3273a" sym="♥" />
-                <SixBadge filled={Math.min(MATCH_TARGET, state.handsWon[1])} color="#2a2a2a" sym="♠" />
-              </div>
-            </div>
-            <div className="g28-trump-mid">
-              <span className="g28-trump-lbl">Trump</span>
-              {trumpKnown && ts
-                ? <span className="g28-trump-val" style={{ color: trumpColor }}>{SUIT_INFO[ts].sym} {SUIT_INFO[ts].name}</span>
-                : <span className="g28-trump-val" style={{ opacity: 0.45 }}>🔒</span>
+        {/* Start / Resume overlay */}
+        {state.phase === "start" && (
+          <div className="g28-overlay">
+            <div className="g28-overlay-box">
+              {resuming
+                ? <ResumeScreen name={names[0]} onResume={() => setResuming(false)} onNew={resetGame} />
+                : <StartScreen
+                    savedName={names[0] !== "You" ? names[0] : ""}
+                    onStart={(n) => dispatch({ type: "START", names: n })}
+                  />
               }
             </div>
-            <div className="g28-team" style={{ alignItems: "flex-end" }}>
-              <span className="g28-tname" style={{ textAlign: "right" }}>{state.names[1]} & {state.names[3]}</span>
-              <div className="g28-badges">
-                <SixBadge filled={Math.min(MATCH_TARGET, state.handsWon[1])} color="#b3273a" sym="♦" />
-                <SixBadge filled={Math.min(MATCH_TARGET, state.handsWon[0])} color="#2a2a2a" sym="♣" />
-              </div>
-            </div>
           </div>
         )}
 
-        {/* ── Game table ── */}
+        {/* Partner strip */}
         {inGame && (
-          <div className="g28-table">
-            <span className="g28-cnr tl">◆ ◆</span><span className="g28-cnr tr">◆ ◆</span>
-            <span className="g28-cnr bl">◆ ◆</span><span className="g28-cnr br">◆ ◆</span>
+          <div className="g28-partner-strip">
+            <HandPip count={state.hands[2].length} />
+            <span className="g28-pname">
+              {names[2]}{state.phase === "playing" && state.turn === 2 ? " ⏳" : ""}
+            </span>
+            <span className="g28-ptag">partner · ×{state.hands[2].length}</span>
+          </div>
+        )}
 
-            {/* Banner overlay */}
-            {state.banner && (
-              <div key={state.banner.id} className="g28-banner-wrap">
-                <div className="g28-banner g28-bnr-anim" style={{
-                  background: state.banner.kind === "trump" ? "rgba(154,43,58,0.93)"
-                    : state.banner.kind === "match" ? "rgba(201,162,39,0.96)"
-                    : "rgba(12,53,39,0.93)",
-                }}>
-                  <div className="g28-banner-txt" style={{ color: state.banner.kind === "match" ? "#1c1f1d" : "#e9d9a0" }}>
-                    {state.banner.text}
+        {/* Center row: left opp | trick | right opp */}
+        {inGame && (
+          <div className="g28-center-row">
+            {/* Left opponent (player 1) */}
+            <div className="g28-opp-chip">
+              <span className="g28-oppname">{names[1].split(" ")[0]}</span>
+              {state.phase === "playing" && state.turn === 1 && <span className="g28-oppturn">⏳</span>}
+              <HandPip count={state.hands[1].length} />
+              <span style={{ fontSize: 8, opacity: 0.35 }}>×{state.hands[1].length}</span>
+            </div>
+
+            {/* Trick field */}
+            <div className="g28-trick-field">
+              {/* Banner */}
+              {state.banner && (
+                <div key={state.banner.id} className="g28-banner-wrap">
+                  <div
+                    className="g28-banner g28-bnr-anim"
+                    style={{
+                      background: state.banner.kind === "trump" ? "rgba(154,43,58,0.94)"
+                        : state.banner.kind === "match" ? "rgba(201,162,39,0.97)"
+                        : "rgba(10,44,29,0.94)",
+                    }}
+                  >
+                    <div className="g28-banner-txt" style={{ color: state.banner.kind === "match" ? "#1c1209" : "#e9d9a0" }}>
+                      {state.banner.text}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-
-            {/* Partner row */}
-            <div className="g28-partner-row">
-              <HandPip count={state.hands[2].length} />
-              <span className="g28-pip-name">
-                {state.names[2]}{state.phase === "playing" && state.turn === 2 ? " ⏳" : ""}
-              </span>
-              <span className="g28-pip-lbl">partner</span>
-              <span className="g28-count-badge">×{state.hands[2].length}</span>
-            </div>
-
-            {/* Middle: left opp | trick | right opp */}
-            <div className="g28-mid">
-              <div className="g28-opp">
-                <span className="g28-opp-name">{state.names[1].split(" ")[0]}{state.phase === "playing" && state.turn === 1 ? "⏳" : ""}</span>
-                <HandPip count={state.hands[1].length} />
-                <span className="g28-count-badge">×{state.hands[1].length}</span>
-              </div>
-
-              {/* Trick diamond */}
-              <div className="g28-trick">
-                <span className="g28-tcenter">◇</span>
-                {(["top", "bot", "left", "right"] as const).map((dir, i) => {
-                  const pi = [2, 0, 1, 3][i];
-                  const entry = seat(pi);
-                  return (
-                    <div key={dir} className={`g28-tslot ${dir}`}>
-                      {entry
-                        ? <TrickCard card={entry.card} dir={dir} />
-                        : <div style={{ width: 30, height: 42, opacity: 0.12, borderRadius: 4, border: "1px dashed rgba(201,162,39,0.5)" }} />
-                      }
-                      <span className={`g28-tname${entry ? " played" : ""}`}>
-                        {state.names[pi].split(" ")[0]}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="g28-opp">
-                <span className="g28-opp-name">{state.names[3].split(" ")[0]}{state.phase === "playing" && state.turn === 3 ? "⏳" : ""}</span>
-                <HandPip count={state.hands[3].length} />
-                <span className="g28-count-badge">×{state.hands[3].length}</span>
-              </div>
-            </div>
-
-            {/* Points row */}
-            <div className="g28-pts">
-              {state.phase === "playing" && callerTeam !== null && (
-                <>
-                  <span>{teams[0]}: {state.teamPoints[0]}/{callerTeam === 0 ? state.currentBid : 29 - state.currentBid}{callerTeam === 0 ? "★" : ""}</span>
-                  <span>{teams[1]}: {state.teamPoints[1]}/{callerTeam === 1 ? state.currentBid : 29 - state.currentBid}{callerTeam === 1 ? "★" : ""}</span>
-                </>
               )}
+
+              <div className="g28-felt-mark" />
+
+              {/* Points overlay */}
+              {state.phase === "playing" && callerTeam !== null && state.trick.length === 0 && (
+                <div className="g28-pts-overlay">
+                  {names[0]}&{names[2]}: {teamPoints[0]}{callerTeam === 0 ? `/${state.currentBid}★` : ""}<br />
+                  {names[1]}&{names[3]}: {teamPoints[1]}{callerTeam === 1 ? `/${state.currentBid}★` : ""}
+                </div>
+              )}
+
+              {/* 4 trick slots */}
+              {DIRS.map((dir, i) => {
+                const pi = DIR_PLAYER[i];
+                const entry = seat(pi);
+                return (
+                  <div key={dir} className={`g28-tslot ${dir}`}>
+                    {entry
+                      ? <TrickCard card={entry.card} dir={dir} />
+                      : <div className="g28-tempty" />
+                    }
+                    <span className={`g28-tsname${entry ? " played" : ""}`}>
+                      {names[pi].split(" ")[0]}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Right opponent (player 3) */}
+            <div className="g28-opp-chip">
+              <span className="g28-oppname">{names[3].split(" ")[0]}</span>
+              {state.phase === "playing" && state.turn === 3 && <span className="g28-oppturn">⏳</span>}
+              <HandPip count={state.hands[3].length} />
+              <span style={{ fontSize: 8, opacity: 0.35 }}>×{state.hands[3].length}</span>
             </div>
           </div>
         )}
 
-        {/* ── Controls ── */}
-        <div className="g28-ctrl">
+        {/* Action zone */}
+        <div className="g28-action">
 
           {/* Move tip */}
           {state.moveTip && (
-            <div key={state.moveTip.id} className="g28-tip g28-tip-anim">💡 {state.moveTip.text}</div>
+            <div key={state.moveTip.id} className="g28-tip g28-tip-anim">
+              💡 {state.moveTip.text}
+            </div>
           )}
 
-          {/* Start / Resume */}
-          {state.phase === "start" && (
-            resuming
-              ? <div className="g28-panel">
-                  <ResumeScreen
-                    name={state.names[0]}
-                    onResume={() => setResuming(false)}
-                    onNew={() => { dispatch({ type: "RESET" }); setResuming(false); localStorage.removeItem(SAVE_KEY); }}
-                  />
-                </div>
-              : <div className="g28-panel">
-                  <StartScreen
-                    savedName={state.names[0] !== "You" ? state.names[0] : ""}
-                    onStart={(names) => dispatch({ type: "START", names })}
-                  />
-                </div>
-          )}
-
-          {/* Bidding */}
+          {/* Bidding — your turn */}
           {state.phase === "bidding" && state.bidTurn === 0 && !state.passed[0] && (
             <div className="g28-panel">
-              <p className="g28-panel-lbl">Your bid — current: <strong>{state.currentBid === 13 ? "none" : state.currentBid}</strong></p>
-              <div className="g28-row">
+              <p className="g28-panel-lbl">Your bid — highest so far: <strong>{state.currentBid === 13 ? "none" : state.currentBid}</strong></p>
+              <div className="g28-btn-row">
                 {[1, 2, 4].map((step) => {
                   const amt = Math.min(28, state.currentBid + step);
                   return (
-                    <button key={step} className="g28-btn gold" disabled={amt <= state.currentBid}
-                      onClick={() => dispatch({ type: "BID", playerIdx: 0, amount: amt })}>
+                    <button
+                      key={step}
+                      className="g28-btn gold"
+                      disabled={amt <= state.currentBid}
+                      onClick={() => dispatch({ type: "BID", playerIdx: 0, amount: amt })}
+                    >
                       Bid {amt}
                     </button>
                   );
@@ -923,14 +991,23 @@ export default function TwentyEight() {
             </div>
           )}
 
-          {/* Choose trump */}
-          {state.phase === "choose-trump" && state.caller === 0 && (
+          {/* Bidding — AI turn */}
+          {state.phase === "bidding" && state.bidTurn !== 0 && (
+            <p className="g28-waiting">{names[state.bidTurn]} is bidding…</p>
+          )}
+
+          {/* Choose trump — your turn */}
+          {state.phase === "choose-trump" && caller === 0 && (
             <div className="g28-panel">
               <p className="g28-panel-lbl">You won at {state.currentBid}. Pick your secret trump:</p>
               <div className="g28-suit-row">
                 {SUITS.map((s) => (
-                  <button key={s} className="g28-suit-btn" style={{ color: SUIT_INFO[s].color }}
-                    onClick={() => dispatch({ type: "CHOOSE_TRUMP", suit: s })}>
+                  <button
+                    key={s}
+                    className="g28-suit-btn"
+                    style={{ color: SUIT_INFO[s].color }}
+                    onClick={() => dispatch({ type: "CHOOSE_TRUMP", suit: s })}
+                  >
                     {SUIT_INFO[s].sym}
                   </button>
                 ))}
@@ -938,75 +1015,77 @@ export default function TwentyEight() {
             </div>
           )}
 
-          {/* Hand end */}
+          {/* Choose trump — AI */}
+          {state.phase === "choose-trump" && caller !== 0 && (
+            <p className="g28-waiting">{names[caller!]} is picking trump…</p>
+          )}
+
+          {/* Playing — AI turn waiting */}
+          {state.phase === "playing" && state.turn !== 0 && state.trick.length < 4 && (
+            <p className="g28-waiting">{names[state.turn]} is thinking…</p>
+          )}
+
+          {/* Hand end result */}
           {state.phase === "hand-end" && state.lastResult && (() => {
             const r = state.lastResult!;
             return (
               <div className={`g28-result${r.matchOver ? " win" : ""}`}>
                 {r.matchOver && <p className="g28-res-big">🏆 {teams[r.winningTeam]} win the match!</p>}
-                <p className="g28-res-row">{teams[r.callerTeam]} bid {r.bid}, scored {r.callerPts}.</p>
+                <p className="g28-res-row">{teams[r.callerTeam]} bid {r.bid}, scored {r.callerPts} pts.</p>
                 <p className="g28-res-winner">
-                  {teams[r.winningTeam]} win{r.pointsAwarded > 1 ? " (double — under half)" : ""}! <span style={{ fontWeight: 400, opacity: 0.7 }}>+{r.pointsAwarded}pt</span>
+                  {teams[r.winningTeam]} win{r.pointsAwarded > 1 ? " (double — under half!)" : ""}
+                  <span style={{ fontWeight: 400, opacity: 0.6 }}> +{r.pointsAwarded}pt</span>
                 </p>
                 {state.feedbackOn && r.tips.length > 0 && (
                   <div className="g28-res-tips">
-                    <strong>Your plays:</strong>
-                    <ul>{r.tips.slice(0, 4).map((t, i) => <li key={i}>{t}</li>)}</ul>
+                    <strong>Your plays this hand:</strong>
+                    <ul>{r.tips.slice(0, 3).map((t, i) => <li key={i}>{t}</li>)}</ul>
                   </div>
                 )}
-                {state.feedbackOn && r.tips.length === 0 && (
-                  <p className="g28-res-tips" style={{ opacity: 0.7 }}>Clean hand — no notable alternative plays.</p>
-                )}
-                <button className="g28-btn gold full" onClick={() => dispatch({ type: r.matchOver ? "NEW_MATCH" : "DEAL" })}>
-                  {r.matchOver ? "New Match" : "Deal Next Hand"}
+                <button
+                  className="g28-btn gold full"
+                  onClick={() => dispatch({ type: r.matchOver ? "NEW_MATCH" : "DEAL" })}
+                >
+                  {r.matchOver ? "New Match" : "Next Hand →"}
                 </button>
               </div>
             );
           })()}
 
-          {/* Waiting during AI turns */}
-          {state.phase === "playing" && state.turn !== 0 && state.trick.length < 4 && (
-            <p style={{ fontSize: 11, opacity: 0.45, textAlign: "center" }}>
-              {state.names[state.turn]} is thinking…
-            </p>
-          )}
-
-          {/* Your hand */}
-          {showHand && (
-            <div className="g28-hand">
-              <div className="g28-hand-hdr">
-                <span className="g28-hand-lbl">Your hand{userTurn ? " — tap to play" : ""}</span>
-                {userTurn && voidInLead && !trumpKnown && (
-                  <button className="g28-btn red" style={{ fontSize: 10, padding: "4px 9px" }}
-                    onClick={() => dispatch({ type: "ASK_TRUMP", playerIdx: 0 })}>
-                    Ask trump
-                  </button>
-                )}
-              </div>
-              <div className="g28-hand-row">
-                {hand.map((c) => (
-                  <HandCard
-                    key={c.id}
-                    card={c}
-                    playable={userTurn && isLegal(c)}
-                    faded={userTurn && !isLegal(c)}
-                    isTrump={trumpKnown && c.suit === state.trumpSuit}
-                    onClick={userTurn && isLegal(c) ? () => dispatch({ type: "PLAY_CARD", playerIdx: 0, card: c }) : undefined}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-
           {/* Log */}
-          {state.log.length > 0 && (
+          {state.log.length > 0 && inGame && (
             <div className="g28-log">
-              {state.log.slice(0, 3).map((l, i) => <span key={i}>{l}</span>)}
+              {state.log.slice(0, 2).map((l, i) => <span key={i}>{l}</span>)}
             </div>
           )}
         </div>
-
       </div>
+
+      {/* ── Hand dock ── */}
+      {showHand && (
+        <div className="g28-hand-dock">
+          <div className="g28-hand-hdr">
+            <span className="g28-hand-lbl">Your hand{userTurn ? " — tap a card to play" : ""}</span>
+            {userTurn && voidInLead && !trumpKnown && (
+              <button className="g28-btn red sm" onClick={() => dispatch({ type: "ASK_TRUMP", playerIdx: 0 })}>
+                Ask trump
+              </button>
+            )}
+          </div>
+          <div className="g28-hand-row">
+            {hand.map((c) => (
+              <HandCard
+                key={c.id}
+                card={c}
+                playable={userTurn && isLegal(c)}
+                faded={userTurn && !isLegal(c)}
+                isTrump={trumpKnown && c.suit === ts}
+                onClick={userTurn && isLegal(c) ? () => dispatch({ type: "PLAY_CARD", playerIdx: 0, card: c }) : undefined}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
