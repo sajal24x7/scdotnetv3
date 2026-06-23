@@ -17,7 +17,6 @@
       "blog/201212040000 Nobody woke me up I.md",
       "blog/201212081305 Mistakes we make.md",
       "blog/201301102050 Daily Post 1984 Of Emptiness and Vastness.md",
-      "blog/201301252137 Stolen mint.md",
       "blog/201307031828 A little something called Inertia.md",
       "blog/201307230121 The Perfect Road Trip.md",
       "blog/201307231423 Why I need to blog.md",
@@ -50,7 +49,6 @@
       "blog/201407101531 Title Matters. Really.md",
       "blog/201407110754 SuccessFailure.md",
       "blog/201407120605 Why I do not write long stuff here.md",
-      "blog/201407150000 Who.md",
       "blog/201407171325 Dealing with the World Cup.md",
       "blog/201407190847 Poems.md",
       "blog/201407230840 Why planning is important but irrelevant.md",
@@ -63,7 +61,6 @@
       "blog/201409102100 The benefits of living with T1D.md",
       "blog/201409142100 We are all inspired.md",
       "blog/201409150000 FSoL That.md",
-      "blog/201409161231 Moving On (1).md",
       "blog/201409161807 Moving On.md",
       "blog/201409182100 Surprises and good stories.md",
       "blog/201409232100 FSoL Happy.md",
@@ -77,7 +74,6 @@
       "blog/201411190815 Decisions decisions.md",
       "blog/201412300900 Coming Home.md",
       "blog/201412312337 Was.md",
-      "blog/201501012255 Do you remember.md",
       "blog/201501020900 At work.md",
       "blog/201501060408 Life.md",
       "blog/201501130900 Anonymous.md",
@@ -109,15 +105,12 @@
       "blog/201511242033 On Honesty Part-II.md",
       "blog/201511302102 The hopeful human condition.md",
       "blog/201512062100 Fifty plus one.md",
-      "blog/201512152100 The second one.md",
       "blog/201601021816 New year new rules.md",
       "blog/201601032213 On Killing.md",
       "blog/201601132059 On emotions.md",
-      "blog/201601172135 My muse.md",
       "blog/201601202103 Letters to an imaginary girlfriend Two.md",
       "blog/201601242147 On the competitive aspect of things.md",
       "blog/201601272244 On sx.md",
-      "blog/201601312100 Everything withers away.md",
       "blog/201602032100 On writing the numbers.md",
       "blog/201602072056 Why you should spend a little less time working.md",
       "blog/201602102120 Why happiness never seems to last.md",
@@ -128,7 +121,6 @@
       "blog/201602230000 What to say to someone who.md",
       "blog/201602262214 Does setting a goal really help you.md",
       "blog/201602282248 Some numbers.md",
-      "blog/201603150000 It.md",
       "blog/201604032100 I hold you.md",
       "blog/201604192102 How it feels to finally finish that first draft.md",
       "blog/201605012217 Why standing still is scary.md",
@@ -565,6 +557,10 @@
       "bookshelf/202605130836 Shift.md",
       "bookshelf/202605282126 The Great Mental Models.md",
       "bookshelf/202606010843 The Anthropologists.md",
+      "bookshelf/202606111451 The Thinking Machine.md",
+      "bookshelf/202606160715 The Selfish Gene.md",
+      "bookshelf/202606201404 The Book of Kubernetes.md",
+      "bookshelf/202606201845 The Sixth Extinction.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202503250411 Be a hybrid.md",
@@ -609,6 +605,7 @@
       "evergreen/202601181839 How to craft a story.md",
       "evergreen/202601312353 Write a letter to your child.md",
       "evergreen/202604141403 The four diseases leading to slow death.md",
+      "evergreen/202606222206 Extinction Was Discovered.md",
       "filmshelf/202606021827 Apex.md",
       "filmshelf/202606051110 Ladies First.md",
       "gameshelf/202605290954 Ghost of Yotei.md",
@@ -942,6 +939,13 @@
       "micro/202606090949 Apple announces AI extensions in Safari.md",
       "micro/202606101726 Apple Announces AI Support for Generating Shortcuts.md",
       "micro/202606101731 BYD to Install Thousands of Five Minute Chargers in Europe.md",
+      "micro/202606120606 Boox announces a new version of Go 6.md",
+      "micro/202606131642 Anthropic cuts fable and mythos access.md",
+      "micro/202606162235 SpaceX Buys Cursor for 60 Billion.md",
+      "micro/202606181052 Apple will increase the prices of its devices.md",
+      "micro/202606230951 Kunal Shah to Become Global Head of WhatsApp.md",
+      "micro/202606230959 About the Security Flaws in Vibe-Codes Apps.md",
+      "micro/202606231430 Doing Nothing at Work.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1049,6 +1053,8 @@
       "nordletter/202605230950 NL106 - CITCON 2026 Helsinki.md",
       "nordletter/202605302333 NL107.md",
       "nordletter/202606052132 NL108.md",
+      "nordletter/202606111954 NL109 - What Savya Wants.md",
+      "nordletter/202606192030 NL110 - Hanko Midsummer Picnic.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -1071,11 +1077,18 @@
       "poem/201203181704 Scared I was.md",
       "poem/201203251322 That face among the faces.md",
       "poem/201204261413 Us against the World.md",
+      "poem/201301252137 Stolen mint.md",
       "poem/201311081008 I deceive.md",
       "poem/201403142044 Day Two The Lone Patch.md",
       "poem/201403192145 Day Seven Questions.md",
+      "poem/201407150000 Who.md",
       "poem/201407180831 There was this boy in school.md",
       "poem/201411032056 That blue bird.md",
+      "poem/201501012255 Do you remember.md",
+      "poem/201512152100 The second one.md",
+      "poem/201601172135 My muse.md",
+      "poem/201601312100 Everything withers away.md",
+      "poem/201603150000 It.md",
       "poem/201606012127 Washed lands.md",
       "poem/201606032006 Why build walls.md",
       "poem/201606042123 Sometimes I wish.md",
@@ -1643,9 +1656,10 @@
       "til/202603251212 Difference between lists tuples and sets.md",
       "til/202603251249 Conditionals in python.md",
       "til/202603301610 Generators in python.md",
-      "tvshelf/202605270840 Glory.md"
+      "tvshelf/202605270840 Glory.md",
+      "tvshelf/202606140720 Drive to Survive.md"
     ],
-    "generatedAt": "2026-06-11T09:50:39.463Z"
+    "generatedAt": "2026-06-23T18:21:06.377Z"
   },
   "til/entra-id": [
     {
@@ -6422,6 +6436,45 @@
       "created": "2026-05-16T21:16:18.000Z"
     }
   ],
+  "blog/why-walk-the-same-path-every-day": [
+    {
+      "slug": "/nordletter/nl109-what-savya-wants/",
+      "title": "What Savya Wants",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-06-13T16:29:14.000Z"
+    },
+    {
+      "slug": "/nordletter/nl99-new-things/",
+      "title": "New Things",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-04-05T16:19:46.000Z"
+    },
+    {
+      "slug": "/nordletter/nl85/",
+      "title": "The Route Circle",
+      "description": "",
+      "category": "nordletter",
+      "created": "2025-12-27T21:33:35.000Z"
+    },
+    {
+      "slug": "/bookshelf/steal-like-an-artist/",
+      "title": "Steal Like an Artist",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2025-12-21T20:41:53.000Z"
+    }
+  ],
+  "nordletter/nl66": [
+    {
+      "slug": "/nordletter/nl110-hanko-midsummer-picnic/",
+      "title": "Hanko Midsummer Picnic",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-06-21T19:35:29.000Z"
+    }
+  ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
     {
       "slug": "/nordletter/nl63-a-day-trip-to-turku/",
@@ -6679,29 +6732,6 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-12-27T21:33:35.000Z"
-    }
-  ],
-  "blog/why-walk-the-same-path-every-day": [
-    {
-      "slug": "/nordletter/nl99-new-things/",
-      "title": "New Things",
-      "description": "",
-      "category": "nordletter",
-      "created": "2026-04-05T16:19:46.000Z"
-    },
-    {
-      "slug": "/nordletter/nl85/",
-      "title": "The Route Circle",
-      "description": "",
-      "category": "nordletter",
-      "created": "2025-12-27T21:33:35.000Z"
-    },
-    {
-      "slug": "/bookshelf/steal-like-an-artist/",
-      "title": "Steal Like an Artist",
-      "description": "",
-      "category": "bookshelf",
-      "created": "2025-12-21T20:41:53.000Z"
     }
   ],
   "evergreen/limitations-mean-freedom": [
@@ -7142,6 +7172,15 @@
       "description": "",
       "category": "bookshelf",
       "created": "2025-12-30T10:59:25.000Z"
+    }
+  ],
+  "nordletter/nl109-what-savya-wants": [
+    {
+      "slug": "/now/raise-savya/",
+      "title": "Raise Savya",
+      "description": "",
+      "category": "now",
+      "created": "2024-02-18T17:41:49.000Z"
     }
   ],
   "evergreen/what-to-automate": [
