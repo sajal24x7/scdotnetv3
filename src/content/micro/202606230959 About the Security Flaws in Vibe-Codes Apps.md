@@ -1,12 +1,15 @@
 ---
-title: "About the Security Flaws in Vibe-Codes Apps"
-slug: "about-the-security-flaws-in-vibe-codes-apps"
-created: 2026-06-23T10:00:27+03:00
-updated: 2026-06-23T10:00:27+03:00
+title: About the Security Flaws in Vibe-Codes Apps
+slug: about-the-security-flaws-in-vibe-codes-apps
+created: 2026-06-23T07:00:27.000Z
+updated: 2026-06-23T07:00:27.000Z
 category: micro
 tags:
   - vibe-coding
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116798142852352786'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mowti4kiiz2p'
+  - 'https://www.threads.com/@sajal24x7/post/DZ61lqllufw'
 ---
 [Read this before you vibe-code another app by Yael Grauer](https://www.theverge.com/ai-artificial-intelligence/950844/vibe-coding-security-risks-apps)
 
