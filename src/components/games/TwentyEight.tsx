@@ -231,7 +231,8 @@ type Action =
   | { type: "CLEAR_MOVE_TIP"; id: number }
   | { type: "TOGGLE_FEEDBACK" }
   | { type: "TOGGLE_HALF_BID" }
-  | { type: "NEW_MATCH" };
+  | { type: "NEW_MATCH" }
+  | { type: "RESET" };
 
 function reducer(state: GameState, action: Action): GameState {
   switch (action.type) {
@@ -391,6 +392,7 @@ function reducer(state: GameState, action: Action): GameState {
     case "TOGGLE_FEEDBACK": return { ...state, feedbackOn: !state.feedbackOn, moveTip: null };
     case "TOGGLE_HALF_BID": return { ...state, halfBidPenaltyOn: !state.halfBidPenaltyOn };
     case "NEW_MATCH": return reducer({ ...state, handsWon: { 0: 0, 1: 0 }, round: 0 }, { type: "DEAL" });
+    case "RESET": return { ...initialState, names: state.names, feedbackOn: state.feedbackOn, halfBidPenaltyOn: state.halfBidPenaltyOn };
     default: return state;
   }
 }
@@ -427,9 +429,28 @@ function PlayingCard({ card, small = false, faded = false, onClick, disabled = f
   );
 }
 
-function CardBack({ small = false }: { small?: boolean }) {
+function PlayerChip({ name, cardCount, active, vertical = false }: {
+  name: string; cardCount: number; active: boolean; vertical?: boolean;
+}) {
   return (
-    <div className="card-back" style={{ width: small ? 24 : 32, height: small ? 34 : 46 }} />
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3, minWidth: 52 }}>
+      <span style={{
+        fontSize: 9, fontWeight: active ? 700 : 400,
+        color: active ? "var(--game-accent)" : "var(--game-text-2)",
+        textAlign: "center", lineHeight: 1.2, maxWidth: 60, wordBreak: "break-word",
+      }}>
+        {name}{active ? " ▸" : ""}
+      </span>
+      {cardCount > 0 && (
+        <span style={{
+          fontSize: 9, color: "var(--game-text-2)",
+          background: "var(--game-surface-2)",
+          borderRadius: 10, padding: "1px 5px",
+        }}>
+          {cardCount}
+        </span>
+      )}
+    </div>
   );
 }
 
@@ -455,16 +476,34 @@ function ScoreCard({ label, wins, total, colorClass, symbol }: {
   );
 }
 
+const STORAGE_KEY = "twenty-eight-state-v1";
+
+function loadState(): GameState {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return { ...initialState, ...JSON.parse(raw) };
+  } catch {}
+  return initialState;
+}
+
 /* ---------- Main component ---------- */
 export default function TwentyEight() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState, loadState);
   const timers = useRef<number[]>([]);
 
   useEffect(() => {
-    const [p1, p2, p3] = pickPokemonNames();
-    dispatch({ type: "INIT_NAMES", names: ["You", p1, p2, p3] });
+    // On first load, assign Pokémon names only if we're starting fresh
+    if (state.phase === "idle" && state.names[1] === initialState.names[1]) {
+      const [p1, p2, p3] = pickPokemonNames();
+      dispatch({ type: "INIT_NAMES", names: ["You", p1, p2, p3] });
+    }
     return () => timers.current.forEach(clearTimeout);
   }, []);
+
+  // Persist state to localStorage on every change
+  useEffect(() => {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+  }, [state]);
 
   const after = (ms: number, fn: () => void) => {
     const id = window.setTimeout(fn, ms);
@@ -813,6 +852,17 @@ export default function TwentyEight() {
           <button className="btn-ghost" onClick={() => dispatch({ type: "TOGGLE_HALF_BID" })}>
             ½-bid {state.halfBidPenaltyOn ? "on" : "off"}
           </button>
+          {state.phase !== "idle" && (
+            <button className="btn-ghost" style={{ color: "var(--game-red)", opacity: 0.7 }}
+              onClick={() => {
+                try { localStorage.removeItem(STORAGE_KEY); } catch {}
+                const [p1, p2, p3] = pickPokemonNames();
+                dispatch({ type: "RESET" });
+                dispatch({ type: "INIT_NAMES", names: ["You", p1, p2, p3] });
+              }}>
+              Reset
+            </button>
+          )}
         </div>
       </div>
 
@@ -873,58 +923,53 @@ export default function TwentyEight() {
               </div>
             )}
 
-            {/* Partner (top) */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-              <span className={`player-name ${state.phase === "playing" && state.turn === 2 ? "active-turn" : ""}`}>
-                {state.names[2]} {state.phase === "playing" && state.turn === 2 ? "▸" : ""}
-              </span>
-              <div style={{ display: "flex", gap: 3 }}>
-                {state.hands[2].map((_, i) => <CardBack key={i} small />)}
-              </div>
-            </div>
+            {/* Table: 3-row layout — partner top, trick middle, player label bottom */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, flex: 1, justifyContent: "center" }}>
 
-            {/* Middle row: opponents + trick */}
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flex: 1 }}>
-              {/* Left opponent */}
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-                <span className={`player-name ${state.phase === "playing" && state.turn === 1 ? "active-turn" : ""}`}>
-                  {state.names[1]} {state.phase === "playing" && state.turn === 1 ? "▸" : ""}
-                </span>
-                <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                  {state.hands[1].map((_, i) => <CardBack key={i} small />)}
-                </div>
-              </div>
+              {/* Partner (top) */}
+              <PlayerChip
+                name={state.names[2]}
+                cardCount={state.hands[2].length}
+                active={state.phase === "playing" && state.turn === 2}
+              />
 
-              {/* Trick area */}
-              <div className="trick-grid" style={{ width: "clamp(130px, 40vw, 190px)", height: "clamp(130px, 40vw, 190px)" }}>
-                {[
-                  { idx: 2, area: "top", dir: "top" },
-                  { idx: 1, area: "left", dir: "left" },
-                  { idx: 3, area: "right", dir: "right" },
-                  { idx: 0, area: "bottom", dir: "bottom" },
-                ].map(({ idx, area, dir }) => {
-                  const entry = seat(idx);
-                  return (
-                    <div key={idx} style={{ gridArea: area }} className="trick-cell">
-                      <div style={{ width: 36, height: 52, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        {entry ? <PlayingCard card={entry.card} small popDir={dir} /> : null}
+              {/* Middle row: left · trick · right */}
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <PlayerChip
+                  name={state.names[1]}
+                  cardCount={state.hands[1].length}
+                  active={state.phase === "playing" && state.turn === 1}
+                  vertical
+                />
+
+                {/* Trick area — compact */}
+                <div className="trick-grid" style={{ width: 140, height: 140 }}>
+                  {[
+                    { idx: 2, area: "top", dir: "top" },
+                    { idx: 1, area: "left", dir: "left" },
+                    { idx: 3, area: "right", dir: "right" },
+                    { idx: 0, area: "bottom", dir: "bottom" },
+                  ].map(({ idx, area, dir }) => {
+                    const entry = seat(idx);
+                    return (
+                      <div key={idx} style={{ gridArea: area }} className="trick-cell">
+                        <div style={{ width: 34, height: 48, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                          {entry ? <PlayingCard card={entry.card} small popDir={dir} /> : null}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-                <div style={{ gridArea: "mid", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <span style={{ fontSize: 12, color: "var(--game-border)" }}>◇</span>
+                    );
+                  })}
+                  <div style={{ gridArea: "mid", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span style={{ fontSize: 10, color: "var(--game-border)" }}>◇</span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Right opponent */}
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-                <span className={`player-name ${state.phase === "playing" && state.turn === 3 ? "active-turn" : ""}`}>
-                  {state.names[3]} {state.phase === "playing" && state.turn === 3 ? "▸" : ""}
-                </span>
-                <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                  {state.hands[3].map((_, i) => <CardBack key={i} small />)}
-                </div>
+                <PlayerChip
+                  name={state.names[3]}
+                  cardCount={state.hands[3].length}
+                  active={state.phase === "playing" && state.turn === 3}
+                  vertical
+                />
               </div>
             </div>
 
