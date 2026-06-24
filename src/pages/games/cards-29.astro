@@ -605,11 +605,11 @@ import Layout from '../../layouts/Layout.astro';
 
 // ── Constants ──────────────────────────────────────
 const SUITS  = ['spades','hearts','diamonds','clubs'];
-// Non-trump rank (low → high): 7 8 9 10 J Q K A
-const RANK_STD   = ['7','8','9','10','J','Q','K','A'];
-const RANKS      = RANK_STD;  // alias used by makeDeck
-// Trump rank (low → high): 7 8 Q K 10 A 9 J  (J=best, 9=second)
+// Game 29 rank (low → high) — same for ALL suits, not just trump
+// J=best, 9=second in every suit
 const RANK_TRUMP = ['7','8','Q','K','10','A','9','J'];
+// Deck iteration order (just needs all 8 ranks, order irrelevant)
+const RANKS = ['7','8','9','10','J','Q','K','A'];
 const SYM    = { spades:'♠', hearts:'♥', diamonds:'♦', clubs:'♣' };
 const PTS    = { J:3, '9':2, A:1, '10':1 };
 const MIN_BID   = 16;
@@ -673,9 +673,9 @@ function makeDeck() {
 }
 
 // ── Trick logic ────────────────────────────────────
-function rankOf(card, trump) {
-  if (trump && card.suit === trump) return RANK_TRUMP.indexOf(card.rank);
-  return RANK_STD.indexOf(card.rank);
+// In Game 29 the rank order J>9>A>10>K>Q>8>7 applies to every suit
+function rankOf(card) {
+  return RANK_TRUMP.indexOf(card.rank);
 }
 
 function cardBeats(challenger, current, trump, ledSuit) {
@@ -683,13 +683,13 @@ function cardBeats(challenger, current, trump, ledSuit) {
   if (isTrump(challenger) && !isTrump(current)) return true;
   if (!isTrump(challenger) &&  isTrump(current)) return false;
   if (isTrump(challenger) && isTrump(current)) {
-    return rankOf(challenger, trump) > rankOf(current, trump);
+    return rankOf(challenger) > rankOf(current);
   }
-  // Both non-trump
+  // Both non-trump: led suit beats off-suit; within same suit use Game 29 ranking
   if (challenger.suit === ledSuit && current.suit !== ledSuit) return true;
   if (challenger.suit !== ledSuit && current.suit === ledSuit) return false;
   if (challenger.suit !== ledSuit && current.suit !== ledSuit) return false;
-  return RANK_STD.indexOf(challenger.rank) > RANK_STD.indexOf(current.rank);
+  return rankOf(challenger) > rankOf(current);
 }
 
 function trickWinner(trick, trump) {
@@ -731,7 +731,7 @@ function aiPickCard(player, hand, trick, trump) {
       const winning = inSuit.filter(c => curWinCard ? cardBeats(c, curWinCard.card, trump, ledSuit) : true);
       const pool = winning.length > 0 ? winning : inSuit;
       // play highest in pool
-      const best = pool.reduce((b, c) => RANK_STD.indexOf(c.rank) > RANK_STD.indexOf(b.rank) ? c : b);
+      const best = pool.reduce((b, c) => rankOf(c) > rankOf(b) ? c : b);
       return hand.indexOf(best);
     }
   }
@@ -746,7 +746,7 @@ function aiPickCard(player, hand, trick, trump) {
       const curWinCard = curWinIdx >= 0 ? trick[curWinIdx] : null;
       const winningTrumps = trumps.filter(c => !curWinCard || cardBeats(c, curWinCard.card, trump, ledSuit2 ?? trump));
       if (winningTrumps.length > 0) {
-        const lowest = winningTrumps.reduce((b, c) => rankOf(c, trump) < rankOf(b, trump) ? c : b);
+        const lowest = winningTrumps.reduce((b, c) => rankOf(c) < rankOf(b) ? c : b);
         return hand.indexOf(lowest);
       }
     }
@@ -756,7 +756,7 @@ function aiPickCard(player, hand, trick, trump) {
   const discard = [...hand].sort((a, b) => {
     const pa = cardPts(a), pb = cardPts(b);
     if (pa !== pb) return pa - pb;
-    return RANK_STD.indexOf(a.rank) - RANK_STD.indexOf(b.rank);
+    return rankOf(a) - rankOf(b);
   });
   return hand.indexOf(discard[0]);
 }
@@ -978,11 +978,17 @@ function runAIPlay() {
 
 // ── Round/Game result ──────────────────────────────
 function showRoundResult() {
-  const r    = S.round;
-  const t    = team(r.bidder);
-  const made = r.tPts[t] >= r.bid;
-  if (made) S.scores[t]++;
-  else      S.scores[1 - t]++;
+  const r        = S.round;
+  const t        = team(r.bidder);
+  const made     = r.tPts[t] >= r.bid;
+  // Under-half penalty: bidding team scored < half the bid → opponents get 2 game points
+  const halfFail = !made && r.tPts[t] * 2 < r.bid;
+  if (made) {
+    S.scores[t]++;
+  } else {
+    S.scores[1 - t] += halfFail ? 2 : 1;
+  }
+  r.halfFail = halfFail;
   save();
   renderRoundScreen();
 }
@@ -997,12 +1003,16 @@ function renderRoundScreen() {
   const t1n  = `${short(n[1],6)} & ${short(n[3],6)}`;
   const bname = t === 0 ? t0n : t1n;
 
+  const halfFail = r.halfFail === true;
   document.getElementById('round-headline').textContent =
-    made ? `Bid made! ${bname} wins.` : `Bid failed. ${bname} loses.`;
+    made ? `Bid made! ${bname} wins.`
+         : halfFail ? `Under half! ${bname} loses 2 pts.`
+         : `Bid failed. ${bname} loses.`;
   document.getElementById('round-detail').innerHTML =
     `Bid was <strong>${r.bid}</strong>. ` +
     `${short(n[0],6)}&nbsp;&amp;&nbsp;${short(n[2],6)}: <strong>${r.tPts[0]}</strong> pts — ` +
-    `${short(n[1],6)}&nbsp;&amp;&nbsp;${short(n[3],6)}: <strong>${r.tPts[1]}</strong> pts.`;
+    `${short(n[1],6)}&nbsp;&amp;&nbsp;${short(n[3],6)}: <strong>${r.tPts[1]}</strong> pts.` +
+    (halfFail ? ' <em>(under half bid — opponents +2)</em>' : '');
   document.getElementById('tot-t1').innerHTML =
     `<div class="total-name">${t0n}</div><div class="total-pts">${S.scores[0]}</div>`;
   document.getElementById('tot-t2').innerHTML =
