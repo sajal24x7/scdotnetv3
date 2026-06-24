@@ -441,27 +441,56 @@ function PlayingCard({ card, small = false, faded = false, onClick, disabled = f
   );
 }
 
-function PlayerChip({ name, cardCount, active, vertical = false }: {
-  name: string; cardCount: number; active: boolean; vertical?: boolean;
-}) {
+// Fanned overlapping card backs — horizontal (top) or vertical (sides)
+function FannedCards({ count, vertical = false }: { count: number; vertical?: boolean }) {
+  if (count === 0) return <div style={{ width: vertical ? 18 : 32, height: vertical ? 32 : 18 }} />;
+  const CW = 18, CH = 26; // card dimensions
+  const STEP = 7;          // how much each card peeks out from behind the previous
+  const totalW = vertical ? CW : CW + (count - 1) * STEP;
+  const totalH = vertical ? CH + (count - 1) * STEP : CH;
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3, minWidth: 52 }}>
-      <span style={{
-        fontSize: 9, fontWeight: active ? 700 : 400,
-        color: active ? "var(--game-accent)" : "var(--game-text-2)",
-        textAlign: "center", lineHeight: 1.2, maxWidth: 60, wordBreak: "break-word",
-      }}>
-        {name}{active ? " ▸" : ""}
-      </span>
-      {cardCount > 0 && (
-        <span style={{
-          fontSize: 9, color: "var(--game-text-2)",
-          background: "var(--game-surface-2)",
-          borderRadius: 10, padding: "1px 5px",
-        }}>
-          {cardCount}
-        </span>
-      )}
+    <div style={{ position: "relative", width: totalW, height: totalH, flexShrink: 0 }}>
+      {Array.from({ length: count }).map((_, i) => (
+        <div key={i} style={{
+          position: "absolute",
+          left: vertical ? 0 : i * STEP,
+          top: vertical ? i * STEP : 0,
+          width: CW, height: CH,
+          borderRadius: 3,
+          background: "var(--game-card-back)",
+          border: "1px solid var(--game-card-border)",
+          zIndex: i,
+        }} />
+      ))}
+    </div>
+  );
+}
+
+function PlayerSeat({ name, cardCount, active, layout }: {
+  name: string; cardCount: number; active: boolean;
+  layout: "top" | "left" | "right";
+}) {
+  const label = (
+    <span style={{
+      fontSize: 9, fontWeight: active ? 700 : 400, lineHeight: 1.2,
+      color: active ? "var(--game-accent)" : "var(--game-text-2)",
+      textAlign: "center", maxWidth: 56, wordBreak: "break-word",
+    }}>
+      {name}{active ? " ▸" : ""}
+    </span>
+  );
+  const fan = <FannedCards count={cardCount} vertical={layout !== "top"} />;
+  if (layout === "top") {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+        {label}{fan}
+      </div>
+    );
+  }
+  // left / right — label above, cards below
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+      {label}{fan}
     </div>
   );
 }
@@ -939,23 +968,24 @@ export default function TwentyEight() {
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, flex: 1, justifyContent: "center" }}>
 
               {/* Partner (top) */}
-              <PlayerChip
+              <PlayerSeat
                 name={state.names[2]}
                 cardCount={state.hands[2].length}
                 active={state.phase === "playing" && state.turn === 2}
+                layout="top"
               />
 
               {/* Middle row: left · trick · right */}
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <PlayerChip
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <PlayerSeat
                   name={state.names[1]}
                   cardCount={state.hands[1].length}
                   active={state.phase === "playing" && state.turn === 1}
-                  vertical
+                  layout="left"
                 />
 
-                {/* Trick area — compact */}
-                <div className="trick-grid" style={{ width: 140, height: 140 }}>
+                {/* Trick area */}
+                <div className="trick-grid" style={{ width: 140, height: 140, flexShrink: 0 }}>
                   {[
                     { idx: 2, area: "top", dir: "top" },
                     { idx: 1, area: "left", dir: "left" },
@@ -976,11 +1006,11 @@ export default function TwentyEight() {
                   </div>
                 </div>
 
-                <PlayerChip
+                <PlayerSeat
                   name={state.names[3]}
                   cardCount={state.hands[3].length}
                   active={state.phase === "playing" && state.turn === 3}
-                  vertical
+                  layout="right"
                 />
               </div>
             </div>
