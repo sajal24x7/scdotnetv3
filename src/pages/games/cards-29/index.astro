@@ -1,0 +1,54 @@
+---
+import '../../../styles/global.css';
+import TwentyEight from '../../../components/games/TwentyEight';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/logo/logo-square-v2.svg" />
+    <title>29 — Card Game</title>
+    <meta name="description" content="Play 28/29, a trick-taking card game for two pairs. Hidden trump, 28 points per hand." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@8..144,100..900&display=swap"
+    />
+    <script is:inline>
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        e.matches ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+      });
+    </script>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body {
+        height: 100%;
+        overflow: hidden;
+        background: rgb(255, 252, 245);
+      }
+      html.dark, html.dark body {
+        background: rgb(22, 20, 18);
+      }
+      #game-mount {
+        height: 100dvh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      @media (min-width: 600px) {
+        body { display: flex; align-items: flex-start; justify-content: center; overflow-y: auto; }
+        #game-mount { height: auto; min-height: 100dvh; width: 480px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-mount">
+      <TwentyEight client:load />
+    </div>
+  </body>
+</html>
