@@ -13,77 +13,18 @@ import Layout from '../../layouts/Layout.astro';
 <div id="g29">
 
   <!-- ╔══════════════════════════════╗ -->
-  <!-- ║         SETUP SCREENS        ║ -->
+  <!-- ║          SPLASH SCREEN       ║ -->
   <!-- ╚══════════════════════════════╝ -->
   <div id="s-setup" class="g29-screen active">
-
-    <!-- Step 1: Your name -->
-    <div id="step-1" class="setup-step active">
-      <div class="setup-deco" aria-hidden="true">
-        <span>✦</span><span>✧</span><span>✦</span><span>✧</span><span>✦</span>
-      </div>
-      <div class="setup-body">
-        <div class="setup-mascot" aria-hidden="true">🃏</div>
-        <h1 class="game-logo">Game 29</h1>
-        <p class="setup-tagline">The classic South Asian card game</p>
-        <div class="field-wrap">
-          <label class="field-label" for="inp-name">CREATE A USERNAME</label>
-          <div class="field-row">
-            <input id="inp-name" class="field-input" type="text" placeholder="yourname"
-              maxlength="15" autocapitalize="none" autocomplete="off" spellcheck="false" enterkeyhint="next" />
-            <span class="field-tick" aria-hidden="true">✓</span>
-          </div>
-          <div class="field-err" id="err-name" role="alert"></div>
-        </div>
-        <button class="btn-next" id="btn-1-next">NEXT <span aria-hidden="true">›</span></button>
-      </div>
+    <div class="setup-deco" aria-hidden="true">
+      <span>✦</span><span>✧</span><span>✦</span><span>✧</span><span>✦</span>
     </div>
-
-    <!-- Step 2: Teammate -->
-    <div id="step-2" class="setup-step">
-      <div class="setup-deco" aria-hidden="true"></div>
-      <div class="setup-body">
-        <div class="setup-mascot" aria-hidden="true">🤝</div>
-        <h2>Your teammate</h2>
-        <p class="setup-tagline">Who's on your side?</p>
-        <div class="field-wrap">
-          <label class="field-label" for="inp-mate">TEAMMATE NAME</label>
-          <div class="field-row">
-            <input id="inp-mate" class="field-input" type="text" placeholder="teammate"
-              maxlength="15" autocapitalize="none" autocomplete="off" spellcheck="false" enterkeyhint="next" />
-          </div>
-          <div class="field-err" id="err-mate" role="alert"></div>
-        </div>
-        <button class="btn-next" id="btn-2-next">NEXT <span aria-hidden="true">›</span></button>
-        <button class="btn-back" id="btn-2-back">‹ Back</button>
-      </div>
+    <div class="setup-body">
+      <div class="setup-mascot" aria-hidden="true">🃏</div>
+      <h1 class="game-logo">Game 29</h1>
+      <p class="setup-tagline">The classic South Asian card game</p>
+      <button class="btn-play" id="btn-start">TAP TO PLAY</button>
     </div>
-
-    <!-- Step 3: Opponents -->
-    <div id="step-3" class="setup-step">
-      <div class="setup-deco" aria-hidden="true"></div>
-      <div class="setup-body">
-        <div class="setup-mascot" aria-hidden="true">⚔️</div>
-        <h2>Your opponents</h2>
-        <p class="setup-tagline">Two players against you</p>
-        <div class="field-wrap">
-          <label class="field-label" for="inp-opp1">OPPONENT 1</label>
-          <div class="field-row">
-            <input id="inp-opp1" class="field-input" type="text" placeholder="opponent1"
-              maxlength="15" autocapitalize="none" autocomplete="off" spellcheck="false" enterkeyhint="next" />
-          </div>
-          <label class="field-label field-label-gap" for="inp-opp2">OPPONENT 2</label>
-          <div class="field-row">
-            <input id="inp-opp2" class="field-input" type="text" placeholder="opponent2"
-              maxlength="15" autocapitalize="none" autocomplete="off" spellcheck="false" enterkeyhint="done" />
-          </div>
-          <div class="field-err" id="err-opps" role="alert"></div>
-        </div>
-        <button class="btn-play" id="btn-start">TAP TO PLAY</button>
-        <button class="btn-back" id="btn-3-back">‹ Back</button>
-      </div>
-    </div>
-
   </div><!-- /s-setup -->
 
 
@@ -172,7 +113,7 @@ import Layout from '../../layouts/Layout.astro';
         <div class="total-cell" id="tot-t2"></div>
       </div>
       <button class="btn-play" id="btn-continue">Next Round</button>
-      <button class="btn-back" id="btn-new-from-round">Change Players</button>
+      <button class="btn-back" id="btn-new-from-round">New Game</button>
     </div>
   </div>
 
@@ -186,7 +127,7 @@ import Layout from '../../layouts/Layout.astro';
       <h2 id="go-headline">Team Wins!</h2>
       <p id="go-detail" class="result-detail"></p>
       <button class="btn-play" id="btn-play-again">Play Again</button>
-      <button class="btn-back" id="btn-new-from-over">Change Players</button>
+      <button class="btn-back" id="btn-new-from-over">New Game</button>
     </div>
   </div>
 
@@ -220,17 +161,16 @@ import Layout from '../../layouts/Layout.astro';
 .g29-screen.active { display: flex; flex-direction: column; }
 
 /* ─────────────────────────────────────────────── */
-/*  SETUP                                          */
+/*  SETUP / SPLASH                                 */
 /* ─────────────────────────────────────────────── */
 #s-setup {
   min-height: calc(100dvh - 7rem);
   align-items: center;
   justify-content: center;
   padding: 1.25rem 1rem 2rem;
+  flex-direction: column;
+  gap: 0;
 }
-
-.setup-step { display: none; flex-direction: column; align-items: center; width: 100%; max-width: 340px; }
-.setup-step.active { display: flex; }
 
 .setup-deco {
   height: 40px;
@@ -246,7 +186,6 @@ import Layout from '../../layouts/Layout.astro';
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   gap: 0.25rem;
 }
 
@@ -260,64 +199,14 @@ import Layout from '../../layouts/Layout.astro';
   line-height: 1;
 }
 
-.setup-body h2 {
-  font-size: clamp(1.3rem, 5vw, 1.8rem);
-  margin: 0;
-}
-
 .setup-tagline {
   font-size: 0.85rem;
   color: rgb(var(--color-text-secondary));
   margin: 0.2rem 0 0.8rem;
 }
 
-/* Fields */
-.field-wrap { width: 100%; margin: 0.5rem 0; text-align: left; }
-
-.field-label {
-  display: block;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  color: rgb(var(--color-text-secondary));
-  margin-bottom: 0.3rem;
-  text-transform: uppercase;
-}
-.field-label-gap { margin-top: 0.9rem; }
-
-.field-row {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  border-bottom: 2px solid rgb(var(--color-border));
-  padding-bottom: 0.3rem;
-  transition: border-color 0.15s;
-}
-.field-row:focus-within { border-color: rgb(var(--color-text-primary)); }
-
-.field-input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-size: 1rem;
-  color: rgb(var(--color-text-primary));
-  font-family: inherit;
-  padding: 0;
-}
-.field-input::placeholder { color: rgb(var(--color-text-secondary)); opacity: 0.45; }
-
-.field-tick { font-size: 0.9rem; color: rgb(var(--color-accent)); }
-
-.field-err {
-  font-size: 0.75rem;
-  color: #dc2626;
-  min-height: 1rem;
-  margin-top: 0.2rem;
-}
-.dark .field-err { color: #f87171; }
-
 /* Buttons */
-.btn-next, .btn-play {
+.btn-play {
   margin-top: 1.75rem;
   padding: 0.7rem 2.25rem;
   border: 1.5px solid rgb(var(--color-text-primary));
@@ -330,11 +219,8 @@ import Layout from '../../layouts/Layout.astro';
   cursor: pointer;
   border-radius: 2px;
   transition: background 0.12s, color 0.12s;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
 }
-.btn-next:hover, .btn-play:hover {
+.btn-play:hover {
   background: rgb(var(--color-text-primary));
   color: rgb(var(--color-bg));
 }
@@ -731,19 +617,39 @@ const WIN_GAMES = 6;
 const STORE_KEY = 'g29v2';
 const AI_DELAY  = 650;
 
+// ── Gen 1 Pokémon names ────────────────────────────
+const POKEMON = [
+  'Bulbasaur','Charmander','Squirtle','Caterpie','Pidgey','Rattata','Pikachu',
+  'Clefairy','Vulpix','Jigglypuff','Meowth','Psyduck','Growlithe','Poliwag',
+  'Abra','Machop','Geodude','Slowpoke','Magnemite','Gastly','Drowzee','Krabby',
+  'Voltorb','Cubone','Koffing','Chansey','Tangela','Kangaskhan','Horsea','Goldeen',
+  'Staryu','Scyther','Jynx','Electabuzz','Magmar','Pinsir','Tauros','Magikarp',
+  'Lapras','Ditto','Eevee','Porygon','Snorlax','Articuno','Zapdos','Moltres',
+  'Dratini','Dragonair','Dragonite','Mewtwo',
+];
+
+function randomPokemon(exclude = []) {
+  const pool = POKEMON.filter(n => !exclude.includes(n));
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function pickNames() {
+  const p1 = randomPokemon();
+  const p2 = randomPokemon([p1]);
+  const p3 = randomPokemon([p1, p2]);
+  return ['You', p1, p2, p3];  // [south, west, north, east]
+}
+
 // ── State ──────────────────────────────────────────
-/** @type {import('./types').AppState} */
 let S = freshState();
 
 function freshState() {
   return {
-    screen:   'setup',   // 'setup' | 'game' | 'round' | 'over'
-    step:     1,         // setup step 1-3
-    names:    ['You','Opp1','Mate','Opp2'],  // [south, west, north, east]
-    scores:   [0, 0],    // [team0, team1]; team0=[0,2], team1=[1,3]
-    dealer:   Math.floor(Math.random() * 4),
-    /** @type {Round|null} */
-    round:    null,
+    screen: 'setup',   // 'setup' | 'game' | 'round' | 'over'
+    names:  pickNames(),
+    scores: [0, 0],    // [team0, team1]; team0=[0,2], team1=[1,3]
+    dealer: Math.floor(Math.random() * 4),
+    round:  null,
   };
 }
 
@@ -1072,34 +978,35 @@ function runAIPlay() {
 
 // ── Round/Game result ──────────────────────────────
 function showRoundResult() {
-  const r  = S.round;
-  const t  = team(r.bidder);
+  const r    = S.round;
+  const t    = team(r.bidder);
   const made = r.tPts[t] >= r.bid;
-
-  if (made)   S.scores[t]++;
-  else        S.scores[1 - t]++;
-
+  if (made) S.scores[t]++;
+  else      S.scores[1 - t]++;
   save();
+  renderRoundScreen();
+}
 
-  const n = S.names;
-  const t0name = `${short(n[0],6)} & ${short(n[2],6)}`;
-  const t1name = `${short(n[1],6)} & ${short(n[3],6)}`;
-  const bname  = t === 0 ? t0name : t1name;
+function renderRoundScreen() {
+  const r    = S.round;
+  if (!r) return;
+  const t    = team(r.bidder);
+  const made = r.tPts[t] >= r.bid;
+  const n    = S.names;
+  const t0n  = `${short(n[0],6)} & ${short(n[2],6)}`;
+  const t1n  = `${short(n[1],6)} & ${short(n[3],6)}`;
+  const bname = t === 0 ? t0n : t1n;
 
-  const headline = made
-    ? `Bid made! ${bname} wins the round.`
-    : `Bid failed. ${bname} loses the round.`;
-
-  document.getElementById('round-headline').textContent = headline;
+  document.getElementById('round-headline').textContent =
+    made ? `Bid made! ${bname} wins.` : `Bid failed. ${bname} loses.`;
   document.getElementById('round-detail').innerHTML =
     `Bid was <strong>${r.bid}</strong>. ` +
     `${short(n[0],6)}&nbsp;&amp;&nbsp;${short(n[2],6)}: <strong>${r.tPts[0]}</strong> pts — ` +
     `${short(n[1],6)}&nbsp;&amp;&nbsp;${short(n[3],6)}: <strong>${r.tPts[1]}</strong> pts.`;
-
   document.getElementById('tot-t1').innerHTML =
-    `<div class="total-name">${t0name}</div><div class="total-pts">${S.scores[0]}</div>`;
+    `<div class="total-name">${t0n}</div><div class="total-pts">${S.scores[0]}</div>`;
   document.getElementById('tot-t2').innerHTML =
-    `<div class="total-name">${t1name}</div><div class="total-pts">${S.scores[1]}</div>`;
+    `<div class="total-name">${t1n}</div><div class="total-pts">${S.scores[1]}</div>`;
 
   showScreen('round');
 
@@ -1395,88 +1302,34 @@ function showScreen(name) {
   document.querySelectorAll('.g29-screen').forEach(el => el.classList.remove('active'));
   const map = { setup:'s-setup', game:'s-game', round:'s-round', over:'s-over' };
   document.getElementById(map[name])?.classList.add('active');
-  // Float reset only visible during game
   const resetBtn = document.getElementById('btn-reset');
   if (resetBtn) resetBtn.style.display = (name === 'game') ? '' : 'none';
-}
-
-function showStep(n) {
-  S.step = n;
-  document.querySelectorAll('.setup-step').forEach(el => el.classList.remove('active'));
-  document.getElementById(`step-${n}`)?.classList.add('active');
 }
 
 // ── Reset ──────────────────────────────────────────
 function doReset() {
   S = freshState();
   save();
-  // clear inputs
-  ['inp-name','inp-mate','inp-opp1','inp-opp2'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = '';
-  });
   showScreen('setup');
-  showStep(1);
 }
 
 // ── Wiring ─────────────────────────────────────────
 function wire() {
   const $ = id => document.getElementById(id);
 
-  // Step 1
-  $('btn-1-next').onclick = () => {
-    const v = $('inp-name').value.trim();
-    if (!v) { $('err-name').textContent = 'Enter a name'; return; }
-    $('err-name').textContent = '';
-    S.names[0] = v;
-    save();
-    showStep(2);
-    setTimeout(() => $('inp-mate').focus(), 50);
-  };
+  $('btn-start').onclick = () => { save(); newRound(); };
 
-  // Step 2
-  $('btn-2-next').onclick = () => {
-    const v = $('inp-mate').value.trim();
-    if (!v) { $('err-mate').textContent = 'Enter a name'; return; }
-    $('err-mate').textContent = '';
-    S.names[2] = v;
-    save();
-    showStep(3);
-    setTimeout(() => $('inp-opp1').focus(), 50);
-  };
-  $('btn-2-back').onclick = () => showStep(1);
-
-  // Step 3
-  $('btn-start').onclick = () => {
-    const v1 = $('inp-opp1').value.trim();
-    const v2 = $('inp-opp2').value.trim();
-    if (!v1 || !v2) { $('err-opps').textContent = 'Enter both opponent names'; return; }
-    $('err-opps').textContent = '';
-    S.names[1] = v1;
-    S.names[3] = v2;
-    save();
-    newRound();
-  };
-  $('btn-3-back').onclick = () => showStep(2);
-
-  // Enter-key navigation
-  $('inp-name').onkeydown  = e => e.key === 'Enter' && $('btn-1-next').click();
-  $('inp-mate').onkeydown  = e => e.key === 'Enter' && $('btn-2-next').click();
-  $('inp-opp1').onkeydown  = e => e.key === 'Enter' && $('inp-opp2').focus();
-  $('inp-opp2').onkeydown  = e => e.key === 'Enter' && $('btn-start').click();
-
-  // Post-round buttons
-  $('btn-continue').onclick       = () => startNextRound();
-  $('btn-new-from-round').onclick  = () => doReset();
-  $('btn-play-again').onclick      = () => {
+  $('btn-continue').onclick      = () => startNextRound();
+  $('btn-new-from-round').onclick = () => doReset();
+  $('btn-play-again').onclick    = () => {
     S.scores = [0, 0];
+    S.names  = pickNames();
     S.dealer = Math.floor(Math.random() * 4);
     save();
     newRound();
   };
-  $('btn-new-from-over').onclick   = () => doReset();
+  $('btn-new-from-over').onclick  = () => doReset();
 
-  // Reset float
   $('btn-reset').onclick = () => {
     $('reset-overlay').classList.add('open');
     $('reset-overlay').setAttribute('aria-hidden', 'false');
@@ -1507,44 +1360,12 @@ function init() {
       renderAll();
       scheduleAI();
     } else if (S.screen === 'round') {
-      // Re-show round result
-      showScreen('round');
-      const r = S.round;
-      if (r) {
-        const t    = team(r.bidder);
-        const made = r.tPts[t] >= r.bid;
-        const n    = S.names;
-        const t0n  = `${short(n[0],6)} & ${short(n[2],6)}`;
-        const t1n  = `${short(n[1],6)} & ${short(n[3],6)}`;
-        const bname = t === 0 ? t0n : t1n;
-        document.getElementById('round-headline').textContent =
-          made ? `Bid made! ${bname} wins the round.` : `Bid failed. ${bname} loses the round.`;
-        document.getElementById('round-detail').innerHTML =
-          `Bid was <strong>${r.bid}</strong>. ` +
-          `${short(n[0],6)}&nbsp;&amp;&nbsp;${short(n[2],6)}: <strong>${r.tPts[0]}</strong> pts — ` +
-          `${short(n[1],6)}&nbsp;&amp;&nbsp;${short(n[3],6)}: <strong>${r.tPts[1]}</strong> pts.`;
-        document.getElementById('tot-t1').innerHTML =
-          `<div class="total-name">${t0n}</div><div class="total-pts">${S.scores[0]}</div>`;
-        document.getElementById('tot-t2').innerHTML =
-          `<div class="total-name">${t1n}</div><div class="total-pts">${S.scores[1]}</div>`;
-        if (S.scores[0] >= WIN_GAMES || S.scores[1] >= WIN_GAMES) {
-          document.getElementById('btn-continue').textContent = 'See Final Score';
-          document.getElementById('btn-continue').onclick = () => showGameOver();
-        } else {
-          document.getElementById('btn-continue').onclick = () => startNextRound();
-        }
-      }
+      renderRoundScreen();
     } else if (S.screen === 'over') {
       showGameOver();
     }
   } else {
-    // Fresh start — restore whatever names were entered
     showScreen('setup');
-    showStep(S.step || 1);
-    if (S.names[0] !== 'You')   document.getElementById('inp-name').value  = S.names[0];
-    if (S.names[2] !== 'Mate')  document.getElementById('inp-mate').value  = S.names[2];
-    if (S.names[1] !== 'Opp1')  document.getElementById('inp-opp1').value  = S.names[1];
-    if (S.names[3] !== 'Opp2')  document.getElementById('inp-opp2').value  = S.names[3];
   }
 }
 
