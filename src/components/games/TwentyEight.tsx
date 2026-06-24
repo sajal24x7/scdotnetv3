@@ -122,12 +122,14 @@ function handStrength(hand: Card[]) {
   hand.forEach((c) => (bySuit[c.suit] = (bySuit[c.suit] || 0) + 1));
   return pts + Math.max(...Object.values(bySuit)) * 1.4;
 }
-function aiBidDecision(hand: Card[], currentBid: number): number | null {
+function aiBidDecision(hand: Card[], currentBid: number, mustRaise: boolean): number | null {
   const strength = handStrength(hand);
-  // willing tops out around 22-23 for a very strong hand; exceptional hands may reach 24
-  const willing = Math.min(24, 17 + Math.round(strength * 0.55) + (Math.random() < 0.18 ? 1 : 0));
-  if (currentBid + 1 <= willing) {
-    return Math.min(willing, currentBid + (Math.random() < 0.2 ? 2 : 1));
+  // Conservative: avg hand (strength ~7) tops out ~19-20; very strong hand caps at 21
+  const willing = Math.min(21, 17 + Math.round(strength * 0.38) + (Math.random() < 0.12 ? 1 : 0));
+  const minBid = mustRaise ? currentBid + 1 : currentBid;
+  if (minBid <= willing) {
+    // Almost never jump — stay at the minimum
+    return Math.min(willing, minBid + (Math.random() < 0.12 ? 1 : 0));
   }
   return null;
 }
@@ -189,6 +191,8 @@ interface GameState {
   names: string[]; feedbackOn: boolean; halfBidPenaltyOn: boolean;
   moveTip: { id: number; text: string } | null; moveTipSeq: number;
   handTips: string[]; lastTrickWinner?: number;
+  bidOrder: number[];   // remaining bidders in queue; first two are the active pair
+  mustRaise: boolean;   // true after a match — next bidder cannot match, must raise
 }
 
 const initialState: GameState = {
@@ -202,6 +206,7 @@ const initialState: GameState = {
   names: ["You", "Pikachu", "Partner", "Mewtwo"],
   feedbackOn: true, halfBidPenaltyOn: true,
   moveTip: null, moveTipSeq: 0, handTips: [],
+  bidOrder: [], mustRaise: false,
 };
 
 function addLog(state: GameState, msg: string): GameState {
@@ -244,44 +249,50 @@ function reducer(state: GameState, action: Action): GameState {
       for (let i = 0; i < 16; i++) hands[i % 4].push(deck[i]);
       const restDeck = deck.slice(16);
       const dealer = state.phase === "idle" ? state.dealer : (state.dealer + 1) % 4;
-      const bidTurn = (dealer + 1) % 4;
+      const firstBidder = (dealer + 1) % 4;
+      const bidOrder = [0, 1, 2, 3].map((i) => (firstBidder + i) % 4);
       const round = state.round + 1;
       let s: GameState = {
-        ...state, phase: "bidding", dealer, hands, restDeck, bidTurn,
+        ...state, phase: "bidding", dealer, hands, restDeck,
+        bidTurn: firstBidder, bidOrder, mustRaise: false,
         currentBid: 16, highBidder: null, passed: [false, false, false, false],
         caller: null, trumpSuit: null, trumpRevealed: false, trick: [],
         leadSuit: null, tricksPlayed: 0, teamPoints: { 0: 0, 1: 0 },
         lastResult: null, round, handTips: [],
       };
-      s = addLog(s, `Round ${round}. ${state.names[bidTurn]} bids first.`);
+      s = addLog(s, `Round ${round}. ${state.names[firstBidder]} opens.`);
       s = showBanner(s, `Round ${round}`, "round");
       return s;
     }
     case "BID": {
       const { playerIdx, amount } = action;
-      let s = { ...state, currentBid: amount, highBidder: playerIdx };
-      s = addLog(s, `${state.names[playerIdx]} bids ${amount}.`);
-      if (s.passed.filter((p) => !p).length === 1) {
-        s.caller = playerIdx; s.phase = "choose-trump";
-        s = addLog(s, `${state.names[playerIdx]} wins bid at ${amount}.`);
-        return s;
-      }
-      s.bidTurn = nextActive(playerIdx, s.passed);
+      // Is this a match (same level) or a raise?
+      const isMatch = state.highBidder !== null && amount === state.currentBid;
+      const mustRaise = isMatch; // after a match the other player must raise
+      let s = { ...state, currentBid: amount, highBidder: playerIdx, mustRaise };
+      s = addLog(s, `${state.names[playerIdx]} ${isMatch ? "matches" : "bids"} ${amount}.`);
+      // Next turn is the other player in the active pair (bidOrder[0] and bidOrder[1])
+      const nextInPair = s.bidOrder[0] === playerIdx ? s.bidOrder[1] : s.bidOrder[0];
+      s = { ...s, bidTurn: nextInPair };
       return s;
     }
     case "PASS": {
       const { playerIdx } = action;
       const passed = [...state.passed];
       passed[playerIdx] = true;
-      let s = addLog({ ...state, passed }, `${state.names[playerIdx]} passes.`);
-      if (passed.filter((p) => !p).length === 1) {
-        const last = passed.findIndex((p) => !p);
+      const bidOrder = state.bidOrder.filter((p) => p !== playerIdx);
+      let s = addLog({ ...state, passed, bidOrder }, `${state.names[playerIdx]} passes.`);
+      if (bidOrder.length === 1) {
+        const last = bidOrder[0];
         const finalBid = state.highBidder === null ? 17 : state.currentBid;
-        s = { ...s, caller: last, currentBid: finalBid, phase: "choose-trump" };
-        s = addLog(s, `${state.names[last]} wins bid at ${finalBid}.`);
+        s = { ...s, caller: last, currentBid: finalBid, phase: "choose-trump", bidTurn: last };
+        s = addLog(s, `${state.names[last]} wins the bid at ${finalBid}.`);
         return s;
       }
-      s.bidTurn = nextActive(playerIdx, passed);
+      // New active pair: bidOrder[0] (defender/new-opener) vs bidOrder[1] (new challenger)
+      // New challenger always goes first; mustRaise resets to false (they can match)
+      const nextTurn = state.highBidder !== null ? bidOrder[1] : bidOrder[0];
+      s = { ...s, bidTurn: nextTurn, mustRaise: false };
       return s;
     }
     case "CHOOSE_TRUMP": {
@@ -364,8 +375,8 @@ function reducer(state: GameState, action: Action): GameState {
     }
     case "AI_BID": {
       const { playerIdx } = action;
-      const decision = aiBidDecision(state.hands[playerIdx], state.currentBid);
-      if (decision === null || state.currentBid >= 28)
+      const decision = aiBidDecision(state.hands[playerIdx], state.currentBid, state.mustRaise);
+      if (decision === null)
         return reducer(state, { type: "PASS", playerIdx });
       return reducer(state, { type: "BID", playerIdx, amount: decision });
     }
@@ -393,7 +404,7 @@ function reducer(state: GameState, action: Action): GameState {
     case "TOGGLE_FEEDBACK": return { ...state, feedbackOn: !state.feedbackOn, moveTip: null };
     case "TOGGLE_HALF_BID": return { ...state, halfBidPenaltyOn: !state.halfBidPenaltyOn };
     case "NEW_MATCH": return reducer({ ...state, handsWon: { 0: 0, 1: 0 }, round: 0 }, { type: "DEAL" });
-    case "RESET": return { ...initialState, names: state.names, feedbackOn: state.feedbackOn, halfBidPenaltyOn: state.halfBidPenaltyOn };
+    case "RESET": return { ...initialState, names: state.names, feedbackOn: state.feedbackOn, halfBidPenaltyOn: state.halfBidPenaltyOn, bidOrder: [], mustRaise: false };
     default: return state;
   }
 }
@@ -991,24 +1002,32 @@ export default function TwentyEight() {
               </div>
             )}
 
-            {/* Bidding */}
+            {/* Bidding — my turn */}
             {state.phase === "bidding" && state.bidTurn === 0 && !state.passed[0] && (
               <div>
                 <p style={{ fontSize: 12, color: "var(--game-text-2)", marginBottom: 8 }}>
-                  Your bid — current: <strong style={{ color: "var(--game-text)" }}>{state.currentBid === 16 ? "none" : state.currentBid}</strong>
+                  {state.highBidder !== null && state.highBidder !== 0
+                    ? <>Respond to <strong style={{ color: "var(--game-text)" }}>{state.currentBid}</strong> — match, raise, or pass</>
+                    : state.mustRaise
+                    ? <>You were matched at <strong style={{ color: "var(--game-text)" }}>{state.currentBid}</strong> — raise or pass</>
+                    : <>Open the bidding — minimum 17</>}
                 </p>
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                  {[1, 2, 4].map((step) => {
-                    const amt = Math.min(28, state.currentBid + step);
-                    return (
-                      <button key={step} className="btn-primary"
-                        disabled={amt <= state.currentBid && state.currentBid >= 28}
+                  {(() => {
+                    // can match if: there's an existing bid AND it wasn't us who bid last AND mustRaise is false
+                    const canMatch = state.highBidder !== null && state.highBidder !== 0 && !state.mustRaise;
+                    const minBid = canMatch ? state.currentBid : state.currentBid + 1;
+                    // show up to 3 bid options
+                    const options = [0, 1, 2].map((extra) => Math.min(28, minBid + extra));
+                    const unique = [...new Set(options)];
+                    return unique.map((amt, i) => (
+                      <button key={amt} className="btn-primary"
                         onClick={() => dispatch({ type: "BID", playerIdx: 0, amount: amt })}
                         style={{ fontSize: 13, padding: "8px 16px" }}>
-                        Bid {amt}
+                        {i === 0 && canMatch ? `Match ${amt}` : `Bid ${amt}`}
                       </button>
-                    );
-                  })}
+                    ));
+                  })()}
                   <button className="btn-outline" onClick={() => dispatch({ type: "PASS", playerIdx: 0 })}>
                     Pass
                   </button>
@@ -1016,10 +1035,20 @@ export default function TwentyEight() {
               </div>
             )}
 
-            {/* Waiting on AI bid */}
-            {state.phase === "bidding" && (state.bidTurn !== 0 || state.passed[0]) && (
+            {/* Bidding — AI's turn in my pair */}
+            {state.phase === "bidding" && state.bidTurn !== 0 && !state.passed[0]
+              && (state.bidOrder[0] === 0 || state.bidOrder[1] === 0) && (
               <p style={{ fontSize: 12, color: "var(--game-text-2)" }}>
-                {state.passed[0] && state.bidTurn !== 0 ? `Waiting for ${state.names[state.bidTurn]}…` : `${state.names[state.bidTurn]} is deciding…`}
+                {state.names[state.bidTurn]} is deciding…
+              </p>
+            )}
+
+            {/* Bidding — waiting to enter */}
+            {state.phase === "bidding" && !state.passed[0]
+              && state.bidOrder.indexOf(0) > 1 && (
+              <p style={{ fontSize: 12, color: "var(--game-text-2)" }}>
+                Watching {state.names[state.bidOrder[0]]} vs {state.names[state.bidOrder[1]]}
+                {state.currentBid > 16 ? ` at ${state.currentBid}` : ""}…
               </p>
             )}
 
