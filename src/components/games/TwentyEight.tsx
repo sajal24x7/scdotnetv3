@@ -124,9 +124,10 @@ function handStrength(hand: Card[]) {
 }
 function aiBidDecision(hand: Card[], currentBid: number): number | null {
   const strength = handStrength(hand);
-  const willing = Math.min(28, 13 + Math.round(strength * 1.15) + (Math.random() < 0.3 ? 1 : 0));
-  if (currentBid + 1 <= willing && currentBid < 28) {
-    return Math.min(willing, currentBid + (Math.random() < 0.25 ? 2 : 1), 28);
+  // willing tops out around 22-23 for a very strong hand; exceptional hands may reach 24
+  const willing = Math.min(24, 17 + Math.round(strength * 0.55) + (Math.random() < 0.18 ? 1 : 0));
+  if (currentBid + 1 <= willing) {
+    return Math.min(willing, currentBid + (Math.random() < 0.2 ? 2 : 1));
   }
   return null;
 }
@@ -192,7 +193,7 @@ interface GameState {
 
 const initialState: GameState = {
   phase: "idle", dealer: 3, hands: [[], [], [], []],
-  restDeck: [], bidTurn: 0, currentBid: 13, highBidder: null,
+  restDeck: [], bidTurn: 0, currentBid: 16, highBidder: null,
   passed: [false, false, false, false], caller: null,
   trumpSuit: null, trumpRevealed: false, trick: [], leadSuit: null,
   turn: 0, teamPoints: { 0: 0, 1: 0 }, handsWon: { 0: 0, 1: 0 },
@@ -247,7 +248,7 @@ function reducer(state: GameState, action: Action): GameState {
       const round = state.round + 1;
       let s: GameState = {
         ...state, phase: "bidding", dealer, hands, restDeck, bidTurn,
-        currentBid: 13, highBidder: null, passed: [false, false, false, false],
+        currentBid: 16, highBidder: null, passed: [false, false, false, false],
         caller: null, trumpSuit: null, trumpRevealed: false, trick: [],
         leadSuit: null, tricksPlayed: 0, teamPoints: { 0: 0, 1: 0 },
         lastResult: null, round, handTips: [],
@@ -275,7 +276,7 @@ function reducer(state: GameState, action: Action): GameState {
       let s = addLog({ ...state, passed }, `${state.names[playerIdx]} passes.`);
       if (passed.filter((p) => !p).length === 1) {
         const last = passed.findIndex((p) => !p);
-        const finalBid = state.highBidder === null ? 14 : state.currentBid;
+        const finalBid = state.highBidder === null ? 17 : state.currentBid;
         s = { ...s, caller: last, currentBid: finalBid, phase: "choose-trump" };
         s = addLog(s, `${state.names[last]} wins bid at ${finalBid}.`);
         return s;
@@ -994,7 +995,7 @@ export default function TwentyEight() {
             {state.phase === "bidding" && state.bidTurn === 0 && !state.passed[0] && (
               <div>
                 <p style={{ fontSize: 12, color: "var(--game-text-2)", marginBottom: 8 }}>
-                  Your bid — current: <strong style={{ color: "var(--game-text)" }}>{state.currentBid === 13 ? "none" : state.currentBid}</strong>
+                  Your bid — current: <strong style={{ color: "var(--game-text)" }}>{state.currentBid === 16 ? "none" : state.currentBid}</strong>
                 </p>
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                   {[1, 2, 4].map((step) => {
