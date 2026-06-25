@@ -116,6 +116,23 @@ function nextActive(from: number, passed: boolean[]) {
   return p;
 }
 
+// Reorder remaining bidders so positions 0 & 1 are always from opposing teams.
+// The high bidder (if any) is anchored at position 0.
+function teamAwareBidOrder(remaining: number[], highBidder: number | null): number[] {
+  let ordered = [...remaining];
+  if (highBidder !== null && ordered.includes(highBidder)) {
+    ordered = [highBidder, ...ordered.filter(p => p !== highBidder)];
+  }
+  if (ordered.length >= 2 && ordered[0] % 2 === ordered[1] % 2) {
+    const oppIdx = ordered.findIndex((p, i) => i > 1 && p % 2 !== ordered[0] % 2);
+    if (oppIdx !== -1) {
+      const opp = ordered[oppIdx];
+      ordered = [ordered[0], opp, ...ordered.filter((_, i) => i !== 0 && i !== oppIdx)];
+    }
+  }
+  return ordered;
+}
+
 function handStrength(hand: Card[]) {
   const pts = hand.reduce((s, c) => s + POINTS[c.rank], 0);
   const bySuit: Record<string, number> = {};
@@ -280,19 +297,33 @@ function reducer(state: GameState, action: Action): GameState {
       const { playerIdx } = action;
       const passed = [...state.passed];
       passed[playerIdx] = true;
-      const bidOrder = state.bidOrder.filter((p) => p !== playerIdx);
-      let s = addLog({ ...state, passed, bidOrder }, `${state.names[playerIdx]} passes.`);
-      if (bidOrder.length === 1) {
-        const last = bidOrder[0];
+      const remaining = state.bidOrder.filter((p) => p !== playerIdx);
+      let s = addLog({ ...state, passed }, `${state.names[playerIdx]} passes.`);
+      if (remaining.length === 1) {
+        const last = remaining[0];
         const finalBid = state.highBidder === null ? 17 : state.currentBid;
-        s = { ...s, caller: last, currentBid: finalBid, phase: "choose-trump", bidTurn: last };
+        s = { ...s, bidOrder: remaining, caller: last, currentBid: finalBid, phase: "choose-trump", bidTurn: last };
         s = addLog(s, `${state.names[last]} wins the bid at ${finalBid}.`);
         return s;
       }
-      // New active pair: bidOrder[0] (defender/new-opener) vs bidOrder[1] (new challenger)
-      // New challenger always goes first; mustRaise resets to false (they can match)
+      // Check if one team has no remaining bidders
+      const t0 = remaining.filter(p => p % 2 === 0);
+      const t1 = remaining.filter(p => p % 2 === 1);
+      if (t0.length === 0 || t1.length === 0) {
+        const winnerQ = t0.length > 0 ? t0 : t1;
+        const last = (state.highBidder !== null && winnerQ.includes(state.highBidder))
+          ? state.highBidder : winnerQ[0];
+        const finalBid = state.highBidder === null ? 17 : state.currentBid;
+        s = { ...s, bidOrder: [last], caller: last, currentBid: finalBid, phase: "choose-trump", bidTurn: last };
+        s = addLog(s, `${state.names[last]} wins the bid at ${finalBid}.`);
+        return s;
+      }
+      // Ensure opposing teams stay in the active pair (positions 0 and 1)
+      const bidOrder = teamAwareBidOrder(remaining, state.highBidder);
+      // Next: the passer's replacement responds (position 1 if there's a high bidder,
+      // position 0 if no one has bid yet)
       const nextTurn = state.highBidder !== null ? bidOrder[1] : bidOrder[0];
-      s = { ...s, bidTurn: nextTurn, mustRaise: false };
+      s = { ...s, bidOrder, bidTurn: nextTurn, mustRaise: false };
       return s;
     }
     case "CHOOSE_TRUMP": {
@@ -464,22 +495,43 @@ function CardBacks({ count, vertical = false }: { count: number; vertical?: bool
   );
 }
 
-function PlayerSeat({ name, cardCount, active, layout }: {
+type BidRole = "high" | "challenge" | "watching" | "passed" | null;
+
+function PlayerSeat({ name, cardCount, active, layout, bidRole, bidAmt }: {
   name: string; cardCount: number; active: boolean;
   layout: "top" | "left" | "right";
+  bidRole?: BidRole; bidAmt?: number | null;
 }) {
   const label = (
     <span style={{
       fontSize: 9, fontWeight: active ? 700 : 400, lineHeight: 1.2,
-      color: active ? "var(--game-accent)" : "var(--game-text-2)",
+      color: active ? "var(--game-accent)" : bidRole === "passed" ? "var(--game-text-2)" : "var(--game-text-2)",
       textAlign: "center", maxWidth: 56, wordBreak: "break-word",
+      opacity: bidRole === "passed" ? 0.45 : 1,
     }}>
       {name}{active ? " ▸" : ""}
     </span>
   );
+
+  const badge =
+    bidRole === "high" ? (
+      <span className="bid-chip-high">{bidAmt ?? "?"}</span>
+    ) : bidRole === "challenge" ? (
+      <span className="bid-chip-challenge">vs</span>
+    ) : bidRole === "passed" ? (
+      <span className="bid-chip-passed">pass</span>
+    ) : bidRole === "watching" ? (
+      <span className="bid-chip-watching">wait</span>
+    ) : null;
+
+  const seatClass =
+    bidRole === "high" ? "seat-bid-high" :
+    bidRole === "challenge" ? "seat-bid-challenge" : "";
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+    <div className={seatClass} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
       {label}
+      {badge}
       <CardBacks count={cardCount} vertical={layout !== "top"} />
     </div>
   );
@@ -585,6 +637,16 @@ export default function TwentyEight() {
   const target0 = callerTeam === null ? null : callerTeam === 0 ? state.currentBid : 29 - state.currentBid;
   const target1 = callerTeam === null ? null : callerTeam === 1 ? state.currentBid : 29 - state.currentBid;
   const seat = (idx: number) => state.trick.find((t) => t.player === idx);
+
+  const getBidRole = (idx: number): BidRole => {
+    if (state.phase !== "bidding") return null;
+    if (state.passed[idx]) return "passed";
+    const pos = state.bidOrder.indexOf(idx);
+    if (pos === -1) return "passed";
+    if (pos === 0 || pos === 1) return state.highBidder === idx ? "high" : "challenge";
+    return "watching";
+  };
+  const bidAmt = state.phase === "bidding" && state.highBidder !== null ? state.currentBid : null;
 
   const tn = teamNames(state.names);
 
@@ -833,6 +895,31 @@ export default function TwentyEight() {
         .player-name { font-size: 10px; color: var(--game-text-2); text-align: center; }
         .player-name.active-turn { color: var(--game-accent); font-weight: 600; }
 
+        /* Bid status badges */
+        .bid-chip-high {
+          font-size: 9px; font-weight: 700; line-height: 1;
+          background: var(--game-accent); color: var(--game-accent-text);
+          border-radius: 6px; padding: 1px 5px;
+        }
+        .bid-chip-challenge {
+          font-size: 9px; line-height: 1;
+          color: var(--game-text-2);
+          border: 1px dashed var(--game-text-2);
+          border-radius: 6px; padding: 1px 5px;
+        }
+        .bid-chip-passed { font-size: 9px; color: var(--game-text-2); opacity: 0.45; line-height: 1; }
+        .bid-chip-watching { font-size: 9px; color: var(--game-text-2); opacity: 0.6; line-height: 1; }
+
+        /* Seat ring for active bidders */
+        .seat-bid-high {
+          outline: 2px solid var(--game-accent);
+          border-radius: 8px; padding: 3px;
+        }
+        .seat-bid-challenge {
+          outline: 1.5px dashed var(--game-text-2);
+          border-radius: 8px; padding: 3px;
+        }
+
         /* Table area */
         .table-area {
           flex: 1;
@@ -963,6 +1050,8 @@ export default function TwentyEight() {
                 cardCount={state.hands[2].length}
                 active={state.phase === "playing" && state.turn === 2}
                 layout="top"
+                bidRole={getBidRole(2)}
+                bidAmt={state.highBidder === 2 ? bidAmt : null}
               />
 
               {/* Middle row: left · trick · right */}
@@ -972,6 +1061,8 @@ export default function TwentyEight() {
                   cardCount={state.hands[1].length}
                   active={state.phase === "playing" && state.turn === 1}
                   layout="left"
+                  bidRole={getBidRole(1)}
+                  bidAmt={state.highBidder === 1 ? bidAmt : null}
                 />
 
                 {/* Trick area */}
@@ -1001,6 +1092,8 @@ export default function TwentyEight() {
                   cardCount={state.hands[3].length}
                   active={state.phase === "playing" && state.turn === 3}
                   layout="right"
+                  bidRole={getBidRole(3)}
+                  bidAmt={state.highBidder === 3 ? bidAmt : null}
                 />
               </div>
             </div>
@@ -1058,17 +1151,29 @@ export default function TwentyEight() {
             {/* Bidding — AI's turn in my pair */}
             {state.phase === "bidding" && state.bidTurn !== 0 && !state.passed[0]
               && (state.bidOrder[0] === 0 || state.bidOrder[1] === 0) && (
-              <p style={{ fontSize: 12, color: "var(--game-text-2)" }}>
-                {state.names[state.bidTurn]} is deciding…
-              </p>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <p style={{ fontSize: 12, color: "var(--game-text-2)" }}>
+                  {state.names[state.bidTurn]} is deciding…
+                </p>
+                {getBidRole(0) === "high" && bidAmt !== null && (
+                  <span className="bid-chip-high">You: {bidAmt}</span>
+                )}
+                {getBidRole(0) === "challenge" && (
+                  <span className="bid-chip-challenge">you respond next</span>
+                )}
+              </div>
             )}
 
             {/* Bidding — waiting to enter */}
             {state.phase === "bidding" && !state.passed[0]
               && state.bidOrder.indexOf(0) > 1 && (
               <p style={{ fontSize: 12, color: "var(--game-text-2)" }}>
-                Watching {state.names[state.bidOrder[0]]} vs {state.names[state.bidOrder[1]]}
-                {state.currentBid > 16 ? ` at ${state.currentBid}` : ""}…
+                Watching{" "}
+                <strong style={{ color: "var(--game-accent)" }}>{state.names[state.bidOrder[0]]}</strong>
+                {" "}vs{" "}
+                <strong style={{ color: "var(--game-text)" }}>{state.names[state.bidOrder[1]]}</strong>
+                {state.currentBid > 16 ? <> — high bid: <strong style={{ color: "var(--game-accent)" }}>{state.currentBid}</strong></> : ""}
+                {" "}(you enter when one passes)
               </p>
             )}
 
