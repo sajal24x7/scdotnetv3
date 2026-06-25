@@ -441,25 +441,23 @@ function PlayingCard({ card, small = false, faded = false, onClick, disabled = f
   );
 }
 
-// Fanned overlapping card backs — horizontal (top) or vertical (sides)
-function FannedCards({ count, vertical = false }: { count: number; vertical?: boolean }) {
-  if (count === 0) return <div style={{ width: vertical ? 18 : 32, height: vertical ? 32 : 18 }} />;
-  const CW = 18, CH = 26; // card dimensions
-  const STEP = 7;          // how much each card peeks out from behind the previous
-  const totalW = vertical ? CW : CW + (count - 1) * STEP;
-  const totalH = vertical ? CH + (count - 1) * STEP : CH;
+// Non-overlapping row/column of card backs
+function CardBacks({ count, vertical = false }: { count: number; vertical?: boolean }) {
+  if (count === 0) return null;
   return (
-    <div style={{ position: "relative", width: totalW, height: totalH, flexShrink: 0 }}>
+    <div style={{
+      display: "flex",
+      flexDirection: vertical ? "column" : "row",
+      gap: 3,
+      flexShrink: 0,
+    }}>
       {Array.from({ length: count }).map((_, i) => (
         <div key={i} style={{
-          position: "absolute",
-          left: vertical ? 0 : i * STEP,
-          top: vertical ? i * STEP : 0,
-          width: CW, height: CH,
+          width: 18, height: 25,
           borderRadius: 3,
           background: "var(--game-card-back)",
           border: "1px solid var(--game-card-border)",
-          zIndex: i,
+          flexShrink: 0,
         }} />
       ))}
     </div>
@@ -479,18 +477,10 @@ function PlayerSeat({ name, cardCount, active, layout }: {
       {name}{active ? " ▸" : ""}
     </span>
   );
-  const fan = <FannedCards count={cardCount} vertical={layout !== "top"} />;
-  if (layout === "top") {
-    return (
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-        {label}{fan}
-      </div>
-    );
-  }
-  // left / right — label above, cards below
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-      {label}{fan}
+      {label}
+      <CardBacks count={cardCount} vertical={layout !== "top"} />
     </div>
   );
 }
