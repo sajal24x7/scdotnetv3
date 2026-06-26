@@ -1,12 +1,15 @@
 ---
-title: "Apple Increases Price of its Gadgets"
-slug: "apple-increases-price-of-its-gadgets"
-created: 2026-06-26T06:38:52+03:00
-updated: 2026-06-26T06:38:52+03:00
+title: Apple Increases Price of its Gadgets
+slug: apple-increases-price-of-its-gadgets
+created: 2026-06-26T03:38:52.000Z
+updated: 2026-06-26T03:38:52.000Z
 category: micro
 tags:
   - apple
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116814946620213560'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mp6cblel752r'
+  - 'https://www.threads.com/@sajal24x7/post/DaCepF8HHu9'
 ---
 [It’s a bad time to want a new computer by Jay Peters](https://www.theverge.com/tech/957151/ram-crisis-component-shortage-prices-computer-apple-microsoft-valve)
 
