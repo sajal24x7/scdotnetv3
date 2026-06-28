@@ -1,16 +1,19 @@
 ---
-title: "From Cooking to Pride"
-slug: "nl111-from-cooking-to-pride"
+title: From Cooking to Pride
+slug: nl111-from-cooking-to-pride
 edition: 111
-image: https://storage.sajalchoudhary.net/images/2026/06/nl111-08.jpeg
-created: 2026-06-28T23:39:44+03:00
-updatedDate: 2026-06-28T23:39:44+03:00
+image: 'https://storage.sajalchoudhary.net/images/2026/06/nl111-08.jpeg'
+created: 2026-06-28T20:39:44.000Z
+updatedDate: 2026-06-28T20:39:44.000Z
 category: nordletter
 tags:
   - pride-day
   - helsinki
   - finland
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116829669178595869'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpetimxp6h2o'
+  - 'https://www.threads.com/@sajal24x7/post/DaJLIGEkvEz'
 ---
 Hello from my home in Helsinki! This is NordLetter #111, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
