@@ -18,6 +18,8 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mowt6eahlu2e'
   - 'https://www.threads.com/@sajal24x7/post/DZ609tunIRg'
 cover: the-sixth-extinction.jpg
+rating: love
+finished: 2026-06-28T08:27:38+03:00
 ---
 Started reading.
 

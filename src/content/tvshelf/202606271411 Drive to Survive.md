@@ -7,10 +7,10 @@ category: tvshelf
 tags:
   - f1
 showTitle: Drive to Survive
-season: 8
+season: 7
 creator:
   - James Gay Rees
-started: 2026-06-14T04:24:07.000Z
+started: 2026-06-21T04:24:07.000Z
 genre: documentary
 platform: Netflix
 shelfStatus: watching
