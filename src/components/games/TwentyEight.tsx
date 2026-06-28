@@ -193,6 +193,7 @@ interface LastResult {
   callerPts: number; defTeam: number; defPts: number;
   winningTeam: number; tips: string[];
   underHalf: boolean; pointsAwarded: number; matchOver: boolean;
+  lastTrickTeam: number;
 }
 interface GameState {
   phase: string; dealer: number; hands: Card[][];
@@ -379,27 +380,34 @@ function reducer(state: GameState, action: Action): GameState {
       let s: GameState = { ...state, trick: [], leadSuit: null, turn: state.lastTrickWinner! };
       if (s.tricksPlayed >= 8) {
         const callerTeam = s.caller! % 2;
-        const made = s.teamPoints[callerTeam] >= s.currentBid;
+        // Last trick winner gets the bonus point (making total 29)
+        const lastTrickTeam = state.lastTrickWinner! % 2;
+        const teamPoints = { ...s.teamPoints, [lastTrickTeam]: s.teamPoints[lastTrickTeam] + 1 };
+        s = { ...s, teamPoints };
+        const made = teamPoints[callerTeam] >= s.currentBid;
         const winningTeam = made ? callerTeam : 1 - callerTeam;
-        const underHalf = !made && s.halfBidPenaltyOn && s.teamPoints[callerTeam] < s.currentBid / 2;
+        const underHalf = !made && s.halfBidPenaltyOn && teamPoints[callerTeam] < s.currentBid / 2;
         const pointsAwarded = underHalf ? 2 : 1;
         const handsWon = { ...s.handsWon, [winningTeam]: s.handsWon[winningTeam] + pointsAwarded };
         const matchOver = handsWon[winningTeam] >= MATCH_TARGET;
         s = {
           ...s, phase: "hand-end", handsWon,
           lastResult: {
-            callerTeam, made, bid: s.currentBid, callerPts: s.teamPoints[callerTeam],
-            defTeam: 1 - callerTeam, defPts: s.teamPoints[1 - callerTeam],
+            callerTeam, made, bid: s.currentBid, callerPts: teamPoints[callerTeam],
+            defTeam: 1 - callerTeam, defPts: teamPoints[1 - callerTeam],
             winningTeam, tips: s.handTips, underHalf, pointsAwarded, matchOver,
+            lastTrickTeam,
           },
         };
+        const tn2 = teamNames(state.names);
+        s = addLog(s, `${tn2[lastTrickTeam]} win last trick (+1 bonus).`);
         s = addLog(s, made
-          ? `${teamNames(state.names)[callerTeam]} made the bid!`
+          ? `${tn2[callerTeam]} made the bid!`
           : underHalf
-          ? `${teamNames(state.names)[callerTeam]} fell under half — double point to ${teamNames(state.names)[1 - callerTeam]}.`
-          : `${teamNames(state.names)[callerTeam]} fell short. ${teamNames(state.names)[1 - callerTeam]} wins the hand.`);
+          ? `${tn2[callerTeam]} fell under half — double point to ${tn2[1 - callerTeam]}.`
+          : `${tn2[callerTeam]} fell short. ${tn2[1 - callerTeam]} wins the hand.`);
         if (matchOver) {
-          s = showBanner(s, `${teamNames(state.names)[winningTeam]} win!`, "match");
+          s = showBanner(s, `${tn2[winningTeam]} win!`, "match");
         }
       }
       return s;
@@ -1236,7 +1244,10 @@ export default function TwentyEight() {
                   </p>
                 )}
                 <p style={{ fontSize: 13 }}>
-                  {tn[state.lastResult.callerTeam]} bid {state.lastResult.bid}, scored {state.lastResult.callerPts}.{" "}
+                  {tn[state.lastResult.callerTeam]} bid {state.lastResult.bid}, scored {state.lastResult.callerPts}{" "}
+                  <span style={{ fontSize: 11, color: "var(--game-text-2)" }}>
+                    (+1 last trick to {tn[state.lastResult.lastTrickTeam]})
+                  </span>.{" "}
                   <strong>{tn[state.lastResult.winningTeam]}</strong> win the hand
                   {state.lastResult.pointsAwarded > 1 ? " (double — under half)" : ""}.
                 </p>
