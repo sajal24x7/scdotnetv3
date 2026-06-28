@@ -11,13 +11,14 @@
             "id": "26eff8e7ea3fa54d",
             "type": "leaf",
             "state": {
-              "type": "bases",
+              "type": "markdown",
               "state": {
-                "file": "Untitled.base",
-                "viewName": "Table"
+                "file": "blog/202606031121 State of Play June.md",
+                "mode": "source",
+                "source": true
               },
-              "icon": "lucide-table",
-              "title": "Untitled"
+              "icon": "lucide-file",
+              "title": "202606031121 State of Play June"
             }
           }
         ]
@@ -77,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "f55f7181fb3b5765",
@@ -170,34 +172,34 @@
       "zk-prefixer:Create new unique note": false
     }
   },
-  "active": "716cd86a29cef966",
+  "active": "26eff8e7ea3fa54d",
   "lastOpenFiles": [
-    "2026/202602152230 NL92.md",
-    "2026/202602120921 You can tell Threads what you want to see in your feed.md",
-    "2026/202602112044 Europe takes a step toward post dollar world.md",
-    "2026/202602102149 LinkedIn is too damn much.md",
-    "2026/202602102017 Nothing and it’s vibe coded apps have problems.md",
-    "2026/202602091205 How iPhones made a surprising comeback in China.md",
-    "2026/202602090931 Stop generating start thinking.md",
-    "2026/202602081058 NL91 - The wedding edition.md",
-    "2026/202602072058 Anthropic didn’t want us to know that they were destroying millions of books to feed their software.md",
-    "2026/202602040032 Reasons to have kids.md",
-    "2026/202602040000 Claude Sonnet 5 coming soon.md",
-    "2026/202602030421 Die with zero.md",
-    "2026/202602030340 NPP updates got hijacked for a month.md",
-    "2026/202602011017 A Facebook for bots.md",
-    "2026/202602010846 SpaceX seeks approval for 1 million DCs in space.md",
-    "2026/202602010842 Beautiful pictures from icy Finland.md",
-    "2026/202601312353 Write a letter to your child.md",
-    "2026/202601311224 Mass market paperbacks are on the decline.md",
-    "2026/202601310950 NL90.md",
-    "2026/202601310132 Apple will deploy Pro and fold iPhones in September and standard iPhone later.md",
-    "2026/202601301406 Tesla will discontinue Model S and X.md",
-    "2026/202601301357 Microsoft is working to fix Windows 11.md",
-    "2026/202601291428 Zuck wants AI as the new feed.md",
-    "2026/202601281508 Bird by bird.md",
-    "2026/202601271820 Dune.md",
-    "2026/202601271142 Finland starts work on national segregation prevention programme.md",
+    "nordletter/202606252034 NL111 - From Cooking to Pride.md",
+    "nordletter/202606192030 NL110 - Hanko Midsummer Picnic.md",
+    "til/202603301610 Generators in python 2.md",
+    "poem/201601172135 My muse.md",
+    "micro/202606181052 Apple will increase the prices of its devices.md",
+    "micro/202606162235 SpaceX Buys Cursor for 60 Billion.md",
+    "tvshelf/202606140720 Drive to Survive.md",
+    "bookshelf/202606160715 The Selfish Gene.md",
+    "blog/202604161559 Vibe Coding April Meetup.md",
+    "poem/201603150000 It.md",
+    "blog/201602282248 Some numbers.md",
+    "blog/201602262214 Does setting a goal really help you.md",
+    "blog/201602230000 What to say to someone who.md",
+    "blog/201602202113 What if life were a game.md",
+    "blog/201602182227 Why do you fight.md",
+    "blog/201602152202 Why persistence matters.md",
+    "blog/201602140000 What is love.md",
+    "blog/201602102120 Why happiness never seems to last.md",
+    "blog/201602072056 Why you should spend a little less time working.md",
+    "blog/201602032100 On writing the numbers.md",
+    "poem/201601312100 Everything withers away.md",
+    "blog/201601272244 On sx.md",
+    "blog/201601242147 On the competitive aspect of things.md",
+    "blog/201601202103 Letters to an imaginary girlfriend Two.md",
+    "201601172135 My muse.md",
+    "blog/201601132059 On emotions.md",
     "Untitled.base",
     "2020",
     "2026/202601032141 NL 86 - A new year.txt",
