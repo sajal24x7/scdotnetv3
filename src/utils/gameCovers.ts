@@ -1,5 +1,5 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2026-06-21T07:56:09.803Z
+// Generated on: 2026-06-28T06:59:41.179Z
 // Found 1 image(s): ghost-of-yotei.png
 
 import ghost_of_yotei_png from '../images/gameshelf/ghost-of-yotei.png';

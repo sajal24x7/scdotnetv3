@@ -1,5 +1,5 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2026-06-21T08:05:08.119Z
+// Generated on: 2026-06-28T07:06:25.394Z
 // Found 2 image(s): drive-to-survive.jpg, glory.jpg
 
 import drive_to_survive_jpg from '../images/tvshelf/drive-to-survive.jpg';
