@@ -27,7 +27,7 @@ I am reading [[202606201845 The Sixth Extinction|The Sixth Extinction]] right no
 
 This book contains stories, which follow a similar theme, the author goes to a place, describes the place, notices some things about people or places that make the description special, and then talks about how things were, are, or will be.
 
-While reading it, I thought this is a good thing to emulate. This, in fact, is what [[NordLetter.base|Nordletter]] is about. From time to time, I go somewhere, I experience something, and then I write about it. 
+While reading it, I thought this is a good thing to emulate. This, in fact, is what Nordletter is about. From time to time, I go somewhere, I experience something, and then I write about it. 
 
 I like the way [[202606201845 The Sixth Extinction|The Sixth Extinction]] is written. It is entertaining. And that's what a Nordletter has to be over and above anything else.
 
