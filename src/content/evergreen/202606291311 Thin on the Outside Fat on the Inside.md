@@ -1,13 +1,16 @@
 ---
-title: "Thin on the Outside Fat on the Inside"
-slug: "thin-on-the-outside-fat-on-the-inside"
-created: 2026-06-29T13:19:46+03:00
-updated: 2026-06-29T13:19:46+03:00
+title: Thin on the Outside Fat on the Inside
+slug: thin-on-the-outside-fat-on-the-inside
+created: 2026-06-29T10:19:46.000Z
+updated: 2026-06-29T10:19:46.000Z
 category: evergreen
 tags:
   - diabetes
   - health
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116832890982794481'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpgbbqew4m26'
+  - 'https://www.threads.com/@sajal24x7/post/DaKo5EUln2N'
 ---
 TOFI not Tofu (the food). Read first about it in [The Diabetes Code](#)
 
