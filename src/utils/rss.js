@@ -1,5 +1,6 @@
 import sanitizeHtml from 'sanitize-html';
 import { parseMarkdown } from './markdown';
+import { convertWikilinks } from './remarkWikilinks';
 
 export const rssNamespaces = {
   media: "http://search.yahoo.com/mrss/",
@@ -19,7 +20,7 @@ const sanitizeOptions = {
 export async function buildRssItem(item) {
   let content = '';
   if (typeof item.body === 'string') {
-    content = sanitizeHtml(parseMarkdown(item.body), sanitizeOptions);
+    content = sanitizeHtml(parseMarkdown(await convertWikilinks(item.body)), sanitizeOptions);
   } else {
     content = item.data.description || '';
   }
