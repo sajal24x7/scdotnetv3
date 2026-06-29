@@ -1,6 +1,6 @@
 ---
-title: From Cooking to Pride
-slug: nl111-from-cooking-to-pride
+title: Love is Love
+slug: nl111-love-is-love
 edition: 111
 image: 'https://storage.sajalchoudhary.net/images/2026/06/nl111-08.jpeg'
 created: 2026-06-28T20:39:44.000Z
