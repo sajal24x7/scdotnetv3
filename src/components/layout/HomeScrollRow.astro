@@ -1,0 +1,89 @@
+---
+interface Props {
+    title: string;
+    ctaText?: string;
+    ctaHref?: string;
+}
+
+const { title, ctaText, ctaHref } = Astro.props;
+---
+
+<section class="hsr grid-span-full">
+    <header class="hsr__header">
+        <h2 class="hsr__title">{title}</h2>
+        {ctaHref && (
+            <a href={ctaHref} class="hsr__cta">
+                {ctaText ?? 'See all'}
+            </a>
+        )}
+    </header>
+    <div class="hsr__track">
+        <slot />
+    </div>
+</section>
+
+<style>
+    .hsr {
+        margin-top: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .hsr__header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+    }
+
+    .hsr__title {
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+        font-weight: 700;
+        margin: 0;
+        color: rgb(var(--color-text-primary));
+    }
+
+    .hsr__cta {
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: rgb(var(--color-text-secondary));
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        white-space: nowrap;
+        transition: color 0.15s ease;
+    }
+
+    .hsr__cta:hover,
+    .hsr__cta:focus-visible {
+        color: rgb(var(--color-text-primary));
+    }
+
+    .hsr__cta::after {
+        content: '→';
+        display: inline-block;
+        transition: transform 0.15s ease;
+    }
+
+    .hsr__cta:hover::after {
+        transform: translateX(0.2rem);
+    }
+
+    .hsr__track {
+        display: flex;
+        gap: clamp(0.75rem, 2vw, 1rem);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        /* extra bottom padding so hover shadows aren't clipped */
+        padding-bottom: clamp(0.75rem, 2vw, 1.25rem);
+        /* trailing gap so the last card doesn't feel flush */
+        padding-right: 1rem;
+    }
+
+    .hsr__track::-webkit-scrollbar {
+        display: none;
+    }
+</style>

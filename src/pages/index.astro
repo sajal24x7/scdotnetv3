@@ -1,48 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NewsletterSignup from '../components/ui/NewsletterSignup.astro';
-import StreamList from '../components/layout/StreamList.astro';
-import GardenGrid from '../components/layout/GardenGrid.astro';
-import FeaturedGrid from '../components/layout/FeaturedGrid.astro';
+import HomeScrollRow from '../components/layout/HomeScrollRow.astro';
+import StreamCard from '../components/layout/StreamCard.astro';
+import NordletterScrollRow from '../components/layout/NordletterScrollRow.astro';
+import Card from '../components/Card.astro';
+import BookshelfCard from '../components/bookshelf/BookshelfCard.astro';
 import { Image } from 'astro:assets';
 import BookCover from '../images/books/01-ayom.jpg';
 import ProfileImage from '../images/profile/profile.jpeg';
-import { getAllPosts, getPostsByCategory, transformPost } from '../utils/content';
+import { getAllPosts, getPostsByCategory, transformPost, cleanNordletterTitle, getEditionDisplay } from '../utils/content';
 import type { Post } from '../utils/content';
 
 
 // Get all posts
 const allPosts = await getAllPosts();
-const postsBySlug = new Map(allPosts.map((post) => [post.id, post] as const));
 
-// Build a list of the most recent stream posts across the unified categories
-const streamPostsRaw = getPostsByCategory(allPosts, 'stream', { limit: 5 });
+// Stream: most recent blog, micro, photo posts
+const streamPostsRaw = getPostsByCategory(allPosts, 'stream', { limit: 8 });
 const streamPosts = streamPostsRaw.map(transformPost);
 
-// Curate the latest garden notes, stories, til entries, and more
-const gardenPostsRaw = getPostsByCategory(allPosts, 'garden', { limit: 9 });
+// Bookshelf: most recently added books
+const bookshelfPostsRaw = getPostsByCategory(allPosts, ['bookshelf'], { limit: 8 });
+const bookshelfPosts = bookshelfPostsRaw.map(transformPost);
+
+// Garden: evergreen notes and TIL posts (no shelf)
+const gardenPostsRaw = getPostsByCategory(allPosts, ['evergreen', 'til'], { limit: 8 });
 const gardenPosts = gardenPostsRaw.map(transformPost);
 
-// Load the featured pool from the curated data file
-const { default: homeFeaturedPoolRaw } = await import('../data/homeFeatured.json');
-const homeFeaturedPool = (Array.isArray(homeFeaturedPoolRaw) ? homeFeaturedPoolRaw : []) as string[];
+// Nordletter: most recent issues with edition labels
+const nordletterPostsRaw = getPostsByCategory(allPosts, ['nordletter'], { limit: 8 });
+const nordletterPosts = nordletterPostsRaw.map((post) => {
+    const transformed = transformPost(post);
+    return {
+        ...transformed,
+        data: {
+            ...transformed.data,
+            title: cleanNordletterTitle(transformed.data.title ?? ''),
+            editionDisplay: getEditionDisplay(post.data.edition, post.data.created, post.data.title, post.id),
+        },
+    };
+});
 
-const shufflePosts = <T,>(input: T[]): T[] => {
-    const array = [...input];
-    for (let i = array.length - 1; i > 0; i -= 1) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-};
-
-const featuredCandidates = homeFeaturedPool
-    .map((slug) => postsBySlug.get(slug))
-    .filter((post): post is Post => Boolean(post));
-
-const featuredPosts = shufflePosts(featuredCandidates)
-    .slice(0, 4)
-    .map(transformPost);
+// Fiction: most recent stories and poems
+const fictionPostsRaw = getPostsByCategory(allPosts, ['story', 'poem'], { limit: 8 });
+const fictionPosts = fictionPostsRaw.map(transformPost);
 ---
 
 <Layout
@@ -128,35 +130,67 @@ const featuredPosts = shufflePosts(featuredCandidates)
         </div>
     </section>
 
-    <!-- Writing Section -->
-    <section class="home-section home-section--featured">
-        <div class="home-featured__heading grid-span-full">
-            <h2 class="home-featured__title">Featured</h2>
-        </div>
-        <FeaturedGrid posts={featuredPosts} />
-    </section>
+    <!-- Stream Section -->
+    <HomeScrollRow title="Stream" ctaText="Dip into the stream" ctaHref="/stream/">
+        {streamPosts.map((post) => <StreamCard post={post} />)}
+    </HomeScrollRow>
 
-    <section class="home-section home-section--stream">
-        <div class="home-stream grid-span-full home-stream__col">
-            <div class="home-stream__inner">
-                <h2 class="home-stream__title">Stream</h2>
-                <StreamList posts={streamPosts} />
-                <a href="/stream/" class="home-stream__cta">Dip into the stream</a>
+    <!-- Bookshelf Section -->
+    <HomeScrollRow title="Bookshelf" ctaText="Full shelf" ctaHref="/bookshelf/">
+        {bookshelfPosts.map((post) => (
+            <div class="scroll-slot scroll-slot--wide">
+                <BookshelfCard
+                    title={post.data.title ?? ''}
+                    author={post.data.author}
+                    series={post.data.series}
+                    started={post.data.started}
+                    finished={post.data.finished}
+                    shelfStatus={post.data.shelfStatus as any}
+                    readingProgress={post.data.readingProgress}
+                    rating={post.data.rating}
+                    cover={post.data.cover}
+                    link={post.data.link}
+                    format={post.data.format}
+                    created={post.data.created}
+                />
             </div>
-        </div>
-    </section>
+        ))}
+    </HomeScrollRow>
 
-    <section class="home-section home-section--garden">
-        <div class="home-garden__heading grid-span-full">
-            <h2 class="home-garden__title">Garden</h2>
-        </div>
-        <div class="home-garden__grid grid-span-full" data-garden-grid>
-            <GardenGrid posts={gardenPosts} />
-        </div>
-        <div class="home-garden__footer grid-span-full">
-            <a href="/garden/" class="home-garden__cta">Roam through the garden</a>
-        </div>
-    </section>
+    <!-- Garden Section -->
+    <HomeScrollRow title="Garden" ctaText="Roam the garden" ctaHref="/garden/">
+        {gardenPosts.map((post) => (
+            <div class="scroll-slot">
+                <Card
+                    title={post.data.title}
+                    description={post.data.description}
+                    created={post.data.created}
+                    category={post.data.category}
+                    image={post.data.image}
+                    link={post.data.link}
+                />
+            </div>
+        ))}
+    </HomeScrollRow>
+
+    <!-- Nordletter Section -->
+    <NordletterScrollRow posts={nordletterPosts} />
+
+    <!-- Fiction Section -->
+    <HomeScrollRow title="Fiction" ctaText="Read fiction" ctaHref="/prose/">
+        {fictionPosts.map((post) => (
+            <div class="scroll-slot">
+                <Card
+                    title={post.data.title}
+                    description={post.data.description}
+                    created={post.data.created}
+                    category={post.data.category}
+                    image={post.data.image}
+                    link={post.data.link}
+                />
+            </div>
+        ))}
+    </HomeScrollRow>
 
     <div class="grid-span-full home-footer-spacer" aria-hidden="true"></div>
 </Layout>
@@ -166,6 +200,7 @@ const featuredPosts = shufflePosts(featuredCandidates)
         --grid-row-gap: 0;
     }
 
+    /* sections that participate directly in the 12-col grid must be transparent */
     .home-section {
         display: contents;
     }
@@ -202,109 +237,24 @@ const featuredPosts = shufflePosts(featuredCandidates)
         justify-content: center;
     }
 
-    .home-section--featured,
-    .home-section--stream,
-    .home-section--garden {
-        display: contents;
-    }
-
-    .home-featured__title {
-        font-size: clamp(1.75rem, 5vw, 2.25rem);
-        font-weight: 700;
-        margin: 0;
-        color: rgb(var(--color-text-primary));
-        text-align: center;
-    }
-
-    .home-featured__heading {
-        margin-top: clamp(2rem, 5vw, 3.5rem);
-        margin-bottom: clamp(1.5rem, 3vw, 2rem);
-    }
-
-    .home-section--featured {
-        margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
-    }
-
-    .home-stream {
-        display: flex;
-        padding-block: clamp(2rem, 5vw, 3.5rem);
-    }
-
-    .home-garden__title {
-        font-size: clamp(1.75rem, 5vw, 2.25rem);
-        font-weight: 700;
-        margin: 0;
-        color: rgb(var(--color-text-primary));
-        text-align: center;
-    }
-
-    .home-garden__heading {
-        margin-top: clamp(2rem, 5vw, 3.5rem);
-        margin-bottom: clamp(1.5rem, 3vw, 2rem);
-    }
-
-    .home-garden__grid {
-        margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
-    }
-
-    .home-garden__footer {
-        display: flex;
-    }
-
-    .home-garden__cta,
-    .home-stream__cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        font-weight: 600;
-        font-size: 0.95rem;
-        color: rgb(var(--color-text-primary));
-        text-decoration: none;
-        border-bottom: 1px solid rgba(var(--color-text-primary), 0.2);
-        padding-bottom: 0.15rem;
-        transition: color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .home-garden__cta:hover,
-    .home-garden__cta:focus-visible,
-    .home-stream__cta:hover,
-    .home-stream__cta:focus-visible {
-        color: rgb(var(--color-text-primary));
-        border-bottom-color: rgba(var(--color-text-primary), 0.45);
-    }
-
-    .home-garden__cta:focus-visible,
-    .home-stream__cta:focus-visible {
-        outline: 2px solid rgb(var(--color-accent));
-        outline-offset: 2px;
-    }
-
-    .home-garden__cta::after,
-    .home-stream__cta::after {
-        content: '→';
-        font-size: 0.95em;
-        transition: transform 0.2s ease;
-    }
-
-    .home-garden__cta:hover::after,
-    .home-garden__cta:focus-visible::after,
-    .home-stream__cta:hover::after,
-    .home-stream__cta:focus-visible::after {
-        transform: translateX(0.2rem);
-    }
-
-    .home-stream__inner {
+    /* ── Scroll section card slots ──────────────────────────── */
+    .scroll-slot {
+        width: 15rem;
+        flex-shrink: 0;
+        scroll-snap-align: start;
         display: flex;
         flex-direction: column;
-        gap: clamp(1.25rem, 3vw, 1.75rem);
     }
 
-    .home-stream__title {
-        font-size: clamp(1.75rem, 5vw, 2.25rem);
-        font-weight: 700;
-        margin: 0;
-        color: rgb(var(--color-text-primary));
-        text-align: center;
+    .scroll-slot--wide {
+        width: 18rem;
+    }
+
+    /* Ensure Card fills its slot */
+    .scroll-slot :global(.card),
+    .scroll-slot :global(.book-card) {
+        width: 100%;
+        height: 100%;
     }
 
     .home-footer-spacer {
@@ -312,10 +262,6 @@ const featuredPosts = shufflePosts(featuredCandidates)
     }
 
     @media (min-width: 48rem) {
-        .home-stream__col {
-            grid-column: 2 / span 10;
-        }
-
         .home-book__cover {
             justify-content: flex-start;
             padding-right: clamp(1.25rem, 3vw, 2.5rem);
@@ -328,31 +274,12 @@ const featuredPosts = shufflePosts(featuredCandidates)
         .home-about__content {
             text-align: left;
         }
-
-        .home-stream {
-            padding-block: clamp(2.5rem, 5vw, 4rem);
-        }
     }
 
     @media (max-width: 47.99rem) {
         .home-book__cover,
         .home-about__image {
             margin-bottom: clamp(1.5rem, 5vw, 2rem);
-        }
-
-        .home-stream__title,
-        .home-garden__title {
-            text-align: center;
-        }
-
-        .home-stream__cta,
-        .home-garden__cta {
-            justify-content: center;
-            align-self: center;
-        }
-
-        .home-garden__footer {
-            justify-content: center;
         }
     }
 </style>
