@@ -97,6 +97,26 @@ function resolveWikilink(target: string, index: WikilinkIndex): WikilinkEntry | 
 }
 
 /**
+ * Converts Obsidian-style wikilinks in raw markdown text to standard markdown links.
+ * Use this for contexts where the remark plugin pipeline is unavailable (e.g. RSS feeds).
+ */
+export async function convertWikilinks(text: string): Promise<string> {
+    const index = await getWikilinkIndex();
+    return text.replace(
+        /\[\[([^\]|]+?)(?:\|([^\]]+?))?\]\]/g,
+        (_match, rawTarget: string, rawDisplay: string | undefined) => {
+            const target = rawTarget.trim();
+            const display = rawDisplay?.trim() || target;
+            const entry = resolveWikilink(target, index);
+            if (!entry) {
+                return `[[${rawTarget}${rawDisplay ? `|${rawDisplay}` : ''}]]`;
+            }
+            return `[${display}](${entry.url})`;
+        }
+    );
+}
+
+/**
  * Remark plugin that converts Obsidian-style wikilinks to standard links.
  *
  * Supported syntax:
