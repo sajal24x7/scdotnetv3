@@ -2,7 +2,7 @@
 title: The Sixth Extinction
 slug: the-sixth-extinction
 created: 2026-06-23T06:56:58.000Z
-updated: 2026-06-29T08:27:38+03:00
+updated: 2026-06-29T05:27:38.000Z
 category: bookshelf
 tags:
   - biology
@@ -15,7 +15,11 @@ shelfStatus: read
 started: 2026-06-18T06:56:58.000Z
 cover: the-sixth-extinction.jpg
 rating: love
-finished: 2026-06-28T08:27:38+03:00
+finished: 2026-06-28T05:27:38.000Z
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116832133938788561'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpfwjhsibu2v'
+  - 'https://www.threads.com/@sajal24x7/post/DaKS2-8FtKM'
 ---
 
 ## Review
