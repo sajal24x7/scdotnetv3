@@ -33,7 +33,7 @@ I like the way [[202606201845 The Sixth Extinction|The Sixth Extinction]] is wri
 
 ---
 
-You may or may not have noticed it, but I have made some changes to how I write Nordletter. Since [[202606052132 NL108]]. That had a lot of dialogue in it. 
+You may or may not have noticed it, but I have made some changes to how I write Nordletter. Since [[202606052132 NL108|NL108]]. That had a lot of dialogue in it. 
 
 I was inspired to do it after reading [[202606010843 The Anthropologists|The Anthropologists]]. There was a lot of dialogue in it. Which is not how I used to write Nordletters. I was experimenting and a part of me was dreading it. 
 
