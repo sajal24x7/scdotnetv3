@@ -1,14 +1,17 @@
 ---
-title: "How to Build Container Images"
-slug: "how-to-build-container-images"
-created: 2026-06-30T14:52:59+03:00
-updated: 2026-06-30T14:52:59+03:00
+title: How to Build Container Images
+slug: how-to-build-container-images
+created: 2026-06-30T11:52:59.000Z
+updated: 2026-06-30T11:52:59.000Z
 category: til
 tags:
   - docker
   - container
   - images
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116838919068439708'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpiwwycahv2r'
+  - 'https://www.threads.com/@sajal24x7/post/DaNYVWSmEyD'
 ---
 Container images are built in layers. This allows for shared layers between images and lower actual storage on device.
 
