@@ -1,4 +1,6 @@
 ---
+import TimeDisplay from '../TimeDisplay.astro';
+
 interface Props {
     post: {
         data: {
@@ -8,36 +10,49 @@ interface Props {
             category: string;
             link: string;
         };
+        body?: string;
     };
 }
 
 const { post } = Astro.props;
 const { title, description, created, category, link } = post.data;
 
-const formattedDate = new Intl.DateTimeFormat('en', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-}).format(new Date(created));
-
-const categoryLabels: Record<string, string> = {
-    blog: 'Blog',
-    micro: 'Note',
-    photo: 'Photo',
+// Extract a plain-text excerpt from the raw markdown body.
+// Skips markdown links and blockquotes so we surface the author's own words.
+const getExcerpt = (body: string | undefined, max = 140): string => {
+    if (!body) return '';
+    const lines = body.split('\n');
+    const kept = lines
+        .filter((l) => {
+            const t = l.trim();
+            return t && !t.startsWith('>') && !t.startsWith('[') && !t.startsWith('!');
+        })
+        .join(' ')
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // inline links → label only
+        .replace(/[*_`#]/g, '')                    // remove common markdown punctuation
+        .replace(/\s+/g, ' ')
+        .trim();
+    return kept.length > max ? kept.slice(0, max).trimEnd() + '…' : kept;
 };
-const categoryLabel = categoryLabels[category] ?? category;
+
+// For blog posts use the description; for micro use the body excerpt
+const excerpt = category === 'blog' || category === 'photo'
+    ? description ?? getExcerpt(post.body)
+    : getExcerpt(post.body);
 ---
 
 <article class="stream-card">
     <a href={link} class="stream-card__link">
-        <span class="stream-card__chip">{categoryLabel}</span>
         <h3 class="stream-card__title">{title ?? 'Untitled'}</h3>
-        {description && (
-            <p class="stream-card__desc">{description}</p>
+        {excerpt && (
+            <p class="stream-card__excerpt">{excerpt}</p>
         )}
-        <time class="stream-card__date" datetime={new Date(created).toISOString()}>
-            {formattedDate}
-        </time>
+        <TimeDisplay
+            date={created}
+            format="relative"
+            className="stream-card__date"
+            showTime={false}
+        />
     </a>
 </article>
 
@@ -82,27 +97,8 @@ const categoryLabel = categoryLabels[category] ?? category;
         min-height: 9rem;
     }
 
-    .stream-card__chip {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.2rem 0.5rem;
-        border-radius: 9999px;
-        font-size: 0.65rem;
-        font-weight: 600;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
-        background: rgba(99, 102, 241, 0.1);
-        color: rgb(99, 102, 241);
-        width: fit-content;
-    }
-
-    :global(.dark) .stream-card__chip {
-        background: rgba(129, 140, 248, 0.15);
-        color: rgb(129, 140, 248);
-    }
-
     .stream-card__title {
-        font-size: 1rem;
+        font-size: 0.975rem;
         font-weight: 600;
         line-height: 1.4;
         margin: 0;
@@ -113,13 +109,13 @@ const categoryLabel = categoryLabels[category] ?? category;
         overflow: hidden;
     }
 
-    .stream-card__desc {
+    .stream-card__excerpt {
         font-size: 0.8rem;
-        line-height: 1.5;
+        line-height: 1.55;
         color: rgb(var(--color-text-secondary));
         margin: 0;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
         flex: 1;
@@ -130,5 +126,6 @@ const categoryLabel = categoryLabels[category] ?? category;
         color: rgb(var(--color-text-secondary));
         margin-top: auto;
         opacity: 0.65;
+        display: block;
     }
 </style>
