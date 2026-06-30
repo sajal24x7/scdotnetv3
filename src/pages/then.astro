@@ -7,10 +7,11 @@ import ProgressLayout from '../components/layout/ProgressLayout.astro';
 import { parseMarkdown } from '../utils/markdown';
 import '../styles/progress-page.css';
 
-// Get all posts dynamically across year folders and filter to category 'now' and status 'done'
+// Get all posts dynamically across year folders and filter to category 'now' and status other than 'active'
+// (i.e. 'paused' and 'done'), sorted by most recently touched first
 const allPosts = await getAllPosts();
 const thenNowPosts = allPosts
-  .filter(post => post.data.category === 'now' && post.data.status === 'done')
+  .filter(post => post.data.category === 'now' && post.data.status && post.data.status !== 'active')
   .sort((a, b) => {
     // Sort by updated (end date) descending, fallback to created if no updated
     const aDate = a.data.updated || a.data.created;
@@ -39,7 +40,7 @@ const renderedPosts: ThenPost[] = thenNowPosts.map(post => {
 
 <Layout
   title="Then - Sajal Choudhary"
-  description="Completed tasks and projects that were previously in progress"
+  description="Paused and completed tasks and projects that were previously in progress"
   currentPage="/now/"
   pageWrapper={{
         maxWidth: '7xl',
@@ -56,19 +57,24 @@ const renderedPosts: ThenPost[] = thenNowPosts.map(post => {
 >
     <ProgressLayout
         pageTitle="Then"
-        pageDescription="Completed tasks and projects that were previously in progress. These represent milestones achieved and goals accomplished."
+        pageDescription="Tasks and projects that are no longer active — paused for later, or completed."
         hasItems={renderedPosts.length > 0}
         togglePage="then"
     >
         {renderedPosts.map((post) => (
             <article class="progress-card">
                 <div class="progress-card__meta">
-                    <time
-                        class="progress-card__time"
-                        datetime={post.endDate.toISOString()}
-                    >
-                        {formatDateRange(post.data.created, post.endDate)}
-                    </time>
+                    <div class="progress-card__meta-row">
+                        <time
+                            class="progress-card__time"
+                            datetime={post.endDate.toISOString()}
+                        >
+                            {formatDateRange(post.data.created, post.endDate)}
+                        </time>
+                        <span class={`progress-card__status progress-card__status--${post.data.status}`}>
+                            {post.data.status === 'paused' ? 'Paused' : 'Done'}
+                        </span>
+                    </div>
                     {post.data.title && (
                         <h2 class="progress-card__title">{post.data.title}</h2>
                     )}
@@ -83,7 +89,7 @@ const renderedPosts: ThenPost[] = thenNowPosts.map(post => {
         ))}
 
         <div slot="empty" class="progress-page__empty">
-            <p>No completed tasks yet.</p>
+            <p>No paused or completed tasks yet.</p>
             <p>
                 Check the <a href="/now/" class="progress-page__link">Now page</a> to see what's currently in progress.
             </p>
