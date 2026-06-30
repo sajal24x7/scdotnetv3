@@ -12,7 +12,8 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpgbbqew4m26'
   - 'https://www.threads.com/@sajal24x7/post/DaKo5EUln2N'
 ---
-TOFI not Tofu (the food). Read first about it in [The Diabetes Code](#)
+
+TOFI not Tofu (the food). Read first about it in [[202606281146 The Diabetes Code|The Diabetes Code]]
 
 BMI is not a good predictor of T2 diabetes. A waist circumference is a better indicator.
 
