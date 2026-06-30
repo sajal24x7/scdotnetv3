@@ -16,6 +16,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116832807597023141'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpga3sstng2k'
   - 'https://www.threads.com/@sajal24x7/post/DaKmdzDFTee'
+cover: the-diabetes-code.jpg
 ---
 Started reading.
 
