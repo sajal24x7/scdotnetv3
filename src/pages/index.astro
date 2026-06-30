@@ -5,7 +5,7 @@ import HomeScrollRow from '../components/layout/HomeScrollRow.astro';
 import StreamCard from '../components/layout/StreamCard.astro';
 import NordletterScrollRow from '../components/layout/NordletterScrollRow.astro';
 import Card from '../components/Card.astro';
-import BookshelfCard from '../components/bookshelf/BookshelfCard.astro';
+import HomeBookshelfCard from '../components/bookshelf/HomeBookshelfCard.astro';
 import { Image } from 'astro:assets';
 import BookCover from '../images/books/01-ayom.jpg';
 import ProfileImage from '../images/profile/profile.jpeg';
@@ -138,22 +138,13 @@ const fictionPosts = fictionPostsRaw.map(transformPost);
     <!-- Bookshelf Section -->
     <HomeScrollRow title="Bookshelf" ctaText="Full shelf" ctaHref="/bookshelf/">
         {bookshelfPosts.map((post) => (
-            <div class="scroll-slot scroll-slot--wide">
-                <BookshelfCard
-                    title={post.data.title ?? ''}
-                    author={post.data.author}
-                    series={post.data.series}
-                    started={post.data.started}
-                    finished={post.data.finished}
-                    shelfStatus={post.data.shelfStatus as any}
-                    readingProgress={post.data.readingProgress}
-                    rating={post.data.rating}
-                    cover={post.data.cover}
-                    link={post.data.link}
-                    format={post.data.format}
-                    created={post.data.created}
-                />
-            </div>
+            <HomeBookshelfCard
+                title={post.data.title ?? ''}
+                author={post.data.author}
+                rating={post.data.rating}
+                cover={post.data.cover}
+                link={post.data.link}
+            />
         ))}
     </HomeScrollRow>
 
@@ -244,10 +235,6 @@ const fictionPosts = fictionPostsRaw.map(transformPost);
         scroll-snap-align: start;
         display: flex;
         flex-direction: column;
-    }
-
-    .scroll-slot--wide {
-        width: 18rem;
     }
 
     /* Ensure Card fills its slot */
