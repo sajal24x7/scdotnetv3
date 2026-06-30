@@ -36,182 +36,170 @@ const ratingClass: Record<BookRating, string> = {
 };
 
 const formattedAuthor = formatAuthor(author);
+const Tag = link ? 'a' : 'div';
 ---
 
 <article class="hb-card">
-    {link ? (
-        <a href={link} class="hb-card__link">
-            <div class="hb-card__cover">
-                {coverImage ? (
-                    <Image
-                        src={coverImage}
-                        alt={`Cover of ${title}`}
-                        width={180}
-                        height={270}
-                        loading="lazy"
-                        decoding="async"
-                        class="hb-card__img"
-                    />
-                ) : (
-                    <div class="hb-card__placeholder" aria-hidden="true">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                        </svg>
-                    </div>
-                )}
-            </div>
-            <div class="hb-card__body">
-                <h3 class="hb-card__title">{title}</h3>
-                {formattedAuthor && <p class="hb-card__author">{formattedAuthor}</p>}
-                {rating && (
-                    <span class={`hb-card__rating ${ratingClass[rating]}`}>
-                        {ratingLabel[rating]}
-                    </span>
-                )}
-            </div>
-        </a>
-    ) : (
-        <div class="hb-card__link">
-            <div class="hb-card__cover">
-                {coverImage ? (
-                    <Image
-                        src={coverImage}
-                        alt={`Cover of ${title}`}
-                        width={180}
-                        height={270}
-                        loading="lazy"
-                        decoding="async"
-                        class="hb-card__img"
-                    />
-                ) : (
-                    <div class="hb-card__placeholder" aria-hidden="true">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                        </svg>
-                    </div>
-                )}
-            </div>
-            <div class="hb-card__body">
-                <h3 class="hb-card__title">{title}</h3>
-                {formattedAuthor && <p class="hb-card__author">{formattedAuthor}</p>}
-                {rating && (
-                    <span class={`hb-card__rating ${ratingClass[rating]}`}>
-                        {ratingLabel[rating]}
-                    </span>
-                )}
-            </div>
+    <Tag href={link} class="hb-card__surface">
+        <div class="hb-card__cover">
+            {coverImage ? (
+                <Image
+                    src={coverImage}
+                    alt={`Cover of ${title}`}
+                    width={210}
+                    height={315}
+                    loading="lazy"
+                    decoding="async"
+                    class="hb-card__cover-image"
+                />
+            ) : (
+                <div class="hb-card__cover-placeholder" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                </div>
+            )}
         </div>
-    )}
+        <div class="hb-card__content">
+            <h3 class="hb-card__title">{title}</h3>
+            {formattedAuthor && (
+                <p class="hb-card__author">{formattedAuthor}</p>
+            )}
+            {rating && (
+                <span class={`hb-card__rating ${ratingClass[rating]}`}>
+                    {ratingLabel[rating]}
+                </span>
+            )}
+        </div>
+    </Tag>
 </article>
 
 <style>
     .hb-card {
-        width: 10rem;
+        width: 17rem;
         flex-shrink: 0;
         scroll-snap-align: start;
-        border-radius: 0.75rem;
-        overflow: hidden;
-        border: 1px solid rgba(0, 0, 0, 0.07);
         background: rgba(0, 0, 0, 0.02);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 0.75rem;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
         transition:
-            transform 180ms ease,
-            box-shadow 220ms ease;
+            background-color 180ms ease,
+            box-shadow 220ms ease,
+            transform 220ms ease,
+            border-color 180ms ease;
     }
 
     :global(.dark) .hb-card {
         background: rgba(255, 255, 255, 0.03);
         border-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     }
 
-    .hb-card:hover {
+    .hb-card:hover,
+    .hb-card:focus-within {
+        background: rgba(99, 102, 241, 0.04);
+        border-color: rgba(99, 102, 241, 0.2);
+        box-shadow:
+            0 4px 8px rgba(0, 0, 0, 0.08),
+            0 8px 24px rgba(129, 140, 248, 0.15);
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     }
 
-    :global(.dark) .hb-card:hover {
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    :global(.dark) .hb-card:hover,
+    :global(.dark) .hb-card:focus-within {
+        background: rgba(99, 102, 241, 0.08);
+        border-color: rgba(99, 102, 241, 0.3);
     }
 
-    .hb-card__link {
+    .hb-card__surface {
         display: flex;
-        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
         text-decoration: none;
         color: inherit;
+        width: 100%;
         height: 100%;
     }
 
+    /* ── Cover ─────────────────────────────────────────────── */
     .hb-card__cover {
-        width: 100%;
+        flex-shrink: 0;
+        width: 4.5rem;
+        max-width: 4.5rem;
         aspect-ratio: 2 / 3;
+        border-radius: 0.5rem;
         overflow: hidden;
-        background: rgba(0, 0, 0, 0.06);
+        background: rgba(15, 23, 42, 0.08);
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-shrink: 0;
     }
 
     :global(.dark) .hb-card__cover {
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(148, 163, 184, 0.18);
     }
 
-    .hb-card__img {
+    .hb-card__cover-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        display: block;
-        transition: transform 0.3s ease;
+        border-radius: inherit;
     }
 
-    .hb-card:hover .hb-card__img {
-        transform: scale(1.04);
+    .hb-card__cover-placeholder {
+        color: rgba(15, 23, 42, 0.35);
     }
 
-    .hb-card__placeholder {
-        color: rgba(0, 0, 0, 0.25);
+    :global(.dark) .hb-card__cover-placeholder {
+        color: rgba(226, 232, 240, 0.45);
     }
 
-    :global(.dark) .hb-card__placeholder {
-        color: rgba(255, 255, 255, 0.25);
-    }
-
-    .hb-card__body {
-        padding: 0.6rem 0.65rem 0.75rem;
+    /* ── Content ───────────────────────────────────────────── */
+    .hb-card__content {
+        flex: 1;
+        min-width: 0;
         display: flex;
         flex-direction: column;
-        gap: 0.25rem;
-        flex: 1;
+        gap: 0.35rem;
     }
 
     .hb-card__title {
-        font-size: 0.875rem;
+        font-size: 1rem;
         font-weight: 600;
-        line-height: 1.35;
+        line-height: 1.3;
         margin: 0;
-        color: rgb(var(--color-text-primary));
+        color: #111827;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
 
+    :global(.dark) .hb-card__title {
+        color: #f9fafb;
+    }
+
     .hb-card__author {
-        font-size: 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 500;
         margin: 0;
-        color: rgb(var(--color-text-secondary));
+        color: #374151;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
+    :global(.dark) .hb-card__author {
+        color: #d1d5db;
+    }
+
     .hb-card__rating {
         margin-top: auto;
-        padding-top: 0.35rem;
         font-size: 0.65rem;
         font-weight: 600;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
     }
 
