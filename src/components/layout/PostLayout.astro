@@ -1,13 +1,12 @@
 ---
 import LayoutContainer from './LayoutContainer.astro';
-import TimeDisplay from '../TimeDisplay.astro';
 import Tag from '../Tag.astro';
-import ShareButton from '../ShareButton.astro';
 import Backlinks from '../Backlinks.astro';
 import SyndicationLinks from '../SyndicationLinks.astro';
 import NewsletterSignup from '../ui/NewsletterSignup.astro';
 import { Image } from 'astro:assets';
 import { getBookCoverImage } from '../../utils/bookCovers';
+import { formatDateWithTime } from '../../utils/dateFormat';
 import { getFilmCoverImage } from '../../utils/filmCovers';
 import { getGameCoverImage } from '../../utils/gameCovers';
 import { getTVCoverImage } from '../../utils/tvCovers';
@@ -55,6 +54,9 @@ const edition = category === 'nordletter' && 'edition' in entryData ? entryData.
 const bridgyOmit = 'bridgyOmit' in entryData && entryData.bridgyOmit;
 const publishedDate = entryData?.created;
 const updated = hasUpdatedDate ? entryData.updated : undefined;
+const displayDate = (hasUpdatedDate && updated) ? updated : publishedDate;
+const dateLabel = (hasUpdatedDate && updated) ? 'last updated' : 'published';
+const metaDateStr = displayDate ? formatDateWithTime(displayDate) : null;
 
 // Bookshelf-specific data
 const isBookshelf = category === 'bookshelf';
@@ -565,59 +567,34 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
             <slot />
         </div>
 
-        <div class="mt-12 border-t border-borderColor dark:border-borderColorDark">
+        <div class="mt-8 border-t border-borderColor dark:border-borderColorDark">
             <NewsletterSignup
                 title="Subscribe to NordLetter"
-                description="A weekly newsletter on living in Finland."
+                description=""
                 buttonText="Sign up"
                 headingClass="text-xs font-semibold mb-2"
                 centered={true}
+                wrapperClass="py-4"
             />
         </div>
 
-        <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
-            <div class="flex justify-between">
-                <a href={`/${category}/`} class="post-layout__back-link">← Back to {formattedCategory}</a>
-
-                <ShareButton title={title} url={canonicalUrl} />
-            </div>
-        </div>
-
         <div class="post-layout__meta">
-            <div class="post-layout__meta-row">
-                <div class="post-layout__meta-primary">
-                    <div class="post-layout__meta-date">
-                        <span class="post-layout__meta-date-chip card-chip">
-                            <span class="post-layout__meta-date-chip-label">
-                                {updated ? 'UPDATED' : 'PUBLISHED'}
-                            </span>
-                            {updated ? (
-                                <TimeDisplay
-                                    date={updated}
-                                    category={category}
-                                    format="detailed"
-                                    className="dt-updated post-layout__meta-date-time"
-                                />
-                            ) : (
-                                <TimeDisplay
-                                    date={publishedDate}
-                                    category={category}
-                                    format="detailed"
-                                    className="dt-published post-layout__meta-date-time"
-                                />
-                            )}
-                        </span>
-                    </div>
-
-                    <div class="post-layout__feedback">
-                        Thoughts? Email <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">sajal@sajalchoudhary.net</a>
-                    </div>
-                </div>
-
-                <SyndicationLinks
-                    syndicationUrls={syndicationUrls}
-                    className="post-layout__meta-syndication"
-                />
+            {updated ? (
+                <time class="dt-updated" datetime={updated.toISOString()} style="display:none"></time>
+            ) : publishedDate ? (
+                <time class="dt-published" datetime={publishedDate.toISOString()} style="display:none"></time>
+            ) : null}
+            <div class="post-layout__meta-compact">
+                <p class="post-layout__meta-text">
+                    {metaDateStr ? <>This {category} note {dateLabel} on {metaDateStr}. </> : null}Thoughts? Email{' '}
+                    <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">sajal@sajalchoudhary.net</a>.
+                </p>
+                {syndicationUrls.length > 0 && (
+                    <SyndicationLinks
+                        syndicationUrls={syndicationUrls}
+                        className="post-layout__meta-syndication"
+                    />
+                )}
             </div>
         </div>
 
@@ -626,32 +603,9 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 </LayoutContainer>
 
 <style>
-    .post-layout__back-link {
-        font-weight: 600;
-        color: inherit;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-        transition: color 0.2s ease, text-decoration-color 0.2s ease;
-    }
-
-    .post-layout__back-link:hover,
-    .post-layout__back-link:focus-visible {
-        color: rgb(var(--color-text-primary));
-        text-decoration: underline;
-        text-decoration-thickness: 0.1em;
-        text-underline-offset: 0.2em;
-    }
-
-    .post-layout__back-link:focus-visible {
-        outline: 2px solid rgb(var(--color-accent));
-        outline-offset: 2px;
-    }
-
     .post-layout__meta {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+        padding-top: 1rem;
         border-top: 1px solid rgb(var(--color-border));
     }
 
@@ -659,72 +613,29 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
         border-top-color: rgb(var(--color-border));
     }
 
-    .post-layout__meta-row {
+    .post-layout__meta-compact {
         display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-    }
-
-    @media (min-width: 48rem) {
-        .post-layout__meta-row {
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-        }
-    }
-
-    .post-layout__meta-primary {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    @media (min-width: 48rem) {
-        .post-layout__meta-primary {
-            flex-direction: row;
-            align-items: center;
-            gap: 1.25rem;
-        }
-    }
-
-    .post-layout__meta-date {
-        display: flex;
-        align-items: center;
-    }
-
-    .post-layout__meta-date-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        font-size: 0.75rem;
-        color: rgb(var(--color-text-primary));
         flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem 1rem;
     }
 
-    .post-layout__meta-date-chip-label {
-        display: inline-flex;
-        align-items: center;
+    .post-layout__meta-text {
+        font-size: 0.8rem;
+        color: rgb(var(--color-text-secondary));
+        line-height: 1.5;
+        margin: 0;
+        flex: 1;
+        min-width: 0;
     }
 
-    .post-layout__meta-date-time {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.15rem;
-        letter-spacing: inherit;
+    .post-layout__meta-text a {
+        font-weight: 500;
     }
 
     .post-layout__meta-syndication {
         margin-top: 0;
-    }
-
-    .post-layout__feedback {
-        margin-top: 0;
-        font-size: 0.95rem;
-        color: rgb(var(--color-text-secondary));
-    }
-
-    .post-layout__feedback a {
-        font-weight: 600;
+        flex-shrink: 0;
     }
 
     /* Shelf post two-column header */

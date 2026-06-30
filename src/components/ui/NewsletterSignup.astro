@@ -27,7 +27,7 @@ const {
   centered = false
 } = Astro.props;
 
-const outerClasses = ["py-8", wrapperClass].filter(Boolean).join(" ");
+const outerClasses = [wrapperClass || "py-8"].filter(Boolean).join(" ");
 const innerClasses = ["prose dark:prose-invert max-w-none", centered && "text-center"].filter(Boolean).join(" ");
 const formClasses = [
   "flex flex-col sm:flex-row gap-3 max-w-md items-center",
