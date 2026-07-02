@@ -10,6 +10,7 @@ interface Props {
   wrapperClass?: string;
   formClass?: string;
   headingClass?: string;
+  descriptionClass?: string;
   centered?: boolean;
 }
 
@@ -24,10 +25,11 @@ const {
   wrapperClass = "",
   formClass = "",
   headingClass = "text-large font-bold mb-4",
+  descriptionClass = "text-normal mb-6",
   centered = false
 } = Astro.props;
 
-const outerClasses = ["py-8", wrapperClass].filter(Boolean).join(" ");
+const outerClasses = wrapperClass || "py-8";
 const innerClasses = ["prose dark:prose-invert max-w-none", centered && "text-center"].filter(Boolean).join(" ");
 const formClasses = [
   "flex flex-col sm:flex-row gap-3 max-w-md items-center",
@@ -40,7 +42,7 @@ const formClasses = [
   <div class={innerClasses}>
     {showCopy && title && <h2 class={headingClass}>{title}</h2>}
     {showCopy && description && (
-      <p class="text-normal mb-6">
+      <p class={descriptionClass}>
         {description}
       </p>
     )}

@@ -563,12 +563,14 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
             <slot />
         </div>
 
-        <div class="mt-12 border-t border-borderColor dark:border-borderColorDark">
+        <div class="mt-8 border-t border-borderColor dark:border-borderColorDark">
             <NewsletterSignup
                 title="Subscribe to NordLetter"
                 description="A weekly newsletter on living in Finland."
                 buttonText="Sign up"
-                headingClass="text-xs font-semibold mb-2"
+                headingClass="text-xs font-semibold mb-1"
+                descriptionClass="text-sm mb-3"
+                wrapperClass="py-4"
                 centered={true}
             />
         </div>
@@ -611,8 +613,8 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 
 <style>
     .post-layout__meta {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
+        margin-top: 1.25rem;
+        padding-top: 1rem;
         border-top: 1px solid rgb(var(--color-border));
     }
 
