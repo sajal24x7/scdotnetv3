@@ -2,7 +2,6 @@
 import LayoutContainer from './LayoutContainer.astro';
 import TimeDisplay from '../TimeDisplay.astro';
 import Tag from '../Tag.astro';
-import ShareButton from '../ShareButton.astro';
 import Backlinks from '../Backlinks.astro';
 import SyndicationLinks from '../SyndicationLinks.astro';
 import NewsletterSignup from '../ui/NewsletterSignup.astro';
@@ -44,7 +43,6 @@ const { entry, category, canonicalUrl, backlinks, hasUpdatedDate } = Astro.props
 const entryData = entry.data ?? {};
 
 const title = entryData?.title ?? '';
-const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
 const description = 'description' in entryData ? entryData.description : undefined;
 const tags = 'tags' in entryData && Array.isArray(entryData.tags) ? entryData.tags : [];
 const syndicationUrls = 'syndicationUrls' in entryData && Array.isArray(entryData.syndicationUrls)
@@ -575,14 +573,6 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
             />
         </div>
 
-        <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
-            <div class="flex justify-between">
-                <a href={`/${category}/`} class="post-layout__back-link">← Back to {formattedCategory}</a>
-
-                <ShareButton title={title} url={canonicalUrl} />
-            </div>
-        </div>
-
         <div class="post-layout__meta">
             <p class="post-layout__meta-line">
                 {updated ? 'Updated ' : 'Published '}
@@ -620,29 +610,6 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 </LayoutContainer>
 
 <style>
-    .post-layout__back-link {
-        font-weight: 600;
-        color: inherit;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-        transition: color 0.2s ease, text-decoration-color 0.2s ease;
-    }
-
-    .post-layout__back-link:hover,
-    .post-layout__back-link:focus-visible {
-        color: rgb(var(--color-text-primary));
-        text-decoration: underline;
-        text-decoration-thickness: 0.1em;
-        text-underline-offset: 0.2em;
-    }
-
-    .post-layout__back-link:focus-visible {
-        outline: 2px solid rgb(var(--color-accent));
-        outline-offset: 2px;
-    }
-
     .post-layout__meta {
         margin-top: 2rem;
         padding-top: 1.5rem;
