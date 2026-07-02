@@ -203,7 +203,7 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
         ))}
     </div>
 
-    <article class="h-entry" data-pagefind-body>
+    <article class="h-entry post-layout__article" data-pagefind-body>
         <!-- Hidden microformat data -->
         <a href={canonicalUrl} class="u-url" style="display: none;"></a>
         {bridgyOmit && (
@@ -594,7 +594,7 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
                     />
                 )}
                 <span class="post-layout__meta-sep">·</span>
-                Email: <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">sajal@sajalchoudhary.net</a>
+                Thoughts? <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">Email me</a>.
                 {syndicationUrls.length > 0 && (
                     <>
                         <span class="post-layout__meta-sep">·</span>
@@ -613,6 +613,10 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 </LayoutContainer>
 
 <style>
+    .post-layout__article {
+        padding-bottom: clamp(2rem, 5vw, 3rem);
+    }
+
     .post-layout__meta {
         margin-top: 1.25rem;
         padding-top: 1rem;
@@ -625,7 +629,7 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 
     .post-layout__meta-line {
         margin: 0;
-        font-size: 0.72rem;
+        font-size: 0.75rem;
         line-height: 1.6;
         color: rgb(var(--color-text-secondary));
     }
