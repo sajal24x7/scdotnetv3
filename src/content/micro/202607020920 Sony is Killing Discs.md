@@ -1,14 +1,17 @@
 ---
-title: "Sony is Killing Discs"
-slug: "sony-is-killing-discs"
-created: 2026-07-02T09:27:48+03:00
-updated: 2026-07-02T09:27:48+03:00
+title: Sony is Killing Discs
+slug: sony-is-killing-discs
+created: 2026-07-02T06:27:48.000Z
+updated: 2026-07-02T06:27:48.000Z
 category: micro
 tags:
   - gaming
   - playstation
   - xbox
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116848965430858142'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpnfpk6p7u2a'
+  - 'https://www.threads.com/@sajal24x7/post/DaR8uFTlK9l'
 ---
 [Sony is killing discs — and showing us why it’s a terrible idea by Andrew Webster](https://www.theverge.com/games/960212/sony-playstation-killing-discs-digital-preservation)
 
