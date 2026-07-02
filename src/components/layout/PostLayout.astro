@@ -584,41 +584,35 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
         </div>
 
         <div class="post-layout__meta">
-            <div class="post-layout__meta-row">
-                <div class="post-layout__meta-primary">
-                    <div class="post-layout__meta-date">
-                        <span class="post-layout__meta-date-chip card-chip">
-                            <span class="post-layout__meta-date-chip-label">
-                                {updated ? 'UPDATED' : 'PUBLISHED'}
-                            </span>
-                            {updated ? (
-                                <TimeDisplay
-                                    date={updated}
-                                    category={category}
-                                    format="detailed"
-                                    className="dt-updated post-layout__meta-date-time"
-                                />
-                            ) : (
-                                <TimeDisplay
-                                    date={publishedDate}
-                                    category={category}
-                                    format="detailed"
-                                    className="dt-published post-layout__meta-date-time"
-                                />
-                            )}
-                        </span>
-                    </div>
-
-                    <div class="post-layout__feedback">
-                        Thoughts? Email <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">sajal@sajalchoudhary.net</a>
-                    </div>
-                </div>
-
-                <SyndicationLinks
-                    syndicationUrls={syndicationUrls}
-                    className="post-layout__meta-syndication"
-                />
-            </div>
+            <p class="post-layout__meta-line">
+                {updated ? 'Updated ' : 'Published '}
+                {updated ? (
+                    <TimeDisplay
+                        date={updated}
+                        category={category}
+                        format="detailed"
+                        className="dt-updated"
+                    />
+                ) : (
+                    <TimeDisplay
+                        date={publishedDate}
+                        category={category}
+                        format="detailed"
+                        className="dt-published"
+                    />
+                )}
+                <span class="post-layout__meta-sep">·</span>
+                Thoughts? Email <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">sajal@sajalchoudhary.net</a>
+                {syndicationUrls.length > 0 && (
+                    <>
+                        <span class="post-layout__meta-sep">·</span>
+                        <SyndicationLinks
+                            syndicationUrls={syndicationUrls}
+                            variant="text"
+                        />
+                    </>
+                )}
+            </p>
         </div>
 
         <Backlinks backlinks={backlinks} />
@@ -659,72 +653,21 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
         border-top-color: rgb(var(--color-border));
     }
 
-    .post-layout__meta-row {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-    }
-
-    @media (min-width: 48rem) {
-        .post-layout__meta-row {
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-        }
-    }
-
-    .post-layout__meta-primary {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    @media (min-width: 48rem) {
-        .post-layout__meta-primary {
-            flex-direction: row;
-            align-items: center;
-            gap: 1.25rem;
-        }
-    }
-
-    .post-layout__meta-date {
-        display: flex;
-        align-items: center;
-    }
-
-    .post-layout__meta-date-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        font-size: 0.75rem;
-        color: rgb(var(--color-text-primary));
-        flex-wrap: wrap;
-    }
-
-    .post-layout__meta-date-chip-label {
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .post-layout__meta-date-time {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.15rem;
-        letter-spacing: inherit;
-    }
-
-    .post-layout__meta-syndication {
-        margin-top: 0;
-    }
-
-    .post-layout__feedback {
-        margin-top: 0;
-        font-size: 0.95rem;
+    .post-layout__meta-line {
+        margin: 0;
+        font-size: 0.85rem;
+        line-height: 1.6;
         color: rgb(var(--color-text-secondary));
     }
 
-    .post-layout__feedback a {
+    .post-layout__meta-line a {
+        color: inherit;
         font-weight: 600;
+    }
+
+    .post-layout__meta-sep {
+        margin: 0 0.4em;
+        opacity: 0.5;
     }
 
     /* Shelf post two-column header */
