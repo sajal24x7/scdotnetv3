@@ -594,13 +594,14 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
                     />
                 )}
                 <span class="post-layout__meta-sep">·</span>
-                Thoughts? Email <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">sajal@sajalchoudhary.net</a>
+                Email: <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">sajal@sajalchoudhary.net</a>
                 {syndicationUrls.length > 0 && (
                     <>
                         <span class="post-layout__meta-sep">·</span>
                         <SyndicationLinks
                             syndicationUrls={syndicationUrls}
                             variant="text"
+                            label="Posted to:"
                         />
                     </>
                 )}
@@ -624,7 +625,7 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 
     .post-layout__meta-line {
         margin: 0;
-        font-size: 0.85rem;
+        font-size: 0.72rem;
         line-height: 1.6;
         color: rgb(var(--color-text-secondary));
     }
