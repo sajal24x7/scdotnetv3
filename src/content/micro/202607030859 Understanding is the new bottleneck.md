@@ -1,13 +1,16 @@
 ---
-title: "Understanding is the new bottleneck"
-slug: "understanding-is-the-new-bottleneck"
-created: 2026-07-03T09:02:47+03:00
-updated: 2026-07-03T09:02:47+03:00
+title: Understanding is the new bottleneck
+slug: understanding-is-the-new-bottleneck
+created: 2026-07-03T06:02:47.000Z
+updated: 2026-07-03T06:02:47.000Z
 category: micro
 tags:
   - ai
   - coding
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116854602920482002'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mppvukqkgl2a'
+  - 'https://www.threads.com/@sajal24x7/post/DaUg4XqlsoD'
 ---
 [Understanding is the new bottleneck by Geoffrey Litt](https://geoffreylitt.com/2026/07/02/understanding-is-the-new-bottleneck.html)
 
