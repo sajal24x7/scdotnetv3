@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
 import { getContentCategories } from '../../utils/content';
 import { parseMarkdown } from '../../utils/markdown';
+import { convertWikilinks } from '../../utils/remarkWikilinks';
 
 export async function GET(context) {
   const categories = getContentCategories();
@@ -28,7 +29,7 @@ export async function GET(context) {
       
       // If it's a string, parse it with the shared markdown helper
       if (typeof item.body === 'string') {
-        content = sanitizeHtml(parseMarkdown(item.body));
+        content = sanitizeHtml(parseMarkdown(await convertWikilinks(item.body)));
       } else {
         // For rendered components, we'll just use the description
         content = item.data.description || '';

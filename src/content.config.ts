@@ -35,7 +35,7 @@ const postsSchema = z.object({
     created: dateSchema,
     updated: dateSchema.optional(),
     category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'filmshelf', 'tvshelf', 'gameshelf', 'now', 'til', 'colophon']),
-    status: z.enum(['active', 'done']).optional().default('active'),
+    status: z.enum(['active', 'paused', 'done']).optional().default('active'),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
     edition: z.number().optional(),

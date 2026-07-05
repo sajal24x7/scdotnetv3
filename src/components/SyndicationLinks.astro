@@ -3,12 +3,14 @@ interface Props {
     syndicationUrls?: string[];
     className?: string;
     label?: string;
+    variant?: 'icons' | 'text';
 }
 
 const {
     syndicationUrls = [],
     className = '',
-    label = 'Also posted to:'
+    label = 'Also posted to:',
+    variant = 'icons'
 } = Astro.props as Props;
 
 type SyndicationPlatform = 'mastodon' | 'threads' | 'bluesky';
@@ -70,28 +72,43 @@ if (syndicationLinks.length === 0) {
     return null;
 }
 
-const rootClassName = ['syndication-links', className].filter(Boolean).join(' ');
+const rootClassName = ['syndication-links', `syndication-links--${variant}`, className].filter(Boolean).join(' ');
 ---
 
-<div class={rootClassName}>
-    <span class="syndication-links__label card-chip">{label}</span>
-    <div class="syndication-links__list" role="list">
-        {syndicationLinks.map((link) => (
-            <a
-                href={link.url}
-                class="syndication-links__link"
-                aria-label={`View on ${link.label}`}
-                title={`View on ${link.label}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                role="listitem"
-            >
-                <span class="sr-only">{link.label}</span>
-                <span class="syndication-links__icon" set:html={link.icon} aria-hidden="true" />
-            </a>
+{variant === 'text' ? (
+    <span class={rootClassName}>
+        {label} {syndicationLinks.map((link, index) => (
+            <>
+                <a
+                    href={link.url}
+                    class="syndication-links__text-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >{link.label}</a>{index < syndicationLinks.length - 1 && ', '}
+            </>
         ))}
+    </span>
+) : (
+    <div class={rootClassName}>
+        <span class="syndication-links__label card-chip">{label}</span>
+        <div class="syndication-links__list" role="list">
+            {syndicationLinks.map((link) => (
+                <a
+                    href={link.url}
+                    class="syndication-links__link"
+                    aria-label={`View on ${link.label}`}
+                    title={`View on ${link.label}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    role="listitem"
+                >
+                    <span class="sr-only">{link.label}</span>
+                    <span class="syndication-links__icon" set:html={link.icon} aria-hidden="true" />
+                </a>
+            ))}
+        </div>
     </div>
-</div>
+)}
 
 <style>
     .syndication-links {
@@ -148,5 +165,21 @@ const rootClassName = ['syndication-links', className].filter(Boolean).join(' ')
     .syndication-links__icon svg {
         width: 100%;
         height: 100%;
+    }
+
+    .syndication-links--text {
+        font: inherit;
+        color: inherit;
+    }
+
+    .syndication-links__text-link {
+        color: inherit;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .syndication-links__text-link:hover,
+    .syndication-links__text-link:focus-visible {
+        text-decoration: underline;
     }
 </style>

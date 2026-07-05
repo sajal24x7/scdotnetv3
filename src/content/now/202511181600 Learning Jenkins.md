@@ -4,7 +4,7 @@ slug: "learning-jenkins"
 created: 2025-11-19T11:24:25+02:00
 updated: 2025-11-19T11:24:25+02:00
 category: now
-status: active
+status: paused
 ---
 Started learning Jenkins.
 

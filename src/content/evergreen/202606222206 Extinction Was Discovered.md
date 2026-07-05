@@ -18,6 +18,6 @@ At a time in the recent past, humanity did not know about extinction - everythin
 
 Our knowledge of the world seems to have grown in almost all the aspects in this similar fashion - the solar system, Newton’s law.
 
-While listening to his story in [The Sixth Extinction](#), I came to know about his colleague - [Lamarck](https://en.wikipedia.org/wiki/Jean-Baptiste_Lamarck) who was a proponent of evolution. Cuvier did not believe in evolution. 
+While listening to his story in [[202606201845 The Sixth Extinction|The Sixth Extinction]], I came to know about his colleague - [Lamarck](https://en.wikipedia.org/wiki/Jean-Baptiste_Lamarck) who was a proponent of evolution. Cuvier did not believe in evolution. 
 
-While reading about this I thought about the concept of mental models which I am reading about in [The Great Mental Models](#) and I thought this is the same thing. Based on their models of the world, they came to different conclusions. 
+While reading about this I thought about the concept of mental models which I am reading about in [[202605282126 The Great Mental Models|The Great Mental Models]] and I thought this is the same thing. Based on their models of the world, they came to different conclusions. 

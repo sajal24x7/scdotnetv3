@@ -2,7 +2,6 @@
 import LayoutContainer from './LayoutContainer.astro';
 import TimeDisplay from '../TimeDisplay.astro';
 import Tag from '../Tag.astro';
-import ShareButton from '../ShareButton.astro';
 import Backlinks from '../Backlinks.astro';
 import SyndicationLinks from '../SyndicationLinks.astro';
 import NewsletterSignup from '../ui/NewsletterSignup.astro';
@@ -44,7 +43,6 @@ const { entry, category, canonicalUrl, backlinks, hasUpdatedDate } = Astro.props
 const entryData = entry.data ?? {};
 
 const title = entryData?.title ?? '';
-const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
 const description = 'description' in entryData ? entryData.description : undefined;
 const tags = 'tags' in entryData && Array.isArray(entryData.tags) ? entryData.tags : [];
 const syndicationUrls = 'syndicationUrls' in entryData && Array.isArray(entryData.syndicationUrls)
@@ -205,7 +203,7 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
         ))}
     </div>
 
-    <article class="h-entry" data-pagefind-body>
+    <article class="h-entry post-layout__article" data-pagefind-body>
         <!-- Hidden microformat data -->
         <a href={canonicalUrl} class="u-url" style="display: none;"></a>
         {bridgyOmit && (
@@ -565,60 +563,49 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
             <slot />
         </div>
 
-        <div class="mt-12 border-t border-borderColor dark:border-borderColorDark">
+        <div class="mt-8 border-t border-borderColor dark:border-borderColorDark">
             <NewsletterSignup
                 title="Subscribe to NordLetter"
                 description="A weekly newsletter on living in Finland."
                 buttonText="Sign up"
-                headingClass="text-xs font-semibold mb-2"
+                headingClass="text-xs font-semibold mb-1"
+                descriptionClass="text-sm mb-3"
+                wrapperClass="py-4"
                 centered={true}
             />
         </div>
 
-        <div class="mt-12 pt-8 border-t border-borderColor dark:border-borderColorDark">
-            <div class="flex justify-between">
-                <a href={`/${category}/`} class="post-layout__back-link">← Back to {formattedCategory}</a>
-
-                <ShareButton title={title} url={canonicalUrl} />
-            </div>
-        </div>
-
         <div class="post-layout__meta">
-            <div class="post-layout__meta-row">
-                <div class="post-layout__meta-primary">
-                    <div class="post-layout__meta-date">
-                        <span class="post-layout__meta-date-chip card-chip">
-                            <span class="post-layout__meta-date-chip-label">
-                                {updated ? 'UPDATED' : 'PUBLISHED'}
-                            </span>
-                            {updated ? (
-                                <TimeDisplay
-                                    date={updated}
-                                    category={category}
-                                    format="detailed"
-                                    className="dt-updated post-layout__meta-date-time"
-                                />
-                            ) : (
-                                <TimeDisplay
-                                    date={publishedDate}
-                                    category={category}
-                                    format="detailed"
-                                    className="dt-published post-layout__meta-date-time"
-                                />
-                            )}
-                        </span>
-                    </div>
-
-                    <div class="post-layout__feedback">
-                        Thoughts? Email <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">sajal@sajalchoudhary.net</a>
-                    </div>
-                </div>
-
-                <SyndicationLinks
-                    syndicationUrls={syndicationUrls}
-                    className="post-layout__meta-syndication"
-                />
-            </div>
+            <p class="post-layout__meta-line">
+                {updated ? 'Updated ' : 'Published '}
+                {updated ? (
+                    <TimeDisplay
+                        date={updated}
+                        category={category}
+                        format="detailed"
+                        className="dt-updated"
+                    />
+                ) : (
+                    <TimeDisplay
+                        date={publishedDate}
+                        category={category}
+                        format="detailed"
+                        className="dt-published"
+                    />
+                )}
+                <span class="post-layout__meta-sep">·</span>
+                Thoughts? <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">Email me</a>.
+                {syndicationUrls.length > 0 && (
+                    <>
+                        <span class="post-layout__meta-sep">·</span>
+                        <SyndicationLinks
+                            syndicationUrls={syndicationUrls}
+                            variant="text"
+                            label="Posted to:"
+                        />
+                    </>
+                )}
+            </p>
         </div>
 
         <Backlinks backlinks={backlinks} />
@@ -626,32 +613,13 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 </LayoutContainer>
 
 <style>
-    .post-layout__back-link {
-        font-weight: 600;
-        color: inherit;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-        transition: color 0.2s ease, text-decoration-color 0.2s ease;
-    }
-
-    .post-layout__back-link:hover,
-    .post-layout__back-link:focus-visible {
-        color: rgb(var(--color-text-primary));
-        text-decoration: underline;
-        text-decoration-thickness: 0.1em;
-        text-underline-offset: 0.2em;
-    }
-
-    .post-layout__back-link:focus-visible {
-        outline: 2px solid rgb(var(--color-accent));
-        outline-offset: 2px;
+    .post-layout__article {
+        padding-bottom: clamp(2rem, 5vw, 3rem);
     }
 
     .post-layout__meta {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
+        margin-top: 1.25rem;
+        padding-top: 1rem;
         border-top: 1px solid rgb(var(--color-border));
     }
 
@@ -659,72 +627,21 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
         border-top-color: rgb(var(--color-border));
     }
 
-    .post-layout__meta-row {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-    }
-
-    @media (min-width: 48rem) {
-        .post-layout__meta-row {
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-        }
-    }
-
-    .post-layout__meta-primary {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    @media (min-width: 48rem) {
-        .post-layout__meta-primary {
-            flex-direction: row;
-            align-items: center;
-            gap: 1.25rem;
-        }
-    }
-
-    .post-layout__meta-date {
-        display: flex;
-        align-items: center;
-    }
-
-    .post-layout__meta-date-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
+    .post-layout__meta-line {
+        margin: 0;
         font-size: 0.75rem;
-        color: rgb(var(--color-text-primary));
-        flex-wrap: wrap;
-    }
-
-    .post-layout__meta-date-chip-label {
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .post-layout__meta-date-time {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.15rem;
-        letter-spacing: inherit;
-    }
-
-    .post-layout__meta-syndication {
-        margin-top: 0;
-    }
-
-    .post-layout__feedback {
-        margin-top: 0;
-        font-size: 0.95rem;
+        line-height: 1.6;
         color: rgb(var(--color-text-secondary));
     }
 
-    .post-layout__feedback a {
+    .post-layout__meta-line a {
+        color: inherit;
         font-weight: 600;
+    }
+
+    .post-layout__meta-sep {
+        margin: 0 0.4em;
+        opacity: 0.5;
     }
 
     /* Shelf post two-column header */
