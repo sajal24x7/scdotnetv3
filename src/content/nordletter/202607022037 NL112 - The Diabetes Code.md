@@ -1,17 +1,20 @@
 ---
-title: "The Diabetes Code"
-slug: "nl112-the-diabetes-code"
+title: The Diabetes Code
+slug: nl112-the-diabetes-code
 edition: 112
-image: https://storage.sajalchoudhary.net/images/2026/07/nl112-01.jpeg
-created: 2026-07-05T23:55:51+03:00
-updatedDate: 2026-07-05T23:55:51+03:00
+image: 'https://storage.sajalchoudhary.net/images/2026/07/nl112-01.jpeg'
+created: 2026-07-05T20:55:51.000Z
+updatedDate: 2026-07-05T20:55:51.000Z
 category: nordletter
 tags:
   - finland
   - diabetes
   - reading
   - books
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116869370738699620'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpwhosmoeg26'
+  - 'https://www.threads.com/@sajal24x7/post/DabOl_GD-KB'
 ---
 Hello from my home in Helsinki! This is NordLetter #112, a weekly newsletter on living and walking in Finland.
 
