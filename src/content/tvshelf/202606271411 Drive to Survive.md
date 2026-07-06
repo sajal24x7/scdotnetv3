@@ -13,8 +13,10 @@ creator:
 started: 2026-06-21T04:24:07.000Z
 genre: documentary
 platform: Netflix
-shelfStatus: watching
+shelfStatus: watched
 cover: drive-to-survive.jpg
+rating: like
+finished: 2026-07-04T12:57:46+03:00
 ---
 
-Started watching on Netflix.
+This is one of those like the yearly Call of Duty. If you watch it, you watch it. I had started watching season 8 first, but then felt like I was missing something. So started season 7 and finished it. Now, we move to season 8.
