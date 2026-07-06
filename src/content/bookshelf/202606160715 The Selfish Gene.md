@@ -10,7 +10,7 @@ format: ebook
 author:
   - Richard Dawkins
 genre: science
-shelfStatus: reading
+shelfStatus: on-hold
 started: 2026-06-16T04:18:28.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116758302498822071'
