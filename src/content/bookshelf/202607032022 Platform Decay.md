@@ -18,6 +18,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116871535590373936'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpxghb2gnu2q'
   - 'https://www.threads.com/@sajal24x7/post/DacNmPlkdYd'
+cover: platform-decay.jpg
 ---
 
 Started reading.
