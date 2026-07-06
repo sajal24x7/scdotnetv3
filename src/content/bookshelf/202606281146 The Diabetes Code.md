@@ -1,6 +1,6 @@
 ---
 title: The Diabetes Code
-slug: reading-the-diabetes-code
+slug: the-diabetes-code
 created: 2026-06-29T09:57:58.000Z
 updated: 2026-06-29T09:57:58.000Z
 category: bookshelf
