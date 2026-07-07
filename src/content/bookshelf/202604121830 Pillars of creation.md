@@ -2,7 +2,7 @@
 title: Pillars of Creation
 slug: reading-pillars-of-creation
 created: 2026-04-12T15:32:00.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-04-12T15:32:00.000Z
 category: bookshelf
 tags:
   - space

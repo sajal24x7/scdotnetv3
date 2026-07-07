@@ -2,7 +2,7 @@
 title: Many Lives Many Masters
 slug: many-lives-many-masters
 created: 2026-01-25T07:38:11.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-01-25T07:38:11.000Z
 category: bookshelf
 tags:
   - death

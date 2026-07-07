@@ -2,7 +2,7 @@
 title: Twenty Love Poems and a Song of Despair
 slug: twenty-love-poems-and-a-song-of-despair
 created: 2025-11-02T20:59:34.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2025-11-02T20:59:34.000Z
 category: bookshelf
 tags:
   - poetry

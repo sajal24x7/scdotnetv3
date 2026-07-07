@@ -2,7 +2,7 @@
 title: 'Mindset: How You Can Fulfil Your Potential'
 slug: mindset-how-you-can-fulfil-your-potential
 created: 2013-09-28T05:00:37.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2013-09-28T05:00:37.000Z
 category: bookshelf
 tags:
   - book-reviews

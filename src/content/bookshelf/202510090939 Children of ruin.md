@@ -2,7 +2,7 @@
 title: Children of Ruin
 slug: children-of-ruin
 created: 2025-10-11T23:22:40.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2025-10-11T23:22:40.000Z
 category: bookshelf
 tags:
   - sci-fi

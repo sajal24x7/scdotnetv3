@@ -2,7 +2,7 @@
 title: Robots and Empire
 slug: robots-and-empire
 created: 2013-05-01T17:05:25.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2013-05-01T17:05:25.000Z
 category: bookshelf
 tags:
   - book-reviews

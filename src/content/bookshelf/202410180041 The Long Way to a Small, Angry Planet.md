@@ -2,7 +2,7 @@
 title: 'The Long Way to a Small, Angry Planet'
 slug: the-long-way-to-a-small-angry-planet
 created: 2026-01-09T13:20:57.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-01-09T13:20:57.000Z
 category: bookshelf
 tags:
   - space-opera

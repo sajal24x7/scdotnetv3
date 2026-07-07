@@ -2,7 +2,7 @@
 title: Children of Time
 slug: children-of-time
 created: 2025-09-04T19:45:58.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2025-09-04T19:45:58.000Z
 category: bookshelf
 tags:
   - sci-fi

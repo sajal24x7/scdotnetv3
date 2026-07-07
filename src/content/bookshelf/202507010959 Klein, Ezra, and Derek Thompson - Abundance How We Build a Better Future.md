@@ -2,7 +2,7 @@
 title: Abundance How We Build a Better Future
 slug: abundance-how-we-build-a-better-future
 created: 2025-07-07T07:44:58.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2025-07-07T07:44:58.000Z
 category: bookshelf
 tags:
   - future

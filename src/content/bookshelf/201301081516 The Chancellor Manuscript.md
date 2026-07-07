@@ -2,7 +2,7 @@
 title: The Chancellor Manuscript
 slug: the-chancellor-manuscript
 created: 2013-01-08T15:16:56.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2013-01-08T15:16:56.000Z
 category: bookshelf
 tags:
   - book-reviews

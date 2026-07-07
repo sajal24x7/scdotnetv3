@@ -2,7 +2,7 @@
 title: The Sagan Diary
 slug: the-sagan-diary
 created: 2016-01-11T10:20:13.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2016-01-11T10:20:13.000Z
 category: bookshelf
 tags:
   - book-reviews

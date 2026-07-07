@@ -2,7 +2,7 @@
 title: The Ministry for the Future
 slug: the-ministry-for-the-future
 created: 2026-01-08T08:19:11.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-01-08T08:19:11.000Z
 category: bookshelf
 tags:
   - climate-change

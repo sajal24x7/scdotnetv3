@@ -2,7 +2,7 @@
 title: Before the Coffee Gets Cold
 slug: before-the-coffee-gets-cold
 created: 2025-11-12T10:06:04.000Z
-updated: 2026-06-05T14:19:08
+updated: 2025-11-12T10:06:04.000Z
 category: bookshelf
 tags:
   - fantasy

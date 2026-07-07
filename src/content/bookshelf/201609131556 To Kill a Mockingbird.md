@@ -2,7 +2,7 @@
 title: To Kill a Mockingbird
 slug: to-kill-a-mockingbird
 created: 2016-09-13T15:56:11.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2016-09-13T15:56:11.000Z
 category: bookshelf
 tags:
   - book-reviews
