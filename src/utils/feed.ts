@@ -5,6 +5,7 @@ import { cleanNordletterTitle, extractEditionNumber } from './content';
 import { getBookCoverImage } from './bookCovers';
 import { bookRatingLabels } from './bookRatings';
 import { convertWikilinks } from './remarkWikilinks';
+import { relativeTime } from './relativeTime';
 import nordletterManifest from '../data/nordletter-image-manifest.json';
 
 export const FEED_PAGE_SIZE = 10;
@@ -81,8 +82,9 @@ function monthLabel(date: Date): string {
   return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 }
 
+// Full date shown as the tooltip behind the relative-time label
 function dayLabel(date: Date): string {
-  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
 function postLink(post: Post): string {
@@ -91,6 +93,7 @@ function postLink(post: Post): string {
 
 function stripMarkdown(text: string): string {
   return text
+    .replace(/^-{3,}\s*$/gm, '') // thematic breaks
     .replace(/!\[[^\]]*\]\([^)]*\)/g, '') // images
     .replace(/\[\[[^\]|]*\|([^\]]+)\]\]/g, '$1') // wikilinks with alias -> alias
     .replace(/\[\[(?:\d{8,}\s+)?([^\]]+)\]\]/g, '$1') // bare wikilinks -> target sans timestamp id
@@ -123,9 +126,10 @@ function poemVerse(post: Post): string {
 function metaHtml(post: Post, extra = ''): string {
   const category = post.data.category;
   const label = CATEGORY_LABELS[category] ?? category;
-  const date = dayLabel(postDate(post));
-  // The date doubles as the permalink — the only link to the post for untitled entries like micro
-  return `<div class="feed-entry__meta"><span class="card-chip">${escapeHtml(label)}</span><a class="feed-entry__date" href="${postLink(post)}">${escapeHtml(date)}</a>${extra}</div>`;
+  const date = postDate(post);
+  // Relative label is rendered at build time and refreshed client-side from data-created.
+  // The date doubles as the permalink — the only link to the post for untitled entries like micro.
+  return `<div class="feed-entry__meta"><span class="card-chip">${escapeHtml(label)}</span><a class="feed-entry__date" data-created="${date.toISOString()}" title="${escapeHtml(dayLabel(date))}" href="${postLink(post)}">${escapeHtml(relativeTime(date))}</a>${extra}</div>`;
 }
 
 function titleHtml(post: Post, title?: string): string {
@@ -158,19 +162,10 @@ function tendedMarker(post: Post): string {
   return '';
 }
 
-// Micro bodies longer than this get clamped with a fade + "Keep reading" permalink,
-// so one long post can't dominate the feed rhythm.
-const MICRO_CLAMP_THRESHOLD = 500;
-
 async function renderMicro(post: Post): Promise<string> {
   const source = post.body ? await convertWikilinks(post.body) : '';
   const body = source ? parseMarkdown(source) : '';
-  const isLong = stripMarkdown(post.body || '').length > MICRO_CLAMP_THRESHOLD;
-  const clampClass = isLong ? ' feed-entry__body--clamped' : '';
-  const moreLink = isLong
-    ? `<a class="feed-entry__more-link" href="${postLink(post)}">Keep reading →</a>`
-    : '';
-  return `${metaHtml(post)}<div class="feed-entry__body prose dark:prose-invert${clampClass}">${body}</div>${moreLink}`;
+  return `${metaHtml(post)}<div class="feed-entry__body prose dark:prose-invert">${body}</div>`;
 }
 
 async function renderPhoto(post: Post): Promise<string> {
@@ -222,6 +217,20 @@ function renderBookshelf(post: Post): string {
   return `${metaHtml(post)}<div class="feed-entry__book">${coverHtml}<div>${titleHtml(post, title)}${detailsHtml}</div></div>`;
 }
 
+// Nordletter editions open with a recurring subscribe/reach-out preamble followed by a
+// thematic break; the excerpt should come from the actual content after that break.
+function nordletterContent(post: Post): string {
+  const body = post.body || '';
+  const breakMatch = body.match(/^---\s*$/m);
+  if (breakMatch && typeof breakMatch.index === 'number') {
+    const intro = body.slice(0, breakMatch.index);
+    if (/this is nord\s*letter/i.test(intro)) {
+      return body.slice(breakMatch.index + breakMatch[0].length);
+    }
+  }
+  return body;
+}
+
 function renderNordletter(post: Post): string {
   const title = post.data.title ? cleanNordletterTitle(post.data.title) : '';
   const edition = post.data.edition ?? extractEditionNumber(post.data.title || '', post.id);
@@ -230,7 +239,10 @@ function renderNordletter(post: Post): string {
   const imageHtml = imageSrc
     ? `<img class="feed-entry__nl-img" src="${escapeHtml(imageSrc)}" alt="" loading="lazy">`
     : '';
-  const excerpt = post.data.description || bodySnippet(post);
+  const content = stripMarkdown(nordletterContent(post));
+  const excerpt = content
+    ? (content.length <= 220 ? content : `${content.slice(0, 220).replace(/\s+\S*$/, '')}…`)
+    : post.data.description || '';
 
   return `${metaHtml(post)}<div class="feed-entry__nl-card">${imageHtml}<div class="feed-entry__nl-body">${badge}${titleHtml(post, title)}${excerptHtml(excerpt)}</div></div>`;
 }

@@ -232,30 +232,6 @@ const rows = entries.map((entry) => {
         font-size: 0.92rem;
     }
 
-    /* long micro posts fade out and defer to their permalink */
-    .feed-entry__body--clamped {
-        max-height: 16rem;
-        overflow: hidden;
-        -webkit-mask-image: linear-gradient(to bottom, black 62%, transparent 96%);
-        mask-image: linear-gradient(to bottom, black 62%, transparent 96%);
-    }
-
-    .feed-entry__more-link {
-        display: inline-block;
-        margin-top: 0.5rem;
-        font-size: 0.88rem;
-        font-weight: 600;
-        color: rgb(var(--color-text-primary));
-        text-decoration: none;
-        border-bottom: 1px solid rgba(var(--color-text-primary), 0.25);
-        padding-bottom: 0.1rem;
-    }
-
-    .feed-entry__more-link:hover,
-    .feed-entry__more-link:focus-visible {
-        border-bottom-color: rgba(var(--color-text-primary), 0.55);
-    }
-
     /* bookshelf row */
     .feed-entry__book {
         display: flex;
@@ -392,6 +368,8 @@ const rows = entries.map((entry) => {
 </style>
 
 <script>
+    import { relativeTime } from '../../utils/relativeTime';
+
     interface FeedEntryData {
         html: string;
         group: string;
@@ -432,6 +410,19 @@ const rows = entries.map((entry) => {
         let current = 'all';
         let loading = false;
 
+        // Build-time relative labels go stale between deploys; recompute them on load
+        // and for every batch of freshly inserted entries.
+        function refreshDates(): void {
+            list.querySelectorAll<HTMLElement>('[data-created]').forEach((el) => {
+                const created = new Date(el.dataset.created || '');
+                if (!Number.isNaN(created.getTime())) {
+                    el.textContent = relativeTime(created);
+                }
+            });
+        }
+
+        refreshDates();
+
         async function fetchPage(group: string): Promise<void> {
             const groupState = state[group];
             const response = await fetch(`/api/feed/${group}/${groupState.page + 1}.json`);
@@ -458,6 +449,7 @@ const rows = entries.map((entry) => {
             }
 
             list.innerHTML = parts.join('');
+            refreshDates();
             moreBtn.hidden = !groupState.hasMore;
             endNote.hidden = groupState.hasMore;
         }
