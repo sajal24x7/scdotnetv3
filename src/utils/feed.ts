@@ -35,7 +35,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   bookshelf: 'Bookshelf',
   story: 'Story',
   poem: 'Poem',
-  nordletter: 'Nord Letter'
+  nordletter: 'Nordletter'
 };
 
 // Nordletter cover images are cached locally by scripts/cache-nordletter-images.js
@@ -129,7 +129,7 @@ function metaHtml(post: Post, extra = ''): string {
   const date = postDate(post);
   // Relative label is rendered at build time and refreshed client-side from data-created.
   // The date doubles as the permalink — the only link to the post for untitled entries like micro.
-  return `<div class="feed-entry__meta"><span class="card-chip">${escapeHtml(label)}</span><a class="feed-entry__date" data-created="${date.toISOString()}" title="${escapeHtml(dayLabel(date))}" href="${postLink(post)}">${escapeHtml(relativeTime(date))}</a>${extra}</div>`;
+  return `<div class="feed-entry__meta"><span class="card-chip">${escapeHtml(label)}</span><a class="card-chip feed-entry__date" data-created="${date.toISOString()}" title="${escapeHtml(dayLabel(date))}" href="${postLink(post)}">${escapeHtml(relativeTime(date))}</a>${extra}</div>`;
 }
 
 function titleHtml(post: Post, title?: string): string {
@@ -202,7 +202,7 @@ function renderStory(post: Post): string {
 function renderBookshelf(post: Post): string {
   const coverMeta = post.data.cover ? getBookCoverImage(post.data.cover as any) : undefined;
   const coverHtml = coverMeta
-    ? `<img class="feed-entry__book-cover" src="${coverMeta.src}" alt="" loading="lazy" width="48" height="70">`
+    ? `<img class="feed-entry__book-cover" src="${coverMeta.src}" alt="" loading="lazy" width="72" height="106">`
     : '<div class="feed-entry__book-cover feed-entry__book-cover--placeholder" aria-hidden="true"></div>';
 
   const authors = Array.isArray(post.data.author)

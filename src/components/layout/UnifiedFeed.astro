@@ -21,7 +21,7 @@ const rows = entries.map((entry) => {
     <header class="unified-feed__head">
         <h2 class="unified-feed__title">Lately</h2>
         <p class="unified-feed__subtitle">
-            Everything, as it happens — from the garden, the stream, and the Nord&nbsp;Letter.
+            Everything, as it happens — from the garden, the stream, and the Nordletter.
         </p>
     </header>
 
@@ -29,7 +29,7 @@ const rows = entries.map((entry) => {
         <button type="button" class="tag-chip tag-chip-active" data-feed-filter="all" aria-pressed="true">Everything</button>
         <button type="button" class="tag-chip" data-feed-filter="stream" aria-pressed="false">Stream</button>
         <button type="button" class="tag-chip" data-feed-filter="garden" aria-pressed="false">Garden</button>
-        <button type="button" class="tag-chip" data-feed-filter="nordletter" aria-pressed="false">Nord Letter</button>
+        <button type="button" class="tag-chip" data-feed-filter="nordletter" aria-pressed="false">Nordletter</button>
     </div>
 
     <div class="unified-feed__list" data-feed-list>
@@ -133,6 +133,22 @@ const rows = entries.map((entry) => {
         margin-bottom: 2.1rem;
     }
 
+    /* hairline divider between consecutive entries (skipped before month headers) */
+    .feed-entry:has(+ .feed-entry) {
+        padding-bottom: 1.25rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .feed-entry:has(+ .feed-entry)::after {
+        content: '';
+        position: absolute;
+        left: 2rem;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: rgba(var(--color-text-primary), 0.08);
+    }
+
     .feed-entry::before {
         content: '';
         position: absolute;
@@ -152,16 +168,14 @@ const rows = entries.map((entry) => {
         margin-bottom: 0.5rem;
     }
 
+    /* date pill inherits .card-chip styling from global.css; keep digits aligned */
     .feed-entry__date {
-        color: rgb(var(--color-text-secondary));
         font-variant-numeric: tabular-nums;
-        text-decoration: none;
     }
 
-    a.feed-entry__date:hover,
     a.feed-entry__date:focus-visible {
-        color: rgb(var(--color-accent));
-        text-decoration: underline;
+        outline: 2px solid rgb(var(--color-accent));
+        outline-offset: 2px;
     }
 
     .feed-entry__tended {
@@ -189,16 +203,21 @@ const rows = entries.map((entry) => {
         color: rgb(var(--color-accent));
     }
 
+    /* one reading size for all entry text: excerpts, verses, bodies, notes */
+    .feed-entry {
+        --feed-text-size: 0.95rem;
+    }
+
     .feed-entry__excerpt {
         margin: 0;
-        font-size: 0.95rem;
+        font-size: var(--feed-text-size);
         color: rgba(var(--color-text-primary), 0.65);
     }
 
     .feed-entry__verse {
         font-family: 'Merriweather', ui-serif, Georgia, serif;
         font-style: italic;
-        font-size: 0.95rem;
+        font-size: var(--feed-text-size);
         color: rgba(var(--color-text-primary), 0.75);
         margin: 0.3rem 0 0;
         line-height: 1.7;
@@ -206,7 +225,7 @@ const rows = entries.map((entry) => {
 
     /* micro + photo bodies (full rendered markdown) */
     .feed-entry__body {
-        font-size: 0.98rem;
+        font-size: var(--feed-text-size);
         max-width: none;
     }
 
@@ -229,7 +248,6 @@ const rows = entries.map((entry) => {
         padding-left: 0.9rem;
         margin-inline: 0;
         color: rgba(var(--color-text-primary), 0.65);
-        font-size: 0.92rem;
     }
 
     /* bookshelf row */
@@ -240,10 +258,10 @@ const rows = entries.map((entry) => {
     }
 
     .feed-entry__book-cover {
-        width: 3rem;
-        height: 4.4rem;
+        width: 4.5rem;
+        height: 6.6rem;
         flex: none;
-        border-radius: 0.3rem;
+        border-radius: 0.35rem;
         object-fit: cover;
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.18);
     }
@@ -254,7 +272,7 @@ const rows = entries.map((entry) => {
 
     .feed-entry__book-note {
         margin: 0.15rem 0 0;
-        font-size: 0.9rem;
+        font-size: var(--feed-text-size);
         color: rgb(var(--color-text-secondary));
     }
 
@@ -298,9 +316,6 @@ const rows = entries.map((entry) => {
         margin-bottom: 0.25rem;
     }
 
-    .feed-entry__nl-body .feed-entry__excerpt {
-        font-size: 0.9rem;
-    }
 
     /* ---- footer ---- */
     .unified-feed__foot {
