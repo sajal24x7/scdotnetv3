@@ -561,6 +561,9 @@
       "bookshelf/202606160715 The Selfish Gene.md",
       "bookshelf/202606201404 The Book of Kubernetes.md",
       "bookshelf/202606201845 The Sixth Extinction.md",
+      "bookshelf/202606281146 The Diabetes Code.md",
+      "bookshelf/202607032022 Platform Decay.md",
+      "bookshelf/202607071237 The Elements of Marie Curie.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202503250411 Be a hybrid.md",
@@ -606,6 +609,8 @@
       "evergreen/202601312353 Write a letter to your child.md",
       "evergreen/202604141403 The four diseases leading to slow death.md",
       "evergreen/202606222206 Extinction Was Discovered.md",
+      "evergreen/202606291311 Thin on the Outside Fat on the Inside.md",
+      "evergreen/202606302145 A Good Life Requires Constant Maintenance.md",
       "filmshelf/202606021827 Apex.md",
       "filmshelf/202606051110 Ladies First.md",
       "gameshelf/202605290954 Ghost of Yotei.md",
@@ -946,6 +951,11 @@
       "micro/202606230951 Kunal Shah to Become Global Head of WhatsApp.md",
       "micro/202606230959 About the Security Flaws in Vibe-Codes Apps.md",
       "micro/202606231430 Doing Nothing at Work.md",
+      "micro/202606260637 Apple Increases Price of its Gadgets.md",
+      "micro/202606260914 RIP Om Malik.md",
+      "micro/202607020920 Sony is Killing Discs.md",
+      "micro/202607020944 Your AI Compass.md",
+      "micro/202607030859 Understanding is the new bottleneck.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1055,6 +1065,8 @@
       "nordletter/202606052132 NL108.md",
       "nordletter/202606111954 NL109 - What Savya Wants.md",
       "nordletter/202606192030 NL110 - Hanko Midsummer Picnic.md",
+      "nordletter/202606252034 NL111 - Love is Love.md",
+      "nordletter/202607022037 NL112 - The Diabetes Code.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -1066,6 +1078,7 @@
       "now/202511181600 Learning Jenkins.md",
       "now/202602231208 Azure AI.md",
       "now/202603061258 Learning microservices and k8s.md",
+      "now/202606302127 Weight Training.md",
       "photo/201208181624 The Eye.md",
       "photo/201208190943 Sorry.md",
       "photo/201303090905 Phoneography challange My Neighbourhood.md",
@@ -1656,10 +1669,13 @@
       "til/202603251212 Difference between lists tuples and sets.md",
       "til/202603251249 Conditionals in python.md",
       "til/202603301610 Generators in python.md",
+      "til/202606301442 How to Build Container Images.md",
+      "til/202606301516 How Does an Overlay Filesystem Work.md",
       "tvshelf/202605270840 Glory.md",
-      "tvshelf/202606140720 Drive to Survive.md"
+      "tvshelf/202606140720 Drive to Survive.md",
+      "tvshelf/202606271411 Drive to Survive.md"
     ],
-    "generatedAt": "2026-06-24T12:51:47.500Z"
+    "generatedAt": "2026-07-07T18:21:51.199Z"
   },
   "til/entra-id": [
     {
@@ -6150,6 +6166,15 @@
       "created": "2026-02-25T19:58:05.000Z"
     }
   ],
+  "gameshelf/ghost-of-yotei": [
+    {
+      "slug": "/micro/sony-is-killing-discs/",
+      "title": "Sony is Killing Discs",
+      "description": "",
+      "category": "micro",
+      "created": "2026-07-02T06:27:48.000Z"
+    }
+  ],
   "evergreen/mixed-format-books": [
     {
       "slug": "/nordletter/nl89/",
@@ -6475,6 +6500,95 @@
       "created": "2026-06-21T19:35:29.000Z"
     }
   ],
+  "nordletter/nl-80": [
+    {
+      "slug": "/nordletter/nl111-love-is-love/",
+      "title": "Love is Love",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-06-28T20:39:44.000Z"
+    },
+    {
+      "slug": "/nordletter/nl81/",
+      "title": "Fun at Biitsi",
+      "description": "",
+      "category": "nordletter",
+      "created": "2025-11-30T20:44:23.000Z"
+    }
+  ],
+  "bookshelf/the-sixth-extinction": [
+    {
+      "slug": "/nordletter/nl112-the-diabetes-code/",
+      "title": "The Diabetes Code",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-05T20:55:51.000Z"
+    },
+    {
+      "slug": "/nordletter/nl111-love-is-love/",
+      "title": "Love is Love",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-06-28T20:39:44.000Z"
+    },
+    {
+      "slug": "/evergreen/extinction-was-discovered/",
+      "title": "Extinction Was Discovered",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-06-23T06:55:39.000Z"
+    }
+  ],
+  "nordletter/vacations": [
+    {
+      "slug": "/nordletter/nl111-love-is-love/",
+      "title": "Love is Love",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-06-28T20:39:44.000Z"
+    }
+  ],
+  "bookshelf/the-anthropologists": [
+    {
+      "slug": "/nordletter/nl111-love-is-love/",
+      "title": "Love is Love",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-06-28T20:39:44.000Z"
+    },
+    {
+      "slug": "/nordletter/vacations/",
+      "title": "Vacations and Noticing Things",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-06-07T17:38:19.000Z"
+    }
+  ],
+  "nordletter/nl110-hanko-midsummer-picnic": [
+    {
+      "slug": "/nordletter/nl111-love-is-love/",
+      "title": "Love is Love",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-06-28T20:39:44.000Z"
+    }
+  ],
+  "bookshelf/the-diabetes-code": [
+    {
+      "slug": "/nordletter/nl112-the-diabetes-code/",
+      "title": "The Diabetes Code",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-05T20:55:51.000Z"
+    },
+    {
+      "slug": "/evergreen/thin-on-the-outside-fat-on-the-inside/",
+      "title": "Thin on the Outside Fat on the Inside",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-06-29T10:19:46.000Z"
+    }
+  ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
     {
       "slug": "/nordletter/nl63-a-day-trip-to-turku/",
@@ -6681,15 +6795,6 @@
     }
   ],
   "blog/vibe-coding-november-meetup": [
-    {
-      "slug": "/nordletter/nl81/",
-      "title": "Fun at Biitsi",
-      "description": "",
-      "category": "nordletter",
-      "created": "2025-11-30T20:44:23.000Z"
-    }
-  ],
-  "nordletter/nl-80": [
     {
       "slug": "/nordletter/nl81/",
       "title": "Fun at Biitsi",
@@ -6969,6 +7074,13 @@
   ],
   "bookshelf/system-collapse": [
     {
+      "slug": "/bookshelf/platform-decay/",
+      "title": "Platform Decay",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-07-03T06:06:24.000Z"
+    },
+    {
       "slug": "/nordletter/nl96/",
       "title": "Spring in the Air",
       "description": "",
@@ -7040,15 +7152,6 @@
     }
   ],
   "nordletter/nyc-iv": [
-    {
-      "slug": "/nordletter/vacations/",
-      "title": "Vacations and Noticing Things",
-      "description": "",
-      "category": "nordletter",
-      "created": "2026-06-07T17:38:19.000Z"
-    }
-  ],
-  "bookshelf/the-anthropologists": [
     {
       "slug": "/nordletter/vacations/",
       "title": "Vacations and Noticing Things",
@@ -7165,6 +7268,24 @@
       "created": "2025-12-19T15:11:57.000Z"
     }
   ],
+  "bookshelf/the-thinking-machine": [
+    {
+      "slug": "/bookshelf/the-sixth-extinction/",
+      "title": "The Sixth Extinction",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-06-23T06:56:58.000Z"
+    }
+  ],
+  "evergreen/extinction-was-discovered": [
+    {
+      "slug": "/bookshelf/the-sixth-extinction/",
+      "title": "The Sixth Extinction",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-06-23T06:56:58.000Z"
+    }
+  ],
   "evergreen/how-to-craft-a-story": [
     {
       "slug": "/bookshelf/the-story-grid/",
@@ -7181,6 +7302,15 @@
       "description": "",
       "category": "now",
       "created": "2024-02-18T17:41:49.000Z"
+    }
+  ],
+  "bookshelf/reading-the-great-mental-models": [
+    {
+      "slug": "/evergreen/extinction-was-discovered/",
+      "title": "Extinction Was Discovered",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-06-23T06:55:39.000Z"
     }
   ],
   "evergreen/what-to-automate": [
