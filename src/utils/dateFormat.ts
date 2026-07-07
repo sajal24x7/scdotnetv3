@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { format, formatDistanceToNow } from 'date-fns';
 
 /**
  * Format a date for display
@@ -67,6 +67,17 @@ export function formatDateRange(startDate: Date | string, endDate: Date | string
   
   const startFormatted = format(startDateObj, 'MMMM yyyy');
   const endFormatted = format(endDateObj, 'MMMM yyyy');
-  
+
   return `${startFormatted} - ${endFormatted}`;
-} 
+}
+
+/**
+ * Format a date as a relative distance from now (e.g., "2 days ago")
+ *
+ * @param date The date to format
+ * @returns Relative date string
+ */
+export function formatRelativeDate(date: Date | string): string {
+  const dateObj = typeof date === 'string' ? new Date(date) : date;
+  return formatDistanceToNow(dateObj, { addSuffix: true });
+}

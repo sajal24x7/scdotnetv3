@@ -2,7 +2,7 @@
 title: Network Effect
 slug: network-effect
 created: 2025-12-31T19:56:47.000Z
-updated: 2026-06-05T14:19:08
+updated: 2025-12-31T19:56:47.000Z
 category: bookshelf
 tags:
   - sci-fi

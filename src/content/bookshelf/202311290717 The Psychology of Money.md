@@ -2,7 +2,7 @@
 title: The Psychology of Money
 slug: the-psychology-of-money
 created: 2023-11-29T07:17:18.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2023-11-29T07:17:18.000Z
 category: bookshelf
 tags:
   - book-reviews

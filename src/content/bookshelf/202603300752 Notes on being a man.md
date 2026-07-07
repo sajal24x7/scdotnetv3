@@ -2,7 +2,7 @@
 title: Notes on Being a Man
 slug: reading-notes-on-being-a-man
 created: 2026-03-30T04:53:56.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-03-30T04:53:56.000Z
 category: bookshelf
 tags:
   - men

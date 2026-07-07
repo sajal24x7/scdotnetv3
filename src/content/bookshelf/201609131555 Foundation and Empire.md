@@ -2,7 +2,7 @@
 title: Foundation and Empire
 slug: foundation-and-empire
 created: 2016-09-13T15:55:36.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2016-09-13T15:55:36.000Z
 category: bookshelf
 tags:
   - book-reviews

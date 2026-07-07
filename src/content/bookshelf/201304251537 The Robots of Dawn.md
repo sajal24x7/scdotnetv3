@@ -2,7 +2,7 @@
 title: The Robots of Dawn
 slug: the-robots-of-dawn
 created: 2013-04-25T15:37:34.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2013-04-25T15:37:34.000Z
 category: bookshelf
 tags:
   - book-reviews

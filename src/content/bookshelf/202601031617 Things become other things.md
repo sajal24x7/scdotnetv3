@@ -2,7 +2,7 @@
 title: Things Become Other Things
 slug: things-become-other-things
 created: 2026-01-03T14:29:57.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-01-03T14:29:57.000Z
 category: bookshelf
 tags:
   - non-fiction

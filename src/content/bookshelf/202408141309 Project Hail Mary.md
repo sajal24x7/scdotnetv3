@@ -2,7 +2,7 @@
 title: Project Hail Mary
 slug: project-hail-mary
 created: 2026-01-09T12:31:16.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-01-09T12:31:16.000Z
 category: bookshelf
 tags:
   - first-contact

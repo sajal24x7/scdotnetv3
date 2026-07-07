@@ -2,7 +2,7 @@
 title: Fugitive Telemetry
 slug: fugitive-telemetry
 created: 2026-02-16T13:52:45.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-02-16T13:52:45.000Z
 category: bookshelf
 tags:
   - murderbot

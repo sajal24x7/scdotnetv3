@@ -2,7 +2,7 @@
 title: Stories of Your Life and Others
 slug: stories-of-your-life-and-others
 created: 2026-01-05T13:50:48.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-01-05T13:50:48.000Z
 category: bookshelf
 tags:
   - short-stories

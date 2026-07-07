@@ -2,7 +2,7 @@
 title: Steal Like an Artist
 slug: steal-like-an-artist
 created: 2025-12-21T20:41:53.000Z
-updated: 2026-06-05T14:19:08
+updated: 2025-12-21T20:41:53.000Z
 category: bookshelf
 tags:
   - non-fiction

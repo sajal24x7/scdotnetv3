@@ -2,7 +2,7 @@
 title: The Fountainhead
 slug: the-fountainhead
 created: 2013-01-19T09:38:36.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2013-01-19T09:38:36.000Z
 category: bookshelf
 tags:
   - book-reviews

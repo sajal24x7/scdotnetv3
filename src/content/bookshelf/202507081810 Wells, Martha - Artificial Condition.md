@@ -2,7 +2,7 @@
 title: Artificial Condition
 slug: artificial-condition
 created: 2025-07-11T15:26:14.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2025-07-11T15:26:14.000Z
 category: bookshelf
 tags:
   - sci-fi

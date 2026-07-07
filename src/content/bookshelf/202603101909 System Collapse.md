@@ -2,7 +2,7 @@
 title: System Collapse
 slug: system-collapse
 created: 2026-03-10T17:24:57.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-03-10T17:24:57.000Z
 category: bookshelf
 tags:
   - murderbot

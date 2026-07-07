@@ -2,7 +2,7 @@
 title: The Phoenix Project
 slug: the-phoenix-project
 created: 2026-01-08T13:33:55.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-01-08T13:33:55.000Z
 category: bookshelf
 tags:
   - business

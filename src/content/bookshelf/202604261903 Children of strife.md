@@ -2,7 +2,7 @@
 title: Children of Strife
 slug: children-of-strife
 created: 2026-04-26T16:04:26.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-04-26T16:04:26.000Z
 category: bookshelf
 tags:
   - space-opera

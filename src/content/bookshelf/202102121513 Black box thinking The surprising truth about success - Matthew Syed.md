@@ -5,7 +5,7 @@ description: >-
   This book talks about failures, how we treat them citing examples from
   industries ranging from aviation, healthcare, coding, cycling teams.
 created: 2021-02-12T15:13:38.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2021-02-12T15:13:38.000Z
 category: bookshelf
 tags:
   - book-reviews

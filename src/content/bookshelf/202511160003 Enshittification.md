@@ -2,7 +2,7 @@
 title: Enshittification
 slug: enshittification
 created: 2025-11-15T22:04:07.000Z
-updated: 2026-06-05T14:19:08
+updated: 2025-11-15T22:04:07.000Z
 category: bookshelf
 tags:
   - non-fiction

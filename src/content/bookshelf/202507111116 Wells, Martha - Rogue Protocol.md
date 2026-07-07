@@ -2,7 +2,7 @@
 title: Rogue Protocol
 slug: rogue-protocol
 created: 2025-07-15T19:42:08.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2025-07-15T19:42:08.000Z
 category: bookshelf
 tags:
   - murderbot

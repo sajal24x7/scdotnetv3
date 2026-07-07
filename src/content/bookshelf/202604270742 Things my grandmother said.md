@@ -2,7 +2,7 @@
 title: Things My Grandmother Said
 slug: things-my-grandmother-said
 created: 2026-04-27T04:46:16.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-04-27T04:46:16.000Z
 category: bookshelf
 tags:
   - india

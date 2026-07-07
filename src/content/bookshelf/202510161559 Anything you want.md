@@ -2,7 +2,7 @@
 title: Anything You Want
 slug: anything-you-want
 created: 2025-10-16T13:10:31.000Z
-updated: 2026-06-05T14:19:08
+updated: 2025-10-16T13:10:31.000Z
 category: bookshelf
 tags:
   - non-fiction
