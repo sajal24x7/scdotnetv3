@@ -178,12 +178,6 @@ const rows = entries.map((entry) => {
         outline-offset: 2px;
     }
 
-    .feed-entry__tended {
-        color: rgb(var(--color-text-secondary));
-        font-weight: 600;
-        font-size: 0.72rem;
-    }
-
     .feed-entry__title {
         font-size: 1.15rem;
         font-weight: 650;
@@ -203,9 +197,9 @@ const rows = entries.map((entry) => {
         color: rgb(var(--color-accent));
     }
 
-    /* one reading size for all entry text: excerpts, verses, bodies, notes */
+    /* one reading size for all entry text, matching the site's body size token */
     .feed-entry {
-        --feed-text-size: 0.95rem;
+        --feed-text-size: var(--text-normal);
     }
 
     .feed-entry__excerpt {
@@ -383,8 +377,6 @@ const rows = entries.map((entry) => {
 </style>
 
 <script>
-    import { relativeTime } from '../../utils/relativeTime';
-
     interface FeedEntryData {
         html: string;
         group: string;
@@ -425,19 +417,6 @@ const rows = entries.map((entry) => {
         let current = 'all';
         let loading = false;
 
-        // Build-time relative labels go stale between deploys; recompute them on load
-        // and for every batch of freshly inserted entries.
-        function refreshDates(): void {
-            list.querySelectorAll<HTMLElement>('[data-created]').forEach((el) => {
-                const created = new Date(el.dataset.created || '');
-                if (!Number.isNaN(created.getTime())) {
-                    el.textContent = relativeTime(created);
-                }
-            });
-        }
-
-        refreshDates();
-
         async function fetchPage(group: string): Promise<void> {
             const groupState = state[group];
             const response = await fetch(`/api/feed/${group}/${groupState.page + 1}.json`);
@@ -464,7 +443,6 @@ const rows = entries.map((entry) => {
             }
 
             list.innerHTML = parts.join('');
-            refreshDates();
             moreBtn.hidden = !groupState.hasMore;
             endNote.hidden = groupState.hasMore;
         }

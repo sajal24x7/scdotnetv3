@@ -5,7 +5,7 @@ import { cleanNordletterTitle, extractEditionNumber } from './content';
 import { getBookCoverImage } from './bookCovers';
 import { bookRatingLabels } from './bookRatings';
 import { convertWikilinks } from './remarkWikilinks';
-import { relativeTime } from './relativeTime';
+import { formatRelativeDate } from './dateFormat';
 import nordletterManifest from '../data/nordletter-image-manifest.json';
 
 export const FEED_PAGE_SIZE = 10;
@@ -78,6 +78,22 @@ function postDate(post: Post): Date {
   return created instanceof Date ? created : new Date(created);
 }
 
+function updatedDate(post: Post): Date | null {
+  const { updated } = post.data;
+  if (!updated) {
+    return null;
+  }
+  const date = updated instanceof Date ? updated : new Date(updated);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+// The feed is ordered by last activity: updated when present, created otherwise
+function effectiveDate(post: Post): Date {
+  const updated = updatedDate(post);
+  const created = postDate(post);
+  return updated && updated.getTime() > created.getTime() ? updated : created;
+}
+
 function monthLabel(date: Date): string {
   return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 }
@@ -123,13 +139,21 @@ function poemVerse(post: Post): string {
   return lines.map(escapeHtml).join('<br>');
 }
 
+// Entries touched well after publication label their date as an update
+const UPDATED_LABEL_THRESHOLD_MS = 24 * 60 * 60 * 1000;
+
 function metaHtml(post: Post, extra = ''): string {
   const category = post.data.category;
   const label = CATEGORY_LABELS[category] ?? category;
-  const date = postDate(post);
-  // Relative label is rendered at build time and refreshed client-side from data-created.
-  // The date doubles as the permalink — the only link to the post for untitled entries like micro.
-  return `<div class="feed-entry__meta"><span class="card-chip">${escapeHtml(label)}</span><a class="card-chip feed-entry__date" data-created="${date.toISOString()}" title="${escapeHtml(dayLabel(date))}" href="${postLink(post)}">${escapeHtml(relativeTime(date))}</a>${extra}</div>`;
+  const created = postDate(post);
+  const date = effectiveDate(post);
+  const isUpdate = date.getTime() - created.getTime() > UPDATED_LABEL_THRESHOLD_MS;
+  const dateText = `${isUpdate ? 'updated ' : ''}${formatRelativeDate(date)}`;
+  const tooltip = isUpdate
+    ? `Published ${dayLabel(created)} · Updated ${dayLabel(date)}`
+    : dayLabel(created);
+  // The date doubles as the permalink — the only link to the post for untitled entries like micro
+  return `<div class="feed-entry__meta"><span class="card-chip">${escapeHtml(label)}</span><a class="card-chip feed-entry__date" title="${escapeHtml(tooltip)}" href="${postLink(post)}">${escapeHtml(dateText)}</a>${extra}</div>`;
 }
 
 function titleHtml(post: Post, title?: string): string {
@@ -145,21 +169,6 @@ function excerptHtml(text: string): string {
     return '';
   }
   return `<p class="feed-entry__excerpt">${escapeHtml(text)}</p>`;
-}
-
-// Evergreen notes that were revised well after planting get a "tended" marker
-const TENDED_THRESHOLD_MS = 7 * 24 * 60 * 60 * 1000;
-
-function tendedMarker(post: Post): string {
-  const { updated } = post.data;
-  if (!updated) {
-    return '';
-  }
-  const updatedDate = updated instanceof Date ? updated : new Date(updated);
-  if (updatedDate.getTime() - postDate(post).getTime() > TENDED_THRESHOLD_MS) {
-    return '<span class="feed-entry__tended">↺ tended</span>';
-  }
-  return '';
 }
 
 async function renderMicro(post: Post): Promise<string> {
@@ -185,7 +194,7 @@ function renderTil(post: Post): string {
 
 function renderEvergreen(post: Post): string {
   const excerpt = post.data.description || bodySnippet(post);
-  return `${metaHtml(post, tendedMarker(post))}${titleHtml(post)}${excerptHtml(excerpt)}`;
+  return `${metaHtml(post)}${titleHtml(post)}${excerptHtml(excerpt)}`;
 }
 
 function renderPoem(post: Post): string {
@@ -263,7 +272,7 @@ export function getFeedPosts(posts: Post[]): Post[] {
   const categorySet = new Set(FEED_CATEGORIES);
   return posts
     .filter((post) => categorySet.has(post.data.category))
-    .sort((a, b) => postDate(b).getTime() - postDate(a).getTime());
+    .sort((a, b) => effectiveDate(b).getTime() - effectiveDate(a).getTime());
 }
 
 // Entries are rendered once per build and reused across the homepage and every
@@ -278,7 +287,7 @@ export function toFeedEntry(post: Post): Promise<FeedEntry> {
     cached = Promise.resolve(render(post)).then((html) => ({
       html,
       group: CATEGORY_TO_GROUP[post.data.category],
-      month: monthLabel(postDate(post))
+      month: monthLabel(effectiveDate(post))
     }));
     entryCache.set(cacheKey, cached);
   }
