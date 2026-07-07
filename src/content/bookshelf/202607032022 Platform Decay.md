@@ -15,8 +15,12 @@ genre: sci-fi
 shelfStatus: read
 started: 2026-07-03T06:06:24.000Z
 rating: like
-finished: 2026-07-07T08:45:27+03:00
+finished: 2026-07-07T05:45:27.000Z
 cover: platform-decay.jpg
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116877354312925036'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpzz5dlxg226'
+  - 'https://www.threads.com/@sajal24x7/post/Dae28k6EYgC'
 ---
 
 ## Review
