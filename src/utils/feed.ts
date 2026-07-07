@@ -3,6 +3,9 @@ import type { Post } from './content';
 import { parseMarkdown } from './markdown';
 import { cleanNordletterTitle, extractEditionNumber } from './content';
 import { getBookCoverImage } from './bookCovers';
+import { getFilmCoverImage } from './filmCovers';
+import { getTVCoverImage } from './tvCovers';
+import { getGameCoverImage } from './gameCovers';
 import { bookRatingLabels } from './bookRatings';
 import { convertWikilinks } from './remarkWikilinks';
 import { formatRelativeDate } from './dateFormat';
@@ -12,7 +15,7 @@ export const FEED_PAGE_SIZE = 10;
 
 export const FEED_GROUPS = {
   stream: ['blog', 'micro', 'photo'],
-  garden: ['evergreen', 'til', 'bookshelf', 'story', 'poem'],
+  garden: ['evergreen', 'til', 'bookshelf', 'filmshelf', 'tvshelf', 'gameshelf', 'story', 'poem', 'now'],
   nordletter: ['nordletter']
 } as const;
 
@@ -33,8 +36,12 @@ const CATEGORY_LABELS: Record<string, string> = {
   evergreen: 'Evergreen',
   til: 'TIL',
   bookshelf: 'Bookshelf',
+  filmshelf: 'Filmshelf',
+  tvshelf: 'TVshelf',
+  gameshelf: 'Gameshelf',
   story: 'Story',
   poem: 'Poem',
+  now: 'Now',
   nordletter: 'Nordletter'
 };
 
@@ -208,22 +215,69 @@ function renderStory(post: Post): string {
   return `${metaHtml(post)}${titleHtml(post)}${excerptHtml(excerpt)}`;
 }
 
-function renderBookshelf(post: Post): string {
-  const coverMeta = post.data.cover ? getBookCoverImage(post.data.cover as any) : undefined;
+// Shared row layout for all shelf categories: cover, "<verb>: <title>", credits · rating
+const SHELF_VERBS: Record<string, string> = {
+  reading: 'Reading',
+  read: 'Finished',
+  watching: 'Watching',
+  watched: 'Watched',
+  playing: 'Playing',
+  played: 'Played',
+  'on-hold': 'On hold'
+};
+
+function joinNames(value: string | string[] | undefined): string {
+  return Array.isArray(value) ? value.join(', ') : value || '';
+}
+
+function renderShelf(
+  post: Post,
+  coverMeta: ImageMetadata | undefined,
+  fallbackVerb: string,
+  credits: string,
+  displayTitle?: string
+): string {
   const coverHtml = coverMeta
     ? `<img class="feed-entry__book-cover" src="${coverMeta.src}" alt="" loading="lazy" width="72" height="106">`
     : '<div class="feed-entry__book-cover feed-entry__book-cover--placeholder" aria-hidden="true"></div>';
 
-  const authors = Array.isArray(post.data.author)
-    ? post.data.author.join(', ')
-    : post.data.author || '';
   const rating = post.data.rating ? bookRatingLabels[post.data.rating] : '';
-  const details = [authors, rating].filter(Boolean).join(' · ');
+  const details = [credits, rating].filter(Boolean).join(' · ');
   const detailsHtml = details ? `<p class="feed-entry__book-note">${escapeHtml(details)}</p>` : '';
-  const verb = post.data.shelfStatus === 'reading' ? 'Reading' : 'Finished';
-  const title = post.data.title ? `${verb}: ${post.data.title}` : undefined;
+  const verb = (post.data.shelfStatus && SHELF_VERBS[post.data.shelfStatus]) || fallbackVerb;
+  const baseTitle = displayTitle ?? post.data.title;
+  const title = baseTitle ? `${verb}: ${baseTitle}` : undefined;
 
   return `${metaHtml(post)}<div class="feed-entry__book">${coverHtml}<div>${titleHtml(post, title)}${detailsHtml}</div></div>`;
+}
+
+function renderBookshelf(post: Post): string {
+  const coverMeta = post.data.cover ? getBookCoverImage(post.data.cover as any) : undefined;
+  return renderShelf(post, coverMeta, 'Finished', joinNames(post.data.author));
+}
+
+function renderFilmshelf(post: Post): string {
+  const coverMeta = post.data.cover ? getFilmCoverImage(post.data.cover as any) : undefined;
+  return renderShelf(post, coverMeta, 'Watched', joinNames(post.data.director));
+}
+
+function renderTvshelf(post: Post): string {
+  const coverMeta = post.data.cover ? getTVCoverImage(post.data.cover as any) : undefined;
+  const title = post.data.title
+    ? `${post.data.title}${post.data.season ? ` · Season ${post.data.season}` : ''}`
+    : undefined;
+  return renderShelf(post, coverMeta, 'Watched', joinNames(post.data.creator), title);
+}
+
+function renderGameshelf(post: Post): string {
+  const coverMeta = post.data.cover ? getGameCoverImage(post.data.cover as any) : undefined;
+  const credits = [post.data.developer, post.data.platform].filter(Boolean).join(' · ');
+  return renderShelf(post, coverMeta, 'Played', credits);
+}
+
+function renderNow(post: Post): string {
+  const excerpt = post.data.description || bodySnippet(post);
+  return `${metaHtml(post)}${titleHtml(post)}${excerptHtml(excerpt)}`;
 }
 
 // Nordletter editions open with a recurring subscribe/reach-out preamble followed by a
@@ -265,6 +319,10 @@ const RENDERERS: Record<string, (post: Post) => string | Promise<string>> = {
   poem: renderPoem,
   story: renderStory,
   bookshelf: renderBookshelf,
+  filmshelf: renderFilmshelf,
+  tvshelf: renderTvshelf,
+  gameshelf: renderGameshelf,
+  now: renderNow,
   nordletter: renderNordletter
 };
 
