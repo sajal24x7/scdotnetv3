@@ -1,0 +1,515 @@
+---
+import type { FeedEntry } from '../../utils/feed';
+
+interface Props {
+    entries: FeedEntry[];
+    hasMore: boolean;
+}
+
+const { entries, hasMore } = Astro.props as Props;
+
+// Group server-rendered entries under month headers
+let lastMonth = '';
+const rows = entries.map((entry) => {
+    const showMonth = entry.month !== lastMonth;
+    lastMonth = entry.month;
+    return { ...entry, showMonth };
+});
+---
+
+<div class="unified-feed" data-unified-feed data-has-more={hasMore ? 'true' : 'false'}>
+    <header class="unified-feed__head">
+        <h2 class="unified-feed__title">Lately</h2>
+        <p class="unified-feed__subtitle">
+            Everything, as it happens — from the garden, the stream, and the Nord&nbsp;Letter.
+        </p>
+    </header>
+
+    <div class="unified-feed__filters" role="group" aria-label="Filter the feed">
+        <button type="button" class="tag-chip tag-chip-active" data-feed-filter="all" aria-pressed="true">Everything</button>
+        <button type="button" class="tag-chip" data-feed-filter="stream" aria-pressed="false">Stream</button>
+        <button type="button" class="tag-chip" data-feed-filter="garden" aria-pressed="false">Garden</button>
+        <button type="button" class="tag-chip" data-feed-filter="nordletter" aria-pressed="false">Nord Letter</button>
+    </div>
+
+    <div class="unified-feed__list" data-feed-list>
+        {rows.map((row) => (
+            <>
+                {row.showMonth && <div class="unified-feed__month">{row.month}</div>}
+                <article class="feed-entry" data-month={row.month} set:html={row.html} />
+            </>
+        ))}
+    </div>
+
+    <div class="unified-feed__foot">
+        <button type="button" class="unified-feed__more" data-feed-more hidden={!hasMore}>
+            Load 10 more
+        </button>
+        <p class="unified-feed__end" data-feed-end hidden={hasMore}>
+            That's everything — you've reached the very beginning.
+        </p>
+    </div>
+</div>
+
+<style is:global>
+    .unified-feed {
+        max-width: 44rem;
+        margin-inline: auto;
+        width: 100%;
+    }
+
+    .unified-feed__head {
+        margin-bottom: 1.5rem;
+    }
+
+    .unified-feed__title {
+        font-size: clamp(1.75rem, 5vw, 2.25rem);
+        font-weight: 700;
+        margin: 0 0 0.35rem;
+        color: rgb(var(--color-text-primary));
+    }
+
+    .unified-feed__subtitle {
+        margin: 0;
+        font-size: 0.95rem;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .unified-feed__filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    /* ---- timeline spine ---- */
+    .unified-feed__list {
+        position: relative;
+    }
+
+    .unified-feed__list::before {
+        content: '';
+        position: absolute;
+        left: 0.32rem;
+        top: 0.4rem;
+        bottom: 0;
+        width: 2px;
+        border-radius: 2px;
+        background: rgba(var(--color-text-primary), 0.12);
+    }
+
+    .unified-feed__month {
+        position: relative;
+        padding-left: 2rem;
+        margin: 2.5rem 0 1.5rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .unified-feed__month::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0.7rem;
+        height: 0.7rem;
+        border-radius: 50%;
+        background: rgb(var(--color-bg));
+        border: 2px solid rgba(var(--color-text-primary), 0.35);
+    }
+
+    .unified-feed__list > .unified-feed__month:first-child {
+        margin-top: 0;
+    }
+
+    /* ---- entries ---- */
+    .feed-entry {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 2.1rem;
+    }
+
+    .feed-entry::before {
+        content: '';
+        position: absolute;
+        left: 0.11rem;
+        top: 0.42rem;
+        width: 0.44rem;
+        height: 0.44rem;
+        border-radius: 50%;
+        background: rgba(var(--color-text-primary), 0.4);
+    }
+
+    .feed-entry__meta {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .feed-entry__date {
+        color: rgb(var(--color-text-secondary));
+        font-variant-numeric: tabular-nums;
+        text-decoration: none;
+    }
+
+    a.feed-entry__date:hover,
+    a.feed-entry__date:focus-visible {
+        color: rgb(var(--color-accent));
+        text-decoration: underline;
+    }
+
+    .feed-entry__tended {
+        color: rgb(var(--color-text-secondary));
+        font-weight: 600;
+        font-size: 0.72rem;
+    }
+
+    .feed-entry__title {
+        font-size: 1.15rem;
+        font-weight: 650;
+        margin: 0 0 0.3rem;
+        line-height: 1.35;
+        text-wrap: balance;
+        color: rgb(var(--color-text-primary));
+    }
+
+    .feed-entry__title a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .feed-entry__title a:hover,
+    .feed-entry__title a:focus-visible {
+        color: rgb(var(--color-accent));
+    }
+
+    .feed-entry__excerpt {
+        margin: 0;
+        font-size: 0.95rem;
+        color: rgba(var(--color-text-primary), 0.65);
+    }
+
+    .feed-entry__verse {
+        font-family: 'Merriweather', ui-serif, Georgia, serif;
+        font-style: italic;
+        font-size: 0.95rem;
+        color: rgba(var(--color-text-primary), 0.75);
+        margin: 0.3rem 0 0;
+        line-height: 1.7;
+    }
+
+    /* micro + photo bodies (full rendered markdown) */
+    .feed-entry__body {
+        font-size: 0.98rem;
+        max-width: none;
+    }
+
+    .feed-entry__body > :first-child {
+        margin-top: 0;
+    }
+
+    .feed-entry__body > :last-child {
+        margin-bottom: 0;
+    }
+
+    .feed-entry__body img {
+        border-radius: 0.6rem;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .feed-entry__body blockquote {
+        border-left: 3px solid rgba(var(--tag-color-rgb), 0.45);
+        padding-left: 0.9rem;
+        margin-inline: 0;
+        color: rgba(var(--color-text-primary), 0.65);
+        font-size: 0.92rem;
+    }
+
+    /* long micro posts fade out and defer to their permalink */
+    .feed-entry__body--clamped {
+        max-height: 16rem;
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(to bottom, black 62%, transparent 96%);
+        mask-image: linear-gradient(to bottom, black 62%, transparent 96%);
+    }
+
+    .feed-entry__more-link {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: rgb(var(--color-text-primary));
+        text-decoration: none;
+        border-bottom: 1px solid rgba(var(--color-text-primary), 0.25);
+        padding-bottom: 0.1rem;
+    }
+
+    .feed-entry__more-link:hover,
+    .feed-entry__more-link:focus-visible {
+        border-bottom-color: rgba(var(--color-text-primary), 0.55);
+    }
+
+    /* bookshelf row */
+    .feed-entry__book {
+        display: flex;
+        gap: 0.9rem;
+        align-items: flex-start;
+    }
+
+    .feed-entry__book-cover {
+        width: 3rem;
+        height: 4.4rem;
+        flex: none;
+        border-radius: 0.3rem;
+        object-fit: cover;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.18);
+    }
+
+    .feed-entry__book-cover--placeholder {
+        background: rgba(var(--color-text-primary), 0.12);
+    }
+
+    .feed-entry__book-note {
+        margin: 0.15rem 0 0;
+        font-size: 0.9rem;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    /* nordletter card */
+    .feed-entry__nl-card {
+        border: 1px solid rgb(var(--color-border));
+        background: rgb(var(--color-bg-secondary));
+        border-radius: 0.9rem;
+        overflow: hidden;
+        transition: border-color 0.2s ease;
+    }
+
+    .feed-entry__nl-card:hover {
+        border-color: rgba(var(--color-text-primary), 0.3);
+    }
+
+    .feed-entry__nl-img {
+        display: block;
+        width: 100%;
+        height: 9.5rem;
+        object-fit: cover;
+    }
+
+    .feed-entry__nl-body {
+        padding: 1rem 1.15rem 1.15rem;
+    }
+
+    .feed-entry__nl-badge {
+        display: inline-block;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: rgba(var(--color-text-primary), 0.75);
+        border: 1px solid rgba(var(--color-text-primary), 0.3);
+        border-radius: 0.35rem;
+        padding: 0.08rem 0.45rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .feed-entry__nl-body .feed-entry__title {
+        margin-bottom: 0.25rem;
+    }
+
+    .feed-entry__nl-body .feed-entry__excerpt {
+        font-size: 0.9rem;
+    }
+
+    /* ---- footer ---- */
+    .unified-feed__foot {
+        margin-top: 3rem;
+        padding-left: 2rem;
+    }
+
+    .unified-feed__more {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font: inherit;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: rgb(var(--color-text-primary));
+        background: none;
+        border: none;
+        border-bottom: 1px solid rgba(var(--color-text-primary), 0.2);
+        padding: 0 0 0.15rem;
+        cursor: pointer;
+        transition: border-color 0.2s ease;
+    }
+
+    .unified-feed__more::after {
+        content: '↓';
+        font-size: 0.95em;
+        transition: transform 0.2s ease;
+    }
+
+    .unified-feed__more:hover,
+    .unified-feed__more:focus-visible {
+        border-bottom-color: rgba(var(--color-text-primary), 0.45);
+    }
+
+    .unified-feed__more:hover::after,
+    .unified-feed__more:focus-visible::after {
+        transform: translateY(0.15rem);
+    }
+
+    .unified-feed__more:focus-visible {
+        outline: 2px solid rgb(var(--color-accent));
+        outline-offset: 2px;
+    }
+
+    .unified-feed__more[disabled] {
+        opacity: 0.6;
+        cursor: wait;
+    }
+
+    .unified-feed__end {
+        margin: 0;
+        font-size: 0.9rem;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    [hidden] {
+        display: none !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .unified-feed__more::after {
+            transition: none;
+        }
+    }
+</style>
+
+<script>
+    interface FeedEntryData {
+        html: string;
+        group: string;
+        month: string;
+    }
+
+    interface GroupState {
+        entries: FeedEntryData[];
+        page: number;
+        hasMore: boolean;
+    }
+
+    const root = document.querySelector<HTMLElement>('[data-unified-feed]');
+
+    if (root) {
+        const list = root.querySelector<HTMLElement>('[data-feed-list]')!;
+        const moreBtn = root.querySelector<HTMLButtonElement>('[data-feed-more]')!;
+        const endNote = root.querySelector<HTMLElement>('[data-feed-end]')!;
+        const filterBtns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-feed-filter]'));
+
+        // Seed the "all" group from the server-rendered page 1
+        const seeded: FeedEntryData[] = Array.from(list.querySelectorAll<HTMLElement>('.feed-entry')).map(
+            (el) => ({
+                html: el.innerHTML,
+                group: '',
+                month: el.dataset.month || ''
+            })
+        );
+
+        const state: Record<string, GroupState> = {
+            all: {
+                entries: seeded,
+                page: 1,
+                hasMore: root.dataset.hasMore === 'true'
+            }
+        };
+
+        let current = 'all';
+        let loading = false;
+
+        async function fetchPage(group: string): Promise<void> {
+            const groupState = state[group];
+            const response = await fetch(`/api/feed/${group}/${groupState.page + 1}.json`);
+            if (!response.ok) {
+                throw new Error(`Feed page request failed: ${response.status}`);
+            }
+            const data = await response.json();
+            groupState.page += 1;
+            groupState.entries.push(...data.entries);
+            groupState.hasMore = data.hasMore;
+        }
+
+        function render(): void {
+            const groupState = state[current];
+            let lastMonth = '';
+            const parts: string[] = [];
+
+            for (const entry of groupState.entries) {
+                if (entry.month !== lastMonth) {
+                    parts.push(`<div class="unified-feed__month">${entry.month}</div>`);
+                    lastMonth = entry.month;
+                }
+                parts.push(`<article class="feed-entry" data-month="${entry.month}">${entry.html}</article>`);
+            }
+
+            list.innerHTML = parts.join('');
+            moreBtn.hidden = !groupState.hasMore;
+            endNote.hidden = groupState.hasMore;
+        }
+
+        async function ensureGroup(group: string): Promise<void> {
+            if (!state[group]) {
+                state[group] = { entries: [], page: 0, hasMore: true };
+                await fetchPage(group);
+            }
+        }
+
+        moreBtn.addEventListener('click', async () => {
+            if (loading) return;
+            loading = true;
+            moreBtn.disabled = true;
+            const label = moreBtn.textContent;
+            moreBtn.textContent = 'Loading…';
+            try {
+                await fetchPage(current);
+                render();
+            } catch {
+                moreBtn.textContent = 'Something went wrong — try again';
+            } finally {
+                if (moreBtn.textContent === 'Loading…') {
+                    moreBtn.textContent = label;
+                }
+                moreBtn.disabled = false;
+                loading = false;
+            }
+        });
+
+        filterBtns.forEach((btn) =>
+            btn.addEventListener('click', async () => {
+                if (loading) return;
+                const group = btn.dataset.feedFilter || 'all';
+                if (group === current) return;
+                loading = true;
+                try {
+                    await ensureGroup(group);
+                    current = group;
+                    filterBtns.forEach((b) => {
+                        const active = b === btn;
+                        b.classList.toggle('tag-chip-active', active);
+                        b.setAttribute('aria-pressed', String(active));
+                    });
+                    render();
+                } catch {
+                    // leave the previous group visible if the fetch fails
+                } finally {
+                    loading = false;
+                }
+            })
+        );
+    }
+</script>
