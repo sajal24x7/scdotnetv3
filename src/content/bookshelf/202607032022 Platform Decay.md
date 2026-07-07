@@ -16,6 +16,7 @@ shelfStatus: "read"
 started: 2026-07-03T09:06:24+03:00
 rating: like
 finished: 2026-07-07T08:45:27+03:00
+cover: platform-decay.jpg
 ---
 
 ## Review
