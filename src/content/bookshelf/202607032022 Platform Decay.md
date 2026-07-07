@@ -1,8 +1,8 @@
 ---
-title: "Platform Decay"
-slug: "platform-decay"
-created: 2026-07-03T09:06:24+03:00
-updated: 2026-07-06T09:06:24+03:00
+title: Platform Decay
+slug: platform-decay
+created: 2026-07-03T06:06:24.000Z
+updated: 2026-07-06T06:06:24.000Z
 category: bookshelf
 tags:
   - murderbot
@@ -12,8 +12,8 @@ author:
 series: The Murderbot Diaries
 seriesNumber: 8
 genre: sci-fi
-shelfStatus: "read"
-started: 2026-07-03T09:06:24+03:00
+shelfStatus: read
+started: 2026-07-03T06:06:24.000Z
 rating: like
 finished: 2026-07-07T08:45:27+03:00
 cover: platform-decay.jpg
