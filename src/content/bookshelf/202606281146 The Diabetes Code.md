@@ -2,7 +2,7 @@
 title: The Diabetes Code
 slug: the-diabetes-code
 created: 2026-06-29T09:57:58.000Z
-updated: 2026-06-29T09:57:58.000Z
+updated: 2026-07-03T20:23:43+03:00
 category: bookshelf
 tags:
   - diabetes

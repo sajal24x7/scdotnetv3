@@ -2,7 +2,7 @@
 title: Platform Decay
 slug: platform-decay
 created: 2026-07-03T06:06:24.000Z
-updated: 2026-07-06T06:06:24.000Z
+updated: 2026-07-07T08:49:26+03:00
 category: bookshelf
 tags:
   - murderbot
