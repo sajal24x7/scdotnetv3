@@ -2,7 +2,7 @@
 title: The Art of Spending Money
 slug: the-art-of-spending-money
 created: 2025-12-19T15:11:57.000Z
-updated: 2026-06-05T14:19:08
+updated: 2025-12-19T15:11:57.000Z
 category: bookshelf
 tags:
   - non-fiction

@@ -2,7 +2,7 @@
 title: Building Microservices
 slug: reading-building-microservices
 created: 2026-03-06T10:20:43.000Z
-updated: 2026-06-05T14:48:54
+updated: 2026-03-06T10:20:43.000Z
 category: bookshelf
 tags:
   - micro-services

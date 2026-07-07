@@ -2,7 +2,7 @@
 title: Prelude to Foundation
 slug: prelude-to-foundation
 created: 2013-08-08T13:01:58.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2013-08-08T13:01:58.000Z
 category: bookshelf
 tags:
   - book-reviews

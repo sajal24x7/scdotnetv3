@@ -3,7 +3,7 @@ title: Poems to Fall in Love With
 slug: riddell-chris-poems-to-fall-in-love-with
 description: An excellent collection of poetry on love with wonderful art
 created: 2024-12-22T20:32:57.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2024-12-22T20:32:57.000Z
 category: bookshelf
 tags:
   - book-reviews

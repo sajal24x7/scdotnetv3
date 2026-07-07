@@ -2,7 +2,7 @@
 title: The Prodigal Daughter
 slug: the-prodigal-daughter
 created: 2013-03-29T18:05:21.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2013-03-29T18:05:21.000Z
 category: bookshelf
 tags:
   - book-reviews

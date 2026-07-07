@@ -2,7 +2,7 @@
 title: The Practice of Cloud System Administration
 slug: the-practice-of-cloud-system-administration
 created: 2025-10-27T09:29:23.000Z
-updated: 2026-06-05T14:19:08
+updated: 2025-10-27T09:29:23.000Z
 category: bookshelf
 tags:
   - technical

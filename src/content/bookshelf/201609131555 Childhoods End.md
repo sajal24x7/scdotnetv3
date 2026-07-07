@@ -2,7 +2,7 @@
 title: Childhood’s End
 slug: childhoods-end
 created: 2016-09-13T15:55:22.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2016-09-13T15:55:22.000Z
 category: bookshelf
 tags:
   - book-reviews

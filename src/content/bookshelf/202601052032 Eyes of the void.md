@@ -2,7 +2,7 @@
 title: Eyes of the Void
 slug: eyes-of-the-void
 created: 2026-01-05T18:34:11.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-01-05T18:34:11.000Z
 category: bookshelf
 tags:
   - space-opera

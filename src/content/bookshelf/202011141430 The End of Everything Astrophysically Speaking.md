@@ -2,7 +2,7 @@
 title: "The End of Everything (Astrophysically Speaking)"
 slug: the-end-of-everything-astrophysically-speaking
 created: 2026-01-05T13:11:03.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-01-05T13:11:03.000Z
 category: bookshelf
 tags:
   - universe

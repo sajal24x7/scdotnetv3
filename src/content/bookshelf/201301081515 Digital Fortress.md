@@ -2,7 +2,7 @@
 title: Digital Fortress
 slug: digital-fortress
 created: 2013-01-08T15:15:35.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2013-01-08T15:15:35.000Z
 category: bookshelf
 tags:
   - book-reviews

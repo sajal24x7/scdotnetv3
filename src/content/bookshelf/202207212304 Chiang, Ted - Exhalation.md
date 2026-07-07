@@ -2,7 +2,7 @@
 title: 'Chiang, Ted - Exhalation'
 slug: chiang-ted-exhalation
 created: 2026-01-08T17:13:34.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-01-08T17:13:34.000Z
 category: bookshelf
 tags:
   - short-story

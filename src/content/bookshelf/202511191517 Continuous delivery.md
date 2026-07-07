@@ -2,7 +2,7 @@
 title: Continuous Delivery
 slug: continuous-delivery
 created: 2025-11-19T20:40:57.000Z
-updated: 2026-06-05T14:19:08
+updated: 2025-11-19T20:40:57.000Z
 category: bookshelf
 tags:
   - technical

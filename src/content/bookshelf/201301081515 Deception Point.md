@@ -2,7 +2,7 @@
 title: Deception Point
 slug: deception-point
 created: 2013-01-08T15:15:09.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2013-01-08T15:15:09.000Z
 category: bookshelf
 tags:
   - book-reviews

@@ -2,7 +2,7 @@
 title: Starter Villain
 slug: starter-villain
 created: 2026-01-09T13:14:30.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-01-09T13:14:30.000Z
 category: bookshelf
 tags:
   - fiction

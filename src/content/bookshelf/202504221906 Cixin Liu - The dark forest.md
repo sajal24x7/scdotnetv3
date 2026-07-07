@@ -3,7 +3,7 @@ title: The Dark Forest
 slug: the-dark-forest
 description: The second book in the three body problem series
 created: 2025-04-22T19:06:54.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2025-04-22T19:06:54.000Z
 category: bookshelf
 tags:
   - book-reviews

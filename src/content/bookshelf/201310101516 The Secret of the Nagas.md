@@ -2,7 +2,7 @@
 title: The Secret of the Nagas
 slug: the-secret-of-the-nagas
 created: 2013-10-10T15:16:20.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2013-10-10T15:16:20.000Z
 category: bookshelf
 tags:
   - book-reviews

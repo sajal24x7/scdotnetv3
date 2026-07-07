@@ -2,7 +2,7 @@
 title: The Da Vinci Code
 slug: the-da-vinci-code
 created: 2013-01-08T15:14:52.000Z
-updated: 2026-06-05T14:19:08.000Z
+updated: 2013-01-08T15:14:52.000Z
 category: bookshelf
 tags:
   - book-reviews
