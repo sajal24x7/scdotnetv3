@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+    title="Page not found - Sajal Choudhary"
+    description="This page doesn't exist (anymore)."
+    currentPage="/404/"
+    pageWrapper={{
+        maxWidth: '4xl',
+        padding: 'md',
+        paddingScale: 'container',
+        centered: true,
+        grid: { gap: 'loose', padding: 'narrow' }
+    }}
+>
+    <div class="grid-span-full py-16 text-center space-y-6">
+        <p class="text-small uppercase tracking-wide text-gray-500 dark:text-gray-400">404</p>
+        <h1 class="text-huge font-bold">This page doesn't exist</h1>
+        <p class="text-normal text-gray-700 dark:text-gray-300">
+            It may have moved, or the link may be wrong. Try one of these instead:
+        </p>
+        <nav class="flex flex-wrap justify-center gap-3" aria-label="Recovery links">
+            <a href="/" class="tag-chip">Home</a>
+            <a href="/search/" class="tag-chip">Search the site</a>
+            <a href="/garden/" class="tag-chip">Garden</a>
+            <a href="/stream/" class="tag-chip">Stream</a>
+            <a href="/feeds/" class="tag-chip">RSS feeds</a>
+        </nav>
+    </div>
+</Layout>

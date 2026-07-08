@@ -1,5 +1,9 @@
 /* Global styles for astronautical-aperture */
 
+/* Self-hosted variable fonts (replaces the render-blocking Google Fonts request) */
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/merriweather';
+
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -9,7 +13,7 @@
 /* Design tokens from tailwind.config.mjs */
 @theme {
   --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Merriweather', ui-serif, Georgia, serif;
+  --font-serif: 'Merriweather Variable', 'Merriweather', ui-serif, Georgia, serif;
 }
 
 /* Colors that reference runtime CSS variables (light/dark) must use @theme inline */
@@ -131,7 +135,7 @@
   h4,
   h5,
   h6 {
-    font-family: 'Merriweather', ui-serif, Georgia, serif;
+    font-family: 'Merriweather Variable', 'Merriweather', ui-serif, Georgia, serif;
     line-height: 1.2;
     transition: font-weight 0.2s ease;
   }

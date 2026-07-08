@@ -136,11 +136,11 @@ const popularTags = Array.from(tagCounts.entries())
         var q = query.trim();
         if (!q) { showHints(); return; }
 
-        showInResults('<div class=”py-8 text-center text-gray-500 dark:text-gray-400”>Searching…</div>');
+        showInResults('<div class="py-8 text-center text-gray-500 dark:text-gray-400">Searching…</div>');
 
         ensureLoaded().then(function (pagefind) {
           if (!pagefind) {
-            showInResults('<div class=”py-8 text-center text-red-500 dark:text-red-400”>Search index not available. Run <code class=”bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs”>npm run build</code> to enable search.</div>');
+            showInResults('<div class="py-8 text-center text-red-500 dark:text-red-400">Search index not available. Run <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs">npm run build</code> to enable search.</div>');
             return;
           }
 
@@ -150,7 +150,7 @@ const popularTags = Array.from(tagCounts.entries())
           var searchPromise;
           if (isTag) {
             if (!tagValue) {
-              showInResults('<div class=”py-6 text-center text-gray-400”>Type a tag name after <code class=”bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs”>tag:</code></div>');
+              showInResults('<div class="py-6 text-center text-gray-400">Type a tag name after <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs">tag:</code></div>');
               return;
             }
             searchPromise = pagefind.search(null, { filters: { tag: tagValue } });
@@ -161,9 +161,9 @@ const popularTags = Array.from(tagCounts.entries())
           searchPromise.then(function (res) {
             if (!res.results.length) {
               showInResults(
-                '<div class=”py-12 text-center text-gray-500 dark:text-gray-400 space-y-2”>' +
+                '<div class="py-12 text-center text-gray-500 dark:text-gray-400 space-y-2">' +
                 '<p>No results for “<strong>' + q + '</strong>”</p>' +
-                '<p class=”text-small”>Try a different term, or use <code class=”bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs”>tag:topic</code> to filter by tag.</p>' +
+                '<p class="text-small">Try a different term, or use <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs">tag:topic</code> to filter by tag.</p>' +
                 '</div>'
               );
               return;
@@ -178,7 +178,7 @@ const popularTags = Array.from(tagCounts.entries())
                 ? shown + ' of ' + total + ' results'
                 : total + ' result' + (total !== 1 ? 's' : '');
 
-              var header = '<p class=”text-small text-gray-500 dark:text-gray-400 mb-6”>' +
+              var header = '<p class="text-small text-gray-500 dark:text-gray-400 mb-6">' +
                 countLabel + ' for “<strong>' + q + '</strong>”</p>';
 
               var items = data.map(function (d) {
@@ -190,21 +190,21 @@ const popularTags = Array.from(tagCounts.entries())
                 var tagBadges = tags.slice(0, 5).map(function (tag) {
                   var active = isTag && tag.toLowerCase() === tagValue;
                   var cls = 'tag-chip tag-chip-inline' + (active ? ' tag-chip-active' : '');
-                  return '<a href=”/tags/' + encodeURIComponent(tag) + '/” class=”' + cls + '”>' + tag.toUpperCase() + '</a>';
+                  return '<a href="/tags/' + encodeURIComponent(tag) + '/" class="' + cls + '">' + tag.toUpperCase() + '</a>';
                 }).join('');
 
-                return '<article class=”border-b border-gray-200/50 dark:border-gray-700/50 py-5 last:border-b-0”>' +
-                  '<div class=”flex items-start justify-between gap-4”>' +
-                  '<div class=”flex-1 min-w-0”>' +
-                  '<div class=”flex items-center flex-wrap gap-x-2 gap-y-1 mb-1”>' +
-                  '<a href=”' + href + '” class=”font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-snug”>' + title + '</a>' +
-                  (category ? '<span class=”text-small text-gray-500 dark:text-gray-400 capitalize”>' + category + '</span>' : '') +
+                return '<article class="border-b border-gray-200/50 dark:border-gray-700/50 py-5 last:border-b-0">' +
+                  '<div class="flex items-start justify-between gap-4">' +
+                  '<div class="flex-1 min-w-0">' +
+                  '<div class="flex items-center flex-wrap gap-x-2 gap-y-1 mb-1">' +
+                  '<a href="' + href + '" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-snug">' + title + '</a>' +
+                  (category ? '<span class="text-small text-gray-500 dark:text-gray-400 capitalize">' + category + '</span>' : '') +
                   '</div>' +
-                  (d.excerpt ? '<p class=”text-small text-gray-500 dark:text-gray-400 mb-2 pagefind-excerpt”>' + d.excerpt + '</p>' : '') +
-                  (tags.length > 0 ? '<div class=”flex flex-wrap gap-1”>' + tagBadges + '</div>' : '') +
+                  (d.excerpt ? '<p class="text-small text-gray-500 dark:text-gray-400 mb-2 pagefind-excerpt">' + d.excerpt + '</p>' : '') +
+                  (tags.length > 0 ? '<div class="flex flex-wrap gap-1">' + tagBadges + '</div>' : '') +
                   '</div>' +
-                  '<a href=”' + href + '” class=”flex-shrink-0 mt-1 text-gray-400 hover:text-blue-500 transition-colors” aria-hidden=”true”>' +
-                  '<svg xmlns=”http://www.w3.org/2000/svg” width=”16” height=”16” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2” stroke-linecap=”round” stroke-linejoin=”round”><path d=”m9 18 6-6-6-6”/></svg>' +
+                  '<a href="' + href + '" class="flex-shrink-0 mt-1 text-gray-400 hover:text-blue-500 transition-colors" aria-hidden="true">' +
+                  '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>' +
                   '</a>' +
                   '</div>' +
                   '</article>';
@@ -213,7 +213,7 @@ const popularTags = Array.from(tagCounts.entries())
               showInResults(header + '<div>' + items + '</div>');
             });
           }).catch(function () {
-            showInResults('<div class=”py-8 text-center text-red-500 dark:text-red-400”>Search error. Please try again.</div>');
+            showInResults('<div class="py-8 text-center text-red-500 dark:text-red-400">Search error. Please try again.</div>');
           });
         });
       }

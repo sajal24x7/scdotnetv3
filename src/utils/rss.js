@@ -30,7 +30,7 @@ export async function buildRssItem(item) {
     title: item.data.title || 'Untitled',
     description: item.data.description || '',
     content,
-    created: item.data.created,
+    pubDate: item.data.created,
     categories: [item.data.category, ...(item.data.tags || [])],
     author: 'sajal@sajalchoudhary.net (Sajal Choudhary)',
     customData: item.data.image ? `
