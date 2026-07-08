@@ -49,6 +49,42 @@ If a **Link** is provided, the body is prefixed with `[Title](link)` (or the
 link's hostname when there's no title), matching the established micro post
 format. Quotes are just typed as Markdown `>` blockquotes in the body.
 
+## Images (Cloudflare R2)
+
+The **＋ photo** button uploads images to a Cloudflare R2 bucket and inserts
+`![](https://sajalchoudhary.net/i/…)` Markdown at the cursor. The first image
+in a post is also written to the `image:` frontmatter field so feed cards pick
+it up.
+
+Two Pages Functions (in `functions/` at the repo root, deployed automatically
+alongside the static build) do the work:
+
+- `POST /api/upload` (`functions/api/upload.js`) — validates the request,
+  stores the image in R2 under `micro/YYYY/MM/<timestamp>-<random>.<ext>`, and
+  returns the URL. Auth reuses the **same GitHub token** the composer already
+  holds: the function accepts an upload only if GitHub confirms the token can
+  read this repo, so there is no separate upload secret to manage.
+- `GET /i/*` (`functions/i/[[path]].js`) — streams images out of R2 from the
+  site's own domain with immutable cache headers and edge caching, so the
+  bucket never needs to be public or have its own domain.
+
+Photos are downscaled in the browser before upload (max 2048px, JPEG) so phone
+pictures don't land as 10MB originals; GIFs and already-small images are sent
+as-is. The server caps uploads at 15MB and only accepts image content types.
+
+### One-time R2 setup (Cloudflare dashboard)
+
+1. **R2 → Create bucket** — name it e.g. `scdotnet-images` (any name works;
+   the binding below is what the code sees). No public access needed.
+2. **Workers & Pages → your Pages project → Settings → Bindings →
+   Add → R2 bucket** — variable name **`IMAGES`** (must be exactly this),
+   bucket: the one you just created. Apply to Production (and Preview if you
+   want uploads from preview deploys).
+3. Redeploy the site once so the binding takes effect.
+
+Until the binding exists, uploads fail with a clear "IMAGES R2 binding is not
+configured" error; the rest of the composer keeps working.
+
 ## Behaviour notes
 
 - Drafts autosave to `localStorage` as you type and survive closing the tab;

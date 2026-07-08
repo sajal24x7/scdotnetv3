@@ -113,6 +113,25 @@
   #setup ol { margin: 0 0 10px; padding-left: 20px; color: var(--muted); }
   #setup code { font-size: 13px; }
   label { display: block; font-size: 12px; color: var(--muted); margin: 0 0 4px 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: -4px 0 10px;
+  }
+  .toolbar button {
+    background: var(--card);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 12px;
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .toolbar button:disabled { opacity: 0.5; }
+  #uploads { font-size: 13px; color: var(--muted); }
+  #uploads.err { color: var(--err); }
 </style>
 </head>
 <body>
@@ -140,6 +159,11 @@
     <input id="link" type="url" placeholder="Link (optional)" autocomplete="off" inputmode="url" enterkeyhint="next">
   </div>
   <textarea id="body" placeholder="Write…"></textarea>
+  <div class="toolbar">
+    <button id="addPhoto" type="button">＋ photo</button>
+    <span id="uploads" aria-live="polite"></span>
+    <input id="file" type="file" accept="image/*" multiple hidden>
+  </div>
   <div class="row-small">
     <input id="tags" type="text" placeholder="Tags, comma separated (optional)" autocomplete="off" autocapitalize="none">
   </div>
@@ -250,6 +274,12 @@
       content = `[${label}](${link})` + (body ? `\n\n${body}` : '');
     }
 
+    // First inline image becomes the card/hero image
+    const firstImage = content.match(/!\[[^\]]*\]\(([^)\s]+)\)/);
+    if (firstImage) {
+      fm.splice(fm.indexOf('category: micro'), 0, `image: ${yamlString(firstImage[1])}`);
+    }
+
     return {
       title,
       slug: title ? slugify(title) : stamp,
@@ -264,6 +294,93 @@
     bytes.forEach((b) => { bin += String.fromCharCode(b); });
     return btoa(bin);
   }
+
+  // --- image upload --------------------------------------------------------
+  const MAX_DIM = 2048;      // downscale phone photos before upload
+  const RECOMPRESS_OVER = 500 * 1024;
+  let pendingUploads = 0;
+
+  function insertIntoBody(text) {
+    const el = $('body');
+    const pos = el.selectionStart ?? el.value.length;
+    const before = el.value.slice(0, pos);
+    const after = el.value.slice(pos);
+    const chunk = (before && !before.endsWith('\n\n') ? (before.endsWith('\n') ? '\n' : '\n\n') : '')
+                + text
+                + (after.startsWith('\n') ? '' : '\n\n');
+    el.value = before + chunk + after;
+    const cursor = (before + chunk).length;
+    el.setSelectionRange(cursor, cursor);
+    saveDraft();
+  }
+
+  async function shrinkImage(file) {
+    // GIFs would lose animation; small stills aren't worth recompressing
+    if (file.type === 'image/gif' || (file.size < RECOMPRESS_OVER)) return file;
+    try {
+      const bitmap = await createImageBitmap(file);
+      const scale = Math.min(1, MAX_DIM / Math.max(bitmap.width, bitmap.height));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(bitmap.width * scale);
+      canvas.height = Math.round(bitmap.height * scale);
+      canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      bitmap.close();
+      const blob = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.85));
+      // keep the original if recompression didn't actually help
+      return blob && blob.size < file.size ? blob : file;
+    } catch {
+      return file; // undecodable in this browser — let the server take the original
+    }
+  }
+
+  function setUploadNote(msg, isErr) {
+    $('uploads').textContent = msg;
+    $('uploads').className = isErr ? 'err' : '';
+  }
+
+  async function uploadOne(file, index, total) {
+    const token = localStorage.getItem(TOKEN_KEY);
+    const counter = total > 1 ? ` ${index + 1}/${total}` : '';
+    setUploadNote(`Preparing photo${counter}…`);
+    const blob = await shrinkImage(file);
+    setUploadNote(`Uploading photo${counter}…`);
+    const res = await fetch('/api/upload', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': blob.type || file.type },
+      body: blob,
+    });
+    if (!res.ok) {
+      const detail = (await res.json().catch(() => ({}))).error || `HTTP ${res.status}`;
+      throw new Error(detail);
+    }
+    const { url } = await res.json();
+    insertIntoBody(`![](${SITE}${url})`);
+  }
+
+  $('addPhoto').addEventListener('click', () => {
+    if (!localStorage.getItem(TOKEN_KEY)) { showSetup(true); return; }
+    $('file').click();
+  });
+
+  $('file').addEventListener('change', async () => {
+    const files = Array.from($('file').files || []);
+    $('file').value = '';
+    if (!files.length) return;
+    pendingUploads += files.length;
+    $('addPhoto').disabled = true;
+    try {
+      for (let i = 0; i < files.length; i++) {
+        await uploadOne(files[i], i, files.length);
+        pendingUploads--;
+      }
+      setUploadNote(files.length > 1 ? `${files.length} photos added.` : 'Photo added.');
+    } catch (e) {
+      pendingUploads = 0;
+      setUploadNote(`Photo upload failed: ${e.message}`, true);
+    } finally {
+      $('addPhoto').disabled = false;
+    }
+  });
 
   // --- publish -------------------------------------------------------------
   function setStatus(msg, cls) {
@@ -284,6 +401,10 @@
   $('send').addEventListener('click', async () => {
     const token = localStorage.getItem(TOKEN_KEY);
     if (!token) { showSetup(true); return; }
+    if (pendingUploads > 0) {
+      setStatus('Wait for the photo upload to finish…', 'err');
+      return;
+    }
 
     const post = buildPost();
     if (!$('body').value.trim() && !$('link').value.trim()) {
@@ -309,6 +430,7 @@
       const data = await res.json();
       clearDraft();
       saveDraft();
+      setUploadNote('');
       setStatus(
         `Published. Live in a minute or two at ` +
         `<a href="${SITE}/micro/${post.slug}">/micro/${post.slug}</a> · ` +
