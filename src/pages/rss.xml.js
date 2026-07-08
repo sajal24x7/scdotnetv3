@@ -1,73 +1,20 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import sanitizeHtml from 'sanitize-html';
 import { getContentCategories } from '../utils/content';
-import { parseMarkdown } from '../utils/markdown';
-import { convertWikilinks } from '../utils/remarkWikilinks';
+import { buildRssItem, rssNamespaces, sortByDate } from '../utils/rss.js';
 
 export async function GET(context) {
   const categories = getContentCategories();
   const allPosts = await Promise.all(categories.map(category => getCollection(category)));
   const flatPosts = allPosts.flat();
-  
-  // Sort by publish date (newest first)
-  const sortedPosts = flatPosts.sort((a, b) => 
-    new Date(b.data.created).valueOf() - new Date(a.data.created).valueOf()
-  );
-  
-  // Limit to latest 50 posts for main feed
-  const recentPosts = sortedPosts.slice(0, 50);
-  
-  // Extract the site URL from the Astro context
-  const site = context.site.toString();
-  
-  // Generate the RSS feed
+
+  // Generate the RSS feed (latest 50 posts across all sections)
   return rss({
     title: 'Sajal Choudhary',
     description: 'Personal blog, thoughts, stories, and discoveries. Writing since 2012 about technology, life, books, and everything in between.',
     site: context.site,
-    items: await Promise.all(recentPosts.map(async (item) => {
-      // Render the content body to HTML
-      let content = '';
-      
-      // If it's a string, parse it with the shared markdown helper
-      if (typeof item.body === 'string') {
-        content = sanitizeHtml(parseMarkdown(await convertWikilinks(item.body)), {
-          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'figure', 'figcaption']),
-          allowedAttributes: {
-            ...sanitizeHtml.defaults.allowedAttributes,
-            img: ['src', 'alt', 'title', 'width', 'height'],
-            a: ['href', 'title', 'target', 'rel']
-          }
-        });
-      } else {
-        // For rendered components, we'll just use the description
-        content = item.data.description || '';
-      }
-      
-      // Determine the post URL based on category
-      const postUrl = `/${item.data.category}/${item.id}/`;
-      
-      return {
-        link: postUrl,
-        title: item.data.title || 'Untitled',
-        description: item.data.description || '',
-        content,
-        created: item.data.created,
-        categories: [item.data.category, ...(item.data.tags || [])],
-        author: 'sajal@sajalchoudhary.net (Sajal Choudhary)',
-        // Add custom namespace elements for better RSS features
-        customData: item.data.image ? `
-          <media:content url="${item.data.image}" medium="image" />
-          <media:thumbnail url="${item.data.image}" />
-        ` : ''
-      };
-    })),
+    items: await Promise.all(sortByDate(flatPosts).slice(0, 50).map(buildRssItem)),
     stylesheet: '/rss-style.xsl',
-    xmlns: {
-      media: "http://search.yahoo.com/mrss/",
-      atom: "http://www.w3.org/2005/Atom",
-      content: "http://purl.org/rss/1.0/modules/content/"
-    }
+    xmlns: rssNamespaces
   });
-} 
+}
