@@ -121,6 +121,223 @@ commit). Convert to a single workflow with a `matrix: shelf: [book, film, game, 
 reusable workflow. Pure maintenance win; behavior must stay identical (same crons, same
 commit messages). Low priority — skip if time-boxed.
 
+## 7.6 Consolidate the content publish pipeline (content branch → main)
+
+### Current flow — three production builds per note
+
+The authoring flow today: write in Obsidian → an iOS Shortcut maps Obsidian metadata to
+Astro frontmatter → GitSync (iOS) / plain git (Mac) pushes to `main`. That single push
+then fans out:
+
+| Step | Actor | Effect |
+|------|-------|--------|
+| 1. Author push lands note in `src/content/inbox/` | human | **Cloudflare build #1** (note in a half-published state); `syndicate-content.yml` `push` trigger fires immediately |
+| 2. `sort-inbox.yml` normalizes frontmatter + moves file to its category folder, commits to `main` | bot | **Cloudflare build #2** |
+| 3. Syndication run (serialized behind the `syndication` concurrency group) posts + commits `syndicationUrls` | bot | **Cloudflare build #3** |
+
+Known defects in this flow, beyond the wasted builds (~4,400 pages each):
+
+- **Syndication races the deploy.** The `push` trigger runs before Cloudflare has
+  published, so a post can be syndicated before its canonical URL is live — and it runs
+  against the pre-sort tree, where the note is still in `inbox/`.
+- **Missed syndication.** The sort commit comes from `github-actions[bot]`, which
+  `syndicate-content.yml` filters out (`if: github.actor != 'github-actions[bot]'`), so a
+  note sometimes only syndicates when the *next* human push re-runs the 7-day catch-up
+  window.
+- **The `deploy-success` `repository_dispatch` path is dead.** `build:cloudflare` no
+  longer calls `scripts/trigger-syndication.sh`, so that trigger never fires; only the
+  racy `push` trigger does anything.
+- `update-post-dates.yml` is permanently paused (`if: false`) — dead weight.
+- Node drift: syndication pins 18, everything else 20, `engines` says ≥22 (see 7.1).
+
+### Branching decision
+
+Three options were considered:
+
+**A. Content branch → checks → merge to `main` (chosen).** Authors push to a long-lived
+`content` branch. A single workflow normalizes, sorts, validates, then merges to `main`.
+`main` stays the deployable source of truth: Cloudflare keeps building `main` for
+production, PRs keep targeting `main`, and the PR CI from 7.2 gates code changes exactly
+as before. All bot churn happens on `content` *before* merge, so `main` receives one
+clean commit per publish and Cloudflare builds once. Migration cost: change the branch
+name in GitSync (iOS) and the Mac clone, once.
+
+**B. Everything to `main`, promote to a `prod` branch that Cloudflare builds (rejected).**
+Inverts what every tool assumes: "what's live" stops being `main`; PR flow, preview
+deploys, and existing workflows all key off `main` and would need repointing. The bot
+commits still land on `main` and still each need promoting — the multi-build problem is
+rebuilt one branch over, plus a promotion workflow on top. Same gate, strictly more
+moving parts. This model earns its keep on team projects with release trains, not a
+single-author content site.
+
+**C. Stay on `main`, consolidate workflows only (fallback).** Merge transform+sort into
+one job with a single commit-back, and retrigger syndication off deploy success instead
+of push. Gets ~3 builds down to ~2 with zero branch changes, but nothing is validated
+*before* it deploys, and the half-sorted intermediate state still ships once. Acceptable
+if option A ever feels like ceremony; the syndication fix below applies to it unchanged.
+
+### Target flow (option A)
+
+```
+Obsidian note ──GitSync──▶ content branch
+                              │
+                              ▼
+                  content-publish.yml (on: push, branches: [content])
+                    1. obsidian_to_astro.py on src/content/inbox/*.md
+                    2. sort into category folders (reuse sort-inbox logic)
+                    3. validate: npx astro check + frontmatter schema
+                    4. commit normalized tree back to content
+                    5. merge content → main, push
+                              │
+                              ▼
+                  Cloudflare builds main (exactly once)
+                              │ deployment_status: success
+                              ▼
+                  syndicate-content.yml posts to Mastodon/Bluesky/Threads,
+                  commits syndicationUrls to main with "[CI Skip]"
+```
+
+Two platform behaviors make this composition safe — rely on them, don't fight them:
+
+- Pushes made with the default `GITHUB_TOKEN` **do not trigger other Actions workflows**
+  (GitHub's recursion guard), but Cloudflare's GitHub App webhook **does** still fire.
+  So the workflow's merge-to-main produces exactly one deploy and no workflow cascade.
+  (Corollary: the syndication workflow must be triggered by `deployment_status`, not
+  `push` — a `push: branches: [main]` trigger would never fire for the bot merge.)
+- Cloudflare Pages skips builds for commits whose message contains `[CI Skip]`. Use it
+  on the `syndicationUrls` commit-back so the URL bookkeeping doesn't cost a build; the
+  syndication links render with the next publish. Drop the tag if showing them
+  immediately is worth a second build.
+
+Sketch for `.github/workflows/content-publish.yml`:
+
+```yaml
+name: Publish content
+
+on:
+  push:
+    branches: [content]
+
+concurrency:
+  group: content-publish
+  cancel-in-progress: false   # never drop a publish; queue them
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - run: npm ci
+
+      - name: Normalize Obsidian frontmatter
+        run: |
+          for f in src/content/inbox/*.md; do
+            [ -f "$f" ] || continue
+            [ "$(basename "$f")" = "README.md" ] && continue
+            python3 scripts/obsidian_to_astro.py "$f"
+          done
+
+      - name: Sort inbox into category folders
+        run: bash scripts/sort-inbox.sh   # extract current sort-inbox.yml logic here
+
+      - name: Validate
+        run: npx astro check              # requires brief 06; see note below
+
+      - name: Commit normalized content to content branch
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/content/
+          git diff --staged --quiet || git commit -m "chore: normalize and sort published notes"
+          git push origin content
+
+      - name: Merge to main
+        run: |
+          git fetch origin main
+          git checkout main
+          git merge --no-ff content -m "publish: content batch $(date -u +%Y-%m-%dT%H:%M)"
+          git push origin main
+
+      - name: Open issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Content publish failed — notes not deployed',
+              body: `Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`,
+              labels: ['automation', 'inbox'],
+            })
+```
+
+And retrigger syndication off the deploy instead of the push:
+
+```yaml
+# syndicate-content.yml — replace the push + repository_dispatch triggers with:
+on:
+  deployment_status:
+  workflow_dispatch:
+    # keep existing dry_run / days_back inputs
+
+jobs:
+  syndicate:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+```
+
+The Cloudflare Pages GitHub App creates deployments and deployment statuses on the repo,
+so `deployment_status` fires natively — no PAT, no `trigger-syndication.sh`. Check the
+exact `environment` string in an actual event payload (it's the Pages project name /
+"Production" depending on integration vintage) before relying on the `if`. With the race
+gone, the `concurrency: syndication` group can keep `cancel-in-progress: false` but loses
+its double-trigger raison d'être — keep it anyway as cheap insurance. The
+`syndicationUrls` commit message gains `[CI Skip]`.
+
+### Migration checklist
+
+1. Land 7.1 (Node 22) and 7.2 (PR CI) first; `astro check` must pass (brief 06) or the
+   Validate step starts as `continue-on-error: true` with a TODO.
+2. Extract the sort logic from `sort-inbox.yml` into `scripts/sort-inbox.sh` (a stub
+   already exists — reconcile), so the workflow and local runs share it.
+3. Create the `content` branch from `main`; add `content-publish.yml`.
+4. Repoint GitSync (iOS) and the Mac clone at `content`. This is the only authoring-side
+   change; the iOS Shortcut keeps working as-is.
+5. Rewrite `syndicate-content.yml` triggers as above; add `[CI Skip]` to its commit.
+6. Delete `sort-inbox.yml` (replaced) and `update-post-dates.yml` (paused since the
+   `updated` field moved into Obsidian).
+7. In the Cloudflare Pages dashboard, confirm production branch = `main` and disable
+   preview deploys for `content` (or keep them if inbox previews are useful).
+8. Optional, later: once CI normalization is trusted, the iOS Shortcut's metadata-mapping
+   step is a redundant safety net — the phone flow can shrink to "write note → push".
+
+### Verification (7.6)
+
+- Push a test note to `content`: exactly one `Publish content` run, one commit lands on
+  `main`, exactly **one** Cloudflare production build starts.
+- After the deploy goes green, one syndication run fires (Actions tab shows it triggered
+  by `deployment_status`), posts appear, and the `syndicationUrls` commit on `main`
+  triggers **no** new Cloudflare build.
+- Push a note with a broken category to `content`: the run fails, an issue is opened,
+  and `main` + production are untouched.
+
 ## Verification
 
 ```bash
