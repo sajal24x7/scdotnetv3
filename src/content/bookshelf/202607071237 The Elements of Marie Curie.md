@@ -16,6 +16,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116878027693879661'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mq2cpjqmq52d'
   - 'https://www.threads.com/@sajal24x7/post/DafKit_EXCb'
+cover: the-elements-of-marie-curie.jpg
 ---
 Started reading.
 
