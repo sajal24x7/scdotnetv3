@@ -30,7 +30,7 @@ commands. **Do one brief per branch/PR** unless noted otherwise.
 | 04 | [Performance](04-performance.md) | P1–P2 | Technical | Self-hosted fonts, background-flash fix, hero image pipeline, 221 MB of tag pages |
 | 05 | [Dead code cleanup](05-code-cleanup.md) | P2 | Technical | ~15 unused components/files, stray root files, stale docs |
 | 06 | [TypeScript hygiene](06-typescript-hygiene.md) | P2 | Technical | Make `npx astro check` pass (currently 59 errors) |
-| 07 | [Infra & CI](07-infra-ci.md) | P1 | Infra | Node 20 vs 22 mismatch, no PR CI, stale `.npmrc` workaround |
+| 07 | [Infra & CI](07-infra-ci.md) | P1 | Infra | Node 20 vs 22 mismatch, no PR CI, stale `.npmrc` workaround, content publish pipeline consolidation (content branch → main, one build per publish) |
 | 08 | [UI polish](08-ui-polish.md) | P2–P3 | UI/Design | Theme toggle, footer, newsletter form UX, color-token consolidation, search discoverability |
 
 ## Findings by category
