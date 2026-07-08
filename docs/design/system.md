@@ -9,7 +9,7 @@ The site’s visual language is codified in `src/styles/global.css` and a handfu
 
 ## Typography
 
-- Body copy uses the Inter variable font, while headings switch to Merriweather for a serif accent. Utilities like `.text-small`, `.text-large`, and `.text-huge` map directly to the clamp-based CSS variables for responsive scaling.【F:src/styles/global.css†L48-L96】
+- Body copy uses the Inter variable font, while headings switch to Fraunces for a serif accent. Utilities like `.text-small`, `.text-large`, and `.text-huge` map directly to the clamp-based CSS variables for responsive scaling.【F:src/styles/global.css†L48-L96】
 - The `LayoutContainer` component exposes a `prose` flag to enable Tailwind’s typography plugin, ensuring long-form pages adhere to consistent widths and heading treatments.【F:src/components/layout/LayoutContainer.astro†L1-L64】
 
 ## Grid Systems
