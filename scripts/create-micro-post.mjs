@@ -1,15 +1,20 @@
 #!/usr/bin/env node
 /**
- * Create a micro post in src/content/micro/ from environment variables.
+ * Create a micro post in src/content/micro/.
  *
- * Used by the "Create micro post" GitHub Actions workflow (micro-post.yml),
- * which is dispatched from a phone (Apple Shortcut) — see
- * docs/operations/micro-posting.md.
+ * Two modes, used by two workflows (see docs/operations/micro-posting.md):
  *
- * Inputs (via env):
- *   MICRO_TEXT   The post body (markdown). Required.
- *   MICRO_TITLE  Post title. Omit for a title-less micro post.
- *   MICRO_TAGS   Comma-separated tags. Optional.
+ * 1. Env mode — dispatched from a phone Shortcut via micro-post.yml:
+ *      MICRO_TEXT   The post body (markdown). Required.
+ *      MICRO_TITLE  Post title. Omit for a title-less micro post.
+ *      MICRO_TAGS   Comma-separated tags. Optional.
+ *
+ * 2. File mode — a bare note dropped in src/content/inbox/micro/,
+ *    picked up by micro-inbox.yml:
+ *      node scripts/create-micro-post.mjs --from-file <path>
+ *    The note's filename is ignored. An optional frontmatter block may
+ *    set title/tags; otherwise a leading "# Heading" line becomes the
+ *    title. The source file is deleted after the post is created.
  *
  * Output file follows the existing convention:
  *   src/content/micro/YYYYMMDDHHMM Title.md   (timestamp in Europe/Helsinki)
@@ -23,19 +28,77 @@ import { fileURLToPath } from 'node:url';
 const TIME_ZONE = 'Europe/Helsinki';
 const MICRO_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/content/micro');
 
+// ---------------------------------------------------------------------------
+// Input collection
+
 const env = (name) => (process.env[name] ?? '').trim();
 
-const text = env('MICRO_TEXT');
-const title = env('MICRO_TITLE');
-const tags = env('MICRO_TAGS')
-    .split(',')
-    .map((t) => t.trim().toLowerCase())
-    .filter(Boolean);
+const fromFileIdx = process.argv.indexOf('--from-file');
+const sourceFile = fromFileIdx !== -1 ? process.argv[fromFileIdx + 1] : null;
+
+let text, title, tags;
+if (sourceFile) {
+    ({ text, title, tags } = parseNoteFile(sourceFile));
+} else {
+    text = env('MICRO_TEXT');
+    title = env('MICRO_TITLE');
+    tags = splitTags(env('MICRO_TAGS'));
+}
 
 if (!text) {
     console.error('Nothing to post: text is empty.');
     process.exit(1);
 }
+
+// Minimal parser for notes dropped in inbox/micro: optional frontmatter
+// (only title/tags are honoured), optional leading "# Heading" as title.
+function parseNoteFile(file) {
+    let body = fs.readFileSync(file, 'utf8').replace(/^﻿/, '');
+    let title = '';
+    let tags = [];
+
+    const fm = body.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+    if (fm) {
+        body = body.slice(fm[0].length);
+        const lines = fm[1].split(/\r?\n/);
+        for (let i = 0; i < lines.length; i++) {
+            const kv = lines[i].match(/^(title|tags):\s*(.*)$/);
+            if (!kv) continue;
+            const value = kv[2].trim();
+            if (kv[1] === 'title') {
+                title = value.replace(/^(['"])(.*)\1$/, '$2');
+            } else if (value.startsWith('[')) {
+                tags = splitTags(value.replace(/^\[|\]$/g, ''));
+            } else if (value) {
+                tags = splitTags(value);
+            } else {
+                // Block list: following "  - tag" lines
+                while (i + 1 < lines.length && /^\s*-\s+/.test(lines[i + 1])) {
+                    tags.push(lines[++i].replace(/^\s*-\s+/, '').trim().toLowerCase());
+                }
+            }
+        }
+    }
+
+    body = body.trim();
+    const heading = body.match(/^#\s+(.+)\r?\n+/);
+    if (!title && heading) {
+        title = heading[1].trim();
+        body = body.slice(heading[0].length).trim();
+    }
+
+    return { text: body, title, tags };
+}
+
+function splitTags(value) {
+    return value
+        .split(',')
+        .map((t) => t.trim().replace(/^(['"])(.*)\1$/, '$2').toLowerCase())
+        .filter(Boolean);
+}
+
+// ---------------------------------------------------------------------------
+// Post generation
 
 // "YYYYMMDDHHMM" in local (Helsinki) time, matching existing filenames.
 function localStamp(date) {
@@ -107,6 +170,11 @@ frontmatter.push('---');
 
 fs.writeFileSync(filePath, `${frontmatter.join('\n')}\n\n${text}\n`);
 console.log(`Created ${path.relative(process.cwd(), filePath)}`);
+
+if (sourceFile) {
+    fs.rmSync(sourceFile);
+    console.log(`Removed ${sourceFile}`);
+}
 
 // Expose the filename to later workflow steps.
 if (process.env.GITHUB_OUTPUT) {

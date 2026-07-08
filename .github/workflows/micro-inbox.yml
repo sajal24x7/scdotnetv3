@@ -1,0 +1,81 @@
+name: Publish micro notes from inbox
+
+# Fast path for tweet-like micro posts: drop any bare markdown file into
+# src/content/inbox/micro/ (from Working Copy, the GitHub app, or any
+# git client) and this workflow turns it into a proper micro post in
+# src/content/micro/ — timestamp filename, Astro frontmatter, the lot.
+# No frontmatter or filename convention needed in the dropped note; an
+# optional leading "# Heading" becomes the title.
+# See docs/operations/micro-posting.md.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/inbox/micro/**.md'
+
+# Shares a concurrency group with micro-post.yml so the two never
+# push to main at the same time.
+concurrency:
+  group: micro-post
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Convert notes to micro posts
+        id: convert
+        run: |
+          set -euo pipefail
+          CONVERTED=0
+          for file in src/content/inbox/micro/*.md; do
+            [ -f "$file" ] || continue
+            [ "$(basename "$file")" = "README.md" ] && continue
+            node scripts/create-micro-post.mjs --from-file "$file"
+            CONVERTED=$((CONVERTED + 1))
+          done
+          echo "converted=$CONVERTED" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push
+        if: steps.convert.outputs.converted != '0'
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/content/micro/ src/content/inbox/micro/
+          git commit -m "Publish micro notes from inbox"
+
+          # Retry with rebase in case another workflow pushed to main meanwhile
+          for i in 1 2 3; do
+            if git push origin main; then
+              exit 0
+            fi
+            echo "Push failed, rebasing and retrying ($i/3)..."
+            git pull --rebase origin main
+            sleep 2
+          done
+          git push origin main
+
+      # Pushes made with GITHUB_TOKEN don't fire on:push workflows,
+      # so kick off syndication explicitly (it also runs again after
+      # the Cloudflare deploy via the deploy-success dispatch).
+      - name: Trigger syndication
+        if: steps.convert.outputs.converted != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run syndicate-content.yml --ref main

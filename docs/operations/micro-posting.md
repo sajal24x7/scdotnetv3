@@ -1,30 +1,59 @@
 # Micro posting from your phone
 
-A low-friction way to publish tweet-like micro posts without Obsidian or
-gitsync. A single Apple Shortcut sends the text straight to GitHub; a
-workflow builds the file with correct Astro frontmatter, commits it to
-`src/content/micro/` on `main`, and kicks off syndication. Cloudflare
-Pages deploys as usual.
+Low-friction ways to publish tweet-like micro posts without Obsidian or
+gitsync. Two entry points feed the same script; both end with a properly
+formatted post committed to `src/content/micro/` on `main`, followed by
+the usual Cloudflare deploy and syndication.
 
 ```
-Shortcut → workflow_dispatch API → micro-post.yml
-    → creates src/content/micro/YYYYMMDDHHMM[ Title].md on main
-    → Cloudflare deploys · syndication posts to Bluesky/Mastodon/Threads
+A. Git app on the phone (Working Copy, GitHub app, …)
+   drop bare note in src/content/inbox/micro/ → push
+       → micro-inbox.yml converts it in place
+
+B. Apple Shortcut → workflow_dispatch API → micro-post.yml
+
+both → src/content/micro/YYYYMMDDHHMM[ Title].md on main
+     → Cloudflare deploys · syndication posts to Bluesky/Mastodon/Threads
 ```
 
 ## Pieces
 
+- **`.github/workflows/micro-inbox.yml`** — watches
+  `src/content/inbox/micro/`; converts any markdown file dropped there
+  into a micro post and deletes the original.
 - **`.github/workflows/micro-post.yml`** — `workflow_dispatch` workflow
   taking `text` (required, markdown), `title` (optional) and `tags`
   (optional, comma-separated).
-- **`scripts/create-micro-post.mjs`** — builds the markdown file:
-  Helsinki-time `YYYYMMDDHHMM` filename (title-less posts get just the
-  timestamp), `created`/`updated` in UTC, slug from title.
+- **`scripts/create-micro-post.mjs`** — shared by both: builds the
+  markdown file with a Helsinki-time `YYYYMMDDHHMM` filename (title-less
+  posts get just the timestamp), `created`/`updated` in UTC, slug from
+  title.
 
-All formatting logic lives in the repo, so the shortcut stays dumb — it
-only collects the text and makes one API call.
+All formatting logic lives in the repo, so the phone side stays dumb.
 
-## One-time setup: a fine-grained token
+## Option A: drop a file in `inbox/micro/`
+
+If you already have the repo on your phone (e.g. in Working Copy), this
+needs no token and no shortcut:
+
+1. Create a new file in `src/content/inbox/micro/` — **name it
+   anything**, the filename is discarded.
+2. Type your post. That's the whole file — no frontmatter needed.
+   - Want a title? Start the note with `# Your Title`.
+   - Want tags? Add a frontmatter block with `tags: a, b`.
+3. Commit and push (or let your app's auto-sync do it).
+
+The workflow converts the note into `src/content/micro/` with proper
+frontmatter, deletes the original, and triggers syndication. Notes with
+a `category` field still go in the parent `inbox/` folder and are
+handled by the existing sort-inbox pipeline.
+
+## Option B: Apple Shortcut
+
+One tap from the home screen, no git client involved. Needs a one-time
+token setup.
+
+### One-time setup: a fine-grained token
 
 1. GitHub → Settings → Developer settings → **Fine-grained personal
    access tokens** → Generate new token.
@@ -37,7 +66,7 @@ only collects the text and makes one API call.
 If the token ever leaks, the blast radius is "can run workflows in this
 one repo". Revoke and re-issue from the same page.
 
-## The Apple Shortcut
+### The Apple Shortcut
 
 Create a new shortcut with these actions:
 
@@ -88,11 +117,15 @@ else's machine.
 
 ## Notes
 
-- Posts go straight to `main`, bypassing `src/content/inbox/` — micro
-  posts are ephemeral and don't need the sorting stage.
+- Micro posts skip the sort-inbox stage — they are ephemeral and their
+  category is known up front. `micro-inbox.yml` only looks at the
+  `inbox/micro/` subfolder, and `sort-inbox.yml` only looks at
+  top-level `inbox/` files, so the two never touch the same note.
 - Filename collisions within the same minute are auto-bumped by one
   minute.
-- The workflow pushes with `GITHUB_TOKEN`, which doesn't fire `on: push`
-  workflows, so it dispatches `syndicate-content.yml` explicitly;
+- Both workflows push with `GITHUB_TOKEN`, which doesn't fire `on: push`
+  workflows, so they dispatch `syndicate-content.yml` explicitly;
   syndication also re-runs after deploy via the existing
   `deploy-success` dispatch from the Cloudflare build.
+- The two workflows share a concurrency group so simultaneous posts
+  queue instead of racing on the push to `main`.
