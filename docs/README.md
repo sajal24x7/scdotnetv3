@@ -17,6 +17,7 @@ This directory centralizes all reference material for the Astro-powered build of
 | [Deployment](operations/deployment.md) | Local commands, build pipeline, and Cloudflare Pages configuration. | `package.json`, `cloudflare-pages.json`
 | [Nordletter Image Caching](operations/nordletter-image-cache.md) | Build-time download + manifest workflow for newsletter thumbnails and a template for future asset caches. | `scripts/cache-nordletter-images.js`, `src/components/NordletterGrid.astro`
 | [Syndication](operations/syndication.md) | POSSE workflow, rate limiting, and how URLs are persisted back to content. | `scripts/syndicate-content.js`
+| [Micro Posting](operations/micro-posting.md) | Publish micro posts from a phone via an Apple Shortcut and a `workflow_dispatch` pipeline. | `.github/workflows/micro-post.yml`, `scripts/create-micro-post.mjs`
 | [Contributor Notes](contributing/claude-guide.md) | Quick reference for automation assistants contributing to the project. | `docs/contributing/claude-guide.md`
 
 > **Planning artifacts** remain in the top-level `planning/` directory and are intentionally excluded from this reference library.

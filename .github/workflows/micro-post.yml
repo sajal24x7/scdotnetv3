@@ -1,0 +1,93 @@
+name: Create micro post
+
+# Publish a micro post straight to src/content/micro/ on main.
+# Designed to be dispatched from a phone (Apple Shortcut) — see
+# docs/operations/micro-posting.md for the shortcut setup.
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: 'Post title (leave empty for a title-less micro post)'
+        required: false
+        type: string
+      url:
+        description: 'Link the post is about'
+        required: false
+        type: string
+      link_text:
+        description: 'Text for the link (defaults to title, then URL)'
+        required: false
+        type: string
+      quote:
+        description: 'Quoted passage (rendered as a blockquote)'
+        required: false
+        type: string
+      comment:
+        description: 'Your own commentary (plain markdown)'
+        required: false
+        type: string
+      tags:
+        description: 'Comma-separated tags'
+        required: false
+        type: string
+
+concurrency:
+  group: micro-post
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create post file
+        id: create
+        env:
+          MICRO_TITLE: ${{ inputs.title }}
+          MICRO_URL: ${{ inputs.url }}
+          MICRO_LINK_TEXT: ${{ inputs.link_text }}
+          MICRO_QUOTE: ${{ inputs.quote }}
+          MICRO_COMMENT: ${{ inputs.comment }}
+          MICRO_TAGS: ${{ inputs.tags }}
+        run: node scripts/create-micro-post.mjs
+
+      - name: Commit and push
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/content/micro/
+          git commit -m "Add micro post: ${{ steps.create.outputs.filename }}"
+
+          # Retry with rebase in case another workflow pushed to main meanwhile
+          for i in 1 2 3; do
+            if git push origin main; then
+              exit 0
+            fi
+            echo "Push failed, rebasing and retrying ($i/3)..."
+            git pull --rebase origin main
+            sleep 2
+          done
+          git push origin main
+
+      # Pushes made with GITHUB_TOKEN don't fire on:push workflows,
+      # so kick off syndication explicitly (it also runs again after
+      # the Cloudflare deploy via the deploy-success dispatch).
+      - name: Trigger syndication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run syndicate-content.yml --ref main
