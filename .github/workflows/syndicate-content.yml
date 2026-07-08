@@ -1,16 +1,13 @@
 name: Syndicate Content
 
 on:
-  # Run after successful deployment
-  repository_dispatch:
-    types: [deploy-success]
-
-  # Automatically run on commits to the default branch
-  push:
-    branches: [main]
-    paths:
-      - 'src/content/**/*.md'
-      - 'src/content/**/*.mdx'
+  # Run once Cloudflare Pages reports a deploy result. The Cloudflare Pages
+  # GitHub App creates deployments/deployment statuses natively, and (unlike
+  # a push trigger) this also fires for the bot merge from content-publish,
+  # because Cloudflare's webhook is not subject to GitHub's GITHUB_TOKEN
+  # recursion guard. Syndicating after the deploy also guarantees the
+  # canonical URL is live before anything is posted.
+  deployment_status:
 
   # Manual trigger for testing/catch-up
   workflow_dispatch:
@@ -26,18 +23,24 @@ on:
         default: '7'
         type: string
 
-# Serialise all syndication runs. Every push fires two triggers back-to-back:
-# the push trigger immediately, then repository_dispatch once Cloudflare deploys.
-# Without this, both runs start before either saves syndicationUrls and the same
-# post gets published to every platform twice. cancel-in-progress: false means
-# the second run waits rather than being dropped, so retries still happen.
+# Serialise syndication runs so two overlapping runs can never post the same
+# note twice before either saves syndicationUrls. With the old double
+# push + repository_dispatch triggers gone this is mostly insurance, but a
+# manual dispatch can still overlap a deploy-triggered run.
 concurrency:
   group: syndication
   cancel-in-progress: false
 
 jobs:
   syndicate:
-    if: github.actor != 'github-actions[bot]'
+    # Only production deploy successes count. If syndication ever stops
+    # firing, check the `environment` string in a real deployment event
+    # payload — Cloudflare Pages uses "Production" or the Pages project name
+    # depending on integration vintage.
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       contains(fromJSON('["Production", "production"]'), github.event.deployment.environment))
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -46,7 +49,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # Need full history to commit back changes
+          # deployment_status events check out the deployed SHA by default;
+          # we need the main branch itself to commit syndicationUrls back
+          ref: main
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -78,8 +83,8 @@ jobs:
           THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
 
           # Configuration
-          SYNDICATION_DRY_RUN: ${{ github.event.inputs.dry_run || github.event.client_payload.dry_run || 'false' }}
-          SYNDICATION_DAYS_BACK: ${{ github.event.inputs.days_back || github.event.client_payload.days_back || '7' }}
+          SYNDICATION_DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          SYNDICATION_DAYS_BACK: ${{ github.event.inputs.days_back || '7' }}
         run: node scripts/syndicate-content.js
 
       - name: Commit syndication updates
@@ -93,17 +98,19 @@ jobs:
           # Add all changed files
           git add .
 
-          # Commit with message
-          git commit -m "Update syndication URLs
+          # [CI Skip] tells Cloudflare Pages not to build for this
+          # bookkeeping commit; the syndication links render with the next
+          # publish instead of costing a build of their own.
+          git commit -m "Update syndication URLs [CI Skip]
 
           🤖 Generated with GitHub Actions
 
           Co-Authored-By: github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
 
           # Rebase on top of any commits that landed while this job ran
-          # (e.g. from update-post-dates running in parallel). Without this,
-          # a concurrent push causes git push to fail and syndicationUrls are
-          # never saved, so the next trigger posts to the same platforms again.
+          # (e.g. a cover download run). Without this, a concurrent push
+          # causes git push to fail and syndicationUrls are never saved, so
+          # the next trigger posts to the same platforms again.
           git pull --rebase origin main
           git push origin main
 

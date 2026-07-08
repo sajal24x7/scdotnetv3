@@ -1,0 +1,101 @@
+name: Publish content
+
+on:
+  push:
+    branches: [content]
+
+concurrency:
+  group: content-publish
+  cancel-in-progress: false # never drop a publish; queue them
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history so we can merge and push back
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config --global user.name  'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Work on the branch tip, then sync main into content
+        # Queued publishes may trail the branch tip, and code changes land on
+        # main — validate new notes against the current site code, not a
+        # stale snapshot.
+        run: |
+          git fetch origin main content
+          git checkout -B content origin/content
+          git merge --no-edit origin/main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Normalize frontmatter and sort inbox into category folders
+        # Fails (and blocks the merge to main) if any note has a missing or
+        # unknown category; the failure issue below flags it.
+        run: npm run sort-inbox
+
+      - name: Validate
+        # TODO: flip to a required step once brief 06 (TypeScript hygiene)
+        # brings `npx astro check` to zero errors.
+        continue-on-error: true
+        run: npx astro check
+
+      - name: Commit normalized content to content branch
+        run: |
+          git add src/content/
+          git diff --staged --quiet || git commit -m "chore: normalize and sort published notes"
+          git push origin content
+
+      - name: Merge to main
+        # Pushes made with GITHUB_TOKEN do not trigger other workflows, but
+        # Cloudflare's GitHub App webhook still fires — exactly one production
+        # build per publish, no workflow cascade.
+        run: |
+          if git diff --quiet origin/main content; then
+            echo "Content tree is identical to main; nothing to publish."
+            exit 0
+          fi
+          git checkout -B main origin/main
+          git merge --no-ff content -m "publish: content batch $(date -u +%Y-%m-%dT%H:%M)"
+          git push origin main
+
+      - name: Open issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Content publish failed — notes not deployed',
+              body: [
+                'The **Publish content** workflow failed, so the pushed notes were NOT merged to `main` or deployed.',
+                '',
+                'Most common cause: a note in `src/content/inbox/` with a missing or unknown `category` frontmatter field.',
+                'Fix the note and push to `content` again — the workflow will re-run automatically.',
+                '',
+                `**Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`,
+              ].join('\n'),
+              labels: ['automation', 'inbox'],
+            })
