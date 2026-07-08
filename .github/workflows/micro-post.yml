@@ -7,24 +7,12 @@ name: Create micro post
 on:
   workflow_dispatch:
     inputs:
+      text:
+        description: 'The post (markdown)'
+        required: true
+        type: string
       title:
         description: 'Post title (leave empty for a title-less micro post)'
-        required: false
-        type: string
-      url:
-        description: 'Link the post is about'
-        required: false
-        type: string
-      link_text:
-        description: 'Text for the link (defaults to title, then URL)'
-        required: false
-        type: string
-      quote:
-        description: 'Quoted passage (rendered as a blockquote)'
-        required: false
-        type: string
-      comment:
-        description: 'Your own commentary (plain markdown)'
         required: false
         type: string
       tags:
@@ -57,11 +45,8 @@ jobs:
       - name: Create post file
         id: create
         env:
+          MICRO_TEXT: ${{ inputs.text }}
           MICRO_TITLE: ${{ inputs.title }}
-          MICRO_URL: ${{ inputs.url }}
-          MICRO_LINK_TEXT: ${{ inputs.link_text }}
-          MICRO_QUOTE: ${{ inputs.quote }}
-          MICRO_COMMENT: ${{ inputs.comment }}
           MICRO_TAGS: ${{ inputs.tags }}
         run: node scripts/create-micro-post.mjs
 

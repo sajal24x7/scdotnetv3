@@ -6,14 +6,10 @@
  * which is dispatched from a phone (Apple Shortcut) — see
  * docs/operations/micro-posting.md.
  *
- * Inputs (all via env, all optional except that at least one of
- * MICRO_URL / MICRO_QUOTE / MICRO_COMMENT must be non-empty):
- *   MICRO_TITLE      Post title. Omit for a title-less micro post.
- *   MICRO_URL        Link the post is about.
- *   MICRO_LINK_TEXT  Text for the link (defaults to title, then URL).
- *   MICRO_QUOTE      Quoted passage — rendered as a blockquote.
- *   MICRO_COMMENT    Your own commentary, plain markdown.
- *   MICRO_TAGS       Comma-separated tags.
+ * Inputs (via env):
+ *   MICRO_TEXT   The post body (markdown). Required.
+ *   MICRO_TITLE  Post title. Omit for a title-less micro post.
+ *   MICRO_TAGS   Comma-separated tags. Optional.
  *
  * Output file follows the existing convention:
  *   src/content/micro/YYYYMMDDHHMM Title.md   (timestamp in Europe/Helsinki)
@@ -29,18 +25,15 @@ const MICRO_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '../sr
 
 const env = (name) => (process.env[name] ?? '').trim();
 
+const text = env('MICRO_TEXT');
 const title = env('MICRO_TITLE');
-const url = env('MICRO_URL');
-const linkText = env('MICRO_LINK_TEXT');
-const quote = env('MICRO_QUOTE');
-const comment = env('MICRO_COMMENT');
 const tags = env('MICRO_TAGS')
     .split(',')
     .map((t) => t.trim().toLowerCase())
     .filter(Boolean);
 
-if (!url && !quote && !comment) {
-    console.error('Nothing to post: provide at least one of url, quote or comment.');
+if (!text) {
+    console.error('Nothing to post: text is empty.');
     process.exit(1);
 }
 
@@ -112,24 +105,7 @@ if (tags.length > 0) {
 }
 frontmatter.push('---');
 
-const blocks = [];
-if (url) {
-    const text = linkText || title || url.replace(/^https?:\/\//, '');
-    blocks.push(`[${text}](${url})`);
-}
-if (quote) {
-    // Each paragraph of the quote becomes its own blockquote,
-    // matching the style of existing micro posts.
-    const paragraphs = quote.split(/\n\s*\n/).map((p) =>
-        p.split('\n').map((line) => `> ${line.trim()}`.trimEnd()).join('\n')
-    );
-    blocks.push(paragraphs.join('\n\n'));
-}
-if (comment) {
-    blocks.push(comment);
-}
-
-fs.writeFileSync(filePath, `${frontmatter.join('\n')}\n\n${blocks.join('\n\n')}\n`);
+fs.writeFileSync(filePath, `${frontmatter.join('\n')}\n\n${text}\n`);
 console.log(`Created ${path.relative(process.cwd(), filePath)}`);
 
 // Expose the filename to later workflow steps.
