@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        # TODO: flip to a required step once brief 06 (TypeScript hygiene)
+        # brings `npx astro check` to zero errors.
+        continue-on-error: true
+        run: npx astro check
+
+      - name: Build
+        run: npm run build
+        env:
+          # the build script does not invoke syndication today, but if that ever
+          # changes, make sure CI can never publish to social platforms
+          SYNDICATION_DRY_RUN: 'true'
+
+      - name: Feed sanity — every RSS item must carry pubDate
+        run: |
+          test -f dist/rss.xml
+          items=$(grep -c "<item>" dist/rss.xml)
+          dates=$(grep -c "<pubDate>" dist/rss.xml)
+          echo "items=$items pubDates=$dates"
+          [ "$items" -eq "$dates" ]

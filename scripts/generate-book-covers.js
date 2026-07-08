@@ -25,7 +25,6 @@ if (imageFiles.length === 0) {
   console.log('No images found. Creating empty bookCovers.ts...');
   
   const emptyFileContent = `// Auto-generated file - do not edit manually
-// Generated on: ${new Date().toISOString()}
 
 export const bookCoverImages: Record<string, any> = {};
 
@@ -67,7 +66,6 @@ const typeDefinitions = `export type BookCoverFilename = ${imageFiles.map(f => `
 
 // Generate the complete file
 const fileContent = `// Auto-generated file - do not edit manually
-// Generated on: ${new Date().toISOString()}
 // Found ${imageFiles.length} image(s): ${imageFiles.join(', ')}
 
 ${imports}
