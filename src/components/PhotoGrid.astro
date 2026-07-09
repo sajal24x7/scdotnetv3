@@ -202,7 +202,7 @@ const tiles = posts.map((post) => {
 
     .photo-feed__toggle button[aria-pressed="true"] {
         background: rgb(var(--color-text-primary));
-        color: rgb(var(--color-bg-primary));
+        color: rgb(var(--color-bg));
     }
 
     .photo-feed__toggle button:not([aria-pressed="true"]):hover {
@@ -384,8 +384,6 @@ const tiles = posts.map((post) => {
 
     .photo-feed[data-view="list"] .photo-grid {
         grid-template-columns: 1fr;
-        max-width: 46rem;
-        margin-inline: auto;
         gap: clamp(2rem, 5vw, 3rem);
     }
 
