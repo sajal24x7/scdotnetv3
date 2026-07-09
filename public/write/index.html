@@ -275,11 +275,8 @@
       content = `[${label}](${link})` + (body ? `\n\n${body}` : '');
     }
 
-    // First inline image becomes the card/hero image
-    const firstImage = content.match(/!\[[^\]]*\]\(([^)\s]+)\)/);
-    if (firstImage) {
-      fm.splice(fm.indexOf('category: micro'), 0, `image: ${yamlString(firstImage[1])}`);
-    }
+    // Inline images already render from the body — don't duplicate them into
+    // the `image:` frontmatter field, or the image shows up twice on the post.
 
     return {
       title,
