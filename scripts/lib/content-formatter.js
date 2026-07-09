@@ -32,10 +32,75 @@ const PLATFORM_CONFIG = {
 const NON_LINK_CATEGORIES = new Set();
 
 /**
- * Extract link from markdown link format
+ * Resolve an image reference to an absolute URL
+ */
+function resolveImageUrl(src) {
+  if (/^https?:\/\//.test(src)) {
+    return src;
+  }
+  return `https://sajalchoudhary.net${src.startsWith('/') ? '' : '/'}${src}`;
+}
+
+/**
+ * Extract markdown images (![alt](url)) from text
+ */
+function extractImages(text) {
+  const images = [];
+  const imageRegex = /!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g;
+  let match;
+
+  while ((match = imageRegex.exec(text || '')) !== null) {
+    images.push({
+      alt: match[1].trim(),
+      url: resolveImageUrl(match[2].trim())
+    });
+  }
+
+  return images;
+}
+
+/**
+ * Remove markdown image syntax from text
+ */
+function stripImages(text) {
+  return (text || '').replace(/!\[[^\]]*\]\([^)]*\)/g, '');
+}
+
+/**
+ * Convert a micro post body to plain text suitable for social platforms:
+ * images removed (they are attached natively), markdown links flattened,
+ * blockquotes quoted, formatting markers stripped.
+ */
+function cleanMicroBody(body) {
+  let text = stripImages(body);
+
+  // Markdown links → "text (url)", or just the URL when the text is the URL
+  text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, label, url) => {
+    const cleanLabel = label.trim();
+    const cleanUrl = url.trim();
+    return cleanLabel === cleanUrl ? cleanUrl : `${cleanLabel} (${cleanUrl})`;
+  });
+
+  // Blockquote blocks → quoted text
+  text = text.replace(/(?:^>[^\n]*\n?)+/gm, (block) => {
+    const quote = block.replace(/^>\s?/gm, '').replace(/\n+/g, ' ').trim();
+    return quote ? `"${quote}"\n` : '';
+  });
+
+  // Strip common markdown formatting markers
+  text = text.replace(/[#*_`]/g, '');
+
+  // Collapse blank lines left behind by removed images
+  text = text.replace(/\n{3,}/g, '\n\n');
+
+  return text.trim();
+}
+
+/**
+ * Extract link from markdown link format (ignoring image syntax)
  */
 function extractLinkFromMarkdown(text) {
-  const linkMatch = text.match(/\[([^\]]+)\]\(([^)]+)\)/);
+  const linkMatch = stripImages(text).match(/\[([^\]]+)\]\(([^)]+)\)/);
   return linkMatch ? { text: linkMatch[1], url: linkMatch[2] } : null;
 }
 
@@ -115,7 +180,7 @@ function truncateToCompleteSentences(text, maxLength) {
  * Format micro post content according to specified structure
  */
 function formatMicroPost(post, availableLength, needsWebsiteLink = false) {
-  const body = post.body || '';
+  const body = stripImages(post.body);
 
   // Extract components
   const link = extractLinkFromMarkdown(body);
@@ -275,32 +340,6 @@ function getPostUrl(post) {
 }
 
 /**
- * Check if micro post content fits within platform limits without needing a link back
- */
-function checkMicroPostFitsWithoutLink(post, platform) {
-  const config = PLATFORM_CONFIG[platform];
-  const hashtagsText = config.includeHashtags ? generateHashtags(post, 3) : '';
-  const hashtagsSpace = hashtagsText ? hashtagsText.length + 2 : 0; // +2 for \n\n
-
-  // For micro posts, we don't want to include link back unless necessary
-  const availableSpace = config.maxLength - hashtagsSpace;
-  const formattedContent = formatMicroPost(post, availableSpace);
-
-  // Check if we have a link detected in the post
-  const body = post.body || '';
-  const link = extractLinkFromMarkdown(body);
-
-  // If no link detected, we only need a link back if content is too long
-  if (!link) {
-    return formattedContent.length + hashtagsSpace <= config.maxLength;
-  }
-
-  // If link detected, we already have the logic in formatMicroPost
-  // Just check if it fits
-  return formattedContent.length + hashtagsSpace <= config.maxLength;
-}
-
-/**
  * Format content for a specific platform
  */
 export function formatContentForPlatform(post, platform) {
@@ -317,57 +356,16 @@ export function formatContentForPlatform(post, platform) {
   if (NON_LINK_CATEGORIES.has(category)) {
     content = formatNonLinkPost(post, config, hashtagsText);
   } else if (category === 'micro') {
-    // Check if content fits without needing a link back
-    const fitsWithoutLink = checkMicroPostFitsWithoutLink(post, platform);
+    // Micro posts: if the full text fits within the platform limit,
+    // post it verbatim with no link back to the site.
+    const cleanedBody = cleanMicroBody(post.body);
+    const hashtagsSpace = hashtagsText ? hashtagsText.length + 2 : 0; // +2 for \n\n
 
-    if (fitsWithoutLink) {
-      // Format micro post without link back
-      const hashtagsSpace = hashtagsText ? hashtagsText.length + 2 : 0;
-      const availableSpace = config.maxLength - hashtagsSpace;
-      const formattedContent = formatMicroPost(post, availableSpace);
+    if (cleanedBody && cleanedBody.length + hashtagsSpace <= config.maxLength) {
+      content = cleanedBody;
 
-      if (formattedContent === 'NEEDS_WEBSITE_LINK') {
-        // Handle quote >100 chars case: title + thoughts + website link
-        const linkText = `\n\n📖 ${config.linkText}: ${postUrl}`;
-
-        const reservedSpace = linkText.length + (hashtagsText ? hashtagsText.length + 2 : 0);
-        const availableContentSpace = config.maxLength - reservedSpace;
-
-        // Format: title + thoughts
-        const title = post.data.title || '';
-        const thoughts = extractThoughts(post.body || '');
-
-        if (title && thoughts) {
-          const titleSpace = title.length + 2; // +2 for \n\n
-          const availableForThoughts = availableContentSpace - titleSpace;
-          const truncatedThoughts = truncateToCompleteSentences(thoughts, availableForThoughts);
-
-          if (truncatedThoughts) {
-            content = `${title}\n\n${truncatedThoughts}`;
-          } else {
-            // If thoughts can't fit as complete sentences, just use title
-            content = title;
-          }
-        } else if (thoughts) {
-          const truncatedThoughts = truncateToCompleteSentences(thoughts, availableContentSpace);
-          content = truncatedThoughts || thoughts.substring(0, availableContentSpace - 3) + '...';
-        } else {
-          content = title || 'New post';
-        }
-
-        content += linkText;
-
-        // Add hashtags if configured
-        if (config.includeHashtags && hashtagsText) {
-          content += `\n\n${hashtagsText}`;
-        }
-      } else {
-        content = formattedContent;
-
-        // Add hashtags if configured
-        if (config.includeHashtags && hashtagsText) {
-          content += `\n\n${hashtagsText}`;
-        }
+      if (config.includeHashtags && hashtagsText) {
+        content += `\n\n${hashtagsText}`;
       }
     } else {
       // Content is too long, need to include link back and truncate
@@ -381,7 +379,7 @@ export function formatContentForPlatform(post, platform) {
       if (formattedContent === 'NEEDS_WEBSITE_LINK') {
         // Handle quote >100 chars case: title + thoughts + website link
         const title = post.data.title || '';
-        const thoughts = extractThoughts(post.body || '');
+        const thoughts = extractThoughts(stripImages(post.body));
 
         if (title && thoughts) {
           const titleSpace = title.length + 2; // +2 for \n\n
@@ -400,6 +398,10 @@ export function formatContentForPlatform(post, platform) {
         } else {
           content = title || 'New post';
         }
+      } else if (formattedContent.length > availableContentSpace) {
+        // Truncate to complete sentences so the link back still fits
+        content = truncateToCompleteSentences(formattedContent, availableContentSpace)
+          || formattedContent.substring(0, availableContentSpace - 3) + '...';
       } else {
         content = formattedContent;
       }
@@ -446,13 +448,23 @@ export function formatContentForPlatform(post, platform) {
     content = content.substring(0, config.maxLength - 3) + '...';
   }
 
+  // Images to attach as native media (micro posts only for now)
+  let images = [];
+  if (category === 'micro') {
+    images = extractImages(post.body);
+    if (images.length === 0 && post.data.image) {
+      images = [{ url: resolveImageUrl(post.data.image), alt: post.data.title || '' }];
+    }
+  }
+
   return {
     text: content.trim(),
     url: postUrl,
     title: post.data.title,
     category: post.data.category,
     tags: post.data.tags || [],
-    image: post.data.image ? `https://sajalchoudhary.net${post.data.image}` : null,
+    image: post.data.image ? resolveImageUrl(post.data.image) : (images[0]?.url || null),
+    images,
     originalPost: post
   };
 }

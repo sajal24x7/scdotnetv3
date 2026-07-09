@@ -43,27 +43,36 @@ export async function postToThreads(formattedContent) {
   }
 
   try {
-    // Step 1: Create a Threads Media Container
-    const containerResponse = await fetch(`https://graph.threads.net/v1.0/${userId}/threads`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        media_type: 'TEXT',
-        text: formattedContent.text
-      })
-    });
-
-    if (!containerResponse.ok) {
-      const errorData = await containerResponse.json().catch(() => ({}));
-      const errorMessage = errorData.error?.message || errorData.error || `HTTP ${containerResponse.status}`;
-      throw new Error(`Threads container creation failed: ${errorMessage}`);
+    // Step 1: Create a Threads Media Container (with image when available)
+    const images = formattedContent.images || [];
+    const firstImage = images[0];
+    if (images.length > 1) {
+      console.warn('    ⚠️  Threads: only attaching the first image (carousel posts not supported yet)');
     }
 
-    const containerResult = await containerResponse.json();
-    const containerId = containerResult.id;
+    let containerId;
+    if (firstImage) {
+      try {
+        containerId = await createThreadsContainer(userId, accessToken, {
+          media_type: 'IMAGE',
+          image_url: firstImage.url,
+          text: formattedContent.text,
+          ...(firstImage.alt ? { alt_text: firstImage.alt.substring(0, 1000) } : {})
+        });
+        // Threads fetches the image asynchronously; wait until the container is ready
+        await waitForThreadsContainer(containerId, accessToken);
+      } catch (error) {
+        console.warn(`    ⚠️  Threads image post failed (${error.message}); retrying as text-only`);
+        containerId = null;
+      }
+    }
+
+    if (!containerId) {
+      containerId = await createThreadsContainer(userId, accessToken, {
+        media_type: 'TEXT',
+        text: formattedContent.text
+      });
+    }
 
     // Step 2: Publish the Threads Media Container
     const publishResponse = await fetch(`https://graph.threads.net/v1.0/${userId}/threads_publish`, {
@@ -108,6 +117,63 @@ export async function postToThreads(formattedContent) {
     }
     throw error;
   }
+}
+
+/**
+ * Create a Threads media container
+ *
+ * @param {string} userId - Threads user ID
+ * @param {string} accessToken - Threads access token
+ * @param {Object} payload - Container payload (media_type, text, image_url, ...)
+ * @returns {Promise<string>} - Container ID
+ */
+async function createThreadsContainer(userId, accessToken, payload) {
+  const response = await fetch(`https://graph.threads.net/v1.0/${userId}/threads`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${accessToken}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    const errorMessage = errorData.error?.message || errorData.error || `HTTP ${response.status}`;
+    throw new Error(`Threads container creation failed: ${errorMessage}`);
+  }
+
+  const result = await response.json();
+  return result.id;
+}
+
+/**
+ * Poll a media container until Threads finishes processing it
+ */
+async function waitForThreadsContainer(containerId, accessToken, maxAttempts = 10) {
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    const response = await fetch(`https://graph.threads.net/v1.0/${containerId}?fields=status_code`, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    });
+
+    if (!response.ok) {
+      continue; // transient error - keep waiting
+    }
+
+    const result = await response.json();
+    if (result.status_code === 'FINISHED') {
+      return;
+    }
+    if (result.status_code === 'ERROR' || result.status_code === 'EXPIRED') {
+      throw new Error(`Threads could not process the media (status: ${result.status_code})`);
+    }
+  }
+
+  throw new Error('Timed out waiting for Threads to process the media');
 }
 
 /**

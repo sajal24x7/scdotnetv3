@@ -18,11 +18,26 @@ export async function postToMastodon(formattedContent) {
     throw new Error('Missing Mastodon configuration: MASTODON_ACCESS_TOKEN and MASTODON_INSTANCE required');
   }
 
+  // Upload images so they attach as native media (Mastodon allows up to 4)
+  const mediaIds = [];
+  const images = formattedContent.images || [];
+  for (const image of images.slice(0, 4)) {
+    try {
+      mediaIds.push(await uploadMastodonMedia(image.url, image.alt));
+    } catch (error) {
+      console.warn(`    ⚠️  Skipping image for Mastodon (${image.url}): ${error.message}`);
+    }
+  }
+
   // Prepare the status data
   const statusData = {
     status: formattedContent.text,
     visibility: 'public'
   };
+
+  if (mediaIds.length > 0) {
+    statusData.media_ids = mediaIds;
+  }
 
   try {
     // Post the status
@@ -55,12 +70,13 @@ export async function postToMastodon(formattedContent) {
 }
 
 /**
- * Upload media to Mastodon (for future image support)
+ * Upload media to Mastodon
  *
  * @param {string} imageUrl - URL of the image to upload
+ * @param {string} description - Alt text for the image
  * @returns {Promise<string>} - Media attachment ID
  */
-export async function uploadMastodonMedia(imageUrl) {
+export async function uploadMastodonMedia(imageUrl, description = '') {
   const accessToken = process.env.MASTODON_ACCESS_TOKEN;
   const instance = process.env.MASTODON_INSTANCE;
 
@@ -76,11 +92,15 @@ export async function uploadMastodonMedia(imageUrl) {
     }
 
     const imageBuffer = await imageResponse.arrayBuffer();
-    const imageBlob = new Blob([imageBuffer]);
+    const mimeType = imageResponse.headers.get('content-type') || 'image/jpeg';
+    const imageBlob = new Blob([imageBuffer], { type: mimeType });
 
     // Create form data
     const formData = new FormData();
     formData.append('file', imageBlob, 'image.jpg');
+    if (description) {
+      formData.append('description', description.substring(0, 1500));
+    }
 
     // Upload to Mastodon
     const uploadResponse = await fetch(`${instance}/api/v2/media`, {
@@ -97,11 +117,42 @@ export async function uploadMastodonMedia(imageUrl) {
     }
 
     const result = await uploadResponse.json();
+
+    // 202 means the media is still processing; attaching it too early fails
+    if (uploadResponse.status === 202) {
+      await waitForMastodonMedia(result.id, instance, accessToken);
+    }
+
     return result.id;
 
   } catch (error) {
     throw new Error(`Failed to upload media to Mastodon: ${error.message}`);
   }
+}
+
+/**
+ * Poll a media attachment until Mastodon finishes processing it
+ * (GET returns 206 while processing, 200 when ready)
+ */
+async function waitForMastodonMedia(mediaId, instance, accessToken, maxAttempts = 10) {
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    const response = await fetch(`${instance}/api/v1/media/${mediaId}`, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    });
+
+    if (response.status === 200) {
+      return;
+    }
+    if (response.status !== 206) {
+      throw new Error(`Media processing failed: HTTP ${response.status}`);
+    }
+  }
+
+  throw new Error('Timed out waiting for media processing');
 }
 
 /**
