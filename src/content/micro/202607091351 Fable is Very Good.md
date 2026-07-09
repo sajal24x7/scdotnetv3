@@ -1,10 +1,15 @@
 ---
-title: "Fable Is Very Good"
-slug: "fable-is-very-good"
-created: 2026-07-09T13:51:00
-updated: 2026-07-09T13:51:34+03:00
+title: Fable Is Very Good
+slug: fable-is-very-good
+created: 2026-07-09T13:51:00.000Z
+updated: 2026-07-09T10:51:34.000Z
 category: micro
-tags: ["anthropic", "claude-code"]
+tags:
+  - anthropic
+  - claude-code
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116889719847616464'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mq7iuiuxez25'
 ---
 [Fable is very good by Robin Sloan](https://www.robinsloan.com/lab/fable-is-good/)
 
