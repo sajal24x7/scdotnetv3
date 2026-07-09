@@ -1,0 +1,166 @@
+name: Download Covers
+
+on:
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      shelf:
+        description: 'Which shelf to download covers for'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - book
+          - film
+          - game
+          - tv
+      mode:
+        description: 'Download mode (refresh-low-res applies to books only)'
+        required: true
+        default: 'normal'
+        type: choice
+        options:
+          - normal
+          - force
+          - refresh-low-res
+
+  schedule:
+    - cron: '0 2 * * *' # Books: every day at 2 AM UTC
+    - cron: '0 3 * * 0' # Films, games, TV: every Sunday at 3 AM UTC
+
+jobs:
+  plan:
+    # Prevent infinite loops from bot commits
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    outputs:
+      shelves: ${{ steps.plan.outputs.shelves }}
+    steps:
+      - name: Pick shelves for this trigger
+        id: plan
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            if [ "${{ github.event.schedule }}" = "0 2 * * *" ]; then
+              shelves='["book"]'
+            else
+              shelves='["film","game","tv"]'
+            fi
+          elif [ "${{ inputs.shelf }}" = "all" ]; then
+            shelves='["book","film","game","tv"]'
+          else
+            shelves='["${{ inputs.shelf }}"]'
+          fi
+          echo "shelves=$shelves" >> "$GITHUB_OUTPUT"
+          echo "Running for shelves: $shelves"
+
+  download-covers:
+    needs: plan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      # Each shelf commits and pushes to main; serialise to avoid push races
+      max-parallel: 1
+      matrix:
+        shelf: ${{ fromJSON(needs.plan.outputs.shelves) }}
+
+    steps:
+      - name: Resolve shelf paths and names
+        id: shelf
+        run: |
+          case "${{ matrix.shelf }}" in
+            book) dir=bookshelf; module=bookCovers.ts; name=book; title=Book ;;
+            film) dir=filmshelf; module=filmCovers.ts; name=film; title=Film ;;
+            game) dir=gameshelf; module=gameCovers.ts; name=game; title=Game ;;
+            tv)   dir=tvshelf;   module=tvCovers.ts;   name=TV;   title=TV ;;
+          esac
+          {
+            echo "dir=$dir"
+            echo "module=$module"
+            echo "name=$name"
+            echo "title=$title"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Need full history to commit back changes
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Download missing ${{ steps.shelf.outputs.name }} covers
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          RAWG_API_KEY: ${{ secrets.RAWG_API_KEY }}
+          TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
+          TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
+        run: |
+          if [ "${{ inputs.mode }}" = "force" ]; then
+            node "scripts/download-${{ matrix.shelf }}-covers.js" --force
+          elif [ "${{ inputs.mode }}" = "refresh-low-res" ] && [ "${{ matrix.shelf }}" = "book" ]; then
+            node scripts/download-book-covers.js --replace-low-res
+          elif [ "${{ github.event_name }}" = "schedule" ] && [ "${{ matrix.shelf }}" = "book" ]; then
+            # Scheduled runs: download missing covers AND replace low-res ones
+            node scripts/download-book-covers.js
+            node scripts/download-book-covers.js --replace-low-res
+          else
+            node "scripts/download-${{ matrix.shelf }}-covers.js"
+          fi
+
+      - name: Generate TypeScript imports
+        run: node "scripts/generate-${{ matrix.shelf }}-covers.js"
+
+      - name: Commit ${{ steps.shelf.outputs.name }} cover updates
+        run: |
+          # Check if there are any changes to commit
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No new ${{ steps.shelf.outputs.name }} covers to commit"
+            exit 0
+          fi
+
+          # Add all changed files
+          git add "src/images/${{ steps.shelf.outputs.dir }}/" "src/utils/${{ steps.shelf.outputs.module }}" src/content/
+
+          # Commit with message
+          git commit -m "Download and add ${{ steps.shelf.outputs.name }} covers
+
+          🤖 Generated with GitHub Actions
+
+          Co-Authored-By: github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+
+          # Rebase on top of any commits that landed while this job ran
+          # (e.g. syndication or a content publish), then push back to main
+          git pull --rebase origin main
+          git push origin main
+
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '${{ steps.shelf.outputs.title }} cover download workflow failed',
+              body: `The ${{ steps.shelf.outputs.name }} cover download workflow failed on ${new Date().toISOString()}.
+
+              **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+              Please check the logs and fix any issues.`,
+              labels: ['bug', 'automation']
+            })

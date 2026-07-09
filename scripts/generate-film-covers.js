@@ -25,7 +25,6 @@ if (imageFiles.length === 0) {
   console.log('No images found. Creating empty filmCovers.ts...');
 
   const emptyFileContent = `// Auto-generated file - do not edit manually
-// Generated on: ${new Date().toISOString()}
 
 export const filmCoverImages: Record<string, any> = {};
 
@@ -64,7 +63,6 @@ const mappings = imageFiles.map(file => {
 const typeDefinitions = `export type FilmCoverFilename = ${imageFiles.map(f => `'${f}'`).join(' | ')};`;
 
 const fileContent = `// Auto-generated file - do not edit manually
-// Generated on: ${new Date().toISOString()}
 // Found ${imageFiles.length} image(s): ${imageFiles.join(', ')}
 
 ${imports}

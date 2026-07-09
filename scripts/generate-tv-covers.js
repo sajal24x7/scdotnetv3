@@ -25,7 +25,6 @@ if (imageFiles.length === 0) {
   console.log('No images found. Creating empty tvCovers.ts...');
 
   const emptyFileContent = `// Auto-generated file - do not edit manually
-// Generated on: ${new Date().toISOString()}
 
 export const tvCoverImages: Record<string, any> = {};
 
@@ -63,7 +62,6 @@ const mappings = imageFiles.map(file => {
 const typeDefinitions = `export type TVCoverFilename = ${imageFiles.map(f => `'${f}'`).join(' | ')};`;
 
 const fileContent = `// Auto-generated file - do not edit manually
-// Generated on: ${new Date().toISOString()}
 // Found ${imageFiles.length} image(s): ${imageFiles.join(', ')}
 
 ${imports}
