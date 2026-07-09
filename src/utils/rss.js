@@ -25,6 +25,20 @@ export async function buildRssItem(item) {
     content = item.data.description || '';
   }
 
+  // Photo posts keep their gallery in frontmatter (`images:`), not the body —
+  // prepend the pictures so feed readers see them above the caption.
+  const galleryImages = Array.isArray(item.data.images) ? item.data.images : [];
+  if (galleryImages.length > 0) {
+    const galleryHtml = galleryImages
+      .map((url) => `<p><img src="${url}" alt="" /></p>`)
+      .join('');
+    content = galleryHtml + content;
+  }
+
+  const mediaImages = galleryImages.length > 0
+    ? galleryImages
+    : (item.data.image ? [item.data.image] : []);
+
   const title = item.data.title;
 
   return {
@@ -38,9 +52,9 @@ export async function buildRssItem(item) {
     pubDate: item.data.created,
     categories: [item.data.category, ...(item.data.tags || [])],
     author: 'sajal@sajalchoudhary.net (Sajal Choudhary)',
-    customData: item.data.image ? `
-      <media:content url="${item.data.image}" medium="image" />
-      <media:thumbnail url="${item.data.image}" />
+    customData: mediaImages.length > 0 ? `
+      ${mediaImages.map((url) => `<media:content url="${url}" medium="image" />`).join('\n      ')}
+      <media:thumbnail url="${mediaImages[0]}" />
     ` : ''
   };
 }

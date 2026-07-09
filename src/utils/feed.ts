@@ -9,6 +9,7 @@ import { getGameCoverImage } from './gameCovers';
 import { bookRatingLabels } from './bookRatings';
 import { convertWikilinks } from './remarkWikilinks';
 import { formatRelativeDate } from './dateFormat';
+import { getPhotoImages } from './photos';
 import nordletterManifest from '../data/nordletter-image-manifest.json';
 
 export const FEED_PAGE_SIZE = 10;
@@ -187,7 +188,15 @@ async function renderMicro(post: Post): Promise<string> {
 async function renderPhoto(post: Post): Promise<string> {
   const source = post.body ? await convertWikilinks(post.body) : '';
   const body = source ? parseMarkdown(source) : '';
-  return `${metaHtml(post)}${titleHtml(post)}<div class="feed-entry__body feed-entry__body--photo prose dark:prose-invert">${body}</div>`;
+  // New-style photo posts keep their images in frontmatter, so the body is
+  // caption-only — surface the first gallery image above it. Legacy posts
+  // already embed images in the body.
+  const bodyHasImage = /!\[[^\]]*\]\(/.test(post.body || '');
+  const galleryImages = bodyHasImage ? [] : getPhotoImages(post.data, null);
+  const galleryHtml = galleryImages.length > 0
+    ? `<p><a href="${postLink(post)}"><img src="${escapeHtml(galleryImages[0])}" alt="" loading="lazy"></a></p>`
+    : '';
+  return `${metaHtml(post)}${titleHtml(post)}<div class="feed-entry__body feed-entry__body--photo prose dark:prose-invert">${galleryHtml}${body}</div>`;
 }
 
 function renderBlog(post: Post): string {

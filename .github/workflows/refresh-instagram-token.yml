@@ -1,0 +1,101 @@
+name: Refresh Instagram Token
+
+# Instagram long-lived access tokens (Instagram API with Instagram Login)
+# expire every 60 days, just like Threads tokens. This workflow refreshes
+# the token before it expires via graph.instagram.com.
+#
+# Prerequisites:
+#   1. The GH_PAT secret (same one the Threads refresh workflow uses) so the
+#      workflow can update the INSTAGRAM_ACCESS_TOKEN secret.
+#   2. The existing INSTAGRAM_ACCESS_TOKEN and INSTAGRAM_USER_ID secrets.
+
+on:
+  schedule:
+    # Run every Monday at 9:30 UTC (after the Threads refresh at 9:00)
+    - cron: '30 9 * * 1'
+
+  workflow_dispatch:
+    inputs:
+      force_refresh:
+        description: 'Force token refresh even if not close to expiring'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  refresh-token:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Refresh token and update secret
+        id: refresh
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -z "$INSTAGRAM_ACCESS_TOKEN" ]; then
+            echo "::warning::INSTAGRAM_ACCESS_TOKEN secret is not set — skipping (Instagram syndication not configured yet)"
+            echo "token_status=missing" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Instagram's refresh endpoint accepts any long-lived token older
+          # than 24h and returns a fresh 60-day one, so refresh every week
+          # unconditionally — there is no debug_token equivalent on
+          # graph.instagram.com to check remaining validity first.
+          RESPONSE=$(curl -sf "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=${INSTAGRAM_ACCESS_TOKEN}") || {
+            echo "::error::Failed to refresh Instagram token. It may have already expired."
+            echo "token_status=expired" >> $GITHUB_OUTPUT
+            exit 1
+          }
+
+          NEW_TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
+          EXPIRES_IN=$(echo "$RESPONSE" | jq -r '.expires_in')
+
+          if [ -z "$NEW_TOKEN" ] || [ "$NEW_TOKEN" = "null" ]; then
+            echo "::error::Refresh response did not contain a new access token"
+            echo "Response: $(echo "$RESPONSE" | jq -r '.error.message // "unknown error"')"
+            exit 1
+          fi
+
+          # Mask the new token so it doesn't appear in logs
+          echo "::add-mask::${NEW_TOKEN}"
+
+          DAYS_VALID=$(( EXPIRES_IN / 86400 ))
+          echo "Token refreshed successfully. New token valid for ${DAYS_VALID} days."
+
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::GH_PAT secret is not set. Cannot update INSTAGRAM_ACCESS_TOKEN."
+            echo "Add a Personal Access Token with repo scope as the GH_PAT secret."
+            exit 1
+          fi
+
+          echo "${NEW_TOKEN}" | gh secret set INSTAGRAM_ACCESS_TOKEN --repo "${{ github.repository }}"
+          echo "INSTAGRAM_ACCESS_TOKEN secret updated successfully."
+          echo "token_status=refreshed" >> $GITHUB_OUTPUT
+
+      - name: Create issue on refresh failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'automation',
+            });
+
+            const existing = issues.find(i => i.title.includes('Instagram token refresh failed'));
+            if (existing) {
+              console.log(`Issue already exists: #${existing.number}`);
+              return;
+            }
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Instagram token refresh failed',
+              body: `The automatic Instagram token refresh failed.\n\n**Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\n\nPlease check the logs. If the token has expired, generate a new one from your Meta app's Instagram API setup page and update the \`INSTAGRAM_ACCESS_TOKEN\` secret.`,
+              labels: ['bug', 'automation']
+            });

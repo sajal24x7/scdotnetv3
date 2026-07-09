@@ -42,6 +42,9 @@ const postsSchema = z.object({
     status: z.enum(['active', 'paused', 'done']).optional().default('active'),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
+    // Photo posts: gallery images live in frontmatter (not the body) so the
+    // photos grid and post-page carousel can render them natively.
+    images: z.array(z.string()).optional(),
     edition: z.number().optional(),
     format: z.string().optional(),
     genre: z.string().optional(),

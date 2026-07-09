@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Write">
 <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
-<title>Write · micro</title>
+<title>Write</title>
 <style>
   :root {
     --bg: #fafafa;
@@ -49,11 +49,10 @@
   }
   header {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 12px;
   }
-  header h1 { font-size: 17px; margin: 0; font-weight: 600; }
   header button {
     background: none;
     border: none;
@@ -61,6 +60,29 @@
     font-size: 14px;
     padding: 4px;
     cursor: pointer;
+  }
+  .mode-toggle {
+    display: inline-flex;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 3px;
+    gap: 2px;
+  }
+  .mode-toggle button {
+    border: none;
+    background: none;
+    color: var(--muted);
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .mode-toggle button[aria-pressed="true"] {
+    background: var(--accent);
+    color: var(--accent-fg);
   }
   input, textarea {
     width: 100%;
@@ -78,6 +100,9 @@
     min-height: 40vh;
     resize: vertical;
   }
+  body[data-mode="photo"] textarea { min-height: 20vh; }
+  body[data-mode="photo"] .micro-only { display: none; }
+  body[data-mode="micro"] .photo-only { display: none; }
   .row-small input { font-size: 15px; padding: 9px 12px; }
   button.send {
     width: 100%;
@@ -132,18 +157,59 @@
   .toolbar button:disabled { opacity: 0.5; }
   #uploads { font-size: 13px; color: var(--muted); }
   #uploads.err { color: var(--err); }
+  #photoStrip {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  #photoStrip.has-photos { display: grid; }
+  .photo-thumb {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--card);
+  }
+  .photo-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-thumb button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 13px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
 </head>
-<body>
+<body data-mode="micro">
 <header>
-  <h1>Micro</h1>
+  <div class="mode-toggle" role="group" aria-label="Post type">
+    <button id="modeMicro" type="button" aria-pressed="true">Micro</button>
+    <button id="modePhoto" type="button" aria-pressed="false">Photo</button>
+  </div>
   <button id="settingsBtn" type="button" aria-label="Token settings">token</button>
 </header>
 
 <section id="setup">
-  <p>This page publishes straight to <code>src/content/micro/</code> on
-     <code>sajal24x7/scdotnetv3</code>. It needs a GitHub token, stored only in
-     this browser.</p>
+  <p>This page publishes straight to <code>src/content/micro/</code> (or
+     <code>src/content/photo/</code>) on <code>sajal24x7/scdotnetv3</code>. It
+     needs a GitHub token, stored only in this browser.</p>
   <ol>
     <li>GitHub → Settings → Developer settings → Fine-grained tokens → Generate new token</li>
     <li>Repository access: only <code>scdotnetv3</code></li>
@@ -155,9 +221,10 @@
 
 <main id="composer">
   <input id="title" type="text" placeholder="Title (optional)" autocomplete="off" enterkeyhint="next">
-  <div class="row-small">
+  <div class="row-small micro-only">
     <input id="link" type="url" placeholder="Link (optional)" autocomplete="off" inputmode="url" enterkeyhint="next">
   </div>
+  <div id="photoStrip" class="photo-only" aria-label="Photos in this post"></div>
   <textarea id="body" placeholder="Write…"></textarea>
   <div class="toolbar">
     <button id="addPhoto" type="button">＋ photo</button>
@@ -176,13 +243,54 @@
   const OWNER = 'sajal24x7';
   const REPO = 'scdotnetv3';
   const BRANCH = 'main';
-  const FOLDER = 'src/content/micro';
   const SITE = 'https://sajalchoudhary.net';
   const TOKEN_KEY = 'microwrite.token';
   const DRAFT_KEY = 'microwrite.draft';
+  const FOLDERS = { micro: 'src/content/micro', photo: 'src/content/photo' };
 
   const $ = (id) => document.getElementById(id);
   const fields = ['title', 'link', 'body', 'tags'];
+
+  // --- mode (micro | photo) -------------------------------------------------
+  let mode = 'micro';
+  // Photo-mode uploads collect here (URLs on the media bucket) and are
+  // written to frontmatter `images:` on publish — never into the body.
+  let photos = [];
+
+  function setMode(next) {
+    mode = next === 'photo' ? 'photo' : 'micro';
+    document.body.dataset.mode = mode;
+    $('modeMicro').setAttribute('aria-pressed', String(mode === 'micro'));
+    $('modePhoto').setAttribute('aria-pressed', String(mode === 'photo'));
+    $('body').placeholder = mode === 'photo' ? 'Caption (optional)…' : 'Write…';
+    document.title = mode === 'photo' ? 'Write · photo' : 'Write · micro';
+  }
+  $('modeMicro').addEventListener('click', () => { setMode('micro'); saveDraft(); });
+  $('modePhoto').addEventListener('click', () => { setMode('photo'); saveDraft(); });
+
+  function renderPhotoStrip() {
+    const strip = $('photoStrip');
+    strip.classList.toggle('has-photos', photos.length > 0);
+    strip.innerHTML = '';
+    photos.forEach((url, index) => {
+      const thumb = document.createElement('div');
+      thumb.className = 'photo-thumb';
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = `Photo ${index + 1}`;
+      const remove = document.createElement('button');
+      remove.type = 'button';
+      remove.textContent = '×';
+      remove.setAttribute('aria-label', `Remove photo ${index + 1}`);
+      remove.addEventListener('click', () => {
+        photos.splice(index, 1);
+        renderPhotoStrip();
+        saveDraft();
+      });
+      thumb.append(img, remove);
+      strip.appendChild(thumb);
+    });
+  }
 
   // --- token setup ---------------------------------------------------------
   function showSetup(show) {
@@ -217,17 +325,24 @@
   // --- draft autosave ------------------------------------------------------
   function saveDraft() {
     const draft = Object.fromEntries(fields.map((f) => [f, $(f).value]));
+    draft.mode = mode;
+    draft.photos = photos;
     localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
   }
   function restoreDraft() {
     try {
       const draft = JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}');
       fields.forEach((f) => { if (draft[f]) $(f).value = draft[f]; });
+      if (Array.isArray(draft.photos)) photos = draft.photos.filter((p) => typeof p === 'string');
+      setMode(draft.mode);
+      renderPhotoStrip();
     } catch { /* corrupt draft — ignore */ }
   }
   function clearDraft() {
     localStorage.removeItem(DRAFT_KEY);
     fields.forEach((f) => { $(f).value = ''; });
+    photos = [];
+    renderPhotoStrip();
   }
   fields.forEach((f) => $(f).addEventListener('input', saveDraft));
 
@@ -244,7 +359,7 @@
 
   function buildPost() {
     const title = $('title').value.trim();
-    const link = $('link').value.trim();
+    const link = mode === 'micro' ? $('link').value.trim() : '';
     const body = $('body').value.trim();
     const tags = $('tags').value.split(',').map((t) => t.trim().toLowerCase()).filter(Boolean);
 
@@ -261,7 +376,14 @@
     fm.push(`slug: ${yamlString(slug)}`);
     fm.push(`created: ${iso}`);
     fm.push(`updated: ${iso}`);
-    fm.push('category: micro');
+    fm.push(`category: ${mode}`);
+    if (mode === 'photo') {
+      // Photos live in frontmatter only; the body is just the caption.
+      // `image:` (the first photo) keeps feed cards and syndication working.
+      fm.push(`image: ${yamlString(photos[0])}`);
+      fm.push('images:');
+      photos.forEach((url) => fm.push(`  - ${yamlString(url)}`));
+    }
     if (tags.length) {
       fm.push('tags:');
       tags.forEach((t) => fm.push(`  - ${yamlString(t)}`));
@@ -275,12 +397,10 @@
       content = `[${label}](${link})` + (body ? `\n\n${body}` : '');
     }
 
-    // Inline images already render from the body — don't duplicate them into
-    // the `image:` frontmatter field, or the image shows up twice on the post.
-
     return {
       title,
       slug,
+      category: mode,
       filename: title ? `${stamp} ${title}.md` : `${stamp}.md`,
       markdown: fm.join('\n') + content + '\n',
     };
@@ -294,7 +414,8 @@
   }
 
   // --- image upload --------------------------------------------------------
-  const MAX_DIM = 1024;      // downscale phone photos before upload
+  const MAX_DIM_MICRO = 1024;  // inline images in prose stay modest
+  const MAX_DIM_PHOTO = 2048;  // photo posts are the point — keep more pixels
   const RECOMPRESS_OVER = 500 * 1024;
   let pendingUploads = 0;
 
@@ -312,20 +433,26 @@
     saveDraft();
   }
 
-  async function shrinkImage(file) {
-    // GIFs would lose animation; small stills aren't worth recompressing
-    if (file.type === 'image/gif' || (file.size < RECOMPRESS_OVER)) return file;
+  async function shrinkImage(file, maxDim, forceJpeg) {
+    // GIFs would lose animation; small stills aren't worth recompressing —
+    // except in photo mode, where everything becomes JPEG so the images stay
+    // eligible for Instagram syndication (JPEG-only API).
+    if (file.type === 'image/gif') return file;
+    if (!forceJpeg && file.size < RECOMPRESS_OVER) return file;
+    if (forceJpeg && file.type === 'image/jpeg' && file.size < RECOMPRESS_OVER) return file;
     try {
       const bitmap = await createImageBitmap(file);
-      const scale = Math.min(1, MAX_DIM / Math.max(bitmap.width, bitmap.height));
+      const scale = Math.min(1, maxDim / Math.max(bitmap.width, bitmap.height));
       const canvas = document.createElement('canvas');
       canvas.width = Math.round(bitmap.width * scale);
       canvas.height = Math.round(bitmap.height * scale);
       canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
       bitmap.close();
       const blob = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.85));
-      // keep the original if recompression didn't actually help
-      return blob && blob.size < file.size ? blob : file;
+      if (!blob) return file;
+      // keep the original if recompression didn't actually help — unless we
+      // need the JPEG conversion itself
+      return (forceJpeg && file.type !== 'image/jpeg') || blob.size < file.size ? blob : file;
     } catch {
       return file; // undecodable in this browser — let the server take the original
     }
@@ -340,7 +467,7 @@
     const token = localStorage.getItem(TOKEN_KEY);
     const counter = total > 1 ? ` ${index + 1}/${total}` : '';
     setUploadNote(`Preparing photo${counter}…`);
-    const blob = await shrinkImage(file);
+    const blob = await shrinkImage(file, mode === 'photo' ? MAX_DIM_PHOTO : MAX_DIM_MICRO, mode === 'photo');
     setUploadNote(`Uploading photo${counter}…`);
     const res = await fetch('/api/upload', {
       method: 'POST',
@@ -352,7 +479,13 @@
       throw new Error(detail);
     }
     const { url } = await res.json();
-    insertIntoBody(`![](${url})`);
+    if (mode === 'photo') {
+      photos.push(url);
+      renderPhotoStrip();
+      saveDraft();
+    } else {
+      insertIntoBody(`![](${url})`);
+    }
   }
 
   $('addPhoto').addEventListener('click', () => {
@@ -404,22 +537,29 @@
       return;
     }
 
-    const post = buildPost();
-    if (!$('body').value.trim() && !$('link').value.trim()) {
+    if (mode === 'photo') {
+      if (photos.length === 0) {
+        setStatus('Add at least one photo first.', 'err');
+        return;
+      }
+    } else if (!$('body').value.trim() && !$('link').value.trim()) {
       setStatus('Write something (or add a link) first.', 'err');
       return;
     }
+
+    const post = buildPost();
 
     $('send').disabled = true;
     setStatus('Publishing…');
     try {
       const b64 = toBase64(post.markdown);
-      const message = `Add micro post: ${post.title || post.slug}`;
-      let res = await putFile(token, `${FOLDER}/${post.filename}`, message, b64);
+      const message = `Add ${post.category} post: ${post.title || post.slug}`;
+      const folder = FOLDERS[post.category];
+      let res = await putFile(token, `${folder}/${post.filename}`, message, b64);
       if (res.status === 422) {
         // filename already exists (same minute) — retry once with a suffix
         const alt = post.filename.replace(/\.md$/, '-2.md');
-        res = await putFile(token, `${FOLDER}/${alt}`, message, b64);
+        res = await putFile(token, `${folder}/${alt}`, message, b64);
       }
       if (!res.ok) {
         const detail = (await res.json().catch(() => ({}))).message || '';
@@ -431,7 +571,7 @@
       setUploadNote('');
       setStatus(
         `Published. Live in a minute or two at ` +
-        `<a href="${SITE}/micro/${post.slug}">/micro/${post.slug}</a> · ` +
+        `<a href="${SITE}/${post.category}/${post.slug}">/${post.category}/${post.slug}</a> · ` +
         `<a href="${data.commit.html_url}">commit</a>`,
         'ok'
       );

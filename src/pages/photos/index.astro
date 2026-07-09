@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import StreamLayout from '../../components/layout/StreamLayout.astro';
+import PhotoGrid from '../../components/PhotoGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
@@ -9,7 +9,7 @@ import { createSectionLandingProps } from '../../utils/sectionLanding';
 const allPosts = await getAllPosts();
 const photoPosts = getPostsByCategory(allPosts, 'photo');
 
-// Transform posts for the StreamLayout component
+// Transform posts for the PhotoGrid component
 const transformedPosts = photoPosts.map(transformPost);
 const postCount = transformedPosts.length;
 const postCountText = `${postCount} ${postCount === 1 ? 'photo post' : 'photo posts'}`;
@@ -21,7 +21,6 @@ const sectionLandingProps = createSectionLandingProps(
     countText: postCountText,
     tagCategory: 'photo',
     tagPosts: allPosts,
-    contentClass: 'grid-span-8 grid-start-3',
     gridMaxWidth: '100%',
     rssUrl: '/photo/rss.xml'
   },
@@ -46,6 +45,6 @@ const sectionLandingProps = createSectionLandingProps(
   enableLinkHoverEffect
 >
     <SectionLanding {...sectionLandingProps}>
-      <StreamLayout posts={transformedPosts} />
+      <PhotoGrid posts={transformedPosts} />
     </SectionLanding>
   </Layout>

@@ -26,6 +26,16 @@
       "includeLink": true,
       "linkText": "Link in bio or visit",
       "icon": "🧵"
+    },
+    "instagram": {
+      "name": "Instagram",
+      "maxLength": 2200,
+      "includeImages": true,
+      "includeHashtags": true,
+      "includeLink": true,
+      "linkText": "Read more",
+      "icon": "📷",
+      "categories": ["photo"]
     }
   },
   "streamCategories": [
@@ -76,6 +86,11 @@
       "requests": 250,
       "windowMs": 3600000,
       "comment": "250 requests per hour"
+    },
+    "instagram": {
+      "requests": 25,
+      "windowMs": 3600000,
+      "comment": "Meta caps accounts at 50 API-published posts per 24h; stay conservative"
     }
   },
   "dryRun": {

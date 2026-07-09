@@ -91,6 +91,10 @@ jobs:
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
 
+          # Instagram credentials (photo posts only; separate token from Threads)
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+
           # Configuration
           SYNDICATION_DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
           SYNDICATION_DAYS_BACK: ${{ github.event.inputs.days_back || '7' }}
