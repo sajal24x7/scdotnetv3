@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /write/
 
 Sitemap: https://sajalchoudhary.net/sitemap-index.xml
