@@ -40,7 +40,7 @@ export async function GET(context) {
         title: item.data.title,
         description: item.data.description || '',
         content,
-        created: item.data.created,
+        pubDate: item.data.created,
         categories: [item.data.category, ...(item.data.tags || [])],
         // Add custom namespace elements for better newsletter features
         customData: `

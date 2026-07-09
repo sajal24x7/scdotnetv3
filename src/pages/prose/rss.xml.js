@@ -41,12 +41,17 @@ export async function GET(context) {
         content = item.data.description || '';
       }
       
+      const title = item.data.title;
+
       return {
         link: `/${item.data.category}/${item.id}/`,
-        title: item.data.title || 'Untitled',
-        description: item.data.description || '',
+        // Titleless notes omit <title> so readers render just the body,
+        // like a status update, instead of "Untitled". RSS requires title
+        // or description, so the body doubles as description.
+        ...(title ? { title } : {}),
+        description: item.data.description || (title ? '' : content),
         content,
-        created: item.data.created,
+        pubDate: item.data.created,
         categories: [item.data.category, ...(item.data.tags || [])],
         author: 'sajal@sajalchoudhary.net (Sajal Choudhary)',
         customData: item.data.image ? `
