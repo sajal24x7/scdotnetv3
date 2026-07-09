@@ -1,14 +1,16 @@
 ---
-title: "A Way to Optimise iCloud Storage"
-slug: "a-way-to-optimise-icloud-storage"
-created: 2026-07-09T06:38:17+03:00
-updated: 2026-07-09T06:38:17+03:00
+title: A Way to Optimise iCloud Storage
+slug: a-way-to-optimise-icloud-storage
+created: 2026-07-09T03:38:17.000Z
+updated: 2026-07-09T03:38:17.000Z
 category: micro
 tags:
   - photos
   - apple
   - icloud
-
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116887934513817365'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mq6pimmm7625'
 ---
 [Michael Tsai - Blog - Apple Intelligence for Home’s iCloud+ Requirements](https://mjtsai.com/blog/2026/07/08/apple-intelligence-for-homes-icloud-requirements/)
 
