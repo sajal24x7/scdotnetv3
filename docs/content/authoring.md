@@ -58,6 +58,7 @@ Nordletter issues (`src/content/nordletter`) and notes use their own schemas but
 
 ## Related Documentation
 
+- [Micro Composer](./micro-composer.md) — publish micro posts from a phone via `/write`
 - [Content Lifecycle](../architecture/content-lifecycle.md)
 - [Design System](../design/system.md)
 - [Syndication Workflow](../operations/syndication.md)
