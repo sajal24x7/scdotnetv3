@@ -527,7 +527,9 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
                 </div>
             ) : (
                 <div class="text-center">
-                    <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
+                    {title && (
+                        <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
+                    )}
 
                     {category === 'nordletter' && edition && (
                         <div class="flex justify-center items-center gap-4 mb-4">

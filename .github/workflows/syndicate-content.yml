@@ -1,13 +1,19 @@
 name: Syndicate Content
 
 on:
-  # Run once Cloudflare Pages reports a deploy result. The Cloudflare Pages
-  # GitHub App creates deployments/deployment statuses natively, and (unlike
-  # a push trigger) this also fires for the bot merge from content-publish,
-  # because Cloudflare's webhook is not subject to GitHub's GITHUB_TOKEN
-  # recursion guard. Syndicating after the deploy also guarantees the
-  # canonical URL is live before anything is posted.
-  deployment_status:
+  # Fire on direct content pushes to main: the /write composer, manual
+  # pushes, PR merges. This replaces the deployment_status trigger — this
+  # repo's Cloudflare integration never creates GitHub deployment events,
+  # so that trigger never fired once (post 202607091101 went unsyndicated).
+  # No loop: the syndicationUrls bookkeeping commit below is pushed with
+  # GITHUB_TOKEN, which GitHub's recursion guard excludes from push
+  # triggers. Bot merges from content-publish also can't fire this push
+  # trigger, so that workflow dispatches this one explicitly instead.
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/**/*.md'
+      - 'src/content/**/*.mdx'
 
   # Manual trigger for testing/catch-up
   workflow_dispatch:
@@ -22,25 +28,21 @@ on:
         required: false
         default: '7'
         type: string
+      wait_for_deploy:
+        description: 'Wait for the Cloudflare deploy before posting (set by content-publish)'
+        required: false
+        default: 'false'
+        type: boolean
 
 # Serialise syndication runs so two overlapping runs can never post the same
-# note twice before either saves syndicationUrls. With the old double
-# push + repository_dispatch triggers gone this is mostly insurance, but a
-# manual dispatch can still overlap a deploy-triggered run.
+# note twice before either saves syndicationUrls (e.g. a push-triggered run
+# overlapping a dispatch from content-publish or a manual dispatch).
 concurrency:
   group: syndication
   cancel-in-progress: false
 
 jobs:
   syndicate:
-    # Only production deploy successes count. If syndication ever stops
-    # firing, check the `environment` string in a real deployment event
-    # payload — Cloudflare Pages uses "Production" or the Pages project name
-    # depending on integration vintage.
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.deployment_status.state == 'success' &&
-       contains(fromJSON('["Production", "production"]'), github.event.deployment.environment))
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -49,8 +51,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # deployment_status events check out the deployed SHA by default;
-          # we need the main branch itself to commit syndicationUrls back
+          # Always work on the branch tip so the syndicationUrls commit
+          # lands on current main, not the pushed SHA
           ref: main
           fetch-depth: 0
 
@@ -62,6 +64,13 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Wait for the Cloudflare deploy
+        # Cloudflare builds the pushed commit in parallel with this job.
+        # Give the deploy a head start so the canonical URL is (very likely)
+        # live before anything links to it from Mastodon/Bluesky/Threads.
+        if: github.event_name == 'push' || inputs.wait_for_deploy == true
+        run: sleep 120
 
       - name: Configure git
         run: |
@@ -88,12 +97,14 @@ jobs:
         run: node scripts/syndicate-content.js
 
       - name: Commit syndication updates
+        id: commit
         run: |
           # Check if there are any changes to commit
           if git diff --quiet && git diff --staged --quiet; then
             echo "No changes to commit"
             exit 0
           fi
+          echo "committed=true" >> "$GITHUB_OUTPUT"
 
           # Add all changed files
           git add .
@@ -113,6 +124,26 @@ jobs:
           # the next trigger posts to the same platforms again.
           git pull --rebase origin main
           git push origin main
+
+      - name: Keep the content branch in sync with main
+        # The syndicationUrls commit is pushed with GITHUB_TOKEN, so the
+        # sync-content-branch workflow won't fire for it — sync inline
+        # instead, or the content branch ends up one commit behind main.
+        # Skipped when nothing was committed: the push that triggered this
+        # run also triggered sync-content-branch, which handles that case.
+        if: steps.commit.outputs.committed == 'true'
+        run: |
+          if ! git fetch origin content; then
+            echo "No content branch — nothing to sync"
+            exit 0
+          fi
+          git checkout -B content origin/content
+          if git merge --no-edit origin/main; then
+            git push origin content
+          else
+            git merge --abort
+            echo "::warning::content branch has conflicting changes; the next content-publish run will reconcile it"
+          fi
 
       - name: Create issue on failure
         if: failure()

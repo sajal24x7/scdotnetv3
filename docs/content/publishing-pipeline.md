@@ -20,14 +20,18 @@ Obsidian note ──GitSync/git──▶ content branch
                       3. sort inbox/ notes into category folders
                       4. validate (astro check)
                       5. commit the cleaned tree back to content
-                      6. merge content → main (one clean commit)
+                      6. merge content → main (one clean commit),
+                         fast-forward content to the merge
+                      7. dispatch syndicate-content.yml
                                   │
                                   ▼
                     Cloudflare builds main — exactly once
-                                  │  deploy succeeds
+                                  │
                                   ▼
-                    syndicate-content.yml cross-posts, writes
-                    syndicationUrls back with [CI Skip] (no extra build)
+                    syndicate-content.yml waits ~2 min for the deploy,
+                    cross-posts, writes syndicationUrls back with
+                    [CI Skip] (no extra build), and merges main into
+                    content so the branches stay level
 ```
 
 If a note has a missing/unknown `category`, the run fails, a GitHub issue is
@@ -38,10 +42,18 @@ push to `content` again.
 
 The composer commits schema-valid files straight to `src/content/micro/` on
 `main` — no inbox, no normalization needed — so it intentionally bypasses the
-`content` branch for instant publishing. Cloudflare builds once, and the same
-deploy-success trigger syndicates it. See `micro-composer.md`. No changes
-needed to the composer for this pipeline; the two paths share only the
-syndication tail.
+`content` branch for instant publishing. Cloudflare builds once; the push to
+`main` also triggers `syndicate-content.yml` (which waits ~2 minutes for the
+deploy before posting) and `sync-content-branch.yml` (which merges `main`
+into `content` so the branch never trails a `/write` post). See
+`micro-composer.md`. The two paths share only the syndication tail.
+
+> **Why not `deployment_status`?** An earlier revision triggered syndication
+> off Cloudflare's deploy events. This repo's Cloudflare integration never
+> creates GitHub deployment events, so the trigger never fired. Syndication
+> now runs on `push` for direct commits and on an explicit
+> `workflow_dispatch` from `content-publish.yml` for bot merges (dispatches
+> are exempt from GitHub's GITHUB_TOKEN recursion guard).
 
 ## One-time switchover checklist
 
@@ -83,13 +95,9 @@ successful publish run picks up everything sitting on the branch.
 1. Push a test note to `content`. Expect: exactly one **Publish content** run
    in the Actions tab, one `publish: content batch …` commit on `main`, and
    exactly **one** Cloudflare production build.
-2. After the deploy goes green, one **Syndicate Content** run fires
-   (triggered by `deployment_status`), and its `syndicationUrls` commit does
-   **not** start a new Cloudflare build.
-   - If syndication doesn't fire: open the workflow run's event payload and
-     check `deployment.environment` — the job filters on
-     `Production`/`production`, but some Cloudflare integrations name it
-     after the Pages project. Adjust the `if:` in `syndicate-content.yml`.
+2. One **Syndicate Content** run fires (dispatched by the publish run; it
+   waits ~2 minutes for the deploy first), and its `syndicationUrls` commit
+   does **not** start a new Cloudflare build.
 3. Push a note with a broken `category`. Expect: the run fails, an issue
    labelled `automation`/`inbox` is opened, and `main` + production are
    untouched.
@@ -102,4 +110,7 @@ successful publish run picks up everything sitting on the branch.
   syndicated after deploy.
 - **Code changes** → PRs against `main` as always, gated by `ci.yml`.
 - The `content` branch never needs manual grooming: every publish run merges
-  `main` into it first, so it stays current with code changes.
+  `main` into it first, `sync-content-branch.yml` merges `main` into it on
+  every direct push to `main` (e.g. a `/write` micro post), and the
+  syndication run pushes its bookkeeping commit to both branches — so
+  `content` stays level with `main` instead of one step behind.

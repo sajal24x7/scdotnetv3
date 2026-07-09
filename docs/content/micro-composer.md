@@ -28,10 +28,11 @@ It commits a Markdown file directly to `src/content/micro/` on `main` via the
 GitHub Contents API. From there the existing automation takes over:
 
 1. The push to `main` triggers the Cloudflare Pages build → post goes live.
-2. Once Cloudflare reports the production deploy succeeded,
-   `syndicate-content.yml` runs (`deployment_status` trigger) → post is
-   cross-posted and `syndicationUrls` are written back with a `[CI Skip]`
-   commit, so the bookkeeping doesn't trigger another build.
+2. The same push triggers `syndicate-content.yml`, which waits ~2 minutes
+   for the deploy, then cross-posts and writes `syndicationUrls` back with a
+   `[CI Skip]` commit, so the bookkeeping doesn't trigger another build.
+3. The push also triggers `sync-content-branch.yml`, which merges `main`
+   into the `content` branch so it never trails a `/write` post.
 
 Nothing touches the content-branch publish pipeline (`content-publish.yml`,
 see `docs/content/publishing-pipeline.md`) — micro posts land in
@@ -59,7 +60,7 @@ Filename follows the existing convention — `YYYYMMDDHHMM Title.md`, or just
 ```yaml
 ---
 title: "Optional title"      # omitted when blank
-slug: optional-title          # omitted when no title; falls back to filename
+slug: "optional-title"        # always written; the timestamp when no title
 created: 2026-07-08T10:30:00.000Z
 updated: 2026-07-08T10:30:00.000Z
 category: micro

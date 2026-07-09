@@ -253,11 +253,12 @@
                 + pad(now.getHours()) + pad(now.getMinutes());
     const iso = now.toISOString();
 
+    const slug = title ? slugify(title) : stamp;
+
     const fm = ['---'];
-    if (title) {
-      fm.push(`title: ${yamlString(title)}`);
-      fm.push(`slug: ${slugify(title)}`);
-    }
+    if (title) fm.push(`title: ${yamlString(title)}`);
+    // Always write a slug — quoted, so a bare timestamp isn't parsed as a number
+    fm.push(`slug: ${yamlString(slug)}`);
     fm.push(`created: ${iso}`);
     fm.push(`updated: ${iso}`);
     fm.push('category: micro');
@@ -282,7 +283,7 @@
 
     return {
       title,
-      slug: title ? slugify(title) : stamp,
+      slug,
       filename: title ? `${stamp} ${title}.md` : `${stamp}.md`,
       markdown: fm.join('\n') + content + '\n',
     };
