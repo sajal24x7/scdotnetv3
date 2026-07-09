@@ -4,6 +4,26 @@ A single-page composer for publishing micro posts from any device — no Obsidia
 no Apple Shortcuts, no gitsync. Open `https://sajalchoudhary.net/write`, type,
 hit **Publish**, done.
 
+## Steps to go live
+
+1. **Merge this branch to `main`.** The Cloudflare Pages build deploys the
+   `/write` page and both Pages Functions automatically.
+2. **Create a GitHub token** (for publishing posts):
+   GitHub → Settings → Developer settings → Fine-grained personal access
+   tokens → Generate new token → repository access **only `scdotnetv3`**,
+   permissions **Contents: Read and write**, nothing else.
+3. **Create the R2 bucket** (for photos): Cloudflare dashboard → R2 →
+   Create bucket, e.g. `scdotnet-images`. Leave it private.
+4. **Bind the bucket to the Pages project**: Workers & Pages → your Pages
+   project → Settings → Bindings → Add → R2 bucket → variable name exactly
+   **`IMAGES`** → select the bucket. Apply to Production.
+5. **Redeploy once** (Deployments → Retry/Re-deploy latest) so the binding
+   takes effect.
+6. **On your phone**: open `https://sajalchoudhary.net/write`, paste the
+   token from step 2, then Share → **Add to Home Screen**.
+
+Steps 2–6 are one-time. After that: open, type, Publish.
+
 The page is a static file at `public/write/index.html`, deployed with the site.
 It commits a Markdown file directly to `src/content/micro/` on `main` via the
 GitHub Contents API. From there the existing automation takes over:
@@ -68,7 +88,7 @@ alongside the static build) do the work:
   site's own domain with immutable cache headers and edge caching, so the
   bucket never needs to be public or have its own domain.
 
-Photos are downscaled in the browser before upload (max 2048px, JPEG) so phone
+Photos are downscaled in the browser before upload (max 1024px, JPEG) so phone
 pictures don't land as 10MB originals; GIFs and already-small images are sent
 as-is. The server caps uploads at 15MB and only accepts image content types.
 
