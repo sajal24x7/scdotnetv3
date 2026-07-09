@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116889719847616464'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mq7iuiuxez25'
+  - 'https://www.threads.com/@sajal24x7/post/DalUwQ9mvc_'
 ---
 [Fable is very good by Robin Sloan](https://www.robinsloan.com/lab/fable-is-good/)
 
