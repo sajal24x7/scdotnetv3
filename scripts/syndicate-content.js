@@ -22,10 +22,13 @@ import { formatContentForPlatform } from './lib/content-formatter.js';
 import { postToMastodon } from './lib/platforms/mastodon.js';
 import { postToBluesky } from './lib/platforms/bluesky.js';
 import { postToThreads } from './lib/platforms/threads.js';
+import { postToInstagram } from './lib/platforms/instagram.js';
 import { RateLimiter } from './lib/utils/rate-limiter.js';
 
 // Configuration
-const PLATFORMS = ['mastodon', 'bluesky', 'threads'];
+const PLATFORMS = ['mastodon', 'bluesky', 'threads', 'instagram'];
+// Instagram can't post without an image, so only photo posts go there
+const PHOTO_ONLY_PLATFORMS = new Set(['instagram']);
 const STREAM_CATEGORIES = ['blog', 'micro', 'photo'];
 const GARDEN_CATEGORIES = ['evergreen', 'til', 'bookshelf', 'story', 'poem'];
 const NORDLETTER_CATEGORIES = ['nordletter'];
@@ -88,8 +91,19 @@ async function getAllPosts() {
 const rateLimiters = {
   mastodon: new RateLimiter(300, 5 * 60 * 1000), // 300 requests per 5 minutes
   bluesky: new RateLimiter(100, 60 * 1000),       // 100 requests per minute (conservative)
-  threads: new RateLimiter(250, 60 * 60 * 1000)   // 250 requests per hour
+  threads: new RateLimiter(250, 60 * 60 * 1000),  // 250 requests per hour
+  instagram: new RateLimiter(25, 60 * 60 * 1000)  // Meta caps at 50 posts/24h; stay well under
 };
+
+/**
+ * Platforms a given post is allowed to go to
+ */
+function eligiblePlatforms(post) {
+  const category = (post.data.category || '').toLowerCase();
+  return PLATFORMS.filter(platform =>
+    !PHOTO_ONLY_PLATFORMS.has(platform) || category === 'photo'
+  );
+}
 
 /**
  * Check if a post needs syndication
@@ -109,9 +123,9 @@ function needsSyndication(post) {
     return false; // Skip posts older than configured days
   }
 
-  // Simple rule: if we don't have URLs for all 3 platforms, syndicate
+  // Simple rule: if we don't have URLs for every eligible platform, syndicate
   const existingUrls = post.data.syndicationUrls || [];
-  return existingUrls.length < PLATFORMS.length;
+  return existingUrls.length < eligiblePlatforms(post).length;
 }
 
 /**
@@ -123,10 +137,11 @@ function getMissingPlatforms(post) {
     if (url.includes('mastodon.') || url.includes('mastodon.social')) return 'mastodon';
     if (url.includes('bsky.') || url.includes('bluesky.')) return 'bluesky';
     if (url.includes('threads.') || url.includes('twitter.') || url.includes('x.com')) return 'threads';
+    if (url.includes('instagram.com')) return 'instagram';
     return 'unknown';
   }).filter(platform => platform !== 'unknown');
 
-  return PLATFORMS.filter(platform => !existingPlatforms.includes(platform));
+  return eligiblePlatforms(post).filter(platform => !existingPlatforms.includes(platform));
 }
 
 /**
@@ -188,6 +203,9 @@ async function syndicateToplatform(post, platform) {
         break;
       case 'threads':
         syndicationUrl = await postToThreads(formattedContent);
+        break;
+      case 'instagram':
+        syndicationUrl = await postToInstagram(formattedContent);
         break;
       default:
         throw new Error(`Unknown platform: ${platform}`);

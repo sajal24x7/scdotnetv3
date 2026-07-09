@@ -433,9 +433,13 @@
     saveDraft();
   }
 
-  async function shrinkImage(file, maxDim) {
-    // GIFs would lose animation; small stills aren't worth recompressing
-    if (file.type === 'image/gif' || (file.size < RECOMPRESS_OVER)) return file;
+  async function shrinkImage(file, maxDim, forceJpeg) {
+    // GIFs would lose animation; small stills aren't worth recompressing —
+    // except in photo mode, where everything becomes JPEG so the images stay
+    // eligible for Instagram syndication (JPEG-only API).
+    if (file.type === 'image/gif') return file;
+    if (!forceJpeg && file.size < RECOMPRESS_OVER) return file;
+    if (forceJpeg && file.type === 'image/jpeg' && file.size < RECOMPRESS_OVER) return file;
     try {
       const bitmap = await createImageBitmap(file);
       const scale = Math.min(1, maxDim / Math.max(bitmap.width, bitmap.height));
@@ -445,8 +449,10 @@
       canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
       bitmap.close();
       const blob = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.85));
-      // keep the original if recompression didn't actually help
-      return blob && blob.size < file.size ? blob : file;
+      if (!blob) return file;
+      // keep the original if recompression didn't actually help — unless we
+      // need the JPEG conversion itself
+      return (forceJpeg && file.type !== 'image/jpeg') || blob.size < file.size ? blob : file;
     } catch {
       return file; // undecodable in this browser — let the server take the original
     }
@@ -461,7 +467,7 @@
     const token = localStorage.getItem(TOKEN_KEY);
     const counter = total > 1 ? ` ${index + 1}/${total}` : '';
     setUploadNote(`Preparing photo${counter}…`);
-    const blob = await shrinkImage(file, mode === 'photo' ? MAX_DIM_PHOTO : MAX_DIM_MICRO);
+    const blob = await shrinkImage(file, mode === 'photo' ? MAX_DIM_PHOTO : MAX_DIM_MICRO, mode === 'photo');
     setUploadNote(`Uploading photo${counter}…`);
     const res = await fetch('/api/upload', {
       method: 'POST',

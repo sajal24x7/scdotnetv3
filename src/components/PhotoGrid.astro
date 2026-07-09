@@ -1,5 +1,6 @@
 ---
 import TimeDisplay from './TimeDisplay.astro';
+import Tag from './Tag.astro';
 import { getPhotoImages, getPhotoCaption } from '../utils/photos';
 
 interface Props {
@@ -8,88 +9,216 @@ interface Props {
 
 const { posts } = Astro.props as Props;
 
+const truncate = (text: string, max = 280) =>
+    text.length <= max ? text : `${text.slice(0, max).replace(/\s+\S*$/, '')}…`;
+
 const tiles = posts.map((post) => {
     const images = getPhotoImages(post.data, post.body);
-    const caption = getPhotoCaption(post.data, post.body);
-    const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
+    const title = typeof post.data.title === 'string' ? post.data.title.trim() : '';
+    // Body text with markdown stripped (empty for posts whose body is just the image)
+    const bodyCaption = truncate(getPhotoCaption({}, post.body));
+    const tags: string[] = Array.isArray(post.data.tags) ? post.data.tags : [];
     return {
         link: post.data.link,
         created: post.data.created,
-        tags: tags.join(','),
+        tags,
         image: images[0] ?? null,
         imageCount: images.length,
-        caption,
+        title,
+        bodyCaption,
+        // Grid overlay shows one line: the title when present, else the caption
+        overlayCaption: title || bodyCaption,
     };
 });
 ---
 
-<div class="photo-grid">
-    {tiles.map((tile) => (
-        <a
-            href={tile.link}
-            class="photo-tile"
-            data-content-item
-            data-tags={tile.tags}
-            aria-label={tile.caption || 'Photo post'}
-        >
-            {tile.image ? (
-                <img
-                    src={tile.image}
-                    alt={tile.caption}
-                    loading="lazy"
-                    decoding="async"
-                />
-            ) : (
-                <span class="photo-tile__placeholder">{tile.caption || 'Photo post'}</span>
-            )}
+<div class="photo-feed" data-photo-feed data-view="grid">
+    <div class="photo-feed__toolbar">
+        <div class="photo-feed__toggle" role="group" aria-label="Photos layout">
+            <button type="button" data-view-btn="grid" aria-pressed="true" aria-label="Grid view" title="Grid view">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" />
+                    <rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" />
+                    <rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" />
+                    <rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" />
+                </svg>
+            </button>
+            <button type="button" data-view-btn="list" aria-pressed="false" aria-label="Single column view" title="Single column view">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="4" y="4" width="16" height="7" rx="1.5" stroke="currentColor" stroke-width="2" />
+                    <rect x="4" y="14" width="16" height="6" rx="1.5" stroke="currentColor" stroke-width="2" />
+                </svg>
+            </button>
+        </div>
+    </div>
 
-            {tile.imageCount > 1 && (
-                <span class="photo-tile__count" aria-label={`${tile.imageCount} photos`}>
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2" />
-                        <path d="M4 16V6a2 2 0 0 1 2-2h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-                    {tile.imageCount}
-                </span>
-            )}
+    <div class="photo-grid">
+        {tiles.map((tile) => (
+            <article class="photo-entry" data-content-item data-tags={tile.tags.join(',')}>
+                <a
+                    href={tile.link}
+                    class="photo-entry__media"
+                    aria-label={tile.overlayCaption || 'Photo post'}
+                >
+                    {tile.image ? (
+                        <img
+                            src={tile.image}
+                            alt={tile.overlayCaption}
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    ) : (
+                        <span class="photo-entry__placeholder">{tile.overlayCaption || 'Photo post'}</span>
+                    )}
 
-            <span class="photo-tile__overlay">
-                {tile.caption && <span class="photo-tile__caption">{tile.caption}</span>}
-                <TimeDisplay
-                    date={tile.created}
-                    category="photo"
-                    format="detailed"
-                    className="photo-tile__date"
-                />
-            </span>
-        </a>
-    ))}
+                    {tile.imageCount > 1 && (
+                        <span class="photo-entry__count" aria-label={`${tile.imageCount} photos`}>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2" />
+                                <path d="M4 16V6a2 2 0 0 1 2-2h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                            {tile.imageCount}
+                        </span>
+                    )}
+
+                    <span class="photo-entry__overlay">
+                        {tile.overlayCaption && <span class="photo-entry__overlay-caption">{tile.overlayCaption}</span>}
+                        <TimeDisplay
+                            date={tile.created}
+                            category="photo"
+                            format="detailed"
+                            className="photo-entry__overlay-date"
+                        />
+                    </span>
+                </a>
+
+                {/* Shown in the single-column view: caption + metadata below the image */}
+                <div class="photo-entry__info">
+                    {tile.title && (
+                        <h2 class="photo-entry__title">
+                            <a href={tile.link} class="link-hover">{tile.title}</a>
+                        </h2>
+                    )}
+                    {tile.bodyCaption && tile.bodyCaption !== tile.title && (
+                        <p class="photo-entry__caption">{tile.bodyCaption}</p>
+                    )}
+                    <div class="photo-entry__meta">
+                        <a href={tile.link} class="photo-entry__date-link" aria-label="Open post">
+                            <TimeDisplay
+                                date={tile.created}
+                                category="photo"
+                                format="detailed"
+                                className="photo-entry__date"
+                            />
+                        </a>
+                        {tile.tags.length > 0 && (
+                            <span class="photo-entry__tags">
+                                {tile.tags.map((tag) => (
+                                    <Tag tag={tag} asFilter />
+                                ))}
+                            </span>
+                        )}
+                    </div>
+                </div>
+            </article>
+        ))}
+    </div>
 </div>
 
+<script is:inline>
+(() => {
+    const VIEW_KEY = 'photos.view';
+    const feed = document.querySelector('[data-photo-feed]');
+    if (!feed) return;
+
+    const buttons = feed.querySelectorAll('[data-view-btn]');
+
+    function applyView(view) {
+        const next = view === 'list' ? 'list' : 'grid';
+        feed.dataset.view = next;
+        buttons.forEach((btn) => {
+            btn.setAttribute('aria-pressed', String(btn.dataset.viewBtn === next));
+        });
+    }
+
+    buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            applyView(btn.dataset.viewBtn);
+            try { localStorage.setItem(VIEW_KEY, feed.dataset.view); } catch { /* private mode */ }
+        });
+    });
+
+    try { applyView(localStorage.getItem(VIEW_KEY)); } catch { /* private mode */ }
+})();
+</script>
+
 <style>
+    .photo-feed {
+        padding-block: clamp(1rem, 2.5vw, 1.5rem);
+    }
+
+    .photo-feed__toolbar {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+    }
+
+    .photo-feed__toggle {
+        display: inline-flex;
+        gap: 2px;
+        padding: 3px;
+        border-radius: 0.65rem;
+        background: rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    :global(.dark) .photo-feed__toggle {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .photo-feed__toggle button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.1rem;
+        height: 2.1rem;
+        border: none;
+        border-radius: 0.5rem;
+        background: none;
+        color: rgb(var(--color-text-secondary));
+        cursor: pointer;
+        transition: background 150ms ease, color 150ms ease;
+    }
+
+    .photo-feed__toggle button svg {
+        width: 1.15rem;
+        height: 1.15rem;
+    }
+
+    .photo-feed__toggle button[aria-pressed="true"] {
+        background: rgb(var(--color-text-primary));
+        color: rgb(var(--color-bg-primary));
+    }
+
+    .photo-feed__toggle button:not([aria-pressed="true"]):hover {
+        color: rgb(var(--color-text-primary));
+    }
+
     .photo-grid {
         display: grid;
         grid-template-columns: 1fr;
         gap: clamp(0.75rem, 2vw, 1.25rem);
-        padding-block: clamp(1.25rem, 3vw, 2rem);
     }
 
-    @media (min-width: 40rem) {
-        .photo-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+    .photo-entry {
+        display: flex;
+        flex-direction: column;
     }
 
-    @media (min-width: 64rem) {
-        .photo-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-    }
-
-    .photo-tile {
+    .photo-entry__media {
         position: relative;
         display: block;
-        aspect-ratio: 1 / 1;
         border-radius: 0.75rem;
         overflow: hidden;
         background: rgba(0, 0, 0, 0.04);
@@ -98,13 +227,13 @@ const tiles = posts.map((post) => {
         transition: box-shadow 220ms ease, transform 220ms ease, border-color 180ms ease;
     }
 
-    :global(.dark) .photo-tile {
+    :global(.dark) .photo-entry__media {
         background: rgba(255, 255, 255, 0.04);
         border-color: rgba(255, 255, 255, 0.08);
     }
 
-    .photo-tile:hover,
-    .photo-tile:focus-visible {
+    .photo-entry__media:hover,
+    .photo-entry__media:focus-visible {
         transform: translateY(-2px);
         border-color: rgba(99, 102, 241, 0.3);
         box-shadow:
@@ -112,29 +241,23 @@ const tiles = posts.map((post) => {
             0 8px 24px rgba(129, 140, 248, 0.15);
     }
 
-    .photo-tile:focus-visible {
+    .photo-entry__media:focus-visible {
         outline: 2px solid rgba(99, 102, 241, 0.7);
         outline-offset: 2px;
     }
 
-    .photo-tile img {
+    .photo-entry__media img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
         display: block;
         transition: transform 400ms ease;
     }
 
-    .photo-tile:hover img,
-    .photo-tile:focus-visible img {
-        transform: scale(1.04);
-    }
-
-    .photo-tile__placeholder {
+    .photo-entry__placeholder {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
+        min-height: 10rem;
         padding: 1.5rem;
         text-align: center;
         font-size: 1rem;
@@ -142,7 +265,7 @@ const tiles = posts.map((post) => {
         color: rgb(var(--color-text-secondary));
     }
 
-    .photo-tile__count {
+    .photo-entry__count {
         position: absolute;
         top: 0.75rem;
         right: 0.75rem;
@@ -158,12 +281,12 @@ const tiles = posts.map((post) => {
         backdrop-filter: blur(4px);
     }
 
-    .photo-tile__count svg {
+    .photo-entry__count svg {
         width: 0.85rem;
         height: 0.85rem;
     }
 
-    .photo-tile__overlay {
+    .photo-entry__overlay {
         position: absolute;
         inset: 0;
         display: flex;
@@ -183,19 +306,12 @@ const tiles = posts.map((post) => {
         pointer-events: none;
     }
 
-    .photo-tile:hover .photo-tile__overlay,
-    .photo-tile:focus-visible .photo-tile__overlay {
+    .photo-entry__media:hover .photo-entry__overlay,
+    .photo-entry__media:focus-visible .photo-entry__overlay {
         opacity: 1;
     }
 
-    /* Touch devices have no hover — keep the caption visible */
-    @media (hover: none) {
-        .photo-tile__overlay {
-            opacity: 1;
-        }
-    }
-
-    .photo-tile__caption {
+    .photo-entry__overlay-caption {
         font-size: 0.95rem;
         font-weight: 600;
         line-height: 1.4;
@@ -205,31 +321,141 @@ const tiles = posts.map((post) => {
         overflow: hidden;
     }
 
-    .photo-tile :global(.photo-tile__date) {
+    .photo-entry :global(.photo-entry__overlay-date) {
         font-size: 0.75rem;
         font-weight: 500;
         opacity: 0.85;
     }
 
     /* Placeholder tiles keep their text readable without the dark gradient */
-    .photo-tile:has(.photo-tile__placeholder) .photo-tile__overlay {
+    .photo-entry__media:has(.photo-entry__placeholder) .photo-entry__overlay {
         background: none;
         color: rgb(var(--color-text-secondary));
     }
 
-    .photo-tile:has(.photo-tile__placeholder) .photo-tile__caption {
+    .photo-entry__media:has(.photo-entry__placeholder) .photo-entry__overlay-caption {
         display: none;
     }
 
+    /* ------ Grid view (Instagram-style tiles) ------ */
+
+    .photo-feed[data-view="grid"] .photo-entry__media {
+        aspect-ratio: 1 / 1;
+    }
+
+    .photo-feed[data-view="grid"] .photo-entry__media img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .photo-feed[data-view="grid"] .photo-entry__media:hover img,
+    .photo-feed[data-view="grid"] .photo-entry__media:focus-visible img {
+        transform: scale(1.04);
+    }
+
+    .photo-feed[data-view="grid"] .photo-entry__info {
+        display: none;
+    }
+
+    @media (min-width: 40rem) {
+        .photo-feed[data-view="grid"] .photo-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (min-width: 64rem) {
+        .photo-feed[data-view="grid"] .photo-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    /* Touch devices have no hover — keep the caption visible on tiles */
+    @media (hover: none) {
+        .photo-feed[data-view="grid"] .photo-entry__overlay {
+            opacity: 1;
+        }
+    }
+
+    /* ------ Single-column view (wide photos, caption + metadata below) ------ */
+
+    .photo-feed[data-view="list"] .photo-grid {
+        grid-template-columns: 1fr;
+        max-width: 46rem;
+        margin-inline: auto;
+        gap: clamp(2rem, 5vw, 3rem);
+    }
+
+    .photo-feed[data-view="list"] .photo-entry__media img {
+        height: auto;
+        max-height: min(80vh, 44rem);
+        object-fit: cover;
+    }
+
+    .photo-feed[data-view="list"] .photo-entry__overlay {
+        display: none;
+    }
+
+    .photo-feed[data-view="list"] .photo-entry__info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        padding: 0.85rem 0.25rem 0;
+    }
+
+    .photo-entry__title {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 700;
+        line-height: 1.35;
+    }
+
+    .photo-entry__title a {
+        color: rgb(var(--color-text-primary));
+        text-decoration: none;
+    }
+
+    .photo-entry__caption {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .photo-entry__meta {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 0.35rem;
+    }
+
+    .photo-entry__date-link {
+        text-decoration: none;
+        color: rgb(var(--color-text-secondary));
+        font-size: 0.78rem;
+        font-weight: 500;
+        transition: color 150ms ease;
+    }
+
+    .photo-entry__date-link:hover {
+        color: rgb(var(--color-text-primary));
+    }
+
+    .photo-entry__tags {
+        display: inline-flex;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+    }
+
     @media (prefers-reduced-motion: reduce) {
-        .photo-tile,
-        .photo-tile img,
-        .photo-tile__overlay {
+        .photo-entry__media,
+        .photo-entry__media img,
+        .photo-entry__overlay {
             transition: none;
         }
 
-        .photo-tile:hover img,
-        .photo-tile:focus-visible img {
+        .photo-feed[data-view="grid"] .photo-entry__media:hover img,
+        .photo-feed[data-view="grid"] .photo-entry__media:focus-visible img {
             transform: none;
         }
     }

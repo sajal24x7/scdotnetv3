@@ -1,12 +1,13 @@
 # Syndication Workflow (POSSE)
 
-The POSSE pipeline cross-posts recent entries to Mastodon, Bluesky, and Threads, then writes the resulting URLs back into each post’s frontmatter.
+The POSSE pipeline cross-posts recent entries to Mastodon, Bluesky, and Threads — plus Instagram for photo posts — then writes the resulting URLs back into each post’s frontmatter.
 
 ## Overview
 
 - Entry point: `scripts/syndicate-content.js`.
 - Supported platforms are configured via `syndication.config.json`, which defines character limits, hashtag usage, and rate limits for each network.【F:scripts/syndicate-content.js†L1-L118】【F:syndication.config.json†L1-L63】
 - Eligible categories include stream posts (blog, micro, photo), garden entries (evergreen, til, bookshelf, story, poem), and Nordletters.【F:scripts/syndicate-content.js†L19-L37】
+- Instagram is photo-only: `eligiblePlatforms()` in `scripts/syndicate-content.js` restricts it to `category: photo` posts (the API cannot publish without an image). Setup and content requirements live in [instagram-setup.md](instagram-setup.md).
 
 ## Execution Flow
 
@@ -49,6 +50,7 @@ The general build (`npm run build`) triggers `scripts/trigger-syndication.sh` af
 
 ## Related Documentation
 
+- [Instagram Setup](instagram-setup.md)
 - [Threads Token Refresh](threads-token-refresh.md)
 - [Deployment and Build Pipeline](deployment.md)
 - [Content Lifecycle](../architecture/content-lifecycle.md)

@@ -88,7 +88,9 @@ The toggle at the top switches the composer to photo posts:
   contains image Markdown.
 - Multiple photos render as a carousel on the post page and get a count badge
   on the `/photos` grid.
-- Photo-mode uploads keep more resolution (max 2048px vs 1024px for micro).
+- Photo-mode uploads keep more resolution (max 2048px vs 1024px for micro)
+  and are always re-encoded to JPEG so they stay eligible for Instagram
+  syndication (the Instagram API accepts JPEG only).
 
 ```yaml
 ---

@@ -24,6 +24,14 @@ const PLATFORM_CONFIG = {
     includeHashtags: true,
     includeLink: true,
     linkText: 'Read more'
+  },
+  instagram: {
+    // Captions allow 2200 chars / 30 hashtags; links aren't clickable but
+    // the canonical URL still travels with the post as plain text.
+    maxLength: 2200,
+    includeHashtags: true,
+    includeLink: true,
+    linkText: 'Read more'
   }
 };
 
