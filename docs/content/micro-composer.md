@@ -110,10 +110,10 @@ Optional caption text.
 
 The **＋ photo** button uploads images to the existing media R2 bucket (the
 one behind `storage.sajalchoudhary.net`, where nordletter media already
-lives). In Micro mode it inserts
-`![](https://storage.sajalchoudhary.net/images/…)` Markdown at the cursor and
-nothing is written to frontmatter; in Photo mode the URLs go to the `images:`
-frontmatter list as described above.
+lives) and inserts `![](https://storage.sajalchoudhary.net/images/…)`
+Markdown at the cursor. It is not also written to the `image:` frontmatter
+field — the post page renders that field as a separate hero image above the
+body, so duplicating it there would show the same image twice.
 
 One Pages Function does the work — `POST /api/upload`
 (`functions/api/upload.js`, deployed automatically alongside the static
