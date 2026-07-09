@@ -4,6 +4,10 @@ on:
   pull_request:
   push:
     branches: [main]
+    # Content-only commits (micro posts from /write, publish merges) are
+    # already built by Cloudflare; don't spend a full Actions build on them
+    paths-ignore:
+      - 'src/content/**'
 
 concurrency:
   group: ci-${{ github.ref }}

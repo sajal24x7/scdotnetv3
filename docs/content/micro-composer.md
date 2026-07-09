@@ -28,11 +28,15 @@ It commits a Markdown file directly to `src/content/micro/` on `main` via the
 GitHub Contents API. From there the existing automation takes over:
 
 1. The push to `main` triggers the Cloudflare Pages build → post goes live.
-2. The push also triggers `syndicate-content.yml` → post is cross-posted and
-   `syndicationUrls` are written back.
+2. Once Cloudflare reports the production deploy succeeded,
+   `syndicate-content.yml` runs (`deployment_status` trigger) → post is
+   cross-posted and `syndicationUrls` are written back with a `[CI Skip]`
+   commit, so the bookkeeping doesn't trigger another build.
 
-Nothing touches the inbox pipeline (`sort-inbox.yml`) — files land in
-`src/content/micro/` already in Astro format.
+Nothing touches the content-branch publish pipeline (`content-publish.yml`,
+see `docs/content/publishing-pipeline.md`) — micro posts land in
+`src/content/micro/` already in Astro format, so they skip the
+normalize/sort step and go straight to `main` for instant publishing.
 
 ## One-time setup
 

@@ -78,7 +78,13 @@ jobs:
           fi
           git checkout -B main origin/main
           git merge --no-ff content -m "publish: content batch $(date -u +%Y-%m-%dT%H:%M)"
-          git push origin main
+          # A /write micro post can land on main mid-run; merge it and retry
+          # rather than failing the publish
+          git push origin main || {
+            git fetch origin main
+            git merge --no-edit origin/main
+            git push origin main
+          }
 
       - name: Open issue on failure
         if: failure()
