@@ -7,22 +7,21 @@ hit **Publish**, done.
 ## Steps to go live
 
 1. **Merge this branch to `main`.** The Cloudflare Pages build deploys the
-   `/write` page and both Pages Functions automatically.
+   `/write` page and the upload Pages Function automatically.
 2. **Create a GitHub token** (for publishing posts):
    GitHub → Settings → Developer settings → Fine-grained personal access
    tokens → Generate new token → repository access **only `scdotnetv3`**,
    permissions **Contents: Read and write**, nothing else.
-3. **Create the R2 bucket** (for photos): Cloudflare dashboard → R2 →
-   Create bucket, e.g. `scdotnet-images`. Leave it private.
-4. **Bind the bucket to the Pages project**: Workers & Pages → your Pages
-   project → Settings → Bindings → Add → R2 bucket → variable name exactly
-   **`IMAGES`** → select the bucket. Apply to Production.
-5. **Redeploy once** (Deployments → Retry/Re-deploy latest) so the binding
+3. **Bind the existing media bucket to the Pages project**: Workers & Pages →
+   your Pages project → Settings → Bindings → Add → R2 bucket → variable name
+   exactly **`IMAGES`** → select the bucket behind
+   `storage.sajalchoudhary.net`. Apply to Production.
+4. **Redeploy once** (Deployments → Retry/Re-deploy latest) so the binding
    takes effect.
-6. **On your phone**: open `https://sajalchoudhary.net/write`, paste the
+5. **On your phone**: open `https://sajalchoudhary.net/write`, paste the
    token from step 2, then Share → **Add to Home Screen**.
 
-Steps 2–6 are one-time. After that: open, type, Publish.
+Steps 2–5 are one-time. After that: open, type, Publish.
 
 The page is a static file at `public/write/index.html`, deployed with the site.
 It commits a Markdown file directly to `src/content/micro/` on `main` via the
@@ -71,36 +70,35 @@ format. Quotes are just typed as Markdown `>` blockquotes in the body.
 
 ## Images (Cloudflare R2)
 
-The **＋ photo** button uploads images to a Cloudflare R2 bucket and inserts
-`![](https://sajalchoudhary.net/i/…)` Markdown at the cursor. The first image
-in a post is also written to the `image:` frontmatter field so feed cards pick
-it up.
+The **＋ photo** button uploads images to the existing media R2 bucket (the
+one behind `storage.sajalchoudhary.net`, where nordletter media already
+lives) and inserts `![](https://storage.sajalchoudhary.net/images/…)`
+Markdown at the cursor. The first image in a post is also written to the
+`image:` frontmatter field so feed cards pick it up.
 
-Two Pages Functions (in `functions/` at the repo root, deployed automatically
-alongside the static build) do the work:
-
-- `POST /api/upload` (`functions/api/upload.js`) — validates the request,
-  stores the image in R2 under `micro/YYYY/MM/<timestamp>-<random>.<ext>`, and
-  returns the URL. Auth reuses the **same GitHub token** the composer already
-  holds: the function accepts an upload only if GitHub confirms the token can
-  read this repo, so there is no separate upload secret to manage.
-- `GET /i/*` (`functions/i/[[path]].js`) — streams images out of R2 from the
-  site's own domain with immutable cache headers and edge caching, so the
-  bucket never needs to be public or have its own domain.
+One Pages Function does the work — `POST /api/upload`
+(`functions/api/upload.js`, deployed automatically alongside the static
+build). It validates the request, stores the image following the bucket's
+established layout `images/YYYY/MM/<timestamp>-<random>.<ext>`, and returns
+the public URL. Auth reuses the **same GitHub token** the composer already
+holds: the function accepts an upload only if GitHub confirms the token can
+read this repo, so there is no separate upload secret to manage.
 
 Photos are downscaled in the browser before upload (max 1024px, JPEG) so phone
 pictures don't land as 10MB originals; GIFs and already-small images are sent
 as-is. The server caps uploads at 15MB and only accepts image content types.
 
+The public base URL defaults to `https://storage.sajalchoudhary.net` and can
+be overridden with an `IMAGES_PUBLIC_URL` env var on the Pages project.
+
 ### One-time R2 setup (Cloudflare dashboard)
 
-1. **R2 → Create bucket** — name it e.g. `scdotnet-images` (any name works;
-   the binding below is what the code sees). No public access needed.
-2. **Workers & Pages → your Pages project → Settings → Bindings →
+1. **Workers & Pages → your Pages project → Settings → Bindings →
    Add → R2 bucket** — variable name **`IMAGES`** (must be exactly this),
-   bucket: the one you just created. Apply to Production (and Preview if you
-   want uploads from preview deploys).
-3. Redeploy the site once so the binding takes effect.
+   bucket: the existing media bucket that serves
+   `storage.sajalchoudhary.net`. Apply to Production (and Preview if you want
+   uploads from preview deploys).
+2. Redeploy the site once so the binding takes effect.
 
 Until the binding exists, uploads fail with a clear "IMAGES R2 binding is not
 configured" error; the rest of the composer keeps working.

@@ -1,11 +1,14 @@
 // Cloudflare Pages Function: POST /api/upload
 //
-// Accepts a raw image body from the /write composer and stores it in the R2
-// bucket bound as IMAGES (Pages project → Settings → Functions → R2 bindings).
+// Accepts a raw image body from the /write composer and stores it in the
+// existing media R2 bucket, bound as IMAGES (Pages project → Settings →
+// Bindings). Keys follow the bucket's established images/YYYY/MM/<name>.<ext>
+// layout and the returned URL uses the bucket's public domain.
 // Auth reuses the composer's fine-grained GitHub PAT: any token that can read
 // the site repo is treated as the owner, so no separate upload secret exists.
 
 const REPO = 'sajal24x7/scdotnetv3';
+const PUBLIC_BASE = 'https://storage.sajalchoudhary.net';
 const MAX_BYTES = 15 * 1024 * 1024;
 
 const EXT_BY_TYPE = {
@@ -64,7 +67,7 @@ export async function onRequestPost({ request, env }) {
     now.getUTCFullYear() + pad(now.getUTCMonth() + 1) + pad(now.getUTCDate()) +
     pad(now.getUTCHours()) + pad(now.getUTCMinutes()) + pad(now.getUTCSeconds());
   const rand = crypto.randomUUID().slice(0, 8);
-  const key = `micro/${now.getUTCFullYear()}/${pad(now.getUTCMonth() + 1)}/${stamp}-${rand}.${ext}`;
+  const key = `images/${now.getUTCFullYear()}/${pad(now.getUTCMonth() + 1)}/${stamp}-${rand}.${ext}`;
 
   await env.IMAGES.put(key, bytes, {
     httpMetadata: {
@@ -73,5 +76,6 @@ export async function onRequestPost({ request, env }) {
     },
   });
 
-  return json(200, { key, url: `/i/${key}` });
+  const base = (env.IMAGES_PUBLIC_URL || PUBLIC_BASE).replace(/\/+$/, '');
+  return json(200, { key, url: `${base}/${key}` });
 }

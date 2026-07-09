@@ -354,7 +354,7 @@
       throw new Error(detail);
     }
     const { url } = await res.json();
-    insertIntoBody(`![](${SITE}${url})`);
+    insertIntoBody(`![](${url})`);
   }
 
   $('addPhoto').addEventListener('click', () => {
