@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - anthropic
-  - claude-code
-category: micro
+title: "Fable Is Very Good"
+slug: "fable-is-very-good"
+created: 2026-07-09T13:51:00
 updated: 2026-07-09T13:51:34+03:00
+category: micro
+tags: ["anthropic", "claude-code"]
 ---
 [Fable is very good by Robin Sloan](https://www.robinsloan.com/lab/fable-is-good/)
 
