@@ -86,6 +86,18 @@ export async function postToBluesky(formattedContent) {
     // Create session
     const session = await createBlueskySession();
 
+    // Upload images and attach them as a native image embed (Bluesky allows up to 4)
+    const images = formattedContent.images || [];
+    const embedImages = [];
+    for (const image of images.slice(0, 4)) {
+      try {
+        const blob = await uploadBlueskyBlob(image.url, session);
+        embedImages.push({ alt: image.alt || '', image: blob });
+      } catch (error) {
+        console.warn(`    ⚠️  Skipping image for Bluesky (${image.url}): ${error.message}`);
+      }
+    }
+
     // Prepare the post record
     const now = new Date().toISOString();
     const facets = detectUrls(formattedContent.text);
@@ -99,6 +111,13 @@ export async function postToBluesky(formattedContent) {
     // Add facets if URLs were detected
     if (facets.length > 0) {
       record.facets = facets;
+    }
+
+    if (embedImages.length > 0) {
+      record.embed = {
+        $type: 'app.bsky.embed.images',
+        images: embedImages
+      };
     }
 
     // Create the post
@@ -136,7 +155,7 @@ export async function postToBluesky(formattedContent) {
 }
 
 /**
- * Upload blob to Bluesky (for future image support)
+ * Upload blob to Bluesky
  *
  * @param {string} imageUrl - URL of the image to upload
  * @param {Object} session - Active Bluesky session
