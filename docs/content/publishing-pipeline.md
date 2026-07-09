@@ -59,8 +59,10 @@ Do these in one sitting, in order:
    (The branch already exists — created from main on 2026-07-09. If notes
    were pushed to it in the meantime, merge instead of force-anything:
    `git checkout content && git merge origin/main && git push`.)
-3. **Repoint GitSync (iOS)** at branch `content` instead of `main`. The
-   Obsidian → frontmatter Shortcut keeps working unchanged.
+3. **Repoint GitSync (iOS)** at branch `content` instead of `main`, and
+   replace the old metadata-mapping Shortcut with the simple copy-to-inbox
+   one — see `publishing-shortcut.md`. (The old Shortcut also still works;
+   the pipeline skips notes that are already in Astro format.)
 4. **Mac clone**: write notes on `content`
    (`git checkout -b content origin/content`); keep using `main` for code.
 5. **Cloudflare Pages dashboard**:
