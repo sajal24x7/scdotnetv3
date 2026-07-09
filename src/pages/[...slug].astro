@@ -10,7 +10,9 @@ export async function getStaticPaths() {
   // Get all category collections
   const categories = getContentCategories();
   const allPosts = await Promise.all(categories.map(category => getCollection(category as any)));
-  const posts = allPosts.flat().filter(entry => (entry as CollectionEntry<any>).data && (entry as CollectionEntry<any>).data.title);
+  // Titles are optional (micro posts from /write often have none), so only
+  // require frontmatter to exist — filtering on title made titleless posts 404.
+  const posts = allPosts.flat().filter(entry => (entry as CollectionEntry<any>).data);
 
   return posts.map((entry) => {
     const e = entry as CollectionEntry<any>;
@@ -35,10 +37,13 @@ const backlinks = await findBacklinksComprehensive(`${category}/${slug}`);
 // Get canonical URL for microformats
 const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
 
+const categoryLabel = category.charAt(0).toUpperCase() + category.slice(1);
+const pageTitle = entry.data?.title ? `${entry.data.title} - ${categoryLabel}` : categoryLabel;
+
 ---
 
 <Layout
-  title={`${entry.data?.title ?? ''} - ${category.charAt(0).toUpperCase() + category.slice(1)}`}
+  title={pageTitle}
   description={entry.data?.description}
   currentPage={`/${category}/${slug}/`}
   enableLinkHoverEffect

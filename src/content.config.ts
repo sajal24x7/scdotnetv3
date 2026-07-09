@@ -24,8 +24,12 @@ const postsLoader = (category: string) =>
   glob({
     pattern: '**/*.{md,mdx}',
     base: `./src/content/${category}`,
-    generateId: ({ entry, data }) =>
-      ((data as Record<string, unknown>).slug as string | undefined) || slugFromEntry(entry),
+    generateId: ({ entry, data }) => {
+      // String() guards against numeric-looking slugs (e.g. 202607091101)
+      // that YAML parses as numbers when unquoted.
+      const slug = (data as Record<string, unknown>).slug;
+      return slug != null && slug !== '' ? String(slug) : slugFromEntry(entry);
+    },
   });
 
 // Shared post schema (all 14 content categories use this)

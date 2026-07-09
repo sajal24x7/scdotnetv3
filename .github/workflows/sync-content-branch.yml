@@ -1,0 +1,53 @@
+name: Sync content branch
+
+# Keep the content branch current with main. The /write composer (and any
+# manual push) commits straight to main, which previously left content one
+# step behind until the next content-publish run merged main back in.
+#
+# Only user/PAT pushes reach this trigger — pushes made with GITHUB_TOKEN
+# (content-publish's merge, syndication's bookkeeping commit) don't fire
+# push workflows. Those two workflows sync the content branch themselves.
+on:
+  push:
+    branches: [main]
+
+# Share the content-publish concurrency group so a sync never races a
+# publish run that is rewriting the content branch at the same time.
+concurrency:
+  group: content-publish
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config --global user.name  'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Merge main into content
+        run: |
+          if ! git fetch origin content; then
+            echo "No content branch — nothing to sync"
+            exit 0
+          fi
+          git fetch origin main
+          if git merge-base --is-ancestor origin/main origin/content; then
+            echo "content already contains main — nothing to sync"
+            exit 0
+          fi
+          git checkout -B content origin/content
+          git merge --no-edit origin/main
+          # This push uses GITHUB_TOKEN, so it does NOT trigger
+          # content-publish — notes queued on content are picked up by the
+          # next real push to the branch, exactly as before.
+          git push origin content
