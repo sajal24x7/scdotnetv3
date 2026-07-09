@@ -3,6 +3,7 @@ import LayoutContainer from './LayoutContainer.astro';
 import TimeDisplay from '../TimeDisplay.astro';
 import Tag from '../Tag.astro';
 import Backlinks from '../Backlinks.astro';
+import PhotoCarousel from '../PhotoCarousel.astro';
 import SyndicationLinks from '../SyndicationLinks.astro';
 import NewsletterSignup from '../ui/NewsletterSignup.astro';
 import { Image } from 'astro:assets';
@@ -49,6 +50,9 @@ const syndicationUrls = 'syndicationUrls' in entryData && Array.isArray(entryDat
     ? entryData.syndicationUrls
     : [];
 const heroImage = 'image' in entryData ? entryData.image : undefined;
+// Photo posts carry their gallery in frontmatter; render it as a carousel
+// instead of the hero image (which is just the first gallery entry).
+const galleryImages: string[] = Array.isArray(entryData.images) ? entryData.images : [];
 const edition = category === 'nordletter' && 'edition' in entryData ? entryData.edition : undefined;
 const bridgyOmit = 'bridgyOmit' in entryData && entryData.bridgyOmit;
 const publishedDate = entryData?.created;
@@ -215,8 +219,15 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
         </div>
 
         <div class="mb-8">
+            {/* Frontmatter gallery (photo posts) — carousel when multiple */}
+            {galleryImages.length > 0 && !isShelfPost && (
+                <div class="mb-6">
+                    <PhotoCarousel images={galleryImages} title={title} />
+                </div>
+            )}
+
             {/* Hero image for non-shelf posts */}
-            {heroImage && !isShelfPost && (
+            {heroImage && !isShelfPost && galleryImages.length === 0 && (
                 <div class="mb-6">
                     <img
                         src={heroImage}

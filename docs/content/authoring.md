@@ -20,6 +20,7 @@ Follow this guide when adding or updating Markdown/MDX entries under `src/conten
 | `category` | Required | Must be one of `evergreen`, `blog`, `micro`, `photo`, `nordletter`, `story`, `poem`, `bookshelf`, `now`, or `til`. Categories drive navigation highlights, chip colors, and URLs.【F:src/content/config.ts†L13-L30】【F:src/components/navigation/MultiLevelNavigation.astro†L12-L94】 |
 | `tags` | Optional | Array of strings; powers tag pages and search weighting.【F:src/pages/search-index.json.ts†L12-L20】 |
 | `image` | Optional | Path or URL for hero/cover art. Required for some grid layouts. |
+| `images` | Optional | Photo posts only: array of gallery image URLs. Rendered as a carousel on the post page and used by the `/photos` grid; the body holds just the caption. |
 | `syndicationUrls` | Optional | Managed by the syndication workflow; manual entries should list canonical cross-post URLs.【F:src/content/config.ts†L31-L55】 |
 | Book-specific fields | Optional | `author`, `series`, `bookStatus`, `startedReading`, `finishedReading`, `bookRating`, `bookCover` drive bookshelf components.【F:src/content/config.ts†L23-L55】 |
 | Film-specific fields | Optional | `director`, `year`, `watchedDate`, `filmStatus`, `filmRating`, `filmCover` for `filmshelf` entries. |

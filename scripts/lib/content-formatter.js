@@ -448,10 +448,19 @@ export function formatContentForPlatform(post, platform) {
     content = content.substring(0, config.maxLength - 3) + '...';
   }
 
-  // Images to attach as native media (micro posts only for now)
+  // Images to attach as native media (micro and photo posts).
+  // Photo posts keep their gallery in frontmatter `images:`; micro posts
+  // embed markdown images in the body.
   let images = [];
-  if (category === 'micro') {
-    images = extractImages(post.body);
+  if (category === 'micro' || category === 'photo') {
+    if (Array.isArray(post.data.images) && post.data.images.length > 0) {
+      images = post.data.images.map((url) => ({
+        url: resolveImageUrl(String(url).trim()),
+        alt: post.data.title || ''
+      }));
+    } else {
+      images = extractImages(post.body);
+    }
     if (images.length === 0 && post.data.image) {
       images = [{ url: resolveImageUrl(post.data.image), alt: post.data.title || '' }];
     }

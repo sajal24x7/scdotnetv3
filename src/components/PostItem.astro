@@ -3,6 +3,7 @@ import TimeDisplay from './TimeDisplay.astro';
 import CategoryDisplay from './CategoryDisplay.astro';
 import Tag from './Tag.astro';
 import SyndicationLinks from './SyndicationLinks.astro';
+import { getPhotoImages } from '../utils/photos';
 
 interface Props {
   post: any;
@@ -22,10 +23,20 @@ const linkAriaLabel = postTitle
     ? `Open “${postTitle}”`
     : 'Open post';
 const postImage = typeof post.data.image === 'string' ? post.data.image : null;
-const showFeaturedImage = post.data.category === 'blog' && Boolean(postImage);
+// Photo posts keep their gallery in frontmatter — surface the first image in
+// the stream card, but not when the body already embeds one (legacy posts).
+const isPhoto = post.data.category === 'photo';
+const photoImages = isPhoto ? getPhotoImages(post.data, post.body) : [];
+const bodyHasImage = /!\[[^\]]*\]\(/.test(post.body || '');
+const featuredImage = isPhoto ? (bodyHasImage ? null : photoImages[0] ?? null) : postImage;
+const showFeaturedImage = Boolean(featuredImage) && (post.data.category === 'blog' || isPhoto);
 const postImageAlt = typeof post.data.imageAlt === 'string' && post.data.imageAlt
     ? post.data.imageAlt
     : postTitle || '';
+// Photo captions render inline like micro posts; long-form photo essays
+// (legacy posts) keep the description + read-more treatment instead.
+const isShortPhotoBody = (post.body || '').trim().length <= 600;
+const showBodyProse = showFullContent && (isMicro || (isPhoto && isShortPhotoBody));
 const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syndicationUrls : [];
 ---
 
@@ -59,10 +70,10 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
     </div>
   </header>
 
-  {showFeaturedImage && postImage && (
-    <figure class="post-item-media">
+  {showFeaturedImage && featuredImage && (
+    <figure class={`post-item-media${isPhoto ? ' post-item-media--photo' : ''}`}>
       <a href={postLink} class="post-item-media-link" aria-label={linkAriaLabel}>
-        <img src={postImage} alt={postImageAlt} width="1200" height="675" loading="lazy" decoding="async" />
+        <img src={featuredImage} alt={postImageAlt} width="1200" height="675" loading="lazy" decoding="async" />
       </a>
     </figure>
   )}
@@ -76,7 +87,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
   )}
 
   <div class="stream-body">
-    {isMicro && showFullContent ? (
+    {showBodyProse ? (
       <div
         class="prose dark:prose-invert stream-prose"
         set:html={post.renderedContent || post.body}
@@ -90,7 +101,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
     )}
   </div>
 
-  {!isMicro && showReadMore && (
+  {!isMicro && !showBodyProse && showReadMore && (
     <div class="stream-read-more">
       <a href={postLink} class="read-more-link link-hover">
         Read more →
@@ -248,6 +259,14 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
     display: block;
     object-fit: cover;
     aspect-ratio: 16 / 9;
+  }
+
+  /* Photo posts keep the picture's natural shape (capped so tall shots
+     don't dominate the stream) */
+  .post-item-media--photo img {
+    aspect-ratio: auto;
+    height: auto;
+    max-height: 32rem;
   }
 
   .stream-description {
