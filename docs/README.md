@@ -17,6 +17,7 @@ This directory centralizes all reference material for the Astro-powered build of
 | [Deployment](operations/deployment.md) | Local commands, build pipeline, and Cloudflare Pages configuration. | `package.json`, `cloudflare-pages.json`
 | [Nordletter Image Caching](operations/nordletter-image-cache.md) | Build-time download + manifest workflow for newsletter thumbnails and a template for future asset caches. | `scripts/cache-nordletter-images.js`, `src/components/NordletterGrid.astro`
 | [Syndication](operations/syndication.md) | POSSE workflow, rate limiting, and how URLs are persisted back to content. | `scripts/syndicate-content.js`
+| [TIL Vault Sync](operations/til-vault-sync.md) | Work-laptop Obsidian vault sync via the /write TIL tab: setup, sync semantics, and API surface. | `public/write/index.html`, `functions/api/til/sync.js`
 | [Contributor Notes](contributing/claude-guide.md) | Quick reference for automation assistants contributing to the project. | `docs/contributing/claude-guide.md`
 
 > **Planning artifacts** remain in the top-level `planning/` directory and are intentionally excluded from this reference library.

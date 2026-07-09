@@ -103,6 +103,9 @@
   body[data-mode="photo"] textarea { min-height: 20vh; }
   body[data-mode="photo"] .micro-only { display: none; }
   body[data-mode="micro"] .photo-only { display: none; }
+  #tilPanel { display: none; }
+  body[data-mode="til"] #composer > :not(#tilPanel) { display: none; }
+  body[data-mode="til"] #tilPanel { display: block; }
   .row-small input { font-size: 15px; padding: 9px 12px; }
   button.send {
     width: 100%;
@@ -195,6 +198,25 @@
     align-items: center;
     justify-content: center;
   }
+  .til-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .til-card h2 { margin: 0 0 6px; font-size: 16px; }
+  .til-card p { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
+  .til-card p code { font-size: 13px; }
+  #tilLog {
+    margin-top: 12px;
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  #tilLog.ok { color: var(--ok); }
+  #tilLog.err { color: var(--err); }
+  #tilLog a { color: inherit; }
 </style>
 </head>
 <body data-mode="micro">
@@ -202,14 +224,16 @@
   <div class="mode-toggle" role="group" aria-label="Post type">
     <button id="modeMicro" type="button" aria-pressed="true">Micro</button>
     <button id="modePhoto" type="button" aria-pressed="false">Photo</button>
+    <button id="modeTil" type="button" aria-pressed="false">TIL</button>
   </div>
   <button id="settingsBtn" type="button" aria-label="Token settings">token</button>
 </header>
 
 <section id="setup">
   <p>This page publishes straight to <code>src/content/micro/</code> (or
-     <code>src/content/photo/</code>) on <code>sajal24x7/scdotnetv3</code>. It
-     needs a GitHub token, stored only in this browser.</p>
+     <code>src/content/photo/</code>) on <code>sajal24x7/scdotnetv3</code>, and
+     syncs TIL vault zips into <code>til-sync/</code>. It needs a GitHub token,
+     stored only in this browser.</p>
   <ol>
     <li>GitHub → Settings → Developer settings → Fine-grained tokens → Generate new token</li>
     <li>Repository access: only <code>scdotnetv3</code></li>
@@ -236,8 +260,28 @@
   </div>
   <button class="send" id="send" type="button">Publish</button>
   <p id="status" role="status"></p>
+
+  <section id="tilPanel">
+    <div class="til-card">
+      <h2>Upload vault zip</h2>
+      <p>Zip the work vault folder and upload it. Markdown files land in
+         <code>til-sync/</code> on <code>sajal24x7/scdotnetv3</code> as one commit —
+         only new and changed notes, nothing is ever deleted. All GitHub calls run
+         server-side, so this works where <code>api.github.com</code> is blocked.</p>
+      <button class="send" id="tilUpload" type="button">Choose zip &amp; upload</button>
+      <input id="tilZip" type="file" accept=".zip,application/zip,application/x-zip-compressed" hidden>
+    </div>
+    <div class="til-card">
+      <h2>Download vault zip</h2>
+      <p>Fetches everything currently in <code>til-sync/</code> and saves it as a zip.
+         Unzip it over the work vault to bring it up to date.</p>
+      <button class="send" id="tilDownload" type="button">Download zip</button>
+    </div>
+    <p id="tilLog" role="status"></p>
+  </section>
 </main>
 
+<script src="/write/fflate.js"></script>
 <script>
 (() => {
   const OWNER = 'sajal24x7';
@@ -258,15 +302,17 @@
   let photos = [];
 
   function setMode(next) {
-    mode = next === 'photo' ? 'photo' : 'micro';
+    mode = next === 'photo' || next === 'til' ? next : 'micro';
     document.body.dataset.mode = mode;
     $('modeMicro').setAttribute('aria-pressed', String(mode === 'micro'));
     $('modePhoto').setAttribute('aria-pressed', String(mode === 'photo'));
+    $('modeTil').setAttribute('aria-pressed', String(mode === 'til'));
     $('body').placeholder = mode === 'photo' ? 'Caption (optional)…' : 'Write…';
-    document.title = mode === 'photo' ? 'Write · photo' : 'Write · micro';
+    document.title = mode === 'micro' ? 'Write · micro' : `Write · ${mode}`;
   }
   $('modeMicro').addEventListener('click', () => { setMode('micro'); saveDraft(); });
   $('modePhoto').addEventListener('click', () => { setMode('photo'); saveDraft(); });
+  $('modeTil').addEventListener('click', () => { setMode('til'); saveDraft(); });
 
   function renderPhotoStrip() {
     const strip = $('photoStrip');
@@ -579,6 +625,141 @@
       setStatus(`Failed: ${e.message} — your draft is still saved on this device.`, 'err');
     } finally {
       $('send').disabled = false;
+    }
+  });
+
+  // --- TIL vault sync --------------------------------------------------------
+  // The work network blocks api.github.com, so everything goes through
+  // /api/til/sync (a Pages Function that talks to GitHub with the same PAT).
+  // The zip is unpacked and rebuilt locally in the browser via fflate.
+  const TIL_API = '/api/til/sync';
+  const TIL_SKIP = /(^|\/)(\.obsidian|\.trash|__MACOSX)(\/|$)/i;
+
+  function tilLog(msg, cls) {
+    $('tilLog').innerHTML = msg;
+    $('tilLog').className = cls || '';
+  }
+
+  function tilAuthOrSetup() {
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (!token) showSetup(true);
+    return token;
+  }
+
+  async function tilApi(url, opts = {}) {
+    const token = localStorage.getItem(TOKEN_KEY);
+    const res = await fetch(url, {
+      ...opts,
+      headers: { Authorization: `Bearer ${token}`, ...(opts.headers || {}) },
+    });
+    if (!res.ok) {
+      const detail = (await res.json().catch(() => ({}))).error || `HTTP ${res.status}`;
+      throw new Error(detail);
+    }
+    return res;
+  }
+
+  $('tilUpload').addEventListener('click', () => {
+    if (!tilAuthOrSetup()) return;
+    $('tilZip').click();
+  });
+
+  $('tilZip').addEventListener('change', async () => {
+    const file = $('tilZip').files && $('tilZip').files[0];
+    $('tilZip').value = '';
+    if (!file) return;
+
+    $('tilUpload').disabled = true;
+    tilLog('Reading zip…');
+    try {
+      const bytes = new Uint8Array(await file.arrayBuffer());
+      const entries = fflate.unzipSync(bytes);
+
+      const decoder = new TextDecoder();
+      const byName = new Map();
+      const duplicates = [];
+      for (const [path, data] of Object.entries(entries)) {
+        if (path.endsWith('/')) continue;               // directory entry
+        if (TIL_SKIP.test(path)) continue;              // .obsidian, .trash, __MACOSX
+        const name = path.split('/').pop();
+        if (!name.endsWith('.md') || name.startsWith('.')) continue;
+        if (byName.has(name)) { duplicates.push(name); continue; } // first wins
+        byName.set(name, decoder.decode(data));
+      }
+
+      if (byName.size === 0) throw new Error('No .md files found in that zip.');
+
+      tilLog(`Syncing ${byName.size} notes…`);
+      const files = [...byName.entries()].map(([name, content]) => ({ name, content }));
+      const res = await tilApi(TIL_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ files }),
+      });
+      const result = await res.json();
+
+      const lines = [];
+      if (result.upToDate) {
+        lines.push(`Already up to date — ${result.unchanged} notes match the repo.`);
+      } else {
+        const parts = [];
+        if (result.added) parts.push(`${result.added} added`);
+        if (result.updated) parts.push(`${result.updated} updated`);
+        if (result.unchanged) parts.push(`${result.unchanged} unchanged`);
+        lines.push(`Synced: ${parts.join(', ')} · <a href="${result.commitUrl}">commit</a>`);
+      }
+      if (duplicates.length) {
+        lines.push(`Skipped ${duplicates.length} duplicate filename(s): ${duplicates.join(', ')}`);
+      }
+      if (result.missingFromZip && result.missingFromZip.length) {
+        lines.push(`${result.missingFromZip.length} repo note(s) not in this zip (kept, nothing deleted).`);
+      }
+      tilLog(lines.join('\n'), 'ok');
+    } catch (e) {
+      tilLog(`Upload failed: ${e.message}`, 'err');
+    } finally {
+      $('tilUpload').disabled = false;
+    }
+  });
+
+  $('tilDownload').addEventListener('click', async () => {
+    if (!tilAuthOrSetup()) return;
+
+    $('tilDownload').disabled = true;
+    tilLog('Fetching note list…');
+    try {
+      const { files } = await (await tilApi(TIL_API)).json();
+      if (!files.length) {
+        tilLog('Nothing in til-sync/ yet — upload a vault zip first.', 'err');
+        return;
+      }
+
+      const contents = {};
+      let done = 0;
+      const queue = [...files];
+      const workers = Array.from({ length: 6 }, async () => {
+        for (let f = queue.shift(); f; f = queue.shift()) {
+          const res = await tilApi(`${TIL_API}?path=${encodeURIComponent(f.name)}`);
+          contents[f.name] = new Uint8Array(await res.arrayBuffer());
+          tilLog(`Downloading… ${++done}/${files.length}`);
+        }
+      });
+      await Promise.all(workers);
+
+      const zipped = fflate.zipSync(contents, { level: 6 });
+      const blob = new Blob([zipped], { type: 'application/zip' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `til-sync-${new Date().toISOString().slice(0, 10)}.zip`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(a.href);
+      tilLog(`Downloaded ${files.length} notes.`, 'ok');
+    } catch (e) {
+      tilLog(`Download failed: ${e.message}`, 'err');
+    } finally {
+      $('tilDownload').disabled = false;
     }
   });
 
