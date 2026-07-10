@@ -38,11 +38,9 @@ const CATEGORY_CONFIG: Record<string, CategoryConfig> = {
 };
 
 const CATEGORY_ORDER = [
-    'stream',
     'blog',
     'micro',
     'photo',
-    'garden',
     'evergreen',
     'til',
     'bookshelf',
