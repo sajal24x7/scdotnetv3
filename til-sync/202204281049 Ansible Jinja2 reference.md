@@ -1,0 +1,21 @@
+---
+tags:
+  - ansible
+  - jinja
+aliases:
+category: til
+---
+
+# Filters - file
+basename
+
+win_basename
+
+win_splitdrive
+
+
+---
+references:
+1. [Using filters to manipulate data — Ansible Documentation](https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html?msclkid=0f1d143ec6c811ec8fcd74fde84f1fef)
+2. [Jinja | The Pallets Projects](https://palletsprojects.com/p/jinja/)
+3. [Jinja — Jinja Documentation (3.1.x) (palletsprojects.com)](https://jinja.palletsprojects.com/en/3.1.x/)

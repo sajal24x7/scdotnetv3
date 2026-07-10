@@ -1,0 +1,19 @@
+---
+tags:
+  - "#vmware"
+aliases:
+category: til
+---
+
+# Overview
+1. Verify plugin compatibility
+2. Backup
+3. Upgrade vCenter
+4. Upgrade ESXi
+5. Upgrade VMs
+
+---
+references:
+[vCenter Server Upgrade Options (vmware.com)](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vcenter.upgrade.doc/GUID-EB29D42E-7174-467C-AB40-DB37236FEAF5.html)
+[Overview of the vCenter Server Upgrade Process (vmware.com)](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vcenter.upgrade.doc/GUID-C5CBFB63-4E95-4143-BA89-89AA5D292C68.html#GUID-C5CBFB63-4E95-4143-BA89-89AA5D292C68)
+[VMware vCenter Server Versions and Build Numbers](https://knowledge.broadcom.com/external/article/326316/build-numbers-and-versions-of-vmware-vce.html)
