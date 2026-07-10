@@ -42,7 +42,7 @@ const displayLabel = `${prefix}${uppercase ? baseLabel.toUpperCase() : baseLabel
 ---
 
 {elementTag === 'button' ? (
-    <button type="button" class={classes} data-tag-filter={tag} {...rest}>
+    <button type="button" class={classes} data-tag-filter={tag} {...(rest as Record<string, any>)}>
         {displayLabel}
     </button>
 ) : elementTag === 'a' ? (
