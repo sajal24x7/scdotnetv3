@@ -29,6 +29,8 @@ export interface Backlink {
     description: string;
     category: string;
     created: Date;
+    /** Plain-text sentence surrounding the first mention of the link in the source post. */
+    snippet?: string;
 }
 
 interface BacklinkJson extends Omit<Backlink, 'created'> {
@@ -41,6 +43,12 @@ type BacklinkArtifact = Record<string, BacklinkJson[]>;
 const SITE_DOMAIN = 'sajalchoudhary.net';
 const DATA_DIRECTORY = path.join(process.cwd(), 'src', 'data');
 const CACHE_FILE = path.join(DATA_DIRECTORY, 'backlinks-index.json');
+
+// Bump when the artifact schema changes (e.g. new fields) so stale caches regenerate.
+const INDEX_VERSION = 2;
+
+const SNIPPET_MAX_LENGTH = 250;
+const SNIPPET_MIN_LENGTH = 20;
 
 let backlinkIndexPromise: Promise<BacklinkIndex> | null = null;
 
@@ -109,10 +117,15 @@ async function isCacheFresh(): Promise<boolean | undefined> {
         const data = await fs.readFile(CACHE_FILE, 'utf-8');
         const raw = JSON.parse(data) as Record<string, unknown>;
 
-        const meta = raw['_meta'] as { files?: string[] } | undefined;
+        const meta = raw['_meta'] as { files?: string[]; version?: number } | undefined;
         if (!meta || !Array.isArray(meta.files)) {
             // Cache has no manifest (old format) — treat as stale so it regenerates
             console.log('[Backlinks] Cache has no file manifest, treating as stale');
+            return false;
+        }
+
+        if (meta.version !== INDEX_VERSION) {
+            console.log('[Backlinks] Cache schema version mismatch, treating as stale');
             return false;
         }
 
@@ -196,6 +209,7 @@ async function writeBacklinkArtifact(index: BacklinkIndex): Promise<void> {
         const files = await getContentFileList();
         const output: Record<string, unknown> = {
             _meta: {
+                version: INDEX_VERSION,
                 files,
             },
             ...artifact,
@@ -263,19 +277,20 @@ async function buildBacklinkIndex(): Promise<BacklinkIndex> {
     for (const entry of entries) {
         const category = resolveCategory(entry);
         const sourceKey = `${category}/${entry.id}`;
-        const targets = collectBacklinkTargets(entry.body ?? '');
+        const body = entry.body ?? '';
+        const targets = collectBacklinkTargets(body);
 
         // Also collect wikilink targets and resolve them
-        for (const wikilinkTarget of collectWikilinkTargets(entry.body ?? '')) {
+        for (const [wikilinkTarget, position] of collectWikilinkTargets(body)) {
             const resolved =
                 wikilinkResolutionIndex.get(wikilinkTarget) ||
                 wikilinkResolutionIndex.get(wikilinkTarget.toLowerCase());
             if (resolved) {
-                targets.add(resolved);
+                recordTargetPosition(targets, resolved, position);
             }
         }
 
-        for (const targetKey of targets) {
+        for (const [targetKey, position] of targets) {
             if (targetKey === sourceKey) continue;
             if (!postIndex.has(targetKey)) continue;
 
@@ -289,7 +304,8 @@ async function buildBacklinkIndex(): Promise<BacklinkIndex> {
                 title: entry.data.title || 'Untitled',
                 description: entry.data.description || '',
                 category,
-                created: normalizeDate(entry.data.created)
+                created: normalizeDate(entry.data.created),
+                snippet: extractSnippet(body, position)
             });
         }
     }
@@ -301,37 +317,55 @@ async function buildBacklinkIndex(): Promise<BacklinkIndex> {
     return backlinkIndex;
 }
 
-function collectBacklinkTargets(content: string): Set<string> {
-    const hrefTargets = new Set<string>();
+/**
+ * Record the earliest position at which a target is mentioned in the content.
+ * Reference-style link definitions carry no prose context, so any position
+ * from real usage (or even a later definition) never overrides an earlier one.
+ */
+function recordTargetPosition(targets: Map<string, number>, key: string, position: number): void {
+    const existing = targets.get(key);
+    if (existing === undefined || position < existing) {
+        targets.set(key, position);
+    }
+}
+
+function collectBacklinkTargets(content: string): Map<string, number> {
+    const hrefPositions = new Map<string, number>();
+    const record = (href: string, position: number) => {
+        const existing = hrefPositions.get(href);
+        if (existing === undefined || position < existing) {
+            hrefPositions.set(href, position);
+        }
+    };
 
     const inlineLinkRegex = /\[[^\]]+\]\(([^)]+)\)/g;
     let inlineMatch: RegExpExecArray | null;
     while ((inlineMatch = inlineLinkRegex.exec(content)) !== null) {
-        hrefTargets.add(inlineMatch[1]);
+        record(inlineMatch[1], inlineMatch.index);
     }
 
     const htmlLinkRegex = /<a\s+[^>]*href=["']([^"']+)["']/gi;
     let htmlMatch: RegExpExecArray | null;
     while ((htmlMatch = htmlLinkRegex.exec(content)) !== null) {
-        hrefTargets.add(htmlMatch[1]);
+        record(htmlMatch[1], htmlMatch.index);
     }
 
     const referenceLinkRegex = /^\s*\[[^\]]+\]:\s*(\S+)/gm;
     let referenceMatch: RegExpExecArray | null;
     while ((referenceMatch = referenceLinkRegex.exec(content)) !== null) {
-        hrefTargets.add(referenceMatch[1]);
+        record(referenceMatch[1], referenceMatch.index);
     }
 
     const absoluteUrlRegex = /https?:\/\/[^\s)]+/gi;
     let absoluteMatch: RegExpExecArray | null;
     while ((absoluteMatch = absoluteUrlRegex.exec(content)) !== null) {
-        hrefTargets.add(absoluteMatch[0]);
+        record(absoluteMatch[0], absoluteMatch.index);
     }
 
     const protocolRelativeRegex = /(?:^|[^\w])\/\/[^\s)]+/gi;
     let protocolMatch: RegExpExecArray | null;
     while ((protocolMatch = protocolRelativeRegex.exec(content)) !== null) {
-        hrefTargets.add(protocolMatch[0].trim());
+        record(protocolMatch[0].trim(), protocolMatch.index);
     }
 
     const domainOnlyRegex = /(?:^|[^\w.])(www\.)?sajalchoudhary\.net[^\s)]*/gi;
@@ -339,15 +373,15 @@ function collectBacklinkTargets(content: string): Set<string> {
     while ((domainMatch = domainOnlyRegex.exec(content)) !== null) {
         const candidate = domainMatch[0].trim().replace(/^[^\w]*(?=sajalchoudhary\.net|www\.)/, '');
         if (candidate) {
-            hrefTargets.add(candidate);
+            record(candidate, domainMatch.index);
         }
     }
 
-    const normalizedTargets = new Set<string>();
-    for (const href of hrefTargets) {
+    const normalizedTargets = new Map<string, number>();
+    for (const [href, position] of hrefPositions) {
         const key = normalizeHrefToKey(href);
         if (key) {
-            normalizedTargets.add(key);
+            recordTargetPosition(normalizedTargets, key, position);
         }
     }
 
@@ -355,17 +389,97 @@ function collectBacklinkTargets(content: string): Set<string> {
 }
 
 /**
- * Extract raw wikilink targets from content body.
- * Returns the target portion of [[target]] and [[target|display]] syntax.
+ * Extract raw wikilink targets from content body along with the position of
+ * their first mention. Returns the target portion of [[target]] and
+ * [[target|display]] syntax.
  */
-function collectWikilinkTargets(content: string): Set<string> {
-    const targets = new Set<string>();
+function collectWikilinkTargets(content: string): Map<string, number> {
+    const targets = new Map<string, number>();
     const wikilinkRegex = /\[\[([^\]|]+?)(?:\|[^\]]+?)?\]\]/g;
     let match: RegExpExecArray | null;
     while ((match = wikilinkRegex.exec(content)) !== null) {
-        targets.add(match[1].trim());
+        recordTargetPosition(targets, match[1].trim(), match.index);
     }
     return targets;
+}
+
+/**
+ * Extract the sentence surrounding the link at `position` as plain text,
+ * clamped to SNIPPET_MAX_LENGTH. Returns undefined when no usable prose
+ * exists around the link (e.g. reference-link definitions or bare-URL lines).
+ */
+function extractSnippet(content: string, position: number): string | undefined {
+    if (position < 0 || position >= content.length) {
+        return undefined;
+    }
+
+    // Reference-link definition lines ("[ref]: /path/") carry no prose context.
+    const lineStart = content.lastIndexOf('\n', position - 1) + 1;
+    let lineEnd = content.indexOf('\n', position);
+    if (lineEnd === -1) {
+        lineEnd = content.length;
+    }
+    const line = content.slice(lineStart, lineEnd);
+    if (/^\s*\[[^\]]+\]:\s/.test(line)) {
+        return undefined;
+    }
+
+    // Bound the snippet to the containing line: content is authored
+    // Obsidian-style with one paragraph or list item per line, so a line is a
+    // logical unit and crossing it merges unrelated bullets into one snippet.
+
+    // Walk back to the previous sentence terminator within the line.
+    let sentenceStart = lineStart;
+    for (let i = position - 1; i > lineStart; i--) {
+        if ('.!?'.includes(content[i]) && /\s/.test(content[i + 1] ?? ' ')) {
+            sentenceStart = i + 1;
+            break;
+        }
+    }
+
+    // Walk forward to the next sentence terminator.
+    let sentenceEnd = lineEnd;
+    for (let i = position; i < lineEnd; i++) {
+        if ('.!?'.includes(content[i]) && /\s/.test(content[i + 1] ?? ' ')) {
+            sentenceEnd = i + 1;
+            break;
+        }
+    }
+
+    const cleaned = markdownToPlainText(content.slice(sentenceStart, sentenceEnd));
+    if (cleaned.length < SNIPPET_MIN_LENGTH) {
+        return undefined;
+    }
+
+    if (cleaned.length <= SNIPPET_MAX_LENGTH) {
+        return cleaned;
+    }
+
+    const cutoff = cleaned.lastIndexOf(' ', SNIPPET_MAX_LENGTH - 1);
+    return `${cleaned.slice(0, cutoff > 0 ? cutoff : SNIPPET_MAX_LENGTH - 1)}…`;
+}
+
+/**
+ * Reduce a markdown fragment to readable plain text for snippet display.
+ */
+function markdownToPlainText(text: string): string {
+    return text
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+        .replace(/\[\[([^\]|]+?)\|([^\]]+?)\]\]/g, '$2')
+        // Bare wikilinks may point at Obsidian filename stems like
+        // "202404011327 Entra ID" — drop the timestamp prefix for display.
+        .replace(/\[\[(?:\d{10,14}\s+)?([^\]]+?)\]\]/g, '$1')
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+        .replace(/\[([^\]]+)\]\[[^\]]*\]/g, '$1')
+        .replace(/<[^>]+>/g, '')
+        .replace(/`([^`]*)`/g, '$1')
+        .replace(/(\*\*|__)(.*?)\1/g, '$2')
+        .replace(/(\*|_)(.*?)\1/g, '$2')
+        .replace(/^#{1,6}\s+/gm, '')
+        .replace(/^\s*(?:[-*+]|\d+[.)])\s+/gm, '')
+        .replace(/^\s*>\s*/gm, '')
+        .replace(/\s+/g, ' ')
+        .trim();
 }
 
 function normalizeHrefToKey(href: string): string | null {
