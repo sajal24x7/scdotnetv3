@@ -44,7 +44,17 @@ the FOUT window.
 **Verify:** build; Network tab shows same-origin `/_astro/*.woff2` requests, zero requests
 to `fonts.googleapis.com`/`gstatic.com`; headings render in Merriweather.
 
-## 4.2 Background randomizer: eliminate the flash, keep the feature
+## 4.2 Background randomizer: eliminate the flash, keep the feature — ✅ done (2026-07-10)
+
+Implemented as specified, with one deviation: used separate `--color-bg-1`/`--color-bg-2`
+custom properties instead of reusing `--color-bg`, since `--color-bg` is also consumed
+elsewhere (`.skip-link` text color, unused `--color-bgLight`/`--color-bgDark` tokens) and
+those shouldn't track the random per-session palette. Both scripts merged into one
+`is:inline` block in `Layout.astro`, gradient + noise-texture overlay moved into
+`global.css` (`body` / `.dark body` rules), `public/bg-color-randomizer.js` deleted.
+Verified with Playwright: no request to the old script, `--color-bg-1/2` set before first
+paint, values stable across in-tab navigation (sessionStorage), body renders the gradient
+purely from CSS.
 
 **File:** `public/bg-color-randomizer.js`, loaded from `Layout.astro` head as a blocking
 external script but internally waiting for `DOMContentLoaded`.
@@ -87,7 +97,20 @@ document.documentElement.style.setProperty('--color-bg', palette[Number(pick)]);
 already has the tinted background; navigating between pages keeps the same color within a
 tab; opening a new tab may differ.
 
-## 4.3 Post hero images bypass the image pipeline
+## 4.3 Post hero images bypass the image pipeline — ✅ done (2026-07-10, simplest path)
+
+Checked frontmatter across all content: every `image` value in the collection is a remote
+`http(s)://` URL — 100%, none local — and a large share point at
+`storage.sajalchoudhary.net`, the same host the build log already flags for persistent
+403s when Astro's remote-image optimizer tries to fetch it (see "Known issue" in
+`build-audit-astro-updates.md`). Routing ~150+ posts' hero images through `astro:assets`
+`<Image>`/`inferRemoteSize` would very likely hit that same failure mode at build time, so
+took the brief's explicit fallback instead: dropped the hard-coded `width="1200"
+height="630"` (which asserted a pixel size no actual source image has) and replaced it
+with a real CSS `aspect-[1200/630]` utility on the `<img>`, preserving the exact same
+rendered box/crop behavior via `object-cover` without lying about intrinsic dimensions.
+Verified with Playwright: the rendered box now reports `aspect-ratio: 1200 / 630` as a
+CSS property (not a false HTML attribute), same visual size as before.
 
 **File:** `src/components/layout/PostLayout.astro` (~line 219): non-shelf hero images use
 a raw `<img src={heroImage} width="1200" height="630">` with hard-coded (usually wrong)
@@ -163,13 +186,11 @@ Empty output = no broken links.
 
 </details>
 
-## 4.5 Small head cleanups
+## 4.5 Small head cleanups — ✅ done (2026-07-10)
 
-- Remove `<link rel="preload" href="/logo/logo-square-v2.svg" as="image" />` from
-  `Layout.astro` — the logo is a tiny favicon SVG, not an LCP element; the preload
-  competes with real critical resources.
-- The theme + background scripts should be one inline script (see 4.2), removing one
-  network request from every page.
+- Removed the `<link rel="preload" href="/logo/logo-square-v2.svg" as="image" />` from
+  `Layout.astro`.
+- Theme + background scripts merged into one inline script (see 4.2).
 
 ## Verification (whole brief)
 
