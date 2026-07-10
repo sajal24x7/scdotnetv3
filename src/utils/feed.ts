@@ -156,12 +156,15 @@ function metaHtml(post: Post, extra = ''): string {
   const created = postDate(post);
   const date = effectiveDate(post);
   const isUpdate = date.getTime() - created.getTime() > UPDATED_LABEL_THRESHOLD_MS;
-  const dateText = `${isUpdate ? 'updated ' : ''}${formatRelativeDate(date)}`;
   const tooltip = isUpdate
     ? `Published ${dayLabel(created)} · Updated ${dayLabel(date)}`
     : dayLabel(created);
+  // Live relative timestamp: the <relative-time> element (shared with the
+  // stream page) re-renders client-side, so the label stays current instead of
+  // freezing at build time. The build-time string inside is the no-JS fallback.
+  const dateHtml = `${isUpdate ? 'updated ' : ''}<relative-time datetime="${date.toISOString()}">${escapeHtml(formatRelativeDate(date))}</relative-time>`;
   // The date doubles as the permalink — the only link to the post for untitled entries like micro
-  return `<div class="feed-entry__meta"><span class="card-chip">${escapeHtml(label)}</span><a class="card-chip feed-entry__date" title="${escapeHtml(tooltip)}" href="${postLink(post)}">${escapeHtml(dateText)}</a>${extra}</div>`;
+  return `<div class="feed-entry__meta"><span class="card-chip">${escapeHtml(label)}</span><a class="card-chip feed-entry__date" title="${escapeHtml(tooltip)}" href="${postLink(post)}">${dateHtml}</a>${extra}</div>`;
 }
 
 function titleHtml(post: Post, title?: string): string {

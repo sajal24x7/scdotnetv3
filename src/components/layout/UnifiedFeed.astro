@@ -491,6 +491,11 @@ const rows = entries.map((entry) => {
 </style>
 
 <script>
+    // Feed entries timestamp themselves with the same <relative-time> element
+    // as the stream page, so the labels tick client-side instead of freezing
+    // at build time.
+    import '../../scripts/relativeTime';
+
     interface FeedEntryData {
         html: string;
         group: string;
