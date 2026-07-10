@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { tag, transformedPosts, categorySlices, totalCount } = Astro.props as TagPageData;
 const allPosts = await getAllPosts();
 
-const pageTitle = `Posts tagged "${tag}" - Sajal Choudhary`;
+const pageTitle = `Posts tagged "${tag}"`;
 const pageDescription = `All posts tagged with "${tag}"`;
 const currentPage = `/tags/${tag}/`;
 ---

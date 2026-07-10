@@ -10,6 +10,14 @@ interface Props {
         title: string;
         description?: string;
         currentPage: string;
+        /** OpenGraph type; pass 'article' from post routes */
+        ogType?: 'website' | 'article';
+        /** Absolute or root-relative URL to a share image */
+        ogImage?: string;
+        /** ISO date for article:published_time (post pages) */
+        publishedTime?: Date;
+        /** Set false on pages that should not be indexed */
+        index?: boolean;
         pageWrapper?: {
                 as?: keyof HTMLElementTagNameMap;
                 maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
@@ -34,9 +42,19 @@ const {
         title,
         description,
         currentPage,
+        ogType = 'website',
+        ogImage,
+        publishedTime,
+        index = true,
         pageWrapper = {},
         enableLinkHoverEffect = false,
 } = Astro.props as Props;
+
+const SITE_NAME = 'Sajal Choudhary';
+const fullTitle = title === SITE_NAME ? title : `${title} — ${SITE_NAME}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const metaDescription = description || 'Sajal Choudhary — platform engineer and writer in Finland. Digital garden, blog, newsletter, and bookshelf.';
+const shareImage = new URL(ogImage ?? '/logo/logo-square-v2.svg', Astro.site).href;
 
 const gridConfig = pageWrapper.grid ?? {};
 
@@ -65,19 +83,34 @@ const containerPadding = pageWrapper.padding ?? 'none';
                 <meta charset="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <link rel="icon" type="image/svg+xml" href="/logo/logo-square-v2.svg" />
-                <title>{title}</title>
-                <meta name="description" content={description || "A personal digital garden and blog"} />
+                <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon-32.png" />
+                <link rel="apple-touch-icon" href="/logo/apple-touch-icon.png" />
+                <title>{fullTitle}</title>
+                <meta name="description" content={metaDescription} />
+                <link rel="canonical" href={canonicalUrl} />
+                {!index && <meta name="robots" content="noindex, follow" />}
 		<meta name="generator" content={Astro.generator} />
-		
+
 		<!-- Preload logo image -->
 		<link rel="preload" href="/logo/logo-square-v2.svg" as="image" />
-		
+
 		<!-- Open Graph / Social Media -->
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description || "A personal digital garden and blog"} />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={Astro.url} />
-		
+		<meta property="og:site_name" content={SITE_NAME} />
+		<meta property="og:title" content={fullTitle} />
+		<meta property="og:description" content={metaDescription} />
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={shareImage} />
+		{publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+
+		<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+		<meta name="twitter:title" content={fullTitle} />
+		<meta name="twitter:description" content={metaDescription} />
+		<meta name="twitter:image" content={shareImage} />
+
+		<link rel="alternate" type="application/rss+xml" title="Sajal Choudhary — everything" href="/rss.xml" />
+		<link rel="alternate" type="application/rss+xml" title="Nordletter" href="/nordletter/rss.xml" />
+
 		<!-- Fonts are self-hosted via @fontsource-variable (imported in global.css) -->
 
 

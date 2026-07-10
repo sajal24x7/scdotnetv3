@@ -46,6 +46,9 @@ const pageTitle = entry.data?.title ? `${entry.data.title} - ${categoryLabel}` :
   title={pageTitle}
   description={entry.data?.description}
   currentPage={`/${category}/${slug}/`}
+  ogType="article"
+  ogImage={'image' in entry.data && entry.data.image ? entry.data.image : undefined}
+  publishedTime={entry.data?.created}
   enableLinkHoverEffect
   pageWrapper={{ className: 'grid-span-8 grid-start-3', grid: { padding: 'narrow' } }}
 >

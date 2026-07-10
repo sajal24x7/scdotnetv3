@@ -47,7 +47,11 @@ export default defineConfig({
   integrations: [
     react(),
     mdx(),
-    sitemap(),
+    sitemap({
+      filter: (page) =>
+        !page.includes('/navigation-demo/') &&
+        !page.includes('/search/'),
+    }),
   ],
   markdown: {
     remarkPlugins: [remarkWikilinks, remarkBreaks],

@@ -36,7 +36,7 @@ const includeDetails = slice.includeLabels.length > 1
     ? ` (${slice.includeLabels.join(', ')})`
     : '';
 const itemLabel = slice.count === 1 ? 'item' : 'items';
-const pageTitle = `${slice.label} posts tagged "${tag}" - Sajal Choudhary`;
+const pageTitle = `${slice.label} posts tagged "${tag}"`;
 const pageDescription = `${slice.count} ${itemLabel} tagged with "${tag}" in ${slice.label}${includeDetails}.`;
 const currentPage = `/tags/${tag}/${activeCategory}/`;
 ---
