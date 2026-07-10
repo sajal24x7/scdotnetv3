@@ -1,5 +1,6 @@
 ---
-import Card from './Card.astro';
+import CategoryDisplay from './CategoryDisplay.astro';
+import TimeDisplay from './TimeDisplay.astro';
 
 interface Props {
     backlinks: {
@@ -8,6 +9,7 @@ interface Props {
         description: string;
         category: string;
         created: Date;
+        snippet?: string;
     }[];
 }
 
@@ -15,8 +17,7 @@ type BacklinkItem = Props['backlinks'][number];
 
 interface NormalizedBacklink extends BacklinkItem {
     link: string;
-    description: string;
-    category: string;
+    context: string;
 }
 
 const { backlinks } = Astro.props;
@@ -24,12 +25,15 @@ const normalizedBacklinks: NormalizedBacklink[] = backlinks.map((backlink) => {
     const category = backlink.category && backlink.category.trim().length > 0 ? backlink.category : 'blog';
     const description = backlink.description?.trim() ?? '';
     const slug = backlink.slug?.trim() ?? '';
+    // Prefer the sentence the link appears in; fall back to the note's description.
+    const context = backlink.snippet?.trim() || description;
 
     if (slug.startsWith('http')) {
         return {
             ...backlink,
             category,
             description,
+            context,
             link: slug
         };
     }
@@ -42,33 +46,39 @@ const normalizedBacklinks: NormalizedBacklink[] = backlinks.map((backlink) => {
         ...backlink,
         category,
         description,
+        context,
         link
     };
 });
 
-const headingId = `backlinks-${normalizedBacklinks.length}`;
+const count = normalizedBacklinks.length;
+const countText = count === 1 ? '1 note leads here' : `${count} notes lead here`;
 ---
 
-{normalizedBacklinks.length > 0 && (
-    <section class="backlinks" aria-labelledby={headingId}>
-        <div class="backlinks__inner">
-            <h3 id={headingId} class="backlinks__heading">
-                {normalizedBacklinks.length} Backlink{normalizedBacklinks.length === 1 ? '' : 's'}
-            </h3>
-            <div class="backlinks__grid">
-                {normalizedBacklinks.map((backlink) => (
-                    <div class="backlinks__card">
-                        <Card
-                            title={backlink.title}
-                            description={backlink.description}
-                            created={backlink.created}
-                            category={backlink.category}
-                            link={backlink.link}
-                        />
+{count > 0 && (
+    <section class="backlinks" aria-labelledby="backlinks-heading">
+        <header class="backlinks__header">
+            <h3 id="backlinks-heading" class="backlinks__heading">Paths into this note</h3>
+            <p class="backlinks__count">{countText}</p>
+        </header>
+        <ul class="backlinks__list">
+            {normalizedBacklinks.map((backlink) => (
+                <li class="backlinks__item">
+                    <div class="backlinks__item-header">
+                        <a href={backlink.link} class="backlinks__title link-hover">
+                            {backlink.title}
+                        </a>
+                        <span class="backlinks__meta">
+                            <CategoryDisplay category={backlink.category} className="backlinks__category" />
+                            <TimeDisplay date={backlink.created} category={backlink.category} className="backlinks__date" />
+                        </span>
                     </div>
-                ))}
-            </div>
-        </div>
+                    {backlink.context && (
+                        <p class="backlinks__context">{backlink.context}</p>
+                    )}
+                </li>
+            ))}
+        </ul>
     </section>
 )}
 
@@ -79,14 +89,12 @@ const headingId = `backlinks-${normalizedBacklinks.length}`;
         border-top: 1px solid rgb(var(--color-border));
     }
 
-    :global(.dark) .backlinks {
-        border-top-color: rgb(var(--color-border));
-    }
-
-    .backlinks__inner {
+    .backlinks__header {
         display: flex;
-        flex-direction: column;
-        gap: clamp(1.5rem, 3vw, 2rem);
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.375rem 0.75rem;
+        margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
     }
 
     .backlinks__heading {
@@ -96,24 +104,61 @@ const headingId = `backlinks-${normalizedBacklinks.length}`;
         margin: 0;
     }
 
-    .backlinks__grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: clamp(0.75rem, 2.5vw, 1.5rem);
+    .backlinks__count {
+        font-size: 0.875rem;
+        color: rgb(var(--color-text-secondary));
+        margin: 0;
     }
 
-    @media (min-width: 48rem) {
-        .backlinks__grid {
-            grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-        }
-    }
-
-    .backlinks__card {
+    .backlinks__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
         display: flex;
-        height: 100%;
+        flex-direction: column;
+        gap: clamp(1.25rem, 3vw, 1.75rem);
     }
 
-    .backlinks__card :global(.card) {
-        width: 100%;
+    .backlinks__item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.375rem;
+        max-width: 42rem;
+    }
+
+    .backlinks__item-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.25rem 0.75rem;
+    }
+
+    .backlinks__title {
+        font-weight: 600;
+        color: rgb(var(--color-text-primary));
+        text-decoration: none;
+    }
+
+    .backlinks__title:hover,
+    .backlinks__title:focus-visible {
+        color: rgb(var(--color-accent));
+    }
+
+    .backlinks__meta {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: rgb(var(--color-text-secondary));
+        white-space: nowrap;
+    }
+
+    .backlinks__context {
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: rgb(var(--color-text-secondary));
+        margin: 0;
+        border-left: 2px solid rgb(var(--color-border));
+        padding-left: 0.875rem;
     }
 </style>

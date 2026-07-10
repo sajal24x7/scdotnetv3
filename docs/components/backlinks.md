@@ -1,23 +1,25 @@
 # Backlinks System
 
-This site surfaces internal references at the end of every long-form post so readers can discover related entries. The workflow combines a cached build-time index with a presentational Astro component.
+This site surfaces internal references at the end of every long-form post — rendered as a "Paths into this note" section — so readers can discover related entries and see how notes interconnect. The workflow combines a cached build-time index with a presentational Astro component.
 
 ## Data Pipeline
 
-1. **Path discovery** – `src/pages/[...slug].astro` resolves the requested category/slug pair during `getStaticPaths` and uses it as the lookup key for backlinks.【F:src/pages/[...slug].astro†L3-L46】
-2. **Index lookup** – `findBacklinksComprehensive()` in `src/utils/backlinks.ts` loads `src/data/backlinks-index.json` if it exists. When the artifact is missing or `REGENERATE_BACKLINKS=true`, it regenerates the cache by scanning every year collection discovered via `getYearDirectories()`.【F:src/utils/backlinks.ts†L33-L189】
-3. **Target normalization** – Markdown links are normalized to canonical internal paths (host stripped, query/hash removed) before being stored. The helper deduplicates references and sorts them by publication date.【F:src/utils/backlinks.ts†L191-L313】
-4. **Prop wiring** – The resulting array is passed to `PostLayout.astro`, which forwards it to the `Backlinks` UI fragment once the main article body renders.【F:src/components/layout/PostLayout.astro†L106-L132】【F:src/components/Backlinks.astro†L5-L139】
+1. **Path discovery** – `src/pages/[...slug].astro` resolves the requested category/slug pair during `getStaticPaths` and uses it as the lookup key for backlinks.
+2. **Index lookup** – `findBacklinksComprehensive()` in `src/utils/backlinks.ts` loads `src/data/backlinks-index.json` if it exists. When the artifact is missing, stale, or `REGENERATE_BACKLINKS=true`, it regenerates the cache by scanning every content collection.
+3. **Target normalization** – Markdown links, HTML links, and Obsidian wikilinks are normalized to canonical internal paths (host stripped, query/hash removed) before being stored. The helper deduplicates references and sorts them by publication date.
+4. **Snippet extraction** – For each link, the indexer records the position of its first mention and extracts the surrounding sentence as a plain-text `snippet` (markdown syntax stripped, clamped to 250 characters). Snippets are bounded to the containing line because content is authored Obsidian-style (one paragraph or list item per line). Snippets shorter than 20 characters, or links that only appear in reference-style definitions, are dropped so the UI can fall back to the target note's description.
+5. **Prop wiring** – The resulting array is passed to `PostLayout.astro` (and `PhotoPostLayout.astro`), which forwards it to the `Backlinks` UI fragment once the main article body renders.
 
-The cached JSON artifact is safe to commit and allows incremental builds to resolve backlinks without rescanning every post. The system automatically detects when content files have been modified and regenerates the cache as needed. You can also force regeneration by setting `REGENERATE_BACKLINKS=true`.
+The cached JSON artifact is safe to commit and allows incremental builds to resolve backlinks without rescanning every post. The `_meta` block stores a file manifest plus a schema `version`; the cache regenerates automatically when content files change or the schema version bumps (bump `INDEX_VERSION` in `src/utils/backlinks.ts` whenever the artifact shape changes). You can also force regeneration by setting `REGENERATE_BACKLINKS=true`.
 
 ## Rendering Conventions
 
-`src/components/Backlinks.astro` now reuses the shared `Card` component so backlink previews inherit the garden grid styling:
+`src/components/Backlinks.astro` renders a title-first list under the heading "Paths into this note", with a subtitle counting how many notes lead here:
 
-- Each backlink is normalized before rendering—empty descriptions collapse to nothing, missing categories fall back to `blog`, and internal slugs are rewritten to canonical `/category/slug/` paths so the cards behave consistently across evergreen, garden, and Nordletter entries.【F:src/components/Backlinks.astro†L15-L41】
-- Category chips pass through `CategoryDisplay`, which converts the raw key into the human-friendly label defined in the tagging utilities (for example, `evergreen` → `Evergreen`, `nordletter` → `Nordletter`).【F:src/components/CategoryDisplay.astro†L1-L22】【F:src/utils/tagPages.ts†L179-L200】【F:src/styles/global.css†L500-L537】
-- The section retains the top border divider so the backlink grid separates from the post metadata while responding to the card hover affordances from the shared styles.【F:src/components/Backlinks.astro†L43-L97】
+- Each entry shows the linking note's title (linked), a category chip and date on the same line, and beneath it the snippet — the sentence in which the link appears — as quieter, left-ruled text. When no snippet survived extraction, the entry falls back to the linking note's `description`.
+- Each backlink is normalized before rendering—empty descriptions collapse to nothing, missing categories fall back to `blog`, and internal slugs are rewritten to canonical `/category/slug/` paths so entries behave consistently across evergreen, garden, and Nordletter entries.
+- Category chips pass through `CategoryDisplay`, which converts the raw key into the human-friendly label defined in the tagging utilities (for example, `evergreen` → `Evergreen`, `nordletter` → `Nordletter`); dates pass through `TimeDisplay`, which uses relative time for garden categories.
+- The section retains the top border divider so it separates from the post metadata.
 
 The component only renders when the backlink array is non-empty to avoid empty headings.
 
