@@ -198,9 +198,24 @@ const showTertiaryNav = activeSubsection === '/shelf/';
           ))}
         </nav>
 
-        <!-- Social Links -->
-        <div class="header-socials">
+        <!-- Social Links + Theme Toggle -->
+        <div class="header-socials flex items-center gap-4">
           <SocialLinks layout="horizontal" size="sm" />
+          <button
+            type="button"
+            id="theme-toggle"
+            aria-label="Toggle color theme"
+            aria-pressed="false"
+            class="theme-toggle-btn group flex items-center transition-transform hover:scale-105 text-gray-700 dark:text-gray-300"
+          >
+            <svg class="icon-sun h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <svg class="icon-moon h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.354 15.354A9 9 0 0 1 8.646 3.646 9.003 9.003 0 1 0 20.354 15.354z"></path>
+            </svg>
+          </button>
         </div>
 
         <!-- Secondary Navigation Row (persistent for About, Garden and Stream sections) -->
@@ -277,6 +292,18 @@ const showTertiaryNav = activeSubsection === '/shelf/';
 
 <script type="module" src={multiLevelNavigationIslandScript}></script>
 
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.setAttribute('aria-pressed', String(document.documentElement.classList.contains('dark')));
+    btn.addEventListener('click', function () {
+      var isDark = window.toggleSiteTheme();
+      btn.setAttribute('aria-pressed', String(isDark));
+    });
+  })();
+</script>
+
 <style>
   /* Guardian-style typography */
   .font-serif {
@@ -349,6 +376,25 @@ const showTertiaryNav = activeSubsection === '/shelf/';
   
   .header-socials {
     flex-shrink: 0;
+  }
+
+  .theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .icon-moon {
+    display: none;
+  }
+
+  :global(html.dark) .icon-sun {
+    display: none;
+  }
+
+  :global(html.dark) .icon-moon {
+    display: block;
   }
   
   /* Primary Navigation Row */
