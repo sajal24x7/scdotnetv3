@@ -194,7 +194,7 @@ const normalizeBookStatus = (status?: string | null) => {
                 const key = entry.post?.id ?? entry.showSlug ?? `${year}-${index}`;
 
                 return (
-                  <div key={key} class={`bookshelf-year__book ${gridClasses}`}>
+                  <div class={`bookshelf-year__book ${gridClasses}`}>
                     {entry.type === 'book' && entry.post && (
                       <BookshelfCard
                         {...entry.post.data}

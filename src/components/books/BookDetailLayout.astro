@@ -1,5 +1,6 @@
 ---
-import { Image, type ImageMetadata } from 'astro:assets';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 
 interface MetadataItem {
     label: string;
@@ -27,7 +28,7 @@ const { coverImage, coverAlt, title, authors, kicker, metadata = [] } = Astro.pr
                 <div class="book-detail__metadata">
                     <dl class="book-detail__metadata-list">
                         {metadata.map((item) => (
-                            <div class="book-detail__metadata-row" key={item.label}>
+                            <div class="book-detail__metadata-row">
                                 <dt class="book-detail__metadata-label">{item.label}</dt>
                                 <dd class="book-detail__metadata-value">
                                     {item.href ? (

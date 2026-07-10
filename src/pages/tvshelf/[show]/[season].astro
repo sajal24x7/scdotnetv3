@@ -30,14 +30,13 @@ export async function getStaticPaths() {
     for (const [showTitle, seasons] of showMap.entries()) {
         const sortedSeasons = [...seasons].sort((a, b) => (a.data.season ?? 1) - (b.data.season ?? 1));
         // Derive show slug from the first season's slug (e.g. "glory" from "glory/s1")
-        const firstSlug = sortedSeasons[0]?.data.slug ?? '';
+        const firstSlug = sortedSeasons[0]?.id ?? '';
         const showSlug = firstSlug.split('/')[0] || slugify(showTitle);
 
         for (const season of seasons) {
             // Posts without season metadata are limited series — no season subpage.
             if (season.data.season === undefined) continue;
-            const rawSlug = season.data.slug ?? '';
-            const parts = rawSlug.split('/');
+            const parts = season.id.split('/');
             const seasonNum = season.data.season;
             const seasonSlug = parts[1] || `s${seasonNum}`;
             paths.push({

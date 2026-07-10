@@ -8,7 +8,7 @@ This directory centralizes all reference material for the Astro-powered build of
 | [Content Lifecycle](architecture/content-lifecycle.md) | Details on frontmatter schemas, year-based collections, indexing, and backlinks. | `src/content/config.ts`, `src/utils/backlinks.ts`
 | [Design System](design/system.md) | Documentation for typography, grid utilities (twelve-column and ten-column), chip patterns, and responsive rules. | `src/styles/global.css`
 | [Navigation](components/navigation.md) | Behavior of the Guardian-inspired multi-level navigation and header search affordances. | `src/components/navigation/*.astro`
-| [Search Modal](components/search.md) | Search index generation, lazy island loading, and scoring heuristics. | `src/pages/search-index.json.ts`, `src/components/islands/search-modal-island.ts`
+| [Search](components/search.md) | Pagefind-backed search page: index generation and query handling. | `src/pages/search.astro`
 | [Backlinks](components/backlinks.md) | Cached backlink generation and rendering conventions for related-post callouts. | `src/utils/backlinks.ts`, `src/components/Backlinks.astro`
 | [Content Authoring](content/authoring.md) | Guidelines for writing Markdown/MDX entries, metadata expectations, and category usage. | `src/content/**/*`
 | [Books Page](pages/books.md) | Layout structure, grid architecture, and data management for the author's published works page. | `src/pages/books/index.astro`

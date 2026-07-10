@@ -3,6 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import ShelfTabNav from '../../../components/shelf/ShelfTabNav.astro';
 import { Image } from 'astro:assets';
 import { getAllPosts } from '../../../utils/content';
+import { getCollection, render } from 'astro:content';
 import { slugify } from '../../../utils/shelfUtils';
 import { getTVCoverImage } from '../../../utils/tvCovers';
 import {
@@ -29,7 +30,7 @@ export async function getStaticPaths() {
     return Array.from(showMap.entries()).map(([showTitle, seasons]) => {
         // Use the show part of the first season's slug (e.g. "glory" from "glory/s1"),
         // falling back to slugify(showTitle) for entries without the new format.
-        const firstSlug = seasons[0]?.data.slug ?? '';
+        const firstSlug = seasons[0]?.id ?? '';
         const showSlug = firstSlug.split('/')[0] || slugify(showTitle);
         return {
             params: { show: showSlug },
@@ -55,7 +56,10 @@ const latestSeason = [...seasons].sort((a, b) => (b.data.season ?? 1) - (a.data.
 // Limited series: no entry has a season number — render content directly on this page.
 const isLimitedSeries = seasons.every((s) => s.data.season === undefined);
 const limitedPost = isLimitedSeries ? sortedSeasons[0] : null;
-const { Content: LimitedContent } = limitedPost ? await limitedPost.render() : { Content: null };
+const limitedEntry = limitedPost
+    ? (await getCollection('tvshelf')).find((entry) => entry.id === limitedPost.id)
+    : null;
+const { Content: LimitedContent } = limitedEntry ? await render(limitedEntry) : { Content: null };
 
 const parseDate = (value?: Date | string | null): Date | null => {
     if (!value) return null;
@@ -215,8 +219,7 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
       <div class="tv-show-page__seasons-list">
         {sortedSeasons.map((season) => {
           const seasonNum = season.data.season ?? 1;
-          const rawSlug = season.data.slug ?? '';
-          const seasonSlug = rawSlug.split('/')[1] || `s${seasonNum}`;
+          const seasonSlug = season.id.split('/')[1] || `s${seasonNum}`;
           const status = season.data.shelfStatus;
           const statusLabel = status ? statusLabelMap[status] : null;
           const statusChipClass = status ? statusChipClassMap[status] : '';

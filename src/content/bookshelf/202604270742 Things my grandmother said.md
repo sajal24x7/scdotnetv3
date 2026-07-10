@@ -13,7 +13,7 @@ author:
 genre: poetry
 shelfStatus: read
 started: 2026-04-27T04:46:16.000Z
-cover: things-my-grandmother-said.JPG
+cover: things-my-grandmother-said.jpg
 rating: like
 finished: 2026-04-29T17:06:23.000Z
 syndicationUrls:

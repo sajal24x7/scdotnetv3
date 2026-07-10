@@ -484,6 +484,11 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
 </style>
 
 <script>
+    interface TagListElement extends HTMLElement {
+        clearActiveTag: () => void;
+        _activeTag?: string;
+    }
+
     function initSectionTagFilter() {
         const section = document.querySelector('[data-tag-filter-enabled]');
         if (!section) return;
@@ -551,7 +556,7 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
             });
 
             // Clear tag-list active state
-            const tagList = section.querySelector('tag-list');
+            const tagList = section.querySelector<TagListElement>('tag-list');
             if (tagList && tagList.clearActiveTag) {
                 tagList.clearActiveTag();
             }
@@ -561,14 +566,14 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
 
         // Listen for tag filter events from TagList
         section.addEventListener('tagfilter', (event) => {
-            const detail = event.detail;
+            const detail = (event as CustomEvent<{ tag?: string }>).detail;
             selectedTag = detail?.tag || '';
             applyFilters();
         });
 
         // Listen for tag filter clicks from inline Tag components (on PostItem etc.)
         section.addEventListener('click', (event) => {
-            const target = event.target;
+            const target = event.target as Element;
 
             // Handle remove filter badge click
             const removeButton = target.closest('[data-remove-tag-filter]');
@@ -590,7 +595,7 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
                     selectedTag = newTag;
 
                     // Sync tag-list active state
-                    const tagList = section.querySelector('tag-list');
+                    const tagList = section.querySelector<TagListElement>('tag-list');
                     if (tagList) {
                         // Clear existing active states
                         if (tagList.clearActiveTag) {

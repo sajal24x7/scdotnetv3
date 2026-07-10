@@ -4,7 +4,7 @@ The site is an Astro 5 project that renders content-driven routes backed by Mark
 
 ## Site Shell
 
-- `src/layouts/Layout.astro` is the root layout for every page. It imports the global stylesheet, wraps content in a twelve-column grid, and exposes optional slots for the search modal and link-hover island.【F:src/layouts/Layout.astro†L1-L132】
+- `src/layouts/Layout.astro` is the root layout for every page. It imports the global stylesheet, wraps content in a twelve-column grid, and can opt individual pages into the link-hover preview island via `enableLinkHoverEffect`. Search is a standalone page (`src/pages/search.astro`), not a layout-level modal.【F:src/layouts/Layout.astro†L1-L132】
 - `LayoutContainer.astro` manages padding, max-width, and optional prose styling. Pages pass `pageWrapper` options to the layout to opt into centered, containerized, or prose-optimized renders without duplicating wrapper markup.【F:src/components/layout/LayoutContainer.astro†L1-L64】
 - The layout injects the `Header` and `Footer` components around the `<main>` element, ensuring consistent navigation and site credits across every route.【F:src/layouts/Layout.astro†L44-L132】
 
@@ -12,7 +12,7 @@ The site is an Astro 5 project that renders content-driven routes backed by Mark
 
 - Astro page files live under `src/pages/`. Top-level directories (`garden`, `stream`, `books`, etc.) render list views, while `[...slug].astro` handles every individual post detail page based on `category/slug` pairs.【F:src/pages/[...slug].astro†L1-L46】
 - Dynamic content lists reuse helpers from `src/utils/content.ts` to pull posts by category, sort by publication date, and transform them for specific grid components.【F:src/utils/content.ts†L38-L165】
-- API-style endpoints, such as the search index and syndication webhooks, live alongside page routes (e.g., `src/pages/search-index.json.ts`). Astro prerenders these responses at build time.【F:src/pages/search-index.json.ts†L1-L31】
+- API-style endpoints live either as prerendered Astro routes under `src/pages/` (e.g., RSS feeds) or as Cloudflare Pages Functions under `functions/api/` for anything requiring a runtime request (e.g., `functions/api/til/sync.js`). Search is handled separately by Pagefind, a build-time static index rather than an Astro endpoint.
 
 ## Client Islands
 

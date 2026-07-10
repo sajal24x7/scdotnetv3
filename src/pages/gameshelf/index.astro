@@ -138,7 +138,6 @@ const sectionLandingProps = createSectionLandingProps({
                 const watchNumber = watchNumberMap.get(post.id) ?? 1;
                 return (
                   <div
-                    key={post.id}
                     class={`bookshelf-year__book ${gridClasses}`}
                     data-game-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
