@@ -40,7 +40,7 @@ const hasUpdatedDate = Boolean('updated' in entry.data && entry.data.updated);
 const backlinks = await findBacklinksComprehensive(`${category}/${slug}`);
 
 // Get canonical URL for microformats
-const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
+const canonicalUrl = new URL(`${category}/${slug}/`, Astro.site).href;
 
 const categoryLabel = category.charAt(0).toUpperCase() + category.slice(1);
 const pageTitle = entry.data?.title ? `${entry.data.title} - ${categoryLabel}` : categoryLabel;
@@ -50,6 +50,19 @@ const pageTitle = entry.data?.title ? `${entry.data.title} - ${categoryLabel}` :
 // site header instead of the narrower reading column other posts use.
 const isPhotoPost = category === 'photo';
 
+const ogImagePath = 'image' in entry.data && entry.data.image ? entry.data.image : undefined;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: entry.data?.title || categoryLabel,
+  ...(entry.data?.created ? { datePublished: new Date(entry.data.created).toISOString() } : {}),
+  ...(hasUpdatedDate ? { dateModified: new Date(entry.data.updated).toISOString() } : {}),
+  author: { '@type': 'Person', name: 'Sajal Choudhary', url: 'https://sajalchoudhary.net' },
+  image: new URL(ogImagePath ?? '/logo/logo-square-v2.svg', Astro.site).href,
+  url: canonicalUrl,
+};
+
 ---
 
 <Layout
@@ -57,7 +70,7 @@ const isPhotoPost = category === 'photo';
   description={entry.data?.description}
   currentPage={`/${category}/${slug}/`}
   ogType="article"
-  ogImage={'image' in entry.data && entry.data.image ? entry.data.image : undefined}
+  ogImage={ogImagePath}
   publishedTime={entry.data?.created}
   enableLinkHoverEffect
   pageWrapper={
@@ -66,6 +79,7 @@ const isPhotoPost = category === 'photo';
       : { className: 'grid-span-8 grid-start-3', grid: { padding: 'narrow' } }
   }
 >
+  <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(jsonLd)} />
   {isPhotoPost ? (
     <PhotoPostLayout
       entry={entry}

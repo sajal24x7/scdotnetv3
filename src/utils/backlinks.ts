@@ -197,7 +197,6 @@ async function writeBacklinkArtifact(index: BacklinkIndex): Promise<void> {
         const output: Record<string, unknown> = {
             _meta: {
                 files,
-                generatedAt: new Date().toISOString(),
             },
             ...artifact,
         };
