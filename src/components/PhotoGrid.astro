@@ -345,6 +345,11 @@ const tiles = posts.map((post) => {
 
     .photo-feed[data-view="grid"] .photo-entry__media {
         aspect-ratio: 1 / 1;
+        border-radius: 0;
+    }
+
+    .photo-feed[data-view="grid"] .photo-entry__overlay {
+        display: none;
     }
 
     .photo-feed[data-view="grid"] .photo-entry__media img {
@@ -369,13 +374,6 @@ const tiles = posts.map((post) => {
     @media (min-width: 40rem) {
         .photo-feed[data-view="grid"] .photo-grid {
             gap: clamp(0.75rem, 2vw, 1.25rem);
-        }
-    }
-
-    /* Touch devices have no hover — keep the caption visible on tiles */
-    @media (hover: none) {
-        .photo-feed[data-view="grid"] .photo-entry__overlay {
-            opacity: 1;
         }
     }
 
