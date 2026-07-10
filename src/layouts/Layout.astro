@@ -108,6 +108,38 @@ const containerPadding = pageWrapper.padding ?? 'none';
 		<link rel="alternate" type="application/rss+xml" title="Sajal Choudhary — everything" href="/rss.xml" />
 		<link rel="alternate" type="application/rss+xml" title="Nordletter" href="/nordletter/rss.xml" />
 
+		<!-- Person entity data, so search engines can disambiguate this site's
+		     Sajal Choudhary (writer/platform engineer, Finland) from unrelated
+		     people who share the name. -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			'@context': 'https://schema.org',
+			'@graph': [
+				{
+					'@type': 'Person',
+					'@id': 'https://sajalchoudhary.net/#person',
+					name: 'Sajal Choudhary',
+					url: 'https://sajalchoudhary.net/',
+					jobTitle: 'Platform Engineer & Writer',
+					description: 'Platform engineer and writer based in Finland, author of A Year of Mornings.',
+					sameAs: [
+						'https://mastodon.social/@sajal24x7',
+						'https://bsky.app/profile/sajal24x7.bsky.social',
+						'https://github.com/sajal24x7',
+						'https://www.linkedin.com/in/sajal24x7',
+						'https://www.instagram.com/sajal24x7',
+						'https://www.threads.net/@sajal24x7',
+					],
+				},
+				{
+					'@type': 'WebSite',
+					'@id': 'https://sajalchoudhary.net/#website',
+					name: 'Sajal Choudhary',
+					url: 'https://sajalchoudhary.net/',
+					author: { '@id': 'https://sajalchoudhary.net/#person' },
+				},
+			],
+		})} />
+
 		<!-- Fonts are self-hosted via @fontsource-variable (imported in global.css) -->
 
 
