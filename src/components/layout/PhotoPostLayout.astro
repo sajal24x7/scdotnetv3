@@ -1,0 +1,309 @@
+---
+import LayoutContainer from './LayoutContainer.astro';
+import TimeDisplay from '../TimeDisplay.astro';
+import Tag from '../Tag.astro';
+import Backlinks from '../Backlinks.astro';
+import PhotoCarousel from '../PhotoCarousel.astro';
+import SyndicationLinks from '../SyndicationLinks.astro';
+import NewsletterSignup from '../ui/NewsletterSignup.astro';
+
+interface Backlink {
+    slug: string;
+    title: string;
+    description: string;
+    category: string;
+    created: Date;
+}
+
+interface PostEntry {
+    data: Record<string, any>;
+}
+
+interface Props {
+    entry: PostEntry;
+    canonicalUrl: string;
+    backlinks: Backlink[];
+    hasUpdatedDate: boolean;
+}
+
+const { entry, canonicalUrl, backlinks, hasUpdatedDate } = Astro.props as Props;
+const category = 'photo';
+
+const entryData = entry.data ?? {};
+
+const title = entryData?.title ?? '';
+const description = 'description' in entryData ? entryData.description : undefined;
+const tags = 'tags' in entryData && Array.isArray(entryData.tags) ? entryData.tags : [];
+const syndicationUrls = 'syndicationUrls' in entryData && Array.isArray(entryData.syndicationUrls)
+    ? entryData.syndicationUrls
+    : [];
+const heroImage = 'image' in entryData ? entryData.image : undefined;
+const galleryImages: string[] = Array.isArray(entryData.images) ? entryData.images : [];
+const bridgyOmit = 'bridgyOmit' in entryData && entryData.bridgyOmit;
+const publishedDate = entryData?.created;
+const updated = hasUpdatedDate ? entryData.updated : undefined;
+
+// Older photo posts predate the frontmatter `images`/`image` fields and embed
+// their photo directly in the markdown body — those fall back to a single
+// centered column since there's no separate image for a media column.
+const hasMedia = galleryImages.length > 0 || Boolean(heroImage);
+---
+
+<LayoutContainer
+    prose
+    maxWidth="full"
+    padding="none"
+    className="post-layout__container"
+>
+    <!-- Pagefind metadata: outside data-pagefind-body so they don't pollute text index -->
+    <div aria-hidden="true" style="display:none">
+        <span data-pagefind-meta="category">{category}</span>
+        {tags.map((tag: string) => (
+            <span data-pagefind-filter="tag">{tag.toLowerCase()}</span>
+        ))}
+    </div>
+
+    <article class="h-entry post-layout__article" data-pagefind-body>
+        <!-- Hidden microformat data -->
+        <a href={canonicalUrl} class="u-url" style="display: none;"></a>
+        {bridgyOmit && (
+            <a href={canonicalUrl} class="u-bridgy-omit-link" style="display: none;"></a>
+        )}
+        <div class="p-author h-card" style="display: none;">
+            <a class="p-name u-url" href="https://sajalchoudhary.net">Sajal Choudhary</a>
+            <a class="u-url" href="https://sajalchoudhary.net">https://sajalchoudhary.net</a>
+        </div>
+
+        {hasMedia ? (
+            <div class="photo-header">
+                <div class="photo-header__media">
+                    {galleryImages.length > 0 ? (
+                        <PhotoCarousel images={galleryImages} title={title} />
+                    ) : (
+                        <img
+                            src={heroImage}
+                            alt={title}
+                            class="photo-header__image"
+                            loading="eager"
+                            decoding="async"
+                        />
+                    )}
+                </div>
+                <div class="photo-header__content">
+                    {title && <h1 class="p-name photo-header__title">{title}</h1>}
+
+                    {description && (
+                        <p class="p-summary photo-header__description">{description}</p>
+                    )}
+
+                    <div class="e-content photo-header__caption">
+                        <slot />
+                    </div>
+
+                    {tags.length > 0 && (
+                        <div class="photo-header__tags">
+                            {tags.map((tag: string) => (
+                                <Tag tag={tag} as="a" />
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </div>
+        ) : (
+            <>
+                <div class="mb-8 text-center">
+                    {title && (
+                        <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
+                    )}
+
+                    {description && (
+                        <p class="p-summary text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
+                            {description}
+                        </p>
+                    )}
+
+                    {tags.length > 0 && (
+                        <div class="mb-8 flex justify-center">
+                            <div class="flex flex-wrap gap-2 justify-center">
+                                {tags.map((tag: string) => (
+                                    <Tag tag={tag} as="a" />
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                <div class="e-content">
+                    <slot />
+                </div>
+            </>
+        )}
+
+        <div class="mt-8 border-t border-borderColor dark:border-borderColorDark">
+            <NewsletterSignup
+                title="Subscribe to NordLetter"
+                description="A weekly newsletter on living in Finland."
+                buttonText="Sign up"
+                headingClass="text-xs font-semibold mb-1"
+                descriptionClass="text-sm mb-3"
+                wrapperClass="py-4"
+                centered={true}
+            />
+        </div>
+
+        <div class="post-layout__meta">
+            <p class="post-layout__meta-line">
+                {updated ? 'Updated ' : 'Published '}
+                {updated ? (
+                    <TimeDisplay
+                        date={updated}
+                        category={category}
+                        format="detailed"
+                        className="dt-updated"
+                    />
+                ) : (
+                    <TimeDisplay
+                        date={publishedDate}
+                        category={category}
+                        format="detailed"
+                        className="dt-published"
+                    />
+                )}
+                <span class="post-layout__meta-sep">·</span>
+                Thoughts? <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">Email me</a>.
+                {syndicationUrls.length > 0 && (
+                    <>
+                        <span class="post-layout__meta-sep">·</span>
+                        <SyndicationLinks
+                            syndicationUrls={syndicationUrls}
+                            variant="text"
+                            label="Posted to:"
+                        />
+                    </>
+                )}
+            </p>
+        </div>
+
+        <Backlinks backlinks={backlinks} />
+    </article>
+</LayoutContainer>
+
+<style>
+    .post-layout__article {
+        padding-bottom: clamp(2rem, 5vw, 3rem);
+    }
+
+    .post-layout__meta {
+        margin-top: 1.25rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgb(var(--color-border));
+    }
+
+    :global(.dark) .post-layout__meta {
+        border-top-color: rgb(var(--color-border));
+    }
+
+    .post-layout__meta-line {
+        margin: 0;
+        font-size: 0.75rem;
+        line-height: 1.6;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .post-layout__meta-line a {
+        color: inherit;
+        font-weight: 600;
+    }
+
+    .post-layout__meta-sep {
+        margin: 0 0.4em;
+        opacity: 0.5;
+    }
+
+    /* Photo post two-column header (Instagram-style: image left, text right).
+       No border of its own — the newsletter block's top border below is the
+       only divider, so there isn't a second, empty-looking separator line. */
+    .photo-header {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .photo-header__media {
+        display: flex;
+        justify-content: center;
+    }
+
+    .photo-header__media :global(.photo-carousel) {
+        width: 100%;
+    }
+
+    .photo-header__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: min(70vh, 42rem);
+        object-fit: contain;
+        border-radius: 0.75rem;
+        background: rgba(0, 0, 0, 0.03);
+    }
+
+    :global(.dark) .photo-header__image {
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    .photo-header__content {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .photo-header__title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
+    }
+
+    .photo-header__description {
+        font-size: 1rem;
+        color: rgb(var(--color-text-secondary));
+        margin-bottom: 0.75rem;
+    }
+
+    .photo-header__caption {
+        font-size: 0.9375rem;
+        line-height: 1.65;
+        margin-bottom: 1.25rem;
+    }
+
+    .photo-header__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: auto;
+    }
+
+    @media (min-width: 48rem) {
+        .photo-header {
+            display: grid;
+            /* image:text = 2:1 (8:4 columns) */
+            grid-template-columns: 2fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .photo-header__media {
+            justify-content: flex-start;
+        }
+
+        .photo-header__content {
+            padding-top: 0.25rem;
+        }
+
+        .photo-header__title {
+            font-size: 1.5rem;
+        }
+    }
+</style>

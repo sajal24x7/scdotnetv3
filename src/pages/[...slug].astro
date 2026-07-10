@@ -6,6 +6,7 @@ import { getContentCategories } from '../utils/content';
 import { CONTENT_CATEGORIES } from '../content.config';
 import { findBacklinksComprehensive } from '../utils/backlinks';
 import PostLayout from '../components/layout/PostLayout.astro';
+import PhotoPostLayout from '../components/layout/PhotoPostLayout.astro';
 
 type AnyEntry = CollectionEntry<(typeof CONTENT_CATEGORIES)[number]>;
 
@@ -44,6 +45,11 @@ const canonicalUrl = `${Astro.site}/${category}/${slug}/`;
 const categoryLabel = category.charAt(0).toUpperCase() + category.slice(1);
 const pageTitle = entry.data?.title ? `${entry.data.title} - ${categoryLabel}` : categoryLabel;
 
+// Photo posts get their own Instagram-style layout, and go full-width (no
+// grid-start-3/span-8 constraint) so the image/text row lines up with the
+// site header instead of the narrower reading column other posts use.
+const isPhotoPost = category === 'photo';
+
 ---
 
 <Layout
@@ -54,15 +60,30 @@ const pageTitle = entry.data?.title ? `${entry.data.title} - ${categoryLabel}` :
   ogImage={'image' in entry.data && entry.data.image ? entry.data.image : undefined}
   publishedTime={entry.data?.created}
   enableLinkHoverEffect
-  pageWrapper={{ className: 'grid-span-8 grid-start-3', grid: { padding: 'narrow' } }}
+  pageWrapper={
+    isPhotoPost
+      ? { grid: { padding: 'narrow' } }
+      : { className: 'grid-span-8 grid-start-3', grid: { padding: 'narrow' } }
+  }
 >
-  <PostLayout
-    entry={entry}
-    category={category}
-    canonicalUrl={canonicalUrl}
-    backlinks={backlinks}
-    hasUpdatedDate={hasUpdatedDate}
-  >
-    <Content />
-  </PostLayout>
+  {isPhotoPost ? (
+    <PhotoPostLayout
+      entry={entry}
+      canonicalUrl={canonicalUrl}
+      backlinks={backlinks}
+      hasUpdatedDate={hasUpdatedDate}
+    >
+      <Content />
+    </PhotoPostLayout>
+  ) : (
+    <PostLayout
+      entry={entry}
+      category={category}
+      canonicalUrl={canonicalUrl}
+      backlinks={backlinks}
+      hasUpdatedDate={hasUpdatedDate}
+    >
+      <Content />
+    </PostLayout>
+  )}
 </Layout>

@@ -66,12 +66,15 @@ const getActiveMainSection = () => {
       currentPage.startsWith('/tvshelf/') ||
       currentPage.startsWith('/gameshelf/') ||
       currentPage.startsWith('/stories/') ||
-      currentPage.startsWith('/poems/')) return 'garden';
-  
+      currentPage.startsWith('/story/') ||
+      currentPage.startsWith('/poems/') ||
+      currentPage.startsWith('/poem/')) return 'garden';
+
   // Check for individual post categories that belong to stream
-  if (currentPage.startsWith('/blog/') || 
-      currentPage.startsWith('/micro/') || 
-      currentPage.startsWith('/photos/')) return 'stream';
+  if (currentPage.startsWith('/blog/') ||
+      currentPage.startsWith('/micro/') ||
+      currentPage.startsWith('/photos/') ||
+      currentPage.startsWith('/photo/')) return 'stream';
   
   // Check for tags pages - show garden navigation by default
   if (currentPage.startsWith('/tags/')) return 'garden';
@@ -146,13 +149,13 @@ const getActiveSubsection = () => {
       currentPage.startsWith('/filmshelf/') ||
       currentPage.startsWith('/tvshelf/') ||
       currentPage.startsWith('/gameshelf/')) return '/shelf/';
-  if (currentPage.startsWith('/stories/')) return '/stories/';
-  if (currentPage.startsWith('/poems/')) return '/poems/';
+  if (currentPage.startsWith('/stories/') || currentPage.startsWith('/story/')) return '/stories/';
+  if (currentPage.startsWith('/poems/') || currentPage.startsWith('/poem/')) return '/poems/';
 
   // Check for stream subsections
   if (currentPage.startsWith('/blog/')) return '/blog/';
   if (currentPage.startsWith('/micro/')) return '/micro/';
-  if (currentPage.startsWith('/photos/')) return '/photos/';
+  if (currentPage.startsWith('/photos/') || currentPage.startsWith('/photo/')) return '/photos/';
 
   return null;
 };
