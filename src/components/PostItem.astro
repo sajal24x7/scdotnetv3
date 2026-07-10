@@ -40,7 +40,7 @@ const showBodyProse = showFullContent && (isMicro || (isPhoto && isShortPhotoBod
 const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syndicationUrls : [];
 ---
 
-<article class="post-item" data-content-item data-tags={tagsString}>
+<article class="post-item" data-content-item data-category={post.data.category} data-tags={tagsString}>
   <header class="post-item-header">
     <div class="post-item-meta">
       <a href={postLink} class="post-item-timestamp link-hover" aria-label={linkAriaLabel}>

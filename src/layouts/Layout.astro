@@ -91,9 +91,6 @@ const containerPadding = pageWrapper.padding ?? 'none';
                 {!index && <meta name="robots" content="noindex, follow" />}
 		<meta name="generator" content={Astro.generator} />
 
-		<!-- Preload logo image -->
-		<link rel="preload" href="/logo/logo-square-v2.svg" as="image" />
-
 		<!-- Open Graph / Social Media -->
 		<meta property="og:site_name" content={SITE_NAME} />
 		<meta property="og:title" content={fullTitle} />
@@ -114,26 +111,53 @@ const containerPadding = pageWrapper.padding ?? 'none';
 		<!-- Fonts are self-hosted via @fontsource-variable (imported in global.css) -->
 
 
-		<!-- Background color randomizer script -->
-		<script is:inline src="/bg-color-randomizer.js"></script>
-		
-		
-		<!-- Theme Script (to avoid FOUC - Flash of Unstyled Content) -->
+		<!-- Theme + background palette script (merged to avoid FOUC and a second
+		     render-blocking request; runs synchronously before <body> paints) -->
                 <script is:inline>
-                        // Auto-detect dark mode based on system preference only
-                        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                                document.documentElement.classList.add('dark');
-                        } else {
-                                document.documentElement.classList.remove('dark');
+                        var LIGHT_COLORS = [
+                                '209, 237, 252', '229, 236, 248', '244, 222, 245', '252, 209, 244',
+                                '252, 218, 229', '254, 218, 184', '252, 245, 184', '232, 242, 204',
+                                '191, 231, 207', '151, 219, 204', '174, 219, 219', '232, 236, 248',
+                                '247, 209, 252'
+                        ];
+                        var DARK_COLORS = [
+                                '45, 47, 51', '45, 45, 52', '50, 45, 52', '52, 45, 50',
+                                '52, 47, 48', '52, 48, 45', '52, 52, 45', '48, 52, 45',
+                                '45, 52, 48', '45, 52, 50', '45, 50, 52', '47, 45, 52',
+                                '50, 45, 52'
+                        ];
+
+                        function pickIndex(key, exclude) {
+                                var stored = sessionStorage.getItem(key);
+                                var value = stored === null ? NaN : Number(stored);
+                                if (Number.isInteger(value) && value >= 0 && value < LIGHT_COLORS.length && value !== exclude) {
+                                        return value;
+                                }
+                                do {
+                                        value = Math.floor(Math.random() * LIGHT_COLORS.length);
+                                } while (value === exclude);
+                                sessionStorage.setItem(key, String(value));
+                                return value;
                         }
 
-                        // Listen for system theme changes
-                        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-                                if (event.matches) {
-                                        document.documentElement.classList.add('dark');
-                                } else {
-                                        document.documentElement.classList.remove('dark');
-                                }
+                        function applyBackgroundPalette(isDark) {
+                                var i1 = pickIndex('bg-pick-1', -1);
+                                var i2 = pickIndex('bg-pick-2', i1);
+                                var palette = isDark ? DARK_COLORS : LIGHT_COLORS;
+                                document.documentElement.style.setProperty('--color-bg-1', palette[i1]);
+                                document.documentElement.style.setProperty('--color-bg-2', palette[i2]);
+                        }
+
+                        function applyTheme(isDark) {
+                                document.documentElement.classList.toggle('dark', isDark);
+                                applyBackgroundPalette(isDark);
+                        }
+
+                        var darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                        applyTheme(darkMediaQuery.matches);
+
+                        darkMediaQuery.addEventListener('change', function (event) {
+                                applyTheme(event.matches);
                         });
                 </script>
                 {Astro.slots.has('head') && <slot name="head" />}

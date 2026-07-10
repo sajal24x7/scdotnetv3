@@ -7,83 +7,56 @@ interface Props {
     posts: TransformedPost[];
     totalCount: number;
     categorySlices: TagCategorySlice[];
-    activeCategory?: string | null;
 }
 
-const {
-    tag,
-    posts,
-    totalCount,
-    categorySlices,
-    activeCategory = null
-} = Astro.props as Props;
-
-const activeKey = activeCategory ?? null;
-const activeSlice = typeof activeKey === 'string'
-    ? categorySlices.find(slice => slice.key === activeKey) ?? null
-    : null;
+const { tag, posts, totalCount, categorySlices } = Astro.props as Props;
 
 const navItems = [
     {
-        key: null as string | null,
+        key: '',
         label: 'All',
-        href: `/tags/${tag}/`,
+        includes: '',
         count: totalCount
     },
     ...categorySlices.map(slice => ({
-        key: slice.key as string | null,
+        key: slice.key,
         label: slice.label,
-        href: `/tags/${tag}/${slice.key}/`,
-        count: slice.count,
-        includeLabels: slice.includeLabels
+        includes: slice.includes.join(','),
+        count: slice.count
     }))
 ];
 
-const description = activeSlice
-    ? formatSliceDescription(tag, activeSlice)
-    : formatAllDescription(tag, totalCount);
-
-function formatSliceDescription(tagValue: string, slice: TagCategorySlice): string {
-    const includes = slice.includeLabels.length > 1
-        ? ` (${slice.includeLabels.join(', ')})`
-        : '';
-    const itemLabel = slice.count === 1 ? 'item' : 'items';
-    return `${slice.count} ${itemLabel} tagged with ${tagValue.toUpperCase()} in ${slice.label}${includes}.`;
-}
-
-function formatAllDescription(tagValue: string, count: number): string {
-    const entryLabel = count === 1 ? 'entry' : 'entries';
-    return `All ${count} ${entryLabel} tagged with ${tagValue.toUpperCase()}.`;
-}
+const description = `All ${totalCount} ${totalCount === 1 ? 'entry' : 'entries'} tagged with ${tag.toUpperCase()}.`;
 ---
 
 <header class="tag-page-header">
     <h1 class="tag-page-title">
         <span class="tag-display tag-chip">{tag.toUpperCase()}</span>
     </h1>
-    <p class="tag-page-description">{description}</p>
+    <p class="tag-page-description" id="tag-page-description">{description}</p>
 </header>
 
 {navItems.length > 1 && (
     <nav class="tag-category-nav" aria-label="Filter tagged content by category">
         <ul class="tag-category-list">
-            {navItems.map(item => (
+            {navItems.map((item, index) => (
                 <li class="tag-category-item">
-                    <a
-                        href={item.href}
-                        class={`tag-category-link tag-chip${activeKey === item.key ? ' tag-category-link-active' : ''}`}
-                        aria-current={activeKey === item.key ? 'page' : undefined}
+                    <button
+                        type="button"
+                        class={`tag-category-link tag-chip${index === 0 ? ' tag-category-link-active' : ''}`}
+                        data-category-filter={item.includes}
+                        aria-current={index === 0 ? 'true' : undefined}
                     >
                         <span class="tag-category-label">{item.label}</span>
                         <span class="tag-category-count">{item.count}</span>
-                    </a>
+                    </button>
                 </li>
             ))}
         </ul>
     </nav>
 )}
 
-<section class="tag-page-content">
+<section class="tag-page-content" data-category-filter-scope>
     {posts.length === 0 ? (
         <div class="tag-page-empty">
             <p>No content found for this selection.</p>
@@ -92,6 +65,61 @@ function formatAllDescription(tagValue: string, count: number): string {
         <RecentItems posts={posts} showTitle={false} />
     )}
 </section>
+
+<script>
+    function initTagCategoryFilter() {
+        const scope = document.querySelector('[data-category-filter-scope]');
+        const buttons = document.querySelectorAll<HTMLButtonElement>('[data-category-filter]');
+        const description = document.getElementById('tag-page-description');
+        if (!scope || buttons.length === 0) return;
+
+        const items = scope.querySelectorAll<HTMLElement>('[data-content-item]');
+        const baseDescription = description?.textContent ?? '';
+
+        function applyFilter(includes: string, label: string) {
+            const includeList = includes ? includes.split(',') : null;
+            let visibleCount = 0;
+
+            items.forEach(item => {
+                const category = item.getAttribute('data-category') ?? '';
+                const matches = !includeList || includeList.includes(category);
+                if (matches) {
+                    item.removeAttribute('data-filtered');
+                    visibleCount++;
+                } else {
+                    item.setAttribute('data-filtered', 'hidden');
+                }
+            });
+
+            if (description) {
+                description.textContent = includeList
+                    ? `${visibleCount} ${visibleCount === 1 ? 'item' : 'items'} in ${label}.`
+                    : baseDescription;
+            }
+        }
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(b => {
+                    b.classList.remove('tag-category-link-active');
+                    b.removeAttribute('aria-current');
+                });
+                button.classList.add('tag-category-link-active');
+                button.setAttribute('aria-current', 'true');
+
+                const includes = button.getAttribute('data-category-filter') ?? '';
+                const label = button.querySelector('.tag-category-label')?.textContent ?? '';
+                applyFilter(includes, label);
+            });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTagCategoryFilter);
+    } else {
+        initTagCategoryFilter();
+    }
+</script>
 
 <style>
     .tag-page-header {
@@ -136,6 +164,7 @@ function formatAllDescription(tagValue: string, count: number): string {
         text-transform: uppercase;
         letter-spacing: 0.05em;
         padding: 0.5rem 0.75rem;
+        font-family: inherit;
     }
 
     .tag-category-link-active {
@@ -177,6 +206,10 @@ function formatAllDescription(tagValue: string, count: number): string {
 
     :global(.dark) .tag-page-empty {
         border-color: var(--borderColorDark, #374151);
+    }
+
+    :global([data-category-filter-scope] [data-content-item][data-filtered="hidden"]) {
+        display: none;
     }
 
     @media (max-width: 640px) {

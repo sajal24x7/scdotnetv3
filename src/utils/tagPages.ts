@@ -13,7 +13,6 @@ export interface TagCategorySlice {
     includes: string[];
     includeLabels: string[];
     count: number;
-    transformedPosts: TransformedPost[];
 }
 
 export interface TagPageData {
@@ -86,14 +85,9 @@ export async function getTagPageData(): Promise<TagPageData[]> {
             b.data.created.valueOf() - a.data.created.valueOf()
         );
 
-        const transformedBySlug = new Map<string, TransformedPost>();
-        const transformedPosts = sortedPosts.map(post => {
-            const transformed = transformPost(post);
-            transformedBySlug.set(post.id, transformed);
-            return transformed;
-        });
+        const transformedPosts = sortedPosts.map(post => transformPost(post));
 
-        const categorySlices = buildCategorySlices(sortedPosts, transformedBySlug);
+        const categorySlices = buildCategorySlices(sortedPosts);
 
         tagPageData.push({
             tag,
@@ -107,10 +101,7 @@ export async function getTagPageData(): Promise<TagPageData[]> {
     return cachedTagPageData;
 }
 
-function buildCategorySlices(
-    sortedPosts: Post[],
-    transformedBySlug: Map<string, TransformedPost>
-): TagCategorySlice[] {
+function buildCategorySlices(sortedPosts: Post[]): TagCategorySlice[] {
     const slices: TagCategorySlice[] = [];
     const addedKeys = new Set<string>();
 
@@ -120,11 +111,11 @@ function buildCategorySlices(
             continue;
         }
 
-        const filtered = sortedPosts.filter(post =>
+        const count = sortedPosts.filter(post =>
             config.includes.includes(post.data.category)
-        );
+        ).length;
 
-        if (filtered.length === 0) {
+        if (count === 0) {
             continue;
         }
 
@@ -133,14 +124,7 @@ function buildCategorySlices(
             label: config.label,
             includes: [...config.includes],
             includeLabels: config.includes.map(formatCategoryLabel),
-            count: filtered.length,
-            transformedPosts: filtered.map(post => {
-                const transformed = transformedBySlug.get(post.id);
-                if (!transformed) {
-                    throw new Error(`Missing transformed post for id "${post.id}".`);
-                }
-                return transformed;
-            })
+            count
         });
 
         addedKeys.add(key);
@@ -152,8 +136,8 @@ function buildCategorySlices(
             continue;
         }
 
-        const filtered = sortedPosts.filter(post => post.data.category === category);
-        if (filtered.length === 0) {
+        const count = sortedPosts.filter(post => post.data.category === category).length;
+        if (count === 0) {
             continue;
         }
 
@@ -162,14 +146,7 @@ function buildCategorySlices(
             label: formatCategoryLabel(category),
             includes: [category],
             includeLabels: [formatCategoryLabel(category)],
-            count: filtered.length,
-            transformedPosts: filtered.map(post => {
-                const transformed = transformedBySlug.get(post.id);
-                if (!transformed) {
-                    throw new Error(`Missing transformed post for id "${post.id}".`);
-                }
-                return transformed;
-            })
+            count
         });
     }
 
