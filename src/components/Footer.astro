@@ -10,39 +10,68 @@ const hasPosts = totalPosts > 0;
 const formattedLastPostDate = latestPostDate ? formatDateWithTime(latestPostDate) : '';
 
 const footerNavItems = [
-    { href: '/garden/', label: 'Garden' },
-    { href: '/stream/', label: 'Stream' },
-    { href: '/nordletter/', label: 'Nordletter' },
-    { href: '/books/', label: 'Books' },
     { href: '/sajal/', label: 'About' },
-    { href: '/feeds/', label: 'Feeds' },
-    { href: '/search/', label: 'Search' },
     { href: '/colophon/', label: 'Colophon' },
+    { href: '/now/', label: 'Now' },
+    { href: '/photos/', label: 'Photos' },
+    { href: '/bookshelf/', label: 'Bookshelf' },
 ];
 ---
 
-<footer class="py-6 border-t border-borderColor bg-bgSecondary text-textPrimary">
+<footer class="site-footer py-6 border-t">
     <div class="container mx-auto px-4 max-w-6xl">
-        <nav aria-label="Footer navigation" class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-small">
+        <nav aria-label="Footer navigation" class="footer-nav flex flex-wrap justify-center gap-x-6 gap-y-2 text-small">
             {footerNavItems.map((item) => (
-                <a href={item.href} class="text-textSecondary hover:text-textPrimary transition-colors">
+                <a href={item.href}>
                     {item.label}
                 </a>
             ))}
         </nav>
 
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-6 pt-6 border-t border-borderColor text-center sm:text-left">
+        <div class="footer-stats-row flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-6 pt-6 text-center sm:text-left">
             {hasPosts && (
-                <div class="text-textSecondary text-normal">
+                <div class="text-normal">
                     <p class="text-small opacity-75 mb-2">This website was last updated on {formattedLastPostDate}</p>
-                    <p class="font-medium">New posts for <span class="text-accent">{streakWeeks}</span> consecutive {streakWeeks === 1 ? 'week' : 'weeks'}</p>
+                    <p class="font-medium">New posts for <span class="footer-accent">{streakWeeks}</span> consecutive {streakWeeks === 1 ? 'week' : 'weeks'}</p>
                     <p class="mt-1 text-small opacity-75">{totalPosts} total posts</p>
                 </div>
             )}
 
-            <p class="text-textSecondary text-small">
+            <p class="text-small">
                 &copy; {currentYear} Sajal Choudhary. All rights reserved.
             </p>
         </div>
     </div>
 </footer>
+
+<style>
+    /* Deliberately always dark — a fixed footer band (reusing the site's own
+       dark-mode background) rather than following the light/dark toggle or
+       the randomized hero palette. */
+    .site-footer {
+        background: rgb(35, 30, 28);
+        color: rgb(255, 250, 240);
+        border-color: rgb(85, 75, 70);
+    }
+
+    .footer-stats-row {
+        border-top: 1px solid rgb(85, 75, 70);
+    }
+
+    .footer-nav a,
+    .footer-stats-row p {
+        color: rgb(209, 213, 219);
+    }
+
+    .footer-nav a {
+        transition: color 0.2s ease;
+    }
+
+    .footer-nav a:hover {
+        color: rgb(255, 250, 240);
+    }
+
+    .footer-accent {
+        color: #a78bfa;
+    }
+</style>
