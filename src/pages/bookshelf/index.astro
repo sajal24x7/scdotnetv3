@@ -242,7 +242,6 @@ const sectionLandingProps = createSectionLandingProps({
 
                 return (
                   <div
-                    key={bookSlug}
                     class={`bookshelf-year__book ${gridClasses}`}
                     data-book-item
                     data-author={bookAuthors}
@@ -581,6 +580,10 @@ const sectionLandingProps = createSectionLandingProps({
 </style>
 
 <script>
+  interface TagListElement extends HTMLElement {
+    clearActiveTag: () => void;
+  }
+
   function initBookshelfFilters() {
     const resultsDisplay = document.getElementById('filter-results');
     const activeFiltersContainer = document.getElementById('active-filters');
@@ -810,7 +813,7 @@ const sectionLandingProps = createSectionLandingProps({
       selectedSeries = '';
 
       // Clear tag-list active state
-      const tagList = document.querySelector('tag-list');
+      const tagList = document.querySelector<TagListElement>('tag-list');
       if (tagList && tagList.clearActiveTag) {
         tagList.clearActiveTag();
       }
@@ -887,7 +890,7 @@ const sectionLandingProps = createSectionLandingProps({
           applyFilters();
         } else if (filterToRemove === 'tag') {
           selectedTag = '';
-          const tagList = document.querySelector('tag-list');
+          const tagList = document.querySelector<TagListElement>('tag-list');
           if (tagList && tagList.clearActiveTag) {
             tagList.clearActiveTag();
           }
