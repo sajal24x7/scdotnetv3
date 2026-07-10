@@ -48,6 +48,7 @@ const rows = entries.map((entry) => {
         <p class="unified-feed__end" data-feed-end hidden={hasMore}>
             That's everything — you've reached the very beginning.
         </p>
+        <p class="sr-only" role="status" aria-live="polite" data-feed-status></p>
     </div>
 </div>
 
@@ -393,6 +394,7 @@ const rows = entries.map((entry) => {
         const list = root.querySelector<HTMLElement>('[data-feed-list]')!;
         const moreBtn = root.querySelector<HTMLButtonElement>('[data-feed-more]')!;
         const endNote = root.querySelector<HTMLElement>('[data-feed-end]')!;
+        const statusNote = root.querySelector<HTMLElement>('[data-feed-status]')!;
         const filterBtns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-feed-filter]'));
 
         // Seed the "all" group from the server-rendered page 1
@@ -459,8 +461,11 @@ const rows = entries.map((entry) => {
             const label = moreBtn.textContent;
             moreBtn.textContent = 'Loading…';
             try {
+                const before = state[current].entries.length;
                 await fetchPage(current);
                 render();
+                const added = state[current].entries.length - before;
+                statusNote.textContent = `${added} more ${added === 1 ? 'entry' : 'entries'} loaded`;
             } catch {
                 moreBtn.textContent = 'Something went wrong — try again';
             } finally {
