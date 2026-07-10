@@ -3,19 +3,23 @@ import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getContentCategories } from '../utils/content';
+import { CONTENT_CATEGORIES } from '../content.config';
 import { findBacklinksComprehensive } from '../utils/backlinks';
 import PostLayout from '../components/layout/PostLayout.astro';
+
+type AnyEntry = CollectionEntry<(typeof CONTENT_CATEGORIES)[number]>;
 
 export async function getStaticPaths() {
   // Get all category collections
   const categories = getContentCategories();
-  const allPosts = await Promise.all(categories.map(category => getCollection(category as any)));
+  const allPosts = await Promise.all(
+    categories.map(async (category) => (await getCollection(category as any)) as AnyEntry[])
+  );
   // Titles are optional (micro posts from /write often have none), so only
   // require frontmatter to exist — filtering on title made titleless posts 404.
-  const posts = allPosts.flat().filter(entry => (entry as CollectionEntry<any>).data);
+  const posts = allPosts.flat().filter((entry) => entry.data);
 
-  return posts.map((entry) => {
-    const e = entry as CollectionEntry<any>;
+  return posts.map((e) => {
     const category = 'category' in e.data && e.data.category ? e.data.category : 'notes';
     return {
       params: { slug: `${category}/${e.id}` },
@@ -26,10 +30,10 @@ export async function getStaticPaths() {
 
 const slugParam = Astro.params.slug as string;
 const [category, slug] = slugParam.split('/');
-const entry = (Astro.props as { entry: CollectionEntry<any> }).entry;
+const entry = (Astro.props as { entry: AnyEntry }).entry;
 const { Content } = await render(entry);
 
-const hasUpdatedDate = 'updated' in entry.data && entry.data.updated;
+const hasUpdatedDate = Boolean('updated' in entry.data && entry.data.updated);
 
 // Find backlinks for this post
 const backlinks = await findBacklinksComprehensive(`${category}/${slug}`);

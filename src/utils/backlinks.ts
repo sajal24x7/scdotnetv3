@@ -3,6 +3,9 @@ import path from 'node:path';
 import { getCollection } from 'astro:content';
 import { getContentCategories } from './content';
 import type { CollectionEntry } from 'astro:content';
+import { CONTENT_CATEGORIES } from '../content.config';
+
+type AnyEntry = CollectionEntry<(typeof CONTENT_CATEGORIES)[number]>;
 
 /**
  * Backlinks System with Smart Caching
@@ -206,14 +209,14 @@ async function writeBacklinkArtifact(index: BacklinkIndex): Promise<void> {
 
 async function buildBacklinkIndex(): Promise<BacklinkIndex> {
     const categories = getContentCategories();
-    const entries: CollectionEntry<any>[] = [];
+    const entries: AnyEntry[] = [];
 
     for (const category of categories) {
-        const posts = await getCollection(category as any);
+        const posts = (await getCollection(category as any)) as AnyEntry[];
         entries.push(...posts);
     }
 
-    const postIndex = new Map<string, CollectionEntry<any>>();
+    const postIndex = new Map<string, AnyEntry>();
     for (const entry of entries) {
         const category = resolveCategory(entry);
         const key = `${category}/${entry.id}`;
@@ -478,7 +481,7 @@ function normalizeHost(host: string): string {
     return host.replace(/^www\./, '');
 }
 
-function resolveCategory(entry: CollectionEntry<any>): string {
+function resolveCategory(entry: AnyEntry): string {
     if (entry.data && typeof entry.data.category === 'string' && entry.data.category.length > 0) {
         return entry.data.category;
     }
