@@ -4,10 +4,9 @@ import multiLevelNavigationIslandScript from '../islands/multi-level-navigation-
 
 interface Props {
   currentPage: string;
-  layout?: 'mobile' | 'desktop';
 }
 
-const { currentPage, layout = 'desktop' } = Astro.props as Props;
+const { currentPage } = Astro.props as Props;
 
 // Main navigation items (ordered): Garden | Stream | Nordletter | Books | About
 const mainNavItems = [

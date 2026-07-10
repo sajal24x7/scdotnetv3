@@ -551,6 +551,7 @@ const rows = entries.map((entry) => {
     if (root) {
         const list = root.querySelector<HTMLElement>('[data-feed-list]')!;
         const moreBtn = root.querySelector<HTMLButtonElement>('[data-feed-more]')!;
+        const moreBtnDefaultLabel = moreBtn.textContent;
         const endNote = root.querySelector<HTMLElement>('[data-feed-end]')!;
         const statusNote = root.querySelector<HTMLElement>('[data-feed-status]')!;
         const filterBtns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-feed-filter]'));
@@ -619,7 +620,6 @@ const rows = entries.map((entry) => {
             if (loading) return;
             loading = true;
             moreBtn.disabled = true;
-            const label = moreBtn.textContent;
             moreBtn.textContent = 'Loading…';
             try {
                 const before = state[current].entries.length;
@@ -627,12 +627,10 @@ const rows = entries.map((entry) => {
                 render();
                 const added = state[current].entries.length - before;
                 statusNote.textContent = `${added} more ${added === 1 ? 'entry' : 'entries'} loaded`;
+                moreBtn.textContent = moreBtnDefaultLabel;
             } catch {
                 moreBtn.textContent = 'Something went wrong — try again';
             } finally {
-                if (moreBtn.textContent === 'Loading…') {
-                    moreBtn.textContent = label;
-                }
                 moreBtn.disabled = false;
                 loading = false;
             }
