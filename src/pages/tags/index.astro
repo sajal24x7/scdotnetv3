@@ -171,16 +171,6 @@ categories.forEach(category => {
       `;
       title.parentNode.insertBefore(backLink, title.nextSibling);
       
-      // Update tag links to include category path segment
-      const tagLinks = document.querySelectorAll('a[href^="/tags/"]');
-      tagLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href && href !== '/tags/') {
-          const normalized = href.endsWith('/') ? href : `${href}/`;
-          link.setAttribute('href', `${normalized}${category}/`);
-        }
-      });
-      
       // Filter and display only category-specific tags
       const categoryTags = tagsByCategory[category];
       
@@ -194,7 +184,7 @@ categories.forEach(category => {
         if (topTwentyContainer) {
           if (topTwenty.length > 0) {
             topTwentyContainer.innerHTML = topTwenty.map(([tag, count]) =>
-              `<a href="/tags/${tag}/${category}/" class="grid-span-3 tag-chip justify-self-start">
+              `<a href="/tags/${tag}/" class="grid-span-3 tag-chip justify-self-start">
                 ${tag.toUpperCase()} (${count})
               </a>`
             ).join('');
@@ -211,7 +201,7 @@ categories.forEach(category => {
         const allTagsContainer = document.getElementById('all-tags-grid');
         if (allTagsContainer) {
           allTagsContainer.innerHTML = allCategoryTags.map(([tag, count]) =>
-            `<a href="/tags/${tag}/${category}/" class="grid-span-3 tag-chip justify-self-start">
+            `<a href="/tags/${tag}/" class="grid-span-3 tag-chip justify-self-start">
               ${tag.toUpperCase()} (${count})
             </a>`
           ).join('');

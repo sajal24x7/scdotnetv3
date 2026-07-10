@@ -4,7 +4,13 @@ Measured on a full local build (2026-07-07): 4,463 HTML pages, `dist/` = **454 M
 which `dist/tags/` = **221 MB** (2,765 pages) and `dist/_astro/` = 98 MB (mostly
 responsive image variants, which are fine).
 
-## 4.1 Self-host the web fonts (do after/instead of brief 01 §1.1)
+## 4.1 Self-host the web fonts (do after/instead of brief 01 §1.1) — ✅ done
+
+Already complete as of this audit pass (2026-07-10). `global.css` imports
+`@fontsource-variable/inter` and `@fontsource-variable/fraunces` directly (the serif was
+swapped from Merriweather to Fraunces along the way, not just self-hosted). No
+`fonts.googleapis.com`/`gstatic.com` references, no `preconnect` to Google Fonts, and no
+leftover `Merriweather` references anywhere in `src/`. Verified via grep across the repo.
 
 Google Fonts adds two extra origins and a render-blocking stylesheet on every page — and
 is currently broken anyway (brief 01). Self-hosting removes the third-party dependency and
@@ -94,7 +100,35 @@ remote. Preferred path: pass local hero images through `astro:assets` `<Image>` 
 way shelf covers already do (`getBookCoverImage` pattern) and fall back to plain `<img>`
 for `http(s)://` values. Keep `loading="lazy" decoding="async"`.
 
-## 4.4 Tag-page explosion: 2,765 pages, 221 MB (62 % of the site)
+## 4.4 Tag-page explosion: 2,765 pages, 221 MB (62 % of the site) — ✅ done (2026-07-10, different approach)
+
+Investigated before implementing the ≥3-post threshold below and found the per-category
+slice pages (`/tags/[tag]/[category]/`) have exactly one consumer in the whole codebase:
+the tab nav on `/tags/[tag]/` itself. The in-page "click a tag to filter" feature on
+category landing pages (`/blog/`, `/stream/`, etc.) is a fully separate, already-client-side
+filter (`SectionLanding.astro` + `tag-list-island.js`) that never navigates to these routes.
+
+Given that, rather than raise the survival bar to `count >= 3`, the category-slice route
+(`src/pages/tags/[tag]/[category].astro`) was deleted outright and replaced with a
+same-page client-side filter on `/tags/[tag]/` (category chips as buttons that toggle
+`data-filtered` on already-rendered `[data-content-item]`s, matched via each post's
+`data-category` attribute — mirrors the `SectionLanding` filter pattern). `TagCategorySlice`
+in `src/utils/tagPages.ts` dropped its per-slice `transformedPosts` field since filtering no
+longer needs a separate rendered list per slice.
+
+Also fixed: the dead `?category=` handler on `/tags/index.astro` was still building hrefs to
+`/tags/{tag}/{category}/`; repointed those to `/tags/{tag}/` so it can't produce 404s if ever
+triggered (nothing currently links to it with that query param).
+
+Result: build page count dropped from 4,463 → **2,546** (all 1,936 slice pages gone, tag
+index pages unchanged). Verified zero `/tags/{tag}/{category}/`-shaped hrefs anywhere in
+`dist/`, and the new in-page filter tested end-to-end with Playwright (clicking a category
+chip correctly shows/hides posts and updates the count text).
+
+<details>
+<summary>Original brief text (superseded)</summary>
+
+
 
 **Files:** `src/pages/tags/[tag]/index.astro`, `src/pages/tags/[tag]/[category].astro`,
 `src/utils/tagPages.ts`.
@@ -126,6 +160,8 @@ grep -rhoE 'href="/tags/[^"]+"' dist --include='*.html' | sort -u | sed 's/href=
 ```
 
 Empty output = no broken links.
+
+</details>
 
 ## 4.5 Small head cleanups
 
