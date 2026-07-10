@@ -363,9 +363,9 @@ export function formatContentForPlatform(post, platform) {
 
   if (NON_LINK_CATEGORIES.has(category)) {
     content = formatNonLinkPost(post, config, hashtagsText);
-  } else if (category === 'micro') {
-    // Micro posts: if the full text fits within the platform limit,
-    // post it verbatim with no link back to the site.
+  } else if (category === 'micro' || category === 'photo') {
+    // Micro and photo posts: if the full text fits within the platform
+    // limit, post it verbatim with no link back to the site.
     const cleanedBody = cleanMicroBody(post.body);
     const hashtagsSpace = hashtagsText ? hashtagsText.length + 2 : 0; // +2 for \n\n
 
