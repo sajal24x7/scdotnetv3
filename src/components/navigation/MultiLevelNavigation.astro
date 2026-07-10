@@ -89,7 +89,7 @@ const activeMainSection = getActiveMainSection();
 
 const mainActiveClasses = 'bg-gray-100/80 dark:bg-gray-800/80 text-gray-900 dark:text-white border-gray-900 dark:border-white nav-active shadow-sm';
 const mainInactiveClasses = 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-gray-800/50 border-gray-600 dark:border-gray-400';
-const secondaryActiveClasses = 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-gray-900 dark:border-white nav-active shadow-sm border-b-2 border-blue-600';
+const secondaryActiveClasses = 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-gray-900 dark:border-white nav-active shadow-sm border-b-2 border-accent';
 const secondaryInactiveClasses = 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50 border-gray-600 dark:border-gray-400';
 const sectionsWithSecondary = ['about', 'garden', 'stream'] as const;
 const secondaryNavEntries = sectionsWithSecondary.map((section) => ({
@@ -105,7 +105,7 @@ const tertiaryNavItems = [
   { href: '/gameshelf/', label: 'Games', key: 'games' },
 ];
 
-const tertiaryActiveClasses = 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-gray-900 dark:border-white nav-active shadow-sm border-b-2 border-blue-600';
+const tertiaryActiveClasses = 'bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-white border-gray-900 dark:border-white nav-active shadow-sm border-b-2 border-accent';
 const tertiaryInactiveClasses = 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-900/50 border-gray-600 dark:border-gray-400';
 
 const getActiveTertiarySection = () => {

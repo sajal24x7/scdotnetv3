@@ -25,6 +25,7 @@
   --color-textPrimary: rgb(var(--color-text-primary));
   --color-textSecondary: rgb(var(--color-text-secondary));
   --color-accent: rgb(var(--color-accent));
+  --color-accent-hover: rgb(var(--color-accent-hover));
   --color-borderColor: rgb(var(--color-border));
 
   --color-bgDark: rgb(var(--color-bg));
@@ -60,7 +61,8 @@
     --color-bg-secondary: 250, 245, 235;
     --color-text-primary: 33, 33, 33;
     --color-text-secondary: 117, 117, 117;
-    --color-accent: 0, 102, 204;
+    --color-accent: 139, 92, 246;
+    --color-accent-hover: 124, 58, 237;
     --color-border: 235, 231, 225;
 
     --random-link-color: inherit;
@@ -95,7 +97,8 @@
     --color-bg-secondary: 45, 38, 34;
     --color-text-primary: 255, 250, 240;
     --color-text-secondary: 209, 213, 219;
-    --color-accent: 77, 159, 255;
+    --color-accent: 167, 139, 250;
+    --color-accent-hover: 196, 181, 253;
     --color-border: 85, 75, 70;
     --link-color: #4d9fff;
     --link-highlight: rgba(167, 139, 250, 0.35);
