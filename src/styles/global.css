@@ -139,7 +139,6 @@
   h6 {
     font-family: 'Fraunces Variable', 'Fraunces', ui-serif, Georgia, serif;
     line-height: 1.2;
-    transition: font-weight 0.2s ease;
   }
 
   h1 {
@@ -406,15 +405,6 @@
     outline-offset: 2px;
   }
 
-  h1:hover,
-  h2:hover,
-  h3:hover,
-  h4:hover,
-  h5:hover,
-  h6:hover {
-    font-weight: 700;
-  }
-
   a.no-hover {
     text-decoration: none !important;
   }
@@ -610,6 +600,22 @@
   .dark .card-chip:hover,
   .dark .category-display:hover {
     background-color: rgba(148, 163, 184, 0.28);
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -100%;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: rgb(var(--color-text-primary));
+    color: rgb(var(--color-bg));
+    font-weight: 600;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
   }
 }
 
@@ -964,4 +970,17 @@
 
 .prose blockquote {
   font-weight: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

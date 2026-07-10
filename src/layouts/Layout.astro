@@ -139,9 +139,10 @@ const containerPadding = pageWrapper.padding ?? 'none';
                 {Astro.slots.has('head') && <slot name="head" />}
         </head>
         <body class="min-h-screen text-textPrimary dark:text-textPrimaryDark transition-all duration-500">
+                <a href="#main-content" class="skip-link">Skip to content</a>
                 <div class="flex flex-col min-h-screen">
                         <Header currentPage={currentPage} />
-                        <main class="flex-grow relative z-10">
+                        <main id="main-content" tabindex="-1" class="flex-grow relative z-10">
                                 <div class={gridClasses}>
                                         <LayoutContainer
                                                 as={pageWrapper.as || 'div'}

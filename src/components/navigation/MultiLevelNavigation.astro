@@ -170,9 +170,9 @@ const showTertiaryNav = activeSubsection === '/shelf/';
         <!-- Site Name -->
         <div class="header-name">
           <a href="/" class="inline-block">
-            <h1 class="text-2xl font-bold text-gray-900 dark:text-white font-serif tracking-tight">
+            <p class="masthead-name text-2xl font-bold text-gray-900 dark:text-white font-serif tracking-tight">
               Sajal Choudhary
-            </h1>
+            </p>
           </a>
         </div>
         
@@ -323,11 +323,7 @@ const showTertiaryNav = activeSubsection === '/shelf/';
   nav a {
     transition: all 0.2s ease-in-out;
   }
-  
-  nav a:hover {
-    transform: translateY(-1px);
-  }
-  
+
   /* Name | Primary | Socials layout */
   .name-social-row {
     display: grid;
@@ -481,19 +477,19 @@ const showTertiaryNav = activeSubsection === '/shelf/';
       font-size: 0.75rem;
     }
 
-    h1 {
+    .masthead-name {
       font-size: 1.5rem;
     }
   }
-  
+
   @media (max-width: 640px) {
     nav a {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
       font-size: 0.75rem;
     }
-    
-    h1 {
+
+    .masthead-name {
       font-size: 1.25rem;
     }
   }
