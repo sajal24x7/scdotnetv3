@@ -24,5 +24,5 @@ The site-wide `Layout` component exposes a `pageWrapper` hook that forwards prop
 
 ## Other Shared Layouts
 
-- **Progress pages**: `/now/` and `/done/` both render through `src/components/layout/ProgressLayout.astro`, which handles the two-column stats rail and main content slot.
+- **Progress pages**: `/now/` and `/then/` both render through `src/components/layout/ProgressLayout.astro`, which handles the two-column stats rail and main content slot.
 - **Long-form posts**: Articles rendered by `[...slug].astro` use `src/components/layout/PostLayout.astro` to standardize hero metadata, tags, backlinks, and microformat wiring.

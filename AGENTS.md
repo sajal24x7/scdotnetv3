@@ -57,8 +57,8 @@ Commits in this repository use short, action-focused subjects (e.g., `Minor ui c
     5. When reorganising older `.row`-based markup, remove the extra row container and re-map the children directly onto column spans. Spot-check the result at mobile, tablet (≥48rem), and large desktop widths to ensure columns align to the 1/12, 3/12, 4/12, 7/12, 8/12, etc. patterns requested in the grid audit.
 
 ## Card Components
+- The homepage renders `UnifiedFeed`, which pulls from all content types directly; there is no separate "featured" data file or homepage-specific grid component.
 - `src/components/Card.astro` is the base article card used by `GardenGrid` (and therefore Garden, Evergreen, TIL, Stories, Poems) to render post summaries with optional micro-post prose.
-- `src/components/PostCard.astro` wraps the base card for classic blog feeds and is consumed by `PostList` when a route wants stacked post cards.
 - `src/components/bookshelf/BookCard.astro` powers the bookshelf UI via `BookGrid`, formatting status, dates, and cover art for reading logs.
+- `src/components/shelf/FilmCard.astro`, `TVCard.astro`, and `GameCard.astro` render entries on the film/TV/game shelf pages.
 - `StreamLayout` renders stream entries with `PostItem` instead of a dedicated card, and `NordletterGrid` ships bespoke markup for newsletter issues; there is no standalone stream or newsletter card component after the legacy `StreamCard` removal.
-- **Homepage Featured** reads its source slugs from `src/data/homeFeatured.json`. Keep that file to bare post slugs (e.g., `"the-goal-with-yoga"`) so the homepage lookup `postsBySlug.get(slug)` can match frontmatter `slug` values without needing category prefixes or full URLs.
