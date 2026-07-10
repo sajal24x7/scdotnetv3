@@ -3,7 +3,6 @@ interface Props {
   title?: string;
   description?: string;
   actionUrl?: string;
-  targetUrl?: string;
   placeholder?: string;
   buttonText?: string;
   showCopy?: boolean;
@@ -18,7 +17,6 @@ const {
   title = "NordLetter",
   description = "I send out a newsletter once a week about living in Finland + five interesting things I've found on the open web.",
   actionUrl = "https://buttondown.com/api/emails/embed-subscribe/sajal24x7",
-  targetUrl = "https://buttondown.com/sajal24x7",
   placeholder = "email address",
   buttonText = "Subscribe",
   showCopy = true,
@@ -38,7 +36,7 @@ const formClasses = [
 ].filter(Boolean).join(" ");
 ---
 
-<div class={outerClasses}>
+<div class={outerClasses} data-newsletter-signup>
   <div class={innerClasses}>
     {showCopy && title && <h2 class={headingClass}>{title}</h2>}
     {showCopy && description && (
@@ -51,16 +49,17 @@ const formClasses = [
       class={formClasses}
       action={actionUrl}
       method="post"
-      target="popupwindow"
-      onsubmit={`window.open('${targetUrl}', 'popupwindow')`}
+      data-newsletter-form
     >
       <input
         type="email"
         name="email"
         placeholder={placeholder}
         required
+        data-newsletter-email
         class="w-80 sm:flex-1 px-4 py-1.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#8b5cf6] focus:border-transparent text-center"
       />
+      <input type="text" name="url" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true" />
       <button
         type="submit"
         class="w-auto px-6 py-1.5 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-lg transition-colors font-medium"
@@ -68,5 +67,61 @@ const formClasses = [
         {buttonText}
       </button>
     </form>
+
+    <p class="newsletter-message hidden mt-3 text-sm" data-newsletter-message role="status" aria-live="polite"></p>
   </div>
 </div>
+
+<script>
+  function initNewsletterForm(form: HTMLFormElement) {
+    if (form.dataset.bound === 'true') return;
+    form.dataset.bound = 'true';
+
+    const wrapper = form.closest('[data-newsletter-signup]');
+    const messageEl = wrapper?.querySelector<HTMLElement>('[data-newsletter-message]');
+
+    function showMessage(text: string, isError: boolean) {
+      if (!messageEl) return;
+      messageEl.textContent = text;
+      messageEl.classList.remove('hidden');
+      messageEl.classList.toggle('newsletter-message-error', isError);
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      })
+        .then((res) => {
+          if (res.ok) {
+            showMessage('Check your inbox to confirm — thanks!', false);
+            form.hidden = true;
+          } else {
+            const email = formData.get('email');
+            showMessage('Something went wrong. Please try again.', true);
+            if (typeof email === 'string') {
+              const emailInput = form.querySelector<HTMLInputElement>('[data-newsletter-email]');
+              if (emailInput) emailInput.value = email;
+            }
+          }
+        })
+        .catch(() => {
+          // Cross-origin fetch was blocked (or the network failed) — fall
+          // back to a normal form post to Buttondown's hosted page.
+          form.submit();
+        });
+    });
+  }
+
+  document.querySelectorAll<HTMLFormElement>('[data-newsletter-form]').forEach(initNewsletterForm);
+</script>
+
+<style>
+  .newsletter-message-error {
+    color: rgb(220, 38, 38);
+  }
+</style>
