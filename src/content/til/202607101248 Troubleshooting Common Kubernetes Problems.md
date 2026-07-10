@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - k8s
-  - container
-  - troubleshoot
-category: til
+title: "Troubleshooting Common Kubernetes Problems"
+slug: "troubleshooting-common-kubernetes-problems"
+created: 2026-07-10T12:48:00
 updated: 2026-07-10T13:08:38+03:00
+category: til
+tags: ["k8s", "container", "troubleshoot"]
 ---
 Problems can occur in different stages of deployment. In almost cases, the `describe` command gives an idea about the issue.
 
