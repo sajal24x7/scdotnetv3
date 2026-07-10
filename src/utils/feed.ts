@@ -185,18 +185,64 @@ async function renderMicro(post: Post): Promise<string> {
   return `${metaHtml(post)}<div class="feed-entry__body prose dark:prose-invert">${body}</div>`;
 }
 
+// Legacy photo posts embed a self-linked image in the body (`[![alt](url)](url)`,
+// a WordPress-era "click to view full size" convention). The feed already offers
+// the date chip as the entry's permalink, so unwrap these into plain <img> tags
+// rather than carrying a second, redundant link around the photo.
+function unwrapSelfLinkedImages(html: string): string {
+  return html.replace(
+    /<a\s+href="([^"]+)"[^>]*>\s*(<img\s+[^>]*>)\s*<\/a>/g,
+    (match, href, img) => (img.includes(`src="${href}"`) ? img : match)
+  );
+}
+
+function photoAlt(post: Post, index: number, total: number): string {
+  const title = post.data.title ? String(post.data.title) : '';
+  if (total <= 1) {
+    return title;
+  }
+  return title ? `${title} — photo ${index + 1} of ${total}` : `Photo ${index + 1} of ${total}`;
+}
+
+function photoGalleryHtml(images: string[], post: Post): string {
+  if (images.length === 0) {
+    return '';
+  }
+  if (images.length === 1) {
+    return `<p><img src="${escapeHtml(images[0])}" alt="${escapeHtml(photoAlt(post, 0, 1))}" loading="lazy"></p>`;
+  }
+  const slides = images
+    .map(
+      (src, index) =>
+        `<figure class="feed-carousel__slide"><img src="${escapeHtml(src)}" alt="${escapeHtml(photoAlt(post, index, images.length))}" loading="${index === 0 ? 'eager' : 'lazy'}" decoding="async"></figure>`
+    )
+    .join('');
+  const dots = images
+    .map((_, index) => `<span class="feed-carousel__dot${index === 0 ? ' feed-carousel__dot--active' : ''}"></span>`)
+    .join('');
+  return (
+    `<div class="feed-carousel" data-feed-carousel>` +
+    `<div class="feed-carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Photo gallery, ${images.length} photos">${slides}</div>` +
+    `<button class="feed-carousel__arrow feed-carousel__arrow--prev" type="button" data-carousel-prev aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` +
+    `<button class="feed-carousel__arrow feed-carousel__arrow--next" type="button" data-carousel-next aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` +
+    `<div class="feed-carousel__dots" data-carousel-dots aria-hidden="true">${dots}</div>` +
+    `</div>`
+  );
+}
+
 async function renderPhoto(post: Post): Promise<string> {
   const source = post.body ? await convertWikilinks(post.body) : '';
-  const body = source ? parseMarkdown(source) : '';
+  const parsedBody = source ? parseMarkdown(source) : '';
+  const body = parsedBody ? unwrapSelfLinkedImages(parsedBody) : '';
   // New-style photo posts keep their images in frontmatter, so the body is
-  // caption-only — surface the first gallery image above it. Legacy posts
-  // already embed images in the body.
+  // caption-only — surface the full gallery above it. Legacy posts already
+  // embed their (single) image in the body.
   const bodyHasImage = /!\[[^\]]*\]\(/.test(post.body || '');
   const galleryImages = bodyHasImage ? [] : getPhotoImages(post.data, null);
-  const galleryHtml = galleryImages.length > 0
-    ? `<p><a href="${postLink(post)}"><img src="${escapeHtml(galleryImages[0])}" alt="" loading="lazy"></a></p>`
-    : '';
-  return `${metaHtml(post)}${titleHtml(post)}<div class="feed-entry__body feed-entry__body--photo prose dark:prose-invert">${galleryHtml}${body}</div>`;
+  const galleryHtml = photoGalleryHtml(galleryImages, post);
+  // No title: the photo and caption speak for themselves, and the date chip
+  // above already links to the post — matching the caption-only "micro" layout.
+  return `${metaHtml(post)}<div class="feed-entry__body feed-entry__body--photo prose dark:prose-invert">${galleryHtml}${body}</div>`;
 }
 
 function renderBlog(post: Post): string {
