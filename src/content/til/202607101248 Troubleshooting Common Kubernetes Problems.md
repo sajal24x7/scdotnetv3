@@ -1,10 +1,16 @@
 ---
-title: "Troubleshooting Common Kubernetes Problems"
-slug: "troubleshooting-common-kubernetes-problems"
-created: 2026-07-10T12:48:00
-updated: 2026-07-10T13:08:38+03:00
+title: Troubleshooting Common Kubernetes Problems
+slug: troubleshooting-common-kubernetes-problems
+created: 2026-07-10T12:48:00.000Z
+updated: 2026-07-10T10:08:38.000Z
 category: til
-tags: ["k8s", "container", "troubleshoot"]
+tags:
+  - k8s
+  - container
+  - troubleshoot
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116895159784042329'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqbw6cukmm2f'
 ---
 Problems can occur in different stages of deployment. In almost cases, the `describe` command gives an idea about the issue.
 
