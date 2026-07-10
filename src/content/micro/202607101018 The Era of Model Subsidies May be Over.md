@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - anthropic
-  - claude
-category: micro
+title: "The Era of Model Subsidies May Be Over"
+slug: "the-era-of-model-subsidies-may-be-over"
+created: 2026-07-10T10:18:00
 updated: 2026-07-10T10:20:11+03:00
+category: micro
+tags: ["anthropic", "claude"]
 ---
 [Anthropic Wants You to Pay Up for Claude Fable 5 by Maxwell Zeff](https://www.wired.com/story/model-behavior-anthropic-will-charge-consumers-extra-to-use-claude-fable-5/)
 
