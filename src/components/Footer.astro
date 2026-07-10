@@ -1,5 +1,6 @@
 ---
 import { getPostActivitySummary } from '../utils/postStats';
+import NewsletterSignup from './ui/NewsletterSignup.astro';
 
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
@@ -30,14 +31,24 @@ const footerNavItems = [
             ))}
         </nav>
 
-        <div class="footer-stats-row mt-6 pt-6 text-center">
-            <p class="text-small opacity-75 mb-2">&copy; {currentYear} Sajal Choudhary</p>
-            {hasPosts && (
-                <>
+        <div class="footer-bottom-grid grid grid-cols-1 md:grid-cols-2 gap-8 mt-6 pt-6">
+            <div class="footer-subscribe text-center md:text-left">
+                <h2 class="text-large font-bold mb-3">Stay up to date</h2>
+                <NewsletterSignup
+                    showCopy={false}
+                    buttonText="Subscribe"
+                    wrapperClass="py-0 mb-3"
+                    formClass="justify-center md:justify-start mx-auto md:mx-0"
+                />
+                <a href="/feeds/" class="footer-rss-btn">Subscribe via RSS</a>
+            </div>
+
+            <div class="footer-stats text-center md:text-right">
+                <p class="text-small opacity-75 mb-2">&copy; {currentYear} Sajal Choudhary</p>
+                {hasPosts && (
                     <p class="font-medium">New posts for <span class="footer-accent">{streakWeeks}</span> consecutive {streakWeeks === 1 ? 'week' : 'weeks'}</p>
-                    <p class="mt-1 text-small opacity-75">{totalPosts} total posts</p>
-                </>
-            )}
+                )}
+            </div>
         </div>
     </div>
 </footer>
@@ -52,12 +63,12 @@ const footerNavItems = [
         border-color: rgb(85, 75, 70);
     }
 
-    .footer-stats-row {
+    .footer-bottom-grid {
         border-top: 1px solid rgb(85, 75, 70);
     }
 
     .footer-nav a,
-    .footer-stats-row p {
+    .footer-stats p {
         color: rgb(209, 213, 219);
     }
 
@@ -71,5 +82,34 @@ const footerNavItems = [
 
     .footer-accent {
         color: #a78bfa;
+    }
+
+    /* The footer band is always dark regardless of the site's light/dark
+       toggle, so the embedded newsletter form needs its own fixed styling
+       rather than relying on Tailwind's .dark-scoped variants. */
+    .footer-subscribe :global(input[type='email']) {
+        background: rgb(45, 38, 34) !important;
+        border-color: rgb(85, 75, 70) !important;
+        color: rgb(255, 250, 240) !important;
+    }
+
+    .footer-subscribe :global(input[type='email']::placeholder) {
+        color: rgb(156, 163, 175);
+    }
+
+    .footer-rss-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.375rem 1.5rem;
+        border: 1px solid rgb(85, 75, 70);
+        border-radius: 0.5rem;
+        color: rgb(255, 250, 240);
+        font-weight: 500;
+        transition: background-color 0.2s ease;
+    }
+
+    .footer-rss-btn:hover {
+        background: rgb(45, 38, 34);
     }
 </style>
