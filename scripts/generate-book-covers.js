@@ -14,9 +14,21 @@ if (!fs.existsSync(bookshelfDir)) {
   fs.mkdirSync(bookshelfDir, { recursive: true });
 }
 
-// Scan the bookshelf directory for image files
+// Scan the bookshelf directory for image files, normalizing any uppercase
+// extensions (e.g. .JPG) on disk so TypeScript's case-sensitive module
+// resolution doesn't choke on the generated imports.
 const imageFiles = fs.readdirSync(bookshelfDir)
   .filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file))
+  .map(file => {
+    const ext = path.extname(file);
+    const lowerExt = ext.toLowerCase();
+    if (ext === lowerExt) return file;
+
+    const normalized = file.slice(0, -ext.length) + lowerExt;
+    console.log(`Normalizing extension: ${file} -> ${normalized}`);
+    fs.renameSync(path.join(bookshelfDir, file), path.join(bookshelfDir, normalized));
+    return normalized;
+  })
   .sort();
 
 console.log(`Found ${imageFiles.length} image files in ${bookshelfDir}`);
