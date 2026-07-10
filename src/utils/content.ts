@@ -41,6 +41,7 @@ export interface Post {
     // Game-specific
     developer?: string;
     platform?: string;
+    hoursPlayed?: number;
     // Shared shelf
     year?: number;
   };

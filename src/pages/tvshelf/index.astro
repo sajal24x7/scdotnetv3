@@ -21,7 +21,7 @@ const parseDate = (value?: Date | string | null): Date | null => {
 // (single season) and seasonSlug is left undefined — the card links to the
 // show overview page rather than a season subpage.
 function parsePostSlug(post: typeof tvPosts[number]) {
-    const parts = (post.data.slug ?? '').split('/');
+    const parts = post.id.split('/');
     const showTitle = post.data.showTitle ?? post.data.title ?? 'Unknown';
     const hasSeason = post.data.season !== undefined;
     const seasonNum = post.data.season ?? 1;
@@ -138,7 +138,6 @@ const sectionLandingProps = createSectionLandingProps({
                 const { post, showTitle, showSlug, seasonSlug, seasonNum } = entry;
                 return (
                   <div
-                    key={`${showSlug}-${seasonSlug}`}
                     class={`bookshelf-year__book ${gridClasses}`}
                     data-content-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
