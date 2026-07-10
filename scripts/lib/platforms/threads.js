@@ -72,6 +72,10 @@ export async function postToThreads(formattedContent) {
         media_type: 'TEXT',
         text: formattedContent.text
       });
+      // Text containers are usually ready almost immediately, but publishing
+      // before Threads has finished creating the container can fail with
+      // "The requested resource does not exist" — wait for it here too.
+      await waitForThreadsContainer(containerId, accessToken);
     }
 
     // Step 2: Publish the Threads Media Container
@@ -148,11 +152,14 @@ async function createThreadsContainer(userId, accessToken, payload) {
 }
 
 /**
- * Poll a media container until Threads finishes processing it
+ * Poll a media container until Threads finishes processing it.
+ * Threads routinely takes well over 20s to fetch/process an image_url
+ * container, so this needs a generous ceiling (previously 10 * 2s = 20s,
+ * which timed out on essentially every image post).
  */
-async function waitForThreadsContainer(containerId, accessToken, maxAttempts = 10) {
+async function waitForThreadsContainer(containerId, accessToken, maxAttempts = 30) {
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 3000));
 
     const response = await fetch(`https://graph.threads.net/v1.0/${containerId}?fields=status_code`, {
       headers: {
