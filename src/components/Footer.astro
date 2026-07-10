@@ -1,32 +1,136 @@
 ---
-import { formatDateWithTime } from '../utils/dateFormat';
 import { getPostActivitySummary } from '../utils/postStats';
 
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
 
-const { latestPostDate, streakWeeks, totalPosts } = await getPostActivitySummary();
+const { streakWeeks, totalPosts } = await getPostActivitySummary();
 const hasPosts = totalPosts > 0;
-const formattedLastPostDate = latestPostDate ? formatDateWithTime(latestPostDate) : '';
 
-// Footer page links removed; footer now only shows copyright and stats
+const footerNavItems = [
+    { href: '/sajal/', label: 'About' },
+    { href: '/colophon/', label: 'Colophon' },
+    { href: '/now/', label: 'Now' },
+    { href: '/evergreen/', label: 'Evergreen' },
+    { href: '/til/', label: 'TIL' },
+    { href: '/stories/', label: 'Stories' },
+    { href: '/poems/', label: 'Poems' },
+    { href: '/photos/', label: 'Photos' },
+    { href: '/bookshelf/', label: 'Bookshelf' },
+];
 ---
 
-<footer class="py-6 border-t border-gray-600 dark:border-gray-400 bg-black text-white">
+<footer class="site-footer py-6 border-t">
     <div class="container mx-auto px-4 max-w-6xl">
-        {hasPosts && (
-            <div class="text-center text-gray-300 text-normal pt-4">
-                <p class="text-small opacity-75 mb-2">This website was last updated on {formattedLastPostDate}</p>
-                <p class="font-medium">New posts for <span class="text-orange-500">{streakWeeks}</span> consecutive {streakWeeks === 1 ? 'week' : 'weeks'}</p>
-                <p class="mt-1 text-small opacity-75">{totalPosts} total posts</p>
-            </div>
-        )}
+        <nav aria-label="Footer navigation" class="footer-nav flex flex-wrap justify-center gap-x-6 gap-y-2 text-small">
+            {footerNavItems.map((item) => (
+                <a href={item.href}>
+                    {item.label}
+                </a>
+            ))}
+        </nav>
 
-        <!-- Copyright moved to the end -->
-        <div class="text-center mt-6">
-            <p class="text-gray-300 text-sm">
-                &copy; {currentYear} Sajal Choudhary. All rights reserved.
-            </p>
+        <form action="/search" method="get" role="search" aria-label="Site search" class="footer-search mt-6 mx-auto">
+            <input
+                type="search"
+                name="q"
+                placeholder="Search the site…"
+                aria-label="Search"
+                class="footer-search-input"
+            />
+            <button type="submit" class="footer-search-btn" aria-label="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </button>
+        </form>
+
+        <div class="footer-stats-row mt-6 text-center">
+            <p class="text-small opacity-75 mb-2">&copy; {currentYear} Sajal Choudhary</p>
+            {hasPosts && (
+                <p class="font-medium">
+                    <span class="footer-streak-label">Streak</span>
+                    New posts for <span class="footer-accent">{streakWeeks}</span> consecutive {streakWeeks === 1 ? 'week' : 'weeks'}
+                </p>
+            )}
         </div>
     </div>
 </footer>
+
+<style>
+    /* Deliberately always dark — a fixed footer band (reusing the site's own
+       dark-mode background) rather than following the light/dark toggle or
+       the randomized hero palette. */
+    .site-footer {
+        background: rgb(35, 30, 28);
+        color: rgb(255, 250, 240);
+        border-color: rgb(85, 75, 70);
+    }
+
+    .footer-nav a,
+    .footer-stats-row p {
+        color: rgb(209, 213, 219);
+    }
+
+    .footer-nav a {
+        transition: color 0.2s ease;
+    }
+
+    .footer-nav a:hover {
+        color: rgb(255, 250, 240);
+    }
+
+    .footer-accent {
+        color: #a78bfa;
+    }
+
+    .footer-streak-label {
+        color: #a78bfa;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-right: 0.4em;
+    }
+
+    .footer-search {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        max-width: 24rem;
+    }
+
+    .footer-search-input {
+        flex: 1;
+        min-width: 0;
+        padding: 0.5rem 0.875rem;
+        border: 1px solid rgb(85, 75, 70);
+        border-radius: 0.5rem;
+        background: rgb(45, 38, 34);
+        color: rgb(255, 250, 240);
+        font-size: var(--text-small);
+    }
+
+    .footer-search-input::placeholder {
+        color: rgb(156, 163, 175);
+    }
+
+    .footer-search-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 2.25rem;
+        height: 2.25rem;
+        border: 1px solid rgb(85, 75, 70);
+        border-radius: 0.5rem;
+        color: rgb(255, 250, 240);
+        background: transparent;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .footer-search-btn:hover {
+        background: rgb(45, 38, 34);
+    }
+</style>
