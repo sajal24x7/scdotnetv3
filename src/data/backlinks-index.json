@@ -1852,7 +1852,7 @@
       "description": "",
       "category": "til",
       "created": "2024-07-27T08:43:00.000Z",
-      "snippet": "NSGs can be used to control access."
+      "snippet": "Basic allows traffic by default. NSGs can be used to control access."
     },
     {
       "slug": "/til/add-rules-to-nsg-in-azure/",
@@ -2008,7 +2008,7 @@
       "description": "",
       "category": "til",
       "created": "2024-06-15T08:33:00.000Z",
-      "snippet": "Querying ARM can be slow and expensive."
+      "snippet": "Querying ARM can be slow and expensive. There is a quota. So we use Azure Resource Graph"
     },
     {
       "slug": "/til/arm-template/",
@@ -2064,7 +2064,7 @@
       "description": "",
       "category": "til",
       "created": "2024-04-05T15:18:00.000Z",
-      "snippet": "Another construct for grouping together resources."
+      "snippet": "Another construct for grouping together resources. Things that run together, might get decommissioned together, policies, etc."
     },
     {
       "slug": "/til/entra-id-roles/",
@@ -2289,7 +2289,7 @@
       "description": "",
       "category": "til",
       "created": "2024-06-01T08:59:00.000Z",
-      "snippet": "azure governance i.e."
+      "snippet": "azure governance i.e. shared responsibility model depending on what you're using"
     },
     {
       "slug": "/til/azure-storage-services/",
@@ -2720,7 +2720,8 @@
       "title": "Azure ExpressRoute",
       "description": "",
       "category": "til",
-      "created": "2024-04-14T10:39:00.000Z"
+      "created": "2024-04-14T10:39:00.000Z",
+      "snippet": "Has redundant connections i.e. resiliency"
     },
     {
       "slug": "/til/azure-storage-redundancy/",
@@ -2888,7 +2889,7 @@
       "description": "",
       "category": "til",
       "created": "2024-04-07T12:59:00.000Z",
-      "snippet": "Use pim maybe for JIT access for Backup admins."
+      "snippet": "Use pim maybe for JIT access for Backup admins. But assume they will have access."
     },
     {
       "slug": "/til/azure-roles/",
@@ -2978,7 +2979,7 @@
       "description": "",
       "category": "til",
       "created": "2024-04-18T15:46:00.000Z",
-      "snippet": "These are just Azure VMs so nothing special in that way."
+      "snippet": "These are just Azure VMs so nothing special in that way. You can interact with them whichever way you want."
     },
     {
       "slug": "/til/instance-metadata-service/",
@@ -3116,7 +3117,7 @@
       "description": "",
       "category": "til",
       "created": "2024-04-20T10:48:00.000Z",
-      "snippet": "Built on top of AKS, abstracts away the AKS layer."
+      "snippet": "Built on top of AKS, abstracts away the AKS layer. We focus on the application"
     },
     {
       "slug": "/til/azure-master/",
@@ -3401,7 +3402,7 @@
       "description": "",
       "category": "til",
       "created": "2024-06-08T09:05:00.000Z",
-      "snippet": "Azure Well Architected Framework provides a set of guidelines around how to design a workload."
+      "snippet": "Azure Well Architected Framework provides a set of guidelines around how to design a workload. This framework concerns itself with architecture and not implementation."
     },
     {
       "slug": "/til/azure-monitoring-old/",
@@ -3433,7 +3434,7 @@
       "description": "",
       "category": "til",
       "created": "2024-04-12T09:39:00.000Z",
-      "snippet": "You create a sync group in Azure which."
+      "snippet": "You create a sync group in Azure which. allows sync between on-prem and Azure Files"
     },
     {
       "slug": "/til/how-do-azure-resources-use-resiliency/",
@@ -3633,7 +3634,7 @@
       "description": "",
       "category": "til",
       "created": "2024-04-20T09:10:00.000Z",
-      "snippet": "Azure Container Instace is OK."
+      "snippet": "Azure Container Instace is OK. But mostly we need more than one container."
     },
     {
       "slug": "/til/azure-master/",
@@ -3998,7 +3999,7 @@
       "description": "",
       "category": "til",
       "created": "2024-04-05T14:39:00.000Z",
-      "snippet": "At root management group level for example, you want broad policies that need to apply."
+      "snippet": "At root management group level for example, you want broad policies that need to apply. Least restrictive. And so on."
     },
     {
       "slug": "/til/azure-master/",
@@ -4991,7 +4992,7 @@
       "description": "",
       "category": "til",
       "created": "2024-04-06T09:12:00.000Z",
-      "snippet": "So we use Azure Resource Graph"
+      "snippet": "Querying ARM can be slow and expensive. There is a quota. So we use Azure Resource Graph"
     }
   ],
   "til/entra-id-roles": [
@@ -5269,7 +5270,7 @@
       "description": "",
       "category": "til",
       "created": "2024-04-08T16:37:00.000Z",
-      "snippet": "Creating things takes time so it depends on RTO."
+      "snippet": "Creating things takes time so it depends on RTO. If RTO is less then we have to have something running in the secondary region. But it will cost more. If RTO is more we can recreate."
     },
     {
       "slug": "/til/disaster-recovery/",
@@ -5699,7 +5700,7 @@
       "description": "",
       "category": "til",
       "created": "2023-06-30T08:58:00.000Z",
-      "snippet": "They connect to backchannel ports on the UCS IOM or Fabric Extenders module."
+      "snippet": "Servers don't have ports. They connect to backchannel ports on the UCS IOM or Fabric Extenders module."
     }
   ],
   "til/create-custom-route": [
@@ -5748,7 +5749,7 @@
       "description": "",
       "category": "blog",
       "created": "2025-12-31T20:10:19.000Z",
-      "snippet": "Then, I tried again, this time with - Abundance: How We Build a Better Future."
+      "snippet": "The first book I tried was in fact badly done and so I found more reason to not do it. Then, I tried again, this time with - Abundance: How We Build a Better Future. And I found myself coming around to audiobooks."
     },
     {
       "slug": "/nordletter/nl69-a-fresh-start/",
@@ -5780,7 +5781,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2025-07-09T13:12:00.000Z",
-      "snippet": "The first was Abundance by Ezra Klein and Derek Thompson."
+      "snippet": "I have discovered audio books recently. This is the second book I’ve read by hearing it on Audible. The first was Abundance by Ezra Klein and Derek Thompson. And in my very limited experience with audiobooks, I feel fiction is better suited to the format. With non-fiction, I tend to take notes and that is hard with audiobooks."
     }
   ],
   "bookshelf/chambers-becky-the-galaxy-and-the-ground-within": [
@@ -5809,7 +5810,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-04-06T08:27:25.000Z",
-      "snippet": "The first I had read of Ken Liu was the three-body problem series."
+      "snippet": "The first I had read of Ken Liu was the three-body problem series. He was the translator for the first and the third books in the series. And I had enjoyed both of these books. So, when this book showed up in the e-library I had marked it in my favourites list. That list is how I pick up the next book to read."
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
@@ -6010,7 +6011,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-03-10T17:24:57.000Z",
-      "snippet": "This one felt weird because it continues the story from Network Effect and I did not remember it properly."
+      "snippet": "This one felt weird because it continues the story from Network Effect and I did not remember it properly. I guess this is why I have a tendency to not start a series till it is finished. The reason why I have not watched Stranger Things yet."
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
@@ -6074,7 +6075,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2025-12-01T09:47:15.000Z",
-      "snippet": "The great trick of Children of Time has been repeated twice now - like the fast and the furious movies, where the villain from one movie becomes the hero in the next one."
+      "snippet": "The great trick of Children of Time has been repeated twice now - like the fast and the furious movies, where the villain from one movie becomes the hero in the next one. It feels like something similar is happening here."
     }
   ],
   "bookshelf/the-mysterious-affair-at-styles": [
@@ -6111,7 +6112,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-03-07T23:08:24.000Z",
-      "snippet": "I have felt this once or twice - not often, but enough like reading The secret of secrets at 1.5x."
+      "snippet": "I have felt this once or twice - not often, but enough like reading The secret of secrets at 1.5x. That was driven more by the duration of time I had the book borrowed from library for (14 days)."
     },
     {
       "slug": "/micro/problems-with-gamifying-reading/",
@@ -6119,7 +6120,7 @@
       "description": "",
       "category": "micro",
       "created": "2026-03-05T10:42:28.000Z",
-      "snippet": "I have felt this once or twice - not often, but enough like reading The secret of secrets at 1.5x."
+      "snippet": "I have felt this once or twice - not often, but enough like reading The secret of secrets at 1.5x. That was driven more by the duration of time I had the book borrowed from library for (14 days)."
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
@@ -6144,7 +6145,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2025-12-01T09:47:15.000Z",
-      "snippet": "At least, that was the case with Children of ruin."
+      "snippet": "At least, that was the case with Children of ruin. Not so much with this one."
     }
   ],
   "bookshelf/before-the-coffee-gets-cold": [
@@ -6310,7 +6311,7 @@
       "description": "",
       "category": "evergreen",
       "created": "2025-10-26T20:52:38.000Z",
-      "snippet": "Read about this first in Slow Productivity."
+      "snippet": "Related to Pull vs push method for getting projects. Read about this first in Slow Productivity."
     }
   ],
   "bookshelf/enshittification": [
@@ -6320,7 +6321,7 @@
       "description": "",
       "category": "micro",
       "created": "2026-01-23T16:19:44.000Z",
-      "snippet": "Thank enshittification!"
+      "snippet": "We are inadvertently putting so much private stuff in the hands of these companies. And as countless companies with ads as the primary money making thing, we are not the customers. For some time it will be the people paying for the ads. And then after a bit, not even them. Thank enshittification!"
     },
     {
       "slug": "/blog/books-ive-read-this-year/",
@@ -6344,7 +6345,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2025-12-02T15:03:13.000Z",
-      "snippet": "I had just finished Every day I read, which has simpler language."
+      "snippet": "When I started the book, I felt a certain disconnect - perhaps in the way the first essay was written. I had just finished Every day I read, which has simpler language. Or maybe David used to have a flowery writing style then."
     }
   ],
   "bookshelf/on-tennis": [
@@ -6370,7 +6371,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-12-21T18:00:25.000Z",
-      "snippet": "After reading Empire of AI I am a little miffed at the company in any case."
+      "snippet": "Image generation is not my use case. After reading Empire of AI I am a little miffed at the company in any case."
     }
   ],
   "bookshelf/steal-like-an-artist": [
@@ -6477,7 +6478,7 @@
       "description": "",
       "category": "blog",
       "created": "2025-10-30T20:53:11.000Z",
-      "snippet": "By the time his talk was over, I had looked him up in my notes and found out that he was one of the organisers/speakers during the global AI bootcamp at the MSFT office."
+      "snippet": "Vesa was up next. From the moment he had said Hello, I was wondering where had I seen him before. Not just seen, because there are a few people I keep seeing at these events, but rather heard speak. By the time his talk was over, I had looked him up in my notes and found out that he was one of the organisers/speakers during the global AI bootcamp at the MSFT office."
     }
   ],
   "now/learning-python": [
@@ -6487,7 +6488,7 @@
       "description": "",
       "category": "blog",
       "created": "2025-11-19T20:40:40.000Z",
-      "snippet": "I wrote a solution to a python exercise today."
+      "snippet": "I wrote a solution to a python exercise today. With the University of Helsinki MooC, a fun thing that they do is they have an option to show model solution. I guess some LLM provides a solution for the exercise as well."
     }
   ],
   "blog/thoughts-on-iphone-day": [
@@ -6497,7 +6498,7 @@
       "description": "",
       "category": "blog",
       "created": "2025-09-09T18:47:57.000Z",
-      "snippet": "The 2024 edition here."
+      "snippet": "Hello, iPhone Day. The 2024 edition here."
     }
   ],
   "blog/about-the-pareto-principle": [
@@ -6507,7 +6508,7 @@
       "description": "",
       "category": "blog",
       "created": "2026-04-16T19:39:17.000Z",
-      "snippet": "Shoutout to The Pareto principle"
+      "snippet": "You don’t need to know everything to start building. Just build. Shoutout to The Pareto principle"
     }
   ],
   "micro/human-cost-of-10x-productivity": [
@@ -6517,7 +6518,7 @@
       "description": "",
       "category": "blog",
       "created": "2026-04-16T19:39:17.000Z",
-      "snippet": "I have been thinking about this a bunch these past few days and had a few micro posts on this - Human cost of 10x productivity was a recent one."
+      "snippet": "I have been thinking about this a bunch these past few days and had a few micro posts on this - Human cost of 10x productivity was a recent one. So this talk felt timely."
     }
   ],
   "nordletter/nl67-performing-at-india-day": [
@@ -6527,7 +6528,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-01-03T21:03:01.000Z",
-      "snippet": "I performed at India Day this year!"
+      "snippet": "I performed at India Day this year! Both the act of performing and the countless training that went into it was awesome."
     },
     {
       "slug": "/blog/what-do-i-do-now/",
@@ -6535,7 +6536,7 @@
       "description": "",
       "category": "blog",
       "created": "2025-08-20T19:06:10.000Z",
-      "snippet": "I wrote about my experience in NL67."
+      "snippet": "I performed at India Day on Sunday. I wrote about my experience in NL67."
     }
   ],
   "evergreen/about-ai-browsers": [
@@ -6545,7 +6546,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-07-27T03:11:00.000Z",
-      "snippet": "I wrote About AI browsers some time back."
+      "snippet": "I wrote About AI browsers some time back. I continue feeling the same way about them."
     },
     {
       "slug": "/micro/about-perplexitys-new-ai-browser/",
@@ -6553,7 +6554,7 @@
       "description": "",
       "category": "micro",
       "created": "2025-07-19T08:31:53.000Z",
-      "snippet": "I wrote About AI browsers some time back."
+      "snippet": "I wrote About AI browsers some time back. I continue feeling the same way about them."
     }
   ],
   "micro/should-ai-flatter-us-fix-us-or-just-inform-us-by-james-odonnell": [
@@ -6563,7 +6564,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-08-31T03:30:49.000Z",
-      "snippet": "I read should AI flatter us, fix us, or just inform us, the crux of which was that agents like ChatGPT etc."
+      "snippet": "I read should AI flatter us, fix us, or just inform us, the crux of which was that agents like ChatGPT etc. should behave like machines, and it should be clear to us, the humans, that they are machines."
     },
     {
       "slug": "/micro/emotional-agents/",
@@ -6571,7 +6572,7 @@
       "description": "",
       "category": "micro",
       "created": "2025-08-24T19:54:50.000Z",
-      "snippet": "I read should AI flatter us, fix us, or just inform us, the crux of which was that agents like ChatGPT etc."
+      "snippet": "I read should AI flatter us, fix us, or just inform us, the crux of which was that agents like ChatGPT etc. should behave like machines, and it should be clear to us, the humans, that they are machines."
     }
   ],
   "micro/claude-code-psychosis": [
@@ -6591,7 +6592,7 @@
       "description": "",
       "category": "micro",
       "created": "2025-08-01T04:22:45.000Z",
-      "snippet": "OpenAI announced study mode in ChatGPT recently which was similarly useful."
+      "snippet": "These are useful features, at least the first one. OpenAI announced study mode in ChatGPT recently which was similarly useful. It’s good to have these stream of new features which are just system prompts though Anthropic has created new tools for these."
     }
   ],
   "micro/about-claude-remote-control": [
@@ -6601,7 +6602,7 @@
       "description": "",
       "category": "micro",
       "created": "2026-02-25T19:58:05.000Z",
-      "snippet": "But this feature is awesome, in addition to the Claude remote work feature. I hope they release a CC web type Claude cowork tool."
+      "snippet": "But this feature is awesome, in addition to the Claude remote work feature. I hope they release a CC web type Claude cowork tool. A mixture of these two abilities, basically."
     }
   ],
   "gameshelf/ghost-of-yotei": [
@@ -6611,7 +6612,7 @@
       "description": "",
       "category": "micro",
       "created": "2026-07-02T06:27:48.000Z",
-      "snippet": "I am playing Ghost of Yotei now."
+      "snippet": "I have started playing maybe half an hour or so each day now. I am playing Ghost of Yotei now. So I’m looking forward to playing GTA 6 when it comes out. Would I play when it releases? I don’t know. It is a single player game. I can enjoy the story later as well, when the prices drop slightly - which has been my modus-operandi with games on the PlayStation."
     }
   ],
   "evergreen/mixed-format-books": [
@@ -6621,7 +6622,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-01-25T16:48:33.000Z",
-      "snippet": "I wrote about a similar idea in mixed format books."
+      "snippet": "I wrote about a similar idea in mixed format books. It would be good to see it out in the world."
     },
     {
       "slug": "/micro/spotify-is-testing-a-feature-that-syncs-audiobooks-with-paper-editions/",
@@ -6629,7 +6630,7 @@
       "description": "",
       "category": "micro",
       "created": "2026-01-21T04:01:33.000Z",
-      "snippet": "I wrote about a similar idea in mixed format books."
+      "snippet": "I wrote about a similar idea in mixed format books. It would be good to see it out in the world."
     }
   ],
   "micro/cloudflare-explains-tuesdays-outage": [
@@ -6649,7 +6650,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-01-03T21:03:01.000Z",
-      "snippet": "I am starting a new thing here (not entirely new), a recap of everything that I did and some things that happened to me."
+      "snippet": "I am starting a new thing here (not entirely new), a recap of everything that I did and some things that happened to me. Everyone does it. So why not."
     }
   ],
   "micro/chatgpt-has-yearly-recaps-as-well": [
@@ -6658,7 +6659,8 @@
       "title": "Happy New Year",
       "description": "",
       "category": "nordletter",
-      "created": "2026-01-03T21:03:01.000Z"
+      "created": "2026-01-03T21:03:01.000Z",
+      "snippet": "I am starting a new thing here (not entirely new), a recap of everything that I did and some things that happened to me. Everyone does it. So why not."
     }
   ],
   "blog/books-ive-read-this-year": [
@@ -6668,7 +6670,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-01-03T21:03:01.000Z",
-      "snippet": "I read 37 books this year."
+      "snippet": "I posted a NordLetter almost every Sunday. I continue to write how I want to on my blog. I have a 31 consecutive week streak active right now! Writing helps me think. My website provides me a space to do that out in the open. It also leaves me a place to say hey, look at the books I read - they are so awesome! Everyone should read more. I read 37 books this year."
     }
   ],
   "nordletter/election-time": [
@@ -6678,7 +6680,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-01-03T21:03:01.000Z",
-      "snippet": "I voted in a municipal election here in Finland."
+      "snippet": "I voted in a municipal election here in Finland. The person I voted for did not win, eventually but whatever, that was not the point. Voting was the point, for me at least."
     }
   ],
   "nordletter/trip-to-nyc-i": [
@@ -6688,7 +6690,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-06-07T17:38:19.000Z",
-      "snippet": "I wrote about it across four different posts."
+      "snippet": "I had no idea then where would I go. Last year, we were in Manhattan. I wrote about it across four different posts. This year there are no such concrete plans. Prerna had mentioned Prague at some point, I had mentioned Barcelona, a friend lives there. We could just go visit her."
     },
     {
       "slug": "/nordletter/nl102-seeing-the-crown-bridge/",
@@ -6696,7 +6698,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-04-25T20:52:19.000Z",
-      "snippet": "It reminded me a bit about crossing the Brooklyn Bridge without the Manhattan skyline."
+      "snippet": "If you know me, you know I don't like crowds, so I had decided to visit the bridge sometime next week, i.e. this week. A few other people seemed to have had the same idea. I saw a bunch of people with their cameras out, taking pictures with the bridge. It reminded me a bit about crossing the Brooklyn Bridge without the Manhattan skyline. Of course the crown bridge is shorter. I know."
     },
     {
       "slug": "/nordletter/happy-new-year/",
@@ -6704,7 +6706,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-01-03T21:03:01.000Z",
-      "snippet": "We visited Manhattan."
+      "snippet": "We visited Manhattan. It was a great trip, other than the bouts of illness almost all three of us had, at different times. NYC is so damn massive - no city like it. But the public services are meh, especially coming from Helsinki."
     },
     {
       "slug": "/nordletter/nl71/",
@@ -6722,7 +6724,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-05-09T20:51:46.000Z",
-      "snippet": "Incidentally, at Savya's last päiväkoti, one of the last things we did was celebrate Father's Day."
+      "snippet": "Incidentally, at Savya's last päiväkoti, one of the last things we did was celebrate Father's Day. There was supposed to be coffee and snacks, but I did not get any."
     },
     {
       "slug": "/nordletter/happy-new-year/",
@@ -6730,7 +6732,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-01-03T21:03:01.000Z",
-      "snippet": "We moved to the campus, thanks to this above bit of news."
+      "snippet": "We moved to the campus, thanks to this above bit of news. My office is 10 mins from here. Savya's daycare is like a 5 minute walk from home."
     },
     {
       "slug": "/nordletter/nl85/",
@@ -6738,7 +6740,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-12-27T21:33:35.000Z",
-      "snippet": "We moved to our new home in Kumpula/Helsinki on 8th November."
+      "snippet": "We moved to our new home in Kumpula/Helsinki on 8th November. Since we moved here, I had not felt at home. Something felt amiss."
     }
   ],
   "blog/azure-and-friends-october-meetup": [
@@ -6748,7 +6750,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-10-11T23:06:03.000Z",
-      "snippet": "I took this picture after leaving the Azure and Friends October meetup."
+      "snippet": "This clocktower is at the Central Railway Station. I took this picture after leaving the Azure and Friends October meetup."
     }
   ],
   "blog/azure-and-friends-at-brightly": [
@@ -6786,7 +6788,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-04-11T21:19:08.000Z",
-      "snippet": "I finished reading This and that by Ryokan last week."
+      "snippet": "I finished reading This and that by Ryokan last week. It is a short wonderful book of poems, translated from the original Japanese. Ryokan was a monk, who sat and saw the world through his ageing eyes."
     }
   ],
   "bookshelf/i-deliver-parcels-in-beijing": [
@@ -6796,7 +6798,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-04-19T14:41:52.000Z",
-      "snippet": "I finished reading I Deliver Parcels in Beijing by Hu Anyan."
+      "snippet": "I finished reading I Deliver Parcels in Beijing by Hu Anyan. It is exactly what it says in the title - experiences of a man who delivers parcels in Beijing. There are so many things I have underlined in this book."
     },
     {
       "slug": "/nordletter/nl-100/",
@@ -6804,7 +6806,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-04-11T21:19:08.000Z",
-      "snippet": "I Deliver Parcels in Beijing and All that we see or seem."
+      "snippet": "What am I reading now? I Deliver Parcels in Beijing and All that we see or seem. I will have the reviews up soon enough."
     }
   ],
   "bookshelf/all-that-we-see-or-seem": [
@@ -6814,7 +6816,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-04-11T21:19:08.000Z",
-      "snippet": "I Deliver Parcels in Beijing and All that we see or seem."
+      "snippet": "What am I reading now? I Deliver Parcels in Beijing and All that we see or seem. I will have the reviews up soon enough."
     }
   ],
   "evergreen/be-a-hybrid": [
@@ -6824,7 +6826,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-05-09T20:51:46.000Z",
-      "snippet": "I rediscovered my earlier post on be a hybrid and thought, that's a nice way to introduce myself in meetups and otherwise."
+      "snippet": "This week was momentous in terms of work adjacent things. I rediscovered my earlier post on be a hybrid and thought, that's a nice way to introduce myself in meetups and otherwise."
     }
   ],
   "bookshelf/reading-cats-cradle": [
@@ -6834,7 +6836,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-05-09T20:51:46.000Z",
-      "snippet": "I finished reading Cat's Cradle by Kurt Vonnegut this week."
+      "snippet": "I finished reading Cat's Cradle by Kurt Vonnegut this week. This, surprising to me at least, was only the second book I've read of the man. Surprising because I know Kurt Vonnegut, and love his writing."
     }
   ],
   "blog/vibe-coding-april-meetup": [
@@ -6844,7 +6846,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-05-09T20:51:46.000Z",
-      "snippet": "But then, at the last Vibe-Coding Meetup, I saw someone present these beautiful bold text on top of beautiful pictures slides, and I thought, this would be perfect for my talk."
+      "snippet": "I had prepared the slides last week. My original plan was to keep it super minimal, with just the text on a white background. But then, at the last Vibe-Coding Meetup, I saw someone present these beautiful bold text on top of beautiful pictures slides, and I thought, this would be perfect for my talk."
     }
   ],
   "bookshelf/outlive": [
@@ -6854,7 +6856,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-05-30T23:33:00.000Z",
-      "snippet": "There was a recent review on Outlive there that had made me pick that book up."
+      "snippet": "I am also subscribed to BookFreak. There was a recent review on Outlive there that had made me pick that book up."
     },
     {
       "slug": "/nordletter/nl-104/",
@@ -6879,7 +6881,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-05-09T20:51:46.000Z",
-      "snippet": "Thanks to RAMaggedon, Apple raised the Mac Mini's starting price."
+      "snippet": "Thanks to RAMaggedon, Apple raised the Mac Mini's starting price. They ended up shelving some configurations. I would not have cared as much about it, but my Mac is showing it's age now. I got a message some time ago about lack of free space. Not once - twice. So, that."
     }
   ],
   "micro/use-html-as-output-artefacts-with-claude": [
@@ -6889,7 +6891,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-05-09T20:51:46.000Z",
-      "snippet": "And once today, when I wanted to build something and needed step-by-step instructions on how to do it."
+      "snippet": "I came across this post about using HTML as the output format for Claude Code. I have had similar experiences in the past. Once when trying to come up with alternative UIs for something. Once while trying to learn something. And once today, when I wanted to build something and needed step-by-step instructions on how to do it. HTML is great for that!"
     }
   ],
   "bookshelf/things-my-grandmother-said": [
@@ -6899,7 +6901,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-05-02T22:20:45.000Z",
-      "snippet": "I finished reading Things my grandmother said this week."
+      "snippet": "I finished reading Things my grandmother said this week. It is a nice book of poetry written by an Indian guy - Amit Majmudar. I picked this up because of it's cover and the fact that the writer was Amit. When I saw this was a poetry collection, I started reading it immediately."
     }
   ],
   "nordletter/nl99-new-things": [
@@ -6909,7 +6911,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-05-02T22:20:45.000Z",
-      "snippet": "I wrote about little buds sprouting from trees earlier."
+      "snippet": "I wrote about little buds sprouting from trees earlier. They have turned into leaves now. There is greenery on the ground and up above, in the trees."
     }
   ],
   "nordletter/hyva-vappu": [
@@ -6929,7 +6931,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-05-16T21:16:18.000Z",
-      "snippet": "The same thing had happened to us in 2024 when we had last gone to the park."
+      "snippet": "The same thing had happened to us in 2024 when we had last gone to the park. The bloom had happened over the weekday, and by the time we got there, the bloom was no more. The colour, was not there anymore."
     }
   ],
   "blog/why-walk-the-same-path-every-day": [
@@ -6939,7 +6941,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-06-13T16:29:14.000Z",
-      "snippet": "I love my walk, which mostly follows a single route."
+      "snippet": "This is a problem. I love rhythms and routines of things. I love my walk, which mostly follows a single route."
     },
     {
       "slug": "/nordletter/nl99-new-things/",
@@ -6955,7 +6957,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-12-27T21:33:35.000Z",
-      "snippet": "I prefer walking the same route everyday."
+      "snippet": "I love walking. I prefer walking the same route everyday. I also prefer it to be a circular route. You end where you start. Which is obvious in a way. But you could go half the distance and just return from there, walking the same path twice - back and forth. I do not like that. Ideally, I want to walk the entire route once."
     },
     {
       "slug": "/bookshelf/steal-like-an-artist/",
@@ -6973,7 +6975,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-06-21T19:35:29.000Z",
-      "snippet": "Last summer, during a picnic at Oitta, Savya had really enjoyed himself at the beach."
+      "snippet": "Everything was delicious - as it usually is. Then, I took Savya to the beach. Last summer, during a picnic at Oitta, Savya had really enjoyed himself at the beach. I had similar hopes this time around. The water was not too deep, there were kids playing in the water already. I changed Savya into his swimwear and took him in."
     }
   ],
   "nordletter/nl-80": [
@@ -6983,7 +6985,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-06-28T20:39:44.000Z",
-      "snippet": "We were here last when Helsinki had opened up the Christmas season."
+      "snippet": "We were here last when Helsinki had opened up the Christmas season. There was a parade then too. There were hordes of people then too. But the vibe was markedly different."
     },
     {
       "slug": "/nordletter/nl81/",
@@ -7001,7 +7003,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-07-05T20:55:51.000Z",
-      "snippet": "I was reading The Sixth Extinction then, so I looked it up in the e-library app, and did not find it there."
+      "snippet": "I was reading The Sixth Extinction then, so I looked it up in the e-library app, and did not find it there. So, I searched for it on Audible, and bought it there."
     },
     {
       "slug": "/nordletter/nl111-love-is-love/",
@@ -7009,7 +7011,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-06-28T20:39:44.000Z",
-      "snippet": "I am reading The Sixth Extinction right now."
+      "snippet": "I am reading The Sixth Extinction right now. This book is about the Anthropocene or the human epoch, i.e. the age of extinction we are living in right now."
     },
     {
       "slug": "/evergreen/extinction-was-discovered/",
@@ -7017,7 +7019,7 @@
       "description": "",
       "category": "evergreen",
       "created": "2026-06-23T06:55:39.000Z",
-      "snippet": "While listening to his story in The Sixth Extinction, I came to know about his colleague - Lamarck who was a proponent of evolution."
+      "snippet": "While listening to his story in The Sixth Extinction, I came to know about his colleague - Lamarck who was a proponent of evolution. Cuvier did not believe in evolution."
     }
   ],
   "nordletter/vacations": [
@@ -7026,7 +7028,8 @@
       "title": "Love is Love",
       "description": "",
       "category": "nordletter",
-      "created": "2026-06-28T20:39:44.000Z"
+      "created": "2026-06-28T20:39:44.000Z",
+      "snippet": "You may or may not have noticed it, but I have made some changes to how I write Nordletter. Since NL108. That had a lot of dialogue in it."
     }
   ],
   "bookshelf/the-anthropologists": [
@@ -7036,7 +7039,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-06-28T20:39:44.000Z",
-      "snippet": "I was inspired to do it after reading The Anthropologists."
+      "snippet": "I was inspired to do it after reading The Anthropologists. There was a lot of dialogue in it. Which is not how I used to write Nordletters. I was experimenting and a part of me was dreading it."
     },
     {
       "slug": "/nordletter/vacations/",
@@ -7054,7 +7057,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-06-28T20:39:44.000Z",
-      "snippet": "I was thinking about this last week, as I wrote down about our midsummer picnic."
+      "snippet": "I was thinking about this last week, as I wrote down about our midsummer picnic. By the time I started writing it, I was in a race against time. It was already Sunday, and that's when Nordletter ships."
     }
   ],
   "bookshelf/the-diabetes-code": [
@@ -7072,7 +7075,7 @@
       "description": "",
       "category": "evergreen",
       "created": "2026-06-29T10:19:46.000Z",
-      "snippet": "Read first about it in The Diabetes Code"
+      "snippet": "TOFI not Tofu (the food). Read first about it in The Diabetes Code"
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
@@ -7082,7 +7085,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-07-20T03:11:09.000Z",
-      "snippet": "I did a similar thing when I was in Bihar and saw the Ashok Pillars and museum."
+      "snippet": "I did a similar thing when I was in Bihar and saw the Ashok Pillars and museum. I was wondering how people would have lived and how this would have looked in Ashoka's time. There was a helpful little illustration which showed you from the view of the huts you could see the stupa in a distance."
     }
   ],
   "nordletter/nl65": [
@@ -7092,7 +7095,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-08-10T03:34:48.000Z",
-      "snippet": "It is Savya's second week at his päiväkoti."
+      "snippet": "It is Savya's second week at his päiväkoti. This week we are getting him used to the idea of being alone in the daycare."
     }
   ],
   "micro/openai-and-anthropic-announce-new-models": [
@@ -7122,7 +7125,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-08-24T03:35:47.000Z",
-      "snippet": "Mostly around analogical thinking and How to learn effectively."
+      "snippet": "I finished reading Range this week. It was my kind of non-fiction book. It gave me a few things to think about. Mostly around analogical thinking and How to learn effectively. The thesis of the book is that early specialisation is not a good idea, that to be successful one should have a range of experiences."
     }
   ],
   "evergreen/how-to-learn-effectively": [
@@ -7132,7 +7135,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-08-24T03:35:47.000Z",
-      "snippet": "Mostly around analogical thinking and How to learn effectively."
+      "snippet": "I finished reading Range this week. It was my kind of non-fiction book. It gave me a few things to think about. Mostly around analogical thinking and How to learn effectively. The thesis of the book is that early specialisation is not a good idea, that to be successful one should have a range of experiences."
     }
   ],
   "evergreen/when-someone-has-been-dead-for-a-while": [
@@ -7210,7 +7213,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-09-20T15:39:22.000Z",
-      "snippet": "The goal is to do things simply."
+      "snippet": "I am on a journey. The goal is to do things simply."
     },
     {
       "slug": "/now/yoga/",
@@ -7218,7 +7221,7 @@
       "description": "",
       "category": "now",
       "created": "2023-06-01T17:41:49.000Z",
-      "snippet": "I wrote about the goal with yoga ."
+      "snippet": "I can touch the ground in the forward bend while doing surya-namaskar, fairly easily now. It does not happen in one smooth motion still. There is still a long way to go. I wrote about the goal with yoga . I continue to work toward that goal."
     }
   ],
   "story/musings": [
@@ -7228,7 +7231,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-09-27T13:17:33.000Z",
-      "snippet": "I wrote a short story after a long time."
+      "snippet": "I wrote a short story after a long time. Read it here."
     }
   ],
   "nordletter/nl72": [
@@ -7238,7 +7241,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-09-27T13:17:33.000Z",
-      "snippet": "I talked about this in NL72."
+      "snippet": "I enjoy these things, small groups of people - enough to hold a conversation - enough for it to be called a party. I talked about this in NL72. I miss these conversations where you can talk about things other than where do you live and what do you do."
     }
   ],
   "blog/vibe-coding": [
@@ -7248,7 +7251,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-10-04T20:06:32.000Z",
-      "snippet": "I attended the vibe coding event this week."
+      "snippet": "I attended the vibe coding event this week. It was bigger and better than the last one I had attended."
     }
   ],
   "nordletter/diwali-week": [
@@ -7258,7 +7261,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-10-26T20:45:29.000Z",
-      "snippet": "I talked about pre-Diwali celebrations in the last Nordletter."
+      "snippet": "None of the above stopped us from celebrating though! I talked about pre-Diwali celebrations in the last Nordletter."
     }
   ],
   "blog/celebrating-diwali-at-op": [
@@ -7278,7 +7281,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-11-02T20:42:52.000Z",
-      "snippet": "Last year, we were at home, celebrating Chath in Bihar."
+      "snippet": "… Last year, we were at home, celebrating Chath in Bihar. The year before that we were part of the celebrations. It was cold, snowy. We had to walk from the train station to the school where the event was organised at. We did not have any spikes on our shoes - I don't remember why. We had enjoyed ourselves during that event. But I was not writing Nordletters then. So it's almost as if, if did not happen. If a tree fell in a forest and no one heard it fall, did it make a sound?"
     }
   ],
   "nordletter/nl74-to-move": [
@@ -7298,7 +7301,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-11-15T21:57:56.000Z",
-      "snippet": "This was the reverse of building your own furniture."
+      "snippet": "I spent the better part of the morning undoing our bed and our dining table. This was the reverse of building your own furniture. It felt a little weird. A little nostalgic. A little sad."
     }
   ],
   "blog/vibe-coding-november-meetup": [
@@ -7308,7 +7311,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-11-30T20:44:23.000Z",
-      "snippet": "I attended the November edition of the Vibe Coding Finland meetup on Wednesday."
+      "snippet": "I attended the November edition of the Vibe Coding Finland meetup on Wednesday. It was held at the Architecture and Design Museum. The location was the thing I was most excited about. I could not go in advance and checkout the exhibits before the meetup. I saw just enough during the break though that I want to visit it again."
     }
   ],
   "nordletter/oodi-for-all": [
@@ -7318,7 +7321,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-12-06T21:34:44.000Z",
-      "snippet": "I have written about Oodi in the past."
+      "snippet": "I have written about Oodi in the past. I love Oodi. On the third level, is a kids play area. The plan for today was to go on a walk around the old haunt (Toolo lake) and then have a stop at the library."
     }
   ],
   "nordletter/writing-meet-ups": [
@@ -7328,7 +7331,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-12-06T21:34:44.000Z",
-      "snippet": "I have written about Oodi in the past."
+      "snippet": "I have written about Oodi in the past. I love Oodi. On the third level, is a kids play area. The plan for today was to go on a walk around the old haunt (Toolo lake) and then have a stop at the library."
     }
   ],
   "nordletter/helsinki-christmas-market": [
@@ -7338,7 +7341,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2025-12-21T18:00:25.000Z",
-      "snippet": "I wrote about the earlier visit here."
+      "snippet": "This was my second year at the Christmas Market. I wrote about the earlier visit here. You could say that the charm had worn off for me."
     }
   ],
   "nordletter/i-miss-walking": [
@@ -7347,7 +7350,8 @@
       "title": "The Route Circle",
       "description": "",
       "category": "nordletter",
-      "created": "2025-12-27T21:33:35.000Z"
+      "created": "2025-12-27T21:33:35.000Z",
+      "snippet": "I love walking. I prefer walking the same route everyday. I also prefer it to be a circular route. You end where you start. Which is obvious in a way. But you could go half the distance and just return from there, walking the same path twice - back and forth. I do not like that. Ideally, I want to walk the entire route once."
     }
   ],
   "evergreen/limitations-mean-freedom": [
@@ -7377,7 +7381,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-04-06T08:27:25.000Z",
-      "snippet": "That list is how I pick up the next book to read."
+      "snippet": "The first I had read of Ken Liu was the three-body problem series. He was the translator for the first and the third books in the series. And I had enjoyed both of these books. So, when this book showed up in the e-library I had marked it in my favourites list. That list is how I pick up the next book to read."
     },
     {
       "slug": "/nordletter/nl85/",
@@ -7394,7 +7398,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-01-10T19:46:59.000Z",
-      "snippet": "Things become other things is a sad book."
+      "snippet": "Things become other things is a sad book. It chronicles Craig Mod's walks to rural (shrinking) Japan. It often contrasts his experiences growing up in a similarly shrinking American town to living in Japan."
     }
   ],
   "nordletter/nl85": [
@@ -7424,7 +7428,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-01-17T21:31:10.000Z",
-      "snippet": "But I decided to just watch the first item in my list."
+      "snippet": "That's what I did this past month. I read books. And, I watched movies on Netflix. I used to have choice paralysis (when we wanted to watch a movie that is, which was not too often). But I decided to just watch the first item in my list."
     }
   ],
   "bookshelf/how-to-win-friends-and-influence-people": [
@@ -7464,7 +7468,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-03-09T10:13:18.000Z",
-      "snippet": "Aligns, a little bit with the exercise from Bird by bird, about writing stories from your childhood."
+      "snippet": "Make a list of things that speak to you. Things that you want to write about. Things hidden in your subconscious. Aligns, a little bit with the exercise from Bird by bird, about writing stories from your childhood."
     },
     {
       "slug": "/bookshelf/die-with-zero/",
@@ -7472,7 +7476,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-02-02T22:52:35.000Z",
-      "snippet": "Like Bird by bird, I started reading this book thanks to this post on Gina Trapani’s blog."
+      "snippet": "Like Bird by bird, I started reading this book thanks to this post on Gina Trapani’s blog. That’s the beauty of books and blogs and sharing things that books teach us. It may inspire the reader to pick up the book as well."
     },
     {
       "slug": "/evergreen/write-a-letter-to-your-child/",
@@ -7487,7 +7491,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-01-31T16:21:15.000Z",
-      "snippet": "I started reading Bird by bird last week."
+      "snippet": "I started reading Bird by bird last week. One of the exercises in the beginning of the book (and this is not a book about exercises by the way) was to think about the lunches you’ve had in school and write about those. As an exercise. Writing of course is different from the dreams one has of being a published author. Writing is a daily thing - a practice. This book is about the lessons and improving the practice."
     }
   ],
   "nordletter/nl90": [
@@ -7497,7 +7501,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-02-15T21:21:10.000Z",
-      "snippet": "Sarthak and I met him for a bachelor's of sorts a few days before his marriage."
+      "snippet": "Sarthak and I met him for a bachelor's of sorts a few days before his marriage. It felt as if we had just picked up from where we had left of. He was so happy, visibly so. I was so happy to share this space with them."
     }
   ],
   "nordletter/nl89": [
@@ -7507,7 +7511,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-02-15T21:21:10.000Z",
-      "snippet": "Thankfully, I did not have to go from F zone to A."
+      "snippet": "The flight was delayed by around 90 mins. Half of my layover was spent in the plane. I spent the rest rushing through the Istanbul airport. Thankfully, I did not have to go from F zone to A."
     },
     {
       "slug": "/bookshelf/the-story-grid/",
@@ -7515,7 +7519,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2025-12-30T10:59:25.000Z",
-      "snippet": "That changed when I was travelling from Helsinki to Mumbai. I picked up this book after having watched Sinners and Jurassic World."
+      "snippet": "That changed when I was travelling from Helsinki to Mumbai. I picked up this book after having watched Sinners and Jurassic World. And I began reading about the foolscrap story grid, etc. It happened when Shawn talked about constructing a story, about the maths behind it. That motivated me to write - How to craft a story."
     }
   ],
   "poem/this-valentines-day": [
@@ -7525,7 +7529,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-02-21T22:32:49.000Z",
-      "snippet": "I wrote a valentine's day poem for Prerna on the flight back to Helsinki."
+      "snippet": "I wrote a valentine's day poem for Prerna on the flight back to Helsinki. We had just had a conversation about Valentines day in Finland and the poem just came to me."
     }
   ],
   "nordletter/visit-porvoo": [
@@ -7535,7 +7539,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-02-21T22:32:49.000Z",
-      "snippet": "We had been to Porvoo in the summer of last year."
+      "snippet": "We had been to Porvoo in the summer of last year. We had visited the old town, had lunch at Cafe Kiva and picked some souvenirs at a trinket shop. It had been a fun trip."
     }
   ],
   "nordletter/nl77": [
@@ -7545,7 +7549,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-03-07T23:08:24.000Z",
-      "snippet": "We were last here for Diwali."
+      "snippet": "It was our second time at their place. We were last here for Diwali. There were more people then, less conversations."
     }
   ],
   "nordletter/nl94": [
@@ -7555,7 +7559,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-03-07T23:08:24.000Z",
-      "snippet": "As I had said in NL94 that it had been a busy few weeks since I returned from home."
+      "snippet": "It was not a given, unlike the years past, that we would be going to the BJPF Holi event this time around. As I had said in NL94 that it had been a busy few weeks since I returned from home."
     }
   ],
   "nordletter/spring-is-here": [
@@ -7565,7 +7569,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-03-14T16:18:16.000Z",
-      "snippet": "I tried to search for it and found this NordLetter - NL4, which was about spring."
+      "snippet": "On the third day, while walking past the tram station, under the bridge I saw some kids on their skateboards. And I thought spring is here. And I remembered distinctly having written about spring. I tried to search for it and found this NordLetter - NL4, which was about spring. But not really about spring. Then I searched for spring, and lo and behold I found it!"
     }
   ],
   "blog/spring-already": [
@@ -7575,7 +7579,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-03-14T16:18:16.000Z",
-      "snippet": "Then I searched for spring, and lo and behold I found it!"
+      "snippet": "On the third day, while walking past the tram station, under the bridge I saw some kids on their skateboards. And I thought spring is here. And I remembered distinctly having written about spring. I tried to search for it and found this NordLetter - NL4, which was about spring. But not really about spring. Then I searched for spring, and lo and behold I found it!"
     }
   ],
   "blog/two-lessons-on-work": [
@@ -7585,7 +7589,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-03-14T16:18:16.000Z",
-      "snippet": "Even though asking for help is one of the principles I believe in deeply."
+      "snippet": "It was awesome! I have wanted a mentor in my life. I guess, everyone does. But I haven't went and said it to someone. Even though asking for help is one of the principles I believe in deeply. I don't find talking to people as easy. But I am working on it. Hopefully, I will find a mentor next."
     }
   ],
   "bookshelf/zen-in-the-art-of-writing": [
@@ -7615,7 +7619,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-07-03T06:06:24.000Z",
-      "snippet": "Murderbot is on an extraction mission in this one, continuing on from System Collapse."
+      "snippet": "Murderbot is on an extraction mission in this one, continuing on from System Collapse. I enjoyed almost everything about the book. I enjoyed the fight sequences and Murderbot trying to just watch his damn show."
     },
     {
       "slug": "/nordletter/nl96/",
@@ -7633,7 +7637,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-03-22T19:56:34.000Z",
-      "snippet": "Prerna and I were at the FAUG: Zero to Hero event this week."
+      "snippet": "Prerna and I were at the FAUG: Zero to Hero event this week. It was a fun experience. There were five talks covering data, app development, infra, security and the state of azure, with a snack break thrown after the app dev talk. Almost all the talks talked about what you needed to do to get a job. I was not expecting this, when I had registered for the event. I had expected something which talked about the basics of the platform, like a training session."
     }
   ],
   "nordletter/nl96": [
@@ -7643,7 +7647,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-03-22T19:56:34.000Z",
-      "snippet": "Sometimes, and now that spring is here, Prerna will be tagging along as well."
+      "snippet": "I don't know if they will fix it. I hope they do. I will know more on Monday. I love going out on walks with Savya. It's our time. Sometimes, and now that spring is here, Prerna will be tagging along as well."
     }
   ],
   "bookshelf/dune": [
@@ -7653,7 +7657,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-03-28T18:50:51.000Z",
-      "snippet": "I finished read Dune this week."
+      "snippet": "I finished read Dune this week. It took longer than I would have wanted. But I bought this book on Audible, so I could put in hold, while I read the books from the library."
     }
   ],
   "bookshelf/reading-wanderlust": [
@@ -7663,7 +7667,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-04-05T16:19:46.000Z",
-      "snippet": "I started reading Wanderlust this week."
+      "snippet": "I started reading Wanderlust this week. I had kept it in my to read list for a long time. For most of the time I had it in my bookmark list, I could have picked it up any time. It had mostly been available to borrow."
     }
   ],
   "blog/the-reason-why-i-want-to-move-my-home-on-the-world": [
@@ -7672,7 +7676,8 @@
       "title": "Trip to NYC I",
       "description": "",
       "category": "nordletter",
-      "created": "2025-06-14T15:45:00.000Z"
+      "created": "2025-06-14T15:45:00.000Z",
+      "snippet": "I stopped hosting my website on Ghost. Why?"
     }
   ],
   "nordletter/trip-to-nyc-ii": [
@@ -7682,7 +7687,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-06-07T17:38:19.000Z",
-      "snippet": "I wrote about it across four different posts."
+      "snippet": "I had no idea then where would I go. Last year, we were in Manhattan. I wrote about it across four different posts. This year there are no such concrete plans. Prerna had mentioned Prague at some point, I had mentioned Barcelona, a friend lives there. We could just go visit her."
     }
   ],
   "nordletter/trip-to-nyc-iii": [
@@ -7692,7 +7697,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-06-07T17:38:19.000Z",
-      "snippet": "I wrote about it across four different posts."
+      "snippet": "I had no idea then where would I go. Last year, we were in Manhattan. I wrote about it across four different posts. This year there are no such concrete plans. Prerna had mentioned Prague at some point, I had mentioned Barcelona, a friend lives there. We could just go visit her."
     }
   ],
   "nordletter/nyc-iv": [
@@ -7702,7 +7707,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-06-07T17:38:19.000Z",
-      "snippet": "I wrote about it across four different posts."
+      "snippet": "I had no idea then where would I go. Last year, we were in Manhattan. I wrote about it across four different posts. This year there are no such concrete plans. Prerna had mentioned Prague at some point, I had mentioned Barcelona, a friend lives there. We could just go visit her."
     }
   ],
   "evergreen/the-four-diseases-leading-to-slow-death": [
@@ -7712,7 +7717,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-04-14T09:23:33.000Z",
-      "snippet": "There are the four horsemen of slow death - Heart disease, Cancer, Neurodegenerative disease and Type 2 diabetes."
+      "snippet": "There are the four horsemen of slow death - Heart disease, Cancer, Neurodegenerative disease and Type 2 diabetes. The book goes over their causes, and possible ways to delay them. Mostly through exercise, nutrition, sleep and taking care of your mental health."
     }
   ],
   "bookshelf/the-road-less-travelled": [
@@ -7722,7 +7727,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-04-14T09:23:33.000Z",
-      "snippet": "Scott Peck’s - The Road Less Travelled."
+      "snippet": "I don’t say it lightly - this book changed my life. There is one other book which I can say did the same. Back when I was in college, I had read M. Scott Peck’s - The Road Less Travelled. And for a long while it was the book I wanted to gift to everyone. This book feels similar."
     }
   ],
   "bookshelf/timequake": [
@@ -7732,7 +7737,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-05-06T18:46:08.000Z",
-      "snippet": "The first book I read by Kurt Vonnegut was Timequake."
+      "snippet": "The first book I read by Kurt Vonnegut was Timequake. I was new to reading then, and was asking around for things to read. A friend I knew then suggested I read Kurt, among others. And so I did."
     }
   ],
   "blog/devops-finland-october-meetup": [
@@ -7742,7 +7747,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2025-10-14T07:50:15.000Z",
-      "snippet": "A few things were a little surprising, but this book, like the Devops Finland meetup I was in yesterday, made me realise the value of knowing and linking diverse things."
+      "snippet": "A few things were a little surprising, but this book, like the Devops Finland meetup I was in yesterday, made me realise the value of knowing and linking diverse things. Reading more. Writing more."
     }
   ],
   "bookshelf/jaya": [
@@ -7790,7 +7795,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-03-10T17:24:57.000Z",
-      "snippet": "I had a similar feeling reading this book as the last book - Fugitive Telemetry."
+      "snippet": "I felt a little lost reading this book. This is the seventh book in the Murderbot diaries. I had a similar feeling reading this book as the last book - Fugitive Telemetry. I was reading it after a while. And network effect was a standalone book, not in the time line order. So it had felt weird because of that."
     }
   ],
   "bookshelf/children-of-strife": [
@@ -7800,7 +7805,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-06-01T06:40:13.000Z",
-      "snippet": "I picked this book, because I had just finished reading Children of Strife, and wanted to read something light and breezy - a romantic story."
+      "snippet": "I picked this book, because I had just finished reading Children of Strife, and wanted to read something light and breezy - a romantic story. I searched on the library and this one seemed interesting - a story about an immigrant couple in a big city and their quest to find a home."
     }
   ],
   "bookshelf/a-prayer-for-the-crown-shy": [
@@ -7820,7 +7825,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2025-12-19T15:11:57.000Z",
-      "snippet": "Like the psychology of money, this is a book about principles."
+      "snippet": "Mr Housel does not advise you to buy stocks or invest in real estate or anything. Like the psychology of money, this is a book about principles."
     }
   ],
   "bookshelf/the-thinking-machine": [
@@ -7830,7 +7835,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-06-23T06:56:58.000Z",
-      "snippet": "After finishing The Thinking Machine, I was looking for the next book to read and found it in the science section of e-kirjasto (the e-library)."
+      "snippet": "The Sixth Extinction had been on my reading list for a long time. After finishing The Thinking Machine, I was looking for the next book to read and found it in the science section of e-kirjasto (the e-library). I picked it up immediately."
     }
   ],
   "evergreen/extinction-was-discovered": [
@@ -7840,7 +7845,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2026-06-23T06:56:58.000Z",
-      "snippet": "Kolbert focuses on the French naturalist Georges Cuvier, and through him explains how Extinction was discovered."
+      "snippet": "Kolbert focuses on the French naturalist Georges Cuvier, and through him explains how Extinction was discovered. Before Cuvier, most scientists believed nature was stable. From then, she moves onto Darwin and other thinkers of the time and how they came up with the theories of natural selection and evolution. While reading this sections I was thinking how the easy it is for us to take this knowledge for granted, and an appreciation for the process and time it took to get here."
     }
   ],
   "evergreen/how-to-craft-a-story": [
@@ -7850,7 +7855,7 @@
       "description": "",
       "category": "bookshelf",
       "created": "2025-12-30T10:59:25.000Z",
-      "snippet": "That motivated me to write - How to craft a story."
+      "snippet": "That changed when I was travelling from Helsinki to Mumbai. I picked up this book after having watched Sinners and Jurassic World. And I began reading about the foolscrap story grid, etc. It happened when Shawn talked about constructing a story, about the maths behind it. That motivated me to write - How to craft a story."
     }
   ],
   "nordletter/nl109-what-savya-wants": [
@@ -7860,7 +7865,7 @@
       "description": "",
       "category": "now",
       "created": "2024-02-18T17:41:49.000Z",
-      "snippet": "Wrote about it in What Savya Wants."
+      "snippet": "2026-06-13 19:40 - The thing that Savya is in now is walking his own pram. Wrote about it in What Savya Wants."
     }
   ],
   "bookshelf/reading-the-great-mental-models": [
@@ -7870,7 +7875,7 @@
       "description": "",
       "category": "evergreen",
       "created": "2026-06-23T06:55:39.000Z",
-      "snippet": "While reading about this I thought about the concept of mental models which I am reading about in The Great Mental Models and I thought this is the same thing."
+      "snippet": "While reading about this I thought about the concept of mental models which I am reading about in The Great Mental Models and I thought this is the same thing. Based on their models of the world, they came to different conclusions."
     }
   ],
   "evergreen/what-to-automate": [

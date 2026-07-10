@@ -47,7 +47,7 @@ const CACHE_FILE = path.join(DATA_DIRECTORY, 'backlinks-index.json');
 // Bump when the artifact schema changes (e.g. new fields) so stale caches regenerate.
 const INDEX_VERSION = 2;
 
-const SNIPPET_MAX_LENGTH = 250;
+const SNIPPET_MAX_LENGTH = 500;
 const SNIPPET_MIN_LENGTH = 20;
 
 let backlinkIndexPromise: Promise<BacklinkIndex> | null = null;
@@ -427,8 +427,18 @@ function extractSnippet(content: string, position: number): string | undefined {
     // Bound the snippet to the containing line: content is authored
     // Obsidian-style with one paragraph or list item per line, so a line is a
     // logical unit and crossing it merges unrelated bullets into one snippet.
+    const wholeLine = markdownToPlainText(line);
+    if (wholeLine.length < SNIPPET_MIN_LENGTH) {
+        return undefined;
+    }
 
-    // Walk back to the previous sentence terminator within the line.
+    if (wholeLine.length <= SNIPPET_MAX_LENGTH) {
+        return wholeLine;
+    }
+
+    // The paragraph is too long to show whole. Start at the sentence
+    // containing the link (so the mention always survives the cut) and run
+    // forward until the limit.
     let sentenceStart = lineStart;
     for (let i = position - 1; i > lineStart; i--) {
         if ('.!?'.includes(content[i]) && /\s/.test(content[i + 1] ?? ' ')) {
@@ -437,26 +447,18 @@ function extractSnippet(content: string, position: number): string | undefined {
         }
     }
 
-    // Walk forward to the next sentence terminator.
-    let sentenceEnd = lineEnd;
-    for (let i = position; i < lineEnd; i++) {
-        if ('.!?'.includes(content[i]) && /\s/.test(content[i + 1] ?? ' ')) {
-            sentenceEnd = i + 1;
-            break;
-        }
-    }
-
-    const cleaned = markdownToPlainText(content.slice(sentenceStart, sentenceEnd));
-    if (cleaned.length < SNIPPET_MIN_LENGTH) {
+    const fromSentence = markdownToPlainText(content.slice(sentenceStart, lineEnd));
+    if (fromSentence.length < SNIPPET_MIN_LENGTH) {
         return undefined;
     }
 
-    if (cleaned.length <= SNIPPET_MAX_LENGTH) {
-        return cleaned;
+    const leader = sentenceStart > lineStart ? '… ' : '';
+    if (fromSentence.length <= SNIPPET_MAX_LENGTH) {
+        return `${leader}${fromSentence}`;
     }
 
-    const cutoff = cleaned.lastIndexOf(' ', SNIPPET_MAX_LENGTH - 1);
-    return `${cleaned.slice(0, cutoff > 0 ? cutoff : SNIPPET_MAX_LENGTH - 1)}…`;
+    const cutoff = fromSentence.lastIndexOf(' ', SNIPPET_MAX_LENGTH - 1);
+    return `${leader}${fromSentence.slice(0, cutoff > 0 ? cutoff : SNIPPET_MAX_LENGTH - 1)}…`;
 }
 
 /**
