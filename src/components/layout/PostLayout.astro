@@ -53,6 +53,10 @@ const heroImage = 'image' in entryData ? entryData.image : undefined;
 // Photo posts carry their gallery in frontmatter; render it as a carousel
 // instead of the hero image (which is just the first gallery entry).
 const galleryImages: string[] = Array.isArray(entryData.images) ? entryData.images : [];
+// Older photo posts predate the frontmatter `images`/`image` fields and embed
+// their photo directly in the markdown body — those keep the standard centered
+// layout since there's no separate image to place in a media column.
+const isPhotoPost = category === 'photo' && (galleryImages.length > 0 || Boolean(heroImage));
 const edition = category === 'nordletter' && 'edition' in entryData ? entryData.edition : undefined;
 const bridgyOmit = 'bridgyOmit' in entryData && entryData.bridgyOmit;
 const publishedDate = entryData?.created;
@@ -220,14 +224,14 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 
         <div class="mb-8">
             {/* Frontmatter gallery (photo posts) — carousel when multiple */}
-            {galleryImages.length > 0 && !isShelfPost && (
+            {galleryImages.length > 0 && !isShelfPost && !isPhotoPost && (
                 <div class="mb-6">
                     <PhotoCarousel images={galleryImages} title={title} />
                 </div>
             )}
 
-            {/* Hero image for non-shelf posts */}
-            {heroImage && !isShelfPost && galleryImages.length === 0 && (
+            {/* Hero image for non-shelf, non-photo posts */}
+            {heroImage && !isShelfPost && !isPhotoPost && galleryImages.length === 0 && (
                 <div class="mb-6">
                     <img
                         src={heroImage}
@@ -239,8 +243,43 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
                 </div>
             )}
 
-            {/* Shelf post pages: two-column on desktop (cover left, metadata right) */}
-            {isShelfPost ? (
+            {/* Photo post pages: Instagram-style two-column (image left, title/caption/tags right) */}
+            {isPhotoPost ? (
+                <div class="photo-header">
+                    <div class="photo-header__media">
+                        {galleryImages.length > 0 ? (
+                            <PhotoCarousel images={galleryImages} title={title} />
+                        ) : heroImage ? (
+                            <img
+                                src={heroImage}
+                                alt={title}
+                                class="photo-header__image"
+                                loading="eager"
+                                decoding="async"
+                            />
+                        ) : null}
+                    </div>
+                    <div class="photo-header__content">
+                        {title && <h1 class="p-name photo-header__title">{title}</h1>}
+
+                        {description && (
+                            <p class="p-summary photo-header__description">{description}</p>
+                        )}
+
+                        <div class="e-content photo-header__caption">
+                            <slot />
+                        </div>
+
+                        {tags.length > 0 && (
+                            <div class="photo-header__tags">
+                                {tags.map((tag: string) => (
+                                    <Tag tag={tag} as="a" />
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            ) : isShelfPost ? (
                 <div class="book-header">
                     {shelfCoverImage && (
                         <div class="book-header__cover">
@@ -570,9 +609,11 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
         </div>
 
 
-        <div class="e-content">
-            <slot />
-        </div>
+        {!isPhotoPost && (
+            <div class="e-content">
+                <slot />
+            </div>
+        )}
 
         <div class="mt-8 border-t border-borderColor dark:border-borderColorDark">
             <NewsletterSignup
@@ -908,4 +949,94 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
         display: inline-flex;
     }
 
+    /* Photo post two-column header (Instagram-style: image left, text right) */
+    .photo-header {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2.5rem;
+        border-bottom: 1px solid rgb(var(--color-border));
+    }
+
+    :global(.dark) .photo-header {
+        border-bottom-color: rgb(var(--color-border));
+    }
+
+    .photo-header__media {
+        display: flex;
+        justify-content: center;
+    }
+
+    .photo-header__media :global(.photo-carousel) {
+        width: 100%;
+    }
+
+    .photo-header__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: min(70vh, 42rem);
+        object-fit: contain;
+        border-radius: 0.75rem;
+        background: rgba(0, 0, 0, 0.03);
+    }
+
+    :global(.dark) .photo-header__image {
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    .photo-header__content {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .photo-header__title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
+    }
+
+    .photo-header__description {
+        font-size: 1rem;
+        color: rgb(var(--color-text-secondary));
+        margin-bottom: 0.75rem;
+    }
+
+    .photo-header__caption {
+        font-size: 0.9375rem;
+        line-height: 1.65;
+        margin-bottom: 1.25rem;
+    }
+
+    .photo-header__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: auto;
+    }
+
+    @media (min-width: 48rem) {
+        .photo-header {
+            display: grid;
+            /* 5 cols image, 3 cols text (= 8 cols total, matching grid-span-8) */
+            grid-template-columns: 5fr 3fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .photo-header__media {
+            justify-content: flex-start;
+        }
+
+        .photo-header__content {
+            padding-top: 0.25rem;
+        }
+
+        .photo-header__title {
+            font-size: 1.5rem;
+        }
+    }
 </style>
