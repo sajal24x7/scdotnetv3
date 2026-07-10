@@ -1,18 +1,20 @@
 ---
-import { formatDateWithTime } from '../utils/dateFormat';
 import { getPostActivitySummary } from '../utils/postStats';
 
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
 
-const { latestPostDate, streakWeeks, totalPosts } = await getPostActivitySummary();
+const { streakWeeks, totalPosts } = await getPostActivitySummary();
 const hasPosts = totalPosts > 0;
-const formattedLastPostDate = latestPostDate ? formatDateWithTime(latestPostDate) : '';
 
 const footerNavItems = [
     { href: '/sajal/', label: 'About' },
     { href: '/colophon/', label: 'Colophon' },
     { href: '/now/', label: 'Now' },
+    { href: '/evergreen/', label: 'Evergreen' },
+    { href: '/til/', label: 'TIL' },
+    { href: '/stories/', label: 'Stories' },
+    { href: '/poems/', label: 'Poems' },
     { href: '/photos/', label: 'Photos' },
     { href: '/bookshelf/', label: 'Bookshelf' },
 ];
@@ -28,18 +30,14 @@ const footerNavItems = [
             ))}
         </nav>
 
-        <div class="footer-stats-row flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-6 pt-6 text-center sm:text-left">
+        <div class="footer-stats-row mt-6 pt-6 text-center">
+            <p class="text-small opacity-75 mb-2">&copy; {currentYear} Sajal Choudhary</p>
             {hasPosts && (
-                <div class="text-normal">
-                    <p class="text-small opacity-75 mb-2">This website was last updated on {formattedLastPostDate}</p>
+                <>
                     <p class="font-medium">New posts for <span class="footer-accent">{streakWeeks}</span> consecutive {streakWeeks === 1 ? 'week' : 'weeks'}</p>
                     <p class="mt-1 text-small opacity-75">{totalPosts} total posts</p>
-                </div>
+                </>
             )}
-
-            <p class="text-small">
-                &copy; {currentYear} Sajal Choudhary. All rights reserved.
-            </p>
         </div>
     </div>
 </footer>
