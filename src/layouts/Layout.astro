@@ -153,12 +153,27 @@ const containerPadding = pageWrapper.padding ?? 'none';
                                 applyBackgroundPalette(isDark);
                         }
 
+                        function getStoredTheme() {
+                                var stored = localStorage.getItem('theme');
+                                return stored === 'dark' || stored === 'light' ? stored : null;
+                        }
+
                         var darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-                        applyTheme(darkMediaQuery.matches);
+                        var storedTheme = getStoredTheme();
+                        applyTheme(storedTheme ? storedTheme === 'dark' : darkMediaQuery.matches);
 
                         darkMediaQuery.addEventListener('change', function (event) {
-                                applyTheme(event.matches);
+                                if (!getStoredTheme()) {
+                                        applyTheme(event.matches);
+                                }
                         });
+
+                        window.toggleSiteTheme = function () {
+                                var isDark = !document.documentElement.classList.contains('dark');
+                                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                                applyTheme(isDark);
+                                return isDark;
+                        };
                 </script>
                 {Astro.slots.has('head') && <slot name="head" />}
         </head>

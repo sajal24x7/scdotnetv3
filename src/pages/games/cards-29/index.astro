@@ -13,11 +13,17 @@ import TwentyEight from '../../../components/games/TwentyEight';
     <meta name="description" content="Play 28/29, a trick-taking card game for two pairs. Hidden trump, 28 points per hand." />
     <!-- Fonts are self-hosted via @fontsource-variable (imported in global.css) -->
     <script is:inline>
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.classList.add('dark');
+      function getStoredTheme() {
+        var stored = localStorage.getItem('theme');
+        return stored === 'dark' || stored === 'light' ? stored : null;
       }
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        e.matches ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+      var storedTheme = getStoredTheme();
+      var darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      document.documentElement.classList.toggle('dark', storedTheme ? storedTheme === 'dark' : darkMediaQuery.matches);
+      darkMediaQuery.addEventListener('change', e => {
+        if (!getStoredTheme()) {
+          document.documentElement.classList.toggle('dark', e.matches);
+        }
       });
     </script>
     <style>
