@@ -21,10 +21,34 @@ Astro output:
 import sys
 import re
 import os
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 # Default content root relative to where the script is called from
 DEFAULT_CONTENT_ROOT = "src/content"
+
+# Obsidian and the iOS Shortcut write wall-clock timestamps (filename stem,
+# `updated` frontmatter) with no timezone designator. The site's author time
+# is Finnish local time; change this if that ever stops being true.
+SITE_TIMEZONE = ZoneInfo("Europe/Helsinki")
+
+_HAS_OFFSET_RE = re.compile(r"(Z|[+-]\d{2}:?\d{2})$")
+
+
+def ensure_site_offset(date_str: str) -> str:
+    """Attach the site timezone's UTC offset to a naive local timestamp.
+
+    Without an explicit offset, `new Date(str)` in JS treats a date-time
+    string as local time on whatever machine runs the build (UTC in CI),
+    silently shifting every date by SITE_TIMEZONE's offset from UTC — this
+    is what made RSS pubDates and displayed times come out wrong. Strings
+    that already carry an offset (or 'Z') are returned unchanged.
+    """
+    if _HAS_OFFSET_RE.search(date_str):
+        return date_str
+    naive = datetime.fromisoformat(date_str)
+    return naive.replace(tzinfo=SITE_TIMEZONE).isoformat()
 
 
 SMALL_WORDS = {"a", "an", "the", "and", "but", "or", "for", "nor", "on", "at", "to", "by", "in", "of", "up", "as"}
@@ -109,7 +133,8 @@ def parse_filename(filename: str):
     ts = match.group(1)
     title_raw = match.group(2)
 
-    pub_date = f"{ts[0:4]}-{ts[4:6]}-{ts[6:8]}T{ts[8:10]}:{ts[10:12]}:00"
+    naive_date = f"{ts[0:4]}-{ts[4:6]}-{ts[6:8]}T{ts[8:10]}:{ts[10:12]}:00"
+    pub_date = ensure_site_offset(naive_date)
     return pub_date, title_raw
 
 
@@ -258,7 +283,7 @@ def transform_file(filepath: str, content_index: dict | None = None) -> bool:
     category = fm.get("category", "").strip().strip("'\"")
 
     # Use the Obsidian `updated` field if present; otherwise fall back to pubDate
-    updated_date = fm.get("updated") or pub_date
+    updated_date = ensure_site_offset(fm.get("updated") or pub_date)
 
     tags = extract_tags(content)
     tags_str = "[" + ", ".join(f'"{t}"' for t in tags) + "]"

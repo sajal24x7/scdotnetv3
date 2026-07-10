@@ -8,7 +8,7 @@ import { getTVCoverImage } from './tvCovers';
 import { getGameCoverImage } from './gameCovers';
 import { bookRatingLabels } from './bookRatings';
 import { convertWikilinks } from './remarkWikilinks';
-import { formatRelativeDate } from './dateFormat';
+import { formatRelativeDate, SITE_TIMEZONE } from './dateFormat';
 import { getPhotoImages } from './photos';
 import nordletterManifest from '../data/nordletter-image-manifest.json';
 
@@ -103,12 +103,12 @@ function effectiveDate(post: Post): Date {
 }
 
 function monthLabel(date: Date): string {
-  return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: SITE_TIMEZONE });
 }
 
 // Full date shown as the tooltip behind the relative-time label
 function dayLabel(date: Date): string {
-  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: SITE_TIMEZONE });
 }
 
 function postLink(post: Post): string {

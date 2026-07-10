@@ -9,6 +9,7 @@ import {
     type BookRating,
     type RatingIconSpec
 } from '../../utils/bookRatings';
+import { SITE_TIMEZONE } from '../../utils/dateFormat';
 
 interface BookCardProps {
     title: string;
@@ -46,10 +47,11 @@ const importedCoverImage = cover ? getBookCoverImage(cover) : null;
 const formatDate = (date: Date | string | undefined) => {
   if (!date) return null;
   const dateObj = typeof date === 'string' ? new Date(date) : date;
-  return dateObj.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'short', 
-    day: 'numeric' 
+  return dateObj.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: SITE_TIMEZONE,
   });
 };
 

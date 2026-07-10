@@ -1,6 +1,7 @@
 import { getCollection } from 'astro:content';
 import type { BookRating } from './bookRatings';
 import { CONTENT_CATEGORIES } from '../content.config';
+import { SITE_TIMEZONE } from './dateFormat';
 
 export interface Post {
   data: {
@@ -252,7 +253,7 @@ export function getEditionDisplay(edition: number | string | undefined, created:
     editionNumber = extractEditionNumber(title || '', slug, filename);
   }
   if (!editionNumber) return '';
-  const month = created.toLocaleDateString('en-US', { month: 'long' });
-  const day = created.getDate();
+  const month = created.toLocaleDateString('en-US', { month: 'long', timeZone: SITE_TIMEZONE });
+  const day = Number(created.toLocaleDateString('en-US', { day: 'numeric', timeZone: SITE_TIMEZONE }));
   return `${editionNumber} - ${month} ${day}`;
 } 

@@ -114,3 +114,5 @@ src/utils/bookCovers.ts
 
 ## Superpowers directory
 .superpowers/
+
+__pycache__/
