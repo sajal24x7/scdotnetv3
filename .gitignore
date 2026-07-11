@@ -116,3 +116,4 @@ src/utils/bookCovers.ts
 .superpowers/
 
 __pycache__/
+src/content/.obsidian/workspace.json
