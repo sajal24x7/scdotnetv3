@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+cd "$(dirname "$0")/.."
+
 KNOWN_CATEGORIES="til blog micro photo nordletter story poem bookshelf filmshelf tvshelf gameshelf now colophon evergreen"
 INBOX="src/content/inbox"
 MOVED=0
