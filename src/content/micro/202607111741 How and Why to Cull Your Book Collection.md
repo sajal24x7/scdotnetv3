@@ -1,10 +1,16 @@
 ---
-title: "How and Why to Cull Your Book Collection"
-slug: "how-and-why-to-cull-your-book-collection"
-created: 2026-07-11T17:41:00+03:00
-updated: 2026-07-11T17:44:28+03:00
+title: How and Why to Cull Your Book Collection
+slug: how-and-why-to-cull-your-book-collection
+created: 2026-07-11T14:41:00.000Z
+updated: 2026-07-11T14:44:28.000Z
 category: micro
-tags: ["reading", "books", "library"]
+tags:
+  - reading
+  - books
+  - library
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116901921008963465'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqewaxn3ru2h'
 ---
 [How—and Why—to Cull Your Book Collection by Maris Kreizman](https://lithub.com/how-and-why-to-cull-your-book-collection/)
 
