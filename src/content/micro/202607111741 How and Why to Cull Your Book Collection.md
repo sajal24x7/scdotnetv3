@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - reading
-  - books
-  - library
-category: micro
+title: "How and Why to Cull Your Book Collection"
+slug: "how-and-why-to-cull-your-book-collection"
+created: 2026-07-11T17:41:00+03:00
 updated: 2026-07-11T17:44:28+03:00
+category: micro
+tags: ["reading", "books", "library"]
 ---
 [How—and Why—to Cull Your Book Collection by Maris Kreizman](https://lithub.com/how-and-why-to-cull-your-book-collection/)
 
