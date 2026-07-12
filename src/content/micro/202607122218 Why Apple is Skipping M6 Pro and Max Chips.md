@@ -1,10 +1,16 @@
 ---
-title: "Why Apple Is Skipping M6 Pro and Max Chips"
-slug: "why-apple-is-skipping-m6-pro-and-max-chips"
-created: 2026-07-12T22:18:00+03:00
-updated: 2026-07-12T22:19:54+03:00
+title: Why Apple Is Skipping M6 Pro and Max Chips
+slug: why-apple-is-skipping-m6-pro-and-max-chips
+created: 2026-07-12T19:18:00.000Z
+updated: 2026-07-12T19:19:54.000Z
 category: micro
-tags: ["apple", "ai", "mac"]
+tags:
+  - apple
+  - ai
+  - mac
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116908673465843967'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqhw7minzy2w'
 ---
 [Here's Why Apple is Reportedly Skipping M6 Pro and M6 Max Chips by Joe Rossignol](https://www.macrumors.com/2026/07/12/why-apple-is-skipping-m6-pro-m6-max-chips/)
 
