@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - reading
-  - books
-category: micro
+title: "How I Learned to Read Again"
+slug: "how-i-learned-to-read-again"
+created: 2026-07-13T12:30:00+03:00
 updated: 2026-07-13T12:42:28+03:00
+category: micro
+tags: ["reading", "books"]
 ---
 [How I Learned to Read Again by Magazine Non Grata](https://substack.magazinenongrata.com/p/how-i-learned-to-read-again)
 
