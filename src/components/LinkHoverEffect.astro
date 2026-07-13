@@ -34,7 +34,7 @@ const previewCategoriesJson = JSON.stringify(previewCategories);
     font-weight: 600 !important;
     color: #3b82f6 !important;
     margin-bottom: 4px !important;
-    font-size: 0.875rem !important;
+    font-size: var(--text-small) !important;
   }
   
   :global(.dark) .hover-tooltip .internal-preview .title {
@@ -42,7 +42,7 @@ const previewCategoriesJson = JSON.stringify(previewCategories);
   }
 
   .hover-tooltip .internal-preview .description {
-    font-size: 0.75rem !important;
+    font-size: var(--text-xs) !important;
     line-height: 1.4 !important;
     margin-top: 4px !important;
     opacity: 0.8 !important;
@@ -56,7 +56,7 @@ const previewCategoriesJson = JSON.stringify(previewCategories);
 
   .hover-tooltip .external-preview .url {
     font-family: var(--font-mono) !important;
-    font-size: 0.75rem !important;
+    font-size: var(--text-xs) !important;
     color: rgb(var(--color-accent)) !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;

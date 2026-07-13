@@ -172,7 +172,7 @@ const sectionLandingProps = createSectionLandingProps({
 </Layout>
 
 <style>
-  .bookshelf-count { font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; }
+  .bookshelf-count { font-size: var(--text-small); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; }
   :global(.dark) .bookshelf-count { color: #9ca3af; }
   .bookshelf-content { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3rem); padding-bottom: 2rem; }
   .bookshelf-years { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3.5rem); }
@@ -183,7 +183,7 @@ const sectionLandingProps = createSectionLandingProps({
   @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / -1; } }
   .bookshelf-year__sticky { position: sticky; top: clamp(4rem, 6vw, 5.5rem); display: flex; flex-direction: column; gap: 0.35rem; }
   .bookshelf-year__year { font-size: var(--text-huge); font-weight: 700; color: rgb(var(--color-text-primary)); }
-  .bookshelf-year__count { font-size: 0.95rem; font-weight: 500; color: #6b7280; }
+  .bookshelf-year__count { font-size: var(--text-small); font-weight: 500; color: #6b7280; }
   :global(.dark) .bookshelf-year__count { color: #9ca3af; }
   .bookshelf-year__book { display: flex; }
   .bookshelf-year__book :global(.book-card) { width: 100%; }

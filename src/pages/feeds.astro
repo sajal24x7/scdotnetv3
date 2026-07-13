@@ -108,7 +108,7 @@ const allPosts = await getAllPosts();
     color: rgb(71 85 105);
     max-width: 48rem;
     margin: 0 auto;
-    line-height: 1.7;
+    line-height: 1.6;
   }
 
   :global(.dark) .feeds-intro p {
@@ -172,9 +172,9 @@ const allPosts = await getAllPosts();
   /* Column heading (clickable feed) */
   .feeds-col__parent {
     display: block;
-    font-size: 0.8rem;
+    font-size: var(--text-small);
     font-weight: 700;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: rgb(31 41 55);
     text-decoration: none;
@@ -202,9 +202,9 @@ const allPosts = await getAllPosts();
   /* Non-clickable column label (Special) */
   .feeds-col__label {
     display: block;
-    font-size: 0.8rem;
+    font-size: var(--text-small);
     font-weight: 700;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: rgb(31 41 55);
     margin-bottom: 0.625rem;
@@ -235,7 +235,7 @@ const allPosts = await getAllPosts();
   .feeds-col__list a {
     display: block;
     padding: 0.4rem 0;
-    font-size: 0.875rem;
+    font-size: var(--text-small);
     color: rgb(75 85 99);
     text-decoration: none;
     transition: color 0.15s ease;
