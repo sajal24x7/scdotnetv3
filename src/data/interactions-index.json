@@ -1,5 +1,660 @@
 {
   "_meta": {
     "version": 1
-  }
+  },
+  "blog/the-problem-with-current": [
+    {
+      "id": "bluesky:like:3mm4g5rte2m2u:did:plc:ahdgcukqomujgadxcvj2cu4o",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "ｽﾀｰﾄﾗｲﾝｼｽﾃﾑﾄﾞｯﾄｺﾑ",
+        "url": "https://bsky.app/profile/start-line-system.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ahdgcukqomujgadxcvj2cu4o/bafkreicirjlcie2f5dyi33ymcvgag4spy24rgxdacorb4ru6xvwmnuh33m"
+      },
+      "url": "https://bsky.app/profile/start-line-system.bsky.social",
+      "published": "2026-05-18T08:06:09.920Z",
+      "status": "approved"
+    },
+    {
+      "id": "bluesky:like:3mm4g5rte2m2u:did:plc:ilwe2nx42xcfws5umthy7phz",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Gabe",
+        "url": "https://bsky.app/profile/pedalsandpages.com",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ilwe2nx42xcfws5umthy7phz/bafkreidi77whhfho6pnnc3ffnylrxurn57cro6kqsgewfmugh7xm4fldga"
+      },
+      "url": "https://bsky.app/profile/pedalsandpages.com",
+      "published": "2026-05-18T08:32:02.485Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116594543338255391:116166929052393523",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Readit Club",
+        "url": "https://mastodon.social/@readit",
+        "avatar": "https://files.mastodon.social/accounts/avatars/116/166/929/052/393/523/original/c46c5ad7459851f3.png"
+      },
+      "url": "https://mastodon.social/@readit",
+      "status": "approved"
+    }
+  ],
+  "bookshelf/platform-decay": [
+    {
+      "id": "mastodon:like:116877354312925036:108206161178110078",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Angela",
+        "url": "https://mastodon.nz/@seawall",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/108/206/161/178/110/078/original/23e2d786a33fc795.jpg"
+      },
+      "url": "https://mastodon.nz/@seawall",
+      "status": "approved"
+    }
+  ],
+  "bookshelf/reading-the-elements-of-marie-curie": [
+    {
+      "id": "mastodon:repost:116878027693879661:111653096064449100",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Science Channel",
+        "url": "https://newsmast.community/@science",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/096/064/449/100/original/d50849971c54fd7a.png"
+      },
+      "url": "https://newsmast.community/@science",
+      "status": "approved"
+    }
+  ],
+  "evergreen/extinction-was-discovered": [
+    {
+      "id": "bluesky:like:3mowt6mckm52u:did:plc:pqv77tyop2q4c6inbbm4rivo",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Sophia 🏳️‍⚧️",
+        "url": "https://bsky.app/profile/neko.ac",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:pqv77tyop2q4c6inbbm4rivo/bafkreianbmyzafebcbuf42bydlzsai3jafb76azx354ev3kuwrb7xaqzme"
+      },
+      "url": "https://bsky.app/profile/neko.ac",
+      "published": "2026-06-23T06:58:26.721Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116798121949791914:115714075089960705",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "leszy_z_lasu",
+        "url": "https://ostatni.ninja/@thoran",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/115/714/075/089/960/705/original/6c45c8cbb4383524.png"
+      },
+      "url": "https://ostatni.ninja/@thoran",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116798121949791914:115714075089960705",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "leszy_z_lasu",
+        "url": "https://ostatni.ninja/@thoran",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/115/714/075/089/960/705/original/6c45c8cbb4383524.png"
+      },
+      "url": "https://ostatni.ninja/@thoran",
+      "status": "approved"
+    }
+  ],
+  "micro/202607091101": [
+    {
+      "id": "bluesky:like:3mq7azzv4qu2w:did:plc:lcbtt32aexvcuwlt4alf6qsw",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Bavarian Belle",
+        "url": "https://bsky.app/profile/bavarianbelle.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:lcbtt32aexvcuwlt4alf6qsw/bafkreibm4nxbhu3ya44hatdrt34co2ahplh7lc7ea7frpuwotwiykl4eca"
+      },
+      "url": "https://bsky.app/profile/bavarianbelle.bsky.social",
+      "published": "2026-07-09T10:33:21.514Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116889169002494523:115974409687438894",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Ida",
+        "url": "https://mastodon.social/@qwiks",
+        "avatar": "https://files.mastodon.social/accounts/avatars/115/974/409/687/438/894/original/cc06e136419adaa5.jpeg"
+      },
+      "url": "https://mastodon.social/@qwiks",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116889169002494523:111653095630935220",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Photography Channel",
+        "url": "https://newsmast.community/@photography",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/095/630/935/220/original/cfb86c7df6f79ec0.png"
+      },
+      "url": "https://newsmast.community/@photography",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116889169002494523:111653123325216795",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Food & Drink Channel",
+        "url": "https://newsmast.community/@foodanddrink",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/123/325/216/795/original/41e4e27a5234e98a.png"
+      },
+      "url": "https://newsmast.community/@foodanddrink",
+      "status": "approved"
+    }
+  ],
+  "micro/202607111250": [
+    {
+      "id": "mastodon:reply:116901035876918344",
+      "type": "reply",
+      "platform": "mastodon",
+      "author": {
+        "name": "Andreas Grois",
+        "url": "https://mastodon.gamedev.place/@soulsource",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/541/147/600/788/878/original/60efe3f645d44277.png"
+      },
+      "content": "<p><a href=\"https://mastodon.social/@sajal24x7\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">@sajal24x7</a> My favourite lecture at university was History of Physics. The professor who held that course, Wolfgang Rößler, has also written a book containing a collection of anecdotes about famous physicists, which I cannot recommend enough. Only problem: The book is only available in German.</p><p><a href=\"https://link.springer.com/book/10.1007/978-3-7643-7744-1\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">https://link.springer.com/book/10.1007/978-3-7643-7744-1</a></p>",
+      "url": "https://mastodon.gamedev.place/@soulsource/116901035851199077",
+      "published": "2026-07-11T11:10:47.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:reply:116911622493153107",
+      "type": "reply",
+      "platform": "mastodon",
+      "author": {
+        "name": "Sajal Choudhary",
+        "url": "https://mastodon.social/@sajal24x7",
+        "avatar": "https://files.mastodon.social/accounts/avatars/112/356/178/345/792/108/original/26edb0a43d5c6d00.jpeg"
+      },
+      "content": "<p><a href=\"https://mastodon.gamedev.place/@soulsource\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">@soulsource</a> so interesting! And a shame that this is not available in English!</p>",
+      "url": "https://mastodon.social/@sajal24x7/116911622493153107",
+      "published": "2026-07-13T08:03:06.581Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116900748193619422:108272880753470544",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Jeremy (G1WVK)",
+        "url": "https://mastodon.radio/@Jeremy",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/108/272/880/753/470/544/original/0b92d1f2b0d020ef.jpg"
+      },
+      "url": "https://mastodon.radio/@Jeremy",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116900748193619422:109284241722618066",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Jim \"Ham on a Bike\"",
+        "url": "https://mastodon.radio/@N4JAW",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/284/241/722/618/066/original/6db3172262d07351.jpg"
+      },
+      "url": "https://mastodon.radio/@N4JAW",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116900748193619422:109293466479431647",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Jack Heath",
+        "url": "https://writing.exchange/@jackheathwriter",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/293/466/479/431/647/original/52ad432fb24d22d2.png"
+      },
+      "url": "https://writing.exchange/@jackheathwriter",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116900748193619422:109574701284280738",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "BearG",
+        "url": "https://discuss.systems/@BearGriffin",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/574/701/284/280/738/original/7c21917321b3e161.jpg"
+      },
+      "url": "https://discuss.systems/@BearGriffin",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116900748193619422:111043914893544809",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "jendefer",
+        "url": "https://dice.camp/@jendefer",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/043/914/893/544/809/original/e8be9361a3bedc8d.png"
+      },
+      "url": "https://dice.camp/@jendefer",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116900748193619422:114097794638173900",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Ilirwen",
+        "url": "https://mastodon.social/@ilirwen",
+        "avatar": "https://files.mastodon.social/accounts/avatars/114/097/794/638/173/900/original/e0bf7fed303944d0.png"
+      },
+      "url": "https://mastodon.social/@ilirwen",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116900748193619422:116789104993565460",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Chirayu :verified: 🛰️",
+        "url": "https://spacey.space/@mountdiscovery",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/116/789/104/993/565/460/original/2d94ec70aab4504f.png"
+      },
+      "url": "https://spacey.space/@mountdiscovery",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116900748193619422:109541147600788878",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Andreas Grois",
+        "url": "https://mastodon.gamedev.place/@soulsource",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/541/147/600/788/878/original/60efe3f645d44277.png"
+      },
+      "url": "https://mastodon.gamedev.place/@soulsource",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116900748193619422:109574701284280738",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "BearG",
+        "url": "https://discuss.systems/@BearGriffin",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/574/701/284/280/738/original/7c21917321b3e161.jpg"
+      },
+      "url": "https://discuss.systems/@BearGriffin",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116900748193619422:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/112/089/202/906/original/b1eec234f3d6d00a.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116900748193619422:111653365874136274",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Physics Channel",
+        "url": "https://newsmast.community/@physics",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/365/874/136/274/original/27ca9c534daf96af.png"
+      },
+      "url": "https://newsmast.community/@physics",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116900748193619422:312927",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Daniel Pecos Martínez 🇪🇺 🐧",
+        "url": "https://mastodon.social/@dpecos",
+        "avatar": "https://files.mastodon.social/accounts/avatars/000/312/927/original/4a34c2da4afefc13.png"
+      },
+      "url": "https://mastodon.social/@dpecos",
+      "status": "approved"
+    }
+  ],
+  "micro/a-way-to-optimise-icloud-storage": [
+    {
+      "id": "mastodon:repost:116887934513817365:114863603913131469",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Apple-feed",
+        "url": "https://channel.org/@applefeed",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/863/603/913/131/469/original/bee2c08d7e4d20a9.jpg"
+      },
+      "url": "https://channel.org/@applefeed",
+      "status": "approved"
+    }
+  ],
+  "micro/amazon-has-a-new-plan-for-games": [
+    {
+      "id": "mastodon:like:116696520863508112:1339141",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Michael / マイケル 사자 🦁",
+        "url": "https://mas.to/@saja0486",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/001/339/141/original/f3c2d53896f22bf6.png"
+      },
+      "url": "https://mas.to/@saja0486",
+      "status": "approved"
+    }
+  ],
+  "micro/anthropic-cuts-fable-and-mythos-access": [
+    {
+      "id": "mastodon:like:116743124007722703:111686701960632589",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Holger Hellinger",
+        "url": "https://hellinger.wtf/@holger",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/686/701/960/632/589/original/3ee38668fe3f05b0.png"
+      },
+      "url": "https://hellinger.wtf/@holger",
+      "status": "approved"
+    }
+  ],
+  "micro/apple-announces-ai-support-for-generating-shortcuts": [
+    {
+      "id": "bluesky:like:3mnwwll7ake24:did:plc:zrs75yjl5zja65k3trsi7tjc",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "PocketHook",
+        "url": "https://bsky.app/profile/pockethook.app",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:zrs75yjl5zja65k3trsi7tjc/bafkreih6svs6afbyuvd3sgvq6yhnmnknn3xza63byjt2zo3lpj6z4f3it4"
+      },
+      "url": "https://bsky.app/profile/pockethook.app",
+      "published": "2026-06-17T18:16:05.336Z",
+      "status": "approved"
+    }
+  ],
+  "micro/apple-increases-price-of-its-gadgets": [
+    {
+      "id": "bluesky:like:3mp6cblel752r:did:plc:z4r2sakrqgtdk7ednvkqeevq",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Cats of Kyiv 🐈  🇺🇦",
+        "url": "https://bsky.app/profile/catofkyiv.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:z4r2sakrqgtdk7ednvkqeevq/bafkreiebztvdbk25j4pf64vtnvv6nxjzjscingzmrzs6juekguq6noypjy"
+      },
+      "url": "https://bsky.app/profile/catofkyiv.bsky.social",
+      "published": "2026-06-26T06:17:45.000Z",
+      "status": "approved"
+    }
+  ],
+  "micro/how-and-why-to-cull-your-book-collection": [
+    {
+      "id": "mastodon:like:116901921008963465:111584118693761981",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "G-Squirrel",
+        "url": "https://cupoftea.social/@gsquirrel",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/584/118/693/761/981/original/d9bd73507183482f.png"
+      },
+      "url": "https://cupoftea.social/@gsquirrel",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116901921008963465:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/112/089/202/906/original/b1eec234f3d6d00a.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116901921008963465:116141936733036818",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Literbook",
+        "url": "https://mastodon.social/@Literbook",
+        "avatar": "https://files.mastodon.social/accounts/avatars/116/141/936/733/036/818/original/b9f7d993b5997a5f.png"
+      },
+      "url": "https://mastodon.social/@Literbook",
+      "status": "approved"
+    }
+  ],
+  "micro/kunal-shah-to-become-global-head-of-whatsapp": [
+    {
+      "id": "mastodon:like:116798122425373992:110436829441173808",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Ikkle Gemz Universe+",
+        "url": "https://ohai.social/@ikklegemzuniverseplus",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/110/436/829/441/173/808/original/e930bce0d017d4d9.jpg"
+      },
+      "url": "https://ohai.social/@ikklegemzuniverseplus",
+      "status": "approved"
+    }
+  ],
+  "micro/the-literary-world-is-not-prepared-for-ai": [
+    {
+      "id": "mastodon:repost:116641016610293375:116141936733036818",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Literbook",
+        "url": "https://mastodon.social/@Literbook",
+        "avatar": "https://files.mastodon.social/accounts/avatars/116/141/936/733/036/818/original/b9f7d993b5997a5f.png"
+      },
+      "url": "https://mastodon.social/@Literbook",
+      "status": "approved"
+    }
+  ],
+  "micro/why-apple-is-skipping-m6-pro-and-max-chips": [
+    {
+      "id": "mastodon:repost:116908673465843967:114863603913131469",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Apple-feed",
+        "url": "https://channel.org/@applefeed",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/863/603/913/131/469/original/bee2c08d7e4d20a9.jpg"
+      },
+      "url": "https://channel.org/@applefeed",
+      "status": "approved"
+    }
+  ],
+  "nordletter/nl107": [
+    {
+      "id": "mastodon:like:116665713078130320:110249442633796155",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Kris Bock Romance/Mystery",
+        "url": "https://mastodon.social/@KrisBock",
+        "avatar": "https://files.mastodon.social/accounts/avatars/110/249/442/633/796/155/original/0740c426d9a5a954.jpg"
+      },
+      "url": "https://mastodon.social/@KrisBock",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116665713078130320:116141936733036818",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Literbook",
+        "url": "https://mastodon.social/@Literbook",
+        "avatar": "https://files.mastodon.social/accounts/avatars/116/141/936/733/036/818/original/b9f7d993b5997a5f.png"
+      },
+      "url": "https://mastodon.social/@Literbook",
+      "status": "approved"
+    }
+  ],
+  "nordletter/nl112-the-diabetes-code": [
+    {
+      "id": "mastodon:repost:116869370738699620:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/112/089/202/906/original/b1eec234f3d6d00a.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
+    }
+  ],
+  "nordletter/nl113-fable-is-good": [
+    {
+      "id": "mastodon:like:116903796338848327:116696538002197507",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Marin T. Kael",
+        "url": "https://mastodon.social/@marintkael",
+        "avatar": "https://files.mastodon.social/accounts/avatars/116/696/538/002/197/507/original/759ee4058d9e9155.png"
+      },
+      "url": "https://mastodon.social/@marintkael",
+      "status": "approved"
+    }
+  ],
+  "photo/202607111030": [
+    {
+      "id": "mastodon:like:116900200587485471:109364281065561411",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "AlexTECPlayz",
+        "url": "https://techhub.social/@alextecplayz",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/364/281/065/561/411/original/242b66386b7cdab3.png"
+      },
+      "url": "https://techhub.social/@alextecplayz",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116900200587485471:116883795136602181",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "mio",
+        "url": "https://mastodon.social/@mimio",
+        "avatar": "https://files.mastodon.social/accounts/avatars/116/883/795/136/602/181/original/064e197e5f25b7e8.png"
+      },
+      "url": "https://mastodon.social/@mimio",
+      "status": "approved"
+    }
+  ],
+  "photo/a-rainbow-over-chemicum": [
+    {
+      "id": "mastodon:like:116894095962364018:114726996871721371",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Gonny",
+        "url": "https://pixelfed.social/gonny.veldman",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/726/996/871/721/371/original/9cc925e5fa9efafc.jpg"
+      },
+      "url": "https://pixelfed.social/gonny.veldman",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116894095962364018:111653399827320429",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Nature & Wildlife Channel",
+        "url": "https://newsmast.community/@nature",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/399/827/320/429/original/5c7b6ee8d097fccb.png"
+      },
+      "url": "https://newsmast.community/@nature",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116894095962364018:113772221016828339",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "wandern",
+        "url": "https://dibbelabb.es/@wandern",
+        "avatar": "https://mastodon.social/avatars/original/missing.png"
+      },
+      "url": "https://dibbelabb.es/@wandern",
+      "status": "approved"
+    }
+  ],
+  "photo/helsinki-pride-2026": [
+    {
+      "id": "mastodon:like:116894281385410293:109579367424780140",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Chaos Agent Spectre",
+        "url": "https://corteximplant.com/@ChaosSpectre",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/579/367/424/780/140/original/32a5d3339ad12cff.png"
+      },
+      "url": "https://corteximplant.com/@ChaosSpectre",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116894281385410293:114296425349603996",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Jeroen",
+        "url": "https://metapixl.com/J_FromTheRiver",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/296/425/349/603/996/original/bedda4427ee67d9a.jpg"
+      },
+      "url": "https://metapixl.com/J_FromTheRiver",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116894281385410293:111653361619125419",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "LGBTQ+ Channel",
+        "url": "https://newsmast.community/@lgbtq",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/361/619/125/419/original/e2714c2b13f9bf7d.png"
+      },
+      "url": "https://newsmast.community/@lgbtq",
+      "status": "approved"
+    }
+  ],
+  "til/troubleshooting-common-kubernetes-problems": [
+    {
+      "id": "bluesky:like:3mqbw6cukmm2f:did:plc:64pf3pvhd6iaudtsgsn63yy6",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Patrick Richter",
+        "url": "https://bsky.app/profile/nomadsgate.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:64pf3pvhd6iaudtsgsn63yy6/bafkreigqdspb44bvtc43a43i2vzbc3ewnqnzyd3iegi7qatnxr7aezpqhm"
+      },
+      "url": "https://bsky.app/profile/nomadsgate.bsky.social",
+      "published": "2026-07-10T13:26:22.411Z",
+      "status": "approved"
+    }
+  ]
 }
