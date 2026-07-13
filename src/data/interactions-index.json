@@ -40,6 +40,17 @@
       },
       "url": "https://mastodon.social/@readit",
       "status": "approved"
+    },
+    {
+      "id": "threads:like-count:DYeQEB-lCCY",
+      "type": "like-count",
+      "platform": "threads",
+      "author": {
+        "name": "Threads"
+      },
+      "url": "https://www.threads.com/@sajal24x7/post/DYeQEB-lCCY",
+      "count": 1,
+      "status": "approved"
     }
   ],
   "bookshelf/platform-decay": [
@@ -470,6 +481,17 @@
       },
       "url": "https://mastodon.social/@Literbook",
       "status": "approved"
+    },
+    {
+      "id": "threads:like-count:DYzYnM1Dsq7",
+      "type": "like-count",
+      "platform": "threads",
+      "author": {
+        "name": "Threads"
+      },
+      "url": "https://www.threads.com/@sajal24x7/post/DYzYnM1Dsq7",
+      "count": 1,
+      "status": "approved"
     }
   ],
   "micro/why-apple-is-skipping-m6-pro-and-max-chips": [
@@ -542,6 +564,17 @@
   ],
   "photo/202607111030": [
     {
+      "id": "instagram:like-count:DapQTQfFo6v",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DapQTQfFo6v/",
+      "count": 5,
+      "status": "approved"
+    },
+    {
       "id": "mastodon:like:116900200587485471:109364281065561411",
       "type": "like",
       "platform": "mastodon",
@@ -566,7 +599,31 @@
       "status": "approved"
     }
   ],
+  "photo/202607120048": [
+    {
+      "id": "instagram:like-count:DaqzPfaEkdk",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DaqzPfaEkdk/",
+      "count": 7,
+      "status": "approved"
+    }
+  ],
   "photo/a-rainbow-over-chemicum": [
+    {
+      "id": "instagram:like-count:DameQ6ODoIl",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DameQ6ODoIl/",
+      "count": 11,
+      "status": "approved"
+    },
     {
       "id": "mastodon:like:116894095962364018:114726996871721371",
       "type": "like",
@@ -605,6 +662,17 @@
     }
   ],
   "photo/helsinki-pride-2026": [
+    {
+      "id": "instagram:like-count:Damjs2Jlqd6",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/Damjs2Jlqd6/",
+      "count": 9,
+      "status": "approved"
+    },
     {
       "id": "mastodon:like:116894281385410293:109579367424780140",
       "type": "like",
