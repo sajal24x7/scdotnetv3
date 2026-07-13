@@ -8,13 +8,17 @@
  * and bakes them into src/data/interactions-index.json, which the site reads
  * at build time (src/utils/interactions.ts) to render the Interactions tab.
  *
- * Currently collects from Mastodon and Bluesky. Threads and Instagram are
- * planned (see planning/webmention-interactions-plan.md, Phase 2); their
- * entries in the index — like `web` and `email` ones — are preserved
- * untouched by this script.
+ * Collects from Mastodon, Bluesky, Threads, and Instagram. Entries from any
+ * other platform in the index (web, email) are preserved untouched by this
+ * script. Threads and Instagram need their permalinks resolved to Meta media
+ * ids first; that mapping is cached in src/data/interaction-sources.json.
  *
  * Environment:
  *   MASTODON_ACCESS_TOKEN     optional, improves Mastodon rate limits
+ *   THREADS_ACCESS_TOKEN      optional, enables the Threads backfeed
+ *   THREADS_USER_ID           (both required; same secrets the syndicator uses)
+ *   INSTAGRAM_ACCESS_TOKEN    optional, enables the Instagram backfeed
+ *   INSTAGRAM_USER_ID         (both required)
  *   INTERACTIONS_DAYS_BACK    poll window in days (default from
  *                             interactions.config.json; 0 = all posts)
  */
@@ -25,18 +29,41 @@ import matter from 'gray-matter';
 import { RateLimiter } from './lib/utils/rate-limiter.js';
 import { parseMastodonUrl, collectMastodonInteractions } from './lib/interactions/mastodon.js';
 import { parseBlueskyUrl, collectBlueskyInteractions } from './lib/interactions/bluesky.js';
+import { parseThreadsUrl, threadsConfig, resolveThreadsMediaIds, collectThreadsInteractions } from './lib/interactions/threads.js';
+import { parseInstagramUrl, instagramConfig, resolveInstagramMediaIds, collectInstagramInteractions } from './lib/interactions/instagram.js';
 
 const INDEX_FILE = path.join(process.cwd(), 'src', 'data', 'interactions-index.json');
+const SOURCES_FILE = path.join(process.cwd(), 'src', 'data', 'interaction-sources.json');
 const CONFIG_FILE = path.join(process.cwd(), 'interactions.config.json');
 const INDEX_VERSION = 1;
 
 // Platforms this script is authoritative for. Entries from any other
-// platform (threads, instagram, web, email) are never touched here.
-const POLLED_PLATFORMS = new Set(['mastodon', 'bluesky']);
+// platform (web, email) are never touched here.
+const POLLED_PLATFORMS = new Set(['mastodon', 'bluesky', 'threads', 'instagram']);
+
+// The Meta platforms share a poll shape: resolve permalinks to media ids
+// once per run, then collect per post via the resolved refs.
+const META_PLATFORMS = {
+  threads: {
+    getConfig: threadsConfig,
+    parseUrl: parseThreadsUrl,
+    resolve: resolveThreadsMediaIds,
+    collect: collectThreadsInteractions,
+  },
+  instagram: {
+    getConfig: instagramConfig,
+    parseUrl: parseInstagramUrl,
+    resolve: resolveInstagramMediaIds,
+    collect: collectInstagramInteractions,
+  },
+};
 
 const rateLimiters = {
   mastodon: new RateLimiter(300, 5 * 60 * 1000),
   bluesky: new RateLimiter(100, 60 * 1000),
+  // Meta's per-user Graph limits are hourly; stay comfortably below them.
+  threads: new RateLimiter(150, 60 * 60 * 1000),
+  instagram: new RateLimiter(150, 60 * 60 * 1000),
 };
 
 function loadConfig() {
@@ -99,6 +126,37 @@ function getSyndicatedPosts() {
   return posts;
 }
 
+function readSources() {
+  try {
+    const raw = JSON.parse(fs.readFileSync(SOURCES_FILE, 'utf-8'));
+    return { threads: raw.threads ?? {}, instagram: raw.instagram ?? {} };
+  } catch {
+    return { threads: {}, instagram: {} };
+  }
+}
+
+function writeSources(sources) {
+  const sortObject = (obj) => Object.fromEntries(Object.entries(obj).sort(([a], [b]) => a.localeCompare(b)));
+  const output = {
+    _meta: { version: 1 },
+    threads: sortObject(sources.threads),
+    instagram: sortObject(sources.instagram),
+  };
+  const serialized = JSON.stringify(output, null, 2) + '\n';
+
+  let existing = null;
+  try {
+    existing = fs.readFileSync(SOURCES_FILE, 'utf-8');
+  } catch {
+    // First run — no cache yet.
+  }
+  if (existing === serialized) return;
+
+  fs.mkdirSync(path.dirname(SOURCES_FILE), { recursive: true });
+  fs.writeFileSync(SOURCES_FILE, serialized, 'utf-8');
+  console.log(`Wrote ${SOURCES_FILE}`);
+}
+
 function readIndex() {
   try {
     const raw = JSON.parse(fs.readFileSync(INDEX_FILE, 'utf-8'));
@@ -146,7 +204,58 @@ function sortEntries(entries) {
   });
 }
 
-async function collectForPost(post) {
+/** Group a post's Threads/Instagram syndication URLs by platform. */
+function metaRefsForPost(post) {
+  const refs = { threads: [], instagram: [] };
+  for (const url of post.syndicationUrls) {
+    for (const [platform, { parseUrl }] of Object.entries(META_PLATFORMS)) {
+      const ref = parseUrl(url);
+      if (ref) {
+        refs[platform].push({ ...ref, url });
+        break;
+      }
+    }
+  }
+  return refs;
+}
+
+/**
+ * Resolve the permalink → media-id map for one Meta platform. Unavailable
+ * platforms (no credentials, resolution failure) are simply not polled, so
+ * their existing index entries pass through untouched.
+ */
+async function prepareMetaPlatform(platform, posts, cache) {
+  const wanted = new Set(posts.flatMap((post) => post.metaRefs[platform].map((ref) => ref.shortcode)));
+  if (wanted.size === 0) return { available: false };
+
+  const config = META_PLATFORMS[platform].getConfig();
+  if (!config) {
+    console.log(`ℹ️  ${platform}: credentials not configured, leaving existing entries untouched`);
+    return { available: false };
+  }
+
+  try {
+    const { ids, exhausted } = await META_PLATFORMS[platform].resolve({
+      config,
+      wanted,
+      cache,
+      rateLimiter: rateLimiters[platform],
+    });
+    const unresolved = wanted.size - ids.size;
+    if (unresolved > 0) {
+      console.warn(
+        `  ⚠️  ${platform}: ${unresolved} syndicated post(s) missing from the media list` +
+          (exhausted ? ' — treating as deleted upstream' : ' — leaving them untouched')
+      );
+    }
+    return { available: true, config, ids, exhausted };
+  } catch (error) {
+    console.warn(`  ⚠️  ${platform} media resolution failed: ${error.message} — leaving existing entries untouched`);
+    return { available: false };
+  }
+}
+
+async function collectForPost(post, meta, sources) {
   // platform → { gone, entries } for platforms that answered; a thrown
   // fetch marks the platform as failed so its old entries are kept as-is.
   const results = new Map();
@@ -163,6 +272,34 @@ async function collectForPost(post) {
       }
     } catch (error) {
       const platform = mastodonRef ? 'mastodon' : 'bluesky';
+      console.warn(`  ⚠️  ${platform} failed for ${post.key}: ${error.message}`);
+      results.set(platform, { failed: true });
+    }
+  }
+
+  for (const [platform, { collect }] of Object.entries(META_PLATFORMS)) {
+    const state = meta[platform];
+    const refs = post.metaRefs[platform];
+    if (!state?.available || refs.length === 0) continue;
+
+    const resolved = refs
+      .map((ref) => ({ ...ref, mediaId: state.ids.get(ref.shortcode) }))
+      .filter((ref) => ref.mediaId);
+
+    if (resolved.length === 0) {
+      // Every copy is missing from the media list: deleted upstream when the
+      // full list was paged, unknowable otherwise (leave entries alone).
+      if (state.exhausted) results.set(platform, { gone: true, entries: [] });
+      continue;
+    }
+
+    try {
+      const result = await collect(resolved, state.config, rateLimiters[platform]);
+      for (const shortcode of result.goneShortcodes ?? []) {
+        delete sources[platform][shortcode];
+      }
+      results.set(platform, result);
+    } catch (error) {
       console.warn(`  ⚠️  ${platform} failed for ${post.key}: ${error.message}`);
       results.set(platform, { failed: true });
     }
@@ -216,14 +353,22 @@ async function collectInteractions() {
       (daysBack > 0 ? ` from the last ${daysBack} days` : ' (no window)')
   );
 
+  const sources = readSources();
+  for (const post of posts) post.metaRefs = metaRefsForPost(post);
+
+  const meta = {};
+  for (const platform of Object.keys(META_PLATFORMS)) {
+    meta[platform] = await prepareMetaPlatform(platform, posts, sources[platform]);
+  }
+
   const index = readIndex();
   let polled = 0;
   let failedPosts = 0;
   let totalEntries = 0;
 
   for (const post of posts) {
-    const results = await collectForPost(post);
-    if (results.size === 0) continue; // no Mastodon/Bluesky copies
+    const results = await collectForPost(post, meta, sources);
+    if (results.size === 0) continue; // no copies on a polled platform
 
     polled++;
     if ([...results.values()].every((result) => result.failed)) failedPosts++;
@@ -241,6 +386,7 @@ async function collectInteractions() {
   }
 
   writeIndex(index);
+  writeSources(sources);
   console.log(`\n🎉 Done. Polled ${polled} posts, ${totalEntries} interactions in updated keys.`);
 
   if (polled > 0 && failedPosts === polled) {

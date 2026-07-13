@@ -53,7 +53,7 @@ One JSON index, mirroring the backlinks pattern: `src/data/interactions-index.js
   "/micro/fable-is-very-good/": [
     {
       "id": "mastodon-114312345678901234",     // stable dedupe key: platform + native id
-      "type": "reply",                         // reply | like | repost | mention | email
+      "type": "reply",                         // reply | like | repost | mention | like-count | email
       "platform": "mastodon",                  // mastodon | bluesky | threads | instagram | web | email
       "author": {
         "name": "Ada",
@@ -253,6 +253,14 @@ New `src/components/interactions/Interactions.astro`, wired into
    `scripts/lib/interactions/*`, `src/data/interactions-index.json`,
    `src/utils/interactions.ts`, `src/components/interactions/Interactions.astro`,
    `.github/workflows/refresh-interactions.yml`, `interactions.config.json`.
-2. **Phase 2** (Threads + Instagram) — mostly collector plumbing, no UI changes.
+2. **Phase 2** (Threads + Instagram) — mostly collector plumbing.
+   ✅ **Shipped**: `scripts/lib/interactions/threads.js`, `scripts/lib/interactions/instagram.js`,
+   shared Meta Graph helpers + permalink→media-id resolution in
+   `scripts/lib/interactions/meta.js`, the resolution cache
+   `src/data/interaction-sources.json`, and `like-count` count-chip entries
+   rendered by `Interactions.astro`. Missing read scopes
+   (`threads_read_replies`, `threads_manage_insights`,
+   `instagram_business_manage_comments`) degrade gracefully with a run-log
+   warning until a one-time re-auth grants them.
 3. **Phase 3** (webmention endpoint + KV + moderation) — the "real" webmention support.
 4. **Phase 4** (outgoing webmentions, email curation, avatar caching) — polish, any order.

@@ -12,11 +12,15 @@ const { interactions = [] } = Astro.props as Props;
 const replies = interactions.filter((i) => i.type === 'reply' || i.type === 'mention');
 const likes = interactions.filter((i) => i.type === 'like');
 const reposts = interactions.filter((i) => i.type === 'repost');
-const count = interactions.length;
+// Count-only aggregates from platforms that never expose who liked
+// (Threads, Instagram) — rendered as chips next to the facepile.
+const likeChips = interactions.filter((i) => i.type === 'like-count' && (i.count ?? 0) > 0);
+const likeTotal = likes.length + likeChips.reduce((sum, i) => sum + (i.count ?? 0), 0);
+const count = replies.length + likeTotal + reposts.length;
 
 const countParts = [
     replies.length > 0 ? `${replies.length} ${replies.length === 1 ? 'reply' : 'replies'}` : null,
-    likes.length > 0 ? `${likes.length} ${likes.length === 1 ? 'like' : 'likes'}` : null,
+    likeTotal > 0 ? `${likeTotal} ${likeTotal === 1 ? 'like' : 'likes'}` : null,
     reposts.length > 0 ? `${reposts.length} ${reposts.length === 1 ? 'repost' : 'reposts'}` : null,
 ].filter(Boolean);
 
@@ -50,9 +54,9 @@ function initialOf(name: string): string {
 }
 
 const facepileGroups = [
-    { type: 'like', label: 'Liked by', items: likes },
-    { type: 'repost', label: 'Reposted by', items: reposts },
-].filter((group) => group.items.length > 0);
+    { type: 'like', label: likes.length > 0 ? 'Liked by' : 'Likes', items: likes, chips: likeChips },
+    { type: 'repost', label: 'Reposted by', items: reposts, chips: [] as Interaction[] },
+].filter((group) => group.items.length > 0 || group.chips.length > 0);
 ---
 
 {count > 0 && (
@@ -68,9 +72,9 @@ const facepileGroups = [
                                 Replies ({replies.length})
                             </button>
                         )}
-                        {likes.length > 0 && (
+                        {likeTotal > 0 && (
                             <button type="button" class="interactions__tab" data-filter="likes" aria-pressed="false">
-                                Likes ({likes.length})
+                                Likes ({likeTotal})
                             </button>
                         )}
                         {reposts.length > 0 && (
@@ -119,6 +123,22 @@ const facepileGroups = [
                                     +{group.items.length - FACEPILE_LIMIT}
                                 </span>
                             )}
+                            {group.chips.map((chip) => {
+                                const platformLabel = PLATFORM_META[chip.platform]?.label ?? chip.platform;
+                                const chipText = `${chip.count} ${chip.count === 1 ? 'like' : 'likes'} on ${platformLabel}`;
+                                return chip.url ? (
+                                    <a
+                                        href={chip.url}
+                                        class="interactions__count-chip"
+                                        target="_blank"
+                                        rel="nofollow noopener noreferrer"
+                                    ><span aria-hidden="true">❤️</span> {chipText}</a>
+                                ) : (
+                                    <span class="interactions__count-chip">
+                                        <span aria-hidden="true">❤️</span> {chipText}
+                                    </span>
+                                );
+                            })}
                         </div>
                     </div>
                 ))}
@@ -384,6 +404,29 @@ const facepileGroups = [
         font-size: 0.75rem;
         font-weight: 600;
         color: rgb(var(--color-text-secondary));
+    }
+
+    /* Count-only likes (Threads/Instagram expose no accounts) sit beside
+       the avatars as a chip of matching height. */
+    .interactions__count-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        height: 2.75rem;
+        padding: 0 0.875rem;
+        border: 1px solid rgb(var(--color-border));
+        border-radius: 0.625rem;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: rgb(var(--color-text-secondary));
+        text-decoration: none;
+        transition: transform 0.15s ease, color 0.15s ease;
+    }
+
+    a.interactions__count-chip:hover,
+    a.interactions__count-chip:focus-visible {
+        transform: translateY(-2px);
+        color: rgb(var(--color-text-primary));
     }
 
     .interactions__avatar-img,
