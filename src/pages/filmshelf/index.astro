@@ -182,8 +182,7 @@ const sectionLandingProps = createSectionLandingProps({
   .bookshelf-year__sidebar { display: flex; }
   @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / -1; } }
   .bookshelf-year__sticky { position: sticky; top: clamp(4rem, 6vw, 5.5rem); display: flex; flex-direction: column; gap: 0.35rem; }
-  .bookshelf-year__year { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: #111827; }
-  :global(.dark) .bookshelf-year__year { color: #f9fafb; }
+  .bookshelf-year__year { font-size: var(--text-huge); font-weight: 700; color: rgb(var(--color-text-primary)); }
   .bookshelf-year__count { font-size: 0.95rem; font-weight: 500; color: #6b7280; }
   :global(.dark) .bookshelf-year__count { color: #9ca3af; }
   .bookshelf-year__book { display: flex; }

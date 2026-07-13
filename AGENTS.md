@@ -27,6 +27,8 @@ Run `npm install` with Node 20+ before contributing. Use `npm run dev` for the l
 ## Coding Style & Naming Conventions
 Follow the existing 4-space indentation in TypeScript, Astro, and scripts. Name Astro components with `PascalCase.astro` and colocate supporting modules in subfolders (for example `src/components/navigation`). Keep utility modules in TypeScript (`.ts`) and prefer named exports. Styling relies on Tailwind; favor utility classes over bespoke CSS unless adding a shared pattern to `src/styles`. Run `npm run astro check` (or `npx astro check`) before opening a pull request.
 
+**Typography:** Use the `--text-*` type-scale tokens (`--text-small` → `--text-huge`) and the `--font-sans` / `--font-serif` / `--font-mono` family tokens defined in `src/styles/global.css`; never hard-code `font-size` or a font stack in component styles. Headings are Fraunces (serif) and body copy is Inter (sans). See [`docs/design/system.md`](docs/design/system.md) for the full scale and the [typography audit](docs/design/typography-audit.md) for rationale.
+
 ## Testing Guidelines
 No automated test suite is configured; rely on `npm run dev` for interactive verification and `npm run build` to catch integration issues. When adding logic-heavy utilities, include minimal unit scripts under `src/utils/__checks__` or document manual test steps in the pull request until a formal harness is introduced.
 

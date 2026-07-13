@@ -138,14 +138,10 @@ const books = [
     }
 
     .year-text {
-        font-size: clamp(2rem, 5vw, 3rem);
+        font-size: var(--text-huge);
         font-weight: 700;
         letter-spacing: 0.02em;
-        color: #111827;
-    }
-
-    :global(.dark) .year-text {
-        color: #f9fafb;
+        color: rgb(var(--color-text-primary));
     }
 
     .books-item__cover {

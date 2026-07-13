@@ -263,8 +263,7 @@ const normalizeBookStatus = (status?: string | null) => {
   .bookshelf-year__sidebar { display: flex; }
   @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / -1; } }
   .bookshelf-year__sticky { position: sticky; top: clamp(4rem, 6vw, 5.5rem); display: flex; flex-direction: column; gap: 0.35rem; }
-  .bookshelf-year__year { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: #111827; }
-  :global(.dark) .bookshelf-year__year { color: #f9fafb; }
+  .bookshelf-year__year { font-size: var(--text-huge); font-weight: 700; color: rgb(var(--color-text-primary)); }
   .bookshelf-year__book { display: flex; }
   .bookshelf-year__book :global(.book-card) { width: 100%; }
   @media (max-width: 47.999rem) { .bookshelf-year__sticky { position: static; } }

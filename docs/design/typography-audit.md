@@ -4,6 +4,8 @@ A static audit of fonts, sizes, weights, line heights, and letter spacing across
 
 **TL;DR:** The intended system (Inter for body, Fraunces for headings, a four-step fluid scale) is sound and mostly followed, but it has drifted. There are ~45 distinct hard-coded `font-size` values in component styles, at least seven different H1 treatments, three unrelated monospace stacks, and the site masthead renders in Georgia instead of Fraunces due to a stale override.
 
+> **Status (fixes applied):** The quick wins and the highest-leverage structural items have been implemented. See [§4 Changes applied](#4-changes-applied) below. The findings below are preserved as written for context; the remaining open items are the lower-priority sweeps called out in §5.
+
 ---
 
 ## 1. The intended system
@@ -165,6 +167,29 @@ Weights used: 400, 500, 600, 650 (once — `UnifiedFeed.astro:182`), 700, plus o
 
 ---
 
-## 4. Method
+## 4. Changes applied
+
+Implemented in this branch:
+
+- **Masthead serif fixed** — removed the stale `.font-serif { font-family: Georgia }` override in `MultiLevelNavigation.astro`; the masthead now renders in Fraunces like every other heading. (Finding 2.1)
+- **`--font-mono` token added** to `@theme`; all three monospace usages (`.prose code`, `UnifiedFeed` newsletter badge, `LinkHoverEffect` URL) now reference it. (Finding 2.6)
+- **Type scale extended** with `--text-medium` and `--text-xlarge`; `--text-huge` retuned from `8vw` → `5vw` to match real page-title usage. (Findings 2.2, 2.3)
+- **Tailwind `text-sm`/`text-base`/`text-lg` remapped** to the fluid tokens via `@theme inline`, so fixed and fluid spellings agree. (Finding 2.3)
+- **Heading hierarchy differentiated** — `h1` now 700, `h3` uses `--text-medium`, `h4` bumped to weight 600 so it separates from body text. (Finding 2.5)
+- **Prose headings reconciled** — `.prose h1/h2/h3` now use `--text-huge`/`--text-xlarge`/`--text-large` instead of a separate fixed-rem scale, so an `<h2>` is one size everywhere and prose headings are fluid. (Finding 2.5)
+- **Duplicate `.text-*` definitions removed** from `@layer base`. (Finding 2.9)
+- **Page/section/year titles consolidated** onto `--text-huge` (`PageToggleTitle`, `ShelfTabNav`, `books`, `bookshelf`, `filmshelf`, `tvshelf`, `gameshelf`, `shelf`) and feed titles onto `--text-xlarge` (`UnifiedFeed`, homepage). (Findings 2.2, 2.3)
+- **Shelf year hex colors replaced** with `rgb(var(--color-text-primary))`, dropping the parallel `:global(.dark)` hex overrides. (Finding 2.9)
+- **`LinkHoverEffect` px sizes** (`14px`/`12px !important`) converted to `rem`. (Finding 2.4)
+- **Games page** moved from token-free inline styles to a scoped `<style>` block using the tokens; its `h1` now inherits the standard heading treatment and hover is CSS rather than inline JS. (Findings 2.2, 2.9)
+- **`font-weight: 650`** in `UnifiedFeed` normalized to 600. (Finding 2.8)
+
+Verified with a full `astro build` (2565 pages, no errors) and by confirming the Georgia override is absent and the new tokens are present in the compiled CSS.
+
+**Still open** (lower-priority sweeps, intentionally left for a follow-up pass): the long tail of near-duplicate small-text sizes in individual components (Finding 2.4), the eight letter-spacing values for uppercase labels (Finding 2.7), and the three body line-height values (Finding 2.7). These are cosmetic consistency sweeps that touch many files with little individual risk; do them incrementally.
+
+---
+
+## 5. Method
 
 Audited via grep sweeps over `src/**/*.astro` and `src/styles/*.css` for `font-family`, `font-size`, `font-weight`, `line-height`, `letter-spacing`, `text-transform`, and Tailwind `text-*`/`font-*` utility classes, followed by manual inspection of `global.css`, `progress-page.css`, `Layout.astro`, `MultiLevelNavigation.astro`, `UnifiedFeed.astro`, `Card.astro`, `PostItem.astro`, `PostLayout.astro`, `SectionLanding.astro`, and the shelf/books/games page templates. No runtime rendering was involved; findings are based on source order, Astro style scoping, and Tailwind v4 layer semantics.
