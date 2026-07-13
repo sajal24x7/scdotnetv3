@@ -279,6 +279,32 @@ New `src/components/interactions/Interactions.astro`, wired into
    is affected); until the secrets are set the collector logs that the drain
    is skipped and mentions simply wait in KV.
 4. **Phase 4** (outgoing webmentions, email curation, avatar caching) — polish, any order.
+   ✅ **Shipped**: `src/data/email-interactions.json` (curated file, merged into
+   `getInteractionsForPost()` in `src/utils/interactions.ts` at build time —
+   paste a reply in, it appears on the next build, no workflow run needed),
+   `scripts/send-webmentions.js` (fetches each recent post's live page,
+   extracts outbound links from its `.e-content` block(s), discovers each
+   target's webmention endpoint via `Link` header or `<link rel="webmention">`,
+   POSTs source+target, records sent pairs — and negative results, rechecked
+   after 30 days — in `src/data/webmentions-sent.json`; wired into
+   `syndicate-content.yml` right after the existing deploy-wait step),
+   `functions/api/mirror-avatar.js` + `scripts/lib/interactions/avatar-cache.js`
+   (mirrors hotlinked avatars into the same R2 bucket `functions/api/upload.js`
+   writes to, under an `avatars/` prefix). Mirroring runs as a Pages Function
+   rather than signed from the collector script, so it uses the `env.IMAGES`
+   binding directly — no R2 API token, no new secrets. Auth reuses the
+   `/api/upload` trick: any bearer token that can read the repo is trusted,
+   and GitHub Actions' automatic `GITHUB_TOKEN` satisfies that already.
+   `scripts/collect-interactions.js` calls the endpoint after the webmention
+   merge, with a `src/data/avatar-cache.json` cache so repeat runs don't
+   re-request already-mirrored avatars.
+
+   **No setup required** — all three Phase 4 pieces are live with zero new
+   secrets or dashboard steps. `functions/api/mirror-avatar.js` starts
+   working the moment it's deployed (same `IMAGES` binding `/api/upload`
+   already uses); if a Pages deploy hasn't picked it up yet, the collector
+   just logs the failure per avatar and falls back to the hotlink — nothing
+   breaks.
 
 ## Phase 3 setup: KV namespace, binding, secrets
 
@@ -383,3 +409,35 @@ with an info log rather than failing.
    the domain to `approvedWebmentionDomains` in `interactions.config.json`
    (or flip the entry's `status` in `src/data/interactions-index.json`); the
    mention renders in the post's Interactions tab after the next build.
+
+## Avatar mirroring: how it avoids new credentials
+
+`functions/api/mirror-avatar.js` mirrors hotlinked avatars into the same R2
+bucket `functions/api/upload.js` already writes to (bound as `IMAGES` on
+Pages) — no new bucket, and no folder to create by hand: R2 has no real
+directory concept, so the `avatars/` key prefix just appears the first time
+something writes under it, the same way `images/2026/07/...` did.
+
+The interesting part is *auth*. `scripts/lib/interactions/avatar-cache.js`
+runs as a plain Node script in GitHub Actions, not inside a Cloudflare Pages
+Function, so it can't use the `env.IMAGES` binding directly the way
+`/api/upload` does. Rather than give it its own R2 API token (a separate
+credential type from the `CLOUDFLARE_API_TOKEN` used for the Phase 3 KV
+drain, which only grants Workers KV access), the mirroring work itself moved
+*into* a Pages Function — `functions/api/mirror-avatar.js` — which runs
+inside the Workers runtime and uses `env.IMAGES` directly, same as
+`/api/upload`. The collector just POSTs `{ url }` to it with a bearer token;
+the Function checks that token can read the GitHub repo (identical check to
+`/api/upload`), and GitHub Actions' automatic `GITHUB_TOKEN` already
+satisfies that — no secret to create, no dashboard step. It starts working
+the moment a Pages deploy picks up the new Function file; until then, or if
+the request ever fails, the collector logs a per-avatar warning and falls
+back to the hotlink rather than failing the run.
+
+To verify after it's deployed: run the **Refresh interactions index**
+workflow manually (Actions → workflow_dispatch). The log should show a line
+like `🖼️  avatars: 12 mirrored, 0 cached, 0 failed` (counts will vary), and
+`src/data/avatar-cache.json` should pick up a new commit. Spot-check one of
+the mirrored URLs — it should be
+`https://storage.sajalchoudhary.net/avatars/<hash>.<ext>` and load the same
+image the original hotlink did.

@@ -64,17 +64,21 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           WEBMENTIONS_KV_NAMESPACE_ID: ${{ secrets.WEBMENTIONS_KV_NAMESPACE_ID }}
+          # Avatar mirroring into R2, via the /api/mirror-avatar Pages
+          # Function — GITHUB_TOKEN is the bearer auth it checks (same
+          # trick /api/upload uses), no separate R2 credentials needed.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           INTERACTIONS_DAYS_BACK: ${{ github.event.inputs.days_back }}
         run: npm run collect-interactions
 
       - name: Commit interactions index if it changed
         run: |
-          if git diff --quiet -- src/data/interactions-index.json src/data/interaction-sources.json; then
+          if git diff --quiet -- src/data/interactions-index.json src/data/interaction-sources.json src/data/avatar-cache.json; then
             echo "Interactions index unchanged, nothing to commit"
             exit 0
           fi
 
-          git add src/data/interactions-index.json src/data/interaction-sources.json
+          git add src/data/interactions-index.json src/data/interaction-sources.json src/data/avatar-cache.json
           git commit -m "chore: refresh interactions index"
 
           # Rebase on top of any commits that landed while this job ran, then push

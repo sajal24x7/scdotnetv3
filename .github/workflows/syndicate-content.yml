@@ -100,6 +100,14 @@ jobs:
           SYNDICATION_DAYS_BACK: ${{ github.event.inputs.days_back || '7' }}
         run: node scripts/syndicate-content.js
 
+      - name: Send outgoing webmentions
+        # "Be a good citizen": notify sites this post links to. Fetches the
+        # live pages itself (hence after the deploy wait above) rather than
+        # working from local content, so it needs no extra credentials.
+        env:
+          WEBMENTIONS_DAYS_BACK: ${{ github.event.inputs.days_back || '7' }}
+        run: node scripts/send-webmentions.js
+
       - name: Commit syndication updates
         id: commit
         run: |

@@ -19,6 +19,10 @@
  *   THREADS_USER_ID           (both required; same secrets the syndicator uses)
  *   INSTAGRAM_ACCESS_TOKEN    optional, enables the Instagram backfeed
  *   INSTAGRAM_USER_ID         (both required)
+ *   GITHUB_TOKEN              enables mirroring hotlinked avatars into R2 via
+ *                             the /api/mirror-avatar Pages Function (see
+ *                             scripts/lib/interactions/avatar-cache.js) —
+ *                             set automatically in GitHub Actions
  *   INTERACTIONS_DAYS_BACK    poll window in days (default from
  *                             interactions.config.json; 0 = all posts)
  */
@@ -32,6 +36,7 @@ import { parseBlueskyUrl, collectBlueskyInteractions } from './lib/interactions/
 import { parseThreadsUrl, threadsConfig, resolveThreadsMediaIds, collectThreadsInteractions } from './lib/interactions/threads.js';
 import { parseInstagramUrl, instagramConfig, resolveInstagramMediaIds, collectInstagramInteractions } from './lib/interactions/instagram.js';
 import { webmentionsConfig, drainPendingWebmentions, deleteWebmentionKeys, mergeWebmentionsIntoIndex } from './lib/interactions/webmentions.js';
+import { avatarMirrorConfig, mirrorAvatars } from './lib/interactions/avatar-cache.js';
 import { sortEntries } from './lib/interactions/shared.js';
 
 const INDEX_FILE = path.join(process.cwd(), 'src', 'data', 'interactions-index.json');
@@ -402,6 +407,19 @@ async function collectInteractions() {
       `🌐 web: ${wmStats.added} added, ${wmStats.updated} updated, ${wmStats.removed} removed; ` +
         `${wmStats.pending} pending moderation`
     );
+  }
+
+  // Mirror hotlinked avatars into R2 (via the /api/mirror-avatar Pages
+  // Function) so reader IPs aren't leaked to third-party CDNs on every page
+  // view; rewrites entries in place.
+  const avatarMirror = avatarMirrorConfig();
+  if (avatarMirror) {
+    const avatarStats = await mirrorAvatars(index, avatarMirror);
+    console.log(
+      `🖼️  avatars: ${avatarStats.uploaded} mirrored, ${avatarStats.cached} cached, ${avatarStats.failed} failed`
+    );
+  } else {
+    console.log('ℹ️  avatars: GITHUB_TOKEN not set, using hotlinked avatars');
   }
 
   writeIndex(index);
