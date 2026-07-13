@@ -5,6 +5,7 @@ import type { CollectionEntry } from 'astro:content';
 import { getContentCategories } from '../utils/content';
 import { CONTENT_CATEGORIES } from '../content.config';
 import { findBacklinksComprehensive } from '../utils/backlinks';
+import { getInteractionsForPost } from '../utils/interactions';
 import PostLayout from '../components/layout/PostLayout.astro';
 import PhotoPostLayout from '../components/layout/PhotoPostLayout.astro';
 
@@ -38,6 +39,9 @@ const hasUpdatedDate = Boolean('updated' in entry.data && entry.data.updated);
 
 // Find backlinks for this post
 const backlinks = await findBacklinksComprehensive(`${category}/${slug}`);
+
+// Responses collected from syndicated copies (Mastodon, Bluesky, …)
+const interactions = await getInteractionsForPost(`${category}/${slug}`);
 
 // Get canonical URL for microformats
 const canonicalUrl = new URL(`${category}/${slug}/`, Astro.site).href;
@@ -85,6 +89,7 @@ const jsonLd = {
       entry={entry}
       canonicalUrl={canonicalUrl}
       backlinks={backlinks}
+      interactions={interactions}
       hasUpdatedDate={hasUpdatedDate}
     >
       <Content />
@@ -95,6 +100,7 @@ const jsonLd = {
       category={category}
       canonicalUrl={canonicalUrl}
       backlinks={backlinks}
+      interactions={interactions}
       hasUpdatedDate={hasUpdatedDate}
     >
       <Content />

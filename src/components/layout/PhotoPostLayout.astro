@@ -3,9 +3,11 @@ import LayoutContainer from './LayoutContainer.astro';
 import TimeDisplay from '../TimeDisplay.astro';
 import Tag from '../Tag.astro';
 import Backlinks from '../Backlinks.astro';
+import Interactions from '../interactions/Interactions.astro';
 import PhotoCarousel from '../PhotoCarousel.astro';
 import SyndicationLinks from '../SyndicationLinks.astro';
 import NewsletterSignup from '../ui/NewsletterSignup.astro';
+import type { Interaction } from '../../utils/interactions';
 
 interface Backlink {
     slug: string;
@@ -23,10 +25,11 @@ interface Props {
     entry: PostEntry;
     canonicalUrl: string;
     backlinks: Backlink[];
+    interactions?: Interaction[];
     hasUpdatedDate: boolean;
 }
 
-const { entry, canonicalUrl, backlinks, hasUpdatedDate } = Astro.props as Props;
+const { entry, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } = Astro.props as Props;
 const category = 'photo';
 
 const entryData = entry.data ?? {};
@@ -183,6 +186,8 @@ const hasMedia = galleryImages.length > 0 || Boolean(heroImage);
                 )}
             </p>
         </div>
+
+        <Interactions interactions={interactions} />
 
         <Backlinks backlinks={backlinks} />
     </article>

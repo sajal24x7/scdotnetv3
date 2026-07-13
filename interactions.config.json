@@ -1,0 +1,5 @@
+{
+  "daysBack": 60,
+  "blockedAuthorUrls": [],
+  "comment": "daysBack: how far back the interactions collector polls syndicated posts (0 = all posts). blockedAuthorUrls: exact author profile URLs whose interactions are dropped at collection time."
+}
