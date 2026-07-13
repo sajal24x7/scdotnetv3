@@ -124,9 +124,11 @@ holds: the function accepts an upload only if GitHub confirms the token can
 read this repo, so there is no separate upload secret to manage.
 
 Photos are downscaled in the browser before upload (max 1024px for micro,
-2048px for photo posts, JPEG) so phone pictures don't land as 10MB originals;
-GIFs and already-small images are sent as-is. The server caps uploads at 15MB
-and only accepts image content types.
+2048px for photo posts, JPEG) so phone pictures don't land as 10MB originals.
+Any image over the max dimension is resized regardless of file size; GIFs
+and images that are both small and already within the max dimension are
+sent as-is. The server caps uploads at 15MB and only accepts image content
+types.
 
 The public base URL defaults to `https://storage.sajalchoudhary.net` and can
 be overridden with an `IMAGES_PUBLIC_URL` env var on the Pages project.
