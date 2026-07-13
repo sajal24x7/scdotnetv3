@@ -1,9 +1,10 @@
 ---
-aliases:
-tags:
-  - robin-sloan
-  - ai
+title: "A Pause on Frontier AI Development"
+slug: "a-pause-on-frontier-ai-development"
+created: 2026-07-13T09:59:00+03:00
+updated: 2026-07-13T09:59:00+03:00
 category: micro
+tags: ["robin-sloan", "ai"]
 ---
 [Report from the march to Stop the AI Race by Robin Sloan](https://www.robinsloan.com/lab/stop-ai-march/)
 
