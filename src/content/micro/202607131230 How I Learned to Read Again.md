@@ -1,10 +1,15 @@
 ---
-title: "How I Learned to Read Again"
-slug: "how-i-learned-to-read-again"
-created: 2026-07-13T12:30:00+03:00
-updated: 2026-07-13T12:42:28+03:00
+title: How I Learned to Read Again
+slug: how-i-learned-to-read-again
+created: 2026-07-13T09:30:00.000Z
+updated: 2026-07-13T09:42:28.000Z
 category: micro
-tags: ["reading", "books"]
+tags:
+  - reading
+  - books
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116912370927258107'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqjkr2ecfg2f'
 ---
 [How I Learned to Read Again by Magazine Non Grata](https://substack.magazinenongrata.com/p/how-i-learned-to-read-again)
 
