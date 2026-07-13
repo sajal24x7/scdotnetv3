@@ -22,6 +22,8 @@
     "syndicate": "node scripts/syndicate-content.js",
     "syndicate:dry-run": "SYNDICATION_DRY_RUN=true node scripts/syndicate-content.js",
     "collect-interactions": "node scripts/collect-interactions.js",
+    "send-webmentions": "node scripts/send-webmentions.js",
+    "send-webmentions:dry-run": "WEBMENTIONS_DRY_RUN=true node scripts/send-webmentions.js",
     "sort-inbox": "bash scripts/sort-inbox.sh"
   },
   "dependencies": {
