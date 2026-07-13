@@ -53,6 +53,32 @@
       "status": "approved"
     }
   ],
+  "blog/why-do-i-read": [
+    {
+      "id": "mastodon:repost:116912319446085335:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116912319446085335:116141936733036818",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Literbook",
+        "url": "https://mastodon.social/@Literbook",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/5e0c9f27cbe4ab1dddc05717be534585.png"
+      },
+      "url": "https://mastodon.social/@Literbook",
+      "status": "approved"
+    }
+  ],
   "bookshelf/platform-decay": [
     {
       "id": "mastodon:like:116877354312925036:108206161178110078",
@@ -455,6 +481,32 @@
       "status": "approved"
     }
   ],
+  "micro/how-i-learned-to-read-again": [
+    {
+      "id": "mastodon:repost:116912370927258107:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116912370927258107:116141936733036818",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Literbook",
+        "url": "https://mastodon.social/@Literbook",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/5e0c9f27cbe4ab1dddc05717be534585.png"
+      },
+      "url": "https://mastodon.social/@Literbook",
+      "status": "approved"
+    }
+  ],
   "micro/kunal-shah-to-become-global-head-of-whatsapp": [
     {
       "id": "mastodon:like:116798122425373992:110436829441173808",
@@ -621,7 +673,7 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/DameQ6ODoIl/",
-      "count": 11,
+      "count": 12,
       "status": "approved"
     },
     {
@@ -670,7 +722,7 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/Damjs2Jlqd6/",
-      "count": 9,
+      "count": 10,
       "status": "approved"
     },
     {
