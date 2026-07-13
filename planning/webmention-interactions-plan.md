@@ -249,7 +249,10 @@ New `src/components/interactions/Interactions.astro`, wired into
 ## Suggested build order
 
 1. **Phase 1** (collector for Mastodon + Bluesky, index, Interactions tab) — one PR,
-   immediately visible payoff.
+   immediately visible payoff. ✅ **Shipped**: `scripts/collect-interactions.js`,
+   `scripts/lib/interactions/*`, `src/data/interactions-index.json`,
+   `src/utils/interactions.ts`, `src/components/interactions/Interactions.astro`,
+   `.github/workflows/refresh-interactions.yml`, `interactions.config.json`.
 2. **Phase 2** (Threads + Instagram) — mostly collector plumbing, no UI changes.
 3. **Phase 3** (webmention endpoint + KV + moderation) — the "real" webmention support.
 4. **Phase 4** (outgoing webmentions, email curation, avatar caching) — polish, any order.

@@ -1,0 +1,508 @@
+---
+import type { Interaction } from '../../utils/interactions';
+import { PLATFORM_META } from './platformMeta';
+import { SITE_TIMEZONE } from '../../utils/dateFormat';
+
+interface Props {
+    interactions: Interaction[];
+}
+
+const { interactions = [] } = Astro.props as Props;
+
+const replies = interactions.filter((i) => i.type === 'reply' || i.type === 'mention');
+const likes = interactions.filter((i) => i.type === 'like');
+const reposts = interactions.filter((i) => i.type === 'repost');
+const count = interactions.length;
+
+const countParts = [
+    replies.length > 0 ? `${replies.length} ${replies.length === 1 ? 'reply' : 'replies'}` : null,
+    likes.length > 0 ? `${likes.length} ${likes.length === 1 ? 'like' : 'likes'}` : null,
+    reposts.length > 0 ? `${reposts.length} ${reposts.length === 1 ? 'repost' : 'reposts'}` : null,
+].filter(Boolean);
+
+// Tabs only earn their place when there is more than one kind of response.
+const showTabs = countParts.length > 1;
+
+const FACEPILE_LIMIT = 24;
+
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    timeZone: SITE_TIMEZONE,
+});
+const dateWithYearFormatter = new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: SITE_TIMEZONE,
+});
+
+function formatPublished(published?: string): string | null {
+    if (!published) return null;
+    const date = new Date(published);
+    if (Number.isNaN(date.getTime())) return null;
+    const sameYear = date.getFullYear() === new Date().getFullYear();
+    return (sameYear ? dateFormatter : dateWithYearFormatter).format(date);
+}
+
+function initialOf(name: string): string {
+    return (name.trim()[0] || '?').toUpperCase();
+}
+
+const facepileGroups = [
+    { type: 'like', label: 'Liked by', items: likes },
+    { type: 'repost', label: 'Reposted by', items: reposts },
+].filter((group) => group.items.length > 0);
+---
+
+{count > 0 && (
+    <section class="interactions" aria-labelledby="interactions-heading" data-interactions>
+        <header class="interactions__header">
+            <div class="interactions__heading-row">
+                <h3 id="interactions-heading" class="interactions__heading">Interactions</h3>
+                {showTabs && (
+                    <div class="interactions__tabs" data-interactions-tabs hidden>
+                        <button type="button" class="interactions__tab" data-filter="all" aria-pressed="true">All</button>
+                        {replies.length > 0 && (
+                            <button type="button" class="interactions__tab" data-filter="replies" aria-pressed="false">
+                                Replies ({replies.length})
+                            </button>
+                        )}
+                        {likes.length > 0 && (
+                            <button type="button" class="interactions__tab" data-filter="likes" aria-pressed="false">
+                                Likes ({likes.length})
+                            </button>
+                        )}
+                        {reposts.length > 0 && (
+                            <button type="button" class="interactions__tab" data-filter="reposts" aria-pressed="false">
+                                Reposts ({reposts.length})
+                            </button>
+                        )}
+                    </div>
+                )}
+            </div>
+            <p class="interactions__count">{countParts.join(' · ')} from around the web</p>
+        </header>
+
+        {facepileGroups.length > 0 && (
+            <div class="interactions__facepiles">
+                {facepileGroups.map((group) => (
+                    <div class="interactions__facepile" data-interaction-section={`${group.type}s`}>
+                        <span class="interactions__facepile-label">{group.label}</span>
+                        <div class="interactions__facepile-avatars">
+                            {group.items.slice(0, FACEPILE_LIMIT).map((item) => (
+                                <a
+                                    href={item.author.url}
+                                    class="interactions__facepile-avatar"
+                                    title={`${item.author.name} on ${PLATFORM_META[item.platform]?.label ?? item.platform}`}
+                                    target="_blank"
+                                    rel="nofollow noopener noreferrer"
+                                >
+                                    {item.author.avatar ? (
+                                        <img
+                                            src={item.author.avatar}
+                                            alt={item.author.name}
+                                            class="interactions__avatar-img"
+                                            loading="lazy"
+                                            decoding="async"
+                                            referrerpolicy="no-referrer"
+                                        />
+                                    ) : (
+                                        <span class="interactions__avatar-fallback" aria-hidden="true">
+                                            {initialOf(item.author.name)}
+                                        </span>
+                                    )}
+                                </a>
+                            ))}
+                            {group.items.length > FACEPILE_LIMIT && (
+                                <span class="interactions__facepile-more">
+                                    +{group.items.length - FACEPILE_LIMIT}
+                                </span>
+                            )}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        )}
+
+        {replies.length > 0 && (
+            <ol class="interactions__stream" data-interaction-section="replies">
+                {replies.map((reply) => {
+                    const platform = PLATFORM_META[reply.platform];
+                    const published = formatPublished(reply.published);
+                    return (
+                        <li class="interactions__item p-comment h-cite">
+                            <div class="interactions__item-avatar p-author h-card">
+                                {reply.author.avatar ? (
+                                    <img
+                                        src={reply.author.avatar}
+                                        alt=""
+                                        data-initial={initialOf(reply.author.name)}
+                                        class="interactions__avatar-img u-photo"
+                                        loading="lazy"
+                                        decoding="async"
+                                        referrerpolicy="no-referrer"
+                                    />
+                                ) : (
+                                    <span class="interactions__avatar-fallback" aria-hidden="true">
+                                        {initialOf(reply.author.name)}
+                                    </span>
+                                )}
+                            </div>
+                            <div class="interactions__item-body">
+                                <div class="interactions__item-meta">
+                                    {reply.author.url ? (
+                                        <a
+                                            href={reply.author.url}
+                                            class="interactions__author p-author h-card p-name u-url"
+                                            target="_blank"
+                                            rel="nofollow noopener noreferrer"
+                                        >{reply.author.name}</a>
+                                    ) : (
+                                        <span class="interactions__author">{reply.author.name}</span>
+                                    )}
+                                    {platform && (
+                                        <span
+                                            class="interactions__platform-icon"
+                                            set:html={platform.icon}
+                                            title={platform.label}
+                                        />
+                                    )}
+                                    {published && reply.url && (
+                                        <a
+                                            href={reply.url}
+                                            class="interactions__timestamp u-url"
+                                            target="_blank"
+                                            rel="nofollow noopener noreferrer"
+                                        >{published}</a>
+                                    )}
+                                    {published && !reply.url && (
+                                        <span class="interactions__timestamp">{published}</span>
+                                    )}
+                                </div>
+                                {reply.content && (
+                                    <div class="interactions__content p-content" set:html={reply.content} />
+                                )}
+                                {reply.url && (
+                                    <a
+                                        href={reply.url}
+                                        class="interactions__reply-link"
+                                        target="_blank"
+                                        rel="nofollow noopener noreferrer"
+                                    >Reply on {platform?.label ?? 'the original post'} ↗</a>
+                                )}
+                            </div>
+                        </li>
+                    );
+                })}
+            </ol>
+        )}
+    </section>
+)}
+
+<script>
+    // Tab filtering + avatar fallbacks. Progressive enhancement: without JS
+    // the tab bar stays hidden and every section is visible.
+    function initInteractions(root: Element) {
+        const tabs = root.querySelector<HTMLElement>('[data-interactions-tabs]');
+        if (tabs) {
+            tabs.hidden = false;
+            const buttons = Array.from(tabs.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+            const sections = Array.from(root.querySelectorAll<HTMLElement>('[data-interaction-section]'));
+            const facepiles = root.querySelector<HTMLElement>('.interactions__facepiles');
+
+            const applyFilter = (filter: string) => {
+                for (const section of sections) {
+                    section.hidden = filter !== 'all' && section.dataset.interactionSection !== filter;
+                }
+                if (facepiles) {
+                    facepiles.hidden = Array.from(
+                        facepiles.querySelectorAll<HTMLElement>('[data-interaction-section]')
+                    ).every((section) => section.hidden);
+                }
+                for (const button of buttons) {
+                    button.setAttribute('aria-pressed', String(button.dataset.filter === filter));
+                }
+            };
+
+            for (const button of buttons) {
+                button.addEventListener('click', () => applyFilter(button.dataset.filter || 'all'));
+            }
+        }
+
+        // Replace broken avatars (deleted accounts, hotlink failures) with
+        // an initial so the stream never shows broken-image icons.
+        for (const img of root.querySelectorAll<HTMLImageElement>('.interactions__avatar-img')) {
+            const swap = () => {
+                const fallback = document.createElement('span');
+                fallback.className = 'interactions__avatar-fallback';
+                fallback.setAttribute('aria-hidden', 'true');
+                fallback.textContent = (
+                    (img.dataset.initial || img.alt || '?').trim()[0] || '?'
+                ).toUpperCase();
+                img.replaceWith(fallback);
+            };
+            if (img.complete && img.naturalWidth === 0) {
+                swap();
+            } else {
+                img.addEventListener('error', swap, { once: true });
+            }
+        }
+    }
+
+    document.querySelectorAll('[data-interactions]').forEach(initInteractions);
+</script>
+
+<style>
+    .interactions {
+        margin-top: clamp(3rem, 6vw, 4rem);
+        padding-top: clamp(2rem, 5vw, 3rem);
+        border-top: 1px solid rgb(var(--color-border));
+    }
+
+    .interactions__header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.375rem;
+        margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+    }
+
+    .interactions__heading-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem 1rem;
+    }
+
+    .interactions__heading {
+        font-size: clamp(1.125rem, 2vw, 1.375rem);
+        font-weight: 600;
+        color: rgb(var(--color-text-primary));
+        margin: 0;
+    }
+
+    .interactions__count {
+        font-size: 0.875rem;
+        color: rgb(var(--color-text-secondary));
+        margin: 0;
+    }
+
+    .interactions__tabs {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+
+    .interactions__tab {
+        appearance: none;
+        border: 1px solid rgb(var(--color-border));
+        background: transparent;
+        color: rgb(var(--color-text-secondary));
+        font-size: 0.75rem;
+        font-weight: 600;
+        line-height: 1;
+        padding: 0.35rem 0.65rem;
+        border-radius: 9999px;
+        cursor: pointer;
+        transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .interactions__tab:hover {
+        color: rgb(var(--color-text-primary));
+    }
+
+    .interactions__tab[aria-pressed='true'] {
+        background: rgb(var(--color-text-primary));
+        border-color: rgb(var(--color-text-primary));
+        color: rgb(var(--color-bg));
+    }
+
+    .interactions__tab:focus-visible {
+        outline: 2px solid rgb(var(--color-accent));
+        outline-offset: 2px;
+    }
+
+    .interactions__facepiles {
+        display: flex;
+        flex-direction: column;
+        gap: 0.875rem;
+        margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+    }
+
+    .interactions__facepile {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem 0.75rem;
+    }
+
+    .interactions__facepile-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .interactions__facepile-avatars {
+        display: flex;
+        align-items: center;
+    }
+
+    .interactions__facepile-avatar {
+        display: inline-flex;
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 9999px;
+        overflow: hidden;
+        border: 2px solid rgb(var(--color-bg));
+        margin-left: -0.4rem;
+        transition: transform 0.15s ease;
+        background: rgb(var(--color-border));
+    }
+
+    .interactions__facepile-avatar:first-child {
+        margin-left: 0;
+    }
+
+    .interactions__facepile-avatar:hover,
+    .interactions__facepile-avatar:focus-visible {
+        transform: translateY(-2px);
+        z-index: 1;
+    }
+
+    .interactions__facepile-more {
+        margin-left: 0.4rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .interactions__avatar-img,
+    .interactions__avatar-fallback {
+        width: 100%;
+        height: 100%;
+        border-radius: 9999px;
+        object-fit: cover;
+    }
+
+    .interactions__avatar-fallback {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7em;
+        font-weight: 700;
+        color: rgb(var(--color-text-secondary));
+        background: rgb(var(--color-border));
+    }
+
+    .interactions__stream {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.25rem, 3vw, 1.75rem);
+    }
+
+    .interactions__item {
+        display: flex;
+        gap: 0.75rem;
+        max-width: 42rem;
+    }
+
+    .interactions__item-avatar {
+        flex-shrink: 0;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 9999px;
+        overflow: hidden;
+        background: rgb(var(--color-border));
+    }
+
+    .interactions__item-body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        min-width: 0;
+    }
+
+    .interactions__item-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.8125rem;
+    }
+
+    .interactions__author {
+        font-weight: 600;
+        color: rgb(var(--color-text-primary));
+        text-decoration: none;
+    }
+
+    a.interactions__author:hover,
+    a.interactions__author:focus-visible {
+        color: rgb(var(--color-accent));
+    }
+
+    .interactions__platform-icon {
+        display: inline-flex;
+        width: 0.875rem;
+        height: 0.875rem;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .interactions__platform-icon :global(svg) {
+        width: 100%;
+        height: 100%;
+    }
+
+    .interactions__timestamp {
+        font-size: 0.75rem;
+        color: rgb(var(--color-text-secondary));
+        text-decoration: none;
+    }
+
+    a.interactions__timestamp:hover,
+    a.interactions__timestamp:focus-visible {
+        text-decoration: underline;
+    }
+
+    .interactions__content {
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: rgb(var(--color-text-primary));
+        overflow-wrap: anywhere;
+    }
+
+    .interactions__content :global(p) {
+        margin: 0 0 0.5rem;
+    }
+
+    .interactions__content :global(p:last-child) {
+        margin-bottom: 0;
+    }
+
+    .interactions__content :global(a) {
+        color: rgb(var(--color-accent));
+        text-decoration: none;
+    }
+
+    .interactions__content :global(a:hover) {
+        text-decoration: underline;
+    }
+
+    .interactions__reply-link {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: rgb(var(--color-text-secondary));
+        text-decoration: none;
+    }
+
+    .interactions__reply-link:hover,
+    .interactions__reply-link:focus-visible {
+        color: rgb(var(--color-accent));
+    }
+</style>

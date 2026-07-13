@@ -3,10 +3,12 @@ import LayoutContainer from './LayoutContainer.astro';
 import TimeDisplay from '../TimeDisplay.astro';
 import Tag from '../Tag.astro';
 import Backlinks from '../Backlinks.astro';
+import Interactions from '../interactions/Interactions.astro';
 import PhotoCarousel from '../PhotoCarousel.astro';
 import SyndicationLinks from '../SyndicationLinks.astro';
 import NewsletterSignup from '../ui/NewsletterSignup.astro';
 import { Image } from 'astro:assets';
+import type { Interaction } from '../../utils/interactions';
 import { getBookCoverImage } from '../../utils/bookCovers';
 import { getFilmCoverImage } from '../../utils/filmCovers';
 import { getGameCoverImage } from '../../utils/gameCovers';
@@ -36,10 +38,11 @@ interface Props {
     category: string;
     canonicalUrl: string;
     backlinks: Backlink[];
+    interactions?: Interaction[];
     hasUpdatedDate: boolean;
 }
 
-const { entry, category, canonicalUrl, backlinks, hasUpdatedDate } = Astro.props as Props;
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } = Astro.props as Props;
 
 const entryData = entry.data ?? {};
 
@@ -620,6 +623,8 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
                 )}
             </p>
         </div>
+
+        <Interactions interactions={interactions} />
 
         <Backlinks backlinks={backlinks} />
     </article>
