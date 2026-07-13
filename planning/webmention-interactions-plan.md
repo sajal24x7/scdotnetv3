@@ -263,4 +263,123 @@ New `src/components/interactions/Interactions.astro`, wired into
    `instagram_business_manage_comments`) degrade gracefully with a run-log
    warning until a one-time re-auth grants them.
 3. **Phase 3** (webmention endpoint + KV + moderation) — the "real" webmention support.
+   ✅ **Shipped**: `functions/api/webmention.js` (sync verification with timeout +
+   1 MB cap, minimal h-entry extraction via HTMLRewriter, IP rate limiting,
+   tombstones for deleted/unlinked sources), `<link rel="webmention">` in
+   `Layout.astro`, KV drain + moderation merge in
+   `scripts/lib/interactions/webmentions.js` (wired into
+   `scripts/collect-interactions.js`), `approvedWebmentionDomains` /
+   `blockedWebmentionDomains` in `interactions.config.json`, and a
+   self-maintaining "Webmentions pending moderation" issue step in
+   `refresh-interactions.yml`.
+
+   **One-time setup still required** — see
+   [Phase 3 setup: KV namespace, binding, secrets](#phase-3-setup-kv-namespace-binding-secrets)
+   below. Until the KV binding exists the endpoint returns 500 (nothing else
+   is affected); until the secrets are set the collector logs that the drain
+   is skipped and mentions simply wait in KV.
 4. **Phase 4** (outgoing webmentions, email curation, avatar caching) — polish, any order.
+
+## Phase 3 setup: KV namespace, binding, secrets
+
+One-time, ~10 minutes, all free tier. Three pieces: a KV namespace (the
+mention queue), a binding so the Pages Function can write to it, and three
+GitHub secrets so the collector workflow can drain it.
+
+### 1. Create the KV namespace
+
+**Dashboard:** [dash.cloudflare.com](https://dash.cloudflare.com) → select the
+account → **Storage & Databases → KV** → **Create a namespace** → name it
+`webmentions` (the name is cosmetic; the *binding* name in step 2 is what the
+code sees) → **Add**.
+
+**Or via wrangler:**
+
+```sh
+npx wrangler kv namespace create webmentions
+```
+
+Either way, copy the namespace **ID** (a 32-char hex string shown in the
+namespace list / wrangler output) — it becomes the
+`WEBMENTIONS_KV_NAMESPACE_ID` secret in step 4.
+
+### 2. Bind it to the Pages project as `WEBMENTIONS`
+
+Dashboard → **Workers & Pages** → the site's Pages project → **Settings** →
+**Bindings** (older UI: Settings → Functions → KV namespace bindings) →
+**Add** → **KV namespace**:
+
+- **Variable name:** `WEBMENTIONS` — must be exactly this; it's what
+  `functions/api/webmention.js` reads as `env.WEBMENTIONS`.
+- **KV namespace:** the `webmentions` namespace from step 1.
+
+Add the binding for the **Production** environment. Adding it to **Preview**
+too is optional — harmless, but preview deployments would then write real
+pending mentions into the same queue; leaving preview unbound just makes the
+endpoint return 500 there, which is fine.
+
+Bindings only apply to **new deployments**: trigger a rebuild (push any
+commit, or Pages → Deployments → Retry) before testing.
+
+### 3. Create a Cloudflare API token for the drain
+
+The collector workflow reads and deletes queue entries through the REST API,
+so it needs a token — scope it to KV only:
+
+Dashboard (top-right profile) → **My Profile → API Tokens** → **Create
+Token** → **Create Custom Token**:
+
+- **Name:** `scdotnetv3 webmentions drain`
+- **Permissions:** `Account` · `Workers KV Storage` · `Edit`
+  (Edit, not Read — the drain deletes keys after merging)
+- **Account Resources:** Include → the specific account
+- Everything else default → **Continue to summary** → **Create Token**
+
+Copy the token now — it's shown once. While here, note the **Account ID**
+(dashboard → any zone → right sidebar, or **Workers & Pages** overview →
+right side).
+
+### 4. Add the GitHub repo secrets
+
+Repo → **Settings → Secrets and variables → Actions** → **New repository
+secret**, three times:
+
+| Secret | Value |
+|---|---|
+| `CLOUDFLARE_API_TOKEN` | the token from step 3 |
+| `CLOUDFLARE_ACCOUNT_ID` | the account ID (32-char hex) |
+| `WEBMENTIONS_KV_NAMESPACE_ID` | the namespace ID from step 1 |
+
+All three are required — if any is missing the collector skips the drain
+with an info log rather than failing.
+
+### 5. Verify end to end
+
+1. **Endpoint is live** (after the step-2 redeploy):
+   ```sh
+   curl -i https://sajalchoudhary.net/api/webmention
+   ```
+   Expect `405` with a JSON hint. A `500` mentioning the binding means step 2
+   didn't take effect (or the rebuild hasn't happened).
+2. **Rejects garbage:**
+   ```sh
+   curl -i -d 'source=https://example.com/&target=https://example.com/' \
+     https://sajalchoudhary.net/api/webmention
+   ```
+   Expect `400` (`target is not on this site`).
+3. **Accepts a real mention:** publish a note anywhere (e.g. a test page on
+   any site you control) containing a link to a real post, then:
+   ```sh
+   curl -i -d 'source=<that page>&target=<the post URL>' \
+     https://sajalchoudhary.net/api/webmention
+   ```
+   Expect `201`. The record should appear in the dashboard under the KV
+   namespace's entries as `pending:<hash>`.
+4. **Drain works:** run the **Refresh interactions index** workflow manually
+   (Actions → workflow_dispatch). The log should show
+   `🌐 web: drained 1 webmention(s) from KV`, the KV entry disappears, and —
+   since the source domain isn't allowlisted — a
+   "Webmentions pending moderation" issue opens listing it. Approve by adding
+   the domain to `approvedWebmentionDomains` in `interactions.config.json`
+   (or flip the entry's `status` in `src/data/interactions-index.json`); the
+   mention renders in the post's Interactions tab after the next build.

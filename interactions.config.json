@@ -1,5 +1,7 @@
 {
   "daysBack": 60,
   "blockedAuthorUrls": [],
-  "comment": "daysBack: how far back the interactions collector polls syndicated posts (0 = all posts). blockedAuthorUrls: exact author profile URLs whose interactions are dropped at collection time."
+  "approvedWebmentionDomains": [],
+  "blockedWebmentionDomains": [],
+  "comment": "daysBack: how far back the interactions collector polls syndicated posts (0 = all posts). blockedAuthorUrls: exact author profile URLs whose interactions are dropped at collection time. approvedWebmentionDomains: source domains whose webmentions publish without moderation. blockedWebmentionDomains: source domains whose webmentions are dropped and already-merged entries purged."
 }
