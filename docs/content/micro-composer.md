@@ -88,9 +88,9 @@ The toggle at the top switches the composer to photo posts:
   contains image Markdown.
 - Multiple photos render as a carousel on the post page and get a count badge
   on the `/photos` grid.
-- Photo-mode uploads keep more resolution (max 2048px vs 1024px for micro)
-  and are always re-encoded to JPEG so they stay eligible for Instagram
-  syndication (the Instagram API accepts JPEG only).
+- Photo-mode uploads use the same 1024px max dimension as micro, and are
+  always re-encoded to JPEG so they stay eligible for Instagram syndication
+  (the Instagram API accepts JPEG only).
 
 ```yaml
 ---
@@ -123,10 +123,12 @@ the public URL. Auth reuses the **same GitHub token** the composer already
 holds: the function accepts an upload only if GitHub confirms the token can
 read this repo, so there is no separate upload secret to manage.
 
-Photos are downscaled in the browser before upload (max 1024px for micro,
-2048px for photo posts, JPEG) so phone pictures don't land as 10MB originals;
-GIFs and already-small images are sent as-is. The server caps uploads at 15MB
-and only accepts image content types.
+Photos are downscaled in the browser before upload (max 1024px for both
+micro and photo posts, JPEG) so phone pictures don't land as 10MB originals.
+Any image over the max dimension is resized regardless of file size; GIFs
+and images that are both small and already within the max dimension are
+sent as-is. The server caps uploads at 15MB and only accepts image content
+types.
 
 The public base URL defaults to `https://storage.sajalchoudhary.net` and can
 be overridden with an `IMAGES_PUBLIC_URL` env var on the Pages project.

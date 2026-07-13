@@ -460,8 +460,7 @@
   }
 
   // --- image upload --------------------------------------------------------
-  const MAX_DIM_MICRO = 1024;  // inline images in prose stay modest
-  const MAX_DIM_PHOTO = 2048;  // photo posts are the point — keep more pixels
+  const MAX_DIM = 1024;  // both micro inline images and photo posts stay modest
   const RECOMPRESS_OVER = 500 * 1024;
   let pendingUploads = 0;
 
@@ -480,15 +479,20 @@
   }
 
   async function shrinkImage(file, maxDim, forceJpeg) {
-    // GIFs would lose animation; small stills aren't worth recompressing —
-    // except in photo mode, where everything becomes JPEG so the images stay
-    // eligible for Instagram syndication (JPEG-only API).
+    // GIFs would lose animation, so they're always sent as-is.
     if (file.type === 'image/gif') return file;
-    if (!forceJpeg && file.size < RECOMPRESS_OVER) return file;
-    if (forceJpeg && file.type === 'image/jpeg' && file.size < RECOMPRESS_OVER) return file;
     try {
       const bitmap = await createImageBitmap(file);
       const scale = Math.min(1, maxDim / Math.max(bitmap.width, bitmap.height));
+      const needsResize = scale < 1;
+      // Recompress even when dimensions are already within maxDim if the
+      // file is large, or in photo mode where everything becomes JPEG so
+      // the images stay eligible for Instagram syndication (JPEG-only API).
+      const needsRecompress = forceJpeg || file.size >= RECOMPRESS_OVER;
+      if (!needsResize && !needsRecompress) {
+        bitmap.close();
+        return file;
+      }
       const canvas = document.createElement('canvas');
       canvas.width = Math.round(bitmap.width * scale);
       canvas.height = Math.round(bitmap.height * scale);
@@ -497,8 +501,8 @@
       const blob = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.85));
       if (!blob) return file;
       // keep the original if recompression didn't actually help — unless we
-      // need the JPEG conversion itself
-      return (forceJpeg && file.type !== 'image/jpeg') || blob.size < file.size ? blob : file;
+      // needed the resize or the JPEG conversion itself
+      return (forceJpeg && file.type !== 'image/jpeg') || needsResize || blob.size < file.size ? blob : file;
     } catch {
       return file; // undecodable in this browser — let the server take the original
     }
@@ -513,7 +517,7 @@
     const token = localStorage.getItem(TOKEN_KEY);
     const counter = total > 1 ? ` ${index + 1}/${total}` : '';
     setUploadNote(`Preparing photo${counter}…`);
-    const blob = await shrinkImage(file, mode === 'photo' ? MAX_DIM_PHOTO : MAX_DIM_MICRO, mode === 'photo');
+    const blob = await shrinkImage(file, MAX_DIM, mode === 'photo');
     setUploadNote(`Uploading photo${counter}…`);
     const res = await fetch('/api/upload', {
       method: 'POST',
