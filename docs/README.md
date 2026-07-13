@@ -7,6 +7,7 @@ This directory centralizes all reference material for the Astro-powered build of
 | [Architecture Overview](architecture/overview.md) | High-level explanation of the Astro layout shell, content entry points, and client islands. | `src/layouts/Layout.astro`, `src/utils/content.ts`
 | [Content Lifecycle](architecture/content-lifecycle.md) | Details on frontmatter schemas, year-based collections, indexing, and backlinks. | `src/content/config.ts`, `src/utils/backlinks.ts`
 | [Design System](design/system.md) | Documentation for typography, grid utilities (twelve-column and ten-column), chip patterns, and responsive rules. | `src/styles/global.css`
+| [Typography Audit (2026-07)](design/typography-audit.md) | Findings on font, size, weight, and spacing consistency across the site, with prioritized recommendations. | `src/styles/global.css`, `src/components/**`
 | [Navigation](components/navigation.md) | Behavior of the Guardian-inspired multi-level navigation and header search affordances. | `src/components/navigation/*.astro`
 | [Search](components/search.md) | Pagefind-backed search page: index generation and query handling. | `src/pages/search.astro`
 | [Backlinks](components/backlinks.md) | Cached backlink generation and rendering conventions for related-post callouts. | `src/utils/backlinks.ts`, `src/components/Backlinks.astro`
