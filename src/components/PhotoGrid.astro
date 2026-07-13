@@ -280,7 +280,7 @@ const tiles = posts.map((post) => {
         border-radius: 999px;
         background: rgba(0, 0, 0, 0.55);
         color: #fff;
-        font-size: 0.75rem;
+        font-size: var(--text-xs);
         font-weight: 600;
         backdrop-filter: blur(4px);
     }
@@ -316,7 +316,7 @@ const tiles = posts.map((post) => {
     }
 
     .photo-entry__overlay-caption {
-        font-size: 0.95rem;
+        font-size: var(--text-small);
         font-weight: 600;
         line-height: 1.4;
         display: -webkit-box;
@@ -326,7 +326,7 @@ const tiles = posts.map((post) => {
     }
 
     .photo-entry :global(.photo-entry__overlay-date) {
-        font-size: 0.75rem;
+        font-size: var(--text-xs);
         font-weight: 500;
         opacity: 0.85;
     }
@@ -415,7 +415,7 @@ const tiles = posts.map((post) => {
 
     .photo-entry__caption {
         margin: 0;
-        font-size: 0.95rem;
+        font-size: var(--text-small);
         line-height: 1.6;
         color: rgb(var(--color-text-secondary));
     }
@@ -431,7 +431,7 @@ const tiles = posts.map((post) => {
     .photo-entry__date-link {
         text-decoration: none;
         color: rgb(var(--color-text-secondary));
-        font-size: 0.78rem;
+        font-size: var(--text-xs);
         font-weight: 500;
         transition: color 150ms ease;
     }

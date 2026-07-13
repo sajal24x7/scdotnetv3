@@ -15,7 +15,7 @@
 
 .progress-page__header-description {
     font-size: 1.125rem;
-    line-height: 1.7;
+    line-height: 1.6;
     color: rgb(var(--color-text-secondary));
     margin: 0;
 }
@@ -105,10 +105,10 @@
 }
 
 .progress-card__status {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
     padding: 0.2rem 0.6rem;
     border-radius: 999px;
 }
@@ -186,7 +186,7 @@
     justify-content: space-between;
     align-items: baseline;
     gap: 0.75rem;
-    font-size: 0.95rem;
+    font-size: var(--text-small);
     color: rgb(var(--color-text-secondary));
 }
 
@@ -232,7 +232,7 @@
 }
 
 .progress-sidebar-card__link-description {
-    font-size: 0.9rem;
+    font-size: var(--text-small);
     color: rgb(var(--color-text-secondary));
 }
 

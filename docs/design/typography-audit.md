@@ -4,7 +4,7 @@ A static audit of fonts, sizes, weights, line heights, and letter spacing across
 
 **TL;DR:** The intended system (Inter for body, Fraunces for headings, a four-step fluid scale) is sound and mostly followed, but it has drifted. There are ~45 distinct hard-coded `font-size` values in component styles, at least seven different H1 treatments, three unrelated monospace stacks, and the site masthead renders in Georgia instead of Fraunces due to a stale override.
 
-> **Status (fixes applied):** The quick wins and the highest-leverage structural items have been implemented. See [§4 Changes applied](#4-changes-applied) below. The findings below are preserved as written for context; the remaining open items are the lower-priority sweeps called out in §5.
+> **Status (fixes applied):** The quick wins, the highest-leverage structural items, and the follow-up cleanup sweeps have all been implemented. See [§4 Changes applied](#4-changes-applied) below. The findings below are preserved as written for context.
 
 ---
 
@@ -186,7 +186,19 @@ Implemented in this branch:
 
 Verified with a full `astro build` (2565 pages, no errors) and by confirming the Georgia override is absent and the new tokens are present in the compiled CSS.
 
-**Still open** (lower-priority sweeps, intentionally left for a follow-up pass): the long tail of near-duplicate small-text sizes in individual components (Finding 2.4), the eight letter-spacing values for uppercase labels (Finding 2.7), and the three body line-height values (Finding 2.7). These are cosmetic consistency sweeps that touch many files with little individual risk; do them incrementally.
+### Follow-up sweep
+
+The lower-priority items deferred above have since been completed:
+
+- **`--text-xs` token added** (`0.75rem`, fixed rather than fluid — chips and labels don't need viewport scaling) and Tailwind's `text-xs` remapped to it alongside the existing `text-sm`/`base`/`lg` aliases. (Recommendations #6, #9)
+- **Small-text cluster consolidated** — the 13-value cluster (`0.6rem`–`0.95rem`) across ~30 component files collapsed onto two tokens: `var(--text-xs)` for the 0.6–0.78rem chip/label sizes, `var(--text-small)` for the 0.8–0.95rem caption/small-body sizes, including the canonical `.tag-chip`/`.card-chip`/`.prose code` rules in `global.css`. (Finding 2.4)
+- **Uppercase label/chip tracking standardized** to two values: `0.08em` for chip-size (`--text-xs`) text, `0.04em` for larger uppercase labels (`--text-small` and up). Non-uppercase chip text (timeline/date/rewatch-style chips with mixed case) was left alone — it's a separate, legitimate use of tighter tracking outside this finding's scope. (Finding 2.7)
+- **Line-height reconciled** — the `1.7` outlier (progress-page header description, feeds intro, TV season content, book detail body, feed verse) was normalized to the base body value `1.6`; `.prose p`/`.prose li` keep `1.75` for long-form reading. Down from three "comfortable reading" values to two. (Finding 2.7)
+- **`h5`/`h6` differentiated** — `h6` now uses `--text-small` (down from `--text-normal`), so the lowest heading level is genuinely smaller than body text rather than distinguished only by font family and weight. `h4` (600) and `h5` (500) remain distinguished by weight at `--text-normal`. (Finding 2.5, Recommendation #11)
+
+Verified with a full `astro build` (2567 pages, no errors).
+
+**Still open**: none of the findings in this document remain unaddressed. Future drift should be caught by referencing `--text-*`/`--font-mono` tokens (see `AGENTS.md`) rather than hard-coding values.
 
 ---
 

@@ -129,7 +129,7 @@ const { coverImage, coverAlt, title, authors, kicker, metadata = [] } = Astro.pr
     }
 
     .book-detail__metadata-label {
-        font-size: 0.75rem;
+        font-size: var(--text-xs);
         letter-spacing: 0.08em;
         font-weight: 600;
         text-transform: uppercase;
@@ -142,7 +142,7 @@ const { coverImage, coverAlt, title, authors, kicker, metadata = [] } = Astro.pr
 
     .book-detail__metadata-value {
         text-align: right;
-        font-size: 0.875rem;
+        font-size: var(--text-small);
         color: rgba(var(--color-text-primary), 0.95);
     }
 
@@ -177,9 +177,9 @@ const { coverImage, coverAlt, title, authors, kicker, metadata = [] } = Astro.pr
     }
 
     .book-detail__kicker {
-        font-size: 0.8125rem;
+        font-size: var(--text-small);
         font-weight: 600;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.04em;
         text-transform: uppercase;
         color: rgba(var(--color-text-secondary), 0.95);
     }
@@ -203,7 +203,7 @@ const { coverImage, coverAlt, title, authors, kicker, metadata = [] } = Astro.pr
     .book-detail__body {
         max-width: none;
         font-size: 1rem;
-        line-height: 1.7;
+        line-height: 1.6;
     }
 
     @media (min-width: 48rem) {

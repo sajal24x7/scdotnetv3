@@ -295,11 +295,11 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
     }
 
     .section-count--accent {
-        font-size: 0.875rem;
+        font-size: var(--text-small);
         font-weight: 500;
         color: rgb(var(--color-accent));
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.04em;
     }
 
     :global(.dark) .section-count--accent {
@@ -374,7 +374,7 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
     }
 
     .section-tag-filter__summary {
-        font-size: 0.875rem;
+        font-size: var(--text-small);
         font-weight: 500;
         color: #6b7280;
     }
@@ -397,7 +397,7 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
         padding: 0.15rem 0.55rem;
         border-radius: 0.5rem;
         border: none;
-        font-size: 0.65rem;
+        font-size: var(--text-xs);
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
