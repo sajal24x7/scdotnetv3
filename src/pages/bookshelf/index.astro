@@ -539,13 +539,9 @@ const sectionLandingProps = createSectionLandingProps({
   }
 
   .bookshelf-year__year {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: var(--text-huge);
     font-weight: 700;
-    color: #111827;
-  }
-
-  :global(.dark) .bookshelf-year__year {
-    color: #f9fafb;
+    color: rgb(var(--color-text-primary));
   }
 
   .bookshelf-year__count {

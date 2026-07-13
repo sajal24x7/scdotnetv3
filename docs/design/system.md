@@ -9,7 +9,21 @@ The site’s visual language is codified in `src/styles/global.css` and a handfu
 
 ## Typography
 
-- Body copy uses the Inter variable font, while headings switch to Fraunces for a serif accent. Utilities like `.text-small`, `.text-large`, and `.text-huge` map directly to the clamp-based CSS variables for responsive scaling.【F:src/styles/global.css†L48-L96】
+- Body copy uses the Inter variable font, while headings switch to Fraunces for a serif accent. Code uses the shared `--font-mono` stack. Utilities like `.text-small`, `.text-medium`, `.text-large`, `.text-xlarge`, and `.text-huge` map directly to the clamp-based CSS variables for responsive scaling.【F:src/styles/global.css†L16-L100】
+- **Type scale** (all fluid via `clamp()`):
+
+  | Token | Value | Role |
+  | --- | --- | --- |
+  | `--text-small` | `clamp(0.875rem, 2vw, 1rem)` | Meta, captions, `text-sm` |
+  | `--text-normal` | `clamp(1rem, 2.5vw, 1.125rem)` | Body copy, `h4`–`h6`, `text-base` |
+  | `--text-medium` | `clamp(1.125rem, 2.5vw, 1.25rem)` | `h3`, `text-lg` |
+  | `--text-large` | `clamp(1.25rem, 4vw, 1.5rem)` | `h2` |
+  | `--text-xlarge` | `clamp(1.75rem, 4vw, 2.25rem)` | Feed / list section titles |
+  | `--text-huge` | `clamp(2rem, 5vw, 3rem)` | `h1`, page and year titles |
+
+- Tailwind's fixed `text-sm` / `text-base` / `text-lg` utilities are remapped to the fluid tokens (via `@theme inline`) so both spellings resolve to the same size at every width.【F:src/styles/global.css†L16-L30】
+- **Headings** are Fraunces throughout, including the site masthead. `h1` is weight 700; `h2` is 600; `h3`–`h6` step down in size and weight. Prose headings reuse the same tokens so an `<h2>` is one size inside and outside prose containers.【F:src/styles/global.css†L160-L235】
+- Prefer the `--text-*` tokens over ad-hoc `font-size` values in component styles, and reference `--font-mono` rather than re-declaring a monospace stack.
 - The `LayoutContainer` component exposes a `prose` flag to enable Tailwind’s typography plugin, ensuring long-form pages adhere to consistent widths and heading treatments.【F:src/components/layout/LayoutContainer.astro†L1-L64】
 
 ## Grid Systems
