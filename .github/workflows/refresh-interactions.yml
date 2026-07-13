@@ -53,17 +53,23 @@ jobs:
         env:
           # Optional: improves Mastodon API rate limits; Bluesky needs no auth
           MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+          # Threads/Instagram backfeed (replies + like counts) — the same
+          # credentials the syndicator publishes with
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
           INTERACTIONS_DAYS_BACK: ${{ github.event.inputs.days_back }}
         run: npm run collect-interactions
 
       - name: Commit interactions index if it changed
         run: |
-          if git diff --quiet -- src/data/interactions-index.json; then
+          if git diff --quiet -- src/data/interactions-index.json src/data/interaction-sources.json; then
             echo "Interactions index unchanged, nothing to commit"
             exit 0
           fi
 
-          git add src/data/interactions-index.json
+          git add src/data/interactions-index.json src/data/interaction-sources.json
           git commit -m "chore: refresh interactions index"
 
           # Rebase on top of any commits that landed while this job ran, then push

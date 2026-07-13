@@ -7,13 +7,18 @@ import path from 'node:path';
  * Reads the interactions index baked by scripts/collect-interactions.js
  * (and refreshed on a schedule by .github/workflows/refresh-interactions.yml).
  * For each post it stores the responses gathered from syndicated copies —
- * replies, likes, and reposts from Mastodon/Bluesky today, with Threads,
- * Instagram, webmentions, and email planned to land in the same shape.
+ * replies, likes, and reposts from Mastodon/Bluesky, replies/comments and
+ * like counts from Threads/Instagram — with webmentions and email planned
+ * to land in the same shape.
  *
  * Index keys are `category/slug`, matching page paths and the backlinks index.
  */
 
-export type InteractionType = 'reply' | 'like' | 'repost' | 'mention';
+/**
+ * "like-count" is the count-only aggregate for platforms that never expose
+ * who liked (Threads, Instagram); it renders as a chip, not a facepile.
+ */
+export type InteractionType = 'reply' | 'like' | 'repost' | 'mention' | 'like-count';
 export type InteractionPlatform =
     | 'mastodon'
     | 'bluesky'
@@ -37,6 +42,8 @@ export interface Interaction {
     url?: string;
     /** ISO timestamp when the platform provides one. */
     published?: string;
+    /** Aggregate total — present on "like-count" entries only. */
+    count?: number;
     status?: 'approved' | 'pending' | 'blocked';
 }
 
