@@ -660,7 +660,33 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/DaqzPfaEkdk/",
-      "count": 7,
+      "count": 8,
+      "status": "approved"
+    }
+  ],
+  "photo/202607132128": [
+    {
+      "id": "mastodon:like:116914181324815696:111363830602358989",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "MauroGata",
+        "url": "https://mastodon.social/@MauroGata",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/4fbdc8acec6c9aaca294ac7af8a6ce22.jpg"
+      },
+      "url": "https://mastodon.social/@MauroGata",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116914181324815696:111653091056470519",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Music Channel",
+        "url": "https://newsmast.community/@music",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/d8af9b6569ad925438987fb3726a2e69.png"
+      },
+      "url": "https://newsmast.community/@music",
       "status": "approved"
     }
   ],
