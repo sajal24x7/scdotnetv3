@@ -460,8 +460,7 @@
   }
 
   // --- image upload --------------------------------------------------------
-  const MAX_DIM_MICRO = 1024;  // inline images in prose stay modest
-  const MAX_DIM_PHOTO = 2048;  // photo posts are the point — keep more pixels
+  const MAX_DIM = 1024;  // both micro inline images and photo posts stay modest
   const RECOMPRESS_OVER = 500 * 1024;
   let pendingUploads = 0;
 
@@ -518,7 +517,7 @@
     const token = localStorage.getItem(TOKEN_KEY);
     const counter = total > 1 ? ` ${index + 1}/${total}` : '';
     setUploadNote(`Preparing photo${counter}…`);
-    const blob = await shrinkImage(file, mode === 'photo' ? MAX_DIM_PHOTO : MAX_DIM_MICRO, mode === 'photo');
+    const blob = await shrinkImage(file, MAX_DIM, mode === 'photo');
     setUploadNote(`Uploading photo${counter}…`);
     const res = await fetch('/api/upload', {
       method: 'POST',
