@@ -155,7 +155,7 @@ const hasMedia = galleryImages.length > 0 || Boolean(heroImage);
         </div>
 
         <div class="post-layout__meta">
-            <p class="post-layout__meta-line">
+            <div class="post-layout__meta-line">
                 {updated ? 'Updated ' : 'Published '}
                 {updated ? (
                     <TimeDisplay
@@ -179,12 +179,12 @@ const hasMedia = galleryImages.length > 0 || Boolean(heroImage);
                         <span class="post-layout__meta-sep">·</span>
                         <SyndicationLinks
                             syndicationUrls={syndicationUrls}
-                            variant="text"
+                            variant="icons"
                             label="Posted to:"
                         />
                     </>
                 )}
-            </p>
+            </div>
         </div>
 
         <Interactions interactions={interactions} />

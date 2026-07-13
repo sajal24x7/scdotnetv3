@@ -592,7 +592,7 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
         )}
 
         <div class="post-layout__meta">
-            <p class="post-layout__meta-line">
+            <div class="post-layout__meta-line">
                 {updated ? 'Updated ' : 'Published '}
                 {updated ? (
                     <TimeDisplay
@@ -616,12 +616,12 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
                         <span class="post-layout__meta-sep">·</span>
                         <SyndicationLinks
                             syndicationUrls={syndicationUrls}
-                            variant="text"
+                            variant="icons"
                             label="Posted to:"
                         />
                     </>
                 )}
-            </p>
+            </div>
         </div>
 
         <Interactions interactions={interactions} />
