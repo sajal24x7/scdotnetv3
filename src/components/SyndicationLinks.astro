@@ -4,13 +4,15 @@ interface Props {
     className?: string;
     label?: string;
     variant?: 'icons' | 'text';
+    plainLabel?: boolean;
 }
 
 const {
     syndicationUrls = [],
     className = '',
     label = 'Also posted to:',
-    variant = 'icons'
+    variant = 'icons',
+    plainLabel = false
 } = Astro.props as Props;
 
 type SyndicationPlatform = 'mastodon' | 'threads' | 'bluesky' | 'instagram';
@@ -98,7 +100,7 @@ const rootClassName = ['syndication-links', `syndication-links--${variant}`, cla
     </span>
 ) : (
     <div class={rootClassName}>
-        <span class="syndication-links__label card-chip">{label}</span>
+        <span class={`syndication-links__label${plainLabel ? ' syndication-links__label--plain' : ' card-chip'}`}>{label}</span>
         <div class="syndication-links__list" role="list">
             {syndicationLinks.map((link) => (
                 <a
@@ -135,6 +137,13 @@ const rootClassName = ['syndication-links', `syndication-links--${variant}`, cla
         font-size: 0.7rem;
         letter-spacing: 0.08em;
         text-transform: uppercase;
+    }
+
+    .syndication-links__label--plain {
+        font: inherit;
+        color: inherit;
+        letter-spacing: normal;
+        text-transform: none;
     }
 
     .syndication-links__list {

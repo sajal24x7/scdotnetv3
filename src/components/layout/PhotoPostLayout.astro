@@ -171,18 +171,15 @@ const hasMedia = galleryImages.length > 0 || Boolean(heroImage);
                         format="detailed"
                         className="dt-published"
                     />
-                )}
-                <span class="post-layout__meta-sep">·</span>
+                )}.
                 Thoughts? <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">Email me</a>.
                 {syndicationUrls.length > 0 && (
-                    <>
-                        <span class="post-layout__meta-sep">·</span>
-                        <SyndicationLinks
-                            syndicationUrls={syndicationUrls}
-                            variant="icons"
-                            label="Posted to:"
-                        />
-                    </>
+                    <SyndicationLinks
+                        syndicationUrls={syndicationUrls}
+                        variant="icons"
+                        label="Posted to:"
+                        plainLabel
+                    />
                 )}
             </div>
         </div>
@@ -218,11 +215,6 @@ const hasMedia = galleryImages.length > 0 || Boolean(heroImage);
     .post-layout__meta-line a {
         color: inherit;
         font-weight: 600;
-    }
-
-    .post-layout__meta-sep {
-        margin: 0 0.4em;
-        opacity: 0.5;
     }
 
     /* Photo post two-column header (Instagram-style: image left, text right).
