@@ -19,10 +19,10 @@
  *   THREADS_USER_ID           (both required; same secrets the syndicator uses)
  *   INSTAGRAM_ACCESS_TOKEN    optional, enables the Instagram backfeed
  *   INSTAGRAM_USER_ID         (both required)
- *   R2_ACCOUNT_ID             optional, enables mirroring hotlinked avatars
- *   R2_ACCESS_KEY_ID          into the site's R2 bucket (see
- *   R2_SECRET_ACCESS_KEY      scripts/lib/interactions/avatar-cache.js —
- *   R2_BUCKET                 all four required)
+ *   GITHUB_TOKEN              enables mirroring hotlinked avatars into R2 via
+ *                             the /api/mirror-avatar Pages Function (see
+ *                             scripts/lib/interactions/avatar-cache.js) —
+ *                             set automatically in GitHub Actions
  *   INTERACTIONS_DAYS_BACK    poll window in days (default from
  *                             interactions.config.json; 0 = all posts)
  */
@@ -36,7 +36,7 @@ import { parseBlueskyUrl, collectBlueskyInteractions } from './lib/interactions/
 import { parseThreadsUrl, threadsConfig, resolveThreadsMediaIds, collectThreadsInteractions } from './lib/interactions/threads.js';
 import { parseInstagramUrl, instagramConfig, resolveInstagramMediaIds, collectInstagramInteractions } from './lib/interactions/instagram.js';
 import { webmentionsConfig, drainPendingWebmentions, deleteWebmentionKeys, mergeWebmentionsIntoIndex } from './lib/interactions/webmentions.js';
-import { r2Config, mirrorAvatars } from './lib/interactions/avatar-cache.js';
+import { avatarMirrorConfig, mirrorAvatars } from './lib/interactions/avatar-cache.js';
 import { sortEntries } from './lib/interactions/shared.js';
 
 const INDEX_FILE = path.join(process.cwd(), 'src', 'data', 'interactions-index.json');
@@ -409,16 +409,17 @@ async function collectInteractions() {
     );
   }
 
-  // Mirror hotlinked avatars into R2 so reader IPs aren't leaked to
-  // third-party CDNs on every page view; rewrites entries in place.
-  const r2 = r2Config();
-  if (r2) {
-    const avatarStats = await mirrorAvatars(index, r2);
+  // Mirror hotlinked avatars into R2 (via the /api/mirror-avatar Pages
+  // Function) so reader IPs aren't leaked to third-party CDNs on every page
+  // view; rewrites entries in place.
+  const avatarMirror = avatarMirrorConfig();
+  if (avatarMirror) {
+    const avatarStats = await mirrorAvatars(index, avatarMirror);
     console.log(
       `🖼️  avatars: ${avatarStats.uploaded} mirrored, ${avatarStats.cached} cached, ${avatarStats.failed} failed`
     );
   } else {
-    console.log('ℹ️  avatars: R2 credentials not configured, using hotlinked avatars');
+    console.log('ℹ️  avatars: GITHUB_TOKEN not set, using hotlinked avatars');
   }
 
   writeIndex(index);

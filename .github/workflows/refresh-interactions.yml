@@ -64,12 +64,10 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           WEBMENTIONS_KV_NAMESPACE_ID: ${{ secrets.WEBMENTIONS_KV_NAMESPACE_ID }}
-          # Avatar mirroring into R2 — the same media bucket bound as IMAGES
-          # on Pages (all four required; mirroring is skipped otherwise)
-          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
-          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          # Avatar mirroring into R2, via the /api/mirror-avatar Pages
+          # Function — GITHUB_TOKEN is the bearer auth it checks (same
+          # trick /api/upload uses), no separate R2 credentials needed.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           INTERACTIONS_DAYS_BACK: ${{ github.event.inputs.days_back }}
         run: npm run collect-interactions
 

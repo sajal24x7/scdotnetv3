@@ -288,20 +288,23 @@ New `src/components/interactions/Interactions.astro`, wired into
    POSTs source+target, records sent pairs — and negative results, rechecked
    after 30 days — in `src/data/webmentions-sent.json`; wired into
    `syndicate-content.yml` right after the existing deploy-wait step),
-   `scripts/lib/interactions/avatar-cache.js` (mirrors hotlinked avatars into
-   the same R2 bucket `functions/api/upload.js` writes to, under an
-   `avatars/` prefix; signs requests against R2's S3-compatible API by hand —
-   no SDK — since the collector runs as a plain Node script in Actions, not
-   inside a Pages Function; wired into `scripts/collect-interactions.js`
-   after the webmention merge, with a `src/data/avatar-cache.json` cache so
-   repeat runs don't re-upload).
+   `functions/api/mirror-avatar.js` + `scripts/lib/interactions/avatar-cache.js`
+   (mirrors hotlinked avatars into the same R2 bucket `functions/api/upload.js`
+   writes to, under an `avatars/` prefix). Mirroring runs as a Pages Function
+   rather than signed from the collector script, so it uses the `env.IMAGES`
+   binding directly — no R2 API token, no new secrets. Auth reuses the
+   `/api/upload` trick: any bearer token that can read the repo is trusted,
+   and GitHub Actions' automatic `GITHUB_TOKEN` satisfies that already.
+   `scripts/collect-interactions.js` calls the endpoint after the webmention
+   merge, with a `src/data/avatar-cache.json` cache so repeat runs don't
+   re-request already-mirrored avatars.
 
-   **One-time setup still required for avatar mirroring** — see
-   [Phase 4 setup: R2 API token](#phase-4-setup-r2-api-token) below. Until
-   the secrets are set the collector logs that mirroring is skipped and
-   avatars stay hotlinked (no functional impact, just the privacy/rot
-   trade-off described above). Sending outgoing webmentions and the email
-   curation file need no new infrastructure — both are live already.
+   **No setup required** — all three Phase 4 pieces are live with zero new
+   secrets or dashboard steps. `functions/api/mirror-avatar.js` starts
+   working the moment it's deployed (same `IMAGES` binding `/api/upload`
+   already uses); if a Pages deploy hasn't picked it up yet, the collector
+   just logs the failure per avatar and falls back to the hotlink — nothing
+   breaks.
 
 ## Phase 3 setup: KV namespace, binding, secrets
 
@@ -407,66 +410,34 @@ with an info log rather than failing.
    (or flip the entry's `status` in `src/data/interactions-index.json`); the
    mention renders in the post's Interactions tab after the next build.
 
-## Phase 4 setup: R2 API token
+## Avatar mirroring: how it avoids new credentials
 
-One-time, ~5 minutes, free tier. Avatar mirroring reuses the R2 bucket
-`functions/api/upload.js` already writes to (bound as `IMAGES` on Pages) — no
-new bucket, and no folder to create by hand: R2 has no real directory
-concept, so the `avatars/` key prefix just appears the first time something
-writes under it, the same way `images/2026/07/...` did. What's new is
-*credentials*: `scripts/lib/interactions/avatar-cache.js` runs as a plain
-Node script in GitHub Actions, not inside a Cloudflare Pages Function, so it
-can't use the `env.IMAGES` binding — it signs requests against R2's
-S3-compatible API instead, which needs an R2-specific API token (a different
-credential type from the `CLOUDFLARE_API_TOKEN` used for the KV drain in
-Phase 3, which only grants Workers KV access).
+`functions/api/mirror-avatar.js` mirrors hotlinked avatars into the same R2
+bucket `functions/api/upload.js` already writes to (bound as `IMAGES` on
+Pages) — no new bucket, and no folder to create by hand: R2 has no real
+directory concept, so the `avatars/` key prefix just appears the first time
+something writes under it, the same way `images/2026/07/...` did.
 
-### 1. Find the bucket name
+The interesting part is *auth*. `scripts/lib/interactions/avatar-cache.js`
+runs as a plain Node script in GitHub Actions, not inside a Cloudflare Pages
+Function, so it can't use the `env.IMAGES` binding directly the way
+`/api/upload` does. Rather than give it its own R2 API token (a separate
+credential type from the `CLOUDFLARE_API_TOKEN` used for the Phase 3 KV
+drain, which only grants Workers KV access), the mirroring work itself moved
+*into* a Pages Function — `functions/api/mirror-avatar.js` — which runs
+inside the Workers runtime and uses `env.IMAGES` directly, same as
+`/api/upload`. The collector just POSTs `{ url }` to it with a bearer token;
+the Function checks that token can read the GitHub repo (identical check to
+`/api/upload`), and GitHub Actions' automatic `GITHUB_TOKEN` already
+satisfies that — no secret to create, no dashboard step. It starts working
+the moment a Pages deploy picks up the new Function file; until then, or if
+the request ever fails, the collector logs a per-avatar warning and falls
+back to the hotlink rather than failing the run.
 
-Dashboard → **Storage & Databases → R2** — the bucket bound as `IMAGES` in
-the Pages project's Settings → Bindings. Note its name; it becomes the
-`R2_BUCKET` secret in step 3.
-
-### 2. Create an R2 API token
-
-Dashboard → **R2** → **Manage R2 API Tokens** (right side) → **Create API
-Token**:
-
-- **Token name:** `scdotnetv3 avatar mirror`
-- **Permissions:** `Object Read & Write`
-- **Specify bucket(s):** the bucket from step 1 only — no need for
-  account-wide access
-- **TTL:** forever (or your preference)
-- **Create API Token**
-
-The confirmation page shows an **Access Key ID**, a **Secret Access Key**,
-and a **Jurisdiction-specific endpoint** — copy the Access Key ID and Secret
-Access Key now (the secret is shown once); the endpoint isn't needed since
-the script derives it from the account ID.
-
-### 3. Add the GitHub repo secrets
-
-Repo → **Settings → Secrets and variables → Actions** → **New repository
-secret**, four times:
-
-| Secret | Value |
-|---|---|
-| `R2_ACCOUNT_ID` | the account ID (same one used for `CLOUDFLARE_ACCOUNT_ID` in Phase 3) |
-| `R2_ACCESS_KEY_ID` | the Access Key ID from step 2 |
-| `R2_SECRET_ACCESS_KEY` | the Secret Access Key from step 2 |
-| `R2_BUCKET` | the bucket name from step 1 |
-
-All four are required — if any is missing the collector logs
-`ℹ️  avatars: R2 credentials not configured, using hotlinked avatars` and
-skips mirroring rather than failing.
-
-### 4. Verify
-
-Run the **Refresh interactions index** workflow manually (Actions →
-workflow_dispatch). The log should show a line like
-`🖼️  avatars: 12 mirrored, 0 cached, 0 failed` (counts will vary), and
+To verify after it's deployed: run the **Refresh interactions index**
+workflow manually (Actions → workflow_dispatch). The log should show a line
+like `🖼️  avatars: 12 mirrored, 0 cached, 0 failed` (counts will vary), and
 `src/data/avatar-cache.json` should pick up a new commit. Spot-check one of
-the mirrored URLs — it should be `https://storage.sajalchoudhary.net/avatars/<hash>.<ext>`
-and load the same image the original hotlink did. On the next site build,
-avatars in the Interactions tab load from that URL instead of the origin
-platform's CDN.
+the mirrored URLs — it should be
+`https://storage.sajalchoudhary.net/avatars/<hash>.<ext>` and load the same
+image the original hotlink did.
