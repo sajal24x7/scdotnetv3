@@ -263,4 +263,22 @@ New `src/components/interactions/Interactions.astro`, wired into
    `instagram_business_manage_comments`) degrade gracefully with a run-log
    warning until a one-time re-auth grants them.
 3. **Phase 3** (webmention endpoint + KV + moderation) — the "real" webmention support.
+   ✅ **Shipped**: `functions/api/webmention.js` (sync verification with timeout +
+   1 MB cap, minimal h-entry extraction via HTMLRewriter, IP rate limiting,
+   tombstones for deleted/unlinked sources), `<link rel="webmention">` in
+   `Layout.astro`, KV drain + moderation merge in
+   `scripts/lib/interactions/webmentions.js` (wired into
+   `scripts/collect-interactions.js`), `approvedWebmentionDomains` /
+   `blockedWebmentionDomains` in `interactions.config.json`, and a
+   self-maintaining "Webmentions pending moderation" issue step in
+   `refresh-interactions.yml`.
+
+   **One-time setup still required** (dashboard/secrets, not code):
+   1. Create a Cloudflare KV namespace and bind it to the Pages project as
+      `WEBMENTIONS` (Pages → Settings → Bindings). Until bound, the endpoint
+      returns 500 and nothing else is affected.
+   2. Add repo secrets `CLOUDFLARE_API_TOKEN` (KV read/write scope),
+      `CLOUDFLARE_ACCOUNT_ID`, and `WEBMENTIONS_KV_NAMESPACE_ID` (the
+      namespace id from step 1). Until set, the collector logs that the
+      drain is skipped and mentions simply wait in KV.
 4. **Phase 4** (outgoing webmentions, email curation, avatar caching) — polish, any order.

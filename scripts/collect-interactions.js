@@ -31,6 +31,8 @@ import { parseMastodonUrl, collectMastodonInteractions } from './lib/interaction
 import { parseBlueskyUrl, collectBlueskyInteractions } from './lib/interactions/bluesky.js';
 import { parseThreadsUrl, threadsConfig, resolveThreadsMediaIds, collectThreadsInteractions } from './lib/interactions/threads.js';
 import { parseInstagramUrl, instagramConfig, resolveInstagramMediaIds, collectInstagramInteractions } from './lib/interactions/instagram.js';
+import { webmentionsConfig, drainPendingWebmentions, deleteWebmentionKeys, mergeWebmentionsIntoIndex } from './lib/interactions/webmentions.js';
+import { sortEntries } from './lib/interactions/shared.js';
 
 const INDEX_FILE = path.join(process.cwd(), 'src', 'data', 'interactions-index.json');
 const SOURCES_FILE = path.join(process.cwd(), 'src', 'data', 'interaction-sources.json');
@@ -67,7 +69,12 @@ const rateLimiters = {
 };
 
 function loadConfig() {
-  const defaults = { daysBack: 60, blockedAuthorUrls: [] };
+  const defaults = {
+    daysBack: 60,
+    blockedAuthorUrls: [],
+    approvedWebmentionDomains: [],
+    blockedWebmentionDomains: [],
+  };
   try {
     const raw = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf-8'));
     return { ...defaults, ...raw };
@@ -191,17 +198,6 @@ function writeIndex(index) {
   fs.writeFileSync(INDEX_FILE, serialized, 'utf-8');
   console.log(`Wrote ${INDEX_FILE}`);
   return true;
-}
-
-function sortEntries(entries) {
-  // Chronological stream; entries without timestamps (e.g. Mastodon likes)
-  // sink to the end in a stable order.
-  return [...entries].sort((a, b) => {
-    if (a.published && b.published) return a.published.localeCompare(b.published);
-    if (a.published) return -1;
-    if (b.published) return 1;
-    return a.id.localeCompare(b.id);
-  });
 }
 
 /** Group a post's Threads/Instagram syndication URLs by platform. */
@@ -385,8 +381,42 @@ async function collectInteractions() {
     console.log(`  ${post.key} → ${summary}`);
   }
 
+  // Webmentions received by functions/api/webmention.js sit in Cloudflare KV
+  // until this drains them into the index behind the moderation gate.
+  const wmConfig = webmentionsConfig();
+  let drainedMentions = [];
+  if (wmConfig) {
+    try {
+      drainedMentions = await drainPendingWebmentions(wmConfig);
+      console.log(`🌐 web: drained ${drainedMentions.length} webmention(s) from KV`);
+    } catch (error) {
+      console.warn(`  ⚠️  webmention drain failed: ${error.message} — records stay queued for the next run`);
+      drainedMentions = [];
+    }
+  } else {
+    console.log('ℹ️  web: Cloudflare KV credentials not configured, skipping webmention drain');
+  }
+  const wmStats = mergeWebmentionsIntoIndex(index, drainedMentions, config);
+  if (wmStats.added || wmStats.updated || wmStats.removed || wmStats.pending) {
+    console.log(
+      `🌐 web: ${wmStats.added} added, ${wmStats.updated} updated, ${wmStats.removed} removed; ` +
+        `${wmStats.pending} pending moderation`
+    );
+  }
+
   writeIndex(index);
   writeSources(sources);
+
+  // Only after the index is safely on disk — a failed delete just means the
+  // next run re-merges the same records, which is idempotent.
+  if (wmConfig && drainedMentions.length > 0) {
+    try {
+      await deleteWebmentionKeys(wmConfig, drainedMentions.map((mention) => mention.key));
+    } catch (error) {
+      console.warn(`  ⚠️  KV cleanup failed: ${error.message} — drained keys will be re-read next run`);
+    }
+  }
+
   console.log(`\n🎉 Done. Polled ${polled} posts, ${totalEntries} interactions in updated keys.`);
 
   if (polled > 0 && failedPosts === polled) {

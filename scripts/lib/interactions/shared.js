@@ -90,6 +90,20 @@ export function toIsoTimestamp(value) {
   return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
 }
 
+/**
+ * Sort a post's entries into the chronological stream order the index
+ * stores; entries without timestamps (e.g. Mastodon likes) sink to the
+ * end in a stable order.
+ */
+export function sortEntries(entries) {
+  return [...entries].sort((a, b) => {
+    if (a.published && b.published) return a.published.localeCompare(b.published);
+    if (a.published) return -1;
+    if (b.published) return 1;
+    return a.id.localeCompare(b.id);
+  });
+}
+
 const warned = new Set();
 
 /**
