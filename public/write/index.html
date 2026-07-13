@@ -460,7 +460,7 @@
   }
 
   // --- image upload --------------------------------------------------------
-  const MAX_DIM = 1024;  // both micro inline images and photo posts stay modest
+  const MAX_DIM = 1536;  // sharp on retina at the ~768px column, still email-friendly
   const RECOMPRESS_OVER = 500 * 1024;
   let pendingUploads = 0;
 
