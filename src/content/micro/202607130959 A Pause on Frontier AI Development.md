@@ -1,10 +1,15 @@
 ---
-title: "A Pause on Frontier AI Development"
-slug: "a-pause-on-frontier-ai-development"
-created: 2026-07-13T09:59:00+03:00
-updated: 2026-07-13T09:59:00+03:00
+title: A Pause on Frontier AI Development
+slug: a-pause-on-frontier-ai-development
+created: 2026-07-13T06:59:00.000Z
+updated: 2026-07-13T06:59:00.000Z
 category: micro
-tags: ["robin-sloan", "ai"]
+tags:
+  - robin-sloan
+  - ai
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116911648567855564'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqjaik4n2s2n'
 ---
 [Report from the march to Stop the AI Race by Robin Sloan](https://www.robinsloan.com/lab/stop-ai-march/)
 
