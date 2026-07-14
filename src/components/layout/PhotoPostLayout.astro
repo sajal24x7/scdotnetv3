@@ -142,18 +142,6 @@ const hasMedia = galleryImages.length > 0 || Boolean(heroImage);
             </>
         )}
 
-        <div class="mt-8 border-t border-borderColor dark:border-borderColorDark">
-            <NewsletterSignup
-                title="Subscribe to NordLetter"
-                description="A weekly newsletter on living in Finland."
-                buttonText="Sign up"
-                headingClass="text-xs font-semibold mb-1"
-                descriptionClass="text-sm mb-3"
-                wrapperClass="py-4"
-                centered={true}
-            />
-        </div>
-
         <div class="post-layout__meta">
             <div class="post-layout__meta-line">
                 {updated ? 'Updated ' : 'Published '}
@@ -182,6 +170,18 @@ const hasMedia = galleryImages.length > 0 || Boolean(heroImage);
                     />
                 )}
             </div>
+        </div>
+
+        <div class="mt-8 border-t border-borderColor dark:border-borderColorDark text-center">
+            <NewsletterSignup
+                title="Subscribe to NordLetter"
+                description="A weekly newsletter on living in Finland."
+                buttonText="Sign up"
+                headingClass="text-xs font-semibold mb-1"
+                descriptionClass="text-sm mb-3"
+                wrapperClass="py-4"
+                centered={true}
+            />
         </div>
 
         <Interactions interactions={interactions} />
