@@ -1,10 +1,16 @@
 ---
-title: "OnePlus Is Being Dismantled"
-slug: "oneplus-is-being-dismantled"
-created: 2026-07-14T10:00:00+03:00
-updated: 2026-07-14T10:01:41+03:00
+title: OnePlus Is Being Dismantled
+slug: oneplus-is-being-dismantled
+created: 2026-07-14T07:00:00.000Z
+updated: 2026-07-14T07:01:41.000Z
 category: micro
-tags: ["phone", "oneplus", "china"]
+tags:
+  - phone
+  - oneplus
+  - china
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116917139540025662'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqlojjxbte2s'
 ---
 [OnePlus is reportedly bailing on the US by Jay Peters](https://www.theverge.com/tech/965084/oneplus-oppo-exit-us-europe)
 
