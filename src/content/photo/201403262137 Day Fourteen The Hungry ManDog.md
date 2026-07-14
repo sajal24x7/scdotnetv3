@@ -17,8 +17,6 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7uwb3q624'
   - 'https://www.threads.com/@sajal24x7/post/DZmwQ2JlgB0'
 ---
-[![image](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395848789304.jpeg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/wpid-wp-1395848789304.jpeg)
-
 He looked hungry.  
 He did.  
 But he had no money.  

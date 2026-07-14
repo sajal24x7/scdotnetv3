@@ -8,8 +8,9 @@ tags:
   - 30 day challenge
   - photography
   - Uncategorized
+image: >-
+  https://storage.sajalchoudhary.net/images/wordpress/2014/04/dsc07416.jpg
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116753982625637909'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7weeojn2m'
 ---
-[![DSC07416](https://storage.sajalchoudhary.net/images/wordpress/2014/04/dsc07416.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/04/dsc07416.jpg)
