@@ -88,7 +88,7 @@ export async function deleteWebmentionKeys(config, keys) {
   if (!response.ok) throw new Error(`KV bulk delete failed (${response.status})`);
 }
 
-const domainOf = (url) => {
+export const domainOf = (url) => {
   try {
     return new URL(url).hostname.replace(/^www\./, '').toLowerCase();
   } catch {
@@ -96,7 +96,7 @@ const domainOf = (url) => {
   }
 };
 
-const normalizeDomain = (domain) => String(domain).replace(/^www\./, '').toLowerCase();
+export const normalizeDomain = (domain) => String(domain).replace(/^www\./, '').toLowerCase();
 
 const isThisMention = (entry, hash) => entry.platform === 'web' && entry.id.endsWith(`:${hash}`);
 

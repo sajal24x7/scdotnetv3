@@ -157,9 +157,11 @@ permalinks against `syndicationUrls`. Cache the permalink→id map inside the in
    `CLOUDFLARE_ACCOUNT_ID` secrets, KV-read scope) and merges them into the index:
    - Domains on an allowlist (`interactions.config.json`) → `approved` immediately.
    - Everything else lands as `pending` — invisible on the site — and the workflow
-     opens/updates a GitHub issue listing pending mentions. Approve by adding the
-     domain to the allowlist or flipping the entry's `status` in the JSON; block by
-     adding to a blocklist that also purges existing entries.
+     opens/updates a GitHub issue listing pending mentions. Approve/block by
+     commenting `/approve <domain>` or `/deny <domain>` on the issue (a second
+     workflow, `webmention-moderation.yml`, applies the command to the allowlist
+     or blocklist and the index, then pushes) — or by hand-editing
+     `interactions.config.json` / the entry's `status` directly.
    This keeps arbitrary internet input out of the rendered site until a human nods.
 
 ## Phase 4 — Email replies (Buttondown) + polish
@@ -271,7 +273,13 @@ New `src/components/interactions/Interactions.astro`, wired into
    `scripts/collect-interactions.js`), `approvedWebmentionDomains` /
    `blockedWebmentionDomains` in `interactions.config.json`, and a
    self-maintaining "Webmentions pending moderation" issue step in
-   `refresh-interactions.yml`.
+   `refresh-interactions.yml` (factored into the shared
+   `.github/actions/update-webmention-issue` composite action). Moderation
+   from the issue itself: `.github/workflows/webmention-moderation.yml` reacts
+   to `/approve <domain>` / `/deny <domain>` comments on that issue —
+   `scripts/moderate-webmention.js` applies the allow/blocklist change and the
+   matching index entries, commits, and pushes; the bot reacts 👍 and replies
+   with what changed.
 
    **One-time setup still required** — see
    [Phase 3 setup: KV namespace, binding, secrets](#phase-3-setup-kv-namespace-binding-secrets)
