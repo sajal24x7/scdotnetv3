@@ -13,11 +13,13 @@ tags:
   - prose
   - religion
   - thoughts
+image: >-
+  https://storage.sajalchoudhary.net/images/wordpress/2014/03/dsc07387.jpg
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116753979955146528'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mod7v5qb272m'
 ---
-[![The Voice](https://storage.sajalchoudhary.net/images/wordpress/2014/03/dsc07387.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2014/03/dsc07387.jpg)At the Golden Temple, Amritsar.
+At the Golden Temple, Amritsar.
 
 Why did we invent language?
 
