@@ -1,4 +1,5 @@
 import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
 import type { Post } from './content';
 import { parseMarkdown } from './markdown';
 import { cleanNordletterTitle, extractEditionNumber } from './content';
@@ -217,7 +218,7 @@ function photoGalleryHtml(images: string[], post: Post): string {
   const slides = images
     .map(
       (src, index) =>
-        `<figure class="feed-carousel__slide"><img src="${escapeHtml(src)}" alt="${escapeHtml(photoAlt(post, index, images.length))}" loading="${index === 0 ? 'eager' : 'lazy'}" decoding="async"></figure>`
+        `<figure class="feed-carousel__slide"><img src="${escapeHtml(src)}" alt="${escapeHtml(photoAlt(post, index, images.length))}" loading="lazy" decoding="async"></figure>`
     )
     .join('');
   const dots = images
@@ -288,16 +289,26 @@ function joinNames(value: string | string[] | undefined): string {
   return Array.isArray(value) ? value.join(', ') : value || '';
 }
 
-function renderShelf(
+// Covers render as 72×106 thumbnails. Referencing `coverMeta.src` directly would
+// ship the full-size original (several MB for a 72px thumb) and make Astro emit
+// every untouched original into the build; run them through the image pipeline at
+// 2× the display size instead so the feed downloads a few KB of retina-ready webp.
+async function shelfCoverHtml(coverMeta: ImageMetadata | undefined): Promise<string> {
+  if (!coverMeta) {
+    return '<div class="feed-entry__book-cover feed-entry__book-cover--placeholder" aria-hidden="true"></div>';
+  }
+  const optimized = await getImage({ src: coverMeta, width: 144, height: 212, format: 'webp' });
+  return `<img class="feed-entry__book-cover" src="${optimized.src}" alt="" loading="lazy" width="72" height="106">`;
+}
+
+async function renderShelf(
   post: Post,
   coverMeta: ImageMetadata | undefined,
   fallbackVerb: string,
   credits: string,
   displayTitle?: string
-): string {
-  const coverHtml = coverMeta
-    ? `<img class="feed-entry__book-cover" src="${coverMeta.src}" alt="" loading="lazy" width="72" height="106">`
-    : '<div class="feed-entry__book-cover feed-entry__book-cover--placeholder" aria-hidden="true"></div>';
+): Promise<string> {
+  const coverHtml = await shelfCoverHtml(coverMeta);
 
   const rating = post.data.rating ? bookRatingLabels[post.data.rating] : '';
   const details = [credits, rating].filter(Boolean).join(' · ');
@@ -309,17 +320,17 @@ function renderShelf(
   return `${metaHtml(post)}<div class="feed-entry__book">${coverHtml}<div>${titleHtml(post, title)}${detailsHtml}</div></div>`;
 }
 
-function renderBookshelf(post: Post): string {
+function renderBookshelf(post: Post): Promise<string> {
   const coverMeta = post.data.cover ? getBookCoverImage(post.data.cover as any) : undefined;
   return renderShelf(post, coverMeta, 'Finished', joinNames(post.data.author));
 }
 
-function renderFilmshelf(post: Post): string {
+function renderFilmshelf(post: Post): Promise<string> {
   const coverMeta = post.data.cover ? getFilmCoverImage(post.data.cover as any) : undefined;
   return renderShelf(post, coverMeta, 'Watched', joinNames(post.data.director));
 }
 
-function renderTvshelf(post: Post): string {
+function renderTvshelf(post: Post): Promise<string> {
   const coverMeta = post.data.cover ? getTVCoverImage(post.data.cover as any) : undefined;
   const title = post.data.title
     ? `${post.data.title}${post.data.season ? ` · Season ${post.data.season}` : ''}`
@@ -327,7 +338,7 @@ function renderTvshelf(post: Post): string {
   return renderShelf(post, coverMeta, 'Watched', joinNames(post.data.creator), title);
 }
 
-function renderGameshelf(post: Post): string {
+function renderGameshelf(post: Post): Promise<string> {
   const coverMeta = post.data.cover ? getGameCoverImage(post.data.cover as any) : undefined;
   const credits = [post.data.developer, post.data.platform].filter(Boolean).join(' · ');
   return renderShelf(post, coverMeta, 'Played', credits);
