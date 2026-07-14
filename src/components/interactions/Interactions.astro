@@ -9,6 +9,9 @@ interface Props {
 
 const { interactions = [] } = Astro.props as Props;
 
+// Instagram-style outline heart (no fill/colour) for count-only like chips.
+const HEART_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+
 const replies = interactions.filter((i) => i.type === 'reply' || i.type === 'mention');
 const likes = interactions.filter((i) => i.type === 'like');
 const reposts = interactions.filter((i) => i.type === 'repost');
@@ -127,36 +130,31 @@ const facepileGroups = [
                                 const platformMeta = PLATFORM_META[chip.platform];
                                 const platformLabel = platformMeta?.label ?? chip.platform;
                                 const chipLabel = `${chip.count} ${chip.count === 1 ? 'like' : 'likes'} on ${platformLabel}`;
-                                return chip.url ? (
-                                    <a
+                                const LikeTag = chip.url ? 'a' : 'span';
+                                return (
+                                    <LikeTag
                                         href={chip.url}
-                                        class="interactions__count-chip"
+                                        class="interactions__count-like"
                                         aria-label={chipLabel}
-                                        target="_blank"
-                                        rel="nofollow noopener noreferrer"
+                                        target={chip.url ? '_blank' : undefined}
+                                        rel={chip.url ? 'nofollow noopener noreferrer' : undefined}
                                     >
                                         {platformMeta && (
                                             <span
-                                                class="interactions__count-chip-icon"
+                                                class="interactions__count-like-badge"
                                                 set:html={platformMeta.icon}
                                                 aria-hidden="true"
                                             />
                                         )}
-                                        <span class="interactions__count-chip-heart" aria-hidden="true">❤️</span>
-                                        <span class="interactions__count-chip-count">{chip.count}</span>
-                                    </a>
-                                ) : (
-                                    <span class="interactions__count-chip" aria-label={chipLabel}>
-                                        {platformMeta && (
+                                        <span class="interactions__count-like-chip">
                                             <span
-                                                class="interactions__count-chip-icon"
-                                                set:html={platformMeta.icon}
+                                                class="interactions__count-like-heart"
+                                                set:html={HEART_ICON}
                                                 aria-hidden="true"
                                             />
-                                        )}
-                                        <span class="interactions__count-chip-heart" aria-hidden="true">❤️</span>
-                                        <span class="interactions__count-chip-count">{chip.count}</span>
-                                    </span>
+                                            <span class="interactions__count-like-count">{chip.count}</span>
+                                        </span>
+                                    </LikeTag>
                                 );
                             })}
                         </div>
@@ -427,8 +425,40 @@ const facepileGroups = [
     }
 
     /* Count-only likes (Threads/Instagram expose no accounts) sit beside
-       the avatars as a chip of matching height. */
-    .interactions__count-chip {
+       the avatars: the platform glyph as its own tile, then a pill with
+       an outline heart and the count. */
+    .interactions__count-like {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: rgb(var(--color-text-secondary));
+        transition: transform 0.15s ease;
+    }
+
+    a.interactions__count-like:hover,
+    a.interactions__count-like:focus-visible {
+        transform: translateY(-2px);
+    }
+
+    /* Platform glyph rendered outside the chip, matching the avatar tiles.
+       The brand SVG carries its own colour, so no link styling touches it. */
+    .interactions__count-like-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 0.625rem;
+        background: rgb(var(--color-border));
+    }
+
+    .interactions__count-like-badge :global(svg) {
+        width: 1.65rem;
+        height: 1.65rem;
+    }
+
+    .interactions__count-like-chip {
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
@@ -438,35 +468,20 @@ const facepileGroups = [
         border-radius: 0.625rem;
         font-size: var(--text-small);
         font-weight: 600;
-        color: rgb(var(--color-text-secondary));
-        text-decoration: none;
-        transition: transform 0.15s ease, color 0.15s ease;
     }
 
-    a.interactions__count-chip:hover,
-    a.interactions__count-chip:focus-visible {
-        transform: translateY(-2px);
-        color: rgb(var(--color-text-primary));
-    }
-
-    /* Platform glyph (e.g. Instagram) → heart → count, in place of prose. */
-    .interactions__count-chip-icon {
+    .interactions__count-like-heart {
         display: inline-flex;
-        width: 1.05rem;
-        height: 1.05rem;
+        width: 1.15rem;
+        height: 1.15rem;
     }
 
-    .interactions__count-chip-icon :global(svg) {
+    .interactions__count-like-heart :global(svg) {
         width: 100%;
         height: 100%;
     }
 
-    .interactions__count-chip-heart {
-        font-size: 0.9rem;
-        line-height: 1;
-    }
-
-    .interactions__count-chip-count {
+    .interactions__count-like-count {
         font-variant-numeric: tabular-nums;
     }
 
