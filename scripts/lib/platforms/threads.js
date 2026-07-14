@@ -158,6 +158,8 @@ async function createThreadsContainer(userId, accessToken, payload) {
  * which timed out on essentially every image post).
  */
 async function waitForThreadsContainer(containerId, accessToken, maxAttempts = 30) {
+  let lastError = null;
+
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     await new Promise(resolve => setTimeout(resolve, 3000));
 
@@ -168,7 +170,15 @@ async function waitForThreadsContainer(containerId, accessToken, maxAttempts = 3
     });
 
     if (!response.ok) {
-      continue; // transient error - keep waiting
+      const errorData = await response.json().catch(() => ({}));
+      const errorMessage = errorData.error?.message || errorData.error || `HTTP ${response.status}`;
+      lastError = errorMessage;
+
+      // Auth/permission errors won't resolve themselves by waiting - fail fast.
+      if (response.status === 401 || response.status === 403) {
+        throw new Error(`Threads status check failed: ${errorMessage}`);
+      }
+      continue; // other errors may be transient - keep waiting
     }
 
     const result = await response.json();
@@ -180,7 +190,11 @@ async function waitForThreadsContainer(containerId, accessToken, maxAttempts = 3
     }
   }
 
-  throw new Error('Timed out waiting for Threads to process the media');
+  throw new Error(
+    lastError
+      ? `Timed out waiting for Threads to process the media (last status check error: ${lastError})`
+      : 'Timed out waiting for Threads to process the media'
+  );
 }
 
 /**
