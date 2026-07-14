@@ -4,8 +4,8 @@ This site deploys to Cloudflare Pages and uses npm scripts to orchestrate pre-bu
 
 ## Environment Requirements
 
-- Node.js ≥ 20 and npm ≥ 10 are required locally and in CI/CD, matching the `engines` field in `package.json`.【F:package.json†L5-L23】
-- Cloudflare Pages specifies Node 20 in `cloudflare-pages.json`, ensuring parity between local builds and production.【F:cloudflare-pages.json†L1-L8】
+- Node.js ≥ 22.12.0 and npm ≥ 10 are required locally and in CI/CD, matching the `engines` field in `package.json`.【F:package.json†L5-L23】
+- Cloudflare Pages specifies Node 22 in `cloudflare-pages.json`, ensuring parity between local builds and production.【F:cloudflare-pages.json†L1-L8】
 
 ## Core Commands
 

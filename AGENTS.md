@@ -1,7 +1,7 @@
 # Repository Guidelines
 
 ## Frameworks & Tooling
-- **Astro 5.x** drives page generation and content collections. Routes live under `src/pages`, islands under `src/components`, and layout primitives in `src/layouts`.
+- **Astro 7.x** drives page generation and content collections. Routes live under `src/pages`, islands under `src/components`, and layout primitives in `src/layouts`.
 - **TypeScript-first utilities** power content aggregation. Prefer named exports and keep helpers in `src/utils` alongside related Zod schemas in `src/types`.
 - **Tailwind CSS** provides styling; keep bespoke styles minimal and colocate reusable patterns in `src/styles`.
 - **Build-time integrations** cover cover-art generation and POSSE syndication. Follow the existing npm scripts (`npm run dev`, `npm run build`, etc.) to trigger the full pipeline.
@@ -22,7 +22,7 @@ The Astro site lives in `src`, with route files under `src/pages`, shared layout
 - Keep planning artefacts in `planning/`; they remain separate from the documentation set.
 
 ## Build, Test, and Development Commands
-Run `npm install` with Node 20+ before contributing. Use `npm run dev` for the local server; it pre-builds covers and watches Astro files. `npm run build` executes cover generation, builds the static site, and best-effort triggers syndication. `npm run preview` serves the last build. Use `npm run syndicate:dry-run` to verify outbound syndication without publishing.
+Run `npm install` with Node 22+ before contributing. Use `npm run dev` for the local server; it pre-builds covers and watches Astro files. `npm run build` executes cover generation, builds the static site, and best-effort triggers syndication. `npm run preview` serves the last build. Use `npm run syndicate:dry-run` to verify outbound syndication without publishing.
 
 ## Coding Style & Naming Conventions
 Follow the existing 4-space indentation in TypeScript, Astro, and scripts. Name Astro components with `PascalCase.astro` and colocate supporting modules in subfolders (for example `src/components/navigation`). Keep utility modules in TypeScript (`.ts`) and prefer named exports. Styling relies on Tailwind; favor utility classes over bespoke CSS unless adding a shared pattern to `src/styles`. Run `npm run astro check` (or `npx astro check`) before opening a pull request.
