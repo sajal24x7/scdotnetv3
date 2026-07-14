@@ -107,6 +107,21 @@
       "status": "approved"
     }
   ],
+  "bookshelf/shift": [
+    {
+      "id": "web:like:375a8738963d2ccaf8e88be79c3e6df7070eef01ba6afb3a5331a0a0e5d4b758",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "Michael Harley Author",
+        "url": "https://michaelharley.net/",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/66838cd9936ab299264aee7e74d5ca61.png"
+      },
+      "url": "https://michaelharley.net/likes/2026/06/15/shift/",
+      "published": "2026-06-15T18:14:48.000Z",
+      "status": "pending"
+    }
+  ],
   "evergreen/extinction-was-discovered": [
     {
       "id": "bluesky:like:3mowt6mckm52u:did:plc:pqv77tyop2q4c6inbbm4rivo",
@@ -665,6 +680,29 @@
     }
   ],
   "photo/202607132128": [
+    {
+      "id": "instagram:like-count:DavnIlfD_41",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DavnIlfD_41/",
+      "count": 1,
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116914181324815696:110644120981076059",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "karvajalkamato",
+        "url": "https://mastodon.social/@karvajalkamato",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/d9acf6ac578103d5f6f979eeb6f4f661.jpg"
+      },
+      "url": "https://mastodon.social/@karvajalkamato",
+      "status": "approved"
+    },
     {
       "id": "mastodon:like:116914181324815696:111363830602358989",
       "type": "like",
