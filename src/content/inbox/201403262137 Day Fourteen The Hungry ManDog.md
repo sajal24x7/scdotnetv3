@@ -3,7 +3,7 @@ title: 'Day Fourteen: The Hungry Man/Dog'
 slug: day-fourteen-the-hungry-mandog
 created: 2014-03-26T21:37:07.000Z
 updated: 2014-03-26T21:37:07.000Z
-category: blog
+category: photo
 tags:
   - 30 day challenge
   - featured

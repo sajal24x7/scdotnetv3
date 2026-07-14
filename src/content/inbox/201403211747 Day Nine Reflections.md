@@ -3,7 +3,7 @@ title: 'Day Nine: Reflections'
 slug: day-nine-reflections
 created: 2014-03-21T17:47:39.000Z
 updated: 2014-03-21T17:47:39.000Z
-category: blog
+category: photo
 tags:
   - 30 day challenge
   - literature

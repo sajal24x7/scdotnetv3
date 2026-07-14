@@ -3,7 +3,7 @@ title: 'Day Fifteen: Voice'
 slug: day-fifteen-voice
 created: 2014-03-27T21:18:56.000Z
 updated: 2014-03-27T21:18:56.000Z
-category: blog
+category: photo
 tags:
   - 30 day challenge
   - golden temple

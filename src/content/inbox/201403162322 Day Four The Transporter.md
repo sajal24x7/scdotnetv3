@@ -3,7 +3,7 @@ title: 'Day Four: The Transporter'
 slug: day-four-the-transporter
 created: 2014-03-16T23:22:13.000Z
 updated: 2014-03-16T23:22:13.000Z
-category: blog
+category: photo
 tags:
   - 30 day challenge
   - photography

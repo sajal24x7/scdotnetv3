@@ -3,7 +3,7 @@ title: 'Day TwentyTwo: Parallel'
 slug: day-twentytwo-parallel
 created: 2014-04-03T08:04:24.000Z
 updated: 2014-04-03T08:04:24.000Z
-category: blog
+category: photo
 tags:
   - 30 day challenge
   - photography
