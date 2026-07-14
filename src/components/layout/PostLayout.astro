@@ -577,20 +577,6 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
             <slot />
         </div>
 
-        {['nordletter', 'blog', 'evergreen'].includes(category) && (
-            <div class="mt-8 border-t border-borderColor dark:border-borderColorDark">
-                <NewsletterSignup
-                    title="Subscribe to NordLetter"
-                    description="A weekly newsletter on living in Finland."
-                    buttonText="Sign up"
-                    headingClass="text-xs font-semibold mb-1"
-                    descriptionClass="text-sm mb-3"
-                    wrapperClass="py-4"
-                    centered={true}
-                />
-            </div>
-        )}
-
         <div class="post-layout__meta">
             <div class="post-layout__meta-line">
                 {updated ? 'Updated ' : 'Published '}
@@ -621,6 +607,20 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
             </div>
         </div>
 
+        {['nordletter', 'blog', 'evergreen'].includes(category) && (
+            <div class="mt-8 border-t border-borderColor dark:border-borderColorDark text-center">
+                <NewsletterSignup
+                    title="Subscribe to NordLetter"
+                    description="A weekly newsletter on living in Finland."
+                    buttonText="Sign up"
+                    headingClass="text-[clamp(1.125rem,2vw,1.375rem)] font-semibold mb-1"
+                    descriptionClass="text-sm mb-3"
+                    wrapperClass="py-4"
+                    centered={true}
+                />
+            </div>
+        )}
+
         <Interactions interactions={interactions} />
 
         <Backlinks backlinks={backlinks} />
@@ -636,6 +636,7 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
         margin-top: 1.25rem;
         padding-top: 1rem;
         border-top: 1px solid rgb(var(--color-border));
+        text-align: center;
     }
 
     :global(.dark) .post-layout__meta {
