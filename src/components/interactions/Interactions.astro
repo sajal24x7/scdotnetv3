@@ -124,18 +124,38 @@ const facepileGroups = [
                                 </span>
                             )}
                             {group.chips.map((chip) => {
-                                const platformLabel = PLATFORM_META[chip.platform]?.label ?? chip.platform;
-                                const chipText = `${chip.count} ${chip.count === 1 ? 'like' : 'likes'} on ${platformLabel}`;
+                                const platformMeta = PLATFORM_META[chip.platform];
+                                const platformLabel = platformMeta?.label ?? chip.platform;
+                                const chipLabel = `${chip.count} ${chip.count === 1 ? 'like' : 'likes'} on ${platformLabel}`;
                                 return chip.url ? (
                                     <a
                                         href={chip.url}
                                         class="interactions__count-chip"
+                                        aria-label={chipLabel}
                                         target="_blank"
                                         rel="nofollow noopener noreferrer"
-                                    ><span aria-hidden="true">❤️</span> {chipText}</a>
+                                    >
+                                        {platformMeta && (
+                                            <span
+                                                class="interactions__count-chip-icon"
+                                                set:html={platformMeta.icon}
+                                                aria-hidden="true"
+                                            />
+                                        )}
+                                        <span class="interactions__count-chip-heart" aria-hidden="true">❤️</span>
+                                        <span class="interactions__count-chip-count">{chip.count}</span>
+                                    </a>
                                 ) : (
-                                    <span class="interactions__count-chip">
-                                        <span aria-hidden="true">❤️</span> {chipText}
+                                    <span class="interactions__count-chip" aria-label={chipLabel}>
+                                        {platformMeta && (
+                                            <span
+                                                class="interactions__count-chip-icon"
+                                                set:html={platformMeta.icon}
+                                                aria-hidden="true"
+                                            />
+                                        )}
+                                        <span class="interactions__count-chip-heart" aria-hidden="true">❤️</span>
+                                        <span class="interactions__count-chip-count">{chip.count}</span>
                                     </span>
                                 );
                             })}
@@ -427,6 +447,27 @@ const facepileGroups = [
     a.interactions__count-chip:focus-visible {
         transform: translateY(-2px);
         color: rgb(var(--color-text-primary));
+    }
+
+    /* Platform glyph (e.g. Instagram) → heart → count, in place of prose. */
+    .interactions__count-chip-icon {
+        display: inline-flex;
+        width: 1.05rem;
+        height: 1.05rem;
+    }
+
+    .interactions__count-chip-icon :global(svg) {
+        width: 100%;
+        height: 100%;
+    }
+
+    .interactions__count-chip-heart {
+        font-size: 0.9rem;
+        line-height: 1;
+    }
+
+    .interactions__count-chip-count {
+        font-variant-numeric: tabular-nums;
     }
 
     .interactions__avatar-img,
