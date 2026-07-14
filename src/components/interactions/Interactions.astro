@@ -9,6 +9,9 @@ interface Props {
 
 const { interactions = [] } = Astro.props as Props;
 
+// Instagram-style outline heart (no fill/colour) for count-only like chips.
+const HEART_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+
 const replies = interactions.filter((i) => i.type === 'reply' || i.type === 'mention');
 const likes = interactions.filter((i) => i.type === 'like');
 const reposts = interactions.filter((i) => i.type === 'repost');
@@ -124,19 +127,32 @@ const facepileGroups = [
                                 </span>
                             )}
                             {group.chips.map((chip) => {
-                                const platformLabel = PLATFORM_META[chip.platform]?.label ?? chip.platform;
-                                const chipText = `${chip.count} ${chip.count === 1 ? 'like' : 'likes'} on ${platformLabel}`;
-                                return chip.url ? (
-                                    <a
+                                const platformMeta = PLATFORM_META[chip.platform];
+                                const platformLabel = platformMeta?.label ?? chip.platform;
+                                const chipLabel = `${chip.count} ${chip.count === 1 ? 'like' : 'likes'} on ${platformLabel}`;
+                                const LikeTag = chip.url ? 'a' : 'span';
+                                return (
+                                    <LikeTag
                                         href={chip.url}
-                                        class="interactions__count-chip"
-                                        target="_blank"
-                                        rel="nofollow noopener noreferrer"
-                                    ><span aria-hidden="true">❤️</span> {chipText}</a>
-                                ) : (
-                                    <span class="interactions__count-chip">
-                                        <span aria-hidden="true">❤️</span> {chipText}
-                                    </span>
+                                        class="interactions__count-like"
+                                        aria-label={chipLabel}
+                                        target={chip.url ? '_blank' : undefined}
+                                        rel={chip.url ? 'nofollow noopener noreferrer' : undefined}
+                                    >
+                                        {platformMeta && (
+                                            <span
+                                                class="interactions__count-like-badge"
+                                                set:html={platformMeta.icon}
+                                                aria-hidden="true"
+                                            />
+                                        )}
+                                        <span
+                                            class="interactions__count-like-heart"
+                                            set:html={HEART_ICON}
+                                            aria-hidden="true"
+                                        />
+                                        <span class="interactions__count-like-count">{chip.count}</span>
+                                    </LikeTag>
                                 );
                             })}
                         </div>
@@ -407,26 +423,52 @@ const facepileGroups = [
     }
 
     /* Count-only likes (Threads/Instagram expose no accounts) sit beside
-       the avatars as a chip of matching height. */
-    .interactions__count-chip {
+       the avatars as a pill: platform glyph → outline heart → count. */
+    .interactions__count-like {
         display: inline-flex;
         align-items: center;
-        gap: 0.4rem;
+        gap: 0.45rem;
         height: 2.75rem;
         padding: 0 0.875rem;
         border: 1px solid rgb(var(--color-border));
         border-radius: 0.625rem;
         font-size: var(--text-small);
         font-weight: 600;
-        color: rgb(var(--color-text-secondary));
         text-decoration: none;
-        transition: transform 0.15s ease, color 0.15s ease;
+        color: rgb(var(--color-text-secondary));
+        transition: transform 0.15s ease;
     }
 
-    a.interactions__count-chip:hover,
-    a.interactions__count-chip:focus-visible {
+    a.interactions__count-like:hover,
+    a.interactions__count-like:focus-visible {
         transform: translateY(-2px);
-        color: rgb(var(--color-text-primary));
+    }
+
+    /* Platform glyph inside the pill — the brand SVG carries its own colour. */
+    .interactions__count-like-badge {
+        display: inline-flex;
+        width: 1.65rem;
+        height: 1.65rem;
+    }
+
+    .interactions__count-like-badge :global(svg) {
+        width: 100%;
+        height: 100%;
+    }
+
+    .interactions__count-like-heart {
+        display: inline-flex;
+        width: 1.15rem;
+        height: 1.15rem;
+    }
+
+    .interactions__count-like-heart :global(svg) {
+        width: 100%;
+        height: 100%;
+    }
+
+    .interactions__count-like-count {
+        font-variant-numeric: tabular-nums;
     }
 
     .interactions__avatar-img,
