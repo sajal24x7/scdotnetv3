@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - phone
-  - oneplus
-  - china
-category: micro
+title: "OnePlus Is Being Dismantled"
+slug: "oneplus-is-being-dismantled"
+created: 2026-07-14T10:00:00+03:00
 updated: 2026-07-14T10:01:41+03:00
+category: micro
+tags: ["phone", "oneplus", "china"]
 ---
 [OnePlus is reportedly bailing on the US by Jay Peters](https://www.theverge.com/tech/965084/oneplus-oppo-exit-us-europe)
 
