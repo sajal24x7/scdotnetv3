@@ -3,7 +3,7 @@ title: 'Day Five: The Girl With the Bazooka'
 slug: day-five-the-girl-with-the-bazooka
 created: 2014-03-17T21:39:10.000Z
 updated: 2014-03-17T21:39:10.000Z
-category: blog
+category: photo
 tags:
   - 30 day challenge
   - photography

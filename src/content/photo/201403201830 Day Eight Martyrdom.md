@@ -3,7 +3,7 @@ title: 'Day Eight: Martyrdom'
 slug: day-eight-martyrdom
 created: 2014-03-20T18:30:34.000Z
 updated: 2014-03-20T18:30:34.000Z
-category: blog
+category: photo
 tags:
   - 30 day challenge
   - martyrdom

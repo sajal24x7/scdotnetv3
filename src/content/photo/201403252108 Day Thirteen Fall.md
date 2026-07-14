@@ -3,7 +3,7 @@ title: 'Day Thirteen: Fall'
 slug: day-thirteen-fall
 created: 2014-03-25T21:08:47.000Z
 updated: 2014-03-25T21:08:47.000Z
-category: blog
+category: photo
 tags:
   - 30 day challenge
   - photography

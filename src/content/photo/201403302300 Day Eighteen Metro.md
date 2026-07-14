@@ -3,7 +3,7 @@ title: 'Day Eighteen: Metro'
 slug: day-eighteen-metro
 created: 2014-03-30T23:00:05.000Z
 updated: 2014-03-30T23:00:05.000Z
-category: blog
+category: photo
 tags:
   - 30 day challenge
   - photography

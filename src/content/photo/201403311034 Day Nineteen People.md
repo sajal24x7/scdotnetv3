@@ -3,7 +3,7 @@ title: 'Day Nineteen: People'
 slug: day-nineteen-people
 created: 2014-03-31T10:34:00.000Z
 updated: 2014-03-31T10:34:00.000Z
-category: blog
+category: photo
 tags:
   - 30 day challenge
   - photography

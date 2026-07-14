@@ -3,7 +3,7 @@ title: 'Day TwentyFour: Sport'
 slug: day-twentyfour-sport
 created: 2014-04-05T00:44:00.000Z
 updated: 2024-05-04T06:53:08.000Z
-category: blog
+category: photo
 tags:
   - Uncategorized
 syndicationUrls:
