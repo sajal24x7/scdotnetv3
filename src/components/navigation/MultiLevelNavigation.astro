@@ -454,7 +454,9 @@ const showTertiaryNav = activeSubsection === '/shelf/';
       padding-right: 1rem;
     }
 
-    /* Mobile: name + socials on row 1, primary on row 2, secondary on row 3, tertiary on row 4 */
+    /* Mobile: name + theme toggle share row 1, primary nav on row 2, secondary
+       on row 3, tertiary on row 4. The social icons are hidden here and rendered
+       in the footer instead, which leaves the name room to stay on one line. */
     .name-social-row {
       grid-template-columns: auto 1fr auto;
       grid-template-rows: auto auto auto auto;
@@ -469,6 +471,17 @@ const showTertiaryNav = activeSubsection === '/shelf/';
       text-align: left;
     }
 
+    .header-socials {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+      justify-self: end;
+    }
+
+    /* Social links move to the footer on mobile; keep only the theme toggle. */
+    .header-socials :global(nav[aria-label="Social links"]) {
+      display: none;
+    }
+
     .primary-nav-row {
       grid-column: 1 / -1;
       grid-row: 2 / 3;
@@ -476,12 +489,6 @@ const showTertiaryNav = activeSubsection === '/shelf/';
       flex-wrap: nowrap;
       overflow-x: auto;
       gap: 0;
-    }
-
-    .header-socials {
-      grid-column: 3 / 4;
-      grid-row: 1 / 2;
-      justify-self: end;
     }
 
     .secondary-in-grid {
@@ -520,8 +527,10 @@ const showTertiaryNav = activeSubsection === '/shelf/';
       font-size: var(--text-xs);
     }
 
+    /* Name now owns its own row, so keep it full size and on one line */
     .masthead-name {
       font-size: 1.5rem;
+      white-space: nowrap;
     }
   }
 
@@ -533,7 +542,8 @@ const showTertiaryNav = activeSubsection === '/shelf/';
     }
 
     .masthead-name {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
     }
   }
 </style>
