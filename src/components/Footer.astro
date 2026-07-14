@@ -86,10 +86,11 @@ const footerNavItems = [
         color: rgb(255, 250, 240);
     }
 
-    /* Social icons relocate here on mobile; hidden on desktop where they live
-       in the header. Centered on a hairline just above the copyright line. */
+    /* Social icons in the footer on every breakpoint. On desktop they also
+       remain in the header — the duplication is intentional for consistency.
+       Centered on a hairline just above the copyright line. */
     .footer-socials-row {
-        display: none;
+        display: flex;
         justify-content: center;
         padding-top: 1rem;
         border-top: 1px solid rgb(85, 75, 70);
@@ -98,12 +99,6 @@ const footerNavItems = [
     /* GitHub / Threads use currentColor — keep them light on the dark band. */
     .footer-socials-row :global(a) {
         color: rgb(255, 250, 240);
-    }
-
-    @media (max-width: 768px) {
-        .footer-socials-row {
-            display: flex;
-        }
     }
 
     .footer-accent {
