@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
+import { unified } from '@astrojs/markdown-remark';
 import { remarkWikilinks } from './src/utils/remarkWikilinks.ts';
 
 // Converts soft line breaks (single newlines) to <br> nodes, preserving
@@ -41,6 +42,10 @@ function remarkBreaks() {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://sajalchoudhary.net',
+  // Astro 7 changed the default from `true` to `'jsx'` (JSX-style whitespace
+  // stripping). Pin the v6 behavior so the upgrade is output-identical;
+  // revisit `'jsx'` as a separate change.
+  compressHTML: true,
   vite: {
     plugins: [tailwindcss()],
   },
@@ -54,7 +59,12 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkWikilinks, remarkBreaks],
+    // Astro 7 defaults to the Sätteri (Rust) markdown pipeline. This site's
+    // wikilinks and poetry line-breaks are remark plugins, so opt back into
+    // the remark/rehype pipeline explicitly via @astrojs/markdown-remark.
+    processor: unified({
+      remarkPlugins: [remarkWikilinks, remarkBreaks],
+    }),
     shikiConfig: {
       themes: {
         light: 'github-light',
