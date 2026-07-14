@@ -1,0 +1,102 @@
+name: Webmention moderation
+
+# Lets the moderation issue opened by refresh-interactions.yml be actioned
+# with a comment instead of a manual JSON edit: `/approve <domain>` or
+# `/deny <domain>` (alias `/block`) updates interactions.config.json and
+# src/data/interactions-index.json and pushes the result automatically.
+on:
+  issue_comment:
+    types: [created]
+
+concurrency:
+  group: refresh-interactions
+  cancel-in-progress: false
+
+jobs:
+  moderate:
+    if: >
+      github.event.issue.pull_request == null &&
+      contains(github.event.issue.labels.*.name, 'webmentions') &&
+      contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.comment.author_association) &&
+      (startsWith(github.event.comment.body, '/approve') ||
+       startsWith(github.event.comment.body, '/deny') ||
+       startsWith(github.event.comment.body, '/block'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Apply moderation command
+        id: moderate
+        continue-on-error: true
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: node scripts/moderate-webmention.js
+
+      - name: Commit and push if changed
+        id: commit
+        if: steps.moderate.outputs.ok == 'true'
+        run: |
+          if git diff --quiet -- interactions.config.json src/data/interactions-index.json; then
+            echo "No file changes from this command"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git add interactions.config.json src/data/interactions-index.json
+          git commit -m "chore: ${{ steps.moderate.outputs.action }} webmentions from ${{ steps.moderate.outputs.domain }}"
+          git pull --rebase origin main
+          git push origin main
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      - name: React and reply on the issue
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const ok = '${{ steps.moderate.outputs.ok }}' === 'true';
+            const message = ${{ toJSON(steps.moderate.outputs.message) }};
+            const pushed = '${{ steps.commit.outputs.pushed }}' === 'true';
+
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.payload.comment.id,
+              content: ok ? '+1' : 'confused',
+            });
+
+            const body = ok
+              ? `${message}${pushed ? '' : '\n\n(No file changes were needed — already in that state.)'}`
+              : `⚠️ ${message}`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body,
+            });
+
+      - name: Update webmention moderation issue
+        if: steps.moderate.outputs.ok == 'true'
+        uses: ./.github/actions/update-webmention-issue

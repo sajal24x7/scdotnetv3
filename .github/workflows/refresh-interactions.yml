@@ -86,92 +86,13 @@ jobs:
           git push origin main
 
       # Webmentions from unknown domains land in the index as status "pending"
-      # (invisible on the site). Surface them for a human decision: approve by
-      # allowlisting the domain or flipping the entry's status, block via the
-      # blocklist. The issue closes itself once nothing is pending.
+      # (invisible on the site). Surface them for a human decision: commenting
+      # `/approve <domain>` or `/deny <domain>` on the issue (handled by
+      # webmention-moderation.yml) allowlists/blocklists the domain and
+      # updates the index automatically. The issue closes itself once
+      # nothing is pending.
       - name: Update webmention moderation issue
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-            const title = 'Webmentions pending moderation';
-
-            let index = {};
-            try {
-              index = JSON.parse(fs.readFileSync('src/data/interactions-index.json', 'utf-8'));
-            } catch {}
-
-            const pending = [];
-            for (const [key, entries] of Object.entries(index)) {
-              if (key === '_meta' || !Array.isArray(entries)) continue;
-              for (const entry of entries) {
-                if (entry.platform === 'web' && entry.status === 'pending') {
-                  pending.push({ post: key, ...entry });
-                }
-              }
-            }
-
-            const { data: issues } = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              labels: 'webmentions',
-              per_page: 100,
-            });
-            const existing = issues.find((issue) => issue.title === title);
-
-            if (pending.length === 0) {
-              if (existing) {
-                await github.rest.issues.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: existing.number,
-                  body: 'No webmentions pending anymore — closing.',
-                });
-                await github.rest.issues.update({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: existing.number,
-                  state: 'closed',
-                });
-              }
-              return;
-            }
-
-            const lines = pending.map((entry) => {
-              const author = entry.author?.name ?? 'someone';
-              const domain = (() => { try { return new URL(entry.url).hostname; } catch { return '?'; } })();
-              return `- **${entry.post}** ← ${entry.type} from [${author}](${entry.url}) (\`${domain}\`)`;
-            });
-            const body = [
-              'These verified webmentions are from domains not on the allowlist, so they are',
-              '**not shown on the site** until approved.',
-              '',
-              ...lines,
-              '',
-              '**Approve:** add the domain to `approvedWebmentionDomains` in `interactions.config.json`,',
-              "or flip the entry's `status` to `approved` in `src/data/interactions-index.json`.",
-              '**Block:** add the domain to `blockedWebmentionDomains` (also purges existing entries).',
-              '',
-              '_This issue is refreshed by the interactions workflow and closes itself when the queue is empty._',
-            ].join('\n');
-
-            if (existing) {
-              await github.rest.issues.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: existing.number,
-                body,
-              });
-            } else {
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title,
-                body,
-                labels: ['automation', 'webmentions'],
-              });
-            }
+        uses: ./.github/actions/update-webmention-issue
 
       - name: Create issue on failure
         if: failure()

@@ -1,0 +1,64 @@
+name: Update webmention moderation issue
+description: >
+  Opens, refreshes, or closes the "Webmentions pending moderation" issue
+  based on the pending "web" entries currently in
+  src/data/interactions-index.json. Shared by the scheduled interactions
+  refresh and the comment-driven moderation workflow so both agree on what
+  "pending" means and how the issue reads.
+
+runs:
+  using: composite
+  steps:
+    - name: Sync moderation issue
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const { execSync } = require('child_process');
+          const { pending, body } = JSON.parse(
+            execSync('node scripts/print-moderation-issue.js').toString()
+          );
+          const title = 'Webmentions pending moderation';
+
+          const { data: issues } = await github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'open',
+            labels: 'webmentions',
+            per_page: 100,
+          });
+          const existing = issues.find((issue) => issue.title === title);
+
+          if (pending.length === 0) {
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body: 'No webmentions pending anymore — closing.',
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                state: 'closed',
+              });
+            }
+            return;
+          }
+
+          if (existing) {
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: existing.number,
+              body,
+            });
+          } else {
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['automation', 'webmentions'],
+            });
+          }
