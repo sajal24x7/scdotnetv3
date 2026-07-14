@@ -341,10 +341,9 @@ const tiles = posts.map((post) => {
         display: none;
     }
 
-    /* ------ Grid view (Instagram-style tiles) ------ */
+    /* ------ Grid view (Pinterest-style masonry) ------ */
 
     .photo-feed[data-view="grid"] .photo-entry__media {
-        aspect-ratio: 1 / 1;
         border-radius: 0;
     }
 
@@ -353,13 +352,15 @@ const tiles = posts.map((post) => {
     }
 
     .photo-feed[data-view="grid"] .photo-entry__media img {
-        height: 100%;
-        object-fit: cover;
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: unset;
     }
 
     .photo-feed[data-view="grid"] .photo-entry__media:hover img,
     .photo-feed[data-view="grid"] .photo-entry__media:focus-visible img {
-        transform: scale(1.04);
+        transform: scale(1.02);
     }
 
     .photo-feed[data-view="grid"] .photo-entry__info {
@@ -367,13 +368,31 @@ const tiles = posts.map((post) => {
     }
 
     .photo-feed[data-view="grid"] .photo-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 2px;
+        display: block;
+        column-count: 2;
+        column-gap: 3px;
+    }
+
+    .photo-feed[data-view="grid"] .photo-entry {
+        display: block;
+        break-inside: avoid;
+        margin-bottom: 3px;
     }
 
     @media (min-width: 40rem) {
         .photo-feed[data-view="grid"] .photo-grid {
-            gap: clamp(0.75rem, 2vw, 1.25rem);
+            column-count: 3;
+            column-gap: clamp(0.5rem, 1.5vw, 0.85rem);
+        }
+
+        .photo-feed[data-view="grid"] .photo-entry {
+            margin-bottom: clamp(0.5rem, 1.5vw, 0.85rem);
+        }
+    }
+
+    @media (min-width: 64rem) {
+        .photo-feed[data-view="grid"] .photo-grid {
+            column-count: 4;
         }
     }
 
