@@ -675,7 +675,7 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/DaqzPfaEkdk/",
-      "count": 8,
+      "count": 9,
       "status": "approved"
     }
   ],
@@ -688,7 +688,7 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/DavnIlfD_41/",
-      "count": 3,
+      "count": 4,
       "status": "approved"
     },
     {
@@ -725,6 +725,19 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/d8af9b6569ad925438987fb3726a2e69.png"
       },
       "url": "https://newsmast.community/@music",
+      "status": "approved"
+    }
+  ],
+  "photo/202607141728": [
+    {
+      "id": "instagram:like-count:DaxxLSGoGW4",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DaxxLSGoGW4/",
+      "count": 1,
       "status": "approved"
     }
   ],
