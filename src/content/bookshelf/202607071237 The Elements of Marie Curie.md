@@ -7,16 +7,12 @@ category: bookshelf
 tags: ["science"]
 author:
   - Dava Sobel
+status: finished
 started: 2026-07-07T12:37:00
 finished: 2026-07-15T10:56:00
 genre: biography
 format: audiobook
 rating: like
-series:
-bookStatus: to-read
-bookRating:
-startedReading:
-finishedReading:
 ---
 ## Review
 
