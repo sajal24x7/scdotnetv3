@@ -36,7 +36,7 @@ Everything else is handled for you:
 - `updated:` is used if present, otherwise defaults to the created date.
 - `[[wikilinks]]` become proper site links (`[Be a Hybrid](/evergreen/be-a-hybrid)`).
 - Shelf categories (`bookshelf`, `filmshelf`, `tvshelf`, `gameshelf`,
-  `nordletter`) get their extra fields stubbed in (`author`, `bookStatus`,
+  `nordletter`) get their extra fields stubbed in (`author`, `status`,
   etc.) — fill them in Obsidian if you have them, stubs appear otherwise.
 - `aliases` and other Obsidian-only fields are stripped; unknown fields pass
   through untouched.
