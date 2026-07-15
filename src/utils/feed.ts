@@ -423,9 +423,10 @@ export function toFeedEntry(post: Post): Promise<FeedEntry> {
 
 export async function getFeedEntriesForGroup(posts: Post[], group: FeedGroup): Promise<FeedEntry[]> {
   const feedPosts = getFeedPosts(posts);
-  const currentYear = new Date().getFullYear();
+  const oneYearAgo = new Date();
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
   const scoped = feedPosts
-    .filter((post) => effectiveDate(post).getFullYear() === currentYear)
+    .filter((post) => effectiveDate(post).getTime() >= oneYearAgo.getTime())
     .filter((post) => group === 'all' || CATEGORY_TO_GROUP[post.data.category] === group);
   return Promise.all(scoped.map(toFeedEntry));
 }
