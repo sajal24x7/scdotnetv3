@@ -12,7 +12,7 @@ series: Robert Langdon
 seriesNumber: 3
 genre: thriller
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-08T15:15:15.000Z
 finished: 2013-01-08T15:15:21.000Z
 rating: like

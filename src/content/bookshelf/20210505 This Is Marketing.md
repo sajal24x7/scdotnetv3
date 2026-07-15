@@ -12,7 +12,7 @@ format: ebook
 author:
   - Seth Godin
 genre: business
-shelfStatus: read
+status: finished
 started: 2021-07-07T14:08:09.000Z
 finished: 2021-05-07T14:08:09.000Z
 syndicationUrls:

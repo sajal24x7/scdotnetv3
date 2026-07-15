@@ -10,7 +10,7 @@ author:
   - M. Scott Peck
 genre: psychology
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-03-13T17:13:46.000Z
 finished: 2015-05-20T17:52:27.000Z
 rating: like

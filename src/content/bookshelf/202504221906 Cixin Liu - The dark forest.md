@@ -13,7 +13,7 @@ genre: sci-fi
 cover: the-dark-forest.jpg
 author: Cixin Liu
 series: Remembrance of Earth's Past
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-04-22T16:06:00.000Z
 finished: 2025-04-22T16:06:00.000Z

@@ -10,7 +10,7 @@ author:
   - Morgan Housel
 genre: finance
 format: paperback
-shelfStatus: read
+status: finished
 started: 2023-11-29T07:17:18.000Z
 finished: 2023-11-29T07:17:18.000Z
 rating: love

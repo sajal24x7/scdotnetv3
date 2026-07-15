@@ -13,7 +13,7 @@ genre: sci-fi
 cover: rogue-protocol.jpg
 author: Martha Wells
 series: The Murderbot Diaries
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-07-11T06:31:00.000Z
 finished: 2025-07-15T18:00:00.000Z

@@ -9,8 +9,7 @@ import {
     type RatingIconSpec
 } from '../../utils/bookRatings';
 import { formatYMD } from '../../utils/shelfUtils';
-
-type FilmShelfStatus = 'watching' | 'watched';
+import { SHELF_STATUS_LABELS, SHELF_STATUS_CHIP_CLASS, type ShelfStatus } from '../../utils/shelfStatus';
 
 interface FilmCardProps {
     title: string;
@@ -18,7 +17,7 @@ interface FilmCardProps {
     year?: number;
     genre?: string;
     platform?: string;
-    shelfStatus?: FilmShelfStatus;
+    status?: ShelfStatus;
     rating?: BookRating;
     finished?: Date | string;
     cover?: string;
@@ -33,7 +32,7 @@ const {
     year,
     genre,
     platform,
-    shelfStatus,
+    status,
     rating,
     finished,
     cover,
@@ -41,13 +40,8 @@ const {
     watchNumber = 1
 } = props;
 
-const statusLabelMap: Record<FilmShelfStatus, string> = {
-    watching: 'Watching',
-    watched: 'Watched',
-};
-
-const statusLabel = shelfStatus ? statusLabelMap[shelfStatus] : null;
-const statusChipClass = shelfStatus === 'watching' ? 'book-card__chip--status-reading' : '';
+const statusLabel = status ? SHELF_STATUS_LABELS.filmshelf[status] : null;
+const statusChipClass = status ? SHELF_STATUS_CHIP_CLASS[status] : '';
 
 const genreLabel = genre ? genre.toUpperCase() : null;
 const platformLabel = platform ? platform.toUpperCase() : null;
@@ -55,7 +49,7 @@ const watchedLabel = formatYMD(finished);
 const isRewatch = watchNumber > 1;
 const rewatchLabel = isRewatch ? (watchNumber === 2 ? '2nd watch' : watchNumber === 3 ? '3rd watch' : `${watchNumber}th watch`) : null;
 
-const shouldShowRating = shelfStatus !== 'watching';
+const shouldShowRating = status !== 'started' && status !== 'todo';
 const ratingDisplay = shouldShowRating && rating ? bookRatingDisplay[rating] : null;
 const ratingAriaLabel = ratingDisplay ? ratingDisplay.label : 'Rating: Not set';
 const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
@@ -128,12 +122,12 @@ const timelineLabel = watchedLabel ? `Watched ${watchedLabel}` : null;
       {(statusLabel || genreLabel || platformLabel || ratingChipLabel || timelineLabel || rewatchLabel) && (
         <div class="book-card__meta" data-meta>
           <div class="book-card__meta-row book-card__meta-row--chips">
-            {statusLabel && shelfStatus && shelfStatus !== 'watched' && (
+            {statusLabel && status && status !== 'finished' && (
               <button
                 type="button"
                 class={`book-card__chip book-card__chip--status book-card__chip--clickable ${statusChipClass}`}
-                data-filter-type="shelfStatus"
-                data-filter-value={shelfStatus}
+                data-filter-type="status"
+                data-filter-value={status}
               >
                 {statusLabel}
               </button>
@@ -240,12 +234,14 @@ const timelineLabel = watchedLabel ? `Watched ${watchedLabel}` : null;
   .book-card__chip { display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; padding: 0.25rem 0.55rem; border-radius: 0.5rem; border: none; font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; background: inherit; line-height: 1.2; }
   .book-card__chip--clickable { cursor: pointer; transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease; }
   .book-card__chip--clickable:hover, .book-card__chip--clickable:focus-visible { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.15); opacity: 0.95; }
-  .book-card__chip--status-reading { background: #ede9fe; color: #5b21b6; }
-  :global(.dark) .book-card__chip--status-reading { background: rgba(91,33,182,0.3); color: #ede9fe; }
+  .book-card__chip--status-started { background: #ede9fe; color: #5b21b6; }
+  :global(.dark) .book-card__chip--status-started { background: rgba(91,33,182,0.3); color: #ede9fe; }
   .book-card__chip--status-finished { background: #dcfce7; color: #166534; }
   :global(.dark) .book-card__chip--status-finished { background: rgba(22,101,52,0.3); color: #bbf7d0; }
-  .book-card__chip--status-to-read { background: #dbeafe; color: #1d4ed8; }
-  :global(.dark) .book-card__chip--status-to-read { background: rgba(29,78,216,0.3); color: #bfdbfe; }
+  .book-card__chip--status-paused { background: #fef3c7; color: #b45309; }
+  :global(.dark) .book-card__chip--status-paused { background: rgba(180,83,9,0.3); color: #fde68a; }
+  .book-card__chip--status-todo { background: #dbeafe; color: #1d4ed8; }
+  :global(.dark) .book-card__chip--status-todo { background: rgba(29,78,216,0.3); color: #bfdbfe; }
   .book-card__chip--genre { background: #dbeafe; color: #1e40af; }
   :global(.dark) .book-card__chip--genre { background: rgba(30,64,175,0.3); color: #bfdbfe; }
   .book-card__chip--platform { background: #e5e7eb; color: #111827; }

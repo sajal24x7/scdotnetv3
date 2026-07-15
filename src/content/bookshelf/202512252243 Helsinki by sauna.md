@@ -9,7 +9,7 @@ tags:
 format: ebook
 genre: photobook
 author: Katja Panzar
-shelfStatus: read
+status: finished
 started: 2025-12-25T21:02:28.000Z
 rating: like
 finished: 2025-12-25T21:03:15.000Z

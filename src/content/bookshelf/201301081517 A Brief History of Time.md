@@ -10,7 +10,7 @@ author:
   - Stephen Hawking
 genre: science
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-08T15:18:02.000Z
 finished: 2013-01-08T15:17:27.000Z
 rating: like

@@ -10,7 +10,7 @@ format: ebook
 genre: technical
 author: David Farley
 cover: continuous-delivery.jpg
-shelfStatus: on-hold
+status: paused
 started: 2025-11-19T12:40:57.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115578326764344353'

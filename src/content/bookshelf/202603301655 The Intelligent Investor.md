@@ -10,7 +10,7 @@ format: audiobook
 author:
   - Benjamin Graham
 genre: finance
-shelfStatus: read
+status: finished
 started: 2026-03-30T13:56:18.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116318474834535356'

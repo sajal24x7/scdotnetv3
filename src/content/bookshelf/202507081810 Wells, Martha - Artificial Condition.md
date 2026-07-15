@@ -12,7 +12,7 @@ author: Martha Wells
 series: The Murderbot Diaries
 started: 2025-07-08T06:59:00.000Z
 finished: 2025-07-11T15:26:14.000Z
-shelfStatus: read
+status: finished
 rating: like
 format: audio
 genre: sci-fi

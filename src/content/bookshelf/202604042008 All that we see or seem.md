@@ -10,7 +10,7 @@ format: audio
 author:
   - Ken Liu
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2026-04-06T08:27:25.000Z
 cover: all-that-we-see-or-seem.jpg
 rating: like

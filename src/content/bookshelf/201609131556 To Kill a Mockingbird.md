@@ -10,7 +10,7 @@ author:
   - Harper Lee
 genre: thriller
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-03-18T11:20:10.000Z
 finished: 2016-09-13T15:56:11.000Z
 rating: love

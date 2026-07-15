@@ -9,7 +9,7 @@ tags:
 format: ebook
 genre: essays
 author: Hwang Bo-reum
-shelfStatus: read
+status: finished
 started: 2025-12-01T13:46:21.000Z
 finished: 2025-12-02T11:51:25+02:00
 syndicationUrls:

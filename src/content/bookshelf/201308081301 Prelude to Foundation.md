@@ -11,7 +11,7 @@ author:
 series: Foundation
 genre: sci-fi
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-16T07:01:23.000Z
 finished: 2013-08-08T13:01:58.000Z
 rating: love

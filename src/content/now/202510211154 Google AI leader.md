@@ -4,7 +4,7 @@ slug: "google-ai-leader"
 created: 2025-07-21T11:55:45+03:00
 updated: 2025-08-21T11:55:45+03:00
 category: now
-status: done
+status: finished
 ---
 This is a certification quest for the summer. The certification being the Google Generative AI leader certification.
 

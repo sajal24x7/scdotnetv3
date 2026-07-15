@@ -10,7 +10,7 @@ format: ebook
 author:
   - Ted Chiang
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2022-07-21T17:13:34.000Z
 rating: like
 finished: 2023-04-13T17:14:15.000Z

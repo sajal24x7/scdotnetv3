@@ -11,7 +11,7 @@ author:
 series: Hitchhiker's Guide to the Galaxy
 genre: sci-fi
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-30T15:29:06.000Z
 finished: 2013-01-30T15:29:06.000Z
 rating: love

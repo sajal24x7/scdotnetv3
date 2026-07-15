@@ -6,6 +6,7 @@ import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 import { slugify } from '../../utils/shelfUtils';
+import { SHELF_STATUS_PRIORITY, type ShelfStatus } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
 const tvPosts = allPosts.filter((post) => post.data.category === 'tvshelf');
@@ -38,15 +39,8 @@ interface SeasonEntry {
     seasonSlug: string | undefined;
     seasonNum: number;
     year: number;
-    tvStatus: string | undefined;
+    tvStatus: ShelfStatus | undefined;
 }
-
-const statusOrder: Record<string, number> = {
-    watching: 0,
-    watched: 1,
-    'on-hold': 2,
-    other: 3
-};
 
 const seasonEntries: SeasonEntry[] = tvPosts.map((post) => {
     const { showSlug, seasonSlug } = parsePostSlug(post);
@@ -57,14 +51,14 @@ const seasonEntries: SeasonEntry[] = tvPosts.map((post) => {
         seasonSlug,
         seasonNum: post.data.season ?? 1,
         year: (parseDate(post.data.created) ?? new Date()).getFullYear(),
-        tvStatus: post.data.shelfStatus
+        tvStatus: post.data.status as ShelfStatus | undefined
     };
 });
 
 seasonEntries.sort((a, b) => {
     if (a.year !== b.year) return b.year - a.year;
-    const sA = statusOrder[a.tvStatus ?? 'other'] ?? statusOrder.other;
-    const sB = statusOrder[b.tvStatus ?? 'other'] ?? statusOrder.other;
+    const sA = a.tvStatus ? SHELF_STATUS_PRIORITY[a.tvStatus] : 99;
+    const sB = b.tvStatus ? SHELF_STATUS_PRIORITY[b.tvStatus] : 99;
     return sA - sB;
 });
 
@@ -76,7 +70,7 @@ const entriesByYear = seasonEntries.reduce((acc, entry) => {
     return acc;
 }, {} as Record<number, SeasonEntry[]>);
 
-const watchedCount = seasonEntries.filter((e) => e.tvStatus === 'watched').length;
+const watchedCount = seasonEntries.filter((e) => e.tvStatus === 'finished').length;
 const countText = `${watchedCount} ${watchedCount === 1 ? 'season' : 'seasons'} watched`;
 
 const tvDescription = "TV shows I've watched, am watching, or want to watch—organized by year.";
@@ -121,7 +115,7 @@ const sectionLandingProps = createSectionLandingProps({
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearEntries = entriesByYear[year] ?? [];
-        const watchedYear = yearEntries.filter((e) => e.tvStatus === 'watched').length;
+        const watchedYear = yearEntries.filter((e) => e.tvStatus === 'finished').length;
         const seasonLabel = watchedYear === 1 ? 'season' : 'seasons';
 
         return (
@@ -155,7 +149,7 @@ const sectionLandingProps = createSectionLandingProps({
                       year={post.data.year as number | undefined}
                       genre={post.data.genre}
                       platform={post.data.platform}
-                      shelfStatus={entry.tvStatus as any}
+                      status={entry.tvStatus as any}
                       rating={post.data.rating}
                       cover={post.data.cover}
                     />

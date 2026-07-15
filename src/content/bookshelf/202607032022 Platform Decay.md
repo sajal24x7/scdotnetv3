@@ -12,7 +12,7 @@ author:
 series: The Murderbot Diaries
 seriesNumber: 8
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2026-07-03T06:06:24.000Z
 rating: like
 finished: 2026-07-07T05:45:27.000Z

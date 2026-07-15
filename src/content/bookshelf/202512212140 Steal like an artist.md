@@ -9,7 +9,7 @@ tags:
 format: hardcover
 genre: craft
 author: Austin Kleon
-shelfStatus: read
+status: finished
 started: 2025-12-21T19:41:53.000Z
 rating: love
 finished: 2025-12-21T20:42:48.000Z

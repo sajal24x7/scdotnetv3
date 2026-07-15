@@ -11,7 +11,7 @@ genre: sci-fi
 author: Adrian Tchaikovsky
 series: "The Final Architecture"
 seriesNumber: 1
-shelfStatus: read
+status: finished
 started: 2025-12-28T16:46:16.000Z
 rating: love
 finished: 2026-01-05T13:09:38+02:00

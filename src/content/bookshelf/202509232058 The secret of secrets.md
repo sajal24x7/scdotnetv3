@@ -11,7 +11,7 @@ genre: thriller
 author: Dan Brown
 series: Robert Langdon
 seriesNumber: 6
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-09-23T14:00:18.000Z
 finished: 2025-10-30T08:48:01.000Z

@@ -10,7 +10,7 @@ tags:
 format: ebook
 series: Elements of fiction writing
 genre: craft
-shelfStatus: read
+status: finished
 started: 2024-10-22T13:29:30.000Z
 rating: like
 finished: 2024-11-13T13:29:30.000Z

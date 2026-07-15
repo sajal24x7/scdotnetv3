@@ -11,7 +11,7 @@ format: audiobook
 author:
   - Aysegül Savaş
 genre: romance
-shelfStatus: read
+status: finished
 started: 2026-06-01T06:40:13.000Z
 cover: the-anthropologists.jpg
 rating: love

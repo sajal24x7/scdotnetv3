@@ -4,7 +4,7 @@ slug: "publish-my-poetry-collection"
 created: 2024-12-21T17:41:49+00:00
 updated: 2025-02-15T17:41:49+00:00
 category:  now
-status: done
+status: finished
 ---
 Working on collecting, editing and then publishing a collection of my poems.  
 A part of this is reading more poems. Currently reading 100 poems that matter.

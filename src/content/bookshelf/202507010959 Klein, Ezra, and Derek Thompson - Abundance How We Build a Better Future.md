@@ -16,7 +16,7 @@ author:
   - Ezra Klein
   - Derek Thompson
 series: none
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-07-01T06:59:00.000Z
 finished: 2025-07-01T06:59:00.000Z

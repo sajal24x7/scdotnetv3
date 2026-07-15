@@ -10,7 +10,7 @@ format: hardcover
 author:
   - John Scalzi
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2024-09-30T13:14:30.000Z
 rating: love
 finished: 2024-10-01T13:14:30.000Z

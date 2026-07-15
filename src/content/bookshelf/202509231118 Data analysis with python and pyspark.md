@@ -9,7 +9,7 @@ tags:
 format: ebook
 genre: technical
 author: Jonathan Rioux
-shelfStatus: on-hold
+status: paused
 started: 2025-09-23T08:25:22.000Z
 cover: data-analysis-with-python-and-pyspark.jpeg
 syndicationUrls:

@@ -12,7 +12,7 @@ genre: poetry
 cover: poems-to-fall-in-love-with.jpg
 author: Chris Riddell
 series: none
-shelfStatus: read
+status: finished
 rating: like
 started: 2024-12-22T17:32:00.000Z
 finished: 2024-12-22T17:32:00.000Z

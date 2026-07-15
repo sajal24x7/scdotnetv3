@@ -5,6 +5,7 @@ import BookshelfCard from '../../components/bookshelf/BookshelfCard.astro';
 import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
+import { SHELF_STATUS_PRIORITY } from '../../utils/shelfStatus';
 
 // Get all posts and filter for bookshelf
 const allPosts = await getAllPosts();
@@ -12,20 +13,14 @@ const bookshelfPosts = allPosts.filter((post) => post.data.category === 'bookshe
 
 const normalizeStatus = (status?: string | null) => {
     switch (status) {
-        case 'reading':
-        case 'on-hold':
+        case 'started':
+        case 'paused':
+        case 'todo':
             return status;
-        case 'read':
+        case 'finished':
         default:
-            return 'read';
+            return 'finished';
     }
-};
-
-const statusOrder: Record<string, number> = {
-    reading: 0,
-    read: 1,
-    'on-hold': 2,
-    other: 3
 };
 
 const toTime = (value?: Date | string | null) => {
@@ -69,14 +64,14 @@ const sortedBooks = [...booksWithYear].sort((a, b) => {
         return b.year - a.year;
     }
 
-    const statusA = normalizeStatus(a.book.data.shelfStatus);
-    const statusB = normalizeStatus(b.book.data.shelfStatus);
+    const statusA = normalizeStatus(a.book.data.status);
+    const statusB = normalizeStatus(b.book.data.status);
 
     if (statusA !== statusB) {
-        return (statusOrder[statusA] ?? statusOrder.other) - (statusOrder[statusB] ?? statusOrder.other);
+        return (SHELF_STATUS_PRIORITY[statusA as keyof typeof SHELF_STATUS_PRIORITY] ?? 99) - (SHELF_STATUS_PRIORITY[statusB as keyof typeof SHELF_STATUS_PRIORITY] ?? 99);
     }
 
-    if (statusA === 'reading') {
+    if (statusA === 'started') {
         const progressA = typeof a.book.data.readingProgress === 'number' ? a.book.data.readingProgress : -1;
         const progressB = typeof b.book.data.readingProgress === 'number' ? b.book.data.readingProgress : -1;
 
@@ -87,11 +82,11 @@ const sortedBooks = [...booksWithYear].sort((a, b) => {
         return compareDesc(a.book.data.started ?? a.book.data.created, b.book.data.started ?? b.book.data.created);
     }
 
-    if (statusA === 'read') {
+    if (statusA === 'finished') {
         return compareDesc(a.book.data.finished ?? a.book.data.created, b.book.data.finished ?? b.book.data.created);
     }
 
-    if (statusA === 'on-hold') {
+    if (statusA === 'paused') {
         return compareDesc(a.book.data.started ?? a.book.data.created, b.book.data.started ?? b.book.data.created);
     }
 
@@ -124,8 +119,8 @@ const genreCounts: Record<string, number> = {};
 
 // Only count finished books for author and genre counts
 bookshelfPosts.forEach((book) => {
-    const status = book.data.shelfStatus;
-    const isFinished = status === 'read';
+    const status = book.data.status;
+    const isFinished = status === 'finished';
 
     if (isFinished) {
         const authors = extractAuthors(book.data.author);
@@ -161,7 +156,7 @@ const hasMoreGenres = sortedGenres.length > initialGenreCount;
 
 // Calculate total books count (only finished books)
 const finishedBooks = bookshelfPosts.filter((post) => {
-    return post.data.shelfStatus === 'read';
+    return post.data.status === 'finished';
 });
 const totalBooks = finishedBooks.length;
 const countText = `${totalBooks} ${totalBooks === 1 ? 'book' : 'books'}`;
@@ -215,7 +210,7 @@ const sectionLandingProps = createSectionLandingProps({
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearBooks = booksByYear[year] ?? [];
-        const finishedYearBooks = yearBooks.filter((book) => book.data.shelfStatus === 'read');
+        const finishedYearBooks = yearBooks.filter((book) => book.data.status === 'finished');
         const bookCount = finishedYearBooks.length;
         const bookLabel = bookCount === 1 ? 'book' : 'books';
 
@@ -233,7 +228,7 @@ const sectionLandingProps = createSectionLandingProps({
                 const bookSlug = book.id ?? `${year}-${index}`;
                 const bookAuthors = extractAuthors(book.data.author).join(',');
                 const bookGenre = book.data.genre ?? '';
-                const bookStatus = normalizeStatus(book.data.shelfStatus);
+                const bookStatus = normalizeStatus(book.data.status);
                 const bookFormat = book.data.format ?? '';
                 const bookRating = book.data.rating ?? '';
                 const bookTags = Array.isArray(book.data.tags) ? book.data.tags.join(',') : '';
@@ -379,12 +374,12 @@ const sectionLandingProps = createSectionLandingProps({
   }
 
   /* Status badges */
-  :global(.filter-badge--status-reading) {
+  :global(.filter-badge--status-started) {
     background: #ede9fe;
     color: #5b21b6;
   }
 
-  :global(.dark) :global(.filter-badge--status-reading) {
+  :global(.dark) :global(.filter-badge--status-started) {
     background: rgba(91, 33, 182, 0.3);
     color: #ede9fe;
   }
@@ -399,22 +394,22 @@ const sectionLandingProps = createSectionLandingProps({
     color: #bbf7d0;
   }
 
-  :global(.filter-badge--status-on-hold) {
+  :global(.filter-badge--status-paused) {
     background: #fef3c7;
     color: #b45309;
   }
 
-  :global(.dark) :global(.filter-badge--status-on-hold) {
+  :global(.dark) :global(.filter-badge--status-paused) {
     background: rgba(180, 83, 9, 0.3);
     color: #fde68a;
   }
 
-  :global(.filter-badge--status-to-read) {
+  :global(.filter-badge--status-todo) {
     background: #dbeafe;
     color: #1d4ed8;
   }
 
-  :global(.dark) :global(.filter-badge--status-to-read) {
+  :global(.dark) :global(.filter-badge--status-todo) {
     background: rgba(29, 78, 216, 0.3);
     color: #bfdbfe;
   }
@@ -596,9 +591,10 @@ const sectionLandingProps = createSectionLandingProps({
 
     // Map for display labels
     const statusDisplayMap: Record<string, string> = {
-      reading: 'Currently Reading',
-      read: 'Read',
-      'on-hold': 'On Hold',
+      todo: 'To Read',
+      started: 'Currently Reading',
+      finished: 'Read',
+      paused: 'On Hold',
     };
 
     const ratingDisplayMap: Record<string, string> = {
@@ -768,7 +764,7 @@ const sectionLandingProps = createSectionLandingProps({
           const allYearBooks = section.querySelectorAll('[data-book-item]');
           allYearBooks.forEach((bookItem) => {
             const bookStatus = bookItem.getAttribute('data-status') || '';
-            if (bookStatus === 'read') {
+            if (bookStatus === 'finished') {
               count++;
             }
           });
@@ -841,7 +837,7 @@ const sectionLandingProps = createSectionLandingProps({
         let count = 0;
         allYearBooks.forEach((bookItem) => {
           const bookStatus = bookItem.getAttribute('data-status') || '';
-          if (bookStatus === 'read') {
+          if (bookStatus === 'finished') {
             count++;
           }
         });

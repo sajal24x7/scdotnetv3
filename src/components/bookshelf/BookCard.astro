@@ -17,7 +17,7 @@ interface BookCardProps {
     series?: string;
     started?: Date | string;
     finished?: Date | string;
-    shelfStatus?: 'reading' | 'read' | 'on-hold';
+    status?: 'todo' | 'started' | 'paused' | 'finished';
     rating?: BookRating;
     cover?: string;
     link?: string;
@@ -30,7 +30,7 @@ const {
     series,
     started,
     finished,
-    shelfStatus,
+    status,
     rating,
     cover,
     link,
@@ -58,7 +58,7 @@ const formatDate = (date: Date | string | undefined) => {
 const startedDate = formatDate(started);
 const finishedDate = formatDate(finished);
 
-const showRating = shelfStatus !== 'reading';
+const showRating = status !== 'started' && status !== 'todo';
 const resolvedRating: BookRating | null = showRating ? (rating ?? defaultBookRating) : null;
 const ratingDisplay = resolvedRating ? bookRatingDisplay[resolvedRating] : null;
 const ratingLabel = ratingDisplay?.label ?? null;

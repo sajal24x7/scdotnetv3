@@ -10,7 +10,7 @@ author:
   - Khaled Hosseini
 genre: drama
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-12-27T17:59:03.000Z
 finished: 2013-12-27T17:59:03.000Z
 rating: like

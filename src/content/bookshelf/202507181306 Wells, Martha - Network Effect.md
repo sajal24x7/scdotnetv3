@@ -11,7 +11,7 @@ genre: sci-fi
 uthor: Martha Wells
 series: "The Murderbot Diaries"
 seriesNumber: 5
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-07-18T19:56:47.000Z
 finished: '2025-07-29T21:00:00+03:00'

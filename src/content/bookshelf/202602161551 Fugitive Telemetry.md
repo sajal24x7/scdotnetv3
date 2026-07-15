@@ -12,7 +12,7 @@ author:
 series: 'The Murderbot Diaries'
 seriesNumber: 6
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2026-02-16T13:52:45.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116080653219772487'

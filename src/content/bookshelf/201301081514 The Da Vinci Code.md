@@ -11,7 +11,7 @@ author:
 series: Robert Langdon
 genre: thriller
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-08T15:14:45.000Z
 finished: 2013-01-08T15:14:52.000Z
 rating: like

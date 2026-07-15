@@ -9,7 +9,7 @@ tags:
 genre: sci-fi
 author: Cixin Liu
 series: Remembrance of Earth's Past
-shelfStatus: read
+status: finished
 rating: like
 started: '2025-05-08T19:06:00+03:00'
 finished: '2025-06-22T19:06:00+03:00'
