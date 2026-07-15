@@ -118,10 +118,12 @@ const sectionLandingProps = createSectionLandingProps({
         const gameCount = playedYearGames.length;
         const gameLabel = gameCount === 1 ? 'game' : 'games';
 
+        const yearRowCount = Math.ceil(yearGames.length / 2);
+
         return (
           <section class="bookshelf-year" id={`gameshelf-${year}`} data-year={year}>
             <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
-              <div class="bookshelf-year__sidebar grid-span-2">
+              <div class="bookshelf-year__sidebar grid-span-2" style={`--year-row-count: ${yearRowCount};`}>
                 <div class="bookshelf-year__sticky">
                   <span class="bookshelf-year__year">{year}</span>
                   <span class="bookshelf-year__count" data-year-count={year}>Played {gameCount} {gameLabel}</span>
@@ -173,8 +175,12 @@ const sectionLandingProps = createSectionLandingProps({
   .bookshelf-year[data-filtered="hidden"] { display: none; }
   .bookshelf-year__book[data-filtered="hidden"] { display: none; }
   .bookshelf-year__grid { align-items: flex-start; }
-  .bookshelf-year__sidebar { display: flex; }
-  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / -1; } }
+  .bookshelf-year__sidebar { display: flex; align-items: flex-start; }
+  /* grid-row: 1 / -1 wouldn't span the implicit rows the entries create, since
+     negative line numbers resolve against the explicit grid (columns only here);
+     --year-row-count (set inline per section) gives the exact row span instead
+     of a large guess, which would otherwise force empty trailing rows into existence */
+  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / span var(--year-row-count, 1); align-self: stretch; } }
   .bookshelf-year__sticky { position: sticky; top: clamp(4rem, 6vw, 5.5rem); display: flex; flex-direction: column; gap: 0.35rem; }
   .bookshelf-year__year { font-size: var(--text-huge); font-weight: 700; color: rgb(var(--color-text-primary)); }
   .bookshelf-year__count { font-size: var(--text-small); font-weight: 500; color: #6b7280; }
