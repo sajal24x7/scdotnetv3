@@ -9,7 +9,7 @@ tags:
 format: hardcover
 author:
   - Becky Chambers
-series: 'Monk and Robot'
+series: Monk and Robot
 seriesNumber: 1
 genre: sci-fi
 status: finished
@@ -20,6 +20,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865314715022706'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyl6yf3rf2s'
   - 'https://www.threads.com/@sajal24x7/post/DTSot0jEa3-'
-cover: built.jpg
+cover: built.webp
 ---
 The book that started me on the Becky Chambers’ binge.

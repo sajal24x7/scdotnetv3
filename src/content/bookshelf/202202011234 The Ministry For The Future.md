@@ -18,6 +18,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115858505349109720'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbvkghiw2a2g'
   - 'https://www.threads.com/@sajal24x7/post/DTPiil8kuy1'
-cover: the-ministry-for-the-future.jpg
+cover: the-ministry-for-the-future.webp
 ---
 A very realistic take on the world we might be stepping into and a way out for us.

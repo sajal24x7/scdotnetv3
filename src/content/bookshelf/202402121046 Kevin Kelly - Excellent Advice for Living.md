@@ -13,7 +13,7 @@ started: 2024-02-12T10:46:00.000Z
 finished: 2024-02-12T10:46:00.000Z
 status: finished
 rating: like
-cover: excellent-advice-for-living.jpg
+cover: excellent-advice-for-living.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode66amdc2u'
 ---

@@ -9,17 +9,17 @@ tags:
 format: audio
 genre: sci-fi
 author: Adrian Tchaikovsky
-series: "The Final Architecture"
+series: The Final Architecture
 seriesNumber: 1
 status: finished
 started: 2025-12-28T16:46:16.000Z
 rating: love
-finished: 2026-01-05T13:09:38+02:00
+finished: 2026-01-05T11:09:38.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115798213382516989'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mb2rmthzcd2a'
   - 'https://www.threads.com/@sajal24x7/post/DS152tGkVpH'
-cover: shards-of-earth.jpg
+cover: shards-of-earth.webp
 ---
 I loved Shards of Earth.
 

@@ -15,7 +15,7 @@ status: finished
 started: 2016-01-11T10:20:13.000Z
 finished: 2016-01-11T10:20:13.000Z
 rating: like
-cover: the-sagan-diary.jpg
+cover: the-sagan-diary.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode4a4m3y2c'
 ---

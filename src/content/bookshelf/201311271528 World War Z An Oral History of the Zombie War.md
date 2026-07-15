@@ -14,7 +14,7 @@ status: finished
 started: 2013-11-27T15:28:54.000Z
 finished: 2013-11-27T15:28:54.000Z
 rating: like
-cover: world-war-z-an-oral-history-of-the-zombie-war.jpg
+cover: world-war-z-an-oral-history-of-the-zombie-war.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddzvc7ye2o'
 ---

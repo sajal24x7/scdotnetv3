@@ -9,7 +9,7 @@ tags:
 format: audio
 author:
   - Martha Wells
-series: 'The Murderbot Diaries'
+series: The Murderbot Diaries
 seriesNumber: 6
 genre: sci-fi
 status: finished
@@ -17,9 +17,9 @@ started: 2026-02-16T13:52:45.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116080653219772487'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mey7dlx6ry2g'
-cover: fugitive-telemetry.jpg
+cover: fugitive-telemetry.webp
 rating: like
-finished: 2026-02-20T15:53:26+02:00
+finished: 2026-02-20T13:53:26.000Z
 ---
 ## Review
 

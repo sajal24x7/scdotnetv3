@@ -11,7 +11,7 @@ genre: technical
 author: Thomas A. Limoncelli
 status: paused
 started: 2025-10-27T09:29:23.000Z
-cover: "the-practice-of-cloud-system-administration.jpg"
+cover: the-practice-of-cloud-system-administration.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115446072477817612'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m46ffp2qhn2n'

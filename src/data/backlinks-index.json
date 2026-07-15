@@ -26,25 +26,6 @@
       "blog/201401051937 Happy New Year.md",
       "blog/201401061915 Writers are.md",
       "blog/201401092204 Photographic memory.md",
-      "blog/201403162322 Day Four The Transporter.md",
-      "blog/201403172139 Day Five The Girl with the Bazooka.md",
-      "blog/201403201830 Day Eight Martyrdom.md",
-      "blog/201403211747 Day Nine Reflections.md",
-      "blog/201403222149 Day Ten Faces.md",
-      "blog/201403232107 Day Eleven Washed.md",
-      "blog/201403242024 Day Twelve The Lord in the mountains.md",
-      "blog/201403252108 Day Thirteen Fall.md",
-      "blog/201403262137 Day Fourteen The Hungry ManDog.md",
-      "blog/201403272118 Day Fifteen Voice.md",
-      "blog/201403282256 Day Sixteen In Death.md",
-      "blog/201403292127 Day Seventeen Tarmac.md",
-      "blog/201403302300 Day Eighteen Metro.md",
-      "blog/201403311034 Day Nineteen People.md",
-      "blog/201404012055 Day Twenty Fog.md",
-      "blog/201404022055 Day TwentyOne Sentinels of the Border.md",
-      "blog/201404030804 Day TwentyTwo Parallel.md",
-      "blog/201404041819 Day TwentyThree Parallel.md",
-      "blog/201404050044 Day TwentyFour Sport.md",
       "blog/201407081557 Do what you want to.md",
       "blog/201407091120 Calculations.md",
       "blog/201407101531 Title Matters. Really.md",
@@ -396,6 +377,7 @@
       "blog/202605181054 The problem with Current.md",
       "blog/202605262043 About Apple Sports.md",
       "blog/202606031121 State of Play June.md",
+      "blog/202607131349 Why do I Read.md",
       "bookshelf/201301081514 The Da Vinci Code.md",
       "bookshelf/201301081514 The Ultimate Hitchhikers Guide to the Galaxy.md",
       "bookshelf/201301081515 Deception Point.md",
@@ -966,6 +948,15 @@
       "micro/202607100956.md",
       "micro/202607101018 The Era of Model Subsidies May be Over.md",
       "micro/202607102019.md",
+      "micro/202607111250.md",
+      "micro/202607111741 How and Why to Cull Your Book Collection.md",
+      "micro/202607122218 Why Apple is Skipping M6 Pro and Max Chips.md",
+      "micro/202607130959 A Pause on Frontier AI Development.md",
+      "micro/202607131230 How I Learned to Read Again.md",
+      "micro/202607141000 OnePlus is Being Dismantled.md",
+      "micro/202607141511.md",
+      "micro/202607142315.md",
+      "micro/202607150924.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1077,6 +1068,7 @@
       "nordletter/202606192030 NL110 - Hanko Midsummer Picnic.md",
       "nordletter/202606252034 NL111 - Love is Love.md",
       "nordletter/202607022037 NL112 - The Diabetes Code.md",
+      "nordletter/202607101227 NL113 - Fable is Good.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -1094,9 +1086,32 @@
       "photo/201303090905 Phoneography challange My Neighbourhood.md",
       "photo/201403131708 Photography Challenge Day One.md",
       "photo/201403152130 Day Three Spiderman.md",
+      "photo/201403162322 Day Four The Transporter.md",
+      "photo/201403172139 Day Five The Girl with the Bazooka.md",
       "photo/201403181831 Day Six Green.md",
+      "photo/201403201830 Day Eight Martyrdom.md",
+      "photo/201403211747 Day Nine Reflections.md",
+      "photo/201403222149 Day Ten Faces.md",
+      "photo/201403232107 Day Eleven Washed.md",
+      "photo/201403242024 Day Twelve The Lord in the mountains.md",
+      "photo/201403252108 Day Thirteen Fall.md",
+      "photo/201403262137 Day Fourteen The Hungry ManDog.md",
+      "photo/201403272118 Day Fifteen Voice.md",
+      "photo/201403282256 Day Sixteen In Death.md",
+      "photo/201403292127 Day Seventeen Tarmac.md",
+      "photo/201403302300 Day Eighteen Metro.md",
+      "photo/201403311034 Day Nineteen People.md",
+      "photo/201404012055 Day Twenty Fog.md",
+      "photo/201404022055 Day TwentyOne Sentinels of the Border.md",
+      "photo/201404030804 Day TwentyTwo Parallel.md",
+      "photo/201404041819 Day TwentyThree Parallel.md",
+      "photo/201404050044 Day TwentyFour Sport.md",
       "photo/202607100843 A rainbow over chemicum.md",
       "photo/202607100930 Helsinki Pride 2026.md",
+      "photo/202607111030.md",
+      "photo/202607120048.md",
+      "photo/202607132128.md",
+      "photo/202607141728.md",
       "poem/201202121505 Here I stand.md",
       "poem/201202131628 Stranded Isle.md",
       "poem/201203181704 Scared I was.md",
@@ -6539,6 +6554,26 @@
       "snippet": "I performed at India Day on Sunday. I wrote about my experience in NL67."
     }
   ],
+  "micro/how-i-learned-to-read-again": [
+    {
+      "slug": "/blog/why-do-i-read/",
+      "title": "Why Do I Read",
+      "description": "",
+      "category": "blog",
+      "created": "2026-07-13T10:49:00.000Z",
+      "snippet": "The ways the author motivates themself read again, is by having a book-review newsletter to write by the end of each book. They are taking notes while they read, about any and every thing."
+    }
+  ],
+  "bookshelf/the-elements-of-marie-curie": [
+    {
+      "slug": "/micro/202607111250/",
+      "title": "Untitled",
+      "description": "",
+      "category": "micro",
+      "created": "2026-07-11T09:50:25.648Z",
+      "snippet": "I’m reading a biography of Marie Curie right now."
+    }
+  ],
   "evergreen/about-ai-browsers": [
     {
       "slug": "/nordletter/nl64-a-lazy-day/",
@@ -7076,6 +7111,56 @@
       "category": "evergreen",
       "created": "2026-06-29T10:19:46.000Z",
       "snippet": "TOFI not Tofu (the food). Read first about it in The Diabetes Code"
+    }
+  ],
+  "nordletter/nl106-citcon-2026-helsinki": [
+    {
+      "slug": "/nordletter/nl113-fable-is-good/",
+      "title": "Fable Is Good",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-10T09:27:00.000Z",
+      "snippet": "I had done some work on it, but the results with Sonnet 4.5, then 5 were abysmal. I had planned on using Superpowers to have a better output - which did not really work."
+    }
+  ],
+  "micro/fable-is-very-good": [
+    {
+      "slug": "/nordletter/nl113-fable-is-good/",
+      "title": "Fable Is Good",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-10T09:27:00.000Z",
+      "snippet": "Then, on Tuesday, I wrote about Robin Sloan's experience using Fable and around the same time Fable came back and Anthropic told me, hey, you have cheaper access to the model till 7th July. So, I thought, let's let Fable handle this."
+    }
+  ],
+  "micro/the-era-of-model-subsidies-may-be-over": [
+    {
+      "slug": "/nordletter/nl113-fable-is-good/",
+      "title": "Fable Is Good",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-10T09:27:00.000Z",
+      "snippet": "The age of subsidies is over though. What that means for us going forward remains to be seen."
+    }
+  ],
+  "nordletter/nl102-seeing-the-crown-bridge": [
+    {
+      "slug": "/nordletter/nl113-fable-is-good/",
+      "title": "Fable Is Good",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-10T09:27:00.000Z",
+      "snippet": "After lunch, we decided to walk toward the Crown Bridge. It was my second time here. And this whole series of three bridges, this whole walkway is so damn beautiful."
+    }
+  ],
+  "now/building-scdotnetv3-on-astro": [
+    {
+      "slug": "/nordletter/nl113-fable-is-good/",
+      "title": "Fable Is Good",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-10T09:27:00.000Z",
+      "snippet": "On Tuesday, I marked my long-running (nine-month-long) task of building my website on Astro. Most of my site was ready since a long time. I was able to have all the different categories of notes I wanted to have. I had a mostly automated workflow to get a note in my vault to the GitHub repo that has all the code it needs to deploy my site. Some things, namely the about and the colophon pages, were still left to be done. But I was happy with where I was."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [

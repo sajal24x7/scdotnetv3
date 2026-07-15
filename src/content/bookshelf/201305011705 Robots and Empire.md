@@ -15,7 +15,7 @@ status: finished
 started: 2013-01-16T07:01:11.000Z
 finished: 2013-05-01T17:05:25.000Z
 rating: love
-cover: robots-and-empire.jpg
+cover: robots-and-empire.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754266036353212'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddxatkn624'

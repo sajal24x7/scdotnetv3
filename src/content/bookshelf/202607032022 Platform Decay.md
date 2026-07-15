@@ -2,7 +2,7 @@
 title: Platform Decay
 slug: platform-decay
 created: 2026-07-03T06:06:24.000Z
-updated: 2026-07-07T08:49:26+03:00
+updated: 2026-07-07T05:49:26.000Z
 category: bookshelf
 tags:
   - murderbot
@@ -16,7 +16,7 @@ status: finished
 started: 2026-07-03T06:06:24.000Z
 rating: like
 finished: 2026-07-07T05:45:27.000Z
-cover: platform-decay.jpg
+cover: platform-decay.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116877354312925036'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpzz5dlxg226'

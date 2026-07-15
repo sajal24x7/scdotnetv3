@@ -14,7 +14,7 @@ format: paperback
 status: finished
 started: 2013-01-16T07:02:06.000Z
 finished: 2016-09-13T15:55:36.000Z
-cover: foundation-and-empire.jpg
+cover: foundation-and-empire.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode4szw7u2o'
 ---

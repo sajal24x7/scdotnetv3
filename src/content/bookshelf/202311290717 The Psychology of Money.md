@@ -14,7 +14,7 @@ status: finished
 started: 2023-11-29T07:17:18.000Z
 finished: 2023-11-29T07:17:18.000Z
 rating: love
-cover: the-psychology-of-money.jpg
+cover: the-psychology-of-money.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode64nbql23'
 ---

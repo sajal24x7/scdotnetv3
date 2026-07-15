@@ -9,12 +9,12 @@ tags:
 format: audio
 genre: fantasy
 author: Toshikazu Kawaguchi
-series: "Before the coffee gets cold"
+series: Before the coffee gets cold
 seriesNumber: 1
 status: finished
 started: 2025-11-06T10:06:04.000Z
 finished: 2025-11-15T12:06:04.000Z
-cover: 'before-the-coffee-gets-cold.jpg'
+cover: before-the-coffee-gets-cold.webp
 rating: like
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115536189228694891'

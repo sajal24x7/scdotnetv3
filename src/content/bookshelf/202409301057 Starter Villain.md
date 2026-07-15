@@ -18,6 +18,6 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865325873939434'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyle2v23c2a'
   - 'https://www.threads.com/@sajal24x7/post/DTSpCn-FIh3'
-cover: starter-villain.jpg
+cover: starter-villain.webp
 ---
 I loved reading this one as well. It was a hoot. A truly outrageous story, if there ever was any.

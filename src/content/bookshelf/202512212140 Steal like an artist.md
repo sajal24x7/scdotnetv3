@@ -14,10 +14,10 @@ started: 2025-12-21T19:41:53.000Z
 rating: love
 finished: 2025-12-21T20:42:48.000Z
 syndicationUrls:
-  - https://mastodon.social/@sajal24x7/115759533928277913
-  - https://bsky.app/profile/sajal24x7.bsky.social/post/3majlxhmcct2g
-  - https://www.threads.com/@sajal24x7/post/DSiiFyqgZnX
-cover: steal-like-an-artist.jpeg
+  - 'https://mastodon.social/@sajal24x7/115759533928277913'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3majlxhmcct2g'
+  - 'https://www.threads.com/@sajal24x7/post/DSiiFyqgZnX'
+cover: steal-like-an-artist.webp
 ---
 
 It’s a small book, full of inspiring stuff. This is the second time I have read this book. The first time, I had read it on Kindle. Sometime last year, I had purchased all three Kleon books.

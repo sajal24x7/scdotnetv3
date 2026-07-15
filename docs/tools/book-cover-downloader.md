@@ -41,7 +41,7 @@ The book cover downloader **runs automatically** as part of the shared
 1. **You add a new bookshelf entry** — normally via the [Obsidian publishing shortcut](../content/publishing-shortcut.md), which lands the note in `src/content/inbox/` and the publish pipeline sorts it into `src/content/bookshelf/` on `main`.
 2. **Wait for the daily workflow** (2 AM UTC) — or trigger it manually.
 3. **The workflow downloads the missing cover** from whichever of the four sources returns the best match.
-4. **The workflow commits the cover image and updated frontmatter (`cover: <filename>.jpg`) back to `main`.**
+4. **The workflow commits the cover image and updated frontmatter (`cover: <filename>.webp`) back to `main`.**
 5. **Pull the changes** to get the new cover locally.
 
 This ensures book covers are committed to the repository and available for all builds (including Cloudflare Pages) — the build itself never makes network calls to fetch covers.
@@ -118,8 +118,8 @@ Across all sources, results whose title matches `summary|study guide|sparknotes|
 
 Book titles are converted to filenames using this logic:
 ```javascript
-"The Quick Python Book" → "the-quick-python-book.jpg"
-"Chambers, Becky - The Galaxy, and the Ground Within" → "the-galaxy-and-the-ground-within.jpg"
+"The Quick Python Book" → "the-quick-python-book.webp"
+"Chambers, Becky - The Galaxy, and the Ground Within" → "the-galaxy-and-the-ground-within.webp"
 ```
 
 Rules:
@@ -149,7 +149,7 @@ title: "The Quick Python Book"
 author: "Naomi Ceder"
 category: bookshelf
 status: finished
-cover: "the-quick-python-book.jpg"
+cover: "the-quick-python-book.webp"
 ---
 ```
 
@@ -160,7 +160,7 @@ cover: "the-quick-python-book.jpg"
 
 Found 169 bookshelf entries
 
-✅ "Black box thinking" — cover exists (52.3KB): black-box-thinking.jpg
+✅ "Black box thinking" — cover exists (52.3KB): black-box-thinking.webp
 📚 Processing: "New Book Title" by Author Name
    🔎 Searching Bookshop.org, Goodreads, Open Library, Google Books in parallel...
    ✓ Found on Goodreads (2 URL candidate(s))
@@ -169,7 +169,7 @@ Found 169 bookshelf entries
    📊 Goodreads: 84.2KB
    📊 Open Library: 61.0KB
    🏆 Best: Goodreads (84.2KB)
-   ✅ Saved as: new-book-title.jpg (84.2KB)
+   ✅ Saved as: new-book-title.webp (84.2KB)
    📝 Updated markdown with cover reference
 
 ═══════════════════════════════════════
@@ -201,8 +201,8 @@ scdotnetv3/
 
 ### Image Format
 
-- Format: JPEG (`.jpg`)
-- Size: whatever the winning source served (typically 300–900px width; the script always keeps the largest file it downloaded)
+- Format: WebP (`.webp`) — the winning source's download (JPEG/PNG/etc.) is converted with `sharp`
+- Size: whatever the winning source served (typically 300–900px width; the script always keeps the largest file it downloaded, then converts it)
 - Location: `src/images/bookshelf/`
 
 ## Troubleshooting
@@ -394,4 +394,3 @@ Potential enhancements:
 - [ ] ISBN-based search option
 - [ ] Batch mode with progress bar
 - [ ] Cleanup orphaned covers
-- [ ] Support for other image formats (PNG, WebP)

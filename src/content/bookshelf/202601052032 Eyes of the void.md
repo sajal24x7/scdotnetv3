@@ -9,7 +9,7 @@ tags:
 format: audio
 author:
   - Adrian Tchaikovsky
-series: "The Final Architecture"
+series: The Final Architecture
 seriesNumber: 2
 genre: sci-fi
 status: finished
@@ -18,9 +18,9 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115843933197946613'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbp3dsm7qg2t'
   - 'https://www.threads.com/@sajal24x7/post/DTI6buaDzgn'
-cover: eyes-of-the-void.jpg 
+cover: eyes-of-the-void.webp
 rating: like
-finished: 2026-01-12T12:07:35+02:00
+finished: 2026-01-12T10:07:35.000Z
 ---
 The second book in the final architecture series. 
 

@@ -2,7 +2,7 @@
 title: Drive to Survive
 slug: drive-to-survive/s8
 created: 2026-06-14T04:24:07.000Z
-updated: 2026-06-15T11:48:30
+updated: 2026-06-15T11:48:30.000Z
 category: tvshelf
 tags:
   - f1
@@ -14,7 +14,7 @@ started: 2026-06-14T04:24:07.000Z
 genre: documentary
 platform: Netflix
 status: started
-cover: drive-to-survive.jpg
+cover: drive-to-survive.webp
 ---
 
 

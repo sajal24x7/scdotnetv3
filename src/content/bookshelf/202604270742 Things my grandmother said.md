@@ -13,7 +13,7 @@ author:
 genre: poetry
 status: finished
 started: 2026-04-27T04:46:16.000Z
-cover: things-my-grandmother-said.jpg
+cover: things-my-grandmother-said.webp
 rating: like
 finished: 2026-04-29T17:06:23.000Z
 syndicationUrls:

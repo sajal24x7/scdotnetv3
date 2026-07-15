@@ -14,7 +14,7 @@ status: finished
 started: 2013-01-08T15:28:22.000Z
 finished: 2016-09-13T15:55:22.000Z
 rating: love
-cover: childhoods-end.jpg
+cover: childhoods-end.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode4jl3ry2c'
 ---

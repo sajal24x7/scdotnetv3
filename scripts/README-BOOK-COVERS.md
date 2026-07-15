@@ -36,7 +36,7 @@ Note: After running locally, commit the changes to git.
    🔎 Searching Open Library...
    ✓ Found on Open Library
    ⬇️  Downloading cover...
-   ✅ Saved as: new-book.jpg
+   ✅ Saved as: new-book.webp
    📝 Updated markdown with bookCover reference
 ```
 
@@ -97,7 +97,7 @@ git push
 
 Book covers are saved with this naming pattern:
 - **Input:** "The Quick Python Book" by Naomi Ceder
-- **Output:** `the-quick-python-book.jpg`
+- **Output:** `the-quick-python-book.webp`
 
 Rules:
 - Lowercase

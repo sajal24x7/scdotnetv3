@@ -36,7 +36,7 @@ Each shelf's job runs `node scripts/download-<shelf>-covers.js`, then `node scri
 
 **Script:** `scripts/download-film-covers.js`
 
-Scans all `filmshelf` entries, searches TMDB's `/search/movie` with the title, and downloads the poster to `src/images/filmshelf/[slug].jpg`. Updates the unified `cover` frontmatter field in the markdown file.
+Scans all `filmshelf` entries, searches TMDB's `/search/movie` with the title, and downloads the poster to `src/images/filmshelf/[slug].webp`. Updates the unified `cover` frontmatter field in the markdown file.
 
 ### Requirements
 
@@ -52,13 +52,13 @@ node scripts/download-film-covers.js --title "Inception" # only this film
 ### Filename Convention
 
 ```
-"Dune: Part Two" → "dune-part-two.jpg"
+"Dune: Part Two" → "dune-part-two.webp"
 ```
 
 ### Frontmatter Updated
 
 ```yaml
-cover: "dune-part-two.jpg"
+cover: "dune-part-two.webp"
 ```
 
 ---
@@ -67,7 +67,7 @@ cover: "dune-part-two.jpg"
 
 **Script:** `scripts/download-tv-covers.js`
 
-Groups all `tvshelf` entries by `showTitle` (falling back to `title`). For each unique show, searches TMDB's `/search/tv` and downloads one poster to `src/images/tvshelf/[show-slug].jpg`, then updates `cover` in every season file for that show.
+Groups all `tvshelf` entries by `showTitle` (falling back to `title`). For each unique show, searches TMDB's `/search/tv` and downloads one poster to `src/images/tvshelf/[show-slug].webp`, then updates `cover` in every season file for that show.
 
 ### Requirements
 
@@ -83,7 +83,7 @@ node scripts/download-tv-covers.js --title "Breaking Bad"
 ### Filename Convention
 
 ```
-showTitle: "Severance" → "severance.jpg"
+showTitle: "Severance" → "severance.webp"
 ```
 
 One image per show — all season files for the same show share it.
@@ -91,7 +91,7 @@ One image per show — all season files for the same show share it.
 ### Frontmatter Updated
 
 ```yaml
-cover: "severance.jpg"
+cover: "severance.webp"
 ```
 
 ---
@@ -100,7 +100,7 @@ cover: "severance.jpg"
 
 **Script:** `scripts/download-game-covers.js`
 
-Scans all `gameshelf` entries and searches RAWG first; if RAWG has no image for a title, it falls back to IGDB (Twitch-authenticated). Downloads the cover to `src/images/gameshelf/[slug].jpg` and updates `cover` in the markdown file.
+Scans all `gameshelf` entries and searches RAWG first; if RAWG has no image for a title, it falls back to IGDB (Twitch-authenticated). Downloads the cover to `src/images/gameshelf/[slug].webp` and updates `cover` in the markdown file.
 
 ### Requirements
 
@@ -118,13 +118,13 @@ node scripts/download-game-covers.js --title "Hades"
 ### Filename Convention
 
 ```
-"Hollow Knight" → "hollow-knight.jpg"
+"Hollow Knight" → "hollow-knight.webp"
 ```
 
 ### Frontmatter Updated
 
 ```yaml
-cover: "hollow-knight.jpg"
+cover: "hollow-knight.webp"
 ```
 
 ---

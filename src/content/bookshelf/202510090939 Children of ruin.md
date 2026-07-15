@@ -15,7 +15,7 @@ status: finished
 rating: like
 started: 2025-10-09T06:39:40.000Z
 finished: 2025-11-06T14:39:40.000Z
-cover: children-of-ruin.jpg
+cover: children-of-ruin.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode7gu4mn2l'
 ---
