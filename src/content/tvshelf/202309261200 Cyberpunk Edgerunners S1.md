@@ -1,18 +1,19 @@
 ---
-title: "Cyberpunk: Edgerunners"
-slug: "cyberpunk-edgerunners/s1"
+title: 'Cyberpunk: Edgerunners'
+slug: cyberpunk-edgerunners/s1
 created: 2026-07-15T11:14:16.000Z
 category: tvshelf
-showTitle: "Cyberpunk: Edgerunners"
+showTitle: 'Cyberpunk: Edgerunners'
 season: 1
 creator:
-  - "Rafal Jaki"
+  - Rafal Jaki
 started: 2023-09-26T00:00:00.000Z
 finished: 2023-10-03T00:00:00.000Z
-genre: "animation"
+genre: animation
 year: 2022
 rating: like
 platform: Netflix
 status: finished
+cover: cyberpunk-edgerunners.webp
 ---
 Finished watching Season 1 on 2023-10-03.

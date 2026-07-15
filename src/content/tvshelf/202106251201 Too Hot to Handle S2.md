@@ -15,5 +15,6 @@ status: finished
 creator:
   - Laura Gibson
   - Charlie Bennett
+cover: too-hot-to-handle.webp
 ---
 Finished watching Season 2 on 2021-07-01.

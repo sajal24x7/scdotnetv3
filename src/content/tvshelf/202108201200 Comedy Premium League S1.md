@@ -1,18 +1,19 @@
 ---
-title: "Comedy Premium League"
-slug: "comedy-premium-league/s1"
+title: Comedy Premium League
+slug: comedy-premium-league/s1
 created: 2026-07-15T11:14:16.000Z
 category: tvshelf
-showTitle: "Comedy Premium League"
+showTitle: Comedy Premium League
 season: 1
 creator:
-  - "Not credited"
+  - Not credited
 started: 2021-08-20T00:00:00.000Z
 finished: 2021-08-27T00:00:00.000Z
-genre: "comedy"
+genre: comedy
 year: 2021
 rating: like
 platform: Netflix
 status: finished
+cover: comedy-premium-league.webp
 ---
 Finished watching Season 1 on 2021-08-27.
