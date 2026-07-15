@@ -11,7 +11,7 @@ genre: sci-fi
 author: Adrian Tchaikovsky
 series: Children of Time
 seriesNumber: 2
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-10-09T06:39:40.000Z
 finished: 2025-11-06T14:39:40.000Z

@@ -10,7 +10,7 @@ format: ebook
 author:
   - Alan Hohn
 genre: technical
-shelfStatus: reading
+status: started
 started: 2026-06-22T06:45:49.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116792709836014854'

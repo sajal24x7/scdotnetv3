@@ -12,7 +12,7 @@ author:
 series: 'Monk and Robot'
 seriesNumber: 1
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2024-09-16T13:06:55.000Z
 rating: like
 finished: 2024-09-18T13:06:55.000Z

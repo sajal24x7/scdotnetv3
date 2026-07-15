@@ -11,7 +11,7 @@ format: hardcover
 author:
   - Edwin E. Catmull
 genre: business
-shelfStatus: read
+status: finished
 started: 2024-08-13T12:46:12.000Z
 rating: like
 finished: 2024-09-12T12:46:12.000Z

@@ -11,7 +11,7 @@ format: audiobook
 author:
   - Elizabeth Kolbert
 genre: science
-shelfStatus: read
+status: finished
 started: 2026-06-18T06:56:58.000Z
 cover: the-sixth-extinction.jpg
 rating: love

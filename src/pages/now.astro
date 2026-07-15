@@ -7,10 +7,10 @@ import ProgressLayout from '../components/layout/ProgressLayout.astro';
 import { parseMarkdown } from '../utils/markdown';
 import '../styles/progress-page.css';
 
-// Get all posts dynamically across year folders and filter to category 'now' and status 'active' (or undefined for backward compatibility)
+// Get all posts dynamically across year folders and filter to category 'now' and status 'started' (or undefined for backward compatibility)
 const allPosts = await getAllPosts();
 const activeNowPosts = allPosts
-  .filter(post => post.data.category === 'now' && (!post.data.status || post.data.status === 'active'))
+  .filter(post => post.data.category === 'now' && (!post.data.status || post.data.status === 'started'))
   .sort((a, b) => b.data.created.getTime() - a.data.created.getTime());
 
 // Pre-render markdown content

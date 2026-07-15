@@ -11,7 +11,7 @@ author:
 series: Robot
 genre: sci-fi
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-16T07:01:03.000Z
 finished: 2013-02-02T11:44:21.000Z
 rating: like

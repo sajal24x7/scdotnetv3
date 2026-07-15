@@ -10,7 +10,7 @@ format: ebook
 author:
   - Kim Stanley Robinson
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2022-02-01T08:19:11.000Z
 rating: love
 finished: 2022-06-01T08:20:10.000Z

@@ -8,7 +8,7 @@ tags:
   - health
   - exercise
   - gym
-status: active
+status: started
 ---
 Started weight training. 
 

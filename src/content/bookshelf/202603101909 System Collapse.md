@@ -12,7 +12,7 @@ author:
 series: 'The Murderbot Diaries'
 seriesNumber: 7
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2026-03-10T17:24:57.000Z
 cover: system-collapse.jpg
 rating: like

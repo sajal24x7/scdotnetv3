@@ -11,7 +11,7 @@ author:
   - Douglas Adams
 genre: sci-fi
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-08T15:14:05.000Z
 finished: 2013-01-08T15:14:21.000Z
 rating: like

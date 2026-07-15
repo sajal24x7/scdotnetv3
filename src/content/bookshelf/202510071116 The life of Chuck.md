@@ -9,7 +9,7 @@ tags:
 format: audio
 genre: sci-fi
 author: Stephen King
-shelfStatus: read
+status: finished
 started: 2025-10-07T14:01:53.000Z
 cover: the-life-of-chuck.jpg
 finished: 2025-10-08T08:01:53.000Z

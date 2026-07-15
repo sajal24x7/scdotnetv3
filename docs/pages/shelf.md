@@ -34,7 +34,7 @@ author: "David Thomas"           # or array: ["David Thomas", "Andrew Hunt"]
 series: "none"                   # optional; defaults to "none"
 category: bookshelf
 pubDate: 2025-01-15T00:00:00
-bookStatus: reading              # reading | read | finished | on-hold | to-read
+status: started                  # todo | started | paused | finished (unified across all shelf categories)
 bookRating: love                 # like | love | nope  (optional)
 startedReading: 2025-01-10       # optional
 finishedReading: 2025-01-20      # optional; required for "finished" count
@@ -46,11 +46,11 @@ tags: [programming, software]   # optional
 Your notes, thoughts, or quotes from the book.
 ```
 
-**Status values:**
-- `reading` — currently reading
-- `finished` / `read` — completed (both values count toward the finished total)
-- `to-read` — on the reading list
-- `on-hold` — paused
+**Status values** (shared by all four shelf categories — see [Unified Status](#unified-status)):
+- `started` — currently reading
+- `finished` — completed (counts toward the finished total)
+- `todo` — on the reading list
+- `paused` — on hold
 
 ---
 
@@ -63,7 +63,7 @@ director: "Denis Villeneuve"
 year: 2024                       # release year
 category: filmshelf
 pubDate: 2025-03-01T00:00:00
-filmStatus: watched              # watching | watched | to-watch
+status: finished                 # todo | started | paused | finished (unified across all shelf categories)
 filmRating: love                 # like | love | nope  (optional)
 watchedDate: 2025-03-01          # optional; used for rewatch detection ordering
 filmCover: "dune-part-two.jpg"   # auto-filled by download script
@@ -77,9 +77,10 @@ Optional notes about the film.
 **Rewatch tracking:** No extra frontmatter needed. The build automatically detects rewatches by grouping entries with the same (normalised) title and assigning watch numbers (1st watch, 2nd watch, etc.) ordered by `watchedDate`.
 
 **Status values:**
-- `watched` — seen it
-- `watching` — currently watching
-- `to-watch` — on the watch list
+- `finished` — seen it
+- `started` — currently watching
+- `todo` — on the watch list
+- `paused` — on hold
 
 ---
 
@@ -96,7 +97,7 @@ creator: "Dan Erickson"
 year: 2022                       # season release year
 category: tvshelf
 pubDate: 2025-02-10T00:00:00
-tvStatus: watched                # watching | watched | to-watch | on-hold | abandoned
+status: finished                 # todo | started | paused | finished (unified across all shelf categories)
 tvRating: love                   # like | love | nope  (optional)
 tvCover: "severance.jpg"         # auto-filled by download script; one image per show
 genre: "thriller"                # optional
@@ -109,13 +110,12 @@ Notes about this season.
 **Important:** `showTitle` must be identical across all seasons of the same show — it is the grouping key. The show slug in the URL is derived from `showTitle` (lowercased, spaces replaced with hyphens).
 
 **Status values:**
-- `watched` — finished the season
-- `watching` — currently watching
-- `to-watch` — plan to watch
-- `on-hold` — paused
-- `abandoned` — dropped
+- `finished` — finished the season
+- `started` — currently watching
+- `todo` — plan to watch
+- `paused` — on hold
 
-When multiple seasons have different statuses, the shelf card shows the highest-priority status: `watching` > `to-watch` > `on-hold` > `abandoned` > `watched`.
+When multiple seasons have different statuses, the shelf card shows the highest-priority status: `started` > `paused` > `todo` > `finished`.
 
 ---
 
@@ -129,7 +129,7 @@ year: 2017                       # release year
 platform: "PC"                   # optional; shown as a chip on the card
 category: gameshelf
 pubDate: 2025-04-05T00:00:00
-gameStatus: played               # playing | played | to-play | on-hold | abandoned
+status: finished                 # todo | started | paused | finished (unified across all shelf categories)
 gameRating: love                 # like | love | nope  (optional)
 gameCover: "hollow-knight.jpg"   # auto-filled by download script
 genre: "metroidvania"            # optional
@@ -142,11 +142,25 @@ Optional notes about the game.
 **Replay tracking:** Same as film — create a new entry each time you replay. Watch numbers are assigned automatically at build time.
 
 **Status values:**
-- `played` — completed (counts toward the finished total)
-- `playing` — currently playing
-- `to-play` — on the backlog
-- `on-hold` — paused
-- `abandoned` — dropped
+- `finished` — completed (counts toward the finished total)
+- `started` — currently playing
+- `todo` — on the backlog
+- `paused` — on hold
+
+---
+
+## Unified Status
+
+All four shelf categories (and `now` posts) share a single `status` field with the same four values:
+
+| Value | Books | Film/TV | Games | `now` posts |
+| --- | --- | --- | --- | --- |
+| `todo` | To Read | To Watch | To Play | not yet started |
+| `started` | Currently Reading | Watching | Playing | active |
+| `paused` | On Hold | On Hold | On Hold | paused |
+| `finished` | Read | Watched | Played | done |
+
+The underlying value is shared, but each card renders category-specific display text — see `src/utils/shelfStatus.ts` for the label/CSS-class lookup tables.
 
 ---
 

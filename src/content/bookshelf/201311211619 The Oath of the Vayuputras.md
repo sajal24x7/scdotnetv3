@@ -11,7 +11,7 @@ author:
 series: Shiva Trilogy
 genre: fantasy
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-10-10T15:16:30.000Z
 finished: 2013-11-21T16:19:35.000Z
 rating: like

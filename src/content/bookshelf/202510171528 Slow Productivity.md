@@ -10,7 +10,7 @@ tags:
 format: audio
 genre: self-help
 author: Cal Newport
-shelfStatus: read
+status: finished
 started: 2025-10-17T12:28:56.000Z
 finished: 2025-10-24T17:46:56.000Z
 cover: slow-productivity.jpg

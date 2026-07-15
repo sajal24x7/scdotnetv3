@@ -12,7 +12,7 @@ author:
 series: 'The Final Architecture'
 seriesNumber: 3
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2026-01-12T10:10:42.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115881589817343006'

@@ -11,7 +11,7 @@ genre: mystery
 author: Agatha Christie
 series: Hercule Poirot
 seriesNumber: 1
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-09-19T13:11:06.000Z
 finished: 2025-09-23T14:00:18.000Z

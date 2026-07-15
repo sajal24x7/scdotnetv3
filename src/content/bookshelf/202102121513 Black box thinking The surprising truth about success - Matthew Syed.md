@@ -13,7 +13,7 @@ genre: self-help
 cover: black-box-thinking.jpg
 author: Matthew Syed
 series: none
-shelfStatus: read
+status: finished
 rating: like
 started: 2020-12-13T12:13:00.000Z
 finished: 2021-01-19T12:13:00.000Z

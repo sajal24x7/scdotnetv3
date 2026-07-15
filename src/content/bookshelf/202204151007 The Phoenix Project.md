@@ -13,7 +13,7 @@ author:
   - Kevin Behr
   - George Spafford
 genre: business
-shelfStatus: read
+status: finished
 started: 2022-04-14T13:33:55.000Z
 rating: like
 finished: 2022-04-16T17:01:27.000Z

@@ -12,7 +12,7 @@ author:
 series: 'Wayfarers'
 seriesNumber: 1
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2024-10-18T13:20:57.000Z
 rating: like
 finished: 2024-10-23T13:20:57.000Z

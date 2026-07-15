@@ -9,7 +9,7 @@ tags:
 format: audio
 genre: technology
 author: Kevin Kelly
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-02-23T19:37:03.000Z
 finished: 2025-05-06T19:37:03.000Z

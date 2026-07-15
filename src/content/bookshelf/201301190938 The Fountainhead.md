@@ -10,7 +10,7 @@ author:
   - Ayn Rand
 genre: fiction
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-19T09:38:36.000Z
 finished: 2013-01-19T09:38:36.000Z
 rating: like

@@ -10,7 +10,7 @@ format: audiobook
 author:
   - Dava Sobel
 genre: biography
-shelfStatus: read
+status: started
 started: 2026-07-07T09:38:26.000Z
 cover: the-elements-of-marie-curie.jpg
 rating: like

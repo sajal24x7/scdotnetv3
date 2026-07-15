@@ -10,7 +10,7 @@ author:
   - Max Brooks
 genre: humor
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-11-21T16:21:47.000Z
 finished: 2013-11-21T16:21:47.000Z
 rating: love

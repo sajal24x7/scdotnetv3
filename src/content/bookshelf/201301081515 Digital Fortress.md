@@ -10,7 +10,7 @@ author:
   - Dan Brown
 genre: thriller
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-08T15:15:29.000Z
 finished: 2013-01-08T15:15:35.000Z
 rating: like

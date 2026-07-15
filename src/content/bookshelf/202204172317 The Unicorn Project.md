@@ -11,7 +11,7 @@ format: ebook
 author:
   - Gene Kim
 genre: business
-shelfStatus: read
+status: finished
 started: 2022-04-17T17:06:53.000Z
 rating: like
 finished: 2022-05-16T17:07:33.000Z

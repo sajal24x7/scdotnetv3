@@ -10,7 +10,7 @@ author:
   - Mitch Albom
 genre: memoir
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-08T15:13:30.000Z
 finished: 2013-01-16T07:33:54.000Z
 rating: love

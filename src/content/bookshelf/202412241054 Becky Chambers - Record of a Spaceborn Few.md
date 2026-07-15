@@ -11,7 +11,7 @@ tags:
 genre: sci-fi
 cover: record-of-a-spaceborn-few.jpg
 author: Becky Chambers
-shelfStatus: read
+status: finished
 rating: like
 started: 2024-12-24T07:54:00.000Z
 finished: 2024-12-24T07:54:00.000Z

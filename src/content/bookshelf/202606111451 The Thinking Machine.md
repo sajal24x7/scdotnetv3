@@ -12,7 +12,7 @@ format: audiobook
 author:
   - Stephen Witt
 genre: biography
-shelfStatus: read
+status: finished
 started: 2026-06-11T11:54:42.000Z
 cover: the-thinking-machine.jpg
 rating: like

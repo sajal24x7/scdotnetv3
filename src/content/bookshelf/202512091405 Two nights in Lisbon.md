@@ -9,7 +9,7 @@ tags:
 format: ebook
 genre: thriller
 author: Chris Pavone
-shelfStatus: read
+status: finished
 started: 2025-12-09T12:07:59.000Z
 rating: love
 finished: 2025-12-25T02:11:18+02:00

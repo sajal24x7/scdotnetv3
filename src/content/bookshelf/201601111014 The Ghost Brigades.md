@@ -11,7 +11,7 @@ author:
 series: Old Man's War
 genre: sci-fi
 format: paperback
-shelfStatus: read
+status: finished
 started: 2016-01-11T10:13:23.000Z
 finished: 2016-01-11T10:14:02.000Z
 rating: like

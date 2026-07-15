@@ -11,7 +11,7 @@ format: ebook
 author:
   - Hu Anyan
 genre: memoir
-shelfStatus: read
+status: finished
 started: 2026-04-06T10:41:19.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116357340810569459'

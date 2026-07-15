@@ -123,14 +123,24 @@
     background: rgba(245, 158, 11, 0.18);
 }
 
-.progress-card__status--done {
+.progress-card__status--finished {
     color: rgb(21, 128, 61);
     background: rgba(34, 197, 94, 0.15);
 }
 
-:global(.dark) .progress-card__status--done {
+:global(.dark) .progress-card__status--finished {
     color: rgb(134, 239, 172);
     background: rgba(34, 197, 94, 0.18);
+}
+
+.progress-card__status--todo {
+    color: rgb(29, 78, 216);
+    background: rgba(59, 130, 246, 0.15);
+}
+
+:global(.dark) .progress-card__status--todo {
+    color: rgb(191, 219, 254);
+    background: rgba(59, 130, 246, 0.18);
 }
 
 .progress-card__title {

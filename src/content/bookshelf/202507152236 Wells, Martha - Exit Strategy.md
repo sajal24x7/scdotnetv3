@@ -10,7 +10,7 @@ format: audio
 genre: sci-fi
 uthor: Martha Wells
 series: The Murderbot Diaries
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-07-15T19:56:35.000Z
 finished: '2025-07-18T21:00:00+03:00'

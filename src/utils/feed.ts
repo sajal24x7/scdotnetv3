@@ -11,6 +11,7 @@ import { bookRatingLabels } from './bookRatings';
 import { convertWikilinks } from './remarkWikilinks';
 import { formatRelativeDate, SITE_TIMEZONE } from './dateFormat';
 import { getPhotoImages } from './photos';
+import { SHELF_STATUS_FEED_VERBS, type ShelfCategory, type ShelfStatus } from './shelfStatus';
 import nordletterManifest from '../data/nordletter-image-manifest.json';
 
 export const FEED_PAGE_SIZE = 10;
@@ -275,15 +276,6 @@ function renderStory(post: Post): string {
 }
 
 // Shared row layout for all shelf categories: cover, "<verb>: <title>", credits · rating
-const SHELF_VERBS: Record<string, string> = {
-  reading: 'Reading',
-  read: 'Finished',
-  watching: 'Watching',
-  watched: 'Watched',
-  playing: 'Playing',
-  played: 'Played',
-  'on-hold': 'On hold'
-};
 
 function joinNames(value: string | string[] | undefined): string {
   return Array.isArray(value) ? value.join(', ') : value || '';
@@ -304,7 +296,7 @@ async function shelfCoverHtml(coverMeta: ImageMetadata | undefined): Promise<str
 async function renderShelf(
   post: Post,
   coverMeta: ImageMetadata | undefined,
-  fallbackVerb: string,
+  category: ShelfCategory,
   credits: string,
   displayTitle?: string
 ): Promise<string> {
@@ -313,7 +305,8 @@ async function renderShelf(
   const rating = post.data.rating ? bookRatingLabels[post.data.rating] : '';
   const details = [credits, rating].filter(Boolean).join(' · ');
   const detailsHtml = details ? `<p class="feed-entry__book-note">${escapeHtml(details)}</p>` : '';
-  const verb = (post.data.shelfStatus && SHELF_VERBS[post.data.shelfStatus]) || fallbackVerb;
+  const status = post.data.status as ShelfStatus | undefined;
+  const verb = (status && SHELF_STATUS_FEED_VERBS[category][status]) || SHELF_STATUS_FEED_VERBS[category].finished;
   const baseTitle = displayTitle ?? post.data.title;
   const title = baseTitle ? `${verb}: ${baseTitle}` : undefined;
 
@@ -322,12 +315,12 @@ async function renderShelf(
 
 function renderBookshelf(post: Post): Promise<string> {
   const coverMeta = post.data.cover ? getBookCoverImage(post.data.cover as any) : undefined;
-  return renderShelf(post, coverMeta, 'Finished', joinNames(post.data.author));
+  return renderShelf(post, coverMeta, 'bookshelf', joinNames(post.data.author));
 }
 
 function renderFilmshelf(post: Post): Promise<string> {
   const coverMeta = post.data.cover ? getFilmCoverImage(post.data.cover as any) : undefined;
-  return renderShelf(post, coverMeta, 'Watched', joinNames(post.data.director));
+  return renderShelf(post, coverMeta, 'filmshelf', joinNames(post.data.director));
 }
 
 function renderTvshelf(post: Post): Promise<string> {
@@ -335,13 +328,13 @@ function renderTvshelf(post: Post): Promise<string> {
   const title = post.data.title
     ? `${post.data.title}${post.data.season ? ` · Season ${post.data.season}` : ''}`
     : undefined;
-  return renderShelf(post, coverMeta, 'Watched', joinNames(post.data.creator), title);
+  return renderShelf(post, coverMeta, 'tvshelf', joinNames(post.data.creator), title);
 }
 
 function renderGameshelf(post: Post): Promise<string> {
   const coverMeta = post.data.cover ? getGameCoverImage(post.data.cover as any) : undefined;
   const credits = [post.data.developer, post.data.platform].filter(Boolean).join(' · ');
-  return renderShelf(post, coverMeta, 'Played', credits);
+  return renderShelf(post, coverMeta, 'gameshelf', credits);
 }
 
 function renderNow(post: Post): string {
@@ -423,9 +416,10 @@ export function toFeedEntry(post: Post): Promise<FeedEntry> {
 
 export async function getFeedEntriesForGroup(posts: Post[], group: FeedGroup): Promise<FeedEntry[]> {
   const feedPosts = getFeedPosts(posts);
-  const scoped =
-    group === 'all'
-      ? feedPosts
-      : feedPosts.filter((post) => CATEGORY_TO_GROUP[post.data.category] === group);
+  const oneYearAgo = new Date();
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+  const scoped = feedPosts
+    .filter((post) => effectiveDate(post).getTime() >= oneYearAgo.getTime())
+    .filter((post) => group === 'all' || CATEGORY_TO_GROUP[post.data.category] === group);
   return Promise.all(scoped.map(toFeedEntry));
 }

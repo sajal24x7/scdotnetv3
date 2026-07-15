@@ -11,7 +11,7 @@ format: audiobook
 author:
   - Scott Galloway
 genre: self-help
-shelfStatus: on-hold
+status: paused
 started: 2026-03-30T04:53:56.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116316341289785443'

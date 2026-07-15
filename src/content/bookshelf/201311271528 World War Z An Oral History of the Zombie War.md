@@ -10,7 +10,7 @@ author:
   - Max Brooks
 genre: sci-fi
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-11-27T15:28:54.000Z
 finished: 2013-11-27T15:28:54.000Z
 rating: like

@@ -11,7 +11,7 @@ format: audiobook
 author:
   - Will Storr
 genre: craft
-shelfStatus: read
+status: finished
 started: 2026-03-14T11:34:48.000Z
 cover: the-science-of-storytelling.jpg
 rating: like

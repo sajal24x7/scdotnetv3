@@ -10,7 +10,7 @@ format: audio
 genre: technology
 author: Cory Doctorow
 cover: enshittification.jpg
-shelfStatus: read
+status: finished
 started: 2025-11-15T08:04:07.000Z
 finished: 2025-11-22T14:04:07.000
 rating: like

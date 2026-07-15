@@ -9,6 +9,7 @@ import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 import { slugify, computeWatchNumbers } from '../../utils/shelfUtils';
+import { SHELF_STATUS_PRIORITY } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
 const shelfCategories = new Set(['bookshelf', 'filmshelf', 'tvshelf', 'gameshelf']);
@@ -74,16 +75,15 @@ for (const post of shelfPosts) {
 }
 
 // Add one entry per TV show
-const statusPriority: Record<string, number> = { watching: 0, 'on-hold': 1, watched: 2 };
 for (const [showTitle, seasons] of tvShowMap.entries()) {
     const sortedSeasons = [...seasons].sort((a, b) => (b.data.season ?? 1) - (a.data.season ?? 1));
     const representative = sortedSeasons[0];
     const seasonNumbers = seasons.map((s) => s.data.season ?? 1);
     const latestSeason = Math.max(...seasonNumbers);
     const tvStatus = seasons
-        .map((s) => s.data.shelfStatus)
+        .map((s) => s.data.status)
         .filter(Boolean)
-        .sort((a, b) => (statusPriority[a!] ?? 5) - (statusPriority[b!] ?? 5))[0];
+        .sort((a, b) => (SHELF_STATUS_PRIORITY[a as keyof typeof SHELF_STATUS_PRIORITY] ?? 5) - (SHELF_STATUS_PRIORITY[b as keyof typeof SHELF_STATUS_PRIORITY] ?? 5))[0];
     const pub = parseDate(representative.data.created);
     const year = (pub ?? new Date()).getFullYear();
 
@@ -122,10 +122,8 @@ filmEntries.forEach((p, i) => filmWatchMap.set(p.id, filmWatchNumbers.get(i) ?? 
 
 // Count total finished items
 const totalItems =
-    shelfPosts.filter((p) => p.data.shelfStatus === 'read').length +
-    shelfPosts.filter((p) => p.data.shelfStatus === 'watched' && p.data.category === 'filmshelf').length +
-    shelfPosts.filter((p) => p.data.shelfStatus === 'played').length +
-    Array.from(tvShowMap.values()).filter((seasons) => seasons.some((s) => s.data.shelfStatus === 'watched')).length;
+    shelfPosts.filter((p) => p.data.status === 'finished' && p.data.category !== 'tvshelf').length +
+    Array.from(tvShowMap.values()).filter((seasons) => seasons.some((s) => s.data.status === 'finished')).length;
 
 const countText = `${totalItems} ${totalItems === 1 ? 'item' : 'items'} finished`;
 
@@ -142,12 +140,13 @@ const shelfDescription = "Everything I've read, watched, and played—books, fil
 
 const normalizeBookStatus = (status?: string | null) => {
     switch (status) {
-        case 'reading':
-        case 'on-hold':
+        case 'started':
+        case 'paused':
+        case 'todo':
             return status;
-        case 'read':
+        case 'finished':
         default:
-            return 'read';
+            return 'finished';
     }
 };
 ---
@@ -208,7 +207,7 @@ const normalizeBookStatus = (status?: string | null) => {
                         director={entry.post.data.director}
                         year={entry.post.data.year as number | undefined}
                         genre={entry.post.data.genre}
-                        shelfStatus={entry.post.data.shelfStatus as any}
+                        status={entry.post.data.status as any}
                         rating={entry.post.data.rating}
                         finished={entry.post.data.finished}
                         cover={entry.post.data.cover}
@@ -223,7 +222,7 @@ const normalizeBookStatus = (status?: string | null) => {
                         creator={entry.tvRepresentative.data.creator}
                         year={entry.tvRepresentative.data.year as number | undefined}
                         genre={entry.tvRepresentative.data.genre}
-                        shelfStatus={entry.tvStatus as any}
+                        status={entry.tvStatus as any}
                         rating={entry.tvRepresentative.data.rating}
                         cover={entry.tvRepresentative.data.cover}
                         seasonCount={entry.tvSeasonCount}
@@ -237,7 +236,7 @@ const normalizeBookStatus = (status?: string | null) => {
                         year={entry.post.data.year as number | undefined}
                         genre={entry.post.data.genre}
                         platform={entry.post.data.platform}
-                        shelfStatus={entry.post.data.shelfStatus as any}
+                        status={entry.post.data.status as any}
                         rating={entry.post.data.rating}
                         cover={entry.post.data.cover}
                         link={entry.post.id ? `/gameshelf/${entry.post.id}/` : undefined}

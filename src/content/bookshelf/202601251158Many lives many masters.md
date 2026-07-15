@@ -12,7 +12,7 @@ format: paperback
 author:
   - Brian Weiss
 genre: psychology
-shelfStatus: read
+status: finished
 started: 2026-01-25T07:38:11.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115954598916675462'
