@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import { buildRssItem, rssNamespaces, sortByDate } from '../../utils/rss';
 
 export async function GET(context) {
-  const posts = sortByDate(await getCollection('filmshelf'));
+  const posts = sortByDate(await getCollection('filmshelf', (post) => post.data.status === 'finished'));
   return rss({
     title: 'Sajal Choudhary - Filmshelf',
     description: 'Films I\'ve watched — reviews and notes.',

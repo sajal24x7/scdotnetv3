@@ -3,11 +3,12 @@ import { getCollection } from 'astro:content';
 import { buildRssItem, rssNamespaces, sortByDate } from '../../utils/rss';
 
 export async function GET(context) {
+  const isFinished = (post) => post.data.status === 'finished';
   const [bookshelf, filmshelf, tvshelf, gameshelf] = await Promise.all([
-    getCollection('bookshelf'),
-    getCollection('filmshelf'),
-    getCollection('tvshelf'),
-    getCollection('gameshelf'),
+    getCollection('bookshelf', isFinished),
+    getCollection('filmshelf', isFinished),
+    getCollection('tvshelf', isFinished),
+    getCollection('gameshelf', isFinished),
   ]);
 
   const posts = sortByDate([...bookshelf, ...filmshelf, ...tvshelf, ...gameshelf]);

@@ -80,6 +80,9 @@ _CATEGORY_STUBS: dict[str, list[tuple[str, str]]] = {
     "filmshelf": [
         ("director", '""'),
         ("year", ""),
+        ("status", "todo"),
+        ("rating", ""),
+        ("finished", ""),
         ("genre", '""'),
         ("status", "todo"),
         ("rating", ""),
@@ -93,17 +96,14 @@ _CATEGORY_STUBS: dict[str, list[tuple[str, str]]] = {
         ("genre", '""'),
         ("status", "todo"),
         ("rating", ""),
-        ("started", ""),
-        ("finished", ""),
     ],
     "gameshelf": [
         ("developer", '""'),
         ("platform", '""'),
         ("genre", '""'),
+        ("started", ""),
         ("status", "todo"),
         ("rating", ""),
-        ("started", ""),
-        ("finished", ""),
     ],
 }
 

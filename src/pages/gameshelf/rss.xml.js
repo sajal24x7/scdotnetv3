@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import { buildRssItem, rssNamespaces, sortByDate } from '../../utils/rss';
 
 export async function GET(context) {
-  const posts = sortByDate(await getCollection('gameshelf'));
+  const posts = sortByDate(await getCollection('gameshelf', (post) => post.data.status === 'finished'));
   return rss({
     title: 'Sajal Choudhary - Game Shelf',
     description: 'Games I\'ve played — reviews and progress updates.',
