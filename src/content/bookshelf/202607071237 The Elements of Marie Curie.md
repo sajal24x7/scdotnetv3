@@ -1,6 +1,6 @@
 ---
 title: The Elements of Marie Curie
-slug: reading-the-elements-of-marie-curie
+slug: the-elements-of-marie-curie
 created: 2026-07-07T09:38:26.000Z
 updated: 2026-07-07T09:38:26.000Z
 category: bookshelf
@@ -10,13 +10,11 @@ format: audiobook
 author:
   - Dava Sobel
 genre: biography
-shelfStatus: reading
+shelfStatus: read
 started: 2026-07-07T09:38:26.000Z
-syndicationUrls:
-  - 'https://mastodon.social/@sajal24x7/116878027693879661'
-  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mq2cpjqmq52d'
-  - 'https://www.threads.com/@sajal24x7/post/DafKit_EXCb'
 cover: the-elements-of-marie-curie.jpg
+rating: like
+finished: 2026-07-15T09:21:31+03:00
 ---
 Started reading.
 
