@@ -1,12 +1,15 @@
 ---
-title: "Aditi Mittal: Things They Wouldn't Let Me Say"
+title: 'Aditi Mittal: Things They Wouldn''t Let Me Say'
 slug: aditi-mittal-things-they-wouldn-t-let-me-say
 created: 2026-07-15T11:14:16.000Z
 category: filmshelf
 finished: 2019-11-03T00:00:00.000Z
-genre: "stand-up comedy"
+genre: stand-up comedy
 rating: like
 platform: Netflix
 status: finished
+director:
+  - Fazila Allana
+year: 2017
 ---
 Finished watching on 2019-11-03.

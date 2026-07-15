@@ -1,5 +1,5 @@
 ---
-title: "The Fate of the Furious"
+title: The Fate of the Furious
 slug: the-fate-of-the-furious
 created: 2026-07-15T11:14:16.000Z
 category: filmshelf
@@ -7,5 +7,9 @@ finished: 2019-08-16T00:00:00.000Z
 rating: like
 platform: Netflix
 status: finished
+genre: action
+director:
+  - F. Gary Gray
+year: 2017
 ---
 Finished watching on 2019-08-16.

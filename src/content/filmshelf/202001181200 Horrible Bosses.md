@@ -1,5 +1,5 @@
 ---
-title: "Horrible Bosses"
+title: Horrible Bosses
 slug: horrible-bosses
 created: 2026-07-15T11:14:16.000Z
 category: filmshelf
@@ -7,5 +7,9 @@ finished: 2020-01-18T00:00:00.000Z
 rating: like
 platform: Netflix
 status: finished
+genre: comedy
+director:
+  - Seth Gordon
+year: 2011
 ---
 Finished watching on 2020-01-18.

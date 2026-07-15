@@ -1,5 +1,5 @@
 ---
-title: "Creating The Queen's Gambit"
+title: Creating The Queen's Gambit
 slug: creating-the-queen-s-gambit
 created: 2026-07-15T11:14:16.000Z
 category: filmshelf
@@ -7,5 +7,7 @@ finished: 2021-01-19T00:00:00.000Z
 rating: like
 platform: Netflix
 status: finished
+genre: documentary
+year: 2021
 ---
 Finished watching on 2021-01-19.

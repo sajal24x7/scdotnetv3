@@ -1,5 +1,5 @@
 ---
-title: "Haseen Dillruba"
+title: Haseen Dillruba
 slug: haseen-dillruba
 created: 2026-07-15T11:14:16.000Z
 category: filmshelf
@@ -7,5 +7,9 @@ finished: 2021-07-03T00:00:00.000Z
 rating: like
 platform: Netflix
 status: finished
+genre: romance
+director:
+  - Vinil Mathew
+year: 2021
 ---
 Finished watching on 2021-07-03.

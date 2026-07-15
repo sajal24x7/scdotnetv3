@@ -1,5 +1,5 @@
 ---
-title: "Pokémon: Mewtwo Strikes Back - Evolution"
+title: 'Pokémon: Mewtwo Strikes Back - Evolution'
 slug: pok-mon-mewtwo-strikes-back-evolution
 created: 2026-07-15T11:14:16.000Z
 category: filmshelf
@@ -7,5 +7,10 @@ finished: 2020-03-07T00:00:00.000Z
 rating: like
 platform: Netflix
 status: finished
+genre: animation
+director:
+  - Motonori Sakakibara
+  - Kunihiko Yuyama
+year: 2019
 ---
 Finished watching on 2020-03-07.

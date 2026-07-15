@@ -1,5 +1,5 @@
 ---
-title: "Lo and Behold: Reveries of the Connected World"
+title: 'Lo and Behold: Reveries of the Connected World'
 slug: lo-and-behold-reveries-of-the-connected-world
 created: 2026-07-15T11:14:16.000Z
 category: filmshelf
@@ -7,5 +7,9 @@ finished: 2019-11-03T00:00:00.000Z
 rating: like
 platform: Netflix
 status: finished
+genre: documentary
+director:
+  - Werner Herzog
+year: 2016
 ---
 Finished watching on 2019-11-03.

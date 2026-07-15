@@ -1,5 +1,5 @@
 ---
-title: "Nobody Speak: Trials of the Free Press"
+title: 'Nobody Speak: Trials of the Free Press'
 slug: nobody-speak-trials-of-the-free-press
 created: 2026-07-15T11:14:16.000Z
 category: filmshelf
@@ -7,5 +7,9 @@ finished: 2021-11-01T00:00:00.000Z
 rating: like
 platform: Netflix
 status: finished
+genre: documentary
+director:
+  - Brian Knappenberger
+year: 2017
 ---
 Finished watching on 2021-11-01.

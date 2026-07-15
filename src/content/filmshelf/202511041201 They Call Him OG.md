@@ -1,5 +1,5 @@
 ---
-title: "They Call Him OG"
+title: They Call Him OG
 slug: they-call-him-og
 created: 2026-07-15T11:14:16.000Z
 category: filmshelf
@@ -7,5 +7,9 @@ finished: 2025-11-04T00:00:00.000Z
 rating: like
 platform: Netflix
 status: finished
+genre: action
+director:
+  - Sujeeth
+year: 2025
 ---
 Finished watching on 2025-11-04.
