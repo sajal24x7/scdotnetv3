@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Michael Mazzola
 year: 2017
+cover: unacknowledged.webp
 ---
 Finished watching on 2019-08-18.

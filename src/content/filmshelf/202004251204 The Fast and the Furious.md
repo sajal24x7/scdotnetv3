@@ -11,5 +11,6 @@ genre: action
 director:
   - Rob Cohen
 year: 2001
+cover: the-fast-and-the-furious.webp
 ---
 Finished watching on 2020-04-25.

@@ -11,5 +11,6 @@ genre: drama
 director:
   - Abhishek Kapoor
 year: 2021
+cover: chandigarh-kare-aashiqui.webp
 ---
 Finished watching on 2023-03-07.

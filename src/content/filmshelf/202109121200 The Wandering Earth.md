@@ -11,5 +11,6 @@ genre: science fiction
 director:
   - Frant Gwo
 year: 2023
+cover: the-wandering-earth.webp
 ---
 Finished watching on 2021-09-12.

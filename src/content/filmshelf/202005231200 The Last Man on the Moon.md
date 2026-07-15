@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Mark Craig
 year: 2016
+cover: the-last-man-on-the-moon.webp
 ---
 Finished watching on 2020-05-23.

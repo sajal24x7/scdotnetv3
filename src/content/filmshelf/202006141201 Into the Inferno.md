@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Werner Herzog
 year: 2016
+cover: into-the-inferno.webp
 ---
 Finished watching on 2020-06-14.

@@ -11,5 +11,6 @@ genre: action
 director:
   - Rob Letterman
 year: 2019
+cover: pokemon-detective-pikachu.webp
 ---
 Finished watching on 2026-04-10.

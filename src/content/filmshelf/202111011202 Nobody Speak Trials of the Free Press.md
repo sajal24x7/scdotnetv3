@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Brian Knappenberger
 year: 2017
+cover: nobody-speak-trials-of-the-free-press.webp
 ---
 Finished watching on 2021-11-01.

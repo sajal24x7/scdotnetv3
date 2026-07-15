@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Ryan Polito
 year: 2018
+cover: seth-rogens-hilarity-for-charity.webp
 ---
 Finished watching on 2019-02-10.

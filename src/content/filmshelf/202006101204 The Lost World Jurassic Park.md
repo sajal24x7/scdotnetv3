@@ -11,5 +11,6 @@ genre: adventure
 director:
   - Steven Spielberg
 year: 1997
+cover: the-lost-world-jurassic-park.webp
 ---
 Finished watching on 2020-06-10.

@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Steven Brill
 year: 2020
+cover: hubie-halloween.webp
 ---
 Finished watching on 2020-10-16.

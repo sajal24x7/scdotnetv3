@@ -11,5 +11,6 @@ genre: action
 director:
   - Patrick Hughes
 year: 2022
+cover: the-man-from-toronto.webp
 ---
 Finished watching on 2022-06-25.

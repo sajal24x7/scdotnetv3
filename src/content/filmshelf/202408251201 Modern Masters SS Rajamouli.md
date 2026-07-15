@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Raghav Khanna
 year: 2024
+cover: modern-masters-ss-rajamouli.webp
 ---
 Finished watching on 2024-08-25.

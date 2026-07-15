@@ -11,5 +11,6 @@ genre: documentary
 director:
   - David Briggs
 year: 2016
+cover: the-truth-about-alcohol.webp
 ---
 Finished watching on 2021-01-23.

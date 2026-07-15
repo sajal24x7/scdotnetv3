@@ -11,5 +11,6 @@ genre: crime
 director:
   - Zack Snyder
 year: 2021
+cover: army-of-the-dead.webp
 ---
 Finished watching on 2021-05-22.

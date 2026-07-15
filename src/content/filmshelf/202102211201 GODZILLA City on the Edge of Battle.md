@@ -12,5 +12,6 @@ director:
   - Hiroyuki Seshita
   - Kobun Shizuno
 year: 2018
+cover: godzilla-city-on-the-edge-of-battle.webp
 ---
 Finished watching on 2021-02-21.

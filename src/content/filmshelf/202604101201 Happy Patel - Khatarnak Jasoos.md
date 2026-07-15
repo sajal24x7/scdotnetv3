@@ -12,5 +12,6 @@ director:
   - Vir Das
   - Kavi Shastri
 year: 2026
+cover: happy-patel-khatarnak-jasoos.webp
 ---
 Finished watching on 2026-04-10.

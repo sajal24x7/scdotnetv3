@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Ryan Polito
 year: 2022
+cover: bill-burr-presents-friends-who-kill.webp
 ---
 Finished watching on 2022-06-25.

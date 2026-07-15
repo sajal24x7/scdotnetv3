@@ -11,5 +11,6 @@ genre: western
 director:
   - Jeymes Samuel
 year: 2021
+cover: the-harder-they-fall.webp
 ---
 Finished watching on 2026-01-18.

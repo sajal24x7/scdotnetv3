@@ -11,5 +11,6 @@ genre: action
 director:
   - Bobby Kolli
 year: 2023
+cover: waltair-veerayya.webp
 ---
 Finished watching on 2023-02-27.

@@ -11,5 +11,6 @@ genre: romance
 director:
   - Vivek Soni
 year: 2021
+cover: meenakshi-sundareshwar.webp
 ---
 Finished watching on 2021-11-07.

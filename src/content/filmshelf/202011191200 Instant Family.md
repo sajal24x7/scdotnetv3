@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Sean Anders
 year: 2018
+cover: instant-family.webp
 ---
 Finished watching on 2020-11-19.

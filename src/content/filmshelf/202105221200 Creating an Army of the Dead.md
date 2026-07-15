@@ -9,5 +9,6 @@ platform: Netflix
 status: finished
 genre: documentary
 year: 2021
+cover: creating-an-army-of-the-dead.webp
 ---
 Finished watching on 2021-05-22.

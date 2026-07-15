@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Rob Burnett
 year: 2016
+cover: the-fundamentals-of-caring.webp
 ---
 Finished watching on 2020-12-26.

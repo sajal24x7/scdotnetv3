@@ -11,5 +11,6 @@ genre: crime
 director:
   - Kookie Gulati
 year: 2022
+cover: dhokha-round-d-corner.webp
 ---
 Finished watching on 2023-08-02.

@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Jonathan Clay
 year: 2021
+cover: breaking-boundaries-the-science-of-our-planet.webp
 ---
 Finished watching on 2024-03-26.

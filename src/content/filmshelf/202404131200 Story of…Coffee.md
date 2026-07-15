@@ -17,5 +17,6 @@ director:
   - Peter Wisdom
   - Ian Sciacaluga
 year: 2016
+cover: story-ofcoffee.webp
 ---
 Finished watching on 2024-04-13.

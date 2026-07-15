@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Michael Barnett
 year: 2017
+cover: the-mars-generation.webp
 ---
 Finished watching on 2019-09-12.

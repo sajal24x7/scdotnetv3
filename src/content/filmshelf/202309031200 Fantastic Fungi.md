@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Louie Schwartzberg
 year: 2019
+cover: fantastic-fungi.webp
 ---
 Finished watching on 2023-09-03.

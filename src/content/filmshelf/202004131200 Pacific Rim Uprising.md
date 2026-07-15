@@ -11,5 +11,6 @@ genre: action
 director:
   - Steven S. DeKnight
 year: 2018
+cover: pacific-rim-uprising.webp
 ---
 Finished watching on 2020-04-13.

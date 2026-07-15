@@ -11,5 +11,6 @@ status: finished
 director:
   - John L. Spencer
 year: 2018
+cover: ricky-gervais-humanity.webp
 ---
 Finished watching on 2019-02-08.

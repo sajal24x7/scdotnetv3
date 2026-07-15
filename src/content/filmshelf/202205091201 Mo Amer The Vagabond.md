@@ -11,5 +11,6 @@ status: finished
 director:
   - Stan Lathan
 year: 2018
+cover: mo-amer-the-vagabond.webp
 ---
 Finished watching on 2022-05-09.

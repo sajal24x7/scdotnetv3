@@ -11,5 +11,6 @@ genre: crime
 director:
   - Sanjay Leela Bhansali
 year: 2022
+cover: gangubai-kathiawadi.webp
 ---
 Finished watching on 2022-05-21.

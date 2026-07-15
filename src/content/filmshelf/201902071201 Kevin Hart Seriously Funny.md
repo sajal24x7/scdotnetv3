@@ -11,5 +11,6 @@ status: finished
 director:
   - Shannon Hartman
 year: 2010
+cover: kevin-hart-seriously-funny.webp
 ---
 Finished watching on 2019-02-07.

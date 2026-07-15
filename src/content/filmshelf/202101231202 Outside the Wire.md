@@ -11,5 +11,6 @@ genre: thriller
 director:
   - Mikael Håfström
 year: 2021
+cover: outside-the-wire.webp
 ---
 Finished watching on 2021-01-23.

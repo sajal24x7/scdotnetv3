@@ -11,5 +11,6 @@ genre: animation
 director:
   - Han Kwang Il
 year: 2021
+cover: the-witcher-nightmare-of-the-wolf.webp
 ---
 Finished watching on 2021-08-29.

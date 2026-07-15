@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Kartiki Gonsalves
 year: 2022
+cover: the-elephant-whisperers.webp
 ---
 Finished watching on 2023-09-02.

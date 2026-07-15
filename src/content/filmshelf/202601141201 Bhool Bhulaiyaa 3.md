@@ -11,5 +11,6 @@ genre: horror
 director:
   - Anees Bazmee
 year: 2024
+cover: bhool-bhulaiyaa-3.webp
 ---
 Finished watching on 2026-01-14.

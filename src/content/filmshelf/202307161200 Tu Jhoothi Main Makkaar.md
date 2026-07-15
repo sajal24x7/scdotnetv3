@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Luv Ranjan
 year: 2023
+cover: tu-jhoothi-main-makkaar.webp
 ---
 Finished watching on 2023-07-16.

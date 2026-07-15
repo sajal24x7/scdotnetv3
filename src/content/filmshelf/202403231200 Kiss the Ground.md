@@ -12,5 +12,6 @@ director:
   - Rebecca Harrell Tickell
   - Josh Tickell
 year: 2020
+cover: kiss-the-ground.webp
 ---
 Finished watching on 2024-03-23.

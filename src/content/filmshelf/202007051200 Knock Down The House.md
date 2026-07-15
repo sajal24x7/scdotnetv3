@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Rachel Lears
 year: 2019
+cover: knock-down-the-house.webp
 ---
 Finished watching on 2020-07-05.

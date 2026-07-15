@@ -11,5 +11,6 @@ genre: romance
 director:
   - Desingh Periyasamy
 year: 2020
+cover: kannum-kannum-kollaiyadithaal.webp
 ---
 Finished watching on 2020-04-02.

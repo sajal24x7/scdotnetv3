@@ -11,5 +11,6 @@ status: finished
 director:
   - Joel Gallen
 year: 2023
+cover: chris-rock-selective-outrage.webp
 ---
 Finished watching on 2023-03-07.

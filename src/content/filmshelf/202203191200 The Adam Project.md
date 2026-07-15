@@ -11,5 +11,6 @@ genre: adventure
 director:
   - Shawn Levy
 year: 2022
+cover: the-adam-project.webp
 ---
 Finished watching on 2022-03-19.

@@ -12,5 +12,6 @@ director:
   - Keegan Kuhn
   - Kip Andersen
 year: 2014
+cover: cowspiracy-the-sustainability-secret.webp
 ---
 Finished watching on 2024-01-28.

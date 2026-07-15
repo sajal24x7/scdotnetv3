@@ -11,5 +11,6 @@ status: finished
 director:
   - Christopher Storer
 year: 2017
+cover: hasan-minhaj-homecoming-king.webp
 ---
 Finished watching on 2022-10-16.

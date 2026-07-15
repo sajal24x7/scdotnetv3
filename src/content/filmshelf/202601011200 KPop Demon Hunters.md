@@ -12,5 +12,6 @@ director:
   - Chris Appelhans
   - Maggie Kang
 year: 2025
+cover: kpop-demon-hunters.webp
 ---
 Finished watching on 2026-01-01.

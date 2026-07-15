@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Raaj Shaandilyaa
 year: 2024
+cover: vicky-vidya-ka-woh-wala-video.webp
 ---
 Finished watching on 2024-12-21.

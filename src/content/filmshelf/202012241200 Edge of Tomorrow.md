@@ -11,5 +11,6 @@ genre: action
 director:
   - Doug Liman
 year: 2014
+cover: edge-of-tomorrow.webp
 ---
 Finished watching on 2020-12-24.

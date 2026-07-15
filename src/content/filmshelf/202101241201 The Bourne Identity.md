@@ -11,5 +11,6 @@ genre: action
 director:
   - Doug Liman
 year: 2002
+cover: the-bourne-identity.webp
 ---
 Finished watching on 2021-01-24.

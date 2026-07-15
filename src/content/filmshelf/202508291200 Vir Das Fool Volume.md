@@ -11,5 +11,6 @@ status: finished
 director:
   - Vir Das
 year: 2025
+cover: vir-das-fool-volume.webp
 ---
 Finished watching on 2025-08-29.

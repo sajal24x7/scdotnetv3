@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Michael Steed
 year: 2022
+cover: my-next-guest-with-david-letterman-and-volodymyr-zelenskyy.webp
 ---
 Finished watching on 2022-12-14.

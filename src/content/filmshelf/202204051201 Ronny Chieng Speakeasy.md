@@ -11,5 +11,6 @@ status: finished
 director:
   - Sebastian DiNatale
 year: 2022
+cover: ronny-chieng-speakeasy.webp
 ---
 Finished watching on 2022-04-05.

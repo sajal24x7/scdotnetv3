@@ -11,5 +11,6 @@ genre: adventure
 director:
   - Guy Ritchie
 year: 2009
+cover: sherlock-holmes.webp
 ---
 Finished watching on 2020-04-18.

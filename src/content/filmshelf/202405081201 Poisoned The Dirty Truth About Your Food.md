@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Stephanie Soechtig
 year: 2023
+cover: poisoned-the-dirty-truth-about-your-food.webp
 ---
 Finished watching on 2024-05-08.

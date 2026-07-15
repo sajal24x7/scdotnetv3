@@ -11,5 +11,6 @@ status: finished
 director:
   - Prashanth Venkataramanujam
 year: 2022
+cover: hasan-minhaj-the-kings-jester.webp
 ---
 Finished watching on 2022-10-08.

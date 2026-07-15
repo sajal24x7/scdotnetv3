@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Yashowardhan Mishra
 year: 2023
+cover: kathal-a-jackfruit-mystery.webp
 ---
 Finished watching on 2026-01-17.

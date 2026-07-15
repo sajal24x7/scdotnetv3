@@ -11,5 +11,6 @@ genre: adventure
 director:
   - Ang Lee
 year: 2000
+cover: crouching-tiger-hidden-dragon.webp
 ---
 Finished watching on 2021-01-23.

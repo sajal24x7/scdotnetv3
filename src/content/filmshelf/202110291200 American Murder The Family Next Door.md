@@ -11,5 +11,6 @@ genre: crime
 director:
   - Jenny Popplewell
 year: 2020
+cover: american-murder-the-family-next-door.webp
 ---
 Finished watching on 2021-10-29.

@@ -11,5 +11,6 @@ genre: action
 director:
   - F. Gary Gray
 year: 2017
+cover: the-fate-of-the-furious.webp
 ---
 Finished watching on 2019-08-16.

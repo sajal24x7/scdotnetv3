@@ -11,5 +11,6 @@ genre: drama
 director:
   - Peter Segal
 year: 2005
+cover: the-longest-yard.webp
 ---
 Finished watching on 2020-01-05.

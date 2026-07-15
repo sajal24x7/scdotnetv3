@@ -11,5 +11,6 @@ genre: action
 director:
   - Mahesh Babu P
 year: 2025
+cover: andhra-king-thaluka.webp
 ---
 Finished watching on 2025-12-30.

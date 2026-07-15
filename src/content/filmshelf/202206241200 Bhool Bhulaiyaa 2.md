@@ -11,5 +11,6 @@ genre: horror
 director:
   - Anees Bazmee
 year: 2022
+cover: bhool-bhulaiyaa-2.webp
 ---
 Finished watching on 2022-06-24.

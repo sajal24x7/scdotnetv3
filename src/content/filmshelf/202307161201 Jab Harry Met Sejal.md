@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Imtiaz Ali
 year: 2017
+cover: jab-harry-met-sejal.webp
 ---
 Finished watching on 2023-07-16.

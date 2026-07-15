@@ -11,5 +11,6 @@ genre: adventure
 director:
   - Khuzema Haveliwala
 year: 2022
+cover: ranveer-vs-wild-with-bear-grylls.webp
 ---
 Finished watching on 2022-07-09.

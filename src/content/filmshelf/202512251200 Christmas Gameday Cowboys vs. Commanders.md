@@ -8,5 +8,6 @@ rating: like
 platform: Netflix
 status: finished
 year: 2025
+cover: christmas-gameday-cowboys-vs-commanders.webp
 ---
 Finished watching on 2025-12-25.

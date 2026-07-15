@@ -11,5 +11,6 @@ genre: action
 director:
   - Antoine Fuqua
 year: 2013
+cover: olympus-has-fallen.webp
 ---
 Finished watching on 2021-05-01.

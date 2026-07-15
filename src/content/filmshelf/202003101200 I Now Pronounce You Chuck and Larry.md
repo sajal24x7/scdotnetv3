@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Dennis Dugan
 year: 2007
+cover: i-now-pronounce-you-chuck-and-larry.webp
 ---
 Finished watching on 2020-03-10.

@@ -11,5 +11,6 @@ status: finished
 director:
   - Fazila Allana
 year: 2017
+cover: aditi-mittal-things-they-wouldnt-let-me-say.webp
 ---
 Finished watching on 2019-11-03.

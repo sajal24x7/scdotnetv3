@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Scott Aukerman
 year: 2019
+cover: between-two-ferns-the-movie.webp
 ---
 Finished watching on 2019-10-25.

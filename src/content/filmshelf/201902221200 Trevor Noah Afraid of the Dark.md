@@ -11,5 +11,6 @@ status: finished
 director:
   - David Paul Meyer
 year: 2017
+cover: trevor-noah-afraid-of-the-dark.webp
 ---
 Finished watching on 2019-02-22.

@@ -11,5 +11,6 @@ status: finished
 director:
   - Troy Miller
 year: 2021
+cover: nate-bargatze-the-greatest-average-american.webp
 ---
 Finished watching on 2021-03-23.

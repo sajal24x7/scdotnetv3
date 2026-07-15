@@ -11,5 +11,6 @@ genre: drama
 director:
   - Renuka Shahane
 year: 2021
+cover: tribhanga-tedhi-medhi-crazy.webp
 ---
 Finished watching on 2021-01-23.

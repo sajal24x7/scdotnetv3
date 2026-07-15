@@ -11,5 +11,6 @@ genre: science fiction
 director:
   - Jim Mickle
 year: 2019
+cover: in-the-shadow-of-the-moon.webp
 ---
 Finished watching on 2022-05-29.

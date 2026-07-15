@@ -11,5 +11,6 @@ genre: action
 director:
   - George Miller
 year: 2024
+cover: furiosa-a-mad-max-saga.webp
 ---
 Finished watching on 2026-01-06.

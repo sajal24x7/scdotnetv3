@@ -12,5 +12,6 @@ director:
   - Jonathan Halperin
   - Drew Takahashi
 year: 2022
+cover: a-trip-to-infinity.webp
 ---
 Finished watching on 2023-10-23.

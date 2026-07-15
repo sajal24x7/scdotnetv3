@@ -11,5 +11,6 @@ status: finished
 director:
   - David Higby
 year: 2016
+cover: russell-peters-almost-famous.webp
 ---
 Finished watching on 2019-12-03.

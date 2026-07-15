@@ -13,5 +13,6 @@ director:
   - Keith Scholey
   - Jonathan Hughes
 year: 2020
+cover: david-attenborough-a-life-on-our-planet.webp
 ---
 Finished watching on 2020-10-04.

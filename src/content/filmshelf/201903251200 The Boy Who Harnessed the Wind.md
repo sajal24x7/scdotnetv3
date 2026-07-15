@@ -11,5 +11,6 @@ genre: drama
 director:
   - Chiwetel Ejiofor
 year: 2019
+cover: the-boy-who-harnessed-the-wind.webp
 ---
 Finished watching on 2019-03-25.

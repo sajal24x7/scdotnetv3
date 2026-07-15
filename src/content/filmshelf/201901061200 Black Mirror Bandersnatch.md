@@ -11,5 +11,6 @@ genre: thriller
 director:
   - David Slade
 year: 2018
+cover: black-mirror-bandersnatch.webp
 ---
 Finished watching on 2019-01-06.

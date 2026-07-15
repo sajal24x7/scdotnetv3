@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Liam Lynch
 year: 2017
+cover: sarah-silverman-a-speck-of-dust.webp
 ---
 Finished watching on 2021-02-02.

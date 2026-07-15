@@ -11,5 +11,6 @@ genre: science fiction
 director:
   - Teng Huatao
 year: 2019
+cover: shanghai-fortress.webp
 ---
 Finished watching on 2021-09-13.

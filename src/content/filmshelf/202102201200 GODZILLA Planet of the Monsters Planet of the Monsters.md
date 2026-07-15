@@ -12,5 +12,6 @@ director:
   - Hiroyuki Seshita
   - Kobun Shizuno
 year: 2017
+cover: godzilla-planet-of-the-monsters-planet-of-the-monsters.webp
 ---
 Finished watching on 2021-02-20.

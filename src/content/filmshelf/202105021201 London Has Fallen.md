@@ -11,5 +11,6 @@ genre: action
 director:
   - Babak Najafi
 year: 2016
+cover: london-has-fallen.webp
 ---
 Finished watching on 2021-05-02.

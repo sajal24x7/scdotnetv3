@@ -12,5 +12,6 @@ director:
   - Jay Karas
   - Rami Hachache
 year: 2016
+cover: tom-segura-mostly-stories.webp
 ---
 Finished watching on 2021-02-09.

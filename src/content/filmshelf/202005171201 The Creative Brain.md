@@ -12,5 +12,6 @@ director:
   - Toby Trackman
   - Jennifer Beamish
 year: 2019
+cover: the-creative-brain.webp
 ---
 Finished watching on 2020-05-17.

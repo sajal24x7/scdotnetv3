@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Saahil Chhabria
 year: 2022
+cover: kapil-sharma-im-not-done-yet.webp
 ---
 Finished watching on 2022-01-28.

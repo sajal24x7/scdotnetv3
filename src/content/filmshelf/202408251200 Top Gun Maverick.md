@@ -11,5 +11,6 @@ genre: action
 director:
   - Joseph Kosinski
 year: 2022
+cover: top-gun-maverick.webp
 ---
 Finished watching on 2024-08-25.

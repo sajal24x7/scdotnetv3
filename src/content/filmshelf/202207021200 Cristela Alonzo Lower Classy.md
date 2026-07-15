@@ -11,5 +11,6 @@ status: finished
 director:
   - Marcus Raboy
 year: 2017
+cover: cristela-alonzo-lower-classy.webp
 ---
 Finished watching on 2022-07-02.

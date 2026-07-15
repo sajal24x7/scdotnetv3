@@ -11,5 +11,6 @@ genre: action
 director:
   - Christopher Nolan
 year: 2012
+cover: the-dark-knight-rises.webp
 ---
 Finished watching on 2019-10-29.

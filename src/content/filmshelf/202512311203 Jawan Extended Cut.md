@@ -11,5 +11,6 @@ genre: action
 director:
   - Atlee
 year: 2023
+cover: jawan-extended-cut.webp
 ---
 Finished watching on 2025-12-31.

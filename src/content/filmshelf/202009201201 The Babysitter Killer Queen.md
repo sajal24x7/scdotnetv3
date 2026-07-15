@@ -11,5 +11,6 @@ genre: comedy
 director:
   - McG
 year: 2020
+cover: the-babysitter-killer-queen.webp
 ---
 Finished watching on 2020-09-20.

@@ -11,5 +11,6 @@ status: finished
 director:
   - John L. Spencer
 year: 2022
+cover: ricky-gervais-supernature.webp
 ---
 Finished watching on 2022-05-24.

@@ -12,5 +12,6 @@ director:
   - Keegan Kuhn
   - Kip Andersen
 year: 2017
+cover: what-the-health.webp
 ---
 Finished watching on 2024-03-26.

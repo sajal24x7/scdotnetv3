@@ -11,5 +11,6 @@ status: finished
 director:
   - Page Hurwitz
 year: 2022
+cover: cristela-alonzo-middle-classy.webp
 ---
 Finished watching on 2022-07-02.

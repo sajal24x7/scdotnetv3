@@ -11,5 +11,6 @@ genre: romance
 director:
   - Puneet Khanna
 year: 2020
+cover: ginny-weds-sunny.webp
 ---
 Finished watching on 2026-01-17.

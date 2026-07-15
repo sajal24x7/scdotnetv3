@@ -11,5 +11,6 @@ status: finished
 director:
   - Jay Karas
 year: 2018
+cover: ali-wong-hard-knock-wife.webp
 ---
 Finished watching on 2019-09-27.

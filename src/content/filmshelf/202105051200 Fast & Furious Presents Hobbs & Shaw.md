@@ -11,5 +11,6 @@ genre: action
 director:
   - David Leitch
 year: 2019
+cover: fast-furious-presents-hobbs-shaw.webp
 ---
 Finished watching on 2021-05-05.

@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Matt D'Avella
 year: 2015
+cover: minimalism-a-documentary-about-the-important-things.webp
 ---
 Finished watching on 2020-05-11.

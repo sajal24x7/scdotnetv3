@@ -12,5 +12,6 @@ director:
   - Luis Alfaro
   - Pablo Lejarreta
 year: 2020
+cover: money-heist-the-phenomenon.webp
 ---
 Finished watching on 2020-04-05.

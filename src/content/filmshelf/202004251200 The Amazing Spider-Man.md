@@ -11,5 +11,6 @@ genre: action
 director:
   - Marc Webb
 year: 2012
+cover: the-amazing-spider-man.webp
 ---
 Finished watching on 2020-04-25.

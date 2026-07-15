@@ -11,5 +11,6 @@ genre: crime
 director:
   - Tigmanshu Dhulia
 year: 2012
+cover: paan-singh-tomar.webp
 ---
 Finished watching on 2021-11-23.

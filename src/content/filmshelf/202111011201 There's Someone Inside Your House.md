@@ -11,5 +11,6 @@ genre: horror
 director:
   - Patrick Brice
 year: 2021
+cover: theres-someone-inside-your-house.webp
 ---
 Finished watching on 2021-11-01.

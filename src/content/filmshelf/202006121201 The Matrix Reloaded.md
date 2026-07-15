@@ -12,5 +12,6 @@ director:
   - Lana Wachowski
   - Lilly Wachowski
 year: 2003
+cover: the-matrix-reloaded.webp
 ---
 Finished watching on 2020-06-12.

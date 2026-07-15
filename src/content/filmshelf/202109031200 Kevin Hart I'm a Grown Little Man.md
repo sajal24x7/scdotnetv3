@@ -11,5 +11,6 @@ status: finished
 director:
   - Shannon Hartman
 year: 2009
+cover: kevin-hart-im-a-grown-little-man.webp
 ---
 Finished watching on 2021-09-03.

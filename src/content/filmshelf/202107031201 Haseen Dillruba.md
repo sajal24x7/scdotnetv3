@@ -11,5 +11,6 @@ genre: romance
 director:
   - Vinil Mathew
 year: 2021
+cover: haseen-dillruba.webp
 ---
 Finished watching on 2021-07-03.

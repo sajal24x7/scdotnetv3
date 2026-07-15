@@ -11,5 +11,6 @@ genre: action
 director:
   - Jon Watts
 year: 2019
+cover: spider-man-far-from-home.webp
 ---
 Finished watching on 2021-05-27.

@@ -11,5 +11,6 @@ genre: action
 director:
   - Trivikram Srinivas
 year: 2020
+cover: ala-vaikunthapurramuloo.webp
 ---
 Finished watching on 2023-04-17.

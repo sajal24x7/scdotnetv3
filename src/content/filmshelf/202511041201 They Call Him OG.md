@@ -11,5 +11,6 @@ genre: action
 director:
   - Sujeeth
 year: 2025
+cover: they-call-him-og.webp
 ---
 Finished watching on 2025-11-04.

@@ -11,5 +11,6 @@ status: finished
 director:
   - Madeleine Parry
 year: 2020
+cover: hannah-gadsby-douglas.webp
 ---
 Finished watching on 2020-06-02.

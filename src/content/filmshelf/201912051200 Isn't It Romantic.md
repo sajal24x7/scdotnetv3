@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Norman Z. McLeod
 year: 1948
+cover: isnt-it-romantic.webp
 ---
 Finished watching on 2019-12-05.

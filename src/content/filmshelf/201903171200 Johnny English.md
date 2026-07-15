@@ -11,5 +11,6 @@ genre: adventure
 director:
   - Peter Howitt
 year: 2003
+cover: johnny-english.webp
 ---
 Finished watching on 2019-03-17.

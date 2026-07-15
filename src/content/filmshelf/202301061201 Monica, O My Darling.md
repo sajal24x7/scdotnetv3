@@ -11,5 +11,6 @@ genre: crime
 director:
   - Vasan Bala
 year: 2022
+cover: monica-o-my-darling.webp
 ---
 Finished watching on 2023-01-06.

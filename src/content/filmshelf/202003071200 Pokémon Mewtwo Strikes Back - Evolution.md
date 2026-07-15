@@ -12,5 +12,6 @@ director:
   - Motonori Sakakibara
   - Kunihiko Yuyama
 year: 2019
+cover: pokemon-mewtwo-strikes-back-evolution.webp
 ---
 Finished watching on 2020-03-07.

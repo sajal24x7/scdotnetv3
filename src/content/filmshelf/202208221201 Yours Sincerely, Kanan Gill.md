@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Neville Shah
 year: 2020
+cover: yours-sincerely-kanan-gill.webp
 ---
 Finished watching on 2022-08-22.

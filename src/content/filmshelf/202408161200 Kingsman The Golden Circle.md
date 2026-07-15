@@ -11,5 +11,6 @@ genre: action
 director:
   - Matthew Vaughn
 year: 2017
+cover: kingsman-the-golden-circle.webp
 ---
 Finished watching on 2024-08-16.

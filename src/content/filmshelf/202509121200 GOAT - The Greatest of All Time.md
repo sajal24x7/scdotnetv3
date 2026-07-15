@@ -9,5 +9,6 @@ platform: Netflix
 status: finished
 genre: music
 year: 2023
+cover: goat-the-greatest-of-all-time.webp
 ---
 Finished watching on 2025-09-12.

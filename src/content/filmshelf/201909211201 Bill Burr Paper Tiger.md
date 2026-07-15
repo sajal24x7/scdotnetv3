@@ -11,5 +11,6 @@ status: finished
 director:
   - Mike Binder
 year: 2019
+cover: bill-burr-paper-tiger.webp
 ---
 Finished watching on 2019-09-21.

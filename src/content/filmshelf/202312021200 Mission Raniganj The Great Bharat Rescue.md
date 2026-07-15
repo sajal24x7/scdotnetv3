@@ -11,5 +11,6 @@ genre: drama
 director:
   - Tinu Suresh Desai
 year: 2023
+cover: mission-raniganj-the-great-bharat-rescue.webp
 ---
 Finished watching on 2023-12-02.

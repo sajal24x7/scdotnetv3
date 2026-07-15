@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Manny Rodriguez
 year: 2019
+cover: gabriel-fluffy-iglesias-one-show-fits-all.webp
 ---
 Finished watching on 2019-02-07.

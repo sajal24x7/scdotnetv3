@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Felicity Morris
 year: 2022
+cover: the-tinder-swindler.webp
 ---
 Finished watching on 2022-09-17.

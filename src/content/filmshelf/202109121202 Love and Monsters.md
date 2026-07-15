@@ -11,5 +11,6 @@ genre: adventure
 director:
   - Michael Matthews
 year: 2020
+cover: love-and-monsters.webp
 ---
 Finished watching on 2021-09-12.

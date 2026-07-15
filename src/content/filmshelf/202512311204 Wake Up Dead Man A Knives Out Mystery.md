@@ -11,5 +11,6 @@ genre: thriller
 director:
   - Rian Johnson
 year: 2025
+cover: wake-up-dead-man-a-knives-out-mystery.webp
 ---
 Finished watching on 2025-12-31.

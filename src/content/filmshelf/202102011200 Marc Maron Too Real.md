@@ -11,5 +11,6 @@ status: finished
 director:
   - Lynn Shelton
 year: 2017
+cover: marc-maron-too-real.webp
 ---
 Finished watching on 2021-02-01.

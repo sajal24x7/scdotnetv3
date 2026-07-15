@@ -12,5 +12,6 @@ director:
   - Lilly Wachowski
   - Lana Wachowski
 year: 2003
+cover: the-matrix-revolutions.webp
 ---
 Finished watching on 2020-06-12.

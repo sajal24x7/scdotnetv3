@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Bo Burnham
 year: 2021
+cover: bo-burnham-inside.webp
 ---
 Finished watching on 2021-05-31.

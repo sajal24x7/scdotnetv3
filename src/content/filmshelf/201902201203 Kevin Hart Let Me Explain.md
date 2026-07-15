@@ -11,5 +11,6 @@ status: finished
 director:
   - Leslie Small
 year: 2013
+cover: kevin-hart-let-me-explain.webp
 ---
 Finished watching on 2019-02-20.

@@ -11,5 +11,6 @@ genre: adventure
 director:
   - Brad Peyton
 year: 2012
+cover: journey-2-the-mysterious-island.webp
 ---
 Finished watching on 2020-05-14.

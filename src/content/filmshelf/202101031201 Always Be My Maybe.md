@@ -11,5 +11,6 @@ genre: romance
 director:
   - Nahnatchka Khan
 year: 2019
+cover: always-be-my-maybe.webp
 ---
 Finished watching on 2021-01-03.

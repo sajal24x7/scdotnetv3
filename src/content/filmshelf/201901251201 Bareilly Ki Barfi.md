@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Ashwiny Iyer Tiwari
 year: 2017
+cover: bareilly-ki-barfi.webp
 ---
 Finished watching on 2019-01-25.

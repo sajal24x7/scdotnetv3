@@ -11,5 +11,6 @@ status: finished
 director:
   - David Higby
 year: 2013
+cover: russell-peters-notorious.webp
 ---
 Finished watching on 2019-11-15.

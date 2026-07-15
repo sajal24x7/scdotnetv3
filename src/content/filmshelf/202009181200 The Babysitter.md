@@ -11,5 +11,6 @@ genre: comedy
 director:
   - McG
 year: 2017
+cover: the-babysitter.webp
 ---
 Finished watching on 2020-09-18.

@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Steven Brill
 year: 2018
+cover: adam-sandler-100-fresh.webp
 ---
 Finished watching on 2020-01-01.

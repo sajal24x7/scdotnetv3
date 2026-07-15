@@ -11,5 +11,6 @@ genre: crime
 director:
   - Karthik Subbaraj
 year: 2021
+cover: jagame-thandhiram.webp
 ---
 Finished watching on 2021-06-19.

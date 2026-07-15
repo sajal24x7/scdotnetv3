@@ -11,5 +11,6 @@ status: finished
 director:
   - Lynn Shelton
 year: 2020
+cover: marc-maron-end-times-fun.webp
 ---
 Finished watching on 2021-02-01.

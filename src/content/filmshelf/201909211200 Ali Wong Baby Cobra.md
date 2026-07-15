@@ -11,5 +11,6 @@ status: finished
 director:
   - Jay Karas
 year: 2016
+cover: ali-wong-baby-cobra.webp
 ---
 Finished watching on 2019-09-21.

@@ -11,5 +11,6 @@ genre: drama
 director:
   - Magnus Martens
 year: 2021
+cover: sas-rise-of-the-black-swan.webp
 ---
 Finished watching on 2021-09-05.

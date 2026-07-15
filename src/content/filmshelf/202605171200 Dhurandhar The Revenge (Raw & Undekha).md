@@ -11,5 +11,6 @@ genre: action
 director:
   - Aditya Dhar
 year: 2026
+cover: dhurandhar-the-revenge-raw-undekha.webp
 ---
 Finished watching on 2026-05-17.

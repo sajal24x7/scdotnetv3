@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Simarpreet Singh
 year: 2024
+cover: wild-wild-punjab.webp
 ---
 Finished watching on 2024-09-27.

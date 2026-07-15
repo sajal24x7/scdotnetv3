@@ -11,5 +11,6 @@ genre: action
 director:
   - Matthias Schweighöfer
 year: 2021
+cover: army-of-thieves.webp
 ---
 Finished watching on 2021-10-30.

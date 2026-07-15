@@ -11,5 +11,6 @@ genre: adventure
 director:
   - Steven Spielberg
 year: 2018
+cover: ready-player-one.webp
 ---
 Finished watching on 2020-04-17.

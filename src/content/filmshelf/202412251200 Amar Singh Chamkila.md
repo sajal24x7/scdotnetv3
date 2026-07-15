@@ -11,5 +11,6 @@ genre: drama
 director:
   - Imtiaz Ali
 year: 2024
+cover: amar-singh-chamkila.webp
 ---
 Finished watching on 2024-12-25.

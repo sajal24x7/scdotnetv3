@@ -11,5 +11,6 @@ status: finished
 director:
   - David Paul Meyer
 year: 2018
+cover: trevor-noah-son-of-patricia.webp
 ---
 Finished watching on 2019-02-05.

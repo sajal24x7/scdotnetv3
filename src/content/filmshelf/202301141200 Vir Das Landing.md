@@ -11,5 +11,6 @@ status: finished
 director:
   - Vir Das
 year: 2022
+cover: vir-das-landing.webp
 ---
 Finished watching on 2023-01-14.

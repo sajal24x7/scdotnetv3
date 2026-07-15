@@ -11,5 +11,6 @@ genre: romance
 director:
   - Shashank Khaitan
 year: 2025
+cover: sunny-sanskari-ki-tulsi-kumari.webp
 ---
 Finished watching on 2025-12-01.

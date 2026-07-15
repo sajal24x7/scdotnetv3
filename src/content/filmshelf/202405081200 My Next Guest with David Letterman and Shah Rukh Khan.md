@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Michael Steed
 year: 2019
+cover: my-next-guest-with-david-letterman-and-shah-rukh-khan.webp
 ---
 Finished watching on 2024-05-08.

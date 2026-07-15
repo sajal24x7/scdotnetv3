@@ -11,5 +11,6 @@ genre: action
 director:
   - Harish Shankar
 year: 2026
+cover: ustaad-bhagat-singh.webp
 ---
 Finished watching on 2026-05-20.

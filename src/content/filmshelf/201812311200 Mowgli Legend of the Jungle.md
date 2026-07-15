@@ -11,5 +11,6 @@ genre: adventure
 director:
   - Andy Serkis
 year: 2018
+cover: mowgli-legend-of-the-jungle.webp
 ---
 Finished watching on 2018-12-31.

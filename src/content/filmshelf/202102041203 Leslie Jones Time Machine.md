@@ -12,5 +12,6 @@ director:
   - David Benioff
   - D. B. Weiss
 year: 2020
+cover: leslie-jones-time-machine.webp
 ---
 Finished watching on 2021-02-04.

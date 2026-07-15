@@ -11,5 +11,6 @@ genre: romance
 director:
   - Kranthi Madhav
 year: 2020
+cover: world-famous-lover.webp
 ---
 Finished watching on 2020-04-17.

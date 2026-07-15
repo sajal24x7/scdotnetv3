@@ -12,5 +12,6 @@ director:
   - Vir Das
   - Ajay Bhuyan
 year: 2020
+cover: vir-das-for-india.webp
 ---
 Finished watching on 2020-12-04.

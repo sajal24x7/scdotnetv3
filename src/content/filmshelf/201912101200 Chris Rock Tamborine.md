@@ -11,5 +11,6 @@ status: finished
 director:
   - Bo Burnham
 year: 2018
+cover: chris-rock-tamborine.webp
 ---
 Finished watching on 2019-12-10.

@@ -11,5 +11,6 @@ genre: romance
 director:
   - Rohit Shetty
 year: 2013
+cover: chennai-express.webp
 ---
 Finished watching on 2025-12-31.

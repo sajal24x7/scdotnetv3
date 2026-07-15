@@ -11,5 +11,6 @@ genre: action
 director:
   - Sharan Sharma
 year: 2020
+cover: gunjan-saxena-the-kargil-girl.webp
 ---
 Finished watching on 2021-02-21.

@@ -11,5 +11,6 @@ genre: action
 director:
   - Vivek Athreya
 year: 2024
+cover: saripodhaa-sanivaaram.webp
 ---
 Finished watching on 2024-10-12.

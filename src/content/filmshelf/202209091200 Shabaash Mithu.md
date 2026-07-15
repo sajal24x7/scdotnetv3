@@ -11,5 +11,6 @@ genre: drama
 director:
   - Srijit Mukherji
 year: 2022
+cover: shabaash-mithu.webp
 ---
 Finished watching on 2022-09-09.

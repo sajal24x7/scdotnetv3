@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Rian Johnson
 year: 2022
+cover: glass-onion-a-knives-out-mystery.webp
 ---
 Finished watching on 2025-12-31.

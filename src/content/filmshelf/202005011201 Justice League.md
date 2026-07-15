@@ -11,5 +11,6 @@ genre: action
 director:
   - Zack Snyder
 year: 2017
+cover: justice-league.webp
 ---
 Finished watching on 2020-05-01.

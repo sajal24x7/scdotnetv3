@@ -11,5 +11,6 @@ genre: documentary
 director:
   - David Paul Meyer
 year: 2011
+cover: you-laugh-but-its-true.webp
 ---
 Finished watching on 2019-02-20.

@@ -11,5 +11,6 @@ status: finished
 director:
   - Sebastian DiNatale
 year: 2019
+cover: ronny-chieng-asian-comedian-destroys-america.webp
 ---
 Finished watching on 2022-04-05.

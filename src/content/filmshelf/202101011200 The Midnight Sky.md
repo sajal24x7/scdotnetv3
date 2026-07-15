@@ -11,5 +11,6 @@ genre: science fiction
 director:
   - George Clooney
 year: 2020
+cover: the-midnight-sky.webp
 ---
 Finished watching on 2021-01-01.

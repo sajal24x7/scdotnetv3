@@ -11,5 +11,6 @@ status: finished
 director:
   - Spike Jonze
 year: 2019
+cover: aziz-ansari-right-now.webp
 ---
 Finished watching on 2019-10-31.

@@ -11,5 +11,6 @@ genre: thriller
 director:
   - Kathryn Bigelow
 year: 2025
+cover: a-house-of-dynamite.webp
 ---
 Finished watching on 2025-11-07.

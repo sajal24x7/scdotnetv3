@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Peter Berg
 year: 2020
+cover: spenser-confidential.webp
 ---
 Finished watching on 2020-03-16.

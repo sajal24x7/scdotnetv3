@@ -11,5 +11,6 @@ genre: mystery
 director:
   - Jayprad Desai
 year: 2024
+cover: phir-aayi-hasseen-dillruba.webp
 ---
 Finished watching on 2024-08-10.

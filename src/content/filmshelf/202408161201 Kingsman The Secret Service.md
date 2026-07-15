@@ -11,5 +11,6 @@ genre: crime
 director:
   - Matthew Vaughn
 year: 2015
+cover: kingsman-the-secret-service.webp
 ---
 Finished watching on 2024-08-16.

@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Mozez Singh
 year: 2024
+cover: yo-yo-honey-singh-famous.webp
 ---
 Finished watching on 2024-12-23.

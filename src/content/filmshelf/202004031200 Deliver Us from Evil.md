@@ -11,5 +11,6 @@ genre: thriller
 director:
   - Scott Derrickson
 year: 2014
+cover: deliver-us-from-evil.webp
 ---
 Finished watching on 2020-04-03.

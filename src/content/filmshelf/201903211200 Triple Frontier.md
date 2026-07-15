@@ -11,5 +11,6 @@ genre: action
 director:
   - J.C. Chandor
 year: 2019
+cover: triple-frontier.webp
 ---
 Finished watching on 2019-03-21.

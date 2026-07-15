@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Matt D'Avella
 year: 2021
+cover: the-minimalists-less-is-now.webp
 ---
 Finished watching on 2021-01-01.

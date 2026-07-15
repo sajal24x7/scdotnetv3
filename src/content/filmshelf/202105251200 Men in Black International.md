@@ -11,5 +11,6 @@ genre: comedy
 director:
   - F. Gary Gray
 year: 2019
+cover: men-in-black-international.webp
 ---
 Finished watching on 2021-05-25.

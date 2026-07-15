@@ -11,5 +11,6 @@ genre: adventure
 director:
   - J. A. Bayona
 year: 2018
+cover: jurassic-world-fallen-kingdom.webp
 ---
 Finished watching on 2020-06-27.

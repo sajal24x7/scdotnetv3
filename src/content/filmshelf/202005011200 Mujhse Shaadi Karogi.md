@@ -11,5 +11,6 @@ genre: romance
 director:
   - David Dhawan
 year: 2004
+cover: mujhse-shaadi-karogi.webp
 ---
 Finished watching on 2020-05-01.

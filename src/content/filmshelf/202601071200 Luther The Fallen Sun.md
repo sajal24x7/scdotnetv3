@@ -11,5 +11,6 @@ genre: crime
 director:
   - Jamie Payne
 year: 2023
+cover: luther-the-fallen-sun.webp
 ---
 Finished watching on 2026-01-07.

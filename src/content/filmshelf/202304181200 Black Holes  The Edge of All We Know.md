@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Peter Galison
 year: 2020
+cover: black-holes-the-edge-of-all-we-know.webp
 ---
 Finished watching on 2023-04-18.

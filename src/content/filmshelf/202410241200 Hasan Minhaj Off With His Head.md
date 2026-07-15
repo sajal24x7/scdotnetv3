@@ -11,5 +11,6 @@ status: finished
 director:
   - Tyler Babin
 year: 2024
+cover: hasan-minhaj-off-with-his-head.webp
 ---
 Finished watching on 2024-10-24.

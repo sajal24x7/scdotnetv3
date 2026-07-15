@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Jon M. Chu
 year: 2019
+cover: ken-jeong-you-complete-me-ho.webp
 ---
 Finished watching on 2019-02-19.

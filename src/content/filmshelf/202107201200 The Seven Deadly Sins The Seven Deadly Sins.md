@@ -17,5 +17,6 @@ director:
   - Roger Vadim
   - Édouard Molinaro
 year: 1962
+cover: the-seven-deadly-sins-the-seven-deadly-sins.webp
 ---
 Finished watching on 2021-07-20.

@@ -11,5 +11,6 @@ genre: action
 director:
   - Paul Greengrass
 year: 2004
+cover: the-bourne-supremacy.webp
 ---
 Finished watching on 2021-01-24.

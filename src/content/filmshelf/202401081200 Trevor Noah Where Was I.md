@@ -11,5 +11,6 @@ status: finished
 director:
   - David Paul Meyer
 year: 2023
+cover: trevor-noah-where-was-i.webp
 ---
 Finished watching on 2024-01-08.

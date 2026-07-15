@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Oz Rodríguez
 year: 2016
+cover: michael-che-matters.webp
 ---
 Finished watching on 2020-06-14.

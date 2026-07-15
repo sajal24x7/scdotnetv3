@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Sean Doherty
 year: 2021
+cover: attack-of-the-hollywood-cliches.webp
 ---
 Finished watching on 2021-10-26.

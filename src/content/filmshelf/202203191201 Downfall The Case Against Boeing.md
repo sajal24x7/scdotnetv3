@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Rory Kennedy
 year: 2022
+cover: downfall-the-case-against-boeing.webp
 ---
 Finished watching on 2022-03-19.

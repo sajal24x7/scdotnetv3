@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Anjali Nayar
 year: 2024
+cover: hack-your-health-the-secrets-of-your-gut.webp
 ---
 Finished watching on 2024-05-08.

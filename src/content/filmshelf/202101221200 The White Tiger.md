@@ -11,5 +11,6 @@ genre: drama
 director:
   - Ramin Bahrani
 year: 2021
+cover: the-white-tiger.webp
 ---
 Finished watching on 2021-01-22.

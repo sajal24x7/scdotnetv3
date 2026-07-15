@@ -11,5 +11,6 @@ genre: action
 director:
   - Chad Stahelski
 year: 2017
+cover: john-wick-chapter-2.webp
 ---
 Finished watching on 2025-12-26.

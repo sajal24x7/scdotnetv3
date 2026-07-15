@@ -11,5 +11,6 @@ genre: western
 director:
   - John Sturges
 year: 1960
+cover: the-magnificent-seven.webp
 ---
 Finished watching on 2026-04-02.

@@ -11,5 +11,6 @@ genre: adventure
 director:
   - Randal Kleiser
 year: 1980
+cover: the-blue-lagoon.webp
 ---
 Finished watching on 2024-08-10.

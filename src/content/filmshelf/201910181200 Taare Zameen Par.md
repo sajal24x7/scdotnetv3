@@ -11,5 +11,6 @@ genre: drama
 director:
   - Aamir Khan
 year: 2007
+cover: taare-zameen-par.webp
 ---
 Finished watching on 2019-10-18.

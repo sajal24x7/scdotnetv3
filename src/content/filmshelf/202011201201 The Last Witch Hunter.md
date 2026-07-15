@@ -11,5 +11,6 @@ genre: action
 director:
   - Breck Eisner
 year: 2015
+cover: the-last-witch-hunter.webp
 ---
 Finished watching on 2020-11-20.

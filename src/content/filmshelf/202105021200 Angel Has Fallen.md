@@ -11,5 +11,6 @@ genre: action
 director:
   - Ric Roman Waugh
 year: 2019
+cover: angel-has-fallen.webp
 ---
 Finished watching on 2021-05-02.

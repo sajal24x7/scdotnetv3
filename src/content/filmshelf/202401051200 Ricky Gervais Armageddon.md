@@ -11,5 +11,6 @@ status: finished
 director:
   - John L. Spencer
 year: 2023
+cover: ricky-gervais-armageddon.webp
 ---
 Finished watching on 2024-01-05.

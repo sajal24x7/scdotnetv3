@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Ryan White
 year: 2023
+cover: pamela-a-love-story.webp
 ---
 Finished watching on 2023-04-19.

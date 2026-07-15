@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Shai Gal
 year: 2023
+cover: unknown-cosmic-time-machine.webp
 ---
 Finished watching on 2023-08-03.

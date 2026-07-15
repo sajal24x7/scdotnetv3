@@ -11,5 +11,6 @@ genre: science fiction
 director:
   - Rich Lee
 year: 2025
+cover: war-of-the-worlds.webp
 ---
 Finished watching on 2020-06-10.

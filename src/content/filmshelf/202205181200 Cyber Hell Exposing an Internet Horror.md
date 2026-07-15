@@ -11,5 +11,6 @@ genre: crime
 director:
   - Choi Jin-sung
 year: 2022
+cover: cyber-hell-exposing-an-internet-horror.webp
 ---
 Finished watching on 2022-05-18.

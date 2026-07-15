@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Neal Brennan
 year: 2019
+cover: seth-meyers-lobby-baby.webp
 ---
 Finished watching on 2019-11-10.

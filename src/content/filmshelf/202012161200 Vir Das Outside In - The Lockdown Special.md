@@ -11,5 +11,6 @@ status: finished
 director:
   - Vir Das
 year: 2020
+cover: vir-das-outside-in-the-lockdown-special.webp
 ---
 Finished watching on 2020-12-16.

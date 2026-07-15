@@ -11,5 +11,6 @@ genre: action
 director:
   - Paul W. S. Anderson
 year: 2020
+cover: monster-hunter.webp
 ---
 Finished watching on 2022-09-05.

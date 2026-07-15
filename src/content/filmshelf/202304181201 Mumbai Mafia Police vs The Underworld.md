@@ -12,5 +12,6 @@ director:
   - Raaghav Dar
   - Francis Longhurst
 year: 2023
+cover: mumbai-mafia-police-vs-the-underworld.webp
 ---
 Finished watching on 2023-04-18.

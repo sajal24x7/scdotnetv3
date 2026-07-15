@@ -11,5 +11,6 @@ status: finished
 director:
   - Jay Karas
 year: 2017
+cover: bill-burr-walk-your-way-out.webp
 ---
 Finished watching on 2019-12-02.

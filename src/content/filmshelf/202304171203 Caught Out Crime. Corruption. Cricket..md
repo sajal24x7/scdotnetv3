@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Supriya Sobti Gupta
 year: 2023
+cover: caught-out-crime-corruption-cricket.webp
 ---
 Finished watching on 2023-04-17.

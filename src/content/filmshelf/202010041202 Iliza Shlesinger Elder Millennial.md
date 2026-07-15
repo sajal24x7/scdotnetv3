@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Steve Paley
 year: 2018
+cover: iliza-shlesinger-elder-millennial.webp
 ---
 Finished watching on 2020-10-04.

@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Alex Van Wagner
 year: 2021
+cover: jonas-brothers-family-roast.webp
 ---
 Finished watching on 2021-12-03.

@@ -11,5 +11,6 @@ genre: action
 director:
   - Justin Kurzel
 year: 2016
+cover: assassins-creed.webp
 ---
 Finished watching on 2020-10-03.

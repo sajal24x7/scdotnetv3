@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Werner Herzog
 year: 2016
+cover: lo-and-behold-reveries-of-the-connected-world.webp
 ---
 Finished watching on 2019-11-03.

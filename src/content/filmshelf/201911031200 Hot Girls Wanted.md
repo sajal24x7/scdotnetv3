@@ -12,5 +12,6 @@ director:
   - Ronna Gradus
   - Jill Bauer
 year: 2015
+cover: hot-girls-wanted.webp
 ---
 Finished watching on 2019-11-03.

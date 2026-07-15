@@ -11,5 +11,6 @@ genre: action
 director:
   - S. S. Rajamouli
 year: 2025
+cover: baahubali-the-epic.webp
 ---
 Finished watching on 2025-12-27.

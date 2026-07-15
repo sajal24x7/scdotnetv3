@@ -12,5 +12,6 @@ director:
   - Adil El Arbi
   - Bilall Fallah
 year: 2024
+cover: bad-boys-ride-or-die.webp
 ---
 Finished watching on 2026-03-04.

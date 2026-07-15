@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Luke Sewell
 year: 2022
+cover: trust-no-one-the-hunt-for-the-crypto-king.webp
 ---
 Finished watching on 2022-03-31.

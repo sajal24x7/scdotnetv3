@@ -11,5 +11,6 @@ genre: thriller
 director:
   - Neeraj Pandey
 year: 2024
+cover: sikandar-ka-muqaddar.webp
 ---
 Finished watching on 2026-01-01.

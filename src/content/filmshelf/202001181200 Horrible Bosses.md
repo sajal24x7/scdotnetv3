@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Seth Gordon
 year: 2011
+cover: horrible-bosses.webp
 ---
 Finished watching on 2020-01-18.

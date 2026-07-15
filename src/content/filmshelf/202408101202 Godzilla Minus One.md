@@ -11,5 +11,6 @@ genre: science fiction
 director:
   - Takashi Yamazaki
 year: 2023
+cover: godzilla-minus-one.webp
 ---
 Finished watching on 2024-08-10.

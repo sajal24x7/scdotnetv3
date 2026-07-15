@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Erin Lee Carr
 year: 2021
+cover: britney-vs-spears.webp
 ---
 Finished watching on 2021-10-03.

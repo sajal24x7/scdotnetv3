@@ -11,5 +11,6 @@ genre: science fiction
 director:
   - Zack Snyder
 year: 2024
+cover: rebel-moon-part-two.webp
 ---
 Finished watching on 2026-02-07.

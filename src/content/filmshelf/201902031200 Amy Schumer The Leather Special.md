@@ -11,5 +11,6 @@ status: finished
 director:
   - Amy Schumer
 year: 2017
+cover: amy-schumer-the-leather-special.webp
 ---
 Finished watching on 2019-02-03.

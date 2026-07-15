@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Ari Sandel
 year: 2018
+cover: when-we-first-met.webp
 ---
 Finished watching on 2019-02-21.

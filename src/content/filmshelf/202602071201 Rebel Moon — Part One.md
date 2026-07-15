@@ -11,5 +11,6 @@ genre: science fiction
 director:
   - Zack Snyder
 year: 2023
+cover: rebel-moon-part-one.webp
 ---
 Finished watching on 2026-02-07.

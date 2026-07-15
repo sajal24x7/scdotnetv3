@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Louie Psihoyos
 year: 2019
+cover: the-game-changers.webp
 ---
 Finished watching on 2024-04-25.

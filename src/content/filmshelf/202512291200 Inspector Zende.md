@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Chinmay Mandlekar
 year: 2025
+cover: inspector-zende.webp
 ---
 Finished watching on 2025-12-29.

@@ -11,5 +11,6 @@ status: finished
 director:
   - Leslie Small
 year: 2020
+cover: kevin-hart-zero-fks-given.webp
 ---
 Finished watching on 2020-11-20.

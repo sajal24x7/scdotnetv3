@@ -11,5 +11,6 @@ genre: action
 director:
   - Joe Johnston
 year: 2011
+cover: captain-america-the-first-avenger.webp
 ---
 Finished watching on 2020-04-25.

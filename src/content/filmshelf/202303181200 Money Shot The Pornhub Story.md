@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Suzanne Hillinger
 year: 2023
+cover: money-shot-the-pornhub-story.webp
 ---
 Finished watching on 2023-03-18.

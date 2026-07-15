@@ -9,5 +9,6 @@ platform: Netflix
 status: finished
 genre: documentary
 year: 2021
+cover: creating-the-queens-gambit.webp
 ---
 Finished watching on 2021-01-19.

@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Jeff Orlowski
 year: 2020
+cover: the-social-dilemma.webp
 ---
 Finished watching on 2024-12-16.

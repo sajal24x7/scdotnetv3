@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Tim Neeves
 year: 2019
+cover: brave-blue-world-racing-to-solve-our-water-crisis.webp
 ---
 Finished watching on 2024-03-24.

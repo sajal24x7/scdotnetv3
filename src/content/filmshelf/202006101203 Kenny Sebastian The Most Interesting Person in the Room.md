@@ -12,5 +12,6 @@ director:
   - Neville Shah
   - Angshuman Ghosh
 year: 2020
+cover: kenny-sebastian-the-most-interesting-person-in-the-room.webp
 ---
 Finished watching on 2020-06-10.

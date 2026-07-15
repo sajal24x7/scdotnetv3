@@ -11,5 +11,6 @@ genre: thriller
 director:
   - Leigh Whannell
 year: 2020
+cover: the-invisible-man.webp
 ---
 Finished watching on 2021-10-24.

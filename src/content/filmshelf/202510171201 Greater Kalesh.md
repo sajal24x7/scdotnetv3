@@ -11,5 +11,6 @@ genre: drama
 director:
   - Aditya Chandioke
 year: 2025
+cover: greater-kalesh.webp
 ---
 Finished watching on 2025-10-17.

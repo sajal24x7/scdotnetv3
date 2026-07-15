@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Kyle Newacheck
 year: 2019
+cover: murder-mystery.webp
 ---
 Finished watching on 2020-01-04.

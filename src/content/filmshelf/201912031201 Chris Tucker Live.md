@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Phil Joanou
 year: 2015
+cover: chris-tucker-live.webp
 ---
 Finished watching on 2019-12-03.

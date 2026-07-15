@@ -11,5 +11,6 @@ status: finished
 director:
   - Jay Chapman
 year: 2021
+cover: mo-amer-mohammed-in-texas.webp
 ---
 Finished watching on 2022-05-09.

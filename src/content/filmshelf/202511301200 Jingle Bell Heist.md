@@ -11,5 +11,6 @@ genre: romance
 director:
   - Michael Fimognari
 year: 2025
+cover: jingle-bell-heist.webp
 ---
 Finished watching on 2025-11-30.

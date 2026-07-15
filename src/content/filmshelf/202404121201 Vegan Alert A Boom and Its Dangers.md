@@ -11,5 +11,6 @@ genre: documentary
 director:
   - Bernhard Hain
 year: 2021
+cover: vegan-alert-a-boom-and-its-dangers.webp
 ---
 Finished watching on 2024-04-12.

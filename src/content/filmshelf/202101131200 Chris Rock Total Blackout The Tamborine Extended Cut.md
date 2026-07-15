@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Bo Burnham
 year: 2018
+cover: chris-rock-total-blackout-the-tamborine-extended-cut.webp
 ---
 Finished watching on 2021-01-13.

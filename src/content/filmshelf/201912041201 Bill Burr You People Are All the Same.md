@@ -11,5 +11,6 @@ status: finished
 director:
   - Jay Karas
 year: 2012
+cover: bill-burr-you-people-are-all-the-same.webp
 ---
 Finished watching on 2019-12-04.

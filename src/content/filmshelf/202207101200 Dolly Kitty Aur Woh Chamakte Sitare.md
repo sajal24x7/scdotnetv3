@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Alankrita Shrivastava
 year: 2020
+cover: dolly-kitty-aur-woh-chamakte-sitare.webp
 ---
 Finished watching on 2022-07-10.

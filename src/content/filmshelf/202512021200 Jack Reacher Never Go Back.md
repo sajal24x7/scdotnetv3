@@ -11,5 +11,6 @@ genre: action
 director:
   - Edward Zwick
 year: 2016
+cover: jack-reacher-never-go-back.webp
 ---
 Finished watching on 2025-12-02.

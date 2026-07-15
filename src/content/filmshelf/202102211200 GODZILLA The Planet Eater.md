@@ -12,5 +12,6 @@ director:
   - Kobun Shizuno
   - Hiroyuki Seshita
 year: 2018
+cover: godzilla-the-planet-eater.webp
 ---
 Finished watching on 2021-02-21.

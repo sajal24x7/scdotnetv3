@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Scott Zabielski
 year: 2020
+cover: jim-jefferies-intolerant.webp
 ---
 Finished watching on 2021-01-11.

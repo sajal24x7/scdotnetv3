@@ -12,5 +12,6 @@ director:
   - Madeleine Parry
   - Jon Olb
 year: 2018
+cover: hannah-gadsby-nanette.webp
 ---
 Finished watching on 2024-04-07.

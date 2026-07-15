@@ -11,5 +11,6 @@ genre: crime
 director:
   - Sailesh Kolanu
 year: 2020
+cover: hit-the-first-case.webp
 ---
 Finished watching on 2022-09-04.

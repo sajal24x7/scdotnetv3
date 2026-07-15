@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Brian Klein
 year: 2021
+cover: jimmy-carr-his-dark-material.webp
 ---
 Finished watching on 2021-12-28.

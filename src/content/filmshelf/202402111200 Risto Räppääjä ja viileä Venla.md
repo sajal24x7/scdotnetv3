@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Mari Rantasila
 year: 2012
+cover: risto-rappaaja-ja-viilea-venla.webp
 ---
 Finished watching on 2024-02-11.

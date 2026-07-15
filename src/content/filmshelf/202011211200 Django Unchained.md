@@ -11,5 +11,6 @@ genre: drama
 director:
   - Quentin Tarantino
 year: 2012
+cover: django-unchained.webp
 ---
 Finished watching on 2020-11-21.

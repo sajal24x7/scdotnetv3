@@ -11,5 +11,6 @@ genre: action
 director:
   - Chava Cartas
 year: 2025
+cover: counterattack.webp
 ---
 Finished watching on 2026-03-21.

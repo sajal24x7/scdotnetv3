@@ -11,5 +11,6 @@ status: finished
 director:
   - Leslie Small
 year: 2019
+cover: kevin-hart-irresponsible.webp
 ---
 Finished watching on 2019-11-28.

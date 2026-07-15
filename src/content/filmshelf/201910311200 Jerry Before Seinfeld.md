@@ -11,5 +11,6 @@ genre: comedy
 director:
   - Michael Bonfiglio
 year: 2017
+cover: jerry-before-seinfeld.webp
 ---
 Finished watching on 2019-10-31.

@@ -11,5 +11,6 @@ genre: adventure
 director:
   - Thor Freudenthal
 year: 2013
+cover: percy-jackson-sea-of-monsters.webp
 ---
 Finished watching on 2024-08-10.
