@@ -1,10 +1,17 @@
 ---
-title: "Finland Is One of the Coolest Countries in Europe"
-slug: "finland-is-one-of-the-coolest-countries-in-europe"
-created: 2026-07-15T12:27:00+03:00
-updated: 2026-07-15T12:29:16+03:00
+title: Finland Is One of the Coolest Countries in Europe
+slug: finland-is-one-of-the-coolest-countries-in-europe
+created: 2026-07-15T09:27:00.000Z
+updated: 2026-07-15T09:29:16.000Z
 category: micro
-tags: ["finland", "global-warming", "summer", "travel"]
+tags:
+  - finland
+  - global-warming
+  - summer
+  - travel
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116923690925933632'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqolmrdeui27'
 ---
 [Finland remains one of Europe's coolest countries as heavy rain looms](https://yle.fi/a/74-20236427?origin=rss)
 

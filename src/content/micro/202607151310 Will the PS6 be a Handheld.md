@@ -1,10 +1,15 @@
 ---
-title: "Will the PS6 Be a Handheld"
-slug: "will-the-ps6-be-a-handheld"
-created: 2026-07-15T13:10:00+03:00
-updated: 2026-07-15T13:11:57+03:00
+title: Will the PS6 Be a Handheld
+slug: will-the-ps6-be-a-handheld
+created: 2026-07-15T10:10:00.000Z
+updated: 2026-07-15T10:11:57.000Z
 category: micro
-tags: ["playstation", "sony"]
+tags:
+  - playstation
+  - sony
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116923697288946528'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqolpntqbx2u'
 ---
 [The PS6 sure sounds like a handheld by Sean Hollister](https://www.theverge.com/games/963132/sony-playstation-future-handheld-pc-business-meeting-end-of-discs)
 
