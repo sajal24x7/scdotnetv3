@@ -1,0 +1,127 @@
+name: Enrich Shelf Metadata
+
+on:
+  # Manual trigger only — this fills in genre/director/creator/year from TMDB,
+  # separate from the cover-art job so the two never race on the same commit.
+  workflow_dispatch:
+    inputs:
+      shelf:
+        description: 'Which shelf to enrich'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - film
+          - tv
+      force:
+        description: 'Overwrite fields that already have a value'
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      shelves: ${{ steps.plan.outputs.shelves }}
+    steps:
+      - name: Pick shelves for this trigger
+        id: plan
+        run: |
+          if [ "${{ inputs.shelf }}" = "all" ]; then
+            shelves='["film","tv"]'
+          else
+            shelves='["${{ inputs.shelf }}"]'
+          fi
+          echo "shelves=$shelves" >> "$GITHUB_OUTPUT"
+          echo "Running for shelves: $shelves"
+
+  enrich-metadata:
+    needs: plan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      # Each shelf commits and pushes to main; serialise to avoid push races
+      max-parallel: 1
+      matrix:
+        shelf: ${{ fromJSON(needs.plan.outputs.shelves) }}
+
+    steps:
+      - name: Resolve shelf name
+        id: shelf
+        run: |
+          case "${{ matrix.shelf }}" in
+            film) dir=filmshelf; title=Film ;;
+            tv)   dir=tvshelf;   title=TV ;;
+          esac
+          {
+            echo "dir=$dir"
+            echo "title=$title"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Enrich ${{ steps.shelf.outputs.title }} metadata
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: |
+          if [ "${{ inputs.force }}" = "true" ]; then
+            node "scripts/enrich-${{ matrix.shelf }}-metadata.js" --force
+          else
+            node "scripts/enrich-${{ matrix.shelf }}-metadata.js"
+          fi
+
+      - name: Commit ${{ steps.shelf.outputs.title }} metadata updates
+        run: |
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No new ${{ steps.shelf.outputs.title }} metadata to commit"
+            exit 0
+          fi
+
+          git add "src/content/${{ steps.shelf.outputs.dir }}/"
+
+          git commit -m "Enrich ${{ steps.shelf.outputs.title }} shelf metadata from TMDB
+
+          🤖 Generated with GitHub Actions
+
+          Co-Authored-By: github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+
+          git pull --rebase origin main
+          git push origin main
+
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '${{ steps.shelf.outputs.title }} metadata enrichment workflow failed',
+              body: `The ${{ steps.shelf.outputs.title }} metadata enrichment workflow failed on ${new Date().toISOString()}.
+
+              **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+              Please check the logs and fix any issues.`,
+              labels: ['bug', 'automation']
+            })
