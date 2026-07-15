@@ -36,8 +36,13 @@ Everything else is handled for you:
 - `updated:` is used if present, otherwise defaults to the created date.
 - `[[wikilinks]]` become proper site links (`[Be a Hybrid](/evergreen/be-a-hybrid)`).
 - Shelf categories (`bookshelf`, `filmshelf`, `tvshelf`, `gameshelf`,
-  `nordletter`) get their extra fields stubbed in (`author`, `bookStatus`,
+  `nordletter`) get their extra fields stubbed in (`author`, `status`,
   etc.) — fill them in Obsidian if you have them, stubs appear otherwise.
+  `status` is the unified `todo`/`started`/`paused`/`finished` field (see
+  `src/utils/shelfStatus.ts`); shelf RSS feeds only include `finished`
+  entries, so there's no need to prefix an in-progress entry's slug with
+  `reading-` (or `watching-`/`playing-`) to keep it out of the feed anymore
+  — let the slug auto-derive from the title as normal.
 - `aliases` and other Obsidian-only fields are stripped; unknown fields pass
   through untouched.
 
