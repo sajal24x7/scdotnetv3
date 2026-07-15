@@ -498,6 +498,32 @@
       "status": "approved"
     }
   ],
+  "micro/finland-is-one-of-the-coolest-countries-in-europe": [
+    {
+      "id": "mastodon:repost:116923690925933632:111653171321324719",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Climate Change Channel",
+        "url": "https://newsmast.community/@climatechange",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/57407957684b95828292bd79f77e0b81.png"
+      },
+      "url": "https://newsmast.community/@climatechange",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116923690925933632:111653450531724704",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Environment Channel",
+        "url": "https://newsmast.community/@environment",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/6774510b93b51a4fec1ea9921aae9343.png"
+      },
+      "url": "https://newsmast.community/@environment",
+      "status": "approved"
+    }
+  ],
   "micro/how-and-why-to-cull-your-book-collection": [
     {
       "id": "mastodon:like:116901921008963465:111584118693761981",
