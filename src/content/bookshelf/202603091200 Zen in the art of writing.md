@@ -11,7 +11,7 @@ format: audiobook
 author:
   - Ray Bradbury
 genre: craft
-shelfStatus: read
+status: finished
 started: 2026-03-09T10:13:18.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116198687868461871'

@@ -14,6 +14,7 @@ import {
     type BookRating,
     type RatingIconSpec
 } from '../../../utils/bookRatings';
+import { SHELF_STATUS_LABELS, type ShelfStatus } from '../../../utils/shelfStatus';
 
 export async function getStaticPaths() {
     const { slugify } = await import('../../../utils/shelfUtils');
@@ -85,19 +86,16 @@ const year = season.data.year as number | undefined;
 const platform = season.data.platform as string | undefined;
 const started = formatYMD(season.data.started);
 const finished = formatYMD(season.data.finished);
-const tvStatus = season.data.shelfStatus;
+const tvStatus = season.data.status as ShelfStatus | undefined;
 const tvRating = season.data.rating;
 
-const statusLabelMap: Record<string, string> = {
-    watching: 'Watching',
-    watched: 'Watched',
-    'on-hold': 'On Hold',
-};
+const statusLabelMap = SHELF_STATUS_LABELS.tvshelf;
 
-const statusChipClassMap: Record<string, string> = {
-    watching: 'chip--status-watching',
-    watched: 'chip--status-watched',
-    'on-hold': 'chip--status-on-hold',
+const statusChipClassMap: Record<ShelfStatus, string> = {
+    todo: 'chip--status-todo',
+    started: 'chip--status-started',
+    paused: 'chip--status-paused',
+    finished: 'chip--status-finished',
 };
 
 const ratingDisplay = tvRating ? bookRatingDisplay[tvRating as BookRating] : null;
@@ -175,7 +173,7 @@ const coverImage = season.data.cover ? getTVCoverImage(season.data.cover) : null
             </span>
           )}
 
-          {tvStatus && tvStatus !== 'watched' && (
+          {tvStatus && tvStatus !== 'finished' && (
             <span class={`tv-chip ${statusChipClassMap[tvStatus]}`}>
               <span class="tv-chip-label">Status</span>
               {statusLabelMap[tvStatus]}
@@ -502,17 +500,14 @@ const coverImage = season.data.cover ? getTVCoverImage(season.data.cover) : null
     letter-spacing: 0.03em;
   }
 
-  .chip--status-watching { background: #ede9fe; color: #5b21b6; }
-  :global(.dark) .chip--status-watching { background: rgba(91, 33, 182, 0.3); color: #ede9fe; }
+  .chip--status-started { background: #ede9fe; color: #5b21b6; }
+  :global(.dark) .chip--status-started { background: rgba(91, 33, 182, 0.3); color: #ede9fe; }
 
-  .chip--status-to-watch { background: #dbeafe; color: #1d4ed8; }
-  :global(.dark) .chip--status-to-watch { background: rgba(29, 78, 216, 0.3); color: #bfdbfe; }
+  .chip--status-todo { background: #dbeafe; color: #1d4ed8; }
+  :global(.dark) .chip--status-todo { background: rgba(29, 78, 216, 0.3); color: #bfdbfe; }
 
-  .chip--status-on-hold { background: #fef3c7; color: #b45309; }
-  :global(.dark) .chip--status-on-hold { background: rgba(180, 83, 9, 0.3); color: #fde68a; }
-
-  .chip--status-abandoned { background: #fee2e2; color: #b91c1c; }
-  :global(.dark) .chip--status-abandoned { background: rgba(185, 28, 28, 0.3); color: #fecaca; }
+  .chip--status-paused { background: #fef3c7; color: #b45309; }
+  :global(.dark) .chip--status-paused { background: rgba(180, 83, 9, 0.3); color: #fde68a; }
 
   .tv-chip--rating-like { background: #dcfce7; color: #166534; }
   :global(.dark) .tv-chip--rating-like { background: rgba(22, 101, 52, 0.35); color: #bbf7d0; }

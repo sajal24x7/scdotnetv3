@@ -9,7 +9,7 @@ tags:
 format: ebook
 genre: business
 author: Derek Sivers
-shelfStatus: read
+status: finished
 cover: anything-you-want.jpg
 started: 2025-10-16T14:10:31.000Z
 finished: 2025-10-21T14:10:31.000Z

@@ -12,7 +12,7 @@ series: Wayfarers
 seriesNumber: 2
 started: 2024-12-08T00:00:00.000Z
 finished: 2024-12-10T22:01:50.000Z
-shelfStatus: read
+status: finished
 rating: like
 cover: a-closed-and-common-orbit.jpg
 syndicationUrls:

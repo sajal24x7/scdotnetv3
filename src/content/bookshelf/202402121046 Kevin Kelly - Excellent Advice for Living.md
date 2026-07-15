@@ -11,7 +11,7 @@ author: Kevin Kelly
 series: none
 started: 2024-02-12T10:46:00.000Z
 finished: 2024-02-12T10:46:00.000Z
-shelfStatus: read
+status: finished
 rating: like
 cover: excellent-advice-for-living.jpg
 syndicationUrls:

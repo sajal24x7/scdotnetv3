@@ -8,7 +8,7 @@ tags:
   - universe
 format: audio
 author: Katie Mack
-shelfStatus: read
+status: finished
 started: 2020-11-14T13:11:03.000Z
 genre: science
 finished: 2020-11-20T13:11:03.000Z

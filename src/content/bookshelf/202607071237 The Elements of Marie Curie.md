@@ -10,7 +10,7 @@ format: audiobook
 author:
   - Dava Sobel
 genre: biography
-shelfStatus: reading
+status: started
 started: 2026-07-07T09:38:26.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116878027693879661'

@@ -39,7 +39,9 @@ const postsSchema = z.object({
     created: dateSchema,
     updated: dateSchema.optional(),
     category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'filmshelf', 'tvshelf', 'gameshelf', 'now', 'til', 'colophon']),
-    status: z.enum(['active', 'paused', 'done']).optional().default('active'),
+    // Unified status — shared by `now` posts (todo/started/paused/finished a life focus)
+    // and shelf posts (todo/started/paused/finished a book/film/show/game)
+    status: z.enum(['todo', 'started', 'paused', 'finished']).optional().default('started'),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
     // Photo posts: gallery images live in frontmatter (not the body) so the
@@ -65,8 +67,6 @@ const postsSchema = z.object({
     started: dateSchema.optional(),
     finished: dateSchema.optional(),
     readingProgress: z.number().min(0).max(100).optional(),
-    // Unified shelf status (books: reading/read/on-hold, films: watching/watched, TV: watching/watched, games: playing/played/on-hold)
-    shelfStatus: z.enum(['reading', 'read', 'on-hold', 'watching', 'watched', 'playing', 'played']).optional(),
     // Unified rating for all shelf types
     rating: z.enum(['like', 'love', 'nope']).optional(),
     // Release year (film, TV, games)

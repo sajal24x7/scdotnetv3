@@ -9,7 +9,7 @@ tags:
 format: ebook
 genre: self-help
 author: Dale Carnegie
-shelfStatus: read
+status: finished
 started: 2026-01-03T14:30:06.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115831650310472291'

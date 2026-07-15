@@ -10,7 +10,7 @@ tags:
 format: audio
 genre: craft
 author: Ernest Hemingway
-shelfStatus: read
+status: finished
 started: 2025-12-26T17:32:36.000Z
 rating: like
 finished: 2025-12-29T11:24:09+02:00

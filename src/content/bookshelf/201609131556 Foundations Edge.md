@@ -11,7 +11,7 @@ author:
 series: Foundation
 genre: sci-fi
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-16T07:02:08.000Z
 finished: 2016-09-13T15:56:26.000Z
 cover: foundations-edge.jpg

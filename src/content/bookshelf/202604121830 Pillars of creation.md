@@ -11,7 +11,7 @@ format: audiobook
 author:
   - Richard Panek
 genre: science
-shelfStatus: read
+status: finished
 started: 2026-04-12T15:32:00.000Z
 rating: like
 finished: 2026-04-14T07:18:20.000Z

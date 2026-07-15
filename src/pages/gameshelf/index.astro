@@ -6,6 +6,7 @@ import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 import { computeWatchNumbers } from '../../utils/shelfUtils';
+import { SHELF_STATUS_PRIORITY } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
 const gamePosts = allPosts.filter((post) => post.data.category === 'gameshelf');
@@ -32,13 +33,6 @@ const compareDesc = (a?: Date | string | null, b?: Date | string | null) => {
     return toTime(b) - toTime(a);
 };
 
-const statusOrder: Record<string, number> = {
-    playing: 0,
-    played: 1,
-    'on-hold': 2,
-    other: 3
-};
-
 const gamesWithYear = gamePosts.map((post) => ({
     post,
     year: getGameYear(post)
@@ -46,10 +40,10 @@ const gamesWithYear = gamePosts.map((post) => ({
 
 const sortedGames = [...gamesWithYear].sort((a, b) => {
     if (a.year !== b.year) return b.year - a.year;
-    const statusA = a.post.data.shelfStatus ?? 'other';
-    const statusB = b.post.data.shelfStatus ?? 'other';
+    const statusA = a.post.data.status as keyof typeof SHELF_STATUS_PRIORITY | undefined;
+    const statusB = b.post.data.status as keyof typeof SHELF_STATUS_PRIORITY | undefined;
     if (statusA !== statusB) {
-        return (statusOrder[statusA] ?? statusOrder.other) - (statusOrder[statusB] ?? statusOrder.other);
+        return (statusA ? SHELF_STATUS_PRIORITY[statusA] : 99) - (statusB ? SHELF_STATUS_PRIORITY[statusB] : 99);
     }
     return compareDesc(a.post.data.created, b.post.data.created);
 });
@@ -74,7 +68,7 @@ sortedGames.forEach((entry, i) => {
 });
 
 // Count played games
-const playedGames = gamePosts.filter((p) => p.data.shelfStatus === 'played');
+const playedGames = gamePosts.filter((p) => p.data.status === 'finished');
 const totalGames = playedGames.length;
 const countText = `${totalGames} ${totalGames === 1 ? 'game' : 'games'} played`;
 
@@ -120,7 +114,7 @@ const sectionLandingProps = createSectionLandingProps({
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearGames = gamesByYear[year] ?? [];
-        const playedYearGames = yearGames.filter((p) => p.data.shelfStatus === 'played');
+        const playedYearGames = yearGames.filter((p) => p.data.status === 'finished');
         const gameCount = playedYearGames.length;
         const gameLabel = gameCount === 1 ? 'game' : 'games';
 
@@ -143,7 +137,7 @@ const sectionLandingProps = createSectionLandingProps({
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
                     data-genre={post.data.genre ?? ''}
                     data-developer={post.data.developer ?? ''}
-                    data-status={post.data.shelfStatus ?? ''}
+                    data-status={post.data.status ?? ''}
                     data-rating={post.data.rating ?? ''}
                     data-platform={post.data.platform ?? ''}
                   >
@@ -154,7 +148,7 @@ const sectionLandingProps = createSectionLandingProps({
                       genre={post.data.genre}
                       platform={post.data.platform}
                       hoursPlayed={post.data.hoursPlayed}
-                      shelfStatus={post.data.shelfStatus as any}
+                      status={post.data.status as any}
                       rating={post.data.rating}
                       cover={post.data.cover}
                       link={post.id ? `/gameshelf/${post.id}/` : undefined}
@@ -199,6 +193,13 @@ const sectionLandingProps = createSectionLandingProps({
     let selectedStatus = '';
     let selectedDeveloper = '';
     let selectedTag = '';
+
+    const statusDisplayMap: Record<string, string> = {
+      todo: 'To Play',
+      started: 'Playing',
+      finished: 'Played',
+      paused: 'On Hold',
+    };
 
     function hasAnyFilter() {
       return !!(selectedGenre || selectedPlatform || selectedRating || selectedStatus || selectedDeveloper || selectedTag);
@@ -245,7 +246,7 @@ const sectionLandingProps = createSectionLandingProps({
           count = yearCounts[year] || 0;
         } else {
           section.querySelectorAll<HTMLElement>('[data-game-item]').forEach((item) => {
-            if (item.getAttribute('data-status') === 'played') count++;
+            if (item.getAttribute('data-status') === 'finished') count++;
           });
         }
 
@@ -285,7 +286,7 @@ const sectionLandingProps = createSectionLandingProps({
       if (selectedGenre)    badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="genre">${selectedGenre.toUpperCase()} ${x}</button>`);
       if (selectedPlatform) badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="platform">${selectedPlatform.toUpperCase()} ${x}</button>`);
       if (selectedRating)   badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="rating">${selectedRating.toUpperCase()} ${x}</button>`);
-      if (selectedStatus)   badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="status">${selectedStatus.toUpperCase()} ${x}</button>`);
+      if (selectedStatus)   badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="status">${(statusDisplayMap[selectedStatus] ?? selectedStatus).toUpperCase()} ${x}</button>`);
       if (selectedDeveloper) badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="developer">${selectedDeveloper} ${x}</button>`);
       if (selectedTag)      badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="tag">${selectedTag.toUpperCase()} ${x}</button>`);
 
@@ -334,7 +335,7 @@ const sectionLandingProps = createSectionLandingProps({
         if (type === 'genre')       selectedGenre     = selectedGenre === value ? '' : value;
         else if (type === 'platform')    selectedPlatform  = selectedPlatform === value ? '' : value;
         else if (type === 'rating')      selectedRating    = selectedRating === value ? '' : value;
-        else if (type === 'shelfStatus') selectedStatus    = selectedStatus === value ? '' : value;
+        else if (type === 'status')      selectedStatus    = selectedStatus === value ? '' : value;
         else if (type === 'developer')   selectedDeveloper = selectedDeveloper === value ? '' : value;
 
         applyFilters();

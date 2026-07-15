@@ -8,7 +8,7 @@ tags:
   - first-contact
 format: hardcover
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2024-10-02T13:18:15.000Z
 rating: like
 finished: 2024-10-10T13:18:15.000Z

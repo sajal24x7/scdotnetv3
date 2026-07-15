@@ -9,7 +9,7 @@ tags:
 format: audio
 genre: sci-fi
 author: Amal El-Mohtar
-shelfStatus: read
+status: finished
 started: 2025-12-02T07:59:15.000Z
 finished: 2025-12-12T10:45:29+02:00
 rating: nope

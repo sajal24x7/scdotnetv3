@@ -11,7 +11,7 @@ genre: fantasy
 author: Toshikazu Kawaguchi
 series: "Before the coffee gets cold"
 seriesNumber: 1
-shelfStatus: read
+status: finished
 started: 2025-11-06T10:06:04.000Z
 finished: 2025-11-15T12:06:04.000Z
 cover: 'before-the-coffee-gets-cold.jpg'

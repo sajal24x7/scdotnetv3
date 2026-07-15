@@ -11,7 +11,7 @@ tags:
 format: hardcover
 genre: memoir
 author: Craig Mod
-shelfStatus: read
+status: finished
 started: 2026-01-03T14:29:57.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115831650517355392'

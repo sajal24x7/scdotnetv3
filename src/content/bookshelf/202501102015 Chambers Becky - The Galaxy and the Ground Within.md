@@ -13,7 +13,7 @@ series: Wayfarers
 seriesNumber: 4
 cover: the-galaxy-and-the-ground-within.jpg
 author: Becky Chambers
-shelfStatus: read
+status: finished
 rating: like
 started: '2025-01-10T20:15:00+03:00'
 finished: '2025-01-10T20:15:00+03:00'

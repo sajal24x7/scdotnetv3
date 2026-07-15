@@ -13,7 +13,7 @@ creator:
 started: 2026-06-21T04:24:07.000Z
 genre: documentary
 platform: Netflix
-shelfStatus: watched
+status: finished
 cover: drive-to-survive.jpg
 rating: like
 finished: 2026-07-04T12:57:46+03:00

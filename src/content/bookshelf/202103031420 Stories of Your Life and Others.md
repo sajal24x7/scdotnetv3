@@ -10,7 +10,7 @@ format: paperback
 author:
   - Ted Chiang
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2021-03-03T13:50:48.000Z
 finished: 2021-03-05T13:50:48.000Z
 syndicationUrls:

@@ -9,7 +9,7 @@ tags:
 format: audio
 genre: technical
 author: Thomas A. Limoncelli
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-10-05T12:55:32.000Z
 finished: 2025-10-16T10:55:32.000Z

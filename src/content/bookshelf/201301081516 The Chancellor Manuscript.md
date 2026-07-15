@@ -10,7 +10,7 @@ author:
   - Robert Ludlum
 genre: thriller
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-08T15:16:51.000Z
 finished: 2013-01-08T15:16:56.000Z
 rating: like

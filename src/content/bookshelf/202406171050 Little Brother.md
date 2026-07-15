@@ -8,7 +8,7 @@ tags:
   - dystopia
 format: hardcover
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2024-06-17T12:25:52.000Z
 rating: like
 finished: 2024-07-04T12:25:52.000Z

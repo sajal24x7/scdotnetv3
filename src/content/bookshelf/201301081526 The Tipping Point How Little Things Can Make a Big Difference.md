@@ -10,7 +10,7 @@ author:
   - Malcolm Gladwell
 genre: self-help
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-08T15:26:39.000Z
 finished: 2013-01-08T15:26:39.000Z
 rating: like

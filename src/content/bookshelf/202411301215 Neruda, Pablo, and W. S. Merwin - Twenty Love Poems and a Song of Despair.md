@@ -8,7 +8,7 @@ tags:
   - poetry
 genre: poetry
 author: Pablo Neruda
-shelfStatus: read
+status: finished
 rating: like
 started: 2024-11-30T18:37:00.000Z
 finished: 2024-11-30T18:37:00.000Z

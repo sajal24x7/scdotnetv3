@@ -10,7 +10,7 @@ format: audiobook
 author:
   - Jason Fung
 genre: health
-shelfStatus: read
+status: finished
 started: 2026-06-28T09:57:58.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116832807597023141'

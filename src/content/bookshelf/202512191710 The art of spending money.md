@@ -9,7 +9,7 @@ tags:
 format: audio
 genre: psychology
 author: Morgan Housel
-shelfStatus: read
+status: finished
 rating: like
 finished: 2025-12-26T22:06:42+02:00
 started: 2025-12-19T15:11:57.000Z
