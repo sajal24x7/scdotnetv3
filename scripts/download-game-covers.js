@@ -17,11 +17,13 @@
  */
 
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import https from 'https';
 import http from 'http';
 import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
+import { convertFileToWebp } from './lib/webp.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -245,7 +247,7 @@ async function main() {
     }
 
     const slug = titleToFilename(title);
-    const filename = `${slug}.jpg`;
+    const filename = `${slug}.webp`;
     const outputPath = path.join(gameshelfDir, filename);
 
     if (fs.existsSync(outputPath) && !forceDownload) {
@@ -281,7 +283,10 @@ async function main() {
       }
 
       console.log(`   ⬇️  Downloading from ${source}: ${coverUrl}`);
-      await downloadFile(coverUrl, outputPath);
+      const tmpPath = path.join(os.tmpdir(), `gamecover-${Date.now()}.tmp`);
+      await downloadFile(coverUrl, tmpPath);
+      await convertFileToWebp(tmpPath, outputPath);
+      fs.unlinkSync(tmpPath);
       const size = fs.statSync(outputPath).size;
       updateMarkdownWithCover(game.path, game.content, filename);
       console.log(`   ✅ Saved: ${filename} (${(size / 1024).toFixed(1)} KB) — frontmatter updated`);

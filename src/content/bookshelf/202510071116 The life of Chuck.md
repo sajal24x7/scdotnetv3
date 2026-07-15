@@ -11,7 +11,7 @@ genre: sci-fi
 author: Stephen King
 status: finished
 started: 2025-10-07T14:01:53.000Z
-cover: the-life-of-chuck.jpg
+cover: the-life-of-chuck.webp
 finished: 2025-10-08T08:01:53.000Z
 rating: like
 syndicationUrls:

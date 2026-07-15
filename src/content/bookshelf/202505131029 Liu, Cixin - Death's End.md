@@ -17,7 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115815935258000236'
   - 'https://www.threads.com/@sajal24x7/post/DS8LlgbkWNi'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zqft722o'
-cover: deaths-end.jpg
+cover: deaths-end.webp
 ---
 
 Enjoyed reading it.

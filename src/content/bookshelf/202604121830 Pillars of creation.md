@@ -19,7 +19,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116401959959849335'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mjgveyszoj2h'
   - 'https://www.threads.com/@sajal24x7/post/DXGzFSCFRZl'
-cover: pillars-of-creation.jpg
+cover: pillars-of-creation.webp
 ---
 
 ## Review

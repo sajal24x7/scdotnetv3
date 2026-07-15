@@ -2,7 +2,7 @@
 title: The Anthropologists
 slug: the-anthropologists
 created: 2026-06-01T06:40:13.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - city-life
@@ -13,7 +13,7 @@ author:
 genre: romance
 status: finished
 started: 2026-06-01T06:40:13.000Z
-cover: the-anthropologists.jpg
+cover: the-anthropologists.webp
 rating: love
 finished: 2026-06-04T05:53:56.000Z
 syndicationUrls:

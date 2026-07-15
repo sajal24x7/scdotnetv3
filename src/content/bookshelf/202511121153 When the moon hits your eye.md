@@ -11,7 +11,7 @@ genre: sci-fi
 author: John Scalzi
 status: finished
 rating: like
-cover: 'when-the-moon-hits-your-eye.jpg'
+cover: when-the-moon-hits-your-eye.webp
 started: 2025-11-07T07:05:11.000Z
 finished: 2025-11-20T14:05:11.000Z
 syndicationUrls:

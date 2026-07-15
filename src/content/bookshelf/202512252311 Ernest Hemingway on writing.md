@@ -13,12 +13,12 @@ author: Ernest Hemingway
 status: finished
 started: 2025-12-26T17:32:36.000Z
 rating: like
-finished: 2025-12-29T11:24:09+02:00
+finished: 2025-12-29T09:24:09.000Z
 syndicationUrls:
-  - https://mastodon.social/@sajal24x7/115787070068113269
-  - https://bsky.app/profile/sajal24x7.bsky.social/post/3mavtblj6sj2b
-  - https://www.threads.com/@sajal24x7/post/DSvP-BSEZmO
-cover: ernest-hemingway-on-writing.jpg
+  - 'https://mastodon.social/@sajal24x7/115787070068113269'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mavtblj6sj2b'
+  - 'https://www.threads.com/@sajal24x7/post/DSvP-BSEZmO'
+cover: ernest-hemingway-on-writing.webp
 ---
 
 This is not a book in a traditional sense. This is not Ernest Hemingway writing about the craft. 

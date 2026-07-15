@@ -14,7 +14,7 @@ status: finished
 started: 2013-01-19T09:38:36.000Z
 finished: 2013-01-19T09:38:36.000Z
 rating: like
-cover: the-fountainhead.jpg
+cover: the-fountainhead.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754261653402222'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddvat5sd2v'

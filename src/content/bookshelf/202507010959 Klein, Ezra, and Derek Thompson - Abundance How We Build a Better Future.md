@@ -11,7 +11,7 @@ startDate: 2025-07-01T06:59:00.000Z
 endDate: 2025-07-06T15:00:00.000Z
 format: audio
 genre: politics
-cover: abundance.jpg
+cover: abundance.webp
 author:
   - Ezra Klein
   - Derek Thompson

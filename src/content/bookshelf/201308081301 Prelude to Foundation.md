@@ -15,7 +15,7 @@ status: finished
 started: 2013-01-16T07:01:23.000Z
 finished: 2013-08-08T13:01:58.000Z
 rating: love
-cover: prelude-to-foundation.jpg
+cover: prelude-to-foundation.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754267358792899'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddxtwvhe2l'

@@ -14,7 +14,7 @@ status: finished
 started: 2013-03-13T17:13:46.000Z
 finished: 2015-05-20T17:52:27.000Z
 rating: like
-cover: the-road-less-travelled.jpg
+cover: the-road-less-travelled.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode2nu2hv2v'
 ---

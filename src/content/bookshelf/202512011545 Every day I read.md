@@ -11,12 +11,12 @@ genre: essays
 author: Hwang Bo-reum
 status: finished
 started: 2025-12-01T13:46:21.000Z
-finished: 2025-12-02T11:51:25+02:00
+finished: 2025-12-02T09:51:25.000Z
 syndicationUrls:
-  - https://mastodon.social/@sajal24x7/115644626044031471
-  - https://bsky.app/profile/sajal24x7.bsky.social/post/3m6wkzfqo4o2d
-  - https://www.threads.com/@sajal24x7/post/DRvB7T2koUO
-cover: every-day-i-read.jpg
+  - 'https://mastodon.social/@sajal24x7/115644626044031471'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6wkzfqo4o2d'
+  - 'https://www.threads.com/@sajal24x7/post/DRvB7T2koUO'
+cover: every-day-i-read.webp
 rating: like
 ---
 

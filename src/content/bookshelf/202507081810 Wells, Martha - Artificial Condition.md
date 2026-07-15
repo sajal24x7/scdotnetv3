@@ -16,7 +16,7 @@ status: finished
 rating: like
 format: audio
 genre: sci-fi
-cover: artificial-condition.jpg
+cover: artificial-condition.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6sqfo22c'
 ---

@@ -10,7 +10,7 @@ tags:
   - three-body-problem
   - cixin-liu
 genre: sci-fi
-cover: the-dark-forest.jpg
+cover: the-dark-forest.webp
 author: Cixin Liu
 series: Remembrance of Earth's Past
 status: finished

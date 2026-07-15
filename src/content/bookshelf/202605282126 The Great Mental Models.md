@@ -2,7 +2,7 @@
 title: The Great Mental Models
 slug: reading-the-great-mental-models
 created: 2026-05-30T03:44:52.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - mental-models
@@ -16,7 +16,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116661474622848374'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mn25cljmmp2n'
   - 'https://www.threads.com/@sajal24x7/post/DY8sBLwDWrI'
-cover: the-great-mental-models.jpg
+cover: the-great-mental-models.webp
 ---
 Started reading.
 

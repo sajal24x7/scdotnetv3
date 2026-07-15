@@ -12,12 +12,12 @@ author: Chris Pavone
 status: finished
 started: 2025-12-09T12:07:59.000Z
 rating: love
-finished: 2025-12-25T02:11:18+02:00
+finished: 2025-12-25T00:11:18.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115689530594430643'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m7kj5mwbxm2s'
   - 'https://www.threads.com/@sajal24x7/post/DSCsubPDnaN'
-cover: two-nights-in-lisbon.jpg
+cover: two-nights-in-lisbon.webp
 ---
 I enjoyed reading this book thoroughly. What drew me to this book was Stephen King's blurb on the cover or rather the about page - 'There’s no such thing as a book you can’t put down, but this one was close.'
 

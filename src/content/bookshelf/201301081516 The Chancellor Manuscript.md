@@ -14,7 +14,7 @@ status: finished
 started: 2013-01-08T15:16:51.000Z
 finished: 2013-01-08T15:16:56.000Z
 rating: like
-cover: the-chancellor-manuscript.jpg
+cover: the-chancellor-manuscript.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754258113712413'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddtmzppq2c'

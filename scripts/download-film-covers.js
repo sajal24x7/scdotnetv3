@@ -15,11 +15,13 @@
  */
 
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import https from 'https';
 import http from 'http';
 import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
+import { convertFileToWebp } from './lib/webp.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -172,7 +174,7 @@ async function main() {
     }
 
     const slug = titleToFilename(title);
-    const filename = `${slug}.jpg`;
+    const filename = `${slug}.webp`;
     const outputPath = path.join(filmshelfDir, filename);
 
     if (fs.existsSync(outputPath) && !forceDownload) {
@@ -194,7 +196,10 @@ async function main() {
       }
 
       console.log(`   ⬇️  Downloading: ${posterUrl}`);
-      await downloadFile(posterUrl, outputPath);
+      const tmpPath = path.join(os.tmpdir(), `filmcover-${Date.now()}.tmp`);
+      await downloadFile(posterUrl, tmpPath);
+      await convertFileToWebp(tmpPath, outputPath);
+      fs.unlinkSync(tmpPath);
       const size = fs.statSync(outputPath).size;
       updateMarkdownWithCover(film.path, film.content, filename);
       console.log(`   ✅ Saved: ${filename} (${(size / 1024).toFixed(1)} KB) — frontmatter updated`);

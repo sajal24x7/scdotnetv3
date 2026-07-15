@@ -15,7 +15,7 @@ status: finished
 started: 2013-01-08T15:14:05.000Z
 finished: 2013-01-08T15:14:21.000Z
 rating: like
-cover: the-ultimate-hitchhikers-guide-to-the-galaxy.jpg
+cover: the-ultimate-hitchhikers-guide-to-the-galaxy.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754256515476497'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddsw2xoi26'

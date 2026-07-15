@@ -17,9 +17,9 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116357340810569459'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mit3ckd2ch2y'
   - 'https://www.threads.com/@sajal24x7/post/DWyaxyDETRP'
-cover: i-deliver-parcels-in-beijing.jpg
+cover: i-deliver-parcels-in-beijing.webp
 rating: like
-finished: 2026-04-19T13:15:50+03:00
+finished: 2026-04-19T10:15:50.000Z
 ---
 ## Review
 

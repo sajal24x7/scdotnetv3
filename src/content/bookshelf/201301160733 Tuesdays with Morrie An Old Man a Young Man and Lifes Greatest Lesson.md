@@ -14,7 +14,7 @@ status: finished
 started: 2013-01-08T15:13:30.000Z
 finished: 2013-01-16T07:33:54.000Z
 rating: love
-cover: tuesdays-with-morrie.jpg
+cover: tuesdays-with-morrie.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754261082257433'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modduyrhqe2w'

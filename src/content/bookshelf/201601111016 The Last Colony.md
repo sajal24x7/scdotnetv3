@@ -15,7 +15,7 @@ status: finished
 started: 2016-01-11T10:14:54.000Z
 finished: 2016-01-11T10:16:01.000Z
 rating: like
-cover: the-last-colony.jpg
+cover: the-last-colony.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode3l3qag2d'
 ---

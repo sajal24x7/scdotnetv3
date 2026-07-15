@@ -13,7 +13,7 @@ author:
 genre: science
 status: finished
 started: 2026-06-18T06:56:58.000Z
-cover: the-sixth-extinction.jpg
+cover: the-sixth-extinction.webp
 rating: love
 finished: 2026-06-28T05:27:38.000Z
 syndicationUrls:

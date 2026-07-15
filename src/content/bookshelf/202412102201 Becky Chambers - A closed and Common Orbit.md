@@ -14,7 +14,7 @@ started: 2024-12-08T00:00:00.000Z
 finished: 2024-12-10T22:01:50.000Z
 status: finished
 rating: like
-cover: a-closed-and-common-orbit.jpg
+cover: a-closed-and-common-orbit.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6blvvw24'
 ---

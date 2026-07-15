@@ -9,14 +9,14 @@ tags:
 format: audio
 genre: technology
 author: Cory Doctorow
-cover: enshittification.jpg
+cover: enshittification.webp
 status: finished
 started: 2025-11-15T08:04:07.000Z
-finished: 2025-11-22T14:04:07.000
+finished: 2025-11-22T14:04:07.000Z
 rating: like
 syndicationUrls:
-  - https://mastodon.social/@sajal24x7/115555989670585287
-  - https://bsky.app/profile/sajal24x7.bsky.social/post/3m5p7gaypm72s
+  - 'https://mastodon.social/@sajal24x7/115555989670585287'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5p7gaypm72s'
 ---
 
 Most of the ideas in the book were not new to me. I have been reading Cory and Pluralistic since quite some time now.

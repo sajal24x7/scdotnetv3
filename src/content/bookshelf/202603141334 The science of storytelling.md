@@ -13,7 +13,7 @@ author:
 genre: craft
 status: finished
 started: 2026-03-14T11:34:48.000Z
-cover: the-science-of-storytelling.jpg
+cover: the-science-of-storytelling.webp
 rating: like
 finished: 2026-03-24T08:46:56.000Z
 syndicationUrls:

@@ -12,7 +12,7 @@ author: Naomi Ceder
 status: paused
 rating: like
 started: 2025-09-28T10:57:42.000Z
-cover: the-quick-python-book.jpg
+cover: the-quick-python-book.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode7ba4jo2v'
 ---

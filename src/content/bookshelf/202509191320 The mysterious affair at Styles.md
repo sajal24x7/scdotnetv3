@@ -15,7 +15,7 @@ status: finished
 rating: like
 started: 2025-09-19T13:11:06.000Z
 finished: 2025-09-23T14:00:18.000Z
-cover: the-mysterious-affair-at-styles.jpeg
+cover: the-mysterious-affair-at-styles.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode73beoz26'
 ---

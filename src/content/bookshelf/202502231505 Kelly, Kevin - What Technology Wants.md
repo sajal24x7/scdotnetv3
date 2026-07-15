@@ -14,10 +14,10 @@ rating: like
 started: 2025-02-23T19:37:03.000Z
 finished: 2025-05-06T19:37:03.000Z
 syndicationUrls:
-  - https://mastodon.social/@sajal24x7/115815876230499690
-  - https://www.threads.com/@sajal24x7/post/DS8J3bLiTtr
-  - https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zot73c2o
-cover: what-technology-wants.jpg
+  - 'https://mastodon.social/@sajal24x7/115815876230499690'
+  - 'https://www.threads.com/@sajal24x7/post/DS8J3bLiTtr'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zot73c2o'
+cover: what-technology-wants.webp
 ---
 
 # Notes and Quotes

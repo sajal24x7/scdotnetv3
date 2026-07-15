@@ -10,7 +10,7 @@ category: bookshelf
 tags:
   - book-reviews
 genre: self-help
-cover: black-box-thinking.jpg
+cover: black-box-thinking.webp
 author: Matthew Syed
 series: none
 status: finished

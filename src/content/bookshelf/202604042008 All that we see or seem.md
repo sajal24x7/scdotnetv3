@@ -12,7 +12,7 @@ author:
 genre: sci-fi
 status: finished
 started: 2026-04-06T08:27:25.000Z
-cover: all-that-we-see-or-seem.jpg
+cover: all-that-we-see-or-seem.webp
 rating: like
 finished: 2026-04-12T15:19:26.000Z
 syndicationUrls:

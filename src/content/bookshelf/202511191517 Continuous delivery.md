@@ -9,7 +9,7 @@ tags:
 format: ebook
 genre: technical
 author: David Farley
-cover: continuous-delivery.jpg
+cover: continuous-delivery.webp
 status: paused
 started: 2025-11-19T12:40:57.000Z
 syndicationUrls:

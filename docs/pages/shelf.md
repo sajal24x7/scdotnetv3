@@ -38,7 +38,7 @@ status: started                  # todo | started | paused | finished (unified a
 bookRating: love                 # like | love | nope  (optional)
 startedReading: 2025-01-10       # optional
 finishedReading: 2025-01-20      # optional; required for "finished" count
-bookCover: "the-pragmatic-programmer.jpg"  # auto-filled by download script
+bookCover: "the-pragmatic-programmer.webp"  # auto-filled by download script
 genre: "programming"             # optional
 tags: [programming, software]   # optional
 ---
@@ -66,7 +66,7 @@ pubDate: 2025-03-01T00:00:00
 status: finished                 # todo | started | paused | finished (unified across all shelf categories)
 filmRating: love                 # like | love | nope  (optional)
 watchedDate: 2025-03-01          # optional; used for rewatch detection ordering
-filmCover: "dune-part-two.jpg"   # auto-filled by download script
+filmCover: "dune-part-two.webp"   # auto-filled by download script
 genre: "sci-fi"                  # optional
 tags: [sci-fi, epic]             # optional
 ---
@@ -99,7 +99,7 @@ category: tvshelf
 pubDate: 2025-02-10T00:00:00
 status: finished                 # todo | started | paused | finished (unified across all shelf categories)
 tvRating: love                   # like | love | nope  (optional)
-tvCover: "severance.jpg"         # auto-filled by download script; one image per show
+tvCover: "severance.webp"         # auto-filled by download script; one image per show
 genre: "thriller"                # optional
 tags: [thriller, workplace]      # optional
 ---
@@ -131,7 +131,7 @@ category: gameshelf
 pubDate: 2025-04-05T00:00:00
 status: finished                 # todo | started | paused | finished (unified across all shelf categories)
 gameRating: love                 # like | love | nope  (optional)
-gameCover: "hollow-knight.jpg"   # auto-filled by download script
+gameCover: "hollow-knight.webp"   # auto-filled by download script
 genre: "metroidvania"            # optional
 tags: [indie, metroidvania]      # optional
 ---
