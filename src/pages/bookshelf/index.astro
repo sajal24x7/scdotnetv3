@@ -517,11 +517,15 @@ const sectionLandingProps = createSectionLandingProps({
 
   .bookshelf-year__sidebar {
     display: flex;
+    align-items: flex-start;
   }
 
+  /* grid-row: 1 / -1 wouldn't span the implicit rows the entries create, since
+     negative line numbers resolve against the explicit grid (columns only here) */
   @media (min-width: 48rem) {
     .bookshelf-year__sidebar {
-      grid-row: 1 / -1;
+      grid-row: 1 / span 999;
+      align-self: stretch;
     }
   }
 
