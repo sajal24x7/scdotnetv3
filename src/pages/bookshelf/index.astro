@@ -5,7 +5,7 @@ import BookshelfCard from '../../components/bookshelf/BookshelfCard.astro';
 import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
-import { SHELF_STATUS_PRIORITY } from '../../utils/shelfStatus';
+import { SHELF_LIST_SORT_PRIORITY } from '../../utils/shelfStatus';
 
 // Get all posts and filter for bookshelf
 const allPosts = await getAllPosts();
@@ -68,7 +68,7 @@ const sortedBooks = [...booksWithYear].sort((a, b) => {
     const statusB = normalizeStatus(b.book.data.status);
 
     if (statusA !== statusB) {
-        return (SHELF_STATUS_PRIORITY[statusA as keyof typeof SHELF_STATUS_PRIORITY] ?? 99) - (SHELF_STATUS_PRIORITY[statusB as keyof typeof SHELF_STATUS_PRIORITY] ?? 99);
+        return (SHELF_LIST_SORT_PRIORITY[statusA as keyof typeof SHELF_LIST_SORT_PRIORITY] ?? 99) - (SHELF_LIST_SORT_PRIORITY[statusB as keyof typeof SHELF_LIST_SORT_PRIORITY] ?? 99);
     }
 
     if (statusA === 'started') {

@@ -21,22 +21,17 @@ const parseDate = (value?: Date | string | null): Date | null => {
     return Number.isNaN(d.getTime()) ? null : d;
 };
 
-const getEntryYear = (post: typeof shelfPosts[number]): number => {
-    const cat = post.data.category;
-    if (cat === 'bookshelf' || cat === 'filmshelf' || cat === 'tvshelf' || cat === 'gameshelf') {
-        const finished = parseDate(post.data.finished);
-        if (finished) return finished.getFullYear();
-        const started = parseDate(post.data.started);
-        if (started) return started.getFullYear();
-    }
-    if (cat === 'tvshelf' || cat === 'gameshelf') {
-        // use created as best proxy
-    }
-    const pub = parseDate(post.data.created);
-    return (pub ?? new Date()).getFullYear();
+// Most recent activity date for an entry: finished > started > created.
+// Used consistently across categories so books/films/TV/games interleave
+// by actual date rather than falling back to inconsistent proxies.
+const getEntryDate = (post: typeof shelfPosts[number]): Date => {
+    const finished = parseDate(post.data.finished);
+    if (finished) return finished;
+    const started = parseDate(post.data.started);
+    if (started) return started;
+    return parseDate(post.data.created) ?? new Date();
 };
 
-// Remove the now-unused TV-only getEntryYear branch (kept in combined function above)
 // For TV: group seasons by show — one representative per show
 const tvShowMap = new Map<string, typeof shelfPosts>();
 for (const post of shelfPosts) {
@@ -50,6 +45,7 @@ for (const post of shelfPosts) {
 interface CombinedEntry {
     type: 'book' | 'film' | 'tv' | 'game';
     year: number;
+    date: Date;
     post?: typeof shelfPosts[number];
     // TV-specific aggregate data
     showTitle?: string;
@@ -65,11 +61,13 @@ const entries: CombinedEntry[] = [];
 // Add non-TV posts directly
 for (const post of shelfPosts) {
     if (post.data.category === 'tvshelf') continue; // handled via showMap
+    const date = getEntryDate(post);
     entries.push({
         type: post.data.category === 'bookshelf' ? 'book'
              : post.data.category === 'filmshelf' ? 'film'
              : 'game',
-        year: getEntryYear(post),
+        year: date.getFullYear(),
+        date,
         post
     });
 }
@@ -84,12 +82,12 @@ for (const [showTitle, seasons] of tvShowMap.entries()) {
         .map((s) => s.data.status)
         .filter(Boolean)
         .sort((a, b) => (SHELF_STATUS_PRIORITY[a as keyof typeof SHELF_STATUS_PRIORITY] ?? 5) - (SHELF_STATUS_PRIORITY[b as keyof typeof SHELF_STATUS_PRIORITY] ?? 5))[0];
-    const pub = parseDate(representative.data.created);
-    const year = (pub ?? new Date()).getFullYear();
+    const date = getEntryDate(representative);
 
     entries.push({
         type: 'tv',
-        year,
+        year: date.getFullYear(),
+        date,
         showTitle,
         showSlug: slugify(showTitle),
         tvRepresentative: representative,
@@ -99,12 +97,9 @@ for (const [showTitle, seasons] of tvShowMap.entries()) {
     });
 }
 
-// Sort: year desc, then by type order (book > film > tv > game) within year
-const typeOrder: Record<string, number> = { book: 0, film: 1, tv: 2, game: 3 };
-entries.sort((a, b) => {
-    if (a.year !== b.year) return b.year - a.year;
-    return (typeOrder[a.type] ?? 4) - (typeOrder[b.type] ?? 4);
-});
+// Sort chronologically (most recent activity first) so books, films, TV, and
+// games interleave into one unified timeline instead of clustering by type.
+entries.sort((a, b) => b.date.getTime() - a.date.getTime());
 
 const years = Array.from(new Set(entries.map((e) => e.year)));
 
