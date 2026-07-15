@@ -6,7 +6,7 @@ import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 import { computeWatchNumbers } from '../../utils/shelfUtils';
-import { SHELF_STATUS_PRIORITY } from '../../utils/shelfStatus';
+import { SHELF_LIST_SORT_PRIORITY } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
 const gamePosts = allPosts.filter((post) => post.data.category === 'gameshelf');
@@ -40,10 +40,10 @@ const gamesWithYear = gamePosts.map((post) => ({
 
 const sortedGames = [...gamesWithYear].sort((a, b) => {
     if (a.year !== b.year) return b.year - a.year;
-    const statusA = a.post.data.status as keyof typeof SHELF_STATUS_PRIORITY | undefined;
-    const statusB = b.post.data.status as keyof typeof SHELF_STATUS_PRIORITY | undefined;
+    const statusA = a.post.data.status as keyof typeof SHELF_LIST_SORT_PRIORITY | undefined;
+    const statusB = b.post.data.status as keyof typeof SHELF_LIST_SORT_PRIORITY | undefined;
     if (statusA !== statusB) {
-        return (statusA ? SHELF_STATUS_PRIORITY[statusA] : 99) - (statusB ? SHELF_STATUS_PRIORITY[statusB] : 99);
+        return (statusA ? SHELF_LIST_SORT_PRIORITY[statusA] : 99) - (statusB ? SHELF_LIST_SORT_PRIORITY[statusB] : 99);
     }
     return compareDesc(a.post.data.created, b.post.data.created);
 });

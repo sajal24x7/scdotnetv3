@@ -6,7 +6,7 @@ import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 import { slugify } from '../../utils/shelfUtils';
-import { SHELF_STATUS_PRIORITY, type ShelfStatus } from '../../utils/shelfStatus';
+import { SHELF_LIST_SORT_PRIORITY, type ShelfStatus } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
 const tvPosts = allPosts.filter((post) => post.data.category === 'tvshelf');
@@ -57,8 +57,8 @@ const seasonEntries: SeasonEntry[] = tvPosts.map((post) => {
 
 seasonEntries.sort((a, b) => {
     if (a.year !== b.year) return b.year - a.year;
-    const sA = a.tvStatus ? SHELF_STATUS_PRIORITY[a.tvStatus] : 99;
-    const sB = b.tvStatus ? SHELF_STATUS_PRIORITY[b.tvStatus] : 99;
+    const sA = a.tvStatus ? SHELF_LIST_SORT_PRIORITY[a.tvStatus] : 99;
+    const sB = b.tvStatus ? SHELF_LIST_SORT_PRIORITY[b.tvStatus] : 99;
     return sA - sB;
 });
 

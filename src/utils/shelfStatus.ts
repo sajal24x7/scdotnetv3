@@ -36,6 +36,16 @@ export const SHELF_STATUS_PRIORITY: Record<ShelfStatus, number> = {
   finished: 3,
 };
 
+// Lower number = shown earlier on a shelf page's year-grouped listing.
+// Active items lead, then everything you've finished, then on-hold and
+// not-yet-started items trail — on-hold shouldn't outrank finished work.
+export const SHELF_LIST_SORT_PRIORITY: Record<ShelfStatus, number> = {
+  started: 0,
+  finished: 1,
+  paused: 2,
+  todo: 3,
+};
+
 export function getShelfStatusLabel(category: ShelfCategory, status: ShelfStatus | undefined): string | undefined {
   return status ? SHELF_STATUS_LABELS[category][status] : undefined;
 }
