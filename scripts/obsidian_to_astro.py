@@ -84,6 +84,9 @@ _CATEGORY_STUBS: dict[str, list[tuple[str, str]]] = {
         ("rating", ""),
         ("finished", ""),
         ("genre", '""'),
+        ("status", "todo"),
+        ("rating", ""),
+        ("finished", ""),
     ],
     "tvshelf": [
         ("showTitle", '""'),
