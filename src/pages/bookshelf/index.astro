@@ -214,10 +214,12 @@ const sectionLandingProps = createSectionLandingProps({
         const bookCount = finishedYearBooks.length;
         const bookLabel = bookCount === 1 ? 'book' : 'books';
 
+        const yearRowCount = Math.ceil(yearBooks.length / 2);
+
         return (
           <section class="bookshelf-year" id={`bookshelf-${year}`} data-year={year}>
             <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
-              <div class="bookshelf-year__sidebar grid-span-2">
+              <div class="bookshelf-year__sidebar grid-span-2" style={`--year-row-count: ${yearRowCount};`}>
                 <div class="bookshelf-year__sticky">
                   <span class="bookshelf-year__year">{year}</span>
                   <span class="bookshelf-year__count" data-year-count={year}>Read {bookCount} {bookLabel}</span>
@@ -521,10 +523,12 @@ const sectionLandingProps = createSectionLandingProps({
   }
 
   /* grid-row: 1 / -1 wouldn't span the implicit rows the entries create, since
-     negative line numbers resolve against the explicit grid (columns only here) */
+     negative line numbers resolve against the explicit grid (columns only here);
+     --year-row-count (set inline per section) gives the exact row span instead
+     of a large guess, which would otherwise force empty trailing rows into existence */
   @media (min-width: 48rem) {
     .bookshelf-year__sidebar {
-      grid-row: 1 / span 999;
+      grid-row: 1 / span var(--year-row-count, 1);
       align-self: stretch;
     }
   }
