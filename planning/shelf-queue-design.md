@@ -85,10 +85,15 @@ the intent ("now-ish"). Concretely:
   small. Sorted by `created` descending. No year grouping — a queue is a
   list, not an archive.
 
-**Decision to make:** today, `todo` entries also render inside the main shelf
-year grid (sorted last within their year). Once queue pages exist, I'd
-exclude `todo` from the year grid so the log stays a log — but keeping them
-is a one-line difference either way.
+**Decided: `todo` entries do not render on the shelf pages at all.** Today
+they appear inside the main shelf year grid (sorted last within their year);
+with queue pages in place, all four shelf index pages — and the combined
+`/shelf/` page — filter `todo` out, so the shelf stays a log of things
+actually started/paused/finished. The queue view exists **only** on the
+`/…/queue/` pages beneath each shelf. This also means the "To Read" status
+filter badge disappears from the shelf filter UI (there is nothing left for
+it to match), and the queue link in the shelf header becomes the one way to
+reach queued items.
 
 ---
 
