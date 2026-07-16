@@ -6,6 +6,7 @@ import FilmCard from '../../components/shelf/FilmCard.astro';
 import TVCard from '../../components/shelf/TVCard.astro';
 import GameCard from '../../components/shelf/GameCard.astro';
 import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
+import ShelfFilterResults from '../../components/shelf/ShelfFilterResults.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 import { slugify, computeWatchNumbers } from '../../utils/shelfUtils';
@@ -144,6 +145,59 @@ const normalizeBookStatus = (status?: string | null) => {
             return 'finished';
     }
 };
+
+const joinAuthors = (author?: string | string[] | null) => {
+    if (!author) return '';
+    return Array.isArray(author) ? author.join(',') : author;
+};
+
+// Data attributes read by shelfFilters.ts — only the attrs relevant to an
+// entry's type are set, so e.g. a book's `data-format` never collides with a
+// film's `data-platform`, and each filter naturally only ever matches its
+// own media type.
+const getEntryFilterAttrs = (entry: CombinedEntry): Record<string, string> => {
+    if (entry.type === 'book' && entry.post) {
+        return {
+            'data-author': joinAuthors(entry.post.data.author),
+            'data-genre': entry.post.data.genre ?? '',
+            'data-format': entry.post.data.format ?? '',
+            'data-rating': entry.post.data.rating ?? '',
+            'data-status': normalizeBookStatus(entry.post.data.status),
+        };
+    }
+
+    if (entry.type === 'film' && entry.post) {
+        return {
+            'data-director': Array.isArray(entry.post.data.director) ? entry.post.data.director.join(',') : '',
+            'data-genre': entry.post.data.genre ?? '',
+            'data-platform': entry.post.data.platform ?? '',
+            'data-rating': entry.post.data.rating ?? '',
+            'data-status': entry.post.data.status ?? '',
+        };
+    }
+
+    if (entry.type === 'tv' && entry.tvRepresentative) {
+        return {
+            'data-creator': Array.isArray(entry.tvRepresentative.data.creator) ? entry.tvRepresentative.data.creator.join(',') : '',
+            'data-genre': entry.tvRepresentative.data.genre ?? '',
+            'data-platform': entry.tvRepresentative.data.platform ?? '',
+            'data-rating': entry.tvRepresentative.data.rating ?? '',
+            'data-status': entry.tvStatus ?? '',
+        };
+    }
+
+    if (entry.type === 'game' && entry.post) {
+        return {
+            'data-developer': entry.post.data.developer ?? '',
+            'data-genre': entry.post.data.genre ?? '',
+            'data-platform': entry.post.data.platform ?? '',
+            'data-rating': entry.post.data.rating ?? '',
+            'data-status': entry.post.data.status ?? '',
+        };
+    }
+
+    return {};
+};
 ---
 
 <Layout
@@ -171,6 +225,7 @@ const normalizeBookStatus = (status?: string | null) => {
       </div>
       <p class="shelf-description">{shelfDescription}</p>
     </div>
+    <ShelfFilterResults />
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearEntries = entriesByYear[year] ?? [];
@@ -190,7 +245,7 @@ const normalizeBookStatus = (status?: string | null) => {
                 const key = entry.post?.id ?? entry.showSlug ?? `${year}-${index}`;
 
                 return (
-                  <div class={`bookshelf-year__book ${gridClasses}`}>
+                  <div class={`bookshelf-year__book ${gridClasses}`} data-shelf-item {...getEntryFilterAttrs(entry)}>
                     {entry.type === 'book' && entry.post && (
                       <BookshelfCard
                         {...entry.post.data}
@@ -255,6 +310,8 @@ const normalizeBookStatus = (status?: string | null) => {
   :global(.dark) .bookshelf-count { color: #9ca3af; }
   .bookshelf-content { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3rem); padding-bottom: 2rem; }
   .bookshelf-years { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3.5rem); }
+  .bookshelf-year[data-filtered="hidden"] { display: none; }
+  .bookshelf-year__book[data-filtered="hidden"] { display: none; }
   .bookshelf-year__grid { align-items: flex-start; }
   .bookshelf-year__sidebar { display: flex; align-items: flex-start; }
   /* grid-row: 1 / -1 wouldn't span the implicit rows the entries create, since
@@ -269,3 +326,39 @@ const normalizeBookStatus = (status?: string | null) => {
   @media (max-width: 47.999rem) { .bookshelf-year__sticky { position: static; } }
   @media (min-width: 64rem) { .bookshelf-year__year { font-size: clamp(2.25rem, 4vw, 3.5rem); } }
 </style>
+
+<script>
+  import { initShelfFilters } from '../../scripts/shelfFilters';
+
+  function initShelfPageFilters() {
+    initShelfFilters({
+      itemSelector: '[data-shelf-item]',
+      countNoun: { singular: 'item', plural: 'items' },
+      filterTypes: [
+        { type: 'author' },
+        { type: 'director' },
+        { type: 'creator' },
+        { type: 'developer' },
+        { type: 'genre', badgeClass: () => 'shelf-filter-badge--genre' },
+        {
+          type: 'status',
+          labels: { todo: 'To Do', started: 'In Progress', paused: 'On Hold', finished: 'Finished' },
+          badgeClass: (value) => `shelf-filter-badge--status-${value}`,
+        },
+        { type: 'format' },
+        { type: 'platform' },
+        {
+          type: 'rating',
+          labels: { like: 'Like', love: 'Love', nope: 'Nope' },
+          badgeClass: (value) => `shelf-filter-badge--rating-${value}`,
+        },
+      ],
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initShelfPageFilters);
+  } else {
+    initShelfPageFilters();
+  }
+</script>
