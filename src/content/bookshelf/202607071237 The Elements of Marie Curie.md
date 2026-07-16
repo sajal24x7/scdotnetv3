@@ -13,7 +13,6 @@ finished: 2026-07-15T10:56:00+03:00
 genre: biography
 format: audiobook
 rating: like
-cover: the-elements-of-marie-curie.webp
 ---
 ## Review
 
