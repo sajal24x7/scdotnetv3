@@ -166,30 +166,37 @@ entry (`status: started`, `started:` set). Best for films/games/TV where you
 often never write a note at all. Finishing later is the same kind of edit
 (Obsidian, GitHub mobile, or a future "finish" action).
 
-### Path B — Obsidian-first (your existing habit; the interesting case)
+### Path B — Obsidian-first (your existing habit; applies to all four shelves)
 
-You start a book → you create a new note in Obsidian as always
+You start something new → you create a new note in Obsidian as always
 (`status: started`, your own timestamp filename) → GitSync pushes it to the
-`content` branch → `content-publish.yml` runs.
+`content` branch → `content-publish.yml` normalizes and sorts it into its
+category folder, exactly as today. **That existing flow is untouched** — the
+Obsidian note is the new canonical entry, as-is.
 
-Add a **reconcile step** to that pipeline, right after `sort-inbox`:
+The only addition is a **check-and-delete step** in that pipeline, right
+after `sort-inbox`, identical for bookshelf, filmshelf, tvshelf, and
+gameshelf:
 
-> For each shelf note that just arrived, look for an existing `status: todo`
-> entry in the same category whose **normalised title** matches (lowercase,
-> punctuation stripped — the exact normalisation `computeWatchNumbers()`
-> already uses; for TV, match on normalised `showTitle` instead). If found:
-> copy the stub's enriched fields (`author`/`director`/…, `genre`, `year`,
-> `series`, `cover`) into the new note **only where the new note lacks
-> them**, then delete the stub — in the same publish commit.
+> For each shelf note that just arrived from the inbox, look for an existing
+> entry in the same category that has `status: todo` — and **only**
+> `status: todo`; started/paused/finished entries are never candidates —
+> whose **normalised title** matches (lowercase, punctuation stripped — the
+> exact normalisation `computeWatchNumbers()` already uses; for TV, match on
+> normalised `showTitle` instead). If found: delete the stub, in the same
+> publish commit. Nothing is copied or merged.
 
 Consequences:
 
 - **The filename mismatch evaporates.** The Obsidian note's filename becomes
   the canonical one; the stub with its different timestamp is deleted before
   anything reaches `main`, so no duplicate ever renders.
-- Enrichment work isn't lost — it migrates onto your note.
-- The cover file and cover-map entry are keyed by slug/title, so the
-  reconcile step re-runs the cover-map generator (cheap) if a cover moved.
+- No merge logic to get wrong: the new note arrives bare and the enrichment
+  workflow (§3) fills its metadata and cover again on the next push — the
+  stub's enriched fields are simply discarded with it.
+- Matching only against `todo` keeps rereads/rewatches safe: a second "Wool"
+  entry never deletes the finished first read — rewatch detection keeps
+  working on multiple non-todo entries as today.
 
 **Failure mode** (titles differ: "Wool" vs "Wool (Silo, #1)"): the stub
 survives and shows as a leftover on the queue page — visible, harmless,
