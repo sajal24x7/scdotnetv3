@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import TVCard from '../../components/shelf/TVCard.astro';
 import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
+import ShelfFilterResults from '../../components/shelf/ShelfFilterResults.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 import { slugify } from '../../utils/shelfUtils';
@@ -121,6 +122,7 @@ const sectionLandingProps = createSectionLandingProps({
       </div>
       <p class="shelf-description">{tvDescription}</p>
     </div>
+    <ShelfFilterResults />
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearEntries = entriesByYear[year] ?? [];
@@ -144,8 +146,9 @@ const sectionLandingProps = createSectionLandingProps({
                 return (
                   <div
                     class={`bookshelf-year__book ${gridClasses}`}
-                    data-content-item
+                    data-shelf-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
+                    data-creator={Array.isArray(post.data.creator) ? post.data.creator.join(',') : ''}
                     data-genre={post.data.genre ?? ''}
                     data-platform={post.data.platform ?? ''}
                     data-status={entry.tvStatus ?? ''}
@@ -198,3 +201,36 @@ const sectionLandingProps = createSectionLandingProps({
   @media (max-width: 47.999rem) { .bookshelf-year__sticky { position: static; } }
   @media (min-width: 64rem) { .bookshelf-year__year { font-size: clamp(2.25rem, 4vw, 3.5rem); } }
 </style>
+
+<script>
+  import { initShelfFilters } from '../../scripts/shelfFilters';
+
+  function initTvshelfFilters() {
+    initShelfFilters({
+      itemSelector: '[data-shelf-item]',
+      countNoun: { singular: 'season', plural: 'seasons' },
+      filterTypes: [
+        { type: 'creator' },
+        { type: 'genre', badgeClass: () => 'shelf-filter-badge--genre' },
+        {
+          type: 'status',
+          labels: { todo: 'To Watch', started: 'Watching', paused: 'On Hold', finished: 'Watched' },
+          badgeClass: (value) => `shelf-filter-badge--status-${value}`,
+        },
+        { type: 'platform' },
+        {
+          type: 'rating',
+          labels: { like: 'Like', love: 'Love', nope: 'Nope' },
+          badgeClass: (value) => `shelf-filter-badge--rating-${value}`,
+        },
+        { type: 'tag', badgeClass: () => 'shelf-filter-badge--tag' },
+      ],
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTvshelfFilters);
+  } else {
+    initTvshelfFilters();
+  }
+</script>
