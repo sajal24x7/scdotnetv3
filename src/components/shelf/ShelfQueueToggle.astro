@@ -18,15 +18,29 @@ const SHELF_LABELS: Record<ShelfCategory, string> = {
     gameshelf: 'Games',
 };
 
+const SHELF_RSS_LABELS: Record<ShelfCategory, string> = {
+    bookshelf: 'Bookshelf RSS feed',
+    filmshelf: 'Film Shelf RSS feed',
+    tvshelf: 'TV Shelf RSS feed',
+    gameshelf: 'Game Shelf RSS feed',
+};
+
 const label = SHELF_LABELS[category];
 const shelfHref = `/${category}/`;
 const queueHref = SHELF_QUEUE_CONFIG[category].route;
+const rssHref = SHELF_QUEUE_CONFIG[category].rssHref;
+const rssLabel = SHELF_RSS_LABELS[category];
 ---
 
 <h1 class="shelf-queue-toggle">
     {active === 'shelf' ? (
         <>
             <span class="shelf-queue-toggle__active">{label}</span>
+            <a href={rssHref} class="shelf-queue-toggle__rss" aria-label={rssLabel} title="Subscribe via RSS">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16">
+                    <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
+                </svg>
+            </a>
             <span class="shelf-queue-toggle__separator">/</span>
             <a href={queueHref} class="shelf-queue-toggle__inactive">Queue</a>
         </>
@@ -85,5 +99,19 @@ const queueHref = SHELF_QUEUE_CONFIG[category].route;
 
     :global(.dark) .shelf-queue-toggle__inactive:hover {
         color: rgb(129 140 248);
+    }
+
+    .shelf-queue-toggle__rss {
+        display: inline-flex;
+        align-items: center;
+        color: currentColor;
+        opacity: 0.35;
+        transition: opacity 0.15s ease;
+        text-decoration: none;
+        flex-shrink: 0;
+    }
+
+    .shelf-queue-toggle__rss:hover {
+        opacity: 0.8;
     }
 </style>
