@@ -115,6 +115,11 @@ function needsSyndication(post) {
     return false;
   }
 
+  // Queue stubs (status: todo) are tracking placeholders, not publishable posts
+  if (post.data.status === 'todo') {
+    return false;
+  }
+
   // Only syndicate posts from the last X days (configurable)
   const cutoffDate = new Date();
   cutoffDate.setDate(cutoffDate.getDate() - DAYS_BACK);
