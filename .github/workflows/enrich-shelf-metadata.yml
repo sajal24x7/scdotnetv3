@@ -3,8 +3,9 @@ name: Enrich Shelf Metadata
 on:
   # Fire on shelf-content pushes to main: a queue stub committed from
   # /write, an Obsidian note landing via content-publish, etc. Only the
-  # touched shelf(s) are enriched, then that shelf's cover is downloaded so
-  # a queue card is complete without any manual step.
+  # entry (or entries) actually added/changed in the push are enriched and
+  # get their cover downloaded, so a queue card is complete without any
+  # manual step — and without re-processing the rest of the shelf.
   # No loop: the bookkeeping commit below is pushed with the default
   # GITHUB_TOKEN (via actions/checkout's persisted credentials), and GitHub
   # excludes GITHUB_TOKEN-authored pushes from triggering further workflow
@@ -116,6 +117,30 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
+      # Push runs only ever enrich the entry (or entries) actually
+      # added/modified in this push, not the whole shelf — resolve their
+      # titles here (from the file the diff touched, not from an argv
+      # string) so a title with special characters like an apostrophe can't
+      # break the run steps below. Written to a file rather than a step
+      # output because those get interpolated straight into later steps'
+      # YAML/bash, where an apostrophe in a title would break the quoting.
+      - name: Find touched ${{ steps.shelf.outputs.title }} entries
+        if: github.event_name == 'push'
+        run: |
+          git diff --name-only --diff-filter=AM "${{ github.event.before }}" "${{ github.sha }}" -- "src/content/${{ steps.shelf.outputs.dir }}" > "$RUNNER_TEMP/changed-files.txt"
+          node -e '
+            const fs = require("fs");
+            const matter = require("gray-matter");
+            const raw = fs.readFileSync(process.env.RUNNER_TEMP + "/changed-files.txt", "utf8");
+            const files = raw.split("\n").map(l => l.trim()).filter(Boolean);
+            const titles = files.map(f => {
+              const { data } = matter(fs.readFileSync(f, "utf8"));
+              return data.showTitle || data.title || null;
+            }).filter(Boolean);
+            fs.writeFileSync(process.env.RUNNER_TEMP + "/touched-titles.json", JSON.stringify([...new Set(titles)]));
+          '
+          echo "Touched entries: $(cat "$RUNNER_TEMP/touched-titles.json")"
+
       - name: Enrich ${{ steps.shelf.outputs.title }} metadata
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
@@ -123,10 +148,21 @@ jobs:
           TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
           TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
         run: |
-          if [ "${{ inputs.force }}" = "true" ]; then
-            node "scripts/enrich-${{ matrix.shelf }}-metadata.js" --force
+          force_flag=""
+          [ "${{ inputs.force }}" = "true" ] && force_flag="--force"
+
+          if [ "${{ github.event_name }}" = "push" ]; then
+            titles_file="$RUNNER_TEMP/touched-titles.json"
+            if [ "$(jq 'length' "$titles_file")" -eq 0 ]; then
+              echo "No touched ${{ steps.shelf.outputs.title }} entries to enrich"
+              exit 0
+            fi
+            jq -r '.[]' "$titles_file" | while IFS= read -r title; do
+              node "scripts/enrich-${{ matrix.shelf }}-metadata.js" $force_flag --title "$title"
+            done
           else
-            node "scripts/enrich-${{ matrix.shelf }}-metadata.js"
+            # Manual dispatch: whole-shelf bulk/backfill run, as before.
+            node "scripts/enrich-${{ matrix.shelf }}-metadata.js" $force_flag
           fi
 
       # Push-triggered runs also fetch the cover, so a queue stub gets a
@@ -140,7 +176,18 @@ jobs:
           TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
           TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
         run: |
-          node "scripts/download-${{ matrix.shelf }}-covers.js"
+          titles_file="$RUNNER_TEMP/touched-titles.json"
+          if [ "$(jq 'length' "$titles_file")" -eq 0 ]; then
+            echo "No touched ${{ steps.shelf.outputs.title }} entries to fetch covers for"
+            exit 0
+          fi
+
+          flag="--title"
+          [ "${{ matrix.shelf }}" = "book" ] && flag="--book"
+
+          jq -r '.[]' "$titles_file" | while IFS= read -r title; do
+            node "scripts/download-${{ matrix.shelf }}-covers.js" "$flag" "$title"
+          done
           node "scripts/generate-${{ matrix.shelf }}-covers.js"
 
       - name: Commit ${{ steps.shelf.outputs.title }} metadata updates
