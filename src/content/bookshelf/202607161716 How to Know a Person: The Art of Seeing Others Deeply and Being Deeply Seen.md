@@ -1,0 +1,7 @@
+---
+title: "How to Know a Person: The Art of Seeing Others Deeply and Being Deeply Seen"
+slug: "how-to-know-a-person-the-art-of-seeing-others-deeply-and-being-deeply-seen"
+created: 2026-07-16T14:16:00.000Z
+category: bookshelf
+status: todo
+---
