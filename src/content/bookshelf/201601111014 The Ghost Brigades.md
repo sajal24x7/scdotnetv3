@@ -18,5 +18,6 @@ rating: like
 cover: the-ghost-brigades.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode3b5tdv2l'
+year: 2006
 ---
 Finished Reading

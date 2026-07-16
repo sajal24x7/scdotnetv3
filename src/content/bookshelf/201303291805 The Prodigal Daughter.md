@@ -19,6 +19,7 @@ cover: the-prodigal-daughter.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754264343634277'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddwhx3cw2u'
+year: 1973
 ---
 
 Finished Reading

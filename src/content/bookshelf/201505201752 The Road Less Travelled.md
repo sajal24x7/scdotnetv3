@@ -17,5 +17,6 @@ rating: like
 cover: the-road-less-travelled.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode2nu2hv2v'
+year: 1978
 ---
 Finished Reading

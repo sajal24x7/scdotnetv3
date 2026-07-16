@@ -18,6 +18,7 @@ syndicationUrls:
   - 'https://www.threads.com/@sajal24x7/post/DS8LlgbkWNi'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zqft722o'
 cover: deaths-end.webp
+year: 2010
 ---
 
 Enjoyed reading it.

@@ -16,6 +16,7 @@ rating: like
 cover: excellent-advice-for-living.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode66amdc2u'
+year: 2023
 ---
 This is an excellent gift for someone. 
 

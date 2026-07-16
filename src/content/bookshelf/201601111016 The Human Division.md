@@ -18,5 +18,6 @@ rating: like
 cover: the-human-division.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode3dbaat2m'
+year: 2013
 ---
 Finished Reading

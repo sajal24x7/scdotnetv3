@@ -18,5 +18,6 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgf3q5xqyh27'
   - 'https://www.threads.com/@sajal24x7/post/DVihn4uEZXV'
 cover: building-microservices.webp
+year: 2015
 ---
 Started reading.

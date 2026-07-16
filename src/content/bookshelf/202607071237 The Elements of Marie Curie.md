@@ -1,18 +1,20 @@
 ---
-title: "The Elements of Marie Curie"
-slug: "the-elements-of-marie-curie"
-created: 2026-07-07T12:37:00+03:00
-updated: 2026-07-15T10:56:34+03:00
+title: The Elements of Marie Curie
+slug: the-elements-of-marie-curie
+created: 2026-07-07T09:37:00.000Z
+updated: 2026-07-15T07:56:34.000Z
 category: bookshelf
-tags: ["science"]
+tags:
+  - science
 author:
   - Dava Sobel
 status: finished
-started: 2026-07-07T12:37:00+03:00
-finished: 2026-07-15T10:56:00+03:00
+started: 2026-07-07T09:37:00.000Z
+finished: 2026-07-15T07:56:00.000Z
 genre: biography
 format: audiobook
 rating: like
+year: 2024
 ---
 ## Review
 

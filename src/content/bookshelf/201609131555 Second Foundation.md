@@ -17,5 +17,6 @@ finished: 2016-09-13T15:55:33.000Z
 cover: second-foundation.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode5dfk4z2m'
+year: 1953
 ---
 Finished Reading

@@ -20,6 +20,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbwhvujvj42l'
   - 'https://www.threads.com/@sajal24x7/post/DTQfUgfjsTJ'
 cover: the-unicorn-project.webp
+year: 2019
 ---
 
 Finished reading.

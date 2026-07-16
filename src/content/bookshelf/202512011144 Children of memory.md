@@ -20,6 +20,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6w6g3eqws2i'
   - 'https://www.threads.com/@sajal24x7/post/DRt7RDdDuhH'
 cover: children-of-memory.webp
+year: 2022
 ---
 
 I loved this book. 

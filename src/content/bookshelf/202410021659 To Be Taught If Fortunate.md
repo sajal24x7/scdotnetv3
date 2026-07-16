@@ -17,5 +17,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyllapj2o22'
   - 'https://www.threads.com/@sajal24x7/post/DTSpgCHjvUe'
 cover: to-be-taught-if-fortunate.webp
+author: Becky Chambers
+year: 2019
 ---
 This one was structured in an atypical way, in which, when I finished I could point out and say this is the idea that the author had when writing it, the theme, the central thought. And it came at the very end.

@@ -18,6 +18,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3miauo4px2n25'
   - 'https://www.threads.com/@sajal24x7/post/DWfvURiFTx5'
 cover: notes-on-being-a-man.webp
+year: 2025
 ---
 Started reading.
 

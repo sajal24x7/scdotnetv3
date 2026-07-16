@@ -19,5 +19,6 @@ cover: prelude-to-foundation.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754267358792899'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddxtwvhe2l'
+year: 1988
 ---
 Finished Reading

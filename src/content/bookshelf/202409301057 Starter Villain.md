@@ -19,5 +19,6 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyle2v23c2a'
   - 'https://www.threads.com/@sajal24x7/post/DTSpCn-FIh3'
 cover: starter-villain.webp
+year: 2023
 ---
 I loved reading this one as well. It was a hoot. A truly outrageous story, if there ever was any.

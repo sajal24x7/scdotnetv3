@@ -18,5 +18,6 @@ rating: like
 cover: the-end-of-all-things.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode42tvny2c'
+year: 2015
 ---
 Finished Reading

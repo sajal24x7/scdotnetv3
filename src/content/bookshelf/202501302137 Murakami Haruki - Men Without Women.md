@@ -17,6 +17,7 @@ started: 2025-01-30T18:37:00.000Z
 finished: 2025-01-30T18:37:00.000Z
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6ir3va2c'
+year: 2017
 ---
 # Few things about the thing that is this book
 

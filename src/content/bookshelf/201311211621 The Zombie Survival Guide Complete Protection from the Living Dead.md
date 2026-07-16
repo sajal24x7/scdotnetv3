@@ -18,5 +18,6 @@ cover: the-zombie-survival-guide-complete-protection-from-the-living-dead.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754271335735734'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddznnxkw2u'
+year: 2003
 ---
 Finished Reading

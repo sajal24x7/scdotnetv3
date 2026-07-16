@@ -20,5 +20,6 @@ cover: the-lost-symbol.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754257866145232'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddtjkrvr2s'
+year: 2009
 ---
 Finished Reading

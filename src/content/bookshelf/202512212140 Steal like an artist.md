@@ -18,6 +18,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3majlxhmcct2g'
   - 'https://www.threads.com/@sajal24x7/post/DSiiFyqgZnX'
 cover: steal-like-an-artist.webp
+year: 2012
 ---
 
 It’s a small book, full of inspiring stuff. This is the second time I have read this book. The first time, I had read it on Kindle. Sometime last year, I had purchased all three Kleon books.

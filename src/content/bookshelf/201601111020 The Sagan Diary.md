@@ -18,5 +18,6 @@ rating: like
 cover: the-sagan-diary.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode4a4m3y2c'
+year: 2007
 ---
 Finished Reading

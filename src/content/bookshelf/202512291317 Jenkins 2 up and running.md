@@ -16,6 +16,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mb4ppdeh6u2k'
   - 'https://www.threads.com/@sajal24x7/post/DS2G8h6EYbF'
 cover: jenkins-2-up-and-running.webp
+year: 2018
 ---
 Started reading.
 

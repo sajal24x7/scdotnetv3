@@ -17,6 +17,7 @@ rating: like
 cover: a-closed-and-common-orbit.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6blvvw24'
+year: 2016
 ---
 I finished reading the second book in the Wayfarer series - A Closed and Common Orbit. The book follows the events in [The Long Way to a Small, Angry Planet](https://en.wikipedia.org/wiki/The_Long_Way_to_a_Small,_Angry_Planet). It does not however include the characters of the long way.
 

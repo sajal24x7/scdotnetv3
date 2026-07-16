@@ -19,6 +19,7 @@ started: 2025-07-11T06:31:00.000Z
 finished: 2025-07-15T18:00:00.000Z
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6uk6bw2u'
+year: 2018
 ---
 Book 1 - [All systems red](/bookshelf/all-systems-red)
 Book 2 - [Artificial Condition](/bookshelf/artificial-condition)

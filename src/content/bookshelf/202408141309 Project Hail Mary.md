@@ -17,6 +17,8 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyjaacgxj2o'
   - 'https://www.threads.com/@sajal24x7/post/DTSksyJEX1q'
 cover: project-hail-mary.webp
+author: Andy Weir
+year: 2021
 ---
 I absolutely loved reading this book.
 

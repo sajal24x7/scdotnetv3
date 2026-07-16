@@ -19,6 +19,7 @@ syndicationUrls:
 cover: the-intelligent-investor.webp
 rating: like
 finished: 2026-04-06T08:27:29.000Z
+year: 1949
 ---
 ## Review
 

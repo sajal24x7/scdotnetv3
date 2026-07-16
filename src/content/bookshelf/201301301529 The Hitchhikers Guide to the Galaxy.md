@@ -19,5 +19,6 @@ cover: the-hitchhikers-guide-to-the-galaxy.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754262594462789'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddvourug2d'
+year: 1979
 ---
 Finished Reading

@@ -19,6 +19,7 @@ genre: sci-fi
 cover: all-systems-red.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6qq4en2l'
+year: 2017
 ---
 
 Book 1 - [All systems red](/bookshelf/all-systems-red)

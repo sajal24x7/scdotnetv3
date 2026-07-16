@@ -17,6 +17,8 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyja4qfme2d'
   - 'https://www.threads.com/@sajal24x7/post/DTSlbatkVOg'
 cover: little-brother.webp
+author: Cory Doctorow
+year: 2008
 ---
 
 Finished reading.

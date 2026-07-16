@@ -18,6 +18,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mady6suxkm2w'
   - 'https://www.threads.com/@sajal24x7/post/DScx68mkeMD'
 cover: the-art-of-spending-money.webp
+year: 2025
 ---
 I have thoughts about this book and the things discussed in this book. There are no notes though.
 

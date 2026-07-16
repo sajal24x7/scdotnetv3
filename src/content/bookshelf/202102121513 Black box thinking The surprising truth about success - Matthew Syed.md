@@ -19,6 +19,7 @@ started: 2020-12-13T12:13:00.000Z
 finished: 2021-01-19T12:13:00.000Z
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode632xf624'
+year: 2015
 ---
 I learnt about this [book](https://www.amazon.in/dp/B00PW634YQ/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1) on [**\#484** of the Tim Ferris show](https://tim.blog/2020/12/03/daniel-ek/), with [Daniel Ek](https://twitter.com/eldsjal), the CEO of Spotify.
 

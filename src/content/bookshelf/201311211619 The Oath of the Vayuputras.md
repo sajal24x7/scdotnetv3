@@ -19,5 +19,6 @@ cover: the-oath-of-the-vayuputras.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754270888217322'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddzhdd7r2u'
+year: 2013
 ---
 Finished Reading

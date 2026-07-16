@@ -19,6 +19,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115411436555564699'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3oz73mokl2v'
   - 'https://www.threads.com/@sajal24x7/post/DQEPcYhjDtK'
+year: 2024
 ---
 
 

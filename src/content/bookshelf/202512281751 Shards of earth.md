@@ -20,6 +20,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mb2rmthzcd2a'
   - 'https://www.threads.com/@sajal24x7/post/DS152tGkVpH'
 cover: shards-of-earth.webp
+year: 2021
 ---
 I loved Shards of Earth.
 

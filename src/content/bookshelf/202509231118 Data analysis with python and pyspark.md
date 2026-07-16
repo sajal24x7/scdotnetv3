@@ -14,6 +14,7 @@ started: 2025-09-23T08:25:22.000Z
 cover: data-analysis-with-python-and-pyspark.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode74yxhi2m'
+year: 2022
 ---
 
 Started reading

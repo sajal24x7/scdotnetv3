@@ -17,6 +17,7 @@ started: 2024-12-24T07:54:00.000Z
 finished: 2024-12-24T07:54:00.000Z
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6febim2w'
+year: 2018
 ---
 This is the third book in the Wayfarer series. Becky continues to explore further people and stories in this universe. This time concentrating on the Fleet, the descendants of the first humans who left a dying planet.
 

@@ -21,6 +21,7 @@ syndicationUrls:
 cover: eyes-of-the-void.webp
 rating: like
 finished: 2026-01-12T10:07:35.000Z
+year: 2022
 ---
 The second book in the final architecture series. 
 

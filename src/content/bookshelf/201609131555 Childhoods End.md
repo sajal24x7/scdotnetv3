@@ -17,5 +17,6 @@ rating: love
 cover: childhoods-end.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode4jl3ry2c'
+year: 1952
 ---
 Finished Reading

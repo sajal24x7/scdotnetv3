@@ -17,5 +17,6 @@ finished: 2016-09-13T15:56:29.000Z
 cover: forward-the-foundation.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode5j2h6z2m'
+year: 1993
 ---
 Finished Reading

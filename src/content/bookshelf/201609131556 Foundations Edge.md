@@ -17,5 +17,6 @@ finished: 2016-09-13T15:56:26.000Z
 cover: foundations-edge.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode5ndyjj2u'
+year: 1977
 ---
 Finished Reading

@@ -19,5 +19,6 @@ cover: the-immortals-of-meluha.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754269806548390'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddyxm4zo2d'
+year: 2010
 ---
 Finished Reading

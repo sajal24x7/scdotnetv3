@@ -21,6 +21,7 @@ syndicationUrls:
 cover: children-of-strife.webp
 rating: like
 finished: 2026-05-30T13:19:36.000Z
+year: 2026
 ---
 ## Review
 

@@ -19,5 +19,6 @@ cover: the-ultimate-hitchhikers-guide-to-the-galaxy.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754256515476497'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddsw2xoi26'
+year: 2012
 ---
 Finished Reading

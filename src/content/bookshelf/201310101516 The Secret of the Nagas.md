@@ -19,5 +19,6 @@ cover: the-secret-of-the-nagas.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754270258372827'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddz6dyub2s'
+year: 2011
 ---
 Finished Reading

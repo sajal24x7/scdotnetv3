@@ -9,7 +9,7 @@ tags:
 format: audio
 genre: sci-fi
 uthor: Martha Wells
-series: "The Murderbot Diaries"
+series: The Murderbot Diaries
 seriesNumber: 5
 status: finished
 rating: like
@@ -20,6 +20,8 @@ syndicationUrls:
   - 'https://www.threads.com/@sajal24x7/post/DS8SiEJEfxq'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zr4o352k'
 cover: network-effect.webp
+author: Martha Wells
+year: 2020
 ---
 Book 1 - [All systems red](/bookshelf/all-systems-red)
 Book 2 - [Artificial Condition](/bookshelf/artificial-condition)

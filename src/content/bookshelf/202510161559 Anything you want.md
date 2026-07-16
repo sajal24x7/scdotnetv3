@@ -18,6 +18,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115413744776639298'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m3pzyqsb2l2v'
   - 'https://www.threads.com/@sajal24x7/post/DQFSTO9jIIR'
+year: 2011
 ---
 
 This is a short book. 

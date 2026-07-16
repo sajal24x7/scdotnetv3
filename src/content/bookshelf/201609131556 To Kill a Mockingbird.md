@@ -17,5 +17,6 @@ rating: love
 cover: to-kill-a-mockingbird.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode5p6fpb2m'
+year: 1960
 ---
 Finished Reading

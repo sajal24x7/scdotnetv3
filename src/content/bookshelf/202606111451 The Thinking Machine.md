@@ -17,6 +17,7 @@ started: 2026-06-11T11:54:42.000Z
 cover: the-thinking-machine.webp
 rating: like
 finished: 2026-06-17T18:49:41.000Z
+year: 2024
 ---
 
 ## Review

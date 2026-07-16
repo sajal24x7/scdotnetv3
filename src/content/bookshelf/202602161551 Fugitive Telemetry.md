@@ -20,6 +20,7 @@ syndicationUrls:
 cover: fugitive-telemetry.webp
 rating: like
 finished: 2026-02-20T13:53:26.000Z
+year: 2021
 ---
 ## Review
 

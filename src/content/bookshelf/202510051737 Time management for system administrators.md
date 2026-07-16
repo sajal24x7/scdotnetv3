@@ -16,6 +16,7 @@ finished: 2025-10-16T10:55:32.000Z
 cover: time-management-for-system-administrators.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode7cxe3z2s'
+year: 2005
 ---
 
 I enjoyed this book. 

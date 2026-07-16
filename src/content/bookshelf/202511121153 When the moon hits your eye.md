@@ -18,6 +18,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115536188959662795'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5gfzw7m2a2f'
   - 'https://www.threads.com/@sajal24x7/post/DQ_BPuME9Mp'
+year: 2025
 ---
 
 This was a weird book. A book about the moon turning to cheese would be weird. And after reading the acknowledgement, I found that John considers this as a loosely formed third and final book in the trilogy comprising of The Kaiju preservation society and Starter Villain.

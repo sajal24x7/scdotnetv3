@@ -18,5 +18,6 @@ cover: digital-fortress.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754257271972723'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddtazrlo24'
+year: 1998
 ---
 Finished Reading

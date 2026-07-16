@@ -20,6 +20,7 @@ syndicationUrls:
 cover: many-lives-many-masters.webp
 rating: like
 finished: 2026-01-27T09:10:48.000Z
+year: 1988
 ---
 
 Prerna had suggested I read this book. No that’s not correct. 

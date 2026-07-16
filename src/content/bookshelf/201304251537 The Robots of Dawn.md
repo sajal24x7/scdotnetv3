@@ -19,5 +19,6 @@ cover: the-robots-of-dawn.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754265563949582'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddwzk5ur2s'
+year: 1983
 ---
 Finished Reading

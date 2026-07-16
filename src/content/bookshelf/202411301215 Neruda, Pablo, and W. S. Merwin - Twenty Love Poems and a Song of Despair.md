@@ -15,6 +15,7 @@ finished: 2024-11-30T18:37:00.000Z
 cover: twenty-love-poems-and-a-song-of-despair.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode67q3tj2s'
+year: 2020
 ---
 
 # Notes

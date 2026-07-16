@@ -19,6 +19,7 @@ syndicationUrls:
 cover: the-diabetes-code.webp
 rating: like
 finished: 2026-07-03T17:23:43.000Z
+year: 2018
 ---
 
 ## Review

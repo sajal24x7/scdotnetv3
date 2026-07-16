@@ -18,6 +18,7 @@ finished: 2025-09-23T14:00:18.000Z
 cover: the-mysterious-affair-at-styles.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode73beoz26'
+year: 1920
 ---
 
 This was my first Agatha Christie novel, believe it or not. My sister used to love reading Agatha Christie. I somehow never got into reading her. I was a Asimov guy.

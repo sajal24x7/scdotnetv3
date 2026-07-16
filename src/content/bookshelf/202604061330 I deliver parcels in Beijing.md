@@ -20,6 +20,7 @@ syndicationUrls:
 cover: i-deliver-parcels-in-beijing.webp
 rating: like
 finished: 2026-04-19T10:15:50.000Z
+year: 2025
 ---
 ## Review
 

@@ -21,5 +21,6 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbymrmtgyq2l'
   - 'https://www.threads.com/@sajal24x7/post/DTSr9Pfkdbo'
 cover: the-long-way-to-a-small-angry-planet.webp
+year: 2014
 ---
 Finished reading.

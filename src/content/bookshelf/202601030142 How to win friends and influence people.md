@@ -18,6 +18,7 @@ syndicationUrls:
 cover: how-to-win-friends-and-influence-people.webp
 rating: like
 finished: 2026-01-15T21:59:50.000Z
+year: 1936
 ---
 The book became boring by the time I was done with the first two sections. It felt too preachy and a bit dated. 
 

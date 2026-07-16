@@ -20,6 +20,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyjtycydc2l'
   - 'https://www.threads.com/@sajal24x7/post/DTSotFzESoE'
 cover: creativity-inc.webp
+year: 2001
 ---
 
 # Notes

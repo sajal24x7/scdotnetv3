@@ -20,6 +20,7 @@ syndicationUrls:
 cover: zen-in-the-art-of-writing.webp
 rating: love
 finished: 2026-03-10T17:08:56.000Z
+year: 1990
 ---
 
 ## Review

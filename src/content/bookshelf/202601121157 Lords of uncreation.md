@@ -21,6 +21,7 @@ syndicationUrls:
 cover: lords-of-uncreation.webp
 rating: love
 finished: 2026-01-17T14:55:30.000Z
+year: 2023
 ---
 There is a bitter-sweet feeling I have now as I have finished this book. 
 

@@ -17,5 +17,6 @@ rating: love
 cover: the-psychology-of-money.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode64nbql23'
+year: 2020
 ---
 Finished Reading

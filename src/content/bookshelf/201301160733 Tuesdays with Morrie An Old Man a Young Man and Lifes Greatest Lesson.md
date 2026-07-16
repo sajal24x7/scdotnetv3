@@ -18,5 +18,6 @@ cover: tuesdays-with-morrie.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754261082257433'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modduyrhqe2w'
+year: 1994
 ---
 Almost made me cry!

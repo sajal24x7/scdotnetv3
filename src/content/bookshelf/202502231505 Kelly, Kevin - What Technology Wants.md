@@ -18,6 +18,7 @@ syndicationUrls:
   - 'https://www.threads.com/@sajal24x7/post/DS8J3bLiTtr'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zot73c2o'
 cover: what-technology-wants.webp
+year: 2010
 ---
 
 # Notes and Quotes

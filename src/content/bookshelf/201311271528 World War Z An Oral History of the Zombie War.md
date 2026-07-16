@@ -17,5 +17,6 @@ rating: like
 cover: world-war-z-an-oral-history-of-the-zombie-war.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddzvc7ye2o'
+year: 2006
 ---
 Finished Reading

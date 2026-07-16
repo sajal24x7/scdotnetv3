@@ -21,6 +21,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyl77tmhc2a'
   - 'https://www.threads.com/@sajal24x7/post/DTSoux2kZmJ'
 cover: shy.webp
+year: 2022
 ---
 
 # Notes

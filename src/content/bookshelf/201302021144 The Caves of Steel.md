@@ -19,5 +19,6 @@ cover: the-caves-of-steel.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754263111696625'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddvwaay42l'
+year: 1953
 ---
 Finished Reading

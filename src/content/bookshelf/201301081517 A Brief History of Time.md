@@ -18,5 +18,6 @@ cover: a-brief-history-of-time.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754259276261785'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddu64pmt2m'
+year: 1988
 ---
 Finished Reading

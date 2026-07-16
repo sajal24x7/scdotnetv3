@@ -18,5 +18,6 @@ cover: deception-point.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754256677083074'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddsyf74p2m'
+year: 2001
 ---
 Finished Reading

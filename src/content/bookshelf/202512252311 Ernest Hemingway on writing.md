@@ -19,6 +19,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mavtblj6sj2b'
   - 'https://www.threads.com/@sajal24x7/post/DSvP-BSEZmO'
 cover: ernest-hemingway-on-writing.webp
+year: 1985
 ---
 
 This is not a book in a traditional sense. This is not Ernest Hemingway writing about the craft. 

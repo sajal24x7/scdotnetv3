@@ -19,6 +19,7 @@ genre: sci-fi
 cover: artificial-condition.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6sqfo22c'
+year: 2018
 ---
 
 Book 1 - [All systems red](/bookshelf/all-systems-red)

@@ -18,5 +18,6 @@ cover: the-tipping-point-how-little-things-can-make-a-big-difference.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754260474221067'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddupm6mq26'
+year: 2000
 ---
 Finished Reading

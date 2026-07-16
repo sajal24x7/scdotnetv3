@@ -21,6 +21,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116877354312925036'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpzz5dlxg226'
   - 'https://www.threads.com/@sajal24x7/post/Dae28k6EYgC'
+year: 2026
 ---
 
 ## Review

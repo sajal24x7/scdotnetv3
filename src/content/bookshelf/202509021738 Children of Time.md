@@ -18,6 +18,7 @@ finished: 2025-09-19T13:45:58.000Z
 cover: children-of-time.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6znro22u'
+year: 2015
 ---
 
 I loved reading Children of Time.

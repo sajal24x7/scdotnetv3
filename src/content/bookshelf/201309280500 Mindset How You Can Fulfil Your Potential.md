@@ -18,5 +18,6 @@ cover: mindset-how-you-can-fulfil-your-potential.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754268593490523'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddyfsqxb2u'
+year: 2006
 ---
 Finished Reading

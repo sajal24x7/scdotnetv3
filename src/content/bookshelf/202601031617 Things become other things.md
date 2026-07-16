@@ -20,6 +20,7 @@ syndicationUrls:
 cover: things-become-other-things.webp
 rating: like
 finished: 2026-01-11T11:06:21.000Z
+year: 2025
 ---
 
 

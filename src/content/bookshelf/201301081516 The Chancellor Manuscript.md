@@ -18,5 +18,6 @@ cover: the-chancellor-manuscript.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754258113712413'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddtmzppq2c'
+year: 1920
 ---
 Finished Reading

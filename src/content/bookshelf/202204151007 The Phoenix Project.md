@@ -22,6 +22,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbwhl3dglw2o'
   - 'https://www.threads.com/@sajal24x7/post/DTQeOdwkRs8'
 cover: the-phoenix-project.webp
+year: 2013
 ---
 
 Finished reading.

@@ -18,6 +18,7 @@ rating: like
 finished: 2026-03-24T08:46:56.000Z
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode7rrhye2o'
+year: 2019
 ---
 
 ## Review
