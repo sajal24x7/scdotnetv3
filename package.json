@@ -24,7 +24,8 @@
     "collect-interactions": "node scripts/collect-interactions.js",
     "send-webmentions": "node scripts/send-webmentions.js",
     "send-webmentions:dry-run": "WEBMENTIONS_DRY_RUN=true node scripts/send-webmentions.js",
-    "sort-inbox": "bash scripts/sort-inbox.sh"
+    "sort-inbox": "bash scripts/sort-inbox.sh",
+    "reconcile-shelf-queue": "node scripts/reconcile-shelf-queue.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",

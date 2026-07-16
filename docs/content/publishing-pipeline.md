@@ -18,11 +18,13 @@ Obsidian note ──GitSync/git──▶ content branch
                       1. sync main into content (stay current with code)
                       2. normalize Obsidian → Astro frontmatter
                       3. sort inbox/ notes into category folders
-                      4. validate (astro check)
-                      5. commit the cleaned tree back to content
-                      6. merge content → main (one clean commit),
+                      4. reconcile shelf queue: delete any `todo` stub a
+                         just-arrived shelf note promotes (see below)
+                      5. validate (astro check)
+                      6. commit the cleaned tree back to content
+                      7. merge content → main (one clean commit),
                          fast-forward content to the merge
-                      7. dispatch syndicate-content.yml
+                      8. dispatch syndicate-content.yml
                                   │
                                   ▼
                     Cloudflare builds main — exactly once
@@ -37,6 +39,18 @@ Obsidian note ──GitSync/git──▶ content branch
 If a note has a missing/unknown `category`, the run fails, a GitHub issue is
 opened, and **nothing reaches `main` or production**. Fix the frontmatter and
 push to `content` again.
+
+#### Shelf queue reconciliation (step 4)
+
+`scripts/reconcile-shelf-queue.js` runs right after `sort-inbox`. For every
+shelf note that just moved out of `inbox/` (book/film/TV/game), it looks for
+an existing `status: todo` queue stub in the same category whose normalized
+title matches (normalized `showTitle`, for TV) and deletes it — the arriving
+note is the canonical entry, the stub was just a placeholder for "I want to
+read/watch/play this." Matching is exact-normalized-title only and only ever
+targets `todo` entries, so a reread/rewatch never deletes a finished prior
+entry; a near-miss (e.g. "Wool" vs "Wool (Silo, #1)") is logged, not
+auto-deleted. See `planning/shelf-queue-design.md` §4 for the full design.
 
 ### Micro posts (`/write` composer)
 

@@ -238,4 +238,6 @@ tab — shipped (`public/write/index.html`, `docs/content/micro-composer.md`),
 **3)** enrichment for books/games + push trigger — shipped
 (`scripts/enrich-book-metadata.js`, `scripts/enrich-game-metadata.js`,
 push trigger in `.github/workflows/enrich-shelf-metadata.yml`), **4)**
-reconcile step. Each stage ships independently.
+reconcile step — shipped (`scripts/reconcile-shelf-queue.js`, wired into
+`content-publish.yml` right after `sort-inbox`). Each stage ships
+independently.
