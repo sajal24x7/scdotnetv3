@@ -426,20 +426,6 @@
       "status": "approved"
     }
   ],
-  "micro/a-way-to-optimise-icloud-storage": [
-    {
-      "id": "mastodon:repost:116887934513817365:114863603913131469",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Apple-feed",
-        "url": "https://channel.org/@applefeed",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/6e04454c4298099704bb671fd177b734.jpg"
-      },
-      "url": "https://channel.org/@applefeed",
-      "status": "approved"
-    }
-  ],
   "micro/amazon-has-a-new-plan-for-games": [
     {
       "id": "mastodon:like:116696520863508112:1339141",
@@ -754,7 +740,7 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/DavnIlfD_41/",
-      "count": 5,
+      "count": 6,
       "status": "approved"
     },
     {
