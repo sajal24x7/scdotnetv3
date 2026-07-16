@@ -3,18 +3,30 @@ import Layout from '../../layouts/Layout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import TVCard from '../../components/shelf/TVCard.astro';
 import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
+import ShelfFilterResults from '../../components/shelf/ShelfFilterResults.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 import { slugify } from '../../utils/shelfUtils';
 import { SHELF_LIST_SORT_PRIORITY, type ShelfStatus } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
-const tvPosts = allPosts.filter((post) => post.data.category === 'tvshelf');
+// `todo` entries live on the queue page (/tvshelf/queue/) only — see
+// planning/shelf-queue-design.md §1.
+const tvPosts = allPosts.filter((post) => post.data.category === 'tvshelf' && post.data.status !== 'todo');
 
 const parseDate = (value?: Date | string | null): Date | null => {
     if (!value) return null;
     const d = value instanceof Date ? value : new Date(value);
     return Number.isNaN(d.getTime()) ? null : d;
+};
+
+// Most recent activity date for an entry: finished > started > created.
+const activityDate = (post: typeof tvPosts[number]): Date => {
+    const finished = parseDate(post.data.finished);
+    if (finished) return finished;
+    const started = parseDate(post.data.started);
+    if (started) return started;
+    return parseDate(post.data.created) ?? new Date();
 };
 
 // Split slug like "glory/s1" into show and season parts.
@@ -50,7 +62,7 @@ const seasonEntries: SeasonEntry[] = tvPosts.map((post) => {
         showSlug,
         seasonSlug,
         seasonNum: post.data.season ?? 1,
-        year: (parseDate(post.data.created) ?? new Date()).getFullYear(),
+        year: activityDate(post).getFullYear(),
         tvStatus: post.data.status as ShelfStatus | undefined
     };
 });
@@ -104,6 +116,7 @@ const sectionLandingProps = createSectionLandingProps({
     <div slot="afterHeader" class="shelf-header-block">
       <div class="shelf-title-row">
         <ShelfTabNav currentTab="tv" />
+        <a href="/tvshelf/queue/" class="shelf-queue-link">Queue →</a>
         <a href="/tvshelf/rss.xml" class="shelf-rss-link" aria-label="TV Shelf RSS feed" title="Subscribe via RSS">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16">
             <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
@@ -112,6 +125,7 @@ const sectionLandingProps = createSectionLandingProps({
       </div>
       <p class="shelf-description">{tvDescription}</p>
     </div>
+    <ShelfFilterResults />
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearEntries = entriesByYear[year] ?? [];
@@ -135,8 +149,9 @@ const sectionLandingProps = createSectionLandingProps({
                 return (
                   <div
                     class={`bookshelf-year__book ${gridClasses}`}
-                    data-content-item
+                    data-shelf-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
+                    data-creator={Array.isArray(post.data.creator) ? post.data.creator.join(',') : ''}
                     data-genre={post.data.genre ?? ''}
                     data-platform={post.data.platform ?? ''}
                     data-status={entry.tvStatus ?? ''}
@@ -167,6 +182,8 @@ const sectionLandingProps = createSectionLandingProps({
 </Layout>
 
 <style>
+  .shelf-queue-link { font-size: var(--text-small); font-weight: 500; color: rgb(var(--color-accent)); text-decoration: none; white-space: nowrap; }
+  .shelf-queue-link:hover { text-decoration: underline; }
   .bookshelf-count { font-size: var(--text-small); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; }
   :global(.dark) .bookshelf-count { color: #9ca3af; }
   .bookshelf-content { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3rem); padding-bottom: 2rem; }
@@ -189,3 +206,36 @@ const sectionLandingProps = createSectionLandingProps({
   @media (max-width: 47.999rem) { .bookshelf-year__sticky { position: static; } }
   @media (min-width: 64rem) { .bookshelf-year__year { font-size: clamp(2.25rem, 4vw, 3.5rem); } }
 </style>
+
+<script>
+  import { initShelfFilters } from '../../scripts/shelfFilters';
+
+  function initTvshelfFilters() {
+    initShelfFilters({
+      itemSelector: '[data-shelf-item]',
+      countNoun: { singular: 'season', plural: 'seasons' },
+      filterTypes: [
+        { type: 'creator' },
+        { type: 'genre', badgeClass: () => 'shelf-filter-badge--genre' },
+        {
+          type: 'status',
+          labels: { todo: 'To Watch', started: 'Watching', paused: 'On Hold', finished: 'Watched' },
+          badgeClass: (value) => `shelf-filter-badge--status-${value}`,
+        },
+        { type: 'platform' },
+        {
+          type: 'rating',
+          labels: { like: 'Like', love: 'Love', nope: 'Nope' },
+          badgeClass: (value) => `shelf-filter-badge--rating-${value}`,
+        },
+        { type: 'tag', badgeClass: () => 'shelf-filter-badge--tag' },
+      ],
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTvshelfFilters);
+  } else {
+    initTvshelfFilters();
+  }
+</script>

@@ -47,6 +47,7 @@ export interface Post {
   };
   id: string;
   body: string;
+  filePath?: string;
 }
 
 // Returns the list of known content category names.
@@ -76,6 +77,7 @@ export async function getAllPosts(): Promise<Post[]> {
           data: post.data,
           id: post.id,
           body: post.body,
+          filePath: post.filePath,
         }));
       }));
       cachedPosts = allPosts.flat() as Post[];

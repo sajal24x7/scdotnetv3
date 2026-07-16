@@ -1,0 +1,93 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SectionLanding from '../../../layouts/SectionLanding.astro';
+import ShelfQueue, { type ShelfQueueItem } from '../../../components/shelf/ShelfQueue.astro';
+import { getAllPosts } from '../../../utils/content';
+import { createSectionLandingProps } from '../../../utils/sectionLanding';
+import { SHELF_QUEUE_CONFIG, getQueueCreator } from '../../../utils/shelfQueue';
+import { getFilmCoverImage } from '../../../utils/filmCovers';
+
+const config = SHELF_QUEUE_CONFIG.filmshelf;
+
+const allPosts = await getAllPosts();
+const queuePosts = allPosts.filter(
+    (post) => post.data.category === 'filmshelf' && post.data.status === 'todo'
+);
+
+queuePosts.sort((a, b) => new Date(b.data.created).getTime() - new Date(a.data.created).getTime());
+
+const items: ShelfQueueItem[] = queuePosts.map((post) => ({
+    id: post.id,
+    title: post.data.title ?? '',
+    creator: getQueueCreator(post.data, config.creatorField),
+    created: new Date(post.data.created),
+    body: post.body?.trim() ?? '',
+    coverImage: post.data.cover ? getFilmCoverImage(post.data.cover as any) : undefined,
+    link: post.id ? `/filmshelf/${post.id}/` : undefined,
+}));
+
+const sectionLandingProps = createSectionLandingProps({
+    title: config.heading,
+    contentClass: 'bookshelf-content',
+    hideTitle: true,
+});
+---
+
+<Layout
+  title={`${config.heading} — Film Shelf`}
+  description="Films on the to-watch list"
+  currentPage="/filmshelf/queue/"
+  pageWrapper={{
+    maxWidth: '7xl',
+    padding: 'none',
+    centered: true,
+    grid: { gap: 'loose', padding: 'narrow' }
+  }}
+  allPosts={allPosts}
+  enableLinkHoverEffect
+>
+  <SectionLanding {...sectionLandingProps}>
+    <div slot="afterHeader" class="shelf-queue-header">
+      <a href="/filmshelf/" class="shelf-queue-back">← Film Shelf</a>
+      <h1 class="shelf-queue-heading">{config.heading}</h1>
+    </div>
+    <ShelfQueue config={config} items={items} />
+  </SectionLanding>
+</Layout>
+
+<style>
+  .shelf-queue-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .shelf-queue-back {
+    font-size: var(--text-small);
+    color: #6b7280;
+    text-decoration: none;
+    width: fit-content;
+  }
+
+  .shelf-queue-back:hover {
+    text-decoration: underline;
+  }
+
+  :global(.dark) .shelf-queue-back {
+    color: #9ca3af;
+  }
+
+  .shelf-queue-heading {
+    font-size: var(--text-huge);
+    font-weight: 700;
+    color: rgb(var(--color-text-primary));
+  }
+
+  .bookshelf-content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 5vw, 3rem);
+    padding-bottom: 2rem;
+  }
+</style>

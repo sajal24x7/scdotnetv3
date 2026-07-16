@@ -9,7 +9,9 @@ import { computeWatchNumbers } from '../../utils/shelfUtils';
 import { SHELF_LIST_SORT_PRIORITY } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
-const gamePosts = allPosts.filter((post) => post.data.category === 'gameshelf');
+// `todo` entries live on the queue page (/gameshelf/queue/) only — see
+// planning/shelf-queue-design.md §1.
+const gamePosts = allPosts.filter((post) => post.data.category === 'gameshelf' && post.data.status !== 'todo');
 
 const parseDate = (value?: Date | string | null): Date | null => {
     if (!value) return null;
@@ -103,6 +105,7 @@ const sectionLandingProps = createSectionLandingProps({
     <div slot="afterHeader" class="shelf-header-block">
       <div class="shelf-title-row">
         <ShelfTabNav currentTab="games" />
+        <a href="/gameshelf/queue/" class="shelf-queue-link">Queue →</a>
         <a href="/gameshelf/rss.xml" class="shelf-rss-link" aria-label="Game Shelf RSS feed" title="Subscribe via RSS">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16">
             <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
@@ -168,6 +171,8 @@ const sectionLandingProps = createSectionLandingProps({
 </Layout>
 
 <style>
+  .shelf-queue-link { font-size: var(--text-small); font-weight: 500; color: rgb(var(--color-accent)); text-decoration: none; white-space: nowrap; }
+  .shelf-queue-link:hover { text-decoration: underline; }
   .bookshelf-count { font-size: var(--text-small); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; }
   :global(.dark) .bookshelf-count { color: #9ca3af; }
   .bookshelf-content { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3rem); padding-bottom: 2rem; }
