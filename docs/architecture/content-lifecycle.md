@@ -4,39 +4,40 @@ This guide documents how Markdown files flow from `src/content` into Astro pages
 
 ## Authoring and Validation
 
-- Content lives in year-based directories (`src/content/2024`, `src/content/2025`, etc.). Year folders are registered dynamically so new years require no code changes.【F:src/content/config.ts†L41-L73】
-- `src/content/config.ts` defines the shared Zod schema for posts. Required fields include `pubDate` and `category`; optional metadata supports bookshelf status, syndication URLs, and custom layout spans.【F:src/content/config.ts†L1-L55】
-- Additional collections cover Nordletter issues and notes, enabling distinct frontmatter for newsletter archives and note-taking flows.【F:src/content/config.ts†L57-L90】
+- Content lives in one folder per category under `src/content/` (`src/content/blog`, `src/content/til`, `src/content/bookshelf`, etc.). The canonical category list is `CONTENT_CATEGORIES` in `src/content.config.ts`; each category maps to its own collection.
+- `src/content.config.ts` defines the shared Zod schema for all post collections. Required fields are `created` and `category`; optional metadata covers shelf status/ratings, syndication URLs, photo galleries, and layout spans. Entry IDs come from the frontmatter `slug` when present, otherwise from a slugified filename.
+- A relaxed `inbox` collection (`src/content/inbox/`) stages notes arriving from Obsidian/Shortcuts; the publishing pipeline normalizes and sorts them into category folders (see [Publishing Pipeline](../content/publishing-pipeline.md)).
 
 ## Loading Content
 
-- `getYearDirectories()` reads the filesystem at runtime to locate year folders, ensuring the site stays in sync with committed content.【F:src/utils/content.ts†L28-L37】
-- `getAllPosts()` lazily caches parsed posts from every year to minimize repeated disk I/O during a build. Subsequent calls reuse the in-memory array.【F:src/utils/content.ts†L38-L92】
-- `getPostsByCategory()` filters the cached posts using either named filters (e.g., `streamHighlights`) or explicit category arrays. Results are sorted by publication date descending and support optional limits.【F:src/utils/content.ts†L94-L165】
-- `transformPost()` normalizes post data for grid-based components, attaching computed links and flattening frontmatter for consistent consumption.【F:src/utils/content.ts†L66-L93】
+- `getContentCategories()` in `src/utils/content.ts` returns the category list (`getYearDirectories` survives as a backwards-compatible alias from the old year-folder layout).
+- `getAllPosts()` lazily caches posts from every category collection to minimize repeated reads during a build. Subsequent calls reuse the same in-memory array.
+- `getPostsByCategory()` filters the cached posts using either named filters (e.g., `streamHighlights`) or explicit category arrays. Results are sorted by publication date descending and support optional limits.
+- `transformPost()` normalizes post data for grid-based components, attaching computed links and flattening frontmatter for consistent consumption.
 
 ## Derived Artifacts
 
 | Artifact | Produced By | Used For |
 | --- | --- | --- |
-| `src/data/backlinks-index.json` | `findBacklinksComprehensive()` regenerates this cache when `REGENERATE_BACKLINKS=true` or when the file is missing. | Supplies backlinks to `PostLayout.astro`.【F:src/utils/backlinks.ts†L33-L189】 |
-| `dist/pagefind/` (at build) | Pagefind crawls the built HTML output as a post-build step. | Read by `src/pages/search.astro` for client-side queries. |
-| Generated book covers | `npm run generate-covers` runs `scripts/generate-book-covers.js` to create local assets. | Used by bookshelf layouts to display consistent cover art. |
+| `src/data/backlinks-index.json` | `findBacklinksComprehensive()` regenerates this cache when content changes, when the file is missing, or when `REGENERATE_BACKLINKS=true`. | Supplies backlinks to `PostLayout.astro`. |
+| `dist/pagefind/` | Pagefind crawls the built HTML output as a post-build step (`pagefind --site dist` in the `build` script). | Read by `src/pages/search.astro` for client-side queries. |
+| `src/data/nordletter-image-manifest.json` + cached images | `npm run cache-nordletter-images` before every dev/build. | Newsletter thumbnails in `NordletterGrid.astro` (see [Nordletter Image Cache](../operations/nordletter-image-cache.md)). |
+| Generated cover maps (`src/utils/bookCovers.ts` etc.) | `npm run generate-covers` and the per-shelf generate scripts. | Shelf layouts import cover images at build time. |
 
 ## Backlinks Integration
 
-During `getStaticPaths`, the `[...slug].astro` route resolves the current post and calls `findBacklinksComprehensive()` using the category/slug key. The helper ensures the backlink cache is available before `PostLayout.astro` renders the page.【F:src/pages/[...slug].astro†L3-L46】【F:src/utils/backlinks.ts†L33-L113】 See [Backlinks System](../components/backlinks.md) for details.
+During `getStaticPaths`, the `[...slug].astro` route resolves the current post and calls `findBacklinksComprehensive()` using the category/slug key. The helper ensures the backlink cache is available before `PostLayout.astro` renders the page. See [Backlinks System](../components/backlinks.md) for details.
 
 ## Search Index Integration
 
-The search index is generated after all posts have been loaded through `getAllPosts()`. Because the utility memoizes its promise, search, backlinks, and feed routes reuse the same in-memory array during a single build, preventing redundant parsing work.【F:src/utils/content.ts†L38-L92】
+Search is powered by Pagefind, which indexes the built HTML after `astro build` completes — it does not go through `getAllPosts()`. The search page itself computes popular tags server-side from `getAllPosts()`; because the utility memoizes its promise, tag pages, backlinks, and feed routes reuse the same in-memory array during a single build.
 
 ## Syndication Metadata
 
-POSSE scripts update `syndicationUrls` in frontmatter when new cross-post links are discovered. The shared schema and `transformPost()` ensure the URLs are exposed to components such as `SyndicationLinks.astro`. Consult [Syndication](../operations/syndication.md) for more information.【F:src/content/config.ts†L15-L55】【F:src/utils/content.ts†L66-L93】
+POSSE scripts update `syndicationUrls` in frontmatter when new cross-post links are discovered. The shared schema and `transformPost()` ensure the URLs are exposed to components such as `SyndicationLinks.astro`. Consult [Syndication](../operations/syndication.md) for more information.
 
 ## Maintenance Checklist
 
-- When adding a new content category, update the Zod enums in `src/content/config.ts`, extend navigation mappings, and review search/filter logic for the new identifier.
+- When adding a new content category, add it to `CONTENT_CATEGORIES` and the `category` enum in `src/content.config.ts`, register the collection, create the folder under `src/content/`, extend navigation mappings, and review search/filter logic for the new identifier.
 - Keep the backlink cache committed; deleting it triggers regeneration on the next build but increases build time.
 - Run `npm run generate-covers` after adding bookshelf entries that reference new covers to ensure assets exist locally.
