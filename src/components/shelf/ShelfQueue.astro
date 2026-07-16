@@ -1,0 +1,158 @@
+---
+// Shared queue list — renders every `status: todo` entry for one shelf
+// category as a compact row (cover thumbnail, title, creator, date added,
+// optional "why" body). See planning/shelf-queue-design.md §1.
+import type { ImageMetadata } from 'astro';
+import type { ShelfQueueConfig } from '../../utils/shelfQueue';
+
+export interface ShelfQueueItem {
+    id: string;
+    title: string;
+    creator: string;
+    created: Date;
+    body: string;
+    coverImage?: ImageMetadata;
+    link?: string;
+}
+
+interface Props {
+    config: ShelfQueueConfig;
+    items: ShelfQueueItem[];
+}
+
+const { config, items } = Astro.props;
+
+const formatAdded = (date: Date) =>
+    date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+---
+
+<div class="shelf-queue">
+    {items.length === 0 ? (
+        <p class="shelf-queue__empty">Nothing on the {config.heading.toLowerCase()} list right now.</p>
+    ) : (
+        <ol class="shelf-queue__list">
+            {items.map((item) => (
+                <li class="shelf-queue__row">
+                    <a class="shelf-queue__link" href={item.link}>
+                        <div class="shelf-queue__cover">
+                            {item.coverImage && (
+                                <img
+                                    src={item.coverImage.src}
+                                    width={item.coverImage.width}
+                                    height={item.coverImage.height}
+                                    alt=""
+                                    loading="lazy"
+                                />
+                            )}
+                        </div>
+                        <div class="shelf-queue__meta">
+                            <span class="shelf-queue__title">{item.title}</span>
+                            {item.creator && <span class="shelf-queue__creator">{item.creator}</span>}
+                            <span class="shelf-queue__added">Added {formatAdded(item.created)}</span>
+                            {item.body && <p class="shelf-queue__body">{item.body}</p>}
+                        </div>
+                    </a>
+                </li>
+            ))}
+        </ol>
+    )}
+</div>
+
+<style>
+    .shelf-queue__empty {
+        color: #6b7280;
+        font-size: var(--text-small);
+        padding: 2rem 0;
+        text-align: center;
+    }
+
+    :global(.dark) .shelf-queue__empty {
+        color: #9ca3af;
+    }
+
+    .shelf-queue__list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .shelf-queue__row {
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 0.75rem;
+        overflow: hidden;
+    }
+
+    :global(.dark) .shelf-queue__row {
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .shelf-queue__link {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        padding: 0.85rem 1rem;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .shelf-queue__cover {
+        flex: 0 0 auto;
+        width: 3rem;
+        height: 4.25rem;
+        border-radius: 0.35rem;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.06);
+    }
+
+    :global(.dark) .shelf-queue__cover {
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .shelf-queue__cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .shelf-queue__meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        min-width: 0;
+    }
+
+    .shelf-queue__title {
+        font-weight: 600;
+        font-size: var(--text-base);
+    }
+
+    .shelf-queue__creator {
+        font-size: var(--text-small);
+        color: #6b7280;
+    }
+
+    :global(.dark) .shelf-queue__creator {
+        color: #9ca3af;
+    }
+
+    .shelf-queue__added {
+        font-size: var(--text-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #9ca3af;
+    }
+
+    .shelf-queue__body {
+        margin: 0.35rem 0 0;
+        font-size: var(--text-small);
+        color: #6b7280;
+    }
+
+    :global(.dark) .shelf-queue__body {
+        color: #9ca3af;
+    }
+</style>

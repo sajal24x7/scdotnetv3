@@ -149,6 +149,43 @@ Optional notes about the game.
 
 ---
 
+## Queue Pages
+
+Each shelf category has a queue page listing its `status: todo` entries — the
+"to be read/watched/played" pipeline. `todo` entries do not render on the
+main shelf pages at all (including the combined `/shelf/` page); they only
+appear on the queue page beneath each shelf.
+
+| URL | Category | Heading |
+| --- | --- | --- |
+| `/bookshelf/queue/` | `bookshelf` | To Read |
+| `/filmshelf/queue/` | `filmshelf` | To Watch |
+| `/tvshelf/queue/` | `tvshelf` | To Watch |
+| `/gameshelf/queue/` | `gameshelf` | To Play |
+
+Each of the four shelf pages has a "Queue →" link in its header, next to the
+RSS icon. Queue cards are a compact row (cover thumbnail when available,
+title, creator, "added <month year>" from `created`, and the entry body
+rendered small as the "why"), sorted by `created` descending — no year
+grouping.
+
+`/api/shelf-queue.json` returns every `todo` entry across all four
+categories (`id`, `category`, `title`, `creator`, `created`), sorted by
+`created` descending. It's a derived, build-time view of the same content
+collections — not a separate source of truth.
+
+To queue something, create a normal shelf entry with `status: todo` (see
+frontmatter examples above) — no special "stub" format is required, though a
+minimal entry only needs `title`, `category`, `status: todo`, and `created`.
+Promote it out of the queue by changing `status` to `started`/`finished` (or
+editing in place once you start it).
+
+See [`planning/shelf-queue-design.md`](../../planning/shelf-queue-design.md)
+for the full design, including not-yet-built stages (composer quick-add,
+automatic metadata enrichment, and Obsidian-arrival reconciliation).
+
+---
+
 ## Unified Status
 
 All four shelf categories (and `now` posts) share a single `status` field with the same four values:

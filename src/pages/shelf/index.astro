@@ -14,7 +14,9 @@ import { SHELF_STATUS_PRIORITY } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
 const shelfCategories = new Set(['bookshelf', 'filmshelf', 'tvshelf', 'gameshelf']);
-const shelfPosts = allPosts.filter((post) => shelfCategories.has(post.data.category ?? ''));
+// `todo` entries live on each category's queue page only — see
+// planning/shelf-queue-design.md §1.
+const shelfPosts = allPosts.filter((post) => shelfCategories.has(post.data.category ?? '') && post.data.status !== 'todo');
 
 const parseDate = (value?: Date | string | null): Date | null => {
     if (!value) return null;
