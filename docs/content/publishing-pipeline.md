@@ -69,42 +69,22 @@ into `content` so the branch never trails a `/write` post). See
 > `workflow_dispatch` from `content-publish.yml` for bot merges (dispatches
 > are exempt from GitHub's GITHUB_TOKEN recursion guard).
 
-## One-time switchover checklist
+## Environment expectations
 
-Do these in one sitting, in order:
+The switchover to this pipeline is complete (July 2026). For reference, the
+moving parts it depends on:
 
-1. **Merge the audit PR** (the branch with `content-publish.yml`,
-   `download-covers.yml`, the rewritten `syndicate-content.yml`, and the
-   deletion of `sort-inbox.yml`/`update-post-dates.yml`).
-2. **Sync the `content` branch to the merged main** so it contains the
-   workflow (workflows only trigger if the file exists on the pushed branch):
-   ```bash
-   git fetch origin
-   git push origin origin/main:content
-   ```
-   (The branch already exists — created from main on 2026-07-09. If notes
-   were pushed to it in the meantime, merge instead of force-anything:
-   `git checkout content && git merge origin/main && git push`.)
-3. **Repoint GitSync (iOS)** at branch `content` instead of `main`, and
-   replace the old metadata-mapping Shortcut with the simple copy-to-inbox
-   one — see `publishing-shortcut.md`. (The old Shortcut also still works;
-   the pipeline skips notes that are already in Astro format.)
-4. **Mac clone**: write notes on `content`
-   (`git checkout -b content origin/content`); keep using `main` for code.
-5. **Cloudflare Pages dashboard**:
-   - If `NODE_VERSION` is set in the dashboard env vars, change it to `22`
-     (dashboard values override `cloudflare-pages.json`).
-   - Confirm the production branch is `main` (unchanged — just verify).
-   - Optionally disable preview deploys for the `content` branch
-     (Settings → Builds) unless you want a preview per raw note push.
-   - The R2 `IMAGES` binding for `/write` uploads is separate — see
-     `micro-composer.md`.
+- **GitSync (iOS)** pushes Obsidian notes to the **`content`** branch, and the
+  publishing Shortcut copies notes into `src/content/inbox/` — see
+  `publishing-shortcut.md`.
+- **Desktop clones**: write notes on `content`
+  (`git checkout -b content origin/content`); use `main` for code.
+- **Cloudflare Pages**: production branch is `main`, Node 22 (a dashboard
+  `NODE_VERSION` overrides `cloudflare-pages.json`). Preview deploys for the
+  `content` branch are optional noise. The R2 `IMAGES` binding for `/write`
+  uploads is separate — see `micro-composer.md`.
 
-Until steps 1–2 are done, pushes to `content` do nothing (the workflow file
-isn't on the branch yet). Notes pushed early aren't lost — the first
-successful publish run picks up everything sitting on the branch.
-
-## Verifying the first publish
+## Verifying a publish
 
 1. Push a test note to `content`. Expect: exactly one **Publish content** run
    in the Actions tab, one `publish: content batch …` commit on `main`, and

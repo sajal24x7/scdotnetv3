@@ -2,27 +2,30 @@
 
 ## Frameworks & Tooling
 - **Astro 7.x** drives page generation and content collections. Routes live under `src/pages`, islands under `src/components`, and layout primitives in `src/layouts`.
-- **TypeScript-first utilities** power content aggregation. Prefer named exports and keep helpers in `src/utils` alongside related Zod schemas in `src/types`.
-- **Tailwind CSS** provides styling; keep bespoke styles minimal and colocate reusable patterns in `src/styles`.
-- **Build-time integrations** cover cover-art generation and POSSE syndication. Follow the existing npm scripts (`npm run dev`, `npm run build`, etc.) to trigger the full pipeline.
+- **TypeScript-first utilities** power content aggregation. Prefer named exports and keep helpers in `src/utils`; the content schema lives in `src/content.config.ts`.
+- **Tailwind CSS 4** provides styling; keep bespoke styles minimal and colocate reusable patterns in `src/styles`.
+- **Build-time integrations** cover Nordletter image caching, cover-map generation, and Pagefind search indexing. Follow the existing npm scripts (`npm run dev`, `npm run build`, etc.) to trigger the full pipeline.
 
 ## Project Structure & Module Organization
-The Astro site lives in `src`, with route files under `src/pages`, shared layout primitives in `src/layouts`, and UI elements in `src/components`. Structured content is kept in `src/content/<year>/<slug>.md` folders; use the same year split when adding notes, ephemera, or newsletters so collection helpers can enumerate years dynamically. Data helpers sit in `src/data` and `src/types`, while `src/utils` holds reusable formatters and content loaders. Static assets belong in `public` and generated covers are written to `src/assets/covers`; the production build emits to `dist`.
+The Astro site lives in `src`, with route files under `src/pages`, shared layout primitives in `src/layouts`, and UI elements in `src/components`. Structured content is kept in one folder per category under `src/content/` (`src/content/blog`, `src/content/bookshelf`, etc.) with timestamp filenames (`YYYYMMDDHHMM Title.md`); new notes stage in `src/content/inbox/` and are sorted by the publishing pipeline. Data helpers sit in `src/data` and `src/utils`. Static assets belong in `public`, images imported at build time live under `src/images`, and the production build emits to `dist`. Cloudflare Pages Functions live in `functions/`.
 
 ## Documentation Index
-- Central reference materials now live in [`docs/README.md`](docs/README.md).
+- Central reference materials live in [`docs/README.md`](docs/README.md).
 - Architecture, component, and operations guides:
   - [`docs/architecture/overview.md`](docs/architecture/overview.md) — Layout shell, routing, and island strategy.
   - [`docs/architecture/content-lifecycle.md`](docs/architecture/content-lifecycle.md) — Collection schemas, content utilities, and derived artifacts.
   - [`docs/design/system.md`](docs/design/system.md) — Twelve-column grid, typography, and chip conventions.
   - [`docs/components/navigation.md`](docs/components/navigation.md), [`docs/components/search.md`](docs/components/search.md), [`docs/components/backlinks.md`](docs/components/backlinks.md) — Implementation guides for major UI systems.
   - [`docs/content/authoring.md`](docs/content/authoring.md) — Frontmatter rules and author workflow.
+  - [`docs/content/publishing-pipeline.md`](docs/content/publishing-pipeline.md), [`docs/content/micro-composer.md`](docs/content/micro-composer.md) — How content reaches `main` (Obsidian → `content` branch → pipeline; `/write` → direct commit).
+  - [`docs/pages/shelf.md`](docs/pages/shelf.md), [`docs/pages/books.md`](docs/pages/books.md) — Shelf frontmatter reference and the published-works page.
   - [`docs/operations/deployment.md`](docs/operations/deployment.md), [`docs/operations/syndication.md`](docs/operations/syndication.md) — Build and POSSE procedures.
+  - [`docs/tools/`](docs/README.md#tools--automation) — Cover downloaders and shelf metadata enrichment.
   - [`docs/contributing/claude-guide.md`](docs/contributing/claude-guide.md) — Quick reference for automation assistants.
-- Keep planning artefacts in `planning/`; they remain separate from the documentation set.
+- Keep planning artefacts in `planning/`; they remain separate from the documentation set. `scripts/README.md` catalogs utility scripts, including legacy one-time migrations.
 
 ## Build, Test, and Development Commands
-Run `npm install` with Node 22+ before contributing. Use `npm run dev` for the local server; it pre-builds covers and watches Astro files. `npm run build` executes cover generation, builds the static site, and best-effort triggers syndication. `npm run preview` serves the last build. Use `npm run syndicate:dry-run` to verify outbound syndication without publishing.
+Run `npm install` with Node 22.12+ (npm 10+) before contributing. Use `npm run dev` for the local server; it caches Nordletter images, pre-builds covers, and watches Astro files. `npm run build` runs the same pre-steps, builds the static site, and generates the Pagefind search index (`pagefind --site dist`). `npm run preview` serves the last build. Syndication is **not** part of the build — it runs via the `syndicate-content.yml` GitHub Actions workflow; use `npm run syndicate:dry-run` to verify outbound syndication locally without publishing.
 
 ## Coding Style & Naming Conventions
 Follow the existing 4-space indentation in TypeScript, Astro, and scripts. Name Astro components with `PascalCase.astro` and colocate supporting modules in subfolders (for example `src/components/navigation`). Keep utility modules in TypeScript (`.ts`) and prefer named exports. Styling relies on Tailwind; favor utility classes over bespoke CSS unless adding a shared pattern to `src/styles`. Run `npm run astro check` (or `npx astro check`) before opening a pull request.
@@ -33,24 +36,24 @@ Follow the existing 4-space indentation in TypeScript, Astro, and scripts. Name 
 No automated test suite is configured; rely on `npm run dev` for interactive verification and `npm run build` to catch integration issues. When adding logic-heavy utilities, include minimal unit scripts under `src/utils/__checks__` or document manual test steps in the pull request until a formal harness is introduced.
 
 ## Commit & Pull Request Guidelines
-Commits in this repository use short, action-focused subjects (e.g., `Minor ui changes`, `NL72`). Keep to 65 characters, start with an imperative verb when possible, and scope single features or fixes per commit. Pull requests should describe the change, reference any related issue, and note content updates or scripts executed. Include screenshots or URLs if you adjust visual components, and call out any manual verification performed.
+Commits in this repository use short, action-focused subjects (e.g., `Minor ui changes`, `NL72`). Keep to 65 characters, start with an imperative verb when possible, and scope single features or fixes per commit. Pull requests should describe the change, reference any related issue, and note content updates or scripts executed. Include screenshots or URLs if you adjust visual components, and call out any manual verification performed. Commits that shouldn't trigger a Cloudflare build use the `[CI Skip]` marker.
 
 ## Content Loading & Authoring Tips
-- **Dynamic discovery only**: Never hardcode year directories or category lists. Use the helpers in `src/utils/content.ts` (`getYearDirectories`, `getAllPosts`, `getPostsByCategory`, `transformPost`) to aggregate content.
+- **Dynamic discovery only**: Never hardcode the category list. Use the helpers in `src/utils/content.ts` (`getContentCategories`, `getAllPosts`, `getPostsByCategory`, `transformPost`) to aggregate content. (`getYearDirectories` survives only as a backwards-compatible alias.)
 - **Pass collections through**: Components like `TagList`, feed grids, and layout slots expect the upstream route to fetch posts once (usually via `getAllPosts()`) and pass filtered subsets down. Avoid re-fetching inside components.
-- **Frontmatter consistency**: Match existing schema defined in `src/content/config.ts`. Categories drive layout decisions, so keep metadata accurate.
-- **Generated media**: Run the cover generator (`npm run generate-covers`) for book imagery. Store other large assets in `public` or reference hosted media via frontmatter fields.
+- **Frontmatter consistency**: Match the shared schema defined in `src/content.config.ts` (`created` is the publish date; shelf entries use the unified `status`/`rating`/`started`/`finished`/`cover` fields). Categories drive layout decisions, so keep metadata accurate.
+- **Generated media**: Cover images are downloaded and committed by GitHub Actions workflows (`download-covers.yml`); `npm run generate-covers` regenerates the TypeScript cover maps. Store other large assets in `public` or reference hosted media (the R2 bucket behind `storage.sajalchoudhary.net`) via frontmatter fields.
 
 ## Layout & Interaction Guidelines
 - **LayoutContainer** centralizes spacing, prose width, and slot plumbing across routes. Use it instead of legacy `PageWrapper`/`ContainerWrapper`/`ProseWrapper` components.
-- **Head slots and optional islands**: The global layout exposes `<slot name="head">` and opt-in hooks for search or link-preview islands. Thread configuration from pages down through navigation layers so static routes can omit client bundles they don't need.
-- **Deferred interactivity**: Search and link-preview features load client logic lazily. Prefer loader islands and API-backed previews over embedding heavy payloads in every page.
-- **Shared filtering helpers**: Category filtering logic lives in `src/utils/content.ts`—reuse those helpers for home, garden, stream, and bookshelf views to keep behavior consistent.
+- **Head slots and optional islands**: The global layout exposes `<slot name="head">` and opt-in hooks such as `enableLinkHoverEffect`. Thread configuration from pages down through navigation layers so static routes can omit client bundles they don't need.
+- **Deferred interactivity**: Search is a standalone Pagefind-backed page (`/search/`) that lazy-loads its index; link previews load client logic lazily. Prefer loader islands and API-backed previews over embedding heavy payloads in every page.
+- **Shared filtering helpers**: Category filtering logic lives in `src/utils/content.ts`—reuse those helpers for home, garden, stream, and shelf views to keep behavior consistent.
 - **Twelve-column grid usage**:
-  - `Layout.astro` already wraps every page in a `.twelve-grid` shell with shared gap and padding tokens. Reach for existing layout components (`LayoutContainer`, `SectionLanding`, `StreamLayout`, `GardenGrid`, `BookGrid`, `BookDetailLayout`, `NordletterGrid`) before introducing fresh wrappers so column spans stay consistent.【F:planning/twelve-column-grid-task-list.md†L5-L140】【F:planning/twelve-grid-padding-followup.md†L10-L94】
-  - Control gutters with the dedicated helpers (`grid-pad-narrow`, `grid-pad-wide`, `grid-pad-none`) instead of ad-hoc `px-*` classes; pair them with `grid-gap-tight` / `grid-gap-loose` when sections need custom rhythm.【F:src/styles/global.css†L536-L577】【F:planning/twelve-grid-padding-followup.md†L10-L78】
-  - Assign column widths and offsets via the span/start utilities (`grid-span-*`, `grid-start-*`) or the prebuilt component APIs rather than stacking multiple `.twelve-grid` containers. Only add a new grid host when a section truly needs its own twelve-column context (for example, distinct sub-layouts on `/feeds` or `/tags`).【F:src/styles/global.css†L662-L920】【F:planning/twelve-grid-audit.md†L17-L108】
-  - When building new templates, keep the goal of “one canonical grid host per logical section” in mind to avoid the wrapper proliferation called out in the audit. If you must nest grids, document why in the PR so the next pass can fold it into the shared `LayoutContainer` roadmap.【F:planning/twelve-grid-audit.md†L84-L124】【F:planning/twelve-grid-rollout-task-list.md†L1-L43】
+  - `Layout.astro` already wraps every page in a `.twelve-grid` shell with shared gap and padding tokens. Reach for existing layout components (`LayoutContainer`, `SectionLanding`, `StreamLayout`, `GardenGrid`, `BookGrid`, `BookDetailLayout`, `NordletterGrid`) before introducing fresh wrappers so column spans stay consistent.
+  - Control gutters with the dedicated helpers (`grid-pad-narrow`, `grid-pad-wide`, `grid-pad-none`) instead of ad-hoc `px-*` classes; pair them with `grid-gap-tight` / `grid-gap-loose` when sections need custom rhythm.
+  - Assign column widths and offsets via the span/start utilities (`grid-span-*`, `grid-start-*`) or the prebuilt component APIs rather than stacking multiple `.twelve-grid` containers. Only add a new grid host when a section truly needs its own twelve-column context (for example, distinct sub-layouts on `/feeds` or `/tags`).
+  - When building new templates, keep the goal of "one canonical grid host per logical section" in mind to avoid wrapper proliferation. If you must nest grids, document why in the PR so the next pass can fold it into the shared `LayoutContainer` roadmap.
   - **Twelve-column implementation checklist**:
     1. Start by confirming the page is mounted inside `Layout.astro` with a `pageWrapper` that exposes the shared `.twelve-grid`. Avoid wrapping the page content in another `.twelve-grid` unless the section needs an entirely separate layout context.
     2. For each major section (`<section>`, `<aside>`, etc.), add a helper class that sets `display: contents;`. This keeps the semantic element without breaking the twelve-column flow, letting each child div/figure participate in the grid directly.

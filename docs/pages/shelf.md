@@ -17,9 +17,9 @@ The `/shelf/` page is the default landing when clicking **Shelf** in the seconda
 
 ## Adding New Entries
 
-Create a markdown file in the appropriate year directory (`src/content/2025/`, etc.) with a timestamp filename (`YYYYMMDDHHMM Title.md`). Set `category` to the relevant value and fill in the fields for that media type (see below).
+The normal path is an Obsidian note via the [publishing shortcut](../content/publishing-shortcut.md) (which lands in `src/content/inbox/` and gets sorted automatically), or a quick-add from the `/write` Shelf tab for queue stubs. To add a file directly, create it in the category folder (`src/content/bookshelf/`, `src/content/filmshelf/`, etc.) with a timestamp filename (`YYYYMMDDHHMM Title.md`), set `category` to the relevant value, and fill in the fields for that media type (see below).
 
-After adding an entry, run the corresponding cover-download script if you want artwork pulled automatically (see [Cover Downloaders](../tools/shelf-cover-downloaders.md)).
+Covers and missing metadata are filled in automatically by GitHub Actions when shelf content lands on `main` (see [Cover Downloaders](../tools/shelf-cover-downloaders.md) and [Metadata Enrichment](../tools/shelf-metadata-enrichment.md)).
 
 ---
 
@@ -31,14 +31,17 @@ After adding an entry, run the corresponding cover-download script if you want a
 ---
 title: "The Pragmatic Programmer"
 author: "David Thomas"           # or array: ["David Thomas", "Andrew Hunt"]
-series: "none"                   # optional; defaults to "none"
+series: "Series Name"            # optional; defaults to "none"
+seriesNumber: 1                  # optional
 category: bookshelf
-pubDate: 2025-01-15T00:00:00
+created: 2025-01-15T00:00:00
 status: started                  # todo | started | paused | finished (unified across all shelf categories)
-bookRating: love                 # like | love | nope  (optional)
-startedReading: 2025-01-10       # optional
-finishedReading: 2025-01-20      # optional; required for "finished" count
-bookCover: "the-pragmatic-programmer.webp"  # auto-filled by download script
+rating: love                     # like | love | nope  (optional, unified across all shelf categories)
+started: 2025-01-10              # optional
+finished: 2025-01-20             # optional; required for "finished" count
+readingProgress: 40              # optional, 0–100
+cover: "the-pragmatic-programmer.webp"  # auto-filled by download script
+year: 1999                       # optional; publication year
 genre: "programming"             # optional
 tags: [programming, software]   # optional
 ---
@@ -59,14 +62,16 @@ Your notes, thoughts, or quotes from the book.
 ```yaml
 ---
 title: "Dune: Part Two"
-director: "Denis Villeneuve"
+director:                        # array
+  - Denis Villeneuve
 year: 2024                       # release year
 category: filmshelf
-pubDate: 2025-03-01T00:00:00
+created: 2025-03-01T00:00:00
 status: finished                 # todo | started | paused | finished (unified across all shelf categories)
-filmRating: love                 # like | love | nope  (optional)
-watchedDate: 2025-03-01          # optional; used for rewatch detection ordering
-filmCover: "dune-part-two.webp"   # auto-filled by download script
+rating: love                     # like | love | nope  (optional)
+finished: 2025-03-01             # watch date; used for rewatch detection ordering
+cover: "dune-part-two.webp"      # auto-filled by download script
+platform: "Netflix"              # optional; shown as a chip
 genre: "sci-fi"                  # optional
 tags: [sci-fi, epic]             # optional
 ---
@@ -74,7 +79,7 @@ tags: [sci-fi, epic]             # optional
 Optional notes about the film.
 ```
 
-**Rewatch tracking:** No extra frontmatter needed. The build automatically detects rewatches by grouping entries with the same (normalised) title and assigning watch numbers (1st watch, 2nd watch, etc.) ordered by `watchedDate`.
+**Rewatch tracking:** No extra frontmatter needed. The build automatically detects rewatches by grouping entries with the same (normalised) title and assigning watch numbers (1st watch, 2nd watch, etc.) ordered by `finished` date.
 
 **Status values:**
 - `finished` — seen it
@@ -93,13 +98,17 @@ One markdown file per season. The TV shelf groups all seasons of a show into a s
 title: "Severance S1"            # displayed on the season detail page
 showTitle: "Severance"           # used to group seasons — must match exactly across files
 season: 1                        # season number
-creator: "Dan Erickson"
+creator:                         # array
+  - Dan Erickson
 year: 2022                       # season release year
 category: tvshelf
-pubDate: 2025-02-10T00:00:00
+created: 2025-02-10T00:00:00
 status: finished                 # todo | started | paused | finished (unified across all shelf categories)
-tvRating: love                   # like | love | nope  (optional)
-tvCover: "severance.webp"         # auto-filled by download script; one image per show
+rating: love                     # like | love | nope  (optional)
+started: 2025-02-01              # optional
+finished: 2025-02-10             # optional
+cover: "severance.webp"          # auto-filled by download script; one image per show
+platform: "Apple TV+"            # optional; shown as a chip
 genre: "thriller"                # optional
 tags: [thriller, workplace]      # optional
 ---
@@ -128,10 +137,13 @@ developer: "Team Cherry"
 year: 2017                       # release year
 platform: "PC"                   # optional; shown as a chip on the card
 category: gameshelf
-pubDate: 2025-04-05T00:00:00
+created: 2025-04-05T00:00:00
 status: finished                 # todo | started | paused | finished (unified across all shelf categories)
-gameRating: love                 # like | love | nope  (optional)
-gameCover: "hollow-knight.webp"   # auto-filled by download script
+rating: love                     # like | love | nope  (optional)
+started: 2025-03-20              # optional
+finished: 2025-04-05             # optional
+hoursPlayed: 40                  # optional
+cover: "hollow-knight.webp"      # auto-filled by download script
 genre: "metroidvania"            # optional
 tags: [indie, metroidvania]      # optional
 ---
@@ -208,9 +220,9 @@ Covers are downloaded by dedicated scripts and committed to the repository so th
 | Category | Image directory | Script |
 | --- | --- | --- |
 | Books | `src/images/bookshelf/` | `npm run download-covers` |
-| Film | `src/images/filmshelf/` | `npm run download-film-covers` |
-| TV | `src/images/tvshelf/` | `npm run download-tv-covers` |
-| Games | `src/images/gameshelf/` | `npm run download-game-covers` |
+| Film | `src/images/filmshelf/` | `node scripts/download-film-covers.js` |
+| TV | `src/images/tvshelf/` | `node scripts/download-tv-covers.js` |
+| Games | `src/images/gameshelf/` | `node scripts/download-game-covers.js` |
 
 See [Shelf Cover Downloaders](../tools/shelf-cover-downloaders.md) for full details on each script.
 

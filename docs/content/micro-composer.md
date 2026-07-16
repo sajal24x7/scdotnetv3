@@ -6,24 +6,7 @@ no Obsidian, no Apple Shortcuts, no gitsync. Open
 at the top, type, hit **Publish**, done. A fourth **Shelf** tab quick-adds
 books/films/TV/games to the shelf queue — see below.
 
-## Steps to go live
-
-1. **Merge this branch to `main`.** The Cloudflare Pages build deploys the
-   `/write` page and the upload Pages Function automatically.
-2. **Create a GitHub token** (for publishing posts):
-   GitHub → Settings → Developer settings → Fine-grained personal access
-   tokens → Generate new token → repository access **only `scdotnetv3`**,
-   permissions **Contents: Read and write**, nothing else.
-3. **Bind the existing media bucket to the Pages project**: Workers & Pages →
-   your Pages project → Settings → Bindings → Add → R2 bucket → variable name
-   exactly **`IMAGES`** → select the bucket behind
-   `storage.sajalchoudhary.net`. Apply to Production.
-4. **Redeploy once** (Deployments → Retry/Re-deploy latest) so the binding
-   takes effect.
-5. **On your phone**: open `https://sajalchoudhary.net/write`, paste the
-   token from step 2, then Share → **Add to Home Screen**.
-
-Steps 2–5 are one-time. After that: open, type, Publish.
+## How it publishes
 
 The page is a static file at `public/write/index.html`, deployed with the site.
 It commits a Markdown file directly to `src/content/micro/` (or

@@ -49,7 +49,7 @@ Nordletter issues (`src/content/nordletter`) and notes use the same shared schem
 
 - Keep descriptions concise and actionable; they power search previews and social embeds.
 - Favor Markdown headings (`##`) over manual bold text to improve table-of-contents generation and anchor linking.
-- For photo or micro posts, ensure the first paragraph or blockquote includes enough context for the search modal and feed cards.
+- For photo or micro posts, ensure the first paragraph or blockquote includes enough context for search results and feed cards.
 
 ## Review Checklist
 

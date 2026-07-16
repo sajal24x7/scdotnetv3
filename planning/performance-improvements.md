@@ -3,6 +3,12 @@
 Prioritised list of changes to keep the site fast as content volume grows
 from the current ~1,600 posts toward an estimated 5,000–10,000 posts.
 
+> **Status (2026-07):** Items 3.3 (search index) and 3.4 (sitemap) are done —
+> search moved to Pagefind (`pagefind --site dist` in the build script) and the
+> sitemap integration is enabled in `astro.config.mjs`. The remaining items
+> (pagination, bookshelf filtering, tag-index caching, lazy category loading,
+> build timing, parallel pre-build) are still open.
+
 ---
 
 ## Priority 1 — Do these now (affects users today)
@@ -169,39 +175,20 @@ Or use `npm-run-all` (already a common dev dependency) with `--parallel`:
 
 ---
 
-### 3.3 Search index size management
+### 3.3 Search index size management — ✅ Done
 
-**Problem:** `src/pages/search-index.json.ts` generates a full JSON index of all posts.
-At 1,600 posts this is ~200–300 KB. At 10,000 posts it will exceed 1.5 MB, which
-hurts time-to-interactive on slower connections.
-
-**How to fix (pick one):**
-
-**Option A — Trim fields:** Only include `slug`, `title`, and `tags` in the search index.
-Strip `description` and `body` previews. This keeps the index under 500 KB even at 10,000 posts.
-
-**Option B — Split by category:** Generate separate search indexes per category
-(`/search-index-til.json`, etc.) and only load the relevant one when the user is
-browsing a specific section.
-
-**Option C — Switch to a proper search backend:** Pagefind (zero-config, runs at build
-time, ships its own index format) or Fuse.js with a lazy-loaded index are both
-good fits for Astro static sites.
+Resolved by switching to Pagefind (Option C): the custom
+`search-index.json.ts` endpoint was removed and `pagefind --site dist` now
+runs as a post-build step, generating a chunked static index under
+`dist/pagefind/`. Index size scales with content without a single monolithic
+JSON payload. See [`docs/components/search.md`](../docs/components/search.md).
 
 ---
 
-### 3.4 Sitemap
+### 3.4 Sitemap — ✅ Done
 
-`astro.config.mjs` has the sitemap integration commented out (line 5). Re-enable it
-before the site grows further — search engines use it to discover and prioritise new
-content, and it becomes harder to backfill the SEO debt as post count grows.
-
-```js
-import sitemap from '@astrojs/sitemap';
-
-// in integrations:
-sitemap(),
-```
+The sitemap integration is enabled in `astro.config.mjs` (with a filter
+excluding `/navigation-demo/` and `/search/`).
 
 ---
 

@@ -11,7 +11,7 @@ The POSSE pipeline cross-posts recent entries to Mastodon, Bluesky, and Threads 
 
 ## Execution Flow
 
-1. **Content discovery** – Reads every Markdown file under `src/content/YYYY`, parsing frontmatter with `gray-matter`. Posts older than `SYNDICATION_DAYS_BACK` (default 7 days) are skipped.【F:scripts/syndicate-content.js†L39-L86】【F:scripts/syndicate-content.js†L99-L133】
+1. **Content discovery** – Reads every Markdown file in the category folders under `src/content/`, parsing frontmatter with `gray-matter`. Posts older than `SYNDICATION_DAYS_BACK` (default 7 days) are skipped.【F:scripts/syndicate-content.js†L39-L86】【F:scripts/syndicate-content.js†L99-L133】
 2. **Eligibility check** – A post proceeds if it belongs to the configured categories and is missing one or more platform URLs.【F:scripts/syndicate-content.js†L91-L133】
 3. **Rate limiting** – Each platform has a `RateLimiter` instance to respect API quotas before posting.【F:scripts/syndicate-content.js†L118-L137】
 4. **Posting** – Platform-specific helpers in `scripts/lib/platforms/` handle API calls. In dry-run mode (`SYNDICATION_DRY_RUN=true`) the script logs mock URLs instead of publishing.【F:scripts/syndicate-content.js†L139-L207】
@@ -40,7 +40,7 @@ Platform credentials should be stored as environment variables (see platform hel
 - `npm run syndicate` executes the workflow in live mode.
 - `npm run syndicate:dry-run` runs with `SYNDICATION_DRY_RUN=true` set automatically for safe previews.【F:package.json†L17-L21】
 
-The general build (`npm run build`) triggers `scripts/trigger-syndication.sh` after Astro finishes, but the Cloudflare build path (`npm run build:cloudflare`) omits that step, so production syndication must be run manually or through a scheduled job.【F:package.json†L11-L16】
+In production, syndication runs via `.github/workflows/syndicate-content.yml` — triggered by pushes to `main` (e.g. a `/write` post) and dispatched by `content-publish.yml` for pipeline merges. The workflow waits ~2 minutes for the Cloudflare deploy, cross-posts, then writes `syndicationUrls` back with a `[CI Skip]` commit so the bookkeeping doesn't trigger another build. The site build itself (`npm run build` / `build:cloudflare`) never syndicates. See [Publishing Pipeline](../content/publishing-pipeline.md) for the full flow.
 
 ## Maintenance Tips
 

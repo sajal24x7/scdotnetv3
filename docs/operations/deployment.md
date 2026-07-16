@@ -1,34 +1,37 @@
 # Deployment and Build Pipeline
 
-This site deploys to Cloudflare Pages and uses npm scripts to orchestrate pre-build tasks such as cover generation.
+This site deploys to Cloudflare Pages and uses npm scripts to orchestrate pre-build tasks such as image caching and cover generation.
 
 ## Environment Requirements
 
-- Node.js ≥ 22.12.0 and npm ≥ 10 are required locally and in CI/CD, matching the `engines` field in `package.json`.【F:package.json†L5-L23】
-- Cloudflare Pages specifies Node 22 in `cloudflare-pages.json`, ensuring parity between local builds and production.【F:cloudflare-pages.json†L1-L8】
+- Node.js ≥ 22.12.0 and npm ≥ 10 are required locally and in CI/CD, matching the `engines` field in `package.json`.
+- Cloudflare Pages specifies Node 22 in `cloudflare-pages.json`, ensuring parity between local builds and production (a `NODE_VERSION` set in the Pages dashboard overrides this file).
 
 ## Core Commands
 
 | Command | Description |
 | --- | --- |
-| `npm run dev` | Generates bookshelf covers and starts the Astro dev server with live reload.【F:package.json†L11-L18】 |
-| `npm run build` | Generates covers, runs `astro build`, and then triggers the POSSE syndication shell script. The syndication step is allowed to fail without failing the build (`|| true`).【F:package.json†L11-L16】 |
-| `npm run build:cloudflare` | Same as `npm run build` but skips the syndication shell script; this is the command executed in Cloudflare Pages.【F:package.json†L11-L16】【F:cloudflare-pages.json†L1-L8】 |
-| `npm run preview` | Serves the contents of the `dist/` directory for validation.【F:package.json†L11-L21】 |
+| `npm run dev` | Caches Nordletter images, generates bookshelf covers, then starts the Astro dev server with live reload. |
+| `npm run build` | Runs the same pre-steps, then `astro build`, then `pagefind --site dist` to generate the search index. |
+| `npm run build:cloudflare` | Identical to `npm run build`; this is the command configured in Cloudflare Pages. |
+| `npm run preview` | Serves the contents of the `dist/` directory for validation. |
 
 ## Build Sequence
 
-1. **Cover generation** – `scripts/generate-book-covers.js` creates or updates cover art assets referenced by bookshelf entries before the Astro compiler runs. The command is idempotent and safe to run repeatedly.
-2. **Astro build** – Generates static HTML, JSON endpoints, and asset bundles under `dist/`.
-3. **Optional syndication** – The default `npm run build` calls `./scripts/trigger-syndication.sh`. Cloudflare skips this step because it uses `npm run build:cloudflare`.
+1. **Nordletter image cache** – `scripts/cache-nordletter-images.js` downloads any missing newsletter thumbnails and refreshes the manifest (see [Nordletter Image Cache](nordletter-image-cache.md)).
+2. **Cover generation** – `scripts/generate-book-covers.js` regenerates the TypeScript cover map for bookshelf images. Idempotent and safe to run repeatedly.
+3. **Astro build** – Generates static HTML, JSON endpoints, and asset bundles under `dist/`. Cloudflare Pages Functions in `functions/` deploy alongside the static output.
+4. **Pagefind indexing** – `pagefind --site dist` crawls the built HTML and writes the static search index to `dist/pagefind/`.
+
+Syndication is **not** part of the build. It runs as a separate GitHub Actions workflow (`.github/workflows/syndicate-content.yml`) after a deploy — see [Syndication Workflow](syndication.md).
 
 ## Cloudflare Pages Configuration
 
 - Build command: `npm run build:cloudflare`
 - Output directory: `dist`
-- Environment variables: set in the Pages dashboard for secrets (e.g., syndication credentials). None are hard-coded in the repo.
+- Environment variables: set in the Pages dashboard for secrets. The R2 `IMAGES` binding powers `/write` uploads (see [Micro Composer](../content/micro-composer.md)). None are hard-coded in the repo.
 
-If you add new build-time scripts, update both `package.json` and `cloudflare-pages.json` so local and hosted builds remain consistent.
+If you add new build-time scripts, update both `package.json` and (if the Node version or command changes) `cloudflare-pages.json` so local and hosted builds remain consistent.
 
 ## Deployment Checklist
 
@@ -39,4 +42,5 @@ If you add new build-time scripts, update both `package.json` and `cloudflare-pa
 ## Related Documentation
 
 - [Syndication Workflow](syndication.md)
+- [Publishing Pipeline](../content/publishing-pipeline.md)
 - [Content Lifecycle](../architecture/content-lifecycle.md)
