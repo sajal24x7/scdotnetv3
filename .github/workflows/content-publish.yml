@@ -56,6 +56,15 @@ jobs:
         # unknown category; the failure issue below flags it.
         run: npm run sort-inbox
 
+      - name: Reconcile shelf queue stubs
+        # A shelf note that just arrived from the inbox may be the "real"
+        # entry for something already sitting on the shelf as a `todo`
+        # queue stub (Obsidian-first promotion — see
+        # planning/shelf-queue-design.md §4). Delete the matching stub so
+        # it doesn't render twice; near-title-mismatches are only logged,
+        # never auto-deleted.
+        run: npm run reconcile-shelf-queue
+
       - name: Validate
         # TODO: flip to a required step once brief 06 (TypeScript hygiene)
         # brings `npx astro check` to zero errors.
