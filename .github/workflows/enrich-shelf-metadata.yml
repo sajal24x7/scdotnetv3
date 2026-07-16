@@ -1,8 +1,24 @@
 name: Enrich Shelf Metadata
 
 on:
-  # Manual trigger only — this fills in genre/director/creator/year from TMDB,
-  # separate from the cover-art job so the two never race on the same commit.
+  # Fire on shelf-content pushes to main: a queue stub committed from
+  # /write, an Obsidian note landing via content-publish, etc. Only the
+  # touched shelf(s) are enriched, then that shelf's cover is downloaded so
+  # a queue card is complete without any manual step.
+  # No loop: the bookkeeping commit below is pushed with the default
+  # GITHUB_TOKEN (via actions/checkout's persisted credentials), and GitHub
+  # excludes GITHUB_TOKEN-authored pushes from triggering further workflow
+  # runs — same mechanism syndicate-content.yml relies on.
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/bookshelf/**'
+      - 'src/content/filmshelf/**'
+      - 'src/content/tvshelf/**'
+      - 'src/content/gameshelf/**'
+
+  # Manual trigger — metadata only, no cover download (kept separate so the
+  # two never race on the same commit for a bulk/backfill run).
   workflow_dispatch:
     inputs:
       shelf:
@@ -12,8 +28,10 @@ on:
         type: choice
         options:
           - all
+          - book
           - film
           - tv
+          - game
       force:
         description: 'Overwrite fields that already have a value'
         required: true
@@ -26,11 +44,24 @@ jobs:
     outputs:
       shelves: ${{ steps.plan.outputs.shelves }}
     steps:
+      - name: Checkout repository
+        if: github.event_name == 'push'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Pick shelves for this trigger
         id: plan
         run: |
-          if [ "${{ inputs.shelf }}" = "all" ]; then
-            shelves='["film","tv"]'
+          if [ "${{ github.event_name }}" = "push" ]; then
+            changed=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- src/content/bookshelf src/content/filmshelf src/content/tvshelf src/content/gameshelf)
+            shelves='[]'
+            echo "$changed" | grep -q '^src/content/bookshelf/' && shelves=$(echo "$shelves" | jq -c '. + ["book"]')
+            echo "$changed" | grep -q '^src/content/filmshelf/' && shelves=$(echo "$shelves" | jq -c '. + ["film"]')
+            echo "$changed" | grep -q '^src/content/tvshelf/' && shelves=$(echo "$shelves" | jq -c '. + ["tv"]')
+            echo "$changed" | grep -q '^src/content/gameshelf/' && shelves=$(echo "$shelves" | jq -c '. + ["game"]')
+          elif [ "${{ inputs.shelf }}" = "all" ]; then
+            shelves='["book","film","tv","game"]'
           else
             shelves='["${{ inputs.shelf }}"]'
           fi
@@ -39,6 +70,7 @@ jobs:
 
   enrich-metadata:
     needs: plan
+    if: needs.plan.outputs.shelves != '[]'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -54,11 +86,14 @@ jobs:
         id: shelf
         run: |
           case "${{ matrix.shelf }}" in
-            film) dir=filmshelf; title=Film ;;
-            tv)   dir=tvshelf;   title=TV ;;
+            book) dir=bookshelf; module=bookCovers.ts; title=Book ;;
+            film) dir=filmshelf; module=filmCovers.ts; title=Film ;;
+            tv)   dir=tvshelf;   module=tvCovers.ts;   title=TV ;;
+            game) dir=gameshelf; module=gameCovers.ts; title=Game ;;
           esac
           {
             echo "dir=$dir"
+            echo "module=$module"
             echo "title=$title"
           } >> "$GITHUB_OUTPUT"
 
@@ -84,12 +119,29 @@ jobs:
       - name: Enrich ${{ steps.shelf.outputs.title }} metadata
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          RAWG_API_KEY: ${{ secrets.RAWG_API_KEY }}
+          TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
+          TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
         run: |
           if [ "${{ inputs.force }}" = "true" ]; then
             node "scripts/enrich-${{ matrix.shelf }}-metadata.js" --force
           else
             node "scripts/enrich-${{ matrix.shelf }}-metadata.js"
           fi
+
+      # Push-triggered runs also fetch the cover, so a queue stub gets a
+      # complete card (metadata + art) from one commit with no manual step.
+      # Manual dispatch stays metadata-only, as before.
+      - name: Download ${{ steps.shelf.outputs.title }} cover for newly enriched entries
+        if: github.event_name == 'push'
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          RAWG_API_KEY: ${{ secrets.RAWG_API_KEY }}
+          TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
+          TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
+        run: |
+          node "scripts/download-${{ matrix.shelf }}-covers.js"
+          node "scripts/generate-${{ matrix.shelf }}-covers.js"
 
       - name: Commit ${{ steps.shelf.outputs.title }} metadata updates
         run: |
@@ -98,9 +150,9 @@ jobs:
             exit 0
           fi
 
-          git add "src/content/${{ steps.shelf.outputs.dir }}/"
+          git add "src/content/${{ steps.shelf.outputs.dir }}/" "src/images/${{ steps.shelf.outputs.dir }}/" "src/utils/${{ steps.shelf.outputs.module }}"
 
-          git commit -m "Enrich ${{ steps.shelf.outputs.title }} shelf metadata from TMDB
+          git commit -m "enrich: ${{ steps.shelf.outputs.title }} shelf metadata${{ github.event_name == 'push' && ' and cover' || '' }}
 
           🤖 Generated with GitHub Actions
 
