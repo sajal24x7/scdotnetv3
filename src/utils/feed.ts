@@ -88,17 +88,37 @@ function postDate(post: Post): Date {
   return created instanceof Date ? created : new Date(created);
 }
 
-function updatedDate(post: Post): Date | null {
-  const { updated } = post.data;
-  if (!updated) {
+function toValidDate(value: Date | string | undefined): Date | null {
+  if (!value) {
     return null;
   }
-  const date = updated instanceof Date ? updated : new Date(updated);
+  const date = value instanceof Date ? value : new Date(value);
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
-// The feed is ordered by last activity: updated when present, created otherwise
+function updatedDate(post: Post): Date | null {
+  return toValidDate(post.data.updated);
+}
+
+const SHELF_CATEGORIES: ReadonlySet<string> = new Set(Object.keys(SHELF_STATUS_FEED_VERBS));
+
+// Shelf entries sit in the timeline at the date the book/film/show/game was
+// finished (or started, while still in progress) — not the note's created date,
+// which for imported entries can be years off.
+function shelfActivityDate(post: Post): Date | null {
+  if (!SHELF_CATEGORIES.has(post.data.category)) {
+    return null;
+  }
+  return toValidDate(post.data.finished) ?? toValidDate(post.data.started);
+}
+
+// The feed is ordered by last activity: the finished/started date for shelf
+// entries, otherwise updated when present, created as the fallback
 function effectiveDate(post: Post): Date {
+  const shelfDate = shelfActivityDate(post);
+  if (shelfDate) {
+    return shelfDate;
+  }
   const updated = updatedDate(post);
   const created = postDate(post);
   return updated && updated.getTime() > created.getTime() ? updated : created;
@@ -157,10 +177,13 @@ function metaHtml(post: Post, extra = ''): string {
   const label = CATEGORY_LABELS[category] ?? category;
   const created = postDate(post);
   const date = effectiveDate(post);
-  const isUpdate = date.getTime() - created.getTime() > UPDATED_LABEL_THRESHOLD_MS;
+  // Shelf entries are already dated by their finished/started date (and titled
+  // with a status verb), so the "updated" treatment only applies elsewhere
+  const isUpdate =
+    !shelfActivityDate(post) && date.getTime() - created.getTime() > UPDATED_LABEL_THRESHOLD_MS;
   const tooltip = isUpdate
     ? `Published ${dayLabel(created)} · Updated ${dayLabel(date)}`
-    : dayLabel(created);
+    : dayLabel(date);
   // Live relative timestamp: the <relative-time> element (shared with the
   // stream page) re-renders client-side, so the label stays current instead of
   // freezing at build time. The build-time string inside is the no-JS fallback.
