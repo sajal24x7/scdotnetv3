@@ -11,7 +11,7 @@ syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkyhqlpc2z'
 ---
 
-```powercli
+```powershell
 $VM = Get-VM 7ocilpipaap01
 $VM.ExtensionData.Config.UUid
 ```

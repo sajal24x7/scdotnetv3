@@ -12,7 +12,7 @@ syndicationUrls:
 
 
 Conversion to lazy zeroed might not work, so better to convert disk to thin. and then do vmotion to lazy zeroed.
-```ssh
+```bash
 vmkfstools -i /vmfs/volumes/datastoreName/VMName/VMName.vmdk /vmfs/volumes/datastoreName/VMName/temp/VMName.vmdk -d zeroedthick
 
 

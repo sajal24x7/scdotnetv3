@@ -20,7 +20,7 @@ Two host groups always exist:
 ### Nested groups
 Specified by using `:children` suffix.
 Example:
-```ansible
+```yaml
 [usa]
 washington1.example.com
 washington2.example.com
@@ -42,7 +42,7 @@ To override use the `-i` switch.
 
 # Commands
 
-```ansible
+```yaml
 # To list ungrouped hosts
 ansible ungrouped --list-hosts
 

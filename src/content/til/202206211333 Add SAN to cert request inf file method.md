@@ -12,7 +12,7 @@ syndicationUrls:
 
 
 Template:
-```notepad
+```ini
 [NewRequest]
 Subject = "CN=devname.fi.tcsecp.com"
 Exportable = TRUE
@@ -30,7 +30,7 @@ CertificateTemplate = WebServer
 ```
 
 For SAN, tried using the following which did not work. So, use the [Extensions] format mentioned above.
-```notepad
+```ini
 [RequestAttributes] ; If your client operating system is Windows Server 2003, Windows Server 2003 R2, or Windows XP ; and you are using a standalone CA, SANs can be included in the RequestAttributes ; section by using the following text format. SAN="dns=www01.fabrikam.com&dns=www.fabrikam.com&ipaddress=172.31.10.130"
 ```
 
