@@ -17,6 +17,15 @@ const parseDate = (value?: Date | string | null): Date | null => {
     return Number.isNaN(d.getTime()) ? null : d;
 };
 
+// Most recent activity date for an entry: finished > started > created.
+const activityDate = (post: typeof tvPosts[number]): Date => {
+    const finished = parseDate(post.data.finished);
+    if (finished) return finished;
+    const started = parseDate(post.data.started);
+    if (started) return started;
+    return parseDate(post.data.created) ?? new Date();
+};
+
 // Split slug like "glory/s1" into show and season parts.
 // When post.data.season is undefined the show is treated as a limited series
 // (single season) and seasonSlug is left undefined — the card links to the
@@ -50,7 +59,7 @@ const seasonEntries: SeasonEntry[] = tvPosts.map((post) => {
         showSlug,
         seasonSlug,
         seasonNum: post.data.season ?? 1,
-        year: (parseDate(post.data.created) ?? new Date()).getFullYear(),
+        year: activityDate(post).getFullYear(),
         tvStatus: post.data.status as ShelfStatus | undefined
     };
 });
