@@ -3,7 +3,8 @@
 A single-page composer for publishing micro and photo posts from any device —
 no Obsidian, no Apple Shortcuts, no gitsync. Open
 `https://sajalchoudhary.net/write`, pick **Micro** or **Photo** with the toggle
-at the top, type, hit **Publish**, done.
+at the top, type, hit **Publish**, done. A fourth **Shelf** tab quick-adds
+books/films/TV/games to the shelf queue — see below.
 
 ## Steps to go live
 
@@ -105,6 +106,37 @@ images:
 ---
 Optional caption text.
 ```
+
+## Shelf mode (queue quick-add)
+
+The **Shelf** tab quick-adds an item to the "to be read/watched/played"
+queue described in `planning/shelf-queue-design.md` — a book, film, TV show,
+or game you want to get to eventually, without writing a full shelf entry.
+
+- **Category** segmented control (Book/Film/TV/Game) picks the target
+  collection; the creator field's placeholder swaps to match
+  (Author/Director/Creator/Developer).
+- **Title** is required; **Creator** and the notes textarea (the "why") are
+  optional.
+- Publish commits `YYYYMMDDHHMM Title.md` straight to
+  `src/content/<category>/` on `main`, with `status: todo` and a `created`
+  timestamp — same instant, schema-valid, no-inbox path as micro/photo posts.
+  For TV, the stub is show-level: `showTitle` is set to the title and no
+  `season` is written (the season-per-file structure only starts once a real
+  note exists).
+- Below the form, a **Queue** list (from the build-time
+  `/api/shelf-queue.json` endpoint) shows every `status: todo` entry with
+  **Start** and **Remove** actions:
+  - **Start** edits the stub in place — `status: todo` → `started`, plus a
+    `started:` date — turning it into the log entry itself.
+  - **Remove** deletes the stub (changed your mind).
+
+  Both actions read the file's current `sha` via the Contents API before
+  writing, same as any other GitHub-API edit. The queue list itself is a
+  build-time snapshot (cached an hour), so it only reflects the last deploy;
+  items added or removed in the current session are patched into the
+  on-screen list immediately rather than waiting for a rebuild. A **↻
+  refresh** link reloads it after a deploy catches up.
 
 ## Images (Cloudflare R2)
 
