@@ -28,13 +28,13 @@ If these mention datastores, change that.
 ## Through CLI
 
 ### Find the UUID for datastore to be removed.
-```ssh
+```bash
 esxcli storage filesystem list
 
 ```
 
 ### Unmount
-```ssh
+```bash
 esxcli storage filesystem unmount [-u _UUID_ | -l _label_ | -p _path_ ]
 ```
 
@@ -44,7 +44,7 @@ WARNING: VC: 637: unmounting opened volume ('4e414917-a8d75514-6bae-0019b9f1ecf4
 VC: 802: Unmount VMFS volume f530 28 2 4e414917a8d7551419006bae f4ecf19b 4 1 0 0 0 0 0 : Busy
 
 ## verify that the datastore is unmounted, run this command:  
-```ssh
+```bash
 esxcli storage filesystem list
 ```
 

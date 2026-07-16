@@ -14,7 +14,7 @@ syndicationUrls:
 ---
 This commands lists naa id, vmfs id and datastore name. We can grep to search for a particular vmfs volume.
 
-``` esxcli
+```bash
 esxcli storage vmfs extent list
 ```
 

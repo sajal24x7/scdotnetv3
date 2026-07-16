@@ -25,7 +25,7 @@ From the bottom of $PSHOME\Registry.format.ps1xml for type Microsoft.Win32.Regis
 
   
 
-``` PowerShell
+```powershell
 
 <ScriptBlock>
 

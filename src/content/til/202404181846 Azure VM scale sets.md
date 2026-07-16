@@ -40,7 +40,7 @@ syndicationUrls:
 
 [some faqs](https://learn.microsoft.com/en-gb/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq)
 
-```azcli
+```bash
 # create
 az vmss create --resource-group myResourceGroup --name webServerScaleSet --image Ubuntu2204 --upgrade-policy-mode automatic --custom-data cloud-init.yaml --admin-username azureuser --generate-ssh-keys
 

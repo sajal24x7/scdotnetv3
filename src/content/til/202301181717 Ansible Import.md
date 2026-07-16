@@ -31,7 +31,7 @@ the `import_playbook` feature can only be used at the top level of a playbook 
 Plays/tasks can be variablized for reuse. 
 For example, instead of 
 
-```ansible
+```yaml
 ---
   - name: Install the httpd package
     yum:
@@ -46,7 +46,7 @@ For example, instead of
 
 It can be variablized as 
 
-```ansible
+```yaml
 ---
   - name: Install the {{ package }} package
     yum:
@@ -61,7 +61,7 @@ It can be variablized as
 
 And variables set like so:
 
-```ansible
+```yaml
 tasks:
     - name: Import task file and set variables
       import_tasks: task.yml

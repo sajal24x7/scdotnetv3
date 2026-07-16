@@ -16,7 +16,7 @@ syndicationUrls:
 
 # Defining failure
 **failed_when** can be used to specify what causes failure.
-```ansible
+```yaml
 - name: Fail task when the command error output prints FAILED
   ansible.builtin.command: /usr/bin/example-command -x -y -z
   register: command_result
@@ -26,7 +26,7 @@ syndicationUrls:
 # Aborting a play on all hosts
 On first error, **any_errors_fatal: true** will stop play execution.
 **max_fail_percentage** can be used to abort after a percentage has failed 
-```ansible
+```yaml
 any_errors_fatal: true
 ```
 
