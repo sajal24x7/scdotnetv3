@@ -1,0 +1,89 @@
+---
+// Books/Queue-style header toggle for the four shelf categories, matching
+// the Now/Then and Current/History toggle on PageToggleTitle.astro.
+import { SHELF_QUEUE_CONFIG } from '../../utils/shelfQueue';
+import type { ShelfCategory } from '../../utils/shelfStatus';
+
+interface Props {
+    category: ShelfCategory;
+    active: 'shelf' | 'queue';
+}
+
+const { category, active } = Astro.props as Props;
+
+const SHELF_LABELS: Record<ShelfCategory, string> = {
+    bookshelf: 'Books',
+    filmshelf: 'Film',
+    tvshelf: 'TV',
+    gameshelf: 'Games',
+};
+
+const label = SHELF_LABELS[category];
+const shelfHref = `/${category}/`;
+const queueHref = SHELF_QUEUE_CONFIG[category].route;
+---
+
+<h1 class="shelf-queue-toggle">
+    {active === 'shelf' ? (
+        <>
+            <span class="shelf-queue-toggle__active">{label}</span>
+            <span class="shelf-queue-toggle__separator">/</span>
+            <a href={queueHref} class="shelf-queue-toggle__inactive">Queue</a>
+        </>
+    ) : (
+        <>
+            <a href={shelfHref} class="shelf-queue-toggle__inactive">{label}</a>
+            <span class="shelf-queue-toggle__separator">/</span>
+            <span class="shelf-queue-toggle__active">Queue</span>
+        </>
+    )}
+</h1>
+
+<style>
+    .shelf-queue-toggle {
+        font-size: var(--text-huge);
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .shelf-queue-toggle__active {
+        color: rgb(30 41 59);
+    }
+
+    :global(.dark) .shelf-queue-toggle__active {
+        color: rgb(var(--color-text-primary));
+    }
+
+    .shelf-queue-toggle__separator {
+        color: rgb(148 163 184);
+        font-weight: 400;
+    }
+
+    :global(.dark) .shelf-queue-toggle__separator {
+        color: rgb(var(--color-text-secondary));
+        opacity: 0.6;
+    }
+
+    .shelf-queue-toggle__inactive {
+        color: rgb(148 163 184);
+        text-decoration: none;
+        transition: color 200ms ease;
+    }
+
+    :global(.dark) .shelf-queue-toggle__inactive {
+        color: rgb(var(--color-text-secondary));
+        opacity: 0.7;
+    }
+
+    .shelf-queue-toggle__inactive:hover {
+        color: rgb(79 70 229);
+    }
+
+    :global(.dark) .shelf-queue-toggle__inactive:hover {
+        color: rgb(129 140 248);
+    }
+</style>

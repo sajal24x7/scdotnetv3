@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import SectionLanding from '../../../layouts/SectionLanding.astro';
 import ShelfQueue, { type ShelfQueueItem } from '../../../components/shelf/ShelfQueue.astro';
+import ShelfQueueToggle from '../../../components/shelf/ShelfQueueToggle.astro';
 import { getAllPosts } from '../../../utils/content';
 import { createSectionLandingProps } from '../../../utils/sectionLanding';
 import { SHELF_QUEUE_CONFIG, getQueueCreator } from '../../../utils/shelfQueue';
@@ -47,43 +48,17 @@ const sectionLandingProps = createSectionLandingProps({
   enableLinkHoverEffect
 >
   <SectionLanding {...sectionLandingProps}>
-    <div slot="afterHeader" class="shelf-queue-header">
-      <a href="/bookshelf/" class="shelf-queue-back">← Bookshelf</a>
-      <h1 class="shelf-queue-heading">{config.heading}</h1>
+    <div slot="afterHeader" class="shelf-header-block">
+      <div class="shelf-title-row">
+        <ShelfQueueToggle category="bookshelf" active="queue" />
+      </div>
+      <p class="shelf-description">Books on the to-read list.</p>
     </div>
     <ShelfQueue config={config} items={items} />
   </SectionLanding>
 </Layout>
 
 <style>
-  .shelf-queue-header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .shelf-queue-back {
-    font-size: var(--text-small);
-    color: #6b7280;
-    text-decoration: none;
-    width: fit-content;
-  }
-
-  .shelf-queue-back:hover {
-    text-decoration: underline;
-  }
-
-  :global(.dark) .shelf-queue-back {
-    color: #9ca3af;
-  }
-
-  .shelf-queue-heading {
-    font-size: var(--text-huge);
-    font-weight: 700;
-    color: rgb(var(--color-text-primary));
-  }
-
   .bookshelf-content {
     display: flex;
     flex-direction: column;
