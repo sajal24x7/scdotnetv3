@@ -7,5 +7,8 @@ status: todo
 author: Shunryū Suzuki
 year: 1970
 cover: zen-mind-beginners-mind.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116930580805316064'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqrnjw7jwa2y'
 ---
 

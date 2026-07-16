@@ -7,5 +7,8 @@ status: todo
 author: Bill Perkins
 year: 2020
 cover: die-with-zero-getting-all-you-can-from-your-money-and-your-life.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116930549020048129'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqrn3hqq6v22'
 ---
 

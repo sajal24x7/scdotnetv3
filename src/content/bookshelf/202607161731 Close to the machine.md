@@ -7,5 +7,8 @@ status: todo
 author: Ellen Ullman
 year: 1997
 cover: close-to-the-machine.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116930491756697338'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqrmbga7r32h'
 ---
 

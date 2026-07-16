@@ -8,5 +8,8 @@ author: David Brooks
 year: 2023
 cover: >-
   how-to-know-a-person-the-art-of-seeing-others-deeply-and-being-deeply-seen.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116930396038921168'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqrkvve5bb2q'
 ---
 

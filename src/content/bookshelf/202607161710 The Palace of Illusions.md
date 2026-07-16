@@ -7,5 +7,8 @@ status: todo
 author: Chitra Banerjee Divakaruni
 year: 2008
 cover: the-palace-of-illusions.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116930357810795238'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqrkejjx222y'
 ---
 

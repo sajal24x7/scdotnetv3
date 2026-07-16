@@ -7,5 +7,8 @@ status: todo
 author: W. Timothy Gallwey
 year: 1834
 cover: inner-game-of-tennis.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116930408766198742'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqrl3owjhs2f'
 ---
 

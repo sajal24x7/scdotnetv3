@@ -7,5 +7,8 @@ status: todo
 author: Mason Currey
 year: 2013
 cover: daily-rituals-how-artists-work.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116930536308536365'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqrmvoogqm2q'
 ---
 

@@ -7,5 +7,8 @@ status: todo
 author: Alain De Botton
 year: 2016
 cover: the-course-of-love.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116930529930663604'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqrmsrpcg522'
 ---
 

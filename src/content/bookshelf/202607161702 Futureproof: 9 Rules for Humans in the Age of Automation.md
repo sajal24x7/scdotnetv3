@@ -7,5 +7,8 @@ status: todo
 author: Kevin Roose
 year: 2021
 cover: futureproof-9-rules-for-humans-in-the-age-of-automation.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116930306610961537'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqrjna4zy22f'
 ---
 
