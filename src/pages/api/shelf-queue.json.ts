@@ -21,6 +21,7 @@ export const GET: APIRoute = async () => {
                 title: (category === 'tvshelf' ? post.data.showTitle ?? post.data.title : post.data.title) ?? '',
                 creator: getQueueCreator(post.data, config.creatorField),
                 created: new Date(post.data.created).toISOString(),
+                path: post.filePath ?? '',
             };
         })
         .sort((a, b) => new Date(b.created).getTime() - new Date(a.created).getTime());

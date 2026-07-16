@@ -233,6 +233,7 @@ vault.
 | Docs | `docs/pages/shelf.md` (queue section), `docs/content/micro-composer.md` (shelf tab), `docs/tools/shelf-metadata-enrichment.md` (books/games) |
 
 Suggested build order: **1)** queue pages + JSON endpoint (pure read of
-existing `todo` entries — immediately useful), **2)** composer tab,
+existing `todo` entries — immediately useful) — shipped, **2)** composer
+tab — shipped (`public/write/index.html`, `docs/content/micro-composer.md`),
 **3)** enrichment for books/games + push trigger, **4)** reconcile step.
 Each stage ships independently.
