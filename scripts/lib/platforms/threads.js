@@ -163,7 +163,7 @@ async function waitForThreadsContainer(containerId, accessToken, maxAttempts = 3
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     await new Promise(resolve => setTimeout(resolve, 3000));
 
-    const response = await fetch(`https://graph.threads.net/v1.0/${containerId}?fields=status_code`, {
+    const response = await fetch(`https://graph.threads.net/v1.0/${containerId}?fields=status,error_message`, {
       headers: {
         'Authorization': `Bearer ${accessToken}`
       }
@@ -182,11 +182,11 @@ async function waitForThreadsContainer(containerId, accessToken, maxAttempts = 3
     }
 
     const result = await response.json();
-    if (result.status_code === 'FINISHED') {
+    if (result.status === 'FINISHED') {
       return;
     }
-    if (result.status_code === 'ERROR' || result.status_code === 'EXPIRED') {
-      throw new Error(`Threads could not process the media (status: ${result.status_code})`);
+    if (result.status === 'ERROR' || result.status === 'EXPIRED') {
+      throw new Error(`Threads could not process the media (status: ${result.status}${result.error_message ? `, ${result.error_message}` : ''})`);
     }
   }
 
