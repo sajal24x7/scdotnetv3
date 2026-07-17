@@ -33,7 +33,7 @@ Node 22.12+ and npm 10+ are required for parity with the production environment 
 
 ## Tooling Etiquette
 
-- Syndication is **not** part of the build — it runs via `.github/workflows/syndicate-content.yml` (triggered by pushes to `main` and dispatched by the publishing pipeline). Use `npm run syndicate:dry-run` to test POSSE output locally without publishing.
+- Syndication is **not** part of the build — it runs via `.github/workflows/syndicate-content.yml` on a schedule (every 3 hours), sweeping recent posts that don't have `syndicationUrls` yet. Use `npm run syndicate:dry-run` to test POSSE output locally without publishing.
 - Run `npx astro check` before opening a pull request. No separate ESLint/Prettier config is present; maintain existing formatting and four-space indentation in TypeScript modules.
 
 ## Additional Resources

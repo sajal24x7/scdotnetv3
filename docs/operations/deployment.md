@@ -23,7 +23,7 @@ This site deploys to Cloudflare Pages and uses npm scripts to orchestrate pre-bu
 3. **Astro build** – Generates static HTML, JSON endpoints, and asset bundles under `dist/`. Cloudflare Pages Functions in `functions/` deploy alongside the static output.
 4. **Pagefind indexing** – `pagefind --site dist` crawls the built HTML and writes the static search index to `dist/pagefind/`.
 
-Syndication is **not** part of the build. It runs as a separate GitHub Actions workflow (`.github/workflows/syndicate-content.yml`) after a deploy — see [Syndication Workflow](syndication.md).
+Syndication is **not** part of the build. It runs as a separate, scheduled GitHub Actions workflow (`.github/workflows/syndicate-content.yml`, every 3 hours) — see [Syndication Workflow](syndication.md).
 
 ## Cloudflare Pages Configuration
 

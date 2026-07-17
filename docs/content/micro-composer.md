@@ -14,8 +14,8 @@ It commits a Markdown file directly to `src/content/micro/` (or
 From there the existing automation takes over:
 
 1. The push to `main` triggers the Cloudflare Pages build → post goes live.
-2. The same push triggers `syndicate-content.yml`, which waits ~2 minutes
-   for the deploy, then cross-posts and writes `syndicationUrls` back with a
+2. `syndicate-content.yml` runs on a schedule (every 3 hours); its next
+   sweep cross-posts the new note and writes `syndicationUrls` back with a
    `[CI Skip]` commit, so the bookkeeping doesn't trigger another build.
 3. The push also triggers `sync-content-branch.yml`, which merges `main`
    into the `content` branch so it never trails a `/write` post.

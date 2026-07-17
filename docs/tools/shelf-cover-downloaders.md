@@ -1,6 +1,6 @@
 # Shelf Cover Downloaders
 
-Three scripts download poster/cover artwork for the film, TV, and game shelf categories, mirroring the [book cover downloader](./book-cover-downloader.md). All four run on a shared schedule via `.github/workflows/download-covers.yml` — books daily, film/TV/game weekly (Sundays) — and all write the same unified `cover` frontmatter field.
+Three scripts download poster/cover artwork for the film, TV, and game shelf categories, mirroring the [book cover downloader](./book-cover-downloader.md). All four share one manual-dispatch workflow, `.github/workflows/download-covers.yml` (covers for newly pushed entries are fetched automatically by `enrich-shelf-metadata.yml`, so the workflow is for bulk/backfill runs), and all write the same unified `cover` frontmatter field.
 
 ## Overview
 
@@ -24,9 +24,7 @@ After downloading, the corresponding generate scripts update TypeScript cover-ma
 
 All four shelves run through one workflow, `.github/workflows/download-covers.yml`:
 
-- **Books**: every day at 2 AM UTC
-- **Film, TV, games**: every Sunday at 3 AM UTC
-- **Manual dispatch**: pick a shelf (`all`/`book`/`film`/`tv`/`game`) and a mode (`normal`/`force`/`refresh-low-res` — the low-res mode only applies to books)
+- **Manual dispatch only**: pick a shelf (`all`/`book`/`film`/`tv`/`game`) and a mode (`normal`/`force`/`refresh-low-res` — the low-res mode only applies to books). The old daily/weekly schedules were removed; `enrich-shelf-metadata.yml` fetches covers for entries as they are pushed.
 
 Each shelf's job runs `node scripts/download-<shelf>-covers.js`, then `node scripts/generate-<shelf>-covers.js`, then commits the images plus updated frontmatter to `main` (rebasing first to avoid racing other automation). It needs these secrets, passed as env vars to the download step: `TMDB_API_KEY`, `RAWG_API_KEY`, `TWITCH_CLIENT_ID`, `TWITCH_CLIENT_SECRET`.
 

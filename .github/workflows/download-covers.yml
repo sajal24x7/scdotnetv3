@@ -1,7 +1,10 @@
 name: Download Covers
 
+# Manual-only: covers for entries added day-to-day are fetched by the
+# push-triggered enrich-shelf-metadata workflow, so the old daily/weekly
+# schedules mostly found nothing to do. Dispatch this for bulk backfills
+# or to refresh low-res book covers.
 on:
-  # Manual trigger
   workflow_dispatch:
     inputs:
       shelf:
@@ -25,28 +28,17 @@ on:
           - force
           - refresh-low-res
 
-  schedule:
-    - cron: '0 2 * * *' # Books: every day at 2 AM UTC
-    - cron: '0 3 * * 0' # Films, games, TV: every Sunday at 3 AM UTC
-
 jobs:
   plan:
-    # Prevent infinite loops from bot commits
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     outputs:
       shelves: ${{ steps.plan.outputs.shelves }}
     steps:
       - name: Pick shelves for this trigger
         id: plan
         run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            if [ "${{ github.event.schedule }}" = "0 2 * * *" ]; then
-              shelves='["book"]'
-            else
-              shelves='["film","game","tv"]'
-            fi
-          elif [ "${{ inputs.shelf }}" = "all" ]; then
+          if [ "${{ inputs.shelf }}" = "all" ]; then
             shelves='["book","film","game","tv"]'
           else
             shelves='["${{ inputs.shelf }}"]'
@@ -57,6 +49,7 @@ jobs:
   download-covers:
     needs: plan
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write
     strategy:
@@ -113,10 +106,6 @@ jobs:
           if [ "${{ inputs.mode }}" = "force" ]; then
             node "scripts/download-${{ matrix.shelf }}-covers.js" --force
           elif [ "${{ inputs.mode }}" = "refresh-low-res" ] && [ "${{ matrix.shelf }}" = "book" ]; then
-            node scripts/download-book-covers.js --replace-low-res
-          elif [ "${{ github.event_name }}" = "schedule" ] && [ "${{ matrix.shelf }}" = "book" ]; then
-            # Scheduled runs: download missing covers AND replace low-res ones
-            node scripts/download-book-covers.js
             node scripts/download-book-covers.js --replace-low-res
           else
             node "scripts/download-${{ matrix.shelf }}-covers.js"

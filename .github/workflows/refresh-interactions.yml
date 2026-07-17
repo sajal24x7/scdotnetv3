@@ -8,8 +8,16 @@ on:
         required: false
         default: ''
         type: string
+      rebuild_backlinks:
+        description: 'Also rebuild the backlinks index'
+        required: false
+        default: false
+        type: boolean
+  # Two separate cron entries (not one combined expression) so the backlinks
+  # step below can tell which firing it is running in.
   schedule:
-    - cron: '45 1,7,13,19 * * *' # Every 6 hours
+    - cron: '45 1 * * *' # Nightly run — also rebuilds the backlinks index
+    - cron: '45 13 * * *' # Midday run — interactions only
 
 # A push-triggered content publish can overlap a scheduled refresh; the
 # rebase-before-push below handles racing commits, but never run two
@@ -23,6 +31,7 @@ jobs:
     # Prevent infinite loops from bot commits
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     permissions:
       contents: write
       issues: write
@@ -71,18 +80,31 @@ jobs:
           INTERACTIONS_DAYS_BACK: ${{ github.event.inputs.days_back }}
         run: npm run collect-interactions
 
-      - name: Commit interactions index if it changed
+      # Absorbed from the old refresh-backlinks.yml workflow: one nightly
+      # build here replaces a whole second workflow doing its own daily
+      # checkout + npm ci + build.
+      - name: Rebuild backlinks index (nightly run only)
+        if: github.event.schedule == '45 1 * * *' || (github.event_name == 'workflow_dispatch' && inputs.rebuild_backlinks)
+        env:
+          REGENERATE_BACKLINKS: 'true'
+        run: npm run build
+
+      - name: Commit refreshed indexes if they changed
         run: |
-          if git diff --quiet -- src/data/interactions-index.json src/data/interaction-sources.json src/data/avatar-cache.json; then
-            echo "Interactions index unchanged, nothing to commit"
+          files="src/data/interactions-index.json src/data/interaction-sources.json src/data/avatar-cache.json src/data/backlinks-index.json"
+          if git diff --quiet -- $files; then
+            echo "Indexes unchanged, nothing to commit"
             exit 0
           fi
 
-          git add src/data/interactions-index.json src/data/interaction-sources.json src/data/avatar-cache.json
-          git commit -m "chore: refresh interactions index"
+          git add $files
+          git commit -m "chore: refresh interactions and backlinks indexes"
 
-          # Rebase on top of any commits that landed while this job ran, then push
-          git pull --rebase origin main
+          # Rebase on top of any commits that landed while this job ran, then
+          # push. --autostash: the build dirties other generated files, and a
+          # plain rebase refuses to run with unstaged changes (this is what
+          # made the old refresh-backlinks workflow fail every night).
+          git pull --rebase --autostash origin main
           git push origin main
 
       # Webmentions from unknown domains land in the index as status "pending"

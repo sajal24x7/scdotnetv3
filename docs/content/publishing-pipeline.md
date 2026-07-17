@@ -24,16 +24,16 @@ Obsidian note ──GitSync/git──▶ content branch
                       6. commit the cleaned tree back to content
                       7. merge content → main (one clean commit),
                          fast-forward content to the merge
-                      8. dispatch syndicate-content.yml
                                   │
                                   ▼
                     Cloudflare builds main — exactly once
                                   │
                                   ▼
-                    syndicate-content.yml waits ~2 min for the deploy,
-                    cross-posts, writes syndicationUrls back with
-                    [CI Skip] (no extra build), and merges main into
-                    content so the branches stay level
+                    syndicate-content.yml (scheduled, every 3 hours)
+                    picks up the new posts, cross-posts, writes
+                    syndicationUrls back with [CI Skip] (no extra
+                    build), and merges main into content so the
+                    branches stay level
 ```
 
 If a note has a missing/unknown `category`, the run fails, a GitHub issue is
@@ -57,17 +57,20 @@ auto-deleted. See `planning/shelf-queue-design.md` §4 for the full design.
 The composer commits schema-valid files straight to `src/content/micro/` on
 `main` — no inbox, no normalization needed — so it intentionally bypasses the
 `content` branch for instant publishing. Cloudflare builds once; the push to
-`main` also triggers `syndicate-content.yml` (which waits ~2 minutes for the
-deploy before posting) and `sync-content-branch.yml` (which merges `main`
-into `content` so the branch never trails a `/write` post). See
+`main` also triggers `sync-content-branch.yml` (which merges `main` into
+`content` so the branch never trails a `/write` post). Syndication is picked
+up by `syndicate-content.yml`'s next scheduled sweep. See
 `micro-composer.md`. The two paths share only the syndication tail.
 
-> **Why not `deployment_status`?** An earlier revision triggered syndication
-> off Cloudflare's deploy events. This repo's Cloudflare integration never
-> creates GitHub deployment events, so the trigger never fired. Syndication
-> now runs on `push` for direct commits and on an explicit
-> `workflow_dispatch` from `content-publish.yml` for bot merges (dispatches
-> are exempt from GitHub's GITHUB_TOKEN recursion guard).
+> **Why scheduled?** An earlier revision triggered syndication off
+> Cloudflare's deploy events (never fired — this repo's Cloudflare
+> integration creates no GitHub deployment events), then off every content
+> push to `main`. Per-push runs burned Actions minutes badly: a burst of
+> content commits queued hours of billable runner time. The script already
+> scans the last `SYNDICATION_DAYS_BACK` days and skips anything with
+> `syndicationUrls`, so a 3-hourly scheduled sweep catches everything in
+> one bounded run, and no deploy-wait sleep is needed because the deploy
+> is long finished by the time it fires.
 
 ## Environment expectations
 

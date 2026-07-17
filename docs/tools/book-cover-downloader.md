@@ -28,21 +28,21 @@ film/TV/game equivalents.
 
 ### Automatic Execution via GitHub Actions
 
-The book cover downloader **runs automatically** as part of the shared
-`Download Covers` workflow:
-- ✅ Runs **daily at 2 AM UTC** for books (film/TV/game covers run weekly, Sundays at 3 AM UTC)
-- ✅ Can be triggered **manually via GitHub Actions UI**, choosing a shelf (`all`/`book`/`film`/`tv`/`game`) and mode (`normal`/`force`/`refresh-low-res`)
+The book cover downloader runs as part of the shared `Download Covers`
+workflow, which is **manual-dispatch only** (the old daily/weekly schedules
+were removed to save Actions minutes — day-to-day covers are fetched by the
+push-triggered `enrich-shelf-metadata.yml` workflow instead):
+- ✅ Triggered **manually via GitHub Actions UI**, choosing a shelf (`all`/`book`/`film`/`tv`/`game`) and mode (`normal`/`force`/`refresh-low-res`)
 - ✅ Downloads missing covers and commits them back to `main`
 
 **Workflow file:** `.github/workflows/download-covers.yml`
 
 ### How It Works
 
-1. **You add a new bookshelf entry** — normally via the [Obsidian publishing shortcut](../content/publishing-shortcut.md), which lands the note in `src/content/inbox/` and the publish pipeline sorts it into `src/content/bookshelf/` on `main`.
-2. **Wait for the daily workflow** (2 AM UTC) — or trigger it manually.
-3. **The workflow downloads the missing cover** from whichever of the four sources returns the best match.
-4. **The workflow commits the cover image and updated frontmatter (`cover: <filename>.webp`) back to `main`.**
-5. **Pull the changes** to get the new cover locally.
+1. **You add a new bookshelf entry** — normally via the [Obsidian publishing shortcut](../content/publishing-shortcut.md), which lands the note in `src/content/inbox/` and the publish pipeline sorts it into `src/content/bookshelf/` on `main` (that push triggers `enrich-shelf-metadata.yml`, which fetches the cover for the new entry automatically). For backfills, trigger `Download Covers` manually.
+2. **The workflow downloads the missing cover** from whichever of the four sources returns the best match.
+3. **The workflow commits the cover image and updated frontmatter (`cover: <filename>.webp`) back to `main`.**
+4. **Pull the changes** to get the new cover locally.
 
 This ensures book covers are committed to the repository and available for all builds (including Cloudflare Pages) — the build itself never makes network calls to fetch covers.
 
@@ -85,7 +85,7 @@ You can also trigger the workflow manually from GitHub:
 Run this script manually locally when:
 - You're testing cover downloads for new books locally before committing
 - You want to see detailed download logs
-- You need to download covers immediately without waiting for the daily workflow
+- You need to download covers immediately without dispatching the workflow
 
 ## How It Works
 
@@ -254,10 +254,6 @@ on:
     inputs:
       shelf: { default: all, options: [all, book, film, game, tv] }
       mode:  { default: normal, options: [normal, force, refresh-low-res] }
-
-  schedule:
-    - cron: '0 2 * * *'   # Books: every day at 2 AM UTC
-    - cron: '0 3 * * 0'   # Films, games, TV: every Sunday at 3 AM UTC
 ```
 
 ### Why Separate from Build?
@@ -271,13 +267,9 @@ on:
 
 1. Checkout repository
 2. Install dependencies (`npm ci`)
-3. Run `node scripts/download-book-covers.js` (plus a second `--replace-low-res` pass on the scheduled run)
+3. Run `node scripts/download-book-covers.js` (or `--replace-low-res` in that mode)
 4. Run `node scripts/generate-book-covers.js` to regenerate TypeScript imports
 5. Commit changes (covers + frontmatter updates), rebasing onto `main` before pushing to avoid racing other automation (syndication, content publishing)
-
-### Bot Loop Prevention
-
-The workflow includes `if: github.actor != 'github-actions[bot]'` on its plan job to prevent infinite loops when the bot commits changes.
 
 ### Rate Limiting Considerations
 
@@ -339,14 +331,15 @@ git commit -m "Add new book: New Book Title"
 git push origin main
 ```
 
-3. **Option A - Wait for the daily workflow** (runs at 2 AM UTC):
-   - The GitHub Actions workflow will automatically download the cover
-   - Pull the changes the next day:
+3. **Option A - Let the enrichment workflow handle it** (automatic):
+   - The push triggers `enrich-shelf-metadata.yml`, which downloads the
+     cover for the new entry and commits it back
+   - Pull the changes:
    ```bash
    git pull origin main
    ```
 
-4. **Option B - Trigger manually** (immediate):
+4. **Option B - Trigger Download Covers manually** (bulk/backfill):
    - Go to GitHub → Actions → Download Covers → Run workflow → shelf `book`
    - Wait for completion, then pull:
    ```bash
@@ -363,7 +356,7 @@ If you add multiple books at once:
 
 1. Create all your markdown files under `src/content/bookshelf/`
 2. Commit and push to `main`
-3. Wait for the daily workflow or trigger it manually
+3. Trigger the `Download Covers` workflow manually (Actions → Download Covers → Run workflow)
 4. The workflow processes all missing covers in a single run
 5. Pull the changes
 
