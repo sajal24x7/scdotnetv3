@@ -40,7 +40,7 @@ Platform credentials should be stored as environment variables (see platform hel
 - `npm run syndicate` executes the workflow in live mode.
 - `npm run syndicate:dry-run` runs with `SYNDICATION_DRY_RUN=true` set automatically for safe previews.【F:package.json†L17-L21】
 
-In production, syndication runs via `.github/workflows/syndicate-content.yml` — triggered by pushes to `main` (e.g. a `/write` post) and dispatched by `content-publish.yml` for pipeline merges. The workflow waits ~2 minutes for the Cloudflare deploy, cross-posts, then writes `syndicationUrls` back with a `[CI Skip]` commit so the bookkeeping doesn't trigger another build. The site build itself (`npm run build` / `build:cloudflare`) never syndicates. See [Publishing Pipeline](../content/publishing-pipeline.md) for the full flow.
+In production, syndication runs via `.github/workflows/syndicate-content.yml` on a schedule (every 3 hours, plus manual `workflow_dispatch`). Each sweep scans the last `SYNDICATION_DAYS_BACK` days, skips posts that already have `syndicationUrls`, cross-posts the rest, then writes `syndicationUrls` back with a `[CI Skip]` commit so the bookkeeping doesn't trigger another build. The site build itself (`npm run build` / `build:cloudflare`) never syndicates. See [Publishing Pipeline](../content/publishing-pipeline.md) for the full flow.
 
 ## Maintenance Tips
 

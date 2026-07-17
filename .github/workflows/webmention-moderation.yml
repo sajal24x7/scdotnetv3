@@ -22,6 +22,7 @@ jobs:
        startsWith(github.event.comment.body, '/deny') ||
        startsWith(github.event.comment.body, '/block'))
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
       issues: write

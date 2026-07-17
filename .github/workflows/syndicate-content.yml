@@ -1,19 +1,16 @@
 name: Syndicate Content
 
 on:
-  # Fire on direct content pushes to main: the /write composer, manual
-  # pushes, PR merges. This replaces the deployment_status trigger — this
-  # repo's Cloudflare integration never creates GitHub deployment events,
-  # so that trigger never fired once (post 202607091101 went unsyndicated).
-  # No loop: the syndicationUrls bookkeeping commit below is pushed with
-  # GITHUB_TOKEN, which GitHub's recursion guard excludes from push
-  # triggers. Bot merges from content-publish also can't fire this push
-  # trigger, so that workflow dispatches this one explicitly instead.
-  push:
-    branches: [main]
-    paths:
-      - 'src/content/**/*.md'
-      - 'src/content/**/*.mdx'
+  # Scheduled, not per-push: the script scans the last SYNDICATION_DAYS_BACK
+  # days and skips anything already syndicated, so a periodic sweep catches
+  # every new post (from /write, content-publish merges, manual pushes) in
+  # one run instead of one run per push. Per-push runs repeatedly blew the
+  # Actions budget — a burst of content commits queued hours of runner time
+  # (2026-07-16: single runs billed 2h+). The Cloudflare deploy is also
+  # long finished by the time a scheduled run fires, so no deploy-wait
+  # sleep is needed.
+  schedule:
+    - cron: '10 */3 * * *' # Every 3 hours
 
   # Manual trigger for testing/catch-up
   workflow_dispatch:
@@ -28,15 +25,10 @@ on:
         required: false
         default: '7'
         type: string
-      wait_for_deploy:
-        description: 'Wait for the Cloudflare deploy before posting (set by content-publish)'
-        required: false
-        default: 'false'
-        type: boolean
 
 # Serialise syndication runs so two overlapping runs can never post the same
-# note twice before either saves syndicationUrls (e.g. a push-triggered run
-# overlapping a dispatch from content-publish or a manual dispatch).
+# note twice before either saves syndicationUrls (e.g. a scheduled run
+# overlapping a manual dispatch).
 concurrency:
   group: syndication
   cancel-in-progress: false
@@ -44,6 +36,11 @@ concurrency:
 jobs:
   syndicate:
     runs-on: ubuntu-latest
+    # Hard cap: platform retries/polling once kept a single run on the
+    # runner for over 2 hours (default job limit is 6h). Anything a healthy
+    # run does fits well inside 15 minutes; a stuck one gets killed and the
+    # next scheduled sweep picks up whatever it missed.
+    timeout-minutes: 15
     permissions:
       contents: write
 
@@ -64,13 +61,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Wait for the Cloudflare deploy
-        # Cloudflare builds the pushed commit in parallel with this job.
-        # Give the deploy a head start so the canonical URL is (very likely)
-        # live before anything links to it from Mastodon/Bluesky/Threads.
-        if: github.event_name == 'push' || inputs.wait_for_deploy == true
-        run: sleep 120
 
       - name: Configure git
         run: |
@@ -141,8 +131,8 @@ jobs:
         # The syndicationUrls commit is pushed with GITHUB_TOKEN, so the
         # sync-content-branch workflow won't fire for it — sync inline
         # instead, or the content branch ends up one commit behind main.
-        # Skipped when nothing was committed: the push that triggered this
-        # run also triggered sync-content-branch, which handles that case.
+        # Skipped when nothing was committed: main didn't move, so there is
+        # nothing new to sync.
         if: steps.commit.outputs.committed == 'true'
         run: |
           if ! git fetch origin content; then

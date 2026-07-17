@@ -1,13 +1,10 @@
 name: CI
 
+# PR-only: pushes to main are already built by Cloudflare, and a merged PR
+# was validated by its pull_request run minutes earlier — a second build of
+# the same tree on push was pure Actions-minutes waste.
 on:
   pull_request:
-  push:
-    branches: [main]
-    # Content-only commits (micro posts from /write, publish merges) are
-    # already built by Cloudflare; don't spend a full Actions build on them
-    paths-ignore:
-      - 'src/content/**'
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -16,6 +13,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
