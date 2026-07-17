@@ -411,10 +411,20 @@ const RENDERERS: Record<string, (post: Post) => string | Promise<string>> = {
   nordletter: renderNordletter
 };
 
+// Queue stubs (status: todo) haven't been started, so they have no
+// finished/started date to place them in the timeline honestly — they'd
+// otherwise surface dated by their stub's created date, appearing as if
+// freshly read. Keep them off the feed entirely; started/paused/finished
+// entries still show.
+function isQueuedShelfEntry(post: Post): boolean {
+  return SHELF_CATEGORIES.has(post.data.category) && post.data.status === 'todo';
+}
+
 export function getFeedPosts(posts: Post[]): Post[] {
   const categorySet = new Set(FEED_CATEGORIES);
   return posts
     .filter((post) => categorySet.has(post.data.category))
+    .filter((post) => !isQueuedShelfEntry(post))
     .sort((a, b) => effectiveDate(b).getTime() - effectiveDate(a).getTime());
 }
 
