@@ -44,3 +44,11 @@ Content lives in one folder per category under `src/content/` (e.g. `src/content
 | Operations (deploy, syndication, token refresh) | [`docs/operations/`](docs/README.md#operations) |
 | Contribution guidelines for agents & humans | [`AGENTS.md`](AGENTS.md) |
 | Planning artifacts, audits, backlogs | `planning/` |
+
+## License
+
+The **source code** is released under the [MIT License](LICENSE). The
+**content** — all writing, original images, and everything under
+`src/content/` — is **not** MIT-licensed: it is © Sajal Choudhary, all
+rights reserved. See [LICENSE-CONTENT.md](LICENSE-CONTENT.md) for the exact
+scope, including the note on third-party cover artwork.
