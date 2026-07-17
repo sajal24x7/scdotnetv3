@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116912370927258107'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqjkr2ecfg2f'
+  - 'https://www.threads.com/@sajal24x7/post/Da5YnKjkbW4'
 ---
 [How I Learned to Read Again by Magazine Non Grata](https://substack.magazinenongrata.com/p/how-i-learned-to-read-again)
 

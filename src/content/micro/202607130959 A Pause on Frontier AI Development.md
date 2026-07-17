@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116911648567855564'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqjaik4n2s2n'
+  - 'https://www.threads.com/@sajal24x7/post/Da5Yl9DkREx'
 ---
 [Report from the march to Stop the AI Race by Robin Sloan](https://www.robinsloan.com/lab/stop-ai-march/)
 

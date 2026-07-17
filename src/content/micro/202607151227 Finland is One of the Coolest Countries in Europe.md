@@ -12,6 +12,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116923690925933632'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqolmrdeui27'
+  - 'https://www.threads.com/@sajal24x7/post/Da5Ys2VkbT6'
 ---
 [Finland remains one of Europe's coolest countries as heavy rain looms](https://yle.fi/a/74-20236427?origin=rss)
 

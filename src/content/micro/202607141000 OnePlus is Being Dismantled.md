@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116917139540025662'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqlojjxbte2s'
+  - 'https://www.threads.com/@sajal24x7/post/Da5Yoawkbkn'
 ---
 [OnePlus is reportedly bailing on the US by Jay Peters](https://www.theverge.com/tech/965084/oneplus-oppo-exit-us-europe)
 

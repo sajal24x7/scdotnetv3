@@ -17,6 +17,7 @@ cover: the-complete-guide-to-fasting.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116923608705078691'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqokhepnus2e'
+  - 'https://www.threads.com/@sajal24x7/post/Da5Ye8wEUyw'
 year: 2016
 ---
 Started reading.

@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116908673465843967'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqhw7minzy2w'
+  - 'https://www.threads.com/@sajal24x7/post/Da5YkjtkYux'
 ---
 [Here's Why Apple is Reportedly Skipping M6 Pro and M6 Max Chips by Joe Rossignol](https://www.macrumors.com/2026/07/12/why-apple-is-skipping-m6-pro-m6-max-chips/)
 

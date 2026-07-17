@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116923697288946528'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqolpntqbx2u'
+  - 'https://www.threads.com/@sajal24x7/post/Da5YuMAEfrG'
 ---
 [The PS6 sure sounds like a handheld by Sean Hollister](https://www.theverge.com/games/963132/sony-playstation-future-handheld-pc-business-meeting-end-of-discs)
 
