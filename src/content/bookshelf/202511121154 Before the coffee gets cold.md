@@ -9,17 +9,18 @@ tags:
 format: audio
 genre: fantasy
 author: Toshikazu Kawaguchi
-series: "Before the coffee gets cold"
+series: Before the coffee gets cold
 seriesNumber: 1
-shelfStatus: read
+status: finished
 started: 2025-11-06T10:06:04.000Z
 finished: 2025-11-15T12:06:04.000Z
-cover: 'before-the-coffee-gets-cold.jpg'
+cover: before-the-coffee-gets-cold.webp
 rating: like
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115536189228694891'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m5gfzzx5b52b'
   - 'https://www.threads.com/@sajal24x7/post/DQ_BQ3vk9n2'
+year: 2019
 ---
 I don’t remember now, why I picked this book. Maybe it was the description. 
 

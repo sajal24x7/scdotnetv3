@@ -1,0 +1,117 @@
+---
+// Books/Queue-style header toggle for the four shelf categories, matching
+// the Now/Then and Current/History toggle on PageToggleTitle.astro.
+import { SHELF_QUEUE_CONFIG } from '../../utils/shelfQueue';
+import type { ShelfCategory } from '../../utils/shelfStatus';
+
+interface Props {
+    category: ShelfCategory;
+    active: 'shelf' | 'queue';
+}
+
+const { category, active } = Astro.props as Props;
+
+const SHELF_LABELS: Record<ShelfCategory, string> = {
+    bookshelf: 'Books',
+    filmshelf: 'Film',
+    tvshelf: 'TV',
+    gameshelf: 'Games',
+};
+
+const SHELF_RSS_LABELS: Record<ShelfCategory, string> = {
+    bookshelf: 'Bookshelf RSS feed',
+    filmshelf: 'Film Shelf RSS feed',
+    tvshelf: 'TV Shelf RSS feed',
+    gameshelf: 'Game Shelf RSS feed',
+};
+
+const label = SHELF_LABELS[category];
+const shelfHref = `/${category}/`;
+const queueHref = SHELF_QUEUE_CONFIG[category].route;
+const rssHref = SHELF_QUEUE_CONFIG[category].rssHref;
+const rssLabel = SHELF_RSS_LABELS[category];
+---
+
+<h1 class="shelf-queue-toggle">
+    {active === 'shelf' ? (
+        <>
+            <span class="shelf-queue-toggle__active">{label}</span>
+            <a href={rssHref} class="shelf-queue-toggle__rss" aria-label={rssLabel} title="Subscribe via RSS">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16">
+                    <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
+                </svg>
+            </a>
+            <span class="shelf-queue-toggle__separator">/</span>
+            <a href={queueHref} class="shelf-queue-toggle__inactive">Queue</a>
+        </>
+    ) : (
+        <>
+            <a href={shelfHref} class="shelf-queue-toggle__inactive">{label}</a>
+            <span class="shelf-queue-toggle__separator">/</span>
+            <span class="shelf-queue-toggle__active">Queue</span>
+        </>
+    )}
+</h1>
+
+<style>
+    .shelf-queue-toggle {
+        font-size: var(--text-huge);
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .shelf-queue-toggle__active {
+        color: rgb(30 41 59);
+    }
+
+    :global(.dark) .shelf-queue-toggle__active {
+        color: rgb(var(--color-text-primary));
+    }
+
+    .shelf-queue-toggle__separator {
+        color: rgb(148 163 184);
+        font-weight: 400;
+    }
+
+    :global(.dark) .shelf-queue-toggle__separator {
+        color: rgb(var(--color-text-secondary));
+        opacity: 0.6;
+    }
+
+    .shelf-queue-toggle__inactive {
+        color: rgb(148 163 184);
+        text-decoration: none;
+        transition: color 200ms ease;
+    }
+
+    :global(.dark) .shelf-queue-toggle__inactive {
+        color: rgb(var(--color-text-secondary));
+        opacity: 0.7;
+    }
+
+    .shelf-queue-toggle__inactive:hover {
+        color: rgb(79 70 229);
+    }
+
+    :global(.dark) .shelf-queue-toggle__inactive:hover {
+        color: rgb(129 140 248);
+    }
+
+    .shelf-queue-toggle__rss {
+        display: inline-flex;
+        align-items: center;
+        color: currentColor;
+        opacity: 0.35;
+        transition: opacity 0.15s ease;
+        text-decoration: none;
+        flex-shrink: 0;
+    }
+
+    .shelf-queue-toggle__rss:hover {
+        opacity: 0.8;
+    }
+</style>

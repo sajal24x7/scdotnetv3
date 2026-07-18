@@ -1,0 +1,6 @@
+{
+  "_meta": {
+    "version": 1,
+    "comment": "Hand-curated replies from Buttondown emails. Keyed by post path (category/slug), same entry shape as interactions-index.json but platform is always \"email\". Buttondown exposes no reply API and email is private by default, so entries are pasted in manually — that's also the consent checkpoint. Reduce the author name to a first name unless the sender gave permission to use more. Merged into the site at build time by src/utils/interactions.ts; never touched by the collector script."
+  }
+}

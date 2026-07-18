@@ -158,29 +158,43 @@ async function createThreadsContainer(userId, accessToken, payload) {
  * which timed out on essentially every image post).
  */
 async function waitForThreadsContainer(containerId, accessToken, maxAttempts = 30) {
+  let lastError = null;
+
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     await new Promise(resolve => setTimeout(resolve, 3000));
 
-    const response = await fetch(`https://graph.threads.net/v1.0/${containerId}?fields=status_code`, {
+    const response = await fetch(`https://graph.threads.net/v1.0/${containerId}?fields=status,error_message`, {
       headers: {
         'Authorization': `Bearer ${accessToken}`
       }
     });
 
     if (!response.ok) {
-      continue; // transient error - keep waiting
+      const errorData = await response.json().catch(() => ({}));
+      const errorMessage = errorData.error?.message || errorData.error || `HTTP ${response.status}`;
+      lastError = errorMessage;
+
+      // Auth/permission errors won't resolve themselves by waiting - fail fast.
+      if (response.status === 401 || response.status === 403) {
+        throw new Error(`Threads status check failed: ${errorMessage}`);
+      }
+      continue; // other errors may be transient - keep waiting
     }
 
     const result = await response.json();
-    if (result.status_code === 'FINISHED') {
+    if (result.status === 'FINISHED') {
       return;
     }
-    if (result.status_code === 'ERROR' || result.status_code === 'EXPIRED') {
-      throw new Error(`Threads could not process the media (status: ${result.status_code})`);
+    if (result.status === 'ERROR' || result.status === 'EXPIRED') {
+      throw new Error(`Threads could not process the media (status: ${result.status}${result.error_message ? `, ${result.error_message}` : ''})`);
     }
   }
 
-  throw new Error('Timed out waiting for Threads to process the media');
+  throw new Error(
+    lastError
+      ? `Timed out waiting for Threads to process the media (last status check error: ${lastError})`
+      : 'Timed out waiting for Threads to process the media'
+  );
 }
 
 /**

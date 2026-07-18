@@ -6,13 +6,17 @@ import FilmCard from '../../components/shelf/FilmCard.astro';
 import TVCard from '../../components/shelf/TVCard.astro';
 import GameCard from '../../components/shelf/GameCard.astro';
 import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
+import ShelfFilterResults from '../../components/shelf/ShelfFilterResults.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 import { slugify, computeWatchNumbers } from '../../utils/shelfUtils';
+import { SHELF_STATUS_PRIORITY } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
 const shelfCategories = new Set(['bookshelf', 'filmshelf', 'tvshelf', 'gameshelf']);
-const shelfPosts = allPosts.filter((post) => shelfCategories.has(post.data.category ?? ''));
+// `todo` entries live on each category's queue page only — see
+// planning/shelf-queue-design.md §1.
+const shelfPosts = allPosts.filter((post) => shelfCategories.has(post.data.category ?? '') && post.data.status !== 'todo');
 
 const parseDate = (value?: Date | string | null): Date | null => {
     if (!value) return null;
@@ -20,22 +24,17 @@ const parseDate = (value?: Date | string | null): Date | null => {
     return Number.isNaN(d.getTime()) ? null : d;
 };
 
-const getEntryYear = (post: typeof shelfPosts[number]): number => {
-    const cat = post.data.category;
-    if (cat === 'bookshelf' || cat === 'filmshelf' || cat === 'tvshelf' || cat === 'gameshelf') {
-        const finished = parseDate(post.data.finished);
-        if (finished) return finished.getFullYear();
-        const started = parseDate(post.data.started);
-        if (started) return started.getFullYear();
-    }
-    if (cat === 'tvshelf' || cat === 'gameshelf') {
-        // use created as best proxy
-    }
-    const pub = parseDate(post.data.created);
-    return (pub ?? new Date()).getFullYear();
+// Most recent activity date for an entry: finished > started > created.
+// Used consistently across categories so books/films/TV/games interleave
+// by actual date rather than falling back to inconsistent proxies.
+const getEntryDate = (post: typeof shelfPosts[number]): Date => {
+    const finished = parseDate(post.data.finished);
+    if (finished) return finished;
+    const started = parseDate(post.data.started);
+    if (started) return started;
+    return parseDate(post.data.created) ?? new Date();
 };
 
-// Remove the now-unused TV-only getEntryYear branch (kept in combined function above)
 // For TV: group seasons by show — one representative per show
 const tvShowMap = new Map<string, typeof shelfPosts>();
 for (const post of shelfPosts) {
@@ -49,6 +48,7 @@ for (const post of shelfPosts) {
 interface CombinedEntry {
     type: 'book' | 'film' | 'tv' | 'game';
     year: number;
+    date: Date;
     post?: typeof shelfPosts[number];
     // TV-specific aggregate data
     showTitle?: string;
@@ -64,32 +64,33 @@ const entries: CombinedEntry[] = [];
 // Add non-TV posts directly
 for (const post of shelfPosts) {
     if (post.data.category === 'tvshelf') continue; // handled via showMap
+    const date = getEntryDate(post);
     entries.push({
         type: post.data.category === 'bookshelf' ? 'book'
              : post.data.category === 'filmshelf' ? 'film'
              : 'game',
-        year: getEntryYear(post),
+        year: date.getFullYear(),
+        date,
         post
     });
 }
 
 // Add one entry per TV show
-const statusPriority: Record<string, number> = { watching: 0, 'on-hold': 1, watched: 2 };
 for (const [showTitle, seasons] of tvShowMap.entries()) {
     const sortedSeasons = [...seasons].sort((a, b) => (b.data.season ?? 1) - (a.data.season ?? 1));
     const representative = sortedSeasons[0];
     const seasonNumbers = seasons.map((s) => s.data.season ?? 1);
     const latestSeason = Math.max(...seasonNumbers);
     const tvStatus = seasons
-        .map((s) => s.data.shelfStatus)
+        .map((s) => s.data.status)
         .filter(Boolean)
-        .sort((a, b) => (statusPriority[a!] ?? 5) - (statusPriority[b!] ?? 5))[0];
-    const pub = parseDate(representative.data.created);
-    const year = (pub ?? new Date()).getFullYear();
+        .sort((a, b) => (SHELF_STATUS_PRIORITY[a as keyof typeof SHELF_STATUS_PRIORITY] ?? 5) - (SHELF_STATUS_PRIORITY[b as keyof typeof SHELF_STATUS_PRIORITY] ?? 5))[0];
+    const date = getEntryDate(representative);
 
     entries.push({
         type: 'tv',
-        year,
+        year: date.getFullYear(),
+        date,
         showTitle,
         showSlug: slugify(showTitle),
         tvRepresentative: representative,
@@ -99,12 +100,9 @@ for (const [showTitle, seasons] of tvShowMap.entries()) {
     });
 }
 
-// Sort: year desc, then by type order (book > film > tv > game) within year
-const typeOrder: Record<string, number> = { book: 0, film: 1, tv: 2, game: 3 };
-entries.sort((a, b) => {
-    if (a.year !== b.year) return b.year - a.year;
-    return (typeOrder[a.type] ?? 4) - (typeOrder[b.type] ?? 4);
-});
+// Sort chronologically (most recent activity first) so books, films, TV, and
+// games interleave into one unified timeline instead of clustering by type.
+entries.sort((a, b) => b.date.getTime() - a.date.getTime());
 
 const years = Array.from(new Set(entries.map((e) => e.year)));
 
@@ -122,10 +120,8 @@ filmEntries.forEach((p, i) => filmWatchMap.set(p.id, filmWatchNumbers.get(i) ?? 
 
 // Count total finished items
 const totalItems =
-    shelfPosts.filter((p) => p.data.shelfStatus === 'read').length +
-    shelfPosts.filter((p) => p.data.shelfStatus === 'watched' && p.data.category === 'filmshelf').length +
-    shelfPosts.filter((p) => p.data.shelfStatus === 'played').length +
-    Array.from(tvShowMap.values()).filter((seasons) => seasons.some((s) => s.data.shelfStatus === 'watched')).length;
+    shelfPosts.filter((p) => p.data.status === 'finished' && p.data.category !== 'tvshelf').length +
+    Array.from(tvShowMap.values()).filter((seasons) => seasons.some((s) => s.data.status === 'finished')).length;
 
 const countText = `${totalItems} ${totalItems === 1 ? 'item' : 'items'} finished`;
 
@@ -142,13 +138,67 @@ const shelfDescription = "Everything I've read, watched, and played—books, fil
 
 const normalizeBookStatus = (status?: string | null) => {
     switch (status) {
-        case 'reading':
-        case 'on-hold':
+        case 'started':
+        case 'paused':
+        case 'todo':
             return status;
-        case 'read':
+        case 'finished':
         default:
-            return 'read';
+            return 'finished';
     }
+};
+
+const joinAuthors = (author?: string | string[] | null) => {
+    if (!author) return '';
+    return Array.isArray(author) ? author.join(',') : author;
+};
+
+// Data attributes read by shelfFilters.ts — only the attrs relevant to an
+// entry's type are set, so e.g. a book's `data-format` never collides with a
+// film's `data-platform`, and each filter naturally only ever matches its
+// own media type.
+const getEntryFilterAttrs = (entry: CombinedEntry): Record<string, string> => {
+    if (entry.type === 'book' && entry.post) {
+        return {
+            'data-author': joinAuthors(entry.post.data.author),
+            'data-genre': entry.post.data.genre ?? '',
+            'data-format': entry.post.data.format ?? '',
+            'data-rating': entry.post.data.rating ?? '',
+            'data-status': normalizeBookStatus(entry.post.data.status),
+        };
+    }
+
+    if (entry.type === 'film' && entry.post) {
+        return {
+            'data-director': Array.isArray(entry.post.data.director) ? entry.post.data.director.join(',') : '',
+            'data-genre': entry.post.data.genre ?? '',
+            'data-platform': entry.post.data.platform ?? '',
+            'data-rating': entry.post.data.rating ?? '',
+            'data-status': entry.post.data.status ?? '',
+        };
+    }
+
+    if (entry.type === 'tv' && entry.tvRepresentative) {
+        return {
+            'data-creator': Array.isArray(entry.tvRepresentative.data.creator) ? entry.tvRepresentative.data.creator.join(',') : '',
+            'data-genre': entry.tvRepresentative.data.genre ?? '',
+            'data-platform': entry.tvRepresentative.data.platform ?? '',
+            'data-rating': entry.tvRepresentative.data.rating ?? '',
+            'data-status': entry.tvStatus ?? '',
+        };
+    }
+
+    if (entry.type === 'game' && entry.post) {
+        return {
+            'data-developer': entry.post.data.developer ?? '',
+            'data-genre': entry.post.data.genre ?? '',
+            'data-platform': entry.post.data.platform ?? '',
+            'data-rating': entry.post.data.rating ?? '',
+            'data-status': entry.post.data.status ?? '',
+        };
+    }
+
+    return {};
 };
 ---
 
@@ -177,14 +227,17 @@ const normalizeBookStatus = (status?: string | null) => {
       </div>
       <p class="shelf-description">{shelfDescription}</p>
     </div>
+    <ShelfFilterResults />
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearEntries = entriesByYear[year] ?? [];
 
+        const yearRowCount = Math.ceil(yearEntries.length / 2);
+
         return (
           <section class="bookshelf-year" id={`shelf-${year}`} data-year={year}>
             <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
-              <div class="bookshelf-year__sidebar grid-span-2">
+              <div class="bookshelf-year__sidebar grid-span-2" style={`--year-row-count: ${yearRowCount};`}>
                 <div class="bookshelf-year__sticky">
                   <span class="bookshelf-year__year">{year}</span>
                 </div>
@@ -194,7 +247,7 @@ const normalizeBookStatus = (status?: string | null) => {
                 const key = entry.post?.id ?? entry.showSlug ?? `${year}-${index}`;
 
                 return (
-                  <div class={`bookshelf-year__book ${gridClasses}`}>
+                  <div class={`bookshelf-year__book ${gridClasses}`} data-shelf-item {...getEntryFilterAttrs(entry)}>
                     {entry.type === 'book' && entry.post && (
                       <BookshelfCard
                         {...entry.post.data}
@@ -208,7 +261,7 @@ const normalizeBookStatus = (status?: string | null) => {
                         director={entry.post.data.director}
                         year={entry.post.data.year as number | undefined}
                         genre={entry.post.data.genre}
-                        shelfStatus={entry.post.data.shelfStatus as any}
+                        status={entry.post.data.status as any}
                         rating={entry.post.data.rating}
                         finished={entry.post.data.finished}
                         cover={entry.post.data.cover}
@@ -223,7 +276,7 @@ const normalizeBookStatus = (status?: string | null) => {
                         creator={entry.tvRepresentative.data.creator}
                         year={entry.tvRepresentative.data.year as number | undefined}
                         genre={entry.tvRepresentative.data.genre}
-                        shelfStatus={entry.tvStatus as any}
+                        status={entry.tvStatus as any}
                         rating={entry.tvRepresentative.data.rating}
                         cover={entry.tvRepresentative.data.cover}
                         seasonCount={entry.tvSeasonCount}
@@ -237,7 +290,7 @@ const normalizeBookStatus = (status?: string | null) => {
                         year={entry.post.data.year as number | undefined}
                         genre={entry.post.data.genre}
                         platform={entry.post.data.platform}
-                        shelfStatus={entry.post.data.shelfStatus as any}
+                        status={entry.post.data.status as any}
                         rating={entry.post.data.rating}
                         cover={entry.post.data.cover}
                         link={entry.post.id ? `/gameshelf/${entry.post.id}/` : undefined}
@@ -255,18 +308,59 @@ const normalizeBookStatus = (status?: string | null) => {
 </Layout>
 
 <style>
-  .bookshelf-count { font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; }
+  .bookshelf-count { font-size: var(--text-small); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; }
   :global(.dark) .bookshelf-count { color: #9ca3af; }
   .bookshelf-content { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3rem); padding-bottom: 2rem; }
   .bookshelf-years { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3.5rem); }
+  .bookshelf-year[data-filtered="hidden"] { display: none; }
+  .bookshelf-year__book[data-filtered="hidden"] { display: none; }
   .bookshelf-year__grid { align-items: flex-start; }
-  .bookshelf-year__sidebar { display: flex; }
-  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / -1; } }
+  .bookshelf-year__sidebar { display: flex; align-items: flex-start; }
+  /* grid-row: 1 / -1 wouldn't span the implicit rows the entries create, since
+     negative line numbers resolve against the explicit grid (columns only here);
+     --year-row-count (set inline per section) gives the exact row span instead
+     of a large guess, which would otherwise force empty trailing rows into existence */
+  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / span var(--year-row-count, 1); align-self: stretch; } }
   .bookshelf-year__sticky { position: sticky; top: clamp(4rem, 6vw, 5.5rem); display: flex; flex-direction: column; gap: 0.35rem; }
-  .bookshelf-year__year { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: #111827; }
-  :global(.dark) .bookshelf-year__year { color: #f9fafb; }
+  .bookshelf-year__year { font-size: var(--text-huge); font-weight: 700; color: rgb(var(--color-text-primary)); }
   .bookshelf-year__book { display: flex; }
   .bookshelf-year__book :global(.book-card) { width: 100%; }
   @media (max-width: 47.999rem) { .bookshelf-year__sticky { position: static; } }
   @media (min-width: 64rem) { .bookshelf-year__year { font-size: clamp(2.25rem, 4vw, 3.5rem); } }
 </style>
+
+<script>
+  import { initShelfFilters } from '../../scripts/shelfFilters';
+
+  function initShelfPageFilters() {
+    initShelfFilters({
+      itemSelector: '[data-shelf-item]',
+      countNoun: { singular: 'item', plural: 'items' },
+      filterTypes: [
+        { type: 'author' },
+        { type: 'director' },
+        { type: 'creator' },
+        { type: 'developer' },
+        { type: 'genre', badgeClass: () => 'shelf-filter-badge--genre' },
+        {
+          type: 'status',
+          labels: { todo: 'To Do', started: 'In Progress', paused: 'On Hold', finished: 'Finished' },
+          badgeClass: (value) => `shelf-filter-badge--status-${value}`,
+        },
+        { type: 'format' },
+        { type: 'platform' },
+        {
+          type: 'rating',
+          labels: { like: 'Like', love: 'Love', nope: 'Nope' },
+          badgeClass: (value) => `shelf-filter-badge--rating-${value}`,
+        },
+      ],
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initShelfPageFilters);
+  } else {
+    initShelfPageFilters();
+  }
+</script>

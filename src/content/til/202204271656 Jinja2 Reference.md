@@ -16,48 +16,48 @@ Jinja2 is used for templating.
 
 # String manipulation
 ## Substitution
-``` jinja2
+```jinja
 The name is {{ name }}
 ```
 
 ## Upper case
-```jinja2
+```jinja
 The name is {{ name|upper }}
 ```
 
 ## Title Case
-```jinja2
+```jinja
 {{ book_name|title }}
 ```
 
 ## Replace
-```jinja2
+```jinja
 {{ dialogue | replace("Bourne","Bond") }}
 ```
 
 # Array
 ## Highest number in an array
-```jinja2
+```jinja
 {{ numbers | max }}
 ```
 
 ## Last number in an array
-```jinja2
+```jinja
 {{ numbers | last }}
 ```
 
 ## Join
-```jinja2
+```jinja
 {{ words | join(' ') }}
 ```
 
 ## Number of words
-```jinja2
+```jinja
 {{ words | wordcount }}
 ```
 
 # Loops
-```jinja2
+```jinja
 {% for name_server in name_servers -%}
 nameserver {{ name_server }}
 {% endfor %}
@@ -86,14 +86,14 @@ Input:
   ]
 }
 ```
-```jinja2
+```jinja
 {% for host in hosts -%}
 {{ host.name }} {{ host.ip_address }}
 {% endfor %}
 ```
 
 ## IF
-```jinja2
+```jinja
 {% for host in hosts -%}
   {% if "web" in host.name %}
 {{ host.name }} {{ host.ip_address }}

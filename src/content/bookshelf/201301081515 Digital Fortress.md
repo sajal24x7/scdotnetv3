@@ -10,7 +10,7 @@ author:
   - Dan Brown
 genre: thriller
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-08T15:15:29.000Z
 finished: 2013-01-08T15:15:35.000Z
 rating: like
@@ -18,5 +18,6 @@ cover: digital-fortress.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754257271972723'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddtazrlo24'
+year: 1998
 ---
 Finished Reading

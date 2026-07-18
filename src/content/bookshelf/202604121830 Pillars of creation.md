@@ -11,7 +11,7 @@ format: audiobook
 author:
   - Richard Panek
 genre: science
-shelfStatus: read
+status: finished
 started: 2026-04-12T15:32:00.000Z
 rating: like
 finished: 2026-04-14T07:18:20.000Z
@@ -19,7 +19,8 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116401959959849335'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mjgveyszoj2h'
   - 'https://www.threads.com/@sajal24x7/post/DXGzFSCFRZl'
-cover: pillars-of-creation.jpg
+cover: pillars-of-creation.webp
+year: 2024
 ---
 
 ## Review

@@ -9,10 +9,10 @@ tags:
 format: hardcover
 author:
   - Becky Chambers
-series: 'Wayfarers'
+series: Wayfarers
 seriesNumber: 1
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2024-10-18T13:20:57.000Z
 rating: like
 finished: 2024-10-23T13:20:57.000Z
@@ -20,6 +20,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865426061401888'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbymrmtgyq2l'
   - 'https://www.threads.com/@sajal24x7/post/DTSr9Pfkdbo'
-cover: the-long-way-to-a-small-angry-planet.jpg
+cover: the-long-way-to-a-small-angry-planet.webp
+year: 2014
 ---
 Finished reading.

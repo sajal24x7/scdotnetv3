@@ -10,13 +10,14 @@ format: ebook
 author:
   - Richard Dawkins
 genre: science
-shelfStatus: on-hold
+status: paused
 started: 2026-06-16T04:18:28.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116758302498822071'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mof5ct73ot2v'
   - 'https://www.threads.com/@sajal24x7/post/DZzmR6slSW4'
-cover: the-selfish-gene.jpg
+cover: the-selfish-gene.webp
+year: 1976
 ---
 Started reading.
 

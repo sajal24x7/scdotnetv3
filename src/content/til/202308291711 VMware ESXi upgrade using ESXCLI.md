@@ -12,7 +12,7 @@ syndicationUrls:
 ---
 
 
-```ssh
+```bash
 
 ## Run this to get the name
 esxcli software sources profile list -d /vmfs/volumes/datastore1/ESXi7-bundle/VMware-ESXi-7.0U2d-18538813-depot.zip

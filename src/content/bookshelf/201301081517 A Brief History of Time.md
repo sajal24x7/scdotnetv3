@@ -10,13 +10,14 @@ author:
   - Stephen Hawking
 genre: science
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-08T15:18:02.000Z
 finished: 2013-01-08T15:17:27.000Z
 rating: like
-cover: a-brief-history-of-time.jpg
+cover: a-brief-history-of-time.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754259276261785'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddu64pmt2m'
+year: 1988
 ---
 Finished Reading

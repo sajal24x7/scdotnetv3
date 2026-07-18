@@ -1,4 +1,5 @@
 import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
 import type { Post } from './content';
 import { parseMarkdown } from './markdown';
 import { cleanNordletterTitle, extractEditionNumber } from './content';
@@ -10,6 +11,7 @@ import { bookRatingLabels } from './bookRatings';
 import { convertWikilinks } from './remarkWikilinks';
 import { formatRelativeDate, SITE_TIMEZONE } from './dateFormat';
 import { getPhotoImages } from './photos';
+import { SHELF_STATUS_FEED_VERBS, type ShelfCategory, type ShelfStatus } from './shelfStatus';
 import nordletterManifest from '../data/nordletter-image-manifest.json';
 
 export const FEED_PAGE_SIZE = 10;
@@ -86,17 +88,37 @@ function postDate(post: Post): Date {
   return created instanceof Date ? created : new Date(created);
 }
 
-function updatedDate(post: Post): Date | null {
-  const { updated } = post.data;
-  if (!updated) {
+function toValidDate(value: Date | string | undefined): Date | null {
+  if (!value) {
     return null;
   }
-  const date = updated instanceof Date ? updated : new Date(updated);
+  const date = value instanceof Date ? value : new Date(value);
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
-// The feed is ordered by last activity: updated when present, created otherwise
+function updatedDate(post: Post): Date | null {
+  return toValidDate(post.data.updated);
+}
+
+const SHELF_CATEGORIES: ReadonlySet<string> = new Set(Object.keys(SHELF_STATUS_FEED_VERBS));
+
+// Shelf entries sit in the timeline at the date the book/film/show/game was
+// finished (or started, while still in progress) — not the note's created date,
+// which for imported entries can be years off.
+function shelfActivityDate(post: Post): Date | null {
+  if (!SHELF_CATEGORIES.has(post.data.category)) {
+    return null;
+  }
+  return toValidDate(post.data.finished) ?? toValidDate(post.data.started);
+}
+
+// The feed is ordered by last activity: the finished/started date for shelf
+// entries, otherwise updated when present, created as the fallback
 function effectiveDate(post: Post): Date {
+  const shelfDate = shelfActivityDate(post);
+  if (shelfDate) {
+    return shelfDate;
+  }
   const updated = updatedDate(post);
   const created = postDate(post);
   return updated && updated.getTime() > created.getTime() ? updated : created;
@@ -155,10 +177,13 @@ function metaHtml(post: Post, extra = ''): string {
   const label = CATEGORY_LABELS[category] ?? category;
   const created = postDate(post);
   const date = effectiveDate(post);
-  const isUpdate = date.getTime() - created.getTime() > UPDATED_LABEL_THRESHOLD_MS;
+  // Shelf entries are already dated by their finished/started date (and titled
+  // with a status verb), so the "updated" treatment only applies elsewhere
+  const isUpdate =
+    !shelfActivityDate(post) && date.getTime() - created.getTime() > UPDATED_LABEL_THRESHOLD_MS;
   const tooltip = isUpdate
     ? `Published ${dayLabel(created)} · Updated ${dayLabel(date)}`
-    : dayLabel(created);
+    : dayLabel(date);
   // Live relative timestamp: the <relative-time> element (shared with the
   // stream page) re-renders client-side, so the label stays current instead of
   // freezing at build time. The build-time string inside is the no-JS fallback.
@@ -217,7 +242,7 @@ function photoGalleryHtml(images: string[], post: Post): string {
   const slides = images
     .map(
       (src, index) =>
-        `<figure class="feed-carousel__slide"><img src="${escapeHtml(src)}" alt="${escapeHtml(photoAlt(post, index, images.length))}" loading="${index === 0 ? 'eager' : 'lazy'}" decoding="async"></figure>`
+        `<figure class="feed-carousel__slide"><img src="${escapeHtml(src)}" alt="${escapeHtml(photoAlt(post, index, images.length))}" loading="lazy" decoding="async"></figure>`
     )
     .join('');
   const dots = images
@@ -274,63 +299,65 @@ function renderStory(post: Post): string {
 }
 
 // Shared row layout for all shelf categories: cover, "<verb>: <title>", credits · rating
-const SHELF_VERBS: Record<string, string> = {
-  reading: 'Reading',
-  read: 'Finished',
-  watching: 'Watching',
-  watched: 'Watched',
-  playing: 'Playing',
-  played: 'Played',
-  'on-hold': 'On hold'
-};
 
 function joinNames(value: string | string[] | undefined): string {
   return Array.isArray(value) ? value.join(', ') : value || '';
 }
 
-function renderShelf(
+// Covers render as 72×106 thumbnails. Referencing `coverMeta.src` directly would
+// ship the full-size original (several MB for a 72px thumb) and make Astro emit
+// every untouched original into the build; run them through the image pipeline at
+// 2× the display size instead so the feed downloads a few KB of retina-ready webp.
+async function shelfCoverHtml(coverMeta: ImageMetadata | undefined): Promise<string> {
+  if (!coverMeta) {
+    return '<div class="feed-entry__book-cover feed-entry__book-cover--placeholder" aria-hidden="true"></div>';
+  }
+  const optimized = await getImage({ src: coverMeta, width: 144, height: 212, format: 'webp' });
+  return `<img class="feed-entry__book-cover" src="${optimized.src}" alt="" loading="lazy" width="72" height="106">`;
+}
+
+async function renderShelf(
   post: Post,
   coverMeta: ImageMetadata | undefined,
-  fallbackVerb: string,
+  category: ShelfCategory,
   credits: string,
   displayTitle?: string
-): string {
-  const coverHtml = coverMeta
-    ? `<img class="feed-entry__book-cover" src="${coverMeta.src}" alt="" loading="lazy" width="72" height="106">`
-    : '<div class="feed-entry__book-cover feed-entry__book-cover--placeholder" aria-hidden="true"></div>';
+): Promise<string> {
+  const coverHtml = await shelfCoverHtml(coverMeta);
 
   const rating = post.data.rating ? bookRatingLabels[post.data.rating] : '';
   const details = [credits, rating].filter(Boolean).join(' · ');
   const detailsHtml = details ? `<p class="feed-entry__book-note">${escapeHtml(details)}</p>` : '';
-  const verb = (post.data.shelfStatus && SHELF_VERBS[post.data.shelfStatus]) || fallbackVerb;
+  const status = post.data.status as ShelfStatus | undefined;
+  const verb = (status && SHELF_STATUS_FEED_VERBS[category][status]) || SHELF_STATUS_FEED_VERBS[category].finished;
   const baseTitle = displayTitle ?? post.data.title;
   const title = baseTitle ? `${verb}: ${baseTitle}` : undefined;
 
   return `${metaHtml(post)}<div class="feed-entry__book">${coverHtml}<div>${titleHtml(post, title)}${detailsHtml}</div></div>`;
 }
 
-function renderBookshelf(post: Post): string {
+function renderBookshelf(post: Post): Promise<string> {
   const coverMeta = post.data.cover ? getBookCoverImage(post.data.cover as any) : undefined;
-  return renderShelf(post, coverMeta, 'Finished', joinNames(post.data.author));
+  return renderShelf(post, coverMeta, 'bookshelf', joinNames(post.data.author));
 }
 
-function renderFilmshelf(post: Post): string {
+function renderFilmshelf(post: Post): Promise<string> {
   const coverMeta = post.data.cover ? getFilmCoverImage(post.data.cover as any) : undefined;
-  return renderShelf(post, coverMeta, 'Watched', joinNames(post.data.director));
+  return renderShelf(post, coverMeta, 'filmshelf', joinNames(post.data.director));
 }
 
-function renderTvshelf(post: Post): string {
+function renderTvshelf(post: Post): Promise<string> {
   const coverMeta = post.data.cover ? getTVCoverImage(post.data.cover as any) : undefined;
   const title = post.data.title
     ? `${post.data.title}${post.data.season ? ` · Season ${post.data.season}` : ''}`
     : undefined;
-  return renderShelf(post, coverMeta, 'Watched', joinNames(post.data.creator), title);
+  return renderShelf(post, coverMeta, 'tvshelf', joinNames(post.data.creator), title);
 }
 
-function renderGameshelf(post: Post): string {
+function renderGameshelf(post: Post): Promise<string> {
   const coverMeta = post.data.cover ? getGameCoverImage(post.data.cover as any) : undefined;
   const credits = [post.data.developer, post.data.platform].filter(Boolean).join(' · ');
-  return renderShelf(post, coverMeta, 'Played', credits);
+  return renderShelf(post, coverMeta, 'gameshelf', credits);
 }
 
 function renderNow(post: Post): string {
@@ -384,10 +411,20 @@ const RENDERERS: Record<string, (post: Post) => string | Promise<string>> = {
   nordletter: renderNordletter
 };
 
+// Queue stubs (status: todo) haven't been started, so they have no
+// finished/started date to place them in the timeline honestly — they'd
+// otherwise surface dated by their stub's created date, appearing as if
+// freshly read. Keep them off the feed entirely; started/paused/finished
+// entries still show.
+function isQueuedShelfEntry(post: Post): boolean {
+  return SHELF_CATEGORIES.has(post.data.category) && post.data.status === 'todo';
+}
+
 export function getFeedPosts(posts: Post[]): Post[] {
   const categorySet = new Set(FEED_CATEGORIES);
   return posts
     .filter((post) => categorySet.has(post.data.category))
+    .filter((post) => !isQueuedShelfEntry(post))
     .sort((a, b) => effectiveDate(b).getTime() - effectiveDate(a).getTime());
 }
 
@@ -412,9 +449,10 @@ export function toFeedEntry(post: Post): Promise<FeedEntry> {
 
 export async function getFeedEntriesForGroup(posts: Post[], group: FeedGroup): Promise<FeedEntry[]> {
   const feedPosts = getFeedPosts(posts);
-  const scoped =
-    group === 'all'
-      ? feedPosts
-      : feedPosts.filter((post) => CATEGORY_TO_GROUP[post.data.category] === group);
+  const oneYearAgo = new Date();
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+  const scoped = feedPosts
+    .filter((post) => effectiveDate(post).getTime() >= oneYearAgo.getTime())
+    .filter((post) => group === 'all' || CATEGORY_TO_GROUP[post.data.category] === group);
   return Promise.all(scoped.map(toFeedEntry));
 }

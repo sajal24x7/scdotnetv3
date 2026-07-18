@@ -18,7 +18,7 @@ show service-profile circuit server 3/3
 
 
 ## UCS nxos/network/troubleshooting
-```cli
+```bash
 connect nxos
 
 # show npv flogi-table

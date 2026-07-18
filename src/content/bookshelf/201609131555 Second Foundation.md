@@ -11,11 +11,12 @@ author:
 series: Foundation
 genre: sci-fi
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-16T07:02:07.000Z
 finished: 2016-09-13T15:55:33.000Z
-cover: second-foundation.jpg
+cover: second-foundation.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode5dfk4z2m'
+year: 1953
 ---
 Finished Reading

@@ -9,18 +9,19 @@ tags:
 format: audiobook
 author:
   - Martha Wells
-series: 'The Murderbot Diaries'
+series: The Murderbot Diaries
 seriesNumber: 7
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2026-03-10T17:24:57.000Z
-cover: system-collapse.jpg
+cover: system-collapse.webp
 rating: like
 finished: 2026-03-14T11:17:25.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116227293557532968'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mgzd7vqrkg2f'
   - 'https://www.threads.com/@sajal24x7/post/DV3Pr8pFOpM'
+year: 2023
 ---
 
 ## Review

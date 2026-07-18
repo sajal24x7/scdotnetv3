@@ -10,15 +10,15 @@ tags:
 format: ebook
 series: Elements of fiction writing
 genre: craft
-shelfStatus: read
+status: finished
 started: 2024-10-22T13:29:30.000Z
 rating: like
 finished: 2024-11-13T13:29:30.000Z
 syndicationUrls:
-  - https://mastodon.social/@sajal24x7/115865426553070735
-  - https://bsky.app/profile/sajalchoudhary.net/post/3mbymrttrhj2i
-  - https://www.threads.com/@sajal24x7/post/DTV7SVTj26F
-cover: scene-structure.jpg
+  - 'https://mastodon.social/@sajal24x7/115865426553070735'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbymrttrhj2i'
+  - 'https://www.threads.com/@sajal24x7/post/DTV7SVTj26F'
+cover: scene-structure.webp
 ---
 ## what does a reader want
 1. Story must begin with a significant change

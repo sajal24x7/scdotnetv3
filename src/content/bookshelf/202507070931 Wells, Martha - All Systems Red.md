@@ -12,13 +12,14 @@ author: Martha Wells
 series: The Murderbot Diaries
 started: 2025-07-07T06:31:00.000Z
 finished: 2025-07-08T15:00:00.000Z
-shelfStatus: read
+status: finished
 rating: like
 format: audio
 genre: sci-fi
 cover: all-systems-red.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6qq4en2l'
+year: 2017
 ---
 
 Book 1 - [All systems red](/bookshelf/all-systems-red)

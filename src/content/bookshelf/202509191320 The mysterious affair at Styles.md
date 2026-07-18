@@ -11,13 +11,14 @@ genre: mystery
 author: Agatha Christie
 series: Hercule Poirot
 seriesNumber: 1
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-09-19T13:11:06.000Z
 finished: 2025-09-23T14:00:18.000Z
-cover: the-mysterious-affair-at-styles.jpeg
+cover: the-mysterious-affair-at-styles.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode73beoz26'
+year: 1920
 ---
 
 This was my first Agatha Christie novel, believe it or not. My sister used to love reading Agatha Christie. I somehow never got into reading her. I was a Asimov guy.

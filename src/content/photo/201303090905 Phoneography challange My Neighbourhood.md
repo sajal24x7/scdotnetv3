@@ -6,9 +6,9 @@ updated: 2024-04-29T14:12:12.000Z
 category: photo
 tags:
   - “phone”
+image: >-
+  https://storage.sajalchoudhary.net/images/wordpress/2013/03/img00016-20130309-0801.jpg
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhjixsl72m'
 ---
-[![taken with my BB curve 8520](https://storage.sajalchoudhary.net/images/wordpress/2013/03/img00016-20130309-0801.jpg)](https://storage.sajalchoudhary.net/images/wordpress/2013/03/img00016-20130309-0801.jpg)
-
 taken with my BB curve 8520

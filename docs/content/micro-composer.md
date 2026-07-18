@@ -3,26 +3,10 @@
 A single-page composer for publishing micro and photo posts from any device —
 no Obsidian, no Apple Shortcuts, no gitsync. Open
 `https://sajalchoudhary.net/write`, pick **Micro** or **Photo** with the toggle
-at the top, type, hit **Publish**, done.
+at the top, type, hit **Publish**, done. A fourth **Shelf** tab quick-adds
+books/films/TV/games to the shelf queue — see below.
 
-## Steps to go live
-
-1. **Merge this branch to `main`.** The Cloudflare Pages build deploys the
-   `/write` page and the upload Pages Function automatically.
-2. **Create a GitHub token** (for publishing posts):
-   GitHub → Settings → Developer settings → Fine-grained personal access
-   tokens → Generate new token → repository access **only `scdotnetv3`**,
-   permissions **Contents: Read and write**, nothing else.
-3. **Bind the existing media bucket to the Pages project**: Workers & Pages →
-   your Pages project → Settings → Bindings → Add → R2 bucket → variable name
-   exactly **`IMAGES`** → select the bucket behind
-   `storage.sajalchoudhary.net`. Apply to Production.
-4. **Redeploy once** (Deployments → Retry/Re-deploy latest) so the binding
-   takes effect.
-5. **On your phone**: open `https://sajalchoudhary.net/write`, paste the
-   token from step 2, then Share → **Add to Home Screen**.
-
-Steps 2–5 are one-time. After that: open, type, Publish.
+## How it publishes
 
 The page is a static file at `public/write/index.html`, deployed with the site.
 It commits a Markdown file directly to `src/content/micro/` (or
@@ -30,8 +14,8 @@ It commits a Markdown file directly to `src/content/micro/` (or
 From there the existing automation takes over:
 
 1. The push to `main` triggers the Cloudflare Pages build → post goes live.
-2. The same push triggers `syndicate-content.yml`, which waits ~2 minutes
-   for the deploy, then cross-posts and writes `syndicationUrls` back with a
+2. `syndicate-content.yml` runs on a schedule (every 3 hours); its next
+   sweep cross-posts the new note and writes `syndicationUrls` back with a
    `[CI Skip]` commit, so the bookkeeping doesn't trigger another build.
 3. The push also triggers `sync-content-branch.yml`, which merges `main`
    into the `content` branch so it never trails a `/write` post.
@@ -88,9 +72,9 @@ The toggle at the top switches the composer to photo posts:
   contains image Markdown.
 - Multiple photos render as a carousel on the post page and get a count badge
   on the `/photos` grid.
-- Photo-mode uploads keep more resolution (max 2048px vs 1024px for micro)
-  and are always re-encoded to JPEG so they stay eligible for Instagram
-  syndication (the Instagram API accepts JPEG only).
+- Photo-mode uploads use the same 1024px max dimension as micro, and are
+  always re-encoded to JPEG so they stay eligible for Instagram syndication
+  (the Instagram API accepts JPEG only).
 
 ```yaml
 ---
@@ -105,6 +89,37 @@ images:
 ---
 Optional caption text.
 ```
+
+## Shelf mode (queue quick-add)
+
+The **Shelf** tab quick-adds an item to the "to be read/watched/played"
+queue described in `planning/shelf-queue-design.md` — a book, film, TV show,
+or game you want to get to eventually, without writing a full shelf entry.
+
+- **Category** segmented control (Book/Film/TV/Game) picks the target
+  collection; the creator field's placeholder swaps to match
+  (Author/Director/Creator/Developer).
+- **Title** is required; **Creator** and the notes textarea (the "why") are
+  optional.
+- Publish commits `YYYYMMDDHHMM Title.md` straight to
+  `src/content/<category>/` on `main`, with `status: todo` and a `created`
+  timestamp — same instant, schema-valid, no-inbox path as micro/photo posts.
+  For TV, the stub is show-level: `showTitle` is set to the title and no
+  `season` is written (the season-per-file structure only starts once a real
+  note exists).
+- Below the form, a **Queue** list (from the build-time
+  `/api/shelf-queue.json` endpoint) shows every `status: todo` entry with
+  **Start** and **Remove** actions:
+  - **Start** edits the stub in place — `status: todo` → `started`, plus a
+    `started:` date — turning it into the log entry itself.
+  - **Remove** deletes the stub (changed your mind).
+
+  Both actions read the file's current `sha` via the Contents API before
+  writing, same as any other GitHub-API edit. The queue list itself is a
+  build-time snapshot (cached an hour), so it only reflects the last deploy;
+  items added or removed in the current session are patched into the
+  on-screen list immediately rather than waiting for a rebuild. A **↻
+  refresh** link reloads it after a deploy catches up.
 
 ## Images (Cloudflare R2)
 
@@ -123,10 +138,12 @@ the public URL. Auth reuses the **same GitHub token** the composer already
 holds: the function accepts an upload only if GitHub confirms the token can
 read this repo, so there is no separate upload secret to manage.
 
-Photos are downscaled in the browser before upload (max 1024px for micro,
-2048px for photo posts, JPEG) so phone pictures don't land as 10MB originals;
-GIFs and already-small images are sent as-is. The server caps uploads at 15MB
-and only accepts image content types.
+Photos are downscaled in the browser before upload (max 1024px for both
+micro and photo posts, JPEG) so phone pictures don't land as 10MB originals.
+Any image over the max dimension is resized regardless of file size; GIFs
+and images that are both small and already within the max dimension are
+sent as-is. The server caps uploads at 15MB and only accepts image content
+types.
 
 The public base URL defaults to `https://storage.sajalchoudhary.net` and can
 be overridden with an `IMAGES_PUBLIC_URL` env var on the Pages project.

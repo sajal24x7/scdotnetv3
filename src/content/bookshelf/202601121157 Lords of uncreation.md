@@ -9,18 +9,19 @@ tags:
 format: audiobook
 author:
   - Adrian Tchaikovsky
-series: 'The Final Architecture'
+series: The Final Architecture
 seriesNumber: 3
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2026-01-12T10:10:42.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115881589817343006'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mc7si2g3fr2a'
   - 'https://www.threads.com/@sajal24x7/post/DTaCYlqjjzU'
-cover: lords-of-uncreation.jpg 
+cover: lords-of-uncreation.webp
 rating: love
-finished: 2026-01-17T16:55:30+02:00
+finished: 2026-01-17T14:55:30.000Z
+year: 2023
 ---
 There is a bitter-sweet feeling I have now as I have finished this book. 
 

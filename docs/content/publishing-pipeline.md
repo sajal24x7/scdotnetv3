@@ -18,79 +18,76 @@ Obsidian note ──GitSync/git──▶ content branch
                       1. sync main into content (stay current with code)
                       2. normalize Obsidian → Astro frontmatter
                       3. sort inbox/ notes into category folders
-                      4. validate (astro check)
-                      5. commit the cleaned tree back to content
-                      6. merge content → main (one clean commit),
+                      4. reconcile shelf queue: delete any `todo` stub a
+                         just-arrived shelf note promotes (see below)
+                      5. validate (astro check)
+                      6. commit the cleaned tree back to content
+                      7. merge content → main (one clean commit),
                          fast-forward content to the merge
-                      7. dispatch syndicate-content.yml
                                   │
                                   ▼
                     Cloudflare builds main — exactly once
                                   │
                                   ▼
-                    syndicate-content.yml waits ~2 min for the deploy,
-                    cross-posts, writes syndicationUrls back with
-                    [CI Skip] (no extra build), and merges main into
-                    content so the branches stay level
+                    syndicate-content.yml (scheduled, every 3 hours)
+                    picks up the new posts, cross-posts, writes
+                    syndicationUrls back with [CI Skip] (no extra
+                    build), and merges main into content so the
+                    branches stay level
 ```
 
 If a note has a missing/unknown `category`, the run fails, a GitHub issue is
 opened, and **nothing reaches `main` or production**. Fix the frontmatter and
 push to `content` again.
 
+#### Shelf queue reconciliation (step 4)
+
+`scripts/reconcile-shelf-queue.js` runs right after `sort-inbox`. For every
+shelf note that just moved out of `inbox/` (book/film/TV/game), it looks for
+an existing `status: todo` queue stub in the same category whose normalized
+title matches (normalized `showTitle`, for TV) and deletes it — the arriving
+note is the canonical entry, the stub was just a placeholder for "I want to
+read/watch/play this." Matching is exact-normalized-title only and only ever
+targets `todo` entries, so a reread/rewatch never deletes a finished prior
+entry; a near-miss (e.g. "Wool" vs "Wool (Silo, #1)") is logged, not
+auto-deleted. See `planning/shelf-queue-design.md` §4 for the full design.
+
 ### Micro posts (`/write` composer)
 
 The composer commits schema-valid files straight to `src/content/micro/` on
 `main` — no inbox, no normalization needed — so it intentionally bypasses the
 `content` branch for instant publishing. Cloudflare builds once; the push to
-`main` also triggers `syndicate-content.yml` (which waits ~2 minutes for the
-deploy before posting) and `sync-content-branch.yml` (which merges `main`
-into `content` so the branch never trails a `/write` post). See
+`main` also triggers `sync-content-branch.yml` (which merges `main` into
+`content` so the branch never trails a `/write` post). Syndication is picked
+up by `syndicate-content.yml`'s next scheduled sweep. See
 `micro-composer.md`. The two paths share only the syndication tail.
 
-> **Why not `deployment_status`?** An earlier revision triggered syndication
-> off Cloudflare's deploy events. This repo's Cloudflare integration never
-> creates GitHub deployment events, so the trigger never fired. Syndication
-> now runs on `push` for direct commits and on an explicit
-> `workflow_dispatch` from `content-publish.yml` for bot merges (dispatches
-> are exempt from GitHub's GITHUB_TOKEN recursion guard).
+> **Why scheduled?** An earlier revision triggered syndication off
+> Cloudflare's deploy events (never fired — this repo's Cloudflare
+> integration creates no GitHub deployment events), then off every content
+> push to `main`. Per-push runs burned Actions minutes badly: a burst of
+> content commits queued hours of billable runner time. The script already
+> scans the last `SYNDICATION_DAYS_BACK` days and skips anything with
+> `syndicationUrls`, so a 3-hourly scheduled sweep catches everything in
+> one bounded run, and no deploy-wait sleep is needed because the deploy
+> is long finished by the time it fires.
 
-## One-time switchover checklist
+## Environment expectations
 
-Do these in one sitting, in order:
+The switchover to this pipeline is complete (July 2026). For reference, the
+moving parts it depends on:
 
-1. **Merge the audit PR** (the branch with `content-publish.yml`,
-   `download-covers.yml`, the rewritten `syndicate-content.yml`, and the
-   deletion of `sort-inbox.yml`/`update-post-dates.yml`).
-2. **Sync the `content` branch to the merged main** so it contains the
-   workflow (workflows only trigger if the file exists on the pushed branch):
-   ```bash
-   git fetch origin
-   git push origin origin/main:content
-   ```
-   (The branch already exists — created from main on 2026-07-09. If notes
-   were pushed to it in the meantime, merge instead of force-anything:
-   `git checkout content && git merge origin/main && git push`.)
-3. **Repoint GitSync (iOS)** at branch `content` instead of `main`, and
-   replace the old metadata-mapping Shortcut with the simple copy-to-inbox
-   one — see `publishing-shortcut.md`. (The old Shortcut also still works;
-   the pipeline skips notes that are already in Astro format.)
-4. **Mac clone**: write notes on `content`
-   (`git checkout -b content origin/content`); keep using `main` for code.
-5. **Cloudflare Pages dashboard**:
-   - If `NODE_VERSION` is set in the dashboard env vars, change it to `22`
-     (dashboard values override `cloudflare-pages.json`).
-   - Confirm the production branch is `main` (unchanged — just verify).
-   - Optionally disable preview deploys for the `content` branch
-     (Settings → Builds) unless you want a preview per raw note push.
-   - The R2 `IMAGES` binding for `/write` uploads is separate — see
-     `micro-composer.md`.
+- **GitSync (iOS)** pushes Obsidian notes to the **`content`** branch, and the
+  publishing Shortcut copies notes into `src/content/inbox/` — see
+  `publishing-shortcut.md`.
+- **Desktop clones**: write notes on `content`
+  (`git checkout -b content origin/content`); use `main` for code.
+- **Cloudflare Pages**: production branch is `main`, Node 22 (a dashboard
+  `NODE_VERSION` overrides `cloudflare-pages.json`). Preview deploys for the
+  `content` branch are optional noise. The R2 `IMAGES` binding for `/write`
+  uploads is separate — see `micro-composer.md`.
 
-Until steps 1–2 are done, pushes to `content` do nothing (the workflow file
-isn't on the branch yet). Notes pushed early aren't lost — the first
-successful publish run picks up everything sitting on the branch.
-
-## Verifying the first publish
+## Verifying a publish
 
 1. Push a test note to `content`. Expect: exactly one **Publish content** run
    in the Actions tab, one `publish: content batch …` commit on `main`, and

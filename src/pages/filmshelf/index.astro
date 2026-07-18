@@ -2,13 +2,17 @@
 import Layout from '../../layouts/Layout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import FilmCard from '../../components/shelf/FilmCard.astro';
-import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
+import ShelfQueueToggle from '../../components/shelf/ShelfQueueToggle.astro';
+import ShelfFilterResults from '../../components/shelf/ShelfFilterResults.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 import { computeWatchNumbers, slugify } from '../../utils/shelfUtils';
+import { SHELF_LIST_SORT_PRIORITY } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
-const filmPosts = allPosts.filter((post) => post.data.category === 'filmshelf');
+// `todo` entries live on the queue page (/filmshelf/queue/) only — see
+// planning/shelf-queue-design.md §1.
+const filmPosts = allPosts.filter((post) => post.data.category === 'filmshelf' && post.data.status !== 'todo');
 
 const parseDate = (value?: Date | string | null): Date | null => {
     if (!value) return null;
@@ -33,12 +37,6 @@ const compareDesc = (a?: Date | string | null, b?: Date | string | null) => {
     return toTime(b) - toTime(a);
 };
 
-const statusOrder: Record<string, number> = {
-    watching: 0,
-    watched: 1,
-    other: 2
-};
-
 const filmsWithYear = filmPosts.map((post) => ({
     post,
     year: getFilmYear(post)
@@ -46,10 +44,10 @@ const filmsWithYear = filmPosts.map((post) => ({
 
 const sortedFilms = [...filmsWithYear].sort((a, b) => {
     if (a.year !== b.year) return b.year - a.year;
-    const statusA = a.post.data.shelfStatus ?? 'other';
-    const statusB = b.post.data.shelfStatus ?? 'other';
+    const statusA = a.post.data.status as keyof typeof SHELF_LIST_SORT_PRIORITY | undefined;
+    const statusB = b.post.data.status as keyof typeof SHELF_LIST_SORT_PRIORITY | undefined;
     if (statusA !== statusB) {
-        return (statusOrder[statusA] ?? statusOrder.other) - (statusOrder[statusB] ?? statusOrder.other);
+        return (statusA ? SHELF_LIST_SORT_PRIORITY[statusA] : 99) - (statusB ? SHELF_LIST_SORT_PRIORITY[statusB] : 99);
     }
     return compareDesc(a.post.data.finished ?? a.post.data.created, b.post.data.finished ?? b.post.data.created);
 });
@@ -75,7 +73,7 @@ sortedFilms.forEach((entry, i) => {
 });
 
 // Count watched films for the header
-const watchedFilms = filmPosts.filter((p) => p.data.shelfStatus === 'watched');
+const watchedFilms = filmPosts.filter((p) => p.data.status === 'finished');
 const totalFilms = watchedFilms.length;
 const countText = `${totalFilms} ${totalFilms === 1 ? 'film' : 'films'} watched`;
 
@@ -109,26 +107,24 @@ const sectionLandingProps = createSectionLandingProps({
   <SectionLanding {...sectionLandingProps}>
     <div slot="afterHeader" class="shelf-header-block">
       <div class="shelf-title-row">
-        <ShelfTabNav currentTab="film" />
-        <a href="/filmshelf/rss.xml" class="shelf-rss-link" aria-label="Film Shelf RSS feed" title="Subscribe via RSS">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16">
-            <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
-          </svg>
-        </a>
+        <ShelfQueueToggle category="filmshelf" active="shelf" />
       </div>
       <p class="shelf-description">{filmDescription}</p>
     </div>
+    <ShelfFilterResults />
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearFilms = filmsByYear[year] ?? [];
-        const watchedYearFilms = yearFilms.filter((p) => p.data.shelfStatus === 'watched');
+        const watchedYearFilms = yearFilms.filter((p) => p.data.status === 'finished');
         const filmCount = watchedYearFilms.length;
         const filmLabel = filmCount === 1 ? 'film' : 'films';
+
+        const yearRowCount = Math.ceil(yearFilms.length / 2);
 
         return (
           <section class="bookshelf-year" id={`filmshelf-${year}`} data-year={year}>
             <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
-              <div class="bookshelf-year__sidebar grid-span-2">
+              <div class="bookshelf-year__sidebar grid-span-2" style={`--year-row-count: ${yearRowCount};`}>
                 <div class="bookshelf-year__sticky">
                   <span class="bookshelf-year__year">{year}</span>
                   <span class="bookshelf-year__count" data-year-count={year}>Watched {filmCount} {filmLabel}</span>
@@ -140,11 +136,12 @@ const sectionLandingProps = createSectionLandingProps({
                 return (
                   <div
                     class={`bookshelf-year__book ${gridClasses}`}
-                    data-content-item
+                    data-shelf-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
+                    data-director={Array.isArray(post.data.director) ? post.data.director.join(',') : ''}
                     data-genre={post.data.genre ?? ''}
                     data-platform={post.data.platform ?? ''}
-                    data-status={post.data.shelfStatus ?? ''}
+                    data-status={post.data.status ?? ''}
                     data-rating={post.data.rating ?? ''}
                   >
                     <FilmCard
@@ -153,7 +150,7 @@ const sectionLandingProps = createSectionLandingProps({
                       year={post.data.year as number | undefined}
                       genre={post.data.genre}
                       platform={post.data.platform}
-                      shelfStatus={post.data.shelfStatus as any}
+                      status={post.data.status as any}
                       rating={post.data.rating}
                       finished={post.data.finished}
                       cover={post.data.cover}
@@ -172,22 +169,58 @@ const sectionLandingProps = createSectionLandingProps({
 </Layout>
 
 <style>
-  .bookshelf-count { font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; }
+  .bookshelf-count { font-size: var(--text-small); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; }
   :global(.dark) .bookshelf-count { color: #9ca3af; }
   .bookshelf-content { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3rem); padding-bottom: 2rem; }
   .bookshelf-years { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3.5rem); }
   .bookshelf-year[data-filtered="hidden"] { display: none; }
   .bookshelf-year__book[data-filtered="hidden"] { display: none; }
   .bookshelf-year__grid { align-items: flex-start; }
-  .bookshelf-year__sidebar { display: flex; }
-  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / -1; } }
+  .bookshelf-year__sidebar { display: flex; align-items: flex-start; }
+  /* grid-row: 1 / -1 wouldn't span the implicit rows the entries create, since
+     negative line numbers resolve against the explicit grid (columns only here);
+     --year-row-count (set inline per section) gives the exact row span instead
+     of a large guess, which would otherwise force empty trailing rows into existence */
+  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / span var(--year-row-count, 1); align-self: stretch; } }
   .bookshelf-year__sticky { position: sticky; top: clamp(4rem, 6vw, 5.5rem); display: flex; flex-direction: column; gap: 0.35rem; }
-  .bookshelf-year__year { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: #111827; }
-  :global(.dark) .bookshelf-year__year { color: #f9fafb; }
-  .bookshelf-year__count { font-size: 0.95rem; font-weight: 500; color: #6b7280; }
+  .bookshelf-year__year { font-size: var(--text-huge); font-weight: 700; color: rgb(var(--color-text-primary)); }
+  .bookshelf-year__count { font-size: var(--text-small); font-weight: 500; color: #6b7280; }
   :global(.dark) .bookshelf-year__count { color: #9ca3af; }
   .bookshelf-year__book { display: flex; }
   .bookshelf-year__book :global(.book-card) { width: 100%; }
   @media (max-width: 47.999rem) { .bookshelf-year__sticky { position: static; } }
   @media (min-width: 64rem) { .bookshelf-year__year { font-size: clamp(2.25rem, 4vw, 3.5rem); } }
 </style>
+
+<script>
+  import { initShelfFilters } from '../../scripts/shelfFilters';
+
+  function initFilmshelfFilters() {
+    initShelfFilters({
+      itemSelector: '[data-shelf-item]',
+      countNoun: { singular: 'film', plural: 'films' },
+      filterTypes: [
+        { type: 'director' },
+        { type: 'genre', badgeClass: () => 'shelf-filter-badge--genre' },
+        {
+          type: 'status',
+          labels: { todo: 'To Watch', started: 'Watching', paused: 'On Hold', finished: 'Watched' },
+          badgeClass: (value) => `shelf-filter-badge--status-${value}`,
+        },
+        { type: 'platform' },
+        {
+          type: 'rating',
+          labels: { like: 'Like', love: 'Love', nope: 'Nope' },
+          badgeClass: (value) => `shelf-filter-badge--rating-${value}`,
+        },
+        { type: 'tag', badgeClass: () => 'shelf-filter-badge--tag' },
+      ],
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFilmshelfFilters);
+  } else {
+    initFilmshelfFilters();
+  }
+</script>

@@ -10,12 +10,13 @@ format: ebook
 author:
   - William E Shotts
 genre: technical
-shelfStatus: on-hold
+status: paused
 started: 2026-03-22T10:56:39.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116272467890985831'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mhnf6svmqo2d'
   - 'https://www.threads.com/@sajal24x7/post/DWLybuolHbu'
-cover: the-linux-command-line.jpg
+cover: the-linux-command-line.webp
+year: 2011
 ---
 Started Reading.

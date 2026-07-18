@@ -10,15 +10,16 @@ tags:
   - cixin-liu
   - three-body-problem
 genre: sci-fi
-cover: the-three-body-problem.jpg
+cover: the-three-body-problem.webp
 author: Cixin Liu
 series: Remembrance of Earth's Past
-shelfStatus: read
+status: finished
 rating: like
 started: '2025-02-23T13:05:00+03:00'
 finished: '2025-02-23T13:05:00+03:00'
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6kvfh323'
+year: 2022
 ---
 How does one review a book?
 

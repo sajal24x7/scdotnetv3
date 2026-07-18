@@ -8,42 +8,103 @@ import Layout from '../../layouts/Layout.astro';
   currentPage="/games"
   pageWrapper={{ container: true, maxWidth: 'md', padding: 'lg', paddingScale: 'page' }}
 >
-  <div style="padding-top: 2rem; padding-bottom: 4rem;">
-    <h1 style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em;">
+  <div class="games-page">
+    <h1 class="games-page__title">
       Games
     </h1>
-    <p style="color: rgb(var(--color-text-secondary)); font-size: 0.95rem; margin-bottom: 2.5rem;">
+    <p class="games-page__subtitle">
       Small browser games. No sign-up, no ads.
     </p>
 
-    <div style="display: grid; gap: 1rem;">
-      <a href="/games/cards-29" style="
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1.25rem 1.5rem;
-        border-radius: 12px;
-        border: 1.5px solid rgb(var(--color-border));
-        background: rgb(var(--color-bg-secondary));
-        text-decoration: none;
-        color: inherit;
-        transition: border-color 0.15s, box-shadow 0.15s;
-      "
-      onmouseover="this.style.borderColor='rgb(var(--color-accent))'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'"
-      onmouseout="this.style.borderColor='rgb(var(--color-border))'; this.style.boxShadow='none'"
-      >
-        <span style="font-size: 2rem; flex-shrink: 0; line-height: 1;">🃏</span>
+    <div class="games-page__list">
+      <a href="/games/cards-29" class="game-card">
+        <span class="game-card__icon">🃏</span>
         <div>
-          <p style="font-weight: 600; font-size: 1.05rem; margin-bottom: 0.2rem;">29</p>
-          <p style="font-size: 0.85rem; color: rgb(var(--color-text-secondary)); line-height: 1.5;">
+          <p class="game-card__name">29</p>
+          <p class="game-card__desc">
             A trick-taking card game for two pairs. 28 points per hand, hidden trump, and sharp decisions. Play against three Pokémon opponents.
           </p>
-          <p style="font-size: 0.75rem; color: rgb(var(--color-text-secondary)); margin-top: 0.4rem; opacity: 0.7;">
+          <p class="game-card__meta">
             4 players · 28 pts · hidden trump
           </p>
         </div>
-        <span style="margin-left: auto; flex-shrink: 0; color: rgb(var(--color-text-secondary)); font-size: 1.1rem; opacity: 0.5;">→</span>
+        <span class="game-card__arrow">→</span>
       </a>
     </div>
   </div>
 </Layout>
+
+<style>
+  .games-page {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  .games-page__title {
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .games-page__subtitle {
+    color: rgb(var(--color-text-secondary));
+    font-size: var(--text-small);
+    margin-bottom: 2.5rem;
+  }
+
+  .games-page__list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .game-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    border: 1.5px solid rgb(var(--color-border));
+    background: rgb(var(--color-bg-secondary));
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .game-card:hover,
+  .game-card:focus-visible {
+    border-color: rgb(var(--color-accent));
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .game-card__icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .game-card__name {
+    font-weight: 600;
+    font-size: var(--text-normal);
+    margin-bottom: 0.2rem;
+  }
+
+  .game-card__desc {
+    font-size: var(--text-small);
+    color: rgb(var(--color-text-secondary));
+    line-height: 1.5;
+  }
+
+  .game-card__meta {
+    font-size: var(--text-xs);
+    color: rgb(var(--color-text-secondary));
+    margin-top: 0.4rem;
+    opacity: 0.7;
+  }
+
+  .game-card__arrow {
+    margin-left: auto;
+    flex-shrink: 0;
+    color: rgb(var(--color-text-secondary));
+    font-size: 1.1rem;
+    opacity: 0.5;
+  }
+</style>

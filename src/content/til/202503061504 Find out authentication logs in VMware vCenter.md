@@ -15,7 +15,7 @@ Related to [202303211323 VMware logs](#)
 1. Log in to vCenter appliance.
 2. Go to /var/log/vmware/applmgmt-audit.
 3. Check the lgos.
-```ssh
+```bash
 cat applmgmt-audit.log | grep -i <username>
 ```
 

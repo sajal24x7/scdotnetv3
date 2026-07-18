@@ -9,10 +9,10 @@ tags:
 format: hardcover
 author:
   - Becky Chambers
-series: 'Monk and Robot'
+series: Monk and Robot
 seriesNumber: 2
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2024-09-20T13:11:05.000Z
 rating: like
 finished: 2024-09-25T13:11:05.000Z
@@ -20,7 +20,8 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115865315225189341'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbyl77tmhc2a'
   - 'https://www.threads.com/@sajal24x7/post/DTSoux2kZmJ'
-cover: shy.jpg
+cover: shy.webp
+year: 2022
 ---
 
 # Notes

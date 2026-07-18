@@ -7,11 +7,11 @@ import ProgressLayout from '../components/layout/ProgressLayout.astro';
 import { parseMarkdown } from '../utils/markdown';
 import '../styles/progress-page.css';
 
-// Get all posts dynamically across year folders and filter to category 'now' and status other than 'active'
-// (i.e. 'paused' and 'done'), sorted by most recently touched first
+// Get all posts dynamically across year folders and filter to category 'now' and status other than 'started'
+// (i.e. 'todo', 'paused', and 'finished'), sorted by most recently touched first
 const allPosts = await getAllPosts();
 const thenNowPosts = allPosts
-  .filter(post => post.data.category === 'now' && post.data.status && post.data.status !== 'active')
+  .filter(post => post.data.category === 'now' && post.data.status && post.data.status !== 'started')
   .sort((a, b) => {
     // Sort by updated (end date) descending, fallback to created if no updated
     const aDate = a.data.updated || a.data.created;
@@ -72,7 +72,7 @@ const renderedPosts: ThenPost[] = thenNowPosts.map(post => {
                             {formatDateRange(post.data.created, post.endDate)}
                         </time>
                         <span class={`progress-card__status progress-card__status--${post.data.status}`}>
-                            {post.data.status === 'paused' ? 'Paused' : 'Done'}
+                            {post.data.status === 'paused' ? 'Paused' : post.data.status === 'todo' ? 'Not Started' : 'Done'}
                         </span>
                     </div>
                     {post.data.title && (

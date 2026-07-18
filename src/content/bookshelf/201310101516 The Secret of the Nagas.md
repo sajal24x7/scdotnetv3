@@ -11,13 +11,14 @@ author:
 series: Shiva Trilogy
 genre: fantasy
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-10-10T15:16:10.000Z
 finished: 2013-10-10T15:16:20.000Z
 rating: like
-cover: the-secret-of-the-nagas.jpg
+cover: the-secret-of-the-nagas.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754270258372827'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddz6dyub2s'
+year: 2011
 ---
 Finished Reading

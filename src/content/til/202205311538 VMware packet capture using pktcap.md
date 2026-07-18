@@ -12,29 +12,29 @@ syndicationUrls:
 
 
 ## Confirm port details using command below, grep the port details for the vm we need to run it for.
-``` ssh
+```bash
 $ net-stats -l
 ```
 
 ## Get list of datastores, and select one which has space to store the network capture.
-```ssh
+```bash
 esxcli storage vmfs extent list
 ls /vmfs/volumes
 ```
 
 ## Double ssh to the esxi which has the server and run commands for incoming and outgoing over 2 sessions (see example below)
-```ssh
+```bash
 pktcap-uw --switchport <portnumber> --dir {0|1|2} --tcpport <TCP_port> -o <capture_location>
 ```
 dir {0|1|2} 0 stands for incoming traffic, 1 for outgoing traffic, and 2 for bidirectional traffic.
 
 ## Use following command to kill the process on all servers once spike is observed
-```ssh 
+```bash
 kill $(lsof |grep pktcap-uw |awk '{print $1}'| sort -u)
 ```
 
 To list:
-```ssh
+```bash
 lsof |grep pktcap-uw |awk '{print $1}'| sort -u
 ```
 

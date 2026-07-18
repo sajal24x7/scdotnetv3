@@ -2,7 +2,7 @@
 title: The Anthropologists
 slug: the-anthropologists
 created: 2026-06-01T06:40:13.000Z
-updated: 2026-06-05T14:19:08
+updated: 2026-06-05T14:19:08.000Z
 category: bookshelf
 tags:
   - city-life
@@ -11,15 +11,16 @@ format: audiobook
 author:
   - Aysegül Savaş
 genre: romance
-shelfStatus: read
+status: finished
 started: 2026-06-01T06:40:13.000Z
-cover: the-anthropologists.jpg
+cover: the-anthropologists.webp
 rating: love
 finished: 2026-06-04T05:53:56.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116696242038552641'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mnjleyaph32e'
   - 'https://www.threads.com/@sajal24x7/post/DZMf4mbFd5p'
+year: 2024
 ---
 
 ## Review

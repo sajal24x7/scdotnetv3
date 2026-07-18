@@ -11,15 +11,16 @@ format: audiobook
 author:
   - Elizabeth Kolbert
 genre: science
-shelfStatus: read
+status: finished
 started: 2026-06-18T06:56:58.000Z
-cover: the-sixth-extinction.jpg
+cover: the-sixth-extinction.webp
 rating: love
 finished: 2026-06-28T05:27:38.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116832133938788561'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mpfwjhsibu2v'
   - 'https://www.threads.com/@sajal24x7/post/DaKS2-8FtKM'
+year: 2014
 ---
 
 ## Review

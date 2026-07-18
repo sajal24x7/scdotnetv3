@@ -1,0 +1,228 @@
+name: Enrich Shelf Metadata
+
+on:
+  # Fire on shelf-content pushes to main: a queue stub committed from
+  # /write, an Obsidian note landing via content-publish, etc. Only the
+  # entry (or entries) actually added/changed in the push are enriched and
+  # get their cover downloaded, so a queue card is complete without any
+  # manual step — and without re-processing the rest of the shelf.
+  # No loop: the bookkeeping commit below is pushed with the default
+  # GITHUB_TOKEN (via actions/checkout's persisted credentials), and GitHub
+  # excludes GITHUB_TOKEN-authored pushes from triggering further workflow
+  # runs — same mechanism syndicate-content.yml relies on.
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/bookshelf/**'
+      - 'src/content/filmshelf/**'
+      - 'src/content/tvshelf/**'
+      - 'src/content/gameshelf/**'
+
+  # Manual trigger — metadata only, no cover download (kept separate so the
+  # two never race on the same commit for a bulk/backfill run).
+  workflow_dispatch:
+    inputs:
+      shelf:
+        description: 'Which shelf to enrich'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - book
+          - film
+          - tv
+          - game
+      force:
+        description: 'Overwrite fields that already have a value'
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      shelves: ${{ steps.plan.outputs.shelves }}
+    steps:
+      - name: Checkout repository
+        if: github.event_name == 'push'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Pick shelves for this trigger
+        id: plan
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            changed=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- src/content/bookshelf src/content/filmshelf src/content/tvshelf src/content/gameshelf)
+            shelves='[]'
+            echo "$changed" | grep -q '^src/content/bookshelf/' && shelves=$(echo "$shelves" | jq -c '. + ["book"]')
+            echo "$changed" | grep -q '^src/content/filmshelf/' && shelves=$(echo "$shelves" | jq -c '. + ["film"]')
+            echo "$changed" | grep -q '^src/content/tvshelf/' && shelves=$(echo "$shelves" | jq -c '. + ["tv"]')
+            echo "$changed" | grep -q '^src/content/gameshelf/' && shelves=$(echo "$shelves" | jq -c '. + ["game"]')
+          elif [ "${{ inputs.shelf }}" = "all" ]; then
+            shelves='["book","film","tv","game"]'
+          else
+            shelves='["${{ inputs.shelf }}"]'
+          fi
+          echo "shelves=$shelves" >> "$GITHUB_OUTPUT"
+          echo "Running for shelves: $shelves"
+
+  enrich-metadata:
+    needs: plan
+    if: needs.plan.outputs.shelves != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      # Each shelf commits and pushes to main; serialise to avoid push races
+      max-parallel: 1
+      matrix:
+        shelf: ${{ fromJSON(needs.plan.outputs.shelves) }}
+
+    steps:
+      - name: Resolve shelf name
+        id: shelf
+        run: |
+          case "${{ matrix.shelf }}" in
+            book) dir=bookshelf; module=bookCovers.ts; title=Book ;;
+            film) dir=filmshelf; module=filmCovers.ts; title=Film ;;
+            tv)   dir=tvshelf;   module=tvCovers.ts;   title=TV ;;
+            game) dir=gameshelf; module=gameCovers.ts; title=Game ;;
+          esac
+          {
+            echo "dir=$dir"
+            echo "module=$module"
+            echo "title=$title"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      # Push runs only ever enrich the entry (or entries) actually
+      # added/modified in this push, not the whole shelf — resolve their
+      # titles here (from the file the diff touched, not from an argv
+      # string) so a title with special characters like an apostrophe can't
+      # break the run steps below. Written to a file rather than a step
+      # output because those get interpolated straight into later steps'
+      # YAML/bash, where an apostrophe in a title would break the quoting.
+      - name: Find touched ${{ steps.shelf.outputs.title }} entries
+        if: github.event_name == 'push'
+        run: |
+          git diff --name-only --diff-filter=AM "${{ github.event.before }}" "${{ github.sha }}" -- "src/content/${{ steps.shelf.outputs.dir }}" > "$RUNNER_TEMP/changed-files.txt"
+          node -e '
+            const fs = require("fs");
+            const matter = require("gray-matter");
+            const raw = fs.readFileSync(process.env.RUNNER_TEMP + "/changed-files.txt", "utf8");
+            const files = raw.split("\n").map(l => l.trim()).filter(Boolean);
+            const titles = files.map(f => {
+              const { data } = matter(fs.readFileSync(f, "utf8"));
+              return data.showTitle || data.title || null;
+            }).filter(Boolean);
+            fs.writeFileSync(process.env.RUNNER_TEMP + "/touched-titles.json", JSON.stringify([...new Set(titles)]));
+          '
+          echo "Touched entries: $(cat "$RUNNER_TEMP/touched-titles.json")"
+
+      - name: Enrich ${{ steps.shelf.outputs.title }} metadata
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          RAWG_API_KEY: ${{ secrets.RAWG_API_KEY }}
+          TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
+          TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
+        run: |
+          force_flag=""
+          [ "${{ inputs.force }}" = "true" ] && force_flag="--force"
+
+          if [ "${{ github.event_name }}" = "push" ]; then
+            titles_file="$RUNNER_TEMP/touched-titles.json"
+            if [ "$(jq 'length' "$titles_file")" -eq 0 ]; then
+              echo "No touched ${{ steps.shelf.outputs.title }} entries to enrich"
+              exit 0
+            fi
+            jq -r '.[]' "$titles_file" | while IFS= read -r title; do
+              node "scripts/enrich-${{ matrix.shelf }}-metadata.js" $force_flag --title "$title"
+            done
+          else
+            # Manual dispatch: whole-shelf bulk/backfill run, as before.
+            node "scripts/enrich-${{ matrix.shelf }}-metadata.js" $force_flag
+          fi
+
+      # Push-triggered runs also fetch the cover, so a queue stub gets a
+      # complete card (metadata + art) from one commit with no manual step.
+      # Manual dispatch stays metadata-only, as before.
+      - name: Download ${{ steps.shelf.outputs.title }} cover for newly enriched entries
+        if: github.event_name == 'push'
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          RAWG_API_KEY: ${{ secrets.RAWG_API_KEY }}
+          TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
+          TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
+        run: |
+          titles_file="$RUNNER_TEMP/touched-titles.json"
+          if [ "$(jq 'length' "$titles_file")" -eq 0 ]; then
+            echo "No touched ${{ steps.shelf.outputs.title }} entries to fetch covers for"
+            exit 0
+          fi
+
+          flag="--title"
+          [ "${{ matrix.shelf }}" = "book" ] && flag="--book"
+
+          jq -r '.[]' "$titles_file" | while IFS= read -r title; do
+            node "scripts/download-${{ matrix.shelf }}-covers.js" "$flag" "$title"
+          done
+          node "scripts/generate-${{ matrix.shelf }}-covers.js"
+
+      - name: Commit ${{ steps.shelf.outputs.title }} metadata updates
+        run: |
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No new ${{ steps.shelf.outputs.title }} metadata to commit"
+            exit 0
+          fi
+
+          git add "src/content/${{ steps.shelf.outputs.dir }}/" "src/images/${{ steps.shelf.outputs.dir }}/" "src/utils/${{ steps.shelf.outputs.module }}"
+
+          git commit -m "enrich: ${{ steps.shelf.outputs.title }} shelf metadata${{ github.event_name == 'push' && ' and cover' || '' }}
+
+          🤖 Generated with GitHub Actions
+
+          Co-Authored-By: github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+
+          git pull --rebase origin main
+          git push origin main
+
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '${{ steps.shelf.outputs.title }} metadata enrichment workflow failed',
+              body: `The ${{ steps.shelf.outputs.title }} metadata enrichment workflow failed on ${new Date().toISOString()}.
+
+              **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+              Please check the logs and fix any issues.`,
+              labels: ['bug', 'automation']
+            })

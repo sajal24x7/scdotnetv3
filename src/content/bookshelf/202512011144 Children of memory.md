@@ -9,17 +9,18 @@ tags:
 format: audio
 genre: sci-fi
 author: Adrian Tchaikovsky
-series: "Children of Time"
+series: Children of Time
 seriesNumber: 3
-shelfStatus: read
+status: finished
 started: 2025-11-30T16:47:15.000Z
-finished: 2025-12-08T23:08:50+02:00
+finished: 2025-12-08T21:08:50.000Z
 rating: love
 syndicationUrls:
-  - https://mastodon.social/@sajal24x7/115643739160102203
-  - https://bsky.app/profile/sajal24x7.bsky.social/post/3m6w6g3eqws2i
-  - https://www.threads.com/@sajal24x7/post/DRt7RDdDuhH
-cover: children-of-memory.jpg
+  - 'https://mastodon.social/@sajal24x7/115643739160102203'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3m6w6g3eqws2i'
+  - 'https://www.threads.com/@sajal24x7/post/DRt7RDdDuhH'
+cover: children-of-memory.webp
+year: 2022
 ---
 
 I loved this book. 

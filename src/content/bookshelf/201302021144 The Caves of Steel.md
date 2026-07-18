@@ -11,13 +11,14 @@ author:
 series: Robot
 genre: sci-fi
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-01-16T07:01:03.000Z
 finished: 2013-02-02T11:44:21.000Z
 rating: like
-cover: the-caves-of-steel.jpg
+cover: the-caves-of-steel.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754263111696625'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3moddvwaay42l'
+year: 1953
 ---
 Finished Reading

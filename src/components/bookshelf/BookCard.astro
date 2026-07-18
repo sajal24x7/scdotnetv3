@@ -17,7 +17,7 @@ interface BookCardProps {
     series?: string;
     started?: Date | string;
     finished?: Date | string;
-    shelfStatus?: 'reading' | 'read' | 'on-hold';
+    status?: 'todo' | 'started' | 'paused' | 'finished';
     rating?: BookRating;
     cover?: string;
     link?: string;
@@ -30,7 +30,7 @@ const {
     series,
     started,
     finished,
-    shelfStatus,
+    status,
     rating,
     cover,
     link,
@@ -58,7 +58,7 @@ const formatDate = (date: Date | string | undefined) => {
 const startedDate = formatDate(started);
 const finishedDate = formatDate(finished);
 
-const showRating = shelfStatus !== 'reading';
+const showRating = status !== 'started' && status !== 'todo';
 const resolvedRating: BookRating | null = showRating ? (rating ?? defaultBookRating) : null;
 const ratingDisplay = resolvedRating ? bookRatingDisplay[resolvedRating] : null;
 const ratingLabel = ratingDisplay?.label ?? null;
@@ -275,15 +275,15 @@ const ratingAriaLabel = ratingLabel ?? 'Rated';
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     font-weight: 500;
     color: inherit;
   }
 
   .book-rating__label {
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    font-size: 0.7rem;
+    font-size: var(--text-xs);
   }
 
   .book-rating__icons {
@@ -380,7 +380,7 @@ const ratingAriaLabel = ratingLabel ?? 'Rated';
 
   .book-format {
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     font-weight: 600;
     text-transform: lowercase;
     letter-spacing: 0.05em;

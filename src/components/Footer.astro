@@ -1,5 +1,6 @@
 ---
 import { getPostActivitySummary } from '../utils/postStats';
+import SocialLinks from './navigation/SocialLinks.astro';
 
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
@@ -46,6 +47,10 @@ const footerNavItems = [
             </button>
         </form>
 
+        <div class="footer-socials-row mt-6" aria-hidden="false">
+            <SocialLinks layout="horizontal" size="md" />
+        </div>
+
         <div class="footer-stats-row mt-6 text-center">
             <p class="text-small opacity-75 mb-2">&copy; {currentYear} Sajal Choudhary</p>
             {hasPosts && (
@@ -81,6 +86,21 @@ const footerNavItems = [
         color: rgb(255, 250, 240);
     }
 
+    /* Social icons in the footer on every breakpoint. On desktop they also
+       remain in the header — the duplication is intentional for consistency.
+       Centered on a hairline just above the copyright line. */
+    .footer-socials-row {
+        display: flex;
+        justify-content: center;
+        padding-top: 1rem;
+        border-top: 1px solid rgb(85, 75, 70);
+    }
+
+    /* GitHub / Threads use currentColor — keep them light on the dark band. */
+    .footer-socials-row :global(a) {
+        color: rgb(255, 250, 240);
+    }
+
     .footer-accent {
         color: #a78bfa;
     }
@@ -89,7 +109,7 @@ const footerNavItems = [
         color: #a78bfa;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.04em;
         margin-right: 0.4em;
     }
 

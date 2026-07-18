@@ -1,0 +1,17 @@
+---
+title: 'Kenny Sebastian: The Most Interesting Person in the Room'
+slug: kenny-sebastian-the-most-interesting-person-in-the-room
+created: 2026-07-15T11:14:16.000Z
+category: filmshelf
+finished: 2020-06-10T00:00:00.000Z
+rating: like
+platform: Netflix
+status: finished
+genre: comedy
+director:
+  - Neville Shah
+  - Angshuman Ghosh
+year: 2020
+cover: kenny-sebastian-the-most-interesting-person-in-the-room.webp
+---
+Finished watching on 2020-06-10.

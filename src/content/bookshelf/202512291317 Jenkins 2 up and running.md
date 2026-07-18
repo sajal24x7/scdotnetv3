@@ -9,13 +9,14 @@ tags:
 format: ebook
 genre: technical
 author: Brent Laster
-shelfStatus: on-hold
+status: paused
 started: 2025-12-29T11:18:12.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115802581732265575'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mb4ppdeh6u2k'
   - 'https://www.threads.com/@sajal24x7/post/DS2G8h6EYbF'
-cover: jenkins-2-up-and-running.jpg
+cover: jenkins-2-up-and-running.webp
+year: 2018
 ---
 Started reading.
 

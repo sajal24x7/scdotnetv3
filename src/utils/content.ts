@@ -23,7 +23,6 @@ export interface Post {
       span?: 3 | 4 | 6 | 8 | 12;
     };
     // Unified shelf fields
-    shelfStatus?: string;
     rating?: BookRating;
     started?: Date | string;
     finished?: Date | string;
@@ -48,6 +47,7 @@ export interface Post {
   };
   id: string;
   body: string;
+  filePath?: string;
 }
 
 // Returns the list of known content category names.
@@ -77,6 +77,7 @@ export async function getAllPosts(): Promise<Post[]> {
           data: post.data,
           id: post.id,
           body: post.body,
+          filePath: post.filePath,
         }));
       }));
       cachedPosts = allPosts.flat() as Post[];
@@ -109,7 +110,7 @@ export function transformPost(post: Post) {
             format: post.data.format,
             genre: post.data.genre,
             // Unified shelf fields
-            shelfStatus: post.data.shelfStatus,
+            status: post.data.status,
             rating: post.data.rating,
             started: post.data.started,
             finished: post.data.finished,

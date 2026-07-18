@@ -12,7 +12,7 @@ syndicationUrls:
 ---
 
 
-```Powershell
+```powershell
 
 # Use the IsNullOrEmpty/IsNullOrWhiteSpace string method
 [string]::IsNullOrEmpty(...)

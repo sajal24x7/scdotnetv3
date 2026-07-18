@@ -9,7 +9,7 @@ tags:
 format: ebook
 genre: photobook
 author: Katja Panzar
-shelfStatus: read
+status: finished
 started: 2025-12-25T21:02:28.000Z
 rating: like
 finished: 2025-12-25T21:03:15.000Z
@@ -17,7 +17,7 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115785090768021542'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maux5dyuaf22'
   - 'https://www.threads.com/@sajal24x7/post/DSuJ5AqEcb9'
-cover: helsinki-by-sauna.jpeg
+cover: helsinki-by-sauna.webp
 ---
 
 A short guide to saunas in Helsinki.

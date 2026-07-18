@@ -11,13 +11,14 @@ genre: sci-fi
 author: Adrian Tchaikovsky
 series: Children of Time
 seriesNumber: 1
-shelfStatus: read
+status: finished
 rating: love
 started: 2025-09-02T19:45:58.000Z
 finished: 2025-09-19T13:45:58.000Z
-cover: children-of-time.jpg
+cover: children-of-time.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6znro22u'
+year: 2015
 ---
 
 I loved reading Children of Time.

@@ -1,0 +1,134 @@
+name: Refresh interactions index
+
+on:
+  workflow_dispatch:
+    inputs:
+      days_back:
+        description: 'Poll posts from the last N days (0 = all syndicated posts)'
+        required: false
+        default: ''
+        type: string
+      rebuild_backlinks:
+        description: 'Also rebuild the backlinks index'
+        required: false
+        default: false
+        type: boolean
+  # Two separate cron entries (not one combined expression) so the backlinks
+  # step below can tell which firing it is running in.
+  schedule:
+    - cron: '45 1 * * *' # Nightly run — also rebuilds the backlinks index
+    - cron: '45 13 * * *' # Midday run — interactions only
+
+# A push-triggered content publish can overlap a scheduled refresh; the
+# rebase-before-push below handles racing commits, but never run two
+# refreshes at once.
+concurrency:
+  group: refresh-interactions
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    # Prevent infinite loops from bot commits
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          # Need full history to rebase and commit back changes
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Collect interactions from syndicated copies
+        env:
+          # Optional: improves Mastodon API rate limits; Bluesky needs no auth
+          MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+          # Threads/Instagram backfeed (replies + like counts) — the same
+          # credentials the syndicator publishes with
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          # Webmention drain — the KV namespace functions/api/webmention.js
+          # writes to (all three required; drain is skipped otherwise)
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          WEBMENTIONS_KV_NAMESPACE_ID: ${{ secrets.WEBMENTIONS_KV_NAMESPACE_ID }}
+          # Avatar mirroring into R2, via the /api/mirror-avatar Pages
+          # Function — GITHUB_TOKEN is the bearer auth it checks (same
+          # trick /api/upload uses), no separate R2 credentials needed.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INTERACTIONS_DAYS_BACK: ${{ github.event.inputs.days_back }}
+        run: npm run collect-interactions
+
+      # Absorbed from the old refresh-backlinks.yml workflow: one nightly
+      # build here replaces a whole second workflow doing its own daily
+      # checkout + npm ci + build.
+      - name: Rebuild backlinks index (nightly run only)
+        if: github.event.schedule == '45 1 * * *' || (github.event_name == 'workflow_dispatch' && inputs.rebuild_backlinks)
+        env:
+          REGENERATE_BACKLINKS: 'true'
+        run: npm run build
+
+      - name: Commit refreshed indexes if they changed
+        run: |
+          files="src/data/interactions-index.json src/data/interaction-sources.json src/data/avatar-cache.json src/data/backlinks-index.json"
+          if git diff --quiet -- $files; then
+            echo "Indexes unchanged, nothing to commit"
+            exit 0
+          fi
+
+          git add $files
+          git commit -m "chore: refresh interactions and backlinks indexes"
+
+          # Rebase on top of any commits that landed while this job ran, then
+          # push. --autostash: the build dirties other generated files, and a
+          # plain rebase refuses to run with unstaged changes (this is what
+          # made the old refresh-backlinks workflow fail every night).
+          git pull --rebase --autostash origin main
+          git push origin main
+
+      # Webmentions from unknown domains land in the index as status "pending"
+      # (invisible on the site). Surface them for a human decision: commenting
+      # `/approve <domain>` or `/deny <domain>` on the issue (handled by
+      # webmention-moderation.yml) allowlists/blocklists the domain and
+      # updates the index automatically. The issue closes itself once
+      # nothing is pending.
+      - name: Update webmention moderation issue
+        uses: ./.github/actions/update-webmention-issue
+
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Interactions refresh workflow failed',
+              body: `The interactions refresh workflow failed on ${new Date().toISOString()}.
+
+              **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+              Please check the logs and fix any issues.`,
+              labels: ['bug', 'automation']
+            })

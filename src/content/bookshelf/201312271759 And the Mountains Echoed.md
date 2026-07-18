@@ -10,12 +10,13 @@ author:
   - Khaled Hosseini
 genre: drama
 format: paperback
-shelfStatus: read
+status: finished
 started: 2013-12-27T17:59:03.000Z
 finished: 2013-12-27T17:59:03.000Z
 rating: like
-cover: and-the-mountains-echoed.jpg
+cover: and-the-mountains-echoed.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode2epm332m'
+year: 2013
 ---
 Finished Reading

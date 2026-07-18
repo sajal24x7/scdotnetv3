@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
 
 import os from 'os';
+import { convertFileToWebp } from './lib/webp.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -724,7 +725,7 @@ async function main() {
 
     // Generate expected filename
     const expectedFilename = titleToFilename(title, author);
-    const coverFilename = `${expectedFilename}.jpg`;
+    const coverFilename = `${expectedFilename}.webp`;
     const coverPath = path.join(bookshelfDir, coverFilename);
     const existingCoverPath = cover ? path.join(bookshelfDir, cover) : null;
     const resolvedCoverPath = existingCoverPath && fs.existsSync(existingCoverPath)
@@ -801,8 +802,8 @@ async function main() {
       const best = successful.reduce((a, b) => a.size >= b.size ? a : b);
       console.log(`   🏆 Best: ${best.source} (${(best.size / 1024).toFixed(1)}KB)`);
 
-      // Move the best file to the final location, clean up the rest
-      fs.copyFileSync(best.tmpPath, coverPath);
+      // Convert the best candidate to WebP at the final location, clean up the rest
+      await convertFileToWebp(best.tmpPath, coverPath);
       for (const r of successful) {
         try { fs.unlinkSync(r.tmpPath); } catch {}
       }

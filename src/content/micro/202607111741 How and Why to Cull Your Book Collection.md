@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116901921008963465'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqewaxn3ru2h'
+  - 'https://www.threads.com/@sajal24x7/post/Da5YjVrEYeX'
 ---
 [How—and Why—to Cull Your Book Collection by Maris Kreizman](https://lithub.com/how-and-why-to-cull-your-book-collection/)
 

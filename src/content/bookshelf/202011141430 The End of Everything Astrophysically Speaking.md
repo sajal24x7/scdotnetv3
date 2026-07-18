@@ -1,5 +1,5 @@
 ---
-title: "The End of Everything (Astrophysically Speaking)"
+title: The End of Everything (Astrophysically Speaking)
 slug: the-end-of-everything-astrophysically-speaking
 created: 2026-01-05T13:11:03.000Z
 updated: 2026-01-05T13:11:03.000Z
@@ -8,7 +8,7 @@ tags:
   - universe
 format: audio
 author: Katie Mack
-shelfStatus: read
+status: finished
 started: 2020-11-14T13:11:03.000Z
 genre: science
 finished: 2020-11-20T13:11:03.000Z
@@ -17,7 +17,8 @@ syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115842671407436035'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbojg2tv622t'
   - 'https://www.threads.com/@sajal24x7/post/DTIWj0SjkiF'
-cover: the-end-of-everything-astrophysically-speaking.jpg
+cover: the-end-of-everything-astrophysically-speaking.webp
+year: 2020
 ---
 
 This was a wonderful if a little scary book. It details the current theories on how the world might end. Which is not as sad/apocalyptic as it sounds. 

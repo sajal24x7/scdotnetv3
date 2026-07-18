@@ -11,10 +11,10 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: write
       issues: write
-      actions: write # to dispatch the syndication workflow after publishing
 
     steps:
       - name: Checkout
@@ -56,6 +56,15 @@ jobs:
         # unknown category; the failure issue below flags it.
         run: npm run sort-inbox
 
+      - name: Reconcile shelf queue stubs
+        # A shelf note that just arrived from the inbox may be the "real"
+        # entry for something already sitting on the shelf as a `todo`
+        # queue stub (Obsidian-first promotion — see
+        # planning/shelf-queue-design.md §4). Delete the matching stub so
+        # it doesn't render twice; near-title-mismatches are only logged,
+        # never auto-deleted.
+        run: npm run reconcile-shelf-queue
+
       - name: Validate
         # TODO: flip to a required step once brief 06 (TypeScript hygiene)
         # brings `npx astro check` to zero errors.
@@ -69,10 +78,11 @@ jobs:
           git push origin content
 
       - name: Merge to main
-        id: merge
         # Pushes made with GITHUB_TOKEN do not trigger other workflows, but
         # Cloudflare's GitHub App webhook still fires — exactly one production
-        # build per publish, no workflow cascade.
+        # build per publish, no workflow cascade. Syndication is picked up
+        # by syndicate-content.yml's next scheduled sweep (every 3 hours),
+        # so no explicit dispatch is needed here.
         run: |
           if git diff --quiet origin/main content; then
             echo "Content tree is identical to main; nothing to publish."
@@ -87,28 +97,11 @@ jobs:
             git merge --no-edit origin/main
             git push origin main
           }
-          echo "published=true" >> "$GITHUB_OUTPUT"
           # Fast-forward content to the merge commit so it never trails main.
           # If a new note landed on content mid-run this isn't a fast-forward;
           # skip — the push that brought the note will publish and re-sync.
           git push origin main:content ||
             echo "content moved during this run; the next publish will sync it"
-
-      - name: Trigger syndication
-        # This workflow's merge is pushed with GITHUB_TOKEN, which never
-        # fires push-triggered workflows — but an explicit workflow_dispatch
-        # is exempt from that recursion guard, so dispatch syndication here.
-        if: steps.merge.outputs.published == 'true'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'syndicate-content.yml',
-              ref: 'main',
-              inputs: { wait_for_deploy: 'true' },
-            })
 
       - name: Open issue on failure
         if: failure()

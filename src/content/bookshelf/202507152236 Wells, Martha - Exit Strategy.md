@@ -10,7 +10,7 @@ format: audio
 genre: sci-fi
 uthor: Martha Wells
 series: The Murderbot Diaries
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-07-15T19:56:35.000Z
 finished: '2025-07-18T21:00:00+03:00'
@@ -19,6 +19,8 @@ syndicationUrls:
   - 'https://www.threads.com/@sajal24x7/post/DS8ShGaEfy0'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbk7zqtgds2w'
 cover: exit-strategy.webp
+author: Martha Wells
+year: 2018
 ---
 Book 1 - [All systems red](/bookshelf/all-systems-red)
 Book 2 - [Artificial Condition](/bookshelf/artificial-condition)

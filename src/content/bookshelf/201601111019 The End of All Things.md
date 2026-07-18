@@ -11,12 +11,13 @@ author:
 series: Old Man's War
 genre: sci-fi
 format: paperback
-shelfStatus: read
+status: finished
 started: 2016-01-11T10:19:51.000Z
 finished: 2016-01-11T10:19:51.000Z
 rating: like
-cover: the-end-of-all-things.jpg
+cover: the-end-of-all-things.webp
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode42tvny2c'
+year: 2015
 ---
 Finished Reading

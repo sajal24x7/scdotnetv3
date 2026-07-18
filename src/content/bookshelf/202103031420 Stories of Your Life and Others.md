@@ -10,13 +10,14 @@ format: paperback
 author:
   - Ted Chiang
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2021-03-03T13:50:48.000Z
 finished: 2021-03-05T13:50:48.000Z
 syndicationUrls:
-  - https://mastodon.social/@sajal24x7/115842822272411645
-  - https://bsky.app/profile/sajalchoudhary.net/post/3mbolkmqaw52r
-  - https://www.threads.com/@sajal24x7/post/DTIaGdpEYaL
-cover: stories-of-your-life-and-others.jpg
+  - 'https://mastodon.social/@sajal24x7/115842822272411645'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mbolkmqaw52r'
+  - 'https://www.threads.com/@sajal24x7/post/DTIaGdpEYaL'
+cover: stories-of-your-life-and-others.webp
+year: 2002
 ---
 I was inspired to pick this up after watching Arrival.

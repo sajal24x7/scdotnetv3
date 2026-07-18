@@ -9,15 +9,16 @@ tags:
 format: audio
 genre: psychology
 author: Morgan Housel
-shelfStatus: read
+status: finished
 rating: like
-finished: 2025-12-26T22:06:42+02:00
+finished: 2025-12-26T20:06:42.000Z
 started: 2025-12-19T15:11:57.000Z
 syndicationUrls:
-  - https://mastodon.social/@sajal24x7/115746883736046622
-  - https://bsky.app/profile/sajal24x7.bsky.social/post/3mady6suxkm2w
-  - https://www.threads.com/@sajal24x7/post/DScx68mkeMD
-cover: the-art-of-spending-money.jpg
+  - 'https://mastodon.social/@sajal24x7/115746883736046622'
+  - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mady6suxkm2w'
+  - 'https://www.threads.com/@sajal24x7/post/DScx68mkeMD'
+cover: the-art-of-spending-money.webp
+year: 2025
 ---
 I have thoughts about this book and the things discussed in this book. There are no notes though.
 

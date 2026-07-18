@@ -10,15 +10,16 @@ tags:
   - three-body-problem
   - cixin-liu
 genre: sci-fi
-cover: the-dark-forest.jpg
+cover: the-dark-forest.webp
 author: Cixin Liu
 series: Remembrance of Earth's Past
-shelfStatus: read
+status: finished
 rating: like
 started: 2025-04-22T16:06:00.000Z
 finished: 2025-04-22T16:06:00.000Z
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mode6mqbau2w'
+year: 2008
 ---
 This is the second book in Cixin Liu's [Three Body Problem](__GHOST_URL__/liu-cixin-the-three-body-problem/). I had read the first one back in February. Since then, I embarked on a couple of long books - Kevin Kelly's What Technology Wants and this one. I am yet to finish What Technology Wants. I renewed my loan of that book many times, returned it, and then loaned it again. I will finish it soon though.
 

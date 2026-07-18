@@ -2,13 +2,16 @@
 import Layout from '../../layouts/Layout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import GameCard from '../../components/shelf/GameCard.astro';
-import ShelfTabNav from '../../components/shelf/ShelfTabNav.astro';
+import ShelfQueueToggle from '../../components/shelf/ShelfQueueToggle.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 import { computeWatchNumbers } from '../../utils/shelfUtils';
+import { SHELF_LIST_SORT_PRIORITY } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
-const gamePosts = allPosts.filter((post) => post.data.category === 'gameshelf');
+// `todo` entries live on the queue page (/gameshelf/queue/) only — see
+// planning/shelf-queue-design.md §1.
+const gamePosts = allPosts.filter((post) => post.data.category === 'gameshelf' && post.data.status !== 'todo');
 
 const parseDate = (value?: Date | string | null): Date | null => {
     if (!value) return null;
@@ -32,13 +35,6 @@ const compareDesc = (a?: Date | string | null, b?: Date | string | null) => {
     return toTime(b) - toTime(a);
 };
 
-const statusOrder: Record<string, number> = {
-    playing: 0,
-    played: 1,
-    'on-hold': 2,
-    other: 3
-};
-
 const gamesWithYear = gamePosts.map((post) => ({
     post,
     year: getGameYear(post)
@@ -46,10 +42,10 @@ const gamesWithYear = gamePosts.map((post) => ({
 
 const sortedGames = [...gamesWithYear].sort((a, b) => {
     if (a.year !== b.year) return b.year - a.year;
-    const statusA = a.post.data.shelfStatus ?? 'other';
-    const statusB = b.post.data.shelfStatus ?? 'other';
+    const statusA = a.post.data.status as keyof typeof SHELF_LIST_SORT_PRIORITY | undefined;
+    const statusB = b.post.data.status as keyof typeof SHELF_LIST_SORT_PRIORITY | undefined;
     if (statusA !== statusB) {
-        return (statusOrder[statusA] ?? statusOrder.other) - (statusOrder[statusB] ?? statusOrder.other);
+        return (statusA ? SHELF_LIST_SORT_PRIORITY[statusA] : 99) - (statusB ? SHELF_LIST_SORT_PRIORITY[statusB] : 99);
     }
     return compareDesc(a.post.data.created, b.post.data.created);
 });
@@ -74,7 +70,7 @@ sortedGames.forEach((entry, i) => {
 });
 
 // Count played games
-const playedGames = gamePosts.filter((p) => p.data.shelfStatus === 'played');
+const playedGames = gamePosts.filter((p) => p.data.status === 'finished');
 const totalGames = playedGames.length;
 const countText = `${totalGames} ${totalGames === 1 ? 'game' : 'games'} played`;
 
@@ -108,26 +104,23 @@ const sectionLandingProps = createSectionLandingProps({
   <SectionLanding {...sectionLandingProps}>
     <div slot="afterHeader" class="shelf-header-block">
       <div class="shelf-title-row">
-        <ShelfTabNav currentTab="games" />
-        <a href="/gameshelf/rss.xml" class="shelf-rss-link" aria-label="Game Shelf RSS feed" title="Subscribe via RSS">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16">
-            <path d="M3.429 2.857v2.857c9.714 0 17.571 7.857 17.571 17.571h2.857C23.857 13.429 13.286 2.857 3.429 2.857zm0 5.714v2.858c5.143 0 9.286 4.143 9.286 9.285h2.857c0-6.857-5.486-12.343-12.143-12.343zm2.285 7.714c1.257 0 2.286 1.029 2.286 2.286S6.971 20.857 5.714 20.857 3.429 19.828 3.429 18.571s1.028-2.286 2.285-2.286z"/>
-          </svg>
-        </a>
+        <ShelfQueueToggle category="gameshelf" active="shelf" />
       </div>
       <p class="shelf-description">{gameDescription}</p>
     </div>
     <div class="bookshelf-years">
       {years.map((year) => {
         const yearGames = gamesByYear[year] ?? [];
-        const playedYearGames = yearGames.filter((p) => p.data.shelfStatus === 'played');
+        const playedYearGames = yearGames.filter((p) => p.data.status === 'finished');
         const gameCount = playedYearGames.length;
         const gameLabel = gameCount === 1 ? 'game' : 'games';
+
+        const yearRowCount = Math.ceil(yearGames.length / 2);
 
         return (
           <section class="bookshelf-year" id={`gameshelf-${year}`} data-year={year}>
             <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
-              <div class="bookshelf-year__sidebar grid-span-2">
+              <div class="bookshelf-year__sidebar grid-span-2" style={`--year-row-count: ${yearRowCount};`}>
                 <div class="bookshelf-year__sticky">
                   <span class="bookshelf-year__year">{year}</span>
                   <span class="bookshelf-year__count" data-year-count={year}>Played {gameCount} {gameLabel}</span>
@@ -143,7 +136,7 @@ const sectionLandingProps = createSectionLandingProps({
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
                     data-genre={post.data.genre ?? ''}
                     data-developer={post.data.developer ?? ''}
-                    data-status={post.data.shelfStatus ?? ''}
+                    data-status={post.data.status ?? ''}
                     data-rating={post.data.rating ?? ''}
                     data-platform={post.data.platform ?? ''}
                   >
@@ -154,7 +147,7 @@ const sectionLandingProps = createSectionLandingProps({
                       genre={post.data.genre}
                       platform={post.data.platform}
                       hoursPlayed={post.data.hoursPlayed}
-                      shelfStatus={post.data.shelfStatus as any}
+                      status={post.data.status as any}
                       rating={post.data.rating}
                       cover={post.data.cover}
                       link={post.id ? `/gameshelf/${post.id}/` : undefined}
@@ -172,19 +165,22 @@ const sectionLandingProps = createSectionLandingProps({
 </Layout>
 
 <style>
-  .bookshelf-count { font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; }
+  .bookshelf-count { font-size: var(--text-small); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; }
   :global(.dark) .bookshelf-count { color: #9ca3af; }
   .bookshelf-content { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3rem); padding-bottom: 2rem; }
   .bookshelf-years { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3.5rem); }
   .bookshelf-year[data-filtered="hidden"] { display: none; }
   .bookshelf-year__book[data-filtered="hidden"] { display: none; }
   .bookshelf-year__grid { align-items: flex-start; }
-  .bookshelf-year__sidebar { display: flex; }
-  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / -1; } }
+  .bookshelf-year__sidebar { display: flex; align-items: flex-start; }
+  /* grid-row: 1 / -1 wouldn't span the implicit rows the entries create, since
+     negative line numbers resolve against the explicit grid (columns only here);
+     --year-row-count (set inline per section) gives the exact row span instead
+     of a large guess, which would otherwise force empty trailing rows into existence */
+  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / span var(--year-row-count, 1); align-self: stretch; } }
   .bookshelf-year__sticky { position: sticky; top: clamp(4rem, 6vw, 5.5rem); display: flex; flex-direction: column; gap: 0.35rem; }
-  .bookshelf-year__year { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: #111827; }
-  :global(.dark) .bookshelf-year__year { color: #f9fafb; }
-  .bookshelf-year__count { font-size: 0.95rem; font-weight: 500; color: #6b7280; }
+  .bookshelf-year__year { font-size: var(--text-huge); font-weight: 700; color: rgb(var(--color-text-primary)); }
+  .bookshelf-year__count { font-size: var(--text-small); font-weight: 500; color: #6b7280; }
   :global(.dark) .bookshelf-year__count { color: #9ca3af; }
   .bookshelf-year__book { display: flex; }
   .bookshelf-year__book :global(.book-card) { width: 100%; }
@@ -200,6 +196,13 @@ const sectionLandingProps = createSectionLandingProps({
     let selectedStatus = '';
     let selectedDeveloper = '';
     let selectedTag = '';
+
+    const statusDisplayMap: Record<string, string> = {
+      todo: 'To Play',
+      started: 'Playing',
+      finished: 'Played',
+      paused: 'On Hold',
+    };
 
     function hasAnyFilter() {
       return !!(selectedGenre || selectedPlatform || selectedRating || selectedStatus || selectedDeveloper || selectedTag);
@@ -246,7 +249,7 @@ const sectionLandingProps = createSectionLandingProps({
           count = yearCounts[year] || 0;
         } else {
           section.querySelectorAll<HTMLElement>('[data-game-item]').forEach((item) => {
-            if (item.getAttribute('data-status') === 'played') count++;
+            if (item.getAttribute('data-status') === 'finished') count++;
           });
         }
 
@@ -286,7 +289,7 @@ const sectionLandingProps = createSectionLandingProps({
       if (selectedGenre)    badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="genre">${selectedGenre.toUpperCase()} ${x}</button>`);
       if (selectedPlatform) badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="platform">${selectedPlatform.toUpperCase()} ${x}</button>`);
       if (selectedRating)   badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="rating">${selectedRating.toUpperCase()} ${x}</button>`);
-      if (selectedStatus)   badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="status">${selectedStatus.toUpperCase()} ${x}</button>`);
+      if (selectedStatus)   badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="status">${(statusDisplayMap[selectedStatus] ?? selectedStatus).toUpperCase()} ${x}</button>`);
       if (selectedDeveloper) badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="developer">${selectedDeveloper} ${x}</button>`);
       if (selectedTag)      badges.push(`<button type="button" class="section-tag-filter-badge" data-remove-game-filter="tag">${selectedTag.toUpperCase()} ${x}</button>`);
 
@@ -335,7 +338,7 @@ const sectionLandingProps = createSectionLandingProps({
         if (type === 'genre')       selectedGenre     = selectedGenre === value ? '' : value;
         else if (type === 'platform')    selectedPlatform  = selectedPlatform === value ? '' : value;
         else if (type === 'rating')      selectedRating    = selectedRating === value ? '' : value;
-        else if (type === 'shelfStatus') selectedStatus    = selectedStatus === value ? '' : value;
+        else if (type === 'status')      selectedStatus    = selectedStatus === value ? '' : value;
         else if (type === 'developer')   selectedDeveloper = selectedDeveloper === value ? '' : value;
 
         applyFilters();

@@ -9,18 +9,19 @@ tags:
 format: audiobook
 author:
   - Adrian Tchaikovsky
-series: 'Children of Time'
+series: Children of Time
 seriesNumber: 4
 genre: sci-fi
-shelfStatus: read
+status: finished
 started: 2026-04-26T16:04:26.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116474932193632534'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mkhcew5xhj2a'
   - 'https://www.threads.com/@sajal24x7/post/DXn267JDcKK'
-cover: children-of-strife.jpg
+cover: children-of-strife.webp
 rating: like
-finished: 2026-05-30T16:19:36+03:00
+finished: 2026-05-30T13:19:36.000Z
+year: 2026
 ---
 ## Review
 
