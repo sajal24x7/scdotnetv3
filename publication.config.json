@@ -25,6 +25,9 @@
     "story": "all",
     "poem": "all",
     "nordletter": "all",
-    "bookshelf": ["started", "paused", "finished"]
+    "bookshelf": ["finished"],
+    "filmshelf": ["finished"],
+    "tvshelf": ["finished"],
+    "gameshelf": ["finished"]
   }
 }

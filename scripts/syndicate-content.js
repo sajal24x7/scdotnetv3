@@ -35,6 +35,11 @@ const PHOTO_ONLY_PLATFORMS = new Set(['instagram']);
 const SYNDICATION_RULES = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'publication.config.json'), 'utf-8')
 ).syndication || {};
+// Mirrors SHELF_BACKFILL_CUTOFF in src/utils/rss.js: film/TV entries finished
+// before this date were bulk-backfilled from Netflix history (their `created`
+// is the import date, not the watch date) and must never syndicate as new.
+const SHELF_BACKFILL_CUTOFF = new Date('2026-05-25T00:00:00.000Z');
+const BACKFILL_GUARDED_CATEGORIES = new Set(['filmshelf', 'tvshelf']);
 const DRY_RUN = process.env.SYNDICATION_DRY_RUN === 'true';
 const DAYS_BACK = parseInt(process.env.SYNDICATION_DAYS_BACK || '7', 10);
 
@@ -118,6 +123,13 @@ function needsSyndication(post) {
   }
   if (rule !== 'all' && !rule.includes(post.data.status)) {
     return false;
+  }
+
+  // Backfilled film/TV history must not surface as new posts
+  if (BACKFILL_GUARDED_CATEGORIES.has(category)) {
+    if (!post.data.finished || new Date(post.data.finished) < SHELF_BACKFILL_CUTOFF) {
+      return false;
+    }
   }
 
   // Only syndicate posts from the last X days (configurable)

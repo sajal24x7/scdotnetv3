@@ -34,7 +34,7 @@ The file maps each **surface** to a category allowlist:
 
 Rules that are not a category/status decision remain where they were:
 
-- **Backfill cutoff** — film/TV entries bulk-imported from Netflix history are excluded from feeds by date (`isNotBackfilled` in `src/utils/rss.js`), layered on top of the allowlist.
+- **Backfill cutoff** — film/TV entries bulk-imported from Netflix history are excluded by date, layered on top of the allowlist: `isNotBackfilled` in `src/utils/rss.js` for feeds, mirrored in `scripts/syndicate-content.js` for syndication (the import set their `created` to the import date, so the recency window alone can't catch them).
 - **Platform constraints** — Instagram remains photo-only; character limits and rate limits live in `syndication.config.json` and `scripts/lib/`.
 - **On-site display** — the homepage unified feed and section pages are site navigation, not outbound publication. The unified feed has its own explicit category list (`FEED_GROUPS` in `src/utils/feed.ts`).
 
