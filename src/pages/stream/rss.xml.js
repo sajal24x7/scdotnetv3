@@ -2,6 +2,7 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
 import { getContentCategories } from '../../utils/content';
+import { publicationFilter } from '../../utils/publication';
 import { parseMarkdown } from '../../utils/markdown';
 import { convertWikilinks } from '../../utils/remarkWikilinks';
 
@@ -9,8 +10,9 @@ export async function GET(context) {
   const categories = getContentCategories();
   const allPosts = await Promise.all(categories.map(category => getCollection(category)));
   const flatPosts = allPosts.flat();
-  const stream = flatPosts.filter(post => 
-    ['blog', 'micro', 'photo'].includes(post.data.category)
+  const allowed = publicationFilter('rss');
+  const stream = flatPosts.filter(post =>
+    ['blog', 'micro', 'photo'].includes(post.data.category) && allowed(post)
   );
   
   // Sort by publish date (newest first)

@@ -38,32 +38,6 @@
       "categories": ["photo"]
     }
   },
-  "streamCategories": [
-    "blog",
-    "micro",
-    "photo"
-  ],
-  "gardenCategories": [
-    "evergreen",
-    "til",
-    "bookshelf",
-    "story",
-    "poem"
-  ],
-  "nordletterCategories": [
-    "nordletter"
-  ],
-  "syndicationCategories": [
-    "blog",
-    "micro",
-    "photo",
-    "evergreen",
-    "til",
-    "bookshelf",
-    "story",
-    "poem",
-    "nordletter"
-  ],
   "defaults": {
     "includeLink": true,
     "includeHashtags": true,

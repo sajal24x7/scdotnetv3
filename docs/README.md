@@ -35,6 +35,7 @@ This directory centralizes all reference material for the Astro-powered build of
 | Area | Summary | Key Files |
 | --- | --- | --- |
 | [Deployment](operations/deployment.md) | Local commands, build pipeline (image cache → covers → Astro → Pagefind), and Cloudflare Pages configuration. | `package.json`, `cloudflare-pages.json` |
+| [Publication Allowlist](operations/publication.md) | The central explicit-allow list deciding which categories/statuses reach readers via RSS feeds and syndication. | `publication.config.json`, `src/utils/publication.ts` |
 | [Syndication](operations/syndication.md) | POSSE workflow (Mastodon, Bluesky, Threads, Instagram), rate limiting, and how URLs are persisted back to content. | `scripts/syndicate-content.js` |
 | [Instagram Setup](operations/instagram-setup.md) | One-time Instagram API setup, content requirements, and how photo posts publish there. | `scripts/lib/platforms/instagram.js` |
 | [Threads Token Refresh](operations/threads-token-refresh.md) | Automated 60-day token renewal for the Threads API. | `.github/workflows/refresh-threads-token.yml` |

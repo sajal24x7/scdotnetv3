@@ -1,16 +1,21 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { buildRssItem, rssNamespaces, sortByDate, isNotBackfilled } from '../../utils/rss';
+import { publicationFilter } from '../../utils/publication';
 
 export async function GET(context) {
-  const isFinished = (post) => post.data.status === 'finished';
-  // film/tv were bulk-backfilled from Netflix history; keep the backfill out
-  // of the feed while books/games (no backfill) keep their normal behavior.
+  // publication.config.json decides which statuses publish; film/tv were
+  // bulk-backfilled from Netflix history, so a date rule additionally keeps
+  // the backfill out of the feed.
+  const shelfFilter = (category, extra) => {
+    const allowed = publicationFilter('rss', category);
+    return extra ? (post) => allowed(post) && extra(post) : allowed;
+  };
   const [bookshelf, filmshelf, tvshelf, gameshelf] = await Promise.all([
-    getCollection('bookshelf', isFinished),
-    getCollection('filmshelf', isNotBackfilled),
-    getCollection('tvshelf', isNotBackfilled),
-    getCollection('gameshelf', isFinished),
+    getCollection('bookshelf', shelfFilter('bookshelf')),
+    getCollection('filmshelf', shelfFilter('filmshelf', isNotBackfilled)),
+    getCollection('tvshelf', shelfFilter('tvshelf', isNotBackfilled)),
+    getCollection('gameshelf', shelfFilter('gameshelf')),
   ]);
 
   const posts = sortByDate([...bookshelf, ...filmshelf, ...tvshelf, ...gameshelf]);
