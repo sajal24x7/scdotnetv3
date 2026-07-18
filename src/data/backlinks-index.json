@@ -966,6 +966,8 @@
       "micro/202607100956.md",
       "micro/202607101018 The Era of Model Subsidies May be Over.md",
       "micro/202607102019.md",
+      "micro/202607111250.md",
+      "micro/202607111741 How and Why to Cull Your Book Collection.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1077,6 +1079,7 @@
       "nordletter/202606192030 NL110 - Hanko Midsummer Picnic.md",
       "nordletter/202606252034 NL111 - Love is Love.md",
       "nordletter/202607022037 NL112 - The Diabetes Code.md",
+      "nordletter/202607101227 NL113 - Fable is Good.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -1097,6 +1100,8 @@
       "photo/201403181831 Day Six Green.md",
       "photo/202607100843 A rainbow over chemicum.md",
       "photo/202607100930 Helsinki Pride 2026.md",
+      "photo/202607111030.md",
+      "photo/202607120048.md",
       "poem/201202121505 Here I stand.md",
       "poem/201202131628 Stranded Isle.md",
       "poem/201203181704 Scared I was.md",
@@ -7076,6 +7081,56 @@
       "category": "evergreen",
       "created": "2026-06-29T10:19:46.000Z",
       "snippet": "TOFI not Tofu (the food). Read first about it in The Diabetes Code"
+    }
+  ],
+  "now/building-scdotnetv3-on-astro": [
+    {
+      "slug": "/nordletter/nl113-fable-is-good/",
+      "title": "Fable Is Good",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-10T09:27:00.000Z",
+      "snippet": "On Tuesday, I marked my long-running (nine month long) task of building my website on Astro Most of my site was ready since a long time. I was able to have all the different categories of notes I wanted to have. I had a mostly automated workflow to get a note in my vault to the GitHub repo that has all the code it needs to deploy my site. Some things, namely the about and the colophon pages were still left to be done. But I was happy with where I was."
+    }
+  ],
+  "nordletter/nl106-citcon-2026-helsinki": [
+    {
+      "slug": "/nordletter/nl113-fable-is-good/",
+      "title": "Fable Is Good",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-10T09:27:00.000Z",
+      "snippet": "I had done some work on it, but the results with Sonnet 4.5, then 5 were abysmal. I had planned on using Superpowers to have a better output - which did not really work."
+    }
+  ],
+  "micro/fable-is-very-good": [
+    {
+      "slug": "/nordletter/nl113-fable-is-good/",
+      "title": "Fable Is Good",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-10T09:27:00.000Z",
+      "snippet": "Then, on Tuesday, I wrote about Robin Sloan's experience using Fable and around the same time Fable came back and Anthropic told me, hey, you have cheaper access to the model till 7th July. So, I thought, let's let Fable handle this."
+    }
+  ],
+  "micro/the-era-of-model-subsidies-may-be-over": [
+    {
+      "slug": "/nordletter/nl113-fable-is-good/",
+      "title": "Fable Is Good",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-10T09:27:00.000Z",
+      "snippet": "The age of subsidies is over though. What that means for us going forward, remains to be seen."
+    }
+  ],
+  "nordletter/nl102-seeing-the-crown-bridge": [
+    {
+      "slug": "/nordletter/nl113-fable-is-good/",
+      "title": "Fable Is Good",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-10T09:27:00.000Z",
+      "snippet": "After lunch, we decide to walk toward the Crown Bridge. It was my second time here. And this whole series of three bridges, this whole walkway is so damn beautiful."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
