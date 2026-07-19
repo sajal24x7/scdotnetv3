@@ -31,7 +31,10 @@ jobs:
     # Prevent infinite loops from bot commits
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # The collector self-limits to a 12-minute budget (INTERACTIONS_TIME_BUDGET_MINUTES)
+    # and exits cleanly before that; this ceiling is just a backstop, with headroom
+    # for checkout/install/build/commit around it.
+    timeout-minutes: 25
     permissions:
       contents: write
       issues: write
