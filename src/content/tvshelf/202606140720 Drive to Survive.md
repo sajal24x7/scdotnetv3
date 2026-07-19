@@ -1,20 +1,27 @@
 ---
-title: Drive to Survive
-slug: drive-to-survive/s8
-created: 2026-06-14T04:24:07.000Z
-updated: 2026-06-15T11:48:30.000Z
+title: "Drive to Survive"
+slug: "drive-to-survive"
+created: 2026-06-14T07:20:00+03:00
+updated: 2026-06-15T14:46:54+03:00
 category: tvshelf
-tags:
-  - f1
-showTitle: Drive to Survive
-season: 8
+tags: ["f1"]
+showTitle: "Formula 1: Drive to Survive"
+season: "8"
 creator:
   - James Gay Rees
-started: 2026-06-14T04:24:07.000Z
+started: 2026-06-08
+finished: 2026-07-16T16:20:00
 genre: documentary
-platform: Netflix
-status: started
-cover: drive-to-survive.webp
+rating: like
+year:
+status: todo
 ---
+Finished watching this season.
 
+This series continues to have the same effect on me. I want to follow F1, watch the races and so on.
 
+Two things have happened now -
+1. I’m using Apple Sports app to track the scorelines
+2. I added the F1 feed from the guardian to NNW
+
+I’m not yet so holden to F1 that I will start watching the races, but I would like to be aware of the scores, the races, who won what. That’s fun. 
