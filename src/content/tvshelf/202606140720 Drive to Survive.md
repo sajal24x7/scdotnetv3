@@ -1,20 +1,22 @@
 ---
-title: "Drive to Survive"
-slug: "drive-to-survive"
-created: 2026-06-14T07:20:00+03:00
-updated: 2026-06-15T14:46:54+03:00
+title: Drive to Survive
+slug: drive-to-survive
+created: 2026-06-14T04:20:00.000Z
+updated: 2026-06-15T11:46:54.000Z
 category: tvshelf
-tags: ["f1"]
-showTitle: "Formula 1: Drive to Survive"
-season: "8"
+tags:
+  - f1
+showTitle: 'Formula 1: Drive to Survive'
+season: '8'
 creator:
   - James Gay Rees
-started: 2026-06-08
-finished: 2026-07-16T16:20:00
+started: 2026-06-08T00:00:00.000Z
+finished: 2026-07-16T16:20:00.000Z
 genre: documentary
 rating: like
-year:
+year: null
 status: todo
+cover: formula-1-drive-to-survive.webp
 ---
 Finished watching this season.
 
