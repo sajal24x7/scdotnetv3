@@ -549,6 +549,33 @@ const previewCategories = await getContentPreviewCategories();
             state.observer = observer;
 
             document.addEventListener('astro:after-swap', scheduleSetup);
+
+            // Touch devices fire the emulated mouseenter on tap but never
+            // mouseleave, so the tooltip would stick until reload. Dismiss it
+            // when the user taps/clicks outside the hovered link, scrolls, or
+            // returns to a bfcache-restored page.
+            document.addEventListener('pointerdown', (event) => {
+                if (!state.tooltip || !state.tooltip.classList.contains('visible')) {
+                    return;
+                }
+                const target = event.target;
+                if (state.currentLink && target instanceof Node && state.currentLink.contains(target)) {
+                    return;
+                }
+                hideTooltip();
+            }, { passive: true });
+
+            window.addEventListener('scroll', () => {
+                if (state.tooltip && state.tooltip.classList.contains('visible')) {
+                    hideTooltip();
+                }
+            }, { passive: true });
+
+            window.addEventListener('pageshow', (event) => {
+                if (event.persisted && state.tooltip) {
+                    hideTooltip();
+                }
+            });
         } else {
             scheduleSetup();
         }
