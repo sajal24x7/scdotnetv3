@@ -22,7 +22,7 @@
 
 .dark .bookshelf-filters__results,
 .dark .shelf-filter-results {
-  color: #9ca3af;
+  color: var(--gray-text-muted);
   background: rgba(255, 255, 255, 0.03);
   border-color: rgba(255, 255, 255, 0.08);
 }
@@ -31,12 +31,7 @@
 .shelf-filter-summary {
   font-size: var(--text-small);
   font-weight: 500;
-  color: #6b7280;
-}
-
-.dark .bookshelf-filters__summary,
-.dark .shelf-filter-summary {
-  color: #9ca3af;
+  color: var(--gray-text-muted);
 }
 
 .bookshelf-filters__active,
@@ -62,14 +57,8 @@
   white-space: nowrap;
   cursor: pointer;
   transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
-  background: #e5e7eb;
-  color: #111827;
-}
-
-.dark .filter-badge,
-.dark .shelf-filter-badge {
-  background: #374151;
-  color: #e5e7eb;
+  background: var(--chip-neutral-bg);
+  color: var(--chip-neutral-fg);
 }
 
 .filter-badge:hover,
@@ -168,13 +157,8 @@
 
 /* Format badges */
 .filter-badge--format {
-  background: #e5e7eb;
-  color: #111827;
-}
-
-.dark .filter-badge--format {
-  background: #374151;
-  color: #e5e7eb;
+  background: var(--chip-neutral-bg);
+  color: var(--chip-neutral-fg);
 }
 
 /* Rating badges */

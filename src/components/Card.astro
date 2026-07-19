@@ -173,11 +173,7 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
     font-weight: 700;
     line-height: 1.3;
     margin-bottom: 0.35rem;
-    color: #111827;
-  }
-
-  :global(.dark) .card-title {
-    color: #f9fafb;
+    color: var(--gray-text-strong);
   }
 
   .card-description {
@@ -234,35 +230,23 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
   .card-prose :global(blockquote) {
     margin: 1.25em 0;
     padding-left: 1em;
-    border-left: 4px solid #e5e7eb;
+    border-left: 4px solid var(--chip-neutral-bg);
     font-style: italic;
   }
 
-  :global(.dark) .card-prose :global(blockquote) {
-    border-left-color: #374151;
-  }
-
   .card-prose :global(code) {
-    background-color: #f3f4f6;
+    background-color: var(--pill-bg);
     padding: 0.2em 0.4em;
     border-radius: 0.25em;
     font-size: 0.875em;
   }
 
-  :global(.dark) .card-prose :global(code) {
-    background-color: #1f2937;
-  }
-
   .card-prose :global(pre) {
-    background-color: #f3f4f6;
+    background-color: var(--pill-bg);
     padding: 1em;
     border-radius: 0.5em;
     overflow-x: auto;
     margin: 1.5em 0;
-  }
-
-  :global(.dark) .card-prose :global(pre) {
-    background-color: #1f2937;
   }
 
   /* Mobile adjustments */

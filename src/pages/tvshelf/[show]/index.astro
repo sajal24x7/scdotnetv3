@@ -298,11 +298,9 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: #6b7280;
+    color: var(--gray-text-muted);
     margin: 0 0 1rem;
   }
-
-  :global(.dark) .tv-show-page__seasons-title { color: #9ca3af; }
 
   .tv-show-page__seasons-list {
     display: flex;
@@ -362,10 +360,8 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
   .tv-season-card__heading {
     font-size: 1rem;
     font-weight: 600;
-    color: #111827;
+    color: var(--gray-text-strong);
   }
-
-  :global(.dark) .tv-season-card__heading { color: #f9fafb; }
 
   .tv-season-card__label {
     font-weight: 700;
@@ -373,10 +369,8 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
 
   .tv-season-card__subtitle {
     font-weight: 400;
-    color: #6b7280;
+    color: var(--gray-text-muted);
   }
-
-  :global(.dark) .tv-season-card__subtitle { color: #9ca3af; }
 
   .tv-season-card__chips {
     display: flex;
@@ -384,11 +378,9 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
     gap: 0.4rem;
   }
 
-  .tv-chip--seasons { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: var(--text-xs); letter-spacing: 0.03em; }
-  :global(.dark) .tv-chip--seasons { background: #1f2937; color: #e5e7eb; }
+  .tv-chip--seasons { background: var(--pill-bg); color: var(--pill-fg); text-transform: none; font-size: var(--text-xs); letter-spacing: 0.03em; }
 
-  .tv-chip--date { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: var(--text-xs); letter-spacing: 0.03em; }
-  :global(.dark) .tv-chip--date { background: #1f2937; color: #e5e7eb; }
+  .tv-chip--date { background: var(--pill-bg); color: var(--pill-fg); text-transform: none; font-size: var(--text-xs); letter-spacing: 0.03em; }
 
   .tv-show-page__back {
     margin-top: 1rem;

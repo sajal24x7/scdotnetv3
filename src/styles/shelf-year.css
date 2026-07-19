@@ -52,11 +52,7 @@
 .bookshelf-year__count {
   font-size: var(--text-small);
   font-weight: 500;
-  color: #6b7280;
-}
-
-.dark .bookshelf-year__count {
-  color: #9ca3af;
+  color: var(--gray-text-muted);
 }
 
 .bookshelf-year__book {

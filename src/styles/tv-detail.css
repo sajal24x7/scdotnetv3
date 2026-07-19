@@ -98,26 +98,16 @@
   font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: 700;
   margin: 0 0 0.5rem;
-  color: #111827;
+  color: var(--gray-text-strong);
   line-height: 1.2;
-}
-
-.dark .tv-show-header__title,
-.dark .season-header__title {
-  color: #f9fafb;
 }
 
 .tv-show-header__creator,
 .season-header__creator {
   font-size: 1.125rem;
   font-weight: 500;
-  color: #374151;
+  color: var(--gray-text-body);
   margin: 0 0 1rem;
-}
-
-.dark .tv-show-header__creator,
-.dark .season-header__creator {
-  color: #d1d5db;
 }
 
 .tv-show-header__chips,
@@ -131,11 +121,7 @@
 .season-content {
   font-size: 1rem;
   line-height: 1.6;
-  color: #374151;
-}
-
-.dark .season-content {
-  color: #d1d5db;
+  color: var(--gray-text-body);
 }
 
 .season-content p {
@@ -171,13 +157,8 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
-  background: #e5e7eb;
-  color: #111827;
-}
-
-.dark .tv-chip {
-  background: #374151;
-  color: #e5e7eb;
+  background: var(--chip-neutral-bg);
+  color: var(--chip-neutral-fg);
 }
 
 .tv-chip__icons {
@@ -196,16 +177,11 @@
 }
 
 .tv-chip--year {
-  background: #f3f4f6;
-  color: #1f2937;
+  background: var(--pill-bg);
+  color: var(--pill-fg);
   text-transform: none;
   font-size: var(--text-xs);
   letter-spacing: 0.03em;
-}
-
-.dark .tv-chip--year {
-  background: #1f2937;
-  color: #e5e7eb;
 }
 
 .tv-chip--platform {
@@ -222,16 +198,11 @@
 }
 
 .tv-chip--dates {
-  background: #f3f4f6;
-  color: #1f2937;
+  background: var(--pill-bg);
+  color: var(--pill-fg);
   text-transform: none;
   font-size: var(--text-xs);
   letter-spacing: 0.02em;
-}
-
-.dark .tv-chip--dates {
-  background: #1f2937;
-  color: #e5e7eb;
 }
 
 .chip--status-started {
@@ -299,7 +270,7 @@
 .season-nav__link,
 .season-back__link {
   font-size: var(--text-small);
-  color: #6b7280;
+  color: var(--gray-text-muted);
   text-decoration: none;
   transition: color 150ms ease;
 }
@@ -308,12 +279,6 @@
 .season-nav__link:hover,
 .season-back__link:hover {
   color: #4f46e5;
-}
-
-.dark .tv-show-page__back-link,
-.dark .season-nav__link,
-.dark .season-back__link {
-  color: #9ca3af;
 }
 
 .dark .tv-show-page__back-link:hover,

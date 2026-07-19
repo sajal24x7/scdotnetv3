@@ -733,13 +733,9 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
     .book-meta-author-title {
         font-size: 1.125rem;
         font-weight: 500;
-        color: #374151;
+        color: var(--gray-text-body);
         margin-bottom: 1rem;
         margin-top: 0.5rem;
-    }
-
-    :global(.dark) .book-meta-author-title {
-        color: #d1d5db;
     }
 
     .book-meta-pills {
@@ -792,23 +788,13 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
     }
 
     .book-meta__chip--format {
-        background: #e5e7eb;
-        color: #111827;
-    }
-
-    :global(.dark) .book-meta__chip--format {
-        background: #374151;
-        color: #e5e7eb;
+        background: var(--chip-neutral-bg);
+        color: var(--chip-neutral-fg);
     }
 
     .book-meta__chip--rating {
-        background: #e5e7eb;
-        color: #111827;
-    }
-
-    :global(.dark) .book-meta__chip--rating {
-        background: #374151;
-        color: #f9fafb;
+        background: var(--chip-neutral-bg);
+        color: var(--gray-text-strong);
     }
 
     .book-meta__chip--rating-like {
@@ -842,27 +828,17 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
     }
 
     .book-meta__chip--rating-none {
-        background: #e5e7eb;
-        color: #111827;
-    }
-
-    :global(.dark) .book-meta__chip--rating-none {
-        background: #374151;
-        color: #f9fafb;
+        background: var(--chip-neutral-bg);
+        color: var(--gray-text-strong);
     }
 
     .book-meta__chip--timeline {
         justify-content: flex-start;
-        background: #f3f4f6;
-        color: #1f2937;
+        background: var(--pill-bg);
+        color: var(--pill-fg);
         font-size: var(--text-xs);
         letter-spacing: 0.04em;
         text-transform: none;
-    }
-
-    :global(.dark) .book-meta__chip--timeline {
-        background: #1f2937;
-        color: #e5e7eb;
     }
 
     .book-meta__chip-label {
@@ -872,11 +848,7 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
     .book-meta__rating-icons {
         display: inline-flex;
         gap: 0.25rem;
-        color: #111827;
-    }
-
-    :global(.dark) .book-meta__rating-icons {
-        color: #f9fafb;
+        color: var(--gray-text-strong);
     }
 
     .book-meta__rating-icons--like {

@@ -53,6 +53,18 @@
     --tag-color-rgb: 139, 92, 246;
     --tag-hover-rgb: 124, 58, 237;
 
+    /* Neutral grays used by cards, chips, pills, and muted text. Each token
+       flips under .dark, so rules that use them need no dark overrides. */
+    --gray-text-strong: #111827;
+    --gray-text-body: #374151;
+    --gray-text-muted: #6b7280;
+    --gray-text-meta: #4b5563;
+    --gray-heading: #1f2937;
+    --chip-neutral-bg: #e5e7eb;
+    --chip-neutral-fg: #111827;
+    --pill-bg: #f3f4f6;
+    --pill-fg: #1f2937;
+
     --text-small: clamp(0.875rem, 2vw, 1rem);
     --text-normal: clamp(1rem, 2.5vw, 1.125rem);
     --text-medium: clamp(1.125rem, 2.5vw, 1.25rem);
@@ -78,5 +90,14 @@
     --hr-color: #444444;
     --tag-color-rgb: 167, 139, 250;
     --tag-hover-rgb: 196, 181, 253;
+    --gray-text-strong: #f9fafb;
+    --gray-text-body: #d1d5db;
+    --gray-text-muted: #9ca3af;
+    --gray-text-meta: #9ca3af;
+    --gray-heading: #f9fafb;
+    --chip-neutral-bg: #374151;
+    --chip-neutral-fg: #e5e7eb;
+    --pill-bg: #1f2937;
+    --pill-fg: #e5e7eb;
   }
 }

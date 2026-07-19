@@ -147,7 +147,7 @@ const getVariantClass = (post: typeof posts[number]) => {
   .nordletter-year__title {
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
-    color: #1f2937;
+    color: var(--gray-heading);
     margin: 0;
     text-align: center;
   }
@@ -177,7 +177,7 @@ const getVariantClass = (post: typeof posts[number]) => {
     height: clamp(6rem, 20vw, 9.5rem);
     border-radius: 9999px;
     overflow: hidden;
-    background: #f3f4f6;
+    background: var(--pill-bg);
     flex-shrink: 0;
     margin-inline: auto;
   }
@@ -212,7 +212,7 @@ const getVariantClass = (post: typeof posts[number]) => {
   .nordletter-edition {
     font-size: var(--text-small);
     font-weight: 400;
-    color: #6b7280;
+    color: var(--gray-text-muted);
     margin-bottom: 0.25rem;
   }
 
@@ -221,7 +221,7 @@ const getVariantClass = (post: typeof posts[number]) => {
     font-weight: 600;
     line-height: 1.4;
     margin: 0;
-    color: #1f2937;
+    color: var(--gray-heading);
     transition: color 0.2s ease;
   }
 
@@ -259,24 +259,8 @@ const getVariantClass = (post: typeof posts[number]) => {
     border-bottom-color: rgba(148, 163, 184, 0.24);
   }
 
-  :global(.dark) .nordletter-year__title {
-    color: #f9fafb;
-  }
-
-  :global(.dark) .nordletter-title {
-    color: #f9fafb;
-  }
-
   :global(.dark) .nordletter-link:hover .nordletter-title {
     color: #93c5fd;
-  }
-
-  :global(.dark) .nordletter-edition {
-    color: #9ca3af;
-  }
-
-  :global(.dark) .nordletter-image {
-    background: #1f2937;
   }
 
   @media (max-width: 47.999rem) {

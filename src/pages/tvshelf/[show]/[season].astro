@@ -277,8 +277,7 @@ const coverImage = season.data.cover ? getTVCoverImage(season.data.cover) : null
     margin-top: 0.5rem;
   }
 
-  .tv-chip--season { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: var(--text-xs); letter-spacing: 0.02em; font-weight: 700; }
-  :global(.dark) .tv-chip--season { background: #1f2937; color: #e5e7eb; }
+  .tv-chip--season { background: var(--pill-bg); color: var(--pill-fg); text-transform: none; font-size: var(--text-xs); letter-spacing: 0.02em; font-weight: 700; }
 
   /* Show link chip — styled as a small interactive box */
   .tv-chip--show-link {
