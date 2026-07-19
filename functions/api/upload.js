@@ -4,8 +4,10 @@
 // existing media R2 bucket, bound as IMAGES (Pages project → Settings →
 // Bindings). Keys follow the bucket's established images/YYYY/MM/<name>.<ext>
 // layout and the returned URL uses the bucket's public domain.
-// Auth reuses the composer's fine-grained GitHub PAT: any token that can read
-// the site repo is treated as the owner, so no separate upload secret exists.
+// Auth reuses the composer's fine-grained GitHub PAT: only a token with push
+// (Contents write) access to the site repo is treated as the owner, so no
+// separate upload secret exists. Read access is not enough — the repo is
+// public, so any GitHub token can read it.
 
 const REPO = 'sajal24x7/scdotnetv3';
 const PUBLIC_BASE = 'https://storage.sajalchoudhary.net';
@@ -42,6 +44,10 @@ export async function onRequestPost({ request, env }) {
   });
   if (gh.status !== 200) {
     return json(401, { error: `Token rejected by GitHub (${gh.status})` });
+  }
+  const repo = await gh.json().catch(() => null);
+  if (!repo?.permissions?.push) {
+    return json(403, { error: 'Token does not have write access to the site repo' });
   }
 
   const contentType = (request.headers.get('content-type') || '').split(';')[0].trim();

@@ -92,7 +92,7 @@ export async function getAllPosts(): Promise<Post[]> {
   return posts;
 }
 
-// Transform post for ContentGrid component
+// Transform a post into the shape the card grids expect
 export function transformPost(post: Post) {
     return {
         data: {

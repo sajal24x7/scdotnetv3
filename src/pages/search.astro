@@ -126,6 +126,18 @@ const popularTags = Array.from(tagCounts.entries())
         results.classList.add('hidden');
       }
 
+      // The query string and Pagefind metadata are interpolated into HTML
+      // strings below — escape them so a crafted /search?q=… link can't
+      // inject markup (reflected XSS).
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
       function showInResults(html) {
         hints.style.display = 'none';
         results.classList.remove('hidden');
@@ -162,7 +174,7 @@ const popularTags = Array.from(tagCounts.entries())
             if (!res.results.length) {
               showInResults(
                 '<div class="py-12 text-center text-gray-500 dark:text-gray-400 space-y-2">' +
-                '<p>No results for “<strong>' + q + '</strong>”</p>' +
+                '<p>No results for “<strong>' + escapeHtml(q) + '</strong>”</p>' +
                 '<p class="text-small">Try a different term, or use <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs">tag:topic</code> to filter by tag.</p>' +
                 '</div>'
               );
@@ -179,18 +191,18 @@ const popularTags = Array.from(tagCounts.entries())
                 : total + ' result' + (total !== 1 ? 's' : '');
 
               var header = '<p class="text-small text-gray-500 dark:text-gray-400 mb-6">' +
-                countLabel + ' for “<strong>' + q + '</strong>”</p>';
+                countLabel + ' for “<strong>' + escapeHtml(q) + '</strong>”</p>';
 
               var items = data.map(function (d) {
                 var tags = (d.filters && d.filters.tag) ? d.filters.tag : [];
-                var category = (d.meta && d.meta.category) ? d.meta.category : '';
-                var title = (d.meta && d.meta.title) ? d.meta.title : 'Untitled';
-                var href = d.url;
+                var category = escapeHtml((d.meta && d.meta.category) ? d.meta.category : '');
+                var title = escapeHtml((d.meta && d.meta.title) ? d.meta.title : 'Untitled');
+                var href = escapeHtml(d.url);
 
                 var tagBadges = tags.slice(0, 5).map(function (tag) {
                   var active = isTag && tag.toLowerCase() === tagValue;
                   var cls = 'tag-chip tag-chip-inline' + (active ? ' tag-chip-active' : '');
-                  return '<a href="/tags/' + encodeURIComponent(tag) + '/" class="' + cls + '">' + tag.toUpperCase() + '</a>';
+                  return '<a href="/tags/' + encodeURIComponent(tag) + '/" class="' + cls + '">' + escapeHtml(tag.toUpperCase()) + '</a>';
                 }).join('');
 
                 return '<article class="border-b border-gray-200/50 dark:border-gray-700/50 py-5 last:border-b-0">' +

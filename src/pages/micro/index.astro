@@ -9,7 +9,7 @@ import { createSectionLandingProps } from '../../utils/sectionLanding';
 const allPosts = await getAllPosts();
 const microPosts = getPostsByCategory(allPosts, 'micro');
 
-// Transform posts for the ContentGrid component
+// Transform posts into the shape the card grids expect
 const transformedPosts = microPosts.map(transformPost);
 const postCount = transformedPosts.length;
 const postCountText = `${postCount} ${postCount === 1 ? 'post' : 'posts'}`;

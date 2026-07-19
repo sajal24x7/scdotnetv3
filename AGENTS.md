@@ -51,7 +51,7 @@ Commits in this repository use short, action-focused subjects (e.g., `Minor ui c
 - **Deferred interactivity**: Search is a standalone Pagefind-backed page (`/search/`) that lazy-loads its index; link previews load client logic lazily. Prefer loader islands and API-backed previews over embedding heavy payloads in every page.
 - **Shared filtering helpers**: Category filtering logic lives in `src/utils/content.ts`—reuse those helpers for home, garden, stream, and shelf views to keep behavior consistent.
 - **Twelve-column grid usage**:
-  - `Layout.astro` already wraps every page in a `.twelve-grid` shell with shared gap and padding tokens. Reach for existing layout components (`LayoutContainer`, `SectionLanding`, `StreamLayout`, `GardenGrid`, `BookGrid`, `BookDetailLayout`, `NordletterGrid`) before introducing fresh wrappers so column spans stay consistent.
+  - `Layout.astro` already wraps every page in a `.twelve-grid` shell with shared gap and padding tokens. Reach for existing layout components (`LayoutContainer`, `SectionLanding`, `StreamLayout`, `GardenGrid`, `BookDetailLayout`, `NordletterGrid`) before introducing fresh wrappers so column spans stay consistent.
   - Control gutters with the dedicated helpers (`grid-pad-narrow`, `grid-pad-wide`, `grid-pad-none`) instead of ad-hoc `px-*` classes; pair them with `grid-gap-tight` / `grid-gap-loose` when sections need custom rhythm.
   - Assign column widths and offsets via the span/start utilities (`grid-span-*`, `grid-start-*`) or the prebuilt component APIs rather than stacking multiple `.twelve-grid` containers. Only add a new grid host when a section truly needs its own twelve-column context (for example, distinct sub-layouts on `/feeds` or `/tags`).
   - When building new templates, keep the goal of "one canonical grid host per logical section" in mind to avoid wrapper proliferation. If you must nest grids, document why in the PR so the next pass can fold it into the shared `LayoutContainer` roadmap.
@@ -65,6 +65,6 @@ Commits in this repository use short, action-focused subjects (e.g., `Minor ui c
 ## Card Components
 - The homepage renders `UnifiedFeed`, which pulls from all content types directly; there is no separate "featured" data file or homepage-specific grid component.
 - `src/components/Card.astro` is the base article card used by `GardenGrid` (and therefore Garden, Evergreen, TIL, Stories, Poems) to render post summaries with optional micro-post prose.
-- `src/components/bookshelf/BookCard.astro` powers the bookshelf UI via `BookGrid`, formatting status, dates, and cover art for reading logs.
+- `src/components/bookshelf/BookshelfCard.astro` powers the bookshelf UI (used directly by `src/pages/bookshelf/index.astro` and `/shelf`), formatting status, dates, and cover art for reading logs.
 - `src/components/shelf/FilmCard.astro`, `TVCard.astro`, and `GameCard.astro` render entries on the film/TV/game shelf pages.
 - `StreamLayout` renders stream entries with `PostItem` instead of a dedicated card, and `NordletterGrid` ships bespoke markup for newsletter issues; there is no standalone stream or newsletter card component after the legacy `StreamCard` removal.
