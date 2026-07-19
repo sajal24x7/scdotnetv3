@@ -1,7 +1,7 @@
 ---
 title: 'Love, Death & Robots'
 slug: love-death-robots/s3
-created: 2026-07-15T11:14:16.000Z
+created: 2022-05-20T12:00:00.000Z
 category: tvshelf
 showTitle: 'Love, Death & Robots'
 season: 3

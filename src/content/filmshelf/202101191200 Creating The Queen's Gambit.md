@@ -1,7 +1,7 @@
 ---
 title: Creating The Queen's Gambit
 slug: creating-the-queen-s-gambit
-created: 2026-07-15T11:14:16.000Z
+created: 2021-01-19T12:00:00.000Z
 category: filmshelf
 finished: 2021-01-19T00:00:00.000Z
 rating: like

@@ -1,7 +1,7 @@
 ---
 title: "Brooklyn Nine-Nine"
 slug: "brooklyn-nine-nine/s5"
-created: 2026-07-15T11:14:16.000Z
+created: 2024-09-22T12:00:00.000Z
 category: tvshelf
 showTitle: "Brooklyn Nine-Nine"
 season: 5

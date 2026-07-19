@@ -1,7 +1,7 @@
 ---
 title: Never Have I Ever
 slug: never-have-i-ever/s2
-created: 2026-07-15T11:14:16.000Z
+created: 2021-07-21T12:00:00.000Z
 category: tvshelf
 showTitle: Never Have I Ever
 season: 2

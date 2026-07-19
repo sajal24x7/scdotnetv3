@@ -1,7 +1,7 @@
 ---
 title: 'Inside Bill''s Brain: Decoding Bill Gates'
 slug: inside-bill-s-brain-decoding-bill-gates/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2019-09-20T12:00:00.000Z
 category: tvshelf
 showTitle: 'Inside Bill''s Brain: Decoding Bill Gates'
 season: 1

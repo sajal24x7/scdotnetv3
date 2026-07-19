@@ -1,7 +1,7 @@
 ---
 title: 'Amend: The Fight for America'
 slug: amend-the-fight-for-america/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2021-02-27T12:00:00.000Z
 category: tvshelf
 showTitle: 'Amend: The Fight for America'
 season: 1

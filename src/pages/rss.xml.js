@@ -1,27 +1,16 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { getContentCategories } from '../utils/content';
-import { buildRssItem, rssNamespaces, sortByDate, isNotBackfilled } from '../utils/rss.js';
+import { buildRssItem, rssNamespaces, sortByDate } from '../utils/rss.js';
 import { publicationFilter, publishedCategories } from '../utils/publication';
 
 // Which categories (and which shelf statuses) appear here is governed by the
-// central allowlist in publication.config.json. Film/TV additionally carry a
-// date rule: entries bulk-backfilled from Netflix history must never surface
-// as "new" in feed readers, even though their status is allowed.
-const EXTRA_FILTERS = {
-  filmshelf: isNotBackfilled,
-  tvshelf: isNotBackfilled,
-};
-
+// central allowlist in publication.config.json.
 export async function GET(context) {
   const published = new Set(publishedCategories('rss'));
   const categories = getContentCategories().filter((category) => published.has(category));
   const allPosts = await Promise.all(
-    categories.map((category) => {
-      const allowed = publicationFilter('rss', category);
-      const extra = EXTRA_FILTERS[category];
-      return getCollection(category, extra ? (post) => allowed(post) && extra(post) : allowed);
-    })
+    categories.map((category) => getCollection(category, publicationFilter('rss', category)))
   );
   const flatPosts = allPosts.flat();
 

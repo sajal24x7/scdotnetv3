@@ -1,7 +1,7 @@
 ---
 title: Blue Eye Samurai
 slug: blue-eye-samurai/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2023-11-15T12:00:00.000Z
 category: tvshelf
 showTitle: Blue Eye Samurai
 season: 1

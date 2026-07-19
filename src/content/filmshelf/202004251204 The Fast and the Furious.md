@@ -1,7 +1,7 @@
 ---
 title: The Fast and the Furious
 slug: the-fast-and-the-furious
-created: 2026-07-15T11:14:16.000Z
+created: 2020-04-25T12:04:00.000Z
 category: filmshelf
 finished: 2020-04-25T00:00:00.000Z
 rating: like

@@ -1,7 +1,7 @@
 ---
 title: Wild Wild Country
 slug: wild-wild-country/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2021-11-02T12:00:00.000Z
 category: tvshelf
 showTitle: Wild Wild Country
 season: 1

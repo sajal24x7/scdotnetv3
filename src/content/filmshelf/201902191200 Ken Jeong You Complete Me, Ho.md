@@ -1,7 +1,7 @@
 ---
 title: 'Ken Jeong: You Complete Me, Ho'
 slug: ken-jeong-you-complete-me-ho
-created: 2026-07-15T11:14:16.000Z
+created: 2019-02-19T12:00:00.000Z
 category: filmshelf
 finished: 2019-02-19T00:00:00.000Z
 rating: like

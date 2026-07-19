@@ -1,7 +1,7 @@
 ---
 title: Black Holes | The Edge of All We Know
 slug: black-holes-the-edge-of-all-we-know
-created: 2026-07-15T11:14:16.000Z
+created: 2023-04-18T12:00:00.000Z
 category: filmshelf
 finished: 2023-04-18T00:00:00.000Z
 rating: like

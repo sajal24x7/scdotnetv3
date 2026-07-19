@@ -1,7 +1,7 @@
 ---
 title: 'House of Secrets: The Burari Deaths'
 slug: house-of-secrets-the-burari-deaths/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2021-10-25T12:00:00.000Z
 category: tvshelf
 showTitle: 'House of Secrets: The Burari Deaths'
 season: 1

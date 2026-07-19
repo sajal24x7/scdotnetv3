@@ -1,7 +1,7 @@
 ---
 title: Jujutsu Kaisen
 slug: jujutsu-kaisen/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2024-06-13T12:00:00.000Z
 category: tvshelf
 showTitle: Jujutsu Kaisen
 season: 1

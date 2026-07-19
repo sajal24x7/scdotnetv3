@@ -1,7 +1,7 @@
 ---
 title: "Patriot Act with Hasan Minhaj"
 slug: "patriot-act-with-hasan-minhaj/s5"
-created: 2026-07-15T11:14:16.000Z
+created: 2019-11-12T12:00:00.000Z
 category: tvshelf
 showTitle: "Patriot Act with Hasan Minhaj"
 season: 5

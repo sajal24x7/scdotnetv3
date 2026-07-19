@@ -1,7 +1,7 @@
 ---
 title: The Invisible Man
 slug: the-invisible-man
-created: 2026-07-15T11:14:16.000Z
+created: 2021-10-24T12:00:00.000Z
 category: filmshelf
 finished: 2021-10-24T00:00:00.000Z
 rating: like

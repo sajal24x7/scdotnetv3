@@ -1,7 +1,7 @@
 ---
 title: 'Money, Explained'
 slug: money-explained/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2021-05-20T12:00:00.000Z
 category: tvshelf
 showTitle: 'Money, Explained'
 season: 1

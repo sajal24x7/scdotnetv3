@@ -1,7 +1,7 @@
 ---
 title: Russell Peters vs. the World
 slug: russell-peters-vs-the-world/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2019-11-13T12:00:00.000Z
 category: tvshelf
 showTitle: Russell Peters vs. the World
 season: 1

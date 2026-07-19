@@ -1,7 +1,7 @@
 ---
 title: Kiss the Ground
 slug: kiss-the-ground
-created: 2026-07-15T11:14:16.000Z
+created: 2024-03-23T12:00:00.000Z
 category: filmshelf
 finished: 2024-03-23T00:00:00.000Z
 rating: like
