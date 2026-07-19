@@ -4,11 +4,26 @@
  * Implements rate limiting to prevent hitting API limits on social platforms.
  */
 
+/**
+ * Thrown instead of sleeping when a rate-limit wait would run past the
+ * caller's deadline (see RateLimiter#setDeadline) — e.g. an hourly Meta API
+ * cap can demand a ~1 hour wait, far longer than a CI job's own timeout.
+ * Callers treat this like any other fetch failure: skip the platform for
+ * this post/run and let a later run pick it up once the window has reset.
+ */
+export class RateLimitBudgetExceededError extends Error {}
+
 export class RateLimiter {
   constructor(maxRequests, windowMs) {
     this.maxRequests = maxRequests;
     this.windowMs = windowMs;
     this.requests = [];
+    this.deadline = null;
+  }
+
+  /** Stop waiting out rate limits past this timestamp (ms epoch); throw instead. */
+  setDeadline(deadline) {
+    this.deadline = deadline;
   }
 
   /**
@@ -26,6 +41,11 @@ export class RateLimiter {
       const waitTime = this.windowMs - (now - oldestRequest) + 1000; // Add 1 second buffer
 
       if (waitTime > 0) {
+        if (this.deadline && now + waitTime > this.deadline) {
+          throw new RateLimitBudgetExceededError(
+            `Rate limit wait of ${Math.ceil(waitTime / 1000)}s would exceed the run's time budget`
+          );
+        }
         console.log(`Rate limit reached, waiting ${Math.ceil(waitTime / 1000)} seconds...`);
         await new Promise(resolve => setTimeout(resolve, waitTime));
         return this.checkLimit(); // Recursive call to check again

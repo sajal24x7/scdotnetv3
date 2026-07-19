@@ -410,6 +410,17 @@
       },
       "url": "https://newsmast.community/@football",
       "status": "approved"
+    },
+    {
+      "id": "threads:like-count:Da5YqzoEb4A",
+      "type": "like-count",
+      "platform": "threads",
+      "author": {
+        "name": "Threads"
+      },
+      "url": "https://www.threads.com/@sajal24x7/post/Da5YqzoEb4A",
+      "count": 1,
+      "status": "approved"
     }
   ],
   "micro/202607150924": [
@@ -458,13 +469,105 @@
       "type": "reply",
       "platform": "mastodon",
       "author": {
-        "name": "Michael",
+        "name": "Michael Thomas",
         "url": "https://mstdn.thms.uk/@michael",
         "avatar": "https://storage.sajalchoudhary.net/avatars/bd6e885b8a0772c650b7e1d34539c714.jpg"
       },
       "content": "<p><a href=\"https://mastodon.social/@sajal24x7\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">@sajal24x7</a> I would go for it, if it's affordable. Just for the cool-factor. I'd love to get thom.as (my last name) but sadly not available…</p>",
       "url": "https://mstdn.thms.uk/@michael/116930279548593259",
       "published": "2026-07-16T15:07:50.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:reply:116930725746389606",
+      "type": "reply",
+      "platform": "mastodon",
+      "author": {
+        "name": "Sajal Choudhary",
+        "url": "https://mastodon.social/@sajal24x7",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/fefe79d6135555ec3d97ad3f7c5e0802.jpg"
+      },
+      "content": "<p><a href=\"https://mstdn.thms.uk/@michael\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">@michael</a> thanks for the comment! I very well might.</p>",
+      "url": "https://mastodon.social/@sajal24x7/116930725746389606",
+      "published": "2026-07-16T17:01:19.095Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:reply:116930882452358455",
+      "type": "reply",
+      "platform": "mastodon",
+      "author": {
+        "name": "Patrick Mevzek",
+        "url": "https://framapiaf.org/@pmevzek",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/75907b395a5be8ba8e35d1b3cec4ff04.jpg"
+      },
+      "content": "<p><a href=\"https://mastodon.social/@sajal24x7\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">@sajal24x7</a> 1) I don't think people type domains so the length is not really a factor 2) for \"smart\" plays with short names... be worry of jurisdictions. Both `.tt`, `.rs`, `.al` and others are COUNTRY TLDs. Which means you are bound by these countries laws. See for example past risk on `bit.ly`, under Lybian rules. Make sure to read all fine prints in contracts, do not blindly click \"Accept\" and become bound by Albanian (.al) laws on domains without knowing…</p>",
+      "url": "https://framapiaf.org/@pmevzek/116930882392848033",
+      "published": "2026-07-16T17:41:09.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:reply:116934583454615759",
+      "type": "reply",
+      "platform": "mastodon",
+      "author": {
+        "name": "Sajal Choudhary",
+        "url": "https://mastodon.social/@sajal24x7",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/fefe79d6135555ec3d97ad3f7c5e0802.jpg"
+      },
+      "content": "<p><a href=\"https://framapiaf.org/@pmevzek\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">@pmevzek</a> yeah that was my worry too, perhaps more than the cost.</p>",
+      "url": "https://mastodon.social/@sajal24x7/116934583454615759",
+      "published": "2026-07-17T09:22:23.051Z",
+      "status": "approved"
+    }
+  ],
+  "micro/202607161945": [
+    {
+      "id": "mastodon:like:116931222693562361:109744912726975242",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Full Metal Archaeopteryx",
+        "url": "https://tech.lgbt/@DelilahTech",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/e02dc61b68eeb5aba6200c62f4d44695.png"
+      },
+      "url": "https://tech.lgbt/@DelilahTech",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116931222693562361:109744912726975242",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Full Metal Archaeopteryx",
+        "url": "https://tech.lgbt/@DelilahTech",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/e02dc61b68eeb5aba6200c62f4d44695.png"
+      },
+      "url": "https://tech.lgbt/@DelilahTech",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116931222693562361:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116931222693562361:116141936733036818",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Literbook",
+        "url": "https://mastodon.social/@Literbook",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/5e0c9f27cbe4ab1dddc05717be534585.png"
+      },
+      "url": "https://mastodon.social/@Literbook",
       "status": "approved"
     }
   ],
@@ -782,7 +885,7 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/DavnIlfD_41/",
-      "count": 6,
+      "count": 7,
       "status": "approved"
     },
     {
@@ -831,7 +934,44 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/DaxxLSGoGW4/",
-      "count": 29,
+      "count": 32,
+      "status": "approved"
+    }
+  ],
+  "photo/202607170957": [
+    {
+      "id": "instagram:like-count:Da5Y_EIEZgo",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/Da5Y_EIEZgo/",
+      "count": 6,
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116935695838244879:116034897351104887",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Mario Eijkemans",
+        "url": "https://mastodon.social/@675345456754334566664w",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/26967e8f86440c32bfcc2abb3fc22bbf.jpg"
+      },
+      "url": "https://mastodon.social/@675345456754334566664w",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116935695838244879:111653399827320429",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Nature & Wildlife Channel",
+        "url": "https://newsmast.community/@nature",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/17391e6a0ff727456d2546e6800a3d2f.png"
+      },
+      "url": "https://newsmast.community/@nature",
       "status": "approved"
     }
   ],

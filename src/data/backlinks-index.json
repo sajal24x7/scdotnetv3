@@ -1672,6 +1672,7 @@
       "nordletter/202606252034 NL111 - Love is Love.md",
       "nordletter/202607022037 NL112 - The Diabetes Code.md",
       "nordletter/202607101227 NL113 - Fable is Good.md",
+      "nordletter/202607101227 NL113 - Fable is Good.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -1711,6 +1712,8 @@
       "photo/201404050044 Day TwentyFour Sport.md",
       "photo/202607100843 A rainbow over chemicum.md",
       "photo/202607100930 Helsinki Pride 2026.md",
+      "photo/202607111030.md",
+      "photo/202607120048.md",
       "photo/202607111030.md",
       "photo/202607120048.md",
       "photo/202607132128.md",
@@ -7911,6 +7914,16 @@
       "snippet": "TOFI not Tofu (the food). Read first about it in The Diabetes Code"
     }
   ],
+  "now/building-scdotnetv3-on-astro": [
+    {
+      "slug": "/nordletter/nl113-fable-is-good/",
+      "title": "Fable Is Good",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-10T09:27:00.000Z",
+      "snippet": "On Tuesday, I marked my long-running (nine month long) task of building my website on Astro Most of my site was ready since a long time. I was able to have all the different categories of notes I wanted to have. I had a mostly automated workflow to get a note in my vault to the GitHub repo that has all the code it needs to deploy my site. Some things, namely the about and the colophon pages were still left to be done. But I was happy with where I was."
+    }
+  ],
   "nordletter/nl106-citcon-2026-helsinki": [
     {
       "slug": "/nordletter/nl113-fable-is-good/",
@@ -7938,7 +7951,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-07-10T09:27:00.000Z",
-      "snippet": "The age of subsidies is over though. What that means for us going forward remains to be seen."
+      "snippet": "The age of subsidies is over though. What that means for us going forward, remains to be seen."
     }
   ],
   "nordletter/nl102-seeing-the-crown-bridge": [
@@ -7948,17 +7961,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-07-10T09:27:00.000Z",
-      "snippet": "After lunch, we decided to walk toward the Crown Bridge. It was my second time here. And this whole series of three bridges, this whole walkway is so damn beautiful."
-    }
-  ],
-  "now/building-scdotnetv3-on-astro": [
-    {
-      "slug": "/nordletter/nl113-fable-is-good/",
-      "title": "Fable Is Good",
-      "description": "",
-      "category": "nordletter",
-      "created": "2026-07-10T09:27:00.000Z",
-      "snippet": "On Tuesday, I marked my long-running (nine-month-long) task of building my website on Astro. Most of my site was ready since a long time. I was able to have all the different categories of notes I wanted to have. I had a mostly automated workflow to get a note in my vault to the GitHub repo that has all the code it needs to deploy my site. Some things, namely the about and the colophon pages, were still left to be done. But I was happy with where I was."
+      "snippet": "After lunch, we decide to walk toward the Crown Bridge. It was my second time here. And this whole series of three bridges, this whole walkway is so damn beautiful."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
