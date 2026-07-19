@@ -189,14 +189,10 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    color: #6b7280;
+    color: var(--gray-text-muted);
     font-size: var(--text-small);
     font-weight: 500;
     transition: color 0.2s ease;
-  }
-
-  :global(.dark) .post-item-timestamp {
-    color: #9ca3af;
   }
 
   .post-item-timestamp:hover {

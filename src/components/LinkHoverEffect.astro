@@ -2,14 +2,12 @@
 import { getContentPreviewCategories } from '../data/contentPreviewStore';
 
 const previewCategories = await getContentPreviewCategories();
-const previewCategoriesJson = JSON.stringify(previewCategories);
 ---
 
-<style>
-  /* Links now use global styling with persistent underlines */
-  /* Internal and external links inherit text color and use random underline colors */
-
-  /* Hover tooltip styles */
+<!-- The tooltip element is created by the script below and appended to <body>,
+     so these styles must be global — scoped selectors would require Astro's
+     scope attribute, which JS-created elements never carry. -->
+<style is:global>
   .hover-tooltip {
     position: fixed;
     opacity: 0;
@@ -18,65 +16,59 @@ const previewCategoriesJson = JSON.stringify(previewCategories);
     pointer-events: none;
   }
 
-  .hover-tooltip.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    display: block !important;
-  }
-
   /* Internal link preview */
   .hover-tooltip .internal-preview {
-    border-left: 3px solid #3b82f6 !important;
-    padding-left: 12px !important;
+    border-left: 3px solid #3b82f6;
+    padding-left: 12px;
   }
 
   .hover-tooltip .internal-preview .title {
-    font-weight: 600 !important;
-    color: #3b82f6 !important;
-    margin-bottom: 4px !important;
-    font-size: var(--text-small) !important;
+    font-weight: 600;
+    color: #3b82f6;
+    margin-bottom: 4px;
+    font-size: var(--text-small);
   }
-  
-  :global(.dark) .hover-tooltip .internal-preview .title {
-    color: #60a5fa !important;
+
+  .dark .hover-tooltip .internal-preview .title {
+    color: #60a5fa;
   }
 
   .hover-tooltip .internal-preview .description {
-    font-size: var(--text-xs) !important;
-    line-height: 1.4 !important;
-    margin-top: 4px !important;
-    opacity: 0.8 !important;
+    font-size: var(--text-xs);
+    line-height: 1.4;
+    margin-top: 4px;
+    opacity: 0.8;
   }
 
   /* External link preview */
   .hover-tooltip .external-preview {
-    border-left: 3px solid rgb(var(--color-accent)) !important;
-    padding-left: 12px !important;
+    border-left: 3px solid rgb(var(--color-accent));
+    padding-left: 12px;
   }
 
   .hover-tooltip .external-preview .url {
-    font-family: var(--font-mono) !important;
-    font-size: var(--text-xs) !important;
-    color: rgb(var(--color-accent)) !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    hyphens: auto !important;
-    margin-bottom: 6px !important;
-    line-height: 1.4 !important;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: rgb(var(--color-accent));
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    margin-bottom: 6px;
+    line-height: 1.4;
   }
 
-  :global(.dark) .hover-tooltip .external-preview .url {
-    color: #a78bfa !important;
+  .dark .hover-tooltip .external-preview .url {
+    color: #a78bfa;
   }
 </style>
 
 
-<script is:inline>
+<script is:inline define:vars={{ previewCategories }}>
     (function () {
         const PREVIEW_KEY = '__SC_LINK_PREVIEWS__';
         const STATE_KEY = '__SC_LINK_HOVER_STATE__';
         const PREVIEW_BASE_URL = '/api/link-previews';
-        const AVAILABLE_SEGMENTS = new Set(JSON.parse('{previewCategoriesJson}'));
+        const AVAILABLE_SEGMENTS = new Set(previewCategories);
 
         const existing = window[PREVIEW_KEY];
         const previewMap = existing instanceof Map ? existing : new Map();
@@ -369,6 +361,12 @@ const previewCategoriesJson = JSON.stringify(previewCategories);
             const preview = previewMap.get(normalized) || previewMap.get(fallback);
 
             if (!preview) {
+                // No preview data for this path (e.g. a stale link): if the
+                // tooltip is showing its loading state, settle on title only.
+                if (state.tooltip && state.tooltip.classList.contains('visible') && state.currentLink === link) {
+                    const titleText = link.getAttribute('data-title') || (link.textContent ? link.textContent.trim() : 'Internal Link');
+                    renderInternalPreview(titleText, link.getAttribute('data-description') || '');
+                }
                 return;
             }
 
@@ -551,6 +549,33 @@ const previewCategoriesJson = JSON.stringify(previewCategories);
             state.observer = observer;
 
             document.addEventListener('astro:after-swap', scheduleSetup);
+
+            // Touch devices fire the emulated mouseenter on tap but never
+            // mouseleave, so the tooltip would stick until reload. Dismiss it
+            // when the user taps/clicks outside the hovered link, scrolls, or
+            // returns to a bfcache-restored page.
+            document.addEventListener('pointerdown', (event) => {
+                if (!state.tooltip || !state.tooltip.classList.contains('visible')) {
+                    return;
+                }
+                const target = event.target;
+                if (state.currentLink && target instanceof Node && state.currentLink.contains(target)) {
+                    return;
+                }
+                hideTooltip();
+            }, { passive: true });
+
+            window.addEventListener('scroll', () => {
+                if (state.tooltip && state.tooltip.classList.contains('visible')) {
+                    hideTooltip();
+                }
+            }, { passive: true });
+
+            window.addEventListener('pageshow', (event) => {
+                if (event.persisted && state.tooltip) {
+                    hideTooltip();
+                }
+            });
         } else {
             scheduleSetup();
         }

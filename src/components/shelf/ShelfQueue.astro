@@ -60,14 +60,10 @@ const formatAdded = (date: Date) =>
 
 <style>
     .shelf-queue__empty {
-        color: #6b7280;
+        color: var(--gray-text-muted);
         font-size: var(--text-small);
         padding: 2rem 0;
         text-align: center;
-    }
-
-    :global(.dark) .shelf-queue__empty {
-        color: #9ca3af;
     }
 
     .shelf-queue__list {
@@ -132,11 +128,7 @@ const formatAdded = (date: Date) =>
 
     .shelf-queue__creator {
         font-size: var(--text-small);
-        color: #6b7280;
-    }
-
-    :global(.dark) .shelf-queue__creator {
-        color: #9ca3af;
+        color: var(--gray-text-muted);
     }
 
     .shelf-queue__added {
@@ -149,10 +141,6 @@ const formatAdded = (date: Date) =>
     .shelf-queue__body {
         margin: 0.35rem 0 0;
         font-size: var(--text-small);
-        color: #6b7280;
-    }
-
-    :global(.dark) .shelf-queue__body {
-        color: #9ca3af;
+        color: var(--gray-text-muted);
     }
 </style>

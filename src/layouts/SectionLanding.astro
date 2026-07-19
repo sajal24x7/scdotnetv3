@@ -309,13 +309,9 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
     .section-count--plain {
         font-size: 1rem;
         font-weight: 600;
-        color: #1f2937;
+        color: var(--gray-heading);
         text-transform: none;
         letter-spacing: normal;
-    }
-
-    :global(.dark) .section-count--plain {
-        color: #f9fafb;
     }
 
     .section-taglist {
@@ -368,7 +364,7 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
     }
 
     :global(.dark) .section-tag-filter__results {
-        color: #9ca3af;
+        color: var(--gray-text-muted);
         background: rgba(255, 255, 255, 0.03);
         border-color: rgba(255, 255, 255, 0.08);
     }
@@ -376,11 +372,7 @@ const isTagFilterEnabled = tagFilterMode === 'filter' && Boolean(tagCategory);
     .section-tag-filter__summary {
         font-size: var(--text-small);
         font-weight: 500;
-        color: #6b7280;
-    }
-
-    :global(.dark) .section-tag-filter__summary {
-        color: #9ca3af;
+        color: var(--gray-text-muted);
     }
 
     .section-tag-filter__active {
