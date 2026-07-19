@@ -1,7 +1,7 @@
 ---
 title: 'Abstract: The Art of Design'
 slug: abstract-the-art-of-design/s2
-created: 2026-07-15T11:14:16.000Z
+created: 2024-08-29T12:00:00.000Z
 category: tvshelf
 showTitle: 'Abstract: The Art of Design'
 season: 2

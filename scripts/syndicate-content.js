@@ -29,13 +29,12 @@ import { RateLimiter } from './lib/utils/rate-limiter.js';
 const PLATFORMS = ['mastodon', 'bluesky', 'threads', 'instagram'];
 // Instagram can't post without an image, so only photo posts go there
 const PHOTO_ONLY_PLATFORMS = new Set(['instagram']);
-const STREAM_CATEGORIES = ['blog', 'micro', 'photo'];
-const GARDEN_CATEGORIES = ['evergreen', 'til', 'bookshelf', 'story', 'poem'];
-const NORDLETTER_CATEGORIES = ['nordletter'];
-const SYNDICATION_CATEGORIES = [
-    ...new Set([...STREAM_CATEGORIES, ...GARDEN_CATEGORIES, ...NORDLETTER_CATEGORIES])
-];
-const DRY_RUN = process.env.SYNDICATION_DRY_RUN === 'true';
+// Central publication allowlist: publication.config.json decides which
+// categories (and which shelf statuses) syndicate. Explicit allow only —
+// anything missing from its `syndication` map is never cross-posted.
+const SYNDICATION_RULES = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), 'publication.config.json'), 'utf-8')
+).syndication || {};const DRY_RUN = process.env.SYNDICATION_DRY_RUN === 'true';
 const DAYS_BACK = parseInt(process.env.SYNDICATION_DAYS_BACK || '7', 10);
 
 /**
@@ -109,14 +108,14 @@ function eligiblePlatforms(post) {
  * Check if a post needs syndication
  */
 function needsSyndication(post) {
-  // Only syndicate configured categories
+  // Only syndicate what the central allowlist permits: the category must be
+  // listed, and for status-gated categories (shelves) the status must match
   const category = (post.data.category || '').toLowerCase();
-  if (!SYNDICATION_CATEGORIES.includes(category)) {
+  const rule = SYNDICATION_RULES[category];
+  if (!rule) {
     return false;
   }
-
-  // Queue stubs (status: todo) are tracking placeholders, not publishable posts
-  if (post.data.status === 'todo') {
+  if (rule !== 'all' && !rule.includes(post.data.status)) {
     return false;
   }
 

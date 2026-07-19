@@ -1,7 +1,7 @@
 ---
 title: 'You Are What You Eat: A Twin Experiment'
 slug: you-are-what-you-eat-a-twin-experiment/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2024-01-02T12:00:00.000Z
 category: tvshelf
 showTitle: 'You Are What You Eat: A Twin Experiment'
 season: 1

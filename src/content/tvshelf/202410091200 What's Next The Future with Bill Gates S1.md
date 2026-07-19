@@ -1,7 +1,7 @@
 ---
 title: What's Next? The Future with Bill Gates
 slug: what-s-next-the-future-with-bill-gates/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2024-10-09T12:00:00.000Z
 category: tvshelf
 showTitle: What's Next? The Future with Bill Gates
 season: 1

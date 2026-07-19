@@ -2,6 +2,7 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
 import { getContentCategories } from '../../utils/content';
+import { publicationFilter } from '../../utils/publication';
 import { parseMarkdown } from '../../utils/markdown';
 import { convertWikilinks } from '../../utils/remarkWikilinks';
 
@@ -11,8 +12,9 @@ export async function GET(context) {
   const flatPosts = allPosts.flat();
   
   // Filter for nordletter content and sort by publish date (newest first)
+  const allowed = publicationFilter('rss', 'nordletter');
   const newsletterContent = flatPosts
-    .filter(entry => entry.data.category === 'nordletter')
+    .filter(entry => entry.data.category === 'nordletter' && allowed(entry))
     .sort((a, b) => b.data.created.valueOf() - a.data.created.valueOf());
   
   // Extract the site URL from the Astro context

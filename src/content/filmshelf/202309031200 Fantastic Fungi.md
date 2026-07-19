@@ -1,7 +1,7 @@
 ---
 title: Fantastic Fungi
 slug: fantastic-fungi
-created: 2026-07-15T11:14:16.000Z
+created: 2023-09-03T12:00:00.000Z
 category: filmshelf
 finished: 2023-09-03T00:00:00.000Z
 rating: like

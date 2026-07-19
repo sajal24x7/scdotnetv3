@@ -1,7 +1,7 @@
 ---
 title: Ugly Delicious
 slug: ugly-delicious/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2019-08-16T12:00:00.000Z
 category: tvshelf
 showTitle: Ugly Delicious
 season: 1

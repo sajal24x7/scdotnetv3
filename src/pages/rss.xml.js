@@ -1,23 +1,16 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { getContentCategories } from '../utils/content';
-import { buildRssItem, rssNamespaces, sortByDate, isNotBackfilled } from '../utils/rss.js';
+import { buildRssItem, rssNamespaces, sortByDate } from '../utils/rss.js';
+import { publicationFilter, publishedCategories } from '../utils/publication';
 
-// Shelf categories carry a `todo`/`started`/`paused`/`finished` status; only
-// finished entries are posts, so keep queue stubs out of the site-wide feed
-// the same way each shelf's own feed already does (see shelf/rss.xml.js).
-const isFinished = (post) => post.data.status === 'finished';
-const SHELF_STATUS_FILTERS = {
-  bookshelf: isFinished,
-  filmshelf: isNotBackfilled,
-  tvshelf: isNotBackfilled,
-  gameshelf: isFinished,
-};
-
+// Which categories (and which shelf statuses) appear here is governed by the
+// central allowlist in publication.config.json.
 export async function GET(context) {
-  const categories = getContentCategories();
+  const published = new Set(publishedCategories('rss'));
+  const categories = getContentCategories().filter((category) => published.has(category));
   const allPosts = await Promise.all(
-    categories.map(category => getCollection(category, SHELF_STATUS_FILTERS[category]))
+    categories.map((category) => getCollection(category, publicationFilter('rss', category)))
   );
   const flatPosts = allPosts.flat();
 

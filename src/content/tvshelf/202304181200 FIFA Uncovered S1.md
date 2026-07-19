@@ -1,7 +1,7 @@
 ---
 title: FIFA Uncovered
 slug: fifa-uncovered/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2023-04-18T12:00:00.000Z
 category: tvshelf
 showTitle: FIFA Uncovered
 season: 1

@@ -1,7 +1,7 @@
 ---
 title: Comedy Premium League
 slug: comedy-premium-league/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2021-08-20T12:00:00.000Z
 category: tvshelf
 showTitle: Comedy Premium League
 season: 1

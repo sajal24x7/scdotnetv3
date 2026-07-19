@@ -1,7 +1,7 @@
 ---
 title: 'Between Two Ferns: The Movie'
 slug: between-two-ferns-the-movie
-created: 2026-07-15T11:14:16.000Z
+created: 2019-10-25T12:00:00.000Z
 category: filmshelf
 finished: 2019-10-25T00:00:00.000Z
 rating: like

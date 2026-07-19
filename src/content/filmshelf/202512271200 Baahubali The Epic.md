@@ -1,7 +1,7 @@
 ---
 title: Baahubali The Epic
 slug: baahubali-the-epic
-created: 2026-07-15T11:14:16.000Z
+created: 2025-12-27T12:00:00.000Z
 category: filmshelf
 finished: 2025-12-27T00:00:00.000Z
 rating: like

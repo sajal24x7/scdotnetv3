@@ -1,7 +1,7 @@
 ---
 title: Too Hot to Handle
 slug: too-hot-to-handle/s2
-created: 2026-07-15T11:14:16.000Z
+created: 2021-06-25T12:01:00.000Z
 category: tvshelf
 showTitle: Too Hot to Handle
 season: 2

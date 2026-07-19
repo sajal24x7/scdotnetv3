@@ -1,7 +1,7 @@
 ---
 title: 'Chris Rock Total Blackout: The Tamborine Extended Cut'
 slug: chris-rock-total-blackout-the-tamborine-extended-cut
-created: 2026-07-15T11:14:16.000Z
+created: 2021-01-13T12:00:00.000Z
 category: filmshelf
 finished: 2021-01-13T00:00:00.000Z
 rating: like

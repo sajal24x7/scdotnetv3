@@ -1,7 +1,7 @@
 ---
 title: The Mars Generation
 slug: the-mars-generation
-created: 2026-07-15T11:14:16.000Z
+created: 2019-09-12T12:00:00.000Z
 category: filmshelf
 finished: 2019-09-12T00:00:00.000Z
 rating: like

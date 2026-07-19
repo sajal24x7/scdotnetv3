@@ -1,7 +1,7 @@
 ---
 title: 'Kingsman: The Secret Service'
 slug: kingsman-the-secret-service
-created: 2026-07-15T11:14:16.000Z
+created: 2024-08-16T12:01:00.000Z
 category: filmshelf
 finished: 2024-08-16T00:00:00.000Z
 rating: like

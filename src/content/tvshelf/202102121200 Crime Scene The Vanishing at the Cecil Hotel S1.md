@@ -1,7 +1,7 @@
 ---
 title: 'Crime Scene: The Vanishing at the Cecil Hotel'
 slug: crime-scene-the-vanishing-at-the-cecil-hotel/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2021-02-12T12:00:00.000Z
 category: tvshelf
 showTitle: 'Crime Scene: The Vanishing at the Cecil Hotel'
 season: 1

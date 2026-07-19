@@ -1,7 +1,7 @@
 ---
 title: 'Live to 100: Secrets of the Blue Zones'
 slug: live-to-100-secrets-of-the-blue-zones/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2024-01-05T12:00:00.000Z
 category: tvshelf
 showTitle: 'Live to 100: Secrets of the Blue Zones'
 season: 1

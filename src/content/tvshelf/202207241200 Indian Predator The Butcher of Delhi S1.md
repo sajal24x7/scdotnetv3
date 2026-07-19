@@ -1,7 +1,7 @@
 ---
 title: 'Indian Predator: The Butcher of Delhi'
 slug: indian-predator-the-butcher-of-delhi/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2022-07-24T12:00:00.000Z
 category: tvshelf
 showTitle: 'Indian Predator: The Butcher of Delhi'
 season: 1

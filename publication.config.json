@@ -1,0 +1,33 @@
+{
+  "$comment": "Central publication allowlist — the single place that decides which posts reach readers. Each surface maps category -> \"all\" (every post) or an array of allowed `status` frontmatter values. Explicit allow only: a category or status missing from a surface publishes NOTHING there, so new categories and new shelf statuses stay off every feed until added here. `rss` governs the site-wide, per-category, and group RSS feeds; `syndication` governs POSSE cross-posting (Mastodon, Bluesky, Threads, Instagram). See docs/operations/publication.md.",
+  "rss": {
+    "blog": "all",
+    "micro": "all",
+    "photo": "all",
+    "evergreen": "all",
+    "til": "all",
+    "story": "all",
+    "poem": "all",
+    "now": "all",
+    "colophon": "all",
+    "nordletter": "all",
+    "bookshelf": ["finished"],
+    "filmshelf": ["finished"],
+    "tvshelf": ["finished"],
+    "gameshelf": ["finished"]
+  },
+  "syndication": {
+    "blog": "all",
+    "micro": "all",
+    "photo": "all",
+    "evergreen": "all",
+    "til": "all",
+    "story": "all",
+    "poem": "all",
+    "nordletter": "all",
+    "bookshelf": ["finished"],
+    "filmshelf": ["finished"],
+    "tvshelf": ["finished"],
+    "gameshelf": ["finished"]
+  }
+}

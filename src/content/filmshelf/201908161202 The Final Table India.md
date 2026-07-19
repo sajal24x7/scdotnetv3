@@ -1,7 +1,7 @@
 ---
 title: "The Final Table: India"
 slug: the-final-table-india
-created: 2026-07-15T11:14:16.000Z
+created: 2019-08-16T12:02:00.000Z
 category: filmshelf
 finished: 2019-08-16T00:00:00.000Z
 rating: like

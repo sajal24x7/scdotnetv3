@@ -1,7 +1,7 @@
 ---
 title: Saripodhaa Sanivaaram
 slug: saripodhaa-sanivaaram
-created: 2026-07-15T11:14:16.000Z
+created: 2024-10-12T12:00:00.000Z
 category: filmshelf
 finished: 2024-10-12T00:00:00.000Z
 rating: like

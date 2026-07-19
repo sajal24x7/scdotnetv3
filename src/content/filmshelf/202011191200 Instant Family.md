@@ -1,7 +1,7 @@
 ---
 title: Instant Family
 slug: instant-family
-created: 2026-07-15T11:14:16.000Z
+created: 2020-11-19T12:00:00.000Z
 category: filmshelf
 finished: 2020-11-19T00:00:00.000Z
 rating: like

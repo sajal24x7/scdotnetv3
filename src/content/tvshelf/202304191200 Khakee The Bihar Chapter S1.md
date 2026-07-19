@@ -1,7 +1,7 @@
 ---
 title: 'Khakee: The Bihar Chapter'
 slug: khakee-the-bihar-chapter/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2023-04-19T12:00:00.000Z
 category: tvshelf
 showTitle: 'Khakee: The Bihar Chapter'
 season: 1

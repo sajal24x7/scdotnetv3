@@ -1,7 +1,7 @@
 ---
 title: GODZILLA City on the Edge of Battle
 slug: godzilla-city-on-the-edge-of-battle
-created: 2026-07-15T11:14:16.000Z
+created: 2021-02-21T12:01:00.000Z
 category: filmshelf
 finished: 2021-02-21T00:00:00.000Z
 rating: like

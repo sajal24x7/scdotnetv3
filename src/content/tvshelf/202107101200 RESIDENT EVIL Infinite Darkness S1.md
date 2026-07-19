@@ -1,7 +1,7 @@
 ---
 title: 'RESIDENT EVIL: Infinite Darkness'
 slug: resident-evil-infinite-darkness/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2021-07-10T12:00:00.000Z
 category: tvshelf
 showTitle: 'RESIDENT EVIL: Infinite Darkness'
 season: 1

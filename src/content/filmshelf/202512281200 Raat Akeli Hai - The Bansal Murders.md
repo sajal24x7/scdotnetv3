@@ -1,7 +1,7 @@
 ---
 title: Raat Akeli Hai - The Bansal Murders
 slug: raat-akeli-hai-the-bansal-murders
-created: 2026-07-15T11:14:16.000Z
+created: 2025-12-28T12:00:00.000Z
 category: filmshelf
 finished: 2025-12-28T00:00:00.000Z
 rating: like

@@ -1,7 +1,7 @@
 ---
 title: 'Formula 1: Drive to Survive'
 slug: formula-1-drive-to-survive/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2021-01-13T12:00:00.000Z
 category: tvshelf
 showTitle: 'Formula 1: Drive to Survive'
 season: 1

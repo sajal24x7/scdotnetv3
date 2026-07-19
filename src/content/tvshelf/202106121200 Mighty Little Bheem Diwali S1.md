@@ -1,7 +1,7 @@
 ---
 title: "Mighty Little Bheem: Diwali"
 slug: "mighty-little-bheem-diwali/s1"
-created: 2026-07-15T11:14:16.000Z
+created: 2021-06-12T12:00:00.000Z
 category: tvshelf
 showTitle: "Mighty Little Bheem: Diwali"
 season: 1

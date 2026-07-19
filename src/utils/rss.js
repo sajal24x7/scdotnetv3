@@ -64,16 +64,3 @@ export function sortByDate(posts) {
     new Date(b.data.created).valueOf() - new Date(a.data.created).valueOf()
   );
 }
-
-// Film/TV entries finished before this date predate the shelf-tracking habit
-// and were backfilled from Netflix history in one batch. They should never
-// surface as "new" items in a feed reader, so their RSS feeds exclude
-// anything finished earlier than this cutoff — permanently, not just at
-// publish time.
-export const SHELF_BACKFILL_CUTOFF = new Date('2026-05-25T00:00:00.000Z');
-
-export function isNotBackfilled(post) {
-  return post.data.status === 'finished'
-    && post.data.finished != null
-    && new Date(post.data.finished) >= SHELF_BACKFILL_CUTOFF;
-}

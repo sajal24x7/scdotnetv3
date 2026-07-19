@@ -1,7 +1,7 @@
 ---
 title: The Ba***ds of Bollywood
 slug: the-ba-ds-of-bollywood/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2025-09-26T12:01:00.000Z
 category: tvshelf
 showTitle: The Ba***ds of Bollywood
 season: 1

@@ -1,7 +1,7 @@
 ---
 title: 'Jeffrey Epstein: Filthy Rich'
 slug: jeffrey-epstein-filthy-rich/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2020-06-13T12:00:00.000Z
 category: tvshelf
 showTitle: 'Jeffrey Epstein: Filthy Rich'
 season: 1

@@ -1,7 +1,7 @@
 ---
 title: The Queen's Gambit
 slug: the-queen-s-gambit/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2020-12-22T12:00:00.000Z
 category: tvshelf
 showTitle: The Queen's Gambit
 season: 1

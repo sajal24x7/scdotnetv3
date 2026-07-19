@@ -1,7 +1,7 @@
 ---
 title: 'Coronavirus, Explained'
 slug: coronavirus-explained/s1
-created: 2026-07-15T11:14:16.000Z
+created: 2020-04-26T12:00:00.000Z
 category: tvshelf
 showTitle: 'Coronavirus, Explained'
 season: 1

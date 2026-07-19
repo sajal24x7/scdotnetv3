@@ -20,6 +20,7 @@ The Astro site lives in `src`, with route files under `src/pages`, shared layout
   - [`docs/content/publishing-pipeline.md`](docs/content/publishing-pipeline.md), [`docs/content/micro-composer.md`](docs/content/micro-composer.md) — How content reaches `main` (Obsidian → `content` branch → pipeline; `/write` → direct commit).
   - [`docs/pages/shelf.md`](docs/pages/shelf.md), [`docs/pages/books.md`](docs/pages/books.md) — Shelf frontmatter reference and the published-works page.
   - [`docs/operations/deployment.md`](docs/operations/deployment.md), [`docs/operations/syndication.md`](docs/operations/syndication.md) — Build and POSSE procedures.
+  - [`docs/operations/publication.md`](docs/operations/publication.md) — `publication.config.json`, the central explicit-allow list for what reaches RSS feeds and syndication.
   - [`docs/tools/`](docs/README.md#tools--automation) — Cover downloaders and shelf metadata enrichment.
   - [`docs/contributing/claude-guide.md`](docs/contributing/claude-guide.md) — Quick reference for automation assistants.
 - Keep planning artefacts in `planning/`; they remain separate from the documentation set. `scripts/README.md` catalogs utility scripts, including legacy one-time migrations.
