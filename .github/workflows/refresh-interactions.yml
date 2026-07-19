@@ -13,11 +13,8 @@ on:
         required: false
         default: false
         type: boolean
-  # Two separate cron entries (not one combined expression) so the backlinks
-  # step below can tell which firing it is running in.
   schedule:
     - cron: '45 1 * * *' # Nightly run — also rebuilds the backlinks index
-    - cron: '45 13 * * *' # Midday run — interactions only
 
 # A push-triggered content publish can overlap a scheduled refresh; the
 # rebase-before-push below handles racing commits, but never run two
@@ -31,7 +28,10 @@ jobs:
     # Prevent infinite loops from bot commits
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # The collector self-limits to a 12-minute budget (INTERACTIONS_TIME_BUDGET_MINUTES)
+    # and exits cleanly before that; this ceiling is just a backstop, with headroom
+    # for checkout/install/build/commit around it.
+    timeout-minutes: 25
     permissions:
       contents: write
       issues: write
@@ -84,7 +84,7 @@ jobs:
       # build here replaces a whole second workflow doing its own daily
       # checkout + npm ci + build.
       - name: Rebuild backlinks index (nightly run only)
-        if: github.event.schedule == '45 1 * * *' || (github.event_name == 'workflow_dispatch' && inputs.rebuild_backlinks)
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.rebuild_backlinks)
         env:
           REGENERATE_BACKLINKS: 'true'
         run: npm run build

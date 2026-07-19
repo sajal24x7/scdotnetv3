@@ -30,7 +30,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { RateLimiter } from './lib/utils/rate-limiter.js';
+import { RateLimiter, RateLimitBudgetExceededError } from './lib/utils/rate-limiter.js';
 import { parseMastodonUrl, collectMastodonInteractions } from './lib/interactions/mastodon.js';
 import { parseBlueskyUrl, collectBlueskyInteractions } from './lib/interactions/bluesky.js';
 import { parseThreadsUrl, threadsConfig, resolveThreadsMediaIds, collectThreadsInteractions } from './lib/interactions/threads.js';
@@ -72,6 +72,15 @@ const rateLimiters = {
   threads: new RateLimiter(150, 60 * 60 * 1000),
   instagram: new RateLimiter(150, 60 * 60 * 1000),
 };
+
+// The hourly Meta caps above can demand waits far longer than the workflow's
+// own job timeout (20 min, shared with the nightly build + commit steps that
+// run after this script). Rather than let the runner kill the process mid-run
+// — which throws away every post already collected, since the index is only
+// written once at the end — stop starting new rate-limited waits once this
+// budget is spent and write out whatever was collected so far. Posts left
+// over are simply picked up by the next scheduled run.
+const RUN_TIME_BUDGET_MS = (Number.parseInt(process.env.INTERACTIONS_TIME_BUDGET_MINUTES ?? '', 10) || 12) * 60 * 1000;
 
 function loadConfig() {
   const defaults = {
@@ -272,6 +281,7 @@ async function collectForPost(post, meta, sources) {
         results.set('bluesky', await collectBlueskyInteractions(blueskyRef, rateLimiters.bluesky));
       }
     } catch (error) {
+      if (error instanceof RateLimitBudgetExceededError) throw error;
       const platform = mastodonRef ? 'mastodon' : 'bluesky';
       console.warn(`  ⚠️  ${platform} failed for ${post.key}: ${error.message}`);
       results.set(platform, { failed: true });
@@ -301,6 +311,7 @@ async function collectForPost(post, meta, sources) {
       }
       results.set(platform, result);
     } catch (error) {
+      if (error instanceof RateLimitBudgetExceededError) throw error;
       console.warn(`  ⚠️  ${platform} failed for ${post.key}: ${error.message}`);
       results.set(platform, { failed: true });
     }
@@ -354,6 +365,9 @@ async function collectInteractions() {
       (daysBack > 0 ? ` from the last ${daysBack} days` : ' (no window)')
   );
 
+  const deadline = Date.now() + RUN_TIME_BUDGET_MS;
+  for (const limiter of Object.values(rateLimiters)) limiter.setDeadline(deadline);
+
   const sources = readSources();
   for (const post of posts) post.metaRefs = metaRefsForPost(post);
 
@@ -367,8 +381,17 @@ async function collectInteractions() {
   let failedPosts = 0;
   let totalEntries = 0;
 
-  for (const post of posts) {
-    const results = await collectForPost(post, meta, sources);
+  for (const [postIndex, post] of posts.entries()) {
+    let results;
+    try {
+      results = await collectForPost(post, meta, sources);
+    } catch (error) {
+      if (!(error instanceof RateLimitBudgetExceededError)) throw error;
+      console.log(
+        `⏱️  Time budget exceeded — stopping early with ${posts.length - postIndex} post(s) left for the next run.`
+      );
+      break;
+    }
     if (results.size === 0) continue; // no copies on a polled platform
 
     polled++;

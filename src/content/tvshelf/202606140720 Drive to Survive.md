@@ -7,14 +7,13 @@ category: tvshelf
 tags:
   - f1
 showTitle: 'Formula 1: Drive to Survive'
-season: '8'
+season: 8
 creator:
   - James Gay Rees
 started: 2026-06-08T00:00:00.000Z
 finished: 2026-07-16T16:20:00.000Z
 genre: documentary
 rating: like
-year: null
 status: todo
 cover: formula-1-drive-to-survive.webp
 ---
