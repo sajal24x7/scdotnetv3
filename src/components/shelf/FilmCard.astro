@@ -1,4 +1,5 @@
 ---
+import '../../styles/shelf-card.css';
 import { Image } from 'astro:assets';
 import { getFilmCoverImage } from '../../utils/filmCovers';
 import {
@@ -193,81 +194,3 @@ const timelineLabel = watchedLabel ? `Watched ${watchedLabel}` : null;
   </div>
 </article>
 
-<style>
-  /* Reuses book-card styles from BookshelfCard — same visual language */
-  .book-card {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 0.75rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-    transition: background-color 180ms ease, box-shadow 220ms ease, transform 220ms ease, border-color 180ms ease;
-  }
-  :global(.dark) .book-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 1px 2px rgba(0,0,0,0.15); }
-  .book-card:hover, .book-card:focus-within { background: rgba(99,102,241,0.04); border-color: rgba(99,102,241,0.2); box-shadow: 0 4px 8px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(129,140,248,0.15); transform: translateY(-2px); }
-  :global(.dark) .book-card:hover, :global(.dark) .book-card:focus-within { background: rgba(99,102,241,0.08); border-color: rgba(99,102,241,0.3); }
-  .book-card__surface { display: flex; gap: 1rem; width: 100%; padding: 1rem; }
-  .book-card__cover { flex-shrink: 0; width: 4.5rem; max-width: 4.5rem; aspect-ratio: 2 / 3; border-radius: 0.5rem; overflow: hidden; background: rgba(15,23,42,0.08); display: flex; align-items: center; justify-content: center; }
-  :global(.dark) .book-card__cover { background: rgba(148,163,184,0.18); }
-  .book-card__cover-image { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
-  .book-card__cover-placeholder { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: rgba(15,23,42,0.35); }
-  :global(.dark) .book-card__cover-placeholder { color: rgba(226,232,240,0.45); }
-  .book-card__content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-  .book-card__header { display: flex; flex-direction: column; gap: 0.35rem; }
-  .book-card__title-row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0.5rem; }
-  .book-card__title-block { display: flex; flex-direction: column; gap: 0.1rem; }
-  .book-card__series { font-size: var(--text-small); font-weight: 500; color: #6b7280; }
-  :global(.dark) .book-card__series { color: #9ca3af; }
-  .book-card__title { flex: 1 1 auto; font-size: 1.2rem; font-weight: 600; line-height: 1.3; margin: 0; color: #111827; }
-  :global(.dark) .book-card__title { color: #f9fafb; }
-  .book-card__title-link { color: inherit; text-decoration: none; }
-  .book-card__title-link:hover, .book-card__title-link:focus-visible { text-decoration: underline; }
-  .book-card__authors { display: flex; flex-wrap: wrap; gap: 0.25rem; }
-  .book-card__author { font-size: var(--text-small); font-weight: 500; color: #374151; }
-  :global(.dark) .book-card__author { color: #d1d5db; }
-  .book-card__author--clickable { background: none; border: none; padding: 0; cursor: pointer; text-align: left; transition: color 150ms ease; }
-  .book-card__author--clickable:hover, .book-card__author--clickable:focus-visible { color: #4f46e5; text-decoration: underline; text-underline-offset: 2px; }
-  :global(.dark) .book-card__author--clickable:hover, :global(.dark) .book-card__author--clickable:focus-visible { color: #818cf8; }
-  .book-card__meta { display: flex; flex-direction: column; gap: 0.4rem; font-size: var(--text-small); line-height: 1.4; color: #4b5563; }
-  :global(.dark) .book-card__meta { color: #9ca3af; }
-  .book-card__meta-row { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-  .book-card__chip { display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; padding: 0.25rem 0.55rem; border-radius: 0.5rem; border: none; font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; background: inherit; line-height: 1.2; }
-  .book-card__chip--clickable { cursor: pointer; transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease; }
-  .book-card__chip--clickable:hover, .book-card__chip--clickable:focus-visible { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.15); opacity: 0.95; }
-  .book-card__chip--status-started { background: #ede9fe; color: #5b21b6; }
-  :global(.dark) .book-card__chip--status-started { background: rgba(91,33,182,0.3); color: #ede9fe; }
-  .book-card__chip--status-finished { background: #dcfce7; color: #166534; }
-  :global(.dark) .book-card__chip--status-finished { background: rgba(22,101,52,0.3); color: #bbf7d0; }
-  .book-card__chip--status-paused { background: #fef3c7; color: #b45309; }
-  :global(.dark) .book-card__chip--status-paused { background: rgba(180,83,9,0.3); color: #fde68a; }
-  .book-card__chip--status-todo { background: #dbeafe; color: #1d4ed8; }
-  :global(.dark) .book-card__chip--status-todo { background: rgba(29,78,216,0.3); color: #bfdbfe; }
-  .book-card__chip--genre { background: #dbeafe; color: #1e40af; }
-  :global(.dark) .book-card__chip--genre { background: rgba(30,64,175,0.3); color: #bfdbfe; }
-  .book-card__chip--platform { background: #e5e7eb; color: #111827; }
-  :global(.dark) .book-card__chip--platform { background: #374151; color: #e5e7eb; }
-  .book-card__chip--rating-like { background: #dcfce7; color: #166534; }
-  :global(.dark) .book-card__chip--rating-like { background: rgba(22,101,52,0.35); color: #bbf7d0; }
-  .book-card__chip--rating-love { background: #fce7f3; color: #be185d; }
-  :global(.dark) .book-card__chip--rating-love { background: rgba(190,24,93,0.3); color: #fbcfe8; }
-  .book-card__chip--rating-nope { background: #fee2e2; color: #b91c1c; }
-  :global(.dark) .book-card__chip--rating-nope { background: rgba(185,28,28,0.3); color: #fecaca; }
-  .book-card__chip--timeline { justify-content: flex-start; background: #f3f4f6; color: #1f2937; font-size: var(--text-xs); letter-spacing: 0.04em; text-transform: none; }
-  :global(.dark) .book-card__chip--timeline { background: #1f2937; color: #e5e7eb; }
-  .book-card__chip--rewatch { background: #fef3c7; color: #92400e; font-size: var(--text-xs); letter-spacing: 0.04em; text-transform: none; }
-  :global(.dark) .book-card__chip--rewatch { background: rgba(180,83,9,0.25); color: #fde68a; }
-  .book-card__chip-label { white-space: nowrap; }
-  .book-card__rating-icons { display: inline-flex; gap: 0.25rem; }
-  .book-card__rating-icons--like { color: #166534; }
-  :global(.dark) .book-card__rating-icons--like { color: #bbf7d0; }
-  .book-card__rating-icons--love { color: #be185d; }
-  :global(.dark) .book-card__rating-icons--love { color: #f9a8d4; }
-  .book-card__rating-icons--nope { color: #b91c1c; }
-  :global(.dark) .book-card__rating-icons--nope { color: #fca5a5; }
-  .book-card__rating-icon { line-height: 1; display: inline-flex; align-items: center; }
-  .book-card__rating-icon svg { display: block; }
-  @media (min-width: 45rem) {
-    .book-card__surface { gap: 1.25rem; }
-    .book-card__cover { width: 5.25rem; max-width: 5.25rem; }
-  }
-</style>
