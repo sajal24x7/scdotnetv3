@@ -83,7 +83,8 @@ const jsonLd = {
       : { className: 'grid-span-8 grid-start-3', grid: { padding: 'narrow' } }
   }
 >
-  <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(jsonLd)} />
+  {/* escape "<" so no field value can close the script tag early */}
+  <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
   {isPhotoPost ? (
     <PhotoPostLayout
       entry={entry}

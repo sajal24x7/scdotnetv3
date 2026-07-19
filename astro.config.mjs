@@ -53,9 +53,7 @@ export default defineConfig({
     react(),
     mdx(),
     sitemap({
-      filter: (page) =>
-        !page.includes('/navigation-demo/') &&
-        !page.includes('/search/'),
+      filter: (page) => !page.includes('/search/'),
     }),
   ],
   markdown: {

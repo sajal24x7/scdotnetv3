@@ -11,7 +11,7 @@ The navigation stack follows a Guardian-inspired layout with a persistent primar
 | `src/components/navigation/SocialLinks.astro` | Displays outbound profiles (Mastodon, Bluesky, etc.) with `rel="me"` links. Supports horizontal/vertical layouts, sizes, and an essential-links-only mode. |
 | `src/components/islands/multi-level-navigation-island.ts` | Keeps the correct menu section highlighted when browsing `/tags/` pages by reading the `category` query parameter and swapping classes accordingly. |
 
-`NavigationMenu.astro` is retained for simpler legacy layouts but the header defaults to the richer multi-level navigation.
+The header always renders the multi-level navigation; the legacy `NavigationMenu.astro` was removed in the 2026-07 audit after going unused.
 
 ## Navigation Levels
 
@@ -35,7 +35,7 @@ The navigation stack follows a Guardian-inspired layout with a persistent primar
 | Add a new top-level section | Extend the `mainNavItems` array and update the island's `categoryMappings` so tag pages pick up the new section. Adjust layout CSS if the nav overflows. |
 | Update secondary menus | Modify the `secondaryNavItems` map and ensure the island mapping routes any related categories to the new subsection. |
 | Add a shelf category | Extend `tertiaryNavItems` alongside the content-collection changes described in [Content Lifecycle](../architecture/content-lifecycle.md). |
-| Provide a compact header | Reuse `NavigationMenu.astro` or create a new wrapper that composes the shared `SocialLinks` component with minimal styling. |
+| Provide a compact header | Create a wrapper that composes the shared `SocialLinks` component with minimal styling. |
 
 ## Related Documentation
 

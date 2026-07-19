@@ -11,7 +11,7 @@ const poems = allPosts
   .filter(post => post.data.category === 'poem')
   .sort((a, b) => new Date(b.data.created).getTime() - new Date(a.data.created).getTime());
 
-// Transform posts for the ContentGrid component
+// Transform posts into the shape the card grids expect
 const transformedPosts = poems.map(transformPost);
 const poemCount = transformedPosts.length;
 const poemCountText = `${poemCount} ${poemCount === 1 ? 'poem' : 'poems'}`;

@@ -7,10 +7,12 @@
 // `env.IMAGES` binding directly, the same bucket functions/api/upload.js
 // writes to — no separate R2 API credentials needed anywhere.
 //
-// Auth mirrors /api/upload: any bearer token that can read the site repo is
-// trusted as the owner. GitHub Actions' automatic GITHUB_TOKEN satisfies
-// that with no new secret to create — see
-// scripts/lib/interactions/avatar-cache.js, the only caller.
+// Auth mirrors /api/upload: only a bearer token with push (contents: write)
+// access to the site repo is trusted as the owner — read access is not
+// enough, the repo is public. GitHub Actions' automatic GITHUB_TOKEN
+// satisfies that (refresh-interactions.yml grants contents: write) with no
+// new secret to create — see scripts/lib/interactions/avatar-cache.js, the
+// only caller.
 
 const REPO = 'sajal24x7/scdotnetv3';
 const PUBLIC_BASE = 'https://storage.sajalchoudhary.net';
@@ -53,6 +55,10 @@ export async function onRequestPost({ request, env }) {
   });
   if (gh.status !== 200) {
     return json(401, { error: `Token rejected by GitHub (${gh.status})` });
+  }
+  const repo = await gh.json().catch(() => null);
+  if (!repo?.permissions?.push) {
+    return json(403, { error: 'Token does not have write access to the site repo' });
   }
 
   let body;

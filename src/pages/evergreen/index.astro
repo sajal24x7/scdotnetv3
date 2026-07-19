@@ -11,7 +11,7 @@ const evergreenPosts = allPosts
   .filter(post => post.data.category === 'evergreen')
   .sort((a, b) => new Date(b.data.created).getTime() - new Date(a.data.created).getTime());
 
-// Transform posts for the NotesGrid component
+// Transform posts into the shape the card grids expect
 const transformedPosts = evergreenPosts.map(transformPost);
 const postCount = transformedPosts.length;
 const postCountText = `${postCount} ${postCount === 1 ? 'evergreen note' : 'evergreen notes'}`;
