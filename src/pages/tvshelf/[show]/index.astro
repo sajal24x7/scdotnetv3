@@ -1,4 +1,5 @@
 ---
+import '../../../styles/tv-detail.css';
 import Layout from '../../../layouts/Layout.astro';
 import ShelfTabNav from '../../../components/shelf/ShelfTabNav.astro';
 import { Image } from 'astro:assets';
@@ -292,127 +293,6 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
 </Layout>
 
 <style>
-  .tv-show-page {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 1rem 0 3rem;
-  }
-
-  .tv-show-header {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  :global(.dark) .tv-show-header {
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-  }
-
-  @media (min-width: 48rem) {
-    .tv-show-header {
-      display: grid;
-      grid-template-columns: 3fr 5fr;
-      gap: 2rem;
-      align-items: start;
-    }
-  }
-
-  .tv-show-header__cover-area {
-    display: flex;
-    justify-content: center;
-  }
-
-  @media (min-width: 48rem) {
-    .tv-show-header__cover-area {
-      justify-content: flex-start;
-    }
-  }
-
-  .tv-show-header__cover {
-    width: auto;
-    max-height: 16rem;
-    height: auto;
-    border-radius: 0.75rem;
-    box-shadow:
-      0 4px 6px rgba(0, 0, 0, 0.1),
-      0 2px 4px rgba(0, 0, 0, 0.06);
-  }
-
-  :global(.dark) .tv-show-header__cover {
-    box-shadow:
-      0 4px 6px rgba(0, 0, 0, 0.3),
-      0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  .tv-show-header__cover-placeholder {
-    width: 100%;
-    max-width: 12rem;
-    aspect-ratio: 2/3;
-    border-radius: 0.75rem;
-    background: rgba(15, 23, 42, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(15, 23, 42, 0.35);
-  }
-
-  :global(.dark) .tv-show-header__cover-placeholder {
-    background: rgba(148, 163, 184, 0.18);
-    color: rgba(226, 232, 240, 0.45);
-  }
-
-  .tv-show-header__meta {
-    display: flex;
-    flex-direction: column;
-    padding-top: 0.25rem;
-  }
-
-  .tv-show-header__title {
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
-    font-weight: 700;
-    margin: 0 0 0.5rem;
-    color: #111827;
-    line-height: 1.2;
-  }
-
-  :global(.dark) .tv-show-header__title { color: #f9fafb; }
-
-  .tv-show-header__creator {
-    font-size: 1.125rem;
-    font-weight: 500;
-    color: #374151;
-    margin: 0 0 1rem;
-  }
-
-  :global(.dark) .tv-show-header__creator { color: #d1d5db; }
-
-  .tv-show-header__chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  /* Limited-series content body */
-  .season-content {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #374151;
-  }
-
-  :global(.dark) .season-content { color: #d1d5db; }
-
-  .season-content :global(p) { margin: 0 0 1rem; }
-  .season-content :global(p:last-child) { margin-bottom: 0; }
-
-  .tv-chip--platform { background: #f0fdf4; color: #166534; text-transform: none; font-size: var(--text-xs); letter-spacing: 0.03em; }
-  :global(.dark) .tv-chip--platform { background: rgba(22, 101, 52, 0.25); color: #bbf7d0; }
-
-  .tv-chip--dates { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: var(--text-xs); letter-spacing: 0.02em; }
-  :global(.dark) .tv-chip--dates { background: #1f2937; color: #e5e7eb; }
-
   .tv-show-page__seasons-title {
     font-size: 1rem;
     font-weight: 700;
@@ -504,68 +384,8 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
     gap: 0.4rem;
   }
 
-  /* Chip label */
-  .tv-chip-label {
-    opacity: 0.6;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .tv-chip-label::after {
-    content: ':';
-    margin-inline-end: 0.2rem;
-  }
-
-  /* Chips */
-  .tv-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0.15rem 0.55rem;
-    border-radius: 0.5rem;
-    font-size: var(--text-xs);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    background: #e5e7eb;
-    color: #111827;
-  }
-
-  :global(.dark) .tv-chip { background: #374151; color: #e5e7eb; }
-
-  .tv-chip__icons {
-    display: inline-flex;
-    gap: 0.15rem;
-  }
-
-  .tv-chip--genre { background: #dbeafe; color: #1e40af; }
-  :global(.dark) .tv-chip--genre { background: rgba(30, 64, 175, 0.3); color: #bfdbfe; }
-
   .tv-chip--seasons { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: var(--text-xs); letter-spacing: 0.03em; }
   :global(.dark) .tv-chip--seasons { background: #1f2937; color: #e5e7eb; }
-
-  .tv-chip--year { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: var(--text-xs); letter-spacing: 0.03em; }
-  :global(.dark) .tv-chip--year { background: #1f2937; color: #e5e7eb; }
-
-  .chip--status-started { background: #ede9fe; color: #5b21b6; }
-  :global(.dark) .chip--status-started { background: rgba(91, 33, 182, 0.3); color: #ede9fe; }
-
-  .chip--status-todo { background: #dbeafe; color: #1d4ed8; }
-  :global(.dark) .chip--status-todo { background: rgba(29, 78, 216, 0.3); color: #bfdbfe; }
-
-  .chip--status-paused { background: #fef3c7; color: #b45309; }
-  :global(.dark) .chip--status-paused { background: rgba(180, 83, 9, 0.3); color: #fde68a; }
-
-  .tv-chip--rating-like { background: #dcfce7; color: #166534; }
-  :global(.dark) .tv-chip--rating-like { background: rgba(22, 101, 52, 0.35); color: #bbf7d0; }
-
-  .tv-chip--rating-love { background: #fce7f3; color: #be185d; }
-  :global(.dark) .tv-chip--rating-love { background: rgba(190, 24, 93, 0.3); color: #fbcfe8; }
-
-  .tv-chip--rating-nope { background: #fee2e2; color: #b91c1c; }
-  :global(.dark) .tv-chip--rating-nope { background: rgba(185, 28, 28, 0.3); color: #fecaca; }
 
   .tv-chip--date { background: #f3f4f6; color: #1f2937; text-transform: none; font-size: var(--text-xs); letter-spacing: 0.03em; }
   :global(.dark) .tv-chip--date { background: #1f2937; color: #e5e7eb; }
@@ -573,15 +393,4 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
   .tv-show-page__back {
     margin-top: 1rem;
   }
-
-  .tv-show-page__back-link {
-    font-size: var(--text-small);
-    color: #6b7280;
-    text-decoration: none;
-    transition: color 150ms ease;
-  }
-
-  .tv-show-page__back-link:hover { color: #4f46e5; }
-  :global(.dark) .tv-show-page__back-link { color: #9ca3af; }
-  :global(.dark) .tv-show-page__back-link:hover { color: #818cf8; }
 </style>

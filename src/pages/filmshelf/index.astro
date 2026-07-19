@@ -1,4 +1,5 @@
 ---
+import '../../styles/shelf-year.css';
 import Layout from '../../layouts/Layout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import FilmCard from '../../components/shelf/FilmCard.astro';
@@ -168,29 +169,6 @@ const sectionLandingProps = createSectionLandingProps({
   </SectionLanding>
 </Layout>
 
-<style>
-  .bookshelf-count { font-size: var(--text-small); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: #6b7280; }
-  :global(.dark) .bookshelf-count { color: #9ca3af; }
-  .bookshelf-content { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3rem); padding-bottom: 2rem; }
-  .bookshelf-years { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 3.5rem); }
-  .bookshelf-year[data-filtered="hidden"] { display: none; }
-  .bookshelf-year__book[data-filtered="hidden"] { display: none; }
-  .bookshelf-year__grid { align-items: flex-start; }
-  .bookshelf-year__sidebar { display: flex; align-items: flex-start; }
-  /* grid-row: 1 / -1 wouldn't span the implicit rows the entries create, since
-     negative line numbers resolve against the explicit grid (columns only here);
-     --year-row-count (set inline per section) gives the exact row span instead
-     of a large guess, which would otherwise force empty trailing rows into existence */
-  @media (min-width: 48rem) { .bookshelf-year__sidebar { grid-row: 1 / span var(--year-row-count, 1); align-self: stretch; } }
-  .bookshelf-year__sticky { position: sticky; top: clamp(4rem, 6vw, 5.5rem); display: flex; flex-direction: column; gap: 0.35rem; }
-  .bookshelf-year__year { font-size: var(--text-huge); font-weight: 700; color: rgb(var(--color-text-primary)); }
-  .bookshelf-year__count { font-size: var(--text-small); font-weight: 500; color: #6b7280; }
-  :global(.dark) .bookshelf-year__count { color: #9ca3af; }
-  .bookshelf-year__book { display: flex; }
-  .bookshelf-year__book :global(.book-card) { width: 100%; }
-  @media (max-width: 47.999rem) { .bookshelf-year__sticky { position: static; } }
-  @media (min-width: 64rem) { .bookshelf-year__year { font-size: clamp(2.25rem, 4vw, 3.5rem); } }
-</style>
 
 <script>
   import { initShelfFilters } from '../../scripts/shelfFilters';
