@@ -13,8 +13,7 @@ finished: 2026-07-20T09:11:00
 genre: health
 format: audio
 rating: like
-series:
-status: todo
+status: finished
 ---
 ## Review
 
