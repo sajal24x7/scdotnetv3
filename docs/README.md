@@ -8,6 +8,7 @@ This directory centralizes all reference material for the Astro-powered build of
 | --- | --- | --- |
 | [Architecture Overview](architecture/overview.md) | High-level explanation of the Astro layout shell, content entry points, and client islands. | `src/layouts/Layout.astro`, `src/utils/content.ts` |
 | [Content Lifecycle](architecture/content-lifecycle.md) | Frontmatter schemas, category-based collections, indexing, and derived artifacts. | `src/content.config.ts`, `src/utils/backlinks.ts` |
+| [Learning Systems](architecture/learning-systems.md) | The spaced-repetition "periodic table on the wall" pattern behind /learn/linux, and the blueprint for future decks (e.g. Finnish). | `src/data/linux-commands.ts`, `src/components/learn/LinuxQuiz.tsx` |
 | [Design System](design/system.md) | Typography tokens, grid utilities (twelve-column and ten-column), chip patterns, and responsive rules. | `src/styles/global.css` |
 | [Typography Audit (2026-07)](design/typography-audit.md) | Findings on font, size, weight, and spacing consistency, with all fixes applied — kept as rationale for the current scale. | `src/styles/global.css` |
 

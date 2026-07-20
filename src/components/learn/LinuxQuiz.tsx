@@ -1,395 +1,498 @@
-import React, { useMemo, useState } from 'react';
-import { categories, type Category, type Command } from '../../data/linux-commands';
+import React, { useEffect, useMemo, useState } from 'react';
+import {
+	categories,
+	allCommands,
+	categoryOf,
+	introductionOrder,
+	type Category,
+	type Command,
+	type Prompt,
+} from '../../data/linux-commands';
 
-const SESSION_SIZE = 5;
-const PROGRESS_KEY = 'linux-learn-progress';
+// Leitner scheduler — see docs/architecture/learning-systems.md for the
+// design this implements (boxes, daily caps, gradual introduction).
 
-interface Progress {
-	totalSessions: number;
+const BOX_INTERVALS: Record<number, number> = { 1: 1, 2: 3, 3: 7, 4: 14, 5: 30 };
+const MAX_BOX = 5;
+const NEW_COMMANDS_PER_DAY = 2;
+const DUE_CAP = 8;
+const STORAGE_KEY = 'linux-learn-srs';
+const LEGACY_KEY = 'linux-learn-progress';
+
+interface CardState {
+	box: number;
+	due: string; // YYYY-MM-DD
+	reps: number;
+	lapses: number;
+}
+
+interface SrsState {
+	version: 2;
+	cards: Record<string, CardState>; // keyed by prompt id
+	introduced: Record<string, string>; // command id -> date introduced
+	lastSessionDate: string | null;
 	streak: number;
-	lastCompletedDate: string | null;
-	bestScoreByCategory: Record<string, number>;
+	totalSessions: number;
 }
 
-function loadProgress(): Progress {
-	const fallback: Progress = { totalSessions: 0, streak: 0, lastCompletedDate: null, bestScoreByCategory: {} };
-	if (typeof window === 'undefined') return fallback;
-	try {
-		const raw = window.localStorage.getItem(PROGRESS_KEY);
-		if (!raw) return fallback;
-		return { ...fallback, ...JSON.parse(raw) };
-	} catch {
-		return fallback;
-	}
+function emptyState(): SrsState {
+	return { version: 2, cards: {}, introduced: {}, lastSessionDate: null, streak: 0, totalSessions: 0 };
 }
 
-function saveProgress(progress: Progress) {
-	if (typeof window === 'undefined') return;
-	try {
-		window.localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
-	} catch {
-		// localStorage unavailable (private mode etc) — skip persisting silently.
-	}
+function localToday(): string {
+	const d = new Date();
+	const pad = (n: number) => String(n).padStart(2, '0');
+	return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+function addDays(dateStr: string, days: number): string {
+	const [y, m, d] = dateStr.split('-').map(Number);
+	const date = new Date(y, m - 1, d + days);
+	const pad = (n: number) => String(n).padStart(2, '0');
+	return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
 
 function daysBetween(a: string, b: string): number {
-	const msPerDay = 24 * 60 * 60 * 1000;
-	return Math.round((new Date(b).getTime() - new Date(a).getTime()) / msPerDay);
+	const [ay, am, ad] = a.split('-').map(Number);
+	const [by, bm, bd] = b.split('-').map(Number);
+	return Math.round((new Date(by, bm - 1, bd).getTime() - new Date(ay, am - 1, ad).getTime()) / 86400000);
 }
 
-function shuffle<T>(arr: T[]): T[] {
-	const copy = [...arr];
-	for (let i = copy.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-		[copy[i], copy[j]] = [copy[j], copy[i]];
+function loadState(): SrsState {
+	if (typeof window === 'undefined') return emptyState();
+	try {
+		const raw = window.localStorage.getItem(STORAGE_KEY);
+		if (raw) return { ...emptyState(), ...JSON.parse(raw) };
+		// One-time migration from the v1 quiz page: carry streak + session count.
+		const legacy = window.localStorage.getItem(LEGACY_KEY);
+		if (legacy) {
+			const old = JSON.parse(legacy);
+			return {
+				...emptyState(),
+				streak: old.streak ?? 0,
+				totalSessions: old.totalSessions ?? 0,
+				lastSessionDate: old.lastCompletedDate ?? null,
+			};
+		}
+	} catch {
+		// fall through to empty state
 	}
-	return copy;
+	return emptyState();
 }
 
-function buildSession(category: Category | null): Command[] {
-	if (category) {
-		return shuffle(category.commands).slice(0, SESSION_SIZE);
+function saveState(state: SrsState) {
+	if (typeof window === 'undefined') return;
+	try {
+		window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+	} catch {
+		// localStorage unavailable — practice still works, just won't persist.
 	}
-	const pool = categories.flatMap((c) => c.commands);
-	return shuffle(pool).slice(0, SESSION_SIZE);
 }
 
-type Phase = 'learn' | 'quiz';
-type Screen = 'home' | 'session' | 'summary';
+const promptsById = new Map<string, { prompt: Prompt; command: Command }>();
+for (const command of allCommands) {
+	for (const prompt of command.prompts) {
+		promptsById.set(prompt.id, { prompt, command });
+	}
+}
 
-interface Attempt {
+type CommandStatus = 'unseen' | 'due' | 'learning' | 'strong';
+
+function commandStatus(command: Command, state: SrsState, today: string): CommandStatus {
+	if (!state.introduced[command.id]) return 'unseen';
+	let minBox = Infinity;
+	let anyDue = false;
+	for (const prompt of command.prompts) {
+		const card = state.cards[prompt.id];
+		if (!card) return 'due'; // introduced but a prompt never graded — treat as due
+		if (card.due <= today) anyDue = true;
+		minBox = Math.min(minBox, card.box);
+	}
+	if (anyDue) return 'due';
+	return minBox >= 4 ? 'strong' : 'learning';
+}
+
+interface SessionItem {
+	kind: 'learn' | 'prompt';
 	command: Command;
-	selectedIndex: number;
-	correct: boolean;
+	prompt?: Prompt;
+	isNew?: boolean;
 }
+
+function buildDailySession(state: SrsState, today: string): SessionItem[] {
+	const items: SessionItem[] = [];
+
+	// 1. Reviews due today (earliest-due first, capped so a backlog can't balloon).
+	const due = Object.entries(state.cards)
+		.filter(([, card]) => card.due <= today)
+		.sort((a, b) => (a[1].due < b[1].due ? -1 : 1))
+		.slice(0, DUE_CAP)
+		.map(([id]) => promptsById.get(id))
+		.filter((x): x is { prompt: Prompt; command: Command } => Boolean(x));
+
+	for (const { prompt, command } of due) {
+		items.push({ kind: 'prompt', command, prompt });
+	}
+
+	// 2. New commands, introduced gradually. Count today's already-introduced
+	//    commands so reopening the page mid-day doesn't add extras.
+	const introducedToday = Object.values(state.introduced).filter((d) => d === today).length;
+	let slots = Math.max(0, NEW_COMMANDS_PER_DAY - introducedToday);
+	for (const commandId of introductionOrder) {
+		if (slots === 0) break;
+		if (state.introduced[commandId]) continue;
+		const command = allCommands.find((c) => c.id === commandId);
+		if (!command) continue;
+		items.push({ kind: 'learn', command, isNew: true });
+		for (const prompt of command.prompts) {
+			items.push({ kind: 'prompt', command, prompt, isNew: true });
+		}
+		slots--;
+	}
+
+	return items;
+}
+
+type Screen = 'chart' | 'session' | 'done' | 'drill';
 
 export default function LinuxQuiz() {
-	const [screen, setScreen] = useState<Screen>('home');
-	const [activeCategory, setActiveCategory] = useState<Category | null>(null);
-	const [session, setSession] = useState<Command[]>([]);
-	const [stepIndex, setStepIndex] = useState(0);
-	const [phase, setPhase] = useState<Phase>('learn');
-	const [selectedOption, setSelectedOption] = useState<number | null>(null);
-	const [attempts, setAttempts] = useState<Attempt[]>([]);
-	const [progress, setProgress] = useState<Progress>(() => loadProgress());
+	// Start from empty state so the first client render matches the prerendered
+	// HTML (built without localStorage); real state loads after hydration.
+	const [state, setState] = useState<SrsState>(emptyState);
+	const [screen, setScreen] = useState<Screen>('chart');
+	const [session, setSession] = useState<SessionItem[]>([]);
+	const [index, setIndex] = useState(0);
+	const [revealed, setRevealed] = useState(false);
+	const [results, setResults] = useState<{ got: number; forgot: number; learned: number }>({ got: 0, forgot: 0, learned: 0 });
+	const [selectedCommand, setSelectedCommand] = useState<Command | null>(null);
+	const [today, setToday] = useState<string>(() => localToday());
 
-	const currentCommand = session[stepIndex];
+	// Load persisted state after hydration, and re-check the date when the tab
+	// regains focus (page left open overnight).
+	useEffect(() => {
+		setState(loadState());
+		setToday(localToday());
+		const onFocus = () => setToday(localToday());
+		window.addEventListener('focus', onFocus);
+		return () => window.removeEventListener('focus', onFocus);
+	}, []);
 
-	function startSession(category: Category | null) {
-		setActiveCategory(category);
-		setSession(buildSession(category));
-		setStepIndex(0);
-		setPhase('learn');
-		setSelectedOption(null);
-		setAttempts([]);
+	const dueCount = useMemo(
+		() => Object.values(state.cards).filter((c) => c.due <= today).length,
+		[state, today],
+	);
+	const unseenCount = useMemo(
+		() => allCommands.filter((c) => !state.introduced[c.id]).length,
+		[state],
+	);
+	const introducedTodayCount = useMemo(
+		() => Object.values(state.introduced).filter((d) => d === today).length,
+		[state, today],
+	);
+	const newAvailable = Math.min(unseenCount, Math.max(0, NEW_COMMANDS_PER_DAY - introducedTodayCount));
+	const doneForToday = dueCount === 0 && newAvailable === 0;
+	const allDone = unseenCount === 0 && dueCount === 0;
+
+	function startDaily() {
+		const items = buildDailySession(state, today);
+		if (items.length === 0) return;
+		setSession(items);
+		setIndex(0);
+		setRevealed(false);
+		setResults({ got: 0, forgot: 0, learned: 0 });
 		setScreen('session');
+		setSelectedCommand(null);
 	}
 
-	function selectAnswer(index: number) {
-		if (selectedOption !== null) return;
-		setSelectedOption(index);
-		const correct = index === currentCommand.quiz.correctIndex;
-		setAttempts((prev) => [...prev, { command: currentCommand, selectedIndex: index, correct }]);
+	function startDrill(category: Category) {
+		const items: SessionItem[] = category.commands.flatMap((command) =>
+			command.prompts.map((prompt) => ({ kind: 'prompt' as const, command, prompt })),
+		);
+		setSession(items);
+		setIndex(0);
+		setRevealed(false);
+		setResults({ got: 0, forgot: 0, learned: 0 });
+		setScreen('drill');
+		setSelectedCommand(null);
 	}
 
-	function nextStep() {
-		if (stepIndex + 1 < session.length) {
-			setStepIndex((i) => i + 1);
-			setPhase('learn');
-			setSelectedOption(null);
+	function advance() {
+		setRevealed(false);
+		if (index + 1 < session.length) {
+			setIndex(index + 1);
+		} else if (screen === 'drill') {
+			setScreen('chart');
 		} else {
-			finishSession();
+			finishDaily();
 		}
 	}
 
-	function finishSession() {
-		const correctCount = attempts.filter((a) => a.correct).length;
-		const today = new Date().toISOString().slice(0, 10);
-		setProgress((prev) => {
+	function gradeCurrent(gotIt: boolean) {
+		const item = session[index];
+		if (item.kind !== 'prompt' || !item.prompt) return;
+		const promptId = item.prompt.id;
+
+		if (screen === 'session') {
+			setState((prev) => {
+				const cards = { ...prev.cards };
+				const introduced = { ...prev.introduced };
+				const existing = cards[promptId];
+				let box: number;
+				if (gotIt) {
+					box = Math.min((existing?.box ?? 0) + 1, MAX_BOX);
+				} else {
+					box = 1;
+				}
+				cards[promptId] = {
+					box,
+					due: addDays(today, BOX_INTERVALS[box]),
+					reps: (existing?.reps ?? 0) + 1,
+					lapses: (existing?.lapses ?? 0) + (gotIt ? 0 : 1),
+				};
+				if (!introduced[item.command.id]) introduced[item.command.id] = today;
+				const next = { ...prev, cards, introduced };
+				saveState(next);
+				return next;
+			});
+		}
+
+		setResults((r) => ({
+			got: r.got + (gotIt ? 1 : 0),
+			forgot: r.forgot + (gotIt ? 0 : 1),
+			learned: r.learned + (item.isNew && gotIt ? 1 : 0),
+		}));
+		advance();
+	}
+
+	function finishDaily() {
+		setState((prev) => {
 			let streak = prev.streak;
-			if (!prev.lastCompletedDate) {
+			if (!prev.lastSessionDate) {
 				streak = 1;
 			} else {
-				const diff = daysBetween(prev.lastCompletedDate, today);
+				const diff = daysBetween(prev.lastSessionDate, today);
 				if (diff === 0) streak = prev.streak || 1;
 				else if (diff === 1) streak = prev.streak + 1;
 				else streak = 1;
 			}
-			const bestScoreByCategory = { ...prev.bestScoreByCategory };
-			if (activeCategory) {
-				const key = activeCategory.id;
-				bestScoreByCategory[key] = Math.max(bestScoreByCategory[key] ?? 0, correctCount);
-			}
-			const next: Progress = {
-				totalSessions: prev.totalSessions + 1,
+			const next: SrsState = {
+				...prev,
 				streak,
-				lastCompletedDate: today,
-				bestScoreByCategory,
+				lastSessionDate: today,
+				totalSessions: prev.totalSessions + 1,
 			};
-			saveProgress(next);
+			saveState(next);
 			return next;
 		});
-		setScreen('summary');
+		setScreen('done');
 	}
 
-	const score = attempts.filter((a) => a.correct).length;
-
-	if (screen === 'home') {
+	if (screen === 'session' || screen === 'drill') {
+		const item = session[index];
+		if (!item) return null;
 		return (
-			<HomeScreen
-				progress={progress}
-				onStartCategory={(c) => startSession(c)}
-				onStartMixed={() => startSession(null)}
+			<SessionView
+				item={item}
+				index={index}
+				total={session.length}
+				revealed={revealed}
+				isDrill={screen === 'drill'}
+				onReveal={() => setRevealed(true)}
+				onGrade={gradeCurrent}
+				onContinue={advance}
+				onQuit={() => setScreen('chart')}
 			/>
 		);
 	}
 
-	if (screen === 'summary') {
+	if (screen === 'done') {
+		const tomorrowDue = Object.values(state.cards).filter((c) => c.due <= addDays(today, 1)).length;
 		return (
-			<SummaryScreen
-				attempts={attempts}
-				categoryTitle={activeCategory ? activeCategory.title : 'Mixed session'}
-				onRetry={() => startSession(activeCategory)}
-				onMixed={() => startSession(null)}
-				onHome={() => setScreen('home')}
-			/>
-		);
-	}
-
-	if (!currentCommand) return null;
-
-	return (
-		<SessionScreen
-			command={currentCommand}
-			stepIndex={stepIndex}
-			total={session.length}
-			phase={phase}
-			selectedOption={selectedOption}
-			score={score}
-			categoryTitle={activeCategory ? activeCategory.title : 'Mixed session'}
-			onReveal={() => setPhase('quiz')}
-			onSelect={selectAnswer}
-			onNext={nextStep}
-			onQuit={() => setScreen('home')}
-		/>
-	);
-}
-
-function HomeScreen({
-	progress,
-	onStartCategory,
-	onStartMixed,
-}: {
-	progress: Progress;
-	onStartCategory: (category: Category) => void;
-	onStartMixed: () => void;
-}) {
-	return (
-		<div className="lq-home">
-			{progress.totalSessions > 0 && (
+			<div className="lq-done">
+				<p className="lq-eyebrow">Done for today</p>
+				<h2 className="lq-done__headline">
+					{results.got} remembered · {results.forgot} to revisit
+					{results.learned > 0 ? ` · ${results.learned} new` : ''}
+				</h2>
+				<p className="lq-done__message">
+					{results.forgot === 0
+						? 'Clean sweep. The forgotten-curve is losing.'
+						: 'The ones you missed come back tomorrow — that\'s the system working, not you failing.'}
+				</p>
 				<div className="lq-stats">
 					<div className="lq-stat">
-						<span className="lq-stat__value">{progress.totalSessions}</span>
-						<span className="lq-stat__label">sessions completed</span>
+						<span className="lq-stat__value">{state.streak}</span>
+						<span className="lq-stat__label">day streak</span>
 					</div>
 					<div className="lq-stat">
-						<span className="lq-stat__value">{progress.streak}</span>
-						<span className="lq-stat__label">day streak</span>
+						<span className="lq-stat__value">{tomorrowDue}</span>
+						<span className="lq-stat__label">cards due tomorrow</span>
+					</div>
+				</div>
+				<button type="button" className="lq-button" onClick={() => setScreen('chart')}>
+					View the wall chart
+				</button>
+			</div>
+		);
+	}
+
+	// Chart (home) screen
+	return (
+		<div className="lq-home">
+			<div className="lq-today">
+				{doneForToday ? (
+					<div className="lq-today__row">
+						<p className="lq-today__status">
+							{allDone
+								? '✓ Everything reviewed and nothing due. See you tomorrow.'
+								: '✓ Done for today. New commands and reviews return tomorrow.'}
+						</p>
+					</div>
+				) : (
+					<div className="lq-today__row">
+						<button type="button" className="lq-button lq-button--primary lq-button--big" onClick={startDaily}>
+							Start today’s review
+						</button>
+						<p className="lq-today__status">
+							{dueCount > 0 ? `${Math.min(dueCount, DUE_CAP)} due` : 'nothing due'}
+							{newAvailable > 0 ? ` · ${newAvailable} new command${newAvailable > 1 ? 's' : ''}` : ''}
+							{state.streak > 0 ? ` · ${state.streak}-day streak` : ''}
+						</p>
+					</div>
+				)}
+			</div>
+
+			<div className="lq-chart">
+				{categories.map((category) => (
+					<div key={category.id} className="lq-chart__group">
+						<p className="lq-chart__label">
+							{category.emoji} {category.title}
+							<button
+								type="button"
+								className="lq-drill-link"
+								onClick={() => startDrill(category)}
+								title={`Drill all ${category.title} prompts (doesn't affect your schedule)`}
+							>
+								drill
+							</button>
+						</p>
+						<div className="lq-chart__tiles">
+							{category.commands.map((command) => {
+								const status = commandStatus(command, state, today);
+								return (
+									<button
+										type="button"
+										key={command.id}
+										className={`lq-tile lq-tile--${status}${selectedCommand?.id === command.id ? ' lq-tile--selected' : ''}`}
+										onClick={() => setSelectedCommand(selectedCommand?.id === command.id ? null : command)}
+									>
+										{command.cmd}
+									</button>
+								);
+							})}
+						</div>
+					</div>
+				))}
+			</div>
+
+			<div className="lq-legend">
+				<span><i className="lq-swatch lq-swatch--unseen" /> not yet introduced</span>
+				<span><i className="lq-swatch lq-swatch--due" /> due for review</span>
+				<span><i className="lq-swatch lq-swatch--learning" /> learning</span>
+				<span><i className="lq-swatch lq-swatch--strong" /> solid</span>
+			</div>
+
+			{selectedCommand && (
+				<div className="lq-panel lq-reference">
+					<p className="lq-eyebrow">{categoryOf(selectedCommand.id)?.title}</p>
+					<code className="lq-command">{selectedCommand.syntax}</code>
+					<p className="lq-description">{selectedCommand.description}</p>
+					<div className="lq-example">
+						<code>{selectedCommand.example}</code>
+						<p className="lq-example__note">{selectedCommand.exampleNote}</p>
 					</div>
 				</div>
 			)}
-
-			<button type="button" className="lq-mixed-card" onClick={onStartMixed}>
-				<span className="lq-mixed-card__icon">🔀</span>
-				<span>
-					<span className="lq-mixed-card__title">Mixed session</span>
-					<span className="lq-mixed-card__desc">5 random commands pulled from every category.</span>
-				</span>
-				<span className="lq-card__arrow">→</span>
-			</button>
-
-			<div className="lq-grid">
-				{categories.map((category) => {
-					const best = progress.bestScoreByCategory[category.id];
-					return (
-						<button
-							type="button"
-							key={category.id}
-							className="lq-card"
-							onClick={() => onStartCategory(category)}
-						>
-							<span className="lq-card__icon">{category.emoji}</span>
-							<span className="lq-card__body">
-								<span className="lq-card__title">{category.title}</span>
-								<span className="lq-card__desc">{category.description}</span>
-								<span className="lq-card__meta">
-									{category.commands.length} commands{best !== undefined ? ` · best ${best}/5` : ''}
-								</span>
-							</span>
-							<span className="lq-card__arrow">→</span>
-						</button>
-					);
-				})}
-			</div>
 		</div>
 	);
 }
 
-function SessionScreen({
-	command,
-	stepIndex,
+function SessionView({
+	item,
+	index,
 	total,
-	phase,
-	selectedOption,
-	score,
-	categoryTitle,
+	revealed,
+	isDrill,
 	onReveal,
-	onSelect,
-	onNext,
+	onGrade,
+	onContinue,
 	onQuit,
 }: {
-	command: Command;
-	stepIndex: number;
+	item: SessionItem;
+	index: number;
 	total: number;
-	phase: Phase;
-	selectedOption: number | null;
-	score: number;
-	categoryTitle: string;
+	revealed: boolean;
+	isDrill: boolean;
 	onReveal: () => void;
-	onSelect: (index: number) => void;
-	onNext: () => void;
+	onGrade: (gotIt: boolean) => void;
+	onContinue: () => void;
 	onQuit: () => void;
 }) {
-	const isLast = stepIndex + 1 === total;
-	const answered = selectedOption !== null;
-	const isCorrect = answered && selectedOption === command.quiz.correctIndex;
-
 	return (
 		<div className="lq-session">
 			<div className="lq-session__header">
-				<button type="button" className="lq-quit" onClick={onQuit} aria-label="Back to sessions">
-					← {categoryTitle}
+				<button type="button" className="lq-quit" onClick={onQuit}>
+					← {isDrill ? 'Exit drill' : 'Wall chart'}
 				</button>
-				<div className="lq-progress" aria-label={`Step ${stepIndex + 1} of ${total}`}>
-					{Array.from({ length: total }).map((_, i) => (
-						<span
-							key={i}
-							className={
-								'lq-progress__dot' +
-								(i < stepIndex ? ' lq-progress__dot--done' : '') +
-								(i === stepIndex ? ' lq-progress__dot--active' : '')
-							}
-						/>
-					))}
-				</div>
-				<span className="lq-score">Score: {score}</span>
+				<span className="lq-score">
+					{index + 1} / {total}
+				</span>
 			</div>
 
-			{phase === 'learn' ? (
+			{item.kind === 'learn' ? (
 				<div className="lq-panel">
-					<p className="lq-eyebrow">Command {stepIndex + 1} of {total}</p>
-					<code className="lq-command">{command.syntax}</code>
-					<p className="lq-description">{command.description}</p>
+					<p className="lq-eyebrow">New command · {categoryOf(item.command.id)?.title}</p>
+					<code className="lq-command">{item.command.syntax}</code>
+					<p className="lq-description">{item.command.description}</p>
 					<div className="lq-example">
-						<code>{command.example}</code>
-						<p className="lq-example__note">{command.exampleNote}</p>
+						<code>{item.command.example}</code>
+						<p className="lq-example__note">{item.command.exampleNote}</p>
 					</div>
-					<button type="button" className="lq-button lq-button--primary" onClick={onReveal}>
-						Quiz me →
+					<button type="button" className="lq-button lq-button--primary" onClick={onContinue}>
+						Got it — quiz me →
 					</button>
 				</div>
 			) : (
 				<div className="lq-panel">
-					<p className="lq-eyebrow">Quick check</p>
-					<p className="lq-question">{command.quiz.question}</p>
-					<div className="lq-options">
-						{command.quiz.options.map((option, index) => {
-							let cls = 'lq-option';
-							if (answered) {
-								if (index === command.quiz.correctIndex) cls += ' lq-option--correct';
-								else if (index === selectedOption) cls += ' lq-option--incorrect';
-								else cls += ' lq-option--disabled';
-							}
-							return (
-								<button
-									type="button"
-									key={index}
-									className={cls}
-									onClick={() => onSelect(index)}
-									disabled={answered}
-								>
-									{option}
-								</button>
-							);
-						})}
-					</div>
+					<p className="lq-eyebrow">
+						{item.isNew ? 'New card' : isDrill ? 'Drill (won’t affect schedule)' : 'Review'} ·{' '}
+						<code className="lq-inline-cmd">{item.command.cmd}</code>
+					</p>
+					<p className="lq-question">{item.prompt!.q}</p>
 
-					{answered && (
-						<div className={'lq-feedback' + (isCorrect ? ' lq-feedback--correct' : ' lq-feedback--incorrect')}>
-							<p className="lq-feedback__headline">{isCorrect ? 'Correct.' : 'Not quite.'}</p>
-							<p>{command.quiz.explanation}</p>
-							<button type="button" className="lq-button lq-button--primary" onClick={onNext}>
-								{isLast ? 'See results →' : 'Next command →'}
+					{!revealed ? (
+						<div className="lq-recall-hint-wrap">
+							<p className="lq-recall-hint">Answer in your head first — that’s the rep that counts.</p>
+							<button type="button" className="lq-button lq-button--primary" onClick={onReveal}>
+								Show answer
 							</button>
+						</div>
+					) : (
+						<div className="lq-answer">
+							<code className="lq-answer__text">{item.prompt!.a}</code>
+							{item.prompt!.note && <p className="lq-answer__note">{item.prompt!.note}</p>}
+							<div className="lq-grade">
+								<button type="button" className="lq-button lq-button--got" onClick={() => onGrade(true)}>
+									✓ Got it
+								</button>
+								<button type="button" className="lq-button lq-button--forgot" onClick={() => onGrade(false)}>
+									✗ Forgot
+								</button>
+							</div>
 						</div>
 					)}
 				</div>
 			)}
-		</div>
-	);
-}
-
-function SummaryScreen({
-	attempts,
-	categoryTitle,
-	onRetry,
-	onMixed,
-	onHome,
-}: {
-	attempts: Attempt[];
-	categoryTitle: string;
-	onRetry: () => void;
-	onMixed: () => void;
-	onHome: () => void;
-}) {
-	const score = attempts.filter((a) => a.correct).length;
-	const total = attempts.length;
-
-	return (
-		<div className="lq-summary">
-			<p className="lq-eyebrow">{categoryTitle}</p>
-			<h2 className="lq-summary__score">
-				{score} / {total}
-			</h2>
-			<p className="lq-summary__message">
-				{score === total
-					? 'Perfect session. All five stuck.'
-					: score >= total * 0.6
-						? 'Solid session — review the misses below.'
-						: 'Worth another pass. Repetition is what makes it stick.'}
-			</p>
-
-			<ul className="lq-summary__list">
-				{attempts.map((attempt, i) => (
-					<li key={i} className={'lq-summary__item' + (attempt.correct ? '' : ' lq-summary__item--wrong')}>
-						<span className="lq-summary__icon">{attempt.correct ? '✓' : '✗'}</span>
-						<code>{attempt.command.cmd}</code>
-						<span className="lq-summary__q">{attempt.command.quiz.question}</span>
-					</li>
-				))}
-			</ul>
-
-			<div className="lq-summary__actions">
-				<button type="button" className="lq-button lq-button--primary" onClick={onRetry}>
-					Retry this session
-				</button>
-				<button type="button" className="lq-button" onClick={onMixed}>
-					Try a mixed session
-				</button>
-				<button type="button" className="lq-button" onClick={onHome}>
-					Back to sessions
-				</button>
-			</div>
 		</div>
 	);
 }
