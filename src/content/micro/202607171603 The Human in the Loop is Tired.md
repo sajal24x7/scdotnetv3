@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - ai
-  - coding
-category: micro
+title: "The Human in the Loop Is Tired"
+slug: "the-human-in-the-loop-is-tired"
+created: 2026-07-17T16:03:00+03:00
 updated: 2026-07-19T14:14:16+03:00
+category: micro
+tags: ["ai", "coding"]
 ---
 [The Human-in-the-Loop is Tired](https://pydantic.dev/articles/the-human-in-the-loop-is-tired)
 

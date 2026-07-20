@@ -1,13 +1,12 @@
 ---
-aliases:
-  - Hunger Starts in the Mind
-tags:
-  - health
-  - food
-category: evergreen
+title: "Hunger Starts in the Mind"
+slug: "hunger-starts-in-the-mind"
+created: 2026-07-17T21:16:00+03:00
 updated: 2026-07-17T21:22:25+03:00
+category: evergreen
+tags: ["health", "food"]
 ---
-From [[202607151300 The Complete Guide to Fasting|The Complete Guide to Fasting]].
+From [The Complete Guide to Fasting](/bookshelf/the-complete-guide-to-fasting).
 
 We have a bunch of conditioned responses to triggers like a thought of watching a movie, or a football match. The sizzling of veggies (or steak) on the pan. Time of day, and so on.
 
