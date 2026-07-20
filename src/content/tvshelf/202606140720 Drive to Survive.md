@@ -1,6 +1,6 @@
 ---
-title: Drive to Survive
-slug: drive-to-survive
+title: Formula 1: Drive to Survive
+slug: formula-1-drive-to-survive/s8
 created: 2026-06-14T04:20:00.000Z
 updated: 2026-06-15T11:46:54.000Z
 category: tvshelf
@@ -14,7 +14,7 @@ started: 2026-06-08T00:00:00.000Z
 finished: 2026-07-16T16:20:00.000Z
 genre: documentary
 rating: like
-status: todo
+status: finished
 cover: formula-1-drive-to-survive.webp
 ---
 Finished watching this season.
