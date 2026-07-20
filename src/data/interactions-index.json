@@ -107,6 +107,21 @@
       "status": "approved"
     }
   ],
+  "bookshelf/reading-the-selfish-gene": [
+    {
+      "id": "bluesky:like:3mof5ct73ot2v:did:plc:quozz3hcdgl7dmc3ovdg42ap",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "James",
+        "url": "https://bsky.app/profile/nonzerosumjames.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:quozz3hcdgl7dmc3ovdg42ap/bafkreia2yos5xxpgs6eazdcekonjnnrqn57g6ydxs5r7o7kt6ezzlr6xra"
+      },
+      "url": "https://bsky.app/profile/nonzerosumjames.bsky.social",
+      "published": "2026-07-19T03:04:10.487Z",
+      "status": "approved"
+    }
+  ],
   "bookshelf/shift": [
     {
       "id": "web:like:375a8738963d2ccaf8e88be79c3e6df7070eef01ba6afb3a5331a0a0e5d4b758",
@@ -571,6 +586,20 @@
       "status": "approved"
     }
   ],
+  "micro/202607191230": [
+    {
+      "id": "mastodon:like:116946224299184832:115952121886146124",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Frutiger",
+        "url": "https://mastodon.social/@FrutigerAero00",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/a1cc897e41b4f65e6045e47f232735b4.png"
+      },
+      "url": "https://mastodon.social/@FrutigerAero00",
+      "status": "approved"
+    }
+  ],
   "micro/amazon-has-a-new-plan-for-games": [
     {
       "id": "mastodon:like:116696520863508112:1339141",
@@ -758,20 +787,6 @@
       "status": "approved"
     }
   ],
-  "micro/why-apple-is-skipping-m6-pro-and-max-chips": [
-    {
-      "id": "mastodon:repost:116908673465843967:114863603913131469",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Apple-feed",
-        "url": "https://channel.org/@applefeed",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/6e04454c4298099704bb671fd177b734.jpg"
-      },
-      "url": "https://channel.org/@applefeed",
-      "status": "approved"
-    }
-  ],
   "nordletter/nl107": [
     {
       "id": "mastodon:like:116665713078130320:110249442633796155",
@@ -798,20 +813,6 @@
       "status": "approved"
     }
   ],
-  "nordletter/nl112-the-diabetes-code": [
-    {
-      "id": "mastodon:repost:116869370738699620:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    }
-  ],
   "nordletter/nl113-fable-is-good": [
     {
       "id": "mastodon:like:116903796338848327:116696538002197507",
@@ -823,6 +824,32 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/2d5c30fd3cf1c721e763d3992114dffd.png"
       },
       "url": "https://mastodon.social/@marintkael",
+      "status": "approved"
+    }
+  ],
+  "nordletter/nl114-football-and-me": [
+    {
+      "id": "mastodon:like:116946225066464312:116484399349521390",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Joshua Kevins",
+        "url": "https://mastodon.social/@Joshuakevins12",
+        "avatar": "https://files.mastodon.social/accounts/avatars/116/484/399/349/521/390/original/ca3b1a8e1df1e17a.jpg"
+      },
+      "url": "https://mastodon.social/@Joshuakevins12",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116946225066464312:111653123325216795",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Food & Drink Channel",
+        "url": "https://newsmast.community/@foodanddrink",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/2f8ca8e08072f238a9205363b6b2affb.png"
+      },
+      "url": "https://newsmast.community/@foodanddrink",
       "status": "approved"
     }
   ],

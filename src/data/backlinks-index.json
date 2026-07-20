@@ -1560,6 +1560,7 @@
       "micro/202607160937.md",
       "micro/202607161309.md",
       "micro/202607161945.md",
+      "micro/202607191230.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1672,7 +1673,7 @@
       "nordletter/202606252034 NL111 - Love is Love.md",
       "nordletter/202607022037 NL112 - The Diabetes Code.md",
       "nordletter/202607101227 NL113 - Fable is Good.md",
-      "nordletter/202607101227 NL113 - Fable is Good.md",
+      "nordletter/202607151142 NL114 - Football and Me.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -1712,8 +1713,6 @@
       "photo/201404050044 Day TwentyFour Sport.md",
       "photo/202607100843 A rainbow over chemicum.md",
       "photo/202607100930 Helsinki Pride 2026.md",
-      "photo/202607111030.md",
-      "photo/202607120048.md",
       "photo/202607111030.md",
       "photo/202607120048.md",
       "photo/202607132128.md",
@@ -7898,6 +7897,14 @@
   ],
   "bookshelf/the-diabetes-code": [
     {
+      "slug": "/nordletter/nl114-football-and-me/",
+      "title": "Football and Me",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-15T08:42:00.000Z",
+      "snippet": "I still think the same. But the science (logic) of it is making sense to me. This is after I had read and finished The Diabetes Code and wrote about it in NL112. I wanted to read further and understand the different fasting regimens and what I was supposed to eat or not."
+    },
+    {
       "slug": "/nordletter/nl112-the-diabetes-code/",
       "title": "The Diabetes Code",
       "description": "",
@@ -7912,16 +7919,6 @@
       "category": "evergreen",
       "created": "2026-06-29T10:19:46.000Z",
       "snippet": "TOFI not Tofu (the food). Read first about it in The Diabetes Code"
-    }
-  ],
-  "now/building-scdotnetv3-on-astro": [
-    {
-      "slug": "/nordletter/nl113-fable-is-good/",
-      "title": "Fable Is Good",
-      "description": "",
-      "category": "nordletter",
-      "created": "2026-07-10T09:27:00.000Z",
-      "snippet": "On Tuesday, I marked my long-running (nine month long) task of building my website on Astro Most of my site was ready since a long time. I was able to have all the different categories of notes I wanted to have. I had a mostly automated workflow to get a note in my vault to the GitHub repo that has all the code it needs to deploy my site. Some things, namely the about and the colophon pages were still left to be done. But I was happy with where I was."
     }
   ],
   "nordletter/nl106-citcon-2026-helsinki": [
@@ -7951,7 +7948,7 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-07-10T09:27:00.000Z",
-      "snippet": "The age of subsidies is over though. What that means for us going forward, remains to be seen."
+      "snippet": "The age of subsidies is over though. What that means for us going forward remains to be seen."
     }
   ],
   "nordletter/nl102-seeing-the-crown-bridge": [
@@ -7961,7 +7958,57 @@
       "description": "",
       "category": "nordletter",
       "created": "2026-07-10T09:27:00.000Z",
-      "snippet": "After lunch, we decide to walk toward the Crown Bridge. It was my second time here. And this whole series of three bridges, this whole walkway is so damn beautiful."
+      "snippet": "After lunch, we decided to walk toward the Crown Bridge. It was my second time here. And this whole series of three bridges, this whole walkway is so damn beautiful."
+    }
+  ],
+  "now/building-scdotnetv3-on-astro": [
+    {
+      "slug": "/nordletter/nl113-fable-is-good/",
+      "title": "Fable Is Good",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-10T09:27:00.000Z",
+      "snippet": "On Tuesday, I marked my long-running (nine-month-long) task of building my website on Astro. Most of my site was ready since a long time. I was able to have all the different categories of notes I wanted to have. I had a mostly automated workflow to get a note in my vault to the GitHub repo that has all the code it needs to deploy my site. Some things, namely the about and the colophon pages, were still left to be done. But I was happy with where I was."
+    }
+  ],
+  "micro/202607191230": [
+    {
+      "slug": "/nordletter/nl114-football-and-me/",
+      "title": "Football and Me",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-15T08:42:00.000Z",
+      "snippet": "On Sunday, at 22:00 EEST, Spain will play Argentina to decide if Messi will be a two-time World Cup Champion or not. I am typing this as I'm watching England play France for the bronze (England won). This is not the first time I've had this thought that this match is just so damn pointless. Is either set of players motivated to play this match, when they are already knocked out of the competition?"
+    }
+  ],
+  "micro/finland-is-one-of-the-coolest-countries-in-europe": [
+    {
+      "slug": "/nordletter/nl114-football-and-me/",
+      "title": "Football and Me",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-15T08:42:00.000Z",
+      "snippet": "After dilly-dallying through the entire summer, I went and got a fan from Tokmanni. It was the cheapest one I could get, because we don't use fans that much here in Finland."
+    }
+  ],
+  "bookshelf/the-complete-guide-to-fasting": [
+    {
+      "slug": "/nordletter/nl114-football-and-me/",
+      "title": "Football and Me",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-15T08:42:00.000Z",
+      "snippet": "I am reading The Complete Guide to Fasting right now. A part of me is worried that it reads a bit like the diet fads of yesteryear. I don't like diets in general. But this book is not really about diets, but rather fasting."
+    }
+  ],
+  "nordletter/nl112-the-diabetes-code": [
+    {
+      "slug": "/nordletter/nl114-football-and-me/",
+      "title": "Football and Me",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-07-15T08:42:00.000Z",
+      "snippet": "I still think the same. But the science (logic) of it is making sense to me. This is after I had read and finished The Diabetes Code and wrote about it in NL112. I wanted to read further and understand the different fasting regimens and what I was supposed to eat or not."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
