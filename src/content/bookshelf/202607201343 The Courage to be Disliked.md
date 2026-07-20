@@ -7,14 +7,9 @@ category: bookshelf
 tags: ["psychology"]
 author:
   - Ichi Yukishiro
-started: 2026-07-20T13:44:00
-finished:
+started: 2026-07-20T13:44:00+03:00
 genre: self-help
 format: audio
-rating:
-series:
-status: todo
+status: started
 ---
-## Review
-## Notes
-
+Reading.
