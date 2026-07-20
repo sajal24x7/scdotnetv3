@@ -11,6 +11,5 @@ started: 2026-07-20T13:44:00+03:00
 genre: self-help
 format: audio
 status: started
-cover: the-courage-to-be-disliked.webp
 ---
 Reading.
