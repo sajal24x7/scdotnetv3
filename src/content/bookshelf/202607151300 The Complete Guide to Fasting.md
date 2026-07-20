@@ -1,20 +1,26 @@
 ---
-title: "The Complete Guide to Fasting"
-slug: "the-complete-guide-to-fasting"
-created: 2026-07-15T13:00:00+03:00
-updated: 2026-07-20T11:45:55+03:00
+title: The Complete Guide to Fasting
+slug: the-complete-guide-to-fasting
+created: 2026-07-15T10:00:00.000Z
+updated: 2026-07-20T08:45:55.000Z
 category: bookshelf
-tags: ["nutrition", "health"]
+tags:
+  - nutrition
+  - health
 author:
   - Jason Fung
   - Jimmy Moore
-started: 2026-07-15T13:01:00
-finished: 2026-07-20T09:11:00
+started: 2026-07-15T13:01:00.000Z
+finished: 2026-07-20T09:11:00.000Z
 genre: health
 format: audio
 rating: like
 status: finished
 cover: the-complete-guide-to-fasting.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116951612072116452'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mr2yftlxk62r'
+  - 'https://www.threads.com/@sajal24x7/post/DbAoIYdIK0F'
 ---
 ## Review
 

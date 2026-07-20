@@ -1,10 +1,16 @@
 ---
-title: "Hunger Starts in the Mind"
-slug: "hunger-starts-in-the-mind"
-created: 2026-07-17T21:16:00+03:00
-updated: 2026-07-17T21:22:25+03:00
+title: Hunger Starts in the Mind
+slug: hunger-starts-in-the-mind
+created: 2026-07-17T18:16:00.000Z
+updated: 2026-07-17T18:22:25.000Z
 category: evergreen
-tags: ["health", "food"]
+tags:
+  - health
+  - food
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116951612884290822'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mr2yg7lzxb2q'
+  - 'https://www.threads.com/@sajal24x7/post/DbAoJ3OoG7B'
 ---
 From [The Complete Guide to Fasting](/bookshelf/the-complete-guide-to-fasting).
 

@@ -1,10 +1,16 @@
 ---
-title: "The Human in the Loop Is Tired"
-slug: "the-human-in-the-loop-is-tired"
-created: 2026-07-17T16:03:00+03:00
-updated: 2026-07-19T14:14:16+03:00
+title: The Human in the Loop Is Tired
+slug: the-human-in-the-loop-is-tired
+created: 2026-07-17T13:03:00.000Z
+updated: 2026-07-19T11:14:16.000Z
 category: micro
-tags: ["ai", "coding"]
+tags:
+  - ai
+  - coding
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116951613672185395'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mr2ygl3fng2w'
+  - 'https://www.threads.com/@sajal24x7/post/DbAoLVPIDT6'
 ---
 [The Human-in-the-Loop is Tired](https://pydantic.dev/articles/the-human-in-the-loop-is-tired)
 
