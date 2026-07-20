@@ -1,5 +1,5 @@
 ---
-title: Formula 1: Drive to Survive
+title: 'Formula 1: Drive to Survive'
 slug: formula-1-drive-to-survive/s7
 created: 2026-06-27T19:59:14.000Z
 updated: 2026-06-27T19:59:14.000Z
