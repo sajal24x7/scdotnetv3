@@ -15,6 +15,7 @@ genre: biography
 format: audiobook
 rating: like
 year: 2024
+cover: the-elements-of-marie-curie.webp
 ---
 ## Review
 

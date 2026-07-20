@@ -14,6 +14,7 @@ genre: health
 format: audio
 rating: like
 status: finished
+cover: the-complete-guide-to-fasting.webp
 ---
 ## Review
 
