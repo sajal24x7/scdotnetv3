@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LinuxQuiz from '../../components/learn/LinuxQuiz';
+import '../../styles/linux-learn.css';
+---
+
+<Layout
+  title="Learn Linux — Sysadmin Command Practice"
+  description="Practice common Linux sysadmin commands in short, quiz-style sessions: storage, logs, processes, networking, and more."
+  currentPage="/learn/linux"
+  pageWrapper={{ container: true, maxWidth: 'md', padding: 'lg', paddingScale: 'page' }}
+>
+  <div class="learn-linux-page">
+    <h1 class="learn-linux-page__title">Learn Linux</h1>
+    <p class="learn-linux-page__subtitle">
+      Five-command sessions for daily sysadmin practice. Pick a topic — storage today, logs
+      tomorrow — or run a mixed session that pulls from everything. Each command gets a quick
+      quiz right after, because testing yourself is what actually makes it stick.
+    </p>
+
+    <LinuxQuiz client:load />
+  </div>
+</Layout>

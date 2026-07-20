@@ -1,0 +1,434 @@
+/* /learn/linux — quiz-style Linux sysadmin practice page */
+
+.learn-linux-page {
+	padding-top: 2rem;
+	padding-bottom: 4rem;
+}
+
+.learn-linux-page__title {
+	margin-bottom: 0.5rem;
+	letter-spacing: -0.01em;
+}
+
+.learn-linux-page__subtitle {
+	color: rgb(var(--color-text-secondary));
+	font-size: var(--text-small);
+	margin-bottom: 2.5rem;
+	max-width: 42rem;
+	line-height: 1.6;
+}
+
+/* ---------- Home screen ---------- */
+
+.lq-stats {
+	display: flex;
+	gap: 1.5rem;
+	margin-bottom: 1.75rem;
+}
+
+.lq-stat {
+	display: flex;
+	flex-direction: column;
+	padding: 0.75rem 1.1rem;
+	border-radius: 10px;
+	border: 1.5px solid rgb(var(--color-border));
+	background: rgb(var(--color-bg-secondary));
+	min-width: 7rem;
+}
+
+.lq-stat__value {
+	font-size: var(--text-xlarge);
+	font-weight: 700;
+	line-height: 1.1;
+	color: rgb(var(--color-accent));
+}
+
+.lq-stat__label {
+	font-size: var(--text-xs);
+	color: rgb(var(--color-text-secondary));
+	margin-top: 0.15rem;
+}
+
+.lq-mixed-card,
+.lq-card {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+	text-align: left;
+	padding: 1.1rem 1.4rem;
+	border-radius: 12px;
+	border: 1.5px solid rgb(var(--color-border));
+	background: rgb(var(--color-bg-secondary));
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+}
+
+.lq-mixed-card {
+	margin-bottom: 1.25rem;
+	border-style: dashed;
+}
+
+.lq-mixed-card:hover,
+.lq-mixed-card:focus-visible,
+.lq-card:hover,
+.lq-card:focus-visible {
+	border-color: rgb(var(--color-accent));
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.lq-mixed-card:active,
+.lq-card:active {
+	transform: scale(0.99);
+}
+
+.lq-mixed-card__icon,
+.lq-card__icon {
+	font-size: 1.75rem;
+	flex-shrink: 0;
+	line-height: 1;
+}
+
+.lq-mixed-card__title,
+.lq-card__title {
+	display: block;
+	font-weight: 600;
+	font-size: var(--text-normal);
+	margin-bottom: 0.2rem;
+}
+
+.lq-mixed-card__desc,
+.lq-card__desc {
+	display: block;
+	font-size: var(--text-small);
+	color: rgb(var(--color-text-secondary));
+	line-height: 1.5;
+}
+
+.lq-card__meta {
+	display: block;
+	font-size: var(--text-xs);
+	color: rgb(var(--color-text-secondary));
+	margin-top: 0.35rem;
+	opacity: 0.75;
+}
+
+.lq-card__arrow {
+	margin-left: auto;
+	flex-shrink: 0;
+	color: rgb(var(--color-text-secondary));
+	font-size: 1.1rem;
+	opacity: 0.5;
+}
+
+.lq-grid {
+	display: grid;
+	gap: 0.85rem;
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
+.lq-card {
+	align-items: flex-start;
+}
+
+.lq-card__body {
+	display: block;
+	flex: 1;
+}
+
+/* ---------- Session screen ---------- */
+
+.lq-session {
+	max-width: 40rem;
+}
+
+.lq-session__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 1.75rem;
+	flex-wrap: wrap;
+}
+
+.lq-quit {
+	background: none;
+	border: none;
+	color: rgb(var(--color-text-secondary));
+	font-size: var(--text-xs);
+	cursor: pointer;
+	padding: 0.25rem 0;
+	font: inherit;
+}
+
+.lq-quit:hover {
+	color: rgb(var(--color-accent));
+}
+
+.lq-progress {
+	display: flex;
+	gap: 0.4rem;
+}
+
+.lq-progress__dot {
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 999px;
+	background: rgb(var(--color-border));
+}
+
+.lq-progress__dot--done {
+	background: rgb(var(--color-accent));
+}
+
+.lq-progress__dot--active {
+	background: rgb(var(--color-accent));
+	outline: 2px solid rgba(var(--color-accent), 0.3);
+	outline-offset: 2px;
+}
+
+.lq-score {
+	font-size: var(--text-xs);
+	color: rgb(var(--color-text-secondary));
+	font-variant-numeric: tabular-nums;
+}
+
+.lq-panel {
+	border: 1.5px solid rgb(var(--color-border));
+	background: rgb(var(--color-bg-secondary));
+	border-radius: 14px;
+	padding: 1.75rem;
+}
+
+.lq-eyebrow {
+	font-size: var(--text-xs);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: rgb(var(--color-text-secondary));
+	margin-bottom: 0.75rem;
+}
+
+.lq-command {
+	display: block;
+	font-family: var(--font-mono);
+	font-size: var(--text-large);
+	font-weight: 600;
+	color: rgb(var(--color-accent));
+	margin-bottom: 1rem;
+	word-break: break-word;
+}
+
+.lq-description {
+	font-size: var(--text-normal);
+	line-height: 1.6;
+	margin-bottom: 1.25rem;
+}
+
+.lq-example {
+	background: rgb(var(--color-bg));
+	border: 1px solid rgb(var(--color-border));
+	border-radius: 10px;
+	padding: 0.9rem 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.lq-example code {
+	display: block;
+	font-family: var(--font-mono);
+	font-size: var(--text-small);
+	color: rgb(var(--color-text-primary));
+	word-break: break-word;
+}
+
+.lq-example__note {
+	font-size: var(--text-xs);
+	color: rgb(var(--color-text-secondary));
+	margin-top: 0.5rem;
+	line-height: 1.5;
+}
+
+.lq-question {
+	font-size: var(--text-medium);
+	font-weight: 600;
+	line-height: 1.5;
+	margin-bottom: 1.25rem;
+}
+
+.lq-options {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	margin-bottom: 0.5rem;
+}
+
+.lq-option {
+	text-align: left;
+	padding: 0.75rem 1rem;
+	border-radius: 10px;
+	border: 1.5px solid rgb(var(--color-border));
+	background: rgb(var(--color-bg));
+	color: inherit;
+	font: inherit;
+	font-size: var(--text-small);
+	cursor: pointer;
+	transition: border-color 0.15s, background 0.15s;
+}
+
+.lq-option:hover:not(:disabled) {
+	border-color: rgb(var(--color-accent));
+}
+
+.lq-option--correct {
+	border-color: #2e7d32;
+	background: rgba(46, 125, 50, 0.12);
+}
+
+.lq-option--incorrect {
+	border-color: #c62828;
+	background: rgba(198, 40, 40, 0.12);
+}
+
+.lq-option--disabled {
+	opacity: 0.55;
+}
+
+.lq-option:disabled {
+	cursor: default;
+}
+
+.lq-feedback {
+	margin-top: 1.25rem;
+	padding-top: 1.25rem;
+	border-top: 1px solid rgb(var(--color-border));
+}
+
+.lq-feedback p {
+	font-size: var(--text-small);
+	line-height: 1.6;
+	color: rgb(var(--color-text-secondary));
+	margin-bottom: 1rem;
+}
+
+.lq-feedback__headline {
+	font-weight: 700;
+	font-size: var(--text-normal);
+	color: rgb(var(--color-text-primary)) !important;
+}
+
+.lq-feedback--correct .lq-feedback__headline {
+	color: #2e7d32 !important;
+}
+
+.lq-feedback--incorrect .lq-feedback__headline {
+	color: #c62828 !important;
+}
+
+.lq-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.65rem 1.25rem;
+	border-radius: 999px;
+	border: 1.5px solid rgb(var(--color-border));
+	background: rgb(var(--color-bg));
+	color: inherit;
+	font: inherit;
+	font-size: var(--text-small);
+	font-weight: 600;
+	cursor: pointer;
+	transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.lq-button:hover {
+	border-color: rgb(var(--color-accent));
+}
+
+.lq-button--primary {
+	background: rgb(var(--color-accent));
+	border-color: rgb(var(--color-accent));
+	color: #fff;
+}
+
+.lq-button--primary:hover {
+	background: rgb(var(--color-accent-hover));
+	border-color: rgb(var(--color-accent-hover));
+}
+
+/* ---------- Summary screen ---------- */
+
+.lq-summary {
+	max-width: 40rem;
+}
+
+.lq-summary__score {
+	font-size: var(--text-huge);
+	font-weight: 700;
+	margin-bottom: 0.5rem;
+}
+
+.lq-summary__message {
+	color: rgb(var(--color-text-secondary));
+	font-size: var(--text-small);
+	margin-bottom: 1.75rem;
+}
+
+.lq-summary__list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	margin-bottom: 2rem;
+	padding: 0;
+}
+
+.lq-summary__item {
+	display: flex;
+	align-items: baseline;
+	gap: 0.75rem;
+	padding: 0.75rem 1rem;
+	border-radius: 10px;
+	border: 1.5px solid rgb(var(--color-border));
+	background: rgb(var(--color-bg-secondary));
+	font-size: var(--text-small);
+	flex-wrap: wrap;
+}
+
+.lq-summary__icon {
+	font-weight: 700;
+	color: #2e7d32;
+	flex-shrink: 0;
+}
+
+.lq-summary__item--wrong .lq-summary__icon {
+	color: #c62828;
+}
+
+.lq-summary__item code {
+	font-family: var(--font-mono);
+	font-weight: 600;
+	flex-shrink: 0;
+}
+
+.lq-summary__q {
+	color: rgb(var(--color-text-secondary));
+	flex: 1;
+	min-width: 12rem;
+}
+
+.lq-summary__actions {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+
+@media (max-width: 30rem) {
+	.lq-panel {
+		padding: 1.25rem;
+	}
+
+	.lq-session__header {
+		gap: 0.5rem;
+	}
+}
