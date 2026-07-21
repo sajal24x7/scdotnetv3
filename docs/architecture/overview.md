@@ -23,7 +23,7 @@ Interactivity is opt-in and only loaded where required:
 | `src/components/islands/multi-level-navigation-island.ts` | Keeps the navigation section highlights in sync when browsing tag-filtered pages. |
 | `src/components/islands/tag-list-island.js` | Client-side behavior for tag list filtering. |
 | `src/scripts/relativeTime.ts` | Defines the `<relative-time>` custom element used by `TimeDisplay.astro` so relative timestamps stay fresh after the static build. |
-| `LinkHoverEffect.astro` | Adds hover previews on eligible links when a page passes `enableLinkHoverEffect` to `Layout.astro`. |
+| `LinkHoverEffect.astro` | Adds hover preview cards on eligible links when a page passes `enableLinkHoverEffect` to `Layout.astro`. Internal links show a fixed-size, scrollable card with the post title and a build-time excerpt of the post body (generated in `src/utils/contentPreview.ts`, served via `/api/link-previews/[category].json`); external links show the full URL. Non-link elements opt in with `data-hover-title`/`data-hover-description` (e.g. the `/learn` wall-chart tiles). |
 
 Pages enable specific islands by passing flags to `Layout.astro`, ensuring minimal client bundles on simpler routes.
 
