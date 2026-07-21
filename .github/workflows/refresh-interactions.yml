@@ -15,6 +15,7 @@ on:
         type: boolean
   schedule:
     - cron: '45 1 * * *' # Nightly run — also rebuilds the backlinks index
+    - cron: '30 2 1 * *' # Monthly full-archive run — no days_back limit, so older posts that pick up a late comment or mention are still caught
 
 # A push-triggered content publish can overlap a scheduled refresh; the
 # rebase-before-push below handles racing commits, but never run two
@@ -58,6 +59,15 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
+      - name: Determine polling window
+        id: window
+        run: |
+          if [ "${{ github.event.schedule }}" = "30 2 1 * *" ]; then
+            echo "days_back=0" >> "$GITHUB_OUTPUT"
+          else
+            echo "days_back=${{ github.event.inputs.days_back }}" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Collect interactions from syndicated copies
         env:
           # Optional: improves Mastodon API rate limits; Bluesky needs no auth
@@ -77,13 +87,13 @@ jobs:
           # Function — GITHUB_TOKEN is the bearer auth it checks (same
           # trick /api/upload uses), no separate R2 credentials needed.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          INTERACTIONS_DAYS_BACK: ${{ github.event.inputs.days_back }}
+          INTERACTIONS_DAYS_BACK: ${{ steps.window.outputs.days_back }}
         run: npm run collect-interactions
 
       # Absorbed from the old refresh-backlinks.yml workflow: one nightly
       # build here replaces a whole second workflow doing its own daily
       # checkout + npm ci + build.
-      - name: Rebuild backlinks index (nightly run only)
+      - name: Rebuild backlinks index (scheduled runs only)
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.rebuild_backlinks)
         env:
           REGENERATE_BACKLINKS: 'true'
