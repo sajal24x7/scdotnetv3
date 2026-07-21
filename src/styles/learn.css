@@ -3,19 +3,28 @@
    Rendered by src/components/learn/LearningSystem.tsx for every system. */
 
 .learn-linux-page,
-.learn-finnish-page {
+.learn-finnish-page,
+.learn-til-page,
+.learn-evergreen-page,
+.learn-hub-page {
 	padding-top: 2rem;
 	padding-bottom: 4rem;
 }
 
 .learn-linux-page__title,
-.learn-finnish-page__title {
+.learn-finnish-page__title,
+.learn-til-page__title,
+.learn-evergreen-page__title,
+.learn-hub-page__title {
 	margin-bottom: 0.5rem;
 	letter-spacing: -0.01em;
 }
 
 .learn-linux-page__subtitle,
-.learn-finnish-page__subtitle {
+.learn-finnish-page__subtitle,
+.learn-til-page__subtitle,
+.learn-evergreen-page__subtitle,
+.learn-hub-page__subtitle {
 	color: rgb(var(--color-text-secondary));
 	font-size: var(--text-small);
 	margin-bottom: 2rem;
@@ -212,10 +221,34 @@
 	word-break: break-word;
 }
 
+/* Prose stand-in for .lq-command on note-backed items with no syntax line. */
+.lq-term {
+	display: block;
+	font-family: var(--font-serif);
+	font-size: var(--text-large);
+	font-weight: 600;
+	color: rgb(var(--color-accent));
+	margin-bottom: 1rem;
+	word-break: break-word;
+}
+
 .lq-description {
 	font-size: var(--text-normal);
 	line-height: 1.6;
 	margin-bottom: 1.25rem;
+}
+
+.lq-note-link {
+	display: inline-block;
+	font-size: var(--text-small);
+	color: rgb(var(--color-text-secondary));
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	margin-bottom: 1.25rem;
+}
+
+.lq-note-link:hover {
+	color: rgb(var(--color-accent));
 }
 
 .lq-example {
@@ -446,4 +479,70 @@
 	.lq-panel {
 		padding: 1.25rem;
 	}
+}
+
+/* ---------- /learn hub ---------- */
+
+.lq-hub {
+	display: grid;
+	gap: 1.25rem;
+	grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+}
+
+.lq-hub__card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	border: 1.5px solid rgb(var(--color-border));
+	background: rgb(var(--color-bg-secondary));
+	border-radius: 14px;
+	padding: 1.25rem 1.4rem;
+	text-decoration: none;
+	color: inherit;
+	transition: border-color 0.15s ease;
+}
+
+.lq-hub__card:hover {
+	border-color: rgb(var(--color-accent));
+}
+
+.lq-hub__name {
+	font-family: var(--font-serif);
+	font-size: var(--text-large);
+	font-weight: 600;
+	display: flex;
+	align-items: baseline;
+	gap: 0.5rem;
+}
+
+.lq-hub__blurb {
+	font-size: var(--text-small);
+	color: rgb(var(--color-text-secondary));
+	line-height: 1.55;
+	flex-grow: 1;
+}
+
+.lq-hub__meta {
+	font-size: var(--text-xs);
+	color: rgb(var(--color-text-secondary));
+	opacity: 0.8;
+}
+
+.lq-hub__status {
+	font-size: var(--text-xs);
+	font-weight: 600;
+	border-top: 1px solid rgb(var(--color-border));
+	padding-top: 0.6rem;
+}
+
+.lq-hub__status--due {
+	color: rgb(var(--color-accent));
+}
+
+.lq-hub__status--done {
+	color: #2e7d32;
+}
+
+.lq-hub__status--fresh {
+	color: rgb(var(--color-text-secondary));
 }

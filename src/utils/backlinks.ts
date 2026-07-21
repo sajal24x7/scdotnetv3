@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { getCollection } from 'astro:content';
 import { getContentCategories } from './content';
+import { stripLearnBlocks } from './learnBlocks';
 import type { CollectionEntry } from 'astro:content';
 import { CONTENT_CATEGORIES } from '../content.config';
 
@@ -277,7 +278,7 @@ async function buildBacklinkIndex(): Promise<BacklinkIndex> {
     for (const entry of entries) {
         const category = resolveCategory(entry);
         const sourceKey = `${category}/${entry.id}`;
-        const body = entry.body ?? '';
+        const body = stripLearnBlocks(entry.body ?? '');
         const targets = collectBacklinkTargets(body);
 
         // Also collect wikilink targets and resolve them

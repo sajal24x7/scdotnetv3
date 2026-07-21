@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LearningSystem from '../../components/learn/LearningSystem';
+import { tilLearnConfig } from '../../data/til-learn-config';
+import '../../styles/learn.css';
+
+const itemCount = tilLearnConfig.dataset.categories.reduce((n, c) => n + c.items.length, 0);
+---
+
+<Layout
+  title="Learn TIL — Practice What I've Learned"
+  description="Spaced-repetition practice built from my own TIL notes: each note's key facts come back as recall prompts right before I'd forget them."
+  currentPage="/learn/til"
+  pageWrapper={{ container: true, maxWidth: '6xl', padding: 'lg', paddingScale: 'page' }}
+  enableLinkHoverEffect
+>
+  <div class="learn-til-page">
+    <h1 class="learn-til-page__title">Learn TIL</h1>
+    <p class="learn-til-page__subtitle">
+      My <a href="/til/">TIL notes</a>, turned into a daily practice. Notes that carry a
+      <code>learn</code> block contribute recall prompts; the scheduler brings each one
+      back right before I'd forget it, and new notes trickle in as I publish them.
+      Every tile links back to the note it came from.
+    </p>
+
+    {itemCount === 0 && (
+      <p class="learn-til-page__subtitle">
+        No notes carry a <code>learn</code> block yet — add one to a TIL note and run
+        <code>npm run extract-learn</code> to populate this deck.
+      </p>
+    )}
+
+    <LearningSystem client:load config={tilLearnConfig} />
+  </div>
+</Layout>

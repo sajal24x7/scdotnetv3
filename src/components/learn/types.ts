@@ -11,10 +11,14 @@ export interface Prompt {
 export interface LearnItem {
 	id: string;
 	term: string;
-	syntax: string;
+	// Optional for note-backed decks (til/evergreen), where prose items have
+	// no canonical syntax or worked example; the UI falls back to `term`.
+	syntax?: string;
 	description: string;
-	example: string;
-	exampleNote: string;
+	example?: string;
+	exampleNote?: string;
+	// Link to the source note, for decks generated from published notes.
+	href?: string;
 	prompts: Prompt[];
 }
 

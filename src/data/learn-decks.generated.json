@@ -1,0 +1,339 @@
+{
+	"til": {
+		"categories": [
+			{
+				"id": "windows",
+				"title": "Windows",
+				"emoji": "🪟",
+				"description": "",
+				"items": [
+					{
+						"id": "til-202502271259",
+						"term": "Disable TLS 1.0",
+						"syntax": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0",
+						"description": "Turn off the TLS 1.0 protocol on Windows via SCHANNEL registry values, for both client and server roles.",
+						"example": "## Get current value. It should be Enabled:0 and DisabledByDefault: 1\n\nGet-ItemProperty 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0\\Client\\'\n\n\nEnabled           : 0\nDisabledByDefault : 1\nPSPath            : Microsoft.PowerShell.Core\\Regist…",
+						"href": "/til/disable-tls-10/",
+						"prompts": [
+							{
+								"id": "til-202502271259-p1",
+								"q": "Where in the registry do the TLS 1.0 toggles live?",
+								"a": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0 — with Client and Server subkeys"
+							},
+							{
+								"id": "til-202502271259-p2",
+								"q": "Which two registry values disable TLS 1.0, and what should they be set to?",
+								"a": "Enabled = 0 and DisabledByDefault = 1 (DWord, under both Client and Server)"
+							}
+						]
+					},
+					{
+						"id": "til-202506271348",
+						"term": "Increase Event Log Size",
+						"syntax": "wevtutil sl <Log> /ms:<bytes>",
+						"description": "Raise a Windows event log’s maximum size via GPO or a wevtutil one-liner.",
+						"example": "wevtutil sl Security /ms:3145728",
+						"href": "/til/how-to-increase-event-log-size-on-windows-server/",
+						"prompts": [
+							{
+								"id": "til-202506271348-p1",
+								"q": "One-liner to set the Security event log's maximum size from the command line?",
+								"a": "wevtutil sl Security /ms:3145728",
+								"note": "Or via GPO under Computer Configuration → Administrative Templates → Windows Components → Event Log Service."
+							},
+							{
+								"id": "til-202506271348-p2",
+								"q": "How do you check an event log's current maximum size?",
+								"a": "wevtutil gl Security | findstr /i \"maxSize\""
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "ansible",
+				"title": "Ansible",
+				"emoji": "🎛️",
+				"description": "",
+				"items": [
+					{
+						"id": "til-202204251717",
+						"term": "Ansible Variable Precedence",
+						"description": "In the order: 1. Extra vars 2. Play vars 3. Host vars 4. Group vars",
+						"href": "/til/ansible-variable-precedence/",
+						"prompts": [
+							{
+								"id": "til-202204251717-p1",
+								"q": "Ansible variable precedence, highest to lowest?",
+								"a": "Extra vars → play vars → host vars → group vars."
+							},
+							{
+								"id": "til-202204251717-p2",
+								"q": "The same variable is set in host_vars and group_vars for a host — which value wins?",
+								"a": "host_vars — host variables beat group variables."
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "azure",
+				"title": "Azure",
+				"emoji": "☁️",
+				"description": "",
+				"items": [
+					{
+						"id": "til-202409021326",
+						"term": "Azure Resource Lock",
+						"description": "1. Azure Locks can be applied at resource, resource group or subscription level 2. No lock at management group level 2. inherited 1. all child resources get the same lock 3. Types: 1. Ready Only - can not delete or update anything /…",
+						"href": "/til/azure-resource-lock/",
+						"prompts": [
+							{
+								"id": "til-202409021326-p1",
+								"q": "At which scopes can an Azure resource lock be applied — and which scope can't have one?",
+								"a": "Resource, resource group, or subscription — but not management group.",
+								"note": "Locks are inherited — all child resources get the same lock."
+							},
+							{
+								"id": "til-202409021326-p2",
+								"q": "What are the two Azure lock types, and what does each block?",
+								"a": "Read Only (no update or delete, like the reader role) and Delete (read/modify allowed, delete blocked)."
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "cert",
+				"title": "Certificates",
+				"emoji": "🔐",
+				"description": "",
+				"items": [
+					{
+						"id": "til-202204291221",
+						"term": "Openssl Generate Csr",
+						"syntax": "openssl req -new -newkey rsa:2048 -nodes -keyout <key> -out <csr>",
+						"description": "Generate a certificate signing request and a fresh private key in one openssl command, including a SAN.",
+						"example": "openssl req -out fitcsecp.csr -new -newkey rsa:2048 -nodes -keyout fitcsecp_private_key.key -addext \"subjectAltName = DNS:domain-name.com\"",
+						"href": "/til/openssl-generate-csr/",
+						"prompts": [
+							{
+								"id": "til-202204291221-p1",
+								"q": "OpenSSL one-liner for a new CSR with a fresh 2048-bit key, no passphrase, and a SAN?",
+								"a": "openssl req -out site.csr -new -newkey rsa:2048 -nodes -keyout site.key -addext \"subjectAltName = DNS:domain-name.com\""
+							},
+							{
+								"id": "til-202204291221-p2",
+								"q": "In openssl req, what do -nodes and -addext do?",
+								"a": "-nodes leaves the private key unencrypted; -addext adds an extension such as a subjectAltName to the request."
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "entra",
+				"title": "Entra",
+				"emoji": "🪪",
+				"description": "",
+				"items": [
+					{
+						"id": "til-202408261124",
+						"term": "PHS Sync Skipped Alert",
+						"description": "Need to restart Microsoft Entra Sync service.",
+						"href": "/til/entra-connect-password-hash-synchronization-skipped-in-last-120-minutes/",
+						"prompts": [
+							{
+								"id": "til-202408261124-p1",
+								"q": "Entra Connect Health alerts \"Password hash synchronization skipped in last 120 minutes\" — what's the fix?",
+								"a": "Restart the Microsoft Entra Sync service."
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "linux",
+				"title": "Linux",
+				"emoji": "🐧",
+				"description": "",
+				"items": [
+					{
+						"id": "til-202204251555",
+						"term": "Setup Password Less Ssh",
+						"syntax": "ssh-copy-id -i ~/.ssh/<key> user@host",
+						"description": "Create SSH pair",
+						"example": "Copy public key to remote server\n``` bash\nssh-copy-id -i ~/.ssh/tatu-key-ecdsa user@host",
+						"href": "/til/setup-password-less-ssh/",
+						"prompts": [
+							{
+								"id": "til-202204251555-p1",
+								"q": "Which command copies your public key into a remote host's authorized_keys?",
+								"a": "ssh-copy-id -i ~/.ssh/tatu-key-ecdsa user@host"
+							},
+							{
+								"id": "til-202204251555-p2",
+								"q": "How do you generate an SSH key pair at a specific path?",
+								"a": "ssh-keygen -f /home/thor/.ssh/maria"
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "powershell",
+				"title": "PowerShell",
+				"emoji": "⚡",
+				"description": "",
+				"items": [
+					{
+						"id": "til-202204121531",
+						"term": "PowerShell Arrays",
+						"syntax": "@()",
+						"description": "An empty array can be created by using `@()`",
+						"example": "$ExampleArray = @(\n\t\"C:\\test\",\n\t\"C:\\test2\"\n)",
+						"href": "/til/powershell-arrays/",
+						"prompts": [
+							{
+								"id": "til-202204121531-p1",
+								"q": "In PowerShell, how do you create an empty array?",
+								"a": "$ExampleArray = @()"
+							},
+							{
+								"id": "til-202204121531-p2",
+								"q": "You need a PowerShell array holding several paths — what does the literal look like?",
+								"a": "@(\"C:\\test\", \"C:\\test2\") — comma-separated values inside @( )"
+							}
+						]
+					}
+				]
+			}
+		],
+		"introductionOrder": [
+			"til-202506271348",
+			"til-202502271259",
+			"til-202409021326",
+			"til-202408261124",
+			"til-202204291221",
+			"til-202204251717",
+			"til-202204251555",
+			"til-202204121531"
+		]
+	},
+	"evergreen": {
+		"categories": [
+			{
+				"id": "thinking",
+				"title": "Thinking",
+				"emoji": "💭",
+				"description": "",
+				"items": [
+					{
+						"id": "evergreen-202406301304",
+						"term": "Zettelkasten",
+						"description": "\"Slip-box\" Zettel --> note/slip Kasten --> chest/box",
+						"href": "/evergreen/zettelkasten/",
+						"prompts": [
+							{
+								"id": "evergreen-202406301304-p1",
+								"q": "What does \"Zettelkasten\" literally mean, and who developed the method?",
+								"a": "Slip-box (Zettel = note/slip, Kasten = chest/box) — developed by Niklas Luhmann."
+							},
+							{
+								"id": "evergreen-202406301304-p2",
+								"q": "What is the core idea of the Zettelkasten method?",
+								"a": "Ideas coalesce and evolve over time from tiny notes, worked upon consistently."
+							}
+						]
+					},
+					{
+						"id": "evergreen-202508191718",
+						"term": "Analogical Thinking",
+						"description": "Explaining new things through existing ones — and why deep structure beats surface similarity when picking analogies.",
+						"href": "/evergreen/analogical-thinking/",
+						"prompts": [
+							{
+								"id": "evergreen-202508191718-p1",
+								"q": "When hunting for useful analogies, what should you match on — surface features or something else?",
+								"a": "Deep structural relations, not surface-level features like category or domain."
+							},
+							{
+								"id": "evergreen-202508191718-p2",
+								"q": "Why gather analogies from many diverse domains rather than one?",
+								"a": "The more diverse the sources, the likelier one of them maps onto the new problem and yields a solution."
+							},
+							{
+								"id": "evergreen-202508191718-p3",
+								"q": "Sweating and the Fed's monetary policy — what deep structure do they share?",
+								"a": "Both are negative feedback loops."
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "learning",
+				"title": "Learning",
+				"emoji": "🧠",
+				"description": "",
+				"items": [
+					{
+						"id": "evergreen-202508191028",
+						"term": "How to Learn Effectively",
+						"description": "Hints and shortcuts feel productive but undermine learning; spacing, testing, and making connections are what stick.",
+						"href": "/evergreen/how-to-learn-effectively/",
+						"prompts": [
+							{
+								"id": "evergreen-202508191028-p1",
+								"q": "What are the three science-based methods for effective long-term learning?",
+								"a": "Spacing, testing (retrieval practice), and making-connections problems."
+							},
+							{
+								"id": "evergreen-202508191028-p2",
+								"q": "Hints while working on a problem improve short-term performance — what do they do to long-term learning?",
+								"a": "They harm it — the effortful struggle the hint removes is what builds durable learning."
+							},
+							{
+								"id": "evergreen-202508191028-p3",
+								"q": "Why does trying to recall something help even when you recall it wrong?",
+								"a": "The act of retrieval itself strengthens the memory — the testing/generation effect."
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "writing",
+				"title": "Writing",
+				"emoji": "✍️",
+				"description": "",
+				"items": [
+					{
+						"id": "evergreen-202508252106",
+						"term": "Why Journal",
+						"description": "Notes to my future self, a wind-down ritual, and practice in putting an inner world into words — daily, because consistency is the point.",
+						"href": "/evergreen/why-journal/",
+						"prompts": [
+							{
+								"id": "evergreen-202508252106-p1",
+								"q": "Why is journaling on uneventful days the point, not a chore?",
+								"a": "Sifting mundane days for something worth recording hones discernment and the ability to express your inner world."
+							},
+							{
+								"id": "evergreen-202508252106-p2",
+								"q": "What's the fallback principle when an end-of-day journal entry doesn't happen?",
+								"a": "Write it early the next morning — consistency is the point."
+							}
+						]
+					}
+				]
+			}
+		],
+		"introductionOrder": [
+			"evergreen-202508252106",
+			"evergreen-202508191718",
+			"evergreen-202508191028",
+			"evergreen-202406301304"
+		]
+	}
+}

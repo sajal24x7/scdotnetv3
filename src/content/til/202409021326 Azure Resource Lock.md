@@ -24,3 +24,12 @@ syndicationUrls:
 ---
 # references:
 [Lock resources](https://learn.microsoft.com/en-in/azure/azure-resource-manager/management/lock-resources?tabs=json)
+
+```learn
+prompts:
+  - q: At which scopes can an Azure resource lock be applied — and which scope can't have one?
+    a: Resource, resource group, or subscription — but not management group.
+    note: Locks are inherited — all child resources get the same lock.
+  - q: What are the two Azure lock types, and what does each block?
+    a: Read Only (no update or delete, like the reader role) and Delete (read/modify allowed, delete blocked).
+```

@@ -10,7 +10,8 @@ Utility scripts for the site. The ones you're likely to need are wired into `pac
 | Syndication (POSSE) | `syndicate-content.js`, `lib/` | [Syndication Workflow](../docs/operations/syndication.md) |
 | Publishing pipeline | `sort-inbox.sh`, `obsidian_to_astro.py`, `reconcile-shelf-queue.js` | [Publishing Pipeline](../docs/content/publishing-pipeline.md) |
 | Webmentions & interactions | `collect-interactions.js`, `send-webmentions.js`, `moderate-webmention.js`, `print-moderation-issue.js` | run via `.github/workflows/refresh-interactions.yml` and `webmention-moderation.yml` |
-| `/learn/*` content pools | `validate-learn-data.mjs` | Run `node scripts/validate-learn-data.mjs` after editing `src/data/linux-commands.ts` or `src/data/finnish.ts`. Checks prompt-id uniqueness, `introductionOrder` completeness, and that every category/item is non-empty. See [`docs/architecture/learning-systems.md`](../docs/architecture/learning-systems.md). |
+| `/learn/*` content pools | `validate-learn-data.mjs` | Run `node scripts/validate-learn-data.mjs` after editing `src/data/linux-commands.ts`, `src/data/finnish.ts`, or any note carrying a `learn` block. Checks prompt-id uniqueness, `introductionOrder` completeness, and that every category/item is non-empty. See [`docs/architecture/learning-systems.md`](../docs/architecture/learning-systems.md). |
+| `/learn/til` + `/learn/evergreen` decks | `extract-learn-blocks.mjs` | Builds `src/data/learn-decks.generated.json` from ` ```learn ` fenced blocks inside `src/content/til` and `src/content/evergreen` notes. Runs automatically in `npm run dev`/`npm run build` (`npm run extract-learn` to run it alone). See [`docs/architecture/learning-systems.md`](../docs/architecture/learning-systems.md). |
 
 ## One-time migration scripts (historical)
 

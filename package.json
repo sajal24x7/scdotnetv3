@@ -8,12 +8,13 @@
     "npm": ">=10.0.0"
   },
   "scripts": {
-    "dev": "npm run cache-nordletter-images && npm run generate-covers && astro dev",
-    "start": "npm run cache-nordletter-images && npm run generate-covers && astro dev",
-    "build": "npm run cache-nordletter-images && npm run generate-covers && astro build && pagefind --site dist",
-    "build:cloudflare": "npm run cache-nordletter-images && npm run generate-covers && astro build && pagefind --site dist",
+    "dev": "npm run cache-nordletter-images && npm run generate-covers && npm run extract-learn && astro dev",
+    "start": "npm run cache-nordletter-images && npm run generate-covers && npm run extract-learn && astro dev",
+    "build": "npm run cache-nordletter-images && npm run generate-covers && npm run extract-learn && astro build && pagefind --site dist",
+    "build:cloudflare": "npm run cache-nordletter-images && npm run generate-covers && npm run extract-learn && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
+    "extract-learn": "node scripts/extract-learn-blocks.mjs",
     "generate-covers": "node scripts/generate-book-covers.js",
     "cache-nordletter-images": "node scripts/cache-nordletter-images.js",
     "download-covers": "node scripts/download-book-covers.js",
@@ -54,6 +55,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "@types/sanitize-html": "^2.16.0",
     "gray-matter": "^4.0.3",
+    "js-yaml": "^5.2.1",
     "pagefind": "^1.5.2",
     "sharp": "^0.34.0 || ^0.35.0"
   },

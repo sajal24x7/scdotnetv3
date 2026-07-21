@@ -25,3 +25,12 @@ $ExampleArray = @(
 ---
 references:
 1. [Everything you wanted to know about arrays - PowerShell | Microsoft Docs](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-arrays?view=powershell-7.2)
+
+```learn
+syntax: '@()'
+prompts:
+  - q: In PowerShell, how do you create an empty array?
+    a: '$ExampleArray = @()'
+  - q: You need a PowerShell array holding several paths — what does the literal look like?
+    a: '@("C:\test", "C:\test2") — comma-separated values inside @( )'
+```

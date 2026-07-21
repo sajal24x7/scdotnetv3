@@ -27,3 +27,15 @@ wevtutil gl Security | findstr /i "maxSize"
 ---
 # references:
 [Event Log | Microsoft Learn](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd349798\(v=ws.10\))
+
+```learn
+term: Increase Event Log Size
+description: Raise a Windows event log’s maximum size via GPO or a wevtutil one-liner.
+syntax: 'wevtutil sl <Log> /ms:<bytes>'
+prompts:
+  - q: One-liner to set the Security event log's maximum size from the command line?
+    a: 'wevtutil sl Security /ms:3145728'
+    note: Or via GPO under Computer Configuration → Administrative Templates → Windows Components → Event Log Service.
+  - q: How do you check an event log's current maximum size?
+    a: 'wevtutil gl Security | findstr /i "maxSize"'
+```

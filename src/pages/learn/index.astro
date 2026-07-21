@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LearnHub from '../../components/learn/LearnHub';
+import type { LearnHubSystem } from '../../components/learn/LearnHub';
+import type { LearnSystemConfig } from '../../components/learn/types';
+import { linuxLearnConfig } from '../../data/linux-learn-config';
+import { finnishLearnConfig } from '../../data/finnish-learn-config';
+import { tilLearnConfig } from '../../data/til-learn-config';
+import { evergreenLearnConfig } from '../../data/evergreen-learn-config';
+import '../../styles/learn.css';
+
+// Build-time summaries only — the island must not bundle four content pools.
+function summarize(
+  config: LearnSystemConfig,
+  extra: { id: string; title: string; emoji: string; href: string; blurb: string },
+): LearnHubSystem {
+  const items = config.dataset.categories.flatMap((c) => c.items);
+  return {
+    ...extra,
+    itemNoun: config.itemNoun,
+    totalItems: items.length,
+    totalPrompts: items.reduce((n, item) => n + item.prompts.length, 0),
+    storageKey: config.storageKey,
+    newPerDay: config.newPerDay,
+    dueCap: config.dueCap,
+  };
+}
+
+const systems: LearnHubSystem[] = [
+  summarize(linuxLearnConfig, {
+    id: 'linux',
+    title: 'Linux',
+    emoji: '🐧',
+    href: '/learn/linux/',
+    blurb: 'Sysadmin commands — storage, logs, processes, networking — as a periodic table on the wall.',
+  }),
+  summarize(finnishLearnConfig, {
+    id: 'finnish',
+    title: 'Finnish',
+    emoji: '🇫🇮',
+    href: '/learn/finnish/',
+    blurb: 'Finnish as a rule system: vocabulary, vowel harmony, gradation, and cases.',
+  }),
+  summarize(tilLearnConfig, {
+    id: 'til',
+    title: 'TIL',
+    emoji: '📝',
+    href: '/learn/til/',
+    blurb: 'My own TIL notes, distilled into recall prompts — the notes are the curriculum.',
+  }),
+  summarize(evergreenLearnConfig, {
+    id: 'evergreen',
+    title: 'Evergreen',
+    emoji: '🌱',
+    href: '/learn/evergreen/',
+    blurb: 'Spaced re-encounter with my evergreen ideas: claims, mechanisms, examples.',
+  }),
+];
+---
+
+<Layout
+  title="Learn — Daily Practice"
+  description="One page for all my spaced-repetition practice systems: Linux commands, Finnish, and decks built from my own TIL and evergreen notes."
+  currentPage="/learn"
+  pageWrapper={{ container: true, maxWidth: '6xl', padding: 'lg', paddingScale: 'page' }}
+>
+  <div class="learn-hub-page">
+    <h1 class="learn-hub-page__title">Learn</h1>
+    <p class="learn-hub-page__subtitle">
+      Daily practice, a few minutes per deck. Each system keeps its own wall chart and
+      schedule — this page just shows what's owed today. Open it, clear what's due,
+      get on with your day.
+    </p>
+
+    <LearnHub client:load systems={systems} />
+  </div>
+</Layout>

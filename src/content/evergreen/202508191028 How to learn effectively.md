@@ -20,3 +20,15 @@ There are three science based methods that one could use to help with long term 
 1. Making connections problems
 2. Spaced repetition - Waiting between practice sessions of the same thing
 3. Testing effect/Retrieval practice/Generation effect - When you are forced to recall something, it helps with further learning, even if you recall it wrong. The act of trying to recall strengthens your memory of that event.
+
+```learn
+description: Hints and shortcuts feel productive but undermine learning; spacing, testing, and making connections are what stick.
+category: learning
+prompts:
+  - q: What are the three science-based methods for effective long-term learning?
+    a: Spacing, testing (retrieval practice), and making-connections problems.
+  - q: Hints while working on a problem improve short-term performance — what do they do to long-term learning?
+    a: They harm it — the effortful struggle the hint removes is what builds durable learning.
+  - q: Why does trying to recall something help even when you recall it wrong?
+    a: The act of retrieval itself strengthens the memory — the testing/generation effect.
+```
