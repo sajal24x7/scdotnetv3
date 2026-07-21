@@ -176,6 +176,20 @@
       "status": "approved"
     }
   ],
+  "evergreen/hunger-starts-in-the-mind": [
+    {
+      "id": "mastodon:repost:116951612884290822:111653123325216795",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Food & Drink Channel",
+        "url": "https://newsmast.community/@foodanddrink",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/2f8ca8e08072f238a9205363b6b2affb.png"
+      },
+      "url": "https://newsmast.community/@foodanddrink",
+      "status": "approved"
+    }
+  ],
   "micro/202607091101": [
     {
       "id": "bluesky:like:3mq7azzv4qu2w:did:plc:lcbtt32aexvcuwlt4alf6qsw",
@@ -759,6 +773,20 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/dd4040f230b3416b4e612caff74d73d4.jpg"
       },
       "url": "https://ohai.social/@ikklegemzuniverseplus",
+      "status": "approved"
+    }
+  ],
+  "micro/the-human-in-the-loop-is-tired": [
+    {
+      "id": "mastodon:like:116951613672185395:116696538002197507",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Marin T. Kael",
+        "url": "https://mastodon.social/@marintkael",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/2d5c30fd3cf1c721e763d3992114dffd.png"
+      },
+      "url": "https://mastodon.social/@marintkael",
       "status": "approved"
     }
   ],

@@ -589,7 +589,6 @@
       "bookshelf/202607161737 The course of love.md",
       "bookshelf/202607161738 Daily Rituals: How Artists Work.md",
       "bookshelf/202607161739 Maintenance: Of Everything.md",
-      "bookshelf/202607161740 Die with Zero: Getting All You Can from Your Money and Your Life.md",
       "bookshelf/202607161741 Thinking in systems.md",
       "bookshelf/202607161742 Eat to live.md",
       "bookshelf/202607161743 Inside the Box: How Constraints Make Us Better.md",
@@ -599,8 +598,11 @@
       "bookshelf/202607161747 How to Get Rich.md",
       "bookshelf/202607161748 A Calendar of Wisdom.md",
       "bookshelf/202607161949 Playful Parenting.md",
+      "bookshelf/202607201148 How to Read a Book.md",
+      "bookshelf/202607201343 The Courage to be Disliked.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
+      "evergreen/202406301304 Zettelkasten.md",
       "evergreen/202503250411 Be a hybrid.md",
       "evergreen/202505140951 When someone has been dead for a while.md",
       "evergreen/202507020958 Homes can’t be considered both an investment and affordable enough for everyone to own.md",
@@ -646,6 +648,7 @@
       "evergreen/202606222206 Extinction Was Discovered.md",
       "evergreen/202606291311 Thin on the Outside Fat on the Inside.md",
       "evergreen/202606302145 A Good Life Requires Constant Maintenance.md",
+      "evergreen/202607172116 Hunger Starts in the Mind.md",
       "filmshelf/201812311200 Mowgli Legend of the Jungle.md",
       "filmshelf/201901061200 Black Mirror Bandersnatch.md",
       "filmshelf/201901141200 Hate Story.md",
@@ -1560,6 +1563,7 @@
       "micro/202607160937.md",
       "micro/202607161309.md",
       "micro/202607161945.md",
+      "micro/202607171603 The Human in the Loop is Tired.md",
       "micro/202607191230.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
@@ -7897,6 +7901,14 @@
   ],
   "bookshelf/the-diabetes-code": [
     {
+      "slug": "/bookshelf/the-complete-guide-to-fasting/",
+      "title": "The Complete Guide to Fasting",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-07-15T10:00:00.000Z",
+      "snippet": "This book served as an extension to The Diabetes Code. I was interested in knowing more about the fasting regimen, and if I could implement it in my day-to-day life."
+    },
+    {
       "slug": "/nordletter/nl114-football-and-me/",
       "title": "Football and Me",
       "description": "",
@@ -7992,6 +8004,14 @@
     }
   ],
   "bookshelf/the-complete-guide-to-fasting": [
+    {
+      "slug": "/evergreen/hunger-starts-in-the-mind/",
+      "title": "Hunger Starts in the Mind",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-07-17T18:16:00.000Z",
+      "snippet": "From The Complete Guide to Fasting."
+    },
     {
       "slug": "/nordletter/nl114-football-and-me/",
       "title": "Football and Me",
