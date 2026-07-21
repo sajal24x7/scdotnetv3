@@ -410,6 +410,46 @@ const previewCategories = await getContentPreviewCategories();
             }
         };
 
+        const showGenericTooltip = (event, el) => {
+            clearTimeout(hideTimeout);
+            setTooltipTheme();
+            state.currentLink = el;
+
+            const title = el.dataset.hoverTitle || (el.textContent ? el.textContent.trim() : '');
+            const description = el.dataset.hoverDescription || '';
+            renderInternalPreview(title, description);
+
+            tooltip.style.maxWidth = '300px';
+            tooltip.style.minWidth = '150px';
+
+            tooltip.classList.add('visible');
+            tooltip.style.display = 'block';
+            tooltip.style.opacity = '1';
+            tooltip.style.transform = 'translateY(0)';
+
+            updateTooltipPosition(event, true);
+        };
+
+        const handleGenericTarget = (el) => {
+            if (processedLinks.has(el)) {
+                return;
+            }
+
+            processedLinks.add(el);
+
+            el.addEventListener('mouseenter', (event) => {
+                showGenericTooltip(event, el);
+            });
+
+            el.addEventListener('mouseleave', () => {
+                hideTooltip();
+            });
+
+            el.addEventListener('mousemove', (event) => {
+                updateTooltipPosition(event, true);
+            });
+        };
+
         const showTooltip = (event, link, isInternal) => {
             clearTimeout(hideTimeout);
             setTooltipTheme();
@@ -518,6 +558,12 @@ const previewCategories = await getContentPreviewCategories();
                 const links = prose.querySelectorAll('a[href]');
                 links.forEach(handleLink);
             });
+
+            // Non-link elements (e.g. wall-chart tiles) opt in with
+            // data-hover-title/-description to get the same floating tooltip,
+            // independent of .prose.
+            const genericTargets = document.querySelectorAll('[data-hover-title]');
+            genericTargets.forEach(handleGenericTarget);
         };
 
         const scheduleSetup = () => {

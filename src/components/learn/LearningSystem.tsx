@@ -392,6 +392,8 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 										key={item.id}
 										className={`lq-tile lq-tile--${status}${selectedItem?.id === item.id ? ' lq-tile--selected' : ''}`}
 										onClick={() => setSelectedItem(selectedItem?.id === item.id ? null : item)}
+										data-hover-title={item.syntax}
+										data-hover-description={item.description}
 									>
 										{item.term}
 									</button>
