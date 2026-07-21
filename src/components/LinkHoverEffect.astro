@@ -13,11 +13,11 @@ const previewCategories = await getContentPreviewCategories();
     z-index: 9999;
     display: none;
     flex-direction: column;
-    width: min(380px, calc(100vw - 24px));
-    max-height: 300px;
+    width: min(460px, calc(100vw - 24px));
+    max-height: 420px;
     overflow: hidden;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.97);
+    background: rgb(var(--color-bg));
     color: #1a1a1a;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -31,7 +31,6 @@ const previewCategories = await getContentPreviewCategories();
   }
 
   .dark .hover-tooltip {
-    background: rgba(23, 23, 23, 0.97);
     color: #f5f5f5;
     border-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -40,7 +39,7 @@ const previewCategories = await getContentPreviewCategories();
   .hover-tooltip.visible {
     opacity: 1;
     transform: translateY(0);
-    /* The card is interactive while shown so readers can scroll the excerpt. */
+    /* Interactive while shown so links inside the excerpt stay clickable. */
     pointer-events: auto;
   }
 
@@ -49,16 +48,17 @@ const previewCategories = await getContentPreviewCategories();
   .hover-tooltip--fit {
     width: max-content;
     min-width: 160px;
-    max-width: min(380px, calc(100vw - 24px));
+    max-width: min(460px, calc(100vw - 24px));
   }
 
   .hover-tooltip__scroll {
-    overflow-y: auto;
-    overscroll-behavior: contain;
+    /* No scrollbar: the excerpt is pre-truncated to fit, and anything left
+       over is simply clipped rather than made scrollable. */
+    overflow: hidden;
     padding: 12px 16px;
   }
 
-  /* Bottom fade signalling more content below the fold of the card. */
+  /* Bottom fade signalling the excerpt is cut off — read more via the link. */
   .hover-tooltip::after {
     content: '';
     position: absolute;
@@ -67,14 +67,10 @@ const previewCategories = await getContentPreviewCategories();
     bottom: 1px;
     height: 28px;
     border-radius: 0 0 9px 9px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.97));
+    background: linear-gradient(to bottom, rgba(var(--color-bg), 0), rgba(var(--color-bg), 0.97));
     opacity: 0;
     transition: opacity 0.15s ease;
     pointer-events: none;
-  }
-
-  .dark .hover-tooltip::after {
-    background: linear-gradient(to bottom, rgba(23, 23, 23, 0), rgba(23, 23, 23, 0.97));
   }
 
   .hover-tooltip.has-overflow::after {
@@ -303,7 +299,6 @@ const previewCategories = await getContentPreviewCategories();
                 clearTimeout(state.hideTimer);
             });
             tooltip.addEventListener('mouseleave', scheduleHide);
-            scrollEl.addEventListener('scroll', updateOverflowFade, { passive: true });
 
             document.body.appendChild(tooltip);
             state.tooltip = tooltip;
