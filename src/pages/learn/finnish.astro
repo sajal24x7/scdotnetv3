@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LearningSystem from '../../components/learn/LearningSystem';
+import { finnishLearnConfig } from '../../data/finnish-learn-config';
+import '../../styles/learn.css';
+---
+
+<Layout
+  title="Learn Finnish — The Language of Rules"
+  description="Practice Finnish as a rule system — vowel harmony, consonant gradation, and the location-case grid — in short, quiz-style sessions."
+  currentPage="/learn/finnish"
+  pageWrapper={{ container: true, maxWidth: '6xl', padding: 'lg', paddingScale: 'page' }}
+>
+  <div class="learn-finnish-page">
+    <h1 class="learn-finnish-page__title">Learn Finnish</h1>
+    <p class="learn-finnish-page__subtitle">
+      Finnish isn't Indo-European — it's a Uralic language that builds words by stacking
+      rule-governed suffixes onto alien-looking stems. That makes it unusually learnable by
+      system: master vowel harmony, consonant gradation, and a grid of case endings, and
+      thousands of word forms become derivable instead of memorizable. A few minutes a day;
+      the scheduler decides what you see; the chart turns green as the rule system becomes
+      yours.
+    </p>
+
+    <LearningSystem client:load config={finnishLearnConfig} />
+  </div>
+</Layout>

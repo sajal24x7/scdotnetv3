@@ -1,7 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import LinuxQuiz from '../../components/learn/LinuxQuiz';
-import '../../styles/linux-learn.css';
+import LearningSystem from '../../components/learn/LearningSystem';
+import { linuxLearnConfig } from '../../data/linux-learn-config';
+import '../../styles/learn.css';
 ---
 
 <Layout
@@ -19,6 +20,6 @@ import '../../styles/linux-learn.css';
       do today's review, get on with your work.
     </p>
 
-    <LinuxQuiz client:load />
+    <LearningSystem client:load config={linuxLearnConfig} />
   </div>
 </Layout>

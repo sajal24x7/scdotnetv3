@@ -1,18 +1,21 @@
-/* /learn/linux — spaced-repetition Linux sysadmin practice page.
-   UI for the wall chart + Leitner review flow described in
-   docs/architecture/learning-systems.md. */
+/* Shared UI for /learn/* spaced-repetition practice pages (wall chart +
+   Leitner review flow) described in docs/architecture/learning-systems.md.
+   Rendered by src/components/learn/LearningSystem.tsx for every system. */
 
-.learn-linux-page {
+.learn-linux-page,
+.learn-finnish-page {
 	padding-top: 2rem;
 	padding-bottom: 4rem;
 }
 
-.learn-linux-page__title {
+.learn-linux-page__title,
+.learn-finnish-page__title {
 	margin-bottom: 0.5rem;
 	letter-spacing: -0.01em;
 }
 
-.learn-linux-page__subtitle {
+.learn-linux-page__subtitle,
+.learn-finnish-page__subtitle {
 	color: rgb(var(--color-text-secondary));
 	font-size: var(--text-small);
 	margin-bottom: 2rem;
@@ -306,6 +309,11 @@
 	margin-bottom: 0.6rem;
 	word-break: break-word;
 	line-height: 1.5;
+}
+
+.lq-answer__text--prose {
+	font-family: var(--font-serif);
+	font-size: var(--text-medium);
 }
 
 .lq-answer__note {
