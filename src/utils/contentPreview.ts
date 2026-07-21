@@ -50,6 +50,25 @@ function buildExcerptSource(body: string): { markdown: string; truncated: boolea
     // MDX import/export statements aren't content.
     .filter((block) => block.length > 0 && !/^(import|export)\s/.test(block));
 
+  // Nordletter editions open (and re-open, after a "---" divider) with the
+  // same boilerplate greeting/subscribe/contact paragraphs before the actual
+  // edition content starts. Backlinks avoid this by excerpting the text
+  // around the link's own position rather than the top of the post; since
+  // the hover preview always starts from the top, drop that boilerplate here
+  // instead so readers see real content, not the constant intro.
+  const NEWSLETTER_BOILERPLATE = [
+    /^Hello from my home in Helsinki!/i,
+    /^To follow the series,/i,
+    /^You can reach out to me by replying/i
+  ];
+  while (
+    blocks.length > 0 &&
+    (/^-{3,}$/.test(blocks[0]) || /^\*{3,}$/.test(blocks[0]) ||
+      NEWSLETTER_BOILERPLATE.some((pattern) => pattern.test(blocks[0])))
+  ) {
+    blocks.shift();
+  }
+
   const chosen: string[] = [];
   let chars = 0;
   let truncated = false;
