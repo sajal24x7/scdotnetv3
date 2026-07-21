@@ -84,9 +84,6 @@ _CATEGORY_STUBS: dict[str, list[tuple[str, str]]] = {
         ("rating", ""),
         ("finished", ""),
         ("genre", '""'),
-        ("status", "todo"),
-        ("rating", ""),
-        ("finished", ""),
     ],
     "tvshelf": [
         ("showTitle", '""'),
@@ -228,12 +225,20 @@ def is_obsidian_format(fm: dict) -> bool:
     return "aliases" in fm or "title" not in fm or "slug" not in fm
 
 
-def build_stub_lines(category: str, present_keys: set) -> list:
-    """Return stub frontmatter lines for category-specific fields not already present."""
+def build_stub_lines(category: str, present_keys: set, fm: dict) -> list:
+    """Return stub frontmatter lines for category-specific fields not already present.
+
+    A shelf item with a `finished` date but no explicit `status` is done, not
+    queued — default its status stub to "finished" instead of "todo".
+    """
+    has_finished_date = bool(fm.get("finished", "").strip())
     lines = []
     for key, default in _CATEGORY_STUBS.get(category, []):
         if key not in present_keys:
-            lines.append(f"{key}: {default}" if default else f"{key}:")
+            if key == "status" and has_finished_date:
+                lines.append("status: finished")
+            else:
+                lines.append(f"{key}: {default}" if default else f"{key}:")
     return lines
 
 
@@ -305,7 +310,7 @@ def transform_file(filepath: str, content_index: dict | None = None) -> bool:
         if stripped and not stripped.startswith("- ") and ":" in stripped:
             present_keys.add(stripped.partition(":")[0].strip())
 
-    stubs = build_stub_lines(category, present_keys)
+    stubs = build_stub_lines(category, present_keys, fm)
 
     new_fm_lines = [
         "---",

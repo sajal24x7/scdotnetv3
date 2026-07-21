@@ -188,17 +188,19 @@ gameshelf:
 > `status: todo`; started/paused/finished entries are never candidates —
 > whose **normalised title** matches (lowercase, punctuation stripped — the
 > exact normalisation `computeWatchNumbers()` already uses; for TV, match on
-> normalised `showTitle` instead). If found: delete the stub, in the same
-> publish commit. Nothing is copied or merged.
+> normalised `showTitle` instead). If found: copy the stub's `cover` onto the
+> arriving note if it doesn't already have one, then delete the stub, in the
+> same publish commit.
 
 Consequences:
 
 - **The filename mismatch evaporates.** The Obsidian note's filename becomes
   the canonical one; the stub with its different timestamp is deleted before
   anything reaches `main`, so no duplicate ever renders.
-- No merge logic to get wrong: the new note arrives bare and the enrichment
-  workflow (§3) fills its metadata and cover again on the next push — the
-  stub's enriched fields are simply discarded with it.
+- Almost no merge logic: the stub's `cover` is the one field carried over
+  (only when the arriving note doesn't already have one) since it's already
+  sitting there enriched; everything else arrives bare and the enrichment
+  workflow (§3) fills it in again on the next push.
 - Matching only against `todo` keeps rereads/rewatches safe: a second "Wool"
   entry never deletes the finished first read — rewatch detection keeps
   working on multiple non-todo entries as today.
