@@ -4,16 +4,81 @@ import { getContentPreviewCategories } from '../data/contentPreviewStore';
 const previewCategories = await getContentPreviewCategories();
 ---
 
-<!-- The tooltip element is created by the script below and appended to <body>,
+<!-- The hover card element is created by the script below and appended to <body>,
      so these styles must be global — scoped selectors would require Astro's
      scope attribute, which JS-created elements never carry. -->
 <style is:global>
   .hover-tooltip {
     position: fixed;
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    width: min(380px, calc(100vw - 24px));
+    max-height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.97);
+    color: #1a1a1a;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(6px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
     pointer-events: none;
+    font-size: var(--text-small);
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .dark .hover-tooltip {
+    background: rgba(23, 23, 23, 0.97);
+    color: #f5f5f5;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .hover-tooltip.visible {
+    opacity: 1;
+    transform: translateY(0);
+    /* The card is interactive while shown so readers can scroll the excerpt. */
+    pointer-events: auto;
+  }
+
+  /* Generic targets (e.g. learn wall-chart tiles) carry short strings, so the
+     card shrinks to fit instead of holding the fixed preview width. */
+  .hover-tooltip--fit {
+    width: max-content;
+    min-width: 160px;
+    max-width: min(380px, calc(100vw - 24px));
+  }
+
+  .hover-tooltip__scroll {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 12px 16px;
+  }
+
+  /* Bottom fade signalling more content below the fold of the card. */
+  .hover-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    height: 28px;
+    border-radius: 0 0 9px 9px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.97));
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none;
+  }
+
+  .dark .hover-tooltip::after {
+    background: linear-gradient(to bottom, rgba(23, 23, 23, 0), rgba(23, 23, 23, 0.97));
+  }
+
+  .hover-tooltip.has-overflow::after {
+    opacity: 1;
   }
 
   /* Internal link preview */
@@ -40,6 +105,76 @@ const previewCategories = await getContentPreviewCategories();
     opacity: 0.8;
   }
 
+  /* Post-body excerpt rendered inside the card */
+  .hover-tooltip .internal-preview .excerpt {
+    margin-top: 8px;
+    font-size: var(--text-xs);
+    line-height: 1.55;
+  }
+
+  .hover-tooltip .excerpt p,
+  .hover-tooltip .excerpt ul,
+  .hover-tooltip .excerpt ol,
+  .hover-tooltip .excerpt blockquote,
+  .hover-tooltip .excerpt pre {
+    margin: 0 0 0.6em;
+  }
+
+  .hover-tooltip .excerpt > :last-child {
+    margin-bottom: 0;
+  }
+
+  .hover-tooltip .excerpt h1,
+  .hover-tooltip .excerpt h2,
+  .hover-tooltip .excerpt h3,
+  .hover-tooltip .excerpt h4,
+  .hover-tooltip .excerpt h5,
+  .hover-tooltip .excerpt h6 {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    margin: 0.8em 0 0.3em;
+  }
+
+  .hover-tooltip .excerpt ul,
+  .hover-tooltip .excerpt ol {
+    padding-left: 1.2em;
+  }
+
+  .hover-tooltip .excerpt ul {
+    list-style: disc;
+  }
+
+  .hover-tooltip .excerpt ol {
+    list-style: decimal;
+  }
+
+  .hover-tooltip .excerpt blockquote {
+    border-left: 2px solid currentColor;
+    padding-left: 0.8em;
+    opacity: 0.8;
+  }
+
+  .hover-tooltip .excerpt code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+
+  .hover-tooltip .excerpt pre {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 8px;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+
+  .dark .hover-tooltip .excerpt pre {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .hover-tooltip .excerpt a {
+    color: rgb(var(--color-accent));
+    text-decoration: underline;
+  }
+
   /* External link preview */
   .hover-tooltip .external-preview {
     border-left: 3px solid rgb(var(--color-accent));
@@ -53,7 +188,6 @@ const previewCategories = await getContentPreviewCategories();
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
-    margin-bottom: 6px;
     line-height: 1.4;
   }
 
@@ -69,6 +203,8 @@ const previewCategories = await getContentPreviewCategories();
         const STATE_KEY = '__SC_LINK_HOVER_STATE__';
         const PREVIEW_BASE_URL = '/api/link-previews';
         const AVAILABLE_SEGMENTS = new Set(previewCategories);
+        const SHOW_DELAY_MS = 250;
+        const HIDE_DELAY_MS = 300;
 
         const existing = window[PREVIEW_KEY];
         const previewMap = existing instanceof Map ? existing : new Map();
@@ -103,8 +239,49 @@ const previewCategories = await getContentPreviewCategories();
         const pendingSegments = state.pendingSegments;
         const segmentFetches = state.segmentFetches;
 
+        // Timers live on the shared state so listeners registered by earlier
+        // page loads (Astro swaps re-run this script in the same realm) all
+        // cancel each other correctly.
+        const hideTooltip = () => {
+            const tooltip = state.tooltip;
+            if (!tooltip) {
+                return;
+            }
+
+            clearTimeout(state.showTimer);
+            tooltip.classList.remove('visible');
+
+            clearTimeout(state.displayTimer);
+            state.displayTimer = window.setTimeout(() => {
+                if (!tooltip.classList.contains('visible')) {
+                    tooltip.style.display = 'none';
+                }
+            }, 180);
+
+            state.currentLink = null;
+        };
+
+        const scheduleHide = () => {
+            clearTimeout(state.hideTimer);
+            state.hideTimer = window.setTimeout(hideTooltip, HIDE_DELAY_MS);
+        };
+
+        const updateOverflowFade = () => {
+            const tooltip = state.tooltip;
+            const scrollEl = state.scrollEl;
+            if (!tooltip || !scrollEl) {
+                return;
+            }
+
+            const overflowing = scrollEl.scrollHeight - scrollEl.scrollTop - scrollEl.clientHeight > 4;
+            tooltip.classList.toggle('has-overflow', overflowing);
+        };
+
         const ensureTooltip = () => {
             if (state.tooltip && document.body.contains(state.tooltip)) {
+                if (!state.scrollEl || !state.tooltip.contains(state.scrollEl)) {
+                    state.scrollEl = state.tooltip.querySelector('.hover-tooltip__scroll');
+                }
                 return state.tooltip;
             }
 
@@ -115,10 +292,22 @@ const previewCategories = await getContentPreviewCategories();
             const tooltip = document.createElement('div');
             tooltip.className = 'hover-tooltip';
             tooltip.style.display = 'none';
-            tooltip.style.position = 'fixed';
-            tooltip.style.pointerEvents = 'none';
+
+            const scrollEl = document.createElement('div');
+            scrollEl.className = 'hover-tooltip__scroll';
+            tooltip.appendChild(scrollEl);
+
+            // Keep the card open while the pointer is over it, so the excerpt
+            // can be scrolled; leaving it starts the hide countdown.
+            tooltip.addEventListener('mouseenter', () => {
+                clearTimeout(state.hideTimer);
+            });
+            tooltip.addEventListener('mouseleave', scheduleHide);
+            scrollEl.addEventListener('scroll', updateOverflowFade, { passive: true });
+
             document.body.appendChild(tooltip);
             state.tooltip = tooltip;
+            state.scrollEl = scrollEl;
             return tooltip;
         };
 
@@ -133,29 +322,8 @@ const previewCategories = await getContentPreviewCategories();
             return;
         }
 
-        const setTooltipTheme = () => {
-            const isDarkMode = document.documentElement.classList.contains('dark');
-
-            if (isDarkMode) {
-                tooltip.style.background = 'rgba(0, 0, 0, 0.95)';
-                tooltip.style.color = 'white';
-                tooltip.style.border = '1px solid rgba(255, 255, 255, 0.1)';
-                tooltip.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
-            } else {
-                tooltip.style.background = 'rgba(255, 255, 255, 0.95)';
-                tooltip.style.color = '#1a1a1a';
-                tooltip.style.border = '1px solid rgba(0, 0, 0, 0.1)';
-                tooltip.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
-            }
-
-            tooltip.style.padding = '12px 16px';
-            tooltip.style.borderRadius = '8px';
-            tooltip.style.fontSize = '14px';
-            tooltip.style.zIndex = '9999';
-        };
-
-        const renderInternalPreview = (title, description) => {
-            tooltip.replaceChildren();
+        const renderInternalPreview = (title, description, excerptHtml) => {
+            const scrollEl = state.scrollEl;
 
             const container = document.createElement('div');
             container.className = 'internal-preview';
@@ -165,18 +333,25 @@ const previewCategories = await getContentPreviewCategories();
             titleEl.textContent = title;
             container.appendChild(titleEl);
 
-            if (description) {
+            if (excerptHtml) {
+                const excerptEl = document.createElement('div');
+                excerptEl.className = 'excerpt';
+                // Excerpt HTML is generated and sanitized at build time.
+                excerptEl.innerHTML = excerptHtml;
+                container.appendChild(excerptEl);
+            } else if (description) {
                 const descriptionEl = document.createElement('div');
                 descriptionEl.className = 'description';
                 descriptionEl.textContent = description;
                 container.appendChild(descriptionEl);
             }
 
-            tooltip.appendChild(container);
+            scrollEl.replaceChildren(container);
+            scrollEl.scrollTop = 0;
         };
 
         const renderExternalPreview = (href) => {
-            tooltip.replaceChildren();
+            const scrollEl = state.scrollEl;
 
             const container = document.createElement('div');
             container.className = 'external-preview';
@@ -186,48 +361,46 @@ const previewCategories = await getContentPreviewCategories();
             urlEl.textContent = href;
             container.appendChild(urlEl);
 
-            tooltip.appendChild(container);
+            scrollEl.replaceChildren(container);
+            scrollEl.scrollTop = 0;
         };
 
-        let hideTimeout;
+        // Anchor the fixed-size card to the hovered element: below it when
+        // there is room, above it otherwise, clamped to the viewport.
+        const positionTooltip = (target) => {
+            if (!target || !target.isConnected) {
+                return;
+            }
 
-        const hideTooltip = () => {
-            tooltip.classList.remove('visible');
-            tooltip.style.opacity = '0';
-            tooltip.style.transform = 'translateY(-10px)';
+            const rect = target.getBoundingClientRect();
+            tooltip.style.display = 'flex';
 
-            clearTimeout(hideTimeout);
-            hideTimeout = window.setTimeout(() => {
-                if (!tooltip.classList.contains('visible')) {
-                    tooltip.style.display = 'none';
-                }
-            }, 200);
-
-            state.currentLink = null;
-        };
-
-        const updateTooltipPosition = (event, isInternal) => {
             const viewportWidth = window.innerWidth;
-            const tooltipWidth = isInternal ? 300 : 400;
-            const tooltipHeight = 80;
+            const viewportHeight = window.innerHeight;
+            const width = tooltip.offsetWidth;
+            const height = tooltip.offsetHeight;
 
-            let left = event.clientX + 10;
-            let top = event.clientY - tooltipHeight - 10;
+            const left = Math.min(Math.max(rect.left, 12), Math.max(12, viewportWidth - width - 12));
 
-            if (left + tooltipWidth > viewportWidth - 10) {
-                left = event.clientX - tooltipWidth - 10;
-            }
-
-            if (top < 10) {
-                top = event.clientY + 10;
-            }
-
-            if (left < 10) {
-                left = 10;
+            let top;
+            if (rect.bottom + 8 + height <= viewportHeight - 12) {
+                top = rect.bottom + 8;
+            } else if (rect.top - 8 - height >= 12) {
+                top = rect.top - 8 - height;
+            } else {
+                top = Math.max(12, viewportHeight - height - 12);
             }
 
             tooltip.style.left = `${left}px`;
             tooltip.style.top = `${top}px`;
+        };
+
+        const revealTooltip = (target) => {
+            clearTimeout(state.displayTimer);
+            tooltip.style.display = 'flex';
+            positionTooltip(target);
+            tooltip.classList.add('visible');
+            updateOverflowFade();
         };
 
         const normalizeHref = (href) => {
@@ -346,26 +519,30 @@ const previewCategories = await getContentPreviewCategories();
             window.setTimeout(runPrefetch, 1500);
         };
 
-        const applyPreviewData = (link) => {
-            const href = link.getAttribute('href');
-            if (!href) {
-                return;
-            }
-
-            const normalized = link.dataset.previewPath || normalizeHref(href);
+        const lookupPreview = (link) => {
+            const normalized = link.dataset.previewPath || '';
             if (!normalized) {
-                return;
+                return null;
             }
 
             const fallback = link.dataset.previewFallback || normalized.replace(/\/$/, '');
-            const preview = previewMap.get(normalized) || previewMap.get(fallback);
+            return previewMap.get(normalized) || previewMap.get(fallback) || null;
+        };
+
+        const applyPreviewData = (link) => {
+            const preview = lookupPreview(link);
+            const isCurrent = state.tooltip
+                && state.tooltip.classList.contains('visible')
+                && state.currentLink === link;
 
             if (!preview) {
                 // No preview data for this path (e.g. a stale link): if the
-                // tooltip is showing its loading state, settle on title only.
-                if (state.tooltip && state.tooltip.classList.contains('visible') && state.currentLink === link) {
+                // card is showing its loading state, settle on title only.
+                if (isCurrent) {
                     const titleText = link.getAttribute('data-title') || (link.textContent ? link.textContent.trim() : 'Internal Link');
-                    renderInternalPreview(titleText, link.getAttribute('data-description') || '');
+                    renderInternalPreview(titleText, link.getAttribute('data-description') || '', '');
+                    positionTooltip(link);
+                    updateOverflowFade();
                 }
                 return;
             }
@@ -377,11 +554,11 @@ const previewCategories = await getContentPreviewCategories();
                 link.setAttribute('data-description', preview.description);
             }
 
-            if (state.tooltip && state.tooltip.classList.contains('visible') && state.currentLink === link) {
+            if (isCurrent) {
                 const titleText = preview.title || (link.textContent ? link.textContent.trim() : 'Internal Link');
-                const descriptionText = preview.description || '';
-                setTooltipTheme();
-                renderInternalPreview(titleText, descriptionText);
+                renderInternalPreview(titleText, preview.description || '', preview.excerpt || '');
+                positionTooltip(link);
+                updateOverflowFade();
             }
         };
 
@@ -410,24 +587,56 @@ const previewCategories = await getContentPreviewCategories();
             }
         };
 
-        const showGenericTooltip = (event, el) => {
-            clearTimeout(hideTimeout);
-            setTooltipTheme();
+        const showGenericTooltip = (el) => {
+            clearTimeout(state.hideTimer);
             state.currentLink = el;
+            tooltip.classList.add('hover-tooltip--fit');
 
             const title = el.dataset.hoverTitle || (el.textContent ? el.textContent.trim() : '');
             const description = el.dataset.hoverDescription || '';
-            renderInternalPreview(title, description);
+            renderInternalPreview(title, description, '');
 
-            tooltip.style.maxWidth = '300px';
-            tooltip.style.minWidth = '150px';
+            revealTooltip(el);
+        };
 
-            tooltip.classList.add('visible');
-            tooltip.style.display = 'block';
-            tooltip.style.opacity = '1';
-            tooltip.style.transform = 'translateY(0)';
+        const showTooltip = (link, isInternal) => {
+            clearTimeout(state.hideTimer);
+            state.currentLink = link;
+            tooltip.classList.remove('hover-tooltip--fit');
 
-            updateTooltipPosition(event, true);
+            if (isInternal) {
+                const dataTitle = link.getAttribute('data-title');
+                const dataDescription = link.getAttribute('data-description');
+                const fallbackTitle = link.textContent ? link.textContent.trim() : 'Internal Link';
+                const segment = link.dataset.previewSegment || '';
+                const preview = lookupPreview(link);
+
+                if (preview) {
+                    renderInternalPreview(preview.title || dataTitle || fallbackTitle, preview.description || dataDescription || '', preview.excerpt || '');
+                } else if (segment && AVAILABLE_SEGMENTS.has(segment) && !loadedSegments.has(segment)) {
+                    renderInternalPreview(dataTitle || fallbackTitle, 'Loading preview…', '');
+                    void ensureSegmentPreviewsLoaded(segment).then(() => {
+                        applyPreviewData(link);
+                    });
+                } else {
+                    renderInternalPreview(dataTitle || fallbackTitle, dataDescription || '', '');
+                }
+            } else {
+                renderExternalPreview(link.href || link.getAttribute('href') || '');
+            }
+
+            revealTooltip(link);
+        };
+
+        const scheduleShow = (show) => {
+            clearTimeout(state.hideTimer);
+            clearTimeout(state.showTimer);
+            state.showTimer = window.setTimeout(show, SHOW_DELAY_MS);
+        };
+
+        const cancelShow = () => {
+            clearTimeout(state.showTimer);
+            scheduleHide();
         };
 
         const handleGenericTarget = (el) => {
@@ -437,60 +646,11 @@ const previewCategories = await getContentPreviewCategories();
 
             processedLinks.add(el);
 
-            el.addEventListener('mouseenter', (event) => {
-                showGenericTooltip(event, el);
+            el.addEventListener('mouseenter', () => {
+                scheduleShow(() => showGenericTooltip(el));
             });
 
-            el.addEventListener('mouseleave', () => {
-                hideTooltip();
-            });
-
-            el.addEventListener('mousemove', (event) => {
-                updateTooltipPosition(event, true);
-            });
-        };
-
-        const showTooltip = (event, link, isInternal) => {
-            clearTimeout(hideTimeout);
-            setTooltipTheme();
-            state.currentLink = link;
-
-            if (isInternal) {
-                const dataTitle = link.getAttribute('data-title');
-                const dataDescription = link.getAttribute('data-description');
-                const fallbackTitle = link.textContent ? link.textContent.trim() : 'Internal Link';
-                const segment = link.dataset.previewSegment || '';
-
-                if (!segment || !AVAILABLE_SEGMENTS.has(segment)) {
-                    renderInternalPreview(dataTitle || fallbackTitle, dataDescription || '');
-                } else if (!dataTitle && !dataDescription) {
-                    renderInternalPreview(fallbackTitle, 'Loading preview…');
-                    void ensureSegmentPreviewsLoaded(segment).then(() => {
-                        applyPreviewData(link);
-                    });
-                } else {
-                    renderInternalPreview(dataTitle || fallbackTitle, dataDescription || '');
-                    if (!loadedSegments.has(segment)) {
-                        void ensureSegmentPreviewsLoaded(segment).then(() => {
-                            applyPreviewData(link);
-                        });
-                    }
-                }
-
-                tooltip.style.maxWidth = '300px';
-                tooltip.style.minWidth = '150px';
-            } else {
-                renderExternalPreview(link.href || link.getAttribute('href') || '');
-                tooltip.style.maxWidth = '400px';
-                tooltip.style.minWidth = '100px';
-            }
-
-            tooltip.classList.add('visible');
-            tooltip.style.display = 'block';
-            tooltip.style.opacity = '1';
-            tooltip.style.transform = 'translateY(0)';
-
-            updateTooltipPosition(event, isInternal);
+            el.addEventListener('mouseleave', cancelShow);
         };
 
         const handleLink = (link) => {
@@ -538,17 +698,11 @@ const previewCategories = await getContentPreviewCategories();
                 link.removeAttribute('data-internal');
             }
 
-            link.addEventListener('mouseenter', (event) => {
-                showTooltip(event, link, isInternal);
+            link.addEventListener('mouseenter', () => {
+                scheduleShow(() => showTooltip(link, isInternal));
             });
 
-            link.addEventListener('mouseleave', () => {
-                hideTooltip();
-            });
-
-            link.addEventListener('mousemove', (event) => {
-                updateTooltipPosition(event, isInternal);
-            });
+            link.addEventListener('mouseleave', cancelShow);
         };
 
         const setupLinks = () => {
@@ -560,7 +714,7 @@ const previewCategories = await getContentPreviewCategories();
             });
 
             // Non-link elements (e.g. wall-chart tiles) opt in with
-            // data-hover-title/-description to get the same floating tooltip,
+            // data-hover-title/-description to get the same hover card,
             // independent of .prose.
             const genericTargets = document.querySelectorAll('[data-hover-title]');
             genericTargets.forEach(handleGenericTarget);
@@ -597,20 +751,27 @@ const previewCategories = await getContentPreviewCategories();
             document.addEventListener('astro:after-swap', scheduleSetup);
 
             // Touch devices fire the emulated mouseenter on tap but never
-            // mouseleave, so the tooltip would stick until reload. Dismiss it
-            // when the user taps/clicks outside the hovered link, scrolls, or
-            // returns to a bfcache-restored page.
+            // mouseleave, so the card would stick until reload. Dismiss it
+            // when the user taps/clicks outside the hovered link or the card
+            // itself, scrolls, or returns to a bfcache-restored page.
             document.addEventListener('pointerdown', (event) => {
                 if (!state.tooltip || !state.tooltip.classList.contains('visible')) {
                     return;
                 }
                 const target = event.target;
-                if (state.currentLink && target instanceof Node && state.currentLink.contains(target)) {
-                    return;
+                if (target instanceof Node) {
+                    if (state.currentLink && state.currentLink.contains(target)) {
+                        return;
+                    }
+                    if (state.tooltip.contains(target)) {
+                        return;
+                    }
                 }
                 hideTooltip();
             }, { passive: true });
 
+            // Element scroll events don't bubble to window, so scrolling the
+            // excerpt inside the card does not trigger this dismissal.
             window.addEventListener('scroll', () => {
                 if (state.tooltip && state.tooltip.classList.contains('visible')) {
                     hideTooltip();
@@ -627,4 +788,3 @@ const previewCategories = await getContentPreviewCategories();
         }
     })();
 </script>
-
