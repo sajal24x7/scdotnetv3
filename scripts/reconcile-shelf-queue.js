@@ -12,8 +12,9 @@
  * --porcelain`), look for an existing `status: todo` entry in the same
  * category whose normalized title matches (normalized `showTitle`, for
  * TV — the same normalization computeWatchNumbers() uses for rewatch
- * grouping, in src/utils/shelfUtils.ts). If found, delete the stub —
- * nothing is copied or merged, the arriving note is the canonical entry
+ * grouping, in src/utils/shelfUtils.ts). If found, carry the stub's
+ * `cover` over to the arriving note (if the arriving note doesn't already
+ * have one) and delete the stub — the arriving note is the canonical entry
  * from here on.
  *
  * Matching only ever targets `todo` entries (never started/paused/
@@ -158,6 +159,13 @@ function main() {
     const exact = stubs.find(s => normalizeTitle(matchTitle(s.data)) === key);
 
     if (exact) {
+      if (exact.data.cover && !data.cover) {
+        const arrivedContent = fs.readFileSync(filePath, 'utf8');
+        const parsed = matter(arrivedContent);
+        parsed.data.cover = exact.data.cover;
+        fs.writeFileSync(filePath, matter.stringify(parsed.content, parsed.data));
+        console.log(`   Carried over cover "${exact.data.cover}" from queue stub to arriving note.`);
+      }
       fs.unlinkSync(exact.path);
       console.log(`✅ Reconciled: deleted queue stub "${exact.data.title}" (${path.relative(repoRoot, exact.path)}) — matched arriving note "${data.title}"`);
       reconciled++;
