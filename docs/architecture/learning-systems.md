@@ -1,6 +1,6 @@
 # Learning Systems
 
-How the site's "periodic table on the wall" learning systems work, and where the daily practice ritual actually happens. Learning is per-domain and browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/finnish` (Finnish as a rule system), `/learn/til` and `/learn/evergreen` (decks extracted from published notes). Practice — the bounded, graded, everything-interleaved daily session — is unified at **`/practice`**, one queue across every deck. This split (and the reasoning behind it) is [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md); this document describes what's implemented.
+How the site's "periodic table on the wall" learning systems work, and where the daily practice ritual actually happens. Learning is per-domain and browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/finnish` (Finnish as a rule system), `/learn/til` and `/learn/evergreen` (decks extracted from published notes), `/learn/vocabulary` (fed automatically from Wiktionary's Word of the Day), `/learn/people` (private, local-first — names and faces, never stored on any server). Practice — the bounded, graded, everything-interleaved daily session — is unified at **`/practice`**, one queue across every deck. This split (and the reasoning behind it) is [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md); this document describes what's implemented.
 
 `/learn` is the hub page: one card per system (territory + progress), plus a banner pointing at `/practice` for today's actual work.
 
@@ -23,6 +23,8 @@ How the site's "periodic table on the wall" learning systems work, and where the
 | Note-backed pools (generated) | `src/data/learn-decks.generated.json` (built by `scripts/extract-learn-blocks.mjs`) |
 | TIL / Evergreen configs + shells | `src/data/til-learn-config.ts`, `src/data/evergreen-learn-config.ts`, `src/pages/learn/til.astro`, `src/pages/learn/evergreen.astro` |
 | Vocabulary feed (generated) + config + shell | `src/data/vocab.generated.json` (built by `scripts/fetch-wotd.mjs`), `src/data/vocab-dataset.ts` (pure transform), `src/data/vocab-learn-config.ts`, `src/pages/learn/vocabulary.astro` |
+| Shared ```learn``` block parser (build script + browser) | `src/utils/learnBlockParser.mjs` |
+| People deck (local-first, private) | `src/components/learn/peopleDeckBuilder.ts` (browser-side note→deck-file builder), `src/components/learn/peopleDeckStore.ts` (IndexedDB), `src/components/learn/PeopleLearnPage.tsx`, `src/pages/learn/people.astro`, `src/data/people-learn-config.ts` |
 | Learn-block render stripping | `src/utils/learnBlocks.ts` (remark plugin + string strip used by pages, RSS, previews, backlinks) |
 | Content-pool guardrail | `scripts/validate-learn-data.mjs` (prompt-id uniqueness, `introductionOrder` completeness) |
 
@@ -139,6 +141,19 @@ Mechanics:
 
 Authoring workflow: write the learn block in the note (in Obsidian or directly in `src/content/...`), publish through the normal content pipeline, and the next build picks it up. Note that if a note is edited in the vault and republished *without* its learn block, the block disappears from the published copy and the item drops out of the deck — keep the block with the note in the vault once you add one.
 
+The parsing core (the fence regex, the q/a-shorthand splitter, `firstParagraph`/`firstCodeBlock`/id helpers) lives in `src/utils/learnBlockParser.mjs` — plain JS, no TypeScript, so it can be imported unmodified both by this Node script and by a browser bundle (see the people deck below, the second consumer that made the extraction worth doing).
+
+## The people deck (`/learn/people`) — local-first, private
+
+Implements plan §5.2/Phase 4. Unlike every other deck, person-note content never enters this repo, the content branch, or the site build at all (plan §5.1's privacy constraint) — `/learn/people` ships as a shell with zero data, and everything on it comes from what a given browser has imported into its own IndexedDB.
+
+- **Authoring** — person notes are written exactly like TIL/evergreen notes (markdown, a learn block at the end), kept in the vault outside the GitSync/content-branch setup. A block-less note still works: the importer generates a default prompt (photo → name if the note has a photo, first-paragraph → name otherwise) so a hastily captured note is practicable immediately.
+- **`src/components/learn/peopleDeckBuilder.ts`** — the "Build deck file" logic, entirely client-side. Takes the `.md` notes and any referenced photos dropped on the page, splits frontmatter with a small hand-rolled parser (gray-matter stays build-script-only), runs bodies through the shared `learnBlockParser.mjs`, and produces a `LearnDataset` with the same item-id scheme and category-by-tag grouping `extract-learn-blocks.mjs` uses. Photos are matched against dropped files by frontmatter `photo:` filename, downscaled to a 128px JPEG data URI via an offscreen `<canvas>`, and embedded directly on the item (`LearnItem.photo?: string` — rendered as a thumbnail wherever an item's reference/prompt is shown, and simply absent for every other deck). The result downloads as a self-contained `people-deck.json`; nothing is ever sent to a server.
+- **`src/components/learn/peopleDeckStore.ts`** — deck *content* lives in IndexedDB (`people-deck-db`), not localStorage, since embedded photos push well past its ~5MB budget. SRS *state* stays exactly where every other deck keeps it — `people-learn-srs` in localStorage, keyed by prompt id, through the same engine functions. Re-importing replaces the IndexedDB record wholesale and prunes the SRS state's `cards`/`introduced` entries against the new item/prompt id set (plan §5.2 step 4).
+- **`/learn/people.astro` + `PeopleLearnPage.tsx`** — `index={false}` (noindex), no build-time dataset. Loads whatever's in IndexedDB (or nothing) on mount and renders the ordinary `LearningSystem` wall chart/reference/drills, alongside always-visible "Build deck file" and "Load deck" panels.
+- **Registry entry** — `practice-registry.ts` adds `people` as a manual `PracticeDeck` literal (`source: { kind: 'local' }`) rather than through `summarize()`, since there's no build-time config/dataset to summarize; `totalItems`/`totalPrompts` sit at 0 there and the blurb says so outright. `PracticeSession.tsx` closes the gap where it actually matters — a `LOCAL_DATASET_LOADERS` map loads the people deck from IndexedDB alongside every other deck's state on mount, and due/new counts, the deck-list row, and queue-building all use that live dataset in place of the registry's static zero. On a device with nothing imported, the deck simply contributes nothing to the queue.
+- Tuning (`src/data/people-learn-config.ts`, shared by the registry entry and the live config so they can't drift): `newPerDay: 2`, `dueCap: 8`, `itemNoun: 'person'`, `monoAnswers: false`.
+
 ## The vocabulary deck (`/learn/vocabulary`)
 
 Implements plan §4 (feed side; manual capture via `category: vocab` inbox notes is not yet built — see Planned evolution). One English word most days, fed automatically rather than authored:
@@ -207,15 +222,15 @@ A new *learning* system (wall chart + reference) is data plus a config plus a pa
 
 ## Tuning knobs
 
-| Constant | Linux | Finnish | TIL | Evergreen | Vocab | Meaning |
-| --- | --- | --- | --- | --- | --- | --- |
-| `DEFAULT_RETENTION` | 0.9 | same | same | same | same | FSRS's desired-recall-probability target (fixed in the engine, not per-config) |
-| `newPerDay` | 2 | 3 | 2 | 1 | 1 | New items introduced daily (per deck, before the global cap) |
-| `dueCap` | 8 | 12 | 8 | 6 | 6 | Max reviews shown per day (per deck, before the global cap) |
-| `GLOBAL_DUE_CAP` | 20 | same | same | same | same | Max reviews across all decks in one `/practice` session |
-| `GLOBAL_NEW_PER_DAY` | 5 | same | same | same | same | Max new items across all decks in one `/practice` session |
-| `STRONG_STABILITY_DAYS` | 21 | same | same | same | same | Stability threshold for the "solid" tile color (fixed in the engine) |
-| `monoAnswers` | `true` | `false` | `true` | `false` | `false` | Whether revealed answers render in `<code>` (commands) or prose (natural language) |
+| Constant | Linux | Finnish | TIL | Evergreen | Vocab | People | Meaning |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `DEFAULT_RETENTION` | 0.9 | same | same | same | same | same | FSRS's desired-recall-probability target (fixed in the engine, not per-config) |
+| `newPerDay` | 2 | 3 | 2 | 1 | 1 | 2 | New items introduced daily (per deck, before the global cap) |
+| `dueCap` | 8 | 12 | 8 | 6 | 6 | 8 | Max reviews shown per day (per deck, before the global cap) |
+| `GLOBAL_DUE_CAP` | 20 | same | same | same | same | same | Max reviews across all decks in one `/practice` session |
+| `GLOBAL_NEW_PER_DAY` | 5 | same | same | same | same | same | Max new items across all decks in one `/practice` session |
+| `STRONG_STABILITY_DAYS` | 21 | same | same | same | same | same | Stability threshold for the "solid" tile color (fixed in the engine) |
+| `monoAnswers` | `true` | `false` | `true` | `false` | `false` | `false` | Whether revealed answers render in `<code>` (commands) or prose (natural language) |
 
 Raising `dueCap` clears backlogs faster after missed days but lengthens sessions; the cap is safe because capped-out cards remain due and surface the next day. `DEFAULT_RETENTION`, `STRONG_STABILITY_DAYS`, and the two `GLOBAL_*` caps live as constants inside `engine.ts` rather than any config — no deck has needed to deviate from them yet.
 
@@ -227,4 +242,4 @@ Raising `dueCap` clears backlogs faster after missed days but lengthens sessions
 
 ## Planned evolution
 
-`/practice` and its cross-device sync, plus the vocabulary deck and skip-at-introduction (this document, current sections), implement plan §1–§4 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md) — the learn/practice split, the deck registry, the unified queue, opt-in sync, and the automated vocab feed. Manual vocab capture via `category: vocab` inbox notes and a local-first private people deck are still ahead (the plan's Phase 3b onward); this document stays authoritative for what is implemented as each phase lands.
+`/practice` and its cross-device sync, the vocabulary deck and skip-at-introduction, and the local-first people deck (this document, current sections) implement plan §1–§5 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md) — the learn/practice split, the deck registry, the unified queue, opt-in sync, the automated vocab feed, and a private deck with no server-side footprint at all. Manual vocab capture via `category: vocab` inbox notes (plan Phase 3b) is deliberately deferred — it needs a new content-collection category and its own design pass, unlike everything else here which only touched the learn/practice surface; this document stays authoritative for what is implemented as each phase lands.

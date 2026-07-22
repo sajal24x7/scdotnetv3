@@ -8,6 +8,7 @@
 .learn-til-page,
 .learn-evergreen-page,
 .learn-vocabulary-page,
+.learn-people-page,
 .learn-hub-page,
 .practice-page {
 	padding-top: 2rem;
@@ -19,6 +20,7 @@
 .learn-til-page__title,
 .learn-evergreen-page__title,
 .learn-vocabulary-page__title,
+.learn-people-page__title,
 .learn-hub-page__title,
 .practice-page__title {
 	margin-bottom: 0.5rem;
@@ -30,6 +32,7 @@
 .learn-til-page__subtitle,
 .learn-evergreen-page__subtitle,
 .learn-vocabulary-page__subtitle,
+.learn-people-page__subtitle,
 .learn-hub-page__subtitle,
 .practice-page__subtitle {
 	color: rgb(var(--color-text-secondary));
@@ -244,6 +247,16 @@
 	color: rgb(var(--color-accent));
 	margin-bottom: 1rem;
 	word-break: break-word;
+}
+
+.lq-item-photo {
+	display: block;
+	width: 6rem;
+	height: 6rem;
+	object-fit: cover;
+	border-radius: 12px;
+	border: 1.5px solid rgb(var(--color-border));
+	margin-bottom: 1rem;
 }
 
 .lq-description {
@@ -698,4 +711,53 @@
 	font-size: var(--text-small);
 	background: rgb(var(--color-bg-secondary));
 	color: inherit;
+}
+
+/* ---------- /learn/people ---------- */
+
+.people-page__empty {
+	font-size: var(--text-small);
+	color: rgb(var(--color-text-secondary));
+	margin-bottom: 1.5rem;
+}
+
+.people-manage {
+	display: grid;
+	gap: 1.25rem;
+	grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+	margin-top: 2rem;
+}
+
+.people-manage__panel {
+	border: 1.5px solid rgb(var(--color-border));
+	background: rgb(var(--color-bg-secondary));
+	border-radius: 14px;
+	padding: 1.25rem 1.4rem;
+}
+
+.people-manage__title {
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+.people-manage__hint {
+	font-size: var(--text-xs);
+	color: rgb(var(--color-text-secondary));
+	line-height: 1.55;
+	margin-bottom: 1rem;
+}
+
+.people-manage__message {
+	font-size: var(--text-xs);
+	color: rgb(var(--color-accent));
+	margin-top: 0.75rem;
+	line-height: 1.5;
+}
+
+.people-manage__warnings {
+	font-size: var(--text-xs);
+	color: rgb(var(--color-text-secondary));
+	margin-top: 0.5rem;
+	padding-left: 1.1rem;
+	line-height: 1.5;
 }

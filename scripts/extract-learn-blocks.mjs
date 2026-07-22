@@ -55,14 +55,19 @@
 import { readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
-import * as yaml from 'js-yaml';
+import {
+	LEARN_BLOCK_RE,
+	parseLearnBlocks,
+	normalizeTag,
+	firstParagraph,
+	firstCodeBlock,
+	noteTimestamp,
+	titleFromFilename,
+	slugFromFilename,
+} from '../src/utils/learnBlockParser.mjs';
 
 const repoRoot = path.resolve(import.meta.dirname, '..');
 const OUT_FILE = path.join(repoRoot, 'src', 'data', 'learn-decks.generated.json');
-
-// Keep in sync with LEARN_BLOCK_RE in src/utils/learnBlocks.ts (the render-
-// side strip). Matches a fenced code block with the `learn` language tag.
-const LEARN_BLOCK_RE = /^```learn[ \t]*\n([\s\S]*?)\n```[ \t]*$/gm;
 
 // Tag → category presentation for the wall chart. Anything not listed falls
 // back to a capitalized tag name with a generic emoji.
@@ -106,130 +111,6 @@ const DECKS = [
     { deck: 'til', dir: 'src/content/til' },
     { deck: 'evergreen', dir: 'src/content/evergreen' },
 ];
-
-// Mirrors slugFromEntry in src/content.config.ts — the fallback entry id
-// (and therefore URL) when a note has no frontmatter slug.
-function slugFromFilename(filename) {
-    return filename
-        .replace(/\.mdx?$/, '')
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '');
-}
-
-function noteTimestamp(filename) {
-    const match = filename.match(/^(\d{12})/);
-    return match ? match[1] : null;
-}
-
-function titleFromFilename(filename) {
-    return filename.replace(/\.mdx?$/, '').replace(/^\d{12}\s*/, '');
-}
-
-function normalizeTag(tag) {
-    return String(tag).replace(/^#/, '').trim().toLowerCase();
-}
-
-// First real paragraph of the note body, as plain text, for the reference
-// card's description fallback.
-function firstParagraph(body) {
-    const withoutBlocks = body
-        .replace(LEARN_BLOCK_RE, '')
-        .replace(/^```[\s\S]*?^```[ \t]*$/gm, '');
-    // Trailing "# references" sections are link lists, not prose.
-    const beforeReferences = withoutBlocks.split(/^#+\s*references.*$/im)[0];
-    for (const rawBlock of beforeReferences.split(/\n\s*\n/)) {
-        const block = rawBlock
-            .split('\n')
-            .filter((line) => !/^#/.test(line.trim()) && !/^[-*_]{3,}$/.test(line.trim()))
-            .join('\n')
-            .trim();
-        if (!block) continue;
-        const text = block
-            .replace(/\[\[([^\]|]*\|)?([^\]]+)\]\]/g, '$2') // wikilinks → alias/target text
-            .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1') // md links → text
-            .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, '$1')
-            .replace(/\s+/g, ' ')
-            .trim();
-        if (!text) continue;
-        if (text.length <= 240) return text;
-        const cut = text.slice(0, 240);
-        return `${cut.slice(0, cut.lastIndexOf(' '))}…`;
-    }
-    return '';
-}
-
-// First non-learn fenced code block, for the reference card's example fallback.
-function firstCodeBlock(body) {
-    const re = /^```(\w*)[ \t]*\n([\s\S]*?)\n```[ \t]*$/gm;
-    let match;
-    while ((match = re.exec(body)) !== null) {
-        if (match[1] === 'learn') continue;
-        const code = match[2].trim();
-        if (!code) continue;
-        return code.length <= 280 ? code : `${code.slice(0, 280)}…`;
-    }
-    return undefined;
-}
-
-// Plain YAML can't express repeated keys, so the q/a shorthand (no
-// top-level `prompts:`) is pre-split into stanzas at each top-level `q:`
-// line before YAML-parsing each stanza individually.
-const TOP_LEVEL_PROMPTS_RE = /^prompts:/m;
-const TOP_LEVEL_Q_RE = /^q:/m;
-
-function parseShorthandBlock(raw, file, warnings) {
-    const lines = raw.split('\n');
-    const qLineIndexes = [];
-    lines.forEach((line, i) => {
-        if (/^q:/.test(line)) qLineIndexes.push(i);
-    });
-
-    let meta = {};
-    const metaText = lines.slice(0, qLineIndexes[0]).join('\n');
-    if (metaText.trim()) {
-        const parsedMeta = yaml.load(metaText);
-        if (parsedMeta && typeof parsedMeta === 'object') meta = parsedMeta;
-        else warnings.push(`${file}: learn block metadata is not a YAML mapping — skipped`);
-    }
-
-    const prompts = [];
-    for (let i = 0; i < qLineIndexes.length; i++) {
-        const start = qLineIndexes[i];
-        const end = i + 1 < qLineIndexes.length ? qLineIndexes[i + 1] : lines.length;
-        const stanzaText = lines.slice(start, end).join('\n');
-        try {
-            const stanza = yaml.load(stanzaText);
-            if (stanza && typeof stanza === 'object') prompts.push(stanza);
-            else warnings.push(`${file}: learn block prompt is not a YAML mapping — skipped`);
-        } catch (err) {
-            warnings.push(`${file}: learn block prompt has invalid YAML (${err.reason ?? err.message}) — skipped`);
-        }
-    }
-
-    return { ...meta, prompts };
-}
-
-function parseLearnBlocks(body, file, warnings) {
-    const blocks = [];
-    let match;
-    LEARN_BLOCK_RE.lastIndex = 0;
-    while ((match = LEARN_BLOCK_RE.exec(body)) !== null) {
-        const raw = match[1];
-        try {
-            if (!TOP_LEVEL_PROMPTS_RE.test(raw) && TOP_LEVEL_Q_RE.test(raw)) {
-                blocks.push(parseShorthandBlock(raw, file, warnings));
-            } else {
-                const parsed = yaml.load(raw);
-                if (parsed && typeof parsed === 'object') blocks.push(parsed);
-                else warnings.push(`${file}: learn block is not a YAML mapping — skipped`);
-            }
-        } catch (err) {
-            warnings.push(`${file}: learn block has invalid YAML (${err.reason ?? err.message}) — skipped`);
-        }
-    }
-    return blocks;
-}
 
 function buildDeck(deck, dir, warnings) {
     const absDir = path.join(repoRoot, dir);

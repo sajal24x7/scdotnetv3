@@ -19,6 +19,11 @@ export interface LearnItem {
 	exampleNote?: string;
 	// Link to the source note, for decks generated from published notes.
 	href?: string;
+	// Data-URI thumbnail, for decks with a visual recognition element (the
+	// people deck's face → name cards — see planning/practice-system-unified-srs.md
+	// §5.2). Never a URL: photos never touch a server, so this is the only
+	// representation that works everywhere the item does.
+	photo?: string;
 	prompts: Prompt[];
 }
 

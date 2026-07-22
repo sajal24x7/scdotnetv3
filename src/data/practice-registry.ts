@@ -16,6 +16,13 @@ import { finnishLearnConfig } from './finnish-learn-config';
 import { tilLearnConfig } from './til-learn-config';
 import { evergreenLearnConfig } from './evergreen-learn-config';
 import { vocabLearnConfig } from './vocab-learn-config';
+import {
+	PEOPLE_DUE_CAP,
+	PEOPLE_ITEM_NOUN,
+	PEOPLE_MONO_ANSWERS,
+	PEOPLE_NEW_PER_DAY,
+	PEOPLE_STORAGE_KEY,
+} from './people-learn-config';
 
 export interface PracticeDeck {
 	id: string;
@@ -91,4 +98,26 @@ export const practiceRegistry: PracticeDeck[] = [
 		learnHref: '/learn/vocabulary/',
 		source: { kind: 'json', href: '/api/practice/vocab.json' },
 	}),
+	// No *-learn-config.ts / dataset for this one — people-note content never
+	// enters this repo or the site build (plan §5.1/§5.2), so there's nothing
+	// to summarize() at build time. totalItems/totalPrompts stay 0 here; the
+	// real counts only exist per-device, in IndexedDB (see
+	// src/components/learn/peopleDeckStore.ts and PracticeSession's
+	// local-dataset loading, which is what actually drives due/new counts and
+	// the unified queue for this deck).
+	{
+		id: 'people',
+		title: 'People',
+		emoji: '🧑‍🤝‍🧑',
+		blurb: 'Private — names and faces for people I actually know. Imported per device, never stored on any server; the counts here don’t reflect what’s loaded locally.',
+		itemNoun: PEOPLE_ITEM_NOUN,
+		monoAnswers: PEOPLE_MONO_ANSWERS,
+		newPerDay: PEOPLE_NEW_PER_DAY,
+		dueCap: PEOPLE_DUE_CAP,
+		storageKey: PEOPLE_STORAGE_KEY,
+		totalItems: 0,
+		totalPrompts: 0,
+		source: { kind: 'local' },
+		learnHref: '/learn/people/',
+	},
 ];

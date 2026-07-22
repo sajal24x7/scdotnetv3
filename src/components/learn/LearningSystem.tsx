@@ -166,6 +166,7 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 			{selectedItem && (
 				<div className="lq-panel lq-reference">
 					<p className="lq-eyebrow">{categoryOf(selectedItem.id)?.title}</p>
+					{selectedItem.photo && <img className="lq-item-photo" src={selectedItem.photo} alt="" />}
 					{selectedItem.syntax ? (
 						<code className="lq-command">{selectedItem.syntax}</code>
 					) : (
@@ -236,6 +237,7 @@ function SessionView({
 				<p className="lq-eyebrow">
 					Drill (won’t affect schedule) · <code className="lq-inline-cmd">{sessionItem.item.term}</code>
 				</p>
+				{sessionItem.item.photo && <img className="lq-item-photo" src={sessionItem.item.photo} alt="" />}
 				<p className="lq-question">{sessionItem.prompt!.q}</p>
 
 				{!revealed ? (
