@@ -1,12 +1,10 @@
 ---
-aliases:
-tags:
-  - yle
-  - finland
-  - debt
-  - finance
-category: micro
+title: "Online Shopping and Rising Living Costs Driving Young Finns Into Debt"
+slug: "online-shopping-and-rising-living-costs-driving-young-finns-into-debt"
+created: 2026-07-22T13:22:00+03:00
 updated: 2026-07-22T13:25:45+03:00
+category: micro
+tags: ["yle", "finland", "debt", "finance"]
 ---
 [Online shopping and rising living costs driving young Finns into debt](https://yle.fi/a/74-20237476?origin=rss)
 
@@ -18,4 +16,4 @@ He said the biggest underlying factor was the decline in purchasing power.
 > 
 The average debt recorded in enforcement proceedings now stands at 2,168 euros.
 
-I had a similar thought when I  read that [[202607220928 Apple to Start a Upgrade Program|Apple was starting an upgrade program with Klarna]]. People don’t have purchasing power but they want to buy more stuff.
+I had a similar thought when I  read that [Apple was starting an upgrade program with Klarna](/micro/apple-to-start-a-upgrade-program). People don’t have purchasing power but they want to buy more stuff.
