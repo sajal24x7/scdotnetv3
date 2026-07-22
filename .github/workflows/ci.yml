@@ -6,6 +6,11 @@ name: CI
 on:
   pull_request:
 
+# Explicit minimal scope: this runs on fork PRs, so don't inherit whatever
+# the repo's default GITHUB_TOKEN permissions happen to be.
+permissions:
+  contents: read
+
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
