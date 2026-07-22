@@ -1,10 +1,18 @@
 ---
-title: "Online Shopping and Rising Living Costs Driving Young Finns Into Debt"
-slug: "online-shopping-and-rising-living-costs-driving-young-finns-into-debt"
-created: 2026-07-22T13:22:00+03:00
-updated: 2026-07-22T13:25:45+03:00
+title: Online Shopping and Rising Living Costs Driving Young Finns Into Debt
+slug: online-shopping-and-rising-living-costs-driving-young-finns-into-debt
+created: 2026-07-22T10:22:00.000Z
+updated: 2026-07-22T10:25:45.000Z
 category: micro
-tags: ["yle", "finland", "debt", "finance"]
+tags:
+  - yle
+  - finland
+  - debt
+  - finance
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116964069189073957'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mrajgo46zd2w'
+  - 'https://www.threads.com/@sajal24x7/post/DbGSrhglrsm'
 ---
 [Online shopping and rising living costs driving young Finns into debt](https://yle.fi/a/74-20237476?origin=rss)
 
