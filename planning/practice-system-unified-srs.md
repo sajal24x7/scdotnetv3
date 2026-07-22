@@ -67,7 +67,7 @@ The practice island must not bundle every content pool (Linux alone is 1000+ lin
 
 ### 2.3 Session composition (the unified queue)
 
-Reuses the existing Leitner semantics per card; only *selection* becomes cross-deck:
+Per-card scheduling is the shared FSRS engine (§2.6); only *selection* becomes cross-deck:
 
 1. **Reviews:** gather due cards from every enabled deck (earliest-due first within a deck), then interleave **round-robin across decks** up to a **global session cap** (`GLOBAL_DUE_CAP = 20`). Round-robin gives fairness — a Finnish backlog can't starve the people deck — and produces the interleaving we want for free. Per-deck `dueCap` survives as a per-deck ceiling within the global cap.
 2. **New items:** per-deck `newPerDay` budgets still apply, but a **global intake cap** (`GLOBAL_NEW_PER_DAY = 5`) is taken round-robin across decks that have unseen items. Without this, unifying six decks would mean 10+ introductions a day and the session stops being bounded. (The current per-deck numbers sum to 8/day across four decks — already past comfortable.)
@@ -78,7 +78,7 @@ Capped-out cards remain due and surface tomorrow — the existing safety propert
 
 ### 2.4 State: per-deck keys preserved, one new meta key
 
-**No migration of existing progress.** Each deck keeps its own localStorage key with the existing `SrsState` schema; the practice island loads all of them, builds the queue, and writes grades back to the owning deck's key. This keeps:
+**Keys and progress preserved.** Each deck keeps its own localStorage key; the practice island loads all of them, builds the queue, and writes grades back to the owning deck's key. (The card records *inside* those keys upgrade Leitner→FSRS via §2.6's one-time v3 migration — keys, item ids, introduced dates, and streaks are untouched.) This keeps:
 
 - all current Linux/Finnish/TIL/evergreen progress intact,
 - per-domain wall charts working untouched (they read the same keys),
@@ -101,11 +101,16 @@ Per-deck `streak`/`totalSessions` fields stop being updated (harmless leftovers)
 
 `LearningSystem.tsx` currently owns scheduling, persistence, and UI in one 540-line island. Phase 1 extracts the pure logic into `src/components/learn/engine.ts` — `localToday`, `addDays`, `gradeCard`, `itemStatus`, `buildQueue`, load/save — consumed by three islands: `LearningSystem` (wall chart + drills), `PracticeSession` (new), and `LearnHub` (which currently *duplicates* the count derivation with a keep-in-sync comment; that duplication dies here). This is the same "second consumer forces the refactor" moment the Finnish plan called out for the island itself.
 
-### 2.6 Scheduler: keep Leitner (decision)
+### 2.6 Scheduler: FSRS (decision)
 
-**Keep the 5-box 1/3/7/14/30 Leitner ladder as the shared engine.** Existing state carries over byte-for-byte; the system stays debuggable by reading localStorage; and the deck sizes (a few hundred prompts even after vocab and people join) are within Leitner's comfort zone.
+**Adopt FSRS — the scheduler modern Anki ships — via the `ts-fsrs` library, replacing the Leitner ladder.**
 
-*Recorded alternative:* FSRS (`ts-fsrs`, the algorithm modern Anki ships) predicts intervals noticeably better on large mixed decks. It costs a dependency, a one-way state migration, and eyeball-debuggability. **Revisit trigger:** combined active prompts exceed ~800, or daily due counts feel persistently wrong (too easy / too swamped). The engine extraction in 2.5 makes the swap localized when the day comes.
+- **Per-card state** becomes the FSRS card record — `stability` (days until recall probability drops to the retention target), `difficulty`, `state` (new / learning / review / relearning), `due`, `reps`, `lapses`, `last_review` — instead of a box number. Intervals are computed per card from its own history rather than read off a fixed ladder, which is FSRS's whole advantage: easy cards race ahead to multi-month intervals while hard cards get short ones, without a miss dragging a mature card all the way back to "box 1, due tomorrow."
+- **Grading stays two buttons.** FSRS accepts four grades (Again / Hard / Good / Easy) but works fine with two: "Forgot" maps to Again, "Got it" to Good. A four-way self-assessment per card is exactly the kind of per-rep decision the blueprint's principle #1 forbids; Hard/Easy can be added later as optional keyboard-only extras with no schema change.
+- **Desired retention** is the one honest knob FSRS exposes (default 0.90): lower toward 0.85 for fewer daily reviews, raise it for tighter recall. Surface it in a settings corner of `/practice`, per deck later if ever needed.
+- **Day-granular adaptation.** Anki re-shows Again-graded cards within minutes; this system schedules by local calendar date. Adaptation: a card graded "Forgot" re-queues once at the end of the *same session* (an improvement over Leitner's wait-until-tomorrow), while persisted scheduling stays date-based with a minimum of next day.
+- **Migration (one-way, versioned).** Per deck, `SrsState` bumps to v3: each Leitner card converts to an FSRS review-state card with `stability` seeded from its current box interval (1/3/7/14/30 days), default difficulty, and `due`/`reps`/`lapses` carried over — so nothing feels re-set on day one. The v2 blob is kept under a backup key until the first completed v3 session; export/import (§2.7) covers rollback beyond that. Wall-chart status derivation updates to: `unseen` (not introduced) → `due` (due ≤ today) → `learning` (learning/relearning state, or stability < 21) → `strong` (review state with stability ≥ 21 days).
+- **Costs accepted:** intervals are no longer eyeball-debuggable from localStorage, and a dependency enters the engine (`ts-fsrs`, small and engine-side only — the UI islands never see it).
 
 ### 2.7 Deliberate non-features (inherited and extended)
 
@@ -122,12 +127,12 @@ Practicing from phone, Mac, and work laptop — and surviving the loss of any of
 - **Endpoint** — `functions/api/practice-state.js`: `GET` returns the stored blob, `PUT` replaces it. The blob is the full sync unit: every deck's `SrsState` + `practice-meta`, tens of KB at most (well inside KV limits). A `PRACTICE_STATE` KV namespace is bound on the Pages project.
 - **Auth** — same pattern as `upload.js`: a Bearer token that is a fine-grained GitHub PAT; the function accepts it only if GitHub confirms push (Contents-write) access to this repo. No new secret class, no accounts. **Mint one PAT per device** (phone / Mac / work laptop): losing a device then means revoking one token in GitHub settings — the state in KV is untouched and a replacement device just pastes a fresh token. This is the direct answer to "if I lose access to my device."
 - **Merge, not last-write-wins** — grading on the phone in the morning and the Mac at night must not clobber each other. The client merges remote into local on load (and tab focus), and pushes the merged blob after each finished session (plus debounced mid-session). The merge is deterministic and idempotent, safe to run any number of times:
-    - per prompt id: keep the `CardState` with the higher `reps` (tie → later `due`) — `reps` only ever grows, so this is conflict-free;
+    - per prompt id: keep the card record with the higher `reps` (tie → later `last_review`) — `reps` only ever grows, in FSRS as in Leitner, so this stays conflict-free;
     - `introduced`: union, earliest date wins;
     - `suspended` / `disabledDecks`: union;
     - streak / `totalSessions` / `lastSessionDate`: take the triple from whichever side has the later `lastSessionDate`.
 - **Safety net** — KV has no history, so the function keeps a small rolling backup (`state:backup:<date>`, last 7 days) before each overwrite; a bad push is recoverable. Sync failures degrade silently to local-only (existing principle) with a quiet "last synced" line on `/practice`.
-- **Private decks** — the sync blob contains only SRS *state* (boxes, dates, ids), never deck *content*, so people-deck review state syncs without the people data itself ever touching KV.
+- **Private decks** — the sync blob contains only SRS *state* (stability/difficulty numbers, dates, ids), never deck *content*, so people-deck review state syncs without the people data itself ever touching KV.
 
 *Recorded alternative:* no server at all — the island reads/writes a `practice-state.json` in the private repo via the GitHub contents API from the browser (CORS-friendly, versioned for free, zero infra). Rejected as primary because a commit per practice session pollutes the private repo's history and the token would need private-repo scope on every device; kept as fallback if the KV binding ever feels like too much infrastructure.
 
@@ -181,10 +186,10 @@ This repo is **public** and the built site is public; anything in either — com
 **People data never touches GitHub — not this repo, not the private one — and never ships in the site's build.** People notes live only in the Obsidian vault, in a folder excluded from the GitSync/content-branch setup (e.g. `people/`); each device's browser holds an imported copy:
 
 1. **The site ships the parser, never the data.** The learn-block extraction logic (blueprint §"Note-backed decks", plus the §5A shorthand) is refactored into a shared module used both by `extract-learn-blocks.mjs` at build time and client-side in the island — so person notes are parsed *in the browser*.
-2. **Import = drop the notes on the page.** On `/learn/people`, select or drag the `people/*.md` files (or pick the folder); the page parses frontmatter + learn blocks and writes the deck to IndexedDB on that device. On Chromium desktops the folder handle can be remembered, making re-sync after edits one click. No intermediate file, no script — the markdown *is* the upload format. (The "run a script that generates a TS file, then upload it" idea collapses into this: the browser does the generating.)
-3. **Phones import via the vault's own sync.** For iOS, where folder pickers are limited, an optional local script (`node scripts/build-people-deck.mjs <vault>/people`) emits `people-deck.json` *into the vault*, and Obsidian's existing sync (iCloud / Obsidian Sync) carries it to the phone; import it there from the Files picker. The import UI accepts either raw `.md` files or a prebuilt `.json`.
-4. **Re-import merges by item id** — deck content updates freely while SRS state (separate storage, keyed by prompt ids) is untouched; items missing from a re-import are dropped and their orphaned state pruned.
-5. **Backup is the vault.** The browser copy is a disposable cache; losing or wiping a device loses nothing. This is the strongest privacy posture available: there is no server-side artifact to secure, encrypt, or leak.
+2. **Build: drop notes, save a deck file.** A "Build deck file" panel on `/learn/people` accepts the `people/*.md` files (photos alongside); the browser parses frontmatter + learn blocks, downscales photos into embedded data-URI thumbnails, and hands back one self-contained **`people-deck.json`** to save — ideally into the vault, so your existing Obsidian sync (iCloud / Obsidian Sync) carries it everywhere. No script, no Node — the browser is the builder.
+3. **Load: upload that file on any device.** The "Load deck" control on the same page accepts `people-deck.json` and writes it to IndexedDB. One file works everywhere — Mac and work laptop pick it straight from the vault folder; the phone opens it from the Files app. When notes change: rebuild once, save, re-load per device.
+4. **Re-load merges by item id** — deck content updates freely while SRS state (separate storage, keyed by prompt ids) is untouched; items missing from a re-import are dropped and their orphaned state pruned.
+5. **Backup is the vault** — the notes *and* the built deck file both live there. The browser copy is a disposable cache; losing or wiping a device loses nothing. This is the strongest privacy posture available: there is no server-side artifact to secure, encrypt, or leak.
 
 Alternatives considered:
 
@@ -192,9 +197,9 @@ Alternatives considered:
 - **Practicing people notes inside Obsidian** (e.g. the Spaced Repetition community plugin): fully local with zero new code, but it splits the daily ritual across two apps with two schedulers — the exact fragmentation this plan exists to remove.
 - **A local server / self-hosted companion app:** strictly more moving parts than an import button, for the same result.
 
-The one trade accepted: deck *content* doesn't auto-sync between devices — after editing people notes, each device re-imports (one click on desktop, open-and-pick on the phone). SRS *state* still syncs via §2.8, which carries only opaque prompt ids and box/date numbers — no names, no facts — and the people deck can be excluded from sync entirely if even ids feel like too much.
+The one trade accepted: deck *content* doesn't auto-sync between devices — after editing people notes, you rebuild the file once and re-load it on each device (the vault-synced file makes this a file-picker moment, not a workflow). SRS *state* still syncs via §2.8, which carries only opaque prompt ids and scheduling numbers — no names, no facts — and the people deck can be excluded from sync entirely if even ids feel like too much.
 
-Photos (face → name is the classic and most useful card): referenced by filename in frontmatter, read from the dropped folder during import, downscaled to ~128px thumbnails client-side, and stored only in IndexedDB alongside the deck. They never exist on any server. Optional per person.
+Photos (face → name is the classic and most useful card): referenced by filename in frontmatter, read from the files dropped into the builder, downscaled to ~128px thumbnails client-side, and embedded as data URIs inside `people-deck.json` — so the deck file is fully self-contained and nothing ever exists on a server. Optional per person.
 
 ### 5.2b Considered: anonymized public people notes (rejected)
 
@@ -235,7 +240,7 @@ a: Anssi; Veera
 
 ### 5.4 Learn page
 
-`/learn/people` is a public *shell* with private *content*: it ships empty apart from the import UI, and renders the wall chart — faces/names as tiles — only from what the local browser has imported. It carries `noindex` and registers in the practice registry with `source: { kind: 'local' }`; on a device with nothing imported, the practice session simply composes without it and shows a one-line "people deck not imported on this device" hint.
+`/learn/people` is a public *shell* with private *content*: it ships empty apart from the build/load panels, and renders the wall chart — faces/names as tiles — only from what the local browser has imported. It carries `noindex` and registers in the practice registry with `source: { kind: 'local' }`; on a device with nothing imported, the practice session simply composes without it and shows a one-line "people deck not imported on this device" hint.
 
 ## 5A. Learn-block shorthand (authoring simplification)
 
@@ -297,6 +302,9 @@ Standalone parser change in `extract-learn-blocks.mjs` + a line in `docs/content
 **Phase 1 — Engine extraction (no behavior change).**
 Extract scheduler/persistence pure functions from `LearningSystem.tsx` into `src/components/learn/engine.ts`; re-point `LearningSystem` and `LearnHub` at it (deleting the duplicated count logic). Verify all four learn pages and hub behave identically.
 
+**Phase 1b — FSRS adoption (§2.6).**
+Swap the extracted engine's Leitner ladder for `ts-fsrs`: v2→v3 card migration with backup key, two-button grade mapping, same-session re-queue of forgotten cards, updated wall-chart status thresholds, desired-retention setting. Lands *before* `/practice` so the unified queue is built on the final scheduler from day one.
+
 **Phase 2 — `/practice` + registry.**
 `practice-registry.ts`; per-deck JSON endpoints (`src/pages/api/practice/[deck].json.ts`); `PracticeSession.tsx` island (queue composition per §2.3, deck badges, `practice-meta` state, streak seeding, export/import); `/practice.astro` page + styles; hub banner; learn pages' session buttons become links to `/practice`. Tuning constants start at `GLOBAL_DUE_CAP = 20`, `GLOBAL_NEW_PER_DAY = 5`.
 
@@ -307,7 +315,7 @@ Extract scheduler/persistence pure functions from `LearningSystem.tsx` into `src
 `fetch-wotd.yml` action + `scripts/fetch-wotd.mjs` (Wiktionary featured feed; M-W behind a flag); `vocab.generated.json`; skip-at-introduction + `suspended` list (this lands the suspend mechanism for *all* decks); `/learn/vocabulary` page; manual-capture via `category: vocab` inbox notes with definition enrichment.
 
 **Phase 4 — People deck (local-first, §5.2).**
-Refactor learn-block parsing into a shared module (build script + browser); import UI on `/learn/people` (drag-drop `.md` files, remembered folder handle, prebuilt-JSON fallback); IndexedDB deck store with merge-by-id re-import and orphan pruning; client-side photo thumbnailing; default-prompt generation for block-less notes; `noindex` page shell; optional `scripts/build-people-deck.mjs` for the vault-synced phone path.
+Refactor learn-block parsing into a shared module (build script + browser); "Build deck file" panel on `/learn/people` (drop `.md` files + photos → self-contained `people-deck.json` download, client-side thumbnailing, default-prompt generation for block-less notes) and "Load deck" panel (upload the JSON → IndexedDB, merge-by-id, orphan pruning); `noindex` page shell.
 
 **Phase 5 — Niceties (as wanted).**
 Leech detection (flag `lapses >= 6` on charts and in a session hint); keyboard shortcuts (space = reveal, 1/2 = grade); per-deck stats on `/practice`; a real quick-add composer for vocab/people; FSRS revisit per the §2.6 trigger.
@@ -320,7 +328,7 @@ The existing Finnish deck is *rules-first by design* — its vocabulary category
 | # | Question | Default taken in this plan |
 | --- | --- | --- |
 | 1 | Private-deck mechanism | Local-first: vault notes imported straight into the browser, nothing in GitHub or on any server (§5.2) |
-| 2 | Scheduler | Keep Leitner; FSRS only on the §2.6 trigger |
+| 2 | Scheduler | FSRS via `ts-fsrs`, two-button grading, one-time Leitner→v3 migration (§2.6) |
 | 3 | Vocab feeds | Wiktionary daily; Merriam-Webster off by default |
 | 4 | Feed-word curation | Skip-at-introduction inside the session (§4.4), no approval inbox |
 | 5 | Global caps | 20 due / 5 new per day, round-robin across decks |
