@@ -195,6 +195,18 @@ Why this beats the alternatives:
 
 Photos (face → name is the classic and most useful card): stored in the private repo, downscaled to small thumbnails (~128px) at deck-build time and embedded as data URIs *inside* the encrypted JSON, so images ride the same blob and never exist as separately fetchable files. Photos are optional per person.
 
+### 5.2b Considered: anonymized public people notes (rejected)
+
+Could people notes be stripped of identifying metadata and published like any other note? No — three reasons, and prior art agrees:
+
+1. **The identifying data is the payload.** A people card's entire job is name ↔ face ↔ context. Remove those and there is nothing left to practice; unlike a technical note, there's no residual idea worth publishing.
+2. **Pseudonymization fails against context.** "P., my neighbour who runs the community garden; partner A." is instantly re-identifiable — precisely by the only readers who could ever connect it: the subject, and mutual acquaintances. In a personal social graph the anonymity set is ~1, and those are exactly the people you least want finding a card about themselves.
+3. **These are third parties' facts, not yours.** The garden ethos — working with the garage door up — covers *your* ideas. Other people's lives (kids' names, where you met, what they do) are their information, published without consent even when fuzzed.
+
+**Prior art: Matuschak partitions; he does not anonymize.** His public working-notes site is an explicitly *selective* mirror of his private thinking environment — publication is per-note opt-in, and links from public notes to unpublished ones simply don't resolve (readers see a reference to a note that isn't public). Personal material never gets an anonymized public variant; it just stays on the private side. The same partition is this plan's §5.2: people notes live in the private repo, full stop.
+
+**The legitimate public carve-out: public figures.** Remembering authors of books you've read, scientists, historical figures — that's public knowledge and needs none of the private machinery: ordinary notes with learn blocks (or a small curated pool) make a normal public deck. The private people deck is for your personal social graph only; anyone the world already knows belongs in a public deck.
+
 ### 5.3 Authoring format
 
 One markdown file per person in the private repo:
