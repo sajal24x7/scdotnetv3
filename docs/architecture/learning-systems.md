@@ -105,6 +105,20 @@ prompts:
 ```
 ````
 
+For the common case — no scalar overrides, just prompts — a bare q/a shorthand skips the `prompts:` list ceremony:
+
+````markdown
+```learn
+q: Why not rely on Azure's default outbound IPs?
+a: They change at random, so external services can't whitelist them.
+
+q: What fixes it?
+a: A NAT Gateway with a static public IP.
+```
+````
+
+A block with no top-level `prompts:` key is treated as shorthand: it's split into stanzas at each top-level `q:` line, and each stanza is YAML-parsed as one prompt (`q`, `a`, optional `note:`/`id:`); anything before the first `q:` line is parsed as the scalar fields shown above. Both forms are valid — the full syntax is still needed whenever a prompt needs an `id:`/`note:` alongside scalar overrides in the same block — and a note can mix them across its learn blocks.
+
 Mechanics:
 
 - **Extraction** — `scripts/extract-learn-blocks.mjs` scans `src/content/til` and `src/content/evergreen`, groups items into categories by tag (`CATEGORY_META` maps tag → title/emoji; unknown tags get a generic fallback), and writes `src/data/learn-decks.generated.json`. It runs automatically in `npm run dev` / `npm run build`, and the generated file is committed so checkouts work without a build step. Malformed blocks are skipped with a warning, never a build failure; `validate-learn-data.mjs` is the strict check.
