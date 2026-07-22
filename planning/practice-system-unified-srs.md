@@ -56,8 +56,7 @@ interface PracticeDeck {
     storageKey: string;       // existing keys preserved — zero migration
     source:
         | { kind: 'json'; href: string }       // public decks, lazy-fetched
-        | { kind: 'encrypted'; href: string }  // private decks, see §6
-        | { kind: 'local' };                   // browser-only decks (fallback option)
+        | { kind: 'local' };                   // private decks imported into the browser, see §5
     learnHref?: string;       // link back to the wall-chart page, shown on cards
 }
 ```
@@ -175,25 +174,27 @@ Why this over alternatives: a pre-deck approval inbox needs write-back infrastru
 
 ### 5.1 The privacy constraint
 
-This repo is **public** and the built site is public; anything in either — committed markdown, generated JSON, an unlinked route — is world-readable. People notes (names, relationships, personal facts, possibly photos) must therefore never exist in plaintext in this repo, the content branch, or the static output. This rules out the "different folder in this repo" idea in its naive form.
+This repo is **public** and the built site is public; anything in either — committed markdown, generated JSON, an unlinked route — is world-readable. People notes (names, relationships, personal facts, possibly photos) must therefore never exist in plaintext in this repo, the content branch, or the static output. This rules out the "different folder in this repo" idea in its naive form. Beyond that, the standing preference is stronger: this data should not live in GitHub *at all* — public or private repo — which shapes the decision below.
 
-### 5.2 Storage design (decision): encrypted blob, authored in the private repo
+### 5.2 Storage design (decision): local-first — the vault is the source of truth, the browser is a cache
 
-**Recommendation:** people notes live in the existing **private repo (`scdotnetv3-tools`)** as plain markdown (one file per person, same timestamp-filename convention). An Action *in the private repo* builds the deck and pushes only ciphertext here:
+**People data never touches GitHub — not this repo, not the private one — and never ships in the site's build.** People notes live only in the Obsidian vault, in a folder excluded from the GitSync/content-branch setup (e.g. `people/`); each device's browser holds an imported copy:
 
-1. On push, the private repo's workflow parses `people/*.md` into deck JSON (same `LearnDataset` shape).
-2. Encrypts it — AES-256-GCM, key derived from a passphrase (scrypt/PBKDF2) stored as an Action secret in the private repo.
-3. Commits `src/data/people.enc.json` to this repo via a PAT (with `[CI Skip]` respected by the normal build; the file also ships into `dist` as an opaque blob).
+1. **The site ships the parser, never the data.** The learn-block extraction logic (blueprint §"Note-backed decks", plus the §5A shorthand) is refactored into a shared module used both by `extract-learn-blocks.mjs` at build time and client-side in the island — so person notes are parsed *in the browser*.
+2. **Import = drop the notes on the page.** On `/learn/people`, select or drag the `people/*.md` files (or pick the folder); the page parses frontmatter + learn blocks and writes the deck to IndexedDB on that device. On Chromium desktops the folder handle can be remembered, making re-sync after edits one click. No intermediate file, no script — the markdown *is* the upload format. (The "run a script that generates a TS file, then upload it" idea collapses into this: the browser does the generating.)
+3. **Phones import via the vault's own sync.** For iOS, where folder pickers are limited, an optional local script (`node scripts/build-people-deck.mjs <vault>/people`) emits `people-deck.json` *into the vault*, and Obsidian's existing sync (iCloud / Obsidian Sync) carries it to the phone; import it there from the Files picker. The import UI accepts either raw `.md` files or a prebuilt `.json`.
+4. **Re-import merges by item id** — deck content updates freely while SRS state (separate storage, keyed by prompt ids) is untouched; items missing from a re-import are dropped and their orphaned state pruned.
+5. **Backup is the vault.** The browser copy is a disposable cache; losing or wiping a device loses nothing. This is the strongest privacy posture available: there is no server-side artifact to secure, encrypt, or leak.
 
-Client side, on `/practice` (and `/learn/people`): the first time the people deck is enabled, the page asks for the passphrase, derives the key (WebCrypto), decrypts, and caches the *derived key* in localStorage so the ritual stays zero-friction on that device. Trade-off stated plainly: anyone with full access to that browser profile can read the deck — acceptable for a personal device; "forget this device" button clears it.
+Alternatives considered:
 
-Why this beats the alternatives:
+- **Encrypted blob committed here, built from the private repo** (the previous revision of this section — preserved in git history): deck content syncs automatically through deploys, but personal data lives in GitHub (ciphered or not) and the pipeline needs an Action, a passphrase secret, and WebCrypto UX. Rejected on the explicit "not in GitHub" preference.
+- **Practicing people notes inside Obsidian** (e.g. the Spaced Repetition community plugin): fully local with zero new code, but it splits the daily ritual across two apps with two schedulers — the exact fragmentation this plan exists to remove.
+- **A local server / self-hosted companion app:** strictly more moving parts than an import button, for the same result.
 
-- **Local-only browser deck** (editor UI on the site, IndexedDB, export/import): zero infra, but authoring in a bespoke web form instead of Obsidian, no versioning, and one cleared browser away from data loss. Kept as the fallback if the encryption path feels heavy in practice.
-- **Cloudflare Function + KV/private-repo at runtime:** real server-side privacy and no passphrase UX, but adds runtime infrastructure and an auth token to a deliberately static site — against the "no server sync until a second device demands it" principle. The encrypted blob gets multi-device sync *through the existing static deploy*, which is the elegant part.
-- **Committing plaintext anywhere in this repo:** ruled out by §5.1, full stop.
+The one trade accepted: deck *content* doesn't auto-sync between devices — after editing people notes, each device re-imports (one click on desktop, open-and-pick on the phone). SRS *state* still syncs via §2.8, which carries only opaque prompt ids and box/date numbers — no names, no facts — and the people deck can be excluded from sync entirely if even ids feel like too much.
 
-Photos (face → name is the classic and most useful card): stored in the private repo, downscaled to small thumbnails (~128px) at deck-build time and embedded as data URIs *inside* the encrypted JSON, so images ride the same blob and never exist as separately fetchable files. Photos are optional per person.
+Photos (face → name is the classic and most useful card): referenced by filename in frontmatter, read from the dropped folder during import, downscaled to ~128px thumbnails client-side, and stored only in IndexedDB alongside the deck. They never exist on any server. Optional per person.
 
 ### 5.2b Considered: anonymized public people notes (rejected)
 
@@ -203,33 +204,38 @@ Could people notes be stripped of identifying metadata and published like any ot
 2. **Pseudonymization fails against context.** "P., my neighbour who runs the community garden; partner A." is instantly re-identifiable — precisely by the only readers who could ever connect it: the subject, and mutual acquaintances. In a personal social graph the anonymity set is ~1, and those are exactly the people you least want finding a card about themselves.
 3. **These are third parties' facts, not yours.** The garden ethos — working with the garage door up — covers *your* ideas. Other people's lives (kids' names, where you met, what they do) are their information, published without consent even when fuzzed.
 
-**Prior art: Matuschak partitions; he does not anonymize.** His public working-notes site is an explicitly *selective* mirror of his private thinking environment — publication is per-note opt-in, and links from public notes to unpublished ones simply don't resolve (readers see a reference to a note that isn't public). Personal material never gets an anonymized public variant; it just stays on the private side. The same partition is this plan's §5.2: people notes live in the private repo, full stop.
+**Prior art: Matuschak partitions; he does not anonymize.** His public working-notes site is an explicitly *selective* mirror of his private thinking environment — publication is per-note opt-in, and links from public notes to unpublished ones simply don't resolve (readers see a reference to a note that isn't public). Personal material never gets an anonymized public variant; it just stays on the private side. The same partition is this plan's §5.2: people notes never leave the vault, full stop.
 
 **The legitimate public carve-out: public figures.** Remembering authors of books you've read, scientists, historical figures — that's public knowledge and needs none of the private machinery: ordinary notes with learn blocks (or a small curated pool) make a normal public deck. The private people deck is for your personal social graph only; anyone the world already knows belongs in a public deck.
 
 ### 5.3 Authoring format
 
-One markdown file per person in the private repo:
+Person notes are written **exactly like TIL/evergreen notes** — markdown in the vault, learn block at the end (cheap with the §5A shorthand) — so there is one authoring habit across the whole system:
 
-```markdown
+````markdown
 ---
 name: Priya Raman
-context: Neighbour, moved in 2025; runs the community garden
-org: ""
-partner: Anssi
-kids: [Veera]
-met: "Building sauna evening, June 2025"
 photo: priya.jpg
 tags: [neighbours]
 ---
-Optional free-form notes (never shown in prompts unless pulled into a field).
-```
+Runs the community garden; moved into the building in 2025.
+Partner Anssi, daughter Veera. Met at the sauna evening, June 2025.
 
-Prompts are **generated from fields**, not hand-written (lowering input friction is the whole point): photo → name (if photo), context → name ("Who runs the community garden…?"), name → context ("Who is Priya?" → the context line), name → partner/kids when present. A hand-written `prompts:` list in frontmatter overrides generation for people who need bespoke cards. Id = filename timestamp, prompt ids positional — same stability rules as note-backed decks.
+```learn
+q: Who runs the community garden in our building?
+a: Priya Raman
+
+q: Priya's partner and daughter?
+a: Anssi; Veera
+```
+````
+
+- Prompts come from the learn block under the same rules as every other note-backed deck (positional ids, append-only stability). Item id from the timestamp filename (`people-202607221030`); term ← `name` (falling back to the note title).
+- **Block-less notes still work:** if a note has no learn block, the importer generates a default prompt pair from what it can see — photo → name when a photo exists, first paragraph → name otherwise — so a hastily captured note is practicable immediately and can get hand-written prompts later.
 
 ### 5.4 Learn page
 
-`/learn/people` exists but renders a locked state until the passphrase unlocks it (and carries `noindex`; the tile grid — faces/names by group — is the wall chart). It registers in the practice registry with `source: { kind: 'encrypted' }`; when locked, the practice session simply composes without it and shows a one-line "people deck locked" hint.
+`/learn/people` is a public *shell* with private *content*: it ships empty apart from the import UI, and renders the wall chart — faces/names as tiles — only from what the local browser has imported. It carries `noindex` and registers in the practice registry with `source: { kind: 'local' }`; on a device with nothing imported, the practice session simply composes without it and shows a one-line "people deck not imported on this device" hint.
 
 ## 5A. Learn-block shorthand (authoring simplification)
 
@@ -270,13 +276,13 @@ Considered: moving the learning utilities to `learn.sajalchoudhary.net` backed b
 
 **Why the repo split follows data visibility, not features:**
 
-The plan already keeps two repos — but the boundary is *what must stay private*, not *what belongs to learning*. People notes (and any future private deck) live in the private repo (`scdotnetv3-tools`) and only ciphertext crosses over (§5.2). Public deck data (Linux, Finnish, vocab, and the note-extracted decks) stays here because it ships to a public site regardless — moving it would privatize nothing. "Public and private don't clash" is achieved by construction: nothing private is ever *in* this repo, so there is nothing to clash with.
+The boundary that matters is *what must stay private*, not *what belongs to learning*. People notes (and any future private deck) never enter GitHub at all — they stay in the vault and are imported straight into each browser (§5.2). Public deck data (Linux, Finnish, vocab, and the note-extracted decks) stays here because it ships to a public site regardless — moving it would privatize nothing. "Public and private don't clash" is achieved by construction: nothing private ever *exists* in any repo, so there is nothing to clash with.
 
-**The one genuinely attractive variant, and why it still loses:** a private-only satellite (say `learn-private.sajalchoudhary.net`, deployed from the private repo, gated by Cloudflare Access) would give real server-side auth with no crypto code — plaintext people data behind a login. But the unified session is the heart of this plan, and Access protects *origins*, not decks within a page: the main-site `/practice` page can't cleanly pull Access-protected data cross-origin (cookie/CORS contortions, or a service token that can't be shipped in a public page). So the Access variant forces private decks into a second, separate daily ritual — reintroducing exactly the fragmentation this plan exists to remove. The encrypted-blob design keeps one session with private cards mixed in, at the cost of a passphrase prompt once per device. **Revisit trigger:** if the passphrase UX proves genuinely annoying in practice, the Access-gated satellite is the recorded fallback, accepted fragmentation and all.
+**A private satellite (Access-gated subdomain) is moot under local-first.** An earlier revision weighed a Cloudflare-Access-protected private app against client-side encryption as the private-deck mechanism; with §5.2's local-first design there is no server-side private data to protect anywhere, so the question dissolves. It returns only if per-device import friction ever comes to outweigh the "nothing on any server" property.
 
 ## 6. Hub and entry points after the split
 
-- **`/practice`** — the ritual page: big start button, combined due/new counts, per-deck breakdown line, streak, deck toggles, export/import, unlock control for private decks. This is the page that gets bookmarked on the phone home screen.
+- **`/practice`** — the ritual page: big start button, combined due/new counts, per-deck breakdown line, streak, deck toggles, export/import, and import/refresh controls for local decks. This is the page that gets bookmarked on the phone home screen.
 - **`/learn`** — stays the map of territories, one card per system linking to its wall chart, but its per-system status lines simplify (item/prompt totals + territory progress) and a single "Today's practice: 12 due · 3 new →" banner replaces four separate calls to action.
 - Learn pages link to `/practice` where the session button used to be.
 - Future systems (periodic table, more languages) follow the existing "Building a new system" recipe for their learn page, plus one registry entry to join practice. A deck can even be practice-only (no wall chart yet) — registry entry with no `learnHref`.
@@ -300,8 +306,8 @@ Extract scheduler/persistence pure functions from `LearningSystem.tsx` into `src
 **Phase 3 — Vocabulary deck.**
 `fetch-wotd.yml` action + `scripts/fetch-wotd.mjs` (Wiktionary featured feed; M-W behind a flag); `vocab.generated.json`; skip-at-introduction + `suspended` list (this lands the suspend mechanism for *all* decks); `/learn/vocabulary` page; manual-capture via `category: vocab` inbox notes with definition enrichment.
 
-**Phase 4 — People deck.**
-Private-repo authoring convention + deck-build/encrypt workflow there; `people.enc.json` consumption, passphrase unlock UX, key caching + "forget this device"; `/learn/people` locked page with `noindex`; thumbnail pipeline.
+**Phase 4 — People deck (local-first, §5.2).**
+Refactor learn-block parsing into a shared module (build script + browser); import UI on `/learn/people` (drag-drop `.md` files, remembered folder handle, prebuilt-JSON fallback); IndexedDB deck store with merge-by-id re-import and orphan pruning; client-side photo thumbnailing; default-prompt generation for block-less notes; `noindex` page shell; optional `scripts/build-people-deck.mjs` for the vault-synced phone path.
 
 **Phase 5 — Niceties (as wanted).**
 Leech detection (flag `lapses >= 6` on charts and in a session hint); keyboard shortcuts (space = reveal, 1/2 = grade); per-deck stats on `/practice`; a real quick-add composer for vocab/people; FSRS revisit per the §2.6 trigger.
@@ -313,20 +319,20 @@ The existing Finnish deck is *rules-first by design* — its vocabulary category
 
 | # | Question | Default taken in this plan |
 | --- | --- | --- |
-| 1 | Private-deck mechanism | Encrypted blob built from the private repo (§5.2); local-only editor is the fallback |
+| 1 | Private-deck mechanism | Local-first: vault notes imported straight into the browser, nothing in GitHub or on any server (§5.2) |
 | 2 | Scheduler | Keep Leitner; FSRS only on the §2.6 trigger |
 | 3 | Vocab feeds | Wiktionary daily; Merriam-Webster off by default |
 | 4 | Feed-word curation | Skip-at-introduction inside the session (§4.4), no approval inbox |
 | 5 | Global caps | 20 due / 5 new per day, round-robin across decks |
-| 6 | People photos | Yes, as encrypted thumbnails; deck works fine without them |
+| 6 | People photos | Yes — thumbnailed client-side at import, stored only in IndexedDB; deck works fine without them |
 | 7 | Global streak | Seeded from the max of existing per-deck streaks |
 | 8 | Sync backend | Cloudflare KV + Pages Function with per-device PATs (§2.8); GitHub-contents-API fallback recorded |
 | 9 | Learn-block shorthand | Bare q/a stanzas via a pre-split in the extractor (§5A); full syntax stays valid |
-| 10 | Subdomain / separate repo | Stay on the site; repo split follows data visibility only (§5B); Access-gated satellite is the fallback |
+| 10 | Subdomain / separate repo | Stay on the site; repo split follows data visibility only (§5B); local-first makes a private satellite moot |
 
 ## 9. Documentation to update at implementation time
 
 - `docs/architecture/learning-systems.md` — restructure around the learn/practice split; the registry becomes the "adding a system" entry point; move tuning table to include global caps.
 - `docs/content/authoring.md` — `category: vocab` capture notes; the learn-block q/a shorthand.
-- Private repo README — people-note format and the encrypt workflow.
+- People-note format and the local import flow — in the learning-systems doc update, plus a README note inside the vault's `people/` folder (the only place the convention's data lives).
 - `scripts/README.md` — `fetch-wotd.mjs`.
