@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import type { Category, LearnItem, LearnSystemConfig } from './types';
-import { emptyState, itemStatus, loadState, localToday, type SessionItem, type SrsState } from './engine';
+import {
+	emptyState,
+	itemStatus,
+	loadPracticeMeta,
+	loadState,
+	localToday,
+	savePracticeMeta,
+	type SessionItem,
+	type SrsState,
+} from './engine';
 
 // UI for the per-domain wall chart + reference panel + no-op drills.
 // Scheduling and persistence live in ./engine. The daily review session
@@ -28,17 +37,30 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 	const [revealed, setRevealed] = useState(false);
 	const [selectedItem, setSelectedItem] = useState<LearnItem | null>(null);
 	const [today, setToday] = useState<string>(() => localToday());
+	// Suspended item ids (plan §4.4, skip-at-introduction) live in the
+	// shared practice-meta key, not this deck's own storageKey — a skip
+	// happens on /practice, but the wall chart is where you'd notice a word
+	// muted out and decide to bring it back.
+	const [suspended, setSuspended] = useState<Set<string>>(new Set());
 
 	// Load persisted state after hydration, and re-check the date when the tab
 	// regains focus (page left open overnight).
 	useEffect(() => {
 		setState(loadState(storageKey, legacyKey));
+		setSuspended(new Set(loadPracticeMeta(0).suspended));
 		setToday(localToday());
 		const onFocus = () => setToday(localToday());
 		window.addEventListener('focus', onFocus);
 		return () => window.removeEventListener('focus', onFocus);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	function unsuspend(itemId: string) {
+		const meta = loadPracticeMeta(0);
+		const next = { ...meta, suspended: meta.suspended.filter((id) => id !== itemId) };
+		savePracticeMeta(next);
+		setSuspended(new Set(next.suspended));
+	}
 
 	function startDrill(category: Category) {
 		const items: SessionItem[] = category.items.flatMap((item) =>
@@ -113,7 +135,8 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 						</p>
 						<div className="lq-chart__tiles">
 							{category.items.map((item) => {
-								const status = itemStatus(item, state, today);
+								const isSuspended = suspended.has(item.id);
+								const status = isSuspended ? 'suspended' : itemStatus(item, state, today);
 								return (
 									<button
 										type="button"
@@ -121,7 +144,7 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 										className={`lq-tile lq-tile--${status}${selectedItem?.id === item.id ? ' lq-tile--selected' : ''}`}
 										onClick={() => setSelectedItem(selectedItem?.id === item.id ? null : item)}
 										data-hover-title={item.syntax ?? item.term}
-										data-hover-description={item.description}
+										data-hover-description={isSuspended ? 'Skipped — won’t be introduced' : item.description}
 									>
 										{item.term}
 									</button>
@@ -137,6 +160,7 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 				<span><i className="lq-swatch lq-swatch--due" /> due for review</span>
 				<span><i className="lq-swatch lq-swatch--learning" /> learning</span>
 				<span><i className="lq-swatch lq-swatch--strong" /> solid</span>
+				<span><i className="lq-swatch lq-swatch--suspended" /> skipped</span>
 			</div>
 
 			{selectedItem && (
@@ -158,6 +182,15 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 						<a className="lq-note-link" href={selectedItem.href}>
 							Read the note →
 						</a>
+					)}
+					{suspended.has(selectedItem.id) && (
+						<button
+							type="button"
+							className="lq-button lq-button--ghost"
+							onClick={() => unsuspend(selectedItem.id)}
+						>
+							Bring back to practice
+						</button>
 					)}
 				</div>
 			)}

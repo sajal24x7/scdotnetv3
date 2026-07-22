@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LearningSystem from '../../components/learn/LearningSystem';
+import { vocabLearnConfig } from '../../data/vocab-learn-config';
+import '../../styles/learn.css';
+
+const itemCount = vocabLearnConfig.dataset.categories.reduce((n, c) => n + c.items.length, 0);
+---
+
+<Layout
+  title="Learn Vocabulary — Word of the Day"
+  description="A new English word most days, fed from Wiktionary's Word of the Day, practiced both directions: word to meaning, and meaning back to word."
+  currentPage="/learn/vocabulary"
+  pageWrapper={{ container: true, maxWidth: '6xl', padding: 'lg', paddingScale: 'page' }}
+  enableLinkHoverEffect
+>
+  <div class="learn-vocabulary-page">
+    <h1 class="learn-vocabulary-page__title">Learn Vocabulary</h1>
+    <p class="learn-vocabulary-page__subtitle">
+      One word a day, fed automatically from Wiktionary's Word of the Day. Each word gets
+      two prompts — recognize the meaning, then produce the word from its meaning — so it
+      becomes usable, not just familiar. Words you'd rather not learn can be skipped the
+      first time they come up in <a href="/practice/">practice</a>.
+    </p>
+
+    {itemCount === 0 && (
+      <p class="learn-vocabulary-page__subtitle">
+        No words on file yet — <code>node scripts/fetch-wotd.mjs</code> pulls today's word
+        from Wiktionary and populates this deck.
+      </p>
+    )}
+
+    <LearningSystem client:load config={vocabLearnConfig} />
+  </div>
+</Layout>

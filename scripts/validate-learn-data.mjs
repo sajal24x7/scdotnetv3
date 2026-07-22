@@ -111,6 +111,14 @@ async function main() {
 				return generated[deck];
 			},
 		})),
+		{
+			name: 'vocab',
+			load: async () => {
+				const { buildDataset } = await loadTsModule('src/data/vocab-dataset.ts');
+				const raw = JSON.parse(readFileSync(path.join(repoRoot, 'src/data/vocab.generated.json'), 'utf8'));
+				return buildDataset(raw.words);
+			},
+		},
 	];
 
 	let hadErrors = false;
