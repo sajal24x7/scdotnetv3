@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - security
-  - openai
-  - hugging-face
-category: micro
+title: "OpenAI Accidentally Hacked Hugging Face"
+slug: "openai-accidentally-hacked-hugging-face"
+created: 2026-07-22T09:22:00+03:00
 updated: 2026-07-22T09:24:05+03:00
+category: micro
+tags: ["security", "openai", "hugging-face"]
 ---
 [OpenAI says it accidentally hacked Hugging Face with a new AI system by Emma Roth](https://www.theverge.com/ai-artificial-intelligence/968988/openai-hugging-face-hack-ai)
 
