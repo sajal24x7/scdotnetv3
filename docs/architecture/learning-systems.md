@@ -1,6 +1,6 @@
 # Learning Systems
 
-How the site's "periodic table on the wall" learning systems work, and where the daily practice ritual actually happens. Learning is per-domain and browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/finnish` (Finnish as a rule system), `/learn/til` and `/learn/evergreen` (decks extracted from published notes), `/learn/vocabulary` (fed automatically from Wiktionary's Word of the Day), `/learn/people` (private, local-first — names and faces, never stored on any server). Practice — the bounded, graded, everything-interleaved daily session — is unified at **`/practice`**, one queue across every deck. This split (and the reasoning behind it) is [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md); this document describes what's implemented.
+How the site's "periodic table on the wall" learning systems work, and where the daily practice ritual actually happens. Learning is per-domain and browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/finnish` (Finnish as a rule system) and `/learn/finnish-vocab` (its communicative-vocabulary sibling deck), `/learn/til` and `/learn/evergreen` (decks extracted from published notes), `/learn/vocabulary` (fed automatically from Wiktionary's Word of the Day), `/learn/people` (private, local-first — names and faces, never stored on any server). Practice — the bounded, graded, everything-interleaved daily session — is unified at **`/practice`**, one queue across every deck. This split (and the reasoning behind it) is [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md); this document describes what's implemented.
 
 `/learn` is the hub page: one card per system (territory + progress), plus a banner pointing at `/practice` for today's actual work.
 
@@ -20,6 +20,7 @@ How the site's "periodic table on the wall" learning systems work, and where the
 | Linux page shell | `src/pages/learn/linux.astro` |
 | Finnish content pool | `src/data/finnish.ts` (+ `src/data/finnish-learn-config.ts`) |
 | Finnish page shell | `src/pages/learn/finnish.astro` |
+| Finnish vocabulary content pool + shell | `src/data/finnish-vocab.ts` (+ `src/data/finnish-vocab-learn-config.ts`), `src/pages/learn/finnish-vocab.astro` |
 | Note-backed pools (generated) | `src/data/learn-decks.generated.json` (built by `scripts/extract-learn-blocks.mjs`) |
 | TIL / Evergreen configs + shells | `src/data/til-learn-config.ts`, `src/data/evergreen-learn-config.ts`, `src/pages/learn/til.astro`, `src/pages/learn/evergreen.astro` |
 | Vocabulary feed (generated) + config + shell | `src/data/vocab.generated.json` (built by `scripts/fetch-wotd.mjs`), `src/data/vocab-dataset.ts` (pure transform), `src/data/vocab-learn-config.ts`, `src/pages/learn/vocabulary.astro` |
@@ -95,6 +96,14 @@ One key per system (`linux-learn-srs`, `finnish-learn-srs`), holding:
 ### UI states
 
 `LearningSystem.tsx` (per-domain, `/learn/<topic>`) only has two screens now: `chart` (today-strip linking to `/practice`, wall chart, legend, reference panel) and `drill` (run through a category's prompts with the same reveal/self-grade UI, but **without touching scheduler state** — cramming for curiosity shouldn't corrupt the spacing data). The graded review flow — `session` (learn cards and recall prompts, one at a time) → `done` (today's tally, streak, tomorrow's due count) — now lives in `PracticeSession.tsx` at `/practice` (see below); it's the only place any deck's `SrsState` gets mutated.
+
+## Finnish vocabulary (`/learn/finnish-vocab`)
+
+Implements plan §Phase 6. The main Finnish deck (`finnish.ts`) is rules-first by design — its own vocabulary category exists only to feed the rule prompts, and stays that way. `finnish-vocab.ts` is a sibling deck on the TIL-style open-feed model: a flat, themed vocabulary pool (verbs, family, food, time, question words/pronouns, places, adjectives — 56 items, 124 prompts in this first batch) meant to grow toward communicative Finnish in curated batches, independent of the main deck's dependency-curated introduction order.
+
+Every word gets both-direction prompts (fi→en, en→fi); a handful additionally get a third "apply the rule" prompt — a genitive `-n` form, or a Type-1 verb's `minä`-conjugation — but *only* where that derived form was independently checked against a pattern `finnish.ts` already establishes (its own inflection bank or a worked "strong → weak" example). Each such prompt's `note` names the existing word it mirrors (e.g. `kaupunki → kaupungin` cites `Helsinki → Helsingin`). Per the "never invent Finnish" rule this repo already enforces for `finnish.ts`, a plausible-looking inflection that wasn't independently verified this way is simply not asserted — the word stays a plain two-prompt vocabulary item instead.
+
+Tuning (`finnish-vocab-learn-config.ts`): `newPerDay: 3`, `dueCap: 14`, `itemNoun: 'word'`, `monoAnswers: false`. Registered in `practiceRegistry` and `scripts/validate-learn-data.mjs` exactly like every other build-time content pool — adding another batch is a data-file edit, not an architecture change.
 
 ## Note-backed decks (`/learn/til`, `/learn/evergreen`)
 
@@ -222,15 +231,15 @@ A new *learning* system (wall chart + reference) is data plus a config plus a pa
 
 ## Tuning knobs
 
-| Constant | Linux | Finnish | TIL | Evergreen | Vocab | People | Meaning |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `DEFAULT_RETENTION` | 0.9 | same | same | same | same | same | FSRS's desired-recall-probability target (fixed in the engine, not per-config) |
-| `newPerDay` | 2 | 3 | 2 | 1 | 1 | 2 | New items introduced daily (per deck, before the global cap) |
-| `dueCap` | 8 | 12 | 8 | 6 | 6 | 8 | Max reviews shown per day (per deck, before the global cap) |
-| `GLOBAL_DUE_CAP` | 20 | same | same | same | same | same | Max reviews across all decks in one `/practice` session |
-| `GLOBAL_NEW_PER_DAY` | 5 | same | same | same | same | same | Max new items across all decks in one `/practice` session |
-| `STRONG_STABILITY_DAYS` | 21 | same | same | same | same | same | Stability threshold for the "solid" tile color (fixed in the engine) |
-| `monoAnswers` | `true` | `false` | `true` | `false` | `false` | `false` | Whether revealed answers render in `<code>` (commands) or prose (natural language) |
+| Constant | Linux | Finnish | Finnish Vocab | TIL | Evergreen | Vocab | People | Meaning |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `DEFAULT_RETENTION` | 0.9 | same | same | same | same | same | same | FSRS's desired-recall-probability target (fixed in the engine, not per-config) |
+| `newPerDay` | 2 | 3 | 3 | 2 | 1 | 1 | 2 | New items introduced daily (per deck, before the global cap) |
+| `dueCap` | 8 | 12 | 14 | 8 | 6 | 6 | 8 | Max reviews shown per day (per deck, before the global cap) |
+| `GLOBAL_DUE_CAP` | 20 | same | same | same | same | same | same | Max reviews across all decks in one `/practice` session |
+| `GLOBAL_NEW_PER_DAY` | 5 | same | same | same | same | same | same | Max new items across all decks in one `/practice` session |
+| `STRONG_STABILITY_DAYS` | 21 | same | same | same | same | same | same | Stability threshold for the "solid" tile color (fixed in the engine) |
+| `monoAnswers` | `true` | `false` | `false` | `true` | `false` | `false` | `false` | Whether revealed answers render in `<code>` (commands) or prose (natural language) |
 
 Raising `dueCap` clears backlogs faster after missed days but lengthens sessions; the cap is safe because capped-out cards remain due and surface the next day. `DEFAULT_RETENTION`, `STRONG_STABILITY_DAYS`, and the two `GLOBAL_*` caps live as constants inside `engine.ts` rather than any config — no deck has needed to deviate from them yet.
 
@@ -242,4 +251,4 @@ Raising `dueCap` clears backlogs faster after missed days but lengthens sessions
 
 ## Planned evolution
 
-`/practice` and its cross-device sync, the vocabulary deck and skip-at-introduction, and the local-first people deck (this document, current sections) implement plan §1–§5 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md) — the learn/practice split, the deck registry, the unified queue, opt-in sync, the automated vocab feed, and a private deck with no server-side footprint at all. Manual vocab capture via `category: vocab` inbox notes (plan Phase 3b) is deliberately deferred — it needs a new content-collection category and its own design pass, unlike everything else here which only touched the learn/practice surface; this document stays authoritative for what is implemented as each phase lands.
+`/practice` and its cross-device sync, the vocabulary deck and skip-at-introduction, the local-first people deck, and the Finnish vocabulary sibling deck (this document, current sections) implement plan Phases 0–2b and 4 and 6 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md) — the learn/practice split, the deck registry, the unified queue, opt-in sync, the automated vocab feed, a private deck with no server-side footprint at all, and a first batch of communicative Finnish vocabulary. Manual vocab capture via `category: vocab` inbox notes (plan Phase 3b) is deliberately deferred — it needs a new content-collection category and its own design pass, unlike everything else here which only touched the learn/practice surface. Phase 5 (leeches, keyboard shortcuts, per-deck stats, a real quick-add composer) is still ahead; this document stays authoritative for what is implemented as each phase lands.

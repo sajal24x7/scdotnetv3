@@ -13,6 +13,7 @@
 import type { LearnSystemConfig } from '../components/learn/types';
 import { linuxLearnConfig } from './linux-learn-config';
 import { finnishLearnConfig } from './finnish-learn-config';
+import { finnishVocabLearnConfig } from './finnish-vocab-learn-config';
 import { tilLearnConfig } from './til-learn-config';
 import { evergreenLearnConfig } from './evergreen-learn-config';
 import { vocabLearnConfig } from './vocab-learn-config';
@@ -76,6 +77,13 @@ export const practiceRegistry: PracticeDeck[] = [
 		blurb: 'Finnish as a rule system: vocabulary, vowel harmony, gradation, and cases.',
 		learnHref: '/learn/finnish/',
 		source: { kind: 'json', href: '/api/practice/finnish.json' },
+	}),
+	summarize('finnish-vocab', finnishVocabLearnConfig, {
+		title: 'Finnish Vocabulary',
+		emoji: '🇫🇮',
+		blurb: 'Communicative Finnish vocabulary, sourced from frequency lists — feeds straight into the rules deck.',
+		learnHref: '/learn/finnish-vocab/',
+		source: { kind: 'json', href: '/api/practice/finnish-vocab.json' },
 	}),
 	summarize('til', tilLearnConfig, {
 		title: 'TIL',
