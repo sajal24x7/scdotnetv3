@@ -646,3 +646,32 @@
 .lq-import-label {
 	cursor: pointer;
 }
+
+.lq-sync {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	border-top: 1px solid rgb(var(--color-border));
+	padding-top: 1.25rem;
+}
+
+.lq-sync__title {
+	font-weight: 600;
+	font-size: var(--text-small);
+}
+
+.lq-sync__status {
+	font-size: var(--text-xs);
+	color: rgb(var(--color-text-secondary));
+}
+
+.lq-sync__input {
+	flex-grow: 1;
+	min-width: 0;
+	border: 1.5px solid rgb(var(--color-border));
+	border-radius: 8px;
+	padding: 0.5rem 0.75rem;
+	font-size: var(--text-small);
+	background: rgb(var(--color-bg-secondary));
+	color: inherit;
+}

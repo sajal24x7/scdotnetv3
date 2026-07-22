@@ -474,3 +474,55 @@ export function finishPracticeSession(meta: PracticeMeta, today: string): Practi
 	const streak = nextStreak(meta.streak, meta.lastSessionDate, today);
 	return { ...meta, streak, lastSessionDate: today, totalSessions: meta.totalSessions + 1 };
 }
+
+// --- Cross-device merge (plan §2.8) ---
+//
+// Deterministic and idempotent — safe to run in either direction any number
+// of times (local<-remote or remote<-local), so a periodic re-sync never
+// double-applies. `reps` only ever grows (FSRS as in the old Leitner
+// scheme), so it's a conflict-free tiebreaker for per-card state.
+
+export function mergeSrsState(local: SrsState, remote: SrsState): SrsState {
+	const cards: Record<string, CardState> = { ...local.cards };
+	for (const [id, remoteCard] of Object.entries(remote.cards)) {
+		const localCard = cards[id];
+		if (
+			!localCard ||
+			remoteCard.reps > localCard.reps ||
+			(remoteCard.reps === localCard.reps && (remoteCard.lastReview ?? '') > (localCard.lastReview ?? ''))
+		) {
+			cards[id] = remoteCard;
+		}
+	}
+
+	const introduced: Record<string, string> = { ...local.introduced };
+	for (const [id, date] of Object.entries(remote.introduced)) {
+		if (!introduced[id] || date < introduced[id]) introduced[id] = date;
+	}
+
+	// streak/lastSessionDate/totalSessions travel together as a triple, taken
+	// from whichever side most recently completed a session.
+	const winner = (remote.lastSessionDate ?? '') > (local.lastSessionDate ?? '') ? remote : local;
+	return {
+		version: 3,
+		cards,
+		introduced,
+		lastSessionDate: winner.lastSessionDate,
+		streak: winner.streak,
+		totalSessions: winner.totalSessions,
+	};
+}
+
+export function mergePracticeMeta(local: PracticeMeta, remote: PracticeMeta): PracticeMeta {
+	const disabledDecks = Array.from(new Set([...local.disabledDecks, ...remote.disabledDecks]));
+	const suspended = Array.from(new Set([...local.suspended, ...remote.suspended]));
+	const winner = (remote.lastSessionDate ?? '') > (local.lastSessionDate ?? '') ? remote : local;
+	return {
+		version: 1,
+		disabledDecks,
+		suspended,
+		lastSessionDate: winner.lastSessionDate,
+		streak: winner.streak,
+		totalSessions: winner.totalSessions,
+	};
+}

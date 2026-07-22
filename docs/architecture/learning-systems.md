@@ -151,9 +151,32 @@ The daily ritual — due reviews plus gradual new-item introduction, interleaved
 - **Queue composition** (`buildUnifiedQueue` in `engine.ts`) — gathers each deck's own due/new candidates exactly as `buildDailySession` would (earliest-due first, capped at the deck's own `dueCap`/`newPerDay`), then merges them **round-robin across decks** up to a global cap (`GLOBAL_DUE_CAP = 20` reviews, `GLOBAL_NEW_PER_DAY = 5` new items) — fairness so one deck's backlog can't starve another, and free interleaving. A deck's own budget can outlast one capped session; running `/practice` again the same day picks up wherever the global cap left off.
 - **`PracticeSession.tsx`** — the island: loads every enabled deck's `SrsState` from localStorage (no fetch), only fetches datasets for decks that actually contribute to today's queue, renders each card with a deck badge, grades against the same `gradeCard`/FSRS engine (this is now the *only* place any `SrsState` gets saved), and keeps the same-session "Forgot" requeue behavior `LearningSystem.tsx` used to.
 - **`practice-meta`** (one shared localStorage key, `PracticeMeta` in `engine.ts`) — the one genuinely global piece of state: `streak` (seeded from the max of existing per-deck streaks the first time it's created), `lastSessionDate`, `totalSessions`, `disabledDecks` (deck toggles, "pause Finnish for a month" — a checkbox per deck on `/practice`), `suspended` (item ids skipped at introduction — plumbed through now, populated once a deck adds a skip action per plan §4.4). Per-deck `streak`/`totalSessions` fields stop being read; the deck's own `SrsState` still carries them as harmless leftovers.
-- **Export/import** — a JSON blob of every registry deck's storage key plus `practice-meta`, downloaded/uploaded from `/practice`, is the manual backup and escape hatch (no server sync yet — see below).
+- **Export/import** — a JSON blob of every registry deck's storage key plus `practice-meta`, downloaded/uploaded from `/practice`, is the manual backup and escape hatch, independent of sync.
 
 `/learn/*` pages keep exactly the wall chart, reference panel, and no-op drills — `LearningSystem.tsx` no longer has a `session`/`done` screen or `startDaily`/`gradeCard` path; its "Start today's review" button is now a link to `/practice/`.
+
+## Cross-device sync (`/practice`, opt-in)
+
+Implements plan §2.8: practicing from phone, Mac, and work laptop without any of them being the single point of failure. Off by default — everything above works local-only; sync is an opt-in "Connect this device" step on `/practice`.
+
+- **`functions/api/practice-state.js`** (Cloudflare Pages Function) — `GET` returns the stored blob (`{}` if nothing saved yet), `PUT` replaces it. The blob is opaque to the function: every registry deck's `SrsState` plus `practice-meta`, as one JSON object keyed by localStorage key — merging is entirely client-side, so this function only needs to store and retrieve bytes.
+- **Auth** — the same pattern as `api/upload.js` and `api/til/sync.js`: a bearer token that is a fine-grained GitHub PAT, accepted only if GitHub confirms push (Contents write) access to this repo. No new secret class, no accounts. **Mint one PAT per device** — losing a device means revoking its token in GitHub settings; the KV blob itself is untouched.
+- **Safety net** — KV has no history of its own, so the function copies the previous blob to `state:backup:<UTC date>` before every overwrite, and prunes backups older than 7 days. A bad push is recoverable by hand from a backup key.
+- **Client wiring (`PracticeSession.tsx`)** — `pullAndMerge` runs on page load, on tab focus, and after "Connect this device"; it fetches the remote blob and merges it into local state (`mergeSrsState`/`mergePracticeMeta` in `engine.ts`), then writes the merged result back to localStorage. `pushState` fires at the end of every finished session, plus debounced (4s) after each grade mid-session, reading the current per-deck blobs straight from localStorage (never from React state, which can be one render behind a just-graded card) and PUTting them.
+- **Merge rules** (`mergeSrsState`/`mergePracticeMeta`), deterministic and idempotent — safe to run in either direction any number of times:
+  - per prompt id: keep the card with the higher `reps` (tie → later `lastReview`) — `reps` only ever grows, so this is conflict-free;
+  - `introduced`: union, earliest date wins;
+  - `disabledDecks`/`suspended`: union;
+  - `streak`/`totalSessions`/`lastSessionDate` travel together as a triple, taken from whichever side has the later `lastSessionDate`.
+- **Failure mode** — any fetch failure (no binding configured, bad token, offline) degrades silently to local-only; `/practice` shows a quiet "Sync unavailable right now — practicing locally" line instead of an error, and every feature above keeps working without a token at all.
+- **Private decks stay private** — the sync blob only ever contains SRS *state* (stability/difficulty numbers, dates, prompt ids), never deck *content*, so a future private deck's review state could sync without the deck's actual data ever touching KV.
+
+### One-time KV setup (Cloudflare dashboard)
+
+1. **Workers & Pages → your Pages project → Settings → Bindings → Add → KV namespace** — variable name **`PRACTICE_STATE`** (must be exactly this). Create a new namespace if one doesn't exist yet. Apply to Production (and Preview if you want sync from preview deploys).
+2. Redeploy the site once so the binding takes effect.
+
+Until the binding exists, `/api/practice-state` returns a clear "PRACTICE_STATE KV binding is not configured" error and sync stays silently disabled — nothing else on `/practice` is affected.
 
 ## Building a new system
 
@@ -184,8 +207,8 @@ Raising `dueCap` clears backlogs faster after missed days but lengthens sessions
 
 - **No penalties for missed days.** The due pile waits, capped per session. Guilt mechanics kill daily rituals.
 - **No ease factors beyond FSRS's own, no fuzzing.** `enable_fuzz: false` keeps intervals exact and debuggable; FSRS's built-in difficulty/stability model already goes further than a fixed ease factor would.
-- **No server sync yet.** State stays local-only, decks and `practice-meta` alike; export/import on `/practice` is the manual bridge between devices until §2.8 of the practice plan lands.
+- **No accounts, no server-side scheduling.** Sync (above) moves an opaque state blob between devices; every scheduling decision still happens client-side.
 
 ## Planned evolution
 
-`/practice` (this document, current section) implements plan §1–§2 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md) — the learn/practice split, the deck registry, and the unified queue. Cross-device sync, a vocabulary deck, and a local-first private people deck are still ahead (the plan's Phase 2b onward); this document stays authoritative for what is implemented as each phase lands.
+`/practice` and its cross-device sync (this document, current sections) implement plan §1–§2.8 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md) — the learn/practice split, the deck registry, the unified queue, and opt-in sync. A vocabulary deck and a local-first private people deck are still ahead (the plan's Phase 3 onward); this document stays authoritative for what is implemented as each phase lands.

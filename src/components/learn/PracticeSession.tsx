@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import type { LearnDataset } from './types';
 import type { PracticeDeck } from '../../data/practice-registry';
 import {
@@ -10,6 +10,7 @@ import {
 	computeIntroducedTodayCount,
 	computeNewAvailable,
 	computeUnseenCount,
+	emptyPracticeMeta,
 	emptyState,
 	finishPracticeSession,
 	gradeCard,
@@ -18,6 +19,8 @@ import {
 	loadPracticeMeta,
 	loadState,
 	localToday,
+	mergePracticeMeta,
+	mergeSrsState,
 	saveState,
 	savePracticeMeta,
 	type DeckSessionInput,
@@ -31,8 +34,27 @@ import {
 // This is now the *only* place SrsState gets mutated — /learn/* pages keep
 // their wall charts and no-op drills, but the "start today's review" button
 // lives here (see LearningSystem.tsx, which links out instead).
+//
+// Cross-device sync (plan §2.8): opt-in, via a per-device GitHub PAT posted
+// to functions/api/practice-state.js (a Workers KV blob). Pulls merge into
+// local state on load/focus/manual sync; pushes happen at session end and
+// debounced mid-session. Sync failures degrade silently to local-only.
+
+const SYNC_TOKEN_KEY = 'practice-sync-token';
+const SYNC_LAST_KEY = 'practice-sync-last';
+const PUSH_DEBOUNCE_MS = 4000;
 
 type Screen = 'home' | 'session' | 'done';
+type SyncStatus = 'idle' | 'syncing' | 'error';
+
+function formatRelativeTime(iso: string): string {
+	const minutes = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+	if (minutes < 1) return 'just now';
+	if (minutes < 60) return `${minutes}m ago`;
+	const hours = Math.round(minutes / 60);
+	if (hours < 24) return `${hours}h ago`;
+	return `${Math.round(hours / 24)}d ago`;
+}
 
 interface DeckCounts {
 	due: number;
@@ -61,6 +83,12 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 	const [starting, setStarting] = useState(false);
 	const [startError, setStartError] = useState<string | null>(null);
 
+	const [syncToken, setSyncToken] = useState<string | null>(null);
+	const [tokenInput, setTokenInput] = useState('');
+	const [lastSyncedAt, setLastSyncedAt] = useState<string | null>(null);
+	const [syncStatus, setSyncStatus] = useState<SyncStatus>('idle');
+	const pushTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
 	const deckById = useMemo(() => new Map(registry.map((d) => [d.id, d])), [registry]);
 
 	// Load happens after hydration so the first client render matches the
@@ -72,11 +100,113 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		const seedStreak = Math.max(0, ...registry.map((d) => perDeck[d.id]?.streak ?? 0));
 		setMeta(loadPracticeMeta(seedStreak));
 		setToday(localToday());
-		const onFocus = () => setToday(localToday());
+		setLastSyncedAt(window.localStorage.getItem(SYNC_LAST_KEY));
+		setSyncToken(window.localStorage.getItem(SYNC_TOKEN_KEY));
+		const onFocus = () => {
+			setToday(localToday());
+			const token = window.localStorage.getItem(SYNC_TOKEN_KEY);
+			if (token) pullAndMerge(token);
+		};
 		window.addEventListener('focus', onFocus);
-		return () => window.removeEventListener('focus', onFocus);
+		return () => {
+			window.removeEventListener('focus', onFocus);
+			if (pushTimer.current) clearTimeout(pushTimer.current);
+		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	// Pull-and-merge whenever a token becomes available — first load (if
+	// already connected) and right after "Connect this device".
+	useEffect(() => {
+		if (syncToken) pullAndMerge(syncToken);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [syncToken]);
+
+	async function pullAndMerge(token: string) {
+		setSyncStatus('syncing');
+		try {
+			const res = await fetch('/api/practice-state', { headers: { authorization: `Bearer ${token}` } });
+			if (!res.ok) throw new Error(`sync GET ${res.status}`);
+			const { blob } = await res.json();
+			if (blob && typeof blob === 'object') {
+				setPerDeckState((prev) => {
+					const next = { ...prev };
+					for (const deck of registry) {
+						const remoteRaw = blob[deck.storageKey];
+						if (!remoteRaw) continue;
+						const remoteState: SrsState = { ...emptyState(), ...remoteRaw, version: 3 };
+						const merged = mergeSrsState(next[deck.id] ?? emptyState(), remoteState);
+						next[deck.id] = merged;
+						saveState(deck.storageKey, merged);
+					}
+					return next;
+				});
+				const remoteMetaRaw = blob['practice-meta'];
+				if (remoteMetaRaw) {
+					setMeta((prev) => {
+						if (!prev) return prev;
+						const remoteMeta: PracticeMeta = { ...emptyPracticeMeta(), ...remoteMetaRaw, version: 1 };
+						const merged = mergePracticeMeta(prev, remoteMeta);
+						savePracticeMeta(merged);
+						return merged;
+					});
+				}
+			}
+			const now = new Date().toISOString();
+			window.localStorage.setItem(SYNC_LAST_KEY, now);
+			setLastSyncedAt(now);
+			setSyncStatus('idle');
+		} catch {
+			setSyncStatus('error');
+		}
+	}
+
+	async function pushState(token: string, currentMeta: PracticeMeta) {
+		setSyncStatus('syncing');
+		try {
+			const blob: Record<string, unknown> = {};
+			for (const deck of registry) {
+				const raw = window.localStorage.getItem(deck.storageKey);
+				if (raw) blob[deck.storageKey] = JSON.parse(raw);
+			}
+			blob['practice-meta'] = currentMeta;
+			const res = await fetch('/api/practice-state', {
+				method: 'PUT',
+				headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
+				body: JSON.stringify(blob),
+			});
+			if (!res.ok) throw new Error(`sync PUT ${res.status}`);
+			const now = new Date().toISOString();
+			window.localStorage.setItem(SYNC_LAST_KEY, now);
+			setLastSyncedAt(now);
+			setSyncStatus('idle');
+		} catch {
+			setSyncStatus('error');
+		}
+	}
+
+	// Debounced push while grading — coalesces rapid grades into one PUT.
+	function schedulePush() {
+		if (!syncToken || !meta) return;
+		if (pushTimer.current) clearTimeout(pushTimer.current);
+		const token = syncToken;
+		const currentMeta = meta;
+		pushTimer.current = setTimeout(() => pushState(token, currentMeta), PUSH_DEBOUNCE_MS);
+	}
+
+	function connectSync() {
+		const token = tokenInput.trim();
+		if (!token) return;
+		window.localStorage.setItem(SYNC_TOKEN_KEY, token);
+		setTokenInput('');
+		setSyncToken(token);
+	}
+
+	function disconnectSync() {
+		window.localStorage.removeItem(SYNC_TOKEN_KEY);
+		setSyncToken(null);
+		setSyncStatus('idle');
+	}
 
 	const disabledDecks = useMemo(() => new Set(meta?.disabledDecks ?? []), [meta]);
 
@@ -191,6 +321,8 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 				activeSession = [...session, { ...current }];
 				setSession(activeSession);
 			}
+
+			schedulePush();
 		}
 
 		setResults((r) => ({
@@ -202,12 +334,13 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 	}
 
 	function finishPractice() {
-		setMeta((prev) => {
-			if (!prev) return prev;
-			const next = finishPracticeSession(prev, today);
+		if (meta) {
+			const next = finishPracticeSession(meta, today);
 			savePracticeMeta(next);
-			return next;
-		});
+			setMeta(next);
+			if (pushTimer.current) clearTimeout(pushTimer.current);
+			if (syncToken) pushState(syncToken, next);
+		}
 		for (const deck of registry) clearLegacyBackup(deck.storageKey);
 		setScreen('done');
 	}
@@ -451,6 +584,44 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 					Import backup
 					<input type="file" accept="application/json" onChange={importState} hidden />
 				</label>
+			</div>
+
+			<div className="lq-sync">
+				<p className="lq-sync__title">Cross-device sync</p>
+				{syncToken ? (
+					<>
+						<p className="lq-sync__status">
+							{syncStatus === 'syncing'
+								? 'Syncing…'
+								: syncStatus === 'error'
+									? 'Sync unavailable right now — practicing locally.'
+									: lastSyncedAt
+										? `Last synced ${formatRelativeTime(lastSyncedAt)}`
+										: 'Connected — not yet synced'}
+						</p>
+						<div className="lq-io-row">
+							<button type="button" className="lq-button" onClick={() => pullAndMerge(syncToken)}>
+								Sync now
+							</button>
+							<button type="button" className="lq-button" onClick={disconnectSync}>
+								Disconnect this device
+							</button>
+						</div>
+					</>
+				) : (
+					<div className="lq-io-row">
+						<input
+							type="password"
+							className="lq-sync__input"
+							placeholder="Fine-grained GitHub PAT (Contents: read/write)"
+							value={tokenInput}
+							onChange={(e) => setTokenInput(e.target.value)}
+						/>
+						<button type="button" className="lq-button" onClick={connectSync} disabled={!tokenInput.trim()}>
+							Connect this device
+						</button>
+					</div>
+				)}
 			</div>
 		</div>
 	);
