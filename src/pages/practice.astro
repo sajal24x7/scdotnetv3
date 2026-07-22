@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PracticeSession from '../components/learn/PracticeSession';
+import { practiceRegistry } from '../data/practice-registry';
+import '../styles/learn.css';
+---
+
+<Layout
+  title="Practice — Daily Review"
+  description="The one daily ritual across every deck: due reviews and new items, interleaved, in one bounded session."
+  currentPage="/practice"
+  pageWrapper={{ container: true, maxWidth: '3xl', padding: 'lg', paddingScale: 'page' }}
+  enableLinkHoverEffect
+  index={false}
+>
+  <div class="practice-page">
+    <h1 class="practice-page__title">Practice</h1>
+    <p class="practice-page__subtitle">
+      One queue, every deck. Reviews first, then a few new items, interleaved across
+      whatever's due — a Finnish word next to a Linux command next to a TIL note.
+      A few minutes, then done.
+    </p>
+
+    <PracticeSession client:load registry={practiceRegistry} />
+  </div>
+</Layout>

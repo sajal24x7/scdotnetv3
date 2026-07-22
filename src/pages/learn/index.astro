@@ -2,60 +2,27 @@
 import Layout from '../../layouts/Layout.astro';
 import LearnHub from '../../components/learn/LearnHub';
 import type { LearnHubSystem } from '../../components/learn/LearnHub';
-import type { LearnSystemConfig } from '../../components/learn/types';
-import { linuxLearnConfig } from '../../data/linux-learn-config';
-import { finnishLearnConfig } from '../../data/finnish-learn-config';
-import { tilLearnConfig } from '../../data/til-learn-config';
-import { evergreenLearnConfig } from '../../data/evergreen-learn-config';
+import { practiceRegistry } from '../../data/practice-registry';
 import '../../styles/learn.css';
 
-// Build-time summaries only — the island must not bundle four content pools.
-function summarize(
-  config: LearnSystemConfig,
-  extra: { id: string; title: string; emoji: string; href: string; blurb: string },
-): LearnHubSystem {
-  const items = config.dataset.categories.flatMap((c) => c.items);
-  return {
-    ...extra,
-    itemNoun: config.itemNoun,
-    totalItems: items.length,
-    totalPrompts: items.reduce((n, item) => n + item.prompts.length, 0),
-    storageKey: config.storageKey,
-    newPerDay: config.newPerDay,
-    dueCap: config.dueCap,
-  };
-}
-
-const systems: LearnHubSystem[] = [
-  summarize(linuxLearnConfig, {
-    id: 'linux',
-    title: 'Linux',
-    emoji: '🐧',
-    href: '/learn/linux/',
-    blurb: 'Sysadmin commands — storage, logs, processes, networking — as a periodic table on the wall.',
-  }),
-  summarize(finnishLearnConfig, {
-    id: 'finnish',
-    title: 'Finnish',
-    emoji: '🇫🇮',
-    href: '/learn/finnish/',
-    blurb: 'Finnish as a rule system: vocabulary, vowel harmony, gradation, and cases.',
-  }),
-  summarize(tilLearnConfig, {
-    id: 'til',
-    title: 'TIL',
-    emoji: '📝',
-    href: '/learn/til/',
-    blurb: 'My own TIL notes, distilled into recall prompts — the notes are the curriculum.',
-  }),
-  summarize(evergreenLearnConfig, {
-    id: 'evergreen',
-    title: 'Evergreen',
-    emoji: '🌱',
-    href: '/learn/evergreen/',
-    blurb: 'Spaced re-encounter with my evergreen ideas: claims, mechanisms, examples.',
-  }),
-];
+// Build-time summaries only — the island must not bundle four content
+// pools. practiceRegistry (server-only, see src/data/practice-registry.ts)
+// is the single source for this now, shared with /practice.
+const systems: LearnHubSystem[] = practiceRegistry
+  .filter((deck) => deck.learnHref)
+  .map((deck) => ({
+    id: deck.id,
+    title: deck.title,
+    emoji: deck.emoji,
+    href: deck.learnHref!,
+    blurb: deck.blurb,
+    itemNoun: deck.itemNoun,
+    totalItems: deck.totalItems,
+    totalPrompts: deck.totalPrompts,
+    storageKey: deck.storageKey,
+    newPerDay: deck.newPerDay,
+    dueCap: deck.dueCap,
+  }));
 ---
 
 <Layout
