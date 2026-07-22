@@ -1,75 +1,28 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import type { Category, LearnItem, LearnSystemConfig, Prompt } from './types';
+import type { Category, LearnItem, LearnSystemConfig } from './types';
+import {
+	addDays,
+	buildDailySession,
+	buildPromptsById,
+	computeDueCount,
+	computeIntroducedTodayCount,
+	computeNewAvailable,
+	computeUnseenCount,
+	emptyState,
+	finishSession,
+	gradeCard,
+	itemStatus,
+	loadState,
+	localToday,
+	saveState,
+	type SessionItem,
+	type SrsState,
+} from './engine';
 
-// Leitner scheduler — see docs/architecture/learning-systems.md for the
-// design this implements (boxes, daily caps, gradual introduction).
-// Parameterized by LearnSystemConfig so /learn/linux and /learn/finnish
-// (and future systems) share one engine.
-
-const BOX_INTERVALS: Record<number, number> = { 1: 1, 2: 3, 3: 7, 4: 14, 5: 30 };
-const MAX_BOX = 5;
-
-interface CardState {
-	box: number;
-	due: string; // YYYY-MM-DD
-	reps: number;
-	lapses: number;
-}
-
-interface SrsState {
-	version: 2;
-	cards: Record<string, CardState>; // keyed by prompt id
-	introduced: Record<string, string>; // item id -> date introduced
-	lastSessionDate: string | null;
-	streak: number;
-	totalSessions: number;
-}
-
-function emptyState(): SrsState {
-	return { version: 2, cards: {}, introduced: {}, lastSessionDate: null, streak: 0, totalSessions: 0 };
-}
-
-function localToday(): string {
-	const d = new Date();
-	const pad = (n: number) => String(n).padStart(2, '0');
-	return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-}
-
-function addDays(dateStr: string, days: number): string {
-	const [y, m, d] = dateStr.split('-').map(Number);
-	const date = new Date(y, m - 1, d + days);
-	const pad = (n: number) => String(n).padStart(2, '0');
-	return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-}
-
-function daysBetween(a: string, b: string): number {
-	const [ay, am, ad] = a.split('-').map(Number);
-	const [by, bm, bd] = b.split('-').map(Number);
-	return Math.round((new Date(by, bm - 1, bd).getTime() - new Date(ay, am - 1, ad).getTime()) / 86400000);
-}
-
-type ItemStatus = 'unseen' | 'due' | 'learning' | 'strong';
-
-function itemStatus(item: LearnItem, state: SrsState, today: string): ItemStatus {
-	if (!state.introduced[item.id]) return 'unseen';
-	let minBox = Infinity;
-	let anyDue = false;
-	for (const prompt of item.prompts) {
-		const card = state.cards[prompt.id];
-		if (!card) return 'due'; // introduced but a prompt never graded — treat as due
-		if (card.due <= today) anyDue = true;
-		minBox = Math.min(minBox, card.box);
-	}
-	if (anyDue) return 'due';
-	return minBox >= 4 ? 'strong' : 'learning';
-}
-
-interface SessionItem {
-	kind: 'learn' | 'prompt';
-	item: LearnItem;
-	prompt?: Prompt;
-	isNew?: boolean;
-}
+// UI for the per-domain wall chart + session flow. Scheduling and
+// persistence live in ./engine (shared with LearnHub's count derivation);
+// this component owns only screens and rendering. Parameterized by
+// LearnSystemConfig so /learn/linux, /learn/finnish, etc. share one engine.
 
 type Screen = 'chart' | 'session' | 'done' | 'drill';
 
@@ -78,85 +31,10 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 	const { categories, introductionOrder } = dataset;
 
 	const allItems = useMemo<LearnItem[]>(() => categories.flatMap((c) => c.items), [categories]);
-	const promptsById = useMemo(() => {
-		const map = new Map<string, { prompt: Prompt; item: LearnItem }>();
-		for (const item of allItems) {
-			for (const prompt of item.prompts) {
-				map.set(prompt.id, { prompt, item });
-			}
-		}
-		return map;
-	}, [allItems]);
+	const promptsById = useMemo(() => buildPromptsById(allItems), [allItems]);
 
 	function categoryOf(itemId: string): Category | undefined {
 		return categories.find((c) => c.items.some((item) => item.id === itemId));
-	}
-
-	function loadState(): SrsState {
-		if (typeof window === 'undefined') return emptyState();
-		try {
-			const raw = window.localStorage.getItem(storageKey);
-			if (raw) return { ...emptyState(), ...JSON.parse(raw) };
-			// One-time migration from a legacy quiz page (Linux only): carry streak + session count.
-			if (legacyKey) {
-				const legacy = window.localStorage.getItem(legacyKey);
-				if (legacy) {
-					const old = JSON.parse(legacy);
-					return {
-						...emptyState(),
-						streak: old.streak ?? 0,
-						totalSessions: old.totalSessions ?? 0,
-						lastSessionDate: old.lastCompletedDate ?? null,
-					};
-				}
-			}
-		} catch {
-			// fall through to empty state
-		}
-		return emptyState();
-	}
-
-	function saveState(state: SrsState) {
-		if (typeof window === 'undefined') return;
-		try {
-			window.localStorage.setItem(storageKey, JSON.stringify(state));
-		} catch {
-			// localStorage unavailable — practice still works, just won't persist.
-		}
-	}
-
-	function buildDailySession(state: SrsState, today: string): SessionItem[] {
-		const items: SessionItem[] = [];
-
-		// 1. Reviews due today (earliest-due first, capped so a backlog can't balloon).
-		const due = Object.entries(state.cards)
-			.filter(([, card]) => card.due <= today)
-			.sort((a, b) => (a[1].due < b[1].due ? -1 : 1))
-			.slice(0, dueCap)
-			.map(([id]) => promptsById.get(id))
-			.filter((x): x is { prompt: Prompt; item: LearnItem } => Boolean(x));
-
-		for (const { prompt, item } of due) {
-			items.push({ kind: 'prompt', item, prompt });
-		}
-
-		// 2. New items, introduced gradually. Count today's already-introduced
-		//    items so reopening the page mid-day doesn't add extras.
-		const introducedToday = Object.values(state.introduced).filter((d) => d === today).length;
-		let slots = Math.max(0, newPerDay - introducedToday);
-		for (const itemId of introductionOrder) {
-			if (slots === 0) break;
-			if (state.introduced[itemId]) continue;
-			const item = allItems.find((i) => i.id === itemId);
-			if (!item) continue;
-			items.push({ kind: 'learn', item, isNew: true });
-			for (const prompt of item.prompts) {
-				items.push({ kind: 'prompt', item, prompt, isNew: true });
-			}
-			slots--;
-		}
-
-		return items;
 	}
 
 	// Start from empty state so the first client render matches the prerendered
@@ -173,7 +51,7 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 	// Load persisted state after hydration, and re-check the date when the tab
 	// regains focus (page left open overnight).
 	useEffect(() => {
-		setState(loadState());
+		setState(loadState(storageKey, legacyKey));
 		setToday(localToday());
 		const onFocus = () => setToday(localToday());
 		window.addEventListener('focus', onFocus);
@@ -181,24 +59,15 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const dueCount = useMemo(
-		() => Object.values(state.cards).filter((c) => c.due <= today).length,
-		[state, today],
-	);
-	const unseenCount = useMemo(
-		() => allItems.filter((i) => !state.introduced[i.id]).length,
-		[state, allItems],
-	);
-	const introducedTodayCount = useMemo(
-		() => Object.values(state.introduced).filter((d) => d === today).length,
-		[state, today],
-	);
-	const newAvailable = Math.min(unseenCount, Math.max(0, newPerDay - introducedTodayCount));
+	const dueCount = useMemo(() => computeDueCount(state, today), [state, today]);
+	const unseenCount = useMemo(() => computeUnseenCount(allItems.length, state), [state, allItems]);
+	const introducedTodayCount = useMemo(() => computeIntroducedTodayCount(state, today), [state, today]);
+	const newAvailable = computeNewAvailable(unseenCount, introducedTodayCount, newPerDay);
 	const doneForToday = dueCount === 0 && newAvailable === 0;
 	const allDone = unseenCount === 0 && dueCount === 0;
 
 	function startDaily() {
-		const items = buildDailySession(state, today);
+		const items = buildDailySession({ state, today, allItems, promptsById, introductionOrder, dueCap, newPerDay });
 		if (items.length === 0) return;
 		setSession(items);
 		setIndex(0);
@@ -238,24 +107,8 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 
 		if (screen === 'session') {
 			setState((prev) => {
-				const cards = { ...prev.cards };
-				const introduced = { ...prev.introduced };
-				const existing = cards[promptId];
-				let box: number;
-				if (gotIt) {
-					box = Math.min((existing?.box ?? 0) + 1, MAX_BOX);
-				} else {
-					box = 1;
-				}
-				cards[promptId] = {
-					box,
-					due: addDays(today, BOX_INTERVALS[box]),
-					reps: (existing?.reps ?? 0) + 1,
-					lapses: (existing?.lapses ?? 0) + (gotIt ? 0 : 1),
-				};
-				if (!introduced[item.item.id]) introduced[item.item.id] = today;
-				const next = { ...prev, cards, introduced };
-				saveState(next);
+				const next = gradeCard(prev, item.item.id, promptId, gotIt, today);
+				saveState(storageKey, next);
 				return next;
 			});
 		}
@@ -270,22 +123,8 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 
 	function finishDaily() {
 		setState((prev) => {
-			let streak = prev.streak;
-			if (!prev.lastSessionDate) {
-				streak = 1;
-			} else {
-				const diff = daysBetween(prev.lastSessionDate, today);
-				if (diff === 0) streak = prev.streak || 1;
-				else if (diff === 1) streak = prev.streak + 1;
-				else streak = 1;
-			}
-			const next: SrsState = {
-				...prev,
-				streak,
-				lastSessionDate: today,
-				totalSessions: prev.totalSessions + 1,
-			};
-			saveState(next);
+			const next = finishSession(prev, today);
+			saveState(storageKey, next);
 			return next;
 		});
 		setScreen('done');

@@ -299,8 +299,8 @@ Each phase is independently shippable and leaves every existing page working.
 **Phase 0 — Learn-block q/a shorthand (§5A). DONE.**
 Standalone parser change in `extract-learn-blocks.mjs` + a line in `docs/content/authoring.md`. No dependency on anything else — can ship immediately and improves the authoring flow today.
 
-**Phase 1 — Engine extraction (no behavior change).**
-Extract scheduler/persistence pure functions from `LearningSystem.tsx` into `src/components/learn/engine.ts`; re-point `LearningSystem` and `LearnHub` at it (deleting the duplicated count logic). Verify all four learn pages and hub behave identically.
+**Phase 1 — Engine extraction (no behavior change). DONE.**
+Extracted scheduler/persistence pure functions from `LearningSystem.tsx` into `src/components/learn/engine.ts` (`localToday`, `addDays`, `daysBetween`, `itemStatus`, `loadState`/`saveState`, `buildDailySession`, `gradeCard`, `finishSession`, plus the count helpers `computeDueCount`/`computeUnseenCount`/`computeIntroducedTodayCount`/`computeNewAvailable`); re-pointed `LearningSystem` and `LearnHub` at it, deleting `LearnHub`'s hand-duplicated count logic. Verified via `astro check` (0 errors), a full `npm run build`, and a live Playwright run through `/learn/linux` (start session → grade a new item + a review → done screen → state persisted) confirming `/learn` picks up the resulting streak/done status through the shared engine. All four learn pages and the hub behave identically to before.
 
 **Phase 1b — FSRS adoption (§2.6).**
 Swap the extracted engine's Leitner ladder for `ts-fsrs`: v2→v3 card migration with backup key, two-button grade mapping, same-session re-queue of forgotten cards, updated wall-chart status thresholds, desired-retention setting. Lands *before* `/practice` so the unified queue is built on the final scheduler from day one.

@@ -1,4 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import {
+	computeDueCount,
+	computeIntroducedTodayCount,
+	computeNewAvailable,
+	computeUnseenCount,
+	emptyState,
+	localToday,
+	type SrsState,
+} from './engine';
 
 // The /learn hub: one card per practice system, with live due/new counts
 // read from each system's localStorage state. The systems stay fully
@@ -6,7 +15,9 @@ import React, { useEffect, useState } from 'react';
 // makes the daily ritual single-entry: open /learn, see what's owed where.
 //
 // Receives lightweight build-time summaries instead of the datasets
-// themselves so the island doesn't bundle four content pools.
+// themselves so the island doesn't bundle four content pools. Counts are
+// derived with the same engine functions LearningSystem uses, so the two
+// can't drift out of sync.
 
 export interface LearnHubSystem {
 	id: string;
@@ -29,14 +40,6 @@ interface SystemStatus {
 	started: boolean;
 }
 
-function localToday(): string {
-	const d = new Date();
-	const pad = (n: number) => String(n).padStart(2, '0');
-	return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-}
-
-// Mirrors the counts LearningSystem.tsx derives from its SrsState; keep the
-// two in sync if the state schema changes.
 function readStatus(system: LearnHubSystem): SystemStatus {
 	const today = localToday();
 	try {
@@ -44,13 +47,11 @@ function readStatus(system: LearnHubSystem): SystemStatus {
 		if (!raw) {
 			return { due: 0, newAvailable: Math.min(system.totalItems, system.newPerDay), streak: 0, started: false };
 		}
-		const state = JSON.parse(raw);
-		const cards: Record<string, { due: string }> = state.cards ?? {};
-		const introduced: Record<string, string> = state.introduced ?? {};
-		const due = Object.values(cards).filter((c) => c.due <= today).length;
-		const introducedToday = Object.values(introduced).filter((d) => d === today).length;
-		const unseen = Math.max(0, system.totalItems - Object.keys(introduced).length);
-		const newAvailable = Math.min(unseen, Math.max(0, system.newPerDay - introducedToday));
+		const state: SrsState = { ...emptyState(), ...JSON.parse(raw) };
+		const due = computeDueCount(state, today);
+		const introducedTodayCount = computeIntroducedTodayCount(state, today);
+		const unseen = computeUnseenCount(system.totalItems, state);
+		const newAvailable = computeNewAvailable(unseen, introducedTodayCount, system.newPerDay);
 		return { due: Math.min(due, system.dueCap), newAvailable, streak: state.streak ?? 0, started: true };
 	} catch {
 		return { due: 0, newAvailable: 0, streak: 0, started: false };

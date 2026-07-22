@@ -9,7 +9,8 @@ Two further systems — `/learn/til` and `/learn/evergreen` — don't have hand-
 | Role | File |
 | --- | --- |
 | Shared types | `src/components/learn/types.ts` |
-| Shared scheduler + UI (React island) | `src/components/learn/LearningSystem.tsx` |
+| Shared scheduler + persistence (pure functions) | `src/components/learn/engine.ts` |
+| Shared UI (React island, consumes `engine.ts`) | `src/components/learn/LearningSystem.tsx` |
 | Shared styles | `src/styles/learn.css` |
 | Hub page + island | `src/pages/learn/index.astro`, `src/components/learn/LearnHub.tsx` |
 | Linux content pool | `src/data/linux-commands.ts` (+ `src/data/linux-learn-config.ts` adapter) |
@@ -55,7 +56,9 @@ Prompt   { id, q, a, note? }   // note = one-line elaboration shown with the ans
 - `linux-commands.ts` predates the shared types and keeps its own `Command`/`cmd` naming; `linux-learn-config.ts` adapts it to `LearnItem`/`term` at the config boundary rather than renaming the 1000+ line data file. New content pools should just use the shared types directly (see `finnish.ts`).
 - Run `node scripts/validate-learn-data.mjs` after editing a content pool — it checks prompt-id uniqueness, that every item appears in `introductionOrder` exactly once, and that no category/item is empty.
 
-### 2. Scheduler (Leitner boxes, in the island)
+### 2. Scheduler (Leitner boxes, in `engine.ts`)
+
+The scheduling and persistence logic (`localToday`, `addDays`, `gradeCard`, `itemStatus`, `buildDailySession`, `loadState`/`saveState`, the count helpers) is a pure module, `src/components/learn/engine.ts` — no React, no DOM assumptions beyond `window.localStorage`. `LearningSystem.tsx` (wall chart + session UI) and `LearnHub.tsx` (hub due/new counts) both import it, so the two can't drift out of sync the way the hub's hand-duplicated counts once could. A new consumer (e.g. a future unified `/practice` page) extends the same engine rather than re-deriving it.
 
 Simpler than full SM-2 and adequate for decks of a few hundred prompts:
 
