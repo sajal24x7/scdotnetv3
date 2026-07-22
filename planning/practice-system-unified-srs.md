@@ -245,6 +245,23 @@ a: A NAT Gateway with a static public IP.
 
 Implementation is confined to `parseLearnBlocks` in `scripts/extract-learn-blocks.mjs`: if a block has no top-level `prompts:` key, split it into stanzas at each top-level `q:` line and YAML-parse each stanza as one prompt (`q`, `a`, optional `note:` / `id:`; YAML block scalars like `a: |` keep working for multi-line answers). Plain YAML can't express repeated keys, which is why this needs the stanza pre-split rather than a schema tweak. The full syntax stays valid — needed whenever you want to override `term`/`category`/etc. — and both forms can coexist in one note (scalar fields still come from the first block). Nothing else changes: positional id assignment (`-p1`, `-p2` in encounter order) and the append-only stability rule apply across both syntaxes, and the render-strip in `src/utils/learnBlocks.ts` is shape-agnostic (it removes the fence wholesale), so no change there.
 
+## 5B. Why not a subdomain / separate repo (decision)
+
+Considered: moving the learning utilities to `learn.sajalchoudhary.net` backed by their own repo, so public site and private material never share a codebase. **Rejected for the public system; and for the private side the plan already separates repos — but along the data-visibility line, not the feature line.** The reasoning:
+
+**Why the learning system stays on the site:**
+
+- **The mnemonic medium couples it to the content.** The TIL and evergreen decks are *extracted from site notes at site build time*, and every card links back to its note. A separate repo would need the site's content at build (cross-repo fetch, submodule, or consuming the site's deck JSON endpoints) — a standing two-repo dependency for a solo maintainer, purchased with zero privacy gain since all of that data is public anyway.
+- **The learn pages are content, not just utilities.** The wall charts are digital-garden artifacts in their own right — the periodic-table-on-the-wall *is* the public face of "learning in public." Exiling them to a tool subdomain loses that, and would mean duplicating (or extracting into a shared package) the site's layout, typography tokens, and styles — drift maintenance forever.
+- **localStorage is per-origin.** Moving pages to a subdomain silently orphans all existing Linux/Finnish/TIL/evergreen progress until every device does an export/import dance. Survivable once sync (§2.8) exists, but it's real migration pain for aesthetic gain.
+- If the actual itch is "personal utilities cluttering the public site": `/practice` gets `noindex` and stays out of the sitemap (it's a personal tool with no audience), while `/learn/*` remain indexed content. That's the whole remedy.
+
+**Why the repo split follows data visibility, not features:**
+
+The plan already keeps two repos — but the boundary is *what must stay private*, not *what belongs to learning*. People notes (and any future private deck) live in the private repo (`scdotnetv3-tools`) and only ciphertext crosses over (§5.2). Public deck data (Linux, Finnish, vocab, and the note-extracted decks) stays here because it ships to a public site regardless — moving it would privatize nothing. "Public and private don't clash" is achieved by construction: nothing private is ever *in* this repo, so there is nothing to clash with.
+
+**The one genuinely attractive variant, and why it still loses:** a private-only satellite (say `learn-private.sajalchoudhary.net`, deployed from the private repo, gated by Cloudflare Access) would give real server-side auth with no crypto code — plaintext people data behind a login. But the unified session is the heart of this plan, and Access protects *origins*, not decks within a page: the main-site `/practice` page can't cleanly pull Access-protected data cross-origin (cookie/CORS contortions, or a service token that can't be shipped in a public page). So the Access variant forces private decks into a second, separate daily ritual — reintroducing exactly the fragmentation this plan exists to remove. The encrypted-blob design keeps one session with private cards mixed in, at the cost of a passphrase prompt once per device. **Revisit trigger:** if the passphrase UX proves genuinely annoying in practice, the Access-gated satellite is the recorded fallback, accepted fragmentation and all.
+
 ## 6. Hub and entry points after the split
 
 - **`/practice`** — the ritual page: big start button, combined due/new counts, per-deck breakdown line, streak, deck toggles, export/import, unlock control for private decks. This is the page that gets bookmarked on the phone home screen.
@@ -293,6 +310,7 @@ The existing Finnish deck is *rules-first by design* — its vocabulary category
 | 7 | Global streak | Seeded from the max of existing per-deck streaks |
 | 8 | Sync backend | Cloudflare KV + Pages Function with per-device PATs (§2.8); GitHub-contents-API fallback recorded |
 | 9 | Learn-block shorthand | Bare q/a stanzas via a pre-split in the extractor (§5A); full syntax stays valid |
+| 10 | Subdomain / separate repo | Stay on the site; repo split follows data visibility only (§5B); Access-gated satellite is the fallback |
 
 ## 9. Documentation to update at implementation time
 
