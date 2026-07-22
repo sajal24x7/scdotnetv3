@@ -299,6 +299,35 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		advanceWithin(session);
 	}
 
+	// Skip-at-introduction (plan §4.4): a new item's learn card carries a
+	// "Skip" action alongside "Got it — quiz me". Skipping suspends the item
+	// permanently (practice-meta.suspended) rather than just for today — it
+	// never counts against a deck's new budget again and never resurfaces,
+	// until un-suspended from the item's wall-chart reference panel. Since
+	// buildUnifiedQueue always emits a new item's learn card immediately
+	// followed by all of its own prompts, the ones still ahead of `index`
+	// are exactly this item's block and can be dropped as one contiguous run.
+	function skipCurrentItem() {
+		const current = session[index];
+		if (current.kind !== 'learn') return;
+		const { deckId, item } = current;
+
+		setMeta((prev) => {
+			if (!prev || prev.suspended.includes(item.id)) return prev;
+			const next: PracticeMeta = { ...prev, suspended: [...prev.suspended, item.id] };
+			savePracticeMeta(next);
+			return next;
+		});
+		schedulePush();
+
+		const filtered = session.filter((s, i) => i < index || !(s.deckId === deckId && s.item.id === item.id));
+		setRevealed(false);
+		setSession(filtered);
+		if (index >= filtered.length) {
+			finishPractice();
+		}
+	}
+
 	function gradeCurrent(gotIt: boolean) {
 		const current = session[index];
 		if (current.kind !== 'prompt' || !current.prompt) return;
@@ -435,9 +464,14 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 								Read the full note →
 							</a>
 						)}
-						<button type="button" className="lq-button lq-button--primary" onClick={advance}>
-							Got it — quiz me →
-						</button>
+						<div className="lq-grade">
+							<button type="button" className="lq-button lq-button--primary" onClick={advance}>
+								Got it — quiz me →
+							</button>
+							<button type="button" className="lq-button lq-button--ghost" onClick={skipCurrentItem}>
+								Skip — don't learn this
+							</button>
+						</div>
 					</div>
 				) : (
 					<div className="lq-panel">

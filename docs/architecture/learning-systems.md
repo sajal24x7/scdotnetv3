@@ -22,6 +22,7 @@ How the site's "periodic table on the wall" learning systems work, and where the
 | Finnish page shell | `src/pages/learn/finnish.astro` |
 | Note-backed pools (generated) | `src/data/learn-decks.generated.json` (built by `scripts/extract-learn-blocks.mjs`) |
 | TIL / Evergreen configs + shells | `src/data/til-learn-config.ts`, `src/data/evergreen-learn-config.ts`, `src/pages/learn/til.astro`, `src/pages/learn/evergreen.astro` |
+| Vocabulary feed (generated) + config + shell | `src/data/vocab.generated.json` (built by `scripts/fetch-wotd.mjs`), `src/data/vocab-dataset.ts` (pure transform), `src/data/vocab-learn-config.ts`, `src/pages/learn/vocabulary.astro` |
 | Learn-block render stripping | `src/utils/learnBlocks.ts` (remark plugin + string strip used by pages, RSS, previews, backlinks) |
 | Content-pool guardrail | `scripts/validate-learn-data.mjs` (prompt-id uniqueness, `introductionOrder` completeness) |
 
@@ -138,6 +139,21 @@ Mechanics:
 
 Authoring workflow: write the learn block in the note (in Obsidian or directly in `src/content/...`), publish through the normal content pipeline, and the next build picks it up. Note that if a note is edited in the vault and republished *without* its learn block, the block disappears from the published copy and the item drops out of the deck — keep the block with the note in the vault once you add one.
 
+## The vocabulary deck (`/learn/vocabulary`)
+
+Implements plan §4 (feed side; manual capture via `category: vocab` inbox notes is not yet built — see Planned evolution). One English word most days, fed automatically rather than authored:
+
+- **`scripts/fetch-wotd.mjs`** — pulls Wiktionary's Word of the Day RSS feed (`action=featuredfeed&feed=wotd`) and upserts each word into `src/data/vocab.generated.json`, keyed by a slugified form of the word. Idempotent by design: a word already on file keeps its original record and is never re-fetched or overwritten, so re-running the script (or a missed/duplicated cron fire) is harmless. Parsing is a handful of targeted regexes against the feed's known RSS structure (word from `<title>`, part of speech and gloss from the `<description>` HTML), not a full XML/HTML parser — a word that doesn't parse cleanly is skipped with a warning and picked up correctly the next day once the feed moves on, never a build failure. Runs daily via `.github/workflows/fetch-wotd.yml`; `npm run fetch-wotd` to run it by hand. Merriam-Webster's WOTD RSS is wired as a second source but off by default (`WOTD_ENABLE_MW=true`) — its markup varies more across entries and the parser for it is a first cut, not eyeballed against real output yet.
+- **`src/data/vocab-dataset.ts`** — the pure transform from the raw word-keyed JSON into a `LearnDataset`: groups words into categories by part of speech (noun/verb/adjective/…, falling back to "Other"), and builds two prompts per word per plan §4.2's both-directions rule — recognition (`What does *word* mean?` → gloss) and production (`Which word means: <gloss>` → word). This file is deliberately import-free beyond types (no JSON import) so `scripts/validate-learn-data.mjs` can load it directly under plain Node without hitting Node's import-attribute requirement for JSON modules; `vocab-learn-config.ts` is the thin adapter that actually imports `vocab.generated.json` and calls `buildDataset` on it, the same "adapt at the config boundary" pattern `linux-learn-config.ts` uses.
+- **Tuning** — `newPerDay: 1` (matches the feed's natural one-word-a-day cadence), `dueCap: 6`, `monoAnswers: false` (prose, not commands), `itemNoun: 'word'`.
+- **Not yet built**: manual capture via `category: vocab` inbox notes with Wiktionary-REST-API definition enrichment (plan §4.1.2) — deferred because it would need a new content-collection category (nav, routing, RSS, sitemap implications) that hasn't been scoped yet, unlike the feed side which only touches the learn/practice surface.
+
+## Skip-at-introduction (`suspended`)
+
+Implements plan §4.4, generalized to every deck in the registry rather than vocabulary alone. A new item's learn card in `/practice`'s session (`PracticeSession.tsx`) carries a "Skip — don't learn this" action next to "Got it — quiz me": clicking it adds the item's id to `practice-meta.suspended` and removes the rest of that item's block (the learn card plus all its prompts, always contiguous — see `buildUnifiedQueue` in `engine.ts`) from the remaining session queue, without touching the item's `SrsState` at all (it stays fully unintroduced). `buildUnifiedQueue` already filtered candidates against `suspended` from Phase 2 onward; this phase adds the UI action that actually populates the set.
+
+A suspended item shows as a distinct muted tile (`lq-tile--suspended`, dashed/struck-through) on its deck's `/learn/<topic>` wall chart — `LearningSystem.tsx` loads `practice-meta` (read-only) alongside its own `SrsState` purely to check membership, overriding whatever `itemStatus` would otherwise compute (always `unseen`, since a suspended item is never introduced). Selecting the tile's reference panel shows a "Bring back to practice" button that removes the id from `practice-meta.suspended` — the reversibility the plan calls for, with no separate "suspended list" page needed since the wall chart already is one.
+
 ## The hub (`/learn`)
 
 `/learn` renders one card per system — territory only: emoji, blurb, item/prompt totals, and a "territory progress" line ("38% of the territory introduced") derived from `state.introduced` versus the deck's total item count. It no longer shows due/new counts or a per-card CTA; those moved to `/practice`. A single banner above the cards ("Today's practice — 5 due · 2 new →") aggregates due/new counts across every registry deck and links to `/practice`. Both the banner and the per-card status line are computed client-side in `LearnHub.tsx`, read from each system's localStorage key. Systems stay fully independent; the page receives lightweight build-time summaries (`storageKey`, `newPerDay`, `dueCap`, item/prompt totals) rather than the datasets, sourced from `practiceRegistry` (see below) so the island stays small. The count derivation mirrors `engine.ts`'s exactly — keep them in sync if the state schema changes.
@@ -191,15 +207,15 @@ A new *learning* system (wall chart + reference) is data plus a config plus a pa
 
 ## Tuning knobs
 
-| Constant | Linux | Finnish | TIL | Evergreen | Meaning |
-| --- | --- | --- | --- | --- | --- |
-| `DEFAULT_RETENTION` | 0.9 | same | same | same | FSRS's desired-recall-probability target (fixed in the engine, not per-config) |
-| `newPerDay` | 2 | 3 | 2 | 1 | New items introduced daily (per deck, before the global cap) |
-| `dueCap` | 8 | 12 | 8 | 6 | Max reviews shown per day (per deck, before the global cap) |
-| `GLOBAL_DUE_CAP` | 20 | same | same | same | Max reviews across all decks in one `/practice` session |
-| `GLOBAL_NEW_PER_DAY` | 5 | same | same | same | Max new items across all decks in one `/practice` session |
-| `STRONG_STABILITY_DAYS` | 21 | same | same | same | Stability threshold for the "solid" tile color (fixed in the engine) |
-| `monoAnswers` | `true` | `false` | `true` | `false` | Whether revealed answers render in `<code>` (commands) or prose (natural language) |
+| Constant | Linux | Finnish | TIL | Evergreen | Vocab | Meaning |
+| --- | --- | --- | --- | --- | --- | --- |
+| `DEFAULT_RETENTION` | 0.9 | same | same | same | same | FSRS's desired-recall-probability target (fixed in the engine, not per-config) |
+| `newPerDay` | 2 | 3 | 2 | 1 | 1 | New items introduced daily (per deck, before the global cap) |
+| `dueCap` | 8 | 12 | 8 | 6 | 6 | Max reviews shown per day (per deck, before the global cap) |
+| `GLOBAL_DUE_CAP` | 20 | same | same | same | same | Max reviews across all decks in one `/practice` session |
+| `GLOBAL_NEW_PER_DAY` | 5 | same | same | same | same | Max new items across all decks in one `/practice` session |
+| `STRONG_STABILITY_DAYS` | 21 | same | same | same | same | Stability threshold for the "solid" tile color (fixed in the engine) |
+| `monoAnswers` | `true` | `false` | `true` | `false` | `false` | Whether revealed answers render in `<code>` (commands) or prose (natural language) |
 
 Raising `dueCap` clears backlogs faster after missed days but lengthens sessions; the cap is safe because capped-out cards remain due and surface the next day. `DEFAULT_RETENTION`, `STRONG_STABILITY_DAYS`, and the two `GLOBAL_*` caps live as constants inside `engine.ts` rather than any config — no deck has needed to deviate from them yet.
 
@@ -211,4 +227,4 @@ Raising `dueCap` clears backlogs faster after missed days but lengthens sessions
 
 ## Planned evolution
 
-`/practice` and its cross-device sync (this document, current sections) implement plan §1–§2.8 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md) — the learn/practice split, the deck registry, the unified queue, and opt-in sync. A vocabulary deck and a local-first private people deck are still ahead (the plan's Phase 3 onward); this document stays authoritative for what is implemented as each phase lands.
+`/practice` and its cross-device sync, plus the vocabulary deck and skip-at-introduction (this document, current sections), implement plan §1–§4 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md) — the learn/practice split, the deck registry, the unified queue, opt-in sync, and the automated vocab feed. Manual vocab capture via `category: vocab` inbox notes and a local-first private people deck are still ahead (the plan's Phase 3b onward); this document stays authoritative for what is implemented as each phase lands.

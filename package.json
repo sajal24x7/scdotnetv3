@@ -15,6 +15,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "extract-learn": "node scripts/extract-learn-blocks.mjs",
+    "fetch-wotd": "node scripts/fetch-wotd.mjs",
     "generate-covers": "node scripts/generate-book-covers.js",
     "cache-nordletter-images": "node scripts/cache-nordletter-images.js",
     "download-covers": "node scripts/download-book-covers.js",

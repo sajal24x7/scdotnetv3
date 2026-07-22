@@ -15,6 +15,7 @@ import { linuxLearnConfig } from './linux-learn-config';
 import { finnishLearnConfig } from './finnish-learn-config';
 import { tilLearnConfig } from './til-learn-config';
 import { evergreenLearnConfig } from './evergreen-learn-config';
+import { vocabLearnConfig } from './vocab-learn-config';
 
 export interface PracticeDeck {
 	id: string;
@@ -82,5 +83,12 @@ export const practiceRegistry: PracticeDeck[] = [
 		blurb: 'Spaced re-encounter with my evergreen ideas: claims, mechanisms, examples.',
 		learnHref: '/learn/evergreen/',
 		source: { kind: 'json', href: '/api/practice/evergreen.json' },
+	}),
+	summarize('vocab', vocabLearnConfig, {
+		title: 'Vocabulary',
+		emoji: '📖',
+		blurb: 'English words, one a day from Wiktionary — meaning and recall, both directions.',
+		learnHref: '/learn/vocabulary/',
+		source: { kind: 'json', href: '/api/practice/vocab.json' },
 	}),
 ];

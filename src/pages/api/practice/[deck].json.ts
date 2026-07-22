@@ -4,6 +4,7 @@ import { linuxLearnConfig } from '../../../data/linux-learn-config';
 import { finnishLearnConfig } from '../../../data/finnish-learn-config';
 import { tilLearnConfig } from '../../../data/til-learn-config';
 import { evergreenLearnConfig } from '../../../data/evergreen-learn-config';
+import { vocabLearnConfig } from '../../../data/vocab-learn-config';
 
 // Per-deck dataset endpoint for /practice (plan §2.2): the practice island
 // must not bundle every content pool, so each public deck's data is emitted
@@ -16,6 +17,7 @@ const datasets: Record<string, LearnDataset> = {
 	finnish: finnishLearnConfig.dataset,
 	til: tilLearnConfig.dataset,
 	evergreen: evergreenLearnConfig.dataset,
+	vocab: vocabLearnConfig.dataset,
 };
 
 export function getStaticPaths() {
