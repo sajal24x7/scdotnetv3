@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - apple
-  - finance
-category: micro
+title: "Apple to Start a Upgrade Program"
+slug: "apple-to-start-a-upgrade-program"
+created: 2026-07-22T09:28:00+03:00
 updated: 2026-07-22T09:29:53+03:00
+category: micro
+tags: ["apple", "finance"]
 ---
 [Apple’s rumored ‘Upgrade’ program brings lease-to-own pricing for iPhones, Macs, and iPads by Stevie Bonifield](https://www.theverge.com/tech/968750/apple-upgrade-program)
 
