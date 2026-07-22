@@ -3,8 +3,8 @@
 // Structure follows docs/architecture/learning-systems.md and
 // planning/finnish-learning-system.md: each item is a small reference card
 // plus 2+ atomic retrieval prompts. Prompts are the unit of scheduling (the
-// Leitner engine in LearningSystem.tsx tracks one box per prompt); items are
-// the unit of introduction and of the wall chart.
+// FSRS engine in src/components/learn/engine.ts tracks its own card per
+// prompt); items are the unit of introduction and of the wall chart.
 //
 // RULE FOR EDITORS: never invent Finnish. Every Finnish string below is
 // copied verbatim from the tables in planning/finnish-learning-system.md §2

@@ -4,6 +4,7 @@ import {
 	addDays,
 	buildDailySession,
 	buildPromptsById,
+	clearLegacyBackup,
 	computeDueCount,
 	computeIntroducedTodayCount,
 	computeNewAvailable,
@@ -47,6 +48,9 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 	const [results, setResults] = useState<{ got: number; forgot: number; learned: number }>({ got: 0, forgot: 0, learned: 0 });
 	const [selectedItem, setSelectedItem] = useState<LearnItem | null>(null);
 	const [today, setToday] = useState<string>(() => localToday());
+	// Prompt ids already given a same-session second chance after "Forgot" —
+	// caps the requeue at one extra shot per prompt (see gradeCurrent).
+	const [requeued, setRequeued] = useState<Set<string>>(new Set());
 
 	// Load persisted state after hydration, and re-check the date when the tab
 	// regains focus (page left open overnight).
@@ -73,6 +77,7 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 		setIndex(0);
 		setRevealed(false);
 		setResults({ got: 0, forgot: 0, learned: 0 });
+		setRequeued(new Set());
 		setScreen('session');
 		setSelectedItem(null);
 	}
@@ -89,9 +94,13 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 		setSelectedItem(null);
 	}
 
-	function advance() {
+	// Takes the session array explicitly rather than reading the `session`
+	// state variable, because gradeCurrent may append a requeued card to it
+	// in the same tick — relying on the stale closure would end the session
+	// one card early.
+	function advanceWithin(activeSession: SessionItem[]) {
 		setRevealed(false);
-		if (index + 1 < session.length) {
+		if (index + 1 < activeSession.length) {
 			setIndex(index + 1);
 		} else if (screen === 'drill') {
 			setScreen('chart');
@@ -100,17 +109,33 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 		}
 	}
 
+	function advance() {
+		advanceWithin(session);
+	}
+
 	function gradeCurrent(gotIt: boolean) {
 		const item = session[index];
 		if (item.kind !== 'prompt' || !item.prompt) return;
 		const promptId = item.prompt.id;
 
+		let activeSession = session;
 		if (screen === 'session') {
 			setState((prev) => {
 				const next = gradeCard(prev, item.item.id, promptId, gotIt, today);
 				saveState(storageKey, next);
 				return next;
 			});
+
+			// A "Forgot" card gets one same-session second chance at the end of
+			// the queue — day-granular persisted scheduling still pushes it to
+			// tomorrow (that's the source of truth), but a same-day retry
+			// converts a slip into a win more often than waiting until tomorrow
+			// would (plan §2.6).
+			if (!gotIt && !requeued.has(promptId)) {
+				setRequeued((prev) => new Set(prev).add(promptId));
+				activeSession = [...session, { kind: 'prompt', item: item.item, prompt: item.prompt }];
+				setSession(activeSession);
+			}
 		}
 
 		setResults((r) => ({
@@ -118,7 +143,7 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 			forgot: r.forgot + (gotIt ? 0 : 1),
 			learned: r.learned + (item.isNew && gotIt ? 1 : 0),
 		}));
-		advance();
+		advanceWithin(activeSession);
 	}
 
 	function finishDaily() {
@@ -127,6 +152,7 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 			saveState(storageKey, next);
 			return next;
 		});
+		clearLegacyBackup(storageKey);
 		setScreen('done');
 	}
 

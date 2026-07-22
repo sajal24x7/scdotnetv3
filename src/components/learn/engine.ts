@@ -1,26 +1,42 @@
 // Pure scheduler/persistence engine shared by every /learn/* practice system
 // (LearningSystem) and the /learn hub's count derivation (LearnHub). See
 // docs/architecture/learning-systems.md for the design this implements
-// (Leitner boxes, daily caps, gradual introduction).
+// (FSRS scheduling, daily caps, gradual introduction).
 //
 // Nothing here touches React — it's the "second consumer forces the
 // refactor" extraction: LearnHub used to duplicate this logic by hand with a
 // keep-in-sync comment; both now call the same functions.
 
+import { createEmptyCard, fsrs, generatorParameters, Rating, State, type Card, type CardInput } from 'ts-fsrs';
 import type { LearnItem, Prompt } from './types';
 
-export const BOX_INTERVALS: Record<number, number> = { 1: 1, 2: 3, 3: 7, 4: 14, 5: 30 };
-export const MAX_BOX = 5;
+// --- Legacy Leitner constants, kept only for the v2→v3 migration below ---
+const BOX_INTERVALS: Record<number, number> = { 1: 1, 2: 3, 3: 7, 4: 14, 5: 30 };
 
+// FSRS scheduler config. Two deliberate deviations from Anki defaults, both
+// from plan §2.6 ("day-granular adaptation"): `enable_short_term: false`
+// disables minute-level (re)learning steps so every persisted interval is a
+// whole calendar day (verified: even an Again on a brand-new card schedules
+// >= 1 day out, never same-day) — a same-day second chance is handled at the
+// session level instead (see the requeue logic in LearningSystem.tsx).
+// `enable_fuzz: false` keeps intervals exact and reproducible rather than
+// randomized, which matters for a scheduler that's meant to be inspectable.
+export const DEFAULT_RETENTION = 0.9;
+const scheduler = fsrs(generatorParameters({ request_retention: DEFAULT_RETENTION, enable_short_term: false, enable_fuzz: false }));
+
+// A card's memory strength, in FSRS terms, per prompt.
 export interface CardState {
-	box: number;
 	due: string; // YYYY-MM-DD
+	stability: number; // days until recall probability drops to the retention target
+	difficulty: number; // 1 (easy) – 10 (hard)
+	state: State; // New / Learning / Review / Relearning
 	reps: number;
 	lapses: number;
+	lastReview: string | null; // YYYY-MM-DD
 }
 
 export interface SrsState {
-	version: 2;
+	version: 3;
 	cards: Record<string, CardState>; // keyed by prompt id
 	introduced: Record<string, string>; // item id -> date introduced
 	lastSessionDate: string | null;
@@ -29,7 +45,7 @@ export interface SrsState {
 }
 
 export function emptyState(): SrsState {
-	return { version: 2, cards: {}, introduced: {}, lastSessionDate: null, streak: 0, totalSessions: 0 };
+	return { version: 3, cards: {}, introduced: {}, lastSessionDate: null, streak: 0, totalSessions: 0 };
 }
 
 export function localToday(): string {
@@ -51,20 +67,116 @@ export function daysBetween(a: string, b: string): number {
 	return Math.round((new Date(by, bm - 1, bd).getTime() - new Date(ay, am - 1, ad).getTime()) / 86400000);
 }
 
+function dateStringToLocalDate(dateStr: string): Date {
+	const [y, m, d] = dateStr.split('-').map(Number);
+	return new Date(y, m - 1, d);
+}
+
+// Threshold, in days of stability, above which a card counts as "solid" on
+// the wall chart rather than merely "learning" (plan §2.6).
+const STRONG_STABILITY_DAYS = 21;
+
 export type ItemStatus = 'unseen' | 'due' | 'learning' | 'strong';
 
 export function itemStatus(item: LearnItem, state: SrsState, today: string): ItemStatus {
 	if (!state.introduced[item.id]) return 'unseen';
-	let minBox = Infinity;
+	let minStability = Infinity;
 	let anyDue = false;
+	let anyLearning = false;
 	for (const prompt of item.prompts) {
 		const card = state.cards[prompt.id];
 		if (!card) return 'due'; // introduced but a prompt never graded — treat as due
 		if (card.due <= today) anyDue = true;
-		minBox = Math.min(minBox, card.box);
+		if (card.state === State.Learning || card.state === State.Relearning) anyLearning = true;
+		minStability = Math.min(minStability, card.stability);
 	}
 	if (anyDue) return 'due';
-	return minBox >= 4 ? 'strong' : 'learning';
+	return anyLearning || minStability < STRONG_STABILITY_DAYS ? 'learning' : 'strong';
+}
+
+// --- FSRS <-> persisted CardState conversion ---
+
+function toFsrsInput(card: CardState): CardInput {
+	return {
+		due: dateStringToLocalDate(card.due),
+		stability: card.stability,
+		difficulty: card.difficulty,
+		elapsed_days: 0, // deprecated field FSRS recomputes internally from last_review
+		scheduled_days: 0,
+		learning_steps: 0,
+		reps: card.reps,
+		lapses: card.lapses,
+		state: card.state,
+		last_review: card.lastReview ? dateStringToLocalDate(card.lastReview) : null,
+	};
+}
+
+function fromFsrsCard(card: Card): CardState {
+	return {
+		due: formatLocalDate(card.due),
+		stability: card.stability,
+		difficulty: card.difficulty,
+		state: card.state,
+		reps: card.reps,
+		lapses: card.lapses,
+		lastReview: card.last_review ? formatLocalDate(card.last_review) : null,
+	};
+}
+
+function formatLocalDate(date: Date): string {
+	const pad = (n: number) => String(n).padStart(2, '0');
+	return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}
+
+// --- v2 (Leitner) -> v3 (FSRS) migration, one-way ---
+
+function migrateV2ToV3(v2: {
+	cards?: Record<string, { box?: number; due: string; reps?: number; lapses?: number }>;
+	introduced?: Record<string, string>;
+	lastSessionDate?: string | null;
+	streak?: number;
+	totalSessions?: number;
+}): SrsState {
+	// "Default difficulty": FSRS's own init value for a fresh Good-rated card —
+	// there's no per-card difficulty history to seed from in Leitner data, so
+	// this is the most defensible neutral starting point.
+	const defaultDifficulty = scheduler.init_difficulty(Rating.Good);
+	const cards: Record<string, CardState> = {};
+	for (const [promptId, old] of Object.entries(v2.cards ?? {})) {
+		const interval = BOX_INTERVALS[old.box ?? 1] ?? BOX_INTERVALS[1];
+		cards[promptId] = {
+			due: old.due, // unchanged — nothing feels re-set on day one
+			stability: interval,
+			difficulty: defaultDifficulty,
+			state: State.Review,
+			reps: old.reps ?? 0,
+			lapses: old.lapses ?? 0,
+			lastReview: addDays(old.due, -interval),
+		};
+	}
+	return {
+		version: 3,
+		cards,
+		introduced: { ...(v2.introduced ?? {}) },
+		lastSessionDate: v2.lastSessionDate ?? null,
+		streak: v2.streak ?? 0,
+		totalSessions: v2.totalSessions ?? 0,
+	};
+}
+
+function legacyBackupKey(storageKey: string): string {
+	return `${storageKey}-v2-backup`;
+}
+
+// Called once the first post-migration session completes; the v2 blob has
+// served its purpose (export/import covers rollback beyond this point).
+export function clearLegacyBackup(storageKey: string) {
+	if (typeof window === 'undefined') return;
+	try {
+		window.localStorage.removeItem(legacyBackupKey(storageKey));
+	} catch {
+		// no-op
+	}
 }
 
 // --- Persistence ---
@@ -73,7 +185,18 @@ export function loadState(storageKey: string, legacyKey?: string): SrsState {
 	if (typeof window === 'undefined') return emptyState();
 	try {
 		const raw = window.localStorage.getItem(storageKey);
-		if (raw) return { ...emptyState(), ...JSON.parse(raw) };
+		if (raw) {
+			const parsed = JSON.parse(raw);
+			if (parsed.version === 2) {
+				try {
+					window.localStorage.setItem(legacyBackupKey(storageKey), raw);
+				} catch {
+					// backup is best-effort; migration proceeds regardless
+				}
+				return migrateV2ToV3(parsed);
+			}
+			return { ...emptyState(), ...parsed, version: 3 };
+		}
 		// One-time migration from a legacy quiz page (Linux only): carry streak + session count.
 		if (legacyKey) {
 			const legacy = window.localStorage.getItem(legacyKey);
@@ -169,14 +292,12 @@ export function buildDailySession(params: {
 export function gradeCard(state: SrsState, itemId: string, promptId: string, gotIt: boolean, today: string): SrsState {
 	const cards = { ...state.cards };
 	const introduced = { ...state.introduced };
+	const now = dateStringToLocalDate(today);
 	const existing = cards[promptId];
-	const box = gotIt ? Math.min((existing?.box ?? 0) + 1, MAX_BOX) : 1;
-	cards[promptId] = {
-		box,
-		due: addDays(today, BOX_INTERVALS[box]),
-		reps: (existing?.reps ?? 0) + 1,
-		lapses: (existing?.lapses ?? 0) + (gotIt ? 0 : 1),
-	};
+	const input: CardInput | Card = existing ? toFsrsInput(existing) : createEmptyCard(now);
+	const grade = gotIt ? Rating.Good : Rating.Again;
+	const { card: nextCard } = scheduler.next(input, now, grade);
+	cards[promptId] = fromFsrsCard(nextCard);
 	if (!introduced[itemId]) introduced[itemId] = today;
 	return { ...state, cards, introduced };
 }
