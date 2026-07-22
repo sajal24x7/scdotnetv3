@@ -1,10 +1,16 @@
 ---
-title: "Apple to Start a Upgrade Program"
-slug: "apple-to-start-a-upgrade-program"
-created: 2026-07-22T09:28:00+03:00
-updated: 2026-07-22T09:29:53+03:00
+title: Apple to Start a Upgrade Program
+slug: apple-to-start-a-upgrade-program
+created: 2026-07-22T06:28:00.000Z
+updated: 2026-07-22T06:29:53.000Z
 category: micro
-tags: ["apple", "finance"]
+tags:
+  - apple
+  - finance
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116962741409129260'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mr7wkupeoi2i'
+  - 'https://www.threads.com/@sajal24x7/post/DbFsCVTmzK5'
 ---
 [Apple’s rumored ‘Upgrade’ program brings lease-to-own pricing for iPhones, Macs, and iPads by Stevie Bonifield](https://www.theverge.com/tech/968750/apple-upgrade-program)
 

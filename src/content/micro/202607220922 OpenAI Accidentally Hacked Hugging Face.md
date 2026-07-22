@@ -1,10 +1,17 @@
 ---
-title: "OpenAI Accidentally Hacked Hugging Face"
-slug: "openai-accidentally-hacked-hugging-face"
-created: 2026-07-22T09:22:00+03:00
-updated: 2026-07-22T09:24:05+03:00
+title: OpenAI Accidentally Hacked Hugging Face
+slug: openai-accidentally-hacked-hugging-face
+created: 2026-07-22T06:22:00.000Z
+updated: 2026-07-22T06:24:05.000Z
 category: micro
-tags: ["security", "openai", "hugging-face"]
+tags:
+  - security
+  - openai
+  - hugging-face
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116962740564944418'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mr7wkimj5w24'
+  - 'https://www.threads.com/@sajal24x7/post/DbFsA2UG3ka'
 ---
 [OpenAI says it accidentally hacked Hugging Face with a new AI system by Emma Roth](https://www.theverge.com/ai-artificial-intelligence/968988/openai-hugging-face-hack-ai)
 
