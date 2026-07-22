@@ -1,16 +1,19 @@
 # Learning Systems
 
-How to build a daily-practice learning page on this site — the "periodic table on the wall" pattern. The first implementation is `/learn/linux` (Linux sysadmin commands); the second is `/learn/finnish` (Finnish as a rule system). The scheduler and UI are shared between them — a new system only needs a content pool, a small config object, and a page shell.
+How the site's "periodic table on the wall" learning systems work, and where the daily practice ritual actually happens. Learning is per-domain and browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/finnish` (Finnish as a rule system), `/learn/til` and `/learn/evergreen` (decks extracted from published notes). Practice — the bounded, graded, everything-interleaved daily session — is unified at **`/practice`**, one queue across every deck. This split (and the reasoning behind it) is [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md); this document describes what's implemented.
 
-Two further systems — `/learn/til` and `/learn/evergreen` — don't have hand-written pools at all: their content is extracted from ` ```learn ` blocks authored inside published notes (see "Note-backed decks" below). `/learn` is the hub page that fronts all systems with live due counts.
+`/learn` is the hub page: one card per system (territory + progress), plus a banner pointing at `/practice` for today's actual work.
 
 **Key files:**
 
 | Role | File |
 | --- | --- |
 | Shared types | `src/components/learn/types.ts` |
-| Shared scheduler + persistence (pure functions) | `src/components/learn/engine.ts` |
-| Shared UI (React island, consumes `engine.ts`) | `src/components/learn/LearningSystem.tsx` |
+| Shared scheduler + persistence + unified queue (pure functions) | `src/components/learn/engine.ts` |
+| Per-domain UI: wall chart, reference panel, no-op drills | `src/components/learn/LearningSystem.tsx` |
+| Unified daily session UI (the only place SrsState is graded) | `src/components/learn/PracticeSession.tsx` |
+| Deck registry (server-only; build-time) | `src/data/practice-registry.ts` |
+| `/practice` page + per-deck dataset endpoint | `src/pages/practice.astro`, `src/pages/api/practice/[deck].json.ts` |
 | Shared styles | `src/styles/learn.css` |
 | Hub page + island | `src/pages/learn/index.astro`, `src/components/learn/LearnHub.tsx` |
 | Linux content pool | `src/data/linux-commands.ts` (+ `src/data/linux-learn-config.ts` adapter) |
@@ -88,7 +91,7 @@ One key per system (`linux-learn-srs`, `finnish-learn-srs`), holding:
 
 ### UI states
 
-`chart` (home: today-strip + wall chart + legend + reference panel) → `session` (learn cards and recall prompts, one at a time) → `done` (today's tally, streak, tomorrow's due count). Plus an optional `drill` mode: run through a category's prompts with the same reveal/self-grade UI but **without touching scheduler state** — cramming for curiosity shouldn't corrupt the spacing data.
+`LearningSystem.tsx` (per-domain, `/learn/<topic>`) only has two screens now: `chart` (today-strip linking to `/practice`, wall chart, legend, reference panel) and `drill` (run through a category's prompts with the same reveal/self-grade UI, but **without touching scheduler state** — cramming for curiosity shouldn't corrupt the spacing data). The graded review flow — `session` (learn cards and recall prompts, one at a time) → `done` (today's tally, streak, tomorrow's due count) — now lives in `PracticeSession.tsx` at `/practice` (see below); it's the only place any deck's `SrsState` gets mutated.
 
 ## Note-backed decks (`/learn/til`, `/learn/evergreen`)
 
@@ -137,36 +140,75 @@ Authoring workflow: write the learn block in the note (in Obsidian or directly i
 
 ## The hub (`/learn`)
 
-Four systems means four daily rituals unless something aggregates them. `/learn` renders one card per system with live counts — "5 due · 2 new notes · 12-day streak" or "✓ done for today" — read client-side from each system's localStorage key (`LearnHub.tsx`). Systems stay fully independent; the page receives lightweight build-time summaries (`storageKey`, `newPerDay`, `dueCap`, item/prompt totals) rather than the datasets, so the island stays small. The count derivation mirrors `LearningSystem.tsx`'s — keep them in sync if the state schema changes.
+`/learn` renders one card per system — territory only: emoji, blurb, item/prompt totals, and a "territory progress" line ("38% of the territory introduced") derived from `state.introduced` versus the deck's total item count. It no longer shows due/new counts or a per-card CTA; those moved to `/practice`. A single banner above the cards ("Today's practice — 5 due · 2 new →") aggregates due/new counts across every registry deck and links to `/practice`. Both the banner and the per-card status line are computed client-side in `LearnHub.tsx`, read from each system's localStorage key. Systems stay fully independent; the page receives lightweight build-time summaries (`storageKey`, `newPerDay`, `dueCap`, item/prompt totals) rather than the datasets, sourced from `practiceRegistry` (see below) so the island stays small. The count derivation mirrors `engine.ts`'s exactly — keep them in sync if the state schema changes.
+
+## The unified practice session (`/practice`)
+
+The daily ritual — due reviews plus gradual new-item introduction, interleaved across every deck — lives at `/practice`, not on the per-domain pages. Implements plan §1–§2 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md):
+
+- **Registry** (`src/data/practice-registry.ts`, server-only) — a `PracticeDeck[]` derived at build time from each system's existing `*-learn-config.ts`: `id`, `title`, `emoji`, `blurb`, `itemNoun`, `monoAnswers`, `newPerDay`, `dueCap`, `storageKey`, `legacyKey`, `totalItems`/`totalPrompts` (counts only), and a `source` (`{ kind: 'json', href }` for public decks served from `/api/practice/<id>.json`, or `{ kind: 'local' }` for a future browser-only deck like people). This module imports the full content pools, so it must only ever be imported from Astro frontmatter (`practice.astro`, `learn/index.astro`) — never from a `client:load` island, which receives the derived array as a prop instead.
+- **Per-deck dataset endpoint** (`src/pages/api/practice/[deck].json.ts`) — a prerendered route (same pattern as `api/link-previews/[category].json.ts`) serving each deck's `LearnDataset` as static JSON, so the practice island can fetch just the decks it needs instead of bundling every content pool.
+- **Queue composition** (`buildUnifiedQueue` in `engine.ts`) — gathers each deck's own due/new candidates exactly as `buildDailySession` would (earliest-due first, capped at the deck's own `dueCap`/`newPerDay`), then merges them **round-robin across decks** up to a global cap (`GLOBAL_DUE_CAP = 20` reviews, `GLOBAL_NEW_PER_DAY = 5` new items) — fairness so one deck's backlog can't starve another, and free interleaving. A deck's own budget can outlast one capped session; running `/practice` again the same day picks up wherever the global cap left off.
+- **`PracticeSession.tsx`** — the island: loads every enabled deck's `SrsState` from localStorage (no fetch), only fetches datasets for decks that actually contribute to today's queue, renders each card with a deck badge, grades against the same `gradeCard`/FSRS engine (this is now the *only* place any `SrsState` gets saved), and keeps the same-session "Forgot" requeue behavior `LearningSystem.tsx` used to.
+- **`practice-meta`** (one shared localStorage key, `PracticeMeta` in `engine.ts`) — the one genuinely global piece of state: `streak` (seeded from the max of existing per-deck streaks the first time it's created), `lastSessionDate`, `totalSessions`, `disabledDecks` (deck toggles, "pause Finnish for a month" — a checkbox per deck on `/practice`), `suspended` (item ids skipped at introduction — plumbed through now, populated once a deck adds a skip action per plan §4.4). Per-deck `streak`/`totalSessions` fields stop being read; the deck's own `SrsState` still carries them as harmless leftovers.
+- **Export/import** — a JSON blob of every registry deck's storage key plus `practice-meta`, downloaded/uploaded from `/practice`, is the manual backup and escape hatch, independent of sync.
+
+`/learn/*` pages keep exactly the wall chart, reference panel, and no-op drills — `LearningSystem.tsx` no longer has a `session`/`done` screen or `startDaily`/`gradeCard` path; its "Start today's review" button is now a link to `/practice/`.
+
+## Cross-device sync (`/practice`, opt-in)
+
+Implements plan §2.8: practicing from phone, Mac, and work laptop without any of them being the single point of failure. Off by default — everything above works local-only; sync is an opt-in "Connect this device" step on `/practice`.
+
+- **`functions/api/practice-state.js`** (Cloudflare Pages Function) — `GET` returns the stored blob (`{}` if nothing saved yet), `PUT` replaces it. The blob is opaque to the function: every registry deck's `SrsState` plus `practice-meta`, as one JSON object keyed by localStorage key — merging is entirely client-side, so this function only needs to store and retrieve bytes.
+- **Auth** — the same pattern as `api/upload.js` and `api/til/sync.js`: a bearer token that is a fine-grained GitHub PAT, accepted only if GitHub confirms push (Contents write) access to this repo. No new secret class, no accounts. **Mint one PAT per device** — losing a device means revoking its token in GitHub settings; the KV blob itself is untouched.
+- **Safety net** — KV has no history of its own, so the function copies the previous blob to `state:backup:<UTC date>` before every overwrite, and prunes backups older than 7 days. A bad push is recoverable by hand from a backup key.
+- **Client wiring (`PracticeSession.tsx`)** — `pullAndMerge` runs on page load, on tab focus, and after "Connect this device"; it fetches the remote blob and merges it into local state (`mergeSrsState`/`mergePracticeMeta` in `engine.ts`), then writes the merged result back to localStorage. `pushState` fires at the end of every finished session, plus debounced (4s) after each grade mid-session, reading the current per-deck blobs straight from localStorage (never from React state, which can be one render behind a just-graded card) and PUTting them.
+- **Merge rules** (`mergeSrsState`/`mergePracticeMeta`), deterministic and idempotent — safe to run in either direction any number of times:
+  - per prompt id: keep the card with the higher `reps` (tie → later `lastReview`) — `reps` only ever grows, so this is conflict-free;
+  - `introduced`: union, earliest date wins;
+  - `disabledDecks`/`suspended`: union;
+  - `streak`/`totalSessions`/`lastSessionDate` travel together as a triple, taken from whichever side has the later `lastSessionDate`.
+- **Failure mode** — any fetch failure (no binding configured, bad token, offline) degrades silently to local-only; `/practice` shows a quiet "Sync unavailable right now — practicing locally" line instead of an error, and every feature above keeps working without a token at all.
+- **Private decks stay private** — the sync blob only ever contains SRS *state* (stability/difficulty numbers, dates, prompt ids), never deck *content*, so a future private deck's review state could sync without the deck's actual data ever touching KV.
+
+### One-time KV setup (Cloudflare dashboard)
+
+1. **Workers & Pages → your Pages project → Settings → Bindings → Add → KV namespace** — variable name **`PRACTICE_STATE`** (must be exactly this). Create a new namespace if one doesn't exist yet. Apply to Production (and Preview if you want sync from preview deploys).
+2. Redeploy the site once so the binding takes effect.
+
+Until the binding exists, `/api/practice-state` returns a clear "PRACTICE_STATE KV binding is not configured" error and sync stays silently disabled — nothing else on `/practice` is affected.
 
 ## Building a new system
 
-The scheduler and UI are already shared (`LearningSystem.tsx`); a new system is just data plus a config plus a page:
+A new *learning* system (wall chart + reference) is data plus a config plus a page:
 
 1. **Write the content pool** — `src/data/<topic>.ts` exporting `categories: Category[]` and `introductionOrder: string[]` per the shared types. For language material the "item" is a word/phrase, "syntax" its canonical form, "example" a usage sentence. Prompts should go *both directions* (fi→en and en→fi as separate prompts — they are different memory acts and deserve separate schedules).
 2. **Write a config** — `src/data/<topic>-learn-config.ts` exporting a `LearnSystemConfig`: `storageKey` (never share state between decks), `newPerDay`, `dueCap`, `itemNoun` (used in UI copy like "3 new words"), `monoAnswers` (`true` renders answers in `<code>`; set `false` for prose languages like Finnish, which uses the serif body font instead), and `dataset`.
 3. **New page** at `/learn/<topic>.astro` — render `<LearningSystem client:load config={yourConfig} />`, import `src/styles/learn.css`, and add a `.learn-<topic>-page`/`__title`/`__subtitle` selector group to that stylesheet (or reuse an existing one).
-4. **Validate** with `node scripts/validate-learn-data.mjs` before opening a PR.
-5. **Tune the constants** to the material: language decks usually want more new items per day and can tolerate a higher due cap; dense technical material wants fewer. See the tuning table below.
+4. **Register it for practice** — add an entry to `practiceRegistry` in `src/data/practice-registry.ts` (metadata + a `source`) so it joins the unified queue and the `/api/practice/<id>.json` endpoint. A deck can be practice-only, with no `learnHref`, if it never gets its own wall chart.
+5. **Validate** with `node scripts/validate-learn-data.mjs` before opening a PR.
+6. **Tune the constants** to the material: language decks usually want more new items per day and can tolerate a higher due cap; dense technical material wants fewer. See the tuning table below.
 
 ## Tuning knobs
 
 | Constant | Linux | Finnish | TIL | Evergreen | Meaning |
 | --- | --- | --- | --- | --- | --- |
 | `DEFAULT_RETENTION` | 0.9 | same | same | same | FSRS's desired-recall-probability target (fixed in the engine, not per-config) |
-| `newPerDay` | 2 | 3 | 2 | 1 | New items introduced daily |
-| `dueCap` | 8 | 12 | 8 | 6 | Max reviews shown per day |
+| `newPerDay` | 2 | 3 | 2 | 1 | New items introduced daily (per deck, before the global cap) |
+| `dueCap` | 8 | 12 | 8 | 6 | Max reviews shown per day (per deck, before the global cap) |
+| `GLOBAL_DUE_CAP` | 20 | same | same | same | Max reviews across all decks in one `/practice` session |
+| `GLOBAL_NEW_PER_DAY` | 5 | same | same | same | Max new items across all decks in one `/practice` session |
 | `STRONG_STABILITY_DAYS` | 21 | same | same | same | Stability threshold for the "solid" tile color (fixed in the engine) |
 | `monoAnswers` | `true` | `false` | `true` | `false` | Whether revealed answers render in `<code>` (commands) or prose (natural language) |
 
-Raising `dueCap` clears backlogs faster after missed days but lengthens sessions; the cap is safe because capped-out cards remain due and surface the next day. `DEFAULT_RETENTION` and `STRONG_STABILITY_DAYS` live as constants inside `engine.ts` rather than the config — no system has needed to deviate from them yet.
+Raising `dueCap` clears backlogs faster after missed days but lengthens sessions; the cap is safe because capped-out cards remain due and surface the next day. `DEFAULT_RETENTION`, `STRONG_STABILITY_DAYS`, and the two `GLOBAL_*` caps live as constants inside `engine.ts` rather than any config — no deck has needed to deviate from them yet.
 
 ## Deliberate non-features
 
 - **No penalties for missed days.** The due pile waits, capped per session. Guilt mechanics kill daily rituals.
 - **No ease factors beyond FSRS's own, no fuzzing.** `enable_fuzz: false` keeps intervals exact and debuggable; FSRS's built-in difficulty/stability model already goes further than a fixed ease factor would.
-- **No server sync.** Keep the system free of accounts and infrastructure until an actual second device demands it.
+- **No accounts, no server-side scheduling.** Sync (above) moves an opaque state blob between devices; every scheduling decision still happens client-side.
 
 ## Planned evolution
 
-A proposed redesign splits learning (per-domain wall charts and reference, this document) from practice (one unified cross-deck SRS session at `/practice`), and adds vocabulary and private people decks — see [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md). This document stays authoritative for what is implemented until that plan lands.
+`/practice` and its cross-device sync (this document, current sections) implement plan §1–§2.8 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md) — the learn/practice split, the deck registry, the unified queue, and opt-in sync. A vocabulary deck and a local-first private people deck are still ahead (the plan's Phase 3 onward); this document stays authoritative for what is implemented as each phase lands.

@@ -1,12 +1,14 @@
-/* Shared UI for /learn/* spaced-repetition practice pages (wall chart +
-   Leitner review flow) described in docs/architecture/learning-systems.md.
-   Rendered by src/components/learn/LearningSystem.tsx for every system. */
+/* Shared UI for /learn/* wall charts + reference panels + drills
+   (src/components/learn/LearningSystem.tsx) and the unified daily session
+   at /practice (src/components/learn/PracticeSession.tsx). See
+   docs/architecture/learning-systems.md and planning/practice-system-unified-srs.md. */
 
 .learn-linux-page,
 .learn-finnish-page,
 .learn-til-page,
 .learn-evergreen-page,
-.learn-hub-page {
+.learn-hub-page,
+.practice-page {
 	padding-top: 2rem;
 	padding-bottom: 4rem;
 }
@@ -15,7 +17,8 @@
 .learn-finnish-page__title,
 .learn-til-page__title,
 .learn-evergreen-page__title,
-.learn-hub-page__title {
+.learn-hub-page__title,
+.practice-page__title {
 	margin-bottom: 0.5rem;
 	letter-spacing: -0.01em;
 }
@@ -24,7 +27,8 @@
 .learn-finnish-page__subtitle,
 .learn-til-page__subtitle,
 .learn-evergreen-page__subtitle,
-.learn-hub-page__subtitle {
+.learn-hub-page__subtitle,
+.practice-page__subtitle {
 	color: rgb(var(--color-text-secondary));
 	font-size: var(--text-small);
 	margin-bottom: 2rem;
@@ -484,6 +488,44 @@
 /* ---------- /learn hub ---------- */
 
 .lq-hub {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.lq-hub__banner {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1rem;
+	flex-wrap: wrap;
+	border: 1.5px solid rgb(var(--color-accent));
+	background: rgba(var(--color-accent), 0.08);
+	border-radius: 14px;
+	padding: 1.1rem 1.4rem;
+	text-decoration: none;
+	color: inherit;
+	transition: border-color 0.15s ease;
+}
+
+.lq-hub__banner:hover {
+	border-color: rgb(var(--color-accent));
+	background: rgba(var(--color-accent), 0.14);
+}
+
+.lq-hub__banner-title {
+	font-family: var(--font-serif);
+	font-size: var(--text-large);
+	font-weight: 600;
+}
+
+.lq-hub__banner-counts {
+	font-size: var(--text-base);
+	font-weight: 600;
+	color: rgb(var(--color-accent));
+}
+
+.lq-hub__grid {
 	display: grid;
 	gap: 1.25rem;
 	grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
@@ -535,14 +577,101 @@
 	padding-top: 0.6rem;
 }
 
-.lq-hub__status--due {
+.lq-hub__status--progress {
 	color: rgb(var(--color-accent));
-}
-
-.lq-hub__status--done {
-	color: #2e7d32;
 }
 
 .lq-hub__status--fresh {
 	color: rgb(var(--color-text-secondary));
+}
+
+/* ---------- /practice ---------- */
+
+.lq-practice-home {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.lq-today__status--error {
+	color: #c0392b;
+}
+
+.lq-deck-badge {
+	font-weight: 600;
+}
+
+.lq-deck-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+}
+
+.lq-deck-row {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	border: 1.5px solid rgb(var(--color-border));
+	background: rgb(var(--color-bg-secondary));
+	border-radius: 10px;
+	padding: 0.75rem 1rem;
+	font-size: var(--text-small);
+	cursor: pointer;
+}
+
+.lq-deck-row--disabled {
+	opacity: 0.55;
+}
+
+.lq-deck-row__title {
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.lq-deck-row__meta {
+	color: rgb(var(--color-text-secondary));
+	flex-grow: 1;
+}
+
+.lq-deck-row__link {
+	font-size: var(--text-xs);
+	white-space: nowrap;
+}
+
+.lq-io-row {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.lq-import-label {
+	cursor: pointer;
+}
+
+.lq-sync {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	border-top: 1px solid rgb(var(--color-border));
+	padding-top: 1.25rem;
+}
+
+.lq-sync__title {
+	font-weight: 600;
+	font-size: var(--text-small);
+}
+
+.lq-sync__status {
+	font-size: var(--text-xs);
+	color: rgb(var(--color-text-secondary));
+}
+
+.lq-sync__input {
+	flex-grow: 1;
+	min-width: 0;
+	border: 1.5px solid rgb(var(--color-border));
+	border-radius: 8px;
+	padding: 0.5rem 0.75rem;
+	font-size: var(--text-small);
+	background: rgb(var(--color-bg-secondary));
+	color: inherit;
 }

@@ -29,7 +29,7 @@ Syndication is **not** part of the build. It runs as a separate, scheduled GitHu
 
 - Build command: `npm run build:cloudflare`
 - Output directory: `dist`
-- Environment variables: set in the Pages dashboard for secrets. The R2 `IMAGES` binding powers `/write` uploads (see [Micro Composer](../content/micro-composer.md)). None are hard-coded in the repo.
+- Environment variables: set in the Pages dashboard for secrets. The R2 `IMAGES` binding powers `/write` uploads (see [Micro Composer](../content/micro-composer.md)); a `PRACTICE_STATE` KV binding powers `/practice` cross-device sync (see [Learning Systems](../architecture/learning-systems.md)). None are hard-coded in the repo.
 
 If you add new build-time scripts, update both `package.json` and (if the Node version or command changes) `cloudflare-pages.json` so local and hosted builds remain consistent.
 
