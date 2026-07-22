@@ -296,7 +296,7 @@ The boundary that matters is *what must stay private*, not *what belongs to lear
 
 Each phase is independently shippable and leaves every existing page working.
 
-**Phase 0 — Learn-block q/a shorthand (§5A).**
+**Phase 0 — Learn-block q/a shorthand (§5A). DONE.**
 Standalone parser change in `extract-learn-blocks.mjs` + a line in `docs/content/authoring.md`. No dependency on anything else — can ship immediately and improves the authoring flow today.
 
 **Phase 1 — Engine extraction (no behavior change).**

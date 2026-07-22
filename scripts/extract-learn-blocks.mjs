@@ -20,6 +20,25 @@
 //       id: why-nat              # optional stable id override — see below
 //   ```
 //
+// For the common case — no scalar overrides, just prompts — a bare q/a
+// shorthand skips the `prompts:` list ceremony:
+//
+//   ```learn
+//   q: Why not rely on Azure's default outbound IPs?
+//   a: They change at random, so external services can't whitelist them.
+//
+//   q: What fixes it?
+//   a: A NAT Gateway with a static public IP.
+//   ```
+//
+// A block using the shorthand is any block with no top-level `prompts:`
+// key; it's split into stanzas at each top-level `q:` line, and each
+// stanza is YAML-parsed as one prompt (`q`, `a`, optional `note:`/`id:`).
+// Anything before the first `q:` line is parsed as the scalar fields
+// (`term:`, `category:`, etc.) shown above. The two forms can be mixed
+// across the learn blocks in one note — scalar fields still come from the
+// first block regardless of which form it uses.
+//
 // ID stability: prompt ids key the learner's localStorage review state, so
 // they must never change once a prompt has been reviewed. Ids are
 // positional (`til-<noteid>-p1`, `-p2`, ...) — append new prompts at the
@@ -153,15 +172,58 @@ function firstCodeBlock(body) {
     return undefined;
 }
 
+// Plain YAML can't express repeated keys, so the q/a shorthand (no
+// top-level `prompts:`) is pre-split into stanzas at each top-level `q:`
+// line before YAML-parsing each stanza individually.
+const TOP_LEVEL_PROMPTS_RE = /^prompts:/m;
+const TOP_LEVEL_Q_RE = /^q:/m;
+
+function parseShorthandBlock(raw, file, warnings) {
+    const lines = raw.split('\n');
+    const qLineIndexes = [];
+    lines.forEach((line, i) => {
+        if (/^q:/.test(line)) qLineIndexes.push(i);
+    });
+
+    let meta = {};
+    const metaText = lines.slice(0, qLineIndexes[0]).join('\n');
+    if (metaText.trim()) {
+        const parsedMeta = yaml.load(metaText);
+        if (parsedMeta && typeof parsedMeta === 'object') meta = parsedMeta;
+        else warnings.push(`${file}: learn block metadata is not a YAML mapping — skipped`);
+    }
+
+    const prompts = [];
+    for (let i = 0; i < qLineIndexes.length; i++) {
+        const start = qLineIndexes[i];
+        const end = i + 1 < qLineIndexes.length ? qLineIndexes[i + 1] : lines.length;
+        const stanzaText = lines.slice(start, end).join('\n');
+        try {
+            const stanza = yaml.load(stanzaText);
+            if (stanza && typeof stanza === 'object') prompts.push(stanza);
+            else warnings.push(`${file}: learn block prompt is not a YAML mapping — skipped`);
+        } catch (err) {
+            warnings.push(`${file}: learn block prompt has invalid YAML (${err.reason ?? err.message}) — skipped`);
+        }
+    }
+
+    return { ...meta, prompts };
+}
+
 function parseLearnBlocks(body, file, warnings) {
     const blocks = [];
     let match;
     LEARN_BLOCK_RE.lastIndex = 0;
     while ((match = LEARN_BLOCK_RE.exec(body)) !== null) {
+        const raw = match[1];
         try {
-            const parsed = yaml.load(match[1]);
-            if (parsed && typeof parsed === 'object') blocks.push(parsed);
-            else warnings.push(`${file}: learn block is not a YAML mapping — skipped`);
+            if (!TOP_LEVEL_PROMPTS_RE.test(raw) && TOP_LEVEL_Q_RE.test(raw)) {
+                blocks.push(parseShorthandBlock(raw, file, warnings));
+            } else {
+                const parsed = yaml.load(raw);
+                if (parsed && typeof parsed === 'object') blocks.push(parsed);
+                else warnings.push(`${file}: learn block is not a YAML mapping — skipped`);
+            }
         } catch (err) {
             warnings.push(`${file}: learn block has invalid YAML (${err.reason ?? err.message}) — skipped`);
         }

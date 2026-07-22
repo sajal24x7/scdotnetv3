@@ -45,6 +45,10 @@ Nordletter issues (`src/content/nordletter`) and notes use the same shared schem
 
 - If you cross-post manually, append the resulting URLs to the `syndicationUrls` array so `SyndicationLinks.astro` can expose them in post headers.【F:src/content.config.ts†L87】
 
+## Learn Blocks
+
+- TIL and evergreen notes can opt into the `/learn` spaced-repetition decks by adding a fenced ` ```learn ` block with prompts. Use the bare `q:`/`a:` shorthand for the common case; the full `prompts:` list syntax is only needed for per-prompt `id:`/`note:` overrides. See [Learning Systems Architecture](../architecture/learning-systems.md#note-backed-decks-learntil-learnevergreen) for the full syntax and id-stability rules.
+
 ## Content Tips
 
 - Keep descriptions concise and actionable; they power search previews and social embeds.
