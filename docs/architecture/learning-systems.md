@@ -147,3 +147,7 @@ Raising `dueCap` clears backlogs faster after missed days but lengthens sessions
 - **No penalties for missed days.** The due pile waits, capped per session. Guilt mechanics kill daily rituals.
 - **No ease factors / fuzzing / SM-2.** Leitner is transparent enough to debug by reading localStorage. Revisit only if decks grow past ~500 prompts.
 - **No server sync.** Keep the system free of accounts and infrastructure until an actual second device demands it.
+
+## Planned evolution
+
+A proposed redesign splits learning (per-domain wall charts and reference, this document) from practice (one unified cross-deck SRS session at `/practice`), and adds vocabulary and private people decks — see [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md). This document stays authoritative for what is implemented until that plan lands.
