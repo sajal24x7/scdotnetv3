@@ -9,7 +9,8 @@ Two further systems — `/learn/til` and `/learn/evergreen` — don't have hand-
 | Role | File |
 | --- | --- |
 | Shared types | `src/components/learn/types.ts` |
-| Shared scheduler + UI (React island) | `src/components/learn/LearningSystem.tsx` |
+| Shared scheduler + persistence (pure functions) | `src/components/learn/engine.ts` |
+| Shared UI (React island, consumes `engine.ts`) | `src/components/learn/LearningSystem.tsx` |
 | Shared styles | `src/styles/learn.css` |
 | Hub page + island | `src/pages/learn/index.astro`, `src/components/learn/LearnHub.tsx` |
 | Linux content pool | `src/data/linux-commands.ts` (+ `src/data/linux-learn-config.ts` adapter) |
@@ -49,35 +50,39 @@ Prompt   { id, q, a, note? }   // note = one-line elaboration shown with the ans
 ```
 
 - **Item** = the unit of *introduction* and of the wall chart (a tile).
-- **Prompt** = the unit of *scheduling* (each has its own Leitner box). Aim for 2+ prompts per item: typically one "what does X do" and one scenario/flag prompt.
+- **Prompt** = the unit of *scheduling* (each has its own FSRS card — its own stability, difficulty, and due date). Aim for 2+ prompts per item: typically one "what does X do" and one scenario/flag prompt.
 - Prompt ids must be globally unique and stable — they key the learner's saved state, so renaming one orphans its progress.
 - An `introductionOrder` export defines the sequence new items appear in. It can be plain round-robin across categories (Linux) or hand-curated to respect content dependencies (Finnish: vowel harmony before suffixes, a gradation pattern before the case that uses it, a vocabulary word before the rule item that applies it to that word).
 - `linux-commands.ts` predates the shared types and keeps its own `Command`/`cmd` naming; `linux-learn-config.ts` adapts it to `LearnItem`/`term` at the config boundary rather than renaming the 1000+ line data file. New content pools should just use the shared types directly (see `finnish.ts`).
 - Run `node scripts/validate-learn-data.mjs` after editing a content pool — it checks prompt-id uniqueness, that every item appears in `introductionOrder` exactly once, and that no category/item is empty.
 
-### 2. Scheduler (Leitner boxes, in the island)
+### 2. Scheduler (FSRS, in `engine.ts`)
 
-Simpler than full SM-2 and adequate for decks of a few hundred prompts:
+The scheduling and persistence logic (`localToday`, `addDays`, `gradeCard`, `itemStatus`, `buildDailySession`, `loadState`/`saveState`, the count helpers) is a pure module, `src/components/learn/engine.ts` — no React, no DOM assumptions beyond `window.localStorage`. `LearningSystem.tsx` (wall chart + session UI) and `LearnHub.tsx` (hub due/new counts) both import it, so the two can't drift out of sync the way the hub's hand-duplicated counts once could. A new consumer (e.g. a future unified `/practice` page) extends the same engine rather than re-deriving it.
 
-- Boxes 1–5 with intervals **1, 3, 7, 14, 30 days**.
-- "Got it" → move up one box, due = today + new box's interval (capped at box 5).
-- "Forgot" → back to box 1, due tomorrow. Lapses are counted but don't change the ladder.
+Scheduling is [FSRS](https://github.com/open-spaced-repetition/ts-fsrs) (the algorithm modern Anki ships), via the `ts-fsrs` library:
+
+- Each prompt's card carries FSRS's own state — `stability` (days until recall probability drops to the retention target), `difficulty` (1–10), `state` (New/Learning/Review/Relearning), `due`, `reps`, `lapses`, `lastReview` — instead of a Leitner box number. Intervals are computed per card from its own history: easy cards race out to multi-month gaps, hard cards stay short, and a single miss doesn't drag a mature card all the way back to "box 1."
+- **Grading stays two buttons.** "Forgot" maps to FSRS's `Again`, "Got it" to `Good`. Hard/Easy exist in the algorithm but aren't exposed — a four-way self-assessment per card is exactly the per-rep decision principle #1 forbids.
+- **Desired retention** is fixed at `DEFAULT_RETENTION = 0.9` (FSRS's own default) for now; surfacing it as a per-user setting is deferred to `/practice` (see the unified-practice plan).
+- **Day-granular by design.** The FSRS instance is configured with `enable_short_term: false`, which disables Anki's minute-level (re)learning steps — every persisted interval is a whole calendar day, even the very first "Again" on a brand-new card (verified: schedules >= 1 day out, never same-day). `enable_fuzz: false` keeps intervals exact rather than randomized. A same-day second chance after "Forgot" is handled at the *session* level instead: the failed prompt is requeued once at the end of the current session's queue (tracked in `LearningSystem.tsx`, capped at one retry per prompt per session) — turning a slip into a win more often than making the learner wait until tomorrow, while the persisted `due` stays date-based throughout.
 - Daily session = all due prompts (earliest-due first, capped at `dueCap`) + up to `newPerDay` new items (learn-card first, then its prompts). Both are config values — see the tuning table below.
 - The new-item budget is tracked per calendar date, so reopening the page mid-day doesn't introduce extras.
-- Dates are local calendar dates (`YYYY-MM-DD`), not UTC — "tomorrow" must mean the user's tomorrow.
+- Dates are local calendar dates (`YYYY-MM-DD`), not UTC — "tomorrow" must mean the user's tomorrow. FSRS itself works in JS `Date` objects; `engine.ts` converts at the boundary (`toFsrsInput`/`fromFsrsCard`) so persisted state and the rest of the module stay in the string-date domain.
 
-Tile status on the chart is derived, never stored: `unseen` (not introduced) → `due` (any prompt due) → `learning` (min box < 4) → `strong` (all prompts in box 4+).
+Tile status on the chart is derived, never stored: `unseen` (not introduced) → `due` (any prompt due) → `learning` (Learning/Relearning state, or stability < 21 days) → `strong` (Review state with stability >= 21 days).
 
 ### 3. State (localStorage)
 
 One key per system (`linux-learn-srs`, `finnish-learn-srs`), holding:
 
 ```ts
-{ version, cards: { [promptId]: { box, due, reps, lapses } },
+{ version: 3,
+  cards: { [promptId]: { due, stability, difficulty, state, reps, lapses, lastReview } },
   introduced: { [itemId]: date }, lastSessionDate, streak, totalSessions }
 ```
 
-- **Version the schema** and migrate on load (the Linux page migrates streak/session-count from the v1 quiz key via `legacyKey` in its config; Finnish has no legacy key).
+- **Version the schema** and migrate on load. `loadState` upgrades a v2 (Leitner) blob to v3 on the fly: each card's `stability` seeds from its old box interval (1/3/7/14/30 days), `difficulty` seeds from FSRS's own default-difficulty value (no per-card history to do better), and `due`/`reps`/`lapses` carry over unchanged — nothing resets on day one. The pre-migration v2 blob is kept under a `<storageKey>-v2-backup` key until the first fully completed v3 session, as a rollback net. The Linux page separately migrates streak/session-count from the old v1 quiz key via `legacyKey` in its config; Finnish has no legacy key.
 - All state is per-browser/per-device. Acceptable for a personal ritual; add export/import before it matters.
 - Save failures (private mode) degrade silently — practice still works, it just doesn't persist.
 
@@ -148,18 +153,18 @@ The scheduler and UI are already shared (`LearningSystem.tsx`); a new system is 
 
 | Constant | Linux | Finnish | TIL | Evergreen | Meaning |
 | --- | --- | --- | --- | --- | --- |
-| `BOX_INTERVALS` | 1/3/7/14/30 | same | same | same | Days between reviews per box (fixed in the engine, not per-config) |
+| `DEFAULT_RETENTION` | 0.9 | same | same | same | FSRS's desired-recall-probability target (fixed in the engine, not per-config) |
 | `newPerDay` | 2 | 3 | 2 | 1 | New items introduced daily |
 | `dueCap` | 8 | 12 | 8 | 6 | Max reviews shown per day |
-| `MAX_BOX` | 5 | same | same | same | Ladder height; top box = "solid" (fixed in the engine) |
+| `STRONG_STABILITY_DAYS` | 21 | same | same | same | Stability threshold for the "solid" tile color (fixed in the engine) |
 | `monoAnswers` | `true` | `false` | `true` | `false` | Whether revealed answers render in `<code>` (commands) or prose (natural language) |
 
-Raising `dueCap` clears backlogs faster after missed days but lengthens sessions; the cap is safe because capped-out cards remain due and surface the next day. `BOX_INTERVALS` and `MAX_BOX` live as constants inside `LearningSystem.tsx` rather than the config — no system has needed to deviate from them yet.
+Raising `dueCap` clears backlogs faster after missed days but lengthens sessions; the cap is safe because capped-out cards remain due and surface the next day. `DEFAULT_RETENTION` and `STRONG_STABILITY_DAYS` live as constants inside `engine.ts` rather than the config — no system has needed to deviate from them yet.
 
 ## Deliberate non-features
 
 - **No penalties for missed days.** The due pile waits, capped per session. Guilt mechanics kill daily rituals.
-- **No ease factors / fuzzing / SM-2.** Leitner is transparent enough to debug by reading localStorage. Revisit only if decks grow past ~500 prompts.
+- **No ease factors beyond FSRS's own, no fuzzing.** `enable_fuzz: false` keeps intervals exact and debuggable; FSRS's built-in difficulty/stability model already goes further than a fixed ease factor would.
 - **No server sync.** Keep the system free of accounts and infrastructure until an actual second device demands it.
 
 ## Planned evolution

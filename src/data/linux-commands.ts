@@ -2,8 +2,9 @@
 //
 // Structure follows docs/architecture/learning-systems.md: each command is a
 // small reference card plus 2+ atomic retrieval prompts. Prompts are the unit
-// of scheduling (the Leitner engine in LinuxQuiz.tsx tracks one box per
-// prompt); commands are the unit of introduction and of the wall chart.
+// of scheduling (the FSRS engine in src/components/learn/engine.ts tracks its
+// own card per prompt); commands are the unit of introduction and of the wall
+// chart.
 //
 // Prompt writing rules (Matuschak): one fact per prompt, phrased so the
 // answer is short and unambiguous, scenario-flavored where possible.
