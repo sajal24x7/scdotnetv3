@@ -2,6 +2,7 @@ import { getCollection } from 'astro:content';
 import { marked } from 'marked';
 import sanitizeHtml from 'sanitize-html';
 import { getContentCategories } from './content';
+import { stripLearnBlocks } from './learnBlocks';
 
 export interface ContentPreview {
   title: string;
@@ -40,7 +41,7 @@ function buildExcerptSource(body: string): { markdown: string; truncated: boolea
   // Ghost-exported posts carry them with escaped brackets (\[\[...\]\]).
   const stripWikiLink = (inner: string) =>
     inner.replace(/^#/, '').split(/\\?\|/).pop() || '';
-  const withoutWikiLinks = body
+  const withoutWikiLinks = stripLearnBlocks(body)
     .replace(/\\\[\\\[(.*?)\\\]\\\]/g, (_match, inner: string) => stripWikiLink(inner))
     .replace(/\[\[([^\]]+)\]\]/g, (_match, inner: string) => stripWikiLink(inner));
 

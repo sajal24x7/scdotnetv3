@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 // Guardrails for the /learn/* content pools (src/data/linux-commands.ts,
-// src/data/finnish.ts). See planning/finnish-learning-system.md §E4 and
+// src/data/finnish.ts, and the note-backed decks generated into
+// src/data/learn-decks.generated.json by scripts/extract-learn-blocks.mjs).
+// See planning/finnish-learning-system.md §E4 and
 // docs/architecture/learning-systems.md for the invariants this checks:
 //
 //   - every prompt id is globally unique within its pool
@@ -100,6 +102,15 @@ async function main() {
 				return { categories: mod.categories, introductionOrder: mod.introductionOrder };
 			},
 		},
+		...['til', 'evergreen'].map((deck) => ({
+			name: deck,
+			load: async () => {
+				const generated = JSON.parse(
+					readFileSync(path.join(repoRoot, 'src/data/learn-decks.generated.json'), 'utf8'),
+				);
+				return generated[deck];
+			},
+		})),
 	];
 
 	let hadErrors = false;

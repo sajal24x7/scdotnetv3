@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LearningSystem from '../../components/learn/LearningSystem';
+import { evergreenLearnConfig } from '../../data/evergreen-learn-config';
+import '../../styles/learn.css';
+
+const itemCount = evergreenLearnConfig.dataset.categories.reduce((n, c) => n + c.items.length, 0);
+---
+
+<Layout
+  title="Learn Evergreen — Revisit My Ideas"
+  description="Spaced re-encounter with my evergreen notes: the core claim, mechanism, or example of each idea comes back as a recall prompt on a spaced schedule."
+  currentPage="/learn/evergreen"
+  pageWrapper={{ container: true, maxWidth: '6xl', padding: 'lg', paddingScale: 'page' }}
+  enableLinkHoverEffect
+>
+  <div class="learn-evergreen-page">
+    <h1 class="learn-evergreen-page__title">Learn Evergreen</h1>
+    <p class="learn-evergreen-page__subtitle">
+      My <a href="/evergreen/">evergreen notes</a>, on a spaced schedule. These prompts
+      don't ask for verbatim recall — they ask for an idea's structure: the claim, the
+      mechanism, an example. Ideas that keep resurfacing get refined; that's the point.
+    </p>
+
+    {itemCount === 0 && (
+      <p class="learn-evergreen-page__subtitle">
+        No notes carry a <code>learn</code> block yet — add one to an evergreen note and
+        run <code>npm run extract-learn</code> to populate this deck.
+      </p>
+    )}
+
+    <LearningSystem client:load config={evergreenLearnConfig} />
+  </div>
+</Layout>

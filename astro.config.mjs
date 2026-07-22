@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import { unified } from '@astrojs/markdown-remark';
 import { remarkWikilinks } from './src/utils/remarkWikilinks.ts';
+import { remarkStripLearnBlocks } from './src/utils/learnBlocks.ts';
 
 // Converts soft line breaks (single newlines) to <br> nodes, preserving
 // line-by-line structure in blockquotes used for poetry and similar content.
@@ -61,7 +62,7 @@ export default defineConfig({
     // wikilinks and poetry line-breaks are remark plugins, so opt back into
     // the remark/rehype pipeline explicitly via @astrojs/markdown-remark.
     processor: unified({
-      remarkPlugins: [remarkWikilinks, remarkBreaks],
+      remarkPlugins: [remarkStripLearnBlocks, remarkWikilinks, remarkBreaks],
     }),
     shikiConfig: {
       themes: {

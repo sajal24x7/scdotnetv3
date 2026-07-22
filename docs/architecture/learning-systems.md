@@ -2,6 +2,8 @@
 
 How to build a daily-practice learning page on this site — the "periodic table on the wall" pattern. The first implementation is `/learn/linux` (Linux sysadmin commands); the second is `/learn/finnish` (Finnish as a rule system). The scheduler and UI are shared between them — a new system only needs a content pool, a small config object, and a page shell.
 
+Two further systems — `/learn/til` and `/learn/evergreen` — don't have hand-written pools at all: their content is extracted from ` ```learn ` blocks authored inside published notes (see "Note-backed decks" below). `/learn` is the hub page that fronts all systems with live due counts.
+
 **Key files:**
 
 | Role | File |
@@ -9,10 +11,14 @@ How to build a daily-practice learning page on this site — the "periodic table
 | Shared types | `src/components/learn/types.ts` |
 | Shared scheduler + UI (React island) | `src/components/learn/LearningSystem.tsx` |
 | Shared styles | `src/styles/learn.css` |
+| Hub page + island | `src/pages/learn/index.astro`, `src/components/learn/LearnHub.tsx` |
 | Linux content pool | `src/data/linux-commands.ts` (+ `src/data/linux-learn-config.ts` adapter) |
 | Linux page shell | `src/pages/learn/linux.astro` |
 | Finnish content pool | `src/data/finnish.ts` (+ `src/data/finnish-learn-config.ts`) |
 | Finnish page shell | `src/pages/learn/finnish.astro` |
+| Note-backed pools (generated) | `src/data/learn-decks.generated.json` (built by `scripts/extract-learn-blocks.mjs`) |
+| TIL / Evergreen configs + shells | `src/data/til-learn-config.ts`, `src/data/evergreen-learn-config.ts`, `src/pages/learn/til.astro`, `src/pages/learn/evergreen.astro` |
+| Learn-block render stripping | `src/utils/learnBlocks.ts` (remark plugin + string strip used by pages, RSS, previews, backlinks) |
 | Content-pool guardrail | `scripts/validate-learn-data.mjs` (prompt-id uniqueness, `introductionOrder` completeness) |
 
 ## Design principles
@@ -79,6 +85,41 @@ One key per system (`linux-learn-srs`, `finnish-learn-srs`), holding:
 
 `chart` (home: today-strip + wall chart + legend + reference panel) → `session` (learn cards and recall prompts, one at a time) → `done` (today's tally, streak, tomorrow's due count). Plus an optional `drill` mode: run through a category's prompts with the same reveal/self-grade UI but **without touching scheduler state** — cramming for curiosity shouldn't corrupt the spacing data.
 
+## Note-backed decks (`/learn/til`, `/learn/evergreen`)
+
+These decks follow Matuschak's mnemonic-medium model: prompts are authored by the writer, inline, inside the note they test — the machinery only collects them. A note opts into its deck simply by containing a fenced ` ```learn ` block with YAML inside:
+
+````markdown
+```learn
+term: NAT Gateway            # optional — tile label; defaults to the note title
+category: azure              # optional — deck category; defaults to the note's first tag
+syntax: az network nat ...   # optional — canonical form on the reference card
+description: ...             # optional — defaults to the note's first paragraph
+example: ...                 # optional — defaults to the note's first code block
+exampleNote: ...             # optional
+prompts:
+  - q: Why not rely on Azure's default outbound IPs?
+    a: They change at random, so external services can't whitelist them.
+    note: ...                # optional one-line elaboration
+    id: why-nat              # optional stable id override
+```
+````
+
+Mechanics:
+
+- **Extraction** — `scripts/extract-learn-blocks.mjs` scans `src/content/til` and `src/content/evergreen`, groups items into categories by tag (`CATEGORY_META` maps tag → title/emoji; unknown tags get a generic fallback), and writes `src/data/learn-decks.generated.json`. It runs automatically in `npm run dev` / `npm run build`, and the generated file is committed so checkouts work without a build step. Malformed blocks are skipped with a warning, never a build failure; `validate-learn-data.mjs` is the strict check.
+- **Id stability** — item ids come from the note's timestamp (`til-202502271259`); prompt ids are positional (`-p1`, `-p2`, …). They key the learner's localStorage state, so **append new prompts at the end** — inserting or reordering shifts positions and orphans progress. When restructuring is unavoidable, pin prompts with explicit `id:` fields.
+- **Introduction order** is newest-note-first: a TIL published today is the next new item introduced, so reinforcement lands close to the encounter. The deck growing as notes are published is the intended feed, not a problem — `newPerDay` meters the intake.
+- **Render stripping** — learn blocks are authoring metadata, not prose. `src/utils/learnBlocks.ts` removes them everywhere a note body renders: a remark plugin (site pages, wired in `astro.config.mjs`), plus string strips in RSS items, hover-preview excerpts, and backlink snippets.
+- **Item extras** — note-backed items carry `href` back to their source note ("Read the note →" on cards and the reference panel), and `syntax`/`example` are optional in the shared types: prose items fall back to showing the term instead of a `<code>` line.
+- **Two decks, not one** — TIL (commands, `monoAnswers: true`, `newPerDay: 2`, `dueCap: 8`) and evergreen (ideas, `monoAnswers: false`, `newPerDay: 1`, `dueCap: 6`) differ in answer style, tuning, and what their wall chart depicts, so they keep separate storage keys and pages. Evergreen prompts ask for an idea's *structure* — the claim, the mechanism, an example — not verbatim recall of the note.
+
+Authoring workflow: write the learn block in the note (in Obsidian or directly in `src/content/...`), publish through the normal content pipeline, and the next build picks it up. Note that if a note is edited in the vault and republished *without* its learn block, the block disappears from the published copy and the item drops out of the deck — keep the block with the note in the vault once you add one.
+
+## The hub (`/learn`)
+
+Four systems means four daily rituals unless something aggregates them. `/learn` renders one card per system with live counts — "5 due · 2 new notes · 12-day streak" or "✓ done for today" — read client-side from each system's localStorage key (`LearnHub.tsx`). Systems stay fully independent; the page receives lightweight build-time summaries (`storageKey`, `newPerDay`, `dueCap`, item/prompt totals) rather than the datasets, so the island stays small. The count derivation mirrors `LearningSystem.tsx`'s — keep them in sync if the state schema changes.
+
 ## Building a new system
 
 The scheduler and UI are already shared (`LearningSystem.tsx`); a new system is just data plus a config plus a page:
@@ -91,13 +132,13 @@ The scheduler and UI are already shared (`LearningSystem.tsx`); a new system is 
 
 ## Tuning knobs
 
-| Constant | Linux | Finnish | Meaning |
-| --- | --- | --- | --- |
-| `BOX_INTERVALS` | 1/3/7/14/30 | same | Days between reviews per box (fixed in the engine, not per-config) |
-| `newPerDay` | 2 | 3 | New items introduced daily |
-| `dueCap` | 8 | 12 | Max reviews shown per day |
-| `MAX_BOX` | 5 | same | Ladder height; top box = "solid" (fixed in the engine) |
-| `monoAnswers` | `true` | `false` | Whether revealed answers render in `<code>` (commands) or prose (natural language) |
+| Constant | Linux | Finnish | TIL | Evergreen | Meaning |
+| --- | --- | --- | --- | --- | --- |
+| `BOX_INTERVALS` | 1/3/7/14/30 | same | same | same | Days between reviews per box (fixed in the engine, not per-config) |
+| `newPerDay` | 2 | 3 | 2 | 1 | New items introduced daily |
+| `dueCap` | 8 | 12 | 8 | 6 | Max reviews shown per day |
+| `MAX_BOX` | 5 | same | same | same | Ladder height; top box = "solid" (fixed in the engine) |
+| `monoAnswers` | `true` | `false` | `true` | `false` | Whether revealed answers render in `<code>` (commands) or prose (natural language) |
 
 Raising `dueCap` clears backlogs faster after missed days but lengthens sessions; the cap is safe because capped-out cards remain due and surface the next day. `BOX_INTERVALS` and `MAX_BOX` live as constants inside `LearningSystem.tsx` rather than the config — no system has needed to deviate from them yet.
 

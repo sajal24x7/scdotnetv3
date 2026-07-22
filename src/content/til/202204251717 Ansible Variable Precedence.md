@@ -19,3 +19,11 @@ In the order:
 
 ---
 references:
+
+```learn
+prompts:
+  - q: Ansible variable precedence, highest to lowest?
+    a: Extra vars → play vars → host vars → group vars.
+  - q: The same variable is set in host_vars and group_vars for a host — which value wins?
+    a: host_vars — host variables beat group variables.
+```

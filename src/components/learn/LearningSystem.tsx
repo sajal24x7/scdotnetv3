@@ -392,7 +392,7 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 										key={item.id}
 										className={`lq-tile lq-tile--${status}${selectedItem?.id === item.id ? ' lq-tile--selected' : ''}`}
 										onClick={() => setSelectedItem(selectedItem?.id === item.id ? null : item)}
-										data-hover-title={item.syntax}
+										data-hover-title={item.syntax ?? item.term}
 										data-hover-description={item.description}
 									>
 										{item.term}
@@ -414,12 +414,23 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 			{selectedItem && (
 				<div className="lq-panel lq-reference">
 					<p className="lq-eyebrow">{categoryOf(selectedItem.id)?.title}</p>
-					<code className="lq-command">{selectedItem.syntax}</code>
+					{selectedItem.syntax ? (
+						<code className="lq-command">{selectedItem.syntax}</code>
+					) : (
+						<p className="lq-term">{selectedItem.term}</p>
+					)}
 					<p className="lq-description">{selectedItem.description}</p>
-					<div className="lq-example">
-						<code>{selectedItem.example}</code>
-						<p className="lq-example__note">{selectedItem.exampleNote}</p>
-					</div>
+					{selectedItem.example && (
+						<div className="lq-example">
+							<code>{selectedItem.example}</code>
+							{selectedItem.exampleNote && <p className="lq-example__note">{selectedItem.exampleNote}</p>}
+						</div>
+					)}
+					{selectedItem.href && (
+						<a className="lq-note-link" href={selectedItem.href}>
+							Read the note →
+						</a>
+					)}
 				</div>
 			)}
 		</div>
@@ -467,12 +478,23 @@ function SessionView({
 			{sessionItem.kind === 'learn' ? (
 				<div className="lq-panel">
 					<p className="lq-eyebrow">New {itemNoun} · {categoryOf(sessionItem.item.id)?.title}</p>
-					<code className="lq-command">{sessionItem.item.syntax}</code>
+					{sessionItem.item.syntax ? (
+						<code className="lq-command">{sessionItem.item.syntax}</code>
+					) : (
+						<p className="lq-term">{sessionItem.item.term}</p>
+					)}
 					<p className="lq-description">{sessionItem.item.description}</p>
-					<div className="lq-example">
-						<code>{sessionItem.item.example}</code>
-						<p className="lq-example__note">{sessionItem.item.exampleNote}</p>
-					</div>
+					{sessionItem.item.example && (
+						<div className="lq-example">
+							<code>{sessionItem.item.example}</code>
+							{sessionItem.item.exampleNote && <p className="lq-example__note">{sessionItem.item.exampleNote}</p>}
+						</div>
+					)}
+					{sessionItem.item.href && (
+						<a className="lq-note-link" href={sessionItem.item.href} target="_blank" rel="noopener">
+							Read the full note →
+						</a>
+					)}
 					<button type="button" className="lq-button lq-button--primary" onClick={onContinue}>
 						Got it — quiz me →
 					</button>

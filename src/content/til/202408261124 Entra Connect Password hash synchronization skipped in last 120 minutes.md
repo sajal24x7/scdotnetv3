@@ -18,3 +18,11 @@ Need to restart Microsoft Entra Sync service.
 ---
 # references:
 [Microsoft Entra Connect Health - Alert Catalog - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/en-gb/entra/identity/hybrid/connect/how-to-connect-health-alert-catalog)
+
+```learn
+term: PHS Sync Skipped Alert
+category: entra
+prompts:
+  - q: Entra Connect Health alerts "Password hash synchronization skipped in last 120 minutes" — what's the fix?
+    a: Restart the Microsoft Entra Sync service.
+```
