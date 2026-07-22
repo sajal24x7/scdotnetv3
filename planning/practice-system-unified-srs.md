@@ -227,6 +227,9 @@ Private-repo authoring convention + deck-build/encrypt workflow there; `people.e
 **Phase 5 — Niceties (as wanted).**
 Leech detection (flag `lapses >= 6` on charts and in a session hint); keyboard shortcuts (space = reveal, 1/2 = grade); per-deck stats on `/practice`; a real quick-add composer for vocab/people; FSRS revisit per the §2.6 trigger.
 
+**Phase 6 — Finnish vocabulary expansion (`finnish-vocab` deck).**
+The existing Finnish deck is *rules-first by design* — its vocabulary category holds ~14 items (11 nouns plus bundled adjectives/greetings/numbers), chosen to feed the rule prompts, and the verbs category teaches the conjugation *system* with only `olla` as an actual word. That's the right Phase-1 scope per its own plan, but it is nowhere near communicative vocabulary (~300–500 words for survival, 1000+ for basic conversation). Rather than growing the rules deck (whose wall chart should stay a bounded territory you can finish), add a **sibling deck** `finnish-vocab` on the TIL-style open-feed model: themed categories (verbs, family, food, time, question words/pronouns, places, adjectives), items sourced from a reputable frequency list (e.g. the Kelly project list — per the Finnish plan's rule, **never invent Finnish**), added in curated batches of 20–50. Each word gets both-direction prompts (fi→en, en→fi) plus, where the word exercises a learned rule, one *apply-the-rule* prompt (e.g. inflect it into the inessive) — compounding the rules deck exactly as that plan's thesis intends. Separate deck = its own tuning (`newPerDay: 3`, higher `dueCap`) and the unified practice queue interleaves it with everything else automatically.
+
 ## 8. Open questions (defaults chosen, override freely)
 
 | # | Question | Default taken in this plan |
