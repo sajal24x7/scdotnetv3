@@ -110,9 +110,27 @@ Per-deck `streak`/`totalSessions` fields stop being updated (harmless leftovers)
 
 ### 2.7 Deliberate non-features (inherited and extended)
 
-- No accounts, no server-side scheduling. State stays in the browser.
-- **But add export/import** (single JSON blob of all `*-srs` keys + `practice-meta`, downloaded/uploaded on `/practice`). The blueprint said "add export/import before it matters" — unifying practice and adding a private deck is when it starts to matter. This is also the multi-device answer until a real sync need appears.
+- No accounts, no server-side *scheduling*. All scheduling decisions stay client-side; the server stores an opaque state blob (§2.8), nothing more.
+- **Export/import stays** (single JSON blob of all `*-srs` keys + `practice-meta`, downloaded/uploaded on `/practice`) as the manual backup and the escape hatch if sync is ever down.
 - No guilt mechanics, no penalties for missed days — unchanged.
+
+### 2.8 Cross-device state sync (decision)
+
+Practicing from phone, Mac, and work laptop — and surviving the loss of any of them — needs real sync. The blueprint's "no server sync until an actual second device demands it" clause has now been triggered, so:
+
+**Recommendation: a Cloudflare Pages Function + KV blob, authenticated the way `/api/upload` already is.**
+
+- **Endpoint** — `functions/api/practice-state.js`: `GET` returns the stored blob, `PUT` replaces it. The blob is the full sync unit: every deck's `SrsState` + `practice-meta`, tens of KB at most (well inside KV limits). A `PRACTICE_STATE` KV namespace is bound on the Pages project.
+- **Auth** — same pattern as `upload.js`: a Bearer token that is a fine-grained GitHub PAT; the function accepts it only if GitHub confirms push (Contents-write) access to this repo. No new secret class, no accounts. **Mint one PAT per device** (phone / Mac / work laptop): losing a device then means revoking one token in GitHub settings — the state in KV is untouched and a replacement device just pastes a fresh token. This is the direct answer to "if I lose access to my device."
+- **Merge, not last-write-wins** — grading on the phone in the morning and the Mac at night must not clobber each other. The client merges remote into local on load (and tab focus), and pushes the merged blob after each finished session (plus debounced mid-session). The merge is deterministic and idempotent, safe to run any number of times:
+    - per prompt id: keep the `CardState` with the higher `reps` (tie → later `due`) — `reps` only ever grows, so this is conflict-free;
+    - `introduced`: union, earliest date wins;
+    - `suspended` / `disabledDecks`: union;
+    - streak / `totalSessions` / `lastSessionDate`: take the triple from whichever side has the later `lastSessionDate`.
+- **Safety net** — KV has no history, so the function keeps a small rolling backup (`state:backup:<date>`, last 7 days) before each overwrite; a bad push is recoverable. Sync failures degrade silently to local-only (existing principle) with a quiet "last synced" line on `/practice`.
+- **Private decks** — the sync blob contains only SRS *state* (boxes, dates, ids), never deck *content*, so people-deck review state syncs without the people data itself ever touching KV.
+
+*Recorded alternative:* no server at all — the island reads/writes a `practice-state.json` in the private repo via the GitHub contents API from the browser (CORS-friendly, versioned for free, zero infra). Rejected as primary because a commit per practice session pollutes the private repo's history and the token would need private-repo scope on every device; kept as fallback if the KV binding ever feels like too much infrastructure.
 
 ## 3. Ideas adopted from the literature
 
@@ -201,6 +219,32 @@ Prompts are **generated from fields**, not hand-written (lowering input friction
 
 `/learn/people` exists but renders a locked state until the passphrase unlocks it (and carries `noindex`; the tile grid — faces/names by group — is the wall chart). It registers in the practice registry with `source: { kind: 'encrypted' }`; when locked, the practice session simply composes without it and shows a one-line "people deck locked" hint.
 
+## 5A. Learn-block shorthand (authoring simplification)
+
+The note-first flow (§1, blueprint §"Note-backed decks") is the system's front door, so its friction matters. Today the *minimum* valid block is already small — every scalar field is optional (`term` ← note title, `category` ← first tag, `description` ← first paragraph, `example` ← first code block, and `href` back to the note is added automatically and rendered as "Read the note →" on cards — that wish is already implemented) — but prompts still require the YAML list ceremony:
+
+````markdown
+```learn
+prompts:
+  - q: Why not rely on Azure's default outbound IPs?
+    a: They change at random.
+```
+````
+
+**Add a q/a shorthand** so the common case is just pairs:
+
+````markdown
+```learn
+q: Why not rely on Azure's default outbound IPs?
+a: They change at random, so external services can't whitelist them.
+
+q: What fixes it?
+a: A NAT Gateway with a static public IP.
+```
+````
+
+Implementation is confined to `parseLearnBlocks` in `scripts/extract-learn-blocks.mjs`: if a block has no top-level `prompts:` key, split it into stanzas at each top-level `q:` line and YAML-parse each stanza as one prompt (`q`, `a`, optional `note:` / `id:`; YAML block scalars like `a: |` keep working for multi-line answers). Plain YAML can't express repeated keys, which is why this needs the stanza pre-split rather than a schema tweak. The full syntax stays valid — needed whenever you want to override `term`/`category`/etc. — and both forms can coexist in one note (scalar fields still come from the first block). Nothing else changes: positional id assignment (`-p1`, `-p2` in encounter order) and the append-only stability rule apply across both syntaxes, and the render-strip in `src/utils/learnBlocks.ts` is shape-agnostic (it removes the fence wholesale), so no change there.
+
 ## 6. Hub and entry points after the split
 
 - **`/practice`** — the ritual page: big start button, combined due/new counts, per-deck breakdown line, streak, deck toggles, export/import, unlock control for private decks. This is the page that gets bookmarked on the phone home screen.
@@ -212,11 +256,17 @@ Prompts are **generated from fields**, not hand-written (lowering input friction
 
 Each phase is independently shippable and leaves every existing page working.
 
+**Phase 0 — Learn-block q/a shorthand (§5A).**
+Standalone parser change in `extract-learn-blocks.mjs` + a line in `docs/content/authoring.md`. No dependency on anything else — can ship immediately and improves the authoring flow today.
+
 **Phase 1 — Engine extraction (no behavior change).**
 Extract scheduler/persistence pure functions from `LearningSystem.tsx` into `src/components/learn/engine.ts`; re-point `LearningSystem` and `LearnHub` at it (deleting the duplicated count logic). Verify all four learn pages and hub behave identically.
 
 **Phase 2 — `/practice` + registry.**
 `practice-registry.ts`; per-deck JSON endpoints (`src/pages/api/practice/[deck].json.ts`); `PracticeSession.tsx` island (queue composition per §2.3, deck badges, `practice-meta` state, streak seeding, export/import); `/practice.astro` page + styles; hub banner; learn pages' session buttons become links to `/practice`. Tuning constants start at `GLOBAL_DUE_CAP = 20`, `GLOBAL_NEW_PER_DAY = 5`.
+
+**Phase 2b — Cross-device sync (§2.8).**
+`functions/api/practice-state.js` + `PRACTICE_STATE` KV binding; client merge + push/pull wiring in the practice island; per-device PAT entry UI ("connect this device") and "last synced" indicator. Depends on Phase 2's `practice-meta`; everything before this works local-only.
 
 **Phase 3 — Vocabulary deck.**
 `fetch-wotd.yml` action + `scripts/fetch-wotd.mjs` (Wiktionary featured feed; M-W behind a flag); `vocab.generated.json`; skip-at-introduction + `suspended` list (this lands the suspend mechanism for *all* decks); `/learn/vocabulary` page; manual-capture via `category: vocab` inbox notes with definition enrichment.
@@ -241,10 +291,12 @@ The existing Finnish deck is *rules-first by design* — its vocabulary category
 | 5 | Global caps | 20 due / 5 new per day, round-robin across decks |
 | 6 | People photos | Yes, as encrypted thumbnails; deck works fine without them |
 | 7 | Global streak | Seeded from the max of existing per-deck streaks |
+| 8 | Sync backend | Cloudflare KV + Pages Function with per-device PATs (§2.8); GitHub-contents-API fallback recorded |
+| 9 | Learn-block shorthand | Bare q/a stanzas via a pre-split in the extractor (§5A); full syntax stays valid |
 
 ## 9. Documentation to update at implementation time
 
 - `docs/architecture/learning-systems.md` — restructure around the learn/practice split; the registry becomes the "adding a system" entry point; move tuning table to include global caps.
-- `docs/content/authoring.md` — `category: vocab` capture notes.
+- `docs/content/authoring.md` — `category: vocab` capture notes; the learn-block q/a shorthand.
 - Private repo README — people-note format and the encrypt workflow.
 - `scripts/README.md` — `fetch-wotd.mjs`.
