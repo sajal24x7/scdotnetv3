@@ -672,6 +672,32 @@
       "status": "approved"
     }
   ],
+  "micro/apple-to-start-a-upgrade-program": [
+    {
+      "id": "mastodon:repost:116962741409129260:111653095460058776",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Markets & Finance Channel",
+        "url": "https://newsmast.community/@markets",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/095/460/058/776/original/e5a789a1b6e4f9d9.png"
+      },
+      "url": "https://newsmast.community/@markets",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116962741409129260:114863603913131469",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Apple-feed",
+        "url": "https://channel.org/@applefeed",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/6e04454c4298099704bb671fd177b734.jpg"
+      },
+      "url": "https://channel.org/@applefeed",
+      "status": "approved"
+    }
+  ],
   "micro/finland-is-one-of-the-coolest-countries-in-europe": [
     {
       "id": "mastodon:repost:116923690925933632:111653171321324719",
@@ -773,6 +799,20 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/dd4040f230b3416b4e612caff74d73d4.jpg"
       },
       "url": "https://ohai.social/@ikklegemzuniverseplus",
+      "status": "approved"
+    }
+  ],
+  "micro/online-shopping-and-rising-living-costs-driving-young-finns-into-debt": [
+    {
+      "id": "mastodon:repost:116964069189073957:111653099407839416",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Poverty & Inequality Channel",
+        "url": "https://newsmast.community/@povertyandinequality",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/099/407/839/416/original/8b200aa0ac9c91c1.png"
+      },
+      "url": "https://newsmast.community/@povertyandinequality",
       "status": "approved"
     }
   ],

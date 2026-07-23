@@ -548,7 +548,6 @@
       "bookshelf/202607032022 Platform Decay.md",
       "bookshelf/202607071237 The Elements of Marie Curie.md",
       "bookshelf/202607151300 The Complete Guide to Fasting.md",
-      "bookshelf/202607161630 The Courage to be Disliked.md",
       "bookshelf/202607161700 Mistakes were made but not by me.md",
       "bookshelf/202607161701 Sacrifice.md",
       "bookshelf/202607161702 Futureproof: 9 Rules for Humans in the Age of Automation.md",
@@ -1566,6 +1565,9 @@
       "micro/202607161945.md",
       "micro/202607171603 The Human in the Loop is Tired.md",
       "micro/202607191230.md",
+      "micro/202607220922 OpenAI Accidentally Hacked Hugging Face.md",
+      "micro/202607220928 Apple to Start a Upgrade Program.md",
+      "micro/202607221322 Online shopping and rising living costs driving young Finns into debt.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1723,6 +1725,7 @@
       "photo/202607132128.md",
       "photo/202607141728.md",
       "photo/202607170957.md",
+      "photo/202607220951.md",
       "poem/201202121505 Here I stand.md",
       "poem/201202131628 Stranded Isle.md",
       "poem/201203181704 Scared I was.md",
@@ -7433,6 +7436,16 @@
       "category": "micro",
       "created": "2025-08-01T04:22:45.000Z",
       "snippet": "These are useful features, at least the first one. OpenAI announced study mode in ChatGPT recently which was similarly useful. It’s good to have these stream of new features which are just system prompts though Anthropic has created new tools for these."
+    }
+  ],
+  "micro/apple-to-start-a-upgrade-program": [
+    {
+      "slug": "/micro/online-shopping-and-rising-living-costs-driving-young-finns-into-debt/",
+      "title": "Online Shopping and Rising Living Costs Driving Young Finns Into Debt",
+      "description": "",
+      "category": "micro",
+      "created": "2026-07-22T10:22:00.000Z",
+      "snippet": "I had a similar thought when I read that Apple was starting an upgrade program with Klarna. People don’t have purchasing power but they want to buy more stuff."
     }
   ],
   "micro/about-claude-remote-control": [
