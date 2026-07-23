@@ -511,34 +511,54 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 						</div>
 					</div>
 				) : (
-					<div className="lq-panel">
-						<p className="lq-eyebrow">
-							{deck && (
-								<span className="lq-deck-badge">
-									{deck.emoji} {deck.title}
-								</span>
-							)}
-							{' '}
-							<code className="lq-inline-cmd">{current.item.term}</code>
-						</p>
-						{current.item.photo && <img className="lq-item-photo" src={current.item.photo} alt="" />}
-						<p className="lq-question">{current.prompt!.q}</p>
+					<div className="lq-flip-wrap">
+						<div
+							className={`lq-flipcard${revealed ? ' lq-flipcard--flipped' : ''}`}
+							role="button"
+							tabIndex={0}
+							aria-label="Flip card"
+							onClick={() => setRevealed((r) => !r)}
+							onKeyDown={(e) => {
+								if (e.key === 'Enter' || e.key === ' ') {
+									e.preventDefault();
+									setRevealed((r) => !r);
+								}
+							}}
+						>
+							<span className="lq-flipcard__flip-icon" aria-hidden="true">
+								⟳
+							</span>
+							<div className="lq-flipcard__inner">
+								<div className="lq-flipcard__face lq-flipcard__face--front">
+									{current.item.photo && <img className="lq-item-photo" src={current.item.photo} alt="" />}
+									<p className="lq-question">{current.prompt!.q}</p>
+								</div>
+								<div className="lq-flipcard__face lq-flipcard__face--back">
+									<p className="lq-eyebrow">
+										{deck && (
+											<span className="lq-deck-badge">
+												{deck.emoji} {deck.title}
+											</span>
+										)}
+										{' '}
+										<code className="lq-inline-cmd">{current.item.term}</code>
+									</p>
+									{deck?.monoAnswers ? (
+										<code className="lq-answer__text">{current.prompt!.a}</code>
+									) : (
+										<span className="lq-answer__text lq-answer__text--prose">{current.prompt!.a}</span>
+									)}
+									{current.prompt!.note && <p className="lq-answer__note">{current.prompt!.note}</p>}
+								</div>
+							</div>
+						</div>
 
 						{!revealed ? (
-							<div className="lq-recall-hint-wrap">
+							<div className="lq-flip-controls">
 								<p className="lq-recall-hint">Answer in your head first — that’s the rep that counts.</p>
-								<button type="button" className="lq-button lq-button--primary" onClick={() => setRevealed(true)}>
-									Show answer
-								</button>
 							</div>
 						) : (
-							<div className="lq-answer">
-								{deck?.monoAnswers ? (
-									<code className="lq-answer__text">{current.prompt!.a}</code>
-								) : (
-									<span className="lq-answer__text lq-answer__text--prose">{current.prompt!.a}</span>
-								)}
-								{current.prompt!.note && <p className="lq-answer__note">{current.prompt!.note}</p>}
+							<div className="lq-flip-controls">
 								<div className="lq-grade">
 									<button type="button" className="lq-button lq-button--got" onClick={() => gradeCurrent(true)}>
 										✓ Got it
