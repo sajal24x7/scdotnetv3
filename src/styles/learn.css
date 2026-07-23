@@ -362,8 +362,35 @@
 }
 
 .lq-flipcard {
+	position: relative;
 	width: 100%;
 	perspective: 1600px;
+}
+
+.lq-flipcard__flip-btn {
+	position: absolute;
+	top: 0.75rem;
+	right: 0.75rem;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.25rem;
+	height: 2.25rem;
+	border-radius: 50%;
+	border: 1.5px solid rgb(var(--color-border));
+	background: rgb(var(--color-bg));
+	color: rgb(var(--color-text-secondary));
+	font-size: 1.1rem;
+	line-height: 1;
+	cursor: pointer;
+	transition: border-color 0.15s, color 0.15s, transform 0.2s;
+}
+
+.lq-flipcard__flip-btn:hover {
+	border-color: rgb(var(--color-accent));
+	color: rgb(var(--color-accent));
+	transform: rotate(45deg);
 }
 
 .lq-flipcard__inner {
@@ -430,11 +457,6 @@
 	font-size: var(--text-xs);
 	color: rgb(var(--color-text-secondary));
 	font-style: italic;
-}
-
-.lq-flip-btn {
-	min-width: 12rem;
-	justify-content: center;
 }
 
 .lq-answer {

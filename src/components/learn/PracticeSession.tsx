@@ -513,6 +513,14 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 				) : (
 					<div className="lq-flip-wrap">
 						<div className={`lq-flipcard${revealed ? ' lq-flipcard--flipped' : ''}`}>
+							<button
+								type="button"
+								className="lq-flipcard__flip-btn"
+								onClick={() => setRevealed((r) => !r)}
+								aria-label="Flip card"
+							>
+								⟳
+							</button>
 							<div className="lq-flipcard__inner">
 								<div className="lq-flipcard__face lq-flipcard__face--front">
 									{current.item.photo && <img className="lq-item-photo" src={current.item.photo} alt="" />}
@@ -541,13 +549,6 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 						{!revealed ? (
 							<div className="lq-flip-controls">
 								<p className="lq-recall-hint">Answer in your head first — that’s the rep that counts.</p>
-								<button
-									type="button"
-									className="lq-button lq-button--primary lq-flip-btn"
-									onClick={() => setRevealed(true)}
-								>
-									⟳ Flip card
-								</button>
 							</div>
 						) : (
 							<div className="lq-flip-controls">
