@@ -16,13 +16,25 @@ export interface Prompt {
 	note?: string;
 }
 
+export interface CommandExample {
+	code: string;
+	note?: string;
+}
+
 export interface Command {
 	id: string;
 	cmd: string;
 	syntax: string;
 	description: string;
-	example: string;
-	exampleNote: string;
+	// Optional longer paragraph for the reference panel, below `description`.
+	explanation?: string;
+	// Required unless `examples` is given instead (richer commands use the
+	// list below and drop this single-example pair).
+	example?: string;
+	exampleNote?: string;
+	// Richer commands: extra worked examples beyond `example`/`exampleNote`,
+	// shown as an additional list on the reference panel.
+	examples?: CommandExample[];
 	prompts: Prompt[];
 }
 
@@ -46,8 +58,13 @@ export const categories: Category[] = [
 				cmd: 'df',
 				syntax: 'df -h',
 				description: 'Shows free and used disk space for mounted filesystems, in human-readable units.',
-				example: 'df -h /var',
-				exampleNote: 'Reports space usage for the filesystem containing /var.',
+				explanation:
+					"df ('disk free') reports one line per mounted filesystem: total size, used space, available space, use percentage, and mount point. Without -h, sizes print in 1K blocks, which is why -h (human-readable — auto-scaling to K/M/G) is almost always worth adding. Run it bare with no arguments to see every mount at once, or point it at any path to see just the filesystem that path lives on.",
+				examples: [
+					{ code: 'df -h', note: 'Every mounted filesystem, sizes in human-readable units.' },
+					{ code: 'df -h /var', note: 'Just the filesystem containing /var — handy when /var is its own partition.' },
+					{ code: 'df -i', note: 'Shows inode usage instead of space — a filesystem can be "full" on inodes with plenty of bytes free.' },
+				],
 				prompts: [
 					{
 						id: 'df-1',
@@ -68,8 +85,13 @@ export const categories: Category[] = [
 				cmd: 'du',
 				syntax: 'du -sh *',
 				description: 'Estimates disk usage of files and directories, useful for finding what is eating up space.',
-				example: 'du -sh /var/log/*',
-				exampleNote: 'Shows a one-line summarized size for each item under /var/log.',
+				explanation:
+					"du ('disk usage') walks a directory tree and totals up the actual space files consume, recursing by default — which means an unadorned `du` on a big tree prints one line per file and buries you. -s collapses that to one summary line per argument, -h makes it human-readable, and combining them with a glob (`*`) gives a per-item breakdown you can scan or pipe to `sort -rh` to find the biggest offender fast.",
+				examples: [
+					{ code: 'du -sh /var/log/*', note: 'One summarized, human-readable size per item under /var/log.' },
+					{ code: 'du -sh .', note: 'Total size of the current directory, recursively, as one line.' },
+					{ code: 'du -ah --max-depth=1 /home | sort -rh', note: 'Depth-limited listing sorted largest-first — the fastest way to find what to delete.' },
+				],
 				prompts: [
 					{
 						id: 'du-1',
@@ -89,8 +111,13 @@ export const categories: Category[] = [
 				cmd: 'lsblk',
 				syntax: 'lsblk -f',
 				description: 'Lists block devices (disks and partitions) as a tree, with the -f flag adding filesystem type and UUID.',
-				example: 'lsblk -f',
-				exampleNote: 'Shows each disk, its partitions, filesystem type, and mount point.',
+				explanation:
+					"lsblk reads what the kernel currently sees, not a config file, so it's always accurate for 'what disks and partitions actually exist right now.' The plain form shows the device tree (disk → partitions) with sizes; -f adds filesystem type, label, and UUID per partition; -o lets you pick exactly the columns you want when you're scripting against the output.",
+				examples: [
+					{ code: 'lsblk -f', note: 'Each disk, its partitions, filesystem type, and mount point.' },
+					{ code: 'lsblk', note: 'Plain device tree with sizes — no filesystem info, just the physical layout.' },
+					{ code: 'lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT', note: 'Custom column set — useful when piping into a script.' },
+				],
 				prompts: [
 					{
 						id: 'lsblk-1',
@@ -110,8 +137,13 @@ export const categories: Category[] = [
 				cmd: 'mount',
 				syntax: 'mount /dev/sdb1 /mnt/data',
 				description: 'Attaches a filesystem on a device to a directory (mount point) so its contents become accessible.',
-				example: 'mount /dev/sdb1 /mnt/data',
-				exampleNote: 'Mounts the partition /dev/sdb1 at /mnt/data. Run `mount` with no args to list current mounts.',
+				explanation:
+					"Before mounting, a device's contents are invisible to normal file access — mounting is what makes them appear under a directory. A manual `mount` like this is temporary and disappears on reboot; persistent mounts belong in /etc/fstab, and `mount -a` mounts everything listed there without a reboot. The target directory (mount point) must already exist and, ideally, be empty — anything already in it becomes hidden (not deleted) while the mount is active.",
+				examples: [
+					{ code: 'mount /dev/sdb1 /mnt/data', note: 'Mounts the partition /dev/sdb1 at /mnt/data.' },
+					{ code: 'mount', note: 'No arguments — lists every currently mounted filesystem, device, and options.' },
+					{ code: 'mount -a', note: "Mounts everything listed in /etc/fstab that isn't already mounted." },
+				],
 				prompts: [
 					{
 						id: 'mount-1',
@@ -131,8 +163,13 @@ export const categories: Category[] = [
 				cmd: 'fdisk',
 				syntax: 'fdisk -l',
 				description: "Views or edits a disk's partition table. `fdisk -l` lists partitions on all disks without changing anything.",
-				example: 'sudo fdisk -l /dev/sda',
-				exampleNote: 'Lists the partition table of /dev/sda: sizes, types, and start/end sectors.',
+				explanation:
+					"fdisk edits the classic MBR-style partition table (and has decent modern GPT support too — for GPT-heavy work, `gdisk` or `parted` are the traditional specialists). Called with -l it's purely read-only reporting. Called on a device with no -l, it drops into an interactive prompt where single-letter commands (n, d, w...) queue up real changes — and `w` writes them to disk immediately, so that mode is only for when you actually intend to repartition.",
+				examples: [
+					{ code: 'fdisk -l', note: 'Lists partitions on every disk — read-only, safe to run any time.' },
+					{ code: 'sudo fdisk -l /dev/sda', note: 'Partition table of /dev/sda only: sizes, types, start/end sectors.' },
+					{ code: 'sudo fdisk /dev/sdb', note: "Opens the interactive editor on /dev/sdb — nothing is written until you type 'w'." },
+				],
 				prompts: [
 					{
 						id: 'fdisk-1',
@@ -152,8 +189,13 @@ export const categories: Category[] = [
 				cmd: 'blkid',
 				syntax: 'blkid',
 				description: 'Prints each partition\'s UUID, filesystem type, and label — the identifiers you use in /etc/fstab.',
-				example: 'sudo blkid /dev/sdb1',
-				exampleNote: 'Shows the UUID and filesystem type of /dev/sdb1, ready to paste into fstab.',
+				explanation:
+					"blkid reads the filesystem's own superblock rather than guessing from the device name, which is why its output — UUID, TYPE, LABEL — is trustworthy for /etc/fstab entries. Device names like /dev/sdb1 depend on enumeration order at boot and can silently shift when disks are added, removed, or a USB drive enumerates differently; the UUID is generated once when the filesystem is created and never changes, so fstab entries keyed on it survive hardware reshuffles that would otherwise mount the wrong disk in the wrong place.",
+				examples: [
+					{ code: 'blkid', note: 'Lists UUID, filesystem type, and label for every partition on the system.' },
+					{ code: 'sudo blkid /dev/sdb1', note: 'Just this one partition — UUID and type, ready to paste into fstab.' },
+					{ code: 'blkid -o value -s UUID /dev/sdb1', note: 'Prints only the raw UUID value — convenient for scripting.' },
+				],
 				prompts: [
 					{
 						id: 'blkid-1',

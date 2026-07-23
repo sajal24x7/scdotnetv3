@@ -8,6 +8,13 @@ export interface Prompt {
 	note?: string;
 }
 
+// A single worked example: a code/phrase line plus an optional one-line note
+// explaining it. See `examples` below.
+export interface LearnExample {
+	code: string;
+	note?: string;
+}
+
 export interface LearnItem {
 	id: string;
 	term: string;
@@ -15,8 +22,17 @@ export interface LearnItem {
 	// no canonical syntax or worked example; the UI falls back to `term`.
 	syntax?: string;
 	description: string;
+	// Optional longer paragraph for the reference panel, below `description`.
+	// Use for the "why"/mechanics that don't fit a one-line description —
+	// per design principle #8 (docs/architecture/learning-systems.md), the
+	// reference panel is a lookup sheet and can afford more depth than the
+	// atomic quiz prompts it accompanies.
+	explanation?: string;
 	example?: string;
 	exampleNote?: string;
+	// Richer decks: two or more worked examples. When present, the renderer
+	// shows this list instead of the single `example`/`exampleNote` pair.
+	examples?: LearnExample[];
 	// Link to the source note, for decks generated from published notes.
 	href?: string;
 	// Data-URI thumbnail, for decks with a visual recognition element (the

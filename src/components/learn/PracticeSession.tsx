@@ -309,7 +309,15 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 				return;
 			}
 
-			setSession(queue);
+			// Batch every "new concept" intro card up front, then run training
+			// (due reviews + today's freshly-introduced prompts) uninterrupted —
+			// learning a concept and drilling it are different mental modes and
+			// shouldn't be sliced up together. buildUnifiedQueue's own ordering
+			// (due first, then per-deck new-item blocks) doesn't matter here since
+			// this only reshuffles *within* the fixed kind groups.
+			const ordered = [...queue.filter((q) => q.kind === 'learn'), ...queue.filter((q) => q.kind === 'prompt')];
+
+			setSession(ordered);
 			setIndex(0);
 			setRevealed(false);
 			setResults({ got: 0, forgot: 0, learned: 0 });
@@ -462,6 +470,7 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		const current = session[index];
 		if (!current) return null;
 		const deck = deckById.get(current.deckId);
+		const isLastIntroCard = current.kind === 'learn' && !session.slice(index + 1).some((s) => s.kind === 'learn');
 		return (
 			<div className="lq-session">
 				<div className="lq-session__header">
@@ -490,11 +499,23 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 							<p className="lq-term">{current.item.term}</p>
 						)}
 						<p className="lq-description">{current.item.description}</p>
-						{current.item.example && (
-							<div className="lq-example">
-								<code>{current.item.example}</code>
-								{current.item.exampleNote && <p className="lq-example__note">{current.item.exampleNote}</p>}
+						{current.item.explanation && <p className="lq-explanation">{current.item.explanation}</p>}
+						{current.item.examples && current.item.examples.length > 0 ? (
+							<div className="lq-examples">
+								{current.item.examples.map((ex, i) => (
+									<div className="lq-example" key={i}>
+										<code>{ex.code}</code>
+										{ex.note && <p className="lq-example__note">{ex.note}</p>}
+									</div>
+								))}
 							</div>
+						) : (
+							current.item.example && (
+								<div className="lq-example">
+									<code>{current.item.example}</code>
+									{current.item.exampleNote && <p className="lq-example__note">{current.item.exampleNote}</p>}
+								</div>
+							)
 						)}
 						{current.item.href && (
 							<a className="lq-note-link" href={current.item.href} target="_blank" rel="noopener">
@@ -503,7 +524,7 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 						)}
 						<div className="lq-grade">
 							<button type="button" className="lq-button lq-button--primary" onClick={advance}>
-								Got it — quiz me →
+								{isLastIntroCard ? 'Got it — start training →' : 'Got it — next →'}
 							</button>
 							<button type="button" className="lq-button lq-button--ghost" onClick={skipCurrentItem}>
 								Skip — don't learn this
