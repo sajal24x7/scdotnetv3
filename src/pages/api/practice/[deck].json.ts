@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import type { LearnDataset } from '../../../components/learn/types';
 import { linuxLearnConfig } from '../../../data/linux-learn-config';
 import { finnishLearnConfig } from '../../../data/finnish-learn-config';
+import { finnishVocabLearnConfig } from '../../../data/finnish-vocab-learn-config';
 import { tilLearnConfig } from '../../../data/til-learn-config';
 import { evergreenLearnConfig } from '../../../data/evergreen-learn-config';
 import { vocabLearnConfig } from '../../../data/vocab-learn-config';
@@ -15,6 +16,7 @@ import { vocabLearnConfig } from '../../../data/vocab-learn-config';
 const datasets: Record<string, LearnDataset> = {
 	linux: linuxLearnConfig.dataset,
 	finnish: finnishLearnConfig.dataset,
+	'finnish-vocab': finnishVocabLearnConfig.dataset,
 	til: tilLearnConfig.dataset,
 	evergreen: evergreenLearnConfig.dataset,
 	vocab: vocabLearnConfig.dataset,

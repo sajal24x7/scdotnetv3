@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import type { LearnDataset } from './types';
 import type { PracticeDeck } from '../../data/practice-registry';
+import { loadPeopleDeck } from './peopleDeckStore';
 import {
 	addDays,
 	buildPromptsById,
@@ -62,10 +63,24 @@ interface DeckCounts {
 	unseen: number;
 }
 
-function countsFor(deck: PracticeDeck, state: SrsState, today: string): DeckCounts {
+// Local decks (currently just people) have no build-time dataset — the
+// registry's totalItems/totalPrompts for them stay 0 (see
+// practice-registry.ts). Whichever of these loads a browser has actually
+// imported (peopleDeckStore.ts) is the source of truth for that deck's real
+// item count; every count below takes it as an optional override.
+const LOCAL_DATASET_LOADERS: Record<string, () => Promise<LearnDataset | null>> = {
+	people: loadPeopleDeck,
+};
+
+function totalItemsFor(deck: PracticeDeck, localDataset?: LearnDataset): number {
+	if (!localDataset) return deck.totalItems;
+	return localDataset.categories.reduce((n, c) => n + c.items.length, 0);
+}
+
+function countsFor(deck: PracticeDeck, state: SrsState, today: string, localDataset?: LearnDataset): DeckCounts {
 	const due = computeDueCount(state, today);
 	const introducedToday = computeIntroducedTodayCount(state, today);
-	const unseen = computeUnseenCount(deck.totalItems, state);
+	const unseen = computeUnseenCount(totalItemsFor(deck, localDataset), state);
 	const newAvailable = computeNewAvailable(unseen, introducedToday, deck.newPerDay);
 	return { due, newAvailable, unseen };
 }
@@ -73,6 +88,7 @@ function countsFor(deck: PracticeDeck, state: SrsState, today: string): DeckCoun
 export default function PracticeSession({ registry }: { registry: PracticeDeck[] }) {
 	const [today, setToday] = useState(() => localToday());
 	const [perDeckState, setPerDeckState] = useState<Record<string, SrsState>>({});
+	const [localDatasets, setLocalDatasets] = useState<Record<string, LearnDataset>>({});
 	const [meta, setMeta] = useState<PracticeMeta | null>(null);
 	const [screen, setScreen] = useState<Screen>('home');
 	const [session, setSession] = useState<PracticeQueueItem[]>([]);
@@ -97,6 +113,18 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		const perDeck: Record<string, SrsState> = {};
 		for (const deck of registry) perDeck[deck.id] = loadState(deck.storageKey, deck.legacyKey);
 		setPerDeckState(perDeck);
+
+		const localDeckIds = registry.filter((d) => d.source.kind === 'local').map((d) => d.id);
+		Promise.all(localDeckIds.map((id) => LOCAL_DATASET_LOADERS[id]?.()?.then((dataset) => [id, dataset] as const))).then(
+			(entries) => {
+				const next: Record<string, LearnDataset> = {};
+				for (const entry of entries) {
+					if (entry && entry[1]) next[entry[0]] = entry[1];
+				}
+				setLocalDatasets(next);
+			},
+		);
+
 		const seedStreak = Math.max(0, ...registry.map((d) => perDeck[d.id]?.streak ?? 0));
 		setMeta(loadPracticeMeta(seedStreak));
 		setToday(localToday());
@@ -215,10 +243,10 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		for (const deck of registry) {
 			const state = perDeckState[deck.id];
 			if (!state) continue;
-			map.set(deck.id, countsFor(deck, state, today));
+			map.set(deck.id, countsFor(deck, state, today, localDatasets[deck.id]));
 		}
 		return map;
-	}, [registry, perDeckState, today]);
+	}, [registry, perDeckState, today, localDatasets]);
 
 	const activeDecks = registry.filter((d) => !disabledDecks.has(d.id));
 	const totalDue = activeDecks.reduce((n, d) => n + Math.min(countsByDeck.get(d.id)?.due ?? 0, GLOBAL_DUE_CAP), 0);
@@ -232,14 +260,22 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		try {
 			const candidates = activeDecks.filter((deck) => {
 				const c = countsByDeck.get(deck.id);
-				return deck.source.kind === 'json' && c && (c.due > 0 || c.newAvailable > 0);
+				return c && (c.due > 0 || c.newAvailable > 0);
 			});
 			const fetched = await Promise.all(
 				candidates.map(async (deck) => {
-					if (deck.source.kind !== 'json') return null;
-					const res = await fetch(deck.source.href);
-					if (!res.ok) return null;
-					const dataset: LearnDataset = await res.json();
+					if (deck.source.kind === 'json') {
+						const res = await fetch(deck.source.href);
+						if (!res.ok) return null;
+						const dataset: LearnDataset = await res.json();
+						return { deck, dataset };
+					}
+					// Local decks (e.g. people) are already loaded from IndexedDB on
+					// mount — nothing to fetch, and nothing if this device has no
+					// deck imported (the candidate filter above already excludes it,
+					// since an empty dataset means zero due/new).
+					const dataset = localDatasets[deck.id];
+					if (!dataset) return null;
 					return { deck, dataset };
 				}),
 			);
@@ -447,6 +483,7 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 							)}
 							{' '}New {deck?.itemNoun ?? 'item'}
 						</p>
+						{current.item.photo && <img className="lq-item-photo" src={current.item.photo} alt="" />}
 						{current.item.syntax ? (
 							<code className="lq-command">{current.item.syntax}</code>
 						) : (
@@ -484,6 +521,7 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 							{' '}
 							<code className="lq-inline-cmd">{current.item.term}</code>
 						</p>
+						{current.item.photo && <img className="lq-item-photo" src={current.item.photo} alt="" />}
 						<p className="lq-question">{current.prompt!.q}</p>
 
 						{!revealed ? (
@@ -585,6 +623,7 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 				{registry.map((deck) => {
 					const counts = countsByDeck.get(deck.id);
 					const disabled = disabledDecks.has(deck.id);
+					const totalItems = totalItemsFor(deck, localDatasets[deck.id]);
 					return (
 						<label key={deck.id} className={`lq-deck-row${disabled ? ' lq-deck-row--disabled' : ''}`}>
 							<input type="checkbox" checked={!disabled} onChange={() => toggleDeck(deck.id)} />
@@ -592,8 +631,9 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 								{deck.emoji} {deck.title}
 							</span>
 							<span className="lq-deck-row__meta">
-								{deck.totalItems} {deck.itemNoun}
-								{deck.totalItems === 1 ? '' : 's'}
+								{totalItems} {deck.itemNoun}
+								{totalItems === 1 ? '' : 's'}
+								{deck.source.kind === 'local' && totalItems === 0 ? ' (not imported here)' : ''}
 								{counts && !disabled
 									? counts.due > 0 || counts.newAvailable > 0
 										? ` · ${counts.due} due · ${counts.newAvailable} new`

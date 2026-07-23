@@ -102,6 +102,13 @@ async function main() {
 				return { categories: mod.categories, introductionOrder: mod.introductionOrder };
 			},
 		},
+		{
+			name: 'finnish-vocab',
+			load: async () => {
+				const mod = await loadTsModule('src/data/finnish-vocab.ts');
+				return { categories: mod.categories, introductionOrder: mod.introductionOrder };
+			},
+		},
 		...['til', 'evergreen'].map((deck) => ({
 			name: deck,
 			load: async () => {

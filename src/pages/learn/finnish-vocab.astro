@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LearningSystem from '../../components/learn/LearningSystem';
+import { finnishVocabLearnConfig } from '../../data/finnish-vocab-learn-config';
+import '../../styles/learn.css';
+
+const itemCount = finnishVocabLearnConfig.dataset.categories.reduce((n, c) => n + c.items.length, 0);
+---
+
+<Layout
+  title="Learn Finnish Vocabulary"
+  description="Communicative Finnish vocabulary — verbs, family, food, time, places, and more — added in curated batches, sourced from frequency lists."
+  currentPage="/learn/finnish-vocab"
+  pageWrapper={{ container: true, maxWidth: '6xl', padding: 'lg', paddingScale: 'page' }}
+  enableLinkHoverEffect
+>
+  <div class="learn-finnish-vocab-page">
+    <h1 class="learn-finnish-vocab-page__title">Learn Finnish Vocabulary</h1>
+    <p class="learn-finnish-vocab-page__subtitle">
+      <a href="/learn/finnish/">The main Finnish deck</a> is rules-first by design — it teaches the
+      grammar system with just enough words to feed the rule prompts. This is the sibling deck for
+      everything else: everyday verbs, family, food, time, question words, places, and adjectives,
+      added in curated batches. Words that exercise a rule from the main deck (consonant gradation,
+      mostly) get an extra "apply the rule" prompt, so the two decks reinforce each other.
+    </p>
+
+    {itemCount === 0 && (
+      <p class="learn-finnish-vocab-page__subtitle">
+        No words on file yet.
+      </p>
+    )}
+
+    <LearningSystem client:load config={finnishVocabLearnConfig} />
+  </div>
+</Layout>

@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PeopleLearnPage from '../../components/learn/PeopleLearnPage';
+import '../../styles/learn.css';
+---
+
+<Layout
+  title="Learn People"
+  description="A private, local-first spaced-repetition deck for names and faces — never stored on any server."
+  currentPage="/learn/people"
+  pageWrapper={{ container: true, maxWidth: '6xl', padding: 'lg', paddingScale: 'page' }}
+  enableLinkHoverEffect
+  index={false}
+>
+  <div class="learn-people-page">
+    <h1 class="learn-people-page__title">Learn People</h1>
+    <p class="learn-people-page__subtitle">
+      Names, faces, and context for people I actually know — private by construction. This page
+      ships with no data at all; everything you see is imported straight from a
+      <code>people-deck.json</code> built in your browser from vault notes, stored only in this
+      device's IndexedDB. Nothing here is ever committed to a repo or sent to a server.
+    </p>
+
+    <PeopleLearnPage client:load />
+  </div>
+</Layout>
