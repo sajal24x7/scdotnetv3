@@ -1,19 +1,24 @@
 ---
-title: "The Courage to Be Disliked"
-slug: "the-courage-to-be-disliked"
-created: 2026-07-20T13:43:00+03:00
-updated: 2026-07-23T20:50:00+03:00
+title: The Courage to Be Disliked
+slug: the-courage-to-be-disliked
+created: 2026-07-20T10:43:00.000Z
+updated: 2026-07-23T17:50:00.000Z
 category: bookshelf
-tags: ["psychology"]
+tags:
+  - psychology
 author:
   - Ichi Yukishiro
-started: 2026-07-20T13:44:00
-finished: 2026-07-23T19:15:00
+started: 2026-07-20T13:44:00.000Z
+finished: 2026-07-23T19:15:00.000Z
 genre: self-help
 format: audio
 rating: love
-series:
+series: null
 status: finished
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116971004483316912'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mrdlyilimk2r'
+  - 'https://www.threads.com/@sajal24x7/post/DbJchm2D7ht'
 ---
 ## Review
 
