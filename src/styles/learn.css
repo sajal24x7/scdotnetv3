@@ -365,31 +365,29 @@
 	position: relative;
 	width: 100%;
 	perspective: 1600px;
+	cursor: pointer;
 }
 
-.lq-flipcard__flip-btn {
+.lq-flipcard:focus-visible {
+	outline: 2px solid rgb(var(--color-accent));
+	outline-offset: 4px;
+	border-radius: 14px;
+}
+
+.lq-flipcard__flip-icon {
 	position: absolute;
-	top: 0.75rem;
-	right: 0.75rem;
+	bottom: 0.75rem;
+	right: 0.9rem;
 	z-index: 2;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 2.25rem;
-	height: 2.25rem;
-	border-radius: 50%;
-	border: 1.5px solid rgb(var(--color-border));
-	background: rgb(var(--color-bg));
-	color: rgb(var(--color-text-secondary));
 	font-size: 1.1rem;
 	line-height: 1;
-	cursor: pointer;
-	transition: border-color 0.15s, color 0.15s, transform 0.2s;
+	color: rgb(var(--color-text-secondary));
+	opacity: 0.6;
+	transition: opacity 0.15s, transform 0.2s;
 }
 
-.lq-flipcard__flip-btn:hover {
-	border-color: rgb(var(--color-accent));
-	color: rgb(var(--color-accent));
+.lq-flipcard:hover .lq-flipcard__flip-icon {
+	opacity: 1;
 	transform: rotate(45deg);
 }
 

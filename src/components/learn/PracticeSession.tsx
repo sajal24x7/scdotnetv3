@@ -512,15 +512,22 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 					</div>
 				) : (
 					<div className="lq-flip-wrap">
-						<div className={`lq-flipcard${revealed ? ' lq-flipcard--flipped' : ''}`}>
-							<button
-								type="button"
-								className="lq-flipcard__flip-btn"
-								onClick={() => setRevealed((r) => !r)}
-								aria-label="Flip card"
-							>
+						<div
+							className={`lq-flipcard${revealed ? ' lq-flipcard--flipped' : ''}`}
+							role="button"
+							tabIndex={0}
+							aria-label="Flip card"
+							onClick={() => setRevealed((r) => !r)}
+							onKeyDown={(e) => {
+								if (e.key === 'Enter' || e.key === ' ') {
+									e.preventDefault();
+									setRevealed((r) => !r);
+								}
+							}}
+						>
+							<span className="lq-flipcard__flip-icon" aria-hidden="true">
 								⟳
-							</button>
+							</span>
 							<div className="lq-flipcard__inner">
 								<div className="lq-flipcard__face lq-flipcard__face--front">
 									{current.item.photo && <img className="lq-item-photo" src={current.item.photo} alt="" />}
