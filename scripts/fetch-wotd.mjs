@@ -5,16 +5,20 @@
 // word already on file keeps its original fetchedAt and is never touched
 // again by this script (hand edits to gloss/pos in the file are safe).
 //
-// The feed is MediaWiki's ApiFeaturedFeed (RSS 2.0), one <item> per day,
-// title = the headword, description = an HTML fragment with the gloss as
-// the first <li> of the definition list and (usually) the part of speech
-// as a bare word in a nearby tag. Both are parsed with small regexes below
-// rather than a real XML parser — the feed's structure is simple and
-// stable, and a full parser would be one more dependency for one script.
+// The feed is MediaWiki's ApiFeaturedFeed (RSS 2.0), one <item> per day.
+// Its <title> is NOT the headword — it's a generic "Word of the day for
+// <date>" wrapper (the same quirk as Wikipedia's POTD feed's "Picture of
+// the day for <date>"). The real headword is recovered from <description>
+// instead: the gloss is the first <li> of the definition list, and the
+// headword is the title attribute of the wikilink Wiktionary renders over
+// the bolded term. Both are parsed with small regexes below rather than a
+// real XML parser — the feed's structure is simple and stable, and a full
+// parser would be one more dependency for one script.
 //
-// Merriam-Webster's WOTD RSS is a second, lower-confidence source, wired
-// but off by default (plan §4.1: "start with Wiktionary only... adding the
-// second feed is a config line") — set WOTD_ENABLE_MW=true to turn it on.
+// Merriam-Webster's WOTD RSS is a second source, on by default — set
+// WOTD_ENABLE_MW=false to turn it off. Its parser is a best-effort first
+// cut (plan §4.1 originally shipped it off pending verification); it has
+// since been checked against live output and produces two words/day.
 //
 // A parse failure for a single word is a warning, never a build failure —
 // same philosophy as extract-learn-blocks.mjs: skip the word, log why, try
@@ -31,7 +35,7 @@ const OUT_FILE = path.join(repoRoot, 'src', 'data', 'vocab.generated.json');
 
 const WIKTIONARY_FEED_URL = 'https://en.wiktionary.org/w/api.php?action=featuredfeed&feed=wotd&feedformat=rss';
 const MW_FEED_URL = 'https://www.merriam-webster.com/wotd/feed/rss2';
-const ENABLE_MW = process.env.WOTD_ENABLE_MW === 'true';
+const ENABLE_MW = process.env.WOTD_ENABLE_MW !== 'false';
 
 const POS_WORDS = [
 	'Proper noun',
@@ -102,6 +106,19 @@ function firstListItemText(html) {
 	return m ? stripTags(m[1]) : '';
 }
 
+// The feed's <title> turned out to be a generic "Word of the day for
+// <date>" wrapper (the same quirk as Wikipedia's "Picture of the day for
+// <date>" POTD feed) rather than the headword — confirmed by a live run on
+// 2026-07-23 that filled vocab.generated.json with nine entries literally
+// named "Word of the day for July 14" etc. The real headword only shows up
+// inside <description>, as the wikilink over the bolded term. A wikilink's
+// title attribute is the clean page name (e.g. "demigirl"), immune to the
+// italics/superscript markup that can wrap the link's visible text.
+function extractLinkedHeadword(html) {
+	const m = /<a\b[^>]*\btitle="([^"]+)"[^>]*>/i.exec(html);
+	return m ? decodeEntities(m[1]).trim() : '';
+}
+
 function isoDateFrom(pubDate) {
 	if (pubDate) {
 		const parsed = new Date(pubDate);
@@ -133,21 +150,26 @@ async function fetchWiktionary(warnings) {
 	const xml = await res.text();
 	const entries = [];
 	for (const item of parseRssItems(xml)) {
-		const word = item.title.trim();
-		if (!word) {
+		const rawTitle = item.title.trim();
+		if (!rawTitle) {
 			warnings.push('wiktionary: item with no title — skipped');
 			continue;
 		}
 		const gloss = firstListItemText(item.description);
 		if (!gloss) {
-			warnings.push(`wiktionary: "${word}" — no definition found in feed markup, skipped`);
+			warnings.push(`wiktionary: "${rawTitle}" — no definition found in feed markup, skipped`);
+			continue;
+		}
+		const word = /^word of the day for /i.test(rawTitle) ? extractLinkedHeadword(item.description) : rawTitle;
+		if (!word) {
+			warnings.push(`wiktionary: could not find a headword for "${rawTitle}" — skipped`);
 			continue;
 		}
 		entries.push({
 			word,
 			pos: detectPos(item.description),
 			gloss,
-			href: item.link || `https://en.wiktionary.org/wiki/${encodeURIComponent(word)}`,
+			href: `https://en.wiktionary.org/wiki/${encodeURIComponent(word)}`,
 			source: 'wiktionary',
 			fetchedAt: isoDateFrom(item.pubDate),
 		});
@@ -155,11 +177,11 @@ async function fetchWiktionary(warnings) {
 	return entries;
 }
 
-// Off by default (WOTD_ENABLE_MW=true). M-W's WOTD RSS wraps the gloss in
-// its own description markup that varies more across entries than
-// Wiktionary's; this parser is a best-effort first cut, not verified
-// against a live pull, so it stays gated until it's been eyeballed for a
-// few days of real output.
+// On by default (WOTD_ENABLE_MW=false to turn off). M-W's WOTD RSS wraps
+// the gloss in its own description markup, so the gloss text is a raw
+// stripped-tags dump of the whole entry (headline + pronunciation + POS +
+// definition + examples) rather than a clean single sentence like
+// Wiktionary's — set WOTD_ENABLE_MW=false if that gets noisy in practice.
 async function fetchMerriamWebster(warnings) {
 	let res;
 	try {

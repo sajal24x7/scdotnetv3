@@ -1,9 +1,9 @@
 name: Fetch Word of the Day
 
-# Daily pull of Wiktionary's Word of the Day into src/data/vocab.generated.json
-# for the /learn/vocabulary deck (unified-practice plan §4.1). The script is
-# idempotent (word-keyed, skips words already on file), so a missed or
-# re-run day is harmless.
+# Daily pull of Wiktionary's and Merriam-Webster's Word of the Day into
+# src/data/vocab.generated.json for the /learn/vocabulary deck (unified-practice
+# plan §4.1). The script is idempotent (word-keyed, skips words already on
+# file), so a missed or re-run day is harmless.
 on:
   schedule:
     - cron: '5 6 * * *' # Shortly after Wiktionary's day rolls over UTC
@@ -11,9 +11,9 @@ on:
   workflow_dispatch:
     inputs:
       enable_mw:
-        description: 'Also fetch Merriam-Webster WOTD (unverified parser, off by default)'
+        description: 'Also fetch Merriam-Webster WOTD'
         required: false
-        default: 'false'
+        default: 'true'
         type: boolean
 
 concurrency:
@@ -50,7 +50,7 @@ jobs:
 
       - name: Fetch today's word(s)
         env:
-          WOTD_ENABLE_MW: ${{ github.event.inputs.enable_mw || 'false' }}
+          WOTD_ENABLE_MW: ${{ github.event.inputs.enable_mw || 'true' }}
         run: node scripts/fetch-wotd.mjs
 
       - name: Commit new vocabulary
