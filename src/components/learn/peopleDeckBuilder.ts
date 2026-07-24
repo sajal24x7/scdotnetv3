@@ -135,6 +135,7 @@ export async function buildPeopleDeck(files: File[]): Promise<BuildResult> {
 					q: prompt.q.trim(),
 					a: prompt.a.trim(),
 					...(typeof prompt.note === 'string' && prompt.note.trim() ? { note: prompt.note.trim() } : {}),
+					...(prompt.kind === 'cloze' ? { kind: 'cloze' as const } : {}),
 				});
 			}
 		}

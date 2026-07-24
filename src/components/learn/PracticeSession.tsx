@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import type { LearnDataset } from './types';
 import type { PracticeDeck } from '../../data/practice-registry';
 import { loadPeopleDeck } from './peopleDeckStore';
+import { PromptQuestion } from './ItemDetails';
+import { SYNC_LAST_KEY, SYNC_TOKEN_KEY } from './sync';
 import {
 	addDays,
 	buildPromptsById,
@@ -32,17 +34,16 @@ import {
 
 // The unified daily ritual (plan §2): one queue across every deck in the
 // registry, round-robin interleaved, grading against the shared FSRS engine.
-// This is now the *only* place SrsState gets mutated — /learn/* pages keep
-// their wall charts and no-op drills, but the "start today's review" button
-// lives here (see LearningSystem.tsx, which links out instead).
+// Since the learn/practice split, this page is Q&A only — questions and
+// answers for concepts already introduced. New concepts are introduced on
+// the learn side (/learn/new, or a deck's own /learn/<topic> page); a home-
+// screen nudge points there whenever today's new budget has anything left.
 //
 // Cross-device sync (plan §2.8): opt-in, via a per-device GitHub PAT posted
 // to functions/api/practice-state.js (a Workers KV blob). Pulls merge into
 // local state on load/focus/manual sync; pushes happen at session end and
 // debounced mid-session. Sync failures degrade silently to local-only.
 
-const SYNC_TOKEN_KEY = 'practice-sync-token';
-const SYNC_LAST_KEY = 'practice-sync-last';
 const PUSH_DEBOUNCE_MS = 4000;
 
 type Screen = 'home' | 'session' | 'done';
@@ -94,7 +95,7 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 	const [session, setSession] = useState<PracticeQueueItem[]>([]);
 	const [index, setIndex] = useState(0);
 	const [revealed, setRevealed] = useState(false);
-	const [results, setResults] = useState({ got: 0, forgot: 0, learned: 0 });
+	const [results, setResults] = useState({ got: 0, forgot: 0 });
 	const [requeued, setRequeued] = useState<Set<string>>(new Set());
 	const [starting, setStarting] = useState(false);
 	const [startError, setStartError] = useState<string | null>(null);
@@ -250,18 +251,21 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 
 	const activeDecks = registry.filter((d) => !disabledDecks.has(d.id));
 	const totalDue = activeDecks.reduce((n, d) => n + Math.min(countsByDeck.get(d.id)?.due ?? 0, GLOBAL_DUE_CAP), 0);
-	const totalNew = activeDecks.reduce((n, d) => n + (countsByDeck.get(d.id)?.newAvailable ?? 0), 0);
-	const doneForToday = meta !== null && totalDue === 0 && totalNew === 0;
+	// New concepts aren't part of this page anymore — the count only feeds the
+	// "waiting on the Learn page" nudge below, capped at what /learn/new
+	// would actually offer today.
+	const totalNew = Math.min(
+		activeDecks.reduce((n, d) => n + (countsByDeck.get(d.id)?.newAvailable ?? 0), 0),
+		GLOBAL_NEW_PER_DAY,
+	);
+	const doneForToday = meta !== null && totalDue === 0;
 
 	async function startPractice() {
 		if (!meta) return;
 		setStarting(true);
 		setStartError(null);
 		try {
-			const candidates = activeDecks.filter((deck) => {
-				const c = countsByDeck.get(deck.id);
-				return c && (c.due > 0 || c.newAvailable > 0);
-			});
+			const candidates = activeDecks.filter((deck) => (countsByDeck.get(deck.id)?.due ?? 0) > 0);
 			const fetched = await Promise.all(
 				candidates.map(async (deck) => {
 					if (deck.source.kind === 'json') {
@@ -301,7 +305,6 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 				today,
 				suspended: new Set(meta.suspended),
 				globalDueCap: GLOBAL_DUE_CAP,
-				globalNewPerDay: GLOBAL_NEW_PER_DAY,
 			});
 
 			if (queue.length === 0) {
@@ -309,18 +312,10 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 				return;
 			}
 
-			// Batch every "new concept" intro card up front, then run training
-			// (due reviews + today's freshly-introduced prompts) uninterrupted —
-			// learning a concept and drilling it are different mental modes and
-			// shouldn't be sliced up together. buildUnifiedQueue's own ordering
-			// (due first, then per-deck new-item blocks) doesn't matter here since
-			// this only reshuffles *within* the fixed kind groups.
-			const ordered = [...queue.filter((q) => q.kind === 'learn'), ...queue.filter((q) => q.kind === 'prompt')];
-
-			setSession(ordered);
+			setSession(queue);
 			setIndex(0);
 			setRevealed(false);
-			setResults({ got: 0, forgot: 0, learned: 0 });
+			setResults({ got: 0, forgot: 0 });
 			setRequeued(new Set());
 			setScreen('session');
 		} catch {
@@ -339,42 +334,9 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		}
 	}
 
-	function advance() {
-		advanceWithin(session);
-	}
-
-	// Skip-at-introduction (plan §4.4): a new item's learn card carries a
-	// "Skip" action alongside "Got it — quiz me". Skipping suspends the item
-	// permanently (practice-meta.suspended) rather than just for today — it
-	// never counts against a deck's new budget again and never resurfaces,
-	// until un-suspended from the item's wall-chart reference panel. Since
-	// buildUnifiedQueue always emits a new item's learn card immediately
-	// followed by all of its own prompts, the ones still ahead of `index`
-	// are exactly this item's block and can be dropped as one contiguous run.
-	function skipCurrentItem() {
-		const current = session[index];
-		if (current.kind !== 'learn') return;
-		const { deckId, item } = current;
-
-		setMeta((prev) => {
-			if (!prev || prev.suspended.includes(item.id)) return prev;
-			const next: PracticeMeta = { ...prev, suspended: [...prev.suspended, item.id] };
-			savePracticeMeta(next);
-			return next;
-		});
-		schedulePush();
-
-		const filtered = session.filter((s, i) => i < index || !(s.deckId === deckId && s.item.id === item.id));
-		setRevealed(false);
-		setSession(filtered);
-		if (index >= filtered.length) {
-			finishPractice();
-		}
-	}
-
 	function gradeCurrent(gotIt: boolean) {
 		const current = session[index];
-		if (current.kind !== 'prompt' || !current.prompt) return;
+		if (!current) return;
 		const promptId = current.prompt.id;
 		const deck = deckById.get(current.deckId);
 
@@ -401,7 +363,6 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		setResults((r) => ({
 			got: r.got + (gotIt ? 1 : 0),
 			forgot: r.forgot + (gotIt ? 0 : 1),
-			learned: r.learned + (current.isNew && gotIt ? 1 : 0),
 		}));
 		advanceWithin(activeSession);
 	}
@@ -470,7 +431,6 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		const current = session[index];
 		if (!current) return null;
 		const deck = deckById.get(current.deckId);
-		const isLastIntroCard = current.kind === 'learn' && !session.slice(index + 1).some((s) => s.kind === 'learn');
 		return (
 			<div className="lq-session">
 				<div className="lq-session__header">
@@ -482,116 +442,68 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 					</span>
 				</div>
 
-				{current.kind === 'learn' ? (
-					<div className="lq-panel">
-						<p className="lq-eyebrow">
-							{deck && (
-								<span className="lq-deck-badge">
-									{deck.emoji} {deck.title}
-								</span>
-							)}
-							{' '}New {deck?.itemNoun ?? 'item'}
-						</p>
-						{current.item.photo && <img className="lq-item-photo" src={current.item.photo} alt="" />}
-						{current.item.syntax ? (
-							<code className="lq-command">{current.item.syntax}</code>
-						) : (
-							<p className="lq-term">{current.item.term}</p>
-						)}
-						<p className="lq-description">{current.item.description}</p>
-						{current.item.explanation && <p className="lq-explanation">{current.item.explanation}</p>}
-						{current.item.examples && current.item.examples.length > 0 ? (
-							<div className="lq-examples">
-								{current.item.examples.map((ex, i) => (
-									<div className="lq-example" key={i}>
-										<code>{ex.code}</code>
-										{ex.note && <p className="lq-example__note">{ex.note}</p>}
-									</div>
-								))}
+				<div className="lq-flip-wrap">
+					<div
+						className={`lq-flipcard${revealed ? ' lq-flipcard--flipped' : ''}`}
+						role="button"
+						tabIndex={0}
+						aria-label="Flip card"
+						onClick={() => setRevealed((r) => !r)}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter' || e.key === ' ') {
+								e.preventDefault();
+								setRevealed((r) => !r);
+							}
+						}}
+					>
+						<span className="lq-flipcard__flip-icon" aria-hidden="true">
+							⟳
+						</span>
+						<div className="lq-flipcard__inner">
+							<div className="lq-flipcard__face lq-flipcard__face--front">
+								{current.item.photo && <img className="lq-item-photo" src={current.item.photo} alt="" />}
+								<PromptQuestion q={current.prompt.q} kind={current.prompt.kind} revealed={false} />
 							</div>
-						) : (
-							current.item.example && (
-								<div className="lq-example">
-									<code>{current.item.example}</code>
-									{current.item.exampleNote && <p className="lq-example__note">{current.item.exampleNote}</p>}
-								</div>
-							)
-						)}
-						{current.item.href && (
-							<a className="lq-note-link" href={current.item.href} target="_blank" rel="noopener">
-								Read the full note →
-							</a>
-						)}
-						<div className="lq-grade">
-							<button type="button" className="lq-button lq-button--primary" onClick={advance}>
-								{isLastIntroCard ? 'Got it — start training →' : 'Got it — next →'}
-							</button>
-							<button type="button" className="lq-button lq-button--ghost" onClick={skipCurrentItem}>
-								Skip — don't learn this
-							</button>
-						</div>
-					</div>
-				) : (
-					<div className="lq-flip-wrap">
-						<div
-							className={`lq-flipcard${revealed ? ' lq-flipcard--flipped' : ''}`}
-							role="button"
-							tabIndex={0}
-							aria-label="Flip card"
-							onClick={() => setRevealed((r) => !r)}
-							onKeyDown={(e) => {
-								if (e.key === 'Enter' || e.key === ' ') {
-									e.preventDefault();
-									setRevealed((r) => !r);
-								}
-							}}
-						>
-							<span className="lq-flipcard__flip-icon" aria-hidden="true">
-								⟳
-							</span>
-							<div className="lq-flipcard__inner">
-								<div className="lq-flipcard__face lq-flipcard__face--front">
-									{current.item.photo && <img className="lq-item-photo" src={current.item.photo} alt="" />}
-									<p className="lq-question">{current.prompt!.q}</p>
-								</div>
-								<div className="lq-flipcard__face lq-flipcard__face--back">
-									<p className="lq-eyebrow">
-										{deck && (
-											<span className="lq-deck-badge">
-												{deck.emoji} {deck.title}
-											</span>
-										)}
-										{' '}
-										<code className="lq-inline-cmd">{current.item.term}</code>
-									</p>
-									{deck?.monoAnswers ? (
-										<code className="lq-answer__text">{current.prompt!.a}</code>
-									) : (
-										<span className="lq-answer__text lq-answer__text--prose">{current.prompt!.a}</span>
+							<div className="lq-flipcard__face lq-flipcard__face--back">
+								<p className="lq-eyebrow">
+									{deck && (
+										<span className="lq-deck-badge">
+											{deck.emoji} {deck.title}
+										</span>
 									)}
-									{current.prompt!.note && <p className="lq-answer__note">{current.prompt!.note}</p>}
-								</div>
+									{' '}
+									<code className="lq-inline-cmd">{current.item.term}</code>
+								</p>
+								{current.prompt.kind === 'cloze' && (
+									<PromptQuestion q={current.prompt.q} kind="cloze" revealed={true} />
+								)}
+								{deck?.monoAnswers ? (
+									<code className="lq-answer__text">{current.prompt.a}</code>
+								) : (
+									<span className="lq-answer__text lq-answer__text--prose">{current.prompt.a}</span>
+								)}
+								{current.prompt.note && <p className="lq-answer__note">{current.prompt.note}</p>}
 							</div>
 						</div>
-
-						{!revealed ? (
-							<div className="lq-flip-controls">
-								<p className="lq-recall-hint">Answer in your head first — that’s the rep that counts.</p>
-							</div>
-						) : (
-							<div className="lq-flip-controls">
-								<div className="lq-grade">
-									<button type="button" className="lq-button lq-button--got" onClick={() => gradeCurrent(true)}>
-										✓ Got it
-									</button>
-									<button type="button" className="lq-button lq-button--forgot" onClick={() => gradeCurrent(false)}>
-										✗ Forgot
-									</button>
-								</div>
-							</div>
-						)}
 					</div>
-				)}
+
+					{!revealed ? (
+						<div className="lq-flip-controls">
+							<p className="lq-recall-hint">Answer in your head first — that’s the rep that counts.</p>
+						</div>
+					) : (
+						<div className="lq-flip-controls">
+							<div className="lq-grade">
+								<button type="button" className="lq-button lq-button--got" onClick={() => gradeCurrent(true)}>
+									✓ Got it
+								</button>
+								<button type="button" className="lq-button lq-button--forgot" onClick={() => gradeCurrent(false)}>
+									✗ Forgot
+								</button>
+							</div>
+						</div>
+					)}
+				</div>
 			</div>
 		);
 	}
@@ -608,7 +520,6 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 				<p className="lq-eyebrow">Done for today</p>
 				<h2 className="lq-done__headline">
 					{results.got} remembered · {results.forgot} to revisit
-					{results.learned > 0 ? ` · ${results.learned} new` : ''}
 				</h2>
 				<p className="lq-done__message">
 					{results.forgot === 0
@@ -652,10 +563,15 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 						</button>
 						<p className="lq-today__status">
 							{totalDue > 0 ? `${totalDue} due` : 'nothing due'}
-							{totalNew > 0 ? ` · ${totalNew} new` : ''}
 							{meta.streak > 0 ? ` · ${meta.streak}-day streak` : ''}
 						</p>
 					</div>
+				)}
+				{totalNew > 0 && (
+					<p className="lq-today__status">
+						{totalNew} new concept{totalNew === 1 ? '' : 's'} waiting on the{' '}
+						<a href="/learn/new/">Learn page</a> — learn first, then practice.
+					</p>
 				)}
 				{startError && <p className="lq-today__status lq-today__status--error">{startError}</p>}
 			</div>

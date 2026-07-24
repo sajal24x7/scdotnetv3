@@ -6,6 +6,7 @@ import {
 	computeNewAvailable,
 	computeUnseenCount,
 	emptyState,
+	GLOBAL_NEW_PER_DAY,
 	localToday,
 	type SrsState,
 } from './engine';
@@ -72,6 +73,8 @@ function progressLine(system: LearnHubSystem, status: SystemStatus): { text: str
 	return { text: `${pct}% of the territory introduced`, kind: 'progress' };
 }
 
+// Two banners for the two halves of the daily ritual: learning (new
+// concepts, at /learn/new) and practice (due Q&A, at /practice).
 function Banner({ systems, statuses }: { systems: LearnHubSystem[]; statuses: Record<string, SystemStatus> | null }) {
 	if (!statuses) return null;
 	let due = 0;
@@ -82,14 +85,22 @@ function Banner({ systems, statuses }: { systems: LearnHubSystem[]; statuses: Re
 		due += status.due;
 		newAvailable += status.newAvailable;
 	}
-	const text = due > 0 || newAvailable > 0
-		? [due > 0 ? `${due} due` : null, newAvailable > 0 ? `${newAvailable} new` : null].filter(Boolean).join(' · ')
-		: '✓ all caught up';
+	// Show what /learn/new would actually offer today, not the raw sum of
+	// every deck's budget.
+	newAvailable = Math.min(newAvailable, GLOBAL_NEW_PER_DAY);
 	return (
-		<a className="lq-hub__banner" href="/practice/">
-			<span className="lq-hub__banner-title">Today's practice</span>
-			<span className="lq-hub__banner-counts">{text} →</span>
-		</a>
+		<>
+			<a className="lq-hub__banner" href="/learn/new/">
+				<span className="lq-hub__banner-title">New today</span>
+				<span className="lq-hub__banner-counts">
+					{newAvailable > 0 ? `${newAvailable} new concept${newAvailable === 1 ? '' : 's'} to learn` : '✓ nothing new left'} →
+				</span>
+			</a>
+			<a className="lq-hub__banner" href="/practice/">
+				<span className="lq-hub__banner-title">Today's practice</span>
+				<span className="lq-hub__banner-counts">{due > 0 ? `${due} due` : '✓ all caught up'} →</span>
+			</a>
+		</>
 	);
 }
 

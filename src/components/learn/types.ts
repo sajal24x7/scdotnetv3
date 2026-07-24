@@ -3,9 +3,20 @@
 
 export interface Prompt {
 	id: string;
+	// For plain q/a prompts, the question text. For cloze prompts
+	// (kind: 'cloze'), the full statement with the hidden span(s) wrapped in
+	// {{…}} markers — the UI masks them on the front and reveals them
+	// highlighted on the back, e.g. q: 'talo + "in" = talo{{ssa}}'.
 	q: string;
+	// The canonical answer. Keep it to 1–2 words (or one flag/form) — prompts
+	// must be atomic, precise, consistent, and effortful; long prose answers
+	// are un-gradeable. For cloze prompts this is the hidden text (joined
+	// with ' · ' when there are multiple deletions).
 	a: string;
 	note?: string;
+	// Absent = plain question/answer. 'cloze' = fill-in-the-blank; q carries
+	// {{…}} markers.
+	kind?: 'cloze';
 }
 
 // A single worked example: a code/phrase line plus an optional one-line note

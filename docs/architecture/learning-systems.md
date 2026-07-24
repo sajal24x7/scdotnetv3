@@ -1,17 +1,26 @@
 # Learning Systems
 
-How the site's "periodic table on the wall" learning systems work, and where the daily practice ritual actually happens. Learning is per-domain and browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/finnish` (Finnish as a rule system) and `/learn/finnish-vocab` (its communicative-vocabulary sibling deck), `/learn/til` and `/learn/evergreen` (decks extracted from published notes), `/learn/vocabulary` (fed automatically from Wiktionary's Word of the Day), `/learn/people` (private, local-first — names and faces, never stored on any server). Practice — the bounded, graded, everything-interleaved daily session — is unified at **`/practice`**, one queue across every deck. This split (and the reasoning behind it) is [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md); this document describes what's implemented.
+How the site's "periodic table on the wall" learning systems work, and where the daily ritual actually happens. The ritual has two halves, on two different surfaces:
 
-`/learn` is the hub page: one card per system (territory + progress), plus a banner pointing at `/practice` for today's actual work.
+- **Learning** — reading today's new concepts and deciding to take each one on — happens on the learn side: the combined **`/learn/new`** page (every deck's new concepts for today, one queue), or any deck's own `/learn/<topic>` page (that deck's new concepts only). Accepting a concept marks it introduced and seeds its prompts due-today.
+- **Practice** — the bounded, graded, everything-interleaved daily Q&A session — is unified at **`/practice`**, one queue across every deck. It contains *only questions and answers*; it never introduces anything. A freshly accepted concept's prompts show up there the same day.
+
+Domains are browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/finnish` (Finnish as a rule system) and `/learn/finnish-vocab` (its communicative-vocabulary sibling deck), `/learn/til` and `/learn/evergreen` (decks extracted from published notes), `/learn/vocabulary` (fed automatically from Wiktionary's Word of the Day), `/learn/people` (private, local-first — names and faces, never stored on any server). The original unified-practice reasoning is [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md); this document describes what's implemented.
+
+`/learn` is the hub page: one card per system (territory + progress), plus two banners — "New today" pointing at `/learn/new`, and "Today's practice" pointing at `/practice`.
 
 **Key files:**
 
 | Role | File |
 | --- | --- |
 | Shared types | `src/components/learn/types.ts` |
-| Shared scheduler + persistence + unified queue (pure functions) | `src/components/learn/engine.ts` |
-| Per-domain UI: wall chart, reference panel, no-op drills | `src/components/learn/LearningSystem.tsx` |
-| Unified daily session UI (the only place SrsState is graded) | `src/components/learn/PracticeSession.tsx` |
+| Shared scheduler + persistence + unified queue + cloze parsing (pure functions) | `src/components/learn/engine.ts` |
+| Per-domain UI: wall chart, reference panel, no-op drills, per-deck intro flow | `src/components/learn/LearningSystem.tsx` |
+| Unified daily Q&A session UI (the only place SrsState is graded) | `src/components/learn/PracticeSession.tsx` |
+| Combined "new today" page + island | `src/pages/learn/new.astro`, `src/components/learn/NewToday.tsx` |
+| Shared intro-card flow (accept/skip per new concept) | `src/components/learn/IntroFlow.tsx` |
+| Shared item reference card + prompt/cloze question rendering | `src/components/learn/ItemDetails.tsx` |
+| Sync client helpers (pull/push blob, token keys) | `src/components/learn/sync.ts` |
 | Deck registry (server-only; build-time) | `src/data/practice-registry.ts` |
 | `/practice` page + per-deck dataset endpoint | `src/pages/practice.astro`, `src/pages/api/practice/[deck].json.ts` |
 | Shared styles | `src/styles/learn.css` |
@@ -38,9 +47,33 @@ These come largely from Andy Matuschak's work on spaced repetition and memory sy
 3. **Spacing over cramming.** Each prompt has its own review schedule. Correct answers push it further out; misses pull it back to tomorrow. Reviewing right before the forgetting point is what converts short-term familiarity into long-term memory.
 4. **Bounded daily sessions.** A session must reliably take 2–5 minutes. Cap due reviews per day and introduce new material gradually. The ritual dies the day it feels like a backlog chore — "done for today, come back tomorrow" is a feature, not a limitation.
 5. **Gradual introduction.** Never dump the whole deck on day one. A fixed number of new items per day (2 commands ≈ 4 prompts for the Linux page) ramps a 60-item deck in over about a month, interleaved with reviews. Introduce new items round-robin across categories so early days mix topics.
-6. **Atomic prompts.** One fact per prompt, short unambiguous answer, scenario-flavored where possible ("umount says target is busy — how do you find who's holding it?" beats "what does lsof do?"). Several small prompts per item beat one big one; each is scheduled independently, so weak facts get extra reps without dragging strong ones along.
+6. **Atomic prompts.** One fact per prompt, short unambiguous answer, scenario-flavored where possible ("umount says target is busy — how do you find who's holding it?" beats "what does lsof do?"). Several small prompts per item beat one big one; each is scheduled independently, so weak facts get extra reps without dragging strong ones along. See "Writing prompts" below for the full rules.
 7. **A visible territory.** The wall chart — every item as a small tile, grouped by category, colored by memory strength — is the emotional engine. It gives the periodic-table-on-the-wall experience: you see the whole domain at a glance, watch it turn green over weeks, and the due tiles pulse as today's task. Progress feels physical.
 8. **Reference doubles as prompt context.** Clicking any tile shows the item's reference card (syntax, description, worked example). The chart is therefore also a lookup sheet, which keeps the learner returning to the page outside review time — Matuschak's mnemonic-medium idea of memory prompts living inside real reference material.
+9. **Learning and practicing are different mental modes, on different pages.** Reading a new concept properly (the reference card, the examples, the why) is study; answering a question from memory is retrieval. The learn side (`/learn/new`, `/learn/<topic>`) owns the first; `/practice` owns the second and contains nothing else.
+
+## Writing prompts
+
+Cards must be **atomic, connected, and meaningful**; each prompt must be:
+
+1. **Focused (atomic)** — one fact per prompt. If the answer wants to explain two flags or contrast two commands, that's two prompts.
+2. **Precise** — the question pins down exactly what's being asked; no "what about X" vagueness.
+3. **Consistent** — the same answer every time. If two answers are defensible, rephrase until only one is.
+4. **Effortful** — the answer must not be inferable from the prompt. True/false and yes/no questions are banned (`scripts/validate-learn-data.mjs` enforces this); the statement form gives the fact away and a coin flip scores 50%.
+
+**Answers are 1–2 words** (or one flag, suffix, or command line) — never prose. The validator errors on answers longer than 8 words in the curated/automated pools (linux, finnish, finnish-vocab, vocab) and warns for the note-backed decks. Explanation belongs in the prompt's optional `note:` field, revealed with the answer, not in the answer itself.
+
+Two prompt formats:
+
+- **q/a** — a recall question with a short answer.
+- **Cloze deletion** — `kind: 'cloze'`, with the full statement in `q` and the hidden span(s) wrapped in `{{…}}`:
+
+  ```ts
+  { id: 'c-ine-2', kind: 'cloze', q: 'talo + "in the house" = talo{{ssa}}', a: 'ssa',
+    note: 'Inessive -ssa/-ssä — back-vowel word takes -ssa.' }
+  ```
+
+  The UI (`PromptQuestion` in `ItemDetails.tsx`, `splitCloze` in `engine.ts`) renders each hidden span as an underlined blank on the card front and highlighted text on the back. Cloze is the right tool for pattern completion (suffix forms, gradation pairs, command syntax); q/a for meanings and "which tool/flag does X" recall. In note-backed learn blocks the same fields work in YAML (`kind: cloze` plus `{{…}}` in `q`).
 
 ## Architecture
 
@@ -53,13 +86,14 @@ Plain TypeScript data, no logic. Shape (`src/components/learn/types.ts`):
 ```ts
 Category { id, title, emoji, description, items: LearnItem[] }
 LearnItem { id, term, syntax, description, example, exampleNote, prompts: Prompt[] }
-Prompt   { id, q, a, note? }   // note = one-line elaboration shown with the answer
+Prompt   { id, q, a, note?, kind? }   // note = one-line elaboration shown with the answer;
+                                      // kind: 'cloze' = fill-in-the-blank ({{…}} markers in q)
 ```
 
 - **Item** = the unit of *introduction* and of the wall chart (a tile).
 - **Prompt** = the unit of *scheduling* (each has its own FSRS card — its own stability, difficulty, and due date). Aim for 2+ prompts per item: typically one "what does X do" and one scenario/flag prompt.
 - Prompt ids must be globally unique and stable — they key the learner's saved state, so renaming one orphans its progress.
-- An `introductionOrder` export defines the sequence new items appear in. It can be plain round-robin across categories (Linux) or hand-curated to respect content dependencies (Finnish: vowel harmony before suffixes, a gradation pattern before the case that uses it, a vocabulary word before the rule item that applies it to that word).
+- An `introductionOrder` export defines the sequence new items appear in. For curated decks it is hand-written and dependency-aware — Finnish (vowel harmony before suffixes, a gradation pattern before the case that uses it, a vocabulary word before the rule item that applies it to that word) and Linux (navigation/files/help fundamentals before pipes and text processing, before processes, storage, networking, systemd) both work this way. Feed-driven decks (til, evergreen, vocab) use newest-first instead, since the feed itself is the curriculum.
 - `linux-commands.ts` predates the shared types and keeps its own `Command`/`cmd` naming; `linux-learn-config.ts` adapts it to `LearnItem`/`term` at the config boundary rather than renaming the 1000+ line data file. New content pools should just use the shared types directly (see `finnish.ts`).
 - Run `node scripts/validate-learn-data.mjs` after editing a content pool — it checks prompt-id uniqueness, that every item appears in `introductionOrder` exactly once, and that no category/item is empty.
 
@@ -73,8 +107,8 @@ Scheduling is [FSRS](https://github.com/open-spaced-repetition/ts-fsrs) (the alg
 - **Grading stays two buttons.** "Forgot" maps to FSRS's `Again`, "Got it" to `Good`. Hard/Easy exist in the algorithm but aren't exposed — a four-way self-assessment per card is exactly the per-rep decision principle #1 forbids.
 - **Desired retention** is fixed at `DEFAULT_RETENTION = 0.9` (FSRS's own default) for now; surfacing it as a per-user setting is deferred to `/practice` (see the unified-practice plan).
 - **Day-granular by design.** The FSRS instance is configured with `enable_short_term: false`, which disables Anki's minute-level (re)learning steps — every persisted interval is a whole calendar day, even the very first "Again" on a brand-new card (verified: schedules >= 1 day out, never same-day). `enable_fuzz: false` keeps intervals exact rather than randomized. A same-day second chance after "Forgot" is handled at the *session* level instead: the failed prompt is requeued once at the end of the current session's queue (tracked in `LearningSystem.tsx`, capped at one retry per prompt per session) — turning a slip into a win more often than making the learner wait until tomorrow, while the persisted `due` stays date-based throughout.
-- Daily session = all due prompts (earliest-due first, capped at `dueCap`) + up to `newPerDay` new items (learn-card first, then its prompts). Both are config values — see the tuning table below.
-- The new-item budget is tracked per calendar date, so reopening the page mid-day doesn't introduce extras.
+- Daily practice session = due prompts only (earliest-due first, capped at `dueCap` per deck). Introduction is a separate, learn-side act: `introduceItem` marks the item and seeds a fresh FSRS card (state `New`, due today) per prompt, so a just-accepted concept's questions arrive in `/practice` through the ordinary due path the same day — no special "new" branch exists downstream.
+- The new-item budget (`newPerDay` per deck, `GLOBAL_NEW_PER_DAY` across decks) gates the learn side (`newCandidatesForDeck`/`buildNewToday`), tracked per calendar date so reopening a page mid-day doesn't offer extras.
 - Dates are local calendar dates (`YYYY-MM-DD`), not UTC — "tomorrow" must mean the user's tomorrow. FSRS itself works in JS `Date` objects; `engine.ts` converts at the boundary (`toFsrsInput`/`fromFsrsCard`) so persisted state and the rest of the module stay in the string-date domain.
 
 Tile status on the chart is derived, never stored: `unseen` (not introduced) → `due` (any prompt due) → `learning` (Learning/Relearning state, or stability < 21 days) → `strong` (Review state with stability >= 21 days).
@@ -95,7 +129,7 @@ One key per system (`linux-learn-srs`, `finnish-learn-srs`), holding:
 
 ### UI states
 
-`LearningSystem.tsx` (per-domain, `/learn/<topic>`) only has two screens now: `chart` (today-strip linking to `/practice`, wall chart, legend, reference panel) and `drill` (run through a category's prompts with the same reveal/self-grade UI, but **without touching scheduler state** — cramming for curiosity shouldn't corrupt the spacing data). The graded review flow — `session` (learn cards and recall prompts, one at a time) → `done` (today's tally, streak, tomorrow's due count) — now lives in `PracticeSession.tsx` at `/practice` (see below); it's the only place any deck's `SrsState` gets mutated.
+`LearningSystem.tsx` (per-domain, `/learn/<topic>`) has three screens: `chart` (today-strip with the deck's own "Learn today's new items" button plus a link to `/practice`, wall chart, legend, reference panel), `intro` (this deck's new-concept cards for today via the shared `IntroFlow` — accept introduces the item and seeds its prompts due-today; skip suspends it), and `drill` (run through a category's prompts with the same reveal/self-grade UI, but **without touching scheduler state** — cramming for curiosity shouldn't corrupt the spacing data). The graded Q&A flow — `session` (recall prompts, one at a time) → `done` (today's tally, streak, tomorrow's due count) — lives in `PracticeSession.tsx` at `/practice` (see below); grading only ever happens there, while introduction only ever happens on the learn side (`LearningSystem`'s intro screen or `NewToday` at `/learn/new`).
 
 ## Finnish vocabulary (`/learn/finnish-vocab`)
 
@@ -174,22 +208,26 @@ Implements plan §4 (feed side; manual capture via `category: vocab` inbox notes
 
 ## Skip-at-introduction (`suspended`)
 
-Implements plan §4.4, generalized to every deck in the registry rather than vocabulary alone. A new item's learn card in `/practice`'s session (`PracticeSession.tsx`) carries a "Skip — don't learn this" action next to "Got it — quiz me": clicking it adds the item's id to `practice-meta.suspended` and removes the rest of that item's block (the learn card plus all its prompts, always contiguous — see `buildUnifiedQueue` in `engine.ts`) from the remaining session queue, without touching the item's `SrsState` at all (it stays fully unintroduced). `buildUnifiedQueue` already filtered candidates against `suspended` from Phase 2 onward; this phase adds the UI action that actually populates the set.
+Implements plan §4.4, generalized to every deck in the registry rather than vocabulary alone. Every new-concept card in the learn-side intro flows (`IntroFlow`, used by `/learn/new` and each deck's own intro screen) carries a "Skip — don't learn this" action next to "Got it": clicking it adds the item's id to `practice-meta.suspended` without touching the item's `SrsState` at all (it stays fully unintroduced). Both `buildUnifiedQueue` (due collection) and `newCandidatesForDeck`/`buildNewToday` (introduction candidates) filter against `suspended`.
 
 A suspended item shows as a distinct muted tile (`lq-tile--suspended`, dashed/struck-through) on its deck's `/learn/<topic>` wall chart — `LearningSystem.tsx` loads `practice-meta` (read-only) alongside its own `SrsState` purely to check membership, overriding whatever `itemStatus` would otherwise compute (always `unseen`, since a suspended item is never introduced). Selecting the tile's reference panel shows a "Bring back to practice" button that removes the id from `practice-meta.suspended` — the reversibility the plan calls for, with no separate "suspended list" page needed since the wall chart already is one.
 
 ## The hub (`/learn`)
 
-`/learn` renders one card per system — territory only: emoji, blurb, item/prompt totals, and a "territory progress" line ("38% of the territory introduced") derived from `state.introduced` versus the deck's total item count. It no longer shows due/new counts or a per-card CTA; those moved to `/practice`. A single banner above the cards ("Today's practice — 5 due · 2 new →") aggregates due/new counts across every registry deck and links to `/practice`. Both the banner and the per-card status line are computed client-side in `LearnHub.tsx`, read from each system's localStorage key. Systems stay fully independent; the page receives lightweight build-time summaries (`storageKey`, `newPerDay`, `dueCap`, item/prompt totals) rather than the datasets, sourced from `practiceRegistry` (see below) so the island stays small. The count derivation mirrors `engine.ts`'s exactly — keep them in sync if the state schema changes.
+`/learn` renders one card per system — territory only: emoji, blurb, item/prompt totals, and a "territory progress" line ("38% of the territory introduced") derived from `state.introduced` versus the deck's total item count. It no longer shows due/new counts or a per-card CTA. Two banners above the cards mirror the ritual's two halves: "New today — N new concepts to learn →" links to `/learn/new`, and "Today's practice — N due →" links to `/practice`. Both banners and the per-card status line are computed client-side in `LearnHub.tsx`, read from each system's localStorage key. Systems stay fully independent; the page receives lightweight build-time summaries (`storageKey`, `newPerDay`, `dueCap`, item/prompt totals) rather than the datasets, sourced from `practiceRegistry` (see below) so the island stays small. The count derivation mirrors `engine.ts`'s exactly — keep them in sync if the state schema changes.
+
+## The new-today page (`/learn/new`)
+
+The combined learn-side surface: every deck's new-concept candidates for today, merged round-robin across decks up to `GLOBAL_NEW_PER_DAY` (`buildNewToday` in `engine.ts`), rendered one full reference card at a time by `NewToday.tsx` via the shared `IntroFlow`. Accepting a card calls `introduceItem` (marks introduced, seeds each prompt's card due-today) against the deck's own `storageKey`; skipping suspends the item. On mount it pulls-and-merges the sync blob first (when connected) so a concept introduced on another device isn't offered again, and pushes after each accept/skip. The done screen links straight to `/practice`, where the just-introduced prompts are already waiting. Each deck's own `/learn/<topic>` page offers the same flow scoped to that one deck — use whichever entry point fits the day.
 
 ## The unified practice session (`/practice`)
 
-The daily ritual — due reviews plus gradual new-item introduction, interleaved across every deck — lives at `/practice`, not on the per-domain pages. Implements plan §1–§2 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md):
+The daily Q&A ritual — due reviews interleaved across every deck, questions and answers only — lives at `/practice`, not on the per-domain pages. Implements plan §1–§2 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md), with introduction since moved out to the learn side:
 
 - **Registry** (`src/data/practice-registry.ts`, server-only) — a `PracticeDeck[]` derived at build time from each system's existing `*-learn-config.ts`: `id`, `title`, `emoji`, `blurb`, `itemNoun`, `monoAnswers`, `newPerDay`, `dueCap`, `storageKey`, `legacyKey`, `totalItems`/`totalPrompts` (counts only), and a `source` (`{ kind: 'json', href }` for public decks served from `/api/practice/<id>.json`, or `{ kind: 'local' }` for a future browser-only deck like people). This module imports the full content pools, so it must only ever be imported from Astro frontmatter (`practice.astro`, `learn/index.astro`) — never from a `client:load` island, which receives the derived array as a prop instead.
 - **Per-deck dataset endpoint** (`src/pages/api/practice/[deck].json.ts`) — a prerendered route (same pattern as `api/link-previews/[category].json.ts`) serving each deck's `LearnDataset` as static JSON, so the practice island can fetch just the decks it needs instead of bundling every content pool.
-- **Queue composition** (`buildUnifiedQueue` in `engine.ts`) — gathers each deck's own due/new candidates exactly as `buildDailySession` would (earliest-due first, capped at the deck's own `dueCap`/`newPerDay`), then merges them **round-robin across decks** up to a global cap (`GLOBAL_DUE_CAP = 20` reviews, `GLOBAL_NEW_PER_DAY = 5` new items) — fairness so one deck's backlog can't starve another, and free interleaving. A deck's own budget can outlast one capped session; running `/practice` again the same day picks up wherever the global cap left off.
-- **`PracticeSession.tsx`** — the island: loads every enabled deck's `SrsState` from localStorage (no fetch), only fetches datasets for decks that actually contribute to today's queue, renders each card with a deck badge, grades against the same `gradeCard`/FSRS engine (this is now the *only* place any `SrsState` gets saved), and keeps the same-session "Forgot" requeue behavior `LearningSystem.tsx` used to.
+- **Queue composition** (`buildUnifiedQueue` in `engine.ts`) — gathers each deck's due candidates (earliest-due first, capped at the deck's own `dueCap`), then merges them **round-robin across decks** up to `GLOBAL_DUE_CAP = 20` — fairness so one deck's backlog can't starve another, and free interleaving. A deck's own budget can outlast one capped session; running `/practice` again the same day picks up wherever the global cap left off. New concepts never appear here — when today's new budget has anything left, the home screen shows a nudge linking to `/learn/new` instead.
+- **`PracticeSession.tsx`** — the island: loads every enabled deck's `SrsState` from localStorage (no fetch), only fetches datasets for decks that actually contribute to today's queue, renders each flip card with a deck badge (cloze prompts mask their `{{…}}` spans until the flip), grades against the same `gradeCard`/FSRS engine (this is the *only* place grading saves `SrsState`), and keeps the same-session "Forgot" requeue behavior.
 - **`practice-meta`** (one shared localStorage key, `PracticeMeta` in `engine.ts`) — the one genuinely global piece of state: `streak` (seeded from the max of existing per-deck streaks the first time it's created), `lastSessionDate`, `totalSessions`, `disabledDecks` (deck toggles, "pause Finnish for a month" — a checkbox per deck on `/practice`), `suspended` (item ids skipped at introduction — plumbed through now, populated once a deck adds a skip action per plan §4.4). Per-deck `streak`/`totalSessions` fields stop being read; the deck's own `SrsState` still carries them as harmless leftovers.
 - **Export/import** — a JSON blob of every registry deck's storage key plus `practice-meta`, downloaded/uploaded from `/practice`, is the manual backup and escape hatch, independent of sync.
 
@@ -237,7 +275,7 @@ A new *learning* system (wall chart + reference) is data plus a config plus a pa
 | `newPerDay` | 2 | 3 | 3 | 2 | 1 | 1 | 2 | New items introduced daily (per deck, before the global cap) |
 | `dueCap` | 8 | 12 | 14 | 8 | 6 | 6 | 8 | Max reviews shown per day (per deck, before the global cap) |
 | `GLOBAL_DUE_CAP` | 20 | same | same | same | same | same | same | Max reviews across all decks in one `/practice` session |
-| `GLOBAL_NEW_PER_DAY` | 5 | same | same | same | same | same | same | Max new items across all decks in one `/practice` session |
+| `GLOBAL_NEW_PER_DAY` | 5 | same | same | same | same | same | same | Max new concepts across all decks per day on `/learn/new` |
 | `STRONG_STABILITY_DAYS` | 21 | same | same | same | same | same | same | Stability threshold for the "solid" tile color (fixed in the engine) |
 | `monoAnswers` | `true` | `false` | `false` | `true` | `false` | `false` | `false` | Whether revealed answers render in `<code>` (commands) or prose (natural language) |
 
