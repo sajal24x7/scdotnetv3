@@ -8,6 +8,7 @@ tags:
   - psychology
 author:
   - Ichi Yukishiro
+  - Fumitake Koga
 started: 2026-07-20T13:44:00.000Z
 finished: 2026-07-23T19:15:00.000Z
 genre: self-help
