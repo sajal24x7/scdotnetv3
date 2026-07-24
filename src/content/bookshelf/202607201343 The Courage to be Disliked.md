@@ -15,6 +15,10 @@ genre: self-help
 format: audio
 rating: love
 status: finished
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116974058744145471'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mrexffknto24'
+  - 'https://www.threads.com/@sajal24x7/post/DbK1ajNGwYP'
 ---
 ## Review
 
