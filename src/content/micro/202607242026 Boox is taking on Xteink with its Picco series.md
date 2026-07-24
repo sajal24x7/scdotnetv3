@@ -1,10 +1,17 @@
 ---
-title: "Boox Is Taking on Xteink With Its Picco Series"
-slug: "boox-is-taking-on-xteink-with-its-picco-series"
-created: 2026-07-24T20:26:00+03:00
-updated: 2026-07-24T20:30:53+03:00
+title: Boox Is Taking on Xteink With Its Picco Series
+slug: boox-is-taking-on-xteink-with-its-picco-series
+created: 2026-07-24T17:26:00.000Z
+updated: 2026-07-24T17:30:53.000Z
 category: micro
-tags: ["e-readers", "boox", "xteink"]
+tags:
+  - e-readers
+  - boox
+  - xteink
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116976668517877733'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mrg4i6wq7r2p'
+  - 'https://www.threads.com/@sajal24x7/post/DbMBXn2mv0K'
 ---
 [Boox is taking on Xteink with its own tiny e-reader by Stevie Bonifield](https://www.theverge.com/tech/970618/onyx-boox-picco-ereader-xteink)
 
