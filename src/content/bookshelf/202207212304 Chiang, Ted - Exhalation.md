@@ -1,5 +1,5 @@
 ---
-title: 'Chiang, Ted - Exhalation'
+title: 'Exhalation'
 slug: chiang-ted-exhalation
 created: 2026-01-08T17:13:34.000Z
 updated: 2026-01-08T17:13:34.000Z
