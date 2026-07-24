@@ -281,6 +281,8 @@ A new *learning* system (wall chart + reference) is data plus a config plus a pa
 
 Raising `dueCap` clears backlogs faster after missed days but lengthens sessions; the cap is safe because capped-out cards remain due and surface the next day. `DEFAULT_RETENTION`, `STRONG_STABILITY_DAYS`, and the two `GLOBAL_*` caps live as constants inside `engine.ts` rather than any config — no deck has needed to deviate from them yet.
 
+`/learn/new` (`NewToday.tsx`) also passes `guaranteedGroups: [['vocab'], ['finnish', 'finnish-vocab']]` into `buildNewToday` — one reserved slot each for English and Finnish, taken before the ordinary round-robin fills the rest of the 5-item cap. Without it, plain round-robin in `practiceRegistry` order lets `linux`/`finnish`/`finnish-vocab`/`til`/`evergreen` (five decks, in that order) exhaust the cap on their own on any day they all have candidates, starving `vocab` (English) entirely — Finnish already had two decks' worth of representation, English had none. `buildNewToday`'s `guaranteedGroups` param is generic (a list of deck-id priority groups, one guaranteed pick per group); the English/Finnish grouping itself is a call-site decision in `NewToday.tsx`, not baked into the engine.
+
 ## Deliberate non-features
 
 - **No penalties for missed days.** The due pile waits, capped per session. Guilt mechanics kill daily rituals.

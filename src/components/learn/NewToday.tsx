@@ -132,6 +132,12 @@ export default function NewToday({ registry }: { registry: PracticeDeck[] }) {
 				today,
 				suspended: new Set(currentMeta.suspended),
 				globalNewPerDay: GLOBAL_NEW_PER_DAY,
+				// Guarantee at least one English word (vocab) and one Finnish word
+				// (finnish, falling back to finnish-vocab) among today's picks —
+				// otherwise plain round-robin in registry order lets linux/finnish/
+				// finnish-vocab/til/evergreen fill the global cap before vocab is
+				// ever reached.
+				guaranteedGroups: [['vocab'], ['finnish', 'finnish-vocab']],
 			});
 
 			if (cancelled) return;
