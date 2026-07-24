@@ -151,6 +151,22 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/yaw-2026-07-14",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-07-14"
+		},
+		"union": {
+			"word": "union",
+			"pos": "other",
+			"gloss": "( countable ) The act of uniting or joining two or more things into one.",
+			"href": "https://en.wiktionary.org/wiki/union",
+			"source": "wiktionary",
+			"fetchedAt": "2026-07-24"
+		},
+		"itinerant": {
+			"word": "itinerant",
+			"pos": "other",
+			"gloss": "Merriam-Webster's Word of the Day for July 24, 2026 is: itinerant  \\eye-TIN-uh-runt\\&nbsp;  adjective Itinerant describes someone who travels from place to place or only stays in a place for a short amount of time. It is used especially for people who travel in a circuit for their profession. // Being an itinerant musician gave her the opportunity to see the wonders of the world with her own eye",
+			"href": "https://www.merriam-webster.com/word-of-the-day/itinerant-2026-07-24",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-07-24"
 		}
 	}
 }
