@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NewToday from '../../components/learn/NewToday';
+import { practiceRegistry } from '../../data/practice-registry';
+import '../../styles/learn.css';
+---
+
+<Layout
+  title="New Today — Learn"
+  description="Today's new concepts across every practice deck — read each one, decide to learn or skip it, then quiz yourself at practice."
+  currentPage="/learn"
+  pageWrapper={{ container: true, maxWidth: '3xl', padding: 'lg', paddingScale: 'page' }}
+  enableLinkHoverEffect
+  index={false}
+>
+  <div class="learn-new-page">
+    <h1 class="learn-new-page__title">New today</h1>
+    <p class="learn-new-page__subtitle">
+      Today's new concepts, gathered from every deck. Read each card properly — this is the
+      learning half. The questions land in <a href="/practice/">practice</a> the moment you
+      accept a concept.
+    </p>
+
+    <NewToday client:load registry={practiceRegistry} />
+  </div>
+</Layout>

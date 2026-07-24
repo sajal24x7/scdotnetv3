@@ -230,13 +230,40 @@ export function saveState(storageKey: string, state: SrsState) {
 	}
 }
 
+// --- Cloze prompts ---
+//
+// A prompt with kind: 'cloze' carries its full statement in `q`, with the
+// hidden span(s) wrapped in {{…}}. The UI masks each hidden span on the
+// card's front and reveals it highlighted on the back; `a` stays the
+// canonical short answer for the reveal line.
+
+export interface ClozeSegment {
+	text: string;
+	hidden: boolean;
+}
+
+export function splitCloze(q: string): ClozeSegment[] {
+	const segments: ClozeSegment[] = [];
+	const re = /\{\{(.+?)\}\}/g;
+	let last = 0;
+	let match: RegExpExecArray | null;
+	while ((match = re.exec(q)) !== null) {
+		if (match.index > last) segments.push({ text: q.slice(last, match.index), hidden: false });
+		segments.push({ text: match[1], hidden: true });
+		last = match.index + match[0].length;
+	}
+	if (last < q.length) segments.push({ text: q.slice(last), hidden: false });
+	return segments;
+}
+
 // --- Session composition ---
 
+// Since the learn/practice split, a session/drill queue only ever contains
+// prompts — new-concept intro cards live in the learn-side IntroFlow instead.
 export interface SessionItem {
-	kind: 'learn' | 'prompt';
+	kind: 'prompt';
 	item: LearnItem;
-	prompt?: Prompt;
-	isNew?: boolean;
+	prompt: Prompt;
 }
 
 export function buildPromptsById(allItems: LearnItem[]): Map<string, { prompt: Prompt; item: LearnItem }> {
@@ -249,47 +276,23 @@ export function buildPromptsById(allItems: LearnItem[]): Map<string, { prompt: P
 	return map;
 }
 
-export function buildDailySession(params: {
-	state: SrsState;
-	today: string;
-	allItems: LearnItem[];
-	promptsById: Map<string, { prompt: Prompt; item: LearnItem }>;
-	introductionOrder: string[];
-	dueCap: number;
-	newPerDay: number;
-}): SessionItem[] {
-	const { state, today, allItems, promptsById, introductionOrder, dueCap, newPerDay } = params;
-	const items: SessionItem[] = [];
+// --- Introduction (the learn side of the learn/practice split) ---
+//
+// Introducing an item happens on /learn/new or a deck's own /learn/<topic>
+// page — never inside the /practice session, which is Q&A only. Introduction
+// marks the item and seeds a fresh FSRS card (state New, due today) for each
+// of its prompts, so the item's questions surface in /practice the same day
+// through the ordinary due-collection path — no special "new" branch needed
+// downstream (counts, sync merge, and the queue all just see due cards).
 
-	// 1. Reviews due today (earliest-due first, capped so a backlog can't balloon).
-	const due = Object.entries(state.cards)
-		.filter(([, card]) => card.due <= today)
-		.sort((a, b) => (a[1].due < b[1].due ? -1 : 1))
-		.slice(0, dueCap)
-		.map(([id]) => promptsById.get(id))
-		.filter((x): x is { prompt: Prompt; item: LearnItem } => Boolean(x));
-
-	for (const { prompt, item } of due) {
-		items.push({ kind: 'prompt', item, prompt });
+export function introduceItem(state: SrsState, item: LearnItem, today: string): SrsState {
+	if (state.introduced[item.id]) return state;
+	const now = dateStringToLocalDate(today);
+	const cards = { ...state.cards };
+	for (const prompt of item.prompts) {
+		if (!cards[prompt.id]) cards[prompt.id] = fromFsrsCard(createEmptyCard(now));
 	}
-
-	// 2. New items, introduced gradually. Count today's already-introduced
-	//    items so reopening the page mid-day doesn't add extras.
-	const introducedToday = Object.values(state.introduced).filter((d) => d === today).length;
-	let slots = Math.max(0, newPerDay - introducedToday);
-	for (const itemId of introductionOrder) {
-		if (slots === 0) break;
-		if (state.introduced[itemId]) continue;
-		const item = allItems.find((i) => i.id === itemId);
-		if (!item) continue;
-		items.push({ kind: 'learn', item, isNew: true });
-		for (const prompt of item.prompts) {
-			items.push({ kind: 'prompt', item, prompt, isNew: true });
-		}
-		slots--;
-	}
-
-	return items;
+	return { ...state, cards, introduced: { ...state.introduced, [item.id]: today } };
 }
 
 // --- Grading & session close ---
@@ -384,14 +387,17 @@ function roundRobinPick<T>(queues: { deckId: string; queue: T[] }[], cap: number
 	return picked;
 }
 
+// Q&A only (learn/practice split): the queue is due reviews, nothing else.
+// New-concept introduction happens on the learn side (see buildNewToday /
+// introduceItem); a freshly introduced item's prompts arrive here as
+// ordinary due cards the same day, since introduceItem seeds them due-today.
 export function buildUnifiedQueue(params: {
 	decks: DeckSessionInput[];
 	today: string;
 	suspended: Set<string>;
 	globalDueCap: number;
-	globalNewPerDay: number;
 }): PracticeQueueItem[] {
-	const { decks, today, suspended, globalDueCap, globalNewPerDay } = params;
+	const { decks, today, suspended, globalDueCap } = params;
 	const deckById = new Map(decks.map((d) => [d.deckId, d]));
 	const items: PracticeQueueItem[] = [];
 
@@ -408,26 +414,41 @@ export function buildUnifiedQueue(params: {
 		if (hit) items.push({ kind: 'prompt', item: hit.item, prompt: hit.prompt, deckId });
 	}
 
-	// New items, gated the same way buildDailySession gates them: today's
-	// already-introduced count trims the deck's own newPerDay budget first.
-	const newQueues = decks.map((deck) => {
-		const introducedToday = Object.values(deck.state.introduced).filter((d) => d === today).length;
-		const slots = Math.max(0, deck.newPerDay - introducedToday);
-		const candidates = deck.introductionOrder
-			.filter((id) => !deck.state.introduced[id] && !suspended.has(id))
-			.slice(0, slots);
-		return { deckId: deck.deckId, queue: candidates };
-	});
-	for (const { deckId, value: itemId } of roundRobinPick(newQueues, globalNewPerDay)) {
-		const item = deckById.get(deckId)?.allItems.find((i) => i.id === itemId);
-		if (!item) continue;
-		items.push({ kind: 'learn', item, isNew: true, deckId });
-		for (const prompt of item.prompts) {
-			items.push({ kind: 'prompt', item, prompt, isNew: true, deckId });
-		}
-	}
-
 	return items;
+}
+
+// The learn-side counterpart: today's new-concept candidates across every
+// deck, round-robin up to the global budget, gated exactly as the old
+// in-session introduction was (per-deck newPerDay minus what's already been
+// introduced today, suspended items excluded). Consumed by /learn/new and,
+// per-deck, by the wall-chart pages.
+export interface NewTodayItem {
+	deckId: string;
+	item: LearnItem;
+}
+
+export function newCandidatesForDeck(deck: DeckSessionInput, today: string, suspended: Set<string>): LearnItem[] {
+	const introducedToday = Object.values(deck.state.introduced).filter((d) => d === today).length;
+	const slots = Math.max(0, deck.newPerDay - introducedToday);
+	return deck.introductionOrder
+		.filter((id) => !deck.state.introduced[id] && !suspended.has(id))
+		.slice(0, slots)
+		.map((id) => deck.allItems.find((i) => i.id === id))
+		.filter((item): item is LearnItem => Boolean(item));
+}
+
+export function buildNewToday(params: {
+	decks: DeckSessionInput[];
+	today: string;
+	suspended: Set<string>;
+	globalNewPerDay: number;
+}): NewTodayItem[] {
+	const { decks, today, suspended, globalNewPerDay } = params;
+	const newQueues = decks.map((deck) => ({
+		deckId: deck.deckId,
+		queue: newCandidatesForDeck(deck, today, suspended),
+	}));
+	return roundRobinPick(newQueues, globalNewPerDay).map(({ deckId, value }) => ({ deckId, item: value }));
 }
 
 // --- practice-meta: the one genuinely global piece of state (plan §2.4) ---

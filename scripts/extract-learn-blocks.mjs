@@ -152,6 +152,9 @@ function buildDeck(deck, dir, warnings) {
                     q: prompt.q.trim(),
                     a: prompt.a.trim(),
                     ...(typeof prompt.note === 'string' && prompt.note.trim() ? { note: prompt.note.trim() } : {}),
+                    // Cloze prompts: kind: cloze in the note's learn block, with
+                    // {{…}} markers around the hidden span(s) in q.
+                    ...(prompt.kind === 'cloze' ? { kind: 'cloze' } : {}),
                 });
             }
         }

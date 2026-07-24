@@ -32,19 +32,45 @@ export const POS_META: Record<string, { title: string; emoji: string }> = {
 	other: { title: 'Other', emoji: '✨' },
 };
 
+// Wiktionary glosses run long ("Of or relating to the general public;
+// common, vulgar (now chiefly historical)."). Prompt answers must stay short
+// (atomic/precise — see docs/architecture/learning-systems.md), so the
+// recognition prompt answers with a trimmed defining phrase and keeps the
+// full gloss in the prompt's note, shown after the reveal.
+export function shortGloss(gloss: string): string {
+	let g = gloss
+		.trim()
+		.replace(/\([^)]*\)/g, '')
+		.replace(/\s+/g, ' ')
+		.trim();
+	g = g.split(';')[0].trim();
+	const firstSentence = g.match(/^(.*?[.!?])\s/);
+	if (firstSentence) g = firstSentence[1];
+	g = g.replace(/[.!?]$/, '');
+	const words = g.split(' ');
+	if (words.length > 8) g = `${words.slice(0, 8).join(' ')}…`;
+	return g || gloss;
+}
+
 export function buildDataset(raw: Record<string, RawWord>): LearnDataset {
 	const byPos = new Map<string, LearnItem[]>();
 	const entries: { id: string; fetchedAt: string; word: string }[] = [];
 
 	for (const [key, entry] of Object.entries(raw)) {
 		const id = `vocab-${key}`;
+		const trimmed = shortGloss(entry.gloss);
 		const item: LearnItem = {
 			id,
 			term: entry.word,
 			description: entry.gloss,
 			href: entry.href,
 			prompts: [
-				{ id: `${id}-p1`, q: `What does *${entry.word}* mean?`, a: entry.gloss },
+				{
+					id: `${id}-p1`,
+					q: `What does *${entry.word}* mean?`,
+					a: trimmed,
+					...(trimmed === entry.gloss ? {} : { note: entry.gloss }),
+				},
 				{ id: `${id}-p2`, q: `Which word means: ${entry.gloss}`, a: entry.word },
 			],
 		};

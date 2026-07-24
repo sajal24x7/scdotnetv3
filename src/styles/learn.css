@@ -882,3 +882,26 @@
 	padding-left: 1.1rem;
 	line-height: 1.5;
 }
+
+/* ---------- Cloze prompts ---------- */
+
+/* A hidden span in a cloze prompt (Prompt.kind === 'cloze', {{…}} markers in
+   q). Before reveal it renders as an empty underlined blank; after reveal the
+   deleted text shows highlighted in the same slot. */
+.lq-cloze {
+	display: inline-block;
+	min-width: 3.5ch;
+	padding: 0 0.35ch;
+	border-bottom: 2px solid rgb(var(--color-accent));
+	white-space: pre;
+	text-align: center;
+}
+
+.lq-cloze--revealed {
+	white-space: normal;
+	color: rgb(var(--color-accent));
+	font-weight: 600;
+	border-bottom-color: transparent;
+	background: rgba(var(--color-accent), 0.1);
+	border-radius: 4px;
+}

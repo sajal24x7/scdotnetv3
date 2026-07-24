@@ -1,27 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import type { Category, LearnItem, LearnSystemConfig } from './types';
+import { ItemDetails, PromptQuestion } from './ItemDetails';
+import { IntroFlow, type IntroCard } from './IntroFlow';
 import {
 	emptyState,
+	introduceItem,
 	itemStatus,
 	loadPracticeMeta,
 	loadState,
 	localToday,
+	newCandidatesForDeck,
 	savePracticeMeta,
+	saveState,
+	type PracticeMeta,
 	type SessionItem,
 	type SrsState,
 } from './engine';
+import { loadSyncToken, pushBlobFromLocalStorage } from './sync';
 
-// UI for the per-domain wall chart + reference panel + no-op drills.
-// Scheduling and persistence live in ./engine. The daily review session
-// that used to live here now happens at /practice, the one place SrsState
-// gets mutated (unified-practice plan §1) — this component only reads state
-// to color the wall chart and never grades against it. Parameterized by
-// LearnSystemConfig so /learn/linux, /learn/finnish, etc. share one engine.
+// UI for the per-domain wall chart + reference panel + no-op drills + the
+// deck's own "new today" intro flow. Scheduling and persistence live in
+// ./engine. Since the learn/practice split, this page owns the *learning*
+// half for its deck: introducing today's new concepts (which seeds their
+// prompts due-today) happens either here or on the combined /learn/new page.
+// Graded Q&A stays at /practice — drills here never touch scheduler state,
+// and grading never happens on this page. Parameterized by LearnSystemConfig
+// so /learn/linux, /learn/finnish, etc. share one engine.
 
-type Screen = 'chart' | 'drill';
+type Screen = 'chart' | 'drill' | 'intro';
 
 export default function LearningSystem({ config }: { config: LearnSystemConfig }) {
-	const { storageKey, legacyKey, itemNoun, monoAnswers, dataset } = config;
+	const { storageKey, legacyKey, itemNoun, monoAnswers, newPerDay, dueCap, dataset } = config;
 	const { categories } = dataset;
 
 	function categoryOf(itemId: string): Category | undefined {
@@ -39,8 +48,8 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 	const [today, setToday] = useState<string>(() => localToday());
 	// Suspended item ids (plan §4.4, skip-at-introduction) live in the
 	// shared practice-meta key, not this deck's own storageKey — a skip
-	// happens on /practice, but the wall chart is where you'd notice a word
-	// muted out and decide to bring it back.
+	// happens at introduction time, but the wall chart is where you'd notice
+	// a word muted out and decide to bring it back.
 	const [suspended, setSuspended] = useState<Set<string>>(new Set());
 
 	// Load persisted state after hydration, and re-check the date when the tab
@@ -55,11 +64,58 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	// Fire-and-forget sync push after an introduction/skip, so a concept
+	// learned here isn't offered again on another connected device.
+	function pushSync(meta: PracticeMeta) {
+		const token = loadSyncToken();
+		if (!token) return;
+		pushBlobFromLocalStorage([storageKey], meta, token).catch(() => {
+			// silent — local state is already saved
+		});
+	}
+
 	function unsuspend(itemId: string) {
 		const meta = loadPracticeMeta(0);
 		const next = { ...meta, suspended: meta.suspended.filter((id) => id !== itemId) };
 		savePracticeMeta(next);
 		setSuspended(new Set(next.suspended));
+		pushSync(next);
+	}
+
+	// This deck's new-concept candidates for today (budget-gated, suspended
+	// excluded) — the learn half of the learn/practice split.
+	const allItems = categories.flatMap((c) => c.items);
+	const newToday = newCandidatesForDeck(
+		{
+			deckId: 'self',
+			state,
+			allItems,
+			promptsById: new Map(),
+			introductionOrder: dataset.introductionOrder,
+			dueCap,
+			newPerDay,
+		},
+		today,
+		suspended,
+	);
+
+	function handleLearn(card: IntroCard) {
+		setState((prev) => {
+			const next = introduceItem(prev, card.item, today);
+			saveState(storageKey, next);
+			return next;
+		});
+		pushSync(loadPracticeMeta(0));
+	}
+
+	function handleSkip(card: IntroCard) {
+		const meta = loadPracticeMeta(0);
+		if (!meta.suspended.includes(card.item.id)) {
+			const next = { ...meta, suspended: [...meta.suspended, card.item.id] };
+			savePracticeMeta(next);
+			setSuspended(new Set(next.suspended));
+			pushSync(next);
+		}
 	}
 
 	function startDrill(category: Category) {
@@ -82,10 +138,32 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 		}
 	}
 
-	// Drills never touch scheduler state — grading here is just the
-	// self-assessment click, for the learner's own benefit while cramming.
-	function gradeCurrent() {
-		advance();
+	if (screen === 'intro') {
+		return (
+			<IntroFlow
+				cards={newToday.map((item) => ({ deckId: 'self', item, itemNoun }))}
+				onLearn={handleLearn}
+				onSkip={handleSkip}
+				onQuit={() => setScreen('chart')}
+				doneView={(learned) => (
+					<div className="lq-done">
+						<p className="lq-eyebrow">New {itemNoun}s done</p>
+						<h2 className="lq-done__headline">
+							{learned} new {itemNoun}
+							{learned === 1 ? '' : 's'} added to today's practice
+						</h2>
+						<div className="lq-io-row">
+							<a className="lq-button lq-button--primary" href="/practice/">
+								Go to practice →
+							</a>
+							<button type="button" className="lq-button" onClick={() => setScreen('chart')}>
+								Back to the chart
+							</button>
+						</div>
+					</div>
+				)}
+			/>
+		);
 	}
 
 	if (screen === 'drill') {
@@ -99,7 +177,7 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 				revealed={revealed}
 				monoAnswers={monoAnswers}
 				onReveal={() => setRevealed(true)}
-				onGrade={gradeCurrent}
+				onGrade={advance}
 				onQuit={() => setScreen('chart')}
 			/>
 		);
@@ -110,11 +188,26 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 		<div className="lq-home">
 			<div className="lq-today">
 				<div className="lq-today__row">
-					<a className="lq-button lq-button--primary lq-button--big" href="/practice/">
+					{newToday.length > 0 && (
+						<button
+							type="button"
+							className="lq-button lq-button--primary lq-button--big"
+							onClick={() => setScreen('intro')}
+						>
+							Learn today's {newToday.length} new {itemNoun}
+							{newToday.length === 1 ? '' : 's'} →
+						</button>
+					)}
+					<a
+						className={`lq-button lq-button--big${newToday.length > 0 ? '' : ' lq-button--primary'}`}
+						href="/practice/"
+					>
 						Go to today's practice →
 					</a>
 					<p className="lq-today__status">
-						Reviews and new {itemNoun}s for every deck happen in one place now.
+						{newToday.length > 0
+							? 'New concepts are learned here; questions and answers happen at practice.'
+							: `No new ${itemNoun}s left today — reviews happen at practice.`}
 					</p>
 				</div>
 			</div>
@@ -166,36 +259,7 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 			{selectedItem && (
 				<div className="lq-panel lq-reference">
 					<p className="lq-eyebrow">{categoryOf(selectedItem.id)?.title}</p>
-					{selectedItem.photo && <img className="lq-item-photo" src={selectedItem.photo} alt="" />}
-					{selectedItem.syntax ? (
-						<code className="lq-command">{selectedItem.syntax}</code>
-					) : (
-						<p className="lq-term">{selectedItem.term}</p>
-					)}
-					<p className="lq-description">{selectedItem.description}</p>
-					{selectedItem.explanation && <p className="lq-explanation">{selectedItem.explanation}</p>}
-					{selectedItem.examples && selectedItem.examples.length > 0 ? (
-						<div className="lq-examples">
-							{selectedItem.examples.map((ex, i) => (
-								<div className="lq-example" key={i}>
-									<code>{ex.code}</code>
-									{ex.note && <p className="lq-example__note">{ex.note}</p>}
-								</div>
-							))}
-						</div>
-					) : (
-						selectedItem.example && (
-							<div className="lq-example">
-								<code>{selectedItem.example}</code>
-								{selectedItem.exampleNote && <p className="lq-example__note">{selectedItem.exampleNote}</p>}
-							</div>
-						)
-					)}
-					{selectedItem.href && (
-						<a className="lq-note-link" href={selectedItem.href}>
-							Read the note →
-						</a>
-					)}
+					<ItemDetails item={selectedItem} />
 					{suspended.has(selectedItem.id) && (
 						<button
 							type="button"
@@ -211,10 +275,8 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 	);
 }
 
-// Drill-only now — the daily review flow (and its "new item" learn cards)
-// moved to PracticeSession.tsx at /practice. A drill is always a flat list
-// of prompts for one category (see startDrill), so there's no 'learn'-kind
-// item and no schedule to protect against grading.
+// Drill-only — a flat, ungraded run through one category's prompts (see
+// startDrill); grading and scheduling live at /practice.
 function SessionView({
 	sessionItem,
 	index,
@@ -234,6 +296,7 @@ function SessionView({
 	onGrade: () => void;
 	onQuit: () => void;
 }) {
+	const { prompt, item } = sessionItem;
 	return (
 		<div className="lq-session">
 			<div className="lq-session__header">
@@ -247,10 +310,10 @@ function SessionView({
 
 			<div className="lq-panel">
 				<p className="lq-eyebrow">
-					Drill (won’t affect schedule) · <code className="lq-inline-cmd">{sessionItem.item.term}</code>
+					Drill (won’t affect schedule) · <code className="lq-inline-cmd">{item.term}</code>
 				</p>
-				{sessionItem.item.photo && <img className="lq-item-photo" src={sessionItem.item.photo} alt="" />}
-				<p className="lq-question">{sessionItem.prompt!.q}</p>
+				{item.photo && <img className="lq-item-photo" src={item.photo} alt="" />}
+				<PromptQuestion q={prompt.q} kind={prompt.kind} revealed={revealed} />
 
 				{!revealed ? (
 					<div className="lq-recall-hint-wrap">
@@ -262,11 +325,11 @@ function SessionView({
 				) : (
 					<div className="lq-answer">
 						{monoAnswers ? (
-							<code className="lq-answer__text">{sessionItem.prompt!.a}</code>
+							<code className="lq-answer__text">{prompt.a}</code>
 						) : (
-							<span className="lq-answer__text lq-answer__text--prose">{sessionItem.prompt!.a}</span>
+							<span className="lq-answer__text lq-answer__text--prose">{prompt.a}</span>
 						)}
-						{sessionItem.prompt!.note && <p className="lq-answer__note">{sessionItem.prompt!.note}</p>}
+						{prompt.note && <p className="lq-answer__note">{prompt.note}</p>}
 						<div className="lq-grade">
 							<button type="button" className="lq-button lq-button--got" onClick={onGrade}>
 								✓ Got it

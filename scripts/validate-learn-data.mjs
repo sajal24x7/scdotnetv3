@@ -11,6 +11,14 @@
 //   - every item has at least one prompt
 //   - every category is non-empty
 //
+// Plus prompt-quality rules (docs/architecture/learning-systems.md, "Writing
+// prompts"): answers must stay short (atomic prompts, no prose paragraphs),
+// true/false-style questions are banned (not effortful), and cloze prompts
+// (kind: 'cloze') must carry {{…}} markers — while plain q/a prompts must
+// not. Quality rules are hard errors for the curated/automated pools and
+// warnings for the note-backed ones (til/evergreen), whose prompts are
+// authored inside published notes and fixed there.
+//
 // Run: node scripts/validate-learn-data.mjs
 
 import { readFileSync, mkdtempSync, writeFileSync } from 'node:fs';
@@ -35,8 +43,38 @@ function itemsOf(category) {
 	return category.items ?? category.commands ?? [];
 }
 
-function validatePool(name, categories, introductionOrder) {
+// Answers longer than this many words can't be self-graded at a glance —
+// the target is 1–2 words; the ceiling leaves room for a short form like
+// "-ssa / -ssä" or a command line.
+const MAX_ANSWER_WORDS = 8;
+const BANNED_QUESTION_RE = /^\s*(true or false|yes or no)\b/i;
+
+function promptQualityIssues(name, item, prompt) {
+	const issues = [];
+	const answerWords = String(prompt.a ?? '').trim().split(/\s+/).filter(Boolean).length;
+	if (answerWords > MAX_ANSWER_WORDS) {
+		issues.push(
+			`[${name}] prompt "${prompt.id}" (item "${item.id}") answer is ${answerWords} words — keep answers to 1–2 words (max ${MAX_ANSWER_WORDS}); move the explanation into note:`,
+		);
+	}
+	if (BANNED_QUESTION_RE.test(prompt.q ?? '')) {
+		issues.push(
+			`[${name}] prompt "${prompt.id}" (item "${item.id}") is a true/false-style question — not effortful; rewrite as recall or cloze`,
+		);
+	}
+	const hasMarkers = /\{\{.+?\}\}/.test(prompt.q ?? '');
+	if (prompt.kind === 'cloze' && !hasMarkers) {
+		issues.push(`[${name}] cloze prompt "${prompt.id}" (item "${item.id}") has no {{…}} markers in q`);
+	}
+	if (prompt.kind !== 'cloze' && hasMarkers) {
+		issues.push(`[${name}] prompt "${prompt.id}" (item "${item.id}") has {{…}} markers but no kind: 'cloze'`);
+	}
+	return issues;
+}
+
+function validatePool(name, categories, introductionOrder, { qualityAsWarnings = false } = {}) {
 	const errors = [];
+	const warnings = [];
 	const allItems = categories.flatMap(itemsOf);
 	const allIds = new Set();
 
@@ -66,6 +104,7 @@ function validatePool(name, categories, introductionOrder) {
 				);
 			}
 			promptIds.set(prompt.id, item.id);
+			(qualityAsWarnings ? warnings : errors).push(...promptQualityIssues(name, item, prompt));
 		}
 	}
 
@@ -83,7 +122,7 @@ function validatePool(name, categories, introductionOrder) {
 		if (!orderCounts.has(id)) errors.push(`[${name}] item "${id}" is missing from introductionOrder`);
 	}
 
-	return { errors, itemCount: allItems.length, promptCount: promptIds.size };
+	return { errors, warnings, itemCount: allItems.length, promptCount: promptIds.size };
 }
 
 async function main() {
@@ -111,6 +150,10 @@ async function main() {
 		},
 		...['til', 'evergreen'].map((deck) => ({
 			name: deck,
+			// Note-backed prompts are authored inside published notes — quality
+			// slips there are surfaced as warnings to fix in the note, not
+			// build-breaking errors.
+			qualityAsWarnings: true,
 			load: async () => {
 				const generated = JSON.parse(
 					readFileSync(path.join(repoRoot, 'src/data/learn-decks.generated.json'), 'utf8'),
@@ -131,7 +174,9 @@ async function main() {
 	let hadErrors = false;
 	for (const pool of pools) {
 		const { categories, introductionOrder } = await pool.load();
-		const { errors, itemCount, promptCount } = validatePool(pool.name, categories, introductionOrder);
+		const { errors, warnings, itemCount, promptCount } = validatePool(pool.name, categories, introductionOrder, {
+			qualityAsWarnings: pool.qualityAsWarnings ?? false,
+		});
 		if (errors.length === 0) {
 			console.log(`✓ ${pool.name}: ${categories.length} categories, ${itemCount} items, ${promptCount} prompts`);
 		} else {
@@ -139,6 +184,7 @@ async function main() {
 			console.error(`✗ ${pool.name}: ${errors.length} problem(s)`);
 			for (const err of errors) console.error(`  - ${err}`);
 		}
+		for (const warning of warnings) console.warn(`  ⚠ ${warning}`);
 	}
 
 	if (hadErrors) {
