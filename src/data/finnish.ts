@@ -29,8 +29,13 @@ export const categories: Category[] = [
 				syntax: 'one letter, one sound',
 				description:
 					'Finnish spelling is fully phonemic: every letter is always pronounced, always the same way. If you can spell it you can say it.',
-				example: 'kioski',
-				exampleNote: 'Five letters, five sounds, no surprises.',
+				explanation:
+					"There's no silent 'e', no letter that changes sound depending on what's next to it, and no digraph that collapses into a single surprise sound. Once you know the ~20-letter alphabet's sounds, you can read any word aloud correctly the first time — including names and loanwords you've never seen, since they get spelled the Finnish way too.",
+				examples: [
+					{ code: 'kioski', note: 'Five letters, five sounds, no surprises.' },
+					{ code: 'talo', note: "Read exactly as written: /t/ /a/ /l/ /o/ — no hidden rules to learn." },
+					{ code: 'Helsinki', note: 'Even a well-known proper noun follows the same one-letter-one-sound rule.' },
+				],
 				prompts: [
 					{
 						id: 'a-phonemic-1',
@@ -51,8 +56,13 @@ export const categories: Category[] = [
 				term: 'stress',
 				syntax: 'always 1st syllable',
 				description: 'Word stress falls on the first syllable, every word, no exceptions.',
-				example: 'HEl-sin-ki, KA-le-va-la',
-				exampleNote: 'Stress marked in caps.',
+				explanation:
+					"Unlike English, where stress shifts unpredictably ('CON-tent' the noun vs 'con-TENT' the adjective), Finnish stress is completely fixed and mechanical — it never moves, no matter how long the word gets or where it came from. That predictability is a free win: you never have to memorize a word's stress pattern separately from its spelling.",
+				examples: [
+					{ code: 'HEl-sin-ki', note: 'Stress marked in caps — first syllable, always.' },
+					{ code: 'KA-le-va-la', note: "Four syllables, still stressed on the first — the national epic's name." },
+					{ code: 'O-pis-kel-la', note: "'To study' — even a long, common verb keeps the stress up front." },
+				],
 				prompts: [
 					{
 						id: 'a-stress-1',
@@ -73,8 +83,13 @@ export const categories: Category[] = [
 				term: 'long sounds',
 				syntax: 'double letter = long sound',
 				description: 'Doubled vowels and consonants are held twice as long, and length changes meaning.',
-				example: 'tuli fire · tuuli wind · tulli customs',
-				exampleNote: 'Three different words, same letters, different lengths.',
+				explanation:
+					"This isn't a spelling quirk — short and long versions of a sound are genuinely different phonemes in Finnish, the same way 'ship' and 'sheep' differ in English. A single letter is held briefly; a doubled letter is held roughly twice as long. Mixing them up doesn't just sound like an accent — it can turn one real word into a different real word.",
+				examples: [
+					{ code: 'tuli', note: 'fire — short u, short l.' },
+					{ code: 'tuuli', note: 'wind — long uu, same short l.' },
+					{ code: 'tulli', note: 'customs — short u, long ll. Same four letters as tuli, different meaning entirely.' },
+				],
 				prompts: [
 					{
 						id: 'a-length-1',
@@ -96,8 +111,13 @@ export const categories: Category[] = [
 				syntax: 'front vowels',
 				description:
 					'ä ö y are independent front vowels (not accented a/o/u); a o u are back vowels; e i are neutral.',
-				example: 'ä as in cat; y like German ü',
-				exampleNote: '',
+				explanation:
+					"Treat ä, ö, and y as their own letters with their own place in the alphabet — not decorated versions of a, o, u. The front/back split is about where in the mouth the vowel is made: front vowels (ä ö y) are pronounced with the tongue forward, back vowels (a o u) with it pulled back. e and i sit in between and are neutral, which is why they can appear in a word alongside either group. This split is the entire mechanism behind vowel harmony (see a-harmony).",
+				examples: [
+					{ code: 'ä', note: 'As in English "cat" — a front, open vowel.' },
+					{ code: 'ö', note: 'Like the vowel in English "bird" (no r-sound) or French "peu".' },
+					{ code: 'y', note: 'Like German ü, or French u — round your lips as if for "oo" but say "ee".' },
+				],
 				prompts: [
 					{
 						id: 'a-vowels-1',
@@ -119,8 +139,13 @@ export const categories: Category[] = [
 				syntax: 'back with back, front with front',
 				description:
 					'A native word contains back vowels (a o u) or front vowels (ä ö y), never both; e i go with either. Every suffix has two forms and copies the word\'s flavor.',
-				example: 'talossa (back) but metsässä (front)',
-				exampleNote: '',
+				explanation:
+					"Vowel harmony is the payoff for learning front vs. back vowels: once you know which family a word's vowels belong to, you never have to memorize which suffix form to use — you just copy the word's own flavor. Scan the stem for its last back or front vowel (ignoring neutral e/i) and every harmonizing suffix you attach follows suit automatically. This is why the same grammatical ending shows up in two visibly different spellings depending on the word.",
+				examples: [
+					{ code: 'talossa', note: '"in the house" — talo has back vowels (a, o), so the suffix takes its back form -ssa.' },
+					{ code: 'metsässä', note: '"in the forest" — metsä has front vowels (e, ä), so the suffix takes its front form -ssä.' },
+					{ code: 'kaupassa', note: '"in the shop" — kauppa is back-voweled, so -ssa again (and pp weakens to p — see gradation).' },
+				],
 				prompts: [
 					{
 						id: 'a-harmony-1',
@@ -142,8 +167,13 @@ export const categories: Category[] = [
 				syntax: 'suffix pairs',
 				description:
 					'Because of harmony, endings come in pairs: -ssa/-ssä, -lla/-llä, -ko/-kö, -vat/-vät. Picking the right one is automatic once you scan the stem\'s vowels.',
-				example: 'Puhutko? but Syötkö?',
-				exampleNote: '',
+				explanation:
+					"Almost every Finnish suffix that contains a, o, or ä, ö comes in a matched back/front pair — it's not a handful of special cases, it's the default. You will never have to choose which member of the pair to use by memorizing exceptions: you just read off the last non-neutral vowel in the stem and match it. The only suffixes exempt from this are the ones built entirely from neutral vowels (e, i) or consonants.",
+				examples: [
+					{ code: 'Puhutko?', note: '"Do you speak?" — puhua is back-voweled, so the question particle is -ko.' },
+					{ code: 'Syötkö?', note: '"Do you eat?" — syödä has ö (front), so the question particle is -kö.' },
+					{ code: 'kadulla / pöydällä', note: '"on the street" (back, from katu) vs "on the table" (front, from pöytä) — the same adessive ending, two harmonized shapes.' },
+				],
 				prompts: [
 					{
 						id: 'a-suffix-pairs-1',
@@ -164,8 +194,13 @@ export const categories: Category[] = [
 				term: 'diphthongs',
 				syntax: 'uo · ie · yö',
 				description: 'Finnish glues vowels into diphthongs pronounced as written.',
-				example: 'suo swamp · tie road · yö night',
-				exampleNote: '',
+				explanation:
+					"A diphthong is two vowels pronounced as one glide within a single syllable — your mouth starts shaped for the first vowel and slides toward the second, without a break between them. Because Finnish spelling is fully phonemic (see 'read = write'), you never have to guess whether a vowel pair is a diphthong or two separate syllables — it's always pronounced exactly as the letters suggest, one smooth glide per pair.",
+				examples: [
+					{ code: 'suo', note: 'swamp — glide from "u" into "o" in one syllable.' },
+					{ code: 'tie', note: 'road — glide from "i" into "e".' },
+					{ code: 'yö', note: 'night — glide from "y" into "ö", both front vowels.' },
+				],
 				prompts: [
 					{
 						id: 'a-diphthongs-1',

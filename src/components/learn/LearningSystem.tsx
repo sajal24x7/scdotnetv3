@@ -173,11 +173,23 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 						<p className="lq-term">{selectedItem.term}</p>
 					)}
 					<p className="lq-description">{selectedItem.description}</p>
-					{selectedItem.example && (
-						<div className="lq-example">
-							<code>{selectedItem.example}</code>
-							{selectedItem.exampleNote && <p className="lq-example__note">{selectedItem.exampleNote}</p>}
+					{selectedItem.explanation && <p className="lq-explanation">{selectedItem.explanation}</p>}
+					{selectedItem.examples && selectedItem.examples.length > 0 ? (
+						<div className="lq-examples">
+							{selectedItem.examples.map((ex, i) => (
+								<div className="lq-example" key={i}>
+									<code>{ex.code}</code>
+									{ex.note && <p className="lq-example__note">{ex.note}</p>}
+								</div>
+							))}
 						</div>
+					) : (
+						selectedItem.example && (
+							<div className="lq-example">
+								<code>{selectedItem.example}</code>
+								{selectedItem.exampleNote && <p className="lq-example__note">{selectedItem.exampleNote}</p>}
+							</div>
+						)
 					)}
 					{selectedItem.href && (
 						<a className="lq-note-link" href={selectedItem.href}>

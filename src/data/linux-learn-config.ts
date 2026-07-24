@@ -12,8 +12,10 @@ function toLearnItem(command: Command): LearnItem {
 		term: command.cmd,
 		syntax: command.syntax,
 		description: command.description,
+		explanation: command.explanation,
 		example: command.example,
 		exampleNote: command.exampleNote,
+		examples: command.examples,
 		prompts: command.prompts,
 	};
 }
