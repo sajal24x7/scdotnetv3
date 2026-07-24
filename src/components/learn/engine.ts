@@ -442,13 +442,36 @@ export function buildNewToday(params: {
 	today: string;
 	suspended: Set<string>;
 	globalNewPerDay: number;
+	// Deck-id priority lists, each representing one "must appear today" group
+	// (e.g. one for English, one for Finnish). Before the ordinary round-robin
+	// runs, one slot is reserved per group — taken from the first deck in that
+	// group with a candidate available — so registry order can't starve a
+	// language whose decks happen to sit after enough other decks to fill the
+	// global cap on their own. Optional: omit for the plain round-robin.
+	guaranteedGroups?: string[][];
 }): NewTodayItem[] {
-	const { decks, today, suspended, globalNewPerDay } = params;
+	const { decks, today, suspended, globalNewPerDay, guaranteedGroups = [] } = params;
 	const newQueues = decks.map((deck) => ({
 		deckId: deck.deckId,
 		queue: newCandidatesForDeck(deck, today, suspended),
 	}));
-	return roundRobinPick(newQueues, globalNewPerDay).map(({ deckId, value }) => ({ deckId, item: value }));
+
+	const picked: { deckId: string; value: LearnItem }[] = [];
+	for (const group of guaranteedGroups) {
+		if (picked.length >= globalNewPerDay) break;
+		for (const deckId of group) {
+			const q = newQueues.find((entry) => entry.deckId === deckId);
+			if (q && q.queue.length > 0) {
+				picked.push({ deckId, value: q.queue.shift()! });
+				break; // one guaranteed pick per group, first deck in it with content
+			}
+		}
+	}
+
+	const remaining = globalNewPerDay - picked.length;
+	if (remaining > 0) picked.push(...roundRobinPick(newQueues, remaining));
+
+	return picked.map(({ deckId, value }) => ({ deckId, item: value }));
 }
 
 // --- practice-meta: the one genuinely global piece of state (plan §2.4) ---
