@@ -1568,6 +1568,7 @@
       "micro/202607220922 OpenAI Accidentally Hacked Hugging Face.md",
       "micro/202607220928 Apple to Start a Upgrade Program.md",
       "micro/202607221322 Online shopping and rising living costs driving young Finns into debt.md",
+      "micro/202607231344.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -7703,6 +7704,14 @@
     }
   ],
   "bookshelf/outlive": [
+    {
+      "slug": "/bookshelf/the-courage-to-be-disliked/",
+      "title": "The Courage to Be Disliked",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-07-20T10:43:00.000Z",
+      "snippet": "There are not that many books like that. In fact, I can count three, who have been that for me - The Road Less Travelled, Outlive, and this."
+    },
     {
       "slug": "/nordletter/nl107/",
       "title": "Read More Books",
