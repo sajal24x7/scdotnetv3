@@ -1568,7 +1568,9 @@
       "micro/202607220922 OpenAI Accidentally Hacked Hugging Face.md",
       "micro/202607220928 Apple to Start a Upgrade Program.md",
       "micro/202607221322 Online shopping and rising living costs driving young Finns into debt.md",
+      "micro/202607231027 Xteink X3 Review.md",
       "micro/202607231344.md",
+      "micro/202607242026 Boox is taking on Xteink with its Picco series.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1727,6 +1729,7 @@
       "photo/202607141728.md",
       "photo/202607170957.md",
       "photo/202607220951.md",
+      "photo/202607242014.md",
       "poem/201202121505 Here I stand.md",
       "poem/201202131628 Stranded Isle.md",
       "poem/201203181704 Scared I was.md",
@@ -7399,6 +7402,16 @@
       "category": "micro",
       "created": "2025-07-19T08:31:53.000Z",
       "snippet": "I wrote About AI browsers some time back. I continue feeling the same way about them."
+    }
+  ],
+  "micro/xteink-x3-review": [
+    {
+      "slug": "/micro/boox-is-taking-on-xteink-with-its-picco-series/",
+      "title": "Boox Is Taking on Xteink With Its Picco Series",
+      "description": "",
+      "category": "micro",
+      "created": "2026-07-24T17:26:00.000Z",
+      "snippet": "I linked to a X3 review recently. After reading the review, I looked at and asked Claude if it would work for my use-cases. Spoiler: it won’t. So this news does not really concern me."
     }
   ],
   "micro/should-ai-flatter-us-fix-us-or-just-inform-us-by-james-odonnell": [

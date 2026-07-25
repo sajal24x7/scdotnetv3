@@ -137,6 +137,33 @@
       "status": "approved"
     }
   ],
+  "bookshelf/the-courage-to-be-disliked": [
+    {
+      "id": "web:like:c316fb8475dc2b0aa3522f5766b7201b24c7b0d3364950f222333fa05f36e4e1",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "Narich Violetfathom frengible.bsky.social",
+        "url": "https://bsky.app/profile/frengible.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:xuh6g7hnpeorsy5qqlrrwvj4/bafkreighubobhcpy2taiccrrl3rfv2rfgehwk3oq4niioim53i4uhnovci"
+      },
+      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mrdlyilimk2r/did%253Aplc%253Axuh6g7hnpeorsy5qqlrrwvj4",
+      "published": "2026-07-24T09:09:56.121Z",
+      "status": "pending"
+    },
+    {
+      "id": "mastodon:repost:116974058744145471:111811737765749325",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Social Sciences Channel",
+        "url": "https://newsmast.community/@socialsciences",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/811/737/765/749/325/original/b600d42ae9be368b.png"
+      },
+      "url": "https://newsmast.community/@socialsciences",
+      "status": "approved"
+    }
+  ],
   "evergreen/extinction-was-discovered": [
     {
       "id": "bluesky:like:3mowt6mckm52u:did:plc:pqv77tyop2q4c6inbbm4rivo",
@@ -214,30 +241,6 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/d8781ce9ed45a2de7281e6cdb616d953.jpg"
       },
       "url": "https://mastodon.social/@qwiks",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:116889169002494523:111653095630935220",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Photography Channel",
-        "url": "https://newsmast.community/@photography",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/f8b9b6d5fcad65703b40bcba64c5b7c8.png"
-      },
-      "url": "https://newsmast.community/@photography",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:116889169002494523:111653123325216795",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Food & Drink Channel",
-        "url": "https://newsmast.community/@foodanddrink",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/2f8ca8e08072f238a9205363b6b2affb.png"
-      },
-      "url": "https://newsmast.community/@foodanddrink",
       "status": "approved"
     }
   ],
