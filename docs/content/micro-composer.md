@@ -90,17 +90,50 @@ images:
 Optional caption text.
 ```
 
-## Shelf mode (queue quick-add)
+## Shelf mode (watch log + queue quick-add)
 
-The **Shelf** tab quick-adds an item to the "to be read/watched/played"
-queue described in `planning/shelf-queue-design.md` — a book, film, TV show,
-or game you want to get to eventually, without writing a full shelf entry.
+The **Shelf** tab does two things: it logs a film or TV season you've just
+watched, and it quick-adds anything to the "to be read/watched/played" queue
+described in `planning/shelf-queue-design.md`.
 
 - **Category** segmented control (Book/Film/TV/Game) picks the target
   collection; the creator field's placeholder swaps to match
   (Author/Director/Creator/Developer).
-- **Title** is required; **Creator** and the notes textarea (the "why") are
-  optional.
+- **Title** is required; **Creator** and the notes textarea are optional.
+
+### Logging a film or TV season
+
+Film and TV get a second segmented control — **Watched / Watching / To
+watch** — so a film or season you've finished can be recorded without
+writing a note in Obsidian. It writes a normal shelf entry (same schema, same
+folder) straight to `main`:
+
+- **Watched** → `status: finished` with a **Finished** date, prefilled with
+  today. TV also takes a **Season** number and an optional **Started** date;
+  film carries `finished` alone, since that's all the shelf schema tracks for
+  it. Leaving the season blank writes a limited-series entry (no `season:`).
+- **Watching** → `status: started`. TV records the **Started** date; film
+  has no start date to record.
+- **To watch** → the queue stub described below, identical to what books and
+  games write.
+- **Rating** (None/Like/Love/Nope) and **Platform** are optional and only
+  appear once you're logging rather than queueing.
+- The body is your notes if you wrote any, otherwise the shelf's usual one
+  liner (`Finished watching Season 2 on 2026-07-24.`).
+- `director`/`creator`, `year`, `genre` and `cover` are deliberately left out
+  — the push triggers `enrich-shelf-metadata.yml` and the cover downloader,
+  which fill them in from TMDB within a couple of minutes. Typing a creator
+  yourself just skips that lookup for the field.
+- Rewatches: entries are keyed by `slug`, so logging something already on the
+  shelf would collide and silently drop one of the two. Before committing, the
+  composer probes the published site for the slug and falls back to
+  `<slug>-<year>` when it's taken. If the site is unreachable the plain slug is
+  used.
+
+Books and games are unchanged — they stay queue-only, on the assumption that
+anything worth shelving there is worth a proper note.
+
+### Queue quick-add
 - Publish commits `YYYYMMDDHHMM Title.md` straight to
   `src/content/<category>/` on `main`, with `status: todo` and a `created`
   timestamp — same instant, schema-valid, no-inbox path as micro/photo posts.
