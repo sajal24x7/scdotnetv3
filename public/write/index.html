@@ -220,6 +220,18 @@
   #tilLog.ok { color: var(--ok); }
   #tilLog.err { color: var(--err); }
   #tilLog a { color: inherit; }
+  /* The shelf form is mostly short fields — a 40vh notes box pushes the
+     publish button off-screen on a phone. */
+  body[data-mode="shelf"] textarea { min-height: 14vh; }
+  #shelfPanel .mode-toggle { display: flex; flex-wrap: wrap; margin-bottom: 10px; }
+  /* Books and games stay queue-only: the watch-log fields are film/TV only,
+     and the dates/rating/platform block is meaningless for a `todo` stub. */
+  #shelfPanel:not([data-kind="watch"]) .shelf-watch-only { display: none; }
+  #shelfPanel[data-status="todo"] .shelf-log-only { display: none; }
+  #shelfPanel:not([data-category="tvshelf"]) .shelf-tv-only { display: none; }
+  .shelf-row { display: flex; gap: 10px; }
+  .shelf-row > div { flex: 1; min-width: 0; }
+  .shelf-row input { margin-bottom: 10px; }
   #shelfPanel h2 { margin: 20px 0 8px; font-size: 15px; color: var(--muted); }
   .shelf-queue-refresh { background: none; border: none; color: var(--muted); font: inherit; font-size: 13px; cursor: pointer; padding: 0; margin-left: 8px; }
   .queue-row {
@@ -322,8 +334,46 @@
       <button type="button" data-category="tvshelf" aria-pressed="false">TV</button>
       <button type="button" data-category="gameshelf" aria-pressed="false">Game</button>
     </div>
+    <div class="mode-toggle shelf-watch-only" role="group" aria-label="What happened" id="shelfStatusToggle">
+      <button type="button" data-status="finished" aria-pressed="true">Watched</button>
+      <button type="button" data-status="started" aria-pressed="false">Watching</button>
+      <button type="button" data-status="todo" aria-pressed="false">To watch</button>
+    </div>
     <input id="shelfTitle" type="text" placeholder="Title" autocomplete="off" enterkeyhint="next">
     <input id="shelfCreator" type="text" placeholder="Author (optional)" autocomplete="off" enterkeyhint="next">
+    <div class="shelf-row shelf-watch-only shelf-log-only">
+      <div class="shelf-tv-only">
+        <label for="shelfSeason">Season</label>
+        <input id="shelfSeason" type="number" min="1" step="1" inputmode="numeric" placeholder="1">
+      </div>
+      <div class="shelf-tv-only">
+        <label for="shelfStarted">Started</label>
+        <input id="shelfStarted" type="date">
+      </div>
+      <div id="shelfFinishedField">
+        <label for="shelfFinished">Finished</label>
+        <input id="shelfFinished" type="date">
+      </div>
+    </div>
+    <div class="shelf-watch-only shelf-log-only">
+      <label id="shelfRatingLabel">Rating</label>
+      <div class="mode-toggle" role="group" aria-labelledby="shelfRatingLabel" id="shelfRatingToggle">
+        <button type="button" data-rating="" aria-pressed="true">None</button>
+        <button type="button" data-rating="like" aria-pressed="false">Like</button>
+        <button type="button" data-rating="love" aria-pressed="false">Love</button>
+        <button type="button" data-rating="nope" aria-pressed="false">Nope</button>
+      </div>
+      <input id="shelfPlatform" type="text" placeholder="Platform (optional)" list="shelfPlatformList" autocomplete="off" enterkeyhint="next">
+      <datalist id="shelfPlatformList">
+        <option value="Netflix"></option>
+        <option value="Prime Video"></option>
+        <option value="Apple TV+"></option>
+        <option value="Disney+"></option>
+        <option value="HBO Max"></option>
+        <option value="YLE Areena"></option>
+        <option value="Cinema"></option>
+      </datalist>
+    </div>
     <textarea id="shelfNotes" placeholder="Why (optional)…"></textarea>
     <button class="send" id="shelfSend" type="button">Add to queue</button>
     <p id="shelfStatus" role="status"></p>
@@ -349,11 +399,13 @@
     tvshelf: 'src/content/tvshelf',
     gameshelf: 'src/content/gameshelf',
   };
+  // `mode: 'watch'` categories can log something you've already seen (dates,
+  // rating, platform); books and games stay queue-only, the way they were.
   const SHELF_CATEGORIES = {
-    bookshelf: { label: 'Book', creatorLabel: 'Author', field: 'author', kind: 'string' },
-    filmshelf: { label: 'Film', creatorLabel: 'Director', field: 'director', kind: 'array' },
-    tvshelf: { label: 'TV', creatorLabel: 'Creator', field: 'creator', kind: 'array' },
-    gameshelf: { label: 'Game', creatorLabel: 'Developer', field: 'developer', kind: 'string' },
+    bookshelf: { label: 'Book', creatorLabel: 'Author', field: 'author', kind: 'string', mode: 'queue' },
+    filmshelf: { label: 'Film', creatorLabel: 'Director', field: 'director', kind: 'array', mode: 'watch', noun: 'film' },
+    tvshelf: { label: 'TV', creatorLabel: 'Creator', field: 'creator', kind: 'array', mode: 'watch', noun: 'season' },
+    gameshelf: { label: 'Game', creatorLabel: 'Developer', field: 'developer', kind: 'string', mode: 'queue' },
   };
 
   const $ = (id) => document.getElementById(id);
@@ -365,6 +417,10 @@
   // written to frontmatter `images:` on publish — never into the body.
   let photos = [];
   let shelfCategory = 'bookshelf';
+  // Watch-log state for film/TV: 'finished' | 'started' | 'todo', and the
+  // optional rating ('' = unrated).
+  let shelfWatchStatus = 'finished';
+  let shelfRating = '';
   let shelfQueue = [];
   let shelfQueueLoaded = false;
 
@@ -393,10 +449,60 @@
       btn.setAttribute('aria-pressed', String(btn.dataset.category === shelfCategory));
     });
     $('shelfCreator').placeholder = `${SHELF_CATEGORIES[shelfCategory].creatorLabel} (optional)`;
+    syncShelfForm();
   }
   document.querySelectorAll('#shelfCategoryToggle button').forEach((btn) => {
     btn.addEventListener('click', () => { setShelfCategory(btn.dataset.category); saveDraft(); });
   });
+
+  function setShelfWatchStatus(next) {
+    shelfWatchStatus = ['finished', 'started', 'todo'].includes(next) ? next : 'finished';
+    document.querySelectorAll('#shelfStatusToggle button').forEach((btn) => {
+      btn.setAttribute('aria-pressed', String(btn.dataset.status === shelfWatchStatus));
+    });
+    syncShelfForm();
+  }
+  document.querySelectorAll('#shelfStatusToggle button').forEach((btn) => {
+    btn.addEventListener('click', () => { setShelfWatchStatus(btn.dataset.status); saveDraft(); });
+  });
+
+  function setShelfRating(next) {
+    shelfRating = ['like', 'love', 'nope'].includes(next) ? next : '';
+    document.querySelectorAll('#shelfRatingToggle button').forEach((btn) => {
+      btn.setAttribute('aria-pressed', String(btn.dataset.rating === shelfRating));
+    });
+  }
+  document.querySelectorAll('#shelfRatingToggle button').forEach((btn) => {
+    btn.addEventListener('click', () => { setShelfRating(btn.dataset.rating); saveDraft(); });
+  });
+
+  const todayLocal = () => {
+    const d = new Date();
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  };
+
+  // Keeps the form honest about what's being written: which fields show, what
+  // the notes box is asking for, and what the button says it will do.
+  function syncShelfForm() {
+    const cfg = SHELF_CATEGORIES[shelfCategory];
+    const isWatch = cfg.mode === 'watch';
+    const status = isWatch ? shelfWatchStatus : 'todo';
+    const panel = $('shelfPanel');
+    panel.dataset.category = shelfCategory;
+    panel.dataset.kind = cfg.mode;
+    panel.dataset.status = status;
+
+    // Film has no `started` date in the shelf schema — only TV tracks both —
+    // so a film in progress logs no date at all.
+    $('shelfFinishedField').style.display = status === 'finished' ? '' : 'none';
+
+    if (status === 'finished' && !$('shelfFinished').value) $('shelfFinished').value = todayLocal();
+
+    $('shelfNotes').placeholder = status === 'todo' ? 'Why (optional)…' : 'Notes (optional)…';
+    $('shelfSend').textContent = status === 'todo'
+      ? 'Add to queue'
+      : `${status === 'finished' ? 'Log' : 'Start'} ${cfg.noun ?? 'entry'}`;
+  }
 
   function renderPhotoStrip() {
     const strip = $('photoStrip');
@@ -453,13 +559,15 @@
   });
 
   // --- draft autosave ------------------------------------------------------
-  const shelfFields = ['shelfTitle', 'shelfCreator', 'shelfNotes'];
+  const shelfFields = ['shelfTitle', 'shelfCreator', 'shelfNotes', 'shelfSeason', 'shelfStarted', 'shelfFinished', 'shelfPlatform'];
 
   function saveDraft() {
     const draft = Object.fromEntries(fields.map((f) => [f, $(f).value]));
     draft.mode = mode;
     draft.photos = photos;
     draft.shelfCategory = shelfCategory;
+    draft.shelfWatchStatus = shelfWatchStatus;
+    draft.shelfRating = shelfRating;
     shelfFields.forEach((f) => { draft[f] = $(f).value; });
     localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
   }
@@ -469,6 +577,8 @@
       fields.forEach((f) => { if (draft[f]) $(f).value = draft[f]; });
       shelfFields.forEach((f) => { if (draft[f]) $(f).value = draft[f]; });
       if (Array.isArray(draft.photos)) photos = draft.photos.filter((p) => typeof p === 'string');
+      setShelfWatchStatus(draft.shelfWatchStatus);
+      setShelfRating(draft.shelfRating);
       setShelfCategory(draft.shelfCategory);
       setMode(draft.mode);
       renderPhotoStrip();
@@ -482,6 +592,8 @@
   }
   function clearShelfDraft() {
     shelfFields.forEach((f) => { $(f).value = ''; });
+    setShelfRating('');
+    syncShelfForm();
     saveDraft();
   }
   fields.forEach((f) => $(f).addEventListener('input', saveDraft));
@@ -769,42 +881,105 @@
     return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
+  // Titles carry characters a filename can't ("Formula 1: Drive to Survive").
+  function fileSafe(s) {
+    return s.replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, ' ').trim();
+  }
+
+  // A rewatch reuses the title, and Astro keys shelf entries by their slug —
+  // two entries with the same slug collide and one silently disappears from
+  // the shelf. The published site is the cheapest existence check we have;
+  // if it's unreachable, fall back to the plain slug.
+  async function availableSlug(category, base, year) {
+    const candidates = [base, `${base}-${year}`, `${base}-${year}-2`];
+    for (const candidate of candidates) {
+      let res;
+      try {
+        res = await fetch(`${SITE}/${category}/${candidate}/`, { method: 'HEAD' });
+      } catch {
+        return base; // offline or blocked — don't hold up the publish
+      }
+      if (res.status === 404) return candidate;
+    }
+    return candidates[candidates.length - 1];
+  }
+
   function buildShelfPost() {
     const title = $('shelfTitle').value.trim();
     const creator = $('shelfCreator').value.trim();
     const notes = $('shelfNotes').value.trim();
     const cfg = SHELF_CATEGORIES[shelfCategory];
+    const isTv = shelfCategory === 'tvshelf';
+    // Books and games are queue-only; film/TV can log a watch.
+    const status = cfg.mode === 'watch' ? shelfWatchStatus : 'todo';
+    const logging = status !== 'todo';
+
+    const seasonInput = parseInt($('shelfSeason').value, 10);
+    // No season number = limited series, which the TV shelf renders on the
+    // show page directly (see docs/pages/shelf.md).
+    const hasSeason = isTv && logging && Number.isInteger(seasonInput) && seasonInput > 0;
+    // Only TV tracks a start date; film entries carry `finished` alone.
+    const started = isTv && logging ? $('shelfStarted').value : '';
+    const finished = status === 'finished' ? ($('shelfFinished').value || todayLocal()) : '';
+    const platform = logging ? $('shelfPlatform').value.trim() : '';
+    const rating = logging ? shelfRating : '';
 
     const now = new Date();
     const stamp = now.getFullYear() + pad(now.getMonth() + 1) + pad(now.getDate())
                 + pad(now.getHours()) + pad(now.getMinutes());
     const iso = now.toISOString();
-    const slug = slugify(title);
+    const baseSlug = hasSeason ? `${slugify(title)}/s${seasonInput}` : slugify(title);
 
-    const fm = ['---'];
-    fm.push(`title: ${yamlString(title)}`);
-    fm.push(`slug: ${yamlString(slug)}`);
-    fm.push(`created: ${iso}`);
-    fm.push(`category: ${shelfCategory}`);
-    if (shelfCategory === 'tvshelf') fm.push(`showTitle: ${yamlString(title)}`);
-    if (creator) {
-      if (cfg.kind === 'array') {
-        fm.push(`${cfg.field}:`, `  - ${yamlString(creator)}`);
-      } else {
-        fm.push(`${cfg.field}: ${yamlString(creator)}`);
+    const buildMarkdown = (slug) => {
+      const fm = ['---'];
+      fm.push(`title: ${yamlString(title)}`);
+      fm.push(`slug: ${yamlString(slug)}`);
+      fm.push(`created: ${iso}`);
+      fm.push(`category: ${shelfCategory}`);
+      if (isTv) {
+        // showTitle is the grouping key for the show's seasons — it has to
+        // match across every season file.
+        fm.push(`showTitle: ${yamlString(title)}`);
+        if (hasSeason) fm.push(`season: ${seasonInput}`);
       }
-    }
-    fm.push('status: todo');
-    fm.push('---', '');
+      if (creator) {
+        if (cfg.kind === 'array') {
+          fm.push(`${cfg.field}:`, `  - ${yamlString(creator)}`);
+        } else {
+          fm.push(`${cfg.field}: ${yamlString(creator)}`);
+        }
+      }
+      if (started) fm.push(`started: ${started}`);
+      if (finished) fm.push(`finished: ${finished}`);
+      if (rating) fm.push(`rating: ${rating}`);
+      if (platform) fm.push(`platform: ${yamlString(platform)}`);
+      fm.push(`status: ${status}`);
+      fm.push('---', '');
 
+      // Your own words when you wrote any; otherwise the one-line log
+      // sentence the rest of the shelf uses. director/creator, year, genre and
+      // cover are filled in by enrich-shelf-metadata.yml once this lands.
+      let body = notes;
+      if (!body) {
+        const what = hasSeason ? ` Season ${seasonInput}` : '';
+        if (status === 'finished') body = `Finished watching${what} on ${finished}.`;
+        else if (status === 'started' && started) body = `Started watching${what} on ${started}.`;
+      }
+      return fm.join('\n') + (body ? `${body}\n` : '');
+    };
+
+    const seasonSuffix = hasSeason ? ` S${seasonInput}` : '';
     return {
       title,
       creator,
       category: shelfCategory,
       created: iso,
-      filename: `${stamp} ${title}.md`,
-      path: `${SHELF_FOLDERS[shelfCategory]}/${stamp} ${title}.md`,
-      markdown: fm.join('\n') + notes + '\n',
+      status,
+      logging,
+      baseSlug,
+      year: Number((finished || started || iso).slice(0, 4)),
+      filename: `${stamp} ${fileSafe(title)}${seasonSuffix}.md`,
+      buildMarkdown,
     };
   }
 
@@ -819,10 +994,17 @@
 
     const post = buildShelfPost();
     $('shelfSend').disabled = true;
-    setShelfStatus('Adding to queue…');
+    setShelfStatus(post.logging ? 'Logging…' : 'Adding to queue…');
     try {
-      const b64 = toBase64(post.markdown);
-      const message = `Add ${post.category} queue stub: ${post.title}`;
+      // Queue stubs can't collide (nothing is published under their slug yet);
+      // a logged watch might be a rewatch of something already on the shelf.
+      const slug = post.logging
+        ? await availableSlug(post.category, post.baseSlug, post.year)
+        : post.baseSlug;
+      const b64 = toBase64(post.buildMarkdown(slug));
+      const message = post.logging
+        ? `Add ${post.category} entry: ${post.title}`
+        : `Add ${post.category} queue stub: ${post.title}`;
       const folder = SHELF_FOLDERS[post.category];
       let path = `${folder}/${post.filename}`;
       let res = await putFile(token, path, message, b64);
@@ -837,21 +1019,26 @@
         throw new Error(`GitHub said ${res.status}. ${detail}`);
       }
       const data = await res.json();
-      // Add it to the on-screen queue right away — /api/shelf-queue.json is a
-      // build-time snapshot and won't know about this until the next deploy.
-      shelfQueue.unshift({
-        id: `${post.category}:${path}`,
-        category: post.category,
-        title: post.title,
-        creator: post.creator,
-        created: post.created,
-        path,
-      });
-      renderShelfQueue();
+      if (!post.logging) {
+        // Add it to the on-screen queue right away — /api/shelf-queue.json is a
+        // build-time snapshot and won't know about this until the next deploy.
+        shelfQueue.unshift({
+          id: `${post.category}:${path}`,
+          category: post.category,
+          title: post.title,
+          creator: post.creator,
+          created: post.created,
+          path,
+        });
+        renderShelfQueue();
+      }
       clearShelfDraft();
+      const verb = post.status === 'finished' ? 'Logged' : post.status === 'started' ? 'Started' : null;
       setShelfStatus(
-        `Added to the ${SHELF_CATEGORIES[post.category].label} queue · ` +
-        `<a href="${data.commit.html_url}">commit</a>`,
+        (verb
+          ? `${verb} “${escapeHtml(post.title)}” — metadata and cover follow shortly`
+          : `Added to the ${SHELF_CATEGORIES[post.category].label} queue`) +
+        ` · <a href="${data.commit.html_url}">commit</a>`,
         'ok'
       );
     } catch (e) {
