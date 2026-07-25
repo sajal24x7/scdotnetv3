@@ -167,6 +167,22 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/itinerant-2026-07-24",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-07-24"
+		},
+		"life-car": {
+			"word": "life car",
+			"pos": "other",
+			"gloss": "( historical ) A watertight boat or box , travelling on a line from a wrecked vessel to the shore , used to haul people through the waves in a rescue.",
+			"href": "https://en.wiktionary.org/wiki/life%20car",
+			"source": "wiktionary",
+			"fetchedAt": "2026-07-25"
+		},
+		"vituperate": {
+			"word": "vituperate",
+			"pos": "other",
+			"gloss": "Merriam-Webster's Word of the Day for July 25, 2026 is: vituperate  \\vye-TOO-puh-rayt\\&nbsp;  verb To vituperate someone is to criticize or censure them severely or abusively. Vituperate can also mean \"to use harsh condemnatory language.\" // They were vituperated for betraying their friends. See the entry > Examples: \"On the world stage where Britain's royal family have traditionally been in the",
+			"href": "https://www.merriam-webster.com/word-of-the-day/vituperate-2026-07-25",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-07-25"
 		}
 	}
 }
