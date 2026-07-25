@@ -15,6 +15,7 @@ genre: self-help
 format: audio
 rating: love
 status: finished
+cover: the-courage-to-be-disliked.webp
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116974058744145471'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mrexffknto24'
