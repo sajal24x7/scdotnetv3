@@ -17,7 +17,7 @@ The `/shelf/` page is the default landing when clicking **Shelf** in the seconda
 
 ## Adding New Entries
 
-The normal path is an Obsidian note via the [publishing shortcut](../content/publishing-shortcut.md) (which lands in `src/content/inbox/` and gets sorted automatically), or a quick-add from the `/write` Shelf tab for queue stubs. To add a file directly, create it in the category folder (`src/content/bookshelf/`, `src/content/filmshelf/`, etc.) with a timestamp filename (`YYYYMMDDHHMM Title.md`), set `category` to the relevant value, and fill in the fields for that media type (see below).
+The normal path is an Obsidian note via the [publishing shortcut](../content/publishing-shortcut.md) (which lands in `src/content/inbox/` and gets sorted automatically), or the `/write` Shelf tab — which quick-adds queue stubs for any category, and logs a finished or in-progress film/TV season outright (dates, rating, platform), so watching something doesn't require a note in the vault. See [Micro & Photo Composer](../content/micro-composer.md#shelf-mode-watch-log--queue-quick-add). To add a file directly, create it in the category folder (`src/content/bookshelf/`, `src/content/filmshelf/`, etc.) with a timestamp filename (`YYYYMMDDHHMM Title.md`), set `category` to the relevant value, and fill in the fields for that media type (see below).
 
 Covers and missing metadata are filled in automatically by GitHub Actions when shelf content lands on `main` (see [Cover Downloaders](../tools/shelf-cover-downloaders.md) and [Metadata Enrichment](../tools/shelf-metadata-enrichment.md)).
 
