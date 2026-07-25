@@ -1,10 +1,15 @@
 ---
-title: "Spaced Repetition"
-slug: "spaced-repetition"
-created: 2026-07-23T08:50:00+03:00
-updated: 2026-07-23T09:24:44+03:00
+title: Spaced Repetition
+slug: spaced-repetition
+created: 2026-07-23T05:50:00.000Z
+updated: 2026-07-23T06:24:44.000Z
 category: evergreen
-tags: ["learning"]
+tags:
+  - learning
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116982896487677224'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mriuydohhz2a'
+  - 'https://www.threads.com/@sajal24x7/post/DbO2oJyHSVc'
 ---
 In 1885, Hermann Ebbinghaus, memorised a bunch of nonsense words, and mapped how much he forgot over time. He discovered what is now called **the forgetting curve**.
 
