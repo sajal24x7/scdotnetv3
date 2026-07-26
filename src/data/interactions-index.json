@@ -217,6 +217,20 @@
       "status": "approved"
     }
   ],
+  "evergreen/spaced-repetition": [
+    {
+      "id": "mastodon:repost:116982896487677224:111653099686979697",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Government & Policy Channel",
+        "url": "https://newsmast.community/@government",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/099/686/979/697/original/43016e49f823a5e1.png"
+      },
+      "url": "https://newsmast.community/@government",
+      "status": "approved"
+    }
+  ],
   "micro/202607091101": [
     {
       "id": "bluesky:like:3mq7azzv4qu2w:did:plc:lcbtt32aexvcuwlt4alf6qsw",
@@ -379,30 +393,6 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/ff001ea326abf0a52eec631922cd781b.jpg"
       },
       "url": "https://discuss.systems/@BearGriffin",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:116900748193619422:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:116900748193619422:111653365874136274",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Physics Channel",
-        "url": "https://newsmast.community/@physics",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/8341b61d05f55d754e09d73073498904.png"
-      },
-      "url": "https://newsmast.community/@physics",
       "status": "approved"
     },
     {
@@ -741,18 +731,6 @@
       "status": "approved"
     },
     {
-      "id": "mastodon:repost:116901921008963465:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    },
-    {
       "id": "mastodon:repost:116901921008963465:116141936733036818",
       "type": "repost",
       "platform": "mastodon",
@@ -922,6 +900,21 @@
       },
       "url": "https://newsmast.community/@foodanddrink",
       "status": "approved"
+    }
+  ],
+  "nordletter/nl115": [
+    {
+      "id": "web:like:e17033ba70f79a2b7059fd704b3692a6b447dd6a3499adc255439b621c38c8b5",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "Gabe pedalsandpages.com",
+        "url": "https://bsky.app/profile/pedalsandpages.com",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/9180df40ba10a5e9cdb99a7c74546981.webp"
+      },
+      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mriuzibyol2e/did%253Aplc%253Ailwe2nx42xcfws5umthy7phz",
+      "published": "2026-07-25T23:35:40.278Z",
+      "status": "pending"
     }
   ],
   "photo/202607111030": [

@@ -649,6 +649,7 @@
       "evergreen/202606291311 Thin on the Outside Fat on the Inside.md",
       "evergreen/202606302145 A Good Life Requires Constant Maintenance.md",
       "evergreen/202607172116 Hunger Starts in the Mind.md",
+      "evergreen/202607230850 Spaced Repetition.md",
       "filmshelf/201812311200 Mowgli Legend of the Jungle.md",
       "filmshelf/201901061200 Black Mirror Bandersnatch.md",
       "filmshelf/201901141200 Hate Story.md",
@@ -1197,6 +1198,8 @@
       "filmshelf/202606051110 Ladies First.md",
       "filmshelf/202606101200 Maa Behen.md",
       "filmshelf/202606161200 Bhooth Bangla.md",
+      "filmshelf/202607260020 Dune 1.md",
+      "filmshelf/202607260020 Dune 2.md",
       "gameshelf/202605290954 Ghost of Yotei.md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
@@ -1684,6 +1687,7 @@
       "nordletter/202607022037 NL112 - The Diabetes Code.md",
       "nordletter/202607101227 NL113 - Fable is Good.md",
       "nordletter/202607151142 NL114 - Football and Me.md",
+      "nordletter/202607231950 NL115.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -1730,6 +1734,7 @@
       "photo/202607170957.md",
       "photo/202607220951.md",
       "photo/202607242014.md",
+      "photo/202607252022.md",
       "poem/201202121505 Here I stand.md",
       "poem/201202131628 Stranded Isle.md",
       "poem/201203181704 Scared I was.md",
@@ -7044,6 +7049,14 @@
   ],
   "bookshelf/range": [
     {
+      "slug": "/nordletter/nl115/",
+      "title": "Learning How to Learn",
+      "description": "A week of fasting, learning about learning and a new philosophy",
+      "category": "nordletter",
+      "created": "2026-07-23T16:50:00.000Z",
+      "snippet": "I am working on how to present this and what all I will talk about. But this led me down a rabbit hole to figuring out what the optimal ways to learn and to an old note I had taken while reading Range - How to learn effectively."
+    },
+    {
       "slug": "/blog/books-ive-read-this-year/",
       "title": "Books I Have Read This Year",
       "description": "",
@@ -7718,6 +7731,14 @@
   ],
   "bookshelf/outlive": [
     {
+      "slug": "/nordletter/nl115/",
+      "title": "Learning How to Learn",
+      "description": "A week of fasting, learning about learning and a new philosophy",
+      "category": "nordletter",
+      "created": "2026-07-23T16:50:00.000Z",
+      "snippet": "There are not that many books which I consider life-changing. Before this, it was The Road Less Travelled, and recently, Outlive."
+    },
+    {
       "slug": "/bookshelf/the-courage-to-be-disliked/",
       "title": "The Courage to Be Disliked",
       "description": "",
@@ -7971,6 +7992,14 @@
   ],
   "nordletter/nl106-citcon-2026-helsinki": [
     {
+      "slug": "/nordletter/nl115/",
+      "title": "Learning How to Learn",
+      "description": "A week of fasting, learning about learning and a new philosophy",
+      "category": "nordletter",
+      "created": "2026-07-23T16:50:00.000Z",
+      "snippet": "This was of course my topic at CITCON'26. I care about learning and I have used Claude to build the website of my dreams."
+    },
+    {
       "slug": "/nordletter/nl113-fable-is-good/",
       "title": "Fable Is Good",
       "description": "",
@@ -8010,6 +8039,14 @@
     }
   ],
   "now/building-scdotnetv3-on-astro": [
+    {
+      "slug": "/nordletter/nl115/",
+      "title": "Learning How to Learn",
+      "description": "A week of fasting, learning about learning and a new philosophy",
+      "category": "nordletter",
+      "created": "2026-07-23T16:50:00.000Z",
+      "snippet": "This was of course my topic at CITCON'26. I care about learning and I have used Claude to build the website of my dreams."
+    },
     {
       "slug": "/nordletter/nl113-fable-is-good/",
       "title": "Fable Is Good",
@@ -8067,6 +8104,54 @@
       "snippet": "I still think the same. But the science (logic) of it is making sense to me. This is after I had read and finished The Diabetes Code and wrote about it in NL112. I wanted to read further and understand the different fasting regimens and what I was supposed to eat or not."
     }
   ],
+  "nordletter/nl114-football-and-me": [
+    {
+      "slug": "/nordletter/nl115/",
+      "title": "Learning How to Learn",
+      "description": "A week of fasting, learning about learning and a new philosophy",
+      "category": "nordletter",
+      "created": "2026-07-23T16:50:00.000Z",
+      "snippet": "A couple of updates related to last week."
+    }
+  ],
+  "evergreen/how-to-learn-effectively": [
+    {
+      "slug": "/nordletter/nl115/",
+      "title": "Learning How to Learn",
+      "description": "A week of fasting, learning about learning and a new philosophy",
+      "category": "nordletter",
+      "created": "2026-07-23T16:50:00.000Z",
+      "snippet": "I am working on how to present this and what all I will talk about. But this led me down a rabbit hole to figuring out what the optimal ways to learn and to an old note I had taken while reading Range - How to learn effectively."
+    },
+    {
+      "slug": "/nordletter/nl68-autumn-begins/",
+      "title": "Autumn Begins",
+      "description": "",
+      "category": "nordletter",
+      "created": "2025-08-24T03:35:47.000Z",
+      "snippet": "I finished reading Range this week. It was my kind of non-fiction book. It gave me a few things to think about. Mostly around analogical thinking and How to learn effectively. The thesis of the book is that early specialisation is not a good idea, that to be successful one should have a range of experiences."
+    }
+  ],
+  "evergreen/spaced-repetition": [
+    {
+      "slug": "/nordletter/nl115/",
+      "title": "Learning How to Learn",
+      "description": "A week of fasting, learning about learning and a new philosophy",
+      "category": "nordletter",
+      "created": "2026-07-23T16:50:00.000Z",
+      "snippet": "If you want to read more about spaced repetition, here's my note on it."
+    }
+  ],
+  "bookshelf/the-courage-to-be-disliked": [
+    {
+      "slug": "/nordletter/nl115/",
+      "title": "Learning How to Learn",
+      "description": "A week of fasting, learning about learning and a new philosophy",
+      "category": "nordletter",
+      "created": "2026-07-23T16:50:00.000Z",
+      "snippet": "I finished reading The Courage to be Disliked this week."
+    }
+  ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
     {
       "slug": "/nordletter/nl63-a-day-trip-to-turku/",
@@ -8108,16 +8193,6 @@
     }
   ],
   "evergreen/analogical-thinking": [
-    {
-      "slug": "/nordletter/nl68-autumn-begins/",
-      "title": "Autumn Begins",
-      "description": "",
-      "category": "nordletter",
-      "created": "2025-08-24T03:35:47.000Z",
-      "snippet": "I finished reading Range this week. It was my kind of non-fiction book. It gave me a few things to think about. Mostly around analogical thinking and How to learn effectively. The thesis of the book is that early specialisation is not a good idea, that to be successful one should have a range of experiences."
-    }
-  ],
-  "evergreen/how-to-learn-effectively": [
     {
       "slug": "/nordletter/nl68-autumn-begins/",
       "title": "Autumn Begins",
