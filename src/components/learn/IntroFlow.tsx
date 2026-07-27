@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type { LearnItem, Prompt } from './types';
 import { ItemDetails } from './ItemDetails';
 import {
@@ -20,6 +20,11 @@ import {
 // only, and a concept isn't introduced until its questions have been written.
 // The prompts come back through `onLearn` for the parent to store; on every
 // other deck `onLearn` is called with the item's own prompts unchanged.
+//
+// `onLearn` is a local save only. The session's writes are committed together
+// when it ends — `onSessionEnd` fires exactly once, whether the last card was
+// answered or the learner stopped part-way — which is what keeps a morning of
+// new concepts to one commit instead of one per card.
 
 export interface IntroCard {
 	deckId: string;
@@ -35,6 +40,7 @@ export function IntroFlow({
 	onLearn,
 	onSkip,
 	onQuit,
+	onSessionEnd,
 	doneView,
 	saveError,
 }: {
@@ -42,6 +48,9 @@ export function IntroFlow({
 	onLearn: (card: IntroCard, prompts: Prompt[]) => void;
 	onSkip: (card: IntroCard) => void;
 	onQuit: () => void;
+	// Fired once when the session is over — the parent commits here. Quitting
+	// waits on it, so a commit isn't cut short by navigating away.
+	onSessionEnd?: () => void | Promise<void>;
 	doneView: (learned: number) => React.ReactNode;
 	// Surfaced from the parent's last save attempt — a commit that didn't
 	// reach the repo must not look like a clean success.
@@ -53,8 +62,28 @@ export function IntroFlow({
 	// what's been typed for a card.
 	const [draftsByItem, setDraftsByItem] = useState<Record<string, DraftPrompt[]>>({});
 	const [showBlocker, setShowBlocker] = useState(false);
+	const [quitting, setQuitting] = useState(false);
 
-	if (index >= cards.length) return <>{doneView(learned)}</>;
+	// One end per session, however it ends: the last card, or the Stop button.
+	const ended = useRef(false);
+	const endSession = React.useCallback(async () => {
+		if (ended.current) return;
+		ended.current = true;
+		await onSessionEnd?.();
+	}, [onSessionEnd]);
+
+	const done = index >= cards.length;
+	useEffect(() => {
+		if (done) void endSession();
+	}, [done, endSession]);
+
+	async function quit() {
+		setQuitting(true);
+		await endSession();
+		onQuit();
+	}
+
+	if (done) return <>{doneView(learned)}</>;
 
 	const card = cards[index];
 	const isLast = index === cards.length - 1;
@@ -82,8 +111,8 @@ export function IntroFlow({
 	return (
 		<div className="lq-session">
 			<div className="lq-session__header">
-				<button type="button" className="lq-quit" onClick={onQuit}>
-					← Stop
+				<button type="button" className="lq-quit" onClick={quit} disabled={quitting}>
+					{quitting ? 'Saving…' : '← Stop'}
 				</button>
 				<span className="lq-score">
 					{index + 1} / {cards.length}

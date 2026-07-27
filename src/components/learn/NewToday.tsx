@@ -28,9 +28,10 @@ import { loadSyncToken, pullBlob, pushBlobFromLocalStorage } from './sync';
 import {
 	applyAuthoredPrompts,
 	emptyAuthoredStore,
+	flushAuthored,
 	introducedItemIdsFor,
 	loadAuthoredForSession,
-	recordAuthored,
+	stageAuthored,
 	type AuthoredStore,
 } from './authoredPrompts';
 
@@ -45,7 +46,8 @@ import {
 // written: those decks ship reference cards with no questions, and accepting
 // a concept means composing the questions that will test it (IntroFlow ->
 // PromptComposer). They're cached locally so today's practice has them
-// immediately, and committed to the repo via /api/practice-prompts. See
+// immediately, and the whole session is committed to the repo as one commit
+// via /api/practice-prompts when it ends. See
 // docs/architecture/learning-systems.md § "Authored prompts".
 
 const LOCAL_DATASET_LOADERS: Record<string, () => Promise<LearnDataset | null>> = {
@@ -226,19 +228,24 @@ export default function NewToday({ registry }: { registry: PracticeDeck[] }) {
 		pushSync(meta);
 
 		if (deck.authorPrompts) {
+			// Local only — everything written this session is committed together
+			// in handleSessionEnd, so a morning of new concepts is one commit.
 			setSaveError(null);
-			recordAuthored(card.item.id, prompts, loadSyncToken()).then((result) => {
-				setAuthoredStore(result.store);
-				// The prompts are cached and already scheduled either way; this
-				// only says whether they reached the repo, which is what makes
-				// them durable and visible on other devices.
-				setSaveError(
-					result.committed
-						? null
-						: `Saved on this device, but not to the repo — ${result.error ?? 'unknown error'}`,
-				);
-			});
+			setAuthoredStore(stageAuthored(card.item.id, prompts));
 		}
+	}
+
+	// One commit for the session, on the way out. The prompts are cached and
+	// already scheduled either way; the error only says whether they reached
+	// the repo, which is what makes them durable and visible on other devices.
+	// Anything that doesn't make it stays queued for the next session.
+	async function handleSessionEnd() {
+		const result = await flushAuthored(loadSyncToken());
+		setSaveError(
+			result.committed
+				? null
+				: `Saved on this device, but not to the repo — ${result.error ?? 'unknown error'}`,
+		);
 	}
 
 	function handleSkip(card: IntroCard) {
@@ -287,6 +294,7 @@ export default function NewToday({ registry }: { registry: PracticeDeck[] }) {
 				saveError={saveError}
 				onLearn={handleLearn}
 				onSkip={handleSkip}
+				onSessionEnd={handleSessionEnd}
 				onQuit={() => {
 					window.location.href = '/learn/';
 				}}
@@ -301,6 +309,9 @@ export default function NewToday({ registry }: { registry: PracticeDeck[] }) {
 								? 'Their questions are already waiting in today\'s queue — quiz yourself while it\'s fresh.'
 								: 'Nothing added — come back tomorrow for a fresh batch.'}
 						</p>
+						{/* The session's one commit lands here, so its failure has to
+						    be visible on this screen — it's the last one shown. */}
+						{saveError && <p className="lq-composer__issue lq-composer__issue--blocker">{saveError}</p>}
 						<a className="lq-button lq-button--primary" href="/practice/">
 							Go to practice →
 						</a>

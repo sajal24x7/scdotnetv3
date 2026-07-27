@@ -9,8 +9,11 @@
 // reused prompt id inherits a deleted prompt's schedule; a bad merge drops a
 // word you wrote on another device), so they're pinned down here rather than
 // left to the type checker. The browser-only halves — localStorage, fetch —
-// aren't covered; they're thin wrappers with nothing to get wrong that a test
-// like this would catch.
+// are mostly left alone; they're thin wrappers with nothing to get wrong that
+// a test like this would catch. The exception is the stage/flush pair at the
+// bottom, which decides how many commits a learn session makes — "one commit
+// per session" is a promise about the repo's history, so it gets a fake
+// localStorage and fetch rather than the benefit of the doubt.
 //
 // Loaded through esbuild the same way scripts/validate-learn-data.mjs loads a
 // TypeScript content pool: no bundler, no test framework, plain Node.
@@ -36,12 +39,18 @@ async function loadTsModule(relPath) {
 
 const {
 	applyAuthoredPrompts,
+	AUTHORED_CACHE_KEY,
+	AUTHORED_PENDING_KEY,
 	clozeAnswer,
+	flushAuthored,
 	introducedItemIdsFor,
+	loadAuthoredCache,
+	loadPendingAuthored,
 	mergeAuthored,
 	migrateLegacyPrompts,
 	promptIdFor,
 	promptIssue,
+	stageAuthored,
 } = await loadTsModule('src/components/learn/authoredPrompts.ts');
 
 let failures = 0;
@@ -156,6 +165,100 @@ eq(
 	],
 	['df'],
 );
+
+// --- Staging and the one-commit-per-session flush ---
+//
+// The point of the split: authoring a card touches localStorage only, and the
+// end of the session sends everything staged in a single POST — which is a
+// single commit on main. Before this, a twelve-concept morning was twelve
+// commits and twelve site rebuilds.
+
+const store = new Map();
+globalThis.window = {
+	localStorage: {
+		getItem: (k) => (store.has(k) ? store.get(k) : null),
+		setItem: (k, v) => store.set(k, v),
+		removeItem: (k) => store.delete(k),
+	},
+};
+
+let posts = [];
+let postFails = false;
+globalThis.fetch = async (_url, init) => {
+	posts.push(JSON.parse(init.body).items);
+	if (postFails) return { ok: false, status: 502, json: async () => ({ error: 'boom' }) };
+	return { ok: true, status: 200, json: async () => ({ written: 1 }) };
+};
+
+function resetSession() {
+	store.clear();
+	posts = [];
+	postFails = false;
+}
+
+const p = (id) => [{ id, q: 'q?', a: 'a' }];
+
+resetSession();
+stageAuthored('df', p('df-a1'));
+stageAuthored('du', p('du-a1'));
+stageAuthored('ls', p('ls-a1'));
+
+eq('staging makes no network calls', posts.length, 0);
+eq('staged items queue up', Object.keys(loadPendingAuthored()).sort(), ['df', 'du', 'ls']);
+eq(
+	'staged prompts are practisable immediately',
+	Object.keys(loadAuthoredCache().items).sort(),
+	['df', 'du', 'ls'],
+);
+
+let result = await flushAuthored('token');
+eq('the session flushes in one request', posts.length, 1);
+eq('that request carries every concept', Object.keys(posts[0]).sort(), ['df', 'du', 'ls']);
+eq('the flush reports success', [result.committed, result.pending], [true, 3]);
+eq('a committed queue is emptied', loadPendingAuthored(), {});
+
+eq('flushing an empty queue is a no-op', (await flushAuthored('token')).committed, true);
+eq('and sends nothing', posts.length, 1);
+
+// A failed commit must not look clean, and must not lose the prompts: they
+// stay queued so the next session's flush picks them up.
+resetSession();
+postFails = true;
+stageAuthored('df', p('df-a1'));
+result = await flushAuthored('token');
+eq('a failed flush reports the failure', result.committed, false);
+eq('a failed flush keeps the queue', Object.keys(loadPendingAuthored()), ['df']);
+
+postFails = false;
+await flushAuthored('token');
+eq('the next flush retries what was left', Object.keys(posts[1]), ['df']);
+eq('and clears it once it lands', loadPendingAuthored(), {});
+
+// No token means no repo — the prompts still work on this device today, and
+// stay queued for whenever sync is turned on.
+resetSession();
+stageAuthored('df', p('df-a1'));
+result = await flushAuthored(null);
+eq('an unconnected flush sends nothing', posts.length, 0);
+eq('an unconnected flush reports it', result.committed, false);
+eq('an unconnected flush keeps the queue', Object.keys(loadPendingAuthored()), ['df']);
+
+// Authoring while the POST is in flight belongs to the *next* commit, and
+// must survive the clear that follows the one in flight.
+resetSession();
+stageAuthored('df', p('df-a1'));
+const inFlight = flushAuthored('token');
+stageAuthored('du', p('du-a1'));
+await inFlight;
+eq('a concept staged mid-flush is not dropped', Object.keys(loadPendingAuthored()), ['du']);
+
+// Re-editing a staged concept before the flush replaces it rather than
+// queueing it twice — the composer edits an item's prompts as a set.
+resetSession();
+stageAuthored('df', p('df-a1'));
+stageAuthored('df', p('df-a2'));
+await flushAuthored('token');
+eq('a re-edited concept commits once, latest wins', posts[0].df.prompts[0].id, 'df-a2');
 
 if (failures > 0) {
 	console.error(`\n${failures} assertion(s) failed`);
