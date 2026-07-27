@@ -241,7 +241,7 @@
 	word-break: break-word;
 }
 
-/* Prose stand-in for .lq-command on note-backed items with no syntax line. */
+/* The item's headline, above the optional .lq-command syntax line. */
 .lq-term {
 	display: block;
 	font-family: var(--font-serif);
@@ -250,6 +250,15 @@
 	color: rgb(var(--color-accent));
 	margin-bottom: 1rem;
 	word-break: break-word;
+}
+
+/* When both lines are present the term carries the size; the syntax line
+   sits directly under it as a quieter caption. */
+.lq-term + .lq-command {
+	margin-top: -0.75rem;
+	font-size: var(--text-small);
+	font-weight: 500;
+	color: rgb(var(--color-text-secondary));
 }
 
 .lq-item-photo {
