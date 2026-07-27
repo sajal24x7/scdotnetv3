@@ -290,7 +290,16 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 	}, [registry, perDeckState, today, localDatasets]);
 
 	const activeDecks = registry.filter((d) => !disabledDecks.has(d.id));
-	const totalDue = activeDecks.reduce((n, d) => n + Math.min(countsByDeck.get(d.id)?.due ?? 0, GLOBAL_DUE_CAP), 0);
+	// Mirrors buildUnifiedQueue's two-stage capping: each deck contributes at
+	// most its own dueCap, and the total is then clamped to the global cap.
+	// Capping per deck *before* summing (as this once did) inflates the number
+	// by up to GLOBAL_DUE_CAP per deck — after a break it would promise "94
+	// due" for a session that will only ever serve 20, which is exactly the
+	// backlog dread the cap exists to prevent.
+	const totalDue = Math.min(
+		activeDecks.reduce((n, d) => n + Math.min(countsByDeck.get(d.id)?.due ?? 0, d.dueCap), 0),
+		GLOBAL_DUE_CAP,
+	);
 	// New concepts aren't part of this page anymore — the count only feeds the
 	// "waiting on the Learn page" nudge below, capped at what /learn/new
 	// would actually offer today.
