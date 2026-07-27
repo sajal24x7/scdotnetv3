@@ -20,8 +20,9 @@ import { loadSyncToken, pushBlobFromLocalStorage } from './sync';
 import {
 	applyAuthoredPrompts,
 	emptyAuthoredStore,
+	flushAuthored,
 	loadAuthoredCache,
-	recordAuthored,
+	stageAuthored,
 	type AuthoredStore,
 } from './authoredPrompts';
 
@@ -125,16 +126,20 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 		pushSync(loadPracticeMeta(0));
 
 		if (authorPrompts) {
+			// Staged locally; handleSessionEnd commits the session in one go —
+			// same rule as NewToday.handleLearn.
 			setSaveError(null);
-			recordAuthored(card.item.id, prompts, loadSyncToken()).then((result) => {
-				setAuthored(result.store);
-				setSaveError(
-					result.committed
-						? null
-						: `Saved on this device, but not to the repo — ${result.error ?? 'unknown error'}`,
-				);
-			});
+			setAuthored(stageAuthored(card.item.id, prompts));
 		}
+	}
+
+	async function handleSessionEnd() {
+		const result = await flushAuthored(loadSyncToken());
+		setSaveError(
+			result.committed
+				? null
+				: `Saved on this device, but not to the repo — ${result.error ?? 'unknown error'}`,
+		);
 	}
 
 	function handleSkip(card: IntroCard) {
@@ -174,6 +179,7 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 				saveError={saveError}
 				onLearn={handleLearn}
 				onSkip={handleSkip}
+				onSessionEnd={handleSessionEnd}
 				onQuit={() => setScreen('chart')}
 				doneView={(learned) => (
 					<div className="lq-done">
@@ -182,6 +188,8 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 							{learned} new {itemNoun}
 							{learned === 1 ? '' : 's'} added to today's practice
 						</h2>
+						{/* The session's single commit lands on this screen. */}
+						{saveError && <p className="lq-composer__issue lq-composer__issue--blocker">{saveError}</p>}
 						<div className="lq-io-row">
 							<a className="lq-button lq-button--primary" href="/practice/">
 								Go to practice →

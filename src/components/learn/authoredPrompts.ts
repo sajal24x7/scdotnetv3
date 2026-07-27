@@ -15,6 +15,14 @@
 // last-write-wins per item on `updatedAt`, which is deterministic and
 // idempotent in either direction, exactly like engine.ts's SRS merge.
 //
+// Writes are batched per session, not per concept: authoring a card stages it
+// (stageAuthored — cache plus a pending queue, no network), and the end of the
+// learn session flushes the whole queue in one POST, which is one commit. A
+// twelve-concept morning used to be twelve commits and twelve rebuilds; now
+// it's one. The queue is durable, so a session ended by closing the tab, going
+// offline, or a failed commit leaves the prompts staged and the next flush
+// picks them up.
+//
 // Nothing here touches React, and every browser-only call guards on `window`,
 // so the pure parts (applyAuthoredPrompts, mergeAuthored, promptIdFor) can be
 // used at build time too — src/data/authored-prompts.ts does exactly that.
@@ -32,6 +40,10 @@ export interface AuthoredStore {
 }
 
 export const AUTHORED_CACHE_KEY = 'practice-authored-prompts';
+// Staged-but-uncommitted entries, drained by flushAuthored. Separate from the
+// cache above because the cache is "what this device knows" (including what
+// the repo already has) while this is strictly "what the repo hasn't seen yet".
+export const AUTHORED_PENDING_KEY = 'practice-authored-pending';
 
 export function emptyAuthoredStore(): AuthoredStore {
 	return { version: 1, items: {} };
@@ -143,6 +155,44 @@ export function saveAuthoredCache(store: AuthoredStore) {
 	}
 }
 
+// --- Pending queue (staged, not yet committed) ---
+
+export function loadPendingAuthored(): Record<string, AuthoredEntry> {
+	if (typeof window === 'undefined') return {};
+	try {
+		const raw = window.localStorage.getItem(AUTHORED_PENDING_KEY);
+		if (raw) {
+			const parsed = JSON.parse(raw);
+			if (parsed && typeof parsed === 'object') return parsed as Record<string, AuthoredEntry>;
+		}
+	} catch {
+		// Unreadable queue — treat as empty. The cache still holds the prompts,
+		// so nothing the learner typed is lost from this device.
+	}
+	return {};
+}
+
+function savePendingAuthored(pending: Record<string, AuthoredEntry>) {
+	if (typeof window === 'undefined') return;
+	try {
+		if (Object.keys(pending).length === 0) window.localStorage.removeItem(AUTHORED_PENDING_KEY);
+		else window.localStorage.setItem(AUTHORED_PENDING_KEY, JSON.stringify(pending));
+	} catch {
+		// Nothing to do — a queue we can't persist just means this session's
+		// flush is the only chance to commit, which is the old behaviour.
+	}
+}
+
+// Drops the entries a successful flush covered, keeping anything staged since
+// the POST went out (the learner can author while it's in flight).
+function clearPendingAuthored(committed: Record<string, AuthoredEntry>) {
+	const pending = loadPendingAuthored();
+	for (const [id, entry] of Object.entries(committed)) {
+		if (pending[id] && pending[id].updatedAt === entry.updatedAt) delete pending[id];
+	}
+	savePendingAuthored(pending);
+}
+
 // --- Server round-trips ---
 
 export async function pullAuthored(token: string): Promise<AuthoredStore | null> {
@@ -165,27 +215,42 @@ export async function pushAuthored(items: Record<string, AuthoredEntry>, token: 
 	}
 }
 
-// Records an item's prompts: cache first (so this device practices them
-// today, without waiting for a rebuild), then commit. A failed commit leaves
-// the cache intact and reports the error — the caller surfaces it rather than
-// pretending the prompts are safe.
-export async function recordAuthored(
-	itemId: string,
-	prompts: Prompt[],
-	token: string | null,
-): Promise<{ store: AuthoredStore; committed: boolean; error?: string }> {
+// Stages an item's prompts: cache (so this device practices them today,
+// without waiting for a rebuild) plus the pending queue. No network — the
+// commit happens once, at the end of the session, in flushAuthored.
+export function stageAuthored(itemId: string, prompts: Prompt[]): AuthoredStore {
 	const entry: AuthoredEntry = { prompts, updatedAt: new Date().toISOString() };
 	const store = mergeAuthored(loadAuthoredCache(), { version: 1, items: { [itemId]: entry } });
 	saveAuthoredCache(store);
+	savePendingAuthored({ ...loadPendingAuthored(), [itemId]: entry });
+	return store;
+}
+
+// Commits everything staged in one POST — one commit per session, whatever it
+// covers. A failed flush leaves the queue intact and reports the error; the
+// caller surfaces it rather than pretending the prompts are safe. Callers can
+// fire this on every session end: with nothing pending it's a no-op that
+// touches neither the network nor the repo.
+export async function flushAuthored(
+	token: string | null,
+): Promise<{ pending: number; committed: boolean; error?: string }> {
+	const pending = loadPendingAuthored();
+	const count = Object.keys(pending).length;
+	if (count === 0) return { pending: 0, committed: true };
 
 	if (!token) {
-		return { store, committed: false, error: 'Not connected — saved on this device only.' };
+		return { pending: count, committed: false, error: 'Not connected — saved on this device only.' };
 	}
 	try {
-		await pushAuthored({ [itemId]: entry }, token);
-		return { store, committed: true };
+		await pushAuthored(pending, token);
+		clearPendingAuthored(pending);
+		return { pending: count, committed: true };
 	} catch (e) {
-		return { store, committed: false, error: e instanceof Error ? e.message : 'Could not save to the repo.' };
+		return {
+			pending: count,
+			committed: false,
+			error: e instanceof Error ? e.message : 'Could not save to the repo.',
+		};
 	}
 }
 
@@ -294,9 +359,13 @@ export async function loadAuthoredForSession(params: {
 
 	authored = mergeAuthored(authored, { version: 1, items: adopted });
 	saveAuthoredCache(authored);
+	// Stage rather than push: the migration then rides the session's single
+	// commit instead of racing it with a second one, and a failure leaves it
+	// queued for the next flush.
+	savePendingAuthored({ ...loadPendingAuthored(), ...adopted });
 	if (token) {
-		pushAuthored(adopted, token).catch(() => {
-			// Cached already; the next save retries.
+		flushAuthored(token).catch(() => {
+			// Cached and queued already; the next flush retries.
 		});
 	}
 	return authored;
