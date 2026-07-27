@@ -3,16 +3,8 @@ import type { LearnDataset } from './types';
 import type { PracticeDeck } from '../../data/practice-registry';
 import { loadPeopleDeck } from './peopleDeckStore';
 import { PromptQuestion } from './ItemDetails';
-import {
-	clearSyncToken,
-	composerTokenAvailable,
-	loadSyncToken,
-	loadSyncTokenInfo,
-	saveSyncToken,
-	SYNC_LAST_KEY,
-	useComposerToken,
-	type TokenSource,
-} from './sync';
+import { loadSyncToken, SYNC_LAST_KEY } from './sync';
+import { SignInPanel, useSession } from '../auth/SignIn';
 import {
 	applyAuthoredPrompts,
 	AUTHORED_CACHE_KEY,
@@ -130,12 +122,10 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 	// overlays anything newer this device knows about.
 	const [authored, setAuthored] = useState<AuthoredStore>(emptyAuthoredStore);
 
-	const [syncToken, setSyncToken] = useState<string | null>(null);
-	// Where the active token came from — the composer's key is a fallback, and
-	// the UI says so rather than implying /practice is holding its own.
-	const [tokenSource, setTokenSource] = useState<TokenSource | null>(null);
-	const [composerAvailable, setComposerAvailable] = useState(false);
-	const [tokenInput, setTokenInput] = useState('');
+	// Sync follows the site's sign-in: signed in means on. Signing in from the
+	// panel below re-renders this through the session subscription, which is
+	// what kicks off the first pull.
+	const { token: syncToken } = useSession();
 	const [lastSyncedAt, setLastSyncedAt] = useState<string | null>(null);
 	const [syncStatus, setSyncStatus] = useState<SyncStatus>('idle');
 	const pushTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -178,10 +168,6 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		setMeta(loadPracticeMeta(seedStreak));
 		setToday(localToday());
 		setLastSyncedAt(window.localStorage.getItem(SYNC_LAST_KEY));
-		const info = loadSyncTokenInfo();
-		setSyncToken(info?.token ?? null);
-		setTokenSource(info?.source ?? null);
-		setComposerAvailable(composerTokenAvailable());
 		const onFocus = () => {
 			setToday(localToday());
 			const token = loadSyncToken();
@@ -289,32 +275,6 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		const token = syncToken;
 		const currentMeta = meta;
 		pushTimer.current = setTimeout(() => pushState(token, currentMeta), PUSH_DEBOUNCE_MS);
-	}
-
-	function connectSync() {
-		const token = tokenInput.trim();
-		if (!token) return;
-		saveSyncToken(token);
-		setTokenInput('');
-		setSyncToken(token);
-		setTokenSource('practice');
-	}
-
-	// One token per device: if /write is already set up here, there's nothing
-	// to paste — the same PAT covers the state blob and the authored prompts.
-	function connectWithComposerToken() {
-		const token = useComposerToken();
-		if (!token) return;
-		setSyncToken(token);
-		setTokenSource('composer');
-	}
-
-	function disconnectSync() {
-		clearSyncToken();
-		setSyncToken(null);
-		setTokenSource(null);
-		setComposerAvailable(composerTokenAvailable());
-		setSyncStatus('idle');
 	}
 
 	const disabledDecks = useMemo(() => new Set(meta?.disabledDecks ?? []), [meta]);
@@ -714,43 +674,18 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 										? `Last synced ${formatRelativeTime(lastSyncedAt)}`
 										: 'Connected — not yet synced'}
 						</p>
-						{tokenSource === 'composer' && (
-							<p className="lq-sync__note">
-								Using the token this device already has for <a href="/write/">/write</a> — it covers review state
-								and the prompts you write. Disconnecting here leaves /write signed in.
-							</p>
-						)}
 						<div className="lq-io-row">
 							<button type="button" className="lq-button" onClick={() => pullAndMerge(syncToken)}>
 								Sync now
 							</button>
-							<button type="button" className="lq-button" onClick={disconnectSync}>
-								Disconnect this device
-							</button>
 						</div>
+						<SignInPanel compact />
 					</>
 				) : (
-					<>
-						{composerAvailable && (
-							<div className="lq-io-row">
-								<button type="button" className="lq-button lq-button--primary" onClick={connectWithComposerToken}>
-									Use the token from /write
-								</button>
-							</div>
-						)}
-						<div className="lq-io-row">
-							<input
-								type="password"
-								className="lq-sync__input"
-								placeholder="Fine-grained GitHub PAT (Contents: read/write)"
-								value={tokenInput}
-								onChange={(e) => setTokenInput(e.target.value)}
-							/>
-							<button type="button" className="lq-button" onClick={connectSync} disabled={!tokenInput.trim()}>
-								Connect this device
-							</button>
-						</div>
-					</>
+					<SignInPanel
+						compact
+						lead="Sign in to sync review state across your devices and to save the prompts you write. Everything on this page works without it — it just stays on this device."
+					/>
 				)}
 			</div>
 		</div>

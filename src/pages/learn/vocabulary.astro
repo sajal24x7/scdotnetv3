@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import LearningSystem from '../../components/learn/LearningSystem';
 import { vocabLearnConfig } from '../../data/vocab-learn-config';
 import '../../styles/learn.css';
+import '../../styles/auth.css';
 
 const itemCount = vocabLearnConfig.dataset.categories.reduce((n, c) => n + c.items.length, 0);
 ---

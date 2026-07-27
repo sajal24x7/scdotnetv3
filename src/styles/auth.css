@@ -1,0 +1,155 @@
+/* The site's shared sign-in UI (src/components/auth/SignIn.tsx).
+   Everything here references the design tokens in tokens.css, so the panel
+   picks up the site's warm background, accent, and border in both themes
+   without a single light/dark literal. */
+
+.auth-panel {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.75rem;
+	padding: 1.25rem;
+	border: 1.5px solid rgb(var(--color-border));
+	border-radius: 8px;
+	background: rgb(var(--color-bg-secondary));
+}
+
+/* Inline inside a surface that already has its own frame — no second box. */
+.auth-panel--compact {
+	padding: 0;
+	border: 0;
+	background: none;
+}
+
+.auth-panel__lead {
+	margin: 0;
+	font-size: var(--text-small);
+	color: rgb(var(--color-text-secondary));
+	max-width: 52ch;
+}
+
+.auth-panel__signed-in {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0;
+	font-size: var(--text-small);
+	font-weight: 600;
+}
+
+.auth-panel__dot {
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 999px;
+	background: rgb(var(--color-accent));
+}
+
+.auth-form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	width: 100%;
+	max-width: 34rem;
+}
+
+.auth-form__field {
+	display: block;
+}
+
+.auth-form__field > span {
+	display: block;
+	margin-bottom: 0.3rem;
+	font-size: var(--text-xs);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: rgb(var(--color-text-secondary));
+}
+
+.auth-form__field input {
+	width: 100%;
+	padding: 0.6rem 0.75rem;
+	border: 1.5px solid rgb(var(--color-border));
+	border-radius: 6px;
+	background: rgb(var(--color-bg));
+	color: rgb(var(--color-text-primary));
+	font: inherit;
+	font-size: var(--text-small);
+	font-family: var(--font-mono);
+}
+
+.auth-form__field input:focus {
+	outline: none;
+	border-color: rgb(var(--color-accent));
+}
+
+.auth-form__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.auth-form__error {
+	margin: 0;
+	font-size: var(--text-small);
+	color: #c62828;
+}
+.dark .auth-form__error {
+	color: #ef5350;
+}
+
+.auth-form__help {
+	margin: 0;
+	font-size: var(--text-xs);
+	line-height: 1.5;
+	color: rgb(var(--color-text-secondary));
+	max-width: 52ch;
+}
+
+.auth-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.6rem 1.15rem;
+	border-radius: 999px;
+	border: 1.5px solid rgb(var(--color-border));
+	background: rgb(var(--color-bg));
+	color: inherit;
+	font: inherit;
+	font-size: var(--text-small);
+	font-weight: 600;
+	cursor: pointer;
+	transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.auth-button:hover:not(:disabled) {
+	border-color: rgb(var(--color-accent));
+}
+
+.auth-button:disabled {
+	opacity: 0.55;
+	cursor: default;
+}
+
+.auth-button--primary {
+	background: rgb(var(--color-accent));
+	border-color: rgb(var(--color-accent));
+	color: #fff;
+}
+
+.auth-button--primary:hover:not(:disabled) {
+	background: rgb(var(--color-accent-hover));
+	border-color: rgb(var(--color-accent-hover));
+}
+
+.auth-button--quiet {
+	background: none;
+	border-color: transparent;
+	color: rgb(var(--color-text-secondary));
+	padding-inline: 0.5rem;
+}
+
+.auth-button--quiet:hover:not(:disabled) {
+	color: rgb(var(--color-text-primary));
+	border-color: transparent;
+	text-decoration: underline;
+}

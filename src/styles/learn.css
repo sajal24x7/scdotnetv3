@@ -1037,3 +1037,10 @@
 .lq-composer__add {
 	margin-top: 0.25rem;
 }
+
+/* A notice above the intro flow (currently the signed-out warning on
+   /learn/new) — same frame as a panel, but quieter and not the main event. */
+.lq-panel--notice {
+	margin-bottom: 1rem;
+	background: rgba(var(--color-accent), 0.06);
+}

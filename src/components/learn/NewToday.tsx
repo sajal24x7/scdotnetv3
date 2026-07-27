@@ -3,6 +3,7 @@ import type { LearnDataset, Prompt } from './types';
 import type { PracticeDeck } from '../../data/practice-registry';
 import { loadPeopleDeck } from './peopleDeckStore';
 import { IntroFlow, type IntroCard } from './IntroFlow';
+import { SignInPanel, useSession } from '../auth/SignIn';
 import {
 	buildNewToday,
 	computeIntroducedTodayCount,
@@ -54,6 +55,7 @@ const LOCAL_DATASET_LOADERS: Record<string, () => Promise<LearnDataset | null>> 
 type Phase = 'loading' | 'ready' | 'empty' | 'error';
 
 export default function NewToday({ registry }: { registry: PracticeDeck[] }) {
+	const { token } = useSession();
 	const [phase, setPhase] = useState<Phase>('loading');
 	const [cards, setCards] = useState<IntroCard[]>([]);
 	const [meta, setMeta] = useState<PracticeMeta | null>(null);
@@ -264,31 +266,47 @@ export default function NewToday({ registry }: { registry: PracticeDeck[] }) {
 		);
 	}
 
+	// Prompts you write are committed to the repo, so signing out (or never
+	// signing in) means they only exist in this browser. Say so before the
+	// writing happens rather than after — but don't block: local-only
+	// authoring still works, and today's practice still gets the prompts.
+	const authoringToday = cards.some((card) => card.authorPrompts);
+
 	return (
-		<IntroFlow
-			cards={cards}
-			saveError={saveError}
-			onLearn={handleLearn}
-			onSkip={handleSkip}
-			onQuit={() => {
-				window.location.href = '/learn/';
-			}}
-			doneView={(learned) => (
-				<div className="lq-done">
-					<p className="lq-eyebrow">New concepts done</p>
-					<h2 className="lq-done__headline">
-						{learned} new concept{learned === 1 ? '' : 's'} added to today's practice
-					</h2>
-					<p className="lq-done__message">
-						{learned > 0
-							? 'Their questions are already waiting in today\'s queue — quiz yourself while it\'s fresh.'
-							: 'Nothing added — come back tomorrow for a fresh batch.'}
-					</p>
-					<a className="lq-button lq-button--primary" href="/practice/">
-						Go to practice →
-					</a>
+		<>
+			{!token && authoringToday && (
+				<div className="lq-panel lq-panel--notice">
+					<SignInPanel
+						compact
+						lead="You're not signed in. You can still write prompts — they'll work in today's practice — but they'll stay in this browser instead of being saved to the repo and reaching your other devices."
+					/>
 				</div>
 			)}
-		/>
+			<IntroFlow
+				cards={cards}
+				saveError={saveError}
+				onLearn={handleLearn}
+				onSkip={handleSkip}
+				onQuit={() => {
+					window.location.href = '/learn/';
+				}}
+				doneView={(learned) => (
+					<div className="lq-done">
+						<p className="lq-eyebrow">New concepts done</p>
+						<h2 className="lq-done__headline">
+							{learned} new concept{learned === 1 ? '' : 's'} added to today's practice
+						</h2>
+						<p className="lq-done__message">
+							{learned > 0
+								? 'Their questions are already waiting in today\'s queue — quiz yourself while it\'s fresh.'
+								: 'Nothing added — come back tomorrow for a fresh batch.'}
+						</p>
+						<a className="lq-button lq-button--primary" href="/practice/">
+							Go to practice →
+						</a>
+					</div>
+				)}
+			/>
+		</>
 	);
 }

@@ -33,10 +33,19 @@ normalize/sort step and go straight to `main` for instant publishing.
    - Permissions: **Contents → Read and write.** Nothing else.
    - Pick an expiry you're comfortable with (the page will start returning 401
      when it lapses — just paste a fresh token).
-2. Open `/write`, paste the token, save. It's stored in `localStorage` on that
-   device only and sent only to `api.github.com`.
+2. Open `/write`, paste the token, sign in. It's verified against the repo
+   before it's stored (`/api/auth-check`), so a typo or a wrongly-scoped token
+   fails here rather than on your first post.
 3. On iPhone: Share → **Add to Home Screen** to get an app-like icon that opens
    straight into the composer.
+
+This is the site's one sign-in, shared with `/practice` (cross-device sync and
+the prompts you write there) — see `docs/architecture/learning-systems.md` §
+"Signing in". Signing in on either page signs you in on both; signing out signs
+you out of both. The token is stored in `localStorage` on that device only, and
+goes nowhere but this site's own endpoints, which relay to GitHub. A browser
+that was signed in before the shared session existed stays signed in — its old
+`microwrite.token` is adopted automatically.
 
 ## What it writes
 

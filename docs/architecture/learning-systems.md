@@ -25,7 +25,8 @@ Domains are browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/fi
 | Authored-prompt store (committed) + build-time boundary | `src/data/authored-prompts.json`, `src/data/authored-prompts.ts` |
 | Authored-prompt commit endpoint (GitHub PAT → repo) | `functions/api/practice-prompts.js` |
 | Pre-authoring prompt snapshot (migration source) | `src/data/legacy-prompts.json`, `src/pages/api/practice/legacy-prompts.json.ts` |
-| Sync client helpers (pull/push blob, shared token resolution) | `src/components/learn/sync.ts` |
+| Sync client helpers (pull/push blob) | `src/components/learn/sync.ts` |
+| Shared sign-in: session module, typed view, UI, verify endpoint | `public/auth/session.js`, `src/components/auth/session.ts`, `src/components/auth/SignIn.tsx`, `functions/api/auth-check.js` |
 | Deck registry (server-only; build-time) | `src/data/practice-registry.ts` |
 | `/practice` page + per-deck dataset endpoint | `src/pages/practice.astro`, `src/pages/api/practice/[deck].json.ts` |
 | Shared styles | `src/styles/learn.css` |
@@ -44,7 +45,7 @@ Domains are browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/fi
 | Content-pool guardrail | `scripts/validate-learn-data.mjs` (prompt-id uniqueness, `introductionOrder` completeness) |
 | Word of the Day parser tests | `scripts/test-wotd-parser.mjs` |
 | Authored-prompt logic tests (ids, merge, overlay, migration) | `scripts/test-authored-prompts.mjs` |
-| Sync-token resolution tests | `scripts/test-sync-token.mjs` |
+| Shared sign-in session tests | `scripts/test-session.mjs` |
 
 ## Design principles
 
@@ -156,6 +157,20 @@ Every word gets both-direction prompts (fi→en, en→fi); a handful additionall
 
 Tuning (`finnish-vocab-learn-config.ts`): `newPerDay: 3`, `dueCap: 14`, `itemNoun: 'word'`, `monoAnswers: false`. Registered in `practiceRegistry` and `scripts/validate-learn-data.mjs` exactly like every other build-time content pool — adding another batch is a data-file edit, not an architecture change.
 
+## Signing in
+
+Several surfaces here can write to the repo — the `/write` composer, cross-device sync, and the authored-prompt commits — and every one needs the same credential: a fine-grained GitHub PAT with **Contents: read and write** on this repo. They used to each ask for it separately, which meant pasting the same token two or three times per device and having nowhere to sign out. They now share one session.
+
+- **`public/auth/session.js`** — the session itself: the token under `site-gh-token`, the GitHub login under `site-gh-login` (display only), sign-in/sign-out, and a subscription so one island's sign-in re-renders the rest of the page. It lives in `public/` on purpose: the Astro side imports it through `src/components/auth/session.ts` (Vite bundles it like any module), and the `/write` composer — a standalone static page outside the Astro build — imports it over the wire from `/auth/session.js`. One physical file, two consumers, no chance of drift. Same reasoning as `src/utils/learnBlockParser.mjs`.
+- **`functions/api/auth-check.js`** — verification. The token is checked against the repo before it's stored, so a typo or a wrongly-scoped token fails at sign-in with something readable instead of surfacing later as a mystery sync error. It runs server-side because the work network blocks `api.github.com` — the same reason `api/til/sync.js` exists. A fine-grained PAT scoped to the wrong repository gets a 404 rather than a 403, so that case is reported as "can't see this repository" rather than a generic failure. The token is used for those two calls and never stored server-side.
+- **`src/components/auth/SignIn.tsx`** — the UI, styled from `tokens.css` via `src/styles/auth.css` so it matches the site in both themes. `SignInPanel` is a button that opens a token box (or the signed-in line with a way out); `RequireAuth` wraps anything that needs a token; `useSession` is the hook that keeps islands in step.
+
+**Nothing breaks for a browser that was already signed in.** `microwrite.token` (the composer's old key) and `practice-sync-token` (`/practice`'s old key) are read on first load and adopted into the shared key — the login moved, which is not a reason to make anyone paste a token again. Adoption is idempotent and never overwrites a newer token.
+
+**Signing out signs out everywhere,** including those two pre-session keys — leaving them would mean the next page load quietly adopts one and signs the device back in. Both properties are pinned by `scripts/test-session.mjs`.
+
+Sign-in is never a wall. `/practice` works fully signed out (local-only, as it always did), and `/learn/new` still lets you write prompts — it just says up front that they'll stay in this browser instead of reaching the repo and your other devices.
+
 ## Authored prompts (`linux`, `finnish`, `finnish-vocab`, `vocab`)
 
 The four automated/curated decks ship **reference cards only**. Their items have a term, syntax, description, and worked examples — and no questions. The questions are written by hand, by the learner, at the moment the concept is introduced.
@@ -170,7 +185,7 @@ The four automated/curated decks ship **reference cards only**. Their items have
 
 Not the practice-state KV blob, which holds *state* — stability numbers, due dates, prompt ids. These are *content*, hand-written, and belong in git with every other content pool: versioned, diffable, greppable, editable in an editor when a prompt turns out to be badly phrased. `src/data/authored-prompts.ts` is the single build-time boundary that imports the JSON; each authored deck's config wraps its dataset in `withAuthored(...)`, so the registry counts, `/api/practice/<deck>.json`, and the `/learn/<topic>` pages all see the prompts without knowing the file exists.
 
-**How they get there.** `functions/api/practice-prompts.js`, a Pages Function that commits to `main` — the same commit mechanics as `api/til/sync.js`, and the same auth as `api/practice-state.js`: a fine-grained GitHub PAT sent as a bearer token, checked for push access. No new secret, and nothing extra to mint — it's the same per-device token sync uses, which is the same one `/write` uses (see "Cross-device sync" below). `POST` read-merges-writes against the live file (later `updatedAt` wins per item), so two devices authoring different concepts the same day both keep their work; a `409`/`422` from a concurrent write is retried once from a fresh read rather than forced.
+**How they get there.** `functions/api/practice-prompts.js`, a Pages Function that commits to `main` — the same commit mechanics as `api/til/sync.js`, and the same auth as `api/practice-state.js`: the site's shared sign-in token (see above) sent as a bearer token, checked for push access. No new secret, and nothing extra to mint. `POST` read-merges-writes against the live file (later `updatedAt` wins per item), so two devices authoring different concepts the same day both keep their work; a `409`/`422` from a concurrent write is retried once from a fresh read rather than forced.
 
 **The rebuild gap.** A commit doesn't reach the built datasets until Cloudflare redeploys, so:
 
@@ -293,9 +308,7 @@ Implements plan §2.8: practicing from phone, Mac, and work laptop without any o
 - **`functions/api/practice-state.js`** (Cloudflare Pages Function) — `GET` returns the stored blob (`{}` if nothing saved yet), `PUT` replaces it. The blob is opaque to the function: every registry deck's `SrsState` plus `practice-meta`, as one JSON object keyed by localStorage key — merging is entirely client-side, so this function only needs to store and retrieve bytes.
 - **Auth** — the same pattern as `api/upload.js` and `api/til/sync.js`: a bearer token that is a fine-grained GitHub PAT, accepted only if GitHub confirms push (Contents write) access to this repo. No new secret class, no accounts. **Mint one PAT per device** — losing a device means revoking its token in GitHub settings; the KV blob itself is untouched.
 
-  **One token per device, not one per feature.** Sync, the authored-prompt commits, and the `/write` composer all want the same credential, so they share it. `sync.ts` resolves it in order: `practice-sync-token` (pasted on `/practice`), then the composer's `microwrite.token` — same origin, same requirement. A device already set up for writing needs nothing pasted; `/practice` shows "Use the token from /write" and says which one it's running on. The fallback is a *read*, not an adoption: each page owns its own key, so the two stay independently revocable.
-
-  Two edges this creates, both covered by `scripts/test-sync-token.mjs`: disconnecting while running on the composer's token would otherwise appear to do nothing (the fallback hands it straight back), so a `practice-sync-optout` flag suppresses the fallback until sync is explicitly reconnected; and disconnecting must never remove `microwrite.token` — turning off sync is not signing out of `/write`.
+  **The token comes from the site's sign-in**, not from this page — see "Signing in" below. Signed in means sync is on; there is no separate connect step.
 - **Safety net** — KV has no history of its own, so the function copies the previous blob to `state:backup:<UTC date>` before every overwrite, and prunes backups older than 7 days. A bad push is recoverable by hand from a backup key.
 - **Client wiring (`PracticeSession.tsx`)** — `pullAndMerge` runs on page load, on tab focus, and after "Connect this device"; it fetches the remote blob and merges it into local state (`mergeSrsState`/`mergePracticeMeta` in `engine.ts`), then writes the merged result back to localStorage. `pushState` fires at the end of every finished session, plus debounced (4s) after each grade mid-session, reading the current per-deck blobs straight from localStorage (never from React state, which can be one render behind a just-graded card) and PUTting them.
 - **Merge rules** (`mergeSrsState`/`mergePracticeMeta`), deterministic and idempotent — safe to run in either direction any number of times:
