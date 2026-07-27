@@ -1,4 +1,509 @@
 {
 	"version": 1,
-	"items": {}
+	"items": {
+		"df": {
+			"prompts": [
+				{
+					"id": "df-1",
+					"q": "Which command shows free and used disk space per mounted filesystem?",
+					"a": "df -h",
+					"note": "-h prints sizes in human-readable units (GB/MB) instead of raw 1K blocks. “Disk is full — which mount?” → df. “What is eating this mount?” → du."
+				},
+				{
+					"id": "df-2",
+					"q": "df -h shows plenty of free space, yet writes fail with \"No space left on device\". Which df flag reveals the likely cause?",
+					"a": "-i",
+					"note": "Inode usage — a filesystem can run out of inodes with bytes to spare."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"journalctl": {
+			"prompts": [
+				{
+					"id": "journalctl-1",
+					"q": "Which journalctl flag streams new log entries live, like `tail -f`?",
+					"a": "-f"
+				},
+				{
+					"id": "journalctl-2",
+					"kind": "cloze",
+					"q": "Only SSH entries from the last hour: journalctl -u ssh {{--since}} \"1 hour ago\"",
+					"a": "--since",
+					"note": "Takes human-friendly time expressions: \"1 hour ago\", \"yesterday\", \"2026-01-01\"."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"ps": {
+			"prompts": [
+				{
+					"id": "ps-1",
+					"q": "Using ps, snapshot every running process and filter to lines mentioning nginx — what is the classic pipeline?",
+					"a": "ps aux | grep nginx",
+					"note": "pgrep -a nginx is the tidier purpose-built alternative."
+				},
+				{
+					"id": "ps-2",
+					"q": "In `ps aux`, which letter includes daemons — processes with no controlling terminal?",
+					"a": "x",
+					"note": "a = all users' processes, u = user-oriented columns (CPU/mem)."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"ip": {
+			"prompts": [
+				{
+					"id": "ip-1",
+					"q": "Which modern command shows a machine's IP addresses and network interfaces?",
+					"a": "ip addr show",
+					"note": "Short form: ip a. Successor to the older ifconfig."
+				},
+				{
+					"id": "ip-2",
+					"q": "View the routing table, including the default gateway — what do you run?",
+					"a": "ip route show",
+					"note": "Short form: ip r. The \"default via …\" line is the gateway."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"chmod": {
+			"prompts": [
+				{
+					"id": "chmod-1",
+					"q": "What permissions does `chmod 644 file.txt` set?",
+					"a": "rw-r--r--",
+					"note": "Owner read+write, group and others read-only. Read=4, write=2, execute=1; each octal digit is one of owner/group/others."
+				},
+				{
+					"id": "chmod-2",
+					"q": "Add execute permission to a script without changing any other bits — what do you run?",
+					"a": "chmod +x script.sh"
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"apt": {
+			"prompts": [
+				{
+					"id": "apt-1",
+					"q": "Which command refreshes the local package index, and should usually run before `apt install`?",
+					"a": "apt update",
+					"note": "Otherwise install resolves against a stale index."
+				},
+				{
+					"id": "apt-2",
+					"q": "Which apt subcommand actually installs the newer versions of all installed packages?",
+					"a": "apt upgrade",
+					"note": "update only refreshes the index; upgrade does the installing."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"grep": {
+			"prompts": [
+				{
+					"id": "grep-1",
+					"q": "Search a whole directory tree for \"TODO\", showing file names and line numbers — what do you run?",
+					"a": "grep -rn \"TODO\" src/",
+					"note": "-r recurses, -n adds line numbers, -i would ignore case."
+				},
+				{
+					"id": "grep-2",
+					"q": "Which grep flag inverts the match — printing lines that do NOT contain the pattern?",
+					"a": "-v",
+					"note": "e.g. `grep -v \"^#\"` strips comment lines from a config file."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"free": {
+			"prompts": [
+				{
+					"id": "free-1",
+					"q": "Which command shows how much RAM and swap are currently in use?",
+					"a": "free -h"
+				},
+				{
+					"id": "free-2",
+					"q": "In free's output, which column shows memory the kernel can actually give to new processes (reclaimable cache included)?",
+					"a": "available",
+					"note": "The \"free\" column alone looks alarmingly low on healthy systems — page cache counts as used."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"less": {
+			"prompts": [
+				{
+					"id": "less-1",
+					"q": "Inside less, how do you search forward for the text \"failed\"?",
+					"a": "/failed",
+					"note": "`?failed` searches backward; n / N repeat the search forward / backward."
+				},
+				{
+					"id": "less-2",
+					"q": "Inside less, which key jumps to the end of the file (the newest log lines)?",
+					"a": "G",
+					"note": "Lowercase g jumps back to the top. `less +G file` opens already at the end."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"tail": {
+			"prompts": [
+				{
+					"id": "tail-1",
+					"q": "Which tail flag keeps the file open and prints new lines as they are appended, in real time?",
+					"a": "-f",
+					"note": "Plain tail prints the last 10 lines and exits. -F additionally survives log rotation."
+				},
+				{
+					"id": "tail-2",
+					"kind": "cloze",
+					"q": "Show the last 100 lines, then keep streaming new ones: tail {{-n 100 -f}} file.log",
+					"a": "-n 100 -f"
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"sudo": {
+			"prompts": [
+				{
+					"id": "sudo-1",
+					"q": "Which sudo flag runs the command as a specific non-root user?",
+					"a": "-u",
+					"note": "e.g. sudo -u postgres psql"
+				},
+				{
+					"id": "sudo-2",
+					"q": "What is the only safe way to edit /etc/sudoers (the file defining who may use sudo)?",
+					"a": "visudo",
+					"note": "It syntax-checks before saving — a broken sudoers can lock everyone out of root."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"find": {
+			"prompts": [
+				{
+					"id": "find-1",
+					"kind": "cloze",
+					"q": "Delete logs untouched for over 30 days: find /var/log -name \"*.log\" {{-mtime +30}} -delete",
+					"a": "-mtime +30",
+					"note": "+30 = modified more than 30 days ago. Run without -delete first to preview."
+				},
+				{
+					"id": "find-2",
+					"q": "Find every file larger than 100 MB under / — what do you run?",
+					"a": "find / -type f -size +100M"
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"h-greet": {
+			"prompts": [
+				{
+					"id": "h-greet-1",
+					"q": "What does kiitos mean?",
+					"a": "thanks"
+				},
+				{
+					"id": "h-greet-2",
+					"q": "What does anteeksi mean?",
+					"a": "sorry / excuse me"
+				},
+				{
+					"id": "h-greet-3",
+					"q": "Two casual ways to say 'hi' in Finnish?",
+					"a": "hei and moi"
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"a-phonemic": {
+			"prompts": [
+				{
+					"id": "a-phonemic-1",
+					"q": "How many ways can a Finnish letter be pronounced?",
+					"a": "one",
+					"note": "Fully phonemic: every letter is always pronounced, always the same way — never silent, never context-dependent."
+				},
+				{
+					"id": "a-phonemic-2",
+					"q": "What is the technical term for a spelling system where one letter always equals one sound?",
+					"a": "phonemic",
+					"note": "Finnish spelling is fully phonemic — if you can spell it, you can say it: kioski."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"h-talo": {
+			"prompts": [
+				{
+					"id": "h-talo-1",
+					"q": "What does talo mean?",
+					"a": "house"
+				},
+				{
+					"id": "h-talo-2",
+					"q": "Finnish for 'house'?",
+					"a": "talo"
+				},
+				{
+					"id": "h-talo-3",
+					"kind": "cloze",
+					"q": "talo + “in the house” = talo{{ssa}}",
+					"a": "ssa",
+					"note": "Back-vowel word takes -ssa; no gradation — talo is the clean model noun for the case grid."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"a-vowels": {
+			"prompts": [
+				{
+					"id": "a-vowels-1",
+					"q": "Which three letters are Finnish's front vowels?",
+					"a": "ä ö y",
+					"note": "They are independent letters, not accented a/o/u."
+				},
+				{
+					"id": "a-vowels-2",
+					"q": "Which three letters are the back vowels?",
+					"a": "a o u",
+					"note": "e and i are neutral — they pair with either set."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"a-harmony": {
+			"prompts": [
+				{
+					"id": "a-harmony-1",
+					"q": "Which rule says a native word's vowels must be all back or all front, never mixed?",
+					"a": "vowel harmony",
+					"note": "e/i are neutral and go with either set: talossa (back) vs metsässä (front)."
+				},
+				{
+					"id": "a-harmony-2",
+					"kind": "cloze",
+					"q": "metsä + “in the forest” = metsä{{ssä}}",
+					"a": "ssä",
+					"note": "Front-vowel word (ä) takes the front form -ssä; back-vowel talo takes -ssa: talossa."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"h-kauppa": {
+			"prompts": [
+				{
+					"id": "h-kauppa-1",
+					"q": "What does kauppa mean?",
+					"a": "shop"
+				},
+				{
+					"id": "h-kauppa-2",
+					"q": "Finnish for 'shop'?",
+					"a": "kauppa"
+				},
+				{
+					"id": "h-kauppa-3",
+					"q": "Apply the genitive: kauppa + -n → ?",
+					"a": "kaupan",
+					"note": "pp→p — the textbook KPT example."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"b-principle": {
+			"prompts": [
+				{
+					"id": "b-principle-1",
+					"q": "In consonant gradation, what are the two grades a stem alternates between?",
+					"a": "strong and weak",
+					"note": "Called KPT because it hits the stops k, p, t; the basic form is strong, most endings trigger the weak grade."
+				},
+				{
+					"id": "b-principle-2",
+					"q": "Which grade appears when an ending closes the syllable (like genitive -n)?",
+					"a": "weak",
+					"note": "kauppa → kaupan"
+				},
+				{
+					"id": "b-principle-3",
+					"q": "Which two endings keep the strong grade instead of weakening it?",
+					"a": "partitive and illative",
+					"note": "Partitive -a/-ä and the illative don't close the preceding syllable the same way."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"b-pp": {
+			"prompts": [
+				{
+					"id": "b-pp-1",
+					"q": "pp weakens to what in the weak grade?",
+					"a": "p",
+					"note": "kauppa → kaupan (shop)"
+				},
+				{
+					"id": "b-pp-2",
+					"kind": "cloze",
+					"q": "kauppa + -n (genitive) = kau{{pa}}n",
+					"a": "pa",
+					"note": "pp → p — the canonical KPT example (shop)."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"a-stress": {
+			"prompts": [
+				{
+					"id": "a-stress-1",
+					"q": "Which syllable of a Finnish word carries the stress?",
+					"a": "the first",
+					"note": "Every word, no exceptions — even long loanwords."
+				},
+				{
+					"id": "a-stress-2",
+					"q": "Mark the stress: Kalevala → ?",
+					"a": "KA-le-va-la",
+					"note": "First syllable, always."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"c-grid": {
+			"prompts": [
+				{
+					"id": "c-grid-1",
+					"q": "The s-cases (-ssa/-sta/-Vn) translate which three English prepositions?",
+					"a": "in, out of, into",
+					"note": "Interior cases: talossa · talosta · taloon."
+				},
+				{
+					"id": "c-grid-2",
+					"q": "The l-cases (-lla/-lta/-lle) translate which three English prepositions?",
+					"a": "on, off, onto",
+					"note": "Exterior (surface) cases: pöydällä · pöydältä · pöydälle."
+				},
+				{
+					"id": "c-grid-3",
+					"q": "talossa vs pöydällä — which one means 'on'?",
+					"a": "pöydällä",
+					"note": "l-cases = surface (on the table); s-cases = interior (talossa — in the house)."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"c-ine": {
+			"prompts": [
+				{
+					"id": "c-ine-1",
+					"q": "Which case ending means “in / inside”?",
+					"a": "-ssa / -ssä",
+					"note": "Inessive. talossa — in the house; Helsingissä — in Helsinki."
+				},
+				{
+					"id": "c-ine-2",
+					"q": "Apply it: “in the shop” (kauppa) → ?",
+					"a": "kaupassa",
+					"note": "Two rules fire at once: KPT weakens pp→p, harmony picks -ssa (back vowels)."
+				},
+				{
+					"id": "c-ine-3",
+					"q": "Apply it: “in Finland” (Suomi) → ?",
+					"a": "Suomessa",
+					"note": "i-final nouns often shift i→e in the stem: Suomi → Suome- + -ssa."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"fv-nahda": {
+			"prompts": [
+				{
+					"id": "fv-nahda-1",
+					"q": "What does *nähdä* mean?",
+					"a": "to see"
+				},
+				{
+					"id": "fv-nahda-2",
+					"q": "Finnish for 'to see'?",
+					"a": "nähdä"
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"fv-aiti": {
+			"prompts": [
+				{
+					"id": "fv-aiti-1",
+					"q": "What does *äiti* mean?",
+					"a": "mother"
+				},
+				{
+					"id": "fv-aiti-2",
+					"q": "Finnish for 'mother'?",
+					"a": "äiti"
+				},
+				{
+					"id": "fv-aiti-3",
+					"q": "Genitive (-n) of äiti?",
+					"a": "äidin",
+					"note": "KPT: t → d before a closing suffix, same pattern as katu → kadun."
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"fv-ruoka": {
+			"prompts": [
+				{
+					"id": "fv-ruoka-1",
+					"q": "What does *ruoka* mean?",
+					"a": "food"
+				},
+				{
+					"id": "fv-ruoka-2",
+					"q": "Finnish for 'food'?",
+					"a": "ruoka"
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"vocab-life-car": {
+			"prompts": [
+				{
+					"id": "vocab-life-car-p1",
+					"q": "What does *life car* mean?",
+					"a": "A watertight boat or box , travelling on…",
+					"note": "( historical ) A watertight boat or box , travelling on a line from a wrecked vessel to the shore , used to haul people through the waves in a rescue."
+				},
+				{
+					"id": "vocab-life-car-p2",
+					"q": "Which word means: ( historical ) A watertight boat or box , travelling on a line from a wrecked vessel to the shore , used to haul people through the waves in a rescue.",
+					"a": "life car"
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"vocab-aerie": {
+			"prompts": [
+				{
+					"id": "vocab-aerie-p1",
+					"q": "What does *aerie* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 26,…",
+					"note": "Merriam-Webster's Word of the Day for July 26, 2026 is: aerie  \\AIR-ee\\&nbsp;  noun Aerie refers to the nest of a bird (such as an eagle or hawk) built high up on a cliff or on the top of a mountain. It can also be used for a room or building built high up so that people inside can see things happening below them. // From the lighthouse's aerie tourists can get a bird's-eye view of the rocky coa"
+				},
+				{
+					"id": "vocab-aerie-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 26, 2026 is: aerie  \\AIR-ee\\&nbsp;  noun Aerie refers to the nest of a bird (such as an eagle or hawk) built high up on a cliff or on the top of a mountain. It can also be used for a room or building built high up so that people inside can see things happening below them. // From the lighthouse's aerie tourists can get a bird's-eye view of the rocky coa",
+					"a": "aerie"
+				}
+			],
+			"updatedAt": "2026-07-27T08:20:36.382Z"
+		}
+	}
 }
