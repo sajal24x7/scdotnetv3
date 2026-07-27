@@ -3,6 +3,7 @@
 // language decks tolerate faster intake (more new items/day, a bigger due cap).
 
 import { categories, introductionOrder } from './finnish';
+import { withAuthored } from './authored-prompts';
 import type { LearnSystemConfig } from '../components/learn/types';
 
 export const finnishLearnConfig: LearnSystemConfig = {
@@ -11,5 +12,6 @@ export const finnishLearnConfig: LearnSystemConfig = {
 	dueCap: 12,
 	itemNoun: 'word or rule',
 	monoAnswers: false,
-	dataset: { categories, introductionOrder },
+	authorPrompts: true,
+	dataset: withAuthored({ categories, introductionOrder }),
 };

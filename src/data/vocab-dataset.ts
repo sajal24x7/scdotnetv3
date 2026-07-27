@@ -14,6 +14,10 @@ export interface RawWord {
 	href: string;
 	source: string;
 	fetchedAt: string;
+	// Both added by the Merriam-Webster parser (scripts/fetch-wotd.mjs) and
+	// absent from words captured before it became the single source.
+	pronunciation?: string;
+	example?: string;
 }
 
 export const POS_META: Record<string, { title: string; emoji: string }> = {
@@ -32,11 +36,10 @@ export const POS_META: Record<string, { title: string; emoji: string }> = {
 	other: { title: 'Other', emoji: '✨' },
 };
 
-// Wiktionary glosses run long ("Of or relating to the general public;
-// common, vulgar (now chiefly historical)."). Prompt answers must stay short
-// (atomic/precise — see docs/architecture/learning-systems.md), so the
-// recognition prompt answers with a trimmed defining phrase and keeps the
-// full gloss in the prompt's note, shown after the reveal.
+// Merriam-Webster's definitions are already a single clean sentence, but a
+// few run long. `shortGloss` trims one to a defining phrase — used as the
+// item's card `syntax` line so the wall chart and the intro card both show
+// the meaning at a glance, next to the full definition in `description`.
 export function shortGloss(gloss: string): string {
 	let g = gloss
 		.trim()
@@ -59,20 +62,18 @@ export function buildDataset(raw: Record<string, RawWord>): LearnDataset {
 	for (const [key, entry] of Object.entries(raw)) {
 		const id = `vocab-${key}`;
 		const trimmed = shortGloss(entry.gloss);
+		// No prompts: vocab is an authored-prompt deck (see types.ts). The word
+		// arrives as a reference card — headword, defining phrase, full
+		// definition, pronunciation, and the day's example sentence — and the
+		// prompts that test it are written by hand when it's introduced.
 		const item: LearnItem = {
 			id,
 			term: entry.word,
+			syntax: trimmed,
 			description: entry.gloss,
+			...(entry.pronunciation ? { explanation: `Pronounced ${entry.pronunciation}.` } : {}),
+			...(entry.example ? { example: entry.example, exampleNote: 'Merriam-Webster’s usage example.' } : {}),
 			href: entry.href,
-			prompts: [
-				{
-					id: `${id}-p1`,
-					q: `What does *${entry.word}* mean?`,
-					a: trimmed,
-					...(trimmed === entry.gloss ? {} : { note: entry.gloss }),
-				},
-				{ id: `${id}-p2`, q: `Which word means: ${entry.gloss}`, a: entry.word },
-			],
 		};
 		const pos = POS_META[entry.pos] ? entry.pos : 'other';
 		if (!byPos.has(pos)) byPos.set(pos, []);

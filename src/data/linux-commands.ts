@@ -6,22 +6,11 @@
 // own card per prompt); commands are the unit of introduction and of the wall
 // chart.
 //
-// Prompt writing rules (Matuschak): one fact per prompt, phrased so the
-// answer is short and unambiguous, scenario-flavored where possible.
-
-export interface Prompt {
-	id: string;
-	// For plain q/a prompts, the question text. For cloze prompts
-	// (kind: 'cloze'), the full statement with the hidden span(s) wrapped in
-	// {{…}} markers.
-	q: string;
-	// Canonical short answer — a command, flag, or 1–2 words. For cloze
-	// prompts, the hidden text (joined with ' · ' for multiple deletions).
-	a: string;
-	note?: string;
-	// Absent = plain question/answer. 'cloze' = fill-in-the-blank.
-	kind?: 'cloze';
-}
+// Prompts are NOT authored here. Linux is an authored-prompt deck: each
+// command ships as a reference card only, and the prompts that test it are
+// written by hand when the command is introduced on /learn/new, then stored
+// in src/data/authored-prompts.json. See docs/architecture/learning-systems.md
+// § "Authored prompts".
 
 export interface CommandExample {
 	code: string;
@@ -42,7 +31,6 @@ export interface Command {
 	// Richer commands: extra worked examples beyond `example`/`exampleNote`,
 	// shown as an additional list on the reference panel.
 	examples?: CommandExample[];
-	prompts: Prompt[];
 }
 
 export interface Category {
@@ -72,20 +60,6 @@ export const categories: Category[] = [
 					{ code: 'df -h /var', note: 'Just the filesystem containing /var — handy when /var is its own partition.' },
 					{ code: 'df -i', note: 'Shows inode usage instead of space — a filesystem can be "full" on inodes with plenty of bytes free.' },
 				],
-				prompts: [
-					{
-						id: 'df-1',
-						q: 'Which command shows free and used disk space per mounted filesystem?',
-						a: 'df -h',
-						note: '-h prints sizes in human-readable units (GB/MB) instead of raw 1K blocks. “Disk is full — which mount?” → df. “What is eating this mount?” → du.',
-					},
-					{
-						id: 'df-2',
-						q: 'df -h shows plenty of free space, yet writes fail with "No space left on device". Which df flag reveals the likely cause?',
-						a: '-i',
-						note: 'Inode usage — a filesystem can run out of inodes with bytes to spare.',
-					},
-				],
 			},
 			{
 				id: 'du',
@@ -98,20 +72,6 @@ export const categories: Category[] = [
 					{ code: 'du -sh /var/log/*', note: 'One summarized, human-readable size per item under /var/log.' },
 					{ code: 'du -sh .', note: 'Total size of the current directory, recursively, as one line.' },
 					{ code: 'du -ah --max-depth=1 /home | sort -rh', note: 'Depth-limited listing sorted largest-first — the fastest way to find what to delete.' },
-				],
-				prompts: [
-					{
-						id: 'du-1',
-						q: 'You want one human-readable size per item under /home, to spot the biggest. What do you run?',
-						a: 'du -sh /home/*',
-						note: 'Canonical form here: -s (one summary line per argument) plus -h (human-readable). Pipe to `sort -rh` to rank largest-first.',
-					},
-					{
-						id: 'du-2',
-						q: 'Which du flag collapses output to one summary line per argument, instead of one line per subdirectory?',
-						a: '-s',
-						note: '-h (human-readable sizes) is its usual companion: du -sh.',
-					},
 				],
 			},
 			{
@@ -126,19 +86,6 @@ export const categories: Category[] = [
 					{ code: 'lsblk', note: 'Plain device tree with sizes — no filesystem info, just the physical layout.' },
 					{ code: 'lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT', note: 'Custom column set — useful when piping into a script.' },
 				],
-				prompts: [
-					{
-						id: 'lsblk-1',
-						q: 'Which command lists all block devices and their partition layout as a tree?',
-						a: 'lsblk',
-						note: '`fdisk -l` also works but is heavier and needs root.',
-					},
-					{
-						id: 'lsblk-2',
-						q: 'Which lsblk flag adds filesystem type, label, and UUID to the listing?',
-						a: '-f',
-					},
-				],
 			},
 			{
 				id: 'mount',
@@ -151,20 +98,6 @@ export const categories: Category[] = [
 					{ code: 'mount /dev/sdb1 /mnt/data', note: 'Mounts the partition /dev/sdb1 at /mnt/data.' },
 					{ code: 'mount', note: 'No arguments — lists every currently mounted filesystem, device, and options.' },
 					{ code: 'mount -a', note: "Mounts everything listed in /etc/fstab that isn't already mounted." },
-				],
-				prompts: [
-					{
-						id: 'mount-1',
-						q: 'Which command, run with no arguments at all, lists every currently mounted filesystem and its options?',
-						a: 'mount',
-						note: 'findmnt shows the same data as a tree.',
-					},
-					{
-						id: 'mount-2',
-						q: 'Attach the partition /dev/sdb1 at the directory /mnt/data — what do you run?',
-						a: 'mount /dev/sdb1 /mnt/data',
-						note: 'Device first, mount point second. The directory must already exist; manual mounts vanish on reboot (persist them in /etc/fstab).',
-					},
 				],
 			},
 			{
@@ -179,20 +112,6 @@ export const categories: Category[] = [
 					{ code: 'sudo fdisk -l /dev/sda', note: 'Partition table of /dev/sda only: sizes, types, start/end sectors.' },
 					{ code: 'sudo fdisk /dev/sdb', note: "Opens the interactive editor on /dev/sdb — nothing is written until you type 'w'." },
 				],
-				prompts: [
-					{
-						id: 'fdisk-1',
-						q: 'Which fdisk invocation inspects partition tables read-only, with no risk of modifying any disk?',
-						a: 'fdisk -l',
-						note: 'Without -l, fdisk opens an interactive editor that can rewrite the partition table.',
-					},
-					{
-						id: 'fdisk-2',
-						q: '`fdisk /dev/sda` (no -l) does not just print the partition table — what does it open instead?',
-						a: 'interactive partition editor',
-						note: "Single-letter commands queue changes, and 'w' writes them to disk immediately — only enter it when you mean to repartition.",
-					},
-				],
 			},
 			{
 				id: 'blkid',
@@ -205,19 +124,6 @@ export const categories: Category[] = [
 					{ code: 'blkid', note: 'Lists UUID, filesystem type, and label for every partition on the system.' },
 					{ code: 'sudo blkid /dev/sdb1', note: 'Just this one partition — UUID and type, ready to paste into fstab.' },
 					{ code: 'blkid -o value -s UUID /dev/sdb1', note: 'Prints only the raw UUID value — convenient for scripting.' },
-				],
-				prompts: [
-					{
-						id: 'blkid-1',
-						q: 'Which command prints each partition\'s UUID and filesystem type (e.g. for writing /etc/fstab)?',
-						a: 'blkid',
-					},
-					{
-						id: 'blkid-2',
-						q: 'In /etc/fstab, which identifier keeps mounting the right disk even when device names shift between boots?',
-						a: 'UUID',
-						note: 'Names like /dev/sdb1 depend on enumeration order at boot; the UUID is written into the filesystem at creation and never changes.',
-					},
 				],
 			},
 		],
@@ -240,20 +146,6 @@ export const categories: Category[] = [
 					{ code: 'journalctl -u nginx -f', note: 'Follows nginx\'s journal live, like `tail -f`.' },
 					{ code: 'journalctl -p err -b', note: 'Error-priority-or-worse messages since the current boot only.' },
 				],
-				prompts: [
-					{
-						id: 'journalctl-1',
-						q: 'Which journalctl flag streams new log entries live, like `tail -f`?',
-						a: '-f',
-					},
-					{
-						id: 'journalctl-2',
-						kind: 'cloze',
-						q: 'Only SSH entries from the last hour: journalctl -u ssh {{--since}} "1 hour ago"',
-						a: '--since',
-						note: 'Takes human-friendly time expressions: "1 hour ago", "yesterday", "2026-01-01".',
-					},
-				],
 			},
 			{
 				id: 'tail',
@@ -266,20 +158,6 @@ export const categories: Category[] = [
 					{ code: 'tail -n 100 -f /var/log/nginx/error.log', note: 'Last 100 lines, then keeps streaming new ones.' },
 					{ code: 'tail -f /var/log/syslog', note: 'Follows syslog live with the default 10-line initial window.' },
 					{ code: 'tail -F /var/log/app.log', note: 'Like -f but also re-attaches if the file gets rotated out from under it.' },
-				],
-				prompts: [
-					{
-						id: 'tail-1',
-						q: 'Which tail flag keeps the file open and prints new lines as they are appended, in real time?',
-						a: '-f',
-						note: 'Plain tail prints the last 10 lines and exits. -F additionally survives log rotation.',
-					},
-					{
-						id: 'tail-2',
-						kind: 'cloze',
-						q: 'Show the last 100 lines, then keep streaming new ones: tail {{-n 100 -f}} file.log',
-						a: '-n 100 -f',
-					},
 				],
 			},
 			{
@@ -294,19 +172,6 @@ export const categories: Category[] = [
 					{ code: 'dmesg | tail -20', note: 'The 20 most recent kernel messages, raw boot-relative timestamps.' },
 					{ code: 'dmesg -T -l err,crit', note: 'Only error/critical-level kernel messages, human-readable time.' },
 				],
-				prompts: [
-					{
-						id: 'dmesg-1',
-						q: 'A USB drive isn\'t being recognized. Which command shows kernel-level hardware messages that might explain why?',
-						a: 'dmesg',
-						note: 'The kernel ring buffer logs hardware detection and driver events like USB attach/detach.',
-					},
-					{
-						id: 'dmesg-2',
-						q: 'Which dmesg flag replaces seconds-since-boot with human-readable timestamps?',
-						a: '-T',
-					},
-				],
 			},
 			{
 				id: 'less',
@@ -319,20 +184,6 @@ export const categories: Category[] = [
 					{ code: 'less /var/log/auth.log', note: 'Opens the file; G jumps to the end, /failed searches for "failed".' },
 					{ code: 'less +G /var/log/auth.log', note: 'Opens already scrolled to the end — the newest entries.' },
 					{ code: 'command | less', note: 'Pages the output of any command that would otherwise scroll off-screen.' },
-				],
-				prompts: [
-					{
-						id: 'less-1',
-						q: 'Inside less, how do you search forward for the text "failed"?',
-						a: '/failed',
-						note: '`?failed` searches backward; n / N repeat the search forward / backward.',
-					},
-					{
-						id: 'less-2',
-						q: 'Inside less, which key jumps to the end of the file (the newest log lines)?',
-						a: 'G',
-						note: 'Lowercase g jumps back to the top. `less +G file` opens already at the end.',
-					},
 				],
 			},
 			{
@@ -347,20 +198,6 @@ export const categories: Category[] = [
 					{ code: 'logrotate -f /etc/logrotate.conf', note: '-f forces rotation now, even if the configured schedule says not yet.' },
 					{ code: 'cat /etc/logrotate.d/nginx', note: 'Per-service rotation rules usually live here, one file per package.' },
 				],
-				prompts: [
-					{
-						id: 'logrotate-1',
-						q: 'Which tool rotates, compresses, and eventually deletes old log files so they never fill the disk?',
-						a: 'logrotate',
-						note: 'Per-log rules live in /etc/logrotate.d/; a daily job runs them.',
-					},
-					{
-						id: 'logrotate-2',
-						q: 'Which logrotate flag does a dry run — showing what would rotate without doing it?',
-						a: '-d',
-						note: 'Debug mode: prints the plan without touching any file.',
-					},
-				],
 			},
 			{
 				id: 'last',
@@ -373,20 +210,6 @@ export const categories: Category[] = [
 					{ code: 'last -n 20', note: 'The 20 most recent login sessions.' },
 					{ code: 'last reboot', note: 'Filters to system reboot events — a history of when the machine restarted.' },
 					{ code: 'last alice', note: "Just this one user's login history: source, time, duration." },
-				],
-				prompts: [
-					{
-						id: 'last-1',
-						q: 'Which command shows the recent login history — who logged in, from where, and when?',
-						a: 'last',
-						note: 'It reads /var/log/wtmp; `lastb` shows failed login attempts.',
-					},
-					{
-						id: 'last-2',
-						q: 'List the machine\'s recent reboots using `last` — what do you run?',
-						a: 'last reboot',
-						note: 'The pseudo-user "reboot" filters the history to system reboots.',
-					},
 				],
 			},
 		],
@@ -409,20 +232,6 @@ export const categories: Category[] = [
 					{ code: 'ps -ef', note: 'Unix-style equivalent listing — full command lines, parent PIDs included.' },
 					{ code: 'ps aux --sort=-%mem | head', note: 'Top memory-consuming processes, highest first.' },
 				],
-				prompts: [
-					{
-						id: 'ps-1',
-						q: 'Using ps, snapshot every running process and filter to lines mentioning nginx — what is the classic pipeline?',
-						a: 'ps aux | grep nginx',
-						note: 'pgrep -a nginx is the tidier purpose-built alternative.',
-					},
-					{
-						id: 'ps-2',
-						q: 'In `ps aux`, which letter includes daemons — processes with no controlling terminal?',
-						a: 'x',
-						note: "a = all users' processes, u = user-oriented columns (CPU/mem).",
-					},
-				],
 			},
 			{
 				id: 'top',
@@ -435,20 +244,6 @@ export const categories: Category[] = [
 					{ code: 'top -o %CPU', note: 'Sorts the live list by CPU usage, highest first.' },
 					{ code: 'top -u www-data', note: "Shows only one user's processes — filters the noise on a shared host." },
 					{ code: 'top -n 1 -b', note: 'Batch mode: prints one static snapshot and exits, instead of a live screen.' },
-				],
-				prompts: [
-					{
-						id: 'top-1',
-						q: 'A server feels sluggish — which command gives a live, auto-updating view of the heaviest processes?',
-						a: 'top',
-						note: 'Unlike ps, top refreshes continuously.',
-					},
-					{
-						id: 'top-2',
-						q: 'Inside top, which key re-sorts the list by memory usage?',
-						a: 'M',
-						note: 'Shift+m. P sorts by CPU, k prompts for a PID to kill, q quits.',
-					},
 				],
 			},
 			{
@@ -463,20 +258,6 @@ export const categories: Category[] = [
 					{ code: 'kill -9 1234', note: 'Forces immediate termination — use only after -15 fails to work.' },
 					{ code: 'kill -l', note: 'Lists every available signal name and number.' },
 				],
-				prompts: [
-					{
-						id: 'kill-1',
-						q: 'Which signal cannot be caught or ignored — the instant, no-cleanup kill?',
-						a: 'SIGKILL (-9)',
-						note: 'Always try plain kill (SIGTERM) first; -9 can leave temp files, locks, or corrupt state behind.',
-					},
-					{
-						id: 'kill-2',
-						q: 'Which signal does `kill 1234` send when no signal is specified?',
-						a: 'SIGTERM (15)',
-						note: 'The graceful request — the process may catch it and clean up before exiting.',
-					},
-				],
 			},
 			{
 				id: 'nice',
@@ -489,20 +270,6 @@ export const categories: Category[] = [
 					{ code: 'nice -n 19 tar -czf backup.tar.gz /data', note: "Lowest priority, so the backup doesn't compete for CPU." },
 					{ code: 'nice ./build.sh', note: 'No -n given: applies the default niceness bump of 10.' },
 					{ code: 'renice -n 5 -p 1234', note: 'Changes the niceness of an already-running process (PID 1234), no restart needed.' },
-				],
-				prompts: [
-					{
-						id: 'nice-1',
-						q: 'How do you start a heavy backup job so it yields CPU to everything else?',
-						a: 'nice -n 19 <command>',
-						note: 'Higher niceness = lower priority. renice changes it for an already-running process.',
-					},
-					{
-						id: 'nice-2',
-						q: 'Which niceness value gives a process the lowest possible CPU priority?',
-						a: '19',
-						note: 'The range is -20 (highest priority) to 19; only root may set negative values.',
-					},
 				],
 			},
 			{
@@ -517,20 +284,6 @@ export const categories: Category[] = [
 					{ code: 'pgrep python', note: 'Just the bare PIDs — the default, minimal output.' },
 					{ code: 'pgrep -f "manage.py runserver"', note: '-f matches against the full command line, not just the process name.' },
 				],
-				prompts: [
-					{
-						id: 'pgrep-1',
-						q: 'Which command prints just the PIDs of every running "python" process?',
-						a: 'pgrep python',
-						note: '-a adds the full command line next to each PID.',
-					},
-					{
-						id: 'pgrep-2',
-						q: 'Which command signals processes matched by name, instead of by PID?',
-						a: 'pkill',
-						note: "pgrep's acting sibling — same matching rules, but sends SIGTERM (by default) instead of printing PIDs.",
-					},
-				],
 			},
 			{
 				id: 'lsof',
@@ -543,19 +296,6 @@ export const categories: Category[] = [
 					{ code: 'lsof /mnt/data', note: 'Which processes have files open under /mnt/data — e.g. why umount says "busy".' },
 					{ code: 'lsof -i :8080', note: 'Which process is bound to TCP/UDP port 8080.' },
 					{ code: 'lsof -p 1234', note: 'Every file (including sockets and libraries) a specific process has open.' },
-				],
-				prompts: [
-					{
-						id: 'lsof-1',
-						q: '`umount /mnt/data` fails with "target is busy". How do you find which process is holding it open?',
-						a: 'lsof /mnt/data',
-					},
-					{
-						id: 'lsof-2',
-						q: 'Which lsof invocation shows the process using TCP port 8080?',
-						a: 'lsof -i :8080',
-						note: '`ss -tulpn | grep 8080` is the socket-tool equivalent.',
-					},
 				],
 			},
 		],
@@ -578,20 +318,6 @@ export const categories: Category[] = [
 					{ code: 'ip addr show', note: "Every interface's IP addresses (short form: ip a)." },
 					{ code: 'ip link set eth0 up', note: 'Brings an interface up — configuration, not just viewing.' },
 				],
-				prompts: [
-					{
-						id: 'ip-1',
-						q: 'Which modern command shows a machine\'s IP addresses and network interfaces?',
-						a: 'ip addr show',
-						note: 'Short form: ip a. Successor to the older ifconfig.',
-					},
-					{
-						id: 'ip-2',
-						q: 'View the routing table, including the default gateway — what do you run?',
-						a: 'ip route show',
-						note: 'Short form: ip r. The "default via …" line is the gateway.',
-					},
-				],
 			},
 			{
 				id: 'ss',
@@ -604,19 +330,6 @@ export const categories: Category[] = [
 					{ code: 'ss -tulpn | grep :443', note: 'Which process is listening on port 443.' },
 					{ code: 'ss -tulpn', note: 'Every listening TCP/UDP socket and its owning process, numeric ports.' },
 					{ code: 'ss -tan state established', note: 'All currently established TCP connections — no listeners.' },
-				],
-				prompts: [
-					{
-						id: 'ss-1',
-						q: 'Which command (with flags) shows every listening port and the process that owns it?',
-						a: 'ss -tulpn',
-						note: 't/u: TCP/UDP, l: listening, p: owning process, n: numeric ports.',
-					},
-					{
-						id: 'ss-2',
-						q: 'ss replaces which older socket-inspection tool?',
-						a: 'netstat',
-					},
 				],
 			},
 			{
@@ -631,21 +344,6 @@ export const categories: Category[] = [
 					{ code: 'curl -I https://example.com', note: 'Headers only (HEAD request) — status, server, redirects.' },
 					{ code: 'curl -X POST -d \'{"key":"value"}\' -H "Content-Type: application/json" https://api.example.com', note: 'Sends a JSON POST body — the shape of most API testing.' },
 				],
-				prompts: [
-					{
-						id: 'curl-1',
-						q: 'Which curl flag fetches only the HTTP response headers, not the body?',
-						a: '-I',
-						note: 'Long form --head. Fast way to check status, redirects, and server headers.',
-					},
-					{
-						id: 'curl-2',
-						kind: 'cloze',
-						q: 'Print just the HTTP status code: curl -o /dev/null -s {{-w}} "%{http_code}" <url>',
-						a: '-w',
-						note: '-w prints the format string after the transfer; -o /dev/null discards the body, -s silences progress.',
-					},
-				],
 			},
 			{
 				id: 'ping',
@@ -658,21 +356,6 @@ export const categories: Category[] = [
 					{ code: 'ping -c 4 8.8.8.8', note: "Exactly 4 pings, then stops (without -c it runs until Ctrl+C)." },
 					{ code: 'ping -i 0.2 -c 20 10.0.0.5', note: 'Faster interval (0.2s) for a quick burst of 20 pings.' },
 					{ code: 'ping -c 1 example.com', note: "Single ping — often enough to confirm 'is DNS resolving and is the host up'." },
-				],
-				prompts: [
-					{
-						id: 'ping-1',
-						kind: 'cloze',
-						q: 'Send exactly 4 pings, then stop: ping {{-c 4}} 8.8.8.8',
-						a: '-c 4',
-						note: 'Without -c, ping runs until Ctrl+C.',
-					},
-					{
-						id: 'ping-2',
-						q: 'Which protocol does ping use?',
-						a: 'ICMP',
-						note: 'Echo request / echo reply — that\'s why ping can work when TCP services are down, and be blocked while they\'re up.',
-					},
 				],
 			},
 			{
@@ -687,18 +370,6 @@ export const categories: Category[] = [
 					{ code: 'traceroute example.com', note: 'Default run: hostname, IP, and three round-trip times per hop.' },
 					{ code: 'traceroute -I example.com', note: 'Uses ICMP echo probes instead of the default UDP — helps when UDP is filtered.' },
 				],
-				prompts: [
-					{
-						id: 'traceroute-1',
-						q: 'Requests to a remote server die somewhere along the path. Which command shows each router hop on the way?',
-						a: 'traceroute',
-					},
-					{
-						id: 'traceroute-2',
-						q: 'Which traceroute flag skips reverse-DNS lookups so the hop list prints much faster?',
-						a: '-n',
-					},
-				],
 			},
 			{
 				id: 'dig',
@@ -711,19 +382,6 @@ export const categories: Category[] = [
 					{ code: 'dig +short example.com', note: 'Just the resolved IP addresses, no metadata.' },
 					{ code: 'dig MX example.com', note: 'Queries a specific record type — here, mail exchangers.' },
 					{ code: 'dig @8.8.8.8 example.com', note: "Asks Google's public resolver directly, bypassing your local DNS cache." },
-				],
-				prompts: [
-					{
-						id: 'dig-1',
-						q: 'A hostname resolves to the wrong address and you suspect DNS. Which command inspects its DNS records?',
-						a: 'dig <hostname>',
-						note: 'dig MX example.com queries a specific record type; @8.8.8.8 asks a specific nameserver.',
-					},
-					{
-						id: 'dig-2',
-						q: 'Which dig option prints only the resolved values, omitting all query metadata?',
-						a: '+short',
-					},
 				],
 			},
 		],
@@ -746,19 +404,6 @@ export const categories: Category[] = [
 					{ code: 'chmod 644 file.txt', note: 'Owner read+write, group and others read-only — the common "data file" mode.' },
 					{ code: 'chmod -R go-w /var/www/app', note: 'Recursively removes group/others write access — a quick lockdown.' },
 				],
-				prompts: [
-					{
-						id: 'chmod-1',
-						q: 'What permissions does `chmod 644 file.txt` set?',
-						a: 'rw-r--r--',
-						note: 'Owner read+write, group and others read-only. Read=4, write=2, execute=1; each octal digit is one of owner/group/others.',
-					},
-					{
-						id: 'chmod-2',
-						q: 'Add execute permission to a script without changing any other bits — what do you run?',
-						a: 'chmod +x script.sh',
-					},
-				],
 			},
 			{
 				id: 'chown',
@@ -771,21 +416,6 @@ export const categories: Category[] = [
 					{ code: 'chown -R deploy:deploy /opt/app', note: '-R applies recursively to every file and subdirectory.' },
 					{ code: 'chown alice file.txt', note: 'Changes just the owning user, leaves the group untouched.' },
 					{ code: 'chown :developers shared.txt', note: 'Changes just the group (leading colon), owner untouched.' },
-				],
-				prompts: [
-					{
-						id: 'chown-1',
-						q: 'App files are owned by root but the www-data service account needs to write them. What is the correct fix?',
-						a: 'chown -R www-data:www-data /var/www/app',
-						note: 'Fix ownership — don\'t reach for chmod 777, which makes files world-writable.',
-					},
-					{
-						id: 'chown-2',
-						kind: 'cloze',
-						q: 'Give alice ownership and set group devs in one command: chown {{alice:devs}} report.txt',
-						a: 'alice:devs',
-						note: 'user:group — one colon-joined argument sets both at once.',
-					},
 				],
 			},
 			{
@@ -800,19 +430,6 @@ export const categories: Category[] = [
 					{ code: 'sudo useradd -m -G sudo -s /bin/bash bob', note: 'Same, plus adds bob to the sudo group at creation time.' },
 					{ code: 'useradd -r svc-app', note: '-r creates a system account: no home directory, no password login — for services.' },
 				],
-				prompts: [
-					{
-						id: 'useradd-1',
-						q: 'Which useradd flag ensures a home directory is created for the new user?',
-						a: '-m',
-					},
-					{
-						id: 'useradd-2',
-						q: 'Which useradd flag sets the new account\'s login shell?',
-						a: '-s',
-						note: 'e.g. useradd -m -s /bin/bash alice',
-					},
-				],
 			},
 			{
 				id: 'passwd',
@@ -825,20 +442,6 @@ export const categories: Category[] = [
 					{ code: 'sudo passwd -l alice', note: 'Locks the account by disabling its password hash.' },
 					{ code: 'sudo passwd -u alice', note: 'Reverses -l — re-enables password login.' },
 					{ code: 'passwd', note: "No arguments: change your own password (prompts for the current one first)." },
-				],
-				prompts: [
-					{
-						id: 'passwd-1',
-						q: 'Disable a former contractor\'s login without deleting their account or files — what do you run?',
-						a: 'sudo passwd -l alice',
-						note: '-l locks the password so the account can\'t authenticate.',
-					},
-					{
-						id: 'passwd-2',
-						q: 'Re-enable a password-locked account — what do you run?',
-						a: 'sudo passwd -u alice',
-						note: '-u unlocks what -l locked.',
-					},
 				],
 			},
 			{
@@ -853,20 +456,6 @@ export const categories: Category[] = [
 					{ code: 'sudo systemctl restart nginx', note: 'Runs a single command as root — the everyday case.' },
 					{ code: 'sudo -l', note: "Lists what commands the current user is permitted to run with sudo." },
 				],
-				prompts: [
-					{
-						id: 'sudo-1',
-						q: 'Which sudo flag runs the command as a specific non-root user?',
-						a: '-u',
-						note: 'e.g. sudo -u postgres psql',
-					},
-					{
-						id: 'sudo-2',
-						q: 'What is the only safe way to edit /etc/sudoers (the file defining who may use sudo)?',
-						a: 'visudo',
-						note: 'It syntax-checks before saving — a broken sudoers can lock everyone out of root.',
-					},
-				],
 			},
 			{
 				id: 'usermod',
@@ -879,20 +468,6 @@ export const categories: Category[] = [
 					{ code: 'sudo usermod -aG docker alice', note: "Appends alice to the docker group; takes effect after her next login." },
 					{ code: 'sudo usermod -s /usr/bin/zsh alice', note: "Changes alice's login shell to zsh." },
 					{ code: 'sudo usermod -L alice', note: 'Locks the account — equivalent effect to `passwd -l`.' },
-				],
-				prompts: [
-					{
-						id: 'usermod-1',
-						q: 'Add alice to the docker group without touching her other groups — what do you run?',
-						a: 'usermod -aG docker alice',
-						note: 'She must log out and back in for it to apply.',
-					},
-					{
-						id: 'usermod-2',
-						q: 'After `usermod -G docker alice` (note: no -a), what happens to alice\'s other supplementary groups?',
-						a: 'all removed',
-						note: 'The classic footgun: without -a (append), -G replaces the entire supplementary group list.',
-					},
 				],
 			},
 		],
@@ -915,20 +490,6 @@ export const categories: Category[] = [
 					{ code: 'sudo apt install nginx', note: 'Installs nginx and its dependencies from configured repositories.' },
 					{ code: 'sudo apt remove nginx', note: 'Uninstalls nginx but leaves its config files (see apt-autoremove\'s purge note).' },
 				],
-				prompts: [
-					{
-						id: 'apt-1',
-						q: 'Which command refreshes the local package index, and should usually run before `apt install`?',
-						a: 'apt update',
-						note: 'Otherwise install resolves against a stale index.',
-					},
-					{
-						id: 'apt-2',
-						q: 'Which apt subcommand actually installs the newer versions of all installed packages?',
-						a: 'apt upgrade',
-						note: 'update only refreshes the index; upgrade does the installing.',
-					},
-				],
 			},
 			{
 				id: 'dpkg',
@@ -941,19 +502,6 @@ export const categories: Category[] = [
 					{ code: 'dpkg -S /usr/bin/curl', note: 'Which installed package provides this file.' },
 					{ code: 'dpkg -i app_1.0.deb', note: 'Installs a local .deb file directly — no dependency resolution.' },
 					{ code: 'dpkg -L nginx', note: 'Lists every file the installed nginx package placed on disk.' },
-				],
-				prompts: [
-					{
-						id: 'dpkg-1',
-						q: 'You downloaded a standalone .deb file. Which command installs it directly from disk?',
-						a: 'dpkg -i app.deb',
-						note: 'apt normally installs from repositories; dpkg handles local files.',
-					},
-					{
-						id: 'dpkg-2',
-						q: 'Find which installed package owns the file /usr/bin/curl — what do you run?',
-						a: 'dpkg -S /usr/bin/curl',
-					},
 				],
 			},
 			{
@@ -968,18 +516,6 @@ export const categories: Category[] = [
 					{ code: 'sudo dnf install httpd', note: 'Installs the Apache package and its dependencies.' },
 					{ code: 'dnf search redis', note: 'Searches repository metadata for packages matching "redis".' },
 				],
-				prompts: [
-					{
-						id: 'dnf-1',
-						q: 'On a RHEL/Fedora server, what is the equivalent of Debian\'s `apt install`?',
-						a: 'dnf install',
-					},
-					{
-						id: 'dnf-2',
-						q: 'dnf is the successor to which older RHEL package tool?',
-						a: 'yum',
-					},
-				],
 			},
 			{
 				id: 'apt-cache',
@@ -992,19 +528,6 @@ export const categories: Category[] = [
 					{ code: 'apt-cache policy nginx', note: 'Installed vs. candidate version, and which repo each comes from.' },
 					{ code: 'apt-cache search redis', note: 'Searches package names and descriptions for "redis".' },
 					{ code: 'apt-cache show nginx', note: 'Full metadata for a package: description, dependencies, size.' },
-				],
-				prompts: [
-					{
-						id: 'apt-cache-1',
-						q: 'What version of nginx would install, and from which repository — how do you check without installing?',
-						a: 'apt-cache policy nginx',
-					},
-					{
-						id: 'apt-cache-2',
-						q: 'Search available packages by keyword using the apt-cache tool — what do you run?',
-						a: 'apt-cache search <keyword>',
-						note: '`apt search` is the friendlier front-end for the same query.',
-					},
 				],
 			},
 			{
@@ -1019,19 +542,6 @@ export const categories: Category[] = [
 					{ code: 'apt list --upgradable', note: 'Installed packages with a newer version available.' },
 					{ code: 'apt list --installed | grep nginx', note: "Checks whether a specific package (and which version) is installed." },
 				],
-				prompts: [
-					{
-						id: 'apt-list-1',
-						q: 'How do you list every package currently installed on a Debian/Ubuntu system?',
-						a: 'apt list --installed',
-						note: 'dpkg -l is the lower-level equivalent.',
-					},
-					{
-						id: 'apt-list-2',
-						q: 'Which command previews which packages have upgrades pending?',
-						a: 'apt list --upgradable',
-					},
-				],
 			},
 			{
 				id: 'apt-autoremove',
@@ -1044,19 +554,6 @@ export const categories: Category[] = [
 					{ code: 'sudo apt autoremove --purge', note: 'Removes orphaned dependency packages and their config files.' },
 					{ code: 'sudo apt autoremove', note: 'Removes orphaned dependencies, leaving their config files behind.' },
 					{ code: 'apt autoremove --dry-run', note: 'Previews what would be removed, without removing anything.' },
-				],
-				prompts: [
-					{
-						id: 'autoremove-1',
-						q: 'Which command cleans out packages that were pulled in as dependencies but are no longer needed?',
-						a: 'apt autoremove',
-					},
-					{
-						id: 'autoremove-2',
-						q: 'Which apt subcommand uninstalls a package AND deletes its config files?',
-						a: 'apt purge',
-						note: 'apt remove keeps the config files around for a future reinstall.',
-					},
 				],
 			},
 		],
@@ -1079,20 +576,6 @@ export const categories: Category[] = [
 					{ code: 'grep -v "^#" config.conf', note: 'Prints every line that is NOT a comment (inverted match).' },
 					{ code: 'grep -c "error" app.log', note: 'Counts matching lines instead of printing them.' },
 				],
-				prompts: [
-					{
-						id: 'grep-1',
-						q: 'Search a whole directory tree for "TODO", showing file names and line numbers — what do you run?',
-						a: 'grep -rn "TODO" src/',
-						note: '-r recurses, -n adds line numbers, -i would ignore case.',
-					},
-					{
-						id: 'grep-2',
-						q: 'Which grep flag inverts the match — printing lines that do NOT contain the pattern?',
-						a: '-v',
-						note: 'e.g. `grep -v "^#"` strips comment lines from a config file.',
-					},
-				],
 			},
 			{
 				id: 'find',
@@ -1105,20 +588,6 @@ export const categories: Category[] = [
 					{ code: 'find /tmp -type f -mtime +7 -delete', note: 'Deletes files in /tmp untouched for 7+ days.' },
 					{ code: 'find / -type f -size +100M', note: 'Every file larger than 100 MB under /.' },
 					{ code: 'find . -name "*.tmp" -exec rm {} \\;', note: 'Runs rm on each match individually via -exec (see xargs for the faster batch version).' },
-				],
-				prompts: [
-					{
-						id: 'find-1',
-						kind: 'cloze',
-						q: 'Delete logs untouched for over 30 days: find /var/log -name "*.log" {{-mtime +30}} -delete',
-						a: '-mtime +30',
-						note: '+30 = modified more than 30 days ago. Run without -delete first to preview.',
-					},
-					{
-						id: 'find-2',
-						q: 'Find every file larger than 100 MB under / — what do you run?',
-						a: 'find / -type f -size +100M',
-					},
 				],
 			},
 			{
@@ -1133,19 +602,6 @@ export const categories: Category[] = [
 					{ code: "awk '{print $NF}' file.log", note: 'Prints the last field of each line, whatever its position.' },
 					{ code: "awk -F: '{print $1}' /etc/passwd", note: '-F sets the field separator — here, colon, matching /etc/passwd\'s format.' },
 				],
-				prompts: [
-					{
-						id: 'awk-1',
-						q: 'Print just the first whitespace-separated field of every line in a log — what do you run?',
-						a: "awk '{print $1}' file.log",
-					},
-					{
-						id: 'awk-2',
-						q: 'In awk, which expression always refers to the LAST field of a line, whatever its position?',
-						a: '$NF',
-						note: 'NF is the field count of the current line, so $NF is always the last field.',
-					},
-				],
 			},
 			{
 				id: 'sed',
@@ -1158,21 +614,6 @@ export const categories: Category[] = [
 					{ code: "sed -i 's/DEBUG=false/DEBUG=true/' .env", note: '-i edits the file in place, replacing the first match per line.' },
 					{ code: "sed 's/foo/bar/g' file.txt", note: 'Prints the result to stdout without touching the file — safe to preview.' },
 					{ code: "sed '/^#/d' config.conf", note: 'Deletes every line starting with # (comments), printed to stdout.' },
-				],
-				prompts: [
-					{
-						id: 'sed-1',
-						kind: 'cloze',
-						q: "Write the substitution back into the file itself: sed {{-i}} 's/old/new/g' config.txt",
-						a: '-i',
-						note: 's = substitute; the trailing g replaces every match on each line, not just the first.',
-					},
-					{
-						id: 'sed-2',
-						q: 'Delete every line matching a pattern with sed — what do you run?',
-						a: "sed '/pattern/d' file",
-						note: 'Add -i to apply it to the file rather than just printing the result.',
-					},
 				],
 			},
 			{
@@ -1187,20 +628,6 @@ export const categories: Category[] = [
 					{ code: 'find . -name "*.tmp" | xargs rm', note: 'Same idea without NUL-safety — fine when filenames are simple.' },
 					{ code: 'echo "a b c" | xargs -n 1 echo', note: '-n 1 runs the command once per argument instead of batching them.' },
 				],
-				prompts: [
-					{
-						id: 'xargs-1',
-						q: 'find prints a list of files, but rm doesn\'t read filenames from stdin. Which command bridges them?',
-						a: 'xargs',
-						note: 'It turns stdin lines into command arguments: find ... | xargs rm',
-					},
-					{
-						id: 'xargs-2',
-						q: 'Which find/xargs flag pair delimits filenames with NUL bytes, so names with spaces survive?',
-						a: '-print0 and -0',
-						note: 'find . -name "*.tmp" -print0 | xargs -0 rm',
-					},
-				],
 			},
 			{
 				id: 'cut',
@@ -1213,20 +640,6 @@ export const categories: Category[] = [
 					{ code: 'cut -d: -f1 /etc/passwd', note: 'Every username — field 1 of the colon-separated file.' },
 					{ code: 'cut -d, -f2,4 data.csv', note: 'Fields 2 and 4 of a simple comma-separated file.' },
 					{ code: 'cut -c1-10 file.txt', note: 'The first 10 characters of each line, ignoring delimiters entirely.' },
-				],
-				prompts: [
-					{
-						id: 'cut-1',
-						q: 'Extract just the usernames (field 1) from the colon-separated /etc/passwd — what do you run?',
-						a: 'cut -d: -f1 /etc/passwd',
-						note: '-d sets the delimiter, -f picks the field(s).',
-					},
-					{
-						id: 'cut-2',
-						q: 'Fields split on one fixed character and nothing clever needed — which minimal tool slices them out?',
-						a: 'cut',
-						note: 'Reach for awk instead when fields are whitespace-separated or you need logic.',
-					},
 				],
 			},
 		],
@@ -1249,19 +662,6 @@ export const categories: Category[] = [
 					{ code: 'free -h -s 2', note: 'Repeats the report every 2 seconds — a lightweight live view.' },
 					{ code: 'free -h --total', note: 'Adds a combined RAM+swap total row.' },
 				],
-				prompts: [
-					{
-						id: 'free-1',
-						q: 'Which command shows how much RAM and swap are currently in use?',
-						a: 'free -h',
-					},
-					{
-						id: 'free-2',
-						q: 'In free\'s output, which column shows memory the kernel can actually give to new processes (reclaimable cache included)?',
-						a: 'available',
-						note: 'The "free" column alone looks alarmingly low on healthy systems — page cache counts as used.',
-					},
-				],
 			},
 			{
 				id: 'uptime',
@@ -1274,19 +674,6 @@ export const categories: Category[] = [
 					{ code: 'uptime', note: 'Example output: "up 14 days, load average: 0.15, 0.22, 0.30".' },
 					{ code: 'nproc', note: 'Core count — the number to compare load average against.' },
 					{ code: 'w', note: 'Shows the same load averages plus who is logged in and running what.' },
-				],
-				prompts: [
-					{
-						id: 'uptime-1',
-						q: 'The three load-average numbers from uptime cover which time windows?',
-						a: '1, 5, and 15 minutes',
-					},
-					{
-						id: 'uptime-2',
-						q: 'On a 4-core machine, above which load average does work start queuing?',
-						a: '4.0',
-						note: 'Load average counts runnable (and uninterruptible-IO) tasks — compare it to the core count, not to 1.0.',
-					},
 				],
 			},
 			{
@@ -1301,20 +688,6 @@ export const categories: Category[] = [
 					{ code: 'vmstat', note: 'One-shot report: since-boot averages, ignore the first-line caveat.' },
 					{ code: 'vmstat -a 2', note: '-a shows active/inactive memory instead of buffers/cache, repeating every 2s.' },
 				],
-				prompts: [
-					{
-						id: 'vmstat-1',
-						q: 'In `vmstat 2 5`, what are the 2 and the 5 (in order)?',
-						a: 'interval, count',
-						note: 'A snapshot every 2 seconds, 5 times total.',
-					},
-					{
-						id: 'vmstat-2',
-						q: 'Persistently high si/so columns in vmstat mean the system is doing what?',
-						a: 'swapping',
-						note: 'Swap-in / swap-out traffic — a sign of memory pressure.',
-					},
-				],
 			},
 			{
 				id: 'iostat',
@@ -1327,19 +700,6 @@ export const categories: Category[] = [
 					{ code: 'iostat -x 2', note: 'Extended per-device stats (including %util), every 2 seconds.' },
 					{ code: 'iostat', note: 'Basic report: CPU usage plus simple per-device I/O counts.' },
 					{ code: 'iostat -x 2 5', note: 'Extended stats, every 2 seconds, 5 times, then stops.' },
-				],
-				prompts: [
-					{
-						id: 'iostat-1',
-						q: 'You suspect a slowdown is disk-bound, not CPU-bound. Which command breaks down per-device disk I/O?',
-						a: 'iostat -x',
-					},
-					{
-						id: 'iostat-2',
-						q: 'In iostat -x output, %util pinned near 100 means the device is what?',
-						a: 'saturated',
-						note: 'Requests arrive as fast as the device can service them.',
-					},
 				],
 			},
 			{
@@ -1354,19 +714,6 @@ export const categories: Category[] = [
 					{ code: 'w alice', note: 'Filters the output to just one user\'s sessions.' },
 					{ code: 'who', note: 'The simpler ancestor: just who\'s logged in, no command or load info.' },
 				],
-				prompts: [
-					{
-						id: 'w-1',
-						q: 'Which command shows who is currently logged in AND what each of them is running?',
-						a: 'w',
-					},
-					{
-						id: 'w-2',
-						q: 'w\'s header line shows the same load averages as which other command?',
-						a: 'uptime',
-						note: 'Per user, w also adds idle time and current command — the things plain `who` lacks.',
-					},
-				],
 			},
 			{
 				id: 'watch',
@@ -1379,19 +726,6 @@ export const categories: Category[] = [
 					{ code: 'watch -d -n 2 "ss -tulpn"', note: '-d highlights what changed; -n 2 refreshes every 2 seconds.' },
 					{ code: 'watch -n 2 df -h', note: 'Live-updating disk usage, refreshed every 2 seconds.' },
 					{ code: 'watch -n 1 "ls -la /var/spool/mail"', note: "Quoting matters once the watched command itself has pipes or multiple arguments." },
-				],
-				prompts: [
-					{
-						id: 'watch-1',
-						q: 'Re-run `df -h` every 2 seconds and watch its output update in place — what do you run?',
-						a: 'watch -n 2 df -h',
-						note: '-n sets the refresh interval in seconds.',
-					},
-					{
-						id: 'watch-2',
-						q: 'Which watch flag highlights the differences between successive refreshes?',
-						a: '-d',
-					},
 				],
 			},
 		],
@@ -1414,21 +748,6 @@ export const categories: Category[] = [
 					{ code: 'tar -czvf backup.tar.gz /data', note: 'Creates a gzip-compressed archive of /data.' },
 					{ code: 'tar -tvf backup.tar.gz', note: 'Lists the archive\'s contents without extracting anything.' },
 				],
-				prompts: [
-					{
-						id: 'tar-1',
-						q: 'Which tar flags extract a gzip-compressed archive?',
-						a: '-xzvf',
-						note: 'Extract, gzip, verbose, file. -t instead of -x lists contents without extracting.',
-					},
-					{
-						id: 'tar-2',
-						kind: 'cloze',
-						q: 'Create a gzip-compressed archive of /data: tar {{-czvf}} backup.tar.gz /data',
-						a: '-czvf',
-						note: 'Create, gzip, verbose, file — -f must come last, right before the archive name.',
-					},
-				],
 			},
 			{
 				id: 'rsync',
@@ -1441,20 +760,6 @@ export const categories: Category[] = [
 					{ code: 'rsync -avz --delete /data/ user@host:/backup/', note: '--delete also removes destination files no longer in the source — a true mirror.' },
 					{ code: 'rsync -avz /data/ user@host:/backup/', note: 'Standard sync: archive mode, verbose, compressed transfer.' },
 					{ code: 'rsync -avzn /data/ user@host:/backup/', note: '-n (dry run) shows what would transfer without actually copying anything.' },
-				],
-				prompts: [
-					{
-						id: 'rsync-1',
-						q: 'Which transfer mechanism makes rsync faster than scp on repeated syncs of the same directory?',
-						a: 'delta transfer',
-						note: 'Only the parts that changed since last time are sent over the wire.',
-					},
-					{
-						id: 'rsync-2',
-						q: 'Which rsync flag removes destination files that no longer exist in the source, making a true mirror?',
-						a: '--delete',
-						note: 'Powerful but destructive: run with -n (dry run) first.',
-					},
 				],
 			},
 			{
@@ -1469,18 +774,6 @@ export const categories: Category[] = [
 					{ code: 'scp config.yml user@host:/etc/app/', note: 'Copies one file to a remote path.' },
 					{ code: 'scp user@host:/var/log/app.log ./', note: 'Direction reversed: pulls a file from the remote host to here.' },
 				],
-				prompts: [
-					{
-						id: 'scp-1',
-						q: 'Copy a single config file to a remote server over SSH, one time — simplest tool and syntax?',
-						a: 'scp config.yml user@host:/etc/app/',
-					},
-					{
-						id: 'scp-2',
-						q: 'Which scp flag copies a whole directory recursively?',
-						a: '-r',
-					},
-				],
 			},
 			{
 				id: 'gzip',
@@ -1493,20 +786,6 @@ export const categories: Category[] = [
 					{ code: 'gzip -k access.log', note: 'Compresses to access.log.gz but keeps the original too.' },
 					{ code: 'gzip access.log', note: 'Default: compresses and removes the original file.' },
 					{ code: 'gzip -d access.log.gz', note: 'Decompresses — equivalent to running gunzip.' },
-				],
-				prompts: [
-					{
-						id: 'gzip-1',
-						q: 'Which gzip flag keeps the original file alongside the new .gz copy?',
-						a: '-k',
-						note: 'By default `gzip file.txt` replaces the file with file.txt.gz.',
-					},
-					{
-						id: 'gzip-2',
-						q: 'Decompress file.gz using the gzip binary itself — what do you run?',
-						a: 'gzip -d file.gz',
-						note: 'gunzip is the same thing; zcat / zless read the contents without decompressing on disk.',
-					},
 				],
 			},
 			{
@@ -1521,19 +800,6 @@ export const categories: Category[] = [
 					{ code: 'wget -c https://example.com/big-file.iso', note: '-c resumes an interrupted download instead of restarting it.' },
 					{ code: 'wget -q https://example.com/file.tar.gz', note: '-q suppresses progress output — quiet mode for scripts.' },
 				],
-				prompts: [
-					{
-						id: 'wget-1',
-						q: 'Download a release tarball in a script, saving it under a specific filename — what do you run?',
-						a: 'wget -O app.tar.gz <url>',
-					},
-					{
-						id: 'wget-2',
-						q: 'A large download was interrupted. Which wget flag resumes it instead of restarting?',
-						a: '-c',
-						note: 'Mnemonic: continue.',
-					},
-				],
 			},
 			{
 				id: 'dd',
@@ -1546,20 +812,6 @@ export const categories: Category[] = [
 					{ code: 'dd if=ubuntu.iso of=/dev/sdb bs=4M status=progress', note: 'Writes an ISO onto a USB stick with a live progress counter.' },
 					{ code: 'lsblk', note: 'Always run this first to confirm the exact device name before any dd write.' },
 					{ code: 'dd if=/dev/zero of=/dev/sdb bs=1M count=10', note: 'Zeroes the first 10 MB of a device — wipes the partition table.' },
-				],
-				prompts: [
-					{
-						id: 'dd-1',
-						q: 'Write an ISO image onto a USB stick at /dev/sdb — what do you run?',
-						a: 'dd if=ubuntu.iso of=/dev/sdb bs=4M status=progress',
-						note: 'if= input file, of= output device, bs= block size, status=progress shows a live counter.',
-					},
-					{
-						id: 'dd-2',
-						q: 'dd overwrites whatever of= names, with no confirmation. Which command do you run first to verify the target device?',
-						a: 'lsblk',
-						note: 'A mistyped device name destroys a disk — check the device tree before every dd run.',
-					},
 				],
 			},
 		],
@@ -1582,19 +834,6 @@ export const categories: Category[] = [
 					{ code: 'systemctl enable --now nginx', note: 'Enables at boot AND starts it immediately — the common "stand it up" idiom.' },
 					{ code: 'systemctl restart nginx', note: 'Stops then starts the service — the standard way to apply a config change.' },
 				],
-				prompts: [
-					{
-						id: 'systemctl-1',
-						q: 'Which systemctl verb makes a service start automatically at every boot (without starting it now)?',
-						a: 'enable',
-						note: 'start runs it right now; they\'re independent. `enable --now` does both at once.',
-					},
-					{
-						id: 'systemctl-2',
-						q: 'A service just failed. Which command shows its state plus its most recent log lines in one view?',
-						a: 'systemctl status <unit>',
-					},
-				],
 			},
 			{
 				id: 'crontab',
@@ -1607,20 +846,6 @@ export const categories: Category[] = [
 					{ code: '0 3 * * * /opt/scripts/backup.sh', note: 'Runs backup.sh every day at 3:00 AM.' },
 					{ code: 'crontab -l', note: "Lists the current user's scheduled jobs without opening an editor." },
 					{ code: '*/15 * * * * /opt/scripts/healthcheck.sh', note: 'Runs every 15 minutes, all day, every day (*/N = every N units).' },
-				],
-				prompts: [
-					{
-						id: 'crontab-1',
-						kind: 'cloze',
-						q: 'Run backup.sh every day at 3:00 AM: {{0 3 * * *}} /opt/scripts/backup.sh',
-						a: '0 3 * * *',
-						note: 'Minute 0 of hour 3, every day. Edit with crontab -e, list with crontab -l.',
-					},
-					{
-						id: 'crontab-2',
-						q: 'What are the five cron fields, in order?',
-						a: 'minute, hour, day-of-month, month, day-of-week',
-					},
 				],
 			},
 			{
@@ -1635,18 +860,6 @@ export const categories: Category[] = [
 					{ code: 'journalctl -u nginx --no-pager', note: 'Full journal for nginx, printed straight to the terminal (no pager).' },
 					{ code: 'journalctl -u nginx -b', note: "This unit's journal entries since the current boot only." },
 				],
-				prompts: [
-					{
-						id: 'journalctl-u-1',
-						q: 'A service failed to start. Which command shows just that service\'s recent journal entries?',
-						a: 'journalctl -u <service>',
-					},
-					{
-						id: 'journalctl-u-2',
-						q: 'Filter a unit\'s journal to error-priority-and-worse messages only — which flag and value do you add?',
-						a: '-p err',
-					},
-				],
 			},
 			{
 				id: 'timedatectl',
@@ -1659,19 +872,6 @@ export const categories: Category[] = [
 					{ code: 'timedatectl', note: 'Local time, UTC time, timezone, and whether NTP sync is active.' },
 					{ code: 'timedatectl set-timezone UTC', note: "Sets the system timezone — servers are commonly kept on UTC." },
 					{ code: 'timedatectl set-ntp true', note: 'Turns on automatic NTP clock synchronization.' },
-				],
-				prompts: [
-					{
-						id: 'timedatectl-1',
-						q: 'Cron jobs fire at odd times and you suspect the server\'s timezone. Which command shows time, timezone, and NTP state?',
-						a: 'timedatectl',
-						note: 'Fix it with timedatectl set-timezone <tz>.',
-					},
-					{
-						id: 'timedatectl-2',
-						q: 'Turn on NTP clock synchronization with timedatectl — what do you run?',
-						a: 'timedatectl set-ntp true',
-					},
 				],
 			},
 			{
@@ -1686,24 +886,6 @@ export const categories: Category[] = [
 					{ code: 'echo "systemctl restart app" | at 02:00', note: 'Pipes the command directly instead of using the interactive prompt.' },
 					{ code: 'atq', note: 'Lists all pending at jobs with their job numbers.' },
 				],
-				prompts: [
-					{
-						id: 'at-1',
-						q: 'Which scheduler runs a command exactly once at a future time, rather than on a recurring schedule?',
-						a: 'at',
-						note: 'echo "systemctl restart app" | at 02:00 — cron is for recurring jobs.',
-					},
-					{
-						id: 'at-2',
-						q: 'List the pending `at` jobs — what do you run?',
-						a: 'atq',
-					},
-					{
-						id: 'at-3',
-						q: 'Cancel pending `at` job number 3 — what do you run?',
-						a: 'atrm 3',
-					},
-				],
 			},
 			{
 				id: 'systemd-analyze',
@@ -1717,27 +899,12 @@ export const categories: Category[] = [
 					{ code: 'systemd-analyze', note: 'Total boot time, split into firmware/loader/kernel/userspace.' },
 					{ code: 'systemd-analyze critical-chain', note: 'Shows the dependency chain that determined the longest boot path.' },
 				],
-				prompts: [
-					{
-						id: 'systemd-analyze-1',
-						q: 'Boot feels slow. Which command ranks services by how long each took to start?',
-						a: 'systemd-analyze blame',
-					},
-					{
-						id: 'systemd-analyze-2',
-						q: 'See the machine\'s total boot time, split into firmware/loader/kernel/userspace — what do you run?',
-						a: 'systemd-analyze',
-						note: 'No arguments needed; blame and critical-chain drill into the slow parts.',
-					},
-				],
 			},
 		],
 	},
 ];
 
 export const allCommands: Command[] = categories.flatMap((c) => c.commands);
-
-export const promptCount = allCommands.reduce((n, c) => n + c.prompts.length, 0);
 
 export function categoryOf(commandId: string): Category | undefined {
 	return categories.find((c) => c.commands.some((cmd) => cmd.id === commandId));

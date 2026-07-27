@@ -7,41 +7,91 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Write">
-<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#231e1c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fffcf5" media="(prefers-color-scheme: light)">
 <title>Write</title>
+<script>
+  // Same theme resolution as src/layouts/Layout.astro: the site's stored
+  // choice wins, otherwise follow the OS. This page is outside the Astro
+  // build, so the logic is repeated rather than imported — but it reads the
+  // same `theme` key, so flipping the toggle anywhere on the site changes
+  // this page too. Inline and before styles, to avoid a flash of the wrong
+  // theme.
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var isDark = stored === 'dark' || stored === 'light'
+        ? stored === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', isDark);
+    } catch (e) {
+      /* storage blocked — fall back to the media query in CSS */
+    }
+  })();
+</script>
 <style>
+  /* Colours come from the site's design tokens (src/styles/tokens.css) rather
+     than this page's own greyscale palette — the composer is part of the site
+     and used to look like a different product. The token values are repeated
+     here because this page is served straight out of public/ and never passes
+     through the Astro build that would otherwise supply them; keep the two in
+     sync if the site's palette changes.
+
+     Everything below still speaks in the page's own --bg/--fg/--card names,
+     which now just point at the site tokens. */
   :root {
-    --bg: #fafafa;
-    --fg: #1a1a1a;
-    --muted: #6b6b6b;
-    --border: #dcdcdc;
-    --accent: #1a1a1a;
-    --accent-fg: #ffffff;
+    --color-bg: 255, 252, 245;
+    --color-bg-secondary: 250, 245, 235;
+    --color-text-primary: 33, 33, 33;
+    --color-text-secondary: 117, 117, 117;
+    --color-accent: 139, 92, 246;
+    --color-border: 235, 231, 225;
     --ok: #1a7f37;
     --err: #b42318;
-    --card: #ffffff;
-    color-scheme: light dark;
+    color-scheme: light;
   }
+  .dark {
+    --color-bg: 35, 30, 28;
+    --color-bg-secondary: 45, 38, 34;
+    --color-text-primary: 255, 250, 240;
+    --color-text-secondary: 209, 213, 219;
+    --color-accent: 167, 139, 250;
+    --color-border: 85, 75, 70;
+    --ok: #3fb950;
+    --err: #f0716a;
+    color-scheme: dark;
+  }
+  /* Fallback for the moment before the script above runs, and for a browser
+     with storage blocked. */
   @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #111111;
-      --fg: #ededed;
-      --muted: #9a9a9a;
-      --border: #333333;
-      --accent: #ededed;
-      --accent-fg: #111111;
+    :root:not(.dark):not(.light) {
+      --color-bg: 35, 30, 28;
+      --color-bg-secondary: 45, 38, 34;
+      --color-text-primary: 255, 250, 240;
+      --color-text-secondary: 209, 213, 219;
+      --color-accent: 167, 139, 250;
+      --color-border: 85, 75, 70;
       --ok: #3fb950;
       --err: #f0716a;
-      --card: #1b1b1b;
+      color-scheme: dark;
     }
+  }
+  :root {
+    --bg: rgb(var(--color-bg));
+    --fg: rgb(var(--color-text-primary));
+    --muted: rgb(var(--color-text-secondary));
+    --border: rgb(var(--color-border));
+    --accent: rgb(var(--color-accent));
+    --accent-fg: #ffffff;
+    --card: rgb(var(--color-bg-secondary));
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
     background: var(--bg);
     color: var(--fg);
-    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font: 16px/1.5 'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", sans-serif;
     padding: max(12px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
              max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
     max-width: 640px;
@@ -141,6 +191,25 @@
     font-size: 14px;
   }
   #setup p { margin: 0 0 10px; color: var(--muted); }
+  #setup .session-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--fg);
+    font-weight: 600;
+  }
+  #setup .session-row button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font: inherit;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+  }
+  #setup a { color: inherit; }
   #setup ol { margin: 0 0 10px; padding-left: 20px; color: var(--muted); }
   #setup code { font-size: 13px; }
   label { display: block; font-size: 12px; color: var(--muted); margin: 0 0 4px 2px; text-transform: uppercase; letter-spacing: 0.04em; }
@@ -277,17 +346,22 @@
 </header>
 
 <section id="setup">
+  <p class="session-row">
+    <span id="sessionState">Not signed in</span>
+    <button id="signOut" type="button" hidden>Sign out</button>
+  </p>
   <p>This page publishes straight to <code>src/content/micro/</code> (or
      <code>src/content/photo/</code>) on <code>sajal24x7/scdotnetv3</code>, and
-     syncs TIL vault zips into <code>til-sync/</code>. It needs a GitHub token,
-     stored only in this browser.</p>
+     syncs TIL vault zips into <code>til-sync/</code>. One sign-in covers this
+     page and <a href="/practice/">/practice</a> — the token is stored in this
+     browser only.</p>
   <ol>
     <li>GitHub → Settings → Developer settings → Fine-grained tokens → Generate new token</li>
     <li>Repository access: only <code>scdotnetv3</code></li>
     <li>Permissions: <strong>Contents → Read and write</strong></li>
   </ol>
   <input id="tokenInput" type="password" placeholder="github_pat_…" autocomplete="off">
-  <button class="send" id="saveToken" type="button">Save token</button>
+  <button class="send" id="saveToken" type="button">Sign in</button>
 </section>
 
 <main id="composer">
@@ -384,14 +458,23 @@
 </main>
 
 <script src="/write/fflate.js"></script>
-<script>
+<!-- type="module" so the shared session at /auth/session.js can be imported.
+     Module scripts defer, so fflate above has already loaded by the time this runs. -->
+<script type="module">
+import * as session from '/auth/session.js';
+
 (() => {
   const OWNER = 'sajal24x7';
   const REPO = 'scdotnetv3';
   const BRANCH = 'main';
   const SITE = 'https://sajalchoudhary.net';
-  const TOKEN_KEY = 'microwrite.token';
   const DRAFT_KEY = 'microwrite.draft';
+
+  // One sign-in for the whole site — see public/auth/session.js. This page
+  // used to keep its own token under `microwrite.token`; that key is still
+  // read and adopted on first load, so a browser already set up here stays
+  // signed in and nothing needs pasting again.
+  const getToken = () => session.getToken() || '';
   const FOLDERS = { micro: 'src/content/micro', photo: 'src/content/photo' };
   const SHELF_FOLDERS = {
     bookshelf: 'src/content/bookshelf',
@@ -534,7 +617,10 @@
     $('composer').style.display = show ? 'none' : 'block';
   }
   $('settingsBtn').addEventListener('click', () => {
-    $('tokenInput').value = localStorage.getItem(TOKEN_KEY) || '';
+    // Never prefill the token: it's a credential, and the field is only for
+    // replacing it. The signed-in line above says whether there is one.
+    $('tokenInput').value = '';
+    renderSession();
     showSetup($('setup').style.display !== 'block');
   });
   $('saveToken').addEventListener('click', async () => {
@@ -543,20 +629,37 @@
     $('saveToken').disabled = true;
     $('saveToken').textContent = 'Checking…';
     try {
-      const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}`, {
-        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' },
-      });
-      if (!res.ok) throw new Error(`GitHub said ${res.status} — check the token`);
-      localStorage.setItem(TOKEN_KEY, token);
+      // Verified through the site's own endpoint rather than api.github.com
+      // directly — the work network blocks GitHub's API, and this is the same
+      // check /practice's sign-in makes.
+      const login = await session.signInWithToken(token);
+      $('tokenInput').value = '';
       showSetup(false);
-      setStatus('Token saved.', 'ok');
+      setStatus(login ? `Signed in as ${login}.` : 'Signed in.', 'ok');
+      renderSession();
     } catch (e) {
       alert(e.message);
     } finally {
       $('saveToken').disabled = false;
-      $('saveToken').textContent = 'Save token';
+      $('saveToken').textContent = 'Sign in';
     }
   });
+
+  $('signOut').addEventListener('click', () => {
+    session.signOut();
+    renderSession();
+    setStatus('Signed out.', '');
+    showSetup(true);
+  });
+
+  // Signing in or out anywhere on the site reaches this page too.
+  function renderSession() {
+    const login = session.getLogin();
+    const signedIn = Boolean(session.getToken());
+    $('sessionState').textContent = signedIn ? (login ? `Signed in as ${login}` : 'Signed in') : 'Not signed in';
+    $('signOut').hidden = !signedIn;
+  }
+  session.subscribe(renderSession);
 
   // --- draft autosave ------------------------------------------------------
   const shelfFields = ['shelfTitle', 'shelfCreator', 'shelfNotes', 'shelfSeason', 'shelfStarted', 'shelfFinished', 'shelfPlatform'];
@@ -721,7 +824,7 @@
   }
 
   async function uploadOne(file, index, total) {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = getToken();
     const counter = total > 1 ? ` ${index + 1}/${total}` : '';
     setUploadNote(`Preparing photo${counter}…`);
     const blob = await shrinkImage(file, MAX_DIM, mode === 'photo');
@@ -746,7 +849,7 @@
   }
 
   $('addPhoto').addEventListener('click', () => {
-    if (!localStorage.getItem(TOKEN_KEY)) { showSetup(true); return; }
+    if (!getToken()) { showSetup(true); return; }
     $('file').click();
   });
 
@@ -819,7 +922,7 @@
   }
 
   $('send').addEventListener('click', async () => {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = getToken();
     if (!token) { showSetup(true); return; }
     if (pendingUploads > 0) {
       setStatus('Wait for the photo upload to finish…', 'err');
@@ -984,7 +1087,7 @@
   }
 
   $('shelfSend').addEventListener('click', async () => {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = getToken();
     if (!token) { showSetup(true); return; }
     const title = $('shelfTitle').value.trim();
     if (!title) {
@@ -1110,7 +1213,7 @@
   }
 
   async function handleQueueAction(item, action, btn, otherBtn) {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = getToken();
     if (!token) { showSetup(true); return; }
     btn.disabled = true;
     otherBtn.disabled = true;
@@ -1147,13 +1250,13 @@
   }
 
   function tilAuthOrSetup() {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = getToken();
     if (!token) showSetup(true);
     return token;
   }
 
   async function tilApi(url, opts = {}) {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = getToken();
     const res = await fetch(url, {
       ...opts,
       headers: { Authorization: `Bearer ${token}`, ...(opts.headers || {}) },
@@ -1271,7 +1374,9 @@
 
   // --- init ----------------------------------------------------------------
   restoreDraft();
-  if (!localStorage.getItem(TOKEN_KEY)) showSetup(true);
+  session.adoptLegacyToken();
+  renderSession();
+  if (!getToken()) showSetup(true);
 })();
 </script>
 </body>

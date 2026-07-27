@@ -3,7 +3,20 @@ import type { LearnDataset } from './types';
 import type { PracticeDeck } from '../../data/practice-registry';
 import { loadPeopleDeck } from './peopleDeckStore';
 import { PromptQuestion } from './ItemDetails';
-import { SYNC_LAST_KEY, SYNC_TOKEN_KEY } from './sync';
+import { loadSyncToken, SYNC_LAST_KEY } from './sync';
+import { SignInPanel, useSession } from '../auth/SignIn';
+import {
+	applyAuthoredPrompts,
+	AUTHORED_CACHE_KEY,
+	emptyAuthoredStore,
+	introducedItemIdsFor,
+	loadAuthoredCache,
+	loadAuthoredForSession,
+	mergeAuthored,
+	pullAuthored,
+	saveAuthoredCache,
+	type AuthoredStore,
+} from './authoredPrompts';
 import {
 	addDays,
 	buildPromptsById,
@@ -43,6 +56,11 @@ import {
 // to functions/api/practice-state.js (a Workers KV blob). Pulls merge into
 // local state on load/focus/manual sync; pushes happen at session end and
 // debounced mid-session. Sync failures degrade silently to local-only.
+//
+// One token per device covers everything: the same PAT authenticates the
+// state blob and the authored-prompt commits, and if /write is already set
+// up in this browser its token is picked up automatically (see sync.ts) —
+// there's nothing to paste twice.
 
 const PUSH_DEBOUNCE_MS = 4000;
 
@@ -99,9 +117,15 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 	const [requeued, setRequeued] = useState<Set<string>>(new Set());
 	const [starting, setStarting] = useState(false);
 	const [startError, setStartError] = useState<string | null>(null);
+	// Prompts written since the last deploy (see authoredPrompts.ts): the
+	// datasets fetched below carry whatever the build baked in, and this
+	// overlays anything newer this device knows about.
+	const [authored, setAuthored] = useState<AuthoredStore>(emptyAuthoredStore);
 
-	const [syncToken, setSyncToken] = useState<string | null>(null);
-	const [tokenInput, setTokenInput] = useState('');
+	// Sync follows the site's sign-in: signed in means on. Signing in from the
+	// panel below re-renders this through the session subscription, which is
+	// what kicks off the first pull.
+	const { token: syncToken } = useSession();
 	const [lastSyncedAt, setLastSyncedAt] = useState<string | null>(null);
 	const [syncStatus, setSyncStatus] = useState<SyncStatus>('idle');
 	const pushTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -126,14 +150,27 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 			},
 		);
 
+		// Cache first so the first render has something, then the full load —
+		// repo pull plus the one-time migration of pre-authoring prompts. Without
+		// the migration here, a device that only ever opens /practice would find
+		// its pre-existing cards resolving to no prompt at all.
+		setAuthored(loadAuthoredCache());
+		loadAuthoredForSession({
+			introducedItemIds: introducedItemIdsFor(registry, perDeck),
+			token: loadSyncToken(),
+		})
+			.then(setAuthored)
+			.catch(() => {
+				// Cache plus the build's copy still apply.
+			});
+
 		const seedStreak = Math.max(0, ...registry.map((d) => perDeck[d.id]?.streak ?? 0));
 		setMeta(loadPracticeMeta(seedStreak));
 		setToday(localToday());
 		setLastSyncedAt(window.localStorage.getItem(SYNC_LAST_KEY));
-		setSyncToken(window.localStorage.getItem(SYNC_TOKEN_KEY));
 		const onFocus = () => {
 			setToday(localToday());
-			const token = window.localStorage.getItem(SYNC_TOKEN_KEY);
+			const token = loadSyncToken();
 			if (token) pullAndMerge(token);
 		};
 		window.addEventListener('focus', onFocus);
@@ -181,6 +218,23 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 					});
 				}
 			}
+			// Authored prompts ride the same token and the same moments as the
+			// state blob, but a different store (the repo, not KV) — a concept
+			// introduced on the phone this morning is useless here without the
+			// questions that were written for it.
+			try {
+				const remote = await pullAuthored(token);
+				if (remote) {
+					setAuthored((prev) => {
+						const merged = mergeAuthored(prev, remote);
+						saveAuthoredCache(merged);
+						return merged;
+					});
+				}
+			} catch {
+				// Degrade to the cache plus whatever the build shipped.
+			}
+
 			const now = new Date().toISOString();
 			window.localStorage.setItem(SYNC_LAST_KEY, now);
 			setLastSyncedAt(now);
@@ -223,20 +277,6 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		pushTimer.current = setTimeout(() => pushState(token, currentMeta), PUSH_DEBOUNCE_MS);
 	}
 
-	function connectSync() {
-		const token = tokenInput.trim();
-		if (!token) return;
-		window.localStorage.setItem(SYNC_TOKEN_KEY, token);
-		setTokenInput('');
-		setSyncToken(token);
-	}
-
-	function disconnectSync() {
-		window.localStorage.removeItem(SYNC_TOKEN_KEY);
-		setSyncToken(null);
-		setSyncStatus('idle');
-	}
-
 	const disabledDecks = useMemo(() => new Set(meta?.disabledDecks ?? []), [meta]);
 
 	const countsByDeck = useMemo(() => {
@@ -272,7 +312,7 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 						const res = await fetch(deck.source.href);
 						if (!res.ok) return null;
 						const dataset: LearnDataset = await res.json();
-						return { deck, dataset };
+						return { deck, dataset: applyAuthoredPrompts(dataset, authored) };
 					}
 					// Local decks (e.g. people) are already loaded from IndexedDB on
 					// mount — nothing to fetch, and nothing if this device has no
@@ -399,6 +439,10 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 			if (raw) blob[deck.storageKey] = JSON.parse(raw);
 		}
 		if (meta) blob['practice-meta'] = meta;
+		// Authored prompts live in the repo, but include this device's cache
+		// too: a prompt written minutes ago may not have been committed yet,
+		// and a backup that silently omits it isn't a backup.
+		blob[AUTHORED_CACHE_KEY] = loadAuthoredCache();
 		const json = JSON.stringify(blob, null, 2);
 		const url = URL.createObjectURL(new Blob([json], { type: 'application/json' }));
 		const a = document.createElement('a');
@@ -634,24 +678,14 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 							<button type="button" className="lq-button" onClick={() => pullAndMerge(syncToken)}>
 								Sync now
 							</button>
-							<button type="button" className="lq-button" onClick={disconnectSync}>
-								Disconnect this device
-							</button>
 						</div>
+						<SignInPanel compact />
 					</>
 				) : (
-					<div className="lq-io-row">
-						<input
-							type="password"
-							className="lq-sync__input"
-							placeholder="Fine-grained GitHub PAT (Contents: read/write)"
-							value={tokenInput}
-							onChange={(e) => setTokenInput(e.target.value)}
-						/>
-						<button type="button" className="lq-button" onClick={connectSync} disabled={!tokenInput.trim()}>
-							Connect this device
-						</button>
-					</div>
+					<SignInPanel
+						compact
+						lead="Sign in to sync review state across your devices and to save the prompts you write. Everything on this page works without it — it just stays on this device."
+					/>
 				)}
 			</div>
 		</div>

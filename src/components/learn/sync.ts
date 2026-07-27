@@ -1,16 +1,21 @@
 // Thin client for the opt-in cross-device sync blob (functions/api/practice-state.js).
-// Shared by PracticeSession (which layers status UI and debouncing on top)
-// and the learn-side intro flows (which just need pull-merge on load and a
-// fire-and-forget push after an introduction/skip).
+// Used by PracticeSession (which layers status UI and debouncing on top) and
+// the learn-side intro flows (pull-merge on load, fire-and-forget push after
+// an introduction/skip).
+//
+// The token is no longer this module's business: every write-capable surface
+// on the site shares one sign-in (public/auth/session.js, surfaced by
+// src/components/auth/SignIn.tsx), and `loadSyncToken` is now just a named
+// read of it. Signed in means sync is on; there's no separate connect step
+// and no second token to paste.
 
+import { getToken } from '../auth/session';
 import type { PracticeMeta } from './engine';
 
-export const SYNC_TOKEN_KEY = 'practice-sync-token';
 export const SYNC_LAST_KEY = 'practice-sync-last';
 
 export function loadSyncToken(): string | null {
-	if (typeof window === 'undefined') return null;
-	return window.localStorage.getItem(SYNC_TOKEN_KEY);
+	return getToken();
 }
 
 export async function pullBlob(token: string): Promise<Record<string, unknown> | null> {

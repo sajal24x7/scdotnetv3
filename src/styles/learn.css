@@ -823,6 +823,15 @@
 	color: rgb(var(--color-text-secondary));
 }
 
+/* Shown when sync is running on the token /write already stored on this
+   device — the shared-credential case is worth spelling out, since
+   "Disconnect" there could otherwise read as logging /write out too. */
+.lq-sync__note {
+	margin: 0.35rem 0 0;
+	font-size: var(--text-xs);
+	color: rgb(var(--color-text-secondary));
+}
+
 .lq-sync__input {
 	flex-grow: 1;
 	min-width: 0;
@@ -904,4 +913,134 @@
 	border-bottom-color: transparent;
 	background: rgba(var(--color-accent), 0.1);
 	border-radius: 4px;
+}
+
+/* --- Prompt composer (src/components/learn/PromptComposer.tsx) ---
+   Shown inside the intro card for authored-prompt decks, where writing the
+   questions is part of taking a concept on. Styled as a quiet form rather
+   than a prominent one: the reference card above it is what's being read,
+   and this is the response to it. */
+
+.lq-composer {
+	margin-top: 1.5rem;
+	padding-top: 1.25rem;
+	border-top: 1.5px solid rgb(var(--color-border));
+}
+
+.lq-composer__lead {
+	margin: 0 0 1rem;
+	font-size: var(--text-small);
+	color: rgb(var(--color-text-secondary));
+}
+
+.lq-composer__row {
+	margin-bottom: 1rem;
+	padding: 0.9rem 1rem;
+	border: 1.5px solid rgb(var(--color-border));
+	border-radius: 6px;
+	background: rgb(var(--color-bg));
+}
+
+.lq-composer__row-head {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin-bottom: 0.6rem;
+}
+
+.lq-composer__index {
+	font-size: var(--text-small);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: rgb(var(--color-text-secondary));
+}
+
+.lq-composer__cloze-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	font-size: var(--text-small);
+	color: rgb(var(--color-text-secondary));
+	cursor: pointer;
+}
+
+.lq-composer__remove {
+	margin-left: auto;
+	padding: 0;
+	border: 0;
+	background: none;
+	font: inherit;
+	font-size: var(--text-small);
+	color: rgb(var(--color-text-secondary));
+	text-decoration: underline;
+	cursor: pointer;
+}
+.lq-composer__remove:hover {
+	color: rgb(var(--color-accent));
+}
+
+.lq-composer__field {
+	display: block;
+	margin-bottom: 0.6rem;
+}
+
+.lq-composer__field > span {
+	display: block;
+	margin-bottom: 0.25rem;
+	font-size: var(--text-small);
+	color: rgb(var(--color-text-secondary));
+}
+
+.lq-composer__field textarea,
+.lq-composer__field input[type='text'] {
+	width: 100%;
+	padding: 0.5rem 0.65rem;
+	border: 1.5px solid rgb(var(--color-border));
+	border-radius: 4px;
+	background: rgb(var(--color-bg-secondary));
+	color: rgb(var(--color-text-primary));
+	font: inherit;
+	font-size: var(--text-small);
+	resize: vertical;
+}
+
+.lq-composer__field textarea:focus,
+.lq-composer__field input[type='text']:focus {
+	outline: none;
+	border-color: rgb(var(--color-accent));
+}
+
+.lq-composer__derived {
+	margin: 0 0 0.6rem;
+	font-size: var(--text-small);
+	color: rgb(var(--color-text-secondary));
+}
+.lq-composer__derived code {
+	color: rgb(var(--color-text-primary));
+}
+
+.lq-composer__issue {
+	margin: 0.35rem 0 0;
+	font-size: var(--text-small);
+	color: #c62828;
+}
+.dark .lq-composer__issue {
+	color: #ef5350;
+}
+
+.lq-composer__issue--blocker {
+	margin: 0.75rem 0 0;
+	font-weight: 600;
+}
+
+.lq-composer__add {
+	margin-top: 0.25rem;
+}
+
+/* A notice above the intro flow (currently the signed-out warning on
+   /learn/new) — same frame as a panel, but quieter and not the main event. */
+.lq-panel--notice {
+	margin-bottom: 1rem;
+	background: rgba(var(--color-accent), 0.06);
 }

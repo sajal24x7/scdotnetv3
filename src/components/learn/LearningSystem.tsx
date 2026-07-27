@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import type { Category, LearnItem, LearnSystemConfig } from './types';
+import React, { useEffect, useMemo, useState } from 'react';
+import { promptsOf, type Category, type LearnItem, type LearnSystemConfig, type Prompt } from './types';
 import { ItemDetails, PromptQuestion } from './ItemDetails';
 import { IntroFlow, type IntroCard } from './IntroFlow';
 import {
@@ -17,6 +17,13 @@ import {
 	type SrsState,
 } from './engine';
 import { loadSyncToken, pushBlobFromLocalStorage } from './sync';
+import {
+	applyAuthoredPrompts,
+	emptyAuthoredStore,
+	loadAuthoredCache,
+	recordAuthored,
+	type AuthoredStore,
+} from './authoredPrompts';
 
 // UI for the per-domain wall chart + reference panel + no-op drills + the
 // deck's own "new today" intro flow. Scheduling and persistence live in
@@ -30,7 +37,12 @@ import { loadSyncToken, pushBlobFromLocalStorage } from './sync';
 type Screen = 'chart' | 'drill' | 'intro';
 
 export default function LearningSystem({ config }: { config: LearnSystemConfig }) {
-	const { storageKey, legacyKey, itemNoun, monoAnswers, newPerDay, dueCap, dataset } = config;
+	const { storageKey, legacyKey, itemNoun, monoAnswers, newPerDay, dueCap, authorPrompts } = config;
+	// Prompts authored since the last build aren't in the config's dataset
+	// yet — overlay this device's cache on top of what the build shipped, so
+	// the wall chart's tile colours and the drills both see them.
+	const [authored, setAuthored] = useState<AuthoredStore>(emptyAuthoredStore);
+	const dataset = useMemo(() => applyAuthoredPrompts(config.dataset, authored), [config.dataset, authored]);
 	const { categories } = dataset;
 
 	function categoryOf(itemId: string): Category | undefined {
@@ -51,11 +63,13 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 	// happens at introduction time, but the wall chart is where you'd notice
 	// a word muted out and decide to bring it back.
 	const [suspended, setSuspended] = useState<Set<string>>(new Set());
+	const [saveError, setSaveError] = useState<string | null>(null);
 
 	// Load persisted state after hydration, and re-check the date when the tab
 	// regains focus (page left open overnight).
 	useEffect(() => {
 		setState(loadState(storageKey, legacyKey));
+		setAuthored(loadAuthoredCache());
 		setSuspended(new Set(loadPracticeMeta(0).suspended));
 		setToday(localToday());
 		const onFocus = () => setToday(localToday());
@@ -99,13 +113,28 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 		suspended,
 	);
 
-	function handleLearn(card: IntroCard) {
+	function handleLearn(card: IntroCard, prompts: Prompt[]) {
+		// On an authored-prompt deck the prompts the learner just wrote are
+		// what introduceItem schedules — see NewToday.handleLearn, same rule.
+		const item = authorPrompts ? { ...card.item, prompts } : card.item;
 		setState((prev) => {
-			const next = introduceItem(prev, card.item, today);
+			const next = introduceItem(prev, item, today);
 			saveState(storageKey, next);
 			return next;
 		});
 		pushSync(loadPracticeMeta(0));
+
+		if (authorPrompts) {
+			setSaveError(null);
+			recordAuthored(card.item.id, prompts, loadSyncToken()).then((result) => {
+				setAuthored(result.store);
+				setSaveError(
+					result.committed
+						? null
+						: `Saved on this device, but not to the repo — ${result.error ?? 'unknown error'}`,
+				);
+			});
+		}
 	}
 
 	function handleSkip(card: IntroCard) {
@@ -120,7 +149,7 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 
 	function startDrill(category: Category) {
 		const items: SessionItem[] = category.items.flatMap((item) =>
-			item.prompts.map((prompt) => ({ kind: 'prompt' as const, item, prompt })),
+			promptsOf(item).map((prompt) => ({ kind: 'prompt' as const, item, prompt })),
 		);
 		setSession(items);
 		setIndex(0);
@@ -141,7 +170,8 @@ export default function LearningSystem({ config }: { config: LearnSystemConfig }
 	if (screen === 'intro') {
 		return (
 			<IntroFlow
-				cards={newToday.map((item) => ({ deckId: 'self', item, itemNoun }))}
+				cards={newToday.map((item) => ({ deckId: 'self', item, itemNoun, authorPrompts }))}
+				saveError={saveError}
 				onLearn={handleLearn}
 				onSkip={handleSkip}
 				onQuit={() => setScreen('chart')}

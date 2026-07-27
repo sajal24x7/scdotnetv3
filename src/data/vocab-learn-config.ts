@@ -9,6 +9,7 @@
 
 import words from './vocab.generated.json';
 import { buildDataset, type RawWord } from './vocab-dataset';
+import { withAuthored } from './authored-prompts';
 import type { LearnSystemConfig } from '../components/learn/types';
 
 export const vocabLearnConfig: LearnSystemConfig = {
@@ -17,5 +18,6 @@ export const vocabLearnConfig: LearnSystemConfig = {
 	dueCap: 6,
 	itemNoun: 'word',
 	monoAnswers: false,
-	dataset: buildDataset((words as { words: Record<string, RawWord> }).words),
+	authorPrompts: true,
+	dataset: withAuthored(buildDataset((words as { words: Record<string, RawWord> }).words)),
 };

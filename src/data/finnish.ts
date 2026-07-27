@@ -1,18 +1,22 @@
 // Content pool for the /learn/finnish practice page.
 //
 // Structure follows docs/architecture/learning-systems.md and
-// planning/finnish-learning-system.md: each item is a small reference card
-// plus 2+ atomic retrieval prompts. Prompts are the unit of scheduling (the
-// FSRS engine in src/components/learn/engine.ts tracks its own card per
-// prompt); items are the unit of introduction and of the wall chart.
+// planning/finnish-learning-system.md: each item is a small reference card.
+// Items are the unit of introduction and of the wall chart.
+//
+// Prompts are NOT authored here. Finnish is an authored-prompt deck: the
+// prompts that test an item are written by hand when it's introduced on
+// /learn/new and stored in src/data/authored-prompts.json. See
+// docs/architecture/learning-systems.md § "Authored prompts".
 //
 // RULE FOR EDITORS: never invent Finnish. Every Finnish string below is
 // copied verbatim from the tables in planning/finnish-learning-system.md §2
 // (item inventory in §2.1–2.8, inflection bank in §2.9, conjugation bank in
-// §2.10). If a prompt needs a Finnish form that isn't in that document,
-// don't derive or guess it — leave it out. Finnish morphology has traps
-// (vowel harmony, gradation direction, e-stems) that produce plausible-
-// looking wrong answers.
+// §2.10). If a reference card needs a Finnish form that isn't in that
+// document, don't derive or guess it — leave it out. Finnish morphology has
+// traps (vowel harmony, gradation direction, e-stems) that produce
+// plausible-looking wrong answers. The same rule binds the prompts you write
+// in the composer: it can't check your Finnish for you.
 
 import type { Category } from '../components/learn/types';
 
@@ -36,20 +40,6 @@ export const categories: Category[] = [
 					{ code: 'talo', note: "Read exactly as written: /t/ /a/ /l/ /o/ — no hidden rules to learn." },
 					{ code: 'Helsinki', note: 'Even a well-known proper noun follows the same one-letter-one-sound rule.' },
 				],
-				prompts: [
-					{
-						id: 'a-phonemic-1',
-						q: 'How many ways can a Finnish letter be pronounced?',
-						a: 'one',
-						note: 'Fully phonemic: every letter is always pronounced, always the same way — never silent, never context-dependent.',
-					},
-					{
-						id: 'a-phonemic-2',
-						q: 'What is the technical term for a spelling system where one letter always equals one sound?',
-						a: 'phonemic',
-						note: 'Finnish spelling is fully phonemic — if you can spell it, you can say it: kioski.',
-					},
-				],
 			},
 			{
 				id: 'a-stress',
@@ -63,20 +53,6 @@ export const categories: Category[] = [
 					{ code: 'KA-le-va-la', note: "Four syllables, still stressed on the first — the national epic's name." },
 					{ code: 'O-pis-kel-la', note: "'To study' — even a long, common verb keeps the stress up front." },
 				],
-				prompts: [
-					{
-						id: 'a-stress-1',
-						q: 'Which syllable of a Finnish word carries the stress?',
-						a: 'the first',
-						note: 'Every word, no exceptions — even long loanwords.',
-					},
-					{
-						id: 'a-stress-2',
-						q: 'Mark the stress: Kalevala → ?',
-						a: 'KA-le-va-la',
-						note: 'First syllable, always.',
-					},
-				],
 			},
 			{
 				id: 'a-length',
@@ -89,20 +65,6 @@ export const categories: Category[] = [
 					{ code: 'tuli', note: 'fire — short u, short l.' },
 					{ code: 'tuuli', note: 'wind — long uu, same short l.' },
 					{ code: 'tulli', note: 'customs — short u, long ll. Same four letters as tuli, different meaning entirely.' },
-				],
-				prompts: [
-					{
-						id: 'a-length-1',
-						q: 'How long is a doubled letter held, compared to a single one?',
-						a: 'twice as long',
-						note: 'And length changes meaning: tuli (fire) vs tuuli (wind) vs tulli (customs).',
-					},
-					{
-						id: 'a-length-2',
-						q: 'tuli, tuuli, tulli — three different words. What single feature distinguishes them?',
-						a: 'sound length',
-						note: 'fire · wind · customs — short vs doubled (long) letters.',
-					},
 				],
 			},
 			{
@@ -118,20 +80,6 @@ export const categories: Category[] = [
 					{ code: 'ö', note: 'Like the vowel in English "bird" (no r-sound) or French "peu".' },
 					{ code: 'y', note: 'Like German ü, or French u — round your lips as if for "oo" but say "ee".' },
 				],
-				prompts: [
-					{
-						id: 'a-vowels-1',
-						q: "Which three letters are Finnish's front vowels?",
-						a: 'ä ö y',
-						note: 'They are independent letters, not accented a/o/u.',
-					},
-					{
-						id: 'a-vowels-2',
-						q: 'Which three letters are the back vowels?',
-						a: 'a o u',
-						note: 'e and i are neutral — they pair with either set.',
-					},
-				],
 			},
 			{
 				id: 'a-harmony',
@@ -145,21 +93,6 @@ export const categories: Category[] = [
 					{ code: 'talossa', note: '"in the house" — talo has back vowels (a, o), so the suffix takes its back form -ssa.' },
 					{ code: 'metsässä', note: '"in the forest" — metsä has front vowels (e, ä), so the suffix takes its front form -ssä.' },
 					{ code: 'kaupassa', note: '"in the shop" — kauppa is back-voweled, so -ssa again (and pp weakens to p — see gradation).' },
-				],
-				prompts: [
-					{
-						id: 'a-harmony-1',
-						q: "Which rule says a native word's vowels must be all back or all front, never mixed?",
-						a: 'vowel harmony',
-						note: 'e/i are neutral and go with either set: talossa (back) vs metsässä (front).',
-					},
-					{
-						id: 'a-harmony-2',
-						kind: 'cloze',
-						q: 'metsä + “in the forest” = metsä{{ssä}}',
-						a: 'ssä',
-						note: 'Front-vowel word (ä) takes the front form -ssä; back-vowel talo takes -ssa: talossa.',
-					},
 				],
 			},
 			{
@@ -175,22 +108,6 @@ export const categories: Category[] = [
 					{ code: 'Syötkö?', note: '"Do you eat?" — syödä has ö (front), so the question particle is -kö.' },
 					{ code: 'kadulla / pöydällä', note: '"on the street" (back, from katu) vs "on the table" (front, from pöytä) — the same adessive ending, two harmonized shapes.' },
 				],
-				prompts: [
-					{
-						id: 'a-suffix-pairs-1',
-						kind: 'cloze',
-						q: 'Harmony pairs: -ssa/-ssä, -lla/{{-llä}}, -ko/{{-kö}}, -vat/{{-vät}}',
-						a: '-llä · -kö · -vät',
-						note: "Every suffix that isn't neutral comes in a matched back/front pair.",
-					},
-					{
-						id: 'a-suffix-pairs-2',
-						kind: 'cloze',
-						q: '“Do you eat?” = Syöt{{kö}}?',
-						a: 'kö',
-						note: 'syödä has front vowels (ö), so the question particle takes its front form -kö — compare Puhutko? (back).',
-					},
-				],
 			},
 			{
 				id: 'a-diphthongs',
@@ -203,20 +120,6 @@ export const categories: Category[] = [
 					{ code: 'suo', note: 'swamp — glide from "u" into "o" in one syllable.' },
 					{ code: 'tie', note: 'road — glide from "i" into "e".' },
 					{ code: 'yö', note: 'night — glide from "y" into "ö", both front vowels.' },
-				],
-				prompts: [
-					{
-						id: 'a-diphthongs-1',
-						q: 'How many syllables does a diphthong like uo occupy?',
-						a: 'one',
-						note: 'Both vowels glide together in a single syllable, pronounced exactly as written: suo (swamp), tie (road), yö (night).',
-					},
-					{
-						id: 'a-diphthongs-2',
-						q: 'What does tie mean?',
-						a: 'road',
-						note: 'diphthong ie',
-					},
 				],
 			},
 		],
@@ -240,26 +143,6 @@ export const categories: Category[] = [
 					{ code: 'kauppa → kauppaa', note: 'Partitive -a keeps the strong grade — pp stays pp.' },
 					{ code: 'kauppa → kauppaan', note: 'Illative also keeps the strong grade — same pp.' },
 				],
-				prompts: [
-					{
-						id: 'b-principle-1',
-						q: 'In consonant gradation, what are the two grades a stem alternates between?',
-						a: 'strong and weak',
-						note: 'Called KPT because it hits the stops k, p, t; the basic form is strong, most endings trigger the weak grade.',
-					},
-					{
-						id: 'b-principle-2',
-						q: "Which grade appears when an ending closes the syllable (like genitive -n)?",
-						a: 'weak',
-						note: 'kauppa → kaupan',
-					},
-					{
-						id: 'b-principle-3',
-						q: 'Which two endings keep the strong grade instead of weakening it?',
-						a: 'partitive and illative',
-						note: "Partitive -a/-ä and the illative don't close the preceding syllable the same way.",
-					},
-				],
 			},
 			{
 				id: 'b-kk',
@@ -271,21 +154,6 @@ export const categories: Category[] = [
 				examples: [
 					{ code: 'kukka → kukan', note: 'flower — genitive weakens kk to k.' },
 					{ code: 'kukka → kukkaa', note: 'flower — partitive keeps the strong grade, kk stays kk.' },
-				],
-				prompts: [
-					{
-						id: 'b-kk-1',
-						q: 'kk weakens to what in the weak grade?',
-						a: 'k',
-						note: 'kukka → kukan (flower)',
-					},
-					{
-						id: 'b-kk-2',
-						kind: 'cloze',
-						q: 'kukka + -n (genitive) = ku{{ka}}n',
-						a: 'ka',
-						note: 'kk → k in the weak grade (flower).',
-					},
 				],
 			},
 			{
@@ -299,21 +167,6 @@ export const categories: Category[] = [
 					{ code: 'kauppa → kaupan', note: 'shop — genitive weakens pp to p.' },
 					{ code: 'kauppa → kauppaa', note: 'shop — partitive keeps the strong grade, pp stays pp.' },
 				],
-				prompts: [
-					{
-						id: 'b-pp-1',
-						q: 'pp weakens to what in the weak grade?',
-						a: 'p',
-						note: 'kauppa → kaupan (shop)',
-					},
-					{
-						id: 'b-pp-2',
-						kind: 'cloze',
-						q: 'kauppa + -n (genitive) = kau{{pa}}n',
-						a: 'pa',
-						note: 'pp → p — the canonical KPT example (shop).',
-					},
-				],
 			},
 			{
 				id: 'b-tt',
@@ -325,21 +178,6 @@ export const categories: Category[] = [
 				examples: [
 					{ code: 'tyttö → tytön', note: 'girl — genitive weakens tt to t.' },
 					{ code: 'tyttö → tyttöä', note: 'girl — partitive keeps the strong grade, tt stays tt.' },
-				],
-				prompts: [
-					{
-						id: 'b-tt-1',
-						q: 'tt weakens to what in the weak grade?',
-						a: 't',
-						note: 'tyttö → tytön (girl)',
-					},
-					{
-						id: 'b-tt-2',
-						kind: 'cloze',
-						q: 'tyttö + -n (genitive) = ty{{tö}}n',
-						a: 'tö',
-						note: 'tt → t in the weak grade (girl).',
-					},
 				],
 			},
 			{
@@ -354,34 +192,6 @@ export const categories: Category[] = [
 					{ code: 'puku → puvun', note: 'suit — k becomes v after u.' },
 					{ code: 'jalka → jalkaa', note: 'foot — partitive keeps the strong grade, k stays.' },
 				],
-				prompts: [
-					{
-						id: 'b-k-1',
-						q: 'In the weak grade, what usually happens to a single k?',
-						a: 'it disappears',
-						note: 'jalka → jalan (foot). After u/y it turns into v instead: puku → puvun.',
-					},
-					{
-						id: 'b-k-2',
-						kind: 'cloze',
-						q: 'jalka + -n (genitive) = ja{{la}}n',
-						a: 'la',
-						note: 'k drops out entirely (foot).',
-					},
-					{
-						id: 'b-k-3',
-						kind: 'cloze',
-						q: 'puku + -n (genitive) = pu{{vu}}n',
-						a: 'vu',
-						note: 'k → v after u (suit).',
-					},
-					{
-						id: 'b-k-4',
-						q: 'After u or y, a weakening k becomes which consonant?',
-						a: 'v',
-						note: 'puku → puvun (suit); elsewhere it just disappears (jalka → jalan).',
-					},
-				],
 			},
 			{
 				id: 'b-p',
@@ -393,21 +203,6 @@ export const categories: Category[] = [
 				examples: [
 					{ code: 'leipä → leivän', note: 'bread — genitive weakens p to v.' },
 					{ code: 'leipä → leipää', note: 'bread — partitive keeps the strong grade, p stays p.' },
-				],
-				prompts: [
-					{
-						id: 'b-p-1',
-						q: 'p weakens to what?',
-						a: 'v',
-						note: 'leipä → leivän (bread)',
-					},
-					{
-						id: 'b-p-2',
-						kind: 'cloze',
-						q: 'leipä + -n (genitive) = lei{{vä}}n',
-						a: 'vä',
-						note: 'p → v (bread); front harmony (ä) keeps the ending -än.',
-					},
 				],
 			},
 			{
@@ -422,28 +217,6 @@ export const categories: Category[] = [
 					{ code: 'pöytä → pöydän', note: 'table — same shift, front harmony (ä) unaffected.' },
 					{ code: 'katu → katua', note: 'street — partitive keeps the strong grade, t stays t.' },
 				],
-				prompts: [
-					{
-						id: 'b-t-1',
-						q: 't weakens to what?',
-						a: 'd',
-						note: 'katu → kadun (street); pöytä → pöydän (table)',
-					},
-					{
-						id: 'b-t-2',
-						kind: 'cloze',
-						q: 'katu + -n (genitive) = ka{{du}}n',
-						a: 'du',
-						note: 't → d in the weak grade (street).',
-					},
-					{
-						id: 'b-t-3',
-						kind: 'cloze',
-						q: 'pöytä + -n (genitive) = pöy{{dä}}n',
-						a: 'dä',
-						note: 't → d (table); front harmony (ä).',
-					},
-				],
 			},
 			{
 				id: 'b-nk',
@@ -456,28 +229,6 @@ export const categories: Category[] = [
 					{ code: 'Helsinki → Helsingin', note: 'genitive weakens nk to ng.' },
 					{ code: 'kenkä → kengän', note: 'shoe — same shift, front harmony (ä) unaffected.' },
 					{ code: 'Helsinki → Helsinkiä', note: 'partitive keeps the strong grade, nk stays nk.' },
-				],
-				prompts: [
-					{
-						id: 'b-nk-1',
-						q: 'nk weakens to what?',
-						a: 'ng',
-						note: 'Helsinki → Helsingin; kenkä → kengän (shoe)',
-					},
-					{
-						id: 'b-nk-2',
-						kind: 'cloze',
-						q: 'Helsinki + -n (genitive) = Helsi{{ngi}}n',
-						a: 'ngi',
-						note: 'nk → ng in the weak grade.',
-					},
-					{
-						id: 'b-nk-3',
-						kind: 'cloze',
-						q: 'kenkä + -n (genitive) = ke{{ngä}}n',
-						a: 'ngä',
-						note: 'nk → ng (shoe); front harmony (ä).',
-					},
 				],
 			},
 			{
@@ -492,34 +243,6 @@ export const categories: Category[] = [
 					{ code: 'ranta → rannan', note: 'shore — nt assimilates to nn.' },
 					{ code: 'ilta → illan', note: 'evening — lt assimilates to ll.' },
 					{ code: 'kampa → kamman', note: 'comb — mp assimilates to mm.' },
-				],
-				prompts: [
-					{
-						id: 'b-assim-1',
-						q: 'What does nt weaken to?',
-						a: 'nn',
-						note: 'ranta → rannan (shore)',
-					},
-					{
-						id: 'b-assim-2',
-						q: 'What does lt weaken to?',
-						a: 'll',
-						note: 'ilta → illan (evening)',
-					},
-					{
-						id: 'b-assim-3',
-						kind: 'cloze',
-						q: 'parta + -n (genitive) = pa{{rra}}n',
-						a: 'rra',
-						note: 'rt → rr (beard).',
-					},
-					{
-						id: 'b-assim-4',
-						kind: 'cloze',
-						q: 'kampa + -n (genitive) = ka{{mma}}n',
-						a: 'mma',
-						note: 'mp → mm (comb).',
-					},
 				],
 			},
 		],
@@ -543,26 +266,6 @@ export const categories: Category[] = [
 					{ code: 'pöydällä · pöydältä · pöydälle', note: 'on / off / onto the table — the l-cases (surface).' },
 					{ code: 'kadulla', note: 'on the street — l-case, since a street is a surface, not an interior.' },
 				],
-				prompts: [
-					{
-						id: 'c-grid-1',
-						q: 'The s-cases (-ssa/-sta/-Vn) translate which three English prepositions?',
-						a: 'in, out of, into',
-						note: 'Interior cases: talossa · talosta · taloon.',
-					},
-					{
-						id: 'c-grid-2',
-						q: 'The l-cases (-lla/-lta/-lle) translate which three English prepositions?',
-						a: 'on, off, onto',
-						note: 'Exterior (surface) cases: pöydällä · pöydältä · pöydälle.',
-					},
-					{
-						id: 'c-grid-3',
-						q: "talossa vs pöydällä — which one means 'on'?",
-						a: 'pöydällä',
-						note: 'l-cases = surface (on the table); s-cases = interior (talossa — in the house).',
-					},
-				],
 			},
 			{
 				id: 'c-ine',
@@ -576,26 +279,6 @@ export const categories: Category[] = [
 					{ code: 'Helsingissä', note: 'in Helsinki — nk weakens to ng (gradation) before the ending.' },
 					{ code: 'kirjassa', note: 'in the book — back harmony, no gradation to worry about.' },
 				],
-				prompts: [
-					{
-						id: 'c-ine-1',
-						q: 'Which case ending means “in / inside”?',
-						a: '-ssa / -ssä',
-						note: 'Inessive. talossa — in the house; Helsingissä — in Helsinki.',
-					},
-					{
-						id: 'c-ine-2',
-						q: 'Apply it: “in the shop” (kauppa) → ?',
-						a: 'kaupassa',
-						note: 'Two rules fire at once: KPT weakens pp→p, harmony picks -ssa (back vowels).',
-					},
-					{
-						id: 'c-ine-3',
-						q: 'Apply it: “in Finland” (Suomi) → ?',
-						a: 'Suomessa',
-						note: 'i-final nouns often shift i→e in the stem: Suomi → Suome- + -ssa.',
-					},
-				],
 			},
 			{
 				id: 'c-ela',
@@ -608,26 +291,6 @@ export const categories: Category[] = [
 					{ code: 'talosta', note: 'out of the house.' },
 					{ code: 'Suomesta', note: 'from Finland — i-final stem shifts i→e before the ending.' },
 					{ code: 'kaupasta', note: 'out of the shop — pp weakens to p (KPT), same as the inessive kaupassa.' },
-				],
-				prompts: [
-					{
-						id: 'c-ela-1',
-						q: "Which case ending means 'out of / from inside'?",
-						a: '-sta / -stä',
-						note: 'Elative. talosta — out of the house; Suomesta — from Finland.',
-					},
-					{
-						id: 'c-ela-2',
-						q: "Apply it: 'from Finland' (Suomi) → ?",
-						a: 'Suomesta',
-						note: 'Same i→e stem shift as the inessive.',
-					},
-					{
-						id: 'c-ela-3',
-						q: "Apply it: 'out of the shop' (kauppa) → ?",
-						a: 'kaupasta',
-						note: 'pp→p (KPT) plus back harmony -sta.',
-					},
 				],
 			},
 			{
@@ -643,26 +306,6 @@ export const categories: Category[] = [
 					{ code: 'Helsinkiin', note: 'to Helsinki — final i lengthens, +n.' },
 					{ code: 'kauppaan', note: 'into the shop — strong grade kept (pp), unlike kaupassa/kaupasta.' },
 				],
-				prompts: [
-					{
-						id: 'c-ill-1',
-						q: "What is the commonest shape of the illative ('into')?",
-						a: 'lengthened final vowel + -n',
-						note: 'talo → taloon; Helsinki → Helsinkiin',
-					},
-					{
-						id: 'c-ill-2',
-						q: "Apply it: 'into the shop' (kauppa) → ?",
-						a: 'kauppaan',
-						note: 'Illative keeps the strong grade (pp stays pp) — unlike -ssa/-sta.',
-					},
-					{
-						id: 'c-ill-3',
-						q: "talossa vs taloon — which one means 'into'?",
-						a: 'taloon',
-						note: "Illative = motion toward the inside; inessive talossa = static 'in'.",
-					},
-				],
 			},
 			{
 				id: 'c-ade',
@@ -676,26 +319,6 @@ export const categories: Category[] = [
 					{ code: 'kadulla', note: 'on the street — t weakens to d (KPT), back harmony -lla.' },
 					{ code: 'Minulla on koira.', note: 'I have a dog — the same adessive ending used for possession.' },
 				],
-				prompts: [
-					{
-						id: 'c-ade-1',
-						q: "Which case ending means 'on / at' (and also expresses 'have')?",
-						a: '-lla / -llä',
-						note: 'Adessive. pöydällä — on the table; also Minulla on... — I have...',
-					},
-					{
-						id: 'c-ade-2',
-						q: "Apply it: 'on the street' (katu) → ?",
-						a: 'kadulla',
-						note: 't→d (KPT) plus back harmony -lla.',
-					},
-					{
-						id: 'c-ade-3',
-						q: "Apply it: 'on the table' (pöytä) → ?",
-						a: 'pöydällä',
-						note: 't→d plus front harmony -llä.',
-					},
-				],
 			},
 			{
 				id: 'c-abl',
@@ -708,20 +331,6 @@ export const categories: Category[] = [
 					{ code: 'pöydältä', note: 'off the table.' },
 					{ code: 'pöydällä → pöydältä', note: 'on the table → off the table — same stem, l-case direction flips.' },
 				],
-				prompts: [
-					{
-						id: 'c-abl-1',
-						q: "Which case ending means 'off / from a surface'?",
-						a: '-lta / -ltä',
-						note: 'Ablative. pöydältä — off the table.',
-					},
-					{
-						id: 'c-abl-2',
-						q: "Apply it: 'off the table' (pöytä) → ?",
-						a: 'pöydältä',
-						note: 't→d plus front harmony -ltä.',
-					},
-				],
 			},
 			{
 				id: 'c-all',
@@ -733,20 +342,6 @@ export const categories: Category[] = [
 				examples: [
 					{ code: 'pöydälle', note: 'onto the table.' },
 					{ code: 'pöydällä · pöydältä · pöydälle', note: 'the full surface row for one word: on / off / onto.' },
-				],
-				prompts: [
-					{
-						id: 'c-all-1',
-						q: "Which case ending means 'onto / to' (a surface or person)?",
-						a: '-lle',
-						note: "Allative — note it doesn't harmonize (always -lle). pöydälle — onto the table.",
-					},
-					{
-						id: 'c-all-2',
-						q: "Apply it: 'onto the table' (pöytä) → ?",
-						a: 'pöydälle',
-						note: 't→d (KPT); -lle is invariant.',
-					},
 				],
 			},
 		],
@@ -769,20 +364,6 @@ export const categories: Category[] = [
 					{ code: 'kauppa on iso.', note: 'The shop is big — kauppa is the subject, bare nominative.' },
 					{ code: 'kauppa', note: 'The dictionary form — strong grade (pp), no ending.' },
 				],
-				prompts: [
-					{
-						id: 'd-nom-1',
-						q: 'What grade does the nominative (dictionary) form always keep?',
-						a: 'strong',
-						note: 'kauppa on iso — the shop is big.',
-					},
-					{
-						id: 'd-nom-2',
-						q: 'Which case marks the subject of a Finnish sentence?',
-						a: 'nominative',
-						note: 'The bare form — also the form dictionaries list: kauppa on iso.',
-					},
-				],
 			},
 			{
 				id: 'd-gen',
@@ -795,20 +376,6 @@ export const categories: Category[] = [
 					{ code: "talon ovi", note: "the house's door — talo takes no gradation, just +n." },
 					{ code: "kissan nimi", note: "the cat's name — kissa has no gradation either." },
 					{ code: "kaupan ovi", note: "the shop's door — kauppa's pp weakens to p before -n." },
-				],
-				prompts: [
-					{
-						id: 'd-gen-1',
-						q: 'Which suffix forms the genitive?',
-						a: '-n',
-						note: "And the stem weakens to the weak grade: talon ovi — the house's door.",
-					},
-					{
-						id: 'd-gen-2',
-						q: "Apply it: 'the shop's' — kauppa + -n → ?",
-						a: 'kaupan',
-						note: "pp→p gradation strikes again in the genitive: kaupan ovi — the shop's door.",
-					},
 				],
 			},
 			{
@@ -824,26 +391,6 @@ export const categories: Category[] = [
 					{ code: 'taloa', note: 'partitive of talo — regular short-vowel pattern, add -a.' },
 					{ code: 'vettä', note: 'partitive of vesi — an e-stem exception: vettä, not "vesiä".' },
 				],
-				prompts: [
-					{
-						id: 'd-part-1',
-						q: 'What does the partitive express?',
-						a: 'an incomplete amount',
-						note: 'The signature Finnish case: Juon kahvia — I drink (some) coffee.',
-					},
-					{
-						id: 'd-part-2',
-						q: "Apply it: 'some water' — vesi → ?",
-						a: 'vettä',
-						note: "vesi is an e-stem: partitive is vettä, not 'vesiä'.",
-					},
-					{
-						id: 'd-part-3',
-						q: 'Which grade does the partitive keep?',
-						a: 'strong',
-						note: "Like the illative — it doesn't close the syllable the same way.",
-					},
-				],
 			},
 			{
 				id: 'd-part-num',
@@ -857,21 +404,6 @@ export const categories: Category[] = [
 					{ code: 'kaksi taloa', note: 'two houses — partitive singular, not a plural.' },
 					{ code: 'kolme kissaa', note: 'three cats — same pattern, any number 2+.' },
 				],
-				prompts: [
-					{
-						id: 'd-part-num-1',
-						q: "After the number 'kaksi' (two), what case does the noun take?",
-						a: 'partitive singular',
-						note: 'Not the plural: kaksi taloa — two houses. Applies to all numbers 2+.',
-					},
-					{
-						id: 'd-part-num-2',
-						kind: 'cloze',
-						q: '“three cats” = kolme kissa{{a}}',
-						a: 'a',
-						note: 'Numbers 2+ take the partitive singular: kissa → kissaa.',
-					},
-				],
 			},
 			{
 				id: 'd-part-neg',
@@ -883,20 +415,6 @@ export const categories: Category[] = [
 				examples: [
 					{ code: 'En juo kahvia.', note: "I don't drink coffee — negative verb, object forced to partitive." },
 					{ code: 'Juon kahvin. → En juo kahvia.', note: "I'll drink the coffee → I don't drink coffee — object case flips with negation." },
-				],
-				prompts: [
-					{
-						id: 'd-part-neg-1',
-						q: 'What case does the object take in a negative sentence?',
-						a: 'partitive',
-						note: "Juon kahvin (I'll drink the coffee) → En juo kahvia (I don't drink coffee).",
-					},
-					{
-						id: 'd-part-neg-2',
-						q: "Say: 'I don't drink coffee.'",
-						a: 'En juo kahvia.',
-						note: 'Negative verb en + bare stem juo; object kahvi → partitive kahvia.',
-					},
 				],
 			},
 		],
@@ -920,27 +438,6 @@ export const categories: Category[] = [
 					{ code: 'puhun', note: 'I speak — the -n ending alone tells you it\'s "I", no minä required.' },
 					{ code: 'puhuu', note: 'he/she speaks — 3sg lengthens the stem vowel instead of adding a consonant ending.' },
 				],
-				prompts: [
-					{
-						id: 'e-endings-1',
-						kind: 'cloze',
-						q: 'puhua: puhun, puhut, puhuu, puhu{{mme}}, puhu{{tte}}, puhu{{vat}}',
-						a: 'mme · tte · vat',
-						note: 'One set of personal endings for every verb: -n -t – -mme -tte -vat; 3sg (puhuu) lengthens the vowel instead.',
-					},
-					{
-						id: 'e-endings-2',
-						q: 'How does the 3rd person singular (hän) mark the verb, instead of adding an ending?',
-						a: 'lengthens the final vowel',
-						note: 'puhu- → puhuu',
-					},
-					{
-						id: 'e-endings-3',
-						q: 'Which part of the sentence makes the pronouns minä/sinä optional?',
-						a: 'the verb ending',
-						note: "puhun already means 'I speak' — the -n carries the person, no minä needed.",
-					},
-				],
 			},
 			{
 				id: 'e-olla',
@@ -953,26 +450,6 @@ export const categories: Category[] = [
 					{ code: 'olen, olet, on, olemme, olette, ovat', note: 'The full irregular paradigm — no shared pattern with regular verbs.' },
 					{ code: 'Olen Sajal.', note: 'I am Sajal — 1st person singular, olen.' },
 					{ code: 'Minulla on koira.', note: 'I have a dog — 3sg on, doing double duty as the possession verb.' },
-				],
-				prompts: [
-					{
-						id: 'e-olla-1',
-						q: "olla (to be) — the minä form ('I am')?",
-						a: 'olen',
-						note: 'Full irregular paradigm: olen, olet, on, olemme, olette, ovat.',
-					},
-					{
-						id: 'e-olla-2',
-						q: "Say: 'I am Sajal.'",
-						a: 'Olen Sajal.',
-						note: 'olla is irregular — memorize the full paradigm.',
-					},
-					{
-						id: 'e-olla-3',
-						q: "olla (to be) — the hän form ('he/she is')?",
-						a: 'on',
-						note: 'Hän on opettaja — he/she is a teacher.',
-					},
 				],
 			},
 			{
@@ -988,20 +465,6 @@ export const categories: Category[] = [
 					{ code: 'sanoa → sanon', note: 'to say → I say — same pattern, drop -a, add -n.' },
 					{ code: 'puhua → puhuu', note: 'to speak → he/she speaks — 3sg lengthens the stem vowel (puhu- → puhuu).' },
 				],
-				prompts: [
-					{
-						id: 'e-type1-1',
-						q: 'Type 1 verbs (like puhua) — how do you find the stem?',
-						a: 'Drop the final -a/-ä.',
-						note: 'puhua → puhu-, then add endings: puhun',
-					},
-					{
-						id: 'e-type1-2',
-						q: 'Conjugate sanoa (to say) for minä.',
-						a: 'sanon',
-						note: 'Type 1: drop -a → sano-, add -n.',
-					},
-				],
 			},
 			{
 				id: 'e-type2',
@@ -1014,20 +477,6 @@ export const categories: Category[] = [
 					{ code: 'syödä → syön', note: 'to eat → I eat — drop -dä, add -n.' },
 					{ code: 'juoda → juon', note: 'to drink → I drink — drop -da, add -n.' },
 					{ code: 'juoda → juo', note: 'to drink → he/she drinks — 3sg form, from the stem juo-.' },
-				],
-				prompts: [
-					{
-						id: 'e-type2-1',
-						q: 'Type 2 verbs (like syödä) — how do you find the stem?',
-						a: 'Drop the final -da/-dä.',
-						note: 'syödä → syö-, then add endings: syön',
-					},
-					{
-						id: 'e-type2-2',
-						q: 'Conjugate juoda (to drink) for minä.',
-						a: 'juon',
-						note: 'Type 2: drop -da → juo-, add -n.',
-					},
 				],
 			},
 			{
@@ -1043,26 +492,6 @@ export const categories: Category[] = [
 					{ code: 'mennä → menen', note: 'to go → I go — same pattern: menn- → men- → mene- → menen.' },
 					{ code: 'opiskella → opiskelen', note: 'to study → I study — same pattern on a longer stem: opiskell- → opiskele- → opiskelen.' },
 				],
-				prompts: [
-					{
-						id: 'e-type3-1',
-						q: 'Type 3 verbs (like tulla) — how do you find the stem?',
-						a: 'drop two letters, add -e-',
-						note: 'tulla → tul- → tule-, then add endings: tulen',
-					},
-					{
-						id: 'e-type3-2',
-						q: 'Conjugate mennä (to go) for minä.',
-						a: 'menen',
-						note: 'Type 3: menn- → men- + -e- → mene-, add -n.',
-					},
-					{
-						id: 'e-type3-3',
-						q: 'Conjugate opiskella (to study) for minä.',
-						a: 'opiskelen',
-						note: 'Type 3: opiskell- → opiskel- + -e- → opiskele-, add -n.',
-					},
-				],
 			},
 			{
 				id: 'e-type4',
@@ -1074,20 +503,6 @@ export const categories: Category[] = [
 				examples: [
 					{ code: 'haluta → haluan', note: 'to want → I want — drop -t-, keep -a-: halut(a) → halua- → haluan.' },
 					{ code: 'haluta → halua-', note: 'the bare stem, before any personal ending attaches.' },
-				],
-				prompts: [
-					{
-						id: 'e-type4-1',
-						q: 'Type 4 verbs (like haluta) — how do you find the stem?',
-						a: 'drop -t-, keep -a-',
-						note: 'haluta → halua-, then add endings: haluan',
-					},
-					{
-						id: 'e-type4-2',
-						q: 'Conjugate haluta (to want) for minä.',
-						a: 'haluan',
-						note: 'Type 4: haluta → halua- + -n.',
-					},
 				],
 			},
 			{
@@ -1103,26 +518,6 @@ export const categories: Category[] = [
 					{ code: 'hän syö → hän ei syö', note: 'he/she eats → he/she doesn\'t eat — ei carries 3sg, syö stays bare.' },
 					{ code: 'en, et, ei, emme, ette, eivät', note: 'The full negative-verb paradigm — conjugates just like a normal verb.' },
 				],
-				prompts: [
-					{
-						id: 'e-neg-1',
-						q: 'In a negative sentence, what form does the main verb take?',
-						a: 'bare stem',
-						note: 'The negative word itself conjugates: en/et/ei/emme/ette/eivät. puhun → en puhu.',
-					},
-					{
-						id: 'e-neg-2',
-						q: 'Negate: hän syö (he/she eats).',
-						a: 'hän ei syö',
-						note: 'ei is the 3sg negative form; syö is the bare stem.',
-					},
-					{
-						id: 'e-neg-3',
-						q: "Which negative verb form goes with minä ('I don't')?",
-						a: 'en',
-						note: 'The negative word conjugates like a verb: en, et, ei, emme, ette, eivät.',
-					},
-				],
 			},
 			{
 				id: 'e-q',
@@ -1135,20 +530,6 @@ export const categories: Category[] = [
 					{ code: 'Puhutko suomea?', note: 'Do you speak Finnish? — puhut + -ko, back harmony.' },
 					{ code: 'Onko kahvi hyvää?', note: 'Is the coffee good? — on + -ko.' },
 					{ code: 'Puhun vähän suomea.', note: 'I speak a little Finnish — a natural reply to Puhutko suomea?' },
-				],
-				prompts: [
-					{
-						id: 'e-q-1',
-						q: 'How do you form a yes/no question in Finnish?',
-						a: 'verb first + -ko/-kö',
-						note: 'Puhutko suomea? — Do you speak Finnish?',
-					},
-					{
-						id: 'e-q-2',
-						q: "Ask: 'Is the coffee good?' (on, hyvää)",
-						a: 'Onko kahvi hyvää?',
-						note: 'on + -ko → Onko; back harmony.',
-					},
 				],
 			},
 		],
@@ -1171,20 +552,6 @@ export const categories: Category[] = [
 					{ code: 'Hän on opettaja.', note: 'He/she is a teacher — no gender marked, no article needed.' },
 					{ code: 'hän', note: 'The single third-person singular pronoun — covers both he and she.' },
 				],
-				prompts: [
-					{
-						id: 'f-han-1',
-						q: "Which single pronoun covers both 'he' and 'she'?",
-						a: 'hän',
-						note: 'Finnish has no grammatical gender — one pronoun does both.',
-					},
-					{
-						id: 'f-han-2',
-						q: 'How many articles (a/an/the) does Finnish have?',
-						a: 'none',
-						note: 'Definiteness comes from context and word order: Hän on opettaja — he/she is a teacher.',
-					},
-				],
 			},
 			{
 				id: 'f-have',
@@ -1197,20 +564,6 @@ export const categories: Category[] = [
 					{ code: 'Minulla on koira.', note: 'I have a dog — literally "on me is dog".' },
 					{ code: 'Kissalla on…', note: "The cat has… — same construction, third-person possessor." },
 				],
-				prompts: [
-					{
-						id: 'f-have-1',
-						q: "How does Finnish express 'to have' without a verb for it?",
-						a: 'adessive + olla',
-						note: "Literally 'on me is': Minulla on koira — I have a dog.",
-					},
-					{
-						id: 'f-have-2',
-						q: "Say: 'I have a dog.'",
-						a: 'Minulla on koira.',
-						note: 'minulla = on me (adessive of minä).',
-					},
-				],
 			},
 			{
 				id: 'f-nofuture',
@@ -1222,20 +575,6 @@ export const categories: Category[] = [
 				examples: [
 					{ code: 'Huomenna menen kauppaan.', note: "Tomorrow I('ll) go to the shop — present-tense menen, future meaning from huomenna." },
 					{ code: 'menen', note: 'I go — present tense, the only tense this sentence needs.' },
-				],
-				prompts: [
-					{
-						id: 'f-nofuture-1',
-						q: 'Finnish has no future tense — what expresses future time instead?',
-						a: 'present tense + context',
-						note: "Huomenna menen kauppaan — tomorrow I'll go to the shop.",
-					},
-					{
-						id: 'f-nofuture-2',
-						q: "Say: 'Tomorrow I go to the shop.' (as Finnish would say it)",
-						a: 'Huomenna menen kauppaan.',
-						note: 'No future tense needed — huomenna (tomorrow) does the work.',
-					},
 				],
 			},
 		],
@@ -1257,20 +596,6 @@ export const categories: Category[] = [
 				examples: [
 					{ code: 'English, Hindi, Russian, French', note: 'All Indo-European — genuinely unrelated to Finnish, despite geography.' },
 				],
-				prompts: [
-					{
-						id: 'g-uralic-1',
-						q: 'What language family does Finnish belong to?',
-						a: 'Uralic',
-						note: 'A completely separate tree from English, Hindi, Russian, French (all Indo-European).',
-					},
-					{
-						id: 'g-uralic-2',
-						q: 'English, Hindi, Russian and French all belong to which family — the one Finnish is NOT part of?',
-						a: 'Indo-European',
-						note: 'Finnish is Uralic — genuinely unrelated, which is why the vocabulary shares no roots with English.',
-					},
-				],
 			},
 			{
 				id: 'g-relatives',
@@ -1284,20 +609,6 @@ export const categories: Category[] = [
 					{ code: 'Estonian, Karelian', note: "Finnish's closest relatives — same Finnic branch, partly intelligible." },
 					{ code: 'Hungarian', note: 'Real Uralic family, but thousands of years removed — a distant cousin, not a close one.' },
 				],
-				prompts: [
-					{
-						id: 'g-relatives-1',
-						q: "Finnish's closest major relative language?",
-						a: 'Estonian',
-						note: 'Same Finnic branch of Uralic; Hungarian is a far more distant cousin.',
-					},
-					{
-						id: 'g-relatives-2',
-						q: 'Finnish is to Hungarian roughly as English is to which language?',
-						a: 'Persian',
-						note: 'Both Uralic, but separated by thousands of years — family, yet far apart on the tree.',
-					},
-				],
 			},
 			{
 				id: 'g-sami',
@@ -1308,14 +619,6 @@ export const categories: Category[] = [
 					"A common misconception worth correcting early: the Sami languages spoken across Lapland aren't regional Finnish dialects, the way one might assume from geographic proximity — they're their own branch of the Uralic family, related to Finnish roughly the way the Finnic languages are related to each other, but distinct enough to be genuinely separate languages (in fact several separate Sami languages, not just one) with their own grammar and vocabulary.",
 				examples: [
 					{ code: 'Lapland', note: 'Home to the Sami languages — a separate Uralic branch, not Finnish dialects.' },
-				],
-				prompts: [
-					{
-						id: 'g-sami-1',
-						q: 'What are the Sami languages of Lapland, in relation to Finnish?',
-						a: 'Uralic cousins',
-						note: 'A separate branch of the Uralic family — not dialects of Finnish.',
-					},
 				],
 			},
 			{
@@ -1331,32 +634,6 @@ export const categories: Category[] = [
 					{ code: 'ranta', note: 'shore — from an old Germanic "strand" word.' },
 					{ code: 'sata', note: 'hundred — an Indo-Iranian loan from roughly 4000 years ago.' },
 				],
-				prompts: [
-					{
-						id: 'g-loans-1',
-						q: 'What does kuningas mean?',
-						a: 'king',
-						note: 'An ancient loan still ≈ Proto-Germanic *kuningaz — Finnish preserves old loans better than the languages that lent them.',
-					},
-					{
-						id: 'g-loans-2',
-						q: 'sata (hundred) was borrowed from which ancient language family, ~4000 years ago?',
-						a: 'Indo-Iranian',
-						note: 'One of the oldest loanwords in Finnish.',
-					},
-					{
-						id: 'g-loans-3',
-						q: 'äiti (mother) was borrowed from which language?',
-						a: 'Gothic',
-						note: 'From Gothic aiþei.',
-					},
-					{
-						id: 'g-loans-4',
-						q: 'kuningas (king) preserves a word from which proto-language?',
-						a: 'Proto-Germanic',
-						note: 'Still ≈ *kuningaz — Finnish changes so slowly it preserves the loan better than the lenders.',
-					},
-				],
 			},
 			{
 				id: 'g-agricola',
@@ -1369,26 +646,6 @@ export const categories: Category[] = [
 				examples: [
 					{ code: 'Abckiria, 1543', note: 'The first book printed in Finnish — an ABC-primer.' },
 					{ code: 'Mikael Agricola', note: 'The bishop credited as the father of written Finnish.' },
-				],
-				prompts: [
-					{
-						id: 'g-agricola-1',
-						q: 'Who is called the father of written Finnish?',
-						a: 'Mikael Agricola',
-						note: 'Published the first Finnish book, Abckiria, ~1543.',
-					},
-					{
-						id: 'g-agricola-2',
-						q: 'What was the first book printed in Finnish?',
-						a: 'Abckiria',
-						note: 'An ABC-primer by bishop Mikael Agricola, ~1543; his New Testament followed in 1548.',
-					},
-					{
-						id: 'g-agricola-3',
-						q: 'Roughly what year did the first printed Finnish book (Abckiria) appear?',
-						a: '~1543',
-						note: 'By Mikael Agricola — written Finnish is young.',
-					},
 				],
 			},
 			{
@@ -1403,20 +660,6 @@ export const categories: Category[] = [
 					{ code: 'minä olen → mä oon', note: 'I am — written kirjakieli vs. everyday spoken puhekieli.' },
 					{ code: 'kirjakieli', note: 'The written/standard register — what this deck teaches.' },
 					{ code: 'puhekieli', note: 'Everyday spoken register — a systematic compression of kirjakieli.' },
-				],
-				prompts: [
-					{
-						id: 'g-registers-1',
-						q: 'What is the Finnish name for the written standard language?',
-						a: 'kirjakieli',
-						note: 'vs puhekieli (everyday speech): minä olen (written) → mä oon (spoken).',
-					},
-					{
-						id: 'g-registers-2',
-						q: 'What is the Finnish name for everyday spoken Finnish?',
-						a: 'puhekieli',
-						note: 'A systematic compression of kirjakieli — learn the book language first: minä olen → mä oon.',
-					},
 				],
 			},
 		],
@@ -1439,17 +682,6 @@ export const categories: Category[] = [
 					{ code: 'talon', note: "of the house / house's — genitive, still just talo + n." },
 					{ code: 'taloa', note: 'some house(s)/of a house — partitive, strong grade (same as nominative).' },
 				],
-				prompts: [
-					{ id: 'h-talo-1', q: 'What does talo mean?', a: 'house' },
-					{ id: 'h-talo-2', q: "Finnish for 'house'?", a: 'talo' },
-					{
-						id: 'h-talo-3',
-						kind: 'cloze',
-						q: 'talo + “in the house” = talo{{ssa}}',
-						a: 'ssa',
-						note: 'Back-vowel word takes -ssa; no gradation — talo is the clean model noun for the case grid.',
-					},
-				],
 			},
 			{
 				id: 'h-katu',
@@ -1462,16 +694,6 @@ export const categories: Category[] = [
 					{ code: 'kadulla', note: 'on the street — adessive, t weakens to d.' },
 					{ code: 'kadun', note: "of the street / street's — genitive, same weak grade." },
 					{ code: 'katua', note: 'some street — partitive, strong grade (t stays t).' },
-				],
-				prompts: [
-					{ id: 'h-katu-1', q: 'What does katu mean?', a: 'street' },
-					{ id: 'h-katu-2', q: "Finnish for 'street'?", a: 'katu' },
-					{
-						id: 'h-katu-3',
-						q: "Apply the adessive: 'on the street' — katu → ?",
-						a: 'kadulla',
-						note: 't→d (KPT) plus back harmony -lla.',
-					},
 				],
 			},
 			{
@@ -1486,16 +708,6 @@ export const categories: Category[] = [
 					{ code: 'kaupan', note: "of the shop / shop's — genitive, same weak grade." },
 					{ code: 'kauppaa', note: 'some shop — partitive, strong grade (pp stays pp).' },
 				],
-				prompts: [
-					{ id: 'h-kauppa-1', q: 'What does kauppa mean?', a: 'shop' },
-					{ id: 'h-kauppa-2', q: "Finnish for 'shop'?", a: 'kauppa' },
-					{
-						id: 'h-kauppa-3',
-						q: 'Apply the genitive: kauppa + -n → ?',
-						a: 'kaupan',
-						note: 'pp→p — the textbook KPT example.',
-					},
-				],
 			},
 			{
 				id: 'h-kirja',
@@ -1508,17 +720,6 @@ export const categories: Category[] = [
 					{ code: 'kirjassa', note: 'in the book — inessive, back harmony -ssa, no gradation.' },
 					{ code: 'kirjan', note: "of the book / book's — genitive, no gradation to worry about." },
 					{ code: 'kirjaa', note: 'some book — partitive.' },
-				],
-				prompts: [
-					{ id: 'h-kirja-1', q: 'What does kirja mean?', a: 'book' },
-					{ id: 'h-kirja-2', q: "Finnish for 'book'?", a: 'kirja' },
-					{
-						id: 'h-kirja-3',
-						kind: 'cloze',
-						q: 'kirja + “in the book” = kirja{{ssa}}',
-						a: 'ssa',
-						note: 'Back harmony picks -ssa; no gradation to worry about.',
-					},
 				],
 			},
 			{
@@ -1533,17 +734,6 @@ export const categories: Category[] = [
 					{ code: 'veden', note: "of the water / water's — genitive, e-stem vede-." },
 					{ code: 'vedessä', note: 'in the water — inessive, e-stem vede-.' },
 				],
-				prompts: [
-					{ id: 'h-vesi-1', q: 'What does *vesi* mean?', a: 'water' },
-					{ id: 'h-vesi-2', q: 'Finnish for "water"?', a: 'vesi' },
-					{
-						id: 'h-vesi-3',
-						kind: 'cloze',
-						q: '"I drink water" = Juon {{vettä}}.',
-						a: 'vettä',
-						note: 'vesi is an e-stem: partitive is vettä (not "vesiä"). Drinking = incomplete amount = partitive.',
-					},
-				],
 			},
 			{
 				id: 'h-kahvi',
@@ -1557,16 +747,6 @@ export const categories: Category[] = [
 					{ code: 'kahvin', note: "of the coffee / coffee's — genitive, no gradation." },
 					{ code: 'Onko kahvi hyvää?', note: 'Is the coffee good? — kahvi in its bare nominative form.' },
 				],
-				prompts: [
-					{ id: 'h-kahvi-1', q: 'What does kahvi mean?', a: 'coffee' },
-					{ id: 'h-kahvi-2', q: "Finnish for 'coffee'?", a: 'kahvi' },
-					{
-						id: 'h-kahvi-3',
-						q: "Say: 'I drink coffee.'",
-						a: 'Juon kahvia.',
-						note: 'Drinking = incomplete amount = partitive object.',
-					},
-				],
 			},
 			{
 				id: 'h-maito',
@@ -1579,16 +759,6 @@ export const categories: Category[] = [
 					{ code: 'maidon', note: "of the milk / milk's — genitive, t weakens to d." },
 					{ code: 'maitoa', note: 'some milk — partitive, strong grade (t stays t).' },
 				],
-				prompts: [
-					{ id: 'h-maito-1', q: 'What does maito mean?', a: 'milk' },
-					{ id: 'h-maito-2', q: "Finnish for 'milk'?", a: 'maito' },
-					{
-						id: 'h-maito-3',
-						q: 'Apply the genitive: maito + -n → ?',
-						a: 'maidon',
-						note: 't→d gradation.',
-					},
-				],
 			},
 			{
 				id: 'h-leipa',
@@ -1600,16 +770,6 @@ export const categories: Category[] = [
 				examples: [
 					{ code: 'leivän', note: "of the bread / bread's — genitive, p weakens to v." },
 					{ code: 'leipää', note: 'some bread — partitive, strong grade (p stays p), front harmony -ää.' },
-				],
-				prompts: [
-					{ id: 'h-leipa-1', q: 'What does leipä mean?', a: 'bread' },
-					{ id: 'h-leipa-2', q: "Finnish for 'bread'?", a: 'leipä' },
-					{
-						id: 'h-leipa-3',
-						q: 'Apply the genitive: leipä + -n → ?',
-						a: 'leivän',
-						note: 'p→v gradation; front harmony (ä).',
-					},
 				],
 			},
 			{
@@ -1624,16 +784,6 @@ export const categories: Category[] = [
 					{ code: 'kissan nimi', note: "the cat's name — genitive, no gradation." },
 					{ code: 'kissalla', note: 'on/at the cat — adessive, also used literally for location.' },
 				],
-				prompts: [
-					{ id: 'h-kissa-1', q: 'What does kissa mean?', a: 'cat' },
-					{ id: 'h-kissa-2', q: "Finnish for 'cat'?", a: 'kissa' },
-					{
-						id: 'h-kissa-3',
-						q: "Say: 'the cat's name' (using kissa and nimi)",
-						a: 'kissan nimi',
-						note: 'Genitive -n; kissa has no gradation.',
-					},
-				],
 			},
 			{
 				id: 'h-koira',
@@ -1646,16 +796,6 @@ export const categories: Category[] = [
 					{ code: 'Minulla on koira.', note: 'I have a dog — the flagship f-have sentence.' },
 					{ code: 'koiran', note: "of the dog / dog's — genitive, no gradation." },
 					{ code: 'koiralla', note: 'on/at the dog — adessive, also usable as a possessor: "the dog has…".' },
-				],
-				prompts: [
-					{ id: 'h-koira-1', q: 'What does koira mean?', a: 'dog' },
-					{ id: 'h-koira-2', q: "Finnish for 'dog'?", a: 'koira' },
-					{
-						id: 'h-koira-3',
-						q: "Say: 'I have a dog.'",
-						a: 'Minulla on koira.',
-						note: "Adessive + olla — Finnish's way of saying 'have'.",
-					},
 				],
 			},
 			{
@@ -1671,16 +811,6 @@ export const categories: Category[] = [
 					{ code: 'pöydän', note: "of the table / table's — genitive, same weak grade." },
 					{ code: 'pöytää', note: 'some table — partitive, strong grade (t stays t).' },
 				],
-				prompts: [
-					{ id: 'h-poyta-1', q: 'What does pöytä mean?', a: 'table' },
-					{ id: 'h-poyta-2', q: "Finnish for 'table'?", a: 'pöytä' },
-					{
-						id: 'h-poyta-3',
-						q: "Apply the adessive: 'on the table' — pöytä → ?",
-						a: 'pöydällä',
-						note: 't→d gradation; front harmony -llä; model noun for the exterior cases.',
-					},
-				],
 			},
 			{
 				id: 'h-adjs',
@@ -1695,28 +825,6 @@ export const categories: Category[] = [
 					{ code: 'pientä', note: 'partitive of pieni — an e-stem, like vesi → vettä.' },
 					{ code: 'Hyvää päivää!', note: 'Good day! — a fixed partitive greeting phrase.' },
 				],
-				prompts: [
-					{ id: 'h-adjs-1', q: 'What does hyvä mean?', a: 'good' },
-					{
-						id: 'h-adjs-2',
-						q: "Finnish for 'small'?",
-						a: 'pieni',
-						note: 'e-stem: partitive is pientä.',
-					},
-					{
-						id: 'h-adjs-3',
-						q: 'What does Hyvää päivää! mean, literally used as a greeting?',
-						a: 'Good day!',
-						note: 'Partitive form of hyvä päivä — a set greeting phrase.',
-					},
-					{ id: 'h-adjs-4', q: 'What does iso mean?', a: 'big' },
-					{
-						id: 'h-adjs-5',
-						q: 'What does pieni mean?',
-						a: 'small',
-						note: 'e-stem: partitive is pientä.',
-					},
-				],
 			},
 			{
 				id: 'h-greet',
@@ -1729,11 +837,6 @@ export const categories: Category[] = [
 					{ code: 'Kiitos!', note: 'Thanks!' },
 					{ code: 'Anteeksi.', note: 'Sorry / excuse me.' },
 					{ code: 'Hei! · Moi!', note: 'Two interchangeable casual ways to say hi.' },
-				],
-				prompts: [
-					{ id: 'h-greet-1', q: 'What does kiitos mean?', a: 'thanks' },
-					{ id: 'h-greet-2', q: 'What does anteeksi mean?', a: 'sorry / excuse me' },
-					{ id: 'h-greet-3', q: "Two casual ways to say 'hi' in Finnish?", a: 'hei and moi' },
 				],
 			},
 			{
@@ -1748,19 +851,6 @@ export const categories: Category[] = [
 					{ code: 'yksi, kaksi, kolme, neljä, viisi', note: 'One through five.' },
 					{ code: 'kuusi, seitsemän, kahdeksan, yhdeksän, kymmenen', note: 'Six through ten.' },
 					{ code: 'kaksi taloa', note: 'two houses — kaksi triggers the partitive singular taloa.' },
-				],
-				prompts: [
-					{
-						id: 'h-num-1',
-						q: 'Count 1 to 5 in Finnish.',
-						a: 'yksi, kaksi, kolme, neljä, viisi',
-					},
-					{
-						id: 'h-num-2',
-						q: 'Count 6 to 10 in Finnish.',
-						a: 'kuusi, seitsemän, kahdeksan, yhdeksän, kymmenen',
-					},
-					{ id: 'h-num-3', q: "What is 'seitsemän'?", a: 'seven' },
 				],
 			},
 		],

@@ -28,6 +28,18 @@ jobs:
       - name: Type check
         run: npx astro check
 
+      - name: Validate learn/practice content pools
+        run: npm run validate-learn
+
+      - name: Word of the Day parser tests
+        run: npm run test:wotd
+
+      - name: Authored-prompt tests
+        run: npm run test:authored
+
+      - name: Shared sign-in session tests
+        run: npm run test:session
+
       - name: Build
         run: npm run build
         env:
