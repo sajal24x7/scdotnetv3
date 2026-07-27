@@ -542,6 +542,25 @@
 				}
 			],
 			"updatedAt": "2026-07-27T10:49:19.394Z"
+		},
+		"fv-kuka": {
+			"prompts": [
+				{
+					"id": "fv-kuka-a1",
+					"q": "{{Kuka}} tämä on?",
+					"a": "Kuka",
+					"note": "Who is this?",
+					"kind": "cloze"
+				},
+				{
+					"id": "fv-kuka-a2",
+					"q": "{{Kuka}} tulee?",
+					"a": "Kuka",
+					"note": "Who is coming?",
+					"kind": "cloze"
+				}
+			],
+			"updatedAt": "2026-07-27T10:50:48.532Z"
 		}
 	}
 }
