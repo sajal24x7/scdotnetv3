@@ -823,6 +823,15 @@
 	color: rgb(var(--color-text-secondary));
 }
 
+/* Shown when sync is running on the token /write already stored on this
+   device — the shared-credential case is worth spelling out, since
+   "Disconnect" there could otherwise read as logging /write out too. */
+.lq-sync__note {
+	margin: 0.35rem 0 0;
+	font-size: var(--text-xs);
+	color: rgb(var(--color-text-secondary));
+}
+
 .lq-sync__input {
 	flex-grow: 1;
 	min-width: 0;

@@ -37,6 +37,9 @@ jobs:
       - name: Authored-prompt tests
         run: npm run test:authored
 
+      - name: Sync-token resolution tests
+        run: npm run test:sync-token
+
       - name: Build
         run: npm run build
         env:

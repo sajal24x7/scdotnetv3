@@ -25,7 +25,7 @@ Domains are browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/fi
 | Authored-prompt store (committed) + build-time boundary | `src/data/authored-prompts.json`, `src/data/authored-prompts.ts` |
 | Authored-prompt commit endpoint (GitHub PAT → repo) | `functions/api/practice-prompts.js` |
 | Pre-authoring prompt snapshot (migration source) | `src/data/legacy-prompts.json`, `src/pages/api/practice/legacy-prompts.json.ts` |
-| Sync client helpers (pull/push blob, token keys) | `src/components/learn/sync.ts` |
+| Sync client helpers (pull/push blob, shared token resolution) | `src/components/learn/sync.ts` |
 | Deck registry (server-only; build-time) | `src/data/practice-registry.ts` |
 | `/practice` page + per-deck dataset endpoint | `src/pages/practice.astro`, `src/pages/api/practice/[deck].json.ts` |
 | Shared styles | `src/styles/learn.css` |
@@ -44,6 +44,7 @@ Domains are browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/fi
 | Content-pool guardrail | `scripts/validate-learn-data.mjs` (prompt-id uniqueness, `introductionOrder` completeness) |
 | Word of the Day parser tests | `scripts/test-wotd-parser.mjs` |
 | Authored-prompt logic tests (ids, merge, overlay, migration) | `scripts/test-authored-prompts.mjs` |
+| Sync-token resolution tests | `scripts/test-sync-token.mjs` |
 
 ## Design principles
 
@@ -169,7 +170,7 @@ The four automated/curated decks ship **reference cards only**. Their items have
 
 Not the practice-state KV blob, which holds *state* — stability numbers, due dates, prompt ids. These are *content*, hand-written, and belong in git with every other content pool: versioned, diffable, greppable, editable in an editor when a prompt turns out to be badly phrased. `src/data/authored-prompts.ts` is the single build-time boundary that imports the JSON; each authored deck's config wraps its dataset in `withAuthored(...)`, so the registry counts, `/api/practice/<deck>.json`, and the `/learn/<topic>` pages all see the prompts without knowing the file exists.
 
-**How they get there.** `functions/api/practice-prompts.js`, a Pages Function that commits to `main` — the same commit mechanics as `api/til/sync.js`, and the same auth as `api/practice-state.js`: the fine-grained GitHub PAT `/practice` already asks for, sent as a bearer token, checked for push access. No new secret, no new token to mint. `POST` read-merges-writes against the live file (later `updatedAt` wins per item), so two devices authoring different concepts the same day both keep their work; a `409`/`422` from a concurrent write is retried once from a fresh read rather than forced.
+**How they get there.** `functions/api/practice-prompts.js`, a Pages Function that commits to `main` — the same commit mechanics as `api/til/sync.js`, and the same auth as `api/practice-state.js`: a fine-grained GitHub PAT sent as a bearer token, checked for push access. No new secret, and nothing extra to mint — it's the same per-device token sync uses, which is the same one `/write` uses (see "Cross-device sync" below). `POST` read-merges-writes against the live file (later `updatedAt` wins per item), so two devices authoring different concepts the same day both keep their work; a `409`/`422` from a concurrent write is retried once from a fresh read rather than forced.
 
 **The rebuild gap.** A commit doesn't reach the built datasets until Cloudflare redeploys, so:
 
@@ -291,6 +292,10 @@ Implements plan §2.8: practicing from phone, Mac, and work laptop without any o
 
 - **`functions/api/practice-state.js`** (Cloudflare Pages Function) — `GET` returns the stored blob (`{}` if nothing saved yet), `PUT` replaces it. The blob is opaque to the function: every registry deck's `SrsState` plus `practice-meta`, as one JSON object keyed by localStorage key — merging is entirely client-side, so this function only needs to store and retrieve bytes.
 - **Auth** — the same pattern as `api/upload.js` and `api/til/sync.js`: a bearer token that is a fine-grained GitHub PAT, accepted only if GitHub confirms push (Contents write) access to this repo. No new secret class, no accounts. **Mint one PAT per device** — losing a device means revoking its token in GitHub settings; the KV blob itself is untouched.
+
+  **One token per device, not one per feature.** Sync, the authored-prompt commits, and the `/write` composer all want the same credential, so they share it. `sync.ts` resolves it in order: `practice-sync-token` (pasted on `/practice`), then the composer's `microwrite.token` — same origin, same requirement. A device already set up for writing needs nothing pasted; `/practice` shows "Use the token from /write" and says which one it's running on. The fallback is a *read*, not an adoption: each page owns its own key, so the two stay independently revocable.
+
+  Two edges this creates, both covered by `scripts/test-sync-token.mjs`: disconnecting while running on the composer's token would otherwise appear to do nothing (the fallback hands it straight back), so a `practice-sync-optout` flag suppresses the fallback until sync is explicitly reconnected; and disconnecting must never remove `microwrite.token` — turning off sync is not signing out of `/write`.
 - **Safety net** — KV has no history of its own, so the function copies the previous blob to `state:backup:<UTC date>` before every overwrite, and prunes backups older than 7 days. A bad push is recoverable by hand from a backup key.
 - **Client wiring (`PracticeSession.tsx`)** — `pullAndMerge` runs on page load, on tab focus, and after "Connect this device"; it fetches the remote blob and merges it into local state (`mergeSrsState`/`mergePracticeMeta` in `engine.ts`), then writes the merged result back to localStorage. `pushState` fires at the end of every finished session, plus debounced (4s) after each grade mid-session, reading the current per-deck blobs straight from localStorage (never from React state, which can be one render behind a just-graded card) and PUTting them.
 - **Merge rules** (`mergeSrsState`/`mergePracticeMeta`), deterministic and idempotent — safe to run in either direction any number of times:

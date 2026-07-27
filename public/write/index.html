@@ -391,7 +391,15 @@
   const BRANCH = 'main';
   const SITE = 'https://sajalchoudhary.net';
   const TOKEN_KEY = 'microwrite.token';
+  // /practice stores its own fine-grained PAT here, on this same origin, and
+  // it needs exactly what this page needs — Contents read/write on the repo.
+  // One token per device: whichever page you set up first, the other finds
+  // it. getToken() reads ours, then falls back to theirs; saving always
+  // writes ours, so the two pages stay independently revocable.
+  const PRACTICE_TOKEN_KEY = 'practice-sync-token';
   const DRAFT_KEY = 'microwrite.draft';
+
+  const getToken = () => localStorage.getItem(TOKEN_KEY) || localStorage.getItem(PRACTICE_TOKEN_KEY) || '';
   const FOLDERS = { micro: 'src/content/micro', photo: 'src/content/photo' };
   const SHELF_FOLDERS = {
     bookshelf: 'src/content/bookshelf',
@@ -534,7 +542,7 @@
     $('composer').style.display = show ? 'none' : 'block';
   }
   $('settingsBtn').addEventListener('click', () => {
-    $('tokenInput').value = localStorage.getItem(TOKEN_KEY) || '';
+    $('tokenInput').value = getToken();
     showSetup($('setup').style.display !== 'block');
   });
   $('saveToken').addEventListener('click', async () => {
@@ -721,7 +729,7 @@
   }
 
   async function uploadOne(file, index, total) {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = getToken();
     const counter = total > 1 ? ` ${index + 1}/${total}` : '';
     setUploadNote(`Preparing photo${counter}…`);
     const blob = await shrinkImage(file, MAX_DIM, mode === 'photo');
@@ -746,7 +754,7 @@
   }
 
   $('addPhoto').addEventListener('click', () => {
-    if (!localStorage.getItem(TOKEN_KEY)) { showSetup(true); return; }
+    if (!getToken()) { showSetup(true); return; }
     $('file').click();
   });
 
@@ -819,7 +827,7 @@
   }
 
   $('send').addEventListener('click', async () => {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = getToken();
     if (!token) { showSetup(true); return; }
     if (pendingUploads > 0) {
       setStatus('Wait for the photo upload to finish…', 'err');
@@ -984,7 +992,7 @@
   }
 
   $('shelfSend').addEventListener('click', async () => {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = getToken();
     if (!token) { showSetup(true); return; }
     const title = $('shelfTitle').value.trim();
     if (!title) {
@@ -1110,7 +1118,7 @@
   }
 
   async function handleQueueAction(item, action, btn, otherBtn) {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = getToken();
     if (!token) { showSetup(true); return; }
     btn.disabled = true;
     otherBtn.disabled = true;
@@ -1147,13 +1155,13 @@
   }
 
   function tilAuthOrSetup() {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = getToken();
     if (!token) showSetup(true);
     return token;
   }
 
   async function tilApi(url, opts = {}) {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = getToken();
     const res = await fetch(url, {
       ...opts,
       headers: { Authorization: `Bearer ${token}`, ...(opts.headers || {}) },
@@ -1271,7 +1279,7 @@
 
   // --- init ----------------------------------------------------------------
   restoreDraft();
-  if (!localStorage.getItem(TOKEN_KEY)) showSetup(true);
+  if (!getToken()) showSetup(true);
 })();
 </script>
 </body>

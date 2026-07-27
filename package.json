@@ -19,6 +19,7 @@
     "validate-learn": "node scripts/validate-learn-data.mjs",
     "test:wotd": "node scripts/test-wotd-parser.mjs",
     "test:authored": "node scripts/test-authored-prompts.mjs",
+    "test:sync-token": "node scripts/test-sync-token.mjs",
     "generate-covers": "node scripts/generate-book-covers.js",
     "cache-nordletter-images": "node scripts/cache-nordletter-images.js",
     "download-covers": "node scripts/download-book-covers.js",

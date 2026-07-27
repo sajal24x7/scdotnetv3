@@ -3,7 +3,16 @@ import type { LearnDataset } from './types';
 import type { PracticeDeck } from '../../data/practice-registry';
 import { loadPeopleDeck } from './peopleDeckStore';
 import { PromptQuestion } from './ItemDetails';
-import { SYNC_LAST_KEY, SYNC_TOKEN_KEY } from './sync';
+import {
+	clearSyncToken,
+	composerTokenAvailable,
+	loadSyncToken,
+	loadSyncTokenInfo,
+	saveSyncToken,
+	SYNC_LAST_KEY,
+	useComposerToken,
+	type TokenSource,
+} from './sync';
 import {
 	applyAuthoredPrompts,
 	AUTHORED_CACHE_KEY,
@@ -55,6 +64,11 @@ import {
 // to functions/api/practice-state.js (a Workers KV blob). Pulls merge into
 // local state on load/focus/manual sync; pushes happen at session end and
 // debounced mid-session. Sync failures degrade silently to local-only.
+//
+// One token per device covers everything: the same PAT authenticates the
+// state blob and the authored-prompt commits, and if /write is already set
+// up in this browser its token is picked up automatically (see sync.ts) —
+// there's nothing to paste twice.
 
 const PUSH_DEBOUNCE_MS = 4000;
 
@@ -117,6 +131,10 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 	const [authored, setAuthored] = useState<AuthoredStore>(emptyAuthoredStore);
 
 	const [syncToken, setSyncToken] = useState<string | null>(null);
+	// Where the active token came from — the composer's key is a fallback, and
+	// the UI says so rather than implying /practice is holding its own.
+	const [tokenSource, setTokenSource] = useState<TokenSource | null>(null);
+	const [composerAvailable, setComposerAvailable] = useState(false);
 	const [tokenInput, setTokenInput] = useState('');
 	const [lastSyncedAt, setLastSyncedAt] = useState<string | null>(null);
 	const [syncStatus, setSyncStatus] = useState<SyncStatus>('idle');
@@ -149,7 +167,7 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		setAuthored(loadAuthoredCache());
 		loadAuthoredForSession({
 			introducedItemIds: introducedItemIdsFor(registry, perDeck),
-			token: window.localStorage.getItem(SYNC_TOKEN_KEY),
+			token: loadSyncToken(),
 		})
 			.then(setAuthored)
 			.catch(() => {
@@ -160,10 +178,13 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		setMeta(loadPracticeMeta(seedStreak));
 		setToday(localToday());
 		setLastSyncedAt(window.localStorage.getItem(SYNC_LAST_KEY));
-		setSyncToken(window.localStorage.getItem(SYNC_TOKEN_KEY));
+		const info = loadSyncTokenInfo();
+		setSyncToken(info?.token ?? null);
+		setTokenSource(info?.source ?? null);
+		setComposerAvailable(composerTokenAvailable());
 		const onFocus = () => {
 			setToday(localToday());
-			const token = window.localStorage.getItem(SYNC_TOKEN_KEY);
+			const token = loadSyncToken();
 			if (token) pullAndMerge(token);
 		};
 		window.addEventListener('focus', onFocus);
@@ -273,14 +294,26 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 	function connectSync() {
 		const token = tokenInput.trim();
 		if (!token) return;
-		window.localStorage.setItem(SYNC_TOKEN_KEY, token);
+		saveSyncToken(token);
 		setTokenInput('');
 		setSyncToken(token);
+		setTokenSource('practice');
+	}
+
+	// One token per device: if /write is already set up here, there's nothing
+	// to paste — the same PAT covers the state blob and the authored prompts.
+	function connectWithComposerToken() {
+		const token = useComposerToken();
+		if (!token) return;
+		setSyncToken(token);
+		setTokenSource('composer');
 	}
 
 	function disconnectSync() {
-		window.localStorage.removeItem(SYNC_TOKEN_KEY);
+		clearSyncToken();
 		setSyncToken(null);
+		setTokenSource(null);
+		setComposerAvailable(composerTokenAvailable());
 		setSyncStatus('idle');
 	}
 
@@ -681,6 +714,12 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 										? `Last synced ${formatRelativeTime(lastSyncedAt)}`
 										: 'Connected — not yet synced'}
 						</p>
+						{tokenSource === 'composer' && (
+							<p className="lq-sync__note">
+								Using the token this device already has for <a href="/write/">/write</a> — it covers review state
+								and the prompts you write. Disconnecting here leaves /write signed in.
+							</p>
+						)}
 						<div className="lq-io-row">
 							<button type="button" className="lq-button" onClick={() => pullAndMerge(syncToken)}>
 								Sync now
@@ -691,18 +730,27 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 						</div>
 					</>
 				) : (
-					<div className="lq-io-row">
-						<input
-							type="password"
-							className="lq-sync__input"
-							placeholder="Fine-grained GitHub PAT (Contents: read/write)"
-							value={tokenInput}
-							onChange={(e) => setTokenInput(e.target.value)}
-						/>
-						<button type="button" className="lq-button" onClick={connectSync} disabled={!tokenInput.trim()}>
-							Connect this device
-						</button>
-					</div>
+					<>
+						{composerAvailable && (
+							<div className="lq-io-row">
+								<button type="button" className="lq-button lq-button--primary" onClick={connectWithComposerToken}>
+									Use the token from /write
+								</button>
+							</div>
+						)}
+						<div className="lq-io-row">
+							<input
+								type="password"
+								className="lq-sync__input"
+								placeholder="Fine-grained GitHub PAT (Contents: read/write)"
+								value={tokenInput}
+								onChange={(e) => setTokenInput(e.target.value)}
+							/>
+							<button type="button" className="lq-button" onClick={connectSync} disabled={!tokenInput.trim()}>
+								Connect this device
+							</button>
+						</div>
+					</>
 				)}
 			</div>
 		</div>
