@@ -504,6 +504,25 @@
 				}
 			],
 			"updatedAt": "2026-07-27T08:20:36.382Z"
+		},
+		"h-katu": {
+			"prompts": [
+				{
+					"id": "h-katu-a1",
+					"q": "{{Katu}} on liukas.",
+					"a": "Katu",
+					"note": "The street is slippery",
+					"kind": "cloze"
+				},
+				{
+					"id": "h-katu-a2",
+					"q": "Lapsi juoksee {{kadulla}}.",
+					"a": "kadulla",
+					"note": "The child is running on the street.",
+					"kind": "cloze"
+				}
+			],
+			"updatedAt": "2026-07-27T10:47:39.260Z"
 		}
 	}
 }
