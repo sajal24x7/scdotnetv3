@@ -523,6 +523,25 @@
 				}
 			],
 			"updatedAt": "2026-07-27T10:47:39.260Z"
+		},
+		"fv-tanaan": {
+			"prompts": [
+				{
+					"id": "fv-tanaan-a1",
+					"q": "{{Tänään}} on kaunis päivä.",
+					"a": "Tänään",
+					"note": "Today is a beautiful day.",
+					"kind": "cloze"
+				},
+				{
+					"id": "fv-tanaan-a2",
+					"q": "Mitä teet {{tänään}}?",
+					"a": "tänään",
+					"note": "What are you doing today?",
+					"kind": "cloze"
+				}
+			],
+			"updatedAt": "2026-07-27T10:49:19.394Z"
 		}
 	}
 }
