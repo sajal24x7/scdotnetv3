@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - reading
-  - rss
-  - web
-category: micro
+title: "RSS Is the Best Distribution Channel"
+slug: "rss-is-the-best-distribution-channel"
+created: 2026-07-27T11:02:00+03:00
 updated: 2026-07-27T11:04:33+03:00
+category: micro
+tags: ["reading", "rss", "web"]
 ---
 [RSS in 2026 — the best distribution channel nobody uses · intrepidkarthi by Karthikeyan NG](https://intrepidkarthi.com/writing/rss-in-2026-best-channel-nobody-uses/?utm_source=cassidoo&utm_medium=email&utm_campaign=u1f635-u1f4ab-time-you-enjoy-wasting-is-not)
 
