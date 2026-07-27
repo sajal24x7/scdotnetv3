@@ -183,7 +183,7 @@ export async function buildPeopleDeck(files: File[]): Promise<BuildResult> {
 		.map((entry) => entry.itemId);
 
 	const itemCount = categories.reduce((n, c) => n + c.items.length, 0);
-	const promptCount = categories.reduce((n, c) => n + c.items.reduce((m, i) => m + i.prompts.length, 0), 0);
+	const promptCount = categories.reduce((n, c) => n + c.items.reduce((m, i) => m + (i.prompts?.length ?? 0), 0), 0);
 
 	return { dataset: { categories, introductionOrder }, warnings, itemCount, promptCount };
 }

@@ -10,7 +10,7 @@
 // Each public deck's actual dataset is served separately, lazily, from
 // src/pages/api/practice/[deck].json.ts — the registry only carries counts.
 
-import type { LearnSystemConfig } from '../components/learn/types';
+import { promptsOf, type LearnSystemConfig } from '../components/learn/types';
 import { linuxLearnConfig } from './linux-learn-config';
 import { finnishLearnConfig } from './finnish-learn-config';
 import { finnishVocabLearnConfig } from './finnish-vocab-learn-config';
@@ -32,6 +32,12 @@ export interface PracticeDeck {
 	blurb: string;
 	itemNoun: string;
 	monoAnswers: boolean;
+	// True for decks whose prompts the learner writes at introduction time
+	// (see LearnSystemConfig.authorPrompts). The learn-side intro flow shows a
+	// prompt composer for these and won't introduce a concept without at least
+	// one prompt; totalPrompts below counts what's actually been authored so
+	// far, so it starts near zero and grows as concepts are met.
+	authorPrompts: boolean;
 	newPerDay: number;
 	dueCap: number;
 	storageKey: string;
@@ -53,12 +59,13 @@ function summarize(
 		id,
 		itemNoun: config.itemNoun,
 		monoAnswers: config.monoAnswers,
+		authorPrompts: config.authorPrompts ?? false,
 		newPerDay: config.newPerDay,
 		dueCap: config.dueCap,
 		storageKey: config.storageKey,
 		legacyKey: config.legacyKey,
 		totalItems: items.length,
-		totalPrompts: items.reduce((n, item) => n + item.prompts.length, 0),
+		totalPrompts: items.reduce((n, item) => n + promptsOf(item).length, 0),
 		...extra,
 	};
 }
@@ -102,7 +109,7 @@ export const practiceRegistry: PracticeDeck[] = [
 	summarize('vocab', vocabLearnConfig, {
 		title: 'Vocabulary',
 		emoji: '📖',
-		blurb: 'English words, one a day from Wiktionary — meaning and recall, both directions.',
+		blurb: 'One English word a day from Merriam-Webster — you write the prompts that test it.',
 		learnHref: '/learn/vocabulary/',
 		source: { kind: 'json', href: '/api/practice/vocab.json' },
 	}),
@@ -120,6 +127,7 @@ export const practiceRegistry: PracticeDeck[] = [
 		blurb: 'Private — names and faces for people I actually know. Imported per device, never stored on any server; the counts here don’t reflect what’s loaded locally.',
 		itemNoun: PEOPLE_ITEM_NOUN,
 		monoAnswers: PEOPLE_MONO_ANSWERS,
+		authorPrompts: false,
 		newPerDay: PEOPLE_NEW_PER_DAY,
 		dueCap: PEOPLE_DUE_CAP,
 		storageKey: PEOPLE_STORAGE_KEY,

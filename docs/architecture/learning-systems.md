@@ -2,7 +2,7 @@
 
 How the site's "periodic table on the wall" learning systems work, and where the daily ritual actually happens. The ritual has two halves, on two different surfaces:
 
-- **Learning** — reading today's new concepts and deciding to take each one on — happens on the learn side: the combined **`/learn/new`** page (every deck's new concepts for today, one queue), or any deck's own `/learn/<topic>` page (that deck's new concepts only). Accepting a concept marks it introduced and seeds its prompts due-today.
+- **Learning** — reading today's new concepts and deciding to take each one on — happens on the learn side: the combined **`/learn/new`** page (every deck's new concepts for today, one queue), or any deck's own `/learn/<topic>` page (that deck's new concepts only). Accepting a concept marks it introduced and seeds its prompts due-today. On the automated decks it's also where the prompts get *written* — see "Authored prompts".
 - **Practice** — the bounded, graded, everything-interleaved daily Q&A session — is unified at **`/practice`**, one queue across every deck. It contains *only questions and answers*; it never introduces anything. A freshly accepted concept's prompts show up there the same day.
 
 Domains are browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/finnish` (Finnish as a rule system) and `/learn/finnish-vocab` (its communicative-vocabulary sibling deck), `/learn/til` and `/learn/evergreen` (decks extracted from published notes), `/learn/vocabulary` (fed automatically from Wiktionary's Word of the Day), `/learn/people` (private, local-first — names and faces, never stored on any server). The original unified-practice reasoning is [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md); this document describes what's implemented.
@@ -20,6 +20,11 @@ Domains are browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/fi
 | Combined "new today" page + island | `src/pages/learn/new.astro`, `src/components/learn/NewToday.tsx` |
 | Shared intro-card flow (accept/skip per new concept) | `src/components/learn/IntroFlow.tsx` |
 | Shared item reference card + prompt/cloze question rendering | `src/components/learn/ItemDetails.tsx` |
+| Authored prompts: store, merge rules, dataset overlay, legacy migration | `src/components/learn/authoredPrompts.ts` |
+| Prompt composer (write-your-own questions, inside the intro flow) | `src/components/learn/PromptComposer.tsx` |
+| Authored-prompt store (committed) + build-time boundary | `src/data/authored-prompts.json`, `src/data/authored-prompts.ts` |
+| Authored-prompt commit endpoint (GitHub PAT → repo) | `functions/api/practice-prompts.js` |
+| Pre-authoring prompt snapshot (migration source) | `src/data/legacy-prompts.json`, `src/pages/api/practice/legacy-prompts.json.ts` |
 | Sync client helpers (pull/push blob, token keys) | `src/components/learn/sync.ts` |
 | Deck registry (server-only; build-time) | `src/data/practice-registry.ts` |
 | `/practice` page + per-deck dataset endpoint | `src/pages/practice.astro`, `src/pages/api/practice/[deck].json.ts` |
@@ -37,6 +42,8 @@ Domains are browsing-first: `/learn/linux` (Linux sysadmin commands), `/learn/fi
 | People deck (local-first, private) | `src/components/learn/peopleDeckBuilder.ts` (browser-side note→deck-file builder), `src/components/learn/peopleDeckStore.ts` (IndexedDB), `src/components/learn/PeopleLearnPage.tsx`, `src/pages/learn/people.astro`, `src/data/people-learn-config.ts` |
 | Learn-block render stripping | `src/utils/learnBlocks.ts` (remark plugin + string strip used by pages, RSS, previews, backlinks) |
 | Content-pool guardrail | `scripts/validate-learn-data.mjs` (prompt-id uniqueness, `introductionOrder` completeness) |
+| Word of the Day parser tests | `scripts/test-wotd-parser.mjs` |
+| Authored-prompt logic tests (ids, merge, overlay, migration) | `scripts/test-authored-prompts.mjs` |
 
 ## Design principles
 
@@ -53,6 +60,13 @@ These come largely from Andy Matuschak's work on spaced repetition and memory sy
 9. **Learning and practicing are different mental modes, on different pages.** Reading a new concept properly (the reference card, the examples, the why) is study; answering a question from memory is retrieval. The learn side (`/learn/new`, `/learn/<topic>`) owns the first; `/practice` owns the second and contains nothing else.
 
 ## Writing prompts
+
+Prompts come from two places, and which one applies is a per-deck decision (`authorPrompts` in the deck's config):
+
+- **Written by hand at introduction time**, in the composer on the learn side — the four automated/curated decks (`linux`, `finnish`, `finnish-vocab`, `vocab`). Their content pools ship reference cards with no prompts at all. See "Authored prompts" below.
+- **Written alongside the material**, in the ```learn``` block inside the note that teaches it — the note-backed decks (`til`, `evergreen`) and `people`. See "Note-backed decks" below.
+
+The rules are the same either way, and `scripts/validate-learn-data.mjs` enforces them on both (the composer applies the same checks in the browser, so a prompt typed there can't fail the build that publishes it).
 
 Cards must be **atomic, connected, and meaningful**; each prompt must be:
 
@@ -90,12 +104,14 @@ Prompt   { id, q, a, note?, kind? }   // note = one-line elaboration shown with 
                                       // kind: 'cloze' = fill-in-the-blank ({{…}} markers in q)
 ```
 
+`LearnItem.prompts` is **optional**: on an authored-prompt deck an item legitimately has none until its prompts are written. Read it through `promptsOf(item)` (`types.ts`) rather than dereferencing it — an empty deref is how a prompt-less item silently turns into a "fully remembered" tile.
+
 - **Item** = the unit of *introduction* and of the wall chart (a tile).
 - **Prompt** = the unit of *scheduling* (each has its own FSRS card — its own stability, difficulty, and due date). Aim for 2+ prompts per item: typically one "what does X do" and one scenario/flag prompt.
 - Prompt ids must be globally unique and stable — they key the learner's saved state, so renaming one orphans its progress.
 - An `introductionOrder` export defines the sequence new items appear in. For curated decks it is hand-written and dependency-aware — Finnish (vowel harmony before suffixes, a gradation pattern before the case that uses it, a vocabulary word before the rule item that applies it to that word) and Linux (navigation/files/help fundamentals before pipes and text processing, before processes, storage, networking, systemd) both work this way. Feed-driven decks (til, evergreen, vocab) use newest-first instead, since the feed itself is the curriculum.
 - `linux-commands.ts` predates the shared types and keeps its own `Command`/`cmd` naming; `linux-learn-config.ts` adapts it to `LearnItem`/`term` at the config boundary rather than renaming the 1000+ line data file. New content pools should just use the shared types directly (see `finnish.ts`).
-- Run `node scripts/validate-learn-data.mjs` after editing a content pool — it checks prompt-id uniqueness, that every item appears in `introductionOrder` exactly once, and that no category/item is empty.
+- Run `npm run validate-learn` after editing a content pool (it runs in CI too) — it checks prompt-id uniqueness, that every item appears in `introductionOrder` exactly once, and that no category is empty. It folds `authored-prompts.json` in exactly as the build does, so hand-written prompts get the same quality checks, and it flags an authored entry naming an item no deck has (a typo'd id tests nothing, silently). On authored-prompt decks "item has no prompts" is a normal state, not an error.
 
 ### 2. Scheduler (FSRS, in `engine.ts`)
 
@@ -139,9 +155,41 @@ Every word gets both-direction prompts (fi→en, en→fi); a handful additionall
 
 Tuning (`finnish-vocab-learn-config.ts`): `newPerDay: 3`, `dueCap: 14`, `itemNoun: 'word'`, `monoAnswers: false`. Registered in `practiceRegistry` and `scripts/validate-learn-data.mjs` exactly like every other build-time content pool — adding another batch is a data-file edit, not an architecture change.
 
+## Authored prompts (`linux`, `finnish`, `finnish-vocab`, `vocab`)
+
+The four automated/curated decks ship **reference cards only**. Their items have a term, syntax, description, and worked examples — and no questions. The questions are written by hand, by the learner, at the moment the concept is introduced.
+
+**Why.** The prompt is the thing the deck is actually made of, and writing one is not clerical work: deciding what's worth remembering about a command, and phrasing the question that retrieves it, is an act of understanding — and the first rep. Pre-written prompts skip that. They also drift: a stranger's guess at which flag matters is rarely the one you'll need at 2am. The note-backed decks never had this problem (their prompts are authored in the note, by the same person, at the same time), which is exactly why they're excluded from this. Design principle #1 still holds — the *system* chooses which concept comes up today; the learner only decides what to ask about it.
+
+**Where they live.** `src/data/authored-prompts.json`, committed to the repo:
+
+```json
+{ "version": 1, "items": { "<itemId>": { "prompts": [ { "id", "q", "a", "note?", "kind?" } ], "updatedAt": "<ISO>" } } }
+```
+
+Not the practice-state KV blob, which holds *state* — stability numbers, due dates, prompt ids. These are *content*, hand-written, and belong in git with every other content pool: versioned, diffable, greppable, editable in an editor when a prompt turns out to be badly phrased. `src/data/authored-prompts.ts` is the single build-time boundary that imports the JSON; each authored deck's config wraps its dataset in `withAuthored(...)`, so the registry counts, `/api/practice/<deck>.json`, and the `/learn/<topic>` pages all see the prompts without knowing the file exists.
+
+**How they get there.** `functions/api/practice-prompts.js`, a Pages Function that commits to `main` — the same commit mechanics as `api/til/sync.js`, and the same auth as `api/practice-state.js`: the fine-grained GitHub PAT `/practice` already asks for, sent as a bearer token, checked for push access. No new secret, no new token to mint. `POST` read-merges-writes against the live file (later `updatedAt` wins per item), so two devices authoring different concepts the same day both keep their work; a `409`/`422` from a concurrent write is retried once from a fresh read rather than forced.
+
+**The rebuild gap.** A commit doesn't reach the built datasets until Cloudflare redeploys, so:
+
+- the authoring device caches what it wrote in `localStorage` (`practice-authored-prompts`) and overlays it on top of whatever the build shipped — today's practice has the prompts immediately;
+- any device holding a PAT pulls the live file straight from GitHub via `GET /api/practice-prompts`, on the same triggers as the state blob (load, focus, connect);
+- the merge is last-write-wins per item on `updatedAt` — deterministic and idempotent in either direction, exactly like `mergeSrsState`.
+
+Whole entries merge together rather than prompt-by-prompt: an item's prompts are edited as a set, so merging individually would resurrect prompts that were deliberately deleted.
+
+**The composer** (`PromptComposer.tsx`, rendered by `IntroFlow` when the deck sets `authorPrompts`) is rows of question/answer plus an optional note and a "fill in the blank" toggle (which derives the answer from the `{{…}}` markers rather than asking twice). It refuses to introduce a concept with no prompts, or with a prompt that breaks the rules in "Writing prompts" — the same checks `validate-learn-data.mjs` runs, applied in the browser so a prompt can't fail the build that publishes it. A half-finished second row blocks rather than being silently dropped; dropping it would lose work the learner thinks they've saved.
+
+**Prompt ids** are `<itemId>-a<n>`, where `n` is one past the highest this item has *ever* carried — deleting a prompt and adding another gives the new one a fresh id rather than inheriting the deleted one's review history. The `a` keeps them clear of the `-p<n>` ids the note-backed decks generate positionally.
+
+**Failure mode.** The prompts are cached and scheduled whether or not the commit lands; a failed commit surfaces as "Saved on this device, but not to the repo — …" on the intro card rather than a silent success. This is the one place in the learning system where a sync failure is *not* silent: everything else that fails silently is state that can be re-derived, and this is content that can't.
+
+**Migration.** The four decks used to ship 448 hand-written prompts across 200 items. Those were removed, but concepts already introduced still have FSRS cards keyed by their prompt ids, so dropping them outright would orphan real review history. `src/data/legacy-prompts.json` is the frozen snapshot taken before the strip, served lazily from `/api/practice/legacy-prompts.json` (~96KB, fetched only when a device has introduced concepts predating the change). On load, any *already-introduced* item with nothing authored adopts its old prompts, ids byte-identical, so every card keeps its stability, due date, and lapse count — then they're committed like anything else, and are editable from then on. Concepts not yet met stay unprompted: those are the ones you write.
+
 ## Note-backed decks (`/learn/til`, `/learn/evergreen`)
 
-These decks follow Matuschak's mnemonic-medium model: prompts are authored by the writer, inline, inside the note they test — the machinery only collects them. A note opts into its deck simply by containing a fenced ` ```learn ` block with YAML inside:
+These decks follow Matuschak's mnemonic-medium model: prompts are authored by the writer, inline, inside the note they test — the machinery only collects them. They are deliberately **not** authored-prompt decks (see above): a note's prompts are already written by the right person at the right moment, so there's nothing for a composer to add. A note opts into its deck simply by containing a fenced ` ```learn ` block with YAML inside:
 
 ````markdown
 ```learn
@@ -199,10 +247,14 @@ Implements plan §5.2/Phase 4. Unlike every other deck, person-note content neve
 
 ## The vocabulary deck (`/learn/vocabulary`)
 
-Implements plan §4 (feed side; manual capture via `category: vocab` inbox notes is not yet built — see Planned evolution). One English word most days, fed automatically rather than authored:
+Implements plan §4 (feed side; manual capture via `category: vocab` inbox notes is not yet built — see Planned evolution). One English word a day, fed automatically — the *word* is automated, the prompts that test it are not (see "Authored prompts"):
 
-- **`scripts/fetch-wotd.mjs`** — pulls Wiktionary's Word of the Day RSS feed (`action=featuredfeed&feed=wotd`) and upserts each word into `src/data/vocab.generated.json`, keyed by a slugified form of the word. Idempotent by design: a word already on file keeps its original record and is never re-fetched or overwritten, so re-running the script (or a missed/duplicated cron fire) is harmless. Parsing is a handful of targeted regexes against the feed's known RSS structure (word from `<title>`, part of speech and gloss from the `<description>` HTML), not a full XML/HTML parser — a word that doesn't parse cleanly is skipped with a warning and picked up correctly the next day once the feed moves on, never a build failure. Runs daily via `.github/workflows/fetch-wotd.yml`; `npm run fetch-wotd` to run it by hand. Merriam-Webster's WOTD RSS is wired as a second source but off by default (`WOTD_ENABLE_MW=true`) — its markup varies more across entries and the parser for it is a first cut, not eyeballed against real output yet.
-- **`src/data/vocab-dataset.ts`** — the pure transform from the raw word-keyed JSON into a `LearnDataset`: groups words into categories by part of speech (noun/verb/adjective/…, falling back to "Other"), and builds two prompts per word per plan §4.2's both-directions rule — recognition (`What does *word* mean?` → gloss) and production (`Which word means: <gloss>` → word). This file is deliberately import-free beyond types (no JSON import) so `scripts/validate-learn-data.mjs` can load it directly under plain Node without hitting Node's import-attribute requirement for JSON modules; `vocab-learn-config.ts` is the thin adapter that actually imports `vocab.generated.json` and calls `buildDataset` on it, the same "adapt at the config boundary" pattern `linux-learn-config.ts` uses.
+- **`scripts/fetch-wotd.mjs`** — pulls **Merriam-Webster's** Word of the Day RSS and upserts words into `src/data/vocab.generated.json`, keyed by a slugified form of the word. Runs daily via `.github/workflows/fetch-wotd.yml`; `npm run fetch-wotd` to run it by hand.
+  - **One source.** M-W is the only source; Wiktionary's featured feed was dropped. M-W's entries are editorially curated rather than crowd-authored, and each carries a pronunciation, a part of speech, one clean defining sentence, and a usage example — everything the reference card wants, from one parse. Wiktionary's glosses are serviceable but arrive wrapped in parenthetical usage labels, with no example and (as it turned out) no reliably detectable part of speech, which is why every word captured under it sits in the "Other" category. Words already on file from Wiktionary stay: they're history, and their item ids key real review state.
+  - **One word.** At most one new word is added per run — the newest not already on file. The feed carries about a week of items, so without this a fresh checkout or a run after a few missed days dumps seven words into the deck at once. A missed day isn't lost, it's picked up tomorrow.
+  - **Parsing** is a handful of targeted regexes against the feed's known structure, not a full XML/HTML parser: the headword comes from `<title>`, and pronunciation, part of speech, definition, and example are cut out of the `<description>` line (pronunciation between backslashes, part of speech immediately after, definition up to M-W's `//` example marker, example up to the "See the entry" trailer). Each field degrades independently — a missing pronunciation costs that field, not the word. A word that doesn't parse cleanly is skipped with a warning, never a build failure. Because regexes against someone else's markup are only defensible if they're pinned down, `scripts/test-wotd-parser.mjs` (`npm run test:wotd`, run in CI) exercises the parser against captured feed output with no network involved.
+  - Idempotent by design: a word already on file keeps its original record and is never re-fetched or overwritten, so a re-run or a duplicated cron fire is harmless and hand edits are safe.
+- **`src/data/vocab-dataset.ts`** — the pure transform from the raw word-keyed JSON into a `LearnDataset`: groups words into categories by part of speech (noun/verb/adjective/…, falling back to "Other") and builds each word's reference card — headword, a trimmed defining phrase, the full definition, the pronunciation, and the day's usage example. It builds **no prompts**: vocab is an authored-prompt deck, so the recognition/production pair it used to generate is now something you write when the word comes up. This file is deliberately import-free beyond types (no JSON import) so `scripts/validate-learn-data.mjs` can load it directly under plain Node without hitting Node's import-attribute requirement for JSON modules; `vocab-learn-config.ts` is the thin adapter that actually imports `vocab.generated.json` and calls `buildDataset` on it, the same "adapt at the config boundary" pattern `linux-learn-config.ts` uses.
 - **Tuning** — `newPerDay: 1` (matches the feed's natural one-word-a-day cadence), `dueCap: 6`, `monoAnswers: false` (prose, not commands), `itemNoun: 'word'`.
 - **Not yet built**: manual capture via `category: vocab` inbox notes with Wiktionary-REST-API definition enrichment (plan §4.1.2) — deferred because it would need a new content-collection category (nav, routing, RSS, sitemap implications) that hasn't been scoped yet, unlike the feed side which only touches the learn/practice surface.
 
@@ -260,8 +312,10 @@ Until the binding exists, `/api/practice-state` returns a clear "PRACTICE_STATE 
 
 A new *learning* system (wall chart + reference) is data plus a config plus a page:
 
-1. **Write the content pool** — `src/data/<topic>.ts` exporting `categories: Category[]` and `introductionOrder: string[]` per the shared types. For language material the "item" is a word/phrase, "syntax" its canonical form, "example" a usage sentence. Prompts should go *both directions* (fi→en and en→fi as separate prompts — they are different memory acts and deserve separate schedules).
-2. **Write a config** — `src/data/<topic>-learn-config.ts` exporting a `LearnSystemConfig`: `storageKey` (never share state between decks), `newPerDay`, `dueCap`, `itemNoun` (used in UI copy like "3 new words"), `monoAnswers` (`true` renders answers in `<code>`; set `false` for prose languages like Finnish, which uses the serif body font instead), and `dataset`.
+1. **Write the content pool** — `src/data/<topic>.ts` exporting `categories: Category[]` and `introductionOrder: string[]` per the shared types. For language material the "item" is a word/phrase, "syntax" its canonical form, "example" a usage sentence. On an authored-prompt deck this is *all* you write — items are reference cards and the `prompts` field stays absent. Where prompts are authored in the pool, they should go *both directions* (fi→en and en→fi as separate prompts — they are different memory acts and deserve separate schedules).
+2. **Write a config** — `src/data/<topic>-learn-config.ts` exporting a `LearnSystemConfig`: `storageKey` (never share state between decks), `newPerDay`, `dueCap`, `itemNoun` (used in UI copy like "3 new words"), `monoAnswers` (`true` renders answers in `<code>`; set `false` for prose languages like Finnish, which uses the serif body font instead), `authorPrompts`, and `dataset`.
+
+   Decide `authorPrompts` deliberately. Set it `true` (and ship no prompts in the pool) whenever the material arrives from somewhere else — a feed, a frequency list, a reference manual — and wrap the dataset in `withAuthored(...)` from `src/data/authored-prompts.ts`. Leave it `false` only when the prompts are written by the same person who wrote the material, at the same time, as with the note-backed decks.
 3. **New page** at `/learn/<topic>.astro` — render `<LearningSystem client:load config={yourConfig} />`, import `src/styles/learn.css`, and add a `.learn-<topic>-page`/`__title`/`__subtitle` selector group to that stylesheet (or reuse an existing one).
 4. **Register it for practice** — add an entry to `practiceRegistry` in `src/data/practice-registry.ts` (metadata + a `source`) so it joins the unified queue and the `/api/practice/<id>.json` endpoint. A deck can be practice-only, with no `learnHref`, if it never gets its own wall chart.
 5. **Validate** with `node scripts/validate-learn-data.mjs` before opening a PR.
@@ -278,6 +332,7 @@ A new *learning* system (wall chart + reference) is data plus a config plus a pa
 | `GLOBAL_NEW_PER_DAY` | 5 | same | same | same | same | same | same | Max new concepts across all decks per day on `/learn/new` |
 | `STRONG_STABILITY_DAYS` | 21 | same | same | same | same | same | same | Stability threshold for the "solid" tile color (fixed in the engine) |
 | `monoAnswers` | `true` | `false` | `false` | `true` | `false` | `false` | `false` | Whether revealed answers render in `<code>` (commands) or prose (natural language) |
+| `authorPrompts` | `true` | `true` | `true` | `false` | `false` | `true` | `false` | Whether the learner writes the prompts at introduction time (see "Authored prompts") |
 
 Raising `dueCap` clears backlogs faster after missed days but lengthens sessions; the cap is safe because capped-out cards remain due and surface the next day. `DEFAULT_RETENTION`, `STRONG_STABILITY_DAYS`, and the two `GLOBAL_*` caps live as constants inside `engine.ts` rather than any config — no deck has needed to deviate from them yet.
 
@@ -292,3 +347,5 @@ Raising `dueCap` clears backlogs faster after missed days but lengthens sessions
 ## Planned evolution
 
 `/practice` and its cross-device sync, the vocabulary deck and skip-at-introduction, the local-first people deck, and the Finnish vocabulary sibling deck (this document, current sections) implement plan Phases 0–2b and 4 and 6 of [`planning/practice-system-unified-srs.md`](../../planning/practice-system-unified-srs.md) — the learn/practice split, the deck registry, the unified queue, opt-in sync, the automated vocab feed, a private deck with no server-side footprint at all, and a first batch of communicative Finnish vocabulary. Manual vocab capture via `category: vocab` inbox notes (plan Phase 3b) is deliberately deferred — it needs a new content-collection category and its own design pass, unlike everything else here which only touched the learn/practice surface. Phase 5 (leeches, keyboard shortcuts, per-deck stats, a real quick-add composer) is still ahead; this document stays authoritative for what is implemented as each phase lands.
+
+Authored prompts (above) are not from the plan — they came later, and they change what the plan's "content pool" means for four of the decks. Known rough edges: there's no edit-a-prompt-later surface yet (fix a bad prompt by editing `authored-prompts.json` directly, which is much of why it lives in git), and an item whose prompts are all deleted shows as `due` on the wall chart with nothing to practice, which is the honest signal but not a pleasant one.

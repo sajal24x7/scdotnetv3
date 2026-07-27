@@ -51,7 +51,18 @@ export interface LearnItem {
 	// §5.2). Never a URL: photos never touch a server, so this is the only
 	// representation that works everywhere the item does.
 	photo?: string;
-	prompts: Prompt[];
+	// Absent or empty on decks whose config sets `authorPrompts` — those items
+	// ship as reference cards only, and their prompts are written by hand at
+	// introduction time and stored in src/data/authored-prompts.json (see
+	// src/components/learn/authoredPrompts.ts). Every consumer must go through
+	// `promptsOf` rather than dereferencing this directly.
+	prompts?: Prompt[];
+}
+
+// The one safe way to read an item's prompts: an authored-prompt deck's item
+// has none until the learner writes them.
+export function promptsOf(item: Pick<LearnItem, 'prompts'>): Prompt[] {
+	return item.prompts ?? [];
 }
 
 export interface Category {
@@ -74,5 +85,12 @@ export interface LearnSystemConfig {
 	dueCap: number;
 	itemNoun: string;
 	monoAnswers: boolean;
+	// True for the automated/curated decks (linux, finnish, finnish-vocab,
+	// vocab), whose items ship as reference cards with no prompts: the learner
+	// writes the prompts themselves in the intro flow's composer, and they're
+	// committed to the repo via the practice PAT. False (the default) for the
+	// note-backed decks (til, evergreen) and people, whose prompts are authored
+	// alongside the note they test and travel with it.
+	authorPrompts?: boolean;
 	dataset: LearnDataset;
 }

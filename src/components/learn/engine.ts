@@ -8,7 +8,7 @@
 // keep-in-sync comment; both now call the same functions.
 
 import { createEmptyCard, fsrs, generatorParameters, Rating, State, type Card, type CardInput } from 'ts-fsrs';
-import type { LearnItem, Prompt } from './types';
+import { promptsOf, type LearnItem, type Prompt } from './types';
 
 // --- Legacy Leitner constants, kept only for the v2→v3 migration below ---
 const BOX_INTERVALS: Record<number, number> = { 1: 1, 2: 3, 3: 7, 4: 14, 5: 30 };
@@ -85,10 +85,16 @@ export type ItemStatus = 'unseen' | 'due' | 'learning' | 'strong';
 
 export function itemStatus(item: LearnItem, state: SrsState, today: string): ItemStatus {
 	if (!state.introduced[item.id]) return 'unseen';
+	const prompts = promptsOf(item);
+	// An authored-prompt item can be introduced with prompts and later have
+	// them all deleted in the composer. Nothing tests it, so nothing about it
+	// is remembered — 'due' sends it back to the composer rather than letting
+	// the empty loop below fall through to 'strong'.
+	if (prompts.length === 0) return 'due';
 	let minStability = Infinity;
 	let anyDue = false;
 	let anyLearning = false;
-	for (const prompt of item.prompts) {
+	for (const prompt of prompts) {
 		const card = state.cards[prompt.id];
 		if (!card) return 'due'; // introduced but a prompt never graded — treat as due
 		if (card.due <= today) anyDue = true;
@@ -269,7 +275,7 @@ export interface SessionItem {
 export function buildPromptsById(allItems: LearnItem[]): Map<string, { prompt: Prompt; item: LearnItem }> {
 	const map = new Map<string, { prompt: Prompt; item: LearnItem }>();
 	for (const item of allItems) {
-		for (const prompt of item.prompts) {
+		for (const prompt of promptsOf(item)) {
 			map.set(prompt.id, { prompt, item });
 		}
 	}
@@ -289,7 +295,7 @@ export function introduceItem(state: SrsState, item: LearnItem, today: string): 
 	if (state.introduced[item.id]) return state;
 	const now = dateStringToLocalDate(today);
 	const cards = { ...state.cards };
-	for (const prompt of item.prompts) {
+	for (const prompt of promptsOf(item)) {
 		if (!cards[prompt.id]) cards[prompt.id] = fromFsrsCard(createEmptyCard(now));
 	}
 	return { ...state, cards, introduced: { ...state.introduced, [item.id]: today } };

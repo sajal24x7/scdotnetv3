@@ -8,8 +8,17 @@
 //   - every prompt id is globally unique within its pool
 //   - every introductionOrder entry names a real item, exactly once
 //   - every item appears in introductionOrder
-//   - every item has at least one prompt
+//   - every item has at least one prompt (except on authored-prompt decks —
+//     see below, where an item legitimately has none until it's introduced)
 //   - every category is non-empty
+//   - src/data/authored-prompts.json only names items that actually exist
+//
+// The four authored-prompt decks (linux, finnish, finnish-vocab, vocab) ship
+// items as reference cards with no prompts; their prompts are hand-written at
+// introduction time and stored in src/data/authored-prompts.json, which this
+// script folds in exactly as src/data/authored-prompts.ts does at build time.
+// So an item here has either the prompts its author wrote or none at all, and
+// "no prompts" is a normal state rather than an error.
 //
 // Plus prompt-quality rules (docs/architecture/learning-systems.md, "Writing
 // prompts"): answers must stay short (atomic prompts, no prose paragraphs),
@@ -72,7 +81,20 @@ function promptQualityIssues(name, item, prompt) {
 	return issues;
 }
 
-function validatePool(name, categories, introductionOrder, { qualityAsWarnings = false } = {}) {
+// Mirrors applyAuthoredPrompts in src/components/learn/authoredPrompts.ts.
+// Kept as its own few lines rather than imported so this script stays plain
+// Node with no bundler in the loop.
+function applyAuthored(categories, authored) {
+	return categories.map((category) => ({
+		...category,
+		items: itemsOf(category).map((item) => {
+			const entry = authored.items[item.id];
+			return entry ? { ...item, prompts: entry.prompts } : item;
+		}),
+	}));
+}
+
+function validatePool(name, categories, introductionOrder, { qualityAsWarnings = false, authorPrompts = false } = {}) {
 	const errors = [];
 	const warnings = [];
 	const allItems = categories.flatMap(itemsOf);
@@ -90,7 +112,9 @@ function validatePool(name, categories, introductionOrder, { qualityAsWarnings =
 			errors.push(`[${name}] duplicate item id "${item.id}"`);
 		}
 		allIds.add(item.id);
-		if (!item.prompts || item.prompts.length === 0) {
+		// On an authored-prompt deck, an item with no prompts is simply one
+		// that hasn't been introduced yet — the composer is what fills it in.
+		if (!authorPrompts && (!item.prompts || item.prompts.length === 0)) {
 			errors.push(`[${name}] item "${item.id}" has no prompts`);
 		}
 	}
@@ -126,9 +150,17 @@ function validatePool(name, categories, introductionOrder, { qualityAsWarnings =
 }
 
 async function main() {
+	const authored = JSON.parse(readFileSync(path.join(repoRoot, 'src/data/authored-prompts.json'), 'utf8'));
+	if (!authored || typeof authored.items !== 'object') {
+		console.error('✗ src/data/authored-prompts.json is missing its items map');
+		process.exitCode = 1;
+		return;
+	}
+
 	const pools = [
 		{
 			name: 'linux',
+			authorPrompts: true,
 			load: async () => {
 				const mod = await loadTsModule('src/data/linux-commands.ts');
 				return { categories: mod.categories, introductionOrder: mod.introductionOrder };
@@ -136,6 +168,7 @@ async function main() {
 		},
 		{
 			name: 'finnish',
+			authorPrompts: true,
 			load: async () => {
 				const mod = await loadTsModule('src/data/finnish.ts');
 				return { categories: mod.categories, introductionOrder: mod.introductionOrder };
@@ -143,6 +176,7 @@ async function main() {
 		},
 		{
 			name: 'finnish-vocab',
+			authorPrompts: true,
 			load: async () => {
 				const mod = await loadTsModule('src/data/finnish-vocab.ts');
 				return { categories: mod.categories, introductionOrder: mod.introductionOrder };
@@ -163,6 +197,7 @@ async function main() {
 		})),
 		{
 			name: 'vocab',
+			authorPrompts: true,
 			load: async () => {
 				const { buildDataset } = await loadTsModule('src/data/vocab-dataset.ts');
 				const raw = JSON.parse(readFileSync(path.join(repoRoot, 'src/data/vocab.generated.json'), 'utf8'));
@@ -172,19 +207,41 @@ async function main() {
 	];
 
 	let hadErrors = false;
+	const knownItemIds = new Set();
 	for (const pool of pools) {
-		const { categories, introductionOrder } = await pool.load();
+		const loaded = await pool.load();
+		const introductionOrder = loaded.introductionOrder;
+		// Fold in the hand-written prompts exactly as the build does, so the
+		// quality and uniqueness rules below apply to them too — a prompt typed
+		// in the browser gets the same scrutiny as one committed by hand.
+		const categories = pool.authorPrompts ? applyAuthored(loaded.categories, authored) : loaded.categories;
+		for (const category of categories) {
+			for (const item of itemsOf(category)) knownItemIds.add(item.id);
+		}
 		const { errors, warnings, itemCount, promptCount } = validatePool(pool.name, categories, introductionOrder, {
 			qualityAsWarnings: pool.qualityAsWarnings ?? false,
+			authorPrompts: pool.authorPrompts ?? false,
 		});
 		if (errors.length === 0) {
-			console.log(`✓ ${pool.name}: ${categories.length} categories, ${itemCount} items, ${promptCount} prompts`);
+			const authoredNote = pool.authorPrompts ? ` (authored: ${promptCount})` : '';
+			console.log(
+				`✓ ${pool.name}: ${categories.length} categories, ${itemCount} items, ${promptCount} prompts${authoredNote}`,
+			);
 		} else {
 			hadErrors = true;
 			console.error(`✗ ${pool.name}: ${errors.length} problem(s)`);
 			for (const err of errors) console.error(`  - ${err}`);
 		}
 		for (const warning of warnings) console.warn(`  ⚠ ${warning}`);
+	}
+
+	// An authored-prompts entry naming an item no deck has is dead weight at
+	// best and a typo'd id at worst — either way it silently tests nothing.
+	const orphans = Object.keys(authored.items).filter((id) => !knownItemIds.has(id));
+	if (orphans.length > 0) {
+		hadErrors = true;
+		console.error(`✗ authored-prompts: ${orphans.length} entr(ies) name unknown items`);
+		for (const id of orphans) console.error(`  - "${id}" is not an item in any deck`);
 	}
 
 	if (hadErrors) {

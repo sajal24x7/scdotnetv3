@@ -1,9 +1,10 @@
 // Adapts the existing linux-commands.ts content pool (Command/cmd naming) to
 // the shared LearnSystemConfig shape consumed by LearningSystem.tsx, without
-// touching the data file itself: storage key, legacy-key migration, and
-// every prompt id stay byte-identical to the pre-refactor Linux deck.
+// touching the data file itself: the storage key and legacy-key migration
+// stay byte-identical to the pre-refactor Linux deck.
 
 import { categories as linuxCategories, introductionOrder, type Command } from './linux-commands';
+import { withAuthored } from './authored-prompts';
 import type { Category, LearnItem, LearnSystemConfig } from '../components/learn/types';
 
 function toLearnItem(command: Command): LearnItem {
@@ -16,7 +17,8 @@ function toLearnItem(command: Command): LearnItem {
 		example: command.example,
 		exampleNote: command.exampleNote,
 		examples: command.examples,
-		prompts: command.prompts,
+		// No prompts: Linux is an authored-prompt deck (see types.ts), so items
+		// carry reference content only until the learner writes their own.
 	};
 }
 
@@ -35,5 +37,6 @@ export const linuxLearnConfig: LearnSystemConfig = {
 	dueCap: 8,
 	itemNoun: 'command',
 	monoAnswers: true,
-	dataset: { categories, introductionOrder },
+	authorPrompts: true,
+	dataset: withAuthored({ categories, introductionOrder }),
 };

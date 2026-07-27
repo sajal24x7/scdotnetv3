@@ -67,7 +67,7 @@ function pruneOrphanedState(state: SrsState, dataset: LearnDataset): SrsState {
 	for (const category of dataset.categories) {
 		for (const item of category.items) {
 			validItemIds.add(item.id);
-			for (const prompt of item.prompts) validPromptIds.add(prompt.id);
+			for (const prompt of item.prompts ?? []) validPromptIds.add(prompt.id);
 		}
 	}
 	const cards = Object.fromEntries(Object.entries(state.cards).filter(([id]) => validPromptIds.has(id)));

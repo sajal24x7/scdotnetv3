@@ -4,6 +4,7 @@
 // introduction order, so both newPerDay and dueCap go slightly higher.
 
 import { categories, introductionOrder } from './finnish-vocab';
+import { withAuthored } from './authored-prompts';
 import type { LearnSystemConfig } from '../components/learn/types';
 
 export const finnishVocabLearnConfig: LearnSystemConfig = {
@@ -12,5 +13,6 @@ export const finnishVocabLearnConfig: LearnSystemConfig = {
 	dueCap: 14,
 	itemNoun: 'word',
 	monoAnswers: false,
-	dataset: { categories, introductionOrder },
+	authorPrompts: true,
+	dataset: withAuthored({ categories, introductionOrder }),
 };

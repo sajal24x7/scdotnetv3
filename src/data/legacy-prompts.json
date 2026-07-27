@@ -1,0 +1,3519 @@
+{
+	"version": 1,
+	"items": {
+		"df": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "df-1",
+					"q": "Which command shows free and used disk space per mounted filesystem?",
+					"a": "df -h",
+					"note": "-h prints sizes in human-readable units (GB/MB) instead of raw 1K blocks. “Disk is full — which mount?” → df. “What is eating this mount?” → du."
+				},
+				{
+					"id": "df-2",
+					"q": "df -h shows plenty of free space, yet writes fail with \"No space left on device\". Which df flag reveals the likely cause?",
+					"a": "-i",
+					"note": "Inode usage — a filesystem can run out of inodes with bytes to spare."
+				}
+			]
+		},
+		"du": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "du-1",
+					"q": "You want one human-readable size per item under /home, to spot the biggest. What do you run?",
+					"a": "du -sh /home/*",
+					"note": "Canonical form here: -s (one summary line per argument) plus -h (human-readable). Pipe to `sort -rh` to rank largest-first."
+				},
+				{
+					"id": "du-2",
+					"q": "Which du flag collapses output to one summary line per argument, instead of one line per subdirectory?",
+					"a": "-s",
+					"note": "-h (human-readable sizes) is its usual companion: du -sh."
+				}
+			]
+		},
+		"lsblk": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "lsblk-1",
+					"q": "Which command lists all block devices and their partition layout as a tree?",
+					"a": "lsblk",
+					"note": "`fdisk -l` also works but is heavier and needs root."
+				},
+				{
+					"id": "lsblk-2",
+					"q": "Which lsblk flag adds filesystem type, label, and UUID to the listing?",
+					"a": "-f"
+				}
+			]
+		},
+		"mount": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "mount-1",
+					"q": "Which command, run with no arguments at all, lists every currently mounted filesystem and its options?",
+					"a": "mount",
+					"note": "findmnt shows the same data as a tree."
+				},
+				{
+					"id": "mount-2",
+					"q": "Attach the partition /dev/sdb1 at the directory /mnt/data — what do you run?",
+					"a": "mount /dev/sdb1 /mnt/data",
+					"note": "Device first, mount point second. The directory must already exist; manual mounts vanish on reboot (persist them in /etc/fstab)."
+				}
+			]
+		},
+		"fdisk": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "fdisk-1",
+					"q": "Which fdisk invocation inspects partition tables read-only, with no risk of modifying any disk?",
+					"a": "fdisk -l",
+					"note": "Without -l, fdisk opens an interactive editor that can rewrite the partition table."
+				},
+				{
+					"id": "fdisk-2",
+					"q": "`fdisk /dev/sda` (no -l) does not just print the partition table — what does it open instead?",
+					"a": "interactive partition editor",
+					"note": "Single-letter commands queue changes, and 'w' writes them to disk immediately — only enter it when you mean to repartition."
+				}
+			]
+		},
+		"blkid": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "blkid-1",
+					"q": "Which command prints each partition's UUID and filesystem type (e.g. for writing /etc/fstab)?",
+					"a": "blkid"
+				},
+				{
+					"id": "blkid-2",
+					"q": "In /etc/fstab, which identifier keeps mounting the right disk even when device names shift between boots?",
+					"a": "UUID",
+					"note": "Names like /dev/sdb1 depend on enumeration order at boot; the UUID is written into the filesystem at creation and never changes."
+				}
+			]
+		},
+		"journalctl": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "journalctl-1",
+					"q": "Which journalctl flag streams new log entries live, like `tail -f`?",
+					"a": "-f"
+				},
+				{
+					"id": "journalctl-2",
+					"kind": "cloze",
+					"q": "Only SSH entries from the last hour: journalctl -u ssh {{--since}} \"1 hour ago\"",
+					"a": "--since",
+					"note": "Takes human-friendly time expressions: \"1 hour ago\", \"yesterday\", \"2026-01-01\"."
+				}
+			]
+		},
+		"tail": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "tail-1",
+					"q": "Which tail flag keeps the file open and prints new lines as they are appended, in real time?",
+					"a": "-f",
+					"note": "Plain tail prints the last 10 lines and exits. -F additionally survives log rotation."
+				},
+				{
+					"id": "tail-2",
+					"kind": "cloze",
+					"q": "Show the last 100 lines, then keep streaming new ones: tail {{-n 100 -f}} file.log",
+					"a": "-n 100 -f"
+				}
+			]
+		},
+		"dmesg": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "dmesg-1",
+					"q": "A USB drive isn't being recognized. Which command shows kernel-level hardware messages that might explain why?",
+					"a": "dmesg",
+					"note": "The kernel ring buffer logs hardware detection and driver events like USB attach/detach."
+				},
+				{
+					"id": "dmesg-2",
+					"q": "Which dmesg flag replaces seconds-since-boot with human-readable timestamps?",
+					"a": "-T"
+				}
+			]
+		},
+		"less": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "less-1",
+					"q": "Inside less, how do you search forward for the text \"failed\"?",
+					"a": "/failed",
+					"note": "`?failed` searches backward; n / N repeat the search forward / backward."
+				},
+				{
+					"id": "less-2",
+					"q": "Inside less, which key jumps to the end of the file (the newest log lines)?",
+					"a": "G",
+					"note": "Lowercase g jumps back to the top. `less +G file` opens already at the end."
+				}
+			]
+		},
+		"logrotate": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "logrotate-1",
+					"q": "Which tool rotates, compresses, and eventually deletes old log files so they never fill the disk?",
+					"a": "logrotate",
+					"note": "Per-log rules live in /etc/logrotate.d/; a daily job runs them."
+				},
+				{
+					"id": "logrotate-2",
+					"q": "Which logrotate flag does a dry run — showing what would rotate without doing it?",
+					"a": "-d",
+					"note": "Debug mode: prints the plan without touching any file."
+				}
+			]
+		},
+		"last": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "last-1",
+					"q": "Which command shows the recent login history — who logged in, from where, and when?",
+					"a": "last",
+					"note": "It reads /var/log/wtmp; `lastb` shows failed login attempts."
+				},
+				{
+					"id": "last-2",
+					"q": "List the machine's recent reboots using `last` — what do you run?",
+					"a": "last reboot",
+					"note": "The pseudo-user \"reboot\" filters the history to system reboots."
+				}
+			]
+		},
+		"ps": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "ps-1",
+					"q": "Using ps, snapshot every running process and filter to lines mentioning nginx — what is the classic pipeline?",
+					"a": "ps aux | grep nginx",
+					"note": "pgrep -a nginx is the tidier purpose-built alternative."
+				},
+				{
+					"id": "ps-2",
+					"q": "In `ps aux`, which letter includes daemons — processes with no controlling terminal?",
+					"a": "x",
+					"note": "a = all users' processes, u = user-oriented columns (CPU/mem)."
+				}
+			]
+		},
+		"top": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "top-1",
+					"q": "A server feels sluggish — which command gives a live, auto-updating view of the heaviest processes?",
+					"a": "top",
+					"note": "Unlike ps, top refreshes continuously."
+				},
+				{
+					"id": "top-2",
+					"q": "Inside top, which key re-sorts the list by memory usage?",
+					"a": "M",
+					"note": "Shift+m. P sorts by CPU, k prompts for a PID to kill, q quits."
+				}
+			]
+		},
+		"kill": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "kill-1",
+					"q": "Which signal cannot be caught or ignored — the instant, no-cleanup kill?",
+					"a": "SIGKILL (-9)",
+					"note": "Always try plain kill (SIGTERM) first; -9 can leave temp files, locks, or corrupt state behind."
+				},
+				{
+					"id": "kill-2",
+					"q": "Which signal does `kill 1234` send when no signal is specified?",
+					"a": "SIGTERM (15)",
+					"note": "The graceful request — the process may catch it and clean up before exiting."
+				}
+			]
+		},
+		"nice": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "nice-1",
+					"q": "How do you start a heavy backup job so it yields CPU to everything else?",
+					"a": "nice -n 19 <command>",
+					"note": "Higher niceness = lower priority. renice changes it for an already-running process."
+				},
+				{
+					"id": "nice-2",
+					"q": "Which niceness value gives a process the lowest possible CPU priority?",
+					"a": "19",
+					"note": "The range is -20 (highest priority) to 19; only root may set negative values."
+				}
+			]
+		},
+		"pgrep": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "pgrep-1",
+					"q": "Which command prints just the PIDs of every running \"python\" process?",
+					"a": "pgrep python",
+					"note": "-a adds the full command line next to each PID."
+				},
+				{
+					"id": "pgrep-2",
+					"q": "Which command signals processes matched by name, instead of by PID?",
+					"a": "pkill",
+					"note": "pgrep's acting sibling — same matching rules, but sends SIGTERM (by default) instead of printing PIDs."
+				}
+			]
+		},
+		"lsof": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "lsof-1",
+					"q": "`umount /mnt/data` fails with \"target is busy\". How do you find which process is holding it open?",
+					"a": "lsof /mnt/data"
+				},
+				{
+					"id": "lsof-2",
+					"q": "Which lsof invocation shows the process using TCP port 8080?",
+					"a": "lsof -i :8080",
+					"note": "`ss -tulpn | grep 8080` is the socket-tool equivalent."
+				}
+			]
+		},
+		"ip": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "ip-1",
+					"q": "Which modern command shows a machine's IP addresses and network interfaces?",
+					"a": "ip addr show",
+					"note": "Short form: ip a. Successor to the older ifconfig."
+				},
+				{
+					"id": "ip-2",
+					"q": "View the routing table, including the default gateway — what do you run?",
+					"a": "ip route show",
+					"note": "Short form: ip r. The \"default via …\" line is the gateway."
+				}
+			]
+		},
+		"ss": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "ss-1",
+					"q": "Which command (with flags) shows every listening port and the process that owns it?",
+					"a": "ss -tulpn",
+					"note": "t/u: TCP/UDP, l: listening, p: owning process, n: numeric ports."
+				},
+				{
+					"id": "ss-2",
+					"q": "ss replaces which older socket-inspection tool?",
+					"a": "netstat"
+				}
+			]
+		},
+		"curl": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "curl-1",
+					"q": "Which curl flag fetches only the HTTP response headers, not the body?",
+					"a": "-I",
+					"note": "Long form --head. Fast way to check status, redirects, and server headers."
+				},
+				{
+					"id": "curl-2",
+					"kind": "cloze",
+					"q": "Print just the HTTP status code: curl -o /dev/null -s {{-w}} \"%{http_code}\" <url>",
+					"a": "-w",
+					"note": "-w prints the format string after the transfer; -o /dev/null discards the body, -s silences progress."
+				}
+			]
+		},
+		"ping": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "ping-1",
+					"kind": "cloze",
+					"q": "Send exactly 4 pings, then stop: ping {{-c 4}} 8.8.8.8",
+					"a": "-c 4",
+					"note": "Without -c, ping runs until Ctrl+C."
+				},
+				{
+					"id": "ping-2",
+					"q": "Which protocol does ping use?",
+					"a": "ICMP",
+					"note": "Echo request / echo reply — that's why ping can work when TCP services are down, and be blocked while they're up."
+				}
+			]
+		},
+		"traceroute": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "traceroute-1",
+					"q": "Requests to a remote server die somewhere along the path. Which command shows each router hop on the way?",
+					"a": "traceroute"
+				},
+				{
+					"id": "traceroute-2",
+					"q": "Which traceroute flag skips reverse-DNS lookups so the hop list prints much faster?",
+					"a": "-n"
+				}
+			]
+		},
+		"dig": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "dig-1",
+					"q": "A hostname resolves to the wrong address and you suspect DNS. Which command inspects its DNS records?",
+					"a": "dig <hostname>",
+					"note": "dig MX example.com queries a specific record type; @8.8.8.8 asks a specific nameserver."
+				},
+				{
+					"id": "dig-2",
+					"q": "Which dig option prints only the resolved values, omitting all query metadata?",
+					"a": "+short"
+				}
+			]
+		},
+		"chmod": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "chmod-1",
+					"q": "What permissions does `chmod 644 file.txt` set?",
+					"a": "rw-r--r--",
+					"note": "Owner read+write, group and others read-only. Read=4, write=2, execute=1; each octal digit is one of owner/group/others."
+				},
+				{
+					"id": "chmod-2",
+					"q": "Add execute permission to a script without changing any other bits — what do you run?",
+					"a": "chmod +x script.sh"
+				}
+			]
+		},
+		"chown": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "chown-1",
+					"q": "App files are owned by root but the www-data service account needs to write them. What is the correct fix?",
+					"a": "chown -R www-data:www-data /var/www/app",
+					"note": "Fix ownership — don't reach for chmod 777, which makes files world-writable."
+				},
+				{
+					"id": "chown-2",
+					"kind": "cloze",
+					"q": "Give alice ownership and set group devs in one command: chown {{alice:devs}} report.txt",
+					"a": "alice:devs",
+					"note": "user:group — one colon-joined argument sets both at once."
+				}
+			]
+		},
+		"useradd": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "useradd-1",
+					"q": "Which useradd flag ensures a home directory is created for the new user?",
+					"a": "-m"
+				},
+				{
+					"id": "useradd-2",
+					"q": "Which useradd flag sets the new account's login shell?",
+					"a": "-s",
+					"note": "e.g. useradd -m -s /bin/bash alice"
+				}
+			]
+		},
+		"passwd": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "passwd-1",
+					"q": "Disable a former contractor's login without deleting their account or files — what do you run?",
+					"a": "sudo passwd -l alice",
+					"note": "-l locks the password so the account can't authenticate."
+				},
+				{
+					"id": "passwd-2",
+					"q": "Re-enable a password-locked account — what do you run?",
+					"a": "sudo passwd -u alice",
+					"note": "-u unlocks what -l locked."
+				}
+			]
+		},
+		"sudo": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "sudo-1",
+					"q": "Which sudo flag runs the command as a specific non-root user?",
+					"a": "-u",
+					"note": "e.g. sudo -u postgres psql"
+				},
+				{
+					"id": "sudo-2",
+					"q": "What is the only safe way to edit /etc/sudoers (the file defining who may use sudo)?",
+					"a": "visudo",
+					"note": "It syntax-checks before saving — a broken sudoers can lock everyone out of root."
+				}
+			]
+		},
+		"usermod": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "usermod-1",
+					"q": "Add alice to the docker group without touching her other groups — what do you run?",
+					"a": "usermod -aG docker alice",
+					"note": "She must log out and back in for it to apply."
+				},
+				{
+					"id": "usermod-2",
+					"q": "After `usermod -G docker alice` (note: no -a), what happens to alice's other supplementary groups?",
+					"a": "all removed",
+					"note": "The classic footgun: without -a (append), -G replaces the entire supplementary group list."
+				}
+			]
+		},
+		"apt": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "apt-1",
+					"q": "Which command refreshes the local package index, and should usually run before `apt install`?",
+					"a": "apt update",
+					"note": "Otherwise install resolves against a stale index."
+				},
+				{
+					"id": "apt-2",
+					"q": "Which apt subcommand actually installs the newer versions of all installed packages?",
+					"a": "apt upgrade",
+					"note": "update only refreshes the index; upgrade does the installing."
+				}
+			]
+		},
+		"dpkg": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "dpkg-1",
+					"q": "You downloaded a standalone .deb file. Which command installs it directly from disk?",
+					"a": "dpkg -i app.deb",
+					"note": "apt normally installs from repositories; dpkg handles local files."
+				},
+				{
+					"id": "dpkg-2",
+					"q": "Find which installed package owns the file /usr/bin/curl — what do you run?",
+					"a": "dpkg -S /usr/bin/curl"
+				}
+			]
+		},
+		"dnf": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "dnf-1",
+					"q": "On a RHEL/Fedora server, what is the equivalent of Debian's `apt install`?",
+					"a": "dnf install"
+				},
+				{
+					"id": "dnf-2",
+					"q": "dnf is the successor to which older RHEL package tool?",
+					"a": "yum"
+				}
+			]
+		},
+		"apt-cache": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "apt-cache-1",
+					"q": "What version of nginx would install, and from which repository — how do you check without installing?",
+					"a": "apt-cache policy nginx"
+				},
+				{
+					"id": "apt-cache-2",
+					"q": "Search available packages by keyword using the apt-cache tool — what do you run?",
+					"a": "apt-cache search <keyword>",
+					"note": "`apt search` is the friendlier front-end for the same query."
+				}
+			]
+		},
+		"apt-list": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "apt-list-1",
+					"q": "How do you list every package currently installed on a Debian/Ubuntu system?",
+					"a": "apt list --installed",
+					"note": "dpkg -l is the lower-level equivalent."
+				},
+				{
+					"id": "apt-list-2",
+					"q": "Which command previews which packages have upgrades pending?",
+					"a": "apt list --upgradable"
+				}
+			]
+		},
+		"apt-autoremove": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "autoremove-1",
+					"q": "Which command cleans out packages that were pulled in as dependencies but are no longer needed?",
+					"a": "apt autoremove"
+				},
+				{
+					"id": "autoremove-2",
+					"q": "Which apt subcommand uninstalls a package AND deletes its config files?",
+					"a": "apt purge",
+					"note": "apt remove keeps the config files around for a future reinstall."
+				}
+			]
+		},
+		"grep": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "grep-1",
+					"q": "Search a whole directory tree for \"TODO\", showing file names and line numbers — what do you run?",
+					"a": "grep -rn \"TODO\" src/",
+					"note": "-r recurses, -n adds line numbers, -i would ignore case."
+				},
+				{
+					"id": "grep-2",
+					"q": "Which grep flag inverts the match — printing lines that do NOT contain the pattern?",
+					"a": "-v",
+					"note": "e.g. `grep -v \"^#\"` strips comment lines from a config file."
+				}
+			]
+		},
+		"find": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "find-1",
+					"kind": "cloze",
+					"q": "Delete logs untouched for over 30 days: find /var/log -name \"*.log\" {{-mtime +30}} -delete",
+					"a": "-mtime +30",
+					"note": "+30 = modified more than 30 days ago. Run without -delete first to preview."
+				},
+				{
+					"id": "find-2",
+					"q": "Find every file larger than 100 MB under / — what do you run?",
+					"a": "find / -type f -size +100M"
+				}
+			]
+		},
+		"awk": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "awk-1",
+					"q": "Print just the first whitespace-separated field of every line in a log — what do you run?",
+					"a": "awk '{print $1}' file.log"
+				},
+				{
+					"id": "awk-2",
+					"q": "In awk, which expression always refers to the LAST field of a line, whatever its position?",
+					"a": "$NF",
+					"note": "NF is the field count of the current line, so $NF is always the last field."
+				}
+			]
+		},
+		"sed": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "sed-1",
+					"kind": "cloze",
+					"q": "Write the substitution back into the file itself: sed {{-i}} 's/old/new/g' config.txt",
+					"a": "-i",
+					"note": "s = substitute; the trailing g replaces every match on each line, not just the first."
+				},
+				{
+					"id": "sed-2",
+					"q": "Delete every line matching a pattern with sed — what do you run?",
+					"a": "sed '/pattern/d' file",
+					"note": "Add -i to apply it to the file rather than just printing the result."
+				}
+			]
+		},
+		"xargs": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "xargs-1",
+					"q": "find prints a list of files, but rm doesn't read filenames from stdin. Which command bridges them?",
+					"a": "xargs",
+					"note": "It turns stdin lines into command arguments: find ... | xargs rm"
+				},
+				{
+					"id": "xargs-2",
+					"q": "Which find/xargs flag pair delimits filenames with NUL bytes, so names with spaces survive?",
+					"a": "-print0 and -0",
+					"note": "find . -name \"*.tmp\" -print0 | xargs -0 rm"
+				}
+			]
+		},
+		"cut": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "cut-1",
+					"q": "Extract just the usernames (field 1) from the colon-separated /etc/passwd — what do you run?",
+					"a": "cut -d: -f1 /etc/passwd",
+					"note": "-d sets the delimiter, -f picks the field(s)."
+				},
+				{
+					"id": "cut-2",
+					"q": "Fields split on one fixed character and nothing clever needed — which minimal tool slices them out?",
+					"a": "cut",
+					"note": "Reach for awk instead when fields are whitespace-separated or you need logic."
+				}
+			]
+		},
+		"free": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "free-1",
+					"q": "Which command shows how much RAM and swap are currently in use?",
+					"a": "free -h"
+				},
+				{
+					"id": "free-2",
+					"q": "In free's output, which column shows memory the kernel can actually give to new processes (reclaimable cache included)?",
+					"a": "available",
+					"note": "The \"free\" column alone looks alarmingly low on healthy systems — page cache counts as used."
+				}
+			]
+		},
+		"uptime": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "uptime-1",
+					"q": "The three load-average numbers from uptime cover which time windows?",
+					"a": "1, 5, and 15 minutes"
+				},
+				{
+					"id": "uptime-2",
+					"q": "On a 4-core machine, above which load average does work start queuing?",
+					"a": "4.0",
+					"note": "Load average counts runnable (and uninterruptible-IO) tasks — compare it to the core count, not to 1.0."
+				}
+			]
+		},
+		"vmstat": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "vmstat-1",
+					"q": "In `vmstat 2 5`, what are the 2 and the 5 (in order)?",
+					"a": "interval, count",
+					"note": "A snapshot every 2 seconds, 5 times total."
+				},
+				{
+					"id": "vmstat-2",
+					"q": "Persistently high si/so columns in vmstat mean the system is doing what?",
+					"a": "swapping",
+					"note": "Swap-in / swap-out traffic — a sign of memory pressure."
+				}
+			]
+		},
+		"iostat": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "iostat-1",
+					"q": "You suspect a slowdown is disk-bound, not CPU-bound. Which command breaks down per-device disk I/O?",
+					"a": "iostat -x"
+				},
+				{
+					"id": "iostat-2",
+					"q": "In iostat -x output, %util pinned near 100 means the device is what?",
+					"a": "saturated",
+					"note": "Requests arrive as fast as the device can service them."
+				}
+			]
+		},
+		"w": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "w-1",
+					"q": "Which command shows who is currently logged in AND what each of them is running?",
+					"a": "w"
+				},
+				{
+					"id": "w-2",
+					"q": "w's header line shows the same load averages as which other command?",
+					"a": "uptime",
+					"note": "Per user, w also adds idle time and current command — the things plain `who` lacks."
+				}
+			]
+		},
+		"watch": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "watch-1",
+					"q": "Re-run `df -h` every 2 seconds and watch its output update in place — what do you run?",
+					"a": "watch -n 2 df -h",
+					"note": "-n sets the refresh interval in seconds."
+				},
+				{
+					"id": "watch-2",
+					"q": "Which watch flag highlights the differences between successive refreshes?",
+					"a": "-d"
+				}
+			]
+		},
+		"tar": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "tar-1",
+					"q": "Which tar flags extract a gzip-compressed archive?",
+					"a": "-xzvf",
+					"note": "Extract, gzip, verbose, file. -t instead of -x lists contents without extracting."
+				},
+				{
+					"id": "tar-2",
+					"kind": "cloze",
+					"q": "Create a gzip-compressed archive of /data: tar {{-czvf}} backup.tar.gz /data",
+					"a": "-czvf",
+					"note": "Create, gzip, verbose, file — -f must come last, right before the archive name."
+				}
+			]
+		},
+		"rsync": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "rsync-1",
+					"q": "Which transfer mechanism makes rsync faster than scp on repeated syncs of the same directory?",
+					"a": "delta transfer",
+					"note": "Only the parts that changed since last time are sent over the wire."
+				},
+				{
+					"id": "rsync-2",
+					"q": "Which rsync flag removes destination files that no longer exist in the source, making a true mirror?",
+					"a": "--delete",
+					"note": "Powerful but destructive: run with -n (dry run) first."
+				}
+			]
+		},
+		"scp": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "scp-1",
+					"q": "Copy a single config file to a remote server over SSH, one time — simplest tool and syntax?",
+					"a": "scp config.yml user@host:/etc/app/"
+				},
+				{
+					"id": "scp-2",
+					"q": "Which scp flag copies a whole directory recursively?",
+					"a": "-r"
+				}
+			]
+		},
+		"gzip": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "gzip-1",
+					"q": "Which gzip flag keeps the original file alongside the new .gz copy?",
+					"a": "-k",
+					"note": "By default `gzip file.txt` replaces the file with file.txt.gz."
+				},
+				{
+					"id": "gzip-2",
+					"q": "Decompress file.gz using the gzip binary itself — what do you run?",
+					"a": "gzip -d file.gz",
+					"note": "gunzip is the same thing; zcat / zless read the contents without decompressing on disk."
+				}
+			]
+		},
+		"wget": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "wget-1",
+					"q": "Download a release tarball in a script, saving it under a specific filename — what do you run?",
+					"a": "wget -O app.tar.gz <url>"
+				},
+				{
+					"id": "wget-2",
+					"q": "A large download was interrupted. Which wget flag resumes it instead of restarting?",
+					"a": "-c",
+					"note": "Mnemonic: continue."
+				}
+			]
+		},
+		"dd": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "dd-1",
+					"q": "Write an ISO image onto a USB stick at /dev/sdb — what do you run?",
+					"a": "dd if=ubuntu.iso of=/dev/sdb bs=4M status=progress",
+					"note": "if= input file, of= output device, bs= block size, status=progress shows a live counter."
+				},
+				{
+					"id": "dd-2",
+					"q": "dd overwrites whatever of= names, with no confirmation. Which command do you run first to verify the target device?",
+					"a": "lsblk",
+					"note": "A mistyped device name destroys a disk — check the device tree before every dd run."
+				}
+			]
+		},
+		"systemctl": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "systemctl-1",
+					"q": "Which systemctl verb makes a service start automatically at every boot (without starting it now)?",
+					"a": "enable",
+					"note": "start runs it right now; they're independent. `enable --now` does both at once."
+				},
+				{
+					"id": "systemctl-2",
+					"q": "A service just failed. Which command shows its state plus its most recent log lines in one view?",
+					"a": "systemctl status <unit>"
+				}
+			]
+		},
+		"crontab": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "crontab-1",
+					"kind": "cloze",
+					"q": "Run backup.sh every day at 3:00 AM: {{0 3 * * *}} /opt/scripts/backup.sh",
+					"a": "0 3 * * *",
+					"note": "Minute 0 of hour 3, every day. Edit with crontab -e, list with crontab -l."
+				},
+				{
+					"id": "crontab-2",
+					"q": "What are the five cron fields, in order?",
+					"a": "minute, hour, day-of-month, month, day-of-week"
+				}
+			]
+		},
+		"journalctl-u": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "journalctl-u-1",
+					"q": "A service failed to start. Which command shows just that service's recent journal entries?",
+					"a": "journalctl -u <service>"
+				},
+				{
+					"id": "journalctl-u-2",
+					"q": "Filter a unit's journal to error-priority-and-worse messages only — which flag and value do you add?",
+					"a": "-p err"
+				}
+			]
+		},
+		"timedatectl": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "timedatectl-1",
+					"q": "Cron jobs fire at odd times and you suspect the server's timezone. Which command shows time, timezone, and NTP state?",
+					"a": "timedatectl",
+					"note": "Fix it with timedatectl set-timezone <tz>."
+				},
+				{
+					"id": "timedatectl-2",
+					"q": "Turn on NTP clock synchronization with timedatectl — what do you run?",
+					"a": "timedatectl set-ntp true"
+				}
+			]
+		},
+		"at": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "at-1",
+					"q": "Which scheduler runs a command exactly once at a future time, rather than on a recurring schedule?",
+					"a": "at",
+					"note": "echo \"systemctl restart app\" | at 02:00 — cron is for recurring jobs."
+				},
+				{
+					"id": "at-2",
+					"q": "List the pending `at` jobs — what do you run?",
+					"a": "atq"
+				},
+				{
+					"id": "at-3",
+					"q": "Cancel pending `at` job number 3 — what do you run?",
+					"a": "atrm 3"
+				}
+			]
+		},
+		"systemd-analyze": {
+			"deck": "linux",
+			"prompts": [
+				{
+					"id": "systemd-analyze-1",
+					"q": "Boot feels slow. Which command ranks services by how long each took to start?",
+					"a": "systemd-analyze blame"
+				},
+				{
+					"id": "systemd-analyze-2",
+					"q": "See the machine's total boot time, split into firmware/loader/kernel/userspace — what do you run?",
+					"a": "systemd-analyze",
+					"note": "No arguments needed; blame and critical-chain drill into the slow parts."
+				}
+			]
+		},
+		"a-phonemic": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "a-phonemic-1",
+					"q": "How many ways can a Finnish letter be pronounced?",
+					"a": "one",
+					"note": "Fully phonemic: every letter is always pronounced, always the same way — never silent, never context-dependent."
+				},
+				{
+					"id": "a-phonemic-2",
+					"q": "What is the technical term for a spelling system where one letter always equals one sound?",
+					"a": "phonemic",
+					"note": "Finnish spelling is fully phonemic — if you can spell it, you can say it: kioski."
+				}
+			]
+		},
+		"a-stress": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "a-stress-1",
+					"q": "Which syllable of a Finnish word carries the stress?",
+					"a": "the first",
+					"note": "Every word, no exceptions — even long loanwords."
+				},
+				{
+					"id": "a-stress-2",
+					"q": "Mark the stress: Kalevala → ?",
+					"a": "KA-le-va-la",
+					"note": "First syllable, always."
+				}
+			]
+		},
+		"a-length": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "a-length-1",
+					"q": "How long is a doubled letter held, compared to a single one?",
+					"a": "twice as long",
+					"note": "And length changes meaning: tuli (fire) vs tuuli (wind) vs tulli (customs)."
+				},
+				{
+					"id": "a-length-2",
+					"q": "tuli, tuuli, tulli — three different words. What single feature distinguishes them?",
+					"a": "sound length",
+					"note": "fire · wind · customs — short vs doubled (long) letters."
+				}
+			]
+		},
+		"a-vowels": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "a-vowels-1",
+					"q": "Which three letters are Finnish's front vowels?",
+					"a": "ä ö y",
+					"note": "They are independent letters, not accented a/o/u."
+				},
+				{
+					"id": "a-vowels-2",
+					"q": "Which three letters are the back vowels?",
+					"a": "a o u",
+					"note": "e and i are neutral — they pair with either set."
+				}
+			]
+		},
+		"a-harmony": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "a-harmony-1",
+					"q": "Which rule says a native word's vowels must be all back or all front, never mixed?",
+					"a": "vowel harmony",
+					"note": "e/i are neutral and go with either set: talossa (back) vs metsässä (front)."
+				},
+				{
+					"id": "a-harmony-2",
+					"kind": "cloze",
+					"q": "metsä + “in the forest” = metsä{{ssä}}",
+					"a": "ssä",
+					"note": "Front-vowel word (ä) takes the front form -ssä; back-vowel talo takes -ssa: talossa."
+				}
+			]
+		},
+		"a-suffix-pairs": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "a-suffix-pairs-1",
+					"kind": "cloze",
+					"q": "Harmony pairs: -ssa/-ssä, -lla/{{-llä}}, -ko/{{-kö}}, -vat/{{-vät}}",
+					"a": "-llä · -kö · -vät",
+					"note": "Every suffix that isn't neutral comes in a matched back/front pair."
+				},
+				{
+					"id": "a-suffix-pairs-2",
+					"kind": "cloze",
+					"q": "“Do you eat?” = Syöt{{kö}}?",
+					"a": "kö",
+					"note": "syödä has front vowels (ö), so the question particle takes its front form -kö — compare Puhutko? (back)."
+				}
+			]
+		},
+		"a-diphthongs": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "a-diphthongs-1",
+					"q": "How many syllables does a diphthong like uo occupy?",
+					"a": "one",
+					"note": "Both vowels glide together in a single syllable, pronounced exactly as written: suo (swamp), tie (road), yö (night)."
+				},
+				{
+					"id": "a-diphthongs-2",
+					"q": "What does tie mean?",
+					"a": "road",
+					"note": "diphthong ie"
+				}
+			]
+		},
+		"b-principle": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "b-principle-1",
+					"q": "In consonant gradation, what are the two grades a stem alternates between?",
+					"a": "strong and weak",
+					"note": "Called KPT because it hits the stops k, p, t; the basic form is strong, most endings trigger the weak grade."
+				},
+				{
+					"id": "b-principle-2",
+					"q": "Which grade appears when an ending closes the syllable (like genitive -n)?",
+					"a": "weak",
+					"note": "kauppa → kaupan"
+				},
+				{
+					"id": "b-principle-3",
+					"q": "Which two endings keep the strong grade instead of weakening it?",
+					"a": "partitive and illative",
+					"note": "Partitive -a/-ä and the illative don't close the preceding syllable the same way."
+				}
+			]
+		},
+		"b-kk": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "b-kk-1",
+					"q": "kk weakens to what in the weak grade?",
+					"a": "k",
+					"note": "kukka → kukan (flower)"
+				},
+				{
+					"id": "b-kk-2",
+					"kind": "cloze",
+					"q": "kukka + -n (genitive) = ku{{ka}}n",
+					"a": "ka",
+					"note": "kk → k in the weak grade (flower)."
+				}
+			]
+		},
+		"b-pp": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "b-pp-1",
+					"q": "pp weakens to what in the weak grade?",
+					"a": "p",
+					"note": "kauppa → kaupan (shop)"
+				},
+				{
+					"id": "b-pp-2",
+					"kind": "cloze",
+					"q": "kauppa + -n (genitive) = kau{{pa}}n",
+					"a": "pa",
+					"note": "pp → p — the canonical KPT example (shop)."
+				}
+			]
+		},
+		"b-tt": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "b-tt-1",
+					"q": "tt weakens to what in the weak grade?",
+					"a": "t",
+					"note": "tyttö → tytön (girl)"
+				},
+				{
+					"id": "b-tt-2",
+					"kind": "cloze",
+					"q": "tyttö + -n (genitive) = ty{{tö}}n",
+					"a": "tö",
+					"note": "tt → t in the weak grade (girl)."
+				}
+			]
+		},
+		"b-k": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "b-k-1",
+					"q": "In the weak grade, what usually happens to a single k?",
+					"a": "it disappears",
+					"note": "jalka → jalan (foot). After u/y it turns into v instead: puku → puvun."
+				},
+				{
+					"id": "b-k-2",
+					"kind": "cloze",
+					"q": "jalka + -n (genitive) = ja{{la}}n",
+					"a": "la",
+					"note": "k drops out entirely (foot)."
+				},
+				{
+					"id": "b-k-3",
+					"kind": "cloze",
+					"q": "puku + -n (genitive) = pu{{vu}}n",
+					"a": "vu",
+					"note": "k → v after u (suit)."
+				},
+				{
+					"id": "b-k-4",
+					"q": "After u or y, a weakening k becomes which consonant?",
+					"a": "v",
+					"note": "puku → puvun (suit); elsewhere it just disappears (jalka → jalan)."
+				}
+			]
+		},
+		"b-p": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "b-p-1",
+					"q": "p weakens to what?",
+					"a": "v",
+					"note": "leipä → leivän (bread)"
+				},
+				{
+					"id": "b-p-2",
+					"kind": "cloze",
+					"q": "leipä + -n (genitive) = lei{{vä}}n",
+					"a": "vä",
+					"note": "p → v (bread); front harmony (ä) keeps the ending -än."
+				}
+			]
+		},
+		"b-t": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "b-t-1",
+					"q": "t weakens to what?",
+					"a": "d",
+					"note": "katu → kadun (street); pöytä → pöydän (table)"
+				},
+				{
+					"id": "b-t-2",
+					"kind": "cloze",
+					"q": "katu + -n (genitive) = ka{{du}}n",
+					"a": "du",
+					"note": "t → d in the weak grade (street)."
+				},
+				{
+					"id": "b-t-3",
+					"kind": "cloze",
+					"q": "pöytä + -n (genitive) = pöy{{dä}}n",
+					"a": "dä",
+					"note": "t → d (table); front harmony (ä)."
+				}
+			]
+		},
+		"b-nk": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "b-nk-1",
+					"q": "nk weakens to what?",
+					"a": "ng",
+					"note": "Helsinki → Helsingin; kenkä → kengän (shoe)"
+				},
+				{
+					"id": "b-nk-2",
+					"kind": "cloze",
+					"q": "Helsinki + -n (genitive) = Helsi{{ngi}}n",
+					"a": "ngi",
+					"note": "nk → ng in the weak grade."
+				},
+				{
+					"id": "b-nk-3",
+					"kind": "cloze",
+					"q": "kenkä + -n (genitive) = ke{{ngä}}n",
+					"a": "ngä",
+					"note": "nk → ng (shoe); front harmony (ä)."
+				}
+			]
+		},
+		"b-assim": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "b-assim-1",
+					"q": "What does nt weaken to?",
+					"a": "nn",
+					"note": "ranta → rannan (shore)"
+				},
+				{
+					"id": "b-assim-2",
+					"q": "What does lt weaken to?",
+					"a": "ll",
+					"note": "ilta → illan (evening)"
+				},
+				{
+					"id": "b-assim-3",
+					"kind": "cloze",
+					"q": "parta + -n (genitive) = pa{{rra}}n",
+					"a": "rra",
+					"note": "rt → rr (beard)."
+				},
+				{
+					"id": "b-assim-4",
+					"kind": "cloze",
+					"q": "kampa + -n (genitive) = ka{{mma}}n",
+					"a": "mma",
+					"note": "mp → mm (comb)."
+				}
+			]
+		},
+		"c-grid": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "c-grid-1",
+					"q": "The s-cases (-ssa/-sta/-Vn) translate which three English prepositions?",
+					"a": "in, out of, into",
+					"note": "Interior cases: talossa · talosta · taloon."
+				},
+				{
+					"id": "c-grid-2",
+					"q": "The l-cases (-lla/-lta/-lle) translate which three English prepositions?",
+					"a": "on, off, onto",
+					"note": "Exterior (surface) cases: pöydällä · pöydältä · pöydälle."
+				},
+				{
+					"id": "c-grid-3",
+					"q": "talossa vs pöydällä — which one means 'on'?",
+					"a": "pöydällä",
+					"note": "l-cases = surface (on the table); s-cases = interior (talossa — in the house)."
+				}
+			]
+		},
+		"c-ine": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "c-ine-1",
+					"q": "Which case ending means “in / inside”?",
+					"a": "-ssa / -ssä",
+					"note": "Inessive. talossa — in the house; Helsingissä — in Helsinki."
+				},
+				{
+					"id": "c-ine-2",
+					"q": "Apply it: “in the shop” (kauppa) → ?",
+					"a": "kaupassa",
+					"note": "Two rules fire at once: KPT weakens pp→p, harmony picks -ssa (back vowels)."
+				},
+				{
+					"id": "c-ine-3",
+					"q": "Apply it: “in Finland” (Suomi) → ?",
+					"a": "Suomessa",
+					"note": "i-final nouns often shift i→e in the stem: Suomi → Suome- + -ssa."
+				}
+			]
+		},
+		"c-ela": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "c-ela-1",
+					"q": "Which case ending means 'out of / from inside'?",
+					"a": "-sta / -stä",
+					"note": "Elative. talosta — out of the house; Suomesta — from Finland."
+				},
+				{
+					"id": "c-ela-2",
+					"q": "Apply it: 'from Finland' (Suomi) → ?",
+					"a": "Suomesta",
+					"note": "Same i→e stem shift as the inessive."
+				},
+				{
+					"id": "c-ela-3",
+					"q": "Apply it: 'out of the shop' (kauppa) → ?",
+					"a": "kaupasta",
+					"note": "pp→p (KPT) plus back harmony -sta."
+				}
+			]
+		},
+		"c-ill": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "c-ill-1",
+					"q": "What is the commonest shape of the illative ('into')?",
+					"a": "lengthened final vowel + -n",
+					"note": "talo → taloon; Helsinki → Helsinkiin"
+				},
+				{
+					"id": "c-ill-2",
+					"q": "Apply it: 'into the shop' (kauppa) → ?",
+					"a": "kauppaan",
+					"note": "Illative keeps the strong grade (pp stays pp) — unlike -ssa/-sta."
+				},
+				{
+					"id": "c-ill-3",
+					"q": "talossa vs taloon — which one means 'into'?",
+					"a": "taloon",
+					"note": "Illative = motion toward the inside; inessive talossa = static 'in'."
+				}
+			]
+		},
+		"c-ade": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "c-ade-1",
+					"q": "Which case ending means 'on / at' (and also expresses 'have')?",
+					"a": "-lla / -llä",
+					"note": "Adessive. pöydällä — on the table; also Minulla on... — I have..."
+				},
+				{
+					"id": "c-ade-2",
+					"q": "Apply it: 'on the street' (katu) → ?",
+					"a": "kadulla",
+					"note": "t→d (KPT) plus back harmony -lla."
+				},
+				{
+					"id": "c-ade-3",
+					"q": "Apply it: 'on the table' (pöytä) → ?",
+					"a": "pöydällä",
+					"note": "t→d plus front harmony -llä."
+				}
+			]
+		},
+		"c-abl": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "c-abl-1",
+					"q": "Which case ending means 'off / from a surface'?",
+					"a": "-lta / -ltä",
+					"note": "Ablative. pöydältä — off the table."
+				},
+				{
+					"id": "c-abl-2",
+					"q": "Apply it: 'off the table' (pöytä) → ?",
+					"a": "pöydältä",
+					"note": "t→d plus front harmony -ltä."
+				}
+			]
+		},
+		"c-all": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "c-all-1",
+					"q": "Which case ending means 'onto / to' (a surface or person)?",
+					"a": "-lle",
+					"note": "Allative — note it doesn't harmonize (always -lle). pöydälle — onto the table."
+				},
+				{
+					"id": "c-all-2",
+					"q": "Apply it: 'onto the table' (pöytä) → ?",
+					"a": "pöydälle",
+					"note": "t→d (KPT); -lle is invariant."
+				}
+			]
+		},
+		"d-nom": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "d-nom-1",
+					"q": "What grade does the nominative (dictionary) form always keep?",
+					"a": "strong",
+					"note": "kauppa on iso — the shop is big."
+				},
+				{
+					"id": "d-nom-2",
+					"q": "Which case marks the subject of a Finnish sentence?",
+					"a": "nominative",
+					"note": "The bare form — also the form dictionaries list: kauppa on iso."
+				}
+			]
+		},
+		"d-gen": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "d-gen-1",
+					"q": "Which suffix forms the genitive?",
+					"a": "-n",
+					"note": "And the stem weakens to the weak grade: talon ovi — the house's door."
+				},
+				{
+					"id": "d-gen-2",
+					"q": "Apply it: 'the shop's' — kauppa + -n → ?",
+					"a": "kaupan",
+					"note": "pp→p gradation strikes again in the genitive: kaupan ovi — the shop's door."
+				}
+			]
+		},
+		"d-part": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "d-part-1",
+					"q": "What does the partitive express?",
+					"a": "an incomplete amount",
+					"note": "The signature Finnish case: Juon kahvia — I drink (some) coffee."
+				},
+				{
+					"id": "d-part-2",
+					"q": "Apply it: 'some water' — vesi → ?",
+					"a": "vettä",
+					"note": "vesi is an e-stem: partitive is vettä, not 'vesiä'."
+				},
+				{
+					"id": "d-part-3",
+					"q": "Which grade does the partitive keep?",
+					"a": "strong",
+					"note": "Like the illative — it doesn't close the syllable the same way."
+				}
+			]
+		},
+		"d-part-num": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "d-part-num-1",
+					"q": "After the number 'kaksi' (two), what case does the noun take?",
+					"a": "partitive singular",
+					"note": "Not the plural: kaksi taloa — two houses. Applies to all numbers 2+."
+				},
+				{
+					"id": "d-part-num-2",
+					"kind": "cloze",
+					"q": "“three cats” = kolme kissa{{a}}",
+					"a": "a",
+					"note": "Numbers 2+ take the partitive singular: kissa → kissaa."
+				}
+			]
+		},
+		"d-part-neg": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "d-part-neg-1",
+					"q": "What case does the object take in a negative sentence?",
+					"a": "partitive",
+					"note": "Juon kahvin (I'll drink the coffee) → En juo kahvia (I don't drink coffee)."
+				},
+				{
+					"id": "d-part-neg-2",
+					"q": "Say: 'I don't drink coffee.'",
+					"a": "En juo kahvia.",
+					"note": "Negative verb en + bare stem juo; object kahvi → partitive kahvia."
+				}
+			]
+		},
+		"e-endings": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "e-endings-1",
+					"kind": "cloze",
+					"q": "puhua: puhun, puhut, puhuu, puhu{{mme}}, puhu{{tte}}, puhu{{vat}}",
+					"a": "mme · tte · vat",
+					"note": "One set of personal endings for every verb: -n -t – -mme -tte -vat; 3sg (puhuu) lengthens the vowel instead."
+				},
+				{
+					"id": "e-endings-2",
+					"q": "How does the 3rd person singular (hän) mark the verb, instead of adding an ending?",
+					"a": "lengthens the final vowel",
+					"note": "puhu- → puhuu"
+				},
+				{
+					"id": "e-endings-3",
+					"q": "Which part of the sentence makes the pronouns minä/sinä optional?",
+					"a": "the verb ending",
+					"note": "puhun already means 'I speak' — the -n carries the person, no minä needed."
+				}
+			]
+		},
+		"e-olla": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "e-olla-1",
+					"q": "olla (to be) — the minä form ('I am')?",
+					"a": "olen",
+					"note": "Full irregular paradigm: olen, olet, on, olemme, olette, ovat."
+				},
+				{
+					"id": "e-olla-2",
+					"q": "Say: 'I am Sajal.'",
+					"a": "Olen Sajal.",
+					"note": "olla is irregular — memorize the full paradigm."
+				},
+				{
+					"id": "e-olla-3",
+					"q": "olla (to be) — the hän form ('he/she is')?",
+					"a": "on",
+					"note": "Hän on opettaja — he/she is a teacher."
+				}
+			]
+		},
+		"e-type1": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "e-type1-1",
+					"q": "Type 1 verbs (like puhua) — how do you find the stem?",
+					"a": "Drop the final -a/-ä.",
+					"note": "puhua → puhu-, then add endings: puhun"
+				},
+				{
+					"id": "e-type1-2",
+					"q": "Conjugate sanoa (to say) for minä.",
+					"a": "sanon",
+					"note": "Type 1: drop -a → sano-, add -n."
+				}
+			]
+		},
+		"e-type2": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "e-type2-1",
+					"q": "Type 2 verbs (like syödä) — how do you find the stem?",
+					"a": "Drop the final -da/-dä.",
+					"note": "syödä → syö-, then add endings: syön"
+				},
+				{
+					"id": "e-type2-2",
+					"q": "Conjugate juoda (to drink) for minä.",
+					"a": "juon",
+					"note": "Type 2: drop -da → juo-, add -n."
+				}
+			]
+		},
+		"e-type3": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "e-type3-1",
+					"q": "Type 3 verbs (like tulla) — how do you find the stem?",
+					"a": "drop two letters, add -e-",
+					"note": "tulla → tul- → tule-, then add endings: tulen"
+				},
+				{
+					"id": "e-type3-2",
+					"q": "Conjugate mennä (to go) for minä.",
+					"a": "menen",
+					"note": "Type 3: menn- → men- + -e- → mene-, add -n."
+				},
+				{
+					"id": "e-type3-3",
+					"q": "Conjugate opiskella (to study) for minä.",
+					"a": "opiskelen",
+					"note": "Type 3: opiskell- → opiskel- + -e- → opiskele-, add -n."
+				}
+			]
+		},
+		"e-type4": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "e-type4-1",
+					"q": "Type 4 verbs (like haluta) — how do you find the stem?",
+					"a": "drop -t-, keep -a-",
+					"note": "haluta → halua-, then add endings: haluan"
+				},
+				{
+					"id": "e-type4-2",
+					"q": "Conjugate haluta (to want) for minä.",
+					"a": "haluan",
+					"note": "Type 4: haluta → halua- + -n."
+				}
+			]
+		},
+		"e-neg": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "e-neg-1",
+					"q": "In a negative sentence, what form does the main verb take?",
+					"a": "bare stem",
+					"note": "The negative word itself conjugates: en/et/ei/emme/ette/eivät. puhun → en puhu."
+				},
+				{
+					"id": "e-neg-2",
+					"q": "Negate: hän syö (he/she eats).",
+					"a": "hän ei syö",
+					"note": "ei is the 3sg negative form; syö is the bare stem."
+				},
+				{
+					"id": "e-neg-3",
+					"q": "Which negative verb form goes with minä ('I don't')?",
+					"a": "en",
+					"note": "The negative word conjugates like a verb: en, et, ei, emme, ette, eivät."
+				}
+			]
+		},
+		"e-q": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "e-q-1",
+					"q": "How do you form a yes/no question in Finnish?",
+					"a": "verb first + -ko/-kö",
+					"note": "Puhutko suomea? — Do you speak Finnish?"
+				},
+				{
+					"id": "e-q-2",
+					"q": "Ask: 'Is the coffee good?' (on, hyvää)",
+					"a": "Onko kahvi hyvää?",
+					"note": "on + -ko → Onko; back harmony."
+				}
+			]
+		},
+		"f-han": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "f-han-1",
+					"q": "Which single pronoun covers both 'he' and 'she'?",
+					"a": "hän",
+					"note": "Finnish has no grammatical gender — one pronoun does both."
+				},
+				{
+					"id": "f-han-2",
+					"q": "How many articles (a/an/the) does Finnish have?",
+					"a": "none",
+					"note": "Definiteness comes from context and word order: Hän on opettaja — he/she is a teacher."
+				}
+			]
+		},
+		"f-have": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "f-have-1",
+					"q": "How does Finnish express 'to have' without a verb for it?",
+					"a": "adessive + olla",
+					"note": "Literally 'on me is': Minulla on koira — I have a dog."
+				},
+				{
+					"id": "f-have-2",
+					"q": "Say: 'I have a dog.'",
+					"a": "Minulla on koira.",
+					"note": "minulla = on me (adessive of minä)."
+				}
+			]
+		},
+		"f-nofuture": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "f-nofuture-1",
+					"q": "Finnish has no future tense — what expresses future time instead?",
+					"a": "present tense + context",
+					"note": "Huomenna menen kauppaan — tomorrow I'll go to the shop."
+				},
+				{
+					"id": "f-nofuture-2",
+					"q": "Say: 'Tomorrow I go to the shop.' (as Finnish would say it)",
+					"a": "Huomenna menen kauppaan.",
+					"note": "No future tense needed — huomenna (tomorrow) does the work."
+				}
+			]
+		},
+		"g-uralic": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "g-uralic-1",
+					"q": "What language family does Finnish belong to?",
+					"a": "Uralic",
+					"note": "A completely separate tree from English, Hindi, Russian, French (all Indo-European)."
+				},
+				{
+					"id": "g-uralic-2",
+					"q": "English, Hindi, Russian and French all belong to which family — the one Finnish is NOT part of?",
+					"a": "Indo-European",
+					"note": "Finnish is Uralic — genuinely unrelated, which is why the vocabulary shares no roots with English."
+				}
+			]
+		},
+		"g-relatives": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "g-relatives-1",
+					"q": "Finnish's closest major relative language?",
+					"a": "Estonian",
+					"note": "Same Finnic branch of Uralic; Hungarian is a far more distant cousin."
+				},
+				{
+					"id": "g-relatives-2",
+					"q": "Finnish is to Hungarian roughly as English is to which language?",
+					"a": "Persian",
+					"note": "Both Uralic, but separated by thousands of years — family, yet far apart on the tree."
+				}
+			]
+		},
+		"g-sami": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "g-sami-1",
+					"q": "What are the Sami languages of Lapland, in relation to Finnish?",
+					"a": "Uralic cousins",
+					"note": "A separate branch of the Uralic family — not dialects of Finnish."
+				}
+			]
+		},
+		"g-loans": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "g-loans-1",
+					"q": "What does kuningas mean?",
+					"a": "king",
+					"note": "An ancient loan still ≈ Proto-Germanic *kuningaz — Finnish preserves old loans better than the languages that lent them."
+				},
+				{
+					"id": "g-loans-2",
+					"q": "sata (hundred) was borrowed from which ancient language family, ~4000 years ago?",
+					"a": "Indo-Iranian",
+					"note": "One of the oldest loanwords in Finnish."
+				},
+				{
+					"id": "g-loans-3",
+					"q": "äiti (mother) was borrowed from which language?",
+					"a": "Gothic",
+					"note": "From Gothic aiþei."
+				},
+				{
+					"id": "g-loans-4",
+					"q": "kuningas (king) preserves a word from which proto-language?",
+					"a": "Proto-Germanic",
+					"note": "Still ≈ *kuningaz — Finnish changes so slowly it preserves the loan better than the lenders."
+				}
+			]
+		},
+		"g-agricola": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "g-agricola-1",
+					"q": "Who is called the father of written Finnish?",
+					"a": "Mikael Agricola",
+					"note": "Published the first Finnish book, Abckiria, ~1543."
+				},
+				{
+					"id": "g-agricola-2",
+					"q": "What was the first book printed in Finnish?",
+					"a": "Abckiria",
+					"note": "An ABC-primer by bishop Mikael Agricola, ~1543; his New Testament followed in 1548."
+				},
+				{
+					"id": "g-agricola-3",
+					"q": "Roughly what year did the first printed Finnish book (Abckiria) appear?",
+					"a": "~1543",
+					"note": "By Mikael Agricola — written Finnish is young."
+				}
+			]
+		},
+		"g-registers": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "g-registers-1",
+					"q": "What is the Finnish name for the written standard language?",
+					"a": "kirjakieli",
+					"note": "vs puhekieli (everyday speech): minä olen (written) → mä oon (spoken)."
+				},
+				{
+					"id": "g-registers-2",
+					"q": "What is the Finnish name for everyday spoken Finnish?",
+					"a": "puhekieli",
+					"note": "A systematic compression of kirjakieli — learn the book language first: minä olen → mä oon."
+				}
+			]
+		},
+		"h-talo": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-talo-1",
+					"q": "What does talo mean?",
+					"a": "house"
+				},
+				{
+					"id": "h-talo-2",
+					"q": "Finnish for 'house'?",
+					"a": "talo"
+				},
+				{
+					"id": "h-talo-3",
+					"kind": "cloze",
+					"q": "talo + “in the house” = talo{{ssa}}",
+					"a": "ssa",
+					"note": "Back-vowel word takes -ssa; no gradation — talo is the clean model noun for the case grid."
+				}
+			]
+		},
+		"h-katu": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-katu-1",
+					"q": "What does katu mean?",
+					"a": "street"
+				},
+				{
+					"id": "h-katu-2",
+					"q": "Finnish for 'street'?",
+					"a": "katu"
+				},
+				{
+					"id": "h-katu-3",
+					"q": "Apply the adessive: 'on the street' — katu → ?",
+					"a": "kadulla",
+					"note": "t→d (KPT) plus back harmony -lla."
+				}
+			]
+		},
+		"h-kauppa": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-kauppa-1",
+					"q": "What does kauppa mean?",
+					"a": "shop"
+				},
+				{
+					"id": "h-kauppa-2",
+					"q": "Finnish for 'shop'?",
+					"a": "kauppa"
+				},
+				{
+					"id": "h-kauppa-3",
+					"q": "Apply the genitive: kauppa + -n → ?",
+					"a": "kaupan",
+					"note": "pp→p — the textbook KPT example."
+				}
+			]
+		},
+		"h-kirja": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-kirja-1",
+					"q": "What does kirja mean?",
+					"a": "book"
+				},
+				{
+					"id": "h-kirja-2",
+					"q": "Finnish for 'book'?",
+					"a": "kirja"
+				},
+				{
+					"id": "h-kirja-3",
+					"kind": "cloze",
+					"q": "kirja + “in the book” = kirja{{ssa}}",
+					"a": "ssa",
+					"note": "Back harmony picks -ssa; no gradation to worry about."
+				}
+			]
+		},
+		"h-vesi": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-vesi-1",
+					"q": "What does *vesi* mean?",
+					"a": "water"
+				},
+				{
+					"id": "h-vesi-2",
+					"q": "Finnish for \"water\"?",
+					"a": "vesi"
+				},
+				{
+					"id": "h-vesi-3",
+					"kind": "cloze",
+					"q": "\"I drink water\" = Juon {{vettä}}.",
+					"a": "vettä",
+					"note": "vesi is an e-stem: partitive is vettä (not \"vesiä\"). Drinking = incomplete amount = partitive."
+				}
+			]
+		},
+		"h-kahvi": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-kahvi-1",
+					"q": "What does kahvi mean?",
+					"a": "coffee"
+				},
+				{
+					"id": "h-kahvi-2",
+					"q": "Finnish for 'coffee'?",
+					"a": "kahvi"
+				},
+				{
+					"id": "h-kahvi-3",
+					"q": "Say: 'I drink coffee.'",
+					"a": "Juon kahvia.",
+					"note": "Drinking = incomplete amount = partitive object."
+				}
+			]
+		},
+		"h-maito": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-maito-1",
+					"q": "What does maito mean?",
+					"a": "milk"
+				},
+				{
+					"id": "h-maito-2",
+					"q": "Finnish for 'milk'?",
+					"a": "maito"
+				},
+				{
+					"id": "h-maito-3",
+					"q": "Apply the genitive: maito + -n → ?",
+					"a": "maidon",
+					"note": "t→d gradation."
+				}
+			]
+		},
+		"h-leipa": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-leipa-1",
+					"q": "What does leipä mean?",
+					"a": "bread"
+				},
+				{
+					"id": "h-leipa-2",
+					"q": "Finnish for 'bread'?",
+					"a": "leipä"
+				},
+				{
+					"id": "h-leipa-3",
+					"q": "Apply the genitive: leipä + -n → ?",
+					"a": "leivän",
+					"note": "p→v gradation; front harmony (ä)."
+				}
+			]
+		},
+		"h-kissa": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-kissa-1",
+					"q": "What does kissa mean?",
+					"a": "cat"
+				},
+				{
+					"id": "h-kissa-2",
+					"q": "Finnish for 'cat'?",
+					"a": "kissa"
+				},
+				{
+					"id": "h-kissa-3",
+					"q": "Say: 'the cat's name' (using kissa and nimi)",
+					"a": "kissan nimi",
+					"note": "Genitive -n; kissa has no gradation."
+				}
+			]
+		},
+		"h-koira": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-koira-1",
+					"q": "What does koira mean?",
+					"a": "dog"
+				},
+				{
+					"id": "h-koira-2",
+					"q": "Finnish for 'dog'?",
+					"a": "koira"
+				},
+				{
+					"id": "h-koira-3",
+					"q": "Say: 'I have a dog.'",
+					"a": "Minulla on koira.",
+					"note": "Adessive + olla — Finnish's way of saying 'have'."
+				}
+			]
+		},
+		"h-poyta": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-poyta-1",
+					"q": "What does pöytä mean?",
+					"a": "table"
+				},
+				{
+					"id": "h-poyta-2",
+					"q": "Finnish for 'table'?",
+					"a": "pöytä"
+				},
+				{
+					"id": "h-poyta-3",
+					"q": "Apply the adessive: 'on the table' — pöytä → ?",
+					"a": "pöydällä",
+					"note": "t→d gradation; front harmony -llä; model noun for the exterior cases."
+				}
+			]
+		},
+		"h-adjs": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-adjs-1",
+					"q": "What does hyvä mean?",
+					"a": "good"
+				},
+				{
+					"id": "h-adjs-2",
+					"q": "Finnish for 'small'?",
+					"a": "pieni",
+					"note": "e-stem: partitive is pientä."
+				},
+				{
+					"id": "h-adjs-3",
+					"q": "What does Hyvää päivää! mean, literally used as a greeting?",
+					"a": "Good day!",
+					"note": "Partitive form of hyvä päivä — a set greeting phrase."
+				},
+				{
+					"id": "h-adjs-4",
+					"q": "What does iso mean?",
+					"a": "big"
+				},
+				{
+					"id": "h-adjs-5",
+					"q": "What does pieni mean?",
+					"a": "small",
+					"note": "e-stem: partitive is pientä."
+				}
+			]
+		},
+		"h-greet": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-greet-1",
+					"q": "What does kiitos mean?",
+					"a": "thanks"
+				},
+				{
+					"id": "h-greet-2",
+					"q": "What does anteeksi mean?",
+					"a": "sorry / excuse me"
+				},
+				{
+					"id": "h-greet-3",
+					"q": "Two casual ways to say 'hi' in Finnish?",
+					"a": "hei and moi"
+				}
+			]
+		},
+		"h-num": {
+			"deck": "finnish",
+			"prompts": [
+				{
+					"id": "h-num-1",
+					"q": "Count 1 to 5 in Finnish.",
+					"a": "yksi, kaksi, kolme, neljä, viisi"
+				},
+				{
+					"id": "h-num-2",
+					"q": "Count 6 to 10 in Finnish.",
+					"a": "kuusi, seitsemän, kahdeksan, yhdeksän, kymmenen"
+				},
+				{
+					"id": "h-num-3",
+					"q": "What is 'seitsemän'?",
+					"a": "seven"
+				}
+			]
+		},
+		"fv-nahda": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-nahda-1",
+					"q": "What does *nähdä* mean?",
+					"a": "to see"
+				},
+				{
+					"id": "fv-nahda-2",
+					"q": "Finnish for 'to see'?",
+					"a": "nähdä"
+				}
+			]
+		},
+		"fv-tehda": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-tehda-1",
+					"q": "What does *tehdä* mean?",
+					"a": "to do / to make"
+				},
+				{
+					"id": "fv-tehda-2",
+					"q": "Finnish for 'to do' or 'to make'?",
+					"a": "tehdä"
+				}
+			]
+		},
+		"fv-saada": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-saada-1",
+					"q": "What does *saada* mean?",
+					"a": "to get / to receive"
+				},
+				{
+					"id": "fv-saada-2",
+					"q": "Finnish for 'to get' or 'to receive'?",
+					"a": "saada"
+				}
+			]
+		},
+		"fv-antaa": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-antaa-1",
+					"q": "What does *antaa* mean?",
+					"a": "to give"
+				},
+				{
+					"id": "fv-antaa-2",
+					"q": "Finnish for 'to give'?",
+					"a": "antaa"
+				}
+			]
+		},
+		"fv-ottaa": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-ottaa-1",
+					"q": "What does *ottaa* mean?",
+					"a": "to take"
+				},
+				{
+					"id": "fv-ottaa-2",
+					"q": "Finnish for 'to take'?",
+					"a": "ottaa"
+				}
+			]
+		},
+		"fv-rakastaa": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-rakastaa-1",
+					"q": "What does *rakastaa* mean?",
+					"a": "to love"
+				},
+				{
+					"id": "fv-rakastaa-2",
+					"q": "Finnish for 'to love'?",
+					"a": "rakastaa"
+				}
+			]
+		},
+		"fv-asua": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-asua-1",
+					"q": "What does *asua* mean?",
+					"a": "to live / to reside"
+				},
+				{
+					"id": "fv-asua-2",
+					"q": "Finnish for 'to live (reside)'?",
+					"a": "asua"
+				},
+				{
+					"id": "fv-asua-3",
+					"q": "Conjugate: asua → minä (I)?",
+					"a": "asun",
+					"note": "Type 1: stem = infinitive minus -a/-ä, then the personal ending — same pattern as puhua → puhun."
+				}
+			]
+		},
+		"fv-ostaa": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-ostaa-1",
+					"q": "What does *ostaa* mean?",
+					"a": "to buy"
+				},
+				{
+					"id": "fv-ostaa-2",
+					"q": "Finnish for 'to buy'?",
+					"a": "ostaa"
+				},
+				{
+					"id": "fv-ostaa-3",
+					"q": "Conjugate: ostaa → minä (I)?",
+					"a": "ostan",
+					"note": "Type 1: stem = infinitive minus -a/-ä, then the personal ending — same pattern as puhua → puhun."
+				}
+			]
+		},
+		"fv-aiti": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-aiti-1",
+					"q": "What does *äiti* mean?",
+					"a": "mother"
+				},
+				{
+					"id": "fv-aiti-2",
+					"q": "Finnish for 'mother'?",
+					"a": "äiti"
+				},
+				{
+					"id": "fv-aiti-3",
+					"q": "Genitive (-n) of äiti?",
+					"a": "äidin",
+					"note": "KPT: t → d before a closing suffix, same pattern as katu → kadun."
+				}
+			]
+		},
+		"fv-isa": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-isa-1",
+					"q": "What does *isä* mean?",
+					"a": "father"
+				},
+				{
+					"id": "fv-isa-2",
+					"q": "Finnish for 'father'?",
+					"a": "isä"
+				}
+			]
+		},
+		"fv-veli": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-veli-1",
+					"q": "What does *veli* mean?",
+					"a": "brother"
+				},
+				{
+					"id": "fv-veli-2",
+					"q": "Finnish for 'brother'?",
+					"a": "veli"
+				}
+			]
+		},
+		"fv-sisko": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-sisko-1",
+					"q": "What does *sisko* mean?",
+					"a": "sister"
+				},
+				{
+					"id": "fv-sisko-2",
+					"q": "Finnish for 'sister'?",
+					"a": "sisko"
+				}
+			]
+		},
+		"fv-poika": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-poika-1",
+					"q": "What does *poika* mean?",
+					"a": "son / boy"
+				},
+				{
+					"id": "fv-poika-2",
+					"q": "Finnish for 'son' or 'boy'?",
+					"a": "poika"
+				}
+			]
+		},
+		"fv-tytar": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-tytar-1",
+					"q": "What does *tytär* mean?",
+					"a": "daughter"
+				},
+				{
+					"id": "fv-tytar-2",
+					"q": "Finnish for 'daughter'?",
+					"a": "tytär"
+				}
+			]
+		},
+		"fv-vaimo": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-vaimo-1",
+					"q": "What does *vaimo* mean?",
+					"a": "wife"
+				},
+				{
+					"id": "fv-vaimo-2",
+					"q": "Finnish for 'wife'?",
+					"a": "vaimo"
+				}
+			]
+		},
+		"fv-perhe": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-perhe-1",
+					"q": "What does *perhe* mean?",
+					"a": "family"
+				},
+				{
+					"id": "fv-perhe-2",
+					"q": "Finnish for 'family'?",
+					"a": "perhe"
+				}
+			]
+		},
+		"fv-ruoka": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-ruoka-1",
+					"q": "What does *ruoka* mean?",
+					"a": "food"
+				},
+				{
+					"id": "fv-ruoka-2",
+					"q": "Finnish for 'food'?",
+					"a": "ruoka"
+				}
+			]
+		},
+		"fv-liha": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-liha-1",
+					"q": "What does *liha* mean?",
+					"a": "meat"
+				},
+				{
+					"id": "fv-liha-2",
+					"q": "Finnish for 'meat'?",
+					"a": "liha"
+				}
+			]
+		},
+		"fv-kala": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-kala-1",
+					"q": "What does *kala* mean?",
+					"a": "fish"
+				},
+				{
+					"id": "fv-kala-2",
+					"q": "Finnish for 'fish'?",
+					"a": "kala"
+				}
+			]
+		},
+		"fv-omena": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-omena-1",
+					"q": "What does *omena* mean?",
+					"a": "apple"
+				},
+				{
+					"id": "fv-omena-2",
+					"q": "Finnish for 'apple'?",
+					"a": "omena"
+				}
+			]
+		},
+		"fv-keitto": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-keitto-1",
+					"q": "What does *keitto* mean?",
+					"a": "soup"
+				},
+				{
+					"id": "fv-keitto-2",
+					"q": "Finnish for 'soup'?",
+					"a": "keitto"
+				},
+				{
+					"id": "fv-keitto-3",
+					"q": "Genitive (-n) of keitto?",
+					"a": "keiton",
+					"note": "KPT: tt → t before a closing suffix, same pattern as tyttö → tytön."
+				}
+			]
+		},
+		"fv-tee": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-tee-1",
+					"q": "What does *tee* mean?",
+					"a": "tea"
+				},
+				{
+					"id": "fv-tee-2",
+					"q": "Finnish for 'tea'?",
+					"a": "tee"
+				}
+			]
+		},
+		"fv-tanaan": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-tanaan-1",
+					"q": "What does *tänään* mean?",
+					"a": "today"
+				},
+				{
+					"id": "fv-tanaan-2",
+					"q": "Finnish for 'today'?",
+					"a": "tänään"
+				}
+			]
+		},
+		"fv-huomenna": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-huomenna-1",
+					"q": "What does *huomenna* mean?",
+					"a": "tomorrow"
+				},
+				{
+					"id": "fv-huomenna-2",
+					"q": "Finnish for 'tomorrow'?",
+					"a": "huomenna"
+				}
+			]
+		},
+		"fv-eilen": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-eilen-1",
+					"q": "What does *eilen* mean?",
+					"a": "yesterday"
+				},
+				{
+					"id": "fv-eilen-2",
+					"q": "Finnish for 'yesterday'?",
+					"a": "eilen"
+				}
+			]
+		},
+		"fv-viikko": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-viikko-1",
+					"q": "What does *viikko* mean?",
+					"a": "week"
+				},
+				{
+					"id": "fv-viikko-2",
+					"q": "Finnish for 'week'?",
+					"a": "viikko"
+				},
+				{
+					"id": "fv-viikko-3",
+					"q": "Genitive (-n) of viikko?",
+					"a": "viikon",
+					"note": "KPT: kk → k before a closing suffix, same pattern as kukka → kukan."
+				}
+			]
+		},
+		"fv-paiva": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-paiva-1",
+					"q": "What does *päivä* mean?",
+					"a": "day"
+				},
+				{
+					"id": "fv-paiva-2",
+					"q": "Finnish for 'day'?",
+					"a": "päivä"
+				}
+			]
+		},
+		"fv-ilta": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-ilta-1",
+					"q": "What does *ilta* mean?",
+					"a": "evening"
+				},
+				{
+					"id": "fv-ilta-2",
+					"q": "Finnish for 'evening'?",
+					"a": "ilta"
+				},
+				{
+					"id": "fv-ilta-3",
+					"q": "Genitive (-n) of ilta?",
+					"a": "illan",
+					"note": "Assimilation: lt → ll before a closing suffix."
+				}
+			]
+		},
+		"fv-tunti": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-tunti-1",
+					"q": "What does *tunti* mean?",
+					"a": "hour"
+				},
+				{
+					"id": "fv-tunti-2",
+					"q": "Finnish for 'hour'?",
+					"a": "tunti"
+				},
+				{
+					"id": "fv-tunti-3",
+					"q": "Genitive (-n) of tunti?",
+					"a": "tunnin",
+					"note": "Assimilation: nt → nn before a closing suffix, same pattern as ranta → rannan."
+				}
+			]
+		},
+		"fv-minuutti": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-minuutti-1",
+					"q": "What does *minuutti* mean?",
+					"a": "minute"
+				},
+				{
+					"id": "fv-minuutti-2",
+					"q": "Finnish for 'minute'?",
+					"a": "minuutti"
+				},
+				{
+					"id": "fv-minuutti-3",
+					"q": "Genitive (-n) of minuutti?",
+					"a": "minuutin",
+					"note": "KPT: tt → t before a closing suffix, same pattern as tyttö → tytön."
+				}
+			]
+		},
+		"fv-kuka": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-kuka-1",
+					"q": "What does *kuka* mean?",
+					"a": "who"
+				},
+				{
+					"id": "fv-kuka-2",
+					"q": "Finnish for 'who'?",
+					"a": "kuka"
+				}
+			]
+		},
+		"fv-mika": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-mika-1",
+					"q": "What does *mikä* mean?",
+					"a": "what / which"
+				},
+				{
+					"id": "fv-mika-2",
+					"q": "Finnish for 'what' or 'which'?",
+					"a": "mikä"
+				}
+			]
+		},
+		"fv-missa": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-missa-1",
+					"q": "What does *missä* mean?",
+					"a": "where"
+				},
+				{
+					"id": "fv-missa-2",
+					"q": "Finnish for 'where'?",
+					"a": "missä"
+				}
+			]
+		},
+		"fv-milloin": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-milloin-1",
+					"q": "What does *milloin* mean?",
+					"a": "when"
+				},
+				{
+					"id": "fv-milloin-2",
+					"q": "Finnish for 'when'?",
+					"a": "milloin"
+				}
+			]
+		},
+		"fv-miksi": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-miksi-1",
+					"q": "What does *miksi* mean?",
+					"a": "why"
+				},
+				{
+					"id": "fv-miksi-2",
+					"q": "Finnish for 'why'?",
+					"a": "miksi"
+				}
+			]
+		},
+		"fv-miten": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-miten-1",
+					"q": "What does *miten* mean?",
+					"a": "how"
+				},
+				{
+					"id": "fv-miten-2",
+					"q": "Finnish for 'how'?",
+					"a": "miten"
+				}
+			]
+		},
+		"fv-mina": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-mina-1",
+					"q": "What does *minä* mean?",
+					"a": "I"
+				},
+				{
+					"id": "fv-mina-2",
+					"q": "Finnish for 'I'?",
+					"a": "minä"
+				}
+			]
+		},
+		"fv-sina": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-sina-1",
+					"q": "What does *sinä* mean?",
+					"a": "you (singular)"
+				},
+				{
+					"id": "fv-sina-2",
+					"q": "Finnish for 'you' (one person)?",
+					"a": "sinä"
+				}
+			]
+		},
+		"fv-han": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-han-1",
+					"q": "What does *hän* mean?",
+					"a": "he / she"
+				},
+				{
+					"id": "fv-han-2",
+					"q": "Finnish for 'he' or 'she'?",
+					"a": "hän"
+				}
+			]
+		},
+		"fv-me": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-me-1",
+					"q": "What does *me* mean?",
+					"a": "we"
+				},
+				{
+					"id": "fv-me-2",
+					"q": "Finnish for 'we'?",
+					"a": "me"
+				}
+			]
+		},
+		"fv-koti": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-koti-1",
+					"q": "What does *koti* mean?",
+					"a": "home"
+				},
+				{
+					"id": "fv-koti-2",
+					"q": "Finnish for 'home'?",
+					"a": "koti"
+				},
+				{
+					"id": "fv-koti-3",
+					"q": "Genitive (-n) of koti?",
+					"a": "kodin",
+					"note": "KPT: t → d before a closing suffix, same pattern as katu → kadun."
+				}
+			]
+		},
+		"fv-koulu": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-koulu-1",
+					"q": "What does *koulu* mean?",
+					"a": "school"
+				},
+				{
+					"id": "fv-koulu-2",
+					"q": "Finnish for 'school'?",
+					"a": "koulu"
+				}
+			]
+		},
+		"fv-tyo": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-tyo-1",
+					"q": "What does *työ* mean?",
+					"a": "work / job"
+				},
+				{
+					"id": "fv-tyo-2",
+					"q": "Finnish for 'work' or 'job'?",
+					"a": "työ"
+				}
+			]
+		},
+		"fv-kirjasto": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-kirjasto-1",
+					"q": "What does *kirjasto* mean?",
+					"a": "library"
+				},
+				{
+					"id": "fv-kirjasto-2",
+					"q": "Finnish for 'library'?",
+					"a": "kirjasto"
+				}
+			]
+		},
+		"fv-ravintola": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-ravintola-1",
+					"q": "What does *ravintola* mean?",
+					"a": "restaurant"
+				},
+				{
+					"id": "fv-ravintola-2",
+					"q": "Finnish for 'restaurant'?",
+					"a": "ravintola"
+				}
+			]
+		},
+		"fv-kirkko": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-kirkko-1",
+					"q": "What does *kirkko* mean?",
+					"a": "church"
+				},
+				{
+					"id": "fv-kirkko-2",
+					"q": "Finnish for 'church'?",
+					"a": "kirkko"
+				},
+				{
+					"id": "fv-kirkko-3",
+					"q": "Genitive (-n) of kirkko?",
+					"a": "kirkon",
+					"note": "KPT: kk → k before a closing suffix, same pattern as kukka → kukan."
+				}
+			]
+		},
+		"fv-kaupunki": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-kaupunki-1",
+					"q": "What does *kaupunki* mean?",
+					"a": "city"
+				},
+				{
+					"id": "fv-kaupunki-2",
+					"q": "Finnish for 'city'?",
+					"a": "kaupunki"
+				},
+				{
+					"id": "fv-kaupunki-3",
+					"q": "Genitive (-n) of kaupunki?",
+					"a": "kaupungin",
+					"note": "KPT: nk → ng before a closing suffix, same pattern as Helsinki → Helsingin."
+				}
+			]
+		},
+		"fv-kyla": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-kyla-1",
+					"q": "What does *kylä* mean?",
+					"a": "village"
+				},
+				{
+					"id": "fv-kyla-2",
+					"q": "Finnish for 'village'?",
+					"a": "kylä"
+				}
+			]
+		},
+		"fv-nopea": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-nopea-1",
+					"q": "What does *nopea* mean?",
+					"a": "fast"
+				},
+				{
+					"id": "fv-nopea-2",
+					"q": "Finnish for 'fast'?",
+					"a": "nopea"
+				}
+			]
+		},
+		"fv-hidas": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-hidas-1",
+					"q": "What does *hidas* mean?",
+					"a": "slow"
+				},
+				{
+					"id": "fv-hidas-2",
+					"q": "Finnish for 'slow'?",
+					"a": "hidas"
+				}
+			]
+		},
+		"fv-vanha": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-vanha-1",
+					"q": "What does *vanha* mean?",
+					"a": "old"
+				},
+				{
+					"id": "fv-vanha-2",
+					"q": "Finnish for 'old'?",
+					"a": "vanha"
+				}
+			]
+		},
+		"fv-uusi": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-uusi-1",
+					"q": "What does *uusi* mean?",
+					"a": "new"
+				},
+				{
+					"id": "fv-uusi-2",
+					"q": "Finnish for 'new'?",
+					"a": "uusi"
+				}
+			]
+		},
+		"fv-kylma": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-kylma-1",
+					"q": "What does *kylmä* mean?",
+					"a": "cold"
+				},
+				{
+					"id": "fv-kylma-2",
+					"q": "Finnish for 'cold'?",
+					"a": "kylmä"
+				}
+			]
+		},
+		"fv-kuuma": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-kuuma-1",
+					"q": "What does *kuuma* mean?",
+					"a": "hot"
+				},
+				{
+					"id": "fv-kuuma-2",
+					"q": "Finnish for 'hot'?",
+					"a": "kuuma"
+				}
+			]
+		},
+		"fv-pitka": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-pitka-1",
+					"q": "What does *pitkä* mean?",
+					"a": "long / tall"
+				},
+				{
+					"id": "fv-pitka-2",
+					"q": "Finnish for 'long' or 'tall'?",
+					"a": "pitkä"
+				}
+			]
+		},
+		"fv-helppo": {
+			"deck": "finnish-vocab",
+			"prompts": [
+				{
+					"id": "fv-helppo-1",
+					"q": "What does *helppo* mean?",
+					"a": "easy"
+				},
+				{
+					"id": "fv-helppo-2",
+					"q": "Finnish for 'easy'?",
+					"a": "helppo"
+				},
+				{
+					"id": "fv-helppo-3",
+					"q": "Genitive (-n) of helppo?",
+					"a": "helpon",
+					"note": "KPT: pp → p before a closing suffix, same pattern as kauppa → kaupan."
+				}
+			]
+		},
+		"vocab-maverick": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-maverick-p1",
+					"q": "What does *maverick* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 23,…",
+					"note": "Merriam-Webster's Word of the Day for July 23, 2026 is: maverick  \\MAV-rik\\&nbsp;  noun Maverick refers to a person who refuses to follow the customs or rules of a group; in other words, a nonconformist . // Ayo has always been a bit of a maverick in the fashion world, inventing new trends rather than following them. See the entry > Examples: “ [Luis] Alvarez has been described as a scientific I"
+				},
+				{
+					"id": "vocab-maverick-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 23, 2026 is: maverick  \\MAV-rik\\&nbsp;  noun Maverick refers to a person who refuses to follow the customs or rules of a group; in other words, a nonconformist . // Ayo has always been a bit of a maverick in the fashion world, inventing new trends rather than following them. See the entry > Examples: “ [Luis] Alvarez has been described as a scientific I",
+					"a": "maverick"
+				}
+			]
+		},
+		"vocab-demigirl": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-demigirl-p1",
+					"q": "What does *demigirl* mean?",
+					"a": "One who identifies as partially, but not completely,…",
+					"note": "( neologism ) One who identifies as partially, but not completely, female ."
+				},
+				{
+					"id": "vocab-demigirl-p2",
+					"q": "Which word means: ( neologism ) One who identifies as partially, but not completely, female .",
+					"a": "demigirl"
+				}
+			]
+		},
+		"vocab-apprenticeship": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-apprenticeship-p1",
+					"q": "What does *apprenticeship* mean?",
+					"a": "The condition of, or the time served by,…",
+					"note": "The condition of, or the time served by, an apprentice ."
+				},
+				{
+					"id": "vocab-apprenticeship-p2",
+					"q": "Which word means: The condition of, or the time served by, an apprentice .",
+					"a": "apprenticeship"
+				}
+			]
+		},
+		"vocab-glamour": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-glamour-p1",
+					"q": "What does *glamour* mean?",
+					"a": "Originally, enchantment",
+					"note": "( uncountable ) Originally, enchantment ; magic charm ; especially, the effect of a spell that causes one to see objects in a form that differs from reality, typically to make filthy, ugly, or repulsive things seem beauteous ."
+				},
+				{
+					"id": "vocab-glamour-p2",
+					"q": "Which word means: ( uncountable ) Originally, enchantment ; magic charm ; especially, the effect of a spell that causes one to see objects in a form that differs from reality, typically to make filthy, ugly, or repulsive things seem beauteous .",
+					"a": "glamour"
+				}
+			]
+		},
+		"vocab-docking": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-docking-p1",
+					"q": "What does *docking* mean?",
+					"a": "The securing of a vessel to the quayside…",
+					"note": "( nautical ) The securing of a vessel to the quayside with cables ."
+				},
+				{
+					"id": "vocab-docking-p2",
+					"q": "Which word means: ( nautical ) The securing of a vessel to the quayside with cables .",
+					"a": "docking"
+				}
+			]
+		},
+		"vocab-plurality": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-plurality-p1",
+					"q": "What does *plurality* mean?",
+					"a": "The state of being plural ",
+					"note": "( uncountable ) The state of being plural ."
+				},
+				{
+					"id": "vocab-plurality-p2",
+					"q": "Which word means: ( uncountable ) The state of being plural .",
+					"a": "plurality"
+				}
+			]
+		},
+		"vocab-scacchic": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-scacchic-p1",
+					"q": "What does *scacchic* mean?",
+					"a": "Of or relating to chess ",
+					"note": "( rare ) Of or relating to chess ."
+				},
+				{
+					"id": "vocab-scacchic-p2",
+					"q": "Which word means: ( rare ) Of or relating to chess .",
+					"a": "scacchic"
+				}
+			]
+		},
+		"vocab-deprecate": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-deprecate-p1",
+					"q": "What does *deprecate* mean?",
+					"a": "To express disapproval of, protest or plead against",
+					"note": "( transitive ) To express disapproval of, protest or plead against."
+				},
+				{
+					"id": "vocab-deprecate-p2",
+					"q": "Which word means: ( transitive ) To express disapproval of, protest or plead against.",
+					"a": "deprecate"
+				}
+			]
+		},
+		"vocab-boston-marriage": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-boston-marriage-p1",
+					"q": "What does *Boston marriage* mean?",
+					"a": "A long-term monogamous relationship between two unmarried women,…",
+					"note": "( historical ) A long-term monogamous relationship between two unmarried women, especially in New England between the 18th and early 20th centuries."
+				},
+				{
+					"id": "vocab-boston-marriage-p2",
+					"q": "Which word means: ( historical ) A long-term monogamous relationship between two unmarried women, especially in New England between the 18th and early 20th centuries.",
+					"a": "Boston marriage"
+				}
+			]
+		},
+		"vocab-pyramidal": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-pyramidal-p1",
+					"q": "What does *pyramidal* mean?",
+					"a": "Pyramid -shaped",
+					"note": "( geometry ) Pyramid -shaped. ( crystallography ) Tetragonal ."
+				},
+				{
+					"id": "vocab-pyramidal-p2",
+					"q": "Which word means: ( geometry ) Pyramid -shaped. ( crystallography ) Tetragonal .",
+					"a": "pyramidal"
+				}
+			]
+		},
+		"vocab-stalwart": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-stalwart-p1",
+					"q": "What does *stalwart* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 22,…",
+					"note": "Merriam-Webster's Word of the Day for July 22, 2026 is: stalwart  \\STAWL-wert\\&nbsp;  adjective Stalwart is a formal word used to describe someone or something that is very loyal and dedicated or that is physically or mentally strong. // He was a stalwart civil rights supporter throughout his political career. // The football team's stalwart defense only gave up a single field goal in the second"
+				},
+				{
+					"id": "vocab-stalwart-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 22, 2026 is: stalwart  \\STAWL-wert\\&nbsp;  adjective Stalwart is a formal word used to describe someone or something that is very loyal and dedicated or that is physically or mentally strong. // He was a stalwart civil rights supporter throughout his political career. // The football team's stalwart defense only gave up a single field goal in the second",
+					"a": "stalwart"
+				}
+			]
+		},
+		"vocab-dog-days": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-dog-days-p1",
+					"q": "What does *dog days* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 21,…",
+					"note": "Merriam-Webster's Word of the Day for July 21, 2026 is: dog days  \\DAWG-DAYZ\\&nbsp;  plural noun Dog days is a plural noun that refers to the hottest time of the year, which in the northern hemisphere is usually between early July and early September. Dog days can also refer to a period of stagnation or inactivity suggestive of hot, sultry weather when it can be difficult to summon the energy re"
+				},
+				{
+					"id": "vocab-dog-days-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 21, 2026 is: dog days  \\DAWG-DAYZ\\&nbsp;  plural noun Dog days is a plural noun that refers to the hottest time of the year, which in the northern hemisphere is usually between early July and early September. Dog days can also refer to a period of stagnation or inactivity suggestive of hot, sultry weather when it can be difficult to summon the energy re",
+					"a": "dog days"
+				}
+			]
+		},
+		"vocab-raffish": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-raffish-p1",
+					"q": "What does *raffish* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 20,…",
+					"note": "Merriam-Webster's Word of the Day for July 20, 2026 is: raffish  \\RAF-ish\\&nbsp;  adjective Raffish describes people and things that show a careless but usually attractive unconventionality. // She didn't expect to like him but his raffish charm quickly won her over. See the entry > Examples: \"Three or four decades ago, the newspaperman was appealingly raffish —at once a bum who drank too much a"
+				},
+				{
+					"id": "vocab-raffish-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 20, 2026 is: raffish  \\RAF-ish\\&nbsp;  adjective Raffish describes people and things that show a careless but usually attractive unconventionality. // She didn't expect to like him but his raffish charm quickly won her over. See the entry > Examples: \"Three or four decades ago, the newspaperman was appealingly raffish —at once a bum who drank too much a",
+					"a": "raffish"
+				}
+			]
+		},
+		"vocab-accentuate": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-accentuate-p1",
+					"q": "What does *accentuate* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 19,…",
+					"note": "Merriam-Webster's Word of the Day for July 19, 2026 is: accentuate  \\ak-SEN-shu-wayt\\&nbsp;  verb To accentuate something is to make it more noticeable. // He likes to wear clothes that accentuate his muscular build. See the entry > Examples: “My mother could make me anything I wanted to be. As a child she transformed me into a swan, a mermaid, a white Persian cat dressed like an elegant Victori"
+				},
+				{
+					"id": "vocab-accentuate-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 19, 2026 is: accentuate  \\ak-SEN-shu-wayt\\&nbsp;  verb To accentuate something is to make it more noticeable. // He likes to wear clothes that accentuate his muscular build. See the entry > Examples: “My mother could make me anything I wanted to be. As a child she transformed me into a swan, a mermaid, a white Persian cat dressed like an elegant Victori",
+					"a": "accentuate"
+				}
+			]
+		},
+		"vocab-quid-pro-quo": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-quid-pro-quo-p1",
+					"q": "What does *quid pro quo* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 18,…",
+					"note": "Merriam-Webster's Word of the Day for July 18, 2026 is: quid pro quo  \\kwid-proh-KWOH\\&nbsp;  noun Quid pro quo refers to something that is given to you or done for you in return for something you have given to or done for someone else. // If they do us this favor, they’ll expect a quid pro quo . See the entry > Examples: “For each proposal, it’s almost guaranteed you’ll have to negotiate with a"
+				},
+				{
+					"id": "vocab-quid-pro-quo-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 18, 2026 is: quid pro quo  \\kwid-proh-KWOH\\&nbsp;  noun Quid pro quo refers to something that is given to you or done for you in return for something you have given to or done for someone else. // If they do us this favor, they’ll expect a quid pro quo . See the entry > Examples: “For each proposal, it’s almost guaranteed you’ll have to negotiate with a",
+					"a": "quid pro quo"
+				}
+			]
+		},
+		"vocab-obdurate": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-obdurate-p1",
+					"q": "What does *obdurate* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 17,…",
+					"note": "Merriam-Webster's Word of the Day for July 17, 2026 is: obdurate  \\AHB-duh-rut\\&nbsp;  adjective Obdurate is a formal word that means \"resistant to persuasion.\" It is usually used to describe someone who is not willing to change their methods or opinions, or something that is not easily altered. // Though obdurate problems loom, the organization under its new leadership is poised to make real an"
+				},
+				{
+					"id": "vocab-obdurate-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 17, 2026 is: obdurate  \\AHB-duh-rut\\&nbsp;  adjective Obdurate is a formal word that means \"resistant to persuasion.\" It is usually used to describe someone who is not willing to change their methods or opinions, or something that is not easily altered. // Though obdurate problems loom, the organization under its new leadership is poised to make real an",
+					"a": "obdurate"
+				}
+			]
+		},
+		"vocab-bibelot": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-bibelot-p1",
+					"q": "What does *bibelot* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 16,…",
+					"note": "Merriam-Webster's Word of the Day for July 16, 2026 is: bibelot  \\BEE-buh-loh\\&nbsp;  noun A bibelot is a small household ornament or decorative object. // His grandfather set up a table every week at the flea market where he sold all sorts of bibelots and bric-a-brac, from ceramic figurines to tiny blown glass sculptures. See the entry > Examples: “One by one, the beads and baubles and charms a"
+				},
+				{
+					"id": "vocab-bibelot-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 16, 2026 is: bibelot  \\BEE-buh-loh\\&nbsp;  noun A bibelot is a small household ornament or decorative object. // His grandfather set up a table every week at the flea market where he sold all sorts of bibelots and bric-a-brac, from ceramic figurines to tiny blown glass sculptures. See the entry > Examples: “One by one, the beads and baubles and charms a",
+					"a": "bibelot"
+				}
+			]
+		},
+		"vocab-loquacious": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-loquacious-p1",
+					"q": "What does *loquacious* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 15,…",
+					"note": "Merriam-Webster's Word of the Day for July 15, 2026 is: loquacious  \\loh-KWAY-shus\\&nbsp;  adjective Loquacious means “liking to talk and talking smoothly and easily.” Someone described as loquacious might also be called wordy (prone to using more words than necessary) or garrulous (tending to talk a lot). // We were entertained all afternoon by our host’s loquacious parrot and its nonstop scrip"
+				},
+				{
+					"id": "vocab-loquacious-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 15, 2026 is: loquacious  \\loh-KWAY-shus\\&nbsp;  adjective Loquacious means “liking to talk and talking smoothly and easily.” Someone described as loquacious might also be called wordy (prone to using more words than necessary) or garrulous (tending to talk a lot). // We were entertained all afternoon by our host’s loquacious parrot and its nonstop scrip",
+					"a": "loquacious"
+				}
+			]
+		},
+		"vocab-yaw": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-yaw-p1",
+					"q": "What does *yaw* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 14,…",
+					"note": "Merriam-Webster's Word of the Day for July 14, 2026 is: yaw  \\YAW\\&nbsp;  verb The verb yaw when used for the action of a ship, aircraft, spacecraft, or projectile means \"to move to the left or right especially in an uncontrolled manner.\" More broadly, yaw is used as a synonym of alternate to mean \"to change from one to another repeatedly.\" // The rogue wave hit the vessel, and the ship yawed ha"
+				},
+				{
+					"id": "vocab-yaw-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 14, 2026 is: yaw  \\YAW\\&nbsp;  verb The verb yaw when used for the action of a ship, aircraft, spacecraft, or projectile means \"to move to the left or right especially in an uncontrolled manner.\" More broadly, yaw is used as a synonym of alternate to mean \"to change from one to another repeatedly.\" // The rogue wave hit the vessel, and the ship yawed ha",
+					"a": "yaw"
+				}
+			]
+		},
+		"vocab-union": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-union-p1",
+					"q": "What does *union* mean?",
+					"a": "The act of uniting or joining two or…",
+					"note": "( countable ) The act of uniting or joining two or more things into one."
+				},
+				{
+					"id": "vocab-union-p2",
+					"q": "Which word means: ( countable ) The act of uniting or joining two or more things into one.",
+					"a": "union"
+				}
+			]
+		},
+		"vocab-itinerant": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-itinerant-p1",
+					"q": "What does *itinerant* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 24,…",
+					"note": "Merriam-Webster's Word of the Day for July 24, 2026 is: itinerant  \\eye-TIN-uh-runt\\&nbsp;  adjective Itinerant describes someone who travels from place to place or only stays in a place for a short amount of time. It is used especially for people who travel in a circuit for their profession. // Being an itinerant musician gave her the opportunity to see the wonders of the world with her own eye"
+				},
+				{
+					"id": "vocab-itinerant-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 24, 2026 is: itinerant  \\eye-TIN-uh-runt\\&nbsp;  adjective Itinerant describes someone who travels from place to place or only stays in a place for a short amount of time. It is used especially for people who travel in a circuit for their profession. // Being an itinerant musician gave her the opportunity to see the wonders of the world with her own eye",
+					"a": "itinerant"
+				}
+			]
+		},
+		"vocab-life-car": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-life-car-p1",
+					"q": "What does *life car* mean?",
+					"a": "A watertight boat or box , travelling on…",
+					"note": "( historical ) A watertight boat or box , travelling on a line from a wrecked vessel to the shore , used to haul people through the waves in a rescue."
+				},
+				{
+					"id": "vocab-life-car-p2",
+					"q": "Which word means: ( historical ) A watertight boat or box , travelling on a line from a wrecked vessel to the shore , used to haul people through the waves in a rescue.",
+					"a": "life car"
+				}
+			]
+		},
+		"vocab-vituperate": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-vituperate-p1",
+					"q": "What does *vituperate* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 25,…",
+					"note": "Merriam-Webster's Word of the Day for July 25, 2026 is: vituperate  \\vye-TOO-puh-rayt\\&nbsp;  verb To vituperate someone is to criticize or censure them severely or abusively. Vituperate can also mean \"to use harsh condemnatory language.\" // They were vituperated for betraying their friends. See the entry > Examples: \"On the world stage where Britain's royal family have traditionally been in the"
+				},
+				{
+					"id": "vocab-vituperate-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 25, 2026 is: vituperate  \\vye-TOO-puh-rayt\\&nbsp;  verb To vituperate someone is to criticize or censure them severely or abusively. Vituperate can also mean \"to use harsh condemnatory language.\" // They were vituperated for betraying their friends. See the entry > Examples: \"On the world stage where Britain's royal family have traditionally been in the",
+					"a": "vituperate"
+				}
+			]
+		},
+		"vocab-first-strike": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-first-strike-p1",
+					"q": "What does *first strike* mean?",
+					"a": "An attack launched without warning in the absence…",
+					"note": "( military ) An attack (typically nuclear ) launched without warning in the absence of a prior attack by one's opponent , with the intention of destroying the opponent's ability to retaliate ."
+				},
+				{
+					"id": "vocab-first-strike-p2",
+					"q": "Which word means: ( military ) An attack (typically nuclear ) launched without warning in the absence of a prior attack by one's opponent , with the intention of destroying the opponent's ability to retaliate .",
+					"a": "first strike"
+				}
+			]
+		},
+		"vocab-aerie": {
+			"deck": "vocab",
+			"prompts": [
+				{
+					"id": "vocab-aerie-p1",
+					"q": "What does *aerie* mean?",
+					"a": "Merriam-Webster's Word of the Day for July 26,…",
+					"note": "Merriam-Webster's Word of the Day for July 26, 2026 is: aerie  \\AIR-ee\\&nbsp;  noun Aerie refers to the nest of a bird (such as an eagle or hawk) built high up on a cliff or on the top of a mountain. It can also be used for a room or building built high up so that people inside can see things happening below them. // From the lighthouse's aerie tourists can get a bird's-eye view of the rocky coa"
+				},
+				{
+					"id": "vocab-aerie-p2",
+					"q": "Which word means: Merriam-Webster's Word of the Day for July 26, 2026 is: aerie  \\AIR-ee\\&nbsp;  noun Aerie refers to the nest of a bird (such as an eagle or hawk) built high up on a cliff or on the top of a mountain. It can also be used for a room or building built high up so that people inside can see things happening below them. // From the lighthouse's aerie tourists can get a bird's-eye view of the rocky coa",
+					"a": "aerie"
+				}
+			]
+		}
+	}
+}

@@ -2,8 +2,10 @@
 	"words": {
 		"maverick": {
 			"word": "maverick",
-			"pos": "other",
-			"gloss": "Merriam-Webster's Word of the Day for July 23, 2026 is: maverick  \\MAV-rik\\&nbsp;  noun Maverick refers to a person who refuses to follow the customs or rules of a group; in other words, a nonconformist . // Ayo has always been a bit of a maverick in the fashion world, inventing new trends rather than following them. See the entry > Examples: “ [Luis] Alvarez has been described as a scientific I",
+			"pos": "noun",
+			"gloss": "Maverick refers to a person who refuses to follow the customs or rules of a group; in other words, a nonconformist.",
+			"pronunciation": "MAV-rik",
+			"example": "Ayo has always been a bit of a maverick in the fashion world, inventing new trends rather than following them.",
 			"href": "https://www.merriam-webster.com/word-of-the-day/maverick-2026-07-23",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-07-23"
