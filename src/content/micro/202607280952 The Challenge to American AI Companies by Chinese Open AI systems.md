@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - ai
-  - china
-  - usa
+title: "The Challenge to American AI Companies by Chinese Open AI Systems"
+slug: "the-challenge-to-american-ai-companies-by-chinese-open-ai-systems"
+created: 2026-07-28T09:52:00+03:00
+updated: 2026-07-28T09:52:00+03:00
 category: micro
+tags: ["ai", "china", "usa"]
 ---
 [The AI giants’ new problem: open AI by Robert Hart](https://www.theverge.com/ai-artificial-intelligence/971444/how-chinese-open-weight-ai-models-impact-us-companies)
 
