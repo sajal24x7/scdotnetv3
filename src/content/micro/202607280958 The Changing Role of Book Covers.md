@@ -1,10 +1,16 @@
 ---
-title: "The Changing Role of Book Covers"
-slug: "the-changing-role-of-book-covers"
-created: 2026-07-28T09:58:00+03:00
-updated: 2026-07-28T09:58:00+03:00
+title: The Changing Role of Book Covers
+slug: the-changing-role-of-book-covers
+created: 2026-07-28T06:58:00.000Z
+updated: 2026-07-28T06:58:00.000Z
 category: micro
-tags: ["publishing", "books"]
+tags:
+  - publishing
+  - books
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/116996741585395992'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mrozqe76xu2p'
+  - 'https://www.threads.com/@sajal24x7/post/DbVJkkAG6j3'
 ---
 [How the Role of Book Cover Design Has Changed in the Age of Social Media by Madelyn Johnson](https://lithub.com/how-the-role-of-book-cover-design-has-changed-in-the-age-of-social-media/)
 
