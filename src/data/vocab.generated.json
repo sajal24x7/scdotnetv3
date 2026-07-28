@@ -211,6 +211,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/parochial-2026-07-27",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-07-27"
+		},
+		"kludge": {
+			"word": "kludge",
+			"pos": "other",
+			"gloss": " noun A kludge is a haphazard or makeshift solution to a problem and especially to a computer or programming problem.",
+			"pronunciation": "KLOOJ",
+			"example": "Andy knocked out a hasty kludge to circumvent the glitch until a more robust solution could be developed.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/kludge-2026-07-28",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-07-28"
 		}
 	}
 }
