@@ -201,6 +201,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/aerie-2026-07-26",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-07-26"
+		},
+		"parochial": {
+			"word": "parochial",
+			"pos": "other",
+			"gloss": " adjective Parochial is a formal word that is usually used in a disapproving way to describe something that is limited in range or scope, as to a narrow region or area.",
+			"pronunciation": "puh-ROH-kee-ul",
+			"example": "For some, college can be an expansive experience that lifts them out of a parochial mindset.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/parochial-2026-07-27",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-07-27"
 		}
 	}
 }
