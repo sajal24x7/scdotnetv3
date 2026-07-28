@@ -55,18 +55,6 @@
   ],
   "blog/why-do-i-read": [
     {
-      "id": "mastodon:repost:116912319446085335:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    },
-    {
       "id": "mastodon:repost:116912319446085335:116141936733036818",
       "type": "repost",
       "platform": "mastodon",
@@ -148,7 +136,7 @@
         "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:xuh6g7hnpeorsy5qqlrrwvj4/bafkreighubobhcpy2taiccrrl3rfv2rfgehwk3oq4niioim53i4uhnovci"
       },
       "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mrdlyilimk2r/did%253Aplc%253Axuh6g7hnpeorsy5qqlrrwvj4",
-      "published": "2026-07-24T09:09:56.121Z",
+      "published": "2026-07-27T15:20:34.839Z",
       "status": "pending"
     },
     {
@@ -164,6 +152,21 @@
       "status": "approved"
     }
   ],
+  "bookshelf/zen-in-the-art-of-writing": [
+    {
+      "id": "web:like:37f685e1c8d4f008d0eefc700cd4c9f2ecd0a13a21d09e57dc3b627760e38cfc",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "Robin Boardman robinboardman.com",
+        "url": "https://bsky.app/profile/robinboardman.com",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ahna6rwhqcrf7soxqii3iprk/bafkreidqcei6yhwzfdtiebw5fyhgrqzulw6yq46osrlbydhzz6zqaginai"
+      },
+      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mgmmpk3uwc2c/did%253Aplc%253Aahna6rwhqcrf7soxqii3iprk",
+      "published": "2026-07-27T15:20:55.621Z",
+      "status": "pending"
+    }
+  ],
   "evergreen/extinction-was-discovered": [
     {
       "id": "bluesky:like:3mowt6mckm52u:did:plc:pqv77tyop2q4c6inbbm4rivo",
@@ -177,6 +180,19 @@
       "url": "https://bsky.app/profile/neko.ac",
       "published": "2026-06-23T06:58:26.721Z",
       "status": "approved"
+    },
+    {
+      "id": "web:like:3d47234ed84628c33a884b1bafc82d1c47fa4c8ae8b60096036813cd514a7572",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "Sophia 🏳️‍⚧️ neko.ac",
+        "url": "https://bsky.app/profile/neko.ac",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/ab27de78e116a910637d05137f119b7d.webp"
+      },
+      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mowt6mckm52u/did%253Aplc%253Apqv77tyop2q4c6inbbm4rivo",
+      "published": "2026-07-27T15:20:40.982Z",
+      "status": "pending"
     },
     {
       "id": "mastodon:like:116798121949791914:115714075089960705",
@@ -663,6 +679,19 @@
       "url": "https://bsky.app/profile/catofkyiv.bsky.social",
       "published": "2026-06-26T06:17:45.000Z",
       "status": "approved"
+    },
+    {
+      "id": "web:like:c5bbaa7f211478dbb46efa7adf06a5deb152080257da8727922128a8a37d0b17",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "Cats of Kyiv 🐈 🇺🇦 catofkyiv.bsky.social",
+        "url": "https://bsky.app/profile/catofkyiv.bsky.social",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/62be04b381f26a77be6174e2c6cce38a.webp"
+      },
+      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mp6cblel752r/did%253Aplc%253Az4r2sakrqgtdk7ednvkqeevq",
+      "published": "2026-07-27T15:20:37.128Z",
+      "status": "pending"
     }
   ],
   "micro/apple-to-start-a-upgrade-program": [
@@ -745,18 +774,6 @@
   ],
   "micro/how-i-learned-to-read-again": [
     {
-      "id": "mastodon:repost:116912370927258107:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    },
-    {
       "id": "mastodon:repost:116912370927258107:116141936733036818",
       "type": "repost",
       "platform": "mastodon",
@@ -797,6 +814,45 @@
       "status": "approved"
     }
   ],
+  "micro/rss-is-the-best-distribution-channel": [
+    {
+      "id": "threads:reply:18104307107137059",
+      "type": "reply",
+      "platform": "threads",
+      "author": {
+        "name": "sarascrests",
+        "url": "https://www.threads.com/@sarascrests"
+      },
+      "content": "<p>I'm really impressed with your posts can you text me back here I just followed you follow me back thank you</p>",
+      "url": "https://www.threads.com/@sarascrests/post/DbTIJTNjFYq",
+      "published": "2026-07-27T13:59:05.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116991385951332365:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116991385951332365:114076272998704416",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "William",
+        "url": "https://mast.wmclark.com/@wm",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/076/272/998/704/416/original/7097007ae3f49f61.jpeg"
+      },
+      "url": "https://mast.wmclark.com/@wm",
+      "status": "approved"
+    }
+  ],
   "micro/the-human-in-the-loop-is-tired": [
     {
       "id": "mastodon:like:116951613672185395:116696538002197507",
@@ -834,6 +890,21 @@
       "url": "https://www.threads.com/@sajal24x7/post/DYzYnM1Dsq7",
       "count": 1,
       "status": "approved"
+    }
+  ],
+  "nordletter/nl101-the-joys-of-riding-a-bicycle": [
+    {
+      "id": "web:repost:b0d71d6767736e8c979befb701e65e197a5898361aa568887459bab3b8c736fe",
+      "type": "repost",
+      "platform": "web",
+      "author": {
+        "name": "Kee Bici bikes.keekay.cloud",
+        "url": "https://bsky.app/profile/bikes.keekay.cloud",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ufencrhqoi6hkfy7vzrihbsc/bafkreid7q4wrq3hmgtwzvftfxsw7keu37ueznbqks3xfvbli5fwrhumipe"
+      },
+      "url": "https://brid.gy/repost/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mk33xgnx3g2w/did%253Aplc%253Aufencrhqoi6hkfy7vzrihbsc",
+      "published": "2026-07-27T15:20:50.270Z",
+      "status": "pending"
     }
   ],
   "nordletter/nl107": [
@@ -913,7 +984,7 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/9180df40ba10a5e9cdb99a7c74546981.webp"
       },
       "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mriuzibyol2e/did%253Aplc%253Ailwe2nx42xcfws5umthy7phz",
-      "published": "2026-07-25T23:35:40.278Z",
+      "published": "2026-07-27T15:19:37.770Z",
       "status": "pending"
     }
   ],
@@ -1177,6 +1248,19 @@
       "url": "https://bsky.app/profile/nomadsgate.bsky.social",
       "published": "2026-07-10T13:26:22.411Z",
       "status": "approved"
+    },
+    {
+      "id": "web:like:66cbd02163ae505a87847207b03753dd7572a14548fa22be957ce6269b8ea94d",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "Patrick Richter nomadsgate.bsky.social",
+        "url": "https://bsky.app/profile/nomadsgate.bsky.social",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/5008e04a382985c0b8759aaaa4fdecce.webp"
+      },
+      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mqbw6cukmm2f/did%253Aplc%253A64pf3pvhd6iaudtsgsn63yy6",
+      "published": "2026-07-27T15:20:32.777Z",
+      "status": "pending"
     }
   ]
 }
