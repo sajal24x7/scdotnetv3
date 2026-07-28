@@ -561,6 +561,66 @@
 				}
 			],
 			"updatedAt": "2026-07-27T10:50:48.532Z"
+		},
+		"vocab-parochial": {
+			"prompts": [
+				{
+					"id": "vocab-parochial-a1",
+					"q": "What is a word to describe something that is limited in range or scope?",
+					"a": "Parochial",
+					"note": "For some, college can be an expansive experience that lifts them out of a parochial mindset."
+				}
+			],
+			"updatedAt": "2026-07-28T08:55:39.724Z"
+		},
+		"g-uralic": {
+			"prompts": [
+				{
+					"id": "g-uralic-a1",
+					"q": "What type of language is Finnish?",
+					"a": "Uralic"
+				}
+			],
+			"updatedAt": "2026-07-28T12:41:31.760Z"
+		},
+		"top": {
+			"prompts": [
+				{
+					"id": "top-a1",
+					"q": "Which Linux command should I run to view auto-updating view of processes running on a system?",
+					"a": "top"
+				},
+				{
+					"id": "top-a2",
+					"q": "How to see only one user's processes in Linux?",
+					"a": "top -u user1"
+				}
+			],
+			"updatedAt": "2026-07-28T12:44:33.672Z"
+		},
+		"h-kirja": {
+			"prompts": [
+				{
+					"id": "h-kirja-a1",
+					"q": "Tämä on hyvä {{kirja}}",
+					"a": "kirja",
+					"note": "This is a good book",
+					"kind": "cloze"
+				}
+			],
+			"updatedAt": "2026-07-28T12:46:15.503Z"
+		},
+		"fv-koti": {
+			"prompts": [
+				{
+					"id": "fv-koti-a1",
+					"q": "Ostan kivan {{kodin}}",
+					"a": "kodin",
+					"note": "I will buy a nice house",
+					"kind": "cloze"
+				}
+			],
+			"updatedAt": "2026-07-28T12:47:33.637Z"
 		}
 	}
 }
