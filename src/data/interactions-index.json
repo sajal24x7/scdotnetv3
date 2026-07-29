@@ -102,10 +102,10 @@
       "platform": "bluesky",
       "author": {
         "name": "James",
-        "url": "https://bsky.app/profile/nonzerosumjames.bsky.social",
+        "url": "https://bsky.app/profile/nonzerosum.games",
         "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:quozz3hcdgl7dmc3ovdg42ap/bafkreia2yos5xxpgs6eazdcekonjnnrqn57g6ydxs5r7o7kt6ezzlr6xra"
       },
-      "url": "https://bsky.app/profile/nonzerosumjames.bsky.social",
+      "url": "https://bsky.app/profile/nonzerosum.games",
       "published": "2026-07-19T03:04:10.487Z",
       "status": "approved"
     }
@@ -435,18 +435,6 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/7e70ae27aad7f11d62aef9a275a53043.png"
       },
       "url": "https://kolektiva.social/@zensolo",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:116920316977946265:111653327277532792",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Football Channel",
-        "url": "https://newsmast.community/@football",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/9f561af390e2c1a36dc020414309a0d1.png"
-      },
-      "url": "https://newsmast.community/@football",
       "status": "approved"
     },
     {
@@ -851,6 +839,84 @@
       },
       "url": "https://mast.wmclark.com/@wm",
       "status": "approved"
+    }
+  ],
+  "micro/the-challenge-to-american-ai-companies-by-chinese-open-ai-systems": [
+    {
+      "id": "mastodon:like:116996740667785757:114859161994857149",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Acionna",
+        "url": "https://piaille.fr/@Acionna",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/859/161/994/857/149/original/0d0f5850d4990d69.png"
+      },
+      "url": "https://piaille.fr/@Acionna",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116996740667785757:116339843972934259",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "EU tech news",
+        "url": "https://mastodon.social/@eutechnews",
+        "avatar": "https://files.mastodon.social/accounts/avatars/116/339/843/972/934/259/original/9b8b151ae214327a.jpeg"
+      },
+      "url": "https://mastodon.social/@eutechnews",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116996740667785757:116696538002197507",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Marin T. Kael",
+        "url": "https://mastodon.social/@marintkael",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/2d5c30fd3cf1c721e763d3992114dffd.png"
+      },
+      "url": "https://mastodon.social/@marintkael",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:116996740667785757:116339843972934259",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "EU tech news",
+        "url": "https://mastodon.social/@eutechnews",
+        "avatar": "https://files.mastodon.social/accounts/avatars/116/339/843/972/934/259/original/9b8b151ae214327a.jpeg"
+      },
+      "url": "https://mastodon.social/@eutechnews",
+      "status": "approved"
+    }
+  ],
+  "micro/the-changing-role-of-book-covers": [
+    {
+      "id": "web:like:b17a20723b4c7a94345714fcb8c708579f7f1994039be9c939264985d3b6c10a",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "Lydia Lukidis lydialukidis.bsky.social",
+        "url": "https://bsky.app/profile/lydialukidis.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:672buqh3zd2wvsntyspzvvpp/bafkreid6phkkeo2lu57x7zzk6a2yucfz4svz2n7uviz75bi6pmmwhld64u"
+      },
+      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mrozqe76xu2p/did%253Aplc%253A672buqh3zd2wvsntyspzvvpp",
+      "published": "2026-07-28T09:56:51.230Z",
+      "status": "pending"
+    },
+    {
+      "id": "web:like:ba4be01a1f124910b91bd5cdd0a2609bbbc5a492437cac05b44dec6c24d0d17b",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "Bookshelfie ⭐️ bookshelfie.bsky.social",
+        "url": "https://bsky.app/profile/bookshelfie.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:kthwu6mpwb56qwdm2ipaxciw/bafkreidq6td4g3ayrxfqvwtw4cwude4yw2545h4gczxu7tyuff5h7rtvtq"
+      },
+      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mrozqe76xu2p/did%253Aplc%253Akthwu6mpwb56qwdm2ipaxciw",
+      "published": "2026-07-28T19:04:52.917Z",
+      "status": "pending"
     }
   ],
   "micro/the-human-in-the-loop-is-tired": [
