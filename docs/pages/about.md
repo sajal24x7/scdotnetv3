@@ -14,14 +14,17 @@ Both views, and the intro copy, come from one file: **`src/data/life.md`**. That
 
 ## Editing the timeline
 
-Everything above the first `##` heading is the intro shown beside the portrait. Every `##` below it is one timeline entry:
+Everything above the first `##` heading is the intro shown beside the portrait. Every `##` below it is one timeline entry, written as two fields:
 
 ```markdown
 ## Title of the thing
 when: Aug 2015 - now
-
-A paragraph or two in plain markdown. Links, lists, emphasis all work.
+what: A line or two about what this was and why it mattered.
 ```
+
+`what:` may run onto the lines beneath it, blank lines included, so an entry can hold several paragraphs, a list, or links without extra ceremony. The two fields may appear in either order, and loose prose written without a `what:` label is still read as the body.
+
+`when:` is deliberately **single-line only**. If it absorbed the lines below it, prose following an entry would fold into the date field — and any date mentioned in that prose (“I moved in Jan 2020…”) would silently turn a moment into an era.
 
 Entries may be written in any order — they are sorted by date at build time. A section with no `when:` line, or one whose date cannot be parsed, is skipped rather than throwing, so a half-written entry never breaks the build.
 
@@ -67,6 +70,19 @@ The calendar is deliberately binary — time spent against time remaining — wi
 
 The current week is the only cell with a ring. Without it, it would be indistinguishable from a moment entry, since both are accent-filled.
 
+### Sizing
+
+Columns are `repeat(52, minmax(0, 1fr))`, so the whole life stays visible at every width — roughly 18px per week on a desktop down to ~5px on a 390px phone, with no horizontal scroll. Seeing all 90 years at once is the point of the visualization, so the cells shrink rather than the grid scrolling.
+
+Two things make that work, and both are load-bearing:
+
+- **The age label is positioned out of flow.** As a grid item it set the row's height; because cells are square, that height then drove their *width*, pinning every cell to the label's 12px font size. Below ~768px the columns were narrower than that, so cells overlapped their neighbours by several pixels and every labelled row rendered as a solid bar.
+- **Cells set `width: 100%`.** This makes the column the definite dimension and lets `aspect-ratio` derive the height, never the reverse.
+
+Under 40rem the gap, the current-week ring, and the focus outline all scale down; at ~5px a 3px ring would swamp the cell it marks.
+
+At phone sizes a week is far below a comfortable tap target. That is inherent to 52 columns on a 390px screen, and the stream view — one tap away on the toggle — is the readable path there.
+
 ## Interaction
 
 - **Toggle** — the two icon buttons mirror the photos page toolbar (`src/components/PhotoGrid.astro`); the calendar leads on load.
@@ -83,4 +99,4 @@ Tooltip markup is injected at runtime, so its inner rules use `:global()` — As
 node --experimental-strip-types src/utils/__checks__/life.check.ts
 ```
 
-Covers each accepted date format, era-versus-moment classification, chronological sorting, the skipping of malformed entries, birthday anchoring, and the invariant that exactly one week is `current` and it sits on the past/future seam.
+Covers each accepted date format, era-versus-moment classification, chronological sorting, the skipping of malformed entries, `what:` spanning multiple lines, field order, birthday anchoring, and the invariant that exactly one week is `current` and it sits on the past/future seam.

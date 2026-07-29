@@ -9,13 +9,15 @@
     beside the photo at the top of the page. Plain markdown.
   · Every "##" heading below is one timeline entry.
 
-  ENTRY TEMPLATE — copy, paste, edit:
+  ENTRY TEMPLATE — copy, paste, fill in:
 
     ## Title of the thing
     when: Aug 2015 - now
+    what: A line or two about what this was and why it mattered.
 
-    A paragraph or two in plain markdown about what this was and
-    why it mattered. Links, lists, emphasis — all fine.
+  · "what:" can run onto the lines below it, blank lines and all,
+    so write as much as you like. Links, lists, emphasis all work.
+  · Entries can go in any order — they sort themselves by date.
 
   DATES
   · Month + year is enough: "Aug 2015", "November 1991" or "2015-08".
@@ -35,10 +37,8 @@ I am the author of [A Year of Mornings](/books/a-year-of-mornings/), a collectio
 
 ## Born
 when: 22 Nov 1991
-
-The story starts.
+what: The story starts.
 
 ## Published A Year of Mornings
 when: 15 Feb 2025
-
-My first book — fifty love poems following a young heart as it finds love, finds the strength to be in love and finally, finds the strength to let go. [It's out in the world now.](/books/a-year-of-mornings/)
+what: My first book — fifty love poems following a young heart as it finds love, finds the strength to be in love and finally, finds the strength to let go. [It's out in the world now.](/books/a-year-of-mornings/)

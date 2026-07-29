@@ -128,11 +128,18 @@ export function parseLifeDoc(raw: string, today: number = todayUtc()): LifeDoc {
         const title = lines[0].trim();
         if (!title) continue;
 
+        // Entries carry a `when:` date and a `what:` description. `when:` is
+        // always a single line — letting it run on would fold stray prose,
+        // and any dates inside it, into the entry's timing. Everything else
+        // is body copy, so `what:` can hold several paragraphs as written.
         const bodyLines: string[] = [];
         let whenText = '';
         for (const line of lines.slice(1)) {
-            if (!whenText && /^when\s*:/i.test(line.trim())) {
-                whenText = line.trim().replace(/^when\s*:\s*/i, '');
+            const match = line.trim().match(/^(when|what)\s*:\s*(.*)$/i);
+            if (match && match[1].toLowerCase() === 'when') {
+                whenText = match[2].trim();
+            } else if (match) {
+                if (match[2]) bodyLines.push(match[2]);
             } else {
                 bodyLines.push(line);
             }

@@ -227,31 +227,41 @@ const percentLabel = calendar.percentLived.toFixed(1);
     }
 
     .life-cal__grid {
+        --lc-gutter: 1.8rem;
         display: flex;
         flex-direction: column;
         gap: 2px;
     }
 
+    /* The age label is positioned out of flow in a left gutter. In the grid
+       it would set the row's height, and since cells are square that height
+       would drive their width too — pinning them at the label's font size and
+       overlapping them once the columns shrink below it on narrow screens. */
     .lc-r {
+        position: relative;
         display: grid;
-        grid-template-columns: 1.8rem repeat(52, minmax(0, 1fr));
+        grid-template-columns: repeat(52, minmax(0, 1fr));
         gap: 2px;
-        align-items: stretch;
+        margin-left: var(--lc-gutter);
     }
 
     .lc-a {
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-right: 0.35rem;
         font-size: var(--text-xs);
         line-height: 1;
         color: rgb(var(--color-text-secondary));
         font-variant-numeric: tabular-nums;
-        align-self: center;
-        text-align: right;
-        padding-right: 0.35rem;
         user-select: none;
     }
 
+    /* Width comes from the column, height follows it — never the reverse. */
     .lc {
         display: block;
+        width: 100%;
         aspect-ratio: 1 / 1;
         border-radius: 1px;
         padding: 0;
@@ -502,13 +512,26 @@ const percentLabel = calendar.percentLived.toFixed(1);
     }
 
     @media (max-width: 40rem) {
+        /* 52 columns on a phone leaves each week ~5px wide, so the gap and
+           the current-week ring shrink with them or they swamp the cell. */
         .life-cal__grid,
         .lc-r {
             gap: 1px;
         }
 
-        .lc-r {
-            grid-template-columns: 1.4rem repeat(52, minmax(0, 1fr));
+        .life-cal__grid {
+            --lc-gutter: 1.4rem;
+        }
+
+        .lc.n {
+            box-shadow:
+                0 0 0 1px rgb(var(--color-bg)),
+                0 0 0 2px rgb(var(--color-accent));
+        }
+
+        .lc.e:focus-visible {
+            outline-width: 1px;
+            outline-offset: 1px;
         }
     }
 

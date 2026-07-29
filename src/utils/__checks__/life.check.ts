@@ -36,37 +36,30 @@ Intro paragraph.
 
 ## Month-only era
 when: Aug 2015 - Jul 2017
-
-Body.
+what: Body.
 
 ## En dash era
 when: Aug 2015 – Jul 2017
-
-Body.
+what: Body.
 
 ## ISO era, ongoing
 when: 2019-03 - now
-
-Body.
+what: Body.
 
 ## Moment, US style
 when: Feb 15, 2025
-
-Body.
+what: Body.
 
 ## Moment, day first
 when: 22 Nov 1991
-
-Body.
+what: Body.
 
 ## Malformed, skipped
 when: sometime in the nineties
-
-Body.
+what: Body.
 
 ## No when line, skipped
-
-Body.
+what: Body.
 `;
 
 const { entries } = parseLifeDoc(doc, TODAY);
@@ -91,6 +84,33 @@ check('"now" marks the entry ongoing', byId['iso-era-ongoing'].ongoing, true);
 check('"Feb 15, 2025" reads as a moment', iso(byId['moment-us-style'].start), '2025-02-15');
 check('a moment has zero span', byId['moment-us-style'].isEra, false);
 check('"22 Nov 1991" reads day-first', iso(byId['moment-day-first'].start), '1991-11-22');
+check('what: becomes the body', byId['moment-day-first'].body, 'Body.');
+
+// `what:` runs onto the lines beneath it, so entries can hold real prose.
+const multiline = parseLifeDoc(
+    [
+        '## Multiline',
+        'when: Aug 2015',
+        'what: First paragraph.',
+        '',
+        'Second paragraph.',
+        '',
+        '- a list item'
+    ].join('\n'),
+    TODAY
+).entries[0];
+check('what: spans following lines', multiline.body, 'First paragraph.\n\nSecond paragraph.\n\n- a list item');
+
+// Field order should not matter, and prose written with no field still reads.
+const reordered = parseLifeDoc('## Reordered\nwhat: Body text.\nwhen: Aug 2015', TODAY).entries[0];
+check('what: may precede when:', [reordered.whenText, reordered.body], ['Aug 2015', 'Body text.']);
+
+const fieldless = parseLifeDoc('## Fieldless\nwhen: Aug 2015\n\nLoose prose.', TODAY).entries[0];
+check('prose without what: still reads', fieldless.body, 'Loose prose.');
+
+// A colon inside the prose must not be mistaken for a field.
+const colon = parseLifeDoc('## Colon\nwhen: Aug 2015\nwhat: Note: this stays.', TODAY).entries[0];
+check('a colon in prose is left alone', colon.body, 'Note: this stays.');
 
 console.log('buildLifeCalendar');
 const calendar = buildLifeCalendar(entries, TODAY);
