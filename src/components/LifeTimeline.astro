@@ -22,9 +22,9 @@ for (const entry of entries) {
     else yearGroups.push({ year: entry.year, entries: [entry] });
 }
 
-// Tooltips show the date plus the opening of the entry's text, so markdown
-// is flattened to a short plain-text lead here rather than in the browser.
-function lead(markdown: string, max = 90): string {
+// Tooltips lead with the entry's title, so its markdown is flattened to
+// plain text here rather than in the browser.
+function plain(markdown: string, max = 110): string {
     const text = markdown
         .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
         .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
@@ -35,7 +35,7 @@ function lead(markdown: string, max = 90): string {
 }
 
 const tipData = Object.fromEntries(
-    entries.map((e) => [e.id, { w: e.whenText, s: lead(e.body) }])
+    entries.map((e) => [e.id, { t: plain(e.title), w: e.whenText }])
 );
 
 const weeksLivedLabel = calendar.weeksLived.toLocaleString('en-US');
@@ -109,7 +109,7 @@ const percentLabel = calendar.percentLived.toFixed(1);
                                 aria-label={cell.entryIds
                                     .map((id) => {
                                         const tip = tipData[id];
-                                        return tip && [tip.w, tip.s].filter(Boolean).join(' — ');
+                                        return tip && [tip.t, tip.w].filter(Boolean).join(' — ');
                                     })
                                     .filter(Boolean)
                                     .join('; ')}
@@ -142,8 +142,13 @@ const percentLabel = calendar.percentLived.toFixed(1);
                 </div>
                 {group.entries.map((entry) => (
                     <article class="life-entry" id={`life-${entry.id}`}>
-                        <h3 class="life-entry__title">{entry.whenText}</h3>
-                        <div class="life-entry__body prose dark:prose-invert" set:html={parseMarkdown(entry.body)} />
+                        <h3 class="life-entry__date">{entry.whenText}</h3>
+                        {entry.title && (
+                            <div class="life-entry__title" set:html={parseMarkdown(entry.title)} />
+                        )}
+                        {entry.body && (
+                            <div class="life-entry__body prose dark:prose-invert" set:html={parseMarkdown(entry.body)} />
+                        )}
                     </article>
                 ))}
             </>
@@ -479,13 +484,27 @@ const percentLabel = calendar.percentLived.toFixed(1);
     }
 
     /* The heading is the date itself, so it gets lining figures. */
-    .life-entry__title {
+    .life-entry__date {
         font-size: 1.15rem;
         font-weight: 600;
-        margin: 0 0 0.4rem;
+        margin: 0 0 0.3rem;
         line-height: 1.35;
         font-variant-numeric: tabular-nums;
         color: rgb(var(--color-text-primary));
+    }
+
+    /* The title line — what the entry is, in one line. */
+    .life-entry__title :global(p) {
+        margin: 0;
+        font-size: var(--text-normal);
+        font-weight: 600;
+        line-height: 1.5;
+        text-wrap: pretty;
+        color: rgb(var(--color-text-primary));
+    }
+
+    .life-entry__title + .life-entry__body {
+        margin-top: 0.35rem;
     }
 
     .life-entry__body {
@@ -560,7 +579,7 @@ const percentLabel = calendar.percentLived.toFixed(1);
         const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-life-view-btn]'));
         const tip = root.querySelector<HTMLElement>('[data-life-tip]')!;
         const dataEl = root.querySelector<HTMLScriptElement>('[data-life-entries]');
-        const tipData: Record<string, { w: string; s: string }> = dataEl
+        const tipData: Record<string, { t: string; w: string }> = dataEl
             ? JSON.parse(dataEl.textContent || '{}')
             : {};
 
@@ -592,9 +611,9 @@ const percentLabel = calendar.percentLived.toFixed(1);
                 .filter(Boolean)
                 .map(
                     (d) =>
-                        `<p><strong>${escapeHtml(d.w)}</strong>${
-                            d.s ? `<span>${escapeHtml(d.s)}</span>` : ''
-                        }</p>`
+                        `<p>${d.t ? `<strong>${escapeHtml(d.t)}</strong>` : ''}<span>${escapeHtml(
+                            d.w
+                        )}</span></p>`
                 );
             if (!parts.length) return;
 

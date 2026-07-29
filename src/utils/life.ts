@@ -26,13 +26,19 @@ export interface LifeEntry {
     id: string;
     /** The `##` heading exactly as written — a date or a date range. */
     whenText: string;
+    /**
+     * The first line under the heading: what the entry is, in one line.
+     * This is what the calendar shows on hover. Raw markdown, so it may
+     * carry a link.
+     */
+    title: string;
     /** Start of the entry, UTC ms. */
     start: number;
     /** Inclusive end, UTC ms. Equals `start` for single-date moments. */
     end: number;
     isEra: boolean;
     ongoing: boolean;
-    /** Raw markdown; the rendering component turns this into HTML. */
+    /** Everything below the title line. Raw markdown, may be empty. */
     body: string;
     year: number;
 }
@@ -113,8 +119,8 @@ export function todayUtc(): number {
 /**
  * Parse the life doc: the intro is everything above the first `##`, and each
  * `##` section below is one timeline entry whose heading *is* its date — a
- * single date for a moment, or a range for an era. Everything under the
- * heading is the entry's text.
+ * single date for a moment, or a range for an era. The first line under the
+ * heading is the entry's title; anything after it is the detail.
  *
  * A heading with no parseable date is skipped rather than thrown on, so a
  * half-written entry never breaks the build.
@@ -132,7 +138,12 @@ export function parseLifeDoc(raw: string, today: number = todayUtc()): LifeDoc {
         const whenText = lines[0].trim();
         if (!whenText) continue;
 
-        const bodyLines = lines.slice(1);
+        // First line with text on it is the title; the rest is the detail.
+        const rest = lines.slice(1);
+        const titleAt = rest.findIndex((line) => line.trim() !== '');
+        const title = titleAt === -1 ? '' : rest[titleAt].trim();
+        const bodyLines = titleAt === -1 ? [] : rest.slice(titleAt + 1);
+
         const tokens = parseDateTokens(whenText);
         if (tokens.length === 0) continue;
 
@@ -161,6 +172,7 @@ export function parseLifeDoc(raw: string, today: number = todayUtc()): LifeDoc {
         entries.push({
             id,
             whenText,
+            title,
             start,
             end,
             isEra,

@@ -14,17 +14,25 @@ Both views, and the intro copy, come from one file: **`src/data/life.md`**. That
 
 ## Editing the timeline
 
-Everything above the first `##` heading is the intro shown beside the portrait. Below that, each entry is a heading that **is** its date, with the text underneath:
+Everything above the first `##` heading is the intro shown beside the portrait. Below that, each entry is three parts by position — no field labels to remember:
 
 ```markdown
 ## 22 November, 1991
-
 Born in Bihar, India.
+There is an origin story I have about my father telling my grandmother
+I was born super dark, and my grandmother being happy regardless and me
+getting named Harsh (happiness in Hindi).
 ```
 
-There are no fields to remember and no title separate from the date. Everything under a heading is body copy — paragraphs, lists, links, emphasis — until the next `##`.
+| Part | Where | Shows up as |
+| --- | --- | --- |
+| **Date** | the `##` heading | The entry's heading in the stream; places it on the calendar |
+| **Title** | the first line under it | The line the calendar shows on hover |
+| **Detail** | everything after | The entry's body in the stream |
 
-The heading is the only place dates are read from, so a date mentioned in the text ("I moved in Jan 2020…") is just prose and cannot alter the entry's placement.
+The detail is optional — `## December 2014` / `Joined TCS Delhi.` is a complete entry. It can also run as long as you like: paragraphs, lists, links, and emphasis all work. The title may carry markdown too; tooltips flatten it to plain text.
+
+The heading is the only place dates are read from, so a date mentioned in the title or detail ("I moved in Jan 2020…") is just prose and cannot alter the entry's placement.
 
 Entries may be written in any order — they are sorted by date at build time. A heading whose date cannot be parsed is skipped rather than throwing, so a half-written entry never breaks the build. Two entries sharing a heading get distinct ids (`aug-2015`, `aug-2015-2`).
 
@@ -88,10 +96,10 @@ At phone sizes a week is far below a comfortable tap target. That is inherent to
 ## Interaction
 
 - **Toggle** — the two icon buttons mirror the photos page toolbar (`src/components/PhotoGrid.astro`); the calendar leads on load.
-- **Hover or focus** a marked week for a tooltip with the entry's date and the opening of its text. It clamps to the grid's edges and flips below the cell when it would clip off the top.
+- **Hover or focus** a marked week for a tooltip leading with the entry's title, with its date beneath. It clamps to the grid's edges and flips below the cell when it would clip off the top.
 - **Click** a marked week to switch to the stream view, scroll to that entry, and flash it.
 
-Marked weeks are `<button>` elements so they are keyboard reachable and carry the entry's date and text lead as their accessible name; unmarked weeks are inert `<span>`s. A visually hidden paragraph above the grid describes the whole calendar for screen readers.
+Marked weeks are `<button>` elements so they are keyboard reachable and carry the entry's title and date as their accessible name; unmarked weeks are inert `<span>`s. A visually hidden paragraph above the grid describes the whole calendar for screen readers.
 
 Tooltip markup is injected at runtime, so its inner rules use `:global()` — Astro's scoped styles would not match generated elements. Cells reference entries by id through a small JSON lookup rather than repeating text on every cell, since a single era can cover hundreds of them.
 
@@ -101,4 +109,4 @@ Tooltip markup is injected at runtime, so its inner rules use `:global()` — As
 node --experimental-strip-types src/utils/__checks__/life.check.ts
 ```
 
-Covers each accepted date format (including the optional comma after a month name), era-versus-moment classification, chronological sorting, the skipping of undated headings, multi-paragraph bodies, dates in body text being ignored, id collisions, birthday anchoring, and the invariant that exactly one week is `current` and it sits on the past/future seam.
+Covers each accepted date format (including the optional comma after a month name), era-versus-moment classification, chronological sorting, the skipping of undated headings, the title/detail split, title-only entries, dates in body text being ignored, id collisions, birthday anchoring, and the invariant that exactly one week is `current` and it sits on the past/future seam.
