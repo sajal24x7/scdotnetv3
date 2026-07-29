@@ -1,10 +1,19 @@
 ---
-title: "HBO Max Is Putting Vertical Shorts in Its App"
-slug: "hbo-max-is-putting-vertical-shorts-in-its-app"
-created: 2026-07-29T09:26:00+03:00
-updated: 2026-07-29T09:30:03+03:00
+title: HBO Max Is Putting Vertical Shorts in Its App
+slug: hbo-max-is-putting-vertical-shorts-in-its-app
+created: 2026-07-29T06:26:00.000Z
+updated: 2026-07-29T06:30:03.000Z
 category: micro
-tags: ["netflix", "youtube", "hbo-max", "movies", "tv"]
+tags:
+  - netflix
+  - youtube
+  - hbo-max
+  - movies
+  - tv
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117002473901643973'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mrrl74ewn524'
+  - 'https://www.threads.com/@sajal24x7/post/DbXwZ3VDm0G'
 ---
 [HBO Max is putting on vertical shorts by Jay Peters](https://www.theverge.com/streaming/971880/hbo-max-vertical-video-feed-shorts)
 
