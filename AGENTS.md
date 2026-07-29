@@ -19,6 +19,7 @@ The Astro site lives in `src`, with route files under `src/pages`, shared layout
   - [`docs/content/authoring.md`](docs/content/authoring.md) — Frontmatter rules and author workflow.
   - [`docs/content/publishing-pipeline.md`](docs/content/publishing-pipeline.md), [`docs/content/micro-composer.md`](docs/content/micro-composer.md) — How content reaches `main` (Obsidian → `content` branch → pipeline; `/write` → direct commit).
   - [`docs/pages/shelf.md`](docs/pages/shelf.md), [`docs/pages/books.md`](docs/pages/books.md) — Shelf frontmatter reference and the published-works page.
+  - [`docs/pages/about.md`](docs/pages/about.md) — The about page and its life timeline; how to edit `src/data/life.md` and how month/year dates map to week cells.
   - [`docs/operations/deployment.md`](docs/operations/deployment.md), [`docs/operations/syndication.md`](docs/operations/syndication.md) — Build and POSSE procedures.
   - [`docs/operations/publication.md`](docs/operations/publication.md) — `publication.config.json`, the central explicit-allow list for what reaches RSS feeds and syndication.
   - [`docs/tools/`](docs/README.md#tools--automation) — Cover downloaders and shelf metadata enrichment.
