@@ -14,19 +14,19 @@ Both views, and the intro copy, come from one file: **`src/data/life.md`**. That
 
 ## Editing the timeline
 
-Everything above the first `##` heading is the intro shown beside the portrait. Every `##` below it is one timeline entry, written as two fields:
+Everything above the first `##` heading is the intro shown beside the portrait. Below that, each entry is a heading that **is** its date, with the text underneath:
 
 ```markdown
-## Title of the thing
-when: Aug 2015 - now
-what: A line or two about what this was and why it mattered.
+## 22 November, 1991
+
+Born in Bihar, India.
 ```
 
-`what:` may run onto the lines beneath it, blank lines included, so an entry can hold several paragraphs, a list, or links without extra ceremony. The two fields may appear in either order, and loose prose written without a `what:` label is still read as the body.
+There are no fields to remember and no title separate from the date. Everything under a heading is body copy — paragraphs, lists, links, emphasis — until the next `##`.
 
-`when:` is deliberately **single-line only**. If it absorbed the lines below it, prose following an entry would fold into the date field — and any date mentioned in that prose (“I moved in Jan 2020…”) would silently turn a moment into an era.
+The heading is the only place dates are read from, so a date mentioned in the text ("I moved in Jan 2020…") is just prose and cannot alter the entry's placement.
 
-Entries may be written in any order — they are sorted by date at build time. A section with no `when:` line, or one whose date cannot be parsed, is skipped rather than throwing, so a half-written entry never breaks the build.
+Entries may be written in any order — they are sorted by date at build time. A heading whose date cannot be parsed is skipped rather than throwing, so a half-written entry never breaks the build. Two entries sharing a heading get distinct ids (`aug-2015`, `aug-2015-2`).
 
 ### Dates
 
@@ -34,11 +34,13 @@ Month and year is enough precision; a day is optional.
 
 | Written as | Read as |
 | --- | --- |
-| `Aug 2015`, `August 2015`, `2015-08` | The month — starts on the 1st |
-| `22 Nov 1991`, `Feb 15, 2025`, `2025-02-15` | That exact day |
+| `Aug 2015`, `August 2015`, `Nov. 1991`, `2015-08` | The month — starts on the 1st |
+| `22 November, 1991`, `22 Nov 1991`, `Feb 15, 2025`, `2025-02-15` | That exact day |
 | `Aug 2015 - Jul 2017` | An **era** — every week from 1 Aug 2015 to 31 Jul 2017 |
 | `Aug 2015 - now` | An era still running; the end tracks today on each build |
-| `Feb 15, 2025` | A **moment** — one week |
+| `15 February, 2025` | A **moment** — one week |
+
+A comma after the month is optional, so the way you'd naturally write a date by hand works as-is.
 
 Hyphens and en dashes both separate a range. `now`, `present`, and `ongoing` all mark an era as open-ended.
 
@@ -86,10 +88,10 @@ At phone sizes a week is far below a comfortable tap target. That is inherent to
 ## Interaction
 
 - **Toggle** — the two icon buttons mirror the photos page toolbar (`src/components/PhotoGrid.astro`); the calendar leads on load.
-- **Hover or focus** a marked week for a tooltip with the entry title and date. It clamps to the grid's edges and flips below the cell when it would clip off the top.
+- **Hover or focus** a marked week for a tooltip with the entry's date and the opening of its text. It clamps to the grid's edges and flips below the cell when it would clip off the top.
 - **Click** a marked week to switch to the stream view, scroll to that entry, and flash it.
 
-Marked weeks are `<button>` elements so they are keyboard reachable and carry the entry title as their accessible name; unmarked weeks are inert `<span>`s. A visually hidden paragraph above the grid describes the whole calendar for screen readers.
+Marked weeks are `<button>` elements so they are keyboard reachable and carry the entry's date and text lead as their accessible name; unmarked weeks are inert `<span>`s. A visually hidden paragraph above the grid describes the whole calendar for screen readers.
 
 Tooltip markup is injected at runtime, so its inner rules use `:global()` — Astro's scoped styles would not match generated elements. Cells reference entries by id through a small JSON lookup rather than repeating text on every cell, since a single era can cover hundreds of them.
 
@@ -99,4 +101,4 @@ Tooltip markup is injected at runtime, so its inner rules use `:global()` — As
 node --experimental-strip-types src/utils/__checks__/life.check.ts
 ```
 
-Covers each accepted date format, era-versus-moment classification, chronological sorting, the skipping of malformed entries, `what:` spanning multiple lines, field order, birthday anchoring, and the invariant that exactly one week is `current` and it sits on the past/future seam.
+Covers each accepted date format (including the optional comma after a month name), era-versus-moment classification, chronological sorting, the skipping of undated headings, multi-paragraph bodies, dates in body text being ignored, id collisions, birthday anchoring, and the invariant that exactly one week is `current` and it sits on the past/future seam.

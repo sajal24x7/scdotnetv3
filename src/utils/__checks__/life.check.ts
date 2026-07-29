@@ -34,83 +34,87 @@ const TODAY = Date.UTC(2026, 6, 29);
 const doc = `
 Intro paragraph.
 
-## Month-only era
-when: Aug 2015 - Jul 2017
-what: Body.
+## Aug 2015 - Jul 2017
 
-## En dash era
-when: Aug 2015 – Jul 2017
-what: Body.
+Month-only era.
 
-## ISO era, ongoing
-when: 2019-03 - now
-what: Body.
+## Aug 2015 – Jul 2017
 
-## Moment, US style
-when: Feb 15, 2025
-what: Body.
+En dash era.
 
-## Moment, day first
-when: 22 Nov 1991
-what: Body.
+## 2019-03 - now
 
-## Malformed, skipped
-when: sometime in the nineties
-what: Body.
+ISO era, ongoing.
 
-## No when line, skipped
-what: Body.
+## Feb 15, 2025
+
+Moment, US style.
+
+## 22 November, 1991
+
+Moment, day first with a comma.
+
+## Sometime in the nineties
+
+Undated, so skipped.
 `;
 
 const { entries } = parseLifeDoc(doc, TODAY);
 
 console.log('parseLifeDoc');
-check('drops entries without a parseable date', entries.length, 5);
-check('sorts chronologically', entries.map((e) => e.id), [
-    'moment-day-first',
-    'month-only-era',
-    'en-dash-era',
-    'iso-era-ongoing',
-    'moment-us-style'
+check('drops headings without a parseable date', entries.length, 5);
+check('sorts chronologically', entries.map((e) => e.whenText), [
+    '22 November, 1991',
+    'Aug 2015 - Jul 2017',
+    'Aug 2015 – Jul 2017',
+    '2019-03 - now',
+    'Feb 15, 2025'
 ]);
 
-const byId = Object.fromEntries(entries.map((e) => [e.id, e]));
+const at = (n: number) => entries[n];
 
-check('month-only era starts at the 1st', iso(byId['month-only-era'].start), '2015-08-01');
-check('month-only era ends at month end', iso(byId['month-only-era'].end), '2017-07-31');
-check('en dash parses like a hyphen', iso(byId['en-dash-era'].end), '2017-07-31');
-check('"now" runs the era up to today', iso(byId['iso-era-ongoing'].end), '2026-07-29');
-check('"now" marks the entry ongoing', byId['iso-era-ongoing'].ongoing, true);
-check('"Feb 15, 2025" reads as a moment', iso(byId['moment-us-style'].start), '2025-02-15');
-check('a moment has zero span', byId['moment-us-style'].isEra, false);
-check('"22 Nov 1991" reads day-first', iso(byId['moment-day-first'].start), '1991-11-22');
-check('what: becomes the body', byId['moment-day-first'].body, 'Body.');
+check('month-only era starts at the 1st', iso(at(1).start), '2015-08-01');
+check('month-only era ends at month end', iso(at(1).end), '2017-07-31');
+check('en dash parses like a hyphen', iso(at(2).end), '2017-07-31');
+check('"now" runs the era up to today', iso(at(3).end), '2026-07-29');
+check('"now" marks the entry ongoing', at(3).ongoing, true);
+check('"Feb 15, 2025" reads as a moment', iso(at(4).start), '2025-02-15');
+check('a moment has zero span', at(4).isEra, false);
+check('"22 November, 1991" reads day-first', iso(at(0).start), '1991-11-22');
+check('the heading is kept verbatim', at(0).whenText, '22 November, 1991');
+check('text under the heading is the body', at(0).body, 'Moment, day first with a comma.');
+check('ids come from the heading', at(0).id, '22-november-1991');
 
-// `what:` runs onto the lines beneath it, so entries can hold real prose.
+// A comma after the month is the natural way to write a date by hand.
+for (const [written, expected] of [
+    ['22 November, 1991', '1991-11-22'],
+    ['22 November 1991', '1991-11-22'],
+    ['15 February, 2025', '2025-02-15'],
+    ['November 1991', '1991-11-01'],
+    ['Nov. 1991', '1991-11-01']
+] as const) {
+    const parsed = parseLifeDoc(`## ${written}\nBody.`, TODAY).entries[0];
+    check(`"${written}" parses`, parsed && iso(parsed.start), expected);
+}
+
+// Everything under the heading is body copy, markdown and all.
 const multiline = parseLifeDoc(
-    [
-        '## Multiline',
-        'when: Aug 2015',
-        'what: First paragraph.',
-        '',
-        'Second paragraph.',
-        '',
-        '- a list item'
-    ].join('\n'),
+    ['## Aug 2015', '', 'First paragraph.', '', 'Second paragraph.', '', '- a list item'].join('\n'),
     TODAY
 ).entries[0];
-check('what: spans following lines', multiline.body, 'First paragraph.\n\nSecond paragraph.\n\n- a list item');
+check('body keeps paragraphs and lists', multiline.body, 'First paragraph.\n\nSecond paragraph.\n\n- a list item');
 
-// Field order should not matter, and prose written with no field still reads.
-const reordered = parseLifeDoc('## Reordered\nwhat: Body text.\nwhen: Aug 2015', TODAY).entries[0];
-check('what: may precede when:', [reordered.whenText, reordered.body], ['Aug 2015', 'Body text.']);
+// A date mentioned in the body must not affect the entry's timing.
+const strayDate = parseLifeDoc('## Aug 2015\n\nI moved in Jan 2020 to a new place.', TODAY).entries[0];
+check('a date in the body is ignored', [iso(strayDate.start), strayDate.isEra], ['2015-08-01', false]);
 
-const fieldless = parseLifeDoc('## Fieldless\nwhen: Aug 2015\n\nLoose prose.', TODAY).entries[0];
-check('prose without what: still reads', fieldless.body, 'Loose prose.');
+// Two entries in the same month must not collide on id.
+const dupes = parseLifeDoc('## Aug 2015\n\nOne.\n\n## Aug 2015\n\nTwo.', TODAY).entries;
+check('duplicate headings get distinct ids', dupes.map((e) => e.id), ['aug-2015', 'aug-2015-2']);
 
-// A colon inside the prose must not be mistaken for a field.
-const colon = parseLifeDoc('## Colon\nwhen: Aug 2015\nwhat: Note: this stays.', TODAY).entries[0];
-check('a colon in prose is left alone', colon.body, 'Note: this stays.');
+// An entry with no text at all should still place on the calendar.
+const bare = parseLifeDoc('## Aug 2015', TODAY).entries[0];
+check('a heading with no body still counts', [bare.body, iso(bare.start)], ['', '2015-08-01']);
 
 console.log('buildLifeCalendar');
 const calendar = buildLifeCalendar(entries, TODAY);
@@ -119,7 +123,7 @@ check('one row per year of life', calendar.rows.length, LIFE_YEARS);
 check('52 weeks per row', calendar.rows[0].cells.length, 52);
 
 // Birth falls in the very first cell of the very first row.
-check('birth sits in row 0, week 0', calendar.rows[0].cells[0].entryIds.includes('moment-day-first'), true);
+check('birth sits in row 0, week 0', calendar.rows[0].cells[0].entryIds.includes(at(0).id), true);
 check('birth week reads as a moment', calendar.rows[0].cells[0].hasMoment, true);
 
 // Exactly one current week, and it is the past/future seam.
@@ -134,7 +138,7 @@ const lastPast = flat.map((cell) => cell.state).lastIndexOf('past');
 check('past runs strictly before future', lastPast < firstFuture, true);
 
 // A two-year era should cover roughly 104 weeks, not a single one.
-const eraWeeks = flat.filter((cell) => cell.entryIds.includes('month-only-era')).length;
+const eraWeeks = flat.filter((cell) => cell.entryIds.includes(at(1).id)).length;
 check('a 24-month era spans ~104 weeks', eraWeeks >= 100 && eraWeeks <= 108, true);
 
 check('birthday anchoring holds at age 50', iso(BIRTH) === '1991-11-22', true);

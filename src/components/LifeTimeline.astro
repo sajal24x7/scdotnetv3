@@ -22,9 +22,20 @@ for (const entry of entries) {
     else yearGroups.push({ year: entry.year, entries: [entry] });
 }
 
-// Compact payload for the hover tooltip
+// Tooltips show the date plus the opening of the entry's text, so markdown
+// is flattened to a short plain-text lead here rather than in the browser.
+function lead(markdown: string, max = 90): string {
+    const text = markdown
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+        .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+        .replace(/[*_`>#]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    return text.length <= max ? text : `${text.slice(0, max).replace(/\s+\S*$/, '')}…`;
+}
+
 const tipData = Object.fromEntries(
-    entries.map((e) => [e.id, { t: e.title, w: e.whenText }])
+    entries.map((e) => [e.id, { w: e.whenText, s: lead(e.body) }])
 );
 
 const weeksLivedLabel = calendar.weeksLived.toLocaleString('en-US');
@@ -96,7 +107,10 @@ const percentLabel = calendar.percentLived.toFixed(1);
                                 class={classes}
                                 data-e={cell.entryIds.join(',')}
                                 aria-label={cell.entryIds
-                                    .map((id) => tipData[id]?.t)
+                                    .map((id) => {
+                                        const tip = tipData[id];
+                                        return tip && [tip.w, tip.s].filter(Boolean).join(' — ');
+                                    })
                                     .filter(Boolean)
                                     .join('; ')}
                             />
@@ -128,10 +142,7 @@ const percentLabel = calendar.percentLived.toFixed(1);
                 </div>
                 {group.entries.map((entry) => (
                     <article class="life-entry" id={`life-${entry.id}`}>
-                        <div class="life-entry__meta">
-                            <span class="card-chip">{entry.whenText}</span>
-                        </div>
-                        <h3 class="life-entry__title">{entry.title}</h3>
+                        <h3 class="life-entry__title">{entry.whenText}</h3>
                         <div class="life-entry__body prose dark:prose-invert" set:html={parseMarkdown(entry.body)} />
                     </article>
                 ))}
@@ -467,20 +478,13 @@ const percentLabel = calendar.percentLived.toFixed(1);
         background: rgba(var(--color-text-primary), 0.4);
     }
 
-    .life-entry__meta {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        font-size: var(--text-xs);
-        margin-bottom: 0.5rem;
-    }
-
+    /* The heading is the date itself, so it gets lining figures. */
     .life-entry__title {
         font-size: 1.15rem;
         font-weight: 600;
-        margin: 0 0 0.3rem;
+        margin: 0 0 0.4rem;
         line-height: 1.35;
-        text-wrap: balance;
+        font-variant-numeric: tabular-nums;
         color: rgb(var(--color-text-primary));
     }
 
@@ -556,7 +560,7 @@ const percentLabel = calendar.percentLived.toFixed(1);
         const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-life-view-btn]'));
         const tip = root.querySelector<HTMLElement>('[data-life-tip]')!;
         const dataEl = root.querySelector<HTMLScriptElement>('[data-life-entries]');
-        const tipData: Record<string, { t: string; w: string }> = dataEl
+        const tipData: Record<string, { w: string; s: string }> = dataEl
             ? JSON.parse(dataEl.textContent || '{}')
             : {};
 
@@ -586,7 +590,12 @@ const percentLabel = calendar.percentLived.toFixed(1);
             const parts = ids
                 .map((id) => tipData[id])
                 .filter(Boolean)
-                .map((d) => `<p><strong>${escapeHtml(d.t)}</strong><span>${escapeHtml(d.w)}</span></p>`);
+                .map(
+                    (d) =>
+                        `<p><strong>${escapeHtml(d.w)}</strong>${
+                            d.s ? `<span>${escapeHtml(d.s)}</span>` : ''
+                        }</p>`
+                );
             if (!parts.length) return;
 
             tip.innerHTML = parts.join('');

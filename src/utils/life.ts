@@ -24,8 +24,7 @@ const MONTHS: Record<string, number> = {
 
 export interface LifeEntry {
     id: string;
-    title: string;
-    /** The `when:` line exactly as written — shown as the date chip. */
+    /** The `##` heading exactly as written — a date or a date range. */
     whenText: string;
     /** Start of the entry, UTC ms. */
     start: number;
@@ -80,8 +79,10 @@ function parseDateTokens(text: string): DateToken[] {
         });
     }
 
+    // The `,?` after the month name lets "22 November, 1991" read the same
+    // as "22 November 1991" — a comma there is the natural way to write it.
     const nameRe =
-        /(?:\b(\d{1,2})(?:st|nd|rd|th)?\s+)?\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*(?:(\d{1,2})(?:st|nd|rd|th)?\s*,?\s+)?(\d{4})\b/gi;
+        /(?:\b(\d{1,2})(?:st|nd|rd|th)?\s+)?\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?,?\s*(?:(\d{1,2})(?:st|nd|rd|th)?\s*,?\s+)?(\d{4})\b/gi;
     for (const match of text.matchAll(nameRe)) {
         const month = MONTHS[match[2].toLowerCase().slice(0, 3)];
         const dayText = match[1] ?? match[3];
@@ -110,10 +111,13 @@ export function todayUtc(): number {
 }
 
 /**
- * Parse the life doc: the intro is everything above the first `##`, and
- * each `##` section below is one timeline entry carrying a `when:` line.
- * Sections without a parseable `when:` are skipped rather than thrown on,
- * so a half-written entry never breaks the build.
+ * Parse the life doc: the intro is everything above the first `##`, and each
+ * `##` section below is one timeline entry whose heading *is* its date — a
+ * single date for a moment, or a range for an era. Everything under the
+ * heading is the entry's text.
+ *
+ * A heading with no parseable date is skipped rather than thrown on, so a
+ * half-written entry never breaks the build.
  */
 export function parseLifeDoc(raw: string, today: number = todayUtc()): LifeDoc {
     const clean = raw.replace(/<!--[\s\S]*?-->/g, '').trim();
@@ -125,27 +129,10 @@ export function parseLifeDoc(raw: string, today: number = todayUtc()): LifeDoc {
 
     for (const section of sections.slice(1)) {
         const lines = section.split('\n');
-        const title = lines[0].trim();
-        if (!title) continue;
-
-        // Entries carry a `when:` date and a `what:` description. `when:` is
-        // always a single line — letting it run on would fold stray prose,
-        // and any dates inside it, into the entry's timing. Everything else
-        // is body copy, so `what:` can hold several paragraphs as written.
-        const bodyLines: string[] = [];
-        let whenText = '';
-        for (const line of lines.slice(1)) {
-            const match = line.trim().match(/^(when|what)\s*:\s*(.*)$/i);
-            if (match && match[1].toLowerCase() === 'when') {
-                whenText = match[2].trim();
-            } else if (match) {
-                if (match[2]) bodyLines.push(match[2]);
-            } else {
-                bodyLines.push(line);
-            }
-        }
+        const whenText = lines[0].trim();
         if (!whenText) continue;
 
+        const bodyLines = lines.slice(1);
         const tokens = parseDateTokens(whenText);
         if (tokens.length === 0) continue;
 
@@ -165,13 +152,14 @@ export function parseLifeDoc(raw: string, today: number = todayUtc()): LifeDoc {
         }
         if (end < start) end = start;
 
-        let id = slugify(title) || `entry-${entries.length}`;
-        while (seenIds.has(id)) id = `${id}-x`;
+        // Two entries can share a month, so ids get a numeric suffix.
+        const base = slugify(whenText) || `entry-${entries.length}`;
+        let id = base;
+        for (let n = 2; seenIds.has(id); n++) id = `${base}-${n}`;
         seenIds.add(id);
 
         entries.push({
             id,
-            title,
             whenText,
             start,
             end,
