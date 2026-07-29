@@ -652,6 +652,62 @@
 				}
 			],
 			"updatedAt": "2026-07-29T12:38:22.937Z"
+		},
+		"vocab-kludge": {
+			"prompts": [
+				{
+					"id": "vocab-kludge-a1",
+					"q": "What is a word for a haphazard solution to a technical problem?",
+					"a": "kludge"
+				}
+			],
+			"updatedAt": "2026-07-29T17:57:24.187Z"
+		},
+		"c-ill": {
+			"prompts": [
+				{
+					"id": "c-ill-a1",
+					"q": "How to add illative into to Finnish words?",
+					"a": "Vowel + n",
+					"note": "talo > taloon, Helsinki > helsinkiin"
+				}
+			],
+			"updatedAt": "2026-07-29T18:02:08.433Z"
+		},
+		"systemctl": {
+			"prompts": [
+				{
+					"id": "systemctl-a1",
+					"q": "How to check status of nginx service?",
+					"a": "systemctl status nginx"
+				},
+				{
+					"id": "systemctl-a2",
+					"q": "How to restart a service in Linux?",
+					"a": "systemctl restart nginx"
+				}
+			],
+			"updatedAt": "2026-07-29T18:03:13.903Z"
+		},
+		"h-vesi": {
+			"prompts": [
+				{
+					"id": "h-vesi-a1",
+					"q": "How to say water in Finnish?",
+					"a": "vesi"
+				}
+			],
+			"updatedAt": "2026-07-29T18:03:58.422Z"
+		},
+		"fv-nopea": {
+			"prompts": [
+				{
+					"id": "fv-nopea-a1",
+					"q": "How to say fast in Finnish?",
+					"a": "nopea"
+				}
+			],
+			"updatedAt": "2026-07-29T18:04:20.318Z"
 		}
 	}
 }
