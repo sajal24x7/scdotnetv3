@@ -1,13 +1,10 @@
 ---
-aliases:
-tags:
-  - netflix
-  - youtube
-  - hbo-max
-  - movies
-  - tv
-category: micro
+title: "HBO Max Is Putting Vertical Shorts in Its App"
+slug: "hbo-max-is-putting-vertical-shorts-in-its-app"
+created: 2026-07-29T09:26:00+03:00
 updated: 2026-07-29T09:30:03+03:00
+category: micro
+tags: ["netflix", "youtube", "hbo-max", "movies", "tv"]
 ---
 [HBO Max is putting on vertical shorts by Jay Peters](https://www.theverge.com/streaming/971880/hbo-max-vertical-video-feed-shorts)
 
