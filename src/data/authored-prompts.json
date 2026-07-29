@@ -621,6 +621,37 @@
 				}
 			],
 			"updatedAt": "2026-07-28T12:47:33.637Z"
+		},
+		"a-length": {
+			"prompts": [
+				{
+					"id": "a-length-a1",
+					"q": "What happens to how a word is pronounced if a vowel or letter is doubled in Finnish?",
+					"a": "It is held twice as long"
+				},
+				{
+					"id": "a-length-a2",
+					"q": "What happens to the meaning of a word if a letter or vowel is doubled in Finnish?",
+					"a": "It changes",
+					"note": "tuli means fire, tuuli means wind, tulli means customs"
+				}
+			],
+			"updatedAt": "2026-07-29T12:36:09.278Z"
+		},
+		"du": {
+			"prompts": [
+				{
+					"id": "du-a1",
+					"q": "Which Linux command estimates disk usage of files and directories",
+					"a": "du"
+				},
+				{
+					"id": "du-a2",
+					"q": "Which Linux command to use to get one summarized, human-readable size per item under /var/log?",
+					"a": "du -sh /var/log/*"
+				}
+			],
+			"updatedAt": "2026-07-29T12:38:22.937Z"
 		}
 	}
 }
