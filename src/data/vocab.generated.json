@@ -221,6 +221,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/kludge-2026-07-28",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-07-28"
+		},
+		"inveigle": {
+			"word": "inveigle",
+			"pos": "other",
+			"gloss": " verb To inveigle someone is to persuade them in a clever or deceptive way to do something. Inveigle can also mean “to get something in a clever or deceptive way.”",
+			"pronunciation": "in-VAY-gul",
+			"example": "According to rumors, the company inveigled employees into signing the agreement. // Their attempts to inveigle the information from her were, eventually, fruitful.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/inveigle-2026-07-29",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-07-29"
 		}
 	}
 }
