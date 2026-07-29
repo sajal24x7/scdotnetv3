@@ -1,75 +1,106 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SectionLanding from '../layouts/SectionLanding.astro';
+import LifeTimeline from '../components/LifeTimeline.astro';
 import { Image } from 'astro:assets';
 import ProfileImage from '../images/profile/profile.jpeg';
+import lifeRaw from '../data/life.md?raw';
+import { parseLifeDoc, buildLifeCalendar } from '../utils/life';
+import { parseMarkdown } from '../utils/markdown';
+
+// The whole page — intro copy and both timeline views — renders from the
+// single editable doc at src/data/life.md.
+const { intro, entries } = parseLifeDoc(lifeRaw);
+const calendar = buildLifeCalendar(entries);
+const introHtml = parseMarkdown(intro);
 ---
 
 <Layout
-  title="Sajal Choudhary"
-  description="Platform engineer and writer based in Finland"
-  currentPage="/sajal/"
-  pageWrapper={{
-    maxWidth: '7xl',
-    padding: 'none',
-    centered: true,
-    grid: {
-      gap: 'loose',
-      padding: 'narrow'
-    }
-  }}
-  enableLinkHoverEffect
->
-  <SectionLanding
     title="Sajal Choudhary"
-    layout="centered"
-    headerSize="lg"
-    headerMaxWidth="7xl"
-    contentClass="about-content-wrapper"
-  >
-    <section class="about-section twelve-grid grid-gap-tight">
-      <figure class="about-image grid-span-5">
-        <Image
-          src={ProfileImage}
-          alt="Sajal Choudhary"
-          class="w-full h-auto rounded-lg shadow-lg"
-        />
-      </figure>
-      <div class="about-content grid-span-7 prose dark:prose-invert">
-        <p class="text-lg">Hi!</p>
-        <p class="text-lg">I'm Sajal. I am a platform engineer and writer based in Finland.</p>
-      </div>
-    </section>
-  </SectionLanding>
+    description="Platform engineer and writer based in Finland"
+    currentPage="/sajal/"
+    pageWrapper={{
+        maxWidth: '7xl',
+        padding: 'none',
+        centered: true,
+        grid: {
+            gap: 'loose',
+            padding: 'narrow'
+        }
+    }}
+    enableLinkHoverEffect
+>
+    <SectionLanding
+        title="Sajal Choudhary"
+        layout="centered"
+        headerSize="lg"
+        headerMaxWidth="7xl"
+        contentClass="about-content-wrapper"
+    >
+        <!-- Context: copy on the left, portrait on the right -->
+        <section class="about-section twelve-grid grid-gap-tight">
+            <div class="about-content grid-span-7 prose dark:prose-invert" set:html={introHtml} />
+            <figure class="about-image grid-span-5">
+                <Image
+                    src={ProfileImage}
+                    alt="Sajal Choudhary"
+                    loading="eager"
+                    class="w-full h-auto rounded-lg shadow-lg"
+                />
+            </figure>
+        </section>
+
+        <!-- Timeline: life calendar + stream, both fed by src/data/life.md -->
+        <section class="about-timeline">
+            <LifeTimeline entries={entries} calendar={calendar} />
+        </section>
+    </SectionLanding>
 </Layout>
 
 <style>
-  .about-content-wrapper {
-    padding-bottom: clamp(2rem, 5vw, 3rem);
-  }
-
-  .about-section {
-    align-items: start;
-  }
-
-  .about-image {
-    display: flex;
-    justify-content: center;
-  }
-
-  @media (min-width: 48rem) {
-    .about-image {
-      justify-content: flex-start;
+    .about-content-wrapper {
+        padding-bottom: clamp(2rem, 5vw, 3rem);
     }
 
     .about-section {
-      align-items: center;
+        align-items: start;
     }
-  }
 
-  @media (max-width: 47.99rem) {
-    .about-image {
-      margin-bottom: clamp(1.5rem, 5vw, 2rem);
+    /* The opening line of life.md reads as a greeting, not body copy. */
+    .about-content :global(p:first-child) {
+        font-size: var(--text-large);
     }
-  }
+
+    .about-image {
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-timeline {
+        margin-top: clamp(2.5rem, 6vw, 4rem);
+        border-top: 1px solid rgba(var(--color-text-primary), 0.12);
+        padding-top: clamp(2rem, 5vw, 3rem);
+    }
+
+    @media (min-width: 48rem) {
+        .about-image {
+            justify-content: flex-end;
+        }
+
+        .about-section {
+            align-items: center;
+        }
+
+        .about-content {
+            padding-right: clamp(1.5rem, 4vw, 3rem);
+        }
+    }
+
+    @media (max-width: 47.99rem) {
+        /* Portrait leads on narrow screens, copy follows */
+        .about-image {
+            order: -1;
+            margin-bottom: clamp(1.5rem, 5vw, 2rem);
+        }
+    }
 </style>
