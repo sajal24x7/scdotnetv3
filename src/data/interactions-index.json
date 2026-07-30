@@ -449,20 +449,6 @@
       "status": "approved"
     }
   ],
-  "micro/202607150924": [
-    {
-      "id": "mastodon:repost:116922647940916637:111653327277532792",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Football Channel",
-        "url": "https://newsmast.community/@football",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/9f561af390e2c1a36dc020414309a0d1.png"
-      },
-      "url": "https://newsmast.community/@football",
-      "status": "approved"
-    }
-  ],
   "micro/202607160937": [
     {
       "id": "mastodon:like:116928384212733616:109250534557634730",
@@ -693,44 +679,6 @@
         "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/095/460/058/776/original/e5a789a1b6e4f9d9.png"
       },
       "url": "https://newsmast.community/@markets",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:116962741409129260:114863603913131469",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Apple-feed",
-        "url": "https://channel.org/@applefeed",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/6e04454c4298099704bb671fd177b734.jpg"
-      },
-      "url": "https://channel.org/@applefeed",
-      "status": "approved"
-    }
-  ],
-  "micro/finland-is-one-of-the-coolest-countries-in-europe": [
-    {
-      "id": "mastodon:repost:116923690925933632:111653171321324719",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Climate Change Channel",
-        "url": "https://newsmast.community/@climatechange",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/57407957684b95828292bd79f77e0b81.png"
-      },
-      "url": "https://newsmast.community/@climatechange",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:116923690925933632:111653450531724704",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Environment Channel",
-        "url": "https://newsmast.community/@environment",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/6774510b93b51a4fec1ea9921aae9343.png"
-      },
-      "url": "https://newsmast.community/@environment",
       "status": "approved"
     }
   ],
