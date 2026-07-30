@@ -231,6 +231,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/inveigle-2026-07-29",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-07-29"
+		},
+		"sultry": {
+			"word": "sultry",
+			"pos": "other",
+			"gloss": " adjective Sultry means “very hot and humid” when it describes such things as seasons, days, and weather. When it describes things humans do and possess—voices, poses, looks, and the like—it means “exciting or capable of exciting strong sexual desire.”",
+			"pronunciation": "SULL-tree",
+			"example": "The restaurant's rooftop deck is the place to be on sultry summer nights.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/sultry-2026-07-30",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-07-30"
 		}
 	}
 }
