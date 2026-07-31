@@ -461,18 +461,6 @@
       },
       "url": "https://mastodon.social/@WatchingTVnFilm",
       "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:116928384212733616:111653327277532792",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Football Channel",
-        "url": "https://newsmast.community/@football",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/9f561af390e2c1a36dc020414309a0d1.png"
-      },
-      "url": "https://newsmast.community/@football",
-      "status": "approved"
     }
   ],
   "micro/202607161309": [
@@ -559,18 +547,6 @@
       "status": "approved"
     },
     {
-      "id": "mastodon:repost:116931222693562361:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    },
-    {
       "id": "mastodon:repost:116931222693562361:116141936733036818",
       "type": "repost",
       "platform": "mastodon",
@@ -580,20 +556,6 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/5e0c9f27cbe4ab1dddc05717be534585.png"
       },
       "url": "https://mastodon.social/@Literbook",
-      "status": "approved"
-    }
-  ],
-  "micro/202607191230": [
-    {
-      "id": "mastodon:like:116946224299184832:115952121886146124",
-      "type": "like",
-      "platform": "mastodon",
-      "author": {
-        "name": "Frutiger",
-        "url": "https://mastodon.social/@FrutigerAero00",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/a1cc897e41b4f65e6045e47f232735b4.png"
-      },
-      "url": "https://mastodon.social/@FrutigerAero00",
       "status": "approved"
     }
   ],
@@ -751,19 +713,6 @@
     }
   ],
   "micro/rss-is-the-best-distribution-channel": [
-    {
-      "id": "threads:reply:18104307107137059",
-      "type": "reply",
-      "platform": "threads",
-      "author": {
-        "name": "sarascrests",
-        "url": "https://www.threads.com/@sarascrests"
-      },
-      "content": "<p>I'm really impressed with your posts can you text me back here I just followed you follow me back thank you</p>",
-      "url": "https://www.threads.com/@sarascrests/post/DbTIJTNjFYq",
-      "published": "2026-07-27T13:59:05.000Z",
-      "status": "approved"
-    },
     {
       "id": "mastodon:repost:116991385951332365:111653112089202906",
       "type": "repost",
