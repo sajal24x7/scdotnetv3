@@ -241,6 +241,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/sultry-2026-07-30",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-07-30"
+		},
+		"comely": {
+			"word": "comely",
+			"pos": "other",
+			"gloss": " adjective Comely is an adjective with an old-fashioned and literary feel that describes someone or something that has a pleasing appearance, or that is pretty or attractive.",
+			"pronunciation": "KUM-lee",
+			"example": "The newlyweds make quite a comely couple.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/comely-2026-07-31",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-07-31"
 		}
 	}
 }
