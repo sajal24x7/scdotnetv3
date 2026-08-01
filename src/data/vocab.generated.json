@@ -251,6 +251,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/comely-2026-07-31",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-07-31"
+		},
+		"spindrift": {
+			"word": "spindrift",
+			"pos": "other",
+			"gloss": " noun Spindrift refers to spray blown from waves during a gale or to fine wind-borne snow or sand.",
+			"pronunciation": "SPIN-drift",
+			"example": "Our whale-watching cruise was a whirlwind of flukes, fins, and clinging to the handrails amid the waves and salty blasts of spindrift.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/spindrift-2026-08-01",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-01"
 		}
 	}
 }
