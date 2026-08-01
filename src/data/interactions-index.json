@@ -790,6 +790,19 @@
   ],
   "micro/the-changing-role-of-book-covers": [
     {
+      "id": "bluesky:like:3mrozqe76xu2p:did:plc:672buqh3zd2wvsntyspzvvpp",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Lydia Lukidis",
+        "url": "https://bsky.app/profile/lydialukidis.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:672buqh3zd2wvsntyspzvvpp/bafkreid6phkkeo2lu57x7zzk6a2yucfz4svz2n7uviz75bi6pmmwhld64u"
+      },
+      "url": "https://bsky.app/profile/lydialukidis.bsky.social",
+      "published": "2026-07-28T09:38:28.010Z",
+      "status": "approved"
+    },
+    {
       "id": "web:like:b17a20723b4c7a94345714fcb8c708579f7f1994039be9c939264985d3b6c10a",
       "type": "like",
       "platform": "web",
@@ -803,6 +816,19 @@
       "status": "pending"
     },
     {
+      "id": "bluesky:like:3mrozqe76xu2p:did:plc:kthwu6mpwb56qwdm2ipaxciw",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Bookshelfie ⭐️",
+        "url": "https://bsky.app/profile/bookshelfie.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:kthwu6mpwb56qwdm2ipaxciw/bafkreidq6td4g3ayrxfqvwtw4cwude4yw2545h4gczxu7tyuff5h7rtvtq"
+      },
+      "url": "https://bsky.app/profile/bookshelfie.bsky.social",
+      "published": "2026-07-28T19:04:14.136Z",
+      "status": "approved"
+    },
+    {
       "id": "web:like:ba4be01a1f124910b91bd5cdd0a2609bbbc5a492437cac05b44dec6c24d0d17b",
       "type": "like",
       "platform": "web",
@@ -814,6 +840,18 @@
       "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mrozqe76xu2p/did%253Aplc%253Akthwu6mpwb56qwdm2ipaxciw",
       "published": "2026-07-28T19:04:52.917Z",
       "status": "pending"
+    },
+    {
+      "id": "mastodon:repost:116996741585395992:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
     }
   ],
   "micro/the-human-in-the-loop-is-tired": [
