@@ -1,13 +1,13 @@
 ---
-title: "NL116 - First Few Days in Barcelona"
+title: "First Few Days in Barcelona"
 slug: "nl116-first-few-days-in-barcelona"
 created: 2026-08-01T10:04:00+03:00
 updated: 2026-08-02T17:01:38+02:00
 category: nordletter
 tags: ["travel", "barcelona", "spain", "beach"]
-edition:
-description: ""
-image: ""
+edition: 116
+description: "Wide streets and hot weathers"
+image: "https://storage.sajalchoudhary.net/images/2026/08/nl116-17.jpeg"
 ---
 Hello from my friend’s home in Barcelona! This is NordLetter #116, a weekly newsletter on living and walking in Finland. 
 
@@ -21,10 +21,7 @@ I’m on vacation! We travelled to Barcelona aboard a connecting Lufthansa fligh
 
 ![Inter change](https://storage.sajalchoudhary.net/images/2026/08/nl116-22.jpeg)
 
-
-
 ![Barcelona](https://storage.sajalchoudhary.net/images/2026/08/nl116-17.jpeg)
-
 
 It was an early morning flight, and we had left home at 03:30, so Savya slept through the first flight. He was a little more excited in the second flight, but still we managed to get him to sleep in the second flight as well. This was Savya’s first time travelling on his own seat, a milestone of sorts.
 
