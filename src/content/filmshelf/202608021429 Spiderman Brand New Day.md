@@ -1,12 +1,17 @@
 ---
-title: "Spiderman Brand New Day"
-slug: "spiderman-brand-new-day"
+title: Spiderman Brand New Day
+slug: spiderman-brand-new-day
 created: 2026-08-02T12:29:54.851Z
 category: filmshelf
-finished: 2026-08-02
+finished: 2026-08-02T00:00:00.000Z
 rating: love
-platform: "Theatre"
+platform: Theatre
 status: finished
+genre: science fiction
+director:
+  - Destin Daniel Cretton
+year: 2026
+cover: spiderman-brand-new-day.webp
 ---
 Watched it in Barcelona. 
 
