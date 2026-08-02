@@ -12,6 +12,10 @@ director:
   - Destin Daniel Cretton
 year: 2026
 cover: spiderman-brand-new-day.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117026242989693669'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3ms44y23knc2j'
+  - 'https://www.threads.com/@sajal24x7/post/DbikLRqG6k5'
 ---
 Watched it in Barcelona. 
 
