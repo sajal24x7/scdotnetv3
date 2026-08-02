@@ -1,12 +1,13 @@
 ---
-aliases:
-tags:
-  - travel
-  - barcelona
-  - spain
-  - beach
-category: nordletter
+title: "NL116 - First Few Days in Barcelona"
+slug: "nl116-first-few-days-in-barcelona"
+created: 2026-08-01T10:04:00+03:00
 updated: 2026-08-02T17:01:38+02:00
+category: nordletter
+tags: ["travel", "barcelona", "spain", "beach"]
+edition:
+description: ""
+image: ""
 ---
 Hello from my friend’s home in Barcelona! This is NordLetter #116, a weekly newsletter on living and walking in Finland. 
 
