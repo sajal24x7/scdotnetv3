@@ -261,6 +261,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/spindrift-2026-08-01",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-01"
+		},
+		"highfalutin": {
+			"word": "highfalutin",
+			"pos": "other",
+			"gloss": " adjective Something or someone described as highfalutin seems, or is trying to seem, great or important.",
+			"pronunciation": "hye-fuh-LOO-tun",
+			"example": "The authors’ research may have been impressive, but their paper was full of highfalutin jargon that ultimately obscured what they intended to say.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/highfalutin-2026-08-02",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-02"
 		}
 	}
 }
