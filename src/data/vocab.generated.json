@@ -271,6 +271,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/highfalutin-2026-08-02",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-02"
+		},
+		"mitigate": {
+			"word": "mitigate",
+			"pos": "other",
+			"gloss": " verb To mitigate something is to make it less severe, harmful, or painful.",
+			"pronunciation": "MIT-uh-gayt",
+			"example": "One way we can mitigate the impact the construction project will have on residents is to commit to completing it in the allotted time.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/mitigate-2026-08-03",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-03"
 		}
 	}
 }
