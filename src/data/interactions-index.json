@@ -718,6 +718,32 @@
       "status": "approved"
     }
   ],
+  "micro/202607292203": [
+    {
+      "id": "mastodon:like:117004965616245850:113418392918400555",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Auster",
+        "url": "https://thebrainbin.org/u/Auster",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/113/418/392/918/400/555/original/5c3bd618dd351a9b.webp"
+      },
+      "url": "https://thebrainbin.org/u/Auster",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117004965616245850:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
+    }
+  ],
   "micro/amazon-has-a-new-plan-for-games": [
     {
       "id": "mastodon:like:116696520863508112:1339141",
@@ -932,6 +958,18 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/2d5c30fd3cf1c721e763d3992114dffd.png"
       },
       "url": "https://mastodon.social/@marintkael",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:116996740667785757:116865256771596090",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Rookie",
+        "url": "https://mastodon.social/@rookie9",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/a1cc897e41b4f65e6045e47f232735b4.png"
+      },
+      "url": "https://mastodon.social/@rookie9",
       "status": "approved"
     },
     {
