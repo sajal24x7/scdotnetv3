@@ -719,6 +719,65 @@
 				}
 			],
 			"updatedAt": "2026-08-04T06:09:45.607Z"
+		},
+		"h-kahvi": {
+			"prompts": [
+				{
+					"id": "h-kahvi-a1",
+					"q": "I drink coffee.\nJuon {{kahvia}}",
+					"a": "kahvia",
+					"kind": "cloze"
+				},
+				{
+					"id": "h-kahvi-a2",
+					"q": "Is the coffee good?\nOnko {{kahvi}} hyvää?",
+					"a": "kahvi",
+					"kind": "cloze"
+				}
+			],
+			"updatedAt": "2026-08-04T06:16:35.852Z"
+		},
+		"cut": {
+			"prompts": [
+				{
+					"id": "cut-a1",
+					"q": "How to get username from /etc/passwd using cut?",
+					"a": "cut -d: -f1 /etc/passwd",
+					"note": "-f1 for first field"
+				},
+				{
+					"id": "cut-a2",
+					"q": "How to get first 10 characters from a file?",
+					"a": "cut -c1-10 file.txt"
+				}
+			],
+			"updatedAt": "2026-08-04T06:19:45.073Z"
+		},
+		"d-nom": {
+			"prompts": [
+				{
+					"id": "d-nom-a1",
+					"q": "What is the base dictionary form of a word in Finnish called?",
+					"a": "nominative"
+				}
+			],
+			"updatedAt": "2026-08-04T06:21:24.158Z"
+		},
+		"fv-tehda": {
+			"prompts": [
+				{
+					"id": "fv-tehda-a1",
+					"q": "What are you doing?\nMitä sinä {{teet}}?",
+					"a": "teet",
+					"kind": "cloze"
+				},
+				{
+					"id": "fv-tehda-a2",
+					"q": "What is the Finnish word for to do/to make?",
+					"a": "tehdä"
+				}
+			],
+			"updatedAt": "2026-08-04T06:23:51.605Z"
 		}
 	}
 }
