@@ -39,6 +39,7 @@ export interface LearnHubSystem {
 interface SystemStatus {
 	due: number;
 	newAvailable: number;
+	introducedToday: number;
 	introduced: number;
 	started: boolean;
 }
@@ -48,7 +49,7 @@ function readStatus(system: LearnHubSystem): SystemStatus {
 	try {
 		const raw = window.localStorage.getItem(system.storageKey);
 		if (!raw) {
-			return { due: 0, newAvailable: Math.min(system.totalItems, system.newPerDay), introduced: 0, started: false };
+			return { due: 0, newAvailable: Math.min(system.totalItems, system.newPerDay), introducedToday: 0, introduced: 0, started: false };
 		}
 		const state: SrsState = { ...emptyState(), ...JSON.parse(raw) };
 		const due = computeDueCount(state, today);
@@ -56,9 +57,9 @@ function readStatus(system: LearnHubSystem): SystemStatus {
 		const unseen = computeUnseenCount(system.totalItems, state);
 		const introducedTodayCount = computeIntroducedTodayCount(state, today);
 		const newAvailable = computeNewAvailable(unseen, introducedTodayCount, system.newPerDay);
-		return { due: Math.min(due, system.dueCap), newAvailable, introduced, started: true };
+		return { due: Math.min(due, system.dueCap), newAvailable, introducedToday: introducedTodayCount, introduced, started: true };
 	} catch {
-		return { due: 0, newAvailable: 0, introduced: 0, started: false };
+		return { due: 0, newAvailable: 0, introducedToday: 0, introduced: 0, started: false };
 	}
 }
 
@@ -79,15 +80,21 @@ function Banner({ systems, statuses }: { systems: LearnHubSystem[]; statuses: Re
 	if (!statuses) return null;
 	let due = 0;
 	let newAvailable = 0;
+	let introducedToday = 0;
 	for (const system of systems) {
 		const status = statuses[system.id];
 		if (!status) continue;
 		due += status.due;
 		newAvailable += status.newAvailable;
+		introducedToday += status.introducedToday;
 	}
 	// Show what /learn/new would actually offer today, not the raw sum of
-	// every deck's budget.
-	newAvailable = Math.min(newAvailable, GLOBAL_NEW_PER_DAY);
+	// every deck's budget — and not a fresh 5 regardless of how many of
+	// today's global quota are already spent. Without subtracting
+	// introducedToday, a deck nobody touched today keeps reporting its own
+	// full per-deck quota, so this banner can keep advertising up to 5 more
+	// "new" concepts even right after finishing today's batch.
+	newAvailable = Math.min(newAvailable, Math.max(0, GLOBAL_NEW_PER_DAY - introducedToday));
 	return (
 		<>
 			<a className="lq-hub__banner" href="/learn/new/">

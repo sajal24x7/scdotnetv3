@@ -113,18 +113,32 @@ export default function NewToday({ registry }: { registry: PracticeDeck[] }) {
 			});
 			if (!cancelled) setAuthoredStore(authored);
 
+			// The global daily quota is on today's *introductions*, not a fresh 5
+			// every time this page loads — otherwise a deck nobody's touched yet
+			// today keeps offering its own full per-deck budget even after the
+			// day's 5 are already spent elsewhere (mirrors the fix already in
+			// place for /practice's due-count backlog).
+			const introducedTodayGlobal = registry.reduce(
+				(sum, deck) => sum + computeIntroducedTodayCount(perDeck[deck.id] ?? emptyState(), today),
+				0,
+			);
+			const globalRemaining = Math.max(0, GLOBAL_NEW_PER_DAY - introducedTodayGlobal);
+
 			// Only fetch datasets for decks that can actually contribute a new
 			// item today (enabled, budget left, something unseen).
 			const disabled = new Set(currentMeta.disabledDecks);
-			const candidates = registry.filter((deck) => {
-				if (disabled.has(deck.id)) return false;
-				const state = perDeck[deck.id] ?? emptyState();
-				const unseen = computeUnseenCount(deck.totalItems, state);
-				const budget = computeNewAvailable(unseen, computeIntroducedTodayCount(state, today), deck.newPerDay);
-				// Local decks report totalItems 0 in the registry; let their real
-				// dataset (if imported on this device) decide below.
-				return budget > 0 || deck.source.kind === 'local';
-			});
+			const candidates =
+				globalRemaining === 0
+					? []
+					: registry.filter((deck) => {
+							if (disabled.has(deck.id)) return false;
+							const state = perDeck[deck.id] ?? emptyState();
+							const unseen = computeUnseenCount(deck.totalItems, state);
+							const budget = computeNewAvailable(unseen, computeIntroducedTodayCount(state, today), deck.newPerDay);
+							// Local decks report totalItems 0 in the registry; let their real
+							// dataset (if imported on this device) decide below.
+							return budget > 0 || deck.source.kind === 'local';
+						});
 
 			const fetched = await Promise.all(
 				candidates.map(async (deck) => {
@@ -164,7 +178,7 @@ export default function NewToday({ registry }: { registry: PracticeDeck[] }) {
 				decks: deckInputs,
 				today,
 				suspended: new Set(currentMeta.suspended),
-				globalNewPerDay: GLOBAL_NEW_PER_DAY,
+				globalNewPerDay: globalRemaining,
 				// Guarantee at least one English word (vocab) and one Finnish word
 				// (finnish, falling back to finnish-vocab) among today's picks —
 				// otherwise plain round-robin in registry order lets linux/finnish/
