@@ -150,7 +150,7 @@
 					"note": "Lowercase g jumps back to the top. `less +G file` opens already at the end."
 				}
 			],
-			"updatedAt": "2026-07-27T08:20:36.382Z"
+			"updatedAt": "2026-08-04T06:12:01.078Z"
 		},
 		"tail": {
 			"prompts": [
@@ -221,7 +221,7 @@
 					"a": "hei and moi"
 				}
 			],
-			"updatedAt": "2026-07-27T08:20:36.382Z"
+			"updatedAt": "2026-08-04T06:10:32.533Z"
 		},
 		"a-phonemic": {
 			"prompts": [
@@ -238,7 +238,7 @@
 					"note": "Finnish spelling is fully phonemic — if you can spell it, you can say it: kioski."
 				}
 			],
-			"updatedAt": "2026-07-27T08:20:36.382Z"
+			"updatedAt": "2026-08-04T06:12:51.646Z"
 		},
 		"h-talo": {
 			"prompts": [
@@ -435,7 +435,7 @@
 					"a": "nähdä"
 				}
 			],
-			"updatedAt": "2026-07-27T08:20:36.382Z"
+			"updatedAt": "2026-08-04T06:12:59.235Z"
 		},
 		"fv-aiti": {
 			"prompts": [
@@ -708,6 +708,17 @@
 				}
 			],
 			"updatedAt": "2026-07-29T18:04:20.318Z"
+		},
+		"vocab-mitigate": {
+			"prompts": [
+				{
+					"id": "vocab-mitigate-a1",
+					"q": "How can we {{mitigate}} this problem?",
+					"a": "mitigate",
+					"kind": "cloze"
+				}
+			],
+			"updatedAt": "2026-08-04T06:09:45.607Z"
 		}
 	}
 }
