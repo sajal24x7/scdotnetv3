@@ -80,6 +80,7 @@ interface DeckCounts {
 	due: number;
 	newAvailable: number;
 	unseen: number;
+	introducedToday: number;
 }
 
 // Local decks (currently just people) have no build-time dataset — the
@@ -101,7 +102,7 @@ function countsFor(deck: PracticeDeck, state: SrsState, today: string, localData
 	const introducedToday = computeIntroducedTodayCount(state, today);
 	const unseen = computeUnseenCount(totalItemsFor(deck, localDataset), state);
 	const newAvailable = computeNewAvailable(unseen, introducedToday, deck.newPerDay);
-	return { due, newAvailable, unseen };
+	return { due, newAvailable, unseen, introducedToday };
 }
 
 export default function PracticeSession({ registry }: { registry: PracticeDeck[] }) {
@@ -302,10 +303,14 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 	);
 	// New concepts aren't part of this page anymore — the count only feeds the
 	// "waiting on the Learn page" nudge below, capped at what /learn/new
-	// would actually offer today.
+	// would actually offer today. Mirrors the totalDue fix above: the global
+	// cap is on *today's* introductions, not a fresh 5 every time this is
+	// computed, so decks that weren't touched today can't keep re-advertising
+	// a full quota after the day's 5 are already spent elsewhere.
+	const introducedTodayGlobal = activeDecks.reduce((n, d) => n + (countsByDeck.get(d.id)?.introducedToday ?? 0), 0);
 	const totalNew = Math.min(
 		activeDecks.reduce((n, d) => n + (countsByDeck.get(d.id)?.newAvailable ?? 0), 0),
-		GLOBAL_NEW_PER_DAY,
+		Math.max(0, GLOBAL_NEW_PER_DAY - introducedTodayGlobal),
 	);
 	const doneForToday = meta !== null && totalDue === 0;
 
