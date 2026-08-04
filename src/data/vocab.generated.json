@@ -281,6 +281,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/mitigate-2026-08-03",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-03"
+		},
+		"lan": {
+			"word": "élan",
+			"pos": "other",
+			"gloss": " noun Élan refers to energy and enthusiasm.",
+			"pronunciation": "ay-LAHN",
+			"example": "The dancers performed with great style and élan; we were exhausted just watching them.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/élan-2026-08-04",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-04"
 		}
 	}
 }
