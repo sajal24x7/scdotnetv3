@@ -378,20 +378,6 @@
       "status": "approved"
     }
   ],
-  "evergreen/hunger-starts-in-the-mind": [
-    {
-      "id": "mastodon:repost:116951612884290822:111653123325216795",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Food & Drink Channel",
-        "url": "https://newsmast.community/@foodanddrink",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/2f8ca8e08072f238a9205363b6b2affb.png"
-      },
-      "url": "https://newsmast.community/@foodanddrink",
-      "status": "approved"
-    }
-  ],
   "evergreen/spaced-repetition": [
     {
       "id": "mastodon:repost:116982896487677224:111653099686979697",
