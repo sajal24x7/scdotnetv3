@@ -6,6 +6,7 @@ import {
 	computeNewAvailable,
 	computeUnseenCount,
 	emptyState,
+	GLOBAL_DUE_CAP,
 	GLOBAL_NEW_PER_DAY,
 	localToday,
 	type SrsState,
@@ -95,6 +96,12 @@ function Banner({ systems, statuses }: { systems: LearnHubSystem[]; statuses: Re
 	// full per-deck quota, so this banner can keep advertising up to 5 more
 	// "new" concepts even right after finishing today's batch.
 	newAvailable = Math.min(newAvailable, Math.max(0, GLOBAL_NEW_PER_DAY - introducedToday));
+	// Same logic for due: each deck's count above is already capped at that
+	// deck's own dueCap, but the *session* /practice actually runs is capped
+	// again at GLOBAL_DUE_CAP on top of that (see PracticeSession's totalDue).
+	// Without this clamp, the hub promises the raw per-deck sum — e.g. "38
+	// due" — when a session will only ever serve GLOBAL_DUE_CAP cards.
+	due = Math.min(due, GLOBAL_DUE_CAP);
 	return (
 		<>
 			<a className="lq-hub__banner" href="/learn/new/">
