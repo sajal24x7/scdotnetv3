@@ -801,20 +801,6 @@
       "status": "pending"
     }
   ],
-  "micro/apple-to-start-a-upgrade-program": [
-    {
-      "id": "mastodon:repost:116962741409129260:111653095460058776",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Markets & Finance Channel",
-        "url": "https://newsmast.community/@markets",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/095/460/058/776/original/e5a789a1b6e4f9d9.png"
-      },
-      "url": "https://newsmast.community/@markets",
-      "status": "approved"
-    }
-  ],
   "micro/how-and-why-to-cull-your-book-collection": [
     {
       "id": "mastodon:like:116901921008963465:111584118693761981",
@@ -866,20 +852,6 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/dd4040f230b3416b4e612caff74d73d4.jpg"
       },
       "url": "https://ohai.social/@ikklegemzuniverseplus",
-      "status": "approved"
-    }
-  ],
-  "micro/online-shopping-and-rising-living-costs-driving-young-finns-into-debt": [
-    {
-      "id": "mastodon:repost:116964069189073957:111653099407839416",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Poverty & Inequality Channel",
-        "url": "https://newsmast.community/@povertyandinequality",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/099/407/839/416/original/8b200aa0ac9c91c1.png"
-      },
-      "url": "https://newsmast.community/@povertyandinequality",
       "status": "approved"
     }
   ],
