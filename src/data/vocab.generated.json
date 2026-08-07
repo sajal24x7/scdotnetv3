@@ -311,6 +311,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/torpor-2026-08-06",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-06"
+		},
+		"invidious": {
+			"word": "invidious",
+			"pos": "other",
+			"gloss": " adjective Invidious is a formal word used to describe things that are unpleasant and likely to cause bad feelings in other people. Such bad feelings may include resentment, discontent, animosity, or envy.",
+			"pronunciation": "in-VID-ee-us",
+			"example": "Psychologists caution against drawing invidious comparisons between other people’s lives as portrayed on social media and one’s own.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/invidious-2026-08-07",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-07"
 		}
 	}
 }
