@@ -297,18 +297,6 @@
       "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mrdlyilimk2r/did%253Aplc%253Axuh6g7hnpeorsy5qqlrrwvj4",
       "published": "2026-07-27T15:20:34.839Z",
       "status": "pending"
-    },
-    {
-      "id": "mastodon:repost:116974058744145471:111811737765749325",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Social Sciences Channel",
-        "url": "https://newsmast.community/@socialsciences",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/811/737/765/749/325/original/b600d42ae9be368b.png"
-      },
-      "url": "https://newsmast.community/@socialsciences",
-      "status": "approved"
     }
   ],
   "bookshelf/zen-in-the-art-of-writing": [
