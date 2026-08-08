@@ -1,5 +1,5 @@
 ---
-aliases:
+aliases: a
 tags:
   - writing
   - blog
