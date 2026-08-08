@@ -1,10 +1,17 @@
 ---
-title: "How I Write by Murat"
-slug: "how-i-write-by-murat"
-created: 2026-08-07T21:02:00+03:00
-updated: 2026-08-07T21:23:38+02:00
+title: How I Write by Murat
+slug: how-i-write-by-murat
+created: 2026-08-07T18:02:00.000Z
+updated: 2026-08-07T19:23:38.000Z
 category: micro
-tags: ["writing", "blog", "simon-willison"]
+tags:
+  - writing
+  - blog
+  - simon-willison
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117060655740174277'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mslfz5mco22a'
+  - 'https://www.threads.com/@sajal24x7/post/DbyNuArnPMd'
 ---
 [How I write by Murat](https://muratbuffalo.blogspot.com/2013/08/how-i-write.html?m=1)
 
