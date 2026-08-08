@@ -321,6 +321,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/invidious-2026-08-07",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-07"
+		},
+		"nurture": {
+			"word": "nurture",
+			"pos": "other",
+			"gloss": " verb Nurture is most often used to mean “to help someone or something grow, develop, or succeed.” It can also mean “to take care of someone or something that is growing or developing by providing food, protection, a place to live, etc.,” or “to hold something, such as an idea or strong feeling, in your mind for a long time.”",
+			"pronunciation": "NER-cher",
+			"example": "Art teachers nurture their students’ creativity. // She nurtured a secret ambition to be a professional singer.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/nurture-2026-08-08",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-08"
 		}
 	}
 }
