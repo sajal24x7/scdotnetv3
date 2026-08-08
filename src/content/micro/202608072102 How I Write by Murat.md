@@ -1,11 +1,10 @@
 ---
-aliases: a
-tags:
-  - writing
-  - blog
-  - simon-willison
-category: micro
+title: "How I Write by Murat"
+slug: "how-i-write-by-murat"
+created: 2026-08-07T21:02:00+03:00
 updated: 2026-08-07T21:23:38+02:00
+category: micro
+tags: ["writing", "blog", "simon-willison"]
 ---
 [How I write by Murat](https://muratbuffalo.blogspot.com/2013/08/how-i-write.html?m=1)
 
