@@ -366,20 +366,6 @@
       "status": "approved"
     }
   ],
-  "evergreen/spaced-repetition": [
-    {
-      "id": "mastodon:repost:116982896487677224:111653099686979697",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Government & Policy Channel",
-        "url": "https://newsmast.community/@government",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/099/686/979/697/original/43016e49f823a5e1.png"
-      },
-      "url": "https://newsmast.community/@government",
-      "status": "approved"
-    }
-  ],
   "micro/202607091101": [
     {
       "id": "bluesky:like:3mq7azzv4qu2w:did:plc:lcbtt32aexvcuwlt4alf6qsw",
