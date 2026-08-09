@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - craig-mod
-  - writing
-  - phone
-category: micro
+title: "On Banning Phones in Parks and Improving Writing"
+slug: "on-banning-phones-in-parks-and-improving-writing"
+created: 2026-08-09T13:35:00+03:00
 updated: 2026-08-09T17:06:59+02:00
+category: micro
+tags: ["craig-mod", "writing", "phone"]
 ---
 [Oooohhh Summer, How Much Risk Is a Useful Amount of Risk? by Craig Mod](https://craigmod.com/roden/116/)
 
