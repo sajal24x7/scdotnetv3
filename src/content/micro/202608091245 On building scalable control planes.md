@@ -1,10 +1,17 @@
 ---
-title: "On Building Scalable Control Planes"
-slug: "on-building-scalable-control-planes"
-created: 2026-08-09T12:45:00+03:00
-updated: 2026-08-09T12:48:14+02:00
+title: On Building Scalable Control Planes
+slug: on-building-scalable-control-planes
+created: 2026-08-09T09:45:00.000Z
+updated: 2026-08-09T10:48:14.000Z
 category: micro
-tags: ["distributed-systems", "aws", "ec2"]
+tags:
+  - distributed-systems
+  - aws
+  - ec2
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117065729075712925'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3msno4agxl52k'
+  - 'https://www.threads.com/@sajal24x7/post/Db0hX2uoA6H'
 ---
 [On building scalable control planes by Dr Werner Vogels](https://www.allthingsdistributed.com/2026/08/on-building-scalable-control-planes.html)
 
