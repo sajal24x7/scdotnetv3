@@ -1,10 +1,17 @@
 ---
-title: "On Banning Phones in Parks and Improving Writing"
-slug: "on-banning-phones-in-parks-and-improving-writing"
-created: 2026-08-09T13:35:00+03:00
-updated: 2026-08-09T17:06:59+02:00
+title: On Banning Phones in Parks and Improving Writing
+slug: on-banning-phones-in-parks-and-improving-writing
+created: 2026-08-09T10:35:00.000Z
+updated: 2026-08-09T15:06:59.000Z
 category: micro
-tags: ["craig-mod", "writing", "phone"]
+tags:
+  - craig-mod
+  - writing
+  - phone
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117066323316255402'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3msnwki36j72s'
+  - 'https://www.threads.com/@sajal24x7/post/Db0yqt-FKYf'
 ---
 [Oooohhh Summer, How Much Risk Is a Useful Amount of Risk? by Craig Mod](https://craigmod.com/roden/116/)
 
