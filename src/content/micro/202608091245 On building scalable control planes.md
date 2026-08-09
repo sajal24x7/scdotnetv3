@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - distributed-systems
-  - aws
-  - ec2
-category: micro
+title: "On Building Scalable Control Planes"
+slug: "on-building-scalable-control-planes"
+created: 2026-08-09T12:45:00+03:00
 updated: 2026-08-09T12:48:14+02:00
+category: micro
+tags: ["distributed-systems", "aws", "ec2"]
 ---
 [On building scalable control planes by Dr Werner Vogels - https://www.allthingsdistributed.com/](https://www.allthingsdistributed.com/2026/08/on-building-scalable-control-planes.html)
 
