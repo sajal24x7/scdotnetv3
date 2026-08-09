@@ -331,6 +331,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/nurture-2026-08-08",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-08"
+		},
+		"anecdote": {
+			"word": "anecdote",
+			"pos": "other",
+			"gloss": " noun An anecdote is a short narrative about an interesting, funny, or biographical incident.",
+			"pronunciation": "AN-ik-doht",
+			"example": "Dinner with our uncles means lots of anecdotes involving the mischief they got into as kids.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/anecdote-2026-08-09",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-09"
 		}
 	}
 }
