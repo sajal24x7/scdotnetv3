@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - work
-  - office
-category: micro
+title: "A Story About Rituals"
+slug: "a-story-about-rituals"
+created: 2026-08-10T18:38:00+03:00
 updated: 2026-08-10T18:38:51+02:00
+category: micro
+tags: ["work", "office"]
 ---
 [Defending my own brain against enshittification](https://mrmarket.lol/how-i-feel-calmin-control-of-my-life-in-the-time-of-enshittification/)
 
