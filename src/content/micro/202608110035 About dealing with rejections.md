@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - work
-  - job-search
-  - seth-godin
-category: micro
+title: "About Dealing With Rejections"
+slug: "about-dealing-with-rejections"
+created: 2026-08-11T00:35:00+03:00
 updated: 2026-08-11T00:35:55+02:00
+category: micro
+tags: ["work", "job-search", "seth-godin"]
 ---
 [Give me one reason by Seth Godin](https://feeds.feedblitz.com/~/967550627/0/sethsblog~Give-me-one-reason/)
 
