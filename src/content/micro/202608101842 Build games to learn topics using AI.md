@@ -1,10 +1,16 @@
 ---
-title: "Build Games to Learn Topics Using AI"
-slug: "build-games-to-learn-topics-using-ai"
-created: 2026-08-10T18:42:00+03:00
-updated: 2026-08-10T18:43:27+02:00
+title: Build Games to Learn Topics Using AI
+slug: build-games-to-learn-topics-using-ai
+created: 2026-08-10T15:42:00.000Z
+updated: 2026-08-10T16:43:27.000Z
 category: micro
-tags: ["ai", "learning"]
+tags:
+  - ai
+  - learning
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117072810032984897'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3msqsqbwofv2s'
+  - 'https://www.threads.com/@sajal24x7/post/Db3vdMGoMZM'
 ---
 [How I use LLMs to learn complex topics · Laurentiu Raducu by Laurentiu Raducu](https://laurentiugabriel.github.io/blog/articles/how-i-use-llms-to-learn/)
 

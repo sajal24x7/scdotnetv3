@@ -1,10 +1,16 @@
 ---
-title: "A Story About Rituals"
-slug: "a-story-about-rituals"
-created: 2026-08-10T18:38:00+03:00
-updated: 2026-08-10T18:38:51+02:00
+title: A Story About Rituals
+slug: a-story-about-rituals
+created: 2026-08-10T15:38:00.000Z
+updated: 2026-08-10T16:38:51.000Z
 category: micro
-tags: ["work", "office"]
+tags:
+  - work
+  - office
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117072809168222403'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3msqspvbz6z2s'
+  - 'https://www.threads.com/@sajal24x7/post/Db3vbkmIIae'
 ---
 [Defending my own brain against enshittification](https://mrmarket.lol/how-i-feel-calmin-control-of-my-life-in-the-time-of-enshittification/)
 
