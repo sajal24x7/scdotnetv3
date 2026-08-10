@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - ai
-  - learning
-category: micro
+title: "Build Games to Learn Topics Using AI"
+slug: "build-games-to-learn-topics-using-ai"
+created: 2026-08-10T18:42:00+03:00
 updated: 2026-08-10T18:43:27+02:00
+category: micro
+tags: ["ai", "learning"]
 ---
 [How I use LLMs to learn complex topics · Laurentiu Raducu by Laurentiu Raducu](https://laurentiugabriel.github.io/blog/articles/how-i-use-llms-to-learn/)
 
