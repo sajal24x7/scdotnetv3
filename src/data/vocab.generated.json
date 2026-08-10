@@ -341,6 +341,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/anecdote-2026-08-09",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-09"
+		},
+		"pedagogical": {
+			"word": "pedagogical",
+			"pos": "other",
+			"gloss": " adjective Pedagogical is a formal word used to describe things that are of or related to teachers or education.",
+			"pronunciation": "ped-uh-GAH-jih-kul",
+			"example": "The new professor is known for particularly engaging pedagogical methods.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/pedagogical-2026-08-10",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-10"
 		}
 	}
 }
