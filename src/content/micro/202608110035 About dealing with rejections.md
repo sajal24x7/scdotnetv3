@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117074505659315033'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3msrkterkov2s'
+  - 'https://www.threads.com/@sajal24x7/post/Db4v7xukRkk'
 ---
 [Give me one reason by Seth Godin](https://feeds.feedblitz.com/~/967550627/0/sethsblog~Give-me-one-reason/)
 
