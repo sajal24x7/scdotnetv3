@@ -1,10 +1,16 @@
 ---
-title: "About Dealing With Rejections"
-slug: "about-dealing-with-rejections"
-created: 2026-08-11T00:35:00+03:00
-updated: 2026-08-11T00:35:55+02:00
+title: About Dealing With Rejections
+slug: about-dealing-with-rejections
+created: 2026-08-10T21:35:00.000Z
+updated: 2026-08-10T22:35:55.000Z
 category: micro
-tags: ["work", "job-search", "seth-godin"]
+tags:
+  - work
+  - job-search
+  - seth-godin
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117074505659315033'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3msrkterkov2s'
 ---
 [Give me one reason by Seth Godin](https://feeds.feedblitz.com/~/967550627/0/sethsblog~Give-me-one-reason/)
 
