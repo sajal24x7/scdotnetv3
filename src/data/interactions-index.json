@@ -815,6 +815,34 @@
       "status": "approved"
     }
   ],
+  "micro/how-i-write-by-murat": [
+    {
+      "id": "bluesky:like:3mslfz5mco22a:did:plc:3mkmawtelml6rwbe4g2mzyks",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Cynthia Dunlop",
+        "url": "https://bsky.app/profile/cynthiadunlop.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:3mkmawtelml6rwbe4g2mzyks/bafkreif7nsy76c2ng2x3tcyfhvnflxxzydmm227mh3wl5sxfnbo2lzzw6i"
+      },
+      "url": "https://bsky.app/profile/cynthiadunlop.bsky.social",
+      "published": "2026-08-10T15:59:16.685Z",
+      "status": "approved"
+    },
+    {
+      "id": "web:like:3599fc74271598d0a38372b237d79abcaab28311bd5b2595c7c6a40a3827b51d",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "Cynthia Dunlop cynthiadunlop.bsky.social",
+        "url": "https://bsky.app/profile/cynthiadunlop.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:3mkmawtelml6rwbe4g2mzyks/bafkreif7nsy76c2ng2x3tcyfhvnflxxzydmm227mh3wl5sxfnbo2lzzw6i"
+      },
+      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mslfz5mco22a/did%253Aplc%253A3mkmawtelml6rwbe4g2mzyks",
+      "published": "2026-08-10T16:15:40.020Z",
+      "status": "pending"
+    }
+  ],
   "micro/kunal-shah-to-become-global-head-of-whatsapp": [
     {
       "id": "mastodon:like:116798122425373992:110436829441173808",
@@ -830,18 +858,6 @@
     }
   ],
   "micro/rss-is-the-best-distribution-channel": [
-    {
-      "id": "mastodon:repost:116991385951332365:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    },
     {
       "id": "mastodon:repost:116991385951332365:114076272998704416",
       "type": "repost",
