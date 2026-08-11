@@ -1,10 +1,17 @@
 ---
-title: "Cal Newport on AI Coding and Its Issues"
-slug: "cal-newport-on-ai-coding-and-its-issues"
-created: 2026-08-11T14:34:00+03:00
-updated: 2026-08-11T14:39:36+02:00
+title: Cal Newport on AI Coding and Its Issues
+slug: cal-newport-on-ai-coding-and-its-issues
+created: 2026-08-11T11:34:00.000Z
+updated: 2026-08-11T12:39:36.000Z
 category: micro
-tags: ["ai", "coding", "work"]
+tags:
+  - ai
+  - coding
+  - work
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117077158215860509'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mssqjmfqcz2a'
+  - 'https://www.threads.com/@sajal24x7/post/Db5uAW6oCSU'
 ---
 [On AI Coding and Its Discontents - Cal Newport](https://calnewport.com/on-ai-coding-and-its-discontents/)
 
