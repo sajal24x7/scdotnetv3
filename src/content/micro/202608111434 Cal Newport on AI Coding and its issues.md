@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - ai
-  - coding
-  - work
-category: micro
+title: "Cal Newport on AI Coding and Its Issues"
+slug: "cal-newport-on-ai-coding-and-its-issues"
+created: 2026-08-11T14:34:00+03:00
 updated: 2026-08-11T14:39:36+02:00
+category: micro
+tags: ["ai", "coding", "work"]
 ---
 [On AI Coding and Its Discontents - Cal Newport](https://calnewport.com/on-ai-coding-and-its-discontents/)
 
