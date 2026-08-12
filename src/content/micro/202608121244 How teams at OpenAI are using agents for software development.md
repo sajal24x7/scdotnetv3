@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - openai
-  - ai
-  - work
-category: micro
+title: "How Teams at OpenAI Are Using Agents for Software Development"
+slug: "how-teams-at-openai-are-using-agents-for-software-development"
+created: 2026-08-12T12:44:00+03:00
 updated: 2026-08-12T12:48:26+02:00
+category: micro
+tags: ["openai", "ai", "work"]
 ---
 [Inside OpenAI’s Race to Reinvent Software Development for the Agent Era by Laura Entis](https://every.to/p/openai-infrastructure)
 
