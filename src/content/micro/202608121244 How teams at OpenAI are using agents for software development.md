@@ -1,10 +1,17 @@
 ---
-title: "How Teams at OpenAI Are Using Agents for Software Development"
-slug: "how-teams-at-openai-are-using-agents-for-software-development"
-created: 2026-08-12T12:44:00+03:00
-updated: 2026-08-12T12:48:26+02:00
+title: How Teams at OpenAI Are Using Agents for Software Development
+slug: how-teams-at-openai-are-using-agents-for-software-development
+created: 2026-08-12T09:44:00.000Z
+updated: 2026-08-12T10:48:26.000Z
 category: micro
-tags: ["openai", "ai", "work"]
+tags:
+  - openai
+  - ai
+  - work
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117082834136497809'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3msvb6pmbkr24'
+  - 'https://www.threads.com/@sajal24x7/post/Db8TMeSlqd1'
 ---
 [Inside OpenAI’s Race to Reinvent Software Development for the Agent Era by Laura Entis](https://every.to/p/openai-infrastructure)
 
