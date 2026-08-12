@@ -65,7 +65,11 @@ import {
 const PUSH_DEBOUNCE_MS = 4000;
 
 type Screen = 'home' | 'session' | 'done';
-type SyncStatus = 'idle' | 'syncing' | 'error';
+// 'auth-error' is its own state (not folded into 'error') because it's the
+// one sync failure with a fix the user can actually act on: the stored PAT
+// itself is bad (expired or revoked), not a network/KV blip, so "Sync now"
+// alone will just fail again — the UI needs to point at re-authenticating.
+type SyncStatus = 'idle' | 'syncing' | 'error' | 'auth-error';
 
 function formatRelativeTime(iso: string): string {
 	const minutes = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
@@ -193,6 +197,10 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 		setSyncStatus('syncing');
 		try {
 			const res = await fetch('/api/practice-state', { headers: { authorization: `Bearer ${token}` } });
+			if (res.status === 401 || res.status === 403) {
+				setSyncStatus('auth-error');
+				return;
+			}
 			if (!res.ok) throw new Error(`sync GET ${res.status}`);
 			const { blob } = await res.json();
 			if (blob && typeof blob === 'object') {
@@ -259,6 +267,10 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 				headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
 				body: JSON.stringify(blob),
 			});
+			if (res.status === 401 || res.status === 403) {
+				setSyncStatus('auth-error');
+				return;
+			}
 			if (!res.ok) throw new Error(`sync PUT ${res.status}`);
 			const now = new Date().toISOString();
 			window.localStorage.setItem(SYNC_LAST_KEY, now);
@@ -677,21 +689,31 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 
 			<div className="lq-sync">
 				<p className="lq-sync__title">Cross-device sync</p>
+				<p className="lq-sync__note">
+					Sign in from the <a href="/login/">login page</a> — one token covers this page, /write, and /learn.
+				</p>
 				{syncToken ? (
 					<>
 						<p className="lq-sync__status">
 							{syncStatus === 'syncing'
 								? 'Syncing…'
-								: syncStatus === 'error'
-									? 'Sync unavailable right now — practicing locally.'
-									: lastSyncedAt
-										? `Last synced ${formatRelativeTime(lastSyncedAt)}`
-										: 'Connected — not yet synced'}
+								: syncStatus === 'auth-error'
+									? 'Sign-in token expired or was revoked — sign in again to resume syncing.'
+									: syncStatus === 'error'
+										? 'Sync unavailable right now — practicing locally.'
+										: lastSyncedAt
+											? `Last synced ${formatRelativeTime(lastSyncedAt)}`
+											: 'Connected — not yet synced'}
 						</p>
 						<div className="lq-io-row">
 							<button type="button" className="lq-button" onClick={() => pullAndMerge(syncToken)}>
 								Sync now
 							</button>
+							{syncStatus === 'auth-error' && (
+								<a className="lq-button" href="/login/">
+									Sign in again
+								</a>
+							)}
 						</div>
 						<SignInPanel compact />
 					</>
