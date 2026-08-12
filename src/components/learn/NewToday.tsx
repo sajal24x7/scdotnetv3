@@ -299,7 +299,13 @@ export default function NewToday({ registry }: { registry: PracticeDeck[] }) {
 				<div className="lq-panel lq-panel--notice">
 					<SignInPanel
 						compact
-						lead="You're not signed in. You can still write prompts — they'll work in today's practice — but they'll stay in this browser instead of being saved to the repo and reaching your other devices."
+						lead={
+							<>
+								You're not signed in. You can still write prompts — they'll work in today's practice — but
+								they'll stay in this browser instead of being saved to the repo and reaching your other
+								devices. Sign in here or on the <a href="/login/">login page</a>.
+							</>
+						}
 					/>
 				</div>
 			)}

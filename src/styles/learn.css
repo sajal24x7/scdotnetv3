@@ -832,9 +832,10 @@
 	color: rgb(var(--color-text-secondary));
 }
 
-/* Shown when sync is running on the token /write already stored on this
-   device — the shared-credential case is worth spelling out, since
-   "Disconnect" there could otherwise read as logging /write out too. */
+/* A secondary line under the sync section title — e.g. pointing at the
+   shared login page, or (when sync runs on a token /write already stored)
+   spelling out the shared-credential case so "Disconnect" doesn't read as
+   logging /write out too. */
 .lq-sync__note {
 	margin: 0.35rem 0 0;
 	font-size: var(--text-xs);

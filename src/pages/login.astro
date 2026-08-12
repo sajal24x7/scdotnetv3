@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SignInPanel } from '../components/auth/SignIn';
+import '../styles/auth.css';
+
+// One sign-in for the whole site (public/auth/session.js): the same
+// fine-grained GitHub PAT authenticates /write, cross-device practice sync,
+// and authored-prompt commits. This page is the one place that spells that
+// out and hosts the token form on its own — /write, /learn/new, and
+// /practice each link here instead of duplicating the explanation.
+---
+
+<Layout
+  title="Sign in"
+  description="Sign in once with a GitHub personal access token to unlock publishing from /write and cross-device sync on /learn and /practice."
+  currentPage="/login"
+  pageWrapper={{ container: true, maxWidth: '2xl', padding: 'lg', paddingScale: 'page' }}
+  index={false}
+>
+  <div class="login-page">
+    <h1 class="login-page__title">Sign in</h1>
+    <p class="login-page__subtitle">
+      One sign-in covers the whole site: publishing from <a href="/write/">/write</a>, cross-device
+      review sync on <a href="/practice/">/practice</a>, and the concepts and prompts you add on
+      <a href="/learn/">/learn</a>. It's a single GitHub fine-grained token, scoped to this repo,
+      stored in this browser only — never sent anywhere but this site.
+    </p>
+
+    <SignInPanel
+      client:load
+      lead="Paste a token to sign in. Already signed in on this device? You're covered everywhere else too."
+    />
+  </div>
+</Layout>
+
+<style>
+  .login-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .login-page__title {
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .login-page__subtitle {
+    margin: 0;
+    max-width: 60ch;
+    color: rgb(var(--color-text-secondary));
+    font-size: var(--text-small);
+    line-height: 1.6;
+  }
+</style>

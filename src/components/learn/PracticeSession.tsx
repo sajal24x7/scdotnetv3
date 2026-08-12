@@ -689,6 +689,9 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 
 			<div className="lq-sync">
 				<p className="lq-sync__title">Cross-device sync</p>
+				<p className="lq-sync__note">
+					Sign in from the <a href="/login/">login page</a> — one token covers this page, /write, and /learn.
+				</p>
 				{syncToken ? (
 					<>
 						<p className="lq-sync__status">
@@ -707,7 +710,7 @@ export default function PracticeSession({ registry }: { registry: PracticeDeck[]
 								Sync now
 							</button>
 							{syncStatus === 'auth-error' && (
-								<a className="lq-button" href="/write/">
+								<a className="lq-button" href="/login/">
 									Sign in again
 								</a>
 							)}
