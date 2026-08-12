@@ -361,6 +361,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/baptism of fire-2026-08-11",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-11"
+		},
+		"gnomic": {
+			"word": "gnomic",
+			"pos": "other",
+			"gloss": " adjective Gnomic is a formal word that describes something cryptically said or written in few words.",
+			"pronunciation": "NOH-mik",
+			"example": "The painter is notorious for offering terse, gnomic responses to questions about her work that leave interviewers and critics scratching their heads.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/gnomic-2026-08-12",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-12"
 		}
 	}
 }

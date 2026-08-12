@@ -985,18 +985,6 @@
       "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mrozqe76xu2p/did%253Aplc%253Akthwu6mpwb56qwdm2ipaxciw",
       "published": "2026-07-28T19:04:52.917Z",
       "status": "pending"
-    },
-    {
-      "id": "mastodon:repost:116996741585395992:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
     }
   ],
   "micro/the-human-in-the-loop-is-tired": [
