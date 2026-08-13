@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - society
-  - algorithm
-category: micro
+title: "About Why Everything Feels the Same"
+slug: "about-why-everything-feels-the-same"
+created: 2026-08-13T10:04:00+03:00
 updated: 2026-08-13T10:09:13+02:00
+category: micro
+tags: ["society", "algorithm"]
 ---
 [Temperature Zero for Culture](https://laurenleek.substack.com/p/temperature-zero-for-culture-why)
 
