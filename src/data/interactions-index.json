@@ -690,18 +690,6 @@
       },
       "url": "https://thebrainbin.org/u/Auster",
       "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:117004965616245850:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
     }
   ],
   "micro/amazon-has-a-new-plan-for-games": [
@@ -775,6 +763,32 @@
       "status": "pending"
     }
   ],
+  "micro/build-games-to-learn-topics-using-ai": [
+    {
+      "id": "mastodon:like:117072810032984897:116960047024979339",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "LouisR85",
+        "url": "https://mastodon.social/@LouisR85",
+        "avatar": "https://files.mastodon.social/accounts/avatars/116/960/047/024/979/339/original/9e881e4bb6ba2bb6.webp"
+      },
+      "url": "https://mastodon.social/@LouisR85",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117072810032984897:111653099686979697",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Government & Policy Channel",
+        "url": "https://newsmast.community/@government",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/099/686/979/697/original/43016e49f823a5e1.png"
+      },
+      "url": "https://newsmast.community/@government",
+      "status": "approved"
+    }
+  ],
   "micro/how-and-why-to-cull-your-book-collection": [
     {
       "id": "mastodon:like:116901921008963465:111584118693761981",
@@ -840,6 +854,34 @@
       },
       "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mslfz5mco22a/did%253Aplc%253A3mkmawtelml6rwbe4g2mzyks",
       "published": "2026-08-10T16:15:40.020Z",
+      "status": "pending"
+    }
+  ],
+  "micro/how-teams-at-openai-are-using-agents-for-software-development": [
+    {
+      "id": "web:like:9a2f7f5e111a054973c84918c371fc066a129256636538a93ced89f4ecaf6629",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "TIMxAI timxai.ai",
+        "url": "https://bsky.app/profile/timxai.ai",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:wc247qet6fmuzynmhehrsfdl/bafkreidganrar3tjf3y5uqakbighiavn634p7z57o3afvbi5zrhevcs44y"
+      },
+      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3msvb6pmbkr24/did%253Aplc%253Awc247qet6fmuzynmhehrsfdl",
+      "published": "2026-08-12T14:09:48.530Z",
+      "status": "pending"
+    },
+    {
+      "id": "web:like:74a8eb2b373215e0da6d813e9f151940f8e31efe7c624f48ff187291c246b505",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "Narich Violetfathom frengible.bsky.social",
+        "url": "https://bsky.app/profile/frengible.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:xuh6g7hnpeorsy5qqlrrwvj4/bafkreighubobhcpy2taiccrrl3rfv2rfgehwk3oq4niioim53i4uhnovci"
+      },
+      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3msvb6pmbkr24/did%253Aplc%253Axuh6g7hnpeorsy5qqlrrwvj4",
+      "published": "2026-08-13T02:02:05.001Z",
       "status": "pending"
     }
   ],
