@@ -371,6 +371,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/gnomic-2026-08-12",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-12"
+		},
+		"salvo": {
+			"word": "salvo",
+			"pos": "other",
+			"gloss": " noun In military contexts, salvo refers to various actions involving discharge or release of bombs, rockets, artillery, etc., as well to the bombs or projectiles released in such an action. In general use, salvo is usually used to refer to a strong or sudden verbal attack, but it can also refer to a sudden occurrence of applause, laughter, etc., from many people.",
+			"pronunciation": "SAL-voh",
+			"example": "The troops were driven back by a salvo of cannon fire. // The editorial's opening salvo was a list of grievances against the mayor's policies. // The conclusion of her performance was answered with a salvo of cheers and applause.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/salvo-2026-08-13",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-13"
 		}
 	}
 }
