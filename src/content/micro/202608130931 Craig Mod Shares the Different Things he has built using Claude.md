@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - claude
-  - ai
-  - coding
-category: micro
+title: "Craig Mod Shares the Different Things He Has Built Using Claude"
+slug: "craig-mod-shares-the-different-things-he-has-built-using-claude"
+created: 2026-08-13T09:31:00+03:00
 updated: 2026-08-13T09:33:38+02:00
+category: micro
+tags: ["claude", "ai", "coding"]
 ---
 [A Swarm of Blood Robots by Craig Mod](https://craigmod.com/essays/robot_blood/)
 
