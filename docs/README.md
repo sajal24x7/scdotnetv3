@@ -7,6 +7,7 @@ This directory centralizes all reference material for the Astro-powered build of
 | Area | Summary | Key Files |
 | --- | --- | --- |
 | [Architecture Overview](architecture/overview.md) | High-level explanation of the Astro layout shell, content entry points, and client islands. | `src/layouts/Layout.astro`, `src/utils/content.ts` |
+| [Component Diagram](architecture/component-diagram.md) | End-to-end Mermaid diagram: authoring → GitHub Actions → build → Cloudflare Pages/Functions → external services. | — |
 | [Content Lifecycle](architecture/content-lifecycle.md) | Frontmatter schemas, category-based collections, indexing, and derived artifacts. | `src/content.config.ts`, `src/utils/backlinks.ts` |
 | [Learning Systems](architecture/learning-systems.md) | The spaced-repetition "periodic table on the wall" pattern behind /learn/linux, and the blueprint for future decks (e.g. Finnish). | `src/data/linux-commands.ts`, `src/components/learn/LinuxQuiz.tsx` |
 | [Design System](design/system.md) | Typography tokens, grid utilities (twelve-column and ten-column), chip patterns, and responsive rules. | `src/styles/global.css` |

@@ -40,6 +40,7 @@ Content lives in one folder per category under `src/content/` (e.g. `src/content
 | Topic | Where |
 | --- | --- |
 | Architecture, design system, components | [`docs/README.md`](docs/README.md) |
+| Component diagram (visual system map) | [`docs/architecture/component-diagram.md`](docs/architecture/component-diagram.md) |
 | Writing & publishing (pipeline, `/write`, authoring) | [`docs/content/`](docs/README.md#writing--publishing) |
 | Operations (deploy, syndication, token refresh) | [`docs/operations/`](docs/README.md#operations) |
 | Contribution guidelines for agents & humans | [`AGENTS.md`](AGENTS.md) |
