@@ -39,6 +39,7 @@ The project uses Tailwind CSS (v4, via `@tailwindcss/vite`) with shared tokens i
 
 ## Related Guides
 
+- [Component Diagram](component-diagram.md) — visual map of this system
 - [Content Lifecycle](content-lifecycle.md)
 - [Design System](../design/system.md)
 - [Deployment](../operations/deployment.md)
