@@ -381,6 +381,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/salvo-2026-08-13",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-13"
+		},
+		"vacuous": {
+			"word": "vacuous",
+			"pos": "other",
+			"gloss": " adjective Vacuous is a formal word indicating a lack of thought, intelligence, or substance.",
+			"pronunciation": "VAK-yuh-wus",
+			"example": "Despite a lengthy advertising campaign pitching the film as a masterwork, critics ultimately assailed it as dull and filled with self-important characters spouting vacuous platitudes.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/vacuous-2026-08-14",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-14"
 		}
 	}
 }
