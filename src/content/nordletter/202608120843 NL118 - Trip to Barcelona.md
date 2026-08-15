@@ -1,13 +1,20 @@
 ---
-title: "Barcelona - No Plan"
-slug: "nl118-barcelona-no-plan"
-created: 2026-08-12T08:43:00+03:00
-updated: 2026-08-16T00:26:47+03:00
+title: Barcelona - No Plan
+slug: nl118-barcelona-no-plan
+created: 2026-08-12T05:43:00.000Z
+updated: 2026-08-15T21:26:47.000Z
 category: nordletter
-tags: ["barcelona", "travel", "spain"]
+tags:
+  - barcelona
+  - travel
+  - spain
 edition: 118
-description: "Barcelona is magic"
-image: "https://storage.sajalchoudhary.net/images/2026/08/nl118-06.jpeg"
+description: Barcelona is magic
+image: 'https://storage.sajalchoudhary.net/images/2026/08/nl118-06.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117101667152145233'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mt5msy3f2d2w'
+  - 'https://www.threads.com/@sajal24x7/post/DcE3TuQkthJ'
 ---
 Hello from my home in Helsinki! This is NordLetter #118, a weekly newsletter on living and walking in Finland.
 
