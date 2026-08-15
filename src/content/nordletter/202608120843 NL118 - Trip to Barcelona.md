@@ -1,6 +1,6 @@
 ---
-title: "Trip to Barcelona"
-slug: "nl118-trip-to-barcelona"
+title: "Barcelona - No Plan"
+slug: "nl118-barcelona-no-plan"
 created: 2026-08-12T08:43:00+03:00
 updated: 2026-08-16T00:26:47+03:00
 category: nordletter
