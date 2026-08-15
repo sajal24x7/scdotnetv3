@@ -381,6 +381,26 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/salvo-2026-08-13",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-13"
+		},
+		"vacuous": {
+			"word": "vacuous",
+			"pos": "other",
+			"gloss": " adjective Vacuous is a formal word indicating a lack of thought, intelligence, or substance.",
+			"pronunciation": "VAK-yuh-wus",
+			"example": "Despite a lengthy advertising campaign pitching the film as a masterwork, critics ultimately assailed it as dull and filled with self-important characters spouting vacuous platitudes.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/vacuous-2026-08-14",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-14"
+		},
+		"circumscribe": {
+			"word": "circumscribe",
+			"pos": "other",
+			"gloss": " verb To circumscribe something is to limit its range or activity.",
+			"pronunciation": "SER-kum-skrybe",
+			"example": "The president’s decision-making power was carefully circumscribed by the company’s board.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/circumscribe-2026-08-15",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-15"
 		}
 	}
 }
