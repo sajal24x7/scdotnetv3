@@ -4,16 +4,15 @@ slug: "the-courage-to-be-happy"
 created: 2026-08-14T19:18:00+03:00
 updated: 2026-08-14T21:21:18+03:00
 category: bookshelf
-tags: []
+tags:
+  - psychology
 author:
+  - Ichi Yukishiro
+  - Fumitake Koga
 started: 2026-08-14T19:18:00
-finished:
 genre: self-help
 format: audiobook
-rating:
-series:
-status: todo
+status: started
 ---
-## Review
-## Notes
+Started reading.
 
