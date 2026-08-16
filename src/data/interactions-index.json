@@ -859,6 +859,19 @@
   ],
   "micro/how-teams-at-openai-are-using-agents-for-software-development": [
     {
+      "id": "bluesky:like:3msvb6pmbkr24:did:plc:wc247qet6fmuzynmhehrsfdl",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "TIMxAI",
+        "url": "https://bsky.app/profile/timxai.ai",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:wc247qet6fmuzynmhehrsfdl/bafkreidganrar3tjf3y5uqakbighiavn634p7z57o3afvbi5zrhevcs44y"
+      },
+      "url": "https://bsky.app/profile/timxai.ai",
+      "published": "2026-08-12T13:53:48.101Z",
+      "status": "approved"
+    },
+    {
       "id": "web:like:9a2f7f5e111a054973c84918c371fc066a129256636538a93ced89f4ecaf6629",
       "type": "like",
       "platform": "web",
@@ -870,6 +883,19 @@
       "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3msvb6pmbkr24/did%253Aplc%253Awc247qet6fmuzynmhehrsfdl",
       "published": "2026-08-12T14:09:48.530Z",
       "status": "pending"
+    },
+    {
+      "id": "bluesky:like:3msvb6pmbkr24:did:plc:xuh6g7hnpeorsy5qqlrrwvj4",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Narich Violetfathom",
+        "url": "https://bsky.app/profile/frengible.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:xuh6g7hnpeorsy5qqlrrwvj4/bafkreighubobhcpy2taiccrrl3rfv2rfgehwk3oq4niioim53i4uhnovci"
+      },
+      "url": "https://bsky.app/profile/frengible.bsky.social",
+      "published": "2026-08-13T01:32:59.934Z",
+      "status": "approved"
     },
     {
       "id": "web:like:74a8eb2b373215e0da6d813e9f151940f8e31efe7c624f48ff187291c246b505",

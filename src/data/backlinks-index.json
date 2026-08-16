@@ -603,6 +603,8 @@
       "bookshelf/202607251238 Atomic Habits.md",
       "bookshelf/202607291249 Subtle is the lord.md",
       "bookshelf/202607291440 The Beginning of Infinity.md",
+      "bookshelf/202608141918 The Courage to be Happy.md",
+      "bookshelf/202608142119 Breakneck.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
@@ -1598,6 +1600,7 @@
       "micro/202608130854.md",
       "micro/202608130931 Craig Mod Shares the Different Things he has built using Claude.md",
       "micro/202608131004 About why everything feels the same.md",
+      "micro/202608152012 Maybe you are not overwhelmed.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1714,6 +1717,7 @@
       "nordletter/202607231950 NL115.md",
       "nordletter/202608011004 NL116 - First few days in Barcelona.md",
       "nordletter/202608071706 NL117 - Madrid Day Trip.md",
+      "nordletter/202608120843 NL118 - Trip to Barcelona.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -8176,6 +8180,36 @@
       "category": "nordletter",
       "created": "2026-07-23T16:50:00.000Z",
       "snippet": "I finished reading The Courage to be Disliked this week."
+    }
+  ],
+  "nordletter/nl116-first-few-days-in-barcelona": [
+    {
+      "slug": "/nordletter/nl118-barcelona-no-plan/",
+      "title": "Barcelona - No Plan",
+      "description": "Barcelona is magic",
+      "category": "nordletter",
+      "created": "2026-08-12T05:43:00.000Z",
+      "snippet": "… Heck, for this Barcelona trip I have written two posts already, in two different styles - first few days in Barcelona is an itinerary style of post, I did this on day 1 and so on; while Madrid Day Trip talks about some interesting things I found in Madrid. While writing that, I realised the interesting thing about places is the people you get to talk to."
+    }
+  ],
+  "nordletter/nl117-madrid-day-trip": [
+    {
+      "slug": "/nordletter/nl118-barcelona-no-plan/",
+      "title": "Barcelona - No Plan",
+      "description": "Barcelona is magic",
+      "category": "nordletter",
+      "created": "2026-08-12T05:43:00.000Z",
+      "snippet": "… Heck, for this Barcelona trip I have written two posts already, in two different styles - first few days in Barcelona is an itinerary style of post, I did this on day 1 and so on; while Madrid Day Trip talks about some interesting things I found in Madrid. While writing that, I realised the interesting thing about places is the people you get to talk to."
+    }
+  ],
+  "bookshelf/breakneck": [
+    {
+      "slug": "/nordletter/nl118-barcelona-no-plan/",
+      "title": "Barcelona - No Plan",
+      "description": "Barcelona is magic",
+      "category": "nordletter",
+      "created": "2026-08-12T05:43:00.000Z",
+      "snippet": "It wasn't only dread though. I was happy at the thought of going back home, going back to my rhythms and routines, to walking around Kumpula with Savya. My library had reserved a copy of Breakneck for me. I was excited to start reading it."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
