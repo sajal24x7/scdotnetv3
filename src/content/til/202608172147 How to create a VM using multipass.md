@@ -1,10 +1,17 @@
 ---
-title: "How to Create a VM Using Multipass"
-slug: "how-to-create-a-vm-using-multipass"
-created: 2026-08-17T21:47:00+03:00
-updated: 2026-08-17T22:06:18+03:00
+title: How to Create a VM Using Multipass
+slug: how-to-create-a-vm-using-multipass
+created: 2026-08-17T18:47:00.000Z
+updated: 2026-08-17T19:06:18.000Z
 category: til
-tags: ["multipass", "compute", "ubuntu"]
+tags:
+  - multipass
+  - compute
+  - ubuntu
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117113010770725748'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mtcnzhjuj42o'
+  - 'https://www.threads.com/@sajal24x7/post/DcKBc1AoBef'
 ---
 ```bash
 
