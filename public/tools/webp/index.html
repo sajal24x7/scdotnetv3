@@ -292,6 +292,14 @@
       ctx.drawImage(bitmap, 0, 0);
       canvas.toBlob((blob) => {
         if (!blob) { reject(new Error('WebP encoding is not supported in this browser')); return; }
+        // Some browsers (notably Safari) don't support WebP canvas encoding
+        // and silently hand back a PNG blob instead of failing outright —
+        // catch that here rather than offering a .webp download that's
+        // actually a PNG under the hood.
+        if (blob.type !== 'image/webp') {
+          reject(new Error(`This browser can't encode WebP (it silently produced ${blob.type || 'an unknown format'} instead) — try Chrome, Firefox, or Edge`));
+          return;
+        }
         resolve(blob);
       }, 'image/webp', q);
     });
@@ -326,6 +334,15 @@
 
   if (!('createImageBitmap' in window)) {
     note.textContent = 'This browser does not support the APIs this tool needs — try a recent Chrome, Firefox, Edge, or Safari.';
+  } else {
+    const probe = document.createElement('canvas');
+    probe.width = 1;
+    probe.height = 1;
+    probe.toBlob((blob) => {
+      if (!blob || blob.type !== 'image/webp') {
+        note.textContent = "This browser can't actually encode WebP (it silently falls back to PNG) — try a recent Chrome, Firefox, or Edge instead.";
+      }
+    }, 'image/webp');
   }
 })();
 </script>
