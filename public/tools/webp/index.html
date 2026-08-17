@@ -118,6 +118,7 @@
   .item .size { color: var(--muted); }
   .item .size .ok { color: var(--ok); }
   .item .size .err { color: var(--err); }
+  .item .size .muted { color: var(--muted); }
   .item a.download {
     flex: none;
     background: var(--accent);
@@ -156,7 +157,9 @@
 <h1>JPEG → WebP</h1>
 <p class="lede">Converts images to WebP entirely in this browser — nothing is
    uploaded anywhere. Useful for replacing a cover image the download script
-   picked wrong, since that script only writes WebP.</p>
+   picked wrong, since that script only writes WebP. Quality is lowered
+   automatically if a flat-color or text-heavy image would otherwise come
+   out larger than the original.</p>
 
 <div id="drop" tabindex="0" role="button" aria-label="Choose images">
   <strong>Tap to choose</strong> or drop images here
@@ -256,8 +259,8 @@
       const bitmap = await createImageBitmap(file);
       thumb.src = URL.createObjectURL(file);
 
-      const q = Number(quality.value) / 100;
-      const blob = await encodeWebp(bitmap, q);
+      const startQ = Number(quality.value) / 100;
+      const { blob, usedQ } = await encodeNoLargerThanOriginal(bitmap, startQ, file.size);
       bitmap.close();
 
       const outName = `${baseName(file.name)}.webp`;
@@ -265,8 +268,11 @@
       const delta = file.size ? Math.round((1 - blob.size / file.size) * 100) : 0;
       const deltaCls = delta >= 0 ? 'ok' : 'err';
       const deltaLabel = delta >= 0 ? `${delta}% smaller` : `${-delta}% larger`;
+      const qNote = usedQ !== startQ
+        ? ` <span class="muted">(quality auto-lowered to ${Math.round(usedQ * 100)})</span>`
+        : '';
       sizeEl.innerHTML = `${formatSize(file.size)} → ${formatSize(blob.size)} ` +
-        `<span class="${deltaCls}">(${deltaLabel})</span>`;
+        `<span class="${deltaCls}">(${deltaLabel})</span>${qNote}`;
 
       link.href = url;
       link.download = outName;
@@ -282,13 +288,33 @@
       const canvas = document.createElement('canvas');
       canvas.width = bitmap.width;
       canvas.height = bitmap.height;
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext('2d', { alpha: false });
       ctx.drawImage(bitmap, 0, 0);
       canvas.toBlob((blob) => {
         if (!blob) { reject(new Error('WebP encoding is not supported in this browser')); return; }
         resolve(blob);
       }, 'image/webp', q);
     });
+  }
+
+  // Flat-color/text graphics (posters, screenshots) can encode noticeably
+  // larger as lossy WebP than the source JPEG at the same nominal quality —
+  // WebP's block transform spends far more bits on sharp edges at high
+  // quality than JPEG's chroma-subsampled DCT does. Rather than silently
+  // hand back a bigger file, step quality down until the WebP result is no
+  // larger than the original (or we hit a quality floor where it's not
+  // worth degrading further).
+  const MIN_QUALITY = 0.2;
+  const QUALITY_STEP = 0.1;
+
+  async function encodeNoLargerThanOriginal(bitmap, startQ, originalSize) {
+    let q = startQ;
+    let blob = await encodeWebp(bitmap, q);
+    while (originalSize > 0 && blob.size > originalSize && q > MIN_QUALITY) {
+      q = Math.max(MIN_QUALITY, q - QUALITY_STEP);
+      blob = await encodeWebp(bitmap, q);
+    }
+    return { blob, usedQ: q };
   }
 
   clearBtn.addEventListener('click', () => {
