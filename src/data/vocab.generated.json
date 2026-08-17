@@ -411,6 +411,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/zeugma-2026-08-16",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-16"
+		},
+		"lackadaisical": {
+			"word": "lackadaisical",
+			"pos": "other",
+			"gloss": " adjective Something or someone described as lackadaisical is lacking in interest, enthusiasm, or zest.",
+			"pronunciation": "lak-uh-DAY-zih-kul",
+			"example": "Feeling particularly lackadaisical in the summer heat, they lazily tossed a ball back and forth.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/lackadaisical-2026-08-17",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-17"
 		}
 	}
 }
