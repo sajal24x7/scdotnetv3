@@ -939,6 +939,32 @@
       "status": "approved"
     }
   ],
+  "micro/solar-eclipse-from-barcelona": [
+    {
+      "id": "mastodon:like:117084147384684190:109388160449806147",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Thomas Dugaro",
+        "url": "https://dju.social/@dugartogo",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/388/160/449/806/147/original/cd8e37c7c2061882.jpg"
+      },
+      "url": "https://dju.social/@dugartogo",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117084147384684190:111653168084519023",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Weather Channel",
+        "url": "https://newsmast.community/@weather",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/168/084/519/023/original/30a10bd96b9b62b9.png"
+      },
+      "url": "https://newsmast.community/@weather",
+      "status": "approved"
+    }
+  ],
   "micro/the-challenge-to-american-ai-companies-by-chinese-open-ai-systems": [
     {
       "id": "mastodon:like:116996740667785757:114859161994857149",
