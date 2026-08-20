@@ -1,10 +1,16 @@
 ---
-title: "Robots Learning and Improvising in the Real World"
-slug: "robots-learning-and-improvising-in-the-real-world"
-created: 2026-08-20T06:32:00+03:00
-updated: 2026-08-20T06:32:44+03:00
+title: Robots Learning and Improvising in the Real World
+slug: robots-learning-and-improvising-in-the-real-world
+created: 2026-08-20T03:32:00.000Z
+updated: 2026-08-20T03:32:44.000Z
 category: micro
-tags: ["ai", "robots"]
+tags:
+  - ai
+  - robots
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117125822606614697'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mtie3mcg6k2r'
+  - 'https://www.threads.com/@sajal24x7/post/DcP2UzuIJmb'
 ---
 [I Saw the Future of AI in a Robot That Can Learn on the Spot by Will Knight](https://www.wired.com/story/generalist-ai-robots-learn-like-clever-toddlers/)
 
