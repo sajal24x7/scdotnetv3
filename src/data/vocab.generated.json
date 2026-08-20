@@ -441,6 +441,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/balmy-2026-08-19",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-19"
+		},
+		"divulge": {
+			"word": "divulge",
+			"pos": "other",
+			"gloss": " verb To divulge something, especially secret or private information, is to make it known.",
+			"pronunciation": "dih-VULJ",
+			"example": "Rather than divulge the baby name we’ve chosen, we’re waiting till the little one arrives to make introductions.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/divulge-2026-08-20",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-20"
 		}
 	}
 }
