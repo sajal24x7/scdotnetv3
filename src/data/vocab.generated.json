@@ -421,6 +421,26 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/lackadaisical-2026-08-17",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-17"
+		},
+		"oxymoron": {
+			"word": "oxymoron",
+			"pos": "other",
+			"gloss": " noun An oxymoron is a combination of words that have opposite or very different meanings, such as \"cruel kindness\" or \"open secret.\" In broader usage, oxymoron can also refer to something (such as a concept) that is made up of contradictory or incongruous elements.",
+			"pronunciation": "ahk-sih-MOR-ahn",
+			"example": "Some of Shakespeare's most famous plays are filled with oxymorons such as \"loving hate\" and \"tragical mirth.\"",
+			"href": "https://www.merriam-webster.com/word-of-the-day/oxymoron-2026-08-18",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-18"
+		},
+		"balmy": {
+			"word": "balmy",
+			"pos": "other",
+			"gloss": " adjective Balmy is an adjective that is often used to describe weather that is warm, calm, and pleasant. It can also be used to describe someone or something (such as an idea) that is foolish or irrational.",
+			"pronunciation": "BAH-mee",
+			"example": "After a long, eight-hour drive, we were rewarded with a mild, balmy evening at our vacation spot on the shores of Lake Erie. // Despite being a devout Green Bay fan, she finds the idea of attending games in head-to-toe yellow and green body paint to be a bit balmy.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/balmy-2026-08-19",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-19"
 		}
 	}
 }
