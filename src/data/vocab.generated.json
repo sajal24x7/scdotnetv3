@@ -451,6 +451,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/divulge-2026-08-20",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-20"
+		},
+		"rigmarole": {
+			"word": "rigmarole",
+			"pos": "other",
+			"gloss": " noun Rigmarole refers to a long, complicated, and annoying process, description, etc.",
+			"pronunciation": "RIG-uh-muh-rol",
+			"example": "We went through the rigmarole of installing, registering, and activating the software before we found out it wouldn’t work.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/rigmarole-2026-08-21",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-21"
 		}
 	}
 }
