@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - netflix
-  - anime
-category: micro
+title: "Blue Eye Samurai to Come Out in January"
+slug: "blue-eye-samurai-to-come-out-in-january"
+created: 2026-08-22T08:33:00+03:00
 updated: 2026-08-22T08:34:31+03:00
+category: micro
+tags: ["netflix", "anime"]
 ---
 [Blue Eye Samurai’s second season will hit Netflix in January by Jess Weatherbed](https://www.theverge.com/streaming/983203/blue-eye-samurai-season-2-release-date-renewal)
 
