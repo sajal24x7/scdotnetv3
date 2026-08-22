@@ -461,6 +461,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/rigmarole-2026-08-21",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-21"
+		},
+		"august": {
+			"word": "august",
+			"pos": "other",
+			"gloss": " adjective The word august, which is pronounced with the accent on \"gust,\" describes someone or something marked by majestic dignity or grandeur.",
+			"pronunciation": "aw-GUST",
+			"example": "We toured the old mansion's august halls and expansive grounds.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/august-2026-08-22",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-22"
 		}
 	}
 }
