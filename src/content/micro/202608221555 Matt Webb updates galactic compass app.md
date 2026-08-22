@@ -1,10 +1,19 @@
 ---
-title: "Matt Webb Updates Galactic Compass App"
-slug: "matt-webb-updates-galactic-compass-app"
-created: 2026-08-22T15:55:00+03:00
-updated: 2026-08-22T15:56:02+03:00
+title: Matt Webb Updates Galactic Compass App
+slug: matt-webb-updates-galactic-compass-app
+created: 2026-08-22T12:55:00.000Z
+updated: 2026-08-22T12:56:02.000Z
 category: micro
-tags: ["ai", "coding", "learning", "apps", "interconnected"]
+tags:
+  - ai
+  - coding
+  - learning
+  - apps
+  - interconnected
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117139278598623592'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mtodcoota622'
+  - 'https://www.threads.com/@sajal24x7/post/DcV98f-IOce'
 ---
 [Galactic Compass 2: now with new augmented reality mode](https://interconnected.org/home/2026/08/21/galactic)
 
