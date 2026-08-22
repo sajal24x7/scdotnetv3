@@ -5,6 +5,9 @@
  * Requires Meta Business verification and proper app setup.
  */
 
+// Threads carousels support 2-20 items per Meta's Threads API docs.
+const MAX_CAROUSEL_ITEMS = 20;
+
 /**
  * Post content to Threads
  *
@@ -43,15 +46,12 @@ export async function postToThreads(formattedContent) {
   }
 
   try {
-    // Step 1: Create a Threads Media Container (with image when available)
-    const images = formattedContent.images || [];
-    const firstImage = images[0];
-    if (images.length > 1) {
-      console.warn('    ⚠️  Threads: only attaching the first image (carousel posts not supported yet)');
-    }
+    // Step 1: Create a Threads Media Container (with image(s) when available)
+    const images = (formattedContent.images || []).slice(0, MAX_CAROUSEL_ITEMS);
 
     let containerId;
-    if (firstImage) {
+    if (images.length === 1) {
+      const firstImage = images[0];
       try {
         containerId = await createThreadsContainer(userId, accessToken, {
           media_type: 'IMAGE',
@@ -63,6 +63,30 @@ export async function postToThreads(formattedContent) {
         await waitForThreadsContainer(containerId, accessToken);
       } catch (error) {
         console.warn(`    ⚠️  Threads image post failed (${error.message}); retrying as text-only`);
+        containerId = null;
+      }
+    } else if (images.length > 1) {
+      try {
+        // Carousel: one container per image, then a parent CAROUSEL container
+        const children = [];
+        for (const image of images) {
+          const childId = await createThreadsContainer(userId, accessToken, {
+            media_type: 'IMAGE',
+            image_url: image.url,
+            is_carousel_item: true,
+            ...(image.alt ? { alt_text: image.alt.substring(0, 1000) } : {})
+          });
+          await waitForThreadsContainer(childId, accessToken);
+          children.push(childId);
+        }
+        containerId = await createThreadsContainer(userId, accessToken, {
+          media_type: 'CAROUSEL',
+          children: children.join(','),
+          text: formattedContent.text
+        });
+        await waitForThreadsContainer(containerId, accessToken);
+      } catch (error) {
+        console.warn(`    ⚠️  Threads carousel post failed (${error.message}); retrying as text-only`);
         containerId = null;
       }
     }
