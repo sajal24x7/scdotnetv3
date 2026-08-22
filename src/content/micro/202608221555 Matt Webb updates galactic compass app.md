@@ -1,13 +1,10 @@
 ---
-aliases:
-tags:
-  - ai
-  - coding
-  - learning
-  - apps
-  - interconnected
-category: micro
+title: "Matt Webb Updates Galactic Compass App"
+slug: "matt-webb-updates-galactic-compass-app"
+created: 2026-08-22T15:55:00+03:00
 updated: 2026-08-22T15:56:02+03:00
+category: micro
+tags: ["ai", "coding", "learning", "apps", "interconnected"]
 ---
 [Galactic Compass 2: now with new augmented reality mode](https://interconnected.org/home/2026/08/21/galactic)
 
