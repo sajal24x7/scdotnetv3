@@ -471,6 +471,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/august-2026-08-22",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-22"
+		},
+		"prowess": {
+			"word": "prowess",
+			"pos": "other",
+			"gloss": " noun Prowess refers to someone’s great ability, skill, or talent for something specified, as in “the pop star's vocal prowess” or “a lawyer of great prowess.”",
+			"pronunciation": "PROW-us",
+			"example": "Already a proven virtuoso on guitar, she extends her considerable instrumental prowess to the piano throughout her new album as well.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/prowess-2026-08-23",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-23"
 		}
 	}
 }

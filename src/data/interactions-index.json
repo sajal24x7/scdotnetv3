@@ -373,10 +373,10 @@
       "platform": "bluesky",
       "author": {
         "name": "Bavarian Belle",
-        "url": "https://bsky.app/profile/bavarianbelle.bsky.social",
+        "url": "https://bsky.app/profile/bavarianbelle.eu",
         "avatar": "https://storage.sajalchoudhary.net/avatars/8254f9b8daba68f3c30ac005bf7e2eef.webp"
       },
-      "url": "https://bsky.app/profile/bavarianbelle.bsky.social",
+      "url": "https://bsky.app/profile/bavarianbelle.eu",
       "published": "2026-07-09T10:33:21.514Z",
       "status": "approved"
     },
@@ -937,6 +937,21 @@
       },
       "url": "https://ohai.social/@ikklegemzuniverseplus",
       "status": "approved"
+    }
+  ],
+  "micro/matt-webb-updates-galactic-compass-app": [
+    {
+      "id": "web:like:0bcc5a4f88ebae6f49beeff10c3d4c6a6b34c2334d3e63c8a8a9b1f08dd173ad",
+      "type": "like",
+      "platform": "web",
+      "author": {
+        "name": "Lofi Glow lofiglow.bsky.social",
+        "url": "https://bsky.app/profile/lofiglow.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:gwtqnpejkbvz4vwij57dsy6u/bafkreiac5h5u56ay4mumigsxxkj4qdveyjzhkpcsamdiafw2qmlcaxipce"
+      },
+      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mtodcoota622/did%253Aplc%253Agwtqnpejkbvz4vwij57dsy6u",
+      "published": "2026-08-22T14:47:23.532Z",
+      "status": "pending"
     }
   ],
   "micro/rss-is-the-best-distribution-channel": [
