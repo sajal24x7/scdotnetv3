@@ -1,13 +1,22 @@
 ---
-title: "Celebrating India"
-slug: "nl119-celebrating-india"
-created: 2026-08-22T22:24:00+03:00
-updated: 2026-08-23T01:36:56+03:00
+title: Celebrating India
+slug: nl119-celebrating-india
+created: 2026-08-22T19:24:00.000Z
+updated: 2026-08-22T22:36:56.000Z
 category: nordletter
-tags: ["india", "independece-day", "finland", "helsinki", "india-day"]
+tags:
+  - india
+  - independece-day
+  - finland
+  - helsinki
+  - india-day
 edition: 119
-description: "Indeoendence Day and India Day celebrations in Helsinki"
-image: "https://storage.sajalchoudhary.net/images/2026/08/nl119-07.jpeg"
+description: Indeoendence Day and India Day celebrations in Helsinki
+image: 'https://storage.sajalchoudhary.net/images/2026/08/nl119-07.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117142344117407941'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mtpoupuhpe2o'
+  - 'https://www.threads.com/@sajal24x7/post/DcXXKekCQig'
 ---
 Hello from my home in Helsinki! This is NordLetter #119, a weekly newsletter on living and walking in Finland. Each week I share some of the interesting things I found on the web.
 
