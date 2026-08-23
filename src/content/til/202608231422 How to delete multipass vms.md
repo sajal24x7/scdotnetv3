@@ -1,11 +1,10 @@
 ---
-aliases:
-  - How to delete multipass vms
-tags:
-  - linux
-  - multipass
-category: til
+title: "How to Delete Multipass Vms"
+slug: "how-to-delete-multipass-vms"
+created: 2026-08-23T14:22:00+03:00
 updated: 2026-08-23T14:25:16+03:00
+category: til
+tags: ["linux", "multipass"]
 ---
 ```bash
 # Delete primary vm
