@@ -481,6 +481,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/prowess-2026-08-23",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-23"
+		},
+		"expeditious": {
+			"word": "expeditious",
+			"pos": "other",
+			"gloss": " adjective Expeditious is a formal word that is used to describe someone acting in a quick and efficient way, or something done in such a manner.",
+			"pronunciation": "ek-spuh-DISH-us",
+			"example": "Both sides hoped for an expeditious resolution of the dispute.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/expeditious-2026-08-24",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-24"
 		}
 	}
 }
