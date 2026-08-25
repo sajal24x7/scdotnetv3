@@ -1,10 +1,16 @@
 ---
-title: "Apple Announces New Mac Mini With M6 Chip"
-slug: "apple-announces-new-mac-mini-with-m6-chip"
-created: 2026-08-25T16:45:00+03:00
-updated: 2026-08-25T16:48:51+03:00
+title: Apple Announces New Mac Mini With M6 Chip
+slug: apple-announces-new-mac-mini-with-m6-chip
+created: 2026-08-25T13:45:00.000Z
+updated: 2026-08-25T13:48:51.000Z
 category: micro
-tags: ["apple", "mac"]
+tags:
+  - apple
+  - mac
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117156972027299399'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mtw6qqcqsz2o'
+  - 'https://www.threads.com/@sajal24x7/post/DceA5FWHHVN'
 ---
 [Where to preorder the updated Mac Mini and Mac Studio by Brad Bourque](https://www.theverge.com/gadgets/984096/mac-mini-mac-studio-m5-m6-ultra-preorder)
 
