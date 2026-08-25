@@ -1,8 +1,11 @@
 ---
-tag: #powershell
 aliases:
+  - Powershell exe location
+tags:
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ```text
 C:\Windows\System32
 ```

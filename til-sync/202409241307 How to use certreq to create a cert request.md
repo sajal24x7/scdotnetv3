@@ -1,9 +1,11 @@
 ---
+aliases:
+  - How to use certreq to create a cert request
 tags:
   - "#cert"
   - "#windows"
-aliases:
-  - How to use certreq to create a cert request
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Sample inf file
 

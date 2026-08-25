@@ -1,8 +1,10 @@
 ---
+aliases:
+  - Find out authentication logs in VMware vCenter
 tags:
   - "#vmware"
-aliases:
 category: til
+updated: 2026-08-25T14:30:56
 ---
 Related to [[202303211323 VMware logs]]
 

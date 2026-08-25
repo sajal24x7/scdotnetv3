@@ -1,10 +1,12 @@
 ---
-tags:
-  - velero
-  - ccs
 aliases:
+  - Velero command reference
+tags:
+  - "#velero"
+  - "#ccs"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Create backup schedule
 
 14 days = 336 hrs

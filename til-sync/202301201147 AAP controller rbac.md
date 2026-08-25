@@ -1,9 +1,11 @@
 ---
+aliases:
+  - AAP controller rbac
 tags:
   - "#ansible"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Users
 Three types of users:
 1. System Administrator (superuser/provides read/write permission on all objects in all organizations on the automation controller)

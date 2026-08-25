@@ -1,8 +1,10 @@
 ---
-tags:
-  - "#ansible"
 aliases:
   - Download host metrics report from Ansible Automation Platform
+tags:
+  - "#ansible"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```bash
 # To get output in csv

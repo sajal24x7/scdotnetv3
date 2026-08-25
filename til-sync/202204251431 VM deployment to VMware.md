@@ -1,11 +1,12 @@
 ---
-tags:
-  - vmware
-  - terraform
 aliases:
+  - VM deployment to VMware
+tags:
+  - "#vmware"
+  - "#terraform"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Disk
 1. One of `datastore_id` or `datastore_cluster_id` must be specified.
 2. Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.

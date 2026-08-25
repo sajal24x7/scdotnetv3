@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Rename administrator and Guest accounts through gpo
 tags:
   - "#windows"
   - "#gpo"
-aliases:
-  - Rename administrator and Guest accounts through gpo
+category: til
+updated: 2026-08-25T14:30:56
 ---
 1. Expand **Computer Configuration**, expand **Windows Settings**, expand **Security Settings**, expand **Local Policies**, and then click **Security Options**.
 2. In the right pane, double-click **Accounts: Rename administrator account**.

@@ -1,8 +1,11 @@
 ---
+aliases:
+  - Assigning Multiple IPs to Single NIC
 tags:
   - "#windows"
   - "#powershell"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Issue:
 When adding multiple IPs to a single NIC, DNS entry keep getting updated with the IPs which are not primary.

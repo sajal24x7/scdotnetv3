@@ -1,12 +1,14 @@
 ---
-tags:
-  - azure
-  - entra
-  - aadconnect
-  - entraconnect
 aliases:
+  - Azure AD Connect Pre-Reqs
+tags:
+  - "#azure"
+  - "#entra"
+  - "#aadconnect"
+  - "#entraconnect"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Azure AD V2 pre-reqs
 - An Azure AD tenant
 - An **on-premises** or **cloud-hosted** (on an Infrastructure as a Service virtual machine) Windows Server running as an AD domain controller (older versions of Windows Server work but some features like password writeback will require 2016 or later)

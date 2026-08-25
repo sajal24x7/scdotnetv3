@@ -1,7 +1,10 @@
 ---
+aliases:
+  - Enable or disable lockdown mode on vcenter
 tags:
   - "#vmware"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 #To enable Lockdown mode using PowerCLI, run this command:  

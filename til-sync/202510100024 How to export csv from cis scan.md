@@ -1,11 +1,15 @@
 ---
-tags:
 aliases:
+  - How to export csv from cis scan
+tags:
+  - cis
+  - powershell
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 
-[xml]$arf = Get-Content C:\Users\845874\Desktop\133522-k8sw-wni.kehi.okobank.net-20250803011443.xml
+[xml]$arf = Get-Content 20250803011443.xml
 
 
 # Define the ARF namespace
@@ -30,5 +34,5 @@ foreach ($rule in $rules) {
     }
 }
 
-$rows | Export-Csv -Path C:\Users\845874\Desktop\rules3.csv -NoTypeInformation -Encoding UTF8
+$rows | Export-Csv -Path rules3.csv -NoTypeInformation -Encoding UTF8
 ```

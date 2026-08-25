@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Entra Connect PS Module
 tags:
   - "#powershell"
   - "#entraconnect"
-aliases:
-  - Entra Connect PS Module
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 

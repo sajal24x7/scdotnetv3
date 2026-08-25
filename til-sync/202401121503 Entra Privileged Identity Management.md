@@ -1,8 +1,11 @@
 ---
+aliases:
+  - Entra Privileged Identity Management
 tags:
   - "#azure"
   - "#entra"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Features
 - Just-in-Time access

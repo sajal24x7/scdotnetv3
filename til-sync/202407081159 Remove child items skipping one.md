@@ -1,7 +1,10 @@
 ---
+aliases:
+  - Remove child items skipping one
 tags:
   - "#powershell"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powerhsell
 

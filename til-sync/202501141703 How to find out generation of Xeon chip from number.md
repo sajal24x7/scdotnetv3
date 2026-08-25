@@ -1,10 +1,12 @@
 ---
+aliases:
+  - How to find out generation of Xeon chip from number
 tags:
   - "#ucs"
   - "#hp"
   - "#windows"
-aliases:
-  - How to find out generation of Xeon chip from number
+category: til
+updated: 2026-08-25T14:30:56
 ---
 **The first digit of the four-number sequence indicates the processor level**
 

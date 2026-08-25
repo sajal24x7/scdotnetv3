@@ -1,7 +1,10 @@
 ---
+aliases:
+  - VMware VM serial number
 tags:
   - "#vmware"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powercli
 $VM = Get-VM 7ocilpipaap01

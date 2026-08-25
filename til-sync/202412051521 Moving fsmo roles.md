@@ -1,9 +1,11 @@
 ---
-tags:
-  - "#ad"
-  - "#windows"
 aliases:
   - move fsmo roles
+tags:
+  - ad
+  - windows
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Move needs to be run with appropriate access. 
 Domain wise roles need Domain Admin.
@@ -19,7 +21,7 @@ netdom query fsmo
 Move-ADDirectoryServerOperationMasterRole -Identity <newdc> -OperationMasterRole PDCEmulator, RIDMaster, InfrastructureMaster
 
 # move all 5
-Move-ADDirectoryServerOperationMasterRole -Identity OPWINDC2 -OperationMasterRole SchemaMaster, DomainNamingMaster, PDCEmulator, RIDMaster, InfrastructureMaster
+Move-ADDirectoryServerOperationMasterRole -Identity KEHIDC1 -OperationMasterRole SchemaMaster, DomainNamingMaster, PDCEmulator, RIDMaster, InfrastructureMaster
 
 ```
 

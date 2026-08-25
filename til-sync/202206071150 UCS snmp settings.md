@@ -1,7 +1,10 @@
 ---
-tags:
-  - ucs
 aliases:
+  - UCS snmp settings
+tags:
+  - "#ucs"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Admin > Expand All > Communication Management > Communication Services
 

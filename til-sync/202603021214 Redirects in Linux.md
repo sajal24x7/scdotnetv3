@@ -5,6 +5,7 @@ tags:
 aliases:
   - how to redirect outputs in linux
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ....In Bash and other Linux shells, every running program uses three standard I/O streams. Each stream is represented by a numeric file descriptor:
 

@@ -1,10 +1,12 @@
 ---
-tags:
-  - windows
-  - powershell
 aliases:
+  - PowerShell registry key related
+tags:
+  - "#windows"
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Get single key
 ```powershell
 Get-ItemProperty -Path HKLM:\Software\Microsoft\Windows\CurrentVersion -Name DevicePath

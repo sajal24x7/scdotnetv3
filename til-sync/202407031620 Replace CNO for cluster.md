@@ -1,8 +1,11 @@
 ---
+aliases:
+  - Replace CNO for cluster
 tags:
   - "#windows"
   - "#cluster"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Issue
 CNO which was created was deleted on AD side, and new computer object was created. 

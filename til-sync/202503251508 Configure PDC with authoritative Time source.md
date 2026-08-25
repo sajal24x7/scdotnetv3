@@ -1,11 +1,11 @@
 ---
-tags:
-  - ad
-  - windows
-  - time
 aliases:
   - Configure PDC with authoritative Time source
+tags:
+  - "#ad"
+  - "#windows"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ### To configure time synchronization through registry edit on the PDC emulator:
 

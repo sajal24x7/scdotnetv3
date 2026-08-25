@@ -1,12 +1,12 @@
 ---
-tags:
-  - powershell
 aliases:
   - PowerShell Arrays
   - Create arrays in powershell
+tags:
+  - "#powershell"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # How to create arrays
 An empty array can be created by using `@()`
 

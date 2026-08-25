@@ -1,12 +1,12 @@
 ---
+aliases:
+  - Windows cluster on vmware
 tags:
   - "#windows"
   - "#failover"
-aliases:
-  - Windows cluster on vmware
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
-
 The WSFC cluster heartbeat time-out must be modified at least to the values listed below: 
 (get-cluster -name ).SameSubnetThreshold = 10
 (get-cluster -name ).CrossSubnetThreshold = 20

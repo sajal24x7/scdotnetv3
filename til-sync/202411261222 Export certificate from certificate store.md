@@ -1,6 +1,10 @@
 ---
-tag: []
 aliases:
+  - Export certificate from certificate store
+tags:
+  - "#[]"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Export-Certificate command can be used to export certificate in .cer or .p10.
 Export-PfxCertificate to export private key

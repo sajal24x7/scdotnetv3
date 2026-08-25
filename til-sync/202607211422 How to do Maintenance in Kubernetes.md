@@ -4,7 +4,7 @@ tags:
 aliases:
   - How to do Maintenance in Kubernetes
 category: til
-updated: 2026-07-21T14:31:00
+updated: 2026-08-25T14:30:56
 ---
 There can be three situations wherein we/controller manager does maintenance:
 1. Node Draining and Cordoning (Planned activity)

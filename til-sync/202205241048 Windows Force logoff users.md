@@ -1,9 +1,11 @@
 ---
-tags:
-  - windows
 aliases:
+  - Windows Force logoff users
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ```cmd
 query session
 ```

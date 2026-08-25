@@ -1,8 +1,11 @@
 ---
-tag: #windows
 aliases:
+  - Windows rpc server is unavailable
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Issue: The RPC server is unavailable while trying to take Remote Desktop of 2003
 
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server

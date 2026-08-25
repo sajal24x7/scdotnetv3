@@ -1,12 +1,13 @@
 ---
-tags:
-  - "#windows"
-  - "#powershell"
 aliases:
   - Install Openssh on windows
   - Openssh on windows
+tags:
+  - "#windows"
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Download from https://github.com/PowerShell/Win32-OpenSSH/releases/
 
 Error: 

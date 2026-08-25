@@ -1,8 +1,11 @@
 ---
-tag: #linux
 aliases:
+  - Remove cloud-init
+tags:
+  - "#linux"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Remove-cloud-init
 
 ## Stop services

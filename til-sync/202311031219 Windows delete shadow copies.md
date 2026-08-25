@@ -1,9 +1,11 @@
 ---
-tags:
-  - windows
 aliases:
   - Windows delete shadow copies
   - vss shadows delete
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 

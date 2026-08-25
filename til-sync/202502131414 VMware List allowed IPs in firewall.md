@@ -1,11 +1,12 @@
 ---
-tags:
-  - "#vmware"
-  - "#powershell"
 aliases:
   - List allowed IPs in firewall
   - VMware List allowed IPs in firewall
+tags:
+  - "#vmware"
+  - "#powershell"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 

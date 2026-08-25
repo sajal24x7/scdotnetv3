@@ -1,6 +1,11 @@
 ---
-tag: #windows, #ad
 aliases:
+  - AD join fails with The Revision Level is Unknown
+tags:
+  - "#windows"
+  - "#ad"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 When trying to join to workgroup, or join domain, we get the message: 
 "The Revision Level is Unknown"

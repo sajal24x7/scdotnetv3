@@ -1,8 +1,10 @@
 ---
-tag: #windows, #robocopy
 aliases:
+  - Robocopy reference
+tags:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # robocopy-command
 
 ```cmd

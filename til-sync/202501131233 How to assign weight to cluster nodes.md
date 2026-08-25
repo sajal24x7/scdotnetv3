@@ -1,9 +1,11 @@
 ---
+aliases:
+  - How to assign weight to cluster nodes
 tags:
   - "#windows"
   - "#cluster"
-aliases:
-  - How to assign weight to cluster nodes
+category: til
+updated: 2026-08-25T14:30:56
 ---
 We can toggle whether a node has 0 or 1 vote towards quorum membership. 
 

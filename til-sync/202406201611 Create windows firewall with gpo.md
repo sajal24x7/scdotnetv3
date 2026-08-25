@@ -1,10 +1,12 @@
 ---
+aliases:
+  - Create windows firewall with gpo
 tags:
   - "#windows"
   - "#gpo"
   - "#Firewall"
-aliases:
-  - Create windows firewall with gpo
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Configure firewall service
 

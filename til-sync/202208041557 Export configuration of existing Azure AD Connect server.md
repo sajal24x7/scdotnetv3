@@ -1,12 +1,14 @@
 ---
-tags:
-  - aadconnect
-  - azure
-  - entra
-  - entraconnect
 aliases:
+  - Export configuration of existing Azure AD Connect server
+tags:
+  - "#aadconnect"
+  - "#azure"
+  - "#entra"
+  - "#entraconnect"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Open the Azure AD Connect tool, and select the additional task named View or Export Current Configuration.
 By default, the settings are exported to %ProgramData%\AADConnect.
 Settings are exported by using the JSON file format and should not be hand-created or edited to ensure logical consistency.

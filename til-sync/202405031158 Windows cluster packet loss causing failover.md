@@ -1,9 +1,12 @@
 ---
+aliases:
+  - Windows cluster packet loss causing failover
 tags:
   - "#windows"
   - "#failover"
   - "#vmware"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Windows Failover Diagnostic logs might have error 2051.
 

@@ -1,7 +1,10 @@
 ---
+aliases:
+  - UCS keyring fix
 tags:
   - "#ucs"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Issue:
 default Keyring's certificate is invalid, reason: expired.

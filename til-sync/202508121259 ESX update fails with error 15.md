@@ -1,7 +1,11 @@
 ---
-tags:
 aliases:
+  - ESX update fails with error 15
+tags:
+  - vmware
+  - esxi
 category: til
+updated: 2026-08-25T14:30:56
 ---
 Check in `/var/run/log/esxupdate.log` file, better to run the following and let it write the logs to a temporary file.
 

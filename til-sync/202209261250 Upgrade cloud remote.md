@@ -1,8 +1,11 @@
 ---
-tag: #ccs
 aliases:
+  - Upgrade cloud remote
+tags:
+  - "#ccs"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 To upgrade Cloud Remote (script available in the Cloud Remote artifact file mentioned in the section above) in your Workload Manager or Cost Optimizer
 system, follow this procedure for each instance of Cloud Remote.
 Locate the Cloud Remote upgrade script at software.cisco.com and copy it to a directory in your Cloud Remote instance.

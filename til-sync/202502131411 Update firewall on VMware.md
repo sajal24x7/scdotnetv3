@@ -1,10 +1,11 @@
 ---
+aliases:
+  - Update firewall on VMware
 tags:
   - "#vmware"
   - "#powershell"
-aliases:
-  - Update firewall on VMware
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ipaddress is a string so can not have multiple items in one go. So need to loop for allowed IP addresses as a [[202204121531 PowerShell Arrays|PowerShell Arrays]], if many.
 

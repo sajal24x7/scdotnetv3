@@ -1,8 +1,11 @@
 ---
-tag: #ucs
 aliases:
+  - UCS CLI reference
+tags:
+  - "#ucs"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Ucs Cheatsheet
 ```bash
 show interface trunk

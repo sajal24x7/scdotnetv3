@@ -1,8 +1,11 @@
 ---
-tags:
-  - "#windows"
-  - "#dfsr"
 aliases:
+  - Manually cleaning DFSR folder
+tags:
+  - windows
+  - dfsr
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Quota can be checked in DFS management > Replication > Staging Quota
 

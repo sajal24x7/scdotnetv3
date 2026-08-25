@@ -1,9 +1,11 @@
 ---
-tags:
-  - ansible
 aliases:
+  - Ansible Error handling
+tags:
+  - "#ansible"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Ignore failed commands
 **ignore_errors** can be used to continue even in case of failures.
 

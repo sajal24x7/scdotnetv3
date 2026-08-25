@@ -1,11 +1,12 @@
 ---
-tags:
-  - "#windows"
 aliases:
   - Windows corrupt profile issue
   - windows user profile is corrupt
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Event: Windows has backed up this user profile. Windows will automatically try to use the backup profile the next time this user logs on.
 
 # Fix

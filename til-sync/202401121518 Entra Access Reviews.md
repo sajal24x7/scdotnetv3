@@ -1,8 +1,11 @@
 ---
-tags:
-  - azure
-  - entra
 aliases:
+  - Entra Access Reviews
+tags:
+  - "#azure"
+  - "#entra"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Kinds
 Review active and eligible assignments for: 

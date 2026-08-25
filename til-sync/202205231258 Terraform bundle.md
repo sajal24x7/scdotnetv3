@@ -1,9 +1,11 @@
 ---
-tags:
-  - terraform
 aliases:
+  - Terraform bundle
+tags:
+  - "#terraform"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Terraform bundle tool install
 
 ## Pre-requisites

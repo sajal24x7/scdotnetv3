@@ -4,6 +4,7 @@ tags:
 aliases:
   - How to create a copy of an existing dictionary
 category: til
+updated: 2026-08-25T14:30:56
 ---
 In Python variables store reference to values and not values. Dictionaries are mutable, so, `new_dict = old_dict` does not create a new dictionary. Both are references to the same value, so changing the new dictionary changes the old dictionary as well.
 

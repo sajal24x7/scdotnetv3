@@ -1,8 +1,11 @@
 ---
-tag: #platespin
 aliases:
+  - Platespin install
+tags:
+  - "#platespin"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Automated
 
 If proxy is enabled. Then run the powershell script.

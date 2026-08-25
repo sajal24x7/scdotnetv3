@@ -1,8 +1,11 @@
 ---
-tags:
-  - ad
-  - powershell
 aliases:
+  - Remove for recursive objects in AD fails
+tags:
+  - "#ad"
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Issue is because of additional child-objects for an object : user or computer
 

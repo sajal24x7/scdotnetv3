@@ -1,10 +1,12 @@
 ---
-tagsldp/:
+aliases:
+  - How to check ldaps is working or not - ldp.exe
+tags:
   - "#windows"
   - "#ad"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 1. Run ldp.exe
 2. Connect > 
 	1. give dc fqdn

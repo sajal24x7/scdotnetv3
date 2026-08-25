@@ -1,10 +1,12 @@
 ---
-tags:
-  - k8s
-  - ccs
 aliases:
+  - Kubernetes certificate expiry fix
+tags:
+  - "#k8s"
+  - "#ccs"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Check cert status
 ```bash
 $ sudo kubeadm alpha certs check-expiration

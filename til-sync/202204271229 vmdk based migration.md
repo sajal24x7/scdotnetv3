@@ -1,10 +1,11 @@
 ---
-tags:
-  - vmware
 aliases:
+  - vmdk based migration
+tags:
+  - "#vmware"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 If NFS only RO
 1.  Upload vmdk/vmx files to datastore, based on free space. Create the folder with VMNAME.
 2.  Register the vmx file. Specify all the disks.

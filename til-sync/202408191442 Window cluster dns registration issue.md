@@ -1,8 +1,11 @@
 ---
+aliases:
+  - Window cluster dns registration issue
 tags:
   - "#windows"
   - "#cluster"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Error
 >Cluster network name resource ‘Cluster Name’ failed registration of one or more associated DNS name(s) for the following reason: DNS bad key.

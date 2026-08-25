@@ -1,8 +1,10 @@
 ---
-tags:
-  - "#python"
 aliases:
   - Convert cis pdf to csv
+tags:
+  - "#python"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 The script that work is this: https://github.com/serenedeluge/cis-pdf2csv/tree/main
 

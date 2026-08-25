@@ -1,11 +1,12 @@
 ---
+aliases:
+  - Disable firewall with powershell
 tags:
   - "#windows"
   - "#powershell"
-aliases:
-  - Disable firewall with powershell
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 1. Get status
 
 ```powershell

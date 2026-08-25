@@ -1,8 +1,10 @@
 ---
-tags:
-  - "#windows"
 aliases:
   - Clean user profile windows
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 If [[202211241147 Windows corrupt profile issue|windows user profile is corrupt]],  we can clean it up.
 

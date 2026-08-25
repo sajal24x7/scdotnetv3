@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Remote Desktop
 tags:
   - "#windows"
   - "#remotedesktop"
-aliases:
-  - Remote Desktop
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Logs
 Logs are under Applications and Services Logs -> Windows

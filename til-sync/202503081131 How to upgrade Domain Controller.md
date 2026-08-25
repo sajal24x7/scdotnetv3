@@ -5,6 +5,7 @@ tags:
 aliases:
   - How to upgrade Domain Controller
 category: til
+updated: 2026-08-25T14:30:56
 ---
 In-place upgrade is not suggested. The approach to take is deploy a new server, dcpromo the old one out, rename, give the same IP, dcpromo the new one in.
 

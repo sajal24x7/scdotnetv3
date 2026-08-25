@@ -1,11 +1,12 @@
 ---
-tags:
-  - jinja
-  - ansible
 aliases:
+  - Jinja2 Reference
+tags:
+  - "#jinja"
+  - "#ansible"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Jinja2 is used for templating.
 
 # String manipulation

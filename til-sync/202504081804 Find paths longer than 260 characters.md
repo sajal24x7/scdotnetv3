@@ -1,9 +1,10 @@
 ---
-tags:
-  - "#windows"
 aliases:
   - Find paths longer than 260 characters
+tags:
+  - "#windows"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 When running Get-ChildItem or Get-Acl, we might come across this issue. 
 

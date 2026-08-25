@@ -1,8 +1,11 @@
 ---
-tag: #vmware
 aliases:
+  - VMware using lsdoctor tool
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Options
 ## Trustfix
 This option corrects SSL trust mismatch issues in the lookup service.  The lookup service registrations may have an SSL trust value that doesn’t match the MACHINE_SSL_CERT on port 443 of the node.  This can be caused by a failure during certificate replacement, among other failures.

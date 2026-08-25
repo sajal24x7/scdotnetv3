@@ -1,9 +1,11 @@
 ---
 tags:
-  - "#powershell"
+  - powershell
 aliases:
+  - PowerShell create custom object
+category: til
+updated: 2026-08-25T14:30:56
 ---
-SoftObje
 ```powershell
 
 #Example create hash, create ps custom object and export

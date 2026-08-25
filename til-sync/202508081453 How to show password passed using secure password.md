@@ -1,8 +1,10 @@
 ---
-tags:
-  - powershell
 aliases:
+  - How to show password passed using secure password
+tags:
+  - "#powershell"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 Mostly for troubleshooting
 ```powershell

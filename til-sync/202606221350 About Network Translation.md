@@ -6,7 +6,7 @@ aliases:
   - Network Translation
   - SNAT
 category: til
-updated: 2026-06-22T13:54:00
+updated: 2026-08-25T14:30:56
 ---
 There are not enough public v4 IPs available for all the devices we have. What we do usually is use private IPs from one of the three options :
 - 10.0.0.0/8

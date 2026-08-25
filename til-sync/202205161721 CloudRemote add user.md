@@ -1,9 +1,11 @@
 ---
-tags:
-  - ccs
 aliases:
+  - CloudRemote add user
+tags:
+  - "#ccs"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 - First we needed to access the remote MQ by browsing the IP and to port 15672 on the CloudRemote VM
 
 Example: [http://10.45.99.206:15672/#/users](http://10.45.99.206:15672/#/users)

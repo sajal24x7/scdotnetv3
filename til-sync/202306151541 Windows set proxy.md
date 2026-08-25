@@ -1,9 +1,11 @@
 ---
-tag: #windows
 aliases:
+  - Windows set proxy
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
-
 ```cmd
 set proxy myproxy
 set proxy myproxy:80 "<local>bar"

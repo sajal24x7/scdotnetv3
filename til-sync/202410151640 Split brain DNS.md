@@ -1,6 +1,10 @@
 ---
-tag: []
 aliases:
+  - Split brain DNS
+tags:
+  - "#[]"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Depending on the source IP of the DNS request, DNS server provides different response.
 

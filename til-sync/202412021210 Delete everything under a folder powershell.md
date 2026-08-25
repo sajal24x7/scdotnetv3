@@ -1,8 +1,10 @@
 ---
-tags:
-  - "#powershell"
 aliases:
   - Delete everything under a folder powershell
+tags:
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 Get-ChildItem -Path C:\Temp -Include *.* -File -Recurse | foreach { $_.Delete()}

@@ -1,10 +1,12 @@
 ---
-tags:
-  - "#azure"
-  - "#entraconnect"
 aliases:
   - Azure AD sync SSO disable RC4
   - Roll-Over of the Kerberos Decryption Key
+tags:
+  - "#azure"
+  - "#entraconnect"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ## Enforcing AES256 for the Azure AD SSO Account in Active Directory
 1. Go to computer OU.

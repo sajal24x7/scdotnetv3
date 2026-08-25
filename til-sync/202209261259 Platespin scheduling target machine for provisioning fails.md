@@ -1,8 +1,11 @@
 ---
-tag: #platespin
 aliases:
+  - Platespin scheduling target machine for provisioning fails
+tags:
+  - "#platespin"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Scheduling target machine for provisioning fails with
 NPART Error: code=28 msg=Device sdb does not have enough free space. (No space left on device)
 

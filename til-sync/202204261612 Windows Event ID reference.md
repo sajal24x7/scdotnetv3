@@ -1,11 +1,12 @@
 ---
-tags:
-  - windows
-  - events
 aliases:
+  - Windows Event ID reference
+tags:
+  - "#windows"
+  - "#events"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Member removed from local group
 Event ID: 4733
 

@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Ports to be opened for Ansible Automation Platform
 tags:
   - "#ansible"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 -   Job executions for managed nodes from hybrid/execution nodes
     -   external cloud service to retrieve inventory information : 443/tcp (REST API in HTTPS)
         -   Amazon EC2

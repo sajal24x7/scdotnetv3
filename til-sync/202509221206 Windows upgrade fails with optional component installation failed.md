@@ -1,11 +1,12 @@
 ---
-tags:
-  - windows
-  - upgrade
 aliases:
+  - Windows upgrade fails with optional component installation failed
+tags:
+  - "#windows"
+  - "#upgrade"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Error
 `Setupdiag reports Optional Component installation failed to open the OC package.`
 Already checked the windows modules installer server and ensure it is automatic and running. Upgrade continues to fail

@@ -1,9 +1,11 @@
 ---
+aliases:
+  - AAP about credentials
 tags:
   - "#ansible"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Types:
 1. Private credential (any user can create it/owner and sys admins can use it/sys auditors can see it)
 2. Organization credential (sys admin and admins can create it/can be assigned to users and teams)

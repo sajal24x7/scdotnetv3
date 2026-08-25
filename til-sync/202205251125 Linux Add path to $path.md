@@ -1,9 +1,11 @@
 ---
-tags:
-  - linux
 aliases:
+  - Linux Add path to $path
+tags:
+  - "#linux"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Gotcha
 The `/etc/profile` is executed only for interactive shells and the `/etc/bashrc` is executed for both interactive and non-interactive shells. In fact in Ubuntu the `/etc/profile` calls the `/etc/bashrc` directly.
 

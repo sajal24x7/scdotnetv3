@@ -4,6 +4,7 @@ tags:
 aliases:
   - docker run
 category: til
+updated: 2026-08-25T14:30:56
 ---
 In docker run, everything before the image name is a docker option and everything after that is command/arguments passed to the container.
 

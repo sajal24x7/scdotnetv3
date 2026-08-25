@@ -1,8 +1,11 @@
 ---
-tag: #vmware
 aliases:
+  - VC appliance connect through winscp
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Error:
 ```text
 Received too large (1433299822 B) SFTP packet. Max supported packet size is 1024000 B

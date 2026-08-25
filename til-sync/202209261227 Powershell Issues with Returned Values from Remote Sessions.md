@@ -1,8 +1,10 @@
 ---
-tags:
-  - "#powershell"
 aliases:
   - Powershell Issues with Returned Values from Remote Sessions
+tags:
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ## Issue Description
 

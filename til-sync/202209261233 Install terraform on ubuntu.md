@@ -1,8 +1,11 @@
 ---
-tag: #terraform
 aliases:
+  - Install terraform on ubuntu
+tags:
+  - "#terraform"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ## Install terraform on Ubuntu server
 
 1. Add the HashiCorp [GPG key](https://apt.releases.hashicorp.com/gpg "HashiCorp GPG key").

@@ -1,9 +1,11 @@
 ---
+aliases:
+  - AD Database files location
 tags:
   - "#ad"
   - "#windows"
-aliases:
 category: til
+updated: 2026-08-25T14:30:56
 ---
 Check in registry:  `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters`
 

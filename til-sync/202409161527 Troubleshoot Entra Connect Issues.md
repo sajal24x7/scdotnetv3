@@ -1,7 +1,10 @@
 ---
+aliases:
+  - Troubleshoot Entra Connect Issues
 tags:
   - "#entraconnect"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ``` powershell
 

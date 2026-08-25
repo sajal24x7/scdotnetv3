@@ -1,8 +1,10 @@
 ---
-tags:
-  - cert
 aliases:
+  - openssl convert pkcs to pem
+tags:
+  - "#cert"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ``` bash
 openssl pkcs7 -print_certs -in certificate.p7b -out certificate.cer

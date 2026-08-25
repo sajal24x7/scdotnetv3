@@ -1,11 +1,12 @@
 ---
+aliases:
+  - Fine-grained password policy
 tags:
   - "#windows"
   - "#ad"
   - "#powershell"
-aliases:
-  - Fine-grained password policy
 category: til
+updated: 2026-08-25T14:30:56
 ---
 Can be done using ADAC or PowerShell. We need to set all values that need to be set, including those that might be coming from domain.
 # ADAC

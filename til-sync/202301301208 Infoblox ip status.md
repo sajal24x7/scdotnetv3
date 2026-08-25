@@ -1,9 +1,12 @@
 ---
-tag: #inboflox, #ipam
 aliases:
+  - Infoblox ip status
+tags:
+  - "#inboflox"
+  - "#ipam"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
-
 -   Unused: An IP address that has not been detected and is not associated with any network device or active host on the network.
     
 -   Conflict: An IP address that has either a MAC address conflict or a DHCP lease conflict detected through a network discovery.

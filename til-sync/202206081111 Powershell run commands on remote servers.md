@@ -1,10 +1,11 @@
 ---
-tags:
-  - powershell
 aliases:
   - Powershell run commands on remote servers
+tags:
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Use Invoke-Command to run one off commands, if no output is needed.
 ```powershell
 $Servers | Invoke-Command -ScriptBlock { Get-Service }

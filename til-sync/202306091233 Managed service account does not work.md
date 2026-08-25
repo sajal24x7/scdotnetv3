@@ -1,8 +1,13 @@
 ---
-tag: #windows, #ad, #powershell
 aliases:
+  - Managed service account does not work
+tags:
+  - "#windows"
+  - "#ad"
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ```text
 Error:
 Install-ADServiceAccount : Cannot Install service account. Error Message:  ‘The provided context did not match the target’

@@ -1,8 +1,12 @@
 ---
-tag: #ccs, #docker
 aliases:
+  - CloudRemote docker related
+tags:
+  - "#ccs"
+  - "#docker"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ```bash
 ## Docker get exited containers count
 

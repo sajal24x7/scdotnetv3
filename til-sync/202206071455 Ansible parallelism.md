@@ -1,9 +1,11 @@
 ---
-tags:
-  - ansible
 aliases:
+  - Ansible parallelism
+tags:
+  - "#ansible"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 By default, Ansible runs each task on all hosts affected by a play before starting the next task on any host, using 5 forks.
 
 # Batch size( forks )

@@ -1,10 +1,11 @@
 ---
-tags:
-  - windows
 aliases:
+  - Windows Activation
+tags:
+  - "#windows"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Register with kms server
 ```cmd
 slmgr.vbs /skms <kms server>

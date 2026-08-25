@@ -5,6 +5,7 @@ tags:
   - gpo
 aliases:
 category: til
+updated: 2026-08-25T14:30:56
 ---
 This takes linked GPOs from source OU and sets them on a different OU. Useful if you create a new OU for a new server version.
 

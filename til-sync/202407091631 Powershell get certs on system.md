@@ -1,8 +1,11 @@
 ---
+aliases:
+  - Powershell get certs on system
 tags:
   - "#powershell"
   - "#cert"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 PS C:\Users\845874.adm> Get-ChildItem Cert:\ -Recurse | Where-Object { $_.PSIsContainer -eq $false} | Where-Object { $_.Subject -like "*solar*"}

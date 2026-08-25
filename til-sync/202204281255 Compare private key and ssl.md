@@ -1,10 +1,11 @@
 ---
-tags:
-  - cert
 aliases:
+  - Compare private key and ssl
+tags:
+  - "#cert"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ```bash
 openssl x509 -noout -modulus -in cert.crt | openssl md5  
 openssl rsa -noout -modulus -in privkey.txt | openssl md5

@@ -1,8 +1,11 @@
 ---
-tag: #platespin
 aliases:
+  - Platespin Windows PreReqs
+tags:
+  - "#platespin"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # PlateSpinPrechecks
 •   Disable UAC
 •   .Net 3.5

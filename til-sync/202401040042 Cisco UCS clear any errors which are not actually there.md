@@ -1,7 +1,10 @@
 ---
+aliases:
+  - Cisco UCS clear any errors which are not actually there
 tags:
   - "#ucs"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Go to Service Profile > General > Recover Server > Reset CIMC (Server Controller)
 

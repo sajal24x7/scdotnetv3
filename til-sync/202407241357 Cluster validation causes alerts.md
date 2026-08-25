@@ -1,8 +1,11 @@
 ---
+aliases:
+  - Cluster validation causes alerts
 tags:
   - "#windows"
   - "#cluster"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Windows creates account clitest2 during cluster validation.
 SoC might get alerts about this.

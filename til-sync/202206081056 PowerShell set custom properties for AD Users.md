@@ -1,9 +1,11 @@
 ---
-tags:
-  - powershell
-  - "#ad"
 aliases:
   - PowerShell set custom properties for AD Users
+tags:
+  - "#powershell"
+  - "#ad"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 -
 Set-ADUser can be used to modify AD users.

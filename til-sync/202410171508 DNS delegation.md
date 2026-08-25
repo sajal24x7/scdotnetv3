@@ -1,11 +1,13 @@
 ---
-tags:
-  - "#dns"
-  - "#windows"
 aliases:
   - DNS delegation
   - Delegated zone
   - Create zone delegation
+tags:
+  - "#dns"
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 We can create a delegated zone and allow app/teams to create entries as needed
 This was for example, what is requested for storage appliance

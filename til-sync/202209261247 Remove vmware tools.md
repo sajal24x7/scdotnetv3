@@ -1,6 +1,11 @@
 ---
-tag: #vmware, #windows
 aliases:
+  - Remove vmware tools
+tags:
+  - "#vmware"
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Remove from all three locations:
 

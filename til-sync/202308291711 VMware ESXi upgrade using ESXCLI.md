@@ -1,9 +1,11 @@
 ---
-tags:
-  - vmware
 aliases:
+  - VMware ESXi upgrade using ESXCLI
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ```ssh
 
 ## Run this to get the name

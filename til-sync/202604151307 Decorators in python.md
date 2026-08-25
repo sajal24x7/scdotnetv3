@@ -3,6 +3,7 @@ tags:
   - python
 aliases:
 category: til
+updated: 2026-08-25T14:30:56
 ---
 Decorators in python are a way to extend behaviour of functions without changing the actual code of the function. So for example it can be used in scenarios like logging, etc.
 

@@ -1,9 +1,11 @@
 ---
-tags:
-  - vmware
 aliases:
+  - VMware packet capture using pktcap
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ## Confirm port details using command below, grep the port details for the vm we need to run it for.
 ``` ssh
 $ net-stats -l

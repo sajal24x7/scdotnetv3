@@ -1,8 +1,10 @@
 ---
-tags:
-  - vmware
 aliases:
   - VMware ESXi upgrade using baselines
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 [Build numbers and versions of VMware ESXi/ESX (broadcom.com)](https://knowledge.broadcom.com/external/article/316595/build-numbers-and-versions-of-vmware-esx.html)
 [VMware ESXi 7.0 Update 3q Release Notes](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-70u3q-release-notes/index.html#Patch%20Download%20and%20Installation)

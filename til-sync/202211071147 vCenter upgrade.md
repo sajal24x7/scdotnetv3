@@ -1,10 +1,11 @@
 ---
+aliases:
+  - vCenter upgrade
 tags:
   - "#vmware"
-aliases:
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Overview
 1. Verify plugin compatibility
 2. Backup

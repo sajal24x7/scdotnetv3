@@ -1,12 +1,14 @@
 ---
-tags:
-  - aadconnect
-  - entra
-  - entraconnect
-  - azure
 aliases:
+  - Azure AD Connect Upgrade from old version to new version
+tags:
+  - "#aadconnect"
+  - "#entra"
+  - "#entraconnect"
+  - "#azure"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Methods
 1. Automatic Upgrade
 2. In-place upgrade

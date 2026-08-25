@@ -1,11 +1,12 @@
 ---
-tags:
-  - linux
-  - ssh
 aliases:
+  - Setup password less ssh
+tags:
+  - "#linux"
+  - "#ssh"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Create SSH pair
 ``` bash
 ssh-keygen -f /home/thor/.ssh/maria

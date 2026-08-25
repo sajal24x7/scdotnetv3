@@ -1,10 +1,11 @@
 ---
-tags:
-  - vmware
-  - esxi
 aliases:
   - ESXi install fails with run time error - disk device does not support osdata
+tags:
+  - "#vmware"
+  - "#esxi"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 If the disk is too small, then this issue can come.
 

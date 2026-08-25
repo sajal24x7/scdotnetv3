@@ -1,8 +1,11 @@
 ---
-tag: #vmware
 aliases:
+  - Vmware interop matrix
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 [Product Interoperability Matrix (vmware.com)](https://interopmatrix.vmware.com/Interoperability)
 
 Can be used to compare interop between:

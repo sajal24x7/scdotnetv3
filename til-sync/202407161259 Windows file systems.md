@@ -1,8 +1,10 @@
 ---
-tags:
-  - "#windows"
 aliases:
   - Windows file system
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # FAT
 - FAT not larger than 4GB

@@ -4,6 +4,7 @@ tags:
   - chrome
 aliases:
 category: til
+updated: 2026-08-25T14:30:56
 ---
 This is one alternative. There are others, for example, checking the registry key. But that has failed on occasion in tools like Jenkins, that the key does not exist.
 

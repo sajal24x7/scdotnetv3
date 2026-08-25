@@ -1,10 +1,11 @@
 ---
 tags:
-  - "#cisco"
-  - "#vmware"
+  - cisco
+  - vmware
 aliases:
   - VMware change NIC order
 category: til
+updated: 2026-08-25T14:30:56
 ---
 There is a bug in Cisco Hardware which causes vmnics to get assigned in wrong order after esxi install. As a workaround we can change the vmnic order from esxi level.
 

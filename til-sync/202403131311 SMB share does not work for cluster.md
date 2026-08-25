@@ -1,10 +1,12 @@
 ---
-tags:
-  - powershell
-  - windows
 aliases:
+  - SMB share does not work for cluster
+tags:
+  - "#powershell"
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ```powershell
 
 ## Workaround

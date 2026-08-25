@@ -1,10 +1,12 @@
 ---
+aliases:
+  - Windows gives Continue dialog box even if we have existing permissions
 tags:
   - "#windows"
   - "#ntfs"
   - "#evergreen"
-aliases:
-  - Windows gives Continue dialog box even if we have existing permissions
+category: til
+updated: 2026-08-25T14:30:56
 ---
 This is a known issue.
 

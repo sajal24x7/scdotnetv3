@@ -1,12 +1,13 @@
 ---
+aliases:
+  - How to trigger manual replication in DC
 tags:
   - "#powershell"
   - "#ad"
   - "#windows"
   - "#repadmin"
-aliases:
-  - How to trigger manual replication in DC
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 

@@ -1,10 +1,11 @@
 ---
-tags:
-  - "#powershell"
 aliases:
   - Powershell pass variables to Invoke-Command
+tags:
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Refer to local variable with $using
 
 Use the '$using:' scope

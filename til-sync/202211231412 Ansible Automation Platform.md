@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Ansible Automation Platform
 tags:
   - "#ansible"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Automation controller
 types: control, hybrid, execution, and hop
 

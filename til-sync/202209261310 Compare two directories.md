@@ -1,8 +1,12 @@
 ---
-tag: #windows, #powershell
 aliases:
+  - Compare two directories
+tags:
+  - "#windows"
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ```cmd
 dir /s /b > flatfile.txt
 ```

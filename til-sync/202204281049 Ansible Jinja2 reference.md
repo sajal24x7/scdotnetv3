@@ -1,11 +1,12 @@
 ---
-tags:
-  - ansible
-  - jinja
 aliases:
+  - Ansible Jinja2 reference
+tags:
+  - "#ansible"
+  - "#jinja"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Filters - file
 basename
 

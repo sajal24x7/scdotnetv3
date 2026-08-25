@@ -1,8 +1,11 @@
 ---
-tag: #windows
 aliases:
+  - Windows extend volume blocked by partition
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 1. Run diskpart
 ``` cmd
 list disk

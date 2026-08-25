@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Ansible inventory
 tags:
   - "#ansible"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Host groups
 Two host groups always exist:
 -   The `all` host group contains every host explicitly listed in the inventory

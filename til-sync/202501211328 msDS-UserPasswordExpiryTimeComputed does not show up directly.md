@@ -1,10 +1,12 @@
 ---
+aliases:
+  - msDS-UserPasswordExpiryTimeComputed does not show up directly
 tags:
   - "#windows"
   - "#ad"
   - "#powershell"
-aliases:
-  - msDS-UserPasswordExpiryTimeComputed does not show up directly
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Reason
 

@@ -1,8 +1,11 @@
 ---
+aliases:
+  - Linux schedule a task to run at specific time
 tags:
   - "#linux"
   - "#bash"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Use the at command
 

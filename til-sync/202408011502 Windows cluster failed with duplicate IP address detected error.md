@@ -1,11 +1,13 @@
 ---
+aliases:
+  - Windows cluster failed with duplicate IP address detected error
+  - Remove hidden adapter
 tags:
   - "#windows"
   - "#failover"
   - "#network"
-aliases:
-  - Windows cluster failed with duplicate IP address detected error
-  - Remove hidden adapter
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Issue
 1. Windows cluster server name and IP down. 

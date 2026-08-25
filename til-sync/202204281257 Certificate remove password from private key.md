@@ -1,10 +1,11 @@
 ---
-tags:
-  - cert
 aliases:
+  - Certificate remove password from private key
+tags:
+  - "#cert"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Remove Private key
 ```bash
 openssl rsa -in [file1.key] -out [file2.key]

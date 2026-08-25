@@ -1,9 +1,12 @@
 ---
+aliases:
+  - Set alias for cluster resource record
 tags:
   - "#windows"
   - "#cluster"
   - "#powershell"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 # This resource needs to be Network Name

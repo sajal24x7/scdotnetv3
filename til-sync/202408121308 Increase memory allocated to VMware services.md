@@ -1,8 +1,10 @@
 ---
-tags:
-  - "#vmware"
 aliases:
   - Increase memory allocated to VMware services
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Error
 

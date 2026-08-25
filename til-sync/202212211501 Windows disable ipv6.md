@@ -1,8 +1,12 @@
 ---
-tag: #windows, #powershell
 aliases:
+  - Windows disable ipv6
+tags:
+  - "#windows"
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Powershell
 ```powershell
 Get-NetAdapterBinding | Where-Object ComponentID -EQ 'ms_tcpip6'

@@ -1,8 +1,10 @@
 ---
-tags:
-  - "#vmware"
 aliases:
   - Manage VM Templates in VMware content libraries
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 After [[202407191233 Create VMware Content Libraries|Create VMware Content Libraries]]
 # Add template to content library

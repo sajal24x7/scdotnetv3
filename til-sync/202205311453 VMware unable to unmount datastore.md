@@ -1,9 +1,11 @@
 ---
-tags:
-  - vmware
 aliases:
+  - VMware unable to unmount datastore
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Error
 > The resource '0200fe0000624a9370f25b6296a38b4191000d2851466c61736841' is in use.
 

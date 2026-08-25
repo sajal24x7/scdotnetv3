@@ -6,6 +6,7 @@ tags:
 aliases:
   - How to create ssh key with azcli
 category: til
+updated: 2026-08-25T14:30:56
 ---
 Reference to [az sshkey](https://learn.microsoft.com/en-us/cli/azure/sshkey?view=azure-cli-latest).
 

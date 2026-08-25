@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Create entries in reverse lookup zone through PowerShell
 tags:
   - "#powershell"
   - "#dns"
-aliases:
-  - Create entries in reverse lookup zone through PowerShell
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 Add-DNSServerResourceRecordPTR -ZoneName $ZoneName -Name $ipAddress -PTRDomainName $hostname -ComputerName $dnsServer

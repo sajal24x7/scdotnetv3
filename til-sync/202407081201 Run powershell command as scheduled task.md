@@ -1,10 +1,11 @@
 ---
-tags:
-  - "#powershell"
 aliases:
   - Run powershell command as scheduled task
+tags:
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Define action as:
 
 ```text

@@ -1,8 +1,12 @@
 ---
-tag: #velero, #ccs
 aliases:
+  - Velero install
+tags:
+  - "#velero"
+  - "#ccs"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Fresh install
 
 1. Extract the tarball.

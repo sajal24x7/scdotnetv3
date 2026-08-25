@@ -1,10 +1,11 @@
 ---
-tags:
-  - ad
-  - windows
 aliases:
   - How to add custom attributes to AD
+tags:
+  - "#ad"
+  - "#windows"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ## Pre-requisites
 1. Make sure you have schema admin rights

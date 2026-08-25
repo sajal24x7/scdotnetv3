@@ -1,7 +1,10 @@
 ---
-tags:
-  - ad
 aliases:
+  - Delegate permission to restore deleted ad objects
+tags:
+  - "#ad"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 You need to delegate **Reanimate tombstones** permission on the Domain level and make it applied to **This object and all descendant objects**. You can the **Security** tab in your Domain properties to do that:
 

@@ -1,11 +1,12 @@
 ---
-tags:
-  - "#windows"
-  - errors
 aliases:
   - Windows RDP issue
+tags:
+  - "#windows"
+  - "#errors"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Error: No Remote Desktop License Servers available
 
 ```text

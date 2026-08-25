@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Ansible execution behaviour
 tags:
   - "#ansible"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 module defines the state in which something should be.
 when used in a task, following things happen
 

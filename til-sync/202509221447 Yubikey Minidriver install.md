@@ -1,7 +1,12 @@
 ---
-tags:
 aliases:
+  - Yubikey Minidriver install
+tags:
+  - "#windows"
+  - "#yubikey"
+  - "#powershell"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 

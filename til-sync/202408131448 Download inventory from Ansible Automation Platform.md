@@ -1,8 +1,11 @@
 ---
+aliases:
+  - Download inventory from Ansible Automation Platform
 tags:
   - "#ansible"
   - "#aap"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 We have to use this api:
 

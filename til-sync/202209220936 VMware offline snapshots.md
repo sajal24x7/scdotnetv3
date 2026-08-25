@@ -1,8 +1,11 @@
 ---
-tag: #vmware
 aliases:
+  - VMware offline snapshots
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Why?
 When using multiple vCenters in the same Single Sign on Domain (Enhanced Linked Mode), there is high potential of corruption of the domain if no offline snapshots are taken of all nodes before the changes.
 

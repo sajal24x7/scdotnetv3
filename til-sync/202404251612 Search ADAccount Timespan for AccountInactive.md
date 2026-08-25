@@ -1,7 +1,10 @@
 ---
+aliases:
+  - Search ADAccount Timespan for AccountInactive
 tags:
   - "#powershell"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Search-ADAccount uses LastlogonTimeStamp for -TimeSpan when used with -AccountInactive
 

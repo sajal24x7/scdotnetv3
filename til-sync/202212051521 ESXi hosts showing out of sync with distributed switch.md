@@ -1,8 +1,11 @@
 ---
-tag: #vmware
 aliases:
+  - ESXi hosts showing out of sync with distributed switch
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Fix:
 1.  Move all attached virtual machines to another host or to a standard switch.
     

@@ -1,12 +1,13 @@
 ---
-tags:
-  - "#powershell"
-  - windows
-  - acl
 aliases:
   - Set ACL using CLI
   - Set ACL using PowerShell
+tags:
+  - "#powershell"
+  - "#windows"
+  - "#acl"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 There are two options:
 1. icacls

@@ -1,9 +1,11 @@
 ---
+aliases:
+  - GPO processing order
 tags:
   - "#windows"
   - "#ad"
-aliases:
-  - GPO processing order
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Local > Site > Domain > OU (Parent > Sub)
 

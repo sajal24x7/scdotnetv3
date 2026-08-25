@@ -1,8 +1,10 @@
 ---
-tag:
 aliases:
+  - Azure portal url list
+tags:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Refer to the link below.
 
 ---

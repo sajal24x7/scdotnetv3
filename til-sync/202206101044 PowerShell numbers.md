@@ -1,9 +1,11 @@
 ---
+aliases:
+  - PowerShell numbers
 tags:
   - "#powershell"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Int32
 **Int** is the default numeric data type in Windows PowerShell. It is a 32-bit signed integer. The .NET Framework class is System.Int32. Because it is the default numeric data type, I can use [int32] or [int].
 To get max and min values:

@@ -5,6 +5,7 @@ tags:
 aliases:
   - How to create user in linux
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ```bash
 

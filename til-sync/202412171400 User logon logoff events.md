@@ -1,8 +1,11 @@
 ---
+aliases:
+  - User logon logoff events
 tags:
   - "#windows"
   - "#ad"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Logon events
 

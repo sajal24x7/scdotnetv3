@@ -1,6 +1,9 @@
 ---
-tag:
 aliases:
+  - WSUS troubleshooting
+tags:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 Get-WindowsUpdateLog

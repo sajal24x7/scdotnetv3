@@ -1,8 +1,11 @@
 ---
-tag: #ucs
 aliases:
+  - UCS IOM or Fabric Extenders
+tags:
+  - "#ucs"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Fit on the left side of the chassis. 
 IOM A and IOM B.
 

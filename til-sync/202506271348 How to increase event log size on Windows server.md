@@ -1,9 +1,10 @@
 ---
-tags:
-  - "#windows"
 aliases:
   - How to increase event log size on Windows server
+tags:
+  - "#windows"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 # Through GPO
 1. `Computer Configuration\Administrative Templates\Windows Components\Event Log Service\` 

@@ -1,9 +1,10 @@
 ---
-tags:
-  - windows
 aliases:
   - Forcefully uninstall software from windows
+tags:
+  - "#windows"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 Download tool and run.
 

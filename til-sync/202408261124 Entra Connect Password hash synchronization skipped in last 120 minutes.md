@@ -1,10 +1,12 @@
 ---
+aliases:
+  - Entra Connect Password hash synchronization skipped in last 120 minutes
 tags:
   - "#azure"
   - "#entraconnect"
   - "#entra"
-aliases:
-  - Entra Connect Password hash synchronization skipped in last 120 minutes
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Need to restart Microsoft Entra Sync service. 
 

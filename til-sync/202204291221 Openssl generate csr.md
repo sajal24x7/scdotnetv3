@@ -1,10 +1,11 @@
 ---
-tags:
-  - cert
 aliases:
+  - Openssl generate csr
+tags:
+  - "#cert"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Command 
 ```bash
 openssl req -out fitcsecp.csr -new -newkey rsa:2048 -nodes -keyout fitcsecp_private_key.key -addext "subjectAltName = DNS:domain-name.com"

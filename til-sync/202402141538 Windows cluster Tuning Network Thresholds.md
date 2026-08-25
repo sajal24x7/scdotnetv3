@@ -1,9 +1,11 @@
 ---
+aliases:
+  - heartbeat timeout
 tags:
   - "#windows"
   - "#cluster"
-aliases:
-  - '"heartbeat timeout"'
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 > get-cluster | fl *subnet*

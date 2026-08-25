@@ -1,8 +1,10 @@
 ---
-tags:
-  - "#vmware"
 aliases:
   - VMware set proxy
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 We can not set **noproxy** in VAMI UI. It needs to be set in config file located at
 ```text

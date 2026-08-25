@@ -1,10 +1,11 @@
 ---
-tags:
-  - vmware
-  - esxi
 aliases:
   - ESXi firmware upgrade baseline fails to apply with incompatible message
+tags:
+  - "#vmware"
+  - "#esxi"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 In the message, it will show the list of VIBs that are causing problems. 
 

@@ -1,12 +1,13 @@
 ---
-tags:
-  - "#windows"
 aliases:
   - Windows sysprep
   - Sysprep
   - Windows image prep
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Located: %WINDIR%\system32\sysprep\sysprep.exe
 
 ```cmd

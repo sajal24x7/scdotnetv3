@@ -1,10 +1,12 @@
 ---
-tags:
-  - "#windows"
-  - "#storage"
 aliases:
   - Sector
   - Sector size
+tags:
+  - "#windows"
+  - "#storage"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Sector
 - Minimum amount of data that can be read or written to HD

@@ -1,8 +1,12 @@
 ---
-tag: #openstack, #vmware
 aliases:
+  - Openstack disintegration
+tags:
+  - "#openstack"
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 - Restart of VMs to update managed by openstack to managed by VMware
 - shared Disk allocated by Openstack / Same DC
 - replicated disks moved

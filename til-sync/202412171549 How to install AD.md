@@ -1,11 +1,13 @@
 ---
+aliases:
+  - How to install AD
+  - how to configure ad
 tags:
   - "#ad"
   - "#windows"
   - "#powershell"
-aliases:
-  - How to install AD
-  - how to configure ad
+category: til
+updated: 2026-08-25T14:30:56
 ---
 After completing [[202412111622 AD pre-requisites]], for first dc in domain.
 

@@ -1,0 +1,25 @@
+---
+aliases:
+  - User defined routing
+  - Custom routes
+  - UDR
+tags:
+  - "#azure"
+  - "#network"
+category: til
+updated: 2026-08-25T14:30:56
+---
+A way of [[202404131313 Connecting virtual networks|Connecting virtual networks]]
+- Can be used to over-ride system defaults created in [[202312231415 Azure Master|Azure]]
+- Next hop can be:
+	- NVA
+	- Virtual network gateway
+	- [[202404121703 Azure VNet|VNet]]
+	- Internet
+	- None (To drop packet)
+
+[[202407281408 Create custom route|Create custom route]]
+
+---
+# references:
+[MS Learn](https://learn.microsoft.com/en-in/training/modules/control-network-traffic-flow-with-routes/2-azure-virtual-network-route)

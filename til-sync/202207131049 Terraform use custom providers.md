@@ -1,9 +1,11 @@
 ---
-tags:
-  - terraform
 aliases:
+  - Terraform use custom providers
+tags:
+  - "#terraform"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 In .terraformrc file provide the location of the local mirror from where provider should be installed
 
 ```terraform

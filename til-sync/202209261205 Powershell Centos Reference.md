@@ -1,8 +1,12 @@
 ---
-tag: #powershell, #linux
 aliases:
+  - Powershell Centos Reference
+tags:
+  - "#powershell"
+  - "#linux"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ## Linux Directories
 
 $PSHOME is /opt/microsoft/powershell/7/

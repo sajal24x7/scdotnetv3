@@ -1,8 +1,12 @@
 ---
-tag: #windows, #ad
 aliases:
+  - SamAccount Name limit
+tags:
+  - "#windows"
+  - "#ad"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 The **sAMAccountName** attribute is a logon name used to support clients and servers from previous version of Windows, such as Windows NT 4.0, Windows 95, Windows 98, and LAN Manager. The logon name must be 20 or fewer characters and be unique among all security principal objects within the domain.
 
 ---

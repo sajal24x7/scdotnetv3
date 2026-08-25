@@ -6,6 +6,7 @@ tags:
 aliases:
   - Update esxi with required version of vmware tools
 category: til
+updated: 2026-08-25T14:30:56
 ---
 By default each esxi release come bundled with a specific vmware tools release. Automatic upgrade option for VMs checks against this version.
 

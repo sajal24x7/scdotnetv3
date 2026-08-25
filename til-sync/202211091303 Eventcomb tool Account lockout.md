@@ -1,8 +1,11 @@
 ---
-tag: #windows
 aliases:
+  - Eventcomb tool Account lockout
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Steps
 1.  On the **Searches** menu, point to **Built In Searches**, and then click **Account Lockouts**.
     

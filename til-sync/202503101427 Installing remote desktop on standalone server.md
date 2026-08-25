@@ -1,7 +1,9 @@
 ---
-tags:
 aliases:
+  - Installing remote desktop on standalone server
+tags:
 category: til
+updated: 2026-08-25T14:30:56
 ---
 Basically install Remote Desktop Session Host role.
 Note: Might require 2 reboots: 1 after role install, 1 for licensing to look OK on the server.

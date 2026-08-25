@@ -1,10 +1,12 @@
 ---
+aliases:
+  - Raise a certificate request on Windows
 tags:
   - "#windows"
   - "#cert"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Script
 1. Ensure that you have the configuration name correct. Just run **certutil** and copy the CA Config name from the output.
 2. Multi cert script developed.

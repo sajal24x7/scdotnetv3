@@ -1,10 +1,11 @@
 ---
+aliases:
+  - Find installed software on windows systems
 tags:
   - "#windows"
   - "#powershell"
-aliases:
-  - Find installed software on windows systems
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 

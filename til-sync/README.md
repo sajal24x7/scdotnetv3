@@ -1,3 +1,6 @@
+---
+updated: 2026-08-25T14:30:56
+---
 # til-sync
 
 Mirror of the work-laptop Obsidian TIL vault, synced through the **TIL** tab

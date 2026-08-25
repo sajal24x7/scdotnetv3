@@ -1,9 +1,11 @@
 ---
-tags:
-  - terraform
 aliases:
+  - Terraform scaling VMs
+tags:
+  - "#terraform"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 1. Define a var file with a list of objects, e.g. VMname, cpu, etc.
 2. Define resource block for VM.
 3. Upon apply, VMs are deployed in an order like : web[0], web[1], web[2]

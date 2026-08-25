@@ -1,6 +1,10 @@
 ---
-tag: #kubernetes
 aliases:
+  - Kubernets certificate expiry fix
+tags:
+  - "#kubernetes"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 [Cisco documentation]()
 

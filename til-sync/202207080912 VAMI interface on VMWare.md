@@ -1,10 +1,12 @@
 ---
-tags:
-  - vmware
-  - vami
 aliases:
+  - VAMI interface on VMWare
+tags:
+  - "#vmware"
+  - "#vami"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # How to access
 postfix `:5480` to the IP address or URL of your VCSA
 

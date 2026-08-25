@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Storage Spaces
 tags:
   - "#windows"
   - "#storage"
-aliases:
-  - Storage Spaces
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Limitations
 - not as boot or system volumes

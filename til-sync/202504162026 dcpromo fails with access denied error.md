@@ -1,10 +1,11 @@
 ---
-tags:
-  - windows
-  - ad
 aliases:
   - dcpromo fails with access denied error
+tags:
+  - "#windows"
+  - "#ad"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 This can happen during demotion.
 

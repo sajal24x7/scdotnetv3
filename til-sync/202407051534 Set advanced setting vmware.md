@@ -1,8 +1,11 @@
 ---
+aliases:
+  - Set advanced setting vmware
 tags:
   - "#vmware"
   - "#powershell"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 .Set-AdvancedSetting can be used to set it.
 

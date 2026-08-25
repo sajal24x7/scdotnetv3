@@ -1,9 +1,11 @@
 ---
-tags:
-  - terraform
 aliases:
+  - Terraform custom worker image
+tags:
+  - "#terraform"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Commands
 ```bash
 # To build image from dockerfile

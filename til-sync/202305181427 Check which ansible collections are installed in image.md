@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Check which ansible collections are installed in image
 tags:
   - "#ansible"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ```bash
 # From one of the controller system:
 podman run -it --rm registry.redhat.io/ansible-automation-platform-21/ee-supported-rhel8 ansible-galaxy collection list

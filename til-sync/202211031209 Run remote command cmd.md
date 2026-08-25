@@ -1,8 +1,12 @@
 ---
-tag: #windows, #cmd
 aliases:
+  - Run remote command cmd
+tags:
+  - "#windows"
+  - "#cmd"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 1. Open cmd, admin.
 2. 
 ```cmd

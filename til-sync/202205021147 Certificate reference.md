@@ -1,7 +1,10 @@
 ---
+aliases:
+  - Certificate reference
 tags:
   - "#cert"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ![[202205021140 openssl convert pkcs to pem]]
 ![[202204281255 Compare private key and ssl]]

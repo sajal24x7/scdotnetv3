@@ -1,8 +1,12 @@
 ---
-tag: #kubernetes, #ccs
 aliases:
+  - Kubernetes Pods Certificate Related
+tags:
+  - "#kubernetes"
+  - "#ccs"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ## Rabbitmq Cert health status - should be ok for both
 
 kubectl -n cisco exec -t cloudcenter-shared-rabbitmq-0 -- bash -c "openssl verify -verbose -CAfile /secrets/c2ssl/ca/ca_certificate.pem /secrets/c2ssl/cert/certificate.pem"

@@ -1,8 +1,11 @@
 ---
-tag: #vmware
 aliases:
+  - Vmware check rdm details
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 To check if disk is perennialy reserved
 
 ``` bash

@@ -1,10 +1,11 @@
 ---
-tags:
-  - terraform
 aliases:
+  - Terraform variables
+tags:
+  - "#terraform"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Precedence
 Terraform loads variables in the following order, with later sources taking precedence over earlier ones:
 -   Environment variables

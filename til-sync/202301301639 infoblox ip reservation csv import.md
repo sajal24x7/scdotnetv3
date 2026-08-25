@@ -1,8 +1,12 @@
 ---
-tag: #infoblox, #ipam
 aliases:
+  - infoblox ip reservation csv import
+tags:
+  - "#infoblox"
+  - "#ipam"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 These fields required:
 
 ``` text

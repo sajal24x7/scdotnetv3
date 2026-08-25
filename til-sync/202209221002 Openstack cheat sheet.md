@@ -1,8 +1,11 @@
 ---
-tag: #openstack
 aliases:
+  - Openstack cheat sheet
+tags:
+  - "#openstack"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Openstack Cheat Sheet
 
 ## Volume

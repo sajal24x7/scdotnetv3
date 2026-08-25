@@ -1,8 +1,11 @@
 ---
-tag: #windows
 aliases:
+  - Windows what are current control sets
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 `CurrentControlSet` is an alternating symbolic link to either `ControlSet001` or `ControlSet002`. The other key is kept as a backup for the Load Last Known Good Configuration boot option.
 
 current ControlSet number is set by Current under HKLM\System\Select.

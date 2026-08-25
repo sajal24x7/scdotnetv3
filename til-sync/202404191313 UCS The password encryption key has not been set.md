@@ -1,7 +1,10 @@
 ---
+aliases:
+  - UCS The password encryption key has not been set
 tags:
   - "#ucs"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 1. In the Navigation pane, click Admin.
 2. Expand All > User Management > User Services > Locally Authenticated Users

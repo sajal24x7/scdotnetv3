@@ -1,7 +1,10 @@
 ---
+aliases:
+  - Windows event viewer logs location
 tags:
   - "#windows"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```text
 %SystemRoot%\System32\winevt\Logs

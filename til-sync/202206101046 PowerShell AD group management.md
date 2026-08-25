@@ -1,10 +1,12 @@
 ---
+aliases:
+  - PowerShell AD group management
 tags:
   - "#powershell"
-  - ad
-aliases:
+  - "#ad"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Add custom property
 ```powershell
 $Group = Get-ADGroup <group-name> -Properties * -Server <domain>

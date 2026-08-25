@@ -1,11 +1,12 @@
 ---
-tags:
-  - azure
-  - entra
-  - entraconnect
 aliases:
   - How to configure entra connect sync filtering
+tags:
+  - "#azure"
+  - "#entra"
+  - "#entraconnect"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 [MSFT has good documentation around this.]([Microsoft Entra Connect Sync: Configure filtering - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-sync-configure-filtering)) 
 

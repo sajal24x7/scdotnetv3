@@ -1,11 +1,12 @@
 ---
-tags:
-  - windows
-  - gpo
-  - shortcut
 aliases:
   - Create GPO to copy a file in a certain location and create a shortcut to that exe on Desktop
+tags:
+  - "#windows"
+  - "#gpo"
+  - "#shortcut"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ## Copy a file
 

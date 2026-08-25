@@ -1,8 +1,11 @@
 ---
-tag: #platespin
 aliases:
+  - Platespin FIPS Error
+tags:
+  - "#platespin"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Error:
 Exception has been thrown by the target of an invocation.
 This implementation is not part of the Windows Platform FIPS validated cryptographic algorithms.

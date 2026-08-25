@@ -1,8 +1,11 @@
 ---
-tags:
-  - dns
-  - "#windows"
 aliases:
+  - Convert a dynamic dns record to static
+tags:
+  - "#dns"
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 1. dnsmgmt.msc
 2. Enable advanced view.

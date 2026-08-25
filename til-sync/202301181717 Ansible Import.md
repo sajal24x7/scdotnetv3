@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Ansible Import
 tags:
   - "#ansible"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Previous versions used `include` directive. Which had issues (confusing and error-prone).
 So, it was deprecated. 
 

@@ -1,8 +1,11 @@
 ---
+aliases:
+  - Disable SMBv1 on Windows
 tags:
   - "#windows"
   - "#powershell"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Remove SMB v1
 

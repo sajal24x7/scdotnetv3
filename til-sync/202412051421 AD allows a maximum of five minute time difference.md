@@ -1,11 +1,12 @@
 ---
+aliases:
+  - AD allows a maximum of five minute time difference
 tags:
   - "#ad"
   - "#windows"
   - "#time"
-aliases:
-  - AD allows a maximum of five minute time difference
 category: til
+updated: 2026-08-25T14:30:56
 ---
 - For successful authentication, max 5 min time difference between server and client
 - PDC emulator manages time sync

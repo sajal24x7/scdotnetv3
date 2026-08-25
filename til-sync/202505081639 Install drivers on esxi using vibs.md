@@ -1,10 +1,11 @@
 ---
+aliases:
+  - Install drivers on esxi using vibs
 tags:
   - "#vmware"
   - "#hp"
-aliases:
-  - Install drivers on esxi using vibs
 category: til
+updated: 2026-08-25T14:30:56
 ---
 1. Copy vib to the esxi. 
 2. Run the following command.

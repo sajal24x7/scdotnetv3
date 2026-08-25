@@ -1,8 +1,11 @@
 ---
-tag: #solarwinds
 aliases:
+  - Solarwinds IPAM reference
+tags:
+  - "#solarwinds"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 [Python](https://github.com/solarwinds/orionsdk-python)
 
 [Powershell](https://github.com/solarwinds/OrionSDK/tree/master/Samples/PowerShell)

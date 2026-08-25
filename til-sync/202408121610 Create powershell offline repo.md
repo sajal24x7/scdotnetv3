@@ -1,8 +1,10 @@
 ---
-tags:
-  - "#powershell"
 aliases:
   - Create powershell offline repo
+tags:
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Fastest way to install modules on disconnected servers is [[202210111009 Powershell install modules offline|Install powershell modules]].
 

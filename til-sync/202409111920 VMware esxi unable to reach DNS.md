@@ -1,9 +1,11 @@
 ---
+aliases:
+  - VMware esxi unable to reach DNS
 tags:
   - "#vmware"
   - "#dns"
-aliases:
 category: til
+updated: 2026-08-25T14:30:56
 ---
 1. Check that DNS configuration is correct.
 2. In dcui view, test management network, whether dns resolution works or not

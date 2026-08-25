@@ -1,8 +1,12 @@
 ---
-tag: #windows, #powershell
 aliases:
+  - Windows get last boot time
+tags:
+  - "#windows"
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ```powershell
 Get-CimInstance -ClassName win32_operatingsystem | select csname, lastbootuptime
 ```

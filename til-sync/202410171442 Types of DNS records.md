@@ -1,10 +1,12 @@
 ---
-tags:
-  - "#windows"
-  - "#dns"
 aliases:
   - Types of DNS records
   - dns records
+tags:
+  - "#windows"
+  - "#dns"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 1. SOA (Start of Authority)
 	1. Created when a zone is created

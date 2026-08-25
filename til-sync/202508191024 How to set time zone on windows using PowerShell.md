@@ -1,8 +1,10 @@
 ---
-tags:
-  - powershell
 aliases:
+  - How to set time zone on windows using PowerShell
+tags:
+  - "#powershell"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 

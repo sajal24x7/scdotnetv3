@@ -1,10 +1,11 @@
 ---
+aliases:
+  - Each domain can have only one password policy
 tags:
   - "#windows"
   - "#ad"
-aliases:
-  - Each domain can have only one password policy
 category: til
+updated: 2026-08-25T14:30:56
 ---
 We would need to use fine-grained password policy to enable this. 
 Another thing is that fine-grained password policy applies to users or groups not to OUs.

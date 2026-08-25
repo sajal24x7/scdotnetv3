@@ -1,10 +1,12 @@
 ---
-tags:
-  - "#windows"
-  - "#dns"
 aliases:
   - Types of DNS Zones
   - dns zones
+tags:
+  - "#windows"
+  - "#dns"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 1. Primary Zone
 	1. R/W container

@@ -1,7 +1,10 @@
 ---
+aliases:
+  - UCS Port Licensing related
 tags:
   - "#ucs"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ## Check how many ports are licensed
 

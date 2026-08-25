@@ -1,7 +1,10 @@
 ---
+aliases:
+  - Disable autoplay for all devices
 tags:
   - "#windows"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Registry
 Registry Hive: HKEY_LOCAL_MACHINE  

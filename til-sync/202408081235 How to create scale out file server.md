@@ -1,10 +1,12 @@
 ---
-tags:
-  - "#windows"
-  - "#cluster"
 aliases:
   - How to create scale out file server
   - create scale out file server
+tags:
+  - "#windows"
+  - "#cluster"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 How to create [[202407161044 Scale out file server|Scale out file server]] on Windows core.
 

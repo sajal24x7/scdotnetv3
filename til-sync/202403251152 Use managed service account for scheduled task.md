@@ -1,11 +1,13 @@
 ---
+aliases:
+  - Use managed service account for scheduled task
 tags:
   - "#windows"
-  - ad
-  - powershell
-aliases:
+  - "#ad"
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Pre-requisites
 1. Add managed service account to groups/provide access on server as needed
 2. Add service account to Logon as batch job

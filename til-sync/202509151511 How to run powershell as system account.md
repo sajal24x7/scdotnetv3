@@ -1,8 +1,10 @@
 ---
-tags:
-  - powershell
 aliases:
+  - How to run powershell as system account
+tags:
+  - "#powershell"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 There are two ways to run your powershell script as the SYSTEM account:
 1. Use PsExec

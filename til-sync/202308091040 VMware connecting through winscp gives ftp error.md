@@ -1,8 +1,11 @@
 ---
-tag: #vmware
 aliases:
+  - VMware connecting through winscp gives ftp error
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ![[Pasted image 20230809104044.png]]
 
 Go to Advanced > SFTP

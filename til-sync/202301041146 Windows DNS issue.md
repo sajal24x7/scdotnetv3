@@ -1,8 +1,11 @@
 ---
+aliases:
+  - Windows DNS issue
 tags:
   - "#windows"
   - "#dns"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Error
 Resolution has multiple canonical names. Resolves couple of hops, but fails on 3rd/4th step.

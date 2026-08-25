@@ -1,9 +1,11 @@
 ---
-tags:
-  - "#windows"
 aliases:
   - Reset RDS 120 days window
   - Reset RDP 120 days window
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 1. On the RDS session host, launch Registry Editor (regedit) as an administrator.
 2. In regedit, browse to `**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\GracePeriod**`.

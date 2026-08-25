@@ -1,9 +1,11 @@
 ---
-tags:
-  - "#vmware"
 aliases:
   - How to decommission an ESXi
   - decomm esxi
+tags:
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 General steps are these:
 

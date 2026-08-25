@@ -1,9 +1,11 @@
 ---
-tag: #ucs
 aliases:
+  - UCS IOM pinning
+tags:
+  - "#ucs"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
-
 Can be done in 1,2,4,8
 
 ## Direct pinning to FI

@@ -1,10 +1,12 @@
 ---
-tags:
-  - terraform
-  - azure
 aliases:
+  - Terraform azure reference
+tags:
+  - "#terraform"
+  - "#azure"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Details
 
 DB Name - sbwehcmsqldb_poc

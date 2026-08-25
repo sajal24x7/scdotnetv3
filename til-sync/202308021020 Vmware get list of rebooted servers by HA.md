@@ -1,8 +1,12 @@
 ---
-tag: #vmware, #powershell
 aliases:
+  - Vmware get list of rebooted servers by HA
+tags:
+  - "#vmware"
+  - "#powershell"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ```powershell
 # Update the following
 

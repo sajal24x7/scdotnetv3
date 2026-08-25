@@ -1,8 +1,11 @@
 ---
+aliases:
+  - Delete IPs from existing subnet in Solarwinds IPAM
 tags:
   - "#solarwinds"
   - "#ipam"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 1. Go to Manage Subnets and IP Address
 2. Select the subnet

@@ -1,10 +1,11 @@
 ---
-tags:
-  - cert
 aliases:
+  - Certificate output in plaintext
+tags:
+  - "#cert"
 category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Issue
 “x509: certificate relies on legacy Common Name field” error
 

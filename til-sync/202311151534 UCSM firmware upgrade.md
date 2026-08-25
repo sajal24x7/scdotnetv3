@@ -1,9 +1,10 @@
 ---
 tags:
-  - "#ucs"
-  - "#cisco"
+  - ucs
+  - cisco
 aliases:
   - Cisco UCS firmware upgrade
+updated: 2026-08-25T14:30:56
 ---
 # Firmware Image Management
 Cisco delivers firmware updates to UCS in bundles.

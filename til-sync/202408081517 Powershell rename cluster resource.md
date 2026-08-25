@@ -1,10 +1,12 @@
 ---
-tags:
-  - "#powershell"
-  - "#windows"
 aliases:
   - Powershell rename cluster resource
   - Powershell rename cluster disk
+tags:
+  - "#powershell"
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 ```powershell
 # Get all resources

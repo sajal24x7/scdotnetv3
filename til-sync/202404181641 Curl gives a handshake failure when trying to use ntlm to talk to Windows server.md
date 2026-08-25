@@ -1,12 +1,14 @@
 ---
+aliases:
+  - Curl gives a handshake failure when trying to use ntlm to talk to Windows server
 tags:
   - "#linux"
   - "#curl"
   - "#windows"
   - "#ntlm"
   - "#evergreen"
-aliases:
-  - Curl gives a handshake failure when trying to use ntlm to talk to Windows server
+category: til
+updated: 2026-08-25T14:30:56
 ---
 This can happen if NTLM v1 is disabled on the target Windows environment.
 

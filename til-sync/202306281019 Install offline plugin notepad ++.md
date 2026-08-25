@@ -1,8 +1,11 @@
 ---
-tag: #windows
 aliases:
+  - Install offline plugin notepad ++
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 [x64 plugin list](https://github.com/notepad-plus-plus/nppPluginList/blob/master/doc/plugin_list_x64.md)
 
 1. Dowload the plugin and extract the plugin dll file.

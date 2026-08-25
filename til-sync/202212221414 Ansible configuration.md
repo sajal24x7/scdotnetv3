@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Ansible configuration
 tags:
   - "#ansible"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Default config file locations in order of precedence
 `ANSIBLE_CONFIG` environment variable
 ./ansible.cfg

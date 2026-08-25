@@ -1,10 +1,12 @@
 ---
-tags:
-  - "#windows"
-  - "#dns"
 aliases:
   - DNS queries
   - types of dns queries
+tags:
+  - "#windows"
+  - "#dns"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 # Iterative
 1. DNS server will respond with the best answer it has without querying any additional servers

@@ -1,10 +1,12 @@
 ---
+aliases:
+  - Ansible Automation Platform Upgrade
 tags:
   - "#ansible"
   - "#aap"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Upgrade assistant here: 
 
 [Ansible Automation Platform Upgrade Assistant | Red Hat Customer Portal Labs](https://access.redhat.com/labs/aapua/)

@@ -1,8 +1,10 @@
 ---
-tags:
-  - "#windows"
 aliases:
   - Convert etl to pcap
+tags:
+  - "#windows"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Use the ETL2PCAPNG tool. 
 

@@ -1,10 +1,12 @@
 ---
-tags:
-  - ccs
-  - postgres
 aliases:
+  - Take postgres dump
+tags:
+  - "#ccs"
+  - "#postgres"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Take a postgres db dump -
 Find cloudcenter-shared-postgres pod -
 kubectl get pods -n cisco | grep postgres

@@ -1,8 +1,12 @@
 ---
-tag: #windows, #cluster
 aliases:
+  - Windows Cluster disk reserved error 170
+tags:
+  - "#windows"
+  - "#cluster"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Error:
 ```
 Node is not able to join after reboot, goes in quarantine

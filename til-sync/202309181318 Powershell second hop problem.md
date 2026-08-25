@@ -1,10 +1,12 @@
 ---
+aliases:
+  - Powershell second hop problem
 tags:
   - "#powershell"
   - "#winrm"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 To fix issue
 
 1. Add fi server entry in etc/hosts so that resolution works

@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Windows Update failing with 0x800f0922
 tags:
   - "#windows"
   - "#update"
-aliases:
-  - Windows Update failing with 0x800f0922
+category: til
+updated: 2026-08-25T14:30:56
 ---
 0x800f0922 is a generic error meaning "the installer failed".
 To understand the cause you need to skim though `%WinDir%\Logs\CBS\CBS.log` and find the first error that then triggers a cascade of failures culminating in 0x800f0922.

@@ -1,8 +1,11 @@
 ---
-tags:
-  - ansible
-  - "#redhat"
 aliases:
+  - Update and refresh a manifest
+tags:
+  - "#ansible"
+  - "#redhat"
+category: til
+updated: 2026-08-25T14:30:56
 ---
 1. Go to [Red Hat Customer Portal](https://access.redhat.com/)
 2. Click on Subscriptions

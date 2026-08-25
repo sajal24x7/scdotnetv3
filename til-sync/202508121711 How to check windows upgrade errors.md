@@ -4,7 +4,9 @@ tags:
   - update
   - upgrade
 aliases:
+  - How to check windows upgrade errors
 category: til
+updated: 2026-08-25T14:30:56
 ---
 [Windows update log files](https://learn.microsoft.com/en-us/windows/deployment/upgrade/log-files#analyze-log-files)are present under `$Windows.~BT\Sources\Panther`. There are two files `setupact.log` and `setuperr.log`.
 

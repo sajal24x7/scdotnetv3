@@ -1,6 +1,9 @@
 ---
-tag:
 aliases:
+  - VMware SNMP troubleshooting
+tags:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Tcpdump command to capture outgoing packets
 ```bash

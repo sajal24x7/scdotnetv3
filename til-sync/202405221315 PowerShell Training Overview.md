@@ -1,10 +1,10 @@
 ---
+aliases:
+  - PowerShell Training Overview
 tags:
   - "#powershell"
-aliases:
-  - PowerShell Training
-  - powershell learning
-category: evergreen
+category: til
+updated: 2026-08-25T14:30:56
 ---
 1. Introduction
 	1. PowerShell - Shell + Scripting and how to run it

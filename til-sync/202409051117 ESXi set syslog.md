@@ -1,7 +1,10 @@
 ---
+aliases:
+  - ESXi set syslog
 tags:
   - "#vmware"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Syslog.global.logDir --> Location where logs will be set
 Syslog.global.logHost --> remote servers where logs are sent using the syslog protocol

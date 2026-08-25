@@ -4,6 +4,7 @@ tags:
 aliases:
   - tar
 category: til
+updated: 2026-08-25T14:30:56
 ---
 ## General order
 Create archive (.tar) --> Compress the archive (.tar.gz) --> Backup/whatever

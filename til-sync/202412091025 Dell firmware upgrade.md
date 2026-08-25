@@ -1,7 +1,10 @@
 ---
+aliases:
+  - Dell firmware upgrade
 tags:
   - "#dell"
-aliases:
+category: til
+updated: 2026-08-25T14:30:56
 ---
 1. Go to Dell support website
 2. Provide your serial number and it will show relevant drivers.

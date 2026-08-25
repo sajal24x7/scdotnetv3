@@ -1,9 +1,11 @@
 ---
-tags:
-  - ansible
 aliases:
+  - Ansible directory structure
+tags:
+  - "#ansible"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ```bash
 production                # inventory file for production servers
 staging                   # inventory file for staging environment

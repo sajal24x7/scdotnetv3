@@ -1,9 +1,11 @@
 ---
+aliases:
+  - Preferred owners in a cluster
 tags:
   - "#cluster"
   - "#windows"
-aliases:
-  - Preferred owners in a cluster
+category: til
+updated: 2026-08-25T14:30:56
 ---
 Setting preferred owners just sets the order in which nodes failover to.
 

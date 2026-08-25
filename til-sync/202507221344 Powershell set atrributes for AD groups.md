@@ -1,10 +1,12 @@
 ---
-tags:
-  - ad
-  - groups
-  - powershell
 aliases:
+  - Powershell set atrributes for AD groups
+tags:
+  - "#ad"
+  - "#groups"
+  - "#powershell"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 Use the `-Instance` property with `set-aduser` 
 

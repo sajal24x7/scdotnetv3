@@ -1,8 +1,12 @@
 ---
-tag: #azure, #ad 
 aliases:
+  - Azure AD Connect Get current Configuration
+tags:
+  - "#azure"
+  - "#ad"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 ## Option 1
 Export configuration settings json.
 

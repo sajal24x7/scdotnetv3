@@ -1,9 +1,11 @@
 ---
-tags:
-  - aws
 aliases:
+  - AWS Storage Gateway
+tags:
+  - "#aws"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Pre-stage computer object before attempting AD join. 
 Or,
 Grant permission to the service account to create computer object.

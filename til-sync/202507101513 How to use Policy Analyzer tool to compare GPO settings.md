@@ -1,11 +1,12 @@
 ---
-tags:
-  - windows
-  - ad
-  - gpo
 aliases:
   - How to use Policy Analyzer tool to compare GPO settings
+tags:
+  - "#windows"
+  - "#ad"
+  - "#gpo"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 - gpresult and using Get-GPOreport does not work because it can export output in .xml or html but PolicyAnalyzer wants backup format
 

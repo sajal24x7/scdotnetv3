@@ -1,10 +1,12 @@
 ---
-tags:
-  - ccs
-  - vmware
 aliases:
+  - Installing cliqr agent for vmware cloud
+tags:
+  - "#ccs"
+  - "#vmware"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Linux
 ```bash
 ./worker_installer.bin vmware worker_basic

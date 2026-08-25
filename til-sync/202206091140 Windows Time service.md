@@ -1,12 +1,13 @@
 ---
+aliases:
+  - Time sybc
+  - Windows time sync
 tags:
   - "#windows"
-  - time
-aliases:
-  - Windows time sync
-  - Time sync
+  - "#time"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 # Sync from domain
 ```powershell
 w32tm /config /syncfromflags:domhier /update 

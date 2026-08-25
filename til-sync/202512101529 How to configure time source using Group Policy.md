@@ -1,10 +1,11 @@
 ---
-tags:
-  - time
-  - windows
 aliases:
   - How to configure time source using Group Policy
+tags:
+  - "#time"
+  - "#windows"
 category: til
+updated: 2026-08-25T14:30:56
 ---
 Can be useful for non-domain joined machines.
 

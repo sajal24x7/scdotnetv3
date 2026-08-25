@@ -1,9 +1,11 @@
 ---
-tags:
-  - cert
 aliases:
+  - Add SAN to cert request inf file method
+tags:
+  - "#cert"
+category: til
+updated: 2026-08-25T14:30:56
 ---
-
 Template:
 ```notepad
 [NewRequest]
