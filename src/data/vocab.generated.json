@@ -491,6 +491,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/expeditious-2026-08-24",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-24"
+		},
+		"tilde": {
+			"word": "tilde",
+			"pos": "other",
+			"gloss": " noun Tilde refers to the mark ~ placed especially over the letter n (as in the Spanish señor, meaning \"sir\") to denote the sound \\nʸ\\, or over vowels (as in the Portuguese irmã, meaning \"sister\") to indicate nasality. When a tilde appears as an independent character, it usually means \"approximately\" (as in \"we'll be there in ~ 30 minutes\").",
+			"pronunciation": "TIL-duh",
+			"example": "A familiar example of the tilde appears in the name of Brazil's capital city, São Paulo.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/tilde-2026-08-25",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-25"
 		}
 	}
 }
