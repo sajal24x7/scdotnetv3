@@ -511,6 +511,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/devolve-2026-08-26",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-26"
+		},
+		"southpaw": {
+			"word": "southpaw",
+			"pos": "other",
+			"gloss": " noun Southpaw is an informal word for someone who is left-handed. It is especially used for a left-handed baseball pitcher or boxer.",
+			"pronunciation": "SOUTH-paw",
+			"example": "The team’s new pitcher is a southpaw with a wicked knuckleball.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/southpaw-2026-08-27",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-27"
 		}
 	}
 }
