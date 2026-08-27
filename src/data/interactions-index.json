@@ -692,20 +692,6 @@
       "status": "approved"
     }
   ],
-  "micro/202608130854": [
-    {
-      "id": "mastodon:repost:117087107662688146:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    }
-  ],
   "micro/amazon-has-a-new-plan-for-games": [
     {
       "id": "mastodon:like:116696520863508112:1339141",
@@ -1006,18 +992,6 @@
         "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/388/160/449/806/147/original/cd8e37c7c2061882.jpg"
       },
       "url": "https://dju.social/@dugartogo",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:117084147384684190:111653168084519023",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Weather Channel",
-        "url": "https://newsmast.community/@weather",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/168/084/519/023/original/30a10bd96b9b62b9.png"
-      },
-      "url": "https://newsmast.community/@weather",
       "status": "approved"
     }
   ],
