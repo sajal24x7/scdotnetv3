@@ -501,6 +501,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/tilde-2026-08-25",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-25"
+		},
+		"devolve": {
+			"word": "devolve",
+			"pos": "other",
+			"gloss": " verb To devolve is to gradually go from an advanced state to a less advanced state, or to pass something, such as responsibility or power, from one person or group to another at a lower level of authority.",
+			"pronunciation": "dih-VAHLV",
+			"example": "Somehow the debate devolved into a petty competition to see who could get more applause. // Community leaders hope that the new government will devolve more power to the community itself.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/devolve-2026-08-26",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-26"
 		}
 	}
 }

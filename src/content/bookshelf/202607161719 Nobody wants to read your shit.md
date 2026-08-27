@@ -7,5 +7,6 @@ status: todo
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116930415155946152'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqrl6loxkl2n'
+cover: nobody-wants-to-read-your-shit.webp
 ---
 

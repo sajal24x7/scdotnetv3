@@ -692,20 +692,6 @@
       "status": "approved"
     }
   ],
-  "micro/202608130854": [
-    {
-      "id": "mastodon:repost:117087107662688146:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    }
-  ],
   "micro/amazon-has-a-new-plan-for-games": [
     {
       "id": "mastodon:like:116696520863508112:1339141",
@@ -746,6 +732,20 @@
       },
       "url": "https://bsky.app/profile/pockethook.app",
       "published": "2026-06-17T18:16:05.336Z",
+      "status": "approved"
+    }
+  ],
+  "micro/apple-announces-new-mac-mini-with-m6-chip": [
+    {
+      "id": "mastodon:repost:117156972027299399:114863603913131469",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Apple-feed",
+        "url": "https://channel.org/@applefeed",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/6e04454c4298099704bb671fd177b734.jpg"
+      },
+      "url": "https://channel.org/@applefeed",
       "status": "approved"
     }
   ],
@@ -929,6 +929,19 @@
   ],
   "micro/matt-webb-updates-galactic-compass-app": [
     {
+      "id": "bluesky:like:3mtodcoota622:did:plc:gwtqnpejkbvz4vwij57dsy6u",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Lofi Glow",
+        "url": "https://bsky.app/profile/lofiglow.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:gwtqnpejkbvz4vwij57dsy6u/bafkreiac5h5u56ay4mumigsxxkj4qdveyjzhkpcsamdiafw2qmlcaxipce"
+      },
+      "url": "https://bsky.app/profile/lofiglow.bsky.social",
+      "published": "2026-08-22T13:11:53.266Z",
+      "status": "approved"
+    },
+    {
       "id": "web:like:0bcc5a4f88ebae6f49beeff10c3d4c6a6b34c2334d3e63c8a8a9b1f08dd173ad",
       "type": "like",
       "platform": "web",
@@ -940,6 +953,18 @@
       "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mtodcoota622/did%253Aplc%253Agwtqnpejkbvz4vwij57dsy6u",
       "published": "2026-08-22T14:47:23.532Z",
       "status": "pending"
+    },
+    {
+      "id": "mastodon:repost:117139278598623592:111653099686979697",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Government & Policy Channel",
+        "url": "https://newsmast.community/@government",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/099/686/979/697/original/43016e49f823a5e1.png"
+      },
+      "url": "https://newsmast.community/@government",
+      "status": "approved"
     }
   ],
   "micro/rss-is-the-best-distribution-channel": [
@@ -967,18 +992,6 @@
         "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/388/160/449/806/147/original/cd8e37c7c2061882.jpg"
       },
       "url": "https://dju.social/@dugartogo",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:117084147384684190:111653168084519023",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Weather Channel",
-        "url": "https://newsmast.community/@weather",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/168/084/519/023/original/30a10bd96b9b62b9.png"
-      },
-      "url": "https://newsmast.community/@weather",
       "status": "approved"
     }
   ],
