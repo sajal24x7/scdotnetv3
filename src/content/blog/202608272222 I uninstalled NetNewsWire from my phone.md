@@ -1,10 +1,18 @@
 ---
-title: "I Uninstalled NetNewsWire From My Phone"
-slug: "i-uninstalled-netnewswire-from-my-phone"
-created: 2026-08-27T22:22:00+03:00
-updated: 2026-08-27T22:23:12+03:00
+title: I Uninstalled NetNewsWire From My Phone
+slug: i-uninstalled-netnewswire-from-my-phone
+created: 2026-08-27T19:22:00.000Z
+updated: 2026-08-27T19:23:12.000Z
 category: blog
-tags: ["net-news-wire", "reading", "web", "rss"]
+tags:
+  - net-news-wire
+  - reading
+  - web
+  - rss
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117170285973201171'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mu43xafmld2l'
+  - 'https://www.threads.com/@sajal24x7/post/DckEYUzlE6F'
 ---
 I uninstalled NetNewsWire from my iPhone today. Last night, as I was dozing off, I had this feeling, this feeling that I've had many times in the past, that reading so much on the web may not be a good thing. Like I'm not getting the time to think, or read longer stuff - essays and books. This is not new of course. What is also not new is this want to write more, write more meaningful stuff. Both stream and garden. Not just stream. And of course it was a thing I did when I picked up the phone. I want to have fewer reasons to pick up my phone. I keep uninstalling and installing IG, which is the one sticky, addictive social platform I'm on. Threads/Mastodon/Bluesky have never felt addictive to me. Which maybe the reason why Bluesky is adding so many video features to it's app. 
 
