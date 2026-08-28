@@ -521,6 +521,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/southpaw-2026-08-27",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-27"
+		},
+		"cogent": {
+			"word": "cogent",
+			"pos": "other",
+			"gloss": " adjective Cogent is a formal word that describes something that is very clear and easy for the mind to accept and believe. It is used as a synonym of convincing.",
+			"pronunciation": "KOH-junt",
+			"example": "At the town meeting, citizens presented many cogent arguments in support of building a new senior center.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/cogent-2026-08-28",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-28"
 		}
 	}
 }
