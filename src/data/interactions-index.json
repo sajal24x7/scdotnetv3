@@ -32,6 +32,20 @@
       "status": "approved"
     }
   ],
+  "blog/i-uninstalled-netnewswire-from-my-phone": [
+    {
+      "id": "mastodon:repost:117170285973201171:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
+    }
+  ],
   "blog/on-possessions": [
     {
       "id": "mastodon:like:116754008646024542:110655611816281403",
@@ -1147,6 +1161,20 @@
       },
       "url": "https://www.threads.com/@sajal24x7/post/DYzYnM1Dsq7",
       "count": 1,
+      "status": "approved"
+    }
+  ],
+  "micro/witcher-3-is-getting-a-remaster": [
+    {
+      "id": "mastodon:repost:117160544169252752:111653086188808400",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Gaming Channel",
+        "url": "https://newsmast.community/@gaming",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/086/188/808/400/original/a6a0714ab054b18f.png"
+      },
+      "url": "https://newsmast.community/@gaming",
       "status": "approved"
     }
   ],
