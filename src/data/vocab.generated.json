@@ -531,6 +531,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/cogent-2026-08-28",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-28"
+		},
+		"kith": {
+			"word": "kith",
+			"pos": "other",
+			"gloss": " noun Kith is an old-fashioned term that refers to familiar friends, neighbors, or relatives. It is often used in the phrase “kith and kin,” which means “friends and relatives.”",
+			"pronunciation": "KITH",
+			"example": "Spending time with kith and kin at the end of the summer is the highlight of our year.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/kith-2026-08-29",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-29"
 		}
 	}
 }
