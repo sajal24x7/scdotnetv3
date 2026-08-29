@@ -8,5 +8,6 @@ rating: like
 platform: Netflix
 status: finished
 year: 2025
+cover: wwe-wrestlepalooza-2025-wrestlepalooza.webp
 ---
 Finished watching on 2025-09-21.
