@@ -8,13 +8,8 @@ tags: ["humor"]
 author:
   - Fredrick Backman
 started: 2026-08-29T08:37:00
-finished:
 genre: general-fiction
 format: audiobook
-rating:
-series:
-status: todo
+status: started 
 ---
-## Review
-## Notes
-
+Started reading.
