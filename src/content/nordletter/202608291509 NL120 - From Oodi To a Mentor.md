@@ -1,13 +1,23 @@
 ---
-title: "From Oodi to a Mentor"
-slug: "nl120-from-oodi-to-a-mentor"
-created: 2026-08-29T15:09:00+03:00
-updated: 2026-08-29T22:56:17+03:00
+title: From Oodi to a Mentor
+slug: nl120-from-oodi-to-a-mentor
+created: 2026-08-29T12:09:00.000Z
+updated: 2026-08-29T19:56:17.000Z
 category: nordletter
-tags: ["books", "reading", "learning", "k8s", "oodi", "library"]
+tags:
+  - books
+  - reading
+  - learning
+  - k8s
+  - oodi
+  - library
 edition: 120
-description: "I found a mentor at a meetup"
-image: "https://storage.sajalchoudhary.net/images/2026/08/nl120-05.jpeg"
+description: I found a mentor at a meetup
+image: 'https://storage.sajalchoudhary.net/images/2026/08/nl120-05.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117180783135461074'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3muar4rb3ak26'
+  - 'https://www.threads.com/@sajal24x7/post/Dco14vXD7AT'
 ---
 Hello from my home in Helsinki! This is NordLetter #120, a weekly newsletter on living and walking in Finland.
 
