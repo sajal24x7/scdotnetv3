@@ -1728,6 +1728,7 @@
       "nordletter/202608071706 NL117 - Madrid Day Trip.md",
       "nordletter/202608120843 NL118 - Trip to Barcelona.md",
       "nordletter/202608222224 NL119 - Celebrating India.md",
+      "nordletter/202608291509 NL120 - From Oodi To a Mentor.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -8198,6 +8199,14 @@
   ],
   "bookshelf/the-courage-to-be-disliked": [
     {
+      "slug": "/nordletter/nl120-from-oodi-to-a-mentor/",
+      "title": "From Oodi to a Mentor",
+      "description": "I found a mentor at a meetup",
+      "category": "nordletter",
+      "created": "2026-08-29T12:09:00.000Z",
+      "snippet": "The Courage to be Happy is a different sort of book. It continues from where The Courage to be Disliked ended. I wanted a practical guide to Adler's philosophy, and this book had that, sort of."
+    },
+    {
       "slug": "/nordletter/nl115/",
       "title": "Learning How to Learn",
       "description": "A week of fasting, learning about learning and a new philosophy",
@@ -8242,6 +8251,26 @@
       "category": "nordletter",
       "created": "2026-08-12T05:43:00.000Z",
       "snippet": "It wasn't only dread though. I was happy at the thought of going back home, going back to my rhythms and routines, to walking around Kumpula with Savya. My library had reserved a copy of Breakneck for me. I was excited to start reading it."
+    }
+  ],
+  "bookshelf/atomic-habits": [
+    {
+      "slug": "/nordletter/nl120-from-oodi-to-a-mentor/",
+      "title": "From Oodi to a Mentor",
+      "description": "I found a mentor at a meetup",
+      "category": "nordletter",
+      "created": "2026-08-29T12:09:00.000Z",
+      "snippet": "I finished reading Atomic Habits and The Courage to be Happy this week."
+    }
+  ],
+  "bookshelf/the-courage-to-be-happy": [
+    {
+      "slug": "/nordletter/nl120-from-oodi-to-a-mentor/",
+      "title": "From Oodi to a Mentor",
+      "description": "I found a mentor at a meetup",
+      "category": "nordletter",
+      "created": "2026-08-29T12:09:00.000Z",
+      "snippet": "I finished reading Atomic Habits and The Courage to be Happy this week."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
