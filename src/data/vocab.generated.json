@@ -541,6 +541,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/kith-2026-08-29",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-29"
+		},
+		"illustrious": {
+			"word": "illustrious",
+			"pos": "other",
+			"gloss": " adjective Illustrious describes a person or deed that is highly admired and respected.",
+			"pronunciation": "ih-LUSS-tree-us",
+			"example": "During the ceremony, the illustrious star of stage and screen was presented with a lifetime achievement award.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/illustrious-2026-08-30",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-30"
 		}
 	}
 }
