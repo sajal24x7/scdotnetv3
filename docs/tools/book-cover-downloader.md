@@ -213,7 +213,7 @@ If the script can't find a cover, try:
 
 1. **Check the title and author**: Make sure they're spelled correctly in the markdown frontmatter
 2. **Manual search**: Visit [Open Library](https://openlibrary.org/), [Google Books](https://books.google.com/), [Goodreads](https://www.goodreads.com/), or [Bookshop.org](https://bookshop.org/) to verify the book exists
-3. **Manual download**: Download the cover manually, place it in `src/images/bookshelf/`, and set the `cover` field in the markdown frontmatter to match the filename
+3. **Manual download**: Download the cover manually (JPG/PNG is fine), place it in `src/images/bookshelf/`, then run `npm run convert-covers-to-webp` — it converts the image to WebP and sets the `cover` field in the markdown frontmatter to match, the same as the automated downloaders do. See [Converting Manually-Added Covers](#converting-manually-added-covers) below.
 
 ### Rate limiting
 
@@ -226,6 +226,27 @@ complete.
 Make sure the script has write access to:
 - `src/images/bookshelf/` (for saving covers)
 - `src/content/bookshelf/` (for updating frontmatter)
+
+## Converting Manually-Added Covers
+
+Dropping a JPG/PNG cover straight into `src/images/bookshelf/` works —
+`generate-book-covers.js` will import it as-is — but nothing in `npm run
+dev`/`npm run build` converts it to WebP for you automatically. Use
+`scripts/convert-covers-to-webp.js` for that:
+
+```bash
+npm run convert-covers-to-webp                        # all 4 shelves: bookshelf, filmshelf, tvshelf, gameshelf
+node scripts/convert-covers-to-webp.js --dir src/images/bookshelf   # just one folder
+```
+
+For each JPG/PNG it finds (skipping any that already have a `.webp`
+sibling), it converts the image to WebP with `sharp`, deletes the
+original, and updates any markdown entry's `cover:` field that referenced
+the old filename — the same cleanup the automated downloaders do after a
+download. `--dir` accepts any folder path; if its basename matches a known
+shelf (`bookshelf`/`filmshelf`/`tvshelf`/`gameshelf`) frontmatter still
+gets updated, otherwise only the images are converted. It's safe to
+re-run — files that already have a `.webp` version are skipped.
 
 ## Advanced Usage
 
@@ -301,6 +322,7 @@ Each book's four source queries run in parallel with a 500ms pause between books
 - `generate-book-covers.js` — Generates TypeScript imports for book covers (automatically called after download)
 - `download-film-covers.js`, `download-tv-covers.js`, `download-game-covers.js` — Same pattern for the other three shelves, run weekly by the same `download-covers.yml` workflow. Film/TV covers use TMDB (`TMDB_API_KEY`), game covers use RAWG and IGDB/Twitch (`RAWG_API_KEY`, `TWITCH_CLIENT_ID`, `TWITCH_CLIENT_SECRET`) as additional sources.
 - `generate-film-covers.js`, `generate-tv-covers.js`, `generate-game-covers.js` — TypeScript import generators for the other shelves
+- `convert-covers-to-webp.js` — Converts JPG/PNG covers to WebP and updates frontmatter references; see [Converting Manually-Added Covers](#converting-manually-added-covers)
 - `cache-nordletter-images.js` — Caches newsletter images (unrelated, but runs in the same `npm run dev`/`build` pipeline)
 
 ## Examples

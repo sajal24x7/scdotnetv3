@@ -5,7 +5,7 @@ Utility scripts for the site. The ones you're likely to need are wired into `pac
 | Area | Scripts | Documentation |
 | --- | --- | --- |
 | Build-time assets | `generate-book-covers.js`, `generate-film-covers.js`, `generate-tv-covers.js`, `generate-game-covers.js`, `cache-nordletter-images.js` | [Nordletter Image Cache](../docs/operations/nordletter-image-cache.md), [Shelf Cover Downloaders](../docs/tools/shelf-cover-downloaders.md) |
-| Cover downloads | `download-book-covers.js`, `download-film-covers.js`, `download-tv-covers.js`, `download-game-covers.js` | [Book Cover Downloader](../docs/tools/book-cover-downloader.md), [Shelf Cover Downloaders](../docs/tools/shelf-cover-downloaders.md) |
+| Cover downloads | `download-book-covers.js`, `download-film-covers.js`, `download-tv-covers.js`, `download-game-covers.js`, `convert-covers-to-webp.js` | [Book Cover Downloader](../docs/tools/book-cover-downloader.md), [Shelf Cover Downloaders](../docs/tools/shelf-cover-downloaders.md) |
 | Metadata enrichment | `enrich-book-metadata.js`, `enrich-film-metadata.js`, `enrich-tv-metadata.js`, `enrich-game-metadata.js` | [Shelf Metadata Enrichment](../docs/tools/shelf-metadata-enrichment.md) |
 | Syndication (POSSE) | `syndicate-content.js`, `lib/` | [Syndication Workflow](../docs/operations/syndication.md) |
 | Publishing pipeline | `sort-inbox.sh`, `obsidian_to_astro.py`, `reconcile-shelf-queue.js` | [Publishing Pipeline](../docs/content/publishing-pipeline.md) |
