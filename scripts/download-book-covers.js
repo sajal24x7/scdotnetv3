@@ -382,6 +382,36 @@ function getOpenLibraryCoverUrl(coverId, size = 'L') {
   return `https://covers.openlibrary.org/b/id/${coverId}-${size}.jpg`;
 }
 
+// Rotating pool of realistic desktop browser header sets for Bookshop.org requests.
+// Bookshop.org fronts its site with bot detection that can 403 a static
+// fingerprint (fixed UA + header shape) after repeated requests, so each
+// retry below picks a different, internally-consistent set.
+const BOOKSHOP_HEADER_SETS = [
+  {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+    'sec-ch-ua': '"Not(A:Brand";v="24", "Chromium";v="122", "Google Chrome";v="122"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"macOS"',
+  },
+  {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    'sec-ch-ua': '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+  },
+  {
+    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+    'sec-ch-ua': '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Linux"',
+  },
+];
+
+// Retry a couple of times on 403 (likely bot-detection rate limiting) with a
+// different header set and a short backoff before giving up on this source.
+const BOOKSHOP_MAX_ATTEMPTS = BOOKSHOP_HEADER_SETS.length;
+const BOOKSHOP_RETRY_DELAY_MS = 1500;
+
 // Search for book cover on Bookshop.org.
 // Bookshop.org gets its cover images from Ingram Content, which are typically
 // high-resolution publisher-supplied images. We scrape the product page and
@@ -390,7 +420,7 @@ async function searchBookshop(title, author) {
   return new Promise((resolve) => {
     const query = encodeURIComponent(`${title} ${author || ''}`.trim());
 
-    function makeRequest(urlStr, redirectCount = 0) {
+    function makeRequest(urlStr, attempt = 0, redirectCount = 0) {
       if (redirectCount > 5) {
         resolve(null);
         return;
@@ -402,15 +432,17 @@ async function searchBookshop(title, author) {
         hostname: parsedUrl.hostname,
         path: parsedUrl.pathname + parsedUrl.search,
         headers: {
-          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+          ...BOOKSHOP_HEADER_SETS[attempt % BOOKSHOP_HEADER_SETS.length],
           'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
           'Accept-Language': 'en-US,en;q=0.9',
           'Accept-Encoding': 'gzip, deflate, br',
           'Connection': 'keep-alive',
           'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+          'Referer': 'https://bookshop.org/',
           'Sec-Fetch-Dest': 'document',
           'Sec-Fetch-Mode': 'navigate',
-          'Sec-Fetch-Site': 'none',
+          'Sec-Fetch-Site': 'same-origin',
           'Sec-Fetch-User': '?1',
           'Upgrade-Insecure-Requests': '1',
         }
@@ -425,12 +457,19 @@ async function searchBookshop(title, author) {
           const nextUrl = location.startsWith('http')
             ? location
             : `${parsedUrl.protocol}//${parsedUrl.hostname}${location}`;
-          makeRequest(nextUrl, redirectCount + 1);
+          makeRequest(nextUrl, attempt, redirectCount + 1);
+          return;
+        }
+
+        if (response.statusCode === 403 && attempt + 1 < BOOKSHOP_MAX_ATTEMPTS) {
+          console.log(`   ⚠️  Bookshop.org returned HTTP 403 (attempt ${attempt + 1}/${BOOKSHOP_MAX_ATTEMPTS}), retrying with a different fingerprint...`);
+          response.resume();
+          setTimeout(() => makeRequest(urlStr, attempt + 1, redirectCount), BOOKSHOP_RETRY_DELAY_MS * (attempt + 1));
           return;
         }
 
         if (response.statusCode !== 200) {
-          console.log(`   ⚠️  Bookshop.org returned HTTP ${response.statusCode}`);
+          console.log(`   ⚠️  Bookshop.org returned HTTP ${response.statusCode}${response.statusCode === 403 ? ' (likely bot detection, giving up on this source)' : ''}`);
           response.resume();
           resolve(null);
           return;
