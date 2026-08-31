@@ -551,6 +551,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/illustrious-2026-08-30",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-30"
+		},
+		"gumption": {
+			"word": "gumption",
+			"pos": "other",
+			"gloss": " noun Gumption refers to courage and confidence.",
+			"pronunciation": "GUMP-shun",
+			"example": "It took a lot of gumption to speak up for yourself like that.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/gumption-2026-08-31",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-08-31"
 		}
 	}
 }
