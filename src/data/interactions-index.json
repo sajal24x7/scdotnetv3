@@ -706,6 +706,20 @@
       "status": "approved"
     }
   ],
+  "micro/202608301448": [
+    {
+      "id": "mastodon:repost:117184315561557485:111653086188808400",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Gaming Channel",
+        "url": "https://newsmast.community/@gaming",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/086/188/808/400/original/a6a0714ab054b18f.png"
+      },
+      "url": "https://newsmast.community/@gaming",
+      "status": "approved"
+    }
+  ],
   "micro/amazon-has-a-new-plan-for-games": [
     {
       "id": "mastodon:like:116696520863508112:1339141",
@@ -1244,18 +1258,6 @@
         "avatar": "https://files.mastodon.social/accounts/avatars/116/484/399/349/521/390/original/ca3b1a8e1df1e17a.jpg"
       },
       "url": "https://mastodon.social/@Joshuakevins12",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:116946225066464312:111653123325216795",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Food & Drink Channel",
-        "url": "https://newsmast.community/@foodanddrink",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/2f8ca8e08072f238a9205363b6b2affb.png"
-      },
-      "url": "https://newsmast.community/@foodanddrink",
       "status": "approved"
     }
   ],
