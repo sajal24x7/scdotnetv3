@@ -561,6 +561,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/gumption-2026-08-31",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-08-31"
+		},
+		"conscientious": {
+			"word": "conscientious",
+			"pos": "other",
+			"gloss": " adjective Conscientious describes someone who is concerned with doing things correctly. It can be used as a synonym for both meticulous and careful.",
+			"pronunciation": "kahn-shee-EN-shus",
+			"example": "She has always been a conscientious worker committed to painstaking research.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/conscientious-2026-09-01",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-01"
 		}
 	}
 }
