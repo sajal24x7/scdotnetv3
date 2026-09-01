@@ -8,7 +8,7 @@ category: bookshelf
 tags:
   - psychology
 author:
-  - Ichi Yukishiro
+  - Ichiro Kishimi
   - Fumitake Koga
 started: 2026-08-14T19:18:00
 genre: self-help

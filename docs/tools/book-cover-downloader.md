@@ -211,9 +211,11 @@ scdotnetv3/
 
 If the script can't find a cover, try:
 
-1. **Check the title and author**: Make sure they're spelled correctly in the markdown frontmatter
-2. **Manual search**: Visit [Open Library](https://openlibrary.org/), [Google Books](https://books.google.com/), [Goodreads](https://www.goodreads.com/), or [Bookshop.org](https://bookshop.org/) to verify the book exists
-3. **Manual download**: Download the cover manually (JPG/PNG is fine), place it in `src/images/bookshelf/`, then run `npm run convert-covers-to-webp` — it converts the image to WebP and sets the `cover` field in the markdown frontmatter to match, the same as the automated downloaders do. See [Converting Manually-Added Covers](#converting-manually-added-covers) below.
+1. **Read the log line for each source**: every source now logs *why* it came up empty, not just that it did — `⚠️  <Source> returned HTTP <code>` for a real HTTP error (a 403 from bot detection, a 429 quota error, etc.) versus `ℹ️  <Source>: 0 results` when the search genuinely returned nothing. Previously Open Library and Google Books failed completely silently (any non-200 response, including a Google Books quota error, looked identical to "book not found"), which made this kind of failure impossible to diagnose from the workflow logs alone.
+2. **Check the title and author**: Make sure they're spelled correctly in the markdown frontmatter — a garbled or misspelled author name can be enough to return zero results even when the book exists on every source (this is what was happening with "The Courage to Be Happy" and "The Courage to Be Disliked", both of which had `Ichi Yukishiro` instead of the actual author `Ichiro Kishimi`).
+3. **Manual search**: Visit [Open Library](https://openlibrary.org/), [Google Books](https://books.google.com/), [Goodreads](https://www.goodreads.com/), or [Bookshop.org](https://bookshop.org/) to verify the book exists
+4. **Manual download**: Download the cover manually (JPG/PNG is fine), place it in `src/images/bookshelf/`, then run `npm run convert-covers-to-webp` — it converts the image to WebP and sets the `cover` field in the markdown frontmatter to match, the same as the automated downloaders do. See [Converting Manually-Added Covers](#converting-manually-added-covers) below.
+5. **Google Books quota**: If you see `⚠️  Google Books returned HTTP 429`, the shared anonymous quota is exhausted (this can happen from other tenants' traffic on shared GitHub Actions IP ranges, not just yours). Set up a free `GOOGLE_BOOKS_API_KEY` — see [Google Books API Key Setup](google-books-api-key.md).
 
 ### Rate limiting
 
@@ -324,7 +326,7 @@ Each book's four source queries run in parallel with a 500ms pause between books
 - URL: https://developers.google.com/books
 - Docs: https://developers.google.com/books/docs/v1/using
 - Rate limit: 1000 requests/day (free tier)
-- No API key required for basic use
+- No API key required for basic use, but requests without one share Google's single anonymous per-IP quota — which GitHub Actions runners can exhaust from other tenants' unrelated traffic. An optional `GOOGLE_BOOKS_API_KEY` gets its own dedicated quota instead; see [Google Books API Key Setup](google-books-api-key.md).
 
 ## Related Scripts
 

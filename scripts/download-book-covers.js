@@ -22,6 +22,23 @@ const replaceLowRes = args.includes('--replace-low-res');
 const targetBookIndex = args.findIndex(a => a === '--book');
 const targetBook = targetBookIndex !== -1 ? args[targetBookIndex + 1] : null;
 
+// Optional Google Books API key. Without one, requests share Google's
+// anonymous per-IP quota — which GitHub Actions runners can exhaust just
+// from other tenants' unrelated traffic on the same shared IP ranges,
+// showing up here as silent "no results" rather than a diagnosable error.
+// A key gets its own dedicated quota instead. See
+// docs/tools/google-books-api-key.md for how to create one.
+let googleBooksApiKey = process.env.GOOGLE_BOOKS_API_KEY;
+if (!googleBooksApiKey) {
+  try {
+    const envFile = fs.readFileSync(path.join(__dirname, '..', '.env'), 'utf8');
+    const match = envFile.match(/^GOOGLE_BOOKS_API_KEY\s*=\s*(.+)$/m);
+    if (match) googleBooksApiKey = match[1].trim().replace(/^["']|["']$/g, '');
+  } catch {
+    // .env not found — fine, the key is optional
+  }
+}
+
 // Low-res threshold: files smaller than this are considered low quality.
 // With the full-res / SX680 Goodreads URLs, decent covers are typically 40KB+.
 const LOW_RES_THRESHOLD_BYTES = 40 * 1024; // 40 KB
@@ -279,6 +296,7 @@ async function searchGoodreads(title, author) {
             }
 
             if (candidates.length === 0) {
+              console.log(`   ℹ️  Goodreads: 0 candidates parsed from search results`);
               resolve(null);
               return;
             }
@@ -341,6 +359,11 @@ async function searchOpenLibrary(title, author) {
       });
 
       response.on('end', () => {
+        if (response.statusCode !== 200) {
+          console.log(`   ⚠️  Open Library returned HTTP ${response.statusCode}`);
+          resolve(null);
+          return;
+        }
         try {
           const result = JSON.parse(data);
           if (result.docs && result.docs.length > 0) {
@@ -366,6 +389,7 @@ async function searchOpenLibrary(title, author) {
               author: best.author_name ? best.author_name[0] : null
             });
           } else {
+            console.log(`   ℹ️  Open Library: 0 results`);
             resolve(null);
           }
         } catch (err) {
@@ -552,7 +576,8 @@ async function searchBookshop(title, author) {
 async function searchGoogleBooks(title, author) {
   return new Promise((resolve, reject) => {
     const query = encodeURIComponent(`${title} ${author || ''}`.trim());
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=10`;
+    const keyParam = googleBooksApiKey ? `&key=${googleBooksApiKey}` : '';
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=10${keyParam}`;
 
     https.get(url, (response) => {
       let data = '';
@@ -562,6 +587,14 @@ async function searchGoogleBooks(title, author) {
       });
 
       response.on('end', () => {
+        if (response.statusCode !== 200) {
+          // A quota/rate-limit error (e.g. 429) comes back as valid JSON
+          // with no `items` field, so it must be caught here explicitly —
+          // otherwise it looks identical to a genuine "book not found".
+          console.log(`   ⚠️  Google Books returned HTTP ${response.statusCode}`);
+          resolve(null);
+          return;
+        }
         try {
           const result = JSON.parse(data);
           if (result.items && result.items.length > 0) {
@@ -602,6 +635,7 @@ async function searchGoogleBooks(title, author) {
               .replace(/&edge=curl/, '');
             resolve(enhancedUrl);
           } else {
+            console.log(`   ℹ️  Google Books: 0 results`);
             resolve(null);
           }
         } catch (err) {

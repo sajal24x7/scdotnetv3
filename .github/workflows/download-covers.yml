@@ -102,6 +102,7 @@ jobs:
           RAWG_API_KEY: ${{ secrets.RAWG_API_KEY }}
           TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
           TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
+          GOOGLE_BOOKS_API_KEY: ${{ secrets.GOOGLE_BOOKS_API_KEY }}
         run: |
           if [ "${{ inputs.mode }}" = "force" ]; then
             node "scripts/download-${{ matrix.shelf }}-covers.js" --force
