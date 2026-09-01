@@ -9,5 +9,6 @@ year: 1998
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116930599883006226'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mqrnsluvut2f'
+cover: a-calendar-of-wisdom.webp
 ---
 
