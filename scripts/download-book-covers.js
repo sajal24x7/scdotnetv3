@@ -3,8 +3,10 @@ import path from 'path';
 import https from 'https';
 import http from 'http';
 import zlib from 'zlib';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
+import sharp from 'sharp';
 
 import os from 'os';
 import { convertFileToWebp } from './lib/webp.js';
@@ -42,6 +44,48 @@ if (!googleBooksApiKey) {
 // Low-res threshold: files smaller than this are considered low quality.
 // With the full-res / SX680 Goodreads URLs, decent covers are typically 40KB+.
 const LOW_RES_THRESHOLD_BYTES = 40 * 1024; // 40 KB
+
+// Content hash of a "no cover available" placeholder graphic, served by
+// Google Books' content API (books.google.com/books/content?...&printsec=
+// frontcover) in place of a real scan when a matched volume has no cover art
+// on file. It's well above the 1KB "too small" floor below, so without this
+// check it gets accepted as a genuine cover — which is exactly what happened
+// for "Moonbound", "A Calendar of Wisdom" and "Man's Search for Meaning": three
+// unrelated books all ended up with this exact same image (confirmed via
+// GitHub Actions run 33553271573, 2026-09-01). Computed with
+// imageContentHash() below from the placeholder as saved in that run.
+const KNOWN_PLACEHOLDER_HASHES = new Set([
+  '3e3f2932864ce855a530dee1dbd1c000b26d821d16a50babdf4ae15048b4eaa9',
+]);
+
+// Content-hash a downloaded image, normalized (fixed small size, no alpha)
+// so re-encoding/format differences don't affect the hash. Used to catch
+// known placeholder graphics and candidates that duplicate a DIFFERENT
+// book's already-saved cover — real front covers are never byte-identical
+// across two different books, so a match means we grabbed a generic
+// "image not available" graphic rather than real art.
+async function imageContentHash(filepath) {
+  try {
+    const buf = await sharp(filepath).resize(32, 32, { fit: 'fill' }).removeAlpha().raw().toBuffer();
+    return crypto.createHash('sha256').update(buf).digest('hex');
+  } catch {
+    return null;
+  }
+}
+
+// Index existing bookshelf covers by content hash, so a freshly downloaded
+// candidate can be checked against every OTHER book's cover before it's
+// accepted. Keyed by hash -> filename.
+async function buildExistingCoverHashIndex() {
+  const index = new Map();
+  const files = fs.existsSync(bookshelfDir) ? fs.readdirSync(bookshelfDir) : [];
+  for (const filename of files) {
+    if (!filename.endsWith('.webp')) continue;
+    const hash = await imageContentHash(path.join(bookshelfDir, filename));
+    if (hash) index.set(hash, filename);
+  }
+  return index;
+}
 
 // Ensure bookshelf directory exists
 if (!fs.existsSync(bookshelfDir)) {
@@ -571,8 +615,14 @@ async function searchBookshop(title, author) {
   });
 }
 
+// How many top-matching editions' cover images to try per Google Books
+// search — see the comment at the `urls` loop below for why more than one.
+const GOOGLE_BOOKS_MAX_EDITIONS = 3;
+const GOOGLE_BOOKS_MIN_EDITION_SCORE = 0.65;
+
 // Search for book cover on Google Books.
 // Manipulates the thumbnail URL to remove zoom/curl parameters for a larger image.
+// Resolves { urls } with up to GOOGLE_BOOKS_MAX_EDITIONS candidate URLs, or null.
 async function searchGoogleBooks(title, author) {
   return new Promise((resolve, reject) => {
     const query = encodeURIComponent(`${title} ${author || ''}`.trim());
@@ -602,38 +652,47 @@ async function searchGoogleBooks(title, author) {
             const genuine = result.items.filter(b => !SUMMARY_KEYWORDS.test(b.volumeInfo.title || ''));
             const pool = genuine.length > 0 ? genuine : result.items;
 
-            // Among results with an image, pick best title match
+            // Among results with an image, rank by title/author match
             const withImage = pool.filter(b => b.volumeInfo.imageLinks);
             const candidates = withImage.length > 0 ? withImage : pool;
 
-            let best = candidates[0];
-            let bestScore = combinedScore(candidates[0].volumeInfo.title || '', candidates[0].volumeInfo.authors?.[0] || '', title, author);
-            for (const b of candidates.slice(1)) {
-              const s = combinedScore(b.volumeInfo.title || '', b.volumeInfo.authors?.[0] || '', title, author);
-              if (s > bestScore) { bestScore = s; best = b; }
+            const ranked = candidates
+              .map(b => ({ b, score: combinedScore(b.volumeInfo.title || '', b.volumeInfo.authors?.[0] || '', title, author) }))
+              .sort((x, y) => y.score - x.score);
+
+            // Try the cover image from more than just the single best-matching
+            // edition. A specific Google Books scan can have no real cover art
+            // (a generic placeholder) or a bad scan (e.g. an uncorrected proof's
+            // interior page used as "frontcover") even when its title/author
+            // match perfectly — so give the largest-file comparison downstream
+            // a shot at a different edition with genuine cover art. The best
+            // match is always tried (same as before this loop existed); the
+            // extra editions only join in if they're still a strong match, so
+            // a weak/ambiguous search doesn't start pulling in unrelated books.
+            const urls = [];
+            for (const [i, { b, score }] of ranked.slice(0, GOOGLE_BOOKS_MAX_EDITIONS).entries()) {
+              if (i > 0 && score < GOOGLE_BOOKS_MIN_EDITION_SCORE) break;
+              const imageLinks = b.volumeInfo.imageLinks;
+              if (!imageLinks) continue;
+              // Prefer larger images
+              const coverUrl = imageLinks.extraLarge || imageLinks.large ||
+                               imageLinks.medium || imageLinks.small ||
+                               imageLinks.thumbnail;
+              if (!coverUrl) continue;
+              // Enhance resolution: remove zoom restriction and edge curl artifact
+              // e.g. "zoom=1&edge=curl" → higher-res image from Google Books CDN
+              const enhancedUrl = coverUrl
+                .replace('http:', 'https:')
+                .replace(/&zoom=\d+/, '&zoom=0')
+                .replace(/&edge=curl/, '');
+              urls.push(enhancedUrl);
             }
 
-            const imageLinks = best.volumeInfo.imageLinks;
-            if (!imageLinks) {
+            if (urls.length === 0) {
               resolve(null);
               return;
             }
-
-            // Prefer larger images
-            const coverUrl = imageLinks.extraLarge || imageLinks.large ||
-                             imageLinks.medium || imageLinks.small ||
-                             imageLinks.thumbnail;
-            if (!coverUrl) {
-              resolve(null);
-              return;
-            }
-            // Enhance resolution: remove zoom restriction and edge curl artifact
-            // e.g. "zoom=1&edge=curl" → higher-res image from Google Books CDN
-            const enhancedUrl = coverUrl
-              .replace('http:', 'https:')
-              .replace(/&zoom=\d+/, '&zoom=0')
-              .replace(/&edge=curl/, '');
-            resolve(enhancedUrl);
+            resolve({ urls });
           } else {
             console.log(`   ℹ️  Google Books: 0 results`);
             resolve(null);
@@ -694,7 +753,7 @@ function updateMarkdownWithCover(filePath, originalContent, coverFilename) {
 async function fetchAllCoverCandidates(title, author) {
   console.log(`   🔎 Searching Bookshop.org, Goodreads, Open Library, Google Books in parallel...`);
 
-  const [bookshopUrl, goodreadsResult, olBook, gbUrl] = await Promise.all([
+  const [bookshopUrl, goodreadsResult, olBook, gbResult] = await Promise.all([
     searchBookshop(title, author).catch(() => null),
     searchGoodreads(title, author).catch(() => null),
     searchOpenLibrary(title, author).catch(() => null),
@@ -722,9 +781,12 @@ async function fetchAllCoverCandidates(title, author) {
     candidates.push({ source: 'Open Library', url: olUrl, headers: {} });
   }
 
-  if (gbUrl) {
-    console.log(`   ✓ Found on Google Books`);
-    candidates.push({ source: 'Google Books', url: gbUrl, headers: {} });
+  if (gbResult) {
+    const { urls } = gbResult;
+    console.log(`   ✓ Found on Google Books (${urls.length} edition(s))`);
+    for (const url of urls) {
+      candidates.push({ source: 'Google Books', url, headers: {} });
+    }
   }
 
   if (candidates.length === 0) {
@@ -736,7 +798,7 @@ async function fetchAllCoverCandidates(title, author) {
   return candidates;
 }
 
-// Download a candidate cover to a temporary file. Returns { tmpPath, size, source }
+// Download a candidate cover to a temporary file. Returns { tmpPath, size, source, hash }
 // on success, or null on failure. The caller is responsible for cleaning up tmpPath.
 async function downloadCandidate(candidate, index) {
   const tmpPath = path.join(os.tmpdir(), `bookcover-${Date.now()}-${index}.tmp`);
@@ -748,7 +810,13 @@ async function downloadCandidate(candidate, index) {
       fs.unlinkSync(tmpPath);
       return null;
     }
-    return { tmpPath, size: stats.size, source: candidate.source };
+    const hash = await imageContentHash(tmpPath);
+    if (hash && KNOWN_PLACEHOLDER_HASHES.has(hash)) {
+      console.log(`   ⚠️  ${candidate.source}: matches a known "no cover available" placeholder, skipping`);
+      fs.unlinkSync(tmpPath);
+      return null;
+    }
+    return { tmpPath, size: stats.size, source: candidate.source, hash };
   } catch {
     try { fs.unlinkSync(tmpPath); } catch {}
     return null;
@@ -781,6 +849,10 @@ async function main() {
     }
     console.log(`🎯 Matched ${bookshelfFiles.length} book(s): ${bookshelfFiles.map(f => f.data.title).join(', ')}\n`);
   }
+
+  // hash -> filename, for rejecting a candidate that duplicates a DIFFERENT
+  // book's already-saved cover (see buildExistingCoverHashIndex).
+  const coverHashIndex = await buildExistingCoverHashIndex();
 
   let downloaded = 0;
   let skipped = 0;
@@ -858,10 +930,28 @@ async function main() {
       );
 
       // Filter out failed downloads
-      const successful = results.filter(Boolean);
+      let successful = results.filter(Boolean);
 
       if (successful.length === 0) {
         console.log(`   ❌ All download attempts failed`);
+        failed++;
+        await new Promise(resolve => setTimeout(resolve, 500));
+        console.log('');
+        continue;
+      }
+
+      // Reject any candidate whose content is identical to a DIFFERENT book's
+      // already-saved cover. Two different books' real covers never hash the
+      // same, so a match means the source served a generic placeholder.
+      const dupes = successful.filter(r => coverHashIndex.has(r.hash) && coverHashIndex.get(r.hash) !== coverFilename);
+      for (const r of dupes) {
+        console.log(`   ⚠️  ${r.source}: identical to "${coverHashIndex.get(r.hash)}"'s cover, skipping`);
+        try { fs.unlinkSync(r.tmpPath); } catch {}
+      }
+      successful = successful.filter(r => !dupes.includes(r));
+
+      if (successful.length === 0) {
+        console.log(`   ❌ All candidates were duplicates of another book's cover`);
         failed++;
         await new Promise(resolve => setTimeout(resolve, 500));
         console.log('');
@@ -880,6 +970,7 @@ async function main() {
       for (const r of successful) {
         try { fs.unlinkSync(r.tmpPath); } catch {}
       }
+      coverHashIndex.set(best.hash, coverFilename);
 
       const downloadedSizeKb = (fs.statSync(coverPath).size / 1024).toFixed(1);
       console.log(`   ✅ Saved as: ${coverFilename} (${downloadedSizeKb}KB)`);

@@ -7,7 +7,7 @@ category: bookshelf
 tags:
   - humor
 author:
-  - Fredrick Backman
+  - Fredrik Backman
 started: 2026-08-29T08:37:00.000Z
 genre: general-fiction
 format: audiobook
