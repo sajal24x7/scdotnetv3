@@ -211,9 +211,11 @@ scdotnetv3/
 
 If the script can't find a cover, try:
 
-1. **Check the title and author**: Make sure they're spelled correctly in the markdown frontmatter
-2. **Manual search**: Visit [Open Library](https://openlibrary.org/), [Google Books](https://books.google.com/), [Goodreads](https://www.goodreads.com/), or [Bookshop.org](https://bookshop.org/) to verify the book exists
-3. **Manual download**: Download the cover manually, place it in `src/images/bookshelf/`, and set the `cover` field in the markdown frontmatter to match the filename
+1. **Read the log line for each source**: every source now logs *why* it came up empty, not just that it did — `⚠️  <Source> returned HTTP <code>` for a real HTTP error (a 403 from bot detection, a 429 quota error, etc.) versus `ℹ️  <Source>: 0 results` when the search genuinely returned nothing. Previously Open Library and Google Books failed completely silently (any non-200 response, including a Google Books quota error, looked identical to "book not found"), which made this kind of failure impossible to diagnose from the workflow logs alone.
+2. **Check the title and author**: Make sure they're spelled correctly in the markdown frontmatter — a garbled or misspelled author name can be enough to return zero results even when the book exists on every source (this is what was happening with "The Courage to Be Happy" and "The Courage to Be Disliked", both of which had `Ichi Yukishiro` instead of the actual author `Ichiro Kishimi`).
+3. **Manual search**: Visit [Open Library](https://openlibrary.org/), [Google Books](https://books.google.com/), [Goodreads](https://www.goodreads.com/), or [Bookshop.org](https://bookshop.org/) to verify the book exists
+4. **Manual download**: Download the cover manually (JPG/PNG is fine), place it in `src/images/bookshelf/`, then run `npm run convert-covers-to-webp` — it converts the image to WebP and sets the `cover` field in the markdown frontmatter to match, the same as the automated downloaders do. See [Converting Manually-Added Covers](#converting-manually-added-covers) below.
+5. **Google Books quota**: If you see `⚠️  Google Books returned HTTP 429`, the shared anonymous quota is exhausted (this can happen from other tenants' traffic on shared GitHub Actions IP ranges, not just yours). Set up a free `GOOGLE_BOOKS_API_KEY` — see [Google Books API Key Setup](google-books-api-key.md).
 
 ### Rate limiting
 
@@ -226,6 +228,36 @@ complete.
 Make sure the script has write access to:
 - `src/images/bookshelf/` (for saving covers)
 - `src/content/bookshelf/` (for updating frontmatter)
+
+## Converting Manually-Added Covers
+
+Dropping a JPG/PNG cover straight into `src/images/bookshelf/` works —
+`generate-book-covers.js` will import it as-is — but nothing in `npm run
+dev`/`npm run build` converts it to WebP for you automatically. Use
+`scripts/convert-covers-to-webp.js` for that:
+
+```bash
+npm run convert-covers-to-webp                        # all 4 shelves: bookshelf, filmshelf, tvshelf, gameshelf
+node scripts/convert-covers-to-webp.js --dir src/images/bookshelf   # just one folder
+```
+
+For each JPG/PNG it finds (skipping any that already have a `.webp`
+sibling), it converts the image to WebP with `sharp`, deletes the
+original, and updates any markdown entry's `cover:` field that referenced
+the old filename — the same cleanup the automated downloaders do after a
+download. `--dir` accepts any folder path; if its basename matches a known
+shelf (`bookshelf`/`filmshelf`/`tvshelf`/`gameshelf`) frontmatter still
+gets updated, otherwise only the images are converted. It's safe to
+re-run — files that already have a `.webp` version are skipped.
+
+You can also run this from GitHub without a local checkout: **Actions →
+Convert Covers to WebP → Run workflow**, optionally filling in a `folder`
+input (e.g. `src/images/bookshelf`) or leaving it blank to convert all
+four shelves. The workflow regenerates the `*Covers.ts` TypeScript imports
+and commits the converted images, updated frontmatter, and regenerated
+imports back to `main`.
+
+**Workflow file:** `.github/workflows/convert-covers-to-webp.yml`
 
 ## Advanced Usage
 
@@ -294,13 +326,14 @@ Each book's four source queries run in parallel with a 500ms pause between books
 - URL: https://developers.google.com/books
 - Docs: https://developers.google.com/books/docs/v1/using
 - Rate limit: 1000 requests/day (free tier)
-- No API key required for basic use
+- No API key required for basic use, but requests without one share Google's single anonymous per-IP quota — which GitHub Actions runners can exhaust from other tenants' unrelated traffic. An optional `GOOGLE_BOOKS_API_KEY` gets its own dedicated quota instead; see [Google Books API Key Setup](google-books-api-key.md).
 
 ## Related Scripts
 
 - `generate-book-covers.js` — Generates TypeScript imports for book covers (automatically called after download)
 - `download-film-covers.js`, `download-tv-covers.js`, `download-game-covers.js` — Same pattern for the other three shelves, run weekly by the same `download-covers.yml` workflow. Film/TV covers use TMDB (`TMDB_API_KEY`), game covers use RAWG and IGDB/Twitch (`RAWG_API_KEY`, `TWITCH_CLIENT_ID`, `TWITCH_CLIENT_SECRET`) as additional sources.
 - `generate-film-covers.js`, `generate-tv-covers.js`, `generate-game-covers.js` — TypeScript import generators for the other shelves
+- `convert-covers-to-webp.js` — Converts JPG/PNG covers to WebP and updates frontmatter references; see [Converting Manually-Added Covers](#converting-manually-added-covers)
 - `cache-nordletter-images.js` — Caches newsletter images (unrelated, but runs in the same `npm run dev`/`build` pipeline)
 
 ## Examples

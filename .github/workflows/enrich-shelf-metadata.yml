@@ -177,6 +177,7 @@ jobs:
           RAWG_API_KEY: ${{ secrets.RAWG_API_KEY }}
           TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
           TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
+          GOOGLE_BOOKS_API_KEY: ${{ secrets.GOOGLE_BOOKS_API_KEY }}
         run: |
           titles_file="$RUNNER_TEMP/touched-titles.json"
           if [ "$(jq 'length' "$titles_file")" -eq 0 ]; then
