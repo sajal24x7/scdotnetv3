@@ -49,7 +49,7 @@ This directory centralizes all reference material for the Astro-powered build of
 
 | Area | Summary | Key Files |
 | --- | --- | --- |
-| [Book Cover Downloader](tools/book-cover-downloader.md) | Four-source book cover downloads with quality selection and frontmatter updates. | `scripts/download-book-covers.js` |
+| [Book Cover Downloader](tools/book-cover-downloader.md) | Four-source book cover downloads with quality selection and frontmatter updates. | `scripts/download-book-covers.js`, `scripts/convert-covers-to-webp.js`, `.github/workflows/convert-covers-to-webp.yml` |
 | [Shelf Cover Downloaders](tools/shelf-cover-downloaders.md) | TMDB and RAWG/IGDB scripts for film, TV, and game cover artwork, plus the shared workflow. | `scripts/download-*-covers.js`, `.github/workflows/download-covers.yml` |
 | [Shelf Metadata Enrichment](tools/shelf-metadata-enrichment.md) | Scripts that fill in missing shelf metadata (author, genre, year, …) from external APIs. | `scripts/enrich-*-metadata.js`, `.github/workflows/enrich-shelf-metadata.yml` |
 | [Contributor Notes](contributing/claude-guide.md) | Quick reference for automation assistants contributing to the project (see also the root `AGENTS.md`). | `AGENTS.md` |

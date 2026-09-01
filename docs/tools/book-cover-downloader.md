@@ -248,6 +248,15 @@ shelf (`bookshelf`/`filmshelf`/`tvshelf`/`gameshelf`) frontmatter still
 gets updated, otherwise only the images are converted. It's safe to
 re-run — files that already have a `.webp` version are skipped.
 
+You can also run this from GitHub without a local checkout: **Actions →
+Convert Covers to WebP → Run workflow**, optionally filling in a `folder`
+input (e.g. `src/images/bookshelf`) or leaving it blank to convert all
+four shelves. The workflow regenerates the `*Covers.ts` TypeScript imports
+and commits the converted images, updated frontmatter, and regenerated
+imports back to `main`.
+
+**Workflow file:** `.github/workflows/convert-covers-to-webp.yml`
+
 ## Advanced Usage
 
 ### Running manually with Node
