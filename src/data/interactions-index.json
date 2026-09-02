@@ -763,20 +763,6 @@
       "status": "approved"
     }
   ],
-  "micro/apple-announces-new-mac-mini-with-m6-chip": [
-    {
-      "id": "mastodon:repost:117156972027299399:114863603913131469",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Apple-feed",
-        "url": "https://channel.org/@applefeed",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/6e04454c4298099704bb671fd177b734.jpg"
-      },
-      "url": "https://channel.org/@applefeed",
-      "status": "approved"
-    }
-  ],
   "micro/apple-increases-price-of-its-gadgets": [
     {
       "id": "bluesky:like:3mp6cblel752r:did:plc:z4r2sakrqgtdk7ednvkqeevq",
