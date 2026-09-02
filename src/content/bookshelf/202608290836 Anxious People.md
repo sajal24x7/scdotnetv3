@@ -13,5 +13,6 @@ genre: general-fiction
 format: audiobook
 status: started
 cover: anxious-people.webp
+year: 2020
 ---
 Started reading.
