@@ -571,6 +571,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/conscientious-2026-09-01",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-01"
+		},
+		"dissonant": {
+			"word": "dissonant",
+			"pos": "other",
+			"gloss": " adjective Dissonant typically describes music that is not in harmony, or sounds and notes that clash. In non-music contexts, dissonant describes things that clash by not being in agreement or by not fitting well together.",
+			"pronunciation": "DISS-uh-nunt",
+			"example": "The guitarist struck a dissonant chord. // The retrospective provided a sometimes dissonant journey through the artist's decades of work.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/dissonant-2026-09-02",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-02"
 		}
 	}
 }
