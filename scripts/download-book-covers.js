@@ -73,6 +73,49 @@ async function imageContentHash(filepath) {
   }
 }
 
+// Detect a scanned interior page (praise/blurb page, half-title page, print-
+// proof cover sheet with crop marks) that got served as a book's "frontcover"
+// image instead of real cover art. Real cover art — even minimalist,
+// mostly-white designs — always carries some color; a scanned text page is
+// black ink on white paper, so it's essentially pure grayscale. Measured
+// against actual bad downloads ("The Courage to be Disliked"/"...Happy" both
+// served a "Praise for..." blurb page, "This Is How You Lose the Time War"
+// served a blank half-title page): those were 88-97% near-white pixels with
+// 0.0 average channel saturation, while a genuine white-background cover
+// ("A Calendar of Wisdom") still measured 18.1 average saturation. The
+// thresholds below sit well clear of that real example.
+const TEXT_PAGE_WHITE_PCT_THRESHOLD = 75;
+const TEXT_PAGE_MAX_AVG_SATURATION = 5;
+
+async function isLikelyTextPage(filepath) {
+  try {
+    const size = 64;
+    // Force 3-channel sRGB output even if the source is grayscale, so the
+    // fixed stride below (i += 3) always lines up with r/g/b bytes.
+    const { data } = await sharp(filepath)
+      .resize(size, size, { fit: 'fill' })
+      .removeAlpha()
+      .toColourspace('srgb')
+      .raw()
+      .toBuffer({ resolveWithObject: true });
+
+    let whiteCount = 0;
+    let satSum = 0;
+    const pixelCount = size * size;
+    for (let i = 0; i < data.length; i += 3) {
+      const r = data[i], g = data[i + 1], b = data[i + 2];
+      if (r > 235 && g > 235 && b > 235) whiteCount++;
+      satSum += Math.max(r, g, b) - Math.min(r, g, b);
+    }
+
+    const whitePct = (whiteCount / pixelCount) * 100;
+    const avgSaturation = satSum / pixelCount;
+    return whitePct > TEXT_PAGE_WHITE_PCT_THRESHOLD && avgSaturation < TEXT_PAGE_MAX_AVG_SATURATION;
+  } catch {
+    return false;
+  }
+}
+
 // Index existing bookshelf covers by content hash, so a freshly downloaded
 // candidate can be checked against every OTHER book's cover before it's
 // accepted. Keyed by hash -> filename.
@@ -627,7 +670,11 @@ async function searchGoogleBooks(title, author) {
   return new Promise((resolve, reject) => {
     const query = encodeURIComponent(`${title} ${author || ''}`.trim());
     const keyParam = googleBooksApiKey ? `&key=${googleBooksApiKey}` : '';
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=10${keyParam}`;
+    // langRestrict steers Google's own ranking toward English editions, but it's
+    // only a hint — Google Books still mixes in foreign editions when the
+    // request's apparent country (from the runner's IP) favors them, so the
+    // volumeInfo.language filter below is the actual enforcement.
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=10&langRestrict=en${keyParam}`;
 
     https.get(url, (response) => {
       let data = '';
@@ -648,9 +695,28 @@ async function searchGoogleBooks(title, author) {
         try {
           const result = JSON.parse(data);
           if (result.items && result.items.length > 0) {
+            // Reject non-English editions outright. langRestrict=en above is only
+            // a ranking hint, and this shelf's entries are all English editions —
+            // e.g. "Anxious People" by Fredrik Backman once matched a Spanish
+            // "Gente Ansiosa" edition whose scan simply happened to be the
+            // largest file among the candidates. volumeInfo.language is missing
+            // on some sparse records, so only reject an *explicit* non-English tag.
+            const englishOnly = result.items.filter(b => {
+              const lang = b.volumeInfo.language;
+              return !lang || lang.toLowerCase().startsWith('en');
+            });
+            if (englishOnly.length < result.items.length) {
+              console.log(`   🌐 [DEBUG] Google Books: dropped ${result.items.length - englishOnly.length} non-English edition(s)`);
+            }
+            if (englishOnly.length === 0) {
+              console.log(`   ℹ️  Google Books: 0 English-language results`);
+              resolve(null);
+              return;
+            }
+
             // Filter out summary/study-guide results, then pick best title match
-            const genuine = result.items.filter(b => !SUMMARY_KEYWORDS.test(b.volumeInfo.title || ''));
-            const pool = genuine.length > 0 ? genuine : result.items;
+            const genuine = englishOnly.filter(b => !SUMMARY_KEYWORDS.test(b.volumeInfo.title || ''));
+            const pool = genuine.length > 0 ? genuine : englishOnly;
 
             // Among results with an image, rank by title/author match
             const withImage = pool.filter(b => b.volumeInfo.imageLinks);
@@ -813,6 +879,11 @@ async function downloadCandidate(candidate, index) {
     const hash = await imageContentHash(tmpPath);
     if (hash && KNOWN_PLACEHOLDER_HASHES.has(hash)) {
       console.log(`   ⚠️  ${candidate.source}: matches a known "no cover available" placeholder, skipping`);
+      fs.unlinkSync(tmpPath);
+      return null;
+    }
+    if (await isLikelyTextPage(tmpPath)) {
+      console.log(`   ⚠️  ${candidate.source}: looks like a scanned text page (praise/half-title/proof sheet), not cover art, skipping`);
       fs.unlinkSync(tmpPath);
       return null;
     }
