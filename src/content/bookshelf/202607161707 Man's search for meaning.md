@@ -4,7 +4,7 @@ slug: mans-search-for-meaning
 created: 2026-07-16T14:07:00.000Z
 category: bookshelf
 status: todo
-author: Kelvin CALEB
+author: Viktor E. Frankl
 year: 2021
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116930338599810151'
