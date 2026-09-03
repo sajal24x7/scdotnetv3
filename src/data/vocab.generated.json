@@ -581,6 +581,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/dissonant-2026-09-02",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-02"
+		},
+		"recalcitrant": {
+			"word": "recalcitrant",
+			"pos": "other",
+			"gloss": " adjective Recalcitrant is a formal word typically used to describe someone who stubbornly refuses to obey rules or orders. Recalcitrant can also describe something that is difficult to manage or operate.",
+			"pronunciation": "rih-KAL-suh-trunt",
+			"example": "The magazine, aimed at parents and caregivers of young children, will include the latest in child development science as well as practical information, like tricks for persuading even the most recalcitrant toddler to cooperate.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/recalcitrant-2026-09-03",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-03"
 		}
 	}
 }
