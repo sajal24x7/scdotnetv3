@@ -3,7 +3,7 @@ title: The Courage to Be Happy
 slug: the-courage-to-be-happy
 cover: the-courage-to-be-happy.webp
 created: 2026-08-14T16:18:00.000Z
-updated: 2026-08-14T18:21:18.000Z
+updated: 2026-09-02T00:00:00.000Z
 category: bookshelf
 tags:
   - psychology

@@ -2,7 +2,7 @@
 title: This Is How You Lose the Time War
 slug: this-is-how-you-lose-the-time-war
 created: 2025-12-02T07:59:15.000Z
-updated: 2025-12-02T07:59:15.000Z
+updated: 2026-09-02T00:00:00.000Z
 category: bookshelf
 tags:
   - scifi

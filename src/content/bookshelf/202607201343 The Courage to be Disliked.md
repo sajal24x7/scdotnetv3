@@ -2,7 +2,7 @@
 title: The Courage to Be Disliked
 slug: the-courage-to-be-disliked
 created: 2026-07-20T10:43:00.000Z
-updated: 2026-07-23T17:50:00.000Z
+updated: 2026-09-02T00:00:00.000Z
 category: bookshelf
 tags:
   - psychology
