@@ -1,10 +1,17 @@
 ---
-title: "Vibe Coding September Meetup"
-slug: "vibe-coding-september-meetup"
-created: 2026-09-03T17:53:00+03:00
-updated: 2026-09-03T21:06:00+03:00
+title: Vibe Coding September Meetup
+slug: vibe-coding-september-meetup
+created: 2026-09-03T14:53:00.000Z
+updated: 2026-09-03T18:06:00.000Z
 category: blog
-tags: ["vibe-coding-finland", "meetup", "helsinki"]
+tags:
+  - vibe-coding-finland
+  - meetup
+  - helsinki
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117209118918724083'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mundsfdk5t2d'
+  - 'https://www.threads.com/@sajal24x7/post/Dc1ukSFG2bU'
 ---
 I have high expecting going into this meetup. Vibe Coding Finland meet-ups are awesome always. Great talks. Great conversations.
 
