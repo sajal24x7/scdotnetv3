@@ -3,7 +3,7 @@ title: "The Safest Job From AI May Be Writing"
 slug: "the-safest-job-from-ai-may-be-writing"
 created: 2026-09-02T10:37:00+03:00
 updated: 2026-09-04T15:19:53+03:00
-category: [[202506241127 micro|micro]]
+category: micro
 tags: ["writing", "ai"]
 ---
 [The Safest Job from AI may be Writing](https://muratbuffalo.blogspot.com/2026/08/the-safest-job-from-ai-may-be-writing.html)
