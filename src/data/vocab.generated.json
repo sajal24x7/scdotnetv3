@@ -591,6 +591,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/recalcitrant-2026-09-03",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-03"
+		},
+		"apiary": {
+			"word": "apiary",
+			"pos": "other",
+			"gloss": " noun Apiary refers to a place where bees are kept, and especially a collection of hives or colonies of bees kept for their honey.",
+			"pronunciation": "AY-pee-air-ee",
+			"example": "One of the best parts of having a beekeeper for a sister-in-law is getting fresh jars of local honey from the family apiary.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/apiary-2026-09-04",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-04"
 		}
 	}
 }
