@@ -33,47 +33,6 @@ const hasMoreEntries = feedEntries.length > FEED_PAGE_SIZE;
     allPosts={allPosts}
     enableLinkHoverEffect
 >
-    <!-- Book Hero Section -->
-    <section class="home-section home-section--book">
-        <div class="grid-span-1 hidden md:block" aria-hidden="true"></div>
-        <figure class="grid-span-3 home-book__cover edge-to-edge-mobile md:pr-6">
-            <Image
-                src={BookCover}
-                alt="A Year of Mornings - Book Cover"
-                class="w-full h-auto max-w-[20rem] mx-auto md:mx-0 rounded-xl shadow-lg"
-            />
-        </figure>
-        <div class="grid-span-7 home-book__content text-center md:text-left">
-            <div class="space-y-3">
-                <p class="text-small text-gray-600 dark:text-gray-400 uppercase tracking-wide">Out now!</p>
-                <h1 class="home-book__title font-bold">
-                    <a href="/books/a-year-of-mornings/" class="text-accent hover:text-accent/80 transition-colors">
-                        A Year of Mornings
-                    </a>
-                </h1>
-                <p class="text-normal text-gray-700 dark:text-gray-300 leading-relaxed">
-                    A collection of fifty love poems that follows a young heart as it finds love, finds the strength to be in love and finally, finds the strength to let go.
-                </p>
-            </div>
-            <p class="text-normal text-gray-700 dark:text-gray-300">Nab your copy:</p>
-            <div class="flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
-                <a
-                    href="https://amzn.to/46PLYIL"
-                    class="inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3 font-semibold text-white shadow transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-hover"
-                >
-                    Buy on Amazon
-                </a>
-                <a
-                    href="https://helmet.finna.fi/Record/helmet.2626433/Versions?sid=5134185916"
-                    class="inline-flex items-center justify-center rounded-xl border border-accent px-6 py-3 font-semibold text-accent-hover transition-colors hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-hover"
-                >
-                    Borrow via Helmet
-                </a>
-            </div>
-        </div>
-        <div class="grid-span-1 hidden md:block" aria-hidden="true"></div>
-    </section>
-
     <!-- About + Newsletter Section -->
     <section class="home-section home-section--about">
         <figure class="grid-span-4 home-about__image flex justify-center md:justify-start">
@@ -85,8 +44,8 @@ const hasMoreEntries = feedEntries.length > FEED_PAGE_SIZE;
         </figure>
         <div class="grid-span-8 home-about__content space-y-6 text-center md:text-left">
             <div class="prose dark:prose-invert max-w-none">
+                <h1 class="text-huge font-bold">Sajal Choudhary</h1>
                 <p class="text-normal leading-relaxed">I am a platform engineer and a writer based in Finland.</p>
-                <p class="text-normal leading-relaxed">I am the author of <a href='/books/a-year-of-mornings/' class='text-accent hover:text-accent/80'>A Year of Mornings</a>, a collection of poems for young adults.</p>
             </div>
             <NewsletterSignup wrapperClass="py-0" formClass="mx-auto md:mx-0" />
 
@@ -98,6 +57,49 @@ const hasMoreEntries = feedEntries.length > FEED_PAGE_SIZE;
             </div>
         </div>
     </section>
+
+    <!-- Book Section: collapsed to a single line by default -->
+    <details class="grid-span-full home-book-disclosure">
+        <summary class="home-book-disclosure__summary">
+            <svg class="home-book-disclosure__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M6 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>Also, I write poetry — my book <strong>A Year of Mornings</strong> is out now.</span>
+        </summary>
+        <div class="home-book-disclosure__body">
+            <figure class="home-book-disclosure__cover">
+                <Image
+                    src={BookCover}
+                    alt="A Year of Mornings - Book Cover"
+                    class="w-full h-auto max-w-[12rem] mx-auto md:mx-0 rounded-xl shadow-lg"
+                />
+            </figure>
+            <div class="home-book-disclosure__content">
+                <h2 class="text-large font-bold">
+                    <a href="/books/a-year-of-mornings/" class="text-accent hover:text-accent/80 transition-colors">
+                        A Year of Mornings
+                    </a>
+                </h2>
+                <p class="text-normal text-gray-700 dark:text-gray-300 leading-relaxed">
+                    A collection of fifty love poems that follows a young heart as it finds love, finds the strength to be in love and finally, finds the strength to let go.
+                </p>
+                <div class="flex flex-col gap-3 sm:flex-row">
+                    <a
+                        href="https://amzn.to/46PLYIL"
+                        class="inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3 font-semibold text-white shadow transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-hover"
+                    >
+                        Buy on Amazon
+                    </a>
+                    <a
+                        href="https://helmet.finna.fi/Record/helmet.2626433/Versions?sid=5134185916"
+                        class="inline-flex items-center justify-center rounded-xl border border-accent px-6 py-3 font-semibold text-accent-hover transition-colors hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-hover"
+                    >
+                        Borrow via Helmet
+                    </a>
+                </div>
+            </div>
+        </div>
+    </details>
 
     <!-- Unified Feed Section -->
     <section class="home-section home-section--feed">
@@ -118,25 +120,64 @@ const hasMoreEntries = feedEntries.length > FEED_PAGE_SIZE;
         display: contents;
     }
 
-    .home-book__cover,
-    .home-book__content {
-        padding-block: clamp(2.5rem, 6vw, 4rem);
+    .home-book-disclosure {
+        border-top: 1px solid rgba(var(--color-text-primary), 0.12);
+        border-bottom: 1px solid rgba(var(--color-text-primary), 0.12);
+        padding-block: 1rem;
     }
 
-    .home-book__cover {
+    .home-book-disclosure__summary {
+        list-style: none;
         display: flex;
+        align-items: center;
         justify-content: center;
-    }
-
-    .home-book__title {
-        font-size: var(--text-xlarge);
+        gap: 0.6rem;
+        cursor: pointer;
+        font-size: var(--text-small);
+        color: rgb(var(--color-text-secondary));
         text-align: center;
     }
 
-    .home-book__content {
+    .home-book-disclosure__summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .home-book-disclosure__summary:hover {
+        color: rgb(var(--color-text-primary));
+    }
+
+    .home-book-disclosure__summary:focus-visible {
+        outline: 2px solid rgb(var(--color-accent));
+        outline-offset: 4px;
+        border-radius: 0.3rem;
+    }
+
+    .home-book-disclosure__chevron {
+        width: 0.85rem;
+        height: 0.85rem;
+        flex-shrink: 0;
+        transition: transform 0.2s ease;
+        color: rgb(var(--color-accent-hover));
+    }
+
+    .home-book-disclosure[open] .home-book-disclosure__chevron {
+        transform: rotate(90deg);
+    }
+
+    .home-book-disclosure__body {
         display: flex;
         flex-direction: column;
-        gap: clamp(1.75rem, 4vw, 2.5rem);
+        align-items: center;
+        gap: 1.5rem;
+        padding-top: 1.5rem;
+        text-align: center;
+    }
+
+    .home-book-disclosure__content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
     }
 
     .home-about__image,
@@ -171,22 +212,31 @@ const hasMoreEntries = feedEntries.length > FEED_PAGE_SIZE;
             padding-block: clamp(2.5rem, 5vw, 4rem);
         }
 
-        .home-book__cover {
-            justify-content: flex-start;
-            padding-right: clamp(1.25rem, 3vw, 2.5rem);
-        }
-
-        .home-book__content {
-            text-align: left;
-        }
-
         .home-about__content {
             text-align: left;
+        }
+
+        .home-book-disclosure__summary {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .home-book-disclosure__body {
+            flex-direction: row;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .home-book-disclosure__content {
+            align-items: flex-start;
+        }
+
+        .home-book-disclosure__cover {
+            flex-shrink: 0;
         }
     }
 
     @media (max-width: 47.99rem) {
-        .home-book__cover,
         .home-about__image {
             margin-bottom: clamp(1.5rem, 5vw, 2rem);
         }
