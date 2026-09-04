@@ -15,6 +15,8 @@ genre: self-help
 format: audiobook
 status: started
 year: 2019
+cover: the-courage-to-be-happy.webp
+
 ---
 Started reading.
 
