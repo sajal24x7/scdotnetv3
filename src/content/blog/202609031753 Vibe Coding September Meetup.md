@@ -8,6 +8,7 @@ tags:
   - vibe-coding-finland
   - meetup
   - helsinki
+image: https://storage.sajalchoudhary.net/images/2026/09/vibe-coding-01.jpeg
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117209118918724083'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mundsfdk5t2d'
