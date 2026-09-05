@@ -601,6 +601,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/apiary-2026-09-04",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-04"
+		},
+		"matriculate": {
+			"word": "matriculate",
+			"pos": "other",
+			"gloss": " verb To matriculate is to enroll or be enrolled as a student, especially at a college or university.",
+			"pronunciation": "muh-TRIK-yuh-layt",
+			"example": "She matriculated at the Rhode Island School of Design and began classes in the fall. // A spokesperson for the college said the school is expected to matriculate approximately 1,000 students for the fall semester.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/matriculate-2026-09-05",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-05"
 		}
 	}
 }
