@@ -1164,6 +1164,72 @@
       "status": "approved"
     }
   ],
+  "micro/the-safest-job-from-ai-may-be-writing": [
+    {
+      "id": "mastodon:reply:117214730144902876",
+      "type": "reply",
+      "platform": "mastodon",
+      "author": {
+        "name": "Synthnomad",
+        "url": "https://mastodon.social/@globaltrackfrequency",
+        "avatar": "https://files.mastodon.social/accounts/avatars/117/068/680/502/661/392/original/6453cea1084de03c.jpg"
+      },
+      "content": "<p><a href=\"https://mastodon.social/@sajal24x7\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">@sajal24x7</a> LinkedIn is full of something else as well. Besides being a surveillance arm tool for Microsoft, it's best left alone.</p>",
+      "url": "https://mastodon.social/@globaltrackfrequency/117214730144902876",
+      "published": "2026-09-04T20:47:22.306Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:reply:117216303695472703",
+      "type": "reply",
+      "platform": "mastodon",
+      "author": {
+        "name": "Tim Richards",
+        "url": "https://aus.social/@timrichards",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/287/789/685/242/396/original/f3c58badf3c98c62.jpeg"
+      },
+      "content": "<p><a href=\"https://mastodon.social/@sajal24x7\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">@sajal24x7</a> That link seems broken</p>",
+      "url": "https://aus.social/@timrichards/117216303631338475",
+      "published": "2026-09-05T03:27:31.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:117214717759817229:117068680502661392",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Synthnomad",
+        "url": "https://mastodon.social/@globaltrackfrequency",
+        "avatar": "https://files.mastodon.social/accounts/avatars/117/068/680/502/661/392/original/6453cea1084de03c.jpg"
+      },
+      "url": "https://mastodon.social/@globaltrackfrequency",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117214717759817229:114910036696039119",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "#writing",
+        "url": "https://tagpush.app/@writing",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/910/036/696/039/119/original/a861424ecda2a542.png"
+      },
+      "url": "https://tagpush.app/@writing",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117214717759817229:116141936733036818",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Literbook",
+        "url": "https://mastodon.social/@Literbook",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/5e0c9f27cbe4ab1dddc05717be534585.png"
+      },
+      "url": "https://mastodon.social/@Literbook",
+      "status": "approved"
+    }
+  ],
   "micro/witcher-3-is-getting-a-remaster": [
     {
       "id": "mastodon:repost:117160544169252752:111653086188808400",

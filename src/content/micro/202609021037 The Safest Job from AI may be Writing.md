@@ -1,10 +1,16 @@
 ---
-title: "The Safest Job From AI May Be Writing"
-slug: "the-safest-job-from-ai-may-be-writing"
-created: 2026-09-02T10:37:00+03:00
-updated: 2026-09-04T15:19:53+03:00
-category: [[202506241127 micro|micro]]
-tags: ["writing", "ai"]
+title: The Safest Job From AI May Be Writing
+slug: the-safest-job-from-ai-may-be-writing
+created: 2026-09-02T07:37:00.000Z
+updated: 2026-09-04T12:19:53.000Z
+category: micro
+tags:
+  - writing
+  - ai
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117214717759817229'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3muptehqlqs2n'
+  - 'https://www.threads.com/@sajal24x7/post/Dc4RhBJoyg1'
 ---
 [The Safest Job from AI may be Writing](https://muratbuffalo.blogspot.com/2026/08/the-safest-job-from-ai-may-be-writing.html)
 
