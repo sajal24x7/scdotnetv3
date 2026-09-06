@@ -37,13 +37,27 @@ I am a platform engineer and writer based in Finland.
 I am the author of [A Year of Mornings](/books/a-year-of-mornings/), a collection of poems for young adults. When I am not working or writing, I am usually reading, walking, or tinkering with this website.
 
 ## 22 November, 1991
-Born in Bihar, India.
-There is an origin story I have about my father telling my grandmother I was born super dark, and my grandmother being happy regardless and me getting named Harsh (happiness in Hindi).
+Born in Bihar, India. 
+There is an origin story I have about my father telling my grandmother I was born super dark, and my grandmother being happy regardless and me getting names Harsh (happiness in Hindi).
+
+## June 2010
+Started college.
+
+## May 2014
+End of an era.
+Finished college.
+
+## October 2014
+Joined TCS.
+Travelled to Hyderabad for my ILP. Fell in love. 
 
 ## December 2014
 Joined TCS Delhi.
 Returned from Hyderabad and joined the health sciences unit in Gurgaon.
+## April 2021
+Moved to Helsinki, Finland. 
+This was in the middle of the COVID pandemic. I was so scared at the time. Scared and excited.
 
-## 15 February, 2025
-Published A Year of Mornings.
-My first book — fifty love poems following a young heart as it finds love, finds the strength to be in love and finally, finds the strength to let go. [It's out in the world now.](/books/a-year-of-mornings/)
+## 31 July 2026 - 13 August 2026
+Vacation in Barcelona
+A proper summer vacation, perhaps for the first time since arriving in Finland.
