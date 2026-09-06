@@ -609,6 +609,7 @@
       "bookshelf/202608142119 Breakneck.md",
       "bookshelf/202608290836 Anxious People.md",
       "bookshelf/202608312010 Just for fun.md",
+      "bookshelf/202609060817 Several very short sentences on writing.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
@@ -1734,6 +1735,7 @@
       "nordletter/202608120843 NL118 - Trip to Barcelona.md",
       "nordletter/202608222224 NL119 - Celebrating India.md",
       "nordletter/202608291509 NL120 - From Oodi To a Mentor.md",
+      "nordletter/202609041512 NL121.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -8250,6 +8252,14 @@
   ],
   "bookshelf/breakneck": [
     {
+      "slug": "/bookshelf/anxious-people/",
+      "title": "Anxious People",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-08-29T05:36:00.000Z",
+      "snippet": "It was such a breath of fresh air, both because I have not read a book like this before in my life, and because the last two books I've read - The Courage to be Happy and Breakneck were non-fiction books."
+    },
+    {
       "slug": "/nordletter/nl118-barcelona-no-plan/",
       "title": "Barcelona - No Plan",
       "description": "Barcelona is magic",
@@ -8276,6 +8286,62 @@
       "category": "nordletter",
       "created": "2026-08-29T12:09:00.000Z",
       "snippet": "I finished reading Atomic Habits and The Courage to be Happy this week."
+    },
+    {
+      "slug": "/bookshelf/anxious-people/",
+      "title": "Anxious People",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-08-29T05:36:00.000Z",
+      "snippet": "It was such a breath of fresh air, both because I have not read a book like this before in my life, and because the last two books I've read - The Courage to be Happy and Breakneck were non-fiction books."
+    }
+  ],
+  "nordletter/spring-is-here": [
+    {
+      "slug": "/nordletter/nl121/",
+      "title": "You are My Everyday",
+      "description": "Finding ",
+      "category": "nordletter",
+      "created": "2026-09-04T12:12:00.000Z",
+      "snippet": "Back when we were living in Matinkylä, the Iso Omena library was just across the road from us. The library was open on all days, including the weekends, though the opening hours were different. It was easy to get to the library. That meant I was there every week for one reason or the other."
+    },
+    {
+      "slug": "/nordletter/nl96/",
+      "title": "Spring in the Air",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-03-14T16:18:16.000Z",
+      "snippet": "On the third day, while walking past the tram station, under the bridge I saw some kids on their skateboards. And I thought spring is here. And I remembered distinctly having written about spring. I tried to search for it and found this NordLetter - NL4, which was about spring. But not really about spring. Then I searched for spring, and lo and behold I found it!"
+    }
+  ],
+  "nordletter/nl120-from-oodi-to-a-mentor": [
+    {
+      "slug": "/nordletter/nl121/",
+      "title": "You are My Everyday",
+      "description": "Finding ",
+      "category": "nordletter",
+      "created": "2026-09-04T12:12:00.000Z",
+      "snippet": "Going to the library has meant that I've made progress on the learning plan as well. Sometimes you tend to get inside your head and find yourself unable to move, to get out. Sometimes, all it takes is a change of scenery to fix that."
+    }
+  ],
+  "blog/hug-april-meetup": [
+    {
+      "slug": "/nordletter/nl121/",
+      "title": "You are My Everyday",
+      "description": "Finding ",
+      "category": "nordletter",
+      "created": "2026-09-04T12:12:00.000Z",
+      "snippet": "The last two weeks were full of meetups - four to be precise. I wrote about finding a mentor in NL120. This week I went to two meetups - one organised by the newly formed Platform and Infrastructure Group (previously HUG). I had written then that I had voted for them to be an IaC meetup group. They did! So yay."
+    }
+  ],
+  "bookshelf/anxious-people": [
+    {
+      "slug": "/nordletter/nl121/",
+      "title": "You are My Everyday",
+      "description": "Finding ",
+      "category": "nordletter",
+      "created": "2026-09-04T12:12:00.000Z",
+      "snippet": "I finished reading Anxious People today. I loved reading it. It is a humorous book, ostensibly about a hostage situation in an apartment viewing after a bank robber tries to rob a cashless bank. But it is about so much more."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
@@ -8750,16 +8816,6 @@
       "category": "nordletter",
       "created": "2026-03-07T23:08:24.000Z",
       "snippet": "It was not a given, unlike the years past, that we would be going to the BJPF Holi event this time around. As I had said in NL94 that it had been a busy few weeks since I returned from home."
-    }
-  ],
-  "nordletter/spring-is-here": [
-    {
-      "slug": "/nordletter/nl96/",
-      "title": "Spring in the Air",
-      "description": "",
-      "category": "nordletter",
-      "created": "2026-03-14T16:18:16.000Z",
-      "snippet": "On the third day, while walking past the tram station, under the bridge I saw some kids on their skateboards. And I thought spring is here. And I remembered distinctly having written about spring. I tried to search for it and found this NordLetter - NL4, which was about spring. But not really about spring. Then I searched for spring, and lo and behold I found it!"
     }
   ],
   "blog/spring-already": [
