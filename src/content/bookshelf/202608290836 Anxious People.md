@@ -1,18 +1,20 @@
 ---
 title: "Anxious People"
 slug: "anxious-people"
+cover: "anxious-people.webp"
 created: 2026-08-29T08:36:00+03:00
 updated: 2026-09-05T17:38:15+03:00
 category: bookshelf
 tags: ["humor"]
 author:
-  - Fredrick Backman
+  - Fredrik Backman
 started: 2026-08-29T08:37:00
 finished: 2026-09-05T17:31:00
 genre: general-fiction
 format: audiobook
 rating: love
 status: finished
+year: 2020
 ---
 ## Review
 
