@@ -23,6 +23,14 @@ for file in "$INBOX"/*.md; do
   if echo "$KNOWN_CATEGORIES" | grep -qw "$category"; then
     dest="src/content/$category"
     mkdir -p "$dest"
+    # An entry with this filename may already be published there (e.g. a
+    # shelf note re-synced from the vault after a site-side enrichment run
+    # added a `cover`/`year` the vault copy never had). Carry those fields
+    # over before the incoming copy replaces it, instead of silently
+    # dropping them.
+    if [ -f "$dest/$filename" ]; then
+      python3 scripts/obsidian_to_astro.py --merge-missing "$file" "$dest/$filename"
+    fi
     mv "$file" "$dest/$filename"
     echo "Moved: $filename → $category/"
     MOVED=$((MOVED + 1))
