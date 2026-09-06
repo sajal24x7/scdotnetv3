@@ -298,36 +298,8 @@
       "status": "approved"
     }
   ],
-  "bookshelf/the-courage-to-be-disliked": [
-    {
-      "id": "web:like:c316fb8475dc2b0aa3522f5766b7201b24c7b0d3364950f222333fa05f36e4e1",
-      "type": "like",
-      "platform": "web",
-      "author": {
-        "name": "Narich Violetfathom frengible.bsky.social",
-        "url": "https://bsky.app/profile/frengible.bsky.social",
-        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:xuh6g7hnpeorsy5qqlrrwvj4/bafkreighubobhcpy2taiccrrl3rfv2rfgehwk3oq4niioim53i4uhnovci"
-      },
-      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mrdlyilimk2r/did%253Aplc%253Axuh6g7hnpeorsy5qqlrrwvj4",
-      "published": "2026-07-27T15:20:34.839Z",
-      "status": "pending"
-    }
-  ],
-  "bookshelf/zen-in-the-art-of-writing": [
-    {
-      "id": "web:like:37f685e1c8d4f008d0eefc700cd4c9f2ecd0a13a21d09e57dc3b627760e38cfc",
-      "type": "like",
-      "platform": "web",
-      "author": {
-        "name": "Robin Boardman robinboardman.com",
-        "url": "https://bsky.app/profile/robinboardman.com",
-        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ahna6rwhqcrf7soxqii3iprk/bafkreidqcei6yhwzfdtiebw5fyhgrqzulw6yq46osrlbydhzz6zqaginai"
-      },
-      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mgmmpk3uwc2c/did%253Aplc%253Aahna6rwhqcrf7soxqii3iprk",
-      "published": "2026-07-27T15:20:55.621Z",
-      "status": "pending"
-    }
-  ],
+  "bookshelf/the-courage-to-be-disliked": [],
+  "bookshelf/zen-in-the-art-of-writing": [],
   "evergreen/extinction-was-discovered": [
     {
       "id": "bluesky:like:3mowt6mckm52u:did:plc:pqv77tyop2q4c6inbbm4rivo",
@@ -341,19 +313,6 @@
       "url": "https://bsky.app/profile/neko.ac",
       "published": "2026-06-23T06:58:26.721Z",
       "status": "approved"
-    },
-    {
-      "id": "web:like:3d47234ed84628c33a884b1bafc82d1c47fa4c8ae8b60096036813cd514a7572",
-      "type": "like",
-      "platform": "web",
-      "author": {
-        "name": "Sophia 🏳️‍⚧️ neko.ac",
-        "url": "https://bsky.app/profile/neko.ac",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/ab27de78e116a910637d05137f119b7d.webp"
-      },
-      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mowt6mckm52u/did%253Aplc%253Apqv77tyop2q4c6inbbm4rivo",
-      "published": "2026-07-27T15:20:40.982Z",
-      "status": "pending"
     },
     {
       "id": "mastodon:like:116798121949791914:115714075089960705",
@@ -776,19 +735,6 @@
       "url": "https://bsky.app/profile/catofkyiv.bsky.social",
       "published": "2026-06-26T06:17:45.000Z",
       "status": "approved"
-    },
-    {
-      "id": "web:like:c5bbaa7f211478dbb46efa7adf06a5deb152080257da8727922128a8a37d0b17",
-      "type": "like",
-      "platform": "web",
-      "author": {
-        "name": "Cats of Kyiv 🐈 🇺🇦 catofkyiv.bsky.social",
-        "url": "https://bsky.app/profile/catofkyiv.bsky.social",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/62be04b381f26a77be6174e2c6cce38a.webp"
-      },
-      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mp6cblel752r/did%253Aplc%253Az4r2sakrqgtdk7ednvkqeevq",
-      "published": "2026-07-27T15:20:37.128Z",
-      "status": "pending"
     }
   ],
   "micro/build-games-to-learn-topics-using-ai": [
@@ -858,19 +804,6 @@
       "url": "https://bsky.app/profile/cynthiadunlop.bsky.social",
       "published": "2026-08-10T15:59:16.685Z",
       "status": "approved"
-    },
-    {
-      "id": "web:like:3599fc74271598d0a38372b237d79abcaab28311bd5b2595c7c6a40a3827b51d",
-      "type": "like",
-      "platform": "web",
-      "author": {
-        "name": "Cynthia Dunlop cynthiadunlop.bsky.social",
-        "url": "https://bsky.app/profile/cynthiadunlop.bsky.social",
-        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:3mkmawtelml6rwbe4g2mzyks/bafkreif7nsy76c2ng2x3tcyfhvnflxxzydmm227mh3wl5sxfnbo2lzzw6i"
-      },
-      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mslfz5mco22a/did%253Aplc%253A3mkmawtelml6rwbe4g2mzyks",
-      "published": "2026-08-10T16:15:40.020Z",
-      "status": "pending"
     }
   ],
   "micro/how-teams-at-openai-are-using-agents-for-software-development": [
@@ -888,19 +821,6 @@
       "status": "approved"
     },
     {
-      "id": "web:like:9a2f7f5e111a054973c84918c371fc066a129256636538a93ced89f4ecaf6629",
-      "type": "like",
-      "platform": "web",
-      "author": {
-        "name": "TIMxAI timxai.ai",
-        "url": "https://bsky.app/profile/timxai.ai",
-        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:wc247qet6fmuzynmhehrsfdl/bafkreidganrar3tjf3y5uqakbighiavn634p7z57o3afvbi5zrhevcs44y"
-      },
-      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3msvb6pmbkr24/did%253Aplc%253Awc247qet6fmuzynmhehrsfdl",
-      "published": "2026-08-12T14:09:48.530Z",
-      "status": "pending"
-    },
-    {
       "id": "bluesky:like:3msvb6pmbkr24:did:plc:xuh6g7hnpeorsy5qqlrrwvj4",
       "type": "like",
       "platform": "bluesky",
@@ -912,19 +832,6 @@
       "url": "https://bsky.app/profile/frengible.bsky.social",
       "published": "2026-08-13T01:32:59.934Z",
       "status": "approved"
-    },
-    {
-      "id": "web:like:74a8eb2b373215e0da6d813e9f151940f8e31efe7c624f48ff187291c246b505",
-      "type": "like",
-      "platform": "web",
-      "author": {
-        "name": "Narich Violetfathom frengible.bsky.social",
-        "url": "https://bsky.app/profile/frengible.bsky.social",
-        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:xuh6g7hnpeorsy5qqlrrwvj4/bafkreighubobhcpy2taiccrrl3rfv2rfgehwk3oq4niioim53i4uhnovci"
-      },
-      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3msvb6pmbkr24/did%253Aplc%253Axuh6g7hnpeorsy5qqlrrwvj4",
-      "published": "2026-08-13T02:02:05.001Z",
-      "status": "pending"
     }
   ],
   "micro/kunal-shah-to-become-global-head-of-whatsapp": [
@@ -954,19 +861,6 @@
       "url": "https://bsky.app/profile/lofiglow.bsky.social",
       "published": "2026-08-22T13:11:53.266Z",
       "status": "approved"
-    },
-    {
-      "id": "web:like:0bcc5a4f88ebae6f49beeff10c3d4c6a6b34c2334d3e63c8a8a9b1f08dd173ad",
-      "type": "like",
-      "platform": "web",
-      "author": {
-        "name": "Lofi Glow lofiglow.bsky.social",
-        "url": "https://bsky.app/profile/lofiglow.bsky.social",
-        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:gwtqnpejkbvz4vwij57dsy6u/bafkreiac5h5u56ay4mumigsxxkj4qdveyjzhkpcsamdiafw2qmlcaxipce"
-      },
-      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mtodcoota622/did%253Aplc%253Agwtqnpejkbvz4vwij57dsy6u",
-      "published": "2026-08-22T14:47:23.532Z",
-      "status": "pending"
     },
     {
       "id": "mastodon:repost:117139278598623592:111653099686979697",
@@ -1086,19 +980,6 @@
       "status": "approved"
     },
     {
-      "id": "web:like:b17a20723b4c7a94345714fcb8c708579f7f1994039be9c939264985d3b6c10a",
-      "type": "like",
-      "platform": "web",
-      "author": {
-        "name": "Lydia Lukidis lydialukidis.bsky.social",
-        "url": "https://bsky.app/profile/lydialukidis.bsky.social",
-        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:672buqh3zd2wvsntyspzvvpp/bafkreid6phkkeo2lu57x7zzk6a2yucfz4svz2n7uviz75bi6pmmwhld64u"
-      },
-      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mrozqe76xu2p/did%253Aplc%253A672buqh3zd2wvsntyspzvvpp",
-      "published": "2026-07-28T09:56:51.230Z",
-      "status": "pending"
-    },
-    {
       "id": "bluesky:like:3mrozqe76xu2p:did:plc:kthwu6mpwb56qwdm2ipaxciw",
       "type": "like",
       "platform": "bluesky",
@@ -1110,19 +991,6 @@
       "url": "https://bsky.app/profile/bookshelfie.bsky.social",
       "published": "2026-07-28T19:04:14.136Z",
       "status": "approved"
-    },
-    {
-      "id": "web:like:ba4be01a1f124910b91bd5cdd0a2609bbbc5a492437cac05b44dec6c24d0d17b",
-      "type": "like",
-      "platform": "web",
-      "author": {
-        "name": "Bookshelfie ⭐️ bookshelfie.bsky.social",
-        "url": "https://bsky.app/profile/bookshelfie.bsky.social",
-        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:kthwu6mpwb56qwdm2ipaxciw/bafkreidq6td4g3ayrxfqvwtw4cwude4yw2545h4gczxu7tyuff5h7rtvtq"
-      },
-      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mrozqe76xu2p/did%253Aplc%253Akthwu6mpwb56qwdm2ipaxciw",
-      "published": "2026-07-28T19:04:52.917Z",
-      "status": "pending"
     }
   ],
   "micro/the-human-in-the-loop-is-tired": [
@@ -1244,21 +1112,7 @@
       "status": "approved"
     }
   ],
-  "nordletter/nl101-the-joys-of-riding-a-bicycle": [
-    {
-      "id": "web:repost:b0d71d6767736e8c979befb701e65e197a5898361aa568887459bab3b8c736fe",
-      "type": "repost",
-      "platform": "web",
-      "author": {
-        "name": "Kee Bici bikes.keekay.cloud",
-        "url": "https://bsky.app/profile/bikes.keekay.cloud",
-        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ufencrhqoi6hkfy7vzrihbsc/bafkreid7q4wrq3hmgtwzvftfxsw7keu37ueznbqks3xfvbli5fwrhumipe"
-      },
-      "url": "https://brid.gy/repost/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mk33xgnx3g2w/did%253Aplc%253Aufencrhqoi6hkfy7vzrihbsc",
-      "published": "2026-07-27T15:20:50.270Z",
-      "status": "pending"
-    }
-  ],
+  "nordletter/nl101-the-joys-of-riding-a-bicycle": [],
   "nordletter/nl107": [
     {
       "id": "mastodon:like:116665713078130320:110249442633796155",
@@ -1326,19 +1180,6 @@
       "url": "https://bsky.app/profile/pedalsandpages.com",
       "published": "2026-07-25T23:20:02.778Z",
       "status": "approved"
-    },
-    {
-      "id": "web:like:e17033ba70f79a2b7059fd704b3692a6b447dd6a3499adc255439b621c38c8b5",
-      "type": "like",
-      "platform": "web",
-      "author": {
-        "name": "Gabe pedalsandpages.com",
-        "url": "https://bsky.app/profile/pedalsandpages.com",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/9180df40ba10a5e9cdb99a7c74546981.webp"
-      },
-      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mriuzibyol2e/did%253Aplc%253Ailwe2nx42xcfws5umthy7phz",
-      "published": "2026-07-27T15:19:37.770Z",
-      "status": "pending"
     }
   ],
   "photo/202607111030": [
@@ -1601,19 +1442,6 @@
       "url": "https://bsky.app/profile/nomadsgate.bsky.social",
       "published": "2026-07-10T13:26:22.411Z",
       "status": "approved"
-    },
-    {
-      "id": "web:like:66cbd02163ae505a87847207b03753dd7572a14548fa22be957ce6269b8ea94d",
-      "type": "like",
-      "platform": "web",
-      "author": {
-        "name": "Patrick Richter nomadsgate.bsky.social",
-        "url": "https://bsky.app/profile/nomadsgate.bsky.social",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/5008e04a382985c0b8759aaaa4fdecce.webp"
-      },
-      "url": "https://brid.gy/like/bluesky/did:plc:l2gmhvvot2vqhq5jz7fgo37u/at%253A%252F%252Fdid%253Aplc%253Al2gmhvvot2vqhq5jz7fgo37u%252Fapp.bsky.feed.post%252F3mqbw6cukmm2f/did%253Aplc%253A64pf3pvhd6iaudtsgsn63yy6",
-      "published": "2026-07-27T15:20:32.777Z",
-      "status": "pending"
     }
   ]
 }
