@@ -611,6 +611,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/matriculate-2026-09-05",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-05"
+		},
+		"inexorable": {
+			"word": "inexorable",
+			"pos": "other",
+			"gloss": " adjective Inexorable is a formal word used to describe something that cannot be stopped or changed.",
+			"pronunciation": "i-NEK-suh-ruh-bul",
+			"example": "For some, the changing autumn foliage is a beautiful yet bittersweet reminder of the inexorable march of time.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/inexorable-2026-09-06",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-06"
 		}
 	}
 }
