@@ -40,6 +40,38 @@ If a note has a missing/unknown `category`, the run fails, a GitHub issue is
 opened, and **nothing reaches `main` or production**. Fix the frontmatter and
 push to `content` again.
 
+#### Field preservation on overwrite (step 3)
+
+`sort-inbox.sh` moves a sorted note into place with `mv`, which — if a note
+with the same filename is already published there — fully overwrites it.
+A shelf note re-synced from the vault only carries whatever the vault last
+had; it knows nothing about fields a later site-side run added on the
+published copy, like `cover` (from the cover-download workflow) or `year`.
+Before the `mv`, when a same-named file already exists at the destination,
+`sort-inbox.sh` now runs:
+
+```
+python3 scripts/obsidian_to_astro.py --merge-missing <incoming> <existing>
+```
+
+This copies any top-level frontmatter field present on the existing
+published file but entirely absent from the incoming one into the incoming
+file, then the `mv` proceeds. A field present in both is left as the
+incoming copy has it — an intentional edit (a `status` or `rating` change)
+still wins; only fields that would otherwise vanish outright are carried
+forward. See the "Anxious People" cover-loss incident (Sep 2026) for the
+failure this closes.
+
+**Caveat:** this only protects notes that actually pass through `inbox/`.
+That incident's proximate cause was a note re-sync that landed directly on
+its already-published path under `src/content/bookshelf/` with no inbox
+step and no `chore: normalize and sort published notes` commit — i.e. it
+didn't go through this script at all, so this safeguard wouldn't have
+caught it. That's a separate, still-open gap in the sync setup ("Environment
+expectations" below says all Obsidian notes go through the inbox Shortcut;
+in practice at least one edit to an already-existing note did not) — worth
+checking if you want that path closed too.
+
 #### Shelf queue reconciliation (step 4)
 
 `scripts/reconcile-shelf-queue.js` runs right after `sort-inbox`. For every
