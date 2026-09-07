@@ -621,6 +621,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/inexorable-2026-09-06",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-06"
+		},
+		"gist": {
+			"word": "gist",
+			"pos": "other",
+			"gloss": " noun Gist, which almost always appears in the phrase “the gist,” refers to the general or basic meaning of something written or said.",
+			"pronunciation": "JIST",
+			"example": "I found the author’s grandiloquent style of writing intolerable, but I got the gist of the story.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/gist-2026-09-07",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-07"
 		}
 	}
 }
