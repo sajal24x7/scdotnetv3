@@ -750,6 +750,34 @@
       "status": "approved"
     }
   ],
+  "micro/bangalore-india-hospital-flow": [
+    {
+      "id": "mastodon:reply:117227123114539771",
+      "type": "reply",
+      "platform": "mastodon",
+      "author": {
+        "name": "methuselah",
+        "url": "https://toot.io/@methuselah",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/112/510/819/045/560/770/original/426c30d7d3238b9b.png"
+      },
+      "content": "<p><a href=\"https://mastodon.social/@sajal24x7\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">@sajal24x7</a> how cheap it is common indians everyone knows</p>",
+      "url": "https://toot.io/@methuselah/117227123081944317",
+      "published": "2026-09-07T01:19:03.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117225957666895781:111653248688599615",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Healthcare Channel",
+        "url": "https://newsmast.community/@healthcare",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/248/688/599/615/original/c1d9be84a9b9bbf4.png"
+      },
+      "url": "https://newsmast.community/@healthcare",
+      "status": "approved"
+    }
+  ],
   "micro/build-games-to-learn-topics-using-ai": [
     {
       "id": "mastodon:like:117072810032984897:116960047024979339",
