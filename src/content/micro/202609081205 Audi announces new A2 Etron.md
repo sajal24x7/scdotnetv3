@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - electric-cars
-  - audi
-category: micro
+title: "Audi Announces New A2 Etron"
+slug: "audi-announces-new-a2-etron"
+created: 2026-09-08T12:05:00+03:00
 updated: 2026-09-08T12:06:36+03:00
+category: micro
+tags: ["electric-cars", "audi"]
 ---
 [Audi’s new A2 E-tron is its most affordable and efficient EV yet](https://www.theverge.com/transportation/991081/audi-a2-etron-ev-specs-price)
 
