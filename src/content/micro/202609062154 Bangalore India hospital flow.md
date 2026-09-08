@@ -1,10 +1,16 @@
 ---
-title: "Bangalore India Hospital Flow"
-slug: "bangalore-india-hospital-flow"
-created: 2026-09-06T21:54:00+03:00
-updated: 2026-09-06T21:55:32+03:00
+title: Bangalore India Hospital Flow
+slug: bangalore-india-hospital-flow
+created: 2026-09-06T18:54:00.000Z
+updated: 2026-09-06T18:55:32.000Z
 category: micro
-tags: ["medicine", "india"]
+tags:
+  - medicine
+  - india
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117225957666895781'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3muut3rg3lu2d'
+  - 'https://www.threads.com/@sajal24x7/post/Dc9Yo3eiSNT'
 ---
 [Bangalore India hospital flow by Derek Sivers](https://sive.rs/inflow)
 

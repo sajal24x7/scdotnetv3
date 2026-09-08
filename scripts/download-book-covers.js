@@ -954,7 +954,9 @@ async function main() {
         if (replaceLowRes && isLowRes(resolvedCoverPath)) {
           const sizeKb = (fs.statSync(resolvedCoverPath).size / 1024).toFixed(1);
           console.log(`📚 "${title}" — low-res cover (${sizeKb}KB), replacing...`);
-          fs.unlinkSync(resolvedCoverPath);
+          // Don't delete yet — only overwrite once a real replacement is
+          // downloaded and validated, so a failed/empty fetch below leaves
+          // the existing cover in place instead of the book going coverless.
         } else if (!replaceLowRes) {
           const sizeKb = (fs.statSync(resolvedCoverPath).size / 1024).toFixed(1);
           console.log(`✅ "${title}" — cover exists (${sizeKb}KB): ${cover || coverFilename}`);
@@ -976,9 +978,11 @@ async function main() {
         continue;
       }
     } else if (!forceDownload && targetBook && resolvedCoverPath) {
-      // --book flag: always re-download the targeted book
+      // --book flag: always re-download the targeted book. Don't delete the
+      // existing cover yet — only overwrite it once a real replacement is
+      // downloaded and validated (see below), so a failed/empty fetch leaves
+      // the book with its old cover instead of no cover at all.
       console.log(`🎯 "${title}" — forcing refresh for targeted book`);
-      fs.unlinkSync(resolvedCoverPath);
     }
 
     console.log(`📚 Processing: "${title}" by ${author || 'Unknown Author'}`);
@@ -1040,6 +1044,12 @@ async function main() {
       await convertFileToWebp(best.tmpPath, coverPath);
       for (const r of successful) {
         try { fs.unlinkSync(r.tmpPath); } catch {}
+      }
+      // If the previously-referenced cover lived under a different filename
+      // than the one we just wrote (e.g. the title changed), remove it now
+      // that the new cover is safely on disk.
+      if (resolvedCoverPath && resolvedCoverPath !== coverPath) {
+        try { fs.unlinkSync(resolvedCoverPath); } catch {}
       }
       coverHashIndex.set(best.hash, coverFilename);
 

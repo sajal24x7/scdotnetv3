@@ -265,6 +265,71 @@ def extract_passthrough_lines(fm_text: str) -> list:
     return result
 
 
+def parse_top_level_fields(fm_text: str) -> dict[str, list[str]]:
+    """Map each top-level frontmatter key to its raw line(s), including any
+    indented list items under it (e.g. 'author:\\n  - Dan Brown'), verbatim.
+    """
+    fields: dict[str, list[str]] = {}
+    current_key = None
+    for line in fm_text.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if not line.startswith(" ") and not line.startswith("\t") and not stripped.startswith("- "):
+            current_key = stripped.partition(":")[0].strip()
+            fields.setdefault(current_key, []).append(line)
+        elif current_key is not None:
+            fields[current_key].append(line)
+    return fields
+
+
+def merge_missing_fields_into(incoming_path: str, existing_path: str) -> bool:
+    """Carry over frontmatter fields from an already-published entry that a
+    freshly-synced Obsidian copy doesn't have.
+
+    A shelf note re-synced from the vault (or any note re-filed into inbox/
+    that already has a same-named entry on its destination shelf) only
+    carries whatever the vault last had — it knows nothing about fields a
+    later enrichment run added on the site's copy, like `cover` or `year`.
+    Sorting it into place with a plain overwrite silently drops those
+    fields. This fills in any field present on the existing destination
+    file but entirely absent from the incoming one; fields present in both
+    are left as the incoming copy has them, since that's the intentional
+    edit (e.g. a `status` or `rating` change).
+    """
+    if not os.path.exists(existing_path):
+        return False
+
+    with open(incoming_path, "r", encoding="utf-8") as f:
+        incoming = f.read()
+    with open(existing_path, "r", encoding="utf-8") as f:
+        existing = f.read()
+
+    if not incoming.startswith("---") or not existing.startswith("---"):
+        return False
+
+    incoming_end = incoming.find("---", 3)
+    existing_end = existing.find("---", 3)
+    if incoming_end == -1 or existing_end == -1:
+        return False
+
+    incoming_fields = parse_top_level_fields(incoming[3:incoming_end])
+    existing_fields = parse_top_level_fields(existing[3:existing_end])
+
+    missing_keys = [k for k in existing_fields if k not in incoming_fields]
+    if not missing_keys:
+        return False
+
+    missing_lines = [line for k in missing_keys for line in existing_fields[k]]
+    merged = incoming[:incoming_end] + "\n".join(missing_lines) + "\n" + incoming[incoming_end:]
+
+    with open(incoming_path, "w", encoding="utf-8") as f:
+        f.write(merged)
+
+    print(f"Preserved from existing entry ({', '.join(missing_keys)}): {os.path.basename(incoming_path)}")
+    return True
+
+
 def transform_file(filepath: str, content_index: dict | None = None) -> bool:
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
@@ -386,7 +451,19 @@ def extract_tags(content: str) -> list:
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: obsidian_to_astro.py <file1.md> [file2.md ...]")
+        print("       obsidian_to_astro.py --merge-missing <incoming.md> <existing.md>")
         sys.exit(1)
+
+    if sys.argv[1] == "--merge-missing":
+        if len(sys.argv) != 4:
+            print("Usage: obsidian_to_astro.py --merge-missing <incoming.md> <existing.md>")
+            sys.exit(1)
+        try:
+            merge_missing_fields_into(sys.argv[2], sys.argv[3])
+            sys.exit(0)
+        except Exception as e:
+            print(f"ERROR merging {sys.argv[2]} with {sys.argv[3]}: {e}", file=sys.stderr)
+            sys.exit(1)
 
     content_index = build_content_index(DEFAULT_CONTENT_ROOT)
 

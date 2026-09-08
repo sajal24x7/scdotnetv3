@@ -750,6 +750,48 @@
       "status": "approved"
     }
   ],
+  "micro/bangalore-india-hospital-flow": [
+    {
+      "id": "mastodon:reply:117227123114539771",
+      "type": "reply",
+      "platform": "mastodon",
+      "author": {
+        "name": "methuselah",
+        "url": "https://toot.io/@methuselah",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/112/510/819/045/560/770/original/426c30d7d3238b9b.png"
+      },
+      "content": "<p><a href=\"https://mastodon.social/@sajal24x7\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">@sajal24x7</a> how cheap it is common indians everyone knows</p>",
+      "url": "https://toot.io/@methuselah/117227123081944317",
+      "published": "2026-09-07T01:19:03.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:reply:117229983941322464",
+      "type": "reply",
+      "platform": "mastodon",
+      "author": {
+        "name": "Sajal Choudhary",
+        "url": "https://mastodon.social/@sajal24x7",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/fefe79d6135555ec3d97ad3f7c5e0802.jpg"
+      },
+      "content": "<p><a href=\"https://toot.io/@methuselah\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">@methuselah</a> not cheap for the average  Indian 😅😄🤣</p>",
+      "url": "https://mastodon.social/@sajal24x7/117229983941322464",
+      "published": "2026-09-07T13:26:36.801Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117225957666895781:111653248688599615",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Healthcare Channel",
+        "url": "https://newsmast.community/@healthcare",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/248/688/599/615/original/c1d9be84a9b9bbf4.png"
+      },
+      "url": "https://newsmast.community/@healthcare",
+      "status": "approved"
+    }
+  ],
   "micro/build-games-to-learn-topics-using-ai": [
     {
       "id": "mastodon:like:117072810032984897:116960047024979339",
@@ -1196,6 +1238,44 @@
       "status": "approved"
     }
   ],
+  "nordletter/nl120-from-oodi-to-a-mentor": [
+    {
+      "id": "mastodon:like:117180783135461074:117083467106391302",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "curious monkey 🐒",
+        "url": "https://mastodon.world/@dotomnivorous",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/117/083/467/106/391/302/original/f2a1c6e0cc6827f0.jpeg"
+      },
+      "url": "https://mastodon.world/@dotomnivorous",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117180783135461074:111653099686979697",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Government & Policy Channel",
+        "url": "https://newsmast.community/@government",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/099/686/979/697/original/43016e49f823a5e1.png"
+      },
+      "url": "https://newsmast.community/@government",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117180783135461074:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
+    }
+  ],
   "photo/202607111030": [
     {
       "id": "instagram:like-count:DapQTQfFo6v",
@@ -1206,18 +1286,6 @@
       },
       "url": "https://www.instagram.com/p/DapQTQfFo6v/",
       "count": 6,
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:like:116900200587485471:109364281065561411",
-      "type": "like",
-      "platform": "mastodon",
-      "author": {
-        "name": "AlexTECPlayz",
-        "url": "https://techhub.social/@alextecplayz",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/077a3748ac8649ceb0b79d4ddb02afb7.png"
-      },
-      "url": "https://techhub.social/@alextecplayz",
       "status": "approved"
     },
     {
@@ -1242,7 +1310,7 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/DaqzPfaEkdk/",
-      "count": 9,
+      "count": 11,
       "status": "approved"
     }
   ],
@@ -1280,18 +1348,6 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/4fbdc8acec6c9aaca294ac7af8a6ce22.jpg"
       },
       "url": "https://mastodon.social/@MauroGata",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:116914181324815696:111653091056470519",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Music Channel",
-        "url": "https://newsmast.community/@music",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/d8af9b6569ad925438987fb3726a2e69.png"
-      },
-      "url": "https://newsmast.community/@music",
       "status": "approved"
     }
   ],
