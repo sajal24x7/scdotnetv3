@@ -1,10 +1,16 @@
 ---
-title: "IOS27 Will Release on 14 Sep"
-slug: "ios27-will-release-on-14-sep"
-created: 2026-09-09T22:09:00+03:00
-updated: 2026-09-09T22:10:46+03:00
+title: IOS27 Will Release on 14 Sep
+slug: ios27-will-release-on-14-sep
+created: 2026-09-09T19:09:00.000Z
+updated: 2026-09-09T19:10:46.000Z
 category: micro
-tags: ["ios", "apple"]
+tags:
+  - ios
+  - apple
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117243071144899434'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mv4gc3g2ly2x'
+  - 'https://www.threads.com/@sajal24x7/post/DdFKtPWgZs9'
 ---
 [Apple Announces iOS 27 Release Date by Joe Rossignol](https://www.macrumors.com/2026/09/09/apple-announces-ios-27-release-date/)
 
