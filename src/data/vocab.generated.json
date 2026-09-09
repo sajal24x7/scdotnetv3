@@ -641,6 +641,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/magnanimous-2026-09-08",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-08"
+		},
+		"stigma": {
+			"word": "stigma",
+			"pos": "other",
+			"gloss": " noun Stigma refers to a set of negative and often unfair beliefs that a society or group of people have about something.",
+			"pronunciation": "STIG-muh",
+			"example": "The organization is animated by a commitment to challenging stigmas associated with the condition.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/stigma-2026-09-09",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-09"
 		}
 	}
 }
