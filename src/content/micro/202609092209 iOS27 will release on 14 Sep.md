@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - ios
-  - apple
-category: micro
+title: "IOS27 Will Release on 14 Sep"
+slug: "ios27-will-release-on-14-sep"
+created: 2026-09-09T22:09:00+03:00
 updated: 2026-09-09T22:10:46+03:00
+category: micro
+tags: ["ios", "apple"]
 ---
 [Apple Announces iOS 27 Release Date by Joe Rossignol](https://www.macrumors.com/2026/09/09/apple-announces-ios-27-release-date/)
 
