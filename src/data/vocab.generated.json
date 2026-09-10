@@ -651,6 +651,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/stigma-2026-09-09",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-09"
+		},
+		"loath": {
+			"word": "loath",
+			"pos": "other",
+			"gloss": " adjective A person who is loath to do something is unwilling or reluctant to do that thing.",
+			"pronunciation": "LOHTH",
+			"example": "Proud of the company he had built, Henry was loath to admit that it was time to think about retiring.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/loath-2026-09-10",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-10"
 		}
 	}
 }
