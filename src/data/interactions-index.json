@@ -889,6 +889,20 @@
       "status": "approved"
     }
   ],
+  "micro/ios27-will-release-on-14-sep": [
+    {
+      "id": "mastodon:repost:117243071144899434:114863603913131469",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Apple-feed",
+        "url": "https://channel.org/@applefeed",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/6e04454c4298099704bb671fd177b734.jpg"
+      },
+      "url": "https://channel.org/@applefeed",
+      "status": "approved"
+    }
+  ],
   "micro/kunal-shah-to-become-global-head-of-whatsapp": [
     {
       "id": "mastodon:like:116798122425373992:110436829441173808",
@@ -1155,20 +1169,6 @@
       "status": "approved"
     }
   ],
-  "micro/witcher-3-is-getting-a-remaster": [
-    {
-      "id": "mastodon:repost:117160544169252752:111653086188808400",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Gaming Channel",
-        "url": "https://newsmast.community/@gaming",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/086/188/808/400/original/a6a0714ab054b18f.png"
-      },
-      "url": "https://newsmast.community/@gaming",
-      "status": "approved"
-    }
-  ],
   "nordletter/nl107": [
     {
       "id": "mastodon:like:116665713078130320:110249442633796155",
@@ -1360,7 +1360,7 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/DaxxLSGoGW4/",
-      "count": 32,
+      "count": 55,
       "status": "approved"
     }
   ],
@@ -1389,15 +1389,15 @@
       "status": "approved"
     },
     {
-      "id": "mastodon:repost:116935695838244879:111653399827320429",
-      "type": "repost",
+      "id": "mastodon:like:116935695838244879:116415292166621660",
+      "type": "like",
       "platform": "mastodon",
       "author": {
-        "name": "Nature & Wildlife Channel",
-        "url": "https://newsmast.community/@nature",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/17391e6a0ff727456d2546e6800a3d2f.png"
+        "name": "Mario Eijkemans",
+        "url": "https://mastodon.social/@MarioEijkemans",
+        "avatar": "https://files.mastodon.social/accounts/avatars/116/415/292/166/621/660/original/6bab45dc9ba21817.jpg"
       },
-      "url": "https://newsmast.community/@nature",
+      "url": "https://mastodon.social/@MarioEijkemans",
       "status": "approved"
     }
   ],
