@@ -11,7 +11,7 @@ import { bookRatingLabels } from './bookRatings';
 import { convertWikilinks } from './remarkWikilinks';
 import { formatRelativeDate, SITE_TIMEZONE } from './dateFormat';
 import { getPhotoImages } from './photos';
-import { SHELF_STATUS_FEED_VERBS, type ShelfCategory, type ShelfStatus } from './shelfStatus';
+import { SHELF_CATEGORIES, SHELF_STATUS_FEED_VERBS, isQueuedShelfEntry, type ShelfCategory, type ShelfStatus } from './shelfStatus';
 import nordletterManifest from '../data/nordletter-image-manifest.json';
 
 export const FEED_PAGE_SIZE = 10;
@@ -100,7 +100,6 @@ function updatedDate(post: Post): Date | null {
   return toValidDate(post.data.updated);
 }
 
-const SHELF_CATEGORIES: ReadonlySet<string> = new Set(Object.keys(SHELF_STATUS_FEED_VERBS));
 
 // Shelf entries sit in the timeline at the date the book/film/show/game was
 // finished (or started, while still in progress) — not the note's created date,
@@ -415,11 +414,7 @@ const RENDERERS: Record<string, (post: Post) => string | Promise<string>> = {
 // finished/started date to place them in the timeline honestly — they'd
 // otherwise surface dated by their stub's created date, appearing as if
 // freshly read. Keep them off the feed entirely; started/paused/finished
-// entries still show.
-function isQueuedShelfEntry(post: Post): boolean {
-  return SHELF_CATEGORIES.has(post.data.category) && post.data.status === 'todo';
-}
-
+// entries still show — see isQueuedShelfEntry in shelfStatus.ts.
 export function getFeedPosts(posts: Post[]): Post[] {
   const categorySet = new Set(FEED_CATEGORIES);
   return posts

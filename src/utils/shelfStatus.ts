@@ -49,3 +49,13 @@ export const SHELF_LIST_SORT_PRIORITY: Record<ShelfStatus, number> = {
 export function getShelfStatusLabel(category: ShelfCategory, status: ShelfStatus | undefined): string | undefined {
   return status ? SHELF_STATUS_LABELS[category][status] : undefined;
 }
+
+// The shelf categories, derived from the label map above so the two can't drift.
+export const SHELF_CATEGORIES: ReadonlySet<string> = new Set(Object.keys(SHELF_STATUS_LABELS));
+
+// `todo` entries are queue stubs — nothing has been read/watched/played yet, so they
+// belong on the per-shelf queue pages (see planning/shelf-queue-design.md §1) rather
+// than in listings of actual notes. Use this to keep them out of those listings.
+export function isQueuedShelfEntry(post: { data: { category?: string; status?: string } }): boolean {
+  return SHELF_CATEGORIES.has(post.data.category ?? '') && post.data.status === 'todo';
+}
