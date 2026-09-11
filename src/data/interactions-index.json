@@ -32,20 +32,6 @@
       "status": "approved"
     }
   ],
-  "blog/i-uninstalled-netnewswire-from-my-phone": [
-    {
-      "id": "mastodon:repost:117170285973201171:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    }
-  ],
   "blog/on-possessions": [
     {
       "id": "mastodon:like:116754008646024542:110655611816281403",
@@ -1398,6 +1384,45 @@
         "avatar": "https://files.mastodon.social/accounts/avatars/116/415/292/166/621/660/original/6bab45dc9ba21817.jpg"
       },
       "url": "https://mastodon.social/@MarioEijkemans",
+      "status": "approved"
+    }
+  ],
+  "photo/202607220951": [
+    {
+      "id": "instagram:like-count:DbFsMG_m5Yz",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DbFsMG_m5Yz/",
+      "count": 66,
+      "status": "approved"
+    }
+  ],
+  "photo/202607242014": [
+    {
+      "id": "bluesky:like:3mrg4indxvf2i:did:plc:uxjwdy4wvuridijisalvxlxe",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "kich.io",
+        "url": "https://bsky.app/profile/kich.io",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:uxjwdy4wvuridijisalvxlxe/bafkreidb7dto7mj2wkoeoo4cdpmdh3ljoll5o6nulag7iakypj2maxmgmq"
+      },
+      "url": "https://bsky.app/profile/kich.io",
+      "published": "2026-07-24T20:52:51.707Z",
+      "status": "approved"
+    },
+    {
+      "id": "instagram:like-count:DbMBchXGoMK",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DbMBchXGoMK/",
+      "count": 10,
       "status": "approved"
     }
   ],
