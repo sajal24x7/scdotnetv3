@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import LinkHoverEffect from '../components/LinkHoverEffect.astro';
+import Mermaid from '../components/Mermaid.astro';
 import type { Post } from '../utils/content';
 import '../styles/global.css';
 
@@ -214,5 +215,6 @@ const containerPadding = pageWrapper.padding ?? 'none';
 		</div>
 		
                 {enableLinkHoverEffect && <LinkHoverEffect />}
+                <Mermaid />
         </body>
 </html>
