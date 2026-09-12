@@ -678,6 +678,20 @@
       "status": "approved"
     }
   ],
+  "micro/202609111447": [
+    {
+      "id": "mastodon:repost:117253340277989286:111601700706806494",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Academia & Research Channel",
+        "url": "https://newsmast.community/@academia",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/601/700/706/806/494/original/cc6efe3934f366ed.png"
+      },
+      "url": "https://newsmast.community/@academia",
+      "status": "approved"
+    }
+  ],
   "micro/amazon-has-a-new-plan-for-games": [
     {
       "id": "mastodon:like:116696520863508112:1339141",
@@ -1423,6 +1437,43 @@
       },
       "url": "https://www.instagram.com/p/DbMBchXGoMK/",
       "count": 10,
+      "status": "approved"
+    }
+  ],
+  "photo/202607252022": [
+    {
+      "id": "instagram:like-count:DbOk4RvIP5a",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DbOk4RvIP5a/",
+      "count": 12,
+      "status": "approved"
+    }
+  ],
+  "photo/202608180908": [
+    {
+      "id": "instagram:like-count:DcLCEd0la3D",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DcLCEd0la3D/",
+      "count": 23,
+      "status": "approved"
+    },
+    {
+      "id": "threads:like-count:DcLCATtFY6F",
+      "type": "like-count",
+      "platform": "threads",
+      "author": {
+        "name": "Threads"
+      },
+      "url": "https://www.threads.com/@sajal24x7/post/DcLCATtFY6F",
+      "count": 2,
       "status": "approved"
     }
   ],
