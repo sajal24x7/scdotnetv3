@@ -1,11 +1,10 @@
 ---
-aliases:
-  - Kubernetes Components
-  - Kubernetes Cluster Architecture
-tags:
-  - k8s
-category: til
+title: "Kubernetes Components"
+slug: "kubernetes-components"
+created: 2026-09-12T11:26:00+03:00
 updated: 2026-09-12T12:38:07+03:00
+category: til
+tags: ["k8s"]
 ---
 When you deploy a Kubernetes cluster, what you are deploying are nodes, which run the containerised applications.
 
