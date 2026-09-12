@@ -671,6 +671,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/patina-2026-09-11",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-11"
+		},
+		"hobnob": {
+			"word": "hobnob",
+			"pos": "other",
+			"gloss": " verb To hobnob is to socialize with others, especially with people of high social status.",
+			"pronunciation": "HAHB-nahb",
+			"example": "A great deal can be learned about the entertainment industry by hobnobbing with folks at film festivals.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/hobnob-2026-09-12",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-12"
 		}
 	}
 }
