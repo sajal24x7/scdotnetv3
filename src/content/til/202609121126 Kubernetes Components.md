@@ -1,10 +1,15 @@
 ---
-title: "Kubernetes Components"
-slug: "kubernetes-components"
-created: 2026-09-12T11:26:00+03:00
-updated: 2026-09-12T12:38:07+03:00
+title: Kubernetes Components
+slug: kubernetes-components
+created: 2026-09-12T08:26:00.000Z
+updated: 2026-09-12T09:38:07.000Z
 category: til
-tags: ["k8s"]
+tags:
+  - k8s
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117257651786369923'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mvcvilgcxd2c'
+  - 'https://www.threads.com/@sajal24x7/post/DdLzDvlEd2U'
 ---
 When you deploy a Kubernetes cluster, what you are deploying are nodes, which run the containerised applications.
 

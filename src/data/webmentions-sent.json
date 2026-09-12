@@ -318,5 +318,13 @@
   "https://sajalchoudhary.net/nordletter/nl121/\u0000https://www.suomi.fi/services/servicepoint/arabianranta-library-city-of-helsinki-culture-and-leisure-division/ad712bbd-3741-4e3e-9ecf-8f397c3c8311": {
     "checkedAt": "2026-09-05T20:18:52.325Z",
     "endpoint": null
+  },
+  "https://sajalchoudhary.net/til/kubernetes-components/\u0000https://kubernetes.io/docs/concepts/architecture/nodes/": {
+    "checkedAt": "2026-09-12T10:43:08.571Z",
+    "endpoint": null
+  },
+  "https://sajalchoudhary.net/til/kubernetes-components/\u0000https://kubernetes.io/docs/concepts/workloads/pods/": {
+    "checkedAt": "2026-09-12T10:43:08.557Z",
+    "endpoint": null
   }
 }
