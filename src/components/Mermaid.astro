@@ -1,0 +1,75 @@
+---
+// Renders `<pre class="mermaid">` blocks (produced by src/utils/remarkMermaid.ts)
+// in the browser. Mermaid is a large library, so it is dynamically imported and
+// only on pages that actually contain a diagram.
+---
+
+<script>
+    const blocks = Array.from(
+        document.querySelectorAll<HTMLElement>('pre.mermaid[data-mermaid-source]')
+    );
+
+    if (blocks.length > 0) {
+        // Keep the source around: rendering replaces the element's text with
+        // the SVG, and the theme toggle needs to re-render from scratch.
+        const sources = blocks.map((block) => block.textContent ?? '');
+        const mermaid = (await import('mermaid')).default;
+
+        const isDark = () => document.documentElement.classList.contains('dark');
+
+        async function renderAll() {
+            mermaid.initialize({
+                startOnLoad: false,
+                theme: isDark() ? 'dark' : 'default',
+                // Mermaid measures label widths against this family, so it
+                // needs a real stack: 'inherit' makes it mis-measure and clip.
+                fontFamily: "'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif",
+            });
+
+            await Promise.all(
+                blocks.map(async (block, index) => {
+                    try {
+                        const { svg } = await mermaid.render(
+                            `mermaid-diagram-${index}`,
+                            sources[index]
+                        );
+                        block.innerHTML = svg;
+                        block.setAttribute('data-mermaid-rendered', '');
+                    } catch {
+                        // Leave the diagram source visible rather than an empty box.
+                        block.textContent = sources[index];
+                        block.removeAttribute('data-mermaid-rendered');
+                    }
+                })
+            );
+        }
+
+        await renderAll();
+
+        let dark = isDark();
+        new MutationObserver(() => {
+            if (isDark() === dark) return;
+            dark = isDark();
+            renderAll();
+        }).observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['class'],
+        });
+    }
+</script>
+
+<style is:global>
+    pre.mermaid {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 1.5rem 0;
+        overflow-x: auto;
+        text-align: center;
+    }
+
+    pre.mermaid[data-mermaid-rendered] svg {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
