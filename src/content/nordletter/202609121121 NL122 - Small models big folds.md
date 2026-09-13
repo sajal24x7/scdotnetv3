@@ -12,8 +12,6 @@ tags:
 edition: 122
 description: "Running local models and Apple's iPhone event"
 image: "https://storage.sajalchoudhary.net/images/2026/09/nl122-01.jpg"
-description: Running local models and Apple's iPhone event
-image: 'https://storage.sajalchoudhary.net/images/2026/09/nl122-01.jpef'
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117263572289323406'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mvfjmvptzd2t'
