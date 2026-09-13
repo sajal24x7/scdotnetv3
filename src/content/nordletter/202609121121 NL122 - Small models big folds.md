@@ -1,13 +1,21 @@
 ---
-title: "NL122 - Small Models Big Folds"
-slug: "nl122-small-models-big-folds"
-created: 2026-09-12T11:21:00+03:00
-updated: 2026-09-13T14:39:04+03:00
+title: NL122 - Small Models Big Folds
+slug: nl122-small-models-big-folds
+created: 2026-09-12T08:21:00.000Z
+updated: 2026-09-13T11:39:04.000Z
 category: nordletter
-tags: ["ai", "writing", "obsidian", "apple"]
+tags:
+  - ai
+  - writing
+  - obsidian
+  - apple
 edition: 122
-description: "Running local models and Apple's iPhone event"
-image: "https://storage.sajalchoudhary.net/images/2026/09/nl122-01.jpef"
+description: Running local models and Apple's iPhone event
+image: 'https://storage.sajalchoudhary.net/images/2026/09/nl122-01.jpef'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117263572289323406'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mvfjmvptzd2t'
+  - 'https://www.threads.com/@sajal24x7/post/DdOfXc4HLmo'
 ---
 Hello from my home in Helsinki! This is NordLetter #122, a weekly newsletter on living and walking in Finland.
 
