@@ -3,7 +3,7 @@ title: "OpenAI Misbehaves When Coming up With a Mathematics Solution"
 slug: "openai-misbehaves-when-coming-up-with-a-mathematics-solution"
 created: 2026-09-10T09:03:00+03:00
 updated: 2026-09-13T13:54:36+03:00
-category: [[202506241127 micro|micro]]
+category: micro
 tags: ["openai", "ai", "mathematics"]
 ---
 
