@@ -611,6 +611,7 @@
       "bookshelf/202608312010 Just for fun.md",
       "bookshelf/202609060817 Several very short sentences on writing.md",
       "bookshelf/202609100758 I will find you.md",
+      "bookshelf/202609101815 Contact.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
@@ -2382,6 +2383,7 @@
       "til/202608172147 How to create a VM using multipass.md",
       "til/202608231422 How to delete multipass vms.md",
       "til/202608231425 How to change shell in linux.md",
+      "til/202609121126 Kubernetes Components.md",
       "tvshelf/201901071200 Luther S2.md",
       "tvshelf/201901071201 Luther S1.md",
       "tvshelf/201901281200 Bodyguard S1.md",
@@ -4552,6 +4554,16 @@
       "category": "til",
       "created": "2024-04-01T10:43:00.000Z",
       "snippet": "Entra ID Managed Identities (Service Principals)"
+    }
+  ],
+  "til/kubernetes-components": [
+    {
+      "slug": "/til/azure-kubernetes-service/",
+      "title": "Azure Kubernetes Service",
+      "description": "",
+      "category": "til",
+      "created": "2024-04-20T09:10:00.000Z",
+      "snippet": "When we run commands (kubectl) it talks to API server. Other Kubernetes Components like etcd (DB), scheduler, etc talk to API server. All this is control plane."
     }
   ],
   "til/create-azure-load-balancer": [

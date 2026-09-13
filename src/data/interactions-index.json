@@ -1250,30 +1250,6 @@
       },
       "url": "https://mastodon.world/@dotomnivorous",
       "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:117180783135461074:111653099686979697",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Government & Policy Channel",
-        "url": "https://newsmast.community/@government",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/099/686/979/697/original/43016e49f823a5e1.png"
-      },
-      "url": "https://newsmast.community/@government",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:117180783135461074:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
     }
   ],
   "photo/202607111030": [
@@ -1477,6 +1453,19 @@
       "status": "approved"
     }
   ],
+  "photo/202608180914": [
+    {
+      "id": "instagram:like-count:DcLCHI4lSkq",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DcLCHI4lSkq/",
+      "count": 4,
+      "status": "approved"
+    }
+  ],
   "photo/a-rainbow-over-chemicum": [
     {
       "id": "instagram:like-count:DameQ6ODoIl",
@@ -1572,6 +1561,34 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/b64aa45d6f645d8d7e0c9e04550f5696.png"
       },
       "url": "https://newsmast.community/@lgbtq",
+      "status": "approved"
+    }
+  ],
+  "til/how-to-change-shell-in-linux": [
+    {
+      "id": "mastodon:like:117146970252802112:116232959228655985",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "John",
+        "url": "https://mastodon.social/@buckfiftyseven",
+        "avatar": "https://files.mastodon.social/accounts/avatars/116/232/959/228/655/985/original/d747904505680d96.jpg"
+      },
+      "url": "https://mastodon.social/@buckfiftyseven",
+      "status": "approved"
+    }
+  ],
+  "til/how-to-delete-multipass-vms": [
+    {
+      "id": "mastodon:like:117146969479707307:109541545945949310",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Andrew \"Ace\" Arsenault",
+        "url": "https://fosstodon.org/@AceArsenault",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/541/545/945/949/310/original/fcacef9039c5b4f5.png"
+      },
+      "url": "https://fosstodon.org/@AceArsenault",
       "status": "approved"
     }
   ],
