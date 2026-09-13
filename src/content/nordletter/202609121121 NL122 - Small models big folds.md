@@ -7,7 +7,7 @@ category: nordletter
 tags: ["ai", "writing", "obsidian", "apple"]
 edition: 122
 description: "Running local models and Apple's iPhone event"
-image: "https://storage.sajalchoudhary.net/images/2026/09/nl122-01.jpef"
+image: "https://storage.sajalchoudhary.net/images/2026/09/nl122-01.jpg"
 ---
 Hello from my home in Helsinki! This is NordLetter #122, a weekly newsletter on living and walking in Finland.
 
