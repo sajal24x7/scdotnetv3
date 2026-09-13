@@ -37,6 +37,7 @@ This directory centralizes all reference material for the Astro-powered build of
 
 | Area | Summary | Key Files |
 | --- | --- | --- |
+| [CLI Reference](operations/cli-reference.md) | Every runnable command in one place: npm scripts, direct script invocations with their flags, the environment variables each reads, and the workflow that does the same job in CI. | `package.json`, `scripts/*` |
 | [Deployment](operations/deployment.md) | Local commands, build pipeline (image cache → covers → Astro → Pagefind), and Cloudflare Pages configuration. | `package.json`, `cloudflare-pages.json` |
 | [Publication Allowlist](operations/publication.md) | The central explicit-allow list deciding which categories/statuses reach readers via RSS feeds and syndication. | `publication.config.json`, `src/utils/publication.ts` |
 | [Syndication](operations/syndication.md) | POSSE workflow (Mastodon, Bluesky, Threads, Instagram), rate limiting, and how URLs are persisted back to content. | `scripts/syndicate-content.js` |

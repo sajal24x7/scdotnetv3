@@ -41,6 +41,7 @@ If you add new build-time scripts, update both `package.json` and (if the Node v
 
 ## Related Documentation
 
+- [CLI Reference](cli-reference.md)
 - [Syndication Workflow](syndication.md)
 - [Publishing Pipeline](../content/publishing-pipeline.md)
 - [Content Lifecycle](../architecture/content-lifecycle.md)

@@ -1,6 +1,6 @@
 # Scripts
 
-Utility scripts for the site. The ones you're likely to need are wired into `package.json` and documented under [`docs/`](../docs/README.md):
+Utility scripts for the site. The ones you're likely to need are wired into `package.json` and documented under [`docs/`](../docs/README.md). For every runnable command with its flags and environment variables, see the [CLI Reference](../docs/operations/cli-reference.md):
 
 | Area | Scripts | Documentation |
 | --- | --- | --- |
