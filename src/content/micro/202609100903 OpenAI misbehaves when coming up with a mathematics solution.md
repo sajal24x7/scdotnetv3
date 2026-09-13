@@ -1,10 +1,17 @@
 ---
-title: "OpenAI Misbehaves When Coming up With a Mathematics Solution"
-slug: "openai-misbehaves-when-coming-up-with-a-mathematics-solution"
-created: 2026-09-10T09:03:00+03:00
-updated: 2026-09-13T13:54:36+03:00
+title: OpenAI Misbehaves When Coming up With a Mathematics Solution
+slug: openai-misbehaves-when-coming-up-with-a-mathematics-solution
+created: 2026-09-10T06:03:00.000Z
+updated: 2026-09-13T10:54:36.000Z
 category: micro
-tags: ["openai", "ai", "mathematics"]
+tags:
+  - openai
+  - ai
+  - mathematics
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117263570725342615'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mvfjm7apgu2w'
+  - 'https://www.threads.com/@sajal24x7/post/DdOfUoXnIWX'
 ---
 
 [OpenAI’s sly mathematical breakthrough sends a chill through academia](https://www.theverge.com/ai-artificial-intelligence/992953/openai-math-millennium-prize-navier-stokes)
