@@ -1622,6 +1622,8 @@
       "micro/202609081202 Arm may give phone gaming a graphics boost.md",
       "micro/202609081205 Audi announces new A2 Etron.md",
       "micro/202609092209 iOS27 will release on 14 Sep.md",
+      "micro/202609100903 OpenAI misbehaves when coming up with a mathematics solution.md",
+      "micro/202609101959 Notes on Muse AI by Meta.md",
       "micro/202609111447.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
@@ -1743,6 +1745,7 @@
       "nordletter/202608222224 NL119 - Celebrating India.md",
       "nordletter/202608291509 NL120 - From Oodi To a Mentor.md",
       "nordletter/202609041512 NL121.md",
+      "nordletter/202609121121 NL122 - Small models big folds.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -8362,6 +8365,34 @@
       "snippet": "I finished reading Anxious People today. I loved reading it. It is a humorous book, ostensibly about a hostage situation in an apartment viewing after a bank robber tries to rob a cashless bank. But it is about so much more."
     }
   ],
+  "nordletter/nl94": [
+    {
+      "slug": "/nordletter/nl122-small-models-big-folds/",
+      "title": "NL122 - Small Models Big Folds",
+      "description": "Running local models and Apple's iPhone event",
+      "category": "nordletter",
+      "created": "2026-09-12T08:21:00.000Z",
+      "snippet": "I have given Claude access to my personal vault. Mostly for updating metadata on notes in my vault. I wondered if a local model may be a better option for things like this. For small things I want to run in my vault."
+    },
+    {
+      "slug": "/nordletter/nl95-holi-week/",
+      "title": "Holi Week",
+      "description": "",
+      "category": "nordletter",
+      "created": "2026-03-07T23:08:24.000Z",
+      "snippet": "It was not a given, unlike the years past, that we would be going to the BJPF Holi event this time around. As I had said in NL94 that it had been a busy few weeks since I returned from home."
+    }
+  ],
+  "bookshelf/contact": [
+    {
+      "slug": "/nordletter/nl122-small-models-big-folds/",
+      "title": "NL122 - Small Models Big Folds",
+      "description": "Running local models and Apple's iPhone event",
+      "category": "nordletter",
+      "created": "2026-09-12T08:21:00.000Z",
+      "snippet": "I am reading Carl Sagan's Contact right now. It is a short book, and a book I've been wanting to read since I watched the 1997 movie by the same name. The book is narrated by Jodie Foster (the actress who plays the titular character in the movie)."
+    }
+  ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
     {
       "slug": "/nordletter/nl63-a-day-trip-to-turku/",
@@ -8824,16 +8855,6 @@
       "category": "nordletter",
       "created": "2026-03-07T23:08:24.000Z",
       "snippet": "It was our second time at their place. We were last here for Diwali. There were more people then, less conversations."
-    }
-  ],
-  "nordletter/nl94": [
-    {
-      "slug": "/nordletter/nl95-holi-week/",
-      "title": "Holi Week",
-      "description": "",
-      "category": "nordletter",
-      "created": "2026-03-07T23:08:24.000Z",
-      "snippet": "It was not a given, unlike the years past, that we would be going to the BJPF Holi event this time around. As I had said in NL94 that it had been a busy few weeks since I returned from home."
     }
   ],
   "blog/spring-already": [
