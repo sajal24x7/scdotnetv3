@@ -691,6 +691,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/shofar-2026-09-13",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-13"
+		},
+		"empirical": {
+			"word": "empirical",
+			"pos": "other",
+			"gloss": " adjective When we describe something, such as data, as empirical, we mean that it originated in, or was based on, observation or experience. Empirical can also be used to describe something that can be verified or disproved by observation or experiment, as in “empirical laws.”",
+			"pronunciation": "im-PEER-uh-kul",
+			"example": "The team of conservation biologists has over the years collected reams of empirical data, from species inventories to soil analyses.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/empirical-2026-09-14",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-14"
 		}
 	}
 }
