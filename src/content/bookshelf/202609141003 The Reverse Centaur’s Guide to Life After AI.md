@@ -8,13 +8,8 @@ tags: ["ai", "automation"]
 author:
   - Cory Doctorow
 started: 2026-09-14T10:13:00
-finished:
 genre: non-fiction
 format: audio
-rating:
-series:
-status: todo
+status: started
 ---
-## Review
-## Notes
-
+Started reading.
