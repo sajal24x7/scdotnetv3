@@ -9,5 +9,6 @@ platform: Netflix
 status: finished
 genre: action
 year: 2017
+cover: resident-evil-the-final-chapter.webp
 ---
 Finished watching on 2020-04-29.
