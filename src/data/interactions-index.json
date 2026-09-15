@@ -934,6 +934,19 @@
   ],
   "micro/openai-misbehaves-when-coming-up-with-a-mathematics-solution": [
     {
+      "id": "bluesky:like:3mvfjm7apgu2w:did:plc:y4ux77dyewbsprmdnu4prj4c",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "nachasic.bsky.social",
+        "url": "https://bsky.app/profile/nachasic.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:y4ux77dyewbsprmdnu4prj4c/bafkreiduvtaq3m6ilp6jhz3gqp7qi2tfacu7pjslb7gz7dqqkaj44t3lfm"
+      },
+      "url": "https://bsky.app/profile/nachasic.bsky.social",
+      "published": "2026-09-14T11:55:39.372Z",
+      "status": "approved"
+    },
+    {
       "id": "mastodon:repost:117263570725342615:111653246446280657",
       "type": "repost",
       "platform": "mastodon",
