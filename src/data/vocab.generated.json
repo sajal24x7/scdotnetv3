@@ -710,6 +710,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/quorum-2026-09-15",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-15"
+		},
+		"facsimile": {
+			"word": "facsimile",
+			"pos": "other",
+			"gloss": " noun A facsimile is an exact copy of something. The word facsimile is also still sometimes used to refer to a system of transmitting and reproducing graphic matter, such as printed text or photos, though the word fax is more common.",
+			"pronunciation": "fak-SIM-uh-lee",
+			"example": "The forged painting was an impressive facsimile of the original. // The documents can be sent by facsimile to the number below.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/facsimile-2026-09-16",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-16"
 		}
 	}
 }
