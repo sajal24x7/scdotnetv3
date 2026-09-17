@@ -720,6 +720,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/facsimile-2026-09-16",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-16"
+		},
+		"watershed": {
+			"word": "watershed",
+			"pos": "other",
+			"gloss": " noun Watershed, used figuratively, refers to a crucial dividing point, line, or factor. Used literally, the word may refer to a ridge from which rivers drain on either side, or to the area of land that includes a particular river or lake and all the rivers, streams, etc. that flow into it.: a crucial dividing point, line, or factor",
+			"pronunciation": "WAW-ter-shed",
+			"example": "The protests marked a watershed in the nation’s history. // The Continental Divide is the most well known watershed in the United States.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/watershed-2026-09-17",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-17"
 		}
 	}
 }
