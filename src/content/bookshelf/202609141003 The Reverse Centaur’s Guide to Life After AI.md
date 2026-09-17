@@ -1,19 +1,25 @@
 ---
-title: "The Reverse Centaur’s Guide to Life After AI"
-slug: "the-reverse-centaurs-guide-to-life-after-ai"
-created: 2026-09-14T10:03:00+03:00
-updated: 2026-09-17T10:55:04+03:00
+title: The Reverse Centaur’s Guide to Life After AI
+slug: the-reverse-centaurs-guide-to-life-after-ai
+created: 2026-09-14T07:03:00.000Z
+updated: 2026-09-17T07:55:04.000Z
 category: bookshelf
-tags: ["ai", "automation"]
+tags:
+  - ai
+  - automation
 author:
   - Cory Doctorow
-started: 2026-09-14T10:13:00
-finished: 2026-09-17T07:27:00
+started: 2026-09-14T10:13:00.000Z
+finished: 2026-09-17T07:27:00.000Z
 genre: non-fiction
 format: audio
 rating: love
 cover: the-reverse-centaurs-guide-to-life-after-ai.webp
 status: finished
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117286181933585252'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mvpkwlyyvi2t'
+  - 'https://www.threads.com/@sajal24x7/post/DdYxZUQFVG5'
 ---
 ## Review
 

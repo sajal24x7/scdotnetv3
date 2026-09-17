@@ -1,10 +1,16 @@
 ---
-title: "Winter Is Coming"
-slug: "winter-is-coming"
-created: 2026-09-17T08:40:00+03:00
-updated: 2026-09-17T08:40:00+03:00
+title: Winter Is Coming
+slug: winter-is-coming
+created: 2026-09-17T05:40:00.000Z
+updated: 2026-09-17T05:40:00.000Z
 category: micro
-tags: ["finland", "winter"]
+tags:
+  - finland
+  - winter
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117286182819001898'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mvpkwyi64r2n'
+  - 'https://www.threads.com/@sajal24x7/post/DdYxa31FUF8'
 ---
 
 [Finland faces prospect of biting cold winter, FMI meteorologist says](https://yle.fi/a/74-20246705?origin=rss)
