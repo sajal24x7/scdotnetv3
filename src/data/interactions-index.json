@@ -875,20 +875,6 @@
       "status": "approved"
     }
   ],
-  "micro/ios27-will-release-on-14-sep": [
-    {
-      "id": "mastodon:repost:117243071144899434:114863603913131469",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Apple-feed",
-        "url": "https://channel.org/@applefeed",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/6e04454c4298099704bb671fd177b734.jpg"
-      },
-      "url": "https://channel.org/@applefeed",
-      "status": "approved"
-    }
-  ],
   "micro/kunal-shah-to-become-global-head-of-whatsapp": [
     {
       "id": "mastodon:like:116798122425373992:110436829441173808",
