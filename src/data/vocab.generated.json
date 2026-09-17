@@ -681,6 +681,45 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/hobnob-2026-09-12",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-12"
+		},
+		"shofar": {
+			"word": "shofar",
+			"pos": "other",
+			"gloss": " noun A shofar is the horn of an animal (usually a ram) blown as a trumpet by the ancient Hebrews in battle and during religious observances. It is used in modern Judaism especially during Rosh Hashanah and at the end of Yom Kippur.",
+			"pronunciation": "SHOH-far",
+			"example": "As a child, Eli’s favorite part of the High Holidays was the sounding of the shofar.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/shofar-2026-09-13",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-13"
+		},
+		"empirical": {
+			"word": "empirical",
+			"pos": "other",
+			"gloss": " adjective When we describe something, such as data, as empirical, we mean that it originated in, or was based on, observation or experience. Empirical can also be used to describe something that can be verified or disproved by observation or experiment, as in “empirical laws.”",
+			"pronunciation": "im-PEER-uh-kul",
+			"example": "The team of conservation biologists has over the years collected reams of empirical data, from species inventories to soil analyses.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/empirical-2026-09-14",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-14"
+		},
+		"quorum": {
+			"word": "quorum",
+			"pos": "other",
+			"gloss": " noun Quorum refers to the smallest number of people who must be present at a meeting in order for official decisions to be made. Broadly speaking, quorum may refer to any select group. We need a quorum of fifteen staff members on the call in order to move forward with the items on the meeting agenda.",
+			"pronunciation": "KWOR-um",
+			"href": "https://www.merriam-webster.com/word-of-the-day/quorum-2026-09-15",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-15"
+		},
+		"facsimile": {
+			"word": "facsimile",
+			"pos": "other",
+			"gloss": " noun A facsimile is an exact copy of something. The word facsimile is also still sometimes used to refer to a system of transmitting and reproducing graphic matter, such as printed text or photos, though the word fax is more common.",
+			"pronunciation": "fak-SIM-uh-lee",
+			"example": "The forged painting was an impressive facsimile of the original. // The documents can be sent by facsimile to the number below.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/facsimile-2026-09-16",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-16"
 		}
 	}
 }

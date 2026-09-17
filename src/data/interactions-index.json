@@ -664,20 +664,6 @@
       "status": "approved"
     }
   ],
-  "micro/202608301448": [
-    {
-      "id": "mastodon:repost:117184315561557485:111653086188808400",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Gaming Channel",
-        "url": "https://newsmast.community/@gaming",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/086/188/808/400/original/a6a0714ab054b18f.png"
-      },
-      "url": "https://newsmast.community/@gaming",
-      "status": "approved"
-    }
-  ],
   "micro/202609111447": [
     {
       "id": "mastodon:repost:117253340277989286:111601700706806494",
@@ -889,20 +875,6 @@
       "status": "approved"
     }
   ],
-  "micro/ios27-will-release-on-14-sep": [
-    {
-      "id": "mastodon:repost:117243071144899434:114863603913131469",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Apple-feed",
-        "url": "https://channel.org/@applefeed",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/6e04454c4298099704bb671fd177b734.jpg"
-      },
-      "url": "https://channel.org/@applefeed",
-      "status": "approved"
-    }
-  ],
   "micro/kunal-shah-to-become-global-head-of-whatsapp": [
     {
       "id": "mastodon:like:116798122425373992:110436829441173808",
@@ -929,6 +901,47 @@
       },
       "url": "https://bsky.app/profile/lofiglow.bsky.social",
       "published": "2026-08-22T13:11:53.266Z",
+      "status": "approved"
+    }
+  ],
+  "micro/notes-on-muse-ai-by-meta": [
+    {
+      "id": "mastodon:repost:117263571633376119:111653185420926112",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Social Media Channel",
+        "url": "https://newsmast.community/@socialmedia",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/185/420/926/112/original/260824615f005811.png"
+      },
+      "url": "https://newsmast.community/@socialmedia",
+      "status": "approved"
+    }
+  ],
+  "micro/openai-misbehaves-when-coming-up-with-a-mathematics-solution": [
+    {
+      "id": "bluesky:like:3mvfjm7apgu2w:did:plc:y4ux77dyewbsprmdnu4prj4c",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "nachasic.bsky.social",
+        "url": "https://bsky.app/profile/nachasic.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:y4ux77dyewbsprmdnu4prj4c/bafkreiduvtaq3m6ilp6jhz3gqp7qi2tfacu7pjslb7gz7dqqkaj44t3lfm"
+      },
+      "url": "https://bsky.app/profile/nachasic.bsky.social",
+      "published": "2026-09-14T11:55:39.372Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117263570725342615:111653246446280657",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Mathematics Channel",
+        "url": "https://newsmast.community/@mathematics",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/246/446/280/657/original/2c08a1c826257e76.png"
+      },
+      "url": "https://newsmast.community/@mathematics",
       "status": "approved"
     }
   ],
@@ -1249,6 +1262,32 @@
         "avatar": "https://files.mastodon.social/cache/accounts/avatars/117/083/467/106/391/302/original/f2a1c6e0cc6827f0.jpeg"
       },
       "url": "https://mastodon.world/@dotomnivorous",
+      "status": "approved"
+    }
+  ],
+  "nordletter/nl122-small-models-big-folds": [
+    {
+      "id": "mastodon:repost:117263572289323406:114910036696039119",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "#writing",
+        "url": "https://tagpush.app/@writing",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/910/036/696/039/119/original/a861424ecda2a542.png"
+      },
+      "url": "https://tagpush.app/@writing",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117263572289323406:116141936733036818",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Literbook",
+        "url": "https://mastodon.social/@Literbook",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/5e0c9f27cbe4ab1dddc05717be534585.png"
+      },
+      "url": "https://mastodon.social/@Literbook",
       "status": "approved"
     }
   ],
@@ -1589,6 +1628,19 @@
         "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/541/545/945/949/310/original/fcacef9039c5b4f5.png"
       },
       "url": "https://fosstodon.org/@AceArsenault",
+      "status": "approved"
+    }
+  ],
+  "til/kubernetes-components": [
+    {
+      "id": "threads:like-count:DdLzDvlEd2U",
+      "type": "like-count",
+      "platform": "threads",
+      "author": {
+        "name": "Threads"
+      },
+      "url": "https://www.threads.com/@sajal24x7/post/DdLzDvlEd2U",
+      "count": 1,
       "status": "approved"
     }
   ],
