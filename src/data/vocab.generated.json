@@ -730,6 +730,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/watershed-2026-09-17",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-17"
+		},
+		"churlish": {
+			"word": "churlish",
+			"pos": "other",
+			"gloss": " adjective Churlish is a formal word used to describe someone or something that is impolite or rude.",
+			"pronunciation": "CHUR-lish",
+			"example": "I was shocked by the churlish remarks made by my opponent.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/churlish-2026-09-18",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-18"
 		}
 	}
 }
