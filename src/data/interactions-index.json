@@ -1182,6 +1182,110 @@
       "status": "approved"
     }
   ],
+  "micro/winter-is-coming": [
+    {
+      "id": "threads:reply:17921139597427685",
+      "type": "reply",
+      "platform": "threads",
+      "author": {
+        "name": "stumbledonroad",
+        "url": "https://www.threads.com/@stumbledonroad"
+      },
+      "content": "<p>Cold in winter near the Arctic circle. Who could even have guessed 😁<br /><br />It would be nice for a change.</p>",
+      "url": "https://www.threads.com/@stumbledonroad/post/DdY11KpiMOc",
+      "published": "2026-09-17T12:17:17.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "threads:reply:18017335796790892",
+      "type": "reply",
+      "platform": "threads",
+      "author": {
+        "name": "blodulvinna",
+        "url": "https://www.threads.com/@blodulvinna"
+      },
+      "content": "<p>Hopefully it's true this time! Tired of false winters with only rain and fog.</p>",
+      "url": "https://www.threads.com/@blodulvinna/post/DdY6yqICN_g",
+      "published": "2026-09-17T13:00:38.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "threads:reply:18105016091255702",
+      "type": "reply",
+      "platform": "threads",
+      "author": {
+        "name": "anjuska73",
+        "url": "https://www.threads.com/@anjuska73"
+      },
+      "content": "<p>Can’t wait ☺️</p>",
+      "url": "https://www.threads.com/@anjuska73/post/DdY-9ykCnln",
+      "published": "2026-09-17T13:37:06.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "threads:reply:18109470604881696",
+      "type": "reply",
+      "platform": "threads",
+      "author": {
+        "name": "marihelli.hoo",
+        "url": "https://www.threads.com/@marihelli.hoo"
+      },
+      "content": "<p>I hope I can get to Italy before the biting cold temperatures start 😭</p>",
+      "url": "https://www.threads.com/@marihelli.hoo/post/DdY_mSiAF4P",
+      "published": "2026-09-17T13:42:38.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "threads:reply:17936325336375095",
+      "type": "reply",
+      "platform": "threads",
+      "author": {
+        "name": "daliofthewoods",
+        "url": "https://www.threads.com/@daliofthewoods"
+      },
+      "content": "<p>Yeah, looking at the massive yield of apples and rowan berries etc. I've mentally been preparing for some damn nuclear winter. 🥶</p>",
+      "url": "https://www.threads.com/@daliofthewoods/post/DdZRCyXili0",
+      "published": "2026-09-17T16:15:04.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "threads:reply:18111617063125265",
+      "type": "reply",
+      "platform": "threads",
+      "author": {
+        "name": "nattdagwatches",
+        "url": "https://www.threads.com/@nattdagwatches"
+      },
+      "content": "<p>Love it, can’t wait!</p>",
+      "url": "https://www.threads.com/@nattdagwatches/post/DdZiD0pkZq_",
+      "published": "2026-09-17T18:43:45.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "threads:reply:18121491751854243",
+      "type": "reply",
+      "platform": "threads",
+      "author": {
+        "name": "christian374918",
+        "url": "https://www.threads.com/@christian374918"
+      },
+      "content": "<p>Finland? Cold? Nooooo waaay!!!<br /><br />Finns… if you need any tips, like how to put on a warm jacket or so, feel free to dm me</p>",
+      "url": "https://www.threads.com/@christian374918/post/DdayyZ4jQMn",
+      "published": "2026-09-18T06:29:10.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "threads:like-count:DdYxa31FUF8",
+      "type": "like-count",
+      "platform": "threads",
+      "author": {
+        "name": "Threads"
+      },
+      "url": "https://www.threads.com/@sajal24x7/post/DdYxa31FUF8",
+      "count": 6,
+      "status": "approved"
+    }
+  ],
   "nordletter/nl107": [
     {
       "id": "mastodon:like:116665713078130320:110249442633796155",

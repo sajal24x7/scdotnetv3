@@ -613,6 +613,7 @@
       "bookshelf/202609100758 I will find you.md",
       "bookshelf/202609101815 Contact.md",
       "bookshelf/202609141003 The Reverse Centaur’s Guide to Life After AI.md",
+      "bookshelf/202609170728 Sculptor’s Daughter.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
@@ -1626,6 +1627,7 @@
       "micro/202609100903 OpenAI misbehaves when coming up with a mathematics solution.md",
       "micro/202609101959 Notes on Muse AI by Meta.md",
       "micro/202609111447.md",
+      "micro/202609170840 Winter is coming.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -7232,6 +7234,14 @@
   ],
   "bookshelf/enshittification": [
     {
+      "slug": "/bookshelf/the-reverse-centaurs-guide-to-life-after-ai/",
+      "title": "The Reverse Centaur’s Guide to Life After AI",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-09-14T07:03:00.000Z",
+      "snippet": "Like Cory's last book I had read Enshittification, I knew most about what this book would entail. There was nothing new (for me). As Cory mentions in the Acknowledgement section - 'This books was written on my website pluralistic.net'."
+    },
+    {
       "slug": "/micro/giving-your-healthcare-info-to-a-chatbot-is-unsurprisingly-a-terrible-idea/",
       "title": "Giving Your Healthcare Info to a Chatbot Is, Unsurprisingly, a Terrible Idea",
       "description": "",
@@ -9112,6 +9122,16 @@
       "category": "bookshelf",
       "created": "2025-12-19T15:11:57.000Z",
       "snippet": "Mr Housel does not advise you to buy stocks or invest in real estate or anything. Like the psychology of money, this is a book about principles."
+    }
+  ],
+  "micro/anthropic-to-pay-15-billion-to-authors-in-landmark-ai-settlement": [
+    {
+      "slug": "/bookshelf/the-reverse-centaurs-guide-to-life-after-ai/",
+      "title": "The Reverse Centaur’s Guide to Life After AI",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-09-14T07:03:00.000Z",
+      "snippet": "… LLMs are built in three steps - scraping large amounts of data (how you collect the data, may be criminal in certain cases like Anthropic to pay $1.5 billion to authors in landmark AI settlement), but otherwise it comes under fair use. The next step is converting that data into tokens etc. and publishing that as software. The final step is whatever the AI models create - which is all public domain, so does not have any copyright whatsoever."
     }
   ],
   "bookshelf/the-thinking-machine": [
