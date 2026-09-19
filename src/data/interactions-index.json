@@ -678,6 +678,31 @@
       "status": "approved"
     }
   ],
+  "micro/202609181309": [
+    {
+      "id": "mastodon:repost:117291735893661979:114863603913131469",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Apple-feed",
+        "url": "https://channel.org/@applefeed",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/6e04454c4298099704bb671fd177b734.jpg"
+      },
+      "url": "https://channel.org/@applefeed",
+      "status": "approved"
+    },
+    {
+      "id": "threads:like-count:DdbTDCiFt1j",
+      "type": "like-count",
+      "platform": "threads",
+      "author": {
+        "name": "Threads"
+      },
+      "url": "https://www.threads.com/@sajal24x7/post/DdbTDCiFt1j",
+      "count": 3,
+      "status": "approved"
+    }
+  ],
   "micro/amazon-has-a-new-plan-for-games": [
     {
       "id": "mastodon:like:116696520863508112:1339141",
@@ -1108,7 +1133,7 @@
       "type": "reply",
       "platform": "mastodon",
       "author": {
-        "name": "Synthnomad",
+        "name": "Synthnomader",
         "url": "https://mastodon.social/@globaltrackfrequency",
         "avatar": "https://files.mastodon.social/accounts/avatars/117/068/680/502/661/392/original/6453cea1084de03c.jpg"
       },
@@ -1150,7 +1175,7 @@
       "type": "like",
       "platform": "mastodon",
       "author": {
-        "name": "Synthnomad",
+        "name": "Synthnomader",
         "url": "https://mastodon.social/@globaltrackfrequency",
         "avatar": "https://files.mastodon.social/accounts/avatars/117/068/680/502/661/392/original/6453cea1084de03c.jpg"
       },
@@ -1266,11 +1291,11 @@
       "type": "reply",
       "platform": "threads",
       "author": {
-        "name": "christian374918",
-        "url": "https://www.threads.com/@christian374918"
+        "name": "christianapband",
+        "url": "https://www.threads.com/@christianapband"
       },
       "content": "<p>Finland? Cold? Nooooo waaay!!!<br /><br />Finns… if you need any tips, like how to put on a warm jacket or so, feel free to dm me</p>",
-      "url": "https://www.threads.com/@christian374918/post/DdayyZ4jQMn",
+      "url": "https://www.threads.com/@christianapband/post/DdayyZ4jQMn",
       "published": "2026-09-18T06:29:10.000Z",
       "status": "approved"
     },
