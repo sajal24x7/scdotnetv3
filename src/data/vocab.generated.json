@@ -740,6 +740,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/churlish-2026-09-18",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-18"
+		},
+		"aggrandize": {
+			"word": "aggrandize",
+			"pos": "other",
+			"gloss": " verb To aggrandize someone (or something) is to enhance their power, wealth, position, or reputation. Aggrandize can also mean \"to increase or enlarge\" or \"to praise highly.\"",
+			"pronunciation": "uh-GRAN-dyze",
+			"example": "Critics of the book argue that the author aggrandizes corrupt politicians.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/aggrandize-2026-09-19",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-19"
 		}
 	}
 }
