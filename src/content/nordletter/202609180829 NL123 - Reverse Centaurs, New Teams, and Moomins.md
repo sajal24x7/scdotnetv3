@@ -1,13 +1,22 @@
 ---
-title: "Reverse Centaurs, New Teams, and Moomins"
-slug: "nl123-reverse-centaurs-new-teams-and-moomins"
-created: 2026-09-18T08:29:00+03:00
-updated: 2026-09-19T22:10:10+03:00
+title: 'Reverse Centaurs, New Teams, and Moomins'
+slug: nl123-reverse-centaurs-new-teams-and-moomins
+created: 2026-09-18T05:29:00.000Z
+updated: 2026-09-19T19:10:10.000Z
 category: nordletter
-tags: ["reading", "books", "ai", "work", "moomin"]
+tags:
+  - reading
+  - books
+  - ai
+  - work
+  - moomin
 edition: 123
-description: "Reading Cory's newest book and reminiscing about moomins"
-image: "https://storage.sajalchoudhary.net/images/2026/09/nl123-06.jpeg"
+description: Reading Cory's newest book and reminiscing about moomins
+image: 'https://storage.sajalchoudhary.net/images/2026/09/nl123-06.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117299626433245087'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mvvjyicmyt27'
+  - 'https://www.threads.com/@sajal24x7/post/Dde4rzbAZmn'
 ---
 Hello from my home in Helsinki! This is NordLetter #123, a weekly newsletter on living and walking in Finland.
 
