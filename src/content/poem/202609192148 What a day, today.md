@@ -3,7 +3,7 @@ title: "What a Day, Today"
 slug: "what-a-day-today"
 created: 2026-09-19T21:48:00+03:00
 updated: 2026-09-19T21:48:25+03:00
-category: poems
+category: poem
 tags: [day]
 ---
 What a day, today!

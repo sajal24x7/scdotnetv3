@@ -3,7 +3,7 @@ title: "Days Are Getting Shorter Here"
 slug: "days-are-getting-shorter-here"
 created: 2026-09-19T20:39:00+03:00
 updated: 2026-09-19T21:48:08+03:00
-category: poems
+category: poem
 tags: [winter]
 ---
 Days are getting shorter here,
