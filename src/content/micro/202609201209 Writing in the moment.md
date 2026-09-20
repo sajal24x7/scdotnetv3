@@ -12,6 +12,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117303095886939870'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mvx3c5yfal2w'
+  - 'https://www.threads.com/@sajal24x7/post/Ddg-FCgm0qR'
 ---
 I saw this in [Gruber's review of the iPhone 18 Pro](https://daringfireball.net/2026/09/the_iphones_18_pro),
 

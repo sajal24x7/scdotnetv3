@@ -1,10 +1,15 @@
 ---
-title: "What a Day, Today"
-slug: "what-a-day-today"
-created: 2026-09-19T21:48:00+03:00
-updated: 2026-09-19T21:48:25+03:00
+title: 'What a Day, Today'
+slug: what-a-day-today
+created: 2026-09-19T18:48:00.000Z
+updated: 2026-09-19T18:48:25.000Z
 category: poem
-tags: [day]
+tags:
+  - day
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117304211487812264'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mvxl5iim3q2w'
+  - 'https://www.threads.com/@sajal24x7/post/Ddg-H7Pm7Cv'
 ---
 What a day, today!
 I saw a black box, at a distance,
