@@ -16,8 +16,8 @@ Follow this guide when adding or updating Markdown/MDX entries under `src/conten
 | --- | --- | --- |
 | `title` | Optional | Recommended for long-form pieces; cards fall back to slug if missing. |
 | `description` | Optional | Appears in search results and cards; keep under ~160 characters. |
-| `created` | Required | ISO string or `Date` value. Used for sorting, display, and RSS `pubDate`. |
-| `updated` | Optional | Displayed where relevant; set when substantive revisions occur. |
+| `created` | Required | ISO string or `Date` value. Used for RSS `pubDate` and for sorting everywhere except `/garden`, which sorts by `updated` (falling back to `created`) instead — see [Content Lifecycle](../architecture/content-lifecycle.md). |
+| `updated` | Optional | Set when substantive revisions occur. Cards on `/garden` and its sibling category pages (`/evergreen`, `/til`, `/stories`, `/poems`, which share the same card component) display this field instead of `created` when it's present. Garden post pages also show it in a "Planted / Last tended" line above the body when it differs from `created` by more than a day. |
 | `category` | Required | One of `evergreen`, `blog`, `micro`, `photo`, `nordletter`, `story`, `poem`, `bookshelf`, `filmshelf`, `tvshelf`, `gameshelf`, `now`, `til`, `colophon`. Categories drive navigation highlights, chip colors, and URLs.【F:src/content.config.ts†L41】【F:src/content.config.ts†L106-L121】 |
 | `status` | Optional (default `started`) | Unified `todo` / `started` / `paused` / `finished` field, shared by `now` posts (a life focus) and shelf posts (a book/film/show/game). Display text is category-specific — see `src/utils/shelfStatus.ts`. Shelf RSS feeds only include entries with `status: finished`.【F:src/content.config.ts†L42-L44】 |
 | `tags` | Optional | Array of strings; powers tag pages and search weighting. |
@@ -34,7 +34,7 @@ Nordletter issues (`src/content/nordletter`) and notes use the same shared schem
 ## Metadata and Chips
 
 - Categories render through `CategoryDisplay.astro`, which applies the shared `.card-chip` style. Keep category values concise so chips remain legible.【F:src/components/CategoryDisplay.astro†L1-L16】【F:src/styles/global.css†L475-L540】
-- Publication dates and syndication notices also use chip styling. Ensure `created` is accurate so time-based UI (and RSS `pubDate`) remains correct.【F:src/components/Card.astro†L1-L64】【F:src/components/PostItem.astro†L70-L180】
+- Publication dates and syndication notices also use chip styling. Ensure `created` is accurate so time-based UI (and RSS `pubDate`) remains correct. On garden cards specifically, the chip reflects `updated` when set, so keep `updated` current too if you want the card's visible date to move.【F:src/components/Card.astro†L1-L64】【F:src/components/PostItem.astro†L70-L180】
 
 ## Linking and Backlinks
 

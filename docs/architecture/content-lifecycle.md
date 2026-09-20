@@ -12,8 +12,8 @@ This guide documents how Markdown files flow from `src/content` into Astro pages
 
 - `getContentCategories()` in `src/utils/content.ts` returns the category list (`getYearDirectories` survives as a backwards-compatible alias from the old year-folder layout).
 - `getAllPosts()` lazily caches posts from every category collection to minimize repeated reads during a build. Subsequent calls reuse the same in-memory array.
-- `getPostsByCategory()` filters the cached posts using either named filters (e.g., `streamHighlights`) or explicit category arrays. Results are sorted by publication date descending and support optional limits.
-- `transformPost()` normalizes post data for grid-based components, attaching computed links and flattening frontmatter for consistent consumption.
+- `getPostsByCategory()` filters the cached posts using either named filters (e.g., `streamHighlights`) or explicit category arrays. Results are sorted descending by `created` and support optional limits. Pass `{ sortBy: 'updated' }` to sort by `updated` instead, falling back to `created` for posts without one — `src/pages/garden/index.astro` is currently the only caller that does this, so the garden listing is ordered by last edit rather than publish date.
+- `transformPost()` normalizes post data for grid-based components, attaching computed links, flattening frontmatter, and carrying `updated` through (previously dropped) so cards can display it.
 
 ## Derived Artifacts
 
@@ -23,6 +23,11 @@ This guide documents how Markdown files flow from `src/content` into Astro pages
 | `dist/pagefind/` | Pagefind crawls the built HTML output as a post-build step (`pagefind --site dist` in the `build` script). | Read by `src/pages/search.astro` for client-side queries. |
 | `src/data/nordletter-image-manifest.json` + cached images | `npm run cache-nordletter-images` before every dev/build. | Newsletter thumbnails in `NordletterGrid.astro` (see [Nordletter Image Cache](../operations/nordletter-image-cache.md)). |
 | Generated cover maps (`src/utils/bookCovers.ts` etc.) | `npm run generate-covers` and the per-shelf generate scripts. | Shelf layouts import cover images at build time. |
+
+## Garden Dates: Planted vs. Tended
+
+- `/garden` (and its `getPostsByCategory(..., { sortBy: 'updated' })` call) treats a note's `updated` field as its primary timeline signal, falling back to `created` when `updated` is unset. The evergreen/til/story/poem list pages reuse `Card.astro`, so their cards pick up the same `updated`-or-`created` display even though those pages still sort by `created`.
+- `PostLayout.astro` renders an additional "Planted `<created>` ago" / "Last tended `<updated>` ago" line above the body, garden categories only. "Last tended" only appears when `updated` is more than 24 hours after `created` (the same threshold `src/utils/feed.ts` uses for the homepage feed's "updated" label), so a same-day typo fix doesn't show as an edit. This is separate from, and additional to, the existing Published/Updated line at the bottom of every post.
 
 ## Backlinks Integration
 
