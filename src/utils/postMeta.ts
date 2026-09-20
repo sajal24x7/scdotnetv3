@@ -1,3 +1,29 @@
+import type { Interaction } from './interactions';
+import type { AdjacentPost } from './content';
+
+export interface Backlink {
+    slug: string;
+    title: string;
+    description: string;
+    category: string;
+    created: Date;
+}
+
+/**
+ * The prop shape every post detail layout accepts, so `[...slug].astro` can
+ * pick one from a table and pass the same props to all of them.
+ */
+export interface PostLayoutProps {
+    entry: { data: Record<string, any> };
+    category: string;
+    canonicalUrl: string;
+    backlinks: Backlink[];
+    interactions?: Interaction[];
+    hasUpdatedDate: boolean;
+    /** Neighbouring pieces in the same category; only the prose layout uses them. */
+    siblings?: { previous?: AdjacentPost; next?: AdjacentPost };
+}
+
 /**
  * Common frontmatter fields every post detail layout needs, read once so the
  * layouts stay markup-only.

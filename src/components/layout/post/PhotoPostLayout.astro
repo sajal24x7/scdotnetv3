@@ -7,31 +7,9 @@ import Interactions from '../../interactions/Interactions.astro';
 import PhotoCarousel from '../../PhotoCarousel.astro';
 import SyndicationLinks from '../../SyndicationLinks.astro';
 import NewsletterSignup from '../../ui/NewsletterSignup.astro';
-import type { Interaction } from '../../../utils/interactions';
+import type { PostLayoutProps } from '../../../utils/postMeta';
 
-interface Backlink {
-    slug: string;
-    title: string;
-    description: string;
-    category: string;
-    created: Date;
-}
-
-interface PostEntry {
-    data: Record<string, any>;
-}
-
-interface Props {
-    entry: PostEntry;
-    /** Always 'photo'; accepted so every post layout shares one prop shape. */
-    category?: string;
-    canonicalUrl: string;
-    backlinks: Backlink[];
-    interactions?: Interaction[];
-    hasUpdatedDate: boolean;
-}
-
-const { entry, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } = Astro.props as Props;
+const { entry, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } = Astro.props as PostLayoutProps;
 const category = 'photo';
 
 const entryData = entry.data ?? {};

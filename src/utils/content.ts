@@ -189,6 +189,39 @@ export function getPostLayout(category: string): PostLayoutName {
     return (CATEGORY_LAYOUTS as Record<string, PostLayoutName>)[category] ?? DEFAULT_POST_LAYOUT;
 }
 
+export interface AdjacentPost {
+    title: string;
+    href: string;
+}
+
+/**
+ * The pieces published either side of `id` within a category, oldest first, so
+ * a reader can walk a body of work (poems, stories) in the order it was written.
+ * `previous` is the older piece, `next` the newer one.
+ */
+export function getAdjacentPosts(
+    posts: Post[],
+    category: string,
+    id: string
+): { previous?: AdjacentPost; next?: AdjacentPost } {
+    const ordered = posts
+        .filter((post) => post.data.category === category)
+        .sort((a, b) => toTimestamp(a.data.created) - toTimestamp(b.data.created));
+
+    const index = ordered.findIndex((post) => post.id === id);
+    if (index === -1) {
+        return {};
+    }
+
+    const toAdjacent = (post: Post | undefined): AdjacentPost | undefined =>
+        post ? { title: post.data.title ?? 'Untitled', href: `/${post.data.category}/${post.id}/` } : undefined;
+
+    return {
+        previous: toAdjacent(ordered[index - 1]),
+        next: toAdjacent(ordered[index + 1])
+    };
+}
+
 
 type CategoryFilter = CategoryFilterKey | ReadonlyArray<string> | string;
 

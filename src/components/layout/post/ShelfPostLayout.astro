@@ -4,9 +4,8 @@ import PostShell from './PostShell.astro';
 import PostMetaLine from './PostMetaLine.astro';
 import ShelfMetaChips from './ShelfMetaChips.astro';
 import Tag from '../../Tag.astro';
-import { getPostCommonMeta } from '../../../utils/postMeta';
+import { getPostCommonMeta, type PostLayoutProps } from '../../../utils/postMeta';
 import { getShelfMeta, getShelfCoverImage, type ShelfCategory } from '../../../utils/shelfMeta';
-import type { Interaction } from '../../../utils/interactions';
 
 /**
  * Shelf entries (bookshelf, filmshelf, tvshelf, gameshelf): cover art on the
@@ -14,24 +13,7 @@ import type { Interaction } from '../../../utils/interactions';
  * lives in `src/utils/shelfMeta.ts`.
  */
 
-interface Backlink {
-    slug: string;
-    title: string;
-    description: string;
-    category: string;
-    created: Date;
-}
-
-interface Props {
-    entry: { data: Record<string, any> };
-    category: ShelfCategory;
-    canonicalUrl: string;
-    backlinks: Backlink[];
-    interactions?: Interaction[];
-    hasUpdatedDate: boolean;
-}
-
-const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } = Astro.props as Props;
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } = Astro.props as PostLayoutProps;
 
 const entryData = entry.data ?? {};
 const meta = getPostCommonMeta(entryData, hasUpdatedDate);

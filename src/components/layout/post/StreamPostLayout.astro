@@ -2,8 +2,7 @@
 import PostShell from './PostShell.astro';
 import CenteredPostHeader from './CenteredPostHeader.astro';
 import PostMetaLine from './PostMetaLine.astro';
-import { getPostCommonMeta } from '../../../utils/postMeta';
-import type { Interaction } from '../../../utils/interactions';
+import { getPostCommonMeta, type PostLayoutProps } from '../../../utils/postMeta';
 
 /**
  * Chronological posts (blog, micro, nordletter) and the default layout for any
@@ -11,24 +10,7 @@ import type { Interaction } from '../../../utils/interactions';
  * post is dated once and stays that way.
  */
 
-interface Backlink {
-    slug: string;
-    title: string;
-    description: string;
-    category: string;
-    created: Date;
-}
-
-interface Props {
-    entry: { data: Record<string, any> };
-    category: string;
-    canonicalUrl: string;
-    backlinks: Backlink[];
-    interactions?: Interaction[];
-    hasUpdatedDate: boolean;
-}
-
-const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } = Astro.props as Props;
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } = Astro.props as PostLayoutProps;
 
 const meta = getPostCommonMeta(entry.data, hasUpdatedDate);
 const edition = category === 'nordletter' ? entry.data?.edition : undefined;

@@ -32,8 +32,11 @@ Adding a category is one line in `CATEGORY_LAYOUTS` plus one entry in the compon
 - **No evergreen framing.** No planted/tended line and no "Updated" stamp. `updated` still feeds JSON-LD `dateModified` and the feeds; it is simply not presented as a revision, because for most of this archive it is a migration timestamp rather than an edit.
 - **One date.** A dateline reading `A poem · February 2012`, and a footer reading `First published February 2012.`
 - **No hero image.** The frontmatter `image` on these posts is an OG card, not an illustration, so it stays in the `<head>` and out of the body.
-- **Poem variant** — 34rem measure, verse-tight paragraph spacing (these files are authored one line per paragraph, so paragraphs are lines).
-- **Story variant** — 40rem measure, normal prose paragraph rhythm.
+- **Site typography.** Body copy stays on Inter, like the rest of the site, one step down from the default reading size (`--text-small`); titles stay on Fraunces like every other heading.
+- **Narrow column.** `[...slug].astro` gives prose posts `grid-span-6 grid-start-4` instead of the usual `grid-span-8 grid-start-3`, so these pages are visibly narrower on wide screens. Inside that, poems cap at 28rem and stories at 36rem.
+- **Poem variant** — verse-tight paragraph spacing (these files are authored one line per paragraph, so paragraphs are lines), set as a centered block of flush-left lines.
+- **Story variant** — looser line height, normal prose paragraph rhythm.
 - **Scene breaks** — a markdown `---` renders as a centered `· · ·` ornament rather than a rule.
+- **Collection navigation** — a footer row linking the earlier and later piece in the same category, plus `/poems/` or `/stories/`. Built from `getAdjacentPosts()` in `src/utils/content.ts`, ordered by `created`.
 
 If a piece is ever genuinely revised and that should be visible, add an explicit frontmatter flag rather than inferring it from `updated`.

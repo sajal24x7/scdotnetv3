@@ -4,6 +4,7 @@ import Backlinks from '../../Backlinks.astro';
 import Interactions from '../../interactions/Interactions.astro';
 import NewsletterSignup from '../../ui/NewsletterSignup.astro';
 import type { Interaction } from '../../../utils/interactions';
+import type { Backlink } from '../../../utils/postMeta';
 
 /**
  * Shared chrome for every post detail page.
@@ -15,14 +16,6 @@ import type { Interaction } from '../../../utils/interactions';
  * Slots: `header` (title block), `before-content` (dateline etc.), default
  * (rendered markdown), `footer` (meta line).
  */
-
-interface Backlink {
-    slug: string;
-    title: string;
-    description: string;
-    category: string;
-    created: Date;
-}
 
 interface Props {
     category: string;

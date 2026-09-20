@@ -2,9 +2,8 @@
 import PostShell from './PostShell.astro';
 import Tag from '../../Tag.astro';
 import SyndicationLinks from '../../SyndicationLinks.astro';
-import { getPostCommonMeta } from '../../../utils/postMeta';
+import { getPostCommonMeta, type PostLayoutProps } from '../../../utils/postMeta';
 import { formatMonthYear } from '../../../utils/dateFormat';
-import type { Interaction } from '../../../utils/interactions';
 
 /**
  * Creative writing (story, poem).
@@ -18,24 +17,7 @@ import type { Interaction } from '../../../utils/interactions';
  * of the page body where it would compete with the text.
  */
 
-interface Backlink {
-    slug: string;
-    title: string;
-    description: string;
-    category: string;
-    created: Date;
-}
-
-interface Props {
-    entry: { data: Record<string, any> };
-    category: 'story' | 'poem';
-    canonicalUrl: string;
-    backlinks: Backlink[];
-    interactions?: Interaction[];
-    hasUpdatedDate: boolean;
-}
-
-const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } = Astro.props as Props;
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate, siblings } = Astro.props as PostLayoutProps;
 
 const meta = getPostCommonMeta(entry.data, hasUpdatedDate);
 
@@ -46,6 +28,11 @@ const publishedIso = meta.publishedDate
     ? new Date(meta.publishedDate).toISOString()
     : undefined;
 const publishedLabel = meta.publishedDate ? formatMonthYear(meta.publishedDate) : null;
+
+const previous = siblings?.previous;
+const next = siblings?.next;
+const collectionHref = variant === 'poem' ? '/poems/' : '/stories/';
+const collectionLabel = variant === 'poem' ? 'All poems' : 'All stories';
 ---
 
 <PostShell
@@ -103,6 +90,29 @@ const publishedLabel = meta.publishedDate ? formatMonthYear(meta.publishedDate) 
                 />
             </div>
         )}
+
+        {/* Walk the collection in the order it was written. */}
+        {(previous || next) && (
+            <nav class="prose-post__nav" aria-label={`More ${variant === 'poem' ? 'poems' : 'stories'}`}>
+                <div class="prose-post__nav-side">
+                    {previous && (
+                        <a href={previous.href} class="prose-post__nav-link">
+                            <span class="prose-post__nav-label">← Earlier</span>
+                            <span class="prose-post__nav-title">{previous.title}</span>
+                        </a>
+                    )}
+                </div>
+                <a href={collectionHref} class="prose-post__nav-all">{collectionLabel}</a>
+                <div class="prose-post__nav-side prose-post__nav-side--end">
+                    {next && (
+                        <a href={next.href} class="prose-post__nav-link">
+                            <span class="prose-post__nav-label">Later →</span>
+                            <span class="prose-post__nav-title">{next.title}</span>
+                        </a>
+                    )}
+                </div>
+            </nav>
+        )}
     </footer>
 </PostShell>
 
@@ -113,18 +123,22 @@ const publishedLabel = meta.publishedDate ? formatMonthYear(meta.publishedDate) 
 -->
 <style is:global>
     /* The reading column is narrower than the site's default prose measure:
-       verse and short fiction want a shorter line than an essay does. */
+       verse and short fiction want a shorter line than an essay does. The page
+       itself is already narrowed to 6 of 12 columns in [...slug].astro; these
+       caps stop the column from stretching on very wide screens. */
     .prose-post .e-content,
     .prose-post__header,
     .prose-post__footer {
-        max-width: 40rem;
+        max-width: 36rem;
         margin-inline: auto;
     }
 
+    /* Verse is set as a centered block of flush-left lines, so the measure is
+       the longest line rather than a paragraph's worth of text. */
     .prose-post--poem .e-content,
     .prose-post--poem .prose-post__header,
     .prose-post--poem .prose-post__footer {
-        max-width: 34rem;
+        max-width: 28rem;
     }
 
     .prose-post__header {
@@ -132,11 +146,12 @@ const publishedLabel = meta.publishedDate ? formatMonthYear(meta.publishedDate) 
         margin-bottom: 1.75rem;
     }
 
+    /* Fraunces, like every other heading on the site. */
     .prose-post__title {
         font-family: var(--font-serif);
-        font-size: var(--text-xlarge);
+        font-size: var(--text-large);
         font-weight: 600;
-        line-height: 1.15;
+        line-height: 1.2;
         margin: 0 0 0.6rem;
     }
 
@@ -150,8 +165,7 @@ const publishedLabel = meta.publishedDate ? formatMonthYear(meta.publishedDate) 
 
     .prose-post__epigraph {
         margin: 1rem 0 0;
-        font-family: var(--font-serif);
-        font-size: var(--text-lg);
+        font-size: var(--text-base);
         font-style: italic;
         line-height: 1.5;
         color: rgb(var(--color-text-secondary));
@@ -165,9 +179,14 @@ const publishedLabel = meta.publishedDate ? formatMonthYear(meta.publishedDate) 
         background: rgb(var(--color-border));
     }
 
+    /* Body copy stays on the site's sans (Inter), one step down from the
+       default reading size — short forms read better a little tighter. */
     .prose-post .e-content {
-        font-family: var(--font-serif);
-        font-size: var(--text-base);
+        font-size: var(--text-small);
+        line-height: 1.7;
+    }
+
+    .prose-post--story .e-content {
         line-height: 1.75;
     }
 
@@ -235,5 +254,77 @@ const publishedLabel = meta.publishedDate ? formatMonthYear(meta.publishedDate) 
         margin-top: 0.5rem;
         font-size: var(--text-xs);
         color: rgb(var(--color-text-secondary));
+    }
+
+    .prose-post__nav {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: start;
+        gap: 1rem;
+        margin-top: 1.75rem;
+        font-size: var(--text-xs);
+    }
+
+    .prose-post__nav-side {
+        display: flex;
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .prose-post__nav-side--end {
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    .prose-post__nav-link,
+    .prose-post__nav-all {
+        color: rgb(var(--color-text-secondary));
+        text-decoration: none;
+    }
+
+    .prose-post__nav-link {
+        display: grid;
+        gap: 0.2rem;
+        max-width: 11rem;
+    }
+
+    .prose-post__nav-label {
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.7;
+    }
+
+    .prose-post__nav-title {
+        font-family: var(--font-serif);
+        font-size: var(--text-sm);
+        line-height: 1.25;
+        color: rgb(var(--color-text-primary));
+    }
+
+    .prose-post__nav-all {
+        align-self: center;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .prose-post__nav-link:hover .prose-post__nav-title,
+    .prose-post__nav-all:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
+    @media (max-width: 30rem) {
+        .prose-post__nav {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            text-align: center;
+            gap: 1.25rem;
+        }
+
+        .prose-post__nav-side,
+        .prose-post__nav-side--end {
+            justify-content: center;
+            text-align: center;
+        }
     }
 </style>
