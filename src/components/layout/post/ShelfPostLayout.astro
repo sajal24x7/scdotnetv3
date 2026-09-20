@@ -1,0 +1,153 @@
+---
+// Shelf posts: books, films, TV seasons and games. They share one two-column
+// header (cover on the left, metadata on the right) and differ only in which
+// frontmatter fields fill the credits line and the chip row, so each type is a
+// config entry in shelfMeta.ts rather than its own branch here.
+import { Image } from 'astro:assets';
+import PostShell from './PostShell.astro';
+import ShelfChips from './ShelfChips.astro';
+import Tag from '../../Tag.astro';
+import { readCommonPostFields, type PostLayoutProps } from './postFields';
+import { buildShelfMeta } from './shelfMeta';
+
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } =
+    Astro.props as PostLayoutProps;
+
+const fields = readCommonPostFields(entry, hasUpdatedDate);
+const { coverImage, credits, chips } = buildShelfMeta(category, entry.data ?? {});
+---
+
+<PostShell
+    category={category}
+    canonicalUrl={canonicalUrl}
+    tags={fields.tags}
+    bridgyOmit={fields.bridgyOmit}
+    publishedDate={fields.publishedDate}
+    updated={fields.updated}
+    syndicationUrls={fields.syndicationUrls}
+    backlinks={backlinks}
+    interactions={interactions}
+>
+    <div class="book-header" slot="header">
+        {coverImage && (
+            <div class="book-header__cover">
+                <Image
+                    src={coverImage}
+                    alt={`Cover of ${fields.title}`}
+                    class="book-meta-cover-image"
+                    loading="lazy"
+                />
+            </div>
+        )}
+        <div class={`book-header__meta${!coverImage ? ' book-header__meta--no-cover' : ''}`}>
+            <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{fields.title}</h1>
+
+            {credits && <div class="book-meta-author-title">{credits}</div>}
+
+            {fields.description && (
+                <p class="p-summary text-xl text-textSecondary dark:text-textSecondaryDark mb-4">
+                    {fields.description}
+                </p>
+            )}
+
+            {fields.tags.length > 0 && (
+                <div class="mb-4 flex flex-wrap gap-2">
+                    {fields.tags.map((tag: string) => (
+                        <Tag tag={tag} as="a" />
+                    ))}
+                </div>
+            )}
+
+            <ShelfChips chips={chips} />
+        </div>
+    </div>
+
+    <slot />
+</PostShell>
+
+<style>
+    /* Shelf post two-column header */
+    .book-header {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2.5rem;
+        border-bottom: 1px solid rgb(var(--color-border));
+    }
+
+    :global(.dark) .book-header {
+        border-bottom-color: rgb(var(--color-border));
+    }
+
+    .book-header__cover {
+        display: flex;
+        justify-content: center;
+    }
+
+    .book-header__meta {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .book-header__meta--no-cover {
+        text-align: center;
+        align-items: center;
+    }
+
+    @media (min-width: 48rem) {
+        .book-header {
+            display: grid;
+            /* 3 cols cover, 5 cols metadata (= 8 cols total, matching grid-span-8) */
+            grid-template-columns: 3fr 5fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .book-header__cover {
+            justify-content: flex-start;
+        }
+
+        .book-header__meta {
+            justify-content: flex-start;
+            padding-top: 0.25rem;
+        }
+    }
+
+    .book-meta-cover-image {
+        width: auto;
+        max-height: 16rem;
+        height: auto;
+        /* Cancel the .prose img spacing so the cover aligns with the title */
+        margin: 0;
+        border-radius: 0.75rem;
+        box-shadow:
+            0 4px 6px rgba(0, 0, 0, 0.1),
+            0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    @media (min-width: 48rem) {
+        .book-meta-cover-image {
+            width: auto;
+            max-height: 16rem;
+        }
+
+        .book-header__cover {
+            justify-content: center;
+        }
+    }
+
+    :global(.dark) .book-meta-cover-image {
+        box-shadow:
+            0 4px 6px rgba(0, 0, 0, 0.3),
+            0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .book-meta-author-title {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: var(--gray-text-body);
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+    }
+</style>

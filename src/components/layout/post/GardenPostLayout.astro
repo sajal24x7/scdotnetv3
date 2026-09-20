@@ -1,0 +1,68 @@
+---
+// Garden posts: evergreen notes, TILs, stories and poems. What sets them apart
+// is the "Planted / Last tended" line above the body — the garden's own sense
+// of time, distinct from the Published/Updated line every post carries.
+import PostShell from './PostShell.astro';
+import PostHero from './PostHero.astro';
+import PostHeader from './PostHeader.astro';
+import TimeDisplay from '../../TimeDisplay.astro';
+import { readCommonPostFields, parsePostDate, type PostLayoutProps } from './postFields';
+
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } =
+    Astro.props as PostLayoutProps;
+
+const fields = readCommonPostFields(entry, hasUpdatedDate);
+
+const plantedDate = parsePostDate(fields.publishedDate);
+const tendedDate = parsePostDate(fields.updated);
+const UPDATED_THRESHOLD_MS = 24 * 60 * 60 * 1000; // mirrors src/utils/feed.ts UPDATED_LABEL_THRESHOLD_MS
+const showTended = Boolean(
+    plantedDate && tendedDate && tendedDate.getTime() - plantedDate.getTime() > UPDATED_THRESHOLD_MS
+);
+---
+
+<PostShell
+    category={category}
+    canonicalUrl={canonicalUrl}
+    tags={fields.tags}
+    bridgyOmit={fields.bridgyOmit}
+    publishedDate={fields.publishedDate}
+    updated={fields.updated}
+    syndicationUrls={fields.syndicationUrls}
+    backlinks={backlinks}
+    interactions={interactions}
+>
+    <Fragment slot="header">
+        <PostHero
+            title={fields.title}
+            heroImage={fields.heroImage}
+            galleryImages={fields.galleryImages}
+        />
+        <PostHeader
+            title={fields.title}
+            description={fields.description}
+            tags={fields.tags}
+        />
+    </Fragment>
+
+    {plantedDate && (
+        <div class="post-layout__grown" slot="lede">
+            Planted <TimeDisplay date={plantedDate} format="relative" className="post-layout__grown-time" />.
+            {showTended && tendedDate && (
+                <> Last tended <TimeDisplay date={tendedDate} format="relative" className="post-layout__grown-time" />.</>
+            )}
+        </div>
+    )}
+
+    <slot />
+</PostShell>
+
+<style>
+    .post-layout__grown {
+        margin: 0 0 1.5rem;
+        font-size: var(--text-xs);
+        line-height: 1.6;
+        color: rgb(var(--color-text-secondary));
+        text-align: center;
+    }
+</style>

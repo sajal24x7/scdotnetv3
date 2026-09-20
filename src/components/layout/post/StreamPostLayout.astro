@@ -1,0 +1,43 @@
+---
+// Stream posts: blog, micro and nordletter editions (photo posts have their own
+// layout in ../PhotoPostLayout.astro). Colophon and anything else without a
+// family of its own falls back here too.
+import PostShell from './PostShell.astro';
+import PostHero from './PostHero.astro';
+import PostHeader from './PostHeader.astro';
+import { readCommonPostFields, type PostLayoutProps } from './postFields';
+
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } =
+    Astro.props as PostLayoutProps;
+
+const fields = readCommonPostFields(entry, hasUpdatedDate);
+const edition = category === 'nordletter' && 'edition' in entry.data ? entry.data.edition : undefined;
+---
+
+<PostShell
+    category={category}
+    canonicalUrl={canonicalUrl}
+    tags={fields.tags}
+    bridgyOmit={fields.bridgyOmit}
+    publishedDate={fields.publishedDate}
+    updated={fields.updated}
+    syndicationUrls={fields.syndicationUrls}
+    backlinks={backlinks}
+    interactions={interactions}
+>
+    <Fragment slot="header">
+        <PostHero
+            title={fields.title}
+            heroImage={fields.heroImage}
+            galleryImages={fields.galleryImages}
+        />
+        <PostHeader
+            title={fields.title}
+            description={fields.description}
+            tags={fields.tags}
+            edition={edition}
+        />
+    </Fragment>
+
+    <slot />
+</PostShell>

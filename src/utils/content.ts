@@ -2,6 +2,7 @@ import { getCollection } from 'astro:content';
 import type { BookRating } from './bookRatings';
 import { CONTENT_CATEGORIES } from '../content.config';
 import { SITE_TIMEZONE } from './dateFormat';
+import { POST_GROUPS } from './postGroups';
 
 export interface Post {
   data: {
@@ -140,12 +141,14 @@ export function transformPost(post: Post) {
 }
 
 export const CATEGORY_FILTERS = {
-    gardenHighlights: ['evergreen', 'til', 'now'],
-    stream: ['blog', 'micro', 'photo'],
+    // `now` is deliberately absent from every garden filter: now updates are
+    // their own thing and surface on /now, /then and the home feed only.
+    gardenHighlights: ['evergreen', 'til'],
+    stream: POST_GROUPS.stream,
     streamHighlights: ['blog', 'micro'],
     bookshelf: ['bookshelf'],
     prose: ['poem', 'story'],
-    garden: ['evergreen', 'til', 'story', 'poem']
+    garden: POST_GROUPS.garden
 } as const;
 
 export type CategoryFilterKey = keyof typeof CATEGORY_FILTERS;
