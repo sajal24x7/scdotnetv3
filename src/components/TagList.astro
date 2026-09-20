@@ -32,7 +32,7 @@ let filteredPosts = allPosts;
 // Handle special cases for categories that include multiple subcategories
 if (category === 'garden') {
   filteredPosts = allPosts.filter(post => 
-    ['evergreen', 'til', 'bookshelf', 'story', 'poem'].includes(post.data.category)
+    ['evergreen', 'til', 'story', 'poem'].includes(post.data.category)
   );
 } else if (category === 'prose') {
   filteredPosts = allPosts.filter(post => 

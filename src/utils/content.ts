@@ -144,7 +144,7 @@ export const CATEGORY_FILTERS = {
     streamHighlights: ['blog', 'micro'],
     bookshelf: ['bookshelf'],
     prose: ['poem', 'story'],
-    garden: ['evergreen', 'til', 'bookshelf', 'story', 'poem']
+    garden: ['evergreen', 'til', 'story', 'poem']
 } as const;
 
 export type CategoryFilterKey = keyof typeof CATEGORY_FILTERS;

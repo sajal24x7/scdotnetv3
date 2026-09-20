@@ -52,7 +52,7 @@ const allPosts = await getAllPosts();
     <article class="grid-span-full feeds-table-card">
       <div class="feeds-table">
 
-        <!-- Column 1: Garden -->
+        <!-- Column 1: Garden + Shelf -->
         <div class="feeds-col">
           <a href="/garden/rss.xml" class="feeds-col__parent">Garden</a>
           <ul class="feeds-col__list">
@@ -60,6 +60,9 @@ const allPosts = await getAllPosts();
             <li><a href="/til/rss.xml">TIL</a></li>
             <li><a href="/story/rss.xml">Stories</a></li>
             <li><a href="/poem/rss.xml">Poems</a></li>
+          </ul>
+          <a href="/shelf/rss.xml" class="feeds-col__parent feeds-col__parent--spaced">Shelf</a>
+          <ul class="feeds-col__list">
             <li><a href="/bookshelf/rss.xml">Bookshelf</a></li>
             <li><a href="/filmshelf/rss.xml">Film Shelf</a></li>
             <li><a href="/tvshelf/rss.xml">TV Shelf</a></li>
