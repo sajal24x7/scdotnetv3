@@ -18,7 +18,8 @@ export const FEED_PAGE_SIZE = 10;
 
 export const FEED_GROUPS = {
   stream: ['blog', 'micro', 'photo'],
-  garden: ['evergreen', 'til', 'bookshelf', 'filmshelf', 'tvshelf', 'gameshelf', 'story', 'poem', 'now'],
+  garden: ['evergreen', 'til', 'story', 'poem', 'now'],
+  shelf: ['bookshelf', 'filmshelf', 'tvshelf', 'gameshelf'],
   nordletter: ['nordletter']
 } as const;
 

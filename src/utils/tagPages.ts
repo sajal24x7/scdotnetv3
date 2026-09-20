@@ -27,7 +27,7 @@ const CATEGORY_CONFIG: Record<string, CategoryConfig> = {
     blog: { label: 'Blog', includes: ['blog'] },
     micro: { label: 'Micro', includes: ['micro'] },
     photo: { label: 'Photo', includes: ['photo'] },
-    garden: { label: 'Garden', includes: ['evergreen', 'til', 'bookshelf', 'story', 'poem'] },
+    garden: { label: 'Garden', includes: ['evergreen', 'til', 'story', 'poem'] },
     evergreen: { label: 'Evergreen', includes: ['evergreen'] },
     til: { label: 'TIL', includes: ['til'] },
     bookshelf: { label: 'Bookshelf', includes: ['bookshelf'] },
