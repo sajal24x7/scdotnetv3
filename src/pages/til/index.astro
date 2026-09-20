@@ -2,13 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import { getAllPosts, transformPost } from '../../utils/content';
+import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/content';
 
-// Get all posts and filter for TIL posts
+// Get all posts and filter for TIL posts, ordered by last edit (falling back to created)
 const allPosts = await getAllPosts();
-const tilPosts = allPosts
-  .filter(post => post.data.category === 'til')
-  .sort((a, b) => new Date(b.data.created).getTime() - new Date(a.data.created).getTime());
+const tilPosts = getPostsByCategory(allPosts, 'til', { sortBy: 'updated' });
 
 // Transform posts into the shape the card grids expect
 const transformedPosts = tilPosts.map(transformPost);

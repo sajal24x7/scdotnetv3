@@ -11,7 +11,7 @@ The site is an Astro 7 project that renders content-driven routes backed by Mark
 ## Routing
 
 - Astro page files live under `src/pages/`. Top-level directories (`garden`, `stream`, `books`, etc.) render list views, while `[...slug].astro` handles every individual post detail page based on `category/slug` pairs.
-- Dynamic content lists reuse helpers from `src/utils/content.ts` to pull posts by category, sort by publication date (or, for `/garden`, by last-updated date), and transform them for specific grid components.
+- Dynamic content lists reuse helpers from `src/utils/content.ts` to pull posts by category, sort by publication date (or, for `/garden`, `/evergreen`, and `/til`, by last-updated date), and transform them for specific grid components.
 - API-style endpoints live either as prerendered Astro routes under `src/pages/api/` (e.g., `shelf-queue.json.ts`, `link-previews.json.ts`, RSS feeds) or as Cloudflare Pages Functions under `functions/api/` for anything requiring a runtime request (e.g., `functions/api/upload.js`, `functions/api/til/sync.js`). Search is handled separately by Pagefind, a build-time static index rather than an Astro endpoint.
 
 ## Client Islands

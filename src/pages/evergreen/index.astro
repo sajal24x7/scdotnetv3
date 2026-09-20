@@ -2,14 +2,12 @@
 import Layout from '../../layouts/Layout.astro';
 import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import { getAllPosts, transformPost } from '../../utils/content';
+import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 
-// Get all evergreen posts
+// Get all evergreen posts, ordered by last edit (falling back to created)
 const allPosts = await getAllPosts();
-const evergreenPosts = allPosts
-  .filter(post => post.data.category === 'evergreen')
-  .sort((a, b) => new Date(b.data.created).getTime() - new Date(a.data.created).getTime());
+const evergreenPosts = getPostsByCategory(allPosts, 'evergreen', { sortBy: 'updated' });
 
 // Transform posts into the shape the card grids expect
 const transformedPosts = evergreenPosts.map(transformPost);
