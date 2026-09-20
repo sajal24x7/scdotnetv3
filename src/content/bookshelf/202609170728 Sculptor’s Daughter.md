@@ -2,7 +2,7 @@
 title: "Sculptor’s Daughter"
 slug: "sculptors-daughter"
 created: 2026-09-17T07:28:00+03:00
-updated: 2026-09-20T12:23:43+03:00
+updated: 2026-09-20T14:05:23+03:00
 category: bookshelf
 tags: ["childhood", "stories"]
 author:
@@ -17,7 +17,7 @@ cover: sculptors-daughter.webp
 ---
 ## Review
 
-This book is Tove Jansson's autobiography. The same [Tove Jansson](https://en.wikipedia.org/wiki/Tove_Jansson) who wrote and created Moomin characters. I had originally planned to read this during the biography month at TCS' Biblio Group. But it wasn't available then. So I had read [[]]
+This book is Tove Jansson's autobiography. The same [Tove Jansson](https://en.wikipedia.org/wiki/Tove_Jansson) who wrote and created Moomin characters. I had originally planned to read this during the biography month at TCS' Biblio Group. But it wasn't available then. So I had read [The Elements of Marie Curie](/bookshelf/the-elements-of-marie-curie) instead.
 
 [Moomin](https://en.wikipedia.org/wiki/Moomins) are everywhere in Finland. From cookies, to clothes, to the original stories, and books, to mugs and I guess there are toothpastes too? When [Savya had turned two](https://sajalchoudhary.net/nordletter/nl94/) we had sent with him a packet of Fazer-Moomin chocolates. We have gone to at least a couple of Moomin exhibitions - one at Stockmann and the other at Oodi. We have bought and gifted Moomin cookies and bags and onesies to our friends and their kids. 
 
