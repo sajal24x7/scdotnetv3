@@ -1,0 +1,159 @@
+---
+// Shared chrome for every single-post page: microformats, Pagefind metadata,
+// the published/updated line, newsletter prompt, interactions and backlinks.
+// Each post family (garden, stream, shelf, now) supplies its own header through
+// the `header` slot and, where it needs one, a `lede` slot above the content.
+import LayoutContainer from '../LayoutContainer.astro';
+import TimeDisplay from '../../TimeDisplay.astro';
+import Backlinks from '../../Backlinks.astro';
+import Interactions from '../../interactions/Interactions.astro';
+import SyndicationLinks from '../../SyndicationLinks.astro';
+import NewsletterSignup from '../../ui/NewsletterSignup.astro';
+import type { Interaction } from '../../../utils/interactions';
+
+interface Backlink {
+    slug: string;
+    title: string;
+    description: string;
+    category: string;
+    created: Date;
+}
+
+interface Props {
+    category: string;
+    canonicalUrl: string;
+    tags: string[];
+    bridgyOmit?: boolean;
+    publishedDate?: Date | string;
+    updated?: Date | string;
+    syndicationUrls?: string[];
+    backlinks: Backlink[];
+    interactions?: Interaction[];
+}
+
+const {
+    category,
+    canonicalUrl,
+    tags,
+    bridgyOmit = false,
+    publishedDate,
+    updated,
+    syndicationUrls = [],
+    backlinks,
+    interactions = []
+} = Astro.props as Props;
+---
+
+<LayoutContainer
+    prose
+    maxWidth="full"
+    padding="none"
+    className="post-layout__container"
+>
+    <!-- Pagefind metadata: outside data-pagefind-body so they don't pollute text index -->
+    <div aria-hidden="true" style="display:none">
+        <span data-pagefind-meta="category">{category}</span>
+        {tags.map((tag: string) => (
+            <span data-pagefind-filter="tag">{tag.toLowerCase()}</span>
+        ))}
+    </div>
+
+    <article class="h-entry post-layout__article" data-pagefind-body>
+        <!-- Hidden microformat data -->
+        <a href={canonicalUrl} class="u-url" style="display: none;"></a>
+        {bridgyOmit && (
+            <a href={canonicalUrl} class="u-bridgy-omit-link" style="display: none;"></a>
+        )}
+        <div class="p-author h-card" style="display: none;">
+            <a class="p-name u-url" href="https://sajalchoudhary.net">Sajal Choudhary</a>
+            <a class="u-url" href="https://sajalchoudhary.net">https://sajalchoudhary.net</a>
+        </div>
+
+        <div class="mb-8">
+            <slot name="header" />
+        </div>
+
+        <slot name="lede" />
+
+        <div class="e-content">
+            <slot />
+        </div>
+
+        <div class="post-layout__meta">
+            <div class="post-layout__meta-line">
+                {updated ? 'Updated ' : 'Published '}
+                {updated ? (
+                    <TimeDisplay
+                        date={updated}
+                        category={category}
+                        format="detailed"
+                        className="dt-updated"
+                    />
+                ) : (
+                    <TimeDisplay
+                        date={publishedDate}
+                        category={category}
+                        format="detailed"
+                        className="dt-published"
+                    />
+                )}.
+                Thoughts? <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">Email me</a>.
+                {syndicationUrls.length > 0 && (
+                    <SyndicationLinks
+                        syndicationUrls={syndicationUrls}
+                        variant="icons"
+                        label="Posted to:"
+                        plainLabel
+                    />
+                )}
+            </div>
+        </div>
+
+        {['nordletter', 'blog', 'evergreen'].includes(category) && (
+            <div class="mt-8 border-t border-borderColor dark:border-borderColorDark text-center">
+                <NewsletterSignup
+                    title="Subscribe to NordLetter"
+                    description="A weekly newsletter on living in Finland."
+                    buttonText="Sign up"
+                    headingClass="text-[clamp(1.125rem,2vw,1.375rem)] font-semibold mb-1"
+                    descriptionClass="text-sm mb-3"
+                    wrapperClass="py-4"
+                    centered={true}
+                />
+            </div>
+        )}
+
+        <Interactions interactions={interactions} />
+
+        <Backlinks backlinks={backlinks} />
+    </article>
+</LayoutContainer>
+
+<style>
+    .post-layout__article {
+        padding-bottom: clamp(2rem, 5vw, 3rem);
+    }
+
+    .post-layout__meta {
+        margin-top: 1.25rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgb(var(--color-border));
+        text-align: center;
+    }
+
+    :global(.dark) .post-layout__meta {
+        border-top-color: rgb(var(--color-border));
+    }
+
+    .post-layout__meta-line {
+        margin: 0;
+        font-size: var(--text-xs);
+        line-height: 1.6;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .post-layout__meta-line a {
+        color: inherit;
+        font-weight: 600;
+    }
+</style>

@@ -1,7 +1,7 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
-import { getContentCategories } from '../../utils/content';
+import { getContentCategories, CATEGORY_FILTERS } from '../../utils/content';
 import { publicationFilter } from '../../utils/publication';
 import { parseMarkdown } from '../../utils/markdown';
 import { convertWikilinks } from '../../utils/remarkWikilinks';
@@ -11,8 +11,9 @@ export async function GET(context) {
   const allPosts = await Promise.all(categories.map(category => getCollection(category)));
   const flatPosts = allPosts.flat();
   const allowed = publicationFilter('rss');
+  // Now updates are not garden notes — they have their own feed at /now/rss.xml.
   const garden = flatPosts.filter(post =>
-    ['evergreen', 'til', 'now'].includes(post.data.category) && allowed(post)
+    CATEGORY_FILTERS.gardenHighlights.includes(post.data.category) && allowed(post)
   );
   
   // Sort by publish date (newest first)

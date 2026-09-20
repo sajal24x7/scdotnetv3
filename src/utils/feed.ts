@@ -12,26 +12,18 @@ import { convertWikilinks } from './remarkWikilinks';
 import { formatRelativeDate, SITE_TIMEZONE } from './dateFormat';
 import { getPhotoImages } from './photos';
 import { SHELF_CATEGORIES, SHELF_STATUS_FEED_VERBS, isQueuedShelfEntry, type ShelfCategory, type ShelfStatus } from './shelfStatus';
+import { POST_GROUPS, POST_GROUP_CATEGORIES, getPostGroup, type PostGroup } from './postGroups';
 import nordletterManifest from '../data/nordletter-image-manifest.json';
 
 export const FEED_PAGE_SIZE = 10;
 
-export const FEED_GROUPS = {
-  stream: ['blog', 'micro', 'photo'],
-  garden: ['evergreen', 'til', 'story', 'poem', 'now'],
-  shelf: ['bookshelf', 'filmshelf', 'tvshelf', 'gameshelf'],
-  nordletter: ['nordletter']
-} as const;
+// Groupings live in postGroups.ts so the feed, the section pages and the post
+// layouts can never drift apart.
+export const FEED_GROUPS = POST_GROUPS;
 
-export type FeedGroup = keyof typeof FEED_GROUPS | 'all';
+export type FeedGroup = PostGroup | 'all';
 
-export const FEED_CATEGORIES: string[] = Object.values(FEED_GROUPS).flat();
-
-const CATEGORY_TO_GROUP: Record<string, keyof typeof FEED_GROUPS> = Object.fromEntries(
-  Object.entries(FEED_GROUPS).flatMap(([group, categories]) =>
-    categories.map((category: string) => [category, group as keyof typeof FEED_GROUPS])
-  )
-);
+export const FEED_CATEGORIES: string[] = POST_GROUP_CATEGORIES;
 
 const CATEGORY_LABELS: Record<string, string> = {
   blog: 'Blog',
@@ -72,7 +64,7 @@ function getNordletterImageSrc(post: Post): string | undefined {
 
 export interface FeedEntry {
   html: string;
-  group: keyof typeof FEED_GROUPS;
+  group: PostGroup;
   month: string; // e.g. "July 2026" — used to insert month headers
 }
 
@@ -435,7 +427,7 @@ export function toFeedEntry(post: Post): Promise<FeedEntry> {
     const render = RENDERERS[post.data.category] ?? renderBlog;
     cached = Promise.resolve(render(post)).then((html) => ({
       html,
-      group: CATEGORY_TO_GROUP[post.data.category],
+      group: getPostGroup(post.data.category) as PostGroup,
       month: monthLabel(effectiveDate(post))
     }));
     entryCache.set(cacheKey, cached);
@@ -449,6 +441,6 @@ export async function getFeedEntriesForGroup(posts: Post[], group: FeedGroup): P
   oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
   const scoped = feedPosts
     .filter((post) => effectiveDate(post).getTime() >= oneYearAgo.getTime())
-    .filter((post) => group === 'all' || CATEGORY_TO_GROUP[post.data.category] === group);
+    .filter((post) => group === 'all' || getPostGroup(post.data.category) === group);
   return Promise.all(scoped.map(toFeedEntry));
 }

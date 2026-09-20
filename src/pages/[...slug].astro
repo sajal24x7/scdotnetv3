@@ -6,8 +6,12 @@ import { getContentCategories } from '../utils/content';
 import { CONTENT_CATEGORIES } from '../content.config';
 import { findBacklinksComprehensive } from '../utils/backlinks';
 import { getInteractionsForPost } from '../utils/interactions';
-import PostLayout from '../components/layout/PostLayout.astro';
 import PhotoPostLayout from '../components/layout/PhotoPostLayout.astro';
+import GardenPostLayout from '../components/layout/post/GardenPostLayout.astro';
+import StreamPostLayout from '../components/layout/post/StreamPostLayout.astro';
+import ShelfPostLayout from '../components/layout/post/ShelfPostLayout.astro';
+import NowPostLayout from '../components/layout/post/NowPostLayout.astro';
+import { getPostGroup } from '../utils/postGroups';
 
 type AnyEntry = CollectionEntry<(typeof CONTENT_CATEGORIES)[number]>;
 
@@ -54,6 +58,17 @@ const pageTitle = entry.data?.title ? `${entry.data.title} - ${categoryLabel}` :
 // site header instead of the narrower reading column other posts use.
 const isPhotoPost = category === 'photo';
 
+// One layout per post family. Photo posts keep their own Instagram-style
+// layout; everything else picks the layout for its group, and anything
+// ungrouped (colophon) reads like a stream post.
+const PostFamilyLayout = {
+  garden: GardenPostLayout,
+  shelf: ShelfPostLayout,
+  now: NowPostLayout,
+  stream: StreamPostLayout,
+  nordletter: StreamPostLayout
+}[getPostGroup(category) ?? 'stream'] ?? StreamPostLayout;
+
 const ogImagePath = 'image' in entry.data && entry.data.image ? entry.data.image : undefined;
 
 const jsonLd = {
@@ -96,7 +111,7 @@ const jsonLd = {
       <Content />
     </PhotoPostLayout>
   ) : (
-    <PostLayout
+    <PostFamilyLayout
       entry={entry}
       category={category}
       canonicalUrl={canonicalUrl}
@@ -105,6 +120,6 @@ const jsonLd = {
       hasUpdatedDate={hasUpdatedDate}
     >
       <Content />
-    </PostLayout>
+    </PostFamilyLayout>
   )}
 </Layout>

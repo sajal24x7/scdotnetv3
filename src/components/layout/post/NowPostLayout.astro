@@ -1,0 +1,42 @@
+---
+// Now updates stand on their own: they are not garden notes and never appear in
+// the garden or its feeds, only on /now, /then and the home feed. The page
+// currently reads like a stream post; this layout is the seam for giving it its
+// own treatment (status, focus timeline) without touching the other families.
+import PostShell from './PostShell.astro';
+import PostHero from './PostHero.astro';
+import PostHeader from './PostHeader.astro';
+import { readCommonPostFields, type PostLayoutProps } from './postFields';
+
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } =
+    Astro.props as PostLayoutProps;
+
+const fields = readCommonPostFields(entry, hasUpdatedDate);
+---
+
+<PostShell
+    category={category}
+    canonicalUrl={canonicalUrl}
+    tags={fields.tags}
+    bridgyOmit={fields.bridgyOmit}
+    publishedDate={fields.publishedDate}
+    updated={fields.updated}
+    syndicationUrls={fields.syndicationUrls}
+    backlinks={backlinks}
+    interactions={interactions}
+>
+    <Fragment slot="header">
+        <PostHero
+            title={fields.title}
+            heroImage={fields.heroImage}
+            galleryImages={fields.galleryImages}
+        />
+        <PostHeader
+            title={fields.title}
+            description={fields.description}
+            tags={fields.tags}
+        />
+    </Fragment>
+
+    <slot />
+</PostShell>
