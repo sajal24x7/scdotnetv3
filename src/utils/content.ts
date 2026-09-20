@@ -99,6 +99,7 @@ export function transformPost(post: Post) {
             title: post.data.title,
             description: post.data.description,
             created: post.data.created,
+            updated: post.data.updated,
             category: post.data.category,
             image: post.data.image,
             images: post.data.images,
@@ -153,6 +154,7 @@ type CategoryFilter = CategoryFilterKey | ReadonlyArray<string> | string;
 
 interface CategoryFilterOptions {
     limit?: number;
+    sortBy?: 'created' | 'updated';
 }
 
 function isCategoryFilterKey(value: string): value is CategoryFilterKey {
@@ -171,17 +173,24 @@ function resolveCategoryList(filter: CategoryFilter): ReadonlyArray<string> {
     return [filter as string];
 }
 
-function getPostTimestamp(post: Post): number {
-    const created = post.data.created;
-    if (!created) {
+function toTimestamp(value: Date | string | undefined): number {
+    if (!value) {
         return 0;
     }
 
-    if (created instanceof Date) {
-        return created.getTime();
+    if (value instanceof Date) {
+        return value.getTime();
     }
 
-    return new Date(created).getTime();
+    return new Date(value).getTime();
+}
+
+function getPostTimestamp(post: Post, sortBy: 'created' | 'updated' = 'created'): number {
+    if (sortBy === 'updated') {
+        return toTimestamp(post.data.updated) || toTimestamp(post.data.created);
+    }
+
+    return toTimestamp(post.data.created);
 }
 
 export function getPostsByCategory(posts: Post[], filter: CategoryFilter, options: CategoryFilterOptions = {}): Post[] {
@@ -191,13 +200,14 @@ export function getPostsByCategory(posts: Post[], filter: CategoryFilter, option
         return [];
     }
 
+    const sortBy = options.sortBy ?? 'created';
     const categorySet = new Set(categories);
     const filtered = posts
         .filter(post => {
             const category = post.data.category;
             return Boolean(category) && categorySet.has(category);
         })
-        .sort((a, b) => getPostTimestamp(b) - getPostTimestamp(a));
+        .sort((a, b) => getPostTimestamp(b, sortBy) - getPostTimestamp(a, sortBy));
 
     if (typeof options.limit === 'number') {
         return filtered.slice(0, options.limit);

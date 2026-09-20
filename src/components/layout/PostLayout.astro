@@ -9,6 +9,7 @@ import SyndicationLinks from '../SyndicationLinks.astro';
 import NewsletterSignup from '../ui/NewsletterSignup.astro';
 import { Image } from 'astro:assets';
 import type { Interaction } from '../../utils/interactions';
+import { CATEGORY_FILTERS } from '../../utils/content';
 import { getBookCoverImage } from '../../utils/bookCovers';
 import { getFilmCoverImage } from '../../utils/filmCovers';
 import { getGameCoverImage } from '../../utils/gameCovers';
@@ -87,6 +88,17 @@ const formatYMD = (value: Date | string | undefined) => {
     if (!date) return null;
     return date.toISOString().slice(0, 10);
 };
+
+// "Planted / Last tended" line, additive at the top of garden posts only —
+// the existing Published/Updated line at the bottom of the post is untouched.
+const gardenCategories: readonly string[] = CATEGORY_FILTERS.garden;
+const isGardenPost = gardenCategories.includes(category);
+const plantedDate = parseDate(publishedDate);
+const tendedDate = parseDate(updated);
+const UPDATED_THRESHOLD_MS = 24 * 60 * 60 * 1000; // mirrors src/utils/feed.ts UPDATED_LABEL_THRESHOLD_MS
+const showTended = Boolean(
+    plantedDate && tendedDate && tendedDate.getTime() - plantedDate.getTime() > UPDATED_THRESHOLD_MS
+);
 
 const formatAuthors = (author?: string | string[]) => {
     if (!author) return null;
@@ -572,6 +584,14 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
             )}
         </div>
 
+        {isGardenPost && plantedDate && (
+            <div class="post-layout__grown">
+                Planted <TimeDisplay date={plantedDate} format="relative" className="post-layout__grown-time" />.
+                {showTended && tendedDate && (
+                    <> Last tended <TimeDisplay date={tendedDate} format="relative" className="post-layout__grown-time" />.</>
+                )}
+            </div>
+        )}
 
         <div class="e-content">
             <slot />
@@ -630,6 +650,14 @@ const tvRatingIconSpecs: readonly RatingIconSpec[] = tvRatingDisplay?.iconSpecs 
 <style>
     .post-layout__article {
         padding-bottom: clamp(2rem, 5vw, 3rem);
+    }
+
+    .post-layout__grown {
+        margin: 0 0 1.5rem;
+        font-size: var(--text-xs);
+        line-height: 1.6;
+        color: rgb(var(--color-text-secondary));
+        text-align: center;
     }
 
     .post-layout__meta {
