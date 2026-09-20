@@ -9,7 +9,7 @@ import { createSectionLandingProps } from '../../utils/sectionLanding';
 // Shelf entries (books, films, TV, games) live under /shelf/ and are not part
 // of the garden.
 const allPosts = await getAllPosts();
-const gardenPosts = getPostsByCategory(allPosts, 'garden');
+const gardenPosts = getPostsByCategory(allPosts, 'garden', { sortBy: 'updated' });
 
 // Transform posts for the GardenGrid component
 const transformedPosts = gardenPosts.map(transformPost);

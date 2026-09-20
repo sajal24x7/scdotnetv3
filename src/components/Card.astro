@@ -2,7 +2,8 @@
 import TimeDisplay from './TimeDisplay.astro';
 import CategoryDisplay from './CategoryDisplay.astro';
 
-const { title, description, created, category, image, link } = Astro.props;
+const { title, description, created, updated, category, image, link } = Astro.props;
+const displayDate = updated ?? created;
 const hasImage = Boolean(image);
 const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].join(' ');
 ---
@@ -50,7 +51,7 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
 
       <div class="card-meta">
         <CategoryDisplay category={category} className="card-category" />
-        <TimeDisplay date={created} category={category} className="card-date card-chip" />
+        <TimeDisplay date={displayDate} category={category} className="card-date card-chip" />
       </div>
       
     </div>
