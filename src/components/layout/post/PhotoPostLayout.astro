@@ -1,13 +1,13 @@
 ---
-import LayoutContainer from './LayoutContainer.astro';
-import TimeDisplay from '../TimeDisplay.astro';
-import Tag from '../Tag.astro';
-import Backlinks from '../Backlinks.astro';
-import Interactions from '../interactions/Interactions.astro';
-import PhotoCarousel from '../PhotoCarousel.astro';
-import SyndicationLinks from '../SyndicationLinks.astro';
-import NewsletterSignup from '../ui/NewsletterSignup.astro';
-import type { Interaction } from '../../utils/interactions';
+import LayoutContainer from '../LayoutContainer.astro';
+import TimeDisplay from '../../TimeDisplay.astro';
+import Tag from '../../Tag.astro';
+import Backlinks from '../../Backlinks.astro';
+import Interactions from '../../interactions/Interactions.astro';
+import PhotoCarousel from '../../PhotoCarousel.astro';
+import SyndicationLinks from '../../SyndicationLinks.astro';
+import NewsletterSignup from '../../ui/NewsletterSignup.astro';
+import type { Interaction } from '../../../utils/interactions';
 
 interface Backlink {
     slug: string;
@@ -23,6 +23,8 @@ interface PostEntry {
 
 interface Props {
     entry: PostEntry;
+    /** Always 'photo'; accepted so every post layout shares one prop shape. */
+    category?: string;
     canonicalUrl: string;
     backlinks: Backlink[];
     interactions?: Interaction[];

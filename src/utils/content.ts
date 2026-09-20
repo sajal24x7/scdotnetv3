@@ -150,6 +150,46 @@ export const CATEGORY_FILTERS = {
 
 export type CategoryFilterKey = keyof typeof CATEGORY_FILTERS;
 
+/**
+ * Which detail-page layout a category renders with.
+ *
+ * `src/pages/[...slug].astro` looks a category up here instead of branching on
+ * booleans, so adding a category is one line rather than a new `isFooPost`
+ * flag threaded through a monolithic component.
+ *
+ * - `garden`  evergreen notes that get tended; shows planted/last-tended.
+ * - `stream`  chronological posts; the default for anything unmapped.
+ *             `now` and `colophon` ride along: chronological chrome, no tending line.
+ * - `shelf`   books/films/TV/games; cover + byline + metadata chips.
+ * - `prose`   stories and poems; single first-published date, no revision framing.
+ * - `photo`   full-width image-first layout.
+ */
+export const CATEGORY_LAYOUTS = {
+    evergreen: 'garden',
+    til: 'garden',
+    blog: 'stream',
+    micro: 'stream',
+    nordletter: 'stream',
+    now: 'stream',
+    colophon: 'stream',
+    bookshelf: 'shelf',
+    filmshelf: 'shelf',
+    tvshelf: 'shelf',
+    gameshelf: 'shelf',
+    story: 'prose',
+    poem: 'prose',
+    photo: 'photo'
+} as const;
+
+export type PostLayoutName = (typeof CATEGORY_LAYOUTS)[keyof typeof CATEGORY_LAYOUTS];
+
+export const DEFAULT_POST_LAYOUT: PostLayoutName = 'stream';
+
+export function getPostLayout(category: string): PostLayoutName {
+    return (CATEGORY_LAYOUTS as Record<string, PostLayoutName>)[category] ?? DEFAULT_POST_LAYOUT;
+}
+
+
 type CategoryFilter = CategoryFilterKey | ReadonlyArray<string> | string;
 
 interface CategoryFilterOptions {

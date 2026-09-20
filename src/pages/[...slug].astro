@@ -2,12 +2,15 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import type { CollectionEntry } from 'astro:content';
-import { getContentCategories } from '../utils/content';
+import { getContentCategories, getPostLayout } from '../utils/content';
 import { CONTENT_CATEGORIES } from '../content.config';
 import { findBacklinksComprehensive } from '../utils/backlinks';
 import { getInteractionsForPost } from '../utils/interactions';
-import PostLayout from '../components/layout/PostLayout.astro';
-import PhotoPostLayout from '../components/layout/PhotoPostLayout.astro';
+import GardenPostLayout from '../components/layout/post/GardenPostLayout.astro';
+import StreamPostLayout from '../components/layout/post/StreamPostLayout.astro';
+import ShelfPostLayout from '../components/layout/post/ShelfPostLayout.astro';
+import ProsePostLayout from '../components/layout/post/ProsePostLayout.astro';
+import PhotoPostLayout from '../components/layout/post/PhotoPostLayout.astro';
 
 type AnyEntry = CollectionEntry<(typeof CONTENT_CATEGORIES)[number]>;
 
@@ -49,10 +52,21 @@ const canonicalUrl = new URL(`${category}/${slug}/`, Astro.site).href;
 const categoryLabel = category.charAt(0).toUpperCase() + category.slice(1);
 const pageTitle = entry.data?.title ? `${entry.data.title} - ${categoryLabel}` : categoryLabel;
 
-// Photo posts get their own Instagram-style layout, and go full-width (no
-// grid-start-3/span-8 constraint) so the image/text row lines up with the
-// site header instead of the narrower reading column other posts use.
-const isPhotoPost = category === 'photo';
+// Each category maps to a detail layout in src/utils/content.ts; the component
+// table below is the only place that mapping becomes markup.
+const layoutName = getPostLayout(category);
+const PostLayoutComponent = {
+  garden: GardenPostLayout,
+  stream: StreamPostLayout,
+  shelf: ShelfPostLayout,
+  prose: ProsePostLayout,
+  photo: PhotoPostLayout
+}[layoutName];
+
+// Photo posts go full-width (no grid-start-3/span-8 constraint) so the
+// image/text row lines up with the site header instead of the narrower
+// reading column other posts use.
+const isPhotoPost = layoutName === 'photo';
 
 const ogImagePath = 'image' in entry.data && entry.data.image ? entry.data.image : undefined;
 
@@ -85,26 +99,14 @@ const jsonLd = {
 >
   {/* escape "<" so no field value can close the script tag early */}
   <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
-  {isPhotoPost ? (
-    <PhotoPostLayout
-      entry={entry}
-      canonicalUrl={canonicalUrl}
-      backlinks={backlinks}
-      interactions={interactions}
-      hasUpdatedDate={hasUpdatedDate}
-    >
-      <Content />
-    </PhotoPostLayout>
-  ) : (
-    <PostLayout
-      entry={entry}
-      category={category}
-      canonicalUrl={canonicalUrl}
-      backlinks={backlinks}
-      interactions={interactions}
-      hasUpdatedDate={hasUpdatedDate}
-    >
-      <Content />
-    </PostLayout>
-  )}
+  <PostLayoutComponent
+    entry={entry}
+    category={category}
+    canonicalUrl={canonicalUrl}
+    backlinks={backlinks}
+    interactions={interactions}
+    hasUpdatedDate={hasUpdatedDate}
+  >
+    <Content />
+  </PostLayoutComponent>
 </Layout>

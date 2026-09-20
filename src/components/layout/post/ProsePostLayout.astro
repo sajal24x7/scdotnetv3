@@ -1,0 +1,239 @@
+---
+import PostShell from './PostShell.astro';
+import Tag from '../../Tag.astro';
+import SyndicationLinks from '../../SyndicationLinks.astro';
+import { getPostCommonMeta } from '../../../utils/postMeta';
+import { formatMonthYear } from '../../../utils/dateFormat';
+import type { Interaction } from '../../../utils/interactions';
+
+/**
+ * Creative writing (story, poem).
+ *
+ * Deliberately *not* treated like an evergreen note: a poem written in 2012 is
+ * finished, so there is no planted/tended line and no "Updated" stamp — the
+ * `updated` frontmatter (mostly migration timestamps) still feeds JSON-LD and
+ * feeds, it just isn't shown as if the piece were being revised.
+ *
+ * The frontmatter `image` is an OG card, not an illustration, so it is kept out
+ * of the page body where it would compete with the text.
+ */
+
+interface Backlink {
+    slug: string;
+    title: string;
+    description: string;
+    category: string;
+    created: Date;
+}
+
+interface Props {
+    entry: { data: Record<string, any> };
+    category: 'story' | 'poem';
+    canonicalUrl: string;
+    backlinks: Backlink[];
+    interactions?: Interaction[];
+    hasUpdatedDate: boolean;
+}
+
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } = Astro.props as Props;
+
+const meta = getPostCommonMeta(entry.data, hasUpdatedDate);
+
+const variant = category === 'poem' ? 'poem' : 'story';
+const kindLabel = variant === 'poem' ? 'A poem' : 'A story';
+
+const publishedIso = meta.publishedDate
+    ? new Date(meta.publishedDate).toISOString()
+    : undefined;
+const publishedLabel = meta.publishedDate ? formatMonthYear(meta.publishedDate) : null;
+---
+
+<PostShell
+    category={category}
+    canonicalUrl={canonicalUrl}
+    backlinks={backlinks}
+    interactions={interactions}
+    tags={meta.tags}
+    bridgyOmit={meta.bridgyOmit}
+    className={`prose-post prose-post--${variant}`}
+>
+    <header slot="header" class="prose-post__header">
+        {meta.title && <h1 class="p-name prose-post__title">{meta.title}</h1>}
+
+        <p class="prose-post__dateline">
+            {kindLabel}
+            {publishedLabel && publishedIso && (
+                <>
+                    {' · '}
+                    <time class="dt-published" datetime={publishedIso}>{publishedLabel}</time>
+                </>
+            )}
+        </p>
+
+        {meta.description && (
+            <p class="p-summary prose-post__epigraph">{meta.description}</p>
+        )}
+    </header>
+
+    <div slot="before-content" class="prose-post__rule" aria-hidden="true"></div>
+
+    <slot />
+
+    <footer slot="footer" class="prose-post__footer">
+        {meta.tags.length > 0 && (
+            <div class="prose-post__tags">
+                {meta.tags.map((tag: string) => (
+                    <Tag tag={tag} as="a" />
+                ))}
+            </div>
+        )}
+
+        <p class="prose-post__colophon">
+            {publishedLabel ? `First published ${publishedLabel}.` : ''}
+            Thoughts? <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">Email me</a>.
+        </p>
+
+        {meta.syndicationUrls.length > 0 && (
+            <div class="prose-post__syndication">
+                <SyndicationLinks
+                    syndicationUrls={meta.syndicationUrls}
+                    variant="icons"
+                    label="Posted to:"
+                    plainLabel
+                />
+            </div>
+        )}
+    </footer>
+</PostShell>
+
+<!--
+  Global (not scoped): the `.prose-post` class and the `.e-content` wrapper are
+  authored in PostShell, so a scoped selector would never match them. Every rule
+  below is namespaced under `.prose-post`, which only story and poem pages carry.
+-->
+<style is:global>
+    /* The reading column is narrower than the site's default prose measure:
+       verse and short fiction want a shorter line than an essay does. */
+    .prose-post .e-content,
+    .prose-post__header,
+    .prose-post__footer {
+        max-width: 40rem;
+        margin-inline: auto;
+    }
+
+    .prose-post--poem .e-content,
+    .prose-post--poem .prose-post__header,
+    .prose-post--poem .prose-post__footer {
+        max-width: 34rem;
+    }
+
+    .prose-post__header {
+        text-align: center;
+        margin-bottom: 1.75rem;
+    }
+
+    .prose-post__title {
+        font-family: var(--font-serif);
+        font-size: var(--text-xlarge);
+        font-weight: 600;
+        line-height: 1.15;
+        margin: 0 0 0.6rem;
+    }
+
+    .prose-post__dateline {
+        margin: 0;
+        font-size: var(--text-xs);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .prose-post__epigraph {
+        margin: 1rem 0 0;
+        font-family: var(--font-serif);
+        font-size: var(--text-lg);
+        font-style: italic;
+        line-height: 1.5;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    /* A hairline instead of a metadata block: the text starts here. */
+    .prose-post__rule {
+        width: 3rem;
+        height: 1px;
+        margin: 0 auto 2.25rem;
+        background: rgb(var(--color-border));
+    }
+
+    .prose-post .e-content {
+        font-family: var(--font-serif);
+        font-size: var(--text-base);
+        line-height: 1.75;
+    }
+
+    /* Poems are authored one line per paragraph, so paragraphs are verse lines:
+       tighten them rather than spacing them like prose. A stanza break can be
+       authored as a paragraph holding only `&nbsp;`. */
+    .prose-post--poem .e-content p {
+        margin-block: 0 0.5rem;
+        line-height: 1.65;
+    }
+
+    .prose-post--poem .e-content p:empty {
+        display: none;
+    }
+
+    .prose-post--story .e-content p {
+        margin-block: 0 1.1rem;
+        text-align: left;
+    }
+
+    /* Scene breaks (--- in markdown) read as a centred ornament, not a rule. */
+    .prose-post .e-content hr {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 0;
+        margin: 2rem 0;
+        text-align: center;
+    }
+
+    .prose-post .e-content hr::before {
+        content: '· · ·';
+        letter-spacing: 0.5em;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .prose-post__footer {
+        margin-top: 2.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgb(var(--color-border));
+        text-align: center;
+    }
+
+    .prose-post__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-bottom: 0.9rem;
+    }
+
+    .prose-post__colophon {
+        margin: 0;
+        font-size: var(--text-xs);
+        line-height: 1.6;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .prose-post__colophon a {
+        color: inherit;
+        font-weight: 600;
+    }
+
+    .prose-post__syndication {
+        margin-top: 0.5rem;
+        font-size: var(--text-xs);
+        color: rgb(var(--color-text-secondary));
+    }
+</style>

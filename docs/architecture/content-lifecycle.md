@@ -19,7 +19,7 @@ This guide documents how Markdown files flow from `src/content` into Astro pages
 
 | Artifact | Produced By | Used For |
 | --- | --- | --- |
-| `src/data/backlinks-index.json` | `findBacklinksComprehensive()` regenerates this cache when content changes, when the file is missing, or when `REGENERATE_BACKLINKS=true`. | Supplies backlinks to `PostLayout.astro`. |
+| `src/data/backlinks-index.json` | `findBacklinksComprehensive()` regenerates this cache when content changes, when the file is missing, or when `REGENERATE_BACKLINKS=true`. | Supplies backlinks to the post detail layouts via `PostShell.astro`. |
 | `dist/pagefind/` | Pagefind crawls the built HTML output as a post-build step (`pagefind --site dist` in the `build` script). | Read by `src/pages/search.astro` for client-side queries. |
 | `src/data/nordletter-image-manifest.json` + cached images | `npm run cache-nordletter-images` before every dev/build. | Newsletter thumbnails in `NordletterGrid.astro` (see [Nordletter Image Cache](../operations/nordletter-image-cache.md)). |
 | Generated cover maps (`src/utils/bookCovers.ts` etc.) | `npm run generate-covers` and the per-shelf generate scripts. | Shelf layouts import cover images at build time. |
@@ -27,11 +27,11 @@ This guide documents how Markdown files flow from `src/content` into Astro pages
 ## Garden Dates: Planted vs. Tended
 
 - `/garden`, `/evergreen`, and `/til` all sort by `getPostsByCategory(..., { sortBy: 'updated' })`, treating a note's `updated` field as its primary timeline signal and falling back to `created` when `updated` is unset. `/stories` and `/poems` still sort by `created`. All five pages reuse `Card.astro`, so every card's displayed date picks up the same `updated`-or-`created` fallback regardless of that page's own sort order.
-- `PostLayout.astro` renders an additional "Planted `<created>` ago" / "Last tended `<updated>` ago" line above the body, garden categories only. "Last tended" only appears when `updated` is more than 24 hours after `created` (the same threshold `src/utils/feed.ts` uses for the homepage feed's "updated" label), so a same-day typo fix doesn't show as an edit. This is separate from, and additional to, the existing Published/Updated line at the bottom of every post.
+- `GardenPostLayout.astro` renders an additional "Planted `<created>` ago" / "Last tended `<updated>` ago" line above the body, evergreen and TIL posts only (stories and poems moved to `ProsePostLayout.astro`, which shows neither a tended line nor an updated date). "Last tended" only appears when `updated` is more than 24 hours after `created` (the same threshold `src/utils/feed.ts` uses for the homepage feed's "updated" label), so a same-day typo fix doesn't show as an edit. This is separate from, and additional to, the existing Published/Updated line at the bottom of every post.
 
 ## Backlinks Integration
 
-During `getStaticPaths`, the `[...slug].astro` route resolves the current post and calls `findBacklinksComprehensive()` using the category/slug key. The helper ensures the backlink cache is available before `PostLayout.astro` renders the page. See [Backlinks System](../components/backlinks.md) for details.
+During `getStaticPaths`, the `[...slug].astro` route resolves the current post and calls `findBacklinksComprehensive()` using the category/slug key. The helper ensures the backlink cache is available before the post layout renders the page. See [Backlinks System](../components/backlinks.md) for details.
 
 ## Search Index Integration
 
