@@ -1,6 +1,6 @@
 # Shelf Pages
 
-The shelf is a set of media-tracking pages covering books, films, TV shows, and games. It lives under the **Garden** section of the site.
+The shelf is a set of media-tracking pages covering books, films, TV shows, and games. **Shelf** is a top-level section of the site, alongside Garden, Stream, Nordletter, and About. Shelf entries are not part of the garden: they are excluded from the `/garden/` grid, its note count and tag counts, and the Garden slice on tag pages.
 
 ## Pages
 
@@ -13,7 +13,7 @@ The shelf is a set of media-tracking pages covering books, films, TV shows, and 
 | `/gameshelf/` | `gameshelf` | Games |
 | `/tvshelf/[show]/` | — | TV show detail |
 
-The `/shelf/` page is the default landing when clicking **Shelf** in the secondary nav. The **Books / Film / TV / Games** tab nav on every shelf page links to the four category pages.
+The `/shelf/` page is the default landing when clicking **Shelf** in the primary nav. Shelf's secondary nav strip links the four category pages as **Books / Film / TV / Games**, and the home page's unified feed gives shelf entries their own **Shelf** filter chip (the `shelf` group in `FEED_GROUPS`).
 
 ## Adding New Entries
 
