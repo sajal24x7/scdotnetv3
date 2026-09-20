@@ -1,19 +1,25 @@
 ---
-title: "Sculptor’s Daughter"
-slug: "sculptors-daughter"
-created: 2026-09-17T07:28:00+03:00
-updated: 2026-09-20T14:05:23+03:00
+title: Sculptor’s Daughter
+slug: sculptors-daughter
+created: 2026-09-17T04:28:00.000Z
+updated: 2026-09-20T11:05:23.000Z
 category: bookshelf
-tags: ["childhood", "stories"]
+tags:
+  - childhood
+  - stories
 author:
   - Tove Jansson
-started: 2026-09-17T07:28:00
-finished: 2026-09-20T08:03:00
+started: 2026-09-17T07:28:00.000Z
+finished: 2026-09-20T08:03:00.000Z
 genre: biography
 format: audiobook
 rating: like
 status: finished
 cover: sculptors-daughter.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117303095016195282'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mvx3brpdjg2t'
+  - 'https://www.threads.com/@sajal24x7/post/DdgdoYGm4x4'
 ---
 ## Review
 

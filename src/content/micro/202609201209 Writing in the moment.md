@@ -1,10 +1,17 @@
 ---
-title: "Writing in the Moment"
-slug: "writing-in-the-moment"
-created: 2026-09-20T12:09:00+03:00
-updated: 2026-09-20T12:09:28+03:00
+title: Writing in the Moment
+slug: writing-in-the-moment
+created: 2026-09-20T09:09:00.000Z
+updated: 2026-09-20T09:09:28.000Z
 category: micro
-tags: ["writing", "iphone", "reviews", "daring-fireball"]
+tags:
+  - writing
+  - iphone
+  - reviews
+  - daring-fireball
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117303095886939870'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mvx3c5yfal2w'
 ---
 I saw this in [Gruber's review of the iPhone 18 Pro](https://daringfireball.net/2026/09/the_iphones_18_pro),
 
