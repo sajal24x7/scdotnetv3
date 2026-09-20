@@ -12,7 +12,6 @@ finished: 2026-09-20T08:03:00
 genre: biography
 format: audiobook
 rating: like
-series:
 status: finished
 cover: sculptors-daughter.webp
 ---
