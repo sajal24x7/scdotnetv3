@@ -2,12 +2,15 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import type { CollectionEntry } from 'astro:content';
-import { getContentCategories } from '../utils/content';
+import { getAllPosts, getAdjacentPosts, getContentCategories, getPostLayout } from '../utils/content';
 import { CONTENT_CATEGORIES } from '../content.config';
 import { findBacklinksComprehensive } from '../utils/backlinks';
 import { getInteractionsForPost } from '../utils/interactions';
-import PostLayout from '../components/layout/PostLayout.astro';
-import PhotoPostLayout from '../components/layout/PhotoPostLayout.astro';
+import GardenPostLayout from '../components/layout/post/GardenPostLayout.astro';
+import StreamPostLayout from '../components/layout/post/StreamPostLayout.astro';
+import ShelfPostLayout from '../components/layout/post/ShelfPostLayout.astro';
+import ProsePostLayout from '../components/layout/post/ProsePostLayout.astro';
+import PhotoPostLayout from '../components/layout/post/PhotoPostLayout.astro';
 
 type AnyEntry = CollectionEntry<(typeof CONTENT_CATEGORIES)[number]>;
 
@@ -49,10 +52,33 @@ const canonicalUrl = new URL(`${category}/${slug}/`, Astro.site).href;
 const categoryLabel = category.charAt(0).toUpperCase() + category.slice(1);
 const pageTitle = entry.data?.title ? `${entry.data.title} - ${categoryLabel}` : categoryLabel;
 
-// Photo posts get their own Instagram-style layout, and go full-width (no
-// grid-start-3/span-8 constraint) so the image/text row lines up with the
-// site header instead of the narrower reading column other posts use.
-const isPhotoPost = category === 'photo';
+// Each category maps to a detail layout in src/utils/content.ts; the component
+// table below is the only place that mapping becomes markup.
+const layoutName = getPostLayout(category);
+const PostLayoutComponent = {
+  garden: GardenPostLayout,
+  stream: StreamPostLayout,
+  shelf: ShelfPostLayout,
+  prose: ProsePostLayout,
+  photo: PhotoPostLayout
+}[layoutName];
+
+// Column width per layout: photo posts go full-width so the image/text row
+// lines up with the site header, creative writing sits in a narrower column
+// than an essay does, and everything else uses the standard reading column.
+const pageWrapper =
+  layoutName === 'photo'
+    ? { grid: { padding: 'narrow' as const } }
+    : layoutName === 'prose'
+      ? { className: 'grid-span-6 grid-start-4', grid: { padding: 'narrow' as const } }
+      : { className: 'grid-span-8 grid-start-3', grid: { padding: 'narrow' as const } };
+
+// Stories and poems link to their neighbours so a reader can walk the
+// collection in the order it was written.
+const siblings =
+  layoutName === 'prose'
+    ? getAdjacentPosts(await getAllPosts(), category, entry.id)
+    : undefined;
 
 const ogImagePath = 'image' in entry.data && entry.data.image ? entry.data.image : undefined;
 
@@ -77,34 +103,19 @@ const jsonLd = {
   ogImage={ogImagePath}
   publishedTime={entry.data?.created}
   enableLinkHoverEffect
-  pageWrapper={
-    isPhotoPost
-      ? { grid: { padding: 'narrow' } }
-      : { className: 'grid-span-8 grid-start-3', grid: { padding: 'narrow' } }
-  }
+  pageWrapper={pageWrapper}
 >
   {/* escape "<" so no field value can close the script tag early */}
   <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
-  {isPhotoPost ? (
-    <PhotoPostLayout
-      entry={entry}
-      canonicalUrl={canonicalUrl}
-      backlinks={backlinks}
-      interactions={interactions}
-      hasUpdatedDate={hasUpdatedDate}
-    >
-      <Content />
-    </PhotoPostLayout>
-  ) : (
-    <PostLayout
-      entry={entry}
-      category={category}
-      canonicalUrl={canonicalUrl}
-      backlinks={backlinks}
-      interactions={interactions}
-      hasUpdatedDate={hasUpdatedDate}
-    >
-      <Content />
-    </PostLayout>
-  )}
+  <PostLayoutComponent
+    entry={entry}
+    category={category}
+    canonicalUrl={canonicalUrl}
+    backlinks={backlinks}
+    interactions={interactions}
+    hasUpdatedDate={hasUpdatedDate}
+    siblings={siblings}
+  >
+    <Content />
+  </PostLayoutComponent>
 </Layout>

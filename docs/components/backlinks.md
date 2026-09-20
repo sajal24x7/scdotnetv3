@@ -8,7 +8,7 @@ This site surfaces internal references at the end of every long-form post — re
 2. **Index lookup** – `findBacklinksComprehensive()` in `src/utils/backlinks.ts` loads `src/data/backlinks-index.json` if it exists. When the artifact is missing, stale, or `REGENERATE_BACKLINKS=true`, it regenerates the cache by scanning every content collection.
 3. **Target normalization** – Markdown links, HTML links, and Obsidian wikilinks are normalized to canonical internal paths (host stripped, query/hash removed) before being stored. The helper deduplicates references and sorts them by publication date.
 4. **Snippet extraction** – For each link, the indexer records the position of its first mention and extracts surrounding context as a plain-text `snippet` (markdown syntax stripped). Snippets are bounded to the containing line because content is authored Obsidian-style (one paragraph or list item per line). The whole paragraph is used when it fits within 500 characters; longer paragraphs start at the sentence containing the link (prefixed with an ellipsis when that isn't the paragraph start) and are cut off at the limit with a trailing ellipsis. Snippets shorter than 20 characters, or links that only appear in reference-style definitions, are dropped so the UI can fall back to the target note's description.
-5. **Prop wiring** – The resulting array is passed to `PostLayout.astro` (and `PhotoPostLayout.astro`), which forwards it to the `Backlinks` UI fragment once the main article body renders.
+5. **Prop wiring** – The resulting array is passed to the layout `[...slug].astro` resolves for the category (`src/components/layout/post/`), each of which forwards it through `PostShell.astro` to the `Backlinks` UI fragment once the main article body renders.
 
 The cached JSON artifact is safe to commit and allows incremental builds to resolve backlinks without rescanning every post. The `_meta` block stores a file manifest plus a schema `version`; the cache regenerates automatically when content files change or the schema version bumps (bump `INDEX_VERSION` in `src/utils/backlinks.ts` whenever the artifact shape changes). You can also force regeneration by setting `REGENERATE_BACKLINKS=true`.
 
@@ -26,7 +26,7 @@ The component only renders when the backlink array is non-empty to avoid empty h
 ## Extending the Feature
 
 - **New link formats** – Update `collectBacklinkTargets()` if you introduce shortlinks or embed syntaxes so they normalize to the correct `category/slug` keys.【F:src/utils/backlinks.ts†L191-L272】
-- **Alternate presentation** – Modify `Backlinks.astro` or create a wrapper slot in `PostLayout.astro` if future templates require richer previews (for example, excerpts or thumbnails). The data contract is isolated from rendering, so adjustments do not impact indexing.
+- **Alternate presentation** – Modify `Backlinks.astro` or create a wrapper slot in `PostShell.astro` if future templates require richer previews (for example, excerpts or thumbnails). The data contract is isolated from rendering, so adjustments do not impact indexing.
 - **Cache strategy** – The system automatically invalidates the cache when content files are modified by comparing file timestamps. This ensures backlinks stay current without manual intervention. The helper warns if it cannot read or write the JSON artifact. Confirm the repo has write permissions or use `REGENERATE_BACKLINKS=true` to force regeneration if needed.【F:src/utils/backlinks.ts†L62-L140】
 
 ## Troubleshooting Checklist

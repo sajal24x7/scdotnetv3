@@ -1,0 +1,210 @@
+---
+import { heartIconPaths, thumbIconPaths } from '../../../utils/bookRatings';
+import type { ShelfChip } from '../../../utils/shelfMeta';
+
+/**
+ * Renders the shelf metadata chips described by `getShelfMeta`. One renderer
+ * for books, films, TV and games; the differences live in `src/utils/shelfMeta.ts`.
+ */
+
+interface Props {
+    chips: ShelfChip[];
+    className?: string;
+}
+
+const { chips, className = '' } = Astro.props as Props;
+---
+
+{chips.length > 0 && (
+    <div class:list={['book-meta-pills', className]}>
+        {chips.map((chip) => (
+            chip.kind === 'rating' ? (
+                <span
+                    class={`book-meta__chip book-meta__chip--rating book-meta__chip--rating-${chip.rating}`}
+                    aria-label={chip.ariaLabel}
+                >
+                    <span class="book-meta__chip-section-label">{chip.sectionLabel}</span>
+                    {chip.iconSpecs.length > 0 && (
+                        <span
+                            class={`book-meta__rating-icons book-meta__rating-icons--${chip.rating}`}
+                            aria-hidden="true"
+                        >
+                            {chip.iconSpecs.map((iconSpec) => (
+                                <span class="book-meta__rating-icon">
+                                    <svg
+                                        width={iconSpec.size}
+                                        height={iconSpec.size}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        {(
+                                            iconSpec.type === 'heart'
+                                                ? heartIconPaths
+                                                : thumbIconPaths[iconSpec.direction]
+                                        ).map((d) => (
+                                            <path d={d}></path>
+                                        ))}
+                                    </svg>
+                                </span>
+                            ))}
+                        </span>
+                    )}
+                </span>
+            ) : chip.kind === 'timeline' ? (
+                <span class="book-meta__chip book-meta__chip--timeline">
+                    <span class="book-meta__chip-section-label">{chip.sectionLabel}</span>
+                    <span class="book-meta__chip-label">{chip.value}</span>
+                </span>
+            ) : (
+                <span class={`book-meta__chip book-meta__chip--${chip.kind}`}>
+                    <span class="book-meta__chip-section-label">{chip.sectionLabel}</span>
+                    {chip.value}
+                </span>
+            )
+        ))}
+    </div>
+)}
+
+<style>
+    .book-meta-pills {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.5rem;
+    }
+
+    /* Headers without a cover are centered, so the chips follow. */
+    .book-meta-pills--centered {
+        justify-content: center;
+    }
+
+    .book-meta__chip-section-label {
+        opacity: 0.6;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    .book-meta__chip-section-label::after {
+        content: ':';
+        margin-inline-end: 0.2rem;
+    }
+
+    .book-meta__chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        padding: 0.15rem 0.55rem;
+        border-radius: 0.5rem;
+        border: none;
+        font-size: var(--text-xs);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .book-meta__chip--genre {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    :global(.dark) .book-meta__chip--genre {
+        background: rgba(30, 64, 175, 0.3);
+        color: #bfdbfe;
+    }
+
+    .book-meta__chip--format {
+        background: var(--chip-neutral-bg);
+        color: var(--chip-neutral-fg);
+    }
+
+    .book-meta__chip--rating {
+        background: var(--chip-neutral-bg);
+        color: var(--gray-text-strong);
+    }
+
+    .book-meta__chip--rating-like {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    :global(.dark) .book-meta__chip--rating-like {
+        background: rgba(22, 101, 52, 0.35);
+        color: #bbf7d0;
+    }
+
+    .book-meta__chip--rating-love {
+        background: #fce7f3;
+        color: #be185d;
+    }
+
+    :global(.dark) .book-meta__chip--rating-love {
+        background: rgba(190, 24, 93, 0.3);
+        color: #fbcfe8;
+    }
+
+    .book-meta__chip--rating-nope {
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+
+    :global(.dark) .book-meta__chip--rating-nope {
+        background: rgba(185, 28, 28, 0.3);
+        color: #fecaca;
+    }
+
+    .book-meta__chip--timeline {
+        justify-content: flex-start;
+        background: var(--pill-bg);
+        color: var(--pill-fg);
+        font-size: var(--text-xs);
+        letter-spacing: 0.04em;
+        text-transform: none;
+    }
+
+    .book-meta__chip-label {
+        white-space: nowrap;
+    }
+
+    .book-meta__rating-icons {
+        display: inline-flex;
+        gap: 0.25rem;
+        color: var(--gray-text-strong);
+    }
+
+    .book-meta__rating-icons--like {
+        color: #166534;
+    }
+
+    :global(.dark) .book-meta__rating-icons--like {
+        color: #bbf7d0;
+    }
+
+    .book-meta__rating-icons--love {
+        color: #be185d;
+    }
+
+    :global(.dark) .book-meta__rating-icons--love {
+        color: #f9a8d4;
+    }
+
+    .book-meta__rating-icons--nope {
+        color: #b91c1c;
+    }
+
+    :global(.dark) .book-meta__rating-icons--nope {
+        color: #fca5a5;
+    }
+
+    .book-meta__rating-icon {
+        line-height: 1;
+        display: inline-flex;
+    }
+</style>

@@ -19,6 +19,7 @@ This directory centralizes all reference material for the Astro-powered build of
 | --- | --- | --- |
 | [Navigation](components/navigation.md) | The Guardian-inspired multi-level navigation (primary and secondary strips, plus the footer nav) and its tag-page island. | `src/components/navigation/*.astro` |
 | [Search](components/search.md) | Pagefind-backed search page: index generation and query handling. | `src/pages/search.astro` |
+| [Post Detail Layouts](components/post-layouts.md) | How `[...slug].astro` picks a detail layout per category, and what each one shows. | `src/components/layout/post/*.astro`, `src/utils/content.ts` |
 | [Backlinks](components/backlinks.md) | Cached backlink generation and rendering conventions for "Paths into this note". | `src/utils/backlinks.ts`, `src/components/Backlinks.astro` |
 | [About Page & Life Timeline](pages/about.md) | The `/sajal/` context section plus the stream and life-calendar timeline views, both driven by the editable `life.md` doc. | `src/data/life.md`, `src/utils/life.ts`, `src/components/LifeTimeline.astro` |
 | [Books Page](pages/books.md) | Layout structure, grid architecture, and data management for the author's published works page. | `src/pages/books/index.astro` |

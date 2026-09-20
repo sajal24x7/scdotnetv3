@@ -1,0 +1,57 @@
+---
+import PostShell from './PostShell.astro';
+import CenteredPostHeader from './CenteredPostHeader.astro';
+import PostMetaLine from './PostMetaLine.astro';
+import { getPostCommonMeta, type PostLayoutProps } from '../../../utils/postMeta';
+
+/**
+ * Chronological posts (blog, micro, nordletter) and the default layout for any
+ * category without its own mapping (now, colophon). No tending language: the
+ * post is dated once and stays that way.
+ */
+
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } = Astro.props as PostLayoutProps;
+
+const meta = getPostCommonMeta(entry.data, hasUpdatedDate);
+const edition = category === 'nordletter' ? entry.data?.edition : undefined;
+const showNewsletter = category === 'nordletter' || category === 'blog';
+---
+
+<PostShell
+    category={category}
+    canonicalUrl={canonicalUrl}
+    backlinks={backlinks}
+    interactions={interactions}
+    tags={meta.tags}
+    bridgyOmit={meta.bridgyOmit}
+    showNewsletter={showNewsletter}
+>
+    <CenteredPostHeader
+        slot="header"
+        title={meta.title}
+        description={meta.description}
+        tags={meta.tags}
+        heroImage={meta.heroImage}
+        galleryImages={meta.galleryImages}
+    >
+        {edition && (
+            <div slot="after-title" class="flex justify-center items-center gap-4 mb-4">
+                <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Letter: {edition}
+                    </span>
+                </div>
+            </div>
+        )}
+    </CenteredPostHeader>
+
+    <slot />
+
+    <PostMetaLine
+        slot="footer"
+        category={category}
+        publishedDate={meta.publishedDate}
+        updated={meta.updated}
+        syndicationUrls={meta.syndicationUrls}
+    />
+</PostShell>

@@ -1,0 +1,74 @@
+---
+import TimeDisplay from '../../TimeDisplay.astro';
+import SyndicationLinks from '../../SyndicationLinks.astro';
+
+/**
+ * Footer meta line used by the garden, stream and shelf layouts: the latest
+ * date the post carries, a mail link, and any POSSE syndication targets.
+ * Prose posts deliberately use their own, quieter line instead.
+ */
+
+interface Props {
+    category: string;
+    publishedDate?: Date | string;
+    updated?: Date | string;
+    syndicationUrls?: string[];
+}
+
+const { category, publishedDate, updated, syndicationUrls = [] } = Astro.props as Props;
+---
+
+<div class="post-layout__meta">
+    <div class="post-layout__meta-line">
+        {updated ? 'Updated ' : 'Published '}
+        {updated ? (
+            <TimeDisplay
+                date={updated}
+                category={category}
+                format="detailed"
+                className="dt-updated"
+            />
+        ) : (
+            <TimeDisplay
+                date={publishedDate}
+                category={category}
+                format="detailed"
+                className="dt-published"
+            />
+        )}.
+        Thoughts? <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">Email me</a>.
+        {syndicationUrls.length > 0 && (
+            <SyndicationLinks
+                syndicationUrls={syndicationUrls}
+                variant="icons"
+                label="Posted to:"
+                plainLabel
+            />
+        )}
+    </div>
+</div>
+
+<style>
+    .post-layout__meta {
+        margin-top: 1.25rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgb(var(--color-border));
+        text-align: center;
+    }
+
+    :global(.dark) .post-layout__meta {
+        border-top-color: rgb(var(--color-border));
+    }
+
+    .post-layout__meta-line {
+        margin: 0;
+        font-size: var(--text-xs);
+        line-height: 1.6;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .post-layout__meta-line a {
+        color: inherit;
+        font-weight: 600;
+    }
+</style>

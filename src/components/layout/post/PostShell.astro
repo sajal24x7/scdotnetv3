@@ -1,0 +1,102 @@
+---
+import LayoutContainer from '../LayoutContainer.astro';
+import Backlinks from '../../Backlinks.astro';
+import Interactions from '../../interactions/Interactions.astro';
+import NewsletterSignup from '../../ui/NewsletterSignup.astro';
+import type { Interaction } from '../../../utils/interactions';
+import type { Backlink } from '../../../utils/postMeta';
+
+/**
+ * Shared chrome for every post detail page.
+ *
+ * Holds everything that is identical across layouts — Pagefind metadata, the
+ * h-entry microformat wrapper, the content body, responses and backlinks — so
+ * the per-type layouts only describe their header and footer.
+ *
+ * Slots: `header` (title block), `before-content` (dateline etc.), default
+ * (rendered markdown), `footer` (meta line).
+ */
+
+interface Props {
+    category: string;
+    canonicalUrl: string;
+    backlinks: Backlink[];
+    interactions?: Interaction[];
+    tags?: string[];
+    bridgyOmit?: boolean;
+    showNewsletter?: boolean;
+    className?: string;
+}
+
+const {
+    category,
+    canonicalUrl,
+    backlinks,
+    interactions = [],
+    tags = [],
+    bridgyOmit = false,
+    showNewsletter = false,
+    className = ''
+} = Astro.props as Props;
+---
+
+<LayoutContainer
+    prose
+    maxWidth="full"
+    padding="none"
+    className="post-layout__container"
+>
+    <!-- Pagefind metadata: outside data-pagefind-body so they don't pollute text index -->
+    <div aria-hidden="true" style="display:none">
+        <span data-pagefind-meta="category">{category}</span>
+        {tags.map((tag: string) => (
+            <span data-pagefind-filter="tag">{tag.toLowerCase()}</span>
+        ))}
+    </div>
+
+    <article class:list={['h-entry', 'post-layout__article', className]} data-pagefind-body>
+        <!-- Hidden microformat data -->
+        <a href={canonicalUrl} class="u-url" style="display: none;"></a>
+        {bridgyOmit && (
+            <a href={canonicalUrl} class="u-bridgy-omit-link" style="display: none;"></a>
+        )}
+        <div class="p-author h-card" style="display: none;">
+            <a class="p-name u-url" href="https://sajalchoudhary.net">Sajal Choudhary</a>
+            <a class="u-url" href="https://sajalchoudhary.net">https://sajalchoudhary.net</a>
+        </div>
+
+        <slot name="header" />
+
+        <slot name="before-content" />
+
+        <div class="e-content">
+            <slot />
+        </div>
+
+        <slot name="footer" />
+
+        {showNewsletter && (
+            <div class="mt-8 border-t border-borderColor dark:border-borderColorDark text-center">
+                <NewsletterSignup
+                    title="Subscribe to NordLetter"
+                    description="A weekly newsletter on living in Finland."
+                    buttonText="Sign up"
+                    headingClass="text-[clamp(1.125rem,2vw,1.375rem)] font-semibold mb-1"
+                    descriptionClass="text-sm mb-3"
+                    wrapperClass="py-4"
+                    centered={true}
+                />
+            </div>
+        )}
+
+        <Interactions interactions={interactions} />
+
+        <Backlinks backlinks={backlinks} />
+    </article>
+</LayoutContainer>
+
+<style>
+    .post-layout__article {
+        padding-bottom: clamp(2rem, 5vw, 3rem);
+    }
+</style>

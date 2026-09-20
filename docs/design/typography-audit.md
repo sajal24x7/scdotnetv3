@@ -54,7 +54,7 @@ Astro scopes this rule with an attribute selector, so it out-specifies Tailwind'
 | --- | --- | --- |
 | Global `h1` (`global.css:157`) | `clamp(2rem, 8vw, 3rem)` | 600 |
 | `.prose h1` (`global.css:218`) | `2.25rem` fixed | 700 |
-| Post titles (`PostLayout.astro:259`) | `text-3xl md:text-4xl` (1.875/2.25rem) | 700 |
+| Post titles (`post/CenteredPostHeader.astro`, `post/ShelfPostLayout.astro`) | `text-3xl md:text-4xl` (1.875/2.25rem) | 700 |
 | Section titles (`PageToggleTitle.astro:53`, `ShelfTabNav.astro:31`, `books/index.astro:141`, `bookshelf/index.astro:542`) | `clamp(2rem, 5vw, 3rem)` | varies |
 | Shelf year headings (film/tv/game/shelf indexes) | `clamp(2rem, 5vw, 3rem)` → `clamp(2.25rem, 4vw, 3.5rem)` at ≥64rem | 700 |
 | Homepage/feed heading (`index.astro:132`, `UnifiedFeed.astro:65`) | `clamp(1.75rem, 5vw, 2.25rem)` | 700 |

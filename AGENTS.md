@@ -15,6 +15,7 @@ The Astro site lives in `src`, with route files under `src/pages`, shared layout
   - [`docs/architecture/overview.md`](docs/architecture/overview.md) — Layout shell, routing, and island strategy.
   - [`docs/architecture/content-lifecycle.md`](docs/architecture/content-lifecycle.md) — Collection schemas, content utilities, and derived artifacts.
   - [`docs/design/system.md`](docs/design/system.md) — Twelve-column grid, typography, and chip conventions.
+  - [`docs/components/post-layouts.md`](docs/components/post-layouts.md) — Per-category post detail layouts and the shared post shell.
   - [`docs/components/navigation.md`](docs/components/navigation.md), [`docs/components/search.md`](docs/components/search.md), [`docs/components/backlinks.md`](docs/components/backlinks.md) — Implementation guides for major UI systems.
   - [`docs/content/authoring.md`](docs/content/authoring.md) — Frontmatter rules and author workflow.
   - [`docs/content/publishing-pipeline.md`](docs/content/publishing-pipeline.md), [`docs/content/micro-composer.md`](docs/content/micro-composer.md) — How content reaches `main` (Obsidian → `content` branch → pipeline; `/write` → direct commit).
@@ -65,6 +66,7 @@ Commits in this repository use short, action-focused subjects (e.g., `Minor ui c
 
 ## Card Components
 - The homepage renders `UnifiedFeed`, which pulls from all content types directly; there is no separate "featured" data file or homepage-specific grid component.
+- Post **detail** pages are split per category under `src/components/layout/post/` (`GardenPostLayout`, `StreamPostLayout`, `ShelfPostLayout`, `ProsePostLayout`, `PhotoPostLayout`) over a shared `PostShell`; `CATEGORY_LAYOUTS` in `src/utils/content.ts` maps category to layout. See [`docs/components/post-layouts.md`](docs/components/post-layouts.md).
 - `src/components/Card.astro` is the base article card used by `GardenGrid` (and therefore Garden, Evergreen, TIL, Stories, Poems) to render post summaries with optional micro-post prose.
 - `src/components/bookshelf/BookshelfCard.astro` powers the bookshelf UI (used directly by `src/pages/bookshelf/index.astro` and `/shelf`), formatting status, dates, and cover art for reading logs.
 - `src/components/shelf/FilmCard.astro`, `TVCard.astro`, and `GameCard.astro` render entries on the film/TV/game shelf pages.

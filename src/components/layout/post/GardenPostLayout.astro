@@ -1,0 +1,81 @@
+---
+import PostShell from './PostShell.astro';
+import CenteredPostHeader from './CenteredPostHeader.astro';
+import PostMetaLine from './PostMetaLine.astro';
+import TimeDisplay from '../../TimeDisplay.astro';
+import { getPostCommonMeta, type PostLayoutProps } from '../../../utils/postMeta';
+
+/**
+ * Evergreen notes (evergreen, til): posts that get tended over time, so they
+ * lead with a planted/last-tended dateline.
+ */
+
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } = Astro.props as PostLayoutProps;
+
+const meta = getPostCommonMeta(entry.data, hasUpdatedDate);
+
+const parseDate = (value: Date | string | undefined) => {
+    if (!value) return null;
+    if (value instanceof Date) return Number.isNaN(value.getTime()) ? null : value;
+    const parsed = new Date(value);
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
+};
+
+const plantedDate = parseDate(meta.publishedDate);
+const tendedDate = parseDate(meta.updated);
+const UPDATED_THRESHOLD_MS = 24 * 60 * 60 * 1000; // mirrors src/utils/feed.ts UPDATED_LABEL_THRESHOLD_MS
+const showTended = Boolean(
+    plantedDate && tendedDate && tendedDate.getTime() - plantedDate.getTime() > UPDATED_THRESHOLD_MS
+);
+
+// Evergreen notes carry the newsletter call to action; TILs don't.
+const showNewsletter = category === 'evergreen';
+---
+
+<PostShell
+    category={category}
+    canonicalUrl={canonicalUrl}
+    backlinks={backlinks}
+    interactions={interactions}
+    tags={meta.tags}
+    bridgyOmit={meta.bridgyOmit}
+    showNewsletter={showNewsletter}
+>
+    <CenteredPostHeader
+        slot="header"
+        title={meta.title}
+        description={meta.description}
+        tags={meta.tags}
+        heroImage={meta.heroImage}
+        galleryImages={meta.galleryImages}
+    />
+
+    {plantedDate && (
+        <div slot="before-content" class="post-layout__grown">
+            Planted <TimeDisplay date={plantedDate} format="relative" className="post-layout__grown-time" />.
+            {showTended && tendedDate && (
+                <> Last tended <TimeDisplay date={tendedDate} format="relative" className="post-layout__grown-time" />.</>
+            )}
+        </div>
+    )}
+
+    <slot />
+
+    <PostMetaLine
+        slot="footer"
+        category={category}
+        publishedDate={meta.publishedDate}
+        updated={meta.updated}
+        syndicationUrls={meta.syndicationUrls}
+    />
+</PostShell>
+
+<style>
+    .post-layout__grown {
+        margin: 0 0 1.5rem;
+        font-size: var(--text-xs);
+        line-height: 1.6;
+        color: rgb(var(--color-text-secondary));
+        text-align: center;
+    }
+</style>

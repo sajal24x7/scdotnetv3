@@ -1,0 +1,330 @@
+---
+import PostShell from './PostShell.astro';
+import Tag from '../../Tag.astro';
+import SyndicationLinks from '../../SyndicationLinks.astro';
+import { getPostCommonMeta, type PostLayoutProps } from '../../../utils/postMeta';
+import { formatMonthYear } from '../../../utils/dateFormat';
+
+/**
+ * Creative writing (story, poem).
+ *
+ * Deliberately *not* treated like an evergreen note: a poem written in 2012 is
+ * finished, so there is no planted/tended line and no "Updated" stamp — the
+ * `updated` frontmatter (mostly migration timestamps) still feeds JSON-LD and
+ * feeds, it just isn't shown as if the piece were being revised.
+ *
+ * The frontmatter `image` is an OG card, not an illustration, so it is kept out
+ * of the page body where it would compete with the text.
+ */
+
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate, siblings } = Astro.props as PostLayoutProps;
+
+const meta = getPostCommonMeta(entry.data, hasUpdatedDate);
+
+const variant = category === 'poem' ? 'poem' : 'story';
+const kindLabel = variant === 'poem' ? 'A poem' : 'A story';
+
+const publishedIso = meta.publishedDate
+    ? new Date(meta.publishedDate).toISOString()
+    : undefined;
+const publishedLabel = meta.publishedDate ? formatMonthYear(meta.publishedDate) : null;
+
+const previous = siblings?.previous;
+const next = siblings?.next;
+const collectionHref = variant === 'poem' ? '/poems/' : '/stories/';
+const collectionLabel = variant === 'poem' ? 'All poems' : 'All stories';
+---
+
+<PostShell
+    category={category}
+    canonicalUrl={canonicalUrl}
+    backlinks={backlinks}
+    interactions={interactions}
+    tags={meta.tags}
+    bridgyOmit={meta.bridgyOmit}
+    className={`prose-post prose-post--${variant}`}
+>
+    <header slot="header" class="prose-post__header">
+        {meta.title && <h1 class="p-name prose-post__title">{meta.title}</h1>}
+
+        <p class="prose-post__dateline">
+            {kindLabel}
+            {publishedLabel && publishedIso && (
+                <>
+                    {' · '}
+                    <time class="dt-published" datetime={publishedIso}>{publishedLabel}</time>
+                </>
+            )}
+        </p>
+
+        {meta.description && (
+            <p class="p-summary prose-post__epigraph">{meta.description}</p>
+        )}
+    </header>
+
+    <div slot="before-content" class="prose-post__rule" aria-hidden="true"></div>
+
+    <slot />
+
+    <footer slot="footer" class="prose-post__footer">
+        {meta.tags.length > 0 && (
+            <div class="prose-post__tags">
+                {meta.tags.map((tag: string) => (
+                    <Tag tag={tag} as="a" />
+                ))}
+            </div>
+        )}
+
+        <p class="prose-post__colophon">
+            {publishedLabel ? `First published ${publishedLabel}.` : ''}
+            Thoughts? <a href="mailto:sajal@sajalchoudhary.net" class="link-hover">Email me</a>.
+        </p>
+
+        {meta.syndicationUrls.length > 0 && (
+            <div class="prose-post__syndication">
+                <SyndicationLinks
+                    syndicationUrls={meta.syndicationUrls}
+                    variant="icons"
+                    label="Posted to:"
+                    plainLabel
+                />
+            </div>
+        )}
+
+        {/* Walk the collection in the order it was written. */}
+        {(previous || next) && (
+            <nav class="prose-post__nav" aria-label={`More ${variant === 'poem' ? 'poems' : 'stories'}`}>
+                <div class="prose-post__nav-side">
+                    {previous && (
+                        <a href={previous.href} class="prose-post__nav-link">
+                            <span class="prose-post__nav-label">← Earlier</span>
+                            <span class="prose-post__nav-title">{previous.title}</span>
+                        </a>
+                    )}
+                </div>
+                <a href={collectionHref} class="prose-post__nav-all">{collectionLabel}</a>
+                <div class="prose-post__nav-side prose-post__nav-side--end">
+                    {next && (
+                        <a href={next.href} class="prose-post__nav-link">
+                            <span class="prose-post__nav-label">Later →</span>
+                            <span class="prose-post__nav-title">{next.title}</span>
+                        </a>
+                    )}
+                </div>
+            </nav>
+        )}
+    </footer>
+</PostShell>
+
+<!--
+  Global (not scoped): the `.prose-post` class and the `.e-content` wrapper are
+  authored in PostShell, so a scoped selector would never match them. Every rule
+  below is namespaced under `.prose-post`, which only story and poem pages carry.
+-->
+<style is:global>
+    /* The reading column is narrower than the site's default prose measure:
+       verse and short fiction want a shorter line than an essay does. The page
+       itself is already narrowed to 6 of 12 columns in [...slug].astro; these
+       caps stop the column from stretching on very wide screens. */
+    .prose-post .e-content,
+    .prose-post__header,
+    .prose-post__footer {
+        max-width: 36rem;
+        margin-inline: auto;
+    }
+
+    /* Verse is set as a centered block of flush-left lines, so the measure is
+       the longest line rather than a paragraph's worth of text. */
+    .prose-post--poem .e-content,
+    .prose-post--poem .prose-post__header,
+    .prose-post--poem .prose-post__footer {
+        max-width: 28rem;
+    }
+
+    .prose-post__header {
+        text-align: center;
+        margin-bottom: 1.75rem;
+    }
+
+    /* Fraunces, like every other heading on the site. */
+    .prose-post__title {
+        font-family: var(--font-serif);
+        font-size: var(--text-large);
+        font-weight: 600;
+        line-height: 1.2;
+        margin: 0 0 0.6rem;
+    }
+
+    .prose-post__dateline {
+        margin: 0;
+        font-size: var(--text-xs);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .prose-post__epigraph {
+        margin: 1rem 0 0;
+        font-size: var(--text-base);
+        font-style: italic;
+        line-height: 1.5;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    /* A hairline instead of a metadata block: the text starts here. */
+    .prose-post__rule {
+        width: 3rem;
+        height: 1px;
+        margin: 0 auto 2.25rem;
+        background: rgb(var(--color-border));
+    }
+
+    /* Body copy stays on the site's sans (Inter), one step down from the
+       default reading size — short forms read better a little tighter. */
+    .prose-post .e-content {
+        font-size: var(--text-small);
+        line-height: 1.7;
+    }
+
+    .prose-post--story .e-content {
+        line-height: 1.75;
+    }
+
+    /* Poems are authored one line per paragraph, so paragraphs are verse lines:
+       tighten them rather than spacing them like prose. A stanza break can be
+       authored as a paragraph holding only `&nbsp;`. */
+    .prose-post--poem .e-content p {
+        margin-block: 0 0.5rem;
+        line-height: 1.65;
+    }
+
+    .prose-post--poem .e-content p:empty {
+        display: none;
+    }
+
+    .prose-post--story .e-content p {
+        margin-block: 0 1.1rem;
+        text-align: left;
+    }
+
+    /* Scene breaks (--- in markdown) read as a centred ornament, not a rule. */
+    .prose-post .e-content hr {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 0;
+        margin: 2rem 0;
+        text-align: center;
+    }
+
+    .prose-post .e-content hr::before {
+        content: '· · ·';
+        letter-spacing: 0.5em;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .prose-post__footer {
+        margin-top: 2.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgb(var(--color-border));
+        text-align: center;
+    }
+
+    .prose-post__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-bottom: 0.9rem;
+    }
+
+    .prose-post__colophon {
+        margin: 0;
+        font-size: var(--text-xs);
+        line-height: 1.6;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .prose-post__colophon a {
+        color: inherit;
+        font-weight: 600;
+    }
+
+    .prose-post__syndication {
+        margin-top: 0.5rem;
+        font-size: var(--text-xs);
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .prose-post__nav {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: start;
+        gap: 1rem;
+        margin-top: 1.75rem;
+        font-size: var(--text-xs);
+    }
+
+    .prose-post__nav-side {
+        display: flex;
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .prose-post__nav-side--end {
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    .prose-post__nav-link,
+    .prose-post__nav-all {
+        color: rgb(var(--color-text-secondary));
+        text-decoration: none;
+    }
+
+    .prose-post__nav-link {
+        display: grid;
+        gap: 0.2rem;
+        max-width: 11rem;
+    }
+
+    .prose-post__nav-label {
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.7;
+    }
+
+    .prose-post__nav-title {
+        font-family: var(--font-serif);
+        font-size: var(--text-sm);
+        line-height: 1.25;
+        color: rgb(var(--color-text-primary));
+    }
+
+    .prose-post__nav-all {
+        align-self: center;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .prose-post__nav-link:hover .prose-post__nav-title,
+    .prose-post__nav-all:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
+    @media (max-width: 30rem) {
+        .prose-post__nav {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            text-align: center;
+            gap: 1.25rem;
+        }
+
+        .prose-post__nav-side,
+        .prose-post__nav-side--end {
+            justify-content: center;
+            text-align: center;
+        }
+    }
+</style>

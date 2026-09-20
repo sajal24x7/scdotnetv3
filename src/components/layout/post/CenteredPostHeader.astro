@@ -1,0 +1,70 @@
+---
+import Tag from '../../Tag.astro';
+import PhotoCarousel from '../../PhotoCarousel.astro';
+
+/**
+ * Centered title block shared by the garden and stream layouts: optional hero
+ * media, title, description and tags.
+ */
+
+interface Props {
+    title?: string;
+    description?: string;
+    tags?: string[];
+    heroImage?: string;
+    galleryImages?: string[];
+}
+
+const {
+    title = '',
+    description,
+    tags = [],
+    heroImage,
+    galleryImages = []
+} = Astro.props as Props;
+---
+
+<div class="mb-8">
+    {/* Frontmatter gallery — carousel when multiple */}
+    {galleryImages.length > 0 && (
+        <div class="mb-6">
+            <PhotoCarousel images={galleryImages} title={title} />
+        </div>
+    )}
+
+    {heroImage && galleryImages.length === 0 && (
+        <div class="mb-6">
+            <img
+                src={heroImage}
+                alt={title}
+                class="rounded-lg w-full object-cover max-h-96 aspect-[1200/630]"
+                loading="lazy"
+                decoding="async"
+            />
+        </div>
+    )}
+
+    <div class="text-center">
+        {title && (
+            <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
+        )}
+
+        <slot name="after-title" />
+
+        {description && (
+            <p class="p-summary text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
+                {description}
+            </p>
+        )}
+
+        {tags.length > 0 && (
+            <div class="mb-8 flex justify-center">
+                <div class="flex flex-wrap gap-2 justify-center">
+                    {tags.map((tag: string) => (
+                        <Tag tag={tag} as="a" />
+                    ))}
+                </div>
+            </div>
+        )}
+    </div>
+</div>
