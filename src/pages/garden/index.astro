@@ -4,14 +4,12 @@ import GardenGrid from '../../components/layout/GardenGrid.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
-import { isQueuedShelfEntry } from '../../utils/shelfStatus';
 
-// Get all posts and filter for garden (evergreen, til, bookshelf, stories, poems)
+// Get all posts and filter for garden (evergreen, til, stories, poems).
+// Shelf entries (books, films, TV, games) live under /shelf/ and are not part
+// of the garden.
 const allPosts = await getAllPosts();
-// Shelf `todo` entries are queue stubs, not notes — they live on the shelf queue
-// pages only, so keep them out of the garden grid and its tag counts.
-const gardenEligiblePosts = allPosts.filter((post) => !isQueuedShelfEntry(post));
-const gardenPosts = getPostsByCategory(gardenEligiblePosts, 'garden');
+const gardenPosts = getPostsByCategory(allPosts, 'garden');
 
 // Transform posts for the GardenGrid component
 const transformedPosts = gardenPosts.map(transformPost);
@@ -19,10 +17,10 @@ const noteCountText = `${transformedPosts.length} ${transformedPosts.length === 
 
 const sectionLandingProps = createSectionLandingProps({
   title: 'Garden',
-  description: 'A collection of evergreen notes, learning, books, stories, and poems from my projects and explorations.',
+  description: 'A collection of evergreen notes, learning, stories, and poems from my projects and explorations.',
   countText: noteCountText,
   tagCategory: 'garden',
-  tagPosts: gardenEligiblePosts,
+  tagPosts: allPosts,
   contentClass: 'section-content--as-grid',
   rssUrl: '/garden/rss.xml'
 });

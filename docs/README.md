@@ -17,7 +17,7 @@ This directory centralizes all reference material for the Astro-powered build of
 
 | Area | Summary | Key Files |
 | --- | --- | --- |
-| [Navigation](components/navigation.md) | The Guardian-inspired multi-level navigation (primary/secondary/tertiary strips) and its tag-page island. | `src/components/navigation/*.astro` |
+| [Navigation](components/navigation.md) | The Guardian-inspired multi-level navigation (primary and secondary strips, plus the footer nav) and its tag-page island. | `src/components/navigation/*.astro` |
 | [Search](components/search.md) | Pagefind-backed search page: index generation and query handling. | `src/pages/search.astro` |
 | [Backlinks](components/backlinks.md) | Cached backlink generation and rendering conventions for "Paths into this note". | `src/utils/backlinks.ts`, `src/components/Backlinks.astro` |
 | [About Page & Life Timeline](pages/about.md) | The `/sajal/` context section plus the stream and life-calendar timeline views, both driven by the editable `life.md` doc. | `src/data/life.md`, `src/utils/life.ts`, `src/components/LifeTimeline.astro` |

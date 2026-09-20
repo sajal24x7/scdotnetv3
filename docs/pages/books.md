@@ -89,7 +89,7 @@ While the Books and Bookshelf pages serve different purposes, they share common 
 
 - **Data Source**: Books page uses hardcoded array; Bookshelf pulls from markdown posts
 - **Content**: Books shows author's publications; Bookshelf shows reading tracker
-- **Navigation Position**: Books is top-level primary nav; Bookshelf is under Garden
+- **Navigation Position**: Books is reached from the footer nav; Bookshelf is under the top-level Shelf section
 - **Status Indicators**: Bookshelf includes reading status (reading, finished, etc.); Books does not
 
 ## Styling Patterns
@@ -134,7 +134,7 @@ When adding new books:
 
 - [Design System](../design/system.md) - Grid utilities and typography
 - [Bookshelf Page](../architecture/content-lifecycle.md) - Related reading tracker page
-- [Navigation System](../components/navigation.md) - How Books appears in primary nav
+- [Navigation System](../components/navigation.md) - How Books appears in the footer nav
 
 ## Change Log
 
