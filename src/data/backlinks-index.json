@@ -380,6 +380,7 @@
       "blog/202607131349 Why do I Read.md",
       "blog/202608272222 I uninstalled NetNewsWire from my phone.md",
       "blog/202609031753 Vibe Coding September Meetup.md",
+      "blog/202609211348 Devops Finland September Event.md",
       "bookshelf/201301081514 The Da Vinci Code.md",
       "bookshelf/201301081514 The Ultimate Hitchhikers Guide to the Galaxy.md",
       "bookshelf/201301081515 Deception Point.md",
@@ -7458,6 +7459,24 @@
       "snippet": "Hemingway thought the same (from Ernest Hemingway on writing)."
     }
   ],
+  "bookshelf/the-reverse-centaurs-guide-to-life-after-ai": [
+    {
+      "slug": "/blog/devops-finland-september-event/",
+      "title": "DevOps Finland September Event",
+      "description": "",
+      "category": "blog",
+      "created": "2026-09-21T10:48:00.000Z",
+      "snippet": "I had a problem with that. Perhaps because I recently read The Reverse Centaur’s Guide to Life After AI. Or, perhaps because the last talk talked about ownership and whose responsibility is it when AI agent pushes code with vulnerabilities in prod. Spoiler - it’s the org, it’s you."
+    },
+    {
+      "slug": "/nordletter/nl123-reverse-centaurs-new-teams-and-moomins/",
+      "title": "Reverse Centaurs, New Teams, and Moomins",
+      "description": "Reading Cory's newest book and reminiscing about moomins",
+      "category": "nordletter",
+      "created": "2026-09-18T05:29:00.000Z",
+      "snippet": "I finished reading The Reverse Centaur’s Guide to Life After AI today. Like Cory's last book I had read - Enshittification - I knew most of what this book would entail. There was nothing new (for me). As Cory mentions in the Acknowledgement section - \"This books was written on my website pluralistic.net\"."
+    }
+  ],
   "blog/attending-the-global-ai-bootcamp-in-helsinki": [
     {
       "slug": "/blog/msft-ai-user-group-event-at-nitor/",
@@ -8503,16 +8522,6 @@
       "category": "nordletter",
       "created": "2026-09-12T08:21:00.000Z",
       "snippet": "I am reading Carl Sagan's Contact right now. It is a short book, and a book I've been wanting to read since I watched the 1997 movie by the same name. The book is narrated by Jodie Foster (the actress who plays the titular character in the movie)."
-    }
-  ],
-  "bookshelf/the-reverse-centaurs-guide-to-life-after-ai": [
-    {
-      "slug": "/nordletter/nl123-reverse-centaurs-new-teams-and-moomins/",
-      "title": "Reverse Centaurs, New Teams, and Moomins",
-      "description": "Reading Cory's newest book and reminiscing about moomins",
-      "category": "nordletter",
-      "created": "2026-09-18T05:29:00.000Z",
-      "snippet": "I finished reading The Reverse Centaur’s Guide to Life After AI today. Like Cory's last book I had read - Enshittification - I knew most of what this book would entail. There was nothing new (for me). As Cory mentions in the Acknowledgement section - \"This books was written on my website pluralistic.net\"."
     }
   ],
   "bookshelf/sculptors-daughter": [
