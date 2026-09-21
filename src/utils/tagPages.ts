@@ -1,4 +1,5 @@
 import { getAllPosts, transformPost, type Post } from './content';
+import { POST_GROUPS } from './postGroups';
 
 export type TransformedPost = ReturnType<typeof transformPost>;
 
@@ -23,11 +24,11 @@ export interface TagPageData {
 }
 
 const CATEGORY_CONFIG: Record<string, CategoryConfig> = {
-    stream: { label: 'Stream', includes: ['blog', 'micro', 'photo'] },
+    stream: { label: 'Stream', includes: [...POST_GROUPS.stream] },
     blog: { label: 'Blog', includes: ['blog'] },
     micro: { label: 'Micro', includes: ['micro'] },
     photo: { label: 'Photo', includes: ['photo'] },
-    garden: { label: 'Garden', includes: ['evergreen', 'til', 'story', 'poem'] },
+    garden: { label: 'Garden', includes: [...POST_GROUPS.garden] },
     evergreen: { label: 'Evergreen', includes: ['evergreen'] },
     til: { label: 'TIL', includes: ['til'] },
     bookshelf: { label: 'Bookshelf', includes: ['bookshelf'] },

@@ -1,0 +1,46 @@
+---
+// Centred title block used by every non-shelf post family.
+import Tag from '../../Tag.astro';
+
+interface Props {
+    title?: string;
+    description?: string;
+    tags?: string[];
+    // Nordletter editions show their number under the title.
+    edition?: number;
+}
+
+const { title, description, tags = [], edition } = Astro.props as Props;
+---
+
+<div class="text-center">
+    {title && (
+        <h1 class="p-name text-3xl md:text-4xl font-bold mb-2">{title}</h1>
+    )}
+
+    {edition && (
+        <div class="flex justify-center items-center gap-4 mb-4">
+            <div class="inline-block bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Letter: {edition}
+                </span>
+            </div>
+        </div>
+    )}
+
+    {description && (
+        <p class="p-summary text-xl text-textSecondary dark:text-textSecondaryDark mb-8">
+            {description}
+        </p>
+    )}
+
+    {tags.length > 0 && (
+        <div class="mb-8 flex justify-center">
+            <div class="flex flex-wrap gap-2 justify-center">
+                {tags.map((tag: string) => (
+                    <Tag tag={tag} as="a" />
+                ))}
+            </div>
+        </div>
+    )}
+</div>
