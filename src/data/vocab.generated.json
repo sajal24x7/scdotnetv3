@@ -760,6 +760,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/volition-2026-09-20",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-20"
+		},
+		"elegiac": {
+			"word": "elegiac",
+			"pos": "other",
+			"gloss": " adjective Elegiac means “of, relating to, or comprising an elegy,\" an elegy being a sorrowful poem or song, and especially one that expresses sorrow for someone who is dead. Elegiac often describes a poem, song, piece of writing, etc. that mourns something now past.",
+			"pronunciation": "el-uh-JYE-ak",
+			"example": "The elegiac tone of the singer’s first album always leaves me in tears.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/elegiac-2026-09-21",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-21"
 		}
 	}
 }
