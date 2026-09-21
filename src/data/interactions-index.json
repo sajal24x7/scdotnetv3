@@ -789,18 +789,6 @@
       "url": "https://mastodon.social/@sajal24x7/117229983941322464",
       "published": "2026-09-07T13:26:36.801Z",
       "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:117225957666895781:111653248688599615",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Healthcare Channel",
-        "url": "https://newsmast.community/@healthcare",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/248/688/599/615/original/c1d9be84a9b9bbf4.png"
-      },
-      "url": "https://newsmast.community/@healthcare",
-      "status": "approved"
     }
   ],
   "micro/build-games-to-learn-topics-using-ai": [
@@ -1308,6 +1296,44 @@
       },
       "url": "https://www.threads.com/@sajal24x7/post/DdYxa31FUF8",
       "count": 6,
+      "status": "approved"
+    }
+  ],
+  "micro/writing-in-the-moment": [
+    {
+      "id": "mastodon:repost:117303095886939870:114863603913131469",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Apple-feed",
+        "url": "https://channel.org/@applefeed",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/6e04454c4298099704bb671fd177b734.jpg"
+      },
+      "url": "https://channel.org/@applefeed",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117303095886939870:114910036696039119",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "#writing",
+        "url": "https://tagpush.app/@writing",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/910/036/696/039/119/original/a861424ecda2a542.png"
+      },
+      "url": "https://tagpush.app/@writing",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117303095886939870:116141936733036818",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Literbook",
+        "url": "https://mastodon.social/@Literbook",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/5e0c9f27cbe4ab1dddc05717be534585.png"
+      },
+      "url": "https://mastodon.social/@Literbook",
       "status": "approved"
     }
   ],
