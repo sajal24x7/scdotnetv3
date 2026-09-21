@@ -1,10 +1,16 @@
 ---
-title: "DevOps Finland September Event"
-slug: "devops-finland-september-event"
-created: 2026-09-21T13:48:00+03:00
-updated: 2026-09-21T21:24:12+03:00
+title: DevOps Finland September Event
+slug: devops-finland-september-event
+created: 2026-09-21T10:48:00.000Z
+updated: 2026-09-21T18:24:12.000Z
 category: blog
-tags: ["devops-finland", "devops"]
+tags:
+  - devops-finland
+  - devops
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117310798859869993'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mw2ir2y2s22v'
+  - 'https://www.threads.com/@sajal24x7/post/Ddj914gD4iH'
 ---
 I arrived a little later than I should have. This seems to be turning into a habit. Not a happy one, mind you.
 
