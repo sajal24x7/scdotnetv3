@@ -770,6 +770,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/elegiac-2026-09-21",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-21"
+		},
+		"nemesis": {
+			"word": "nemesis",
+			"pos": "other",
+			"gloss": " noun A nemesis is a formidable foe—an opponent or enemy who is very difficult to defeat. As a proper noun, Nemesis refers to the Greek goddess of vengeance.",
+			"pronunciation": "NEM-uh-siss",
+			"example": "She will be playing against her old nemesis for the championship.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/nemesis-2026-09-22",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-22"
 		}
 	}
 }
