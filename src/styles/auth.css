@@ -131,14 +131,14 @@
 }
 
 .auth-button--primary {
-	background: rgb(var(--color-accent));
-	border-color: rgb(var(--color-accent));
-	color: #fff;
+	background: rgb(var(--color-accent-strong));
+	border-color: rgb(var(--color-accent-strong));
+	color: rgb(var(--color-on-accent));
 }
 
 .auth-button--primary:hover:not(:disabled) {
-	background: rgb(var(--color-accent-hover));
-	border-color: rgb(var(--color-accent-hover));
+	background: rgb(var(--color-accent-strong-hover));
+	border-color: rgb(var(--color-accent-strong-hover));
 }
 
 .auth-button--quiet {

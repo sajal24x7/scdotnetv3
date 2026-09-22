@@ -38,6 +38,10 @@ const hasMoreEntries = feedEntries.length > FEED_PAGE_SIZE;
             <Image
                 src={ProfileImage}
                 alt="Sajal Choudhary"
+                width={288}
+                densities={[1, 2]}
+                loading="eager"
+                fetchpriority="high"
                 class="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full object-cover shadow-lg"
             />
         </figure>
