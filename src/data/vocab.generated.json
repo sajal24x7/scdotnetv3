@@ -790,6 +790,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/compendious-2026-09-23",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-23"
+		},
+		"pundit": {
+			"word": "pundit",
+			"pos": "other",
+			"gloss": " noun A pundit is someone, especially an expert, who presents their opinions and ideas on a particular subject via the media.",
+			"pronunciation": "PUN-dit",
+			"example": "Grandpa likes watching political pundits spar about the issues of the day on the Sunday morning talk shows.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/pundit-2026-09-24",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-24"
 		}
 	}
 }
