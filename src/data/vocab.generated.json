@@ -800,6 +800,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/pundit-2026-09-24",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-24"
+		},
+		"tactile": {
+			"word": "tactile",
+			"pos": "other",
+			"gloss": " adjective Tactile typically describes something, such as a sensation or experience, relating to the sense of touch. It can also be used specifically to describe something that is perceptible by touch.",
+			"pronunciation": "TAK-tul",
+			"example": "With the introduction of haptics to smartphones, receiving a call from a friend became a much more tactile experience.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/tactile-2026-09-25",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-25"
 		}
 	}
 }
