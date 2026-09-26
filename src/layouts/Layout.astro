@@ -6,6 +6,9 @@ import LinkHoverEffect from '../components/LinkHoverEffect.astro';
 import Mermaid from '../components/Mermaid.astro';
 import type { Post } from '../utils/content';
 import '../styles/global.css';
+// Same files global.css pulls in, so Vite emits one hashed URL for both
+import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import frauncesLatin from '@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2?url';
 
 interface Props {
         title: string;
@@ -112,7 +115,10 @@ const containerPadding = pageWrapper.padding ?? 'none';
 		<!-- Webmention receiver (functions/api/webmention.js) -->
 		<link rel="webmention" href="https://sajalchoudhary.net/api/webmention" />
 
-		<!-- Fonts are self-hosted via @fontsource-variable (imported in global.css) -->
+		<!-- Fonts are self-hosted via @fontsource-variable (imported in global.css).
+		     Preload the Latin body and heading faces so text doesn't wait on CSS parsing. -->
+		<link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={frauncesLatin} as="font" type="font/woff2" crossorigin />
 
 
 		<!-- Theme + background palette script (merged to avoid FOUC and a second
