@@ -664,33 +664,7 @@
       "status": "approved"
     }
   ],
-  "micro/202609111447": [
-    {
-      "id": "mastodon:repost:117253340277989286:111601700706806494",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Academia & Research Channel",
-        "url": "https://newsmast.community/@academia",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/601/700/706/806/494/original/cc6efe3934f366ed.png"
-      },
-      "url": "https://newsmast.community/@academia",
-      "status": "approved"
-    }
-  ],
   "micro/202609181309": [
-    {
-      "id": "mastodon:repost:117291735893661979:114863603913131469",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Apple-feed",
-        "url": "https://channel.org/@applefeed",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/863/603/913/131/469/original/52e93c4cb3510276.jpg"
-      },
-      "url": "https://channel.org/@applefeed",
-      "status": "approved"
-    },
     {
       "id": "threads:like-count:DdbTDCiFt1j",
       "type": "like-count",
