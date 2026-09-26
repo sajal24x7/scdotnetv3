@@ -3,7 +3,7 @@ title: Writing When I Need To
 slug: writing-when-i-need-to
 created: 2025-07-14T05:16:39.000Z
 updated: 2025-07-14T05:16:39.000Z
-category: micro
+category: evergreen
 tags:
   - writing
 syndicationUrls:
