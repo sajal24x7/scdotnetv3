@@ -810,6 +810,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/tactile-2026-09-25",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-25"
+		},
+		"confabulate": {
+			"word": "confabulate",
+			"pos": "other",
+			"gloss": " verb Confabulate has two very different meanings. Most of the time, to confabulate is to generate a false memory by filling in memory gaps with fabrications. An older meaning, still in use, is \"to talk informally; to chat.\"",
+			"pronunciation": "kun-FAB-yuh-layt",
+			"example": "Patients who have this type of memory disorder are known to confabulate.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/confabulate-2026-09-26",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-26"
 		}
 	}
 }
