@@ -48,6 +48,12 @@ export default defineConfig({
   // stripping). Pin the v6 behavior so the upgrade is output-identical;
   // revisit `'jsx'` as a separate change.
   compressHTML: true,
+  // Fetch a page's HTML when a link is hovered or focused, so the click
+  // navigates from cache.
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
   vite: {
     plugins: [tailwindcss()],
   },
