@@ -1,6 +1,5 @@
 ---
 import SocialLinks from './SocialLinks.astro';
-import multiLevelNavigationIslandScript from '../islands/multi-level-navigation-island.ts?url';
 
 interface Props {
   currentPage: string;
@@ -250,7 +249,9 @@ const activeSubsection = getActiveSubsection();
 
 </multi-level-navigation>
 
-<script type="module" src={multiLevelNavigationIslandScript}></script>
+<script>
+  import '../islands/multi-level-navigation-island.ts';
+</script>
 
 <script is:inline>
   (function () {

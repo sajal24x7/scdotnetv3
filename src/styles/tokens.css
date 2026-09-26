@@ -25,6 +25,10 @@
   --color-textSecondary: rgb(var(--color-text-secondary));
   --color-accent: rgb(var(--color-accent));
   --color-accent-hover: rgb(var(--color-accent-hover));
+  /* Accent tuned for use *behind* text; pair it with text-onAccent. */
+  --color-accentStrong: rgb(var(--color-accent-strong));
+  --color-accentStrongHover: rgb(var(--color-accent-strong-hover));
+  --color-onAccent: rgb(var(--color-on-accent));
   --color-borderColor: rgb(var(--color-border));
 
   --color-textPrimaryDark: rgb(var(--color-text-primary));
@@ -41,6 +45,10 @@
     --color-text-secondary: 117, 117, 117;
     --color-accent: 139, 92, 246;
     --color-accent-hover: 124, 58, 237;
+    /* violet-600/700: >= 4.5:1 against --color-on-accent (white) */
+    --color-accent-strong: 124, 58, 237;
+    --color-accent-strong-hover: 109, 40, 217;
+    --color-on-accent: 255, 255, 255;
     --color-border: 235, 231, 225;
 
     --link-color: #0066cc;
@@ -83,6 +91,10 @@
     --color-text-secondary: 209, 213, 219;
     --color-accent: 167, 139, 250;
     --color-accent-hover: 196, 181, 253;
+    /* The dark-mode accent is light, so text on it is dark, not white. */
+    --color-accent-strong: 167, 139, 250;
+    --color-accent-strong-hover: 196, 181, 253;
+    --color-on-accent: 35, 30, 28;
     --color-border: 85, 75, 70;
     --link-color: #4d9fff;
     --link-highlight: rgba(167, 139, 250, 0.35);
