@@ -1,10 +1,17 @@
 ---
-title: "On Using Muse on Your Mac"
-slug: "on-using-muse-on-your-mac"
-created: 2026-09-26T14:17:00+03:00
-updated: 2026-09-26T14:18:05+03:00
+title: On Using Muse on Your Mac
+slug: on-using-muse-on-your-mac
+created: 2026-09-26T11:17:00.000Z
+updated: 2026-09-26T11:18:05.000Z
 category: micro
-tags: ["daring-fireball", "meta", "ai"]
+tags:
+  - daring-fireball
+  - meta
+  - ai
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117337076593665823'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mwg66s7dgk2n'
+  - 'https://www.threads.com/@sajal24x7/post/Ddv6n9alCgR'
 ---
 [I’ll Wait by John](https://daringfireball.net/2026/09/ill_wait)
 
