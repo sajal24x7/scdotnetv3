@@ -624,6 +624,7 @@
       "evergreen/202507020958 Homes can’t be considered both an investment and affordable enough for everyone to own.md",
       "evergreen/202507091431 The goal with yoga.md",
       "evergreen/202507111120 About AI browsers.md",
+      "evergreen/202507140815 Writing when I need to.md",
       "evergreen/202507161526 Mixed format books.md",
       "evergreen/202508111120 The things I write on my blog.md",
       "evergreen/202508191028 How to learn effectively.md",
@@ -1232,7 +1233,6 @@
       "micro/202507090723 The Last of Us II has chronological mode now.md",
       "micro/202507100720 Quoting Dave about working with ChatGPT.md",
       "micro/202507110704 Average age of cars in Finland is 14 years.md",
-      "micro/202507140815 Writing when I need to.md",
       "micro/202507150642 Google’s curated AI notebooks.md",
       "micro/202507151800 Hugh Howey’s routine.md",
       "micro/202507152311.md",
@@ -1634,6 +1634,7 @@
       "micro/202609170840 Winter is coming.md",
       "micro/202609181309.md",
       "micro/202609201209 Writing in the moment.md",
+      "micro/202609261417 On using Muse on your Mac.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1756,6 +1757,7 @@
       "nordletter/202609041512 NL121.md",
       "nordletter/202609121121 NL122 - Small models big folds.md",
       "nordletter/202609180829 NL123 - Reverse Centaurs, New Teams, and Moomins.md",
+      "nordletter/202609241320 NL124 - Speaking Gigs.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -7647,6 +7649,16 @@
       "snippet": "These are useful features, at least the first one. OpenAI announced study mode in ChatGPT recently which was similarly useful. It’s good to have these stream of new features which are just system prompts though Anthropic has created new tools for these."
     }
   ],
+  "nordletter/nl122-small-models-big-folds": [
+    {
+      "slug": "/micro/on-using-muse-on-your-mac/",
+      "title": "On Using Muse on Your Mac",
+      "description": "",
+      "category": "micro",
+      "created": "2026-09-26T11:17:00.000Z",
+      "snippet": "And even with this, I have doubts."
+    }
+  ],
   "micro/apple-to-start-a-upgrade-program": [
     {
       "slug": "/micro/online-shopping-and-rising-living-costs-driving-young-finns-into-debt/",
@@ -8532,6 +8544,26 @@
       "category": "nordletter",
       "created": "2026-09-18T05:29:00.000Z",
       "snippet": "On the topic of new things, I'm reading Sculptor’s Daughter right now. This is Tove Jansson's biography. The same Tove Jansson who wrote and created Moomin characters."
+    }
+  ],
+  "evergreen/prompts-i-use": [
+    {
+      "slug": "/nordletter/nl124-speaking-gigs/",
+      "title": "Speaking Gigs",
+      "description": "Speaking and emceeing in a week",
+      "category": "nordletter",
+      "created": "2026-09-24T10:20:00.000Z",
+      "snippet": "I thought I could talk about using AI to learn. I had been dabbling with workflows, projects and prompts."
+    }
+  ],
+  "evergreen/writing-when-i-need-to": [
+    {
+      "slug": "/nordletter/nl124-speaking-gigs/",
+      "title": "Speaking Gigs",
+      "description": "Speaking and emceeing in a week",
+      "category": "nordletter",
+      "created": "2026-09-24T10:20:00.000Z",
+      "snippet": "That note I made is not live yet. I prepared the slides in Keynote and haven't had the time or desire to write that note now."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
