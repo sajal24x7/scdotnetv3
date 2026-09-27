@@ -905,6 +905,34 @@
       "status": "approved"
     }
   ],
+  "micro/on-using-muse-on-your-mac": [
+    {
+      "id": "bluesky:reply:at://did:plc:ootusrnpre35v2nlowrwxdsm/app.bsky.feed.post/3mwhkok5fcs2a",
+      "type": "reply",
+      "platform": "bluesky",
+      "author": {
+        "name": "mohith808.bsky.social",
+        "url": "https://bsky.app/profile/mohith808.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:ootusrnpre35v2nlowrwxdsm/bafkreib65tdlkyv3qo32xzki5zuhxdgvu7vy7plgykpxqrpihph2ivs4ha"
+      },
+      "content": "<p>Nice write-up on the Mac side. If you're curious what else people get Muse to do, I keep a catalog of real builds, each linked to its source: shipwithmuse.live (why I started it: x.com/mohithkumar8...)</p>",
+      "url": "https://bsky.app/profile/mohith808.bsky.social/post/3mwhkok5fcs2a",
+      "published": "2026-09-27T00:37:54.464Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117337076593665823:111653185420926112",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Social Media Channel",
+        "url": "https://newsmast.community/@socialmedia",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/185/420/926/112/original/260824615f005811.png"
+      },
+      "url": "https://newsmast.community/@socialmedia",
+      "status": "approved"
+    }
+  ],
   "micro/openai-misbehaves-when-coming-up-with-a-mathematics-solution": [
     {
       "id": "bluesky:like:3mvfjm7apgu2w:did:plc:y4ux77dyewbsprmdnu4prj4c",
