@@ -820,6 +820,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/confabulate-2026-09-26",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-26"
+		},
+		"bellwether": {
+			"word": "bellwether",
+			"pos": "other",
+			"gloss": " noun Bellwether usually refers to something that serves as an indicator of trends. It can also refer to someone or something that leads others.",
+			"pronunciation": "BEL-WEH-ther",
+			"example": "Event organizers say the concert series is a bellwether, demonstrating that good shows can bring visitors to the town.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/bellwether-2026-09-27",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-27"
 		}
 	}
 }
