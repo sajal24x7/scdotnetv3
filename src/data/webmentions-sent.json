@@ -74,6 +74,11 @@
     "checkedAt": "2026-09-06T20:22:54.543Z",
     "endpoint": null
   },
+  "https://sajalchoudhary.net/micro/better-presentation-tips-by-simon-willison/\u0000https://simonwillison.net/2019/Dec/10/better-presentations/": {
+    "checkedAt": "2026-09-27T16:56:48.321Z",
+    "endpoint": "https://webmention.io/simonwillison.net/webmention",
+    "status": 201
+  },
   "https://sajalchoudhary.net/micro/blue-eye-samurai-to-come-out-in-january/\u0000https://www.theverge.com/streaming/983203/blue-eye-samurai-season-2-release-date-renewal": {
     "checkedAt": "2026-08-22T06:57:54.151Z",
     "endpoint": null

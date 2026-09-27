@@ -1,10 +1,17 @@
 ---
-title: "Better Presentation Tips by Simon Willison"
-slug: "better-presentation-tips-by-simon-willison"
-created: 2026-09-27T18:21:00+03:00
-updated: 2026-09-27T18:23:23+03:00
+title: Better Presentation Tips by Simon Willison
+slug: better-presentation-tips-by-simon-willison
+created: 2026-09-27T15:21:00.000Z
+updated: 2026-09-27T15:23:23.000Z
 category: micro
-tags: ["presentation", "speaking", "simon-willison"]
+tags:
+  - presentation
+  - speaking
+  - simon-willison
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117344055686567120'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mwjbejnnwj2n'
+  - 'https://www.threads.com/@sajal24x7/post/DdzFvlBmkjH'
 ---
 [Better presentations through storytelling and STAR moments by Simon Willison](https://simonwillison.net/2019/Dec/10/better-presentations/)
 
