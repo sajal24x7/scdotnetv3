@@ -1635,6 +1635,7 @@
       "micro/202609181309.md",
       "micro/202609201209 Writing in the moment.md",
       "micro/202609261417 On using Muse on your Mac.md",
+      "micro/202609271821 Better presentation tips by Simon Willison.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -7601,6 +7602,24 @@
       "snippet": "I wrote About AI browsers some time back. I continue feeling the same way about them."
     }
   ],
+  "evergreen/best-practices-for-presenting-things": [
+    {
+      "slug": "/micro/better-presentation-tips-by-simon-willison/",
+      "title": "Better Presentation Tips by Simon Willison",
+      "description": "",
+      "category": "micro",
+      "created": "2026-09-27T15:21:00.000Z",
+      "snippet": "Always interested in figuring out ways to make presentations more engaging. My list of points are here - Best practices for presenting things. Maybe a todo for me is to add some things from here to the doc."
+    },
+    {
+      "slug": "/nordletter/malai/",
+      "title": "Malai",
+      "description": "",
+      "category": "nordletter",
+      "created": "2025-10-11T23:06:03.000Z",
+      "snippet": "It inspired me to write about the best practices for presenting things."
+    }
+  ],
   "micro/xteink-x3-review": [
     {
       "slug": "/micro/boox-is-taking-on-xteink-with-its-picco-series/",
@@ -7843,16 +7862,6 @@
       "category": "nordletter",
       "created": "2025-09-27T13:17:33.000Z",
       "snippet": "I was at an Azure and Friends meet up on Thursday evening. I wrote about it."
-    }
-  ],
-  "evergreen/best-practices-for-presenting-things": [
-    {
-      "slug": "/nordletter/malai/",
-      "title": "Malai",
-      "description": "",
-      "category": "nordletter",
-      "created": "2025-10-11T23:06:03.000Z",
-      "snippet": "It inspired me to write about the best practices for presenting things."
     }
   ],
   "bookshelf/this-and-that": [
