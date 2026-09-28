@@ -830,6 +830,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/bellwether-2026-09-27",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-27"
+		},
+		"fungible": {
+			"word": "fungible",
+			"pos": "other",
+			"gloss": " adjective Fungible describes things, such as currency, goods, and commodities, that can be exchanged for something else of the same kind or value. In broader usage, fungible can also mean “interchangeable,” as well as “readily changeable to adapt to new situations.”",
+			"pronunciation": "FUN-juh-bul",
+			"example": "A dollar bill is considered fungible because it can easily and acceptably be traded for ten dimes, four quarters, twenty nickels, or one hundred pennies, as well as any other dollar bill. // Since fruits and vegetables are regarded as fungible in this diet, you are allowed a total of five servings of either or both. // Some baseball team managers set their batting orders in stone, while others prefer to keep their lineups fungible, to respond to the strengths or weaknesses of different opposing pitchers.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/fungible-2026-09-28",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-28"
 		}
 	}
 }
