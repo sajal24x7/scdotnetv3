@@ -10,7 +10,7 @@ format: hardcover
 author:
   - Shane Parrish
 genre: science
-status: on-hold
+status: paused
 started: 2026-05-30T03:44:52.000Z
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116661474622848374'
