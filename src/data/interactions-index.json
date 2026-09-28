@@ -891,20 +891,6 @@
       "status": "approved"
     }
   ],
-  "micro/notes-on-muse-ai-by-meta": [
-    {
-      "id": "mastodon:repost:117263571633376119:111653185420926112",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Social Media Channel",
-        "url": "https://newsmast.community/@socialmedia",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/185/420/926/112/original/260824615f005811.png"
-      },
-      "url": "https://newsmast.community/@socialmedia",
-      "status": "approved"
-    }
-  ],
   "micro/on-using-muse-on-your-mac": [
     {
       "id": "bluesky:reply:at://did:plc:ootusrnpre35v2nlowrwxdsm/app.bsky.feed.post/3mwhkok5fcs2a",
@@ -1302,18 +1288,6 @@
     }
   ],
   "micro/writing-in-the-moment": [
-    {
-      "id": "mastodon:repost:117303095886939870:114863603913131469",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Apple-feed",
-        "url": "https://channel.org/@applefeed",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/863/603/913/131/469/original/52e93c4cb3510276.jpg"
-      },
-      "url": "https://channel.org/@applefeed",
-      "status": "approved"
-    },
     {
       "id": "mastodon:repost:117303095886939870:114910036696039119",
       "type": "repost",
