@@ -1,10 +1,15 @@
 ---
-title: "Treat Your To-read Pile Like a River"
-slug: "treat-your-to-read-pile-like-a-river"
-created: 2026-09-30T12:27:00+03:00
-updated: 2026-09-30T12:32:31+03:00
+title: Treat Your To-read Pile Like a River
+slug: treat-your-to-read-pile-like-a-river
+created: 2026-09-30T09:27:00.000Z
+updated: 2026-09-30T09:32:31.000Z
 category: micro
-tags: ["reading"]
+tags:
+  - reading
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117359322964039300'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mwq2dbkytz2r'
+  - 'https://www.threads.com/@sajal24x7/post/Dd6CFD6GzkH'
 ---
 [Treat your to-read pile like a river | Oliver Burkeman](https://www.oliverburkeman.com/river)
 
