@@ -850,6 +850,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/argot-2026-09-29",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-29"
+		},
+		"epistemic": {
+			"word": "epistemic",
+			"pos": "other",
+			"gloss": " adjective Epistemic means \"of or relating to knowledge or knowing.\"",
+			"pronunciation": "ep-uh-STEE-mik",
+			"example": "He's a brilliant teacher who has the epistemic humility to know that there is always more to learn.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/epistemic-2026-09-30",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-09-30"
 		}
 	}
 }
