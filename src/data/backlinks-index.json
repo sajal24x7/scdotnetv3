@@ -1636,6 +1636,7 @@
       "micro/202609201209 Writing in the moment.md",
       "micro/202609261417 On using Muse on your Mac.md",
       "micro/202609271821 Better presentation tips by Simon Willison.md",
+      "micro/202609301227 Treat your to-read pile like a river.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1985,7 +1986,6 @@
       "til/202209261317 AD join fails with The Revision Level is Unknown.md",
       "til/202209261323 Windows rpc server is unavailable.md",
       "til/202209261324 Cscript.exe is not recognised.md",
-      "til/202209261326 Windows activation.md",
       "til/202209261327 Windows local time change.md",
       "til/202209261330 Windows sysprep reference.md",
       "til/202209291029 PowerShell create custom object.md",
@@ -2193,7 +2193,6 @@
       "til/202404231154 Download host metrics report from Ansible Automation Platform.md",
       "til/202404231933 Azure SQL.md",
       "til/202404241715 Azure Open source DB.md",
-      "til/202404241810 Azure Cosmos DB.md",
       "til/202404241908 When doing chassis replacement decommission chassis first.md",
       "til/202404251612 Search ADAccount Timespan for AccountInactive.md",
       "til/202404261904 Azure Cosmos DB.md",
@@ -7735,6 +7734,16 @@
       "category": "micro",
       "created": "2025-11-24T09:14:29.000Z",
       "snippet": "I feel the same way, about the centralisation and the outages."
+    }
+  ],
+  "blog/the-problem-with-current": [
+    {
+      "slug": "/micro/treat-your-to-read-pile-like-a-river/",
+      "title": "Treat Your To-read Pile Like a River",
+      "description": "",
+      "category": "micro",
+      "created": "2026-09-30T09:27:00.000Z",
+      "snippet": "I feel overwhelmed by the amount of stuff that I need to read. It was the same reason why I tried current. I did not like the fact that it took the control away from me, but I liked the concept of it."
     }
   ],
   "nordletter/a-happy-new-year": [

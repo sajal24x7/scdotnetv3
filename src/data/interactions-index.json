@@ -1183,6 +1183,20 @@
       "status": "approved"
     }
   ],
+  "micro/treat-your-to-read-pile-like-a-river": [
+    {
+      "id": "mastodon:repost:117359322964039300:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
+    }
+  ],
   "micro/winter-is-coming": [
     {
       "id": "threads:reply:17921139597427685",
