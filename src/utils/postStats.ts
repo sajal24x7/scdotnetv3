@@ -7,6 +7,7 @@ const MS_IN_WEEK = 7 * MS_IN_DAY;
 export interface PostActivitySummary {
     totalPosts: number;
     latestPostDate: Date | null;
+    earliestPostDate: Date | null;
     streakWeeks: number;
     weeklyPostCounts: Record<string, number>;
 }
@@ -60,6 +61,7 @@ export function calculatePostActivitySummary(posts: Post[] | undefined | null): 
     return {
         totalPosts: validDates.length,
         latestPostDate,
+        earliestPostDate: validDates[validDates.length - 1],
         streakWeeks,
         weeklyPostCounts
     };
@@ -113,6 +115,7 @@ function emptySummary(): PostActivitySummary {
     return {
         totalPosts: 0,
         latestPostDate: null,
+        earliestPostDate: null,
         streakWeeks: 0,
         weeklyPostCounts: {}
     };
