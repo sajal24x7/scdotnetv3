@@ -860,6 +860,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/epistemic-2026-09-30",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-09-30"
+		},
+		"slew": {
+			"word": "slew",
+			"pos": "other",
+			"gloss": " noun Slew is an informal word for a large number of people or things.",
+			"pronunciation": "SLOO",
+			"example": "The pile of junk mail included a slew of catalogs.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/slew-2026-10-01",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-01"
 		}
 	}
 }
