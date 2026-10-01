@@ -2,10 +2,12 @@
 import { getPostActivitySummary } from '../utils/postStats';
 import SocialLinks from './navigation/SocialLinks.astro';
 
-// Get current year for copyright
-const currentYear = new Date().getFullYear();
+const { streakWeeks, totalPosts, earliestPostDate } = await getPostActivitySummary();
 
-const { streakWeeks, totalPosts } = await getPostActivitySummary();
+// Copyright runs from the first post to the current year
+const currentYear = new Date().getFullYear();
+const startYear = earliestPostDate?.getFullYear() ?? currentYear;
+const copyrightYears = startYear < currentYear ? `${startYear}–${currentYear}` : `${currentYear}`;
 const hasPosts = totalPosts > 0;
 
 const footerNavItems = [
@@ -52,7 +54,7 @@ const footerNavItems = [
         </div>
 
         <div class="footer-stats-row mt-6 text-center">
-            <p class="text-small opacity-75 mb-2">&copy; {currentYear} Sajal Choudhary</p>
+            <p class="text-small opacity-75 mb-2">&copy; {copyrightYears} Sajal Choudhary</p>
             {hasPosts && (
                 <p class="font-medium">
                     <span class="footer-streak-label">Streak</span>
