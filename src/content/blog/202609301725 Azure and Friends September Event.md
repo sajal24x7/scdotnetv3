@@ -1,11 +1,18 @@
 ---
-title: "Azure and Friends September Event"
-slug: "azure-and-friends-september-event"
-created: 2026-09-30T17:25:00+03:00
-updated: 2026-10-01T16:05:45+03:00
+title: Azure and Friends September Event
+slug: azure-and-friends-september-event
+created: 2026-09-30T14:25:00.000Z
+updated: 2026-10-01T13:05:45.000Z
 category: blog
-tags: ["meetup", "azure", "azure-and-friends"]
-image: https://storage.sajalchoudhary.net/images/2026/09/anf-sep-01.jpeg
+tags:
+  - meetup
+  - azure
+  - azure-and-friends
+image: 'https://storage.sajalchoudhary.net/images/2026/09/anf-sep-01.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117365809799008037'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mwswj5vdo42n'
+  - 'https://www.threads.com/@sajal24x7/post/Dd8-3yzEYt3'
 ---
 Teemu kicked off the event, welcoming us, explaining what Azure and Friends is, and so on.
 
