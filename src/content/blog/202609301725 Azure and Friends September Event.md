@@ -9,7 +9,6 @@ image: https://storage.sajalchoudhary.net/images/2026/09/anf-sep-01.jpeg
 ---
 Teemu kicked off the event, welcoming us, explaining what Azure and Friends is, and so on.
 
-![Welcome](https://storage.sajalchoudhary.net/images/2026/09/anf-sep-01.jpeg)
 ## Beyond No Return: Preparing Your Organization for Cyber War by Miska Kytö (Zure)
 
 ![Cyber War talk](https://storage.sajalchoudhary.net/images/2026/09/anf-sep-02.jpeg)
