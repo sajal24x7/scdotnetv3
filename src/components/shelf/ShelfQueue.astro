@@ -3,6 +3,7 @@
 // category as a compact row (cover thumbnail, title, creator, date added,
 // optional "why" body). See planning/shelf-queue-design.md §1.
 import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import type { ShelfQueueConfig } from '../../utils/shelfQueue';
 
 export interface ShelfQueueItem {
@@ -36,10 +37,10 @@ const formatAdded = (date: Date) =>
                     <a class="shelf-queue__link" href={item.link}>
                         <div class="shelf-queue__cover">
                             {item.coverImage && (
-                                <img
-                                    src={item.coverImage.src}
-                                    width={item.coverImage.width}
-                                    height={item.coverImage.height}
+                                <Image
+                                    src={item.coverImage}
+                                    width={48}
+                                    densities={[1, 2]}
                                     alt=""
                                     loading="lazy"
                                 />
