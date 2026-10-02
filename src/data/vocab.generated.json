@@ -870,6 +870,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/slew-2026-10-01",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-01"
+		},
+		"heterodox": {
+			"word": "heterodox",
+			"pos": "other",
+			"gloss": " adjective Like both unorthodox and unconventional, heterodox describes something, such an idea or belief, that is contrary to or different from an acknowledged standard, a traditional form, or an established religion. Heterodox can also describe a person or group that holds unorthodox opinions or doctrines.",
+			"pronunciation": "HET-uh-ruh-dahks",
+			"example": "The two new faculty members' heterodox approach to teaching science initially met with some resistance from their peers.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/heterodox-2026-10-02",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-02"
 		}
 	}
 }
