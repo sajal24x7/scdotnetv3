@@ -381,6 +381,7 @@
       "blog/202608272222 I uninstalled NetNewsWire from my phone.md",
       "blog/202609031753 Vibe Coding September Meetup.md",
       "blog/202609211348 Devops Finland September Event.md",
+      "blog/202609301725 Azure and Friends September Event.md",
       "bookshelf/201301081514 The Da Vinci Code.md",
       "bookshelf/201301081514 The Ultimate Hitchhikers Guide to the Galaxy.md",
       "bookshelf/201301081515 Deception Point.md",
@@ -1884,7 +1885,6 @@
       "til/202205021147 Certificate reference.md",
       "til/202205042002 Terraform scaling VMs.md",
       "til/202205161711 Cloud Remote bootstrap procedure.md",
-      "til/202205161721 CloudRemote add user.md",
       "til/202205171519 Terraform custom worker image.md",
       "til/202205200955 Raise a certificate request on Windows.md",
       "til/202205231258 Terraform bundle.md",
@@ -1941,7 +1941,6 @@
       "til/202208101405 Powershell AD recover deleted objects.md",
       "til/202208180949 AWS Storage Gateway.md",
       "til/202209211207 Velero command reference.md",
-      "til/202209211224 Terraform azure reference.md",
       "til/202209211226 Ucs Changing Mtu Value Results in Esxi Not Booting and Other Issues.md",
       "til/202209211229 Assigning Multiple IPs to Single NIC.md",
       "til/202209211243 Remove IP from cluster NIC.md",
@@ -6137,16 +6136,6 @@
       "category": "til",
       "created": "2022-05-02T08:47:00.000Z",
       "snippet": "!How to create stacked certificates"
-    }
-  ],
-  "til/cloudremote-add-user": [
-    {
-      "slug": "/til/cloud-remote-bootstrap-procedure/",
-      "title": "Cloud Remote Bootstrap Procedure",
-      "description": "",
-      "category": "til",
-      "created": "2022-05-16T14:11:00.000Z",
-      "snippet": "!CloudRemote add user"
     }
   ],
   "til/network-virtual-appliance": [
