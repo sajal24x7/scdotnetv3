@@ -4,7 +4,7 @@ slug: how-i-use-obsidian
 description: Notes on note-taking
 created: 2025-03-06T20:21:05.000Z
 updated: 2025-03-06T20:21:05.000Z
-category: blog
+category: evergreen
 tags:
   - blog
   - obisidian
