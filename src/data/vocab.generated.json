@@ -880,6 +880,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/heterodox-2026-10-02",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-02"
+		},
+		"tittle": {
+			"word": "tittle",
+			"pos": "other",
+			"gloss": " noun Used chiefly in British English, tittle refers to a very small part or amount; it is often paired with the word jot. In writing and printing on both sides of the pond, tittle also refers to a point or small sign used as a diacritical mark.",
+			"pronunciation": "TITT-ul",
+			"example": "There is not a jot or tittle of evidence to support their claims.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/tittle-2026-10-03",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-03"
 		}
 	}
 }
