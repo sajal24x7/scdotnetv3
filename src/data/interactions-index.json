@@ -1438,19 +1438,21 @@
   ],
   "nordletter/nl123-reverse-centaurs-new-teams-and-moomins": [
     {
-      "id": "mastodon:repost:117299626433245087:111653112089202906",
+      "id": "mastodon:repost:117299626433245087:116141936733036818",
       "type": "repost",
       "platform": "mastodon",
       "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
+        "name": "Literbook",
+        "url": "https://mastodon.social/@Literbook",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/5e0c9f27cbe4ab1dddc05717be534585.png"
       },
-      "url": "https://newsmast.community/@books",
+      "url": "https://mastodon.social/@Literbook",
       "status": "approved"
-    },
+    }
+  ],
+  "nordletter/nl125-better-talks-and-reading-metaphors": [
     {
-      "id": "mastodon:repost:117299626433245087:116141936733036818",
+      "id": "mastodon:repost:117379034945236721:116141936733036818",
       "type": "repost",
       "platform": "mastodon",
       "author": {
@@ -1673,6 +1675,42 @@
       },
       "url": "https://www.instagram.com/p/DcLCHI4lSkq/",
       "count": 4,
+      "status": "approved"
+    }
+  ],
+  "photo/202610031119": [
+    {
+      "id": "instagram:like-count:DeB98bUGxga",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DeB98bUGxga/",
+      "count": 2,
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117376772027012261:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
+      },
+      "url": "https://newsmast.community/@books",
+      "status": "approved"
+    },
+    {
+      "id": "threads:like-count:DeB960gm1G9",
+      "type": "like-count",
+      "platform": "threads",
+      "author": {
+        "name": "Threads"
+      },
+      "url": "https://www.threads.com/@sajal24x7/post/DeB960gm1G9",
+      "count": 1,
       "status": "approved"
     }
   ],

@@ -311,7 +311,6 @@
       "blog/202503031518 Seeing it for the first time.md",
       "blog/202503040728 Warming up to LLMs.md",
       "blog/202503052154 About the Pareto principle.md",
-      "blog/202503062021 How I use Obsidian.md",
       "blog/202503072155 We are all addicted to our phones.md",
       "blog/202503100301 Sit on the floor with your child and play.md",
       "blog/202503110326 Dont call me a writer.md",
@@ -617,9 +616,13 @@
       "bookshelf/202609141003 The Reverse Centaur’s Guide to Life After AI.md",
       "bookshelf/202609170728 Sculptor’s Daughter.md",
       "bookshelf/202609200804 Ghost-Eye.md",
+      "bookshelf/202610031530 Native Guard.md",
+      "bookshelf/202610031533 Inside the Box.md",
+      "bookshelf/202610032052 Notes from an island.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
+      "evergreen/202503062203 How I use Obsidian.md",
       "evergreen/202503250411 Be a hybrid.md",
       "evergreen/202505140951 When someone has been dead for a while.md",
       "evergreen/202507020958 Homes can’t be considered both an investment and affordable enough for everyone to own.md",
@@ -1761,6 +1764,7 @@
       "nordletter/202609121121 NL122 - Small models big folds.md",
       "nordletter/202609180829 NL123 - Reverse Centaurs, New Teams, and Moomins.md",
       "nordletter/202609241320 NL124 - Speaking Gigs.md",
+      "nordletter/202610011644 NL125 - Better talks and reading metaphors.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -1811,6 +1815,7 @@
       "photo/202607252022.md",
       "photo/202608180908.md",
       "photo/202608180914.md",
+      "photo/202610031119.md",
       "poem/201202121505 Here I stand.md",
       "poem/201202131628 Stranded Isle.md",
       "poem/201203181704 Scared I was.md",
@@ -2188,6 +2193,7 @@
       "til/202404201427 Azure Functions.md",
       "til/202404201438 Azure Logic Apps.md",
       "til/202404201440 Azure Static Web App.md",
+      "til/202404211433 Kubernetes.md",
       "til/202404221346 How to decommission an ESXi.md",
       "til/202404231154 Download host metrics report from Ansible Automation Platform.md",
       "til/202404231933 Azure SQL.md",
@@ -4589,6 +4595,16 @@
       "category": "til",
       "created": "2023-12-23T11:15:00.000Z",
       "snippet": "Azure Container Instance"
+    }
+  ],
+  "til/kubernetes": [
+    {
+      "slug": "/til/azure-kubernetes-service/",
+      "title": "Azure Kubernetes Service",
+      "description": "",
+      "category": "til",
+      "created": "2024-04-20T09:10:00.000Z",
+      "snippet": "Kuberenetes is the orchestrator of choice."
     }
   ],
   "til/entra-id-managed-identities": [
@@ -7593,6 +7609,14 @@
   ],
   "evergreen/best-practices-for-presenting-things": [
     {
+      "slug": "/nordletter/nl125-better-talks-and-reading-metaphors/",
+      "title": "Better Talks and Reading Metaphors",
+      "description": "Better presentations and ghost eyed adventures",
+      "category": "nordletter",
+      "created": "2026-10-01T13:44:00.000Z",
+      "snippet": "My list of best practices for presenting things is thus:"
+    },
+    {
       "slug": "/micro/better-presentation-tips-by-simon-willison/",
       "title": "Better Presentation Tips by Simon Willison",
       "description": "",
@@ -7726,6 +7750,14 @@
     }
   ],
   "blog/the-problem-with-current": [
+    {
+      "slug": "/nordletter/nl125-better-talks-and-reading-metaphors/",
+      "title": "Better Talks and Reading Metaphors",
+      "description": "Better presentations and ghost eyed adventures",
+      "category": "nordletter",
+      "created": "2026-10-01T13:44:00.000Z",
+      "snippet": "I feel overwhelmed by the amount of stuff that I need to read. It was the same reason I tried current. I did not like the fact that it took the control away from me, but I liked the concept of it."
+    },
     {
       "slug": "/micro/treat-your-to-read-pile-like-a-river/",
       "title": "Treat Your To-read Pile Like a River",
@@ -8572,6 +8604,36 @@
       "category": "nordletter",
       "created": "2026-09-24T10:20:00.000Z",
       "snippet": "That note I made is not live yet. I prepared the slides in Keynote and haven't had the time or desire to write that note now."
+    }
+  ],
+  "nordletter/nl124-speaking-gigs": [
+    {
+      "slug": "/nordletter/nl125-better-talks-and-reading-metaphors/",
+      "title": "Better Talks and Reading Metaphors",
+      "description": "Better presentations and ghost eyed adventures",
+      "category": "nordletter",
+      "created": "2026-10-01T13:44:00.000Z",
+      "snippet": "I have been thinking about presentations and talks as well, perhaps because I gave one recently, but more pertinently, because I have seen and heard so many people give talks now that I have an opinion."
+    }
+  ],
+  "blog/azure-and-friends-september-event": [
+    {
+      "slug": "/nordletter/nl125-better-talks-and-reading-metaphors/",
+      "title": "Better Talks and Reading Metaphors",
+      "description": "Better presentations and ghost eyed adventures",
+      "category": "nordletter",
+      "created": "2026-10-01T13:44:00.000Z",
+      "snippet": "I was at the Azure and Friends September meetup at the Microsoft office this week, and as I sat through Miska Kytö's talk on cyber security, I wondered why I was liking this talk so much."
+    }
+  ],
+  "bookshelf/ghost-eye": [
+    {
+      "slug": "/nordletter/nl125-better-talks-and-reading-metaphors/",
+      "title": "Better Talks and Reading Metaphors",
+      "description": "Better presentations and ghost eyed adventures",
+      "category": "nordletter",
+      "created": "2026-10-01T13:44:00.000Z",
+      "snippet": "I finished reading Ghost-Eye this week. I had known of Amitav Ghosh from before, from books whispered here and there, like a book on climate change he had written recently - a book I have not read yet. So, when I saw Ghost-Eye pop up in the e-library, I immediately put it on hold."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
