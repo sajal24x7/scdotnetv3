@@ -890,6 +890,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/tittle-2026-10-03",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-03"
+		},
+		"adventitious": {
+			"word": "adventitious",
+			"pos": "other",
+			"gloss": " adjective Adventitious is a formal word that most often describes something that comes from an outside source, and is neither inherent or innate. In botanical contexts especially, the word also describes something that arises or occurs sporadically, or not in the usual or expected location.",
+			"pronunciation": "ad-ven-TISH-us",
+			"example": "The house is like a museum—beautifully restored, full of period pieces, and with no adventitious elements in view. // The bumps growing along the stem of the tomato plants are adventitious roots.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/adventitious-2026-10-04",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-04"
 		}
 	}
 }
