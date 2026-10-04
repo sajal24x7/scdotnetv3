@@ -1,13 +1,24 @@
 ---
-title: "Better Talks and Reading Metaphors"
-slug: "nl125-better-talks-and-reading-metaphors"
-created: 2026-10-01T16:44:00+03:00
-updated: 2026-10-03T22:52:31+03:00
+title: Better Talks and Reading Metaphors
+slug: nl125-better-talks-and-reading-metaphors
+created: 2026-10-01T13:44:00.000Z
+updated: 2026-10-03T19:52:31.000Z
 category: nordletter
-tags: ["search", "website", "writing", "reading", "meetup", "presentation", "helsinki"]
+tags:
+  - search
+  - website
+  - writing
+  - reading
+  - meetup
+  - presentation
+  - helsinki
 edition: 125
-description: "Better presentations and ghost eyed adventures"
-image: "https://storage.sajalchoudhary.net/images/2026/10/nl125-04.jpeg"
+description: Better presentations and ghost eyed adventures
+image: 'https://storage.sajalchoudhary.net/images/2026/10/nl125-04.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117379034945236721'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mwyshak2yy2o'
+  - 'https://www.threads.com/@sajal24x7/post/DeC_xgao5w9'
 ---
 Hello from my home in Helsinki! This is NordLetter #125, a weekly newsletter on living and walking in Finland.
 

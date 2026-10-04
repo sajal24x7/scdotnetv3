@@ -412,6 +412,23 @@
     "checkedAt": "2026-09-26T21:07:45.013Z",
     "endpoint": null
   },
+  "https://sajalchoudhary.net/nordletter/nl125-better-talks-and-reading-metaphors/\u0000https://en.wikipedia.org/wiki/Free_Guy": {
+    "checkedAt": "2026-10-03T21:12:31.699Z",
+    "endpoint": null
+  },
+  "https://sajalchoudhary.net/nordletter/nl125-better-talks-and-reading-metaphors/\u0000https://mastodon.social/@sajal24x7": {
+    "checkedAt": "2026-10-03T21:12:31.680Z",
+    "endpoint": null
+  },
+  "https://sajalchoudhary.net/nordletter/nl125-better-talks-and-reading-metaphors/\u0000https://simonwillison.net/2019/Dec/10/better-presentations/": {
+    "checkedAt": "2026-10-03T21:12:32.167Z",
+    "endpoint": "https://webmention.io/simonwillison.net/webmention",
+    "status": 201
+  },
+  "https://sajalchoudhary.net/nordletter/nl125-better-talks-and-reading-metaphors/\u0000https://www.oliverburkeman.com/river": {
+    "checkedAt": "2026-10-03T21:12:32.733Z",
+    "endpoint": null
+  },
   "https://sajalchoudhary.net/til/kubernetes-components/\u0000https://kubernetes.io/docs/concepts/architecture/nodes/": {
     "checkedAt": "2026-09-12T10:43:08.571Z",
     "endpoint": null
