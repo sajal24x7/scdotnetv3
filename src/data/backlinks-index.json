@@ -672,6 +672,7 @@
       "evergreen/202607172116 Hunger Starts in the Mind.md",
       "evergreen/202607230850 Spaced Repetition.md",
       "evergreen/202609201552 Prompts I use.md",
+      "evergreen/202610042029 The same story can mean different things to different people.md",
       "filmshelf/201812311200 Mowgli Legend of the Jungle.md",
       "filmshelf/201901061200 Black Mirror Bandersnatch.md",
       "filmshelf/201901141200 Hate Story.md",
@@ -1816,6 +1817,7 @@
       "photo/202608180908.md",
       "photo/202608180914.md",
       "photo/202610031119.md",
+      "photo/202610041026.md",
       "poem/201202121505 Here I stand.md",
       "poem/201202131628 Stranded Isle.md",
       "poem/201203181704 Scared I was.md",
@@ -9434,6 +9436,16 @@
       "category": "evergreen",
       "created": "2025-10-16T10:31:07.000Z",
       "snippet": "After you’ve figured out what to automate, follow these steps -"
+    }
+  ],
+  "bookshelf/inside-the-box": [
+    {
+      "slug": "/evergreen/the-same-story-can-mean-different-things-to-different-people/",
+      "title": "The Same Story Can Mean Different Things to Different People",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-10-04T17:29:00.000Z",
+      "snippet": "While reading Inside the Box today, I came across the story of Mendelev and how he discovered the periodic table. David talks about how, in a book about sleep, the author mentioned that when he slept, his unconscious mind made sense of all the facts and gave him the solution. Then, David says that's not it. Mendelev had a book contract and he had to write about around 53 elements in a single volume, so he was trying to find a way to group the elements."
     }
   ]
 }
