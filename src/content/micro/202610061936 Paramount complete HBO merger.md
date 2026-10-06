@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - netflix
-  - streaming
-  - hbo-max
-category: micro
+title: "Paramount Complete HBO Merger"
+slug: "paramount-complete-hbo-merger"
+created: 2026-10-06T19:36:00+03:00
 updated: 2026-10-06T19:37:30+03:00
+category: micro
+tags: ["netflix", "streaming", "hbo-max"]
 ---
 [Paramount and Warner Bros. Discovery complete $110 billion media megamerger by Emma Roth](https://www.theverge.com/entertainment/1005480/paramount-warner-bros-discovey-merger-closed)
 
