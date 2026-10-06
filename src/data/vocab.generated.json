@@ -910,6 +910,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/perseverate-2026-10-05",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-05"
+		},
+		"regimen": {
+			"word": "regimen",
+			"pos": "other",
+			"gloss": " noun Regimen refers to a plan or set of rules about food, exercise, etc., designed to make someone become or stay healthy.",
+			"pronunciation": "REJ-uh-mun",
+			"example": "Sherry’s personal trainer started her on a workout regimen of 30 minutes on the treadmill followed by 30 minutes of weight training.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/regimen-2026-10-06",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-06"
 		}
 	}
 }
