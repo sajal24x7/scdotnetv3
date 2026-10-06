@@ -1,10 +1,16 @@
 ---
-title: "How I Use Obsidian Quick Capture on Mobile"
-slug: "how-i-use-obsidian-quick-capture-on-mobile"
-created: 2026-10-06T14:31:00+03:00
-updated: 2026-10-06T14:40:08+03:00
+title: How I Use Obsidian Quick Capture on Mobile
+slug: how-i-use-obsidian-quick-capture-on-mobile
+created: 2026-10-06T11:31:00.000Z
+updated: 2026-10-06T11:40:08.000Z
 category: evergreen
-tags: ["obsidian", "productivity"]
+tags:
+  - obsidian
+  - productivity
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117394776313382567'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mx7s5lqlj22i'
+  - 'https://www.threads.com/@sajal24x7/post/DeKJ6D1Fgkm'
 ---
 I saw kepano’s repost on LinkedIn about the newest Obsidian release. In the release notes, I saw Obsidian Quick Capture mentioned as a feature for this release.
 
