@@ -8,12 +8,9 @@ tags: ["china", "history"]
 author:
   - Alice Evelyn Yang
 started: 2026-10-05T07:46:00
-finished:
 genre: fantasy
 format: audiobook
-rating:
-series:
-status: todo
+status: started
 ---
 ## Review
 ## Notes
