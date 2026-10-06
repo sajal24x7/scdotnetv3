@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - obsidian
-  - productivity
-category: evergreen
+title: "How I Use Obsidian Quick Capture on Mobile"
+slug: "how-i-use-obsidian-quick-capture-on-mobile"
+created: 2026-10-06T14:31:00+03:00
 updated: 2026-10-06T14:40:08+03:00
+category: evergreen
+tags: ["obsidian", "productivity"]
 ---
 I saw kepano’s repost on LinkedIn about the newest Obsidian release. In the release notes, I saw Obsidian Quick Capture mentioned as a feature for this release.
 
