@@ -87,18 +87,48 @@ image; check by hand).
 
 ## Phase 4: Clean images at upload time
 
-Applies to the Obsidian → `content` branch pipeline and `/write` uploads
-(`functions/`, R2 `IMAGES` binding).
+**Keep JPEG as the stored format.** Do not convert R2 originals to WebP:
 
-- **Strip EXIF metadata, especially GPS location**, before upload. Phone
-  photos (`IMG_*.jpeg`) can reveal where they were taken.
-- Cap uploads at about 2400px on the long edge. Smaller originals also make
-  builds faster.
-- Keep hashed filenames (new uploads already use
-  `YYYYMMDDHHMMSS-<hash>.jpg`).
-- Serve R2 objects with `Cache-Control: public, max-age=31536000, immutable`.
-  Astro's build cache then reuses images without a revalidation request.
-- Consider a one-time pass over existing R2 images to strip GPS data.
+- It would not remove the build step. Most of Astro's work is resizing each
+  image into several widths, which costs the same whatever the source format.
+  Astro already serves WebP to readers.
+- Instagram only accepts JPEG (`scripts/lib/platforms/instagram.js` skips
+  anything else), and the Threads API accepts only JPEG and PNG.
+- RSS feeds and `og:image` use the originals, and some feed readers and
+  social sites handle WebP poorly.
+- Converting existing images means rewriting about 1,400 URLs in content and
+  breaking any outside links to the old files.
+
+### `/write` uploads (already mostly right)
+
+`public/write/index.html` (`shrinkImage`) and `functions/api/upload.js`
+already:
+
+- resize to 1536px on the long edge;
+- re-encode to JPEG at quality 0.85 (always in photo mode; otherwise when
+  the file is over 500 KB or needs resizing);
+- use hashed keys (`images/YYYY/MM/<timestamp>-<hash>.<ext>`);
+- set `Cache-Control: public, max-age=31536000, immutable`.
+
+Re-encoding through a canvas drops EXIF data, including GPS location.
+**Gap:** in note mode, a JPEG under 500 KB that is already within 1536px is
+uploaded untouched, so its EXIF (and any GPS location) is kept. Fix: always
+re-encode JPEGs in `shrinkImage` (or strip EXIF in `upload.js`).
+
+### Obsidian → `content` branch pipeline
+
+Bring it in line with `/write`:
+
+- Strip EXIF metadata, especially GPS location.
+- Resize to about 1536–2400px on the long edge and keep JPEG.
+- Use hashed filenames and the same `Cache-Control` header, so Astro's build
+  cache reuses images without a revalidation request.
+
+### Existing images
+
+- Consider a one-time pass over existing R2 JPEGs to strip GPS data in
+  place (same keys, so no content changes).
+- Set the long `Cache-Control` header on older objects that lack it.
 
 ## Phase 5: Keep the manifest current
 
