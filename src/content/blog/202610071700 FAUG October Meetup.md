@@ -1,10 +1,18 @@
 ---
-title: "FAUG October Meetup"
-slug: "faug-october-meetup"
-created: 2026-10-07T17:00:00+03:00
-updated: 2026-10-07T21:45:18+03:00
+title: FAUG October Meetup
+slug: faug-october-meetup
+created: 2026-10-07T14:00:00.000Z
+updated: 2026-10-07T18:45:18.000Z
 category: blog
-tags: ["faug", "azure", "meetup", "helsinki"]
+tags:
+  - faug
+  - azure
+  - meetup
+  - helsinki
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117401541659113337'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mxcsc4f3vm2y'
+  - 'https://www.threads.com/@sajal24x7/post/DeNOzgAmHeu'
 ---
 I don't know how to start these posts. Another meetup event with notes that follow.
 
