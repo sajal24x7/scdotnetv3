@@ -338,6 +338,35 @@
       "status": "approved"
     }
   ],
+  "evergreen/how-i-use-obsidian-quick-capture-on-mobile": [
+    {
+      "id": "bluesky:like:3mx7s5lqlj22i:did:plc:gwtqnpejkbvz4vwij57dsy6u",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Lofi Glow",
+        "url": "https://bsky.app/profile/lofiglow.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:gwtqnpejkbvz4vwij57dsy6u/bafkreiac5h5u56ay4mumigsxxkj4qdveyjzhkpcsamdiafw2qmlcaxipce"
+      },
+      "url": "https://bsky.app/profile/lofiglow.bsky.social",
+      "published": "2026-10-06T16:53:24.639Z",
+      "status": "approved"
+    }
+  ],
+  "evergreen/the-same-story-can-mean-different-things-to-different-people": [
+    {
+      "id": "mastodon:repost:117384091084683369:111811737765749325",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Social Sciences Channel",
+        "url": "https://newsmast.community/@socialsciences",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/811/737/765/749/325/original/b600d42ae9be368b.png"
+      },
+      "url": "https://newsmast.community/@socialsciences",
+      "status": "approved"
+    }
+  ],
   "micro/202607091101": [
     {
       "id": "bluesky:like:3mq7azzv4qu2w:did:plc:lcbtt32aexvcuwlt4alf6qsw",
@@ -1687,7 +1716,7 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/DeB98bUGxga/",
-      "count": 2,
+      "count": 3,
       "status": "approved"
     },
     {
@@ -1711,6 +1740,43 @@
       },
       "url": "https://www.threads.com/@sajal24x7/post/DeB960gm1G9",
       "count": 1,
+      "status": "approved"
+    }
+  ],
+  "photo/202610041026": [
+    {
+      "id": "instagram:like-count:DeEnnr9ET7z",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DeEnnr9ET7z/",
+      "count": 6,
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:117382599183993247:114816619340813838",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Mello",
+        "url": "https://mastodon.social/@crisps",
+        "avatar": "https://files.mastodon.social/accounts/avatars/114/816/619/340/813/838/original/53b74ae244c23ca4.jpg"
+      },
+      "url": "https://mastodon.social/@crisps",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117382599183993247:111653112089202906",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Books & Literature Channel",
+        "url": "https://newsmast.community/@books",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
+      },
+      "url": "https://newsmast.community/@books",
       "status": "approved"
     }
   ],
