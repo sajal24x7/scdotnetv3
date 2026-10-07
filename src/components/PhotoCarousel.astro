@@ -9,7 +9,10 @@ interface Props {
     title?: string;
 }
 
+import RemoteImage from './RemoteImage.astro';
+
 const { images, title = '' } = Astro.props as Props;
+const sizes = '(max-width: 48rem) 100vw, 48rem';
 const multiple = images.length > 1;
 const altFor = (index: number) =>
     title
@@ -22,11 +25,12 @@ const altFor = (index: number) =>
         <div class="photo-carousel__track" data-carousel-track tabindex="0" role="group" aria-label={`Photo gallery, ${images.length} photos`}>
             {images.map((src, index) => (
                 <figure class="photo-carousel__slide">
-                    <img
+                    <RemoteImage
                         src={src}
                         alt={altFor(index)}
+                        sizes={sizes}
+                        maxWidth={2048}
                         loading={index === 0 ? 'eager' : 'lazy'}
-                        decoding="async"
                     />
                 </figure>
             ))}
@@ -52,7 +56,7 @@ const altFor = (index: number) =>
 ) : (
     images.length === 1 && (
         <figure class="photo-carousel photo-carousel--single">
-            <img src={images[0]} alt={title || 'Photo'} loading="eager" decoding="async" />
+            <RemoteImage src={images[0]} alt={title || 'Photo'} sizes={sizes} maxWidth={2048} loading="eager" />
         </figure>
     )
 )}

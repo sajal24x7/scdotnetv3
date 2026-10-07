@@ -1,6 +1,7 @@
 ---
 import TimeDisplay from './TimeDisplay.astro';
 import Tag from './Tag.astro';
+import RemoteImage from './RemoteImage.astro';
 import { getPhotoImages, getPhotoCaption } from '../utils/photos';
 
 interface Props {
@@ -65,11 +66,10 @@ const tiles = posts.map((post) => {
                     aria-label={tile.overlayCaption || 'Photo post'}
                 >
                     {tile.image ? (
-                        <img
+                        <RemoteImage
                             src={tile.image}
                             alt={tile.overlayCaption}
-                            loading="lazy"
-                            decoding="async"
+                            sizes="(max-width: 48rem) 100vw, 42rem"
                         />
                     ) : (
                         <span class="photo-entry__placeholder">{tile.overlayCaption || 'Photo post'}</span>

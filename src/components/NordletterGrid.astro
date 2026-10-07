@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import RemoteImage from './RemoteImage.astro';
 import manifest from '../data/nordletter-image-manifest.json';
 import { formatDateWithoutYear } from '../utils/dateFormat';
 
@@ -106,13 +107,13 @@ const getVariantClass = (post: typeof posts[number]) => {
               </div>
             ) : post.data.image ? (
               <div class="nordletter-image">
-                <img
+                <RemoteImage
                   src={post.data.image}
                   alt={post.data.title}
-                  loading="lazy"
-                  decoding="async"
                   width="384"
                   height="384"
+                  sizes="(max-width: 48rem) 40vw, 9.5rem"
+                  maxWidth={768}
                 />
               </div>
             ) : null}

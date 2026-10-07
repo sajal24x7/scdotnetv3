@@ -1,6 +1,6 @@
 ---
 import PostItem from './PostItem.astro';
-import { parseMarkdown } from '../utils/markdown';
+import { parseMarkdownWithImages } from '../utils/images';
 
 interface Props {
   posts: any[];
@@ -13,10 +13,10 @@ interface Props {
 const { posts, title = "Recent Items", showTitle = true, showFullContent = true, showReadMore = true } = Astro.props;
 
 // Pre-render markdown content for posts
-const renderedPosts = posts.map(post => ({
+const renderedPosts = await Promise.all(posts.map(async (post) => ({
   ...post,
-  renderedContent: post.body ? parseMarkdown(post.body) : null
-}));
+  renderedContent: post.body ? await parseMarkdownWithImages(post.body) : null
+})));
 
 // Check if content is micro type
 const isMicroContent = (category: string) => category === 'micro';

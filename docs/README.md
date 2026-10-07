@@ -42,6 +42,7 @@ This directory centralizes all reference material for the Astro-powered build of
 | [Syndication](operations/syndication.md) | POSSE workflow (Mastodon, Bluesky, Threads, Instagram), rate limiting, and how URLs are persisted back to content. | `scripts/syndicate-content.js` |
 | [Instagram Setup](operations/instagram-setup.md) | One-time Instagram API setup, content requirements, and how photo posts publish there. | `scripts/lib/platforms/instagram.js` |
 | [Threads Token Refresh](operations/threads-token-refresh.md) | Automated 60-day token renewal for the Threads API. | `.github/workflows/refresh-threads-token.yml` |
+| [Image Optimization](operations/image-optimization.md) | How R2 content images are optimized and made responsive at build time, the dimension manifest, and what stays unoptimized. | `scripts/cache-image-dimensions.js`, `src/utils/images.ts`, `src/components/RemoteImage.astro` |
 | [Nordletter Image Caching](operations/nordletter-image-cache.md) | Build-time download + manifest workflow for newsletter thumbnails and a template for future asset caches. | `scripts/cache-nordletter-images.js`, `src/components/NordletterGrid.astro` |
 | [TIL Vault Sync](operations/til-vault-sync.md) | Work-laptop Obsidian vault sync via the `/write` TIL tab: setup, sync semantics, and API surface. | `public/write/index.html`, `functions/api/til/sync.js` |
 

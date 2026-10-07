@@ -5,6 +5,7 @@ import Tag from '../Tag.astro';
 import Backlinks from '../Backlinks.astro';
 import Interactions from '../interactions/Interactions.astro';
 import PhotoCarousel from '../PhotoCarousel.astro';
+import RemoteImage from '../RemoteImage.astro';
 import SyndicationLinks from '../SyndicationLinks.astro';
 import NewsletterSignup from '../ui/NewsletterSignup.astro';
 import type { Interaction } from '../../utils/interactions';
@@ -83,12 +84,13 @@ const hasMedia = galleryImages.length > 0 || Boolean(heroImage);
                     {galleryImages.length > 0 ? (
                         <PhotoCarousel images={galleryImages} title={title} />
                     ) : (
-                        <img
+                        <RemoteImage
                             src={heroImage}
                             alt={title}
                             class="photo-header__image"
+                            sizes="(max-width: 48rem) 100vw, 48rem"
+                            maxWidth={2048}
                             loading="eager"
-                            decoding="async"
                         />
                     )}
                 </div>

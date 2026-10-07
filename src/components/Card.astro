@@ -1,6 +1,7 @@
 ---
 import TimeDisplay from './TimeDisplay.astro';
 import CategoryDisplay from './CategoryDisplay.astro';
+import RemoteImage from './RemoteImage.astro';
 
 const { title, description, created, updated, category, image, link } = Astro.props;
 const displayDate = updated ?? created;
@@ -12,14 +13,14 @@ const cardClass = ['card', hasImage ? 'card--with-image' : 'card--no-image'].joi
   <div class="card-content">
     {image && (
       <div class="card-image">
-        <img
+        <RemoteImage
           src={image}
           alt={title}
           width="800"
           height="450"
           class="image"
-          loading="lazy"
-          decoding="async"
+          sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 24rem"
+          maxWidth={1080}
         />
       </div>
     )}
