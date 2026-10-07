@@ -920,6 +920,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/regimen-2026-10-06",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-06"
+		},
+		"discreet": {
+			"word": "discreet",
+			"pos": "other",
+			"gloss": " adjective Discreet describes someone who is careful about not allowing something to be known or noticed by many people. It can also describe something that is not likely to be seen or noticed by many people.",
+			"pronunciation": "dih-SKREET",
+			"example": "She was always very discreet about her personal life. // A photographer followed the singer at a discreet distance.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/discreet-2026-10-07",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-07"
 		}
 	}
 }
