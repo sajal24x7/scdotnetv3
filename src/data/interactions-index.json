@@ -338,6 +338,21 @@
       "status": "approved"
     }
   ],
+  "evergreen/how-i-use-obsidian-quick-capture-on-mobile": [
+    {
+      "id": "bluesky:like:3mx7s5lqlj22i:did:plc:gwtqnpejkbvz4vwij57dsy6u",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Lofi Glow",
+        "url": "https://bsky.app/profile/lofiglow.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:gwtqnpejkbvz4vwij57dsy6u/bafkreiac5h5u56ay4mumigsxxkj4qdveyjzhkpcsamdiafw2qmlcaxipce"
+      },
+      "url": "https://bsky.app/profile/lofiglow.bsky.social",
+      "published": "2026-10-06T16:53:24.639Z",
+      "status": "approved"
+    }
+  ],
   "evergreen/the-same-story-can-mean-different-things-to-different-people": [
     {
       "id": "mastodon:repost:117384091084683369:111811737765749325",
@@ -1747,7 +1762,7 @@
       "author": {
         "name": "Mello",
         "url": "https://mastodon.social/@crisps",
-        "avatar": "https://files.mastodon.social/accounts/avatars/114/816/619/340/813/838/original/45c0fda29418f1d8.jpg"
+        "avatar": "https://files.mastodon.social/accounts/avatars/114/816/619/340/813/838/original/53b74ae244c23ca4.jpg"
       },
       "url": "https://mastodon.social/@crisps",
       "status": "approved"
