@@ -37,12 +37,12 @@ This directory centralizes all reference material for the Astro-powered build of
 
 | Area | Summary | Key Files |
 | --- | --- | --- |
-| [Deployment](operations/deployment.md) | Local commands, build pipeline (image cache → covers → Astro → Pagefind), and Cloudflare Pages configuration. | `package.json`, `cloudflare-pages.json` |
+| [Deployment](operations/deployment.md) | Local commands, build pipeline (covers → Astro → Pagefind), and Cloudflare Pages configuration. | `package.json`, `cloudflare-pages.json` |
 | [Publication Allowlist](operations/publication.md) | The central explicit-allow list deciding which categories/statuses reach readers via RSS feeds and syndication. | `publication.config.json`, `src/utils/publication.ts` |
 | [Syndication](operations/syndication.md) | POSSE workflow (Mastodon, Bluesky, Threads, Instagram), rate limiting, and how URLs are persisted back to content. | `scripts/syndicate-content.js` |
 | [Instagram Setup](operations/instagram-setup.md) | One-time Instagram API setup, content requirements, and how photo posts publish there. | `scripts/lib/platforms/instagram.js` |
 | [Threads Token Refresh](operations/threads-token-refresh.md) | Automated 60-day token renewal for the Threads API. | `.github/workflows/refresh-threads-token.yml` |
-| [Nordletter Image Caching](operations/nordletter-image-cache.md) | Build-time download + manifest workflow for newsletter thumbnails and a template for future asset caches. | `scripts/cache-nordletter-images.js`, `src/components/NordletterGrid.astro` |
+| [Remote Image Optimization](operations/remote-images.md) | How R2 images in posts, heroes, galleries and Nordletter are optimized at build time and cached between Cloudflare builds. | `src/utils/remoteImage.ts`, `src/utils/rehypeRemoteImages.ts`, `src/utils/imageDomains.ts` |
 | [TIL Vault Sync](operations/til-vault-sync.md) | Work-laptop Obsidian vault sync via the `/write` TIL tab: setup, sync semantics, and API surface. | `public/write/index.html`, `functions/api/til/sync.js` |
 
 ## Tools & Automation

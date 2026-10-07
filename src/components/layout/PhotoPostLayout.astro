@@ -8,6 +8,7 @@ import PhotoCarousel from '../PhotoCarousel.astro';
 import SyndicationLinks from '../SyndicationLinks.astro';
 import NewsletterSignup from '../ui/NewsletterSignup.astro';
 import type { Interaction } from '../../utils/interactions';
+import { getContentImageAttributes } from '../../utils/remoteImage';
 
 interface Backlink {
     slug: string;
@@ -50,6 +51,9 @@ const updated = hasUpdatedDate ? entryData.updated : undefined;
 // their photo directly in the markdown body — those fall back to a single
 // centered column since there's no separate image for a media column.
 const hasMedia = galleryImages.length > 0 || Boolean(heroImage);
+const heroAttributes = heroImage && galleryImages.length === 0
+    ? await getContentImageAttributes(heroImage, { loading: 'eager' })
+    : undefined;
 ---
 
 <LayoutContainer
@@ -84,11 +88,9 @@ const hasMedia = galleryImages.length > 0 || Boolean(heroImage);
                         <PhotoCarousel images={galleryImages} title={title} />
                     ) : (
                         <img
-                            src={heroImage}
+                            {...heroAttributes}
                             alt={title}
                             class="photo-header__image"
-                            loading="eager"
-                            decoding="async"
                         />
                     )}
                 </div>

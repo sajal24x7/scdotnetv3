@@ -31,7 +31,7 @@ Pages enable specific islands by passing flags to `Layout.astro`, ensuring minim
 
 - **Content collections** – `src/content.config.ts` defines one shared Zod schema used by all 14 category collections (one folder per category under `src/content/`, e.g. `src/content/blog`, `src/content/bookshelf`), plus a relaxed `inbox` collection for notes arriving from the publishing pipeline. The category list is exported as `CONTENT_CATEGORIES`.
 - **Utilities** – `getAllPosts()` in `src/utils/content.ts` memoizes collection reads and powers feeds, tag pages, and backlinks. `getPostsByCategory()` applies consistent filtering across landing pages, sorting by `created` by default or by `updated` (with a `created` fallback) when a caller opts in via `{ sortBy: 'updated' }`. Additional helpers cover Nordletter edition parsing and shelf metadata normalization.
-- **Generated data** – Build scripts store artifacts in `src/data/`, including `backlinks-index.json` and the Nordletter image manifest. Components treat these as local caches.
+- **Generated data** – Build scripts store artifacts in `src/data/`, including `backlinks-index.json`. Components treat these as local caches.
 
 ## Styling System
 

@@ -8,6 +8,8 @@ import { unified } from '@astrojs/markdown-remark';
 import { remarkWikilinks } from './src/utils/remarkWikilinks.ts';
 import { remarkStripLearnBlocks } from './src/utils/learnBlocks.ts';
 import { remarkMermaid } from './src/utils/remarkMermaid.ts';
+import { rehypeRemoteImages } from './src/utils/rehypeRemoteImages.ts';
+import { REMOTE_IMAGE_DOMAINS } from './src/utils/imageDomains.ts';
 
 // Converts soft line breaks (single newlines) to <br> nodes, preserving
 // line-by-line structure in blockquotes used for poetry and similar content.
@@ -57,6 +59,12 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  // Images on the R2 bucket (post bodies, heroes, galleries, Nordletter
+  // covers) are downloaded and optimized at build time. Results are cached in
+  // node_modules/.astro, which the Cloudflare Pages build cache keeps.
+  image: {
+    domains: REMOTE_IMAGE_DOMAINS,
+  },
   integrations: [
     react(),
     mdx(),
@@ -70,6 +78,7 @@ export default defineConfig({
     // the remark/rehype pipeline explicitly via @astrojs/markdown-remark.
     processor: unified({
       remarkPlugins: [remarkStripLearnBlocks, remarkMermaid, remarkWikilinks, remarkBreaks],
+      rehypePlugins: [rehypeRemoteImages],
     }),
     shikiConfig: {
       themes: {

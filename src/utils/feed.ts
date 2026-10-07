@@ -13,7 +13,7 @@ import { formatRelativeDate, SITE_TIMEZONE } from './dateFormat';
 import { getPhotoImages } from './photos';
 import { SHELF_CATEGORIES, SHELF_STATUS_FEED_VERBS, isQueuedShelfEntry, type ShelfCategory, type ShelfStatus } from './shelfStatus';
 import { POST_GROUPS, POST_GROUP_CATEGORIES, getPostGroup, type PostGroup } from './postGroups';
-import nordletterManifest from '../data/nordletter-image-manifest.json';
+import { getContentImageAttributes, type ImageAttributes } from './remoteImage';
 
 export const FEED_PAGE_SIZE = 10;
 
@@ -40,27 +40,6 @@ const CATEGORY_LABELS: Record<string, string> = {
   now: 'Now',
   nordletter: 'Nordletter'
 };
-
-// Nordletter cover images are cached locally by scripts/cache-nordletter-images.js
-const nordletterImageModules = import.meta.glob(
-  '../images/nordletter/*.{jpg,jpeg,png,webp,avif}',
-  { eager: true }
-) as Record<string, { default: ImageMetadata }>;
-
-const nordletterImagesByFileName = Object.fromEntries(
-  Object.entries(nordletterImageModules).map(([key, module]) => [
-    key.split('/').pop() ?? key,
-    module.default
-  ])
-);
-
-const nordletterManifestMap = nordletterManifest as Record<string, string>;
-
-function getNordletterImageSrc(post: Post): string | undefined {
-  const fileName = nordletterManifestMap[post.id];
-  const local = fileName ? nordletterImagesByFileName[fileName] : undefined;
-  return local?.src ?? post.data.image ?? undefined;
-}
 
 export interface FeedEntry {
   html: string;
@@ -357,6 +336,15 @@ function renderNow(post: Post): string {
   return `${metaHtml(post)}${titleHtml(post)}${excerptHtml(excerpt)}`;
 }
 
+function nordletterImageHtml(attributes: ImageAttributes): string {
+  const withAlt: ImageAttributes = { ...attributes, alt: '' };
+  const attrs = Object.entries(withAlt)
+    .filter(([, value]) => value !== undefined && value !== false)
+    .map(([key, value]) => `${key}="${escapeHtml(String(value))}"`)
+    .join(' ');
+  return `<img class="feed-entry__nl-img" ${attrs}>`;
+}
+
 // Nordletter editions open with a recurring subscribe/reach-out preamble followed by a
 // thematic break; the excerpt should come from the actual content after that break.
 function nordletterContent(post: Post): string {
@@ -371,13 +359,13 @@ function nordletterContent(post: Post): string {
   return body;
 }
 
-function renderNordletter(post: Post): string {
+async function renderNordletter(post: Post): Promise<string> {
   const title = post.data.title ? cleanNordletterTitle(post.data.title) : '';
   const edition = post.data.edition ?? extractEditionNumber(post.data.title || '', post.id);
   const badge = edition ? `<span class="feed-entry__nl-badge">NL ${escapeHtml(String(edition))}</span>` : '';
-  const imageSrc = getNordletterImageSrc(post);
+  const imageSrc = post.data.image?.trim();
   const imageHtml = imageSrc
-    ? `<img class="feed-entry__nl-img" src="${escapeHtml(imageSrc)}" alt="" loading="lazy">`
+    ? nordletterImageHtml(await getContentImageAttributes(imageSrc))
     : '';
   const content = stripMarkdown(nordletterContent(post));
   const excerpt = content

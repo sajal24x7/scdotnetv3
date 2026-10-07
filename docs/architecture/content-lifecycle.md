@@ -21,7 +21,7 @@ This guide documents how Markdown files flow from `src/content` into Astro pages
 | --- | --- | --- |
 | `src/data/backlinks-index.json` | `findBacklinksComprehensive()` regenerates this cache when content changes, when the file is missing, or when `REGENERATE_BACKLINKS=true`. | Supplies backlinks to `PostLayout.astro`. |
 | `dist/pagefind/` | Pagefind crawls the built HTML output as a post-build step (`pagefind --site dist` in the `build` script). | Read by `src/pages/search.astro` for client-side queries. |
-| `src/data/nordletter-image-manifest.json` + cached images | `npm run cache-nordletter-images` before every dev/build. | Newsletter thumbnails in `NordletterGrid.astro` (see [Nordletter Image Cache](../operations/nordletter-image-cache.md)). |
+| Optimized R2 images + `remote-image-sizes.json` in `node_modules/.astro/` | `astro build`, for images on `storage.sajalchoudhary.net`. Kept between deploys by the Cloudflare Pages build cache. | Post bodies, heroes, galleries and Nordletter thumbnails (see [Remote Image Optimization](../operations/remote-images.md)). |
 | Generated cover maps (`src/utils/bookCovers.ts` etc.) | `npm run generate-covers` and the per-shelf generate scripts. | Shelf layouts import cover images at build time. |
 
 ## Garden Dates: Planted vs. Tended

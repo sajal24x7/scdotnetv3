@@ -3,6 +3,7 @@
 // One image renders plainly; several become a scroll-snap carousel with
 // arrow buttons and dot indicators (all optional enhancements — the track
 // scrolls natively without JS).
+import { getContentImageAttributes } from '../utils/remoteImage';
 
 interface Props {
     images: string[];
@@ -15,19 +16,17 @@ const altFor = (index: number) =>
     title
         ? `${title} — photo ${index + 1} of ${images.length}`
         : `Photo ${index + 1} of ${images.length}`;
+const slides = await Promise.all(
+    images.map((src, index) => getContentImageAttributes(src, { loading: index === 0 ? 'eager' : 'lazy' }))
+);
 ---
 
 {multiple ? (
     <div class="photo-carousel" data-photo-carousel>
         <div class="photo-carousel__track" data-carousel-track tabindex="0" role="group" aria-label={`Photo gallery, ${images.length} photos`}>
-            {images.map((src, index) => (
+            {slides.map((attributes, index) => (
                 <figure class="photo-carousel__slide">
-                    <img
-                        src={src}
-                        alt={altFor(index)}
-                        loading={index === 0 ? 'eager' : 'lazy'}
-                        decoding="async"
-                    />
+                    <img {...attributes} alt={altFor(index)} />
                 </figure>
             ))}
         </div>
@@ -52,7 +51,7 @@ const altFor = (index: number) =>
 ) : (
     images.length === 1 && (
         <figure class="photo-carousel photo-carousel--single">
-            <img src={images[0]} alt={title || 'Photo'} loading="eager" decoding="async" />
+            <img {...slides[0]} alt={title || 'Photo'} />
         </figure>
     )
 )}

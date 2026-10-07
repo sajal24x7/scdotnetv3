@@ -13,7 +13,7 @@ Consult the [Architecture Overview](../architecture/overview.md) for a full tour
 ## Common Commands
 
 ```bash
-npm run dev            # Cache Nordletter images, generate book covers, start Astro dev server
+npm run dev            # Generate book covers, start Astro dev server
 npm run build          # Same pre-steps, astro build, then Pagefind indexing (pagefind --site dist)
 npm run build:cloudflare  # Identical to build; the command Cloudflare Pages runs
 npm run preview        # Serve the latest production build

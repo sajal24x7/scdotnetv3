@@ -2,6 +2,7 @@
 // Lead image for non-shelf posts: a carousel when the post carries a
 // frontmatter gallery (photo-style posts), otherwise the single hero image.
 import PhotoCarousel from '../../PhotoCarousel.astro';
+import { getContentImageAttributes } from '../../../utils/remoteImage';
 
 interface Props {
     title: string;
@@ -10,6 +11,9 @@ interface Props {
 }
 
 const { title, heroImage, galleryImages = [] } = Astro.props as Props;
+const heroAttributes = heroImage && galleryImages.length === 0
+    ? await getContentImageAttributes(heroImage)
+    : undefined;
 ---
 
 {galleryImages.length > 0 && (
@@ -18,14 +22,12 @@ const { title, heroImage, galleryImages = [] } = Astro.props as Props;
     </div>
 )}
 
-{heroImage && galleryImages.length === 0 && (
+{heroAttributes && (
     <div class="mb-6">
         <img
-            src={heroImage}
+            {...heroAttributes}
             alt={title}
             class="rounded-lg w-full object-cover max-h-96 aspect-[1200/630]"
-            loading="lazy"
-            decoding="async"
         />
     </div>
 )}
