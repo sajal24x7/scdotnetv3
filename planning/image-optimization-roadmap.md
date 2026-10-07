@@ -111,9 +111,12 @@ already:
 - set `Cache-Control: public, max-age=31536000, immutable`.
 
 Re-encoding through a canvas drops EXIF data, including GPS location.
-**Gap:** in note mode, a JPEG under 500 KB that is already within 1536px is
-uploaded untouched, so its EXIF (and any GPS location) is kept. Fix: always
-re-encode JPEGs in `shrinkImage` (or strip EXIF in `upload.js`).
+
+**Fixed:** a JPEG already within 1536px used to be uploaded untouched when
+re-encoding didn't make it smaller (in both note and photo mode), keeping its
+EXIF and any GPS location. `shrinkImage` now always re-encodes every format
+except PNG and GIF. The only remaining path that keeps metadata is a file the
+browser can't decode, which is uploaded as-is.
 
 ### Obsidian → `content` branch pipeline
 
