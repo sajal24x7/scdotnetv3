@@ -11,6 +11,45 @@ const CACHE_FILE = path.resolve(process.cwd(), 'node_modules/.astro/remote-image
 
 type Size = { width: number; height: number };
 
+// Astro renders many posts at once. Firing every probe in parallel made R2
+// reject some of them, so probes run a few at a time and retry with backoff.
+const MAX_CONCURRENT_PROBES = 6;
+const RETRY_DELAYS_MS = [500, 2000, 5000];
+
+let activeProbes = 0;
+const probeQueue: Array<() => void> = [];
+
+async function withProbeSlot<T>(task: () => Promise<T>): Promise<T> {
+    if (activeProbes >= MAX_CONCURRENT_PROBES) {
+        await new Promise<void>((resolve) => probeQueue.push(resolve));
+    }
+    activeProbes++;
+    try {
+        return await task();
+    } finally {
+        activeProbes--;
+        probeQueue.shift()?.();
+    }
+}
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function probe(src: string): Promise<Size> {
+    for (let attempt = 0; ; attempt++) {
+        try {
+            const { width, height } = await withProbeSlot(() =>
+                inferRemoteSize(src, { domains: REMOTE_IMAGE_DOMAINS, remotePatterns: [] })
+            );
+            return { width, height };
+        } catch (error) {
+            if (attempt >= RETRY_DELAYS_MS.length) {
+                throw error;
+            }
+            await sleep(RETRY_DELAYS_MS[attempt]);
+        }
+    }
+}
+
 let sizes: Record<string, Size> | undefined;
 let writeScheduled = false;
 const pending = new Map<string, Promise<Size>>();
@@ -50,9 +89,8 @@ export async function getRemoteImageSize(src: string): Promise<Size> {
     }
     let request = pending.get(src);
     if (!request) {
-        request = inferRemoteSize(src, { domains: REMOTE_IMAGE_DOMAINS, remotePatterns: [] })
-            .then(({ width, height }) => {
-                const size = { width, height };
+        request = probe(src)
+            .then((size) => {
                 sizes![src] = size;
                 scheduleWrite();
                 return size;
@@ -61,4 +99,19 @@ export async function getRemoteImageSize(src: string): Promise<Size> {
         pending.set(src, request);
     }
     return request;
+}
+
+/**
+ * Astro's probe error hides the cause. Ask R2 directly so the build log says
+ * whether the image is missing (404), blocked (403) or the network failed.
+ */
+export async function describeProbeFailure(src: string, error: unknown): Promise<string> {
+    const reason = error instanceof Error ? error.message : String(error);
+    try {
+        const response = await fetch(src, { method: 'HEAD' });
+        return `${reason} (HTTP ${response.status})`;
+    } catch (fetchError) {
+        const cause = fetchError instanceof Error ? fetchError.message : String(fetchError);
+        return `${reason} (${cause})`;
+    }
 }

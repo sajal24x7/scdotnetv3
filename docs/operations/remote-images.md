@@ -27,11 +27,13 @@ To avoid even the revalidation requests, serve R2 objects with a long `Cache-Con
 
 Each image's size is probed (once, then cached) before Astro queues it for download. If the probe fails, the image keeps its original R2 URL and the build logs a `[images]` warning instead of failing. Watch for these warnings in the Cloudflare build log; they usually mean a broken image link.
 
-The rendered HTML of a post is cached in `data-store.json`, so a post rendered during an R2 outage keeps its plain `<img>` until the post or the Astro config changes.
+Size probes run at most six at a time and retry three times with backoff, because firing them all at once made R2 reject some (54 of them on the first deploy). The warning includes the HTTP status of the failing image.
+
+The rendered HTML of a post is cached in `data-store.json`, so a post rendered while an image was unreachable keeps its plain `<img>` until the post or the Astro config changes. To re-render everything, bump `cacheVersion` on `rehypeRemoteImages` in `astro.config.mjs`.
 
 ## Cost
 
-The first build with an empty cache downloads and converts every R2 image once. Later builds only process new or changed images. Clear the Cloudflare build cache to force a full rebuild.
+The first build with an empty cache downloads and converts every R2 image once. On the first Cloudflare deploy that meant 2,902 new image files and an image step of 2m 44s (`astro build` 4m 19s in total). Later builds only process new or changed images. Clear the Cloudflare build cache to force a full rebuild.
 
 ## Adding another image host
 

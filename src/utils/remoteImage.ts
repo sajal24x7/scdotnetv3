@@ -1,6 +1,6 @@
 import { getImage } from 'astro:assets';
 import { CONTENT_IMAGE_SIZES, fitContentImage, isOptimizableRemoteImage } from './imageDomains';
-import { getRemoteImageSize } from './remoteImageSize';
+import { describeProbeFailure, getRemoteImageSize } from './remoteImageSize';
 
 // Remote images live in the R2 bucket. Astro downloads, resizes and converts
 // them at build time and keeps the results in node_modules/.astro, which the
@@ -18,9 +18,8 @@ function toAttributes(image: Awaited<ReturnType<typeof getImage>>): ImageAttribu
     return attributes;
 }
 
-function warnFallback(src: string, error: unknown) {
-    const reason = error instanceof Error ? error.message : String(error);
-    console.warn(`[images] Using original URL for ${src}: ${reason}`);
+async function warnFallback(src: string, error: unknown) {
+    console.warn(`[images] Using original URL for ${src}: ${await describeProbeFailure(src, error)}`);
 }
 
 /**
@@ -48,7 +47,7 @@ export async function getContentImageAttributes(
         });
         return toAttributes(image);
     } catch (error) {
-        warnFallback(src, error);
+        await warnFallback(src, error);
         return plain;
     }
 }
@@ -80,7 +79,7 @@ export async function getSquareImageAttributes(
         });
         return toAttributes(image);
     } catch (error) {
-        warnFallback(src, error);
+        await warnFallback(src, error);
         return plain;
     }
 }

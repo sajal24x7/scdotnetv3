@@ -78,7 +78,10 @@ export default defineConfig({
     // the remark/rehype pipeline explicitly via @astrojs/markdown-remark.
     processor: unified({
       remarkPlugins: [remarkStripLearnBlocks, remarkMermaid, remarkWikilinks, remarkBreaks],
-      rehypePlugins: [rehypeRemoteImages],
+      // Rendered Markdown is cached in node_modules/.astro/data-store.json and
+      // only re-rendered when this config changes. Bump cacheVersion to force
+      // a full re-render, e.g. to retry images that were unreachable.
+      rehypePlugins: [[rehypeRemoteImages, { cacheVersion: 2 }]],
     }),
     shikiConfig: {
       themes: {

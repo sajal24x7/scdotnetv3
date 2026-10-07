@@ -1,5 +1,5 @@
 import { CONTENT_IMAGE_SIZES, fitContentImage, isOptimizableRemoteImage } from './imageDomains';
-import { getRemoteImageSize } from './remoteImageSize';
+import { describeProbeFailure, getRemoteImageSize } from './remoteImageSize';
 
 // Markdown images on the R2 bucket are optimized by Astro (image.domains).
 // Left alone, Astro would keep each image at its full original size and
@@ -26,7 +26,9 @@ function collectImages(node: HastNode, found: HastNode[]) {
     node.children?.forEach((child) => collectImages(child, found));
 }
 
-export function rehypeRemoteImages() {
+// `cacheVersion` is unused here; it only exists so changing it in
+// astro.config.mjs invalidates Astro's cached Markdown output.
+export function rehypeRemoteImages(_options?: { cacheVersion?: number }) {
     return async (tree: HastNode, file: { data: AstroVFileData }) => {
         const remotePaths = file.data.astro?.remoteImagePaths;
         if (!remotePaths?.length) {
@@ -56,8 +58,7 @@ export function rehypeRemoteImages() {
                     decoding: 'async',
                 };
             } catch (error) {
-                const reason = error instanceof Error ? error.message : String(error);
-                console.warn(`[images] Leaving ${src} unoptimized: ${reason}`);
+                console.warn(`[images] Leaving ${src} unoptimized: ${await describeProbeFailure(src, error)}`);
                 unreachable.add(decodeURI(src));
             }
         }));
