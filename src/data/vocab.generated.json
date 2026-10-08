@@ -930,6 +930,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/discreet-2026-10-07",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-07"
+		},
+		"etiquette": {
+			"word": "etiquette",
+			"pos": "other",
+			"gloss": " noun Etiquette refers to rules or customs that dictate what behavior is considered appropriate and expected in a particular setting.",
+			"pronunciation": "ET-ih-kut",
+			"example": "Her failure to respond to the invitation was a serious breach of etiquette.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/etiquette-2026-10-08",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-08"
 		}
 	}
 }
