@@ -8,6 +8,7 @@ import { unified } from '@astrojs/markdown-remark';
 import { remarkWikilinks } from './src/utils/remarkWikilinks.ts';
 import { remarkStripLearnBlocks } from './src/utils/learnBlocks.ts';
 import { remarkMermaid } from './src/utils/remarkMermaid.ts';
+import { remarkResponsiveImages } from './src/utils/remarkResponsiveImages.ts';
 
 // Converts soft line breaks (single newlines) to <br> nodes, preserving
 // line-by-line structure in blockquotes used for poetry and similar content.
@@ -57,6 +58,13 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  // Optimise R2-hosted content images at build time (cached between builds by
+  // Cloudflare Pages) and give every image a responsive srcset by default.
+  // Sizes come from src/data/image-dimensions.json; see src/utils/imageDimensions.ts.
+  image: {
+    domains: ['storage.sajalchoudhary.net'],
+    layout: 'constrained',
+  },
   integrations: [
     react(),
     mdx(),
@@ -69,7 +77,7 @@ export default defineConfig({
     // wikilinks and poetry line-breaks are remark plugins, so opt back into
     // the remark/rehype pipeline explicitly via @astrojs/markdown-remark.
     processor: unified({
-      remarkPlugins: [remarkStripLearnBlocks, remarkMermaid, remarkWikilinks, remarkBreaks],
+      remarkPlugins: [remarkStripLearnBlocks, remarkMermaid, remarkWikilinks, remarkBreaks, remarkResponsiveImages],
     }),
     shikiConfig: {
       themes: {

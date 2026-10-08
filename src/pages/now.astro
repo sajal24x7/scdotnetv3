@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import TimeDisplay from '../components/TimeDisplay.astro';
 import LayoutContainer from '../components/layout/LayoutContainer.astro';
 import ProgressLayout from '../components/layout/ProgressLayout.astro';
-import { parseMarkdown } from '../utils/markdown';
+import { parseMarkdownWithImages } from '../utils/images';
 import '../styles/progress-page.css';
 
 // Get all posts dynamically across year folders and filter to category 'now' and status 'started' (or undefined for backward compatibility)
@@ -14,10 +14,10 @@ const activeNowPosts = allPosts
   .sort((a, b) => b.data.created.getTime() - a.data.created.getTime());
 
 // Pre-render markdown content
-const renderedPosts = activeNowPosts.map(post => ({
+const renderedPosts = await Promise.all(activeNowPosts.map(async (post) => ({
     ...post,
-    renderedContent: post.body ? parseMarkdown(post.body) : null
-}));
+    renderedContent: post.body ? await parseMarkdownWithImages(post.body) : null
+})));
 
 ---
 

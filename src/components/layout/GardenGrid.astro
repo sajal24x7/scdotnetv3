@@ -1,7 +1,7 @@
 ---
 import Card from '../Card.astro';
 import BookshelfCard from '../bookshelf/BookshelfCard.astro';
-import { parseMarkdown } from '../../utils/markdown';
+import { parseMarkdownWithImages } from '../../utils/images';
 
 interface Props {
   posts: any[];
@@ -11,10 +11,10 @@ interface Props {
 const { posts, contentType = 'mixed' } = Astro.props;
 
 // Pre-render markdown content
-const renderedPosts = posts.map(post => ({
+const renderedPosts = await Promise.all(posts.map(async (post) => ({
   ...post,
-  renderedContent: post.body ? parseMarkdown(post.body) : null
-}));
+  renderedContent: post.body ? await parseMarkdownWithImages(post.body) : null
+})));
 
 // Content type specific styling classes
 const getContentTypeClasses = (type: string, category?: string) => {

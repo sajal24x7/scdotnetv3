@@ -3,6 +3,7 @@ import TimeDisplay from './TimeDisplay.astro';
 import CategoryDisplay from './CategoryDisplay.astro';
 import Tag from './Tag.astro';
 import SyndicationLinks from './SyndicationLinks.astro';
+import RemoteImage from './RemoteImage.astro';
 import { getPhotoImages } from '../utils/photos';
 
 interface Props {
@@ -73,7 +74,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
   {showFeaturedImage && featuredImage && (
     <figure class={`post-item-media${isPhoto ? ' post-item-media--photo' : ''}`}>
       <a href={postLink} class="post-item-media-link" aria-label={linkAriaLabel}>
-        <img src={featuredImage} alt={postImageAlt} width="1200" height="675" loading="lazy" decoding="async" />
+        <RemoteImage src={featuredImage} alt={postImageAlt} width="1200" height="675" sizes="(max-width: 48rem) 100vw, 42rem" />
       </a>
     </figure>
   )}

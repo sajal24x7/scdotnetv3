@@ -4,7 +4,7 @@
 - **Astro 7.x** drives page generation and content collections. Routes live under `src/pages`, islands under `src/components`, and layout primitives in `src/layouts`.
 - **TypeScript-first utilities** power content aggregation. Prefer named exports and keep helpers in `src/utils`; the content schema lives in `src/content.config.ts`.
 - **Tailwind CSS 4** provides styling; keep bespoke styles minimal and colocate reusable patterns in `src/styles`.
-- **Build-time integrations** cover Nordletter image caching, cover-map generation, and Pagefind search indexing. Follow the existing npm scripts (`npm run dev`, `npm run build`, etc.) to trigger the full pipeline.
+- **Build-time integrations** cover Nordletter image caching, R2 image dimension caching, cover-map generation, and Pagefind search indexing. Follow the existing npm scripts (`npm run dev`, `npm run build`, etc.) to trigger the full pipeline.
 
 ## Project Structure & Module Organization
 The Astro site lives in `src`, with route files under `src/pages`, shared layout primitives in `src/layouts`, and UI elements in `src/components`. Structured content is kept in one folder per category under `src/content/` (`src/content/blog`, `src/content/bookshelf`, etc.) with timestamp filenames (`YYYYMMDDHHMM Title.md`); new notes stage in `src/content/inbox/` and are sorted by the publishing pipeline. Data helpers sit in `src/data` and `src/utils`. Static assets belong in `public`, images imported at build time live under `src/images`, and the production build emits to `dist`. Cloudflare Pages Functions live in `functions/`.
@@ -21,6 +21,7 @@ The Astro site lives in `src`, with route files under `src/pages`, shared layout
   - [`docs/pages/shelf.md`](docs/pages/shelf.md), [`docs/pages/books.md`](docs/pages/books.md) — Shelf frontmatter reference and the published-works page.
   - [`docs/pages/about.md`](docs/pages/about.md) — The about page and its life timeline; how to edit `src/data/life.md` and how month/year dates map to week cells.
   - [`docs/operations/deployment.md`](docs/operations/deployment.md), [`docs/operations/syndication.md`](docs/operations/syndication.md) — Build and POSSE procedures.
+  - [`docs/operations/image-optimization.md`](docs/operations/image-optimization.md) — How R2 content images are optimized and made responsive at build time.
   - [`docs/operations/publication.md`](docs/operations/publication.md) — `publication.config.json`, the central explicit-allow list for what reaches RSS feeds and syndication.
   - [`docs/tools/`](docs/README.md#tools--automation) — Cover downloaders and shelf metadata enrichment.
   - [`docs/contributing/claude-guide.md`](docs/contributing/claude-guide.md) — Quick reference for automation assistants.
@@ -44,6 +45,7 @@ Commits in this repository use short, action-focused subjects (e.g., `Minor ui c
 - **Dynamic discovery only**: Never hardcode the category list. Use the helpers in `src/utils/content.ts` (`getContentCategories`, `getAllPosts`, `getPostsByCategory`, `transformPost`) to aggregate content. (`getYearDirectories` survives only as a backwards-compatible alias.)
 - **Pass collections through**: Components like `TagList`, feed grids, and layout slots expect the upstream route to fetch posts once (usually via `getAllPosts()`) and pass filtered subsets down. Avoid re-fetching inside components.
 - **Frontmatter consistency**: Match the shared schema defined in `src/content.config.ts` (`created` is the publish date; shelf entries use the unified `status`/`rating`/`started`/`finished`/`cover` fields). Categories drive layout decisions, so keep metadata accurate.
+- **Content images**: R2 images are optimized and responsive at build time. Render frontmatter images with `RemoteImage.astro` (never a bare `<img>`), and see [`docs/operations/image-optimization.md`](docs/operations/image-optimization.md).
 - **Generated media**: Cover images are downloaded and committed by GitHub Actions workflows (`download-covers.yml`); `npm run generate-covers` regenerates the TypeScript cover maps. Store other large assets in `public` or reference hosted media (the R2 bucket behind `storage.sajalchoudhary.net`) via frontmatter fields.
 
 ## Layout & Interaction Guidelines

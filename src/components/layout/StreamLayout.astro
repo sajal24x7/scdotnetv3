@@ -1,6 +1,6 @@
 ---
 import PostItem from '../PostItem.astro';
-import { parseMarkdown } from '../../utils/markdown';
+import { parseMarkdownWithImages } from '../../utils/images';
 
 interface Props {
     posts: any[];
@@ -9,10 +9,10 @@ interface Props {
 const { posts } = Astro.props as Props;
 const hasSidebarContent = Astro.slots.has('sidebar');
 
-const renderedPosts = posts.map(post => ({
+const renderedPosts = await Promise.all(posts.map(async (post) => ({
     ...post,
-    renderedContent: post.body ? parseMarkdown(post.body) : null
-}));
+    renderedContent: post.body ? await parseMarkdownWithImages(post.body) : null
+})));
 
 const isMicroContent = (category: string) => category === 'micro';
 ---

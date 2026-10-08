@@ -799,7 +799,12 @@ import * as session from '/auth/session.js';
       // Recompress even when dimensions are already within maxDim if the
       // file is large, or in photo mode where everything becomes JPEG so
       // the images stay eligible for Instagram syndication (JPEG-only API).
-      const needsRecompress = forceJpeg || file.size >= RECOMPRESS_OVER;
+      // Camera formats (JPEG, WebP, AVIF, HEIC) can carry EXIF data such as
+      // GPS location; redrawing through the canvas drops it, so those are
+      // always re-encoded. PNGs (screenshots) rarely carry it and would lose
+      // sharpness as JPEG.
+      const stripMetadata = file.type !== 'image/png';
+      const needsRecompress = forceJpeg || stripMetadata || file.size >= RECOMPRESS_OVER;
       if (!needsResize && !needsRecompress) {
         bitmap.close();
         return file;
@@ -812,8 +817,8 @@ import * as session from '/auth/session.js';
       const blob = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.85));
       if (!blob) return file;
       // keep the original if recompression didn't actually help — unless we
-      // needed the resize or the JPEG conversion itself
-      return (forceJpeg && file.type !== 'image/jpeg') || needsResize || blob.size < file.size ? blob : file;
+      // needed the resize, the JPEG conversion or the metadata strip itself
+      return forceJpeg || stripMetadata || needsResize || blob.size < file.size ? blob : file;
     } catch {
       return file; // undecodable in this browser — let the server take the original
     }
