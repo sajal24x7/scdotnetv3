@@ -37,7 +37,7 @@ Why it exists:
 
 The script scans `src/content/**/*.md` for R2 URLs in Markdown image syntax and in the `image` / `images` frontmatter fields. It only probes URLs missing from the manifest, downloads just the first few kilobytes of each, and drops entries for images no longer referenced. Network failures are logged (first 10 only) and skipped.
 
-**Commit the manifest.** Cloudflare builds can fill in missing entries, but they don't commit the result, so every build would re-probe them. After adding many images, run `npm run cache-image-dimensions` locally and commit `src/data/image-dimensions.json`.
+**The manifest is committed automatically.** Cloudflare builds can fill in missing entries, but they don't commit the result. The `refresh-image-dimensions.yml` workflow runs the script after content changes on `main`, after each content publish, and nightly, then commits `src/data/image-dimensions.json` with `[CI Skip]` if it changed. Run it by hand from the Actions tab after a large import.
 
 ## How each kind of image is rendered
 

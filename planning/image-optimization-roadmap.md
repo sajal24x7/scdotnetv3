@@ -4,8 +4,7 @@ Plan for making every content image on the site optimized and responsive.
 Current behavior is documented in
 [`docs/operations/image-optimization.md`](../docs/operations/image-optimization.md).
 
-> **Status (2026-10):** Phase 1 is done on the `claude/responsive-images`
-> branch. Phases 2 to 5 are open.
+> **Status (2026-10):** Phases 1 and 5 are done. Phases 2 to 4 are open.
 
 ---
 
@@ -133,17 +132,13 @@ Bring it in line with `/write`:
   place (same keys, so no content changes).
 - Set the long `Cache-Control` header on older objects that lack it.
 
-## Phase 5: Keep the manifest current
+## Phase 5: Keep the manifest current (done)
 
-The build fills in missing manifest entries but never commits them, so new
-images get probed on every build until someone commits the manifest.
-
-- Add a step to an existing GitHub Actions workflow that already commits to
-  `main` (for example the interactions refresh), or a small scheduled one,
-  that runs `npm run cache-image-dimensions` and commits
-  `src/data/image-dimensions.json` with `[CI Skip]`.
-- Alternatively, have the publishing pipeline record dimensions when it
-  uploads an image.
+`.github/workflows/refresh-image-dimensions.yml` runs
+`npm run cache-image-dimensions` on content pushes to `main`, after each
+`Publish content` run, nightly, and on demand. It commits
+`src/data/image-dimensions.json` with `[CI Skip]` when it changes. Its first
+run also does the manifest fill listed under Phase 1.
 
 ## Small follow-ups
 
