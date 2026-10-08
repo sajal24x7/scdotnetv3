@@ -13,7 +13,7 @@ import { formatRelativeDate, SITE_TIMEZONE } from './dateFormat';
 import { getPhotoImages } from './photos';
 import { SHELF_CATEGORIES, SHELF_STATUS_FEED_VERBS, isQueuedShelfEntry, type ShelfCategory, type ShelfStatus } from './shelfStatus';
 import { POST_GROUPS, POST_GROUP_CATEGORIES, getPostGroup, type PostGroup } from './postGroups';
-import nordletterManifest from '../data/nordletter-image-manifest.json';
+import { getResponsiveImage } from './images';
 
 export const FEED_PAGE_SIZE = 10;
 
@@ -40,27 +40,6 @@ const CATEGORY_LABELS: Record<string, string> = {
   now: 'Now',
   nordletter: 'Nordletter'
 };
-
-// Nordletter cover images are cached locally by scripts/cache-nordletter-images.js
-const nordletterImageModules = import.meta.glob(
-  '../images/nordletter/*.{jpg,jpeg,png,webp,avif}',
-  { eager: true }
-) as Record<string, { default: ImageMetadata }>;
-
-const nordletterImagesByFileName = Object.fromEntries(
-  Object.entries(nordletterImageModules).map(([key, module]) => [
-    key.split('/').pop() ?? key,
-    module.default
-  ])
-);
-
-const nordletterManifestMap = nordletterManifest as Record<string, string>;
-
-function getNordletterImageSrc(post: Post): string | undefined {
-  const fileName = nordletterManifestMap[post.id];
-  const local = fileName ? nordletterImagesByFileName[fileName] : undefined;
-  return local?.src ?? post.data.image ?? undefined;
-}
 
 export interface FeedEntry {
   html: string;
@@ -371,14 +350,27 @@ function nordletterContent(post: Post): string {
   return body;
 }
 
-function renderNordletter(post: Post): string {
+// The card image spans the feed column: 10 of 12 grid columns from 48rem,
+// capped by the 71.25rem page shell
+const NORDLETTER_IMAGE_SIZES = '(max-width: 48rem) 100vw, (max-width: 71.25rem) 83vw, 58rem';
+
+async function nordletterImageHtml(post: Post): Promise<string> {
+  const src = post.data.image;
+  if (!src) {
+    return '';
+  }
+  const image = await getResponsiveImage(src, { sizes: NORDLETTER_IMAGE_SIZES, maxWidth: 1200 });
+  if (!image) {
+    return `<img class="feed-entry__nl-img" src="${escapeHtml(src)}" alt="" loading="lazy" decoding="async">`;
+  }
+  return `<img class="feed-entry__nl-img" src="${escapeHtml(image.src)}" srcset="${escapeHtml(image.srcset)}" sizes="${escapeHtml(image.sizes)}" width="${image.width}" height="${image.height}" alt="" loading="lazy" decoding="async">`;
+}
+
+async function renderNordletter(post: Post): Promise<string> {
   const title = post.data.title ? cleanNordletterTitle(post.data.title) : '';
   const edition = post.data.edition ?? extractEditionNumber(post.data.title || '', post.id);
   const badge = edition ? `<span class="feed-entry__nl-badge">NL ${escapeHtml(String(edition))}</span>` : '';
-  const imageSrc = getNordletterImageSrc(post);
-  const imageHtml = imageSrc
-    ? `<img class="feed-entry__nl-img" src="${escapeHtml(imageSrc)}" alt="" loading="lazy">`
-    : '';
+  const imageHtml = await nordletterImageHtml(post);
   const content = stripMarkdown(nordletterContent(post));
   const excerpt = content
     ? (content.length <= 220 ? content : `${content.slice(0, 220).replace(/\s+\S*$/, '')}…`)

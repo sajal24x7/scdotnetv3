@@ -8,10 +8,10 @@
     "npm": ">=10.0.0"
   },
   "scripts": {
-    "dev": "npm run cache-nordletter-images && npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro dev",
-    "start": "npm run cache-nordletter-images && npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro dev",
-    "build": "npm run cache-nordletter-images && npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro build && pagefind --site dist",
-    "build:cloudflare": "npm run cache-nordletter-images && npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro build && pagefind --site dist",
+    "dev": "npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro dev",
+    "start": "npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro dev",
+    "build": "npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro build && pagefind --site dist",
+    "build:cloudflare": "npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "extract-learn": "node scripts/extract-learn-blocks.mjs",
@@ -21,7 +21,6 @@
     "test:authored": "node scripts/test-authored-prompts.mjs",
     "test:session": "node scripts/test-session.mjs",
     "generate-covers": "node scripts/generate-book-covers.js",
-    "cache-nordletter-images": "node scripts/cache-nordletter-images.js",
     "cache-image-dimensions": "node scripts/cache-image-dimensions.js",
     "download-covers": "node scripts/download-book-covers.js",
     "download-covers:force": "node scripts/download-book-covers.js --force",

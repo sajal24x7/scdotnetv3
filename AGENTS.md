@@ -4,7 +4,7 @@
 - **Astro 7.x** drives page generation and content collections. Routes live under `src/pages`, islands under `src/components`, and layout primitives in `src/layouts`.
 - **TypeScript-first utilities** power content aggregation. Prefer named exports and keep helpers in `src/utils`; the content schema lives in `src/content.config.ts`.
 - **Tailwind CSS 4** provides styling; keep bespoke styles minimal and colocate reusable patterns in `src/styles`.
-- **Build-time integrations** cover Nordletter image caching, R2 image dimension caching, cover-map generation, and Pagefind search indexing. Follow the existing npm scripts (`npm run dev`, `npm run build`, etc.) to trigger the full pipeline.
+- **Build-time integrations** cover R2 image dimension caching, cover-map generation, and Pagefind search indexing. Follow the existing npm scripts (`npm run dev`, `npm run build`, etc.) to trigger the full pipeline.
 
 ## Project Structure & Module Organization
 The Astro site lives in `src`, with route files under `src/pages`, shared layout primitives in `src/layouts`, and UI elements in `src/components`. Structured content is kept in one folder per category under `src/content/` (`src/content/blog`, `src/content/bookshelf`, etc.) with timestamp filenames (`YYYYMMDDHHMM Title.md`); new notes stage in `src/content/inbox/` and are sorted by the publishing pipeline. Data helpers sit in `src/data` and `src/utils`. Static assets belong in `public`, images imported at build time live under `src/images`, and the production build emits to `dist`. Cloudflare Pages Functions live in `functions/`.
@@ -28,7 +28,7 @@ The Astro site lives in `src`, with route files under `src/pages`, shared layout
 - Keep planning artefacts in `planning/`; they remain separate from the documentation set. `scripts/README.md` catalogs utility scripts, including legacy one-time migrations.
 
 ## Build, Test, and Development Commands
-Run `npm install` with Node 22.12+ (npm 10+) before contributing. Use `npm run dev` for the local server; it caches Nordletter images, pre-builds covers, and watches Astro files. `npm run build` runs the same pre-steps, builds the static site, and generates the Pagefind search index (`pagefind --site dist`). `npm run preview` serves the last build. Syndication is **not** part of the build — it runs via the `syndicate-content.yml` GitHub Actions workflow; use `npm run syndicate:dry-run` to verify outbound syndication locally without publishing.
+Run `npm install` with Node 22.12+ (npm 10+) before contributing. Use `npm run dev` for the local server; it pre-builds covers, records R2 image sizes, and watches Astro files. `npm run build` runs the same pre-steps, builds the static site, and generates the Pagefind search index (`pagefind --site dist`). `npm run preview` serves the last build. Syndication is **not** part of the build — it runs via the `syndicate-content.yml` GitHub Actions workflow; use `npm run syndicate:dry-run` to verify outbound syndication locally without publishing.
 
 ## Coding Style & Naming Conventions
 Follow the existing 4-space indentation in TypeScript, Astro, and scripts. Name Astro components with `PascalCase.astro` and colocate supporting modules in subfolders (for example `src/components/navigation`). Keep utility modules in TypeScript (`.ts`) and prefer named exports. Styling relies on Tailwind; favor utility classes over bespoke CSS unless adding a shared pattern to `src/styles`. Run `npm run astro check` (or `npx astro check`) before opening a pull request.
