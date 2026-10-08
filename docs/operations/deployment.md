@@ -11,18 +11,17 @@ This site deploys to Cloudflare Pages and uses npm scripts to orchestrate pre-bu
 
 | Command | Description |
 | --- | --- |
-| `npm run dev` | Caches Nordletter images, generates bookshelf covers, records R2 image sizes, then starts the Astro dev server with live reload. |
+| `npm run dev` | Generates bookshelf covers, records R2 image sizes, then starts the Astro dev server with live reload. |
 | `npm run build` | Runs the same pre-steps, then `astro build`, then `pagefind --site dist` to generate the search index. |
 | `npm run build:cloudflare` | Identical to `npm run build`; this is the command configured in Cloudflare Pages. |
 | `npm run preview` | Serves the contents of the `dist/` directory for validation. |
 
 ## Build Sequence
 
-1. **Nordletter image cache** – `scripts/cache-nordletter-images.js` downloads any missing newsletter thumbnails and refreshes the manifest (see [Nordletter Image Cache](nordletter-image-cache.md)).
-2. **Cover generation** – `scripts/generate-book-covers.js` regenerates the TypeScript cover map for bookshelf images. Idempotent and safe to run repeatedly.
-3. **Image dimensions** – `scripts/cache-image-dimensions.js` measures any R2 content images missing from `src/data/image-dimensions.json` (see [Image Optimization](image-optimization.md)).
-4. **Astro build** – Generates static HTML, JSON endpoints, and asset bundles under `dist/`. R2 images are optimized and cached in `node_modules/.astro/`, which Cloudflare Pages keeps between builds. Cloudflare Pages Functions in `functions/` deploy alongside the static output.
-5. **Pagefind indexing** – `pagefind --site dist` crawls the built HTML and writes the static search index to `dist/pagefind/`.
+1. **Cover generation** – `scripts/generate-book-covers.js` regenerates the TypeScript cover map for bookshelf images. Idempotent and safe to run repeatedly.
+2. **Image dimensions** – `scripts/cache-image-dimensions.js` measures any R2 content images missing from `src/data/image-dimensions.json` (see [Image Optimization](image-optimization.md)).
+3. **Astro build** – Generates static HTML, JSON endpoints, and asset bundles under `dist/`. R2 images are optimized and cached in `node_modules/.astro/`, which Cloudflare Pages keeps between builds. Cloudflare Pages Functions in `functions/` deploy alongside the static output.
+4. **Pagefind indexing** – `pagefind --site dist` crawls the built HTML and writes the static search index to `dist/pagefind/`.
 
 Syndication is **not** part of the build. It runs as a separate, scheduled GitHub Actions workflow (`.github/workflows/syndicate-content.yml`, every 3 hours) — see [Syndication Workflow](syndication.md).
 

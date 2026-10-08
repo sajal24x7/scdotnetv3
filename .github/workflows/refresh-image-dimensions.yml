@@ -1,0 +1,70 @@
+name: Refresh image dimensions
+
+# Keeps src/data/image-dimensions.json in sync with the R2 images content
+# references. Cloudflare builds can measure missing images but can't commit
+# the result, so without this every build re-probes them.
+#
+# Content published by content-publish.yml is pushed with GITHUB_TOKEN, which
+# doesn't fire push events, so that path is covered by workflow_run instead.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/**'
+  workflow_run:
+    workflows: ['Publish content']
+    types: [completed]
+  schedule:
+    - cron: '20 3 * * *' # Nightly safety net for anything the triggers above miss
+
+concurrency:
+  group: refresh-image-dimensions
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    # The first fill measures about 1,400 images; later runs only new ones
+    timeout-minutes: 20
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      # Only probes images missing from the manifest; known entries are kept
+      - name: Measure new R2 images
+        run: npm run cache-image-dimensions
+
+      - name: Commit manifest if it changed
+        run: |
+          file=src/data/image-dimensions.json
+          if git diff --quiet -- $file; then
+            echo "Manifest unchanged, nothing to commit"
+            exit 0
+          fi
+
+          git add $file
+          git commit -m "chore: refresh image dimensions [CI Skip]"
+          git pull --rebase --autostash origin main
+          git push origin main

@@ -7,8 +7,7 @@ Every image on the site's pages is optimized at build time and served with a res
 | Source | Where | How it is optimized |
 | --- | --- | --- |
 | Shelf covers, profile photo | `src/images/` (committed) | `<Image>` from `astro:assets` with an explicit `layout`. |
-| Nordletter thumbnails | Downloaded into `src/images/nordletter/` before each build | `<Image>`; see [Nordletter Image Caching](nordletter-image-cache.md). |
-| Content images on R2 (`storage.sajalchoudhary.net`) | Markdown bodies and frontmatter `image` / `images` | Astro's remote image pipeline, sized from the dimension manifest (below). |
+| Content images on R2 (`storage.sajalchoudhary.net`) | Markdown bodies and frontmatter `image` / `images` (including Nordletter thumbnails) | Astro's remote image pipeline, sized from the dimension manifest (below). |
 | Third-party image URLs | A few older posts | Not optimized. Served as-is with lazy loading. |
 
 ## Configuration
@@ -37,14 +36,15 @@ Why it exists:
 
 The script scans `src/content/**/*.md` for R2 URLs in Markdown image syntax and in the `image` / `images` frontmatter fields. It only probes URLs missing from the manifest, downloads just the first few kilobytes of each, and drops entries for images no longer referenced. Network failures are logged (first 10 only) and skipped.
 
-**Commit the manifest.** Cloudflare builds can fill in missing entries, but they don't commit the result, so every build would re-probe them. After adding many images, run `npm run cache-image-dimensions` locally and commit `src/data/image-dimensions.json`.
+**The manifest is committed automatically.** Cloudflare builds can fill in missing entries, but they don't commit the result. The `refresh-image-dimensions.yml` workflow runs the script after content changes on `main`, after each content publish, and nightly, then commits `src/data/image-dimensions.json` with `[CI Skip]` if it changed. Run it by hand from the Actions tab after a large import.
 
 ## How each kind of image is rendered
 
 | Where | Code | Notes |
 | --- | --- | --- |
 | Markdown bodies on post pages | `src/utils/remarkResponsiveImages.ts` | Adds width, height, srcset widths and the prose `sizes` hint to R2 images in the manifest, then Astro optimizes them. R2 images not in the manifest become plain lazy `<img>` HTML. |
-| Frontmatter images | `src/components/RemoteImage.astro` | Used by `PhotoGrid`, `PhotoCarousel`, `PostItem`, `Card`, `PostHero`, `PhotoPostLayout` and the `NordletterGrid` fallback. Falls back to the original URL when an image cannot be optimized. |
+| Frontmatter images | `src/components/RemoteImage.astro` | Used by `PhotoGrid`, `PhotoCarousel`, `PostItem`, `Card`, `PostHero`, `PhotoPostLayout` and `NordletterGrid`. Falls back to the original URL when an image cannot be optimized. |
+| Homepage feed Nordletter cards | `getResponsiveImage()` in `src/utils/images.ts`, called from `src/utils/feed.ts` | The helper `RemoteImage` uses, for the HTML strings the feed builds. |
 | Stream, garden, now and recent-item previews | `parseMarkdownWithImages()` in `src/utils/images.ts` | These render Markdown with `marked`, so R2 `<img>` tags in the HTML are rewritten after parsing. |
 
 Shared settings live in `src/utils/imageDimensions.ts`:

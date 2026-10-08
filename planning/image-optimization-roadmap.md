@@ -4,8 +4,7 @@ Plan for making every content image on the site optimized and responsive.
 Current behavior is documented in
 [`docs/operations/image-optimization.md`](../docs/operations/image-optimization.md).
 
-> **Status (2026-10):** Phase 1 is done on the `claude/responsive-images`
-> branch. Phases 2 to 5 are open.
+> **Status (2026-10):** Phases 1, 2 and 5 are done. Phases 3 and 4 are open.
 
 ---
 
@@ -51,23 +50,18 @@ size, and a second build reused the cache.
      `books/index`) still look right with the new `constrained` default.
    - RSS feeds and `og:image` still point at R2.
 
-## Phase 2: Retire the Nordletter image cache
+## Phase 2: Retire the Nordletter image cache (done)
 
-Nordletter thumbnails are R2 images too, so the separate download step is no
-longer needed.
+Nordletter thumbnails are R2 images, so they now go through the same pipeline
+as other content images:
 
-- Render Nordletter thumbnails with `RemoteImage` (the fallback branch in
-  `NordletterGrid.astro` already does) and remove the `<Image>` branch.
-- Delete `scripts/cache-nordletter-images.js`,
-  `src/data/nordletter-image-manifest.json` and `src/images/nordletter/`.
-- Remove the `import.meta.glob` lookup in `src/utils/feed.ts` (around line 44);
-  feeds should use the R2 URL directly.
-- Remove `cache-nordletter-images` from the `dev`, `start`, `build` and
-  `build:cloudflare` scripts in `package.json`.
-- Update `docs/operations/nordletter-image-cache.md` (delete or mark
-  historical), `docs/operations/deployment.md`, `docs/README.md`,
-  `docs/architecture/content-lifecycle.md`, `docs/architecture/overview.md`,
-  `scripts/README.md` and `AGENTS.md`.
+- `NordletterGrid.astro` renders thumbnails with `RemoteImage` only.
+- The homepage feed card (`renderNordletter` in `src/utils/feed.ts`) uses
+  `getResponsiveImage()` and falls back to the R2 URL.
+- Deleted `scripts/cache-nordletter-images.js`,
+  `src/data/nordletter-image-manifest.json`, `src/images/nordletter/` and
+  `docs/operations/nordletter-image-cache.md`, and removed the step from the
+  npm scripts and docs.
 
 ## Phase 3: Copy third-party images into R2
 
@@ -133,17 +127,13 @@ Bring it in line with `/write`:
   place (same keys, so no content changes).
 - Set the long `Cache-Control` header on older objects that lack it.
 
-## Phase 5: Keep the manifest current
+## Phase 5: Keep the manifest current (done)
 
-The build fills in missing manifest entries but never commits them, so new
-images get probed on every build until someone commits the manifest.
-
-- Add a step to an existing GitHub Actions workflow that already commits to
-  `main` (for example the interactions refresh), or a small scheduled one,
-  that runs `npm run cache-image-dimensions` and commits
-  `src/data/image-dimensions.json` with `[CI Skip]`.
-- Alternatively, have the publishing pipeline record dimensions when it
-  uploads an image.
+`.github/workflows/refresh-image-dimensions.yml` runs
+`npm run cache-image-dimensions` on content pushes to `main`, after each
+`Publish content` run, nightly, and on demand. It commits
+`src/data/image-dimensions.json` with `[CI Skip]` when it changes. Its first
+run also does the manifest fill listed under Phase 1.
 
 ## Small follow-ups
 

@@ -334,7 +334,6 @@ Each book's four source queries run in parallel with a 500ms pause between books
 - `download-film-covers.js`, `download-tv-covers.js`, `download-game-covers.js` — Same pattern for the other three shelves, run weekly by the same `download-covers.yml` workflow. Film/TV covers use TMDB (`TMDB_API_KEY`), game covers use RAWG and IGDB/Twitch (`RAWG_API_KEY`, `TWITCH_CLIENT_ID`, `TWITCH_CLIENT_SECRET`) as additional sources.
 - `generate-film-covers.js`, `generate-tv-covers.js`, `generate-game-covers.js` — TypeScript import generators for the other shelves
 - `convert-covers-to-webp.js` — Converts JPG/PNG covers to WebP and updates frontmatter references; see [Converting Manually-Added Covers](#converting-manually-added-covers)
-- `cache-nordletter-images.js` — Caches newsletter images (unrelated, but runs in the same `npm run dev`/`build` pipeline)
 
 ## Examples
 
