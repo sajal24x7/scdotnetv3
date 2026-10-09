@@ -940,6 +940,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/etiquette-2026-10-08",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-08"
+		},
+		"inscrutable": {
+			"word": "inscrutable",
+			"pos": "other",
+			"gloss": " adjective Inscrutable means \"not readily investigated, interpreted, or understood.\" It often describes things that are mysterious or difficult to comprehend.",
+			"pronunciation": "in-SKROO-tuh-bul",
+			"example": "His professor wore an inscrutable expression throughout the oral exam.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/inscrutable-2026-10-09",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-09"
 		}
 	}
 }
