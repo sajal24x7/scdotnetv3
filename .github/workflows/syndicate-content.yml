@@ -127,26 +127,6 @@ jobs:
           git pull --rebase origin main
           git push origin main
 
-      - name: Keep the content branch in sync with main
-        # The syndicationUrls commit is pushed with GITHUB_TOKEN, so the
-        # sync-content-branch workflow won't fire for it — sync inline
-        # instead, or the content branch ends up one commit behind main.
-        # Skipped when nothing was committed: main didn't move, so there is
-        # nothing new to sync.
-        if: steps.commit.outputs.committed == 'true'
-        run: |
-          if ! git fetch origin content; then
-            echo "No content branch — nothing to sync"
-            exit 0
-          fi
-          git checkout -B content origin/content
-          if git merge --no-edit origin/main; then
-            git push origin content
-          else
-            git merge --abort
-            echo "::warning::content branch has conflicting changes; the next content-publish run will reconcile it"
-          fi
-
       - name: Create issue on failure
         if: failure()
         uses: actions/github-script@v7

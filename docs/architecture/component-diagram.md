@@ -15,21 +15,18 @@ flowchart LR
     Obsidian["Obsidian<br/>(GitSync, mobile/desktop)"]
     Write["/write composer"]
 
-    Obsidian -- "git push" --> ContentBranch(("content branch"))
-    ContentBranch --> Publish["content-publish.yml<br/>normalize → sort inbox →<br/>reconcile shelf queue →<br/>validate → merge"]
-    Publish -- "merge" --> MainBranch(("main branch"))
-    Publish -- "fast-forward" --> ContentBranch
-    MainBranch --> SyncBranch["sync-content-branch.yml"]
-    SyncBranch -- "merge" --> ContentBranch
+    Obsidian -- "git push<br/>(inbox only, no build)" --> Inbox(("main:<br/>src/content/inbox"))
+    Inbox --> Publish["content-publish.yml<br/>normalize → sort inbox →<br/>reconcile shelf queue → commit"]
+    Publish -- "commit" --> MainBranch(("main branch"))
 
     Write -- "commit via Pages Function" --> MainBranch
 
-    PR["Pull request"] -.->|"gated by"| CI["ci.yml (astro check)"]
-    CI -.-> MainBranch
+    PR["Pull request"] -.->|"Cloudflare preview build"| MainBranch
 
     MainBranch --> Trigger(["Cloudflare build trigger"])
     Trigger --> BuildStep["npm run build:cloudflare<br/>(see diagram 2)"]
     BuildStep --> Prod[("Production:<br/>dist/ + Pages Functions")]
+    BuildStep -. "on failure" .-> Alert["Cloudflare email;<br/>last good deploy stays live"]
 
     Prod --> Syndicate["syndicate-content.yml<br/>(scheduled, every 3h)"]
     Syndicate -- "writes syndicationUrls<br/>[CI Skip]" --> MainBranch
@@ -42,12 +39,15 @@ flowchart LR
 
 Notes:
 
-- `content-publish.yml` is the only path from `content` into `main`; a
-  missing/unknown `category` fails the run and opens an issue instead of
-  reaching production. See [Publishing Pipeline](../content/publishing-pipeline.md).
-- The `/write` composer bypasses `content` entirely — it commits
-  schema-valid files straight to `main` through a Pages Function for
-  instant publishing.
+- Obsidian notes land in `src/content/inbox/` on `main`. Cloudflare's build
+  watch paths skip inbox-only pushes; `content-publish.yml` sorts the notes
+  and its commit starts the one build. A missing/unknown `category` fails
+  the run, leaves the note in the inbox and opens an issue. See
+  [Publishing Pipeline](../content/publishing-pipeline.md).
+- The `/write` composer commits schema-valid files straight to `main`
+  through a Pages Function for instant publishing.
+- `npm run build` runs the unit checks first. A failed build never replaces
+  the live site, and Cloudflare emails the owner.
 - Syndication is decoupled from the build: it runs on a 3-hour schedule,
   not per push, and its bookkeeping commit is tagged `[CI Skip]` so it
   never triggers a second Cloudflare build.

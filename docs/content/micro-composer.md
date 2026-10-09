@@ -17,13 +17,11 @@ From there the existing automation takes over:
 2. `syndicate-content.yml` runs on a schedule (every 3 hours); its next
    sweep cross-posts the new note and writes `syndicationUrls` back with a
    `[CI Skip]` commit, so the bookkeeping doesn't trigger another build.
-3. The push also triggers `sync-content-branch.yml`, which merges `main`
-   into the `content` branch so it never trails a `/write` post.
 
-Nothing touches the content-branch publish pipeline (`content-publish.yml`,
-see `docs/content/publishing-pipeline.md`) — micro posts land in
+The inbox publish workflow (`content-publish.yml`, see
+`docs/content/publishing-pipeline.md`) is not involved: micro posts land in
 `src/content/micro/` already in Astro format, so they skip the
-normalize/sort step and go straight to `main` for instant publishing.
+normalize/sort step.
 
 ## One-time setup
 

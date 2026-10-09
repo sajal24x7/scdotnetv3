@@ -4,7 +4,7 @@ The iOS Shortcut that publishes an Obsidian note. It replaces the old
 metadata-mapping shortcut: all frontmatter transformation now happens in CI
 (`content-publish.yml` runs `scripts/obsidian_to_astro.py`), so the shortcut's
 only job is to **copy the note into the GitSync repo's inbox folder** and let
-GitSync push it to the `content` branch. The workflows handle the rest.
+GitSync push it to `main`. The workflows handle the rest.
 
 ## What the note must contain (before running the shortcut)
 
@@ -86,8 +86,8 @@ Open the **Shortcuts** app → **+** → name it **Publish Note**.
 4. **Trigger the push.** Action: **Open App** → GitSync, and run its
    sync/commit for the repo (if GitSync exposes a Shortcuts action or URL
    scheme for "sync now", use that instead so the whole flow is one tap).
-   GitSync must be pointed at branch **`content`** — see
-   `publishing-pipeline.md`.
+   GitSync must be pointed at branch **`main`** (see
+   `publishing-pipeline.md`).
 5. Optional: **Show Notification** → "Note queued — publish pipeline will
    take it from here."
 
@@ -96,26 +96,27 @@ sync*. No metadata mapping, no frontmatter editing, no date formatting.
 
 ## What happens after the push (nothing for you to do)
 
-1. `content-publish.yml` runs once: normalizes the frontmatter, sorts the
-   note into its category folder, validates, merges to `main`.
-2. Cloudflare builds the site **once**; the note is live.
-3. After the deploy succeeds, the syndication workflow cross-posts it and
-   records `syndicationUrls`.
-4. If anything is wrong with the note, a GitHub issue (labels:
-   `automation`, `inbox`) is opened and nothing is published — fix the
-   frontmatter in Obsidian, run the shortcut again.
+1. Cloudflare ignores the GitSync push (it only touches the inbox).
+2. `content-publish.yml` runs once: normalizes the frontmatter, sorts the
+   note into its category folder, commits to `main`.
+3. Cloudflare builds the site **once**; the note is live. If the build
+   fails, Cloudflare emails you and the previous deploy stays live.
+4. The next scheduled syndication run cross-posts it and records
+   `syndicationUrls`.
+5. If anything is wrong with the note, a GitHub issue (labels:
+   `automation`, `inbox`) is opened and the note stays in the inbox. Fix
+   the frontmatter in Obsidian and run the shortcut again.
 
 ## Testing the shortcut
 
 1. Create a throwaway note `202601010101 Shortcut Test.md` with
    `category: micro` in the frontmatter.
 2. Run the shortcut → confirm the file appears in the GitSync repo under
-   `src/content/inbox/` and GitSync pushes to `content`.
+   `src/content/inbox/` and GitSync pushes to `main`.
 3. Watch the Actions tab: one **Publish content** run, one commit on `main`,
    one Cloudflare build; the note appears on the site.
 4. Delete the post by removing the file from `src/content/micro/` on
-   `content` (or any clone) and pushing — the pipeline publishes deletions
-   the same way.
+   `main` (from any clone) and pushing. That push builds directly.
 
 ## Not for micro posts
 

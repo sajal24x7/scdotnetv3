@@ -12,12 +12,14 @@ This site deploys to Cloudflare Pages and uses npm scripts to orchestrate pre-bu
 | Command | Description |
 | --- | --- |
 | `npm run dev` | Generates bookshelf covers, records R2 image sizes, then starts the Astro dev server with live reload. |
-| `npm run build` | Runs the same pre-steps, then `astro build`, then `pagefind --site dist` to generate the search index. |
+| `npm run build` | Runs the unit checks (`npm run test:all`), the same pre-steps, then `astro build`, then `pagefind --site dist` to generate the search index. |
+| `npm run test:all` | Runs `validate-learn`, `test:wotd`, `test:authored` and `test:session`. A failure stops the build. |
 | `npm run build:cloudflare` | Identical to `npm run build`; this is the command configured in Cloudflare Pages. |
 | `npm run preview` | Serves the contents of the `dist/` directory for validation. |
 
 ## Build Sequence
 
+0. **Unit checks** – `npm run test:all`. A failing check fails the build, so the broken change never replaces the live site.
 1. **Cover generation** – `scripts/generate-book-covers.js` regenerates the TypeScript cover map for bookshelf images. Idempotent and safe to run repeatedly.
 2. **Image dimensions** – `scripts/cache-image-dimensions.js` measures any R2 content images missing from `src/data/image-dimensions.json` (see [Image Optimization](image-optimization.md)).
 3. **Astro build** – Generates static HTML, JSON endpoints, and asset bundles under `dist/`. R2 images are optimized and cached in `node_modules/.astro/`, which Cloudflare Pages keeps between builds. Cloudflare Pages Functions in `functions/` deploy alongside the static output.
@@ -32,6 +34,10 @@ Syndication is **not** part of the build. It runs as a separate, scheduled GitHu
 - Environment variables: set in the Pages dashboard for secrets. The R2 `IMAGES` binding powers `/write` uploads (see [Micro Composer](../content/micro-composer.md)); a `PRACTICE_STATE` KV binding powers `/practice` cross-device sync (see [Learning Systems](../architecture/learning-systems.md)). None are hard-coded in the repo.
 
 If you add new build-time scripts, update both `package.json` and (if the Node version or command changes) `cloudflare-pages.json` so local and hosted builds remain consistent.
+
+## Failed Builds
+
+Cloudflare Pages keeps the previous deploy live when a build fails. Turn on **Notifications → Pages: Deployment failed** in the Cloudflare dashboard so a failed build emails you; there is no separate GitHub CI gate. Build watch paths exclude `src/content/inbox/*` (see [Publishing Pipeline](../content/publishing-pipeline.md)).
 
 ## Deployment Checklist
 
