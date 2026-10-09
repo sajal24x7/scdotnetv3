@@ -1,8 +1,14 @@
 name: Publish content
 
+# GitSync pushes Obsidian notes into src/content/inbox/ on main. Cloudflare
+# ignores inbox-only pushes (build watch paths exclude src/content/inbox/*),
+# so nothing builds until this run sorts the notes and commits them.
 on:
   push:
-    branches: [content]
+    branches: [main]
+    paths:
+      - 'src/content/inbox/**'
+  workflow_dispatch:
 
 concurrency:
   group: content-publish
@@ -11,7 +17,7 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     permissions:
       contents: write
       issues: write
@@ -20,22 +26,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # Full history so we can merge and push back
-          fetch-depth: 0
+          # Queued runs may trail the branch tip; always work on the latest main
+          ref: main
 
       - name: Configure git
         run: |
           git config --global user.name  'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Work on the branch tip, then sync main into content
-        # Queued publishes may trail the branch tip, and code changes land on
-        # main — validate new notes against the current site code, not a
-        # stale snapshot.
-        run: |
-          git fetch origin main content
-          git checkout -B content origin/content
-          git merge --no-edit origin/main
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -52,56 +49,30 @@ jobs:
         run: npm ci
 
       - name: Normalize frontmatter and sort inbox into category folders
-        # Fails (and blocks the merge to main) if any note has a missing or
-        # unknown category; the failure issue below flags it.
+        # Fails if any note has a missing or unknown category. The notes
+        # stay in the inbox and the issue below flags it.
         run: npm run sort-inbox
 
       - name: Reconcile shelf queue stubs
-        # A shelf note that just arrived from the inbox may be the "real"
-        # entry for something already sitting on the shelf as a `todo`
-        # queue stub (Obsidian-first promotion — see
-        # planning/shelf-queue-design.md §4). Delete the matching stub so
-        # it doesn't render twice; near-title-mismatches are only logged,
-        # never auto-deleted.
+        # Delete a `todo` queue stub when its real shelf entry just arrived
+        # (see planning/shelf-queue-design.md §4).
         run: npm run reconcile-shelf-queue
 
-      - name: Validate
-        # TODO: flip to a required step once brief 06 (TypeScript hygiene)
-        # brings `npx astro check` to zero errors.
-        continue-on-error: true
-        run: npx astro check
-
-      - name: Commit normalized content to content branch
-        run: |
-          git add src/content/
-          git diff --staged --quiet || git commit -m "chore: normalize and sort published notes"
-          git push origin content
-
-      - name: Merge to main
+      - name: Commit sorted notes to main
         # Pushes made with GITHUB_TOKEN do not trigger other workflows, but
-        # Cloudflare's GitHub App webhook still fires — exactly one production
-        # build per publish, no workflow cascade. Syndication is picked up
-        # by syndicate-content.yml's next scheduled sweep (every 3 hours),
-        # so no explicit dispatch is needed here.
+        # Cloudflare's GitHub App webhook still fires: one build per publish.
         run: |
-          if git diff --quiet origin/main content; then
-            echo "Content tree is identical to main; nothing to publish."
+          git add -A src/content/
+          if git diff --staged --quiet; then
+            echo "Nothing to publish."
             exit 0
           fi
-          git checkout -B main origin/main
-          git merge --no-ff content -m "publish: content batch $(date -u +%Y-%m-%dT%H:%M)"
-          # A /write micro post can land on main mid-run; merge it and retry
-          # rather than failing the publish
+          git commit -m "publish: content batch $(date -u +%Y-%m-%dT%H:%M)"
+          # A /write post or another sync can land mid-run; rebase and retry
           git push origin main || {
-            git fetch origin main
-            git merge --no-edit origin/main
+            git pull --rebase origin main
             git push origin main
           }
-          # Fast-forward content to the merge commit so it never trails main.
-          # If a new note landed on content mid-run this isn't a fast-forward;
-          # skip — the push that brought the note will publish and re-sync.
-          git push origin main:content ||
-            echo "content moved during this run; the next publish will sync it"
 
       - name: Open issue on failure
         if: failure()
@@ -113,10 +84,10 @@ jobs:
               repo: context.repo.repo,
               title: 'Content publish failed — notes not deployed',
               body: [
-                'The **Publish content** workflow failed, so the pushed notes were NOT merged to `main` or deployed.',
+                'The **Publish content** workflow failed, so the notes in `src/content/inbox/` were NOT published.',
                 '',
-                'Most common cause: a note in `src/content/inbox/` with a missing or unknown `category` frontmatter field.',
-                'Fix the note and push to `content` again — the workflow will re-run automatically.',
+                'Most common cause: a note with a missing or unknown `category` frontmatter field.',
+                'Fix the note in Obsidian and run the shortcut again. The workflow re-runs on the next inbox push.',
                 '',
                 `**Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`,
               ].join('\n'),

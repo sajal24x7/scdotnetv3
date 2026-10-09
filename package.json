@@ -10,8 +10,8 @@
   "scripts": {
     "dev": "npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro dev",
     "start": "npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro dev",
-    "build": "npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro build && pagefind --site dist",
-    "build:cloudflare": "npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro build && pagefind --site dist",
+    "build": "npm run test:all && npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro build && pagefind --site dist",
+    "build:cloudflare": "npm run test:all && npm run generate-covers && npm run cache-image-dimensions && npm run extract-learn && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "extract-learn": "node scripts/extract-learn-blocks.mjs",
@@ -20,6 +20,7 @@
     "test:wotd": "node scripts/test-wotd-parser.mjs",
     "test:authored": "node scripts/test-authored-prompts.mjs",
     "test:session": "node scripts/test-session.mjs",
+    "test:all": "npm run validate-learn && npm run test:wotd && npm run test:authored && npm run test:session",
     "generate-covers": "node scripts/generate-book-covers.js",
     "cache-image-dimensions": "node scripts/cache-image-dimensions.js",
     "download-covers": "node scripts/download-book-covers.js",
