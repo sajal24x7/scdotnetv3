@@ -1,10 +1,15 @@
 ---
-title: "Human AI Partnerships Are for Alignment"
-slug: "human-ai-partnerships-are-for-alignment"
-created: 2026-10-10T15:17:00+03:00
-updated: 2026-10-10T15:18:32+03:00
+title: Human AI Partnerships Are for Alignment
+slug: human-ai-partnerships-are-for-alignment
+created: 2026-10-10T12:17:00.000Z
+updated: 2026-10-10T12:18:32.000Z
 category: micro
-tags: ["ai"]
+tags:
+  - ai
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117417757745500684'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mxjyqdnfpx26'
+  - 'https://www.threads.com/@sajal24x7/post/DeUmwUOFLHY'
 ---
 [Human-AI partnerships are for alignment, not capability by ](https://seangoedecke.com/human-ai-partnerships-are-for-alignment-not-capability/)
 
