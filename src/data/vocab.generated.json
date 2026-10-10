@@ -950,6 +950,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/inscrutable-2026-10-09",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-09"
+		},
+		"luddite": {
+			"word": "Luddite",
+			"pos": "other",
+			"gloss": " noun Luddite refers to someone who is opposed to change, and especially to technological change.",
+			"pronunciation": "LUH-dyte",
+			"example": "My friends call me a Luddite for refusing to use chat bots.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/luddite-2026-10-10",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-10"
 		}
 	}
 }
