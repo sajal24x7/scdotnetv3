@@ -1,13 +1,23 @@
 ---
-title: "Parenting in the Fall"
-slug: "nl126-parenting-in-the-fall"
-created: 2026-10-10T12:28:00+03:00
-updated: 2026-10-10T23:44:00+03:00
+title: Parenting in the Fall
+slug: nl126-parenting-in-the-fall
+created: 2026-10-10T09:28:00.000Z
+updated: 2026-10-10T20:44:00.000Z
 category: nordletter
-tags: ["writing", "sickweek", "expat", "helsinki", "reading", "parenting"]
+tags:
+  - writing
+  - sickweek
+  - expat
+  - helsinki
+  - reading
+  - parenting
 edition: 126
-description: "We are sick!"
-image: "https://storage.sajalchoudhary.net/images/2026/10/nl126-02.jpeg"
+description: We are sick!
+image: 'https://storage.sajalchoudhary.net/images/2026/10/nl126-02.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117418786834881712'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mxkhecvesi2o'
+  - 'https://www.threads.com/@sajal24x7/post/DeVEtHLASgI'
 ---
 Hello from my home in Helsinki! This is NordLetter #126, a weekly newsletter on living and walking in Finland.
 
