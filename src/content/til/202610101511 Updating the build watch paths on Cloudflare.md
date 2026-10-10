@@ -1,10 +1,14 @@
 ---
-title: "Updating the Build Watch Paths on Cloudflare"
-slug: "updating-the-build-watch-paths-on-cloudflare"
-created: 2026-10-10T15:11:00+03:00
-updated: 2026-10-10T15:14:18+03:00
+title: Updating the Build Watch Paths on Cloudflare
+slug: updating-the-build-watch-paths-on-cloudflare
+created: 2026-10-10T12:11:00.000Z
+updated: 2026-10-10T12:14:18.000Z
 category: til
-tags: ["cloudflare"]
+tags:
+  - cloudflare
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117417758466906340'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mxjyqo43gb2w'
 ---
 You go to your project settings > Build > Build watch paths.
 
