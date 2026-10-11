@@ -1,7 +1,9 @@
 # Haiku
 
-A daily haiku practice. Haiku are their own content category (`haiku`), live
-in the garden, and get their own page at `/haiku/`.
+A daily haiku practice. Haiku are their own content category (`haiku`) with
+their own page at `/haiku/`. They belong to the garden group (so they use the
+garden post layout and relative "Planted" dates) but are filtered out of the
+`/garden/` page itself.
 
 ## Writing one
 
@@ -13,46 +15,29 @@ verse per line in the body:
 ---
 created: 2026-10-11T07:30:00.000Z
 category: haiku
-tags:
-  - rain
 ---
 morning rain again
 the heron does not move
 neither do I
 ```
 
-There is nothing season-related to fill in. The season comes from `created`.
+## Numbering
 
-## Season
-
-`getSeason()` in `src/utils/haiku.ts` reads the month of `created` in the site
-timezone (`SITE_TIMEZONE`, Helsinki) and maps it to a meteorological,
-northern-hemisphere season split into early, mid and late:
-
-| Months | Season |
-| --- | --- |
-| Dec, Jan, Feb | Early, mid, late winter |
-| Mar, Apr, May | Early, mid, late spring |
-| Jun, Jul, Aug | Early, mid, late summer |
-| Sep, Oct, Nov | Early, mid, late autumn |
-
-A winter belongs to the year of its December, so the `/haiku/` page groups
-December 2026 to February 2027 as "Winter 2026–27". Season accent colors are
-the `--season-*` tokens in `src/styles/tokens.css`.
+Every haiku is numbered automatically by its place in the practice, oldest
+first (`numberHaiku()` in `src/utils/haiku.ts`). The number is worked out from
+`created` at build time, so there is nothing to set in frontmatter. A new
+haiku gets the next number. Backdating a haiku (a `created` earlier than an
+existing one) shifts the numbers after it.
 
 ## Where haiku show up
 
-- `/haiku/`: a single column, newest first, grouped by season. Each entry
-  shows the season, date, its number in the practice (oldest is No. 1), the
-  verse with the classic stepped indent, tags and syndication links
-  (`src/components/haiku/HaikuItem.astro`).
-- `/haiku/<slug>/`: `HaikuPostLayout.astro`, centered verse with previous and
-  next links.
-- `/garden/`: a compact haiku card in the grid (`HaikuItem` with
-  `variant="card"`).
-- Home feed: full verse with the season beside the date (`renderHaiku` in
-  `src/utils/feed.ts`).
-- RSS: `/haiku/rss.xml`, plus the garden and site-wide feeds.
+- `/haiku/`: the stream layout used by `/micro/`, newest first. Each entry
+  shows its relative date, its number ("No. 12") and the full verse.
+- `/haiku/<slug>/`: the garden post layout, with "No. 12. Planted 2 days ago."
+  above the verse.
+- Home feed: rendered like micro posts (full verse, no title).
+- RSS: `/haiku/rss.xml`, plus the site-wide feed.
+- Not on `/garden/`.
 
 ## Syndication
 

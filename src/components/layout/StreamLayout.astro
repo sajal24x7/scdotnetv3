@@ -4,9 +4,13 @@ import { parseMarkdownWithImages } from '../../utils/images';
 
 interface Props {
     posts: any[];
+    // Categories whose full body shows inline (micro by default; /haiku/ adds haiku)
+    fullContentCategories?: string[];
+    // Optional per-post numbers keyed by post id (haiku)
+    numbers?: Map<string, number>;
 }
 
-const { posts } = Astro.props as Props;
+const { posts, fullContentCategories = ['micro'], numbers } = Astro.props as Props;
 const hasSidebarContent = Astro.slots.has('sidebar');
 
 const renderedPosts = await Promise.all(posts.map(async (post) => ({
@@ -14,13 +18,13 @@ const renderedPosts = await Promise.all(posts.map(async (post) => ({
     renderedContent: post.body ? await parseMarkdownWithImages(post.body) : null
 })));
 
-const isMicroContent = (category: string) => category === 'micro';
+const isMicroContent = (category: string) => fullContentCategories.includes(category);
 ---
 
 <div class={`stream-layout ${hasSidebarContent ? 'stream-layout--with-sidebar' : ''}`}>
     <section class="stream-layout__posts">
         {renderedPosts.map((post) => (
-            <PostItem post={post} isMicroContent={isMicroContent} showFullContent={true} />
+            <PostItem post={post} isMicroContent={isMicroContent} showFullContent={true} number={numbers?.get(post.id)} />
         ))}
     </section>
 

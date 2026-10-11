@@ -11,7 +11,6 @@ import GardenPostLayout from '../components/layout/post/GardenPostLayout.astro';
 import StreamPostLayout from '../components/layout/post/StreamPostLayout.astro';
 import ShelfPostLayout from '../components/layout/post/ShelfPostLayout.astro';
 import NowPostLayout from '../components/layout/post/NowPostLayout.astro';
-import HaikuPostLayout from '../components/layout/post/HaikuPostLayout.astro';
 import { getPostGroup } from '../utils/postGroups';
 
 type AnyEntry = CollectionEntry<(typeof CONTENT_CATEGORIES)[number]>;
@@ -60,9 +59,9 @@ const pageTitle = entry.data?.title ? `${entry.data.title} - ${categoryLabel}` :
 const isPhotoPost = category === 'photo';
 
 // One layout per post family. Photo posts keep their own Instagram-style
-// layout and haiku their own verse layout; everything else picks the layout
-// for its group, and anything ungrouped (colophon) reads like a stream post.
-const PostFamilyLayout = category === 'haiku' ? HaikuPostLayout : {
+// layout; everything else picks the layout for its group, and anything
+// ungrouped (colophon) reads like a stream post.
+const PostFamilyLayout = {
   garden: GardenPostLayout,
   shelf: ShelfPostLayout,
   now: NowPostLayout,

@@ -11,9 +11,11 @@ interface Props {
   isMicroContent: (category: string) => boolean;
   showFullContent?: boolean;
   showReadMore?: boolean;
+  // Haiku carry their place in the practice ("No. 12")
+  number?: number;
 }
 
-const { post, isMicroContent, showFullContent = true, showReadMore = true } = Astro.props;
+const { post, isMicroContent, showFullContent = true, showReadMore = true, number } = Astro.props;
 const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
 const hasTags = tags.length > 0;
 const tagsString = tags.join(',');
@@ -67,6 +69,7 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
           </span>
         </span>
       </a>
+      {number && <span class="post-item-number card-chip">No. {number}</span>}
       <SyndicationLinks syndicationUrls={syndicationUrls} />
     </div>
   </header>
@@ -183,6 +186,10 @@ const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syn
     align-items: center;
     gap: 0.75rem;
     flex-wrap: wrap;
+  }
+
+  .post-item-number {
+    font-variant-numeric: tabular-nums;
   }
 
   .post-item-timestamp {

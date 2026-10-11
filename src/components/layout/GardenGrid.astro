@@ -1,7 +1,6 @@
 ---
 import Card from '../Card.astro';
 import BookshelfCard from '../bookshelf/BookshelfCard.astro';
-import HaikuItem from '../haiku/HaikuItem.astro';
 import { parseMarkdownWithImages } from '../../utils/images';
 
 interface Props {
@@ -32,8 +31,6 @@ const getContentTypeClasses = (type: string, category?: string) => {
         return 'stories-card';
       case 'poem':
         return 'poems-card';
-      case 'haiku':
-        return 'haiku-card';
       default:
         return 'default-card';
     }
@@ -77,7 +74,6 @@ const getSpanClass = (post: any) => {
 
 {renderedPosts.map((post) => {
     const isBookshelf = post.data.category === 'bookshelf';
-    const isHaiku = post.data.category === 'haiku';
     const postTags = Array.isArray(post.data.tags) ? post.data.tags.join(',') : '';
 
     return (
@@ -87,9 +83,7 @@ const getSpanClass = (post: any) => {
             data-content-item
             data-tags={postTags}
         >
-            {isHaiku ? (
-                <HaikuItem post={post} variant="card" />
-            ) : isBookshelf ? (
+            {isBookshelf ? (
                 <BookshelfCard
                     title={post.data.title}
                     author={post.data.author}
