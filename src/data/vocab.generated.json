@@ -960,6 +960,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/luddite-2026-10-10",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-10"
+		},
+		"galore": {
+			"word": "galore",
+			"pos": "other",
+			"gloss": " adjective Galore is an informal adjective that describes something as being in large numbers or amounts. It is always used postpositively, that is, after a noun.",
+			"pronunciation": "guh-LOR",
+			"example": "The store promises bargains galore on Black Friday.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/galore-2026-10-11",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-11"
 		}
 	}
 }
