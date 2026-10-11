@@ -621,6 +621,7 @@
       "bookshelf/202610031533 Inside the Box.md",
       "bookshelf/202610032052 Notes from an island.md",
       "bookshelf/202610050746 A beast slinks toward Beijing.md",
+      "bookshelf/202610101315 Obit.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
@@ -1232,6 +1233,11 @@
       "gameshelf/202608202205 Spiderman 2.md",
       "gameshelf/202608202207 FC26.md",
       "gameshelf/202609200807 EA Sports FC 27.md",
+      "gameshelf/202610101148 Control Resonant.md",
+      "gameshelf/202610101148 First Light.md",
+      "gameshelf/202610101148 GTA VI.md",
+      "gameshelf/202610101149 Forza Horizon 6.md",
+      "gameshelf/202610101149 The blood of dawnwalker.md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -1647,6 +1653,9 @@
       "micro/202609301227 Treat your to-read pile like a river.md",
       "micro/202610061936 Paramount complete HBO merger.md",
       "micro/202610091114.md",
+      "micro/202610101517 Human AI partnerships are for alignment.md",
+      "micro/202610102025.md",
+      "micro/202610102345.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1771,6 +1780,7 @@
       "nordletter/202609180829 NL123 - Reverse Centaurs, New Teams, and Moomins.md",
       "nordletter/202609241320 NL124 - Speaking Gigs.md",
       "nordletter/202610011644 NL125 - Better talks and reading metaphors.md",
+      "nordletter/202610101228 NL126 - Parenting in the fall.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -1823,6 +1833,7 @@
       "photo/202608180914.md",
       "photo/202610031119.md",
       "photo/202610041026.md",
+      "photo/202610111016.md",
       "poem/201202121505 Here I stand.md",
       "poem/201202131628 Stranded Isle.md",
       "poem/201203181704 Scared I was.md",
@@ -2421,6 +2432,7 @@
       "til/202608231425 How to change shell in linux.md",
       "til/202609121126 Kubernetes Components.md",
       "til/202609201426 LDAP.md",
+      "til/202610101511 Updating the build watch paths on Cloudflare.md",
       "tvshelf/201901071200 Luther S2.md",
       "tvshelf/201901071201 Luther S1.md",
       "tvshelf/201901281200 Bodyguard S1.md",
@@ -7476,6 +7488,14 @@
   ],
   "bookshelf/the-reverse-centaurs-guide-to-life-after-ai": [
     {
+      "slug": "/micro/human-ai-partnerships-are-for-alignment/",
+      "title": "Human AI Partnerships Are for Alignment",
+      "description": "",
+      "category": "micro",
+      "created": "2026-10-10T12:17:00.000Z",
+      "snippet": "This is an interesting take and aligns well with the centaur configuration from The Reverse Centaur’s Guide to Life After AI."
+    },
+    {
       "slug": "/blog/devops-finland-september-event/",
       "title": "DevOps Finland September Event",
       "description": "",
@@ -7493,6 +7513,14 @@
     }
   ],
   "bookshelf/inside-the-box": [
+    {
+      "slug": "/nordletter/nl126-parenting-in-the-fall/",
+      "title": "Parenting in the Fall",
+      "description": "We are sick!",
+      "category": "nordletter",
+      "created": "2026-10-10T09:28:00.000Z",
+      "snippet": "Other than poetry, I finally picked up Inside the Box this week and also Just for fun, which is about Linus and Linux. All hardcovers. I really do love hardcovers. Though I prefer my book - a year of mornings in paperback."
+    },
     {
       "slug": "/blog/faug-october-meetup/",
       "title": "FAUG October Meetup",
@@ -8667,6 +8695,36 @@
       "category": "nordletter",
       "created": "2026-10-01T13:44:00.000Z",
       "snippet": "I finished reading Ghost-Eye this week. I had known of Amitav Ghosh from before, from books whispered here and there, like a book on climate change he had written recently - a book I have not read yet. So, when I saw Ghost-Eye pop up in the e-library, I immediately put it on hold."
+    }
+  ],
+  "evergreen/how-i-use-obsidian-quick-capture-on-mobile": [
+    {
+      "slug": "/nordletter/nl126-parenting-in-the-fall/",
+      "title": "Parenting in the Fall",
+      "description": "We are sick!",
+      "category": "nordletter",
+      "created": "2026-10-10T09:28:00.000Z",
+      "snippet": "I wrote about Obsidian quick capture earlier in the week. It has transformed the write page on my phone."
+    }
+  ],
+  "bookshelf/native-guard": [
+    {
+      "slug": "/nordletter/nl126-parenting-in-the-fall/",
+      "title": "Parenting in the Fall",
+      "description": "We are sick!",
+      "category": "nordletter",
+      "created": "2026-10-10T09:28:00.000Z",
+      "snippet": "I am back into reading poetry. I finished Native Guard and am reading Obit now."
+    }
+  ],
+  "bookshelf/obit": [
+    {
+      "slug": "/nordletter/nl126-parenting-in-the-fall/",
+      "title": "Parenting in the Fall",
+      "description": "We are sick!",
+      "category": "nordletter",
+      "created": "2026-10-10T09:28:00.000Z",
+      "snippet": "I am back into reading poetry. I finished Native Guard and am reading Obit now."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [

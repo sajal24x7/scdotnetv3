@@ -706,6 +706,33 @@
       "status": "approved"
     }
   ],
+  "micro/202610102025": [
+    {
+      "id": "mastodon:repost:117418785110060071:111653327277532792",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Football Channel",
+        "url": "https://newsmast.community/@football",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/9f561af390e2c1a36dc020414309a0d1.png"
+      },
+      "url": "https://newsmast.community/@football",
+      "status": "approved"
+    }
+  ],
+  "micro/202610102345": [
+    {
+      "id": "threads:like-count:DeVErZxgR2b",
+      "type": "like-count",
+      "platform": "threads",
+      "author": {
+        "name": "Threads"
+      },
+      "url": "https://www.threads.com/@sajal24x7/post/DeVErZxgR2b",
+      "count": 1,
+      "status": "approved"
+    }
+  ],
   "micro/amazon-has-a-new-plan-for-games": [
     {
       "id": "mastodon:like:116696520863508112:1339141",
@@ -891,6 +918,32 @@
       "status": "approved"
     }
   ],
+  "micro/human-ai-partnerships-are-for-alignment": [
+    {
+      "id": "bluesky:like:3mxjyqdnfpx26:did:plc:xcrjvrubyf4c7cxemwekc752",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Affective Old Truant",
+        "url": "https://bsky.app/profile/effectivealtruist.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:xcrjvrubyf4c7cxemwekc752/bafkreieer5rgxek763xfs2l42gml5lkwpdhsvbarth7qwh2gn7bm3dgqni"
+      },
+      "url": "https://bsky.app/profile/effectivealtruist.bsky.social",
+      "published": "2026-10-10T21:01:49.175Z",
+      "status": "approved"
+    },
+    {
+      "id": "threads:like-count:DeUmwUOFLHY",
+      "type": "like-count",
+      "platform": "threads",
+      "author": {
+        "name": "Threads"
+      },
+      "url": "https://www.threads.com/@sajal24x7/post/DeUmwUOFLHY",
+      "count": 1,
+      "status": "approved"
+    }
+  ],
   "micro/kunal-shah-to-become-global-head-of-whatsapp": [
     {
       "id": "mastodon:like:116798122425373992:110436829441173808",
@@ -933,18 +986,6 @@
       "content": "<p>Nice write-up on the Mac side. If you're curious what else people get Muse to do, I keep a catalog of real builds, each linked to its source: shipwithmuse.live (why I started it: x.com/mohithkumar8...)</p>",
       "url": "https://bsky.app/profile/mohith808.bsky.social/post/3mwhkok5fcs2a",
       "published": "2026-09-27T00:37:54.464Z",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:117337076593665823:111653185420926112",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Social Media Channel",
-        "url": "https://newsmast.community/@socialmedia",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/185/420/926/112/original/260824615f005811.png"
-      },
-      "url": "https://newsmast.community/@socialmedia",
       "status": "approved"
     }
   ],
@@ -1482,6 +1523,20 @@
   "nordletter/nl125-better-talks-and-reading-metaphors": [
     {
       "id": "mastodon:repost:117379034945236721:116141936733036818",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Literbook",
+        "url": "https://mastodon.social/@Literbook",
+        "avatar": "https://storage.sajalchoudhary.net/avatars/5e0c9f27cbe4ab1dddc05717be534585.png"
+      },
+      "url": "https://mastodon.social/@Literbook",
+      "status": "approved"
+    }
+  ],
+  "nordletter/nl126-parenting-in-the-fall": [
+    {
+      "id": "mastodon:repost:117418786834881712:116141936733036818",
       "type": "repost",
       "platform": "mastodon",
       "author": {
