@@ -14,6 +14,7 @@ import { getPhotoImages } from './photos';
 import { SHELF_CATEGORIES, SHELF_STATUS_FEED_VERBS, isQueuedShelfEntry, type ShelfCategory, type ShelfStatus } from './shelfStatus';
 import { POST_GROUPS, POST_GROUP_CATEGORIES, getPostGroup, type PostGroup } from './postGroups';
 import { getResponsiveImage } from './images';
+import { getSeason, haikuLines } from './haiku';
 
 export const FEED_PAGE_SIZE = 10;
 
@@ -37,6 +38,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   gameshelf: 'Gameshelf',
   story: 'Story',
   poem: 'Poem',
+  haiku: 'Haiku',
   now: 'Now',
   nordletter: 'Nordletter'
 };
@@ -264,6 +266,16 @@ function renderPoem(post: Post): string {
   return `${metaHtml(post)}${titleHtml(post)}${verseHtml}`;
 }
 
+// Haiku are short enough to show whole: all lines, with the season as a quiet
+// marker beside the date
+function renderHaiku(post: Post): string {
+  const season = getSeason(postDate(post));
+  const seasonHtml = `<span class="feed-entry__season feed-entry__season--${season.key}">${escapeHtml(season.label)}</span>`;
+  const lines = haikuLines(post.body).map(escapeHtml).join('<br>');
+  const verseHtml = lines ? `<p class="feed-entry__verse feed-entry__verse--haiku">${lines}</p>` : '';
+  return `${metaHtml(post, seasonHtml)}${titleHtml(post)}${verseHtml}`;
+}
+
 function renderStory(post: Post): string {
   const excerpt = post.data.description || bodySnippet(post);
   return `${metaHtml(post)}${titleHtml(post)}${excerptHtml(excerpt)}`;
@@ -386,6 +398,7 @@ const RENDERERS: Record<string, (post: Post) => string | Promise<string>> = {
   til: renderTil,
   evergreen: renderEvergreen,
   poem: renderPoem,
+  haiku: renderHaiku,
   story: renderStory,
   bookshelf: renderBookshelf,
   filmshelf: renderFilmshelf,

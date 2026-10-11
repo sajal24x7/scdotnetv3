@@ -1,0 +1,154 @@
+---
+// Haiku posts: no hero, no "Planted" line. The season, date and the haiku's
+// number in the practice sit above three centred lines of verse, with links
+// to the previous and next haiku so a reader can walk the practice day by day.
+import { getCollection } from 'astro:content';
+import PostShell from './PostShell.astro';
+import SeasonIcon from '../../haiku/SeasonIcon.astro';
+import { readCommonPostFields, parsePostDate, type PostLayoutProps } from './postFields';
+import { getSeason, numberHaiku } from '../../../utils/haiku';
+import { formatDate } from '../../../utils/dateFormat';
+
+const { entry, category, canonicalUrl, backlinks, interactions = [], hasUpdatedDate } =
+    Astro.props as PostLayoutProps;
+
+const fields = readCommonPostFields(entry, hasUpdatedDate);
+const created = parsePostDate(fields.publishedDate) ?? new Date();
+const season = getSeason(created);
+
+const entryId = (entry as { id?: string }).id ?? '';
+const collection = await getCollection('haiku');
+const numbers = numberHaiku(collection);
+const allHaiku = [...collection].sort(
+    (a, b) => (numbers.get(a.id) ?? 0) - (numbers.get(b.id) ?? 0)
+);
+const number = numbers.get(entryId);
+const index = allHaiku.findIndex((post) => post.id === entryId);
+const previous = index > 0 ? allHaiku[index - 1] : undefined;
+const next = index >= 0 && index < allHaiku.length - 1 ? allHaiku[index + 1] : undefined;
+---
+
+<PostShell
+    category={category}
+    canonicalUrl={canonicalUrl}
+    tags={fields.tags}
+    bridgyOmit={fields.bridgyOmit}
+    publishedDate={fields.publishedDate}
+    updated={fields.updated}
+    syndicationUrls={fields.syndicationUrls}
+    backlinks={backlinks}
+    interactions={interactions}
+>
+    <header class={`haiku-post__header haiku-post--${season.key}`} slot="header">
+        <p class="haiku-post__season">
+            <SeasonIcon season={season.key} class="haiku-post__icon" />
+            {season.label}
+        </p>
+        {fields.title && <h1 class="p-name haiku-post__title">{fields.title}</h1>}
+        <p class="haiku-post__meta">
+            <time datetime={created.toISOString()}>{formatDate(created, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            {number && <> · No. {number}</>}
+        </p>
+    </header>
+
+    <div class="haiku-post__verse">
+        <slot />
+    </div>
+
+    {(previous || next) && (
+        <nav class="haiku-post__nav" aria-label="More haiku" slot="after-content">
+            {previous ? (
+                <a href={`/haiku/${previous.id}/`} rel="prev">← Previous haiku</a>
+            ) : <span />}
+            <a href="/haiku/">All haiku</a>
+            {next ? (
+                <a href={`/haiku/${next.id}/`} rel="next">Next haiku →</a>
+            ) : <span />}
+        </nav>
+    )}
+</PostShell>
+
+<style>
+    .haiku-post__header {
+        --haiku-accent: var(--season-autumn);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .haiku-post--spring { --haiku-accent: var(--season-spring); }
+    .haiku-post--summer { --haiku-accent: var(--season-summer); }
+    .haiku-post--autumn { --haiku-accent: var(--season-autumn); }
+    .haiku-post--winter { --haiku-accent: var(--season-winter); }
+
+    .haiku-post__season {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin: 0;
+        font-size: var(--text-xs);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: rgb(var(--haiku-accent));
+    }
+
+    .haiku-post__season :global(svg) {
+        font-size: 1rem;
+    }
+
+    .haiku-post__title {
+        margin: 0;
+        font-family: var(--font-serif);
+        font-size: var(--text-xlarge);
+        font-weight: 600;
+    }
+
+    .haiku-post__meta {
+        margin: 0;
+        font-size: var(--text-xs);
+        color: rgb(var(--color-text-secondary));
+        font-variant-numeric: tabular-nums;
+    }
+
+    .haiku-post__verse {
+        margin-block: clamp(1.5rem, 5vw, 3rem);
+        text-align: center;
+    }
+
+    .haiku-post__verse :global(p) {
+        margin: 0 0 1em;
+        font-family: var(--font-serif);
+        font-size: var(--text-xlarge);
+        line-height: 1.5;
+        color: rgb(var(--color-text-primary));
+    }
+
+    .haiku-post__nav {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 1rem;
+        margin-block: 2rem;
+        font-size: var(--text-small);
+    }
+
+    .haiku-post__nav a {
+        color: rgb(var(--color-text-secondary));
+        text-decoration: none;
+    }
+
+    .haiku-post__nav a:hover,
+    .haiku-post__nav a:focus-visible {
+        color: rgb(var(--color-text-primary));
+        text-decoration: underline;
+    }
+
+    .haiku-post__nav a[rel='next'] {
+        justify-self: end;
+    }
+</style>

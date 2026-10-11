@@ -34,6 +34,7 @@ const CATEGORY_CONFIG: Record<string, CategoryConfig> = {
     bookshelf: { label: 'Bookshelf', includes: ['bookshelf'] },
     story: { label: 'Story', includes: ['story'] },
     poem: { label: 'Poem', includes: ['poem'] },
+    haiku: { label: 'Haiku', includes: ['haiku'] },
     nordletter: { label: 'Nordletter', includes: ['nordletter'] },
     now: { label: 'Now', includes: ['now'] }
 };
@@ -47,6 +48,7 @@ const CATEGORY_ORDER = [
     'bookshelf',
     'story',
     'poem',
+    'haiku',
     'nordletter',
     'now'
 ];

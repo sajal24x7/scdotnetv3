@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-KNOWN_CATEGORIES="til blog micro photo nordletter story poem bookshelf filmshelf tvshelf gameshelf now colophon evergreen"
+KNOWN_CATEGORIES="til blog micro photo nordletter story poem haiku bookshelf filmshelf tvshelf gameshelf now colophon evergreen"
 INBOX="src/content/inbox"
 MOVED=0
 FAILED=0

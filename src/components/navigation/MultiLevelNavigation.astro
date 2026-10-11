@@ -28,6 +28,7 @@ const secondaryNavItems = {
     { href: '/til/', label: 'TIL' },
     { href: '/stories/', label: 'Stories' },
     { href: '/poems/', label: 'Poems' },
+    { href: '/haiku/', label: 'Haiku' },
   ],
   shelf: [
     { href: '/bookshelf/', label: 'Books' },
@@ -75,7 +76,8 @@ const getActiveMainSection = () => {
       currentPage.startsWith('/stories/') ||
       currentPage.startsWith('/story/') ||
       currentPage.startsWith('/poems/') ||
-      currentPage.startsWith('/poem/')) return 'garden';
+      currentPage.startsWith('/poem/') ||
+      currentPage.startsWith('/haiku/')) return 'garden';
 
   // Check for individual post categories that belong to stream
   if (currentPage.startsWith('/blog/') ||
@@ -131,6 +133,7 @@ const getActiveSubsection = () => {
   if (currentPage.startsWith('/til/')) return '/til/';
   if (currentPage.startsWith('/stories/') || currentPage.startsWith('/story/')) return '/stories/';
   if (currentPage.startsWith('/poems/') || currentPage.startsWith('/poem/')) return '/poems/';
+  if (currentPage.startsWith('/haiku/')) return '/haiku/';
 
   // Check for stream subsections
   if (currentPage.startsWith('/blog/')) return '/blog/';

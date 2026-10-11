@@ -217,6 +217,23 @@ const rows = entries.map((entry) => {
         line-height: 1.6;
     }
 
+    .feed-entry__verse--haiku {
+        font-style: normal;
+        font-size: var(--text-medium);
+        color: rgb(var(--color-text-primary));
+    }
+
+    .feed-entry__season {
+        align-self: center;
+        font-size: var(--text-xs);
+        font-weight: 600;
+        color: rgb(var(--season-autumn));
+    }
+
+    .feed-entry__season--spring { color: rgb(var(--season-spring)); }
+    .feed-entry__season--summer { color: rgb(var(--season-summer)); }
+    .feed-entry__season--winter { color: rgb(var(--season-winter)); }
+
     /* micro + photo bodies (full rendered markdown) */
     .feed-entry__body {
         font-size: var(--feed-text-size);

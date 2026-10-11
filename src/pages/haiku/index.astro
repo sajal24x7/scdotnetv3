@@ -1,0 +1,151 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionLanding from '../../layouts/SectionLanding.astro';
+import HaikuItem from '../../components/haiku/HaikuItem.astro';
+import SeasonIcon from '../../components/haiku/SeasonIcon.astro';
+import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
+import { getSeason, numberHaiku, type SeasonKey } from '../../utils/haiku';
+
+// Newest first, numbered by their place in the practice (oldest = No. 1)
+const allPosts = await getAllPosts();
+const haiku = getPostsByCategory(allPosts, ['haiku']).map(transformPost);
+const numbers = numberHaiku(haiku);
+
+// Group into seasons so the long scroll has landmarks: "Autumn 2026 · 12"
+interface SeasonGroup {
+    id: string;
+    label: string;
+    key: SeasonKey;
+    posts: typeof haiku;
+}
+
+const groups: SeasonGroup[] = [];
+for (const post of haiku) {
+    const season = getSeason(post.data.created);
+    const last = groups[groups.length - 1];
+    if (last && last.id === season.groupId) {
+        last.posts.push(post);
+    } else {
+        groups.push({ id: season.groupId, label: season.groupLabel, key: season.key, posts: [post] });
+    }
+}
+
+const count = haiku.length;
+const countText = `${count} haiku`;
+
+const sectionLandingProps = createSectionLandingProps(
+    {
+        title: 'Haiku',
+        description: 'A haiku a day. Three short lines, marked by the season they were written in.',
+        countText,
+        tagCategory: 'haiku',
+        tagPosts: allPosts,
+        contentClass: 'grid-span-8 grid-start-3',
+        rssUrl: '/haiku/rss.xml'
+    },
+    'plainCount'
+);
+---
+
+<Layout
+    title="Haiku"
+    description="A haiku a day"
+    currentPage="/haiku/"
+    pageWrapper={{
+        maxWidth: '7xl',
+        padding: 'none',
+        centered: true,
+        grid: {
+            gap: 'loose',
+            padding: 'narrow'
+        }
+    }}
+    allPosts={allPosts}
+    enableLinkHoverEffect
+>
+    <SectionLanding {...sectionLandingProps}>
+        <div class="haiku-stream">
+            {groups.length === 0 && (
+                <p class="haiku-stream__empty">The first haiku is still being written.</p>
+            )}
+            {groups.map((group) => (
+                <section class={`haiku-season haiku-season--${group.key}`} aria-labelledby={`season-${group.id}`}>
+                    <h2 class="haiku-season__heading" id={`season-${group.id}`}>
+                        <SeasonIcon season={group.key} class="haiku-season__icon" />
+                        <span>{group.label}</span>
+                        <span class="haiku-season__count">{group.posts.length}</span>
+                    </h2>
+                    <div class="haiku-season__list">
+                        {group.posts.map((post) => (
+                            <HaikuItem post={post} number={numbers.get(post.id)} />
+                        ))}
+                    </div>
+                </section>
+            ))}
+        </div>
+    </SectionLanding>
+</Layout>
+
+<style>
+    .haiku-stream {
+        max-width: 36rem;
+        margin-inline: auto;
+        padding-block: clamp(1.25rem, 3vw, 2.25rem);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .haiku-season {
+        --season-accent: var(--season-autumn);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.25rem, 3vw, 1.75rem);
+    }
+
+    .haiku-season--spring { --season-accent: var(--season-spring); }
+    .haiku-season--summer { --season-accent: var(--season-summer); }
+    .haiku-season--autumn { --season-accent: var(--season-autumn); }
+    .haiku-season--winter { --season-accent: var(--season-winter); }
+
+    .haiku-season__heading {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid rgb(var(--color-border));
+        font-family: var(--font-serif);
+        font-size: var(--text-medium);
+        font-weight: 500;
+        color: rgb(var(--color-text-primary));
+    }
+
+    /* the icon inherits this colour; it sizes itself to 1em */
+    .haiku-season__heading :global(svg) {
+        color: rgb(var(--season-accent));
+    }
+
+    .haiku-season__count {
+        margin-left: auto;
+        font-family: var(--font-sans);
+        font-size: var(--text-xs);
+        font-variant-numeric: tabular-nums;
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .haiku-season__list {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.75rem, 4vw, 2.5rem);
+    }
+
+    .haiku-stream__empty {
+        margin: 0;
+        text-align: center;
+        font-family: var(--font-serif);
+        font-style: italic;
+        color: rgb(var(--color-text-secondary));
+    }
+</style>

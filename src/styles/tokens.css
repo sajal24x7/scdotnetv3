@@ -73,6 +73,13 @@
     --pill-bg: #f3f4f6;
     --pill-fg: #1f2937;
 
+    /* Haiku season accents (src/components/haiku). Dark enough for small
+       text on --color-bg; each flips to a lighter tint under .dark. */
+    --season-spring: 190, 60, 115;
+    --season-summer: 36, 120, 72;
+    --season-autumn: 180, 70, 20;
+    --season-winter: 60, 95, 140;
+
     --text-small: clamp(0.875rem, 2vw, 1rem);
     --text-normal: clamp(1rem, 2.5vw, 1.125rem);
     --text-medium: clamp(1.125rem, 2.5vw, 1.25rem);
@@ -97,6 +104,10 @@
     --color-on-accent: 35, 30, 28;
     --color-border: 85, 75, 70;
     --link-color: #4d9fff;
+    --season-spring: 244, 160, 195;
+    --season-summer: 134, 205, 150;
+    --season-autumn: 242, 156, 98;
+    --season-winter: 160, 190, 228;
     --link-highlight: rgba(167, 139, 250, 0.35);
     --link-highlight-hover: rgba(167, 139, 250, 0.6);
     --hr-color: #444444;

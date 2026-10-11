@@ -24,7 +24,7 @@ Obsidian because they can't be invented later:
    (below) so you never type it by hand.
 
 2. **Frontmatter with a valid `category`** — one of:
-   `til` · `blog` · `micro` · `photo` · `nordletter` · `story` · `poem` ·
+   `til` · `blog` · `micro` · `photo` · `nordletter` · `story` · `poem` · `haiku` ·
    `bookshelf` · `filmshelf` · `tvshelf` · `gameshelf` · `now` · `colophon` ·
    `evergreen`.
    A missing/unknown category fails the publish safely: nothing reaches the

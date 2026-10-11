@@ -1,0 +1,202 @@
+---
+// One haiku: season, date and number above three lines of verse.
+//
+// `stream` is the /haiku/ list entry (quiet, borderless, stepped lines);
+// `card` fits the haiku into a GardenGrid cell next to notes and poems (the
+// grid cell carries the filter attributes there, so the card leaves them off).
+import SeasonIcon from './SeasonIcon.astro';
+import Tag from '../Tag.astro';
+import SyndicationLinks from '../SyndicationLinks.astro';
+import { getSeason, haikuLines } from '../../utils/haiku';
+import { formatDate } from '../../utils/dateFormat';
+
+interface Props {
+    post: {
+        id: string;
+        body?: string;
+        data: {
+            title?: string;
+            created: Date | string;
+            link?: string;
+            tags?: string[];
+            syndicationUrls?: string[];
+        };
+    };
+    number?: number;
+    variant?: 'stream' | 'card';
+}
+
+const { post, number, variant = 'stream' } = Astro.props as Props;
+
+const created = new Date(post.data.created);
+const season = getSeason(created);
+const lines = haikuLines(post.body);
+const link = post.data.link ?? `/haiku/${post.id}/`;
+const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
+const syndicationUrls = Array.isArray(post.data.syndicationUrls) ? post.data.syndicationUrls : [];
+// Classic stepped layout only reads right for a three-line haiku
+const stepped = variant === 'stream' && lines.length === 3;
+const dateLabel = formatDate(created, { weekday: 'short', month: 'short', day: 'numeric' });
+const fullDate = formatDate(created);
+---
+
+<article
+    class={`haiku haiku--${variant} haiku--${season.key}`}
+    data-category="haiku"
+    data-content-item={variant === 'stream' ? '' : undefined}
+    data-tags={variant === 'stream' ? tags.join(',') : undefined}
+>
+    <header class="haiku__meta">
+        <span class="haiku__season">
+            <SeasonIcon season={season.key} class="haiku__season-icon" />
+            {season.label}
+        </span>
+        <span class="haiku__sep" aria-hidden="true">·</span>
+        <a class="haiku__date" href={link} title={fullDate}>
+            <time datetime={created.toISOString()}>{dateLabel}</time>
+        </a>
+        {number && (
+            <>
+                <span class="haiku__sep" aria-hidden="true">·</span>
+                <span class="haiku__number">No. {number}</span>
+            </>
+        )}
+    </header>
+
+    <p class={`haiku__verse${stepped ? ' haiku__verse--stepped' : ''}`}>
+        {lines.map((line) => (
+            <span class="haiku__line">{line}</span>
+        ))}
+    </p>
+
+    {post.data.title && <p class="haiku__title">{post.data.title}</p>}
+
+    {variant === 'stream' && (tags.length > 0 || syndicationUrls.length > 0) && (
+        <footer class="haiku__footer">
+            {tags.length > 0 && (
+                <div class="haiku__tags">
+                    {tags.map((tag) => (
+                        <Tag tag={tag} asFilter />
+                    ))}
+                </div>
+            )}
+            <SyndicationLinks syndicationUrls={syndicationUrls} />
+        </footer>
+    )}
+</article>
+
+<style>
+    .haiku {
+        --haiku-accent: var(--season-autumn);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        min-width: 0;
+    }
+
+    .haiku--spring { --haiku-accent: var(--season-spring); }
+    .haiku--summer { --haiku-accent: var(--season-summer); }
+    .haiku--autumn { --haiku-accent: var(--season-autumn); }
+    .haiku--winter { --haiku-accent: var(--season-winter); }
+
+    /* Stream: a thin season-coloured rule instead of a card box */
+    .haiku--stream {
+        padding: 0.25rem 0 0.25rem clamp(1rem, 3vw, 1.5rem);
+        border-left: 2px solid rgba(var(--haiku-accent), 0.55);
+    }
+
+    /* Card: sits in the garden grid next to Card.astro cells */
+    .haiku--card {
+        width: 100%;
+        height: 100%;
+        padding: clamp(1rem, 2.5vw, 1.5rem);
+        border: 1px solid rgb(var(--color-border));
+        border-top: 3px solid rgba(var(--haiku-accent), 0.7);
+        border-radius: 0.75rem;
+        background: rgba(var(--haiku-accent), 0.04);
+        justify-content: center;
+    }
+
+    .haiku__meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem;
+        font-family: var(--font-sans);
+        font-size: var(--text-xs);
+        color: rgb(var(--color-text-secondary));
+        letter-spacing: 0.02em;
+    }
+
+    .haiku__season {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-weight: 600;
+        white-space: nowrap;
+        color: rgb(var(--haiku-accent));
+    }
+
+    .haiku__date {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .haiku__date:hover,
+    .haiku__date:focus-visible {
+        color: rgb(var(--color-text-primary));
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
+    .haiku__number {
+        font-variant-numeric: tabular-nums;
+    }
+
+    .haiku__verse {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        font-family: var(--font-serif);
+        font-size: var(--text-large);
+        line-height: 1.55;
+        color: rgb(var(--color-text-primary));
+    }
+
+    .haiku--card .haiku__verse {
+        font-size: var(--text-medium);
+    }
+
+    @media (min-width: 40rem) {
+        .haiku__verse--stepped .haiku__line:nth-child(2) {
+            padding-left: 1.5em;
+        }
+
+        .haiku__verse--stepped .haiku__line:nth-child(3) {
+            padding-left: 3em;
+        }
+    }
+
+    .haiku__title {
+        margin: 0;
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: var(--text-small);
+        color: rgb(var(--color-text-secondary));
+    }
+
+    .haiku__footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem 1rem;
+    }
+
+    .haiku__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+</style>

@@ -2,7 +2,8 @@
 // Shared chrome for every single-post page: microformats, Pagefind metadata,
 // the published/updated line, newsletter prompt, interactions and backlinks.
 // Each post family (garden, stream, shelf, now) supplies its own header through
-// the `header` slot and, where it needs one, a `lede` slot above the content.
+// the `header` slot and, where it needs one, a `lede` slot above the content and
+// an `after-content` slot below it (kept outside e-content so it never syndicates).
 import LayoutContainer from '../LayoutContainer.astro';
 import TimeDisplay from '../../TimeDisplay.astro';
 import Backlinks from '../../Backlinks.astro';
@@ -78,6 +79,8 @@ const {
         <div class="e-content">
             <slot />
         </div>
+
+        <slot name="after-content" />
 
         <div class="post-layout__meta">
             <div class="post-layout__meta-line">
