@@ -237,6 +237,29 @@ const rows = entries.map((entry) => {
         height: auto;
     }
 
+    /* On wider screens, cap photos at roughly a /photos grid tile (a third of
+       the 7xl container) so they don't stretch across the whole feed column */
+    @media (min-width: 48rem) {
+        .feed-entry {
+            --feed-media-max: 25rem;
+        }
+
+        .feed-entry__body img {
+            max-width: min(100%, var(--feed-media-max));
+            max-height: var(--feed-media-max);
+            width: auto;
+        }
+
+        .feed-carousel {
+            max-width: var(--feed-media-max);
+        }
+
+        .feed-carousel__slide img {
+            max-width: 100%;
+            max-height: var(--feed-media-max);
+        }
+    }
+
     .feed-entry__body blockquote {
         border-left: 3px solid rgba(var(--tag-color-rgb), 0.45);
         padding-left: 0.9rem;
