@@ -18,7 +18,7 @@ tags: []
 
 ## Known categories
 
-`til` · `blog` · `micro` · `photo` · `nordletter` · `story` · `poem`  
+`til` · `blog` · `micro` · `photo` · `nordletter` · `story` · `poem` · `haiku`  
 `bookshelf` · `filmshelf` · `tvshelf` · `gameshelf` · `now` · `colophon` · `evergreen`
 
 If `category` is missing or unknown the Action will leave the file here and

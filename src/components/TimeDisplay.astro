@@ -24,7 +24,7 @@ const getTimeFormat = () => {
   if (format === 'month-year') return 'month-year';
 
   // Auto format based on category
-  const gardenCategories = ['evergreen', 'til', 'bookshelf', 'story', 'poem'];
+  const gardenCategories = ['evergreen', 'til', 'bookshelf', 'story', 'poem', 'haiku'];
   const isGardenContent = gardenCategories.includes(category);
 
   return isGardenContent ? 'relative' : 'detailed';

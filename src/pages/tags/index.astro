@@ -30,7 +30,7 @@ const tagsByCategory = new Map<string, Array<[string, number]>>();
 tagsByCategory.set('all', sortedTags);
 
 // Process each category
-const categories = ['blog', 'bookshelf', 'stream', 'garden', 'nordletter', 'til', 'micro', 'story', 'poem'];
+const categories = ['blog', 'bookshelf', 'stream', 'garden', 'nordletter', 'til', 'micro', 'story', 'poem', 'haiku'];
 
 categories.forEach(category => {
   const categoryPosts = allPosts.filter(post => {
