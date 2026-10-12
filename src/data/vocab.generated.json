@@ -970,6 +970,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/galore-2026-10-11",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-11"
+		},
+		"nexus": {
+			"word": "nexus",
+			"pos": "other",
+			"gloss": " noun A nexus is a relationship or connection between people or things. Nexus can also refer to a connected group or series or to the center or focus of something.",
+			"pronunciation": "NEK-sus",
+			"example": "The cultural district serves as a nexus for art and cuisine.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/nexus-2026-10-12",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-12"
 		}
 	}
 }
