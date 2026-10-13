@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - apple
-  - home
-category: micro
+title: "HomeView Looks Cool"
+slug: "homeview-looks-cool"
+created: 2026-10-13T18:25:00+03:00
 updated: 2026-10-13T18:26:21+03:00
+category: micro
+tags: ["apple", "home"]
 ---
 [Watch Apple’s reveal video for the HomeView by Jay Peters](https://www.theverge.com/1008810/apple-homeview-reveal-video-watch)
 
