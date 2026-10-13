@@ -1,10 +1,15 @@
 ---
-title: "Strategies for Reading Long Things"
-slug: "strategies-for-reading-long-things"
-created: 2026-10-13T20:10:00+03:00
-updated: 2026-10-13T20:11:13+03:00
+title: Strategies for Reading Long Things
+slug: strategies-for-reading-long-things
+created: 2026-10-13T17:10:00.000Z
+updated: 2026-10-13T17:11:13.000Z
 category: evergreen
-tags: ["reading"]
+tags:
+  - reading
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117436013663308599'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mxs465y7yl2x'
+  - 'https://www.threads.com/@sajal24x7/post/Dec6EjKCZh1'
 ---
 For reading books, primarily.
 

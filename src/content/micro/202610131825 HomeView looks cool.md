@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117434652079421718'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mxrisyioaz2w'
+  - 'https://www.threads.com/@sajal24x7/post/Dec6FyKiWJy'
 ---
 [Watch Apple’s reveal video for the HomeView by Jay Peters](https://www.theverge.com/1008810/apple-homeview-reveal-video-watch)
 
