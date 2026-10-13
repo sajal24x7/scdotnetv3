@@ -980,6 +980,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/nexus-2026-10-12",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-12"
+		},
+		"abscond": {
+			"word": "abscond",
+			"pos": "other",
+			"gloss": " verb To abscond is to leave, flee, or escape a place in secret and go into hiding. Often, someone is said to have absconded with something.",
+			"pronunciation": "ab-SKAHND",
+			"example": "It was mid-semester, when fantasies about absconding from school and leaving the stress of exams behind abound.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/abscond-2026-10-13",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-13"
 		}
 	}
 }
