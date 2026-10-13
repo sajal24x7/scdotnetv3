@@ -1,10 +1,15 @@
 ---
-title: "HomeView Looks Cool"
-slug: "homeview-looks-cool"
-created: 2026-10-13T18:25:00+03:00
-updated: 2026-10-13T18:26:21+03:00
+title: HomeView Looks Cool
+slug: homeview-looks-cool
+created: 2026-10-13T15:25:00.000Z
+updated: 2026-10-13T15:26:21.000Z
 category: micro
-tags: ["apple", "home"]
+tags:
+  - apple
+  - home
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117434652079421718'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mxrisyioaz2w'
 ---
 [Watch Apple’s reveal video for the HomeView by Jay Peters](https://www.theverge.com/1008810/apple-homeview-reveal-video-watch)
 
