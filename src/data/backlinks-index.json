@@ -634,6 +634,7 @@
       "evergreen/202507140815 Writing when I need to.md",
       "evergreen/202507161526 Mixed format books.md",
       "evergreen/202508111120 The things I write on my blog.md",
+      "evergreen/202508161900 Chunking.md",
       "evergreen/202508191028 How to learn effectively.md",
       "evergreen/202508191718 Analogical thinking.md",
       "evergreen/202508220800 Majority of the organisations are not seeing any monetary benefits from deploying AI.md",
@@ -677,6 +678,9 @@
       "evergreen/202609201552 Prompts I use.md",
       "evergreen/202610042029 The same story can mean different things to different people.md",
       "evergreen/202610061431 How I use Obsidian Quick capture on mobile.md",
+      "evergreen/202610131905 Bounding the new with the familiar.md",
+      "evergreen/202610132000 Working memory is a hindrance to learning.md",
+      "evergreen/202610132010 Strategies for reading long things.md",
       "filmshelf/201812311200 Mowgli Legend of the Jungle.md",
       "filmshelf/201901061200 Black Mirror Bandersnatch.md",
       "filmshelf/201901141200 Hate Story.md",
@@ -1659,6 +1663,7 @@
       "micro/202610101517 Human AI partnerships are for alignment.md",
       "micro/202610102025.md",
       "micro/202610102345.md",
+      "micro/202610131825 HomeView looks cool.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -7517,6 +7522,30 @@
   ],
   "bookshelf/inside-the-box": [
     {
+      "slug": "/evergreen/strategies-for-reading-long-things/",
+      "title": "Strategies for Reading Long Things",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-10-13T17:10:00.000Z",
+      "snippet": "It’s a good idea to complete one chapter each day. I have read a few chapters right now from the book Inside the Box. Of course this is not meant to dissuade oneself from reading. Like one should not think that they need enough time to complete a chapter, otherwise don’t start. Rather, it’s take some time and complete the chapter you start."
+    },
+    {
+      "slug": "/evergreen/working-memory-is-a-hindrance-to-learning/",
+      "title": "Working Memory Is a Hindrance to Learning",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-10-13T17:00:00.000Z",
+      "snippet": "Read this first in Inside the Box."
+    },
+    {
+      "slug": "/evergreen/bounding-the-new-with-the-familiar/",
+      "title": "Bounding the New With the Familiar",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-10-13T16:05:00.000Z",
+      "snippet": "Read about it in Inside the Box, but of course I’ve known of this idea from before. Like, when I wrote somewhere that, unimaginable is usually imaginable, truly unimaginable things are impossible to imagine. I read about a similar idea in Abundance, where they talked about who gets funded for new research - it’s not truly new research, it’s familiar research. Though the story was different there."
+    },
+    {
       "slug": "/nordletter/nl126-parenting-in-the-fall/",
       "title": "Parenting in the Fall",
       "description": "We are sick!",
@@ -9528,6 +9557,16 @@
       "category": "evergreen",
       "created": "2025-10-16T10:31:07.000Z",
       "snippet": "After you’ve figured out what to automate, follow these steps -"
+    }
+  ],
+  "evergreen/chunking": [
+    {
+      "slug": "/evergreen/working-memory-is-a-hindrance-to-learning/",
+      "title": "Working Memory Is a Hindrance to Learning",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-10-13T17:00:00.000Z",
+      "snippet": "That’s why Chunking is a good strategy."
     }
   ]
 }
