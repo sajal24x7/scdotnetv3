@@ -990,6 +990,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/abscond-2026-10-13",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-13"
+		},
+		"deportment": {
+			"word": "deportment",
+			"pos": "other",
+			"gloss": " noun Deportment refers to the way in which one conducts oneself especially in a formal setting.",
+			"pronunciation": "dih-PORT-munt",
+			"example": "The new students were instructed in proper dress and deportment.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/deportment-2026-10-14",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-14"
 		}
 	}
 }
