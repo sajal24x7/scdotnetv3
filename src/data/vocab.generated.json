@@ -1000,6 +1000,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/deportment-2026-10-14",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-14"
+		},
+		"outlandish": {
+			"word": "outlandish",
+			"pos": "other",
+			"gloss": " adjective Outlandish can describe things that are strikingly strange or unusual; in this use, it’s a synonym of bizarre. Outlandish can also describe things, such as claims, rumors, and accusations, that go beyond reasonable limits or standards.",
+			"pronunciation": "out-LAN-dish",
+			"example": "One of the author’s greatest strengths is her ability to write outlandish characters whose quirks remain lodged in readers’ minds long after they’ve finished the book. // When asked to back up his outlandish claims, the mayor quickly changed the subject, all but admitting that he had no proof for his allegations.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/outlandish-2026-10-15",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-15"
 		}
 	}
 }
