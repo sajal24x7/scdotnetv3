@@ -347,6 +347,28 @@ function getPostUrl(post) {
   return `https://sajalchoudhary.net/${post.data.category}/${post.slug}/`;
 }
 
+const HAIKU_PAGE_URL = 'https://sajalchoudhary.net/haiku/';
+
+/**
+ * Haiku posts: the full verse, line breaks kept, then a link to the
+ * /haiku/ page (not the single post) so readers can find the rest.
+ * A haiku that somehow overflows keeps as many whole lines as fit.
+ */
+function formatHaikuPost(post, config, hashtagsText) {
+  const footer = `\n\nRead all haiku: ${HAIKU_PAGE_URL}`
+    + (hashtagsText ? `\n\n${hashtagsText}` : '');
+  const available = config.maxLength - footer.length;
+  const lines = cleanMicroBody(post.body).split('\n');
+
+  let verse = lines.join('\n');
+  while (verse.length > available && lines.length > 1) {
+    lines.pop();
+    verse = `${lines.join('\n')}\n…`;
+  }
+
+  return (verse || post.data.title || 'New haiku') + footer;
+}
+
 /**
  * Format content for a specific platform
  */
@@ -363,6 +385,8 @@ export function formatContentForPlatform(post, platform) {
 
   if (NON_LINK_CATEGORIES.has(category)) {
     content = formatNonLinkPost(post, config, hashtagsText);
+  } else if (category === 'haiku') {
+    content = formatHaikuPost(post, config, hashtagsText);
   } else if (category === 'micro' || category === 'photo') {
     // Micro and photo posts: if the full text fits within the platform
     // limit, post it verbatim with no link back to the site.

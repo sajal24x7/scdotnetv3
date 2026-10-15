@@ -41,9 +41,11 @@ existing one) shifts the numbers after it.
 
 ## Syndication
 
-Haiku are in the `rss` list of `publication.config.json` but **not** in
-`syndication`, so they do not cross-post to Mastodon, Bluesky or Threads.
-Add `"haiku": "all"` under `syndication` to turn that on.
+Haiku are in both the `rss` and `syndication` lists of
+`publication.config.json`, so they cross-post to Mastodon, Bluesky and Threads
+(not Instagram, which is photo-only). Each post carries the full verse with its
+line breaks, then a "Read all haiku" link to `/haiku/` rather than to the
+single haiku. See `formatHaikuPost()` in `scripts/lib/content-formatter.js`.
 
 ## Checks
 
