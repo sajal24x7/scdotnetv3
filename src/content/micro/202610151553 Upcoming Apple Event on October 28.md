@@ -1,10 +1,16 @@
 ---
-title: "Upcoming Apple Event on October 28"
-slug: "upcoming-apple-event-on-october-28"
-created: 2026-10-15T15:53:00+03:00
-updated: 2026-10-15T15:56:15+03:00
+title: Upcoming Apple Event on October 28
+slug: upcoming-apple-event-on-october-28
+created: 2026-10-15T12:53:00.000Z
+updated: 2026-10-15T12:56:15.000Z
 category: micro
-tags: ["apple", "mac"]
+tags:
+  - apple
+  - mac
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117445982613014935'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mxwjtjfrqi26'
+  - 'https://www.threads.com/@sajal24x7/post/DehcNPfGs7Q'
 ---
 [Apple Now Inviting Media to October 28 'Launch Experience' by Hartley Charlton](https://www.macrumors.com/2026/10/15/apple-inviting-media-to-october-28-experience/)
 
