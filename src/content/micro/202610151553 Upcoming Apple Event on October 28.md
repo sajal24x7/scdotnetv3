@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - apple
-  - mac
-category: micro
+title: "Upcoming Apple Event on October 28"
+slug: "upcoming-apple-event-on-october-28"
+created: 2026-10-15T15:53:00+03:00
 updated: 2026-10-15T15:56:15+03:00
+category: micro
+tags: ["apple", "mac"]
 ---
 [Apple Now Inviting Media to October 28 'Launch Experience' by Hartley Charlton](https://www.macrumors.com/2026/10/15/apple-inviting-media-to-october-28-experience/)
 
