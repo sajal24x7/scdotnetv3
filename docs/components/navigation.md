@@ -18,16 +18,16 @@ The header always renders the multi-level navigation; the legacy `NavigationMenu
 - **Primary nav** – Hard-coded `mainNavItems` array of the five top-level sections: Garden, Stream, Nordletter, Shelf, About. Each link declares its active/inactive class sets so the island can toggle states. Server-side heuristics mark the active item when `currentPage` matches the prefix.
 - **Secondary nav** – Section-specific children, pre-rendered for every section and hidden with the `hidden` attribute when inactive:
   - **About** → Colophon, Now, Feeds
-  - **Garden** → Evergreen, TIL, Stories, Poems
-  - **Shelf** → Books (`/bookshelf/`), Film (`/filmshelf/`), TV (`/tvshelf/`), Games (`/gameshelf/`)
-  - **Stream** → Blog, Micro, Photos
+  - **Garden** → Evergreen, TIL, Story, Poem, Haiku
+  - **Shelf** → Book (`/bookshelf/`), Film (`/filmshelf/`), TV (`/tvshelf/`), Game (`/gameshelf/`)
+  - **Stream** → Blog, Micro, Photo
 - **Tag overrides** – When visiting `/tags/?category=til`, the island script remaps the active main/secondary links using its `categoryMappings` table, ensuring tag filters mirror the canonical section highlighting.
 
 Shelf is its own top-level section, not a Garden child, and there is no third nav strip. The Books page (`/books/`, published works) has no primary-nav entry — it is reached from the footer.
 
 ## Footer Nav
 
-`src/components/Footer.astro` renders a flat `footerNavItems` list below the fold, in this order: About, Colophon, Now, Books, Evergreen, TIL, Stories, Poems, Photos. It carries no active state and exists to surface pages that have no primary-nav home of their own (notably `/books/`) alongside the most-visited section children.
+`src/components/Footer.astro` renders a flat `footerNavItems` list below the fold, in this order: About, Colophon, Now, Books, Evergreen, TIL, Story, Poem, Haiku, Photo. Section labels are singular to match the category names; `Books` stays plural because `/books/` is the published-works page, not a section. It carries no active state and exists to surface pages that have no primary-nav home of their own (notably `/books/`) alongside the most-visited section children.
 
 ## Styling Notes
 
