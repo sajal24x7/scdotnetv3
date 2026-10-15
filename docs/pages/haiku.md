@@ -43,8 +43,8 @@ existing one) shifts the numbers after it.
 
 Haiku are in both the `rss` and `syndication` lists of
 `publication.config.json`, so they cross-post to Mastodon, Bluesky and Threads
-(not Instagram, which is photo-only). Each post carries the full verse with its
-line breaks, then a "Read all haiku" link to `/haiku/` rather than to the
+(not Instagram, which is photo-only). Each post carries the haiku number ("No. 12") and
+the full verse with its line breaks, then a "Read all haiku" link to `/haiku/` rather than to the
 single haiku. See `formatHaikuPost()` in `scripts/lib/content-formatter.js`.
 
 ## Checks

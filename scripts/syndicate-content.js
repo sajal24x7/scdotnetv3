@@ -83,6 +83,13 @@ async function getAllPosts() {
     }
   }
 
+  // Haiku carry their place in the practice ("No. 12"), oldest = 1.
+  // Mirrors numberHaiku() in src/utils/haiku.ts so the number matches the site.
+  posts
+    .filter(post => post.data.category === 'haiku')
+    .sort((a, b) => (a.data.pubDate.getTime() || 0) - (b.data.pubDate.getTime() || 0))
+    .forEach((post, index) => { post.data.haikuNumber = index + 1; });
+
   return posts;
 }
 

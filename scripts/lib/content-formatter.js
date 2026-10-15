@@ -350,14 +350,16 @@ function getPostUrl(post) {
 const HAIKU_PAGE_URL = 'https://sajalchoudhary.net/haiku/';
 
 /**
- * Haiku posts: the full verse, line breaks kept, then a link to the
+ * Haiku posts: the number ("No. 12"), the full verse with line breaks
+ * kept, then a link to the
  * /haiku/ page (not the single post) so readers can find the rest.
  * A haiku that somehow overflows keeps as many whole lines as fit.
  */
 function formatHaikuPost(post, config, hashtagsText) {
   const footer = `\n\nRead all haiku: ${HAIKU_PAGE_URL}`
     + (hashtagsText ? `\n\n${hashtagsText}` : '');
-  const available = config.maxLength - footer.length;
+  const header = post.data.haikuNumber ? `No. ${post.data.haikuNumber}\n\n` : '';
+  const available = config.maxLength - header.length - footer.length;
   const lines = cleanMicroBody(post.body).split('\n');
 
   let verse = lines.join('\n');
@@ -366,7 +368,7 @@ function formatHaikuPost(post, config, hashtagsText) {
     verse = `${lines.join('\n')}\n…`;
   }
 
-  return (verse || post.data.title || 'New haiku') + footer;
+  return header + (verse || post.data.title || 'New haiku') + footer;
 }
 
 /**
