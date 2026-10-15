@@ -4,12 +4,11 @@ import StreamLayout from '../../components/layout/StreamLayout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
 import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
-import { numberHaiku } from '../../utils/haiku';
 
-// Newest first, each numbered by its place in the practice (oldest = No. 1)
+// Newest first, each showing its frontmatter `number` (oldest = No. 1)
 const allPosts = await getAllPosts();
 const transformedPosts = getPostsByCategory(allPosts, ['haiku']).map(transformPost);
-const numbers = numberHaiku(transformedPosts);
+const numbers = new Map(transformedPosts.map((post) => [post.id, post.data.number]));
 
 const sectionLandingProps = createSectionLandingProps(
   {

@@ -358,7 +358,7 @@ const HAIKU_PAGE_URL = 'https://sajalchoudhary.net/haiku/';
 function formatHaikuPost(post, config, hashtagsText) {
   const footer = `\n\nRead all haiku: ${HAIKU_PAGE_URL}`
     + (hashtagsText ? `\n\n${hashtagsText}` : '');
-  const header = post.data.haikuNumber ? `No. ${post.data.haikuNumber}\n\n` : '';
+  const header = post.data.number ? `No. ${post.data.number}\n\n` : '';
   const available = config.maxLength - header.length - footer.length;
   const lines = cleanMicroBody(post.body).split('\n');
 

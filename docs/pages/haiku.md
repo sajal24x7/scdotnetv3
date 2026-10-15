@@ -23,11 +23,19 @@ neither do I
 
 ## Numbering
 
-Every haiku is numbered automatically by its place in the practice, oldest
-first (`numberHaiku()` in `src/utils/haiku.ts`). The number is worked out from
-`created` at build time, so there is nothing to set in frontmatter. A new
-haiku gets the next number. Backdating a haiku (a `created` earlier than an
-existing one) shifts the numbers after it.
+Every haiku has a `number:` in its frontmatter: its place in the practice,
+oldest first. You don't set it yourself. `scripts/number_haiku.py` runs at the
+end of `sort-inbox.sh` in the publishing pipeline and gives each new haiku the
+next number after the current highest (several new ones are numbered oldest
+`created` first). Numbers already set are never changed, so a backdated haiku
+still goes to the end. To renumber, edit `number:` by hand.
+
+The site (`/haiku/` and the single post page) and the syndication script both
+read this field, so there is one source for the number. Run it by hand with
+`npm run number-haiku`.
+
+A haiku re-synced from the vault keeps its number: `sort-inbox.sh` carries
+over frontmatter fields the vault copy lacks (`--merge-missing`).
 
 ## Where haiku show up
 
@@ -46,9 +54,3 @@ Haiku are in both the `rss` and `syndication` lists of
 (not Instagram, which is photo-only). Each post carries the haiku number ("No. 12") and
 the full verse with its line breaks, then a "Read all haiku" link to `/haiku/` rather than to the
 single haiku. See `formatHaikuPost()` in `scripts/lib/content-formatter.js`.
-
-## Checks
-
-```sh
-node --experimental-strip-types src/utils/__checks__/haiku.check.ts
-```

@@ -26,7 +26,7 @@ Micro and photo posts get special formatting in `scripts/lib/content-formatter.j
 
 ## Haiku
 
-Haiku post their number (`No. 12`, counted the same way as on the site) and the full verse, line breaks kept, followed by `Read all haiku: https://sajalchoudhary.net/haiku/` and any hashtags. The link always points at the `/haiku/` page, not the single post. If a haiku ever overflows a platform limit, whole trailing lines are dropped and replaced with `…` so the link still fits.
+Haiku post their number (`No. 12`, from the haiku's `number:` frontmatter) and the full verse, line breaks kept, followed by `Read all haiku: https://sajalchoudhary.net/haiku/` and any hashtags. The link always points at the `/haiku/` page, not the single post. If a haiku ever overflows a platform limit, whole trailing lines are dropped and replaced with `…` so the link still fits.
 
 ## Configuration
 

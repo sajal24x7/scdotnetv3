@@ -45,6 +45,9 @@ for file in "$INBOX"/*.md; do
   fi
 done
 
+# Give newly arrived haiku their `number:` (oldest = 1)
+python3 scripts/number_haiku.py
+
 echo ""
 echo "Done: $MOVED moved, $FAILED failed."
 [ "$FAILED" -eq 0 ] || exit 1
