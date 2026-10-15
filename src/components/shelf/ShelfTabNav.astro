@@ -7,10 +7,10 @@ const { currentTab } = Astro.props;
 
 const tabLabels: Record<typeof currentTab, string> = {
     all: 'Shelf',
-    books: 'Books',
+    books: 'Book',
     film: 'Film',
     tv: 'TV',
-    games: 'Games',
+    games: 'Game',
 };
 
 const label = tabLabels[currentTab];

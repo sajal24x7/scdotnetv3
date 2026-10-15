@@ -28,7 +28,7 @@ export const FEED_CATEGORIES: string[] = POST_GROUP_CATEGORIES;
 const CATEGORY_LABELS: Record<string, string> = {
   blog: 'Blog',
   micro: 'Micro',
-  photo: 'Photos',
+  photo: 'Photo',
   evergreen: 'Evergreen',
   til: 'TIL',
   bookshelf: 'Bookshelf',
