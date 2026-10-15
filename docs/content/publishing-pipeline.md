@@ -81,11 +81,12 @@ expectations" below says all Obsidian notes go through the inbox Shortcut;
 in practice at least one edit to an already-existing note did not) — worth
 checking if you want that path closed too.
 
-#### Haiku numbering
+#### Haiku numbering and tag
 
-After moving notes, `sort-inbox.sh` runs `scripts/number_haiku.py`, which
+After moving notes, `sort-inbox.sh` runs `scripts/haiku_frontmatter.py`, which
 writes `number:` into any haiku that lacks one (next after the current
-highest). See [Haiku](../pages/haiku.md#numbering).
+highest) and adds the `haiku` tag where missing. See
+[Haiku](../pages/haiku.md#numbering).
 
 #### Shelf queue reconciliation (step 3)
 
