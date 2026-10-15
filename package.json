@@ -33,7 +33,7 @@
     "send-webmentions": "node scripts/send-webmentions.js",
     "send-webmentions:dry-run": "WEBMENTIONS_DRY_RUN=true node scripts/send-webmentions.js",
     "sort-inbox": "bash scripts/sort-inbox.sh",
-    "number-haiku": "python3 scripts/number_haiku.py",
+    "haiku-frontmatter": "python3 scripts/haiku_frontmatter.py",
     "reconcile-shelf-queue": "node scripts/reconcile-shelf-queue.js"
   },
   "dependencies": {

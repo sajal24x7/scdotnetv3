@@ -24,7 +24,7 @@ neither do I
 ## Numbering
 
 Every haiku has a `number:` in its frontmatter: its place in the practice,
-oldest first. You don't set it yourself. `scripts/number_haiku.py` runs at the
+oldest first. You don't set it yourself. `scripts/haiku_frontmatter.py` runs at the
 end of `sort-inbox.sh` in the publishing pipeline and gives each new haiku the
 next number after the current highest (several new ones are numbered oldest
 `created` first). Numbers already set are never changed, so a backdated haiku
@@ -32,10 +32,16 @@ still goes to the end. To renumber, edit `number:` by hand.
 
 The site (`/haiku/` and the single post page) and the syndication script both
 read this field, so there is one source for the number. Run it by hand with
-`npm run number-haiku`.
+`npm run haiku-frontmatter`.
 
 A haiku re-synced from the vault keeps its number: `sort-inbox.sh` carries
 over frontmatter fields the vault copy lacks (`--merge-missing`).
+
+## Tags
+
+Tags are optional. The same script adds `haiku` to every haiku's `tags:`
+(keeping any others), so each one is tagged on the site and goes out with a
+`#haiku` hashtag on socials.
 
 ## Where haiku show up
 

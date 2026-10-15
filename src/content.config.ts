@@ -48,7 +48,7 @@ const postsSchema = z.object({
     // photos grid and post-page carousel can render them natively.
     images: z.array(z.string()).optional(),
     edition: z.number().optional(),
-    // Haiku: place in the practice ("No. 12"), set by scripts/number_haiku.py
+    // Haiku: place in the practice ("No. 12"), set by scripts/haiku_frontmatter.py
     number: z.number().int().positive().optional(),
     format: z.string().optional(),
     genre: z.string().optional(),
