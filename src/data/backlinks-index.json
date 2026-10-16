@@ -7524,6 +7524,74 @@
       "snippet": "I finished reading The Reverse Centaur’s Guide to Life After AI today. Like Cory's last book I had read - Enshittification - I knew most of what this book would entail. There was nothing new (for me). As Cory mentions in the Acknowledgement section - \"This books was written on my website pluralistic.net\"."
     }
   ],
+  "bookshelf/inside-the-box": [
+    {
+      "slug": "/evergreen/strategies-for-reading-long-things/",
+      "title": "Strategies for Reading Long Things",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-10-13T17:10:00.000Z",
+      "snippet": "It’s a good idea to complete one chapter each day. I have read a few chapters right now from the book Inside the Box. Of course this is not meant to dissuade oneself from reading. Like one should not think that they need enough time to complete a chapter, otherwise don’t start. Rather, it’s take some time and complete the chapter you start."
+    },
+    {
+      "slug": "/evergreen/working-memory-is-a-hindrance-to-learning/",
+      "title": "Working Memory Is a Hindrance to Learning",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-10-13T17:00:00.000Z",
+      "snippet": "Read this first in Inside the Box."
+    },
+    {
+      "slug": "/evergreen/bounding-the-new-with-the-familiar/",
+      "title": "Bounding the New With the Familiar",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-10-13T16:05:00.000Z",
+      "snippet": "Read about it in Inside the Box, but of course I’ve known of this idea from before. Like, when I wrote somewhere that, unimaginable is usually imaginable, truly unimaginable things are impossible to imagine. I read about a similar idea in Abundance, where they talked about who gets funded for new research - it’s not truly new research, it’s familiar research. Though the story was different there."
+    },
+    {
+      "slug": "/nordletter/nl126-parenting-in-the-fall/",
+      "title": "Parenting in the Fall",
+      "description": "We are sick!",
+      "category": "nordletter",
+      "created": "2026-10-10T09:28:00.000Z",
+      "snippet": "Other than poetry, I finally picked up Inside the Box this week and also Just for fun, which is about Linus and Linux. All hardcovers. I really do love hardcovers. Though I prefer my book - a year of mornings in paperback."
+    },
+    {
+      "slug": "/blog/faug-october-meetup/",
+      "title": "FAUG October Meetup",
+      "description": "",
+      "category": "blog",
+      "created": "2026-10-07T14:00:00.000Z",
+      "snippet": "A funny thing happened as Jukka started his talk. He mentioned they have freedom to try things out in terms of AI development in Elisa. That nobody is telling them what to do. And I thought, but is that good? I am reading Inside the Box right now, and one of the first stories in the book is about how constraints are good and so on."
+    },
+    {
+      "slug": "/evergreen/the-same-story-can-mean-different-things-to-different-people/",
+      "title": "The Same Story Can Mean Different Things to Different People",
+      "description": "",
+      "category": "evergreen",
+      "created": "2026-10-04T17:29:00.000Z",
+      "snippet": "While reading Inside the Box today, I came across the story of Mendelev and how he discovered the periodic table. David talks about how, in a book about sleep, the author mentioned that when he slept, his unconscious mind made sense of all the facts and gave him the solution. Then, David says that's not it. Mendelev had a book contract and he had to write about around 53 elements in a single volume, so he was trying to find a way to group the elements."
+    }
+  ],
+  "blog/azure-and-friends-september-event": [
+    {
+      "slug": "/blog/faug-october-meetup/",
+      "title": "FAUG October Meetup",
+      "description": "",
+      "category": "blog",
+      "created": "2026-10-07T14:00:00.000Z",
+      "snippet": "An encore! I heard the talk last at Azure and Friends september meetup. I don’t think there will be anything new in this one. So let’s see."
+    },
+    {
+      "slug": "/nordletter/nl125-better-talks-and-reading-metaphors/",
+      "title": "Better Talks and Reading Metaphors",
+      "description": "Better presentations and ghost eyed adventures",
+      "category": "nordletter",
+      "created": "2026-10-01T13:44:00.000Z",
+      "snippet": "I was at the Azure and Friends September meetup at the Microsoft office this week, and as I sat through Miska Kytö's talk on cyber security, I wondered why I was liking this talk so much."
+    }
+  ],
   "blog/attending-the-global-ai-bootcamp-in-helsinki": [
     {
       "slug": "/blog/msft-ai-user-group-event-at-nitor/",
@@ -8655,16 +8723,6 @@
       "snippet": "I have been thinking about presentations and talks as well, perhaps because I gave one recently, but more pertinently, because I have seen and heard so many people give talks now that I have an opinion."
     }
   ],
-  "blog/azure-and-friends-september-event": [
-    {
-      "slug": "/nordletter/nl125-better-talks-and-reading-metaphors/",
-      "title": "Better Talks and Reading Metaphors",
-      "description": "Better presentations and ghost eyed adventures",
-      "category": "nordletter",
-      "created": "2026-10-01T13:44:00.000Z",
-      "snippet": "I was at the Azure and Friends September meetup at the Microsoft office this week, and as I sat through Miska Kytö's talk on cyber security, I wondered why I was liking this talk so much."
-    }
-  ],
   "bookshelf/ghost-eye": [
     {
       "slug": "/nordletter/nl125-better-talks-and-reading-metaphors/",
@@ -8703,48 +8761,6 @@
       "category": "nordletter",
       "created": "2026-10-10T09:28:00.000Z",
       "snippet": "I am back into reading poetry. I finished Native Guard and am reading Obit now."
-    }
-  ],
-  "bookshelf/inside-the-box": [
-    {
-      "slug": "/evergreen/strategies-for-reading-long-things/",
-      "title": "Strategies for Reading Long Things",
-      "description": "",
-      "category": "evergreen",
-      "created": "2026-10-13T17:10:00.000Z",
-      "snippet": "It’s a good idea to complete one chapter each day. I have read a few chapters right now from the book Inside the Box. Of course this is not meant to dissuade oneself from reading. Like one should not think that they need enough time to complete a chapter, otherwise don’t start. Rather, it’s take some time and complete the chapter you start."
-    },
-    {
-      "slug": "/evergreen/working-memory-is-a-hindrance-to-learning/",
-      "title": "Working Memory Is a Hindrance to Learning",
-      "description": "",
-      "category": "evergreen",
-      "created": "2026-10-13T17:00:00.000Z",
-      "snippet": "Read this first in Inside the Box."
-    },
-    {
-      "slug": "/evergreen/bounding-the-new-with-the-familiar/",
-      "title": "Bounding the New With the Familiar",
-      "description": "",
-      "category": "evergreen",
-      "created": "2026-10-13T16:05:00.000Z",
-      "snippet": "Read about it in Inside the Box, but of course I’ve known of this idea from before. Like, when I wrote somewhere that, unimaginable is usually imaginable, truly unimaginable things are impossible to imagine. I read about a similar idea in Abundance, where they talked about who gets funded for new research - it’s not truly new research, it’s familiar research. Though the story was different there."
-    },
-    {
-      "slug": "/nordletter/nl126-parenting-in-the-fall/",
-      "title": "Parenting in the Fall",
-      "description": "We are sick!",
-      "category": "nordletter",
-      "created": "2026-10-10T09:28:00.000Z",
-      "snippet": "Other than poetry, I finally picked up Inside the Box this week and also Just for fun, which is about Linus and Linux. All hardcovers. I really do love hardcovers. Though I prefer my book - a year of mornings in paperback."
-    },
-    {
-      "slug": "/evergreen/the-same-story-can-mean-different-things-to-different-people/",
-      "title": "The Same Story Can Mean Different Things to Different People",
-      "description": "",
-      "category": "evergreen",
-      "created": "2026-10-04T17:29:00.000Z",
-      "snippet": "While reading Inside the Box today, I came across the story of Mendelev and how he discovered the periodic table. David talks about how, in a book about sleep, the author mentioned that when he slept, his unconscious mind made sense of all the facts and gave him the solution. Then, David says that's not it. Mendelev had a book contract and he had to write about around 53 elements in a single volume, so he was trying to find a way to group the elements."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [

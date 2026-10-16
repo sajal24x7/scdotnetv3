@@ -409,6 +409,36 @@
       "status": "approved"
     }
   ],
+  "haiku/a-long-day": [
+    {
+      "id": "bluesky:like:3mxwyjcirf22s:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-10-15T23:22:39.754Z",
+      "status": "approved"
+    }
+  ],
+  "haiku/like-home-work": [
+    {
+      "id": "bluesky:like:3mxwyinskx42w:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-10-15T23:22:39.286Z",
+      "status": "approved"
+    }
+  ],
   "micro/202607091101": [
     {
       "id": "bluesky:like:3mq7azzv4qu2w:did:plc:lcbtt32aexvcuwlt4alf6qsw",
@@ -1309,6 +1339,20 @@
       "status": "approved"
     }
   ],
+  "micro/upcoming-apple-event-on-october-28": [
+    {
+      "id": "mastodon:repost:117445982613014935:114863603913131469",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Apple-feed",
+        "url": "https://channel.org/@applefeed",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/863/603/913/131/469/original/52e93c4cb3510276.jpg"
+      },
+      "url": "https://channel.org/@applefeed",
+      "status": "approved"
+    }
+  ],
   "micro/winter-is-coming": [
     {
       "id": "threads:reply:17921139597427685",
@@ -1886,7 +1930,7 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/DeWsMPLIDyA/",
-      "count": 10,
+      "count": 11,
       "status": "approved"
     },
     {
