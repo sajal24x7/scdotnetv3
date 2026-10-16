@@ -28,7 +28,7 @@ export const FEED_CATEGORIES: string[] = POST_GROUP_CATEGORIES;
 const CATEGORY_LABELS: Record<string, string> = {
   blog: 'Blog',
   micro: 'Micro',
-  photo: 'Photos',
+  photo: 'Photo',
   evergreen: 'Evergreen',
   til: 'TIL',
   bookshelf: 'Bookshelf',
@@ -37,6 +37,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   gameshelf: 'Gameshelf',
   story: 'Story',
   poem: 'Poem',
+  haiku: 'Haiku',
   now: 'Now',
   nordletter: 'Nordletter'
 };
@@ -386,6 +387,8 @@ const RENDERERS: Record<string, (post: Post) => string | Promise<string>> = {
   til: renderTil,
   evergreen: renderEvergreen,
   poem: renderPoem,
+  // Haiku read like micro posts: the whole verse, no title
+  haiku: renderMicro,
   story: renderStory,
   bookshelf: renderBookshelf,
   filmshelf: renderFilmshelf,

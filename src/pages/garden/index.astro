@@ -7,9 +7,10 @@ import { createSectionLandingProps } from '../../utils/sectionLanding';
 
 // Get all posts and filter for garden (evergreen, til, stories, poems).
 // Shelf entries (books, films, TV, games) live under /shelf/ and are not part
-// of the garden.
+// of the garden. Haiku belong to the garden group but only show on /haiku/.
 const allPosts = await getAllPosts();
-const gardenPosts = getPostsByCategory(allPosts, 'garden', { sortBy: 'updated' });
+const gardenPosts = getPostsByCategory(allPosts, 'garden', { sortBy: 'updated' })
+  .filter(post => post.data.category !== 'haiku');
 
 // Transform posts for the GardenGrid component
 const transformedPosts = gardenPosts.map(transformPost);

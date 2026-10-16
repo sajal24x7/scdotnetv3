@@ -32,13 +32,13 @@ const postsLoader = (category: string) =>
     },
   });
 
-// Shared post schema (all 14 content categories use this)
+// Shared post schema (all 15 content categories use this)
 const postsSchema = z.object({
     title: z.string().optional(),
     description: z.string().optional(),
     created: dateSchema,
     updated: dateSchema.optional(),
-    category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'bookshelf', 'filmshelf', 'tvshelf', 'gameshelf', 'now', 'til', 'colophon']),
+    category: z.enum(['evergreen', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'haiku', 'bookshelf', 'filmshelf', 'tvshelf', 'gameshelf', 'now', 'til', 'colophon']),
     // Unified status — shared by `now` posts (todo/started/paused/finished a life focus)
     // and shelf posts (todo/started/paused/finished a book/film/show/game)
     status: z.enum(['todo', 'started', 'paused', 'finished']).optional().default('started'),
@@ -48,6 +48,8 @@ const postsSchema = z.object({
     // photos grid and post-page carousel can render them natively.
     images: z.array(z.string()).optional(),
     edition: z.number().optional(),
+    // Haiku: place in the practice ("No. 12"), set by scripts/number_haiku.py
+    number: z.number().int().positive().optional(),
     format: z.string().optional(),
     genre: z.string().optional(),
     layout: z.object({
@@ -111,6 +113,7 @@ export const CONTENT_CATEGORIES = [
   'nordletter',
   'story',
   'poem',
+  'haiku',
   'bookshelf',
   'filmshelf',
   'tvshelf',
@@ -138,6 +141,7 @@ export const collections = {
   'nordletter': postsCollection('nordletter'),
   'story':      postsCollection('story'),
   'poem':       postsCollection('poem'),
+  'haiku':      postsCollection('haiku'),
   'bookshelf':  postsCollection('bookshelf'),
   'filmshelf':  postsCollection('filmshelf'),
   'tvshelf':    postsCollection('tvshelf'),

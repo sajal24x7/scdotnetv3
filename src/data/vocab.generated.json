@@ -960,6 +960,66 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/luddite-2026-10-10",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-10"
+		},
+		"galore": {
+			"word": "galore",
+			"pos": "other",
+			"gloss": " adjective Galore is an informal adjective that describes something as being in large numbers or amounts. It is always used postpositively, that is, after a noun.",
+			"pronunciation": "guh-LOR",
+			"example": "The store promises bargains galore on Black Friday.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/galore-2026-10-11",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-11"
+		},
+		"nexus": {
+			"word": "nexus",
+			"pos": "other",
+			"gloss": " noun A nexus is a relationship or connection between people or things. Nexus can also refer to a connected group or series or to the center or focus of something.",
+			"pronunciation": "NEK-sus",
+			"example": "The cultural district serves as a nexus for art and cuisine.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/nexus-2026-10-12",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-12"
+		},
+		"abscond": {
+			"word": "abscond",
+			"pos": "other",
+			"gloss": " verb To abscond is to leave, flee, or escape a place in secret and go into hiding. Often, someone is said to have absconded with something.",
+			"pronunciation": "ab-SKAHND",
+			"example": "It was mid-semester, when fantasies about absconding from school and leaving the stress of exams behind abound.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/abscond-2026-10-13",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-13"
+		},
+		"deportment": {
+			"word": "deportment",
+			"pos": "other",
+			"gloss": " noun Deportment refers to the way in which one conducts oneself especially in a formal setting.",
+			"pronunciation": "dih-PORT-munt",
+			"example": "The new students were instructed in proper dress and deportment.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/deportment-2026-10-14",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-14"
+		},
+		"outlandish": {
+			"word": "outlandish",
+			"pos": "other",
+			"gloss": " adjective Outlandish can describe things that are strikingly strange or unusual; in this use, it’s a synonym of bizarre. Outlandish can also describe things, such as claims, rumors, and accusations, that go beyond reasonable limits or standards.",
+			"pronunciation": "out-LAN-dish",
+			"example": "One of the author’s greatest strengths is her ability to write outlandish characters whose quirks remain lodged in readers’ minds long after they’ve finished the book. // When asked to back up his outlandish claims, the mayor quickly changed the subject, all but admitting that he had no proof for his allegations.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/outlandish-2026-10-15",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-15"
+		},
+		"zenith": {
+			"word": "zenith",
+			"pos": "other",
+			"gloss": " noun Zenith refers to the strongest or most successful period of time for a person or thing.",
+			"pronunciation": "ZEE-nith",
+			"example": "At its zenith in the 1980s, the company employed more than 300 people.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/zenith-2026-10-16",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-16"
 		}
 	}
 }

@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StreamLayout from '../../components/layout/StreamLayout.astro';
+import SectionLanding from '../../layouts/SectionLanding.astro';
+import { getAllPosts, getPostsByCategory, transformPost } from '../../utils/content';
+import { createSectionLandingProps } from '../../utils/sectionLanding';
+
+// Newest first, each showing its frontmatter `number` (oldest = No. 1)
+const allPosts = await getAllPosts();
+const transformedPosts = getPostsByCategory(allPosts, ['haiku']).map(transformPost);
+const numbers = new Map(transformedPosts.map((post) => [post.id, post.data.number]));
+
+const sectionLandingProps = createSectionLandingProps(
+  {
+    title: 'Haiku',
+    description: 'A haiku a day.',
+    countText: `${transformedPosts.length} haiku`,
+    tagCategory: 'haiku',
+    tagPosts: allPosts,
+    contentClass: 'grid-span-8 grid-start-3',
+    rssUrl: '/haiku/rss.xml'
+  },
+  'plainCount'
+);
+---
+
+<Layout
+  title="Haiku"
+  description="A haiku a day"
+  currentPage="/haiku/"
+  pageWrapper={{
+    maxWidth: '7xl',
+    padding: 'none',
+    centered: true,
+    grid: {
+      gap: 'loose',
+      padding: 'narrow'
+    }
+  }}
+  allPosts={allPosts}
+  enableLinkHoverEffect
+>
+  <SectionLanding {...sectionLandingProps}>
+    <StreamLayout posts={transformedPosts} fullContentCategories={['haiku']} numbers={numbers} />
+  </SectionLanding>
+</Layout>

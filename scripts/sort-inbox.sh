@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-KNOWN_CATEGORIES="til blog micro photo nordletter story poem bookshelf filmshelf tvshelf gameshelf now colophon evergreen"
+KNOWN_CATEGORIES="til blog micro photo nordletter story poem haiku bookshelf filmshelf tvshelf gameshelf now colophon evergreen"
 INBOX="src/content/inbox"
 MOVED=0
 FAILED=0
@@ -44,6 +44,9 @@ for file in "$INBOX"/*.md; do
     FAILED=$((FAILED + 1))
   fi
 done
+
+# Give newly arrived haiku their `number:` (oldest = 1)
+python3 scripts/number_haiku.py
 
 echo ""
 echo "Done: $MOVED moved, $FAILED failed."

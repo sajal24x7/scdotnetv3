@@ -5,7 +5,7 @@ import { findAndReplace } from 'mdast-util-find-and-replace';
 // Must be kept in sync with CONTENT_CATEGORIES in src/content.config.ts.
 // Defined inline here to avoid importing astro:content into astro.config.mjs.
 const CONTENT_CATEGORIES = [
-    'til', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem',
+    'til', 'blog', 'micro', 'photo', 'nordletter', 'story', 'poem', 'haiku',
     'bookshelf', 'filmshelf', 'tvshelf', 'gameshelf', 'now', 'colophon', 'evergreen',
 ] as const;
 

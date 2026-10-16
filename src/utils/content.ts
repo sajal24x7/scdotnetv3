@@ -16,6 +16,7 @@ export interface Post {
     images?: string[];
     tags?: string[];
     edition?: number | string;
+    number?: number;
     editionDisplay?: string;
     format?: string;
     genre?: string;
@@ -102,6 +103,7 @@ export function transformPost(post: Post) {
             created: post.data.created,
             updated: post.data.updated,
             category: post.data.category,
+            number: post.data.number,
             image: post.data.image,
             images: post.data.images,
             tags: post.data.tags,

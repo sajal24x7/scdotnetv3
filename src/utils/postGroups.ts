@@ -6,7 +6,7 @@
 // in one grouping and be missing from another.
 export const POST_GROUPS = {
     stream: ['blog', 'micro', 'photo'],
-    garden: ['evergreen', 'til', 'story', 'poem'],
+    garden: ['evergreen', 'til', 'story', 'poem', 'haiku'],
     shelf: ['bookshelf', 'filmshelf', 'tvshelf', 'gameshelf'],
     // `now` stands on its own: now updates surface in the home feed
     // ("Everything") but never in the garden or any of the garden's feeds.

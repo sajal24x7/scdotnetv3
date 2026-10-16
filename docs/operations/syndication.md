@@ -24,6 +24,10 @@ Micro and photo posts get special formatting in `scripts/lib/content-formatter.j
 - **Images upload natively** – Markdown images (`![alt](url)`) or a photo post's frontmatter `images:` gallery are stripped from the post text and attached as native media instead: uploaded via the media API on Mastodon (up to 4), as an image embed on Bluesky (up to 4, subject to Bluesky's ~1 MB blob limit), and via `image_url` on Threads (first image only). Alt text is passed through to each platform. If an image upload fails, the post still goes out as text with a console warning.
 - **No link back when the text fits** – If the full post text (plus hashtags) fits within the platform's character limit, it is posted verbatim with no "Read more" link back to the site. This applies to both categories, including Instagram (photo-only). Only posts that exceed the limit are truncated and get the link back.
 
+## Haiku
+
+Haiku post their number (`No. 12`, from the haiku's `number:` frontmatter) and the full verse, line breaks kept, followed by `Read all haiku: https://sajalchoudhary.net/haiku/` and any hashtags. The link always points at the `/haiku/` page, not the single post. If a haiku ever overflows a platform limit, whole trailing lines are dropped and replaced with `…` so the link still fits.
+
 ## Configuration
 
 Key environment variables:

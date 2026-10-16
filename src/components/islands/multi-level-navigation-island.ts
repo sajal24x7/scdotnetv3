@@ -24,6 +24,7 @@ const categoryMappings: Record<string, SectionMapping> = {
     story: { main: 'garden', subsection: '/stories/' },
     poems: { main: 'garden', subsection: '/poems/' },
     poem: { main: 'garden', subsection: '/poems/' },
+    haiku: { main: 'garden', subsection: '/haiku/' },
     stream: { main: 'stream' },
     blog: { main: 'stream', subsection: '/blog/' },
     micro: { main: 'stream', subsection: '/micro/' },

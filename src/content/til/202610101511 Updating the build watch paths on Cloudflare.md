@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117417758466906340'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mxjyqo43gb2w'
+  - 'https://www.threads.com/@sajal24x7/post/DeVEu5mgbc3'
 ---
 You go to your project settings > Build > Build watch paths.
 
