@@ -1010,6 +1010,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/outlandish-2026-10-15",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-15"
+		},
+		"zenith": {
+			"word": "zenith",
+			"pos": "other",
+			"gloss": " noun Zenith refers to the strongest or most successful period of time for a person or thing.",
+			"pronunciation": "ZEE-nith",
+			"example": "At its zenith in the 1980s, the company employed more than 300 people.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/zenith-2026-10-16",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-16"
 		}
 	}
 }
