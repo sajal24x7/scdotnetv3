@@ -1248,6 +1248,7 @@
       "haiku/202610121245 Yellow leaves everywhere.md",
       "haiku/202610142209 A long day.md",
       "haiku/202610152036 Week in bed.md",
+      "haiku/202610162252 Sky washed in purple.md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -2445,6 +2446,8 @@
       "til/202609121126 Kubernetes Components.md",
       "til/202609201426 LDAP.md",
       "til/202610101511 Updating the build watch paths on Cloudflare.md",
+      "til/202610152050 ReplicaSets in Kubernetes.md",
+      "til/202610161657 Kubernetes Deployment.md",
       "tvshelf/201901071200 Luther S2.md",
       "tvshelf/201901071201 Luther S1.md",
       "tvshelf/201901281200 Bodyguard S1.md",
@@ -6523,6 +6526,16 @@
       "category": "til",
       "created": "2025-11-24T18:54:37.000Z",
       "snippet": "The authors of continuous delivery prefer commit messages be multiple paragraph."
+    }
+  ],
+  "til/replicasets-in-kubernetes": [
+    {
+      "slug": "/til/kubernetes-deployment/",
+      "title": "Kubernetes Deployment",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-16T13:57:00.000Z",
+      "snippet": "This is a higher level object, one-level up from ReplicaSets. They provide more functionalities and handle more use cases like rolling upgrades, pause deployments, etc."
     }
   ],
   "til/active-directory-domains": [

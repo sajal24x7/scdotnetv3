@@ -1,10 +1,15 @@
 ---
-title: "ReplicaSets in Kubernetes"
-slug: "replicasets-in-kubernetes"
-created: 2026-10-15T20:50:00+03:00
-updated: 2026-10-15T20:53:42+03:00
+title: ReplicaSets in Kubernetes
+slug: replicasets-in-kubernetes
+created: 2026-10-15T17:50:00.000Z
+updated: 2026-10-15T17:53:42.000Z
 category: til
-tags: ["k8s"]
+tags:
+  - k8s
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117451558584925738'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mxyz3763mi2n'
+  - 'https://www.threads.com/@sajal24x7/post/Dej-fY8oGjr'
 ---
 ReplicaSets are a level up from [Pods in Kubernetes](/pods). They are a type of controller (replication-controller) which we use to ensure a certain number of pods are live.
 
