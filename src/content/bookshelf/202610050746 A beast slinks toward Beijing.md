@@ -1,19 +1,22 @@
 ---
-title: "A Beast Slinks Toward Beijing"
-slug: "a-beast-slinks-toward-beijing"
-created: 2026-10-05T07:46:00+03:00
-updated: 2026-10-17T13:27:02+03:00
+title: A Beast Slinks Toward Beijing
+slug: a-beast-slinks-toward-beijing
+created: 2026-10-05T04:46:00.000Z
+updated: 2026-10-17T10:27:02.000Z
 category: bookshelf
-tags: ["china", "history"]
+tags:
+  - china
+  - history
 author:
   - Alice Evelyn Yang
-started: 2026-10-05T07:46:00
-finished: 2026-10-17T13:16:00
+started: 2026-10-05T07:46:00.000Z
+finished: 2026-10-17T13:16:00.000Z
 genre: historical-fiction
 format: audiobook
 rating: like
 status: finished
 cover: a-beast-slinks-toward-beijing.webp
+year: 2026
 ---
 ## Review
 
