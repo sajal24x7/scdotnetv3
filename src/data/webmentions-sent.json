@@ -155,6 +155,10 @@
     "checkedAt": "2026-08-15T21:34:15.099Z",
     "endpoint": null
   },
+  "https://sajalchoudhary.net/micro/not-solitaire/\u0000https://notsolitaire.com/": {
+    "checkedAt": "2026-10-17T15:31:17.186Z",
+    "endpoint": null
+  },
   "https://sajalchoudhary.net/micro/notes-on-muse-ai-by-meta/\u0000https://www.theverge.com/tech/993391/meta-muse-ai-hands-on": {
     "checkedAt": "2026-09-13T11:48:49.775Z",
     "endpoint": null
@@ -467,6 +471,14 @@
   },
   "https://sajalchoudhary.net/nordletter/nl126-parenting-in-the-fall/\u0000https://mastodon.social/@sajal24x7": {
     "checkedAt": "2026-10-10T21:42:07.863Z",
+    "endpoint": null
+  },
+  "https://sajalchoudhary.net/nordletter/nl127-17-syllables-and-an-idea/\u0000https://en.wikipedia.org/wiki/Haiku": {
+    "checkedAt": "2026-10-17T15:31:17.764Z",
+    "endpoint": null
+  },
+  "https://sajalchoudhary.net/nordletter/nl127-17-syllables-and-an-idea/\u0000https://mastodon.social/@sajal24x7": {
+    "checkedAt": "2026-10-17T15:31:17.621Z",
     "endpoint": null
   },
   "https://sajalchoudhary.net/til/kubernetes-components/\u0000https://kubernetes.io/docs/concepts/architecture/nodes/": {

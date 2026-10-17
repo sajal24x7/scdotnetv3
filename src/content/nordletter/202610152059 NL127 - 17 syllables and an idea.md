@@ -1,13 +1,22 @@
 ---
-title: "NL127 - 17 Syllables and an Idea"
-slug: "nl127-17-syllables-and-an-idea"
-created: 2026-10-15T20:59:00+03:00
-updated: 2026-10-17T16:50:07+03:00
+title: NL127 - 17 Syllables and an Idea
+slug: nl127-17-syllables-and-an-idea
+created: 2026-10-15T17:59:00.000Z
+updated: 2026-10-17T13:50:07.000Z
 category: nordletter
-tags: ["helsinki", "constraints", "reading", "haiku", "writing"]
+tags:
+  - helsinki
+  - constraints
+  - reading
+  - haiku
+  - writing
 edition: 127
-description: "The power of constraints"
-image: "https://storage.sajalchoudhary.net/images/2026/10/nl127-01.jpeg"
+description: The power of constraints
+image: 'https://storage.sajalchoudhary.net/images/2026/10/nl127-01.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117456965524663967'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3my3fvy5wbz26'
+  - 'https://www.threads.com/@sajal24x7/post/Demb2ozGzAa'
 ---
 Hello from my home in Helsinki! This is NordLetter #127, a weekly newsletter on living and walking in Finland.
 
