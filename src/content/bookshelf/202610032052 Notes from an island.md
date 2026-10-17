@@ -12,7 +12,6 @@ finished: 2026-10-04T14:34:00
 genre: biography
 format: audiobook
 rating: nope
-series:
 status: finished
 year: 2021
 cover: notes-from-an-island.webp
