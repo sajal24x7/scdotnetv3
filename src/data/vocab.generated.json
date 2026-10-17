@@ -1020,6 +1020,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/zenith-2026-10-16",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-16"
+		},
+		"syncretic": {
+			"word": "syncretic",
+			"pos": "other",
+			"gloss": " adjective Syncretic describes things that are characterized or brought about by a combination of different forms of belief or practice.",
+			"pronunciation": "sin-KRET-ik",
+			"example": "We were raised with a syncretic religion that combined practices from various faiths.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/syncretic-2026-10-17",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-17"
 		}
 	}
 }
