@@ -623,6 +623,7 @@
       "bookshelf/202610050746 A beast slinks toward Beijing.md",
       "bookshelf/202610101315 Obit.md",
       "bookshelf/202610150823 The Goal.md",
+      "bookshelf/202610171424 Plot Twist.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
@@ -1249,6 +1250,7 @@
       "haiku/202610142209 A long day.md",
       "haiku/202610152036 Week in bed.md",
       "haiku/202610162252 Sky washed in purple.md",
+      "haiku/202610172139 Cold water hisses.md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -1669,6 +1671,7 @@
       "micro/202610102345.md",
       "micro/202610131825 HomeView looks cool.md",
       "micro/202610151553 Upcoming Apple Event on October 28.md",
+      "micro/202610171446 Not Solitaire.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1794,6 +1797,7 @@
       "nordletter/202609241320 NL124 - Speaking Gigs.md",
       "nordletter/202610011644 NL125 - Better talks and reading metaphors.md",
       "nordletter/202610101228 NL126 - Parenting in the fall.md",
+      "nordletter/202610152059 NL127 - 17 syllables and an idea.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -2444,6 +2448,7 @@
       "til/202608231422 How to delete multipass vms.md",
       "til/202608231425 How to change shell in linux.md",
       "til/202609121126 Kubernetes Components.md",
+      "til/202609171142 Pods.md",
       "til/202609201426 LDAP.md",
       "til/202610101511 Updating the build watch paths on Cloudflare.md",
       "til/202610152050 ReplicaSets in Kubernetes.md",
@@ -4632,6 +4637,14 @@
     }
   ],
   "til/kubernetes": [
+    {
+      "slug": "/til/pods/",
+      "title": "Pods",
+      "description": "",
+      "category": "til",
+      "created": "2026-09-17T08:42:00.000Z",
+      "snippet": "Pods are the smallest unit of compute in Kubernetes."
+    },
     {
       "slug": "/til/azure-kubernetes-service/",
       "title": "Azure Kubernetes Service",
@@ -7233,6 +7246,14 @@
   ],
   "bookshelf/range": [
     {
+      "slug": "/nordletter/nl127-17-syllables-and-an-idea/",
+      "title": "NL127 - 17 Syllables and an Idea",
+      "description": "The power of constraints",
+      "category": "nordletter",
+      "created": "2026-10-15T17:59:00.000Z",
+      "snippet": "I am reading Inside the Box, and like Range before this, there seem to be many new things for me to read about and learn in this book. Also, it's more approachable. Which is because it is using (not sure if by design) one of the techniques from how to learn effectively - making connections."
+    },
+    {
       "slug": "/nordletter/nl115/",
       "title": "Learning How to Learn",
       "description": "A week of fasting, learning about learning and a new philosophy",
@@ -7538,6 +7559,14 @@
     }
   ],
   "bookshelf/inside-the-box": [
+    {
+      "slug": "/nordletter/nl127-17-syllables-and-an-idea/",
+      "title": "NL127 - 17 Syllables and an Idea",
+      "description": "The power of constraints",
+      "category": "nordletter",
+      "created": "2026-10-15T17:59:00.000Z",
+      "snippet": "I am reading Inside the Box, and like Range before this, there seem to be many new things for me to read about and learn in this book. Also, it's more approachable. Which is because it is using (not sure if by design) one of the techniques from how to learn effectively - making connections."
+    },
     {
       "slug": "/evergreen/strategies-for-reading-long-things/",
       "title": "Strategies for Reading Long Things",
@@ -8017,6 +8046,14 @@
   ],
   "bookshelf/this-and-that": [
     {
+      "slug": "/nordletter/nl127-17-syllables-and-an-idea/",
+      "title": "NL127 - 17 Syllables and an Idea",
+      "description": "The power of constraints",
+      "category": "nordletter",
+      "created": "2026-10-15T17:59:00.000Z",
+      "snippet": "Another interesting example that David gave was about haikus. I had read a book of haikus recently This and that by Ryokan and had loved some of the haikus in it, like this one:"
+    },
+    {
       "slug": "/nordletter/nl-100/",
       "title": "Celebrating Formats",
       "description": "",
@@ -8478,6 +8515,14 @@
   ],
   "evergreen/how-to-learn-effectively": [
     {
+      "slug": "/nordletter/nl127-17-syllables-and-an-idea/",
+      "title": "NL127 - 17 Syllables and an Idea",
+      "description": "The power of constraints",
+      "category": "nordletter",
+      "created": "2026-10-15T17:59:00.000Z",
+      "snippet": "I am reading Inside the Box, and like Range before this, there seem to be many new things for me to read about and learn in this book. Also, it's more approachable. Which is because it is using (not sure if by design) one of the techniques from how to learn effectively - making connections."
+    },
+    {
       "slug": "/nordletter/nl115/",
       "title": "Learning How to Learn",
       "description": "A week of fasting, learning about learning and a new philosophy",
@@ -8560,6 +8605,14 @@
   ],
   "bookshelf/breakneck": [
     {
+      "slug": "/bookshelf/a-beast-slinks-toward-beijing/",
+      "title": "A Beast Slinks Toward Beijing",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-10-05T04:46:00.000Z",
+      "snippet": "Books have this way of binding you down to time and place like the Amitav Ghosh book - Ghost-Eye before this, which was which was about 1960s Calcutta. This book is about three time periods in China - the Japanese invasion of China, the Cultural Revolution, and the present time. I had read about the horrors of the Cultural Revolution in Breakneck, but not this viscerally."
+    },
+    {
       "slug": "/bookshelf/anxious-people/",
       "title": "Anxious People",
       "description": "",
@@ -8577,6 +8630,14 @@
     }
   ],
   "bookshelf/atomic-habits": [
+    {
+      "slug": "/nordletter/nl127-17-syllables-and-an-idea/",
+      "title": "NL127 - 17 Syllables and an Idea",
+      "description": "The power of constraints",
+      "category": "nordletter",
+      "created": "2026-10-15T17:59:00.000Z",
+      "snippet": "One problem in my mind was always thinking I needed half an hour or so to sit and study. Taking some lessons from Atomic Habits and some from this book, I decided to find the shortest thing I could do - a lesson. And I said, that's what I would track."
+    },
     {
       "slug": "/nordletter/nl120-from-oodi-to-a-mentor/",
       "title": "From Oodi to a Mentor",
@@ -8698,6 +8759,14 @@
   ],
   "bookshelf/sculptors-daughter": [
     {
+      "slug": "/bookshelf/notes-from-an-island/",
+      "title": "Notes From an Island",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-10-03T17:52:00.000Z",
+      "snippet": "My next book in reading Tove Jansson's biographical stories after Sculptor’s Daughter."
+    },
+    {
       "slug": "/nordletter/nl123-reverse-centaurs-new-teams-and-moomins/",
       "title": "Reverse Centaurs, New Teams, and Moomins",
       "description": "Reading Cory's newest book and reminiscing about moomins",
@@ -8738,6 +8807,14 @@
   ],
   "bookshelf/ghost-eye": [
     {
+      "slug": "/bookshelf/a-beast-slinks-toward-beijing/",
+      "title": "A Beast Slinks Toward Beijing",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-10-05T04:46:00.000Z",
+      "snippet": "Books have this way of binding you down to time and place like the Amitav Ghosh book - Ghost-Eye before this, which was which was about 1960s Calcutta. This book is about three time periods in China - the Japanese invasion of China, the Cultural Revolution, and the present time. I had read about the horrors of the Cultural Revolution in Breakneck, but not this viscerally."
+    },
+    {
       "slug": "/nordletter/nl125-better-talks-and-reading-metaphors/",
       "title": "Better Talks and Reading Metaphors",
       "description": "Better presentations and ghost eyed adventures",
@@ -8774,6 +8851,43 @@
       "category": "nordletter",
       "created": "2026-10-10T09:28:00.000Z",
       "snippet": "I am back into reading poetry. I finished Native Guard and am reading Obit now."
+    }
+  ],
+  "evergreen/bounding-the-new-with-the-familiar": [
+    {
+      "slug": "/nordletter/nl127-17-syllables-and-an-idea/",
+      "title": "NL127 - 17 Syllables and an Idea",
+      "description": "The power of constraints",
+      "category": "nordletter",
+      "created": "2026-10-15T17:59:00.000Z",
+      "snippet": "I wrote about this in bounding the new with the familiar, where I wrote about reading how new research gets funded in Abundance. I find this type of reinforcement useful."
+    }
+  ],
+  "evergreen/write-more": [
+    {
+      "slug": "/nordletter/nl127-17-syllables-and-an-idea/",
+      "title": "NL127 - 17 Syllables and an Idea",
+      "description": "The power of constraints",
+      "category": "nordletter",
+      "created": "2026-10-15T17:59:00.000Z",
+      "snippet": "And as I wrote about in writing more, I find that writing begets more writing. And anything I can do to write more, I will do."
+    },
+    {
+      "slug": "/nordletter/nl70-build-or-break/",
+      "title": "Build or Break",
+      "description": "",
+      "category": "nordletter",
+      "created": "2025-09-07T03:05:16.000Z"
+    }
+  ],
+  "now/learning-microservices-and-k8s": [
+    {
+      "slug": "/nordletter/nl127-17-syllables-and-an-idea/",
+      "title": "NL127 - 17 Syllables and an Idea",
+      "description": "The power of constraints",
+      "category": "nordletter",
+      "created": "2026-10-15T17:59:00.000Z",
+      "snippet": "That's what I'm trying to do with re-learning k8s."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
@@ -8844,15 +8958,6 @@
       "category": "nordletter",
       "created": "2025-08-31T03:30:49.000Z",
       "snippet": "Inspired me to write Why journal."
-    }
-  ],
-  "evergreen/write-more": [
-    {
-      "slug": "/nordletter/nl70-build-or-break/",
-      "title": "Build or Break",
-      "description": "",
-      "category": "nordletter",
-      "created": "2025-09-07T03:05:16.000Z"
     }
   ],
   "evergreen/humans-and-algorithms-think-differently-when-coming-to-a-decision": [

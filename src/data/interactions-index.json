@@ -1876,18 +1876,6 @@
       "status": "approved"
     },
     {
-      "id": "mastodon:repost:117376772027012261:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    },
-    {
       "id": "threads:like-count:DeB960gm1G9",
       "type": "like-count",
       "platform": "threads",
