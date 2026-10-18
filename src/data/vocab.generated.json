@@ -1030,6 +1030,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/syncretic-2026-10-17",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-17"
+		},
+		"bon-vivant": {
+			"word": "bon vivant",
+			"pos": "other",
+			"gloss": " noun A bon vivant is a sociable person who has refined tastes especially with respect to food and drink.",
+			"pronunciation": "bahn-vee-VAHNT",
+			"example": "She has become something of a bon vivant since moving to Paris, going out most nights and delighting in the city's many restaurants.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/bon-vivant-2026-10-18",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-18"
 		}
 	}
 }
