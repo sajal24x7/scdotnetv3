@@ -410,6 +410,21 @@
       "status": "approved"
     }
   ],
+  "haiku/goddess-on-stage": [
+    {
+      "id": "bluesky:like:3myaxsipa4f2u:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-10-20T00:26:19.199Z",
+      "status": "approved"
+    }
+  ],
   "haiku/like-home-work": [
     {
       "id": "bluesky:like:3mxwyinskx42w:did:plc:4hi2oj4spvsud6tpbdv37lec",
