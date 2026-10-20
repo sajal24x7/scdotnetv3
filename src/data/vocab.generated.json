@@ -1030,6 +1030,36 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/syncretic-2026-10-17",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-17"
+		},
+		"bon-vivant": {
+			"word": "bon vivant",
+			"pos": "other",
+			"gloss": " noun A bon vivant is a sociable person who has refined tastes especially with respect to food and drink.",
+			"pronunciation": "bahn-vee-VAHNT",
+			"example": "She has become something of a bon vivant since moving to Paris, going out most nights and delighting in the city's many restaurants.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/bon-vivant-2026-10-18",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-18"
+		},
+		"fervid": {
+			"word": "fervid",
+			"pos": "other",
+			"gloss": " adjective Fervid is used to describe people or things that express or are expressive of strong feelings.",
+			"pronunciation": "FER-vid",
+			"example": "The core of the book is the fervid letters the friends exchanged during the years they were apart.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/fervid-2026-10-19",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-19"
+		},
+		"compunction": {
+			"word": "compunction",
+			"pos": "other",
+			"gloss": " noun Compunction refers to a feeling of misgiving, that is, doubt or suspicion especially concerning a future event. It can also refer to a feeling of guilt or regret. The word is typically used in negative constructions.",
+			"pronunciation": "kum-PUNK-shun",
+			"example": "We moved ahead with the plans without compunction. // They felt no compunctions about their crimes.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/compunction-2026-10-20",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-20"
 		}
 	}
 }

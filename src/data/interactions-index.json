@@ -381,20 +381,6 @@
       "status": "approved"
     }
   ],
-  "evergreen/the-same-story-can-mean-different-things-to-different-people": [
-    {
-      "id": "mastodon:repost:117384091084683369:111811737765749325",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Social Sciences Channel",
-        "url": "https://newsmast.community/@socialsciences",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/811/737/765/749/325/original/b600d42ae9be368b.png"
-      },
-      "url": "https://newsmast.community/@socialsciences",
-      "status": "approved"
-    }
-  ],
   "evergreen/working-memory-is-a-hindrance-to-learning": [
     {
       "id": "mastodon:repost:117436012889446242:111653099686979697",
@@ -421,6 +407,21 @@
       },
       "url": "https://bsky.app/profile/mrwamble.bsky.social",
       "published": "2026-10-15T23:22:39.754Z",
+      "status": "approved"
+    }
+  ],
+  "haiku/goddess-on-stage": [
+    {
+      "id": "bluesky:like:3myaxsipa4f2u:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-10-20T00:26:19.199Z",
       "status": "approved"
     }
   ],
@@ -451,6 +452,21 @@
       },
       "url": "https://bsky.app/profile/mrwamble.bsky.social",
       "published": "2026-10-16T21:22:45.940Z",
+      "status": "approved"
+    }
+  ],
+  "haiku/temperature-drops-suddenly": [
+    {
+      "id": "bluesky:like:3my6pyoeb3e26:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-10-18T23:22:50.795Z",
       "status": "approved"
     }
   ],
@@ -1282,7 +1298,7 @@
       "author": {
         "name": "TBDanyday",
         "url": "https://mastodon.social/@globaltrackfrequency",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/a1cc897e41b4f65e6045e47f232735b4.png"
+        "avatar": "https://files.mastodon.social/accounts/avatars/117/068/680/502/661/392/original/ab8fb1635d5eea3e.jpg"
       },
       "content": "<p><a href=\"https://mastodon.social/@sajal24x7\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">@sajal24x7</a> LinkedIn is full of something else as well. Besides being a surveillance arm tool for Microsoft, it's best left alone.</p>",
       "url": "https://mastodon.social/@globaltrackfrequency/117214730144902876",
@@ -1324,7 +1340,7 @@
       "author": {
         "name": "TBDanyday",
         "url": "https://mastodon.social/@globaltrackfrequency",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/a1cc897e41b4f65e6045e47f232735b4.png"
+        "avatar": "https://files.mastodon.social/accounts/avatars/117/068/680/502/661/392/original/ab8fb1635d5eea3e.jpg"
       },
       "url": "https://mastodon.social/@globaltrackfrequency",
       "status": "approved"
@@ -1876,18 +1892,6 @@
       "status": "approved"
     },
     {
-      "id": "mastodon:repost:117376772027012261:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    },
-    {
       "id": "threads:like-count:DeB960gm1G9",
       "type": "like-count",
       "platform": "threads",
@@ -1921,18 +1925,6 @@
         "avatar": "https://files.mastodon.social/accounts/avatars/114/816/619/340/813/838/original/53b74ae244c23ca4.jpg"
       },
       "url": "https://mastodon.social/@crisps",
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:117382599183993247:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
       "status": "approved"
     }
   ],
