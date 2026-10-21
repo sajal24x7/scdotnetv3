@@ -1060,6 +1060,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/compunction-2026-10-20",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-20"
+		},
+		"jilt": {
+			"word": "jilt",
+			"pos": "other",
+			"gloss": " verb To jilt someone is usually to abruptly end a romantic relationship with them. Jilt is also applied to various kinds of abrupt rejection.",
+			"pronunciation": "JILT",
+			"example": "The novel begins with the hero, having just been jilted by his fiancée, setting off to hike the Appalachian Trail.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/jilt-2026-10-21",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-21"
 		}
 	}
 }
