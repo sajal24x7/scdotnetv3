@@ -1070,6 +1070,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/jilt-2026-10-21",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-21"
+		},
+		"vocation": {
+			"word": "vocation",
+			"pos": "other",
+			"gloss": " noun Vocation can refer simply to an occupation, or it can refer to a strong calling to pursue a particular kind of work or course of action.",
+			"pronunciation": "voh-KAY-shun",
+			"example": "Since he was a teenager, he knew that he would find his vocation in marine biology. // She is headed to medical school to pursue her vocation as a doctor.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/vocation-2026-10-22",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-22"
 		}
 	}
 }
