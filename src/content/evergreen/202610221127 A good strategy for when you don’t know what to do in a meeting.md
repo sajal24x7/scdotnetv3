@@ -1,10 +1,16 @@
 ---
-title: "A Good Strategy for When You Don’t Know What to Do in a Meeting"
-slug: "a-good-strategy-for-when-you-dont-know-what-to-do-in-a-meeting"
-created: 2026-10-22T11:27:00+03:00
-updated: 2026-10-22T11:29:57+03:00
+title: A Good Strategy for When You Don’t Know What to Do in a Meeting
+slug: a-good-strategy-for-when-you-dont-know-what-to-do-in-a-meeting
+created: 2026-10-22T08:27:00.000Z
+updated: 2026-10-22T08:29:57.000Z
 category: evergreen
-tags: ["work", "speaking"]
+tags:
+  - work
+  - speaking
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117484399433606235'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3myhlrhrwoc26'
+  - 'https://www.threads.com/@sajal24x7/post/Dey6SKFG9Sa'
 ---
 And are expected to drive it.
 
