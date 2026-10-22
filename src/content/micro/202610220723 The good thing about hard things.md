@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - ai
-  - llms
-category: micro
+title: "The Good Thing About Hard Things"
+slug: "the-good-thing-about-hard-things"
+created: 2026-10-22T07:23:00+03:00
 updated: 2026-10-22T07:26:50+03:00
+category: micro
+tags: ["ai", "llms"]
 ---
 [The Good Thing About Hard Things - Cal Newport by Study Hacks](https://calnewport.com/the-good-thing-about-hard-things/)
 
