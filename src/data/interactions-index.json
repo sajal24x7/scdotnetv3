@@ -425,6 +425,21 @@
       "status": "approved"
     }
   ],
+  "haiku/finding-moments": [
+    {
+      "id": "bluesky:like:3myg4g2nmv327:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-10-22T00:56:28.675Z",
+      "status": "approved"
+    }
+  ],
   "haiku/goddess-on-stage": [
     {
       "id": "bluesky:like:3myaxsipa4f2u:did:plc:4hi2oj4spvsud6tpbdv37lec",
