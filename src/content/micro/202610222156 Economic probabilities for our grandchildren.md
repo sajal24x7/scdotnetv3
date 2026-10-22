@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - economy
-  - cory-doctorow
-category: micro
+title: "Economic Probabilities for Our Grandchildren"
+slug: "economic-probabilities-for-our-grandchildren"
+created: 2026-10-22T21:56:00+03:00
 updated: 2026-10-22T21:58:34+03:00
+category: micro
+tags: ["economy", "cory-doctorow"]
 ---
 [Pluralistic: Economic probabilities for our grandchildren (03 Oct 2026) – Pluralistic: Daily links from Cory Doctoro](https://pluralistic.net/2026/10/03/full-employment/)
 
