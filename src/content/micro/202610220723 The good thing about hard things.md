@@ -1,10 +1,16 @@
 ---
-title: "The Good Thing About Hard Things"
-slug: "the-good-thing-about-hard-things"
-created: 2026-10-22T07:23:00+03:00
-updated: 2026-10-22T07:26:50+03:00
+title: The Good Thing About Hard Things
+slug: the-good-thing-about-hard-things
+created: 2026-10-22T04:23:00.000Z
+updated: 2026-10-22T04:26:50.000Z
 category: micro
-tags: ["ai", "llms"]
+tags:
+  - ai
+  - llms
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117482716984585292'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mygtueqzit2t'
+  - 'https://www.threads.com/@sajal24x7/post/DeyJUVCkZAe'
 ---
 [The Good Thing About Hard Things - Cal Newport by Study Hacks](https://calnewport.com/the-good-thing-about-hard-things/)
 
