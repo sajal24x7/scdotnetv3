@@ -1,0 +1,389 @@
+/* Cover-wall shelf pages (/bookshelf, /filmshelf, /tvshelf): a year heading
+   above a grid of covers, with a compact list view. Chips reuse the
+   .book-card__chip styles in shelf-card.css so colours match the old cards. */
+
+/* ---- Year sections ---- */
+
+.shelf-years {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.shelf-year {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-block-end: clamp(1.5rem, 4vw, 2.5rem);
+  border-bottom: 1px solid rgb(var(--color-border));
+}
+
+.shelf-year[data-filtered='hidden'] {
+  display: none;
+}
+
+.shelf-year__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 1rem;
+}
+
+.shelf-year__year {
+  font-family: var(--font-serif);
+  font-size: var(--text-xlarge);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+  color: rgb(var(--color-text-primary));
+  font-variant-numeric: tabular-nums;
+}
+
+.shelf-year__count {
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--gray-text-muted);
+}
+
+/* ---- View controls ---- */
+
+.shelf-view-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.shelf-view-controls[hidden] {
+  display: none;
+}
+
+.shelf-sort {
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  color: rgb(var(--color-text-primary));
+  background: rgb(var(--color-bg));
+  border: 1px solid rgb(var(--color-border));
+  border-radius: 0.5rem;
+  padding: 0.35rem 0.6rem;
+}
+
+.shelf-view-toggle {
+  display: inline-flex;
+  border: 1px solid rgb(var(--color-border));
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.shelf-view-toggle button {
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  padding: 0.35rem 0.75rem;
+  border: none;
+  background: rgb(var(--color-bg));
+  color: var(--gray-text-muted);
+  cursor: pointer;
+}
+
+.shelf-view-toggle button + button {
+  border-left: 1px solid rgb(var(--color-border));
+}
+
+.shelf-view-toggle button[aria-pressed='true'] {
+  background: rgba(var(--color-accent), 0.12);
+  color: rgb(var(--color-text-primary));
+  font-weight: 600;
+}
+
+/* ---- Cover wall ---- */
+
+.shelf-wall {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem 0.9rem;
+}
+
+@media (min-width: 40rem) {
+  .shelf-wall {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.25rem 1.5rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .shelf-wall {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 2.5rem 2rem;
+  }
+}
+
+.shelf-wall__item {
+  min-width: 0;
+}
+
+.shelf-wall__item[data-filtered='hidden'] {
+  display: none;
+}
+
+/* ---- Tile ---- */
+
+.shelf-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.shelf-tile__cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 2 / 3;
+  max-width: 100%;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  background: rgb(var(--color-bg-secondary));
+  box-shadow: 0 1px 2px rgba(60, 40, 20, 0.08), 0 6px 18px rgba(60, 40, 20, 0.1);
+  transition: transform 160ms ease;
+}
+
+.dark .shelf-tile__cover {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+a.shelf-tile__cover:hover {
+  transform: translateY(-2px);
+}
+
+.shelf-tile__cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.shelf-tile__cover-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0.75rem;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: var(--text-small);
+  line-height: 1.25;
+  color: var(--gray-text-meta);
+  overflow-wrap: anywhere;
+}
+
+.shelf-tile__marks {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  display: flex;
+  gap: 0.25rem;
+  pointer-events: none;
+}
+
+.shelf-tile__mark {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 16, 14, 0.72);
+  color: #fff;
+  pointer-events: auto;
+}
+
+.shelf-tile__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.shelf-tile__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.shelf-tile__title {
+  margin: 0;
+  min-width: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  font-weight: 600;
+  line-height: 1.3;
+  color: rgb(var(--color-text-primary));
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.shelf-tile__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.shelf-tile__title a:hover,
+.shelf-tile__title a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.shelf-tile__rating {
+  flex: none;
+  padding: 0.25rem 0.4rem;
+}
+
+.shelf-tile__series {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--gray-text-muted);
+  text-align: left;
+  cursor: pointer;
+}
+
+.shelf-tile__series:hover,
+.shelf-tile__series:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.shelf-tile__people {
+  margin: 0;
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  color: var(--gray-text-body);
+  overflow-wrap: anywhere;
+}
+
+/* Beats .book-card__author's larger size; the comma sits outside the button
+   so it isn't underlined on hover. */
+.shelf-tile__people .shelf-tile__person {
+  font-size: inherit;
+  font-weight: 500;
+}
+
+/* The space is part of the separator because compressed HTML drops the
+   whitespace between the spans. */
+.shelf-tile__person-item:not(:last-child)::after {
+  content: ', ';
+  white-space: pre;
+}
+
+.shelf-tile__subtitle {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--gray-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.shelf-tile__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+/* Long chips ("true crime documentary", "currently reading") wrap instead of
+   overflowing a narrow column; the extra class beats .book-card__chip's nowrap. */
+.shelf-tile__chips .book-card__chip {
+  white-space: normal;
+  text-align: left;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+
+.shelf-tile__date {
+  display: none;
+  font-size: var(--text-xs);
+  color: var(--gray-text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---- List view: same items, one compact row each ---- */
+
+.shelf-wall[data-view='list'] {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+
+.shelf-wall[data-view='list'] .shelf-wall__item {
+  border-bottom: 1px solid rgb(var(--color-border));
+}
+
+.shelf-wall[data-view='list'] .shelf-tile {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9rem;
+  padding-block: 0.5rem;
+}
+
+.shelf-wall[data-view='list'] .shelf-tile__cover {
+  flex: none;
+  width: 2.25rem;
+  border-radius: 0.2rem;
+  box-shadow: none;
+}
+
+.shelf-wall[data-view='list'] .shelf-tile__cover-placeholder {
+  font-size: 0;
+}
+
+.shelf-wall[data-view='list'] .shelf-tile__marks {
+  position: static;
+  order: 3;
+  flex: none;
+}
+
+.shelf-wall[data-view='list'] .shelf-tile__mark {
+  width: auto;
+  height: auto;
+  background: none;
+  color: var(--gray-text-muted);
+}
+
+.shelf-wall[data-view='list'] .shelf-tile__body {
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 1rem;
+}
+
+.shelf-wall[data-view='list'] .shelf-tile__title-row {
+  flex: 1 1 14rem;
+  justify-content: flex-start;
+}
+
+.shelf-wall[data-view='list'] .shelf-tile__people {
+  flex: 0 1 12rem;
+}
+
+.shelf-wall[data-view='list'] .shelf-tile__date {
+  display: block;
+  margin-left: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shelf-tile__cover {
+    transition: none;
+  }
+
+  a.shelf-tile__cover:hover {
+    transform: none;
+  }
+}

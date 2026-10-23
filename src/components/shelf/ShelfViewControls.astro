@@ -1,0 +1,98 @@
+---
+import '../../styles/shelf-wall.css';
+
+// Covers/List toggle and sort for the cover-wall shelf pages. Sorting only
+// reorders entries inside each year; the year sections stay in place so the
+// filter scripts' per-year counts keep working.
+//
+// Each `.shelf-wall__item` carries its sort keys:
+//   data-sort-date    ISO date of the latest activity
+//   data-sort-status  SHELF_LIST_SORT_PRIORITY value (in progress first)
+//   data-sort-title   lowercase title
+//   data-sort-rating  0 love, 1 like, 2 nope, 9 none
+---
+
+<div class="shelf-view-controls" data-shelf-view-controls hidden>
+  <label class="sr-only" for="shelf-sort">Sort</label>
+  <select class="shelf-sort" id="shelf-sort" data-shelf-sort>
+    <option value="new">Newest first</option>
+    <option value="old">Oldest first</option>
+    <option value="title">Title A to Z</option>
+    <option value="rating">Rating</option>
+  </select>
+  <div class="shelf-view-toggle" role="group" aria-label="View">
+    <button type="button" data-shelf-view="covers" aria-pressed="true">Covers</button>
+    <button type="button" data-shelf-view="list" aria-pressed="false">List</button>
+  </div>
+</div>
+
+<script>
+  type SortKey = 'new' | 'old' | 'title' | 'rating';
+
+  const VIEW_KEY = 'shelf-view';
+
+  const num = (el: HTMLElement, key: string) => Number(el.dataset[key] ?? 99);
+  const str = (el: HTMLElement, key: string) => el.dataset[key] ?? '';
+
+  const comparators: Record<SortKey, (a: HTMLElement, b: HTMLElement) => number> = {
+    new: (a, b) => num(a, 'sortStatus') - num(b, 'sortStatus') || str(b, 'sortDate').localeCompare(str(a, 'sortDate')),
+    old: (a, b) => num(a, 'sortStatus') - num(b, 'sortStatus') || str(a, 'sortDate').localeCompare(str(b, 'sortDate')),
+    title: (a, b) => str(a, 'sortTitle').localeCompare(str(b, 'sortTitle')),
+    rating: (a, b) => num(a, 'sortRating') - num(b, 'sortRating') || str(b, 'sortDate').localeCompare(str(a, 'sortDate')),
+  };
+
+  function setView(view: string): void {
+    const value = view === 'list' ? 'list' : 'covers';
+    document.querySelectorAll<HTMLElement>('.shelf-wall').forEach((wall) => {
+      wall.dataset.view = value;
+    });
+    document.querySelectorAll<HTMLButtonElement>('[data-shelf-view]').forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.dataset.shelfView === value));
+    });
+  }
+
+  function sortWalls(key: SortKey): void {
+    const compare = comparators[key] ?? comparators.new;
+    document.querySelectorAll<HTMLElement>('.shelf-wall').forEach((wall) => {
+      const items = Array.from(wall.querySelectorAll<HTMLElement>(':scope > .shelf-wall__item'));
+      items.sort(compare).forEach((item) => wall.appendChild(item));
+    });
+  }
+
+  function initShelfViewControls(): void {
+    const controls = document.querySelector<HTMLElement>('[data-shelf-view-controls]');
+    if (!controls) return;
+    // The controls only work with JavaScript, so they stay hidden without it.
+    controls.hidden = false;
+
+    let saved: string | null = null;
+    try {
+      saved = localStorage.getItem(VIEW_KEY);
+    } catch {
+      // Storage can be blocked; the page still works in the default view.
+    }
+    setView(saved ?? 'covers');
+
+    controls.addEventListener('click', (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-shelf-view]');
+      if (!button) return;
+      const view = button.dataset.shelfView ?? 'covers';
+      setView(view);
+      try {
+        localStorage.setItem(VIEW_KEY, view);
+      } catch {
+        // Ignore: the choice just won't be remembered.
+      }
+    });
+
+    controls.querySelector<HTMLSelectElement>('[data-shelf-sort]')?.addEventListener('change', (event) => {
+      sortWalls((event.target as HTMLSelectElement).value as SortKey);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initShelfViewControls);
+  } else {
+    initShelfViewControls();
+  }
+</script>

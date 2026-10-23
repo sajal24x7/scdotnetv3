@@ -232,13 +232,45 @@ After downloading new covers, the corresponding generate script updates the Type
 
 ## Build-Time Logic
 
-### Rewatch / Replay Detection
+### Cover Wall
 
-`src/utils/shelfUtils.ts` exports `computeWatchNumbers()`. It groups entries by normalised title (lowercase, punctuation stripped), sorts by date, and assigns 1-based watch numbers. Film and game cards show a "2nd watch" / "2nd play" chip when the number is > 1. No frontmatter changes are needed.
+Every shelf page (`/shelf`, `/bookshelf`, `/filmshelf`, `/tvshelf`, `/gameshelf`) shows each year as a heading above a grid of covers: five per row on desktop, four on tablets, three on phones. Each entry is a `ShelfTile` (`src/components/shelf/ShelfTile.astro`, styles in `src/styles/shelf-wall.css`):
+
+- cover, then the title with the rating icon on the same row
+- series (books), then author / director / creator
+- season range (TV only)
+- a status chip only while something is in progress or on hold
+- the genre chip
+
+Every name, status, rating and genre is a `data-filter-type` button, so filtering works exactly as before: `shelfFilters.ts` on `/shelf`, film and TV, and their own scripts on books and games. Within each year, entries in progress come first, then finished, then on hold (`SHELF_LIST_SORT_PRIORITY`).
+
+`ShelfViewControls` adds a **Covers / List** toggle (remembered per browser) and a sort menu (newest, oldest, title, rating). Sorting reorders entries inside each year only, using the `data-sort-*` attributes on each `.shelf-wall__item`.
+
+On `/shelf` a short line under the people names the media type ("Film", "TV · Seasons 1 to 10", "Game · 40 hours"). Games show hours played on that line too.
+
+### Rereads, Rewatches and Notes
+
+`src/utils/shelfUtils.ts` exports `computeWatchNumbers()`. It groups entries by normalised title (lowercase, punctuation stripped), sorts by date, and assigns 1-based watch numbers. No frontmatter changes are needed.
+
+- **Books:** a second entry with the same title is a reread.
+- **Films:** a second entry with the same title is a rewatch.
+- **TV:** a second entry for the same `showTitle` **and** `season` is a rewatch. Log it with a slug like `friends/s1-2026`; `/write` does this automatically when the plain slug is taken.
+
+A repeat shows a ↻ icon on the cover. On films and TV a second icon marks entries with real notes: `hasShelfNotes()` in `src/utils/shelfWall.ts` treats a body as notes unless it is empty or only the auto log line ("Finished watching Season 2 on 2020-08-02."). Books don't show the notes icon.
 
 ### TV Show Grouping
 
-`/tvshelf/index.astro` groups per-season entries by `showTitle` at build time. For each show it picks the representative entry (highest season number) and computes an aggregate status. The show detail page (`src/pages/tvshelf/[show].astro`) renders all seasons sorted ascending.
+`groupTvShows()` in `src/utils/shelfWall.ts` groups per-season entries by `showTitle`. `/tvshelf/` shows one tile per show, filed under the year of its latest watch:
+
+- **Rating:** the one given most often.
+- **Status:** "Watching" if any season is in progress.
+- **Filtering:** genres, ratings and creators from every season, so a filter finds the show if any season matches.
+
+The show slug comes from the show's first entry, the same rule `src/pages/tvshelf/[show]/index.astro` uses, so links always match the generated pages.
+
+The show page has a row of season pills above the season list. Each pill is tinted by its latest rating (or by status while in progress), carries ↻ / notes icons, and links to that season's page.
+
+Check the helpers with `node --experimental-strip-types src/utils/__checks__/shelfWall.check.ts`.
 
 ---
 

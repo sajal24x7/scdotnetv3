@@ -1,0 +1,175 @@
+---
+import '../../styles/shelf-card.css';
+import '../../styles/shelf-wall.css';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import {
+    bookRatingDisplay,
+    heartIconPaths,
+    thumbIconPaths,
+    type BookRating
+} from '../../utils/bookRatings';
+import { SHELF_STATUS_CHIP_CLASS, type ShelfStatus } from '../../utils/shelfStatus';
+
+// One cover on the cover-wall shelf pages. Every name, status, rating and
+// genre is a `data-filter-type` button, so the page's existing filter script
+// (shelfFilters.ts, or the bookshelf's own) picks the clicks up unchanged.
+interface ShelfTileProps {
+    title: string;
+    href?: string;
+    /** Decorative: the title sits right under it, so the image has empty alt text. */
+    cover?: ImageMetadata | null;
+    people?: string[];
+    /** Filter type the people buttons trigger: author, director or creator. */
+    personFilter: string;
+    series?: string | null;
+    seriesNumber?: number | null;
+    /** Extra muted line under the people, e.g. "Seasons 1 to 10". */
+    subtitle?: string | null;
+    status?: ShelfStatus;
+    statusLabel?: string | null;
+    rating?: BookRating | null;
+    genre?: string | null;
+    /** "2nd watch", "2nd read"; shows the repeat mark when set. */
+    repeat?: string | null;
+    notes?: boolean;
+    /** Shown in the list view only. */
+    date?: Date | null;
+}
+
+const {
+    title,
+    href,
+    cover,
+    people = [],
+    personFilter,
+    series,
+    seriesNumber,
+    subtitle,
+    status,
+    statusLabel,
+    rating,
+    genre,
+    repeat,
+    notes = false,
+    date,
+} = Astro.props as ShelfTileProps;
+
+// Same rule as the old cards: no rating while something is still in progress.
+const showRating = rating && status !== 'started' && status !== 'todo';
+const ratingDisplay = showRating ? bookRatingDisplay[rating] : null;
+const showStatus = status && status !== 'finished' && statusLabel;
+const dateIso = date ? date.toISOString().slice(0, 10) : null;
+const dateLabel = date
+    ? date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+    : null;
+---
+
+<article class="shelf-tile">
+  {href ? (
+    <a class="shelf-tile__cover" href={href} tabindex="-1" aria-hidden="true">
+      {cover ? (
+        <Image src={cover} alt="" width={220} height={330} layout="fixed" class="shelf-tile__cover-image" loading="lazy" />
+      ) : (
+        <span class="shelf-tile__cover-placeholder">{title}</span>
+      )}
+    </a>
+  ) : (
+    <div class="shelf-tile__cover" aria-hidden="true">
+      {cover ? (
+        <Image src={cover} alt="" width={220} height={330} layout="fixed" class="shelf-tile__cover-image" loading="lazy" />
+      ) : (
+        <span class="shelf-tile__cover-placeholder">{title}</span>
+      )}
+    </div>
+  )}
+  {(repeat || notes) && (
+    <span class="shelf-tile__marks">
+      {repeat && (
+        <span class="shelf-tile__mark" title={repeat}>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 11V9a3 3 0 0 1 3-3h12"></path><path d="m16 3 3 3-3 3"></path><path d="M20 13v2a3 3 0 0 1-3 3H5"></path><path d="m8 21-3-3 3-3"></path>
+          </svg>
+          <span class="sr-only">{repeat}</span>
+        </span>
+      )}
+      {notes && (
+        <span class="shelf-tile__mark" title="Has notes">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+            <path d="M5 6h14"></path><path d="M5 10.5h14"></path><path d="M5 15h10"></path><path d="M5 19.5h6"></path>
+          </svg>
+          <span class="sr-only">Has notes</span>
+        </span>
+      )}
+    </span>
+  )}
+
+  <div class="shelf-tile__body">
+    <div class="shelf-tile__title-row">
+      <h3 class="shelf-tile__title">
+        {href ? <a href={href}>{title}</a> : title}
+      </h3>
+      {ratingDisplay && rating && (
+        <button
+          type="button"
+          class={`book-card__chip book-card__chip--rating book-card__chip--clickable book-card__chip--rating-${rating} shelf-tile__rating`}
+          data-filter-type="rating"
+          data-filter-value={rating}
+          title={ratingDisplay.label}
+        >
+          {ratingDisplay.iconSpecs.map((spec) => (
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              {(spec.type === 'heart' ? heartIconPaths : thumbIconPaths[spec.direction]).map((d) => <path d={d}></path>)}
+            </svg>
+          ))}
+          <span class="sr-only">{ratingDisplay.label}</span>
+        </button>
+      )}
+    </div>
+
+    {series && (
+      <button type="button" class="shelf-tile__series" data-filter-type="series" data-filter-value={series}>
+        {series}{seriesNumber ? ` #${seriesNumber}` : ''}
+      </button>
+    )}
+
+    {people.length > 0 && (
+      <p class="shelf-tile__people">
+        {people.map((person) => (
+          <span class="shelf-tile__person-item"><button
+              type="button"
+              class="book-card__author book-card__author--clickable shelf-tile__person"
+              data-filter-type={personFilter}
+              data-filter-value={person}
+            >{person}</button></span>
+        ))}
+      </p>
+    )}
+
+    {subtitle && <p class="shelf-tile__subtitle">{subtitle}</p>}
+
+    {showStatus && status && (
+      <div class="shelf-tile__chips">
+        <button
+          type="button"
+          class={`book-card__chip book-card__chip--status book-card__chip--clickable ${SHELF_STATUS_CHIP_CLASS[status]}`}
+          data-filter-type="status"
+          data-filter-value={status}
+        >{statusLabel}</button>
+      </div>
+    )}
+
+    {genre && (
+      <div class="shelf-tile__chips">
+        <button
+          type="button"
+          class="book-card__chip book-card__chip--genre book-card__chip--clickable shelf-tile__genre"
+          data-filter-type="genre"
+          data-filter-value={genre}
+        >{genre}</button>
+      </div>
+    )}
+
+    {dateIso && <time class="shelf-tile__date" datetime={dateIso}>{dateLabel}</time>}
+  </div>
+</article>

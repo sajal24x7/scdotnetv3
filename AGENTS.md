@@ -69,6 +69,5 @@ Commits in this repository use short, action-focused subjects (e.g., `Minor ui c
 ## Card Components
 - The homepage renders `UnifiedFeed`, which pulls from all content types directly; there is no separate "featured" data file or homepage-specific grid component.
 - `src/components/Card.astro` is the base article card used by `GardenGrid` (and therefore Garden, Evergreen, TIL, Stories, Poems) to render post summaries with optional micro-post prose.
-- `src/components/bookshelf/BookshelfCard.astro` powers the bookshelf UI (used directly by `src/pages/bookshelf/index.astro` and `/shelf`), formatting status, dates, and cover art for reading logs.
-- `src/components/shelf/FilmCard.astro`, `TVCard.astro`, and `GameCard.astro` render entries on the film/TV/game shelf pages.
+- `src/components/shelf/ShelfTile.astro` renders the cover-wall entries on every shelf page (`/shelf`, `/bookshelf`, `/filmshelf`, `/tvshelf`, `/gameshelf`; one tile per TV show); see [`docs/pages/shelf.md`](docs/pages/shelf.md#cover-wall).
 - `StreamLayout` renders stream entries with `PostItem` instead of a dedicated card, and `NordletterGrid` ships bespoke markup for newsletter issues; there is no standalone stream or newsletter card component after the legacy `StreamCard` removal.
