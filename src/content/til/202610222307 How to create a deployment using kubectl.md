@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117491306822641901'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3myknwlitsp2e'
+  - 'https://www.threads.com/@sajal24x7/post/De2g2yNlAJZ'
 ---
 To create a [deployment](/til/kubernetes-deployment), one way to do it is using the yaml file, but a quicker way to do it is via:
 
