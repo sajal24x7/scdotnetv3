@@ -1080,6 +1080,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/vocation-2026-10-22",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-22"
+		},
+		"asunder": {
+			"word": "asunder",
+			"pos": "other",
+			"gloss": " adverb or adjective Asunder is most often used as an adverb—often with a verb such as tear or rip —to mean \"apart\" or \"into pieces.\" It is more rarely used as an adjective meaning \"apart from each other,\" as in \"standing with legs wide asunder.\"",
+			"pronunciation": "uh-SUN-der",
+			"example": "The park was torn asunder by yesterday's microburst, and many of its trails have been blocked by fallen trees.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/asunder-2026-10-23",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-23"
 		}
 	}
 }
