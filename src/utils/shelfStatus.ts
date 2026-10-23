@@ -6,7 +6,7 @@ export type ShelfStatus = 'todo' | 'started' | 'paused' | 'finished';
 export type ShelfCategory = 'bookshelf' | 'filmshelf' | 'tvshelf' | 'gameshelf';
 
 export const SHELF_STATUS_LABELS: Record<ShelfCategory, Record<ShelfStatus, string>> = {
-  bookshelf: { todo: 'To Read', started: 'Currently Reading', paused: 'On Hold', finished: 'Read' },
+  bookshelf: { todo: 'To Read', started: 'Reading', paused: 'On Hold', finished: 'Read' },
   filmshelf: { todo: 'To Watch', started: 'Watching', paused: 'On Hold', finished: 'Watched' },
   tvshelf: { todo: 'To Watch', started: 'Watching', paused: 'On Hold', finished: 'Watched' },
   gameshelf: { todo: 'To Play', started: 'Playing', paused: 'On Hold', finished: 'Played' },

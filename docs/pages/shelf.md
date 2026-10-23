@@ -205,7 +205,7 @@ All four shelf categories (and `now` posts) share a single `status` field with t
 | Value | Books | Film/TV | Games | `now` posts |
 | --- | --- | --- | --- | --- |
 | `todo` | To Read | To Watch | To Play | not yet started |
-| `started` | Currently Reading | Watching | Playing | active |
+| `started` | Reading | Watching | Playing | active |
 | `paused` | On Hold | On Hold | On Hold | paused |
 | `finished` | Read | Watched | Played | done |
 
