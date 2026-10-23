@@ -5,7 +5,7 @@ import ShelfQueue, { type ShelfQueueItem } from '../../../components/shelf/Shelf
 import ShelfQueueToggle from '../../../components/shelf/ShelfQueueToggle.astro';
 import { getAllPosts } from '../../../utils/content';
 import { createSectionLandingProps } from '../../../utils/sectionLanding';
-import { SHELF_QUEUE_CONFIG, getQueueCreator } from '../../../utils/shelfQueue';
+import { SHELF_QUEUE_CONFIG, getQueueCreators } from '../../../utils/shelfQueue';
 import { getGameCoverImage } from '../../../utils/gameCovers';
 
 const config = SHELF_QUEUE_CONFIG.gameshelf;
@@ -20,15 +20,26 @@ queuePosts.sort((a, b) => new Date(b.data.created).getTime() - new Date(a.data.c
 const items: ShelfQueueItem[] = queuePosts.map((post) => ({
     id: post.id,
     title: post.data.title ?? '',
-    creator: getQueueCreator(post.data, config.creatorField),
+    creators: getQueueCreators(post.data, config.creatorField),
     created: new Date(post.data.created),
     body: post.body?.trim() ?? '',
     coverImage: post.data.cover ? getGameCoverImage(post.data.cover as any) : undefined,
     link: post.id ? `/gameshelf/${post.id}/` : undefined,
+    genre: post.data.genre,
+    tags: post.data.tags,
 }));
 
+const { singular, plural } = config.noun;
+const countText = `${items.length} ${items.length === 1 ? singular : plural}`;
+
+// Same header as the main shelf page; the tag list only counts queued entries.
 const sectionLandingProps = createSectionLandingProps({
     title: config.heading,
+    countText,
+    countVariant: 'plain',
+    countClass: 'bookshelf-count',
+    tagCategory: 'gameshelf',
+    tagPosts: queuePosts,
     contentClass: 'bookshelf-content',
     hideTitle: true,
 });
@@ -57,12 +68,3 @@ const sectionLandingProps = createSectionLandingProps({
     <ShelfQueue config={config} items={items} />
   </SectionLanding>
 </Layout>
-
-<style>
-  .bookshelf-content {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(2rem, 5vw, 3rem);
-    padding-bottom: 2rem;
-  }
-</style>

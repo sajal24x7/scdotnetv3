@@ -11,6 +11,7 @@ export interface ShelfQueueConfig {
     heading: string;
     verb: string;
     creatorField: ShelfQueueCreatorField;
+    noun: { singular: string; plural: string };
     rssHref: string;
 }
 
@@ -21,6 +22,7 @@ export const SHELF_QUEUE_CONFIG: Record<ShelfCategory, ShelfQueueConfig> = {
         heading: 'To Read',
         verb: 'reading',
         creatorField: 'author',
+        noun: { singular: 'book', plural: 'books' },
         rssHref: '/bookshelf/rss.xml',
     },
     filmshelf: {
@@ -29,6 +31,7 @@ export const SHELF_QUEUE_CONFIG: Record<ShelfCategory, ShelfQueueConfig> = {
         heading: 'To Watch',
         verb: 'watching',
         creatorField: 'director',
+        noun: { singular: 'film', plural: 'films' },
         rssHref: '/filmshelf/rss.xml',
     },
     tvshelf: {
@@ -37,6 +40,7 @@ export const SHELF_QUEUE_CONFIG: Record<ShelfCategory, ShelfQueueConfig> = {
         heading: 'To Watch',
         verb: 'watching',
         creatorField: 'creator',
+        noun: { singular: 'show', plural: 'shows' },
         rssHref: '/tvshelf/rss.xml',
     },
     gameshelf: {
@@ -45,16 +49,24 @@ export const SHELF_QUEUE_CONFIG: Record<ShelfCategory, ShelfQueueConfig> = {
         heading: 'To Play',
         verb: 'playing',
         creatorField: 'developer',
+        noun: { singular: 'game', plural: 'games' },
         rssHref: '/gameshelf/rss.xml',
     },
 };
 
 // author/director/creator can be a string or string[]; developer is a plain string.
+export function getQueueCreators(
+    data: { author?: string | string[]; director?: string[]; creator?: string[]; developer?: string },
+    field: ShelfQueueCreatorField
+): string[] {
+    const value = data[field];
+    if (!value) return [];
+    return Array.isArray(value) ? value : [value];
+}
+
 export function getQueueCreator(
     data: { author?: string | string[]; director?: string[]; creator?: string[]; developer?: string },
     field: ShelfQueueCreatorField
 ): string {
-    const value = data[field];
-    if (!value) return '';
-    return Array.isArray(value) ? value.join(', ') : value;
+    return getQueueCreators(data, field).join(', ');
 }
