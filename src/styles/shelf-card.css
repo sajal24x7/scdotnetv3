@@ -1,8 +1,7 @@
 /* Shared media-card system for the shelves.
-   One card layout serves books (BookshelfCard), films (FilmCard), TV shows
-   (TVCard), and games (GameCard); each component imports this file and keeps
-   only markup. Chip modifiers cover the union of media types — a page without
-   TV cards simply never uses the seasons chip. */
+   BookshelfCard (garden grid) uses the full card layout. ShelfTile, the
+   cover-wall entry on every shelf page, reuses the .book-card__chip and
+   .book-card__author styles so chips look the same everywhere. */
 
 .book-card {
   width: 100%;

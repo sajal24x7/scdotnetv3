@@ -1,10 +1,9 @@
 # TV Shelf redesign: one card per show, with rewatches
 
-Status: partly implemented. The cover wall for books, films and TV, one tile per
+Status: partly implemented. The cover wall on every shelf page, one tile per
 TV show, rewatch/reread and notes icons, and season pills on the show page are
-live; see [docs/pages/shelf.md](../docs/pages/shelf.md#cover-wall-bookshelf-filmshelf-tvshelf).
-Still open from this plan: moving `/shelf` and the queue page to the shared show
-slug, the duplicate-slug build guard, and the season page watch history.
+live; see [docs/pages/shelf.md](../docs/pages/shelf.md#cover-wall).
+Still open from this plan: moving the queue page to the shared show slug, the duplicate-slug build guard, and the season page watch history.
 
 ## Goal
 

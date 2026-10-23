@@ -276,8 +276,11 @@ a.shelf-tile__cover:hover {
   font-weight: 500;
 }
 
+/* The space is part of the separator because compressed HTML drops the
+   whitespace between the spans. */
 .shelf-tile__person-item:not(:last-child)::after {
-  content: ',';
+  content: ', ';
+  white-space: pre;
 }
 
 .shelf-tile__subtitle {

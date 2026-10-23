@@ -232,9 +232,9 @@ After downloading new covers, the corresponding generate script updates the Type
 
 ## Build-Time Logic
 
-### Cover Wall (`/bookshelf`, `/filmshelf`, `/tvshelf`)
+### Cover Wall
 
-These three pages show each year as a heading above a grid of covers: five per row on desktop, four on tablets, three on phones. Each entry is a `ShelfTile` (`src/components/shelf/ShelfTile.astro`, styles in `src/styles/shelf-wall.css`):
+Every shelf page (`/shelf`, `/bookshelf`, `/filmshelf`, `/tvshelf`, `/gameshelf`) shows each year as a heading above a grid of covers: five per row on desktop, four on tablets, three on phones. Each entry is a `ShelfTile` (`src/components/shelf/ShelfTile.astro`, styles in `src/styles/shelf-wall.css`):
 
 - cover, then the title with the rating icon on the same row
 - series (books), then author / director / creator
@@ -242,11 +242,11 @@ These three pages show each year as a heading above a grid of covers: five per r
 - a status chip only while something is in progress or on hold
 - the genre chip
 
-Every name, status, rating and genre is a `data-filter-type` button, so filtering works exactly as before: `shelfFilters.ts` on film and TV, the bookshelf's own script on books. Within each year, entries in progress come first, then finished, then on hold (`SHELF_LIST_SORT_PRIORITY`).
+Every name, status, rating and genre is a `data-filter-type` button, so filtering works exactly as before: `shelfFilters.ts` on `/shelf`, film and TV, and their own scripts on books and games. Within each year, entries in progress come first, then finished, then on hold (`SHELF_LIST_SORT_PRIORITY`).
 
 `ShelfViewControls` adds a **Covers / List** toggle (remembered per browser) and a sort menu (newest, oldest, title, rating). Sorting reorders entries inside each year only, using the `data-sort-*` attributes on each `.shelf-wall__item`.
 
-`/shelf`, `/gameshelf` and `/games` still use the older cards (`BookshelfCard`, `FilmCard`, `TVCard`, `GameCard`).
+On `/shelf` a short line under the people names the media type ("Film", "TV · Seasons 1 to 10", "Game · 40 hours"). Games show hours played on that line too.
 
 ### Rereads, Rewatches and Notes
 

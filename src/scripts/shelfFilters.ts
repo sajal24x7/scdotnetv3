@@ -1,14 +1,14 @@
 /**
  * Generic click-to-filter engine shared by the shelf pages (filmshelf, tvshelf,
- * gameshelf, and the combined shelf page). Cards already render buttons like
- * `data-filter-type="genre" data-filter-value="Sci-Fi"` (see BookshelfCard,
- * FilmCard, GameCard, TVCard) — this module wires those clicks up to hide/show
- * the matching `[data-shelf-item]` elements and renders the active-filter
- * badges into the page's ShelfFilterResults container.
+ * and the combined shelf page). Tiles already render buttons like
+ * `data-filter-type="genre" data-filter-value="Sci-Fi"` (see ShelfTile) — this
+ * module wires those clicks up to hide/show the matching `[data-shelf-item]`
+ * elements and renders the active-filter badges into the page's
+ * ShelfFilterResults container.
  *
- * The bookshelf page predates this module and keeps its own bespoke script;
- * this engine mirrors its UX (click a chip to filter, click a badge to remove
- * it, "Clear all" once more than one filter is active) for every other page.
+ * The bookshelf and gameshelf pages predate this module and keep their own
+ * scripts; this engine mirrors their UX (click a chip to filter, click a badge
+ * to remove it, "Clear all" once more than one filter is active).
  */
 
 export interface ShelfFilterTypeConfig {
