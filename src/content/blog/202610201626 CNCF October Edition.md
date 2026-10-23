@@ -1,10 +1,16 @@
 ---
-title: "CNCF October Edition"
-slug: "cncf-october-edition"
-created: 2026-10-20T16:26:00+03:00
-updated: 2026-10-20T23:00:14+03:00
+title: CNCF October Edition
+slug: cncf-october-edition
+created: 2026-10-20T13:26:00.000Z
+updated: 2026-10-20T20:00:14.000Z
 category: blog
-tags: ["cncf", "k8s"]
+tags:
+  - cncf
+  - k8s
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117475919030078543'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mydtazt4lf2j'
+  - 'https://www.threads.com/@sajal24x7/post/DevDeN-oC57'
 ---
 My first time at Verda office in Helsinki. This is just the building across the road from the Oodi library. I had not given it a second look before today. I mean, it was just another building on my way to Oodi. Now, it's Verda's offices!
 

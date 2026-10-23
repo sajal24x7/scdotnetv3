@@ -382,6 +382,7 @@
       "blog/202609211348 Devops Finland September Event.md",
       "blog/202609301725 Azure and Friends September Event.md",
       "blog/202610071700 FAUG October Meetup.md",
+      "blog/202610201626 CNCF October Edition.md",
       "bookshelf/201301081514 The Da Vinci Code.md",
       "bookshelf/201301081514 The Ultimate Hitchhikers Guide to the Galaxy.md",
       "bookshelf/201301081515 Deception Point.md",
@@ -624,6 +625,7 @@
       "bookshelf/202610101315 Obit.md",
       "bookshelf/202610150823 The Goal.md",
       "bookshelf/202610171424 Plot Twist.md",
+      "bookshelf/202610221624 1929.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
@@ -683,6 +685,7 @@
       "evergreen/202610131905 Bounding the new with the familiar.md",
       "evergreen/202610132000 Working memory is a hindrance to learning.md",
       "evergreen/202610132010 Strategies for reading long things.md",
+      "evergreen/202610221127 A good strategy for when you don’t know what to do in a meeting.md",
       "filmshelf/201812311200 Mowgli Legend of the Jungle.md",
       "filmshelf/201901061200 Black Mirror Bandersnatch.md",
       "filmshelf/201901141200 Hate Story.md",
@@ -1254,6 +1257,8 @@
       "haiku/202610190002 Temperature drops suddenly.md",
       "haiku/202610192221 Goddess on stage.md",
       "haiku/202610200712 Dark outside still..md",
+      "haiku/202610212219 Finding moments.md",
+      "haiku/202610221622 All the leaves are gone.md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -1675,6 +1680,8 @@
       "micro/202610131825 HomeView looks cool.md",
       "micro/202610151553 Upcoming Apple Event on October 28.md",
       "micro/202610171446 Not Solitaire.md",
+      "micro/202610220723 The good thing about hard things.md",
+      "micro/202610222156 Economic probabilities for our grandchildren.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -2652,7 +2659,8 @@
       "tvshelf/202601061200 Adolescence S1.md",
       "tvshelf/202605270840 Glory.md",
       "tvshelf/202606140720 Drive to Survive.md",
-      "tvshelf/202606271411 Drive to Survive.md"
+      "tvshelf/202606271411 Drive to Survive.md",
+      "tvshelf/202610222301 The Rookie S5.md"
     ]
   },
   "til/active-directory-database": [

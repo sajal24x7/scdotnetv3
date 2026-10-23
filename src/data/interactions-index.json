@@ -410,6 +410,36 @@
       "status": "approved"
     }
   ],
+  "haiku/dark-outside-still": [
+    {
+      "id": "bluesky:like:3myc7pgzd4i2r:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-10-20T10:26:21.250Z",
+      "status": "approved"
+    }
+  ],
+  "haiku/finding-moments": [
+    {
+      "id": "bluesky:like:3myg4g2nmv327:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-10-22T00:56:28.675Z",
+      "status": "approved"
+    }
+  ],
   "haiku/goddess-on-stage": [
     {
       "id": "bluesky:like:3myaxsipa4f2u:did:plc:4hi2oj4spvsud6tpbdv37lec",
@@ -938,20 +968,6 @@
       "status": "approved"
     }
   ],
-  "micro/homeview-looks-cool": [
-    {
-      "id": "mastodon:repost:117434652079421718:114863603913131469",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Apple-feed",
-        "url": "https://channel.org/@applefeed",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/863/603/913/131/469/original/52e93c4cb3510276.jpg"
-      },
-      "url": "https://channel.org/@applefeed",
-      "status": "approved"
-    }
-  ],
   "micro/how-and-why-to-cull-your-book-collection": [
     {
       "id": "mastodon:like:116901921008963465:111584118693761981",
@@ -1367,20 +1383,6 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/5e0c9f27cbe4ab1dddc05717be534585.png"
       },
       "url": "https://mastodon.social/@Literbook",
-      "status": "approved"
-    }
-  ],
-  "micro/upcoming-apple-event-on-october-28": [
-    {
-      "id": "mastodon:repost:117445982613014935:114863603913131469",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Apple-feed",
-        "url": "https://channel.org/@applefeed",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/114/863/603/913/131/469/original/52e93c4cb3510276.jpg"
-      },
-      "url": "https://channel.org/@applefeed",
       "status": "approved"
     }
   ],
