@@ -15,6 +15,7 @@ import {
     type RatingIconSpec,
 } from '../../../utils/bookRatings';
 import { SHELF_STATUS_LABELS, type ShelfStatus } from '../../../utils/shelfStatus';
+import { activityDate, hasShelfNotes } from '../../../utils/shelfWall';
 
 export async function getStaticPaths() {
     const { getAllPosts } = await import('../../../utils/content');
@@ -75,6 +76,39 @@ const formatYMD = (value?: Date | string | null): string | null => {
 };
 
 const allPosts = await getAllPosts();
+
+// Season pills: one per season number, linking to its latest watch. A second
+// entry for the same season is a rewatch; todo stubs are left out.
+const loggedSeasons = seasons
+    .filter((s) => s.data.status !== 'todo' && s.data.season !== undefined)
+    .sort((a, b) => activityDate(a.data).getTime() - activityDate(b.data).getTime());
+const pillsBySeason = new Map<number, typeof loggedSeasons>();
+for (const entry of loggedSeasons) {
+    const num = entry.data.season as number;
+    if (!pillsBySeason.has(num)) pillsBySeason.set(num, []);
+    pillsBySeason.get(num)!.push(entry);
+}
+const seasonPills = Array.from(pillsBySeason.entries())
+    .sort((a, b) => a[0] - b[0])
+    .map(([num, watches]) => {
+        const latest = watches[watches.length - 1];
+        const status = latest.data.status as ShelfStatus | undefined;
+        const rating = latest.data.rating as BookRating | undefined;
+        const tip = [
+            `Season ${num}`,
+            watches.length > 1 ? `watched ${watches.length} times` : null,
+            status && status !== 'finished' ? SHELF_STATUS_LABELS.tvshelf[status] : rating ? bookRatingDisplay[rating]?.label : null,
+        ].filter(Boolean).join(', ');
+        return {
+            num,
+            href: `/tvshelf/${showSlug}/${latest.id.split('/')[1] || `s${num}`}/`,
+            // Reuse the page's chip colours: in-progress status first, then rating.
+            tone: status === 'started' || status === 'paused' ? `chip--status-${status}` : rating ? `tv-chip--rating-${rating}` : 'tv-season-pill--plain',
+            rewatched: watches.length > 1,
+            notes: watches.some((w) => hasShelfNotes(w.body)),
+            tip,
+        };
+    });
 
 const statusLabelMap = SHELF_STATUS_LABELS.tvshelf;
 
@@ -212,6 +246,27 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
       </div>
     )}
 
+    {seasonPills.length > 1 && (
+      <nav class="tv-season-pills" aria-label="Seasons">
+        {seasonPills.map((pill) => (
+          <a href={pill.href} class={`tv-season-pill ${pill.tone}`} title={pill.tip}>
+            S{pill.num}
+            {pill.rewatched && (
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 11V9a3 3 0 0 1 3-3h12"></path><path d="m16 3 3 3-3 3"></path><path d="M20 13v2a3 3 0 0 1-3 3H5"></path><path d="m8 21-3-3 3-3"></path>
+              </svg>
+            )}
+            {pill.notes && (
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                <path d="M5 6h14"></path><path d="M5 10.5h14"></path><path d="M5 15h10"></path><path d="M5 19.5h6"></path>
+              </svg>
+            )}
+            <span class="sr-only">{pill.tip}</span>
+          </a>
+        ))}
+      </nav>
+    )}
+
     {!isLimitedSeries && (
     <section class="tv-show-page__seasons">
       <h2 class="tv-show-page__seasons-title">Seasons</h2>
@@ -224,7 +279,7 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
           const statusChipClass = status ? statusChipClassMap[status] : '';
           const ratingDisplay = season.data.rating ? bookRatingDisplay[season.data.rating as BookRating] : null;
           const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
-          const watchedDate = formatYMD(season.data.created);
+          const watchedDate = formatYMD(season.data.finished ?? season.data.created);
           const coverImage = season.data.cover ? getTVCoverImage(season.data.cover) : null;
 
           return (
@@ -384,5 +439,35 @@ const limitedFinished = formatYMD(limitedPost?.data.finished);
 
   .tv-show-page__back {
     margin-top: 1rem;
+  }
+
+  .tv-season-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tv-season-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: var(--text-small);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-decoration: none;
+  }
+
+  .tv-season-pill--plain {
+    background: var(--pill-bg);
+    color: var(--pill-fg);
+  }
+
+  .tv-season-pill:hover,
+  .tv-season-pill:focus-visible {
+    border-color: currentColor;
   }
 </style>

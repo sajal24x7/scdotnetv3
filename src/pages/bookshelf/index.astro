@@ -1,13 +1,18 @@
 ---
-import '../../styles/shelf-year.css';
+import '../../styles/shelf-wall.css';
 import '../../styles/shelf-filters.css';
 import Layout from '../../layouts/Layout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import BookshelfCard from '../../components/bookshelf/BookshelfCard.astro';
+import ShelfTile from '../../components/shelf/ShelfTile.astro';
+import ShelfViewControls from '../../components/shelf/ShelfViewControls.astro';
 import ShelfQueueToggle from '../../components/shelf/ShelfQueueToggle.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
-import { SHELF_LIST_SORT_PRIORITY } from '../../utils/shelfStatus';
+import { computeWatchNumbers } from '../../utils/shelfUtils';
+import { activityDate, repeatLabel } from '../../utils/shelfWall';
+import { getBookCoverImage } from '../../utils/bookCovers';
+import { bookRatingOrder } from '../../utils/bookRatings';
+import { SHELF_LIST_SORT_PRIORITY, SHELF_STATUS_LABELS } from '../../utils/shelfStatus';
 
 // Get all posts and filter for bookshelf
 const allPosts = await getAllPosts();
@@ -107,10 +112,13 @@ const booksByYear = sortedBooks.reduce((acc, { year, book }) => {
     return acc;
 }, {} as Record<number, typeof bookshelfPosts>);
 
-const transformBook = (book: typeof bookshelfPosts[number]) => ({
-    ...book.data,
-    link: book.id ? `/bookshelf/${book.id}/` : undefined
-});
+// A reread is a second logged entry for the same title.
+const readNumbers = computeWatchNumbers(sortedBooks.map(({ book }) => ({
+    title: book.data.title ?? '',
+    date: book.data.finished ?? book.data.started ?? book.data.created
+})));
+const readNumberMap = new Map<string, number>();
+sortedBooks.forEach(({ book }, i) => readNumberMap.set(book.id, readNumbers.get(i) ?? 1));
 
 // Extract unique authors and genres for filters
 const extractAuthors = (author?: string | string[] | null) => {
@@ -206,53 +214,64 @@ const sectionLandingProps = createSectionLandingProps({
       <div class="bookshelf-filters__summary" id="filter-summary"></div>
       <div class="bookshelf-filters__active" id="active-filters"></div>
     </div>
-    <div class="bookshelf-years">
+    <ShelfViewControls />
+    <div class="shelf-years">
       {years.map((year) => {
         const yearBooks = booksByYear[year] ?? [];
         const finishedYearBooks = yearBooks.filter((book) => book.data.status === 'finished');
         const bookCount = finishedYearBooks.length;
         const bookLabel = bookCount === 1 ? 'book' : 'books';
 
-        const yearRowCount = Math.ceil(yearBooks.length / 2);
-
         return (
-          <section class="bookshelf-year" id={`bookshelf-${year}`} data-year={year}>
-            <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
-              <div class="bookshelf-year__sidebar grid-span-2" style={`--year-row-count: ${yearRowCount};`}>
-                <div class="bookshelf-year__sticky">
-                  <span class="bookshelf-year__year">{year}</span>
-                  <span class="bookshelf-year__count" data-year-count={year}>Read {bookCount} {bookLabel}</span>
-                </div>
-              </div>
-              {yearBooks.map((book, index) => {
-                const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
-                const bookSlug = book.id ?? `${year}-${index}`;
-                const bookAuthors = extractAuthors(book.data.author).join(',');
-                const bookGenre = book.data.genre ?? '';
+          <section class="shelf-year" id={`bookshelf-${year}`} data-year={year}>
+            <header class="shelf-year__head">
+              <h2 class="shelf-year__year">{year}</h2>
+              <span class="shelf-year__count" data-year-count={year}>Read {bookCount} {bookLabel}</span>
+            </header>
+            <ul class="shelf-wall">
+              {yearBooks.map((book) => {
+                const authors = extractAuthors(book.data.author);
                 const bookStatus = normalizeStatus(book.data.status);
-                const bookFormat = book.data.format ?? '';
-                const bookRating = book.data.rating ?? '';
-                const bookTags = Array.isArray(book.data.tags) ? book.data.tags.join(',') : '';
                 const rawSeries = book.data.series ?? '';
                 const bookSeries = (!rawSeries || rawSeries === 'none') ? '' : rawSeries;
+                const readNumber = readNumberMap.get(book.id) ?? 1;
+                const date = activityDate(book.data);
 
                 return (
-                  <div
-                    class={`bookshelf-year__book ${gridClasses}`}
+                  <li
+                    class="shelf-wall__item"
                     data-book-item
-                    data-author={bookAuthors}
-                    data-genre={bookGenre}
+                    data-author={authors.join(',')}
+                    data-genre={book.data.genre ?? ''}
                     data-status={bookStatus}
-                    data-format={bookFormat}
-                    data-rating={bookRating}
-                    data-tags={bookTags}
+                    data-format={book.data.format ?? ''}
+                    data-rating={book.data.rating ?? ''}
+                    data-tags={Array.isArray(book.data.tags) ? book.data.tags.join(',') : ''}
                     data-series={bookSeries}
+                    data-sort-date={date.toISOString()}
+                    data-sort-status={SHELF_LIST_SORT_PRIORITY[bookStatus]}
+                    data-sort-title={(book.data.title ?? '').toLowerCase()}
+                    data-sort-rating={book.data.rating ? bookRatingOrder.indexOf(book.data.rating) : 9}
                   >
-                    <BookshelfCard {...transformBook(book)} />
-                  </div>
+                    <ShelfTile
+                      title={book.data.title ?? ''}
+                      href={book.id ? `/bookshelf/${book.id}/` : undefined}
+                      cover={book.data.cover ? getBookCoverImage(book.data.cover) : null}
+                      people={authors}
+                      personFilter="author"
+                      series={bookSeries || null}
+                      seriesNumber={book.data.seriesNumber ?? null}
+                      status={bookStatus}
+                      statusLabel={SHELF_STATUS_LABELS.bookshelf[bookStatus]}
+                      rating={book.data.rating}
+                      genre={book.data.genre}
+                      repeat={readNumber > 1 ? repeatLabel(readNumber, 'read') : null}
+                      date={date}
+                    />
+                  </li>
                 );
               })}
-            </div>
+            </ul>
           </section>
         );
       })}

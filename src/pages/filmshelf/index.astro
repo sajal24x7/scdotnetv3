@@ -1,14 +1,18 @@
 ---
-import '../../styles/shelf-year.css';
+import '../../styles/shelf-wall.css';
 import Layout from '../../layouts/Layout.astro';
 import SectionLanding from '../../layouts/SectionLanding.astro';
-import FilmCard from '../../components/shelf/FilmCard.astro';
+import ShelfTile from '../../components/shelf/ShelfTile.astro';
+import ShelfViewControls from '../../components/shelf/ShelfViewControls.astro';
 import ShelfQueueToggle from '../../components/shelf/ShelfQueueToggle.astro';
 import ShelfFilterResults from '../../components/shelf/ShelfFilterResults.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
-import { computeWatchNumbers, slugify } from '../../utils/shelfUtils';
-import { SHELF_LIST_SORT_PRIORITY } from '../../utils/shelfStatus';
+import { computeWatchNumbers } from '../../utils/shelfUtils';
+import { activityDate, hasShelfNotes, repeatLabel } from '../../utils/shelfWall';
+import { getFilmCoverImage } from '../../utils/filmCovers';
+import { bookRatingOrder } from '../../utils/bookRatings';
+import { SHELF_LIST_SORT_PRIORITY, SHELF_STATUS_LABELS, type ShelfStatus } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
 // `todo` entries live on the queue page (/filmshelf/queue/) only — see
@@ -112,31 +116,29 @@ const sectionLandingProps = createSectionLandingProps({
       </div>
       <p class="shelf-description">{filmDescription}</p>
     </div>
+    <ShelfViewControls />
     <ShelfFilterResults />
-    <div class="bookshelf-years">
+    <div class="shelf-years">
       {years.map((year) => {
         const yearFilms = filmsByYear[year] ?? [];
         const watchedYearFilms = yearFilms.filter((p) => p.data.status === 'finished');
         const filmCount = watchedYearFilms.length;
         const filmLabel = filmCount === 1 ? 'film' : 'films';
 
-        const yearRowCount = Math.ceil(yearFilms.length / 2);
-
         return (
-          <section class="bookshelf-year" id={`filmshelf-${year}`} data-year={year}>
-            <div class="bookshelf-year__grid twelve-grid grid-gap-tight">
-              <div class="bookshelf-year__sidebar grid-span-2" style={`--year-row-count: ${yearRowCount};`}>
-                <div class="bookshelf-year__sticky">
-                  <span class="bookshelf-year__year">{year}</span>
-                  <span class="bookshelf-year__count" data-year-count={year}>Watched {filmCount} {filmLabel}</span>
-                </div>
-              </div>
-              {yearFilms.map((post, index) => {
-                const gridClasses = index % 2 === 0 ? 'grid-span-5 grid-start-3' : 'grid-span-5 grid-start-8';
+          <section class="shelf-year" id={`filmshelf-${year}`} data-year={year}>
+            <header class="shelf-year__head">
+              <h2 class="shelf-year__year">{year}</h2>
+              <span class="shelf-year__count" data-year-count={year}>Watched {filmCount} {filmLabel}</span>
+            </header>
+            <ul class="shelf-wall">
+              {yearFilms.map((post) => {
                 const watchNumber = watchNumberMap.get(post.id) ?? 1;
+                const status = post.data.status as ShelfStatus | undefined;
+                const date = activityDate(post.data);
                 return (
-                  <div
-                    class={`bookshelf-year__book ${gridClasses}`}
+                  <li
+                    class="shelf-wall__item"
                     data-shelf-item
                     data-tags={Array.isArray(post.data.tags) ? post.data.tags.join(',') : ''}
                     data-director={Array.isArray(post.data.director) ? post.data.director.join(',') : ''}
@@ -144,24 +146,29 @@ const sectionLandingProps = createSectionLandingProps({
                     data-platform={post.data.platform ?? ''}
                     data-status={post.data.status ?? ''}
                     data-rating={post.data.rating ?? ''}
+                    data-sort-date={date.toISOString()}
+                    data-sort-status={status ? SHELF_LIST_SORT_PRIORITY[status] : 99}
+                    data-sort-title={(post.data.title ?? '').toLowerCase()}
+                    data-sort-rating={post.data.rating ? bookRatingOrder.indexOf(post.data.rating) : 9}
                   >
-                    <FilmCard
+                    <ShelfTile
                       title={post.data.title ?? ''}
-                      director={post.data.director}
-                      year={post.data.year as number | undefined}
-                      genre={post.data.genre}
-                      platform={post.data.platform}
-                      status={post.data.status as any}
+                      href={post.id ? `/filmshelf/${post.id}/` : undefined}
+                      cover={post.data.cover ? getFilmCoverImage(post.data.cover) : null}
+                      people={post.data.director}
+                      personFilter="director"
+                      status={status}
+                      statusLabel={status ? SHELF_STATUS_LABELS.filmshelf[status] : null}
                       rating={post.data.rating}
-                      finished={post.data.finished}
-                      cover={post.data.cover}
-                      link={post.id ? `/filmshelf/${post.id}/` : undefined}
-                      watchNumber={watchNumber}
+                      genre={post.data.genre}
+                      repeat={watchNumber > 1 ? repeatLabel(watchNumber, 'watch') : null}
+                      notes={hasShelfNotes(post.body)}
+                      date={date}
                     />
-                  </div>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
           </section>
         );
       })}
