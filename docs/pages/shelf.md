@@ -176,10 +176,13 @@ appear on the queue page beneath each shelf.
 | `/gameshelf/queue/` | `gameshelf` | To Play |
 
 Each of the four shelf pages has a "Queue →" link in its header, next to the
-RSS icon. Queue cards are a compact row (cover thumbnail when available,
-title, creator, "added <month year>" from `created`, and the entry body
-rendered small as the "why"), sorted by `created` descending — no year
-grouping.
+RSS icon. Queue pages use the same layout as the main shelf pages: the same
+header with a count line and tag list, the Covers/List view and sort
+controls, and the cover wall of `ShelfTile`s (rendered by the shared
+`ShelfQueue.astro`). Entries are grouped by the year they were added
+(`created`), newest first. Creator, series, genre and tag chips filter the
+queue through `shelfFilters.ts`. An entry with a body (the "why") shows the
+notes mark on its tile.
 
 `/api/shelf-queue.json` returns every `todo` entry across all four
 categories (`id`, `category`, `title`, `creator`, `created`), sorted by

@@ -198,7 +198,7 @@ const sectionLandingProps = createSectionLandingProps({
           labels: { like: 'Like', love: 'Love', nope: 'Nope' },
           badgeClass: (value) => `shelf-filter-badge--rating-${value}`,
         },
-        { type: 'tag', badgeClass: () => 'shelf-filter-badge--tag' },
+        { type: 'tag', attr: 'data-tags', badgeClass: () => 'shelf-filter-badge--tag' },
       ],
     });
   }
