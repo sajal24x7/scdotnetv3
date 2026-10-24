@@ -1,35 +1,23 @@
 ---
-title: Azure Resource Lock
-slug: azure-resource-lock
-created: '2024-09-02T13:26:00+03:00'
-updated: '2024-09-02T13:26:00+03:00'
+title: "Azure Resource Lock"
+slug: "azure-resource-lock"
+created: 2024-09-02T13:26:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - management
+tags: ["azure", "management"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoahqmwz2m'
   - 'https://mastodon.social/@sajal24x7/116756211711531438'
 ---
-
-1. Azure Locks can be applied at [[202404061212 Azure Resources|resource]], [[202404051818 Resource Groups|resource group]] or [[202401101441 Azure subscriptions|subscription]] level
-	2. No lock at [[202404051803 Management groups|management group]] level
+1. Azure Locks can be applied at [resource](/til/azure-resources), [resource group](/til/resource-groups) or [subscription](/til/azure-subscriptions) level
+	2. No lock at [management group](/til/management-groups) level
 2. inherited
 	1. all child resources get the same lock
 3. Types:
-	1. Ready Only - can not delete or update anything / similar to reader [[202404061316 Azure Roles|role]]
+	1. Ready Only - can not delete or update anything / similar to reader [role](/til/azure-roles)
 	2. Delete - can read/modify but can not delete a resource
 
 
 ---
 # references:
 [Lock resources](https://learn.microsoft.com/en-in/azure/azure-resource-manager/management/lock-resources?tabs=json)
-
-```learn
-prompts:
-  - q: At which scopes can an Azure resource lock be applied — and which scope can't have one?
-    a: Resource, resource group, or subscription — but not management group.
-    note: Locks are inherited — all child resources get the same lock.
-  - q: What are the two Azure lock types, and what does each block?
-    a: Read Only (no update or delete, like the reader role) and Delete (read/modify allowed, delete blocked).
-```

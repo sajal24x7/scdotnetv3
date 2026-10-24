@@ -1,17 +1,13 @@
 ---
-title: Raise a Certificate Request on Windows
-slug: raise-a-certificate-request-on-windows
-created: '2022-05-20T09:55:00+03:00'
-updated: '2022-05-20T09:55:00+03:00'
+title: "Raise a Certificate Request on Windows"
+slug: "raise-a-certificate-request-on-windows"
+created: 2022-05-20T09:55:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - cert
+tags: ["windows", "cert"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhopt7vh2v'
 ---
-
-
 # Script
 1. Ensure that you have the configuration name correct. Just run **certutil** and copy the CA Config name from the output.
 2. Multi cert script developed.

@@ -1,18 +1,15 @@
 ---
-title: Add SAN to Cert Request Inf File Method
-slug: add-san-to-cert-request-inf-file-method
-created: '2022-06-21T13:33:00+03:00'
-updated: '2022-06-21T13:33:00+03:00'
+title: "Add SAN to Cert Request Inf File Method"
+slug: "add-san-to-cert-request-inf-file-method"
+created: 2022-06-21T13:33:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - cert
+tags: ["cert"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modju3vt4q2u'
 ---
-
-
 Template:
-```ini
+```notepad
 [NewRequest]
 Subject = "CN=devname.fi.tcsecp.com"
 Exportable = TRUE
@@ -30,7 +27,7 @@ CertificateTemplate = WebServer
 ```
 
 For SAN, tried using the following which did not work. So, use the [Extensions] format mentioned above.
-```ini
+```notepad
 [RequestAttributes] ; If your client operating system is Windows Server 2003, Windows Server 2003 R2, or Windows XP ; and you are using a standalone CA, SANs can be included in the RequestAttributes ; section by using the following text format. SAN="dns=www01.fabrikam.com&dns=www.fabrikam.com&ipaddress=172.31.10.130"
 ```
 

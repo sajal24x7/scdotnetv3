@@ -1,18 +1,14 @@
 ---
-title: Openssh on Windows Failing With 0x80072ee2
-slug: openssh-on-windows-failing-with-0x80072ee2
-created: '2023-06-21T17:51:00+03:00'
-updated: '2023-06-21T17:51:00+03:00'
+title: "Openssh on Windows Failing With 0x80072ee2"
+slug: "openssh-on-windows-failing-with-0x80072ee2"
+created: 2023-06-21T17:51:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - powershell
+tags: ["windows", "powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754746370195114'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkrod32z2c'
 ---
-
-
 Download from https://github.com/PowerShell/Win32-OpenSSH/releases/
 
 Error: 

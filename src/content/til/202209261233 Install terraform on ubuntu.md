@@ -1,15 +1,13 @@
 ---
-title: Install Terraform on Ubuntu
-slug: install-terraform-on-ubuntu
-created: '2022-09-26T12:33:00+03:00'
-updated: '2022-09-26T12:33:00+03:00'
+title: "Install Terraform on Ubuntu"
+slug: "install-terraform-on-ubuntu"
+created: 2022-09-26T12:33:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["terraform"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk7exgxj24'
 ---
-
-
 ## Install terraform on Ubuntu server
 
 1. Add the HashiCorp [GPG key](https://apt.releases.hashicorp.com/gpg "HashiCorp GPG key").

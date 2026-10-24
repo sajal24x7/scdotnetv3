@@ -1,17 +1,13 @@
 ---
-title: VM Deployment to VMware
-slug: vm-deployment-to-vmware
-created: '2022-04-25T14:31:00+03:00'
-updated: '2022-04-25T14:31:00+03:00'
+title: "VM Deployment to VMware"
+slug: "vm-deployment-to-vmware"
+created: 2022-04-25T14:31:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
-  - terraform
+tags: ["vmware", "terraform"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnevwjn2s'
 ---
-
-
 # Disk
 1. One of `datastore_id` or `datastore_cluster_id` must be specified.
 2. Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.

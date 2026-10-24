@@ -1,49 +1,46 @@
 ---
-title: Microsoft Entra
-slug: microsoft-entra
-created: '2023-12-23T14:20:00+03:00'
-updated: '2023-12-23T14:20:00+03:00'
+title: "Microsoft Entra"
+slug: "microsoft-entra"
+created: 2023-12-23T14:20:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - entra
+tags: ["azure", "entra"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754757063955018'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkwjybjc2z'
 ---
-
-Entra is the overall umbrella for identity and access solution in [[202312231415 Azure Master|"azure"]].
+Entra is the overall umbrella for identity and access solution in ["azure"](/til/azure-master).
 
 # Overview
-[[202404011327 Entra ID]]
-[[202408281918 Entra ID tenant]]
-- [[202408281922 Add custom domain to Entra ID|How to add a custom domain to Entra ID tenant]]
-[[202406151743 Difference between Entra ID and ADDS]]
-[[202312231437 Entra ID editions]]
+[Entra ID](/til/entra-id)
+[Entra ID Tenant](/til/entra-id-tenant)
+- [How to add a custom domain to Entra ID tenant](/til/add-custom-domain-to-entra-id)
+[Difference Between Entra ID and ADDS](/til/difference-between-entra-id-and-adds)
+[Entra ID Editions](/til/entra-id-editions)
 # Concepts
-[[202404011414 Authentication and Authorization]]
-- [[202404011532 Entra MFA]]
-[[202404011343 Entra ID objects]]
-- [[202408281930 How to assign licenses in Entra|How to assign licenses in Entra]]
-[[202401082057 Entra External IDs]]
-[[202401061515 Entra ID Administrative Units]]
+[Authentication and Authorization](/til/authentication-and-authorization)
+- [Entra MFA](/til/entra-mfa)
+[Entra ID Objects](/til/entra-id-objects)
+- [How to assign licenses in Entra](/til/how-to-assign-licenses-in-entra)
+[Entra External IDs](/til/entra-external-ids)
+[Entra ID Administrative Units](/til/entra-id-administrative-units)
 
 # Roles
-[[202401072001 Entra ID Roles]]
-- [[202401072111 Entra ID custom roles]]
+[Entra ID Roles](/til/entra-id-roles)
+- [Entra ID Custom Roles](/til/entra-id-custom-roles)
 
 # Sync
-[[202208041136 Entra Connect sync]]
+[Entra Connect Sync](/til/entra-connect-sync)
 # Misc
 
 # Governance
-[[202401101559 Entra ID Governance]]
-- [[202401102057 Entra ID Entitlement Management]] 
-- [[202401121503 Entra Privileged Identity Management]]
-- [[202401121518 Entra Access Reviews]]
+[Entra ID Governance](/til/entra-id-governance)
+- [Entra ID Entitlement Management](/til/entra-id-entitlement-management) 
+- [Entra Privileged Identity Management](/til/entra-privileged-identity-management)
+- [Entra Access Reviews](/til/entra-access-reviews)
 
-[[202404011557 Conditional Access]]
-[[202405021835 Entra Self Service Password Reset]]
+[Conditional Access](/til/conditional-access)
+[Entra Self Service Password Reset](/til/entra-self-service-password-reset)
 
 ---
 # references:

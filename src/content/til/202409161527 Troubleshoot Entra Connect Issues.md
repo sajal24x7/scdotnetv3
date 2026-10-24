@@ -1,16 +1,14 @@
 ---
-title: Troubleshoot Entra Connect Issues
-slug: troubleshoot-entra-connect-issues
-created: '2024-09-16T15:27:00+03:00'
-updated: '2024-09-16T15:27:00+03:00'
+title: "Troubleshoot Entra Connect Issues"
+slug: "troubleshoot-entra-connect-issues"
+created: 2024-09-16T15:27:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - entraconnect
+tags: ["entraconnect"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modob37jdf2p'
   - 'https://mastodon.social/@sajal24x7/116756401364477032'
 ---
-
 ``` powershell
 
 Import-Module ADSyncDiagnostics
@@ -20,7 +18,7 @@ Invoke-ADSyncDiagnostics -PasswordSync
 
 # Example
 
-Issue when password hash synchronization was set as Disabled and Entra connect health was in error state after [[202408271224 Migrate Entra Connect DB|Migrate Entra Connect DB]]
+Issue when password hash synchronization was set as Disabled and Entra connect health was in error state after [Migrate Entra Connect DB](/migrate-entra-connect-db)
 
 ```powershell
 PS C:\Program Files\Microsoft Azure Active Directory Connect> Invoke-ADSyncDiagnostics -PasswordSync

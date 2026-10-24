@@ -1,15 +1,13 @@
 ---
-title: CloudFormation Basics
-slug: cloudformation-basics
-created: '2022-08-02T21:52:00+03:00'
-updated: '2022-08-02T21:52:00+03:00'
+title: "CloudFormation Basics"
+slug: "cloudformation-basics"
+created: 2022-08-02T21:52:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["inprogress"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjxmtb242o'
 ---
-
-
 IAC product.
 Can be written in yaml or json.
 

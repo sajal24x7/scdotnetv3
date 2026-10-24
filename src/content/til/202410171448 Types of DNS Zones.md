@@ -1,17 +1,14 @@
 ---
-title: Types of DNS Zones
-slug: types-of-dns-zones
-created: '2024-10-17T14:48:00+03:00'
-updated: '2024-10-17T14:48:00+03:00'
+title: "Types of DNS Zones"
+slug: "types-of-dns-zones"
+created: 2024-10-17T14:48:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - dns
+tags: ["windows", "dns"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobpyfrr2v'
   - 'https://mastodon.social/@sajal24x7/116756402717330451'
 ---
-
 1. Primary Zone
 	1. R/W container
 	2. Standard and AD-Integrated
@@ -19,11 +16,11 @@ syndicationUrls:
 2. Secondary Zone
 	1. Keeps a RO copy of a primary zone
 3. Stub Zone
-	1. RO copy of master zone but contains only NS and SOA [[202410171442 Types of DNS records|dns records]]
+	1. RO copy of master zone but contains only NS and SOA [dns records](/til/types-of-dns-records)
 	2. Not a replacement of secondary zone
-	3. Different from [[202410171455 Conditional Forwarders|conditional forwarders]]
+	3. Different from [conditional forwarders](/til/conditional-forwarders)
 4. Reverse Lookup Zone
-	1. Contains PTR [[202410171442 Types of DNS records|dns records]]
+	1. Contains PTR [dns records](/til/types-of-dns-records)
 
 ---
 # references:

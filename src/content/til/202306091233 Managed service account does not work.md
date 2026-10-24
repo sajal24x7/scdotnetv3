@@ -1,17 +1,15 @@
 ---
-title: Managed Service Account Does Not Work
-slug: managed-service-account-does-not-work
-created: '2023-06-09T12:33:00+03:00'
-updated: '2023-06-09T12:33:00+03:00'
+title: "Managed Service Account Does Not Work"
+slug: "managed-service-account-does-not-work"
+created: 2023-06-09T12:33:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["windows", "ad", "powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754743902484106'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkqkb2ew2o'
   - 'https://www.threads.com/@sajal24x7/post/DZnGhUwlnKa'
 ---
-
-
 ```text
 Error:
 Install-ADServiceAccount : Cannot Install service account. Error Message:  ‘The provided context did not match the target’

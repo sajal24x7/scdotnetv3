@@ -1,16 +1,13 @@
 ---
-title: Terraform Custom Worker Image
-slug: terraform-custom-worker-image
-created: '2022-05-17T15:19:00+03:00'
-updated: '2022-05-17T15:19:00+03:00'
+title: "Terraform Custom Worker Image"
+slug: "terraform-custom-worker-image"
+created: 2022-05-17T15:19:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - terraform
+tags: ["terraform"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhonwmpu2l'
 ---
-
-
 # Commands
 ```bash
 # To build image from dockerfile

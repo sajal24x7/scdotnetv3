@@ -1,17 +1,14 @@
 ---
-title: Cluster Validation Causes Alerts
-slug: cluster-validation-causes-alerts
-created: '2024-07-24T13:57:00+03:00'
-updated: '2024-07-24T13:57:00+03:00'
+title: "Cluster Validation Causes Alerts"
+slug: "cluster-validation-causes-alerts"
+created: 2024-07-24T13:57:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - cluster
+tags: ["windows", "cluster"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754965842865401'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnvhwzoa2c'
 ---
-
 Windows creates account clitest2 during cluster validation.
 SoC might get alerts about this.
 

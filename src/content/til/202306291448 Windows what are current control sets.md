@@ -1,16 +1,14 @@
 ---
-title: Windows What Are Current Control Sets
-slug: windows-what-are-current-control-sets
-created: '2023-06-29T14:48:00+03:00'
-updated: '2023-06-29T14:48:00+03:00'
+title: "Windows What Are Current Control Sets"
+slug: "windows-what-are-current-control-sets"
+created: 2023-06-29T14:48:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["windows"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754748132596573'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modksi45es2z'
 ---
-
-
 `CurrentControlSet` is an alternating symbolic link to either `ControlSet001` or `ControlSet002`. The other key is kept as a backup for the Load Last Known Good Configuration boot option.
 
 current ControlSet number is set by Current under HKLM\System\Select.

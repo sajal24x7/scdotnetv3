@@ -1,16 +1,14 @@
 ---
-title: VC Appliance Connect Through Winscp
-slug: vc-appliance-connect-through-winscp
-created: '2023-05-10T12:46:00+03:00'
-updated: '2023-05-10T12:46:00+03:00'
+title: "VC Appliance Connect Through Winscp"
+slug: "vc-appliance-connect-through-winscp"
+created: 2023-05-10T12:46:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["vmware"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754742106071421'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkpq5f5c2s'
 ---
-
-
 Error:
 ```text
 Received too large (1433299822 B) SFTP packet. Max supported packet size is 1024000 B

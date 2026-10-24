@@ -1,11 +1,10 @@
 ---
-title: Three Types of Tests
-slug: three-types-of-tests
-created: 2025-12-19T08:03:49.000Z
-updated: 2025-12-19T08:03:49.000Z
+title: "Three Types of Tests"
+slug: "three-types-of-tests"
+created: 2025-12-19T10:01:00+02:00
+updated: 2025-12-19T10:01:00+02:00
 category: til
-tags:
-  - testing
+tags: ["testing"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115745192905159886'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3mada5vxizq2k'

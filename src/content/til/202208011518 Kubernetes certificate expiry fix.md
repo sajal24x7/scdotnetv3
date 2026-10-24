@@ -1,17 +1,13 @@
 ---
-title: Kubernetes Certificate Expiry Fix
-slug: kubernetes-certificate-expiry-fix
-created: '2022-08-01T15:18:00+03:00'
-updated: '2022-08-01T15:18:00+03:00'
+title: "Kubernetes Certificate Expiry Fix"
+slug: "kubernetes-certificate-expiry-fix"
+created: 2022-08-01T15:18:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - k8s
-  - ccs
+tags: ["k8s", "ccs"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjwj3ck52p'
 ---
-
-
 # Check cert status
 ```bash
 $ sudo kubeadm alpha certs check-expiration

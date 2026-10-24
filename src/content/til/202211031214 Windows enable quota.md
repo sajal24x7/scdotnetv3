@@ -1,16 +1,14 @@
 ---
-title: Windows Enable Quota
-slug: windows-enable-quota
-created: '2022-11-03T12:14:00+03:00'
-updated: '2022-11-03T12:14:00+03:00'
+title: "Windows Enable Quota"
+slug: "windows-enable-quota"
+created: 2022-11-03T12:14:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["windows"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754723736144242'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkhf7mkh2l'
 ---
-
-
 1. Open the disk properties window, on which you want to enable quotas, go to the **Quota** tab. Then click **Show Quota Settings**:
 2. To enable the quotas for this volume, check **Enable quota management**.
 3. **Deny disk space to users exceeding quota limit** – prevent users who have exceeded the quota limit from writing to disk;

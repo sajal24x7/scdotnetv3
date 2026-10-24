@@ -1,16 +1,13 @@
 ---
-title: VMware Unable to Unmount Datastore
-slug: vmware-unable-to-unmount-datastore
-created: '2022-05-31T14:53:00+03:00'
-updated: '2022-05-31T14:53:00+03:00'
+title: "VMware Unable to Unmount Datastore"
+slug: "vmware-unable-to-unmount-datastore"
+created: 2022-05-31T14:53:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
+tags: ["vmware"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjqvxto72l'
 ---
-
-
 Error
 > The resource '0200fe0000624a9370f25b6296a38b4191000d2851466c61736841' is in use.
 
@@ -28,13 +25,13 @@ If these mention datastores, change that.
 ## Through CLI
 
 ### Find the UUID for datastore to be removed.
-```bash
+```ssh
 esxcli storage filesystem list
 
 ```
 
 ### Unmount
-```bash
+```ssh
 esxcli storage filesystem unmount [-u _UUID_ | -l _label_ | -p _path_ ]
 ```
 
@@ -44,7 +41,7 @@ WARNING: VC: 637: unmounting opened volume ('4e414917-a8d75514-6bae-0019b9f1ecf4
 VC: 802: Unmount VMFS volume f530 28 2 4e414917a8d7551419006bae f4ecf19b 4 1 0 0 0 0 0 : Busy
 
 ## verify that the datastore is unmounted, run this command:  
-```bash
+```ssh
 esxcli storage filesystem list
 ```
 

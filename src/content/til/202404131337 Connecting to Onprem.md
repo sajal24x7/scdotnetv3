@@ -1,17 +1,14 @@
 ---
-title: Connecting to Onprem
-slug: connecting-to-onprem
-created: '2024-04-13T13:37:00+03:00'
-updated: '2024-04-13T13:37:00+03:00'
+title: "Connecting to Onprem"
+slug: "connecting-to-onprem"
+created: 2024-04-13T13:37:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754920633875232'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnawfcld2m'
 ---
-
 - Many Azure services have external, Internet facing endpoints however often private connectivity is required
 - ﻿﻿There are a number of options to connect to virtual networks
 	- ﻿﻿P2S VPN - Connects a specific device to a virtual network
@@ -21,9 +18,9 @@ syndicationUrls:
 	- ﻿﻿ExpressRoute circuits enable multiple virtual networks to be connected to a single circuit but net to vnet better via peering where practical
 - ﻿﻿Most enterprises will leverage ExpressRoute which has the benefit of not going over the Internet, consistent latency and can also provides optional Microsoft peering via route filter
 
-# [[202407151913 Azure VPN|Azure VPN]]
+# [Azure VPN](/til/azure-vpn)
 
-# [[202404141339 Azure ExpressRoute|Express Route]]
+# [Express Route](/til/azure-expressroute)
 - Private but not encrypted
 - MSFT don't provide connection from meet me to your dc/location
 

@@ -1,15 +1,13 @@
 ---
-title: Platespin Scheduling Target Machine for Provisioning Fails
-slug: platespin-scheduling-target-machine-for-provisioning-fails
-created: '2022-09-26T12:59:00+03:00'
-updated: '2022-09-26T12:59:00+03:00'
+title: "Platespin Scheduling Target Machine for Provisioning Fails"
+slug: "platespin-scheduling-target-machine-for-provisioning-fails"
+created: 2022-09-26T12:59:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["platespin"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkc2y6sx2p'
 ---
-
-
 Scheduling target machine for provisioning fails with
 NPART Error: code=28 msg=Device sdb does not have enough free space. (No space left on device)
 

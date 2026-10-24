@@ -1,16 +1,13 @@
 ---
-title: Convert a Dynamic Dns Record to Static
-slug: convert-a-dynamic-dns-record-to-static
-created: '2022-05-25T14:14:00+03:00'
-updated: '2022-05-25T14:14:00+03:00'
+title: "Convert a Dynamic Dns Record to Static"
+slug: "convert-a-dynamic-dns-record-to-static"
+created: 2022-05-25T14:14:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - dns
-  - windows
+tags: ["dns", "windows"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjqorxuh2u'
 ---
-
 1. dnsmgmt.msc
 2. Enable advanced view.
 3. Find the record. Right click > Properties. Disable **Delete this record when it becomes stale** check box and then click on **OK**

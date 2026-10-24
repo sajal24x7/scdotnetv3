@@ -1,16 +1,13 @@
 ---
-title: Entra Connect Sync
-slug: entra-connect-sync
-created: '2022-08-04T11:36:00+03:00'
-updated: '2022-08-04T11:36:00+03:00'
+title: "Entra Connect Sync"
+slug: "entra-connect-sync"
+created: 2022-08-04T11:36:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - entra
+tags: ["azure", "entra"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjymdriq2u'
 ---
-
 - AD is source of truth
 - Entra ID instance can sync from only one Entra connect sync
 - One AD can sync to multiple Entra IDs
@@ -30,9 +27,9 @@ P1
 |ADDS|Onprem|
 
 
-[[202208041137 Azure AD Connect Pre-Reqs]]
-[[202208041557 Export configuration of existing Azure AD Connect server]]
-[[202208041439 Azure AD Connect Upgrade from old version to new version]]
+[Azure AD Connect Pre-Reqs](/til/azure-ad-connect-pre-reqs)
+[Export Configuration of Existing Azure AD Connect Server](/til/export-configuration-of-existing-azure-ad-connect-server)
+[Azure AD Connect Upgrade From Old Version to New Version](/til/azure-ad-connect-upgrade-from-old-version-to-new-version)
 
 
 ---

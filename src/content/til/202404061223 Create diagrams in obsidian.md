@@ -1,17 +1,14 @@
 ---
-title: Create Diagrams in Obsidian
-slug: create-diagrams-in-obsidian
-created: '2024-04-06T12:23:00+03:00'
-updated: '2024-04-06T12:23:00+03:00'
+title: "Create Diagrams in Obsidian"
+slug: "create-diagrams-in-obsidian"
+created: 2024-04-06T12:23:00+03:00
+updated: 2026-09-12T11:28:16+03:00
 category: til
-tags:
-  - obsidian
-  - howto
+tags: ["obsidian", "howto"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754764686475849'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkzywiy52v'
 ---
-
 Using mermaid code-block, we can create diagrams.
 
 Example:

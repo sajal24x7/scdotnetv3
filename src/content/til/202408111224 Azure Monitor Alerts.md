@@ -1,22 +1,19 @@
 ---
-title: Azure Monitor Alerts
-slug: azure-monitor-alerts
-created: '2024-08-11T12:24:00+03:00'
-updated: '2024-08-11T12:24:00+03:00'
+title: "Azure Monitor Alerts"
+slug: "azure-monitor-alerts"
+created: 2024-08-11T12:24:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - monitoring
+tags: ["azure", "monitoring"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo3ufwpq2c'
   - 'https://mastodon.social/@sajal24x7/116756208000296887'
 ---
-
-We can use the [[202408041409 Types of monitoring data in Azure|Types of monitoring data in Azure]] collected in [[202404281601 Azure monitoring old|Azure monitoring]] to create alerts.
+We can use the [Types of monitoring data in Azure](/til/types-of-monitoring-data-in-azure) collected in [Azure monitoring](/til/azure-monitoring-old) to create alerts.
 
 Three types of data can be used for alerts:
-1. Metrics - [[202408111240 Create an Azure metric alert|Create an azure metric alert]]
-2. Activity logs (When state changes for an [[202404061212 Azure Resources|Azure resource]])
+1. Metrics - [Create an azure metric alert](/til/create-an-azure-metric-alert)
+2. Activity logs (When state changes for an [Azure resource](/til/azure-resources))
 3. Logs
 
 Alerts are created based on rules.

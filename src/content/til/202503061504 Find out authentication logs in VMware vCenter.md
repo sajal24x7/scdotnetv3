@@ -1,21 +1,20 @@
 ---
-title: Find out Authentication Logs in VMware vCenter
-slug: find-out-authentication-logs-in-vmware-vcenter
-created: 2025-03-06T12:41:09.000Z
-updated: 2025-03-06T12:41:09.000Z
+title: "Find Out Authentication Logs in VMware VCenter"
+slug: "find-out-authentication-logs-in-vmware-vcenter"
+created: 2025-03-06T15:04:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - '#vmware'
+tags: ["vmware"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoctfgmw23'
   - 'https://mastodon.social/@sajal24x7/116756404793473137'
 ---
-Related to [202303211323 VMware logs](#)
+Related to [VMware Logs](/til/vmware-logs)
 
 1. Log in to vCenter appliance.
 2. Go to /var/log/vmware/applmgmt-audit.
 3. Check the lgos.
-```bash
+```ssh
 cat applmgmt-audit.log | grep -i <username>
 ```
 

@@ -1,18 +1,15 @@
 ---
-title: Create Azure DNS Zone and Records
-slug: create-azure-dns-zone-and-records
-created: '2024-07-27T12:15:00+03:00'
-updated: '2024-07-27T12:15:00+03:00'
+title: "Create Azure DNS Zone and Records"
+slug: "create-azure-dns-zone-and-records"
+created: 2024-07-27T12:15:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - powershell
+tags: ["azure", "powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754966983443788'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnvz3ikp2m'
 ---
-
-[[202404141450 Azure DNS|Azure DNS]]
+[Azure DNS](/til/azure-dns)
 
 ```powershell
 # Create a public zone

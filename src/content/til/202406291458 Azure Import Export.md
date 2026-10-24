@@ -1,24 +1,21 @@
 ---
-title: Azure Import Export
-slug: azure-import-export
-created: '2024-06-29T14:58:00+03:00'
-updated: '2024-06-29T14:58:00+03:00'
+title: "Azure Import Export"
+slug: "azure-import-export"
+created: 2024-06-29T14:58:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - storage
+tags: ["azure", "storage"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754948186585020'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnngx4kn2z'
 ---
-
 - To import/export large amount of data to and from Azure using physically shipping drives etc
 	- Recommendation to use Azure Data Box to import to Azure
 - WAImportExport tool prepares drive to write data to
 	- formats, checks for errors, encrypts disk
 	- creates journal file
 	- V1 - for blob
-	- V2 - for [[202406291221 Azure Files|Azure Files]]
+	- V2 - for [Azure Files](/til/azure-files)
 	- 
 
 ---

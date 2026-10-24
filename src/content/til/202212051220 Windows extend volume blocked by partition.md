@@ -1,16 +1,14 @@
 ---
-title: Windows Extend Volume Blocked by Partition
-slug: windows-extend-volume-blocked-by-partition
-created: '2022-12-05T12:20:00+03:00'
-updated: '2022-12-05T12:20:00+03:00'
+title: "Windows Extend Volume Blocked by Partition"
+slug: "windows-extend-volume-blocked-by-partition"
+created: 2022-12-05T12:20:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["windows"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754728013366305'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkjdbkya2p'
 ---
-
-
 1. Run diskpart
 ``` cmd
 list disk

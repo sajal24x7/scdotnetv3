@@ -1,22 +1,19 @@
 ---
-title: Azure Networking Basics
-slug: azure-networking-basics
-created: '2024-07-28T12:23:00+03:00'
-updated: '2024-07-28T12:23:00+03:00'
+title: "Azure Networking Basics"
+slug: "azure-networking-basics"
+created: 2024-07-28T12:23:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754967934969147'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnwgcij52z'
 ---
-
-- When compared to on-prem, on [[202312231415 Azure Master|Azure]] there is no hierarchy to network design.
+- When compared to on-prem, on [Azure](/til/azure-master) there is no hierarchy to network design.
 	- There are no physical devices
 - Everything is virtual
 	- We can slice it into chunks per our needs
-- There can be no overlap in IP address between on-prem and [[202312231415 Azure Master|Azure]] 
+- There can be no overlap in IP address between on-prem and [Azure](/til/azure-master) 
 
 ---
 # references:

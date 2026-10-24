@@ -1,12 +1,10 @@
 ---
-title: Dcpromo Fails With Access Denied Error
-slug: dcpromo-fails-with-access-denied-error
-created: 2025-04-16T17:39:48.000Z
-updated: 2025-04-16T17:39:48.000Z
+title: "Dcpromo Fails With Access Denied Error"
+slug: "dcpromo-fails-with-access-denied-error"
+created: 2025-04-16T20:26:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - ad
+tags: ["windows", "ad"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododnjvby2v'
   - 'https://mastodon.social/@sajal24x7/116756406340972193'

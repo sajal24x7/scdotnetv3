@@ -1,16 +1,13 @@
 ---
-title: VMware Remove Host From Inventory
-slug: vmware-remove-host-from-inventory
-created: '2022-05-31T17:38:00+03:00'
-updated: '2022-05-31T17:38:00+03:00'
+title: "VMware Remove Host From Inventory"
+slug: "vmware-remove-host-from-inventory"
+created: 2022-05-31T17:38:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
+tags: ["vmware"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjragr662v'
 ---
-
-
 1. Put host in maintenance mode.
 2. Remove the host from distributed switch
 3. Right-click the appropriate host in the inventory pane, and select Remove from Inventory from the pop-up menu

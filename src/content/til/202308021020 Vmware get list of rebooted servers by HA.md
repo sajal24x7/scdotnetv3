@@ -1,17 +1,15 @@
 ---
-title: Vmware Get List of Rebooted Servers by HA
-slug: vmware-get-list-of-rebooted-servers-by-ha
-created: '2023-08-02T10:20:00+03:00'
-updated: '2023-08-02T10:20:00+03:00'
+title: "Vmware Get List of Rebooted Servers by HA"
+slug: "vmware-get-list-of-rebooted-servers-by-ha"
+created: 2023-08-02T10:20:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["vmware", "powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754752288847984'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkueknpc2s'
   - 'https://www.threads.com/@sajal24x7/post/DZnGwYAlgmC'
 ---
-
-
 ```powershell
 # Update the following
 

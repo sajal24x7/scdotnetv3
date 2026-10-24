@@ -1,18 +1,14 @@
 ---
-title: Create VNIC in Azure
-slug: create-vnic-in-azure
-created: '2024-08-04T11:16:00+03:00'
-updated: '2024-08-04T11:16:00+03:00'
+title: "Create VNIC in Azure"
+slug: "create-vnic-in-azure"
+created: 2024-08-04T11:16:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
-  - azure
-  - network
+tags: ["powershell", "azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754974643811330'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnziaeei26'
 ---
-
 ```powershell
 ## Create a network interface for the VM. ##
 $nic = @{

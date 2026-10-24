@@ -1,21 +1,18 @@
 ---
-title: Terraform Bundle
-slug: terraform-bundle
-created: '2022-05-23T12:58:00+03:00'
-updated: '2022-05-23T12:58:00+03:00'
+title: "Terraform Bundle"
+slug: "terraform-bundle"
+created: 2022-05-23T12:58:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - terraform
+tags: ["terraform"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhorgccb26'
 ---
-
-
 # Terraform bundle tool install
 
 ## Pre-requisites
 1. git
-2. go / [[202205251306 Install go]]
+2. go / [Install Go](/til/install-go)
 
 ## Install
 

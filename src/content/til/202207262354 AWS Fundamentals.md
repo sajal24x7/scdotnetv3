@@ -1,15 +1,13 @@
 ---
-title: AWS Fundamentals
-slug: aws-fundamentals
-created: '2022-07-26T23:54:00+03:00'
-updated: '2022-07-26T23:54:00+03:00'
+title: "AWS Fundamentals"
+slug: "aws-fundamentals"
+created: 2022-07-26T23:54:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["inprogress"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjvynzx52p'
 ---
-
-
 # AWS Public vs Private services
 Refers to networking only
 Three internet zones:
@@ -43,11 +41,11 @@ AZ Resilient (very prone to failure)
 ```bash
 aws configure --profile iamadmin-general
 ```
-![[202208012318 AWS IAM Basics]]
+![AWS IAM Basics](/til/aws-iam-basics)
 
-![[202208012316 AWS VPC Basics]]
+![AWS VPC Basics](/til/aws-vpc-basics)
 
-![[202208012314 EC2 Basics]]
+![EC2 Basics](/til/ec2-basics)
 
 
 

@@ -1,17 +1,14 @@
 ---
-title: Azure Storage Overview
-slug: azure-storage-overview
-created: '2024-04-09T18:47:00+03:00'
-updated: '2024-04-09T18:47:00+03:00'
+title: "Azure Storage Overview"
+slug: "azure-storage-overview"
+created: 2024-04-09T18:47:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - storage
+tags: ["azure", "storage"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754914514524908'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn64xvcq2v'
 ---
-
 1. DNS is used for namespace/URIs are used:
 ```text
 Of the form: - http(s)://<account>.<service>.core.windows.net/<partition>/<object>

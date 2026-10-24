@@ -1,16 +1,14 @@
 ---
-title: Windows Corrupt Profile Issue
-slug: windows-corrupt-profile-issue
-created: '2022-11-24T11:47:00+03:00'
-updated: '2022-11-24T11:47:00+03:00'
+title: "Windows Corrupt Profile Issue"
+slug: "windows-corrupt-profile-issue"
+created: 2022-11-24T11:47:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["windows"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754726016133060'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkifxhir2u'
 ---
-
-
 Event: Windows has backed up this user profile. Windows will automatically try to use the backup profile the next time this user logs on.
 
 # Fix

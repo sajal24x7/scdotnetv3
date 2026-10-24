@@ -1,20 +1,17 @@
 ---
-title: Preference for Replications
-slug: preference-for-replications
-created: '2024-04-07T15:45:00+03:00'
-updated: '2024-04-07T15:45:00+03:00'
+title: "Preference for Replications"
+slug: "preference-for-replications"
+created: 2024-04-07T15:45:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - resiliency
+tags: ["azure", "resiliency"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754909797324198'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn3ymtva2v'
 ---
+Related to [replication](/til/replication) and [Disaster Recovery](/til/disaster-recovery)
 
-Related to [[202404071441 Replication|replication]] and [[202404071556 Disaster Recovery|Disaster Recovery]]
-
-Think in this order/ best will be first/ but cost will be more as well. Think in terms of what is required. For example for app level replication app needs to be available in both places. That means vm needs to be running both places. Ideally things with state should be replicated (Remember from [[202404071304 Resiliency Overview#Understand services and dependent services]]). Others just create on-demand. Git repo/artifacts should be available wherever we are creating using IaC.
+Think in this order/ best will be first/ but cost will be more as well. Think in terms of what is required. For example for app level replication app needs to be available in both places. That means vm needs to be running both places. Ideally things with state should be replicated (Remember from [Resiliency Overview#Understand Services and Dependent Services](/resiliency-overviewunderstand-services-and-dependent-services)). Others just create on-demand. Git repo/artifacts should be available wherever we are creating using IaC.
 
 1. Native application/service multi-master
 2. Native app to standby 

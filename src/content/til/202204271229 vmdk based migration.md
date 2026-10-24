@@ -1,16 +1,13 @@
 ---
-title: Vmdk Based Migration
-slug: vmdk-based-migration
-created: '2022-04-27T12:29:00+03:00'
-updated: '2022-04-27T12:29:00+03:00'
+title: "Vmdk Based Migration"
+slug: "vmdk-based-migration"
+created: 2022-04-27T12:29:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
+tags: ["vmware"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnobwsj26'
 ---
-
-
 If NFS only RO
 1.  Upload vmdk/vmx files to datastore, based on free space. Create the folder with VMNAME.
 2.  Register the vmx file. Specify all the disks.

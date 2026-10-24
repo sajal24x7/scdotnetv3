@@ -1,19 +1,16 @@
 ---
-title: Entra External IDs
-slug: entra-external-ids
-created: '2024-01-08T20:57:00+03:00'
-updated: '2024-01-08T20:57:00+03:00'
+title: "Entra External IDs"
+slug: "entra-external-ids"
+created: 2024-01-08T20:57:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - entra
+tags: ["azure", "entra"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754759523115831'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkxnwyqb2u'
 ---
-
-- AuthN happens in guest [[202408281918 Entra ID tenant|tenant]]
-- But AuthZ happens in my [[202408281918 Entra ID tenant|tenant]]
+- AuthN happens in guest [tenant](/til/entra-id-tenant)
+- But AuthZ happens in my [tenant](/til/entra-id-tenant)
 - User type will be guest
 - Cross tenant access settings control on collaboration and inbound mfa trust
 - User flow can be designed/ask for things at the time of signup

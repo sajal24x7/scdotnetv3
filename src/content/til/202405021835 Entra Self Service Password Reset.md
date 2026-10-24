@@ -1,22 +1,19 @@
 ---
-title: Entra Self Service Password Reset
-slug: entra-self-service-password-reset
-created: '2024-05-02T18:35:00+03:00'
-updated: '2024-05-02T18:35:00+03:00'
+title: "Entra Self Service Password Reset"
+slug: "entra-self-service-password-reset"
+created: 2024-05-02T18:35:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - entra
+tags: ["azure", "entra"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754940219332866'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnjta4it2m'
 ---
-
 - If user is logged in, they can reset their passwords
-- If user is not logged in, or they forgot their password, with [[202405021835 Entra Self Service Password Reset|SSPR]] they can reset their passwords.
+- If user is not logged in, or they forgot their password, with [SSPR](/til/entra-self-service-password-reset) they can reset their passwords.
 
 # How it works
-- Portal checks users location and renders [[202405021835 Entra Self Service Password Reset|SSPR]] in appropriate language
+- Portal checks users location and renders [SSPR](/til/entra-self-service-password-reset) in appropriate language
 - User enters username and captcha --> to ensure its not a bot
 - User answers security questions | Authentication step
 - Password reset

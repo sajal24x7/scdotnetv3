@@ -1,15 +1,13 @@
 ---
-title: Kubernetes Pods Certificate Related
-slug: kubernetes-pods-certificate-related
-created: '2022-09-21T12:51:00+03:00'
-updated: '2022-09-21T12:51:00+03:00'
+title: "Kubernetes Pods Certificate Related"
+slug: "kubernetes-pods-certificate-related"
+created: 2022-09-21T12:51:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["kubernetes", "ccs"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk4rgqn32v'
 ---
-
-
 ## Rabbitmq Cert health status - should be ok for both
 
 kubectl -n cisco exec -t cloudcenter-shared-rabbitmq-0 -- bash -c "openssl verify -verbose -CAfile /secrets/c2ssl/ca/ca_certificate.pem /secrets/c2ssl/cert/certificate.pem"
@@ -172,7 +170,7 @@ for n in $namespace/*.yaml; do
 
         [ -f "$n" ] || break
 
-        if [[ $n =~ "secret_" ]]; then
+        if [$n =~ "secret_"](/n-secret); then
 
                 echo "Restoring Secret via yaml file $n..."
 
@@ -188,7 +186,7 @@ for n in $namespace/*.yaml; do
 
         [ -f "$n" ] || break
 
-        if [[ $n =~ "cert" ]]; then
+        if [$n =~ "cert"](/n-cert); then
 
                 echo "Restoring Cert via yaml file $n..."
 

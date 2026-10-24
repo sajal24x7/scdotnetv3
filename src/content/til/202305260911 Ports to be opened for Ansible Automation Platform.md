@@ -1,17 +1,14 @@
 ---
-title: Ports to Be Opened for Ansible Automation Platform
-slug: ports-to-be-opened-for-ansible-automation-platform
-created: '2023-05-26T09:11:00+03:00'
-updated: '2023-05-26T09:11:00+03:00'
+title: "Ports to Be Opened for Ansible Automation Platform"
+slug: "ports-to-be-opened-for-ansible-automation-platform"
+created: 2023-05-26T09:11:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ansible
+tags: ["ansible"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754743392739719'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkqczuwj2w'
 ---
-
-
 -   Job executions for managed nodes from hybrid/execution nodes
     -   external cloud service to retrieve inventory information : 443/tcp (REST API in HTTPS)
         -   Amazon EC2

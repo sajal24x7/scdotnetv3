@@ -1,15 +1,13 @@
 ---
-title: Openssl Convert Pkcs to Pem
-slug: openssl-convert-pkcs-to-pem
-created: '2022-05-02T11:40:00+03:00'
-updated: '2022-05-02T11:40:00+03:00'
+title: "Openssl Convert Pkcs to Pem"
+slug: "openssl-convert-pkcs-to-pem"
+created: 2022-05-02T11:40:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - cert
+tags: ["cert"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhoeh7ga23'
 ---
-
 ``` bash
 openssl pkcs7 -print_certs -in certificate.p7b -out certificate.cer
 ```

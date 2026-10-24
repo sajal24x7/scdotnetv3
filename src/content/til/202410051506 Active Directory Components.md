@@ -13,5 +13,5 @@ tags: ["ad"]
 	2. [Global catalog](/global-catalog) server
 	3. [Active Directory Sites](/active-directory-sites)
 2. Logical
-	1. [Organizational Unit](/organizational-unit)
-	2. [Domain](/active-directory-domains)
+	1. [Organizational Unit](/til/organizational-unit)
+	2. [Domain](/til/active-directory-domains)

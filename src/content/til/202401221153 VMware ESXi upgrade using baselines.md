@@ -1,16 +1,14 @@
 ---
-title: VMware ESXi Upgrade Using Baselines
-slug: vmware-esxi-upgrade-using-baselines
-created: '2024-01-22T11:53:00+03:00'
-updated: '2024-01-22T11:53:00+03:00'
+title: "VMware ESXi Upgrade Using Baselines"
+slug: "vmware-esxi-upgrade-using-baselines"
+created: 2024-01-22T11:53:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
+tags: ["vmware"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754760909816208'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkyc2z5c2s'
 ---
-
 [Build numbers and versions of VMware ESXi/ESX (broadcom.com)](https://knowledge.broadcom.com/external/article/316595/build-numbers-and-versions-of-vmware-esx.html)
 [VMware ESXi 7.0 Update 3q Release Notes](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-70u3q-release-notes/index.html#Patch%20Download%20and%20Installation)
 # Download a zip file for patches
@@ -30,7 +28,7 @@ syndicationUrls:
 2. On the left hand side menu, click My Downloads.
 3. In the search bar in the upper right side of the page enter "VMware vSphere"
 4. Choose VMware vSphere
-5. Under **Solutions** tab, select VMware VSphere Enterprise and appropriate version.
+5. Under **Solutions** tab, select VMware vSphere Enterprise and appropriate version.
 6. From the list download the appropriate version.
 
 ## For HW drivers
@@ -61,5 +59,4 @@ syndicationUrls:
 ---
 # references:
 [Create a Fixed Patch Baseline (vmware.com)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.update_manager.doc/GUID-748EA6C9-C293-4B75-AA33-5A4C8E6B4B05.html)
-
 [Broadcom Link](https://knowledge.broadcom.com/external/article?articleNumber=366685)

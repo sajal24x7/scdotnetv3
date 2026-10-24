@@ -1,20 +1,17 @@
 ---
-title: Azure Log Analytics Workspace
-slug: azure-log-analytics-workspace
-created: '2024-08-07T08:03:00+03:00'
-updated: '2024-08-07T08:03:00+03:00'
+title: "Azure Log Analytics Workspace"
+slug: "azure-log-analytics-workspace"
+created: 2024-08-07T08:03:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - monitoring
+tags: ["azure", "monitoring"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754977760023502'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo2vdds72l'
 ---
-
-- like a container for logs being collected by [[202408070754 Azure Log Analytics|Azure Log Analytics]]
-- can send logs from [[202404061212 Azure Resources|azure resources]] to one or multiple workspaces.
-- it does not matter [[202404061212 Azure Resources|resource]] belongs to which region
+- like a container for logs being collected by [Azure Log Analytics](/til/azure-log-analytics)
+- can send logs from [azure resources](/til/azure-resources) to one or multiple workspaces.
+- it does not matter [resource](/til/azure-resources) belongs to which region
 
 ---
 # references:

@@ -1,27 +1,24 @@
 ---
-title: Azure App Service
-slug: azure-app-service
-created: '2024-04-20T14:00:00+03:00'
-updated: '2024-04-20T14:00:00+03:00'
+title: "Azure App Service"
+slug: "azure-app-service"
+created: 2024-04-20T14:00:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - appservices
+tags: ["azure", "appservices"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754929588784295'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modneyoqmi2v'
 ---
-
 - original paas
 - hosts web applications (http/gRPC)
 - can scale up or out
-- provides different [[202404121703 Azure VNet|VNet]] integration options
+- provides different [VNet](/til/azure-vnet) integration options
 	- private endpoint for inbound requests
-	- delegated subnet in our [[202404121703 Azure VNet|VNet]] for outbound requests to other Azure resources
-	- compared to [[202404201400 Azure App service#App service environments]] which are integrated to [[202404121703 Azure VNet|VNet]] and don't require these things
+	- delegated subnet in our [VNet](/til/azure-vnet) for outbound requests to other Azure resources
+	- compared to [Azure App Service#App Service Environments](/azure-app-serviceapp-service-environments) which are integrated to [VNet](/til/azure-vnet) and don't require these things
 - Can use App service for authentication and authorization
 - Can backup
-	- requires a [[202404091847 Azure Storage Overview|Azure storage]] container in the same sub
+	- requires a [Azure storage](/til/azure-storage-overview) container in the same sub
 	- requires premium/standard
 - Can monitor using Azure insights
 ## Which OS supports what
@@ -60,7 +57,7 @@ tomcat
 # App service environments
 - v3 used with v2 Isolated plans
 - provides isolation 
-	- this is deployed in your [[202404121703 Azure VNet|VNet]] when compared to App service which is shared
+	- this is deployed in your [VNet](/til/azure-vnet) when compared to App service which is shared
 	- control plane is separate Azure subnet
 	- Data plane is in our vnet
 - apps are deployed in app service plans

@@ -1,31 +1,28 @@
 ---
-title: Bicep Parameters
-slug: bicep-parameters
-created: '2024-07-19T18:59:00+03:00'
-updated: '2024-07-19T18:59:00+03:00'
+title: "Bicep Parameters"
+slug: "bicep-parameters"
+created: 2024-07-19T18:59:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - bicep
+tags: ["azure", "bicep"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754961495633304'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modntjaudn2o'
 ---
-
 - auto-complete for resources in vs code
 - Parameters can be added with param block
 	- Decorators can be added with @ (Things like min/max length)
 		- @allowed
 		- description can also be added
 		- @secure - for passwords/secure strings, etc
-			- Don't use [[202407191915 Bicep parameter files|Parameter files]] for secrets
-			- use [[202407191923 Azure Key Vault|Azure key vault]]
-- Implicit dependency between resources by using the id of a resource created earlier, example id of [[202404201400 Azure App service#App service plan]] when defining [[202404201400 Azure App service|app service]] 
+			- Don't use [Parameter files](/til/bicep-parameter-files) for secrets
+			- use [Azure key vault](/til/azure-key-vault)
+- Implicit dependency between resources by using the id of a resource created earlier, example id of [Azure App Service#App Service Plan](/azure-app-serviceapp-service-plan) when defining [app service](/til/azure-app-service) 
 - output keyword to send output
 - param types : string, int, bool, object and array
 - 3 ways to define parameters (in order of priority least->most)
 	- default
-	- [[202407191915 Bicep parameter files|parameter file]]
+	- [parameter file](/til/bicep-parameter-files)
 	- command-line
 
 ```bicep

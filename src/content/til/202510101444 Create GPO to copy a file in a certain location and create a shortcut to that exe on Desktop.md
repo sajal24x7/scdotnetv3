@@ -1,16 +1,10 @@
 ---
-title: >-
-  Create GPO to copy a file in a certain location and create a shortcut to that
-  exe on Desktop
-slug: >-
-  create-gpo-to-copy-a-file-in-a-certain-location-and-create-a-shortcut-to-that-exe-on-desktop
-created: 2025-12-18T10:30:46.000Z
-updated: 2025-12-18T10:30:46.000Z
+title: "Create GPO to Copy a File in a Certain Location and Create a Shortcut to That Exe on Desktop"
+slug: "create-gpo-to-copy-a-file-in-a-certain-location-and-create-a-shortcut-to-that-exe-on-desktop"
+created: 2025-10-10T14:44:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - gpo
-  - shortcut
+tags: ["windows", "gpo", "shortcut"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115740129823399928'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maay7igw622g'

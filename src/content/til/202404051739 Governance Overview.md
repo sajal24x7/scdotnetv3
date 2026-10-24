@@ -1,25 +1,22 @@
 ---
-title: Governance Overview
-slug: governance-overview
-created: '2024-04-05T17:39:00+03:00'
-updated: '2024-04-05T17:39:00+03:00'
+title: "Governance Overview"
+slug: "governance-overview"
+created: 2024-04-05T17:39:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - governance
+tags: ["azure", "governance"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754764089058660'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkzpw5gq2c'
 ---
-
 Governance is about a set of rules that need to be followed.
 In cloud, the way of doing things is different.
 Governance in cloud consists of:
-[[202404061356 Azure Policy|policy]] - What can you do?
-[[202404061249 Azure RBAC|RBAC]] - Who?
-[[202404061425 Azure Cost Management|budget]] - How much?
+[policy](/til/azure-policy) - What can you do?
+[RBAC](/til/azure-rbac) - Who?
+[budget](/til/azure-cost-management) - How much?
 
-[[202312231415 Azure Master|"Azure"]] is shared compliance model.
+["Azure"](/til/azure-master) is shared compliance model.
 
 # How to use constructs for governance
 
@@ -29,7 +26,7 @@ flowchart LR
 ```
 
 The closer you get to the resource, the stricter the policies can be.
-At root [[202404051803 Management groups|management group]] level for example, you want broad policies that need to apply. Least restrictive. And so on.
+At root [management group](/til/management-groups) level for example, you want broad policies that need to apply. Least restrictive. And so on.
 
 
 ---

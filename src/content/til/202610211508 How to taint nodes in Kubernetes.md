@@ -1,11 +1,10 @@
 ---
-title: How to Taint Nodes in Kubernetes
-slug: how-to-taint-nodes-in-kubernetes
-created: 2026-10-21T12:08:00.000Z
-updated: 2026-10-22T19:56:37.000Z
+title: "How to Taint Nodes in Kubernetes"
+slug: "how-to-taint-nodes-in-kubernetes"
+created: 2026-10-21T15:08:00+03:00
+updated: 2026-10-22T22:56:37+03:00
 category: til
-tags:
-  - k8s
+tags: ["k8s"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117491304846250590'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3myknvolx7u2g'

@@ -1,16 +1,13 @@
 ---
-title: Ansible Parallelism
-slug: ansible-parallelism
-created: '2022-06-07T14:55:00+03:00'
-updated: '2022-06-07T14:55:00+03:00'
+title: "Ansible Parallelism"
+slug: "ansible-parallelism"
+created: 2022-06-07T14:55:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ansible
+tags: ["ansible"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjs7nbfd2m'
 ---
-
-
 By default, Ansible runs each task on all hosts affected by a play before starting the next task on any host, using 5 forks.
 
 # Batch size( forks )

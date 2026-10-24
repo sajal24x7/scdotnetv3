@@ -1,18 +1,15 @@
 ---
-title: PowerShell Check Empty String
-slug: powershell-check-empty-string
-created: '2023-09-12T19:57:00+03:00'
-updated: '2023-09-12T19:57:00+03:00'
+title: "PowerShell Check Empty String"
+slug: "powershell-check-empty-string"
+created: 2023-09-12T19:57:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
+tags: ["powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754754568712675'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkvfjmit23'
 ---
-
-
-```powershell
+```Powershell
 
 # Use the IsNullOrEmpty/IsNullOrWhiteSpace string method
 [string]::IsNullOrEmpty(...)

@@ -1,16 +1,14 @@
 ---
-title: Powershell Centos Reference
-slug: powershell-centos-reference
-created: '2022-09-26T12:05:00+03:00'
-updated: '2022-09-26T12:05:00+03:00'
+title: "Powershell Centos Reference"
+slug: "powershell-centos-reference"
+created: 2022-09-26T12:05:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["powershell", "linux"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk5xwzb62m'
   - 'https://www.threads.com/@sajal24x7/post/DZnFU7blvZt'
 ---
-
-
 ## Linux Directories
 
 $PSHOME is /opt/microsoft/powershell/7/

@@ -1,15 +1,13 @@
 ---
-title: Platespin Install
-slug: platespin-install
-created: '2022-09-26T12:55:00+03:00'
-updated: '2022-09-26T12:55:00+03:00'
+title: "Platespin Install"
+slug: "platespin-install"
+created: 2022-09-26T12:55:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["platespin"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkbpcew72s'
 ---
-
-
 # Automated
 
 If proxy is enabled. Then run the powershell script.

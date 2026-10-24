@@ -1,37 +1,34 @@
 ---
-title: Authentication and Authorization
-slug: authentication-and-authorization
-created: '2024-04-01T14:14:00+03:00'
-updated: '2024-04-01T14:14:00+03:00'
+title: "Authentication and Authorization"
+slug: "authentication-and-authorization"
+created: 2024-04-01T14:14:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - entra
+tags: ["azure", "entra"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754763704703374'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkzkiipq2p'
 ---
-
 - Authentication (AuthN) is who you are
 	- I know
 	- I have (device)
 	- I am
-	- [[202404011532 Entra MFA|Entra MFA]]
+	- [Entra MFA](/til/entra-mfa)
 - Authorization (AuthZ) is what you can do
 
-AuthZ is always against [[202404011327 Entra ID|"Entra ID"]].
+AuthZ is always against ["Entra ID"](/til/entra-id).
 
 # Ways for authentication
-There are different ways for authentication, as listed below. After authentication is done then in all cases [[202404011327 Entra ID|"Entra ID"]] creates a token.
+There are different ways for authentication, as listed below. After authentication is done then in all cases ["Entra ID"](/til/entra-id) creates a token.
 ## Password hash synchronization (cloud)
 1. Best option/always recommended even if using others as primary (see pt. 4)
 2. AD has password hash. 
-3. Hash of this password hash is synced to [[202404011327 Entra ID|"Entra ID"]] which is then used for AuthN
+3. Hash of this password hash is synced to ["Entra ID"](/til/entra-id) which is then used for AuthN
 4. can compare if any creds are leaked on dark web
 5. can't do things like locked accounts/logon hours/expired password
 ## Pass through AuthN (hybrid)
 - If you want to use your onprem DCs for authentication
-- Sending cred to [[202404011327 Entra ID|"Entra ID"]], but it checks with onprem
+- Sending cred to ["Entra ID"](/til/entra-id), but it checks with onprem
 ## Federation (hybrid)
 - Not recommended
 - Could be ADFS or third-party thing
@@ -39,7 +36,7 @@ There are different ways for authentication, as listed below. After authenticati
 	1. Cred to federation service
 	2. Federation service will check with DC
 	3. Create token and share with user
-	4. User will use that token to get token from [[202404011327 Entra ID|"Entra ID"]]
+	4. User will use that token to get token from ["Entra ID"](/til/entra-id)
 
 
 

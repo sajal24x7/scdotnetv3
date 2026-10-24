@@ -1,18 +1,13 @@
 ---
-title: Ucs Changing Mtu Value Results in Esxi Not Booting and Other Issues
-slug: ucs-changing-mtu-value-results-in-esxi-not-booting-and-other-issues
-created: '2022-09-21T12:26:00+03:00'
-updated: '2022-09-21T12:26:00+03:00'
+title: "Ucs Changing Mtu Value Results in Esxi Not Booting and Other Issues"
+slug: "ucs-changing-mtu-value-results-in-esxi-not-booting-and-other-issues"
+created: 2022-09-21T12:26:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - esxi
-  - cisco
-  - ucs
+tags: ["esxi", "cisco", "ucs"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk2sv5sa2u'
 ---
-
-
 Related to the following bug:
 [Cisco Link](https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvs72258)
 

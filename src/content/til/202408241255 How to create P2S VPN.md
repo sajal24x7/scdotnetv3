@@ -1,18 +1,15 @@
 ---
-title: How to Create P2S VPN
-slug: how-to-create-p2s-vpn
-created: '2024-08-24T12:55:00+03:00'
-updated: '2024-08-24T12:55:00+03:00'
+title: "How to Create P2S VPN"
+slug: "how-to-create-p2s-vpn"
+created: 2024-08-24T12:55:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo7j4t7x2s'
   - 'https://mastodon.social/@sajal24x7/116756210619057278'
 ---
-
-How it differs from [[202408241251 How to create S2S VPN|S2S VPN]] is around authentication.
+How it differs from [S2S VPN](/til/how-to-create-s2s-vpn) is around authentication.
 There are three types basically:
 1. [Certificate authentication](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
 2. [Microsoft Entra ID authentication](https://learn.microsoft.com/en-us/azure/vpn-gateway/point-to-site-entra-gateway)

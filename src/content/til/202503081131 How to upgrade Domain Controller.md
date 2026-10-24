@@ -1,12 +1,10 @@
 ---
-title: How to Upgrade Domain Controller
-slug: how-to-upgrade-domain-controller
-created: 2025-03-08T08:41:01.000Z
-updated: 2025-03-08T08:41:01.000Z
+title: "How to Upgrade Domain Controller"
+slug: "how-to-upgrade-domain-controller"
+created: 2025-03-08T11:31:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - ad
+tags: ["windows", "ad"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocv2vhv2p'
   - 'https://mastodon.social/@sajal24x7/116756404979121239'
@@ -18,11 +16,11 @@ In-place upgrade is not suggested. The approach to take is deploy a new server, 
 | Steps                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------ |
 | Copy or take screenshots of the DNS server settings on old DC server                                                     |
-| Copy or take screenshots of the TCS/IP server settings on old DC server                                                  |
+| Copy or take screenshots of the TCP/IP server settings on old DC server                                                  |
 | Check domains and trusts module to see if there are any trusts relationships. There should not be any but just validate. |
 | Export tasks in Task Scheduler from old DC server                                                                        |
 | Import tasks into Task Scheulder in the new DC server                                                                    |
-| Run command netdom query fsmo and ensure that old DC is not running any FSMO roles - [202412051521 Moving fsmo roles](#)  |
+| Run command netdom query fsmo and ensure that old DC is not running any FSMO roles - [Moving Fsmo Roles](/til/moving-fsmo-roles)  |
 | If old DC is running FSMO roles than transfer them to other existing DC server                                           |
 
 ## Activity
@@ -31,7 +29,7 @@ In-place upgrade is not suggested. The approach to take is deploy a new server, 
 | ----------------------------------------------------------------------------------------------------------------------------------- |
 | On day of change run Dcpromo and demote old DC server                                                                               |
 | Once demotion is completed perform AD validations on old other DC server i.e. dcdiag and repadmin/replsummary                       |
-| Check and verify that nslookup for kehi.okobank.net shows only old KEHIDC1 IP addresses                                             |
+| Check and verify that nslookup for the domain shows only old KEHIDC1 IP addresses                                                   |
 | Check and see if old KEHIDC3 computer account is still Domain Controller OU or has moved to Computers OU                            |
 | On old KEHIDC1 you use NTDS util to check and see if KEHIDC1 is still the only DC listed                                            |
 | Once steps 10,11,12 are successful you can shutdown the old KEHIDC3 server                                                          |

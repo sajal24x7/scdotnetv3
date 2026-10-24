@@ -1,16 +1,13 @@
 ---
-title: Terraform Use Custom Providers
-slug: terraform-use-custom-providers
-created: '2022-07-13T10:49:00+03:00'
-updated: '2022-07-13T10:49:00+03:00'
+title: "Terraform Use Custom Providers"
+slug: "terraform-use-custom-providers"
+created: 2022-07-13T10:49:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - terraform
+tags: ["terraform"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjux4dmt2v'
 ---
-
-
 In .terraformrc file provide the location of the local mirror from where provider should be installed
 
 ```terraform

@@ -1,18 +1,15 @@
 ---
-title: Azure Firewall
-slug: azure-firewall
-created: '2024-04-14T14:13:00+03:00'
-updated: '2024-04-14T14:13:00+03:00'
+title: "Azure Firewall"
+slug: "azure-firewall"
+created: 2024-04-14T14:13:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754921886041441'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnbicnd32o'
 ---
-
-Can be used to [[202404141404 Control traffic flows|control traffic flow]]
+Can be used to [control traffic flow](/til/control-traffic-flows)
 
 Can do a bunch of things.
 It has 

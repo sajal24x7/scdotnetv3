@@ -1,12 +1,10 @@
 ---
-title: Get ACL for AD Object
-slug: get-acl-for-ad-object
-created: 2025-05-05T09:39:14.000Z
-updated: 2025-05-05T09:39:14.000Z
+title: "Get ACL for AD Object"
+slug: "get-acl-for-ad-object"
+created: 2025-05-05T12:47:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
-  - ad
+tags: ["powershell", "ad"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododvwulh2s'
   - 'https://mastodon.social/@sajal24x7/116756406711651024'

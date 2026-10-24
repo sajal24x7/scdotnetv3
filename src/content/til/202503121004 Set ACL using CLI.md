@@ -1,13 +1,10 @@
 ---
-title: Set ACL Using CLI
-slug: set-acl-using-cli
-created: 2025-03-12T07:40:41.000Z
-updated: 2025-03-12T07:40:41.000Z
+title: "Set ACL Using CLI"
+slug: "set-acl-using-cli"
+created: 2025-03-12T10:04:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - '#powershell'
-  - windows
-  - acl
+tags: ["powershell", "windows", "acl"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modod34cy72o'
   - 'https://mastodon.social/@sajal24x7/116756405323635329'

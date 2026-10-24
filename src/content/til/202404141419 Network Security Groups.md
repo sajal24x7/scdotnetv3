@@ -1,22 +1,19 @@
 ---
-title: Network Security Groups
-slug: network-security-groups
-created: '2024-04-14T14:19:00+03:00'
-updated: '2024-04-14T14:19:00+03:00'
+title: "Network Security Groups"
+slug: "network-security-groups"
+created: 2024-04-14T14:19:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754922211056921'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnbn4pyd2o'
 ---
-
-- Can be used to [[202404141404 Control traffic flows|control traffic flow]]
-- ﻿﻿[[202404141419 Network Security Groups|NSGs]] can be applied at the subnet or NIC level but are always enforced at the NIC
+- Can be used to [control traffic flow](/til/control-traffic-flows)
+- ﻿﻿[NSGs](/til/network-security-groups) can be applied at the subnet or NIC level but are always enforced at the NIC
 	- so apply at subnet level, easier to manage
-	- each subnet can have max 1 [[202404141419 Network Security Groups|NSG]] assigned to it
-	- each NIC can have 0 or max 1 [[202404141419 Network Security Groups|NSG]] associated with it
+	- each subnet can have max 1 [NSG](/til/network-security-groups) assigned to it
+	- each NIC can have 0 or max 1 [NSG](/til/network-security-groups) associated with it
 # Security Rules consist of:
 1. Source
 2. Destination
@@ -29,7 +26,7 @@ syndicationUrls:
 ## Source and destination
 1. can be CIDR
 2. can be service tags
-3. [[202407141403 Application Security Groups|ASG]] (Application Security Group) (Tags basically)
+3. [ASG](/til/application-security-groups) (Application Security Group) (Tags basically)
 
 ## Default rules
 
@@ -50,7 +47,7 @@ In terms of precedence. Whichever is the first thing traffic encounters. So,
 ## Outgoing
 - VM NIC NSG wins
 
-[[202407141419 Create NSG in Azure|Create NSG in Azure]]
+[Create NSG in Azure](/til/create-nsg-in-azure)
 
 
 

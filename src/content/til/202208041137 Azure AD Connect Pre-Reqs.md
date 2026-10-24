@@ -1,19 +1,13 @@
 ---
-title: Azure AD Connect Pre-Reqs
-slug: azure-ad-connect-pre-reqs
-created: '2022-08-04T11:37:00+03:00'
-updated: '2022-08-04T11:37:00+03:00'
+title: "Azure AD Connect Pre-Reqs"
+slug: "azure-ad-connect-pre-reqs"
+created: 2022-08-04T11:37:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - entra
-  - aadconnect
-  - entraconnect
+tags: ["azure", "entra", "aadconnect", "entraconnect"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjypfjgx2w'
 ---
-
-
 # Azure AD V2 pre-reqs
 - An Azure AD tenant
 - An **on-premises** or **cloud-hosted** (on an Infrastructure as a Service virtual machine) Windows Server running as an AD domain controller (older versions of Windows Server work but some features like password writeback will require 2016 or later)

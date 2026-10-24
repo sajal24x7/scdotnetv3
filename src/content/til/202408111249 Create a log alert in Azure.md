@@ -1,17 +1,14 @@
 ---
-title: Create a Log Alert in Azure
-slug: create-a-log-alert-in-azure
-created: '2024-08-11T12:49:00+03:00'
-updated: '2024-08-11T12:49:00+03:00'
+title: "Create a Log Alert in Azure"
+slug: "create-a-log-alert-in-azure"
+created: 2024-08-11T12:49:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - monitoring
+tags: ["azure", "monitoring"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo4cwxk32m'
   - 'https://mastodon.social/@sajal24x7/116756208271125081'
 ---
-
 - first define a log search rule
 - when it evaluates as positive, an alert is triggered
 - these are stateless, so everytime threshold is breached it will create an alert regardless of whether alert was created already
@@ -19,7 +16,7 @@ syndicationUrls:
 # How to trigger
 - Number of logs
 	- When a certain number of logs are generated, trigger an alert
-- Metric measurement (similar to [[202408111240 Create an Azure metric alert|Create an azure metric alert]])
+- Metric measurement (similar to [Create an azure metric alert](/til/create-an-azure-metric-alert))
 
 ---
 # references:

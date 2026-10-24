@@ -1,18 +1,15 @@
 ---
-title: Restore VM From Azure Backup
-slug: restore-vm-from-azure-backup
-created: '2024-08-13T19:29:00+03:00'
-updated: '2024-08-13T19:29:00+03:00'
+title: "Restore VM From Azure Backup"
+slug: "restore-vm-from-azure-backup"
+created: 2024-08-13T19:29:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - backup
+tags: ["azure", "backup"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo5uatnx2u'
   - 'https://mastodon.social/@sajal24x7/116756209321453137'
 ---
-
-Part of [[202408131927 Azure restore from backup|Restore from backups]]
+Part of [Restore from backups](/til/azure-restore-from-backup)
 # Restore Options
 
 1. Create a new VM

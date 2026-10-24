@@ -1,12 +1,10 @@
 ---
-title: About System Volume Information
-slug: about-system-volume-information
-created: 2025-02-18T08:41:45.000Z
-updated: 2025-02-18T08:41:45.000Z
+title: "About System Volume Information"
+slug: "about-system-volume-information"
+created: 2025-02-18T11:40:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - '#windows'
-  - '#powershell'
+tags: ["windows", "powershell"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocmpd2l2m'
   - 'https://mastodon.social/@sajal24x7/116756404237359608'
@@ -25,7 +23,7 @@ icacls "C:\System Volume Information" /remove domain\user
 ```
 
 System Volume Information drives usually contain snapshot. 
-[Windows delete shadow copies](#)
+[Windows delete shadow copies](/til/windows-delete-shadow-copies)
 
 ---
 # references:

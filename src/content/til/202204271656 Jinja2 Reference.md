@@ -1,63 +1,59 @@
 ---
-title: Jinja2 Reference
-slug: jinja2-reference
-created: '2022-04-27T16:56:00+03:00'
-updated: '2022-04-27T16:56:00+03:00'
+title: "Jinja2 Reference"
+slug: "jinja2-reference"
+created: 2022-04-27T16:56:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - jinja
-  - ansible
+tags: ["jinja", "ansible"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnrwzbb2v'
 ---
-
-
 Jinja2 is used for templating.
 
 # String manipulation
 ## Substitution
-```jinja
+``` jinja2
 The name is {{ name }}
 ```
 
 ## Upper case
-```jinja
+```jinja2
 The name is {{ name|upper }}
 ```
 
 ## Title Case
-```jinja
+```jinja2
 {{ book_name|title }}
 ```
 
 ## Replace
-```jinja
+```jinja2
 {{ dialogue | replace("Bourne","Bond") }}
 ```
 
 # Array
 ## Highest number in an array
-```jinja
+```jinja2
 {{ numbers | max }}
 ```
 
 ## Last number in an array
-```jinja
+```jinja2
 {{ numbers | last }}
 ```
 
 ## Join
-```jinja
+```jinja2
 {{ words | join(' ') }}
 ```
 
 ## Number of words
-```jinja
+```jinja2
 {{ words | wordcount }}
 ```
 
 # Loops
-```jinja
+```jinja2
 {% for name_server in name_servers -%}
 nameserver {{ name_server }}
 {% endfor %}
@@ -86,14 +82,14 @@ Input:
   ]
 }
 ```
-```jinja
+```jinja2
 {% for host in hosts -%}
 {{ host.name }} {{ host.ip_address }}
 {% endfor %}
 ```
 
 ## IF
-```jinja
+```jinja2
 {% for host in hosts -%}
   {% if "web" in host.name %}
 {{ host.name }} {{ host.ip_address }}

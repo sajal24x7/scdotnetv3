@@ -1,17 +1,14 @@
 ---
-title: Entra ID Administrative Units
-slug: entra-id-administrative-units
-created: '2024-01-06T15:15:00+03:00'
-updated: '2024-01-06T15:15:00+03:00'
+title: "Entra ID Administrative Units"
+slug: "entra-id-administrative-units"
+created: 2024-01-06T15:15:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - entra
+tags: ["azure", "entra"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754758238284593'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkx2wi5f2v'
 ---
-
 - Help manage permissions for managing Entra ID
 - Can include a mix of users, devices and groups
 	- roles added to AU will not apply to members of the group

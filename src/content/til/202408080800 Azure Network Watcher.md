@@ -1,17 +1,14 @@
 ---
-title: Azure Network Watcher
-slug: azure-network-watcher
-created: '2024-08-08T08:00:00+03:00'
-updated: '2024-08-08T08:00:00+03:00'
+title: "Azure Network Watcher"
+slug: "azure-network-watcher"
+created: 2024-08-08T08:00:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - monitoring
+tags: ["azure", "monitoring"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754978231859964'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo34ewaw2o'
 ---
-
 - regional service (1 per region per subscription)
 - provides tools to do network related troubleshooting
 # Network Watcher provides three types of tools
@@ -34,17 +31,17 @@ To start using Connection monitor for monitoring, follow these steps:
 
 ### IP flow verify
 - detect traffic filtering issues at a virtual machine level.
-- tells which [[202404141419 Network Security Groups|NSG]] or rule allowed or denied traffic
+- tells which [NSG](/til/network-security-groups) or rule allowed or denied traffic
 
 ### NSG diagnostics
-- detect traffic filtering issues at a [[202404161835 Azure VM Basics|Azure VM]], [[202404181846 Azure VM scale sets|VMSS]], or [[202407271353 Azure Application Gateway|Azure Application Gateway]] level
+- detect traffic filtering issues at a [Azure VM](/til/azure-vm-basics), [VMSS](/til/azure-vm-scale-sets), or [Azure Application Gateway](/til/azure-application-gateway) level
 
 ### Next hop
 - detect routing issues
 - what is the next hop (type, ip, route-table ID)
 
 ### Effective security rules
-- shows [[202404141419 Network Security Groups|NSG]] rules applied at the [[202404121727 Azure VM NIC|VM NIC]]
+- shows [NSG](/til/network-security-groups) rules applied at the [VM NIC](/til/azure-vm-nic)
 - shows rules applied at the subnet level
 - and aggregate of the two
 
@@ -60,10 +57,10 @@ To start using Connection monitor for monitoring, follow these steps:
 ## Traffic
 ### Flow Logs
 - NSG flow logs
-	- sent to [[202404091847 Azure Storage Overview|Azure storage]] from where it can be exported
+	- sent to [Azure storage](/til/azure-storage-overview) from where it can be exported
 - VNET flow logs
-	- log traffic flowing through [[202404121703 Azure VNet|VNet]]
-	- sent to [[202404091847 Azure Storage Overview|Azure storage]] from where it can be exported
+	- log traffic flowing through [VNet](/til/azure-vnet)
+	- sent to [Azure storage](/til/azure-storage-overview) from where it can be exported
 
 ### Traffic Analytics
 - provides rich visualizations of flow logs data

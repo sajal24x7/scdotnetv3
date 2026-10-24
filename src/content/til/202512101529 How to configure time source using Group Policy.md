@@ -1,12 +1,10 @@
 ---
-title: How to Configure Time Source Using Group Policy
-slug: how-to-configure-time-source-using-group-policy
-created: 2025-12-18T10:30:51.000Z
-updated: 2025-12-18T10:30:51.000Z
+title: "How to Configure Time Source Using Group Policy"
+slug: "how-to-configure-time-source-using-group-policy"
+created: 2025-12-10T15:29:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - time
-  - windows
+tags: ["time", "windows"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115740130066457785'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maay7lx7nh2d'

@@ -1,20 +1,17 @@
 ---
-title: Storage Spaces
-slug: storage-spaces
-created: '2024-07-17T14:35:00+03:00'
-updated: '2024-07-17T14:35:00+03:00'
+title: "Storage Spaces"
+slug: "storage-spaces"
+created: 2024-07-17T14:35:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - storage
+tags: ["windows", "storage"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754960461736402'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnszqzaq2v'
 ---
-
 # Limitations
 - not as boot or system volumes
-- all drives in pool must use same [[202407161309 Sector and allocation units|Sector size]]
+- all drives in pool must use same [Sector size](/til/sector-and-allocation-units)
 - FC and iscsi not supported
 - Failover clusters limited to SAS
 

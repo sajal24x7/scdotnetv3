@@ -1,18 +1,15 @@
 ---
-title: Azure Monitoring
-slug: azure-monitoring
-created: '2024-08-04T12:24:00+03:00'
-updated: '2024-08-04T12:24:00+03:00'
+title: "Azure Monitoring"
+slug: "azure-monitoring"
+created: 2024-08-04T12:24:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - monitoring
+tags: ["azure", "monitoring"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754975313177818'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnzrxaxt2m'
 ---
-
-- Monitoring is available for all [[202404061212 Azure Resources|azure resources]]
+- Monitoring is available for all [azure resources](/til/azure-resources)
 	- usually a tab
 - Monitoring starts whenever a resource is created in a subscription
  
@@ -26,9 +23,9 @@ flowchart LR
 Collection of data across the following tiers:
 1. Application
 2. Guest OS
-3. [[202404061212 Azure Resources|Azure resource]]
-4. [[202401101441 Azure subscriptions|Azure subscription]] (Activity log - stored for 90 days)
-5. Tenant (Services like [[202312231420 Microsoft Entra|Entra]])
+3. [Azure resource](/til/azure-resources)
+4. [Azure subscription](/til/azure-subscriptions) (Activity log - stored for 90 days)
+5. Tenant (Services like [Entra](/til/microsoft-entra))
 
 ## Data Stores
 Azure Monitor Metrics

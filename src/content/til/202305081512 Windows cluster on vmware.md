@@ -1,19 +1,14 @@
 ---
-title: Windows Cluster on Vmware
-slug: windows-cluster-on-vmware
-created: '2023-05-08T15:12:00+03:00'
-updated: '2023-05-08T15:12:00+03:00'
+title: "Windows Cluster on Vmware"
+slug: "windows-cluster-on-vmware"
+created: 2023-05-08T15:12:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - failover
+tags: ["windows", "failover"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754740844182034'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkp62s6h26'
 ---
-
-
-
 The WSFC cluster heartbeat time-out must be modified at least to the values listed below: 
 (get-cluster -name ).SameSubnetThreshold = 10
 (get-cluster -name ).CrossSubnetThreshold = 20

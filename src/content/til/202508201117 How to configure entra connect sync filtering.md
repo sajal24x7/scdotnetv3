@@ -1,13 +1,10 @@
 ---
-title: How to Configure Entra Connect Sync Filtering
-slug: how-to-configure-entra-connect-sync-filtering
-created: 2025-09-08T17:51:55.000Z
-updated: 2025-09-08T17:51:55.000Z
+title: "How to Configure Entra Connect Sync Filtering"
+slug: "how-to-configure-entra-connect-sync-filtering"
+created: 2025-08-20T11:17:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - entra
-  - entraconnect
+tags: ["azure", "entra", "entraconnect"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoeura6r2w'
   - 'https://mastodon.social/@sajal24x7/116756409291631790'

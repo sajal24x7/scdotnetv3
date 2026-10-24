@@ -1,20 +1,17 @@
 ---
-title: Bicep Parameter Files
-slug: bicep-parameter-files
-created: '2024-07-19T19:15:00+03:00'
-updated: '2024-07-19T19:15:00+03:00'
+title: "Bicep Parameter Files"
+slug: "bicep-parameter-files"
+created: 2024-07-19T19:15:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - bicep
+tags: ["azure", "bicep"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754962662126092'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnu227o72m'
 ---
-
 - created in json
-- specify all [[202407191859 Bicep parameters|Bicep parameters]] values in one go
-- good idea to include the name of the environment in the name of the [[202407191915 Bicep parameter files|parameter file]]
+- specify all [Bicep parameters](/til/bicep-parameters) values in one go
+- good idea to include the name of the environment in the name of the [parameter file](/til/bicep-parameter-files)
 # How to use
 ```powershell
 New-AzResourceGroupDeployment -TemplateFile main.bicep -TemplateParameterFile main.parameters.json

@@ -1,18 +1,14 @@
 ---
-title: Create an Azure Metric Alert
-slug: create-an-azure-metric-alert
-created: '2024-08-11T12:40:00+03:00'
-updated: '2024-08-11T12:40:00+03:00'
+title: "Create an Azure Metric Alert"
+slug: "create-an-azure-metric-alert"
+created: 2024-08-11T12:40:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - monitoring
-  - powershell
+tags: ["azure", "monitoring", "powershell"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo43ke652p'
   - 'https://mastodon.social/@sajal24x7/116756208150295326'
 ---
-
 ```bash
 az monitor metrics alert create -n "Cpu80PercentAlert" --resource-group "learn-d04808ef-bd4c-4ae1-b331-0aef3cb9b52b" --scopes $VMID --condition "max percentage CPU > 80" --description "Virtual machine is running at or greater than 80% CPU utilization" --evaluation-frequency 1m --window-size 1m --severity 3
 ```

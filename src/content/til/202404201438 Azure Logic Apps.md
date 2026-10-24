@@ -1,18 +1,15 @@
 ---
-title: Azure Logic Apps
-slug: azure-logic-apps
-created: '2024-04-20T14:38:00+03:00'
-updated: '2024-04-20T14:38:00+03:00'
+title: "Azure Logic Apps"
+slug: "azure-logic-apps"
+created: 2024-04-20T14:38:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - appservices
+tags: ["azure", "appservices"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754930536187957'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnfhalzx2l'
 ---
-
-- Runs on top of [[202404201427 Azure Functions|Azure Functions]]
+- Runs on top of [Azure Functions](/til/azure-functions)
 - no code or low code
 	- gives gui to design things
 

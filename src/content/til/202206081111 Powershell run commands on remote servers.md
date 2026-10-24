@@ -1,16 +1,13 @@
 ---
-title: Powershell Run Commands on Remote Servers
-slug: powershell-run-commands-on-remote-servers
-created: '2022-06-08T11:11:00+03:00'
-updated: '2022-06-08T11:11:00+03:00'
+title: "Powershell Run Commands on Remote Servers"
+slug: "powershell-run-commands-on-remote-servers"
+created: 2022-06-08T11:11:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
+tags: ["powershell"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjssazpz24'
 ---
-
-
 Use Invoke-Command to run one off commands, if no output is needed.
 ```powershell
 $Servers | Invoke-Command -ScriptBlock { Get-Service }

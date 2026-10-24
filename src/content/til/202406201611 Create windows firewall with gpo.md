@@ -1,18 +1,14 @@
 ---
-title: Create Windows Firewall With Gpo
-slug: create-windows-firewall-with-gpo
-created: '2024-06-20T16:11:00+03:00'
-updated: '2024-06-20T16:11:00+03:00'
+title: "Create Windows Firewall With Gpo"
+slug: "create-windows-firewall-with-gpo"
+created: 2024-06-20T16:11:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - gpo
-  - firewall
+tags: ["windows", "gpo", "Firewall"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754946428603482'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnmngq7i26'
 ---
-
 # Configure firewall service
 
 1. **Computer Configuration** > **Policies** > **Windows Settings** > **Security Settings** > **System Services**. Find **Windows Firewall** in the list of services and change the startup type to Automatic (Define this policy setting -> Service startup mode Automatic).

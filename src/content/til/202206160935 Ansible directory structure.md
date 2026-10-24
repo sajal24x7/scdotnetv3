@@ -1,16 +1,13 @@
 ---
-title: Ansible Directory Structure
-slug: ansible-directory-structure
-created: '2022-06-16T09:35:00+03:00'
-updated: '2022-06-16T09:35:00+03:00'
+title: "Ansible Directory Structure"
+slug: "ansible-directory-structure"
+created: 2022-06-16T09:35:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ansible
+tags: ["ansible"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjtmnjsw26'
 ---
-
-
 ```bash
 production                # inventory file for production servers
 staging                   # inventory file for staging environment

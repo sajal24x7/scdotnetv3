@@ -1,17 +1,14 @@
 ---
-title: AAP About Credentials
-slug: aap-about-credentials
-created: '2023-01-20T13:57:00+03:00'
-updated: '2023-01-20T13:57:00+03:00'
+title: "AAP About Credentials"
+slug: "aap-about-credentials"
+created: 2023-01-20T13:57:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ansible
+tags: ["ansible"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754736375773499'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkn4trf52v'
 ---
-
-
 Types:
 1. Private credential (any user can create it/owner and sys admins can use it/sys auditors can see it)
 2. Organization credential (sys admin and admins can create it/can be assigned to users and teams)

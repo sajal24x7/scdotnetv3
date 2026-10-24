@@ -1,17 +1,15 @@
 ---
-title: Windows Disable Ipv6
-slug: windows-disable-ipv6
-created: '2022-12-21T15:01:00+03:00'
-updated: '2022-12-21T15:01:00+03:00'
+title: "Windows Disable Ipv6"
+slug: "windows-disable-ipv6"
+created: 2022-12-21T15:01:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["windows", "powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754731257676782'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkkshjgf2v'
   - 'https://www.threads.com/@sajal24x7/post/DZnGJMUFji1'
 ---
-
-
 # Powershell
 ```powershell
 Get-NetAdapterBinding | Where-Object ComponentID -EQ 'ms_tcpip6'

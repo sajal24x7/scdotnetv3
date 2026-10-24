@@ -1,17 +1,14 @@
 ---
-title: VMware Set SSH Service
-slug: vmware-set-ssh-service
-created: '2024-07-12T13:40:00+03:00'
-updated: '2024-07-12T13:40:00+03:00'
+title: "VMware Set SSH Service"
+slug: "vmware-set-ssh-service"
+created: 2024-07-12T13:40:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
-  - powershell
+tags: ["vmware", "powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754952136373305'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnparxri26'
 ---
-
 ```powershell
 # Start service
 get-vmhost hostname | get-vmhostservice | where-object {$_.key -eq "TSM-SSH"} | start-vmhostservice -confirm:$false

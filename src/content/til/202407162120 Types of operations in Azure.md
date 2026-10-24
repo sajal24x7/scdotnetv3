@@ -1,27 +1,25 @@
 ---
-title: Types of Operations in Azure
-slug: types-of-operations-in-azure
-created: '2024-07-16T21:20:00+03:00'
-updated: '2024-07-16T21:20:00+03:00'
+title: "Types of Operations in Azure"
+slug: "types-of-operations-in-azure"
+created: 2024-07-16T21:20:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
+tags: ["azure"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754959914804395'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnsrz4iv2s'
 ---
-
-- These are used elsewhere like in [[202404051739 Governance Overview|azure governance]]
-	- So in [[202404061249 Azure RBAC|RBAC]] what [[202404061316 Azure Roles|azure roles]] apply to which plane - control or data
+- These are used elsewhere like in [azure governance](/til/governance-overview)
+	- So in [RBAC](/til/azure-rbac) what [azure roles](/til/azure-roles) apply to which plane - control or data
 	- Someone might not have access to manage a VM, but they might have access to login to the OS
 # Control Plane
-- To manage resource in [[202312231415 Azure Master|Azure]]
-- In [[202406151100 How to interact with Azure|How to interact with Azure]], everything goes through [[202404061212 Azure Resources|ARM]]
+- To manage resource in [Azure](/til/azure-master)
+- In [How to interact with Azure](/how-to-interact-with-azure), everything goes through [ARM](/til/azure-resources)
 	- All requests go to a resource manager url
 	- ARM knows what exists and what does not exist and does not create duplicate resources
 # Data Plane
-- To access features exposed by the [[202404061212 Azure Resources|resource]]
-- Requests go to specific endpoint for the Azure [[202404061212 Azure Resources|resource]]
+- To access features exposed by the [resource](/til/azure-resources)
+- Requests go to specific endpoint for the Azure [resource](/til/azure-resources)
 
 
 

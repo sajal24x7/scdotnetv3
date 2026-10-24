@@ -1,15 +1,14 @@
 ---
-title: WSUS Troubleshooting
-slug: wsus-troubleshooting
-created: '2024-01-25T11:45:00+03:00'
-updated: '2024-01-25T11:45:00+03:00'
+title: "WSUS Troubleshooting"
+slug: "wsus-troubleshooting"
+created: 2024-01-25T11:45:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
 tags: []
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754761067202832'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkydxlmb2u'
 ---
-
 ```powershell
 Get-WindowsUpdateLog
 ```

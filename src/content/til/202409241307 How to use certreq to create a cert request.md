@@ -1,17 +1,14 @@
 ---
-title: How to Use Certreq to Create a Cert Request
-slug: how-to-use-certreq-to-create-a-cert-request
-created: '2024-09-24T13:07:00+03:00'
-updated: '2024-09-24T13:07:00+03:00'
+title: "How to Use Certreq to Create a Cert Request"
+slug: "how-to-use-certreq-to-create-a-cert-request"
+created: 2024-09-24T13:07:00+03:00
+updated: 2026-10-01T17:08:54+03:00
 category: til
-tags:
-  - cert
-  - windows
+tags: ["cert", "windows"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoba3dqv23'
   - 'https://mastodon.social/@sajal24x7/116756401716568967'
 ---
-
 # Sample inf file
 
 ```text
@@ -19,7 +16,7 @@ syndicationUrls:
 Signature="$Windows NT$"
 
 [NewRequest]
-Subject = "CN=devname.fi.tcsecp.com"
+Subject = "CN=devname.sisu.example"
 Exportable = TRUE
 KeyLength = 2048
 KeySpec = 1
@@ -28,7 +25,7 @@ RequestType = PKCS10
 
 [Extensions]
 2.5.29.17 = "{text}"
-_continue_ = "dns=devname.fi.tcsecp.com"
+_continue_ = "dns=devname.sisu.example"
 
 [RequestAttributes]
 CertificateTemplate = WebServer
@@ -39,7 +36,7 @@ CertificateTemplate = WebServer
 
 certreq -new request.inf certnew.req
 
-**certreq -submit -config "_<ServerName\CAName>_" "_<CertificateRequest.req>_" "_<CertificateResponse.cer>_"**
+certreq -submit -config "_<ServerName\CAName>_" "_<CertificateRequest.req>_" "_<CertificateResponse.cer>_"
 
 certreq.exe -accept $CertPath
 ```
@@ -50,7 +47,7 @@ certreq.exe -accept $CertPath
 
 ## Export private key
 ## Provide password for secure cert below before running
-$SecurePass = 'TCSlogon98765' | ConvertTo-SecureString -AsPlainText -Force
+$SecurePass = <pfx-password> | ConvertTo-SecureString -AsPlainText -Force
 $CertToExport = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object { $_.Subject -like "*$Device*" }
 Export-PfxCertificate -Password $SecurePass -FilePath $CertPrivateKeyPath -Cert $CertToExport
 

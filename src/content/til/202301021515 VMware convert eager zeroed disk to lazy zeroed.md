@@ -1,18 +1,16 @@
 ---
-title: VMware Convert Eager Zeroed Disk to Lazy Zeroed
-slug: vmware-convert-eager-zeroed-disk-to-lazy-zeroed
-created: '2023-01-02T15:15:00+03:00'
-updated: '2023-01-02T15:15:00+03:00'
+title: "VMware Convert Eager Zeroed Disk to Lazy Zeroed"
+slug: "vmware-convert-eager-zeroed-disk-to-lazy-zeroed"
+created: 2023-01-02T15:15:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["vmware"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754733088995746'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modklnkfnv2v'
 ---
-
-
 Conversion to lazy zeroed might not work, so better to convert disk to thin. and then do vmotion to lazy zeroed.
-```bash
+```ssh
 vmkfstools -i /vmfs/volumes/datastoreName/VMName/VMName.vmdk /vmfs/volumes/datastoreName/VMName/temp/VMName.vmdk -d zeroedthick
 
 

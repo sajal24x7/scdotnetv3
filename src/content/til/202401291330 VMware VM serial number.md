@@ -1,17 +1,15 @@
 ---
-title: VMware VM Serial Number
-slug: vmware-vm-serial-number
-created: '2024-01-29T13:30:00+03:00'
-updated: '2024-01-29T13:30:00+03:00'
+title: "VMware VM Serial Number"
+slug: "vmware-vm-serial-number"
+created: 2024-01-29T13:30:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
+tags: ["vmware"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754761304594576'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkyhqlpc2z'
 ---
-
-```powershell
+```powercli
 $VM = Get-VM 7ocilpipaap01
 $VM.ExtensionData.Config.UUid
 ```

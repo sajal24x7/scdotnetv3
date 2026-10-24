@@ -1,15 +1,13 @@
 ---
-title: Velero Install
-slug: velero-install
-created: '2022-09-26T12:54:00+03:00'
-updated: '2022-09-26T12:54:00+03:00'
+title: "Velero Install"
+slug: "velero-install"
+created: 2022-09-26T12:54:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["velero", "ccs"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkbksk3726'
 ---
-
-
 # Fresh install
 
 1. Extract the tarball.

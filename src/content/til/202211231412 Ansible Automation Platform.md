@@ -1,17 +1,14 @@
 ---
-title: Ansible Automation Platform
-slug: ansible-automation-platform
-created: '2022-11-23T14:12:00+03:00'
-updated: '2022-11-23T14:12:00+03:00'
+title: "Ansible Automation Platform"
+slug: "ansible-automation-platform"
+created: 2022-11-23T14:12:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ansible
+tags: ["ansible"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754725640891367'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkiamlq62o'
 ---
-
-
 # Automation controller
 types: control, hybrid, execution, and hop
 

@@ -1,16 +1,13 @@
 ---
-title: AWS Storage Gateway
-slug: aws-storage-gateway
-created: '2022-08-18T09:49:00+03:00'
-updated: '2022-08-18T09:49:00+03:00'
+title: "AWS Storage Gateway"
+slug: "aws-storage-gateway"
+created: 2022-08-18T09:49:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - aws
+tags: ["aws"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk27axby2u'
 ---
-
-
 Pre-stage computer object before attempting AD join. 
 Or,
 Grant permission to the service account to create computer object.

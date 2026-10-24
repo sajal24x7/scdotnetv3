@@ -1,22 +1,19 @@
 ---
-title: Azure Storage Account
-slug: azure-storage-account
-created: '2024-04-09T18:59:00+03:00'
-updated: '2024-04-09T18:59:00+03:00'
+title: "Azure Storage Account"
+slug: "azure-storage-account"
+created: 2024-04-09T18:59:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - storage
+tags: ["azure", "storage"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754914875476199'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn6ca3yg2u'
 ---
-
 1. Account name has to be globally unique
 2. Exists in a region
-3. Can have different types of [[202404071304 Resiliency Overview|resiliency]].
+3. Can have different types of [resiliency](/til/resiliency-overview).
 	1. Can impact intractability (SLA for storage accounts)
-	2. Can impact durability ( [[202404091908 Azure Storage Redundancy]])
+	2. Can impact durability ( [Azure Storage Redundancy](/til/azure-storage-redundancy))
 		1. LRS 11 9s
 		2. ZRS 12 9s
 		3. GRS 16 9s
@@ -53,17 +50,17 @@ For files:
 2. Hot
 3. Cool
 
-[[202404121117 Azure Storage Services]]
+[Azure Storage Services](/til/azure-storage-services)
 # Money
 1. For standard cost is consumption-based
 2. For premium cost is provision-based
-3. [[202404121254 Azure Managed Disks|Managed Disks]] are always provision-based
+3. [Managed Disks](/til/azure-managed-disks) are always provision-based
 4. Operations and data transfer cost money too
 	1. GRS etc will cost money too
 
 # Access
-1. Use [[202404011327 Entra ID|AAD]] (Preferred approach)
-	1. Dataplane [[202404061249 Azure RBAC|RBAC]]
+1. Use [AAD](/til/entra-id) (Preferred approach)
+	1. Dataplane [RBAC](/til/azure-rbac)
 2. Access keys (Do not use)
 3. Shared Access Signatures 
 	1. Types: Account and Service
@@ -80,7 +77,7 @@ For files:
 4. ﻿﻿Encryption scopes enable container/blob level
 
 # Lifecycle management
-1. Based on [[202404091859 Azure Storage Account#Types based on performance tier]] 
+1. Based on [Azure Storage Account#Types Based on Performance Tier](/azure-storage-accounttypes-based-on-performance-tier) 
 	1. you can decide to remove stuff after 90days for example
 2. Create rules and let it automatically remove stuff as needed based on when it was last modified, etc.
 	1. Maybe regulatory requirement

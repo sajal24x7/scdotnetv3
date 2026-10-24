@@ -1,17 +1,14 @@
 ---
-title: Entra Connect PS Module
-slug: entra-connect-ps-module
-created: '2024-09-16T15:05:00+03:00'
-updated: '2024-09-16T15:05:00+03:00'
+title: "Entra Connect PS Module"
+slug: "entra-connect-ps-module"
+created: 2024-09-16T15:05:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
-  - entraconnect
+tags: ["powershell", "entraconnect"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoaz474j2v'
   - 'https://mastodon.social/@sajal24x7/116756401247989947'
 ---
-
 ```powershell
 
 # ADSYncTOols

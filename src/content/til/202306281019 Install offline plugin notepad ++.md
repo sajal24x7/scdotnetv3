@@ -1,17 +1,15 @@
 ---
-title: Install Offline Plugin Notepad ++
-slug: install-offline-plugin-notepad-++
-created: '2023-06-28T10:19:00+03:00'
-updated: '2023-06-28T10:19:00+03:00'
+title: "Install Offline Plugin Notepad ++"
+slug: "install-offline-plugin-notepad"
+created: 2023-06-28T10:19:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["windows"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754746830385470'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkruqfgq2m'
   - 'https://www.threads.com/@sajal24x7/post/DZnGm8JFiLE'
 ---
-
-
 [x64 plugin list](https://github.com/notepad-plus-plus/nppPluginList/blob/master/doc/plugin_list_x64.md)
 
 1. Dowload the plugin and extract the plugin dll file.

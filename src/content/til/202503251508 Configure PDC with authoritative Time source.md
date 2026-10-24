@@ -1,12 +1,10 @@
 ---
-title: Configure PDC With Authoritative Time Source
-slug: configure-pdc-with-authoritative-time-source
-created: 2025-03-25T10:40:26.000Z
-updated: 2025-03-25T10:40:26.000Z
+title: "Configure PDC With Authoritative Time Source"
+slug: "configure-pdc-with-authoritative-time-source"
+created: 2025-03-25T15:08:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ad
-  - windows
+tags: ["ad", "windows"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modod7txih2s'
   - 'https://mastodon.social/@sajal24x7/116756405681677934'

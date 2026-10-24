@@ -1,19 +1,15 @@
 ---
-title: Entra ID Entitlement Management
-slug: entra-id-entitlement-management
-created: '2024-01-10T20:57:00+03:00'
-updated: '2024-01-10T20:57:00+03:00'
+title: "Entra ID Entitlement Management"
+slug: "entra-id-entitlement-management"
+created: 2024-01-10T20:57:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - entra
-  - azure
+tags: ["entra", "azure"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754760427290833'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modky2qjvp26'
 ---
-
-
-Part of [[202401101559 Entra ID Governance]]
+Part of [Entra ID Governance](/til/entra-id-governance)
 
 - helps enterprises perform access management at scale
 - licenses are required for those who request, approve or are assigned a package.

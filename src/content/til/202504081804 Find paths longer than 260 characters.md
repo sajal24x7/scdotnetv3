@@ -1,11 +1,10 @@
 ---
-title: Find Paths Longer Than 260 Characters
-slug: find-paths-longer-than-260-characters
-created: 2025-04-08T18:40:06.000Z
-updated: 2025-04-08T18:40:06.000Z
+title: "Find Paths Longer Than 260 Characters"
+slug: "find-paths-longer-than-260-characters"
+created: 2025-04-08T18:04:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - '#windows'
+tags: ["windows"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododjkovr2v'
   - 'https://mastodon.social/@sajal24x7/116756405935366248'

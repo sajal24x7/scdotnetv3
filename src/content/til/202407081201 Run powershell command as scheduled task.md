@@ -1,17 +1,14 @@
 ---
-title: Run Powershell Command as Scheduled Task
-slug: run-powershell-command-as-scheduled-task
-created: '2024-07-08T12:01:00+03:00'
-updated: '2024-07-08T12:01:00+03:00'
+title: "Run Powershell Command as Scheduled Task"
+slug: "run-powershell-command-as-scheduled-task"
+created: 2024-07-08T12:01:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
+tags: ["powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754950366707101'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnogta5i2v'
 ---
-
-
 Define action as:
 
 ```text
@@ -25,4 +22,4 @@ C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 
 ---
 # references:
-[Use Scheduled Tasks to Run PowerShell Commands on Windows - Scripting Blog [archived] (microsoft.com)](https://devblogs.microsoft.com/scripting/use-scheduled-tasks-to-run-powershell-commands-on-windows/)
+[Use Scheduled Tasks to Run PowerShell Commands on Windows - Scripting Blog](https://devblogs.microsoft.com/scripting/use-scheduled-tasks-to-run-powershell-commands-on-windows/)

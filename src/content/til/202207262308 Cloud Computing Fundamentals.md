@@ -1,17 +1,13 @@
 ---
-title: Cloud Computing Fundamentals
-slug: cloud-computing-fundamentals
-created: '2022-07-26T23:08:00+03:00'
-updated: '2022-07-26T23:08:00+03:00'
+title: "Cloud Computing Fundamentals"
+slug: "cloud-computing-fundamentals"
+created: 2022-07-26T23:08:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - cloud
-  - azure
-  - aws
+tags: ["cloud", "azure", "aws"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjvwxbzt23'
 ---
-
 # Cloud Computing provides:
 ## 1. On-Demand Self-Service
 Create resources without requiring human interaction

@@ -1,17 +1,14 @@
 ---
-title: Ansible Import
-slug: ansible-import
-created: '2023-01-18T17:17:00+03:00'
-updated: '2023-01-18T17:17:00+03:00'
+title: "Ansible Import"
+slug: "ansible-import"
+created: 2023-01-18T17:17:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ansible
+tags: ["ansible"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754733995340334'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkm2fd232u'
 ---
-
-
 Previous versions used `include` directive. Which had issues (confusing and error-prone).
 So, it was deprecated. 
 
@@ -31,7 +28,7 @@ the `import_playbook` feature can only be used at the top level of a playbook 
 Plays/tasks can be variablized for reuse. 
 For example, instead of 
 
-```yaml
+```ansible
 ---
   - name: Install the httpd package
     yum:
@@ -46,7 +43,7 @@ For example, instead of
 
 It can be variablized as 
 
-```yaml
+```ansible
 ---
   - name: Install the {{ package }} package
     yum:
@@ -61,7 +58,7 @@ It can be variablized as
 
 And variables set like so:
 
-```yaml
+```ansible
 tasks:
     - name: Import task file and set variables
       import_tasks: task.yml

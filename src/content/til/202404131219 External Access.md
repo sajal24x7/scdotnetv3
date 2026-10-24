@@ -1,22 +1,19 @@
 ---
-title: External Access
-slug: external-access
-created: '2024-04-13T12:19:00+03:00'
-updated: '2024-04-13T12:19:00+03:00'
+title: "External Access"
+slug: "external-access"
+created: 2024-04-13T12:19:00+03:00
+updated: 2026-10-01T16:53:29+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754919639875924'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnahzyl32m'
 ---
-
 - There is no special "DMZ" subnet where resources get a public IP
 - ﻿﻿By default Azure provides outbound SNAT/PAT enabling resources to access the Internet and receive responses
 - ﻿﻿To provide services to the Internet either
 	- ﻿﻿Give the IP configuration an instance level public IP (not a good idea)
-	- ﻿﻿Place the instances behind an [[202407271319 Azure Load Balancer|Azure Load Balancer]], [[202407271353 Azure Application Gateway|Azure Application Gateway]] or [[202407281410 Network Virtual Appliance|NVA]] which has a [[202407271143 Public IP address allows inbound access based on tier in Azure|Public IP Address]] in the front-end configuration
+	- ﻿﻿Place the instances behind an [Azure Load Balancer](/til/azure-load-balancer), [Azure Application Gateway](/til/azure-application-gateway) or [NVA](/til/network-virtual-appliance) which has a [Public IP Address](/til/public-ip-address-allows-inbound-access-based-on-tier-in-azure) in the front-end configuration
 	- ﻿﻿Use a network virtual appliance with a public IP
 - ﻿﻿Care should be taken to only expose the ports required, e.g. 443
 - DO NOT enable SSH/RDP to internet
@@ -53,8 +50,8 @@ flowchart BT
 - used to forward traffic from a load balancer frontend to one or more instances in the backend pool.
 - Don't use direct public IP to instance
 ## Regional
-- L4 - [[202407271319 Azure Load Balancer|Azure Load Balancer]] (TCP/UDP)
-- L7 - [[202407271353 Azure Application Gateway|Azure Application Gateway]] (HTTP/HTTPS/HTTPS2)
+- L4 - [Azure Load Balancer](/til/azure-load-balancer) (TCP/UDP)
+- L7 - [Azure Application Gateway](/til/azure-application-gateway) (HTTP/HTTPS/HTTPS2)
 ## Global
 - L7 - Front Door
 - L4 - Global LB, Traffic Manager - DNS based

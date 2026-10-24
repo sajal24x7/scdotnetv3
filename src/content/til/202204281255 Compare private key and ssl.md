@@ -1,16 +1,13 @@
 ---
-title: Compare Private Key and Ssl
-slug: compare-private-key-and-ssl
-created: '2022-04-28T12:55:00+03:00'
-updated: '2022-04-28T12:55:00+03:00'
+title: "Compare Private Key and Ssl"
+slug: "compare-private-key-and-ssl"
+created: 2022-04-28T12:55:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - cert
+tags: ["cert"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnvpjnn2u'
 ---
-
-
 ```bash
 openssl x509 -noout -modulus -in cert.crt | openssl md5  
 openssl rsa -noout -modulus -in privkey.txt | openssl md5

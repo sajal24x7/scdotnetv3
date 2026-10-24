@@ -1,19 +1,15 @@
 ---
-title: Azure Container Apps
-slug: azure-container-apps
-created: '2024-04-20T13:48:00+03:00'
-updated: '2024-04-20T13:48:00+03:00'
+title: "Azure Container Apps"
+slug: "azure-container-apps"
+created: 2024-04-20T13:48:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - appservices
-  - container
+tags: ["azure", "appservices", "container"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754928501588370'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modneipj6d2m'
 ---
-
-- Built on top of [[202404201210 Azure Kubernetes Service|AKS]], abstracts away the AKS layer. We focus on the application
+- Built on top of [AKS](/til/azure-kubernetes-service), abstracts away the AKS layer. We focus on the application
 - Brings envoy, dapr, keda
 	- Dapr - Distributed Application Runtime
 		- Event drivent runtime
@@ -29,7 +25,7 @@ syndicationUrls:
 
 # Container Apps Environment
 - individual apps deployed to app environment which acts as security boundary
-- Apps deployed in the same environment are deployed to same [[202404121703 Azure VNet|VNet]]  and write logs to the same log analytics workspace.
+- Apps deployed in the same environment are deployed to same [VNet](/til/azure-vnet)  and write logs to the same log analytics workspace.
 
 ---
 # references:

@@ -1,17 +1,15 @@
 ---
-title: Manage VM Templates in VMware Content Libraries
-slug: manage-vm-templates-in-vmware-content-libraries
-created: '2024-08-01T15:53:00+03:00'
-updated: '2024-08-01T15:53:00+03:00'
+title: "Manage VM Templates in VMware Content Libraries"
+slug: "manage-vm-templates-in-vmware-content-libraries"
+created: 2024-08-01T15:53:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
+tags: ["vmware"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754971737688978'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modny5nv5q2c'
 ---
-
-After [[202407191233 Create VMware Content Libraries|Create VMware Content Libraries]]
+After [Create VMware Content Libraries](/create-vmware-content-libraries)
 # Add template to content library
 1. Right click on VM > Clone > Clone as Template to library
 2. Fill out details. It will be added to content library

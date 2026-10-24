@@ -1,17 +1,14 @@
 ---
-title: Azure Container Instance
-slug: azure-container-instance
-created: '2024-04-20T12:03:00+03:00'
-updated: '2024-04-20T12:03:00+03:00'
+title: "Azure Container Instance"
+slug: "azure-container-instance"
+created: 2024-04-20T12:03:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - appservices
+tags: ["azure", "appservices"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754927485000433'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modne2333f2m'
 ---
-
 - Basic container as service
 - Can be windows or linux 
 	- But some features are linux specific

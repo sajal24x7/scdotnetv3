@@ -1,12 +1,10 @@
 ---
-title: Install Drivers on Esxi Using Vibs
-slug: install-drivers-on-esxi-using-vibs
-created: 2025-05-08T13:38:51.000Z
-updated: 2025-05-08T13:38:51.000Z
+title: "Install Drivers on Esxi Using Vibs"
+slug: "install-drivers-on-esxi-using-vibs"
+created: 2025-05-08T16:39:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - '#vmware'
-  - '#hp'
+tags: ["vmware", "hp"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododxhb4b26'
   - 'https://mastodon.social/@sajal24x7/116756406840974207'

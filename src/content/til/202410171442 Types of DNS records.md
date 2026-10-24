@@ -1,17 +1,14 @@
 ---
-title: Types of DNS Records
-slug: types-of-dns-records
-created: '2024-10-17T14:42:00+03:00'
-updated: '2024-10-17T14:42:00+03:00'
+title: "Types of DNS Records"
+slug: "types-of-dns-records"
+created: 2024-10-17T14:42:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - dns
+tags: ["windows", "dns"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modobobjv62z'
   - 'https://mastodon.social/@sajal24x7/116756402592236745'
 ---
-
 1. SOA (Start of Authority)
 	1. Created when a zone is created
 	2. Has settings like TTL, Primary server, responsible person, Expires after, etc

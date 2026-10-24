@@ -1,16 +1,13 @@
 ---
-title: Linux Add Path to $Path
-slug: linux-add-path-to-$path
-created: '2022-05-25T11:25:00+03:00'
-updated: '2022-05-25T11:25:00+03:00'
+title: "Linux Add Path to $path"
+slug: "linux-add-path-to-path"
+created: 2022-05-25T11:25:00+03:00
+updated: 2026-08-25T14:31:53+03:00
 category: til
-tags:
-  - linux
+tags: ["linux"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjq5lmlw2v'
 ---
-
-
 # Gotcha
 The `/etc/profile` is executed only for interactive shells and the `/etc/bashrc` is executed for both interactive and non-interactive shells. In fact in Ubuntu the `/etc/profile` calls the `/etc/bashrc` directly.
 

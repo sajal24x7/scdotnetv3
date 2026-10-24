@@ -1,17 +1,14 @@
 ---
-title: Create NSG in Azure
-slug: create-nsg-in-azure
-created: '2024-07-14T14:19:00+03:00'
-updated: '2024-07-14T14:19:00+03:00'
+title: "Create NSG in Azure"
+slug: "create-nsg-in-azure"
+created: 2024-07-14T14:19:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
-  - azure
+tags: ["powershell", "azure"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754955324302669'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnqowqvv2s'
 ---
-
 ```powershell
 
 # Variables

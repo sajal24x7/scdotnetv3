@@ -1,12 +1,10 @@
 ---
-title: How to Export Csv From Cis Scan
-slug: how-to-export-csv-from-cis-scan
-created: 2025-12-18T10:31:55.000Z
-updated: 2025-12-18T10:31:55.000Z
+title: "How to Export Csv From Cis Scan"
+slug: "how-to-export-csv-from-cis-scan"
+created: 2025-10-10T00:24:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - cis
-  - powershell
+tags: ["cis", "powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/115740129211292422'
   - 'https://bsky.app/profile/sajal24x7.bsky.social/post/3maay77je4r2a'
@@ -14,7 +12,7 @@ syndicationUrls:
 ---
 ```powershell
 
-[xml]$arf = Get-Content 0250803011443.xml
+[xml]$arf = Get-Content 20250803011443.xml
 
 
 # Define the ARF namespace

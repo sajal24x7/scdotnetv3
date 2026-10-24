@@ -1,15 +1,13 @@
 ---
-title: UCS CLI Reference
-slug: ucs-cli-reference
-created: '2022-09-26T12:34:00+03:00'
-updated: '2022-09-26T12:34:00+03:00'
+title: "UCS CLI Reference"
+slug: "ucs-cli-reference"
+created: 2022-09-26T12:34:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["ucs"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk7llsy32m'
 ---
-
-
 # Ucs Cheatsheet
 ```bash
 show interface trunk
@@ -18,7 +16,7 @@ show service-profile circuit server 3/3
 
 
 ## UCS nxos/network/troubleshooting
-```bash
+```cli
 connect nxos
 
 # show npv flogi-table

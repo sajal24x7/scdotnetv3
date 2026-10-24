@@ -1,17 +1,14 @@
 ---
-title: Azure Virtual WAN
-slug: azure-virtual-wan
-created: '2024-04-14T14:31:00+03:00'
-updated: '2024-04-14T14:31:00+03:00'
+title: "Azure Virtual WAN"
+slug: "azure-virtual-wan"
+created: 2024-04-14T14:31:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754922525056780'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnbrwiuv2z'
 ---
-
 - Provides a managed hub
 - hub and spoke architecture
 	- ﻿﻿Each region within the WAN instance gets a hub  

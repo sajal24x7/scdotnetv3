@@ -1,17 +1,14 @@
 ---
-title: Infoblox Ip Status
-slug: infoblox-ip-status
-created: '2023-01-30T12:08:00+03:00'
-updated: '2023-01-30T12:08:00+03:00'
+title: "Infoblox Ip Status"
+slug: "infoblox-ip-status"
+created: 2023-01-30T12:08:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["inboflox", "ipam"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754737903128549'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modknu7zog2c'
 ---
-
-
-
 -   Unused: An IP address that has not been detected and is not associated with any network device or active host on the network.
     
 -   Conflict: An IP address that has either a MAC address conflict or a DHCP lease conflict detected through a network discovery.

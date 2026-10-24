@@ -1,19 +1,14 @@
 ---
-title: Use Managed Service Account for Scheduled Task
-slug: use-managed-service-account-for-scheduled-task
-created: '2024-03-25T11:52:00+03:00'
-updated: '2024-03-25T11:52:00+03:00'
+title: "Use Managed Service Account for Scheduled Task"
+slug: "use-managed-service-account-for-scheduled-task"
+created: 2024-03-25T11:52:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - ad
-  - powershell
+tags: ["windows", "ad", "powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754762420456879'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkyxp6ap26'
 ---
-
-
 # Pre-requisites
 1. Add managed service account to groups/provide access on server as needed
 2. Add service account to Logon as batch job

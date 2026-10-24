@@ -1,17 +1,14 @@
 ---
-title: Update and Refresh a Manifest
-slug: update-and-refresh-a-manifest
-created: '2023-10-24T11:19:00+03:00'
-updated: '2023-10-24T11:19:00+03:00'
+title: "Update and Refresh a Manifest"
+slug: "update-and-refresh-a-manifest"
+created: 2023-10-24T11:19:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ansible
-  - redhat
+tags: ["ansible", "redhat"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754755269892201'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkvpslxn2m'
 ---
-
 1. Go to [Red Hat Customer Portal](https://access.redhat.com/)
 2. Click on Subscriptions
 3. Go to Subcription Allocations

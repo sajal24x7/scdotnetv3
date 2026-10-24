@@ -1,17 +1,14 @@
 ---
-title: Azure ExpressRoute
-slug: azure-expressroute
-created: '2024-04-14T13:39:00+03:00'
-updated: '2024-04-14T13:39:00+03:00'
+title: "Azure ExpressRoute"
+slug: "azure-expressroute"
+created: 2024-04-14T13:39:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754921122345555'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnb5mg5d2z'
 ---
-
 1. ExpressRoute lets you extend your on-premises networks into the Microsoft cloud over a private connection with the help of a connectivity provider.
 
 ```mermaid
@@ -20,7 +17,7 @@ CustomerNetwork --> PartnerNetwork --> ExpressRouteCircuit --> MSFTEdge
 ```
 
 2. Private but not encrypted
-3. Has redundant connections i.e. [[202404071304 Resiliency Overview|resiliency]]
+3. Has redundant connections i.e. [resiliency](/til/resiliency-overview)
 
 # ExpressRoute Peering Locations or MeetMe
 

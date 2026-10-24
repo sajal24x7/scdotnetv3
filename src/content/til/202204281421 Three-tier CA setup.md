@@ -1,18 +1,13 @@
 ---
-title: Three-Tier CA Setup
-slug: three-tier-ca-setup
-created: '2022-04-28T14:21:00+03:00'
-updated: '2022-04-28T14:21:00+03:00'
+title: "Three-tier CA Setup"
+slug: "three-tier-ca-setup"
+created: 2022-04-28T14:21:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - cert
-  - internalca
-  - powershell
-  - windows
+tags: ["cert", "internalca", "powershell", "windows"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnzj6al24'
 ---
-
 
 # Architecture
 Root CA (1 | offline | workgroup)
@@ -57,10 +52,7 @@ DiscreteSignatureAlgorithm=1
 2. Install AD Certificate services role.
 
 
-	![[Pasted image 20220428143118.png]]
-
-![[Pasted image 20220428143029.png]]
-
+	![Pasted Image 20220428143118.png](/pasted-image-20220428143118png)
 
 # Root CA
 1. Create CAPolicy.inf under C:\Windows

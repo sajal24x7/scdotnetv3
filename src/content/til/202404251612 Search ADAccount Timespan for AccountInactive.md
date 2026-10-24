@@ -1,16 +1,14 @@
 ---
-title: Search ADAccount Timespan for AccountInactive
-slug: search-adaccount-timespan-for-accountinactive
-created: '2024-04-25T16:12:00+03:00'
-updated: '2024-04-25T16:12:00+03:00'
+title: "Search ADAccount Timespan for AccountInactive"
+slug: "search-adaccount-timespan-for-accountinactive"
+created: 2024-04-25T16:12:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
+tags: ["powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754933875193025'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modngwxmwc2p'
 ---
-
 Search-ADAccount uses LastlogonTimeStamp for -TimeSpan when used with -AccountInactive
 
 ---

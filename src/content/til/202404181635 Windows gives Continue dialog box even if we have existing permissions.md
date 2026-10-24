@@ -1,18 +1,14 @@
 ---
-title: Windows Gives Continue Dialog Box Even If We Have Existing Permissions
-slug: windows-gives-continue-dialog-box-even-if-we-have-existing-permissions
-created: '2024-04-18T16:35:00+03:00'
-updated: '2024-04-18T16:35:00+03:00'
+title: "Windows Gives Continue Dialog Box Even If We Have Existing Permissions"
+slug: "windows-gives-continue-dialog-box-even-if-we-have-existing-permissions"
+created: 2024-04-18T16:35:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - ntfs
-  - evergreen
+tags: ["windows", "ntfs", "evergreen"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754925538618269'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnd5jkja2v'
 ---
-
 This is a known issue.
 
 # Issue description

@@ -1,22 +1,18 @@
 ---
-title: Ansible VMware Module Does Sysprep by Default
-slug: ansible-vmware-module-does-sysprep-by-default
-created: '2024-05-28T15:30:00+03:00'
-updated: '2024-05-28T15:30:00+03:00'
+title: "Ansible VMware Module Does Sysprep by Default"
+slug: "ansible-vmware-module-does-sysprep-by-default"
+created: 2024-05-28T15:30:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ansible
-  - windows
-  - vmware
+tags: ["ansible", "windows", "vmware"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754942389653661'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnkslo272l'
 ---
-
 When using [community.vmware.vmware_guest module – Manages virtual machines in vCenter — Ansible Community Documentation](https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_module.html) 
 - It uses syprep by default when it recognises it is a windows image
 
-This is an issue because after running [[202209261330 Windows sysprep reference|Sysprep]] we need to relogin to set things like time zone, etc.
+This is an issue because after running [Sysprep](/til/windows-sysprep-reference) we need to relogin to set things like time zone, etc.
 
 ---
 # references:

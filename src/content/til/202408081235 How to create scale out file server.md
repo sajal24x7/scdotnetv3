@@ -1,18 +1,15 @@
 ---
-title: How to Create Scale out File Server
-slug: how-to-create-scale-out-file-server
-created: '2024-08-08T12:35:00+03:00'
-updated: '2024-08-08T12:35:00+03:00'
+title: "How to Create Scale Out File Server"
+slug: "how-to-create-scale-out-file-server"
+created: 2024-08-08T12:35:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - cluster
+tags: ["windows", "cluster"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754978876836407'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo3fqcdg2o'
 ---
-
-How to create [[202407161044 Scale out file server|Scale out file server]] on Windows core.
+How to create [Scale out file server](/scale-out-file-server) on Windows core.
 
 There are 2 ways to do it:
 1. Through admin center, or

@@ -1,16 +1,14 @@
 ---
-title: CloudRemote Docker Related
-slug: cloudremote-docker-related
-created: '2022-09-26T12:53:00+03:00'
-updated: '2022-09-26T12:53:00+03:00'
+title: "CloudRemote Docker Related"
+slug: "cloudremote-docker-related"
+created: 2022-09-26T12:53:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["ccs", "docker"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkbdbijr24'
   - 'https://www.threads.com/@sajal24x7/post/DZnFiiFFkgT'
 ---
-
-
 ```bash
 ## Docker get exited containers count
 

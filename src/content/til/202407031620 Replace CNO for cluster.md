@@ -1,17 +1,14 @@
 ---
-title: Replace CNO for Cluster
-slug: replace-cno-for-cluster
-created: '2024-07-03T16:20:00+03:00'
-updated: '2024-07-03T16:20:00+03:00'
+title: "Replace CNO for Cluster"
+slug: "replace-cno-for-cluster"
+created: 2024-07-03T16:20:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - cluster
+tags: ["windows", "cluster"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754948562429569'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnnmio7e2o'
 ---
-
 # Issue
 CNO which was created was deleted on AD side, and new computer object was created. 
 Cluster validation fails with "Unable to find computer object"

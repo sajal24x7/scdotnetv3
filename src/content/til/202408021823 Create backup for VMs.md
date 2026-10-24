@@ -1,17 +1,14 @@
 ---
-title: Create Backup for VMs
-slug: create-backup-for-vms
-created: '2024-08-02T18:23:00+03:00'
-updated: '2024-08-02T18:23:00+03:00'
+title: "Create Backup for VMs"
+slug: "create-backup-for-vms"
+created: 2024-08-02T18:23:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - backup
+tags: ["azure", "backup"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754973543046484'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnyy3fp52s'
 ---
-
 1. Create Recovery services vault
 2. Create backup policy
 3. Apply the backup policy

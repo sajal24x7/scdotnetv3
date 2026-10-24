@@ -1,13 +1,10 @@
 ---
-title: Update Esxi With Required Version of Vmware Tools
-slug: update-esxi-with-required-version-of-vmware-tools
-created: 2025-07-28T12:37:32.000Z
-updated: 2025-07-28T12:37:32.000Z
+title: "Update Esxi With Required Version of Vmware Tools"
+slug: "update-esxi-with-required-version-of-vmware-tools"
+created: 2025-07-28T15:27:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
-  - esxi
-  - vmware-tools
+tags: ["vmware", "esxi", "vmware-tools"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoegvmqp2s'
   - 'https://mastodon.social/@sajal24x7/116756408246395325'
@@ -29,11 +26,14 @@ esxcli software component get | grep VMware-VM-Tools -B 1 -A 14
 	5. Under **Products** tab, select VMware VSphere Enterprise and appropriate version.
 	6. Click View Group on the right side of the VMware tools item. 
 	7. Use the drop-down in the upper-right to choose the desired version. 
+		1. Download the offline bundle - `VMware Tools Offline VIB Bundle`
 2. Upload VIB package to Lifecycle manager 
 	1. Click actions > Import updates
 	2. Select vib zip file
 3. After upload is completed, create a new baseline with both esxi host and vmware tools, or,
 	1. Create different packages.
+	2. Create content type - patch
+	3. select patches manually - vmwtools - appropriate esxi version
 4. This does not require reboot
 
 Other ways:

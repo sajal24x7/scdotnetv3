@@ -1,22 +1,19 @@
 ---
-title: Azure Load Balancer
-slug: azure-load-balancer
-created: '2024-07-27T13:19:00+03:00'
-updated: '2024-07-27T13:19:00+03:00'
+title: "Azure Load Balancer"
+slug: "azure-load-balancer"
+created: 2024-07-27T13:19:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754967401653255'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnw6u4ln2o'
 ---
-
 - provides high availability
 - uses 5-tuple hash by default to forward traffic (source ip/port, destination ip/port, protocol)
 - frontend connects to LB. LB connects to backend based on rules and health checks.
 - can be used for inbound or outbound scenarios
-- [[202407281423 Create Azure Load Balancer|Create Azure Load Balancer]] / needs:
+- [Create Azure Load Balancer](/til/create-azure-load-balancer) / needs:
 	- frontend ip
 	- backend pool
 	- health probe
@@ -36,14 +33,14 @@ syndicationUrls:
 	- inbound only
 	- http/tcp probes
 	- upto 300 backend pools
-	- vms in a single availability set or [[202404181846 Azure VM scale sets|VMSS]]
-	- supports basic [[202407271143 Public IP address allows inbound access based on tier in Azure|Public IP Address]]
+	- vms in a single availability set or [VMSS](/til/azure-vm-scale-sets)
+	- supports basic [Public IP Address](/til/public-ip-address-allows-inbound-access-based-on-tier-in-azure)
 - standard
 	- closed by default
 	- inbound/outbound
 	- http/https/tcp probes
 	- upto 1000 backend pools
-	- vms in a [[202404121703 Azure VNet|VNet]]
+	- vms in a [VNet](/til/azure-vnet)
 - gateway
 	- high performance
 	- with NVAs

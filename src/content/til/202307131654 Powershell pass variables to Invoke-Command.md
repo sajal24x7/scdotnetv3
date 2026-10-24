@@ -1,17 +1,14 @@
 ---
-title: Powershell Pass Variables to Invoke-Command
-slug: powershell-pass-variables-to-invoke-command
-created: '2023-07-13T16:54:00+03:00'
-updated: '2023-07-13T16:54:00+03:00'
+title: "Powershell Pass Variables to Invoke-Command"
+slug: "powershell-pass-variables-to-invoke-command"
+created: 2023-07-13T16:54:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
+tags: ["powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754752151474623'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkucf7yq2p'
 ---
-
-
 Refer to local variable with $using
 
 Use the '$using:' scope

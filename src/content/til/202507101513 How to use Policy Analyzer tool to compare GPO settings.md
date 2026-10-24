@@ -1,13 +1,10 @@
 ---
-title: How to Use Policy Analyzer Tool to Compare GPO Settings
-slug: how-to-use-policy-analyzer-tool-to-compare-gpo-settings
-created: 2025-07-10T12:38:27.000Z
-updated: 2025-07-10T12:38:27.000Z
+title: "How to Use Policy Analyzer Tool to Compare GPO Settings"
+slug: "how-to-use-policy-analyzer-tool-to-compare-gpo-settings"
+created: 2025-07-10T15:13:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - ad
-  - gpo
+tags: ["windows", "ad", "gpo"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoebrxj623'
   - 'https://mastodon.social/@sajal24x7/116756407612906718'

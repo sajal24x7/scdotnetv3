@@ -1,17 +1,13 @@
 ---
-title: Take Postgres Dump
-slug: take-postgres-dump
-created: '2022-06-22T17:37:00+03:00'
-updated: '2022-06-22T17:37:00+03:00'
+title: "Take Postgres Dump"
+slug: "take-postgres-dump"
+created: 2022-06-22T17:37:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ccs
-  - postgres
+tags: ["ccs", "postgres"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modju673vh2w'
 ---
-
-
 Take a postgres db dump -
 Find cloudcenter-shared-postgres pod -
 kubectl get pods -n cisco | grep postgres

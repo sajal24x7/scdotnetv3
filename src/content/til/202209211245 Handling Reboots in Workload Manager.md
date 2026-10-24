@@ -1,15 +1,13 @@
 ---
-title: Handling Reboots in Workload Manager
-slug: handling-reboots-in-workload-manager
-created: '2022-09-21T12:45:00+03:00'
-updated: '2022-09-21T12:45:00+03:00'
+title: "Handling Reboots in Workload Manager"
+slug: "handling-reboots-in-workload-manager"
+created: 2022-09-21T12:45:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["ccs"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk3jbxde2o'
 ---
-
-
 Reboots in CCS Workload manager are of two types:
 1. Internal reboot, which happens during initialization
 2. External reboot, which can be triggered by user.

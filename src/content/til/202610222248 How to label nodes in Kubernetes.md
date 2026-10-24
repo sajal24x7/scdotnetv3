@@ -1,11 +1,10 @@
 ---
-title: How to Label Nodes in Kubernetes
-slug: how-to-label-nodes-in-kubernetes
-created: 2026-10-22T19:48:00.000Z
-updated: 2026-10-22T19:54:52.000Z
+title: "How to Label Nodes in Kubernetes"
+slug: "how-to-label-nodes-in-kubernetes"
+created: 2026-10-22T22:48:00+03:00
+updated: 2026-10-22T22:54:52+03:00
 category: til
-tags:
-  - k8s
+tags: ["k8s"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117491305430270350'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3myknvx2hcg2o'

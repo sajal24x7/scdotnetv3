@@ -1,23 +1,20 @@
 ---
-title: Azure Application Gateway
-slug: azure-application-gateway
-created: '2024-07-27T13:53:00+03:00'
-updated: '2024-07-27T13:53:00+03:00'
+title: "Azure Application Gateway"
+slug: "azure-application-gateway"
+created: 2024-07-27T13:53:00+03:00
+updated: 2026-10-01T16:54:24+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754967776939701'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnwef2ei26'
 ---
-
-- When compared to [[202407271319 Azure Load Balancer|Azure Load Balancer]] this uses app layer routing as mentioned in [[202404131219 External Access]]
+- When compared to [Azure Load Balancer](/til/azure-load-balancer) this uses app layer routing as mentioned in [External Access](/til/external-access)
 - can add firewall etc
 # Routing
 - path based routing : based on url send to different backend servers
-- Multi-site routing: different web apps on the same [[202407271353 Azure Application Gateway|Azure Application Gateway]]
-	- example: contoso.com and sajal.net
+- Multi-site routing: different web apps on the same [Azure Application Gateway](/til/azure-application-gateway)
+	- example: sisu.example and polaris.example
 - can redirect traffic
 	- redirect http traffic to https for example
 - can rewrite http headers

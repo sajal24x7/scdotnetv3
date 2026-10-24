@@ -1,17 +1,14 @@
 ---
-title: Sector and Allocation Units
-slug: sector-and-allocation-units
-created: '2024-07-16T13:09:00+03:00'
-updated: '2024-07-16T13:09:00+03:00'
+title: "Sector and Allocation Units"
+slug: "sector-and-allocation-units"
+created: 2024-07-16T13:09:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - storage
+tags: ["windows", "storage"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754959343359530'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnsjj6ko2m'
 ---
-
 # Sector
 - Minimum amount of data that can be read or written to HD
 - Traditionally 512Bytes, now different options are there

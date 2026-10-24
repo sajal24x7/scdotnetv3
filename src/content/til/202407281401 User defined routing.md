@@ -1,27 +1,24 @@
 ---
-title: User Defined Routing
-slug: user-defined-routing
-created: '2024-07-28T14:01:00+03:00'
-updated: '2024-07-28T14:01:00+03:00'
+title: "User Defined Routing"
+slug: "user-defined-routing"
+created: 2024-07-28T14:01:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754969053608966'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnwxfs6n2z'
 ---
-
-A way of [[202404131313 Connecting virtual networks|Connecting virtual networks]]
-- Can be used to over-ride system defaults created in [[202312231415 Azure Master|Azure]]
+A way of [Connecting virtual networks](/til/connecting-virtual-networks)
+- Can be used to over-ride system defaults created in [Azure](/til/azure-master)
 - Next hop can be:
 	- NVA
 	- Virtual network gateway
-	- [[202404121703 Azure VNet|VNet]]
+	- [VNet](/til/azure-vnet)
 	- Internet
 	- None (To drop packet)
 
-[[202407281408 Create custom route|Create custom route]]
+[Create custom route](/til/create-custom-route)
 
 ---
 # references:

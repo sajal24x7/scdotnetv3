@@ -1,17 +1,14 @@
 ---
-title: How to Decommission an ESXi
-slug: how-to-decommission-an-esxi
-created: '2024-04-22T13:46:00+03:00'
-updated: '2024-04-22T13:46:00+03:00'
+title: "How to Decommission an ESXi"
+slug: "how-to-decommission-an-esxi"
+created: 2024-04-22T13:46:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
-  - evergreen
+tags: ["vmware"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754931085803330'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnfokf6a23'
 ---
-
 General steps are these:
 
 1.       Put the ESXi host in maintenance mode - Compute

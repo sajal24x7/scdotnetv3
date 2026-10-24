@@ -1,18 +1,15 @@
 ---
-title: Winrm Troubleshooting
-slug: winrm-troubleshooting
-created: '2024-04-08T16:05:00+03:00'
-updated: '2024-04-08T16:05:00+03:00'
+title: "Winrm Troubleshooting"
+slug: "winrm-troubleshooting"
+created: 2024-04-08T16:05:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - winrm
+tags: ["windows", "winrm"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754911030293324'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn4ke6ay2v'
 ---
-
-Related to [[202309181318 Powershell second hop problem]]
+Related to [Powershell Second Hop Problem](/til/powershell-second-hop-problem)
 
 ```powershell
 # Check credssp setting

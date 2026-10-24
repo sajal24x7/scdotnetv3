@@ -1,16 +1,14 @@
 ---
-title: UCS the Password Encryption Key Has Not Been Set
-slug: ucs-the-password-encryption-key-has-not-been-set
-created: '2024-04-19T13:13:00+03:00'
-updated: '2024-04-19T13:13:00+03:00'
+title: "UCS the Password Encryption Key Has Not Been Set"
+slug: "ucs-the-password-encryption-key-has-not-been-set"
+created: 2024-04-19T13:13:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ucs
+tags: ["ucs"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754927266847155'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modndwojeq2v'
 ---
-
 1. In the Navigation pane, click Admin.
 2. Expand All > User Management > User Services > Locally Authenticated Users
 3. Fill out the **Password Encryption Key** field.

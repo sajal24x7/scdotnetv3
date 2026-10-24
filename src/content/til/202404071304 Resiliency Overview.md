@@ -1,17 +1,14 @@
 ---
-title: Resiliency Overview
-slug: resiliency-overview
-created: '2024-04-07T13:04:00+03:00'
-updated: '2024-04-07T13:04:00+03:00'
+title: "Resiliency Overview"
+slug: "resiliency-overview"
+created: 2024-04-07T13:04:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - resiliency
+tags: ["azure", "resiliency"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754766191123324'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modl2on7h52v'
 ---
-
 # What are we protecting against
 1. Software failure(App/OS,etc) - Replication
 2. Hardware failures - Replication
@@ -21,14 +18,14 @@ syndicationUrls:
 6. Humans - Processes
 
 # Protection from Infrastructure Failures
-1. [[202404071441 Replication|Replication]]
+1. [Replication](/til/replication)
 	1. Stateless systems can run from different places, So things like web frontends, etc.
 	2. For stateful systems,
 		1. async copy to a different region
-2. [[202404071559 Azure Backup|Backup]]
+2. [Backup](/til/azure-backup)
 	1. Point-in-time copies
 	2. For stateful systems, it does not protect against hardware failure as it runs on the same disk. But if there is some logical issue or something, we can revert with this.
-3. [[202408041224 Azure Monitoring|Monitoring]]
+3. [Monitoring](/til/azure-monitoring)
 	1. How are things being used
 	2. so that we know when things are not working as they should
 

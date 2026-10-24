@@ -1,17 +1,13 @@
 ---
-title: Installing Cliqr Agent for Vmware Cloud
-slug: installing-cliqr-agent-for-vmware-cloud
-created: '2022-08-01T13:07:00+03:00'
-updated: '2022-08-01T13:07:00+03:00'
+title: "Installing Cliqr Agent for Vmware Cloud"
+slug: "installing-cliqr-agent-for-vmware-cloud"
+created: 2022-08-01T13:07:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ccs
-  - vmware
+tags: ["ccs", "vmware"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjw7lxkd23'
 ---
-
-
 # Linux
 ```bash
 ./worker_installer.bin vmware worker_basic

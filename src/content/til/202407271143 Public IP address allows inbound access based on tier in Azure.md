@@ -1,23 +1,20 @@
 ---
-title: Public IP Address Allows Inbound Access Based on Tier in Azure
-slug: public-ip-address-allows-inbound-access-based-on-tier-in-azure
-created: '2024-07-27T11:43:00+03:00'
-updated: '2024-07-27T11:43:00+03:00'
+title: "Public IP Address Allows Inbound Access Based on Tier in Azure"
+slug: "public-ip-address-allows-inbound-access-based-on-tier-in-azure"
+created: 2024-07-27T11:43:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754966312212135'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnvou5si2v'
 ---
-
 Public IP address in Azure have 2 SKUs: 
 1. Standard
 2. Basic (will be retired in 2025)
 
 Standard SKU is secure by default, does not allow any inbound traffic.
-Basic allows traffic by default. [[202404141419 Network Security Groups|NSGs]] can be used to control access.
+Basic allows traffic by default. [NSGs](/til/network-security-groups) can be used to control access.
 
 If we do not specify SKU, Public IP takes Basic SKU.
 
@@ -34,7 +31,7 @@ sku: { name: 'string' tier: 'string' }
 
 ```
 
-[[202408041111 Create public ip address in Azure|Create public ip address in Azure]]
+[Create public ip address in Azure](/til/create-public-ip-address-in-azure)
 
 ---
 # references:

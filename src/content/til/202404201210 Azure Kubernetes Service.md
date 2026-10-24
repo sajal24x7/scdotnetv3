@@ -1,27 +1,22 @@
 ---
-title: Azure Kubernetes Service
-slug: azure-kubernetes-service
-created: '2024-04-20T12:10:00+03:00'
-updated: '2024-04-20T12:10:00+03:00'
+title: "Azure Kubernetes Service"
+slug: "azure-kubernetes-service"
+created: 2024-04-20T12:10:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - container
-  - appservices
-  - k8s
+tags: ["azure", "container", "appservices", "k8s"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754927891717543'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modne7xha32o'
 ---
-
-- [[202404201203 Azure Container Instance|Azure Container Instace]] is OK. But mostly we need more than one container. 
-- [[202404211433 Kubernetes|Kuberenetes]] is the orchestrator of choice. 
+- [Azure Container Instace](/til/azure-container-instance) is OK. But mostly we need more than one container. 
+- [Kuberenetes](/til/kubernetes) is the orchestrator of choice. 
 - Two types: free and standard 
 	- Standard has SLA / that is what we would use for production
 - We pay for the VMs (or nodes) which can auto-scale
 
 # Features
-- Can use [[202404201203 Azure Container Instance|ACI]] for cheap via virtual kubelet // need to specify in our manifest file
+- Can use [ACI](/til/azure-container-instance) for cheap via virtual kubelet // need to specify in our manifest file
 - Stop/start aks cluster
 - Automatic healing
 - Automatic upgrade
@@ -29,16 +24,16 @@ syndicationUrls:
 - Gitops 
 	- Make changes to your repo, that gets deployed to AKS
 - Managed ID use
-	- Create a user [[202312231441 Entra ID Managed Identities|MI]]
+	- Create a user [MI](/til/entra-id-managed-identities)
 	- Tag that to a service account created in AKS
 	- Then stuff happens and we can use IDs
 - User node pools can use spot instances
 # Structure
-- When we run commands (kubectl) it talks to API server. Other [[Kubernetes Components]] like etcd (DB), scheduler, etc talk to API server. All this is control plane.
+- When we run commands (kubectl) it talks to API server. Other [Kubernetes Components](/til/kubernetes-components) like etcd (DB), scheduler, etc talk to API server. All this is control plane.
 - Then we have node pools, where basically the worker nodes run.
-	- There is type system which basically has things that [[Kubernetes]] needs to run.
+	- There is type system which basically has things that [Kubernetes](/kubernetes) needs to run.
 	- In node pools we have nodes. 
-		- On each node we have [[Kubernetes Components]] like kubelet (which talks to api server for management), kubeproxy (for network stuff) and container runtime.
+		- On each node we have [Kubernetes Components](/til/kubernetes-components) like kubelet (which talks to api server for management), kubeproxy (for network stuff) and container runtime.
 		- Additionally, then we have our pods. Which are you know our services.
 - Namespaces allow for isolation.
 

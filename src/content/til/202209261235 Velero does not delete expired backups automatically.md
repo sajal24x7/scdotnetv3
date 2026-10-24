@@ -1,14 +1,13 @@
 ---
-title: Velero Does Not Delete Expired Backups Automatically
-slug: velero-does-not-delete-expired-backups-automatically
-created: '2022-09-26T12:35:00+03:00'
-updated: '2022-09-26T12:35:00+03:00'
+title: "Velero Does Not Delete Expired Backups Automatically"
+slug: "velero-does-not-delete-expired-backups-automatically"
+created: 2022-09-26T12:35:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["velero"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk7vtn2p2p'
 ---
-
 When scheduled backup reach their TTL, the deletion process is started but gets stuck in status `Deleting`. The contents are properly deleted, while volume snapshots stay (causing space issue).
 To manually delete backups that are stuck in Deleting state:
 

@@ -1,17 +1,14 @@
 ---
-title: Powershell Rename Cluster Resource
-slug: powershell-rename-cluster-resource
-created: '2024-08-08T15:17:00+03:00'
-updated: '2024-08-08T15:17:00+03:00'
+title: "Powershell Rename Cluster Resource"
+slug: "powershell-rename-cluster-resource"
+created: 2024-08-08T15:17:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
-  - windows
+tags: ["powershell", "windows"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo3mzvli26'
   - 'https://mastodon.social/@sajal24x7/116756207860242475'
 ---
-
 ```powershell
 # Get all resources
 Get-ClusterResource

@@ -1,16 +1,14 @@
 ---
-title: Cisco UCS Clear Any Errors Which Are Not Actually There
-slug: cisco-ucs-clear-any-errors-which-are-not-actually-there
-created: '2024-01-04T00:42:00+03:00'
-updated: '2024-01-04T00:42:00+03:00'
+title: "Cisco UCS Clear Any Errors Which Are Not Actually There"
+slug: "cisco-ucs-clear-any-errors-which-are-not-actually-there"
+created: 2024-01-04T00:42:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ucs
+tags: ["ucs"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754757981942213'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkwx47zb2w'
 ---
-
 Go to Service Profile > General > Recover Server > Reset CIMC (Server Controller)
 
 This does not affect the server and just verifies everything. 

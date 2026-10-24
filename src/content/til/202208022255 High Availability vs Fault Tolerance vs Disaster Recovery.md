@@ -1,15 +1,13 @@
 ---
-title: High Availability vs Fault Tolerance vs Disaster Recovery
-slug: high-availability-vs-fault-tolerance-vs-disaster-recovery
-created: '2022-08-02T22:55:00+03:00'
-updated: '2022-08-02T22:55:00+03:00'
+title: "High Availability Vs Fault Tolerance Vs Disaster Recovery"
+slug: "high-availability-vs-fault-tolerance-vs-disaster-recovery"
+created: 2022-08-02T22:55:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["inprogress"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjycdtal2v'
 ---
-
-
 HA is about minimizing failure.
 FT is about minimizing failure + operating through failures
 

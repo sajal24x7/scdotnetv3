@@ -1,12 +1,10 @@
 ---
-title: ESXi Firmware Upgrade Baseline Fails to Apply With Incompatible Message
-slug: esxi-firmware-upgrade-baseline-fails-to-apply-with-incompatible-message
-created: 2025-04-18T18:39:37.000Z
-updated: 2025-04-18T18:39:37.000Z
+title: "ESXi Firmware Upgrade Baseline Fails to Apply With Incompatible Message"
+slug: "esxi-firmware-upgrade-baseline-fails-to-apply-with-incompatible-message"
+created: 2025-04-18T21:11:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
-  - esxi
+tags: ["vmware", "esxi"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododpcnmr2v'
   - 'https://mastodon.social/@sajal24x7/116756406462222026'

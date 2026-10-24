@@ -1,17 +1,14 @@
 ---
-title: Azure VM Basics
-slug: azure-vm-basics
-created: '2024-04-16T18:35:00+03:00'
-updated: '2024-04-16T18:35:00+03:00'
+title: "Azure VM Basics"
+slug: "azure-vm-basics"
+created: 2024-04-16T18:35:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - compute
+tags: ["azure", "compute"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754924478238846'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modncnxf4a2v'
 ---
-
 1. IaaS service
 	1. Everything inside the VM is our responsibility and under our control
 		1. Things like patching, AV, etc.
@@ -22,11 +19,11 @@ syndicationUrls:
 	1. Different versions so that we have consistency, we can choose what we want to do.
 5. VM needs to be Stopped (deallocated) for no charge. Shutting from guest does not de-provision it.
 
-[[202404161906 How do we think about VM sizes or types on Azure|How do we think about VM sizes on Azure]]
+[How do we think about VM sizes on Azure](/how-do-we-think-about-vm-sizes-or-types-on-azure)
 
 # Commands
-[[202407141333 Get Azure VM Images|Get Azure VM Images]]
-[[202407141412 Create VM in Azure|Create VM in Azure]]
+[Get Azure VM Images](/til/get-azure-vm-images)
+[Create VM in Azure](/til/create-vm-in-azure)
 
 ---
 # references:

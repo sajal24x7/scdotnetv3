@@ -1,18 +1,15 @@
 ---
-title: Entra ID Groups
-slug: entra-id-groups
-created: '2023-12-24T22:45:00+03:00'
-updated: '2023-12-24T22:45:00+03:00'
+title: "Entra ID Groups"
+slug: "entra-id-groups"
+created: 2023-12-24T22:45:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - entra
+tags: ["azure", "entra"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754757720235552'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkwtkkbj2u'
 ---
-
-- [[202401072024 Entra ID roles]] can be assigned
+- [Entra ID Roles](/entra-id-roles) can be assigned
 ## Types
 - security 
 - Microsoft 365 groups

@@ -1,16 +1,14 @@
 ---
-title: Increase Memory Allocated to VMware Services
-slug: increase-memory-allocated-to-vmware-services
-created: '2024-08-12T13:08:00+03:00'
-updated: '2024-08-12T13:08:00+03:00'
+title: "Increase Memory Allocated to VMware Services"
+slug: "increase-memory-allocated-to-vmware-services"
+created: 2024-08-12T13:08:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
+tags: ["vmware"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo4u3s4a2v'
   - 'https://mastodon.social/@sajal24x7/116756208529714384'
 ---
-
 # Error
 
 PowerShell gives error when running tag related cmdlets

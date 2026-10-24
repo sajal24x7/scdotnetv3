@@ -1,16 +1,14 @@
 ---
-title: Windows Rpc Server Is Unavailable
-slug: windows-rpc-server-is-unavailable
-created: '2022-09-26T13:23:00+03:00'
-updated: '2022-09-26T13:23:00+03:00'
+title: "Windows Rpc Server Is Unavailable"
+slug: "windows-rpc-server-is-unavailable"
+created: 2022-09-26T13:23:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["windows"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkdq323x2p'
   - 'https://www.threads.com/@sajal24x7/post/DZnFsN9FlUn'
 ---
-
-
 Issue: The RPC server is unavailable while trying to take Remote Desktop of 2003
 
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server

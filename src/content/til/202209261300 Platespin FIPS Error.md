@@ -1,15 +1,13 @@
 ---
-title: Platespin FIPS Error
-slug: platespin-fips-error
-created: '2022-09-26T13:00:00+03:00'
-updated: '2022-09-26T13:00:00+03:00'
+title: "Platespin FIPS Error"
+slug: "platespin-fips-error"
+created: 2022-09-26T13:00:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["platespin"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkc7hhuf2v'
 ---
-
-
 Error:
 Exception has been thrown by the target of an invocation.
 This implementation is not part of the Windows Platform FIPS validated cryptographic algorithms.

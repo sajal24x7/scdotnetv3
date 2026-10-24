@@ -1,18 +1,15 @@
 ---
-title: Add Rules to NSG in Azure
-slug: add-rules-to-nsg-in-azure
-created: '2024-07-14T14:33:00+03:00'
-updated: '2024-07-14T14:33:00+03:00'
+title: "Add Rules to NSG in Azure"
+slug: "add-rules-to-nsg-in-azure"
+created: 2024-07-14T14:33:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
-  - azure
+tags: ["powershell", "azure"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754956054090570'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnr2ra7k2p'
 ---
-
-In continuation to [[202407141419 Create NSG in Azure|Create NSG in Azure]] about adding rules to [[202404141419 Network Security Groups|NSG]]
+In continuation to [Create NSG in Azure](/til/create-nsg-in-azure) about adding rules to [NSG](/til/network-security-groups)
 
 ```powershell
 

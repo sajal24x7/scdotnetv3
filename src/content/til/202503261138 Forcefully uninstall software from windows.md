@@ -1,11 +1,10 @@
 ---
-title: Forcefully Uninstall Software From Windows
-slug: forcefully-uninstall-software-from-windows
-created: 2025-07-29T18:40:19.000Z
-updated: 2025-07-29T18:40:19.000Z
+title: "Forcefully Uninstall Software From Windows"
+slug: "forcefully-uninstall-software-from-windows"
+created: 2025-03-26T11:38:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
+tags: ["windows"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mododhp2po23'
   - 'https://mastodon.social/@sajal24x7/116756405808046286'

@@ -1,16 +1,13 @@
 ---
-title: Powershell Convert Int64 TimeStamp to DateTime
-slug: powershell-convert-int64-timestamp-to-datetime
-created: '2022-07-20T12:09:00+03:00'
-updated: '2022-07-20T12:09:00+03:00'
+title: "Powershell Convert Int64 TimeStamp to DateTime"
+slug: "powershell-convert-int64-timestamp-to-datetime"
+created: 2022-07-20T12:09:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
+tags: ["powershell"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjvganmz24'
 ---
-
-
 we can use the .Net function **FromFileTime** and convert the output to DateTime format.
 ```powershell
 $timestamp = "131099683087123361"

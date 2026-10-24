@@ -1,18 +1,15 @@
 ---
-title: Azure File Sync
-slug: azure-file-sync
-created: '2024-04-12T12:39:00+03:00'
-updated: '2024-04-12T12:39:00+03:00'
+title: "Azure File Sync"
+slug: "azure-file-sync"
+created: 2024-04-12T12:39:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - storage
+tags: ["azure", "storage"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754917319126281'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn7ft5bl2m'
 ---
-
-You might have [[202406291221 Azure Files|Azure Files]]
+You might have [Azure Files](/til/azure-files)
 But the on-prem file server might still be there.
 
 It enables:
@@ -24,7 +21,7 @@ It enables:
 - ﻿﻿Replicates between via the cloud endpoint
 - ﻿﻿Enables cloud tiering of data off local storage to cloud endpoint to optimize local capacity
 
-You create a sync group in [[202312231415 Azure Master|Azure]] which. allows sync between on-prem and [[202406291221 Azure Files|Azure Files]]
+You create a sync group in [Azure](/til/azure-master) which. allows sync between on-prem and [Azure Files](/til/azure-files)
 
 ```mermaid
 flowchart TB

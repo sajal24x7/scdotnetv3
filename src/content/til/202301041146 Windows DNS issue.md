@@ -1,17 +1,14 @@
 ---
-title: Windows DNS Issue
-slug: windows-dns-issue
-created: '2023-01-04T11:46:00+03:00'
-updated: '2023-01-04T11:46:00+03:00'
+title: "Windows DNS Issue"
+slug: "windows-dns-issue"
+created: 2023-01-04T11:46:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - dns
+tags: ["windows", "dns"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754733746159252'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modklwma232u'
 ---
-
 # Error
 Resolution has multiple canonical names. Resolves couple of hops, but fails on 3rd/4th step.
 ```cmd

@@ -1,16 +1,13 @@
 ---
-title: Terraform Variables
-slug: terraform-variables
-created: '2022-04-22T11:19:00+03:00'
-updated: '2022-04-22T11:19:00+03:00'
+title: "Terraform Variables"
+slug: "terraform-variables"
+created: 2022-04-22T11:19:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - terraform
+tags: ["terraform"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhnbcedp2v'
 ---
-
-
 # Precedence
 Terraform loads variables in the following order, with later sources taking precedence over earlier ones:
 -   Environment variables

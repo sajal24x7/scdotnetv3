@@ -1,16 +1,14 @@
 ---
-title: Windows Server Unable to Patch
-slug: windows-server-unable-to-patch
-created: '2024-01-02T12:41:00+03:00'
-updated: '2024-01-02T12:41:00+03:00'
+title: "Windows Server Unable to Patch"
+slug: "windows-server-unable-to-patch"
+created: 2024-01-02T12:41:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
+tags: ["windows"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754757862613886'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkwvi6bx2l'
 ---
-
 Install servicing stack patch.
 
 For 2016: KB5023788

@@ -1,19 +1,13 @@
 ---
-title: Azure AD Connect Upgrade From Old Version to New Version
-slug: azure-ad-connect-upgrade-from-old-version-to-new-version
-created: '2022-08-04T14:39:00+03:00'
-updated: '2022-08-04T14:39:00+03:00'
+title: "Azure AD Connect Upgrade From Old Version to New Version"
+slug: "azure-ad-connect-upgrade-from-old-version-to-new-version"
+created: 2022-08-04T14:39:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - aadconnect
-  - entra
-  - entraconnect
-  - azure
+tags: ["aadconnect", "entra", "entraconnect", "azure"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjyvnvk42o'
 ---
-
-
 # Methods
 1. Automatic Upgrade
 2. In-place upgrade

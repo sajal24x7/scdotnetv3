@@ -1,21 +1,17 @@
 ---
-title: Create VNet Peering in Azure
-slug: create-vnet-peering-in-azure
-created: '2024-07-15T19:43:00+03:00'
-updated: '2024-07-15T19:43:00+03:00'
+title: "Create VNet Peering in Azure"
+slug: "create-vnet-peering-in-azure"
+created: 2024-07-15T19:43:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
-  - azure
-  - network
+tags: ["powershell", "azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754957564018488'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnrpxnbq2v'
 ---
+After [Create VNet in Azure](/til/create-vnet-in-azure)
 
-After [[202407141408 Create VNet in Azure|Create VNet in Azure]]
-
-We can create [[202407151908 VNet Peering|VNet Peering]] between the two using [[202207181612 Powershell|Powershell]] : [Add-AzVirtualNetworkPeering](https://learn.microsoft.com/en-us/powershell/module/az.network/add-azvirtualnetworkpeering)
+We can create [VNet Peering](/til/vnet-peering) between the two using [Powershell](/powershell) : [Add-AzVirtualNetworkPeering](https://learn.microsoft.com/en-us/powershell/module/az.network/add-azvirtualnetworkpeering)
 
 ```powershell
 # Variables

@@ -1,16 +1,14 @@
 ---
-title: VMware Set Proxy
-slug: vmware-set-proxy
-created: '2024-09-18T14:58:00+03:00'
-updated: '2024-09-18T14:58:00+03:00'
+title: "VMware Set Proxy"
+slug: "vmware-set-proxy"
+created: 2024-09-18T14:58:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
+tags: ["vmware"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modob53ibn2p'
   - 'https://mastodon.social/@sajal24x7/116756401477298049'
 ---
-
 We can not set **noproxy** in VAMI UI. It needs to be set in config file located at
 ```text
 /etc/sysconfig/proxy

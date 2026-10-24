@@ -1,18 +1,14 @@
 ---
-title: Powershell Second Hop Problem
-slug: powershell-second-hop-problem
-created: '2023-09-18T13:18:00+03:00'
-updated: '2023-09-18T13:18:00+03:00'
+title: "Powershell Second Hop Problem"
+slug: "powershell-second-hop-problem"
+created: 2023-09-18T13:18:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
-  - winrm
+tags: ["powershell", "winrm"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754754826985181'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkvjgbgx26'
 ---
-
-
 To fix issue
 
 1. Add fi server entry in etc/hosts so that resolution works

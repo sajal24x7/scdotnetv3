@@ -1,21 +1,18 @@
 ---
-title: Application Security Groups
-slug: application-security-groups
-created: '2024-07-14T14:03:00+03:00'
-updated: '2024-07-14T14:03:00+03:00'
+title: "Application Security Groups"
+slug: "application-security-groups"
+created: 2024-07-14T14:03:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - network
+tags: ["azure", "network"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754953835442353'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnpzfchh2m'
 ---
-
 - ASGs allow VMs to be grouped together based on application role
 - This allows to architect network around app architecture
-- [[202407141403 Application Security Groups|ASG]] can be added as source or destination in [[202404141419 Network Security Groups|NSG]]
-	- [[202407141403 Application Security Groups|ASG]] on its own is nothing, just a grouping it needs to be added via [[202404141419 Network Security Groups|NSG]]
+- [ASG](/til/application-security-groups) can be added as source or destination in [NSG](/til/network-security-groups)
+	- [ASG](/til/application-security-groups) on its own is nothing, just a grouping it needs to be added via [NSG](/til/network-security-groups)
 
 ---
 # references:

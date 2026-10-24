@@ -1,17 +1,14 @@
 ---
-title: AAP Controller Rbac
-slug: aap-controller-rbac
-created: '2023-01-20T11:47:00+03:00'
-updated: '2023-01-20T11:47:00+03:00'
+title: "AAP Controller Rbac"
+slug: "aap-controller-rbac"
+created: 2023-01-20T11:47:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ansible
+tags: ["ansible"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754734572004388'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkmcv5f52m'
 ---
-
-
 # Users
 Three types of users:
 1. System Administrator (superuser/provides read/write permission on all objects in all organizations on the automation controller)

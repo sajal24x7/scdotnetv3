@@ -1,16 +1,13 @@
 ---
-title: VMware Security Certificates
-slug: vmware-security-certificates
-created: '2022-08-04T21:57:00+03:00'
-updated: '2022-08-04T21:57:00+03:00'
+title: "VMware Security Certificates"
+slug: "vmware-security-certificates"
+created: 2022-08-04T21:57:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - cert
-  - vmware
+tags: ["cert", "vmware"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjzf6h7v2m'
 ---
-
 
 # Create template
 Create template using [Creating a Microsoft Certificate Authority Template for SSL certificate creation in vSphere 6.x/7.x (2112009) (vmware.com)](https://kb.vmware.com/s/article/2112009)
@@ -31,6 +28,49 @@ Create template using [Creating a Microsoft Certificate Authority Template for S
 4. Verify  that the vSphere Web Client login page is now using the Microsoft CA-issued certificate
 
 # Steps
+
+## New steps using vcert tool
+
+[Tool can be downloaded from here](https://knowledge.broadcom.com/external/article/385107)
+### Installation steps
+```shell
+# unzip -q vCert-6.0.1-20250516.zip  
+# cd vCert-6.0.1-20250516  
+# chmod +x vCert.py  
+# ./vCert.py
+```
+
+### Check cert status
+1. Run vCert.py
+2. Select option 2 - `View certificate info` or option 1 - `Check current certificate status`
+3. For option 2 - select `Machine SSL certificate`
+
+### Generate machine certreq
+1. Run vCert.py
+2. Select option 3 - `Manage certificates`
+3. Then option 1 - `Machine SSL certificate`
+4. Then option 2 - `Replace Machine SSL certificate with a custom CA-signed certificate`
+5. Then option 1 - `Generate Certificate Signing Request and Private Key`
+6. Copy the csr to the internal CA from where you need to get the cert
+
+### Get cert
+1. Go to UI to get the new certs
+2. Download Base64 encoded certs
+3. Create cert chain in .cer format
+	1. server
+	2. issuer
+	3. policy
+	4. root
+4. Paste the generated certs to vcenter appliances
+
+
+### Replace cert
+1. Run vCert.py
+2. Select option 3 - `Manage certificates`
+3. Then option 1 - `Machine SSL certificate`
+4. Then option 2 - `Replace Machine SSL certificate with a custom CA-signed certificate`
+
+## Old Steps
 1. Create a folder on appliance which you will be able to download: /tmp/sslcerts
 2. Generate CSR
 	1. Utility is present at: /usr/lib/vmware-vmca/bin/certificate-manager

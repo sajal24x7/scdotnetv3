@@ -1,18 +1,15 @@
 ---
-title: VMware ESXi Upgrade Using ESXCLI
-slug: vmware-esxi-upgrade-using-esxcli
-created: '2023-08-29T17:11:00+03:00'
-updated: '2023-08-29T17:11:00+03:00'
+title: "VMware ESXi Upgrade Using ESXCLI"
+slug: "vmware-esxi-upgrade-using-esxcli"
+created: 2023-08-29T17:11:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
+tags: ["vmware"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754753900244894'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkv3xmiu2m'
 ---
-
-
-```bash
+```ssh
 
 ## Run this to get the name
 esxcli software sources profile list -d /vmfs/volumes/datastore1/ESXi7-bundle/VMware-ESXi-7.0U2d-18538813-depot.zip

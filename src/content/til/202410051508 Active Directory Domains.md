@@ -9,4 +9,4 @@ tags: ["ad"]
 A domain is logical security boundary for [AD Objects](/common-features-of-ad-objects)
 In a domain tree, only contiguous name spaces.
 
-To talk to a domain, or [AD](/til/active-directory) we need a protocol - [LDAP](/ldap).
+To talk to a domain, or [AD](/til/active-directory) we need a protocol - [LDAP](/til/ldap).

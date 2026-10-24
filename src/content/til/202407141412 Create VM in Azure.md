@@ -1,23 +1,18 @@
 ---
-title: Create VM in Azure
-slug: create-vm-in-azure
-created: '2024-07-14T14:12:00+03:00'
-updated: '2024-07-14T14:12:00+03:00'
+title: "Create VM in Azure"
+slug: "create-vm-in-azure"
+created: 2024-07-14T14:12:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
-  - azure
-  - compute
+tags: ["powershell", "azure", "compute"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754954806722968'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnqhjbcq23'
 ---
-
-
 # Resources
-1. A [[202404051818 Resource Groups|resource group]]
-2. A [[202404121703 Azure VNet|VNet]] in the [[202404051818 Resource Groups|resource group]]
-3. A [[202404121727 Azure VM NIC|VM NIC]] in the [[202404121703 Azure VNet|VNet]]
+1. A [resource group](/til/resource-groups)
+2. A [VNet](/til/azure-vnet) in the [resource group](/til/resource-groups)
+3. A [VM NIC](/til/azure-vm-nic) in the [VNet](/til/azure-vnet)
 4. Public IP (Needs to be added in nic resource in bicep)
 
 # VM Config

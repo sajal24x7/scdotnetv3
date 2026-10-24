@@ -1,17 +1,14 @@
 ---
-title: Conditional Access
-slug: conditional-access
-created: '2024-04-01T15:57:00+03:00'
-updated: '2024-04-01T15:57:00+03:00'
+title: "Conditional Access"
+slug: "conditional-access"
+created: 2024-04-01T15:57:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - entra
-  - azure
+tags: ["entra", "azure"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754763970355875'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkzoaxca2m'
 ---
-
 # How
 1. Once authentication is done, Entra ID creates Refresh Token and Access Token. 
 2. It sends RT and AT to user
@@ -19,7 +16,7 @@ syndicationUrls:
 4. ATs are time-bombed
 5. After time is done, new RT and AT generated
 6. If a new app requires authentication, user can use the same AT
-7. Every ask for token goes through [[202404011557 Conditional Access|conditional access]]
+7. Every ask for token goes through [conditional access](/til/conditional-access)
 
 # Overview
 1. Allows you to set conditions for access

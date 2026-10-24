@@ -8,4 +8,4 @@ tags: ["ad"]
 ---
 Active Directory provides a centralised identity store. It is a [DB](/til/active-directory-database) (ntds.dit) plus some services running on it.
 
-It uses X.500 for the structure (the how) of the data. This is defined in the schema. We get [Organizational Units](/organizational-unit) as a result of this. An [AD Objects](/common-features-of-ad-objects) stays in these OUs. 
+It uses X.500 for the structure (the how) of the data. This is defined in the schema. We get [Organizational Units](/til/organizational-unit) as a result of this. An [AD Objects](/common-features-of-ad-objects) stays in these OUs. 

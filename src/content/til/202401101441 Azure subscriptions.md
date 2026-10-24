@@ -1,17 +1,14 @@
 ---
-title: Azure Subscriptions
-slug: azure-subscriptions
-created: '2024-01-10T14:41:00+03:00'
-updated: '2024-01-10T14:41:00+03:00'
+title: "Azure Subscriptions"
+slug: "azure-subscriptions"
+created: 2024-01-10T14:41:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - governance
+tags: ["azure", "governance"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754759831813856'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkxs4p3c2z'
 ---
-
 - each service belongs to a subscription 
 - Each subscription can have different billing details
 - Multiple subscriptions can be linked to same account

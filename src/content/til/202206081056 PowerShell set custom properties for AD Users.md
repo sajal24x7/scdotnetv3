@@ -1,16 +1,14 @@
 ---
-title: PowerShell Set Custom Properties for AD Users
-slug: powershell-set-custom-properties-for-ad-users
-created: '2022-06-08T10:56:00+03:00'
-updated: '2022-06-08T10:56:00+03:00'
+title: "PowerShell Set Custom Properties for AD Users"
+slug: "powershell-set-custom-properties-for-ad-users"
+created: 2022-06-08T10:56:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
+tags: ["powershell", "ad"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjsqh4ah2w'
 ---
-
-
+-
 Set-ADUser can be used to modify AD users.
 We can edit values of other user attributes (including extensionAttribute and custom attributes) in AD using these Set-ADUser options:
 
@@ -22,6 +20,8 @@ We can edit values of other user attributes (including extensionAttribute and cu
 # Add a custom attribute
 ```powershell
 Set-ADUser C.Bob -Add @{extensionAttribute5 = "Test1"}
+
+@{gidNumber = "7671"}
 
 # Replace
 Set-ADUser

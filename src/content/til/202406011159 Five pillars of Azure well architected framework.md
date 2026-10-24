@@ -1,24 +1,21 @@
 ---
-title: Five Pillars of Azure Well Architected Framework
-slug: five-pillars-of-azure-well-architected-framework
-created: '2024-06-01T11:59:00+03:00'
-updated: '2024-06-01T11:59:00+03:00'
+title: "Five Pillars of Azure Well Architected Framework"
+slug: "five-pillars-of-azure-well-architected-framework"
+created: 2024-06-01T11:59:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - architecture
+tags: ["azure", "architecture"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754943160242597'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnl6co272l'
 ---
-
 # Cost effectiveness
 - traditionally, costs associates were upfront, considered capex
 - moving to cloud, it is considered opex
 - so can be cost effective just showing this.
 
 - pay less for services
-- related to [[202404061425 Azure Cost Management|cost]]
+- related to [cost](/til/azure-cost-management)
 ## how?
 - plan and estimate: design and then use cost-estimation to figure out how much you will pay
 	- get discounts where possible by using reserved instances for example. also for licenses, etc.
@@ -66,14 +63,14 @@ syndicationUrls:
 ## how?
 - build ha systems dependent of the sla we are committing
 - recoverability/ once the below are defined, we can design accordingly
-	- related to [[202404071556 Disaster Recovery|Disaster Recovery]]
-	- [[202404081931 Recovery Point Objective|RPO]]
-	- [[202404081933 Recovery Time Objective|RTO]]
+	- related to [Disaster Recovery](/til/disaster-recovery)
+	- [RPO](/til/recovery-point-objective)
+	- [RTO](/til/recovery-time-objective)
 
 
 # Security
 - protecting data
-- [[202404051739 Governance Overview|azure governance]] i.e. shared responsibility model depending on what you're using
+- [azure governance](/til/governance-overview) i.e. shared responsibility model depending on what you're using
 ## how?
 - increase security in layers/ so that attacker has to do more work
 	- data - exposing encryption key or using weak encryption can cause issues

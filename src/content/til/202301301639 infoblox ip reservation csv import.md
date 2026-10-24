@@ -1,16 +1,14 @@
 ---
-title: Infoblox Ip Reservation Csv Import
-slug: infoblox-ip-reservation-csv-import
-created: '2023-01-30T16:39:00+03:00'
-updated: '2023-01-30T16:39:00+03:00'
+title: "Infoblox Ip Reservation Csv Import"
+slug: "infoblox-ip-reservation-csv-import"
+created: 2023-01-30T16:39:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["infoblox", "ipam"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754738313959145'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modknyzyi52v'
 ---
-
-
 These fields required:
 
 ``` text

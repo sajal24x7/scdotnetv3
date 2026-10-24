@@ -1,17 +1,13 @@
 ---
-title: PowerShell AD Group Management
-slug: powershell-ad-group-management
-created: '2022-06-10T10:46:00+03:00'
-updated: '2022-06-10T10:46:00+03:00'
+title: "PowerShell AD Group Management"
+slug: "powershell-ad-group-management"
+created: 2022-06-10T10:46:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
-  - ad
+tags: ["powershell", "ad"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjthn7wo26'
 ---
-
-
 # Add custom property
 ```powershell
 $Group = Get-ADGroup <group-name> -Properties * -Server <domain>

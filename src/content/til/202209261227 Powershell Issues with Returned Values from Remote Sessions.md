@@ -1,15 +1,13 @@
 ---
-title: Powershell Issues With Returned Values From Remote Sessions
-slug: powershell-issues-with-returned-values-from-remote-sessions
-created: '2022-09-26T12:27:00+03:00'
-updated: '2022-09-26T12:27:00+03:00'
+title: "Powershell Issues With Returned Values From Remote Sessions"
+slug: "powershell-issues-with-returned-values-from-remote-sessions"
+created: 2022-09-26T12:27:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
+tags: ["powershell"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk6cgzsx26'
 ---
-
 ## Issue Description
 
 In case of using Get-Child/Get-ChildItem to return registry values, the returned output is formatted according to the local system even if you ran the command remotely. [^1]
@@ -25,7 +23,7 @@ From the bottom of $PSHOME\Registry.format.ps1xml for type Microsoft.Win32.Regis
 
   
 
-```powershell
+``` PowerShell
 
 <ScriptBlock>
 

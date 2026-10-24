@@ -1,17 +1,15 @@
 ---
-title: Update Firewall on VMware
-slug: update-firewall-on-vmware
-created: 2025-02-13T11:42:15.000Z
-updated: 2025-02-13T11:42:15.000Z
+title: "Update Firewall on VMware"
+slug: "update-firewall-on-vmware"
+created: 2025-02-13T14:11:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - '#vmware'
-  - '#powershell'
+tags: ["vmware", "powershell"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocfjrdq2m'
   - 'https://mastodon.social/@sajal24x7/116756403769125761'
 ---
-ipaddress is a string so can not have multiple items in one go. So need to loop for allowed IP addresses as a [PowerShell Arrays](#), if many.
+ipaddress is a string so can not have multiple items in one go. So need to loop for allowed IP addresses as a [PowerShell Arrays](/til/powershell-arrays), if many.
 
 In case Ip already exists in rule, it gives error: `InnerText: Ip address already exist.EsxCLI.CLIFault.summary`
 

@@ -1,18 +1,14 @@
 ---
-title: Set Alias for Cluster Resource Record
-slug: set-alias-for-cluster-resource-record
-created: '2024-04-09T14:51:00+03:00'
-updated: '2024-04-09T14:51:00+03:00'
+title: "Set Alias for Cluster Resource Record"
+slug: "set-alias-for-cluster-resource-record"
+created: 2024-04-09T14:51:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - cluster
-  - powershell
+tags: ["windows", "cluster", "powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754913745114877'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn5sgr7w2w'
 ---
-
 ```powershell
 # This resource needs to be Network Name
 Get-ClusterResource "MyClusterName" | Get-ClusterParameter Aliases

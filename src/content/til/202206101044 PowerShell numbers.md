@@ -1,16 +1,13 @@
 ---
-title: PowerShell Numbers
-slug: powershell-numbers
-created: '2022-06-10T10:44:00+03:00'
-updated: '2022-06-10T10:44:00+03:00'
+title: "PowerShell Numbers"
+slug: "powershell-numbers"
+created: 2022-06-10T10:44:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
+tags: ["powershell"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjt7mghz2c'
 ---
-
-
 # Int32
 **Int** is the default numeric data type in Windows PowerShell. It is a 32-bit signed integer. The .NET Framework class is System.Int32. Because it is the default numeric data type, I can use [int32] or [int].
 To get max and min values:

@@ -1,19 +1,15 @@
 ---
-title: VAMI Interface on VMWare
-slug: vami-interface-on-vmware
-created: '2022-07-08T09:12:00+03:00'
-updated: '2022-07-08T09:12:00+03:00'
+title: "VAMI Interface on VMWare"
+slug: "vami-interface-on-vmware"
+created: 2022-07-08T09:12:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
-  - vami
+tags: ["vmware", "vami"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjup4q7p2l'
 ---
-
-
 # How to access
-postfix _:5480_ to the IP address or URL of your VCSA
+postfix `:5480` to the IP address or URL of your VCSA
 
 ---
 references:

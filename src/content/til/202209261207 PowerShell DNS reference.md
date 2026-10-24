@@ -1,18 +1,14 @@
 ---
-title: PowerShell DNS Reference
-slug: powershell-dns-reference
-created: '2022-09-26T12:07:00+03:00'
-updated: '2022-09-26T12:07:00+03:00'
+title: "PowerShell DNS Reference"
+slug: "powershell-dns-reference"
+created: 2022-09-26T12:07:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
-  - dns
+tags: ["powershell", "dns"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modk6agjot23'
 ---
-
-
-# Powershell General Commands  
+# PowerShell General Commands  
 
 ## Find DNS record
 ```powershell
@@ -22,9 +18,20 @@ Get-DnsServerResourceRecord -ZoneName "kehi.okobank.net" | Where-Object {$_.Host
 
 ```
 
+## Find DNS zones
+```
+$DNSServer = ''
+Get-DnsServerZone -ComputerName $DNSServer | select ZoneName, MasterServers | Export-Csv -Path C:\SupportFilesWindows\Logs\he5data.csv -NoClobber -NoTypeInformation -Encoding UTF8
+
+
+### Find forwarder
+
+```
+
 ## Create DNS record
 ```powershell
-
+$DNSServer = '5ociwddnsap02'
+Get-DnsServerZone -ComputerName $DNSServer
 ```
 
 

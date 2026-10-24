@@ -2,7 +2,7 @@
 title: "Organizational Unit"
 slug: "organizational-unit"
 created: 2024-10-05T15:16:00+03:00
-updated: 2026-09-20T14:21:02+03:00
+updated: 2026-09-20T14:42:22+03:00
 category: til
 tags: ["ad"]
 ---

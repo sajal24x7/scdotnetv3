@@ -1,16 +1,14 @@
 ---
-title: Download Host Metrics Report From Ansible Automation Platform
-slug: download-host-metrics-report-from-ansible-automation-platform
-created: '2024-04-23T11:54:00+03:00'
-updated: '2024-04-23T11:54:00+03:00'
+title: "Download Host Metrics Report From Ansible Automation Platform"
+slug: "download-host-metrics-report-from-ansible-automation-platform"
+created: 2024-04-23T11:54:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ansible
+tags: ["ansible"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754931658164352'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnfwmiya2v'
 ---
-
 ```bash
 # To get output in csv
 awx-manage host_metric --csv

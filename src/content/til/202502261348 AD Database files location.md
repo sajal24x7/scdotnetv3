@@ -1,12 +1,10 @@
 ---
-title: AD Database Files Location
-slug: ad-database-files-location
-created: 2025-02-26T10:41:26.000Z
-updated: 2025-02-26T10:41:26.000Z
+title: "AD Database Files Location"
+slug: "ad-database-files-location"
+created: 2025-02-26T13:48:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - '#ad'
-  - '#windows'
+tags: ["ad", "windows"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modocq756w23'
   - 'https://mastodon.social/@sajal24x7/116756404474333738'

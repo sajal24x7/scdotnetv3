@@ -1,12 +1,10 @@
 ---
-title: Get List of Open Shares on Windows Server
-slug: get-list-of-open-shares-on-windows-server
-created: 2025-05-23T09:38:46.000Z
-updated: 2025-05-23T09:38:46.000Z
+title: "Get List of Open Shares on Windows Server"
+slug: "get-list-of-open-shares-on-windows-server"
+created: 2025-05-23T12:57:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - powershell
+tags: ["windows", "powershell"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoe3zl4d2m'
   - 'https://mastodon.social/@sajal24x7/116756407081375635'

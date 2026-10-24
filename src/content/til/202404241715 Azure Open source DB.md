@@ -1,23 +1,20 @@
 ---
-title: Azure Open Source DB
-slug: azure-open-source-db
-created: '2024-04-24T17:15:00+03:00'
-updated: '2024-04-24T17:15:00+03:00'
+title: "Azure Open Source DB"
+slug: "azure-open-source-db"
+created: 2024-04-24T17:15:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - database
+tags: ["azure", "database"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754932450875346'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modngcehap2m'
 ---
-
 - Supports many different options
 - fully managed
 - Based on community editions
 # DB for
 ## postgres (great for oracle)
-- all [[#Modes]]
+- all [#Modes](/modes)
 ## mysql
 - mode : single and flexible
 ## mariadb

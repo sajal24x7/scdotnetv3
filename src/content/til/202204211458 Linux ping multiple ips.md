@@ -1,17 +1,13 @@
 ---
-title: Linux Ping Multiple Ips
-slug: linux-ping-multiple-ips
-created: '2022-04-21T14:58:00+03:00'
-updated: '2022-04-21T14:58:00+03:00'
+title: "Linux Ping Multiple Ips"
+slug: "linux-ping-multiple-ips"
+created: 2022-04-21T14:58:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - linux
-  - bash
+tags: ["linux", "bash"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modhn72gl22w'
 ---
-
-
 ```bash
 for i in `cat ips.txt`; do if [ "`ping -c 1 $i`" ]; then echo $i,pinging; else echo $i,failed; fi; done >> output.txt
 ```

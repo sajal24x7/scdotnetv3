@@ -1,18 +1,14 @@
 ---
-title: Azure AD Sync SSO Disable RC4
-slug: azure-ad-sync-sso-disable-rc4
-created: '2023-06-27T15:12:00+03:00'
-updated: '2023-06-27T15:12:00+03:00'
+title: "Azure AD Sync SSO Disable RC4"
+slug: "azure-ad-sync-sso-disable-rc4"
+created: 2023-06-27T15:12:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - entraconnect
+tags: ["azure", "entraconnect"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754746594885668'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkrrkqgz2m'
 ---
-
-
 ## Enforcing AES256 for the Azure AD SSO Account in Active Directory
 1. Go to computer OU.
 2. Right click on the Azure sync account AZUREADSSOACC. Go to attribute editor.

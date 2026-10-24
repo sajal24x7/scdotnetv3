@@ -1,17 +1,14 @@
 ---
-title: PowerShell Create Custom Object
-slug: powershell-create-custom-object
-created: '2022-09-29T10:29:00+03:00'
-updated: '2022-09-29T10:29:00+03:00'
+title: "PowerShell Create Custom Object"
+slug: "powershell-create-custom-object"
+created: 2022-09-29T10:29:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
+tags: ["powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754717855504393'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkeptkhd23'
 ---
-
-
 ```powershell
 
 #Example create hash, create ps custom object and export

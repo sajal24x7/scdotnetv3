@@ -1,17 +1,14 @@
 ---
-title: Powershell Install Modules Offline
-slug: powershell-install-modules-offline
-created: '2022-10-11T10:09:00+03:00'
-updated: '2022-10-11T10:09:00+03:00'
+title: "Powershell Install Modules Offline"
+slug: "powershell-install-modules-offline"
+created: 2022-10-11T10:09:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
+tags: ["powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754719599707964'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkfir6ub2m'
 ---
-
-
 Download module and put it in below path on a VM that does not have internet access.
 ```powershell
 Save-Module -Name <modulename> -Path <localpath>

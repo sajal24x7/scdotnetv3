@@ -1,17 +1,13 @@
 ---
-title: Windows RDP Issue
-slug: windows-rdp-issue
-created: '2022-06-03T09:47:00+03:00'
-updated: '2022-06-03T09:47:00+03:00'
+title: "Windows RDP Issue"
+slug: "windows-rdp-issue"
+created: 2022-06-03T09:47:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - errors
+tags: ["windows", "errors"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modjrjnhvt2m'
 ---
-
-
 Error: No Remote Desktop License Servers available
 
 ```text

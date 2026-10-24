@@ -1,17 +1,15 @@
 ---
-title: Entra Domain Services
-slug: entra-domain-services
-created: '2024-01-08T20:52:00+03:00'
-updated: '2024-01-08T20:52:00+03:00'
+title: "Entra Domain Services"
+slug: "entra-domain-services"
+created: 2024-01-08T20:52:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["azure", "entra"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754759105436953'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkxhhcbk2z'
   - 'https://www.threads.com/@sajal24x7/post/DZnG9B3FixR'
 ---
-
-
 Previously known as Azure AD DS.
 
 To provide features that might be required for legacy on-prem applications, etc.

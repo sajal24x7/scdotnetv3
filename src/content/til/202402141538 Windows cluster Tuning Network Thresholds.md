@@ -1,17 +1,14 @@
 ---
-title: Windows Cluster Tuning Network Thresholds
-slug: windows-cluster-tuning-network-thresholds
-created: '2024-02-14T15:38:00+03:00'
-updated: '2024-02-14T15:38:00+03:00'
+title: "Windows Cluster Tuning Network Thresholds"
+slug: "windows-cluster-tuning-network-thresholds"
+created: 2024-02-14T15:38:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - windows
-  - cluster
+tags: ["windows", "cluster"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754761917468056'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkyqk5hs2z'
 ---
-
 ```powershell
 > get-cluster | fl *subnet*
 CrossSubnetDelay          : 1000

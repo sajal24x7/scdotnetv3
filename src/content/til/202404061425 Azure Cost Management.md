@@ -1,18 +1,15 @@
 ---
-title: Azure Cost Management
-slug: azure-cost-management
-created: '2024-04-06T14:25:00+03:00'
-updated: '2024-04-06T14:25:00+03:00'
+title: "Azure Cost Management"
+slug: "azure-cost-management"
+created: 2024-04-06T14:25:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - governance
+tags: ["azure", "governance"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754765750323419'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modl2iqpc52m'
 ---
-
-Part of [[202404051739 Governance Overview|azure governance]]
+Part of [azure governance](/til/governance-overview)
 
 1. Provides insight and control of Azure (and AWS) spend
 	1. cost analysis
@@ -20,7 +17,7 @@ Part of [[202404051739 Governance Overview|azure governance]]
 	3. budgets
 2. Estimate costs with Azure Pricing Calculator
 3. Always optimize costs
-4. Costs can be based on tag, [[202401101441 Azure subscriptions|subscription]], [[202404051818 Resource Groups|resource groups]]
+4. Costs can be based on tag, [subscription](/til/azure-subscriptions), [resource groups](/til/resource-groups)
 # License
 Cost Allocation with Enterprise Agreement or Customer Agreement
 # How to split cost for shared services

@@ -1,21 +1,19 @@
 ---
-title: Type of Machine Learning
-slug: type-of-machine-learning
-created: '2024-03-25T23:00:00+03:00'
-updated: '2024-03-25T23:00:00+03:00'
+title: "Type of Machine Learning"
+slug: "type-of-machine-learning"
+created: 2024-03-25T23:00:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ai
+tags: ["ai"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754762815235998'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkz5u6du2v'
 ---
-
 # Supervised
 Training data includes both features and known labels. Follows the process of train, validate and evaluate.
 In training phase dataset is split randomly. Choose an algorithm to create a model  using half the data. Then it is validated on the remaining half, i.e. how accurate it is. Compare the known actual labels against the predicted values.
 Usually data engineer will go through multiple iterations of this. And chose the one which gives the best results (evaluation metric).
-## [[202403252313 Regression models|regression]]
+## [regression](/regression-models)
 The label is a numerical value. Like number of ice cream sold on a day.
 ## Classification
 Label represents a categorisation or class.

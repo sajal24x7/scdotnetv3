@@ -1,12 +1,10 @@
 ---
-title: ESX Update Fails With Error 15
-slug: esx-update-fails-with-error-15
-created: 2025-08-12T09:59:30.000Z
-updated: 2025-08-12T09:59:30.000Z
+title: "ESX Update Fails With Error 15"
+slug: "esx-update-fails-with-error-15"
+created: 2025-08-12T12:59:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - vmware
-  - esxi
+tags: ["vmware", "esxi"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoeouj2w23'
   - 'https://mastodon.social/@sajal24x7/116756408849085206'
@@ -28,7 +26,14 @@ It will have error like:
 2025-08-12T09:44:57Z Er(11) esxupdate[2109082]: Error getting data for filesystem on '/vmfs/volumes/67c5a845-d967bb36-da89-0025b502014f': Cannot open volume: /vmfs/volumes/67c5a845-d967bb36-da89-0025b502014f, skipping.
 ```
 
-Fix is to remap the LUN. The issue is that the LUN may be in use.
+Fix is to remap the LUN. The issue is that the LUN may be in use. 
+
+# Fix
+1. Put the host in MM.
+2. Unmap the LUN from the host. 
+	1. For datastore unmount it.
+	2. If unable to remove it from host, ask storage team to remove it from their end
+3. After unmap it should work.
 
 ---
 # references:

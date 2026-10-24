@@ -1,17 +1,14 @@
 ---
-title: Create Activity Log Alerts in Azure
-slug: create-activity-log-alerts-in-azure
-created: '2024-08-11T12:55:00+03:00'
-updated: '2024-08-11T12:55:00+03:00'
+title: "Create Activity Log Alerts in Azure"
+slug: "create-activity-log-alerts-in-azure"
+created: 2024-08-11T12:55:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - monitoring
+tags: ["azure", "monitoring"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modo4lraoh2u'
   - 'https://mastodon.social/@sajal24x7/116756208398137951'
 ---
-
 Alerting can be enabled for:
 - specific actions (example: vm deleted, adding new rules to users)
 - service health events 

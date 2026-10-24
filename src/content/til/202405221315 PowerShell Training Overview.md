@@ -1,16 +1,14 @@
 ---
-title: PowerShell Training Overview
-slug: powershell-training-overview
-created: '2024-05-22T13:15:00+03:00'
-updated: '2024-05-22T13:15:00+03:00'
+title: "PowerShell Training Overview"
+slug: "powershell-training-overview"
+created: 2024-05-22T13:15:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - powershell
+tags: ["powershell"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754941817682165'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modnkkbm3x2m'
 ---
-
 1. Introduction
 	1. PowerShell - Shell + Scripting and how to run it
 	2. extensible

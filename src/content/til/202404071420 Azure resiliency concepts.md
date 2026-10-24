@@ -1,17 +1,14 @@
 ---
-title: Azure Resiliency Concepts
-slug: azure-resiliency-concepts
-created: '2024-04-07T14:20:00+03:00'
-updated: '2024-04-07T14:20:00+03:00'
+title: "Azure Resiliency Concepts"
+slug: "azure-resiliency-concepts"
+created: 2024-04-07T14:20:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - resiliency
+tags: ["azure", "resiliency"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754766316950815'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modl2qmtkr2w'
 ---
-
 # 1. Fault domains
 - common set of hardware that has a SPoF like a rack
 # 2. Update Domains
@@ -21,7 +18,7 @@ Protection against rack level failures.
 1. Logical grouping of nodes so that they are deployed over different racks.
 2. So that if 1 goes down, other is available
 3. Don't mix functionalities. Example 1 for DCs. 1 for sql for example.
-# 3. [[202404081830 Azure Availability Zones|Availability Zones]] (99.99%)
+# 3. [Availability Zones](/til/azure-availability-zones) (99.99%)
 Racks live in a DC set (separate power, cooling, network)
 This provides protection again DC level failures.
 Minimum of 3 zones in every region. Even if there are more, in your subscription you will see 3.

@@ -1,19 +1,16 @@
 ---
-title: Azure Storage Services
-slug: azure-storage-services
-created: '2024-04-12T11:17:00+03:00'
-updated: '2024-04-12T11:17:00+03:00'
+title: "Azure Storage Services"
+slug: "azure-storage-services"
+created: 2024-04-12T11:17:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - azure
-  - storage
+tags: ["azure", "storage"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754916308761195'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modn6xfvht2z'
 ---
-
-Extension of [[202404091847 Azure Storage Overview]]
-Related to [[202404091859 Azure Storage Account]]
+Extension of [Azure Storage Overview](/til/azure-storage-overview)
+Related to [Azure Storage Account](/til/azure-storage-account)
 
 1. Blob
 2. FileShares
@@ -22,7 +19,7 @@ Related to [[202404091859 Azure Storage Account]]
 5. Disks
 # Blob
 We have:
-- Blob Indexes for [[202404051739 Governance Overview|azure governance]]
+- Blob Indexes for [azure governance](/til/governance-overview)
 - Blob inventory 
 	- Go over what all you have
 

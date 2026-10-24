@@ -1,12 +1,10 @@
 ---
-title: How to Add Custom Attributes to AD
-slug: how-to-add-custom-attributes-to-ad
-created: 2025-03-25T11:40:33.000Z
-updated: 2025-03-25T11:40:33.000Z
+title: "How to Add Custom Attributes to AD"
+slug: "how-to-add-custom-attributes-to-ad"
+created: 2025-03-25T14:43:00+02:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ad
-  - windows
+tags: ["ad", "windows"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modod6ffcr2v'
   - 'https://mastodon.social/@sajal24x7/116756405560234387'

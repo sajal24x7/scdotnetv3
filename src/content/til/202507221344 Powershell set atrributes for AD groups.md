@@ -1,13 +1,10 @@
 ---
-title: Powershell Set Atrributes for AD Groups
-slug: powershell-set-atrributes-for-ad-groups
-created: 2025-07-22T10:38:02.000Z
-updated: 2025-07-22T10:38:02.000Z
+title: "Powershell Set Atrributes for AD Groups"
+slug: "powershell-set-atrributes-for-ad-groups"
+created: 2025-07-22T13:44:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags:
-  - ad
-  - groups
-  - powershell
+tags: ["ad", "groups", "powershell"]
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modoeeyvex2u'
   - 'https://mastodon.social/@sajal24x7/116756408080475234'

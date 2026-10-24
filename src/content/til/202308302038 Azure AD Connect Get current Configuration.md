@@ -1,17 +1,15 @@
 ---
-title: Azure AD Connect Get Current Configuration
-slug: azure-ad-connect-get-current-configuration
-created: '2023-08-30T20:38:00+03:00'
-updated: '2023-08-30T20:38:00+03:00'
+title: "Azure AD Connect Get Current Configuration"
+slug: "azure-ad-connect-get-current-configuration"
+created: 2023-08-30T20:38:00+03:00
+updated: 2026-08-25T14:30:56+03:00
 category: til
-tags: []
+tags: ["azure", "ad"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/116754754074809458'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3modkv674lk2s'
   - 'https://www.threads.com/@sajal24x7/post/DZnGzqEFvj1'
 ---
-
-
 ## Option 1
 Export configuration settings json.
 
@@ -22,7 +20,7 @@ Export configuration settings json.
 4. Provide credentials.
 5. Take screenshots
 
-![[Pasted image 20230830204132.png]]
+![Pasted Image 20230830204132.png](/pasted-image-20230830204132png)
 
 ---
 # references:
