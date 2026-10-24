@@ -1090,6 +1090,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/asunder-2026-10-23",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-23"
+		},
+		"puissant": {
+			"word": "puissant",
+			"pos": "other",
+			"gloss": " adjective Puissant is a synonym of powerful used to describe something with puissance —that is, strength or power.",
+			"pronunciation": "PWISS-unt",
+			"example": "The creatures in her fantasy novel are wielders of puissant magic, able to strike down enemies by harnessing the power of weather phenomena like lightning and tornadoes.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/puissant-2026-10-24",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-24"
 		}
 	}
 }
