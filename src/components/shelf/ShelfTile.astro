@@ -19,6 +19,8 @@ interface ShelfTileProps {
     href?: string;
     /** Decorative: the title sits right under it, so the image has empty alt text. */
     cover?: ImageMetadata | null;
+    /** Short label on the cover, e.g. "S3" for a TV season. */
+    badge?: string | null;
     people?: string[];
     /** Filter type the people buttons trigger: author, director or creator. */
     personFilter: string;
@@ -41,6 +43,7 @@ const {
     title,
     href,
     cover,
+    badge,
     people = [],
     personFilter,
     series,
@@ -73,6 +76,7 @@ const dateLabel = date
       ) : (
         <span class="shelf-tile__cover-placeholder">{title}</span>
       )}
+      {badge && <span class="shelf-tile__badge">{badge}</span>}
     </a>
   ) : (
     <div class="shelf-tile__cover" aria-hidden="true">
@@ -81,6 +85,7 @@ const dateLabel = date
       ) : (
         <span class="shelf-tile__cover-placeholder">{title}</span>
       )}
+      {badge && <span class="shelf-tile__badge">{badge}</span>}
     </div>
   )}
   {(repeat || notes) && (
@@ -108,6 +113,7 @@ const dateLabel = date
     <div class="shelf-tile__title-row">
       <h3 class="shelf-tile__title">
         {href ? <a href={href}>{title}</a> : title}
+        {badge && <span class="shelf-tile__title-badge"> · {badge}</span>}
       </h3>
       {ratingDisplay && rating && (
         <button

@@ -1,0 +1,331 @@
+---
+import '../../styles/tv-detail.css';
+import Layout from '../../layouts/Layout.astro';
+import ShelfTabNav from './ShelfTabNav.astro';
+import { Image } from 'astro:assets';
+import { render, type CollectionEntry } from 'astro:content';
+import { getAllPosts } from '../../utils/content';
+import { getTVCoverImage } from '../../utils/tvCovers';
+import {
+    bookRatingDisplay,
+    heartIconPaths,
+    thumbIconPaths,
+    type BookRating,
+    type RatingIconSpec
+} from '../../utils/bookRatings';
+import { SHELF_STATUS_LABELS, type ShelfStatus } from '../../utils/shelfStatus';
+import { repeatLabel, tvSeasonPills, type TvShow, type TvWatch } from '../../utils/shelfWall';
+
+// The page for one season watch, used by /tvshelf/[show]/[season]/ and, for a
+// limited series, /tvshelf/[show]/. The season pills link every logged season
+// of the show, with this one highlighted, so there is no separate show page.
+type TvEntry = CollectionEntry<'tvshelf'>;
+
+interface Props {
+    show: TvShow<TvEntry>;
+    watch: TvWatch<TvEntry>;
+}
+
+const { show, watch } = Astro.props;
+const { showTitle } = show;
+const season = watch.post;
+const seasonNum = watch.season;
+
+const allPosts = await getAllPosts();
+const { Content } = await render(season);
+
+const parseDate = (value?: Date | string | null): Date | null => {
+    if (!value) return null;
+    const d = value instanceof Date ? value : new Date(value);
+    return Number.isNaN(d.getTime()) ? null : d;
+};
+
+const formatYMD = (value?: Date | string | null): string | null => {
+    const d = parseDate(value);
+    return d ? d.toISOString().slice(0, 10) : null;
+};
+
+const creators: string[] = Array.isArray(season.data.creator) ? season.data.creator : [];
+const formatCreators = (arr: string[]) => {
+    if (arr.length === 0) return null;
+    if (arr.length === 1) return arr[0];
+    if (arr.length === 2) return `${arr[0]} and ${arr[1]}`;
+    return `${arr.slice(0, -1).join(', ')}, and ${arr[arr.length - 1]}`;
+};
+
+const genre = season.data.genre as string | undefined;
+const year = season.data.year as number | undefined;
+const platform = season.data.platform as string | undefined;
+const started = formatYMD(season.data.started);
+const finished = formatYMD(season.data.finished);
+const tvStatus = season.data.status as ShelfStatus | undefined;
+const tvRating = season.data.rating;
+
+const statusLabelMap = SHELF_STATUS_LABELS.tvshelf;
+
+const statusChipClassMap: Record<ShelfStatus, string> = {
+    todo: 'chip--status-todo',
+    started: 'chip--status-started',
+    paused: 'chip--status-paused',
+    finished: 'chip--status-finished',
+};
+
+const ratingDisplay = tvRating ? bookRatingDisplay[tvRating as BookRating] : null;
+const ratingIconSpecs: readonly RatingIconSpec[] = ratingDisplay?.iconSpecs ?? [];
+
+const cover = season.data.cover ?? show.watches.find((w) => w.post.data.cover)?.post.data.cover;
+const coverImage = cover ? getTVCoverImage(cover) : null;
+
+// One pill per season number, linking to its latest watch. The pill for this
+// season stays on this page, so a rewatch page doesn't jump to the other watch.
+const pills = tvSeasonPills(show).map((pill) => {
+    const current = pill.season === seasonNum;
+    const target = current ? watch : pill.latest;
+    const status = target.post.data.status as ShelfStatus | undefined;
+    const rating = target.post.data.rating as BookRating | undefined;
+    const tip = [
+        `Season ${pill.season}`,
+        pill.watches.length > 1 ? `watched ${pill.watches.length} times` : null,
+        status && status !== 'finished' ? statusLabelMap[status] : rating ? bookRatingDisplay[rating]?.label : null,
+    ].filter(Boolean).join(', ');
+    return {
+        season: pill.season,
+        href: target.path,
+        current,
+        // Reuse the page's chip colours: in-progress status first, then rating.
+        tone: status === 'started' || status === 'paused' ? `chip--status-${status}` : rating ? `tv-chip--rating-${rating}` : 'tv-season-pill--plain',
+        rewatched: pill.watches.length > 1,
+        notes: pill.watches.some((w) => w.notes),
+        tip,
+    };
+});
+
+// Every watch of this season (or of this limited series), oldest first.
+const history = show.watches.filter((w) => w.season === seasonNum);
+const historyDate = (w: TvWatch<TvEntry>) =>
+    w.date.toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+
+const seasonText = seasonNum !== null ? `Season ${seasonNum}` : null;
+const pageTitle = seasonText ? `${showTitle} — ${seasonText} — TV Shelf` : `${showTitle} — TV Shelf`;
+const pageDescription = seasonText ? `${seasonText} of ${showTitle}` : showTitle;
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  currentPage="/tvshelf/"
+  pageWrapper={{
+    maxWidth: '4xl',
+    padding: 'none',
+    centered: true,
+    grid: { gap: 'loose', padding: 'narrow' }
+  }}
+  allPosts={allPosts}
+  enableLinkHoverEffect
+>
+  <div class="season-page">
+    <ShelfTabNav currentTab="tv" />
+
+    <header class="season-header">
+      <div class="season-header__cover-area">
+        {coverImage ? (
+          <Image
+            src={coverImage}
+            alt={seasonText ? `Poster for ${showTitle} ${seasonText}` : `Poster for ${showTitle}`}
+            class="season-header__cover"
+            loading="eager"
+          />
+        ) : (
+          <div class="season-header__cover-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+              <polyline points="17 2 12 7 7 2"></polyline>
+            </svg>
+          </div>
+        )}
+      </div>
+
+      <div class="season-header__meta">
+        <h1 class="season-header__title">{showTitle}</h1>
+
+        {formatCreators(creators) && (
+          <p class="season-header__creator">Created by {formatCreators(creators)}</p>
+        )}
+
+        <div class="season-header__chips">
+          {seasonNum !== null && (
+            <span class="tv-chip tv-chip--season">
+              <span class="tv-chip-label">Season</span>
+              {seasonNum}
+            </span>
+          )}
+
+          {watch.watchNumber > 1 && (
+            <span class="tv-chip tv-chip--season">{repeatLabel(watch.watchNumber, 'watch')}</span>
+          )}
+
+          {genre && (
+            <span class="tv-chip tv-chip--genre">
+              <span class="tv-chip-label">Genre</span>
+              {genre.toUpperCase()}
+            </span>
+          )}
+
+          {year && (
+            <span class="tv-chip tv-chip--year">
+              <span class="tv-chip-label">Year</span>
+              {year}
+            </span>
+          )}
+
+          {platform && (
+            <span class="tv-chip tv-chip--platform">
+              <span class="tv-chip-label">Platform</span>
+              {platform}
+            </span>
+          )}
+
+          {tvStatus && tvStatus !== 'finished' && (
+            <span class={`tv-chip ${statusChipClassMap[tvStatus]}`}>
+              <span class="tv-chip-label">Status</span>
+              {statusLabelMap[tvStatus]}
+            </span>
+          )}
+
+          {ratingDisplay && (
+            <span class={`tv-chip tv-chip--rating tv-chip--rating-${tvRating}`}>
+              <span class="tv-chip-label">Rated</span>
+              {ratingIconSpecs.length > 0 && (
+                <span class="tv-chip__icons" aria-hidden="true">
+                  {ratingIconSpecs.map((spec) => (
+                    <svg width={spec.size} height={spec.size} viewBox="0 0 24 24" fill="currentColor">
+                      {(spec.type === 'heart' ? heartIconPaths : thumbIconPaths[spec.direction]).map((d) => (
+                        <path d={d}></path>
+                      ))}
+                    </svg>
+                  ))}
+                </span>
+              )}
+            </span>
+          )}
+
+          {(started || finished) && (
+            <span class="tv-chip tv-chip--dates">
+              {started && finished ? `${started} – ${finished}` : started ?? finished}
+            </span>
+          )}
+        </div>
+      </div>
+    </header>
+
+    {pills.length > 1 && (
+      <nav class="tv-season-pills" aria-label={`Seasons of ${showTitle}`}>
+        {pills.map((pill) => (
+          <a
+            href={pill.href}
+            class={`tv-season-pill ${pill.tone}${pill.current ? ' tv-season-pill--current' : ''}`}
+            title={pill.tip}
+            aria-current={pill.current ? 'page' : undefined}
+          >
+            S{pill.season}
+            {pill.rewatched && (
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 11V9a3 3 0 0 1 3-3h12"></path><path d="m16 3 3 3-3 3"></path><path d="M20 13v2a3 3 0 0 1-3 3H5"></path><path d="m8 21-3-3 3-3"></path>
+              </svg>
+            )}
+            {pill.notes && (
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                <path d="M5 6h14"></path><path d="M5 10.5h14"></path><path d="M5 15h10"></path><path d="M5 19.5h6"></path>
+              </svg>
+            )}
+            <span class="sr-only">{pill.tip}</span>
+          </a>
+        ))}
+      </nav>
+    )}
+
+    {history.length > 1 && (
+      <p class="tv-watch-history">
+        {history.map((w, i) => (
+          <>
+            {i > 0 && <span aria-hidden="true"> · </span>}
+            {w.post.id === watch.post.id ? (
+              <strong aria-current="page">{i === 0 ? 'Watched' : 'Rewatched'} {historyDate(w)}</strong>
+            ) : (
+              <a href={w.path}>{i === 0 ? 'Watched' : 'Rewatched'} {historyDate(w)}</a>
+            )}
+          </>
+        ))}
+      </p>
+    )}
+
+    <div class="season-content">
+      <Content />
+    </div>
+
+    <div class="season-back">
+      <a href="/tvshelf/" class="season-back__link">← Back to TV Shelf</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .season-back {
+    margin-top: 0.5rem;
+  }
+
+  .tv-chip--season { background: var(--pill-bg); color: var(--pill-fg); text-transform: none; font-size: var(--text-xs); letter-spacing: 0.02em; font-weight: 700; }
+
+  .tv-season-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tv-season-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: var(--text-small);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-decoration: none;
+    opacity: 0.75;
+  }
+
+  .tv-season-pill--plain {
+    background: var(--pill-bg);
+    color: var(--pill-fg);
+  }
+
+  .tv-season-pill:hover,
+  .tv-season-pill:focus-visible {
+    border-color: currentColor;
+    opacity: 1;
+  }
+
+  .tv-season-pill--current {
+    opacity: 1;
+    border-color: currentColor;
+    box-shadow: inset 0 0 0 1px currentColor;
+  }
+
+  .tv-watch-history {
+    margin: 0;
+    font-size: var(--text-small);
+    color: var(--gray-text-muted);
+  }
+
+  /* Sit the history line just under the pills, not a full page gap away. */
+  .tv-season-pills + .tv-watch-history {
+    margin-top: -1.25rem;
+  }
+
+  .tv-watch-history strong {
+    color: rgb(var(--color-text-primary));
+    font-weight: 600;
+  }
+</style>

@@ -1,9 +1,9 @@
 # TV Shelf redesign: one card per show, with rewatches
 
-Status: partly implemented. The cover wall on every shelf page, one tile per
-TV show, rewatch/reread and notes icons, and season pills on the show page are
-live; see [docs/pages/shelf.md](../docs/pages/shelf.md#cover-wall).
-Still open from this plan: moving the queue page to the shared show slug, the duplicate-slug build guard, and the season page watch history.
+Status: superseded. The shelf now shows one cover per season (with an "S3"
+badge) instead of one per show, and the show page was replaced by season pills
+on every season page; see [docs/pages/shelf.md](../docs/pages/shelf.md#tv-seasons).
+The rewatch model below still applies. Still open: the duplicate-slug build guard.
 
 ## Goal
 

@@ -8,64 +8,45 @@ import ShelfQueueToggle from '../../components/shelf/ShelfQueueToggle.astro';
 import ShelfFilterResults from '../../components/shelf/ShelfFilterResults.astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
-import { groupTvShows, mostCommonRating, repeatLabel, seasonRangeLabel } from '../../utils/shelfWall';
+import { groupTvShows, repeatLabel } from '../../utils/shelfWall';
 import { getTVCoverImage } from '../../utils/tvCovers';
 import { bookRatingOrder, type BookRating } from '../../utils/bookRatings';
 import { SHELF_LIST_SORT_PRIORITY, SHELF_STATUS_LABELS, type ShelfStatus } from '../../utils/shelfStatus';
 
 const allPosts = await getAllPosts();
-// Every tvshelf entry goes in so show slugs match /tvshelf/[show]/; todo stubs
-// are dropped from the shows themselves and live on /tvshelf/queue/ only.
+// Todo stubs are left out by groupTvShows; they live on /tvshelf/queue/ only.
 const shows = groupTvShows(allPosts.filter((post) => post.data.category === 'tvshelf'));
 
-const unique = (values: (string | undefined | null)[]) =>
-    Array.from(new Set(values.filter((v): v is string => Boolean(v))));
-
-// One tile per show, filed under the year of its latest watch.
-const tiles = shows.map((show) => {
-    const { latest, watches } = show;
-    const status: ShelfStatus = watches.some((w) => w.post.data.status === 'started')
-        ? 'started'
-        : (latest.post.data.status as ShelfStatus) ?? 'finished';
-    const ratings = watches.map((w) => w.post.data.rating as BookRating | undefined);
-    const maxWatch = Math.max(...watches.map((w) => w.watchNumber));
+// One tile per season watch, filed under the year it was watched. A rewatch is
+// its own tile in the year of the rewatch.
+const tiles = shows.flatMap((show) => show.watches.map((watch) => {
+    const data = watch.post.data;
     return {
         show,
-        year: latest.date.getUTCFullYear(),
-        status,
-        rating: mostCommonRating(ratings, bookRatingOrder),
-        ratings: unique(ratings),
-        genre: latest.post.data.genre ?? watches.find((w) => w.post.data.genre)?.post.data.genre,
-        genres: unique(watches.map((w) => w.post.data.genre)),
-        creators: latest.post.data.creator ?? [],
-        allCreators: unique(watches.flatMap((w) => w.post.data.creator ?? [])),
-        platforms: unique(watches.map((w) => w.post.data.platform)),
-        tags: unique(watches.flatMap((w) => (Array.isArray(w.post.data.tags) ? w.post.data.tags : []))),
-        cover: latest.post.data.cover ?? watches.find((w) => w.post.data.cover)?.post.data.cover,
-        seasons: seasonRangeLabel(watches.map((w) => w.season)),
-        repeat: maxWatch > 1 ? repeatLabel(maxWatch, 'watch') : null,
-        notes: watches.some((w) => w.notes),
+        watch,
+        year: watch.date.getUTCFullYear(),
+        status: (data.status as ShelfStatus) ?? 'finished',
+        rating: (data.rating as BookRating | undefined) ?? null,
+        tags: Array.isArray(data.tags) ? data.tags : [],
+        cover: data.cover ?? show.watches.find((w) => w.post.data.cover)?.post.data.cover,
     };
-});
+}));
 
 // Year desc, then in-progress first, then most recent activity.
 tiles.sort((a, b) => {
     if (a.year !== b.year) return b.year - a.year;
     const byStatus = SHELF_LIST_SORT_PRIORITY[a.status] - SHELF_LIST_SORT_PRIORITY[b.status];
     if (byStatus !== 0) return byStatus;
-    return b.show.latest.date.getTime() - a.show.latest.date.getTime();
+    return b.watch.date.getTime() - a.watch.date.getTime();
 });
 
 const years = Array.from(new Set(tiles.map((t) => t.year)));
 
-const finishedSeasonsIn = (year: number) => shows.reduce((count, show) =>
-    count + show.watches.filter((w) => w.post.data.status === 'finished' && w.date.getUTCFullYear() === year).length, 0);
-
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
-const totalSeasons = shows.reduce((n, s) => n + s.watches.filter((w) => w.post.data.status === 'finished').length, 0);
-const countText = `${plural(shows.length, 'show', 'shows')} · ${plural(totalSeasons, 'season', 'seasons')} watched`;
+const finishedCount = tiles.filter((t) => t.status === 'finished').length;
+const countText = `${plural(shows.length, 'show', 'shows')} · ${plural(finishedCount, 'season', 'seasons')} watched`;
 
-const tvDescription = "TV shows I've watched or am watching, one cover per show, filed under the year I last watched it.";
+const tvDescription = "TV shows I've watched or am watching, one cover per season, filed under the year I watched it.";
 
 const sectionLandingProps = createSectionLandingProps({
     title: 'TV Shelf',
@@ -104,14 +85,14 @@ const sectionLandingProps = createSectionLandingProps({
     <div class="shelf-years">
       {years.map((year) => {
         const yearTiles = tiles.filter((t) => t.year === year);
-        const seasonCount = finishedSeasonsIn(year);
+        const yearShows = new Set(yearTiles.map((t) => t.show.showTitle)).size;
 
         return (
           <section class="shelf-year" id={`tvshelf-${year}`} data-year={year}>
             <header class="shelf-year__head">
               <h2 class="shelf-year__year">{year}</h2>
               <span class="shelf-year__count" data-year-count={year}>
-                {plural(yearTiles.length, 'show', 'shows')} · Watched {plural(seasonCount, 'season', 'seasons')}
+                {plural(yearTiles.length, 'season', 'seasons')} · {plural(yearShows, 'show', 'shows')}
               </span>
             </header>
             <ul class="shelf-wall">
@@ -120,30 +101,30 @@ const sectionLandingProps = createSectionLandingProps({
                   class="shelf-wall__item"
                   data-shelf-item
                   data-tags={tile.tags.join(',')}
-                  data-creator={tile.allCreators.join(',')}
-                  data-genre={tile.genres.join(',')}
-                  data-platform={tile.platforms.join(',')}
+                  data-creator={(tile.watch.post.data.creator ?? []).join(',')}
+                  data-genre={tile.watch.post.data.genre ?? ''}
+                  data-platform={tile.watch.post.data.platform ?? ''}
                   data-status={tile.status}
-                  data-rating={tile.ratings.join(',')}
-                  data-sort-date={tile.show.latest.date.toISOString()}
+                  data-rating={tile.rating ?? ''}
+                  data-sort-date={tile.watch.date.toISOString()}
                   data-sort-status={SHELF_LIST_SORT_PRIORITY[tile.status]}
-                  data-sort-title={tile.show.showTitle.toLowerCase()}
+                  data-sort-title={`${tile.show.showTitle.toLowerCase()} ${String(tile.watch.season ?? 0).padStart(3, '0')}`}
                   data-sort-rating={tile.rating ? bookRatingOrder.indexOf(tile.rating) : 9}
                 >
                   <ShelfTile
                     title={tile.show.showTitle}
-                    href={`/tvshelf/${tile.show.showSlug}/`}
+                    href={tile.watch.path}
                     cover={tile.cover ? getTVCoverImage(tile.cover) : null}
-                    people={tile.creators}
+                    badge={tile.watch.season !== null ? `S${tile.watch.season}` : null}
+                    people={tile.watch.post.data.creator ?? []}
                     personFilter="creator"
-                    subtitle={tile.seasons}
                     status={tile.status}
                     statusLabel={SHELF_STATUS_LABELS.tvshelf[tile.status]}
                     rating={tile.rating}
-                    genre={tile.genre}
-                    repeat={tile.repeat}
-                    notes={tile.notes}
-                    date={tile.show.latest.date}
+                    genre={tile.watch.post.data.genre}
+                    repeat={tile.watch.watchNumber > 1 ? repeatLabel(tile.watch.watchNumber, 'watch') : null}
+                    notes={tile.watch.notes}
+                    date={tile.watch.date}
                   />
                 </li>
               ))}
@@ -161,7 +142,7 @@ const sectionLandingProps = createSectionLandingProps({
   function initTvshelfFilters() {
     initShelfFilters({
       itemSelector: '[data-shelf-item]',
-      countNoun: { singular: 'show', plural: 'shows' },
+      countNoun: { singular: 'season', plural: 'seasons' },
       filterTypes: [
         { type: 'creator' },
         { type: 'genre', badgeClass: () => 'shelf-filter-badge--genre' },

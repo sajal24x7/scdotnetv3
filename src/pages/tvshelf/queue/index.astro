@@ -7,7 +7,7 @@ import { getAllPosts } from '../../../utils/content';
 import { createSectionLandingProps } from '../../../utils/sectionLanding';
 import { SHELF_QUEUE_CONFIG, getQueueCreators } from '../../../utils/shelfQueue';
 import { getTVCoverImage } from '../../../utils/tvCovers';
-import { slugify } from '../../../utils/shelfUtils';
+import { groupTvShows } from '../../../utils/shelfWall';
 
 const config = SHELF_QUEUE_CONFIG.tvshelf;
 
@@ -16,15 +16,18 @@ const queuePosts = allPosts.filter(
     (post) => post.data.category === 'tvshelf' && post.data.status === 'todo'
 );
 
+// A queued show you've already watched links to its latest season page; one
+// you haven't started has no page yet.
+const watchedShows = new Map(
+    groupTvShows(allPosts.filter((post) => post.data.category === 'tvshelf'))
+        .map((show) => [show.showTitle, show.latest.path])
+);
+
 queuePosts.sort((a, b) => new Date(b.data.created).getTime() - new Date(a.data.created).getTime());
 
 const items: ShelfQueueItem[] = queuePosts.map((post) => {
     const showTitle = post.data.showTitle ?? post.data.title ?? '';
-    // Quick-add stubs are show-level (no season yet) — link to the show page;
-    // a queued entry that already has a season links straight to it.
-    const link = post.data.season !== undefined
-        ? `/tvshelf/${slugify(showTitle)}/s${post.data.season}/`
-        : `/tvshelf/${slugify(showTitle)}/`;
+    const link = watchedShows.get(showTitle);
 
     return {
         id: post.id,

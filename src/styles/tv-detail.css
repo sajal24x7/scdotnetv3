@@ -1,9 +1,6 @@
-/* Shared styles for the TV show and season detail pages
-   (/tvshelf/[show]/ and /tvshelf/[show]/[season]/). The two pages use
-   sibling class prefixes (tv-show-* and season-*) for the same layout,
-   so selectors are grouped by pair. */
+/* Styles for the TV season pages (src/components/shelf/TvWatchPage.astro),
+   served at /tvshelf/[show]/[season]/ and, for a limited series, /tvshelf/[show]/. */
 
-.tv-show-page,
 .season-page {
   display: flex;
   flex-direction: column;
@@ -12,7 +9,6 @@
 }
 
 /* Header layout */
-.tv-show-header,
 .season-header {
   display: flex;
   flex-direction: column;
@@ -21,13 +17,11 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.dark .tv-show-header,
 .dark .season-header {
   border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 48rem) {
-  .tv-show-header,
   .season-header {
     display: grid;
     grid-template-columns: 3fr 5fr;
@@ -36,20 +30,17 @@
   }
 }
 
-.tv-show-header__cover-area,
 .season-header__cover-area {
   display: flex;
   justify-content: center;
 }
 
 @media (min-width: 48rem) {
-  .tv-show-header__cover-area,
   .season-header__cover-area {
     justify-content: flex-start;
   }
 }
 
-.tv-show-header__cover,
 .season-header__cover {
   width: auto;
   max-height: 16rem;
@@ -60,14 +51,12 @@
     0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
-.dark .tv-show-header__cover,
 .dark .season-header__cover {
   box-shadow:
     0 4px 6px rgba(0, 0, 0, 0.3),
     0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.tv-show-header__cover-placeholder,
 .season-header__cover-placeholder {
   width: 100%;
   max-width: 12rem;
@@ -80,20 +69,17 @@
   color: rgba(15, 23, 42, 0.35);
 }
 
-.dark .tv-show-header__cover-placeholder,
 .dark .season-header__cover-placeholder {
   background: rgba(148, 163, 184, 0.18);
   color: rgba(226, 232, 240, 0.45);
 }
 
-.tv-show-header__meta,
 .season-header__meta {
   display: flex;
   flex-direction: column;
   padding-top: 0.25rem;
 }
 
-.tv-show-header__title,
 .season-header__title {
   font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: 700;
@@ -102,7 +88,6 @@
   line-height: 1.2;
 }
 
-.tv-show-header__creator,
 .season-header__creator {
   font-size: 1.125rem;
   font-weight: 500;
@@ -110,7 +95,6 @@
   margin: 0 0 1rem;
 }
 
-.tv-show-header__chips,
 .season-header__chips {
   display: flex;
   flex-wrap: wrap;
@@ -265,9 +249,7 @@
   color: #fecaca;
 }
 
-/* Muted navigation links (back links, prev/next season) */
-.tv-show-page__back-link,
-.season-nav__link,
+/* Muted back link */
 .season-back__link {
   font-size: var(--text-small);
   color: var(--gray-text-muted);
@@ -275,14 +257,10 @@
   transition: color 150ms ease;
 }
 
-.tv-show-page__back-link:hover,
-.season-nav__link:hover,
 .season-back__link:hover {
   color: #4f46e5;
 }
 
-.dark .tv-show-page__back-link:hover,
-.dark .season-nav__link:hover,
 .dark .season-back__link:hover {
   color: #818cf8;
 }
