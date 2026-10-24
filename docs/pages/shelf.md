@@ -11,7 +11,7 @@ The shelf is a set of media-tracking pages covering books, films, TV shows, and 
 | `/filmshelf/` | `filmshelf` | Film |
 | `/tvshelf/` | `tvshelf` | TV |
 | `/gameshelf/` | `gameshelf` | Games |
-| `/tvshelf/[show]/` | — | TV show detail |
+| `/tvshelf/[show]/[season]/` | — | TV season page (`/tvshelf/[show]/` redirects to the latest season) |
 
 The `/shelf/` page is the default landing when clicking **Shelf** in the primary nav. Shelf's secondary nav strip links the four category pages as **Books / Film / TV / Games**, and the home page's unified feed gives shelf entries their own **Shelf** filter chip (the `shelf` group in `FEED_GROUPS`).
 
@@ -91,7 +91,7 @@ Optional notes about the film.
 
 ### TV — `category: tvshelf`
 
-One markdown file per season. The TV shelf groups all seasons of a show into a single card; the show detail page (`/tvshelf/[show]/`) lists every season.
+One markdown file per season. Each season is its own cover on the TV shelf, with an "S3" badge, and its own page at `/tvshelf/[show]/[season]/`. There is no separate show page: every season page carries pills for all seasons of the show (see [TV Seasons](#tv-seasons)).
 
 ```yaml
 ---
@@ -239,9 +239,8 @@ After downloading new covers, the corresponding generate script updates the Type
 
 Every shelf page (`/shelf`, `/bookshelf`, `/filmshelf`, `/tvshelf`, `/gameshelf`) shows each year as a heading above a grid of covers: five per row on desktop, four on tablets, three on phones. Each entry is a `ShelfTile` (`src/components/shelf/ShelfTile.astro`, styles in `src/styles/shelf-wall.css`):
 
-- cover, then the title with the rating icon on the same row
+- cover (TV seasons carry an "S3" badge on it), then the title with the rating icon on the same row
 - series (books), then author / director / creator
-- season range (TV only)
 - a status chip only while something is in progress or on hold
 - the genre chip
 
@@ -249,7 +248,7 @@ Every name, status, rating and genre is a `data-filter-type` button, so filterin
 
 `ShelfViewControls` adds a **Covers / List** toggle (remembered per browser) and a sort menu (newest, oldest, title, rating). Sorting reorders entries inside each year only, using the `data-sort-*` attributes on each `.shelf-wall__item`.
 
-On `/shelf` a short line under the people names the media type ("Film", "TV · Seasons 1 to 10", "Game · 40 hours"). Games show hours played on that line too.
+On `/shelf` a short line under the people names the media type ("Film", "TV", "Game · 40 hours"). Games show hours played on that line too.
 
 ### Rereads, Rewatches and Notes
 
@@ -261,17 +260,14 @@ On `/shelf` a short line under the people names the media type ("Film", "TV · S
 
 A repeat shows a ↻ icon on the cover. On films and TV a second icon marks entries with real notes: `hasShelfNotes()` in `src/utils/shelfWall.ts` treats a body as notes unless it is empty or only the auto log line ("Finished watching Season 2 on 2020-08-02."). Books don't show the notes icon.
 
-### TV Show Grouping
+### TV Seasons
 
-`groupTvShows()` in `src/utils/shelfWall.ts` groups per-season entries by `showTitle`. `/tvshelf/` shows one tile per show, filed under the year of its latest watch:
+`groupTvShows()` in `src/utils/shelfWall.ts` groups per-season entries by `showTitle`, numbers rewatches, and gives every watch its page `path`. Every TV page and link builds its URL from that `path`, so they always match.
 
-- **Rating:** the one given most often.
-- **Status:** "Watching" if any season is in progress.
-- **Filtering:** genres, ratings and creators from every season, so a filter finds the show if any season matches.
-
-The show slug comes from the show's first entry, the same rule `src/pages/tvshelf/[show]/index.astro` uses, so links always match the generated pages.
-
-The show page has a row of season pills above the season list. Each pill is tinted by its latest rating (or by status while in progress), carries ↻ / notes icons, and links to that season's page.
+- **`/tvshelf/` and `/shelf/`:** one tile per season watch, filed under the year it was watched. A rewatch is its own tile in the year of the rewatch, with the ↻ icon.
+- **Season page** (`src/components/shelf/TvWatchPage.astro`): the season's header and notes, plus a row of season pills for every logged season of the show. The current season's pill is highlighted; the others link to that season's latest watch. Each pill is tinted by its rating (or by status while in progress) and carries ↻ / notes icons. When a season has been watched more than once, a line under the pills lists every watch ("Watched Mar 2020 · Rewatched Feb 2026") and links between them.
+- **`/tvshelf/[show]/`:** redirects to the show's latest watch, so old show links keep working. A limited series (an entry with no `season`) has its page here instead.
+- **Queue:** a queued show you've already watched links to its latest season; one you haven't started has no link.
 
 Check the helpers with `node --experimental-strip-types src/utils/__checks__/shelfWall.check.ts`.
 

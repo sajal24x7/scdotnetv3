@@ -1,5 +1,6 @@
 /**
- * Helpers for the cover-wall shelf pages (/bookshelf, /filmshelf, /tvshelf).
+ * Helpers for the cover-wall shelf pages (/bookshelf, /filmshelf, /tvshelf)
+ * and the TV season pages.
  *
  * Kept free of `astro:*` imports so the pure functions run under
  * `node --experimental-strip-types` in src/utils/__checks__/shelfWall.check.ts.
@@ -15,29 +16,6 @@ const LOG_LINE = /^(finished|started)\s+(watching|reading|playing)(\s+season\s+\
 export function hasShelfNotes(body: string | undefined | null): boolean {
     const text = (body ?? '').trim();
     return text.length > 0 && !LOG_LINE.test(text.replace(/\s+/g, ' '));
-}
-
-/** "Season 4", "Seasons 1 to 10", "Seasons 1, 4" — or null for a limited series. */
-export function seasonRangeLabel(seasons: readonly (number | null | undefined)[]): string | null {
-    const nums = [...new Set(seasons.filter((s): s is number => typeof s === 'number'))].sort((a, b) => a - b);
-    if (nums.length === 0) return null;
-    if (nums.length === 1) return `Season ${nums[0]}`;
-    const contiguous = nums.every((n, i) => i === 0 || n === nums[i - 1] + 1);
-    return contiguous ? `Seasons ${nums[0]} to ${nums[nums.length - 1]}` : `Seasons ${nums.join(', ')}`;
-}
-
-/** The rating given most often, ties going to the higher rating; null when none are set. */
-export function mostCommonRating<R extends string>(ratings: readonly (R | null | undefined)[], order: readonly R[]): R | null {
-    let best: R | null = null;
-    let bestCount = 0;
-    for (const rating of order) {
-        const count = ratings.filter((r) => r === rating).length;
-        if (count > bestCount) {
-            best = rating;
-            bestCount = count;
-        }
-    }
-    return best;
 }
 
 /** Most recent activity date for a shelf entry: finished, then started, then created. */
@@ -77,6 +55,8 @@ export interface TvWatch<T extends TvEntryLike> {
     season: number | null;
     /** URL segment of the season page, e.g. "s1" or "s1-2026"; null for a limited series. */
     seasonSlug: string | null;
+    /** This watch's page, e.g. "/tvshelf/friends/s1/"; a limited series' first watch is "/tvshelf/glory/". */
+    path: string;
     /** 1 for the first watch of this season, 2+ for rewatches. */
     watchNumber: number;
     date: Date;
@@ -96,10 +76,9 @@ const showKey = (post: TvEntryLike) => post.data.showTitle ?? post.data.title ??
 /**
  * Group tvshelf entries into shows.
  *
- * The show slug is taken from the first entry of each show in `posts` order,
- * the same rule the /tvshelf/[show]/ route uses, so links always match the
- * generated pages. Pass every tvshelf entry (todo stubs included) for that
- * reason; stubs are left out of the returned watches.
+ * The show slug is taken from the first entry of each show in `posts` order.
+ * Every page and link builds its URL from the returned `path`, so they always
+ * match. Todo stubs are left out of the returned watches.
  */
 export function groupTvShows<T extends TvEntryLike>(posts: readonly T[]): TvShow<T>[] {
     const slugs = new Map<string, string>();
@@ -123,6 +102,7 @@ export function groupTvShows<T extends TvEntryLike>(posts: readonly T[]): TvShow
             post,
             season,
             seasonSlug: season === null ? null : (post.id.split('/')[1] || `s${season}`),
+            path: '',
             watchNumber: numbers.get(i) ?? 1,
             date: activityDate(post.data),
             notes: hasShelfNotes(post.body),
@@ -133,11 +113,42 @@ export function groupTvShows<T extends TvEntryLike>(posts: readonly T[]): TvShow
 
     return Array.from(shows.entries()).map(([showTitle, watches]) => {
         watches.sort((a, b) => a.date.getTime() - b.date.getTime());
+        const showSlug = slugs.get(showTitle) ?? showTitle;
+        for (const watch of watches) watch.path = watchPath(showSlug, watch);
         return {
             showTitle,
-            showSlug: slugs.get(showTitle) ?? showTitle,
+            showSlug,
             watches,
             latest: watches[watches.length - 1],
         };
     });
+}
+
+// A season lives at /tvshelf/<show>/<season slug>/. A limited series (no season)
+// lives at the show URL itself, unless its id says otherwise ("glory-2026" for a
+// rewatch logged by /write), which becomes /tvshelf/glory/glory-2026/.
+function watchPath<T extends TvEntryLike>(showSlug: string, watch: TvWatch<T>): string {
+    if (watch.seasonSlug) return `/tvshelf/${showSlug}/${watch.seasonSlug}/`;
+    const last = watch.post.id.split('/').pop() ?? '';
+    return last && last !== showSlug ? `/tvshelf/${showSlug}/${last}/` : `/tvshelf/${showSlug}/`;
+}
+
+export interface TvSeasonPill<T extends TvEntryLike> {
+    season: number;
+    /** Every watch of this season, oldest first. */
+    watches: TvWatch<T>[];
+    latest: TvWatch<T>;
+}
+
+/** One pill per season number, in season order; limited-series watches are left out. */
+export function tvSeasonPills<T extends TvEntryLike>(show: TvShow<T>): TvSeasonPill<T>[] {
+    const bySeason = new Map<number, TvWatch<T>[]>();
+    for (const watch of show.watches) {
+        if (watch.season === null) continue;
+        if (!bySeason.has(watch.season)) bySeason.set(watch.season, []);
+        bySeason.get(watch.season)!.push(watch);
+    }
+    return Array.from(bySeason.entries())
+        .sort((a, b) => a[0] - b[0])
+        .map(([season, watches]) => ({ season, watches, latest: watches[watches.length - 1] }));
 }

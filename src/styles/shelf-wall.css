@@ -200,6 +200,32 @@ a.shelf-tile__cover:hover {
   pointer-events: auto;
 }
 
+.shelf-tile__badge {
+  position: absolute;
+  left: 0.4rem;
+  bottom: 0.4rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(20, 16, 14, 0.72);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+/* The cover badge is aria-hidden, so the season is repeated after the title:
+   visually hidden on the wall, shown as text in the list view. */
+.shelf-tile__title-badge {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 .shelf-tile__body {
   display: flex;
   flex-direction: column;
@@ -337,6 +363,20 @@ a.shelf-tile__cover:hover {
   width: 2.25rem;
   border-radius: 0.2rem;
   box-shadow: none;
+}
+
+.shelf-wall[data-view='list'] .shelf-tile__badge {
+  display: none;
+}
+
+.shelf-wall[data-view='list'] .shelf-tile__title-badge {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  color: var(--gray-text-muted);
+  font-weight: 400;
 }
 
 .shelf-wall[data-view='list'] .shelf-tile__cover-placeholder {
