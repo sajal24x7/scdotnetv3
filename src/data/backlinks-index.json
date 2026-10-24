@@ -1259,6 +1259,8 @@
       "haiku/202610200712 Dark outside still..md",
       "haiku/202610212219 Finding moments.md",
       "haiku/202610221622 All the leaves are gone.md",
+      "haiku/202610232100 Circles in puddles.md",
+      "haiku/202610240833 Gray skies abound.md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -1682,6 +1684,7 @@
       "micro/202610171446 Not Solitaire.md",
       "micro/202610220723 The good thing about hard things.md",
       "micro/202610222156 Economic probabilities for our grandchildren.md",
+      "micro/202610231518 Next Gen console costs are too damn high.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1861,6 +1864,7 @@
       "photo/202610031119.md",
       "photo/202610041026.md",
       "photo/202610111016.md",
+      "photo/202610240917.md",
       "poem/201202121505 Here I stand.md",
       "poem/201202131628 Stranded Isle.md",
       "poem/201203181704 Scared I was.md",
@@ -2463,6 +2467,11 @@
       "til/202610101511 Updating the build watch paths on Cloudflare.md",
       "til/202610152050 ReplicaSets in Kubernetes.md",
       "til/202610161657 Kubernetes Deployment.md",
+      "til/202610211508 How to taint nodes in Kubernetes.md",
+      "til/202610222248 How to label nodes in Kubernetes.md",
+      "til/202610222252 How to control where a pod runs in Kubernetes.md",
+      "til/202610222307 How to create a deployment using kubectl.md",
+      "til/202610231631 How to export current config to edit in yaml.md",
       "tvshelf/201901071200 Luther S2.md",
       "tvshelf/201901071201 Luther S1.md",
       "tvshelf/201901281200 Bodyguard S1.md",
@@ -6540,6 +6549,36 @@
       "description": "",
       "category": "til",
       "created": "2023-12-23T11:20:00.000Z"
+    }
+  ],
+  "til/how-to-label-nodes-in-kubernetes": [
+    {
+      "slug": "/til/how-to-control-where-a-pod-runs-in-kubernetes/",
+      "title": "How to Control Where a Pod Runs in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-22T19:52:00.000Z",
+      "snippet": "With nodeSelector field matching the labels set on a node"
+    }
+  ],
+  "til/kubernetes-deployment": [
+    {
+      "slug": "/til/how-to-create-a-deployment-using-kubectl/",
+      "title": "How to Create a Deployment Using Kubectl",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-22T20:07:00.000Z",
+      "snippet": "To create a deployment, one way to do it is using the yaml file, but a quicker way to do it is via:"
+    }
+  ],
+  "til/pods": [
+    {
+      "slug": "/til/how-to-label-nodes-in-kubernetes/",
+      "title": "How to Label Nodes in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-22T19:48:00.000Z",
+      "snippet": "Why do we use this? In scenarios where we want to use for example nodeSelector with pods to specify where it may be able to run."
     }
   ],
   "bookshelf/continuous-delivery": [

@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117491304846250590'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3myknvolx7u2g'
+  - 'https://www.threads.com/@sajal24x7/post/De2g1wVFJ3j'
 ---
 Use the `taint` command.
 

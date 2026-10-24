@@ -1,10 +1,16 @@
 ---
-title: "Next Gen Console Costs Are Too Damn High"
-slug: "next-gen-console-costs-are-too-damn-high"
-created: 2026-10-23T15:18:00+03:00
-updated: 2026-10-23T15:20:00+03:00
+title: Next Gen Console Costs Are Too Damn High
+slug: next-gen-console-costs-are-too-damn-high
+created: 2026-10-23T12:18:00.000Z
+updated: 2026-10-23T12:20:00.000Z
 category: micro
-tags: ["playstation", "xbox"]
+tags:
+  - playstation
+  - xbox
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117492320706612560'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3myl4dnbcdt2z'
+  - 'https://www.threads.com/@sajal24x7/post/De2g0kWFC9B'
 ---
 [The next-gen Xbox won’t cost you $1,800. It can’t. Can it? by Sean Hollister](https://www.theverge.com/games/1016134/xbox-helix-price-1800-isnt-affordable-editorial)
 

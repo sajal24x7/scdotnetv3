@@ -10,7 +10,7 @@ import type { ImageMetadata } from 'astro';
 import { getAllPosts } from '../../utils/content';
 import { createSectionLandingProps } from '../../utils/sectionLanding';
 import { computeWatchNumbers } from '../../utils/shelfUtils';
-import { activityDate, groupTvShows, hasShelfNotes, mostCommonRating, repeatLabel, seasonRangeLabel } from '../../utils/shelfWall';
+import { activityDate, groupTvShows, hasShelfNotes, repeatLabel } from '../../utils/shelfWall';
 import { getBookCoverImage } from '../../utils/bookCovers';
 import { getFilmCoverImage } from '../../utils/filmCovers';
 import { getTVCoverImage } from '../../utils/tvCovers';
@@ -34,6 +34,8 @@ interface CombinedEntry {
     title: string;
     href: string;
     cover: ImageMetadata | null;
+    /** Cover label, e.g. "S3" for a TV season. */
+    badge?: string | null;
     people: string[];
     personFilter: string;
     subtitle: string | null;
@@ -59,9 +61,6 @@ const normalizeStatus = (status?: string | null): ShelfStatus =>
 
 const asList = (value?: string | string[] | null): string[] =>
     !value ? [] : Array.isArray(value) ? value : [value];
-
-const unique = (values: (string | undefined | null)[]) =>
-    Array.from(new Set(values.filter((v): v is string => Boolean(v))));
 
 // Rereads, rewatches and replays, numbered per media type.
 const repeatNumbers = new Map<string, number>();
@@ -162,43 +161,41 @@ for (const post of shelfPosts) {
     }
 }
 
-// One entry per TV show, filed under the year of its latest watch. Every tvshelf
-// entry goes in so show slugs match /tvshelf/[show]/; todo stubs are dropped.
+// One entry per TV season watch, filed under the year it was watched. Todo stubs
+// are dropped by groupTvShows.
 for (const show of groupTvShows(allPosts.filter((p) => p.data.category === 'tvshelf'))) {
-    const { latest, watches } = show;
-    const status: ShelfStatus = watches.some((w) => w.post.data.status === 'started')
-        ? 'started'
-        : normalizeStatus(latest.post.data.status);
-    const ratings = watches.map((w) => w.post.data.rating as BookRating | undefined);
-    const maxWatch = Math.max(...watches.map((w) => w.watchNumber));
-    const seasons = seasonRangeLabel(watches.map((w) => w.season));
-    const cover = latest.post.data.cover ?? watches.find((w) => w.post.data.cover)?.post.data.cover;
-    entries.push({
-        type: 'tv',
-        date: latest.date,
-        year: latest.date.getFullYear(),
-        title: show.showTitle,
-        href: `/tvshelf/${show.showSlug}/`,
-        cover: cover ? getTVCoverImage(cover) : null,
-        people: latest.post.data.creator ?? [],
-        personFilter: 'creator',
-        subtitle: seasons ? `${TYPE_LABEL.tv} · ${seasons}` : TYPE_LABEL.tv,
-        series: null,
-        seriesNumber: null,
-        status,
-        statusLabel: SHELF_STATUS_LABELS.tvshelf[status],
-        rating: mostCommonRating(ratings, bookRatingOrder),
-        genre: latest.post.data.genre ?? watches.find((w) => w.post.data.genre)?.post.data.genre ?? null,
-        repeat: maxWatch > 1 ? repeatLabel(maxWatch, 'watch') : null,
-        notes: watches.some((w) => w.notes),
-        filterAttrs: {
-            'data-creator': unique(watches.flatMap((w) => w.post.data.creator ?? [])).join(','),
-            'data-genre': unique(watches.map((w) => w.post.data.genre)).join(','),
-            'data-platform': unique(watches.map((w) => w.post.data.platform)).join(','),
-            'data-rating': unique(ratings).join(','),
-            'data-status': status,
-        },
-    });
+    for (const watch of show.watches) {
+        const data = watch.post.data;
+        const status = normalizeStatus(data.status);
+        const cover = data.cover ?? show.watches.find((w) => w.post.data.cover)?.post.data.cover;
+        entries.push({
+            type: 'tv',
+            date: watch.date,
+            year: watch.date.getFullYear(),
+            title: show.showTitle,
+            href: watch.path,
+            cover: cover ? getTVCoverImage(cover) : null,
+            badge: watch.season !== null ? `S${watch.season}` : null,
+            people: data.creator ?? [],
+            personFilter: 'creator',
+            subtitle: TYPE_LABEL.tv,
+            series: null,
+            seriesNumber: null,
+            status,
+            statusLabel: SHELF_STATUS_LABELS.tvshelf[status],
+            rating: (data.rating as BookRating | undefined) ?? null,
+            genre: data.genre ?? null,
+            repeat: watch.watchNumber > 1 ? repeatLabel(watch.watchNumber, 'watch') : null,
+            notes: watch.notes,
+            filterAttrs: {
+                'data-creator': (data.creator ?? []).join(','),
+                'data-genre': data.genre ?? '',
+                'data-platform': data.platform ?? '',
+                'data-rating': data.rating ?? '',
+                'data-status': status,
+            },
+        });
+    }
 }
 
 // Year desc, then in progress first (as on each shelf), then most recent activity,
@@ -220,11 +217,11 @@ const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one :
 const TYPE_NOUN: Record<EntryType, [string, string]> = {
     book: ['book', 'books'],
     film: ['film', 'films'],
-    tv: ['show', 'shows'],
+    tv: ['season', 'seasons'],
     game: ['game', 'games'],
 };
 
-// "12 books · 30 films · 5 shows", counting finished entries only.
+// "12 books · 30 films · 5 seasons", counting finished entries only.
 const yearCountText = (yearEntries: CombinedEntry[]) => (['book', 'film', 'tv', 'game'] as EntryType[])
     .map((type) => {
         const count = yearEntries.filter((e) => e.type === type && e.status === 'finished').length;
@@ -301,6 +298,7 @@ const shelfDescription = "Everything I've read, watched, and played—books, fil
                     title={entry.title}
                     href={entry.href}
                     cover={entry.cover}
+                    badge={entry.badge}
                     people={entry.people}
                     personFilter={entry.personFilter}
                     series={entry.series}
