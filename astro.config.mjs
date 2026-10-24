@@ -26,7 +26,7 @@ function remarkBreaks() {
             if (j > 0) replacement.push({ type: 'break' });
             if (segment) replacement.push({ type: 'text', value: segment });
           });
-          if (replacement.length > 1) {
+          if (segments.length > 1) {
             node.children.splice(i, 1, ...replacement);
             i += replacement.length;
           } else {
