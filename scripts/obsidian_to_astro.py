@@ -67,42 +67,14 @@ _CATEGORY_STUBS: dict[str, list[tuple[str, str]]] = {
         ("description", '""'),
         ("image", '""'),
     ],
-    "bookshelf": [
-        ("author", '""'),
-        ("format", '""'),
-        ("genre", '""'),
-        ("series", ""),
-        ("status", "todo"),
-        ("rating", ""),
-        ("started", ""),
-        ("finished", ""),
-    ],
-    "filmshelf": [
-        ("director", '""'),
-        ("year", ""),
-        ("status", "todo"),
-        ("rating", ""),
-        ("finished", ""),
-        ("genre", '""'),
-    ],
-    "tvshelf": [
-        ("showTitle", '""'),
-        ("creator", '""'),
-        ("season", ""),
-        ("year", ""),
-        ("genre", '""'),
-        ("status", "todo"),
-        ("rating", ""),
-    ],
-    "gameshelf": [
-        ("developer", '""'),
-        ("platform", '""'),
-        ("genre", '""'),
-        ("started", ""),
-        ("status", "todo"),
-        ("rating", ""),
-    ],
 }
+
+# Shelf notes only carry the fields the vault note actually has. The one
+# field always written is `status`, inferred from the shelf dates when the
+# note doesn't set it. Empty placeholders (`series:`, `rating:`) are dropped:
+# every shelf field is optional in the schema, and a blank `finished:` or
+# `rating:` on a book you've just started is noise at best.
+_SHELF_CATEGORIES = {"bookshelf", "filmshelf", "tvshelf", "gameshelf"}
 
 
 def title_case(s: str) -> str:
@@ -225,21 +197,34 @@ def is_obsidian_format(fm: dict) -> bool:
     return "aliases" in fm or "title" not in fm or "slug" not in fm
 
 
-def build_stub_lines(category: str, present_keys: set, fm: dict) -> list:
-    """Return stub frontmatter lines for category-specific fields not already present.
+def infer_shelf_status(fm: dict) -> str:
+    """A `finished` date means done, a `started` date means in progress,
+    neither means it's still queued."""
+    if fm.get("finished", "").strip():
+        return "finished"
+    if fm.get("started", "").strip():
+        return "started"
+    return "todo"
 
-    A shelf item with a `finished` date but no explicit `status` is done, not
-    queued — default its status stub to "finished" instead of "todo".
-    """
-    has_finished_date = bool(fm.get("finished", "").strip())
+
+def build_stub_lines(category: str, present_keys: set, fm: dict) -> list:
+    """Return stub frontmatter lines for category-specific fields not already present."""
     lines = []
+    if category in _SHELF_CATEGORIES and "status" not in present_keys:
+        lines.append(f"status: {infer_shelf_status(fm)}")
     for key, default in _CATEGORY_STUBS.get(category, []):
         if key not in present_keys:
-            if key == "status" and has_finished_date:
-                lines.append("status: finished")
-            else:
-                lines.append(f"{key}: {default}" if default else f"{key}:")
+            lines.append(f"{key}: {default}" if default else f"{key}:")
     return lines
+
+
+def is_empty_field(lines: list[str]) -> bool:
+    """True for a key with no value and no list items under it
+    (`series:`, `rating: ""`), as opposed to `author:\\n  - Dan Brown`."""
+    if len(lines) != 1:
+        return False
+    value = lines[0].partition(":")[2].strip()
+    return value in ("", '""', "''", "[]")
 
 
 def extract_passthrough_lines(fm_text: str) -> list:
@@ -316,7 +301,12 @@ def merge_missing_fields_into(incoming_path: str, existing_path: str) -> bool:
     incoming_fields = parse_top_level_fields(incoming[3:incoming_end])
     existing_fields = parse_top_level_fields(existing[3:existing_end])
 
-    missing_keys = [k for k in existing_fields if k not in incoming_fields]
+    # An empty placeholder on the published copy (`series:`) isn't data worth
+    # carrying forward.
+    missing_keys = [
+        k for k in existing_fields
+        if k not in incoming_fields and not is_empty_field(existing_fields[k])
+    ]
     if not missing_keys:
         return False
 
@@ -367,6 +357,13 @@ def transform_file(filepath: str, content_index: dict | None = None) -> bool:
     fm_end = content.find("---", 3)
     fm_text = content[3:fm_end]
     passthrough = extract_passthrough_lines(fm_text)
+    if category in _SHELF_CATEGORIES:
+        passthrough = [
+            line
+            for field_lines in parse_top_level_fields("\n".join(passthrough)).values()
+            if not is_empty_field(field_lines)
+            for line in field_lines
+        ]
 
     # Determine which keys are already covered (transformed + passed through)
     present_keys = set(_TRANSFORMED_KEYS)

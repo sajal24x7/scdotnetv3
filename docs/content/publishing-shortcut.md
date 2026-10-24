@@ -35,9 +35,12 @@ Everything else is handled for you:
 - `tags` pass through, `#` prefixes are stripped (`"#work"` → `"work"`).
 - `updated:` is used if present, otherwise defaults to the created date.
 - `[[wikilinks]]` become proper site links (`[Be a Hybrid](/evergreen/be-a-hybrid)`).
-- Shelf categories (`bookshelf`, `filmshelf`, `tvshelf`, `gameshelf`,
-  `nordletter`) get their extra fields stubbed in (`author`, `status`,
-  etc.) — fill them in Obsidian if you have them, stubs appear otherwise.
+- Shelf notes (`bookshelf`, `filmshelf`, `tvshelf`, `gameshelf`) keep only
+  the fields the vault note has — no blank `series:`/`rating:`/`finished:`
+  placeholders, and empty fields in the note are dropped. If the note has no
+  `status`, it's inferred from the dates: a `finished` date → `finished`, a
+  `started` date → `started`, neither → `todo`. `nordletter` notes still get
+  `edition`/`description`/`image` stubs.
   `status` is the unified `todo`/`started`/`paused`/`finished` field (see
   `src/utils/shelfStatus.ts`); shelf RSS feeds only include `finished`
   entries, so there's no need to prefix an in-progress entry's slug with

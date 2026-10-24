@@ -66,7 +66,8 @@ python3 scripts/obsidian_to_astro.py --merge-missing <incoming> <existing>
 
 This copies any top-level frontmatter field present on the existing
 published file but entirely absent from the incoming one into the incoming
-file, then the `mv` proceeds. A field present in both is left as the
+file (empty placeholders like a bare `series:` are skipped), then the `mv`
+proceeds. A field present in both is left as the
 incoming copy has it — an intentional edit (a `status` or `rating` change)
 still wins; only fields that would otherwise vanish outright are carried
 forward. See the "Anxious People" cover-loss incident (Sep 2026) for the
