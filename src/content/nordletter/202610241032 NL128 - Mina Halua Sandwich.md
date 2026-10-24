@@ -1,13 +1,22 @@
 ---
-title: "Mina Halua Sandwich"
-slug: "nl128-mina-halua-sandwich"
-created: 2026-10-24T10:32:00+03:00
-updated: 2026-10-24T12:48:29+03:00
+title: Mina Halua Sandwich
+slug: nl128-mina-halua-sandwich
+created: 2026-10-24T07:32:00.000Z
+updated: 2026-10-24T09:48:29.000Z
 category: nordletter
-tags: ["ai", "world", "abundance", "food", "parenting"]
+tags:
+  - ai
+  - world
+  - abundance
+  - food
+  - parenting
 edition: 128
-description: "Growing up in an abundant world"
-image: "https://storage.sajalchoudhary.net/images/2026/10/nl128-02.jpeg"
+description: Growing up in an abundant world
+image: 'https://storage.sajalchoudhary.net/images/2026/10/nl128-02.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117495517333126894'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mymjrck7e22r'
+  - 'https://www.threads.com/@sajal24x7/post/De392yclsCk'
 ---
 Hello from my home in Helsinki! This is NordLetter #128, a weekly newsletter on living and walking in Finland.
 

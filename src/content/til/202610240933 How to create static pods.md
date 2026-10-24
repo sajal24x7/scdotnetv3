@@ -1,10 +1,15 @@
 ---
-title: "How to Create Static Pods"
-slug: "how-to-create-static-pods"
-created: 2026-10-24T09:33:00+03:00
-updated: 2026-10-24T10:30:11+03:00
+title: How to Create Static Pods
+slug: how-to-create-static-pods
+created: 2026-10-24T06:33:00.000Z
+updated: 2026-10-24T07:30:11.000Z
 category: til
-tags: ["k8s"]
+tags:
+  - k8s
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117495525225473533'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mymjuvbfuk2r'
+  - 'https://www.threads.com/@sajal24x7/post/De3-FdylnHY'
 ---
 To create [static pods](/til/static-pods) in [Kubernetes](/til/kubernetes):
 
