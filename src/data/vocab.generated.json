@@ -1100,6 +1100,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/puissant-2026-10-24",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-24"
+		},
+		"emissary": {
+			"word": "emissary",
+			"pos": "other",
+			"gloss": " noun Emissary refers to a person who is sent on a mission to represent another person or organization.",
+			"pronunciation": "EM-uh-sair-ee",
+			"example": "Emissaries from the government are trying to negotiate a settlement.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/emissary-2026-10-25",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-25"
 		}
 	}
 }
