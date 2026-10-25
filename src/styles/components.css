@@ -160,3 +160,31 @@
     top: 1rem;
   }
 }
+
+/* Mermaid diagrams, rendered to SVG at build time by Pele (src/utils/remarkMermaid.ts).
+   The SVG reads its colors and font from these --pele-* variables, and they
+   retarget under .dark with the site tokens, so the theme toggle needs no JS. */
+@layer components {
+  .mermaid {
+    --pele-bg: rgb(var(--color-bg));
+    --pele-fg: rgb(var(--color-text-primary));
+    --pele-muted: rgb(var(--color-text-secondary));
+    --pele-line: rgb(var(--color-text-secondary));
+    --pele-surface: rgb(var(--color-bg-secondary));
+    --pele-surface-alt: color-mix(in srgb, rgb(var(--color-bg-secondary)) 85%, rgb(var(--color-text-primary)));
+    --pele-border: rgba(var(--color-text-secondary), 0.5);
+    --pele-accent: rgb(var(--color-accent));
+    --pele-font: var(--font-sans);
+    --pele-font-mono: var(--font-mono);
+
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  pre.mermaid {
+    background: none;
+    border: none;
+    padding: 0;
+    white-space: pre-wrap;
+  }
+}
