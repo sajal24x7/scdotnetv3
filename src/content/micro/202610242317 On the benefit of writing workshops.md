@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - writing
-  - cory-doctorow
-  - workshops
-category: micro
+title: "On the Benefit of Writing Workshops"
+slug: "on-the-benefit-of-writing-workshops"
+created: 2026-10-24T23:17:00+03:00
 updated: 2026-10-24T23:18:28+03:00
+category: micro
+tags: ["writing", "cory-doctorow", "workshops"]
 ---
 [Pluralistic: Critique and writing (23 Oct 2026) – Pluralistic: Daily links from Cory Doctorow](https://pluralistic.net/2026/10/23/better-to-give/)
 
