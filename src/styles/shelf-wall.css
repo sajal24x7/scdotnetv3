@@ -159,6 +159,12 @@ a.shelf-tile__cover:hover {
   transform: translateY(-2px);
 }
 
+/* Positions the rating over the cover's bottom-right corner, opposite the
+   season badge. */
+.shelf-tile__cover-wrap {
+  position: relative;
+}
+
 .shelf-tile__cover-image {
   width: 100%;
   height: 100%;
@@ -233,16 +239,9 @@ a.shelf-tile__cover:hover {
   min-width: 0;
 }
 
-.shelf-tile__title-row {
-  min-width: 0;
-  line-height: 1.3;
-}
-
 .shelf-tile__title {
-  /* Inline so the rating chip flows right after the last word instead of
-     taking a column beside the whole title. */
-  display: inline;
   margin: 0;
+  min-width: 0;
   font-family: var(--font-sans);
   font-size: var(--text-small);
   font-weight: 600;
@@ -264,8 +263,11 @@ a.shelf-tile__cover:hover {
 }
 
 .shelf-tile__rating {
-  padding: 0.2rem 0.4rem;
-  vertical-align: 0.05em;
+  position: absolute;
+  right: 0.4rem;
+  bottom: 0.4rem;
+  padding: 0.25rem 0.4rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 .shelf-tile__series {
@@ -403,7 +405,19 @@ a.shelf-tile__cover:hover {
   gap: 0.3rem 1rem;
 }
 
-.shelf-wall[data-view='list'] .shelf-tile__title-row {
+/* The wrapper drops out so the rating joins the row after the body. */
+.shelf-wall[data-view='list'] .shelf-tile__cover-wrap {
+  display: contents;
+}
+
+.shelf-wall[data-view='list'] .shelf-tile__rating {
+  position: static;
+  order: 2;
+  flex: none;
+  box-shadow: none;
+}
+
+.shelf-wall[data-view='list'] .shelf-tile__title {
   flex: 1 1 14rem;
 }
 
