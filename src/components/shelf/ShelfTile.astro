@@ -114,8 +114,7 @@ const dateLabel = date
       <h3 class="shelf-tile__title">
         {href ? <a href={href}>{title}</a> : title}
         {badge && <span class="shelf-tile__title-badge"> · {badge}</span>}
-      </h3>
-      {ratingDisplay && rating && (
+      </h3>{ratingDisplay && rating && ' '}{ratingDisplay && rating && (
         <button
           type="button"
           class={`book-card__chip book-card__chip--rating book-card__chip--clickable book-card__chip--rating-${rating} shelf-tile__rating`}
