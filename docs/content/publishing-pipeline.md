@@ -95,10 +95,14 @@ shelf note that just moved out of `inbox/` (book/film/TV/game), it looks for
 an existing `status: todo` queue stub in the same category whose normalized
 title matches (normalized `showTitle`, for TV) and deletes it — the arriving
 note is the canonical entry, the stub was just a placeholder for "I want to
-read/watch/play this." Matching is exact-normalized-title only and only ever
-targets `todo` entries, so a reread/rewatch never deletes a finished prior
-entry; a near-miss (e.g. "Wool" vs "Wool (Silo, #1)") is logged, not
-auto-deleted. See `planning/shelf-queue-design.md` §4 for the full design.
+read/watch/play this." Matching is exact-normalized-title, plus one
+subtitle rule: when only one side has a `Title: Subtitle`, the part before
+the colon is compared ("Inside the Box: How Constraints Make Us Better"
+matches "Inside the Box"), as long as exactly one stub matches that way. Two
+different subtitles ("Dune: Part One" vs "Dune: Part Two") never match. It
+only ever targets `todo` entries, so a reread/rewatch never deletes a
+finished prior entry; any other near-miss (e.g. "Wool" vs "Wool (Silo,
+#1)") is logged, not auto-deleted. See `planning/shelf-queue-design.md` §4 for the full design.
 
 ### Micro posts (`/write` composer)
 

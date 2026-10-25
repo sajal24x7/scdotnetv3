@@ -188,7 +188,9 @@ gameshelf:
 > `status: todo`; started/paused/finished entries are never candidates —
 > whose **normalised title** matches (lowercase, punctuation stripped — the
 > exact normalisation `computeWatchNumbers()` already uses; for TV, match on
-> normalised `showTitle` instead). If found: copy the stub's `cover` onto the
+> normalised `showTitle` instead). As shipped, a title also matches on its
+> main title (before the first colon) when only one side has a subtitle and
+> exactly one stub matches that way. If found: copy the stub's `cover` onto the
 > arriving note if it doesn't already have one, then delete the stub, in the
 > same publish commit.
 
