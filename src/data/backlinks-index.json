@@ -1811,6 +1811,7 @@
       "nordletter/202610011644 NL125 - Better talks and reading metaphors.md",
       "nordletter/202610101228 NL126 - Parenting in the fall.md",
       "nordletter/202610152059 NL127 - 17 syllables and an idea.md",
+      "nordletter/202610241032 NL128 - Mina Halua Sandwich.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -2069,6 +2070,7 @@
       "til/202212211501 Windows disable ipv6.md",
       "til/202212221142 Ansible execution behaviour.md",
       "til/202212221148 Ansible way.md",
+      "til/202212221156 Ansible for windows.md",
       "til/202212221308 Ansible inventory.md",
       "til/202212221414 Ansible configuration.md",
       "til/202301021515 VMware convert eager zeroed disk to lazy zeroed.md",
@@ -2088,6 +2090,8 @@
       "til/202305081533 Vmware check rdm details.md",
       "til/202305101246 VC appliance connect through winscp.md",
       "til/202305101252 Windows Cluster disk reserved error 170.md",
+      "til/202305101252 Windows Cluster disk reserved error 171.md",
+      "til/202305101252 Windows Cluster disk reserved error 172.md",
       "til/202305181427 Check which ansible collections are installed in image.md",
       "til/202305260911 Ports to be opened for Ansible Automation Platform.md",
       "til/202306091233 Managed service account does not work.md",
@@ -2374,6 +2378,7 @@
       "til/202409241307 How to use certreq to create a cert request.md",
       "til/202410051447 Active Directory Database.md",
       "til/202410051448 Active Directory.md",
+      "til/202410051453 Active Directory schema.md",
       "til/202410051506 Active Directory Components.md",
       "til/202410051507 Active Directory Forest.md",
       "til/202410051508 Active Directory Domains.md",
@@ -2392,6 +2397,33 @@
       "til/202412021141 Manually cleaning DFSR folder.md",
       "til/202412021210 Delete everything under a folder powershell.md",
       "til/202412021230 Import GPO.md",
+      "til/202412051421 AD allows a maximum of five minute time difference.md",
+      "til/202412051521 Moving fsmo roles.md",
+      "til/202412091025 Dell firmware upgrade.md",
+      "til/202412091428 Clean user profile windows.md",
+      "til/202412091442 gpresult.md",
+      "til/202412091603 Import and export registry keys.md",
+      "til/202412111523 AD port requirements.md",
+      "til/202412111622 AD pre-requisites.md",
+      "til/202412121430 Rename administrator and Guest accounts through gpo.md",
+      "til/202412161145 Splunk search cheat sheet.md",
+      "til/202412171400 User logon logoff events.md",
+      "til/202412171549 How to install AD.md",
+      "til/202412201545 Attributes that scync from on-prem to azure.md",
+      "til/202412231201 Preferred owners in a cluster.md",
+      "til/202412311443 Find MAC of IP.md",
+      "til/202501131233 How to assign weight to cluster nodes.md",
+      "til/202501141452 Windows Update failing with 0x800f0922.md",
+      "til/202501141703 How to find out generation of Xeon chip from number.md",
+      "til/202501211251 GPO processing order.md",
+      "til/202501211328 msDS-UserPasswordExpiryTimeComputed does not show up directly.md",
+      "til/202501211331 To get password expiry date of users.md",
+      "til/202501221445 Reset RDS 120 days window.md",
+      "til/202501231240 Import IP addresses from CSV powershell.md",
+      "til/202501271514 Each domain can have only one password policy.md",
+      "til/202501271517 Fine-grained password policy.md",
+      "til/202502030956 Find installed software on windows systems.md",
+      "til/202502031058 VMware get VM creation date.md",
       "til/202502131411 Update firewall on VMware.md",
       "til/202502131414 VMware List allowed IPs in firewall.md",
       "til/202502141301 Windows how to check firewall logs.md",
@@ -2402,12 +2434,15 @@
       "til/202503061504 Find out authentication logs in VMware vCenter.md",
       "til/202503081131 How to upgrade Domain Controller.md",
       "til/202503101427 Installing remote desktop on standalone server.md",
+      "til/202503111130 VC upgrade 7 to 8.md",
       "til/202503121004 Set ACL using CLI.md",
       "til/202503251443 How to add custom attributes to AD.md",
       "til/202503251508 Configure PDC with authoritative Time source.md",
       "til/202503261138 Forcefully uninstall software from windows.md",
+      "til/202504021028 Teragrep queries.md",
       "til/202504081804 Find paths longer than 260 characters.md",
       "til/202504111234 VMware change NIC order.md",
+      "til/202504151132 Azure Arc Agent Logs location.md",
       "til/202504162026 dcpromo fails with access denied error.md",
       "til/202504182111 ESXi firmware upgrade baseline fails to apply with incompatible message.md",
       "til/202504302334 How to check replication status on DC.md",
@@ -2425,6 +2460,7 @@
       "til/202508081453 How to show password passed using secure password.md",
       "til/202508121257 List vmfs volumes along with naa id.md",
       "til/202508121259 ESX update fails with error 15.md",
+      "til/202508121259 ESX update fails with error 16.md",
       "til/202508121711 How to check windows upgrade errors.md",
       "til/202508191024 How to set time zone on windows using PowerShell.md",
       "til/202508201117 How to configure entra connect sync filtering.md",
@@ -2446,6 +2482,11 @@
       "til/202512191001 Three types of tests.md",
       "til/202512301150 The systems in a Jenkins installation.md",
       "til/202601062212 Importing Goodreads data to Astro.md",
+      "til/202601091227 Set GPOs linked on a source OU to a target OU using powershell.md",
+      "til/202602241257 Setting permissions on Linux systems.md",
+      "til/202602271227 Archiving in Linux.md",
+      "til/202603021214 Redirects in Linux.md",
+      "til/202603021228 Linux sort and find unique values.md",
       "til/202603091306 Coupling and cohesion.md",
       "til/202603091333 Types of coupling.md",
       "til/202603181152 What does a kernel do.md",
@@ -2454,13 +2495,29 @@
       "til/202603251212 Difference between lists tuples and sets.md",
       "til/202603251249 Conditionals in python.md",
       "til/202603301610 Generators in python.md",
+      "til/202604141621 In Python variables store references not values.md",
+      "til/202604151307 Decorators in python.md",
+      "til/202605060959 How to create user in linux.md",
+      "til/202605061021 How to create ssh key with azcli.md",
+      "til/202605061056 About docker images.md",
+      "til/202605061451 About docker run.md",
+      "til/202605111426 How to find chrome version on Windows node.md",
+      "til/202605121410 How to use environment variables in python .venv in vscode.md",
+      "til/202605281518 How to disable direct ssh root login.md",
+      "til/202606221350 About Network Translation.md",
+      "til/202606221355 Azure NAT Gateway.md",
+      "til/202606301217 Use Mailings Feature in Word to Send Multiple Emails at Once.md",
       "til/202606301442 How to Build Container Images.md",
       "til/202606301516 How Does an Overlay Filesystem Work.md",
       "til/202607101248 Troubleshooting Common Kubernetes Problems.md",
+      "til/202607211422 How to do Maintenance in Kubernetes.md",
       "til/202608172136 How to install multipass on Mac.md",
       "til/202608172147 How to create a VM using multipass.md",
+      "til/202608181535 File Permissions in Linux.md",
       "til/202608231422 How to delete multipass vms.md",
       "til/202608231425 How to change shell in linux.md",
+      "til/202608251443 How to change password for user in Linux.md",
+      "til/202609071434 Difference between Kernel and User Processes.md",
       "til/202609121126 Kubernetes Components.md",
       "til/202609171142 Pods.md",
       "til/202609201426 LDAP.md",
@@ -2472,6 +2529,15 @@
       "til/202610222252 How to control where a pod runs in Kubernetes.md",
       "til/202610222307 How to create a deployment using kubectl.md",
       "til/202610231631 How to export current config to edit in yaml.md",
+      "til/202610231641 DaemonSet in Kubernetes.md",
+      "til/202610240931 Static Pods.md",
+      "til/202610240933 How to create static pods.md",
+      "til/202610240952 How to check if a pod is static.md",
+      "til/202610241023 How to get service config in Linux.md",
+      "til/202610241329 Pod Priority.md",
+      "til/202610241331 Priority Class.md",
+      "til/202610241338 How to use priority and preemption.md",
+      "til/202610241341 Preemption in Kubernetes.md",
       "tvshelf/201901071200 Luther S2.md",
       "tvshelf/201901071201 Luther S1.md",
       "tvshelf/201901281200 Bodyguard S1.md",
@@ -2672,6 +2738,16 @@
       "tvshelf/202610222301 The Rookie S5.md"
     ]
   },
+  "til/windows-delete-shadow-copies": [
+    {
+      "slug": "/til/about-system-volume-information/",
+      "title": "About System Volume Information",
+      "description": "",
+      "category": "til",
+      "created": "2025-02-18T09:40:00.000Z",
+      "snippet": "Windows delete shadow copies"
+    }
+  ],
   "til/active-directory-database": [
     {
       "slug": "/til/active-directory/",
@@ -2682,7 +2758,57 @@
       "snippet": "Active Directory provides a centralised identity store. It is a DB (ntds.dit) plus some services running on it."
     }
   ],
+  "til/organizational-unit": [
+    {
+      "slug": "/til/active-directory-components/",
+      "title": "Active Directory Components",
+      "description": "",
+      "category": "til",
+      "created": "2024-10-05T12:06:00.000Z"
+    },
+    {
+      "slug": "/til/active-directory/",
+      "title": "Active Directory",
+      "description": "",
+      "category": "til",
+      "created": "2024-10-05T11:48:00.000Z",
+      "snippet": "It uses X.500 for the structure (the how) of the data. This is defined in the schema. We get Organizational Units as a result of this. An AD Objects stays in these OUs."
+    }
+  ],
+  "til/active-directory-domains": [
+    {
+      "slug": "/til/ldap/",
+      "title": "LDAP",
+      "description": "",
+      "category": "til",
+      "created": "2026-09-20T11:26:00.000Z",
+      "snippet": "Lightweight Directory Access Protocol. V3 but V2 included for backwards compatibility. It is open, vendor-neutral. LDAP is used to access and managed objects in a Domain."
+    },
+    {
+      "slug": "/til/active-directory-forest/",
+      "title": "Active Directory Forest",
+      "description": "",
+      "category": "til",
+      "created": "2024-10-05T12:07:00.000Z",
+      "snippet": "forest contains many domains"
+    },
+    {
+      "slug": "/til/active-directory-components/",
+      "title": "Active Directory Components",
+      "description": "",
+      "category": "til",
+      "created": "2024-10-05T12:06:00.000Z"
+    }
+  ],
   "til/active-directory": [
+    {
+      "slug": "/til/fsmo-roles/",
+      "title": "FSMO Roles",
+      "description": "",
+      "category": "til",
+      "created": "2024-10-17T12:35:00.000Z",
+      "snippet": "ADDS is built upon mult-master DB model"
+    },
     {
       "slug": "/til/organizational-unit/",
       "title": "Organizational Unit",
@@ -2698,6 +2824,34 @@
       "category": "til",
       "created": "2024-10-05T12:08:00.000Z",
       "snippet": "To talk to a domain, or AD we need a protocol - LDAP."
+    },
+    {
+      "slug": "/til/active-directory-database/",
+      "title": "Active Directory Database",
+      "description": "",
+      "category": "til",
+      "created": "2024-10-05T11:47:00.000Z",
+      "snippet": "Active Directory stores objects in multi-master DB called ntds.dit."
+    }
+  ],
+  "til/ldap": [
+    {
+      "slug": "/til/active-directory-domains/",
+      "title": "Active Directory Domains",
+      "description": "",
+      "category": "til",
+      "created": "2024-10-05T12:08:00.000Z",
+      "snippet": "To talk to a domain, or AD we need a protocol - LDAP."
+    }
+  ],
+  "til/active-directory-schema": [
+    {
+      "slug": "/til/active-directory-forest/",
+      "title": "Active Directory Forest",
+      "description": "",
+      "category": "til",
+      "created": "2024-10-05T12:07:00.000Z",
+      "snippet": "all domains in a forest share the same schema"
     }
   ],
   "til/entra-id": [
@@ -2762,7 +2916,7 @@
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "created": "2024-01-07T17:01:00.000Z",
+      "created": "2024-01-07T18:01:00.000Z",
       "snippet": "Permissions applied for Entra ID"
     },
     {
@@ -2770,7 +2924,7 @@
       "title": "Entra ID Managed Identities",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:41:00.000Z",
+      "created": "2023-12-23T12:41:00.000Z",
       "snippet": "AAD creates access token and sends it back to IMDS, which gives it to resource"
     },
     {
@@ -2778,7 +2932,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T12:20:00.000Z"
     }
   ],
   "til/create-azure-dns-zone-and-records": [
@@ -2820,7 +2974,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/create-nsg-in-azure": [
@@ -2910,8 +3064,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Control traffic flows via Azure Firewall or NSG/ASG"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Control Traffic Flows via Azure Firewall or NSG/ASG"
     }
   ],
   "til/windows-sysprep-reference": [
@@ -2937,7 +3091,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-resources": [
@@ -3082,7 +3236,7 @@
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "created": "2024-01-07T17:01:00.000Z",
+      "created": "2024-01-07T18:01:00.000Z",
       "snippet": "Different from azure roles (they apply to Azure resources)"
     },
     {
@@ -3090,7 +3244,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/bicep-parameters": [
@@ -3166,7 +3320,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/bicep-loops": [
@@ -3201,7 +3355,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "micro/new-updates-to-claude": [
@@ -3227,7 +3381,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T12:20:00.000Z"
     }
   ],
   "til/aws-iam-basics": [
@@ -3246,7 +3400,7 @@
       "created": "2022-07-26T20:54:00.000Z"
     },
     {
-      "slug": "/til/cantrill,-adrian---saac02_03/",
+      "slug": "/til/cantrill-adrian-saac02-03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
@@ -3262,7 +3416,7 @@
       "created": "2022-07-26T20:54:00.000Z"
     },
     {
-      "slug": "/til/cantrill,-adrian---saac02_03/",
+      "slug": "/til/cantrill-adrian-saac02-03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
@@ -3278,7 +3432,7 @@
       "created": "2022-07-26T20:54:00.000Z"
     },
     {
-      "slug": "/til/cantrill,-adrian---saac02_03/",
+      "slug": "/til/cantrill-adrian-saac02-03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
@@ -3355,7 +3509,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-rbac": [
@@ -3402,7 +3556,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-ad-connect-pre-reqs": [
@@ -3430,7 +3584,7 @@
       "description": "",
       "category": "til",
       "created": "2022-08-04T08:36:00.000Z",
-      "snippet": "Export configuration of existing Azure AD Connect server"
+      "snippet": "Export Configuration of Existing Azure AD Connect Server"
     },
     {
       "slug": "/til/entra-connect-sync/",
@@ -3438,7 +3592,7 @@
       "description": "",
       "category": "til",
       "created": "2022-08-04T08:36:00.000Z",
-      "snippet": "Export configuration of existing Azure AD Connect server"
+      "snippet": "Export Configuration of Existing Azure AD Connect Server"
     }
   ],
   "til/azure-ad-connect-upgrade-from-old-version-to-new-version": [
@@ -3448,7 +3602,7 @@
       "description": "",
       "category": "til",
       "created": "2022-08-04T08:36:00.000Z",
-      "snippet": "Azure AD Connect Upgrade from old version to new version"
+      "snippet": "Azure AD Connect Upgrade From Old Version to New Version"
     },
     {
       "slug": "/til/entra-connect-sync/",
@@ -3456,7 +3610,7 @@
       "description": "",
       "category": "til",
       "created": "2022-08-04T08:36:00.000Z",
-      "snippet": "Azure AD Connect Upgrade from old version to new version"
+      "snippet": "Azure AD Connect Upgrade From Old Version to New Version"
     }
   ],
   "til/azure-monitoring-old": [
@@ -3474,15 +3628,15 @@
       "description": "",
       "category": "til",
       "created": "2024-05-02T15:49:00.000Z",
-      "snippet": "From all the logs captured in Azure monitoring old we could create a dashboard"
+      "snippet": "From all the logs captured in Azure Monitoring Old we could create a dashboard"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Azure monitoring old"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Azure Monitoring Old"
     }
   ],
   "til/azure-vnet": [
@@ -3630,7 +3784,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-storage-overview": [
@@ -3663,7 +3817,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Storage Overview"
     }
   ],
@@ -3697,7 +3851,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/external-access": [
@@ -3714,7 +3868,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/resiliency-overview": [
@@ -3779,7 +3933,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-resiliency-concepts": [
@@ -3789,15 +3943,15 @@
       "description": "",
       "category": "til",
       "created": "2024-04-08T15:30:00.000Z",
-      "snippet": "Related to Azure resiliency concepts"
+      "snippet": "Related to Azure Resiliency Concepts"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Azure resiliency concepts"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Azure Resiliency Concepts"
     }
   ],
   "til/disaster-recovery": [
@@ -3846,7 +4000,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-restore-from-backup": [
@@ -3871,7 +4025,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Restore from backups"
     }
   ],
@@ -3889,7 +4043,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Backup Access Tiers"
     }
   ],
@@ -3915,7 +4069,7 @@
       "title": "Entra ID Governance",
       "description": "",
       "category": "til",
-      "created": "2024-01-10T12:59:00.000Z",
+      "created": "2024-01-10T13:59:00.000Z",
       "snippet": "Entra Privileged Identity Management"
     },
     {
@@ -3923,7 +4077,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z",
+      "created": "2023-12-23T12:20:00.000Z",
       "snippet": "Entra Privileged Identity Management"
     }
   ],
@@ -3948,7 +4102,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-vm-basics": [
@@ -4013,7 +4167,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-private-ip-address": [
@@ -4046,7 +4200,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Private IP Address"
     }
   ],
@@ -4103,7 +4257,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-kubernetes-service": [
@@ -4135,7 +4289,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Kubernetes Service"
     }
   ],
@@ -4225,7 +4379,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/resource-groups": [
@@ -4305,7 +4459,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-private-link": [
@@ -4322,7 +4476,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-app-service": [
@@ -4332,7 +4486,7 @@
       "description": "",
       "category": "til",
       "created": "2024-07-19T15:59:00.000Z",
-      "snippet": "Implicit dependency between resources by using the id of a resource created earlier, example id of Azure App service#App service plan when defining app service"
+      "snippet": "Implicit dependency between resources by using the id of a resource created earlier, example id of Azure App Service#App Service Plan when defining app service"
     },
     {
       "slug": "/til/azure-dns/",
@@ -4347,7 +4501,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-master": [
@@ -4475,7 +4629,7 @@
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "created": "2024-01-07T17:01:00.000Z",
+      "created": "2024-01-07T18:01:00.000Z",
       "snippet": "Different from azure roles (they apply to Azure resources)"
     },
     {
@@ -4483,7 +4637,7 @@
       "title": "Entra ID Managed Identities",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:41:00.000Z",
+      "created": "2023-12-23T12:41:00.000Z",
       "snippet": "Provides identity for a resource which is hosted on \"Azure\", when compared against Azure Entra ID App Identity which can be used for both on-prem and azure."
     },
     {
@@ -4491,7 +4645,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z",
+      "created": "2023-12-23T12:20:00.000Z",
       "snippet": "Entra is the overall umbrella for identity and access solution in \"azure\"."
     }
   ],
@@ -4524,7 +4678,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-storage-services": [
@@ -4549,7 +4703,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Storage Services"
     }
   ],
@@ -4567,7 +4721,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-storage-account": [
@@ -4600,7 +4754,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Storage Account"
     }
   ],
@@ -4634,8 +4788,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Control traffic flows via Azure Firewall or NSG/ASG"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Control Traffic Flows via Azure Firewall or NSG/ASG"
     }
   ],
   "til/azure-container-instance": [
@@ -4652,11 +4806,27 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Container Instance"
     }
   ],
   "til/kubernetes": [
+    {
+      "slug": "/til/how-to-create-static-pods/",
+      "title": "How to Create Static Pods",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-24T06:33:00.000Z",
+      "snippet": "To create static pods in Kubernetes:"
+    },
+    {
+      "slug": "/til/kubernetes-deployment/",
+      "title": "Kubernetes Deployment",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-16T13:57:00.000Z",
+      "snippet": "This is a higher level object in Kubernetes, one-level up from ReplicaSets. They provide more functionalities and handle more use cases like rolling upgrades, pause deployments, etc."
+    },
     {
       "slug": "/til/pods/",
       "title": "Pods",
@@ -4733,7 +4903,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-monitoring": [
@@ -4757,7 +4927,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-log-analytics-workspace": [
@@ -4784,7 +4954,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-functions": [
@@ -4809,7 +4979,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/cloud-computing-fundamentals": [
@@ -4818,11 +4988,11 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Cloud Computing Fundamentals"
     },
     {
-      "slug": "/til/cantrill,-adrian---saac02_03/",
+      "slug": "/til/cantrill-adrian-saac02-03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
@@ -4836,7 +5006,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Types of operations in Azure"
     }
   ],
@@ -4846,8 +5016,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Why is identity needed"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Why Is Identity Needed"
     }
   ],
   "til/decentralised-identities": [
@@ -4856,8 +5026,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Decentralised identities"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Decentralised Identities"
     }
   ],
   "til/microsoft-entra": [
@@ -4874,7 +5044,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-policy": [
@@ -4899,7 +5069,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-roles": [
@@ -4931,7 +5101,7 @@
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "created": "2024-01-07T17:01:00.000Z",
+      "created": "2024-01-07T18:01:00.000Z",
       "snippet": "Different from azure roles (they apply to Azure resources)"
     },
     {
@@ -4939,7 +5109,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-rbac-custom-roles": [
@@ -4963,16 +5133,16 @@
       "title": "Entra ID Custom Roles",
       "description": "",
       "category": "til",
-      "created": "2024-01-07T18:11:00.000Z",
-      "snippet": "Similar to Azure RBAC custom roles"
+      "created": "2024-01-07T19:11:00.000Z",
+      "snippet": "Similar to Azure RBAC Custom Roles"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Azure RBAC custom roles"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Azure RBAC Custom Roles"
     }
   ],
   "til/azure-cost-management": [
@@ -5003,7 +5173,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Cost Management"
     }
   ],
@@ -5045,7 +5215,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-abac": [
@@ -5054,7 +5224,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-naming": [
@@ -5071,7 +5241,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-tagging": [
@@ -5080,7 +5250,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-resource-lock": [
@@ -5089,7 +5259,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/replication": [
@@ -5128,7 +5298,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/how-do-azure-resources-use-resiliency": [
@@ -5137,8 +5307,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "How do Azure resources use resiliency"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "How Do Azure Resources Use Resiliency"
     }
   ],
   "til/azure-availability-zones": [
@@ -5171,7 +5341,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Availability Zones"
     }
   ],
@@ -5181,8 +5351,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Multi-region deployments"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Multi-region Deployments"
     }
   ],
   "til/preference-for-replications": [
@@ -5192,15 +5362,15 @@
       "description": "",
       "category": "til",
       "created": "2024-04-07T12:56:00.000Z",
-      "snippet": "Preference for replications"
+      "snippet": "Preference for Replications"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Preference for replications"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Preference for Replications"
     }
   ],
   "til/vm-replications": [
@@ -5209,7 +5379,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-storage-redundancy": [
@@ -5234,7 +5404,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Storage Redundancy"
     }
   ],
@@ -5252,7 +5422,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-netapp-files": [
@@ -5261,7 +5431,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-managed-disks": [
@@ -5285,7 +5455,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-networking-basics": [
@@ -5294,7 +5464,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Networking Basics"
     }
   ],
@@ -5320,7 +5490,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Create VNet in Azure"
     }
   ],
@@ -5346,7 +5516,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-application-gateway": [
@@ -5371,7 +5541,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Application Gateway"
     }
   ],
@@ -5397,8 +5567,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Connecting virtual networks"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Connecting Virtual Networks"
     }
   ],
   "til/vnet-peering": [
@@ -5431,7 +5601,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/user-defined-routing": [
@@ -5464,7 +5634,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "User defined routing"
     }
   ],
@@ -5489,7 +5659,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Connecting to Onprem"
     }
   ],
@@ -5514,7 +5684,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-vpn": [
@@ -5554,7 +5724,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/how-to-create-s2s-vpn": [
@@ -5585,7 +5755,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/how-to-create-p2s-vpn": [
@@ -5601,7 +5771,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-firewall": [
@@ -5618,8 +5788,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Control traffic flows via Azure Firewall or NSG/ASG"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Control Traffic Flows via Azure Firewall or NSG/ASG"
     }
   ],
   "til/application-security-groups": [
@@ -5644,8 +5814,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Control traffic flows via Azure Firewall or NSG/ASG"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Control Traffic Flows via Azure Firewall or NSG/ASG"
     }
   ],
   "til/azure-virtual-wan": [
@@ -5654,7 +5824,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-service-endpoints-and-service-endpoint-policies": [
@@ -5671,7 +5841,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Service Endpoints and Service Endpoint Policies"
     }
   ],
@@ -5681,8 +5851,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Azure custom script extension"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Azure Custom Script Extension"
     }
   ],
   "til/azure-compute-gallery": [
@@ -5691,7 +5861,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Compute Gallery"
     }
   ],
@@ -5701,8 +5871,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Use Azure VMware solution if an org wants to move to cloud quickly"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Use Azure VMware Solution If an Org Wants to Move to Cloud Quickly"
     }
   ],
   "til/azure-bastion": [
@@ -5711,7 +5881,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-container-apps": [
@@ -5720,7 +5890,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Container Apps"
     }
   ],
@@ -5730,7 +5900,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-static-web-app": [
@@ -5739,7 +5909,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Static Web App"
     }
   ],
@@ -5749,7 +5919,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/type-of-databases": [
@@ -5766,7 +5936,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/types-of-data-related-roles": [
@@ -5775,8 +5945,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Types of data related roles"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Types of Data Related Roles"
     }
   ],
   "til/data-flow": [
@@ -5793,7 +5963,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-sql": [
@@ -5802,7 +5972,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-open-source-db": [
@@ -5811,8 +5981,8 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Azure Open source DB"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Azure Open Source DB"
     }
   ],
   "til/azure-cosmos-db": [
@@ -5821,7 +5991,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/azure-data-warehouse-and-analytics": [
@@ -5831,7 +6001,7 @@
       "description": "",
       "category": "til",
       "created": "2024-04-27T10:58:00.000Z",
-      "snippet": "Azure Data warehouse and analytics"
+      "snippet": "Azure Data Warehouse and Analytics"
     },
     {
       "slug": "/til/data-flow/",
@@ -5839,15 +6009,15 @@
       "description": "",
       "category": "til",
       "created": "2024-04-26T16:46:00.000Z",
-      "snippet": "Load is stored in DB, or Azure Data warehouse and analytics"
+      "snippet": "Load is stored in DB, or Azure Data Warehouse and Analytics"
     },
     {
       "slug": "/til/azure-master/",
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
-      "snippet": "Azure Data warehouse and analytics"
+      "created": "2023-12-23T12:15:00.000Z",
+      "snippet": "Azure Data Warehouse and Analytics"
     }
   ],
   "til/create-backup-for-vms": [
@@ -5864,7 +6034,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "How to backup azure vm"
     }
   ],
@@ -5874,7 +6044,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "What can we backup using Azure Backup\\"
     }
   ],
@@ -5892,7 +6062,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Restore VM from Azure backup"
     }
   ],
@@ -5910,7 +6080,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Restore files from Azure backup"
     }
   ],
@@ -5928,7 +6098,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Types of monitoring data in Azure"
     }
   ],
@@ -5938,7 +6108,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Network Watcher"
     }
   ],
@@ -5948,7 +6118,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Monitor Alerts"
     }
   ],
@@ -5974,7 +6144,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/create-a-log-alert-in-azure": [
@@ -5983,7 +6153,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z"
+      "created": "2023-12-23T12:15:00.000Z"
     }
   ],
   "til/well-architected-framework": [
@@ -5992,7 +6162,7 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Azure Well Architected Framework"
     }
   ],
@@ -6010,8 +6180,18 @@
       "title": "Azure Master",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:15:00.000Z",
+      "created": "2023-12-23T12:15:00.000Z",
       "snippet": "Five pillars of Azure well architected framework"
+    }
+  ],
+  "til/about-network-translation": [
+    {
+      "slug": "/til/azure-nat-gateway/",
+      "title": "Azure NAT Gateway",
+      "description": "",
+      "category": "til",
+      "created": "2026-06-22T10:55:00.000Z",
+      "snippet": "This is the preferred approach to allow access to the internet from our subnet in Azure (Azure SNAT). There are default routes, which uses public IPs from Azure region to do this by default but the problem is those IPs keep changing at random. So, for example if you need to whitelist this IP on a service on the internet, you can't."
     }
   ],
   "til/crud": [
@@ -6048,7 +6228,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T12:20:00.000Z"
     }
   ],
   "til/get-azure-vm-images": [
@@ -6115,7 +6295,7 @@
   ],
   "til/aws-fundamentals": [
     {
-      "slug": "/til/cantrill,-adrian---saac02_03/",
+      "slug": "/til/cantrill-adrian-saac02-03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
@@ -6124,7 +6304,7 @@
   ],
   "til/cloudformation-basics": [
     {
-      "slug": "/til/cantrill,-adrian---saac02_03/",
+      "slug": "/til/cantrill-adrian-saac02-03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
@@ -6134,7 +6314,7 @@
   ],
   "til/aws-cloudwatch-basics": [
     {
-      "slug": "/til/cantrill,-adrian---saac02_03/",
+      "slug": "/til/cantrill-adrian-saac02-03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
@@ -6144,7 +6324,7 @@
   ],
   "til/shared-responsibility-model": [
     {
-      "slug": "/til/cantrill,-adrian---saac02_03/",
+      "slug": "/til/cantrill-adrian-saac02-03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
@@ -6154,7 +6334,7 @@
   ],
   "til/route-53-basics": [
     {
-      "slug": "/til/cantrill,-adrian---saac02_03/",
+      "slug": "/til/cantrill-adrian-saac02-03/",
       "title": "Cantrill, Adrian - SAAC02_03",
       "description": "",
       "category": "til",
@@ -6167,8 +6347,7 @@
       "title": "Certificate Reference",
       "description": "",
       "category": "til",
-      "created": "2022-05-02T08:47:00.000Z",
-      "snippet": "!openssl convert pkcs to pem"
+      "created": "2022-05-02T08:47:00.000Z"
     }
   ],
   "til/compare-private-key-and-ssl": [
@@ -6177,8 +6356,7 @@
       "title": "Certificate Reference",
       "description": "",
       "category": "til",
-      "created": "2022-05-02T08:47:00.000Z",
-      "snippet": "!Compare private key and ssl"
+      "created": "2022-05-02T08:47:00.000Z"
     }
   ],
   "til/openssl-generate-csr": [
@@ -6187,8 +6365,7 @@
       "title": "Certificate Reference",
       "description": "",
       "category": "til",
-      "created": "2022-05-02T08:47:00.000Z",
-      "snippet": "!Openssl generate csr"
+      "created": "2022-05-02T08:47:00.000Z"
     }
   ],
   "til/certificate-output-in-plaintext": [
@@ -6197,8 +6374,7 @@
       "title": "Certificate Reference",
       "description": "",
       "category": "til",
-      "created": "2022-05-02T08:47:00.000Z",
-      "snippet": "!Certificate output in plaintext"
+      "created": "2022-05-02T08:47:00.000Z"
     }
   ],
   "til/certificate-remove-password-from-private-key": [
@@ -6207,8 +6383,7 @@
       "title": "Certificate Reference",
       "description": "",
       "category": "til",
-      "created": "2022-05-02T08:47:00.000Z",
-      "snippet": "!Certificate remove password from private key"
+      "created": "2022-05-02T08:47:00.000Z"
     }
   ],
   "til/how-to-create-stacked-certificates": [
@@ -6217,8 +6392,17 @@
       "title": "Certificate Reference",
       "description": "",
       "category": "til",
-      "created": "2022-05-02T08:47:00.000Z",
-      "snippet": "!How to create stacked certificates"
+      "created": "2022-05-02T08:47:00.000Z"
+    }
+  ],
+  "til/windows-corrupt-profile-issue": [
+    {
+      "slug": "/til/clean-user-profile-windows/",
+      "title": "Clean User Profile Windows",
+      "description": "",
+      "category": "til",
+      "created": "2024-12-09T12:28:00.000Z",
+      "snippet": "If windows user profile is corrupt, we can clean it up."
     }
   ],
   "til/network-virtual-appliance": [
@@ -6247,6 +6431,32 @@
       "category": "til",
       "created": "2024-08-12T13:10:00.000Z",
       "snippet": "Fastest way to install modules on disconnected servers is Install powershell modules."
+    }
+  ],
+  "til/replicasets-in-kubernetes": [
+    {
+      "slug": "/til/how-to-use-priority-and-preemption/",
+      "title": "How to Use Priority and Preemption",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-24T10:38:00.000Z",
+      "snippet": "Create Pods with priorityClassName set to one of the added PriorityClasses. This can be added as a property to deployment or ReplicaSets."
+    },
+    {
+      "slug": "/til/daemonset-in-kubernetes/",
+      "title": "DaemonSet in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-23T13:41:00.000Z",
+      "snippet": "They are defined similar to ReplicaSets, with apps/v1 and type of DaemonSet."
+    },
+    {
+      "slug": "/til/kubernetes-deployment/",
+      "title": "Kubernetes Deployment",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-16T13:57:00.000Z",
+      "snippet": "This is a higher level object in Kubernetes, one-level up from ReplicaSets. They provide more functionalities and handle more use cases like rolling upgrades, pause deployments, etc."
     }
   ],
   "til/extract-transform-load": [
@@ -6316,7 +6526,7 @@
       "title": "Entra External IDs",
       "description": "",
       "category": "til",
-      "created": "2024-01-08T17:57:00.000Z",
+      "created": "2024-01-08T18:57:00.000Z",
       "snippet": "AuthN happens in guest tenant"
     },
     {
@@ -6324,14 +6534,14 @@
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "created": "2024-01-07T17:01:00.000Z"
+      "created": "2024-01-07T18:01:00.000Z"
     },
     {
       "slug": "/til/microsoft-entra/",
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T12:20:00.000Z"
     }
   ],
   "til/entra-connect-sync": [
@@ -6348,7 +6558,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T12:20:00.000Z"
     }
   ],
   "til/entra-id-governance": [
@@ -6357,7 +6567,7 @@
       "title": "Entra ID Entitlement Management",
       "description": "",
       "category": "til",
-      "created": "2024-01-10T17:57:00.000Z",
+      "created": "2024-01-10T18:57:00.000Z",
       "snippet": "Part of Entra ID Governance"
     },
     {
@@ -6365,7 +6575,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T12:20:00.000Z"
     }
   ],
   "til/entra-id-entitlement-management": [
@@ -6374,7 +6584,7 @@
       "title": "Entra ID Governance",
       "description": "",
       "category": "til",
-      "created": "2024-01-10T12:59:00.000Z",
+      "created": "2024-01-10T13:59:00.000Z",
       "snippet": "Entra ID Entitlement Management"
     },
     {
@@ -6382,7 +6592,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z",
+      "created": "2023-12-23T12:20:00.000Z",
       "snippet": "Entra ID Entitlement Management"
     }
   ],
@@ -6392,7 +6602,7 @@
       "title": "Entra ID Governance",
       "description": "",
       "category": "til",
-      "created": "2024-01-10T12:59:00.000Z",
+      "created": "2024-01-10T13:59:00.000Z",
       "snippet": "Entra Access Reviews"
     },
     {
@@ -6400,7 +6610,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z",
+      "created": "2023-12-23T12:20:00.000Z",
       "snippet": "Entra Access Reviews"
     }
   ],
@@ -6418,7 +6628,7 @@
       "title": "Entra ID Managed Identities",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:41:00.000Z",
+      "created": "2023-12-23T12:41:00.000Z",
       "snippet": "Provides identity for a resource which is hosted on \"Azure\", when compared against Azure Entra ID App Identity which can be used for both on-prem and azure."
     }
   ],
@@ -6443,7 +6653,7 @@
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "created": "2024-01-07T17:01:00.000Z"
+      "created": "2024-01-07T18:01:00.000Z"
     }
   ],
   "til/entra-id-groups": [
@@ -6476,7 +6686,7 @@
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "created": "2024-01-07T17:01:00.000Z",
+      "created": "2024-01-07T18:01:00.000Z",
       "snippet": "entra group (requires p1) /"
     }
   ],
@@ -6486,7 +6696,7 @@
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "created": "2024-01-07T17:01:00.000Z",
+      "created": "2024-01-07T18:01:00.000Z",
       "snippet": "types: built-in or custom - Entra custom roles"
     },
     {
@@ -6494,8 +6704,8 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z",
-      "snippet": "Entra ID custom roles"
+      "created": "2023-12-23T12:20:00.000Z",
+      "snippet": "Entra ID Custom Roles"
     }
   ],
   "til/entra-id-administrative-units": [
@@ -6504,7 +6714,7 @@
       "title": "Entra ID Roles",
       "description": "",
       "category": "til",
-      "created": "2024-01-07T17:01:00.000Z",
+      "created": "2024-01-07T18:01:00.000Z",
       "snippet": "Entra Administrative Units"
     },
     {
@@ -6512,7 +6722,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z",
+      "created": "2023-12-23T12:20:00.000Z",
       "snippet": "Entra ID Administrative Units"
     }
   ],
@@ -6530,8 +6740,18 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z",
+      "created": "2023-12-23T12:20:00.000Z",
       "snippet": "Authentication and Authorization"
+    }
+  ],
+  "til/vmware-logs": [
+    {
+      "slug": "/til/find-out-authentication-logs-in-vmware-vcenter/",
+      "title": "Find Out Authentication Logs in VMware VCenter",
+      "description": "",
+      "category": "til",
+      "created": "2025-03-06T13:04:00.000Z",
+      "snippet": "Related to VMware Logs"
     }
   ],
   "til/entra-id-editions": [
@@ -6548,7 +6768,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T12:20:00.000Z"
     }
   ],
   "til/how-to-label-nodes-in-kubernetes": [
@@ -6563,6 +6783,14 @@
   ],
   "til/kubernetes-deployment": [
     {
+      "slug": "/til/how-to-use-priority-and-preemption/",
+      "title": "How to Use Priority and Preemption",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-24T10:38:00.000Z",
+      "snippet": "Create Pods with priorityClassName set to one of the added PriorityClasses. This can be added as a property to deployment or ReplicaSets."
+    },
+    {
       "slug": "/til/how-to-create-a-deployment-using-kubectl/",
       "title": "How to Create a Deployment Using Kubectl",
       "description": "",
@@ -6571,7 +6799,69 @@
       "snippet": "To create a deployment, one way to do it is using the yaml file, but a quicker way to do it is via:"
     }
   ],
+  "til/static-pods": [
+    {
+      "slug": "/til/how-to-create-static-pods/",
+      "title": "How to Create Static Pods",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-24T06:33:00.000Z",
+      "snippet": "To create static pods in Kubernetes:"
+    }
+  ],
+  "til/ad-pre-requisites": [
+    {
+      "slug": "/til/how-to-install-ad/",
+      "title": "How to Install AD",
+      "description": "",
+      "category": "til",
+      "created": "2024-12-17T13:49:00.000Z",
+      "snippet": "After completing AD Pre-requisites, for first dc in domain."
+    }
+  ],
+  "til/moving-fsmo-roles": [
+    {
+      "slug": "/til/how-to-upgrade-domain-controller/",
+      "title": "How to Upgrade Domain Controller",
+      "description": "",
+      "category": "til",
+      "created": "2025-03-08T09:31:00.000Z",
+      "snippet": "| Run command netdom query fsmo and ensure that old DC is not running any FSMO roles - Moving Fsmo Roles |"
+    },
+    {
+      "slug": "/til/how-to-install-ad/",
+      "title": "How to Install AD",
+      "description": "",
+      "category": "til",
+      "created": "2024-12-17T13:49:00.000Z",
+      "snippet": "For additional DCs, after install you can move fsmo roles"
+    }
+  ],
   "til/pods": [
+    {
+      "slug": "/til/preemption-in-kubernetes/",
+      "title": "Preemption in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-24T10:41:00.000Z",
+      "snippet": "Preemption specifies whether removing a pod with lower pod priority than the one it is trying to schedule will allow this one to run. If such a pod is found, it is evicted to make way for the higher priority pod."
+    },
+    {
+      "slug": "/til/pod-priority/",
+      "title": "Pod Priority",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-24T10:29:00.000Z",
+      "snippet": "Priority indicates the importance of a pod relative to others."
+    },
+    {
+      "slug": "/til/static-pods/",
+      "title": "Static Pods",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-24T06:31:00.000Z",
+      "snippet": "Static pods are managed by kubelet on a specific node, unlike regular pods which are managed by the control plane, based on files kept in the pod manifest directory. The kubelet scans the directory periodically and creates and deletes the pods based on if a file is added or removed. The kubelet also restarts the pod if it fails for example."
+    },
     {
       "slug": "/til/how-to-label-nodes-in-kubernetes/",
       "title": "How to Label Nodes in Kubernetes",
@@ -6579,6 +6869,24 @@
       "category": "til",
       "created": "2026-10-22T19:48:00.000Z",
       "snippet": "Why do we use this? In scenarios where we want to use for example nodeSelector with pods to specify where it may be able to run."
+    }
+  ],
+  "til/priority-class": [
+    {
+      "slug": "/til/preemption-in-kubernetes/",
+      "title": "Preemption in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-24T10:41:00.000Z",
+      "snippet": "By default in PriorityClass, the preemptionPolicy is set to PreemptLowerPriority, but it can be set to Never in which case these higher priority pods will not preempt other pods. Which might be useful in scenarios where you have a higher priority task but you don't want to kill existing tasks."
+    },
+    {
+      "slug": "/til/how-to-use-priority-and-preemption/",
+      "title": "How to Use Priority and Preemption",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-24T10:38:00.000Z",
+      "snippet": "Set up a PriorityClass"
     }
   ],
   "bookshelf/continuous-delivery": [
@@ -6591,24 +6899,14 @@
       "snippet": "The authors of continuous delivery prefer commit messages be multiple paragraph."
     }
   ],
-  "til/replicasets-in-kubernetes": [
-    {
-      "slug": "/til/kubernetes-deployment/",
-      "title": "Kubernetes Deployment",
-      "description": "",
-      "category": "til",
-      "created": "2026-10-16T13:57:00.000Z",
-      "snippet": "This is a higher level object, one-level up from ReplicaSets. They provide more functionalities and handle more use cases like rolling upgrades, pause deployments, etc."
-    }
-  ],
-  "til/active-directory-domains": [
+  "til/how-to-check-ldaps-is-working-or-not-ldpexe": [
     {
       "slug": "/til/ldap/",
       "title": "LDAP",
       "description": "",
       "category": "til",
       "created": "2026-09-20T11:26:00.000Z",
-      "snippet": "Lightweight Directory Access Protocol. V3 but V2 included for backwards compatibility. It is open, vendor-neutral. LDAP is used to access and managed objects in a Domain."
+      "snippet": "We can use ldp tool to check the status/to troubleshoot, etc. Example - How to check ldaps is working or not - ldp.exe."
     }
   ],
   "til/add-custom-domain-to-entra-id": [
@@ -6617,7 +6915,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z",
+      "created": "2023-12-23T12:20:00.000Z",
       "snippet": "How to add a custom domain to Entra ID tenant"
     }
   ],
@@ -6627,8 +6925,8 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z",
-      "snippet": "Difference between Entra ID and ADDS"
+      "created": "2023-12-23T12:20:00.000Z",
+      "snippet": "Difference Between Entra ID and ADDS"
     }
   ],
   "til/entra-id-objects": [
@@ -6637,7 +6935,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T12:20:00.000Z"
     }
   ],
   "til/how-to-assign-licenses-in-entra": [
@@ -6646,7 +6944,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z",
+      "created": "2023-12-23T12:20:00.000Z",
       "snippet": "How to assign licenses in Entra"
     }
   ],
@@ -6656,7 +6954,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T12:20:00.000Z"
     }
   ],
   "til/conditional-access": [
@@ -6665,7 +6963,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z"
+      "created": "2023-12-23T12:20:00.000Z"
     }
   ],
   "til/entra-self-service-password-reset": [
@@ -6674,7 +6972,7 @@
       "title": "Microsoft Entra",
       "description": "",
       "category": "til",
-      "created": "2023-12-23T11:20:00.000Z",
+      "created": "2023-12-23T12:20:00.000Z",
       "snippet": "Entra Self Service Password Reset"
     }
   ],
@@ -6782,6 +7080,16 @@
       "snippet": "Servers don't have ports. They connect to backchannel ports on the UCS IOM or Fabric Extenders module."
     }
   ],
+  "til/powershell-arrays": [
+    {
+      "slug": "/til/update-firewall-on-vmware/",
+      "title": "Update Firewall on VMware",
+      "description": "",
+      "category": "til",
+      "created": "2025-02-13T12:11:00.000Z",
+      "snippet": "ipaddress is a string so can not have multiple items in one go. So need to loop for allowed IP addresses as a PowerShell Arrays, if many."
+    }
+  ],
   "til/create-custom-route": [
     {
       "slug": "/til/user-defined-routing/",
@@ -6789,6 +7097,16 @@
       "description": "",
       "category": "til",
       "created": "2024-07-28T11:01:00.000Z"
+    }
+  ],
+  "til/vcenter-upgrade": [
+    {
+      "slug": "/til/vc-upgrade-7-to-8/",
+      "title": "VC Upgrade 7 to 8",
+      "description": "",
+      "category": "til",
+      "created": "2025-03-11T09:30:00.000Z",
+      "snippet": "After VCenter Upgrade."
     }
   ],
   "til/create-vnet-peering-in-azure": [
@@ -6818,7 +7136,7 @@
       "description": "",
       "category": "til",
       "created": "2024-04-08T13:05:00.000Z",
-      "snippet": "Related to Powershell second hop problem"
+      "snippet": "Related to Powershell Second Hop Problem"
     }
   ],
   "bookshelf/abundance-how-we-build-a-better-future": [
@@ -7609,6 +7927,14 @@
     }
   ],
   "bookshelf/inside-the-box": [
+    {
+      "slug": "/nordletter/nl128-mina-halua-sandwich/",
+      "title": "Mina Halua Sandwich",
+      "description": "Growing up in an abundant world",
+      "category": "nordletter",
+      "created": "2026-10-24T07:32:00.000Z",
+      "snippet": "I am reading Inside the Box and it talks about constraints being the way to true freedom. I wrote about it in NL127."
+    },
     {
       "slug": "/nordletter/nl127-17-syllables-and-an-idea/",
       "title": "NL127 - 17 Syllables and an Idea",
@@ -8940,6 +9266,16 @@
       "snippet": "That's what I'm trying to do with re-learning k8s."
     }
   ],
+  "nordletter/nl127-17-syllables-and-an-idea": [
+    {
+      "slug": "/nordletter/nl128-mina-halua-sandwich/",
+      "title": "Mina Halua Sandwich",
+      "description": "Growing up in an abundant world",
+      "category": "nordletter",
+      "created": "2026-10-24T07:32:00.000Z",
+      "snippet": "I am reading Inside the Box and it talks about constraints being the way to true freedom. I wrote about it in NL127."
+    }
+  ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
     {
       "slug": "/nordletter/nl63-a-day-trip-to-turku/",
@@ -9305,6 +9641,14 @@
     }
   ],
   "bookshelf/bird-by-bird": [
+    {
+      "slug": "/bookshelf/plot-twist/",
+      "title": "Plot Twist",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-10-17T11:24:00.000Z",
+      "snippet": "This book is part memoir, part writing advice in the vain of Stephen King's On writing and Bird by bird by Anne Lamott. Maybe 80% writing and 20% memoir. There are plenty of stories all through the book, but primarily, this book is about how to write."
+    },
     {
       "slug": "/bookshelf/zen-in-the-art-of-writing/",
       "title": "Zen in the Art of Writing",
