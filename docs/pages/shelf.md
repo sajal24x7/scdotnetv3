@@ -239,7 +239,7 @@ After downloading new covers, the corresponding generate script updates the Type
 
 Every shelf page (`/shelf`, `/bookshelf`, `/filmshelf`, `/tvshelf`, `/gameshelf`) shows each year as a heading above a grid of covers: five per row on desktop, four on tablets, three on phones. Each entry is a `ShelfTile` (`src/components/shelf/ShelfTile.astro`, styles in `src/styles/shelf-wall.css`):
 
-- cover (TV seasons carry an "S3" badge on it), then the title with the rating icon on the same row
+- cover, with the rating icon in its bottom-right corner (TV seasons also carry an "S3" badge bottom-left), then the title
 - series (books), then author / director / creator
 - a status chip only while something is in progress or on hold
 - the genre chip
