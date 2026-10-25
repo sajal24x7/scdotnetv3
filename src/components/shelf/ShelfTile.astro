@@ -69,25 +69,44 @@ const dateLabel = date
 ---
 
 <article class="shelf-tile">
-  {href ? (
-    <a class="shelf-tile__cover" href={href} tabindex="-1" aria-hidden="true">
-      {cover ? (
-        <Image src={cover} alt="" width={220} height={330} layout="fixed" class="shelf-tile__cover-image" loading="lazy" />
-      ) : (
-        <span class="shelf-tile__cover-placeholder">{title}</span>
-      )}
-      {badge && <span class="shelf-tile__badge">{badge}</span>}
-    </a>
-  ) : (
-    <div class="shelf-tile__cover" aria-hidden="true">
-      {cover ? (
-        <Image src={cover} alt="" width={220} height={330} layout="fixed" class="shelf-tile__cover-image" loading="lazy" />
-      ) : (
-        <span class="shelf-tile__cover-placeholder">{title}</span>
-      )}
-      {badge && <span class="shelf-tile__badge">{badge}</span>}
-    </div>
-  )}
+  <div class="shelf-tile__cover-wrap">
+    {href ? (
+      <a class="shelf-tile__cover" href={href} tabindex="-1" aria-hidden="true">
+        {cover ? (
+          <Image src={cover} alt="" width={220} height={330} layout="fixed" class="shelf-tile__cover-image" loading="lazy" />
+        ) : (
+          <span class="shelf-tile__cover-placeholder">{title}</span>
+        )}
+        {badge && <span class="shelf-tile__badge">{badge}</span>}
+      </a>
+    ) : (
+      <div class="shelf-tile__cover" aria-hidden="true">
+        {cover ? (
+          <Image src={cover} alt="" width={220} height={330} layout="fixed" class="shelf-tile__cover-image" loading="lazy" />
+        ) : (
+          <span class="shelf-tile__cover-placeholder">{title}</span>
+        )}
+        {badge && <span class="shelf-tile__badge">{badge}</span>}
+      </div>
+    )}
+    {/* Sits on the cover, outside the link, since a button can't nest in an <a>. */}
+    {ratingDisplay && rating && (
+      <button
+        type="button"
+        class={`book-card__chip book-card__chip--rating book-card__chip--clickable book-card__chip--rating-${rating} shelf-tile__rating`}
+        data-filter-type="rating"
+        data-filter-value={rating}
+        title={ratingDisplay.label}
+      >
+        {ratingDisplay.iconSpecs.map((spec) => (
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            {(spec.type === 'heart' ? heartIconPaths : thumbIconPaths[spec.direction]).map((d) => <path d={d}></path>)}
+          </svg>
+        ))}
+        <span class="sr-only">{ratingDisplay.label}</span>
+      </button>
+    )}
+  </div>
   {(repeat || notes) && (
     <span class="shelf-tile__marks">
       {repeat && (
@@ -110,28 +129,10 @@ const dateLabel = date
   )}
 
   <div class="shelf-tile__body">
-    <div class="shelf-tile__title-row">
-      <h3 class="shelf-tile__title">
-        {href ? <a href={href}>{title}</a> : title}
-        {badge && <span class="shelf-tile__title-badge"> · {badge}</span>}
-      </h3>
-      {ratingDisplay && rating && (
-        <button
-          type="button"
-          class={`book-card__chip book-card__chip--rating book-card__chip--clickable book-card__chip--rating-${rating} shelf-tile__rating`}
-          data-filter-type="rating"
-          data-filter-value={rating}
-          title={ratingDisplay.label}
-        >
-          {ratingDisplay.iconSpecs.map((spec) => (
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              {(spec.type === 'heart' ? heartIconPaths : thumbIconPaths[spec.direction]).map((d) => <path d={d}></path>)}
-            </svg>
-          ))}
-          <span class="sr-only">{ratingDisplay.label}</span>
-        </button>
-      )}
-    </div>
+    <h3 class="shelf-tile__title">
+      {href ? <a href={href}>{title}</a> : title}
+      {badge && <span class="shelf-tile__title-badge"> · {badge}</span>}
+    </h3>
 
     {series && (
       <button type="button" class="shelf-tile__series" data-filter-type="series" data-filter-value={series}>
