@@ -8,7 +8,7 @@ season: 1
 creator:
   - James Gay-Rees
 started: 2021-01-13T00:00:00.000Z
-finished: 2026-07-05T00:00:00.000Z
+finished: 2021-01-16T00:00:00.000Z
 genre: documentary
 year: 2019
 rating: like
@@ -16,4 +16,4 @@ platform: Netflix
 status: finished
 cover: formula-1-drive-to-survive.webp
 ---
-Finished watching Season 1 on 2026-07-05.
+Finished watching Season 1 on 2021-01-16.
