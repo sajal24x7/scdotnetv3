@@ -254,6 +254,34 @@
       "status": "approved"
     }
   ],
+  "bookshelf/plot-twist": [
+    {
+      "id": "bluesky:like:3mymjqntwug2m:did:plc:nbo57ipyxeiepe77nmvpto2p",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "夢圓居士",
+        "url": "https://bsky.app/profile/monkeydluffy001.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:nbo57ipyxeiepe77nmvpto2p/bafkreibfik5gszo2ighvooc7avtbx2ikr3gzvhew4v6g265qiu2mik5t54"
+      },
+      "url": "https://bsky.app/profile/monkeydluffy001.bsky.social",
+      "published": "2026-10-24T11:01:36.369Z",
+      "status": "approved"
+    },
+    {
+      "id": "bluesky:like:3mymjqntwug2m:did:plc:opc75so34pvu54xs74pru3qz",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "ꓴ𝖭𝙍𝗘𝖠𝗦𝝤𝖭",
+        "url": "https://bsky.app/profile/superinsanity.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:opc75so34pvu54xs74pru3qz/bafkreidfztkaob7k7zw4pp4axz6lebpywzev6amlaygh7ryxjdu6jq2rwa"
+      },
+      "url": "https://bsky.app/profile/superinsanity.bsky.social",
+      "published": "2026-10-24T11:41:43.903Z",
+      "status": "approved"
+    }
+  ],
   "bookshelf/reading-the-elements-of-marie-curie": [
     {
       "id": "mastodon:repost:116878027693879661:111653096064449100",
@@ -839,20 +867,6 @@
       "status": "approved"
     }
   ],
-  "micro/202610102025": [
-    {
-      "id": "mastodon:repost:117418785110060071:111653327277532792",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Football Channel",
-        "url": "https://newsmast.community/@football",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/9f561af390e2c1a36dc020414309a0d1.png"
-      },
-      "url": "https://newsmast.community/@football",
-      "status": "approved"
-    }
-  ],
   "micro/202610102345": [
     {
       "id": "threads:like-count:DeVErZxgR2b",
@@ -1103,6 +1117,21 @@
       },
       "url": "https://bsky.app/profile/lofiglow.bsky.social",
       "published": "2026-08-22T13:11:53.266Z",
+      "status": "approved"
+    }
+  ],
+  "micro/on-the-benefit-of-writing-workshops": [
+    {
+      "id": "bluesky:like:3myplzhxofh2q:did:plc:opc75so34pvu54xs74pru3qz",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "ꓴ𝖭𝙍𝗘𝖠𝗦𝝤𝖭",
+        "url": "https://bsky.app/profile/superinsanity.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:opc75so34pvu54xs74pru3qz/bafkreidfztkaob7k7zw4pp4axz6lebpywzev6amlaygh7ryxjdu6jq2rwa"
+      },
+      "url": "https://bsky.app/profile/superinsanity.bsky.social",
+      "published": "2026-10-25T19:02:11.676Z",
       "status": "approved"
     }
   ],
@@ -1941,17 +1970,29 @@
       "url": "https://www.instagram.com/p/DeWsMPLIDyA/",
       "count": 11,
       "status": "approved"
+    }
+  ],
+  "photo/202610240917": [
+    {
+      "id": "instagram:like-count:De3-BFTllDs",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/De3-BFTllDs/",
+      "count": 13,
+      "status": "approved"
     },
     {
-      "id": "mastodon:repost:117422341507084362:111653123325216795",
-      "type": "repost",
-      "platform": "mastodon",
+      "id": "threads:like-count:De3985mluME",
+      "type": "like-count",
+      "platform": "threads",
       "author": {
-        "name": "Food & Drink Channel",
-        "url": "https://newsmast.community/@foodanddrink",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/2f8ca8e08072f238a9205363b6b2affb.png"
+        "name": "Threads"
       },
-      "url": "https://newsmast.community/@foodanddrink",
+      "url": "https://www.threads.com/@sajal24x7/post/De3985mluME",
+      "count": 2,
       "status": "approved"
     }
   ],

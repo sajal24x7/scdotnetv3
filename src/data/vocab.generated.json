@@ -1090,6 +1090,36 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/asunder-2026-10-23",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-23"
+		},
+		"puissant": {
+			"word": "puissant",
+			"pos": "other",
+			"gloss": " adjective Puissant is a synonym of powerful used to describe something with puissance —that is, strength or power.",
+			"pronunciation": "PWISS-unt",
+			"example": "The creatures in her fantasy novel are wielders of puissant magic, able to strike down enemies by harnessing the power of weather phenomena like lightning and tornadoes.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/puissant-2026-10-24",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-24"
+		},
+		"emissary": {
+			"word": "emissary",
+			"pos": "other",
+			"gloss": " noun Emissary refers to a person who is sent on a mission to represent another person or organization.",
+			"pronunciation": "EM-uh-sair-ee",
+			"example": "Emissaries from the government are trying to negotiate a settlement.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/emissary-2026-10-25",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-25"
+		},
+		"disparate": {
+			"word": "disparate",
+			"pos": "other",
+			"gloss": " adjective Disparate things are noticeably distinct from one another in quality or character. Disparate can also describe something that contains or is made up of fundamentally different and often incongruous elements.",
+			"pronunciation": "DISS-puh-rut",
+			"example": "The orchestral project joins disparate musical elements to create a truly original sound.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/disparate-2026-10-26",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-26"
 		}
 	}
 }

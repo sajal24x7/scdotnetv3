@@ -8,19 +8,22 @@
  *
  * Wired into content-publish.yml immediately after `sort-inbox`: for every
  * shelf note sort-inbox just moved out of src/content/inbox/ (still
- * untracked at this point in the run — detected via `git status
- * --porcelain`), look for an existing `status: todo` entry in the same
+ * untracked at this point in the run — detected via `git ls-files
+ * --others`), look for an existing `status: todo` entry in the same
  * category whose normalized title matches (normalized `showTitle`, for
  * TV — the same normalization computeWatchNumbers() uses for rewatch
- * grouping, in src/utils/shelfUtils.ts). If found, carry the stub's
+ * grouping, in src/utils/shelfUtils.ts), or whose main title matches when
+ * only one of the two carries a subtitle ("Inside the Box: How Constraints
+ * Make Us Better" vs "Inside the Box"). If found, carry the stub's
  * `cover` over to the arriving note (if the arriving note doesn't already
  * have one) and delete the stub — the arriving note is the canonical entry
  * from here on.
  *
  * Matching only ever targets `todo` entries (never started/paused/
  * finished), so a second "Wool" read never deletes the finished first
- * read. This is deliberately exact-match only — a title that differs even
- * slightly ("Wool" vs "Wool (Silo, #1)") leaves the stub in place; it's
+ * read. Beyond the subtitle rule this is deliberately exact-match only — a
+ * title that differs otherwise ("Wool" vs "Wool (Silo, #1)") leaves the
+ * stub in place; it's
  * reported as a near-miss so it's easy to spot and remove by hand rather
  * than risking a fuzzy match deleting the wrong note.
  */
@@ -46,6 +49,25 @@ function normalizeTitle(title) {
     .replace(/[^a-z0-9\s]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+// "Title: Subtitle" → "Title". Only the first colon splits, so a title
+// without one is returned whole.
+function splitSubtitle(title) {
+  const raw = String(title ?? '');
+  const i = raw.indexOf(':');
+  return i === -1 ? { main: raw, hasSubtitle: false } : { main: raw.slice(0, i), hasSubtitle: true };
+}
+
+// Subtitle-tolerant match: same main title, and at most one side has a
+// subtitle. Two different subtitles ("Dune: Part One" vs "Dune: Part Two")
+// never match.
+function mainTitleMatches(a, b) {
+  const sa = splitSubtitle(a);
+  const sb = splitSubtitle(b);
+  if (sa.hasSubtitle && sb.hasSubtitle) return false;
+  const key = normalizeTitle(sa.main);
+  return key !== '' && key === normalizeTitle(sb.main);
 }
 
 function matchTitle(data) {
@@ -84,15 +106,15 @@ function walkCategory(category) {
 // src/content/inbox/, still untracked in this checkout.
 function findArrivedFiles() {
   const dirs = SHELF_CATEGORIES.map(c => path.join('src', 'content', c));
-  const output = execFileSync('git', ['status', '--porcelain', '--', ...dirs], {
+  // -z keeps paths unquoted: `git status --porcelain` wraps any path with a
+  // space in quotes, which is every "YYYYMMDDHHMM Title.md" note.
+  const output = execFileSync('git', ['ls-files', '--others', '--exclude-standard', '-z', '--', ...dirs], {
     cwd: repoRoot,
     encoding: 'utf8',
   });
 
   return output
-    .split('\n')
-    .filter(line => line.startsWith('??'))
-    .map(line => line.slice(3).trim())
+    .split('\0')
     .filter(p => p.endsWith('.md'))
     .map(p => path.join(repoRoot, p));
 }
@@ -156,7 +178,12 @@ function main() {
     if (!key) continue;
 
     const stubs = walkCategory(data.category).filter(f => f.data.status === 'todo' && f.path !== filePath);
-    const exact = stubs.find(s => normalizeTitle(matchTitle(s.data)) === key);
+    let exact = stubs.find(s => normalizeTitle(matchTitle(s.data)) === key);
+    if (!exact) {
+      // Only take a subtitle match when it's unambiguous.
+      const bySubtitle = stubs.filter(s => mainTitleMatches(matchTitle(data), matchTitle(s.data)));
+      if (bySubtitle.length === 1) exact = bySubtitle[0];
+    }
 
     if (exact) {
       if (exact.data.cover && !data.cover) {

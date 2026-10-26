@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117495526017329929'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mymjvbacqc2i'
+  - 'https://www.threads.com/@sajal24x7/post/De4gFxolO7M'
 ---
 1. The pod name has the node name appended to it, like `kube-apiserver-controlplane` for example
 2. Run `kubectl get pod <podname> -o yaml`
