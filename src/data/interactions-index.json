@@ -1120,6 +1120,21 @@
       "status": "approved"
     }
   ],
+  "micro/on-the-benefit-of-writing-workshops": [
+    {
+      "id": "bluesky:like:3myplzhxofh2q:did:plc:opc75so34pvu54xs74pru3qz",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "ꓴ𝖭𝙍𝗘𝖠𝗦𝝤𝖭",
+        "url": "https://bsky.app/profile/superinsanity.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:opc75so34pvu54xs74pru3qz/bafkreidfztkaob7k7zw4pp4axz6lebpywzev6amlaygh7ryxjdu6jq2rwa"
+      },
+      "url": "https://bsky.app/profile/superinsanity.bsky.social",
+      "published": "2026-10-25T19:02:11.676Z",
+      "status": "approved"
+    }
+  ],
   "micro/on-using-muse-on-your-mac": [
     {
       "id": "bluesky:reply:at://did:plc:ootusrnpre35v2nlowrwxdsm/app.bsky.feed.post/3mwhkok5fcs2a",
@@ -1954,18 +1969,6 @@
       },
       "url": "https://www.instagram.com/p/DeWsMPLIDyA/",
       "count": 11,
-      "status": "approved"
-    },
-    {
-      "id": "mastodon:repost:117422341507084362:111653123325216795",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Food & Drink Channel",
-        "url": "https://newsmast.community/@foodanddrink",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/2f8ca8e08072f238a9205363b6b2affb.png"
-      },
-      "url": "https://newsmast.community/@foodanddrink",
       "status": "approved"
     }
   ],
