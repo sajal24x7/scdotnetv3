@@ -595,7 +595,6 @@
       "bookshelf/202607161739 Maintenance: Of Everything.md",
       "bookshelf/202607161741 Thinking in systems.md",
       "bookshelf/202607161742 Eat to live.md",
-      "bookshelf/202607161743 Inside the Box: How Constraints Make Us Better.md",
       "bookshelf/202607161744 The Common Reader.md",
       "bookshelf/202607161745 Zen Mind, Beginner's Mind.md",
       "bookshelf/202607161746 Personal Development for smart people.md",
@@ -626,6 +625,7 @@
       "bookshelf/202610150823 The Goal.md",
       "bookshelf/202610171424 Plot Twist.md",
       "bookshelf/202610221624 1929.md",
+      "bookshelf/202610251435 The Anxious Generation.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
@@ -1239,6 +1239,7 @@
       "filmshelf/202607290956 Ikka.md",
       "filmshelf/202608021429 Spiderman Brand New Day.md",
       "filmshelf/202610122013 The AI Doc.md",
+      "filmshelf/202610251446 Join or die.md",
       "gameshelf/202605290954 Ghost of Yotei.md",
       "gameshelf/202608202205 Spiderman 2.md",
       "gameshelf/202608202207 FC26.md",
@@ -1261,6 +1262,7 @@
       "haiku/202610221622 All the leaves are gone.md",
       "haiku/202610232100 Circles in puddles.md",
       "haiku/202610240833 Gray skies abound.md",
+      "haiku/202610252301 Red light under bridge.md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -1685,6 +1687,7 @@
       "micro/202610220723 The good thing about hard things.md",
       "micro/202610222156 Economic probabilities for our grandchildren.md",
       "micro/202610231518 Next Gen console costs are too damn high.md",
+      "micro/202610242317 On the benefit of writing workshops.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -7622,6 +7625,14 @@
       "snippet": "I am reading Inside the Box, and like Range before this, there seem to be many new things for me to read about and learn in this book. Also, it's more approachable. Which is because it is using (not sure if by design) one of the techniques from how to learn effectively - making connections."
     },
     {
+      "slug": "/bookshelf/inside-the-box/",
+      "title": "Inside the Box",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-10-03T12:33:00.000Z",
+      "snippet": "My second David Epstein book, after Range. I had put it on hold at the library ever since I had come to know of this book. There was a long wait, and then I got it at the beginning of October."
+    },
+    {
       "slug": "/nordletter/nl115/",
       "title": "Learning How to Learn",
       "description": "A week of fasting, learning about learning and a new philosophy",
@@ -9555,6 +9566,14 @@
   ],
   "evergreen/how-to-read": [
     {
+      "slug": "/bookshelf/inside-the-box/",
+      "title": "Inside the Box",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-10-03T12:33:00.000Z",
+      "snippet": "I found value from this book. It strengthened some of the things I have come up on by myself, like focusing on one thing to learn at a time - no matter how tempted I am to pick another, my social media use, how I read and so on."
+    },
+    {
       "slug": "/bookshelf/all-that-we-see-or-seem/",
       "title": "All That We See or Seem",
       "description": "",
@@ -9875,6 +9894,36 @@
       "category": "nordletter",
       "created": "2026-06-07T17:38:19.000Z",
       "snippet": "I had no idea then where would I go. Last year, we were in Manhattan. I wrote about it across four different posts. This year there are no such concrete plans. Prerna had mentioned Prague at some point, I had mentioned Barcelona, a friend lives there. We could just go visit her."
+    }
+  ],
+  "evergreen/the-same-story-can-mean-different-things-to-different-people": [
+    {
+      "slug": "/bookshelf/inside-the-box/",
+      "title": "Inside the Box",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-10-03T12:33:00.000Z",
+      "snippet": "The concepts in this book, the stories, I have read them elsewhere, in different books. So you could say that there were not that many surprising stories. What kept happening, time and again is depending on context, the same story can mean different things to different people. There were many such stories, and many such thinkers and philosophers introduced throughout the book. Books and media that I have since added to my queue."
+    }
+  ],
+  "blog/vibe-coding-september-meetup": [
+    {
+      "slug": "/bookshelf/inside-the-box/",
+      "title": "Inside the Box",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-10-03T12:33:00.000Z",
+      "snippet": "shaped them as a person. This book had plenty of that, so thanks David."
+    }
+  ],
+  "blog/i-uninstalled-netnewswire-from-my-phone": [
+    {
+      "slug": "/bookshelf/inside-the-box/",
+      "title": "Inside the Box",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-10-03T12:33:00.000Z",
+      "snippet": "Perhaps a similar thing I noticed while I uninstalled NetNewsWire from my phone. Though I did not find any benefit to removing it from my phone - anecdotally at least."
     }
   ],
   "evergreen/the-four-diseases-leading-to-slow-death": [
