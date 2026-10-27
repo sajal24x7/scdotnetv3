@@ -517,6 +517,10 @@
     "checkedAt": "2026-10-24T10:57:49.465Z",
     "endpoint": null
   },
+  "https://sajalchoudhary.net/til/admission-controllers-in-kubernetes/\u0000https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/": {
+    "checkedAt": "2026-10-27T08:56:21.481Z",
+    "endpoint": null
+  },
   "https://sajalchoudhary.net/til/kubernetes-components/\u0000https://kubernetes.io/docs/concepts/architecture/nodes/": {
     "checkedAt": "2026-09-12T10:43:08.571Z",
     "endpoint": null
