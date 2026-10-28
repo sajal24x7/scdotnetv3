@@ -231,6 +231,11 @@
     "checkedAt": "2026-07-13T11:25:07.065Z",
     "endpoint": null
   },
+  "https://sajalchoudhary.net/micro/the-gaming-october-inflection-point/\u0000https://simonwillison.net/2026/Oct/28/vibe-game-development/": {
+    "checkedAt": "2026-10-28T20:16:42.380Z",
+    "endpoint": "https://webmention.io/simonwillison.net/webmention",
+    "status": 201
+  },
   "https://sajalchoudhary.net/micro/the-good-thing-about-hard-things/\u0000https://calnewport.com/the-good-thing-about-hard-things/": {
     "checkedAt": "2026-10-22T04:40:13.911Z",
     "endpoint": null

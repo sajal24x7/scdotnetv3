@@ -1,10 +1,16 @@
 ---
-title: "The Gaming October Inflection Point"
-slug: "the-gaming-october-inflection-point"
-created: 2026-10-28T17:27:00+02:00
-updated: 2026-10-28T17:28:24+02:00
+title: The Gaming October Inflection Point
+slug: the-gaming-october-inflection-point
+created: 2026-10-28T15:27:00.000Z
+updated: 2026-10-28T15:28:24.000Z
 category: micro
-tags: ["gaming", "vibe-coding", "simon-willison"]
+tags:
+  - gaming
+  - vibe-coding
+  - simon-willison
+syndicationUrls:
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3myxkvo5nap2o'
+  - 'https://www.threads.com/@sajal24x7/post/DfDRFKMj9Fd'
 ---
 [The October inflection point for vibe game development by Simon Willison](https://simonwillison.net/2026/Oct/28/vibe-game-development/)
 
