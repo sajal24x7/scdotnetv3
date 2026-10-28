@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useRef } from "react";
+import React, { useReducer, useEffect, useRef, useState } from "react";
 
 /* ---------- Card data ---------- */
 const SUITS = ["S", "H", "D", "C"];
@@ -73,11 +73,57 @@ function trickWinner(trick: TrickEntry[], leadSuit: string, trumpSuit: string) {
   return best.player;
 }
 
+const handPoints = (hand: Card[]) => hand.reduce((s, c) => s + POINTS[c.rank], 0);
+const cardLabel = (c: Card) => `${c.rank}${SUIT_INFO[c.suit].sym}`;
+
+// Must follow suit. A player who asked for trump this trick must then play trump if they can.
+function legalCards(hand: Card[], state: GameState, playerIdx: number): Card[] {
+  const { leadSuit, trumpSuit } = state;
+  if (!leadSuit) return hand;
+  const follow = hand.filter((c) => c.suit === leadSuit);
+  if (follow.length) return follow;
+  if (state.askedBy === playerIdx && state.trumpRevealed) {
+    const trumps = hand.filter((c) => c.suit === trumpSuit);
+    if (trumps.length) return trumps;
+  }
+  return hand;
+}
+
+// True when every higher card of the same suit is already played or sits in `own`.
+function isBoss(card: Card, state: GameState, own: Card[]) {
+  const seen = new Set([...state.played, ...own.map((c) => c.id)]);
+  return RANK_ORDER.slice(0, rankIdx(card.rank)).every((r) => seen.has(card.suit + r));
+}
+
+// Player holding both K and Q of trump, if any.
+function findPairHolder(hands: Card[][], trumpSuit: string): number | null {
+  const idx = hands.findIndex((h) =>
+    h.some((c) => c.id === trumpSuit + "K") && h.some((c) => c.id === trumpSuit + "Q"));
+  return idx === -1 ? null : idx;
+}
+
+// The pair can be shown once trump is open and the holder's side has won a trick since.
+function pairReady(state: GameState) {
+  return state.phase === "playing" && state.pairHolder !== null && !state.pairDeclared
+    && state.trumpRevealed && state.teamWonSinceReveal[state.pairHolder % 2];
+}
+
+function declarePair(state: GameState): GameState {
+  const holder = state.pairHolder!;
+  const forCaller = holder % 2 === state.caller! % 2;
+  const from = state.currentBid;
+  const to = forCaller ? Math.max(16, from - 4) : Math.min(28, from + 4);
+  const sym = SUIT_INFO[state.trumpSuit!].sym;
+  let s: GameState = { ...state, currentBid: to, pairDeclared: { player: holder, from, to } };
+  s = addLog(s, `${state.names[holder]} shows the pair K${sym} Q${sym}. Bid ${from} → ${to}.`);
+  s = showBanner(s, `Pair! Bid ${from} → ${to}`, "trump");
+  return s;
+}
+
 function evaluateMove(card: Card, state: GameState, trumpKnownToUser: boolean): string | null {
   const hand = state.hands[0];
   const { leadSuit, trick, trumpSuit } = state;
-  let legal = leadSuit ? hand.filter((c) => c.suit === leadSuit) : hand;
-  if (legal.length === 0) legal = hand;
+  const legal = legalCards(hand, state, 0);
   if (legal.length <= 1) return null;
   if (trick.length === 0) {
     if (card.suit === trumpSuit)
@@ -86,6 +132,14 @@ function evaluateMove(card: Card, state: GameState, trumpKnownToUser: boolean): 
   }
   const currentBest = trick.reduce((best, t) =>
     cardBeats(t.card, best.card, leadSuit!, trumpSuit!) ? t : best, trick[0]);
+  if (currentBest.player === 2) {
+    // Partner holds the trick. Playing last, it's safe to feed them points.
+    if (trick.length !== 3) return null;
+    const richest = [...legal].sort((a, b) => POINTS[b.rank] - POINTS[a.rank])[0];
+    if (POINTS[richest.rank] > POINTS[card.rank])
+      return `Partner had this trick. Feeding ${cardLabel(richest)} would have banked ${POINTS[richest.rank]} more.`;
+    return null;
+  }
   const wins = (c: Card) => cardBeats(c, currentBest.card, leadSuit!, trumpSuit!);
   const playedWins = wins(card);
   const winners = legal.filter(wins);
@@ -165,26 +219,76 @@ function aiPlayCard(playerIdx: number, state: GameState): Card {
   const hand = state.hands[playerIdx];
   const { leadSuit, trick, trumpSuit } = state;
   const knowsTrump = state.caller === playerIdx || state.trumpRevealed;
-  let legal = leadSuit ? hand.filter((c) => c.suit === leadSuit) : hand;
-  if (legal.length === 0) legal = hand;
+  const onCallerTeam = state.caller! % 2 === playerIdx % 2;
+  const legal = legalCards(hand, state, playerIdx);
+  const pts = (c: Card) => POINTS[c.rank];
+  const boss = (c: Card) => isBoss(c, state, hand);
+  // Cheapest card: fewest points, then lowest rank
+  const lowest = (cards: Card[]) =>
+    [...cards].sort((a, b) => pts(a) - pts(b) || rankIdx(b.rank) - rankIdx(a.rank))[0];
+  const sideCards = (cards: Card[]) => {
+    const side = cards.filter((c) => !knowsTrump || c.suit !== trumpSuit);
+    return side.length ? side : cards;
+  };
+
   if (trick.length === 0) {
-    const nonTrump = hand.filter((c) => c.suit !== trumpSuit || !knowsTrump);
-    const pool = nonTrump.length ? nonTrump : hand;
-    pool.sort((a, b) => POINTS[b.rank] - POINTS[a.rank]);
-    return pool[Math.random() < 0.5 ? 0 : pool.length - 1];
+    // Caller's side pulls trumps once they are in the open
+    const trumps = knowsTrump ? hand.filter((c) => c.suit === trumpSuit) : [];
+    if (state.trumpRevealed && onCallerTeam && trumps.length >= 2) {
+      const top = trumps.find(boss);
+      if (top) return top;
+    }
+    const pool = sideCards(hand);
+    const bosses = pool.filter(boss).sort((a, b) => pts(b) - pts(a));
+    if (bosses.length && (pts(bosses[0]) > 0 || Math.random() < 0.5)) return bosses[0];
+    // Otherwise lead something cheap from the longest suit
+    const len = (s: string) => pool.filter((c) => c.suit === s).length;
+    return [...pool].sort((a, b) => pts(a) - pts(b) || len(b.suit) - len(a.suit) || rankIdx(b.rank) - rankIdx(a.rank))[0];
   }
+
   const best = trick.reduce((b, t) => cardBeats(t.card, b.card, leadSuit!, trumpSuit!) ? t : b, trick[0]);
   const partnerWinning = best.player % 2 === playerIdx % 2;
+  const last = trick.length === 3;
+  const trickPts = trick.reduce((s, t) => s + pts(t.card), 0);
+
+  if (partnerWinning) {
+    const safe = last || (boss(best.card) && (best.card.suit === trumpSuit || Math.random() < 0.6));
+    if (!safe) return lowest(sideCards(legal));
+    // Feed points, keeping our own boss cards for later tricks where possible
+    return [...sideCards(legal)].sort((a, b) =>
+      pts(b) - pts(a) || Number(boss(a)) - Number(boss(b)))[0];
+  }
+
   const winners = legal.filter((c) => cardBeats(c, best.card, leadSuit!, trumpSuit!));
-  if (!partnerWinning && winners.length > 0) {
-    const weighted = [...winners].sort((a, b) => {
+  if (winners.length) {
+    const cheapest = [...winners].sort((a, b) => {
       const aw = a.suit === trumpSuit ? 100 - rankIdx(a.rank) : 50 - rankIdx(a.rank);
       const bw = b.suit === trumpSuit ? 100 - rankIdx(b.rank) : 50 - rankIdx(b.rank);
       return aw - bw;
     });
-    return weighted[0];
+    if (last) return cheapest[0];
+    if (cheapest[0].suit === trumpSuit && leadSuit !== trumpSuit) {
+      if (trickPts >= 1 || Math.random() < 0.4) return cheapest[0];
+    } else {
+      const safeWin = cheapest.find(boss);
+      if (safeWin) return safeWin;
+      if (trickPts >= 2) return cheapest[0];
+    }
   }
-  return [...legal].sort((a, b) => POINTS[a.rank] - POINTS[b.rank])[0];
+  return lowest(sideCards(legal));
+}
+
+function aiDoubleDecision(state: GameState): boolean {
+  const callerTeam = state.caller! % 2;
+  const stretch = state.currentBid - 17;
+  if (state.doubleStage === "double") {
+    const defenders = [1, 3, 0, 2].filter((p) => p % 2 !== callerTeam && p !== 0);
+    const best = Math.max(...defenders.map((p) => handPoints(state.hands[p])));
+    return best + stretch >= 12 && Math.random() < 0.6;
+  }
+  const hand = state.hands[state.caller!];
+  const trumps = hand.filter((c) => c.suit === state.trumpSuit).length;
+  return handPoints(hand) + trumps * 1.5 - stretch >= 14 && Math.random() < 0.7;
 }
 
 /* ---------- State ---------- */
@@ -194,6 +298,13 @@ interface LastResult {
   winningTeam: number; tips: string[];
   underHalf: boolean; pointsAwarded: number; matchOver: boolean;
   lastTrickTeam: number;
+  multiplier: number;
+  pair: { team: number; from: number; to: number } | null;
+}
+interface Stats {
+  matchesPlayed: number; matchesWon: number;
+  bidsTotal: number; bidsMade: number;
+  streak: number; bestStreak: number;
 }
 interface GameState {
   phase: string; dealer: number; hands: Card[][];
@@ -211,7 +322,19 @@ interface GameState {
   handTips: string[]; lastTrickWinner?: number;
   bidOrder: number[];   // remaining bidders in queue; first two are the active pair
   mustRaise: boolean;   // true after a match — next bidder cannot match, must raise
+  dealSeq: number;      // bumps on every deal, including redeals
+  askedBy: number | null;   // who asked for trump in the current trick
+  played: string[];         // ids of every card played this hand
+  prevTrick: TrickEntry[];
+  pairHolder: number | null;
+  pairDeclared: { player: number; from: number; to: number } | null;
+  teamWonSinceReveal: Record<number, boolean>;
+  multiplier: number;       // 1, 2 after a double, 4 after a redouble
+  doubleStage: "double" | "redouble" | null;
+  stats: Stats;
 }
+
+const emptyStats: Stats = { matchesPlayed: 0, matchesWon: 0, bidsTotal: 0, bidsMade: 0, streak: 0, bestStreak: 0 };
 
 const initialState: GameState = {
   phase: "idle", dealer: 3, hands: [[], [], [], []],
@@ -225,6 +348,9 @@ const initialState: GameState = {
   feedbackOn: true, halfBidPenaltyOn: true,
   moveTip: null, moveTipSeq: 0, handTips: [],
   bidOrder: [], mustRaise: false,
+  dealSeq: 0, askedBy: null, played: [], prevTrick: [],
+  pairHolder: null, pairDeclared: null, teamWonSinceReveal: { 0: false, 1: false },
+  multiplier: 1, doubleStage: null, stats: emptyStats,
 };
 
 function addLog(state: GameState, msg: string): GameState {
@@ -241,10 +367,14 @@ function showMoveTip(state: GameState, text: string): GameState {
 
 type Action =
   | { type: "INIT_NAMES"; names: string[] }
-  | { type: "DEAL" }
+  | { type: "DEAL"; redeal?: boolean }
+  | { type: "REDEAL"; playerIdx: number }
   | { type: "BID"; playerIdx: number; amount: number }
   | { type: "PASS"; playerIdx: number }
   | { type: "CHOOSE_TRUMP"; suit: string }
+  | { type: "DOUBLE_CALL"; yes: boolean }
+  | { type: "AI_DOUBLE" }
+  | { type: "DECLARE_PAIR" }
   | { type: "ASK_TRUMP"; playerIdx: number }
   | { type: "PLAY_CARD"; playerIdx: number; card: Card }
   | { type: "CLEAR_TRICK" }
@@ -266,21 +396,29 @@ function reducer(state: GameState, action: Action): GameState {
       const hands: Card[][] = [[], [], [], []];
       for (let i = 0; i < 16; i++) hands[i % 4].push(deck[i]);
       const restDeck = deck.slice(16);
-      const dealer = state.phase === "idle" ? state.dealer : (state.dealer + 1) % 4;
+      const dealer = state.phase === "idle" || action.redeal ? state.dealer : (state.dealer + 1) % 4;
       const firstBidder = (dealer + 1) % 4;
       const bidOrder = [0, 1, 2, 3].map((i) => (firstBidder + i) % 4);
-      const round = state.round + 1;
+      const round = action.redeal ? state.round : state.round + 1;
       let s: GameState = {
         ...state, phase: "bidding", dealer, hands, restDeck,
         bidTurn: firstBidder, bidOrder, mustRaise: false,
         currentBid: 16, highBidder: null, passed: [false, false, false, false],
         caller: null, trumpSuit: null, trumpRevealed: false, trick: [],
         leadSuit: null, tricksPlayed: 0, teamPoints: { 0: 0, 1: 0 },
-        lastResult: null, round, handTips: [],
+        lastResult: null, round, handTips: [], dealSeq: state.dealSeq + 1,
+        askedBy: null, played: [], prevTrick: [], pairHolder: null, pairDeclared: null,
+        teamWonSinceReveal: { 0: false, 1: false }, multiplier: 1, doubleStage: null,
       };
       s = addLog(s, `Round ${round}. ${state.names[firstBidder]} opens.`);
-      s = showBanner(s, `Round ${round}`, "round");
+      if (!action.redeal) s = showBanner(s, `Round ${round}`, "round");
       return s;
+    }
+    case "REDEAL": {
+      // A player whose first four cards hold no points may ask for a fresh deal.
+      let s = reducer(state, { type: "DEAL", redeal: true });
+      s = addLog(s, `${state.names[action.playerIdx]} had no points. Redeal!`);
+      return showBanner(s, "Redeal", "round");
     }
     case "BID": {
       const { playerIdx, amount } = action;
@@ -332,14 +470,34 @@ function reducer(state: GameState, action: Action): GameState {
       const hands = state.hands.map((h, i) => [...h, ...state.restDeck.filter((_, idx) => idx % 4 === i)]);
       let s: GameState = {
         ...state, trumpSuit: suit, trumpRevealed: false, hands,
-        phase: "playing", turn: state.caller!, leadSuit: null, trick: [], tricksPlayed: 0,
+        phase: "doubling", doubleStage: "double", multiplier: 1,
+        pairHolder: findPairHolder(hands, suit),
+        turn: state.caller!, leadSuit: null, trick: [], tricksPlayed: 0,
       };
       s = addLog(s, state.caller === 0 ? `You chose ${SUIT_INFO[suit].name} (secret).` : `${state.names[state.caller!]} chose trump secretly.`);
       return s;
     }
+    case "DOUBLE_CALL": {
+      const tn = teamNames(state.names);
+      const callerTeam = state.caller! % 2;
+      const startPlay = (s: GameState): GameState => ({ ...s, phase: "playing", doubleStage: null, turn: s.caller! });
+      if (state.doubleStage === "double") {
+        if (!action.yes) return startPlay(addLog(state, `${tn[1 - callerTeam]} let the bid stand.`));
+        let s: GameState = { ...state, multiplier: 2, doubleStage: "redouble" };
+        s = addLog(s, `${tn[1 - callerTeam]} double! The hand is worth twice as much.`);
+        return showBanner(s, "Double!", "match");
+      }
+      if (!action.yes) return startPlay(addLog(state, `${tn[callerTeam]} play on at double.`));
+      let s: GameState = addLog({ ...state, multiplier: 4 }, `${tn[callerTeam]} redouble! ×4 stakes.`);
+      return startPlay(showBanner(s, "Redouble!", "match"));
+    }
+    case "AI_DOUBLE":
+      return reducer(state, { type: "DOUBLE_CALL", yes: aiDoubleDecision(state) });
+    case "DECLARE_PAIR":
+      return pairReady(state) ? declarePair(state) : state;
     case "ASK_TRUMP": {
       const { playerIdx } = action;
-      let s = { ...state, trumpRevealed: true };
+      let s = { ...state, trumpRevealed: true, askedBy: playerIdx };
       s = addLog(s, playerIdx === 0 ? `You ask for trump — it's ${SUIT_INFO[state.trumpSuit!].name}!` : `${state.names[playerIdx]} asks for trump — it's ${SUIT_INFO[state.trumpSuit!].name}!`);
       s = showBanner(s, `Trump: ${SUIT_INFO[state.trumpSuit!].sym} ${SUIT_INFO[state.trumpSuit!].name}`, "trump");
       return s;
@@ -356,7 +514,7 @@ function reducer(state: GameState, action: Action): GameState {
       if (trick.length === 1) leadSuit = card.suit;
       let trumpRevealed = state.trumpRevealed;
       if (card.suit === state.trumpSuit && !trumpRevealed) trumpRevealed = true;
-      let s: GameState = { ...state, hands, trick, leadSuit, trumpRevealed };
+      let s: GameState = { ...state, hands, trick, leadSuit, trumpRevealed, played: [...state.played, card.id] };
       s = addLog(s, `${state.names[playerIdx]} plays ${card.rank}${SUIT_INFO[card.suit].sym}.`);
       if (tipText) s = showMoveTip(s, tipText);
       if (trumpRevealed && !state.trumpRevealed) {
@@ -369,15 +527,22 @@ function reducer(state: GameState, action: Action): GameState {
         const team = winner % 2;
         const teamPoints = { ...s.teamPoints, [team]: s.teamPoints[team] + pts };
         const tricksPlayed = s.tricksPlayed + 1;
-        s = addLog({ ...s, teamPoints, tricksPlayed, lastTrickWinner: winner },
+        const teamWonSinceReveal = s.trumpRevealed
+          ? { ...s.teamWonSinceReveal, [team]: true } : s.teamWonSinceReveal;
+        s = addLog({ ...s, teamPoints, tricksPlayed, lastTrickWinner: winner, teamWonSinceReveal },
           `${state.names[winner]} wins the trick (+${pts}). Team ${team === 0 ? teamNames(state.names)[0] : teamNames(state.names)[1]}: ${teamPoints[team]} pts.`);
+        // AI players show the pair as soon as they're allowed to
+        if (pairReady(s) && s.pairHolder !== 0) s = declarePair(s);
       } else {
         s = { ...s, turn: (playerIdx + 1) % 4 };
       }
       return s;
     }
     case "CLEAR_TRICK": {
-      let s: GameState = { ...state, trick: [], leadSuit: null, turn: state.lastTrickWinner! };
+      let s: GameState = {
+        ...state, trick: [], leadSuit: null, turn: state.lastTrickWinner!,
+        askedBy: null, prevTrick: state.trick,
+      };
       if (s.tricksPlayed >= 8) {
         const callerTeam = s.caller! % 2;
         // Last trick winner gets the bonus point (making total 29)
@@ -387,16 +552,31 @@ function reducer(state: GameState, action: Action): GameState {
         const made = teamPoints[callerTeam] >= s.currentBid;
         const winningTeam = made ? callerTeam : 1 - callerTeam;
         const underHalf = !made && s.halfBidPenaltyOn && teamPoints[callerTeam] < s.currentBid / 2;
-        const pointsAwarded = underHalf ? 2 : 1;
+        const pointsAwarded = (underHalf ? 2 : 1) * s.multiplier;
         const handsWon = { ...s.handsWon, [winningTeam]: s.handsWon[winningTeam] + pointsAwarded };
         const matchOver = handsWon[winningTeam] >= MATCH_TARGET;
+        const tips = s.pairHolder === 0 && !s.pairDeclared
+          ? [...s.handTips, s.teamWonSinceReveal[0]
+              ? "You held the trump pair (K+Q) but never showed it. That's 4 bid points left on the table."
+              : "You held the trump pair (K+Q). It counts once trump is open and your side wins a trick after."]
+          : s.handTips;
+        const st = s.stats;
+        const streak = winningTeam === 0 ? st.streak + 1 : 0;
+        const stats: Stats = {
+          matchesPlayed: st.matchesPlayed + (matchOver ? 1 : 0),
+          matchesWon: st.matchesWon + (matchOver && winningTeam === 0 ? 1 : 0),
+          bidsTotal: st.bidsTotal + (s.caller === 0 ? 1 : 0),
+          bidsMade: st.bidsMade + (s.caller === 0 && made ? 1 : 0),
+          streak, bestStreak: Math.max(st.bestStreak, streak),
+        };
         s = {
-          ...s, phase: "hand-end", handsWon,
+          ...s, phase: "hand-end", handsWon, stats,
           lastResult: {
             callerTeam, made, bid: s.currentBid, callerPts: teamPoints[callerTeam],
             defTeam: 1 - callerTeam, defPts: teamPoints[1 - callerTeam],
-            winningTeam, tips: s.handTips, underHalf, pointsAwarded, matchOver,
-            lastTrickTeam,
+            winningTeam, tips, underHalf, pointsAwarded, matchOver,
+            lastTrickTeam, multiplier: s.multiplier,
+            pair: s.pairDeclared ? { team: s.pairDeclared.player % 2, from: s.pairDeclared.from, to: s.pairDeclared.to } : null,
           },
         };
         const tn2 = teamNames(state.names);
@@ -414,6 +594,8 @@ function reducer(state: GameState, action: Action): GameState {
     }
     case "AI_BID": {
       const { playerIdx } = action;
+      if (state.highBidder === null && handPoints(state.hands[playerIdx]) === 0 && Math.random() < 0.8)
+        return reducer(state, { type: "REDEAL", playerIdx });
       const decision = aiBidDecision(state.hands[playerIdx], state.currentBid, state.mustRaise);
       if (decision === null)
         return reducer(state, { type: "PASS", playerIdx });
@@ -427,8 +609,15 @@ function reducer(state: GameState, action: Action): GameState {
       const isVoid = state.leadSuit && !hand.some((c) => c.suit === state.leadSuit);
       let working = state;
       if (isVoid && !state.trumpRevealed && playerIdx !== state.caller) {
+        // Asking commits you to trump, so only ask when the trick is worth taking
+        const { trick, leadSuit, trumpSuit } = state;
+        const best = trick.reduce((b, t) => cardBeats(t.card, b.card, leadSuit!, trumpSuit!) ? t : b, trick[0]);
+        const trickPts = trick.reduce((sum, t) => sum + POINTS[t.card.rank], 0);
         const defending = playerIdx % 2 !== state.caller! % 2;
-        if (Math.random() < (defending ? 0.7 : 0.3))
+        const urge = best.player % 2 === playerIdx % 2 ? 0.1
+          : trickPts >= 2 ? (defending ? 0.9 : 0.7)
+          : (defending ? 0.5 : 0.25);
+        if (Math.random() < urge)
           working = reducer(state, { type: "ASK_TRUMP", playerIdx });
       }
       const card = aiPlayCard(playerIdx, working);
@@ -443,7 +632,7 @@ function reducer(state: GameState, action: Action): GameState {
     case "TOGGLE_FEEDBACK": return { ...state, feedbackOn: !state.feedbackOn, moveTip: null };
     case "TOGGLE_HALF_BID": return { ...state, halfBidPenaltyOn: !state.halfBidPenaltyOn };
     case "NEW_MATCH": return reducer({ ...state, handsWon: { 0: 0, 1: 0 }, round: 0 }, { type: "DEAL" });
-    case "RESET": return { ...initialState, names: state.names, feedbackOn: state.feedbackOn, halfBidPenaltyOn: state.halfBidPenaltyOn, bidOrder: [], mustRaise: false };
+    case "RESET": return { ...initialState, names: state.names, feedbackOn: state.feedbackOn, halfBidPenaltyOn: state.halfBidPenaltyOn, stats: state.stats, bidOrder: [], mustRaise: false };
     default: return state;
   }
 }
@@ -581,6 +770,7 @@ function loadState(): GameState {
 export default function TwentyEight() {
   const [state, dispatch] = useReducer(reducer, initialState, loadState);
   const timers = useRef<number[]>([]);
+  const [showPrev, setShowPrev] = useState(false);
 
   useEffect(() => {
     // On first load, assign Pokémon names only if we're starting fresh
@@ -604,7 +794,16 @@ export default function TwentyEight() {
   useEffect(() => {
     if (state.phase === "bidding" && state.bidTurn !== 0 && !state.passed[state.bidTurn])
       after(750, () => dispatch({ type: "AI_BID", playerIdx: state.bidTurn }));
-  }, [state.phase, state.bidTurn]);
+  }, [state.phase, state.bidTurn, state.dealSeq]);
+
+  const callerTeamNow = state.caller === null ? null : state.caller % 2;
+  const userDecidesDouble = state.phase === "doubling"
+    && (state.doubleStage === "double" ? callerTeamNow === 1 : callerTeamNow === 0);
+
+  useEffect(() => {
+    if (state.phase === "doubling" && !userDecidesDouble)
+      after(900, () => dispatch({ type: "AI_DOUBLE" }));
+  }, [state.phase, state.doubleStage]);
 
   useEffect(() => {
     if (state.phase === "choose-trump" && state.caller !== 0)
@@ -636,8 +835,10 @@ export default function TwentyEight() {
   }, [state.moveTip]);
 
   const userHand = sortHand(state.hands[0] || []);
-  const mustFollow = state.leadSuit && userHand.some((c) => c.suit === state.leadSuit);
-  const isLegal = (c: Card) => !mustFollow || c.suit === state.leadSuit;
+  const legalIds = new Set(legalCards(state.hands[0] || [], state, 0).map((c) => c.id));
+  const isLegal = (c: Card) => legalIds.has(c.id);
+  const mustTrump = state.askedBy === 0 && userHand.some((c) => c.suit === state.trumpSuit)
+    && !userHand.some((c) => c.suit === state.leadSuit);
   const userTurn = state.phase === "playing" && state.turn === 0 && state.trick.length < 4;
   const trumpKnown = state.caller === 0 || state.trumpRevealed;
   const voidInLead = state.leadSuit && !userHand.some((c) => c.suit === state.leadSuit);
@@ -645,6 +846,8 @@ export default function TwentyEight() {
   const target0 = callerTeam === null ? null : callerTeam === 0 ? state.currentBid : 29 - state.currentBid;
   const target1 = callerTeam === null ? null : callerTeam === 1 ? state.currentBid : 29 - state.currentBid;
   const seat = (idx: number) => state.trick.find((t) => t.player === idx);
+  const trickWinnerIdx = state.trick.length === 4 && state.leadSuit && state.trumpSuit
+    ? trickWinner(state.trick, state.leadSuit, state.trumpSuit) : null;
 
   const getBidRole = (idx: number): BidRole => {
     if (state.phase !== "bidding") return null;
@@ -997,9 +1200,9 @@ export default function TwentyEight() {
         <div className="idle-screen">
           <div style={{ fontSize: 48, lineHeight: 1 }}>🃏</div>
           <div>
-            <p style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>28</p>
+            <p style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>29</p>
             <p style={{ fontSize: 13, color: "var(--game-text-2)", maxWidth: 280, margin: "0 auto 16px" }}>
-              A trick-taking card game for two pairs. 28 points up for grabs each hand.
+              A trick-taking card game for two pairs. 28 card points plus 1 for the last trick.
             </p>
           </div>
           <button className="btn-primary" style={{ fontSize: 16, padding: "14px 36px" }} onClick={() => dispatch({ type: "DEAL" })}>
@@ -1008,8 +1211,18 @@ export default function TwentyEight() {
           <div style={{ marginTop: 20, fontSize: 11, color: "var(--game-text-2)", lineHeight: 1.7, maxWidth: 300 }}>
             <p><strong>Ranks</strong> (high→low): J·9·A·10·K·Q·8·7 &nbsp;|&nbsp; <strong>Points</strong>: J=3, 9=2, A=1, 10=1</p>
             <p><strong>Bid</strong> how many points your pair will take. Highest bidder picks trump secretly.</p>
-            <p>When void in led suit, you may ask to reveal trump.</p>
+            <p>When void in led suit, you may ask to reveal trump. Once you ask, you must trump if you can.</p>
+            <p><strong>Pair</strong>: hold K+Q of trump? Show it after trump is open and your side wins a trick. It moves the bid 4 in your favour.</p>
+            <p><strong>Double</strong>: after trump is set, defenders may double and the bidders may redouble.</p>
+            <p>No points in your first four cards? Ask for a redeal.</p>
           </div>
+          {state.stats.matchesPlayed + state.stats.bidsTotal > 0 && (
+            <p style={{ marginTop: 8, fontSize: 11, color: "var(--game-text-2)" }}>
+              Matches won {state.stats.matchesWon}/{state.stats.matchesPlayed}
+              {" · "}Your bids made {state.stats.bidsMade}/{state.stats.bidsTotal}
+              {" · "}Best streak {state.stats.bestStreak}
+            </p>
+          )}
         </div>
       )}
 
@@ -1026,6 +1239,9 @@ export default function TwentyEight() {
                 </span>
               ) : (
                 <span style={{ fontSize: 11, color: "var(--game-text-2)" }}>trump 🔒</span>
+              )}
+              {state.multiplier > 1 && state.phase !== "hand-end" && (
+                <span className="bid-chip-high" style={{ marginLeft: 6 }}>×{state.multiplier}</span>
               )}
               {state.phase === "playing" && callerTeam !== null && (
                 <div className="pts-bar" style={{ marginTop: 2 }}>
@@ -1085,7 +1301,7 @@ export default function TwentyEight() {
                     return (
                       <div key={idx} style={{ gridArea: area }} className="trick-cell">
                         <div style={{ width: 34, height: 48, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          {entry ? <PlayingCard card={entry.card} small popDir={dir} /> : null}
+                          {entry ? <PlayingCard card={entry.card} small popDir={dir} highlight={trickWinnerIdx === idx} /> : null}
                         </div>
                       </div>
                     );
@@ -1108,6 +1324,23 @@ export default function TwentyEight() {
 
             {/* Log */}
             <div style={{ marginTop: "auto" }}>
+              {state.phase === "playing" && state.prevTrick.length === 4 && (
+                <div style={{ marginBottom: 6 }}>
+                  <button className="btn-ghost" style={{ paddingLeft: 0 }} onClick={() => setShowPrev((v) => !v)}>
+                    {showPrev ? "Hide last trick" : "Last trick"}
+                  </button>
+                  {showPrev && (
+                    <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
+                      {state.prevTrick.map((t) => (
+                        <div key={t.card.id} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
+                          <PlayingCard card={t.card} small highlight={t.player === state.lastTrickWinner} />
+                          <span style={{ fontSize: 9, color: "var(--game-text-2)" }}>{state.names[t.player]}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
               {state.log.slice(0, 3).map((msg, i) => (
                 <p key={i} className="log-line">{msg}</p>
               ))}
@@ -1152,6 +1385,11 @@ export default function TwentyEight() {
                   <button className="btn-outline" onClick={() => dispatch({ type: "PASS", playerIdx: 0 })}>
                     Pass
                   </button>
+                  {state.highBidder === null && handPoints(state.hands[0]) === 0 && (
+                    <button className="btn-outline" onClick={() => dispatch({ type: "REDEAL", playerIdx: 0 })}>
+                      Redeal (no points)
+                    </button>
+                  )}
                 </div>
               </div>
             )}
@@ -1208,18 +1446,52 @@ export default function TwentyEight() {
               <p style={{ fontSize: 12, color: "var(--game-text-2)" }}>{state.names[state.caller!]} is picking trump…</p>
             )}
 
+            {/* Double / redouble */}
+            {state.phase === "doubling" && (userDecidesDouble ? (
+              <div>
+                <p style={{ fontSize: 12, color: "var(--game-text-2)", marginBottom: 8 }}>
+                  {state.doubleStage === "double"
+                    ? <>{state.names[state.caller!]} bid <strong style={{ color: "var(--game-text)" }}>{state.currentBid}</strong>. Think they'll fall short? Double the stakes.</>
+                    : <>Your side was doubled at <strong style={{ color: "var(--game-text)" }}>{state.currentBid}</strong>. Redouble for ×4?</>}
+                </p>
+                <div style={{ display: "flex", gap: 6 }}>
+                  <button className="btn-primary" style={{ fontSize: 13, padding: "8px 16px" }}
+                    onClick={() => dispatch({ type: "DOUBLE_CALL", yes: true })}>
+                    {state.doubleStage === "double" ? "Double ×2" : "Redouble ×4"}
+                  </button>
+                  <button className="btn-outline" onClick={() => dispatch({ type: "DOUBLE_CALL", yes: false })}>
+                    {state.doubleStage === "double" ? "No double" : "Play on"}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <p style={{ fontSize: 12, color: "var(--game-text-2)" }}>
+                {state.doubleStage === "double" ? "Defenders are deciding whether to double…" : "Bidders are deciding whether to redouble…"}
+              </p>
+            ))}
+
             {/* Your hand during play */}
-            {(state.phase === "playing" || state.phase === "bidding" || state.phase === "choose-trump") && userHand.length > 0 && (
+            {(state.phase === "playing" || state.phase === "bidding" || state.phase === "choose-trump" || state.phase === "doubling") && userHand.length > 0 && (
               <div>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
                   <span style={{ fontSize: 11, color: "var(--game-text-2)" }}>
                     {userTurn ? "Your turn — tap a card" : "Your hand"}
                   </span>
-                  {userTurn && voidInLead && !trumpKnown && (
-                    <button className="btn-trump-ask" onClick={() => dispatch({ type: "ASK_TRUMP", playerIdx: 0 })}>
-                      Ask trump
-                    </button>
-                  )}
+                  <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                    {userTurn && mustTrump && (
+                      <span style={{ fontSize: 11, color: "var(--game-accent)" }}>You asked: must trump</span>
+                    )}
+                    {pairReady(state) && state.pairHolder === 0 && (
+                      <button className="btn-trump-ask" onClick={() => dispatch({ type: "DECLARE_PAIR" })}>
+                        Show pair K{SUIT_INFO[state.trumpSuit!].sym}Q{SUIT_INFO[state.trumpSuit!].sym}
+                      </button>
+                    )}
+                    {userTurn && voidInLead && !trumpKnown && (
+                      <button className="btn-trump-ask" onClick={() => dispatch({ type: "ASK_TRUMP", playerIdx: 0 })}>
+                        Ask trump
+                      </button>
+                    )}
+                  </div>
                 </div>
                 <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
                   {userHand.map((c) => (
@@ -1249,8 +1521,18 @@ export default function TwentyEight() {
                     (+1 last trick to {tn[state.lastResult.lastTrickTeam]})
                   </span>.{" "}
                   <strong>{tn[state.lastResult.winningTeam]}</strong> win the hand
-                  {state.lastResult.pointsAwarded > 1 ? " (double — under half)" : ""}.
+                  {state.lastResult.underHalf ? " (under half)" : ""}
+                  {state.lastResult.multiplier === 2 ? " (doubled)" : state.lastResult.multiplier === 4 ? " (redoubled)" : ""}
+                  {" "}for <strong>+{state.lastResult.pointsAwarded}</strong>.
                 </p>
+                {state.lastResult.pair && (
+                  <p style={{ fontSize: 11, color: "var(--game-text-2)" }}>
+                    {tn[state.lastResult.pair.team]} showed the pair: bid moved {state.lastResult.pair.from} → {state.lastResult.pair.to}.
+                  </p>
+                )}
+                {state.stats.streak >= 2 && state.lastResult.winningTeam === 0 && (
+                  <p style={{ fontSize: 11, color: "var(--game-accent)" }}>🔥 {state.stats.streak} hands in a row</p>
+                )}
 
                 {state.feedbackOn && state.lastResult.tips.length > 0 && (
                   <div className="tip-box" style={{ fontSize: 11 }}>
