@@ -2,7 +2,7 @@
 title: "Kubernetes Deployment"
 slug: "kubernetes-deployment"
 created: 2026-10-16T16:57:00+03:00
-updated: 2026-10-22T23:09:52+03:00
+updated: 2026-10-27T08:29:51+02:00
 category: til
 tags: ["k8s"]
 syndicationUrls:
