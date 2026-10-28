@@ -1130,6 +1130,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/milieu-2026-10-27",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-27"
+		},
+		"grotesque": {
+			"word": "grotesque",
+			"pos": "other",
+			"gloss": " adjective Grotesque describes something that is very strange or ugly in a way that is not normal or natural. It can also describe something that is extremely different from what is expected or usual.",
+			"pronunciation": "groh-TESK",
+			"example": "She opted for a scary Halloween costume, complete with a grotesque monster mask. // Their claim is a grotesque distortion of the facts.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/grotesque-2026-10-28",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-28"
 		}
 	}
 }
