@@ -1,11 +1,10 @@
 ---
-aliases:
-tags:
-  - gaming
-  - vibe-coding
-  - simon-willison
-category: micro
+title: "The Gaming October Inflection Point"
+slug: "the-gaming-october-inflection-point"
+created: 2026-10-28T17:27:00+02:00
 updated: 2026-10-28T17:28:24+02:00
+category: micro
+tags: ["gaming", "vibe-coding", "simon-willison"]
 ---
 [The October inflection point for vibe game development by Simon Willison](https://simonwillison.net/2026/Oct/28/vibe-game-development/)
 
