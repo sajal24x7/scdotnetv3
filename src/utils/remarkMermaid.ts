@@ -1,13 +1,21 @@
 // Mermaid fences (```mermaid) are diagrams, not code samples. Astro has no
 // built-in mermaid support, so Shiki would render them as a plain code block.
-// This plugin swaps them for the `<pre class="mermaid">` markup the mermaid
-// client script (src/components/Mermaid.astro) renders in the browser.
+// This plugin renders them to SVG at build time with Pele, so diagrams ship
+// as static markup with no client JavaScript. Colors come from --pele-*
+// CSS variables (see src/styles/components.css), so the theme toggle restyles
+// them without a re-render.
+
+import { render } from 'pele';
 
 interface CodeNode {
     type: string;
     lang?: string | null;
     value?: string;
     children?: CodeNode[];
+}
+
+interface VFileLike {
+    path?: string;
 }
 
 function escapeHtml(value: string): string {
@@ -17,17 +25,28 @@ function escapeHtml(value: string): string {
         .replace(/>/g, '&gt;');
 }
 
+export function renderMermaid(source: string, filePath?: string): string {
+    try {
+        const { svg } = render(source);
+        return `<figure class="mermaid not-prose">${svg}</figure>`;
+    } catch (error) {
+        // A broken diagram should not fail the build. Warn, then keep the
+        // source visible as text rather than an empty box.
+        const message = error instanceof Error ? error.message : String(error);
+        console.warn(`[remarkMermaid] Could not render diagram in ${filePath ?? 'unknown file'}: ${message}`);
+        return `<pre class="mermaid not-prose" data-mermaid-error>${escapeHtml(source)}</pre>`;
+    }
+}
+
 export function remarkMermaid() {
-    return (tree: CodeNode) => {
+    return (tree: CodeNode, file?: VFileLike) => {
         function visit(node: CodeNode) {
             if (!node.children) return;
             node.children.forEach((child, index) => {
                 if (child.type === 'code' && child.lang === 'mermaid') {
                     node.children![index] = {
                         type: 'html',
-                        // The source stays in the DOM as text so the diagram
-                        // degrades to readable markup without JavaScript.
-                        value: `<pre class="mermaid not-prose" data-mermaid-source>${escapeHtml(child.value ?? '')}</pre>`,
+                        value: renderMermaid(child.value ?? '', file?.path),
                     };
                 } else {
                     visit(child);

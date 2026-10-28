@@ -1120,6 +1120,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/disparate-2026-10-26",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-26"
+		},
+		"milieu": {
+			"word": "milieu",
+			"pos": "other",
+			"gloss": " noun Milieu is a formal word that refers to the physical or social setting in which people live or in which something happens or develops.",
+			"pronunciation": "meel-YOO",
+			"example": "Langston Hughes, Zora Neale Hurston, and Jean Toomer were among the many writers who flourished in the intellectual milieu of the Harlem Renaissance.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/milieu-2026-10-27",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-27"
 		}
 	}
 }

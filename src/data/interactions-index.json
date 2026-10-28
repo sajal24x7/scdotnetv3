@@ -395,34 +395,6 @@
       "status": "approved"
     }
   ],
-  "evergreen/strategies-for-reading-long-things": [
-    {
-      "id": "mastodon:repost:117436013663308599:111653112089202906",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Books & Literature Channel",
-        "url": "https://newsmast.community/@books",
-        "avatar": "https://storage.sajalchoudhary.net/avatars/c0876f7272fa851bdfab380933d7ea2e.png"
-      },
-      "url": "https://newsmast.community/@books",
-      "status": "approved"
-    }
-  ],
-  "evergreen/working-memory-is-a-hindrance-to-learning": [
-    {
-      "id": "mastodon:repost:117436012889446242:111653099686979697",
-      "type": "repost",
-      "platform": "mastodon",
-      "author": {
-        "name": "Government & Policy Channel",
-        "url": "https://newsmast.community/@government",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/111/653/099/686/979/697/original/43016e49f823a5e1.png"
-      },
-      "url": "https://newsmast.community/@government",
-      "status": "approved"
-    }
-  ],
   "haiku/a-long-day": [
     {
       "id": "bluesky:like:3mxwyjcirf22s:did:plc:4hi2oj4spvsud6tpbdv37lec",
@@ -468,6 +440,21 @@
       "status": "approved"
     }
   ],
+  "haiku/full-moon-up-in-the-sky": [
+    {
+      "id": "bluesky:like:3myskqi74q62o:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-10-26T20:56:19.836Z",
+      "status": "approved"
+    }
+  ],
   "haiku/goddess-on-stage": [
     {
       "id": "bluesky:like:3myaxsipa4f2u:did:plc:4hi2oj4spvsud6tpbdv37lec",
@@ -495,6 +482,21 @@
       },
       "url": "https://bsky.app/profile/mrwamble.bsky.social",
       "published": "2026-10-15T23:22:39.286Z",
+      "status": "approved"
+    }
+  ],
+  "haiku/red-light-under-bridge": [
+    {
+      "id": "bluesky:like:3myqdkk247j2r:did:plc:gfdep6yi3mgqryscwcwlrn77",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Kakuriyo 隠り世",
+        "url": "https://bsky.app/profile/kakuriyo-lofi.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:gfdep6yi3mgqryscwcwlrn77/bafkreidqcaaxfliubxozxhcgy2aaqbgxobuxbpxzhlwnvubgtptbs7p72e"
+      },
+      "url": "https://bsky.app/profile/kakuriyo-lofi.bsky.social",
+      "published": "2026-10-26T09:20:22.904Z",
       "status": "approved"
     }
   ],
