@@ -184,8 +184,9 @@ controls, and the cover wall of `ShelfTile`s (rendered by the shared
 queue through `shelfFilters.ts`. An entry with a body (the "why") shows the
 notes mark on its tile.
 
-`/api/shelf-queue.json` returns every `todo` entry across all four
-categories (`id`, `category`, `title`, `creator`, `created`), sorted by
+`/api/shelf-queue.json` returns every `todo` and `started` entry across all
+four categories (`id`, `category`, `status`, `title`, `creator`, `created`,
+`path`), sorted by
 `created` descending. It's a derived, build-time view of the same content
 collections — not a separate source of truth.
 

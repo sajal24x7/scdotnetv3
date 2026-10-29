@@ -327,7 +327,11 @@
     cursor: pointer;
   }
   .queue-actions button:disabled { opacity: 0.5; }
-  #shelfQueueList { font-size: 14px; color: var(--muted); }
+  .queue-row { flex-wrap: wrap; }
+  /* The rating choices get their own line so the title isn't squeezed. */
+  .queue-actions.picking { flex: 1 1 100%; flex-wrap: wrap; }
+  .queue-actions button.finish { border-color: var(--ok); color: var(--ok); }
+  #shelfQueueList, #shelfProgressList { font-size: 14px; color: var(--muted); }
   #shelfStatus { margin-top: 12px; font-size: 14px; word-break: break-word; }
   #shelfStatus.ok { color: var(--ok); }
   #shelfStatus.err { color: var(--err); }
@@ -453,7 +457,9 @@
     <button class="send" id="shelfSend" type="button">Add to queue</button>
     <p id="shelfStatus" role="status"></p>
 
-    <h2>Queue <button type="button" class="shelf-queue-refresh" id="shelfQueueRefresh">↻ refresh</button></h2>
+    <h2>In progress <button type="button" class="shelf-queue-refresh" id="shelfQueueRefresh">↻ refresh</button></h2>
+    <div id="shelfProgressList">Loading…</div>
+    <h2>Queue</h2>
     <div id="shelfQueueList">Loading…</div>
   </section>
 </main>
@@ -1128,12 +1134,27 @@ import * as session from '/auth/session.js';
         throw new Error(`GitHub said ${res.status}. ${detail}`);
       }
       const data = await res.json();
+      if (post.status === 'started') {
+        // Show it under "In progress" now so it can be finished from here
+        // without waiting for the next deploy.
+        shelfQueue.unshift({
+          id: `${post.category}:${path}`,
+          category: post.category,
+          status: 'started',
+          title: post.title,
+          creator: post.creator,
+          created: post.created,
+          path,
+        });
+        renderShelfQueue();
+      }
       if (!post.logging) {
         // Add it to the on-screen queue right away — /api/shelf-queue.json is a
         // build-time snapshot and won't know about this until the next deploy.
         shelfQueue.unshift({
           id: `${post.category}:${path}`,
           category: post.category,
+          status: 'todo',
           title: post.title,
           creator: post.creator,
           created: post.created,
@@ -1159,6 +1180,7 @@ import * as session from '/auth/session.js';
 
   async function loadShelfQueue() {
     $('shelfQueueList').textContent = 'Loading…';
+    $('shelfProgressList').textContent = 'Loading…';
     try {
       const res = await fetch('/api/shelf-queue.json', { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -1166,20 +1188,28 @@ import * as session from '/auth/session.js';
       renderShelfQueue();
     } catch (e) {
       $('shelfQueueList').textContent = `Couldn't load the queue: ${e.message}`;
+      $('shelfProgressList').textContent = '';
     }
   }
   $('shelfQueueRefresh').addEventListener('click', () => loadShelfQueue());
 
+  // One endpoint feeds both lists: `started` entries go under "In progress"
+  // (Finish), `todo` entries under "Queue" (Start / Remove).
   function renderShelfQueue() {
-    const list = $('shelfQueueList');
+    renderShelfList($('shelfProgressList'), shelfQueue.filter((q) => q.status === 'started'), 'Nothing in progress.');
+    renderShelfList($('shelfQueueList'), shelfQueue.filter((q) => q.status !== 'started'), 'Nothing queued yet.');
+  }
+
+  function renderShelfList(list, items, emptyText) {
     list.innerHTML = '';
-    if (shelfQueue.length === 0) {
-      list.textContent = 'Nothing queued yet.';
+    if (items.length === 0) {
+      list.textContent = emptyText;
       return;
     }
-    shelfQueue.forEach((item) => {
+    items.forEach((item) => {
       const row = document.createElement('div');
       row.className = 'queue-row';
+      const inProgress = item.status === 'started';
 
       const info = document.createElement('div');
       info.className = 'queue-info';
@@ -1187,23 +1217,94 @@ import * as session from '/auth/session.js';
       const label = SHELF_CATEGORIES[item.category]?.label ?? item.category;
       info.innerHTML = `<strong>${escapeHtml(item.title)}</strong>` +
         (item.creator ? ` — ${escapeHtml(item.creator)}` : '') +
-        `<br><span class="queue-meta">${label} · added ${added}</span>`;
+        `<br><span class="queue-meta">${label} · ${inProgress ? 'since' : 'added'} ${added}</span>`;
 
       const actions = document.createElement('div');
       actions.className = 'queue-actions';
-      const startBtn = document.createElement('button');
-      startBtn.type = 'button';
-      startBtn.textContent = 'Start';
-      const removeBtn = document.createElement('button');
-      removeBtn.type = 'button';
-      removeBtn.textContent = 'Remove';
-      startBtn.addEventListener('click', () => handleQueueAction(item, 'start', startBtn, removeBtn));
-      removeBtn.addEventListener('click', () => handleQueueAction(item, 'remove', removeBtn, startBtn));
-      actions.append(startBtn, removeBtn);
+      const button = (text, onClick, cls) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = text;
+        if (cls) b.className = cls;
+        b.addEventListener('click', onClick);
+        return b;
+      };
+
+      if (inProgress) {
+        // Finish swaps in the rating choices; picking one commits. Two taps total.
+        const showRatings = () => {
+          const pick = (rating) => () => {
+            actions.querySelectorAll('button').forEach((b) => { b.disabled = true; });
+            handleFinish(item, rating, actions);
+          };
+          actions.classList.add('picking');
+          actions.replaceChildren(
+            button('Like', pick('like')),
+            button('Love', pick('love')),
+            button('Nope', pick('nope')),
+            button('No rating', pick('')),
+            button('×', () => { actions.classList.remove('picking'); actions.replaceChildren(finishBtn); }),
+          );
+        };
+        const finishBtn = button('Finish', showRatings, 'finish');
+        actions.append(finishBtn);
+      } else {
+        const startBtn = button('Start', () => handleQueueAction(item, 'start', startBtn, removeBtn));
+        const removeBtn = button('Remove', () => handleQueueAction(item, 'remove', removeBtn, startBtn));
+        actions.append(startBtn, removeBtn);
+      }
 
       row.append(info, actions);
       list.appendChild(row);
     });
+  }
+
+  const FINISH_VERBS = { bookshelf: 'reading', filmshelf: 'watching', tvshelf: 'watching', gameshelf: 'playing' };
+
+  // started → finished in place: sets `finished:` (today), the optional
+  // rating, and the shelf's usual one-liner when the entry has no body yet.
+  async function finishShelfItem(item, rating, token) {
+    const file = await getFile(token, item.path);
+    const content = fromBase64(file.content);
+    const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+    if (!match) throw new Error('Could not read the frontmatter of this file.');
+    let fm = match[1];
+    let body = match[2];
+    const today = todayLocal();
+
+    if (!/^status:\s*['"]?started['"]?\s*$/m.test(fm)) throw new Error('Could not find "status: started" in this file.');
+    fm = fm.replace(/^status:.*$/m, 'status: finished');
+    if (/^finished:.*$/m.test(fm)) fm = fm.replace(/^finished:.*$/m, `finished: ${today}`);
+    else fm += `\nfinished: ${today}`;
+    if (rating) {
+      if (/^rating:.*$/m.test(fm)) fm = fm.replace(/^rating:.*$/m, `rating: ${rating}`);
+      else fm += `\nrating: ${rating}`;
+    }
+    if (!body.trim()) {
+      const season = fm.match(/^season:\s*(\d+)\s*$/m);
+      const what = season ? ` Season ${season[1]}` : '';
+      body = `Finished ${FINISH_VERBS[item.category] ?? 'with'}${what} on ${today}.\n`;
+    }
+
+    const updated = `---\n${fm}\n---\n${body}`;
+    const res = await putFile(token, item.path, `Finish ${item.title}`, toBase64(updated), file.sha);
+    if (!res.ok) throw new Error(`GitHub said ${res.status}`);
+    return res.json();
+  }
+
+  async function handleFinish(item, rating, actions) {
+    const token = getToken();
+    if (!token) { showSetup(true); renderShelfQueue(); return; }
+    setShelfStatus('Finishing…');
+    try {
+      const data = await finishShelfItem(item, rating, token);
+      setShelfStatus(`Finished “${escapeHtml(item.title)}”${rating ? ` (${rating})` : ''} · <a href="${data.commit.html_url}">commit</a>`, 'ok');
+      shelfQueue = shelfQueue.filter((q) => q.id !== item.id);
+      renderShelfQueue();
+    } catch (e) {
+      setShelfStatus(`Failed: ${e.message}`, 'err');
+      actions.querySelectorAll('button').forEach((b) => { b.disabled = false; });
+    }
   }
 
   async function startQueueItem(item, token) {
@@ -1228,6 +1329,9 @@ import * as session from '/auth/session.js';
       if (action === 'start') {
         await startQueueItem(item, token);
         setShelfStatus(`Marked "${item.title}" as started.`, 'ok');
+        shelfQueue = shelfQueue.map((q) => (q.id === item.id ? { ...q, status: 'started' } : q));
+        renderShelfQueue();
+        return;
       } else {
         const file = await getFile(token, item.path);
         const res = await deleteFile(token, item.path, `Remove queue stub: ${item.title}`, file.sha);

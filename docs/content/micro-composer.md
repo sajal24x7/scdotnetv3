@@ -140,6 +140,23 @@ folder) straight to `main`:
 Books and games are unchanged — they stay queue-only, on the assumption that
 anything worth shelving there is worth a proper note.
 
+### Finishing something in progress
+
+Below the form, an **In progress** list shows every `status: started` entry
+(any shelf category, from the same `/api/shelf-queue.json` endpoint). Tap
+**Finish**, then pick **Like / Love / Nope / No rating** (× cancels). That
+edits the file in place on `main`:
+
+- `status: started` → `finished`, plus `finished:` set to today.
+- `rating:` is added (or replaced) when you pick one.
+- An entry with no body gets the shelf's usual one-liner
+  (`Finished watching on 2026-10-29.`, `Finished reading …`,
+  `Finished playing …`; TV includes the season). Existing notes are kept.
+
+So a film logged as **Watching** (for example *Gajab Raat*) is two taps from
+done. Entries started in the current session, from the form or a queue
+**Start**, move into this list immediately.
+
 ### Queue quick-add
 - Publish commits `YYYYMMDDHHMM Title.md` straight to
   `src/content/<category>/` on `main`, with `status: todo` and a `created`
