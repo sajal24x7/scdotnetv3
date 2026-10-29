@@ -11,6 +11,7 @@ tags:
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3myxkvo5nap2o'
   - 'https://www.threads.com/@sajal24x7/post/DfDRFKMj9Fd'
+  - 'https://mastodon.social/@sajal24x7/117521462330681966'
 ---
 [The October inflection point for vibe game development by Simon Willison](https://simonwillison.net/2026/Oct/28/vibe-game-development/)
 

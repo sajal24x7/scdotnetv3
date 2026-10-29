@@ -9,6 +9,7 @@ tags:
 syndicationUrls:
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3myxkwi22vf2r'
   - 'https://www.threads.com/@sajal24x7/post/DfDRIbHjwGC'
+  - 'https://mastodon.social/@sajal24x7/117521462357436418'
 ---
 They are an API object that allows us to store non-credential data as KV pair.
 
