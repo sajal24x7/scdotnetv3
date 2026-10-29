@@ -485,6 +485,21 @@
       "status": "approved"
     }
   ],
+  "haiku/long-black-strands": [
+    {
+      "id": "bluesky:like:3myy2he5ss32i:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-10-29T01:56:23.083Z",
+      "status": "approved"
+    }
+  ],
   "haiku/red-light-under-bridge": [
     {
       "id": "bluesky:like:3myqdkk247j2r:did:plc:gfdep6yi3mgqryscwcwlrn77",
@@ -1298,6 +1313,35 @@
       "status": "approved"
     }
   ],
+  "micro/the-gaming-october-inflection-point": [
+    {
+      "id": "bluesky:like:3myxkvo5nap2o:did:plc:6mr4popw77ph7iwo5nfg3ren",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Apps + Frappes",
+        "url": "https://bsky.app/profile/appsandfrappes.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:6mr4popw77ph7iwo5nfg3ren/bafkreibrf3sqzoidqmlgx5wz2uxhq2zsdvqmz6imnyookqtalgohnhrutm"
+      },
+      "url": "https://bsky.app/profile/appsandfrappes.bsky.social",
+      "published": "2026-10-28T21:00:59.600Z",
+      "status": "approved"
+    },
+    {
+      "id": "bluesky:reply:at://did:plc:6mr4popw77ph7iwo5nfg3ren/app.bsky.feed.post/3myxni567jb2f",
+      "type": "reply",
+      "platform": "bluesky",
+      "author": {
+        "name": "Apps + Frappes",
+        "url": "https://bsky.app/profile/appsandfrappes.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:6mr4popw77ph7iwo5nfg3ren/bafkreibrf3sqzoidqmlgx5wz2uxhq2zsdvqmz6imnyookqtalgohnhrutm"
+      },
+      "content": "<p>Okay, but did you have a perfectly brewed frappe next to you while building it? Because that's peak vibe coding goals right there!</p>",
+      "url": "https://bsky.app/profile/appsandfrappes.bsky.social/post/3myxni567jb2f",
+      "published": "2026-10-28T21:00:59.773186+00:00",
+      "status": "approved"
+    }
+  ],
   "micro/the-human-in-the-loop-is-tired": [
     {
       "id": "mastodon:like:116951613672185395:116696538002197507",
@@ -1983,7 +2027,7 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/De3-BFTllDs/",
-      "count": 13,
+      "count": 15,
       "status": "approved"
     },
     {
