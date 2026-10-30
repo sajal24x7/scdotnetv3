@@ -1,10 +1,15 @@
 ---
-title: "Type of Upgrades for Deployments in Kubernetes"
-slug: "type-of-upgrades-for-deployments-in-kubernetes"
-created: 2026-10-27T08:29:00+02:00
-updated: 2026-10-27T08:35:06+02:00
+title: Type of Upgrades for Deployments in Kubernetes
+slug: type-of-upgrades-for-deployments-in-kubernetes
+created: 2026-10-27T06:29:00.000Z
+updated: 2026-10-27T06:35:06.000Z
 category: til
-tags: ["k8s"]
+tags:
+  - k8s
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117520368043333271'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3myxkw3vsky2p'
+  - 'https://www.threads.com/@sajal24x7/post/DfDRG39j5rN'
 ---
 There are two ways to do upgrades for [deployments](/til/kubernetes-deployment) in [Kubernetes](/til/kubernetes):
 1. Rolling upgrades - default

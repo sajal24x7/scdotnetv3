@@ -1265,6 +1265,7 @@
       "haiku/202610240833 Gray skies abound.md",
       "haiku/202610252301 Red light under bridge.md",
       "haiku/202610262033 Full moon, up in the sky..md",
+      "haiku/202610282306 Long black strands.md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -1690,6 +1691,7 @@
       "micro/202610222156 Economic probabilities for our grandchildren.md",
       "micro/202610231518 Next Gen console costs are too damn high.md",
       "micro/202610242317 On the benefit of writing workshops.md",
+      "micro/202610281727 The Gaming October Inflection Point.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -2545,6 +2547,13 @@
       "til/202610241341 Preemption in Kubernetes.md",
       "til/202610261351 Admission Controllers in Kubernetes.md",
       "til/202610261548 Different types of admission controllers.md",
+      "til/202610270829 Type of upgrades for deployments in Kubernetes.md",
+      "til/202610271422 ConfigMaps in Kubernetes.md",
+      "til/202610271424 How to create a ConfigMap in Kubernetes.md",
+      "til/202610271435 How to set environment variable in a pod using ConfigMaps.md",
+      "til/202610281552 Secrets in Kubernetes.md",
+      "til/202610281555 How to create secrets in Kubernetes.md",
+      "til/202610281614 How to use secrets in a Pod.md",
       "tvshelf/201901071200 Luther S2.md",
       "tvshelf/201901071201 Luther S1.md",
       "tvshelf/201901281200 Bodyguard S1.md",
@@ -4819,6 +4828,14 @@
   ],
   "til/kubernetes": [
     {
+      "slug": "/til/type-of-upgrades-for-deployments-in-kubernetes/",
+      "title": "Type of Upgrades for Deployments in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-27T06:29:00.000Z",
+      "snippet": "There are two ways to do upgrades for deployments in Kubernetes:"
+    },
+    {
       "slug": "/til/how-to-create-static-pods/",
       "title": "How to Create Static Pods",
       "description": "",
@@ -6798,7 +6815,41 @@
       "snippet": "With nodeSelector field matching the labels set on a node"
     }
   ],
+  "til/configmaps-in-kubernetes": [
+    {
+      "slug": "/til/secrets-in-kubernetes/",
+      "title": "Secrets in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-28T13:52:00.000Z",
+      "snippet": "Secrets are similar to ConfigMaps but are used to hold confidential data. Since these can be created separately from the pods, there is less risk of it being exposed."
+    },
+    {
+      "slug": "/til/how-to-set-environment-variable-in-a-pod-using-configmaps/",
+      "title": "How to Set Environment Variable in a Pod Using ConfigMaps",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-27T12:35:00.000Z",
+      "snippet": "First, create a ConfigMap."
+    },
+    {
+      "slug": "/til/how-to-create-a-configmap-in-kubernetes/",
+      "title": "How to Create a ConfigMap in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-27T12:24:00.000Z",
+      "snippet": "To create a ConfigMap in Kubernetes:"
+    }
+  ],
   "til/kubernetes-deployment": [
+    {
+      "slug": "/til/type-of-upgrades-for-deployments-in-kubernetes/",
+      "title": "Type of Upgrades for Deployments in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-27T06:29:00.000Z",
+      "snippet": "There are two ways to do upgrades for deployments in Kubernetes:"
+    },
     {
       "slug": "/til/how-to-use-priority-and-preemption/",
       "title": "How to Use Priority and Preemption",
@@ -6814,6 +6865,42 @@
       "category": "til",
       "created": "2026-10-22T20:07:00.000Z",
       "snippet": "To create a deployment, one way to do it is using the yaml file, but a quicker way to do it is via:"
+    }
+  ],
+  "til/how-to-create-a-configmap-in-kubernetes": [
+    {
+      "slug": "/til/how-to-create-secrets-in-kubernetes/",
+      "title": "How to Create Secrets in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-28T13:55:00.000Z",
+      "snippet": "Similar to how to create a ConfigMap, we create secrets:"
+    },
+    {
+      "slug": "/til/how-to-set-environment-variable-in-a-pod-using-configmaps/",
+      "title": "How to Set Environment Variable in a Pod Using ConfigMaps",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-27T12:35:00.000Z",
+      "snippet": "First, create a ConfigMap."
+    }
+  ],
+  "til/secrets-in-kubernetes": [
+    {
+      "slug": "/til/how-to-use-secrets-in-a-pod/",
+      "title": "How to Use Secrets in a Pod",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-28T14:14:00.000Z",
+      "snippet": "There are a few ways to use secrets with pods."
+    },
+    {
+      "slug": "/til/how-to-create-secrets-in-kubernetes/",
+      "title": "How to Create Secrets in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-28T13:55:00.000Z",
+      "snippet": "Similar to how to create a ConfigMap, we create secrets:"
     }
   ],
   "til/static-pods": [

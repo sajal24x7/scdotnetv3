@@ -140,6 +140,46 @@ folder) straight to `main`:
 Books and games are unchanged — they stay queue-only, on the assumption that
 anything worth shelving there is worth a proper note.
 
+### Finishing something in progress
+
+Below the form, an **In progress** list shows every `status: started` entry
+(any shelf category, from the same `/api/shelf-queue.json` endpoint). Tap
+**Finish**, then pick **Like / Love / Nope / No rating** (× cancels). That
+edits the file in place on `main`:
+
+- `status: started` → `finished`, plus `finished:` set to today.
+- `rating:` is added (or replaced) when you pick one.
+- An entry with no body gets the shelf's usual one-liner
+  (`Finished watching on 2026-10-29.`, `Finished reading …`,
+  `Finished playing …`; TV includes the season). Existing notes are kept.
+
+So a film logged as **Watching** (for example *Gajab Raat*) is two taps from
+done. Entries started in the current session, from the form or a queue
+**Start**, move into this list immediately.
+
+### Editing an entry in the form
+
+Every row in **In progress** and **Queue** also has an **Edit** button. It
+loads that file into the form above (title, creator, season, dates, rating,
+platform, notes) with the status set to **Watched** (**Read** for books,
+**Played** for games), since finishing is the usual reason to open it. A
+banner shows what is being edited, with **Cancel**; the category is locked
+because the file's folder decides it. **Save changes** writes back to the
+same file:
+
+- Status, `finished` and `rating` are always written from the form.
+- Title, creator, season, `started` and platform are rewritten only when you
+  changed them, so quoting and full timestamps from Obsidian or the
+  enrichment workflow survive an untouched save. Other keys (`slug`,
+  `genre`, `cover`, `tags`, …) are never touched.
+- Notes replace the body. Left empty on a finished entry, the body becomes
+  the usual one-liner; an old auto one-liner (`Started watching …`) is
+  treated as empty.
+
+Books and games get the status and date fields only while editing; new ones
+are still queue-only. Edits are not autosaved as drafts: reloading mid-edit
+brings back the draft you had before.
+
 ### Queue quick-add
 - Publish commits `YYYYMMDDHHMM Title.md` straight to
   `src/content/<category>/` on `main`, with `status: todo` and a `created`

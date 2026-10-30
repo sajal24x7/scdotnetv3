@@ -1,10 +1,15 @@
 ---
-title: "How to Create a ConfigMap in Kubernetes"
-slug: "how-to-create-a-configmap-in-kubernetes"
-created: 2026-10-27T14:24:00+02:00
-updated: 2026-10-28T15:55:54+02:00
+title: How to Create a ConfigMap in Kubernetes
+slug: how-to-create-a-configmap-in-kubernetes
+created: 2026-10-27T12:24:00.000Z
+updated: 2026-10-28T13:55:54.000Z
 category: til
-tags: ["k8s"]
+tags:
+  - k8s
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117520369701853968'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3myxkwumjva2z'
+  - 'https://www.threads.com/@sajal24x7/post/DfDRKCljy26'
 ---
 To create a [ConfigMap](/til/configmaps-in-kubernetes) in Kubernetes:
 1. Create a file

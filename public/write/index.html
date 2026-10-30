@@ -298,6 +298,13 @@
   #shelfPanel:not([data-kind="watch"]) .shelf-watch-only { display: none; }
   #shelfPanel[data-status="todo"] .shelf-log-only { display: none; }
   #shelfPanel:not([data-category="tvshelf"]) .shelf-tv-only { display: none; }
+  /* Film is the one shelf without a `started` date. */
+  #shelfPanel[data-category="filmshelf"] .shelf-started { display: none; }
+  /* While editing, the file's folder fixes the category. */
+  #shelfPanel[data-editing] #shelfCategoryToggle { opacity: 0.5; pointer-events: none; }
+  #shelfEditBar { display: none; margin-bottom: 10px; font-size: 14px; color: var(--muted); }
+  #shelfPanel[data-editing] #shelfEditBar { display: block; }
+  #shelfEditBar button { background: none; border: none; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; padding: 0; margin-left: 6px; }
   .shelf-row { display: flex; gap: 10px; }
   .shelf-row > div { flex: 1; min-width: 0; }
   .shelf-row input { margin-bottom: 10px; }
@@ -327,7 +334,11 @@
     cursor: pointer;
   }
   .queue-actions button:disabled { opacity: 0.5; }
-  #shelfQueueList { font-size: 14px; color: var(--muted); }
+  .queue-row { flex-wrap: wrap; }
+  /* The rating choices get their own line so the title isn't squeezed. */
+  .queue-actions.picking { flex: 1 1 100%; flex-wrap: wrap; }
+  .queue-actions button.finish { border-color: var(--ok); color: var(--ok); }
+  #shelfQueueList, #shelfProgressList { font-size: 14px; color: var(--muted); }
   #shelfStatus { margin-top: 12px; font-size: 14px; word-break: break-word; }
   #shelfStatus.ok { color: var(--ok); }
   #shelfStatus.err { color: var(--err); }
@@ -403,6 +414,7 @@
   </section>
 
   <section id="shelfPanel">
+    <p id="shelfEditBar">Editing <strong id="shelfEditTitle"></strong><button type="button" id="shelfEditCancel">Cancel</button></p>
     <div class="mode-toggle" role="group" aria-label="Shelf category" id="shelfCategoryToggle">
       <button type="button" data-category="bookshelf" aria-pressed="true">Book</button>
       <button type="button" data-category="filmshelf" aria-pressed="false">Film</button>
@@ -421,7 +433,7 @@
         <label for="shelfSeason">Season</label>
         <input id="shelfSeason" type="number" min="1" step="1" inputmode="numeric" placeholder="1">
       </div>
-      <div class="shelf-tv-only">
+      <div class="shelf-started">
         <label for="shelfStarted">Started</label>
         <input id="shelfStarted" type="date">
       </div>
@@ -453,7 +465,9 @@
     <button class="send" id="shelfSend" type="button">Add to queue</button>
     <p id="shelfStatus" role="status"></p>
 
-    <h2>Queue <button type="button" class="shelf-queue-refresh" id="shelfQueueRefresh">↻ refresh</button></h2>
+    <h2>In progress <button type="button" class="shelf-queue-refresh" id="shelfQueueRefresh">↻ refresh</button></h2>
+    <div id="shelfProgressList">Loading…</div>
+    <h2>Queue</h2>
     <div id="shelfQueueList">Loading…</div>
   </section>
 </main>
@@ -491,6 +505,12 @@ import * as session from '/auth/session.js';
     tvshelf: { label: 'TV', creatorLabel: 'Creator', field: 'creator', kind: 'array', mode: 'watch', noun: 'season' },
     gameshelf: { label: 'Game', creatorLabel: 'Developer', field: 'developer', kind: 'string', mode: 'queue' },
   };
+  const STATUS_LABELS = {
+    bookshelf: { finished: 'Read', started: 'Reading', todo: 'To read' },
+    filmshelf: { finished: 'Watched', started: 'Watching', todo: 'To watch' },
+    tvshelf: { finished: 'Watched', started: 'Watching', todo: 'To watch' },
+    gameshelf: { finished: 'Played', started: 'Playing', todo: 'To play' },
+  };
 
   const $ = (id) => document.getElementById(id);
   const fields = ['title', 'link', 'body', 'tags'];
@@ -507,6 +527,9 @@ import * as session from '/auth/session.js';
   let shelfRating = '';
   let shelfQueue = [];
   let shelfQueueLoaded = false;
+  // Set while the form is editing an existing entry (from the Edit button on
+  // a list row) instead of creating a new one: { item, original }.
+  let shelfEditing = null;
 
   function setMode(next) {
     mode = ['photo', 'til', 'shelf'].includes(next) ? next : 'micro';
@@ -569,12 +592,19 @@ import * as session from '/auth/session.js';
   // the notes box is asking for, and what the button says it will do.
   function syncShelfForm() {
     const cfg = SHELF_CATEGORIES[shelfCategory];
-    const isWatch = cfg.mode === 'watch';
+    // Books and games only get the status/date fields when editing an entry
+    // that already exists; new ones stay queue-only.
+    const isWatch = cfg.mode === 'watch' || Boolean(shelfEditing);
     const status = isWatch ? shelfWatchStatus : 'todo';
     const panel = $('shelfPanel');
     panel.dataset.category = shelfCategory;
-    panel.dataset.kind = cfg.mode;
+    panel.dataset.kind = isWatch ? 'watch' : 'queue';
     panel.dataset.status = status;
+
+    const labels = STATUS_LABELS[shelfCategory];
+    document.querySelectorAll('#shelfStatusToggle button').forEach((btn) => {
+      btn.textContent = labels[btn.dataset.status];
+    });
 
     // Film has no `started` date in the shelf schema — only TV tracks both —
     // so a film in progress logs no date at all.
@@ -583,7 +613,9 @@ import * as session from '/auth/session.js';
     if (status === 'finished' && !$('shelfFinished').value) $('shelfFinished').value = todayLocal();
 
     $('shelfNotes').placeholder = status === 'todo' ? 'Why (optional)…' : 'Notes (optional)…';
-    $('shelfSend').textContent = status === 'todo'
+    $('shelfSend').textContent = shelfEditing
+      ? 'Save changes'
+      : status === 'todo'
       ? 'Add to queue'
       : `${status === 'finished' ? 'Log' : 'Start'} ${cfg.noun ?? 'entry'}`;
   }
@@ -666,6 +698,9 @@ import * as session from '/auth/session.js';
   const shelfFields = ['shelfTitle', 'shelfCreator', 'shelfNotes', 'shelfSeason', 'shelfStarted', 'shelfFinished', 'shelfPlatform'];
 
   function saveDraft() {
+    // An edit isn't a draft: reloading mid-edit falls back to the real draft
+    // rather than resurrecting the edit as a new entry.
+    if (shelfEditing) return;
     const draft = Object.fromEntries(fields.map((f) => [f, $(f).value]));
     draft.mode = mode;
     draft.photos = photos;
@@ -1101,6 +1136,19 @@ import * as session from '/auth/session.js';
       return;
     }
 
+    if (shelfEditing) {
+      $('shelfSend').disabled = true;
+      setShelfStatus('Saving…');
+      try {
+        await saveShelfEdit(token);
+      } catch (e) {
+        setShelfStatus(`Failed: ${e.message}`, 'err');
+      } finally {
+        $('shelfSend').disabled = false;
+      }
+      return;
+    }
+
     const post = buildShelfPost();
     $('shelfSend').disabled = true;
     setShelfStatus(post.logging ? 'Logging…' : 'Adding to queue…');
@@ -1128,12 +1176,27 @@ import * as session from '/auth/session.js';
         throw new Error(`GitHub said ${res.status}. ${detail}`);
       }
       const data = await res.json();
+      if (post.status === 'started') {
+        // Show it under "In progress" now so it can be finished from here
+        // without waiting for the next deploy.
+        shelfQueue.unshift({
+          id: `${post.category}:${path}`,
+          category: post.category,
+          status: 'started',
+          title: post.title,
+          creator: post.creator,
+          created: post.created,
+          path,
+        });
+        renderShelfQueue();
+      }
       if (!post.logging) {
         // Add it to the on-screen queue right away — /api/shelf-queue.json is a
         // build-time snapshot and won't know about this until the next deploy.
         shelfQueue.unshift({
           id: `${post.category}:${path}`,
           category: post.category,
+          status: 'todo',
           title: post.title,
           creator: post.creator,
           created: post.created,
@@ -1159,6 +1222,7 @@ import * as session from '/auth/session.js';
 
   async function loadShelfQueue() {
     $('shelfQueueList').textContent = 'Loading…';
+    $('shelfProgressList').textContent = 'Loading…';
     try {
       const res = await fetch('/api/shelf-queue.json', { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -1166,20 +1230,28 @@ import * as session from '/auth/session.js';
       renderShelfQueue();
     } catch (e) {
       $('shelfQueueList').textContent = `Couldn't load the queue: ${e.message}`;
+      $('shelfProgressList').textContent = '';
     }
   }
   $('shelfQueueRefresh').addEventListener('click', () => loadShelfQueue());
 
+  // One endpoint feeds both lists: `started` entries go under "In progress"
+  // (Finish), `todo` entries under "Queue" (Start / Remove).
   function renderShelfQueue() {
-    const list = $('shelfQueueList');
+    renderShelfList($('shelfProgressList'), shelfQueue.filter((q) => q.status === 'started'), 'Nothing in progress.');
+    renderShelfList($('shelfQueueList'), shelfQueue.filter((q) => q.status !== 'started'), 'Nothing queued yet.');
+  }
+
+  function renderShelfList(list, items, emptyText) {
     list.innerHTML = '';
-    if (shelfQueue.length === 0) {
-      list.textContent = 'Nothing queued yet.';
+    if (items.length === 0) {
+      list.textContent = emptyText;
       return;
     }
-    shelfQueue.forEach((item) => {
+    items.forEach((item) => {
       const row = document.createElement('div');
       row.className = 'queue-row';
+      const inProgress = item.status === 'started';
 
       const info = document.createElement('div');
       info.className = 'queue-info';
@@ -1187,23 +1259,265 @@ import * as session from '/auth/session.js';
       const label = SHELF_CATEGORIES[item.category]?.label ?? item.category;
       info.innerHTML = `<strong>${escapeHtml(item.title)}</strong>` +
         (item.creator ? ` — ${escapeHtml(item.creator)}` : '') +
-        `<br><span class="queue-meta">${label} · added ${added}</span>`;
+        `<br><span class="queue-meta">${label} · ${inProgress ? 'since' : 'added'} ${added}</span>`;
 
       const actions = document.createElement('div');
       actions.className = 'queue-actions';
-      const startBtn = document.createElement('button');
-      startBtn.type = 'button';
-      startBtn.textContent = 'Start';
-      const removeBtn = document.createElement('button');
-      removeBtn.type = 'button';
-      removeBtn.textContent = 'Remove';
-      startBtn.addEventListener('click', () => handleQueueAction(item, 'start', startBtn, removeBtn));
-      removeBtn.addEventListener('click', () => handleQueueAction(item, 'remove', removeBtn, startBtn));
-      actions.append(startBtn, removeBtn);
+      const button = (text, onClick, cls) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = text;
+        if (cls) b.className = cls;
+        b.addEventListener('click', onClick);
+        return b;
+      };
+
+      if (inProgress) {
+        // Finish swaps in the rating choices; picking one commits. Two taps total.
+        const showRatings = () => {
+          const pick = (rating) => () => {
+            actions.querySelectorAll('button').forEach((b) => { b.disabled = true; });
+            handleFinish(item, rating, actions);
+          };
+          actions.classList.add('picking');
+          actions.replaceChildren(
+            button('Like', pick('like')),
+            button('Love', pick('love')),
+            button('Nope', pick('nope')),
+            button('No rating', pick('')),
+            button('×', () => { actions.classList.remove('picking'); actions.replaceChildren(finishBtn); }),
+          );
+        };
+        const finishBtn = button('Finish', showRatings, 'finish');
+        actions.append(finishBtn, button('Edit', () => editShelfItem(item)));
+      } else {
+        const startBtn = button('Start', () => handleQueueAction(item, 'start', startBtn, removeBtn));
+        const removeBtn = button('Remove', () => handleQueueAction(item, 'remove', removeBtn, startBtn));
+        actions.append(startBtn, button('Edit', () => editShelfItem(item)), removeBtn);
+      }
 
       row.append(info, actions);
       list.appendChild(row);
     });
+  }
+
+  const FINISH_VERBS = { bookshelf: 'reading', filmshelf: 'watching', tvshelf: 'watching', gameshelf: 'playing' };
+
+  // --- minimal frontmatter editing ------------------------------------------
+  // Shelf files are hand-written, enriched by workflows and edited here, so
+  // edits touch only the keys they mean to and leave every other line as is.
+  // A key's block is its own line plus any indented / `- ` lines under it.
+  function splitFrontmatter(content) {
+    const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+    if (!match) throw new Error('Could not read the frontmatter of this file.');
+    return { lines: match[1].split(/\r?\n/), body: match[2] };
+  }
+
+  function fmBlock(lines, key) {
+    const start = lines.findIndex((l) => l.startsWith(`${key}:`));
+    if (start === -1) return null;
+    let end = start + 1;
+    while (end < lines.length && /^(\s|- )/.test(lines[end])) end++;
+    return { start, end };
+  }
+
+  function unquote(v) {
+    v = v.trim();
+    if (v.startsWith('"')) { try { return JSON.parse(v); } catch { /* fall through */ } }
+    if (v.startsWith("'") && v.endsWith("'")) return v.slice(1, -1).replace(/''/g, "'");
+    return v;
+  }
+
+  // Scalar → string, list (block or `[a, b]`) → array, missing → ''.
+  function fmGet(lines, key) {
+    const block = fmBlock(lines, key);
+    if (!block) return '';
+    const inline = lines[block.start].slice(key.length + 1).trim();
+    if (inline.startsWith('[')) {
+      return inline.slice(1, -1).split(',').map(unquote).filter(Boolean);
+    }
+    if (inline) return unquote(inline);
+    return lines.slice(block.start + 1, block.end)
+      .map((l) => l.trim().replace(/^- /, ''))
+      .filter(Boolean)
+      .map(unquote);
+  }
+
+  // `value` is the already-formatted YAML (a string or the lines of a list);
+  // empty removes the key.
+  function fmSet(lines, key, value) {
+    const block = fmBlock(lines, key);
+    const replacement = !value || (Array.isArray(value) && !value.length) ? []
+      : Array.isArray(value) ? [`${key}:`, ...value.map((v) => `  - ${v}`)]
+      : [`${key}: ${value}`];
+    if (block) lines.splice(block.start, block.end - block.start, ...replacement);
+    else lines.push(...replacement);
+  }
+
+  const dateOnly = (v) => (typeof v === 'string' ? v.slice(0, 10) : '');
+
+  // The one-liners the composer writes for you; they get swapped out when the
+  // entry moves on rather than kept as if they were notes.
+  const isAutoBody = (body) => /^(Started|Finished) (watching|reading|playing)[^\n]* on \d{4}-\d{2}-\d{2}\.\s*$/.test(body.trim());
+
+  function finishedLine(category, lines, date) {
+    const season = fmGet(lines, 'season');
+    return `Finished ${FINISH_VERBS[category] ?? 'with'}${season ? ` Season ${season}` : ''} on ${date}.\n`;
+  }
+
+  // started → finished in place: sets `finished:` (today), the optional
+  // rating, and the shelf's usual one-liner when the entry has no notes yet.
+  async function finishShelfItem(item, rating, token) {
+    const file = await getFile(token, item.path);
+    const { lines, body } = splitFrontmatter(fromBase64(file.content));
+    const today = todayLocal();
+
+    if (fmGet(lines, 'status') !== 'started') throw new Error('Could not find "status: started" in this file.');
+    fmSet(lines, 'status', 'finished');
+    fmSet(lines, 'finished', today);
+    if (rating) fmSet(lines, 'rating', rating);
+    const nextBody = !body.trim() || isAutoBody(body) ? finishedLine(item.category, lines, today) : body;
+
+    const updated = `---\n${lines.join('\n')}\n---\n${nextBody}`;
+    const res = await putFile(token, item.path, `Finish ${item.title}`, toBase64(updated), file.sha);
+    if (!res.ok) throw new Error(`GitHub said ${res.status}`);
+    return res.json();
+  }
+
+  async function handleFinish(item, rating, actions) {
+    const token = getToken();
+    if (!token) { showSetup(true); renderShelfQueue(); return; }
+    setShelfStatus('Finishing…');
+    try {
+      const data = await finishShelfItem(item, rating, token);
+      setShelfStatus(`Finished “${escapeHtml(item.title)}”${rating ? ` (${rating})` : ''} · <a href="${data.commit.html_url}">commit</a>`, 'ok');
+      shelfQueue = shelfQueue.filter((q) => q.id !== item.id);
+      renderShelfQueue();
+    } catch (e) {
+      setShelfStatus(`Failed: ${e.message}`, 'err');
+      actions.querySelectorAll('button').forEach((b) => { b.disabled = false; });
+    }
+  }
+
+  // --- edit an existing entry in the form -----------------------------------
+  // Edit loads the file into the form above (defaulting to Watched/Read/Played,
+  // since finishing is the usual reason to open it); Save writes the changes
+  // back to the same file.
+  async function editShelfItem(item) {
+    const token = getToken();
+    if (!token) { showSetup(true); return; }
+    setShelfStatus('Loading…');
+    try {
+      const file = await getFile(token, item.path);
+      const { lines, body } = splitFrontmatter(fromBase64(file.content));
+      const cfg = SHELF_CATEGORIES[item.category];
+      const creatorValue = fmGet(lines, cfg.field);
+      const creator = Array.isArray(creatorValue) ? creatorValue.join(', ') : creatorValue;
+      const title = (item.category === 'tvshelf' && fmGet(lines, 'showTitle')) || fmGet(lines, 'title') || item.title;
+      const notes = isAutoBody(body) ? '' : body.trim();
+
+      shelfEditing = null; // so the switch below doesn't trip over a previous edit
+      setShelfCategory(item.category);
+      const original = {
+        title,
+        creator,
+        season: String(fmGet(lines, 'season')),
+        started: dateOnly(fmGet(lines, 'started')),
+        platform: fmGet(lines, 'platform'),
+      };
+      shelfEditing = { item, original };
+      $('shelfPanel').dataset.editing = '';
+      $('shelfEditTitle').textContent = title;
+
+      $('shelfTitle').value = title;
+      $('shelfCreator').value = creator;
+      $('shelfSeason').value = original.season;
+      $('shelfStarted').value = original.started;
+      $('shelfFinished').value = dateOnly(fmGet(lines, 'finished')) || todayLocal();
+      $('shelfPlatform').value = original.platform;
+      $('shelfNotes').value = notes;
+      setShelfRating(fmGet(lines, 'rating'));
+      setShelfWatchStatus('finished');
+      setShelfStatus('');
+      $('shelfPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (e) {
+      setShelfStatus(`Failed: ${e.message}`, 'err');
+    }
+  }
+
+  // Leaves edit mode and puts back whatever was being drafted before it.
+  function exitShelfEdit() {
+    shelfEditing = null;
+    delete $('shelfPanel').dataset.editing;
+    shelfFields.forEach((f) => { $(f).value = ''; });
+    setShelfRating('');
+    restoreDraft();
+    setMode('shelf');
+    syncShelfForm();
+  }
+  $('shelfEditCancel').addEventListener('click', () => { exitShelfEdit(); setShelfStatus(''); });
+
+  async function saveShelfEdit(token) {
+    const { item, original } = shelfEditing;
+    const cfg = SHELF_CATEGORIES[item.category];
+    const status = shelfWatchStatus;
+    const logging = status !== 'todo';
+    const title = $('shelfTitle').value.trim();
+    const creator = $('shelfCreator').value.trim();
+
+    const file = await getFile(token, item.path);
+    const { lines, body } = splitFrontmatter(fromBase64(file.content));
+
+    // Free-text fields are only rewritten when you changed them, so the
+    // existing formatting (quoting, full timestamps) survives an untouched save.
+    if (title !== original.title) {
+      fmSet(lines, 'title', yamlString(title));
+      if (item.category === 'tvshelf') fmSet(lines, 'showTitle', yamlString(title));
+    }
+    if (creator !== original.creator) {
+      const names = creator.split(',').map((n) => n.trim()).filter(Boolean).map(yamlString);
+      const asList = cfg.kind === 'array' || Array.isArray(fmGet(lines, cfg.field));
+      fmSet(lines, cfg.field, asList ? names : names.join(', ') && yamlString(creator));
+    }
+
+    fmSet(lines, 'status', status);
+    const finished = status === 'finished' ? ($('shelfFinished').value || todayLocal()) : '';
+    fmSet(lines, 'finished', finished);
+    if (item.category !== 'filmshelf') {
+      const started = logging ? $('shelfStarted').value : '';
+      if (started !== original.started) fmSet(lines, 'started', started);
+    }
+    if (logging) {
+      const seasonInput = $('shelfSeason').value.trim();
+      if (item.category === 'tvshelf' && seasonInput !== original.season) {
+        const season = parseInt(seasonInput, 10);
+        fmSet(lines, 'season', Number.isInteger(season) && season > 0 ? String(season) : '');
+      }
+      fmSet(lines, 'rating', shelfRating);
+      const platform = $('shelfPlatform').value.trim();
+      if (platform !== original.platform) fmSet(lines, 'platform', platform && yamlString(platform));
+    }
+
+    let nextBody = $('shelfNotes').value.trim();
+    if (!nextBody && finished) nextBody = finishedLine(item.category, lines, finished).trim();
+    else if (!nextBody && isAutoBody(body) && status === 'started') nextBody = body.trim();
+    const updated = `---\n${lines.join('\n')}\n---\n${nextBody ? `${nextBody}\n` : ''}`;
+
+    const verb = { finished: 'Finish', started: 'Start', todo: 'Update' }[status];
+    const res = await putFile(token, item.path, `${verb} ${title}`, toBase64(updated), file.sha);
+    if (!res.ok) {
+      const detail = (await res.json().catch(() => ({}))).message || '';
+      throw new Error(`GitHub said ${res.status}. ${detail}`);
+    }
+    const data = await res.json();
+
+    // Patch the lists now; the endpoint only catches up on the next deploy.
+    shelfQueue = status === 'finished'
+      ? shelfQueue.filter((q) => q.id !== item.id)
+      : shelfQueue.map((q) => (q.id === item.id ? { ...q, status, title, creator } : q));
+    renderShelfQueue();
+    exitShelfEdit();
+    setShelfStatus(`Saved “${escapeHtml(title)}” as ${STATUS_LABELS[item.category][status].toLowerCase()} · <a href="${data.commit.html_url}">commit</a>`, 'ok');
   }
 
   async function startQueueItem(item, token) {
@@ -1228,6 +1542,9 @@ import * as session from '/auth/session.js';
       if (action === 'start') {
         await startQueueItem(item, token);
         setShelfStatus(`Marked "${item.title}" as started.`, 'ok');
+        shelfQueue = shelfQueue.map((q) => (q.id === item.id ? { ...q, status: 'started' } : q));
+        renderShelfQueue();
+        return;
       } else {
         const file = await getFile(token, item.path);
         const res = await deleteFile(token, item.path, `Remove queue stub: ${item.title}`, file.sha);

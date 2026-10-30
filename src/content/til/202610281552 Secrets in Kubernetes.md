@@ -1,10 +1,15 @@
 ---
-title: "Secrets in Kubernetes"
-slug: "secrets-in-kubernetes"
-created: 2026-10-28T15:52:00+02:00
-updated: 2026-10-28T15:59:17+02:00
+title: Secrets in Kubernetes
+slug: secrets-in-kubernetes
+created: 2026-10-28T13:52:00.000Z
+updated: 2026-10-28T13:59:17.000Z
 category: til
-tags: ["k8s"]
+tags:
+  - k8s
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117520371587828097'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3myxkxpavcp2o'
+  - 'https://www.threads.com/@sajal24x7/post/DfDRNcbD3Z_'
 ---
 Secrets are similar to [ConfigMaps](/til/configmaps-in-kubernetes) but are used to hold confidential data. Since these can be created separately from the pods, there is less risk of it being exposed.
 
