@@ -1,10 +1,15 @@
 ---
-title: "Multi-container Pods"
-slug: "multi-container-pods"
-created: 2026-10-29T11:49:00+02:00
-updated: 2026-10-29T12:05:32+02:00
+title: Multi-container Pods
+slug: multi-container-pods
+created: 2026-10-29T09:49:00.000Z
+updated: 2026-10-29T10:05:32.000Z
 category: til
-tags: ["k8s"]
+tags:
+  - k8s
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117529266142958015'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mz3jeichq62m'
+  - 'https://www.threads.com/@sajal24x7/post/DfHUE2JILPP'
 ---
 A [pod](/til/pods) can have one or more containers running in it. If it runs multiple containers, there are primarily three different patterns:
 

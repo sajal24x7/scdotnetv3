@@ -1,10 +1,15 @@
 ---
-title: "Vertical Pod Autoscaler"
-slug: "vertical-pod-autoscaler"
-created: 2026-10-29T16:04:00+02:00
-updated: 2026-10-29T16:11:08+02:00
+title: Vertical Pod Autoscaler
+slug: vertical-pod-autoscaler
+created: 2026-10-29T14:04:00.000Z
+updated: 2026-10-29T14:11:08.000Z
 category: til
-tags: ["k8s"]
+tags:
+  - k8s
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117529269643133776'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mz3jg3ego72y'
+  - 'https://www.threads.com/@sajal24x7/post/DfHULYTIM7j'
 ---
 Similar to [HPA](/til/horizontal-pod-autoscaling), it monitors resources, and increases resources on the pod if required. It is not inbuilt, it needs to be downloaded and applied.
 
