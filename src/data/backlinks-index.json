@@ -1241,6 +1241,7 @@
       "filmshelf/202608021429 Spiderman Brand New Day.md",
       "filmshelf/202610122013 The AI Doc.md",
       "filmshelf/202610251446 Join or die.md",
+      "filmshelf/202610291759 Gajab Raat.md",
       "gameshelf/202605290954 Ghost of Yotei.md",
       "gameshelf/202608202205 Spiderman 2.md",
       "gameshelf/202608202207 FC26.md",
@@ -1266,6 +1267,7 @@
       "haiku/202610252301 Red light under bridge.md",
       "haiku/202610262033 Full moon, up in the sky..md",
       "haiku/202610282306 Long black strands.md",
+      "haiku/202610292251 Thick fog rolls over.md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -2554,6 +2556,12 @@
       "til/202610281552 Secrets in Kubernetes.md",
       "til/202610281555 How to create secrets in Kubernetes.md",
       "til/202610281614 How to use secrets in a Pod.md",
+      "til/202610291149 Multi-container pods.md",
+      "til/202610291204 Init Containers.md",
+      "til/202610291537 Scaling your application in Kubernetes.md",
+      "til/202610291539 Autoscaling workloads in Kubernetes.md",
+      "til/202610291543 Horizontal Pod Autoscaling.md",
+      "til/202610291604 Vertical Pod Autoscaler.md",
       "tvshelf/201901071200 Luther S2.md",
       "tvshelf/201901071201 Luther S1.md",
       "tvshelf/201901281200 Bodyguard S1.md",
@@ -3398,6 +3406,40 @@
       "description": "",
       "category": "til",
       "created": "2023-12-23T12:20:00.000Z"
+    }
+  ],
+  "til/kubernetes-deployment": [
+    {
+      "slug": "/til/autoscaling-workloads-in-kubernetes/",
+      "title": "Autoscaling Workloads in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-29T13:39:00.000Z",
+      "snippet": "Autoscaling means automatically updating an object that maintains a set of pods (Deployments, for example )"
+    },
+    {
+      "slug": "/til/type-of-upgrades-for-deployments-in-kubernetes/",
+      "title": "Type of Upgrades for Deployments in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-27T06:29:00.000Z",
+      "snippet": "There are two ways to do upgrades for deployments in Kubernetes:"
+    },
+    {
+      "slug": "/til/how-to-use-priority-and-preemption/",
+      "title": "How to Use Priority and Preemption",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-24T10:38:00.000Z",
+      "snippet": "Create Pods with priorityClassName set to one of the added PriorityClasses. This can be added as a property to deployment or ReplicaSets."
+    },
+    {
+      "slug": "/til/how-to-create-a-deployment-using-kubectl/",
+      "title": "How to Create a Deployment Using Kubectl",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-22T20:07:00.000Z",
+      "snippet": "To create a deployment, one way to do it is using the yaml file, but a quicker way to do it is via:"
     }
   ],
   "til/aws-iam-basics": [
@@ -4858,6 +4900,14 @@
       "category": "til",
       "created": "2026-09-17T08:42:00.000Z",
       "snippet": "Pods are the smallest unit of compute in Kubernetes."
+    },
+    {
+      "slug": "/til/how-to-do-maintenance-in-kubernetes/",
+      "title": "How to Do Maintenance in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-07-21T11:22:00.000Z",
+      "snippet": "There can be three situations wherein we/controller manager does maintenance in Kubernetes:"
     },
     {
       "slug": "/til/azure-kubernetes-service/",
@@ -6841,32 +6891,6 @@
       "snippet": "To create a ConfigMap in Kubernetes:"
     }
   ],
-  "til/kubernetes-deployment": [
-    {
-      "slug": "/til/type-of-upgrades-for-deployments-in-kubernetes/",
-      "title": "Type of Upgrades for Deployments in Kubernetes",
-      "description": "",
-      "category": "til",
-      "created": "2026-10-27T06:29:00.000Z",
-      "snippet": "There are two ways to do upgrades for deployments in Kubernetes:"
-    },
-    {
-      "slug": "/til/how-to-use-priority-and-preemption/",
-      "title": "How to Use Priority and Preemption",
-      "description": "",
-      "category": "til",
-      "created": "2026-10-24T10:38:00.000Z",
-      "snippet": "Create Pods with priorityClassName set to one of the added PriorityClasses. This can be added as a property to deployment or ReplicaSets."
-    },
-    {
-      "slug": "/til/how-to-create-a-deployment-using-kubectl/",
-      "title": "How to Create a Deployment Using Kubectl",
-      "description": "",
-      "category": "til",
-      "created": "2026-10-22T20:07:00.000Z",
-      "snippet": "To create a deployment, one way to do it is using the yaml file, but a quicker way to do it is via:"
-    }
-  ],
   "til/how-to-create-a-configmap-in-kubernetes": [
     {
       "slug": "/til/how-to-create-secrets-in-kubernetes/",
@@ -6943,6 +6967,14 @@
   ],
   "til/pods": [
     {
+      "slug": "/til/multi-container-pods/",
+      "title": "Multi-container Pods",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-29T09:49:00.000Z",
+      "snippet": "A pod can have one or more containers running in it. If it runs multiple containers, there are primarily three different patterns:"
+    },
+    {
       "slug": "/til/preemption-in-kubernetes/",
       "title": "Preemption in Kubernetes",
       "description": "",
@@ -7001,6 +7033,16 @@
       "category": "til",
       "created": "2025-11-24T18:54:37.000Z",
       "snippet": "The authors of continuous delivery prefer commit messages be multiple paragraph."
+    }
+  ],
+  "til/multi-container-pods": [
+    {
+      "slug": "/til/init-containers/",
+      "title": "Init Containers",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-29T10:04:00.000Z",
+      "snippet": "Init containers are a type of multi-container pod."
     }
   ],
   "til/how-to-check-ldaps-is-working-or-not-ldpexe": [
@@ -7211,6 +7253,16 @@
       "category": "til",
       "created": "2025-03-11T09:30:00.000Z",
       "snippet": "After VCenter Upgrade."
+    }
+  ],
+  "til/horizontal-pod-autoscaling": [
+    {
+      "slug": "/til/vertical-pod-autoscaler/",
+      "title": "Vertical Pod Autoscaler",
+      "description": "",
+      "category": "til",
+      "created": "2026-10-29T14:04:00.000Z",
+      "snippet": "Similar to HPA, it monitors resources, and increases resources on the pod if required. It is not inbuilt, it needs to be downloaded and applied."
     }
   ],
   "til/create-vnet-peering-in-azure": [
