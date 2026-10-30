@@ -1150,6 +1150,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/shindig-2026-10-29",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-29"
+		},
+		"reticent": {
+			"word": "reticent",
+			"pos": "other",
+			"gloss": " adjective Someone may be described as reticent if they are feeling or showing reluctance, that is, hesitation or unwillingness to do something. Reticent can also describe someone who is reserved, inclined to be silent or uncommunicative about things.",
+			"pronunciation": "RET-uh-sunt",
+			"example": "The team was reticent to spend such a large amount of money, even for an all-star free agent. // He’s always been reticent about discussing personal matters at work.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/reticent-2026-10-30",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-30"
 		}
 	}
 }
