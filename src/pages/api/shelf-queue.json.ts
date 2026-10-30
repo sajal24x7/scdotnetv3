@@ -11,13 +11,17 @@ export const GET: APIRoute = async () => {
     const allPosts = await getAllPosts();
 
     const queue = allPosts
-        .filter((post) => SHELF_CATEGORIES.includes(post.data.category as ShelfCategory) && post.data.status === 'todo')
+        // `todo` is the queue proper; `started` entries ride along so /write can
+        // offer a one-tap Finish for whatever is in progress.
+        .filter((post) => SHELF_CATEGORIES.includes(post.data.category as ShelfCategory)
+            && (post.data.status === 'todo' || post.data.status === 'started'))
         .map((post) => {
             const category = post.data.category as ShelfCategory;
             const config = SHELF_QUEUE_CONFIG[category];
             return {
                 id: post.id,
                 category,
+                status: post.data.status,
                 title: (category === 'tvshelf' ? post.data.showTitle ?? post.data.title : post.data.title) ?? '',
                 creator: getQueueCreator(post.data, config.creatorField),
                 created: new Date(post.data.created).toISOString(),
