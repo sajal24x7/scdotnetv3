@@ -1160,6 +1160,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/reticent-2026-10-30",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-30"
+		},
+		"wraith": {
+			"word": "wraith",
+			"pos": "other",
+			"gloss": " noun Wraith refers to the spirit of a dead person, or in other words, a ghost.",
+			"pronunciation": "RAYTH",
+			"example": "The most frightening scene from the movie featured a vengeful wraith creeping slowly up behind the main characters.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/wraith-2026-10-31",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-10-31"
 		}
 	}
 }
