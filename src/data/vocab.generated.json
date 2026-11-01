@@ -1170,6 +1170,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/wraith-2026-10-31",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-10-31"
+		},
+		"pyrrhic": {
+			"word": "Pyrrhic",
+			"pos": "other",
+			"gloss": " adjective The adjective Pyrrhic describes something that is achieved at an excessive cost. It is usually used to describe a victory, a Pyrrhic victory being one that is not worth winning because so much is lost to achieve it.",
+			"pronunciation": "PEER-ik",
+			"example": "The basketball team’s comeback in the final minutes turned out to be a Pyrrhic victory as the star center injured her ankle.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/pyrrhic-2026-11-01",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-01"
 		}
 	}
 }
