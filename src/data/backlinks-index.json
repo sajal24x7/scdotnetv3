@@ -627,6 +627,8 @@
       "bookshelf/202610221624 1929.md",
       "bookshelf/202610251435 The Anxious Generation.md",
       "bookshelf/202610271732 The Omnivore’s Dilemma.md",
+      "bookshelf/202611010828 H is for Hope.md",
+      "bookshelf/202611010848 Think Faster, Talk Smarter.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
@@ -1695,6 +1697,7 @@
       "micro/202610231518 Next Gen console costs are too damn high.md",
       "micro/202610242317 On the benefit of writing workshops.md",
       "micro/202610281727 The Gaming October Inflection Point.md",
+      "micro/202611010213.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1822,6 +1825,7 @@
       "nordletter/202610101228 NL126 - Parenting in the fall.md",
       "nordletter/202610152059 NL127 - 17 syllables and an idea.md",
       "nordletter/202610241032 NL128 - Mina Halua Sandwich.md",
+      "nordletter/202610311406 NL129 - A burning horse.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -9440,6 +9444,16 @@
       "category": "nordletter",
       "created": "2026-10-24T07:32:00.000Z",
       "snippet": "I am reading Inside the Box and it talks about constraints being the way to true freedom. I wrote about it in NL127."
+    }
+  ],
+  "bookshelf/1929": [
+    {
+      "slug": "/nordletter/nl129-a-burning-horse/",
+      "title": "A Burning Horse",
+      "description": "Halloween and All Saints Day in Helsinki",
+      "category": "nordletter",
+      "created": "2026-10-31T12:06:00.000Z",
+      "snippet": "I finished reading 1929 this week. It tells the story of the great market crash and the resultant depression in America."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [

@@ -912,6 +912,19 @@
       "status": "approved"
     }
   ],
+  "micro/202611010213": [
+    {
+      "id": "threads:like-count:DfMCZCXgHve",
+      "type": "like-count",
+      "platform": "threads",
+      "author": {
+        "name": "Threads"
+      },
+      "url": "https://www.threads.com/@sajal24x7/post/DfMCZCXgHve",
+      "count": 1,
+      "status": "approved"
+    }
+  ],
   "micro/amazon-has-a-new-plan-for-games": [
     {
       "id": "mastodon:like:116696520863508112:1339141",
