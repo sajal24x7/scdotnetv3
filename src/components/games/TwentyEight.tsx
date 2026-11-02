@@ -187,22 +187,29 @@ function teamAwareBidOrder(remaining: number[], highBidder: number | null): numb
   return ordered;
 }
 
-function handStrength(hand: Card[]) {
-  const pts = hand.reduce((s, c) => s + POINTS[c.rank], 0);
-  const bySuit: Record<string, number> = {};
-  hand.forEach((c) => (bySuit[c.suit] = (bySuit[c.suit] || 0) + 1));
-  return pts + Math.max(...Object.values(bySuit)) * 1.4;
+// Value of the four bidding cards, judged by the best suit to call as trump.
+// Trump J/9 and trump length matter most; side Js are near-certain tricks.
+const TRUMP_VALUE: Record<string, number> = { J: 2.5, 9: 1.5, A: 0.75, "10": 0.5 };
+const SIDE_VALUE: Record<string, number> = { J: 1, 9: 0.25, A: 0.25 };
+function bidValue(hand: Card[]) {
+  let best = 0;
+  SUITS.forEach((s) => {
+    const trumps = hand.filter((c) => c.suit === s);
+    if (!trumps.length) return;
+    let v = trumps.length - 1;
+    trumps.forEach((c) => (v += TRUMP_VALUE[c.rank] ?? 0));
+    hand.filter((c) => c.suit !== s).forEach((c) => (v += SIDE_VALUE[c.rank] ?? 0));
+    best = Math.max(best, v);
+  });
+  return best;
 }
-function aiBidDecision(hand: Card[], currentBid: number, mustRaise: boolean): number | null {
-  const strength = handStrength(hand);
-  // Conservative: avg hand (strength ~7) tops out ~19-20; very strong hand caps at 21
-  const willing = Math.min(21, 17 + Math.round(strength * 0.38) + (Math.random() < 0.12 ? 1 : 0));
-  const minBid = mustRaise ? currentBid + 1 : currentBid;
-  if (minBid <= willing) {
-    // Almost never jump — stay at the minimum
-    return Math.min(willing, minBid + (Math.random() < 0.12 ? 1 : 0));
-  }
-  return null;
+// Lone trump J ≈ 17, J+9 of a suit ≈ 19, J+9 with length ≈ 21.
+// About a third of hands pass outright; only ~5% are willing to reach 20+.
+function aiBidDecision(hand: Card[], currentBid: number, mustRaise: boolean, opening: boolean): number | null {
+  const willing = Math.min(22, 14 + Math.round(bidValue(hand)));
+  // Opening bid is 17 (same as for the human); after that, match or raise by one
+  const minBid = opening ? 17 : mustRaise ? currentBid + 1 : currentBid;
+  return minBid <= willing ? minBid : null;
 }
 function aiChooseTrump(hand: Card[]) {
   const bySuit: Record<string, { pts: number; count: number }> = {};
@@ -596,7 +603,7 @@ function reducer(state: GameState, action: Action): GameState {
       const { playerIdx } = action;
       if (state.highBidder === null && handPoints(state.hands[playerIdx]) === 0 && Math.random() < 0.8)
         return reducer(state, { type: "REDEAL", playerIdx });
-      const decision = aiBidDecision(state.hands[playerIdx], state.currentBid, state.mustRaise);
+      const decision = aiBidDecision(state.hands[playerIdx], state.currentBid, state.mustRaise, state.highBidder === null);
       if (decision === null)
         return reducer(state, { type: "PASS", playerIdx });
       return reducer(state, { type: "BID", playerIdx, amount: decision });
