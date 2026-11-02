@@ -1180,6 +1180,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/pyrrhic-2026-11-01",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-01"
+		},
+		"satiate": {
+			"word": "satiate",
+			"pos": "other",
+			"gloss": " verb To satiate a need, desire, etc., is to satisfy it fully.",
+			"pronunciation": "SAY-shee-ayt",
+			"example": "The new restaurant’s menu promises to satiate diners’ cravings for comfort food, offering fresh spins on classic, time-honored fare.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/satiate-2026-11-02",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-02"
 		}
 	}
 }
