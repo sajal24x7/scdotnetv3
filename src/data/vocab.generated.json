@@ -1190,6 +1190,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/satiate-2026-11-02",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-02"
+		},
+		"candidate": {
+			"word": "candidate",
+			"pos": "other",
+			"gloss": " noun A candidate is someone who aspires to or is nominated or qualified for an office, membership, or award. Candidate may also refer to someone likely or suited to undergo or be chosen for something specified (as in \"a candidate for surgery\"), or to a student in the process of meeting final requirements for a degree (as in \"a PhD candidate\").",
+			"pronunciation": "KAN-duh-dayt",
+			"example": "The hiring team will select the best candidate for the job.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/candidate-2026-11-03",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-03"
 		}
 	}
 }
