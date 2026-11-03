@@ -240,6 +240,21 @@
       "status": "approved"
     }
   ],
+  "bookshelf/h-is-for-hope": [
+    {
+      "id": "bluesky:like:3mzd64qmgae2r:did:plc:hz3thvwswybpm2jskkwl4hgv",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Maciek Hamela",
+        "url": "https://bsky.app/profile/maciekhamela.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:hz3thvwswybpm2jskkwl4hgv/bafkreibtiam7b2763vkuqm34s7tdhrpg4avhdxpzq6f3f6incjjys3a7oa"
+      },
+      "url": "https://bsky.app/profile/maciekhamela.bsky.social",
+      "published": "2026-11-02T12:27:38.717Z",
+      "status": "approved"
+    }
+  ],
   "bookshelf/platform-decay": [
     {
       "id": "mastodon:like:116877354312925036:108206161178110078",
@@ -467,6 +482,21 @@
       },
       "url": "https://bsky.app/profile/mrwamble.bsky.social",
       "published": "2026-10-20T00:26:19.199Z",
+      "status": "approved"
+    }
+  ],
+  "haiku/i-saw-a-cross-beyond": [
+    {
+      "id": "bluesky:like:3mzec2u5w3z2q:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-11-02T23:33:05.808Z",
       "status": "approved"
     }
   ],
