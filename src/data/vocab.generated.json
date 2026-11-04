@@ -1200,6 +1200,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/candidate-2026-11-03",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-03"
+		},
+		"fulsome": {
+			"word": "fulsome",
+			"pos": "other",
+			"gloss": " adjective Fulsome describes someone or something that is generous in amount, extent, or spirit.",
+			"pronunciation": "FULL-sum",
+			"example": "They were fulsome in their praise of her efforts to raise money for the new wing of the children’s hospital. // A day after offering a weak non-apology for instigating a bases-clearing brawl, the pitcher expressed more fulsome regrets at a press conference, taking full responsibility.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/fulsome-2026-11-04",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-04"
 		}
 	}
 }
