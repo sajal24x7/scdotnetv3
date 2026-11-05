@@ -10,6 +10,7 @@ tags:
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117564987069478730'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3mzleyibm3b2i'
+  - 'https://www.threads.com/@sajal24x7/post/DfYOlswFAVB'
 ---
 [Would you pay €30 for a library card?](https://yle.fi/a/74-20255231?origin=rss)
 
