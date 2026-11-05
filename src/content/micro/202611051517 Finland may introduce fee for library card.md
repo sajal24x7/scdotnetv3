@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - library
-  - finland
-category: micro
+title: "Finland May Introduce Fee for Library Card"
+slug: "finland-may-introduce-fee-for-library-card"
+created: 2026-11-05T15:17:00+02:00
 updated: 2026-11-05T15:18:12+02:00
+category: micro
+tags: ["library", "finland"]
 ---
 [Would you pay €30 for a library card?](https://yle.fi/a/74-20255231?origin=rss)
 
