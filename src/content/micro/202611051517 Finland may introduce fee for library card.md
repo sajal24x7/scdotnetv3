@@ -1,10 +1,15 @@
 ---
-title: "Finland May Introduce Fee for Library Card"
-slug: "finland-may-introduce-fee-for-library-card"
-created: 2026-11-05T15:17:00+02:00
-updated: 2026-11-05T15:18:12+02:00
+title: Finland May Introduce Fee for Library Card
+slug: finland-may-introduce-fee-for-library-card
+created: 2026-11-05T13:17:00.000Z
+updated: 2026-11-05T13:18:12.000Z
 category: micro
-tags: ["library", "finland"]
+tags:
+  - library
+  - finland
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117564987069478730'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mzleyibm3b2i'
 ---
 [Would you pay €30 for a library card?](https://yle.fi/a/74-20255231?origin=rss)
 
