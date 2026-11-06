@@ -560,6 +560,21 @@
       "status": "approved"
     }
   ],
+  "haiku/sun-blinds-my-eye": [
+    {
+      "id": "bluesky:like:3mzley53ksp2q:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-11-05T18:02:01.830Z",
+      "status": "approved"
+    }
+  ],
   "haiku/temperature-drops-suddenly": [
     {
       "id": "bluesky:like:3my6pyoeb3e26:did:plc:4hi2oj4spvsud6tpbdv37lec",
