@@ -1220,6 +1220,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/effrontery-2026-11-05",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-05"
+		},
+		"quondam": {
+			"word": "quondam",
+			"pos": "other",
+			"gloss": " adjective Quondam is an adjective that means “former” or “sometime.”",
+			"pronunciation": "KWAHN-dum",
+			"example": "Many people were surprised to learn that the quondam professor has since become a dancer.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/quondam-2026-11-06",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-06"
 		}
 	}
 }
