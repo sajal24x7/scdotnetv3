@@ -629,6 +629,7 @@
       "bookshelf/202610271732 The Omnivore’s Dilemma.md",
       "bookshelf/202611010828 H is for Hope.md",
       "bookshelf/202611010848 Think Faster, Talk Smarter.md",
+      "bookshelf/202611060757 Tell no one.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
@@ -1701,6 +1702,7 @@
       "micro/202610242317 On the benefit of writing workshops.md",
       "micro/202610281727 The Gaming October Inflection Point.md",
       "micro/202611010213.md",
+      "micro/202611051517 Finland may introduce fee for library card.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -2571,6 +2573,8 @@
       "til/202610291539 Autoscaling workloads in Kubernetes.md",
       "til/202610291543 Horizontal Pod Autoscaling.md",
       "til/202610291604 Vertical Pod Autoscaler.md",
+      "til/202611052157 Types of encryption.md",
+      "til/202611052215 Why we need certificates for secure communication.md",
       "tvshelf/201901071200 Luther S2.md",
       "tvshelf/201901071201 Luther S1.md",
       "tvshelf/201901281200 Bodyguard S1.md",
@@ -7293,6 +7297,16 @@
       "category": "til",
       "created": "2026-03-18T09:55:49.000Z",
       "snippet": "From How Linux Works."
+    }
+  ],
+  "til/types-of-encryption": [
+    {
+      "slug": "/til/why-we-need-certificates-for-secure-communication/",
+      "title": "Why We Need Certificates for Secure Communication",
+      "description": "",
+      "category": "til",
+      "created": "2026-11-05T20:15:00.000Z",
+      "snippet": "Encryption by itself is not enough. With just encryption, you would be talking to a bad server securely. Which is not what we want. Hence, in protocols like TLS, the server provides identification in the form of a certificate which has the server name and trusted CAs."
     }
   ],
   "til/powershell-second-hop-problem": [
