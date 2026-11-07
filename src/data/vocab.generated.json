@@ -1230,6 +1230,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/quondam-2026-11-06",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-06"
+		},
+		"abandon": {
+			"word": "abandon",
+			"pos": "other",
+			"gloss": " noun Abandon refers to a feeling or attitude of wild or complete freedom.",
+			"pronunciation": "uh-BAN-dun",
+			"example": "The two friends spent the work week looking forward to hitting the clubs together on Friday night and dancing with total abandon. // After years of contemplating, he finally decided to make a career pivot and pursue his passion with reckless abandon.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/abandon-2026-11-07",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-07"
 		}
 	}
 }
