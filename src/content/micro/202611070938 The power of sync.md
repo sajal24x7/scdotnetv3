@@ -1,10 +1,15 @@
 ---
-title: "The Power of Sync"
-slug: "the-power-of-sync"
-created: 2026-11-07T09:38:00+02:00
-updated: 2026-11-07T11:59:57+02:00
+title: The Power of Sync
+slug: the-power-of-sync
+created: 2026-11-07T07:38:00.000Z
+updated: 2026-11-07T09:59:57.000Z
 category: micro
-tags: ["seth-godin"]
+tags:
+  - seth-godin
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117575265311865882'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mzpx2ijfd326'
+  - 'https://www.threads.com/@sajal24x7/post/DfcO1D5EQWC'
 ---
 [The power of sync by Seth](https://feeds.feedblitz.com/~/972333731/0/sethsblog~The-power-of-sync/)
 
