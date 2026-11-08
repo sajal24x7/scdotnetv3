@@ -1,13 +1,23 @@
 ---
-title: "A Spot of Sunshine"
-slug: "nl130-a-spot-of-sunshine"
-created: 2026-11-07T11:16:00+02:00
-updated: 2026-11-08T01:32:49+02:00
+title: A Spot of Sunshine
+slug: nl130-a-spot-of-sunshine
+created: 2026-11-07T09:16:00.000Z
+updated: 2026-11-07T23:32:49.000Z
 category: nordletter
-tags: ["diwali", "ramayana", "fathers-day", "parenting", "finland", "winter"]
+tags:
+  - diwali
+  - ramayana
+  - fathers-day
+  - parenting
+  - finland
+  - winter
 edition: 130
-description: "Celebrating the festival of lights"
-image: "https://storage.sajalchoudhary.net/images/2026/11/nl130-06.jpeg"
+description: Celebrating the festival of lights
+image: 'https://storage.sajalchoudhary.net/images/2026/11/nl130-06.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117578003897617983'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3mzr5xu6vqq2v'
+  - 'https://www.threads.com/@sajal24x7/post/DfdeiFXDtiP'
 ---
 Hello from my home in Helsinki! This is NordLetter #130, a weekly newsletter on living and walking in Finland.
 
