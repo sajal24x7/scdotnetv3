@@ -1703,6 +1703,7 @@
       "micro/202610281727 The Gaming October Inflection Point.md",
       "micro/202611010213.md",
       "micro/202611051517 Finland may introduce fee for library card.md",
+      "micro/202611070938 The power of sync.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1831,6 +1832,7 @@
       "nordletter/202610152059 NL127 - 17 syllables and an idea.md",
       "nordletter/202610241032 NL128 - Mina Halua Sandwich.md",
       "nordletter/202610311406 NL129 - A burning horse.md",
+      "nordletter/202611071116 NL130 - A Spot of Sunshine.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -9474,6 +9476,34 @@
       "snippet": "I finished reading 1929 this week. It tells the story of the great market crash and the resultant depression in America."
     }
   ],
+  "nordletter/diwali-week": [
+    {
+      "slug": "/nordletter/nl130-a-spot-of-sunshine/",
+      "title": "A Spot of Sunshine",
+      "description": "Celebrating the festival of lights",
+      "category": "nordletter",
+      "created": "2026-11-07T09:16:00.000Z",
+      "snippet": "Last year, after this same party at their place, we had returned the very next day to have samosa chaat at their place."
+    },
+    {
+      "slug": "/nordletter/nl77/",
+      "title": "Hyva Diwalia!",
+      "description": "",
+      "category": "nordletter",
+      "created": "2025-10-26T20:45:29.000Z",
+      "snippet": "None of the above stopped us from celebrating though! I talked about pre-Diwali celebrations in the last Nordletter."
+    }
+  ],
+  "nordletter/nl129-a-burning-horse": [
+    {
+      "slug": "/nordletter/nl130-a-spot-of-sunshine/",
+      "title": "A Spot of Sunshine",
+      "description": "Celebrating the festival of lights",
+      "category": "nordletter",
+      "created": "2026-11-07T09:16:00.000Z",
+      "snippet": "In Finland, in the winter months, you go out in search of the light - like the burning horse/goat as part of Easter celebrations."
+    }
+  ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
     {
       "slug": "/nordletter/nl63-a-day-trip-to-turku/",
@@ -9629,16 +9659,6 @@
       "category": "nordletter",
       "created": "2025-10-04T20:06:32.000Z",
       "snippet": "I attended the vibe coding event this week. It was bigger and better than the last one I had attended."
-    }
-  ],
-  "nordletter/diwali-week": [
-    {
-      "slug": "/nordletter/nl77/",
-      "title": "Hyva Diwalia!",
-      "description": "",
-      "category": "nordletter",
-      "created": "2025-10-26T20:45:29.000Z",
-      "snippet": "None of the above stopped us from celebrating though! I talked about pre-Diwali celebrations in the last Nordletter."
     }
   ],
   "blog/celebrating-diwali-at-op": [
