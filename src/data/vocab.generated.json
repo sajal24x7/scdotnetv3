@@ -1240,6 +1240,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/abandon-2026-11-07",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-07"
+		},
+		"cockamamie": {
+			"word": "cockamamie",
+			"pos": "other",
+			"gloss": " adjective Cockamamie describes something that is ridiculous, silly, or incredible.",
+			"pronunciation": "kah-kuh-MAY-mee",
+			"example": "Instead of being honest, he came up with a cockamamie excuse about why he didn’t turn in his assignment.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/cockamamie-2026-11-08",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-08"
 		}
 	}
 }
