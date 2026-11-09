@@ -1250,6 +1250,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/cockamamie-2026-11-08",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-08"
+		},
+		"wabi-sabi": {
+			"word": "wabi-sabi",
+			"pos": "other",
+			"gloss": " noun Wabi-sabi refers to a philosophy of Japanese origin that emphasizes the aesthetic value in imperfect, impermanent, and simple things. This word can also refer to the qualities of imperfection, impermanence, and simplicity considered as beautiful.",
+			"pronunciation": "WAH-bee-SAH-bee",
+			"example": "Over the years, the gardener learned to let go of his perfectionism and embrace wabi-sabi.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/wabi-sabi-2026-11-09",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-09"
 		}
 	}
 }
