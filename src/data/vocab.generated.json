@@ -1260,6 +1260,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/wabi-sabi-2026-11-09",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-09"
+		},
+		"defer": {
+			"word": "defer",
+			"pos": "other",
+			"gloss": " verb To defer something is to put it off or delay it, to choose to do it at a later time.",
+			"pronunciation": "dih-FER",
+			"example": "We decided to defer the offer so that we could explore other options.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/defer-2026-11-10",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-10"
 		}
 	}
 }
