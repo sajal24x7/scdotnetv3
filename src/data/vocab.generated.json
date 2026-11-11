@@ -1270,6 +1270,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/defer-2026-11-10",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-10"
+		},
+		"valorous": {
+			"word": "valorous",
+			"pos": "other",
+			"gloss": " adjective Someone or something described as valorous is courageous or brave.",
+			"pronunciation": "VAL-uh-russ",
+			"example": "For carrying three wounded members of his squadron out of harm's way, the lieutenant was presented with an award that recognized his valorous actions in the heat of battle.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/valorous-2026-11-11",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-11"
 		}
 	}
 }
