@@ -1072,6 +1072,19 @@
       "status": "approved"
     }
   ],
+  "micro/finland-has-the-highest-rate-of-type-1-diabetes-in-the-world": [
+    {
+      "id": "threads:like-count:DfiHW5zFqFy",
+      "type": "like-count",
+      "platform": "threads",
+      "author": {
+        "name": "Threads"
+      },
+      "url": "https://www.threads.com/@sajal24x7/post/DfiHW5zFqFy",
+      "count": 2,
+      "status": "approved"
+    }
+  ],
   "micro/how-and-why-to-cull-your-book-collection": [
     {
       "id": "mastodon:like:116901921008963465:111584118693761981",
@@ -2112,6 +2125,68 @@
       },
       "url": "https://www.threads.com/@sajal24x7/post/De3985mluME",
       "count": 2,
+      "status": "approved"
+    }
+  ],
+  "photo/202611050930": [
+    {
+      "id": "bluesky:like:3mzleyumjsw2o:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-11-05T18:01:59.701Z",
+      "status": "approved"
+    },
+    {
+      "id": "instagram:like-count:DfXjvh6GpG0",
+      "type": "like-count",
+      "platform": "instagram",
+      "author": {
+        "name": "Instagram"
+      },
+      "url": "https://www.instagram.com/p/DfXjvh6GpG0/",
+      "count": 8,
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:117564987827299726:109298270318175401",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "fritzoids",
+        "url": "https://mas.to/@fritzoids",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/298/270/318/175/401/original/f542052306f3dfde.jpeg"
+      },
+      "url": "https://mas.to/@fritzoids",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:117564987827299726:113371204894683573",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "cobalt",
+        "url": "https://beige.party/@cobalt123",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/113/371/204/894/683/573/original/e4d645a248453f78.jpeg"
+      },
+      "url": "https://beige.party/@cobalt123",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:repost:117564987827299726:112733088504910345",
+      "type": "repost",
+      "platform": "mastodon",
+      "author": {
+        "name": "Simon J Ashcroft",
+        "url": "https://mastodon.sdf.org/@SJAsh_03",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/112/733/088/504/910/345/original/d1b83ffb461345a9.jpg"
+      },
+      "url": "https://mastodon.sdf.org/@SJAsh_03",
       "status": "approved"
     }
   ],
