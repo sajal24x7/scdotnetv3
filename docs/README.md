@@ -12,6 +12,7 @@ This directory centralizes all reference material for the Astro-powered build of
 | [Learning Systems](architecture/learning-systems.md) | The spaced-repetition "periodic table on the wall" pattern behind /learn/linux, and the blueprint for future decks (e.g. Finnish). | `src/data/linux-commands.ts`, `src/components/learn/LinuxQuiz.tsx` |
 | [Design System](design/system.md) | Typography tokens, grid utilities (twelve-column and ten-column), chip patterns, and responsive rules. | `src/styles/global.css` |
 | [Typography Audit (2026-07)](design/typography-audit.md) | Findings on font, size, weight, and spacing consistency, with all fixes applied — kept as rationale for the current scale. | `src/styles/global.css` |
+| [Modern Web Guidance Audit (2026-11)](design/modern-web-guidance-audit.md) | Comparison against Google Chrome's modern-web-guidance: what already matches, 15 gaps with fixes and effort, and a suggested order of work. | `src/layouts/Layout.astro`, `src/styles/`, `public/_headers` |
 
 ## Components & Pages
 
