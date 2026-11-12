@@ -10,6 +10,7 @@ import {
     teamAwareBidOrder, initialState, makeDeck, reducer,
 } from '../twentyNine.ts';
 import type { Card, GameState } from '../twentyNine.ts';
+import { makeQuiz, checkAnswer, learnReducer, nearOptions, LEARN_LEVELS } from '../twentyNineLearn.ts';
 
 let failures = 0;
 
@@ -77,6 +78,41 @@ console.log('teamAwareBidOrder');
 check('opponents stay paired', teamAwareBidOrder([0, 2, 3], null), [0, 3, 2]);
 check('high bidder anchored', teamAwareBidOrder([1, 2, 3], 3), [3, 2, 1]);
 
+console.log('learn mode questions');
+{
+    // You hold SJ S9 HK; played so far: HJ H9 HA H10 (trick) and S7 D8 C7 CJ.
+    const st: GameState = {
+        ...initialState, phase: 'playing', trumpSuit: 'S', caller: 0, tricksPlayed: 2,
+        hands: [[c('SJ'), c('S9'), c('HK'), c('DQ')], [], [], []],
+        played: ['HJ', 'H9', 'HA', 'H10', 'S7', 'D8', 'C7', 'CJ'],
+        prevTrick: [
+            { player: 0, card: c('HJ') }, { player: 1, card: c('H9') },
+            { player: 2, card: c('HA') }, { player: 3, card: c('H10') },
+        ],
+    };
+    const trick = makeQuiz(st, 'trick', 1)!;
+    check('trick points', trick.answer, 7);
+    check('trick options hold answer', trick.options.includes(7) && trick.options.length === 4, true);
+    check('points left', makeQuiz(st, 'left', 1)!.answer, 28 - 10);
+    const power = makeQuiz(st, 'power', 1)!;
+    check('power: yours locked', power.lockedIds, ['SJ', 'S9']);
+    check('power: still out', power.answerIds, ['DJ', 'D9', 'C9']);
+    check('boss cards', makeQuiz(st, 'boss', 1)!.answerIds, ['SJ', 'S9', 'HK']);
+    let suitQ = makeQuiz(st, 'suit', 1)!;
+    for (let i = 0; i < 20 && !suitQ.question.includes('Spades'); i++) suitQ = makeQuiz(st, 'suit', 1)!;
+    check('trump count', suitQ.answer, 8 - 1 - 2);
+    const recall = makeQuiz(st, 'recall', 1)!;
+    const suit = recall.pool[0].suit;
+    check('recall excludes played and yours', recall.answerIds.every((id) => !st.played.includes(id) && id[0] === suit && !recall.lockedIds.includes(id)), true);
+    check('card answer: exact set', checkAnswer(power, ['DJ', 'D9', 'C9']), true);
+    check('card answer: missing one', checkAnswer(power, ['DJ', 'D9']), false);
+    check('number answer', checkAnswer(trick, 7), true);
+    check('options in range', nearOptions(0, 0, 12).every((n) => n >= 0) && nearOptions(0, 0, 12).length === 4, true);
+    check('no trick question without a trick', makeQuiz({ ...st, prevTrick: [] }, 'trick', 1), null);
+    const asked = learnReducer({ ...st, learnLevel: 2 }, { type: 'ANSWER_QUIZ', value: 0 });
+    check('answer needs an open quiz', asked.handLearn.asked, 0);
+}
+
 /* Seeded random so a failure is reproducible. */
 function seeded(seed: number): () => number {
     let s = seed >>> 0;
@@ -124,6 +160,28 @@ for (let n = 0; n < HANDS; n++) {
     if (s.lastResult!.made) callerWins++;
 }
 Math.random = realRandom;
+// Every learn level asks a question after tricks 1-7, and play goes on after it.
+for (const level of LEARN_LEVELS) {
+    Math.random = seeded(1000 + level.id);
+    let s: GameState = learnReducer({ ...initialState, names: ['A', 'B', 'C', 'D'], feedbackOn: false, learnLevel: level.id }, { type: 'DEAL' });
+    let quizzes = 0, steps = 0;
+    while (s.phase !== 'hand-end' && steps++ < 500) {
+        if (s.quiz) {
+            quizzes++;
+            const answer = s.quiz.kind === 'number' ? s.quiz.answer : s.quiz.answerIds;
+            s = learnReducer(s, { type: 'ANSWER_QUIZ', value: answer });
+            if (!s.quiz!.result!.correct) problems.push(`learn ${level.id}: own answer marked wrong`);
+            s = learnReducer(s, { type: 'CLOSE_QUIZ' });
+        } else if (s.phase === 'bidding') s = learnReducer(s, { type: 'AI_BID', playerIdx: s.bidTurn });
+        else if (s.phase === 'choose-trump') s = learnReducer(s, { type: 'AI_CHOOSE_TRUMP' });
+        else if (s.phase === 'doubling') s = learnReducer(s, { type: 'AI_DOUBLE' });
+        else if (s.trick.length === 4) s = learnReducer(s, { type: 'CLEAR_TRICK' });
+        else s = learnReducer(s, { type: 'AI_PLAY', playerIdx: s.turn });
+    }
+    if (s.phase !== 'hand-end') problems.push(`learn ${level.id}: stuck`);
+    if (quizzes < 6 || quizzes > 7) problems.push(`learn ${level.id}: ${quizzes} questions`);
+    if (s.handLearn.right !== quizzes) problems.push(`learn ${level.id}: tally ${s.handLearn.right}/${quizzes}`);
+}
 check(`${HANDS} hands finish cleanly`, problems.slice(0, 5), []);
 const rate = callerWins / HANDS;
 console.log(`  info bidders made ${(rate * 100).toFixed(0)}% of hands`);

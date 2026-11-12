@@ -21,7 +21,7 @@ The Astro site lives in `src`, with route files under `src/pages`, shared layout
   - [`docs/pages/shelf.md`](docs/pages/shelf.md), [`docs/pages/books.md`](docs/pages/books.md) — Shelf frontmatter reference and the published-works page.
   - [`docs/pages/about.md`](docs/pages/about.md) — The about page and its life timeline; how to edit `src/data/life.md` and how month/year dates map to week cells.
   - [`docs/pages/haiku.md`](docs/pages/haiku.md): The daily haiku category, its `/haiku/` page, and automatic numbering.
-  - [`docs/pages/cards-29.md`](docs/pages/cards-29.md): The 29 card game at `/games/cards-29/`; where the rules, computer players and animations live.
+  - [`docs/pages/cards-29.md`](docs/pages/cards-29.md): The 29 card game at `/games/cards-29/`; where the rules, computer players, learn mode and animations live.
   - [`docs/operations/deployment.md`](docs/operations/deployment.md), [`docs/operations/syndication.md`](docs/operations/syndication.md) — Build and POSSE procedures.
   - [`docs/operations/image-optimization.md`](docs/operations/image-optimization.md) — How R2 content images are optimized and made responsive at build time.
   - [`docs/operations/publication.md`](docs/operations/publication.md) — `publication.config.json`, the central explicit-allow list for what reaches RSS feeds and syndication.
