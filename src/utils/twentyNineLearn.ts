@@ -23,7 +23,7 @@ export const RUNGS: Rung[] = [
     { id: "second", level: 4, name: "A second suit", remember: "The count for the suit where you hold an A or 10.", say: "2 spades left." },
     { id: "suits", level: 5, name: "All four suits", remember: "How many are left in every suit.", say: "Clubs down to 1." },
     { id: "at", level: 6, name: "A's and 10's", remember: "Which A's and 10's are gone. Now you know every point card.", say: "Diamond A gone." },
-    { id: "guess", level: 7, name: "Guess the trump", remember: "Which suits the bidder leads and which they throw away.", say: "Bidder threw a club, not clubs." },
+    { id: "guess", level: 7, name: "Guess the trump", remember: "Which suits the bidder runs out of before playing one.", say: "Bidder had no hearts, not hearts." },
     { id: "trump", level: 8, name: "Count trumps", remember: "Once trump is shown, how many trumps are left.", say: "Trump is spades, 3 left." },
     { id: "points", level: 9, name: "Points", remember: "Points each team has won versus the bid.", say: "We have 12, they need 18." },
 ];
@@ -224,24 +224,30 @@ export function makeQuiz(state: GameState, skill: Skill, seq: number): Quiz | nu
             return quiz;
         }
         case "guess": {
-            // A trump played face up opens trump, so every suit played while trump is hidden is not trump.
-            if (trumpKnown(state) || state.caller === null || state.played.length === 0) return null;
-            const playedSuits = new Set(state.played.map((id) => id[0]));
-            const open = SUITS.filter((s) => !playedSuits.has(s));
+            // Playing a trump-suit card does not open trump, so cards played tell you little.
+            // The bidder picks trump from a suit in their first four cards. If the bidder runs
+            // out of a suit before playing any card of it, they never held it, so it is not trump.
+            if (trumpKnown(state) || state.caller === null) return null;
             const bidder = state.caller;
+            const bidderPlayed = (suit: string, beforeTrick: number) => state.played.some((id, i) =>
+                id[0] === suit && Math.floor(i / 4) + 1 < beforeTrick && (state.playedBy?.[i] ?? bidder) === bidder);
+            const ruledOut = state.shownOut.filter((v) => v.player === bidder && !bidderPlayed(v.suit, v.trick));
+            if (!ruledOut.length) return null;
+            const ruled = new Set(ruledOut.map((v) => v.suit));
+            const open = SUITS.filter((s) => !ruled.has(s));
             const bidderName = bidder === 2 ? "Your partner (the bidder)" : `${state.names[bidder]} (the bidder)`;
-            const thrown = state.shownOut.filter((v) => v.player === bidder).map((v) => v.card[0]);
             q.kind = "pick";
             q.question = "Trump is still hidden. Tap every suit that could still be trump.";
             q.choices = SUITS.map((s) => ({ id: s, label: suitName(s) }));
             q.answerIds = open;
-            const ruled = SUITS.filter((s) => playedSuits.has(s)).map(sym).join(" ");
-            q.explain = `Playing a trump turns trump face up. So a suit played while trump is hidden is not trump: ${ruled}.`
-                + (thrown.length ? ` ${bidderName} threw ${[...new Set(thrown)].map(sym).join(" ")} when out of the led suit.` : "")
+            q.explain = "The bidder picks trump from a suit in their first four cards. "
+                + `${bidderName} ran out of ${[...ruled].map(sym).join(" ")} without ever playing one, so never held it. That suit is not trump.`
+                + " A trump-suit card played before anyone asks is a plain card, so other plays rule nothing out."
                 + (open.length === 1 ? ` Only ${sym(open[0])} is left, so trump is ${plural(open[0])}.` : ` Still possible: ${open.map(sym).join(" ")}.`);
-            q.say = thrown.length
-                ? `Bidder threw a ${single(thrown[0]).toLowerCase()}, not ${plural(thrown[0])}.`
-                : open.length === 1 ? `Trump must be ${plural(open[0])}.` : `Not ${[...playedSuits].map(plural).join(", not ")}.`;
+            const first = ruledOut[0];
+            q.say = open.length === 1
+                ? `Trump must be ${plural(open[0])}.`
+                : `Bidder had no ${plural(first.suit)}, not ${plural(first.suit)}.`;
             return q;
         }
         case "trump": {

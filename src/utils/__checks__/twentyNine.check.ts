@@ -37,6 +37,7 @@ check('J beats 9 in suit', cardBeats(c('HJ'), c('H9'), 'H', 'S'), true);
 check('7 loses to 8 in suit', cardBeats(c('H7'), c('H8'), 'H', 'S'), false);
 check('trump 7 beats led J', cardBeats(c('S7'), c('HJ'), 'H', 'S'), true);
 check('off-suit J loses to led 7', cardBeats(c('DJ'), c('H7'), 'H', 'S'), false);
+check('hidden trump: trump-suit 7 loses to led J', cardBeats(c('S7'), c('HJ'), 'H', null), false);
 
 console.log('trickWinner');
 check('highest of led suit', trickWinner([
@@ -47,6 +48,33 @@ check('trump takes it', trickWinner([
     { player: 0, card: c('HJ') }, { player: 1, card: c('S7') },
     { player: 2, card: c('H9') }, { player: 3, card: c('S8') },
 ], 'H', 'S'), 3);
+check('hidden trump: led suit takes it', trickWinner([
+    { player: 0, card: c('HJ') }, { player: 1, card: c('S7') },
+    { player: 2, card: c('H9') }, { player: 3, card: c('S8') },
+], 'H', null), 0);
+
+console.log('hidden trump');
+{
+    const base: GameState = { ...initialState, names: ['A', 'B', 'C', 'D'], phase: 'playing', trumpSuit: 'S', caller: 1, turn: 0 };
+    // Spades are trump. Player 1 (the bidder) and player 3 throw spades without anyone asking.
+    let s: GameState = { ...base, hands: [[c('HJ')], [c('S7')], [c('H9')], [c('SJ')]] };
+    for (const p of [0, 1, 2, 3]) s = reducer(s, { type: 'PLAY_CARD', playerIdx: p, card: s.hands[p][0] });
+    check('playing a trump-suit card does not reveal trump', s.trumpRevealed, false);
+    check('unrevealed trump-suit cards are plain', s.lastTrickWinner, 0);
+    // Player 3 asks, so trump opens and counts for the whole trick, including the bidder's S7.
+    s = { ...base, hands: [[c('HJ')], [c('S7')], [c('H9')], [c('S8'), c('DA')]] };
+    for (const p of [0, 1, 2]) s = reducer(s, { type: 'PLAY_CARD', playerIdx: p, card: s.hands[p][0] });
+    s = reducer(s, { type: 'ASK_TRUMP', playerIdx: 3 });
+    check('asker must trump', legalCards(s.hands[3], s, 3).map((x) => x.id), ['S8']);
+    s = reducer(s, { type: 'PLAY_CARD', playerIdx: 3, card: c('S8') });
+    check('asking reveals trump', s.trumpRevealed, true);
+    check('trumps count in the trick trump opened in', s.lastTrickWinner, 3);
+    // The bidder may show trump when out of the led suit.
+    s = { ...base, turn: 1, trick: [{ player: 0, card: c('HJ') }], leadSuit: 'H', played: ['HJ'], playedBy: [0],
+        hands: [[], [c('S7'), c('D7')], [c('H9')], [c('H8')]] };
+    s = reducer(s, { type: 'ASK_TRUMP', playerIdx: 1 });
+    check('bidder showing trump must trump', legalCards(s.hands[1], s, 1).map((x) => x.id), ['S7']);
+}
 
 console.log('legalCards');
 const hand = [c('HJ'), c('H7'), c('S9'), c('DA')];
@@ -123,12 +151,16 @@ console.log('learn mode questions');
     check('second suit count', makeQuiz(fs, 'second', 1)!.answer, 8 - 4 - 1);
     const suitQ = makeQuiz({ ...st, trick: [{ player: 3, card: c('DK') }], leadSuit: 'D' }, 'suits', 1)!;
     check('suit count says down to', suitQ.say.includes('down to'), true);
-    // Trump hidden from you: hearts, clubs, spades and diamonds have all been played.
-    const hidden = { ...st, caller: 1, trumpRevealed: false, played: ['HJ', 'H9', 'HA', 'H10', 'C7', 'D8', 'CJ', 'C9'],
+    // Trump hidden from you. The bidder (player 1) threw a club on the first heart lead,
+    // so never held a heart, and hearts cannot be trump.
+    const hidden = { ...st, caller: 1, trumpRevealed: false, played: ['HJ', 'C7', 'HA', 'H10'], playedBy: [0, 1, 2, 3],
         shownOut: [{ player: 1, suit: 'H', card: 'C7', trick: 1 }] };
     const guess = makeQuiz(hidden, 'guess', 1)!;
-    check('guess: suits not yet played', [...guess.answerIds].sort(), ['S']);
-    check('guess: say uses the bidder throw', guess.say, 'Bidder threw a club, not clubs.');
+    check('guess: rules out the suit the bidder never held', [...guess.answerIds].sort(), ['C', 'D', 'S']);
+    check('guess: say names that suit', guess.say, 'Bidder had no hearts, not hearts.');
+    const playedOne = { ...hidden, played: ['HJ', 'H7', 'HA', 'H10', 'H9', 'C7', 'HQ', 'HK'], playedBy: [0, 1, 2, 3, 0, 1, 2, 3],
+        shownOut: [{ player: 1, suit: 'H', card: 'C7', trick: 2 }] };
+    check('guess: nothing ruled out once the bidder played that suit', makeQuiz(playedOne, 'guess', 1), null);
     check('guess: not when you know trump', makeQuiz(st, 'guess', 1), null);
     check('card answer: exact set', checkAnswer(voids, ['3', '1']), true);
     check('card answer: missing one', checkAnswer(voids, ['1']), false);

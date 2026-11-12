@@ -64,8 +64,9 @@ export function shuffle<T>(arr: T[]): T[] {
     }
     return a;
 }
-export function cardBeats(a: Card, b: Card, leadSuit: string, trumpSuit: string) {
-    const aT = a.suit === trumpSuit, bT = b.suit === trumpSuit;
+// Pass `null` as trumpSuit while trump is hidden: trump-suit cards are then plain cards.
+export function cardBeats(a: Card, b: Card, leadSuit: string, trumpSuit: string | null) {
+    const aT = trumpSuit !== null && a.suit === trumpSuit, bT = trumpSuit !== null && b.suit === trumpSuit;
     if (aT && !bT) return true;
     if (!aT && bT) return false;
     if (aT && bT) return rankIdx(a.rank) < rankIdx(b.rank);
@@ -73,11 +74,16 @@ export function cardBeats(a: Card, b: Card, leadSuit: string, trumpSuit: string)
     if (a.suit === leadSuit && b.suit !== leadSuit) return true;
     return false;
 }
-export function trickWinner(trick: TrickEntry[], leadSuit: string, trumpSuit: string) {
+export function trickWinner(trick: TrickEntry[], leadSuit: string, trumpSuit: string | null) {
     let best = trick[0];
     for (const t of trick.slice(1)) if (cardBeats(t.card, best.card, leadSuit, trumpSuit)) best = t;
     return best.player;
 }
+
+// Trump only has power once someone asks for it. Until then a trump-suit card is a plain card,
+// even when the bidder plays it. Once trump is open, it counts for the whole trick it opened in.
+export const activeTrump = (state: Pick<GameState, "trumpRevealed" | "trumpSuit">) =>
+    state.trumpRevealed ? state.trumpSuit : null;
 
 export const handPoints = (hand: Card[]) => hand.reduce((s, c) => s + POINTS[c.rank], 0);
 export const cardLabel = (c: Card) => `${c.rank}${SUIT_INFO[c.suit].sym}`;
@@ -126,18 +132,15 @@ export function declarePair(state: GameState): GameState {
     return s;
 }
 
-export function evaluateMove(card: Card, state: GameState, trumpKnownToUser: boolean): string | null {
+export function evaluateMove(card: Card, state: GameState): string | null {
     const hand = state.hands[0];
-    const { leadSuit, trick, trumpSuit } = state;
+    const { leadSuit, trick } = state;
+    const trumpSuit = activeTrump(state);
     const legal = legalCards(hand, state, 0);
     if (legal.length <= 1) return null;
-    if (trick.length === 0) {
-        if (card.suit === trumpSuit)
-            return "Leading trump reveals it to everyone. Fine for control, but gives up the secret early.";
-        return null;
-    }
+    if (trick.length === 0) return null;
     const currentBest = trick.reduce((best, t) =>
-        cardBeats(t.card, best.card, leadSuit!, trumpSuit!) ? t : best, trick[0]);
+        cardBeats(t.card, best.card, leadSuit!, trumpSuit) ? t : best, trick[0]);
     if (currentBest.player === 2) {
         // Partner holds the trick. Playing last, it's safe to feed them points.
         if (trick.length !== 3) return null;
@@ -146,22 +149,24 @@ export function evaluateMove(card: Card, state: GameState, trumpKnownToUser: boo
             return `Partner had this trick. Feeding ${cardLabel(richest)} would have banked ${POINTS[richest.rank]} more.`;
         return null;
     }
-    const wins = (c: Card) => cardBeats(c, currentBest.card, leadSuit!, trumpSuit!);
+    const wins = (c: Card) => cardBeats(c, currentBest.card, leadSuit!, trumpSuit);
     const playedWins = wins(card);
     const winners = legal.filter(wins);
     const isVoid = leadSuit && !hand.some((c) => c.suit === leadSuit);
     if (isVoid) {
+        if (state.caller === 0 && !state.trumpRevealed && card.suit === state.trumpSuit)
+            return `Trump is still hidden, so ${cardLabel(card)} counts as a plain card here. Tap Show trump first to make it a trump.`;
         const cheaper = legal.filter((c) => POINTS[c.rank] < POINTS[card.rank]);
         if (POINTS[card.rank] > 0 && cheaper.length > 0)
             return `Discarding ${POINTS[card.rank]} point${POINTS[card.rank] > 1 ? "s" : ""}. A zero-point card was free to let go.`;
-        if (trumpKnownToUser && !playedWins && card.suit !== trumpSuit) {
+        if (trumpSuit && !playedWins && card.suit !== trumpSuit) {
             const tw = winners.find((c) => c.suit === trumpSuit);
             if (tw) return `You could have trumped in with ${tw.rank}${SUIT_INFO[tw.suit].sym} to win this trick.`;
         }
         return null;
     }
     if (playedWins) {
-        const lesser = winners.find((c) => c.id !== card.id && cardBeats(card, c, leadSuit!, trumpSuit!));
+        const lesser = winners.find((c) => c.id !== card.id && cardBeats(card, c, leadSuit!, trumpSuit));
         if (lesser)
             return `Won with more than needed — ${lesser.rank}${SUIT_INFO[lesser.suit].sym} also wins, keeping ${card.rank}${SUIT_INFO[card.suit].sym} in reserve.`;
         return null;
@@ -230,8 +235,11 @@ export function aiChooseTrump(hand: Card[]) {
 }
 export function aiPlayCard(playerIdx: number, state: GameState): Card {
     const hand = state.hands[playerIdx];
-    const { leadSuit, trick, trumpSuit } = state;
-    const knowsTrump = state.caller === playerIdx || state.trumpRevealed;
+    const { leadSuit, trick } = state;
+    // The suit this player saves for later, and the suit that has power right now
+    const trumpSuit = state.caller === playerIdx || state.trumpRevealed ? state.trumpSuit : null;
+    const live = activeTrump(state);
+    const knowsTrump = trumpSuit !== null;
     const onCallerTeam = state.caller! % 2 === playerIdx % 2;
     const legal = legalCards(hand, state, playerIdx);
     const pts = (c: Card) => POINTS[c.rank];
@@ -259,28 +267,28 @@ export function aiPlayCard(playerIdx: number, state: GameState): Card {
         return [...pool].sort((a, b) => pts(a) - pts(b) || len(b.suit) - len(a.suit) || rankIdx(b.rank) - rankIdx(a.rank))[0];
     }
 
-    const best = trick.reduce((b, t) => cardBeats(t.card, b.card, leadSuit!, trumpSuit!) ? t : b, trick[0]);
+    const best = trick.reduce((b, t) => cardBeats(t.card, b.card, leadSuit!, live) ? t : b, trick[0]);
     const partnerWinning = best.player % 2 === playerIdx % 2;
     const last = trick.length === 3;
     const trickPts = trick.reduce((s, t) => s + pts(t.card), 0);
 
     if (partnerWinning) {
-        const safe = last || (boss(best.card) && (best.card.suit === trumpSuit || Math.random() < 0.6));
+        const safe = last || (boss(best.card) && ((live !== null && best.card.suit === live) || Math.random() < 0.6));
         if (!safe) return lowest(sideCards(legal));
         // Feed points, keeping our own boss cards for later tricks where possible
         return [...sideCards(legal)].sort((a, b) =>
             pts(b) - pts(a) || Number(boss(a)) - Number(boss(b)))[0];
     }
 
-    const winners = legal.filter((c) => cardBeats(c, best.card, leadSuit!, trumpSuit!));
+    const winners = legal.filter((c) => cardBeats(c, best.card, leadSuit!, live));
     if (winners.length) {
         const cheapest = [...winners].sort((a, b) => {
-            const aw = a.suit === trumpSuit ? 100 - rankIdx(a.rank) : 50 - rankIdx(a.rank);
-            const bw = b.suit === trumpSuit ? 100 - rankIdx(b.rank) : 50 - rankIdx(b.rank);
+            const aw = a.suit === live ? 100 - rankIdx(a.rank) : 50 - rankIdx(a.rank);
+            const bw = b.suit === live ? 100 - rankIdx(b.rank) : 50 - rankIdx(b.rank);
             return aw - bw;
         });
         if (last) return cheapest[0];
-        if (cheapest[0].suit === trumpSuit && leadSuit !== trumpSuit) {
+        if (live !== null && cheapest[0].suit === live && leadSuit !== live) {
             if (trickPts >= 1 || Math.random() < 0.4) return cheapest[0];
         } else {
             const safeWin = cheapest.find(boss);
@@ -338,6 +346,7 @@ export interface GameState {
     dealSeq: number;      // bumps on every deal, including redeals
     askedBy: number | null;   // who asked for trump in the current trick
     played: string[];         // ids of every card played this hand
+    playedBy: number[];       // who played each card in `played`
     prevTrick: TrickEntry[];
     pairHolder: number | null;
     pairDeclared: { player: number; from: number; to: number } | null;
@@ -375,7 +384,7 @@ export const initialState: GameState = {
     feedbackOn: true, halfBidPenaltyOn: true,
     moveTip: null, moveTipSeq: 0, handTips: [],
     bidOrder: [], mustRaise: false,
-    dealSeq: 0, askedBy: null, played: [], prevTrick: [],
+    dealSeq: 0, askedBy: null, played: [], playedBy: [], prevTrick: [],
     pairHolder: null, pairDeclared: null, teamWonSinceReveal: { 0: false, 1: false },
     multiplier: 1, doubleStage: null, stats: emptyStats,
     shownOut: [], holdTricks: true,
@@ -440,7 +449,7 @@ export function reducer(state: GameState, action: Action): GameState {
                 caller: null, trumpSuit: null, trumpRevealed: false, trick: [],
                 leadSuit: null, tricksPlayed: 0, teamPoints: { 0: 0, 1: 0 },
                 lastResult: null, round, handTips: [], dealSeq: state.dealSeq + 1,
-                askedBy: null, played: [], prevTrick: [], shownOut: [], pairHolder: null, pairDeclared: null,
+                askedBy: null, played: [], playedBy: [], prevTrick: [], shownOut: [], pairHolder: null, pairDeclared: null,
                 teamWonSinceReveal: { 0: false, 1: false }, multiplier: 1, doubleStage: null,
             };
             s = addLog(s, `Round ${round}. ${state.names[firstBidder]} ${firstBidder === 0 ? "open" : "opens"}.`);
@@ -531,7 +540,10 @@ export function reducer(state: GameState, action: Action): GameState {
         case "ASK_TRUMP": {
             const { playerIdx } = action;
             let s = { ...state, trumpRevealed: true, askedBy: playerIdx };
-            s = addLog(s, playerIdx === 0 ? `You ask for trump — it's ${SUIT_INFO[state.trumpSuit!].name}!` : `${state.names[playerIdx]} asks for trump — it's ${SUIT_INFO[state.trumpSuit!].name}!`);
+            const tName = SUIT_INFO[state.trumpSuit!].name;
+            s = addLog(s, playerIdx === state.caller
+                ? `${state.names[playerIdx]} ${playerIdx === 0 ? "show" : "shows"} trump: ${tName}!`
+                : `${state.names[playerIdx]} ${playerIdx === 0 ? "ask" : "asks"} for trump. It's ${tName}!`);
             s = showBanner(s, `Trump: ${SUIT_INFO[state.trumpSuit!].sym} ${SUIT_INFO[state.trumpSuit!].name}`, "trump");
             return s;
         }
@@ -539,29 +551,24 @@ export function reducer(state: GameState, action: Action): GameState {
             const { playerIdx, card } = action;
             let tipText: string | null = null;
             if (playerIdx === 0 && state.feedbackOn) {
-                tipText = evaluateMove(card, state, state.caller === 0 || state.trumpRevealed);
+                tipText = evaluateMove(card, state);
             }
             const hands = state.hands.map((h, i) => i === playerIdx ? h.filter((c) => c.id !== card.id) : h);
             const trick = [...state.trick, { player: playerIdx, card }];
             let leadSuit = state.leadSuit;
             if (trick.length === 1) leadSuit = card.suit;
-            let trumpRevealed = state.trumpRevealed;
-            if (card.suit === state.trumpSuit && !trumpRevealed) trumpRevealed = true;
             // Not following suit shows everyone the player is out of the led suit.
             const showsOut = state.leadSuit !== null && card.suit !== state.leadSuit
                 && !state.shownOut.some((v) => v.player === playerIdx && v.suit === state.leadSuit);
             const shownOut = showsOut
                 ? [...state.shownOut, { player: playerIdx, suit: state.leadSuit!, card: card.id, trick: state.tricksPlayed + 1 }]
                 : state.shownOut;
-            let s: GameState = { ...state, hands, trick, leadSuit, trumpRevealed, shownOut, played: [...state.played, card.id] };
+            let s: GameState = { ...state, hands, trick, leadSuit, shownOut,
+                played: [...state.played, card.id], playedBy: [...(state.playedBy ?? []), playerIdx] };
             s = addLog(s, `${state.names[playerIdx]} plays ${card.rank}${SUIT_INFO[card.suit].sym}.`);
             if (tipText) s = showMoveTip(s, tipText);
-            if (trumpRevealed && !state.trumpRevealed) {
-                s = addLog(s, `Trump revealed: ${SUIT_INFO[state.trumpSuit!].name}!`);
-                s = showBanner(s, `Trump: ${SUIT_INFO[state.trumpSuit!].sym} ${SUIT_INFO[state.trumpSuit!].name}`, "trump");
-            }
             if (trick.length === 4) {
-                const winner = trickWinner(trick, leadSuit!, state.trumpSuit!);
+                const winner = trickWinner(trick, leadSuit!, activeTrump(s));
                 const pts = trick.reduce((sum, t) => sum + POINTS[t.card.rank], 0);
                 const team = winner % 2;
                 const teamPoints = { ...s.teamPoints, [team]: s.teamPoints[team] + pts };
@@ -647,17 +654,29 @@ export function reducer(state: GameState, action: Action): GameState {
             const hand = state.hands[playerIdx];
             const isVoid = state.leadSuit && !hand.some((c) => c.suit === state.leadSuit);
             let working = state;
-            if (isVoid && !state.trumpRevealed && playerIdx !== state.caller) {
-                // Asking commits you to trump, so only ask when the trick is worth taking
+            if (isVoid && !state.trumpRevealed) {
+                // Trump is hidden, so nothing in this trick counts as trump yet
                 const { trick, leadSuit, trumpSuit } = state;
-                const best = trick.reduce((b, t) => cardBeats(t.card, b.card, leadSuit!, trumpSuit!) ? t : b, trick[0]);
+                const best = trick.reduce((b, t) => cardBeats(t.card, b.card, leadSuit!, null) ? t : b, trick[0]);
                 const trickPts = trick.reduce((sum, t) => sum + POINTS[t.card.rank], 0);
-                const defending = playerIdx % 2 !== state.caller! % 2;
-                const urge = best.player % 2 === playerIdx % 2 ? 0.1
-                    : trickPts >= 2 ? (defending ? 0.9 : 0.7)
-                    : (defending ? 0.5 : 0.25);
-                if (Math.random() < urge)
-                    working = reducer(state, { type: "ASK_TRUMP", playerIdx });
+                const partnerWinning = best.player % 2 === playerIdx % 2;
+                if (playerIdx === state.caller) {
+                    // The bidder knows trump. Show it only to win a trick worth taking,
+                    // with a trump that beats any trump-suit card already thrown on it.
+                    const open = trick.reduce((b, t) => cardBeats(t.card, b.card, leadSuit!, trumpSuit) ? t : b, trick[0]);
+                    const winsOpen = hand.some((c) => c.suit === trumpSuit && cardBeats(c, open.card, leadSuit!, trumpSuit));
+                    const urge = partnerWinning || !winsOpen ? 0 : trickPts >= 2 ? 0.85 : trickPts >= 1 ? 0.5 : 0.15;
+                    if (Math.random() < urge)
+                        working = reducer(state, { type: "ASK_TRUMP", playerIdx });
+                } else {
+                    // Asking commits you to trump, so only ask when the trick is worth taking
+                    const defending = playerIdx % 2 !== state.caller! % 2;
+                    const urge = partnerWinning ? 0.1
+                        : trickPts >= 2 ? (defending ? 0.9 : 0.7)
+                        : (defending ? 0.5 : 0.25);
+                    if (Math.random() < urge)
+                        working = reducer(state, { type: "ASK_TRUMP", playerIdx });
+                }
             }
             const card = aiPlayCard(playerIdx, working);
             return reducer(working, { type: "PLAY_CARD", playerIdx, card });
