@@ -24,26 +24,40 @@ The simulated hands assert that every hand finishes, the points always add to 29
 
 ## Learn mode
 
-Learn mode builds the habit of tracking what strong players track. Turn it on from the start screen or the **Learn** button in the header. Before each of your turns the game asks one question that fits that moment, and the computer players wait until you tap Continue.
+Learn mode teaches card tracking as a ladder of nine rungs. Each rung adds one thing to remember, so you never have to hold all 32 cards in your head at once. Turn it on from the start screen or the **Learn** button in the header. Before each of your turns the game asks one question, and the computer players wait until you tap Continue.
 
-### What to track
+### The ladder
 
-In order of value. The same list is shown on the start screen.
+The rungs are listed in `RUNGS` in `src/utils/twentyNineLearn.ts`. The same list is shown on the start screen.
 
-| Skill | What to know | When it is asked |
-| --- | --- | --- |
-| Trumps | How many trumps are still with the other players. | Any turn, once you know trump. |
-| Boss cards | Which of your cards are now the highest left in their suit. | When you lead. |
-| Voids | Who has run out of a suit. They can trump it or throw points on it. | Once another player has failed to follow suit. |
-| Bid target | How many more points your side needs. Defenders need 29 − bid + 1. | Any turn. |
-| Suit count | How many cards of the led suit the others still hold. | When following, before trump is open. |
-| Endgame | Every card still out. | Once per hand, when you have three cards left. |
+| Rung | Skill id | Remember | Say | Asked when |
+| --- | --- | --- | --- | --- |
+| 1. J's and 9's | `jn` | Which J's and 9's are gone. | "Heart 9 gone." | After the first 4 cards are played. |
+| 2. Voids | `voids` | Who has run out of which suit. | "West out of clubs." | Once another player has failed to follow suit. |
+| 3. Your longest suit | `long` | How many cards are left in that one suit. | "3 hearts left." | Any turn. |
+| 4. A second suit | `second` | The count for the suit where you hold an A or 10. | "2 spades left." | Any turn. |
+| 5. All four suits | `suits` | How many are left in every suit. | "Clubs down to 1." | Any turn. Often the led suit. |
+| 6. A's and 10's | `at` | Which A's and 10's are gone. Sometimes asks all 16 point cards. | "Diamond A gone." | After the first 4 cards are played. |
+| 7. Guess the trump | `guess` | Which suits the bidder leads and throws away. | "Bidder threw a club, not clubs." | While trump is hidden from you. |
+| 8. Count trumps | `trump` | How many trumps are left once trump is known. | "Trump is spades, 3 left." | Once you know trump. |
+| 9. Points | `points` | Points each team has won versus the bid. | "We have 12, they need 18." | Any turn. |
 
-Each turn picks one question from those that fit, weighted towards Trumps, and avoids repeating the last one. Questions only use what you could know: your hand, the cards played, and who failed to follow suit (`shownOut` in the game state). Each answer shows the working, for example `8 ♥ in the deck. 3 played, 2 in your hand, so 3 with the others.`
+Every answer shows the working and a **Say** line, the short phrase to repeat to yourself during play.
 
-While learn mode is on, the running team points, the "Last trick" button and the log are hidden, since they would give the answers away. The hand-end summary shows your score per skill for that hand and names the weakest one. Totals per skill are saved with the game and shown on the start screen.
+**Focus suits (rungs 3 and 4).** These are fixed when play starts, from your 8 cards (`startHand` in the game state). The longest suit breaks ties by points, then by the higher top card. The second suit is another suit where you held an A or 10, or else the next longest. The learn bar shows them during play.
 
-To add a question type, add a `Skill` and an entry in `SKILLS`, a case in `makeQuiz`, a weight in `WEIGHT`, and add it to `candidateSkills`. The checks play 20 hands in learn mode and answer each question with its own answer key.
+**Guess the trump (rung 7).** In this version a trump played face up opens trump. So every suit played while trump is still hidden cannot be trump. The question asks which suits could still be trump, and the working names what the bidder threw.
+
+### Picking a rung and moving up
+
+- **Pick a rung** by tapping it on the start screen, or from the rung menu in the learn bar during play.
+- **With review** (the default) asks your rung about 60% of the time, and a lower rung the rest of the time, never the same lower rung twice in a row. If your rung has no question that fits the moment, a lower rung is asked instead.
+- **This rung only** asks only your rung, and skips turns where it does not fit.
+- **Moving up:** when at least 8 of your last 10 answers on your rung are right (`isReady`), the learn bar offers **Move up**. That rung also gets a ✅ on the ladder. You can still switch to any rung at any time.
+
+Questions only use what you could know: your hand, the cards played, and who failed to follow suit (`shownOut` in the game state). While learn mode is on, the running team points, the "Last trick" button and the log are hidden, since they would give the answers away. The hand-end summary shows your score per rung for that hand and names the weakest one. Totals per rung (`learnStats`), the last 10 answers per rung (`learnRecent`) and the rungs passed (`learnPassed`) are saved with the game. **Reset** keeps them.
+
+To add a rung, add a `Skill` id and an entry in `RUNGS`, and a case in `makeQuiz` that returns `null` when the question does not fit. The checks play 40 hands in learn mode at different rungs and answer each question with its own answer key.
 
 ## Hold tricks
 
