@@ -1280,6 +1280,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/valorous-2026-11-11",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-11"
+		},
+		"gauntlet": {
+			"word": "gauntlet",
+			"pos": "other",
+			"gloss": " noun Gauntlet originally referred to a double file of men facing each other and armed with clubs or other weapons with which to strike at an individual made to run between them. It later gained an expanded sense referring to a line, series, or assemblage of people or things that poses some sort of ordeal, as in “faced a gauntlet of opponents to get to the championship.”",
+			"pronunciation": "GAWNT-lut",
+			"example": "Salmon returning to their spawning grounds must make it past a gauntlet of predators, from eagles to otters to bears.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/gauntlet-2026-11-12",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-12"
 		}
 	}
 }
