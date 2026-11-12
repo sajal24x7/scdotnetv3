@@ -10,7 +10,7 @@ import {
     teamAwareBidOrder, initialState, makeDeck, reducer,
 } from '../twentyNine.ts';
 import type { Card, GameState } from '../twentyNine.ts';
-import { makeQuiz, checkAnswer, learnReducer, nearOptions, LEARN_LEVELS } from '../twentyNineLearn.ts';
+import { makeQuiz, checkAnswer, learnReducer, nearOptions, candidateSkills, totalTally } from '../twentyNineLearn.ts';
 
 let failures = 0;
 
@@ -80,37 +80,54 @@ check('high bidder anchored', teamAwareBidOrder([1, 2, 3], 3), [3, 2, 1]);
 
 console.log('learn mode questions');
 {
-    // You hold SJ S9 HK; played so far: HJ H9 HA H10 (trick) and S7 D8 C7 CJ.
+    // You hold SJ S9 HK DQ; played so far: HJ H9 HA H10 (trick 1) and S7 D8 C7 CJ (trick 2).
+    // In trick 2 clubs were led and player 3 threw D8, so player 3 is out of clubs.
     const st: GameState = {
-        ...initialState, phase: 'playing', trumpSuit: 'S', caller: 0, tricksPlayed: 2,
+        ...initialState, phase: 'playing', trumpSuit: 'S', caller: 0, tricksPlayed: 2, currentBid: 18,
+        names: ['You', 'B', 'C', 'D'], turn: 0, dealSeq: 1,
         hands: [[c('SJ'), c('S9'), c('HK'), c('DQ')], [], [], []],
-        played: ['HJ', 'H9', 'HA', 'H10', 'S7', 'D8', 'C7', 'CJ'],
-        prevTrick: [
-            { player: 0, card: c('HJ') }, { player: 1, card: c('H9') },
-            { player: 2, card: c('HA') }, { player: 3, card: c('H10') },
-        ],
+        played: ['HJ', 'H9', 'HA', 'H10', 'C7', 'S7', 'CJ', 'D8'],
+        shownOut: [{ player: 1, suit: 'C', card: 'S7', trick: 2 }, { player: 3, suit: 'C', card: 'D8', trick: 2 }],
+        teamPoints: { 0: 7, 1: 3 },
     };
-    const trick = makeQuiz(st, 'trick', 1)!;
-    check('trick points', trick.answer, 7);
-    check('trick options hold answer', trick.options.includes(7) && trick.options.length === 4, true);
-    check('points left', makeQuiz(st, 'left', 1)!.answer, 28 - 10);
-    const power = makeQuiz(st, 'power', 1)!;
-    check('power: yours locked', power.lockedIds, ['SJ', 'S9']);
-    check('power: still out', power.answerIds, ['DJ', 'D9', 'C9']);
+    const trump = makeQuiz(st, 'trump', 1)!;
+    check('trump count', trump.answer, 8 - 1 - 2);
+    check('no trump question while trump is hidden', makeQuiz({ ...st, caller: 1 }, 'trump', 1), null);
     check('boss cards', makeQuiz(st, 'boss', 1)!.answerIds, ['SJ', 'S9', 'HK']);
-    let suitQ = makeQuiz(st, 'suit', 1)!;
-    for (let i = 0; i < 20 && !suitQ.question.includes('Spades'); i++) suitQ = makeQuiz(st, 'suit', 1)!;
-    check('trump count', suitQ.answer, 8 - 1 - 2);
-    const recall = makeQuiz(st, 'recall', 1)!;
-    const suit = recall.pool[0].suit;
-    check('recall excludes played and yours', recall.answerIds.every((id) => !st.played.includes(id) && id[0] === suit && !recall.lockedIds.includes(id)), true);
-    check('card answer: exact set', checkAnswer(power, ['DJ', 'D9', 'C9']), true);
-    check('card answer: missing one', checkAnswer(power, ['DJ', 'D9']), false);
-    check('number answer', checkAnswer(trick, 7), true);
+    check('boss only when leading', makeQuiz({ ...st, trick: [{ player: 3, card: c('DK') }], leadSuit: 'D' }, 'boss', 1), null);
+    const target = makeQuiz(st, 'target', 1)!;
+    check('target: bidders need bid minus points', target.answer, 18 - 7);
+    check('target: defenders need 30 minus bid', makeQuiz({ ...st, caller: 1 }, 'target', 1)!.answer, 30 - 18 - 7);
+    check('target options hold answer', target.options.includes(11) && target.options.length === 4, true);
+    let voids = makeQuiz(st, 'voids', 1)!;
+    for (let i = 0; i < 40 && !voids.question.includes('Clubs'); i++) voids = makeQuiz(st, 'voids', 1)!;
+    check('voids: who showed out', voids.answerIds, ['1', '3']);
+    check('voids: none known', makeQuiz({ ...st, shownOut: [] }, 'voids', 1), null);
+    check('voids: ignores your own', makeQuiz({ ...st, shownOut: [{ player: 0, suit: 'C', card: 'H7', trick: 1 }] }, 'voids', 1), null);
+    const suitQ = makeQuiz({ ...st, caller: 1, trick: [{ player: 3, card: c('DK') }], leadSuit: 'D' }, 'suit', 1)!;
+    check('led suit count', suitQ.answer, 8 - 1 - 1);
+    check('no suit question on a trump lead', makeQuiz({ ...st, trick: [{ player: 3, card: c('SK') }], leadSuit: 'S' }, 'suit', 1), null);
+    const end = makeQuiz({ ...st, hands: [[c('SJ'), c('HK'), c('DQ')], [], [], []] }, 'endgame', 1)!;
+    check('endgame: 32 cards', end.pool.length, 32);
+    check('endgame: out = unplayed and not yours', end.answerIds.length, 32 - 8 - 3);
+    check('card answer: exact set', checkAnswer(voids, ['3', '1']), true);
+    check('card answer: missing one', checkAnswer(voids, ['1']), false);
+    check('number answer', checkAnswer(target, 11), true);
     check('options in range', nearOptions(0, 0, 12).every((n) => n >= 0) && nearOptions(0, 0, 12).length === 4, true);
-    check('no trick question without a trick', makeQuiz({ ...st, prevTrick: [] }, 'trick', 1), null);
-    const asked = learnReducer({ ...st, learnLevel: 2 }, { type: 'ANSWER_QUIZ', value: 0 });
-    check('answer needs an open quiz', asked.handLearn.asked, 0);
+    check('three cards left asks the endgame once',
+        candidateSkills({ ...st, hands: [[c('SJ'), c('HK'), c('DQ')], [], [], []] }), ['endgame']);
+    const asked = learnReducer({ ...st, learnOn: true }, { type: 'ANSWER_QUIZ', value: 0 });
+    check('answer needs an open quiz', asked.handStats, {});
+    const on = learnReducer(st, { type: 'SET_LEARN', on: true });
+    check('turning on asks at once on your turn', on.quiz !== null, true);
+}
+
+console.log('shownOut');
+{
+    let s: GameState = { ...initialState, names: ['A', 'B', 'C', 'D'], phase: 'playing', trumpSuit: 'S', caller: 0, turn: 0,
+        hands: [[c('H7')], [c('D7')], [c('H8')], [c('HK')]] };
+    for (const p of [0, 1, 2, 3]) s = reducer(s, { type: 'PLAY_CARD', playerIdx: p, card: s.hands[p][0] });
+    check('records the player who did not follow', s.shownOut, [{ player: 1, suit: 'H', card: 'D7', trick: 1 }]);
 }
 
 /* Seeded random so a failure is reproducible. */
@@ -160,17 +177,18 @@ for (let n = 0; n < HANDS; n++) {
     if (s.lastResult!.made) callerWins++;
 }
 Math.random = realRandom;
-// Every learn level asks a question after tricks 1-7, and play goes on after it.
-for (const level of LEARN_LEVELS) {
-    Math.random = seeded(1000 + level.id);
-    let s: GameState = learnReducer({ ...initialState, names: ['A', 'B', 'C', 'D'], feedbackOn: false, learnLevel: level.id }, { type: 'DEAL' });
-    let quizzes = 0, steps = 0;
+// Learn mode asks once before each of your 8 turns, and play goes on after it.
+for (let n = 0; n < 20; n++) {
+    Math.random = seeded(1000 + n);
+    let s: GameState = learnReducer({ ...initialState, names: ['A', 'B', 'C', 'D'], feedbackOn: false, learnOn: true }, { type: 'DEAL' });
+    let quizzes = 0, endgames = 0, steps = 0;
     while (s.phase !== 'hand-end' && steps++ < 500) {
         if (s.quiz) {
             quizzes++;
+            if (s.quiz.skill === 'endgame') endgames++;
             const answer = s.quiz.kind === 'number' ? s.quiz.answer : s.quiz.answerIds;
             s = learnReducer(s, { type: 'ANSWER_QUIZ', value: answer });
-            if (!s.quiz!.result!.correct) problems.push(`learn ${level.id}: own answer marked wrong`);
+            if (!s.quiz!.result!.correct) problems.push(`learn ${n}: own answer marked wrong`);
             s = learnReducer(s, { type: 'CLOSE_QUIZ' });
         } else if (s.phase === 'bidding') s = learnReducer(s, { type: 'AI_BID', playerIdx: s.bidTurn });
         else if (s.phase === 'choose-trump') s = learnReducer(s, { type: 'AI_CHOOSE_TRUMP' });
@@ -178,10 +196,12 @@ for (const level of LEARN_LEVELS) {
         else if (s.trick.length === 4) s = learnReducer(s, { type: 'CLEAR_TRICK' });
         else s = learnReducer(s, { type: 'AI_PLAY', playerIdx: s.turn });
     }
-    if (s.phase !== 'hand-end') problems.push(`learn ${level.id}: stuck`);
-    if (quizzes < 6 || quizzes > 7) problems.push(`learn ${level.id}: ${quizzes} questions`);
-    if (s.handLearn.right !== quizzes) problems.push(`learn ${level.id}: tally ${s.handLearn.right}/${quizzes}`);
+    if (s.phase !== 'hand-end') problems.push(`learn ${n}: stuck`);
+    if (quizzes !== 8) problems.push(`learn ${n}: ${quizzes} questions`);
+    if (endgames !== 1) problems.push(`learn ${n}: ${endgames} endgame questions`);
+    if (totalTally(s.handStats).right !== quizzes) problems.push(`learn ${n}: tally ${totalTally(s.handStats).right}/${quizzes}`);
 }
+Math.random = realRandom;
 check(`${HANDS} hands finish cleanly`, problems.slice(0, 5), []);
 const rate = callerWins / HANDS;
 console.log(`  info bidders made ${(rate * 100).toFixed(0)}% of hands`);

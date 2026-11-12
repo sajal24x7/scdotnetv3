@@ -8,7 +8,7 @@ A single-player version of 29, the trick-taking card game for two pairs, at `/ga
 | --- | --- |
 | `src/pages/games/cards-29/index.astro` | Standalone page shell (no site layout). Mounts the game with `client:load`. |
 | `src/utils/twentyNine.ts` | Rules, the game state machine (`reducer`), the computer players and the move tips. No React and no DOM. |
-| `src/utils/twentyNineLearn.ts` | Learn mode: the counting levels, question builders and `learnReducer`, which wraps the game reducer. |
+| `src/utils/twentyNineLearn.ts` | Learn mode: the strategy list (`SKILLS`), question builders and `learnReducer`, which wraps the game reducer. |
 | `src/components/games/TwentyNine.tsx` | The React UI: table, hand, bidding controls and animations. |
 | `src/utils/__checks__/twentyNine.check.ts` | Rule checks plus 400 seeded hands played by the computer in every seat. |
 
@@ -24,23 +24,30 @@ The simulated hands assert that every hand finishes, the points always add to 29
 
 ## Learn mode
 
-Learn mode drills card counting. Pick a level on the start screen, or from the **Learn** button in the header during a game. After each of the first seven tricks the table pauses and asks one question. The computer players wait until you answer and tap Continue.
+Learn mode builds the habit of tracking what strong players track. Turn it on from the start screen or the **Learn** button in the header. Before each of your turns the game asks one question that fits that moment, and the computer players wait until you tap Continue.
 
-| Level | Skill | Question |
+### What to track
+
+In order of value. The same list is shown on the start screen.
+
+| Skill | What to know | When it is asked |
 | --- | --- | --- |
-| 1 | Trick points | How many points were in the trick that just ended? |
-| 2 | Points left | How many of the 28 card points have not been played? |
-| 3 | Jacks and 9s | Which Jacks and 9s do the other players still hold? |
-| 4 | Suit count | How many cards of a suit do the others hold? Asks about trump most often once you know it. |
-| 5 | Boss cards | Which of your cards are the highest left in their suit? |
-| 6 | Full recall | Exactly which cards of a suit are still out? |
-| 7 | Mixed | Any of the above at random. |
+| Trumps | How many trumps are still with the other players. | Any turn, once you know trump. |
+| Boss cards | Which of your cards are now the highest left in their suit. | When you lead. |
+| Voids | Who has run out of a suit. They can trump it or throw points on it. | Once another player has failed to follow suit. |
+| Bid target | How many more points your side needs. Defenders need 29 − bid + 1. | Any turn. |
+| Suit count | How many cards of the led suit the others still hold. | When following, before trump is open. |
+| Endgame | Every card still out. | Once per hand, when you have three cards left. |
 
-Questions only use what you could know: your own hand and the cards already played. Each answer shows the working, for example `8 ♥ in the deck. 3 played, 2 in your hand, so 3 with the others.`
+Each turn picks one question from those that fit, weighted towards Trumps, and avoids repeating the last one. Questions only use what you could know: your hand, the cards played, and who failed to follow suit (`shownOut` in the game state). Each answer shows the working, for example `8 ♥ in the deck. 3 played, 2 in your hand, so 3 with the others.`
 
-While learn mode is on, the running team points, the "Last trick" button and the log are hidden, since they would give the answers away. The hand-end summary shows your score for the hand and offers the next level after a clean hand. Per-level totals are saved with the game and shown under the level picker.
+While learn mode is on, the running team points, the "Last trick" button and the log are hidden, since they would give the answers away. The hand-end summary shows your score per skill for that hand and names the weakest one. Totals per skill are saved with the game and shown on the start screen.
 
-To add a question type, add a `Skill`, a case in `makeQuiz`, and a level in `LEARN_LEVELS`. The checks play one hand at every level and answer each question with its own answer key.
+To add a question type, add a `Skill` and an entry in `SKILLS`, a case in `makeQuiz`, a weight in `WEIGHT`, and add it to `candidateSkills`. The checks play 20 hands in learn mode and answer each question with its own answer key.
+
+## Hold tricks
+
+With **Hold** on (the default), a finished trick stays on the table until you tap **Next trick** or the table. This gives you time to read all four cards whatever your seat. Turn it off in the header to have tricks clear on their own after about a second.
 
 ## Table and animations
 
