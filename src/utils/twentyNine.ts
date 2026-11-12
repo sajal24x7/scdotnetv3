@@ -1,8 +1,10 @@
 /**
  * Rules, state machine and computer players for the 29 card game.
  * The UI lives in src/components/games/TwentyNine.tsx.
+ * Learn mode (counting drills) lives in src/utils/twentyNineLearn.ts.
  * Checks: node --experimental-strip-types src/utils/__checks__/twentyNine.check.ts
  */
+import type { Quiz, LearnStats, Tally, LearnAction } from "./twentyNineLearn.ts";
 
 /* ---------- Card data ---------- */
 export const SUITS = ["S", "H", "D", "C"];
@@ -343,6 +345,11 @@ export interface GameState {
     multiplier: number;       // 1, 2 after a double, 4 after a redouble
     doubleStage: "double" | "redouble" | null;
     stats: Stats;
+    learnLevel: number | null;   // learn mode level, null when off
+    quiz: Quiz | null;           // counting question waiting for an answer
+    quizSeq: number;
+    learnStats: LearnStats;      // per level, kept across matches
+    handLearn: Tally;            // this hand only
 }
 
 export const emptyStats: Stats = { matchesPlayed: 0, matchesWon: 0, bidsTotal: 0, bidsMade: 0, streak: 0, bestStreak: 0 };
@@ -362,6 +369,7 @@ export const initialState: GameState = {
     dealSeq: 0, askedBy: null, played: [], prevTrick: [],
     pairHolder: null, pairDeclared: null, teamWonSinceReveal: { 0: false, 1: false },
     multiplier: 1, doubleStage: null, stats: emptyStats,
+    learnLevel: null, quiz: null, quizSeq: 0, learnStats: {}, handLearn: { asked: 0, right: 0 },
 };
 
 export function addLog(state: GameState, msg: string): GameState {
@@ -397,7 +405,8 @@ export type Action =
     | { type: "TOGGLE_FEEDBACK" }
     | { type: "TOGGLE_HALF_BID" }
     | { type: "NEW_MATCH" }
-    | { type: "RESET" };
+    | { type: "RESET" }
+    | LearnAction;
 
 export function reducer(state: GameState, action: Action): GameState {
     switch (action.type) {
@@ -643,7 +652,7 @@ export function reducer(state: GameState, action: Action): GameState {
         case "TOGGLE_FEEDBACK": return { ...state, feedbackOn: !state.feedbackOn, moveTip: null };
         case "TOGGLE_HALF_BID": return { ...state, halfBidPenaltyOn: !state.halfBidPenaltyOn };
         case "NEW_MATCH": return reducer({ ...state, handsWon: { 0: 0, 1: 0 }, round: 0 }, { type: "DEAL" });
-        case "RESET": return { ...initialState, names: state.names, feedbackOn: state.feedbackOn, halfBidPenaltyOn: state.halfBidPenaltyOn, stats: state.stats, bidOrder: [], mustRaise: false };
+        case "RESET": return { ...initialState, names: state.names, feedbackOn: state.feedbackOn, halfBidPenaltyOn: state.halfBidPenaltyOn, stats: state.stats, bidOrder: [], mustRaise: false, learnLevel: state.learnLevel, learnStats: state.learnStats };
         default: return state;
     }
 }

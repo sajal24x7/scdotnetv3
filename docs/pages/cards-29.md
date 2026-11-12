@@ -8,6 +8,7 @@ A single-player version of 29, the trick-taking card game for two pairs, at `/ga
 | --- | --- |
 | `src/pages/games/cards-29/index.astro` | Standalone page shell (no site layout). Mounts the game with `client:load`. |
 | `src/utils/twentyNine.ts` | Rules, the game state machine (`reducer`), the computer players and the move tips. No React and no DOM. |
+| `src/utils/twentyNineLearn.ts` | Learn mode: the counting levels, question builders and `learnReducer`, which wraps the game reducer. |
 | `src/components/games/TwentyNine.tsx` | The React UI: table, hand, bidding controls and animations. |
 | `src/utils/__checks__/twentyNine.check.ts` | Rule checks plus 400 seeded hands played by the computer in every seat. |
 
@@ -20,6 +21,26 @@ node --experimental-strip-types src/utils/__checks__/twentyNine.check.ts
 ```
 
 The simulated hands assert that every hand finishes, the points always add to 29, all 32 cards are played once, and no player breaks the follow-suit rule. The random generator is seeded, so a failure always reproduces. If you tune the computer bidding, keep an eye on the "bidders made" rate it prints.
+
+## Learn mode
+
+Learn mode drills card counting. Pick a level on the start screen, or from the **Learn** button in the header during a game. After each of the first seven tricks the table pauses and asks one question. The computer players wait until you answer and tap Continue.
+
+| Level | Skill | Question |
+| --- | --- | --- |
+| 1 | Trick points | How many points were in the trick that just ended? |
+| 2 | Points left | How many of the 28 card points have not been played? |
+| 3 | Jacks and 9s | Which Jacks and 9s do the other players still hold? |
+| 4 | Suit count | How many cards of a suit do the others hold? Asks about trump most often once you know it. |
+| 5 | Boss cards | Which of your cards are the highest left in their suit? |
+| 6 | Full recall | Exactly which cards of a suit are still out? |
+| 7 | Mixed | Any of the above at random. |
+
+Questions only use what you could know: your own hand and the cards already played. Each answer shows the working, for example `8 ♥ in the deck. 3 played, 2 in your hand, so 3 with the others.`
+
+While learn mode is on, the running team points, the "Last trick" button and the log are hidden, since they would give the answers away. The hand-end summary shows your score for the hand and offers the next level after a clean hand. Per-level totals are saved with the game and shown under the level picker.
+
+To add a question type, add a `Skill`, a case in `makeQuiz`, and a level in `LEARN_LEVELS`. The checks play one hand at every level and answer each question with its own answer key.
 
 ## Table and animations
 

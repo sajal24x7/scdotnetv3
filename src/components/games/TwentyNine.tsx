@@ -1,9 +1,11 @@
 import React, { useReducer, useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
-    SUITS, SUIT_INFO, MATCH_TARGET, initialState, reducer, pickPokemonNames, teamNames,
+    SUITS, SUIT_INFO, MATCH_TARGET, initialState, pickPokemonNames, teamNames,
     sortHand, legalCards, trickWinner, handPoints, pairReady,
 } from "../../utils/twentyNine";
 import type { Card, GameState, TrickEntry } from "../../utils/twentyNine";
+import { LEARN_LEVELS, learnReducer, levelInfo, levelTally } from "../../utils/twentyNineLearn";
+import type { LearnStats, Quiz } from "../../utils/twentyNineLearn";
 
 /* ---------- Motion helpers ---------- */
 
@@ -156,6 +158,113 @@ function ScoreCard({ label, wins, total, colorClass, symbol }: {
     );
 }
 
+// Learn mode: pick a counting level, or turn it off.
+function LearnPicker({ level, stats, onPick }: {
+    level: number | null; stats: LearnStats; onPick: (level: number | null) => void;
+}) {
+    const current = levelInfo(level);
+    return (
+        <div className="learn-picker">
+            <div className="learn-levels" role="radiogroup" aria-label="Learn mode level">
+                <button role="radio" aria-checked={level === null}
+                    className={`learn-chip ${level === null ? "learn-chip-on" : ""}`} onClick={() => onPick(null)}>
+                    Off
+                </button>
+                {LEARN_LEVELS.map((l) => (
+                    <button key={l.id} role="radio" aria-checked={level === l.id} title={l.name}
+                        className={`learn-chip ${level === l.id ? "learn-chip-on" : ""}`} onClick={() => onPick(l.id)}>
+                        {l.id}
+                    </button>
+                ))}
+            </div>
+            <p className="hint learn-desc">
+                {current ? (
+                    <>
+                        <strong>{current.id}. {current.name}.</strong> {current.desc}
+                        {(() => {
+                            const t = levelTally(stats, current.id);
+                            return t.asked ? ` You've got ${t.right} of ${t.asked} right here.` : "";
+                        })()}
+                    </>
+                ) : "Turn on a level to get a counting question after every trick."}
+            </p>
+        </div>
+    );
+}
+
+// The counting question shown between tricks.
+function QuizPanel({ quiz, levelName, onAnswer, onClose }: {
+    quiz: Quiz; levelName: string;
+    onAnswer: (value: number | string[]) => void; onClose: () => void;
+}) {
+    const [picked, setPicked] = useState<Set<string>>(new Set());
+    const done = quiz.result !== null;
+    const toggle = (id: string) => setPicked((prev) => {
+        const next = new Set(prev);
+        if (next.has(id)) next.delete(id); else next.add(id);
+        return next;
+    });
+    const pickClass = (id: string) => {
+        if (!done) return picked.has(id) ? "quiz-pick-on" : "";
+        const right = quiz.answerIds.includes(id);
+        if (right && picked.has(id)) return "quiz-pick-good";
+        if (right) return "quiz-pick-missed";
+        if (picked.has(id)) return "quiz-pick-wrong";
+        return "";
+    };
+    return (
+        <div className="quiz-box" role="group" aria-label="Counting question">
+            <p className="quiz-head">Count check · {levelName}</p>
+            <p className="quiz-question">{quiz.question}</p>
+            {quiz.kind === "number" ? (
+                <div className="quiz-options">
+                    {quiz.options.map((n) => {
+                        const cls = !done ? "" : n === quiz.answer ? "quiz-opt-good"
+                            : n === quiz.result!.picked ? "quiz-opt-wrong" : "";
+                        return (
+                            <button key={n} className={`quiz-opt ${cls}`} disabled={done} onClick={() => onAnswer(n)}>
+                                {n}
+                            </button>
+                        );
+                    })}
+                </div>
+            ) : (
+                <>
+                    <div className="quiz-cards">
+                        {quiz.pool.map((c) => {
+                            const locked = quiz.lockedIds.includes(c.id);
+                            return (
+                                <div key={c.id} className={`quiz-card ${pickClass(c.id)}`}>
+                                    <PlayingCard card={c} size="mini" faded={locked}
+                                        disabled={done || locked}
+                                        onClick={done || locked ? undefined : () => toggle(c.id)} />
+                                    <span className="quiz-card-note">
+                                        {locked ? "yours" : done && pickClass(c.id) === "quiz-pick-missed" ? "missed" : done && pickClass(c.id) === "quiz-pick-wrong" ? "gone" : "\u00a0"}
+                                    </span>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    {!done && (
+                        <button className="btn-primary" onClick={() => onAnswer([...picked])}>
+                            {picked.size ? "Check" : "Check (none)"}
+                        </button>
+                    )}
+                </>
+            )}
+            {done && (
+                <div className="quiz-result" aria-live="polite">
+                    <p style={{ fontWeight: 600, color: quiz.result!.correct ? "var(--game-good)" : "var(--game-red)" }}>
+                        {quiz.result!.correct ? "Right." : "Not quite."}
+                    </p>
+                    <p className="hint">{quiz.explain}</p>
+                    <button className="btn-primary" style={{ marginTop: 8 }} onClick={onClose} autoFocus>Continue</button>
+                </div>
+            )}
+        </div>
+    );
+}
+
 // Key kept from the earlier version so saved games carry over.
 const STORAGE_KEY = "twenty-eight-state-v1";
 
@@ -169,10 +278,11 @@ function loadState(): GameState {
 
 /* ---------- Main component ---------- */
 export default function TwentyNine() {
-    const [state, dispatch] = useReducer(reducer, initialState, loadState);
+    const [state, dispatch] = useReducer(learnReducer, initialState, loadState);
     const timers = useRef<number[]>([]);
     const [showPrev, setShowPrev] = useState(false);
     const [collecting, setCollecting] = useState(false);
+    const [showLearn, setShowLearn] = useState(false);
 
     // Where cards come from and go to, for the table animations.
     const seatEls = useRef<(HTMLDivElement | null)[]>([null, null, null, null]);
@@ -224,9 +334,9 @@ export default function TwentyNine() {
     }, [state.phase, state.caller]);
 
     useEffect(() => {
-        if (state.phase === "playing" && state.trick.length < 4 && state.turn !== 0)
+        if (state.phase === "playing" && state.trick.length < 4 && state.turn !== 0 && !state.quiz)
             after(700, () => dispatch({ type: "AI_PLAY", playerIdx: state.turn }));
-    }, [state.phase, state.turn, state.trick.length]);
+    }, [state.phase, state.turn, state.trick.length, state.quiz === null]);
 
     useEffect(() => {
         if (state.trick.length < 4) { setCollecting(false); return; }
@@ -255,7 +365,9 @@ export default function TwentyNine() {
     const isLegal = (c: Card) => legalIds.has(c.id);
     const mustTrump = state.askedBy === 0 && userHand.some((c) => c.suit === state.trumpSuit)
         && !userHand.some((c) => c.suit === state.leadSuit);
-    const userTurn = state.phase === "playing" && state.turn === 0 && state.trick.length < 4;
+    const userTurn = state.phase === "playing" && state.turn === 0 && state.trick.length < 4 && !state.quiz;
+    const learning = state.learnLevel !== null;
+    const learnLevel = levelInfo(state.learnLevel);
     const trumpKnown = state.caller === 0 || state.trumpRevealed;
     const voidInLead = state.leadSuit && !userHand.some((c) => c.suit === state.leadSuit);
     const callerTeam = state.caller === null ? null : state.caller % 2;
@@ -343,6 +455,7 @@ export default function TwentyNine() {
                     --game-pass-border: rgb(180,175,168);
                     --game-pass-text: rgb(117,117,117);
                     --game-shadow: rgba(60,40,20,0.14);
+                    --game-good: rgb(21,128,61);
                 }
                 :root.dark .game-root {
                     --game-bg: rgb(22,20,18);
@@ -371,6 +484,7 @@ export default function TwentyNine() {
                     --game-pass-border: rgb(80,75,70);
                     --game-pass-text: rgb(140,135,128);
                     --game-shadow: rgba(0,0,0,0.5);
+                    --game-good: rgb(74,222,128);
                 }
 
                 /* Cards: two faces so they can turn over in 3D */
@@ -642,6 +756,48 @@ export default function TwentyNine() {
                     text-align: center;
                     gap: 12px;
                 }
+                /* Learn mode */
+                .learn-picker { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+                .learn-levels { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; }
+                .learn-chip {
+                    min-width: 34px; height: 30px; padding: 0 8px;
+                    border-radius: 8px; border: 1.5px solid var(--game-border);
+                    background: transparent; color: var(--game-text-2);
+                    font-family: inherit; font-size: var(--text-xs); font-weight: 600; cursor: pointer;
+                }
+                .learn-chip:hover { border-color: var(--game-text-2); }
+                .learn-chip-on { background: var(--game-accent); border-color: var(--game-accent); color: var(--game-accent-text); }
+                .learn-desc { line-height: 1.5; text-align: center; min-height: 3em; }
+                .learn-desc strong { color: var(--game-text); }
+                .learn-pop { padding: 10px 16px 12px; border-bottom: 1px solid var(--game-border); background: var(--game-surface); }
+                .quiz-box {
+                    border: 1.5px solid var(--game-accent); border-radius: 10px;
+                    padding: 10px 12px; display: flex; flex-direction: column; gap: 8px;
+                    background: var(--game-tip-bg);
+                }
+                .quiz-head { font-size: var(--text-xs); color: var(--game-accent); font-weight: 600; }
+                .quiz-question { font-size: var(--text-sm); font-weight: 600; }
+                .quiz-options { display: flex; gap: 6px; flex-wrap: wrap; }
+                .quiz-opt {
+                    min-width: 42px; height: 38px; border-radius: 8px;
+                    border: 1.5px solid var(--game-card-border); background: var(--game-card-bg); color: var(--game-text);
+                    font-family: inherit; font-size: var(--text-sm); font-weight: 700; cursor: pointer;
+                }
+                .quiz-opt:hover:not(:disabled) { border-color: var(--game-accent); }
+                .quiz-opt:disabled { cursor: default; opacity: 0.5; }
+                .quiz-opt.quiz-opt-good { border-color: var(--game-good); color: var(--game-good); opacity: 1; }
+                .quiz-opt.quiz-opt-wrong { border-color: var(--game-red); color: var(--game-red); opacity: 1; }
+                .quiz-cards { display: flex; gap: 6px; flex-wrap: wrap; }
+                .quiz-card { display: flex; flex-direction: column; align-items: center; gap: 2px; border-radius: 9px; padding: 2px; outline: 2px solid transparent; }
+                .quiz-card-note { font-size: var(--text-xs); color: var(--game-text-2); line-height: 1; }
+                .quiz-pick-on { outline-color: var(--game-accent); }
+                .quiz-pick-on .card-front { transform: translateY(-3px); }
+                .quiz-pick-good { outline-color: var(--game-good); }
+                .quiz-pick-missed { outline: 2px dashed var(--game-red); }
+                .quiz-pick-wrong { outline-color: var(--game-red); opacity: 0.6; }
+                .quiz-pick-missed .quiz-card-note, .quiz-pick-wrong .quiz-card-note { color: var(--game-red); }
+                .quiz-result { display: flex; flex-direction: column; gap: 2px; }
+
                 .log-line { font-size: var(--text-xs); color: var(--game-text-2); line-height: 1.5; }
                 .log-line:first-child { color: var(--game-text); }
 
@@ -654,6 +810,12 @@ export default function TwentyNine() {
             <div className="game-header">
                 <span className="game-title">29</span>
                 <div className="header-actions">
+                    {state.phase !== "idle" && (
+                        <button className="btn-ghost" aria-expanded={showLearn} onClick={() => setShowLearn((v) => !v)}
+                            style={learning ? { color: "var(--game-accent)" } : undefined}>
+                            Learn {learning ? state.learnLevel : "off"}
+                        </button>
+                    )}
                     <button className="btn-ghost" onClick={() => dispatch({ type: "TOGGLE_FEEDBACK" })}>
                         Tips {state.feedbackOn ? "on" : "off"}
                     </button>
@@ -674,6 +836,13 @@ export default function TwentyNine() {
                 </div>
             </div>
 
+            {showLearn && state.phase !== "idle" && (
+                <div className="learn-pop">
+                    <LearnPicker level={state.learnLevel} stats={state.learnStats}
+                        onPick={(level) => { dispatch({ type: "SET_LEARN", level }); setShowLearn(false); }} />
+                </div>
+            )}
+
             {/* Idle / start screen */}
             {state.phase === "idle" && (
                 <div className="idle-screen">
@@ -685,8 +854,15 @@ export default function TwentyNine() {
                         </p>
                     </div>
                     <button className="btn-primary btn-big" onClick={() => dispatch({ type: "DEAL" })}>
-                        Deal
+                        {learning ? "Deal and practise" : "Deal"}
                     </button>
+                    <div style={{ marginTop: 16, maxWidth: 340 }}>
+                        <p style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "var(--text-base)", marginBottom: 6 }}>
+                            Learn to count cards
+                        </p>
+                        <LearnPicker level={state.learnLevel} stats={state.learnStats}
+                            onPick={(level) => dispatch({ type: "SET_LEARN", level })} />
+                    </div>
                     <div className="hint" style={{ marginTop: 20, lineHeight: 1.7, maxWidth: 320 }}>
                         <p><strong>Ranks</strong> (high→low): J·9·A·10·K·Q·8·7 &nbsp;|&nbsp; <strong>Points</strong>: J=3, 9=2, A=1, 10=1</p>
                         <p><strong>Bid</strong> how many points your pair will take. Highest bidder picks trump secretly.</p>
@@ -724,7 +900,7 @@ export default function TwentyNine() {
                             {state.multiplier > 1 && state.phase !== "hand-end" && (
                                 <span className="bid-chip-high" style={{ marginLeft: 6 }}>×{state.multiplier}</span>
                             )}
-                            {state.phase === "playing" && callerTeam !== null && (
+                            {state.phase === "playing" && callerTeam !== null && !learning && (
                                 <div className="pts-bar" style={{ marginTop: 2 }}>
                                     {tn[0]} {state.teamPoints[0]}/{target0} · {tn[1]} {state.teamPoints[1]}/{target1}
                                 </div>
@@ -784,7 +960,7 @@ export default function TwentyNine() {
 
                         {/* Log */}
                         <div style={{ marginTop: "auto" }}>
-                            {state.phase === "playing" && state.prevTrick.length === 4 && (
+                            {state.phase === "playing" && state.prevTrick.length === 4 && !learning && (
                                 <div style={{ marginBottom: 6 }}>
                                     <button className="btn-ghost" style={{ paddingLeft: 0 }} onClick={() => setShowPrev((v) => !v)}>
                                         {showPrev ? "Hide last trick" : "Last trick"}
@@ -801,7 +977,7 @@ export default function TwentyNine() {
                                     )}
                                 </div>
                             )}
-                            <div aria-live="polite">
+                            <div aria-live="polite" style={{ visibility: state.quiz ? "hidden" : "visible" }}>
                                 {state.log.slice(0, 3).map((msg, i) => (
                                     <p key={i} className="log-line">{msg}</p>
                                 ))}
@@ -815,6 +991,12 @@ export default function TwentyNine() {
                             <div key={state.moveTip.id} className="tip-anim tip-box">
                                 {state.moveTip.text}
                             </div>
+                        )}
+
+                        {state.quiz && learnLevel && (
+                            <QuizPanel key={state.quiz.id} quiz={state.quiz} levelName={`${learnLevel.id}. ${learnLevel.name}`}
+                                onAnswer={(value) => dispatch({ type: "ANSWER_QUIZ", value })}
+                                onClose={() => dispatch({ type: "CLOSE_QUIZ" })} />
                         )}
 
                         {/* Bidding — my turn */}
@@ -983,6 +1165,20 @@ export default function TwentyNine() {
                                 )}
                                 {state.stats.streak >= 2 && state.lastResult.winningTeam === 0 && (
                                     <p className="hint" style={{ color: "var(--game-accent)" }}>🔥 {state.stats.streak} hands in a row</p>
+                                )}
+
+                                {learnLevel && state.handLearn.asked > 0 && (
+                                    <div className="tip-box">
+                                        <p>
+                                            <strong>Counting:</strong> {state.handLearn.right} of {state.handLearn.asked} right this hand at level {learnLevel.id}.
+                                        </p>
+                                        {state.handLearn.right === state.handLearn.asked && learnLevel.id < LEARN_LEVELS.length && (
+                                            <button className="btn-trump-ask" style={{ marginTop: 6 }}
+                                                onClick={() => dispatch({ type: "SET_LEARN", level: learnLevel.id + 1 })}>
+                                                Clean hand. Try level {learnLevel.id + 1}: {levelInfo(learnLevel.id + 1)!.name}
+                                            </button>
+                                        )}
+                                    </div>
                                 )}
 
                                 {state.feedbackOn && state.lastResult.tips.length > 0 && (
