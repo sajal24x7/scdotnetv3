@@ -4,7 +4,7 @@ import {
     sortHand, legalCards, trickWinner, handPoints, pairReady,
 } from "../../utils/twentyNine";
 import type { Card, GameState, TrickEntry } from "../../utils/twentyNine";
-import { LEARN_LEVELS, learnReducer, levelInfo, levelTally } from "../../utils/twentyNineLearn";
+import { SKILLS, learnReducer, skillName, tallyOf, totalTally, weakestSkill } from "../../utils/twentyNineLearn";
 import type { LearnStats, Quiz } from "../../utils/twentyNineLearn";
 
 /* ---------- Motion helpers ---------- */
@@ -158,43 +158,36 @@ function ScoreCard({ label, wins, total, colorClass, symbol }: {
     );
 }
 
-// Learn mode: pick a counting level, or turn it off.
-function LearnPicker({ level, stats, onPick }: {
-    level: number | null; stats: LearnStats; onPick: (level: number | null) => void;
+// Learn mode: the strategy to keep in mind, with your record on each part.
+function LearnPanel({ on, stats, onToggle }: {
+    on: boolean; stats: LearnStats; onToggle: () => void;
 }) {
-    const current = levelInfo(level);
     return (
         <div className="learn-picker">
-            <div className="learn-levels" role="radiogroup" aria-label="Learn mode level">
-                <button role="radio" aria-checked={level === null}
-                    className={`learn-chip ${level === null ? "learn-chip-on" : ""}`} onClick={() => onPick(null)}>
-                    Off
-                </button>
-                {LEARN_LEVELS.map((l) => (
-                    <button key={l.id} role="radio" aria-checked={level === l.id} title={l.name}
-                        className={`learn-chip ${level === l.id ? "learn-chip-on" : ""}`} onClick={() => onPick(l.id)}>
-                        {l.id}
-                    </button>
-                ))}
-            </div>
+            <button role="switch" aria-checked={on} className={`learn-chip ${on ? "learn-chip-on" : ""}`} onClick={onToggle}>
+                Learn mode {on ? "on" : "off"}
+            </button>
             <p className="hint learn-desc">
-                {current ? (
-                    <>
-                        <strong>{current.id}. {current.name}.</strong> {current.desc}
-                        {(() => {
-                            const t = levelTally(stats, current.id);
-                            return t.asked ? ` You've got ${t.right} of ${t.asked} right here.` : "";
-                        })()}
-                    </>
-                ) : "Turn on a level to get a counting question after every trick."}
+                Before each of your turns you get one question on what a strong player tracks at that moment. In order of value:
             </p>
+            <ol className="learn-list">
+                {SKILLS.map((s) => {
+                    const t = tallyOf(stats, s.id);
+                    return (
+                        <li key={s.id}>
+                            <strong>{s.name}.</strong> {s.tip}
+                            {t.asked > 0 && <span className="learn-score"> {t.right}/{t.asked}</span>}
+                        </li>
+                    );
+                })}
+            </ol>
         </div>
     );
 }
 
-// The counting question shown between tricks.
-function QuizPanel({ quiz, levelName, onAnswer, onClose }: {
-    quiz: Quiz; levelName: string;
+// The question shown before your turn.
+function QuizPanel({ quiz, onAnswer, onClose }: {
+    quiz: Quiz;
     onAnswer: (value: number | string[]) => void; onClose: () => void;
 }) {
     const [picked, setPicked] = useState<Set<string>>(new Set());
@@ -214,7 +207,7 @@ function QuizPanel({ quiz, levelName, onAnswer, onClose }: {
     };
     return (
         <div className="quiz-box" role="group" aria-label="Counting question">
-            <p className="quiz-head">Count check · {levelName}</p>
+            <p className="quiz-head">Count check · {skillName(quiz.skill)}</p>
             <p className="quiz-question">{quiz.question}</p>
             {quiz.kind === "number" ? (
                 <div className="quiz-options">
@@ -228,9 +221,26 @@ function QuizPanel({ quiz, levelName, onAnswer, onClose }: {
                         );
                     })}
                 </div>
+            ) : quiz.kind === "pick" ? (
+                <>
+                    <div className="quiz-options">
+                        {quiz.choices.map((ch) => (
+                            <button key={ch.id} aria-pressed={picked.has(ch.id)}
+                                className={`quiz-opt quiz-choice ${pickClass(ch.id)}`}
+                                disabled={done} onClick={() => toggle(ch.id)}>
+                                {ch.label}
+                            </button>
+                        ))}
+                    </div>
+                    {!done && (
+                        <button className="btn-primary" onClick={() => onAnswer([...picked])}>
+                            {picked.size ? "Check" : "Check (nobody)"}
+                        </button>
+                    )}
+                </>
             ) : (
                 <>
-                    <div className="quiz-cards">
+                    <div className={`quiz-cards ${quiz.wide ? "quiz-cards-wide" : ""}`}>
                         {quiz.pool.map((c) => {
                             const locked = quiz.lockedIds.includes(c.id);
                             return (
@@ -239,7 +249,7 @@ function QuizPanel({ quiz, levelName, onAnswer, onClose }: {
                                         disabled={done || locked}
                                         onClick={done || locked ? undefined : () => toggle(c.id)} />
                                     <span className="quiz-card-note">
-                                        {locked ? "yours" : done && pickClass(c.id) === "quiz-pick-missed" ? "missed" : done && pickClass(c.id) === "quiz-pick-wrong" ? "gone" : "\u00a0"}
+                                        {locked ? "yours" : quiz.wide ? "" : done && pickClass(c.id) === "quiz-pick-missed" ? "missed" : done && pickClass(c.id) === "quiz-pick-wrong" ? "gone" : "\u00a0"}
                                     </span>
                                 </div>
                             );
@@ -258,6 +268,9 @@ function QuizPanel({ quiz, levelName, onAnswer, onClose }: {
                         {quiz.result!.correct ? "Right." : "Not quite."}
                     </p>
                     <p className="hint">{quiz.explain}</p>
+                    {quiz.wide && !quiz.result!.correct && (
+                        <p className="hint">Green: right. Dashed red: missed. Solid red: already played.</p>
+                    )}
                     <button className="btn-primary" style={{ marginTop: 8 }} onClick={onClose} autoFocus>Continue</button>
                 </div>
             )}
@@ -282,7 +295,6 @@ export default function TwentyNine() {
     const timers = useRef<number[]>([]);
     const [showPrev, setShowPrev] = useState(false);
     const [collecting, setCollecting] = useState(false);
-    const [showLearn, setShowLearn] = useState(false);
 
     // Where cards come from and go to, for the table animations.
     const seatEls = useRef<(HTMLDivElement | null)[]>([null, null, null, null]);
@@ -338,9 +350,16 @@ export default function TwentyNine() {
             after(700, () => dispatch({ type: "AI_PLAY", playerIdx: state.turn }));
     }, [state.phase, state.turn, state.trick.length, state.quiz === null]);
 
+    // A finished trick clears itself, or waits for a tap when "Hold" is on.
+    const trickDone = state.phase === "playing" && state.trick.length === 4;
+    const holding = trickDone && state.holdTricks && !collecting;
+    const clearTrick = () => {
+        setCollecting(true);
+        after(320, () => dispatch({ type: "CLEAR_TRICK" }));
+    };
     useEffect(() => {
         if (state.trick.length < 4) { setCollecting(false); return; }
-        if (state.phase === "playing") {
+        if (state.phase === "playing" && !state.holdTricks) {
             after(880, () => setCollecting(true));
             after(1200, () => dispatch({ type: "CLEAR_TRICK" }));
         }
@@ -366,13 +385,13 @@ export default function TwentyNine() {
     const mustTrump = state.askedBy === 0 && userHand.some((c) => c.suit === state.trumpSuit)
         && !userHand.some((c) => c.suit === state.leadSuit);
     const userTurn = state.phase === "playing" && state.turn === 0 && state.trick.length < 4 && !state.quiz;
-    const learning = state.learnLevel !== null;
-    const learnLevel = levelInfo(state.learnLevel);
+    const learning = state.learnOn;
     const trumpKnown = state.caller === 0 || state.trumpRevealed;
     const voidInLead = state.leadSuit && !userHand.some((c) => c.suit === state.leadSuit);
     const callerTeam = state.caller === null ? null : state.caller % 2;
-    const target0 = callerTeam === null ? null : callerTeam === 0 ? state.currentBid : 29 - state.currentBid;
-    const target1 = callerTeam === null ? null : callerTeam === 1 ? state.currentBid : 29 - state.currentBid;
+    // Defenders beat the bid with 29 − bid + 1 points.
+    const target0 = callerTeam === null ? null : callerTeam === 0 ? state.currentBid : 30 - state.currentBid;
+    const target1 = callerTeam === null ? null : callerTeam === 1 ? state.currentBid : 30 - state.currentBid;
     const seat = (idx: number) => state.trick.find((t) => t.player === idx);
     const trickWinnerIdx = state.trick.length === 4 && state.leadSuit && state.trumpSuit
         ? trickWinner(state.trick, state.leadSuit, state.trumpSuit) : null;
@@ -703,7 +722,7 @@ export default function TwentyNine() {
                     border-bottom: 1px solid var(--game-border);
                 }
                 .game-title { font-family: var(--font-serif); font-size: var(--text-large); font-weight: 700; letter-spacing: -0.5px; }
-                .header-actions { display: flex; gap: 4px; align-items: center; }
+                .header-actions { display: flex; gap: 0; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 
                 /* Seats */
                 .seat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
@@ -767,9 +786,11 @@ export default function TwentyNine() {
                 }
                 .learn-chip:hover { border-color: var(--game-text-2); }
                 .learn-chip-on { background: var(--game-accent); border-color: var(--game-accent); color: var(--game-accent-text); }
-                .learn-desc { line-height: 1.5; text-align: center; min-height: 3em; }
-                .learn-desc strong { color: var(--game-text); }
-                .learn-pop { padding: 10px 16px 12px; border-bottom: 1px solid var(--game-border); background: var(--game-surface); }
+                .learn-desc { line-height: 1.5; text-align: center; }
+                .learn-list { font-size: var(--text-xs); color: var(--game-text-2); line-height: 1.5; text-align: left; padding-left: 18px; margin: 0; display: flex; flex-direction: column; gap: 3px; }
+                .learn-list strong { color: var(--game-text); }
+                .learn-score { color: var(--game-accent); font-weight: 600; }
+                .felt-holding { cursor: pointer; }
                 .quiz-box {
                     border: 1.5px solid var(--game-accent); border-radius: 10px;
                     padding: 10px 12px; display: flex; flex-direction: column; gap: 8px;
@@ -788,6 +809,12 @@ export default function TwentyNine() {
                 .quiz-opt.quiz-opt-good { border-color: var(--game-good); color: var(--game-good); opacity: 1; }
                 .quiz-opt.quiz-opt-wrong { border-color: var(--game-red); color: var(--game-red); opacity: 1; }
                 .quiz-cards { display: flex; gap: 6px; flex-wrap: wrap; }
+                .quiz-cards-wide { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 2px; justify-items: center; }
+                .quiz-choice { padding: 0 12px; font-weight: 600; }
+                .quiz-choice[aria-pressed="true"] { border-color: var(--game-accent); color: var(--game-accent); }
+                .quiz-opt.quiz-pick-good { border-color: var(--game-good); color: var(--game-good); opacity: 1; outline: none; }
+                .quiz-opt.quiz-pick-missed { border: 1.5px dashed var(--game-red); color: var(--game-red); opacity: 1; outline: none; }
+                .quiz-opt.quiz-pick-wrong { border-color: var(--game-red); color: var(--game-red); opacity: 1; outline: none; }
                 .quiz-card { display: flex; flex-direction: column; align-items: center; gap: 2px; border-radius: 9px; padding: 2px; outline: 2px solid transparent; }
                 .quiz-card-note { font-size: var(--text-xs); color: var(--game-text-2); line-height: 1; }
                 .quiz-pick-on { outline-color: var(--game-accent); }
@@ -811,11 +838,16 @@ export default function TwentyNine() {
                 <span className="game-title">29</span>
                 <div className="header-actions">
                     {state.phase !== "idle" && (
-                        <button className="btn-ghost" aria-expanded={showLearn} onClick={() => setShowLearn((v) => !v)}
+                        <button className="btn-ghost" aria-pressed={learning}
+                            onClick={() => dispatch({ type: "SET_LEARN", on: !learning })}
                             style={learning ? { color: "var(--game-accent)" } : undefined}>
-                            Learn {learning ? state.learnLevel : "off"}
+                            Learn {learning ? "on" : "off"}
                         </button>
                     )}
+                    <button className="btn-ghost" aria-pressed={state.holdTricks} title="Keep each finished trick on the table until you tap"
+                        onClick={() => dispatch({ type: "TOGGLE_HOLD" })}>
+                        Hold {state.holdTricks ? "on" : "off"}
+                    </button>
                     <button className="btn-ghost" onClick={() => dispatch({ type: "TOGGLE_FEEDBACK" })}>
                         Tips {state.feedbackOn ? "on" : "off"}
                     </button>
@@ -836,13 +868,6 @@ export default function TwentyNine() {
                 </div>
             </div>
 
-            {showLearn && state.phase !== "idle" && (
-                <div className="learn-pop">
-                    <LearnPicker level={state.learnLevel} stats={state.learnStats}
-                        onPick={(level) => { dispatch({ type: "SET_LEARN", level }); setShowLearn(false); }} />
-                </div>
-            )}
-
             {/* Idle / start screen */}
             {state.phase === "idle" && (
                 <div className="idle-screen">
@@ -860,8 +885,8 @@ export default function TwentyNine() {
                         <p style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "var(--text-base)", marginBottom: 6 }}>
                             Learn to count cards
                         </p>
-                        <LearnPicker level={state.learnLevel} stats={state.learnStats}
-                            onPick={(level) => dispatch({ type: "SET_LEARN", level })} />
+                        <LearnPanel on={learning} stats={state.learnStats}
+                            onToggle={() => dispatch({ type: "SET_LEARN", on: !learning })} />
                     </div>
                     <div className="hint" style={{ marginTop: 20, lineHeight: 1.7, maxWidth: 320 }}>
                         <p><strong>Ranks</strong> (high→low): J·9·A·10·K·Q·8·7 &nbsp;|&nbsp; <strong>Points</strong>: J=3, 9=2, A=1, 10=1</p>
@@ -928,7 +953,8 @@ export default function TwentyNine() {
                             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                                 <PlayerSeat {...seatProps(1, "left")} />
 
-                                <div className="trick-grid felt">
+                                <div className={`trick-grid felt ${holding ? "felt-holding" : ""}`}
+                                    onClick={holding ? clearTrick : undefined}>
                                     {[
                                         { idx: 2, area: "top" },
                                         { idx: 1, area: "left" },
@@ -993,8 +1019,17 @@ export default function TwentyNine() {
                             </div>
                         )}
 
-                        {state.quiz && learnLevel && (
-                            <QuizPanel key={state.quiz.id} quiz={state.quiz} levelName={`${learnLevel.id}. ${learnLevel.name}`}
+                        {holding && (
+                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                <button className="btn-primary" onClick={clearTrick} autoFocus>
+                                    {state.tricksPlayed >= 8 ? "See result" : "Next trick"}
+                                </button>
+                                <span className="hint">{state.names[trickWinnerIdx!]} {trickWinnerIdx === 0 ? "win" : "wins"} this trick</span>
+                            </div>
+                        )}
+
+                        {state.quiz && learning && (
+                            <QuizPanel key={state.quiz.id} quiz={state.quiz}
                                 onAnswer={(value) => dispatch({ type: "ANSWER_QUIZ", value })}
                                 onClose={() => dispatch({ type: "CLOSE_QUIZ" })} />
                         )}
@@ -1167,19 +1202,25 @@ export default function TwentyNine() {
                                     <p className="hint" style={{ color: "var(--game-accent)" }}>🔥 {state.stats.streak} hands in a row</p>
                                 )}
 
-                                {learnLevel && state.handLearn.asked > 0 && (
-                                    <div className="tip-box">
-                                        <p>
-                                            <strong>Counting:</strong> {state.handLearn.right} of {state.handLearn.asked} right this hand at level {learnLevel.id}.
-                                        </p>
-                                        {state.handLearn.right === state.handLearn.asked && learnLevel.id < LEARN_LEVELS.length && (
-                                            <button className="btn-trump-ask" style={{ marginTop: 6 }}
-                                                onClick={() => dispatch({ type: "SET_LEARN", level: learnLevel.id + 1 })}>
-                                                Clean hand. Try level {learnLevel.id + 1}: {levelInfo(learnLevel.id + 1)!.name}
-                                            </button>
-                                        )}
-                                    </div>
-                                )}
+                                {learning && totalTally(state.handStats).asked > 0 && (() => {
+                                    const t = totalTally(state.handStats);
+                                    const weak = weakestSkill(state.handStats);
+                                    return (
+                                        <div className="tip-box">
+                                            <p><strong>Counting:</strong> {t.right} of {t.asked} right this hand.</p>
+                                            <p style={{ marginTop: 2 }}>
+                                                {SKILLS.filter((s) => tallyOf(state.handStats, s.id).asked > 0)
+                                                    .map((s) => `${s.name} ${tallyOf(state.handStats, s.id).right}/${tallyOf(state.handStats, s.id).asked}`)
+                                                    .join(" · ")}
+                                            </p>
+                                            {weak && (
+                                                <p style={{ marginTop: 2 }}>
+                                                    Next hand, watch {skillName(weak).toLowerCase()}: {SKILLS.find((s) => s.id === weak)!.tip}
+                                                </p>
+                                            )}
+                                        </div>
+                                    );
+                                })()}
 
                                 {state.feedbackOn && state.lastResult.tips.length > 0 && (
                                     <div className="tip-box">
