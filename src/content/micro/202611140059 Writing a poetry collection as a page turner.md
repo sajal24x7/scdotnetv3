@@ -1,10 +1,16 @@
 ---
-title: "Writing a Poetry Collection as a Page Turner"
-slug: "writing-a-poetry-collection-as-a-page-turner"
-created: 2026-11-14T00:59:00+02:00
-updated: 2026-11-14T01:00:16+02:00
+title: Writing a Poetry Collection as a Page Turner
+slug: writing-a-poetry-collection-as-a-page-turner
+created: 2026-11-13T22:59:00.000Z
+updated: 2026-11-13T23:00:16.000Z
 category: micro
-tags: ["writing", "poetry"]
+tags:
+  - writing
+  - poetry
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117611732461315365'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2a5bt6grg2k'
+  - 'https://www.threads.com/@sajal24x7/post/Dfs0KW9mB_K'
 ---
 [Can You Write a Poetry Collection That’s a Page-Turner? by Kelly Grace Thomas](https://lithub.com/can-you-write-a-poetry-collection-thats-a-page-turner/)
 
