@@ -8,7 +8,7 @@ A single-player version of 29, the trick-taking card game for two pairs, at `/ga
 | --- | --- |
 | `src/pages/games/cards-29/index.astro` | Standalone page shell (no site layout). Mounts the game with `client:load`. |
 | `src/utils/twentyNine.ts` | Rules, the game state machine (`reducer`), the computer players and the move tips. No React and no DOM. |
-| `src/utils/twentyNineLearn.ts` | Learn mode: the strategy list (`SKILLS`), question builders and `learnReducer`, which wraps the game reducer. |
+| `src/utils/twentyNineLearn.ts` | Learn mode: the three skills (`SKILLS`), question builders, the timing rules (`candidates`, `chooseQuiz`) and `learnReducer`, which wraps the game reducer. |
 | `src/components/games/TwentyNine.tsx` | The React UI: table, hand, bidding controls and animations. |
 | `src/utils/__checks__/twentyNine.check.ts` | Rule checks plus 400 seeded hands played by the computer in every seat. |
 
@@ -33,40 +33,35 @@ Trump stays hidden until a player who cannot follow suit asks for it. Playing a 
 
 ## Learn mode
 
-Learn mode teaches card tracking as a ladder of nine rungs. Each rung adds one thing to remember, so you never have to hold all 32 cards in your head at once. Turn it on from the start screen or the **Learn** button in the header. Before each of your turns the game asks one question, and the computer players wait until you tap Continue.
+Learn mode trains three card-tracking skills. Turn it on from the start screen or the **Learn** button in the header. On your turn the game may ask one question, and the computer players wait until you tap Continue.
 
-### The ladder
+| Skill id | Name | Remember | Say |
+| --- | --- | --- | --- |
+| `top` | Top cards | The highest card still in play in each suit. | "Hearts: A is top." |
+| `voids` | Voids | Who has run out of which suit. | "West out of clubs." |
+| `trump` | Trumps left | How many trumps the other three still hold. | "Spades, 3 out." |
 
-The rungs are listed in `RUNGS` in `src/utils/twentyNineLearn.ts`. The same list is shown on the start screen.
+The list is `SKILLS` in `src/utils/twentyNineLearn.ts`. Tap a skill chip on the start screen or in the learn bar to turn it on or off. At least one stays on.
 
-| Rung | Skill id | Remember | Say | Asked when |
-| --- | --- | --- | --- | --- |
-| 1. J's and 9's | `jn` | Which J's and 9's are gone. | "Heart 9 gone." | After the first 4 cards are played. |
-| 2. Voids | `voids` | Who has run out of which suit. | "West out of clubs." | Once another player has failed to follow suit. |
-| 3. Your longest suit | `long` | How many cards are left in that one suit. | "3 hearts left." | Any turn. |
-| 4. A second suit | `second` | The count for the suit where you hold an A or 10. | "2 spades left." | Any turn. |
-| 5. All four suits | `suits` | How many are left in every suit. | "Clubs down to 1." | Any turn. Often the led suit. |
-| 6. A's and 10's | `at` | Which A's and 10's are gone. Sometimes asks all 16 point cards. | "Diamond A gone." | After the first 4 cards are played. |
-| 7. Guess the trump | `guess` | Which suits the bidder runs out of before playing one. | "Bidder had no hearts, not hearts." | While trump is hidden from you and the bidder has run out of a suit they never played. |
-| 8. Count trumps | `trump` | How many trumps are left once trump is known. | "Trump is spades, 3 left." | Once you know trump. |
-| 9. Points | `points` | Points each team has won versus the bid. | "We have 12, they need 18." | Any turn. |
+### When a question comes up
+
+There is no fixed schedule. Before each of your turns, `candidates` looks at what has happened since each skill was last asked (`learnMarks`, the number of cards played at that point) and gives each fitting question a priority:
+
+| Skill | Priority 3 (ask now) | Priority 2 | Priority 1 (quiet recap) |
+| --- | --- | --- | --- |
+| Top cards | Leading: the top card of 2+ suits has fallen (asks all suits), or of one suit you hold. Following: the led suit's top has fallen. | One other suit's top fell. | The led suit's top is not the J, or any top has changed this hand. |
+| Voids | Following: a player still to play is out of the led suit. | A new void from a finished trick, or you are leading a suit someone is out of. | Leading: a suit you hold that nobody is out of (answer "nobody"). |
+| Trumps left | First turn once you know trump (from the start if you set trump, else once someone asks for it), or a trump has fallen since last asked. | You are out of the led suit and could trump. | Leading, 8+ cards since last asked. |
+
+`chooseQuiz` asks the highest priority. A tie goes to the skill asked longest ago. A priority 1 recap is skipped if you were asked a question on the last turn, and turns with nothing to ask have no question. Voids from the trick on the table are not asked until that trick is finished, since the card is still in view.
+
+**Question types.** Top cards shows the 8 cards of a suit and one tap answers. When several suits changed it shows every suit with cards left, and you tap the top card of each, then Check. Your own cards are marked "yours" and still count as in play. Voids asks who is out of a suit. Trumps left asks a number from 0 to 8.
 
 Every answer shows the working and a **Say** line, the short phrase to repeat to yourself during play.
 
-**Focus suits (rungs 3 and 4).** These are fixed when play starts, from your 8 cards (`startHand` in the game state). The longest suit breaks ties by points, then by the higher top card. The second suit is another suit where you held an A or 10, or else the next longest. The learn bar shows them during play.
+Questions only use what you could know: your hand, the cards played, and who failed to follow suit (`shownOut` in the game state). While learn mode is on, the running team points, the "Last trick" button and the log are hidden, since they would give the answers away. The learn bar shows your score per skill for the hand, and the hand-end summary names the weakest skill. Totals per skill (`learnStats`) are saved with the game, and **Reset** keeps them.
 
-**Guess the trump (rung 7).** Playing a trump-suit card does not open trump (see [Hidden trump](#hidden-trump)), so most plays tell you nothing. But the bidder picks trump from a suit in their first four cards. If the bidder runs out of a suit before playing any card of it, they never held it, so it is not trump. The question asks which suits could still be trump. It uses `playedBy` in the game state to know who played each card.
-
-### Picking a rung and moving up
-
-- **Pick a rung** by tapping it on the start screen, or from the rung menu in the learn bar during play.
-- **With review** (the default) asks your rung about 60% of the time, and a lower rung the rest of the time, never the same lower rung twice in a row. If your rung has no question that fits the moment, a lower rung is asked instead.
-- **This rung only** asks only your rung, and skips turns where it does not fit.
-- **Moving up:** when at least 8 of your last 10 answers on your rung are right (`isReady`), the learn bar offers **Move up**. That rung also gets a ✅ on the ladder. You can still switch to any rung at any time.
-
-Questions only use what you could know: your hand, the cards played, and who failed to follow suit (`shownOut` in the game state). While learn mode is on, the running team points, the "Last trick" button and the log are hidden, since they would give the answers away. The hand-end summary shows your score per rung for that hand and names the weakest one. Totals per rung (`learnStats`), the last 10 answers per rung (`learnRecent`) and the rungs passed (`learnPassed`) are saved with the game. **Reset** keeps them.
-
-To add a rung, add a `Skill` id and an entry in `RUNGS`, and a case in `makeQuiz` that returns `null` when the question does not fit. The checks play 40 hands in learn mode at different rungs and answer each question with its own answer key.
+To add a skill, add a `Skill` id and an entry in `SKILLS`, a question builder, and a block in `candidates` that sets its priority. The checks play 40 hands in learn mode with all skills and with each skill alone, and answer each question with its own answer key.
 
 ## Hold tricks
 

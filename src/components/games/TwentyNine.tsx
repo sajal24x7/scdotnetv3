@@ -5,8 +5,7 @@ import {
 } from "../../utils/twentyNine";
 import type { Action, Card, GameState, TrickEntry } from "../../utils/twentyNine";
 import {
-    RUNGS, learnReducer, skillName, tallyOf, totalTally, weakestSkill, rungOf, rungAt, currentRung,
-    recentOf, readyToMoveUp, focusSuits, cleanLoaded,
+    SKILLS, ALL_SKILLS, learnReducer, skillName, skillInfo, tallyOf, totalTally, weakestSkill, cleanLoaded,
 } from "../../utils/twentyNineLearn";
 import type { Quiz } from "../../utils/twentyNineLearn";
 
@@ -161,11 +160,28 @@ function ScoreCard({ label, wins, total, colorClass, symbol }: {
     );
 }
 
-// Learn mode: the ladder of rungs. Tap a rung to practise it.
+// Learn mode: the three skills. Tap one to turn it on or off.
+function SkillChips({ state, dispatch, compact }: { state: GameState; dispatch: (a: Action) => void; compact?: boolean }) {
+    const on = state.learnSkills?.length ? state.learnSkills : ALL_SKILLS;
+    return (
+        <div className="learn-levels" role="group" aria-label="Skills to practise">
+            {SKILLS.map((s) => {
+                const t = tallyOf(compact ? state.handStats : state.learnStats, s.id);
+                const active = on.includes(s.id);
+                return (
+                    <button key={s.id} className={`learn-chip ${compact ? "learn-mini" : ""} ${active ? "learn-chip-on" : ""}`}
+                        aria-pressed={active} disabled={active && on.length === 1}
+                        onClick={() => dispatch({ type: "TOGGLE_LEARN_SKILL", skill: s.id })}>
+                        {s.name}{t.asked > 0 && ` ${t.right}/${t.asked}`}
+                    </button>
+                );
+            })}
+        </div>
+    );
+}
+
 function LearnPanel({ state, dispatch }: { state: GameState; dispatch: (a: Action) => void }) {
     const on = state.learnOn;
-    const level = currentRung(state).level;
-    const passed = state.learnPassed ?? [];
     return (
         <div className="learn-picker">
             <button role="switch" aria-checked={on} className={`learn-chip ${on ? "learn-chip-on" : ""}`}
@@ -173,92 +189,27 @@ function LearnPanel({ state, dispatch }: { state: GameState; dispatch: (a: Actio
                 Learn mode {on ? "on" : "off"}
             </button>
             <p className="hint learn-desc">
-                Climb one rung at a time. Each rung adds one thing to remember. Before each of your turns you get one
-                question, mostly from your rung, with some review from the rungs below. Tap a rung to switch.
+                Practise three things. A question comes up on your turn when something has just changed or the
+                answer matters for your play. Quiet turns have no question.
             </p>
-            <ol className="learn-ladder">
-                {RUNGS.map((r) => {
-                    const t = tallyOf(state.learnStats, r.id);
-                    const here = r.level === level;
-                    return (
-                        <li key={r.id}>
-                            <button className={`learn-rung ${here ? "learn-rung-here" : ""}`} aria-pressed={here}
-                                onClick={() => dispatch({ type: "SET_LEARN_LEVEL", level: r.level })}>
-                                <span className="learn-rung-name">
-                                    {r.level}. {r.name}
-                                    {passed.includes(r.id) && <span aria-label="passed"> ✅</span>}
-                                    {here && <span className="learn-here"> (you're here)</span>}
-                                    {t.asked > 0 && <span className="learn-score"> {t.right}/{t.asked}</span>}
-                                </span>
-                                <span className="learn-rung-text">{r.remember} Say: “{r.say}”</span>
-                            </button>
-                        </li>
-                    );
-                })}
-            </ol>
-            <OnlyToggle state={state} dispatch={dispatch} />
+            <ul className="learn-list">
+                {SKILLS.map((s) => (
+                    <li key={s.id} className="learn-item">
+                        <span className="learn-item-name">{s.name}</span>
+                        <span>{s.remember} Say: “{s.say}”</span>
+                    </li>
+                ))}
+            </ul>
+            <SkillChips state={state} dispatch={dispatch} />
         </div>
     );
 }
 
-function OnlyToggle({ state, dispatch }: { state: GameState; dispatch: (a: Action) => void }) {
-    return (
-        <div className="learn-levels" role="group" aria-label="Question mix">
-            <button className={`learn-chip ${!state.learnOnly ? "learn-chip-on" : ""}`} aria-pressed={!state.learnOnly}
-                onClick={() => dispatch({ type: "SET_LEARN_ONLY", only: false })}>
-                With review
-            </button>
-            <button className={`learn-chip ${state.learnOnly ? "learn-chip-on" : ""}`} aria-pressed={state.learnOnly}
-                onClick={() => dispatch({ type: "SET_LEARN_ONLY", only: true })}>
-                This rung only
-            </button>
-        </div>
-    );
-}
-
-// During play: your rung, the suits to watch, a switcher, and a nudge when you are ready to move up.
+// During play: the skills you practise and your score this hand.
 function LearnBar({ state, dispatch }: { state: GameState; dispatch: (a: Action) => void }) {
-    const rung = currentRung(state);
-    const recent = recentOf(state, rung.id);
-    const right = recent.filter(Boolean).length;
-    const focus = focusSuits(state);
-    const showFocus = state.phase === "playing" && (rung.level === 3 || rung.level === 4) && focus.long;
     return (
         <div className="learn-bar">
-            <div className="learn-bar-row">
-                <label className="learn-bar-label">
-                    <select className="learn-select" aria-label="Learn rung" value={rung.level}
-                        onChange={(e) => dispatch({ type: "SET_LEARN_LEVEL", level: Number(e.target.value) })}>
-                        {RUNGS.map((r) => (
-                            <option key={r.id} value={r.level}>
-                                Rung {r.level}: {r.name}{(state.learnPassed ?? []).includes(r.id) ? " ✅" : ""}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-                <button className="btn-ghost learn-mini" aria-pressed={state.learnOnly}
-                    onClick={() => dispatch({ type: "SET_LEARN_ONLY", only: !state.learnOnly })}>
-                    {state.learnOnly ? "This rung only" : "With review"}
-                </button>
-            </div>
-            <p className="hint">
-                Remember: {rung.remember}
-                {recent.length > 0 && <> · Last {recent.length}: {right} right</>}
-            </p>
-            {showFocus && (
-                <p className="hint">
-                    Your suits: {SUIT_INFO[focus.long!].sym} longest
-                    {rung.level === 4 && focus.second && <> · {SUIT_INFO[focus.second].sym} second</>}
-                </p>
-            )}
-            {readyToMoveUp(state) && (
-                <div className="learn-ready">
-                    <span>{right} of the last {recent.length} right. Ready for rung {rung.level + 1}: {rungAt(rung.level + 1).name}.</span>
-                    <button className="btn-primary learn-mini" onClick={() => dispatch({ type: "SET_LEARN_LEVEL", level: rung.level + 1 })}>
-                        Move up
-                    </button>
-                </div>
-            )}
+            <SkillChips state={state} dispatch={dispatch} compact />
         </div>
     );
 }
@@ -285,7 +236,7 @@ function QuizPanel({ quiz, onAnswer, onClose }: {
     };
     return (
         <div className="quiz-box" role="group" aria-label="Counting question">
-            <p className="quiz-head">Rung {rungOf(quiz.skill).level} · {skillName(quiz.skill)}</p>
+            <p className="quiz-head">{skillName(quiz.skill)}</p>
             <p className="quiz-question">{quiz.question}</p>
             {quiz.kind === "number" ? (
                 <div className="quiz-options">
@@ -320,20 +271,18 @@ function QuizPanel({ quiz, onAnswer, onClose }: {
                 <>
                     <div className={`quiz-cards ${quiz.wide ? "quiz-cards-wide" : ""}`}>
                         {quiz.pool.map((c) => {
-                            const locked = quiz.lockedIds.includes(c.id);
+                            const yours = quiz.yoursIds.includes(c.id);
+                            const tap = quiz.single ? () => { setPicked(new Set([c.id])); onAnswer([c.id]); } : () => toggle(c.id);
                             return (
                                 <div key={c.id} className={`quiz-card ${pickClass(c.id)}`}>
-                                    <PlayingCard card={c} size="mini" faded={locked}
-                                        disabled={done || locked}
-                                        onClick={done || locked ? undefined : () => toggle(c.id)} />
-                                    <span className="quiz-card-note">
-                                        {locked ? "yours" : quiz.wide ? "" : done && pickClass(c.id) === "quiz-pick-missed" ? "missed" : done && pickClass(c.id) === "quiz-pick-wrong" ? "gone" : "\u00a0"}
-                                    </span>
+                                    <PlayingCard card={c} size="mini" disabled={done}
+                                        onClick={done ? undefined : tap} />
+                                    <span className="quiz-card-note">{yours ? "yours" : "\u00a0"}</span>
                                 </div>
                             );
                         })}
                     </div>
-                    {!done && (
+                    {!done && !quiz.single && (
                         <button className="btn-primary" onClick={() => onAnswer([...picked])}>
                             {picked.size ? "Check" : "Check (none)"}
                         </button>
@@ -347,8 +296,8 @@ function QuizPanel({ quiz, onAnswer, onClose }: {
                     </p>
                     <p className="hint">{quiz.explain}</p>
                     <p className="hint quiz-say">Say: “{quiz.say}”</p>
-                    {quiz.wide && !quiz.result!.correct && (
-                        <p className="hint">Green: right. Dashed red: missed. Solid red: already played.</p>
+                    {quiz.kind === "cards" && !quiz.result!.correct && (
+                        <p className="hint">Green: right. Dashed red: the right card. Solid red: your pick.</p>
                     )}
                     <button className="btn-primary" style={{ marginTop: 8 }} onClick={onClose} autoFocus>Continue</button>
                 </div>
@@ -866,27 +815,16 @@ export default function TwentyNine() {
                 .learn-chip:hover { border-color: var(--game-text-2); }
                 .learn-chip-on { background: var(--game-accent); border-color: var(--game-accent); color: var(--game-accent-text); }
                 .learn-desc { line-height: 1.5; text-align: center; }
-                .learn-ladder { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; width: 100%; }
-                .learn-rung {
-                    width: 100%; text-align: left; display: flex; flex-direction: column; gap: 1px;
-                    padding: 6px 10px; border-radius: 8px; border: 1px solid var(--game-border);
-                    background: transparent; color: var(--game-text-2); font-size: var(--text-xs); line-height: 1.4; cursor: pointer;
+                .learn-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; width: 100%; }
+                .learn-item {
+                    display: flex; flex-direction: column; gap: 1px; padding: 6px 10px; border-radius: 8px;
+                    border: 1px solid var(--game-border); color: var(--game-text-2); font-size: var(--text-xs); line-height: 1.4;
                 }
-                .learn-rung:hover { border-color: var(--game-text-2); }
-                .learn-rung-here { border-color: var(--game-accent); }
-                .learn-rung-name { color: var(--game-text); font-weight: 600; }
-                .learn-here { color: var(--game-accent); font-weight: 600; }
+                .learn-item-name { color: var(--game-text); font-weight: 600; }
+                .learn-chip:disabled { cursor: default; }
                 .learn-bar { display: flex; flex-direction: column; gap: 2px; }
-                .learn-bar-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-                .learn-bar-label { flex: 1; min-width: 0; }
-                .learn-select {
-                    width: 100%; font: inherit; font-size: var(--text-xs); padding: 4px 6px; border-radius: 6px;
-                    border: 1px solid var(--game-border); background: var(--game-bg); color: var(--game-text);
-                }
-                .learn-mini { font-size: var(--text-xs); padding: 4px 8px; }
-                .learn-ready { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: var(--text-xs); color: var(--game-accent); font-weight: 600; }
+                .learn-mini { height: 26px; }
                 .quiz-say { color: var(--game-accent); font-weight: 600; }
-                .learn-score { color: var(--game-accent); font-weight: 600; }
                 .felt-holding { cursor: pointer; }
                 .quiz-box {
                     border: 1.5px solid var(--game-accent); border-radius: 10px;
@@ -1309,13 +1247,13 @@ export default function TwentyNine() {
                                         <div className="tip-box">
                                             <p><strong>Counting:</strong> {t.right} of {t.asked} right this hand.</p>
                                             <p style={{ marginTop: 2 }}>
-                                                {RUNGS.filter((s) => tallyOf(state.handStats, s.id).asked > 0)
+                                                {SKILLS.filter((s) => tallyOf(state.handStats, s.id).asked > 0)
                                                     .map((s) => `${s.name} ${tallyOf(state.handStats, s.id).right}/${tallyOf(state.handStats, s.id).asked}`)
                                                     .join(" · ")}
                                             </p>
                                             {weak && (
                                                 <p style={{ marginTop: 2 }}>
-                                                    Next hand, watch {skillName(weak).toLowerCase()}: {rungOf(weak).remember}
+                                                    Next hand, watch {skillName(weak).toLowerCase()}: {skillInfo(weak).remember}
                                                 </p>
                                             )}
                                         </div>
