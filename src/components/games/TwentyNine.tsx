@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
     SUITS, SUIT_INFO, MATCH_TARGET, initialState, pickPokemonNames, teamNames,
-    sortHand, legalCards, trickWinner, handPoints, pairReady,
+    sortHand, legalCards, trickWinner, activeTrump, handPoints, pairReady,
 } from "../../utils/twentyNine";
 import type { Action, Card, GameState, TrickEntry } from "../../utils/twentyNine";
 import {
@@ -421,8 +421,8 @@ export default function TwentyNine() {
     const target0 = callerTeam === null ? null : callerTeam === 0 ? state.currentBid : 30 - state.currentBid;
     const target1 = callerTeam === null ? null : callerTeam === 1 ? state.currentBid : 30 - state.currentBid;
     const seat = (idx: number) => state.trick.find((t) => t.player === idx);
-    const trickWinnerIdx = state.trick.length === 4 && state.leadSuit && state.trumpSuit
-        ? trickWinner(state.trick, state.leadSuit, state.trumpSuit) : null;
+    const trickWinnerIdx = state.trick.length === 4 && state.leadSuit
+        ? trickWinner(state.trick, state.leadSuit, activeTrump(state)) : null;
     const collectTo = collecting && trickWinnerIdx !== null ? () => seatRect(trickWinnerIdx) : null;
 
     const playCard = (c: Card) => (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -925,7 +925,7 @@ export default function TwentyNine() {
                     <div className="hint" style={{ marginTop: 20, lineHeight: 1.7, maxWidth: 320 }}>
                         <p><strong>Ranks</strong> (high→low): J·9·A·10·K·Q·8·7 &nbsp;|&nbsp; <strong>Points</strong>: J=3, 9=2, A=1, 10=1</p>
                         <p><strong>Bid</strong> how many points your pair will take. Highest bidder picks trump secretly.</p>
-                        <p>When void in led suit, you may ask to reveal trump. Once you ask, you must trump if you can.</p>
+                        <p>Trump stays hidden until a player who is void in the led suit asks for it. Until then a trump-suit card is a plain card, even if the bidder plays it. Once you ask, you must trump if you can.</p>
                         <p><strong>Pair</strong>: hold K+Q of trump? Show it after trump is open and your side wins a trick. It moves the bid 4 in your favour.</p>
                         <p><strong>Double</strong>: after trump is set, defenders may double and the bidders may redouble.</p>
                         <p>No points in your first four cards? Ask for a redeal.</p>
@@ -1190,9 +1190,9 @@ export default function TwentyNine() {
                                                 Show pair K{SUIT_INFO[state.trumpSuit!].sym}Q{SUIT_INFO[state.trumpSuit!].sym}
                                             </button>
                                         )}
-                                        {userTurn && voidInLead && !trumpKnown && (
+                                        {userTurn && voidInLead && !state.trumpRevealed && (
                                             <button className="btn-trump-ask" onClick={() => dispatch({ type: "ASK_TRUMP", playerIdx: 0 })}>
-                                                Ask trump
+                                                {state.caller === 0 ? "Show trump" : "Ask trump"}
                                             </button>
                                         )}
                                     </div>

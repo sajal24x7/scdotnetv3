@@ -37,6 +37,7 @@ check('J beats 9 in suit', cardBeats(c('HJ'), c('H9'), 'H', 'S'), true);
 check('7 loses to 8 in suit', cardBeats(c('H7'), c('H8'), 'H', 'S'), false);
 check('trump 7 beats led J', cardBeats(c('S7'), c('HJ'), 'H', 'S'), true);
 check('off-suit J loses to led 7', cardBeats(c('DJ'), c('H7'), 'H', 'S'), false);
+check('hidden trump: trump-suit 7 loses to led J', cardBeats(c('S7'), c('HJ'), 'H', null), false);
 
 console.log('trickWinner');
 check('highest of led suit', trickWinner([
@@ -47,6 +48,33 @@ check('trump takes it', trickWinner([
     { player: 0, card: c('HJ') }, { player: 1, card: c('S7') },
     { player: 2, card: c('H9') }, { player: 3, card: c('S8') },
 ], 'H', 'S'), 3);
+check('hidden trump: led suit takes it', trickWinner([
+    { player: 0, card: c('HJ') }, { player: 1, card: c('S7') },
+    { player: 2, card: c('H9') }, { player: 3, card: c('S8') },
+], 'H', null), 0);
+
+console.log('hidden trump');
+{
+    const base: GameState = { ...initialState, names: ['A', 'B', 'C', 'D'], phase: 'playing', trumpSuit: 'S', caller: 1, turn: 0 };
+    // Spades are trump. Player 1 (the bidder) and player 3 throw spades without anyone asking.
+    let s: GameState = { ...base, hands: [[c('HJ')], [c('S7')], [c('H9')], [c('SJ')]] };
+    for (const p of [0, 1, 2, 3]) s = reducer(s, { type: 'PLAY_CARD', playerIdx: p, card: s.hands[p][0] });
+    check('playing a trump-suit card does not reveal trump', s.trumpRevealed, false);
+    check('unrevealed trump-suit cards are plain', s.lastTrickWinner, 0);
+    // Player 3 asks, so trump opens and counts for the whole trick, including the bidder's S7.
+    s = { ...base, hands: [[c('HJ')], [c('S7')], [c('H9')], [c('S8'), c('DA')]] };
+    for (const p of [0, 1, 2]) s = reducer(s, { type: 'PLAY_CARD', playerIdx: p, card: s.hands[p][0] });
+    s = reducer(s, { type: 'ASK_TRUMP', playerIdx: 3 });
+    check('asker must trump', legalCards(s.hands[3], s, 3).map((x) => x.id), ['S8']);
+    s = reducer(s, { type: 'PLAY_CARD', playerIdx: 3, card: c('S8') });
+    check('asking reveals trump', s.trumpRevealed, true);
+    check('trumps count in the trick trump opened in', s.lastTrickWinner, 3);
+    // The bidder may show trump when out of the led suit.
+    s = { ...base, turn: 1, trick: [{ player: 0, card: c('HJ') }], leadSuit: 'H', played: ['HJ'], playedBy: [0],
+        hands: [[], [c('S7'), c('D7')], [c('H9')], [c('H8')]] };
+    s = reducer(s, { type: 'ASK_TRUMP', playerIdx: 1 });
+    check('bidder showing trump must trump', legalCards(s.hands[1], s, 1).map((x) => x.id), ['S7']);
+}
 
 console.log('legalCards');
 const hand = [c('HJ'), c('H7'), c('S9'), c('DA')];
