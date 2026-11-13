@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - writing
-  - poetry
-category: micro
+title: "Writing a Poetry Collection as a Page Turner"
+slug: "writing-a-poetry-collection-as-a-page-turner"
+created: 2026-11-14T00:59:00+02:00
 updated: 2026-11-14T01:00:16+02:00
+category: micro
+tags: ["writing", "poetry"]
 ---
 [Can You Write a Poetry Collection That’s a Page-Turner? by Kelly Grace Thomas](https://lithub.com/can-you-write-a-poetry-collection-thats-a-page-turner/)
 
