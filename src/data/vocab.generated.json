@@ -1290,6 +1290,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/gauntlet-2026-11-12",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-12"
+		},
+		"impertinent": {
+			"word": "impertinent",
+			"pos": "other",
+			"gloss": " adjective Impertinent is a formal word describing someone or something that is rude and showing a lack of respect.",
+			"pronunciation": "im-PER-tuh-nunt",
+			"example": "The band stopped doing interviews after years of journalists asking invasive and impertinent questions.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/impertinent-2026-11-13",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-13"
 		}
 	}
 }
