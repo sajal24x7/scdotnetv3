@@ -22,6 +22,15 @@ node --experimental-strip-types src/utils/__checks__/twentyNine.check.ts
 
 The simulated hands assert that every hand finishes, the points always add to 29, all 32 cards are played once, and no player breaks the follow-suit rule. The random generator is seeded, so a failure always reproduces. If you tune the computer bidding, keep an eye on the "bidders made" rate it prints.
 
+## Hidden trump
+
+Trump stays hidden until a player who cannot follow suit asks for it. Playing a trump-suit card does not reveal it. Until trump is open, a trump-suit card is a plain card and cannot win a trick of another suit, even when the bidder plays it.
+
+- **Asking:** any player who is out of the led suit may ask (`ASK_TRUMP`). The bidder can do the same; the button then reads **Show trump**. Whoever asks must play a trump if they hold one (`legalCards`).
+- **The trick trump opens in:** once trump is open, every trump-suit card in that trick counts as trump, including ones played before the ask.
+- **Code:** `activeTrump(state)` returns the trump suit once it is open and `null` before. Pass it to `cardBeats` and `trickWinner`; never pass `state.trumpSuit` directly for deciding a trick.
+- **Computer players:** defenders and the bidder's partner ask when the trick is worth taking. The computer bidder shows trump only when it holds a trump that would win the trick. Before trump is open, the bidder keeps its trump-suit cards rather than throwing them away as plain cards.
+
 ## Learn mode
 
 Learn mode teaches card tracking as a ladder of nine rungs. Each rung adds one thing to remember, so you never have to hold all 32 cards in your head at once. Turn it on from the start screen or the **Learn** button in the header. Before each of your turns the game asks one question, and the computer players wait until you tap Continue.
@@ -38,7 +47,7 @@ The rungs are listed in `RUNGS` in `src/utils/twentyNineLearn.ts`. The same list
 | 4. A second suit | `second` | The count for the suit where you hold an A or 10. | "2 spades left." | Any turn. |
 | 5. All four suits | `suits` | How many are left in every suit. | "Clubs down to 1." | Any turn. Often the led suit. |
 | 6. A's and 10's | `at` | Which A's and 10's are gone. Sometimes asks all 16 point cards. | "Diamond A gone." | After the first 4 cards are played. |
-| 7. Guess the trump | `guess` | Which suits the bidder leads and throws away. | "Bidder threw a club, not clubs." | While trump is hidden from you. |
+| 7. Guess the trump | `guess` | Which suits the bidder runs out of before playing one. | "Bidder had no hearts, not hearts." | While trump is hidden from you and the bidder has run out of a suit they never played. |
 | 8. Count trumps | `trump` | How many trumps are left once trump is known. | "Trump is spades, 3 left." | Once you know trump. |
 | 9. Points | `points` | Points each team has won versus the bid. | "We have 12, they need 18." | Any turn. |
 
@@ -46,7 +55,7 @@ Every answer shows the working and a **Say** line, the short phrase to repeat to
 
 **Focus suits (rungs 3 and 4).** These are fixed when play starts, from your 8 cards (`startHand` in the game state). The longest suit breaks ties by points, then by the higher top card. The second suit is another suit where you held an A or 10, or else the next longest. The learn bar shows them during play.
 
-**Guess the trump (rung 7).** In this version a trump played face up opens trump. So every suit played while trump is still hidden cannot be trump. The question asks which suits could still be trump, and the working names what the bidder threw.
+**Guess the trump (rung 7).** Playing a trump-suit card does not open trump (see [Hidden trump](#hidden-trump)), so most plays tell you nothing. But the bidder picks trump from a suit in their first four cards. If the bidder runs out of a suit before playing any card of it, they never held it, so it is not trump. The question asks which suits could still be trump. It uses `playedBy` in the game state to know who played each card.
 
 ### Picking a rung and moving up
 
