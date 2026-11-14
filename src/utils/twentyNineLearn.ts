@@ -31,15 +31,13 @@ export interface Quiz {
     id: number;
     skill: Skill;
     question: string;
-    kind: "number" | "cards" | "pick";
+    kind: "number" | "pick" | "list";
     options: number[];          // kind "number"
     answer: number;             // kind "number"
-    pool: Card[];               // kind "cards": cards shown to pick from
-    wide: boolean;              // kind "cards": an 8-column grid, one row per suit
-    single: boolean;            // kind "cards": one tap answers
-    yoursIds: string[];         // kind "cards": marked "yours" and not pickable
+    yoursIds: string[];         // kind "list": marked "yours" and not pickable
+    suits: string[];            // kind "list": the suits asked, one after another
     choices: { id: string; label: string }[];   // kind "pick"
-    answerIds: string[];        // kind "cards" and "pick": the right picks
+    answerIds: string[];        // kinds "pick" and "list": the right picks
     noneLabel: string;          // check button text when nothing is picked
     explain: string;
     say: string;                // the short phrase to say to yourself
@@ -67,7 +65,7 @@ const capital = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 function base(skill: Skill, seq: number): Quiz {
     return {
         id: seq, skill, question: "", kind: "number", options: [], answer: 0,
-        pool: [], wide: false, single: false, yoursIds: [], choices: [], answerIds: [], noneLabel: "Check (none)",
+        yoursIds: [], suits: [], choices: [], answerIds: [], noneLabel: "Check (none)",
         explain: "", say: "", result: null,
     };
 }
@@ -84,7 +82,7 @@ function topOf(suit: string, gone: Set<string>): Card | null {
 
 export const topLeft = (state: GameState, suit: string) => topOf(suit, new Set(state.played));
 
-// A suit still matters while any of its cards is unplayed.
+// A suit is asked while any of its cards is unplayed.
 const suitLive = (state: GameState, suit: string) => RANK_ORDER.some((r) => !state.played.includes(suit + r));
 
 // Cards of a suit still with the other three: the ranked list minus played cards and your own.
@@ -108,26 +106,35 @@ const trumpsWithOthers = (state: GameState, t: string) =>
 
 /* ---------- Questions ---------- */
 
-// "Which cards are still out?" for every suit with cards unplayed, one row of J 9 A 10 K Q 8 7 per suit.
-// Your own cards are marked and cannot be picked.
-export const CARDS_LEFT_QUESTION = "Tap every card the other three still hold, in every suit. Cards on the table count as played.";
+// Which suits to ask: the led suit first when following, then the suits that changed most
+// since last asked. Suits with no unplayed cards are skipped.
+export function listSuits(state: GameState, max: number): string[] {
+    const mark = state.learnMarks?.top ?? 0;
+    const since = (s: string) => state.played.slice(mark).filter((id) => id[0] === s).length;
+    const total = (s: string) => state.played.filter((id) => id[0] === s).length;
+    const lead = state.trick.length ? state.leadSuit : null;
+    const live = SUITS.filter((s) => suitLive(state, s))
+        .sort((a, b) => Number(b === lead) - Number(a === lead) || since(b) - since(a) || total(b) - total(a));
+    const changed = live.filter((s) => s === lead || since(s) > 0);
+    return (changed.length ? changed : live).slice(0, max);
+}
 
-export function topQuiz(state: GameState, seq: number): Quiz | null {
-    const live = SUITS.filter((s) => suitLive(state, s));
-    if (!live.length) return null;
+// "Diamonds left?" You build the list from blank with a strip of rank buttons, one suit at a time.
+// Your own cards are marked and cannot be picked.
+export function topQuiz(state: GameState, seq: number, max = 1): Quiz | null {
+    const suits = listSuits(state, max);
+    if (!suits.length) return null;
     const q = base("top", seq);
     const mine = new Set(state.hands[0].map((c) => c.id));
     const played = new Set(state.played);
-    q.kind = "cards";
-    q.pool = live.flatMap((s) => RANK_ORDER.map((r) => cardOf(s, r)));
-    q.wide = true;
-    q.single = false;
-    q.noneLabel = "Check (none left)";
-    q.yoursIds = q.pool.filter((c) => mine.has(c.id)).map((c) => c.id);
-    q.answerIds = live.flatMap((s) => cardsLeft(state, s).map((c) => c.id));
-    q.question = CARDS_LEFT_QUESTION;
+    q.kind = "list";
+    q.suits = suits;
+    q.noneLabel = "None left";
+    q.yoursIds = suits.flatMap((s) => RANK_ORDER.map((r) => s + r)).filter((id) => mine.has(id));
+    q.answerIds = suits.flatMap((s) => cardsLeft(state, s).map((c) => c.id));
+    q.question = "Which cards do the other three still hold? Cards on the table count as played.";
     const ranks = (ids: string[]) => ids.map((id) => id.slice(1)).join(" ");
-    const lines = live.map((s) => {
+    const lines = suits.map((s) => {
         const ids = RANK_ORDER.map((r) => s + r);
         const gone = ids.filter((id) => played.has(id));
         const yours = ids.filter((id) => mine.has(id));
@@ -144,8 +151,9 @@ export function topQuiz(state: GameState, seq: number): Quiz | null {
             say: `${capital(plural(s))} left: ${left.length ? left.map((c) => c.rank).join(", ") : "none"}.` + (myTop ? ` My ${myTop} is top.` : ""),
         };
     });
-    q.explain = lines.map((l) => l.explain).join(" ");
-    q.say = lines.map((l) => l.say).join(" ");
+    // One line per suit; the panel keeps the line breaks.
+    q.explain = lines.map((l) => l.explain).join("\n");
+    q.say = lines.map((l) => l.say).join("\n");
     return q;
 }
 
@@ -200,11 +208,12 @@ export function candidates(state: GameState, seq: number): Candidate[] {
     const add = (quiz: Quiz | null, priority: number) => { if (quiz) out.push({ quiz, priority }); };
 
     if (skills.includes("top")) {
-        // Cards played since last asked. A full trick means the lists have moved on.
+        // Cards played since last asked. A full trick means the lists have moved on;
+        // a busy lead asks up to three suits in a row.
         const mark = marks.top;
-        const fresh = mark === undefined ? state.played.length : state.played.length - mark;
+        const fresh = mark === undefined ? 0 : state.played.length - mark;
         if (mark === undefined) add(topQuiz(state, seq), leading ? 2 : 1);
-        else if (fresh >= 4) add(topQuiz(state, seq), leading ? 3 : 2);
+        else if (fresh >= 4) add(topQuiz(state, seq, leading ? 3 : 1), leading ? 3 : 2);
         else if (fresh > 0 && leading) add(topQuiz(state, seq), 1);
     }
 
@@ -317,15 +326,16 @@ const keepKnown = (stats: LearnStats | undefined): LearnStats =>
 // Fixes a game saved by an older version: old question types, old skill stats and missing fields.
 export function cleanLoaded(state: GameState): GameState {
     // A top-cards question saved by an older version asks something else.
-    const oldTop = state.quiz?.skill === "top" && state.quiz.question !== CARDS_LEFT_QUESTION;
+    const oldTop = state.quiz?.skill === "top" && state.quiz.kind !== "list";
     const quizOk = state.quiz && ALL_SKILLS.includes(state.quiz.skill) && "yoursIds" in state.quiz && !oldTop;
+    const quiz = quizOk ? { ...state.quiz!, suits: state.quiz!.suits ?? [] } : null;
     const skills = (state.learnSkills ?? []).filter((s) => ALL_SKILLS.includes(s));
     return {
         ...state,
         learnSkills: skills.length ? skills : ALL_SKILLS,
         learnMarks: state.learnMarks ?? {}, learnLastTrick: state.learnLastTrick ?? -9,
         learnStats: keepKnown(state.learnStats), handStats: keepKnown(state.handStats),
-        quiz: quizOk ? state.quiz : null, quizKey: quizOk ? state.quizKey : "",
+        quiz, quizKey: quizOk ? state.quizKey : "",
     };
 }
 

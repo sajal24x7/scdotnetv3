@@ -124,21 +124,25 @@ console.log('learn mode questions');
     check('no trump count while trump is hidden', trumpQuiz({ ...st, caller: 1 }, 1), null);
     check('trump count once revealed', trumpQuiz({ ...st, caller: 1, trumpRevealed: true }, 1)!.answer, 5);
     // Hearts J 9 A 10 and clubs 7 J are gone; spades 7 was played as a trump.
-    const all = topQuiz(st, 1)!;
-    check('cards left: every suit asked', [...new Set(all.pool.map((x) => x.suit))], ['S', 'H', 'D', 'C']);
-    check('cards left: all eight ranks shown', all.pool.filter((x) => x.suit === 'H').map((x) => x.rank), ['J', '9', 'A', '10', 'K', 'Q', '8', '7']);
-    check('cards left: your cards are marked', all.yoursIds, ['SJ', 'S9', 'HK', 'DQ']);
-    check('cards left: answer', all.answerIds.filter((id) => id[0] === 'H'), ['HQ', 'H8', 'H7']);
-    check('cards left: always needs Check', all.single, false);
-    check('cards left: say', all.say,
-        'Spades left: A, 10, K, Q, 8. My J is top. Hearts left: Q, 8, 7. My K is top. Diamonds left: J, 9, A, 10, K, 7. Clubs left: 9, A, 10, K, Q, 8.');
     check('cards left: with the others', cardsLeft(st, 'C').map((x) => x.rank), ['9', 'A', '10', 'K', 'Q', '8']);
+    const one = topQuiz(st, 1)!;
+    check('cards left: one suit by default', one.suits.length, 1);
+    check('cards left: most played suit first', one.suits, ['H']);
+    check('cards left: answer', one.answerIds, ['HQ', 'H8', 'H7']);
+    check('cards left: your cards are marked', one.yoursIds, ['HK']);
+    check('cards left: say', one.say, 'Hearts left: Q, 8, 7. My K is top.');
+    const three = topQuiz(st, 1, 3)!;
+    check('cards left: a busy lead asks up to three suits', three.suits, ['H', 'C', 'S']);
+    check('cards left: answer across suits', checkAnswer(three, [...three.answerIds].reverse()), true);
+    check('cards left: extra card is wrong', checkAnswer(three, [...three.answerIds, 'HJ']), false);
     // The worked example: you hold the heart 9, then the heart J drops.
     const example = topQuiz({ ...st, hands: [[c('H9')], [], [], []], played: ['HJ'] }, 1)!;
-    check('cards left: example say', example.say.split('. Diamonds')[0].split('Hearts left: ')[1], 'A, 10, K, Q, 8, 7. My 9 is top');
-    const allGone = ['S', 'H', 'D', 'C'].flatMap((su) => ['J', '9', 'A', '10', 'K', 'Q', '8', '7'].map((r) => su + r));
+    check('cards left: example say', example.say, 'Hearts left: A, 10, K, Q, 8, 7. My 9 is top.');
+    const follow1 = { ...st, trick: [{ player: 3, card: c('DK') }], leadSuit: 'D', played: [...st.played, 'DK'] };
+    check('cards left: following asks the led suit first', topQuiz(follow1, 1)!.suits, ['D']);
+    const allHearts = ['J', '9', 'A', '10', 'K', 'Q', '8', '7'].map((r) => 'H' + r);
     check('cards left: a suit with every card played is skipped',
-        topQuiz({ ...st, played: allGone.filter((id) => id[0] === 'H') }, 1)!.pool.some((x) => x.suit === 'H'), false);
+        topQuiz({ ...st, played: allHearts }, 1, 4)!.suits.includes('H'), false);
     const voids = voidQuiz(st, 'C', 1);
     check('voids: who showed out', voids.answerIds, ['1', '3']);
     check('voids: say', voids.say, 'B and D out of clubs.');

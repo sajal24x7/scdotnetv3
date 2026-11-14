@@ -52,7 +52,17 @@ The `top` skill drills one method for tracking every card:
 3. Cross cards off as they fall. When the heart J drops, the list is "A, 10, K, Q, 8, 7", and your 9 is now the top heart.
 4. Say the list to yourself: "Hearts left: A, 10, K, Q, 8, 7."
 
-The question always covers every suit that still has unplayed cards: one row of J 9 A 10 K Q 8 7 per suit. Your own cards are marked "yours" and cannot be picked. You tap every card the other three still hold, then Check. The answer shows the working per suit and a Say line such as "Hearts left: A, 10, K, Q, 8, 7. My 9 is top." Helpers: `cardsLeft` and `topQuiz` in `twentyNineLearn.ts`.
+You build each list from blank, one suit at a time:
+
+- The prompt names a suit: "♦ Diamonds left?"
+- Below it is a row of empty slots (eight minus your own cards, so the count gives nothing away).
+- Under that is a strip of rank buttons, J 9 A 10 K Q 8 7. Tapping one moves it up into the row, which stays in ranked order. Tapping a card in the row puts it back.
+- Your own ranks are marked "yours" and cannot be picked.
+- The button reads "Next suit" (or "Check" on the last suit), or "None left" when you pick nothing.
+
+Which suits: when following, the led suit. Otherwise the suits that changed most since last asked (`listSuits`). A lead after a full trick asks up to three suits in a row; other turns ask one. A suit with every card played is skipped.
+
+The answer shows each suit's row: green for right, dashed red for missed, solid red for a card that is gone or yours. The working and the Say line have one line per suit, such as "Hearts left: A, 10, K, Q, 8, 7. My 9 is top." Helpers: `cardsLeft`, `listSuits` and `topQuiz` in `twentyNineLearn.ts`; the panel is `ListQuiz` in `TwentyNine.tsx`.
 
 ### When a question comes up
 
@@ -66,7 +76,7 @@ There is no fixed schedule. Before each of your turns, `candidates` looks at wha
 
 `chooseQuiz` asks the highest priority. A tie goes to the skill asked longest ago. A priority 1 recap is skipped if you were asked a question on the last turn, and turns with nothing to ask have no question. Voids from the trick on the table are not asked until that trick is finished, since the card is still in view.
 
-**Question types.** Cards left shows all eight cards of every suit still in play, one row per suit, and you tap the ones still out (see above). Voids asks who is out of a suit. Trumps left asks a number from 0 to 8.
+**Question types.** Cards left builds each suit's list from blank (see above). Voids asks who is out of a suit. Trumps left asks a number from 0 to 8.
 
 Every answer shows the working and a **Say** line, the short phrase to repeat to yourself during play.
 
