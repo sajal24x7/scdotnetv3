@@ -8,7 +8,7 @@ A single-player version of 29, the trick-taking card game for two pairs, at `/ga
 | --- | --- |
 | `src/pages/games/cards-29/index.astro` | Standalone page shell (no site layout). Mounts the game with `client:load`. |
 | `src/utils/twentyNine.ts` | Rules, the game state machine (`reducer`), the computer players and the move tips. No React and no DOM. |
-| `src/utils/twentyNineLearn.ts` | Learn mode: the three skills (`SKILLS`), question builders, the timing rules (`candidates`, `chooseQuiz`) and `learnReducer`, which wraps the game reducer. |
+| `src/utils/twentyNineLearn.ts` | Learn mode: the cards-left question (`topQuiz`), the timing rule (`chooseQuiz`) and `learnReducer`, which wraps the game reducer. |
 | `src/components/games/TwentyNine.tsx` | The React UI: table, hand, bidding controls and animations. |
 | `src/utils/__checks__/twentyNine.check.ts` | Rule checks plus 400 seeded hands played by the computer in every seat. |
 
@@ -33,19 +33,11 @@ Trump stays hidden until a player who cannot follow suit asks for it. Playing a 
 
 ## Learn mode
 
-Learn mode trains three card-tracking skills. Turn it on from the start screen or the **Learn** button in the header. On your turn the game may ask one question, and the computer players wait until you tap Continue.
-
-| Skill id | Name | Remember | Say |
-| --- | --- | --- | --- |
-| `top` | Cards left | Every card of each suit still with the other three. | "Hearts left: A, 10, Q, 7." |
-| `voids` | Voids | Who has run out of which suit. | "West out of clubs." |
-| `trump` | Trumps left | How many trumps the other three still hold. | "Spades, 3 out." |
-
-The list is `SKILLS` in `src/utils/twentyNineLearn.ts`. Tap a skill chip on the start screen or in the learn bar to turn it on or off. At least one stays on.
+Learn mode trains one skill: **Cards left**, every card of each suit still with the other three. Turn it on from the start screen or the **Learn** button in the header. On your turn the game may ask one question, and the computer players wait until you tap Continue.
 
 ### Cards left: the ranked list
 
-The `top` skill drills one method for tracking every card:
+Learn mode drills one method for tracking every card:
 
 1. Start each suit with its ranked list: J, 9, A, 10, K, Q, 8, 7.
 2. Take your own cards off at once. Holding the heart 9, the list is "J, A, 10, K, Q, 8, 7."
@@ -66,23 +58,18 @@ The answer shows each suit's row: green for right, dashed red for missed, solid 
 
 ### When a question comes up
 
-There is no fixed schedule. Before each of your turns, `candidates` looks at what has happened since each skill was last asked (`learnMarks`, the number of cards played at that point) and gives each fitting question a priority:
+There is no fixed schedule. Before each of your turns, `chooseQuiz` counts the cards played since you were last asked (`learnMark`):
 
-| Skill | Priority 3 (ask now) | Priority 2 | Priority 1 (quiet recap) |
-| --- | --- | --- | --- |
-| Cards left | Leading, and 4+ cards played since last asked. | Following, and 4+ cards played since last asked. Or the first question of the hand while leading. | Leading, and any card played since last asked. Or the first question of the hand while following. |
-| Voids | Following: a player still to play is out of the led suit. | A new void from a finished trick, or you are leading a suit someone is out of. | Leading: a suit you hold that nobody is out of (answer "nobody"). |
-| Trumps left | First turn once you know trump (from the start if you set trump, else once someone asks for it), or a trump has fallen since last asked. | You are out of the led suit and could trump. | Leading, 8+ cards since last asked. |
-
-`chooseQuiz` asks the highest priority. A tie goes to the skill asked longest ago. A priority 1 recap is skipped if you were asked a question on the last turn, and turns with nothing to ask have no question. Voids from the trick on the table are not asked until that trick is finished, since the card is still in view.
-
-**Question types.** Cards left builds each suit's list from blank (see above). Voids asks who is out of a suit. Trumps left asks a number from 0 to 8.
+- First turn of the hand: ask.
+- 4 or more cards since last asked: ask. When leading, up to three suits in a row; when following, one.
+- 1 to 3 cards since last asked and you are leading: a quiet recap of one suit, skipped if you were asked on the last turn.
+- Otherwise no question.
 
 Every answer shows the working and a **Say** line, the short phrase to repeat to yourself during play.
 
-Questions only use what you could know: your hand, the cards played, and who failed to follow suit (`shownOut` in the game state). While learn mode is on, the running team points, the "Last trick" button and the log are hidden, since they would give the answers away. The learn bar shows your score per skill for the hand, and the hand-end summary names the weakest skill. Totals per skill (`learnStats`) are saved with the game, and **Reset** keeps them.
+Questions only use what you could know: your hand and the cards played. While learn mode is on, the running team points, the "Last trick" button and the log are hidden, since they would give the answers away. The learn bar shows your score for the hand, and the hand-end summary repeats the method if you missed any. The total (`learnStats`) is saved with the game, and **Reset** keeps it. Games saved with the old three-skill learn mode load with their cards-left score kept and the other skills dropped (`cleanLoaded`).
 
-To add a skill, add a `Skill` id and an entry in `SKILLS`, a question builder, and a block in `candidates` that sets its priority. The checks play 40 hands in learn mode with all skills and with each skill alone, and answer each question with its own answer key.
+The checks play 40 hands in learn mode and answer each question with its own answer key.
 
 ## Hold tricks
 
