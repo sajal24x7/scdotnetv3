@@ -37,11 +37,22 @@ Learn mode trains three card-tracking skills. Turn it on from the start screen o
 
 | Skill id | Name | Remember | Say |
 | --- | --- | --- | --- |
-| `top` | Top cards | The highest card still in play in each suit. | "Hearts: A is top." |
+| `top` | High cards left | The high cards (J, 9, A, 10) of each suit still with the other three. | "Hearts left: A, 10." |
 | `voids` | Voids | Who has run out of which suit. | "West out of clubs." |
 | `trump` | Trumps left | How many trumps the other three still hold. | "Spades, 3 out." |
 
 The list is `SKILLS` in `src/utils/twentyNineLearn.ts`. Tap a skill chip on the start screen or in the learn bar to turn it on or off. At least one stays on.
+
+### High cards left: the ranked list
+
+The `top` skill drills one method for tracking cards:
+
+1. Start each suit with its ranked list: J, 9, A, 10, K, Q, 8, 7.
+2. Only the high cards matter, so the list is J, 9, A, 10. Say "Hearts left: J, 9, A, 10."
+3. Take your own cards off at once. Holding the heart 9, the list is "J, A, 10."
+4. Cross cards off as they fall. When the heart J drops, the list is "A, 10", and your 9 is now the top heart.
+
+The question shows J, 9, A, 10 of each asked suit. Your own cards are marked "yours" and cannot be picked. You tap the cards the other three still hold, then Check ("Check (none left)" when you pick nothing). The answer shows the working per suit and a Say line such as "Hearts left: A, 10. My 9 is top." A suit whose four high cards have all been played is not asked. Helpers: `HIGH_RANKS`, `highLeft` and `highFellSince` in `twentyNineLearn.ts`.
 
 ### When a question comes up
 
@@ -49,13 +60,13 @@ There is no fixed schedule. Before each of your turns, `candidates` looks at wha
 
 | Skill | Priority 3 (ask now) | Priority 2 | Priority 1 (quiet recap) |
 | --- | --- | --- | --- |
-| Top cards | Leading: the top card of 2+ suits has fallen (asks all suits), or of one suit you hold. Following: the led suit's top has fallen. | One other suit's top fell. | The led suit's top is not the J, or any top has changed this hand. |
+| High cards left | Leading: a high card of 2+ suits has fallen (asks every suit where one has fallen), or of one suit you hold. Following: a high card of the led suit has fallen. | A high card of one other suit fell. | A recap of suits where a high card fell this hand. Before anything falls: a suit where you hold a high card, to practise taking your own cards off. |
 | Voids | Following: a player still to play is out of the led suit. | A new void from a finished trick, or you are leading a suit someone is out of. | Leading: a suit you hold that nobody is out of (answer "nobody"). |
 | Trumps left | First turn once you know trump (from the start if you set trump, else once someone asks for it), or a trump has fallen since last asked. | You are out of the led suit and could trump. | Leading, 8+ cards since last asked. |
 
 `chooseQuiz` asks the highest priority. A tie goes to the skill asked longest ago. A priority 1 recap is skipped if you were asked a question on the last turn, and turns with nothing to ask have no question. Voids from the trick on the table are not asked until that trick is finished, since the card is still in view.
 
-**Question types.** Top cards shows the 8 cards of a suit and one tap answers. When several suits changed it shows every suit with cards left, and you tap the top card of each, then Check. Your own cards are marked "yours" and still count as in play. Voids asks who is out of a suit. Trumps left asks a number from 0 to 8.
+**Question types.** High cards left shows J, 9, A, 10 of each asked suit, one row per suit, and you tap the ones still out (see above). Voids asks who is out of a suit. Trumps left asks a number from 0 to 8.
 
 Every answer shows the working and a **Say** line, the short phrase to repeat to yourself during play.
 

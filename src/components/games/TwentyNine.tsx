@@ -274,9 +274,9 @@ function QuizPanel({ quiz, onAnswer, onClose }: {
                             const yours = quiz.yoursIds.includes(c.id);
                             const tap = quiz.single ? () => { setPicked(new Set([c.id])); onAnswer([c.id]); } : () => toggle(c.id);
                             return (
-                                <div key={c.id} className={`quiz-card ${pickClass(c.id)}`}>
-                                    <PlayingCard card={c} size="mini" disabled={done}
-                                        onClick={done ? undefined : tap} />
+                                <div key={c.id} className={`quiz-card ${yours ? "quiz-card-yours" : pickClass(c.id)}`}>
+                                    <PlayingCard card={c} size="mini" disabled={done || yours}
+                                        onClick={done || yours ? undefined : tap} />
                                     <span className="quiz-card-note">{yours ? "yours" : "\u00a0"}</span>
                                 </div>
                             );
@@ -284,7 +284,7 @@ function QuizPanel({ quiz, onAnswer, onClose }: {
                     </div>
                     {!done && !quiz.single && (
                         <button className="btn-primary" onClick={() => onAnswer([...picked])}>
-                            {picked.size ? "Check" : "Check (none)"}
+                            {picked.size ? "Check" : quiz.noneLabel}
                         </button>
                     )}
                 </>
@@ -844,7 +844,8 @@ export default function TwentyNine() {
                 .quiz-opt.quiz-opt-good { border-color: var(--game-good); color: var(--game-good); opacity: 1; }
                 .quiz-opt.quiz-opt-wrong { border-color: var(--game-red); color: var(--game-red); opacity: 1; }
                 .quiz-cards { display: flex; gap: 6px; flex-wrap: wrap; }
-                .quiz-cards-wide { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 2px; justify-items: center; }
+                .quiz-cards-wide { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; justify-items: center; max-width: 16rem; }
+                .quiz-card-yours { opacity: 0.45; }
                 .quiz-choice { padding: 0 12px; font-weight: 600; }
                 .quiz-choice[aria-pressed="true"] { border-color: var(--game-accent); color: var(--game-accent); }
                 .quiz-opt.quiz-pick-good { border-color: var(--game-good); color: var(--game-good); opacity: 1; outline: none; }

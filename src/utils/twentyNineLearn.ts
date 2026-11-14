@@ -1,6 +1,6 @@
 /**
  * Learn mode for the 29 card game. It trains three things:
- *   1. the highest card still in play in each suit,
+ *   1. the high cards (J 9 A 10) of each suit still with the others,
  *   2. who has run out of which suit (voids),
  *   3. how many trumps are still out, once you know trump.
  * Before each of your turns it looks at what has happened since it last asked
@@ -18,7 +18,7 @@ export type Skill = "top" | "voids" | "trump";
 export interface SkillInfo { id: Skill; name: string; remember: string; say: string; }
 
 export const SKILLS: SkillInfo[] = [
-    { id: "top", name: "Top cards", remember: "The highest card still in play in each suit.", say: "Hearts: A is top." },
+    { id: "top", name: "High cards left", remember: "Keep a list of J 9 A 10 for each suit. Cross off cards as they fall and your own cards at once.", say: "Hearts left: A, 10." },
     { id: "voids", name: "Voids", remember: "Who has run out of which suit.", say: "West out of clubs." },
     { id: "trump", name: "Trumps left", remember: "How many trumps the others still hold, once you know trump.", say: "Spades, 3 out." },
 ];
@@ -35,9 +35,9 @@ export interface Quiz {
     options: number[];          // kind "number"
     answer: number;             // kind "number"
     pool: Card[];               // kind "cards": cards shown to pick from
-    wide: boolean;              // kind "cards": an 8-column grid
+    wide: boolean;              // kind "cards": a 4-column grid, one row per suit
     single: boolean;            // kind "cards": one tap answers
-    yoursIds: string[];         // kind "cards": marked "yours" (still pickable)
+    yoursIds: string[];         // kind "cards": marked "yours" and not pickable
     choices: { id: string; label: string }[];   // kind "pick"
     answerIds: string[];        // kind "cards" and "pick": the right picks
     noneLabel: string;          // check button text when nothing is picked
@@ -84,14 +84,22 @@ function topOf(suit: string, gone: Set<string>): Card | null {
 
 export const topLeft = (state: GameState, suit: string) => topOf(suit, new Set(state.played));
 
-// Suits whose top card has been played since `mark` cards had been played.
-export function topChangedSince(state: GameState, mark: number): string[] {
-    const before = new Set(state.played.slice(0, mark));
-    const now = new Set(state.played);
-    return SUITS.filter((s) => {
-        const was = topOf(s, before);
-        return was !== null && now.has(was.id) && topOf(s, now) !== null;
-    });
+// The ranked list you keep for each suit. Only these four carry points and win tricks.
+export const HIGH_RANKS = RANK_ORDER.slice(0, 4);
+
+// Suits with a high card still unplayed, so the list still matters.
+const highLive = (state: GameState, suit: string) => HIGH_RANKS.some((r) => !state.played.includes(suit + r));
+
+// High cards of a suit still with the other three: the list minus played cards and your own.
+export function highLeft(state: GameState, suit: string): Card[] {
+    const gone = new Set([...state.played, ...state.hands[0].map((c) => c.id)]);
+    return HIGH_RANKS.filter((r) => !gone.has(suit + r)).map((r) => cardOf(suit, r));
+}
+
+// Suits where a high card has been played since `mark` cards had been played, and the list still matters.
+export function highFellSince(state: GameState, mark: number): string[] {
+    const fell = new Set(state.played.slice(mark).filter((id) => HIGH_RANKS.includes(id.slice(1))).map((id) => id[0]));
+    return SUITS.filter((s) => fell.has(s) && highLive(state, s));
 }
 
 // Voids shown by the other players in finished tricks (the current trick is still on the table).
@@ -109,30 +117,44 @@ const trumpsWithOthers = (state: GameState, t: string) =>
 
 /* ---------- Questions ---------- */
 
-// "Which is the highest card still in play?" for one suit, or for every suit at once.
+// "Which high cards are still out?" for one suit, or several at once.
+// The pool is J 9 A 10 of each suit. Your own cards are marked and cannot be picked.
 export function topQuiz(state: GameState, suits: string[], seq: number): Quiz | null {
-    const live = suits.filter((s) => topLeft(state, s) !== null);
+    const live = suits.filter((s) => highLive(state, s));
     if (!live.length) return null;
     const q = base("top", seq);
     const mine = new Set(state.hands[0].map((c) => c.id));
     const played = new Set(state.played);
     q.kind = "cards";
-    q.pool = live.flatMap((s) => RANK_ORDER.map((r) => cardOf(s, r)));
+    q.pool = live.flatMap((s) => HIGH_RANKS.map((r) => cardOf(s, r)));
     q.wide = true;
-    q.single = live.length === 1;
+    q.single = false;
+    q.noneLabel = "Check (none left)";
     q.yoursIds = q.pool.filter((c) => mine.has(c.id)).map((c) => c.id);
-    const tops = live.map((s) => topLeft(state, s)!);
-    q.answerIds = tops.map((c) => c.id);
+    q.answerIds = live.flatMap((s) => highLeft(state, s).map((c) => c.id));
     q.question = live.length === 1
-        ? `Which is the highest ${suitName(live[0]).toLowerCase().slice(0, -1)} still in play? Cards on the table count as played.`
-        : "Tap the highest card still in play in each suit. Cards on the table count as played.";
-    q.explain = tops.map((top) => {
-        const gone = RANK_ORDER.slice(0, RANK_ORDER.indexOf(top.rank)).map((r) => top.suit + r).filter((id) => played.has(id));
-        const where = mine.has(top.id) ? "yours, it wins a lead of this suit unless trumped" : "with the others";
-        const why = gone.length ? `${gone.map((id) => id.slice(1)).join(" ")} gone, so ` : "";
-        return `${sym(top.suit)}: ${why}${top.rank} is top (${where}).`;
-    }).join(" ");
-    q.say = tops.map((c) => `${capital(plural(c.suit))}: ${c.rank} is top`).join(". ") + ".";
+        ? `${capital(plural(live[0]))} left: tap the high ${sym(live[0])} cards the other three still hold. Cards on the table count as played.`
+        : "For each suit, tap the high cards the other three still hold. Cards on the table count as played.";
+    const ranks = (ids: string[]) => ids.map((id) => id.slice(1)).join(" ");
+    const lines = live.map((s) => {
+        const ids = HIGH_RANKS.map((r) => s + r);
+        const gone = ids.filter((id) => played.has(id));
+        const yours = ids.filter((id) => mine.has(id));
+        const left = highLeft(state, s);
+        const top = topLeft(state, s);
+        const myTop = top !== null && mine.has(top.id) ? top.rank : null;
+        const parts = [`${sym(s)}: J 9 A 10`];
+        if (gone.length) parts.push(`played ${ranks(gone)}`);
+        if (yours.length) parts.push(`yours ${ranks(yours)}`);
+        parts.push(left.length ? `left ${left.map((c) => c.rank).join(" ")}` : "none left");
+        const tail = myTop ? ` Your ${myTop} is top.` : !left.length && top ? ` ${top.rank} is now top.` : "";
+        return {
+            explain: parts.join(", ") + "." + tail,
+            say: `${capital(plural(s))} left: ${left.length ? left.map((c) => c.rank).join(", ") : "none"}.` + (myTop ? ` My ${myTop} is top.` : ""),
+        };
+    });
+    q.explain = lines.map((l) => l.explain).join(" ");
+    q.say = lines.map((l) => l.say).join(" ");
     return q;
 }
 
@@ -187,15 +209,20 @@ export function candidates(state: GameState, seq: number): Candidate[] {
     const add = (quiz: Quiz | null, priority: number) => { if (quiz) out.push({ quiz, priority }); };
 
     if (skills.includes("top")) {
-        const changed = topChangedSince(state, marks.top ?? 0);
+        const changed = highFellSince(state, marks.top ?? 0);
+        const touched = highFellSince(state, 0);
+        // Before the first fall, practise taking your own cards off the list.
+        const ownOnly = marks.top === undefined
+            ? held.filter((s) => hand.some((c) => c.suit === s && HIGH_RANKS.includes(c.rank)) && !touched.includes(s)) : [];
         if (leading) {
-            if (changed.length >= 2) add(topQuiz(state, SUITS, seq), 3);
+            if (changed.length >= 2) add(topQuiz(state, touched, seq), 3);
             else if (changed.length === 1) add(topQuiz(state, changed, seq), held.includes(changed[0]) ? 3 : 2);
-            else if (topChangedSince(state, 0).length) add(topQuiz(state, SUITS, seq), 1);
+            else if (touched.length) add(topQuiz(state, touched, seq), 1);
+            else if (ownOnly.length) add(topQuiz(state, [pick(ownOnly)], seq), 1);
         } else if (lead) {
             if (changed.includes(lead)) add(topQuiz(state, [lead], seq), 3);
             else if (changed.length) add(topQuiz(state, changed, seq), 2);
-            else if (topLeft(state, lead)?.rank !== "J") add(topQuiz(state, [lead], seq), 1);
+            else if (touched.includes(lead) || ownOnly.includes(lead)) add(topQuiz(state, [lead], seq), 1);
         }
     }
 
@@ -307,7 +334,9 @@ const keepKnown = (stats: LearnStats | undefined): LearnStats =>
 
 // Fixes a game saved by an older version: old question types, old skill stats and missing fields.
 export function cleanLoaded(state: GameState): GameState {
-    const quizOk = state.quiz && ALL_SKILLS.includes(state.quiz.skill) && "yoursIds" in state.quiz;
+    // A top-cards question from before the ranked-list version showed all eight ranks.
+    const oldTop = state.quiz?.skill === "top" && state.quiz.pool.some((c) => !HIGH_RANKS.includes(c.rank));
+    const quizOk = state.quiz && ALL_SKILLS.includes(state.quiz.skill) && "yoursIds" in state.quiz && !oldTop;
     const skills = (state.learnSkills ?? []).filter((s) => ALL_SKILLS.includes(s));
     return {
         ...state,
