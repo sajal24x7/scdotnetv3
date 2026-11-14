@@ -10,7 +10,7 @@ import {
     teamAwareBidOrder, initialState, makeDeck, reducer,
 } from '../twentyNine.ts';
 import type { Card, GameState } from '../twentyNine.ts';
-import { topQuiz, voidQuiz, trumpQuiz, highFellSince, highLeft, candidates, chooseQuiz, checkAnswer, learnReducer, totalTally, cleanLoaded, ALL_SKILLS } from '../twentyNineLearn.ts';
+import { topQuiz, voidQuiz, trumpQuiz, cardsLeft, candidates, chooseQuiz, checkAnswer, learnReducer, totalTally, cleanLoaded, ALL_SKILLS } from '../twentyNineLearn.ts';
 
 let failures = 0;
 
@@ -123,25 +123,22 @@ console.log('learn mode questions');
     check('trump say', trump.say, 'Spades, 5 out.');
     check('no trump count while trump is hidden', trumpQuiz({ ...st, caller: 1 }, 1), null);
     check('trump count once revealed', trumpQuiz({ ...st, caller: 1, trumpRevealed: true }, 1)!.answer, 5);
-    check('high cards: a suit with all four played is skipped', topQuiz(st, ['H'], 1), null);
-    const clubs = topQuiz(st, ['C'], 1)!;
-    check('high cards: clubs after the J fell', clubs.answerIds, ['C9', 'CA', 'C10']);
-    check('high cards: only J 9 A 10 shown', clubs.pool.map((x) => x.rank), ['J', '9', 'A', '10']);
-    check('high cards: clubs say', clubs.say, 'Clubs left: 9, A, 10.');
-    const spades = topQuiz(st, ['S'], 1)!;
-    check('high cards: your own cards come off the list', spades.answerIds, ['SA', 'S10']);
-    check('high cards: your cards are marked', spades.yoursIds, ['SJ', 'S9']);
-    check('high cards: spades say', spades.say, 'Spades left: A, 10. My J is top.');
+    // Hearts J 9 A 10 and clubs 7 J are gone; spades 7 was played as a trump.
+    const all = topQuiz(st, 1)!;
+    check('cards left: every suit asked', [...new Set(all.pool.map((x) => x.suit))], ['S', 'H', 'D', 'C']);
+    check('cards left: all eight ranks shown', all.pool.filter((x) => x.suit === 'H').map((x) => x.rank), ['J', '9', 'A', '10', 'K', 'Q', '8', '7']);
+    check('cards left: your cards are marked', all.yoursIds, ['SJ', 'S9', 'HK', 'DQ']);
+    check('cards left: answer', all.answerIds.filter((id) => id[0] === 'H'), ['HQ', 'H8', 'H7']);
+    check('cards left: always needs Check', all.single, false);
+    check('cards left: say', all.say,
+        'Spades left: A, 10, K, Q, 8. My J is top. Hearts left: Q, 8, 7. My K is top. Diamonds left: J, 9, A, 10, K, 7. Clubs left: 9, A, 10, K, Q, 8.');
+    check('cards left: with the others', cardsLeft(st, 'C').map((x) => x.rank), ['9', 'A', '10', 'K', 'Q', '8']);
     // The worked example: you hold the heart 9, then the heart J drops.
-    const example = topQuiz({ ...st, hands: [[c('H9')], [], [], []], played: ['HJ'] }, ['H'], 1)!;
-    check('high cards: example say', example.say, 'Hearts left: A, 10. My 9 is top.');
-    const grid = topQuiz(st, ['S', 'H', 'D', 'C'], 1)!;
-    check('high cards: several suits', [...grid.answerIds].sort(), ['C10', 'C9', 'CA', 'D10', 'D9', 'DA', 'DJ', 'S10', 'SA']);
-    check('high cards: always needs Check', grid.single, false);
-    check('high cards: fell since start', highFellSince(st, 0), ['C']);
-    check('high cards: fell since trick 1', highFellSince(st, 4), ['C']);
-    check('high cards: nothing fell yet', highFellSince(st, 8), []);
-    check('high cards: left with the others', highLeft(st, 'D').map((x) => x.id), ['DJ', 'D9', 'DA', 'D10']);
+    const example = topQuiz({ ...st, hands: [[c('H9')], [], [], []], played: ['HJ'] }, 1)!;
+    check('cards left: example say', example.say.split('. Diamonds')[0].split('Hearts left: ')[1], 'A, 10, K, Q, 8, 7. My 9 is top');
+    const allGone = ['S', 'H', 'D', 'C'].flatMap((su) => ['J', '9', 'A', '10', 'K', 'Q', '8', '7'].map((r) => su + r));
+    check('cards left: a suit with every card played is skipped',
+        topQuiz({ ...st, played: allGone.filter((id) => id[0] === 'H') }, 1)!.pool.some((x) => x.suit === 'H'), false);
     const voids = voidQuiz(st, 'C', 1);
     check('voids: who showed out', voids.answerIds, ['1', '3']);
     check('voids: say', voids.say, 'B and D out of clubs.');
