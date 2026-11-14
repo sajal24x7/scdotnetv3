@@ -1300,6 +1300,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/impertinent-2026-11-13",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-13"
+		},
+		"boilerplate": {
+			"word": "boilerplate",
+			"pos": "other",
+			"gloss": " noun Boilerplate refers to standard or formulaic language, a meaning that comes from an earlier meaning still in use: syndicated material supplied to newspapers in matrix or plate form.",
+			"pronunciation": "BOY-ler-playt",
+			"example": "The last paragraph of the contract was legal boilerplate.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/boilerplate-2026-11-14",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-14"
 		}
 	}
 }
