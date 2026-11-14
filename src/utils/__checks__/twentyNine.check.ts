@@ -10,7 +10,7 @@ import {
     teamAwareBidOrder, initialState, makeDeck, reducer,
 } from '../twentyNine.ts';
 import type { Card, GameState } from '../twentyNine.ts';
-import { topQuiz, voidQuiz, trumpQuiz, topChangedSince, candidates, chooseQuiz, checkAnswer, learnReducer, totalTally, cleanLoaded, ALL_SKILLS } from '../twentyNineLearn.ts';
+import { topQuiz, voidQuiz, trumpQuiz, cardsLeft, candidates, chooseQuiz, checkAnswer, learnReducer, totalTally, cleanLoaded, ALL_SKILLS } from '../twentyNineLearn.ts';
 
 let failures = 0;
 
@@ -123,18 +123,26 @@ console.log('learn mode questions');
     check('trump say', trump.say, 'Spades, 5 out.');
     check('no trump count while trump is hidden', trumpQuiz({ ...st, caller: 1 }, 1), null);
     check('trump count once revealed', trumpQuiz({ ...st, caller: 1, trumpRevealed: true }, 1)!.answer, 5);
-    const hearts = topQuiz(st, ['H'], 1)!;
-    check('top: hearts after J 9 A 10', hearts.answerIds, ['HK']);
-    check('top: one suit answers on one tap', hearts.single, true);
-    check('top: your card is marked', hearts.yoursIds, ['HK']);
-    check('top: say', hearts.say, 'Hearts: K is top.');
-    const grid = topQuiz(st, ['S', 'H', 'D', 'C'], 1)!;
-    check('top: every suit', [...grid.answerIds].sort(), ['C9', 'DJ', 'HK', 'SJ']);
-    check('top: grid needs Check', grid.single, false);
-    check('top: changed since start', topChangedSince(st, 0), ['H', 'C']);
-    check('top: changed since trick 1', topChangedSince(st, 4), ['C']);
-    check('top: a suit with no cards left is skipped',
-        topQuiz({ ...st, played: ['HJ', 'H9', 'HA', 'H10', 'HK', 'HQ', 'H8', 'H7'] }, ['H'], 1), null);
+    // Hearts J 9 A 10 and clubs 7 J are gone; spades 7 was played as a trump.
+    check('cards left: with the others', cardsLeft(st, 'C').map((x) => x.rank), ['9', 'A', '10', 'K', 'Q', '8']);
+    const one = topQuiz(st, 1)!;
+    check('cards left: one suit by default', one.suits.length, 1);
+    check('cards left: most played suit first', one.suits, ['H']);
+    check('cards left: answer', one.answerIds, ['HQ', 'H8', 'H7']);
+    check('cards left: your cards are marked', one.yoursIds, ['HK']);
+    check('cards left: say', one.say, 'Hearts left: Q, 8, 7. My K is top.');
+    const three = topQuiz(st, 1, 3)!;
+    check('cards left: a busy lead asks up to three suits', three.suits, ['H', 'C', 'S']);
+    check('cards left: answer across suits', checkAnswer(three, [...three.answerIds].reverse()), true);
+    check('cards left: extra card is wrong', checkAnswer(three, [...three.answerIds, 'HJ']), false);
+    // The worked example: you hold the heart 9, then the heart J drops.
+    const example = topQuiz({ ...st, hands: [[c('H9')], [], [], []], played: ['HJ'] }, 1)!;
+    check('cards left: example say', example.say, 'Hearts left: A, 10, K, Q, 8, 7. My 9 is top.');
+    const follow1 = { ...st, trick: [{ player: 3, card: c('DK') }], leadSuit: 'D', played: [...st.played, 'DK'] };
+    check('cards left: following asks the led suit first', topQuiz(follow1, 1)!.suits, ['D']);
+    const allHearts = ['J', '9', 'A', '10', 'K', 'Q', '8', '7'].map((r) => 'H' + r);
+    check('cards left: a suit with every card played is skipped',
+        topQuiz({ ...st, played: allHearts }, 1, 4)!.suits.includes('H'), false);
     const voids = voidQuiz(st, 'C', 1);
     check('voids: who showed out', voids.answerIds, ['1', '3']);
     check('voids: say', voids.say, 'B and D out of clubs.');
@@ -147,7 +155,7 @@ console.log('learn mode questions');
 
     // When to ask. Leading with nothing asked yet: trump count first (you set trump), plus top cards and voids.
     const pri = (s: GameState) => Object.fromEntries(candidates(s, 1).map((x) => [x.quiz.skill, x.priority]));
-    check('leading: every skill fits', pri(st), { top: 3, voids: 2, trump: 3 });
+    check('leading: every skill fits', pri(st), { top: 2, voids: 2, trump: 3 });
     const marked = { ...st, learnMarks: { top: 8, voids: 8, trump: 8 }, learnLastTrick: 1 };
     check('nothing new: only quiet recaps, skipped after a question last turn', chooseQuiz(marked, 1), null);
     check('nothing new: a recap after a quiet turn', chooseQuiz({ ...marked, learnLastTrick: 0 }, 1) !== null, true);

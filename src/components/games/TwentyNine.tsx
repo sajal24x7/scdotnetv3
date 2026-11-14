@@ -214,6 +214,84 @@ function LearnBar({ state, dispatch }: { state: GameState; dispatch: (a: Action)
     );
 }
 
+const RANKS = ["J", "9", "A", "10", "K", "Q", "8", "7"];
+const cardFrom = (id: string): Card => ({ suit: id[0], rank: id.slice(1), id });
+const byRank = (a: string, b: string) => RANKS.indexOf(a.slice(1)) - RANKS.indexOf(b.slice(1));
+
+// "Diamonds left?" Build the list from blank: tap ranks in the strip and they go up into the row,
+// sorted in ranked order. Tap a card in the row to take it back. One suit at a time.
+function ListQuiz({ quiz, picked, toggle, pickClass, onAnswer }: {
+    quiz: Quiz; picked: Set<string>; toggle: (id: string) => void; pickClass: (id: string) => string;
+    onAnswer: (value: string[]) => void;
+}) {
+    const [step, setStep] = useState(0);
+    const done = quiz.result !== null;
+    if (done) {
+        return (
+            <div className="list-results">
+                {quiz.suits.map((s) => {
+                    const ids = [...new Set([...quiz.answerIds, ...picked].filter((id) => id[0] === s))].sort(byRank);
+                    return (
+                        <div key={s} className="list-row-wrap">
+                            <span className={`list-suit ${SUIT_INFO[s].red ? "text-red" : "text-dark"}`}>{SUIT_INFO[s].sym}</span>
+                            <div className="list-row">
+                                {ids.length ? ids.map((id) => (
+                                    <div key={id} className={`quiz-card ${pickClass(id)}`}>
+                                        <PlayingCard card={cardFrom(id)} size="mini" disabled />
+                                    </div>
+                                )) : <span className="hint">None left</span>}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        );
+    }
+    const suit = quiz.suits[step];
+    const info = SUIT_INFO[suit];
+    const colour = info.red ? "text-red" : "text-dark";
+    const ids = RANKS.map((r) => suit + r);
+    const yours = ids.filter((id) => quiz.yoursIds.includes(id));
+    const chosen = ids.filter((id) => picked.has(id));
+    const slots = ids.length - yours.length;
+    const last = step === quiz.suits.length - 1;
+    const next = () => (last ? onAnswer([...picked]) : setStep(step + 1));
+    return (
+        <>
+            <p className="list-prompt">
+                <span className={colour}>{info.sym}</span> {info.name} left?
+                {quiz.suits.length > 1 && <span className="hint"> ({step + 1} of {quiz.suits.length})</span>}
+            </p>
+            <div className="list-row list-slots" aria-label={`Your ${info.name.toLowerCase()} list`}>
+                {chosen.map((id) => (
+                    <div key={id} className="quiz-card">
+                        <PlayingCard card={cardFrom(id)} size="mini" onClick={() => toggle(id)} />
+                    </div>
+                ))}
+                {Array.from({ length: slots - chosen.length }).map((_, i) => <span key={i} className="list-slot" />)}
+            </div>
+            <div className="list-strip">
+                {ids.map((id) => {
+                    const mine = yours.includes(id);
+                    const on = picked.has(id);
+                    return (
+                        <div key={id} className="list-key">
+                            <button className={`quiz-opt list-rank ${colour}`} disabled={mine || on} aria-pressed={on}
+                                onClick={() => toggle(id)} aria-label={`${id.slice(1)} of ${info.name}`}>
+                                {id.slice(1)}
+                            </button>
+                            <span className="quiz-card-note">{mine ? "yours" : "\u00a0"}</span>
+                        </div>
+                    );
+                })}
+            </div>
+            <button className="btn-primary" onClick={next}>
+                {chosen.length ? (last ? "Check" : "Next suit") : (last ? quiz.noneLabel : `${quiz.noneLabel}, next suit`)}
+            </button>
+        </>
+    );
+}
+
 // The question shown before your turn.
 function QuizPanel({ quiz, onAnswer, onClose }: {
     quiz: Quiz;
@@ -268,36 +346,17 @@ function QuizPanel({ quiz, onAnswer, onClose }: {
                     )}
                 </>
             ) : (
-                <>
-                    <div className={`quiz-cards ${quiz.wide ? "quiz-cards-wide" : ""}`}>
-                        {quiz.pool.map((c) => {
-                            const yours = quiz.yoursIds.includes(c.id);
-                            const tap = quiz.single ? () => { setPicked(new Set([c.id])); onAnswer([c.id]); } : () => toggle(c.id);
-                            return (
-                                <div key={c.id} className={`quiz-card ${pickClass(c.id)}`}>
-                                    <PlayingCard card={c} size="mini" disabled={done}
-                                        onClick={done ? undefined : tap} />
-                                    <span className="quiz-card-note">{yours ? "yours" : "\u00a0"}</span>
-                                </div>
-                            );
-                        })}
-                    </div>
-                    {!done && !quiz.single && (
-                        <button className="btn-primary" onClick={() => onAnswer([...picked])}>
-                            {picked.size ? "Check" : "Check (none)"}
-                        </button>
-                    )}
-                </>
+                <ListQuiz quiz={quiz} picked={picked} toggle={toggle} pickClass={pickClass} onAnswer={onAnswer} />
             )}
             {done && (
                 <div className="quiz-result" aria-live="polite">
                     <p style={{ fontWeight: 600, color: quiz.result!.correct ? "var(--game-good)" : "var(--game-red)" }}>
                         {quiz.result!.correct ? "Right." : "Not quite."}
                     </p>
-                    <p className="hint">{quiz.explain}</p>
-                    <p className="hint quiz-say">Say: “{quiz.say}”</p>
-                    {quiz.kind === "cards" && !quiz.result!.correct && (
-                        <p className="hint">Green: right. Dashed red: the right card. Solid red: your pick.</p>
+                    <p className="hint" style={{ whiteSpace: "pre-line" }}>{quiz.explain}</p>
+                    <p className="hint quiz-say" style={{ whiteSpace: "pre-line" }}>Say: “{quiz.say}”</p>
+                    {quiz.kind === "list" && !quiz.result!.correct && (
+                        <p className="hint">Green: right. Dashed red: missed. Solid red: already gone or yours.</p>
                     )}
                     <button className="btn-primary" style={{ marginTop: 8 }} onClick={onClose} autoFocus>Continue</button>
                 </div>
@@ -843,8 +902,16 @@ export default function TwentyNine() {
                 .quiz-opt:disabled { cursor: default; opacity: 0.5; }
                 .quiz-opt.quiz-opt-good { border-color: var(--game-good); color: var(--game-good); opacity: 1; }
                 .quiz-opt.quiz-opt-wrong { border-color: var(--game-red); color: var(--game-red); opacity: 1; }
-                .quiz-cards { display: flex; gap: 6px; flex-wrap: wrap; }
-                .quiz-cards-wide { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 2px; justify-items: center; }
+                .list-prompt { font-size: var(--text-base); font-weight: 700; }
+                .list-row { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; min-height: 58px; }
+                .list-slot { width: 36px; height: 50px; margin: 2px; border-radius: 6px; border: 1.5px dashed var(--game-card-border); }
+                .list-strip { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; }
+                .list-key { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+                .quiz-opt.list-rank { min-width: 0; width: 100%; padding: 0; }
+                .quiz-opt.list-rank[aria-pressed="true"] { opacity: 1; color: transparent; background: transparent; border-style: dashed; }
+                .list-results { display: flex; flex-direction: column; gap: 4px; }
+                .list-row-wrap { display: flex; align-items: center; gap: 8px; }
+                .list-suit { font-size: var(--text-lg); width: 1.2em; text-align: center; }
                 .quiz-choice { padding: 0 12px; font-weight: 600; }
                 .quiz-choice[aria-pressed="true"] { border-color: var(--game-accent); color: var(--game-accent); }
                 .quiz-opt.quiz-pick-good { border-color: var(--game-good); color: var(--game-good); opacity: 1; outline: none; }
