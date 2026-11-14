@@ -359,9 +359,8 @@ export interface GameState {
     learnOn: boolean;            // learn mode asks questions during your turns
     quiz: Quiz | null;           // question waiting for an answer
     quizSeq: number;
-    quizKey: string;             // deal and trick of the last turn checked, so each turn asks once
+    quizKey: string;             // deal and trick of the last trick checked, so each trick asks once
     learnMark: number | null;    // cards played when last asked this hand
-    learnLastTrick: number;      // trick of the last question, to space out quiet recaps
     learnStats: Tally;           // kept across matches
     handStats: Tally;            // this hand only
 }
@@ -385,7 +384,7 @@ export const initialState: GameState = {
     multiplier: 1, doubleStage: null, stats: emptyStats,
     shownOut: [], holdTricks: true,
     learnOn: false, quiz: null, quizSeq: 0, quizKey: "",
-    learnMark: null, learnLastTrick: -9,
+    learnMark: null,
     learnStats: { asked: 0, right: 0 }, handStats: { asked: 0, right: 0 },
 };
 

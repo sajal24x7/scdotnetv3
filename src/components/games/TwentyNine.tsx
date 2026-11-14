@@ -5,7 +5,7 @@ import {
 } from "../../utils/twentyNine";
 import type { Action, Card, GameState, TrickEntry } from "../../utils/twentyNine";
 import {
-    LEARN_NAME, LEARN_REMEMBER, LEARN_SAY, learnReducer, cleanLoaded,
+    MODES, LEARN_MODE, learnReducer, cleanLoaded,
 } from "../../utils/twentyNineLearn";
 import type { Quiz } from "../../utils/twentyNineLearn";
 
@@ -169,12 +169,11 @@ function LearnPanel({ state, dispatch }: { state: GameState; dispatch: (a: Actio
                 Learn mode {on ? "on" : "off"}
             </button>
             <p className="hint learn-desc">
-                Practise remembering the cards left in each suit. A question comes up on your turn when cards
-                have fallen since you were last asked. Quiet turns have no question.
+                Practise a running count. After each trick, before it clears, you update the count.
             </p>
             <div className="learn-item">
-                <span className="learn-item-name">{LEARN_NAME}</span>
-                <span>{LEARN_REMEMBER} Say: “{LEARN_SAY}”</span>
+                <span className="learn-item-name">{MODES[LEARN_MODE].name}</span>
+                <span>{MODES[LEARN_MODE].remember} Say: “{MODES[LEARN_MODE].say}”</span>
             </div>
             {state.learnStats.asked > 0 && (
                 <p className="hint">Right so far: {state.learnStats.right}/{state.learnStats.asked}</p>
@@ -188,7 +187,7 @@ function LearnBar({ state }: { state: GameState }) {
     const t = state.handStats;
     return (
         <p className="hint learn-bar">
-            {LEARN_NAME}{t.asked > 0 && `: ${t.right}/${t.asked} this hand`}
+            {MODES[LEARN_MODE].name}{t.asked > 0 && `: ${t.right}/${t.asked} this hand`}
         </p>
     );
 }
@@ -271,10 +270,44 @@ function ListQuiz({ quiz, picked, toggle, pickClass, onAnswer }: {
     );
 }
 
-// The question shown before your turn.
+// "Points left?" One row of numbers per suit, plus trumps once you know trump.
+function PointsQuiz({ quiz, onAnswer }: { quiz: Quiz; onAnswer: (value: number[]) => void }) {
+    const [picks, setPicks] = useState<(number | null)[]>(() => quiz.rows.map(() => null));
+    const done = quiz.result !== null;
+    const picked = done ? (quiz.result!.picked as number[]) : picks;
+    return (
+        <>
+            {quiz.rows.map((row, i) => (
+                <div key={row.id} className="points-row" role="group" aria-label={row.id === "trump" ? "Trumps left" : `${SUIT_INFO[row.suit].name} points left`}>
+                    <span className={`points-label ${SUIT_INFO[row.suit].red ? "text-red" : "text-dark"}`}>{row.label}</span>
+                    <div className="points-opts">
+                        {Array.from({ length: row.max + 1 }, (_, n) => {
+                            const cls = !done ? (picks[i] === n ? "points-on" : "")
+                                : n === row.answer ? "quiz-opt-good" : n === picked[i] ? "quiz-opt-wrong" : "";
+                            return (
+                                <button key={n} className={`quiz-opt points-opt ${cls}`} disabled={done} aria-pressed={picks[i] === n}
+                                    onClick={() => setPicks((p) => p.map((v, j) => (j === i ? n : v)))}>
+                                    {n}
+                                </button>
+                            );
+                        })}
+                    </div>
+                </div>
+            ))}
+            {!done && (
+                <button className="btn-primary" disabled={picks.some((p) => p === null)}
+                    onClick={() => onAnswer(picks as number[])}>
+                    Check
+                </button>
+            )}
+        </>
+    );
+}
+
+// The question shown after a trick, before it clears.
 function QuizPanel({ quiz, onAnswer, onClose }: {
     quiz: Quiz;
-    onAnswer: (value: string[]) => void; onClose: () => void;
+    onAnswer: (value: number[] | string[]) => void; onClose: () => void;
 }) {
     const [picked, setPicked] = useState<Set<string>>(new Set());
     const done = quiz.result !== null;
@@ -293,9 +326,11 @@ function QuizPanel({ quiz, onAnswer, onClose }: {
     };
     return (
         <div className="quiz-box" role="group" aria-label="Counting question">
-            <p className="quiz-head">{LEARN_NAME}</p>
+            <p className="quiz-head">{MODES[quiz.mode].name}</p>
             <p className="quiz-question">{quiz.question}</p>
-            <ListQuiz quiz={quiz} picked={picked} toggle={toggle} pickClass={pickClass} onAnswer={onAnswer} />
+            {quiz.mode === "points"
+                ? <PointsQuiz quiz={quiz} onAnswer={onAnswer} />
+                : <ListQuiz quiz={quiz} picked={picked} toggle={toggle} pickClass={pickClass} onAnswer={onAnswer} />}
             {done && (
                 <div className="quiz-result" aria-live="polite">
                     <p style={{ fontWeight: 600, color: quiz.result!.correct ? "var(--game-good)" : "var(--game-red)" }}>
@@ -303,7 +338,7 @@ function QuizPanel({ quiz, onAnswer, onClose }: {
                     </p>
                     <p className="hint" style={{ whiteSpace: "pre-line" }}>{quiz.explain}</p>
                     <p className="hint quiz-say" style={{ whiteSpace: "pre-line" }}>Say: “{quiz.say}”</p>
-                    {!quiz.result!.correct && (
+                    {quiz.mode === "cards" && !quiz.result!.correct && (
                         <p className="hint">Green: right. Dashed red: missed. Solid red: already gone or yours.</p>
                     )}
                     <button className="btn-primary" style={{ marginTop: 8 }} onClick={onClose} autoFocus>Continue</button>
@@ -387,18 +422,19 @@ export default function TwentyNine() {
 
     // A finished trick clears itself, or waits for a tap when "Hold" is on.
     const trickDone = state.phase === "playing" && state.trick.length === 4;
-    const holding = trickDone && state.holdTricks && !collecting;
+    const holding = trickDone && state.holdTricks && !collecting && !state.quiz;
     const clearTrick = () => {
         setCollecting(true);
         after(320, () => dispatch({ type: "CLEAR_TRICK" }));
     };
     useEffect(() => {
         if (state.trick.length < 4) { setCollecting(false); return; }
-        if (state.phase === "playing" && !state.holdTricks) {
+        // A learn question holds the trick on the table until you tap Continue.
+        if (state.phase === "playing" && !state.holdTricks && !state.quiz) {
             after(880, () => setCollecting(true));
             after(1200, () => dispatch({ type: "CLEAR_TRICK" }));
         }
-    }, [state.trick.length, state.phase]);
+    }, [state.trick.length, state.phase, state.quiz === null]);
 
     useEffect(() => {
         if (state.banner) {
@@ -843,6 +879,13 @@ export default function TwentyNine() {
                 }
                 .quiz-opt:hover:not(:disabled) { border-color: var(--game-accent); }
                 .quiz-opt:disabled { cursor: default; opacity: 0.5; }
+                .quiz-opt.quiz-opt-good { border-color: var(--game-good); color: var(--game-good); opacity: 1; }
+                .quiz-opt.quiz-opt-wrong { border-color: var(--game-red); color: var(--game-red); opacity: 1; }
+                .points-row { display: flex; align-items: center; gap: 6px; }
+                .points-label { flex: 0 0 3.6em; font-size: var(--text-sm); font-weight: 700; }
+                .points-opts { flex: 1; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 3px; }
+                .quiz-opt.points-opt { min-width: 0; height: 32px; padding: 0; }
+                .quiz-opt.points-on { border-color: var(--game-accent); background: var(--game-accent); color: var(--game-accent-text); }
                 .list-prompt { font-size: var(--text-base); font-weight: 700; }
                 .list-row { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; min-height: 58px; }
                 .list-slot { width: 36px; height: 50px; margin: 2px; border-radius: 6px; border: 1.5px dashed var(--game-card-border); }
@@ -1250,7 +1293,7 @@ export default function TwentyNine() {
                                     <div className="tip-box">
                                         <p><strong>Counting:</strong> {state.handStats.right} of {state.handStats.asked} right this hand.</p>
                                         {state.handStats.right < state.handStats.asked && (
-                                            <p style={{ marginTop: 2 }}>Next hand: {LEARN_REMEMBER}</p>
+                                            <p style={{ marginTop: 2 }}>Next hand: {MODES[LEARN_MODE].remember}</p>
                                         )}
                                     </div>
                                 )}

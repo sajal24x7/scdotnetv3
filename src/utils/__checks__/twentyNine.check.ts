@@ -10,7 +10,7 @@ import {
     teamAwareBidOrder, initialState, makeDeck, reducer,
 } from '../twentyNine.ts';
 import type { Card, GameState } from '../twentyNine.ts';
-import { topQuiz, cardsLeft, chooseQuiz, checkAnswer, learnReducer, cleanLoaded } from '../twentyNineLearn.ts';
+import { topQuiz, pointsQuiz, pointsLeft, cardsLeft, chooseQuiz, checkAnswer, learnReducer, cleanLoaded } from '../twentyNineLearn.ts';
 
 let failures = 0;
 
@@ -139,23 +139,36 @@ console.log('learn mode questions');
     check('cards left: a suit with every card played is skipped',
         topQuiz({ ...st, played: allHearts }, 1, 4)!.suits.includes('H'), false);
 
-    // When to ask.
-    check('first turn of the hand asks', chooseQuiz(st, 1) !== null, true);
-    const marked = { ...st, learnMark: 8, learnLastTrick: 1 };
-    check('nothing new: no question', chooseQuiz(marked, 1), null);
-    check('a recap after a quiet turn, when a card fell', chooseQuiz({ ...marked, learnMark: 7, learnLastTrick: 0 }, 1) !== null, true);
-    check('no recap right after a question', chooseQuiz({ ...marked, learnMark: 7 }, 1), null);
-    check('a full trick since last asked: a lead asks three suits', chooseQuiz({ ...marked, learnMark: 4 }, 1)!.suits.length, 3);
+    // Points left: every point card not yet played, yours included.
+    check('points left per suit', ['S', 'H', 'D', 'C'].map((x) => pointsLeft(st, x)), [7, 0, 7, 4]);
+    const pts = pointsQuiz(st, 1);
+    check('points: one row per suit, then trumps once known', pts.rows.map((r) => [r.id, r.answer]),
+        [['S', 7], ['H', 0], ['D', 7], ['C', 4], ['trump', 7]]);
+    check('points: say', pts.say, 'Points: ♠ 7, ♥ 0, ♦ 7, ♣ 4. Trumps: 7.');
+    check('points: right answer', checkAnswer(pts, [7, 0, 7, 4, 7]), true);
+    check('points: one row wrong', checkAnswer(pts, [7, 0, 7, 3, 7]), false);
+    check('points: no trump row while trump is hidden', pointsQuiz({ ...st, caller: 1 }, 1).rows.length, 4);
+    check('points: trump row once revealed', pointsQuiz({ ...st, caller: 1, trumpRevealed: true }, 1).rows.length, 5);
 
-    const old = cleanLoaded({ ...st, learnSkills: ['voids'], learnMarks: { top: 4 }, learnStats: { voids: { asked: 3, right: 2 }, top: { asked: 1, right: 1 } },
+    // When to ask: once a trick is finished, before it clears.
+    const done: GameState = { ...st, learnOn: true, leadSuit: 'C',
+        trick: [{ player: 1, card: c('C7') }, { player: 2, card: c('S7') }, { player: 3, card: c('CJ') }, { player: 0, card: c('D8') }] };
+    check('asks after a finished trick', learnReducer(done, { type: 'CLEAR_BANNER', id: -1 }).quiz?.mode, 'points');
+    check('not before your turn', learnReducer({ ...st, learnOn: true }, { type: 'CLEAR_BANNER', id: -1 }).quiz, null);
+    check('not after the last trick', chooseQuiz({ ...done, tricksPlayed: 8 }, 1), null);
+    const once = learnReducer(learnReducer(done, { type: 'CLEAR_BANNER', id: -1 }), { type: 'CLOSE_QUIZ' });
+    check('once per trick', learnReducer(once, { type: 'CLEAR_BANNER', id: -1 }).quiz, null);
+
+    const old = cleanLoaded({ ...st, learnSkills: ['voids'], learnMarks: { top: 4 }, learnLastTrick: 1, learnStats: { voids: { asked: 3, right: 2 }, top: { asked: 1, right: 1 } },
         handStats: {}, quiz: { ...one, skill: 'trump', kind: 'number' } } as never);
-    check('old saves: cards-left stats kept, old questions dropped',
-        [old.learnStats, old.handStats, old.quiz, old.learnMark, 'learnSkills' in old], [{ asked: 1, right: 1 }, { asked: 0, right: 0 }, null, 4, false]);
+    check('old saves: cards-left stats kept, old fields and questions dropped',
+        [old.learnStats, old.handStats, old.quiz, old.learnMark, 'learnSkills' in old, 'learnLastTrick' in old],
+        [{ asked: 1, right: 1 }, { asked: 0, right: 0 }, null, 4, false, false]);
     const asked = learnReducer({ ...st, learnOn: true }, { type: 'ANSWER_QUIZ', value: [] });
     check('answer needs an open quiz', asked.handStats, { asked: 0, right: 0 });
-    const on = learnReducer(st, { type: 'SET_LEARN', on: true });
-    check('turning on asks at once on your turn', on.quiz !== null, true);
-    const answered = learnReducer(learnReducer(on, { type: 'ANSWER_QUIZ', value: on.quiz!.answerIds }), { type: 'CLOSE_QUIZ' });
+    const on = learnReducer({ ...done, learnOn: false }, { type: 'SET_LEARN', on: true });
+    check('turning on with a finished trick asks at once', on.quiz !== null, true);
+    const answered = learnReducer(learnReducer(on, { type: 'ANSWER_QUIZ', value: on.quiz!.rows.map((r) => r.answer) }), { type: 'CLOSE_QUIZ' });
     check('answers count', answered.learnStats, { asked: 1, right: 1 });
 }
 
@@ -214,7 +227,7 @@ for (let n = 0; n < HANDS; n++) {
     if (s.lastResult!.made) callerWins++;
 }
 Math.random = realRandom;
-// Learn mode asks at most once per turn and play goes on after it.
+// Learn mode asks at most once per trick and play goes on after it.
 let asked = 0;
 for (let n = 0; n < 40; n++) {
     Math.random = seeded(1000 + n);
@@ -225,7 +238,9 @@ for (let n = 0; n < 40; n++) {
             quizzes++;
             asked++;
             if (!s.quiz.say) problems.push(`learn ${n}: no say line`);
-            s = learnReducer(s, { type: 'ANSWER_QUIZ', value: s.quiz.answerIds });
+            if (s.trick.length !== 4) problems.push(`learn ${n}: asked before the trick finished`);
+            const answer = s.quiz.mode === 'points' ? s.quiz.rows.map((r) => r.answer) : s.quiz.answerIds;
+            s = learnReducer(s, { type: 'ANSWER_QUIZ', value: answer });
             if (!s.quiz!.result!.correct) problems.push(`learn ${n}: own answer marked wrong`);
             s = learnReducer(s, { type: 'CLOSE_QUIZ' });
         } else if (s.phase === 'bidding') s = learnReducer(s, { type: 'AI_BID', playerIdx: s.bidTurn });
@@ -235,7 +250,7 @@ for (let n = 0; n < 40; n++) {
         else s = learnReducer(s, { type: 'AI_PLAY', playerIdx: s.turn });
     }
     if (s.phase !== 'hand-end') problems.push(`learn ${n}: stuck`);
-    if (quizzes > 8) problems.push(`learn ${n}: ${quizzes} questions`);
+    if (quizzes > 7) problems.push(`learn ${n}: ${quizzes} questions`);
     if (s.handStats.right !== quizzes) problems.push(`learn ${n}: tally ${s.handStats.right}/${quizzes}`);
 }
 console.log(`  info learn questions asked: ${asked}`);
