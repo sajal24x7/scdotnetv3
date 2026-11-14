@@ -1,13 +1,23 @@
 ---
-title: "Post Diwali Blues"
-slug: "nl131-post-diwali-blues"
-created: 2026-11-14T14:16:00+02:00
-updated: 2026-11-14T15:43:03+02:00
+title: Post Diwali Blues
+slug: nl131-post-diwali-blues
+created: 2026-11-14T12:16:00.000Z
+updated: 2026-11-14T13:43:03.000Z
 category: nordletter
-tags: ["diwali", "sickweek", "finland", "winter", "lights", "snow"]
+tags:
+  - diwali
+  - sickweek
+  - finland
+  - winter
+  - lights
+  - snow
 edition: 131
-description: "A slow week after Diwali"
-image: "https://storage.sajalchoudhary.net/images/2026/11/nl131-03.jpeg"
+description: A slow week after Diwali
+image: 'https://storage.sajalchoudhary.net/images/2026/11/nl131-03.jpeg'
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117615574231555075'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2btuujdfp2v'
+  - 'https://www.threads.com/@sajal24x7/post/Dfuj-Sekat9'
 ---
 Hello from my home in Helsinki! This is NordLetter #131, a weekly newsletter on living and walking in Finland.
 
