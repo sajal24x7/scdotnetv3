@@ -1651,6 +1651,21 @@
       "status": "approved"
     }
   ],
+  "micro/writing-a-poetry-collection-as-a-page-turner": [
+    {
+      "id": "bluesky:like:3n2a5bt6grg2k:did:plc:hz3thvwswybpm2jskkwl4hgv",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Maciek Hamela",
+        "url": "https://bsky.app/profile/maciekhamela.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:hz3thvwswybpm2jskkwl4hgv/bafkreibtiam7b2763vkuqm34s7tdhrpg4avhdxpzq6f3f6incjjys3a7oa"
+      },
+      "url": "https://bsky.app/profile/maciekhamela.bsky.social",
+      "published": "2026-11-14T00:06:31.235Z",
+      "status": "approved"
+    }
+  ],
   "micro/writing-in-the-moment": [
     {
       "id": "mastodon:repost:117303095886939870:114910036696039119",
