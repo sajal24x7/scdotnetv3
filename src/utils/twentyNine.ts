@@ -7,7 +7,7 @@
 import type { Quiz, Tally, LearnAction } from "./twentyNineLearn.ts";
 
 /* ---------- Card data ---------- */
-export const SUITS = ["S", "H", "D", "C"];
+export const SUITS = ["C", "H", "S", "D"]; // Display order: hand, trump picker, learn questions
 export const SUIT_INFO: Record<string, { sym: string; red: boolean; name: string }> = {
     S: { sym: "♠", red: false, name: "Spades" },
     C: { sym: "♣", red: false, name: "Clubs" },
