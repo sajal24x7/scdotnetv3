@@ -270,35 +270,51 @@ function ListQuiz({ quiz, picked, toggle, pickClass, onAnswer }: {
     );
 }
 
-// "Points left?" One row of numbers per suit, plus trumps once you know trump.
+// "Points left?" One digit box per suit in a single row, plus trumps once you know trump.
+// Typing a digit moves to the next box, Backspace on an empty box goes back, Enter checks.
 function PointsQuiz({ quiz, onAnswer }: { quiz: Quiz; onAnswer: (value: number[]) => void }) {
-    const [picks, setPicks] = useState<(number | null)[]>(() => quiz.rows.map(() => null));
+    const [picks, setPicks] = useState<string[]>(() => quiz.rows.map(() => ""));
+    const boxes = useRef<(HTMLInputElement | null)[]>([]);
     const done = quiz.result !== null;
-    const picked = done ? (quiz.result!.picked as number[]) : picks;
+    const picked = done ? (quiz.result!.picked as number[]).map(String) : picks;
+    const ready = picks.every((p) => p !== "");
+    const submit = () => { if (ready) onAnswer(picks.map(Number)); };
+    const set = (i: number, raw: string) => {
+        const digit = raw.replace(/\D/g, "").slice(-1);
+        if (digit !== "" && Number(digit) > quiz.rows[i].max) return;
+        setPicks((p) => p.map((v, j) => (j === i ? digit : v)));
+        if (digit !== "") boxes.current[i + 1]?.focus();
+    };
+    const key = (i: number) => (e: React.KeyboardEvent<HTMLInputElement>) => {
+        // preventDefault keeps the same Enter from also pressing Continue once it takes focus.
+        if (e.key === "Enter") { e.preventDefault(); submit(); }
+        else if (e.key === "Backspace" && picks[i] === "" && i > 0) boxes.current[i - 1]?.focus();
+    };
     return (
         <>
-            {quiz.rows.map((row, i) => (
-                <div key={row.id} className="points-row" role="group" aria-label={row.id === "trump" ? "Trumps left" : `${SUIT_INFO[row.suit].name} points left`}>
-                    <span className={`points-label ${SUIT_INFO[row.suit].red ? "text-red" : "text-dark"}`}>{row.label}</span>
-                    <div className="points-opts">
-                        {Array.from({ length: row.max + 1 }, (_, n) => {
-                            const cls = !done ? (picks[i] === n ? "points-on" : "")
-                                : n === row.answer ? "quiz-opt-good" : n === picked[i] ? "quiz-opt-wrong" : "";
-                            return (
-                                <button key={n} className={`quiz-opt points-opt ${cls}`} disabled={done} aria-pressed={picks[i] === n}
-                                    onClick={() => setPicks((p) => p.map((v, j) => (j === i ? n : v)))}>
-                                    {n}
-                                </button>
-                            );
-                        })}
-                    </div>
-                </div>
-            ))}
+            <div className="points-line">
+                {quiz.rows.map((row, i) => {
+                    const trump = row.id === "trump";
+                    const name = trump ? "Trumps left" : `${SUIT_INFO[row.suit].name} points left`;
+                    const right = done && Number(picked[i]) === row.answer;
+                    return (
+                        <label key={row.id} className={`points-cell ${trump ? "points-trump" : ""}`}>
+                            <span className={`points-label ${SUIT_INFO[row.suit].red ? "text-red" : "text-dark"}`}>
+                                {trump ? `Trump ${SUIT_INFO[row.suit].sym}` : SUIT_INFO[row.suit].sym}
+                            </span>
+                            <input ref={(el) => { boxes.current[i] = el; }}
+                                className={`points-box ${done ? (right ? "points-good" : "points-bad") : ""}`}
+                                type="text" inputMode="numeric" pattern="[0-9]*" autoComplete="off" enterKeyHint={i === quiz.rows.length - 1 ? "done" : "next"}
+                                aria-label={`${name}, 0 to ${row.max}`} placeholder={`0–${row.max}`}
+                                value={picked[i]} disabled={done} autoFocus={i === 0}
+                                onChange={(e) => set(i, e.target.value)} onKeyDown={key(i)} onFocus={(e) => e.target.select()} />
+                            <span className="points-note">{done && !right ? `is ${row.answer}` : "\u00a0"}</span>
+                        </label>
+                    );
+                })}
+            </div>
             {!done && (
-                <button className="btn-primary" disabled={picks.some((p) => p === null)}
-                    onClick={() => onAnswer(picks as number[])}>
-                    Check
-                </button>
+                <button className="btn-primary" disabled={!ready} onClick={submit}>Check</button>
             )}
         </>
     );
@@ -881,11 +897,20 @@ export default function TwentyNine() {
                 .quiz-opt:disabled { cursor: default; opacity: 0.5; }
                 .quiz-opt.quiz-opt-good { border-color: var(--game-good); color: var(--game-good); opacity: 1; }
                 .quiz-opt.quiz-opt-wrong { border-color: var(--game-red); color: var(--game-red); opacity: 1; }
-                .points-row { display: flex; align-items: center; gap: 6px; }
-                .points-label { flex: 0 0 3.6em; font-size: var(--text-sm); font-weight: 700; }
-                .points-opts { flex: 1; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 3px; }
-                .quiz-opt.points-opt { min-width: 0; height: 32px; padding: 0; }
-                .quiz-opt.points-on { border-color: var(--game-accent); background: var(--game-accent); color: var(--game-accent-text); }
+                .points-line { display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; }
+                .points-cell { display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: text; }
+                .points-trump { margin-left: auto; padding-left: 8px; border-left: 1px solid var(--game-border); }
+                .points-label { font-size: var(--text-sm); font-weight: 700; line-height: 1.2; }
+                .points-box {
+                    width: 44px; height: 40px; border-radius: 8px; text-align: center;
+                    border: 1.5px solid var(--game-card-border); background: var(--game-card-bg); color: var(--game-text);
+                    font-family: inherit; font-size: var(--text-base); font-weight: 700;
+                }
+                .points-box::placeholder { color: var(--game-text-2); font-size: var(--text-xs); font-weight: 400; opacity: 0.6; }
+                .points-box:focus { outline: 2px solid var(--game-accent); outline-offset: 1px; }
+                .points-box.points-good { border-color: var(--game-good); color: var(--game-good); }
+                .points-box.points-bad { border-color: var(--game-red); color: var(--game-red); }
+                .points-note { font-size: var(--text-xs); color: var(--game-red); line-height: 1; }
                 .list-prompt { font-size: var(--text-base); font-weight: 700; }
                 .list-row { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; min-height: 58px; }
                 .list-slot { width: 36px; height: 50px; margin: 2px; border-radius: 6px; border: 1.5px dashed var(--game-card-border); }
