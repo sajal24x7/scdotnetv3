@@ -8,7 +8,7 @@ A single-player version of 29, the trick-taking card game for two pairs, at `/ga
 | --- | --- |
 | `src/pages/games/cards-29/index.astro` | Standalone page shell (no site layout). Mounts the game with `client:load`. |
 | `src/utils/twentyNine.ts` | Rules, the game state machine (`reducer`), the computer players and the move tips. No React and no DOM. |
-| `src/utils/twentyNineLearn.ts` | Learn mode: the three skills (`SKILLS`), question builders, the timing rules (`candidates`, `chooseQuiz`) and `learnReducer`, which wraps the game reducer. |
+| `src/utils/twentyNineLearn.ts` | Learn mode: the mode in use (`LEARN_MODE`), the points question (`pointsQuiz`), the kept cards-left question (`topQuiz`), the timing rule (`chooseQuiz`) and `learnReducer`, which wraps the game reducer. |
 | `src/components/games/TwentyNine.tsx` | The React UI: table, hand, bidding controls and animations. |
 | `src/utils/__checks__/twentyNine.check.ts` | Rule checks plus 400 seeded hands played by the computer in every seat. |
 
@@ -33,56 +33,45 @@ Trump stays hidden until a player who cannot follow suit asks for it. Playing a 
 
 ## Learn mode
 
-Learn mode trains three card-tracking skills. Turn it on from the start screen or the **Learn** button in the header. On your turn the game may ask one question, and the computer players wait until you tap Continue.
+Learn mode trains a running count. Turn it on from the start screen or the **Learn** button in the header. After each trick finishes, the game asks one question. The trick stays on the table, and the computer players and "Next trick" wait until you tap Continue.
 
-| Skill id | Name | Remember | Say |
-| --- | --- | --- | --- |
-| `top` | Cards left | Every card of each suit still with the other three. | "Hearts left: A, 10, Q, 7." |
-| `voids` | Voids | Who has run out of which suit. | "West out of clubs." |
-| `trump` | Trumps left | How many trumps the other three still hold. | "Spades, 3 out." |
+There is one mode in play, **Points left**. A second mode, **Cards left**, is kept in the code for later practice but is not shown in the UI. `LEARN_MODE` in `twentyNineLearn.ts` picks the mode.
 
-The list is `SKILLS` in `src/utils/twentyNineLearn.ts`. Tap a skill chip on the start screen or in the learn bar to turn it on or off. At least one stays on.
+### Points left
 
-### Cards left: the ranked list
+Only four ranks carry points: J 3, 9 2, A 1, 10 1. So each suit starts with 7 points and the deck with 28.
 
-The `top` skill drills one method for tracking every card:
+1. Start each suit at 7.
+2. Take off each point card as it is played. Your own cards still count until you play them.
+3. Once you know trump, also count trumps not yet played, starting from 8. You know trump from the start when you picked it, or once it is revealed.
+4. Say the counts to yourself: "Points: ♠ 7, ♥ 4, ♦ 2, ♣ 0. Trumps: 5."
+
+The question is one row of small digit boxes: one per suit (0 to 7), plus a **Trump** box (0 to 8) once you know trump. On a phone the boxes open the number keypad. Typing a digit moves to the next box, Backspace on an empty box goes back, and Enter checks. A digit over the box's limit is ignored. The trick just finished counts as played. The answer turns each box green or red, shows the right number under a wrong one, and the working lists which point cards are played and which are left in each suit.
+
+Helpers: `pointsLeft`, `trumpsLeft` and `pointsQuiz` in `twentyNineLearn.ts`; the panel is `PointsQuiz` in `TwentyNine.tsx`.
+
+### Cards left (kept, not in the UI)
+
+Set `LEARN_MODE` to `"cards"` to practise this. It tracks every card of each suit still with the other three:
 
 1. Start each suit with its ranked list: J, 9, A, 10, K, Q, 8, 7.
 2. Take your own cards off at once. Holding the heart 9, the list is "J, A, 10, K, Q, 8, 7."
 3. Cross cards off as they fall. When the heart J drops, the list is "A, 10, K, Q, 8, 7", and your 9 is now the top heart.
 4. Say the list to yourself: "Hearts left: A, 10, K, Q, 8, 7."
 
-You build each list from blank, one suit at a time:
+You build each list from blank, one suit at a time. The prompt names a suit, below it is a row of empty slots (eight minus your own cards), and under that a strip of rank buttons. Tapping a rank moves it into the row, in ranked order; tapping a card in the row puts it back. Your own ranks are marked "yours" and cannot be picked. After each trick it asks up to three suits, the led suit first, then the suits that changed most since last asked (`listSuits`). A suit with every card played is skipped.
 
-- The prompt names a suit: "♦ Diamonds left?"
-- Below it is a row of empty slots (eight minus your own cards, so the count gives nothing away).
-- Under that is a strip of rank buttons, J 9 A 10 K Q 8 7. Tapping one moves it up into the row, which stays in ranked order. Tapping a card in the row puts it back.
-- Your own ranks are marked "yours" and cannot be picked.
-- The button reads "Next suit" (or "Check" on the last suit), or "None left" when you pick nothing.
-
-Which suits: when following, the led suit. Otherwise the suits that changed most since last asked (`listSuits`). A lead after a full trick asks up to three suits in a row; other turns ask one. A suit with every card played is skipped.
-
-The answer shows each suit's row: green for right, dashed red for missed, solid red for a card that is gone or yours. The working and the Say line have one line per suit, such as "Hearts left: A, 10, K, Q, 8, 7. My 9 is top." Helpers: `cardsLeft`, `listSuits` and `topQuiz` in `twentyNineLearn.ts`; the panel is `ListQuiz` in `TwentyNine.tsx`.
+Helpers: `cardsLeft`, `listSuits` and `topQuiz` in `twentyNineLearn.ts`; the panel is `ListQuiz` in `TwentyNine.tsx`.
 
 ### When a question comes up
 
-There is no fixed schedule. Before each of your turns, `candidates` looks at what has happened since each skill was last asked (`learnMarks`, the number of cards played at that point) and gives each fitting question a priority:
-
-| Skill | Priority 3 (ask now) | Priority 2 | Priority 1 (quiet recap) |
-| --- | --- | --- | --- |
-| Cards left | Leading, and 4+ cards played since last asked. | Following, and 4+ cards played since last asked. Or the first question of the hand while leading. | Leading, and any card played since last asked. Or the first question of the hand while following. |
-| Voids | Following: a player still to play is out of the led suit. | A new void from a finished trick, or you are leading a suit someone is out of. | Leading: a suit you hold that nobody is out of (answer "nobody"). |
-| Trumps left | First turn once you know trump (from the start if you set trump, else once someone asks for it), or a trump has fallen since last asked. | You are out of the led suit and could trump. | Leading, 8+ cards since last asked. |
-
-`chooseQuiz` asks the highest priority. A tie goes to the skill asked longest ago. A priority 1 recap is skipped if you were asked a question on the last turn, and turns with nothing to ask have no question. Voids from the trick on the table are not asked until that trick is finished, since the card is still in view.
-
-**Question types.** Cards left builds each suit's list from blank (see above). Voids asks who is out of a suit. Trumps left asks a number from 0 to 8.
+After each finished trick, before it clears (`isAskMoment`: four cards on the table and not yet asked for this trick). That is tricks 1 to 7. The last trick is skipped, since every card has then been played. If **Hold** is off, the trick still waits on the table while the question is open.
 
 Every answer shows the working and a **Say** line, the short phrase to repeat to yourself during play.
 
-Questions only use what you could know: your hand, the cards played, and who failed to follow suit (`shownOut` in the game state). While learn mode is on, the running team points, the "Last trick" button and the log are hidden, since they would give the answers away. The learn bar shows your score per skill for the hand, and the hand-end summary names the weakest skill. Totals per skill (`learnStats`) are saved with the game, and **Reset** keeps them.
+Questions only use what you could know: your hand and the cards played. While learn mode is on, the running team points, the "Last trick" button and the log are hidden, since they would give the answers away. The learn bar shows your score for the hand, and the hand-end summary repeats the method if you missed any. The total (`learnStats`) is saved with the game, and **Reset** keeps it. Older saved games load with their score kept and any open question dropped (`cleanLoaded`).
 
-To add a skill, add a `Skill` id and an entry in `SKILLS`, a question builder, and a block in `candidates` that sets its priority. The checks play 40 hands in learn mode with all skills and with each skill alone, and answer each question with its own answer key.
+The checks play 40 hands in learn mode, check each question comes after a finished trick, and answer it with its own answer key.
 
 ## Hold tricks
 

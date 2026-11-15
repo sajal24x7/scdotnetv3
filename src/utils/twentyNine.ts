@@ -4,7 +4,7 @@
  * Learn mode (counting drills) lives in src/utils/twentyNineLearn.ts.
  * Checks: node --experimental-strip-types src/utils/__checks__/twentyNine.check.ts
  */
-import type { Quiz, LearnStats, LearnAction, LearnMarks, Skill } from "./twentyNineLearn.ts";
+import type { Quiz, Tally, LearnAction } from "./twentyNineLearn.ts";
 
 /* ---------- Card data ---------- */
 export const SUITS = ["S", "H", "D", "C"];
@@ -359,12 +359,10 @@ export interface GameState {
     learnOn: boolean;            // learn mode asks questions during your turns
     quiz: Quiz | null;           // question waiting for an answer
     quizSeq: number;
-    quizKey: string;             // deal and trick of the last turn checked, so each turn asks once
-    learnSkills: Skill[];        // the skills to practise
-    learnMarks: LearnMarks;      // cards played when each skill was last asked this hand
-    learnLastTrick: number;      // trick of the last question, to space out quiet recaps
-    learnStats: LearnStats;      // per skill, kept across matches
-    handStats: LearnStats;       // this hand only
+    quizKey: string;             // deal and trick of the last trick checked, so each trick asks once
+    learnMark: number | null;    // cards played when last asked this hand
+    learnStats: Tally;           // kept across matches
+    handStats: Tally;            // this hand only
 }
 
 export const emptyStats: Stats = { matchesPlayed: 0, matchesWon: 0, bidsTotal: 0, bidsMade: 0, streak: 0, bestStreak: 0 };
@@ -386,8 +384,8 @@ export const initialState: GameState = {
     multiplier: 1, doubleStage: null, stats: emptyStats,
     shownOut: [], holdTricks: true,
     learnOn: false, quiz: null, quizSeq: 0, quizKey: "",
-    learnSkills: ["top", "voids", "trump"], learnMarks: {}, learnLastTrick: -9,
-    learnStats: {}, handStats: {},
+    learnMark: null,
+    learnStats: { asked: 0, right: 0 }, handStats: { asked: 0, right: 0 },
 };
 
 export function addLog(state: GameState, msg: string): GameState {
@@ -688,7 +686,7 @@ export function reducer(state: GameState, action: Action): GameState {
         case "TOGGLE_HALF_BID": return { ...state, halfBidPenaltyOn: !state.halfBidPenaltyOn };
         case "TOGGLE_HOLD": return { ...state, holdTricks: !state.holdTricks };
         case "NEW_MATCH": return reducer({ ...state, handsWon: { 0: 0, 1: 0 }, round: 0 }, { type: "DEAL" });
-        case "RESET": return { ...initialState, names: state.names, feedbackOn: state.feedbackOn, halfBidPenaltyOn: state.halfBidPenaltyOn, holdTricks: state.holdTricks, stats: state.stats, bidOrder: [], mustRaise: false, learnOn: state.learnOn, learnStats: state.learnStats, learnSkills: state.learnSkills };
+        case "RESET": return { ...initialState, names: state.names, feedbackOn: state.feedbackOn, halfBidPenaltyOn: state.halfBidPenaltyOn, holdTricks: state.holdTricks, stats: state.stats, bidOrder: [], mustRaise: false, learnOn: state.learnOn, learnStats: state.learnStats };
         default: return state;
     }
 }

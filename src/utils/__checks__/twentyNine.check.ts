@@ -10,7 +10,7 @@ import {
     teamAwareBidOrder, initialState, makeDeck, reducer,
 } from '../twentyNine.ts';
 import type { Card, GameState } from '../twentyNine.ts';
-import { topQuiz, voidQuiz, trumpQuiz, cardsLeft, candidates, chooseQuiz, checkAnswer, learnReducer, totalTally, cleanLoaded, ALL_SKILLS } from '../twentyNineLearn.ts';
+import { topQuiz, pointsQuiz, pointsLeft, cardsLeft, chooseQuiz, checkAnswer, learnReducer, cleanLoaded } from '../twentyNineLearn.ts';
 
 let failures = 0;
 
@@ -118,11 +118,6 @@ console.log('learn mode questions');
         shownOut: [{ player: 1, suit: 'C', card: 'S7', trick: 2 }, { player: 3, suit: 'C', card: 'D8', trick: 2 }],
         teamPoints: { 0: 7, 1: 3 },
     };
-    const trump = trumpQuiz(st, 1)!;
-    check('trump count with the others', trump.answer, 8 - 1 - 2);
-    check('trump say', trump.say, 'Spades, 5 out.');
-    check('no trump count while trump is hidden', trumpQuiz({ ...st, caller: 1 }, 1), null);
-    check('trump count once revealed', trumpQuiz({ ...st, caller: 1, trumpRevealed: true }, 1)!.answer, 5);
     // Hearts J 9 A 10 and clubs 7 J are gone; spades 7 was played as a trump.
     check('cards left: with the others', cardsLeft(st, 'C').map((x) => x.rank), ['9', 'A', '10', 'K', 'Q', '8']);
     const one = topQuiz(st, 1)!;
@@ -143,43 +138,38 @@ console.log('learn mode questions');
     const allHearts = ['J', '9', 'A', '10', 'K', 'Q', '8', '7'].map((r) => 'H' + r);
     check('cards left: a suit with every card played is skipped',
         topQuiz({ ...st, played: allHearts }, 1, 4)!.suits.includes('H'), false);
-    const voids = voidQuiz(st, 'C', 1);
-    check('voids: who showed out', voids.answerIds, ['1', '3']);
-    check('voids: say', voids.say, 'B and D out of clubs.');
-    check('voids: nobody', voidQuiz(st, 'H', 1).answerIds, []);
-    const onTable = { ...st, tricksPlayed: 1, shownOut: [{ player: 1, suit: 'C', card: 'S7', trick: 2 }] };
-    check('voids: not while the card is on the table', voidQuiz(onTable, 'C', 1).answerIds, []);
-    check('card answer: exact set', checkAnswer(voids, ['3', '1']), true);
-    check('card answer: missing one', checkAnswer(voids, ['1']), false);
-    check('number answer', checkAnswer(trump, 5), true);
 
-    // When to ask. Leading with nothing asked yet: trump count first (you set trump), plus top cards and voids.
-    const pri = (s: GameState) => Object.fromEntries(candidates(s, 1).map((x) => [x.quiz.skill, x.priority]));
-    check('leading: every skill fits', pri(st), { top: 2, voids: 2, trump: 3 });
-    const marked = { ...st, learnMarks: { top: 8, voids: 8, trump: 8 }, learnLastTrick: 1 };
-    check('nothing new: only quiet recaps, skipped after a question last turn', chooseQuiz(marked, 1), null);
-    check('nothing new: a recap after a quiet turn', chooseQuiz({ ...marked, learnLastTrick: 0 }, 1) !== null, true);
-    // Clubs led to you; D (player 3) plays after you and is out of clubs.
-    const follow = { ...marked, trick: [{ player: 1, card: c('CK') }, { player: 2, card: c('C8') }], leadSuit: 'C', turn: 0,
-        played: [...st.played, 'CK', 'C8'] };
-    check('following: a later player out of the led suit', pri(follow).voids, 3);
-    check('following: a trump fell since last asked', pri({ ...follow, learnMarks: { ...follow.learnMarks, trump: 4 } }).trump, 3);
-    check('only chosen skills', candidates({ ...st, learnSkills: ['voids'] }, 1).map((x) => x.quiz.skill), ['voids']);
-    check('tie goes to the skill asked longest ago', chooseQuiz({ ...st, learnMarks: { top: 4 } }, 1)!.skill, 'trump');
+    // Points left: every point card not yet played, yours included.
+    check('points left per suit', ['S', 'H', 'D', 'C'].map((x) => pointsLeft(st, x)), [7, 0, 7, 4]);
+    const pts = pointsQuiz(st, 1);
+    check('points: one row per suit, then trumps once known', pts.rows.map((r) => [r.id, r.answer]),
+        [['S', 7], ['H', 0], ['D', 7], ['C', 4], ['trump', 7]]);
+    check('points: say', pts.say, 'Points: ♠ 7, ♥ 0, ♦ 7, ♣ 4. Trumps: 7.');
+    check('points: right answer', checkAnswer(pts, [7, 0, 7, 4, 7]), true);
+    check('points: one row wrong', checkAnswer(pts, [7, 0, 7, 3, 7]), false);
+    check('points: no trump row while trump is hidden', pointsQuiz({ ...st, caller: 1 }, 1).rows.length, 4);
+    check('points: trump row once revealed', pointsQuiz({ ...st, caller: 1, trumpRevealed: true }, 1).rows.length, 5);
 
-    const old = cleanLoaded({ ...st, learnSkills: undefined as never, learnStats: { jn: { asked: 3, right: 2 }, top: { asked: 1, right: 1 } } as never,
-        quiz: { ...trump, skill: 'jn' as never } });
-    check('old saves: old skills and questions dropped', [old.learnSkills, old.learnStats, old.quiz], [ALL_SKILLS, { top: { asked: 1, right: 1 } }, null]);
-    const asked = learnReducer({ ...st, learnOn: true }, { type: 'ANSWER_QUIZ', value: 0 });
-    check('answer needs an open quiz', asked.handStats, {});
-    const on = learnReducer(st, { type: 'SET_LEARN', on: true });
-    check('turning on asks at once on your turn', on.quiz !== null, true);
-    const off = learnReducer({ ...on, learnSkills: ALL_SKILLS }, { type: 'TOGGLE_LEARN_SKILL', skill: on.quiz!.skill });
-    check('turning a skill off swaps its open question', off.quiz?.skill !== on.quiz!.skill, true);
-    const last = learnReducer({ ...st, learnSkills: ['top'] }, { type: 'TOGGLE_LEARN_SKILL', skill: 'top' });
-    check('the last skill stays on', last.learnSkills, ['top']);
-    const answered = learnReducer(learnReducer(on, { type: 'ANSWER_QUIZ', value: on.quiz!.kind === 'number' ? on.quiz!.answer : on.quiz!.answerIds }), { type: 'CLOSE_QUIZ' });
-    check('answers count', totalTally(answered.learnStats), { asked: 1, right: 1 });
+    // When to ask: once a trick is finished, before it clears.
+    const done: GameState = { ...st, learnOn: true, leadSuit: 'C',
+        trick: [{ player: 1, card: c('C7') }, { player: 2, card: c('S7') }, { player: 3, card: c('CJ') }, { player: 0, card: c('D8') }] };
+    check('asks after a finished trick', learnReducer(done, { type: 'CLEAR_BANNER', id: -1 }).quiz?.mode, 'points');
+    check('not before your turn', learnReducer({ ...st, learnOn: true }, { type: 'CLEAR_BANNER', id: -1 }).quiz, null);
+    check('not after the last trick', chooseQuiz({ ...done, tricksPlayed: 8 }, 1), null);
+    const once = learnReducer(learnReducer(done, { type: 'CLEAR_BANNER', id: -1 }), { type: 'CLOSE_QUIZ' });
+    check('once per trick', learnReducer(once, { type: 'CLEAR_BANNER', id: -1 }).quiz, null);
+
+    const old = cleanLoaded({ ...st, learnSkills: ['voids'], learnMarks: { top: 4 }, learnLastTrick: 1, learnStats: { voids: { asked: 3, right: 2 }, top: { asked: 1, right: 1 } },
+        handStats: {}, quiz: { ...one, skill: 'trump', kind: 'number' } } as never);
+    check('old saves: cards-left stats kept, old fields and questions dropped',
+        [old.learnStats, old.handStats, old.quiz, old.learnMark, 'learnSkills' in old, 'learnLastTrick' in old],
+        [{ asked: 1, right: 1 }, { asked: 0, right: 0 }, null, 4, false, false]);
+    const asked = learnReducer({ ...st, learnOn: true }, { type: 'ANSWER_QUIZ', value: [] });
+    check('answer needs an open quiz', asked.handStats, { asked: 0, right: 0 });
+    const on = learnReducer({ ...done, learnOn: false }, { type: 'SET_LEARN', on: true });
+    check('turning on with a finished trick asks at once', on.quiz !== null, true);
+    const answered = learnReducer(learnReducer(on, { type: 'ANSWER_QUIZ', value: on.quiz!.rows.map((r) => r.answer) }), { type: 'CLOSE_QUIZ' });
+    check('answers count', answered.learnStats, { asked: 1, right: 1 });
 }
 
 console.log('shownOut');
@@ -237,20 +227,19 @@ for (let n = 0; n < HANDS; n++) {
     if (s.lastResult!.made) callerWins++;
 }
 Math.random = realRandom;
-// Learn mode asks at most once per turn, only skills you chose, and play goes on after it.
-const asked: Record<string, number> = {};
+// Learn mode asks at most once per trick and play goes on after it.
+let asked = 0;
 for (let n = 0; n < 40; n++) {
     Math.random = seeded(1000 + n);
-    const skills = n < 20 ? ALL_SKILLS : [ALL_SKILLS[n % 3]];
-    let s: GameState = learnReducer({ ...initialState, names: ['A', 'B', 'C', 'D'], feedbackOn: false, learnOn: true, learnSkills: skills }, { type: 'DEAL' });
+    let s: GameState = learnReducer({ ...initialState, names: ['A', 'B', 'C', 'D'], feedbackOn: false, learnOn: true }, { type: 'DEAL' });
     let quizzes = 0, steps = 0;
     while (s.phase !== 'hand-end' && steps++ < 500) {
         if (s.quiz) {
             quizzes++;
-            asked[s.quiz.skill] = (asked[s.quiz.skill] ?? 0) + 1;
-            if (!skills.includes(s.quiz.skill)) problems.push(`learn ${n}: ${s.quiz.skill} asked but not chosen`);
-            if (!s.quiz.say) problems.push(`learn ${n}: ${s.quiz.skill} has no say line`);
-            const answer = s.quiz.kind === 'number' ? s.quiz.answer : s.quiz.answerIds;
+            asked++;
+            if (!s.quiz.say) problems.push(`learn ${n}: no say line`);
+            if (s.trick.length !== 4) problems.push(`learn ${n}: asked before the trick finished`);
+            const answer = s.quiz.mode === 'points' ? s.quiz.rows.map((r) => r.answer) : s.quiz.answerIds;
             s = learnReducer(s, { type: 'ANSWER_QUIZ', value: answer });
             if (!s.quiz!.result!.correct) problems.push(`learn ${n}: own answer marked wrong`);
             s = learnReducer(s, { type: 'CLOSE_QUIZ' });
@@ -261,10 +250,10 @@ for (let n = 0; n < 40; n++) {
         else s = learnReducer(s, { type: 'AI_PLAY', playerIdx: s.turn });
     }
     if (s.phase !== 'hand-end') problems.push(`learn ${n}: stuck`);
-    if (quizzes > 8) problems.push(`learn ${n}: ${quizzes} questions`);
-    if (totalTally(s.handStats).right !== quizzes) problems.push(`learn ${n}: tally ${totalTally(s.handStats).right}/${quizzes}`);
+    if (quizzes > 7) problems.push(`learn ${n}: ${quizzes} questions`);
+    if (s.handStats.right !== quizzes) problems.push(`learn ${n}: tally ${s.handStats.right}/${quizzes}`);
 }
-console.log(`  info learn questions asked: ${JSON.stringify(asked)}`);
+console.log(`  info learn questions asked: ${asked}`);
 Math.random = realRandom;
 check(`${HANDS} hands finish cleanly`, problems.slice(0, 5), []);
 const rate = callerWins / HANDS;

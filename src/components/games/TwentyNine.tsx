@@ -5,7 +5,7 @@ import {
 } from "../../utils/twentyNine";
 import type { Action, Card, GameState, TrickEntry } from "../../utils/twentyNine";
 import {
-    SKILLS, ALL_SKILLS, learnReducer, skillName, skillInfo, tallyOf, totalTally, weakestSkill, cleanLoaded,
+    MODES, LEARN_MODE, learnReducer, cleanLoaded,
 } from "../../utils/twentyNineLearn";
 import type { Quiz } from "../../utils/twentyNineLearn";
 
@@ -160,26 +160,6 @@ function ScoreCard({ label, wins, total, colorClass, symbol }: {
     );
 }
 
-// Learn mode: the three skills. Tap one to turn it on or off.
-function SkillChips({ state, dispatch, compact }: { state: GameState; dispatch: (a: Action) => void; compact?: boolean }) {
-    const on = state.learnSkills?.length ? state.learnSkills : ALL_SKILLS;
-    return (
-        <div className="learn-levels" role="group" aria-label="Skills to practise">
-            {SKILLS.map((s) => {
-                const t = tallyOf(compact ? state.handStats : state.learnStats, s.id);
-                const active = on.includes(s.id);
-                return (
-                    <button key={s.id} className={`learn-chip ${compact ? "learn-mini" : ""} ${active ? "learn-chip-on" : ""}`}
-                        aria-pressed={active} disabled={active && on.length === 1}
-                        onClick={() => dispatch({ type: "TOGGLE_LEARN_SKILL", skill: s.id })}>
-                        {s.name}{t.asked > 0 && ` ${t.right}/${t.asked}`}
-                    </button>
-                );
-            })}
-        </div>
-    );
-}
-
 function LearnPanel({ state, dispatch }: { state: GameState; dispatch: (a: Action) => void }) {
     const on = state.learnOn;
     return (
@@ -189,28 +169,26 @@ function LearnPanel({ state, dispatch }: { state: GameState; dispatch: (a: Actio
                 Learn mode {on ? "on" : "off"}
             </button>
             <p className="hint learn-desc">
-                Practise three things. A question comes up on your turn when something has just changed or the
-                answer matters for your play. Quiet turns have no question.
+                Practise a running count. After each trick, before it clears, you update the count.
             </p>
-            <ul className="learn-list">
-                {SKILLS.map((s) => (
-                    <li key={s.id} className="learn-item">
-                        <span className="learn-item-name">{s.name}</span>
-                        <span>{s.remember} Say: “{s.say}”</span>
-                    </li>
-                ))}
-            </ul>
-            <SkillChips state={state} dispatch={dispatch} />
+            <div className="learn-item">
+                <span className="learn-item-name">{MODES[LEARN_MODE].name}</span>
+                <span>{MODES[LEARN_MODE].remember} Say: “{MODES[LEARN_MODE].say}”</span>
+            </div>
+            {state.learnStats.asked > 0 && (
+                <p className="hint">Right so far: {state.learnStats.right}/{state.learnStats.asked}</p>
+            )}
         </div>
     );
 }
 
-// During play: the skills you practise and your score this hand.
-function LearnBar({ state, dispatch }: { state: GameState; dispatch: (a: Action) => void }) {
+// During play: your score this hand.
+function LearnBar({ state }: { state: GameState }) {
+    const t = state.handStats;
     return (
-        <div className="learn-bar">
-            <SkillChips state={state} dispatch={dispatch} compact />
-        </div>
+        <p className="hint learn-bar">
+            {MODES[LEARN_MODE].name}{t.asked > 0 && `: ${t.right}/${t.asked} this hand`}
+        </p>
     );
 }
 
@@ -292,10 +270,60 @@ function ListQuiz({ quiz, picked, toggle, pickClass, onAnswer }: {
     );
 }
 
-// The question shown before your turn.
+// "Points left?" One digit box per suit in a single row, plus trumps once you know trump.
+// Typing a digit moves to the next box, Backspace on an empty box goes back, Enter checks.
+function PointsQuiz({ quiz, onAnswer }: { quiz: Quiz; onAnswer: (value: number[]) => void }) {
+    const [picks, setPicks] = useState<string[]>(() => quiz.rows.map(() => ""));
+    const boxes = useRef<(HTMLInputElement | null)[]>([]);
+    const done = quiz.result !== null;
+    const picked = done ? (quiz.result!.picked as number[]).map(String) : picks;
+    const ready = picks.every((p) => p !== "");
+    const submit = () => { if (ready) onAnswer(picks.map(Number)); };
+    const set = (i: number, raw: string) => {
+        const digit = raw.replace(/\D/g, "").slice(-1);
+        if (digit !== "" && Number(digit) > quiz.rows[i].max) return;
+        setPicks((p) => p.map((v, j) => (j === i ? digit : v)));
+        if (digit !== "") boxes.current[i + 1]?.focus();
+    };
+    const key = (i: number) => (e: React.KeyboardEvent<HTMLInputElement>) => {
+        // preventDefault keeps the same Enter from also pressing Continue once it takes focus.
+        if (e.key === "Enter") { e.preventDefault(); submit(); }
+        else if (e.key === "Backspace" && picks[i] === "" && i > 0) boxes.current[i - 1]?.focus();
+    };
+    return (
+        <>
+            <div className="points-line">
+                {quiz.rows.map((row, i) => {
+                    const trump = row.id === "trump";
+                    const name = trump ? "Trumps left" : `${SUIT_INFO[row.suit].name} points left`;
+                    const right = done && Number(picked[i]) === row.answer;
+                    return (
+                        <label key={row.id} className={`points-cell ${trump ? "points-trump" : ""}`}>
+                            <span className={`points-label ${SUIT_INFO[row.suit].red ? "text-red" : "text-dark"}`}>
+                                {trump ? `Trump ${SUIT_INFO[row.suit].sym}` : SUIT_INFO[row.suit].sym}
+                            </span>
+                            <input ref={(el) => { boxes.current[i] = el; }}
+                                className={`points-box ${done ? (right ? "points-good" : "points-bad") : ""}`}
+                                type="text" inputMode="numeric" pattern="[0-9]*" autoComplete="off" enterKeyHint={i === quiz.rows.length - 1 ? "done" : "next"}
+                                aria-label={`${name}, 0 to ${row.max}`} placeholder={`0–${row.max}`}
+                                value={picked[i]} disabled={done} autoFocus={i === 0}
+                                onChange={(e) => set(i, e.target.value)} onKeyDown={key(i)} onFocus={(e) => e.target.select()} />
+                            <span className="points-note">{done && !right ? `is ${row.answer}` : "\u00a0"}</span>
+                        </label>
+                    );
+                })}
+            </div>
+            {!done && (
+                <button className="btn-primary" disabled={!ready} onClick={submit}>Check</button>
+            )}
+        </>
+    );
+}
+
+// The question shown after a trick, before it clears.
 function QuizPanel({ quiz, onAnswer, onClose }: {
     quiz: Quiz;
-    onAnswer: (value: number | string[]) => void; onClose: () => void;
+    onAnswer: (value: number[] | string[]) => void; onClose: () => void;
 }) {
     const [picked, setPicked] = useState<Set<string>>(new Set());
     const done = quiz.result !== null;
@@ -314,40 +342,11 @@ function QuizPanel({ quiz, onAnswer, onClose }: {
     };
     return (
         <div className="quiz-box" role="group" aria-label="Counting question">
-            <p className="quiz-head">{skillName(quiz.skill)}</p>
+            <p className="quiz-head">{MODES[quiz.mode].name}</p>
             <p className="quiz-question">{quiz.question}</p>
-            {quiz.kind === "number" ? (
-                <div className="quiz-options">
-                    {quiz.options.map((n) => {
-                        const cls = !done ? "" : n === quiz.answer ? "quiz-opt-good"
-                            : n === quiz.result!.picked ? "quiz-opt-wrong" : "";
-                        return (
-                            <button key={n} className={`quiz-opt ${cls}`} disabled={done} onClick={() => onAnswer(n)}>
-                                {n}
-                            </button>
-                        );
-                    })}
-                </div>
-            ) : quiz.kind === "pick" ? (
-                <>
-                    <div className="quiz-options">
-                        {quiz.choices.map((ch) => (
-                            <button key={ch.id} aria-pressed={picked.has(ch.id)}
-                                className={`quiz-opt quiz-choice ${pickClass(ch.id)}`}
-                                disabled={done} onClick={() => toggle(ch.id)}>
-                                {ch.label}
-                            </button>
-                        ))}
-                    </div>
-                    {!done && (
-                        <button className="btn-primary" onClick={() => onAnswer([...picked])}>
-                            {picked.size ? "Check" : quiz.noneLabel}
-                        </button>
-                    )}
-                </>
-            ) : (
-                <ListQuiz quiz={quiz} picked={picked} toggle={toggle} pickClass={pickClass} onAnswer={onAnswer} />
-            )}
+            {quiz.mode === "points"
+                ? <PointsQuiz quiz={quiz} onAnswer={onAnswer} />
+                : <ListQuiz quiz={quiz} picked={picked} toggle={toggle} pickClass={pickClass} onAnswer={onAnswer} />}
             {done && (
                 <div className="quiz-result" aria-live="polite">
                     <p style={{ fontWeight: 600, color: quiz.result!.correct ? "var(--game-good)" : "var(--game-red)" }}>
@@ -355,7 +354,7 @@ function QuizPanel({ quiz, onAnswer, onClose }: {
                     </p>
                     <p className="hint" style={{ whiteSpace: "pre-line" }}>{quiz.explain}</p>
                     <p className="hint quiz-say" style={{ whiteSpace: "pre-line" }}>Say: “{quiz.say}”</p>
-                    {quiz.kind === "list" && !quiz.result!.correct && (
+                    {quiz.mode === "cards" && !quiz.result!.correct && (
                         <p className="hint">Green: right. Dashed red: missed. Solid red: already gone or yours.</p>
                     )}
                     <button className="btn-primary" style={{ marginTop: 8 }} onClick={onClose} autoFocus>Continue</button>
@@ -439,18 +438,19 @@ export default function TwentyNine() {
 
     // A finished trick clears itself, or waits for a tap when "Hold" is on.
     const trickDone = state.phase === "playing" && state.trick.length === 4;
-    const holding = trickDone && state.holdTricks && !collecting;
+    const holding = trickDone && state.holdTricks && !collecting && !state.quiz;
     const clearTrick = () => {
         setCollecting(true);
         after(320, () => dispatch({ type: "CLEAR_TRICK" }));
     };
     useEffect(() => {
         if (state.trick.length < 4) { setCollecting(false); return; }
-        if (state.phase === "playing" && !state.holdTricks) {
+        // A learn question holds the trick on the table until you tap Continue.
+        if (state.phase === "playing" && !state.holdTricks && !state.quiz) {
             after(880, () => setCollecting(true));
             after(1200, () => dispatch({ type: "CLEAR_TRICK" }));
         }
-    }, [state.trick.length, state.phase]);
+    }, [state.trick.length, state.phase, state.quiz === null]);
 
     useEffect(() => {
         if (state.banner) {
@@ -864,7 +864,6 @@ export default function TwentyNine() {
                 }
                 /* Learn mode */
                 .learn-picker { display: flex; flex-direction: column; gap: 6px; align-items: center; }
-                .learn-levels { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; }
                 .learn-chip {
                     min-width: 34px; height: 30px; padding: 0 8px;
                     border-radius: 8px; border: 1.5px solid var(--game-border);
@@ -874,15 +873,12 @@ export default function TwentyNine() {
                 .learn-chip:hover { border-color: var(--game-text-2); }
                 .learn-chip-on { background: var(--game-accent); border-color: var(--game-accent); color: var(--game-accent-text); }
                 .learn-desc { line-height: 1.5; text-align: center; }
-                .learn-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; width: 100%; }
                 .learn-item {
-                    display: flex; flex-direction: column; gap: 1px; padding: 6px 10px; border-radius: 8px;
+                    width: 100%; display: flex; flex-direction: column; gap: 1px; padding: 6px 10px; border-radius: 8px;
                     border: 1px solid var(--game-border); color: var(--game-text-2); font-size: var(--text-xs); line-height: 1.4;
                 }
                 .learn-item-name { color: var(--game-text); font-weight: 600; }
-                .learn-chip:disabled { cursor: default; }
-                .learn-bar { display: flex; flex-direction: column; gap: 2px; }
-                .learn-mini { height: 26px; }
+                .learn-bar { text-align: center; }
                 .quiz-say { color: var(--game-accent); font-weight: 600; }
                 .felt-holding { cursor: pointer; }
                 .quiz-box {
@@ -892,7 +888,6 @@ export default function TwentyNine() {
                 }
                 .quiz-head { font-size: var(--text-xs); color: var(--game-accent); font-weight: 600; }
                 .quiz-question { font-size: var(--text-sm); font-weight: 600; }
-                .quiz-options { display: flex; gap: 6px; flex-wrap: wrap; }
                 .quiz-opt {
                     min-width: 42px; height: 38px; border-radius: 8px;
                     border: 1.5px solid var(--game-card-border); background: var(--game-card-bg); color: var(--game-text);
@@ -902,6 +897,20 @@ export default function TwentyNine() {
                 .quiz-opt:disabled { cursor: default; opacity: 0.5; }
                 .quiz-opt.quiz-opt-good { border-color: var(--game-good); color: var(--game-good); opacity: 1; }
                 .quiz-opt.quiz-opt-wrong { border-color: var(--game-red); color: var(--game-red); opacity: 1; }
+                .points-line { display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; }
+                .points-cell { display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: text; }
+                .points-trump { margin-left: auto; padding-left: 8px; border-left: 1px solid var(--game-border); }
+                .points-label { font-size: var(--text-sm); font-weight: 700; line-height: 1.2; }
+                .points-box {
+                    width: 44px; height: 40px; border-radius: 8px; text-align: center;
+                    border: 1.5px solid var(--game-card-border); background: var(--game-card-bg); color: var(--game-text);
+                    font-family: inherit; font-size: var(--text-base); font-weight: 700;
+                }
+                .points-box::placeholder { color: var(--game-text-2); font-size: var(--text-xs); font-weight: 400; opacity: 0.6; }
+                .points-box:focus { outline: 2px solid var(--game-accent); outline-offset: 1px; }
+                .points-box.points-good { border-color: var(--game-good); color: var(--game-good); }
+                .points-box.points-bad { border-color: var(--game-red); color: var(--game-red); }
+                .points-note { font-size: var(--text-xs); color: var(--game-red); line-height: 1; }
                 .list-prompt { font-size: var(--text-base); font-weight: 700; }
                 .list-row { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; min-height: 58px; }
                 .list-slot { width: 36px; height: 50px; margin: 2px; border-radius: 6px; border: 1.5px dashed var(--game-card-border); }
@@ -912,8 +921,6 @@ export default function TwentyNine() {
                 .list-results { display: flex; flex-direction: column; gap: 4px; }
                 .list-row-wrap { display: flex; align-items: center; gap: 8px; }
                 .list-suit { font-size: var(--text-lg); width: 1.2em; text-align: center; }
-                .quiz-choice { padding: 0 12px; font-weight: 600; }
-                .quiz-choice[aria-pressed="true"] { border-color: var(--game-accent); color: var(--game-accent); }
                 .quiz-opt.quiz-pick-good { border-color: var(--game-good); color: var(--game-good); opacity: 1; outline: none; }
                 .quiz-opt.quiz-pick-missed { border: 1.5px dashed var(--game-red); color: var(--game-red); opacity: 1; outline: none; }
                 .quiz-opt.quiz-pick-wrong { border-color: var(--game-red); color: var(--game-red); opacity: 1; outline: none; }
@@ -1130,7 +1137,7 @@ export default function TwentyNine() {
                         )}
 
                         {learning && (state.phase === "playing" || state.phase === "hand-end") && (
-                            <LearnBar state={state} dispatch={dispatch} />
+                            <LearnBar state={state} />
                         )}
 
                         {state.quiz && learning && (
@@ -1307,25 +1314,14 @@ export default function TwentyNine() {
                                     <p className="hint" style={{ color: "var(--game-accent)" }}>🔥 {state.stats.streak} hands in a row</p>
                                 )}
 
-                                {learning && totalTally(state.handStats).asked > 0 && (() => {
-                                    const t = totalTally(state.handStats);
-                                    const weak = weakestSkill(state.handStats);
-                                    return (
-                                        <div className="tip-box">
-                                            <p><strong>Counting:</strong> {t.right} of {t.asked} right this hand.</p>
-                                            <p style={{ marginTop: 2 }}>
-                                                {SKILLS.filter((s) => tallyOf(state.handStats, s.id).asked > 0)
-                                                    .map((s) => `${s.name} ${tallyOf(state.handStats, s.id).right}/${tallyOf(state.handStats, s.id).asked}`)
-                                                    .join(" · ")}
-                                            </p>
-                                            {weak && (
-                                                <p style={{ marginTop: 2 }}>
-                                                    Next hand, watch {skillName(weak).toLowerCase()}: {skillInfo(weak).remember}
-                                                </p>
-                                            )}
-                                        </div>
-                                    );
-                                })()}
+                                {learning && state.handStats.asked > 0 && (
+                                    <div className="tip-box">
+                                        <p><strong>Counting:</strong> {state.handStats.right} of {state.handStats.asked} right this hand.</p>
+                                        {state.handStats.right < state.handStats.asked && (
+                                            <p style={{ marginTop: 2 }}>Next hand: {MODES[LEARN_MODE].remember}</p>
+                                        )}
+                                    </div>
+                                )}
 
                                 {state.feedbackOn && state.lastResult.tips.length > 0 && (
                                     <div className="tip-box">
