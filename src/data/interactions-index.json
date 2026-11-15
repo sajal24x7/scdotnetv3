@@ -605,6 +605,34 @@
       "status": "approved"
     }
   ],
+  "haiku/white-fluffy-snow-falls": [
+    {
+      "id": "bluesky:like:3n2cjtm6nmx2l:did:plc:2ffkp7r5ciraavul4j7rczbk",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "Andee Harry",
+        "url": "https://bsky.app/profile/andeeharry1.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:2ffkp7r5ciraavul4j7rczbk/bafkreibt3t3uhtkvp5jg272of3nieuffjgtxjodetva4x7k525hjsvyu2q"
+      },
+      "url": "https://bsky.app/profile/andeeharry1.bsky.social",
+      "published": "2026-11-14T23:21:31.779Z",
+      "status": "approved"
+    },
+    {
+      "id": "bluesky:like:3n2cjtm6nmx2l:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-11-15T00:32:03.202Z",
+      "status": "approved"
+    }
+  ],
   "micro/202607091101": [
     {
       "id": "bluesky:like:3mq7azzv4qu2w:did:plc:lcbtt32aexvcuwlt4alf6qsw",
@@ -1663,6 +1691,18 @@
       },
       "url": "https://bsky.app/profile/maciekhamela.bsky.social",
       "published": "2026-11-14T00:06:31.235Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:117611732461315365:117563179056441293",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "Gramlet",
+        "url": "https://mastodon.social/@gramlet",
+        "avatar": "https://files.mastodon.social/accounts/avatars/117/563/179/056/441/293/original/8d1dad285457ede2.png"
+      },
+      "url": "https://mastodon.social/@gramlet",
       "status": "approved"
     }
   ],

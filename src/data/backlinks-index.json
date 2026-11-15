@@ -1278,6 +1278,7 @@
       "haiku/202611022121 I saw a cross beyond.md",
       "haiku/202611042042 Lights on a tree.md",
       "haiku/202611050915 Sun blinds my eye.md",
+      "haiku/202611142350 White fluffy snow falls..md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -1838,6 +1839,7 @@
       "nordletter/202610241032 NL128 - Mina Halua Sandwich.md",
       "nordletter/202610311406 NL129 - A burning horse.md",
       "nordletter/202611071116 NL130 - A Spot of Sunshine.md",
+      "nordletter/202611141416 NL131 - Post Diwali Blues.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -9508,6 +9510,26 @@
       "category": "nordletter",
       "created": "2026-11-07T09:16:00.000Z",
       "snippet": "In Finland, in the winter months, you go out in search of the light - like the burning horse/goat as part of Easter celebrations."
+    }
+  ],
+  "nordletter/nl130-a-spot-of-sunshine": [
+    {
+      "slug": "/nordletter/nl131-post-diwali-blues/",
+      "title": "Post Diwali Blues",
+      "description": "A slow week after Diwali",
+      "category": "nordletter",
+      "created": "2026-11-14T12:16:00.000Z",
+      "snippet": "Prerna had asked me last year, and this year too, before Diwali week that I should take a holiday on Monday. We get burnt out after Diwali. The week before Diwali and the day of are marred with lots of chores - cleaning, decorating, cooking, going places."
+    }
+  ],
+  "micro/the-power-of-sync": [
+    {
+      "slug": "/nordletter/nl131-post-diwali-blues/",
+      "title": "Post Diwali Blues",
+      "description": "A slow week after Diwali",
+      "category": "nordletter",
+      "created": "2026-11-14T12:16:00.000Z",
+      "snippet": "Seth Godin talked about a similar thing this week."
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [
