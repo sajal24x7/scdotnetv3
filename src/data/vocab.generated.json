@@ -1310,6 +1310,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/boilerplate-2026-11-14",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-14"
+		},
+		"lissome": {
+			"word": "lissome",
+			"pos": "other",
+			"gloss": " adjective Lissome is an adjective used to describe someone or something characterized by easy flexibility and grace.",
+			"pronunciation": "LISS-um",
+			"example": "He grew up wanting to emulate the lissome skaters he saw competing on television with all their acrobatic leaps and twirls.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/lissome-2026-11-15",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-15"
 		}
 	}
 }
