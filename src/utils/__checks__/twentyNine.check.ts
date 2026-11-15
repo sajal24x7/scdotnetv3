@@ -143,10 +143,10 @@ console.log('learn mode questions');
     check('points left per suit', ['S', 'H', 'D', 'C'].map((x) => pointsLeft(st, x)), [7, 0, 7, 4]);
     const pts = pointsQuiz(st, 1);
     check('points: one row per suit, then trumps once known', pts.rows.map((r) => [r.id, r.answer]),
-        [['S', 7], ['H', 0], ['D', 7], ['C', 4], ['trump', 7]]);
-    check('points: say', pts.say, 'Points: ♠ 7, ♥ 0, ♦ 7, ♣ 4. Trumps: 7.');
-    check('points: right answer', checkAnswer(pts, [7, 0, 7, 4, 7]), true);
-    check('points: one row wrong', checkAnswer(pts, [7, 0, 7, 3, 7]), false);
+        [['C', 4], ['H', 0], ['S', 7], ['D', 7], ['trump', 7]]);
+    check('points: say', pts.say, 'Points: ♣ 4, ♥ 0, ♠ 7, ♦ 7. Trumps: 7.');
+    check('points: right answer', checkAnswer(pts, [4, 0, 7, 7, 7]), true);
+    check('points: one row wrong', checkAnswer(pts, [3, 0, 7, 7, 7]), false);
     check('points: no trump row while trump is hidden', pointsQuiz({ ...st, caller: 1 }, 1).rows.length, 4);
     check('points: trump row once revealed', pointsQuiz({ ...st, caller: 1, trumpRevealed: true }, 1).rows.length, 5);
 

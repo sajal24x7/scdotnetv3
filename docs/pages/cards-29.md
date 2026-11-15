@@ -44,7 +44,7 @@ Only four ranks carry points: J 3, 9 2, A 1, 10 1. So each suit starts with 7 po
 1. Start each suit at 7.
 2. Take off each point card as it is played. Your own cards still count until you play them.
 3. Once you know trump, also count trumps not yet played, starting from 8. You know trump from the start when you picked it, or once it is revealed.
-4. Say the counts to yourself: "Points: ♠ 7, ♥ 4, ♦ 2, ♣ 0. Trumps: 5."
+4. Say the counts to yourself: "Points: ♣ 0, ♥ 4, ♠ 7, ♦ 2. Trumps: 5."
 
 The question is one row of small digit boxes: one per suit (0 to 7), plus a **Trump** box (0 to 8) once you know trump. On a phone the boxes open the number keypad. Typing a digit moves to the next box, Backspace on an empty box goes back, and Enter checks. A digit over the box's limit is ignored. The trick just finished counts as played. The answer turns each box green or red, shows the right number under a wrong one, and the working lists which point cards are played and which are left in each suit.
 
