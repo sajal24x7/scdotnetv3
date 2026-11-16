@@ -1320,6 +1320,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/lissome-2026-11-15",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-15"
+		},
+		"travesty": {
+			"word": "travesty",
+			"pos": "other",
+			"gloss": " noun Travesty refers to something that is shocking, upsetting, or ridiculous because it is not what it is supposed to be, but is instead a distorted or badly inferior imitation of it. The word is often used in the phrase “a travesty of.”",
+			"pronunciation": "TRAV-uh-stee",
+			"example": "The investigation into the causes of the accident was a complete travesty.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/travesty-2026-11-16",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-16"
 		}
 	}
 }
