@@ -4,7 +4,7 @@ A single-page composer for publishing micro and photo posts from any device —
 no Obsidian, no Apple Shortcuts, no gitsync. Open
 `https://sajalchoudhary.net/write`, pick **Micro** or **Photo** with the toggle
 at the top, type, hit **Publish**, done. A fourth **Shelf** tab quick-adds
-books/films/TV/games to the shelf queue — see below.
+books/films/TV/games to the shelf queue, including from the phone share sheet — see below.
 
 ## How it publishes
 
@@ -179,6 +179,58 @@ same file:
 Books and games get the status and date fields only while editing; new ones
 are still queue-only. Edits are not autosaved as drafts: reloading mid-edit
 brings back the draft you had before.
+
+### Share to queue
+
+Add something to the queue straight from a phone's share sheet, or by
+pasting a link. Everything is read from the link and the text the app shares
+(`public/write/share.js`). Nothing is looked up, so if the share doesn't say
+what something is, the form shows a short message and waits for you.
+
+- The page reads `?text=`, `?url=` and `?title=` on load, switches to
+  **Shelf**, picks the category, sets **To read/watch/play**, and fills
+  in the title and creator. Check the fields, then tap **Add to queue**. The
+  params are removed from the address so a reload doesn't add it twice.
+- The **Paste a link or shared text** box at the top of the Shelf tab does
+  the same thing for anything you copy.
+- What it understands:
+  - **Prime Video**: the title from "Hey I'm watching X. Check it out now on
+    Prime Video!" and Film vs TV from the link's `ref_=share_ios_movie` /
+    `…_tv`.
+  - **Netflix**: the title from the text. The link doesn't say film or show,
+    so no category is selected and **Add to queue** waits until you pick one.
+  - **Amazon** (books): "Title by Author" or "Title : Author : Amazon.in:
+    Books" from the text, or the title slug in a full `amazon.in/<Title>/dp/…`
+    URL. A bare `amzn.in/d/…` short link has no title in it and fails with a
+    message. Amazon blocks server fetches, so the shared text is the only
+    source.
+  - **Goodreads, Open Library, Letterboxd, Steam, Apple TV, JioHotstar**:
+    category and title from the URL path.
+  - **IMDb**: "Severance (TV Series 2022– )" means TV and "Dune (2021)"
+    means film.
+- Each service's share text is pinned in `scripts/test-share-parser.mjs`
+  (`npm run test:share`, part of `test:all`). When an app changes its
+  wording, add the new text there first.
+
+**Android:** `/write/manifest.webmanifest` declares a GET `share_target`.
+Open `/write` in Chrome → menu → **Install app** (or **Add to Home
+screen**). **Write** then shows up in the system share sheet.
+
+**iPhone:** Safari doesn't support share targets, so a one-time Shortcut
+does it:
+
+1. Shortcuts app → **+** → name it **Add to queue**.
+2. Tap the **i** (details) → turn on **Show in Share Sheet**. Set it to
+   accept **URLs** and **Text**.
+3. Add the action **URL Encode** with input **Shortcut Input**.
+4. Add **Text** with the content
+   `https://sajalchoudhary.net/write/?text=` followed by the **URL Encoded
+   Text** variable.
+5. Add **Open URLs** with that Text as input.
+
+Share from Prime Video, Netflix, Amazon and so on → **Add to queue** opens
+`/write` already filled in. The Shortcut holds no token: the page you're
+signed into does the commit.
 
 ### Queue quick-add
 - Publish commits `YYYYMMDDHHMM Title.md` straight to
