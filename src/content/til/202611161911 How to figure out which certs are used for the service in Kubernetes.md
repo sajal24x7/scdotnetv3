@@ -1,10 +1,16 @@
 ---
-title: "How to Figure Out Which Certs Are Used for the Service in Kubernetes"
-slug: "how-to-figure-out-which-certs-are-used-for-the-service-in-kubernetes"
-created: 2026-11-16T19:11:00+02:00
-updated: 2026-11-16T19:25:45+02:00
+title: How to Figure Out Which Certs Are Used for the Service in Kubernetes
+slug: how-to-figure-out-which-certs-are-used-for-the-service-in-kubernetes
+created: 2026-11-16T17:11:00.000Z
+updated: 2026-11-16T17:25:45.000Z
 category: til
-tags: ["k8s", "cert"]
+tags:
+  - k8s
+  - cert
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117627788548368249'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2hbhcl63e2j'
+  - 'https://www.threads.com/@sajal24x7/post/Df0HdWNIzil'
 ---
 Open the manifest file (usually under /etc/kubernetes/manifests/)
 
