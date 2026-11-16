@@ -500,6 +500,21 @@
       "status": "approved"
     }
   ],
+  "haiku/lights-flicker-in-the-distance": [
+    {
+      "id": "bluesky:like:3n2f3rcvxzt2p:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-11-16T01:32:07.856Z",
+      "status": "approved"
+    }
+  ],
   "haiku/like-home-work": [
     {
       "id": "bluesky:like:3mxwyinskx42w:did:plc:4hi2oj4spvsud6tpbdv37lec",
@@ -613,7 +628,7 @@
       "author": {
         "name": "Andee Harry",
         "url": "https://bsky.app/profile/andeeharry1.bsky.social",
-        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:2ffkp7r5ciraavul4j7rczbk/bafkreibt3t3uhtkvp5jg272of3nieuffjgtxjodetva4x7k525hjsvyu2q"
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:2ffkp7r5ciraavul4j7rczbk/bafkreiec7lltnspphtizewd3r5ka7ptjbt3anamwzefzqw775x7okgtgim"
       },
       "url": "https://bsky.app/profile/andeeharry1.bsky.social",
       "published": "2026-11-14T23:21:31.779Z",
@@ -1694,6 +1709,19 @@
       "status": "approved"
     },
     {
+      "id": "bluesky:like:3n2a5bt6grg2k:did:plc:qyltm34jui7hunqkz6dzl7eq",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "𝙸𝚜𝚘𝚙𝚝𝚎𝚛𝚊",
+        "url": "https://bsky.app/profile/isoptera.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:qyltm34jui7hunqkz6dzl7eq/bafkreiccte4ad2ylpxrwyvexoogdbziezsyverdthiiomozx6hll2nis5i"
+      },
+      "url": "https://bsky.app/profile/isoptera.bsky.social",
+      "published": "2026-11-15T23:14:03.750Z",
+      "status": "approved"
+    },
+    {
       "id": "mastodon:like:117611732461315365:117563179056441293",
       "type": "like",
       "platform": "mastodon",
@@ -2155,7 +2183,7 @@
         "name": "Instagram"
       },
       "url": "https://www.instagram.com/p/DeWsMPLIDyA/",
-      "count": 11,
+      "count": 12,
       "status": "approved"
     }
   ],
