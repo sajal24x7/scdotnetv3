@@ -1330,6 +1330,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/travesty-2026-11-16",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-16"
+		},
+		"stolid": {
+			"word": "stolid",
+			"pos": "other",
+			"gloss": " adjective Stolid describes someone or something that has or expresses little or no emotion.",
+			"pronunciation": "STAH-lid",
+			"example": "The detective presented the facts of the case with stolid indifference.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/stolid-2026-11-17",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-17"
 		}
 	}
 }
