@@ -1,0 +1,18 @@
+{
+    "name": "Write",
+    "short_name": "Write",
+    "start_url": "/write/",
+    "scope": "/write/",
+    "display": "standalone",
+    "background_color": "#fffcf5",
+    "theme_color": "#231e1c",
+    "icons": [
+        { "src": "/logo/icon-192.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "/logo/icon-512.png", "sizes": "512x512", "type": "image/png" }
+    ],
+    "share_target": {
+        "action": "/write/",
+        "method": "GET",
+        "params": { "title": "title", "text": "text", "url": "url" }
+    }
+}

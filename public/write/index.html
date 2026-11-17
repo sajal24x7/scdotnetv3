@@ -10,6 +10,8 @@
 <meta name="theme-color" content="#231e1c" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#fffcf5" media="(prefers-color-scheme: light)">
 <title>Write</title>
+<link rel="manifest" href="/write/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/logo/apple-touch-icon.png">
 <script>
   // Same theme resolution as src/layouts/Layout.astro: the site's stored
   // choice wins, otherwise follow the OS. This page is outside the Astro
@@ -302,6 +304,11 @@
   #shelfPanel[data-category="filmshelf"] .shelf-started { display: none; }
   /* While editing, the file's folder fixes the category. */
   #shelfPanel[data-editing] #shelfCategoryToggle { opacity: 0.5; pointer-events: none; }
+  /* Paste a link or shared text to fill the form (see /write/share.js). */
+  .shelf-paste { display: flex; gap: 8px; margin-bottom: 10px; }
+  .shelf-paste input { flex: 1; min-width: 0; margin-bottom: 0; }
+  .shelf-paste button { flex: none; padding: 0 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: inherit; font: inherit; cursor: pointer; }
+  #shelfPanel[data-editing] .shelf-paste { display: none; }
   #shelfEditBar { display: none; margin-bottom: 10px; font-size: 14px; color: var(--muted); }
   #shelfPanel[data-editing] #shelfEditBar { display: block; }
   #shelfEditBar button { background: none; border: none; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; padding: 0; margin-left: 6px; }
@@ -415,6 +422,10 @@
 
   <section id="shelfPanel">
     <p id="shelfEditBar">Editing <strong id="shelfEditTitle"></strong><button type="button" id="shelfEditCancel">Cancel</button></p>
+    <div class="shelf-paste">
+      <input id="shelfPaste" type="text" placeholder="Paste a link or shared text" autocomplete="off" autocapitalize="none" enterkeyhint="go" aria-label="Paste a link or shared text">
+      <button type="button" id="shelfPasteFill">Fill</button>
+    </div>
     <div class="mode-toggle" role="group" aria-label="Shelf category" id="shelfCategoryToggle">
       <button type="button" data-category="bookshelf" aria-pressed="true">Book</button>
       <button type="button" data-category="filmshelf" aria-pressed="false">Film</button>
@@ -477,6 +488,7 @@
      Module scripts defer, so fflate above has already loaded by the time this runs. -->
 <script type="module">
 import * as session from '/auth/session.js';
+import { parseShare } from '/write/share.js';
 
 (() => {
   const OWNER = 'sajal24x7';
@@ -530,6 +542,9 @@ import * as session from '/auth/session.js';
   // Set while the form is editing an existing entry (from the Edit button on
   // a list row) instead of creating a new one: { item, original }.
   let shelfEditing = null;
+  // True after a share that didn't say what it is (a Netflix link, say):
+  // no category button is lit, and publishing waits until one is tapped.
+  let shelfCategoryUnset = false;
 
   function setMode(next) {
     mode = ['photo', 'til', 'shelf'].includes(next) ? next : 'micro';
@@ -551,6 +566,7 @@ import * as session from '/auth/session.js';
   $('modeShelf').addEventListener('click', () => { setMode('shelf'); saveDraft(); });
 
   function setShelfCategory(cat) {
+    shelfCategoryUnset = false;
     shelfCategory = SHELF_CATEGORIES[cat] ? cat : 'bookshelf';
     document.querySelectorAll('#shelfCategoryToggle button').forEach((btn) => {
       btn.setAttribute('aria-pressed', String(btn.dataset.category === shelfCategory));
@@ -1135,6 +1151,10 @@ import * as session from '/auth/session.js';
       setShelfStatus('Title is required.', 'err');
       return;
     }
+    if (shelfCategoryUnset && !shelfEditing) {
+      setShelfStatus('Pick Book, Film, TV or Game first.', 'err');
+      return;
+    }
 
     if (shelfEditing) {
       $('shelfSend').disabled = true;
@@ -1695,8 +1715,56 @@ import * as session from '/auth/session.js';
     }
   });
 
+  // --- share to queue -----------------------------------------------------
+  // A phone's share sheet (Android share target, or the iPhone Shortcut)
+  // opens /write/?text=…&url=…; the paste box feeds the same path. The parser
+  // only reads the link and the text: no lookups, so a share that doesn't say
+  // what it is gets a short message and the form waits for a fix.
+  function applyShare(shared) {
+    const result = parseShare(shared);
+    if (shelfEditing) exitShelfEdit();
+    setMode('shelf');
+    if (result.category) setShelfCategory(result.category);
+    setShelfWatchStatus('todo');
+    if (!result.category) {
+      shelfCategoryUnset = true;
+      document.querySelectorAll('#shelfCategoryToggle button').forEach((btn) => btn.setAttribute('aria-pressed', 'false'));
+    }
+    shelfFields.forEach((f) => { $(f).value = ''; });
+    setShelfRating('');
+    $('shelfTitle').value = result.title;
+    $('shelfCreator').value = result.creator;
+    syncShelfForm();
+    saveDraft();
+    if (result.message) {
+      setShelfStatus(escapeHtml(result.message), 'err');
+      if (!result.title) $('shelfTitle').focus();
+    } else {
+      setShelfStatus(`Check the details, then tap ${escapeHtml($('shelfSend').textContent)}.`, '');
+    }
+  }
+  function fillFromPaste() {
+    const text = $('shelfPaste').value.trim();
+    if (!text) return;
+    applyShare({ text });
+    $('shelfPaste').value = '';
+  }
+  $('shelfPasteFill').addEventListener('click', fillFromPaste);
+  $('shelfPaste').addEventListener('keydown', (e) => { if (e.key === 'Enter') fillFromPaste(); });
+
+  function readShareParams() {
+    const params = new URLSearchParams(location.search);
+    const shared = { title: params.get('title') || '', text: params.get('text') || '', url: params.get('url') || '' };
+    if (!shared.title && !shared.text && !shared.url) return null;
+    // Drop the params so a reload doesn't add the same thing again.
+    history.replaceState(null, '', location.pathname);
+    return shared;
+  }
+
   // --- init ----------------------------------------------------------------
   restoreDraft();
+  const incomingShare = readShareParams();
+  if (incomingShare) applyShare(incomingShare);
   session.adoptLegacyToken();
   renderSession();
   if (!getToken()) showSetup(true);
