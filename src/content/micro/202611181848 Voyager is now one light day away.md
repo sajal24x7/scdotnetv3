@@ -1,9 +1,10 @@
 ---
-aliases:
-tags:
-  - space
-category: micro
+title: "Voyager Is Now One Light Day Away"
+slug: "voyager-is-now-one-light-day-away"
+created: 2026-11-18T18:48:00+02:00
 updated: 2026-11-18T18:50:10+02:00
+category: micro
+tags: ["space"]
 ---
 [NASA’s Voyager 1 probe is now 1 light-day away by Jess Weatherbed](https://www.theverge.com/science/1036431/nasa-voyager-1-light-day-milestone)
 
