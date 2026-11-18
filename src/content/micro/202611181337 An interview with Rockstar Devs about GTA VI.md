@@ -1,10 +1,10 @@
 ---
-aliases:
-tags:
-  - gaming
-  - gta
-category: micro
+title: "An Interview With Rockstar Devs About GTA VI"
+slug: "an-interview-with-rockstar-devs-about-gta-vi"
+created: 2026-11-18T13:37:00+02:00
 updated: 2026-11-18T13:37:58+02:00
+category: micro
+tags: ["gaming", "gta"]
 ---
 [‘It’s a risk’: How Rockstar built the most detailed (and romantic) GTA yet by Andrew Webster](https://www.theverge.com/entertainment/1035806/grand-theft-auto-6-rob-nelson-interview)
 
