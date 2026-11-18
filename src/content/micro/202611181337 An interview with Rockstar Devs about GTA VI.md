@@ -1,10 +1,16 @@
 ---
-title: "An Interview With Rockstar Devs About GTA VI"
-slug: "an-interview-with-rockstar-devs-about-gta-vi"
-created: 2026-11-18T13:37:00+02:00
-updated: 2026-11-18T13:37:58+02:00
+title: An Interview With Rockstar Devs About GTA VI
+slug: an-interview-with-rockstar-devs-about-gta-vi
+created: 2026-11-18T11:37:00.000Z
+updated: 2026-11-18T11:37:58.000Z
 category: micro
-tags: ["gaming", "gta"]
+tags:
+  - gaming
+  - gta
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117639327869646543'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2mfgrfi5f2u'
+  - 'https://www.threads.com/@sajal24x7/post/Df5XS1hmEre'
 ---
 [‘It’s a risk’: How Rockstar built the most detailed (and romantic) GTA yet by Andrew Webster](https://www.theverge.com/entertainment/1035806/grand-theft-auto-6-rob-nelson-interview)
 
