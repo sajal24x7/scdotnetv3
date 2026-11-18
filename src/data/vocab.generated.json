@@ -1340,6 +1340,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/stolid-2026-11-17",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-17"
+		},
+		"hobbyhorse": {
+			"word": "hobbyhorse",
+			"pos": "other",
+			"gloss": " noun Hobbyhorse refers to a topic that someone dwells on, returning to again and again, especially in conversation.",
+			"pronunciation": "HAH-bee-horss",
+			"example": "Once he gets on his hobbyhorse and starts talking about taxes, you can't get him to discuss anything else.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/hobbyhorse-2026-11-18",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-18"
 		}
 	}
 }
