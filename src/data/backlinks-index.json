@@ -1281,6 +1281,7 @@
       "haiku/202611050915 Sun blinds my eye.md",
       "haiku/202611142350 White fluffy snow falls..md",
       "haiku/202611152025 Lights flicker in the distance.md",
+      "haiku/202611172233 Pour the batter on tawa.md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -2588,6 +2589,8 @@
       "til/202611052215 Why we need certificates for secure communication.md",
       "til/202611161911 How to figure out which certs are used for the service in Kubernetes.md",
       "til/202611161915 openssl read certificate details.md",
+      "til/202611172214 CertificateSigningRequest object in Kubernetes.md",
+      "til/202611172221 How to create a certificate using CSR object in Kubernetes.md",
       "tvshelf/201901071200 Luther S2.md",
       "tvshelf/201901071201 Luther S1.md",
       "tvshelf/201901281200 Bodyguard S1.md",
@@ -6891,6 +6894,16 @@
       "category": "til",
       "created": "2026-10-22T19:52:00.000Z",
       "snippet": "With nodeSelector field matching the labels set on a node"
+    }
+  ],
+  "til/certificatesigningrequest-object-in-kubernetes": [
+    {
+      "slug": "/til/how-to-create-a-certificate-using-csr-object-in-kubernetes/",
+      "title": "How to Create a Certificate Using CSR Object in Kubernetes",
+      "description": "",
+      "category": "til",
+      "created": "2026-11-17T20:21:00.000Z",
+      "snippet": "Create a CSR object in Kubernetes."
     }
   ],
   "til/configmaps-in-kubernetes": [

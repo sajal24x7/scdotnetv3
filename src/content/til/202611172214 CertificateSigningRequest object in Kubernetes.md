@@ -1,10 +1,17 @@
 ---
-title: "CertificateSigningRequest Object in Kubernetes"
-slug: "certificatesigningrequest-object-in-kubernetes"
-created: 2026-11-17T22:14:00+02:00
-updated: 2026-11-17T22:29:00+02:00
+title: CertificateSigningRequest Object in Kubernetes
+slug: certificatesigningrequest-object-in-kubernetes
+created: 2026-11-17T20:14:00.000Z
+updated: 2026-11-17T20:29:00.000Z
 category: til
-tags: ["k8s", "cert", "security"]
+tags:
+  - k8s
+  - cert
+  - security
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117634720277939586'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2kdxhx2w52q'
+  - 'https://www.threads.com/@sajal24x7/post/Df3RMe0oAH4'
 ---
 This resource allows for a certificate to be issued based on a CSR (which must be base64 encoded). The object has `apiVersion` of `certificates.k8s.io/v1` and `kind` of `CertificateSigningRequest`. `signerName` is a required field.
 
