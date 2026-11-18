@@ -545,6 +545,21 @@
       "status": "approved"
     }
   ],
+  "haiku/pour-the-batter-on-tawa": [
+    {
+      "id": "bluesky:like:3n2kdwzahng26:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-11-18T01:33:46.860Z",
+      "status": "approved"
+    }
+  ],
   "haiku/red-light-under-bridge": [
     {
       "id": "bluesky:like:3myqdkk247j2r:did:plc:gfdep6yi3mgqryscwcwlrn77",
