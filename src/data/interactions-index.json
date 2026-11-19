@@ -620,6 +620,21 @@
       "status": "approved"
     }
   ],
+  "haiku/theres-mud-everywhere": [
+    {
+      "id": "bluesky:like:3n2mfgczd642q:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-11-18T20:33:53.311Z",
+      "status": "approved"
+    }
+  ],
   "haiku/thick-fog-rolls-over": [
     {
       "id": "bluesky:like:3mz2l5dsyjz2m:did:plc:4hi2oj4spvsud6tpbdv37lec",
@@ -1025,6 +1040,21 @@
       },
       "url": "https://www.threads.com/@sajal24x7/post/DfMCZCXgHve",
       "count": 1,
+      "status": "approved"
+    }
+  ],
+  "micro/a-game-which-uses-ai-to-map-your-memories": [
+    {
+      "id": "bluesky:like:3n2mfh4sxlk2t:did:plc:2qiid4kfnexpu5fpqjfo6awu",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "🤍 rose",
+        "url": "https://bsky.app/profile/callmemadzzcream.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:2qiid4kfnexpu5fpqjfo6awu/bafkreicuvj3asrwy42h4ajppuxpb7coof37qbteefdo4l75vxldi75xwri"
+      },
+      "url": "https://bsky.app/profile/callmemadzzcream.bsky.social",
+      "published": "2026-11-18T22:32:17.000Z",
       "status": "approved"
     }
   ],
@@ -1602,6 +1632,33 @@
         "avatar": "https://storage.sajalchoudhary.net/avatars/5e0c9f27cbe4ab1dddc05717be534585.png"
       },
       "url": "https://mastodon.social/@Literbook",
+      "status": "approved"
+    }
+  ],
+  "micro/voyager-is-now-one-light-day-away": [
+    {
+      "id": "bluesky:like:3n2mfhhjt552u:did:plc:2qiid4kfnexpu5fpqjfo6awu",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "🤍 rose",
+        "url": "https://bsky.app/profile/callmemadzzcream.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:2qiid4kfnexpu5fpqjfo6awu/bafkreicuvj3asrwy42h4ajppuxpb7coof37qbteefdo4l75vxldi75xwri"
+      },
+      "url": "https://bsky.app/profile/callmemadzzcream.bsky.social",
+      "published": "2026-11-18T22:32:04.000Z",
+      "status": "approved"
+    },
+    {
+      "id": "mastodon:like:117639329407536147:115545755329272075",
+      "type": "like",
+      "platform": "mastodon",
+      "author": {
+        "name": "B-Up Games",
+        "url": "https://mastodon.social/@bupgames",
+        "avatar": "https://files.mastodon.social/accounts/avatars/115/545/755/329/272/075/original/35851b0a455efe23.png"
+      },
+      "url": "https://mastodon.social/@bupgames",
       "status": "approved"
     }
   ],
