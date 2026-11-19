@@ -1350,6 +1350,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/hobbyhorse-2026-11-18",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-18"
+		},
+		"upbraid": {
+			"word": "upbraid",
+			"pos": "other",
+			"gloss": " verb To upbraid someone is to speak to them in an angry or critical way in response to something they have done wrong—in other words, to scold them.",
+			"pronunciation": "up-BRAYD",
+			"example": "The teacher upbraided the class after discovering the chalkboard erasers had been clapped all over the walls.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/upbraid-2026-11-19",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-19"
 		}
 	}
 }
