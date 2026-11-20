@@ -1360,6 +1360,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/upbraid-2026-11-19",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-19"
+		},
+		"ruthless": {
+			"word": "ruthless",
+			"pos": "other",
+			"gloss": " adjective Ruthless means \"having no pity.\" It describes people, behaviors, circumstances, etc. regarded as cruel or merciless.",
+			"pronunciation": "ROOTH-lus",
+			"example": "Wolves and other large carnivores are often portrayed (and feared) as ruthless predators even as they play vital roles in their ecosystems.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/ruthless-2026-11-20",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-20"
 		}
 	}
 }
