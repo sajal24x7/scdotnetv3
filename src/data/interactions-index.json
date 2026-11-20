@@ -151,6 +151,21 @@
       "status": "approved"
     }
   ],
+  "blog/vibe-coding-november-meetup": [
+    {
+      "id": "threads:reply:18150362008604769",
+      "type": "reply",
+      "platform": "threads",
+      "author": {
+        "name": "ayanami_hobbes",
+        "url": "https://www.threads.com/@ayanami_hobbes"
+      },
+      "content": "<p>xkcd wallpaper is a green flag</p>",
+      "url": "https://www.threads.com/@ayanami_hobbes/post/Df7-Z4uo-uf",
+      "published": "2026-11-19T20:48:24.000Z",
+      "status": "approved"
+    }
+  ],
   "blog/vibe-coding-september-meetup": [
     {
       "id": "bluesky:like:3mundsfdk5t2d:did:plc:y4ux77dyewbsprmdnu4prj4c",

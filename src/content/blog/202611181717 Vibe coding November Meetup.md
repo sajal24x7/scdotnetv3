@@ -1,10 +1,18 @@
 ---
-title: "Vibe Coding November Meetup"
-slug: "vibe-coding-november-meetup"
-created: 2026-11-18T17:17:00+02:00
-updated: 2026-11-19T19:26:39+02:00
+title: Vibe Coding November Meetup
+slug: vibe-coding-november-meetup
+created: 2026-11-18T15:17:00.000Z
+updated: 2026-11-19T17:26:39.000Z
 category: blog
-tags: ["vibe-coding-finland", "vibe-coding", "ai", "meetup"]
+tags:
+  - vibe-coding-finland
+  - vibe-coding
+  - ai
+  - meetup
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117645002370860684'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2ow3a5o6v2l'
+  - 'https://www.threads.com/@sajal24x7/post/Df78caBlN55'
 ---
 I’m at the Kisko Labs offices in Kalasatama. I have been in and around this area a lot, but never to this side. That’s a wonderful part of Helsinki I guess, so many old building being repurposed into these cool office spaces now. There are xkcd strips pasted on the walls of this building. How cool is that?
 
