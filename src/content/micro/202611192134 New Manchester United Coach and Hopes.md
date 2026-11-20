@@ -1,10 +1,16 @@
 ---
-title: "New Manchester United Coach and Hopes"
-slug: "new-manchester-united-coach-and-hopes"
-created: 2026-11-19T21:34:00+02:00
-updated: 2026-11-19T21:35:33+02:00
+title: New Manchester United Coach and Hopes
+slug: new-manchester-united-coach-and-hopes
+created: 2026-11-19T19:34:00.000Z
+updated: 2026-11-19T19:35:33.000Z
 category: micro
-tags: ["football", "man-united"]
+tags:
+  - football
+  - man-united
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117650585356255316'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2rfg3cf2y2m'
+  - 'https://www.threads.com/@sajal24x7/post/Df-e7g7o1m9'
 ---
 [Mauricio Pochettino calls for Manchester United to show no fear against Liverpool by Will Unwin](https://www.theguardian.com/football/2026/nov/19/manchester-united-mauricio-pochettino-liverpool-anfield-no-fear)
 
