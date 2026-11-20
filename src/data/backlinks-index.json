@@ -383,6 +383,7 @@
       "blog/202609301725 Azure and Friends September Event.md",
       "blog/202610071700 FAUG October Meetup.md",
       "blog/202610201626 CNCF October Edition.md",
+      "blog/202611181717 Vibe coding November Meetup.md",
       "bookshelf/201301081514 The Da Vinci Code.md",
       "bookshelf/201301081514 The Ultimate Hitchhikers Guide to the Galaxy.md",
       "bookshelf/201301081515 Deception Point.md",
@@ -1255,9 +1256,9 @@
       "gameshelf/202609200807 EA Sports FC 27.md",
       "gameshelf/202610101148 Control Resonant.md",
       "gameshelf/202610101148 First Light.md",
-      "gameshelf/202610101148 GTA VI.md",
       "gameshelf/202610101149 Forza Horizon 6.md",
       "gameshelf/202610101149 The blood of dawnwalker.md",
+      "gameshelf/202611182136 GTA VI.md",
       "haiku/202610112148 like home-work.md",
       "haiku/202610121245 Yellow leaves everywhere.md",
       "haiku/202610142209 A long day.md",
@@ -10277,6 +10278,16 @@
       "category": "bookshelf",
       "created": "2026-03-10T17:24:57.000Z",
       "snippet": "I felt a little lost reading this book. This is the seventh book in the Murderbot diaries. I had a similar feeling reading this book as the last book - Fugitive Telemetry. I was reading it after a while. And network effect was a standalone book, not in the time line order. So it had felt weird because of that."
+    }
+  ],
+  "bookshelf/plot-twist": [
+    {
+      "slug": "/bookshelf/tell-no-one/",
+      "title": "Tell No One",
+      "description": "",
+      "category": "bookshelf",
+      "created": "2026-11-06T05:57:00.000Z",
+      "snippet": "Picked this up after finishing Harlan Coben's Plot Twist."
     }
   ],
   "bookshelf/children-of-strife": [
