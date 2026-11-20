@@ -1,0 +1,13 @@
+---
+title: "New Manchester United Coach and Hopes"
+slug: "new-manchester-united-coach-and-hopes"
+created: 2026-11-19T21:34:00+02:00
+updated: 2026-11-19T21:35:33+02:00
+category: micro
+tags: ["football", "man-united"]
+---
+[Mauricio Pochettino calls for Manchester United to show no fear against Liverpool by Will Unwin](https://www.theguardian.com/football/2026/nov/19/manchester-united-mauricio-pochettino-liverpool-anfield-no-fear)
+
+> Pochettino has coveted the United job and is a keen admirer of Sir Alex Ferguson, who he describes as “the best coach in history”. Since the Scot’s retirement in 2013, United have failed to match his success but Pochettino said he was looking at “the potential of the club”. The weight of past achievements has hindered individuals over the past 13 years.
+
+This is the first time in recent years when I’m not feeling optimistic about a managerial change. So maybe this is the time it actually works?
