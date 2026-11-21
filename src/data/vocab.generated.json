@@ -1370,6 +1370,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/ruthless-2026-11-20",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-20"
+		},
+		"meet-cute": {
+			"word": "meet-cute",
+			"pos": "other",
+			"gloss": " noun Meet-cute refers to a cute, charming, or amusing first encounter between romantic partners. A meet-cute can be such an encounter as shown in a movie or television show, or one that happens in real life.",
+			"pronunciation": "MEET-kyoot",
+			"example": "Their meet-cute felt as if it came straight out of a romantic comedy.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/meet-cute-2026-11-21",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-21"
 		}
 	}
 }
