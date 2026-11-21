@@ -20,7 +20,7 @@ export const PROSE_MAX_WIDTH = 1600;
 // Kept short on purpose: every width is a separate file in dist/_astro, and
 // Cloudflare Pages rejects deploys over 20,000 files. Component maxWidth
 // values should be one of these widths so variants are shared.
-const BREAKPOINTS = [480, 800, 1200, 1600, 2048];
+export const IMAGE_BREAKPOINTS = [480, 800, 1200, 1600, 2048];
 
 const manifest = dimensionManifest as Record<string, [number, number]>;
 
@@ -79,7 +79,7 @@ export function planResponsiveImage(url: string, maxWidth: number): ResponsivePl
 
     const width = Math.min(original.width, maxWidth);
     const height = Math.round((width * original.height) / original.width);
-    const widths = BREAKPOINTS.filter((w) => w < width);
+    const widths = IMAGE_BREAKPOINTS.filter((w) => w < width);
     widths.push(width);
 
     return { width, height, widths };

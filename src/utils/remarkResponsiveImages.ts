@@ -27,7 +27,11 @@ function escapeAttribute(value: string): string {
         .replace(/</g, '&lt;');
 }
 
-export function remarkResponsiveImages() {
+// `astro.config.mjs` passes the srcset widths as an option. The plugin doesn't
+// read it: it is there so Astro's content cache key changes with the widths.
+// Astro caches rendered markdown between builds and only clears that cache when
+// the config changes, not when an imported module like imageDimensions.ts does.
+export function remarkResponsiveImages(_cacheKey?: Record<string, unknown>) {
     return (tree: MarkdownNode) => {
         function visit(node: MarkdownNode) {
             if (!node.children) return;
