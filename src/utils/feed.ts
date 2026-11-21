@@ -284,7 +284,7 @@ async function shelfCoverHtml(coverMeta: ImageMetadata | undefined): Promise<str
   if (!coverMeta) {
     return '<div class="feed-entry__book-cover feed-entry__book-cover--placeholder" aria-hidden="true"></div>';
   }
-  const optimized = await getImage({ src: coverMeta, width: 144, height: 212, format: 'webp' });
+  const optimized = await getImage({ src: coverMeta, width: 144, height: 212, format: 'webp', layout: 'none' });
   return `<img class="feed-entry__book-cover" src="${optimized.src}" alt="" loading="lazy" width="72" height="106">`;
 }
 

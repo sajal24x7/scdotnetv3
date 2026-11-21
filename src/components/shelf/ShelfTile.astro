@@ -73,7 +73,7 @@ const dateLabel = date
     {href ? (
       <a class="shelf-tile__cover" href={href} tabindex="-1" aria-hidden="true">
         {cover ? (
-          <Image src={cover} alt="" width={220} height={330} layout="fixed" class="shelf-tile__cover-image" loading="lazy" />
+          <Image src={cover} alt="" width={440} height={660} layout="none" fit="cover" class="shelf-tile__cover-image" loading="lazy" />
         ) : (
           <span class="shelf-tile__cover-placeholder">{title}</span>
         )}
@@ -82,7 +82,7 @@ const dateLabel = date
     ) : (
       <div class="shelf-tile__cover" aria-hidden="true">
         {cover ? (
-          <Image src={cover} alt="" width={220} height={330} layout="fixed" class="shelf-tile__cover-image" loading="lazy" />
+          <Image src={cover} alt="" width={440} height={660} layout="none" fit="cover" class="shelf-tile__cover-image" loading="lazy" />
         ) : (
           <span class="shelf-tile__cover-placeholder">{title}</span>
         )}

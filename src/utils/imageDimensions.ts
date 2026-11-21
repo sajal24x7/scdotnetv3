@@ -12,15 +12,17 @@ import dimensionManifest from '../data/image-dimensions.json';
 export const R2_HOST = 'storage.sajalchoudhary.net';
 
 // Layout hint for images in a prose column (about 42rem wide), and the
-// largest width generated for them (2x for high-density screens).
+// largest width generated for them. 1200 is a little under 2x the column
+// (1344px); the difference is hard to see and saves a file per image.
 export const PROSE_SIZES = '(max-width: 48rem) 100vw, 42rem';
-export const PROSE_MAX_WIDTH = 1600;
+export const PROSE_MAX_WIDTH = 1200;
 
 // Candidate srcset widths. Each image uses the ones below its own cap.
 // Kept short on purpose: every width is a separate file in dist/_astro, and
 // Cloudflare Pages rejects deploys over 20,000 files. Component maxWidth
-// values should be one of these widths so variants are shared.
-export const IMAGE_BREAKPOINTS = [480, 800, 1200, 1600, 2048];
+// values should be one of these widths so variants are shared. There is no
+// width below 800: phones have 2x or 3x screens and pick 800 or larger.
+export const IMAGE_BREAKPOINTS = [800, 1200, 2048];
 
 const manifest = dimensionManifest as Record<string, [number, number]>;
 
