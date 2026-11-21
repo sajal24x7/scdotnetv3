@@ -1,12 +1,10 @@
 ---
-title: New Manchester United Coach and Hopes
-slug: new-manchester-united-coach-and-hopes
-created: 2026-11-19T19:34:00.000Z
-updated: 2026-11-19T19:35:33.000Z
+title: "New Manchester United Coach and Hopes"
+slug: "new-manchester-united-coach-and-hopes"
+created: 2026-11-19T21:34:00+02:00
+updated: 2026-11-19T21:35:33+02:00
 category: micro
-tags:
-  - football
-  - man-united
+tags: ["football", "man-united"]
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117650585356255316'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2rfg3cf2y2m'
