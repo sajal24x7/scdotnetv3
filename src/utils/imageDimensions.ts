@@ -17,7 +17,10 @@ export const PROSE_SIZES = '(max-width: 48rem) 100vw, 42rem';
 export const PROSE_MAX_WIDTH = 1600;
 
 // Candidate srcset widths. Each image uses the ones below its own cap.
-const BREAKPOINTS = [320, 480, 640, 800, 1080, 1280, 1600, 2048];
+// Kept short on purpose: every width is a separate file in dist/_astro, and
+// Cloudflare Pages rejects deploys over 20,000 files. Component maxWidth
+// values should be one of these widths so variants are shared.
+const BREAKPOINTS = [480, 800, 1200, 1600, 2048];
 
 const manifest = dimensionManifest as Record<string, [number, number]>;
 

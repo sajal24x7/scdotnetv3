@@ -50,7 +50,8 @@ The script scans `src/content/**/*.md` for R2 URLs in Markdown image syntax and 
 Shared settings live in `src/utils/imageDimensions.ts`:
 
 - `PROSE_SIZES` (`(max-width: 48rem) 100vw, 42rem`) and `PROSE_MAX_WIDTH` (1600px) for images in a text column.
-- Candidate `srcset` widths: 320 to 2048px. An image never gets widths larger than its original.
+- Candidate `srcset` widths: 480, 800, 1200, 1600 and 2048px. An image never gets widths larger than its original.
+- Every width is a separate file in `dist/_astro`, and Cloudflare Pages rejects a deploy with more than 20,000 files. Keep the list short, and use one of these widths as a component's `maxWidth` so variants are shared.
 
 When adding a component that shows an R2 image, use `RemoteImage` and give it a `sizes` value that matches the slot it is shown in, plus `maxWidth` of roughly twice the slot's widest CSS width.
 
