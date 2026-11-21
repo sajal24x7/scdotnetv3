@@ -132,6 +132,8 @@ const pageDescription = seasonText ? `${seasonText} of ${showTitle}` : showTitle
           <Image
             src={coverImage}
             alt={seasonText ? `Poster for ${showTitle} ${seasonText}` : `Poster for ${showTitle}`}
+            height={512}
+            layout="none"
             class="season-header__cover"
             loading="eager"
           />

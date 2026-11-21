@@ -9,6 +9,7 @@ import { remarkWikilinks } from './src/utils/remarkWikilinks.ts';
 import { remarkStripLearnBlocks } from './src/utils/learnBlocks.ts';
 import { remarkMermaid } from './src/utils/remarkMermaid.ts';
 import { remarkResponsiveImages } from './src/utils/remarkResponsiveImages.ts';
+import { IMAGE_BREAKPOINTS, PROSE_MAX_WIDTH } from './src/utils/imageDimensions.ts';
 
 // Converts soft line breaks (single newlines) to <br> nodes, preserving
 // line-by-line structure in blockquotes used for poetry and similar content.
@@ -77,7 +78,10 @@ export default defineConfig({
     // wikilinks and poetry line-breaks are remark plugins, so opt back into
     // the remark/rehype pipeline explicitly via @astrojs/markdown-remark.
     processor: unified({
-      remarkPlugins: [remarkStripLearnBlocks, remarkMermaid, remarkWikilinks, remarkBreaks, remarkResponsiveImages],
+      remarkPlugins: [remarkStripLearnBlocks, remarkMermaid, remarkWikilinks, remarkBreaks,
+        // Widths are passed so changing them clears Astro's cached markdown.
+        [remarkResponsiveImages, { breakpoints: IMAGE_BREAKPOINTS, proseMaxWidth: PROSE_MAX_WIDTH }],
+      ],
     }),
     shikiConfig: {
       themes: {

@@ -22,7 +22,7 @@ image: {
 ```
 
 - `domains` allows Astro to download and optimize R2 images during the build.
-- `layout: 'constrained'` is the default for every image, so each one gets a `srcset` and `sizes`. Components can still pass their own `layout` (shelf cards use `fixed`).
+- `layout: 'constrained'` is the default for every image, so each one gets a `srcset` and `sizes`. Components can still pass their own `layout`. Shelf covers use `none` (see below).
 - `responsiveStyles` stays off. Global CSS (`img { max-width: 100%; height: auto; }` in `src/styles/grid.css`) already sizes images.
 
 ## The dimension manifest
@@ -49,9 +49,10 @@ The script scans `src/content/**/*.md` for R2 URLs in Markdown image syntax and 
 
 Shared settings live in `src/utils/imageDimensions.ts`:
 
-- `PROSE_SIZES` (`(max-width: 48rem) 100vw, 42rem`) and `PROSE_MAX_WIDTH` (1600px) for images in a text column.
-- Candidate `srcset` widths: 480, 800, 1200, 1600 and 2048px. An image never gets widths larger than its original.
+- `PROSE_SIZES` (`(max-width: 48rem) 100vw, 42rem`) and `PROSE_MAX_WIDTH` (1200px) for images in a text column.
+- Candidate `srcset` widths: 800, 1200 and 2048px. There is no smaller width because phones have 2x or 3x screens and pick 800 or larger. An image never gets widths larger than its original.
 - Every width is a separate file in `dist/_astro`, and Cloudflare Pages rejects a deploy with more than 20,000 files. Keep the list short, and use one of these widths as a component's `maxWidth` so variants are shared.
+- Shelf covers are small, so each place that shows one gets a single file at 2x its display size, with `layout="none"`: the wall tile (440x660, shown at 220px), the detail and TV season pages (512px tall, shown at 16rem) and the homepage feed (144px, shown at 72px). CSS sets the displayed size.
 
 When adding a component that shows an R2 image, use `RemoteImage` and give it a `sizes` value that matches the slot it is shown in, plus `maxWidth` of roughly twice the slot's widest CSS width.
 

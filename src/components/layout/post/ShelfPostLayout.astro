@@ -34,8 +34,8 @@ const { coverImage, credits, chips } = buildShelfMeta(category, entry.data ?? {}
                 <Image
                     src={coverImage}
                     alt={`Cover of ${fields.title}`}
-                    height={256}
-                    densities={[1, 2]}
+                    height={512}
+                    layout="none"
                     class="book-meta-cover-image"
                     loading="eager"
                     fetchpriority="high"
