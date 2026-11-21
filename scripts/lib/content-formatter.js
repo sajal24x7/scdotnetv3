@@ -1,43 +1,95 @@
 /**
  * Content Formatter for POSSE Syndication
  *
- * Formats content appropriately for each social media platform,
- * respecting character limits and platform conventions.
+ * Builds the short social post for each category. The style is one or two
+ * lines plus a bare link back, with no "Read more" text. Hashtags only go
+ * out on photo posts. See docs/operations/syndication.md for the rules.
+ *
+ * Platform limits come from syndication.config.json at the repo root.
  */
 
-// Platform configuration
-const PLATFORM_CONFIG = {
-  mastodon: {
-    maxLength: 500,
-    includeHashtags: true,
-    includeLink: true,
-    linkText: 'Read more'
-  },
-  bluesky: {
-    maxLength: 300,
-    includeHashtags: true,
-    includeLink: true,
-    linkText: 'Read more'
-  },
-  threads: {
-    maxLength: 500,
-    includeHashtags: true,
-    includeLink: true,
-    linkText: 'Read more'
-  },
-  instagram: {
-    // Captions allow 2200 chars / 30 hashtags; links aren't clickable but
-    // the canonical URL still travels with the post as plain text.
-    maxLength: 2200,
-    includeHashtags: true,
-    includeLink: true,
-    linkText: 'Read more'
-  }
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const CONFIG_PATH = path.join(
+  path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'syndication.config.json'
+);
+export const SYNDICATION_CONFIG = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8'));
+const PLATFORM_CONFIG = SYNDICATION_CONFIG.platforms;
+const HASHTAG_CATEGORIES = new Set(SYNDICATION_CONFIG.defaults.hashtagCategories || []);
+const MAX_HASHTAGS = SYNDICATION_CONFIG.defaults.maxHashtags || 3;
+
+const SITE_URL = 'https://sajalchoudhary.net';
+const HAIKU_PAGE_URL = `${SITE_URL}/haiku/`;
+const SHELF_VERBS = {
+  bookshelf: 'reading',
+  filmshelf: 'watching',
+  tvshelf: 'watching',
+  gameshelf: 'playing'
 };
 
-// Categories that intentionally omit the canonical link in syndicated posts.
-// Keep empty so Nordletter issues include a link back to the full edition.
-const NON_LINK_CATEGORIES = new Set();
+const URL_REGEX = /https?:\/\/[^\s)]+/g;
+const segmenter = typeof Intl !== 'undefined' && Intl.Segmenter
+  ? new Intl.Segmenter(undefined, { granularity: 'grapheme' })
+  : null;
+
+/**
+ * Length of `text` as the platform counts it. Mastodon counts every URL
+ * as `urlLength` characters; Bluesky counts graphemes, so an emoji is one.
+ */
+function measure(text, config) {
+  let counted = text;
+  if (config.urlLength) {
+    counted = counted.replace(URL_REGEX, 'x'.repeat(config.urlLength));
+  }
+  if (config.countGraphemes && segmenter) {
+    return [...segmenter.segment(counted)].length;
+  }
+  return [...counted].length;
+}
+
+function fits(text, config) {
+  return measure(text, config) <= config.maxLength;
+}
+
+/**
+ * Shorten `text` so that `text + suffix` fits the platform limit. Cuts at
+ * the last sentence end that fits, else at a word boundary with "…".
+ */
+function truncateToFit(text, suffix, config) {
+  if (fits(text + suffix, config)) {
+    return text;
+  }
+
+  // Sentence ends: punctuation followed by whitespace or the end of text
+  const sentenceEnds = [...text.matchAll(/[.!?…](?=\s|$)/g)].map(m => m.index + 1);
+  for (let i = sentenceEnds.length - 1; i >= 0; i--) {
+    const cut = text.slice(0, sentenceEnds[i]).trim();
+    if (fits(cut + suffix, config)) {
+      return cut;
+    }
+  }
+
+  const words = text.split(/(\s+)/);
+  while (words.length > 0) {
+    words.pop();
+    const cut = `${words.join('').trimEnd()}…`;
+    if (fits(cut + suffix, config)) {
+      return cut;
+    }
+  }
+  return '';
+}
+
+/**
+ * `text`, a blank line, then `url`, shortening `text` if needed
+ */
+function withLink(text, url, config) {
+  const suffix = `\n\n${url}`;
+  const lead = truncateToFit(text, suffix, config);
+  return lead ? `${lead}${suffix}` : url;
+}
 
 /**
  * Resolve an image reference to an absolute URL
@@ -46,7 +98,7 @@ function resolveImageUrl(src) {
   if (/^https?:\/\//.test(src)) {
     return src;
   }
-  return `https://sajalchoudhary.net${src.startsWith('/') ? '' : '/'}${src}`;
+  return `${SITE_URL}${src.startsWith('/') ? '' : '/'}${src}`;
 }
 
 /**
@@ -67,308 +119,180 @@ function extractImages(text) {
   return images;
 }
 
-/**
- * Remove markdown image syntax from text
- */
 function stripImages(text) {
   return (text || '').replace(/!\[[^\]]*\]\([^)]*\)/g, '');
 }
 
 /**
- * Convert a micro post body to plain text suitable for social platforms:
- * images removed (they are attached natively), markdown links flattened,
- * blockquotes quoted, formatting markers stripped.
+ * Markdown to plain text for social posts. Line breaks are kept (poems,
+ * haiku); images are removed (they upload natively); links become
+ * "text (url)"; blockquotes become quoted text.
  */
-function cleanMicroBody(body) {
+function toPlainText(body, { dropQuotes = false } = {}) {
   let text = stripImages(body);
 
-  // Markdown links → "text (url)", or just the URL when the text is the URL
-  text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, label, url) => {
-    const cleanLabel = label.trim();
-    const cleanUrl = url.trim();
-    return cleanLabel === cleanUrl ? cleanUrl : `${cleanLabel} (${cleanUrl})`;
-  });
-
-  // Blockquote blocks → quoted text
+  // Blockquote blocks → quoted text, or dropped entirely
   text = text.replace(/(?:^>[^\n]*\n?)+/gm, (block) => {
+    if (dropQuotes) return '\n';
     const quote = block.replace(/^>\s?/gm, '').replace(/\n+/g, ' ').trim();
     return quote ? `"${quote}"\n` : '';
   });
 
-  // Strip common markdown formatting markers
-  text = text.replace(/[#*_`]/g, '');
+  // Markdown links → "text (url)", or just the URL when the text is the URL
+  text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, label, url) => {
+    const cleanLabel = label.trim();
+    const cleanUrl = resolveImageUrl(url.trim());
+    return cleanLabel === url.trim() ? cleanUrl : `${cleanLabel} (${cleanUrl})`;
+  });
 
-  // Collapse blank lines left behind by removed images
+  // Headings, emphasis and code markers
+  text = text.replace(/^#+\s*/gm, '').replace(/[*_`]/g, '');
+
+  // Markdown hard breaks (trailing spaces or a trailing backslash)
+  text = text.replace(/[ \t]*\\?[ \t]*$/gm, '');
+
+  // Collapse blank lines left behind by removed images and quotes
   text = text.replace(/\n{3,}/g, '\n\n');
 
   return text.trim();
 }
 
 /**
- * Extract link from markdown link format (ignoring image syntax)
+ * A link post starts with a line that is only a markdown link to the
+ * thing being shared. Returns that URL, or null for a plain note.
  */
-function extractLinkFromMarkdown(text) {
-  const linkMatch = stripImages(text).match(/\[([^\]]+)\]\(([^)]+)\)/);
-  return linkMatch ? { text: linkMatch[1], url: linkMatch[2] } : null;
+function findSharedLink(body) {
+  const firstLine = stripImages(body).split('\n').find(line => line.trim());
+  const match = firstLine && firstLine.trim().match(/^\[[^\]]+\]\((https?:\/\/[^)\s]+)\)$/);
+  return match ? match[1] : null;
 }
 
-/**
- * Extract quote from blockquote format
- */
-function extractQuote(text) {
-  const lines = text.split('\n');
-  const quoteLines = [];
-  let inQuote = false;
-
-  for (const line of lines) {
-    if (line.trim().startsWith('>')) {
-      inQuote = true;
-      quoteLines.push(line.replace(/^>\s*/, '').trim());
-    } else if (inQuote && line.trim() === '') {
-      // Empty line within quote - continue
-      continue;
-    } else if (inQuote) {
-      // End of quote
-      break;
-    }
-  }
-
-  return quoteLines.join(' ').trim();
-}
-
-/**
- * Extract thoughts (content after the quote)
- */
-function extractThoughts(text) {
-  const lines = text.split('\n');
-  const thoughtLines = [];
-  let afterQuote = false;
-
-  for (const line of lines) {
-    if (afterQuote) {
-      if (line.trim()) {
-        thoughtLines.push(line.trim());
-      }
-    } else if (!line.trim().startsWith('>') && !line.includes('[') && !line.includes('](') && line.trim()) {
-      afterQuote = true;
-      thoughtLines.push(line.trim());
-    }
-  }
-
-  return thoughtLines.join(' ').trim();
-}
-
-/**
- * Truncate text to complete sentences only
- */
-function truncateToCompleteSentences(text, maxLength) {
-  if (text.length <= maxLength) {
-    return text;
-  }
-
-  // Find the last sentence boundary before maxLength
-  const truncated = text.substring(0, maxLength);
-  const sentenceEnders = /[.!?]/g;
-  let lastSentenceEnd = -1;
-  let match;
-
-  while ((match = sentenceEnders.exec(truncated)) !== null) {
-    lastSentenceEnd = match.index;
-  }
-
-  if (lastSentenceEnd > 0) {
-    return text.substring(0, lastSentenceEnd + 1);
-  }
-
-  // If no sentence boundary found, return empty to avoid fragments
-  return '';
-}
-
-/**
- * Format micro post content according to specified structure
- */
-function formatMicroPost(post, availableLength, needsWebsiteLink = false) {
-  const body = stripImages(post.body);
-
-  // Extract components
-  const link = extractLinkFromMarkdown(body);
-  const quote = extractQuote(body);
-  const thoughts = extractThoughts(body);
-
-  // If no link detected, display everything and handle overflow with website link back
-  if (!link) {
-    let content = '';
-
-    if (quote) {
-      content += `"${quote}"\n\n`;
-    }
-
-    if (thoughts) {
-      content += thoughts;
-    }
-
-    return content.trim();
-  }
-
-  // If quote is under 100 chars, try to include full quote + thoughts + original link
-  if (quote && quote.length <= 100) {
-    const linkLength = link.url.length + 2; // +2 for \n\n
-    const quoteLength = quote.length + 4; // +4 for quotes and \n\n
-    const availableForThoughts = availableLength - linkLength - quoteLength;
-
-    if (thoughts && (linkLength + quoteLength + thoughts.length) <= availableLength) {
-      // Everything fits
-      let content = link.url + '\n\n';
-      content += `"${quote}"\n\n`;
-      content += thoughts;
-      return content.trim();
-    } else if (thoughts && availableForThoughts > 20) {
-      // Truncate thoughts to complete sentences
-      const truncatedThoughts = truncateToCompleteSentences(thoughts, availableForThoughts);
-      if (truncatedThoughts) {
-        let content = link.url + '\n\n';
-        content += `"${quote}"\n\n`;
-        content += truncatedThoughts;
-        return content.trim();
-      }
-    }
-  }
-
-  // For longer quotes: show title + thoughts + website link back
-  // This indicates we need a website link, so we'll handle this in the main function
-  return 'NEEDS_WEBSITE_LINK';
-}
-
-/**
- * Extract the first paragraph or description from post content
- */
-function extractExcerpt(post, maxLength = 200) {
-  // Try description first
-  if (post.data.description) {
-    return post.data.description;
-  }
-
-  // For micro posts, use the special formatting
-  if (post.data.category === 'micro' && post.body) {
-    return formatMicroPost(post, maxLength);
-  }
-
-  // For blog posts, try to extract first paragraph from body
-  if (post.body) {
-    const plainText = post.body
-      .replace(/!\[.*?\]\(.*?\)/g, '') // Remove images
-      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Convert links to text
-      .replace(/[#*_`]/g, '') // Remove markdown formatting
-      .trim();
-
-    const firstParagraph = plainText.split('\n\n')[0] || plainText.split('\n')[0];
-    return firstParagraph.length > maxLength
-      ? firstParagraph.substring(0, maxLength - 3) + '...'
-      : firstParagraph;
-  }
-
-  // Fallback to title
-  return post.data.title || 'New post';
-}
-
-function formatNonLinkPost(post, config, hashtagsText) {
-    const maxContentLength = config.maxLength - (hashtagsText ? hashtagsText.length + 2 : 0);
-    if (maxContentLength <= 0) {
-        const fallback = (post.data.title || post.data.description || 'New post').trim() || 'New post';
-        let content = fallback;
-        if (hashtagsText) {
-            content += `\n\n${hashtagsText}`;
-        }
-        return content.length > config.maxLength
-            ? `${content.substring(0, config.maxLength - 3)}...`
-            : content.trim();
-    }
-
-    const title = (post.data.title || '').trim();
-    let content = '';
-    let truncatedTitle = title;
-
-    if (title) {
-        truncatedTitle = title.length > maxContentLength
-            ? `${title.substring(0, maxContentLength - 3)}...`
-            : title;
-        content = truncatedTitle;
-    }
-
-    const newlineSpace = content ? 2 : 0;
-    const excerptSpace = maxContentLength - content.length - newlineSpace;
-
-    if (excerptSpace > 0) {
-        const excerpt = extractExcerpt(post, excerptSpace);
-        const cleanExcerpt = excerpt.trim();
-        if (cleanExcerpt) {
-            const normalizedExcerpt = cleanExcerpt.toLowerCase();
-            const normalizedTitle = title.toLowerCase();
-            const normalizedTruncated = truncatedTitle.toLowerCase();
-
-            if (normalizedExcerpt !== normalizedTitle && normalizedExcerpt !== normalizedTruncated) {
-                content = content ? `${content}\n\n${cleanExcerpt}` : cleanExcerpt;
-            }
-        }
-    }
-
-    if (!content) {
-        const fallback = extractExcerpt(post, maxContentLength) || title || 'New post';
-        content = fallback.length > maxContentLength
-            ? `${fallback.substring(0, maxContentLength - 3)}...`
-            : fallback;
-    }
-
-    if (hashtagsText) {
-        content += `\n\n${hashtagsText}`;
-    }
-
-    return content.trim();
-}
-
-/**
- * Generate hashtags from post tags
- */
-function generateHashtags(post, maxTags = 3) {
+function generateHashtags(post) {
   if (!post.data.tags || post.data.tags.length === 0) {
     return '';
   }
 
   return post.data.tags
-    .slice(0, maxTags) // Limit number of tags
-    .map(tag => `#${tag.replace(/[^a-zA-Z0-9]/g, '')}`) // Clean and format
+    .slice(0, MAX_HASHTAGS)
+    .map(tag => `#${String(tag).replace(/[^a-zA-Z0-9]/g, '')}`)
     .join(' ');
 }
 
-/**
- * Create the canonical URL for a post
- */
 function getPostUrl(post) {
-  return `https://sajalchoudhary.net/${post.data.category}/${post.slug}/`;
+  return `${SITE_URL}/${post.data.category}/${post.slug}/`;
 }
 
-const HAIKU_PAGE_URL = 'https://sajalchoudhary.net/haiku/';
+/**
+ * Micro: your comments plus the link to the shared item. The quoted
+ * excerpt is skipped. If the comments don't fit, they are shortened and
+ * the link points at the post on the site instead. Plain notes (no shared
+ * link) post in full, or shortened with a link to the post.
+ */
+function formatMicro(post, config, postUrl) {
+  const sharedUrl = findSharedLink(post.body);
+
+  if (sharedUrl) {
+    const withoutLinkLine = stripImages(post.body).replace(/^\s*\[[^\]]+\]\([^)]+\)[ \t]*\n?/, '');
+    const comments = toPlainText(withoutLinkLine, { dropQuotes: true }) || post.data.title || '';
+    const full = `${comments}\n\n${sharedUrl}`;
+    return fits(full, config) ? full : withLink(comments, postUrl, config);
+  }
+
+  const text = toPlainText(post.body) || post.data.title || '';
+  return fits(text, config) ? text : withLink(text, postUrl, config);
+}
 
 /**
- * Haiku posts: the number ("No. 12"), the full verse with line breaks
- * kept, then a link to the
- * /haiku/ page (not the single post) so readers can find the rest.
- * A haiku that somehow overflows keeps as many whole lines as fit.
+ * Photo: the caption verbatim with hashtags. If too long, the caption is
+ * shortened and a link to the post is added before the hashtags.
  */
-function formatHaikuPost(post, config, hashtagsText) {
-  const footer = `\n\nRead all haiku: ${HAIKU_PAGE_URL}`
-    + (hashtagsText ? `\n\n${hashtagsText}` : '');
+function formatPhoto(post, config, postUrl) {
+  const hashtags = generateHashtags(post);
+  const tagSuffix = hashtags ? `\n\n${hashtags}` : '';
+  const caption = toPlainText(post.body) || post.data.title || '';
+
+  if (fits(caption + tagSuffix, config)) {
+    return (caption + tagSuffix).trim();
+  }
+
+  const linkSuffix = `\n\n${postUrl}${tagSuffix}`;
+  const lead = truncateToFit(caption, linkSuffix, config);
+  return lead ? `${lead}${linkSuffix}` : `${postUrl}${tagSuffix}`;
+}
+
+/**
+ * Haiku: "No. 12", the verse with its line breaks, then a link to the
+ * /haiku/ page. Whole trailing lines drop if it ever overflows.
+ */
+function formatHaiku(post, config) {
+  const footer = `\n\nRead all haiku: ${HAIKU_PAGE_URL}`;
   const header = post.data.number ? `No. ${post.data.number}\n\n` : '';
-  const available = config.maxLength - header.length - footer.length;
-  const lines = cleanMicroBody(post.body).split('\n');
+  const lines = toPlainText(post.body).split('\n');
 
   let verse = lines.join('\n');
-  while (verse.length > available && lines.length > 1) {
+  while (!fits(header + verse + footer, config) && lines.length > 1) {
     lines.pop();
     verse = `${lines.join('\n')}\n…`;
   }
 
   return header + (verse || post.data.title || 'New haiku') + footer;
+}
+
+/**
+ * Poem: the full poem, line breaks kept and no title, when it fits.
+ * Otherwise the title and a link back.
+ */
+function formatPoem(post, config, postUrl) {
+  const verse = toPlainText(post.body);
+  if (verse && fits(verse, config)) {
+    return verse;
+  }
+  return withLink((post.data.title || '').trim() || 'New poem', postUrl, config);
+}
+
+/**
+ * Shelf notes with the template boilerplate removed: empty "Review" and
+ * "Notes" headings and auto lines such as "Finished watching on 2026-11-09."
+ */
+function shelfNotes(body) {
+  const boilerplate = /^finished (reading|watching|playing)( this season| season \d+)?( on \S+)?\.?$/i;
+  return toPlainText(body)
+    .split('\n')
+    .filter(line => !/^(review|notes)$/i.test(line.trim()) && !boilerplate.test(line.trim()))
+    .join('\n')
+    .trim();
+}
+
+function shelfName(post) {
+  const { category, title, showTitle, season } = post.data;
+  if (category === 'tvshelf' && season) {
+    return `${showTitle || title}, season ${season}`;
+  }
+  return title || 'it';
+}
+
+/**
+ * Shelf (finished only):
+ *   notes + description → "<description>\n\nMy review: <link>"
+ *   notes, no description → "Finished watching X. My review: <link>"
+ *   no notes → "Finished watching X" (no link)
+ */
+function formatShelf(post, config, postUrl) {
+  const verb = SHELF_VERBS[post.data.category] || 'reading';
+  const finished = `Finished ${verb} ${shelfName(post)}`;
+
+  if (!shelfNotes(post.body)) {
+    return truncateToFit(finished, '', config);
+  }
+
+  const description = (post.data.description || '').trim();
+  if (description) {
+    const suffix = `\n\nMy review: ${postUrl}`;
+    return `${truncateToFit(description, suffix, config)}${suffix}`;
+  }
+
+  const suffix = `. My review: ${postUrl}`;
+  return `${truncateToFit(finished, suffix, config)}${suffix}`;
 }
 
 /**
@@ -380,106 +304,26 @@ export function formatContentForPlatform(post, platform) {
     throw new Error(`Unknown platform: ${platform}`);
   }
 
-  let content = '';
   const postUrl = getPostUrl(post);
-  const hashtagsText = config.includeHashtags ? generateHashtags(post, 3) : '';
   const category = (post.data.category || '').toLowerCase();
+  const title = (post.data.title || '').trim();
+  let content;
 
-  if (NON_LINK_CATEGORIES.has(category)) {
-    content = formatNonLinkPost(post, config, hashtagsText);
+  if (category === 'micro') {
+    content = formatMicro(post, config, postUrl);
+  } else if (category === 'photo') {
+    content = formatPhoto(post, config, postUrl);
   } else if (category === 'haiku') {
-    content = formatHaikuPost(post, config, hashtagsText);
-  } else if (category === 'micro' || category === 'photo') {
-    // Micro and photo posts: if the full text fits within the platform
-    // limit, post it verbatim with no link back to the site.
-    const cleanedBody = cleanMicroBody(post.body);
-    const hashtagsSpace = hashtagsText ? hashtagsText.length + 2 : 0; // +2 for \n\n
-
-    if (cleanedBody && cleanedBody.length + hashtagsSpace <= config.maxLength) {
-      content = cleanedBody;
-
-      if (config.includeHashtags && hashtagsText) {
-        content += `\n\n${hashtagsText}`;
-      }
-    } else {
-      // Content is too long, need to include link back and truncate
-      const linkText = `\n\n📖 ${config.linkText}: ${postUrl}`;
-
-      const reservedSpace = linkText.length + (hashtagsText ? hashtagsText.length + 2 : 0);
-      const availableContentSpace = config.maxLength - reservedSpace;
-
-      const formattedContent = formatMicroPost(post, availableContentSpace);
-
-      if (formattedContent === 'NEEDS_WEBSITE_LINK') {
-        // Handle quote >100 chars case: title + thoughts + website link
-        const title = post.data.title || '';
-        const thoughts = extractThoughts(stripImages(post.body));
-
-        if (title && thoughts) {
-          const titleSpace = title.length + 2; // +2 for \n\n
-          const availableForThoughts = availableContentSpace - titleSpace;
-          const truncatedThoughts = truncateToCompleteSentences(thoughts, availableForThoughts);
-
-          if (truncatedThoughts) {
-            content = `${title}\n\n${truncatedThoughts}`;
-          } else {
-            // If thoughts can't fit as complete sentences, just use title
-            content = title;
-          }
-        } else if (thoughts) {
-          const truncatedThoughts = truncateToCompleteSentences(thoughts, availableContentSpace);
-          content = truncatedThoughts || thoughts.substring(0, availableContentSpace - 3) + '...';
-        } else {
-          content = title || 'New post';
-        }
-      } else if (formattedContent.length > availableContentSpace) {
-        // Truncate to complete sentences so the link back still fits
-        content = truncateToCompleteSentences(formattedContent, availableContentSpace)
-          || formattedContent.substring(0, availableContentSpace - 3) + '...';
-      } else {
-        content = formattedContent;
-      }
-
-      content += linkText;
-
-      // Add hashtags if configured
-      if (config.includeHashtags && hashtagsText) {
-        content += `\n\n${hashtagsText}`;
-      }
-    }
+    content = formatHaiku(post, config);
+  } else if (category === 'poem') {
+    content = formatPoem(post, config, postUrl);
+  } else if (category in SHELF_VERBS) {
+    content = formatShelf(post, config, postUrl);
+  } else if (category === 'til') {
+    content = withLink(title || 'New TIL', postUrl, config);
   } else {
-    // For long-form posts, include link back to the site
-    const linkText = config.includeLink
-      ? `\n\n📖 ${config.linkText}: ${postUrl}`
-      : '';
-
-    const reservedSpace = linkText.length + (hashtagsText ? hashtagsText.length + 2 : 0);
-    const availableContentSpace = config.maxLength - reservedSpace;
-
-    const title = post.data.title || '';
-    const titleSpace = title ? title.length + 2 : 0; // +2 for \n\n
-    const excerptSpace = availableContentSpace - titleSpace;
-
-    if (title && excerptSpace > 50) { // Only add title if we have room for meaningful excerpt
-      const excerpt = extractExcerpt(post, excerptSpace);
-      content = `${title}\n\n${excerpt}`;
-    } else {
-      // No title or not enough space, just use excerpt
-      content = extractExcerpt(post, availableContentSpace);
-    }
-
-    if (config.includeLink) {
-      content += linkText;
-    }
-
-    if (config.includeHashtags && hashtagsText) {
-      content += `\n\n${hashtagsText}`;
-    }
-  }
-
-  // Final length check and truncation (safety net)
-  if (content.length > config.maxLength) {
-    content = content.substring(0, config.maxLength - 3) + '...';
+    // Blog, Nordletter, evergreen, story and other long-form posts
+    content = withLink(post.data.description || title || 'New post', postUrl, config);
   }
 
   // Images to attach as native media (micro and photo posts).
@@ -513,18 +357,8 @@ export function formatContentForPlatform(post, platform) {
 }
 
 /**
- * Preview formatted content for all platforms (useful for testing)
+ * Measure text the way a platform counts it (exported for tests)
  */
-export function previewAllPlatforms(post) {
-  const previews = {};
-
-  for (const platform of Object.keys(PLATFORM_CONFIG)) {
-    try {
-      previews[platform] = formatContentForPlatform(post, platform);
-    } catch (error) {
-      previews[platform] = { error: error.message };
-    }
-  }
-
-  return previews;
+export function measureForPlatform(text, platform) {
+  return measure(text, PLATFORM_CONFIG[platform]);
 }
