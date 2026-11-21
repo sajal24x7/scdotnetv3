@@ -1,49 +1,29 @@
 {
+  "$comment": "Read by scripts/lib/content-formatter.js and scripts/syndicate-content.js. maxLength is the platform's post limit; urlLength makes every URL count as that many characters (Mastodon); countGraphemes counts emoji as one character (Bluesky); categories limits a platform to those categories. Which categories syndicate at all lives in publication.config.json. See docs/operations/syndication.md.",
   "platforms": {
     "mastodon": {
       "name": "Mastodon",
       "maxLength": 500,
-      "includeImages": true,
-      "includeHashtags": true,
-      "includeLink": true,
-      "linkText": "Read more",
-      "icon": "🐘"
+      "urlLength": 23
     },
     "bluesky": {
       "name": "Bluesky",
       "maxLength": 300,
-      "includeImages": true,
-      "includeHashtags": true,
-      "includeLink": true,
-      "linkText": "Read more",
-      "icon": "🦋"
+      "countGraphemes": true
     },
     "threads": {
       "name": "Threads",
-      "maxLength": 500,
-      "includeImages": true,
-      "includeHashtags": true,
-      "includeLink": true,
-      "linkText": "Link in bio or visit",
-      "icon": "🧵"
+      "maxLength": 500
     },
     "instagram": {
       "name": "Instagram",
       "maxLength": 2200,
-      "includeImages": true,
-      "includeHashtags": true,
-      "includeLink": true,
-      "linkText": "Read more",
-      "icon": "📷",
       "categories": ["photo"]
     }
   },
   "defaults": {
-    "includeLink": true,
-    "includeHashtags": true,
-    "maxHashtags": 3,
-    "excerptLength": 200,
-    "createBackups": false
+    "hashtagCategories": ["photo"],
+    "maxHashtags": 3
   },
   "rateLimits": {
     "mastodon": {
@@ -66,10 +46,5 @@
       "windowMs": 3600000,
       "comment": "Meta caps accounts at 50 API-published posts per 24h; stay conservative"
     }
-  },
-  "dryRun": {
-    "enabled": false,
-    "logPosts": true,
-    "saveFormattedContent": false
   }
 }

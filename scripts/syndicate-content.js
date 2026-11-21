@@ -3,10 +3,8 @@
 /**
  * POSSE Syndication Script for sajalchoudhary.net
  *
- * Syndicates stream content (blog, micro, photo) to:
- * - Mastodon
- * - Bluesky
- * - Threads
+ * Syndicates posts allowed by publication.config.json to Mastodon,
+ * Bluesky, Threads and (photo posts only) Instagram.
  *
  * Only adds syndicationUrls to frontmatter, preserves all existing fields.
  */
@@ -18,7 +16,7 @@ import { readFrontmatter } from './lib/frontmatter-updater.js';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { formatContentForPlatform } from './lib/content-formatter.js';
+import { formatContentForPlatform, SYNDICATION_CONFIG } from './lib/content-formatter.js';
 import { postToMastodon } from './lib/platforms/mastodon.js';
 import { postToBluesky } from './lib/platforms/bluesky.js';
 import { postToThreads } from './lib/platforms/threads.js';
@@ -26,15 +24,16 @@ import { postToInstagram } from './lib/platforms/instagram.js';
 import { RateLimiter } from './lib/utils/rate-limiter.js';
 
 // Configuration
-const PLATFORMS = ['mastodon', 'bluesky', 'threads', 'instagram'];
-// Instagram can't post without an image, so only photo posts go there
-const PHOTO_ONLY_PLATFORMS = new Set(['instagram']);
+// Platforms, their category limits (Instagram is photo-only because it
+// can't post without an image) and rate limits live in syndication.config.json
+const PLATFORMS = Object.keys(SYNDICATION_CONFIG.platforms);
 // Central publication allowlist: publication.config.json decides which
 // categories (and which shelf statuses) syndicate. Explicit allow only —
 // anything missing from its `syndication` map is never cross-posted.
 const SYNDICATION_RULES = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'publication.config.json'), 'utf-8')
-).syndication || {};const DRY_RUN = process.env.SYNDICATION_DRY_RUN === 'true';
+).syndication || {};
+const DRY_RUN = process.env.SYNDICATION_DRY_RUN === 'true';
 const DAYS_BACK = parseInt(process.env.SYNDICATION_DAYS_BACK || '7', 10);
 
 /**
@@ -87,21 +86,21 @@ async function getAllPosts() {
 }
 
 // Rate limiters for each platform
-const rateLimiters = {
-  mastodon: new RateLimiter(300, 5 * 60 * 1000), // 300 requests per 5 minutes
-  bluesky: new RateLimiter(100, 60 * 1000),       // 100 requests per minute (conservative)
-  threads: new RateLimiter(250, 60 * 60 * 1000),  // 250 requests per hour
-  instagram: new RateLimiter(25, 60 * 60 * 1000)  // Meta caps at 50 posts/24h; stay well under
-};
+const rateLimiters = Object.fromEntries(
+  Object.entries(SYNDICATION_CONFIG.rateLimits).map(([platform, limit]) =>
+    [platform, new RateLimiter(limit.requests, limit.windowMs)]
+  )
+);
 
 /**
  * Platforms a given post is allowed to go to
  */
 function eligiblePlatforms(post) {
   const category = (post.data.category || '').toLowerCase();
-  return PLATFORMS.filter(platform =>
-    !PHOTO_ONLY_PLATFORMS.has(platform) || category === 'photo'
-  );
+  return PLATFORMS.filter(platform => {
+    const allowed = SYNDICATION_CONFIG.platforms[platform].categories;
+    return !allowed || allowed.includes(category);
+  });
 }
 
 /**
