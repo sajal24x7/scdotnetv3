@@ -633,6 +633,8 @@
       "bookshelf/202611060757 Tell no one.md",
       "bookshelf/202611101352 The infinity machine.md",
       "bookshelf/202611161900 The Deep Life A Structured Approach to the Search for Meaning.md",
+      "bookshelf/202611200754 Finland - Culture Smart.md",
+      "bookshelf/202611211531 My Autobiography.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
@@ -1250,6 +1252,7 @@
       "filmshelf/202610291759 Gajab Raat.md",
       "filmshelf/202611092005 Ramayana.md",
       "filmshelf/202611101437 Mortal Kombat 2.md",
+      "filmshelf/202611211259 The Vvan.md",
       "gameshelf/202605290954 Ghost of Yotei.md",
       "gameshelf/202608202205 Spiderman 2.md",
       "gameshelf/202608202207 FC26.md",
@@ -1284,6 +1287,7 @@
       "haiku/202611152025 Lights flicker in the distance.md",
       "haiku/202611172233 Pour the batter on tawa.md",
       "haiku/202611182159 There’s mud everywhere.md",
+      "haiku/202611202041 Drops fall in a puddle..md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -1718,6 +1722,8 @@
       "micro/202611181337 An interview with Rockstar Devs about GTA VI.md",
       "micro/202611181816 A game which uses AI to map your memories.md",
       "micro/202611181848 Voyager is now one light day away.md",
+      "micro/202611192134 New Manchester United Coach and Hopes.md",
+      "micro/202611211516.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -1848,6 +1854,7 @@
       "nordletter/202610311406 NL129 - A burning horse.md",
       "nordletter/202611071116 NL130 - A Spot of Sunshine.md",
       "nordletter/202611141416 NL131 - Post Diwali Blues.md",
+      "nordletter/202611211313 NL132 - GTA Week.md",
       "now/202508312122 Building scdotnetv3 on Astro.md",
       "now/202508312123 Yoga.md",
       "now/202508312124 Raise Savya.md",
@@ -9440,6 +9447,14 @@
   ],
   "bookshelf/native-guard": [
     {
+      "slug": "/bookshelf/obit/",
+      "title": "Obit",
+      "description": "A beautiful book about loss and remembering loss",
+      "category": "bookshelf",
+      "created": "2026-10-10T10:15:00.000Z",
+      "snippet": "I picked up this book as inspiration for the work I wanted to do next - a poetry collection of my own for my mother. I had picked up Native Guard for the same reason."
+    },
+    {
       "slug": "/nordletter/nl126-parenting-in-the-fall/",
       "title": "Parenting in the Fall",
       "description": "We are sick!",
@@ -9449,6 +9464,14 @@
     }
   ],
   "bookshelf/obit": [
+    {
+      "slug": "/nordletter/nl132-gta-week/",
+      "title": "GTA Week",
+      "description": "Playing GTA, thinking about routines and the smallest unit of work",
+      "category": "nordletter",
+      "created": "2026-11-21T11:13:00.000Z",
+      "snippet": "I finished reading Obit this week."
+    },
     {
       "slug": "/nordletter/nl126-parenting-in-the-fall/",
       "title": "Parenting in the Fall",
@@ -9561,6 +9584,64 @@
       "category": "nordletter",
       "created": "2026-11-14T12:16:00.000Z",
       "snippet": "Seth Godin talked about a similar thing this week."
+    }
+  ],
+  "gameshelf/gta-vi": [
+    {
+      "slug": "/nordletter/nl132-gta-week/",
+      "title": "GTA Week",
+      "description": "Playing GTA, thinking about routines and the smallest unit of work",
+      "category": "nordletter",
+      "created": "2026-11-21T11:13:00.000Z",
+      "snippet": "Even if you don’t, you may have heard of the event that is GTA VI. GTA VI is so big that it has already made 3.8 billion in its first few days. For comparison, Avengers Endgame has made around 3 billion in its entire run. GTA VI is so big that many networks, including in Finland reported massive traffic spikes when it launched. GTA VI is so big that Prerna asked me about it."
+    }
+  ],
+  "gameshelf/spiderman-2": [
+    {
+      "slug": "/nordletter/nl132-gta-week/",
+      "title": "GTA Week",
+      "description": "Playing GTA, thinking about routines and the smallest unit of work",
+      "category": "nordletter",
+      "created": "2026-11-21T11:13:00.000Z",
+      "snippet": "Also, the game and the missions are designed in such a way that these things don't feel like a chore. Like I want to do the side missions. You know? Like getting rum for my neighbour. I did not feel the same way in Spiderman 2, for example. I do want to get a new car though. I don't like the one I have now. Though I assume that I will get a better one as the game progresses."
+    }
+  ],
+  "nordletter/nl131-post-diwali-blues": [
+    {
+      "slug": "/nordletter/nl132-gta-week/",
+      "title": "GTA Week",
+      "description": "Playing GTA, thinking about routines and the smallest unit of work",
+      "category": "nordletter",
+      "created": "2026-11-21T11:13:00.000Z",
+      "snippet": "After a week spent recuperating, I spent most of last week getting back to my routine - studying for CKA, working out, writing haikus."
+    }
+  ],
+  "micro/two-sentence-journals": [
+    {
+      "slug": "/nordletter/nl132-gta-week/",
+      "title": "GTA Week",
+      "description": "Playing GTA, thinking about routines and the smallest unit of work",
+      "category": "nordletter",
+      "created": "2026-11-21T11:13:00.000Z",
+      "snippet": "Haikus are more than poems, more than the 5-7-5 syllables. They capture a moment in time. Most of them happen while I am in the moment, or just outside. Haikus allow me to sometimes think back to a moment worth writing about, in the day that was. (A similar idea to Two sentence journals.)"
+    }
+  ],
+  "micro/writing-a-poetry-collection-as-a-page-turner": [
+    {
+      "slug": "/nordletter/nl132-gta-week/",
+      "title": "GTA Week",
+      "description": "Playing GTA, thinking about routines and the smallest unit of work",
+      "category": "nordletter",
+      "created": "2026-11-21T11:13:00.000Z",
+      "snippet": "Then I read writing a poetry collection as a page turner on LitHub,"
+    },
+    {
+      "slug": "/bookshelf/obit/",
+      "title": "Obit",
+      "description": "A beautiful book about loss and remembering loss",
+      "category": "bookshelf",
+      "created": "2026-10-10T10:15:00.000Z",
+      "snippet": "Then I read writing a poetry collection as a page turner on LitHub,"
     }
   ],
   "blog/visiting-the-ashokan-pillar-in-vaishali": [

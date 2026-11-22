@@ -455,6 +455,21 @@
       "status": "approved"
     }
   ],
+  "haiku/drops-fall-in-a-puddle": [
+    {
+      "id": "bluesky:like:3n2rffot22s2q:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-11-20T20:50:05.294Z",
+      "status": "approved"
+    }
+  ],
   "haiku/finding-moments": [
     {
       "id": "bluesky:like:3myg4g2nmv327:did:plc:4hi2oj4spvsud6tpbdv37lec",
@@ -1058,18 +1073,16 @@
       "status": "approved"
     }
   ],
-  "micro/a-game-which-uses-ai-to-map-your-memories": [
+  "micro/202611211516": [
     {
-      "id": "bluesky:like:3n2mfh4sxlk2t:did:plc:2qiid4kfnexpu5fpqjfo6awu",
-      "type": "like",
-      "platform": "bluesky",
+      "id": "threads:like-count:DgA86LSmcyT",
+      "type": "like-count",
+      "platform": "threads",
       "author": {
-        "name": "🤍 rose",
-        "url": "https://bsky.app/profile/callmemadzzcream.bsky.social",
-        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:2qiid4kfnexpu5fpqjfo6awu/bafkreicuvj3asrwy42h4ajppuxpb7coof37qbteefdo4l75vxldi75xwri"
+        "name": "Threads"
       },
-      "url": "https://bsky.app/profile/callmemadzzcream.bsky.social",
-      "published": "2026-11-18T22:32:17.000Z",
+      "url": "https://www.threads.com/@sajal24x7/post/DgA86LSmcyT",
+      "count": 1,
       "status": "approved"
     }
   ],
@@ -1651,19 +1664,6 @@
     }
   ],
   "micro/voyager-is-now-one-light-day-away": [
-    {
-      "id": "bluesky:like:3n2mfhhjt552u:did:plc:2qiid4kfnexpu5fpqjfo6awu",
-      "type": "like",
-      "platform": "bluesky",
-      "author": {
-        "name": "🤍 rose",
-        "url": "https://bsky.app/profile/callmemadzzcream.bsky.social",
-        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:2qiid4kfnexpu5fpqjfo6awu/bafkreicuvj3asrwy42h4ajppuxpb7coof37qbteefdo4l75vxldi75xwri"
-      },
-      "url": "https://bsky.app/profile/callmemadzzcream.bsky.social",
-      "published": "2026-11-18T22:32:04.000Z",
-      "status": "approved"
-    },
     {
       "id": "mastodon:like:117639329407536147:115545755329272075",
       "type": "like",
