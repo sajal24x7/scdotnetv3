@@ -421,15 +421,72 @@ const rows = entries.map((entry) => {
         border-color: rgba(var(--color-text-primary), 0.3);
     }
 
-    .feed-entry__nl-img {
-        display: block;
-        width: 100%;
-        height: 9.5rem;
-        object-fit: cover;
-    }
-
     .feed-entry__nl-body {
         padding: 1rem 1.15rem 1.15rem;
+    }
+
+    /* Nordletter with an image: thumbnail flush to the card's left edge.
+       Below 30rem it stacks on top at 16:9. */
+    .feed-entry__nl-card--image .feed-entry__thumb {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    @media (min-width: 30rem) {
+        .feed-entry__nl-card--image {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .feed-entry__nl-card--image .feed-entry__thumb {
+            width: var(--feed-thumb-width);
+            aspect-ratio: 4 / 3;
+            height: auto;
+        }
+
+        .feed-entry__nl-card--image .feed-entry__nl-body {
+            flex: 1;
+            min-width: 0;
+        }
+    }
+
+    /* ---- featured image thumbnails (blog, evergreen, story, poem, nordletter) ---- */
+    .feed-entry {
+        --feed-thumb-width: 6rem;
+    }
+
+    @media (min-width: 30rem) {
+        .feed-entry {
+            --feed-thumb-width: 11rem;
+        }
+    }
+
+    .feed-entry__thumb {
+        display: block;
+        flex: none;
+        width: var(--feed-thumb-width);
+        aspect-ratio: 4 / 3;
+        height: auto;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        background: rgba(var(--color-text-primary), 0.06);
+    }
+
+    .feed-entry__media {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .feed-entry__media-text {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .feed-entry__media-text > :last-child {
+        margin-bottom: 0;
     }
 
     .feed-entry__nl-badge {
