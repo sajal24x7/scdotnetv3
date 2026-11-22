@@ -245,29 +245,29 @@ async function renderPhoto(post: Post): Promise<string> {
   return `${metaHtml(post)}<div class="feed-entry__body feed-entry__body--photo prose dark:prose-invert">${galleryHtml}${body}</div>`;
 }
 
-function renderBlog(post: Post): string {
+async function renderBlog(post: Post): Promise<string> {
   const excerpt = post.data.description || bodySnippet(post);
-  return `${metaHtml(post)}${titleHtml(post)}${excerptHtml(excerpt)}`;
+  return `${metaHtml(post)}${await withThumb(post, `${titleHtml(post)}${excerptHtml(excerpt)}`)}`;
 }
 
-function renderTil(post: Post): string {
-  return `${metaHtml(post)}${titleHtml(post)}`;
+async function renderTil(post: Post): Promise<string> {
+  return `${metaHtml(post)}${await withThumb(post, titleHtml(post))}`;
 }
 
-function renderEvergreen(post: Post): string {
+async function renderEvergreen(post: Post): Promise<string> {
   const excerpt = post.data.description || bodySnippet(post);
-  return `${metaHtml(post)}${titleHtml(post)}${excerptHtml(excerpt)}`;
+  return `${metaHtml(post)}${await withThumb(post, `${titleHtml(post)}${excerptHtml(excerpt)}`)}`;
 }
 
-function renderPoem(post: Post): string {
+async function renderPoem(post: Post): Promise<string> {
   const verse = poemVerse(post);
   const verseHtml = verse ? `<p class="feed-entry__verse">${verse}</p>` : '';
-  return `${metaHtml(post)}${titleHtml(post)}${verseHtml}`;
+  return `${metaHtml(post)}${await withThumb(post, `${titleHtml(post)}${verseHtml}`)}`;
 }
 
-function renderStory(post: Post): string {
+async function renderStory(post: Post): Promise<string> {
   const excerpt = post.data.description || bodySnippet(post);
-  return `${metaHtml(post)}${titleHtml(post)}${excerptHtml(excerpt)}`;
+  return `${metaHtml(post)}${await withThumb(post, `${titleHtml(post)}${excerptHtml(excerpt)}`)}`;
 }
 
 // Shared row layout for all shelf categories: cover, "<verb>: <title>", credits · rating
@@ -351,33 +351,45 @@ function nordletterContent(post: Post): string {
   return body;
 }
 
-// The card image spans the feed column: 10 of 12 grid columns from 48rem,
-// capped by the 71.25rem page shell
-const NORDLETTER_IMAGE_SIZES = '(max-width: 48rem) 100vw, (max-width: 71.25rem) 83vw, 58rem';
+// Featured images render as a 4:3 thumbnail to the left of the entry text
+// (11rem wide from 30rem up). Below 30rem Nordletter cards stack the image on
+// top at full width, while other posts keep a small 6rem thumbnail.
+const THUMB_SIZES = '(max-width: 30rem) 6rem, 11rem';
+const NORDLETTER_THUMB_SIZES = '(max-width: 30rem) 100vw, 11rem';
 
-async function nordletterImageHtml(post: Post): Promise<string> {
-  const src = post.data.image;
+async function featuredThumbHtml(post: Post, { stackOnMobile = false } = {}): Promise<string> {
+  const src = post.data.image?.trim();
   if (!src) {
     return '';
   }
-  const image = await getResponsiveImage(src, { sizes: NORDLETTER_IMAGE_SIZES, maxWidth: 1200 });
+  const image = await getResponsiveImage(src, {
+    sizes: stackOnMobile ? NORDLETTER_THUMB_SIZES : THUMB_SIZES,
+    // twice the widest rendered size: 11rem thumbnail, or a full phone width
+    maxWidth: stackOnMobile ? 800 : 400
+  });
   if (!image) {
-    return `<img class="feed-entry__nl-img" src="${escapeHtml(src)}" alt="" loading="lazy" decoding="async">`;
+    return `<img class="feed-entry__thumb" src="${escapeHtml(src)}" alt="" loading="lazy" decoding="async">`;
   }
-  return `<img class="feed-entry__nl-img" src="${escapeHtml(image.src)}" srcset="${escapeHtml(image.srcset)}" sizes="${escapeHtml(image.sizes)}" width="${image.width}" height="${image.height}" alt="" loading="lazy" decoding="async">`;
+  return `<img class="feed-entry__thumb" src="${escapeHtml(image.src)}" srcset="${escapeHtml(image.srcset)}" sizes="${escapeHtml(image.sizes)}" width="${image.width}" height="${image.height}" alt="" loading="lazy" decoding="async">`;
+}
+
+// Wrap entry text with its featured image, if the post has one
+async function withThumb(post: Post, textHtml: string): Promise<string> {
+  const thumb = await featuredThumbHtml(post);
+  return thumb ? `<div class="feed-entry__media">${thumb}<div class="feed-entry__media-text">${textHtml}</div></div>` : textHtml;
 }
 
 async function renderNordletter(post: Post): Promise<string> {
   const title = post.data.title ? cleanNordletterTitle(post.data.title) : '';
   const edition = post.data.edition ?? extractEditionNumber(post.data.title || '', post.id);
   const badge = edition ? `<span class="feed-entry__nl-badge">NL ${escapeHtml(String(edition))}</span>` : '';
-  const imageHtml = await nordletterImageHtml(post);
+  const imageHtml = await featuredThumbHtml(post, { stackOnMobile: true });
   const content = stripMarkdown(nordletterContent(post));
   const excerpt = content
     ? (content.length <= 220 ? content : `${content.slice(0, 220).replace(/\s+\S*$/, '')}…`)
     : post.data.description || '';
 
-  return `${metaHtml(post)}<div class="feed-entry__nl-card">${imageHtml}<div class="feed-entry__nl-body">${badge}${titleHtml(post, title)}${excerptHtml(excerpt)}</div></div>`;
+  return `${metaHtml(post)}<div class="feed-entry__nl-card${imageHtml ? ' feed-entry__nl-card--image' : ''}">${imageHtml}<div class="feed-entry__nl-body">${badge}${titleHtml(post, title)}${excerptHtml(excerpt)}</div></div>`;
 }
 
 const RENDERERS: Record<string, (post: Post) => string | Promise<string>> = {
