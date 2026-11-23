@@ -1390,6 +1390,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/copacetic-2026-11-22",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-22"
+		},
+		"optimization": {
+			"word": "optimization",
+			"pos": "other",
+			"gloss": " noun Optimization refers to an act, process, or methodology of making something (such as a design, system, or decision) as good, functional, or effective as possible.",
+			"pronunciation": "ahp-tuh-muh-ZAY-shun",
+			"example": "She traded in her old phone for a newer model that offered improved battery optimization and better camera performance.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/optimization-2026-11-23",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-23"
 		}
 	}
 }
