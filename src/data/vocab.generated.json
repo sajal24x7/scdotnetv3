@@ -1380,6 +1380,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/meet-cute-2026-11-21",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-21"
+		},
+		"copacetic": {
+			"word": "copacetic",
+			"pos": "other",
+			"gloss": " adjective Copacetic (less commonly spelled copasetic or copesetic) describes things that are very satisfactory.",
+			"pronunciation": "koh-puh-SET-ik",
+			"example": "Worry not: I assure you that everything’s copacetic.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/copacetic-2026-11-22",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-22"
 		}
 	}
 }
