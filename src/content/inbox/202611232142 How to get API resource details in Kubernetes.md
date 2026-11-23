@@ -3,7 +3,7 @@ title: "How to Get API Resource Details in Kubernetes"
 slug: "how-to-get-api-resource-details-in-kubernetes"
 created: 2026-11-23T21:42:00+02:00
 updated: 2026-11-23T21:48:39+02:00
-category: k8s
+category: til
 tags: ["k8s", "rbac"]
 description: Find details about api-resources
 ---
