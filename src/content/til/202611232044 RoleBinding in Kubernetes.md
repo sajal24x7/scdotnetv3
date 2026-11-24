@@ -1,11 +1,17 @@
 ---
-title: "RoleBinding in Kubernetes"
-slug: "rolebinding-in-kubernetes"
-created: 2026-11-23T20:44:00+02:00
-updated: 2026-11-23T21:12:01+02:00
+title: RoleBinding in Kubernetes
+slug: rolebinding-in-kubernetes
+created: 2026-11-23T18:44:00.000Z
+updated: 2026-11-23T19:12:01.000Z
 category: til
-tags: ["k8s", "rbac"]
+tags:
+  - k8s
+  - rbac
 description: Using role bindings in Kubernetes
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117668988206141125'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2zkwq2ynq2o'
+  - 'https://www.threads.com/@sajal24x7/post/DgG2heUALOb'
 ---
 A role binding grants the permissions defined in a [role](/til/role-in-kubernetes) to a user or set of users.
 

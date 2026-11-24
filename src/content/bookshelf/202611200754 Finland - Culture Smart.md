@@ -1,20 +1,25 @@
 ---
-title: "Finland - Culture Smart"
-slug: "finland-culture-smart"
-created: 2026-11-20T07:54:00+02:00
-updated: 2026-11-23T21:19:09+02:00
+title: Finland - Culture Smart
+slug: finland-culture-smart
+created: 2026-11-20T05:54:00.000Z
+updated: 2026-11-23T19:19:09.000Z
 category: bookshelf
-tags: ["finland"]
+tags:
+  - finland
 author:
   - Terttu Leney
   - Elena Barrett
-started: 2026-11-20T07:54:00
-finished: 2026-11-23T09:18:00
+started: 2026-11-20T07:54:00.000Z
+finished: 2026-11-23T09:18:00.000Z
 genre: travel
 format: audiobook
 rating: like
 status: finished
 cover: culture-smart.webp
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117668985116952737'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2zkvdbwfq2n'
+  - 'https://www.threads.com/@sajal24x7/post/DgG2byKAMWY'
 ---
 ## Review
 

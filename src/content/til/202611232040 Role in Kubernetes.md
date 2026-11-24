@@ -1,11 +1,17 @@
 ---
-title: "Role in Kubernetes"
-slug: "role-in-kubernetes"
-created: 2026-11-23T20:40:00+02:00
-updated: 2026-11-23T21:11:34+02:00
+title: Role in Kubernetes
+slug: role-in-kubernetes
+created: 2026-11-23T18:40:00.000Z
+updated: 2026-11-23T19:11:34.000Z
 category: til
-tags: ["k8s", "rbac"]
+tags:
+  - k8s
+  - rbac
 description: Using roles in Kubernetes
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117668987505713710'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2zkwfwtpq2i'
+  - 'https://www.threads.com/@sajal24x7/post/DgG2gNwADcT'
 ---
 Type of object defined by [RBAC API](/til/rbac-in-kubernetes).
 
