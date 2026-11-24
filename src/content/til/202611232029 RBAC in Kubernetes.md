@@ -11,6 +11,7 @@ description: Role based access control in k8s
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117668986971901534'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2zkw5zfc62c'
+  - 'https://www.threads.com/@sajal24x7/post/DgIFHirG7na'
 ---
 To enable RBAC, api server needs to be started with RBAC in `--authorization-mode` setting. You can check this by getting the kube-apiserver pod and checking this setting. 
 
