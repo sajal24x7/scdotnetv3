@@ -1410,6 +1410,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/dubious-2026-11-24",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-24"
+		},
+		"arbiter": {
+			"word": "arbiter",
+			"pos": "other",
+			"gloss": " noun An arbiter is a person with power to decide a dispute, or a person or agency whose judgment or opinion is considered authoritative.",
+			"pronunciation": "AHR-buh-ter",
+			"example": "The mayor will act as the final arbiter in any disputes between board members. // He is regarded as an arbiter of taste in the world of musical theater.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/arbiter-2026-11-25",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-25"
 		}
 	}
 }
