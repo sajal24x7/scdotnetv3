@@ -15,7 +15,7 @@ Follow this guide when adding or updating Markdown/MDX entries under `src/conten
 | Field | Required | Notes |
 | --- | --- | --- |
 | `title` | Optional | Recommended for long-form pieces; cards fall back to slug if missing. |
-| `description` | Optional | Appears in search results and cards; keep under ~160 characters. |
+| `description` | Optional | Appears in search results and cards; keep under ~160 characters. Left blank (`description:`, `""` or `null`) in Obsidian, the publish pipeline drops the field instead of writing an empty one. |
 | `created` | Required | ISO string or `Date` value. Used for RSS `pubDate` and for sorting everywhere except `/garden`, `/evergreen`, and `/til`, which sort by `updated` (falling back to `created`) instead — see [Content Lifecycle](../architecture/content-lifecycle.md). |
 | `updated` | Optional | Set when substantive revisions occur. Cards on `/garden` and its sibling category pages (`/evergreen`, `/til`, `/stories`, `/poems`, which share the same card component) display this field instead of `created` when it's present. Garden post pages also show it in a "Planted / Last tended" line above the body when it differs from `created` by more than a day. |
 | `category` | Required | One of `evergreen`, `blog`, `micro`, `photo`, `nordletter`, `story`, `poem`, `haiku`, `bookshelf`, `filmshelf`, `tvshelf`, `gameshelf`, `now`, `til`, `colophon`. Categories drive navigation highlights, chip colors, and URLs.【F:src/content.config.ts†L41】【F:src/content.config.ts†L106-L121】 |
