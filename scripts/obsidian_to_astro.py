@@ -64,7 +64,6 @@ _OBSIDIAN_ONLY_KEYS = {"aliases", "cssclass", "cssClasses"}
 _CATEGORY_STUBS: dict[str, list[tuple[str, str]]] = {
     "nordletter": [
         ("edition", ""),
-        ("description", '""'),
         ("image", '""'),
     ],
 }
@@ -75,6 +74,11 @@ _CATEGORY_STUBS: dict[str, list[tuple[str, str]]] = {
 # every shelf field is optional in the schema, and a blank `finished:` or
 # `rating:` on a book you've just started is noise at best.
 _SHELF_CATEGORIES = {"bookshelf", "filmshelf", "tvshelf", "gameshelf"}
+
+# Optional fields dropped from every category when the vault note leaves them
+# blank (`description:`, `description: ""` or `description: null`). The schema treats them as
+# optional, so an empty value is noise.
+_DROP_IF_EMPTY_KEYS = {"description"}
 
 
 def title_case(s: str) -> str:
@@ -220,11 +224,11 @@ def build_stub_lines(category: str, present_keys: set, fm: dict) -> list:
 
 def is_empty_field(lines: list[str]) -> bool:
     """True for a key with no value and no list items under it
-    (`series:`, `rating: ""`), as opposed to `author:\\n  - Dan Brown`."""
+    (`series:`, `rating: ""`, `description: null`), as opposed to `author:\\n  - Dan Brown`."""
     if len(lines) != 1:
         return False
     value = lines[0].partition(":")[2].strip()
-    return value in ("", '""', "''", "[]")
+    return value in ("", '""', "''", "[]", "null", "~")
 
 
 def extract_passthrough_lines(fm_text: str) -> list:
@@ -357,13 +361,15 @@ def transform_file(filepath: str, content_index: dict | None = None) -> bool:
     fm_end = content.find("---", 3)
     fm_text = content[3:fm_end]
     passthrough = extract_passthrough_lines(fm_text)
-    if category in _SHELF_CATEGORIES:
-        passthrough = [
-            line
-            for field_lines in parse_top_level_fields("\n".join(passthrough)).values()
-            if not is_empty_field(field_lines)
-            for line in field_lines
-        ]
+    passthrough = [
+        line
+        for key, field_lines in parse_top_level_fields("\n".join(passthrough)).items()
+        if not (
+            is_empty_field(field_lines)
+            and (category in _SHELF_CATEGORIES or key in _DROP_IF_EMPTY_KEYS)
+        )
+        for line in field_lines
+    ]
 
     # Determine which keys are already covered (transformed + passed through)
     present_keys = set(_TRANSFORMED_KEYS)
