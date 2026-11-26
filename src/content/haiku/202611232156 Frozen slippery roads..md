@@ -7,7 +7,6 @@ category: haiku
 number: 27
 tags:
   - winter
-description: null
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117668986257531767'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3n2zkvthppp2u'
