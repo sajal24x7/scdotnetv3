@@ -1,11 +1,18 @@
 ---
-title: "Platform and Infrastructure Community Meetup November"
-slug: "platform-and-infrastructure-community-meetup-november"
-created: 2026-11-25T16:16:00+02:00
-updated: 2026-11-26T10:13:45+02:00
+title: Platform and Infrastructure Community Meetup November
+slug: platform-and-infrastructure-community-meetup-november
+created: 2026-11-25T14:16:00.000Z
+updated: 2026-11-26T08:13:45.000Z
 category: blog
-tags: ["meetup", "pni-community", "platform-engineering"]
+tags:
+  - meetup
+  - pni-community
+  - platform-engineering
 description: Three interesting talks around platforms in the AI age
+syndicationUrls:
+  - 'https://mastodon.social/@sajal24x7/117683770281666625'
+  - 'https://bsky.app/profile/sajalchoudhary.net/post/3n3a4ytm5zl2s'
+  - 'https://www.threads.com/@sajal24x7/post/DgNkvR0m_Ur'
 ---
 I am back at the Polar Squad office for the 2nd P&I community meetup. There’s some nice music in the air. And I do love this space, it’s both cosy and large enough. Plus I got a chair this time around so my back has plenty of support. Last time my back had ached by the end.
 
