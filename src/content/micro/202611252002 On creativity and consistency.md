@@ -6,7 +6,6 @@ updated: 2026-11-25T18:03:10.000Z
 category: micro
 tags:
   - creativity
-description: null
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117678670215439209'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3n35ujlwn6k24'
