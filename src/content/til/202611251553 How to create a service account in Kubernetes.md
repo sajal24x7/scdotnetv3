@@ -6,7 +6,6 @@ updated: 2026-11-25T13:58:42.000Z
 category: til
 tags:
   - k8s
-description: null
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117678671760948530'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3n35ukcpijb2c'

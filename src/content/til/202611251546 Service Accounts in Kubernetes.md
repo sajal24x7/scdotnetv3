@@ -8,7 +8,6 @@ tags:
   - k8s
   - rbac
   - security
-description: null
 syndicationUrls:
   - 'https://mastodon.social/@sajal24x7/117678670973178560'
   - 'https://bsky.app/profile/sajalchoudhary.net/post/3n35ujwpt6b2c'
