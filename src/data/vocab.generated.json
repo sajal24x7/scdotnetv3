@@ -1420,6 +1420,16 @@
 			"href": "https://www.merriam-webster.com/word-of-the-day/arbiter-2026-11-25",
 			"source": "merriam-webster",
 			"fetchedAt": "2026-11-25"
+		},
+		"felicitous": {
+			"word": "felicitous",
+			"pos": "other",
+			"gloss": " adjective Felicitous is an adjective most often used in formal speech and writing to describe something that is very well expressed or suited for some purpose or situation. It can also be used as a synonym for pleasant or delightful.",
+			"pronunciation": "fih-LISS-uh-tus",
+			"example": "She had not been asked ahead of time to speak at the event, but she managed some felicitous remarks nonetheless. // That the cousins happened to be on the same flight was a felicitous coincidence—they had no idea the other would even be traveling at that time.",
+			"href": "https://www.merriam-webster.com/word-of-the-day/felicitous-2026-11-26",
+			"source": "merriam-webster",
+			"fetchedAt": "2026-11-26"
 		}
 	}
 }
