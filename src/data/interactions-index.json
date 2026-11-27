@@ -485,6 +485,36 @@
       "status": "approved"
     }
   ],
+  "haiku/frozen-slippery-roads": [
+    {
+      "id": "bluesky:like:3n2zkvthppp2u:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-11-24T02:50:04.025Z",
+      "status": "approved"
+    }
+  ],
+  "haiku/full-moon-up-above": [
+    {
+      "id": "bluesky:like:3n3b2qytiap2k:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-11-27T02:50:12.488Z",
+      "status": "approved"
+    }
+  ],
   "haiku/full-moon-up-in-the-sky": [
     {
       "id": "bluesky:like:3myskqi74q62o:did:plc:4hi2oj4spvsud6tpbdv37lec",
@@ -512,6 +542,21 @@
       },
       "url": "https://bsky.app/profile/mrwamble.bsky.social",
       "published": "2026-10-20T00:26:19.199Z",
+      "status": "approved"
+    }
+  ],
+  "haiku/i-almost-slipped": [
+    {
+      "id": "bluesky:like:3n35ujalnx62g:did:plc:4hi2oj4spvsud6tpbdv37lec",
+      "type": "like",
+      "platform": "bluesky",
+      "author": {
+        "name": "mrwamble.bsky.social",
+        "url": "https://bsky.app/profile/mrwamble.bsky.social",
+        "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hi2oj4spvsud6tpbdv37lec/bafkreicbtaismqw35qpagmm5tzthl7mkqol7pxskz2yibppd3euyrgoqoy"
+      },
+      "url": "https://bsky.app/profile/mrwamble.bsky.social",
+      "published": "2026-11-25T19:50:15.789Z",
       "status": "approved"
     }
   ],

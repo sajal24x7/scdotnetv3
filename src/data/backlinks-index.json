@@ -384,6 +384,7 @@
       "blog/202610071700 FAUG October Meetup.md",
       "blog/202610201626 CNCF October Edition.md",
       "blog/202611181717 Vibe coding November Meetup.md",
+      "blog/202611251616 Platform and Infrastructure Community Meetup November.md",
       "bookshelf/201301081514 The Da Vinci Code.md",
       "bookshelf/201301081514 The Ultimate Hitchhikers Guide to the Galaxy.md",
       "bookshelf/201301081515 Deception Point.md",
@@ -635,6 +636,7 @@
       "bookshelf/202611161900 The Deep Life A Structured Approach to the Search for Meaning.md",
       "bookshelf/202611200754 Finland - Culture Smart.md",
       "bookshelf/202611211531 My Autobiography.md",
+      "bookshelf/202611250641 Unaccustomed Earth.md",
       "colophon/202407151553 Colophon.md",
       "colophon/202511261617 Astro years.md",
       "evergreen/202406301304 Zettelkasten.md",
@@ -1288,6 +1290,9 @@
       "haiku/202611172233 Pour the batter on tawa.md",
       "haiku/202611182159 There’s mud everywhere.md",
       "haiku/202611202041 Drops fall in a puddle..md",
+      "haiku/202611232156 Frozen slippery roads..md",
+      "haiku/202611251912 I almost slipped.md",
+      "haiku/202611262208 Full moon up above..md",
       "micro/202506231350 India is mapping urban heat vulnerability down to the building level.md",
       "micro/202506241124 Using AI right now.md",
       "micro/202507011326 Tolls are a way to pay for content in the AI era on the web.md",
@@ -1724,6 +1729,7 @@
       "micro/202611181848 Voyager is now one light day away.md",
       "micro/202611192134 New Manchester United Coach and Hopes.md",
       "micro/202611211516.md",
+      "micro/202611252002 On creativity and consistency.md",
       "nordletter/202401272012 NL1 - Celebrating Sakraat in Finland.md",
       "nordletter/202402031835 NL2 - I miss walking.md",
       "nordletter/202402142200 NL3 - Year One.md",
@@ -2606,6 +2612,16 @@
       "til/202611172214 CertificateSigningRequest object in Kubernetes.md",
       "til/202611172221 How to create a certificate using CSR object in Kubernetes.md",
       "til/202611182206 Organising cluster access using KubeConfig file.md",
+      "til/202611232029 RBAC in Kubernetes.md",
+      "til/202611232040 Role in Kubernetes.md",
+      "til/202611232044 RoleBinding in Kubernetes.md",
+      "til/202611232048 How to check if user has permission to do something in Kubernetes.md",
+      "til/202611232054 How to create a role in Kubernetes.md",
+      "til/202611232056 How to create a role binding in Kubernetes.md",
+      "til/202611232113 How to check how many roles exist in a namespace.md",
+      "til/202611232142 How to get API resource details in Kubernetes.md",
+      "til/202611251546 Service Accounts in Kubernetes.md",
+      "til/202611251553 How to create a service account in Kubernetes.md",
       "tvshelf/201901071200 Luther S2.md",
       "tvshelf/201901071201 Luther S1.md",
       "tvshelf/201901281200 Bodyguard S1.md",
@@ -2805,7 +2821,8 @@
       "tvshelf/202606271411 Drive to Survive.md",
       "tvshelf/202610222301 The Rookie S5.md",
       "tvshelf/202610301414 The Rookie S6.md",
-      "tvshelf/202611121555 The Mentalist S1.md"
+      "tvshelf/202611121555 The Mentalist S1.md",
+      "tvshelf/202611261716 The Mentalist S2.md"
     ]
   },
   "til/windows-delete-shadow-copies": [
@@ -6901,6 +6918,66 @@
       "created": "2023-12-23T12:20:00.000Z"
     }
   ],
+  "til/role-in-kubernetes": [
+    {
+      "slug": "/til/how-to-get-api-resource-details-in-kubernetes/",
+      "title": "How to Get API Resource Details in Kubernetes",
+      "description": "Find details about api-resources",
+      "category": "til",
+      "created": "2026-11-23T19:42:00.000Z",
+      "snippet": "The api version which is the output of this command specifies whether resource is core resource (as \"\" in role definition for example) or not. V1 is core api-resource. Others need to be specified."
+    },
+    {
+      "slug": "/til/how-to-check-how-many-roles-exist-in-a-namespace/",
+      "title": "How to Check How Many Roles Exist in a Namespace",
+      "description": "Check how many roles exist in a namespace",
+      "category": "til",
+      "created": "2026-11-23T19:13:00.000Z",
+      "snippet": "To check how many roles exist in a namespace"
+    },
+    {
+      "slug": "/til/how-to-create-a-role-in-kubernetes/",
+      "title": "How to Create a Role in Kubernetes",
+      "description": "Create a role in Kubernetes",
+      "category": "til",
+      "created": "2026-11-23T18:54:00.000Z",
+      "snippet": "To create a role in Kubernetes, there are two ways."
+    },
+    {
+      "slug": "/til/how-to-check-if-user-has-permission-to-do-something-in-kubernetes/",
+      "title": "How to Check If User Has Permission to Do Something in Kubernetes",
+      "description": "Check if user has permission to do something in Kubernetes",
+      "category": "til",
+      "created": "2026-11-23T18:48:00.000Z",
+      "snippet": "You can check what role a user has/related to RBAC in Kubernetes."
+    },
+    {
+      "slug": "/til/rolebinding-in-kubernetes/",
+      "title": "RoleBinding in Kubernetes",
+      "description": "Using role bindings in Kubernetes",
+      "category": "til",
+      "created": "2026-11-23T18:44:00.000Z",
+      "snippet": "A role binding grants the permissions defined in a role to a user or set of users."
+    }
+  ],
+  "til/rbac-in-kubernetes": [
+    {
+      "slug": "/til/how-to-check-if-user-has-permission-to-do-something-in-kubernetes/",
+      "title": "How to Check If User Has Permission to Do Something in Kubernetes",
+      "description": "Check if user has permission to do something in Kubernetes",
+      "category": "til",
+      "created": "2026-11-23T18:48:00.000Z",
+      "snippet": "You can check what role a user has/related to RBAC in Kubernetes."
+    },
+    {
+      "slug": "/til/role-in-kubernetes/",
+      "title": "Role in Kubernetes",
+      "description": "Using roles in Kubernetes",
+      "category": "til",
+      "created": "2026-11-23T18:40:00.000Z",
+      "snippet": "Type of object defined by RBAC API."
+    }
+  ],
   "til/how-to-label-nodes-in-kubernetes": [
     {
       "slug": "/til/how-to-control-where-a-pod-runs-in-kubernetes/",
@@ -6945,6 +7022,26 @@
       "category": "til",
       "created": "2026-10-27T12:24:00.000Z",
       "snippet": "To create a ConfigMap in Kubernetes:"
+    }
+  ],
+  "til/rolebinding-in-kubernetes": [
+    {
+      "slug": "/til/how-to-create-a-role-binding-in-kubernetes/",
+      "title": "How to Create a Role Binding in Kubernetes",
+      "description": "Create a role binding in Kubernetes",
+      "category": "til",
+      "created": "2026-11-23T18:56:00.000Z",
+      "snippet": "There are two ways to create a RoleBinding:"
+    }
+  ],
+  "til/service-accounts-in-kubernetes": [
+    {
+      "slug": "/til/how-to-create-a-service-account-in-kubernetes-2/",
+      "title": "How to Create a Service Account in Kubernetes-2",
+      "description": "",
+      "category": "til",
+      "created": "2026-11-25T13:53:00.000Z",
+      "snippet": "To create a service account:"
     }
   ],
   "til/how-to-create-a-configmap-in-kubernetes": [
