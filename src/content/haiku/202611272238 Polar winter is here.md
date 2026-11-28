@@ -13,5 +13,5 @@ syndicationUrls:
   - 'https://www.threads.com/@sajal24x7/post/DgQ2zPtlN_p'
 ---
 Polar winter is here.
-At four of was it three,
+At four or was it three,
 It has gone dark.
